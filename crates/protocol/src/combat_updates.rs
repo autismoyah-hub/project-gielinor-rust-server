@@ -1,0 +1,176 @@
+//! Observer-specific revision 239.1 hitmark and headbar extension bodies.
+use crate::buffer::DecodeError;
+
+/// Supported NPC extension blocks in revision-specific writer order.
+/// Bodies already contain the counts selected for this observer.
+#[derive(Default)]
+pub struct NpcUpdates<'a> {
+    pub hitmarks: Option<&'a [u8]>,
+    pub headbars: Option<&'a [u8]>,
+    pub sequence: Option<(u16, u8)>,
+    pub face: Option<&'a [u8]>,
+}
+impl NpcUpdates<'_> {
+    pub fn encode(&self) -> Vec<u8> {
+        let mut mask = 0u32;
+        let mut body = vec![];
+        if let Some(bytes) = self.hitmarks {
+            mask |= 0x80000;
+            body.extend(bytes);
+        }
+        if let Some(bytes) = self.headbars {
+            mask |= 0x1000000;
+            body.extend(bytes);
+        }
+        if let Some((id, delay)) = self.sequence {
+            mask |= 128;
+            body.extend(id.to_be_bytes());
+            body.push(delay.wrapping_neg());
+        }
+        if let Some(face) = self.face {
+            mask |= 8;
+            body.extend(face);
+        }
+        if mask == 0 {
+            return vec![];
+        }
+        if mask > 255 {
+            mask |= 64;
+        }
+        if mask > 65535 {
+            mask |= 2048;
+        }
+        if mask > 16777215 {
+            mask |= 2097152;
+        }
+        let mut out = vec![mask as u8];
+        if mask & 64 != 0 {
+            out.push((mask >> 8) as u8);
+        }
+        if mask & 2048 != 0 {
+            out.push((mask >> 16) as u8);
+        }
+        if mask & 2097152 != 0 {
+            out.push((mask >> 24) as u8);
+        }
+        out.extend(body);
+        out
+    }
+}
+#[derive(Clone, Copy, Debug)]
+pub struct Hitmark {
+    pub source_index: i32,
+    pub source_type: u16,
+    pub self_type: u16,
+    pub other_type: u16,
+    pub value: u16,
+    pub delay: u16,
+    pub limit: u8,
+}
+#[derive(Clone, Copy, Debug)]
+pub struct Headbar {
+    pub source_index: i32,
+    pub self_type: u16,
+    pub other_type: u16,
+    pub start_fill: u8,
+    pub end_fill: u8,
+    pub start_time: u16,
+    pub end_time: u16,
+}
+fn smart(out: &mut Vec<u8>, value: u16) -> Result<(), DecodeError> {
+    if value < 128 {
+        out.push(value as u8);
+    } else if value < 32768 {
+        out.extend(value.wrapping_add(32768).to_be_bytes());
+    } else {
+        return Err(DecodeError::InvalidValue(
+            "Combat smart value exceeds 32767",
+        ));
+    }
+    Ok(())
+}
+pub fn hitmarks(
+    npc: bool,
+    observer: u16,
+    target: u16,
+    hits: &[Hitmark],
+) -> Result<Vec<u8>, DecodeError> {
+    let mut out = vec![0];
+    let mut count = 0u8;
+    for hit in hits {
+        let source = observer as i32 == hit.source_index.wrapping_sub(65536);
+        let kind = if npc {
+            if source {
+                hit.self_type
+            } else {
+                hit.other_type
+            }
+        } else if source {
+            hit.source_type
+        } else if observer == target {
+            hit.self_type
+        } else {
+            hit.other_type
+        };
+        if kind == 65535 {
+            continue;
+        }
+        for value in [kind, hit.value, hit.delay, hit.limit as u16] {
+            smart(&mut out, value)?;
+        }
+        count += 1;
+        if count == 255 {
+            break;
+        }
+    }
+    out[0] = if npc {
+        count.wrapping_add(128)
+    } else {
+        128u8.wrapping_sub(count)
+    };
+    Ok(out)
+}
+pub fn headbars(
+    npc: bool,
+    observer: u16,
+    target: u16,
+    bars: &[Headbar],
+) -> Result<Vec<u8>, DecodeError> {
+    let mut out = vec![0];
+    let mut count = 0u8;
+    for bar in bars {
+        let self_view =
+            observer as i32 == bar.source_index.wrapping_sub(65536) || (!npc && observer == target);
+        let kind = if self_view {
+            bar.self_type
+        } else {
+            bar.other_type
+        };
+        if kind == 65535 {
+            continue;
+        }
+        smart(&mut out, kind)?;
+        smart(&mut out, bar.end_time)?;
+        if bar.end_time != 32767 {
+            smart(&mut out, bar.start_time)?;
+            out.push(bar.start_fill.wrapping_add(128));
+            if bar.end_time > 0 {
+                out.push(if npc {
+                    128u8.wrapping_sub(bar.end_fill)
+                } else {
+                    bar.end_fill.wrapping_neg()
+                });
+            }
+        }
+        count += 1;
+        if count == 255 {
+            break;
+        }
+    }
+    out[0] = if npc {
+        count.wrapping_neg()
+    } else {
+        count.wrapping_add(128)
+    };
+    Ok(out)
+}

@@ -1,0 +1,19 @@
+[package]
+name="miniz_oxide"
+version="0.8.9"
+edition="2021"
+build=false
+[lib]
+path="src/lib.rs"
+[features]
+default = ["with-alloc"]
+with-alloc = []
+std = []
+block-boundary = []
+[dependencies.adler2]
+path = "../adler2-2.0.1"
+default-features = false
+
+[lints.rust]
+unexpected_cfgs="allow"
+deprecated="allow"

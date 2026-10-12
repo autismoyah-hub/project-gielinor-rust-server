@@ -1,0 +1,25 @@
+[package]
+name="num-bigint"
+version="0.4.6"
+edition="2021"
+[lib]
+path="src/lib.rs"
+[features]
+default = ["std"]
+std = ["num-integer/std", "num-traits/std"]
+arbitrary = []
+quickcheck = []
+rand = []
+serde = []
+[dependencies.num-integer]
+path = "../num-integer-0.1.46"
+default-features = false
+features = ["i128"]
+[dependencies.num-traits]
+path = "../num-traits-0.2.19"
+default-features = false
+features = ["i128"]
+
+[lints.rust]
+unexpected_cfgs="allow"
+deprecated="allow"

@@ -1,0 +1,20 @@
+[package]
+name="libbz2-rs-sys"
+version="0.2.2"
+edition="2021"
+build=false
+[lib]
+path="src/lib.rs"
+[features]
+default = ["std"]
+std = ["rust-allocator"]
+rust-allocator = []
+export-symbols = []
+custom-prefix = ["export-symbols"]
+semver-prefix = ["export-symbols"]
+testing-prefix = ["export-symbols"]
+__internal-fuzz-disable-checksum = []
+
+[lints.rust]
+unexpected_cfgs="allow"
+deprecated="allow"

@@ -1,0 +1,18 @@
+[package]
+name="num-integer"
+version="0.1.46"
+edition="2018"
+[lib]
+path="src/lib.rs"
+[features]
+default = ["std"]
+std = ["num-traits/std"]
+i128 = []
+[dependencies.num-traits]
+path = "../num-traits-0.2.19"
+default-features = false
+features = ["i128"]
+
+[lints.rust]
+unexpected_cfgs="allow"
+deprecated="allow"

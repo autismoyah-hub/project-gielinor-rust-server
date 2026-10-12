@@ -1,0 +1,13 @@
+[package]
+name="autocfg"
+version="1.4.0"
+edition="2015"
+build=false
+[lib]
+path="src/lib.rs"
+[features]
+default = []
+
+[lints.rust]
+unexpected_cfgs="allow"
+deprecated="allow"

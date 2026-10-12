@@ -1,0 +1,14 @@
+[package]
+name="adler2"
+version="2.0.1"
+edition="2021"
+build=false
+[lib]
+path="src/lib.rs"
+[features]
+default = ["std"]
+std = []
+
+[lints.rust]
+unexpected_cfgs="allow"
+deprecated="allow"

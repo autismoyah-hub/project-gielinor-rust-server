@@ -1,0 +1,16 @@
+Scenario,Kotlin result,Rust result,Evidence,Status,Blocking issues,Scope
+Login and initial world,PASS,PASS,prep-kotlin-actions-002; prep-rust-actions-001,PASS,Same rebuilt client; tutorial-completed fixture only; no fresh character creation,current baseline
+Single waypoint walk,PASS,PASS,prep-kotlin-actions-002; prep-rust-actions-001,PASS,Targeted effect only; subsequent state differs,current baseline
+Multiple waypoints,NOT TESTED,NOT TESTED,reference/NativeFloorScenario.rs; historical rust-floor-actions-002 PASS,NOT TESTED,Fresh Tower mode prepared; current pinned executable has not run it,current baseline; historical evidence separate
+NPC interaction and dialogue opening,PASS,PASS,prep-kotlin-actions-002; prep-rust-actions-001,PASS,Dialogue interface opened; exact NPC response and full transitions not asserted,current baseline
+Native Dialogue Continue,BLOCKED,FAIL,work/prep-kotlin-dialogue-001.log; prep-rust-dialogue-001,FAIL,Rust visible-layout click handled=false and no opcode 115; Kotlin retry deferred by CPU guard; historical both failed,current baseline
+Inventory initialization and item operations,NOT TESTED,NOT TESTED,historical rust-inventory-006; rust-burial-001,NOT TESTED,Drivers rebuilt; fresh runtime validation pending,current baseline; historical Rust PASS
+Equipment wear and remove,NOT TESTED,NOT TESTED,historical rust-inventory-006,NOT TESTED,Fresh inventory mode ready; historical pass does not validate new pin,current baseline; historical Rust PASS
+Bank deposit and withdrawal,NOT TESTED,NOT TESTED,historical rust-floor-actions-002; rust-floor-content-001,NOT TESTED,Tower fixture and scene snapshot required; floor plumbing not freshly exercised,current baseline; historical Rust PASS
+Object interactions,NOT TESTED,NOT TESTED,historical rust-floor-content-001; rust-floor-altar-001,NOT TESTED,Vial crate scenario prepared; altar is older explicit drained fixture evidence,current baseline; historical Rust PASS
+Logout persistence and re-login,NOT TESTED,NOT TESTED,historical rust-inventory-verify-001; current actions state exports,NOT TESTED,New inventory plus ReuseStateFrom sequence prepared; current saved state differs across A/B,current baseline; historical Rust PASS
+Bounded connected stability,NOT TESTED,NOT TESTED,live_session.rs 120-second loop; current action run shutdown evidence,NOT TESTED,Clean action disconnect is observed; no continuous connected-duration assertion or long soak,current baseline
+Clean owned-server shutdown,PASS,PASS,prep-kotlin-actions-002/shutdown.json; prep-rust-actions-001/shutdown.json; prep-rust-dialogue-001/shutdown.json,PASS,Targeted runs only; no forced stop,current baseline
+Visible native GUI acceptance,NOT TESTED,NOT TESTED,historical rust-floor-render-001/world.bmp,NOT TESTED,Fresh GUI rebuilt; historical screenshot review not new-baseline acceptance,current baseline; historical Rust PASS
+Fresh character initialization,NOT TESTED,NOT TESTED,basic-v1/fixture.json,NOT TESTED,Tutorial-completed fixture; Kotlin Tower login hooks require investigation,current baseline
+Matched action differential,FAIL,FAIL,work/preparation/actions-differential-001.json,FAIL,First captured comparable difference: state.persisted; configuration and reference lifecycle attribution required,same baseline/cache/initial state

@@ -1,0 +1,12 @@
+[package]
+name = "gielinor-cache"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+gielinor-protocol = { path = "../protocol" }
+gielinor-world = { path = "../world" }
+miniz_oxide = { path = "../../vendor/miniz_oxide-0.8.9" }
+libbz2-rs-sys = { path = "../../vendor/libbz2-rs-sys-0.2.2" }

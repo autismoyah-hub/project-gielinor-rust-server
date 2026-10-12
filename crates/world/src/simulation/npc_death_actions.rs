@@ -1,0 +1,179 @@
+use super::*;
+use crate::npc_death::State;
+impl World {
+    /// Death coroutines resume before reveal, regeneration, queues and interactions.
+    pub(super) fn process_npc_death(&mut self, id: NpcId) -> bool {
+        let Some(entry) = self.npcs.get(id.slot as usize).filter(|e| e.id == id) else {
+            return true;
+        };
+        if !entry.death_queued {
+            return false;
+        }
+        let Some(config) = &self.npc_death else {
+            return true;
+        };
+        let Some(definition) = config.definitions.get(&entry.npc.type_id).copied() else {
+            return true;
+        };
+        let bones = config.bones;
+        let clock = self.clock.0;
+        if entry.death_state.is_none() {
+            let entry = self.npcs.get_mut(id.slot as usize).unwrap();
+            let npc = &mut entry.npc;
+            let arrival = i32::from(npc.movement.last_movement == clock.wrapping_sub(1));
+            entry.death_state = Some(State::Arrival {
+                at: clock.wrapping_add(arrival),
+                drop_coords: npc.movement.coords,
+            });
+            npc.movement.abort();
+            npc.movement.interacting = false;
+            npc.attacking_player = None;
+            npc.escape_player = None;
+            npc.face_player(None);
+            npc.delayed = true;
+        }
+        match self
+            .npcs
+            .get(id.slot as usize)
+            .unwrap()
+            .death_state
+            .unwrap()
+        {
+            State::Arrival { at, drop_coords } if clock >= at => {
+                let entry = self.npcs.get_mut(id.slot as usize).unwrap();
+                let source = entry.npc.aggressive_player;
+                let uid = crate::combat_state::npc_uid(id.slot, entry.npc.type_id);
+                entry.death_state = Some(State::Animation {
+                    until: clock.wrapping_add(definition.animation_ticks),
+                    drop_coords,
+                });
+                if let Some(actor) = source {
+                    if let Some(p) = self
+                        .players
+                        .get_mut(actor.slot as usize)
+                        .filter(|p| p.id == actor)
+                    {
+                        if p.aggressive_npc == Some(id) {
+                            p.last_npc_combat = 0;
+                        }
+                        if let Some(config) = self.combat_state {
+                            if let Some(update) = config.clear_on_death(
+                                &mut p.data.variables,
+                                uid,
+                                p.protection.processed_clock > 0,
+                            ) {
+                                self.events.push(WorldEvent::CombatVariables {
+                                    actor,
+                                    updates: vec![update],
+                                });
+                            }
+                        }
+                        if let Some(sound) = definition.sound {
+                            self.events.push(WorldEvent::CombatSound { actor, sound });
+                        }
+                    }
+                }
+                self.events.push(WorldEvent::NpcCombatAnimation {
+                    actor: id,
+                    sequence: definition.animation,
+                });
+                if definition.animation_ticks <= 0 {
+                    self.despawn_npc(id);
+                    self.events.push(WorldEvent::NpcCombatError {
+                        actor: id,
+                        error: ActionError::InvalidItem,
+                    });
+                }
+            }
+            State::Animation { until, drop_coords } if clock >= until => {
+                let entry = self.npcs.get_mut(id.slot as usize).unwrap();
+                let npc = &mut entry.npc;
+                let hero = npc.hero_points.winner();
+                let respawns = npc.respawns && npc.respawn_rate >= 0;
+                npc.movement.occupancy(&mut self.collision, false);
+                npc.visible = false;
+                entry.death_state = Some(State::Respawn {
+                    at: clock.wrapping_add(npc.respawn_rate),
+                });
+                if let Some((observer, duration)) = hero.and_then(|uuid| {
+                    self.players
+                        .iter()
+                        .find(|(_, p)| p.data.character_id == uuid)
+                        .and_then(|(_, p)| {
+                            p.observer_id
+                                .map(|observer| (observer, p.loot_drop_duration.unwrap_or(200)))
+                        })
+                }) {
+                    if let Err(error) = self.objects.add(
+                        crate::ground::Object {
+                            coords: drop_coords,
+                            item: bones,
+                            count: 1,
+                            scope: crate::ground::Scope::Private,
+                            created: clock,
+                            receiver: Some(observer),
+                            owner: Some(observer),
+                        },
+                        &self.object_types,
+                        self.clock,
+                        duration,
+                        100,
+                    ) {
+                        self.events.push(WorldEvent::GroundError(error));
+                    }
+                }
+                if !respawns {
+                    self.npcs.remove(id.slot as usize);
+                }
+            }
+            State::Respawn { at } if clock >= at => {
+                self.generation = self
+                    .generation
+                    .checked_add(1)
+                    .expect("actor generation exhausted");
+                let entry = self.npcs.get_mut(id.slot as usize).unwrap();
+                entry.id.generation = self.generation;
+                entry.death_queued = false;
+                entry.death_state = None;
+                entry.hits = Default::default();
+                entry.allocated_cycle = clock;
+                entry.allocated_pending = true;
+                let npc = &mut entry.npc;
+                npc.movement.coords = npc.spawn;
+                npc.movement.last_processed = CoordGrid::NULL;
+                npc.movement.pending_telejump = true;
+                npc.movement.abort();
+                npc.stats = npc.base_stats;
+                npc.hero_points.clear();
+                npc.retaliate_due.clear();
+                npc.aggressive_player = None;
+                npc.face_player = None;
+                npc.dialogue_face = None;
+                npc.face_changed = false;
+                npc.last_combat = -1000;
+                npc.last_attack = -1000;
+                npc.combat_action_delay = 0;
+                npc.flat_armour = 0;
+                npc.escape_idle = 0;
+                npc.visible = true;
+                npc.delayed = false;
+                npc.movement.occupancy(&mut self.collision, true);
+                self.events.push(WorldEvent::NpcCombatAnimation {
+                    actor: entry.id,
+                    sequence: u16::MAX,
+                });
+                if let Some(binding) = self.npc_bindings.get(&npc.type_id) {
+                    binding.apply(npc);
+                    if let Some(sequence) = binding.spawn_animation {
+                        self.events.push(WorldEvent::NpcCombatAnimation {
+                            actor: entry.id,
+                            sequence,
+                        });
+                    }
+                }
+            }
+            _ => (),
+        }
+        true
+    }
+}

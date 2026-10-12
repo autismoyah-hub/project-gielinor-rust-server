@@ -1,0 +1,18 @@
+[package]
+name="num-traits"
+version="0.2.19"
+edition="2021"
+build="build.rs"
+[lib]
+path="src/lib.rs"
+[features]
+default = ["std"]
+std = []
+i128 = []
+libm = []
+[build-dependencies.autocfg]
+path = "../autocfg-1.4.0"
+
+[lints.rust]
+unexpected_cfgs="allow"
+deprecated="allow"
