@@ -1,7 +1,7 @@
 use crate::sqlite::{Database, Error, Value};
 use gielinor_world::{inventory::Item, CoordGrid};
 use std::collections::BTreeMap;
-const MIGRATIONS: [&str; 8] = [
+const MIGRATIONS: [&str; 9] = [
     include_str!("../migrations/V1__init.sql"),
     include_str!("../migrations/V2__add_run_energy_to_characters.sql"),
     include_str!("../migrations/V3__add_realm_config_columns.sql"),
@@ -10,6 +10,7 @@ const MIGRATIONS: [&str; 8] = [
     include_str!("../migrations/V6__replace_accounts_mod_group_column.sql"),
     include_str!("../migrations/V7__tutorial_island_spawn.sql"),
     include_str!("../migrations/V8__dev_realm_tutorial_spawn.sql"),
+    include_str!("../migrations/V9__tower_arrival.sql"),
 ];
 fn int(v: i64) -> Value {
     Value::Integer(v)
@@ -53,6 +54,7 @@ fn i32_value(v: &Value) -> Result<i32, Error> {
 }
 
 pub struct Account {
+    pub tower_arrival: gielinor_world::tower_arrival::State,
     pub account_id: i64,
     pub character_id: i64,
     pub realm: i32,
@@ -85,6 +87,7 @@ pub struct Stat {
 }
 #[derive(Clone, Debug)]
 pub struct Save {
+    pub tower_arrival: gielinor_world::tower_arrival::State,
     pub account_id: i64,
     pub character_id: i64,
     pub display_name: Option<String>,
@@ -132,7 +135,7 @@ impl Accounts {
             let applied = db.query(
                 "SELECT version FROM _rust_migrations ORDER BY version",
                 &[],
-                8,
+                MIGRATIONS.len(),
             )?;
             for (i, row) in applied.iter().enumerate() {
                 if integer(&row[0])? != i as i64 + 1 {
@@ -197,7 +200,22 @@ impl Accounts {
             let slot=usize::try_from(integer(&row[1])?).map_err(|_|Error::from("Negative inventory slot".to_string()))?;if slot>=65536{return Err(Error::from("Persisted inventory slot exceeds limit".to_string()))}
             inventories.entry(i32_value(&row[0])?).or_default().insert(slot,Item{id:i32_value(&row[2])?,count:i32_value(&row[3])?,vars:i32_value(&row[4])?});
         }
+        let tower = self.db.query(
+            "SELECT kit_given,staff_taken,diary_progress FROM tower_arrival WHERE character_id=?",
+            &[int(character_id)],
+            1,
+        )?;
+        let tower_arrival = if let Some(row) = tower.first() {
+            gielinor_world::tower_arrival::State {
+                kit_given: integer(&row[0])? != 0,
+                staff_taken: integer(&row[1])? != 0,
+                diary_progress: integer(&row[2])? != 0,
+            }
+        } else {
+            Default::default()
+        };
         Ok(Some(Account {
+            tower_arrival,
             account_id: integer(&r[0])?,
             character_id,
             realm,
@@ -236,6 +254,7 @@ impl Accounts {
             if db.query("SELECT id FROM characters WHERE id=? AND account_id=?",&[int(s.character_id),int(s.account_id)],1)?.is_empty(){return Err(Error::from("Character/account mismatch".to_string()))}
             db.execute("UPDATE characters SET x=?,z=?,level=?,varps=?,last_login=?,run_energy=?,xp_rate_in_hundreds=?,last_logout=CURRENT_TIMESTAMP WHERE id=?",&[int(s.coords.x() as i64),int(s.coords.z() as i64),int(s.coords.level() as i64),text(&s.persistent_varps_json),optional(&s.last_login),int(s.run_energy as i64),int(s.xp_rate_hundreds as i64),int(s.character_id)])?;
             db.execute("UPDATE accounts SET display_name=?,known_device=?,modlevel=? WHERE id=?",&[optional(&s.display_name),s.known_device.map_or(Value::Null,int),optional(&s.modlevel),int(s.account_id)])?;
+            db.execute("INSERT INTO tower_arrival(character_id,kit_given,staff_taken,diary_progress) VALUES(?,?,?,?) ON CONFLICT(character_id) DO UPDATE SET kit_given=excluded.kit_given,staff_taken=excluded.staff_taken,diary_progress=excluded.diary_progress", &[int(s.character_id),int(s.tower_arrival.kit_given as i64),int(s.tower_arrival.staff_taken as i64),int(s.tower_arrival.diary_progress as i64)])?;
             for (id,stat) in &s.stats {if !(0..=2_000_000_000).contains(&stat.fine_xp){return Err(Error::from("Invalid fine XP".to_string()))}db.execute("INSERT INTO stats(character_id,stat_id,vis_level,base_level,fine_xp) VALUES(?,?,?,?,?) ON CONFLICT(character_id,stat_id) DO UPDATE SET vis_level=excluded.vis_level,base_level=excluded.base_level,fine_xp=excluded.fine_xp,updated_at=CASE WHEN stats.fine_xp!=excluded.fine_xp THEN CURRENT_TIMESTAMP ELSE stats.updated_at END",&[int(s.character_id),int(*id as i64),int(stat.visible as i64),int(stat.base as i64),int(stat.fine_xp as i64)])?;}
             db.execute("DELETE FROM inventories WHERE character_id=?",&[int(s.character_id)])?;
             for (kind,items) in &s.inventories {if items.is_empty(){continue}db.execute("INSERT INTO inventories(character_id,inv_type) VALUES(?,?)",&[int(s.character_id),int(*kind as i64)])?;let inv=db.last_insert_id();for (slot,item) in items {if *slot>=65536||item.id<0||item.count<1{return Err(Error::from("Invalid inventory item".to_string()))}db.execute("INSERT INTO inventory_objs VALUES(?,?,?,?,?)",&[int(inv),int(*slot as i64),int(item.id as i64),int(item.count as i64),int(item.vars as i64)])?;}}
@@ -253,6 +272,11 @@ mod tests {
         a.initialize().unwrap();
         let (account_id, character_id) = a.create("Parity_Actor", "fixture-hash-only", 1).unwrap();
         let mut s = Save {
+            tower_arrival: gielinor_world::tower_arrival::State {
+                kit_given: true,
+                staff_taken: false,
+                diary_progress: true,
+            },
             account_id,
             character_id,
             display_name: Some("Parity Actor".into()),
@@ -288,9 +312,11 @@ mod tests {
         assert_eq!(loaded.coords, s.coords);
         assert_eq!(loaded.inventories, s.inventories);
         assert_eq!(loaded.stats, s.stats);
+        assert_eq!(loaded.tower_arrival, s.tower_arrival);
         assert_eq!(loaded.run_energy, 1234);
         assert!(loaded.last_logout.is_some());
         s.run_energy = 999;
+        s.tower_arrival.kit_given = false;
         s.inventories.get_mut(&93).unwrap().insert(
             1,
             Item {
@@ -301,5 +327,29 @@ mod tests {
         );
         assert!(a.save(&s).is_err());
         assert_eq!(a.load("parity_actor", 1).unwrap().unwrap().run_energy, 1234);
+        assert!(
+            a.load("parity_actor", 1)
+                .unwrap()
+                .unwrap()
+                .tower_arrival
+                .kit_given
+        );
+    }
+
+    #[test]
+    fn owned_version_eight_upgrades_without_resetting_character_state() {
+        let mut a = Accounts::from_database(Database::memory().unwrap());
+        a.initialize().unwrap();
+        let (_, id) = a.create("Before_Tower", "fixture-hash-only", 1).unwrap();
+        a.db.execute("UPDATE characters SET x=3224,z=3218,level=0,run_energy=4321 WHERE id=?", &[int(id)]).unwrap();
+        // Reconstruct the preceding owned schema entirely in this memory database.
+        a.db.execute("DROP TABLE tower_arrival", &[]).unwrap();
+        a.db.execute("DELETE FROM _rust_migrations WHERE version=9", &[]).unwrap();
+        a.initialize().unwrap();
+        let loaded = a.load("before_tower", 1).unwrap().unwrap();
+        assert_eq!(loaded.coords, CoordGrid::new(3224,3218,0).unwrap());
+        assert_eq!(loaded.run_energy,4321);
+        assert_eq!(loaded.tower_arrival,Default::default());
+        a.initialize().unwrap();
     }
 }

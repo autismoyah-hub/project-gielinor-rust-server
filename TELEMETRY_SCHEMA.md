@@ -1,5 +1,13 @@
 # Gameplay telemetry contract v1
 
+Resumed development adds `persistence.completion` (observed new offline logout
+save or unavailable), `action.target` (NPC definition), `client.continue`
+(handled flag and emitted opcodes), and `dialogue.response` (observed text).
+Comparison now requires completed logout observations on both sides; historical
+reports without them are retained but cannot establish current persistence
+parity. Response text remains unnormalized: GenericPerson has random branches,
+so a different response requires attribution and is not automatically a defect.
+
 Implementation: `scripts/integration_telemetry.py`; tests: `scripts/test_integration_telemetry.py`. This shared contract currently has an offline evidence adapter for both environments. It is not comprehensive live server instrumentation.
 
 Each line is one JSON object with exactly these envelope keys:
@@ -18,10 +26,14 @@ Example records (illustrative, not claimed test evidence):
 
 - `context`: baseline, client hash, server hash when recorded, fixture/cache, input mode and revision.
 - `state.initial`, `state.persisted`: SQLite checkpoint position/plane, varps, energy, XP rate, all stats with visible/base levels and fine XP, inventories with container/slot/item/count/vars. Equipment and bank are preserved as their actual container types. Account credentials and session metadata are excluded.
+- `tower.initial`, `tower.persisted`: narrow arrival projection (`kit_given`, `staff_taken`, `diary_progress`) from Kotlin's disposable-account sidecars or Rust's character-owned table. Absent rows in an owned pre-V9 Rust fixture use the migration default; this is not evidence that an older executable implements the hooks. Full diary counts, restoration effects and crash timing are outside this projection. Existing runs without these files retain their original coverage.
 - `player.position`: known position log format with a real tick if provided. Coverage is partial; other prose formats are not silently interpreted.
-- `client.dispatch`: component/child and attempt observation. Server acceptance stays null.
+- `client.dispatch`: component/child, operation when logged, and outgoing opcode list when the owned driver observes it. `packet_queued` means a native packet was enqueued; older logs retain `attempt_logged` and null opcode coverage. Server acceptance stays null.
 - `action.effect`: recognized walk, equip/remove and banking confirmation markers. These are **client-observed effects**, not server decision records. Action parameters are included only when logged.
+- Arrival effects use `tower.first_arrival` with observed destination and `tower.first_kit_clear` with containers 93/94. An absent client container is not accepted as an empty container by the scenario driver.
+- `inventory.restore` requires the full native assertion: sword1277 in worn container94 slot3,1000 coins,two lobsters and appearance equipment value3325. This is appearance-update state, not rendered-pixel verification. A partial log prefix does not create restore coverage.
 - `interface.hidden`: logged widget visibility evidence, not all interface transitions.
+- `prayer.dispatch` and `prayer.continue`: native outgoing opcode observations with null server acceptance. `prayer.client_state` records the observed4104 bit, which may be predicted by client scripts. `prayer.requirement_notice` and `prayer.notice_closed` are separate `action.effect` observations. The strict comparison includes all three prayer event kinds and preserves notice text; this does not establish server acceptance of activation or rendered appearance.
 - `packet`: incoming game opcode, payload length, ordinal and direction from the bounded R239CAP1 capture. Full payloads, handshakes and session keys are not exported. Outgoing opcode/dispatch coverage remains incomplete.
 - `session.end`: actual client/server exit codes, forced flag and server-exited observation, with the recorded shutdown timestamp.
 - Contract kinds `npc.state`, `object.state`, and `server.decision` are comparable but **not yet emitted by this adapter**. NPC/object transitions, full dialogue transitions, per-action server rejection reasons, complete widget updates and error detail remain coverage gaps. Raw logs and separate Tower scene assertions remain supporting evidence. No absent observation is treated as successful acceptance.

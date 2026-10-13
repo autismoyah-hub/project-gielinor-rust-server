@@ -30,12 +30,18 @@ impl Names {
             "content",
             "font",
             "timer",
+            "midi",
+            "dbtable",
         ] {
             groups.insert(kind, symbols::load(directories, kind, None)?);
         }
         groups.insert(
             "component",
             symbols::load(directories, "component", Some(&groups["interface"]))?,
+        );
+        groups.insert(
+            "dbcol",
+            symbols::load(directories, "dbcol", Some(&groups["dbtable"]))?,
         );
         Ok(Self(groups))
     }
@@ -80,10 +86,51 @@ pub fn configure<B: AccountBackend>(
     names: &Names,
 ) -> io::Result<()> {
     let n = |kind| names.group(kind);
+    runtime.world.music = Some(crate::music::resolve(cache, names, &runtime.definitions)?);
+    runtime.music_component = Some(names.id("component", "music:now_playing_text")?);
     let tables = cache.enums()?;
     let parameters = cache.parameters()?;
     let stat = |name| u8::try_from(names.id("stat", name)?).map_err(io::Error::other);
     runtime.world.prayer = Some(crate::prayer::resolve(names, &runtime.definitions)?);
+    let varp = |name| -> io::Result<gielinor_world::variables::Varp> {
+        runtime
+            .definitions
+            .varps
+            .get(&names.id("varp", name)?)
+            .copied()
+            .ok_or_else(|| io::Error::other(format!("Missing session varp {name}")))
+    };
+    let binding = |name| -> io::Result<gielinor_world::bank_actions::Binding> {
+        let bit = *runtime
+            .definitions
+            .varbits
+            .get(&names.id("varbit", name)?)
+            .ok_or_else(|| io::Error::other(format!("Missing session varbit {name}")))?;
+        let base = *runtime
+            .definitions
+            .varps
+            .get(&(bit.base as u32))
+            .ok_or_else(|| io::Error::other(format!("Missing base for session varbit {name}")))?;
+        bit.extract(0)
+            .map_err(|e| io::Error::other(format!("{e:?}")))?;
+        Ok(gielinor_world::bank_actions::Binding { base, bit })
+    };
+    runtime.world.login_resets = Some(gielinor_world::login_resets::Config {
+        quick_prayer: binding("quickprayer_active")?,
+        canoe_station: binding("canoe_startfrom")?,
+        canoe_type: binding("canoe_type")?,
+        canoe_avoid_interface: binding("canoe_avoid_if")?,
+    });
+    runtime.world.session_vars = Some(gielinor_world::session_vars::Config {
+        clock_timer: names.short("timer", "map_clock")?,
+        special_timer: names.short("timer", "spec_regen")?,
+        milliseconds: binding("date_milliseconds_past_minute")?,
+        seconds: binding("date_seconds_past_minute")?,
+        map_clock: varp("map_clock")?,
+        playtime: varp("playtime")?,
+        energy: varp("sa_energy")?,
+        new_account: binding("new_player_account")?,
+    });
     runtime.world.regeneration = Some(gielinor_world::player_regen::Config {
         skills: runtime
             .definitions
@@ -94,12 +141,22 @@ pub fn configure<B: AccountBackend>(
             .map_err(io::Error::other)?,
         hitpoints: stat("hitpoints")?,
         prayer: stat("prayer")?,
-        bracelet: names.id("obj", "regen_bracelet")? as i32,
+        // BaseObjs.regen_bracelet is a Kotlin property alias, not a cache symbol.
+        bracelet: names.id("obj", "jewl_bracelet_regen")? as i32,
         drained_timer: names.short("timer", "stat_regen")?,
         boosted_timer: names.short("timer", "stat_boost_restore")?,
         health_timer: names.short("timer", "health_regen")?,
         rapid_timer: names.short("timer", "rapidrestore_regen")?,
     });
+    let prayers = crate::prayer_book::resolve(names, &runtime.definitions, &parameters, &tables)?;
+    runtime.world.prayer_book = Some(gielinor_world::prayer_runtime::Config {
+        book: prayers.book,
+        drain: prayers.drain,
+        regeneration: runtime.world.regeneration.as_ref().unwrap().clone(),
+        drain_timer: names.short("timer", "prayer_drain")?,
+        depletion_sound: prayers.depletion_sound,
+    });
+    runtime.message_box = Some(crate::message_box::Presentation::resolve(names)?);
     runtime.floor_progression = Some(gielinor_world::floor_progression::Policy {
         attack: stat("attack")?,
         defence: stat("defence")?,

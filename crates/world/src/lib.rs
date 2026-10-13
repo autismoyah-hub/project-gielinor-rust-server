@@ -1,6 +1,7 @@
 //! Pure world primitives ported from the pinned Kotlin reference.
 //! No network, persistence, clock, or global random state is used here.
 pub mod areas;
+pub mod tower_arrival;
 pub mod attack_profile;
 pub mod autocast;
 pub mod autocast_attack;
@@ -191,3 +192,10 @@ pub mod player_timers;
 pub mod player_regen;
 pub mod prayer_runtime;
 pub mod region_rotation;
+pub mod disconnect;
+pub mod session_vars;
+pub mod area_tracking;
+pub mod music;
+pub mod music_playlist;
+pub mod music_player;
+pub mod login_resets;

@@ -279,6 +279,13 @@ pub fn run() -> io::Result<()> {
     .map_err(fail)?;
     runtime.world = world;
     runtime.constructed = constructed;
+    runtime.world.tower_arrival =
+        runtime
+            .floor_progression
+            .map(|progression| gielinor_world::tower_arrival::Config {
+                origin: tower_origin,
+                progression,
+            });
     if check {
         println!(
             "Implemented content configuration validated. Full gameplay parity remains incomplete."
@@ -367,6 +374,13 @@ pub fn run() -> io::Result<()> {
         }
         let now = Instant::now();
         if now >= next {
+            runtime.world.unix_millis = u64::try_from(
+                SystemTime::now()
+                    .duration_since(UNIX_EPOCH)
+                    .map_err(io::Error::other)?
+                    .as_millis(),
+            )
+            .map_err(io::Error::other)?;
             report(runtime.tick()?);
             completed += 1;
             let elapsed = now.elapsed().as_nanos().min(u64::MAX as u128) as u64;

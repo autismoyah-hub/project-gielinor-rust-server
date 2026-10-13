@@ -4,6 +4,8 @@ pub mod areas;
 pub mod components;
 pub mod container;
 pub mod definitions;
+pub mod db;
+pub mod int_map_order;
 pub mod disk;
 pub mod enums;
 pub mod game;
@@ -18,6 +20,7 @@ pub mod names;
 pub mod npcs;
 pub mod parameters;
 pub mod symbols;
+pub mod music;
 pub mod variables;
 
 use std::io;

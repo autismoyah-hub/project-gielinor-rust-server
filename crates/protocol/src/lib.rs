@@ -22,6 +22,7 @@ pub mod rsa;
 pub mod session;
 pub mod tables;
 pub mod varp;
+pub mod music;
 pub mod world_context;
 pub mod xtea;
 pub mod zone;

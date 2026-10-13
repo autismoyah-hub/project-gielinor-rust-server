@@ -199,6 +199,25 @@ fn enable_retaliation(w: &mut World, target: NpcId) {
     w.npc_mut(target).unwrap().stats[2] = 30;
 }
 struct LandMaximum;
+#[test]
+fn npc_stops_targeting_a_pending_logout_before_the_save_is_ready() {
+    let (mut w, actor, target) = setup();
+    enable_retaliation(&mut w, target);
+    w.npc_mut(target).unwrap().attacking_player = Some(actor);
+    w.delay_player(actor, 10).unwrap();
+    w.request_logout(actor).unwrap();
+    assert!(!w
+        .drain_events()
+        .iter()
+        .any(|e| matches!(e, WorldEvent::Save { .. })));
+    w.tick_with_random(&mut LandMaximum).unwrap();
+    assert!(w.npc(target).unwrap().attacking_player.is_none());
+    assert!(w.data(actor).is_ok());
+    assert!(!w.drain_events().iter().any(|e| matches!(
+        e,
+        WorldEvent::NpcCombatAnimation { .. } | WorldEvent::Save { .. }
+    )));
+}
 impl RandomSource for LandMaximum {
     fn below(&mut self, bound: u32) -> u32 {
         if bound == 10000 {

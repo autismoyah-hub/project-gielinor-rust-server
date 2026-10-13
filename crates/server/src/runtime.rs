@@ -18,6 +18,7 @@ mod dialogue;
 mod drop_dialog;
 mod npc_interaction;
 mod prayer;
+mod prayer_tab;
 
 fn inventory<'a>(
     data: &'a PlayerData,
@@ -186,6 +187,7 @@ struct Active {
     face_npc: Option<gielinor_world::simulation::NpcId>,
     drop_dialog: Option<(u64, gielinor_world::ui::Component)>,
     prayer_dialog: Option<(u64, gielinor_world::ui::Component)>,
+    prayer_notice: Option<crate::message_box::Active>,
     dialogue: Option<crate::dialogue::Active>,
     pending_face: Option<(gielinor_world::CoordGrid, u8, u8)>,
     face_angle: Option<u16>,
@@ -217,11 +219,13 @@ pub struct Runtime<B: AccountBackend> {
     combat_updates: HashMap<gielinor_world::hits::Target, crate::combat_display::Display>,
     drop_presentation: Option<crate::drop_dialog::Presentation>,
     dialogue_presentation: Option<crate::dialogue::Presentation>,
+    pub message_box: Option<crate::message_box::Presentation>,
     zones_enabled: bool,
     ground_updates: Vec<gielinor_world::zones::Change>,
     bank_insert: Option<gielinor_world::bank_actions::Binding>,
     bank_controls: BTreeMap<u32, gielinor_world::bank_actions::Control>,
     bank_presentation: Option<BankPresentation>,
+    pub music_component: Option<u32>,
     npc_bank_parents: Option<(gielinor_world::ui::Component, gielinor_world::ui::Component)>,
     login_presentation: Option<crate::login_init::Presentation>,
     interface_hooks: crate::interface_hooks::Hooks,
@@ -271,10 +275,12 @@ impl<B: AccountBackend> Runtime<B> {
             zones_enabled: false,
             drop_presentation: None,
             dialogue_presentation: None,
+            message_box: None,
             ground_updates: Vec::new(),
             bank_insert: None,
             bank_controls: BTreeMap::new(),
             bank_presentation: None,
+            music_component: None,
             npc_bank_parents: None,
             login_presentation: None,
             floor_progression: None,
@@ -1039,6 +1045,17 @@ impl<B: AccountBackend> Runtime<B> {
                 .cancel_prayer_dialog(actor)
                 .map_err(|e| io::Error::other(format!("{e:?}")))?;
         }
+        if self.message_box.is_some_and(|p| {
+            closed
+                .iter()
+                .any(|(_, interface)| *interface == p.interface)
+        }) {
+            if let Some(notice) = active.prayer_notice.take() {
+                self.world
+                    .close_prayer_notice(actor, notice.token)
+                    .map_err(|e| io::Error::other(format!("{e:?}")))?;
+            }
+        }
         self.world
             .set_modal_open(actor, active.ui.modals.entries().next().is_some())
             .map_err(|e| io::Error::other(format!("{e:?}")))?;
@@ -1157,15 +1174,15 @@ impl<B: AccountBackend> Runtime<B> {
             .active
             .get_mut(&actor)
             .ok_or_else(|| io::Error::other("Invalid session actor"))?;
-        let connection = active
-            .connection
-            .ok_or_else(|| io::Error::other("Disconnected actor"))?;
+        let connection = active.connection;
         let mut ui = active.ui.clone();
         let closed = ui.close_sub(parent);
         for (parent, _) in &closed {
             let packet = gielinor_protocol::interfaces::close_sub(ui.translate(*parent).0);
-            self.transport
-                .send(connection, packet.opcode, &packet.payload)?;
+            if let Some(connection) = connection {
+                self.transport
+                    .send(connection, packet.opcode, &packet.payload)?;
+            }
         }
         active.ui = ui;
         if active.dialogue.as_ref().is_some_and(|dialogue| {
@@ -1198,6 +1215,17 @@ impl<B: AccountBackend> Runtime<B> {
                 .cancel_prayer_dialog(actor)
                 .map_err(|e| io::Error::other(format!("{e:?}")))?;
         }
+        if self.message_box.is_some_and(|p| {
+            closed
+                .iter()
+                .any(|(_, interface)| *interface == p.interface)
+        }) {
+            if let Some(notice) = active.prayer_notice.take() {
+                self.world
+                    .close_prayer_notice(actor, notice.token)
+                    .map_err(|e| io::Error::other(format!("{e:?}")))?;
+            }
+        }
         self.world
             .set_modal_open(actor, active.ui.modals.entries().next().is_some())
             .map_err(|e| io::Error::other(format!("{e:?}")))?;
@@ -1211,7 +1239,9 @@ impl<B: AccountBackend> Runtime<B> {
             .map_err(|e| io::Error::other(format!("{e:?}")))?
         {
             active.ui.input_dialog_open = false;
-            self.transport.send(connection, 117, &[])?;
+            if let Some(connection) = connection {
+                self.transport.send(connection, 117, &[])?;
+            }
         }
         if self.bank_presentation.as_ref().is_some_and(|bank| {
             closed
@@ -1220,15 +1250,19 @@ impl<B: AccountBackend> Runtime<B> {
         }) {
             active.bank_events_due = None;
             let stop = active.inventories.stop(self.policy.bank as u16);
-            self.transport
-                .send(connection, stop.opcode, &stop.payload)?;
+            if let Some(connection) = connection {
+                self.transport
+                    .send(connection, stop.opcode, &stop.payload)?;
+            }
             let search = gielinor_protocol::client_script::run(
                 101,
                 &[gielinor_protocol::client_script::Argument::Int(11)],
             )
             .map_err(|e| io::Error::other(format!("{e:?}")))?;
-            self.transport
-                .send(connection, search.opcode, &search.payload)?;
+            if let Some(connection) = connection {
+                self.transport
+                    .send(connection, search.opcode, &search.payload)?;
+            }
             self.world
                 .queue_bank_compression(actor)
                 .map_err(|e| io::Error::other(format!("{e:?}")))?;
@@ -1456,6 +1490,20 @@ impl<B: AccountBackend> Runtime<B> {
         Ok(std::mem::take(&mut self.events))
     }
     pub fn tick(&mut self) -> io::Result<Vec<Event>> {
+        // Input can resume a protected notice before the main pass. Reopening its
+        // parent cancels this queued close, matching Player.openModal/openOverlay.
+        let queued: Vec<_> = self
+            .active
+            .iter_mut()
+            .flat_map(|(&actor, active)| {
+                std::mem::take(&mut active.ui.close_queue)
+                    .into_iter()
+                    .map(move |parent| (actor, parent))
+            })
+            .collect();
+        for (actor, parent) in queued {
+            self.close_interface(actor, parent)?;
+        }
         // Content mutations between ticks must affect this tick's energy drain.
         // Gameplay handlers that mutate inventories during world processing must
         // refresh this same authoritative weight before the run-update phase.
@@ -1546,6 +1594,10 @@ impl<B: AccountBackend> Runtime<B> {
             self.transport.disconnect(connection);
             self.disconnected(connection);
         }
+        // Shutdown bypasses reconnect grace, including already disconnected actors.
+        for &actor in self.active.keys() {
+            let _ = self.world.request_shutdown(actor);
+        }
     }
     fn reject(&mut self, connection: u64, status: u8) {
         let _ = self.transport.reject_login(connection, status);
@@ -1557,7 +1609,7 @@ impl<B: AccountBackend> Runtime<B> {
                 if let Some(active) = self.active.get_mut(&actor) {
                     active.connection = None;
                 }
-                let _ = self.world.request_logout(actor);
+                let _ = self.world.client_disconnected(actor);
             }
             Some(ConnectionState::Queued(..)) => {
                 self.world.cancel_login(connection);
@@ -1764,12 +1816,26 @@ impl<B: AccountBackend> Runtime<B> {
                         }
                         Ok(crate::gameplay::Request::KeepAlive) => (),
                         Ok(crate::gameplay::Request::WindowStatus(status)) => {
+                            self.world
+                                .set_music_resizable(actor, status.mode == 2)
+                                .map_err(|e| io::Error::other(format!("{e:?}")))?;
                             let ui = &mut self.active.get_mut(&actor).unwrap().ui;
                             ui.frame_resizable = status.mode == 2;
                             ui.frame_width = status.width;
                             ui.frame_height = status.height;
                         }
                         Ok(crate::gameplay::Request::ResumePause(pause)) => {
+                            let Some(component) = self.components.get(&pause.component) else {
+                                return Ok(());
+                            };
+                            if !self.active.get_mut(&actor).unwrap().ui.queue_pause_close(
+                                gielinor_world::ui::Component(pause.component),
+                                pause.subcomponent,
+                                component.events,
+                            ) {
+                                return Ok(());
+                            }
+                            self.resume_prayer_notice(actor, pause)?;
                             self.resume_dialogue_pause(actor, pause)?;
                             self.resume_drop_pause(actor, pause)?;
                             self.resume_prayer_pause(actor, pause)?;
@@ -1852,6 +1918,33 @@ impl<B: AccountBackend> Runtime<B> {
                                         route,
                                     });
                                     if route == gielinor_world::ui::ButtonRoute::Overlay {
+                                        let prayer = self
+                                            .world
+                                            .prayer_book
+                                            .as_ref()
+                                            .and_then(|c| c.book.components.get(&button.component))
+                                            .copied();
+                                        if let Some(prayer) = prayer.filter(|_| button.op == 1) {
+                                            let parents: Vec<_> = self.active[&actor]
+                                                .ui
+                                                .modals
+                                                .entries()
+                                                .map(|(p, _)| p)
+                                                .collect();
+                                            for parent in parents {
+                                                self.close_interface(actor, parent)?;
+                                            }
+                                            if let Err(error) =
+                                                self.world.select_prayer(actor, prayer)
+                                            {
+                                                self.events.push(Event::PacketRejected {
+                                                    connection,
+                                                    actor,
+                                                    opcode: packet.opcode,
+                                                    reason: format!("{error:?}"),
+                                                });
+                                            }
+                                        }
                                         self.autocast_button(actor, button)?;
                                         if let Some(stance) =
                                             self.combat_buttons.get(&button.component).copied()
@@ -2301,7 +2394,7 @@ impl<B: AccountBackend> Runtime<B> {
                     return Ok(());
                 };
                 let resized = *resized;
-                let (character, data) = match result.and_then(|auth| {
+                let (character, mut data) = match result.and_then(|auth| {
                     Character::load(auth, &self.definitions, &self.policy, now.into())
                 }) {
                     Ok(value) => value,
@@ -2310,6 +2403,17 @@ impl<B: AccountBackend> Runtime<B> {
                         return Ok(());
                     }
                 };
+                // AccountLoadResponseHook derives this temporary bit from the
+                // authenticated load response before any PlayerLogin scripts.
+                if let Some(config) = &self.world.session_vars {
+                    if config
+                        .prepare_account(&mut data.variables, character.new_account)
+                        .is_err()
+                    {
+                        self.reject(connection, 13);
+                        return Ok(());
+                    }
+                }
                 if self.presentation.as_ref().is_some_and(|p| {
                     p.appearance(
                         &crate::appearance::Design::default(),
@@ -2357,10 +2461,49 @@ impl<B: AccountBackend> Runtime<B> {
     fn world_events(&mut self) -> io::Result<()> {
         for event in self.world.drain_events() {
             match event {
+                WorldEvent::TowerArrival {
+                    actor,
+                    arrival,
+                    hitpoints_message,
+                } => {
+                    if let Some(connection) = self.connection(actor) {
+                        let first = if arrival.first {
+                            "The Threshold. Read the plaque. Wings are around you."
+                        } else {
+                            "You wake at the Threshold door."
+                        };
+                        let messages = std::iter::once(first).chain(hitpoints_message)
+                            .chain(arrival.fists_message.then_some("You arrive with nothing but your fists. The diary grants the next tool."));
+                        for message in messages {
+                            let packet = gielinor_protocol::chat::game(0, None, message)
+                                .map_err(|e| io::Error::other(format!("{e:?}")))?;
+                            self.transport
+                                .send(connection, packet.opcode, &packet.payload)?;
+                        }
+                    }
+                    self.events.push(Event::World(WorldEvent::TowerArrival {
+                        actor,
+                        arrival,
+                        hitpoints_message,
+                    }));
+                }
                 WorldEvent::Prayer { actor, event } => {
                     self.prayer_event(actor, &event)?;
                     self.events
                         .push(Event::World(WorldEvent::Prayer { actor, event }));
+                }
+                WorldEvent::PrayerBook { actor, event } => {
+                    self.prayer_tab_event(actor, &event)?;
+                    self.events
+                        .push(Event::World(WorldEvent::PrayerBook { actor, event }));
+                }
+                WorldEvent::PrayerNotice { actor, token, text } => {
+                    self.prayer_notice(actor, token, &text)?;
+                    self.events.push(Event::World(WorldEvent::PrayerNotice {
+                        actor,
+                        token,
+                        text,
+                    }));
                 }
                 WorldEvent::Stat { actor, update } => {
                     if update.notify {
@@ -2381,9 +2524,34 @@ impl<B: AccountBackend> Runtime<B> {
                     };
                     character.identity.slot = actor.slot;
                     self.world
+                        .set_music_resizable(actor, resized)
+                        .map_err(|e| io::Error::other(format!("{e:?}")))?;
+                    self.world
                         .set_observer_id(actor, character.character_id)
                         .map_err(|e| io::Error::other(format!("{e:?}")))?;
                     let new_account = character.new_account;
+                    // BankInvScript assigns the default on PlayerLogin, even
+                    // when the player never opens a bank during this session.
+                    if let (Some(bank), Some(config), Some(_)) = (
+                        &self.bank_presentation,
+                        &self.world.banking,
+                        &self.login_presentation,
+                    ) {
+                        let capacity = config.capacity;
+                        let data = self
+                            .world
+                            .data_mut(actor)
+                            .map_err(|e| io::Error::other(format!("{e:?}")))?;
+                        if capacity
+                            .get(&data.variables)
+                            .map_err(|e| io::Error::other(format!("{e:?}")))?
+                            == 0
+                        {
+                            data.variables
+                                .set_bit(capacity.base, capacity.bit, bank.default_capacity, false)
+                                .map_err(|e| io::Error::other(format!("{e:?}")))?;
+                        }
+                    }
                     let login_messages = if let Some(policy) = self.floor_progression {
                         let data = self
                             .world
@@ -2404,6 +2572,7 @@ impl<B: AccountBackend> Runtime<B> {
                             bank_events_due: None,
                             drop_dialog: None,
                             prayer_dialog: None,
+                            prayer_notice: None,
                             dialogue: None,
                             sequence: None,
                             pending_face: None,
@@ -2448,6 +2617,28 @@ impl<B: AccountBackend> Runtime<B> {
                 }
                 WorldEvent::LoginRejected { connection, reason } => {
                     self.reject(connection, admission_status(reason))
+                }
+                WorldEvent::CloseModals { actor } => {
+                    let parents = self
+                        .active
+                        .get(&actor)
+                        .map(|active| {
+                            active
+                                .ui
+                                .modals
+                                .entries()
+                                .map(|(parent, _)| parent)
+                                .collect::<Vec<_>>()
+                        })
+                        .unwrap_or_default();
+                    for parent in parents {
+                        self.close_interface(actor, parent)?;
+                    }
+                    self.world
+                        .logout_modals_closed(actor)
+                        .map_err(|e| io::Error::other(format!("{e:?}")))?;
+                    self.events
+                        .push(Event::World(WorldEvent::CloseModals { actor }));
                 }
                 WorldEvent::Save { actor, data } => self.queue_save(actor, data)?,
                 WorldEvent::WornEffects { actor, result } => {
@@ -2551,6 +2742,34 @@ impl<B: AccountBackend> Runtime<B> {
                         sequence,
                         sound,
                     }));
+                }
+                WorldEvent::SessionVariables { actor, updates } => {
+                    if let Some(connection) = self.active.get(&actor).and_then(|a| a.connection) {
+                        for update in &updates {
+                            let packet = gielinor_protocol::varp::update(update.id, update.value);
+                            self.transport
+                                .send(connection, packet.opcode, &packet.payload)?;
+                        }
+                    }
+                    self.events.push(Event::World(WorldEvent::SessionVariables {
+                        actor,
+                        updates,
+                    }));
+                }
+                WorldEvent::Music { actor, events } => {
+                    if let (Some(component), Some(connection)) = (
+                        self.music_component,
+                        self.active.get(&actor).and_then(|a| a.connection),
+                    ) {
+                        for packet in crate::music::packets(&events, component)
+                            .map_err(|e| io::Error::other(format!("Music packet: {e:?}")))?
+                        {
+                            self.transport
+                                .send(connection, packet.opcode, &packet.payload)?;
+                        }
+                    }
+                    self.events
+                        .push(Event::World(WorldEvent::Music { actor, events }));
                 }
                 WorldEvent::CombatVariables { actor, updates } => {
                     if let Some(connection) = self.active.get(&actor).and_then(|a| a.connection) {

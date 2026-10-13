@@ -77,6 +77,7 @@ impl World {
         };
         let coords = p.movement.coords;
         if p.saving
+            || p.pending_logout
             || p.movement.hidden
             || p.data.stats.current(3) as u8 == 0
             || coords.level() != npc.movement.coords.level()

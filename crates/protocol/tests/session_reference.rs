@@ -99,7 +99,7 @@ fn fragmented_login_authentication_and_pipelined_game_packet() {
 #[test]
 fn seed_replay_and_wrong_cache_are_rejected_before_authentication() {
     let (key, wire, crc) = fixture();
-    for (seed, crcs, status) in [(1, crc, 10), (0x1020304050607080, [0; 23], 68)] {
+    for (seed, crcs, status) in [(1, crc, 22), (0x1020304050607080, [0; 23], 68)] {
         let mut session = Session::new(seed, crcs);
         let events = session.receive(&wire, &key).unwrap();
         assert!(events
@@ -116,14 +116,23 @@ fn login_success_length_includes_first_game_header_and_preserves_cipher_position
     for token in [None, Some(0x12345678u32)] {
         let mut session = Session::new(0x1020304050607080, crc);
         session.receive(&wire, &key).unwrap();
-        let mut bytes = session.accept(Accepted {
-            slot: 1, staff_level: 0, player_mod: false, member: false,
-            account_hash: 1, user_id: 2, user_hash: 3, authenticator_code: token,
-        }).unwrap();
+        let mut bytes = session
+            .accept(Accepted {
+                slot: 1,
+                staff_level: 0,
+                player_mod: false,
+                member: false,
+                account_hash: 1,
+                user_id: 2,
+                user_hash: 3,
+                authenticator_code: token,
+            })
+            .unwrap();
         let mut cipher = Isaac::new(&[0x80000032, 289, 51, 49]).unwrap();
         if let Some(token) = token {
             assert_eq!(bytes[2], 1);
-            let decoded = std::array::from_fn(|i| bytes[3+i].wrapping_sub(cipher.next_u32() as u8));
+            let decoded =
+                std::array::from_fn(|i| bytes[3 + i].wrapping_sub(cipher.next_u32() as u8));
             assert_eq!(u32::from_be_bytes(decoded), token);
         }
         let rebuild = vec![0; 4608];
@@ -132,7 +141,10 @@ fn login_success_length_includes_first_game_header_and_preserves_cipher_position
         // consumes account fields; the first game header belongs to the framer.
         assert_eq!(bytes[1] as usize, 34 + 3);
         assert_eq!(bytes[36].wrapping_sub(cipher.next_u32() as u8), 49);
-        assert_eq!(u16::from_be_bytes([bytes[37],bytes[38]]) as usize, rebuild.len());
+        assert_eq!(
+            u16::from_be_bytes([bytes[37], bytes[38]]) as usize,
+            rebuild.len()
+        );
         assert_eq!(&bytes[39..], rebuild);
     }
 }

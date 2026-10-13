@@ -20,12 +20,30 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let start = Instant::now();
     let mut interface_tick = Instant::now();
     let mut target = None;
+    let mut approach_sent = false;
+    let mut approach_confirmed = false;
     let mut greeting = None;
     let mut ui_continue = false;
     let mut reply = false;
-    while start.elapsed() < Duration::from_secs(90) {
+    let mut progress = Instant::now();
+    while start.elapsed() < Duration::from_secs(120) {
+        // Connection.poll consumes packets before draining scripts. If this poll
+        // began with scripts, leave the drained queue empty for the next poll;
+        // refilling timer listeners immediately can starve packet dispatch.
+        let packets_ready = !live.scripts_busy() && client.interfaces.scripts.is_empty();
         live.poll(&mut client)?;
-        if interface_tick.elapsed() >= Duration::from_millis(20) {
+        if progress.elapsed() >= Duration::from_secs(15) {
+            println!("Scenario progress: title={:?}, packets={}, queued_scripts={}, world={}",live.title.as_ref().map(|title| title.screen),live.packets,client.interfaces.scripts.len(),live.world.is_some());
+            let mut people = client.npc_state.npcs.iter()
+                .filter(|(_,npc)| (3106..=3108).contains(&npc.id))
+                .map(|(slot,npc)| (*slot,npc.id,npc.position)).collect::<Vec<_>>();
+            people.sort();
+            println!("Dialogue visibility: position={:?}; people={people:?}",client.data.position);
+            progress = Instant::now();
+        }
+        // Pre-login interface listeners can queue scripts which block deferred
+        // ServerSeed processing; scripts drain only after session establishment.
+        if packets_ready && live.title.is_none() && interface_tick.elapsed() >= Duration::from_millis(20) {
             if !live.scripts_busy() && client.interfaces.scripts.is_empty() {
                 if let Err(error) = client.tick_interfaces(false) {
                     live.report(error.to_string());
@@ -42,15 +60,27 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             std::thread::sleep(Duration::from_millis(5));
             continue;
         }
-        if target.is_none() && live.world.is_some() && start.elapsed() > Duration::from_secs(10) {
+        if !approach_sent && live.world.is_some() && start.elapsed() > Duration::from_secs(10) {
+            client.outbound.push_back(world_action::walk(3230, 3218, 0)?);
+            approach_sent = true;
+            println!("Dialogue approach walk submitted: [3230, 3218]");
+        }
+        if approach_sent && !approach_confirmed && client.data.position == [0,3230,3218] {
+            approach_confirmed = true;
+            println!("Server confirmed dialogue approach: [3230, 3218]");
+        }
+        if target.is_none() && approach_confirmed {
             let p = client.data.position;
             if let Some((&index, npc)) = client
                 .npc_state
                 .npcs
                 .iter()
-                .filter(|(_, npc)| [3106, 3107, 3108].contains(&npc.id))
-                .min_by_key(|(_, npc)| {
-                    (npc.position[0] - p[1]).abs() + (npc.position[1] - p[2]).abs()
+                // man2 spawns east at 3235,3219 (wander radius five). Stay
+                // east of the recovery pad so this dialogue case cannot silently
+                // become the separate Tower-arrival scenario while approaching.
+                .filter(|(_, npc)| npc.id == 3107 && npc.position[0] >= 3229)
+                .min_by_key(|(index, npc)| {
+                    ((npc.position[0] - p[1]).abs() + (npc.position[1] - p[2]).abs(), npc.position, **index)
                 })
             {
                 println!(
@@ -126,7 +156,22 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 });
             let before = client.outbound.len();
             let handled = if let Some(point) = point {
-                client.primary_interface_action(point)?
+                // Match viewport.rs's ordinary pointer/menu path. The old IF3
+                // operation-only helper does not dispatch legacy Continue.
+                let entries = client.interface_menu(point)?;
+                println!("Native Continue menu options: {:?}", entries.iter().map(|entry| entry.option.as_str()).collect::<Vec<_>>());
+                if client.default_menu_opens(&entries) {
+                    return Err("Continue requires an open context menu; no direct fallback".into());
+                }
+                if client.begin_widget_drag(point, &entries)? {
+                    return Err("Continue unexpectedly started widget drag".into());
+                }
+                if let Some(entry) = entries.last() {
+                    client.menu_action(entry.action)?;
+                    true
+                } else {
+                    false
+                }
             } else {
                 println!("UI_FINDING: Continue has no visible layout; server/client attribution pending matched reference run");
                 false

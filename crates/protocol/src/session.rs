@@ -117,6 +117,29 @@ impl Session {
                 }
                 State::Handshake => return Err(Error::UnsupportedService(packet.opcode)),
                 State::Login if packet.opcode == 18 => {
+                    if packet
+                        .payload
+                        .get(..4)
+                        .is_some_and(|v| v != 239u32.to_be_bytes())
+                    {
+                        events.extend(self.reject(6));
+                        break;
+                    }
+                    let decoded = match login::decode_reconnect(&packet.payload, key) {
+                        Ok(decoded) => decoded,
+                        Err(_) => {
+                            // RSProt reconnect completion maps decoder failures
+                            // to LoginFail2 (67), before invoking game content.
+                            events.extend(self.reject(67));
+                            break;
+                        }
+                    };
+                    if decoded.server_seed != self.server_seed {
+                        events.extend(self.reject(22));
+                        break;
+                    }
+                    // Kotlin's unfinished onReconnect returns ConnectFail (50).
+                    // It does not validate cache CRCs or restore an actor yet.
                     events.extend(self.reject(50));
                     break;
                 }
@@ -137,7 +160,7 @@ impl Session {
                         }
                     };
                     if decoded.server_seed != self.server_seed {
-                        events.extend(self.reject(10));
+                        events.extend(self.reject(22));
                         break;
                     }
                     if decoded.cache_crcs != self.cache_crcs {

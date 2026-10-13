@@ -34,11 +34,17 @@ impl TickDecoder {
     fn feed(&mut self, bytes: &[u8]) -> Result<(), gielinor_protocol::framing::FrameError> {
         self.inner.feed(bytes)
     }
-    fn next_packet(&mut self) -> Result<Option<gielinor_protocol::framing::Packet>, gielinor_protocol::framing::FrameError> {
+    fn next_packet(
+        &mut self,
+    ) -> Result<Option<gielinor_protocol::framing::Packet>, gielinor_protocol::framing::FrameError>
+    {
         while let Some(packet) = self.inner.next_packet()? {
             if packet.opcode == 83 {
                 assert!(packet.payload.is_empty());
-                assert!(self.player_info, "Duplicate or premature server tick delimiter");
+                assert!(
+                    self.player_info,
+                    "Duplicate or premature server tick delimiter"
+                );
                 self.player_info = false;
                 self.tick_ends += 1;
                 continue;
@@ -321,6 +327,8 @@ fn exercise_lifecycle(with_login: bool) {
         (152 << 16, component(0)),
         (153 << 16, component(0)),
         (154 << 16, component(0)),
+        (600 << 16, component(2)),
+        ((229 << 16) | 4, component(1)),
     ]);
     components.extend(
         bank_control_symbols
@@ -344,6 +352,24 @@ fn exercise_lifecycle(with_login: bool) {
         components.insert((155 << 16) | child, component(2));
     }
     runtime.configure_interfaces(components).unwrap();
+    runtime
+        .configure_dialogue(
+            gielinor_server::dialogue::Presentation {
+                parent: gielinor_world::ui::Component::new(548, 23),
+                unclamp: 2000,
+                player: 217,
+                npc: 231,
+                choice: 219,
+                animations: [[0; 4]; 4],
+                font: gielinor_world::dialogue_text::Font {
+                    advances: [6; 256],
+                    kerning: vec![],
+                },
+            },
+            -999,
+            -1,
+        )
+        .unwrap();
     {
         use gielinor_world::{
             bank_actions::Binding,
@@ -414,6 +440,7 @@ fn exercise_lifecycle(with_login: bool) {
                     chatbox: binding(104, 0, 0),
                     roofs: binding(104, 1, 1),
                     volumes: std::array::from_fn(|i| runtime.definitions.varps[&(100 + i as u32)]),
+                    music_mode: None,
                     transmit: runtime.definitions.varps.values().copied().collect(),
                 },
                 frames: Frames {
@@ -702,21 +729,36 @@ fn exercise_lifecycle(with_login: bool) {
         })
         .unwrap();
     assert_eq!(runtime.world.data(actor).unwrap().stats.base(3), 10);
+    assert_eq!(
+        runtime
+            .world
+            .banking
+            .as_ref()
+            .unwrap()
+            .capacity
+            .get(&runtime.world.data(actor).unwrap().variables)
+            .unwrap(),
+        if with_login { 28 } else { 0 }
+    );
     let mut accepted = [0; 36];
     read(&mut runtime, &mut client, &mut accepted);
     assert_eq!(&accepted[..2], &[2, 37]);
-    let mut outgoing = TickDecoder { inner: gielinor_protocol::framing::Decoder::new(
-        gielinor_protocol::tables::SERVER,
-        Some(gielinor_protocol::isaac::Isaac::new(&[0x80000032, 289, 51, 49]).unwrap()),
-        gielinor_protocol::framing::OpcodeWidth::Smart,
-        65535,
-        131072,
-    ), tick_ends: 0, player_info: false };
+    let mut outgoing = TickDecoder {
+        inner: gielinor_protocol::framing::Decoder::new(
+            gielinor_protocol::tables::SERVER,
+            Some(gielinor_protocol::isaac::Isaac::new(&[0x80000032, 289, 51, 49]).unwrap()),
+            gielinor_protocol::framing::OpcodeWidth::Smart,
+            65535,
+            131072,
+        ),
+        tick_ends: 0,
+        player_info: false,
+    };
     let mut inventory_ids = vec![];
     let initial_opcodes = if with_login {
         vec![
-            49, 124, 75, 21, 73, 44, 97, 97, 97, 97, 97, 3, 114, 114, 96, 7, 108, 7, 114, 114, 7,
-            108, 7, 114, 114, 114, 114, 114, 6, 6, 6, 6, 6, 114, 46, 31, 64, 92, 43, 22, 22, 47,
+            49, 124, 75, 21, 73, 44, 97, 97, 97, 97, 97, 97, 3, 114, 114, 96, 7, 108, 7, 114, 114,
+            7, 108, 7, 114, 114, 114, 114, 114, 6, 6, 6, 6, 6, 114, 46, 31, 64, 92, 43, 22, 22, 47,
             116, 122, 28, 85, 47,
         ]
     } else {
@@ -1639,7 +1681,12 @@ fn exercise_lifecycle(with_login: bool) {
         runtime.equipment_bonuses(actor).unwrap(),
         gielinor_world::bonuses::Bonuses::default()
     );
-    let mut bank_open_opcodes = vec![97, 97, 7, 7];
+    let mut bank_open_opcodes = if with_login {
+        vec![97, 7, 7]
+    } else {
+        vec![97, 97, 7, 7]
+    };
+    let bonus_start = bank_open_opcodes.len();
     bank_open_opcodes.extend(expected_bonus.iter().map(|packet| packet.opcode));
     bank_open_opcodes.extend([108; 6]);
     for (index, opcode) in bank_open_opcodes.into_iter().enumerate() {
@@ -1652,8 +1699,8 @@ fn exercise_lifecycle(with_login: bool) {
             outgoing.feed(&byte).unwrap();
         };
         assert_eq!(packet.opcode, opcode);
-        if (4..23).contains(&index) {
-            assert_eq!(packet, expected_bonus[index - 4]);
+        if (bonus_start..bonus_start + expected_bonus.len()).contains(&index) {
+            assert_eq!(packet, expected_bonus[index - bonus_start]);
         }
     }
     for deposit in [true, false] {
@@ -2658,6 +2705,7 @@ fn exercise_lifecycle(with_login: bool) {
             );
         }
     }
+    exercise_prayer_tab(&mut runtime, actor, &mut client, &mut cipher, &mut outgoing);
     // A real encrypted NPC option reaches the banker approach handler and opens both panes.
     let coords = runtime.world.data(actor).unwrap().coords;
     let banker = runtime
@@ -2744,11 +2792,14 @@ fn exercise_lifecycle(with_login: bool) {
         std::thread::sleep(Duration::from_millis(1));
     }
     assert!(queues.requests.borrow().is_empty());
-    for _ in 0..2 {
+    for _ in 0..17 {
         runtime.tick().unwrap();
     }
     assert!(runtime.world.data(actor).is_ok());
     assert!(!runtime.is_drained());
+    // Socket loss closes the bank during grace. Its callback schedules
+    // compression before the save snapshot and retained account-worker retry.
+    assert!(queues.requests.borrow().is_empty());
     queues.accept.set(true);
     pump(&mut runtime);
     let Some(Request::Save { token, .. }) = queues.requests.borrow_mut().pop_front() else {
@@ -2793,6 +2844,243 @@ fn exercise_lifecycle(with_login: bool) {
             .x(),
         3203
     );
+}
+fn exercise_prayer_tab(
+    runtime: &mut Runtime<Backend>,
+    actor: gielinor_world::simulation::ActorId,
+    client: &mut TcpStream,
+    cipher: &mut Option<gielinor_protocol::isaac::Isaac>,
+    outgoing: &mut TickDecoder,
+) {
+    use gielinor_world::{
+        bank_actions::Binding,
+        player_regen,
+        prayer_book::{self, Prayer},
+        prayer_drain, prayer_runtime,
+        ui::Component,
+        variables::{Transmit, Varbit, Varp},
+    };
+    let bit = |id, lsb, msb| Binding {
+        base: Varp {
+            id,
+            permanent: false,
+            transmit: Transmit::Always,
+            bit_protect: false,
+            client_code: -1,
+        },
+        bit: Varbit { base: id, lsb, msb },
+    };
+    runtime.world.prayer_book = Some(prayer_runtime::Config {
+        book: prayer_book::Config {
+            prayer_skill: 5,
+            defence_skill: 1,
+            all_active: bit(4000, 0, 0),
+            quick_active: bit(4001, 0, 0),
+            drain_counter: bit(4002, 0, 30),
+            disable_sound: 9,
+            prayers: [(
+                0,
+                Prayer {
+                    id: 0,
+                    name: "Test prayer".into(),
+                    level: 1,
+                    sound: 10,
+                    enabled: bit(4000, 0, 0),
+                    overhead: Some(2),
+                    unlock: None,
+                    unlock_state: 1,
+                    defence: None,
+                    locked_message: None,
+                    regen: None,
+                },
+            )]
+            .into(),
+            collisions: BTreeMap::new(),
+            components: [(600 << 16, 0)].into(),
+        },
+        drain: prayer_drain::Config {
+            enabled: bit(4000, 0, 0),
+            counter: bit(4002, 0, 30),
+            resistance: bit(4003, 0, 30),
+            skill: 5,
+            effects: vec![(0, 1)],
+        },
+        regeneration: player_regen::Config {
+            skills: vec![3, 5],
+            hitpoints: 3,
+            prayer: 5,
+            bracelet: -1,
+            drained_timer: 2,
+            boosted_timer: 3,
+            health_timer: 4,
+            rapid_timer: 5,
+        },
+        drain_timer: 7,
+        depletion_sound: 11,
+    });
+    runtime.message_box = Some(gielinor_server::message_box::Presentation {
+        parent: Component::new(548, 23),
+        interface: 229,
+        text: Component::new(229, 3),
+        button: Component::new(229, 4),
+    });
+    runtime
+        .world
+        .data_mut(actor)
+        .unwrap()
+        .stats
+        .set_current(5, 1);
+    runtime
+        .open_interface(actor, Some(Component::new(548, 22)), 600, true)
+        .unwrap();
+    let send = |client: &mut TcpStream,
+                cipher: &mut Option<gielinor_protocol::isaac::Isaac>,
+                opcode,
+                payload: &[u8]| {
+        let def = *gielinor_protocol::tables::CLIENT
+            .iter()
+            .find(|d| d.opcode == opcode)
+            .unwrap();
+        client
+            .write_all(
+                &gielinor_protocol::framing::encode(
+                    def,
+                    payload,
+                    cipher,
+                    gielinor_protocol::framing::OpcodeWidth::Byte,
+                )
+                .unwrap(),
+            )
+            .unwrap();
+    };
+    let mut button = (600u32 << 16).to_be_bytes().to_vec();
+    button.extend(u16::MAX.to_be_bytes());
+    button.extend(u16::MAX.to_be_bytes());
+    button.push(1);
+    for (enabled, sound) in [(1, 10), (0, 9)] {
+        send(client, cipher, 47, &button);
+        let deadline = Instant::now() + Duration::from_secs(2);
+        loop {
+            pump(runtime);
+            if runtime.world.data(actor).unwrap().variables.get(4000) == enabled {
+                break;
+            }
+            assert!(
+                Instant::now() < deadline,
+                "Prayer button did not reach world"
+            );
+            std::thread::sleep(Duration::from_millis(1));
+        }
+        let expected = gielinor_protocol::game::synth_sound(sound, 1, 0);
+        let mut saw_variable = false;
+        loop {
+            if let Some(packet) = outgoing.next_packet().unwrap() {
+                saw_variable |= packet == gielinor_protocol::varp::update(4000, enabled);
+                if packet == expected {
+                    break;
+                }
+            } else {
+                let mut byte = [0];
+                read(runtime, client, &mut byte);
+                outgoing.feed(&byte).unwrap();
+            }
+        }
+        assert!(saw_variable, "Prayer sound preceded variable transmission");
+    }
+    runtime
+        .world
+        .prayer_book
+        .as_mut()
+        .unwrap()
+        .book
+        .prayers
+        .get_mut(&0)
+        .unwrap()
+        .level = 99;
+    send(client, cipher, 47, &button);
+    let deadline = Instant::now() + Duration::from_secs(2);
+    loop {
+        pump(runtime);
+        if runtime.world.prayer_notice_token(actor).unwrap().is_some() {
+            break;
+        }
+        assert!(Instant::now() < deadline);
+        std::thread::sleep(Duration::from_millis(1));
+    }
+    assert!(runtime
+        .interface_state(actor)
+        .unwrap()
+        .modals
+        .contains_interface(229));
+    let end = gielinor_protocol::client_script::run(
+        1508,
+        &[gielinor_protocol::client_script::Argument::String(
+            "0".into(),
+        )],
+    )
+    .unwrap();
+    let mut saw_text = false;
+    loop {
+        if let Some(packet) = outgoing.next_packet().unwrap() {
+            saw_text |=
+                packet.opcode == 80 && packet.payload.windows(13).any(|s| s == b"level of 99 t");
+            if packet == end {
+                break;
+            }
+        } else {
+            let mut byte = [0];
+            read(runtime, client, &mut byte);
+            outgoing.feed(&byte).unwrap();
+        }
+    }
+    assert!(saw_text, "Requirement notice text missing");
+    let [a, b, c, d] = ((229u32 << 16) | 4).to_be_bytes();
+    send(client, cipher, 115, &[b, a, d, c, 255, 255]);
+    let deadline = Instant::now() + Duration::from_secs(2);
+    while runtime.world.prayer_notice_token(actor).unwrap().is_some() {
+        pump(runtime);
+        assert!(Instant::now() < deadline);
+        std::thread::sleep(Duration::from_millis(1));
+    }
+    assert!(runtime
+        .interface_state(actor)
+        .unwrap()
+        .modals
+        .contains_interface(229));
+    runtime.tick().unwrap();
+    assert!(!runtime
+        .interface_state(actor)
+        .unwrap()
+        .modals
+        .contains_interface(229));
+    assert!(!runtime.world.protection(actor).unwrap().suspended);
+    // A delayed Continue loses protected access but still closes on the main pass.
+    send(client, cipher, 47, &button);
+    let deadline = Instant::now() + Duration::from_secs(2);
+    while runtime.world.prayer_notice_token(actor).unwrap().is_none() {
+        pump(runtime);
+        assert!(Instant::now() < deadline);
+        std::thread::sleep(Duration::from_millis(1));
+    }
+    runtime.world.delay_player(actor, 2).unwrap();
+    send(client, cipher, 115, &[b, a, d, c, 255, 255]);
+    let deadline = Instant::now() + Duration::from_secs(2);
+    while runtime.world.prayer_notice_token(actor).unwrap().is_some() {
+        pump(runtime);
+        assert!(Instant::now() < deadline);
+        std::thread::sleep(Duration::from_millis(1));
+    }
+    assert!(!runtime.world.protection(actor).unwrap().suspended);
+    runtime.tick().unwrap();
+    assert!(!runtime
+        .interface_state(actor)
+        .unwrap()
+        .modals
+        .contains_interface(229));
+    runtime.tick().unwrap();
+    runtime
+        .close_interface(actor, Component::new(548, 22))
+        .unwrap();
 }
 fn configure_autocast(runtime: &mut Runtime<Backend>) {
     use gielinor_world::{

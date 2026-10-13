@@ -130,6 +130,8 @@ pub struct State {
     pub events: Events,
     pub input_dialog_open: bool,
     pub modal_button_protected: bool,
+    /// ResumePauseButtonHandler closes these at the next player main pass.
+    pub close_queue: Vec<Component>,
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum ButtonRoute {
@@ -139,6 +141,22 @@ pub enum ButtonRoute {
     ProtectedModal,
 }
 impl State {
+    pub fn queue_pause_close(&mut self, component: Component, slot: i32, baked: i32) -> bool {
+        if !self.events.enabled(component, slot, baked, 1) {
+            return false;
+        }
+        let Some(parent) = self
+            .modals
+            .parent(component.interface())
+            .or_else(|| self.overlays.parent(component.interface()))
+        else {
+            return false;
+        };
+        if !self.close_queue.contains(&parent) {
+            self.close_queue.push(parent);
+        }
+        true
+    }
     pub fn translate(&self, component: Component) -> Component {
         self.gameframe.get(&component).copied().unwrap_or(component)
     }
@@ -215,6 +233,8 @@ impl State {
             return Err("Open interface limit");
         }
         let closed = self.close_sub(parent);
+        // Opening a replacement page cancels the previous page's queued close.
+        self.close_queue.retain(|target| *target != parent);
         if overlay {
             self.overlays.set(parent, interface);
         } else {
@@ -284,5 +304,23 @@ mod tests {
         ui.top_level = Some(12);
         assert_eq!(ui.button(comp, -1, 2, 1), Ok(ButtonRoute::Overlay));
         assert!(ui.button(comp, -1, 2, 11).is_err());
+    }
+    #[test]
+    fn pause_closes_only_enabled_open_interfaces_and_replacement_cancels_close() {
+        let parent = Component::new(548, 23);
+        let button = Component::new(229, 4);
+        let mut ui = State::default();
+        assert!(!ui.queue_pause_close(button, -1, 1));
+        ui.open_sub(parent, 229, false).unwrap();
+        assert!(!ui.queue_pause_close(button, -1, 0));
+        ui.events.add(button, -1, -1, 1).unwrap();
+        assert!(ui.queue_pause_close(button, -1, 0));
+        assert!(ui.queue_pause_close(button, -1, 0));
+        assert_eq!(ui.close_queue, [parent]);
+        ui.open_sub(parent, 229, false).unwrap();
+        assert!(ui.close_queue.is_empty());
+        ui.open_sub(parent, 229, true).unwrap();
+        assert!(ui.queue_pause_close(button, -1, 1));
+        assert_eq!(ui.close_queue, [parent]);
     }
 }

@@ -53,6 +53,7 @@ fn compiled_login_vars_preserve_muted_settings_and_transmission_order() {
                 },
             },
             volumes: types[..4].try_into().unwrap(),
+            music_mode: None, // Oracle covers LoginScript only, not MusicAreaScript.
             transmit: types,
         };
         let packets = config

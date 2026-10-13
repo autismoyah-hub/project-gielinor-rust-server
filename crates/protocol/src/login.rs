@@ -56,12 +56,12 @@ pub enum Authentication {
     Password(Secret),
     Token(Secret),
 }
-pub struct Login {
+pub struct Login<A = Authentication> {
     pub header: Header,
     pub seed: [u32; 4],
     pub server_seed: u64,
     pub otp: Otp,
-    pub authentication: Authentication,
+    pub authentication: A,
     pub username: String,
     pub low_detail: bool,
     pub resized: bool,
@@ -79,6 +79,24 @@ pub struct Login {
 }
 
 pub fn decode(payload: &[u8], rsa: &PrivateKey) -> Result<Login, DecodeError> {
+    decode_envelope(payload, rsa, decode_auth)
+}
+
+/// Reconnect authenticates with the previous four XTEA words, not an OTP/password.
+pub fn decode_reconnect(payload: &[u8], rsa: &PrivateKey) -> Result<Login<[u32; 4]>, DecodeError> {
+    decode_envelope(payload, rsa, |bytes| {
+        let mut r = Reader::new(bytes);
+        let (seed, server_seed) = decode_seed(&mut r)?;
+        let previous = [r.u32()?, r.u32()?, r.u32()?, r.u32()?];
+        Ok((seed, server_seed, Otp::None, previous))
+    })
+}
+
+fn decode_envelope<A>(
+    payload: &[u8],
+    rsa: &PrivateKey,
+    decode_auth: impl FnOnce(&[u8]) -> Result<([u32; 4], u64, Otp, A), DecodeError>,
+) -> Result<Login<A>, DecodeError> {
     let mut input = Reader::new(payload);
     let header = Header::decode(&mut input)?;
     let rsa_length = input.u16()? as usize;
@@ -91,13 +109,18 @@ pub fn decode(payload: &[u8], rsa: &PrivateKey) -> Result<Login, DecodeError> {
     decode_body(header, seed, server_seed, otp, authentication, &encrypted)
 }
 
-fn decode_auth(bytes: &[u8]) -> Result<([u32; 4], u64, Otp, Authentication), DecodeError> {
-    let mut r = Reader::new(bytes);
+fn decode_seed(r: &mut Reader<'_>) -> Result<([u32; 4], u64), DecodeError> {
     if r.u8()? != 1 {
         return Err(DecodeError::InvalidValue("RSA marker"));
     }
     let seed = [r.u32()?, r.u32()?, r.u32()?, r.u32()?];
     let server_seed = r.u64()?;
+    Ok((seed, server_seed))
+}
+
+fn decode_auth(bytes: &[u8]) -> Result<([u32; 4], u64, Otp, Authentication), DecodeError> {
+    let mut r = Reader::new(bytes);
+    let (seed, server_seed) = decode_seed(&mut r)?;
     let otp = match r.u8()? {
         0 => Otp::TrustedDevice(r.u32()?),
         1 => {
@@ -126,14 +149,14 @@ fn decode_auth(bytes: &[u8]) -> Result<([u32; 4], u64, Otp, Authentication), Dec
     Ok((seed, server_seed, otp, authentication))
 }
 
-fn decode_body(
+fn decode_body<A>(
     header: Header,
     seed: [u32; 4],
     server_seed: u64,
     otp: Otp,
-    authentication: Authentication,
+    authentication: A,
     bytes: &[u8],
-) -> Result<Login, DecodeError> {
+) -> Result<Login<A>, DecodeError> {
     let mut r = Reader::new(bytes);
     let username = r.string()?;
     let flags = r.u8()?;

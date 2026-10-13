@@ -9,6 +9,8 @@ pub struct Config {
     pub chatbox: Binding,
     pub roofs: Binding,
     pub volumes: [Varp; 4],
+    /// MusicAreaScript resets even a saved manual/random mode to Area on login.
+    pub music_mode: Option<Varp>,
     pub transmit: Vec<Varp>,
 }
 pub struct Presentation {
@@ -93,6 +95,7 @@ impl Config {
                 varp("option_sounds")?,
                 varp("option_areasounds")?,
             ],
+            music_mode: Some(varp("musicplay")?),
             transmit: defs
                 .varps
                 .values()
@@ -108,6 +111,9 @@ impl Config {
         processed_clock: i32,
     ) -> Result<Vec<Packet>, gielinor_world::variables::Error> {
         let mut packets = vec![varp::reset()];
+        if let Some(mode) = self.music_mode {
+            vars.set(mode, 1, false);
+        }
         let logged_in = processed_clock > 0;
         let nonblank = display_name
             .chars()
@@ -173,4 +179,48 @@ pub fn tail() -> [Packet; 2] {
         gielinor_protocol::login_init::reset_animations(),
         gielinor_protocol::login_init::minimap(0),
     ]
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn area_music_login_overrides_saved_mode_and_transmits_once_after_reset() {
+        let ty = |id| Varp {
+            id,
+            permanent: true,
+            transmit: Transmit::Different,
+            bit_protect: false,
+            client_code: -1,
+        };
+        let binding = Binding {
+            base: ty(40),
+            bit: gielinor_world::variables::Varbit {
+                base: 40,
+                lsb: 0,
+                msb: 0,
+            },
+        };
+        let config = Config {
+            chatbox: binding,
+            roofs: binding,
+            volumes: [ty(41), ty(42), ty(43), ty(44)],
+            music_mode: Some(ty(18)),
+            transmit: vec![ty(18)],
+        };
+        for previous in [None, Some(0), Some(1), Some(2)] {
+            let mut vars = Variables::default();
+            if let Some(value) = previous {
+                vars.set(ty(18), value, false);
+            }
+            let packets = config.variables(&mut vars, "Music", -1).unwrap();
+            assert_eq!(vars.get(18), 1);
+            assert_eq!(packets.len(), 2);
+            let expected = varp::update(18, 1);
+            assert_eq!(
+                (packets[1].opcode, &packets[1].payload),
+                (expected.opcode, &expected.payload)
+            );
+        }
+    }
 }

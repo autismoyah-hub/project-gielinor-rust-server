@@ -49,10 +49,20 @@ fn dispatch(
                 .map(|(id,r)|format!("{id}: logical={}, child={}, item={}",r.logical_id,r.child_index,r.item)).take(35).collect::<Vec<_>>();
             format!("native widget instance absent: requested {logical}/{child}; group widgets {found:?}")
         })?;
+    let before = client.outbound.len();
     if !client.interface_operation(id, operation, None)? {
         return Err("native interface dispatcher rejected action; no protocol fallback".into());
     }
-    println!("Native interface operation {operation}: component={logical}, child={child}");
+    let sent = client
+        .outbound
+        .iter()
+        .skip(before)
+        .map(|packet| packet.opcode)
+        .collect::<Vec<_>>();
+    println!("Native interface operation {operation}: component={logical}, child={child}, outbound={sent:?}");
+    if !sent.contains(&47) {
+        return Err("native interface operation did not enqueue IF_BUTTONX (47)".into());
+    }
     Ok(())
 }
 fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -76,10 +86,16 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut stage = 0;
     let mut selected_at = Instant::now();
     let mut progress_at = Instant::now();
+    let mut action_started: Option<Instant> = None;
     // Kotlin's bounded PoW/login can consume most of a 45-second total window.
     // Keep a finite wall-clock limit and expose readiness rather than treating
     // authentication/world-load delay as an inventory transaction failure.
-    while start.elapsed() < Duration::from_secs(90) {
+    // Reference runs consumed 81 and 105 seconds before actions were ready.
+    // Bound startup plus actions to150s, and the action sequence itself to30s.
+    // This keeps the native driver below the Rust server's300-tick lifetime.
+    while start.elapsed() < Duration::from_secs(150)
+        && action_started.is_none_or(|at| at.elapsed() < Duration::from_secs(30))
+    {
         live.poll(&mut client)?;
         if progress_at.elapsed() >= Duration::from_secs(10) {
             println!("Scenario readiness: elapsed={}s stage={stage} world={} scripts_busy={} queued_scripts={} tick={} position={:?} inventory_sword={} worn_sword={}",
@@ -139,6 +155,13 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         if live.scripts_busy() || !client.interfaces.scripts.is_empty() {
             std::thread::sleep(Duration::from_millis(5));
             continue;
+        }
+        if action_started.is_none() {
+            println!(
+                "Inventory actions ready after {} seconds",
+                start.elapsed().as_secs()
+            );
+            action_started = Some(Instant::now());
         }
         if bury {
             match stage {

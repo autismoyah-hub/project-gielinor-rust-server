@@ -37,6 +37,12 @@ impl Policy {
                 messages.push(message);
             }
         }
+        if let Some(message) = self.ensure_starter_hitpoints(data) {
+            messages.push(message);
+        }
+        messages
+    }
+    pub fn ensure_starter_hitpoints(self, data: &mut PlayerData) -> Option<&'static str> {
         let hp = data.stats.base(self.hitpoints);
         if [self.attack, self.strength, self.defence]
             .into_iter()
@@ -44,9 +50,9 @@ impl Policy {
             && !(10..=20).contains(&hp)
         {
             Self::reset(data, self.hitpoints, 10);
-            messages.push("Your Hitpoints are 10 — as they should be.");
+            return Some("Your Hitpoints are 10 — as they should be.");
         }
-        messages
+        None
     }
     fn reset(data: &mut PlayerData, skill: u8, level: i8) {
         let xp = xp_from_level(level as u8).expect("fixed starter level is valid");

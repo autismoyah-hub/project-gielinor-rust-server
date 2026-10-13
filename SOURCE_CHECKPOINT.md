@@ -1,13 +1,11 @@
-# Source-recovery checkpoint
+# Source-recovery checkpoint — rust-server
 
-Captured 2026-10-12T22:52:27.209Z through 2026-10-12T22:54:29.657Z (UTC). Observed selected-tree hashes matched; not an atomic snapshot or build validation. Conditional Approval B authorizes this local initial commit. Approval C for source upload is NOT granted.
+Captured 2026-10-13T04:03:59.138Z through 2026-10-13T04:06:31.437Z (UTC), with matching selected-file hashes before, during and after copying and verified separate recovery. This is observed byte stability, not an atomic snapshot, semantic consistency guarantee or build verification. Later active development is intentionally outside this checkpoint.
 
-Original source and separate recovery manifests are kept outside this staging repository. Vendored sources, local path dependencies and license notices are retained. Machine-specific paths in existing tools/docs require local configuration; do not execute scripts as part of repository setup.
+Parent: ada7fbff10e03d47830a725f2f4e9086be9309db. Local checkpoint authorized; upload requires separate explicit approval. No automatic synchronization. Active development workspaces were read only. Original snapshots, SHA-256 manifests and independent recovery copies are stored outside this repository.
 
-Current source preserves unfinished prayer book/drain/timer work. Agent 2 reports missing differential expected files and a Kotlin oracle compile failure. Integration client snapshots, executables, local metadata, reference Kotlin, caches, keys, saves and unreviewed fixtures/oracles are excluded. The three owned Native*Scenario.rs drivers are retained. Full differential/integration tests are not self-contained.
+This is not an independently build-verified or fully reproducible release. No builds, servers or tests were run during checkpoint preparation. Source preserves incomplete work. Progress documents contain historical agent reports; they are not independent verification by this checkpoint.
 
-No full build was run. License notices do not by themselves verify every upstream source or fixture provenance. GitHub is external storage even when private.
+Full differential/integration reproduction depends on excluded expected fixtures, oracle/reference material, immutable client baselines and local cache/runtime data. Existing and new gameplay source remains preserved, including incomplete implementations. Source availability does not establish gameplay acceptance.
 
-## Recovery-only status
-
-This is a source-recovery checkpoint, not an independently build-verified or fully reproducible release. No build or full test run was performed. Original snapshot SHA-256 manifests and independent local recovery copies remain outside this Git repository. No automatic synchronization is configured.
+Vendored dependencies and license notices are retained. Excluded proprietary references, caches, credentials, databases, binaries, raw telemetry and held fixtures are not repository contents. Machine-specific paths and cache assumptions in existing scripts/docs require local configuration. Existing license notices do not certify unresolved provenance; private visibility does not resolve inclusion rights.

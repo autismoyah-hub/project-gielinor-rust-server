@@ -35,6 +35,9 @@ pub fn publish(
         return Err("Tower publication contains an out-of-region entity".into());
     }
     world.locations.register_constructed(origin, 128)?;
+    world
+        .area_sources
+        .register(origin, &tower_layout::template())?;
     world.collision.append_disjoint(shell.map.collision)?;
     // The client rebuilds the unmodified cache template. Load that baseline,
     // mask it, then restore the final script state. Exact retained locations

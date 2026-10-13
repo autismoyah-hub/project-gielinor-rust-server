@@ -3,9 +3,10 @@ Login and initial world,PASS,PASS,prep-kotlin-actions-002; prep-rust-actions-001
 Single waypoint walk,PASS,PASS,prep-kotlin-actions-002; prep-rust-actions-001,PASS,Targeted effect only; subsequent state differs,current baseline
 Multiple waypoints,NOT TESTED,NOT TESTED,reference/NativeFloorScenario.rs; historical rust-floor-actions-002 PASS,NOT TESTED,Fresh Tower mode prepared; current pinned executable has not run it,current baseline; historical evidence separate
 NPC interaction and dialogue opening,PASS,PASS,prep-kotlin-actions-002; prep-rust-actions-001,PASS,Dialogue interface opened; exact NPC response and full transitions not asserted,current baseline
-Native Dialogue Continue,BLOCKED,FAIL,work/prep-kotlin-dialogue-001.log; prep-rust-dialogue-001,FAIL,Rust visible-layout click handled=false and no opcode 115; Kotlin retry deferred by CPU guard; historical both failed,current baseline
-Inventory initialization and item operations,NOT TESTED,NOT TESTED,historical rust-inventory-006; rust-burial-001,NOT TESTED,Drivers rebuilt; fresh runtime validation pending,current baseline; historical Rust PASS
-Equipment wear and remove,NOT TESTED,NOT TESTED,historical rust-inventory-006,NOT TESTED,Fresh inventory mode ready; historical pass does not validate new pin,current baseline; historical Rust PASS
+Native Dialogue Continue,PASS,PASS,resume-kotlin-menu-010; resume-rust-menu-007,FAIL,Both native115 and response with clean saved shutdown; strict response comparison differs between random branches,same client library; matched dialogue-menu-004; Rust 1AAA46F4
+First Tower arrival,PASS,PASS,resume-kotlin-arrival-002; resume-rust-arrival-009,FAIL,Music unlocks now equal; six varps differ: two login reset zeros plus three clocks plus special energy before second expiry,current baseline; arrival-003; Rust AC1B332F
+Inventory initialization and item operations,FAIL,NOT TESTED,resume-kotlin-inventory-001; resume-kotlin-inventory-002,FAIL,Startup scripts consume most of bound; equip observed; saved unequip; final equip unobserved,inventory-001 pinned driver; rendering UNKNOWN
+Equipment wear and remove,PARTIAL,NOT TESTED,resume-kotlin-inventory-001; resume-kotlin-inventory-002,NOT TESTED,Appearance updates and equip observed; complete sequence and matched Rust pending,inventory-001 pinned driver; rendered pixels UNKNOWN
 Bank deposit and withdrawal,NOT TESTED,NOT TESTED,historical rust-floor-actions-002; rust-floor-content-001,NOT TESTED,Tower fixture and scene snapshot required; floor plumbing not freshly exercised,current baseline; historical Rust PASS
 Object interactions,NOT TESTED,NOT TESTED,historical rust-floor-content-001; rust-floor-altar-001,NOT TESTED,Vial crate scenario prepared; altar is older explicit drained fixture evidence,current baseline; historical Rust PASS
 Logout persistence and re-login,NOT TESTED,NOT TESTED,historical rust-inventory-verify-001; current actions state exports,NOT TESTED,New inventory plus ReuseStateFrom sequence prepared; current saved state differs across A/B,current baseline; historical Rust PASS
@@ -14,3 +15,5 @@ Clean owned-server shutdown,PASS,PASS,prep-kotlin-actions-002/shutdown.json; pre
 Visible native GUI acceptance,NOT TESTED,NOT TESTED,historical rust-floor-render-001/world.bmp,NOT TESTED,Fresh GUI rebuilt; historical screenshot review not new-baseline acceptance,current baseline; historical Rust PASS
 Fresh character initialization,NOT TESTED,NOT TESTED,basic-v1/fixture.json,NOT TESTED,Tutorial-completed fixture; Kotlin Tower login hooks require investigation,current baseline
 Matched action differential,FAIL,FAIL,work/preparation/actions-differential-001.json,FAIL,First captured comparable difference: state.persisted; configuration and reference lifecycle attribution required,same baseline/cache/initial state
+
+

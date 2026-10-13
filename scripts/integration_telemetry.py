@@ -50,13 +50,39 @@ def import_run(run,out,environment,scenario,baseline,fixture,cache,detail='packe
     try:
         w.emit('context',{'baseline_id':baseline,'client_sha256':result.get('clientHash'),'fixture_id':fixture,'cache_id':cache,'server_sha256':server.get('binaryHash'),'input_mode':result.get('mode'),'revision':'239.1'},evidence('result.json'))
         if (run/'before-state.json').exists():w.emit('state.initial',state(run/'before-state.json'),evidence('before-state.json'))
+        if (run/'before-tower-state.json').exists():w.emit('tower.initial',read('before-tower-state.json'),evidence('before-tower-state.json'))
         if (run/'client.log').exists():
             with (run/'client.log').open(encoding='utf-8-sig',errors='replace') as lines:
                 for number,line in enumerate(lines,1):
                     pos=re.search(r'position=\[([0-9]+), ([0-9]+), ([0-9]+)\]',line);tick=re.search(r'\btick=(\d+)',line)
                     if pos:w.emit('player.position',{'plane':int(pos[1]),'x':int(pos[2]),'z':int(pos[3])},evidence('client.log',number),game_tick=int(tick[1]) if tick else None)
+                    menu=re.search(r'Native Continue click at .*handled=(true|false), outbound=\[([^\]]*)\]',line)
+                    if menu:w.emit('client.continue',{'handled':menu[1]=='true','outgoing_opcodes':[int(s.strip()) for s in menu[2].split(',') if s.strip()],'server_acceptance':None},evidence('client.log',number))
+                    prayer=re.search(r'Native prayer operation: component=(\d+), outbound=\[([\d, ]*)\]',line)
+                    if prayer:w.emit('prayer.dispatch',{'component':int(prayer[1]),'operation':1,'outgoing_opcodes':[int(s.strip()) for s in prayer[2].split(',') if s.strip()],'server_acceptance':None},evidence('client.log',number))
+                    prayer_continue=re.search(r'Native prayer Continue: outbound=\[([\d, ]*)\]',line)
+                    if prayer_continue:w.emit('prayer.continue',{'outgoing_opcodes':[int(s.strip()) for s in prayer_continue[1].split(',') if s.strip()],'server_acceptance':None},evidence('client.log',number))
+                    bit=re.search(r'Client observed Thick Skin (?:active|inactive): bit4104=([01])',line)
+                    if bit:w.emit('prayer.client_state',{'varbit':4104,'value':int(bit[1]),'server_acceptance':None},evidence('client.log',number))
+                    if line.startswith('Observed server prayer requirement notice:'):
+                        w.emit('action.effect',{'action':'prayer.requirement_notice','parameters':{'text':line.split(':',1)[1].strip()},'client_dispatch_result':'effect_observed','server_acceptance':None},evidence('client.log',number))
+                    if line.startswith('Prayer scenario observed activation, deactivation, requirement notice and native Continue closure'):
+                        w.emit('action.effect',{'action':'prayer.notice_closed','parameters':{'interface':229},'client_dispatch_result':'effect_observed','server_acceptance':None},evidence('client.log',number))
+                    target=re.search(r'Talk-to man definition (\d+), slot (\d+)',line)
+                    if target:w.emit('action.target',{'action':'npc.talk','definition':int(target[1])},evidence('client.log',number))
+                    if 'Server NPC response:' in line:w.emit('dialogue.response',{'text':line.split('Server NPC response:',1)[1].strip()},evidence('client.log',number))
+                    if 'Server confirmed first Tower arrival: [10424, 120]' in line:
+                        w.emit('action.effect',{'action':'tower.first_arrival','parameters':{'position':[0,10424,120]},'client_dispatch_result':'effect_observed','server_acceptance':None},evidence('client.log',number))
+                    if 'Server confirmed first-arrival inventory and equipment cleared' in line:
+                        w.emit('action.effect',{'action':'tower.first_kit_clear','parameters':{'containers':[93,94]},'client_dispatch_result':'effect_observed','server_acceptance':None},evidence('client.log',number))
+                    if 'Native login restored worn sword and its appearance, 1000 coins and two lobsters;' in line:
+                        w.emit('action.effect',{'action':'inventory.restore','parameters':{'equipment':{'container':94,'slot':3,'item':1277},'coins':1000,'lobsters':2,'appearance_equipment_3':3325},'client_dispatch_result':'effect_observed','server_acceptance':None},evidence('client.log',number))
                     widget=re.search(r'component=(\d+), child=(-?\d+)',line)
-                    if widget:w.emit('client.dispatch',{'component':int(widget[1]),'child':int(widget[2]),'dispatch_result':'attempt_logged','server_acceptance':None,'input_path':'native_interface_operation'},evidence('client.log',number))
+                    if widget:
+                        operation=re.search(r'Native interface operation (\d+):',line)
+                        sent=re.search(r'outbound=\[([\d, ]*)\]',line)
+                        opcodes=[int(part.strip()) for part in sent[1].split(',') if part.strip()] if sent else None
+                        w.emit('client.dispatch',{'component':int(widget[1]),'child':int(widget[2]),'operation':int(operation[1]) if operation else None,'outgoing_opcodes':opcodes,'dispatch_result':'packet_queued' if opcodes else 'attempt_logged','server_acceptance':None,'input_path':'native_interface_operation'},evidence('client.log',number))
                     for needle,action in [('Server confirmed player movement','walk'),('Server confirmed floor waypoint','walk'),('Server confirmed equip and appearance','equip'),('Server confirmed unequip','unequip'),('Server confirmed one coin deposited','bank.deposit'),('Server confirmed withdrawal','bank.withdraw'),('Server confirmed final equipped state','equip.persist_requested')]:
                         if needle in line:w.emit('action.effect',{'action':action,'parameters':{'position':list(map(int,re.findall(r'-?\d+',line)))} if action=='walk' else {},'client_dispatch_result':'effect_observed','server_acceptance':None},evidence('client.log',number))
                     if 'ownhidden=true' in line or 'hidden=true' in line:
@@ -75,7 +101,10 @@ def import_run(run,out,environment,scenario,baseline,fixture,cache,detail='packe
                     ordinal+=1
                     if ordinal>100000:raise ValueError('Capture event bound exceeded')
                     w.emit('packet',{'direction':'server_to_client','opcode':opcode,'size':size,'ordinal':ordinal,'dispatch_result':None},evidence('packets.bin'))
+        logout=read('logout-observation.json')
+        w.emit('persistence.completion',{'save_completed':logout.get('save_completed')},evidence('logout-observation.json'),observation='observed' if logout else 'unavailable')
         if (run/'state.json').exists():w.emit('state.persisted',state(run/'state.json'),evidence('state.json'))
+        if (run/'tower-state.json').exists():w.emit('tower.persisted',read('tower-state.json'),evidence('tower-state.json'))
         w.emit('session.end',{'client_exit':result.get('clientExit'),'server_exit':shutdown.get('exitCode'),'forced':shutdown.get('forced'),'server_exited':shutdown.get('exited')},evidence('shutdown.json'),timestamp=shutdown.get('finishedUtc'))
     finally:w.close()
 def compare(a,b):
@@ -90,7 +119,10 @@ def compare(a,b):
     for key in ('baseline_id','client_sha256','fixture_id','cache_id','input_mode','revision'):
         x,y=(c['data'].get(key) for c in contexts)
         if x is None or y is None or x!=y:return dict(report,status='BLOCKED',classification='configuration or provenance mismatch',first_divergence={'field':key,'expected':x,'actual':y,'evidence':[c['evidence'] for c in contexts]})
-    kinds=('state.initial','action.effect','state.persisted','session.end','interface.hidden','npc.state','object.state','server.decision')
+    completion=[[e for e in rows if e['kind']=='persistence.completion'] for rows in (a,b)]
+    if any(len(rows)!=1 or rows[0]['observation']!='observed' or rows[0]['data'].get('save_completed') is not True for rows in completion):
+        return dict(report,status='BLOCKED',classification='logout save completion is UNKNOWN or incomplete',persistence_evidence=completion)
+    kinds=('state.initial','tower.initial','action.effect','action.target','client.continue','dialogue.response','prayer.dispatch','prayer.continue','prayer.client_state','state.persisted','tower.persisted','session.end','interface.hidden','npc.state','object.state','server.decision')
     for kind in kinds:
         left=[e for e in a if e['kind']==kind];right=[e for e in b if e['kind']==kind]
         report['coverage'][kind]={'kotlin':len(left),'rust':len(right)}

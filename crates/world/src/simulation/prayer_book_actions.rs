@@ -104,7 +104,7 @@ impl World {
         self.player(actor)?;
         let config = self.prayer_book.as_ref().ok_or(ActionError::InvalidStat)?;
         let p = self.players.get_mut(actor.slot as usize).unwrap();
-        if p.saving {
+        if p.saving || p.pending_logout {
             return Err(ActionError::LoggingOut);
         }
         if p.protection.access_protected(p.has_modal) {

@@ -86,6 +86,7 @@ impl Character {
         };
         let mut data = PlayerData::new(a.account_id as u64, name, coords, stats);
         data.character_id = a.character_id as u64;
+        data.tower_arrival = a.tower_arrival;
         data.variables = Variables::restore(varps::decode(&a.varps_json).map_err(|_| 13u8)?);
         data.energy = a.run_energy;
         data.xp_rate_hundreds = if auth.new_account {
@@ -207,6 +208,7 @@ impl Character {
             })
             .collect::<Result<_, &'static str>>()?;
         Ok(Save {
+            tower_arrival: data.tower_arrival,
             account_id: self.account_id,
             character_id: self.character_id,
             display_name: Some(data.display_name.clone()),

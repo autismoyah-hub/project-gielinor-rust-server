@@ -1,4 +1,4 @@
-param([string]$Run = 'rust-login-001',[int]$Ticks = 100,[ValidateSet('login','render','actions','dialogue-ui','dialogue-protocol','inventory','inventory-verify','inventory-bury','floor','floor-content','floor-altar')][string]$Mode='login',[ValidatePattern('^integration-(b|floor|prep-[a-z0-9-]+)$')][string]$StateName='integration-b',[string]$ClientRoot,[string]$ServerExecutable,[string]$CacheRoot)
+param([string]$Run = 'rust-login-001',[int]$Ticks = 100,[ValidateSet('login','render','actions','prayer','arrival','dialogue-ui','dialogue-protocol','inventory','inventory-verify','inventory-bury','floor','floor-content','floor-altar')][string]$Mode='login',[ValidatePattern('^integration-(b|floor|prep-[a-z0-9-]+)$')][string]$StateName='integration-b',[string]$ClientRoot,[string]$ServerExecutable,[string]$CacheRoot,[string]$ScenarioExecutable)
 $ErrorActionPreference='Stop'
 $serverRoot=Split-Path $PSScriptRoot -Parent
 . "$PSScriptRoot/integration-capacity.ps1"
@@ -7,8 +7,9 @@ $root="$serverRoot/work/integration"
 if (-not $CacheRoot) { $CacheRoot="$root/b-rust" }
 if (-not $ClientRoot) { $ClientRoot="$root/client" }
 if (-not $ServerExecutable) { $ServerExecutable="$serverRoot/work/target/debug/gielinor-server.exe" }
-$scenario=if ($Mode -like 'dialogue-*') { 'server_dialogue' } elseif ($Mode -like 'inventory*') { 'server_inventory' } elseif ($Mode -like 'floor*') { 'server_floor' } else { $null }
+$scenario=if ($Mode -eq 'prayer') { 'server_prayer' } elseif ($Mode -eq 'arrival') { 'server_arrival' } elseif ($Mode -like 'dialogue-*') { 'server_dialogue' } elseif ($Mode -like 'inventory*') { 'server_inventory' } elseif ($Mode -like 'floor*') { 'server_floor' } else { $null }
 $scenarioBinary=if (Test-Path "$ClientRoot/bin/$scenario.exe") { "$ClientRoot/bin/$scenario.exe" } else { "$ClientRoot/target/debug/examples/$scenario.exe" }
+if ($ScenarioExecutable) { $scenarioBinary=$ScenarioExecutable }
 if ($scenario -and -not (Test-Path $scenarioBinary)) { throw 'Build the owned native scenario first: scripts/integration-client-build.ps1' }
 $runDir="$root/runs/$Run"
 if (Test-Path -LiteralPath $runDir) { throw "Run already exists: $Run" }
@@ -34,6 +35,9 @@ try {
     New-Item -ItemType Directory -Force -Path "$root/b-rust/work" | Out-Null
     Push-Location "$root/b-rust"
     try {
+        $observerPython='C:/Users/backup/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe'
+        & $observerPython "$PSScriptRoot/integration_logout.py" capture "$serverRoot/work/state/$StateName/accounts.sqlite" "$runDir/logout-before.json"
+        if ($LASTEXITCODE -ne 0) {throw 'Cannot capture pre-client logout checkpoint'}
         switch ($Mode) {
             'floor' { & "$scenarioBinary" "$CacheRoot/cache/js5" $address 'integration239' "$root/test-account.password" "$root/keys/client.key" "$root/runs/kotlin-inventory-002/world-state/floor-locations.tsv" "$runDir/scene-plane-0.tsv" *> "$runDir/client.log" }
             'floor-content' { & "$scenarioBinary" "$CacheRoot/cache/js5" $address 'integration239' "$root/test-account.password" "$root/keys/client.key" "$root/runs/kotlin-inventory-002/world-state/floor-locations.tsv" "$runDir/scene-plane-0.tsv" vials *> "$runDir/client.log" }
@@ -41,6 +45,8 @@ try {
             'login' { & "$ClientRoot/bin/live_session.exe" "$CacheRoot/cache/js5" "$root/keys/client.key" $address 'integration239' "$root/test-account.password" "$runDir/packets.bin" *> "$runDir/client.log" }
             'render' { & "$ClientRoot/bin/gielinor-client.exe" live-view "$CacheRoot/cache/js5" $address 'integration239' "$root/test-account.password" "$root/keys/client.key" --smoke *> "$runDir/client.log" }
             'actions' { & "$ClientRoot/bin/live_actions.exe" "$CacheRoot/cache/js5" $address 'integration239' "$root/test-account.password" "$root/keys/client.key" *> "$runDir/client.log" }
+            'prayer' { & "$scenarioBinary" "$CacheRoot/cache/js5" $address 'integration239' "$root/test-account.password" "$root/keys/client.key" *> "$runDir/client.log" }
+            'arrival' { & "$scenarioBinary" "$CacheRoot/cache/js5" $address 'integration239' "$root/test-account.password" "$root/keys/client.key" *> "$runDir/client.log" }
             'dialogue-ui' { & "$scenarioBinary" "$CacheRoot/cache/js5" $address 'integration239' "$root/test-account.password" "$root/keys/client.key" ui *> "$runDir/client.log" }
             'dialogue-protocol' { & "$scenarioBinary" "$CacheRoot/cache/js5" $address 'integration239' "$root/test-account.password" "$root/keys/client.key" protocol *> "$runDir/client.log" }
             'inventory' { & "$scenarioBinary" "$CacheRoot/cache/js5" $address 'integration239' "$root/test-account.password" "$root/keys/client.key" transact *> "$runDir/client.log" }
@@ -48,11 +54,13 @@ try {
             'inventory-bury' { & "$scenarioBinary" "$CacheRoot/cache/js5" $address 'integration239' "$root/test-account.password" "$root/keys/client.key" bury *> "$runDir/client.log" }
         }
         $clientExit=$LASTEXITCODE
+        & $observerPython "$PSScriptRoot/integration_logout.py" wait "$serverRoot/work/state/$StateName/accounts.sqlite" "$runDir/logout-observation.json" --before "$runDir/logout-before.json"
+        if ($LASTEXITCODE -ne 0) {throw 'Logout observer failed; inspect run evidence'}
     } finally { Pop-Location }
     if ($Mode -eq 'render' -and (Test-Path "$root/b-rust/work/live-native.bmp")) { Copy-Item "$root/b-rust/work/live-native.bmp" "$runDir/world.bmp" }
     if ($gracefulStop) { Set-Content "$runDir/stop" 'Owned integration shutdown' }
     $server.WaitForExit(15000) | Out-Null
-    $binary=switch -Wildcard ($Mode) { 'login' {"$ClientRoot/bin/live_session.exe"} 'render' {"$ClientRoot/bin/gielinor-client.exe"} 'actions' {"$ClientRoot/bin/live_actions.exe"} 'dialogue-*' {"$scenarioBinary"} 'inventory*' {"$scenarioBinary"} 'floor*' {"$scenarioBinary"} }
+    $binary=switch -Wildcard ($Mode) { 'login' {"$ClientRoot/bin/live_session.exe"} 'render' {"$ClientRoot/bin/gielinor-client.exe"} 'actions' {"$ClientRoot/bin/live_actions.exe"} 'prayer' {"$scenarioBinary"} 'arrival' {"$scenarioBinary"} 'dialogue-*' {"$scenarioBinary"} 'inventory*' {"$scenarioBinary"} 'floor*' {"$scenarioBinary"} }
     [ordered]@{mode=$Mode;clientExit=$clientExit;serverExited=$server.HasExited;address=$address;clientHash=(Get-FileHash $binary).Hash} | ConvertTo-Json | Set-Content "$runDir/result.json"
     Get-Content "$runDir/client.log" -Tail 30
     if ($clientExit -ne 0) { throw "Native client exited $clientExit" }

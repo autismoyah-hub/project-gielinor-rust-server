@@ -17,12 +17,15 @@ mod dialogue_actions;
 mod door_actions;
 mod drop_action;
 mod ground_actions;
+#[cfg(test)]
+mod logout_tests;
 mod melee_actions;
 mod npc_actions;
 mod npc_combat_actions;
 mod npc_death_actions;
 mod prayer_actions;
 mod prayer_book_actions;
+mod tower_actions;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub struct ActorId {
@@ -78,6 +81,7 @@ pub struct PlayerData {
     pub variables: crate::variables::Variables,
     pub xp_rate_hundreds: i32,
     pub energy: i32,
+    pub tower_arrival: crate::tower_arrival::State,
 }
 #[derive(Clone, Copy, Debug)]
 pub enum WeightSource {
@@ -112,6 +116,7 @@ impl PlayerData {
             variables: crate::variables::Variables::default(),
             xp_rate_hundreds: 100,
             energy: 10000,
+            tower_arrival: Default::default(),
         }
     }
 }
@@ -156,6 +161,10 @@ fn perform_stance(
     Ok(result.variables)
 }
 struct Player {
+    areas: crate::area_tracking::State,
+    pending_areas: VecDeque<crate::area_tracking::Event>,
+    music_resizable: bool,
+    login_cycle: i32,
     aggressive_npc: Option<NpcId>,
     last_npc_combat: i32,
     last_pvp_combat: i32,
@@ -167,6 +176,9 @@ struct Player {
     movement: Movement,
     active_speed: Speed,
     saving: bool,
+    pending_logout: bool,
+    logout_modal_close_pending: bool,
+    disconnect_grace: crate::disconnect::Grace,
     run: RunModifiers,
     hits: crate::hits::Queue,
     death_queued: bool,
@@ -368,6 +380,11 @@ pub enum AdmissionError {
 }
 #[derive(Debug)]
 pub enum WorldEvent {
+    TowerArrival {
+        actor: ActorId,
+        arrival: crate::tower_arrival::Arrival,
+        hitpoints_message: Option<&'static str>,
+    },
     CloseModals {
         actor: ActorId,
     },
@@ -466,6 +483,22 @@ pub enum WorldEvent {
         actor: ActorId,
         updates: Vec<crate::variables::Update>,
     },
+    SessionVariables {
+        actor: ActorId,
+        updates: Vec<crate::variables::Update>,
+    },
+    Area {
+        actor: ActorId,
+        event: crate::area_tracking::Event,
+    },
+    Music {
+        actor: ActorId,
+        events: Vec<crate::music::Event>,
+    },
+    MusicError {
+        actor: ActorId,
+        reason: String,
+    },
     GameframeMove {
         actor: ActorId,
         movement: crate::gameframe::Movement,
@@ -526,6 +559,13 @@ pub enum WorldEvent {
     DeathRequested(crate::hits::Target),
 }
 pub struct World {
+    pub music: Option<crate::music_player::Config>,
+    pub area_sources: crate::area_tracking::Sources,
+    pub session_vars: Option<crate::session_vars::Config>,
+    pub login_resets: Option<crate::login_resets::Config>,
+    /// Host-supplied wall time, kept separate from the deterministic world clock.
+    pub unix_millis: u64,
+    pub tower_arrival: Option<crate::tower_arrival::Config>,
     pub combat_stance: Option<crate::combat_stance::Config>,
     pub combat_wear: Option<crate::combat_wear::Config>,
     pub autocast_selection: Option<crate::autocast_select::Config>,
@@ -579,6 +619,9 @@ impl Default for World {
     fn default() -> Self {
         Self {
             areas: Default::default(),
+            music: None,
+            area_sources: Default::default(),
+            tower_arrival: None,
             multiway_area: None,
             combat_stance: None,
             combat_wear: None,
@@ -589,6 +632,9 @@ impl Default for World {
             potions: BTreeMap::new(),
             prayer: None,
             regeneration: None,
+            session_vars: None,
+            login_resets: None,
+            unix_millis: 0,
             prayer_book: None,
             eating_animation: 829,
             item_weights: BTreeMap::new(),
@@ -1058,7 +1104,7 @@ impl World {
     }
     pub fn submit(&mut self, id: ActorId, action: Action) -> Result<(), ActionError> {
         let p = self.player(id)?;
-        if p.saving {
+        if p.saving || p.pending_logout {
             return Err(ActionError::LoggingOut);
         }
         if self.actions.len() >= 4096 {
@@ -1067,12 +1113,81 @@ impl World {
         self.actions.push_back((id, action));
         Ok(())
     }
+    /// Preserve the actor for Kotlin's reconnect grace after a transport loss.
+    pub fn client_disconnected(&mut self, id: ActorId) -> Result<(), ActionError> {
+        self.player(id)?;
+        let p = self.players.get_mut(id.slot as usize).unwrap();
+        p.disconnect_grace.disconnect();
+        p.movement.abort();
+        Ok(())
+    }
+    pub fn set_music_resizable(&mut self, id: ActorId, resizable: bool) -> Result<(), ActionError> {
+        self.player(id)?;
+        self.players
+            .get_mut(id.slot as usize)
+            .unwrap()
+            .music_resizable = resizable;
+        Ok(())
+    }
+    /// Shutdown bypasses access protection as well as disconnect grace, while
+    /// retaining required queues and area exits before the durable save.
+    pub fn request_shutdown(&mut self, id: ActorId) -> Result<(), ActionError> {
+        self.player(id)?;
+        self.players
+            .get_mut(id.slot as usize)
+            .unwrap()
+            .protection
+            .pending_shutdown = true;
+        self.request_logout(id)
+    }
+    /// Host acknowledgement after UI close hooks have queued their gameplay work.
+    pub fn logout_modals_closed(&mut self, id: ActorId) -> Result<(), ActionError> {
+        self.player(id)?;
+        self.players
+            .get_mut(id.slot as usize)
+            .unwrap()
+            .logout_modal_close_pending = false;
+        Ok(())
+    }
+    /// Explicit logout bypasses socket grace but still drains Kotlin's save barriers.
     pub fn request_logout(&mut self, id: ActorId) -> Result<(), ActionError> {
         self.player(id)?;
         let p = self.players.get_mut(id.slot as usize).unwrap();
         if p.saving {
             return Ok(());
         }
+        p.pending_logout = true;
+        p.movement.abort();
+        self.process_pending_logout(id)
+    }
+    fn process_pending_logout(&mut self, id: ActorId) -> Result<(), ActionError> {
+        self.player(id)?;
+        let p = self.players.get_mut(id.slot as usize).unwrap();
+        if !p.pending_logout || p.saving {
+            return Ok(());
+        }
+        let closing_modal = p.has_modal;
+        if closing_modal {
+            p.has_modal = false;
+            p.logout_modal_close_pending = true;
+            self.events.push(WorldEvent::CloseModals { actor: id });
+        }
+        p.pending_areas.extend(p.areas.process(
+            p.movement.coords,
+            p.movement.coords,
+            true,
+            &self.areas,
+        ));
+        // The host handles CloseModals (including bank close queues) before the
+        // next tick. Never take the save snapshot ahead of those callbacks.
+        if p.logout_modal_close_pending
+            || p.protection.access_protected(false)
+            || !p.pending_areas.is_empty()
+            || p.queues.has_non_discardable()
+        {
+            return Ok(());
+        }
+        p.pending_logout = false;
         p.saving = true;
         p.movement.abort();
         p.data.coords = p.movement.coords;
@@ -1127,7 +1242,7 @@ impl World {
         random: &mut impl RandomSource,
     ) -> Result<(), ActionError> {
         let p = self.player(id)?;
-        if p.saving {
+        if p.saving || p.pending_logout {
             return Err(ActionError::LoggingOut);
         }
         match action {
@@ -1609,6 +1724,7 @@ impl World {
                         .map(|(_, e)| e.id)
                         .collect();
                     for slot in self.order.clone() {
+                        self.process_tower_arrival(slot);
                         self.process_prayer(slot);
                         self.resume_door(slot);
                         self.resume_pickup(slot);
@@ -1625,7 +1741,7 @@ impl World {
                             }
                             let mut access = crate::queues::Access {
                                 protected: p.protection.access_protected(p.has_modal),
-                                pending_logout: p.protection.pending_shutdown,
+                                pending_logout: p.pending_logout,
                             };
                             let mut pending_queues = std::mem::take(&mut p.queues);
                             if pending_queues
@@ -1635,6 +1751,9 @@ impl World {
                                     1024,
                                     |queues, access, event| {
                                         if matches!(&event, crate::queues::Event::CloseModals) {
+                                            if p.has_modal {
+                                                p.logout_modal_close_pending = true;
+                                            }
                                             let count = p.bank_count.take().is_some();
                                             let drop = p.pending_drop.take().is_some();
                                             let notice = p.prayer_notice.take().is_some();
@@ -1774,8 +1893,58 @@ impl World {
                                 });
                             }
                             p.queues = pending_queues;
+                            let mut main_failed = false;
                             let mut soft_timers = std::mem::take(&mut p.soft_timers);
                             soft_timers.process(self.clock.0, |timers, timer| {
+                                if let Some(config) = &self.music {
+                                    if timer == config.timer {
+                                        let context = crate::music_player::Context {
+                                            logged_in: p.protection.processed_clock > 0,
+                                            resizable: p.music_resizable,
+                                        };
+                                        match config.tick(&mut p.data.variables, context, random) {
+                                            Ok(events) => self.events.push(WorldEvent::Music {
+                                                actor: p.id,
+                                                events,
+                                            }),
+                                            Err(failure) => {
+                                                self.events.push(WorldEvent::Music {
+                                                    actor: p.id,
+                                                    events: failure.events,
+                                                });
+                                                self.events.push(WorldEvent::MusicError {
+                                                    actor: p.id,
+                                                    reason: failure.reason,
+                                                });
+                                                main_failed = true;
+                                                return false;
+                                            }
+                                        }
+                                    }
+                                }
+                                if let Some(config) = &self.session_vars {
+                                    match config.tick(
+                                        timer,
+                                        &mut p.data.variables,
+                                        self.clock.0,
+                                        self.unix_millis,
+                                    ) {
+                                        Ok(updates) if !updates.is_empty() => {
+                                            self.events.push(WorldEvent::SessionVariables {
+                                                actor: p.id,
+                                                updates,
+                                            })
+                                        }
+                                        Ok(_) => {}
+                                        Err(_) => {
+                                            timers.remove(timer);
+                                            self.events.push(WorldEvent::ActionRejected {
+                                                actor: p.id,
+                                                error: ActionError::InvalidStat,
+                                            });
+                                        }
+                                    }
+                                }
                                 if let Some(config) = &self.prayer_book {
                                     if timer == config.drain_timer {
                                         let result = config.tick(
@@ -1826,6 +1995,68 @@ impl World {
                                 true
                             });
                             p.soft_timers = soft_timers;
+                            if main_failed {
+                                // PlayerMainProcess.tryOrDisconnect stops the main
+                                // pass; forced logout bypasses socket grace, but
+                                // still waits for protected work and close hooks.
+                                p.pending_logout = true;
+                                p.movement.abort();
+                                continue;
+                            }
+                            let normalized = self.area_sources.normalize(p.movement.coords);
+                            p.pending_areas.extend(p.areas.process(
+                                p.movement.coords,
+                                normalized,
+                                p.pending_logout || p.protection.pending_shutdown,
+                                &self.areas,
+                            ));
+                            if !p.protection.access_protected(p.has_modal) {
+                                while let Some(event) = p.pending_areas.pop_front() {
+                                    self.events.push(WorldEvent::Area { actor: p.id, event });
+                                    if let (
+                                        Some(config),
+                                        crate::area_tracking::Event::Enter(area),
+                                    ) = (&self.music, event)
+                                    {
+                                        if config.catalog.modern.contains_key(&area)
+                                            || config.catalog.classic.contains_key(&area)
+                                        {
+                                            let context = crate::music_player::Context {
+                                                logged_in: p.protection.processed_clock > 0,
+                                                resizable: p.music_resizable,
+                                            };
+                                            match config.enter(
+                                                &mut p.data.variables,
+                                                context,
+                                                area,
+                                                random,
+                                            ) {
+                                                Ok(events) => self.events.push(WorldEvent::Music {
+                                                    actor: p.id,
+                                                    events,
+                                                }),
+                                                Err(failure) => {
+                                                    self.events.push(WorldEvent::Music {
+                                                        actor: p.id,
+                                                        events: failure.events,
+                                                    });
+                                                    self.events.push(WorldEvent::MusicError {
+                                                        actor: p.id,
+                                                        reason: failure.reason,
+                                                    });
+                                                    main_failed = true;
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            if main_failed {
+                                p.pending_logout = true;
+                                p.movement.abort();
+                                continue;
+                            }
                             for hit in p.hits.process(self.clock.0, false) {
                                 if !hit.valid_player_source(|id| alive_npcs.contains(&id)) {
                                     continue;
@@ -1842,6 +2073,34 @@ impl World {
                                 }
                             }
                             let actor = p.id;
+                            if p.pending_logout {
+                                // PlayerMainProcess clears interactions while fake-logged.
+                                p.npc_interaction = None;
+                                p.location_interaction = None;
+                                p.object_interaction = None;
+                                p.movement.abort();
+                                // Its final ifClose disconnect phase cancels dialog
+                                // suspensions, but ordinary delays continue to expire.
+                                let dialogue = p.dialogue.take().is_some();
+                                let count = p.bank_count.take().is_some();
+                                let drop = p.pending_drop.take().is_some();
+                                let notice = p.prayer_notice.take().is_some();
+                                let prayer =
+                                    matches!(p.prayer, Some(crate::prayer::State::Confirm { .. }));
+                                if prayer {
+                                    p.prayer = None;
+                                }
+                                if dialogue || count || drop || notice || prayer {
+                                    p.protection.suspended = false;
+                                }
+                                if p.has_modal {
+                                    p.logout_modal_close_pending = true;
+                                    self.events.push(WorldEvent::CloseModals { actor: p.id });
+                                }
+                                p.has_modal = false;
+                                p.queues.clear_weak();
+                                continue;
+                            }
                             self.process_player_retaliation(actor);
                             let interacted = self.process_npc_interaction(slot, true, random);
                             let p = self.players.get_mut(slot).unwrap();
@@ -1855,9 +2114,48 @@ impl World {
                         }
                         self.process_door(slot);
                         self.process_pickup(slot);
+                        // PlayerMainProcess.ifClose runs throughout socket grace,
+                        // before PlayerLogoutProcess decides whether to queue a save.
+                        let close = self
+                            .players
+                            .get(slot)
+                            .filter(|p| !p.saving && p.disconnect_grace.disconnected())
+                            .map(|p| p.id);
+                        if let Some(actor) = close {
+                            self.close_dialogs(actor).expect("current player");
+                            self.cancel_dialogue(actor).expect("current player");
+                            let p = self.players.get_mut(slot).unwrap();
+                            if p.has_modal {
+                                p.has_modal = false;
+                                p.logout_modal_close_pending = true;
+                                self.events.push(WorldEvent::CloseModals { actor });
+                            }
+                        }
                     }
                 }
                 Phase::PlayerLogout => {
+                    let due: Vec<_> = self
+                        .players
+                        .iter_mut()
+                        .filter_map(|(_, p)| {
+                            (!p.saving
+                                && !p.pending_logout
+                                && p.disconnect_grace
+                                    .tick(self.clock.0, p.logout_blocked_until))
+                            .then_some(p.id)
+                        })
+                        .collect();
+                    for actor in due {
+                        self.request_logout(actor).expect("current player");
+                    }
+                    let pending: Vec<_> = self
+                        .players
+                        .iter()
+                        .filter_map(|(_, p)| p.pending_logout.then_some(p.id))
+                        .collect();
+                    for actor in pending {
+                        self.process_pending_logout(actor).expect("current player");
+                    }
                     for _ in 0..200 {
                         let Some(id) = self.saved.pop_front() else {
                             break;
@@ -1874,7 +2172,7 @@ impl World {
                 }
                 Phase::PlayerLogin => {
                     for _ in 0..100 {
-                        let Some((connection, data)) = self.logins.pop_front() else {
+                        let Some((connection, mut data)) = self.logins.pop_front() else {
                             break;
                         };
                         self.reserved.remove(&data.account_id);
@@ -1901,10 +2199,36 @@ impl World {
                             ..Default::default()
                         };
                         let mut soft_timers = crate::player_timers::Timers::default();
+                        // Kotlin Player.softTimer uses currentMapClock, still -1 at
+                        // login. Input processing assigns the world clock next cycle.
+                        let protection = crate::protected::State::default();
+                        if let Some(config) = &self.login_resets {
+                            config
+                                .apply(&mut data.variables)
+                                .expect("validated login reset varbit configuration");
+                        }
+                        if let Some(config) = &self.session_vars {
+                            config
+                                .login(
+                                    &mut data.variables,
+                                    &mut soft_timers,
+                                    protection.current_clock,
+                                )
+                                .expect("validated session varbit configuration");
+                        }
                         if let Some(config) = &self.regeneration {
-                            config.login(&mut soft_timers, self.clock.0);
+                            config.login(&mut soft_timers, protection.current_clock);
+                        }
+                        if let Some(config) = &self.music {
+                            soft_timers
+                                .schedule(config.timer, protection.current_clock, 1)
+                                .expect("positive interval");
                         }
                         let player = Player {
+                            areas: Default::default(),
+                            pending_areas: Default::default(),
+                            music_resizable: false,
+                            login_cycle: self.clock.0,
                             aggressive_npc: None,
                             last_npc_combat: -1000,
                             last_pvp_combat: -1000,
@@ -1916,11 +2240,14 @@ impl World {
                             movement,
                             active_speed: Speed::Walk,
                             saving: false,
+                            pending_logout: false,
+                            logout_modal_close_pending: false,
+                            disconnect_grace: Default::default(),
                             run,
                             hits: crate::hits::Queue::default(),
                             death_queued: false,
                             logout_blocked_until: 0,
-                            protection: crate::protected::State::default(),
+                            protection,
                             food_delay: false,
                             location_interaction: None,
                             pending_door: None,
@@ -1950,6 +2277,7 @@ impl World {
                             connection,
                             actor: id,
                         });
+                        self.process_tower_arrival(slot);
                     }
                 }
                 Phase::PlayerPostTick => {
@@ -2006,6 +2334,384 @@ impl World {
 #[cfg(test)]
 mod tests {
     use super::*;
+    fn admitted_logout(world: &mut World) -> ActorId {
+        world.queue_login(1, account()).unwrap();
+        world.tick().unwrap();
+        world
+            .drain_events()
+            .into_iter()
+            .find_map(|e| match e {
+                WorldEvent::Initialized { actor, .. } => Some(actor),
+                _ => None,
+            })
+            .unwrap()
+    }
+    #[test]
+    fn logout_drains_area_exits_before_saving_and_keeps_account_reserved() {
+        let mut world = World::default();
+        world
+            .areas
+            .register_coord(account().coords, [7, 9, 7])
+            .unwrap();
+        let actor = admitted_logout(&mut world);
+        world.tick().unwrap();
+        world.drain_events();
+        world.request_logout(actor).unwrap();
+        world.request_logout(actor).unwrap();
+        assert!(!world
+            .drain_events()
+            .iter()
+            .any(|e| matches!(e, WorldEvent::Save { .. })));
+        assert_eq!(
+            world.submit(actor, Action::SetRunning(true)),
+            Err(ActionError::LoggingOut)
+        );
+        assert_eq!(
+            world.queue_login(2, account()),
+            Err(AdmissionError::Duplicate)
+        );
+        world.tick().unwrap();
+        let events = world.drain_events();
+        let exits = events
+            .iter()
+            .filter_map(|e| match e {
+                WorldEvent::Area {
+                    event: crate::area_tracking::Event::Exit(id),
+                    ..
+                } => Some(*id),
+                _ => None,
+            })
+            .collect::<Vec<_>>();
+        assert_eq!(exits, [7, 9]);
+        let save = events
+            .iter()
+            .position(|e| matches!(e, WorldEvent::Save { .. }))
+            .unwrap();
+        assert!(events[..save]
+            .iter()
+            .any(|e| matches!(e, WorldEvent::Area { .. })));
+        world.tick().unwrap();
+        assert!(!world
+            .drain_events()
+            .iter()
+            .any(|e| matches!(e, WorldEvent::Save { .. })));
+        world.saved(actor).unwrap();
+        world.tick().unwrap();
+        world.queue_login(3, account()).unwrap();
+    }
+    #[test]
+    fn pending_logout_waits_for_normal_queue_and_delay_but_accelerates_long_queue() {
+        let mut world = World::default();
+        let actor = admitted_logout(&mut world);
+        let p = world.players.get_mut(actor.slot as usize).unwrap();
+        p.queues
+            .add(
+                99,
+                crate::queues::Category::LongAccelerate,
+                100,
+                Deferred::BankCompression,
+            )
+            .unwrap();
+        p.queues
+            .add(
+                98,
+                crate::queues::Category::Normal,
+                2,
+                Deferred::BankCompression,
+            )
+            .unwrap();
+        world.delay_player(actor, 3).unwrap();
+        world.request_logout(actor).unwrap();
+        for _ in 0..3 {
+            assert!(!world
+                .drain_events()
+                .iter()
+                .any(|e| matches!(e, WorldEvent::Save { .. })));
+            world.tick().unwrap();
+        }
+        assert!(!world
+            .drain_events()
+            .iter()
+            .any(|e| matches!(e, WorldEvent::Save { .. })));
+        world.tick().unwrap();
+        assert!(world
+            .drain_events()
+            .iter()
+            .any(|e| matches!(e, WorldEvent::Save { .. })));
+    }
+    #[test]
+    fn shutdown_bypasses_delay_but_still_processes_required_queue() {
+        let mut world = World::default();
+        let actor = admitted_logout(&mut world);
+        world.delay_player(actor, 1000).unwrap();
+        let p = world.players.get_mut(actor.slot as usize).unwrap();
+        p.queues
+            .add(
+                99,
+                crate::queues::Category::LongAccelerate,
+                1000,
+                Deferred::BankCompression,
+            )
+            .unwrap();
+        world.request_shutdown(actor).unwrap();
+        assert!(!world
+            .drain_events()
+            .iter()
+            .any(|e| matches!(e, WorldEvent::Save { .. })));
+        world.tick().unwrap();
+        assert!(world
+            .drain_events()
+            .iter()
+            .any(|e| matches!(e, WorldEvent::Save { .. })));
+    }
+    #[test]
+    fn weak_and_long_discard_queues_do_not_block_logout() {
+        let mut world = World::default();
+        let actor = admitted_logout(&mut world);
+        let p = world.players.get_mut(actor.slot as usize).unwrap();
+        for category in [
+            crate::queues::Category::Weak,
+            crate::queues::Category::LongDiscard,
+        ] {
+            p.queues
+                .add(99, category, 1000, Deferred::BankCompression)
+                .unwrap();
+        }
+        world.request_logout(actor).unwrap();
+        assert!(world
+            .drain_events()
+            .iter()
+            .any(|e| matches!(e, WorldEvent::Save { .. })));
+    }
+    #[test]
+    fn modal_opened_by_pending_work_is_closed_before_save() {
+        let mut world = World::default();
+        let actor = admitted_logout(&mut world);
+        world.delay_player(actor, 2).unwrap();
+        world.request_logout(actor).unwrap();
+        world.set_modal_open(actor, true).unwrap();
+        world.tick().unwrap();
+        assert!(world
+            .drain_events()
+            .iter()
+            .any(|e| matches!(e, WorldEvent::CloseModals { .. })));
+        for _ in 0..3 {
+            world.tick().unwrap();
+            assert!(!world
+                .drain_events()
+                .iter()
+                .any(|e| matches!(e, WorldEvent::Save { .. })));
+        }
+        world.logout_modals_closed(actor).unwrap();
+        world.tick().unwrap();
+        assert!(world
+            .drain_events()
+            .iter()
+            .any(|e| matches!(e, WorldEvent::Save { .. })));
+    }
+    #[test]
+    fn queue_initiated_modal_close_must_be_acknowledged_before_same_cycle_logout() {
+        let mut world = World::default();
+        let actor = admitted_logout(&mut world);
+        world.set_modal_open(actor, true).unwrap();
+        world
+            .players
+            .get_mut(actor.slot as usize)
+            .unwrap()
+            .queues
+            .add(
+                99,
+                crate::queues::Category::Strong,
+                1,
+                Deferred::BankCompression,
+            )
+            .unwrap();
+        world.tick().unwrap();
+        assert!(world
+            .drain_events()
+            .iter()
+            .any(|e| matches!(e, WorldEvent::CloseModals { .. })));
+        world.request_logout(actor).unwrap();
+        assert!(!world
+            .drain_events()
+            .iter()
+            .any(|e| matches!(e, WorldEvent::Save { .. })));
+        world.queue_bank_compression(actor).unwrap();
+        world.logout_modals_closed(actor).unwrap();
+        world.tick().unwrap();
+        assert!(world
+            .drain_events()
+            .iter()
+            .any(|e| matches!(e, WorldEvent::Save { .. })));
+    }
+    #[test]
+    fn socket_grace_closes_modal_before_logout_without_skipping_required_callbacks() {
+        let mut world = World::default();
+        let actor = admitted_logout(&mut world);
+        world.set_modal_open(actor, true).unwrap();
+        world.client_disconnected(actor).unwrap();
+        world.tick().unwrap();
+        let events = world.drain_events();
+        assert!(events
+            .iter()
+            .any(|e| matches!(e, WorldEvent::CloseModals { .. })));
+        assert!(!events.iter().any(|e| matches!(e, WorldEvent::Save { .. })));
+        world.queue_bank_compression(actor).unwrap();
+        world.logout_modals_closed(actor).unwrap();
+        for _ in 0..15 {
+            world.tick().unwrap();
+            assert!(!world
+                .drain_events()
+                .iter()
+                .any(|e| matches!(e, WorldEvent::Save { .. })));
+        }
+        world.tick().unwrap();
+        assert!(world
+            .drain_events()
+            .iter()
+            .any(|e| matches!(e, WorldEvent::Save { .. })));
+    }
+    #[test]
+    fn logout_waits_for_host_modal_close_callbacks_and_their_queue() {
+        let mut world = World::default();
+        let actor = admitted_logout(&mut world);
+        world.set_modal_open(actor, true).unwrap();
+        world.request_logout(actor).unwrap();
+        world.request_logout(actor).unwrap();
+        let events = world.drain_events();
+        assert_eq!(
+            events
+                .iter()
+                .filter(|e| matches!(e, WorldEvent::CloseModals { .. }))
+                .count(),
+            1
+        );
+        assert!(!events.iter().any(|e| matches!(e, WorldEvent::Save { .. })));
+        world.tick().unwrap();
+        assert!(!world
+            .drain_events()
+            .iter()
+            .any(|e| matches!(e, WorldEvent::Save { .. })));
+        // Runtime close_interface queues BankInvScript compression before ack.
+        world.queue_bank_compression(actor).unwrap();
+        world.logout_modals_closed(actor).unwrap();
+        world.request_logout(actor).unwrap();
+        assert!(!world
+            .drain_events()
+            .iter()
+            .any(|e| matches!(e, WorldEvent::Save { .. })));
+        world.tick().unwrap();
+        assert!(world
+            .drain_events()
+            .iter()
+            .any(|e| matches!(e, WorldEvent::Save { .. })));
+    }
+    #[test]
+    fn music_exception_preserves_effects_stops_timer_pass_and_forces_logout() {
+        let (mut world, actor) = admitted();
+        let config = crate::music_player::tests::config();
+        let clock = world.clock.0;
+        let p = world.players.get_mut(actor.slot as usize).unwrap();
+        for (varp, value) in [
+            (config.mode, 1),
+            (config.volume, 255),
+            (config.playlist, 65281),
+            (config.area.base, 10),
+        ] {
+            p.data.variables.set(varp, value, false);
+        }
+        p.soft_timers.schedule(config.timer, clock - 1, 1).unwrap();
+        p.soft_timers.schedule(99, clock - 1, 1).unwrap();
+        world.music = Some(config);
+        world.drain_events();
+        world.tick().unwrap();
+        let events = world.drain_events();
+        let music = events
+            .iter()
+            .position(|e| {
+                matches!(e, WorldEvent::Music { events, .. }
+            if events.iter().any(|e| matches!(e, crate::music::Event::Midi { .. })))
+            })
+            .unwrap();
+        let error = events
+            .iter()
+            .position(|e| matches!(e, WorldEvent::MusicError { .. }))
+            .unwrap();
+        let save = events
+            .iter()
+            .position(|e| {
+                matches!(e, WorldEvent::Save { data, .. }
+            if data.variables.get(42) == 2 && data.variables.get(31) == 65281)
+            })
+            .unwrap();
+        assert!(music < error && error < save);
+        let p = world.players.get(actor.slot as usize).unwrap();
+        assert!(p.saving);
+        // A thrown callback leaves its own timer and later callbacks untouched.
+        assert_eq!(p.soft_timers.get(3).unwrap().expiry, clock);
+        assert_eq!(p.soft_timers.get(99).unwrap().expiry, clock);
+        assert!(world.accounts.contains_key(&p.data.account_id));
+    }
+    #[test]
+    fn music_area_hooks_wait_for_protected_access_and_persist_unlocks() {
+        let mut world = World::default();
+        let config = crate::music_player::tests::config();
+        let mode = config.mode;
+        world.music = Some(config);
+        let data = account();
+        world.areas.register_coord(data.coords, [9]).unwrap();
+        world.queue_login(1, data).unwrap();
+        world.tick().unwrap();
+        let actor = world
+            .drain_events()
+            .into_iter()
+            .find_map(|e| match e {
+                WorldEvent::Initialized { actor, .. } => Some(actor),
+                _ => None,
+            })
+            .unwrap();
+        world.data_mut(actor).unwrap().variables.set(mode, 1, false);
+        world.set_modal_open(actor, true).unwrap();
+        world.tick().unwrap();
+        assert_eq!(world.data(actor).unwrap().variables.get(20), 0);
+        assert!(!world
+            .drain_events()
+            .iter()
+            .any(|e| matches!(e, WorldEvent::Area { .. })));
+        world.set_modal_open(actor, false).unwrap();
+        world.tick().unwrap();
+        assert_eq!(world.data(actor).unwrap().variables.get(20), 6);
+        let events = world.drain_events();
+        assert_eq!(
+            events
+                .iter()
+                .filter(|e| matches!(
+                    e,
+                    WorldEvent::Area {
+                        event: crate::area_tracking::Event::Enter(9),
+                        ..
+                    }
+                ))
+                .count(),
+            1
+        );
+        assert!(events.iter().any(|e| matches!(e, WorldEvent::Music { events, .. } if events.iter().any(|e| matches!(e, crate::music::Event::Midi {..})))));
+        world.tick().unwrap();
+        assert!(!world
+            .drain_events()
+            .iter()
+            .any(|e| matches!(e, WorldEvent::Area { .. })));
+        world.request_logout(actor).unwrap();
+        assert!(!world
+            .drain_events()
+            .iter()
+            .any(|e| matches!(e, WorldEvent::Save { .. })));
+        world.tick().unwrap();
+        assert!(world
+            .drain_events()
+            .iter()
+            .any(|e| matches!(e, WorldEvent::Save { data, .. } if data.variables.get(20) == 6)));
+    }
     #[test]
     fn equipment_callbacks_capture_each_action_before_the_next_weapon_swap() {
         use crate::{
@@ -2813,6 +3519,42 @@ mod tests {
         assert_eq!(hits.len(), 2);
         assert_eq!((hits[0].applied, hits[0].displayed), (10, 20));
         assert_eq!(hits[1].applied, 0);
+    }
+    #[test]
+    fn socket_loss_waits_for_grace_and_keeps_account_reserved_until_saved() {
+        let mut w = World::default();
+        w.queue_login(1, account()).unwrap();
+        w.tick().unwrap();
+        let id = w
+            .drain_events()
+            .into_iter()
+            .find_map(|e| match e {
+                WorldEvent::Initialized { actor, .. } => Some(actor),
+                _ => None,
+            })
+            .unwrap();
+        w.client_disconnected(id).unwrap();
+        for _ in 0..16 {
+            w.tick().unwrap();
+            assert!(!w
+                .drain_events()
+                .iter()
+                .any(|e| matches!(e, WorldEvent::Save { .. })));
+            assert!(w.observe(id).is_ok());
+        }
+        assert_eq!(w.queue_login(2, account()), Err(AdmissionError::Duplicate));
+        w.tick().unwrap();
+        assert_eq!(
+            w.drain_events()
+                .iter()
+                .filter(|e| matches!(e, WorldEvent::Save { .. }))
+                .count(),
+            1
+        );
+        assert!(w.observe(id).is_ok());
+        w.saved(id).unwrap();
+        w.tick().unwrap();
+        assert!(w.observe(id).is_err());
     }
     #[test]
     fn duplicate_admission_movement_and_save_before_removal() {

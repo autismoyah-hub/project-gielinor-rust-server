@@ -34,6 +34,7 @@ $quoted = $runArgs | ForEach-Object { '"' + $_.Replace('\','/') + '"' }
 Set-Content "$oracleDir/run.args" $quoted -Encoding utf8
 & $java "@$oracleDir/run.args"
 if ($LASTEXITCODE -ne 0) { throw 'Prayer book oracle execution failed.' }
+[ordered]@{method='Original Prayer requirements4096 and PlayerTimerMap packing1024';oracleSha256=(Get-FileHash "$serverRoot/reference/PrayerBookOracle.kt").Hash;runtimeManifestSha256=(Get-FileHash "$serverRoot/integration/resource-manifest.json").Hash;fixtureSha256=(Get-FileHash "$serverRoot/crates/world/tests/fixtures/prayer-book.expected").Hash} | ConvertTo-Json | Set-Content "$oracleDir/provenance.json"
 & "$serverRoot/build.ps1" -Action test -CargoArgs @('-p','gielinor-world','--test','kotlin_prayer_book')
 
 

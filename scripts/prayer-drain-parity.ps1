@@ -34,5 +34,6 @@ $quoted = $runArgs | ForEach-Object { '"' + $_.Replace('\','/') + '"' }
 Set-Content "$oracleDir/run.args" $quoted -Encoding utf8
 & $java "@$oracleDir/run.args"
 if ($LASTEXITCODE -ne 0) { throw 'Prayer drain oracle execution failed.' }
+[ordered]@{method='Original PrayerDrainScript.drainPrayer with initialized instance delegates and synthetic prayer effects';oracleSha256=(Get-FileHash "$serverRoot/reference/PrayerDrainOracle.kt").Hash;runtimeManifestSha256=(Get-FileHash "$serverRoot/integration/resource-manifest.json").Hash;fixtureSha256=(Get-FileHash "$serverRoot/crates/world/tests/fixtures/prayer-drain.expected").Hash} | ConvertTo-Json | Set-Content "$oracleDir/provenance.json"
 & "$serverRoot/build.ps1" -Action test -CargoArgs @('-p','gielinor-world','--test','kotlin_prayer_drain')
 

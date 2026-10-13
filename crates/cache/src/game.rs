@@ -87,6 +87,29 @@ impl GameCache {
     pub fn headbars(&mut self) -> io::Result<BTreeMap<u32, crate::headbars::HeadbarType>> {
         self.definitions(33, |_, b| crate::headbars::HeadbarType::decode(b))
     }
+    pub fn db_rows(&mut self) -> io::Result<BTreeMap<u32, crate::db::Row>> {
+        self.definitions(38, |_, b| crate::db::Row::decode(b))
+    }
+    pub fn db_tables(&mut self) -> io::Result<BTreeMap<u32, crate::db::Table>> {
+        self.definitions(39, |_, b| crate::db::Table::decode(b))
+    }
+    /// MusicRepository checks actual AreaType membership, not symbol coverage.
+    pub fn area_ids(&mut self) -> io::Result<std::collections::BTreeSet<u16>> {
+        let types = self.definitions(18, |id, bytes| {
+            let mut reader = gielinor_protocol::buffer::Reader::new(bytes);
+            while reader.remaining() > 0 {
+                match reader.u8()? {
+                    0 => break,
+                    200 => {
+                        reader.u32()?;
+                    }
+                    _ => return Err(DecodeError::InvalidValue("unknown area opcode")),
+                }
+            }
+            u16::try_from(id).map_err(|_| DecodeError::InvalidValue("area id"))
+        })?;
+        Ok(types.into_values().collect())
+    }
     pub fn sequences(&mut self) -> io::Result<BTreeMap<u32, crate::sequences::SequenceType>> {
         self.definitions(12, |_, b| crate::sequences::SequenceType::decode(b))
     }

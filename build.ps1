@@ -6,7 +6,7 @@ Assert-ServerBuildCapacity
 $toolchain = 'C:\Projects\OSRSRSPS\rust-client\work\rustup\toolchains\stable-x86_64-pc-windows-gnu'
 $env:CARGO_HOME = "$PSScriptRoot/work/cargo"
 $env:CARGO_TARGET_DIR = "$PSScriptRoot/work/target"
-$env:CARGO_BUILD_JOBS = '2'
+$env:CARGO_BUILD_JOBS = '1'
 $env:RUSTC = "$toolchain/bin/rustc.exe"
 $env:RUSTDOC = "$toolchain/bin/rustdoc.exe"
 $env:PATH = "$toolchain/bin;$toolchain/lib/rustlib/x86_64-pc-windows-gnu/bin/self-contained;$env:PATH"

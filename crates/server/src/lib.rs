@@ -28,6 +28,8 @@ pub mod js5;
 pub mod kronos_combat;
 mod kronos_json;
 pub mod login_init;
+#[cfg(windows)]
+pub mod music;
 pub mod magic_config;
 pub mod melee_config;
 pub mod melee_equipment_config;
@@ -50,3 +52,5 @@ pub mod dialogue;
 pub mod prayer;
 #[cfg(windows)]
 pub mod prayer_book;
+#[cfg(windows)]
+pub mod message_box;

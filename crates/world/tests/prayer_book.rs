@@ -271,6 +271,27 @@ fn world_setup() -> (
     (world, actor)
 }
 #[test]
+fn pending_logout_cannot_enqueue_new_prayer_toggles() {
+    let (mut world, actor) = world_setup();
+    world.delay_player(actor, 5).unwrap();
+    world.request_logout(actor).unwrap();
+    assert_eq!(
+        world.select_prayer(actor, 0),
+        Err(gielinor_world::simulation::ActionError::LoggingOut)
+    );
+    for _ in 0..6 {
+        world.tick().unwrap();
+    }
+    assert_eq!(world.data(actor).unwrap().variables.get(0), 0);
+    assert!(!world.drain_events().iter().any(|e| matches!(
+        e,
+        gielinor_world::simulation::WorldEvent::PrayerBook {
+            event: Event::Drain(true),
+            ..
+        }
+    )));
+}
+#[test]
 fn world_soft_drain_continues_during_protection_and_cleans_up_next_cycle() {
     let (mut w, a) = world_setup();
     assert_eq!(w.data(a).unwrap().variables.get(3), 60);

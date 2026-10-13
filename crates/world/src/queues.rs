@@ -190,6 +190,14 @@ impl<A: Clone> Scheduler<A> {
     pub fn is_empty(&self) -> bool {
         self.len() == 0
     }
+    /// PlayerLogoutProcess scans the regular list only. Weak queues are not a
+    /// save barrier; LongDiscard is the sole discardable regular category.
+    pub fn has_non_discardable(&self) -> bool {
+        self.regular
+            .nodes
+            .values()
+            .any(|node| node.active && node.queue.category != Category::LongDiscard)
+    }
     pub fn contains(&self, id: i32) -> bool {
         self.snapshot().iter().any(|q| q.id == id)
     }
