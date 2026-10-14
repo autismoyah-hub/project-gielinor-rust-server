@@ -1,4 +1,4 @@
-//! Prayer.bury: animation/delay before consumption, necklace restoration, and skill XP.
+//! Prayer burial and chapel offerings: delayed consumption and source XP modifiers.
 use crate::{
     inventory::{Catalog, Delete, Inventory},
     simulation::PlayerData,
@@ -36,18 +36,42 @@ pub struct Completed {
 }
 #[derive(Clone, Copy, Debug)]
 pub enum State {
-    Confirm { token: u64, bone: i32 },
+    Confirm {
+        token: u64,
+        bone: i32,
+    },
     Bury(Pending),
+    Offer {
+        bone: i32,
+        animation: u16,
+        offered: bool,
+        xp: Option<f64>,
+        continuation: Option<crate::tower_offering::Continuation>,
+    },
+    CrateWalk {
+        step: u8,
+        attempts: u8,
+        pending: Option<CoordGrid>,
+    },
 }
 #[derive(Debug)]
 pub enum Event {
-    Confirm { token: u64 },
+    Confirm {
+        token: u64,
+    },
     Closed,
     Animation(u16),
-    Completed { skill: u8, result: Completed },
+    Completed {
+        skill: u8,
+        result: Completed,
+    },
     Message(&'static str),
+    /// Coroutine return value, emitted only on normal completion, never cancellation.
+    OfferingFinished {
+        offered: bool,
+    },
 }
-fn contains(inv: &Inventory, bone: i32) -> bool {
+pub(crate) fn contains(inv: &Inventory, bone: i32) -> bool {
     inv.slots()
         .iter()
         .flatten()
@@ -81,10 +105,44 @@ impl Config {
         catalog: &Catalog,
         pending: Pending,
     ) -> Result<Option<Completed>, Error> {
+        self.finish_with_multiplier(
+            player,
+            catalog,
+            pending,
+            1.0,
+            self.bones.get(&pending.bone).copied(),
+        )
+    }
+    /// Prayer.offerOnAltar omits necklace restoration and applies the chapel
+    /// multiplier before the worn modifier and account XP rate.
+    pub fn finish_offering(
+        &self,
+        player: &mut PlayerData,
+        catalog: &Catalog,
+        bone: i32,
+    ) -> Result<Option<Completed>, Error> {
+        self.finish_offering_xp(player, catalog, bone, self.bones.get(&bone).copied())
+    }
+    pub(crate) fn finish_offering_xp(
+        &self,
+        player: &mut PlayerData,
+        catalog: &Catalog,
+        bone: i32,
+        xp: Option<f64>,
+    ) -> Result<Option<Completed>, Error> {
+        self.finish_with_multiplier(player, catalog, Pending { bone, restore: 0 }, 2.0, xp)
+    }
+    fn finish_with_multiplier(
+        &self,
+        player: &mut PlayerData,
+        catalog: &Catalog,
+        pending: Pending,
+        multiplier: f64,
+        xp: Option<f64>,
+    ) -> Result<Option<Completed>, Error> {
         if !contains(&player.inventory, pending.bone) {
             return Ok(None);
         }
-        let xp = *self.bones.get(&pending.bone).ok_or(Error::MissingBone)?;
         // Kotlin invDel searches from slot0, not the originally clicked slot.
         player
             .inventory
@@ -106,6 +164,8 @@ impl Config {
         } else {
             None
         };
+        // Source resolves the XP parameter after deleting the bone.
+        let xp = xp.ok_or(Error::MissingBone)?;
         let percent = player
             .equipment
             .slots()
@@ -114,7 +174,7 @@ impl Config {
             .fold(0i32, |sum, item| {
                 sum.wrapping_add(self.worn_xp_percent.get(&item.id).copied().unwrap_or(0))
             });
-        let xp = xp * (1.0 + percent as f64 / 100.0);
+        let xp = xp * multiplier * (1.0 + percent as f64 / 100.0);
         let advancement = skills::advance(
             &mut player.stats,
             self.skill,

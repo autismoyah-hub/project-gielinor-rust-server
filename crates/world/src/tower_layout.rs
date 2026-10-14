@@ -242,3 +242,10 @@ mod tests {
         assert_eq!(template().len(), 40);
     }
 }
+
+/// TowerMap.contains: the whole allocated square on planes zero and one.
+pub fn contains(origin: crate::CoordGrid, coords: crate::CoordGrid) -> bool {
+    (0..128).contains(&(coords.x() - origin.x()))
+        && (0..128).contains(&(coords.z() - origin.z()))
+        && coords.level() <= 1
+}

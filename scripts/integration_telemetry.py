@@ -49,8 +49,17 @@ def import_run(run,out,environment,scenario,baseline,fixture,cache,detail='packe
     evidence=lambda name,line=None:{'file':str(run/name),'line':line}
     try:
         w.emit('context',{'baseline_id':baseline,'client_sha256':result.get('clientHash'),'fixture_id':fixture,'cache_id':cache,'server_sha256':server.get('binaryHash'),'input_mode':result.get('mode'),'revision':'239.1'},evidence('result.json'))
+        invocation=read('client-invocation.json')
+        if invocation:
+            w.emit('client.invocation',{
+                'start_utc':invocation.get('startUtc'), 'end_utc':invocation.get('endUtc'),
+                'elapsed_milliseconds':invocation.get('elapsedMilliseconds'),
+                'transport_connect_utc':None,
+                'scope':'Process invocation including asset loading; not transport or gameplay timing'
+            },evidence('client-invocation.json'),timestamp=invocation.get('startUtc'))
         if (run/'before-state.json').exists():w.emit('state.initial',state(run/'before-state.json'),evidence('before-state.json'))
         if (run/'before-tower-state.json').exists():w.emit('tower.initial',read('before-tower-state.json'),evidence('before-tower-state.json'))
+        if (run/'before-diary-state.json').exists():w.emit('diary.initial',read('before-diary-state.json'),evidence('before-diary-state.json'))
         if (run/'client.log').exists():
             with (run/'client.log').open(encoding='utf-8-sig',errors='replace') as lines:
                 for number,line in enumerate(lines,1):
@@ -70,6 +79,14 @@ def import_run(run,out,environment,scenario,baseline,fixture,cache,detail='packe
                         w.emit('action.effect',{'action':'prayer.requirement_notice','parameters':{'text':line.split(':',1)[1].strip()},'client_dispatch_result':'effect_observed','server_acceptance':None},evidence('client.log',number))
                     if line.startswith('Prayer scenario observed activation, deactivation, requirement notice and native Continue closure'):
                         w.emit('action.effect',{'action':'prayer.notice_closed','parameters':{'interface':229},'client_dispatch_result':'effect_observed','server_acceptance':None},evidence('client.log',number))
+                    tower_effects = {
+                        'Server confirmed five hides converted, unchanged Crafting XP and bronze-axe bounty message': ('tower.tanning', {'hides':0,'leather':5,'crafting_xp_unchanged':True,'bounty_message':'The chest holds a bronze axe.'}),
+                        'Server confirmed chest granted one bronze axe and retained five leather': ('tower.chest_paid', {'axe':1,'leather':5}),
+                        'Server confirmed repeated chest Search is empty with one axe total': ('tower.chest_repeat', {'axe':1,'empty_message':True}),
+                    }
+                    if line.strip() in tower_effects:
+                        action,parameters=tower_effects[line.strip()]
+                        w.emit('action.effect',{'action':action,'parameters':parameters,'client_dispatch_result':'effect_observed','server_acceptance':None},evidence('client.log',number))
                     target=re.search(r'Talk-to man definition (\d+), slot (\d+)',line)
                     if target:w.emit('action.target',{'action':'npc.talk','definition':int(target[1])},evidence('client.log',number))
                     if 'Server NPC response:' in line:w.emit('dialogue.response',{'text':line.split('Server NPC response:',1)[1].strip()},evidence('client.log',number))
@@ -107,6 +124,7 @@ def import_run(run,out,environment,scenario,baseline,fixture,cache,detail='packe
         w.emit('persistence.completion',{'save_completed':logout.get('save_completed')},evidence('logout-observation.json'),observation='observed' if logout else 'unavailable')
         if (run/'state.json').exists():w.emit('state.persisted',state(run/'state.json'),evidence('state.json'))
         if (run/'tower-state.json').exists():w.emit('tower.persisted',read('tower-state.json'),evidence('tower-state.json'))
+        if (run/'diary-state.json').exists():w.emit('diary.persisted',read('diary-state.json'),evidence('diary-state.json'))
         w.emit('session.end',{'client_exit':result.get('clientExit'),'server_exit':shutdown.get('exitCode'),'forced':shutdown.get('forced'),'server_exited':shutdown.get('exited')},evidence('shutdown.json'),timestamp=shutdown.get('finishedUtc'))
     finally:w.close()
 def compare(a,b):
@@ -124,7 +142,12 @@ def compare(a,b):
     completion=[[e for e in rows if e['kind']=='persistence.completion'] for rows in (a,b)]
     if any(len(rows)!=1 or rows[0]['observation']!='observed' or rows[0]['data'].get('save_completed') is not True for rows in completion):
         return dict(report,status='BLOCKED',classification='logout save completion is UNKNOWN or incomplete',persistence_evidence=completion)
-    kinds=('state.initial','tower.initial','action.effect','action.target','client.continue','dialogue.response','prayer.dispatch','prayer.continue','prayer.client_state','prayer.server_mirror','state.persisted','tower.persisted','session.end','interface.hidden','npc.state','object.state','server.decision')
+    diary=[e for events in (a,b) for e in events if e['kind'] in ('diary.initial','diary.persisted')]
+    if any(e['data'].get('state',{}).get('known') is not True or
+           ('bones_offered' in e['data'].get('state',{}) and e['data']['state']['bones_offered'] is None)
+           for e in diary):
+        return dict(report,status='BLOCKED',classification='Tower diary persistence is UNKNOWN',diary_evidence=diary)
+    kinds=('state.initial','tower.initial','diary.initial','action.effect','action.target','client.continue','dialogue.response','prayer.dispatch','prayer.continue','prayer.client_state','prayer.server_mirror','state.persisted','tower.persisted','diary.persisted','session.end','interface.hidden','npc.state','object.state','server.decision')
     for kind in kinds:
         left=[e for e in a if e['kind']==kind];right=[e for e in b if e['kind']==kind]
         report['coverage'][kind]={'kotlin':len(left),'rust':len(right)}

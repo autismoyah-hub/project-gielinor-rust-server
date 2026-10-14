@@ -1,6 +1,53 @@
 //! FloorOneRules diary transitions. Gameplay callbacks and durable storage are
 //! separate: marking a bounty paid here never inserts its items into a container.
 pub const CAPS: [i32; 6] = [5, 5, 3, 5, 5, 15];
+/// Durable diary fields. Skill levels and the arrival staff flag are supplied
+/// from their existing authorities when constructing the presentation marks.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub struct Progress {
+    pub counts: [i32; 6],
+    pub actions: [bool; 7],
+    pub done: [bool; 11],
+    pub pending: [bool; 2],
+    pub bounty: i32,
+    pub schema11: bool,
+    pub imp_bones: bool,
+}
+impl Progress {
+    /// Durable portion of TowerSession.hasDiaryProgress. The separately restored
+    /// bonesOffered flag is retained by the host's arrival projection.
+    pub fn has_progress(self) -> bool {
+        self.counts[0] > 0
+            || self.counts[1] > 0
+            || self.done.iter().enumerate().any(|(i, v)| i != 1 && *v)
+    }
+    pub fn marks(self, levels: [i32; 3], staff_taken: bool) -> Marks {
+        Marks {
+            counts: self.counts,
+            levels,
+            actions: self.actions,
+            done: self.done,
+            pending: self.pending,
+            bounty: self.bounty,
+            schema11: self.schema11,
+            imp_bones: self.imp_bones,
+            staff_taken,
+        }
+    }
+}
+impl From<Marks> for Progress {
+    fn from(m: Marks) -> Self {
+        Self {
+            counts: m.counts,
+            actions: m.actions,
+            done: m.done,
+            pending: m.pending,
+            bounty: m.bounty,
+            schema11: m.schema11,
+            imp_bones: m.imp_bones,
+        }
+    }
+}
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub struct Marks {
     /// Tans, offerings, bows, cooked shrimp, crafted minds, fletched arrows.
@@ -48,7 +95,45 @@ pub struct BossCredit {
     pub drop_imp_bones: bool,
     pub warden_first_loot: bool,
 }
+/// FloorOneScript.syncDiary side effects, distinct from the pure rules sync.
+/// The original drops bones on every transition into bounty 10, even when the
+/// historical impBones flag was already set. Never use the flag to suppress it.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct Sync {
+    pub marks: Marks,
+    pub quiet_imp: bool,
+    pub message: Option<&'static str>,
+}
+pub fn bounty_chat(row: i32) -> &'static str {
+    match row {
+        1 => "The chest holds a bronze axe.",
+        2 => "The chest holds a needle and thread.",
+        3 => "The chest holds a bronze pickaxe.",
+        4 => "The chest holds a tinderbox.",
+        5 => "The chest holds a small fishing net.",
+        6 => "The chest holds a knife.",
+        7 => "The chest holds a hammer.",
+        8 => "The chest holds an attack potion.",
+        9 => "The chest holds bronze arrows.",
+        10 => "The chest holds 8 coins.",
+        11 => "The chest holds 50 coins and a beer.",
+        _ => "The chest is empty.",
+    }
+}
 impl Marks {
+    pub fn session_sync(self) -> Sync {
+        let mut marks = self.sync();
+        let quiet_imp = marks.bounty == 10 && self.bounty != 10;
+        if quiet_imp && !self.imp_bones {
+            marks.imp_bones = true;
+        }
+        Sync {
+            marks,
+            quiet_imp,
+            message: (marks.bounty != self.bounty && marks.bounty != 0)
+                .then(|| bounty_chat(marks.bounty)),
+        }
+    }
     pub fn is_done(self, row: i32) -> bool {
         (1..=11).contains(&row) && self.done[(row - 1) as usize]
     }

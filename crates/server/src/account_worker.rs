@@ -41,6 +41,7 @@ pub enum Completion {
     },
 }
 pub struct Worker {
+    pub login_messages: gielinor_storage::accounts::LoginMessages,
     requests: Option<SyncSender<Request>>,
     completed: Option<Receiver<Completion>>,
     thread: Option<JoinHandle<()>>,
@@ -60,17 +61,23 @@ impl Worker {
                     let db = Database::open(&settings.database, false).map_err(|e| e.message)?;
                     let mut accounts = Accounts::from_database(db);
                     accounts.initialize().map_err(|e| e.message)?;
+                    let messages = accounts
+                        .login_messages(settings.authentication.realm)
+                        .map_err(|e| e.message)?;
                     let passwords = PasswordHasher::load(&settings.argon2_library)
                         .map_err(|e| format!("{e:?}"))?;
-                    Ok::<_, String>(Service {
-                        accounts,
-                        passwords,
-                        config: settings.authentication,
-                    })
+                    Ok::<_, String>((
+                        Service {
+                            accounts,
+                            passwords,
+                            config: settings.authentication,
+                        },
+                        messages,
+                    ))
                 })();
                 let mut service = match service {
-                    Ok(service) => {
-                        let _ = ready.send(Ok(()));
+                    Ok((service, messages)) => {
+                        let _ = ready.send(Ok(messages));
                         service
                     }
                     Err(error) => {
@@ -100,7 +107,8 @@ impl Worker {
             })
             .map_err(|e| e.to_string())?;
         match started.recv() {
-            Ok(Ok(())) => Ok(Self {
+            Ok(Ok(login_messages)) => Ok(Self {
+                login_messages,
                 requests: Some(requests),
                 completed: Some(completed),
                 thread: Some(thread),

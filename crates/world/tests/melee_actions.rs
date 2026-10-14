@@ -850,3 +850,508 @@ fn spell_attempt_consumes_before_cast_xp_and_rejects_stale_or_logging_out_actor(
         .attempt_spell_cast(actor, &wrong_book, 501, 1.0)
         .is_err());
 }
+fn setup_elemental() -> (World, ActorId, NpcId) {
+    use gielinor_world::{
+        elemental_spell as elemental, inventory::Item, projectile, runes::Requirement, spell_cast,
+        spell_combat,
+    };
+    let (mut w, actor, target) = setup();
+    let common = w.melee.as_ref().unwrap();
+    let zero = common.invocation;
+    w.spell_combat = Some(spell_combat::Config {
+        equipment: Default::default(),
+        npcs: [(
+            1,
+            spell_combat::NpcDefence {
+                bonus: 0,
+                uses_defence: false,
+                weakness_percent: 0,
+            },
+        )]
+        .into(),
+        prayers: [zero; 5],
+        mark: zero,
+        charge: zero,
+        stat: 6,
+    });
+    let spell = autocast::Spell {
+        item: 600,
+        requirements: vec![Requirement {
+            item: 500,
+            count: 1,
+            worn_slot: None,
+        }],
+    };
+    w.elemental_spells = Some(elemental::Catalog {
+        spells: [(
+            600,
+            elemental::Spell {
+                selection: spell_cast::Definition {
+                    spell: spell.clone(),
+                    book: Some(0),
+                    level: 1,
+                    cast_xp: 5.5,
+                },
+                definition: spell_cast::Definition {
+                    spell: spell.clone(),
+                    book: Some(0),
+                    level: 1,
+                    cast_xp: 5.5,
+                },
+                tier: elemental::Tier::Strike,
+                staff_animation: 711,
+                unarmed_animation: 1162,
+                launch: 90,
+                travel: 91,
+                impact: 92,
+                cast_sound: 220,
+                hit_sound: 221,
+            },
+        )]
+        .into(),
+        staves: Default::default(),
+        projectile: projectile::Style {
+            start_height: 172,
+            end_height: 124,
+            delay: 20,
+            angle: 16,
+            length_adjustment: 0,
+            progress: 64,
+            step_multiplier: 5,
+        },
+        splash_spot: 85,
+        splash_sound: 222,
+        sunfire: 501,
+        global_xp_rate: 1.0,
+    });
+    w.object_types.stackable.insert(500);
+    let data = w.data_mut(actor).unwrap();
+    data.inventory
+        .restore_slot(
+            0,
+            Some(Item {
+                id: 500,
+                count: 5,
+                vars: 0,
+            }),
+        )
+        .unwrap();
+    data.stats.set_base(6, 13);
+    data.stats.set_current(6, 13);
+    w.combat_wear
+        .as_mut()
+        .unwrap()
+        .autocast
+        .spells
+        .insert(1, spell);
+    (w, actor, target)
+}
+struct SpellDraws {
+    miss: bool,
+    draws: Vec<u32>,
+}
+impl RandomSource for SpellDraws {
+    fn below(&mut self, bound: u32) -> u32 {
+        self.draws.push(bound);
+        if bound == 10000 {
+            if self.miss {
+                9999
+            } else {
+                0
+            }
+        } else {
+            bound - 1
+        }
+    }
+}
+#[test]
+fn elemental_hit_consumes_runes_awards_cast_then_damage_xp_and_delays_impact() {
+    let (mut w, actor, target) = setup_elemental();
+    let mut random = SpellDraws {
+        miss: false,
+        draws: vec![],
+    };
+    assert!(w
+        .attack_npc_elemental(actor, target, 600, false, &mut random)
+        .unwrap());
+    assert_eq!(random.draws, [10000, 9]);
+    assert_eq!(w.data(actor).unwrap().inventory.get(0).unwrap().count, 4);
+    assert_eq!(w.data(actor).unwrap().stats.fine_xp(6), 215);
+    assert_eq!(w.npc(target).unwrap().stats[3], 50);
+    let events = w.drain_events();
+    let cast = events
+        .iter()
+        .position(|e| matches!(e, WorldEvent::SkillAdvanced { skill: 6, .. }))
+        .unwrap();
+    let launch = events
+        .iter()
+        .position(|e| matches!(e, WorldEvent::PlayerSpotAnimation { height: 92, .. }))
+        .unwrap();
+    let xp = events
+        .iter()
+        .position(|e| matches!(e, WorldEvent::CombatXp { .. }))
+        .unwrap();
+    assert!(cast < launch && launch < xp);
+    assert!(events.iter().any(|e| matches!(
+        e,
+        WorldEvent::NpcSpotAnimation {
+            spot: 92,
+            delay: 40,
+            height: 124,
+            ..
+        }
+    )));
+    assert!(events
+        .iter()
+        .any(|e| matches!(e,WorldEvent::AreaSound(s) if s.id==221&&s.delay==40&&s.radius==10)));
+    w.tick().unwrap();
+    assert_eq!(w.npc(target).unwrap().stats[3], 50);
+    w.tick().unwrap();
+    assert_eq!(w.npc(target).unwrap().stats[3], 42);
+}
+#[test]
+fn elemental_splash_keeps_cast_xp_and_uses_one_cycle_retaliation() {
+    let (mut w, actor, target) = setup_elemental();
+    let clock = w.clock.0;
+    let mut random = SpellDraws {
+        miss: true,
+        draws: vec![],
+    };
+    assert!(w
+        .attack_npc_elemental(actor, target, 600, false, &mut random)
+        .unwrap());
+    assert_eq!(random.draws, [10000]);
+    assert_eq!(w.data(actor).unwrap().stats.fine_xp(6), 55);
+    assert_eq!(
+        w.npc(target).unwrap().retaliate_due.front(),
+        Some(&clock.wrapping_add(1))
+    );
+    let events = w.drain_events();
+    assert!(!events
+        .iter()
+        .any(|e| matches!(e, WorldEvent::CombatXp { .. })));
+    assert!(events.iter().any(|e| matches!(
+        e,
+        WorldEvent::NpcSpotAnimation {
+            spot: 85,
+            delay: 40,
+            ..
+        }
+    )));
+    assert!(events
+        .iter()
+        .any(|e| matches!(e,WorldEvent::AreaSound(s) if s.id==222)));
+    w.tick().unwrap();
+    w.tick().unwrap();
+    assert_eq!(w.npc(target).unwrap().stats[3], 50);
+}
+#[test]
+fn elemental_missing_runes_sets_delay_without_launch_or_randomness() {
+    let (mut w, actor, target) = setup_elemental();
+    w.data_mut(actor)
+        .unwrap()
+        .inventory
+        .restore_slot(0, None)
+        .unwrap();
+    let mut random = SpellDraws {
+        miss: false,
+        draws: vec![],
+    };
+    assert!(!w
+        .attack_npc_elemental(actor, target, 600, false, &mut random)
+        .unwrap());
+    assert!(random.draws.is_empty());
+    assert!(w.is_attack_delayed(actor).unwrap());
+    assert_eq!(w.data(actor).unwrap().stats.fine_xp(6), 0);
+    assert!(!w.drain_events().iter().any(|e| matches!(
+        e,
+        WorldEvent::Projectile(_) | WorldEvent::SkillAdvanced { .. }
+    )));
+}
+
+#[test]
+fn manual_spell_routes_at_magic_range_without_autocast_and_stops_after_cast() {
+    let (mut w, actor, target) = setup_elemental();
+    let start = w.observe(actor).unwrap().coords;
+    w.submit(
+        actor,
+        Action::CastNpc {
+            target,
+            spell: 600,
+            control: false,
+        },
+    )
+    .unwrap();
+    let mut rng = SpellDraws {
+        miss: false,
+        draws: vec![],
+    };
+    w.tick_with_random(&mut rng).unwrap();
+    assert_eq!(w.observe(actor).unwrap().coords, start);
+    assert_eq!(w.data(actor).unwrap().inventory.get(0).unwrap().count, 4);
+    assert_eq!(rng.draws, [10000, 9]);
+    for _ in 0..6 {
+        w.tick_with_random(&mut Zero).unwrap();
+    }
+    assert_eq!(w.data(actor).unwrap().inventory.get(0).unwrap().count, 4);
+}
+#[test]
+fn manual_missing_runes_does_not_start_attack_cooldown() {
+    let (mut w, actor, target) = setup_elemental();
+    w.data_mut(actor)
+        .unwrap()
+        .inventory
+        .restore_slot(0, None)
+        .unwrap();
+    w.submit(
+        actor,
+        Action::CastNpc {
+            target,
+            spell: 600,
+            control: false,
+        },
+    )
+    .unwrap();
+    let mut rng = SpellDraws {
+        miss: false,
+        draws: vec![],
+    };
+    w.tick_with_random(&mut rng).unwrap();
+    assert!(rng.draws.is_empty());
+    assert!(!w.is_attack_delayed(actor).unwrap());
+    assert_eq!(w.data(actor).unwrap().stats.fine_xp(6), 0);
+    assert!(!w
+        .drain_events()
+        .iter()
+        .any(|e| matches!(e, WorldEvent::Projectile(_))));
+}
+
+#[test]
+fn manual_access_failure_precedes_nonattackable_target_and_preserves_runes() {
+    let (mut w, actor, target) = setup_elemental();
+    w.npc_options.types.get_mut(&1).unwrap().operations[1] = None;
+    w.data_mut(actor).unwrap().stats.set_current(6, 0);
+    w.submit(
+        actor,
+        Action::CastNpc {
+            target,
+            spell: 600,
+            control: false,
+        },
+    )
+    .unwrap();
+    w.tick_with_random(&mut Zero).unwrap();
+    let events = w.drain_events();
+    assert!(events.iter().any(|e| matches!(e, WorldEvent::CombatFeedback { events, .. }
+        if events.iter().any(|e| matches!(e, autocast::Event::Message(m) if m.contains("Magic level"))))));
+    assert!(!events.iter().any(|e| matches!(
+        e,
+        WorldEvent::NpcInteraction {
+            event: gielinor_world::npc_interaction::Event::Message("You can't attack this npc."),
+            ..
+        }
+    )));
+    assert_eq!(w.data(actor).unwrap().inventory.get(0).unwrap().count, 5);
+    assert!(!w.is_attack_delayed(actor).unwrap());
+}
+
+#[test]
+fn manual_selection_and_elemental_consumption_use_distinct_requirements() {
+    let (mut w, actor, target) = setup_elemental();
+    // Cache selection passes at level13, but content override requires14.
+    w.elemental_spells
+        .as_mut()
+        .unwrap()
+        .spells
+        .get_mut(&600)
+        .unwrap()
+        .definition
+        .level = 14;
+    w.submit(
+        actor,
+        Action::CastNpc {
+            target,
+            spell: 600,
+            control: false,
+        },
+    )
+    .unwrap();
+    w.tick_with_random(&mut Zero).unwrap();
+    assert!(w.is_attack_delayed(actor).unwrap());
+    assert_eq!(w.data(actor).unwrap().inventory.get(0).unwrap().count, 5);
+    assert_eq!(w.data(actor).unwrap().stats.fine_xp(6), 0);
+    assert!(!w
+        .drain_events()
+        .iter()
+        .any(|e| matches!(e, WorldEvent::Projectile(_))));
+    // The inverse fails before cooldown even if content requirements are easier.
+    let (mut w, actor, target) = setup_elemental();
+    w.elemental_spells
+        .as_mut()
+        .unwrap()
+        .spells
+        .get_mut(&600)
+        .unwrap()
+        .selection
+        .level = 14;
+    w.submit(
+        actor,
+        Action::CastNpc {
+            target,
+            spell: 600,
+            control: false,
+        },
+    )
+    .unwrap();
+    w.tick_with_random(&mut Zero).unwrap();
+    assert!(!w.is_attack_delayed(actor).unwrap());
+    assert_eq!(w.data(actor).unwrap().inventory.get(0).unwrap().count, 5);
+}
+
+#[test]
+fn successful_manual_cast_continues_with_selected_autocast_spell() {
+    use gielinor_world::{attack_profile, inventory::Item};
+    let (mut w, actor, target) = setup_elemental();
+    let mut second = w.elemental_spells.as_ref().unwrap().spells[&600].clone();
+    second.definition.spell.item = 601;
+    second.definition.spell.requirements[0].count = 2;
+    second.selection = second.definition.clone();
+    second.impact = 93;
+    let selected = second.selection.spell.clone();
+    w.elemental_spells
+        .as_mut()
+        .unwrap()
+        .spells
+        .insert(601, second);
+    let auto = &mut w.combat_wear.as_mut().unwrap().autocast;
+    auto.weapons.insert(
+        100,
+        autocast::Weapon {
+            category: 18,
+            additional: Default::default(),
+        },
+    );
+    auto.spells.insert(2, selected);
+    auto.autocast_items.insert(2, 601);
+    let enabled = auto.enabled;
+    let choice = auto.spell;
+    w.autocast_selection.as_mut().unwrap().spells.insert(
+        2,
+        autocast_select::Access {
+            book: Some(0),
+            level: 1,
+        },
+    );
+    w.attack_profiles.weapons.insert(
+        100,
+        attack_profile::Weapon {
+            category: 18,
+            range: 1,
+            speed: 5,
+        },
+    );
+    w.attack_profiles.types.insert(18, 4);
+    w.attack_profiles.styles.insert(18, 8);
+    let data = w.data_mut(actor).unwrap();
+    data.equipment
+        .restore_slot(
+            3,
+            Some(Item {
+                id: 100,
+                count: 1,
+                vars: 0,
+            }),
+        )
+        .unwrap();
+    enabled.set(&mut data.variables, 1).unwrap();
+    choice.set(&mut data.variables, 2).unwrap();
+    w.submit(
+        actor,
+        Action::CastNpc {
+            target,
+            spell: 600,
+            control: false,
+        },
+    )
+    .unwrap();
+    w.tick_with_random(&mut Zero).unwrap();
+    assert_eq!(w.data(actor).unwrap().inventory.get(0).unwrap().count, 4);
+    w.drain_events();
+    for _ in 0..5 {
+        w.tick_with_random(&mut Zero).unwrap();
+    }
+    assert_eq!(w.data(actor).unwrap().inventory.get(0).unwrap().count, 2);
+    assert!(w
+        .drain_events()
+        .iter()
+        .any(|e| matches!(e, WorldEvent::NpcSpotAnimation { spot: 93, .. })));
+}
+
+#[test]
+fn manual_spell_waits_for_cooldown_without_consuming_then_casts_once() {
+    let (mut w, actor, target) = setup_elemental();
+    w.set_next_attack_delay(actor, 3).unwrap();
+    w.submit(
+        actor,
+        Action::CastNpc {
+            target,
+            spell: 600,
+            control: false,
+        },
+    )
+    .unwrap();
+    let mut rng = SpellDraws {
+        miss: false,
+        draws: vec![],
+    };
+    for _ in 0..2 {
+        w.tick_with_random(&mut rng).unwrap();
+    }
+    assert!(rng.draws.is_empty());
+    assert_eq!(w.data(actor).unwrap().inventory.get(0).unwrap().count, 5);
+    for _ in 0..2 {
+        w.tick_with_random(&mut rng).unwrap();
+    }
+    assert_eq!(rng.draws, [10000, 9]);
+    assert_eq!(w.data(actor).unwrap().inventory.get(0).unwrap().count, 4);
+}
+#[test]
+fn manual_spell_outside_range_routes_before_consumption() {
+    let (mut w, actor, old_target) = setup_elemental();
+    w.despawn_npc(old_target).unwrap();
+    let mut npc = Npc::new(
+        1,
+        CoordGrid::new(3213, 3200, 0).unwrap(),
+        1,
+        Restrict::NoMove,
+        BlockWalk::Npc,
+    )
+    .unwrap();
+    npc.mode = Mode::None;
+    npc.stats[3] = 50;
+    npc.base_stats[3] = 50;
+    npc.regen_rate = 0;
+    let target = w.spawn_npc(npc).unwrap();
+    w.submit(
+        actor,
+        Action::CastNpc {
+            target,
+            spell: 600,
+            control: false,
+        },
+    )
+    .unwrap();
+    w.tick_with_random(&mut Zero).unwrap();
+    assert_eq!(w.data(actor).unwrap().inventory.get(0).unwrap().count, 5);
+    assert!(!w.is_attack_delayed(actor).unwrap());
+    for _ in 0..5 {
+        w.tick_with_random(&mut Zero).unwrap();
+    }
+    assert_eq!(w.data(actor).unwrap().inventory.get(0).unwrap().count, 4);
+    let at = w.observe(actor).unwrap().coords;
+    assert!((at.x() - 3213).abs() <= 10);
+    assert!(
+        at.x() < 3212,
+        "Spell should stop at approach range, not melee range"
+    );
+}

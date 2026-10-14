@@ -12,6 +12,31 @@ class AssessmentTests(unittest.TestCase):
             (root/'shutdown.json').write_text(json.dumps({'exitCode':0,'forced':forced,'exited':True}))
             (root/'logout-observation.json').write_text(json.dumps({'save_completed':True}))
             return assessor.assess(root)
+    def test_tower_diary_requires_every_effect(self):
+        markers=assessor.RULES['tower-diary']
+        result=self.run_case('\n'.join(markers),'tower-diary')
+        self.assertEqual(result['status'],'PASS')
+        self.assertIn('mouse/menu acceptance',result['limitations'][0])
+        for marker in markers:
+            with self.subTest(marker=marker):
+                result=self.run_case('\n'.join(m for m in markers if m!=marker),'tower-diary')
+                self.assertNotEqual(result['status'],'PASS')
+    def test_tower_diary_preauthentication_failure_is_unknown(self):
+        result=self.run_case('Error: disconnected before login','tower-diary',exitcode=1)
+        self.assertEqual(result['status'],'BLOCKED')
+        self.assertIn('UNKNOWN',result['reason'])
+    def test_tower_diary_script_failure_overrides_effects(self):
+        log='\n'.join(assessor.RULES['tower-diary'])+'\nFailed Interface tick: opcode 106'
+        self.assertEqual(self.run_case(log,'tower-diary')['status'],'FAIL')
+    def test_tower_diary_requires_logout_save(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)
+            (root/'client.log').write_text('\n'.join(assessor.RULES['tower-diary']))
+            (root/'result.json').write_text(json.dumps({'mode':'tower-diary','clientExit':0}))
+            (root/'shutdown.json').write_text(json.dumps({'exitCode':0,'forced':False,'exited':True}))
+            result=assessor.assess(root)
+            self.assertEqual(result['status'],'BLOCKED')
+            self.assertIn('logout save',result['reason'])
     def test_zero_exit_without_effects_is_failure(self):
         self.assertEqual(self.run_case('Live native login accepted')['status'],'FAIL')
     def test_targeted_success_requires_all_markers(self):

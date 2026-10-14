@@ -98,7 +98,73 @@ impl World {
         }
         Ok(())
     }
+    /// Start Prayer.offerOnAltar after the caller has verified location reach
+    /// and its content gates. The existing player delay/cancellation machinery
+    /// owns each three-cycle suspension. This is not a network action itself.
+    pub fn begin_altar_offering(
+        &mut self,
+        actor: ActorId,
+        bone: i32,
+        animation: u16,
+    ) -> Result<(), ActionError> {
+        let xp = self
+            .prayer
+            .as_ref()
+            .and_then(|c| c.bones.get(&bone))
+            .copied()
+            .ok_or(ActionError::InvalidItem)?;
+        self.begin_offering(actor, bone, animation, Some(xp), None)
+    }
+    pub(super) fn begin_offering(
+        &mut self,
+        actor: ActorId,
+        bone: i32,
+        animation: u16,
+        xp: Option<f64>,
+        continuation: Option<crate::tower_offering::Continuation>,
+    ) -> Result<(), ActionError> {
+        self.player(actor)?;
+        let p = self.players.get_mut(actor.slot as usize).unwrap();
+        if p.saving {
+            return Err(ActionError::LoggingOut);
+        }
+        if p.protection.delayed() {
+            return Err(ActionError::Delayed);
+        }
+        self.prayer.as_ref().ok_or(ActionError::InvalidItem)?;
+        if !crate::prayer::contains(&p.data.inventory, bone) {
+            self.events.push(WorldEvent::Prayer {
+                actor,
+                event: Event::OfferingFinished { offered: false },
+            });
+            return Ok(());
+        }
+        p.begin_held_action();
+        p.prayer = Some(State::Offer {
+            bone,
+            animation,
+            offered: false,
+            xp,
+            continuation,
+        });
+        p.protection.suspended = true;
+        p.protection.current_clock = self.clock.0;
+        p.protection.delay(3);
+        self.events.push(WorldEvent::Prayer {
+            actor,
+            event: Event::Animation(animation),
+        });
+        Ok(())
+    }
     pub(super) fn process_prayer(&mut self, slot: usize) {
+        if self
+            .players
+            .get(slot)
+            .is_some_and(|p| matches!(p.prayer, Some(State::CrateWalk { .. })))
+        {
+            self.process_tower_crate_walk(slot);
+            return;
+        }
         let Some(p) = self.players.get_mut(slot) else {
             return;
         };
@@ -109,13 +175,30 @@ impl World {
         if p.protection.delayed() {
             return;
         }
-        let Some(State::Bury(pending)) = p.prayer else {
-            return;
+        let (pending, offering) = match p.prayer {
+            Some(State::Bury(pending)) => (pending, None),
+            Some(State::Offer {
+                bone,
+                animation,
+                offered,
+                xp,
+                continuation,
+            }) => (
+                crate::prayer::Pending { bone, restore: 0 },
+                Some((animation, offered, xp, continuation)),
+            ),
+            _ => return,
         };
         p.prayer = None;
         p.protection.suspended = false;
         let Some(config) = &self.prayer else { return };
-        match config.finish(&mut p.data, &self.object_types, pending) {
+        let mut tower_completion = None;
+        let completed = if let Some((_, _, xp, _)) = offering {
+            config.finish_offering_xp(&mut p.data, &self.object_types, pending.bone, xp)
+        } else {
+            config.finish(&mut p.data, &self.object_types, pending)
+        };
+        match completed {
             Ok(Some(result)) => {
                 if self.tutorial_rules_completed_varp.is_some() {
                     if p.stat_events
@@ -142,14 +225,52 @@ impl World {
                 });
                 self.events.push(WorldEvent::Prayer {
                     actor: p.id,
-                    event: Event::Message("You bury the bones."),
+                    event: Event::Message(if offering.is_some() {
+                        "The gods are pleased with your offering."
+                    } else {
+                        "You bury the bones."
+                    }),
                 });
+                if let Some((animation, _, xp, continuation)) = offering {
+                    if crate::prayer::contains(&p.data.inventory, pending.bone) {
+                        p.prayer = Some(State::Offer {
+                            bone: pending.bone,
+                            animation,
+                            offered: true,
+                            xp,
+                            continuation,
+                        });
+                        p.protection.suspended = true;
+                        p.protection.delay(3);
+                        self.events.push(WorldEvent::Prayer {
+                            actor: p.id,
+                            event: Event::Animation(animation),
+                        });
+                    } else {
+                        tower_completion = continuation.map(|c| (p.id, c, true));
+                        self.events.push(WorldEvent::Prayer {
+                            actor: p.id,
+                            event: Event::OfferingFinished { offered: true },
+                        });
+                    }
+                }
             }
-            Ok(None) => (),
+            Ok(None) => {
+                if let Some((_, offered, _, continuation)) = offering {
+                    tower_completion = continuation.map(|c| (p.id, c, offered));
+                    self.events.push(WorldEvent::Prayer {
+                        actor: p.id,
+                        event: Event::OfferingFinished { offered },
+                    });
+                }
+            }
             Err(_) => self.events.push(WorldEvent::ActionRejected {
                 actor: p.id,
                 error: ActionError::InvalidStat,
             }),
+        }
+        if let Some((actor, continuation, offered)) = tower_completion {
+            self.finish_tower_offering(actor, continuation, offered);
         }
     }
 }

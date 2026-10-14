@@ -71,6 +71,9 @@ impl<B: AccountBackend> Runtime<B> {
                 self.set_interface_events(actor, button, 1, 2, 1)?;
                 self.active.get_mut(&actor).unwrap().prayer_dialog = Some((*token, button));
             }
+            // Internal coroutine completion is consumed by content wrappers;
+            // Prayer.offerOnAltar itself sends no completion packet.
+            PrayerEvent::OfferingFinished { .. } => (),
             PrayerEvent::Closed => {
                 if self
                     .active

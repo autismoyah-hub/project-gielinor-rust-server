@@ -51,6 +51,9 @@ pub mod prayer;
 pub mod prayer_book;
 pub mod rune_catalog;
 pub mod spell_equipment_config;
+pub mod elemental_requirements;
+#[cfg(windows)]
+pub mod elemental_spell_config;
 #[cfg(windows)]
 pub mod spell_combat_config;
 #[cfg(windows)]

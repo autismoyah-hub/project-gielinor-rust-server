@@ -1,3 +1,15 @@
+## Built Tower scenario; first native acceptance still pending
+
+Pinned driver `tower-diary-001` is built (executable SHA2564CAC8808EEE053161FB576A25FEE4DD957E06D65F263AD48B2EA88614945AE6B). Server archive `reboot-tutorial-006` is built (83D6382505CDDBEE214A6A053C95350636BF29320B043C2A662B3674ED41E092), covering altar and login kit restoration after PASS204/cache205. Current source additionally includes ash movement/rune sampling; await a fresh cache check and archive007 for those changes.
+
+NativeRust001/003/004 deferred before launch. NativeRust002 failed fixture provisioning because a scalar optional PowerShell flag was split into characters; explicit string[] fixes it. `scripts/test-integration-launchers.ps1` verifies all26 mode/executable selections and both KnownEmptyDiary argv states. Both launchers now hash the tower driver correctly and record client-invocation timestamps, explicitly not claiming socket-connect time. No Tower native acceptance yet. Next new run: Rust005 followed by a matched Kotlin001, exact chosen server hash and unchanged client library baseline, sequential disposable fixtures.
+
+## Prepared Tower diary scenario (not yet native-validated)
+
+Build the owned pinned-client overlay with `scripts/integration-dialogue-driver-build.ps1 -Scenario tower -Driver tower-diary-001` under the normal resource guards. Then use a new unique run ID with `integration-preparation-run.ps1 -Mode tower-diary -KnownEmptyDiary -TowerDriver tower-diary-001`, the selected environment and a freshly verified Rust ServerHash where required. Run Kotlin/Rust sequentially with equivalent cloned fixtures. This mode rejects fixture reuse and requires the V11 bones-offered migration in the Rust archive.
+
+The fixture places the offline disposable character at10424,120,0 with five cowhides and empty equipment/bank. The driver checks the preserved Kotlin scene, uses pinned-client NPC Tan and object Search encoders, and observes five leather/no hides/no Crafting XP change, bounty chat, exactly one bronze axe and empty repeat Search. It does not exercise mouse/menu input or prove rendered task text. Assessments require every marker, clean shutdown and completed logout save. Authentication failures are BLOCKED with gameplay UNKNOWN. Driver/native acceptance is pending; Python fixture/assessment/telemetry regressions pass.
+
 # Isolated integration harness
 
 Run from `C:/Projects/OSRSRSPS/rust-server` with PowerShell 7. This is preparation infrastructure, not proof of full server parity.
@@ -76,3 +88,7 @@ Resource guards require at least 4 GiB free, CPU at most 30% for runs, and no ac
 Creator wire comparison: `scripts/integration_creator_compare.py KOTLIN_RUN_DIRECTORY RUST_RUN_DIRECTORY NEW_OUTPUT_JSON` requires creator-resume login metadata, matching pinned client/cache/fixture context, equal initial states, observed save completion and clean lifecycle on each side. It compares every opcode and payload in the extracted bootstrap, preserving the first exact difference. Its PASS is limited to this wire sequence; no rendered/gameplay acceptance is implied. Infrastructure005 passed50 tests.
 
 Creator-resume scene setup passes Rust `--spawn 1686,6115,0` and selects the matching Kotlin surface map window (map X25..27, Z94..96), plus all four Tower template source squares12337/12843/12849/12851. The comparator verifies recorded launch arguments and Rust build identity. Native loading/visibility still require a run. This profile covers the initial tutorial surface scene; dungeon streaming and a complete tutorial playthrough are outside this fixture. Infrastructure006 PASS51; creator comparator001 PASS5.
+
+## Explicit diary fixture
+
+`-KnownEmptyDiary` opts a new preparation run into a known-empty, schema11 diary on both implementations. Rust applies owned migrations9/10 only to the fresh offline clone; Kotlin creates a new canonical integration239 sidecar directory. Existing marks and directories are rejected, and `-ReuseStateFrom` cannot be combined with this option. A Rust archive must include migration V10 in its immutable source manifest. Fixture identity and reproduction metadata include the option. This validates presentation and persistence from explicit known state, not legacy sidecar import, fresh account registration, rewards, or all Tower gameplay.

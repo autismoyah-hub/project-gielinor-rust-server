@@ -1,4 +1,4 @@
-param([string]$Run='kotlin-login-001',[int]$Port=43728,[ValidateSet('login','render','actions','prayer','arrival','dialogue-ui','dialogue-protocol','inventory','inventory-verify','inventory-bury','floor','floor-content')][string]$Mode='login',[switch]$CaptureWorld,[switch]$CreatorResume,[string]$ClientRoot,[string]$EnvironmentPath,[string]$ScenarioExecutable)
+param([string]$Run='kotlin-login-001',[int]$Port=43728,[ValidateSet('tower-diary','login','render','actions','prayer','arrival','dialogue-ui','dialogue-protocol','inventory','inventory-verify','inventory-bury','floor','floor-content')][string]$Mode='login',[switch]$CaptureWorld,[switch]$CreatorResume,[string]$ClientRoot,[string]$EnvironmentPath,[string]$ScenarioExecutable)
 $ErrorActionPreference='Stop'
 $serverRoot=Split-Path $PSScriptRoot -Parent
 . "$PSScriptRoot/integration-capacity.ps1"
@@ -9,7 +9,7 @@ try { $portCheck.Start() } finally { $portCheck.Stop() }
 $root="$serverRoot/work/integration"
 if (-not $ClientRoot) { $ClientRoot="$root/client" }
 if (-not $EnvironmentPath) { $EnvironmentPath="$root/a-kotlin" }
-$scenario=if ($Mode -eq 'prayer') { 'server_prayer' } elseif ($Mode -eq 'arrival') { 'server_arrival' } elseif ($Mode -like 'dialogue-*') { 'server_dialogue' } elseif ($Mode -like 'inventory*') { 'server_inventory' } elseif ($Mode -like 'floor*') {'server_floor'} else { $null }
+$scenario=if ($Mode -eq 'tower-diary') {'server_tower'} elseif ($Mode -eq 'prayer') { 'server_prayer' } elseif ($Mode -eq 'arrival') { 'server_arrival' } elseif ($Mode -like 'dialogue-*') { 'server_dialogue' } elseif ($Mode -like 'inventory*') { 'server_inventory' } elseif ($Mode -like 'floor*') {'server_floor'} else { $null }
 $scenarioBinary=if (Test-Path "$ClientRoot/bin/$scenario.exe") { "$ClientRoot/bin/$scenario.exe" } else { "$ClientRoot/target/debug/examples/$scenario.exe" }
 if ($ScenarioExecutable) { $scenarioBinary=$ScenarioExecutable }
 if ($scenario -and -not (Test-Path $scenarioBinary)) { throw 'Build the owned native scenario first: scripts/integration-client-build.ps1' }
@@ -57,7 +57,15 @@ try {
         $observerPython='C:/Users/backup/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe'
         & $observerPython "$PSScriptRoot/integration_logout.py" capture "$EnvironmentPath/.data/saves/game.db" "$runDir/logout-before.json"
         if ($LASTEXITCODE -ne 0) {throw 'Cannot capture pre-client logout checkpoint'}
+        $clientInvocation = [ordered]@{
+            startUtc=[DateTime]::UtcNow.ToString('o'); endUtc=$null; elapsedMilliseconds=$null
+            mode=$Mode; transportConnectUtc=$null
+            scope='Client invocation only. Pinned client loads assets before socket connection; connect time remains UNKNOWN.'
+        }
+        $clientClock=[Diagnostics.Stopwatch]::StartNew()
+        $clientInvocation | ConvertTo-Json | Set-Content "$runDir/client-invocation.json"
         switch ($Mode) {
+            'tower-diary' { & "$scenarioBinary" "$EnvironmentPath/.data/cache/js5" "127.0.0.1:$Port" 'integration239' "$root/test-account.password" "$root/keys/client.key" "$root/runs/kotlin-inventory-002/world-state/floor-locations.tsv" "$runDir/scene-plane-0.tsv" *> "$runDir/client.log" }
             'floor' { & "$scenarioBinary" "$EnvironmentPath/.data/cache/js5" "127.0.0.1:$Port" 'integration239' "$root/test-account.password" "$root/keys/client.key" "$root/runs/kotlin-inventory-002/world-state/floor-locations.tsv" "$runDir/scene-plane-0.tsv" *> "$runDir/client.log" }
             'floor-content' { & "$scenarioBinary" "$EnvironmentPath/.data/cache/js5" "127.0.0.1:$Port" 'integration239' "$root/test-account.password" "$root/keys/client.key" "$root/runs/kotlin-inventory-002/world-state/floor-locations.tsv" "$runDir/scene-plane-0.tsv" vials *> "$runDir/client.log" }
             'login' { & "$ClientRoot/bin/live_session.exe" "$EnvironmentPath/.data/cache/js5" "$root/keys/client.key" "127.0.0.1:$Port" 'integration239' "$root/test-account.password" "$runDir/packets.bin" *> "$runDir/client.log" }
@@ -72,11 +80,15 @@ try {
             'inventory-bury' { & "$scenarioBinary" "$EnvironmentPath/.data/cache/js5" "127.0.0.1:$Port" 'integration239' "$root/test-account.password" "$root/keys/client.key" bury *> "$runDir/client.log" }
         }
         $clientExit=$LASTEXITCODE
+        $clientClock.Stop()
+        $clientInvocation.endUtc=[DateTime]::UtcNow.ToString('o')
+        $clientInvocation.elapsedMilliseconds=$clientClock.ElapsedMilliseconds
+        $clientInvocation | ConvertTo-Json | Set-Content "$runDir/client-invocation.json"
         & $observerPython "$PSScriptRoot/integration_logout.py" wait "$EnvironmentPath/.data/saves/game.db" "$runDir/logout-observation.json" --before "$runDir/logout-before.json"
         if ($LASTEXITCODE -ne 0) {throw 'Logout observer failed; inspect run evidence'}
     } finally { Pop-Location }
     if ($Mode -eq 'render' -and (Test-Path "$EnvironmentPath/work/live-native.bmp")) { Copy-Item "$EnvironmentPath/work/live-native.bmp" "$runDir/world.bmp" }
-    $binary=switch -Wildcard ($Mode) { 'login' {"$ClientRoot/bin/live_session.exe"} 'render' {"$ClientRoot/bin/gielinor-client.exe"} 'actions' {"$ClientRoot/bin/live_actions.exe"} 'prayer' {"$scenarioBinary"} 'arrival' {"$scenarioBinary"} 'dialogue-*' {"$scenarioBinary"} 'inventory*' {"$scenarioBinary"} 'floor*' {"$scenarioBinary"} }
+    $binary=switch -Wildcard ($Mode) { 'tower-diary' {"$scenarioBinary"} 'login' {"$ClientRoot/bin/live_session.exe"} 'render' {"$ClientRoot/bin/gielinor-client.exe"} 'actions' {"$ClientRoot/bin/live_actions.exe"} 'prayer' {"$scenarioBinary"} 'arrival' {"$scenarioBinary"} 'dialogue-*' {"$scenarioBinary"} 'inventory*' {"$scenarioBinary"} 'floor*' {"$scenarioBinary"} }
     [ordered]@{mode=$Mode;clientExit=$clientExit;clientHash=(Get-FileHash $binary).Hash} | ConvertTo-Json | Set-Content "$runDir/result.json"
     Get-Content "$runDir/client.log" -Tail 30
     if ($clientExit -ne 0) { throw "Native client exited $clientExit" }

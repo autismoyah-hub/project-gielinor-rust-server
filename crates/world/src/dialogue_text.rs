@@ -6,12 +6,16 @@ pub struct Font {
 }
 impl Font {
     pub fn pages(&self, text: &str) -> Result<Vec<(String, usize)>, &'static str> {
-        self.pages_with_width(text,380)
+        self.pages_with_width(text, 380)
     }
-    pub fn message_pages(&self,text:&str) -> Result<Vec<(String,usize)>, &'static str> {
-        self.pages_with_width(text,470)
+    pub fn message_pages(&self, text: &str) -> Result<Vec<(String, usize)>, &'static str> {
+        self.pages_with_width(text, 470)
     }
-    fn pages_with_width(&self, text: &str, line_width:i32) -> Result<Vec<(String, usize)>, &'static str> {
+    fn pages_with_width(
+        &self,
+        text: &str,
+        line_width: i32,
+    ) -> Result<Vec<(String, usize)>, &'static str> {
         let chars: Vec<u16> = text.encode_utf16().collect();
         let mut built = Vec::<u16>::new();
         let mut lines = Vec::new();

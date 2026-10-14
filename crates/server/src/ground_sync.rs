@@ -25,6 +25,20 @@ pub fn encode(base: CoordGrid, emissions: &[Emission]) -> Result<Vec<Packet>, De
                 let objects = updates
                     .iter()
                     .map(|update| {
+                        if let Update::Sound(sound) = update {
+                            return Object::SoundArea(zone::SoundArea {
+                                id: sound.id as u16,
+                                delay: sound.delay as u8,
+                                loops: sound.loops as u8,
+                                range: sound.radius as u8,
+                                drop_off_range: sound.size as u8,
+                                x: (sound.coords.x() & 7) as u8,
+                                z: (sound.coords.z() & 7) as u8,
+                            });
+                        }
+                        if let Update::Projectile(flight) = update {
+                            return projectile(*flight);
+                        }
                         if let Update::Location(event) = update {
                             return location(*event);
                         }
@@ -32,7 +46,9 @@ pub fn encode(base: CoordGrid, emissions: &[Emission]) -> Result<Vec<Packet>, De
                             Update::Add(obj)
                             | Update::Delete(obj)
                             | Update::Count { object: obj, .. } => obj,
-                            Update::Location(_) => unreachable!(),
+                            Update::Location(_) | Update::Projectile(_) | Update::Sound(_) => {
+                                unreachable!()
+                            }
                         };
                         let (x, z) = ((obj.coords.x() & 7) as u8, (obj.coords.z() & 7) as u8);
                         match update {
@@ -50,7 +66,9 @@ pub fn encode(base: CoordGrid, emissions: &[Emission]) -> Result<Vec<Packet>, De
                                 x,
                                 z,
                             },
-                            Update::Location(_) => unreachable!(),
+                            Update::Location(_) | Update::Projectile(_) | Update::Sound(_) => {
+                                unreachable!()
+                            }
                         }
                     })
                     .collect::<Vec<_>>();
@@ -89,4 +107,20 @@ pub fn location(event: gielinor_world::locations::Event) -> Object {
             angle: loc.angle,
         },
     }
+}
+pub fn projectile(flight: gielinor_world::projectile::Flight) -> Object {
+    Object::Projectile(zone::Projectile {
+        id: flight.spotanim as u16,
+        start_height: flight.style.start_height as u16,
+        end_height: flight.style.end_height as u16,
+        start_time: flight.style.delay as u16,
+        end_time: flight.duration.client_delay as u16,
+        angle: flight.style.angle as u8,
+        progress: flight.style.progress as u16,
+        source_index: flight.source.encoded(),
+        target_index: flight.target.encoded(),
+        x: (flight.start.x() & 7) as u8,
+        z: (flight.start.z() & 7) as u8,
+        end: flight.end.packed(),
+    })
 }

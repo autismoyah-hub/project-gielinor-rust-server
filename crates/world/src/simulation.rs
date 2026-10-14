@@ -17,15 +17,42 @@ mod dialogue_actions;
 mod door_actions;
 mod drop_action;
 mod ground_actions;
+mod held_use_actions;
+mod location_use_actions;
 #[cfg(test)]
 mod logout_tests;
 mod melee_actions;
+mod movement_actions;
+pub use movement_actions::MovementInput;
+mod elemental_spell_actions;
 mod npc_actions;
 mod npc_combat_actions;
 mod npc_death_actions;
+mod npc_search;
 mod prayer_actions;
 mod prayer_book_actions;
+mod quantity_dialog;
+mod ranged_actions;
+mod ranged_ammo_actions;
+mod smelting_actions;
+mod smithing_actions;
+mod soft_timer_actions;
+mod spell_actions;
+mod stat_event_actions;
 mod tower_actions;
+mod tower_chest_actions;
+mod tower_login_actions;
+mod tower_offering_actions;
+mod tower_staff_actions;
+mod tower_tanning_actions;
+mod tutorial_bread_actions;
+mod tutorial_fire_actions;
+mod tutorial_fishing_actions;
+mod tutorial_gate_actions;
+mod tutorial_leave_actions;
+mod tutorial_mining_actions;
+mod tutorial_shrimp_actions;
+mod tutorial_woodcutting_actions;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub struct ActorId {
@@ -40,6 +67,8 @@ pub struct NpcId {
 struct NpcEntry {
     id: NpcId,
     npc: Npc,
+    hunt_zone: [i32; 3],
+    hunt_order: u64,
     hits: crate::hits::Queue,
     death_queued: bool,
     death_state: Option<crate::npc_death::State>,
@@ -82,6 +111,8 @@ pub struct PlayerData {
     pub xp_rate_hundreds: i32,
     pub energy: i32,
     pub tower_arrival: crate::tower_arrival::State,
+    /// None means the legacy arrival projection cannot establish diary marks.
+    pub tower_diary: Option<crate::tower_diary::Progress>,
 }
 #[derive(Clone, Copy, Debug)]
 pub enum WeightSource {
@@ -117,11 +148,15 @@ impl PlayerData {
             xp_rate_hundreds: 100,
             energy: 10000,
             tower_arrival: Default::default(),
+            tower_diary: None,
         }
     }
 }
 #[derive(Clone)]
 enum Deferred {
+    Smithing(crate::smithing_make::Job),
+    StandardHit(crate::hits::Hit),
+    PlayerDeath,
     BankCompression,
     GameframeMove(crate::gameframe::Movement),
     CombatStance(u8),
@@ -160,11 +195,20 @@ fn perform_stance(
     data.variables = vars;
     Ok(result.variables)
 }
+#[derive(Clone, Copy)]
+enum LocationAction {
+    Operation(u8),
+    HeldUse { slot: i32, object: i32 },
+}
 struct Player {
+    stat_events: crate::stat_events::Events,
     areas: crate::area_tracking::State,
     pending_areas: VecDeque<crate::area_tracking::Event>,
     music_resizable: bool,
     login_cycle: i32,
+    tower_diary_login: Option<(crate::tower_diary::Sync, CoordGrid)>,
+    tower_restore_pending: bool,
+    tower_tastes: crate::tower_tastes::State,
     aggressive_npc: Option<NpcId>,
     last_npc_combat: i32,
     last_pvp_combat: i32,
@@ -185,7 +229,9 @@ struct Player {
     logout_blocked_until: i32,
     protection: crate::protected::State,
     food_delay: bool,
-    location_interaction: Option<(crate::locations::Location, u8)>,
+    tutorial_fire: Option<crate::tutorial_fire::Pending>,
+    main_modal: Option<u16>,
+    location_interaction: Option<(crate::locations::Location, LocationAction)>,
     pending_door: Option<crate::doors::Pending>,
     observer_id: Option<i64>,
     autocast_picker_defensive: Option<bool>,
@@ -199,6 +245,8 @@ struct Player {
     overhead: Option<u8>,
     dialogue: Option<crate::dialogue::Pending>,
     bank_count: Option<(u64, crate::bank_actions::CountPurpose)>,
+    quantity_dialog: Option<u64>,
+    quantity_input: bool,
     dialog_generation: u64,
     has_modal: bool,
     queues: crate::queues::Scheduler<Deferred>,
@@ -206,6 +254,18 @@ struct Player {
     weight_sources: Option<Vec<WeightSource>>,
 }
 impl Player {
+    fn record_stat_update(
+        &mut self,
+        tutorial: bool,
+        update: crate::stat_ops::Update,
+    ) -> Result<(), ActionError> {
+        if tutorial && update.changed {
+            self.stat_events
+                .changed(&crate::tutorial_rules::bindings(), update.skill)
+                .map_err(|_| ActionError::QueueFull)?;
+        }
+        Ok(())
+    }
     fn begin_held_action(&mut self) {
         // The current source's normal launch clears interactions; launchLenient
         // only replaces the suspended coroutine, even if objectVerify rejects it.
@@ -217,6 +277,9 @@ impl Player {
         }
         self.protection.suspended = false;
         self.food_delay = false;
+        self.tutorial_fire = None;
+        self.quantity_dialog = None;
+        self.quantity_input = false;
         self.pending_door = None;
         self.pending_pickup = None;
         self.pending_drop = None;
@@ -297,6 +360,11 @@ pub enum Action {
         operation: u8,
         control: bool,
     },
+    CastNpc {
+        target: NpcId,
+        spell: i32,
+        control: bool,
+    },
     DropSlot {
         slot: usize,
     },
@@ -318,6 +386,13 @@ pub enum Action {
         coords: CoordGrid,
         id: u32,
         operation: u8,
+        control: bool,
+    },
+    UseLocation {
+        coords: CoordGrid,
+        id: u32,
+        slot: i32,
+        object: i32,
         control: bool,
     },
     ResumeBankCount {
@@ -371,6 +446,8 @@ pub enum ActionError {
     InvalidBank,
     InvalidLocation,
     UnsupportedCombat,
+    UnknownTowerDiary,
+    UnknownTowerBones,
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum AdmissionError {
@@ -380,6 +457,51 @@ pub enum AdmissionError {
 }
 #[derive(Debug)]
 pub enum WorldEvent {
+    GameMessage {
+        actor: ActorId,
+        text: String,
+    },
+    TowerDiary {
+        actor: ActorId,
+        marks: crate::tower_diary::Marks,
+    },
+    TutorialBank {
+        actor: ActorId,
+        booth: crate::tutorial_bank::Booth,
+        next: Option<crate::tutorial_steps::Step>,
+    },
+    TutorialLeaveProgress {
+        actor: ActorId,
+        effects: Vec<crate::tutorial_progression::Effect>,
+    },
+    AnvilRequested {
+        actor: ActorId,
+        preferred: Option<i32>,
+    },
+    SmeltingRequested {
+        actor: ActorId,
+    },
+    SmithingProductMade {
+        actor: ActorId,
+        product: i32,
+        count: i32,
+    },
+    SkillAdvanced {
+        actor: ActorId,
+        skill: u8,
+        advancement: crate::skills::Advancement,
+    },
+    ResetFaceEntity {
+        actor: ActorId,
+    },
+    TutorialCombatProgress {
+        actor: ActorId,
+        effects: Vec<crate::tutorial_progression::Effect>,
+    },
+    TutorialInventoryProgress {
+        actor: ActorId,
+        effects: Vec<crate::tutorial_progression::Effect>,
+    },
     TowerArrival {
         actor: ActorId,
         arrival: crate::tower_arrival::Arrival,
@@ -417,6 +539,13 @@ pub enum WorldEvent {
         actor: ActorId,
         sequence: u16,
     },
+    PlayerSpotAnimation {
+        actor: ActorId,
+        spot: u16,
+        delay: u16,
+        height: u16,
+        slot: u8,
+    },
     NpcCombatError {
         actor: NpcId,
         error: ActionError,
@@ -424,6 +553,18 @@ pub enum WorldEvent {
     NpcCombatAnimation {
         actor: NpcId,
         sequence: u16,
+    },
+    NpcDelayedAnimation {
+        actor: NpcId,
+        sequence: u16,
+        delay: u8,
+    },
+    NpcSpotAnimation {
+        actor: NpcId,
+        spot: u16,
+        delay: u16,
+        height: u16,
+        slot: u8,
     },
     CombatAnimation {
         actor: ActorId,
@@ -468,6 +609,16 @@ pub enum WorldEvent {
         actor: ActorId,
         message: &'static str,
     },
+    EngineMessage {
+        actor: ActorId,
+        message: &'static str,
+    },
+    TutorialGateFocus {
+        actor: ActorId,
+        step: crate::tutorial_steps::Step,
+        /// Resolved at the departure position, before the gate moves the actor.
+        hint: Option<NpcId>,
+    },
     CannotReach(ActorId),
     FaceLocation {
         actor: ActorId,
@@ -478,6 +629,10 @@ pub enum WorldEvent {
     WornEffects {
         actor: ActorId,
         result: Result<Vec<crate::autocast::Event>, String>,
+    },
+    WearposEffects {
+        actor: ActorId,
+        result: Result<Vec<crate::wearpos::Event>, String>,
     },
     CombatVariables {
         actor: ActorId,
@@ -550,6 +705,12 @@ pub enum WorldEvent {
     },
     Ground(crate::ground::Event),
     Location(crate::locations::Event),
+    Projectile(crate::projectile::Flight),
+    AreaSound(crate::zones::Sound),
+    AmmoConsumed {
+        actor: ActorId,
+        result: crate::ranged_ammo::Consumption,
+    },
     LocationError(&'static str),
     GroundError(crate::ground::Error),
     Hit {
@@ -559,6 +720,25 @@ pub enum WorldEvent {
     DeathRequested(crate::hits::Target),
 }
 pub struct World {
+    pub furnaces: BTreeMap<u32, crate::smelting::Furnace>,
+    pub smelting_ores: HashSet<i32>,
+    pub anvils: HashSet<u32>,
+    pub smithing_bars: HashSet<i32>,
+    pub smithing: Option<crate::smithing_make::Config>,
+    pub tutorial_woodcutting: Option<crate::tutorial_woodcutting::Config>,
+    pub tutorial_fishing: Option<crate::tutorial_fishing::Config>,
+    pub tutorial_bread: Option<crate::tutorial_bread::Config>,
+    pub tutorial_shrimp: Option<crate::tutorial_shrimp::Config>,
+    pub tutorial_mining: Option<crate::tutorial_mining::Config>,
+    pub tutorial_combat: Option<crate::tutorial_combat::Config>,
+    pub tutorial_leave: Option<crate::tutorial_leave::Config>,
+    pub tutorial_bank: Option<crate::tutorial_bank::Config>,
+    pub held_use_types: BTreeMap<i32, crate::held_use::Type>,
+    pub held_use_handlers: crate::held_use::Registry<crate::held_use::Handler>,
+    /// Opt-in until scheduler/native regression coverage is complete.
+    pub player_hit_queues: Option<crate::hits::PlayerQueues>,
+    pub tutorial_rules_completed_varp: Option<u16>,
+    pub tutorial_gates: Option<crate::tutorial_gates::Config>,
     pub music: Option<crate::music_player::Config>,
     pub area_sources: crate::area_tracking::Sources,
     pub session_vars: Option<crate::session_vars::Config>,
@@ -566,8 +746,15 @@ pub struct World {
     /// Host-supplied wall time, kept separate from the deterministic world clock.
     pub unix_millis: u64,
     pub tower_arrival: Option<crate::tower_arrival::Config>,
+    pub tower_tanning: Option<crate::tower_tanning::HandlerConfig>,
+    pub tower_chest: Option<crate::tower_chest::HandlerConfig>,
+    pub tower_staff: Option<crate::tower_staff::HandlerConfig>,
+    pub tower_offering: Option<crate::tower_offering::HandlerConfig>,
+    pub tower_restore: Option<crate::tower_restore::HandlerConfig>,
     pub combat_stance: Option<crate::combat_stance::Config>,
     pub combat_wear: Option<crate::combat_wear::Config>,
+    pub wearpos: Option<crate::wearpos::Config>,
+    pub bulwark_wear: Option<crate::bulwark_wear::Config>,
     pub autocast_selection: Option<crate::autocast_select::Config>,
     pub banking: Option<crate::bank_actions::Config>,
     pub wear_types: crate::equipment::WearCatalog,
@@ -596,6 +783,10 @@ pub struct World {
     pub npc_options: crate::npc_options::Catalog,
     pub attack_profiles: crate::attack_profile::Catalog,
     pub melee: Option<crate::melee::Config>,
+    pub ranged: Option<crate::ranged::Config>,
+    pub ranged_weapons: Option<crate::ranged_weapon::Catalog>,
+    pub spell_combat: Option<crate::spell_combat::Config>,
+    pub elemental_spells: Option<crate::elemental_spell::Catalog>,
     pub npc_melee: Option<crate::npc_melee::Config>,
     pub npc_death: Option<crate::npc_death::Config>,
     pub npc_bindings: BTreeMap<u16, crate::npc_bind::Binding>,
@@ -613,18 +804,44 @@ pub struct World {
     events: Vec<WorldEvent>,
     order: Vec<usize>,
     npcs: EntityList<NpcEntry>,
+    npc_hunt_order: u64,
     random: SeededRandom,
 }
 impl Default for World {
     fn default() -> Self {
         Self {
+            furnaces: BTreeMap::new(),
+            smelting_ores: HashSet::new(),
+            anvils: HashSet::new(),
+            smithing_bars: HashSet::new(),
+            smithing: None,
+            tutorial_woodcutting: None,
+            tutorial_fishing: None,
+            tutorial_bread: None,
+            tutorial_shrimp: None,
+            tutorial_mining: None,
+            tutorial_combat: None,
+            tutorial_leave: None,
+            tutorial_bank: None,
+            held_use_types: Default::default(),
+            held_use_handlers: Default::default(),
+            tutorial_gates: None,
+            player_hit_queues: None,
+            tutorial_rules_completed_varp: None,
             areas: Default::default(),
             music: None,
             area_sources: Default::default(),
             tower_arrival: None,
+            tower_tanning: None,
+            tower_chest: None,
+            tower_staff: None,
+            tower_offering: None,
+            tower_restore: None,
             multiway_area: None,
             combat_stance: None,
             combat_wear: None,
+            wearpos: None,
+            bulwark_wear: None,
             autocast_selection: None,
             banking: None,
             wear_types: crate::equipment::WearCatalog::default(),
@@ -654,6 +871,10 @@ impl Default for World {
             npc_options: Default::default(),
             attack_profiles: Default::default(),
             melee: None,
+            ranged: None,
+            ranged_weapons: None,
+            spell_combat: None,
+            elemental_spells: None,
             npc_melee: None,
             npc_death: None,
             npc_bindings: BTreeMap::new(),
@@ -671,6 +892,7 @@ impl Default for World {
             events: vec![],
             order: vec![],
             npcs: EntityList::new(32767, 0),
+            npc_hunt_order: 0,
             random: SeededRandom(2391),
         }
     }
@@ -729,6 +951,24 @@ impl World {
         self.events
             .extend(mutation.updates.into_iter().map(WorldEvent::Location));
         Ok(changed)
+    }
+    /// Transient zone effect: sent to current observers once, never persisted.
+    pub fn emit_projectile(
+        &mut self,
+        flight: crate::projectile::Flight,
+    ) -> Result<(), ActionError> {
+        if flight.start == CoordGrid::NULL || flight.end == CoordGrid::NULL {
+            return Err(ActionError::InvalidLocation);
+        }
+        self.events.push(WorldEvent::Projectile(flight));
+        Ok(())
+    }
+    pub fn emit_area_sound(&mut self, sound: crate::zones::Sound) -> Result<(), ActionError> {
+        if sound.coords == CoordGrid::NULL {
+            return Err(ActionError::InvalidLocation);
+        }
+        self.events.push(WorldEvent::AreaSound(sound));
+        Ok(())
     }
     pub fn animate_location(&mut self, location: crate::locations::Location, sequence: u16) {
         self.events.extend(
@@ -794,9 +1034,16 @@ impl World {
             }
         }
         npc.movement.occupancy(&mut self.collision, true);
+        let hunt_zone = npc_search::zone(npc.movement.coords);
+        self.npc_hunt_order = self
+            .npc_hunt_order
+            .checked_add(1)
+            .expect("NPC zone order exhausted");
         let result = self.npcs.insert(NpcEntry {
             id,
             npc,
+            hunt_zone,
+            hunt_order: self.npc_hunt_order,
             hits: crate::hits::Queue::default(),
             death_queued: false,
             death_state: None,
@@ -842,13 +1089,26 @@ impl World {
                 .ok_or(Error::InvalidTarget)?
                 .hits
                 .push(hit, delay),
-            Target::Player(id) => self
-                .players
-                .get_mut(id.slot as usize)
-                .filter(|p| p.id == id && !p.saving)
-                .ok_or(Error::InvalidTarget)?
-                .hits
-                .push(hit, delay),
+            Target::Player(id) => {
+                hit.validate()?;
+                let p = self
+                    .players
+                    .get_mut(id.slot as usize)
+                    .filter(|p| p.id == id && !p.saving)
+                    .ok_or(Error::InvalidTarget)?;
+                if let Some(config) = self.player_hit_queues {
+                    p.queues
+                        .add(
+                            config.standard,
+                            crate::queues::Category::Strong,
+                            delay,
+                            Deferred::StandardHit(hit),
+                        )
+                        .map_err(|_| Error::QueueFull)
+                } else {
+                    p.hits.push(hit, delay)
+                }
+            }
         }
     }
     pub fn npc_mut(&mut self, id: NpcId) -> Option<&mut Npc> {
@@ -937,6 +1197,11 @@ impl World {
     }
     pub fn protection(&self, id: ActorId) -> Result<crate::protected::State, ActionError> {
         Ok(self.player(id)?.protection)
+    }
+    /// Network movement must reject these states before running ifClose callbacks.
+    pub fn movement_input_allowed(&self, id: ActorId) -> Result<bool, ActionError> {
+        let player = self.player(id)?;
+        Ok(!player.protection.delayed() && !player.movement.rooted)
     }
     pub fn count_dialog_token(&self, id: ActorId) -> Result<Option<u64>, ActionError> {
         Ok(self.player(id)?.bank_count.map(|pending| pending.0))
@@ -1042,7 +1307,12 @@ impl World {
     pub fn cancel_count_dialog(&mut self, id: ActorId) -> Result<bool, ActionError> {
         self.player(id)?;
         let p = self.players.get_mut(id.slot as usize).unwrap();
-        let canceled = p.bank_count.take().is_some();
+        let bank = p.bank_count.take().is_some();
+        let number = p.quantity_input && p.quantity_dialog.take().is_some();
+        if p.quantity_input {
+            p.quantity_input = false;
+        }
+        let canceled = bank || number;
         if canceled {
             p.protection.suspended = false;
         }
@@ -1054,6 +1324,8 @@ impl World {
         self.player(id)?;
         let p = self.players.get_mut(id.slot as usize).unwrap();
         let count = p.bank_count.take().is_some();
+        let quantity = p.quantity_dialog.take().is_some();
+        p.quantity_input = false;
         let pause = p.pending_drop.take().is_some();
         let prayer = matches!(p.prayer, Some(crate::prayer::State::Confirm { .. }));
         let notice = p.prayer_notice.take().is_some();
@@ -1061,10 +1333,10 @@ impl World {
             p.prayer = None;
         }
         p.queues.clear_weak();
-        if count || pause || prayer || notice {
+        if count || quantity || pause || prayer || notice {
             p.protection.suspended = false;
         }
-        Ok(count || pause || prayer || notice)
+        Ok(count || quantity || pause || prayer || notice)
     }
     /// Trusted content delay; network input cannot choose its own protection state.
     pub fn delay_player(&mut self, id: ActorId, cycles: i32) -> Result<(), ActionError> {
@@ -1220,8 +1492,43 @@ impl World {
         self.order = slots;
         Ok(())
     }
-    fn worn_changed(&mut self, id: ActorId, slot: usize) {
+    fn worn_changed(&mut self, id: ActorId, slot: usize, changed_item: i32) {
         self.update_prayer_resistance(id);
+        if let Some(config) = &self.bulwark_wear {
+            let player = self.players.get_mut(id.slot as usize).unwrap();
+            if let Some(change) = config.changed(
+                &mut player.data.variables,
+                slot,
+                changed_item,
+                player.data.equipment.get(3).map(|i| i.id),
+                self.clock.0,
+                player.protection.processed_clock > 0,
+            ) {
+                self.events.push(WorldEvent::PlayerSpotAnimation {
+                    actor: id,
+                    spot: change.glow,
+                    delay: 0,
+                    height: 0,
+                    slot: 0,
+                });
+                self.events.push(WorldEvent::CombatVariables {
+                    actor: id,
+                    updates: change.variable.into_iter().collect(),
+                });
+            }
+        }
+        if let Some(config) = &self.wearpos {
+            let player = self.players.get_mut(id.slot as usize).unwrap();
+            let result = config.changed(
+                &mut player.data,
+                slot,
+                changed_item,
+                player.combat_decimal,
+                player.protection.processed_clock > 0,
+            );
+            self.events
+                .push(WorldEvent::WearposEffects { actor: id, result });
+        }
         if let (Some(config), Some(stance)) = (&self.combat_wear, &self.combat_stance) {
             let player = self.players.get_mut(id.slot as usize).unwrap();
             let result = config.changed(
@@ -1256,6 +1563,13 @@ impl World {
                 operation,
                 control,
             } => return self.request_npc(id, target, operation, control),
+            Action::CastNpc {
+                target,
+                spell,
+                control,
+            } => {
+                return self.request_npc_spell(id, target, spell, control);
+            }
             Action::DropSlot { slot } => return self.start_drop(id, slot),
             Action::ResumeDrop { token, choice } => return self.resume_drop(id, token, choice),
             Action::TakeObject {
@@ -1280,6 +1594,15 @@ impl World {
             } => {
                 return self.request_location(id, coords, location_id, operation, control);
             }
+            Action::UseLocation {
+                coords,
+                id: location_id,
+                slot,
+                object,
+                control,
+            } => {
+                return self.request_location_use(id, coords, location_id, slot, object, control);
+            }
             Action::ResumeBankCount { token, count } => {
                 if p.bank_count.is_none_or(|pending| pending.0 != token) {
                     return Ok(());
@@ -1294,8 +1617,8 @@ impl World {
                 let result = config.resume_count(&mut p.data, &self.object_types, purpose, count);
                 if let Ok(events) = &result {
                     for event in events {
-                        if let crate::bank_actions::Event::WornDeposited { slot, .. } = event {
-                            self.worn_changed(id, *slot);
+                        if let crate::bank_actions::Event::WornDeposited { slot, item } = event {
+                            self.worn_changed(id, *slot, *item);
                         }
                     }
                 }
@@ -1319,8 +1642,8 @@ impl World {
                 }
                 if let Ok(events) = &result {
                     for event in events {
-                        if let crate::bank_actions::Event::WornDeposited { slot, .. } = event {
-                            self.worn_changed(id, *slot);
+                        if let crate::bank_actions::Event::WornDeposited { slot, item } = event {
+                            self.worn_changed(id, *slot, *item);
                         }
                     }
                 }
@@ -1374,8 +1697,12 @@ impl World {
                 };
                 if let Ok(events) = &result {
                     for event in events {
-                        if let crate::equipment::Event::Changed { slot, .. } = event {
-                            self.worn_changed(id, *slot);
+                        if let crate::equipment::Event::Changed {
+                            slot,
+                            id: changed_item,
+                        } = event
+                        {
+                            self.worn_changed(id, *slot, *changed_item);
                         }
                     }
                 }
@@ -1438,6 +1765,12 @@ impl World {
                 )
                 .map_err(|_| ActionError::InvalidStat)?;
                 for event in emitted {
+                    if let crate::potions::Event::Stat(update) = &event {
+                        p.record_stat_update(
+                            self.tutorial_rules_completed_varp.is_some(),
+                            *update,
+                        )?;
+                    }
                     if let crate::potions::Event::Delay(cycles) = event {
                         p.protection.delay(cycles);
                         p.protection.suspended = true;
@@ -1479,6 +1812,12 @@ impl World {
                 )
                 .map_err(|_| ActionError::InvalidStat)?;
                 for event in emitted {
+                    if let crate::food::Event::Stat(update) = &event {
+                        p.record_stat_update(
+                            self.tutorial_rules_completed_varp.is_some(),
+                            *update,
+                        )?;
+                    }
                     if let crate::food::Event::Delay(cycles) = event {
                         p.protection.delay(cycles);
                         p.protection.suspended = true;
@@ -1561,6 +1900,13 @@ impl World {
                         event: crate::dialogue::Event::Closed,
                     });
                 }
+                // clearPendingAction cancels weak work and the active coroutine;
+                // ordinary/strong queues and the existing delay clock survive.
+                p.queues.clear_weak();
+                p.bank_count = None;
+                p.prayer_notice = None;
+                p.begin_held_action();
+                self.events.push(WorldEvent::ResetFaceEntity { actor: id });
                 p.movement.route(route.waypoints, p.active_speed);
             }
         }
@@ -1662,6 +2008,22 @@ impl World {
                     }
                 }
                 Phase::WorldPostTick => {
+                    // NpcPostTickProcess updates zone registry membership before
+                    // publishing this cycle's protocol information.
+                    let moved: Vec<_> = self
+                        .npcs
+                        .iter()
+                        .filter(|(_, e)| {
+                            let m = &e.npc.movement;
+                            m.last_movement >= self.clock.0 - 1
+                                || m.pending_teleport
+                                || m.pending_telejump
+                        })
+                        .map(|(_, e)| e.id)
+                        .collect();
+                    for id in moved {
+                        self.update_npc_hunt_zone(id, false);
+                    }
                     for (loc, add) in self.location_timers.due(self.clock) {
                         if let Err(error) = self.change_location(loc, add) {
                             self.events.push(WorldEvent::LocationError(error));
@@ -1726,6 +2088,7 @@ impl World {
                     for slot in self.order.clone() {
                         self.process_tower_arrival(slot);
                         self.process_prayer(slot);
+                        self.resume_tutorial_fire(slot);
                         self.resume_door(slot);
                         self.resume_pickup(slot);
                         self.validate_door(slot);
@@ -1758,6 +2121,8 @@ impl World {
                                             let drop = p.pending_drop.take().is_some();
                                             let notice = p.prayer_notice.take().is_some();
                                             let dialogue = p.dialogue.take().is_some();
+                                            let quantity = p.quantity_dialog.take().is_some();
+                                            p.quantity_input = false;
                                             let prayer = matches!(
                                                 p.prayer,
                                                 Some(crate::prayer::State::Confirm { .. })
@@ -1765,7 +2130,13 @@ impl World {
                                             if prayer {
                                                 p.prayer = None;
                                             }
-                                            if count || drop || notice || dialogue || prayer {
+                                            if count
+                                                || drop
+                                                || notice
+                                                || dialogue
+                                                || prayer
+                                                || quantity
+                                            {
                                                 p.protection.suspended = false;
                                             }
                                             p.has_modal = false;
@@ -1775,6 +2146,63 @@ impl World {
                                         }
                                         if let crate::queues::Event::Launch(queue) = event {
                                             match queue.args {
+                                                Deferred::Smithing(job) => {
+                                                    if let Some(config) = self.smithing {
+                                                        if let Err(error) =
+                                                            smithing_actions::complete(
+                                                                p,
+                                                                queues,
+                                                                config,
+                                                                job,
+                                                                &self.object_types,
+                                                                self.tutorial_rules_completed_varp
+                                                                    .is_some(),
+                                                                &mut self.events,
+                                                            )
+                                                        {
+                                                            p.pending_logout = true;
+                                                            self.events.push(
+                                                                WorldEvent::ActionRejected {
+                                                                    actor: p.id,
+                                                                    error,
+                                                                },
+                                                            );
+                                                        }
+                                                    }
+                                                }
+                                                Deferred::StandardHit(hit) => {
+                                                    if let Some(config) = self.player_hit_queues {
+                                                        if let Err(error) = stat_event_actions::hit(
+                                                            p,
+                                                            queues,
+                                                            config,
+                                                            self.tutorial_rules_completed_varp
+                                                                .is_some(),
+                                                            hit,
+                                                            self.clock,
+                                                            &alive_npcs,
+                                                            &mut self.events,
+                                                        ) {
+                                                            p.pending_logout = true;
+                                                            self.events.push(
+                                                                WorldEvent::ActionRejected {
+                                                                    actor: p.id,
+                                                                    error,
+                                                                },
+                                                            );
+                                                        }
+                                                    }
+                                                }
+                                                Deferred::PlayerDeath => {
+                                                    if !p.death_queued {
+                                                        p.death_queued = true;
+                                                        self.events.push(
+                                                            WorldEvent::DeathRequested(
+                                                                crate::hits::Target::Player(p.id),
+                                                            ),
+                                                        );
+                                                    }
+                                                }
                                                 Deferred::PrayerToggle(id) => {
                                                     if let Some(config) = &self.prayer_book {
                                                         if let Err(error) =
@@ -1844,11 +2272,14 @@ impl World {
                                                         p.movement.interacting = false;
                                                         p.protection.suspended = false;
                                                         p.food_delay = false;
+                                                        p.tutorial_fire = None;
                                                         p.pending_door = None;
                                                         p.prayer = None;
                                                         p.pending_pickup = None;
                                                         p.pending_drop = None;
                                                         p.dialogue = None;
+                                                        p.quantity_dialog = None;
+                                                        p.quantity_input = false;
                                                         if let Some(weapon) =
                                                             autocast_actions::open_picker(
                                                                 &p.data,
@@ -1896,104 +2327,12 @@ impl World {
                             let mut main_failed = false;
                             let mut soft_timers = std::mem::take(&mut p.soft_timers);
                             soft_timers.process(self.clock.0, |timers, timer| {
-                                if let Some(config) = &self.music {
-                                    if timer == config.timer {
-                                        let context = crate::music_player::Context {
-                                            logged_in: p.protection.processed_clock > 0,
-                                            resizable: p.music_resizable,
-                                        };
-                                        match config.tick(&mut p.data.variables, context, random) {
-                                            Ok(events) => self.events.push(WorldEvent::Music {
-                                                actor: p.id,
-                                                events,
-                                            }),
-                                            Err(failure) => {
-                                                self.events.push(WorldEvent::Music {
-                                                    actor: p.id,
-                                                    events: failure.events,
-                                                });
-                                                self.events.push(WorldEvent::MusicError {
-                                                    actor: p.id,
-                                                    reason: failure.reason,
-                                                });
-                                                main_failed = true;
-                                                return false;
-                                            }
-                                        }
-                                    }
-                                }
-                                if let Some(config) = &self.session_vars {
-                                    match config.tick(
-                                        timer,
-                                        &mut p.data.variables,
-                                        self.clock.0,
-                                        self.unix_millis,
-                                    ) {
-                                        Ok(updates) if !updates.is_empty() => {
-                                            self.events.push(WorldEvent::SessionVariables {
-                                                actor: p.id,
-                                                updates,
-                                            })
-                                        }
-                                        Ok(_) => {}
-                                        Err(_) => {
-                                            timers.remove(timer);
-                                            self.events.push(WorldEvent::ActionRejected {
-                                                actor: p.id,
-                                                error: ActionError::InvalidStat,
-                                            });
-                                        }
-                                    }
-                                }
-                                if let Some(config) = &self.prayer_book {
-                                    if timer == config.drain_timer {
-                                        let result = config.tick(
-                                            &mut p.data.variables,
-                                            &mut p.data.stats,
-                                            p.overhead,
-                                            timers,
-                                            p.protection.processed_clock > 0,
-                                        );
-                                        match result {
-                                            Ok(output) => {
-                                                let mut queues = std::mem::take(&mut p.queues);
-                                                if let Err(error) = prayer_book_actions::publish(
-                                                    p,
-                                                    &mut queues,
-                                                    output,
-                                                    &mut self.events,
-                                                ) {
-                                                    self.events.push(WorldEvent::ActionRejected {
-                                                        actor: p.id,
-                                                        error,
-                                                    });
-                                                }
-                                                p.queues = queues;
-                                            }
-                                            Err(_) => {
-                                                timers.remove(timer);
-                                                self.events.push(WorldEvent::ActionRejected {
-                                                    actor: p.id,
-                                                    error: ActionError::InvalidStat,
-                                                });
-                                            }
-                                        }
-                                    }
-                                }
-                                if let Some(config) = &self.regeneration {
-                                    for update in config.tick(
-                                        timer,
-                                        &mut p.data.stats,
-                                        p.data.equipment.get(9).map(|item| item.id),
-                                    ) {
-                                        self.events.push(WorldEvent::Stat {
-                                            actor: p.id,
-                                            update,
-                                        });
-                                    }
-                                }
-                                true
+                                let success =
+                                    self.process_player_soft_timer(slot, timers, timer, random);
+                                main_failed |= !success;
+                                success
                             });
+                            let p = self.players.get_mut(slot).unwrap();
                             p.soft_timers = soft_timers;
                             if main_failed {
                                 // PlayerMainProcess.tryOrDisconnect stops the main
@@ -2057,6 +2396,12 @@ impl World {
                                 p.movement.abort();
                                 continue;
                             }
+                            stat_event_actions::publish(
+                                p,
+                                self.tutorial_rules_completed_varp,
+                                self.player_hit_queues,
+                                &mut self.events,
+                            );
                             for hit in p.hits.process(self.clock.0, false) {
                                 if !hit.valid_player_source(|id| alive_npcs.contains(&id)) {
                                     continue;
@@ -2082,6 +2427,8 @@ impl World {
                                 // Its final ifClose disconnect phase cancels dialog
                                 // suspensions, but ordinary delays continue to expire.
                                 let dialogue = p.dialogue.take().is_some();
+                                let quantity = p.quantity_dialog.take().is_some();
+                                p.quantity_input = false;
                                 let count = p.bank_count.take().is_some();
                                 let drop = p.pending_drop.take().is_some();
                                 let notice = p.prayer_notice.take().is_some();
@@ -2090,7 +2437,7 @@ impl World {
                                 if prayer {
                                     p.prayer = None;
                                 }
-                                if dialogue || count || drop || notice || prayer {
+                                if dialogue || count || drop || notice || prayer || quantity {
                                     p.protection.suspended = false;
                                 }
                                 if p.has_modal {
@@ -2224,7 +2571,32 @@ impl World {
                                 .schedule(config.timer, protection.current_clock, 1)
                                 .expect("positive interval");
                         }
+                        // FloorOneScript restores/syncs marks before relocating the
+                        // player. Keep effect coordinates and render after admission.
+                        let tower_diary_login = self.tower_tanning.as_ref().and_then(|config| {
+                            data.tower_diary.map(|progress| {
+                                let sync = progress
+                                    .marks(
+                                        config.skills.map(|id| data.stats.base(id) as i32),
+                                        data.tower_arrival.staff_taken,
+                                    )
+                                    .session_sync();
+                                let progress: crate::tower_diary::Progress = sync.marks.into();
+                                data.tower_diary = Some(progress);
+                                data.tower_arrival.diary_progress |= progress.has_progress();
+                                (sync, data.coords)
+                            })
+                        });
+                        if let Some(config) = &self.tower_restore {
+                            soft_timers
+                                .schedule(config.timer, protection.current_clock, 8)
+                                .expect("positive interval");
+                        }
                         let player = Player {
+                            tower_restore_pending: false,
+                            tower_tastes: Default::default(),
+                            tower_diary_login,
+                            stat_events: Default::default(),
                             areas: Default::default(),
                             pending_areas: Default::default(),
                             music_resizable: false,
@@ -2249,6 +2621,8 @@ impl World {
                             logout_blocked_until: 0,
                             protection,
                             food_delay: false,
+                            tutorial_fire: None,
+                            main_modal: None,
                             location_interaction: None,
                             pending_door: None,
                             observer_id: None,
@@ -2263,6 +2637,8 @@ impl World {
                             overhead: None,
                             dialogue: None,
                             bank_count: None,
+                            quantity_dialog: None,
+                            quantity_input: false,
                             dialog_generation: 0,
                             has_modal: false,
                             queues: crate::queues::Scheduler::default(),
@@ -2278,6 +2654,11 @@ impl World {
                             actor: id,
                         });
                         self.process_tower_arrival(slot);
+                        if let Some(config) = &self.tower_restore {
+                            let p = self.players.get_mut(slot).unwrap();
+                            p.tower_restore_pending =
+                                crate::tower_layout::contains(config.origin, p.movement.coords);
+                        }
                     }
                 }
                 Phase::PlayerPostTick => {
@@ -2810,6 +3191,38 @@ mod tests {
             decimal: binding(13),
             combat_stats: [0, 1, 2, 3, 4, 6, 5],
         });
+        world.wearpos = Some(crate::wearpos::Config {
+            special: binding(15).base,
+            stance: binding(0).base,
+            category: binding(16),
+            level: binding(12),
+            decimal: binding(13),
+            combat_stats: [0, 1, 2, 3, 4, 6, 5],
+            items: BTreeMap::from([
+                (
+                    1,
+                    crate::wearpos::Item {
+                        category: 18,
+                        sound: Some(10),
+                        player_op: Some("Pelt".into()),
+                        ..Default::default()
+                    },
+                ),
+                (
+                    2,
+                    crate::wearpos::Item {
+                        category: 0,
+                        sound: Some(20),
+                        ..Default::default()
+                    },
+                ),
+            ]),
+        });
+        world.bulwark_wear = Some(crate::bulwark_wear::Config {
+            items: [1].into(),
+            passive_delay: binding(17).base,
+            glow: 1336,
+        });
         for id in [1, 2] {
             world.wear_types.types.insert(
                 id,
@@ -2837,9 +3250,53 @@ mod tests {
         }
         world.submit(actor, Action::EquipSlot { slot: 0 }).unwrap();
         world.submit(actor, Action::EquipSlot { slot: 1 }).unwrap();
+        let equipped_clock = world.clock.0;
         world.tick().unwrap();
-        let updates: Vec<_> = world
-            .drain_events()
+        let events = world.drain_events();
+        assert_eq!(
+            world.data(actor).unwrap().variables.get(17),
+            equipped_clock + 8
+        );
+        assert_eq!(
+            events
+                .iter()
+                .filter(|event| matches!(
+                    event,
+                    WorldEvent::PlayerSpotAnimation {
+                        spot: 1336,
+                        slot: 0,
+                        delay: 0,
+                        height: 0,
+                        ..
+                    }
+                ))
+                .count(),
+            1
+        );
+        let wearpos: Vec<_> = events
+            .iter()
+            .filter_map(|event| match event {
+                WorldEvent::WearposEffects { result, .. } => Some(result.as_ref().unwrap()),
+                _ => None,
+            })
+            .collect();
+        assert_eq!(wearpos.len(), 2);
+        for (index, (sound, category, op)) in [(10, 18, Some("Pelt".to_owned())), (20, 0, None)]
+            .into_iter()
+            .enumerate()
+        {
+            use crate::wearpos::Event as WearEvent;
+            assert_eq!(wearpos[index][0], WearEvent::Sound(sound));
+            assert_eq!(wearpos[index][1], WearEvent::PlayerOp(op));
+            assert!(
+                wearpos[index].contains(&WearEvent::Variable(crate::variables::Update {
+                    id: 16,
+                    value: category
+                }))
+            );
+        }
+        assert!(world.data(actor).unwrap().variables.contains(15));
+        let updates: Vec<_> = events
             .into_iter()
             .filter_map(|event| match event {
                 WorldEvent::WornEffects { result, .. } => Some(result.unwrap()),
@@ -3427,6 +3884,75 @@ mod tests {
         );
     }
     #[test]
+    fn accepted_movement_cancels_weak_work_but_retains_normal_queues() {
+        let (mut world, actor) = admitted();
+        let p = world.players.get_mut(actor.slot as usize).unwrap();
+        p.queues
+            .add(900, crate::queues::Category::Weak, 5, Deferred::Preserve)
+            .unwrap();
+        p.queues
+            .add(901, crate::queues::Category::Normal, 5, Deferred::Preserve)
+            .unwrap();
+        p.protection.suspended = true;
+        p.food_delay = true;
+        let delay_until = p.protection.delay_until;
+        assert!(world.movement_input_allowed(actor).unwrap());
+        world
+            .action(
+                actor,
+                Action::MoveClick {
+                    destination: CoordGrid::new(3202, 3200, 0).unwrap(),
+                    control: false,
+                },
+                &mut SeededRandom(1),
+            )
+            .unwrap();
+        let p = world.player(actor).unwrap();
+        assert!(!p.queues.contains(900));
+        assert!(p.queues.contains(901));
+        assert!(!p.protection.suspended);
+        assert!(!p.food_delay);
+        assert_eq!(p.protection.delay_until, delay_until);
+        assert!(world.drain_events().iter().any(|event| matches!(event,
+            WorldEvent::ResetFaceEntity { actor: id } if *id == actor)));
+    }
+    #[test]
+    fn delayed_or_rooted_movement_preserves_weak_work_and_suspension() {
+        for rooted in [false, true] {
+            let (mut world, actor) = admitted();
+            let p = world.players.get_mut(actor.slot as usize).unwrap();
+            p.queues
+                .add(900, crate::queues::Category::Weak, 5, Deferred::Preserve)
+                .unwrap();
+            p.protection.suspended = true;
+            p.food_delay = true;
+            p.movement.rooted = rooted;
+            if !rooted {
+                p.protection.delay_until = 100;
+            }
+            assert!(!world.movement_input_allowed(actor).unwrap());
+            assert_eq!(
+                world.action(
+                    actor,
+                    Action::MoveClick {
+                        destination: CoordGrid::new(3202, 3200, 0).unwrap(),
+                        control: false,
+                    },
+                    &mut SeededRandom(1)
+                ),
+                Err(if rooted {
+                    ActionError::Rooted
+                } else {
+                    ActionError::Delayed
+                })
+            );
+            let p = world.player(actor).unwrap();
+            assert!(p.queues.contains(900));
+            assert!(p.protection.suspended);
+            assert!(p.food_delay);
+        }
+    }
+    #[test]
     fn boosted_health_above_signed_byte_range_survives_damage() {
         use crate::hits::{Hit, Style, Target};
         let (mut world, actor) = admitted();
@@ -3455,6 +3981,129 @@ mod tests {
             .drain_events()
             .iter()
             .any(|event| matches!(event, WorldEvent::DeathRequested(_))));
+    }
+    #[test]
+    fn tutorial_hit_queue_closes_modal_waits_for_delay_and_cancels_pending_death() {
+        let (mut world, actor) = admitted();
+        world.player_hit_queues = Some(crate::hits::PlayerQueues {
+            standard: 800,
+            death: 801,
+        });
+        world.tutorial_rules_completed_varp = Some(900);
+        world.data_mut(actor).unwrap().stats.set_current(3, 10);
+        world.set_modal_open(actor, true).unwrap();
+        world.delay_player(actor, 3).unwrap();
+        world
+            .queue_hit(
+                crate::hits::Target::Player(actor),
+                crate::hits::Hit {
+                    display: None,
+                    source: None,
+                    style: crate::hits::Style::Typeless,
+                    damage: 20,
+                },
+                1,
+            )
+            .unwrap();
+        world.tick().unwrap();
+        assert_eq!(world.data(actor).unwrap().stats.current(3), 10);
+        assert!(!world.players.get(actor.slot as usize).unwrap().has_modal);
+        assert!(world
+            .drain_events()
+            .iter()
+            .any(|e| matches!(e, WorldEvent::CloseModals { .. })));
+        world.tick().unwrap();
+        assert_eq!(world.data(actor).unwrap().stats.current(3), 10);
+        world.tick().unwrap();
+        // Late advances the clock after PlayerMain: the third pass still has
+        // processed_clock==3; a deadline of4 expires on the following pass.
+        assert_eq!(world.data(actor).unwrap().stats.current(3), 10);
+        world.tick().unwrap();
+        assert_eq!(world.data(actor).unwrap().stats.current(3), 1);
+        let events = world.drain_events();
+        assert!(events.iter().any(|e| matches!(e, WorldEvent::LocationMessage { message, .. } if *message == crate::tutorial_rules::FLOOR_MESSAGE)));
+        assert!(!events
+            .iter()
+            .any(|e| matches!(e, WorldEvent::DeathRequested(_))));
+        assert!(!world
+            .players
+            .get(actor.slot as usize)
+            .unwrap()
+            .queues
+            .contains(801));
+        world.tick().unwrap();
+        assert!(!world
+            .drain_events()
+            .iter()
+            .any(|e| matches!(e, WorldEvent::DeathRequested(_))));
+    }
+    #[test]
+    fn completed_tutorial_hit_retains_normal_death_queue_delay() {
+        let (mut world, actor) = admitted();
+        world.player_hit_queues = Some(crate::hits::PlayerQueues {
+            standard: 800,
+            death: 801,
+        });
+        world.tutorial_rules_completed_varp = Some(900);
+        let data = world.data_mut(actor).unwrap();
+        data.variables = crate::variables::Variables::restore([(900, 1)].into());
+        data.stats.set_current(3, 10);
+        world
+            .queue_hit(
+                crate::hits::Target::Player(actor),
+                crate::hits::Hit {
+                    display: None,
+                    source: None,
+                    style: crate::hits::Style::Typeless,
+                    damage: 20,
+                },
+                1,
+            )
+            .unwrap();
+        world.tick().unwrap();
+        assert_eq!(world.data(actor).unwrap().stats.current(3), 0);
+        assert!(world
+            .players
+            .get(actor.slot as usize)
+            .unwrap()
+            .queues
+            .contains(801));
+        assert!(!world
+            .drain_events()
+            .iter()
+            .any(|e| matches!(e, WorldEvent::DeathRequested(_))));
+        world.tick().unwrap();
+        assert_eq!(
+            world
+                .drain_events()
+                .iter()
+                .filter(|e| matches!(e, WorldEvent::DeathRequested(_)))
+                .count(),
+            1
+        );
+    }
+    #[test]
+    fn tutorial_stat_delivery_waits_for_modal_and_reads_current_completion() {
+        for completed in [0, 1] {
+            let (mut world, actor) = admitted();
+            world.tutorial_rules_completed_varp = Some(900);
+            let p = world.players.get_mut(actor.slot as usize).unwrap();
+            p.data.stats.set_current(0, 20);
+            let change = crate::skills::advance(&mut p.data.stats, 0, 500.0, 1.0, 99).unwrap();
+            p.stat_events
+                .advance(&crate::tutorial_rules::bindings(), 0, change)
+                .unwrap();
+            p.has_modal = true;
+            world.tick().unwrap();
+            assert_eq!(world.data(actor).unwrap().stats.current(0), 20);
+            world.data_mut(actor).unwrap().variables =
+                crate::variables::Variables::restore([(900, completed)].into());
+            world.set_modal_open(actor, false).unwrap();
+            world.tick().unwrap();
+            let stats = &world.data(actor).unwrap().stats;
+            assert_eq!(stats.current(0), if completed == 1 { 20 } else { 3 });
+            assert_eq!(stats.xp(0), if completed == 1 { 500 } else { 174 });
+        }
     }
     #[test]
     fn close_dialogs_clears_only_weak_queues_and_preserves_non_dialog_delay() {

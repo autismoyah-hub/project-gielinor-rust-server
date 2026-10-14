@@ -13,6 +13,8 @@ pub struct State {
     pub kit_given: bool,
     pub staff_taken: bool,
     pub diary_progress: bool,
+    /// None preserves an unmigrated legacy bones sidecar as UNKNOWN.
+    pub bones_offered: Option<bool>,
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -32,7 +34,10 @@ pub fn recovery_pad(coords: CoordGrid) -> bool {
 impl State {
     pub fn arrival(self, origin: CoordGrid, packed: bool) -> Result<Arrival, crate::CoordError> {
         let first = !self.kit_given;
-        let strip = first && !self.diary_progress && (packed || self.staff_taken);
+        let strip = first
+            && !self.diary_progress
+            && self.bones_offered != Some(true)
+            && (packed || self.staff_taken);
         Ok(Arrival {
             destination: origin.translate(56, if first { 56 } else { 49 }, 0)?,
             first,
@@ -103,6 +108,19 @@ mod tests {
         assert_eq!(next.destination, CoordGrid::new(10424, 113, 0).unwrap());
         apply(&mut data, next);
         assert_eq!(data.inventory.get(0), Some(item));
+    }
+    #[test]
+    fn independently_restored_bones_flag_preserves_the_arrival_pack() {
+        let origin = CoordGrid::new(10368, 64, 0).unwrap();
+        for flag in [None, Some(false), Some(true)] {
+            let result = State {
+                bones_offered: flag,
+                ..State::default()
+            }
+            .arrival(origin, true)
+            .unwrap();
+            assert_eq!(result.strip, flag != Some(true));
+        }
     }
     #[test]
     fn diary_progress_preserves_pack_and_staff_only_clear_has_no_fists_message() {

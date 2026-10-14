@@ -14,7 +14,7 @@ class TowerStateTests(unittest.TestCase):
     def test_only_positive_valid_kotlin_counts_imply_progress(self):
         with tempfile.TemporaryDirectory() as t:
             root=Path(t)
-            for count in ('-1','0','2147483648','invalid'):
+            for count in ('-1','0','2147483648','invalid','1_0','+ 1','1.0'):
                 (root/'tans').write_text(count)
                 self.assertFalse(kotlin(root)['diary_progress'])
             (root/'offers').write_text('1\n')

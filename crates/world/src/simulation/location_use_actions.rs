@@ -29,6 +29,18 @@ impl World {
             return;
         }
         if self
+            .tower_offering
+            .as_ref()
+            .is_some_and(|c| c.location == loc.id && c.accepted.contains(&object))
+        {
+            let actor = p.id;
+            if let Err(error) = self.begin_tower_offering(actor) {
+                self.events
+                    .push(WorldEvent::ActionRejected { actor, error });
+            }
+            return;
+        }
+        if self
             .tutorial_bread
             .is_some_and(|c| c.location == loc.id && c.dough == object)
         {

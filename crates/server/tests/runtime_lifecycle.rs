@@ -433,6 +433,7 @@ fn exercise_lifecycle(with_login: bool, completed_tutorial: bool) {
         ((548 << 16) | 24, component(0)),
         ((548 << 16) | 25, component(0)),
     ]);
+    components.extend((1..=5).map(|child| (((153u32 << 16) | child), component(0))));
     components.extend(
         bank_control_symbols
             .values()
@@ -966,6 +967,12 @@ fn exercise_lifecycle(with_login: bool, completed_tutorial: bool) {
         use gielinor_world::{bank_actions::Binding, ui::Component, variables::Varbit};
         runtime
             .configure_journal(gielinor_server::journal::Journal {
+                diary: Some(gielinor_server::journal::Diary {
+                    header: (153 << 16) | 1,
+                    hidden: [2, 3, 4, 5].map(|id| (153 << 16) | id),
+                    // Synthetic cache stat identifiers; production resolves symbols.
+                    skills: [7, 13, 3],
+                }),
                 interface: 150,
                 tabs: [151, 152, 153],
                 parent: Component::new(150, 0),
@@ -1142,6 +1149,31 @@ fn exercise_lifecycle(with_login: bool, completed_tutorial: bool) {
             .unwrap()
             .modals
             .contains_interface(679));
+    }
+    if with_login {
+        use gielinor_protocol::{
+            client_script::{self, Argument},
+            interfaces,
+        };
+        let header = (153 << 16) | 1;
+        let packets = [2, 3, 4, 5]
+            .map(|id| interfaces::hide((153 << 16) | id, true))
+            .into_iter()
+            .chain(std::iter::once(
+                client_script::run(600, &[0, 0, 10, header as i32].map(Argument::Int)).unwrap(),
+            ))
+            .chain(std::iter::once(
+                interfaces::text(
+                    header,
+                    &gielinor_world::tower_diary_ui::body(Default::default()),
+                )
+                .unwrap(),
+            ));
+        let position = 26 + usize::from(completed_tutorial);
+        initial.splice(
+            position..position,
+            packets.map(|packet| (packet.opcode, Some(packet.payload))),
+        );
     }
     for x in (24..=72).step_by(8) {
         for z in (24..=72).step_by(8) {
@@ -3744,6 +3776,10 @@ fn exercise_lifecycle(with_login: bool, completed_tutorial: bool) {
             );
         }
     }
+    if with_login {
+        exercise_tower_diary(&mut runtime, actor, &mut client, &mut outgoing);
+        exercise_tower_tanner(&mut runtime, actor, &mut client, &mut cipher, &mut outgoing);
+    }
     exercise_prayer_tab(&mut runtime, actor, &mut client, &mut cipher, &mut outgoing);
     exercise_creator_controls(&mut runtime, actor, &mut client, &mut cipher, &mut outgoing);
     exercise_tutorial_output(&mut runtime, actor, &mut client, &mut outgoing);
@@ -3887,6 +3923,345 @@ fn exercise_lifecycle(with_login: bool, completed_tutorial: bool) {
         3203
     );
 }
+fn exercise_tower_tanner(
+    runtime: &mut Runtime<Backend>,
+    actor: gielinor_world::simulation::ActorId,
+    client: &mut TcpStream,
+    cipher: &mut Option<gielinor_protocol::isaac::Isaac>,
+    outgoing: &mut TickDecoder,
+) {
+    use gielinor_protocol::{
+        chat,
+        client_script::{self, Argument},
+        interfaces,
+    };
+    use gielinor_world::{
+        inventory::Item,
+        npc::{BlockWalk, Npc, Restrict},
+        npc_interaction::Handler,
+        tower_diary::Progress,
+        tower_tanning::{Config, HandlerConfig},
+    };
+    let data = runtime.world.data(actor).unwrap();
+    let coords = data.coords;
+    let saved_diary = data.tower_diary;
+    let saved_arrival = data.tower_arrival;
+    let saved_inventory = data.inventory.slots().to_vec();
+    let levels = [7, 13, 3].map(|id| data.stats.base(id) as i32);
+    let staff_taken = data.tower_arrival.staff_taken;
+    let data = runtime.world.data_mut(actor).unwrap();
+    for slot in 0..saved_inventory.len() {
+        data.inventory.restore_slot(slot, None).unwrap();
+    }
+    data.inventory
+        .restore_slot(
+            0,
+            Some(Item {
+                id: 8,
+                count: 1,
+                vars: 0,
+            }),
+        )
+        .unwrap();
+    data.tower_diary = Some(Progress {
+        counts: [4, 0, 0, 0, 0, 0],
+        schema11: true,
+        ..Default::default()
+    });
+    runtime.world.tower_tanning = Some(HandlerConfig {
+        origin: coords.translate(-50, -50, 0).unwrap(),
+        inventory: Config {
+            hides: [8].into(),
+            leather: 7,
+        },
+        skills: [7, 13, 3],
+        bones: 526,
+    });
+    let npc = runtime
+        .world
+        .spawn_npc(
+            Npc::new(
+                2,
+                coords.translate(1, 0, 0).unwrap(),
+                1,
+                Restrict::NoMove,
+                BlockWalk::None,
+            )
+            .unwrap(),
+        )
+        .unwrap();
+    runtime.world.npc_options.types.insert(
+        2,
+        gielinor_world::npc_options::Definition {
+            operations: [None, None, Some("Tan".into()), None, None],
+            ..Default::default()
+        },
+    );
+    runtime
+        .world
+        .npc_handlers
+        .insert((2, 3), Handler::TowerTanner);
+    let index = npc.slot.to_be_bytes();
+    let packet = *gielinor_protocol::tables::CLIENT
+        .iter()
+        .find(|p| p.opcode == 19)
+        .unwrap();
+    client
+        .write_all(
+            &gielinor_protocol::framing::encode(
+                packet,
+                &[0, 128, index[0], index[1].wrapping_add(128)],
+                cipher,
+                gielinor_protocol::framing::OpcodeWidth::Byte,
+            )
+            .unwrap(),
+        )
+        .unwrap();
+    let deadline = Instant::now() + Duration::from_secs(2);
+    loop {
+        pump(runtime);
+        let events = runtime.tick().unwrap();
+        if events.iter().any(|e| {
+            matches!(
+                e,
+                Event::World(gielinor_world::simulation::WorldEvent::TowerDiary { .. })
+            )
+        }) {
+            break;
+        }
+        assert!(Instant::now() < deadline, "Tanner action did not execute");
+        std::thread::sleep(Duration::from_millis(1));
+    }
+    let data = runtime.world.data(actor).unwrap();
+    assert_eq!(data.inventory.get(0).unwrap().id, 7);
+    let marks = data.tower_diary.unwrap().marks(levels, staff_taken);
+    assert_eq!((marks.counts[0], marks.bounty), (5, 1));
+    let header = (153 << 16) | 1;
+    let mut expected = [2, 3, 4, 5]
+        .map(|id| interfaces::hide((153 << 16) | id, true))
+        .to_vec();
+    expected.push(client_script::run(600, &[0, 0, 10, header as i32].map(Argument::Int)).unwrap());
+    expected.push(interfaces::text(header, &gielinor_world::tower_diary_ui::body(marks)).unwrap());
+    expected.push(chat::game(0, None, "The chest holds a bronze axe.").unwrap());
+    expected.push(
+        chat::game(
+            0,
+            None,
+            "The tanner tans 1 cowhide(s) into leather. Hides 5/5.",
+        )
+        .unwrap(),
+    );
+    let mut found = Vec::new();
+    while found.last() != expected.last() {
+        let packet = loop {
+            if let Some(packet) = outgoing.next_packet().unwrap() {
+                break packet;
+            }
+            let mut byte = [0];
+            read(runtime, client, &mut byte);
+            outgoing.feed(&byte).unwrap();
+        };
+        if expected.contains(&packet) {
+            found.push(packet);
+        }
+    }
+    assert_eq!(found, expected, "Encrypted tanner task/chat ordering");
+    // The resulting bounty is claimed through the encrypted location encoder.
+    let position = runtime.world.data(actor).unwrap().coords;
+    let chest = gielinor_world::locations::Location::new(
+        position.translate(-1, 0, 0).unwrap(),
+        60000,
+        10,
+        0,
+    )
+    .unwrap();
+    let saved_chest_type = runtime.world.location_types.insert(
+        chest.id,
+        gielinor_world::loc_collision::LocCollision {
+            width: 1,
+            length: 1,
+            block_walk: 0,
+            block_range: false,
+            break_route_finding: false,
+        },
+    );
+    runtime.world.locations.add(chest).unwrap();
+    runtime.world.tower_chest = Some(gielinor_world::tower_chest::HandlerConfig {
+        location: chest.id,
+        origin: position.translate(-50, -50, 0).unwrap(),
+        skills: [7, 13, 3],
+        bones: 526,
+        inventory: gielinor_world::tower_chest::Config {
+            ids: [8; 12],
+            merge_aliases: Default::default(),
+        },
+    });
+    let z = (chest.coords.z() as u16).to_be_bytes();
+    let x = (chest.coords.x() as u16).to_le_bytes();
+    let id = (chest.id as u16).to_be_bytes();
+    let payload = [
+        z[0],
+        z[1].wrapping_add(128),
+        x[0],
+        x[1],
+        128,
+        128,
+        id[0],
+        id[1],
+    ];
+    let op = *gielinor_protocol::tables::CLIENT
+        .iter()
+        .find(|p| p.opcode == 73)
+        .unwrap();
+    client
+        .write_all(
+            &gielinor_protocol::framing::encode(
+                op,
+                &payload,
+                cipher,
+                gielinor_protocol::framing::OpcodeWidth::Byte,
+            )
+            .unwrap(),
+        )
+        .unwrap();
+    let deadline = Instant::now() + Duration::from_secs(2);
+    loop {
+        pump(runtime);
+        let events = runtime.tick().unwrap();
+        if events.iter().any(|e|matches!(e,Event::World(gielinor_world::simulation::WorldEvent::TowerDiary{marks,..}) if marks.done[0])) {break;}
+        assert!(Instant::now() < deadline, "Chest click did not execute");
+        std::thread::sleep(Duration::from_millis(1));
+    }
+    let progress = runtime.world.data(actor).unwrap().tower_diary.unwrap();
+    assert!(progress.done[0]);
+    assert_eq!(progress.bounty, 0);
+    assert_eq!(
+        runtime
+            .world
+            .data(actor)
+            .unwrap()
+            .inventory
+            .slots()
+            .iter()
+            .flatten()
+            .filter(|i| i.id == 8)
+            .map(|i| i.count)
+            .sum::<i32>(),
+        1
+    );
+    let mut expected = vec![chat::game(0, None, "The chest yields Bronze axe.").unwrap()];
+    expected.extend([2, 3, 4, 5].map(|id| interfaces::hide((153 << 16) | id, true)));
+    expected.push(client_script::run(600, &[0, 0, 10, header as i32].map(Argument::Int)).unwrap());
+    expected.push(
+        interfaces::text(
+            header,
+            &gielinor_world::tower_diary_ui::body(progress.marks(levels, staff_taken)),
+        )
+        .unwrap(),
+    );
+    let mut found = Vec::new();
+    while found.last() != expected.last() {
+        let packet = loop {
+            if let Some(packet) = outgoing.next_packet().unwrap() {
+                break packet;
+            }
+            let mut byte = [0];
+            read(runtime, client, &mut byte);
+            outgoing.feed(&byte).unwrap();
+        };
+        if expected.contains(&packet) {
+            found.push(packet);
+        }
+    }
+    assert_eq!(
+        found, expected,
+        "Encrypted chest grant precedes diary refresh"
+    );
+    runtime.world.locations.delete(chest);
+    if let Some(ty) = saved_chest_type {
+        runtime.world.location_types.insert(chest.id, ty);
+    } else {
+        runtime.world.location_types.remove(&chest.id);
+    }
+    runtime.world.tower_chest = None;
+    runtime.world.despawn_npc(npc).unwrap();
+    runtime.world.npc_handlers.remove(&(2, 3));
+    runtime.world.npc_options.types.remove(&2);
+    runtime.world.tower_tanning = None;
+    let data = runtime.world.data_mut(actor).unwrap();
+    data.tower_diary = saved_diary;
+    data.tower_arrival = saved_arrival;
+    for (slot, item) in saved_inventory.into_iter().enumerate() {
+        data.inventory.restore_slot(slot, item).unwrap();
+    }
+}
+
+fn exercise_tower_diary(
+    runtime: &mut Runtime<Backend>,
+    actor: gielinor_world::simulation::ActorId,
+    client: &mut TcpStream,
+    outgoing: &mut TickDecoder,
+) {
+    use gielinor_protocol::{
+        client_script::{self, Argument},
+        interfaces,
+    };
+    use gielinor_world::{tower_diary::Progress, ui::Component};
+    let before = runtime.world.data(actor).unwrap().tower_diary;
+    // Replace the fixture's known new-account marks with explicit saved progress;
+    // login assertions above cover the initial empty journal separately.
+    let progress = Progress {
+        counts: [3, 0, 0, 0, 0, 0],
+        schema11: true,
+        ..Default::default()
+    };
+    runtime.world.data_mut(actor).unwrap().tower_diary = Some(progress);
+    runtime
+        .open_interface(actor, Some(Component::new(548, 22)), 153, true)
+        .unwrap();
+    let header = (153 << 16) | 1;
+    let expected = [2, 3, 4, 5]
+        .map(|id| interfaces::hide((153 << 16) | id, true))
+        .into_iter()
+        .chain(std::iter::once(
+            client_script::run(600, &[0, 0, 10, header as i32].map(Argument::Int)).unwrap(),
+        ))
+        .chain(std::iter::once(
+            interfaces::text(
+                header,
+                &gielinor_world::tower_diary_ui::body(progress.marks([1, 1, 10], false)),
+            )
+            .unwrap(),
+        ))
+        .collect::<Vec<_>>();
+    let mut found = Vec::new();
+    loop {
+        let packet = loop {
+            if let Some(packet) = outgoing.next_packet().unwrap() {
+                break packet;
+            }
+            let mut byte = [0];
+            read(runtime, client, &mut byte);
+            outgoing.feed(&byte).unwrap();
+        };
+        if expected.contains(&packet) {
+            found.push(packet);
+        }
+        if found.last() == expected.last() {
+            break;
+        }
+    }
+    assert_eq!(
+        found, expected,
+        "Tower journal sequence on encrypted transport"
+    );
+    assert_eq!(
+        runtime.world.data(actor).unwrap().tower_diary,
+        Some(progress)
+    );
+    runtime.world.data_mut(actor).unwrap().tower_diary = before;
+}
+
 fn exercise_tutorial_character(
     runtime: &mut Runtime<Backend>,
     actor: gielinor_world::simulation::ActorId,

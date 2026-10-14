@@ -12,7 +12,9 @@ impl World {
             return true;
         }
         (operation == 1
-            && (self.anvils.contains(&id)
+            && (self.tower_staff.as_ref().is_some_and(|c| c.location == id)
+                || self.tower_chest.as_ref().is_some_and(|c| c.location == id)
+                || self.anvils.contains(&id)
                 || self.tutorial_bank.is_some_and(|c| c.booth(id).is_some())
                 || self.doors.contains_key(&id)
                 || self.tutorial_bread.is_some_and(|c| c.location == id)
@@ -322,6 +324,30 @@ impl World {
                 }
                 return;
             }
+        }
+        if operation == 1
+            && self
+                .tower_chest
+                .as_ref()
+                .is_some_and(|c| c.location == loc.id)
+        {
+            if let Err(error) = self.claim_tower_chest(actor) {
+                self.events
+                    .push(WorldEvent::ActionRejected { actor, error });
+            }
+            return;
+        }
+        if operation == 1
+            && self
+                .tower_staff
+                .as_ref()
+                .is_some_and(|c| c.location == loc.id)
+        {
+            if let Err(error) = self.search_tower_staff(actor) {
+                self.events
+                    .push(WorldEvent::ActionRejected { actor, error });
+            }
+            return;
         }
         if let Some(&handler) = self.location_handlers.get(&(loc.id, operation)) {
             match handler.apply(&mut p.data, &self.object_types) {

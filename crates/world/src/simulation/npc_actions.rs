@@ -37,12 +37,22 @@ impl World {
         operation: u8,
         control: bool,
     ) -> Result<(), ActionError> {
+        self.request_npc_inner(actor, target, operation, control, None)
+    }
+    pub(super) fn request_npc_inner(
+        &mut self,
+        actor: ActorId,
+        target: NpcId,
+        operation: u8,
+        control: bool,
+        spell: Option<i32>,
+    ) -> Result<(), ActionError> {
         let p = self.player(actor)?;
         if p.protection.delayed() {
             self.events.push(WorldEvent::ClearMapFlag(actor));
             return Ok(());
         }
-        let Some(npc) = self.npc(target) else {
+        let Some(npc) = self.npc(target).filter(|n| spell.is_none() || !n.delayed) else {
             let p = self.players.get_mut(actor.slot as usize).unwrap();
             p.begin_held_action();
             p.location_interaction = None;
@@ -55,7 +65,7 @@ impl World {
             self.events.push(WorldEvent::ClearMapFlag(actor));
             return Ok(());
         };
-        if !self.can_operate_npc(actor, target, operation) {
+        if spell.is_none() && !self.can_operate_npc(actor, target, operation) {
             return Ok(());
         }
         let visible = self
@@ -75,7 +85,12 @@ impl World {
         p.npc_interaction = Some(Pending {
             target,
             operation,
-            handler,
+            handler: if spell.is_some() {
+                Some(Handler::Combat)
+            } else {
+                handler
+            },
+            spell,
         });
         p.movement.interacting = true;
         p.movement.abort();
@@ -116,7 +131,7 @@ impl World {
             self.clear_npc_route(slot);
             return true;
         }
-        if pending.handler == Some(Handler::Combat) {
+        if pending.handler == Some(Handler::Combat) && pending.spell.is_none() {
             if let Some((message, cancel)) = self.npc_combat_denial(actor, pending.target) {
                 if let Some(message) = message {
                     self.events.push(WorldEvent::NpcInteraction {
@@ -181,7 +196,9 @@ impl World {
                 0x100000,
             );
         let actor = p.id;
-        let combat_range = if pending.handler == Some(Handler::Combat) {
+        let combat_range = if pending.spell.is_some() {
+            10
+        } else if pending.handler == Some(Handler::Combat) {
             self.attack_profile(actor).map(|p| p.range).unwrap_or(1)
         } else {
             0
@@ -209,15 +226,35 @@ impl World {
             );
         if pending.handler == Some(Handler::Combat) && (touches || combat_approach) {
             self.players.get_mut(slot).unwrap().movement.abort();
-            let result = self.resolve_combat_attack(actor).and_then(|(attack, _)| {
-                if matches!(attack, crate::attack_profile::Attack::Melee { .. }) {
-                    self.attack_npc_melee(actor, pending.target, attack, random)
-                } else if matches!(attack, crate::attack_profile::Attack::Ranged { .. }) {
-                    self.attack_npc_ranged(actor, pending.target, attack, random)
-                } else {
-                    Err(ActionError::UnsupportedCombat)
-                }
-            });
+            let result = if let Some(spell) = pending.spell {
+                self.cast_manual_npc(actor, pending.target, spell, random)
+            } else {
+                self.resolve_combat_attack(actor)
+                    .and_then(|(attack, selected_spell)| {
+                        if matches!(attack, crate::attack_profile::Attack::Melee { .. }) {
+                            self.attack_npc_melee(actor, pending.target, attack, random)
+                        } else if matches!(attack, crate::attack_profile::Attack::Ranged { .. }) {
+                            self.attack_npc_ranged(actor, pending.target, attack, random)
+                        } else if let crate::attack_profile::Attack::Spell { defensive } = attack {
+                            let key = selected_spell.ok_or(ActionError::InvalidItem)?;
+                            let spell = self
+                                .combat_wear
+                                .as_ref()
+                                .and_then(|wear| wear.autocast.spells.get(&key))
+                                .ok_or(ActionError::InvalidItem)?
+                                .item;
+                            self.attack_npc_elemental(
+                                actor,
+                                pending.target,
+                                spell,
+                                defensive,
+                                random,
+                            )
+                        } else {
+                            Err(ActionError::UnsupportedCombat)
+                        }
+                    })
+            };
             if let Err(error) = result {
                 self.clear_npc_route(slot);
                 self.events
@@ -226,6 +263,16 @@ impl World {
             return true;
         }
         if touches || bank_approach {
+            if pending.handler == Some(Handler::TowerTanner) {
+                self.clear_npc_route(slot);
+                if let Err(error) =
+                    self.tan_tower_hides(actor, pending.target, pending.operation == 1)
+                {
+                    self.events
+                        .push(WorldEvent::ActionRejected { actor, error });
+                }
+                return true;
+            }
             if let Some(Handler::LectureTutor(config)) = pending.handler {
                 self.clear_npc_route(slot);
                 if let Err(error) = self.start_lecture_tutor(actor, pending.target, config) {
@@ -309,6 +356,7 @@ impl World {
             p.movement.abort();
             let event = match pending.handler {
                 Some(Handler::Bank) => Event::Bank,
+                Some(Handler::TowerTanner) => unreachable!("Tanning handled above"),
                 Some(Handler::Combat) => unreachable!("Combat handled above"),
                 Some(Handler::Person) => unreachable!("Dialogue handled above"),
                 Some(Handler::TutorialFishing) => unreachable!("Fishing handled above"),

@@ -29,6 +29,8 @@ impl Add {
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Object {
+    SoundArea(SoundArea),
+    Projectile(Projectile),
     Add(Add),
     Delete {
         id: u16,
@@ -65,6 +67,34 @@ pub enum Object {
         angle: u8,
     },
 }
+/// Revision239 enclosed wire type14 (internal RSProt protId9).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct SoundArea {
+    pub id: u16,
+    pub delay: u8,
+    pub loops: u8,
+    pub range: u8,
+    pub drop_off_range: u8,
+    pub x: u8,
+    pub z: u8,
+}
+/// MAP_PROJANIM_V2 uses enclosed wire type 13, with no standalone opcode.
+/// RSProt's internal protId is not the encoded enclosure discriminator.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct Projectile {
+    pub id: u16,
+    pub start_height: u16,
+    pub end_height: u16,
+    pub start_time: u16,
+    pub end_time: u16,
+    pub angle: u8,
+    pub progress: u16,
+    pub source_index: i32,
+    pub target_index: i32,
+    pub x: u8,
+    pub z: u8,
+    pub end: i32,
+}
 fn coord(x: u8, z: u8) -> Result<u8, DecodeError> {
     if x > 7 || z > 7 {
         return Err(DecodeError::InvalidValue("zone coordinate"));
@@ -75,6 +105,35 @@ impl Object {
     pub fn encode(self) -> Result<Vec<u8>, DecodeError> {
         let mut out = Vec::new();
         match self {
+            Self::SoundArea(v) => {
+                out.extend([
+                    14,
+                    128u8.wrapping_sub(coord(v.x, v.z)?),
+                    v.drop_off_range.wrapping_neg(),
+                    v.range,
+                    v.delay.wrapping_neg(),
+                    v.loops.wrapping_add(128),
+                ]);
+                out.extend(v.id.to_be_bytes());
+            }
+            Self::Projectile(v) => {
+                out.push(13);
+                out.extend(v.start_time.to_be_bytes());
+                out.push(coord(v.x, v.z)?);
+                for value in [v.progress, v.id] {
+                    let [high, low] = value.to_be_bytes();
+                    out.extend([high, low.wrapping_add(128)]);
+                }
+                out.extend(v.end_time.to_le_bytes());
+                out.extend(v.end.to_le_bytes());
+                let [high, low] = v.end_height.to_be_bytes();
+                out.extend([low.wrapping_add(128), high]);
+                let [_, a, b, c] = v.source_index.to_be_bytes();
+                out.extend([a, c, b]);
+                out.push(v.angle.wrapping_neg());
+                out.extend(v.start_height.to_be_bytes());
+                out.extend(&v.target_index.to_be_bytes()[1..]);
+            }
             Self::LocAdd {
                 id,
                 x,

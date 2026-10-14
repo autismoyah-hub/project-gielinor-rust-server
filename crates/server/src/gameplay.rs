@@ -5,6 +5,7 @@ use gielinor_world::{simulation::Action, CoordGrid};
 #[derive(Debug)]
 pub enum Request {
     Npc(gielinor_protocol::npc_input::Operation),
+    NpcTarget(gielinor_protocol::npc_input::Target),
     Location(gielinor_protocol::loc_input::Operation),
     LocationTarget(gielinor_protocol::loc_input::Target),
     GroundObject(gielinor_protocol::obj_input::Operation),
@@ -29,6 +30,11 @@ pub fn decode(
     development: bool,
 ) -> Result<Request, DecodeError> {
     let click = match packet.opcode {
+        86 => {
+            return Ok(Request::NpcTarget(gielinor_protocol::npc_input::target(
+                &packet.payload,
+            )?))
+        }
         102 | 13 | 19 | 45 | 85 => {
             return Ok(Request::Npc(gielinor_protocol::npc_input::decode(
                 packet.opcode,
@@ -105,6 +111,45 @@ fn game_button(payload: &[u8]) -> Result<Request, DecodeError> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn npc_spell_target_routes_component_and_preserves_nullable_fields() {
+        let bytes = vec![255, 255, 255, 0x12, 0xb4, 255, 255, 0, 218, 0, 5];
+        let packet = Packet {
+            opcode: 86,
+            payload: bytes.clone(),
+        };
+        let Request::NpcTarget(t) = decode(&packet, 0, 0, false).unwrap() else {
+            panic!("NPC target not dispatched");
+        };
+        assert_eq!(t.index, 0x1234);
+        assert!(t.control);
+        assert_eq!(t.source, (218 << 16) | 5);
+        assert_eq!((t.source_slot, t.source_object), (-1, -1));
+        for len in 0..11 {
+            assert!(decode(
+                &Packet {
+                    opcode: 86,
+                    payload: bytes[..len].to_vec()
+                },
+                0,
+                0,
+                false
+            )
+            .is_err());
+        }
+        let mut extra = bytes;
+        extra.push(0);
+        assert!(decode(
+            &Packet {
+                opcode: 86,
+                payload: extra
+            },
+            0,
+            0,
+            false
+        )
+        .is_err());
+    }
     #[test]
     fn target_operation_decodes_all_fields_and_rejects_wrong_lengths() {
         // target 149:0, selected slot 2, target item 1929, target slot 3,

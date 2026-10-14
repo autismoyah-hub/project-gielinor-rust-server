@@ -1,7 +1,7 @@
 use crate::sqlite::{Database, Error, Value};
 use gielinor_world::{inventory::Item, CoordGrid};
 use std::collections::BTreeMap;
-const MIGRATIONS: [&str; 9] = [
+const MIGRATIONS: [&str; 11] = [
     include_str!("../migrations/V1__init.sql"),
     include_str!("../migrations/V2__add_run_energy_to_characters.sql"),
     include_str!("../migrations/V3__add_realm_config_columns.sql"),
@@ -11,6 +11,8 @@ const MIGRATIONS: [&str; 9] = [
     include_str!("../migrations/V7__tutorial_island_spawn.sql"),
     include_str!("../migrations/V8__dev_realm_tutorial_spawn.sql"),
     include_str!("../migrations/V9__tower_arrival.sql"),
+    include_str!("../migrations/V10__tower_diary.sql"),
+    include_str!("../migrations/V11__tower_bones_offered.sql"),
 ];
 fn int(v: i64) -> Value {
     Value::Integer(v)
@@ -54,6 +56,7 @@ fn i32_value(v: &Value) -> Result<i32, Error> {
 }
 
 pub struct Account {
+    pub tower_diary: Option<gielinor_world::tower_diary::Progress>,
     pub tower_arrival: gielinor_world::tower_arrival::State,
     pub account_id: i64,
     pub character_id: i64,
@@ -79,6 +82,11 @@ pub struct Account {
     pub stats: BTreeMap<u8, Stat>,
     pub inventories: BTreeMap<i32, BTreeMap<usize, Item>>,
 }
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct LoginMessages {
+    pub welcome: Option<String>,
+    pub broadcast: Option<String>,
+}
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub struct Stat {
     pub visible: i8,
@@ -87,6 +95,7 @@ pub struct Stat {
 }
 #[derive(Clone, Debug)]
 pub struct Save {
+    pub tower_diary: Option<gielinor_world::tower_diary::Progress>,
     pub tower_arrival: gielinor_world::tower_arrival::State,
     pub account_id: i64,
     pub character_id: i64,
@@ -105,6 +114,29 @@ pub struct Accounts {
     db: Database,
 }
 impl Accounts {
+    /// RealmConfigLoader preserves nullable welcome text and suppresses only
+    /// blank broadcasts. Read this on the database owner's startup thread.
+    pub fn login_messages(&self, realm: i32) -> Result<LoginMessages, Error> {
+        let rows = self.db.query(
+            "SELECT login_message,login_broadcast FROM realms WHERE id=?",
+            &[int(realm as i64)],
+            1,
+        )?;
+        let row = rows
+            .first()
+            .ok_or_else(|| Error::from("Unknown login realm".to_owned()))?;
+        let broadcast = opt_string(&row[1])?.filter(|value| {
+            !value.chars().all(|c| {
+                // Kotlin Char.isWhitespace is Java isWhitespace OR isSpaceChar:
+                // includes ASCII record separators, excludes Unicode NEXT LINE.
+                ('\u{1c}'..='\u{1f}').contains(&c) || (c.is_whitespace() && c != '\u{85}')
+            })
+        });
+        Ok(LoginMessages {
+            welcome: opt_string(&row[0])?,
+            broadcast,
+        })
+    }
     pub fn from_database(db: Database) -> Self {
         Self { db }
     }
@@ -201,7 +233,7 @@ impl Accounts {
             inventories.entry(i32_value(&row[0])?).or_default().insert(slot,Item{id:i32_value(&row[2])?,count:i32_value(&row[3])?,vars:i32_value(&row[4])?});
         }
         let tower = self.db.query(
-            "SELECT kit_given,staff_taken,diary_progress FROM tower_arrival WHERE character_id=?",
+            "SELECT kit_given,staff_taken,diary_progress,bones_offered FROM tower_arrival WHERE character_id=?",
             &[int(character_id)],
             1,
         )?;
@@ -210,11 +242,19 @@ impl Accounts {
                 kit_given: integer(&row[0])? != 0,
                 staff_taken: integer(&row[1])? != 0,
                 diary_progress: integer(&row[2])? != 0,
+                bones_offered: match &row[3] {
+                    Value::Null => None,
+                    Value::Integer(0) => Some(false),
+                    Value::Integer(1) => Some(true),
+                    _ => return Err(Error::from("Invalid bones-offered flag".to_string())),
+                },
             }
         } else {
             Default::default()
         };
+        let tower_diary = crate::tower_diary::load(&self.db, character_id)?;
         Ok(Some(Account {
+            tower_diary,
             tower_arrival,
             account_id: integer(&r[0])?,
             character_id,
@@ -254,7 +294,8 @@ impl Accounts {
             if db.query("SELECT id FROM characters WHERE id=? AND account_id=?",&[int(s.character_id),int(s.account_id)],1)?.is_empty(){return Err(Error::from("Character/account mismatch".to_string()))}
             db.execute("UPDATE characters SET x=?,z=?,level=?,varps=?,last_login=?,run_energy=?,xp_rate_in_hundreds=?,last_logout=CURRENT_TIMESTAMP WHERE id=?",&[int(s.coords.x() as i64),int(s.coords.z() as i64),int(s.coords.level() as i64),text(&s.persistent_varps_json),optional(&s.last_login),int(s.run_energy as i64),int(s.xp_rate_hundreds as i64),int(s.character_id)])?;
             db.execute("UPDATE accounts SET display_name=?,known_device=?,modlevel=? WHERE id=?",&[optional(&s.display_name),s.known_device.map_or(Value::Null,int),optional(&s.modlevel),int(s.account_id)])?;
-            db.execute("INSERT INTO tower_arrival(character_id,kit_given,staff_taken,diary_progress) VALUES(?,?,?,?) ON CONFLICT(character_id) DO UPDATE SET kit_given=excluded.kit_given,staff_taken=excluded.staff_taken,diary_progress=excluded.diary_progress", &[int(s.character_id),int(s.tower_arrival.kit_given as i64),int(s.tower_arrival.staff_taken as i64),int(s.tower_arrival.diary_progress as i64)])?;
+            db.execute("INSERT INTO tower_arrival(character_id,kit_given,staff_taken,diary_progress,bones_offered) VALUES(?,?,?,?,?) ON CONFLICT(character_id) DO UPDATE SET kit_given=excluded.kit_given,staff_taken=excluded.staff_taken,diary_progress=excluded.diary_progress,bones_offered=COALESCE(excluded.bones_offered,tower_arrival.bones_offered)", &[int(s.character_id),int(s.tower_arrival.kit_given as i64),int(s.tower_arrival.staff_taken as i64),int(s.tower_arrival.diary_progress as i64),s.tower_arrival.bones_offered.map_or(Value::Null,|v|int(v as i64))])?;
+            if let Some(progress) = s.tower_diary { crate::tower_diary::save(db, s.character_id, progress)?; }
             for (id,stat) in &s.stats {if !(0..=2_000_000_000).contains(&stat.fine_xp){return Err(Error::from("Invalid fine XP".to_string()))}db.execute("INSERT INTO stats(character_id,stat_id,vis_level,base_level,fine_xp) VALUES(?,?,?,?,?) ON CONFLICT(character_id,stat_id) DO UPDATE SET vis_level=excluded.vis_level,base_level=excluded.base_level,fine_xp=excluded.fine_xp,updated_at=CASE WHEN stats.fine_xp!=excluded.fine_xp THEN CURRENT_TIMESTAMP ELSE stats.updated_at END",&[int(s.character_id),int(*id as i64),int(stat.visible as i64),int(stat.base as i64),int(stat.fine_xp as i64)])?;}
             db.execute("DELETE FROM inventories WHERE character_id=?",&[int(s.character_id)])?;
             for (kind,items) in &s.inventories {if items.is_empty(){continue}db.execute("INSERT INTO inventories(character_id,inv_type) VALUES(?,?)",&[int(s.character_id),int(*kind as i64)])?;let inv=db.last_insert_id();for (slot,item) in items {if *slot>=65536||item.id<0||item.count<1{return Err(Error::from("Invalid inventory item".to_string()))}db.execute("INSERT INTO inventory_objs VALUES(?,?,?,?,?)",&[int(inv),int(*slot as i64),int(item.id as i64),int(item.count as i64),int(item.vars as i64)])?;}}
@@ -266,16 +307,62 @@ impl Accounts {
 mod tests {
     use super::*;
     #[test]
+    fn realm_messages_preserve_null_and_empty_welcome_but_filter_kotlin_blank_broadcast() {
+        let mut accounts = Accounts::from_database(Database::memory().unwrap());
+        accounts.initialize().unwrap();
+        assert_eq!(
+            accounts.login_messages(1).unwrap(),
+            LoginMessages {
+                welcome: Some("Welcome to RS Mod.".into()),
+                broadcast: None
+            }
+        );
+        for (welcome, broadcast, expected) in [
+            (Value::Null, Value::Null, None),
+            (text(""), text(" \t\r\n\u{a0}\u{1c}"), None),
+            (text("Custom realm"), text("\u{85}"), Some("\u{85}")),
+            (
+                text("Custom realm"),
+                text(" Realm event "),
+                Some(" Realm event "),
+            ),
+        ] {
+            accounts
+                .db
+                .execute(
+                    "UPDATE realms SET login_message=?,login_broadcast=? WHERE id=1",
+                    &[welcome.clone(), broadcast],
+                )
+                .unwrap();
+            let messages = accounts.login_messages(1).unwrap();
+            assert_eq!(messages.welcome, opt_string(&welcome).unwrap());
+            assert_eq!(messages.broadcast.as_deref(), expected);
+        }
+        assert!(accounts.login_messages(999).is_err());
+    }
+    #[test]
     fn schema_and_character_roundtrip_are_atomic() {
         let mut a = Accounts::from_database(Database::memory().unwrap());
         a.initialize().unwrap();
         a.initialize().unwrap();
         let (account_id, character_id) = a.create("Parity_Actor", "fixture-hash-only", 1).unwrap();
         let mut s = Save {
+            tower_diary: Some(gielinor_world::tower_diary::Progress {
+                counts: [5, 4, 2, 1, 0, 15],
+                actions: [true, false, true, false, true, false, true],
+                done: [
+                    true, true, false, false, false, false, false, false, false, false, false,
+                ],
+                pending: [true, false],
+                bounty: 3,
+                schema11: true,
+                imp_bones: true,
+            }),
             tower_arrival: gielinor_world::tower_arrival::State {
                 kit_given: true,
                 staff_taken: false,
                 diary_progress: true,
+                bones_offered: Some(true),
             },
             account_id,
             character_id,
@@ -313,10 +400,30 @@ mod tests {
         assert_eq!(loaded.inventories, s.inventories);
         assert_eq!(loaded.stats, s.stats);
         assert_eq!(loaded.tower_arrival, s.tower_arrival);
+        assert_eq!(loaded.tower_diary, s.tower_diary);
         assert_eq!(loaded.run_energy, 1234);
         assert!(loaded.last_logout.is_some());
+        let known_diary = s.tower_diary;
+        s.tower_diary = None;
+        s.tower_arrival.bones_offered = None;
+        a.save(&s).unwrap();
+        assert_eq!(
+            a.load("parity_actor", 1).unwrap().unwrap().tower_diary,
+            known_diary
+        );
+        assert_eq!(
+            a.load("parity_actor", 1)
+                .unwrap()
+                .unwrap()
+                .tower_arrival
+                .bones_offered,
+            Some(true)
+        );
+        s.tower_diary = known_diary;
+        s.tower_arrival.bones_offered = Some(false);
         s.run_energy = 999;
         s.tower_arrival.kit_given = false;
+        s.tower_diary.as_mut().unwrap().counts[0] = 1;
         s.inventories.get_mut(&93).unwrap().insert(
             1,
             Item {
@@ -326,7 +433,24 @@ mod tests {
             },
         );
         assert!(a.save(&s).is_err());
+        assert_eq!(
+            a.load("parity_actor", 1)
+                .unwrap()
+                .unwrap()
+                .tower_arrival
+                .bones_offered,
+            Some(true)
+        );
         assert_eq!(a.load("parity_actor", 1).unwrap().unwrap().run_energy, 1234);
+        assert_eq!(
+            a.load("parity_actor", 1)
+                .unwrap()
+                .unwrap()
+                .tower_diary
+                .unwrap()
+                .counts[0],
+            5
+        );
         assert!(
             a.load("parity_actor", 1)
                 .unwrap()
@@ -341,15 +465,22 @@ mod tests {
         let mut a = Accounts::from_database(Database::memory().unwrap());
         a.initialize().unwrap();
         let (_, id) = a.create("Before_Tower", "fixture-hash-only", 1).unwrap();
-        a.db.execute("UPDATE characters SET x=3224,z=3218,level=0,run_energy=4321 WHERE id=?", &[int(id)]).unwrap();
+        a.db.execute(
+            "UPDATE characters SET x=3224,z=3218,level=0,run_energy=4321 WHERE id=?",
+            &[int(id)],
+        )
+        .unwrap();
         // Reconstruct the preceding owned schema entirely in this memory database.
+        a.db.execute("DROP TABLE tower_diary", &[]).unwrap();
         a.db.execute("DROP TABLE tower_arrival", &[]).unwrap();
-        a.db.execute("DELETE FROM _rust_migrations WHERE version=9", &[]).unwrap();
+        a.db.execute("DELETE FROM _rust_migrations WHERE version>=9", &[])
+            .unwrap();
         a.initialize().unwrap();
         let loaded = a.load("before_tower", 1).unwrap().unwrap();
-        assert_eq!(loaded.coords, CoordGrid::new(3224,3218,0).unwrap());
-        assert_eq!(loaded.run_energy,4321);
-        assert_eq!(loaded.tower_arrival,Default::default());
+        assert_eq!(loaded.coords, CoordGrid::new(3224, 3218, 0).unwrap());
+        assert_eq!(loaded.run_energy, 4321);
+        assert_eq!(loaded.tower_arrival, Default::default());
+        assert_eq!(loaded.tower_diary, None);
         a.initialize().unwrap();
     }
 }

@@ -401,4 +401,20 @@ Desktop.ini
 /integration/scenario-drivers/prayer-004/NativePrayerScenario.rs
 /integration/scenario-drivers/prayer-005/manifest.json
 /integration/scenario-drivers/prayer-005/NativePrayerScenario.rs
-/scripts/sound-area-wire-parity.ps1
+
+# Individually reviewed owned Rust integration drivers.
+!/reference/NativeArrivalScenario.rs
+!/reference/NativePrayerScenario.rs
+
+# Current checkpoint: preserve new provenance holds and exclusions.
+/crates/protocol/tests/fixtures/npc-target.expected
+/crates/protocol/tests/fixtures/sound-area-wire.expected
+/crates/server/tests/fixtures/elemental-requirements.expected
+/crates/server/tests/fixtures/spell-equipment.expected
+/crates/world/tests/fixtures/prayer-offering.expected
+/crates/world/tests/fixtures/spell-roll.expected
+/crates/world/tests/fixtures/tower-diary-sync.expected
+/crates/world/tests/fixtures/tower-diary-ui.expected
+/crates/world/tests/fixtures/tower-tanning.expected
+/integration/scenario-drivers/tower-diary-001/manifest.json
+/integration/scenario-drivers/tower-diary-001/NativeTowerDiaryScenario.rs

@@ -1,6 +1,8 @@
 """Create versioned fixtures and fresh run copies; never reset an existing database."""
 import argparse,hashlib,json,sqlite3
 from integration_creator_fixture import prepare_creator_resume
+from integration_tower_diary_fixture import prepare as prepare_tower_diary
+from integration_diary_fixture import prepare_rust as prepare_rust_diary, prepare_kotlin as prepare_kotlin_diary
 from pathlib import Path
 ROOT=Path(__file__).resolve().parent.parent
 FIXTURE=ROOT/'work/preparation/fixtures/basic-v1'
@@ -42,7 +44,9 @@ def export(path):
         result['inventory']=[dict(r) for r in db.execute('SELECT i.inv_type,o.slot,o.obj,o.count,o.vars FROM inventories i JOIN inventory_objs o ON o.inventories_id=i.id WHERE i.character_id=? ORDER BY i.inv_type,o.slot',(cid,))]
         return result
 def main():
-    p=argparse.ArgumentParser();p.add_argument('mode',choices=['fixture','kotlin-fixture','clone','export']);p.add_argument('--run');p.add_argument('--environment',choices=['kotlin','rust']);p.add_argument('--output');p.add_argument('--fixture',choices=['basic','tower','creator-resume'],default='basic');a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('mode',choices=['fixture','kotlin-fixture','clone','export']);p.add_argument('--run');p.add_argument('--environment',choices=['kotlin','rust']);p.add_argument('--output');p.add_argument('--fixture',choices=['basic','tower','creator-resume','tower-tanning'],default='basic');p.add_argument('--known-empty-diary',action='store_true');a=p.parse_args()
+    if a.known_empty_diary and a.mode!='clone':raise ValueError('Known-empty diary is only permitted for a new clone')
+    if a.fixture=='tower-tanning' and (a.mode!='clone' or not a.known_empty_diary):raise ValueError('Tower tanning requires a new explicit known-empty diary clone')
     if a.mode=='kotlin-fixture':kotlin_fixture();return
     if a.mode=='fixture':
         source=ROOT/'work/state/integration-b/accounts.sqlite'
@@ -71,7 +75,15 @@ def main():
             symbols=dict(line.split('\t',1)[::-1] for line in (ROOT/'work/integration/a-kotlin/.data/symbols/varp.sym').read_text().splitlines() if '\t' in line and not line.startswith('#'))
             with sqlite3.connect(database) as db:
                 prepare_creator_resume(db,int(symbols['tutorial_2']),int(symbols['tut2_completed']))
-        fid=hashlib.sha256(json.dumps(export(database),sort_keys=True,separators=(',',':')).encode()).hexdigest()
+        if a.fixture=='tower-tanning':
+            with sqlite3.connect(database) as db:prepare_tower_diary(db)
+        identity=export(database)
+        if a.known_empty_diary:
+            if a.environment=='rust':
+                with sqlite3.connect(database) as db:prepare_rust_diary(db)
+            else:prepare_kotlin_diary(database.parent/'tower-floor1/integration239')
+            identity={'character':identity,'diary_fixture':'known-empty-schema11-bones-v2'}
+        fid=hashlib.sha256(json.dumps(identity,sort_keys=True,separators=(',',':')).encode()).hexdigest()
         print(json.dumps({'database':str(database),'fixture_id':fid,'fixture_setup_only':True}))
     else:
         if not a.output:raise ValueError('Output required')

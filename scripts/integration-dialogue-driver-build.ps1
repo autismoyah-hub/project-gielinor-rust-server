@@ -1,4 +1,4 @@
-param([ValidatePattern('^[a-z0-9-]+$')][string]$Driver='dialogue-menu-001',[ValidateSet('dialogue','arrival','inventory','prayer')][string]$Scenario='dialogue')
+param([ValidatePattern('^[a-z0-9-]+$')][string]$Driver='dialogue-menu-001',[ValidateSet('dialogue','arrival','inventory','prayer','tower')][string]$Scenario='dialogue')
 $ErrorActionPreference='Stop'
 $serverRoot=Split-Path $PSScriptRoot -Parent
 . "$PSScriptRoot/resources.ps1"
@@ -11,7 +11,7 @@ $manifest=Get-Content "$pin/manifest.json" -Raw | ConvertFrom-Json -AsHashtable
 foreach ($entry in $manifest.files.GetEnumerator() | Where-Object {$_.Key.StartsWith('source/src/') -or $_.Key.StartsWith('source/vendor/') -or $_.Key -eq 'source/Cargo.lock'}) {
  if ((Get-FileHash "$working/$($entry.Key)").Hash.ToLowerInvariant() -ne $entry.Value) {throw 'Working client source differs from immutable baseline'}
 }
-$source=switch ($Scenario) { 'prayer' {'NativePrayerScenario.rs'} 'arrival' {'NativeArrivalScenario.rs'} 'inventory' {'NativeInventoryScenario.rs'} default {'NativeDialogueScenario.rs'} }
+$source=switch ($Scenario) { 'tower' {'NativeTowerDiaryScenario.rs'} 'prayer' {'NativePrayerScenario.rs'} 'arrival' {'NativeArrivalScenario.rs'} 'inventory' {'NativeInventoryScenario.rs'} default {'NativeDialogueScenario.rs'} }
 $exampleName="server_${Scenario}_scenario"
 $example="$working/source/examples/$exampleName.rs"
 Copy-Item "$serverRoot/reference/$source" $example

@@ -141,6 +141,12 @@ pub enum ButtonRoute {
     ProtectedModal,
 }
 impl State {
+    /// OpNpcTHandler requires an open selected interface and TgtNpc (12).
+    pub fn npc_target(&self, source: Component, slot: i32, baked: i32) -> bool {
+        (self.modals.contains_interface(source.interface())
+            || self.overlays.contains_interface(source.interface()))
+            && self.events.enabled(source, slot, baked, 1 << 12)
+    }
     /// OpLocTHandler accepts either open modal or overlay, using TgtLoc (13).
     /// This query has no modal/input side effects; clearPendingAction follows it.
     pub fn location_target(&self, source: Component, slot: i32, baked: i32) -> bool {
@@ -324,6 +330,21 @@ impl State {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn npc_target_requires_open_interface_and_npc_permission() {
+        let c = Component::new(218, 5);
+        let mut ui = State::default();
+        assert!(!ui.npc_target(c, -1, 1 << 12));
+        ui.overlays.set(Component::new(548, 20), 218);
+        assert!(ui.npc_target(c, -1, 1 << 12));
+        assert!(!ui.npc_target(c, -1, 1 << 13));
+        assert!(!ui.npc_target(c, 0, 1 << 12));
+        ui.events.add(c, 0, 3, 1 << 12).unwrap();
+        assert!(ui.npc_target(c, 3, 0));
+        assert!(!ui.npc_target(c, 4, 1 << 12));
+        ui.events.add(c, -1, -1, 0).unwrap();
+        assert!(!ui.npc_target(c, -1, 1 << 12));
+    }
     #[test]
     fn location_target_requires_open_interface_and_exact_target_permission() {
         let component = Component::new(149, 0);

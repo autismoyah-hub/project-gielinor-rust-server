@@ -76,6 +76,7 @@ impl Config {
             max_health: data.stats.base(hp) as u8 as i32,
             attributes: Attributes {
                 melee: self.equipment.collect(&data.equipment, kind, skull),
+                // Kotlin InternalHelpers.isSlayerTask currently returns false.
                 npc: definition.attributes(target.stats[3], target.base_stats[3], false),
             },
         })

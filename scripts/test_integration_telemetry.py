@@ -2,6 +2,56 @@ import copy,json,tempfile,unittest
 from pathlib import Path
 from integration_telemetry import Writer,load,compare,import_run
 class TelemetryTests(unittest.TestCase):
+    def test_invocation_timing_is_observed_without_inventing_socket_or_game_ticks(self):
+        with tempfile.TemporaryDirectory() as t:
+            root=Path(t)
+            (root/'client-invocation.json').write_text(json.dumps({
+                'startUtc':'2026-10-14T00:00:00Z','endUtc':'2026-10-14T00:00:40Z',
+                'elapsedMilliseconds':40000,'transportConnectUtc':None}))
+            import_run(root,root/'events.jsonl','rust','tower-diary','pin','fixture','cache')
+            events=load(root/'events.jsonl')
+            invocation=next(e for e in events if e['kind']=='client.invocation')
+            self.assertEqual(invocation['timestamp'],'2026-10-14T00:00:00Z')
+            self.assertEqual(invocation['data']['elapsed_milliseconds'],40000)
+            self.assertIsNone(invocation['data']['transport_connect_utc'])
+            self.assertIsNone(invocation['game_tick'])
+            self.assertFalse(any(e['kind']=='action.effect' for e in events))
+
+    def test_tower_diary_observes_effects_without_inventing_decisions(self):
+        with tempfile.TemporaryDirectory() as t:
+            root=Path(t)
+            lines=[
+                'Server confirmed five hides converted, unchanged Crafting XP and bronze-axe bounty message',
+                'Server confirmed chest granted one bronze axe and retained five leather',
+                'Server confirmed repeated chest Search is empty with one axe total',
+            ]
+            (root/'client.log').write_text('\n'.join(lines))
+            import_run(root,root/'events.jsonl','rust','tower-diary','pin','fixture','cache')
+            effects=[e['data'] for e in load(root/'events.jsonl') if e['kind']=='action.effect']
+            self.assertEqual([e['action'] for e in effects],['tower.tanning','tower.chest_paid','tower.chest_repeat'])
+            self.assertEqual(effects[0]['parameters']['hides'],0)
+            self.assertEqual(effects[0]['parameters']['leather'],5)
+            self.assertTrue(effects[0]['parameters']['crafting_xp_unchanged'])
+            self.assertEqual(effects[1]['parameters'],{'axe':1,'leather':5})
+            self.assertEqual(effects[2]['parameters'],{'axe':1,'empty_message':True})
+            self.assertTrue(all(e['server_acceptance'] is None for e in effects))
+    def test_diary_unknown_is_not_a_matching_empty_state(self):
+        with tempfile.TemporaryDirectory() as t:
+            root=Path(t);a=self.events(root,'a');b=self.events(root,'b')
+            for events in (a,b):
+                event=copy.deepcopy(events[1]);event['kind']='diary.initial'
+                event['data']={'stage':'persisted-fields-before-session-sync','state':{'known':False}}
+                events.insert(2,event)
+            self.assertEqual(compare(a,b)['status'],'BLOCKED')
+            for events in (a,b):events[2]['data']['state']={'known':True,'counts':[0]*6}
+            self.assertNotEqual(compare(a,b)['status'],'BLOCKED')
+            for events in (a,b): events[2]['data']['state']['bones_offered']=None
+            self.assertEqual(compare(a,b)['status'],'BLOCKED')
+            for events in (a,b): events[2]['data']['state']['bones_offered']=False
+            self.assertNotEqual(compare(a,b)['status'],'BLOCKED')
+            b[2]['data']['state']['counts'][0]=1
+            self.assertEqual(compare(a,b)['first_divergence']['subsystem'],'diary.initial')
+
     def test_prayer_server_mirror_is_distinct_from_prediction(self):
         with tempfile.TemporaryDirectory() as t:
             root=Path(t)

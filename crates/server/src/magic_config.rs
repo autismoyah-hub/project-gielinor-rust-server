@@ -19,6 +19,61 @@ pub struct Inputs<'a> {
     pub defs: &'a Definitions,
 }
 impl Inputs<'_> {
+    pub fn spell_buttons(
+        &self,
+        spells: impl IntoIterator<Item = i32>,
+    ) -> Result<BTreeMap<u32, i32>, String> {
+        let mut buttons = BTreeMap::new();
+        for id in spells {
+            let item = self
+                .defs
+                .items
+                .get(&(id as u32))
+                .ok_or("Missing spell button item")?;
+            let button = self
+                .int(item, "spell_button")?
+                .ok_or("Missing spell button parameter")?;
+            let button = u32::try_from(button).map_err(|_| "Invalid spell component")?;
+            if buttons.insert(button, id).is_some() {
+                return Err(format!("Duplicate spell component {button}"));
+            }
+        }
+        Ok(buttons)
+    }
+    /// Registry metadata for combat spells; indexed by object id rather than
+    /// the client autocast selection id used by the picker.
+    pub fn combat_spells(
+        &self,
+    ) -> Result<BTreeMap<i32, gielinor_world::spell_cast::Definition>, String> {
+        self.autocast()?
+            .spells
+            .into_values()
+            .map(|spell| {
+                let item = self
+                    .defs
+                    .items
+                    .get(&(spell.item as u32))
+                    .ok_or("Missing combat spell object")?;
+                Ok((
+                    spell.item,
+                    gielinor_world::spell_cast::Definition {
+                        book: self
+                            .int(item, "spell_spellbook")?
+                            .filter(|id| (0..=3).contains(id)),
+                        level: self
+                            .int(item, "spell_levelreq")?
+                            .ok_or("Missing combat spell level")?,
+                        cast_xp: self
+                            .int(item, "spell_castxp")?
+                            .ok_or("Missing combat spell XP")?
+                            as f64
+                            / 10.0,
+                        spell,
+                    },
+                ))
+            })
+            .collect()
+    }
     pub fn selection(
         &self,
         magic_stat: u8,

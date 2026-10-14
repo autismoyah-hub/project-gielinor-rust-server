@@ -2,6 +2,12 @@
 import argparse,json,re
 from pathlib import Path
 RULES={
+ 'tower-diary':['Live native login accepted','Pinned-client Tan dispatch:',
+    'Server confirmed five hides converted, unchanged Crafting XP and bronze-axe bounty message',
+    'Pinned-client chest Search dispatch:',
+    'Server confirmed chest granted one bronze axe and retained five leather',
+    'Server confirmed repeated chest Search is empty with one axe total',
+    'Tower diary scenario passed; action_encoder=true; mouse_ui=false'],
  'login':['Authenticated; local index','World rebuild:','Received '],
  'actions':['Live native login accepted','Server confirmed player movement','Server interface changes after Talk-to:'],
  'dialogue-ui':['Native Continue'],
@@ -38,6 +44,8 @@ def assess(run):
         status='BLOCKED';reason='Authentication not observed; inventory behavior UNKNOWN'
     elif mode=='inventory' and 'Native interface operation' not in log:
         status='FAIL';reason='Native inventory action dispatch not observed; server operation behavior UNKNOWN'
+    if mode=='tower-diary' and 'Live native login accepted' not in log:
+        status='BLOCKED';reason='Authentication not observed; Tower tanning and chest behavior UNKNOWN'
     if mode=='prayer':
         operations=re.findall(r'Native prayer operation: component=(\d+), outbound=\[([\d, ]*)\]',log)
         dispatched=[int(component) for component,ops in operations if 47 in [int(op.strip()) for op in ops.split(',') if op.strip()]]
@@ -55,6 +63,7 @@ def assess(run):
         limitations.append('Logout persistence completion UNKNOWN or incomplete')
         if status=='PASS':status='BLOCKED';reason='Targeted actions passed but logout save completion not observed'
     if 'Unhandled ' in log or 'Pending: packet' in log:limitations.append('Client reports unhandled packets; targeted pass is not complete packet coverage')
+    if mode=='tower-diary':limitations.append('Pinned-client action encoders and inventory/chat observations; mouse/menu acceptance and rendered task text remain UNKNOWN')
     if mode=='actions':limitations.append('Headless direct world-action dispatch; not graphical pointer acceptance')
     if mode=='render':limitations.append('Automated frame smoke; manual screenshot review is separate')
     if mode=='prayer':

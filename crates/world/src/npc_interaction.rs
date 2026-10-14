@@ -3,6 +3,7 @@ use crate::simulation::NpcId;
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Handler {
     Bank,
+    TowerTanner,
     Combat,
     Person,
     TutorialFishing,
@@ -20,6 +21,8 @@ pub struct Pending {
     pub target: NpcId,
     pub operation: u8,
     pub handler: Option<Handler>,
+    /// Captured manual spell; successful autocast continuation clears this.
+    pub spell: Option<i32>,
 }
 #[derive(Clone, Copy, Debug)]
 pub enum Event {

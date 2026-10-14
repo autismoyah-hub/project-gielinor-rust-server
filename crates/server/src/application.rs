@@ -107,7 +107,7 @@ pub fn run() -> io::Result<()> {
     let mut args = std::env::args().skip(1);
     while let Some(arg) = args.next() {
         if arg == "--help" {
-            println!("Gielinor Rust development server (partial implementation)\n--game-cache PATH --js5-cache PATH --symbols PATH [--symbols OVERLAY]\n--check validates cache/content without a socket or account database.\nTo serve: --rsa-exponent RAW_BE_FILE --rsa-modulus RAW_BE_FILE --argon2 DLL\n[--state-name isolated] [--bind 127.0.0.1:0] [--ticks N] [--spawn X,Z,LEVEL] [--stop-file PATH]\nCtrl+C or creation of the stop file requests logout and drains pending saves. Port 43594 is forbidden.");
+            println!("Gielinor Rust development server (partial implementation)\n--game-cache PATH --js5-cache PATH --symbols PATH [--symbols OVERLAY]\n--check validates cache/content without a socket or account database.\nTo serve: --rsa-exponent RAW_BE_FILE --rsa-modulus RAW_BE_FILE --argon2 DLL\n[--state-name isolated] [--bind 127.0.0.1:0] [--ticks N] [--spawn X,Z,LEVEL] [--stop-file PATH] [--elemental-source ISOLATED_FIXTURE_DIR]\nCtrl+C or creation of the stop file requests logout and drains pending saves. Port 43594 is forbidden.");
             return Ok(());
         }
         if arg == "--check" {
@@ -126,6 +126,7 @@ pub fn run() -> io::Result<()> {
             "--ticks",
             "--spawn",
             "--stop-file",
+            "--elemental-source",
         ]
         .contains(&arg.as_str())
         {
@@ -268,6 +269,29 @@ pub fn run() -> io::Result<()> {
     let mut runtime =
         runtime::Runtime::new(loaded.world, transport, definitions, policy, Backend(None));
     startup::configure(&mut runtime, &mut cache, &names)?;
+    if let Some(source) = values.get("--elemental-source") {
+        let source = PathBuf::from(source);
+        if !source.is_dir() {
+            return Err(fail("Elemental source fixture directory does not exist"));
+        }
+        let requirements =
+            gielinor_server::elemental_requirements::load(&source, &source.join("obj.sym"))?;
+        for failure in &requirements.failures {
+            eprintln!("Elemental source diagnostic: {failure}");
+        }
+        startup::configure_elemental_spells(&mut runtime, &mut cache, &names, &requirements, 1.0)?;
+        println!(
+            "Configured {} elemental spells from isolated source fixture {}",
+            runtime
+                .world
+                .elemental_spells
+                .as_ref()
+                .unwrap()
+                .spells
+                .len(),
+            source.display()
+        );
+    }
     // No account worker or listening socket exists yet. A failure discards this
     // unpublished runtime; successful publication preserves configured NPC hooks.
     let (world, constructed) = gielinor_server::tower_map::publish(
@@ -286,6 +310,44 @@ pub fn run() -> io::Result<()> {
                 origin: tower_origin,
                 progression,
             });
+    runtime.configure_tower_tanner(
+        tower_origin,
+        names.short("npc", "threshold_tanner")?,
+        names.id("obj", "leather")? as i32,
+        names.short("obj", "bones")?,
+        ["crafting", "smithing", "firemaking"]
+            .map(|name| u8::try_from(names.id("stat", name)?).map_err(io::Error::other))
+            .into_iter()
+            .collect::<io::Result<Vec<_>>>()?
+            .try_into()
+            .unwrap(),
+    )?;
+    runtime.configure_tower_chest(names.id("loc", "threshold_chest")?, names.group("obj"))?;
+    runtime.configure_tower_staff(
+        names.id("loc", "crate_old")?,
+        names.id("obj", "staff_of_air")? as i32,
+        names.id("obj", "mind_talisman")? as i32,
+    )?;
+    runtime.configure_tower_restore(
+        names.short("timer", "tower_ash")?,
+        u8::try_from(names.id("stat", "agility")?).map_err(io::Error::other)?,
+        names.group("obj"),
+    )?;
+    let offering_xp = names.id("param", "skill_xp")?;
+    let offering_default = cache
+        .parameters()?
+        .get(&offering_xp)
+        .and_then(|p| p.default_int);
+    runtime.configure_tower_offering(
+        names.id("loc", "altar")?,
+        names.short("seq", "human_bone_sacrifice")?,
+        [
+            names.id("obj", "bones")? as i32,
+            names.id("obj", "big_bones")? as i32,
+        ],
+        offering_xp,
+        offering_default,
+    )?;
     if check {
         println!(
             "Implemented content configuration validated. Full gameplay parity remains incomplete."
@@ -329,20 +391,20 @@ pub fn run() -> io::Result<()> {
         .share_mode(0)
         .open(state.join("server.lock"))?;
     // No account database is opened until every content resolver has succeeded.
-    runtime.configure_backend(Backend(Some(
-        account_worker::Worker::start(account_worker::Settings {
-            database: state.join("accounts.sqlite"),
-            argon2_library: PathBuf::from(required("--argon2")?),
-            authentication: authentication::Config {
-                realm: 1,
-                require_registration: false,
-                dev_mode: false,
-                ignore_passwords: false,
-            },
-            queue_capacity: 64,
-        })
-        .map_err(fail)?,
-    )))?;
+    let worker = account_worker::Worker::start(account_worker::Settings {
+        database: state.join("accounts.sqlite"),
+        argon2_library: PathBuf::from(required("--argon2")?),
+        authentication: authentication::Config {
+            realm: 1,
+            require_registration: false,
+            dev_mode: false,
+            ignore_passwords: false,
+        },
+        queue_capacity: 64,
+    })
+    .map_err(fail)?;
+    runtime.configure_realm_messages(worker.login_messages.clone())?;
+    runtime.configure_backend(Backend(Some(worker)))?;
     runtime.transport.queue_until_tick()?;
     runtime.transport.listen(address)?;
     if unsafe { SetConsoleCtrlHandler(Some(interrupt), 1) } == 0 {

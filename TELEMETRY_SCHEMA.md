@@ -1,3 +1,13 @@
+## Client invocation diagnostics
+
+Optional `client.invocation` records the launcher's UTC invocation start/end and elapsed milliseconds from `client-invocation.json`. Its timestamp is the observed invocation start. It includes asset loading and is not a socket-connect timestamp, login duration, or game tick. `transport_connect_utc` and `game_tick` stay null. It is diagnostic metadata outside gameplay checkpoint comparison; persisted varps/playtime differences remain strictly compared. Historical runs without the file receive no invented timing event.
+
+Bones-offered state is now included in diary evidence. Kotlin reads the canonical bones flag; Rust reads V11 nullable bones_offered. NULL or a pre-V11 schema is UNKNOWN and blocks parity even when all diary counters match. Explicit known-empty fixtures initialize false; existing saves remain untouched.
+
+## Tower diary scenario observations
+
+Exact driver assertions map to `action.effect` actions `tower.tanning`, `tower.chest_paid` and `tower.chest_repeat`. Parameters preserve observed hides/leather/axe totals, unchanged Crafting XP, bounty message and repeated-empty result. `client_dispatch_result` is `effect_observed`; `server_acceptance` remains null. This records client inventory/chat observations, not an instrumented server decision or graphical input acceptance. Known/unknown initial and persisted diary records retain the existing strict comparison rules. New adapter regression passes; live A/B remains pending.
+
 # Gameplay telemetry contract v1
 
 Resumed development adds `persistence.completion` (observed new offline logout
@@ -50,3 +60,7 @@ Known sensitive key names and private-key markers are rejected recursively. Adap
 ## Normalization
 
 Ignore absolute wall-clock values, run/event IDs, environment label, source build identity and explicitly ephemeral session identity only after checking scenario/baseline/client/fixture/cache/revision compatibility. Never normalize inventory quantities, item IDs, coordinates, stats/XP, varps, interface visibility, action order or logout results. Preserve deterministic relative action tick offsets when all are known; otherwise timing is NOT TESTED. No gameplay randomness is currently permitted for normalization.
+
+## Diary persistence observations
+
+New runs additionally record `diary.initial` and `diary.persisted` from `before-diary-state.json` and `diary-state.json`. These include six counts, seven action flags, eleven paid flags, pending bosses, bounty, schema and imp-bones state. The stage is persisted fields before session synchronization. Skill levels and staff ownership remain separate authoritative inputs. Kotlin file decoding follows restoreDiaryCounts on the canonical post-migration character directory; legacy global-file migration and gameplay side effects are not represented. Rust absent rows/tables are UNKNOWN. Any included unknown diary record blocks strict parity; two unknowns are not equivalent empty states. Historical runs without these records retain absent coverage. Existing arrival projection is unchanged.

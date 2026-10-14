@@ -16,6 +16,7 @@ pub mod combat_wear;
 pub mod combat_xp;
 pub mod doors;
 pub mod drop_actions;
+pub mod elemental_spell;
 pub mod engine_queues;
 pub mod entities;
 pub mod equipment;
@@ -34,11 +35,6 @@ pub mod loc_reach;
 pub mod loc_timers;
 pub mod locations;
 pub mod magic;
-pub mod spell_modifiers;
-pub mod spell_cast;
-pub mod spell_roll;
-pub mod spell_equipment;
-pub mod spell_combat;
 pub mod melee;
 pub mod melee_equipment;
 pub mod melee_modifiers;
@@ -68,6 +64,11 @@ pub mod runes;
 pub mod simulation;
 pub mod skills;
 pub mod smelting;
+pub mod spell_cast;
+pub mod spell_combat;
+pub mod spell_equipment;
+pub mod spell_modifiers;
+pub mod spell_roll;
 pub mod stat_events;
 pub mod stat_ops;
 pub mod stats;
@@ -214,9 +215,11 @@ pub mod region_rotation;
 pub mod session_vars;
 pub mod smithing_make;
 pub mod tower_diary;
+pub mod tower_diary_ui;
 pub mod tower_furnishings;
 pub mod tower_hazards;
 pub mod tower_layout;
+pub mod tower_tanning;
 pub mod tutorial_bread;
 pub mod tutorial_chef;
 pub mod tutorial_dough;
@@ -246,9 +249,23 @@ pub mod tutorial_combat_tutor;
 
 pub mod tutorial_combat;
 
-pub mod tutorial_magic_ui;
-pub mod tutorial_magic_tutor;
-pub mod tutorial_lecture_tutor;
 pub mod tutorial_bank;
+pub mod tutorial_lecture_tutor;
+pub mod tutorial_magic_tutor;
+pub mod tutorial_magic_ui;
 
 pub mod tutorial_leave;
+
+pub mod tower_chest;
+
+pub mod tower_offering;
+
+pub mod tower_staff;
+
+pub mod tower_kit;
+
+pub mod tower_restore;
+
+pub mod tower_food;
+
+pub mod tower_tastes;

@@ -10,3 +10,5 @@ pub mod sqlite;
 #[cfg(windows)]
 pub mod totp;
 pub mod varps;
+#[cfg(windows)]
+mod tower_diary;

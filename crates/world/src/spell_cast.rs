@@ -36,6 +36,7 @@ impl Outcome {
         )
     }
 }
+#[derive(Clone, Copy)]
 pub struct Request<'a> {
     pub spell: &'a Spell,
     /// None represents a spell with no configured spellbook; it cannot match.
@@ -48,33 +49,35 @@ pub struct Request<'a> {
 }
 /// Trusted spell metadata, resolved from the cache and existing content hooks.
 /// Elemental handlers may substitute their Kotlin/Kronos level and rune costs.
+#[derive(Clone)]
 pub struct Definition {
     pub spell: Spell,
     pub book: Option<i32>,
     pub level: i32,
     pub cast_xp: f64,
 }
-pub fn attempt(
+/// MagicRuneManager.canCastSpell, used before combat eligibility/cooldown.
+/// Returns the first failure without consuming items, changing vars or XP.
+pub fn check(
     config: &magic::Config,
     request: Request<'_>,
-    inventory: &mut Inventory,
+    inventory: &Inventory,
     worn: &Inventory,
-    vars: &mut Variables,
-    items: &Catalog,
-) -> Result<Outcome, String> {
+    vars: &Variables,
+) -> Result<Option<Outcome>, String> {
     let failure = |kind, message| Outcome {
         kind,
         message,
         updates: vec![],
     };
     if request.required_book != Some(request.active_book) {
-        return Ok(failure(ResultKindCast::IncorrectSpellbook, None));
+        return Ok(Some(failure(ResultKindCast::IncorrectSpellbook, None)));
     }
     if request.visible_level < request.required_level {
-        return Ok(failure(
+        return Ok(Some(failure(
             ResultKindCast::MissingLevel,
             Some("Your Magic level is not high enough for this spell.".into()),
-        ));
+        )));
     }
     let validations = config.validate(vars, inventory, worn, request.spell)?;
     if let Some(invalid) = validations.iter().find(|v| !v.valid()) {
@@ -85,8 +88,25 @@ pub fn attempt(
         }
         .cloned()
         .unwrap_or_else(|| "You do not have enough runes to cast this spell.".into());
-        return Ok(failure(ResultKindCast::MissingRequirements, Some(message)));
+        return Ok(Some(failure(
+            ResultKindCast::MissingRequirements,
+            Some(message),
+        )));
     }
+    Ok(None)
+}
+pub fn attempt(
+    config: &magic::Config,
+    request: Request<'_>,
+    inventory: &mut Inventory,
+    worn: &Inventory,
+    vars: &mut Variables,
+    items: &Catalog,
+) -> Result<Outcome, String> {
+    if let Some(failure) = check(config, request, inventory, worn, vars)? {
+        return Ok(failure);
+    }
+    let validations = config.validate(vars, inventory, worn, request.spell)?;
     let bits = config.pouch_counts.into_iter().collect();
     let result = rune_consumption::consume(
         inventory,

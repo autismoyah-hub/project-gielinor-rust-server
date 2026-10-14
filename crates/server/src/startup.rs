@@ -17,6 +17,7 @@ impl Names {
             "seq",
             "synth",
             "spotanim",
+            "projanim",
             "param",
             "obj",
             "npc",
@@ -213,7 +214,8 @@ pub fn configure<B: AccountBackend>(
             &runtime.definitions,
         )
         .map_err(io::Error::other)?,
-        welcome: Some("Welcome to Project Gielinor.".into()),
+        // The owned account worker supplies persisted realm messages before listen.
+        welcome: None,
         broadcast: None,
     })?;
     let mut hooks =
@@ -248,6 +250,7 @@ pub fn configure<B: AccountBackend>(
             n("component"),
             n("varbit"),
             n("varp"),
+            n("stat"),
             &runtime.definitions,
         )
         .map_err(io::Error::other)?,
@@ -422,8 +425,13 @@ pub fn configure<B: AccountBackend>(
             .map_err(io::Error::other)?,
     );
     runtime.world.ranged_weapons = Some(
-        crate::ranged_weapon_config::resolve(names, &parameters, &runtime.definitions,
-            &cache.projectiles()?).map_err(io::Error::other)?,
+        crate::ranged_weapon_config::resolve(
+            names,
+            &parameters,
+            &runtime.definitions,
+            &cache.projectiles()?,
+        )
+        .map_err(io::Error::other)?,
     );
     runtime.world.npc_melee = Some(
         crate::npc_melee_config::resolve(names, &runtime.definitions, &parameters)
@@ -542,7 +550,10 @@ pub fn configure<B: AccountBackend>(
             .map_err(|_| io::Error::other("Invalid tutorial leave kit length"))?,
         names.id("obj", "coins")? as i32,
     )?;
-    runtime.configure_magic_tutor(names.id("obj", "airrune")? as i32, names.id("obj", "mindrune")? as i32)?;
+    runtime.configure_magic_tutor(
+        names.id("obj", "airrune")? as i32,
+        names.id("obj", "mindrune")? as i32,
+    )?;
     let tutorial_gates = gielinor_world::tutorial_gates::BINDINGS
         .into_iter()
         .map(|(name, gate)| names.id("loc", name).map(|id| (id, gate)))
@@ -559,7 +570,11 @@ pub fn configure<B: AccountBackend>(
     )?;
     runtime.configure_quest_tutor()?;
     runtime.configure_lecture_tutors()?;
-    runtime.configure_tutorial_bank(names.id("loc","tut2_bankbooth")?,names.id("loc","pollbooth_green")?,names.id("obj","coins")? as i32)?;
+    runtime.configure_tutorial_bank(
+        names.id("loc", "tut2_bankbooth")?,
+        names.id("loc", "pollbooth_green")?,
+        names.id("obj", "coins")? as i32,
+    )?;
     runtime.configure_tutorial_combat(
         names.short("npc", "tut2_giantrat")?,
         names.short("npc", "tut2_chicken")?,
@@ -651,4 +666,56 @@ pub fn configure<B: AccountBackend>(
         }
     }
     Ok(())
+}
+
+/// Explicit staged setup for the implemented elemental spells. The host supplies
+/// the isolated source-derived rune overrides and experience multiplier.
+/// This is not called by normal startup until reference checks are accepted.
+pub fn configure_elemental_spells<B: AccountBackend>(
+    runtime: &mut Runtime<B>,
+    cache: &mut GameCache,
+    names: &Names,
+    requirements: &crate::elemental_requirements::Catalog,
+    global_xp_rate: f64,
+) -> io::Result<()> {
+    if runtime.world.melee.is_none()
+        || runtime.world.combat_wear.is_none()
+        || runtime.world.autocast_selection.is_none()
+    {
+        return Err(io::Error::other(
+            "Configure base combat before elemental spells",
+        ));
+    }
+    let tables = cache.enums()?;
+    let parameters = cache.parameters()?;
+    let projectiles = cache.projectiles()?;
+    let projectile = projectiles
+        .get(&names.id("projanim", "magic_spell")?)
+        .ok_or_else(|| io::Error::other("Missing magic_spell projectile definition"))?
+        .style;
+    let input = crate::magic_config::Inputs {
+        objs: names.group("obj"),
+        params: names.group("param"),
+        bits: names.group("varbit"),
+        enums: names.group("enum"),
+        categories: names.group("category"),
+        parameter_types: &parameters,
+        tables: &tables,
+        defs: &runtime.definitions,
+    };
+    let spells = crate::elemental_spell_config::resolve(
+        names,
+        &runtime.definitions,
+        input.combat_spells().map_err(io::Error::other)?,
+        projectile,
+        requirements,
+        global_xp_rate,
+    )
+    .map_err(io::Error::other)?;
+    let buttons = input
+        .spell_buttons(spells.spells.keys().copied())
+        .map_err(io::Error::other)?;
+    let combat = crate::spell_combat_config::resolve(names, &parameters, &runtime.definitions)
+        .map_err(io::Error::other)?;
+    runtime.configure_elemental_magic(combat, spells, buttons)
 }

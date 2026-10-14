@@ -14,6 +14,7 @@ fn compiled_journal_open_selects_tabs_and_initializes_summary_in_order() {
     .unwrap();
     assert_eq!(fixture.lines().count(), 2048);
     let config = Journal {
+        diary: None,
         interface: 100,
         tabs: [200, 201, 202],
         parent: Component::new(100, 5),
@@ -47,6 +48,7 @@ fn compiled_journal_open_selects_tabs_and_initializes_summary_in_order() {
                 &mut ui,
                 &vars,
                 f[2].parse().unwrap(),
+                None,
                 &Hooks::default(),
             )
             .unwrap();
@@ -113,6 +115,7 @@ fn compiled_journal_switch_closes_prepares_and_opens_in_source_order() {
         values.insert(1, f[1].parse().unwrap());
         let mut vars = Variables::restore(values);
         let config = Journal {
+            diary: None,
             interface: 100,
             tabs: [200, 201, 202],
             parent: Component::new(100, 5),
@@ -134,7 +137,7 @@ fn compiled_journal_switch_closes_prepares_and_opens_in_source_order() {
         };
         let mut ui = State::default();
         config
-            .opened(100, &mut ui, &vars, combat, &Hooks::default())
+            .opened(100, &mut ui, &vars, combat, None, &Hooks::default())
             .unwrap();
         let packets = config
             .switch(
@@ -144,6 +147,7 @@ fn compiled_journal_switch_closes_prepares_and_opens_in_source_order() {
                 combat,
                 f[4] == "1",
                 f[5].parse::<i32>().unwrap() > 0,
+                None,
                 &Hooks::default(),
             )
             .unwrap();

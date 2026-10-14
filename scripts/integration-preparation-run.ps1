@@ -1,9 +1,11 @@
 param(
  [Parameter(Mandatory)][ValidateSet('kotlin','rust')][string]$Environment,
  [Parameter(Mandatory)][ValidatePattern('^[a-z0-9-]{1,48}$')][string]$Run,
- [ValidateSet('login','actions','dialogue-ui','arrival','prayer','inventory','inventory-verify','render','floor','floor-content')][string]$Mode='actions',
+ [ValidateSet('tower-diary','login','actions','dialogue-ui','arrival','prayer','inventory','inventory-verify','render','floor','floor-content')][string]$Mode='actions',
  [string]$ReuseStateFrom,
+ [ValidatePattern('^[a-z0-9-]+$')][string]$TowerDriver,
  [switch]$CreatorResume,
+ [switch]$KnownEmptyDiary,
  [ValidatePattern('^[a-z0-9-]+$')][string]$DialogueDriver,
  [ValidatePattern('^[a-z0-9-]+$')][string]$ArrivalDriver,
  [ValidatePattern('^[a-z0-9-]+$')][string]$InventoryDriver,
@@ -12,11 +14,24 @@ param(
 )
 $ErrorActionPreference='Stop'
 if ($CreatorResume -and ($ReuseStateFrom -or $Mode -notin @('login','render'))) {throw 'CreatorResume requires a new login/render fixture'}
+if ($KnownEmptyDiary -and $ReuseStateFrom) {throw 'KnownEmptyDiary requires a new fixture; existing saves are preserved'}
 $serverRoot=Split-Path $PSScriptRoot -Parent
 $python='C:/Users/backup/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe'
 $root="$serverRoot/work/integration"
 $client="$serverRoot/integration/client-builds/client-239.1-baseline-001-build-001"
 $driverArgs=@{}
+if ($Mode -eq 'tower-diary' -and (-not $KnownEmptyDiary -or $ReuseStateFrom -or -not $TowerDriver)) {throw 'Tower diary requires a new KnownEmptyDiary fixture and explicitly pinned TowerDriver'}
+if ($TowerDriver) {
+ if ($Mode -ne 'tower-diary' -or $DialogueDriver -or $ArrivalDriver -or $InventoryDriver -or $PrayerDriver) {throw 'Tower driver only applies to tower-diary'}
+ $driverRoot="$serverRoot/integration/scenario-drivers/$TowerDriver"
+ $driverManifest=Get-Content "$driverRoot/manifest.json" -Raw | ConvertFrom-Json -AsHashtable
+ if ($driverManifest.baseline -ne 'client-239.1-baseline-001-build-001' -or $driverManifest.scenario -ne 'tower') {throw 'Tower driver provenance mismatch'}
+ foreach ($entry in $driverManifest.files.GetEnumerator()) {
+  if ((Get-FileHash "$driverRoot/$($entry.Key)").Hash -ne $entry.Value) {throw 'Scenario driver modified'}
+ }
+ $driverArgs.ScenarioExecutable="$driverRoot/server_tower.exe"
+}
+
 if ($CreatorResume) {$driverArgs.CreatorResume=$true}
 if ($PrayerDriver) {
  if ($Mode -ne 'prayer' -or $DialogueDriver -or $ArrivalDriver -or $InventoryDriver) {throw 'Prayer driver only applies to prayer'}
@@ -70,7 +85,11 @@ foreach ($entry in $manifest.files.GetEnumerator()) {
  if ((Get-FileHash "$client/$($entry.Key)").Hash.ToLowerInvariant() -ne $entry.Value) {throw "Pinned client modified: $($entry.Key)"}
 }
 if ((Get-FileHash $server).Hash -ne $serverHash) {throw 'Pinned server mismatch'}
-if ($Mode -like 'floor*') {
+if ($KnownEmptyDiary -and $Environment -eq 'rust') {
+ $sourceManifest=Get-Content "$root/server/$serverHash/source-hashes.json" -Raw | ConvertFrom-Json -AsHashtable
+ if (-not @($sourceManifest.Keys | Where-Object { $_ -match 'V11__tower_bones_offered\.sql$' }).Count) {throw 'KnownEmptyDiary requires a V11-capable archived server'}
+}
+if ($Mode -like 'floor*' -or $Mode -eq 'tower-diary') {
  $floorInput=Get-Content "$serverRoot/integration/floor-scenario-input.json" -Raw | ConvertFrom-Json
  if ((Get-FileHash "$serverRoot/$($floorInput.path)").Hash.ToLowerInvariant() -ne $floorInput.sha256) {throw 'Tower scene reference changed'}
 }
@@ -90,8 +109,10 @@ try {
   if (-not $stateRun -or $stateRun -notmatch '^[a-z0-9-]{1,48}$') {throw 'Predecessor state directory is invalid'}
  }
  if (-not $ReuseStateFrom) {
-  $fixturePreset=if ($CreatorResume) {'creator-resume'} elseif ($Mode -like 'floor*') {'tower'} else {'basic'}
-  $provision=(& $python "$PSScriptRoot/integration-preparation-state.py" clone --run $Run --environment $Environment --fixture $fixturePreset | Out-String).Trim()
+  $fixturePreset=if ($CreatorResume) {'creator-resume'} elseif ($Mode -eq 'tower-diary') {'tower-tanning'} elseif ($Mode -like 'floor*') {'tower'} else {'basic'}
+  [string[]]$diaryArgs=@()
+  if ($KnownEmptyDiary) {$diaryArgs=@('--known-empty-diary')}
+  $provision=(& $python "$PSScriptRoot/integration-preparation-state.py" clone --run $Run --environment $Environment --fixture $fixturePreset @diaryArgs | Out-String).Trim()
   if ($LASTEXITCODE -ne 0) {throw 'Fixture provisioning failed'}
   $fixture=($provision | ConvertFrom-Json).fixture_id
  }
@@ -111,6 +132,9 @@ try {
  $towerBefore="$serverRoot/work/preparation/$Run-tower-before.json"
  & $python "$PSScriptRoot/integration_tower_state.py" $Environment $towerSource $towerBefore
  if ($LASTEXITCODE -ne 0) {throw 'Initial Tower state export failed'}
+ $diaryBefore="$serverRoot/work/preparation/$Run-diary-before.json"
+ & $python "$PSScriptRoot/integration_diary_state.py" $Environment $towerSource $diaryBefore
+ if ($LASTEXITCODE -ne 0) {throw 'Initial diary state export failed'}
  try {
   if ($Environment -eq 'rust') { & "$PSScriptRoot/integration-rust-login.ps1" -Run $Run -Mode $Mode -Ticks 300 -StateName "integration-prep-$stateRun" -ClientRoot $client -ServerExecutable $server -CacheRoot "$root/a-kotlin/.data" @driverArgs }
   else { & "$PSScriptRoot/integration-kotlin-login.ps1" -Run $Run -Mode $Mode -Port 43728 -ClientRoot $client -EnvironmentPath $environmentPath @driverArgs }
@@ -118,6 +142,9 @@ try {
   if (Test-Path "$runDir/shutdown.json") {
    Copy-Item $before "$runDir/before-state.json"
    Copy-Item $towerBefore "$runDir/before-tower-state.json"
+   Copy-Item $diaryBefore "$runDir/before-diary-state.json"
+   & $python "$PSScriptRoot/integration_diary_state.py" $Environment $towerSource "$runDir/diary-state.json"
+   if ($LASTEXITCODE -ne 0) {throw 'Final diary state export failed'}
    & $python "$PSScriptRoot/integration_tower_state.py" $Environment $towerSource "$runDir/tower-state.json"
    if ($LASTEXITCODE -ne 0) {throw 'Tower state export failed'}
    & $python "$PSScriptRoot/integration-preparation-state.py" export --run $stateRun --environment $Environment --output "$runDir/state.json"
@@ -126,13 +153,15 @@ try {
    & $python "$PSScriptRoot/integration_telemetry.py" import $runDir "$runDir/events.jsonl" --environment $Environment --scenario $Mode --baseline 'client-239.1-baseline-001-build-001' --fixture $fixture --cache $cacheId
    & $python "$PSScriptRoot/integration-assess.py" $runDir "$runDir/scenario-result.json"
    $reproduce="scripts/integration-preparation-run.ps1 -Environment $Environment -Run new-unique-id -Mode $Mode -ServerHash $ServerHash"
+   if ($TowerDriver) {$reproduce+=" -TowerDriver $TowerDriver"}
    if ($DialogueDriver) {$reproduce+=" -DialogueDriver $DialogueDriver"}
    if ($ArrivalDriver) {$reproduce+=" -ArrivalDriver $ArrivalDriver"}
    if ($InventoryDriver) {$reproduce+=" -InventoryDriver $InventoryDriver"}
    if ($PrayerDriver) {$reproduce+=" -PrayerDriver $PrayerDriver"}
    if ($ReuseStateFrom) {$reproduce+=" -ReuseStateFrom $ReuseStateFrom"}
    if ($CreatorResume) {$reproduce+=' -CreatorResume'}
-   [ordered]@{baseline='client-239.1-baseline-001-build-001';serverHash=$ServerHash;dialogueDriver=$DialogueDriver;arrivalDriver=$ArrivalDriver;inventoryDriver=$InventoryDriver;prayerDriver=$PrayerDriver;fixture=$fixture;stateRun=$stateRun;environment=$Environment;mode=$Mode;creatorResume=[bool]$CreatorResume;cacheProvenance='Both environments use the hashed owned Kotlin cache and symbols';reproduction=$reproduce} | ConvertTo-Json | Set-Content "$runDir/preparation.json"
+   if ($KnownEmptyDiary) {$reproduce+=' -KnownEmptyDiary'}
+   [ordered]@{baseline='client-239.1-baseline-001-build-001';serverHash=$ServerHash;dialogueDriver=$DialogueDriver;arrivalDriver=$ArrivalDriver;inventoryDriver=$InventoryDriver;prayerDriver=$PrayerDriver;towerDriver=$TowerDriver;fixture=$fixture;stateRun=$stateRun;environment=$Environment;mode=$Mode;creatorResume=[bool]$CreatorResume;knownEmptyDiary=[bool]$KnownEmptyDiary;cacheProvenance='Both environments use the hashed owned Kotlin cache and symbols';reproduction=$reproduce} | ConvertTo-Json | Set-Content "$runDir/preparation.json"
   }
  }
 } finally {

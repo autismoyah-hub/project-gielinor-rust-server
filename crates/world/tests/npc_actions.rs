@@ -1638,3 +1638,247 @@ fn lecture_recap_decline_has_distinct_completion_timing() {
         assert!(w.dialogue_token(actor).unwrap().is_none());
     }
 }
+
+fn tanner_setup() -> (World, ActorId, NpcId) {
+    use gielinor_world::{
+        tower_diary::Progress,
+        tower_tanning::{Config, HandlerConfig},
+    };
+    let (mut w, actor, target) = setup();
+    w.tower_tanning = Some(HandlerConfig {
+        origin: CoordGrid::new(3192, 3192, 0).unwrap(),
+        inventory: Config {
+            hides: [1739].into(),
+            leather: 1741,
+        },
+        skills: [12, 13, 11],
+        bones: 526,
+    });
+    for op in [1, 3] {
+        w.npc_handlers.insert((1, op), Handler::TowerTanner);
+    }
+    w.data_mut(actor).unwrap().tower_diary = Some(Progress {
+        schema11: true,
+        ..Default::default()
+    });
+    (w, actor, target)
+}
+fn tanner_click(w: &mut World, actor: ActorId, target: NpcId, operation: u8) -> Vec<WorldEvent> {
+    w.submit(
+        actor,
+        Action::OperateNpc {
+            target,
+            operation,
+            control: false,
+        },
+    )
+    .unwrap();
+    let mut events = vec![];
+    for _ in 0..12 {
+        w.tick().unwrap();
+        events.extend(w.drain_events());
+    }
+    events
+}
+#[test]
+fn tanner_routes_updates_diary_and_orders_task_reward_and_result() {
+    use gielinor_world::inventory::Item;
+    let (mut w, actor, target) = tanner_setup();
+    for slot in 0..5 {
+        w.data_mut(actor)
+            .unwrap()
+            .inventory
+            .restore_slot(
+                slot,
+                Some(Item {
+                    id: 1739,
+                    count: 1,
+                    vars: 0,
+                }),
+            )
+            .unwrap();
+    }
+    let events = tanner_click(&mut w, actor, target, 1);
+    let observed: Vec<_> = events
+        .iter()
+        .filter_map(|e| match e {
+            WorldEvent::GameMessage { text, .. } => Some(text.clone()),
+            WorldEvent::TowerDiary { marks, .. } => {
+                assert_eq!(marks.bounty, 1);
+                Some("DIARY".into())
+            }
+            _ => None,
+        })
+        .collect();
+    assert_eq!(
+        observed,
+        [
+            "I'm a tanner. Bring cowhides. I don't keep a shop.",
+            "DIARY",
+            "The chest holds a bronze axe.",
+            "The tanner tans 5 cowhide(s) into leather. Hides 5/5."
+        ]
+    );
+    let data = w.data(actor).unwrap();
+    assert_eq!(
+        data.inventory
+            .slots()
+            .iter()
+            .flatten()
+            .filter(|i| i.id == 1741)
+            .count(),
+        5
+    );
+    assert_eq!(data.tower_diary.unwrap().bounty, 1);
+    assert!(data.tower_arrival.diary_progress);
+    assert!(data.stats.xp(12) == 0, "Tanning does not award crafting XP");
+    w.request_logout(actor).unwrap();
+    assert!(w.drain_events().iter().any(|event| matches!(event,
+        WorldEvent::Save { data, .. } if data.tower_diary.unwrap().counts[0] == 5)));
+}
+#[test]
+fn tanner_unknown_diary_does_not_consume_inventory_or_fabricate_marks() {
+    use gielinor_world::{inventory::Item, simulation::ActionError};
+    let (mut w, actor, target) = tanner_setup();
+    let data = w.data_mut(actor).unwrap();
+    data.tower_diary = None;
+    data.inventory
+        .restore_slot(
+            0,
+            Some(Item {
+                id: 1739,
+                count: 1,
+                vars: 0,
+            }),
+        )
+        .unwrap();
+    let events = tanner_click(&mut w, actor, target, 3);
+    assert!(events.iter().any(|e| matches!(
+        e,
+        WorldEvent::ActionRejected {
+            error: ActionError::UnknownTowerDiary,
+            ..
+        }
+    )));
+    assert_eq!(w.data(actor).unwrap().inventory.get(0).unwrap().id, 1739);
+    assert!(w.data(actor).unwrap().tower_diary.is_none());
+}
+#[test]
+fn tanner_empty_inventory_sends_hint_without_diary_sync() {
+    let (mut w, actor, target) = tanner_setup();
+    let events = tanner_click(&mut w, actor, target, 3);
+    assert!(events
+        .iter()
+        .any(|e| matches!(e, WorldEvent::GameMessage { text, .. }
+        if text == "Bring cowhides. The tanner tans; he does not keep a shop.")));
+    assert!(!events
+        .iter()
+        .any(|e| matches!(e, WorldEvent::TowerDiary { .. })));
+}
+#[test]
+fn tanner_rechecks_tower_bounds_after_routing() {
+    use gielinor_world::inventory::Item;
+    let (mut w, actor, target) = tanner_setup();
+    w.tower_tanning.as_mut().unwrap().origin = CoordGrid::new(6000, 6000, 0).unwrap();
+    w.data_mut(actor)
+        .unwrap()
+        .inventory
+        .restore_slot(
+            0,
+            Some(Item {
+                id: 1739,
+                count: 1,
+                vars: 0,
+            }),
+        )
+        .unwrap();
+    let events = tanner_click(&mut w, actor, target, 3);
+    assert!(!events.iter().any(|e| matches!(
+        e,
+        WorldEvent::GameMessage { .. } | WorldEvent::TowerDiary { .. }
+    )));
+    assert_eq!(w.data(actor).unwrap().inventory.get(0).unwrap().id, 1739);
+}
+
+#[test]
+fn tanner_talk_checks_npc_bounds_while_tan_checks_only_player_bounds() {
+    use gielinor_world::inventory::Item;
+    for (op, converted) in [(1, false), (3, true)] {
+        let (mut w, actor, target) = tanner_setup();
+        // Tanner is on x=3205, immediately outside this tower's east edge.
+        w.tower_tanning.as_mut().unwrap().origin = CoordGrid::new(3077, 3192, 0).unwrap();
+        w.data_mut(actor)
+            .unwrap()
+            .inventory
+            .restore_slot(
+                0,
+                Some(Item {
+                    id: 1739,
+                    count: 1,
+                    vars: 0,
+                }),
+            )
+            .unwrap();
+        tanner_click(&mut w, actor, target, op);
+        assert_eq!(
+            w.data(actor).unwrap().inventory.get(0).unwrap().id,
+            if converted { 1741 } else { 1739 }
+        );
+    }
+}
+
+#[test]
+fn diary_transition_to_imp_reward_drops_private_bones_even_with_saved_flag() {
+    use gielinor_world::inventory::Item;
+    for flag in [false, true] {
+        let (mut w, actor, target) = tanner_setup();
+        w.set_observer_id(actor, 900).unwrap();
+        let data = w.data_mut(actor).unwrap();
+        let diary = data.tower_diary.as_mut().unwrap();
+        diary.done[..9].fill(true);
+        diary.pending[0] = true;
+        diary.imp_bones = flag;
+        data.inventory
+            .restore_slot(
+                0,
+                Some(Item {
+                    id: 1739,
+                    count: 1,
+                    vars: 0,
+                }),
+            )
+            .unwrap();
+        let events = tanner_click(&mut w, actor, target, 3);
+        let data = w.data(actor).unwrap();
+        assert!(data.tower_diary.unwrap().imp_bones);
+        assert_eq!(data.tower_diary.unwrap().bounty, 10);
+        let bones = w.objects.at(data.coords).next().unwrap().snapshot();
+        assert_eq!(
+            (bones.item, bones.count, bones.receiver, bones.owner),
+            (526, 1, Some(900), Some(900))
+        );
+        assert!(!bones.visible_to(Some(901)));
+        assert!(events
+            .iter()
+            .any(|e| matches!(e, WorldEvent::GameMessage { text, .. }
+            if text == "The chest holds 8 coins.")));
+        w.data_mut(actor)
+            .unwrap()
+            .inventory
+            .restore_slot(
+                0,
+                Some(Item {
+                    id: 1739,
+                    count: 1,
+                    vars: 0,
+                }),
+            )
+            .unwrap();
+        let events = tanner_click(&mut w, actor, target, 3);
+        assert!(!events
+            .iter()
+            .any(|e| matches!(e, WorldEvent::GameMessage { text, .. }
+            if text == "The chest holds 8 coins.")));
+        assert_eq!(w.objects.count(), 1);
+    }
+}

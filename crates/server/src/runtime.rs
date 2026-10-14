@@ -13,12 +13,19 @@ use std::{
     io,
     sync::mpsc::{TryRecvError, TrySendError},
 };
+mod anvil;
 mod autocast_picker;
 mod dialogue;
 mod drop_dialog;
+mod location_target;
+mod movement;
 mod npc_interaction;
 mod prayer;
 mod prayer_tab;
+mod skill_multi;
+mod smelting;
+mod tower_restore;
+mod tutorial;
 
 fn inventory<'a>(
     data: &'a PlayerData,
@@ -82,6 +89,10 @@ impl AccountBackend for Worker {
     }
 }
 pub enum Event {
+    SkillMultiSelected {
+        actor: ActorId,
+        selection: Option<crate::skill_multi::Selection>,
+    },
     CountDialogInput {
         actor: ActorId,
         count: i32,
@@ -95,6 +106,11 @@ pub enum Event {
     InterfaceDrag {
         actor: ActorId,
         drag: gielinor_protocol::buttons::Drag,
+        route: gielinor_world::ui::ButtonRoute,
+    },
+    InterfaceTarget {
+        actor: ActorId,
+        target: gielinor_protocol::buttons::Target,
         route: gielinor_world::ui::ButtonRoute,
     },
     InterfaceClosed {
@@ -189,15 +205,19 @@ struct Active {
     prayer_dialog: Option<(u64, gielinor_world::ui::Component)>,
     prayer_notice: Option<crate::message_box::Active>,
     dialogue: Option<crate::dialogue::Active>,
+    skill_multi: Option<crate::skill_multi::Active>,
+    anvil_count: Option<crate::anvil::CountDialog>,
     pending_face: Option<(gielinor_world::CoordGrid, u8, u8)>,
     face_angle: Option<u16>,
     face_changed: bool,
     bank_events_due: Option<i32>,
     sequence: Option<(u16, u8)>,
+    spot_animations: Vec<gielinor_protocol::spot_animation::Animation>,
     ui: gielinor_world::ui::State,
     character: Character,
     connection: Option<u64>,
     design: crate::appearance::Design,
+    appearance_rebuild: bool,
     observer: Option<crate::synchronization::Observer>,
     npc_observer: crate::npc_synchronization::Observer,
     zone_observer: gielinor_world::zones::Observer,
@@ -219,6 +239,8 @@ pub struct Runtime<B: AccountBackend> {
     combat_updates: HashMap<gielinor_world::hits::Target, crate::combat_display::Display>,
     drop_presentation: Option<crate::drop_dialog::Presentation>,
     dialogue_presentation: Option<crate::dialogue::Presentation>,
+    smelting: Option<crate::smelting::Config>,
+    anvil: Option<crate::anvil::Config>,
     pub message_box: Option<crate::message_box::Presentation>,
     zones_enabled: bool,
     ground_updates: Vec<gielinor_world::zones::Change>,
@@ -227,12 +249,16 @@ pub struct Runtime<B: AccountBackend> {
     bank_presentation: Option<BankPresentation>,
     pub music_component: Option<u32>,
     npc_bank_parents: Option<(gielinor_world::ui::Component, gielinor_world::ui::Component)>,
+    npc_spell_buttons: BTreeMap<u32, i32>,
     login_presentation: Option<crate::login_init::Presentation>,
     interface_hooks: crate::interface_hooks::Hooks,
     journal: Option<crate::journal::Journal>,
     gameframe_moves: Option<crate::gameframe_move::Config>,
     combat_tab: Option<crate::combat_tab::Presentation>,
     combat_buttons: BTreeMap<u32, Option<u8>>,
+    player_design: Option<crate::player_design::Bindings>,
+    tutorial: Option<std::sync::Arc<crate::tutorial_character::Config>>,
+    tutorial_leave: Option<gielinor_world::tutorial_leave::Config>,
     autocast_picker: Option<crate::autocast_picker::Presentation>,
     interface_controls: BTreeMap<u32, crate::interface_controls::Control>,
     bonuses: Option<(crate::bonuses::Config, crate::bonuses::Styles)>,
@@ -275,6 +301,8 @@ impl<B: AccountBackend> Runtime<B> {
             zones_enabled: false,
             drop_presentation: None,
             dialogue_presentation: None,
+            smelting: None,
+            anvil: None,
             message_box: None,
             ground_updates: Vec::new(),
             bank_insert: None,
@@ -282,6 +310,7 @@ impl<B: AccountBackend> Runtime<B> {
             bank_presentation: None,
             music_component: None,
             npc_bank_parents: None,
+            npc_spell_buttons: BTreeMap::new(),
             login_presentation: None,
             floor_progression: None,
             interface_hooks: crate::interface_hooks::Hooks::default(),
@@ -289,6 +318,9 @@ impl<B: AccountBackend> Runtime<B> {
             gameframe_moves: None,
             combat_tab: None,
             combat_buttons: BTreeMap::new(),
+            player_design: None,
+            tutorial: None,
+            tutorial_leave: None,
             autocast_picker: None,
             interface_controls: BTreeMap::new(),
             bonuses: None,
@@ -517,6 +549,19 @@ impl<B: AccountBackend> Runtime<B> {
         }) {
             return Err(io::Error::other("Invalid journal control"));
         }
+        if journal.diary.as_ref().is_some_and(|diary| {
+            diary
+                .hidden
+                .iter()
+                .chain(std::iter::once(&diary.header))
+                .any(|c| !self.components.contains_key(c) || *c >> 16 != journal.tabs[2] as u32)
+                || diary
+                    .skills
+                    .iter()
+                    .any(|s| !self.definitions.stats.contains_key(&(*s as u32)))
+        }) {
+            return Err(io::Error::other("Invalid Tower diary configuration"));
+        }
         self.journal = Some(journal);
         Ok(())
     }
@@ -551,6 +596,27 @@ impl<B: AccountBackend> Runtime<B> {
             ));
         }
         self.world.combat_wear = Some(config);
+        Ok(())
+    }
+    pub fn configure_bulwark_wear(
+        &mut self,
+        config: gielinor_world::bulwark_wear::Config,
+    ) -> io::Result<()> {
+        if !self.connections.is_empty() {
+            return Err(io::Error::other(
+                "Configure bulwark listener before admission",
+            ));
+        }
+        self.world.bulwark_wear = Some(config);
+        Ok(())
+    }
+    pub fn configure_wearpos(&mut self, config: gielinor_world::wearpos::Config) -> io::Result<()> {
+        if !self.connections.is_empty() || self.world.combat_stance.is_none() {
+            return Err(io::Error::other(
+                "Configure wear-position listeners after combat and before admission",
+            ));
+        }
+        self.world.wearpos = Some(config);
         Ok(())
     }
     pub fn configure_gameframe_moves(
@@ -669,6 +735,30 @@ impl<B: AccountBackend> Runtime<B> {
             }
         }
         self.login_presentation = Some(presentation);
+        Ok(())
+    }
+    pub fn configure_realm_messages(
+        &mut self,
+        messages: gielinor_storage::accounts::LoginMessages,
+    ) -> io::Result<()> {
+        if !self.connections.is_empty() {
+            return Err(io::Error::other(
+                "Configure realm messages before admission",
+            ));
+        }
+        let login = self
+            .login_presentation
+            .as_mut()
+            .ok_or_else(|| io::Error::other("Login presentation is not configured"))?;
+        // Validate the actual outbound encoding before accepting any sessions.
+        for (kind, message) in [(108, &messages.welcome), (14, &messages.broadcast)] {
+            if let Some(message) = message {
+                gielinor_protocol::chat::game(kind, None, message)
+                    .map_err(|e| io::Error::other(format!("{e:?}")))?;
+            }
+        }
+        login.welcome = messages.welcome;
+        login.broadcast = messages.broadcast;
         Ok(())
     }
     pub fn configure_bonuses(
@@ -1015,6 +1105,37 @@ impl<B: AccountBackend> Runtime<B> {
         self.transport
             .send(connection, packet.opcode, &packet.payload)?;
         active.ui = ui;
+        if active.anvil_count.is_some_and(|dialog| {
+            closed
+                .iter()
+                .any(|(_, interface)| *interface == dialog.interface)
+        }) {
+            let dialog = active.anvil_count.take().unwrap();
+            if self
+                .world
+                .quantity_dialog_token(actor)
+                .map_err(|e| io::Error::other(format!("{e:?}")))?
+                == Some(dialog.token)
+            {
+                self.world
+                    .cancel_quantity_dialog(actor)
+                    .map_err(|e| io::Error::other(format!("{e:?}")))?;
+                active.ui.input_dialog_open = false;
+                if let Some(connection) = active.connection {
+                    self.transport.send(connection, 117, &[])?;
+                }
+            }
+        }
+        if active.skill_multi.as_ref().is_some_and(|dialog| {
+            closed
+                .iter()
+                .any(|(_, interface)| *interface == dialog.presentation.interface)
+        }) {
+            active.skill_multi = None;
+            self.world
+                .cancel_quantity_dialog(actor)
+                .map_err(|e| io::Error::other(format!("{e:?}")))?;
+        }
         if active.dialogue.as_ref().is_some_and(|dialogue| {
             closed
                 .iter()
@@ -1059,6 +1180,11 @@ impl<B: AccountBackend> Runtime<B> {
         self.world
             .set_modal_open(actor, active.ui.modals.entries().next().is_some())
             .map_err(|e| io::Error::other(format!("{e:?}")))?;
+        if let Some(tutorial) = &self.tutorial {
+            self.world
+                .set_main_modal(actor, active.ui.modals.get(tutorial.mainmodal))
+                .map_err(|e| io::Error::other(format!("{e:?}")))?;
+        }
         if self.bank_presentation.as_ref().is_some_and(|bank| {
             closed
                 .iter()
@@ -1126,6 +1252,7 @@ impl<B: AccountBackend> Runtime<B> {
                     &mut active.ui,
                     &data.variables,
                     combat,
+                    journal.marks(data),
                     &self.interface_hooks,
                 )
                 .map_err(io::Error::other)?
@@ -1185,6 +1312,37 @@ impl<B: AccountBackend> Runtime<B> {
             }
         }
         active.ui = ui;
+        if active.anvil_count.is_some_and(|dialog| {
+            closed
+                .iter()
+                .any(|(_, interface)| *interface == dialog.interface)
+        }) {
+            let dialog = active.anvil_count.take().unwrap();
+            if self
+                .world
+                .quantity_dialog_token(actor)
+                .map_err(|e| io::Error::other(format!("{e:?}")))?
+                == Some(dialog.token)
+            {
+                self.world
+                    .cancel_quantity_dialog(actor)
+                    .map_err(|e| io::Error::other(format!("{e:?}")))?;
+                active.ui.input_dialog_open = false;
+                if let Some(connection) = active.connection {
+                    self.transport.send(connection, 117, &[])?;
+                }
+            }
+        }
+        if active.skill_multi.as_ref().is_some_and(|dialog| {
+            closed
+                .iter()
+                .any(|(_, interface)| *interface == dialog.presentation.interface)
+        }) {
+            active.skill_multi = None;
+            self.world
+                .cancel_quantity_dialog(actor)
+                .map_err(|e| io::Error::other(format!("{e:?}")))?;
+        }
         if active.dialogue.as_ref().is_some_and(|dialogue| {
             closed
                 .iter()
@@ -1229,6 +1387,11 @@ impl<B: AccountBackend> Runtime<B> {
         self.world
             .set_modal_open(actor, active.ui.modals.entries().next().is_some())
             .map_err(|e| io::Error::other(format!("{e:?}")))?;
+        if let Some(tutorial) = &self.tutorial {
+            self.world
+                .set_main_modal(actor, active.ui.modals.get(tutorial.mainmodal))
+                .map_err(|e| io::Error::other(format!("{e:?}")))?;
+        }
         if self.bank_presentation.as_ref().is_some_and(|bank| {
             closed
                 .iter()
@@ -1308,6 +1471,11 @@ impl<B: AccountBackend> Runtime<B> {
         self.world
             .set_modal_open(actor, active.ui.modals.entries().next().is_some())
             .map_err(|e| io::Error::other(format!("{e:?}")))?;
+        if let Some(tutorial) = &self.tutorial {
+            self.world
+                .set_main_modal(actor, active.ui.modals.get(tutorial.mainmodal))
+                .map_err(|e| io::Error::other(format!("{e:?}")))?;
+        }
         Ok(())
     }
     pub fn set_appearance(
@@ -1326,10 +1494,65 @@ impl<B: AccountBackend> Runtime<B> {
         policy
             .appearance(&design, data, &self.definitions)
             .map_err(io::Error::other)?;
-        self.active
+        let active = self
+            .active
             .get_mut(&actor)
-            .ok_or_else(|| io::Error::other("Invalid session actor"))?
-            .design = design;
+            .ok_or_else(|| io::Error::other("Invalid session actor"))?;
+        active.design = design;
+        active.appearance_rebuild = true;
+        Ok(())
+    }
+    pub fn appearance_design(&self, actor: ActorId) -> Option<&crate::appearance::Design> {
+        self.active.get(&actor).map(|active| &active.design)
+    }
+    pub fn configure_player_design(
+        &mut self,
+        bindings: crate::player_design::Bindings,
+    ) -> io::Result<()> {
+        if !self.active.is_empty() || !self.connections.is_empty() {
+            return Err(io::Error::other("Configure player design before admission"));
+        }
+        self.player_design = Some(bindings);
+        Ok(())
+    }
+    fn player_design_button(
+        &mut self,
+        actor: ActorId,
+        component: u32,
+        child: i32,
+    ) -> io::Result<()> {
+        let Some(bindings) = &self.player_design else {
+            return Ok(());
+        };
+        let Some(control) = bindings.control(component, child) else {
+            return Ok(());
+        };
+        let logged = self
+            .world
+            .protection(actor)
+            .map_err(|e| io::Error::other(format!("{e:?}")))?
+            .processed_clock
+            > 0;
+        let data = self
+            .world
+            .data_mut(actor)
+            .map_err(|e| io::Error::other(format!("{e:?}")))?;
+        let active = self
+            .active
+            .get_mut(&actor)
+            .ok_or_else(|| io::Error::other("Invalid creator actor"))?;
+        let effects = bindings
+            .config
+            .apply(&mut active.design, &mut data.variables, control, logged)
+            .map_err(|e| io::Error::other(format!("{e:?}")))?;
+        active.appearance_rebuild |= effects.rebuild;
+        if let Some(connection) = active.connection {
+            for update in effects.variables {
+                let packet = gielinor_protocol::varp::update(update.id, update.value);
+                self.transport
+                    .send(connection, packet.opcode, &packet.payload)?;
+            }
+        }
         Ok(())
     }
     pub fn start_inventory_transmission(&mut self, actor: ActorId, id: u16) -> io::Result<()> {
@@ -1490,6 +1713,14 @@ impl<B: AccountBackend> Runtime<B> {
         Ok(std::mem::take(&mut self.events))
     }
     pub fn tick(&mut self) -> io::Result<Vec<Event>> {
+        self.transport.begin_batch()?;
+        let result = self.tick_batched();
+        let flushed = self.transport.end_batch();
+        let events = result?;
+        flushed?;
+        Ok(events)
+    }
+    fn tick_batched(&mut self) -> io::Result<Vec<Event>> {
         // Input can resume a protected notice before the main pass. Reopening its
         // parent cancels this queued close, matching Player.openModal/openOverlay.
         let queued: Vec<_> = self
@@ -1670,6 +1901,9 @@ impl<B: AccountBackend> Runtime<B> {
                         .staff_level;
                     match crate::gameplay::decode(&packet, level, staff, false) {
                         Ok(crate::gameplay::Request::Npc(op)) => self.npc_button(actor, op)?,
+                        Ok(crate::gameplay::Request::NpcTarget(target)) => {
+                            self.npc_spell_target(actor, target)?
+                        }
                         Ok(crate::gameplay::Request::GroundObject(op)) => {
                             if op.operation == 3
                                 && op.suboperation == 0
@@ -1734,14 +1968,20 @@ impl<B: AccountBackend> Runtime<B> {
                                 });
                             }
                         }
+                        Ok(crate::gameplay::Request::LocationTarget(target)) => {
+                            if self.held_component == Some(target.source) {
+                                self.location_target(actor, target)?;
+                            } else {
+                                self.events.push(Event::Packet {
+                                    connection,
+                                    actor,
+                                    packet,
+                                });
+                            }
+                        }
                         Ok(crate::gameplay::Request::Location(op)) => {
                             if op.suboperation == 0
-                                && ((op.operation == 1
-                                    && self.world.doors.contains_key(&(op.id as u32)))
-                                    || self
-                                        .world
-                                        .location_handlers
-                                        .contains_key(&(op.id as u32, op.operation)))
+                                && self.world.has_location_handler(op.id as u32, op.operation)
                             {
                                 if !self
                                     .world
@@ -1761,15 +2001,7 @@ impl<B: AccountBackend> Runtime<B> {
                                             .find_type(coords, op.id as u32)
                                             .is_some()
                                         {
-                                            let parents: Vec<_> = self.active[&actor]
-                                                .ui
-                                                .modals
-                                                .entries()
-                                                .map(|(parent, _)| parent)
-                                                .collect();
-                                            for parent in parents {
-                                                self.close_interface(actor, parent)?;
-                                            }
+                                            self.close_dialogs_and_modals(actor)?;
                                         }
                                         if let Err(error) = self.world.submit(
                                             actor,
@@ -1805,6 +2037,14 @@ impl<B: AccountBackend> Runtime<B> {
                             }
                         }
                         Ok(crate::gameplay::Request::Action(action)) => {
+                            if let gielinor_world::simulation::Action::MoveClick {
+                                destination,
+                                control,
+                            } = action
+                            {
+                                self.move_click(actor, destination, control)?;
+                                return Ok(());
+                            }
                             if let Err(error) = self.world.submit(actor, action) {
                                 self.events.push(Event::PacketRejected {
                                     connection,
@@ -1825,15 +2065,23 @@ impl<B: AccountBackend> Runtime<B> {
                             ui.frame_height = status.height;
                         }
                         Ok(crate::gameplay::Request::ResumePause(pause)) => {
-                            let Some(component) = self.components.get(&pause.component) else {
+                            if self.resume_skill_multi(actor, pause)? {
                                 return Ok(());
-                            };
-                            if !self.active.get_mut(&actor).unwrap().ui.queue_pause_close(
-                                gielinor_world::ui::Component(pause.component),
-                                pause.subcomponent,
-                                component.events,
-                            ) {
-                                return Ok(());
+                            }
+                            // Prayer notices resume synchronously. Other dialogue
+                            // systems currently resume in World::PlayerInput, so
+                            // their close ownership remains with those handlers.
+                            if self.active[&actor].prayer_notice.is_some() {
+                                let Some(component) = self.components.get(&pause.component) else {
+                                    return Ok(());
+                                };
+                                if !self.active.get_mut(&actor).unwrap().ui.queue_pause_close(
+                                    gielinor_world::ui::Component(pause.component),
+                                    pause.subcomponent,
+                                    component.events,
+                                ) {
+                                    return Ok(());
+                                }
                             }
                             self.resume_prayer_notice(actor, pause)?;
                             self.resume_dialogue_pause(actor, pause)?;
@@ -1841,6 +2089,9 @@ impl<B: AccountBackend> Runtime<B> {
                             self.resume_prayer_pause(actor, pause)?;
                         }
                         Ok(crate::gameplay::Request::ResumeCount(count)) => {
+                            if self.resume_anvil_count(actor, count)? {
+                                return Ok(());
+                            }
                             let token = self
                                 .world
                                 .count_dialog_token(actor)
@@ -1917,7 +2168,22 @@ impl<B: AccountBackend> Runtime<B> {
                                         button,
                                         route,
                                     });
+                                    if route == gielinor_world::ui::ButtonRoute::Modal {
+                                        if button.op == 1 {
+                                            self.anvil_button(actor, button.component)?;
+                                            self.tutorial_character_button(
+                                                actor,
+                                                button.component,
+                                            )?;
+                                        }
+                                        self.player_design_button(
+                                            actor,
+                                            button.component,
+                                            button.slot,
+                                        )?;
+                                    }
                                     if route == gielinor_world::ui::ButtonRoute::Overlay {
+                                        self.tutorial_overlay_button(actor, button.component)?;
                                         let prayer = self
                                             .world
                                             .prayer_book
@@ -2038,6 +2304,7 @@ impl<B: AccountBackend> Runtime<B> {
                                                     .unwrap()
                                                     .combat_level(data);
                                                 let active = self.active.get_mut(&actor).unwrap();
+                                                let marks = journal.marks(data);
                                                 match journal.switch(
                                                     tab,
                                                     &mut active.ui,
@@ -2045,6 +2312,7 @@ impl<B: AccountBackend> Runtime<B> {
                                                     combat,
                                                     active.character.identity.member,
                                                     logged_in,
+                                                    marks,
                                                     &self.interface_hooks,
                                                 ) {
                                                     Ok(packets) => {
@@ -2350,6 +2618,103 @@ impl<B: AccountBackend> Runtime<B> {
                                 }
                             }
                         }
+                        Ok(crate::gameplay::Request::Target(target)) => {
+                            if let (Some(source_type), Some(target_type)) = (
+                                self.components.get(&target.source),
+                                self.components.get(&target.target),
+                            ) {
+                                let source_events = source_type.events;
+                                let target_events = target_type.events;
+                                let source = gielinor_world::ui::Component(target.source);
+                                let destination = gielinor_world::ui::Component(target.target);
+                                let mut probe = self.active[&actor].ui.clone();
+                                probe.modal_button_protected = false;
+                                if probe.target_button(
+                                    source,
+                                    target.source_slot,
+                                    source_events,
+                                    destination,
+                                    target.target_slot,
+                                    target_events,
+                                ) == gielinor_world::ui::ButtonRoute::Modal
+                                    && self
+                                        .world
+                                        .cancel_count_dialog(actor)
+                                        .map_err(|e| io::Error::other(format!("{e:?}")))?
+                                {
+                                    self.active.get_mut(&actor).unwrap().ui.input_dialog_open =
+                                        false;
+                                    self.transport.send(connection, 117, &[])?;
+                                }
+                                let protected = self
+                                    .world
+                                    .protection(actor)
+                                    .map_err(|e| io::Error::other(format!("{e:?}")))?
+                                    .modal_button_protected();
+                                let active = self.active.get_mut(&actor).unwrap();
+                                active.ui.modal_button_protected = protected;
+                                let route = active.ui.target_button(
+                                    source,
+                                    target.source_slot,
+                                    source_events,
+                                    destination,
+                                    target.target_slot,
+                                    target_events,
+                                );
+                                if matches!(
+                                    route,
+                                    gielinor_world::ui::ButtonRoute::Overlay
+                                        | gielinor_world::ui::ButtonRoute::Modal
+                                ) {
+                                    self.events.push(Event::InterfaceTarget {
+                                        actor,
+                                        target,
+                                        route,
+                                    });
+                                    if route == gielinor_world::ui::ButtonRoute::Overlay
+                                        && self.held_component == Some(target.source)
+                                        && self.held_component == Some(target.target)
+                                    {
+                                        let request = gielinor_world::held_use::Request {
+                                            selected_slot: target.source_slot,
+                                            selected_id: target.source_object,
+                                            target_slot: target.target_slot,
+                                            target_id: target.target_object,
+                                        };
+                                        let prepared = self.world.prepare_held_use(actor, request);
+                                        let result = match prepared {
+                                            Ok(Some(preparation)) => {
+                                                let active = self.active.get_mut(&actor).unwrap();
+                                                if preparation.abort_dialog {
+                                                    active.ui.input_dialog_open = false;
+                                                    self.transport.send(connection, 117, &[])?;
+                                                }
+                                                let parents: Vec<_> = active
+                                                    .ui
+                                                    .modals
+                                                    .entries()
+                                                    .map(|(parent, _)| parent)
+                                                    .collect();
+                                                for parent in parents {
+                                                    self.close_interface(actor, parent)?;
+                                                }
+                                                self.world.finish_held_use(actor, request)
+                                            }
+                                            Ok(None) => Ok(()),
+                                            Err(error) => Err(error),
+                                        };
+                                        if let Err(error) = result {
+                                            self.events.push(Event::PacketRejected {
+                                                connection,
+                                                actor,
+                                                opcode: packet.opcode,
+                                                reason: format!("{error:?}"),
+                                            });
+                                        }
+                                    }
+                                }
+                            }
+                        }
                         Ok(crate::gameplay::Request::PrivilegedTelejump(_)) => {
                             self.events.push(Event::PacketRejected {
                                 connection,
@@ -2461,6 +2826,29 @@ impl<B: AccountBackend> Runtime<B> {
     fn world_events(&mut self) -> io::Result<()> {
         for event in self.world.drain_events() {
             match event {
+                WorldEvent::GameMessage { actor, text } => {
+                    if let Some(connection) = self.connection(actor) {
+                        let packet = gielinor_protocol::chat::game(0, None, &text)
+                            .map_err(|e| io::Error::other(format!("{e:?}")))?;
+                        self.transport
+                            .send(connection, packet.opcode, &packet.payload)?;
+                    }
+                    self.events
+                        .push(Event::World(WorldEvent::GameMessage { actor, text }));
+                }
+                WorldEvent::TowerDiary { actor, marks } => {
+                    if let (Some(connection), Some(diary)) = (
+                        self.connection(actor),
+                        self.journal.as_ref().and_then(|j| j.diary.as_ref()),
+                    ) {
+                        for packet in diary.packets(marks).map_err(io::Error::other)? {
+                            self.transport
+                                .send(connection, packet.opcode, &packet.payload)?;
+                        }
+                    }
+                    self.events
+                        .push(Event::World(WorldEvent::TowerDiary { actor, marks }));
+                }
                 WorldEvent::TowerArrival {
                     actor,
                     arrival,
@@ -2503,6 +2891,20 @@ impl<B: AccountBackend> Runtime<B> {
                         actor,
                         token,
                         text,
+                    }));
+                }
+                WorldEvent::SkillAdvanced {
+                    actor,
+                    skill,
+                    advancement,
+                } => {
+                    if let Some(active) = self.active.get_mut(&actor) {
+                        active.stats.invalidate(skill);
+                    }
+                    self.events.push(Event::World(WorldEvent::SkillAdvanced {
+                        actor,
+                        skill,
+                        advancement,
                     }));
                 }
                 WorldEvent::Stat { actor, update } => {
@@ -2574,7 +2976,10 @@ impl<B: AccountBackend> Runtime<B> {
                             prayer_dialog: None,
                             prayer_notice: None,
                             dialogue: None,
+                            skill_multi: None,
+                            anvil_count: None,
                             sequence: None,
+                            spot_animations: Vec::new(),
                             pending_face: None,
                             face_npc: None,
                             face_angle: None,
@@ -2586,6 +2991,7 @@ impl<B: AccountBackend> Runtime<B> {
                             character,
                             connection: accepted.then_some(connection),
                             design: crate::appearance::Design::default(),
+                            appearance_rebuild: false,
                             observer: None,
                             npc_observer: Default::default(),
                             zone_observer: Default::default(),
@@ -2641,6 +3047,40 @@ impl<B: AccountBackend> Runtime<B> {
                         .push(Event::World(WorldEvent::CloseModals { actor }));
                 }
                 WorldEvent::Save { actor, data } => self.queue_save(actor, data)?,
+                WorldEvent::WearposEffects { actor, result } => {
+                    if let Some(connection) = self.connection(actor) {
+                        for event in result.as_ref().map_err(|e| io::Error::other(e.clone()))? {
+                            use gielinor_world::wearpos::Event as WearEvent;
+                            let packet = match event {
+                                WearEvent::Variable(u) => {
+                                    gielinor_protocol::varp::update(u.id, u.value)
+                                }
+                                WearEvent::Sound(sound) => {
+                                    gielinor_protocol::game::synth_sound(*sound, 1, 0)
+                                }
+                                WearEvent::PlayerOp(op) => {
+                                    gielinor_protocol::login_init::player_operation(
+                                        5,
+                                        op.is_some(),
+                                        op.as_deref(),
+                                    )
+                                    .map_err(|e| io::Error::other(format!("{e:?}")))?
+                                }
+                                WearEvent::CombatRange(level) => {
+                                    gielinor_protocol::client_script::run(
+                                        5224,
+                                        &[gielinor_protocol::client_script::Argument::Int(*level)],
+                                    )
+                                    .map_err(|e| io::Error::other(format!("{e:?}")))?
+                                }
+                            };
+                            self.transport
+                                .send(connection, packet.opcode, &packet.payload)?;
+                        }
+                    }
+                    self.events
+                        .push(Event::World(WorldEvent::WearposEffects { actor, result }));
+                }
                 WorldEvent::WornEffects { actor, result } => {
                     if let Some(connection) = self.connection(actor) {
                         for event in result.as_ref().map_err(|e| io::Error::other(e.clone()))? {
@@ -2694,6 +3134,32 @@ impl<B: AccountBackend> Runtime<B> {
                     self.events
                         .push(Event::World(WorldEvent::CombatXp { actor, awards }));
                 }
+                WorldEvent::PlayerSpotAnimation {
+                    actor,
+                    spot,
+                    delay,
+                    height,
+                    slot,
+                } => {
+                    if let Some(active) = self.active.get_mut(&actor) {
+                        active
+                            .spot_animations
+                            .push(gielinor_protocol::spot_animation::Animation {
+                                slot,
+                                id: spot,
+                                delay,
+                                height,
+                            });
+                    }
+                    self.events
+                        .push(Event::World(WorldEvent::PlayerSpotAnimation {
+                            actor,
+                            spot,
+                            delay,
+                            height,
+                            slot,
+                        }));
+                }
                 WorldEvent::PlayerCombatAnimation { actor, sequence } => {
                     if let Some(active) = self.active.get_mut(&actor) {
                         active.sequence = Some((sequence, 0));
@@ -2712,6 +3178,47 @@ impl<B: AccountBackend> Runtime<B> {
                     }
                     self.events
                         .push(Event::World(WorldEvent::CombatSound { actor, sound }));
+                }
+                WorldEvent::NpcDelayedAnimation {
+                    actor,
+                    sequence,
+                    delay,
+                } => {
+                    self.combat_updates
+                        .entry(gielinor_world::hits::Target::Npc(actor))
+                        .or_default()
+                        .sequence = Some((sequence, delay));
+                    self.events
+                        .push(Event::World(WorldEvent::NpcDelayedAnimation {
+                            actor,
+                            sequence,
+                            delay,
+                        }));
+                }
+                WorldEvent::NpcSpotAnimation {
+                    actor,
+                    spot,
+                    delay,
+                    height,
+                    slot,
+                } => {
+                    self.combat_updates
+                        .entry(gielinor_world::hits::Target::Npc(actor))
+                        .or_default()
+                        .spot_animations
+                        .push(gielinor_protocol::spot_animation::Animation {
+                            slot,
+                            id: spot,
+                            delay,
+                            height,
+                        });
+                    self.events.push(Event::World(WorldEvent::NpcSpotAnimation {
+                        actor,
+                        spot,
+                        delay,
+                        height,
+                        slot,
+                    }));
                 }
                 WorldEvent::NpcCombatAnimation { actor, sequence } => {
                     self.combat_updates
@@ -2905,6 +3412,78 @@ impl<B: AccountBackend> Runtime<B> {
                         result,
                     }));
                 }
+                WorldEvent::ResetFaceEntity { actor } => {
+                    if let Some(active) = self.active.get_mut(&actor) {
+                        active.face_npc = None;
+                        active.pending_face = None;
+                        active.face_changed = true;
+                    }
+                    self.events
+                        .push(Event::World(WorldEvent::ResetFaceEntity { actor }));
+                }
+                WorldEvent::AnvilRequested { actor, preferred } => {
+                    self.open_anvil(actor, preferred)?;
+                    self.events.push(Event::World(WorldEvent::AnvilRequested {
+                        actor,
+                        preferred,
+                    }));
+                }
+                WorldEvent::TutorialBank { actor, booth, next } => {
+                    self.tutorial_bank_event(actor, booth, next)?;
+                    self.events.push(Event::World(WorldEvent::TutorialBank {
+                        actor,
+                        booth,
+                        next,
+                    }));
+                }
+                WorldEvent::SmeltingRequested { actor } => {
+                    self.open_smelting(actor)?;
+                    self.events
+                        .push(Event::World(WorldEvent::SmeltingRequested { actor }));
+                }
+                WorldEvent::TutorialLeaveProgress { actor, effects } => {
+                    self.tutorial_progress_effects(actor, &effects)?;
+                    self.events
+                        .push(Event::World(WorldEvent::TutorialLeaveProgress {
+                            actor,
+                            effects,
+                        }));
+                }
+                WorldEvent::TutorialCombatProgress { actor, effects } => {
+                    self.tutorial_progress_effects(actor, &effects)?;
+                    self.events
+                        .push(Event::World(WorldEvent::TutorialCombatProgress {
+                            actor,
+                            effects,
+                        }));
+                }
+                WorldEvent::TutorialInventoryProgress { actor, effects } => {
+                    self.tutorial_progress_effects(actor, &effects)?;
+                    self.events
+                        .push(Event::World(WorldEvent::TutorialInventoryProgress {
+                            actor,
+                            effects,
+                        }));
+                }
+                WorldEvent::TutorialGateFocus { actor, step, hint } => {
+                    self.tutorial_gate_focus(actor, step, hint)?;
+                    self.events
+                        .push(Event::World(WorldEvent::TutorialGateFocus {
+                            actor,
+                            step,
+                            hint,
+                        }));
+                }
+                WorldEvent::EngineMessage { actor, message } => {
+                    if let Some(connection) = self.connection(actor) {
+                        let packet = gielinor_protocol::chat::game(4, None, message)
+                            .map_err(|e| io::Error::other(format!("{e:?}")))?;
+                        self.transport
+                            .send(connection, packet.opcode, &packet.payload)?;
+                    }
+                    self.events
+                        .push(Event::World(WorldEvent::EngineMessage { actor, message }));
+                }
                 WorldEvent::LocationMessage { actor, message } => {
                     if let Some(connection) = self.connection(actor) {
                         let packet = gielinor_protocol::chat::game(0, None, message)
@@ -3043,6 +3622,30 @@ impl<B: AccountBackend> Runtime<B> {
                     }
                     self.events.push(Event::World(WorldEvent::Location(event)));
                 }
+                WorldEvent::Projectile(flight) => {
+                    if self.zones_enabled {
+                        self.ground_updates
+                            .push(gielinor_world::zones::Change::Projectile(flight));
+                    }
+                    self.events
+                        .push(Event::World(WorldEvent::Projectile(flight)));
+                }
+                WorldEvent::AreaSound(sound) => {
+                    if self.zones_enabled {
+                        self.ground_updates
+                            .push(gielinor_world::zones::Change::Sound(sound));
+                    }
+                    self.events.push(Event::World(WorldEvent::AreaSound(sound)));
+                }
+                WorldEvent::AmmoConsumed { actor, result } => {
+                    if result.detracted.is_some_and(|d| d.rebuild_appearance) {
+                        if let Some(active) = self.active.get_mut(&actor) {
+                            active.appearance_rebuild = true;
+                        }
+                    }
+                    self.events
+                        .push(Event::World(WorldEvent::AmmoConsumed { actor, result }));
+                }
                 WorldEvent::Food { actor, event } => {
                     if let Some(active) = self.active.get_mut(&actor) {
                         match &event {
@@ -3118,7 +3721,8 @@ impl<B: AccountBackend> Runtime<B> {
                     if let Some(active) = self.active.remove(&actor) {
                         if let Some(connection) = active.connection {
                             self.connections.remove(&connection);
-                            self.transport.disconnect(connection);
+                            // Normal logout preserves high-priority output and discards this tick's UI.
+                            let _ = self.transport.logout(connection);
                         }
                     }
                     self.events.push(Event::World(WorldEvent::Deleted(actor)));
@@ -3128,17 +3732,182 @@ impl<B: AccountBackend> Runtime<B> {
         }
         Ok(())
     }
+    /// Establish the gameframe and EngineLoginReady content before appearance
+    /// snapshots. The observer is committed only after the complete first cycle.
+    fn initialize_player_view(
+        &mut self,
+        actor: ActorId,
+        positions: &[(ActorId, gielinor_world::CoordGrid)],
+    ) -> io::Result<crate::synchronization::Observer> {
+        let policy = self
+            .presentation
+            .as_ref()
+            .ok_or_else(|| io::Error::other("Missing presentation"))?;
+        let active = self
+            .active
+            .get_mut(&actor)
+            .ok_or_else(|| io::Error::other("Missing actor"))?;
+        let connection = active
+            .connection
+            .ok_or_else(|| io::Error::other("Disconnected actor"))?;
+        let coords = positions
+            .iter()
+            .find(|p| p.0 == actor)
+            .ok_or_else(|| io::Error::other("Missing position"))?
+            .1;
+        let (observer, packet) =
+            crate::synchronization::Observer::initialize_positions(actor, positions, policy.radius)
+                .map_err(|e| io::Error::other(format!("{e:?}")))?;
+        let mut packets = vec![packet];
+        self.constructed
+            .login(coords, &mut packets)
+            .map_err(|e| io::Error::other(format!("{e:?}")))?;
+        for message in active.login_messages.drain(..) {
+            packets.push(
+                gielinor_protocol::chat::game(0, None, message)
+                    .map_err(|e| io::Error::other(format!("{e:?}")))?,
+            );
+        }
+        if let Some(login) = &self.login_presentation {
+            let data = self
+                .world
+                .data_mut(actor)
+                .map_err(|e| io::Error::other(format!("{e:?}")))?;
+            packets.extend(
+                login
+                    .variables
+                    .high_priority(
+                        &mut data.variables,
+                        &data.display_name,
+                        -1,
+                        login.welcome.as_deref(),
+                        login.broadcast.as_deref(),
+                    )
+                    .map_err(io::Error::other)?,
+            );
+            let selected = login
+                .frames
+                .login(&mut data.variables, &mut active.ui, false)
+                .map_err(io::Error::other)?;
+            packets.extend(
+                selected
+                    .variables
+                    .into_iter()
+                    .map(|v| gielinor_protocol::varp::update(v.id, v.value)),
+            );
+            packets.push(gielinor_protocol::interfaces::open_top(selected.frame.top));
+            for (parent, interface) in selected.frame.overlays {
+                packets.push(gielinor_protocol::interfaces::open_sub(
+                    active.ui.translate(parent).0,
+                    interface,
+                    true,
+                ));
+                packets.extend(
+                    self.interface_hooks
+                        .opened(interface, &mut active.ui)
+                        .map_err(io::Error::other)?,
+                );
+                if let Some(journal) = &self.journal {
+                    packets.extend(
+                        journal
+                            .opened(
+                                interface,
+                                &mut active.ui,
+                                &data.variables,
+                                policy.combat_level(data),
+                                journal.marks(data),
+                                &self.interface_hooks,
+                            )
+                            .map_err(io::Error::other)?,
+                    );
+                }
+                if let Some(tab) = self
+                    .combat_tab
+                    .as_ref()
+                    .filter(|tab| tab.interface == interface)
+                {
+                    let category = data
+                        .equipment
+                        .get(3)
+                        .and_then(|item| self.definitions.items.get(&(item.id as u32)))
+                        .map(|item| item.weapon_category);
+                    let combat = policy.combat_level(data);
+                    packets.extend(
+                        tab.tab(&mut data.variables, category, combat, false)
+                            .map_err(io::Error::other)?,
+                    );
+                }
+            }
+        }
+        for packet in packets {
+            self.transport
+                .send(connection, packet.opcode, &packet.payload)?;
+        }
+        if self.login_presentation.is_some() {
+            if let Some(journal) = &self.journal {
+                let data = self
+                    .world
+                    .data(actor)
+                    .map_err(|e| io::Error::other(format!("{e:?}")))?;
+                for packet in journal.login_packets(data).map_err(io::Error::other)? {
+                    self.transport
+                        .send(connection, packet.opcode, &packet.payload)?;
+                }
+            }
+            if let Some(sync) = self
+                .world
+                .finish_tower_diary_login(actor)
+                .map_err(|e| io::Error::other(format!("{e:?}")))?
+            {
+                if let Some(text) = sync.message {
+                    let packet = gielinor_protocol::chat::game(0, None, text)
+                        .map_err(|e| io::Error::other(format!("{e:?}")))?;
+                    self.transport
+                        .send(connection, packet.opcode, &packet.payload)?;
+                }
+            }
+            self.begin_tutorial(actor)?;
+        }
+        Ok(observer)
+    }
     fn synchronize_players(
         &mut self,
         players: &[(ActorId, gielinor_world::simulation::MovementSnapshot)],
     ) {
-        let Some(policy) = self.presentation.as_ref() else {
+        if self.presentation.is_none() {
             self.combat_updates.clear();
+            for active in self.active.values_mut() {
+                active.spot_animations.clear();
+                active.appearance_rebuild = false;
+            }
             return;
         };
-        let mut images = vec![];
+        let positions: Vec<_> = players
+            .iter()
+            .map(|(actor, movement)| (*actor, movement.coords))
+            .collect();
         let mut failures = vec![];
+        let mut initial_observers = HashMap::new();
+        for &(actor, _) in players {
+            if self
+                .active
+                .get(&actor)
+                .is_some_and(|a| a.connection.is_some() && a.observer.is_none())
+            {
+                match self.initialize_player_view(actor, &positions) {
+                    Ok(observer) => {
+                        initial_observers.insert(actor, observer);
+                    }
+                    Err(error) => failures.push((actor, error.to_string())),
+                }
+            }
+        }
+        let policy = self.presentation.as_ref().unwrap();
+        let mut images = vec![];
         for &(actor, movement) in players {
+            if failures.iter().any(|(id, _)| *id == actor) {
+                continue;
+            }
             let design = self
                 .active
                 .get(&actor)
@@ -3180,6 +3949,11 @@ impl<B: AccountBackend> Runtime<B> {
                         .combat_updates
                         .get(&gielinor_world::hits::Target::Player(*actor)),
                     sequence: self.active.get(actor).and_then(|active| active.sequence),
+                    spot_animations: self
+                        .active
+                        .get(actor)
+                        .map(|active| active.spot_animations.clone())
+                        .unwrap_or_default(),
                     face_angle: self.active.get(actor).and_then(|active| active.face_angle),
                     face_npc: self
                         .active
@@ -3193,6 +3967,10 @@ impl<B: AccountBackend> Runtime<B> {
                     actor: *actor,
                     movement: *movement,
                     appearance,
+                    appearance_rebuild: self
+                        .active
+                        .get(actor)
+                        .is_some_and(|active| active.appearance_rebuild),
                 },
             )
             .collect();
@@ -3249,10 +4027,17 @@ impl<B: AccountBackend> Runtime<B> {
                             ),
                         }
                         .encode_npc()?;
+                        let spots = display
+                            .filter(|d| !d.spot_animations.is_empty())
+                            .map(|d| {
+                                gielinor_protocol::spot_animation::encode_npc(&d.spot_animations)
+                            })
+                            .transpose()?;
                         let mut blocks = gielinor_protocol::combat_updates::NpcUpdates {
                             hitmarks: hits.as_deref(),
                             headbars: bars.as_deref(),
                             sequence: display.and_then(|d| d.sequence),
+                            spot_animations: spots.as_deref(),
                             face: n.face_changed.then_some(facing.as_slice()),
                         };
                         let current = blocks.encode();
@@ -3277,98 +4062,12 @@ impl<B: AccountBackend> Runtime<B> {
                         initial_extended: &block.1,
                     })
                     .collect();
-                let mut observer = active.observer.clone();
-                let first = observer.is_none();
+                let first = initial_observers.contains_key(&actor);
+                let mut observer = active
+                    .observer
+                    .clone()
+                    .or_else(|| initial_observers.remove(&actor));
                 let mut packets = vec![];
-                if observer.is_none() {
-                    let (initial, packet) = crate::synchronization::Observer::initialize(
-                        actor,
-                        &avatars,
-                        policy.radius,
-                    )
-                    .map_err(|e| io::Error::other(format!("{e:?}")))?;
-                    observer = Some(initial);
-                    packets.push(packet);
-                    self.constructed
-                        .login(movement.coords, &mut packets)
-                        .map_err(|e| io::Error::other(format!("{e:?}")))?;
-                    for message in active.login_messages.drain(..) {
-                        packets.push(
-                            gielinor_protocol::chat::game(0, None, message)
-                                .map_err(|e| io::Error::other(format!("{e:?}")))?,
-                        );
-                    }
-                    if let Some(login) = &self.login_presentation {
-                        let data = self
-                            .world
-                            .data_mut(actor)
-                            .map_err(|e| io::Error::other(format!("{e:?}")))?;
-                        packets.extend(
-                            login
-                                .variables
-                                .high_priority(
-                                    &mut data.variables,
-                                    &data.display_name,
-                                    -1,
-                                    login.welcome.as_deref(),
-                                    login.broadcast.as_deref(),
-                                )
-                                .map_err(io::Error::other)?,
-                        );
-                        let selected = login
-                            .frames
-                            .login(&mut data.variables, &mut active.ui, false)
-                            .map_err(io::Error::other)?;
-                        packets.extend(
-                            selected
-                                .variables
-                                .into_iter()
-                                .map(|v| gielinor_protocol::varp::update(v.id, v.value)),
-                        );
-                        packets.push(gielinor_protocol::interfaces::open_top(selected.frame.top));
-                        for (parent, interface) in selected.frame.overlays {
-                            packets.push(gielinor_protocol::interfaces::open_sub(
-                                active.ui.translate(parent).0,
-                                interface,
-                                true,
-                            ));
-                            packets.extend(
-                                self.interface_hooks
-                                    .opened(interface, &mut active.ui)
-                                    .map_err(io::Error::other)?,
-                            );
-                            if let Some(journal) = &self.journal {
-                                packets.extend(
-                                    journal
-                                        .opened(
-                                            interface,
-                                            &mut active.ui,
-                                            &data.variables,
-                                            policy.combat_level(data),
-                                            &self.interface_hooks,
-                                        )
-                                        .map_err(io::Error::other)?,
-                                );
-                            }
-                            if let Some(tab) = self
-                                .combat_tab
-                                .as_ref()
-                                .filter(|tab| tab.interface == interface)
-                            {
-                                let category = data
-                                    .equipment
-                                    .get(3)
-                                    .and_then(|item| self.definitions.items.get(&(item.id as u32)))
-                                    .map(|item| item.weapon_category);
-                                let combat = policy.combat_level(data);
-                                packets.extend(
-                                    tab.tab(&mut data.variables, category, combat, false)
-                                        .map_err(io::Error::other)?,
-                                );
-                            }
-                        }
-                    }
-                }
                 let mut player_packets = observer
                     .as_mut()
                     .unwrap()
@@ -3404,9 +4103,6 @@ impl<B: AccountBackend> Runtime<B> {
                 let inventory_batch = inventories
                     .cycle(|id| inventory(data, &self.policy, id))
                     .map_err(|e| io::Error::other(format!("{e:?}")))?;
-                if !(first && self.login_presentation.is_some()) {
-                    packets.extend(inventory_batch.packets.clone());
-                }
                 if first && self.login_presentation.is_some() {
                     packets.extend(
                         crate::login_init::low_priority(
@@ -3451,8 +4147,6 @@ impl<B: AccountBackend> Runtime<B> {
                 }
                 if first && self.login_presentation.is_some() {
                     packets.extend(crate::login_init::tail());
-                    // LoginScript only subscribes inventories; their snapshots leave in post-tick.
-                    packets.extend(inventory_batch.packets);
                 }
                 packets.push(active_world.clone());
                 packets.push(origin_packet);
@@ -3485,6 +4179,9 @@ impl<B: AccountBackend> Runtime<B> {
                             .map_err(|e| io::Error::other(format!("{e:?}")))?,
                     );
                 }
+                // PlayerPostTickProcess: map/client info, zones, then inventory snapshots.
+                // LoginScript subscribes inventories; it does not send snapshots itself.
+                packets.extend(inventory_batch.packets);
                 for packet in packets {
                     self.transport
                         .send(connection, packet.opcode, &packet.payload)?;
@@ -3512,7 +4209,9 @@ impl<B: AccountBackend> Runtime<B> {
         self.combat_updates.clear();
         for active in self.active.values_mut() {
             active.sequence = None;
+            active.spot_animations.clear();
             active.face_changed = false;
+            active.appearance_rebuild = false;
         }
         for (actor, reason) in failures {
             self.events

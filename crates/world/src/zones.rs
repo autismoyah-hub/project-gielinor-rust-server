@@ -6,6 +6,8 @@ use crate::{
 };
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum Update {
+    Sound(Sound),
+    Projectile(crate::projectile::Flight),
     Add(Object),
     Delete(Object),
     Count { object: Object, old: i32 },
@@ -13,8 +15,19 @@ pub enum Update {
 }
 #[derive(Clone, Debug)]
 pub enum Change {
+    Sound(Sound),
+    Projectile(crate::projectile::Flight),
     Ground(Event),
     Location(crate::locations::Event),
+}
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct Sound {
+    pub coords: CoordGrid,
+    pub id: i32,
+    pub delay: i32,
+    pub loops: i32,
+    pub radius: i32,
+    pub size: i32,
 }
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum Emission {
@@ -127,6 +140,18 @@ impl Observer {
             let mut shared = Vec::new();
             for event in events {
                 let event = match event {
+                    Change::Sound(sound) => {
+                        if ground::zone_base(sound.coords) == base {
+                            shared.push(Update::Sound(*sound));
+                        }
+                        continue;
+                    }
+                    Change::Projectile(flight) => {
+                        if ground::zone_base(flight.start) == base {
+                            shared.push(Update::Projectile(*flight));
+                        }
+                        continue;
+                    }
                     Change::Ground(v) => v,
                     Change::Location(v) => {
                         if ground::zone_base(v.location().coords) == base {
@@ -194,6 +219,117 @@ mod tests {
     use crate::{inventory::Catalog, tick::MapClock};
     fn pos(x: i32, z: i32) -> CoordGrid {
         CoordGrid::new(x, z, 0).unwrap()
+    }
+    #[test]
+    fn sounds_follow_existing_zone_observers_without_persistent_replay() {
+        let coords = pos(3200, 3200);
+        let build = pos(3152, 3152);
+        let sound = Sound {
+            coords,
+            id: 50,
+            delay: 40,
+            loops: 1,
+            radius: 10,
+            size: 0,
+        };
+        let mut observer = Observer::default();
+        let objects = Objects::default();
+        let locations = crate::locations::Locations::default();
+        let changes = [Change::Sound(sound)];
+        let first = observer
+            .cycle_all(coords, build, None, &objects, &locations, &changes)
+            .unwrap();
+        assert!(first.iter().all(|e| matches!(e, Emission::Reset(_))));
+        assert_eq!(
+            observer
+                .cycle_all(coords, build, None, &objects, &locations, &changes)
+                .unwrap(),
+            vec![Emission::Enclosed {
+                base: coords,
+                updates: vec![Update::Sound(sound)]
+            }]
+        );
+        assert!(observer
+            .cycle_all(coords, build, None, &objects, &locations, &[])
+            .unwrap()
+            .is_empty());
+        let other = Sound {
+            coords: pos(3400, 3400),
+            ..sound
+        };
+        assert!(observer
+            .cycle_all(
+                coords,
+                build,
+                None,
+                &objects,
+                &locations,
+                &[Change::Sound(other)]
+            )
+            .unwrap()
+            .is_empty());
+    }
+    #[test]
+    fn projectile_is_transient_and_selected_by_source_zone_not_target() {
+        use crate::projectile::{EntityIndex, Flight, Style};
+        let style = Style {
+            start_height: 172,
+            end_height: 124,
+            delay: 51,
+            angle: 16,
+            length_adjustment: -5,
+            progress: 64,
+            step_multiplier: 10,
+        };
+        let flight = Flight {
+            spotanim: 91,
+            style,
+            duration: style.duration(2),
+            source: EntityIndex::Player(1),
+            target: EntityIndex::Npc(2),
+            start: pos(3200, 3200),
+            end: pos(3300, 3300),
+        };
+        let mut observer = Observer::default();
+        let objects = Objects::default();
+        let locations = crate::locations::Locations::default();
+        let build = pos(3152, 3152);
+        let changes = [Change::Projectile(flight)];
+        let first = observer
+            .cycle_all(flight.start, build, Some(7), &objects, &locations, &changes)
+            .unwrap();
+        assert_eq!(first.len(), 49);
+        assert!(first.iter().all(|e| matches!(e, Emission::Reset(_))));
+        let visible = observer
+            .cycle_all(flight.start, build, Some(7), &objects, &locations, &changes)
+            .unwrap();
+        assert_eq!(
+            visible,
+            vec![Emission::Enclosed {
+                base: flight.start,
+                updates: vec![Update::Projectile(flight)]
+            }]
+        );
+        assert!(observer
+            .cycle_all(flight.start, build, Some(7), &objects, &locations, &[])
+            .unwrap()
+            .is_empty());
+        let elsewhere = Flight {
+            start: flight.end,
+            end: flight.start,
+            ..flight
+        };
+        assert!(observer
+            .cycle_all(
+                flight.start,
+                build,
+                Some(7),
+                &objects,
+                &locations,
+                &[Change::Projectile(elsewhere)]
+            )
+            .unwrap()
+            .is_empty());
     }
     fn object(x: i32, z: i32, scope: Scope, receiver: Option<i64>) -> Object {
         Object {

@@ -3,7 +3,7 @@
 Only the disposable integration239 character is read. No state is modified.
 This is a narrow projection, not a full Tower diary equivalence assertion.
 """
-import argparse,json,sqlite3
+import argparse,json,re,sqlite3
 from contextlib import closing
 from pathlib import Path
 
@@ -13,7 +13,8 @@ def kotlin(directory):
     def positive(name):
         path=directory/name
         if not path.exists():return False
-        raw=path.read_text().strip()
+        raw=path.read_text(encoding="utf-8").strip()
+        if not re.fullmatch(r"[+-]?\d+",raw):return False
         try:value=int(raw)
         except ValueError:return False
         return 0<value<=2147483647

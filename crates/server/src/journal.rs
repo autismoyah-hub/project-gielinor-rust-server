@@ -29,7 +29,111 @@ pub struct Switching {
     pub buttons: BTreeMap<u32, usize>,
     pub collection: [gielinor_world::variables::Varp; 12],
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use gielinor_world::{
+        simulation::PlayerData,
+        stats::Stats,
+        tower_diary::Progress,
+        variables::{Transmit, Varbit, Varp},
+        CoordGrid,
+    };
+    #[test]
+    fn task_tab_requires_known_marks_and_reopens_with_current_levels() {
+        let journal = Journal {
+            diary: Some(Diary {
+                header: (259 << 16) | 1,
+                hidden: [2, 3, 4, 5].map(|id| (259 << 16) | id),
+                skills: [12, 13, 11],
+            }),
+            interface: 629,
+            tabs: [712, 399, 259],
+            parent: Component::new(629, 33),
+            contents: Component::new(712, 1),
+            click_layer: Component::new(712, 2),
+            selected: Binding {
+                base: Varp {
+                    id: 1,
+                    permanent: true,
+                    transmit: Transmit::Always,
+                    bit_protect: false,
+                    client_code: -1,
+                },
+                bit: Varbit {
+                    base: 1,
+                    lsb: 0,
+                    msb: 1,
+                },
+            },
+            playtime: 2,
+            switching: None,
+        };
+        let mut data = PlayerData::new(
+            1,
+            "Diary".into(),
+            CoordGrid::new(3200, 3200, 0).unwrap(),
+            Stats::default(),
+        );
+        data.variables = Variables::restore(BTreeMap::from([(1, 2)]));
+        let mut ui = State::default();
+        let unknown = journal
+            .opened(
+                629,
+                &mut ui,
+                &data.variables,
+                3,
+                journal.marks(&data),
+                &crate::interface_hooks::Hooks::default(),
+            )
+            .unwrap();
+        assert_eq!(unknown.iter().map(|p| p.opcode).collect::<Vec<_>>(), [7]);
+        assert!(journal.login_packets(&data).unwrap().is_empty());
+        data.tower_diary = Some(Progress {
+            done: [
+                true, true, false, false, false, false, false, false, false, false, false,
+            ],
+            schema11: true,
+            ..Default::default()
+        });
+        let known = journal
+            .opened(
+                629,
+                &mut ui,
+                &data.variables,
+                3,
+                journal.marks(&data),
+                &crate::interface_hooks::Hooks::default(),
+            )
+            .unwrap();
+        assert_eq!(
+            known.iter().map(|p| p.opcode).collect::<Vec<_>>(),
+            [7, 63, 63, 63, 63, 114, 80]
+        );
+        assert!(String::from_utf8_lossy(&known.last().unwrap().payload).contains("Crafting 1/11"));
+        data.stats.set_base(12, 11);
+        let reopened = journal
+            .opened(
+                259,
+                &mut ui,
+                &data.variables,
+                3,
+                journal.marks(&data),
+                &crate::interface_hooks::Hooks::default(),
+            )
+            .unwrap();
+        assert_eq!(reopened.len(), 6);
+        assert!(
+            String::from_utf8_lossy(&reopened.last().unwrap().payload).contains("Vambraces 0/1")
+        );
+        assert_eq!(data.tower_diary.unwrap().done[2], false);
+        data.variables = Variables::restore(BTreeMap::from([(1, 0)]));
+        assert_eq!(journal.login_packets(&data).unwrap(), reopened);
+    }
+}
 pub struct Journal {
+    pub diary: Option<Diary>,
     pub interface: u16,
     pub tabs: [u16; 3],
     pub parent: Component,
@@ -39,7 +143,51 @@ pub struct Journal {
     pub playtime: u16,
     pub switching: Option<Switching>,
 }
+pub struct Diary {
+    pub header: u32,
+    pub hidden: [u32; 4],
+    pub skills: [u8; 3],
+}
+impl Diary {
+    pub(crate) fn packets(
+        &self,
+        marks: gielinor_world::tower_diary::Marks,
+    ) -> Result<Vec<Packet>, String> {
+        let mut packets = self.hidden.map(|c| interfaces::hide(c, true)).to_vec();
+        packets.push(
+            client_script::run(600, &[0, 0, 10, self.header as i32].map(Argument::Int))
+                .map_err(|e| format!("{e:?}"))?,
+        );
+        packets.push(
+            interfaces::text(self.header, &gielinor_world::tower_diary_ui::body(marks))
+                .map_err(|e| format!("{e:?}"))?,
+        );
+        Ok(packets)
+    }
+}
 impl Journal {
+    /// FloorOneScript.restoreDiaryCounts -> syncDiary -> persistDiaryCounts
+    /// refreshes the task text on login even when another tab is selected.
+    /// This covers presentation; gameplay sync side effects remain separate.
+    pub fn login_packets(
+        &self,
+        data: &gielinor_world::simulation::PlayerData,
+    ) -> Result<Vec<Packet>, String> {
+        match (&self.diary, self.marks(data)) {
+            (Some(diary), Some(marks)) => diary.packets(marks),
+            _ => Ok(Vec::new()),
+        }
+    }
+    pub fn marks(
+        &self,
+        data: &gielinor_world::simulation::PlayerData,
+    ) -> Option<gielinor_world::tower_diary::Marks> {
+        let diary = self.diary.as_ref()?;
+        Some(data.tower_diary?.marks(
+            diary.skills.map(|id| data.stats.base(id) as i32),
+            data.tower_arrival.staff_taken,
+        ))
+    }
     pub fn selected_by_button(&self, component: u32, slot: i32) -> Option<usize> {
         let config = self.switching.as_ref()?;
         if component == self.click_layer.0 {
@@ -56,6 +204,7 @@ impl Journal {
         components: &Symbols,
         bits: &Symbols,
         varps: &Symbols,
+        stats: &Symbols,
         defs: &Definitions,
     ) -> Result<Self, String> {
         let symbol = |symbols: &Symbols, name: &str| {
@@ -77,6 +226,29 @@ impl Journal {
             .get(&(bit.base as u32))
             .ok_or("Missing journal base varp")?;
         Ok(Self {
+            diary: Some(Diary {
+                header: symbol(components, "area_task:header")? as u32,
+                hidden: [
+                    "area_task:taskbox",
+                    "area_task:border",
+                    "area_task:scrollbar",
+                    "area_task:com_5",
+                ]
+                .map(|name| symbol(components, name).map(|v| v as u32))
+                .into_iter()
+                .collect::<Result<Vec<_>, _>>()?
+                .try_into()
+                .unwrap(),
+                skills: ["crafting", "smithing", "firemaking"]
+                    .map(|name| {
+                        u8::try_from(symbol(stats, name)?)
+                            .map_err(|_| "Invalid diary skill".to_owned())
+                    })
+                    .into_iter()
+                    .collect::<Result<Vec<_>, String>>()?
+                    .try_into()
+                    .unwrap(),
+            }),
             interface: interface("side_journal")?,
             tabs: [
                 interface("account_summary_sidepanel")?,
@@ -124,8 +296,15 @@ impl Journal {
         ui: &mut State,
         vars: &Variables,
         combat: i32,
+        marks: Option<gielinor_world::tower_diary::Marks>,
         hooks: &crate::interface_hooks::Hooks,
     ) -> Result<Vec<Packet>, String> {
+        if interface == self.tabs[2] {
+            return match (&self.diary, marks) {
+                (Some(diary), Some(marks)) => diary.packets(marks),
+                _ => Ok(Vec::new()),
+            };
+        }
         if interface != self.interface {
             return Ok(Vec::new());
         }
@@ -159,6 +338,11 @@ impl Journal {
             true,
         ));
         packets.extend(hooks.opened(tab, &mut next)?);
+        if index == 2 {
+            if let (Some(diary), Some(marks)) = (&self.diary, marks) {
+                packets.extend(diary.packets(marks)?);
+            }
+        }
         *ui = next;
         Ok(packets)
     }
@@ -170,6 +354,7 @@ impl Journal {
         combat: i32,
         member: bool,
         logged_in: bool,
+        marks: Option<gielinor_world::tower_diary::Marks>,
         hooks: &crate::interface_hooks::Hooks,
     ) -> Result<Vec<Packet>, String> {
         if tab >= self.tabs.len() {
@@ -217,7 +402,7 @@ impl Journal {
                     .map_err(|e| format!("{e:?}"))?,
             );
         }
-        packets.extend(self.opened(self.interface, &mut next, &variables, combat, hooks)?);
+        packets.extend(self.opened(self.interface, &mut next, &variables, combat, marks, hooks)?);
         *ui = next;
         *vars = variables;
         Ok(packets)

@@ -139,6 +139,7 @@ impl World {
                 style,
                 self.attack_profile(actor)?.speed,
                 -1,
+                // Kotlin InternalHelpers.isSlayerTask currently returns false.
                 false,
                 source.coords,
             )
