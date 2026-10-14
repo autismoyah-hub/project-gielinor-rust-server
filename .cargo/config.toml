@@ -1,3 +1,2 @@
 [build]
-jobs = 2
-target-dir = "work/target"
+jobs = 1

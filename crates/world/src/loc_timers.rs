@@ -8,8 +8,39 @@ use crate::{
 pub struct Timers {
     additions: Vec<(Location, i32)>,
     deletions: Vec<(Location, i32)>,
+    replacements: Vec<(Location, Location, u64, i32)>,
 }
 impl Timers {
+    pub fn replace(
+        &mut self,
+        original: Location,
+        replacement: Location,
+        revision: u64,
+        clock: MapClock,
+        duration: i32,
+    ) {
+        self.replacements
+            .push((original, replacement, revision, clock.deadline(duration)));
+    }
+    pub fn replacements_due(
+        &mut self,
+        clock: MapClock,
+        locations: &crate::locations::Locations,
+    ) -> Vec<Location> {
+        let mut restore = vec![];
+        self.replacements
+            .retain(|&(original, replacement, revision, at)| {
+                if clock.0 < at {
+                    return true;
+                }
+                if locations.revision(replacement) == Some(revision) {
+                    restore.push(original);
+                }
+                false
+            });
+        restore
+    }
+
     pub fn record(
         &mut self,
         loc: Location,

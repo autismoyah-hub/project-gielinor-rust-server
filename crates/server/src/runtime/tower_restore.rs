@@ -151,7 +151,7 @@ impl<B: AccountBackend> Runtime<B> {
             leather_types.insert(leather);
         }
         let mind = *objects
-            .get("mind_rune")
+            .get("mindrune")
             .ok_or_else(|| io::Error::other("Missing mind rune symbol"))?;
         let mind_type = self
             .definitions

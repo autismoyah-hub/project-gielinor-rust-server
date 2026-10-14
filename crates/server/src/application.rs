@@ -96,6 +96,10 @@ fn report(events: Vec<runtime::Event>) {
                 eprintln!("Synchronization failed for {actor:?}: {reason}")
             }
             runtime::Event::PlayerReady { actor, .. } => println!("Player ready: {actor:?}"),
+            runtime::Event::World(gielinor_world::simulation::WorldEvent::Woodcutting {
+                actor,
+                trace,
+            }) if trace.result != "waiting" => println!("Gathering: {}", trace.json(actor)),
             _ => (),
         }
     }
@@ -333,6 +337,14 @@ pub fn run() -> io::Result<()> {
         u8::try_from(names.id("stat", "agility")?).map_err(io::Error::other)?,
         names.group("obj"),
     )?;
+    runtime.configure_tower_combat(
+        [
+            names.short("npc", "ash_warden")?,
+            names.short("npc", "ash_imp")?,
+        ],
+        names.short("npc", "chicken")?,
+    )?;
+    runtime.configure_woodcutting(&names, None)?;
     let offering_xp = names.id("param", "skill_xp")?;
     let offering_default = cache
         .parameters()?

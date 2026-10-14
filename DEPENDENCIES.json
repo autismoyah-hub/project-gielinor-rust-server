@@ -1,0 +1,121 @@
+{
+  "dependencies": [
+    {
+      "authors": [
+        "Jonas Schievink <jonasschievink@gmail.com>",
+        "oyvindln <oyvindln@users.noreply.github.com>"
+      ],
+      "copyright_lines": [
+        "Copyright (C) Jonas Schievink <jonasschievink@gmail.com>"
+      ],
+      "license": "0BSD OR MIT OR Apache-2.0",
+      "license_files": [
+        "vendor/adler2-2.0.1/LICENSE-0BSD",
+        "vendor/adler2-2.0.1/LICENSE-APACHE",
+        "vendor/adler2-2.0.1/LICENSE-MIT"
+      ],
+      "name": "adler2",
+      "version": "2.0.1"
+    },
+    {
+      "authors": [
+        "Josh Stone <cuviper@gmail.com>"
+      ],
+      "copyright_lines": [
+        "Copyright (c) 2018 Josh Stone"
+      ],
+      "license": "Apache-2.0 OR MIT",
+      "license_files": [
+        "vendor/autocfg-1.4.0/LICENSE-APACHE",
+        "vendor/autocfg-1.4.0/LICENSE-MIT"
+      ],
+      "name": "autocfg",
+      "version": "1.4.0"
+    },
+    {
+      "authors": null,
+      "copyright_lines": [
+        "Copyright (C) 1996-2021 Julian R Seward.",
+        "Copyright (C) 2019-2020 Federico Mena Quintero",
+        "Copyright (C) 2021 Micah Snyder",
+        "\"libbzip2\", and is Copyright (C) 2024-2025 Trifecta Tech Foundation and contributors"
+      ],
+      "license": "bzip2-1.0.6",
+      "license_files": [
+        "vendor/libbz2-rs-sys-0.2.2/LICENSE"
+      ],
+      "name": "libbz2-rs-sys",
+      "version": "0.2.2"
+    },
+    {
+      "authors": [
+        "Frommi <daniil.liferenko@gmail.com>",
+        "oyvindln <oyvindln@users.noreply.github.com>",
+        "Rich Geldreich richgel99@gmail.com"
+      ],
+      "copyright_lines": [
+        "Copyright 2013-2014 RAD Game Tools and Valve Software",
+        "Copyright 2010-2014 Rich Geldreich and Tenacious Software LLC",
+        "Copyright (c) 2017 Frommi",
+        "Copyright (c) 2017-2024 oyvindln",
+        "Copyright (c) 2020 Frommi"
+      ],
+      "license": "MIT OR Zlib OR Apache-2.0",
+      "license_files": [
+        "vendor/miniz_oxide-0.8.9/LICENSE",
+        "vendor/miniz_oxide-0.8.9/LICENSE-APACHE.md",
+        "vendor/miniz_oxide-0.8.9/LICENSE-MIT.md",
+        "vendor/miniz_oxide-0.8.9/LICENSE-ZLIB.md"
+      ],
+      "name": "miniz_oxide",
+      "version": "0.8.9"
+    },
+    {
+      "authors": [
+        "The Rust Project Developers"
+      ],
+      "copyright_lines": [
+        "Copyright (c) 2014 The Rust Project Developers"
+      ],
+      "license": "MIT OR Apache-2.0",
+      "license_files": [
+        "vendor/num-bigint-0.4.6/LICENSE-APACHE",
+        "vendor/num-bigint-0.4.6/LICENSE-MIT"
+      ],
+      "name": "num-bigint",
+      "version": "0.4.6"
+    },
+    {
+      "authors": [
+        "The Rust Project Developers"
+      ],
+      "copyright_lines": [
+        "Copyright (c) 2014 The Rust Project Developers"
+      ],
+      "license": "MIT OR Apache-2.0",
+      "license_files": [
+        "vendor/num-integer-0.1.46/LICENSE-APACHE",
+        "vendor/num-integer-0.1.46/LICENSE-MIT"
+      ],
+      "name": "num-integer",
+      "version": "0.1.46"
+    },
+    {
+      "authors": [
+        "The Rust Project Developers"
+      ],
+      "copyright_lines": [
+        "Copyright (c) 2014 The Rust Project Developers"
+      ],
+      "license": "MIT OR Apache-2.0",
+      "license_files": [
+        "vendor/num-traits-0.2.19/LICENSE-APACHE",
+        "vendor/num-traits-0.2.19/LICENSE-MIT"
+      ],
+      "name": "num-traits",
+      "version": "0.2.19"
+    }
+  ],
+  "format": "SPDX license-expression inventory; not a complete SPDX document",
+  "vendor_modifications": "Pre-existing reduced offline Cargo manifests; no vendored Rust algorithms changed by Scout; embedded license notices preserved"
+}

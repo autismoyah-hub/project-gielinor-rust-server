@@ -1,0 +1,18 @@
+{
+  "cache_check": "NOT RUN",
+  "cli_help_exit": 0,
+  "ignored": 2,
+  "live_acceptance": "NOT RUN",
+  "missing_inputs_exit": 1,
+  "optimized_build_exit": 0,
+  "passed": 354,
+  "public_tests_exit": 0,
+  "test_attributes_added_after_optimized_build": true,
+  "test_checkout_identity": "db38514ef73eefaf540af924d14eb29bef0b2c60dfb7aafa673500d9778cd939",
+  "test_finished": "2026-10-14T05:32:56.544966+00:00",
+  "test_log_sha256": "cc02c91e29d15af15a5c86512b1e87a7cdea7d3a6ea62b324a19d8da248173cb",
+  "toolchain": {
+    "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)\nrelease: 1.99.0\ncommit-hash: 5f94df4789f005f9a352888e8355ffc645b7ed0e\ncommit-date: 2026-08-27\nhost: x86_64-pc-windows-gnu\nlibgit2: 1.9.6 (sys:0.21.0 vendored)\nlibcurl: 8.21.0-DEV (sys:0.4.90+curl-8.21.0 vendored ssl:Schannel)\nos: Windows 10.0.26200 (Windows 11 Professional) [64-bit]\n",
+    "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-gnu\nrelease: 1.99.0\nLLVM version: 23.1.1\n"
+  }
+}

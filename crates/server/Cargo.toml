@@ -1,4 +1,6 @@
 [package]
+autotests = false
+autoexamples = false
 name = "gielinor-server"
 version = "0.1.0"
 edition.workspace = true

@@ -41,6 +41,7 @@ mod spell_actions;
 mod stat_event_actions;
 mod tower_actions;
 mod tower_chest_actions;
+mod tower_combat_actions;
 mod tower_login_actions;
 mod tower_offering_actions;
 mod tower_staff_actions;
@@ -53,6 +54,7 @@ mod tutorial_leave_actions;
 mod tutorial_mining_actions;
 mod tutorial_shrimp_actions;
 mod tutorial_woodcutting_actions;
+mod woodcutting_actions;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub struct ActorId {
@@ -232,6 +234,8 @@ struct Player {
     tutorial_fire: Option<crate::tutorial_fire::Pending>,
     main_modal: Option<u16>,
     location_interaction: Option<(crate::locations::Location, LocationAction)>,
+    location_revision: Option<u64>,
+    woodcutting_animation_at: i32,
     pending_door: Option<crate::doors::Pending>,
     observer_id: Option<i64>,
     autocast_picker_defensive: Option<bool>,
@@ -457,6 +461,10 @@ pub enum AdmissionError {
 }
 #[derive(Debug)]
 pub enum WorldEvent {
+    Woodcutting {
+        actor: ActorId,
+        trace: crate::woodcutting::Trace,
+    },
     GameMessage {
         actor: ActorId,
         text: String,
@@ -751,6 +759,9 @@ pub struct World {
     pub tower_staff: Option<crate::tower_staff::HandlerConfig>,
     pub tower_offering: Option<crate::tower_offering::HandlerConfig>,
     pub tower_restore: Option<crate::tower_restore::HandlerConfig>,
+    pub tower_combat: Option<crate::tower_combat::Config>,
+    pub woodcutting: Option<crate::woodcutting::Config>,
+    active_trees: crate::woodcutting::ActiveTrees,
     pub combat_stance: Option<crate::combat_stance::Config>,
     pub combat_wear: Option<crate::combat_wear::Config>,
     pub wearpos: Option<crate::wearpos::Config>,
@@ -837,6 +848,9 @@ impl Default for World {
             tower_staff: None,
             tower_offering: None,
             tower_restore: None,
+            tower_combat: None,
+            woodcutting: None,
+            active_trees: Default::default(),
             multiway_area: None,
             combat_stance: None,
             combat_wear: None,
@@ -1931,6 +1945,20 @@ impl World {
             }
             self.events.push(WorldEvent::Phase(phase, self.clock.0));
             match phase {
+                Phase::ControllerMain => {
+                    self.active_trees.tick(self.clock.0, &self.locations);
+                    // Gathering deadlines use the action clock. Processing before
+                    // PlayerMain keeps N ticks of visible stump lifetime; the
+                    // post-tick clock has already advanced and would expire early.
+                    for loc in self
+                        .location_timers
+                        .replacements_due(self.clock, &self.locations)
+                    {
+                        if let Err(error) = self.change_location(loc, true) {
+                            self.events.push(WorldEvent::LocationError(error));
+                        }
+                    }
+                }
                 Phase::WorldMain => {
                     if let Err(error) = self.objects.process_delayed(self.clock, &self.object_types)
                     {
@@ -2459,7 +2487,7 @@ impl World {
                                 self.process_npc_interaction(slot, false, random);
                             }
                         }
-                        self.process_door(slot);
+                        self.process_door(slot, random);
                         self.process_pickup(slot);
                         // PlayerMainProcess.ifClose runs throughout socket grace,
                         // before PlayerLogoutProcess decides whether to queue a save.
@@ -2624,6 +2652,8 @@ impl World {
                             tutorial_fire: None,
                             main_modal: None,
                             location_interaction: None,
+                            location_revision: None,
+                            woodcutting_animation_at: 0,
                             pending_door: None,
                             observer_id: None,
                             autocast_picker_defensive: None,

@@ -138,6 +138,7 @@ pub fn secure_random(output: &mut [u8]) -> Result<(), Error> {
 mod tests {
     use super::*;
     #[test]
+    #[ignore = "Requires an independently supplied Argon2 DLL at work/native/argon2.dll; excluded from public default tests"]
     fn cached_reference_argon2_verifies_and_rejects_wrong_password() {
         let path = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../work/native/argon2.dll");
         let hasher = PasswordHasher::load(&path.canonicalize().unwrap()).unwrap();

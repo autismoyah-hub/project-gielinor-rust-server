@@ -180,17 +180,8 @@ impl World {
         npc.retaliate_due
             .push_back(clock.wrapping_add(flight.duration.server_delay));
         npc.last_combat = npc.last_combat.max(clock);
-        let damage = if npc.flat_armour > 0 {
-            let blocked = npc.flat_armour.min(roll.damage);
-            npc.flat_armour -= blocked;
-            roll.damage - blocked
-        } else if npc.flat_armour < 0 {
-            let extra = npc.flat_armour.wrapping_abs();
-            npc.flat_armour = 0;
-            roll.damage.wrapping_add(extra)
-        } else {
-            roll.damage
-        };
+        let damage = self.modify_npc_combat_damage(Some(actor), target, roll.damage)?;
+        let npc = self.npc_mut(target).ok_or(ActionError::StaleActor)?;
         npc.hero_points.credit(uuid, damage.min(npc.stats[3]));
         self.queue_hit(
             Target::Npc(target),

@@ -69,8 +69,28 @@ pub struct Locations {
     map: HashMap<CoordGrid, ByteMap<Location>>,
     spawned: HashMap<CoordGrid, ByteMap<Location>>,
     constructed: Vec<(CoordGrid, u16)>,
+    revisions: HashMap<(CoordGrid, u8), u64>,
+    next_revision: u64,
 }
 impl Locations {
+    /// Identity of this occupied layer, including remove/re-add of the same type.
+    pub fn revision(&self, loc: Location) -> Option<u64> {
+        (self.find_type(loc.coords, loc.id) == Some(loc)).then(|| {
+            self.revisions
+                .get(&(loc.coords, loc.layer))
+                .copied()
+                .unwrap_or(0)
+        })
+    }
+    fn revise(&mut self, loc: Location) {
+        self.next_revision = self
+            .next_revision
+            .checked_add(1)
+            .expect("location revision exhausted");
+        self.revisions
+            .insert((loc.coords, loc.layer), self.next_revision);
+    }
+
     /// Authorize mutation only after the region owner has prepared transformed
     /// locations/collision. Floor 1 is pinned; dynamic lifetime removal is separate.
     pub fn register_constructed(
@@ -109,6 +129,7 @@ impl Locations {
     ) -> Result<(Changed, Mutation), &'static str> {
         let zone = zone_base(loc.coords);
         let before = self.spawned.get(&zone).cloned();
+        let prior_revision = self.revisions.get(&(loc.coords, loc.layer)).copied();
         let result = if add {
             self.add(loc)?
         } else {
@@ -120,12 +141,21 @@ impl Locations {
             } else {
                 self.spawned.remove(&zone);
             }
+            match prior_revision {
+                Some(value) => {
+                    self.revisions.insert((loc.coords, loc.layer), value);
+                }
+                None => {
+                    self.revisions.remove(&(loc.coords, loc.layer));
+                }
+            }
             return Err(error);
         }
         Ok(result)
     }
     /// Map loader has already applied collision. Later entries on a layer replace earlier ones.
     pub fn load(&mut self, loc: Location) {
+        self.revise(loc);
         self.map
             .entry(zone_base(loc.coords))
             .or_default()
@@ -215,6 +245,7 @@ impl Locations {
         }
         mutation.collision.push((loc, true));
         mutation.updates.push(Event::Add(loc));
+        self.revise(loc);
         Ok((
             if exact {
                 Changed::Map
@@ -242,6 +273,7 @@ impl Locations {
                 } else {
                     mutation.updates.push(Event::Delete(loc));
                 }
+                self.revise(loc);
                 return (Changed::Spawned, mutation);
             }
         }
@@ -255,6 +287,7 @@ impl Locations {
             );
             mutation.collision.push((loc, false));
             mutation.updates.push(Event::Delete(loc));
+            self.revise(loc);
             (Changed::Map, mutation)
         } else {
             (Changed::Missing, mutation)
@@ -291,5 +324,27 @@ mod constructed_tests {
         assert!(locations
             .register_constructed(CoordGrid::new(3200, 3200, 0).unwrap(), 128)
             .is_err());
+    }
+}
+
+#[cfg(test)]
+mod revision_tests {
+    use super::*;
+    #[test]
+    fn same_type_replacement_changes_identity_but_failed_collision_preserves_it() {
+        let c = CoordGrid::new(3200, 3200, 0).unwrap();
+        let tree = Location::new(c, 1276, 10, 0).unwrap();
+        let mut l = Locations::default();
+        l.load(tree);
+        let first = l.revision(tree).unwrap();
+        l.delete(tree);
+        assert_eq!(l.revision(tree), None);
+        l.add(tree).unwrap();
+        assert_ne!(l.revision(tree), Some(first));
+        let second = l.revision(tree);
+        let stump = Location::new(c, 1342, 10, 0).unwrap();
+        assert!(l.change(stump, true, |_| Err("collision failure")).is_err());
+        assert_eq!(l.revision(tree), second);
+        assert_eq!(l.revision(stump), None);
     }
 }

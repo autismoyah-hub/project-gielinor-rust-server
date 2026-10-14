@@ -11,19 +11,24 @@ impl World {
         {
             return true;
         }
-        (operation == 1
-            && (self.tower_staff.as_ref().is_some_and(|c| c.location == id)
-                || self.tower_chest.as_ref().is_some_and(|c| c.location == id)
-                || self.anvils.contains(&id)
-                || self.tutorial_bank.is_some_and(|c| c.booth(id).is_some())
-                || self.doors.contains_key(&id)
-                || self.tutorial_bread.is_some_and(|c| c.location == id)
-                || self.tutorial_woodcutting.is_some_and(|c| c.contains(id))
-                || self.tutorial_mining.is_some_and(|c| c.ore(id).is_some())
-                || self
-                    .tutorial_gates
-                    .as_ref()
-                    .is_some_and(|c| c.gates.contains_key(&id))))
+        (matches!(operation, 1 | 3)
+            && self
+                .woodcutting
+                .as_ref()
+                .is_some_and(|c| c.trees.contains_key(&id)))
+            || (operation == 1
+                && (self.tower_staff.as_ref().is_some_and(|c| c.location == id)
+                    || self.tower_chest.as_ref().is_some_and(|c| c.location == id)
+                    || self.anvils.contains(&id)
+                    || self.tutorial_bank.is_some_and(|c| c.booth(id).is_some())
+                    || self.doors.contains_key(&id)
+                    || self.tutorial_bread.is_some_and(|c| c.location == id)
+                    || self.tutorial_woodcutting.is_some_and(|c| c.contains(id))
+                    || self.tutorial_mining.is_some_and(|c| c.ore(id).is_some())
+                    || self
+                        .tutorial_gates
+                        .as_ref()
+                        .is_some_and(|c| c.gates.contains_key(&id))))
             || self.location_handlers.contains_key(&(id, operation))
     }
     fn door_target(&self, loc: Location) -> Result<Target, ActionError> {
@@ -137,6 +142,7 @@ impl World {
         p.quantity_input = false;
         p.bank_count = None;
         p.protection.suspended = false;
+        p.location_revision = self.locations.revision(loc);
         p.location_interaction = Some((loc, action));
         p.movement.interacting = true;
         p.movement.temporary_speed = if control {
@@ -204,7 +210,7 @@ impl World {
         }
     }
 
-    pub(super) fn process_door(&mut self, slot: usize) {
+    pub(super) fn process_door(&mut self, slot: usize, random: &mut impl RandomSource) {
         let Some(p) = self.players.get(slot) else {
             return;
         };
@@ -255,6 +261,15 @@ impl World {
             let p = self.players.get_mut(slot).unwrap();
             p.movement.abort();
             p.protection.delay(1);
+            return;
+        }
+        if reached
+            && self
+                .woodcutting
+                .as_ref()
+                .is_some_and(|c| c.trees.contains_key(&loc.id))
+        {
+            self.process_woodcutting(slot, loc, action, random);
             return;
         }
         if p.movement.destination().is_none() {

@@ -2,6 +2,3 @@ Cargo.lock
 target
 *.bk
 *.orig
-
-# Preserve explicitly reviewed source input in this checkpoint.
-!/Cargo.toml.orig

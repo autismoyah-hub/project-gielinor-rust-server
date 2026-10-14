@@ -25,6 +25,8 @@ mod prayer_tab;
 mod skill_multi;
 mod smelting;
 mod tower_restore;
+mod tower_combat;
+mod woodcutting;
 mod tutorial;
 
 fn inventory<'a>(

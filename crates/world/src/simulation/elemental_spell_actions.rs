@@ -225,17 +225,8 @@ impl World {
             1
         }));
         npc.last_combat = npc.last_combat.max(clock);
-        let damage = if npc.flat_armour > 0 {
-            let blocked = npc.flat_armour.min(damage);
-            npc.flat_armour -= blocked;
-            damage - blocked
-        } else if npc.flat_armour < 0 {
-            let extra = npc.flat_armour.wrapping_abs();
-            npc.flat_armour = 0;
-            damage.wrapping_add(extra)
-        } else {
-            damage
-        };
+        let damage = self.modify_npc_combat_damage(Some(actor), target, damage)?;
+        let npc = self.npc_mut(target).ok_or(ActionError::StaleActor)?;
         npc.hero_points.credit(uuid, damage.min(npc.stats[3]));
         self.queue_hit(
             Target::Npc(target),

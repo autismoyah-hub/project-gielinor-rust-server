@@ -1,0 +1,13 @@
+# Source provenance
+
+Rust source snapshot `78b3fcd2e73c777ba4dc4684bbd9400ab7736b80b5f95bea10c0621f64a2e2b8` was captured 2026-10-14T05:07:52.557963+00:00 with two equal full inventory/hash passes. It is a bounded non-atomic filesystem capture, not an atomic Git revision. Agent 2 may have changed authoritative source afterward. Remote base was `11a0f7a9b35b0c4adc787c41d91613a8e75a6d36`.
+
+Historical Kotlin baseline `cb6e66cc0f16a25b60ba6705d8f157cc22ab4869` is a local Project Gielinor commit and is not present at the public upstream commit endpoint. Its LICENSE.md was read from the local Git object and matched the public Project Gielinor ISC notice at `b1af02938991fc98ac2b9934f0797c7ffad175e3`. This verifies the notice, not that all local additions equal that public source. The inspected reference contains later local additions.
+
+RSProt artifacts used by development are version `1.0.0-ALPHA-20260630`; private artifact hashes are recorded in release evidence. MIT text was verified against the official repository; master inspected at `4ec57fd7a28e16e9ae207bd1f02b7f343bb77957`. A historical source-commit mapping for that artifact has not been independently established here. Preserve Z-Kris attribution for adapted protocol material.
+
+Kronos-named Rust modules load/parse external data and reproduce selected local Kotlin loader behavior. The targeted inspection did not establish substantial verbatim Kronos implementation copying into the distributed source. The small prayer restore mapping and chaos-altar bounds are behavioral facts requiring revision validation; their presence is not proof of a copied algorithm. Neither this conclusion nor ISC/MIT attribution licenses the external Kronos archive. External-data portability and source reuse are separate issues.
+
+Scout changed packaging only: crate test/example autodiscovery, contributor docs, notices and single-job Cargo config. Production Rust behavior is unchanged. Two test-only #[ignore] attributes mark optional tests requiring an external Argon2 DLL and a private Kotlin logout fixture; these tests are not counted as passing. All other Rust source bytes match the accepted capture. Private differential integration tests/examples and development/oracle scripts are excluded; self-contained unit tests are retained. SQL migrations are schema/source inputs, not player data. Vendored Rust source/notices remain under their own terms.
+
+No Jagex cache/gamepack, original proprietary Java, Kotlin reference snapshot, credentials, accounts or compiled assets are bundled. Licenses cover their respective authors' contributions; they do not authorize redistribution of someone else's protected material. Candidate source and external media have distinct publication gates.
