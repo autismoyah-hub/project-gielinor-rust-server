@@ -57,7 +57,12 @@ def assess(run):
     if 'Unhandled ' in log or 'Pending: packet' in log:limitations.append('Client reports unhandled packets; targeted pass is not complete packet coverage')
     if mode=='actions':limitations.append('Headless direct world-action dispatch; not graphical pointer acceptance')
     if mode=='render':limitations.append('Automated frame smoke; manual screenshot review is separate')
-    if mode=='prayer':limitations.append('Prayer bits are client observations and may be predicted; activation acceptance and rendered appearance require separate evidence')
+    if mode=='prayer':
+        mirrors=re.findall(r'^Prayer server mirror matched: bit4104=([01])',log,re.MULTILINE)
+        if mirrors==['1','0']:
+            limitations.append('Prayer activation/deactivation matched the client server-varp mirror; rendered appearance and server decision reasons remain UNKNOWN')
+        else:
+            limitations.append('Prayer bits are client observations and may be predicted; activation acceptance and rendered appearance require separate evidence')
     return {'run_id':run.name,'scenario':mode,'status':status,'reason':reason,'first_failing_action':errors[0] if errors else (missing[0] if missing else None),'expected':RULES.get(mode,[]),'missing':missing,'client_sha256':meta.get('clientHash'),'evidence':[str(run/'client.log'),str(run/'result.json'),str(run/'shutdown.json')],'limitations':limitations,'reproduction':f'scripts/integration-preparation-run.ps1 -Environment ENV -Run new-unique-id -Mode {mode}'}
 def main():
     p=argparse.ArgumentParser();p.add_argument('run',type=Path);p.add_argument('output',type=Path);a=p.parse_args();result=assess(a.run)

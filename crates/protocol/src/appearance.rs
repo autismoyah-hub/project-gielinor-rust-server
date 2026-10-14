@@ -90,6 +90,7 @@ pub struct Updates<'a> {
     pub headbars: Option<&'a [u8]>,
     pub reset: Option<u8>,
     pub speed: Option<i8>,
+    pub spot_animations: Option<&'a [crate::spot_animation::Animation]>,
     pub face: Option<Face>,
     pub say: Option<&'a str>,
     pub sequence: Option<(u16, u8)>,
@@ -115,6 +116,10 @@ impl Updates<'_> {
         if let Some(value) = self.speed {
             mask |= 0x400;
             body.push((value as u8).wrapping_neg());
+        }
+        if let Some(spots) = self.spot_animations.filter(|spots| !spots.is_empty()) {
+            mask |= 0x20000;
+            body.extend(crate::spot_animation::encode(spots)?);
         }
         if let Some(bytes) = self.headbars {
             mask |= 0x10000;

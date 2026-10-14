@@ -19,6 +19,7 @@ pub mod maps;
 pub mod names;
 pub mod npcs;
 pub mod parameters;
+pub mod projectiles;
 pub mod symbols;
 pub mod music;
 pub mod variables;

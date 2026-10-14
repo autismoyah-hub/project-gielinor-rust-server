@@ -1,4 +1,4 @@
-param([string]$Run='kotlin-login-001',[int]$Port=43728,[ValidateSet('login','render','actions','prayer','arrival','dialogue-ui','dialogue-protocol','inventory','inventory-verify','inventory-bury','floor','floor-content')][string]$Mode='login',[switch]$CaptureWorld,[string]$ClientRoot,[string]$EnvironmentPath,[string]$ScenarioExecutable)
+param([string]$Run='kotlin-login-001',[int]$Port=43728,[ValidateSet('login','render','actions','prayer','arrival','dialogue-ui','dialogue-protocol','inventory','inventory-verify','inventory-bury','floor','floor-content')][string]$Mode='login',[switch]$CaptureWorld,[switch]$CreatorResume,[string]$ClientRoot,[string]$EnvironmentPath,[string]$ScenarioExecutable)
 $ErrorActionPreference='Stop'
 $serverRoot=Split-Path $PSScriptRoot -Parent
 . "$PSScriptRoot/integration-capacity.ps1"
@@ -23,7 +23,10 @@ $classpathFile=if (Test-Path "$root/kotlin-runtime-classpath.txt") { "$root/kotl
 $classpath="$root/kotlin-overlay/classes;"+(Get-Content $classpathFile -Raw).Trim()
 # Lumbridge plus source squares copied by TowerFloor (dungeon and wizard room).
 # Omitting these leaves the reference's constructed floor collision incomplete.
-$maps=@(@(foreach ($x in 49..51) { foreach ($z in 49..51) { ($x -shl 8) -bor $z } }) + @(((50 -shl 8) -bor 43), ((48 -shl 8) -bor 49)) | Sort-Object -Unique) -join ','
+$centerX=if ($CreatorResume) {26} else {50}
+$centerZ=if ($CreatorResume) {95} else {50}
+# All four Tower template sources must be explicit when the login window moves.
+$maps=@(@(foreach ($x in ($centerX-1)..($centerX+1)) { foreach ($z in ($centerZ-1)..($centerZ+1)) { ($x -shl 8) -bor $z } }) + @(12337,12843,12849,12851) | Sort-Object -Unique) -join ','
 $args=@('-Xms128m','-Xmx768m','-XX:MaxMetaspaceSize=256m','-XX:MaxDirectMemorySize=384m','-XX:ActiveProcessorCount=2',"-Dgielinor.integration.port=$Port","-Dgielinor.integration.maps=$maps","-Dgielinor.integration.stop=$runDir/stop",'-cp',$classpath,'IntegrationReference')
 New-Item -ItemType Directory -Path "$runDir/tmp" | Out-Null
 # SQLite scans its native-library temp directory on startup. Keep that cleanup

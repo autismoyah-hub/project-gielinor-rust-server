@@ -1,0 +1,31 @@
+//! SurvivalTutorScript dialogue text, preserving the original page order.
+// Source SHA256: 705564b1a32ec37415a0714d87bccb6e844b9f42a684dba7ce0ad7e2bc65bc42
+use crate::dialogue::{Expression, Page, Speaker};
+pub const PAGES: [Page; 26] = [
+    Page::Chat { speaker: Speaker::Npc, expression: Expression::Happy, text: "Hello again. Open your inventory â€” the backpack icon â€” so you can see the net I gave you." },
+    Page::Chat { speaker: Speaker::Npc, expression: Expression::Happy, text: "Hello again. First up, we're going to do some fishing. There's some shrimp in this pond here. Let's try and catch some." },
+    Page::Chat { speaker: Speaker::Npc, expression: Expression::Happy, text: "Hello again. You should take a look at that menu before we continue." },
+    Page::Chat { speaker: Speaker::Npc, expression: Expression::Happy, text: "Next up you need to make a fire. First, you'll need to cut down a tree to get some logs." },
+    Page::Chat { speaker: Speaker::Npc, expression: Expression::Happy, text: "Now that you have some shrimp, you're going to want to cook them. To do that, you'll need a fire." },
+    Page::Chat { speaker: Speaker::Npc, expression: Expression::Happy, text: "Now that you have some shrimp, you're going to want to cook them. All you need to do is use them on a fire." },
+    Page::Chat { speaker: Speaker::Npc, expression: Expression::Happy, text: "Hello there, newcomer. My name is Brynna. My job is to teach you about the skills you can use to survive in this world." },
+    Page::Chat { speaker: Speaker::Npc, expression: Expression::Happy, text: "The first skill we're going to look at is Fishing. There's some shrimp in this pond here. Let's try and catch some." },
+    Page::Chat { speaker: Speaker::Player, expression: Expression::Happy, text: "I've managed to catch some shrimp." },
+    Page::Chat { speaker: Speaker::Npc, expression: Expression::Happy, text: "Excellent work. Next you'll want to cook those shrimp. To do that, you'll need a fire. This brings us on to the Woodcutting and Firemaking skills." },
+    Page::Chat { speaker: Speaker::Npc, expression: Expression::Happy, text: "Hello again. Is there something you'd like to hear more about?" },
+    Page::Chat { speaker: Speaker::Npc, expression: Expression::Happy, text: "Every skill is listed in the skills menu. Here you can see what your current levels are and how much experience you have." },
+    Page::Chat { speaker: Speaker::Npc, expression: Expression::Happy, text: "As you move your mouse over the various skills the small tooltip will show you the exact amount of experience you have and how much is needed to get to the next level." },
+    Page::Chat { speaker: Speaker::Npc, expression: Expression::Happy, text: "You can also click on a skill to open up the relevant skillguide. In the skillguide, you can see all of the unlocks available in that skill." },
+    Page::Chat { speaker: Speaker::Npc, expression: Expression::Happy, text: "Woodcutting, eh? Don't worry, newcomer, it's really very easy. Simply equip your axe and click on a nearby tree to chop away." },
+    Page::Chat { speaker: Speaker::Npc, expression: Expression::Happy, text: "As you explore the mainland you will discover many different kinds of trees that will require different Woodcutting levels to chop down." },
+    Page::Chat { speaker: Speaker::Npc, expression: Expression::Happy, text: "Logs are not only useful for making fires. Many archers use the skill known as Fletching to craft their own bows and arrows from trees." },
+    Page::Chat { speaker: Speaker::Npc, expression: Expression::Happy, text: "Certainly, newcomer. When you have logs simply use your tinderbox on them. If successful, you will start a fire." },
+    Page::Chat { speaker: Speaker::Npc, expression: Expression::Happy, text: "You can also set fire to logs you find lying on the floor already, and some other things can also be set alight..." },
+    Page::Chat { speaker: Speaker::Npc, expression: Expression::Happy, text: "A tinderbox is always a useful item to keep around!" },
+    Page::Chat { speaker: Speaker::Npc, expression: Expression::Happy, text: "Ah, yes. Fishing! Fishing is undoubtedly one of the more popular hobbies here in Gielinor!" },
+    Page::Chat { speaker: Speaker::Npc, expression: Expression::Happy, text: "Whenever you see sparkling waters, you can be sure there's probably some good fishing to be had there!" },
+    Page::Chat { speaker: Speaker::Npc, expression: Expression::Happy, text: "Not only are fish absolutely delicious when cooked, they will also heal lost health." },
+    Page::Chat { speaker: Speaker::Npc, expression: Expression::Happy, text: "I would recommend everybody has a go at Fishing at least once in their lives!" },
+    Page::Chat { speaker: Speaker::Npc, expression: Expression::Happy, text: "Yes, the most basic of survival techniques. Most simple foods can be used on a fire to cook them. If you're feeling a bit fancier, you can also use a range to cook the food instead." },
+    Page::Chat { speaker: Speaker::Npc, expression: Expression::Happy, text: "Eating cooked food will restore lost health. The harder something is to cook, the more it will heal you." },
+];

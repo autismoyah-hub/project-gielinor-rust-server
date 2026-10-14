@@ -47,6 +47,9 @@ impl World {
         p.location_interaction = None;
         p.bank_count = None;
         p.food_delay = false;
+        p.tutorial_fire = None;
+        p.quantity_dialog = None;
+        p.quantity_input = false;
         p.protection.suspended = false;
         p.object_interaction = Some(object);
         p.npc_interaction = None;

@@ -1,4 +1,4 @@
-param([string]$Run = 'rust-login-001',[int]$Ticks = 100,[ValidateSet('login','render','actions','prayer','arrival','dialogue-ui','dialogue-protocol','inventory','inventory-verify','inventory-bury','floor','floor-content','floor-altar')][string]$Mode='login',[ValidatePattern('^integration-(b|floor|prep-[a-z0-9-]+)$')][string]$StateName='integration-b',[string]$ClientRoot,[string]$ServerExecutable,[string]$CacheRoot,[string]$ScenarioExecutable)
+param([string]$Run = 'rust-login-001',[int]$Ticks = 100,[ValidateSet('login','render','actions','prayer','arrival','dialogue-ui','dialogue-protocol','inventory','inventory-verify','inventory-bury','floor','floor-content','floor-altar')][string]$Mode='login',[ValidatePattern('^integration-(b|floor|prep-[a-z0-9-]+)$')][string]$StateName='integration-b',[string]$ClientRoot,[string]$ServerExecutable,[string]$CacheRoot,[string]$ScenarioExecutable,[switch]$CreatorResume)
 $ErrorActionPreference='Stop'
 $serverRoot=Split-Path $PSScriptRoot -Parent
 . "$PSScriptRoot/integration-capacity.ps1"
@@ -16,6 +16,7 @@ if (Test-Path -LiteralPath $runDir) { throw "Run already exists: $Run" }
 New-Item -ItemType Directory -Path $runDir | Out-Null
 $gracefulStop=((& "$ServerExecutable" --help | Out-String).Contains('--stop-file'))
 $arguments=@('--game-cache',"$CacheRoot/cache/game",'--js5-cache',"$CacheRoot/cache/js5",'--symbols',"$CacheRoot/symbols",'--rsa-exponent',"$root/keys/exponent.bin",'--rsa-modulus',"$root/keys/modulus.bin",'--argon2',"$serverRoot/work/native/argon2.dll",'--state-name',$StateName,'--bind','127.0.0.1:0','--ticks',"$Ticks")
+if ($CreatorResume) { $arguments+=@('--spawn','1686,6115,0') }
 if ($gracefulStop) { $arguments+=@('--stop-file',"$runDir/stop") }
 $server=Start-Process -FilePath "$ServerExecutable" -ArgumentList $arguments -WorkingDirectory "$root/b-rust" -WindowStyle Hidden -PassThru -RedirectStandardOutput "$runDir/server.log" -RedirectStandardError "$runDir/server.err"
 $server.PriorityClass='BelowNormal';$server.ProcessorAffinity=[IntPtr]3

@@ -1,82 +1,364 @@
+## Active continuation — spell pipeline implementation; compiler still deferred
+
+No owned process active. Startup133..139 all deferred by another compiler, no test failures/results from them. Spell-modifiers001 successfully generated8192 immutable original cases/provenance, but its Rust comparison deferred. Run existing kotlin_spell_modifiers without regenerating. Ranged equipment4096 similarly awaiting Rust comparison. Ranged ammo002 deferred (typed CategoryType fix remains unvalidated); next003. Next focused startup140 includes server/world libs, kotlin_spell_modifiers,kotlin_ranged_equipment,spell_cast,melee_actions. Original spell-roll001 is prepared but not run/fixture absent.
+
+New uncompiled production source after startup132: spell_modifiers, spell_roll (separate accuracy/damage stages, magic style bonus9, Brimstone defence, inclusive zero damage, MAX overflow rejected), spell_cast access+existing rune validation/consumption, world attempt_spell_cast (protected/stale/logout gates, requirement feedback, cast XP/event, failure clears NPC interaction), spell_equipment collector (Ahrim before Brimstone draw; recollected perstage; Void1.45), spell_combat inputs; server spell_equipment_config/spell_combat_config canonical resolvers. World cast helper not connected to actual projectile/hit handlers, no live magic acceptance. Tests added spell_cast3 cases and melee_actions cast attempt case; need compile/execute. spell_roll4096 original/comparator prepared. Generated resolver scripts under work preserve BaseObjs/EquipmentChecks mapping; existing Kotlin content only. No source archive after tutorial005.
+
+Do not stop at checkpoints or compiler deferral. Continue actual spell attacks/config/TCP integration and pending original tests when resources permit. Original Kotlin creator010 failed preauth with missing LoginMessageDecoder, clean owned shutdown; no fresh native gameplay parity evidence. Agent1 priority, no process modifications, commits/pushes, Wiki tasks or baseline replacement.
+## Active continuation — ranged formulas verified; spell modifiers under validation
+
+Ranged-roll001 PASS4096; ranged-modifiers001 PASS8192 against original compiled Kotlin. Ranged-equipment001 generated4096 immutable cases/provenance but Rust comparison deferred due another compiler; run existing kotlin_ranged_equipment test without regenerating fixture. Ranged-ammo001 failed oracle ClassCastException: required_ammo typedMap expected CategoryType, got Int. Fixed oracle typed value; preserved one-line partial evidence work/reboot-ranged-ammo-001.partial.expected SHA256 7C384FEF5A3465AE88F7CCAEDE27BB348C952BBB8BE197A7AE760658B193C6B6. No valid ammo fixture yet; next002.
+
+Kotlin creator010 FAIL before authentication, zero packets. Original server AccountLoadResponseHook logged NoSuchElementException LoginMessageDecoder at GameLoginResponseHandler.createSession. Root cause not yet established; no gameplay comparison possible. Owned server PID664 exited0 unforced at2026-10-14T00:31:33Z; no owned native runtime remains. Preserve run logs and pinned baseline. Historical bootstrap/persistence differences still unresolved.
+
+Added world spell_modifiers (original31 spell attributes; ordered PvN/PvP accuracy, base damage and ranges) plus8192 original differential oracle/test. Spell-modifiers001 currently running session92839; source frozen until exit. Actual spell casting remains unfinished. Next resume spell formula/runtime work after original validation; current production ranged latest startup132 still last smoke. No Wiki tasks, commits, pushes, baseline replacement or changes to Agent1.
+## Active continuation — ranged startup smoke PASS, Kotlin creator010 running
+
+Startup131 PASS289: protocol18, existing composite combat blocks2, projectile-wire4096 comparator1, server30, full lifecycle3, TCP4, world220, melee/ranged world actions11. Includes four new ranged tests: direct launch/ammo/XP/hit ordering, missing-ammo cooldown/no RNG, last thrown removal before formula (max6,draws5/10000/6), ordinary OP2 repeated ranged at distance without walking. Startup130 deferred.
+
+NPC spot original003 PASS512 full-writer composite cases;001/002 deferred. New NPC spot protocol/runtime and delayed NPC animation events compile and existing regressions pass. Fixture crates/protocol/tests/fixtures/npc-spots-composite.expected, provenance work/npc-spots-composite-oracle/provenance.json.
+
+Wired ranged formula/weapon catalogs plus cache projectiles into startup. Startup132 PASS actual owned cache, fresh state reboot-startup-132, ephemeral65272,2ticks,586NPCs/24220locs, clean drained shutdown. Ordinary ranged now enabled. Special weapons/shields/bolt procs, slayer matching/skull inputs still gaps. Latest live source is newer than tutorial005 archive; next archive tutorial006 only after further intended changes/validation.
+
+Native Kotlin creator010 currently running, session5851. Kotlin008/009 deferred, no result reuse. Uses pinned client and matched DD79049E tutorial005 source identity for comparison to Rust003. Freeze reference/oracle source during run; no compiler concurrently. Inspect work/reboot-creator-kotlin-010.log and owned run directory, complete clean shutdown and comparison. Rust003 remains scenario FAIL script8310opcode106, save10.625s PASS, server0unforced. Bootstrap payloads41 equal historical Kotlin007; both now follow first playerinfo. Exact prefix diagnostic work/reboot-initial-prefix-attribution-003.json attributes six missing Rust packets before bootstrap to existing FloorOneScript.fillDiaryTab onIfOpen(area_task): four hides,CS600,text. Original source lines2270..2279 and ClientScripts.ifSetTextAlign confirm. This hook/content is existing Kotlin, not Wiki backlog. Full Tower diary persistence/UI hook remains unported; do not mask difference. Welcome string/player/NPC-info bytes also differ, attribution of entity allocation separate.
+
+Next validations: finish native Kotlin010; original ranged-roll001/ranged-modifiers001/ranged-equipment001/ranged-ammo001 and pending tutorial oracles. Keep full parity unfinished, no final at milestone, no commits/pushes, no Agent1 process/client changes, no Wiki tasks.
+## Current continuation — archive tutorial005; ranged dispatch pending validation
+
+Startup128 PASS270: protocol18, RSProt projectile4096 comparator1, server30, full lifecycle3, world218. Confirms Magic Instructor synthetic component219:1 fix and tutorial booth TCP cases. Original projectiles002 PASS4096 decoder/builder/timing cases (001 deferred). Startup129 PASS250 server30/world220 after ranged weapon preparation/cache resolver. No complete rewrite/native acceptance claim.
+
+Immutable tutorial005 DD79049EB0A4A8D4926D91FDBCCC0D21751A53F8B3498E161BF9963AADF32BBF,649 files, build record work/reboot-tutorial-005-server-build.json. Rust native creator003 authenticated,2080 packets, save10.625s PASS, exit0 unforced; scenario FAIL pinned-client script8310 opcode106 unsupported. New capture work/reboot-creator-rust-003-bootstrap.json. Diagnostic order-attribution002: all41 bootstrap payloads equal historical Kotlin007, both after first player-info (ordinal31 both; bootstrap138 Kotlin/132 Rust). Strict differential003 remains BLOCKED failed lifecycle; this is not normalization or acceptance. Kotlin008 deferred;009 passed first headroom then deferred at second compiler guard. Next Kotlin010 with DD79049E archive. No owned process active.
+
+New source after archive (uncompiled): NPC spot animation encoding (negated count/plain slot+id/delay then height; mask0x40000 before face), world/runtime NPC spot and delayed animation events. Original512-case full NPC writer oracle/comparator prepared; npc-spots001 deferred, next002, fixture absent. Existing combat-block constructors updated with no-spot field.
+
+Added authoritative ordinary PvN ranged dispatch gated on world.ranged/ranged_weapons config. Cooldown before ammo failures; projectile and launch before consumption; formulas read equipment after detraction/worn callbacks; XP before flat-armour modification; retaliation queued before delayed hit; javelin spot at client delay; last thrown stops/messages. Added two world regressions in melee_actions.rs for draw/effect order, two-cycle hit and delayed defence, missing ammo cooldown. Not startup-configured yet; special weapon/shield/bolt handlers, slayer assignment and skull inputs still missing. Prepared resolvers compile in129 except later ballista spot addition. NPC spots and latest dispatch require validation before startup adoption.
+
+Next focused startup130: server/world/protocol libs, runtime_lifecycle, melee_actions, tcp_login, rsprot_combat_blocks, rsprot_projectile_wire. No broad workspace tests: prepared fixture tests remain absent. Original nexts death003,magic-ui001,leave001,magic-tutor001,lecture-tutor001,bank003,ranged-ammo001,ranged-modifiers001,ranged-roll001,ranged-equipment001,npc-spots002. No active process. Preserve Agent1 priority, pinned client/source archives, no Wiki tasks or commits/pushes. Continue autonomously.
+## Active continuation — startup128
+
+Startup126 compiled latest projectile/ammo/equipment/transport source: protocol18, server30, world217, TCP4, ammo1 (six scenarios), door10, NPC33 and two initial-login lifecycle cases PASS (315 total). Full lifecycle failed at Magic Instructor choice presentation because synthetic fixture lacked component219:1. Added that component; startup127 deferred another compiler. Furnace fixture fix is verified past its previous failure. Booth tests were not yet reached.
+
+Original projectile-wire002 generated immutable4096-case fixture with source/jar/fixture provenance and then exposed encoded enclosure discriminator13 versus Rust12. Other bytes of first failing case matched. Corrected Rust discriminator to13: internal RSProt protId is not wire discriminator. Full comparator rerun is pending in startup128; do not claim wire parity yet. Older type12 documentation is superseded by this evidence.
+
+Added ranged formula-input config and cache resolver: exact prayer precedence including deadeye, separate Void accuracy/damage, NPC light/standard/heavy defence, max(current magic, attack_magic), current source/target origin distance for fuse. Caller supplies slayer status explicitly. Uses existing common combat bonus config. Resolver is not yet wired into live ranged attacks; specialized ranged weapons and ordinary dispatch remain unfinished. New prayer tests pending.
+
+Startup128 is running guarded --no-fail-fast server/protocol/world libs plus runtime_lifecycle and rsprot_projectile_wire. Source frozen until exit; session93820. Next original projectiles001; archive tutorial005/native creator Rust003/Kotlin008 remain pending. Preserve Agent1 priority and continue established parity work, without Wiki tasks, commits, pushes, or replacing the pinned client.
+## Current continuation — startup124 deferred, next125
+
+Startup114 compiled the then-current cache/protocol/world/server sources and tests. Cache22, protocol18, server30 and rune-consumption2048 PASS; two initial-login cases PASS. Full lifecycle failed in furnace coverage because the newly added booth fixture reused furnace60002. Fixed booth fixtures to61000/61001. Subsequent115..124 deferred by other compiler; no owned process active. Latest changes after114 are not compiled. Next125 uses --no-fail-fast with server/world/protocol libs plus tcp_login/runtime_lifecycle/npc_actions/door_actions/ammo_actions so independent tests still execute if lifecycle fails. Last fully passing lifecycle remains079.
+
+Added projectile cache204 decoder/timing (cache tests passed114); projectile Flight and MAP_PROJANIM_V2 enclosed type12 encoder, transient world event, source-zone observer selection, and server conversion are newer/pending. Prepared original projectiles4096 and projectile-wire4096 oracles with provenance and immutable fixture creation; both fixtures absent. Pending world transient-observer test checks first visibility and source-zone selection.
+
+Promoted reviewed ranged modifiers and roll drafts; prepared8192 modifier and4096 roll comparisons (fixtures absent). Added ranged equipment collector and canonical resolver, including mixed regular/elite Void accuracy1.1 but damage1.0. Static18-group alias/slot audit PASS work/reboot-ranged-equipment-symbols-001.json; separate4096 original collector/void oracle prepared, fixture absent. Resolver not yet wired into live ranged attacks.
+
+Added original ammo detraction/conservation/drop draw ordering and world use_ranged_ammo for standard one-unit shots. Reuses existing delayed Objects queue, captures launch ownership/clock/collision, default duration200/drop chance5. BLOCK_WALK is0x200000 (confirmed original routefinder jar), not generic movement mask. Last quiver depletion avoids explicit appearance rebuild; last thrown weapon rebuilds. Tests cover draw order, variables, failure timing and delayed private drops under changing owner/collision. This still needs compiled and original behavior validation; no ordinary ranged attack dispatch yet. Pure consumption error on invalid drop chance retains original prior detraction; production helper uses valid default5.
+
+Current source production output queuing spans network pumps (application queue_until_tick), with dedicated TCP two-cycle/logout test pending. Native creator A/B remains pending archive tutorial005/Rust003/Kotlin008. Original nexts: death003, magic-ui001, leave001, magic-tutor001, lecture-tutor001, bank003 (001/002 deferred), ranged-ammo001, ranged-modifiers001, ranged-roll001, ranged-equipment001, projectiles001, projectile-wire001. Existing rune-consumption source remains restored exact baseline; do not reimplement/overwrite it. Continue autonomous implementation; no commits/pushes, Agent1 changes, Wiki work, baseline replacement or relaxed safeguards.
+## Active regression — startup114
+
+Startup110..113 and bank001 deferred by the other-compiler guard. Startup114 was admitted and is running selected cache/protocol/world/server libs plus tcp_login/runtime_lifecycle/npc_actions/door_actions/kotlin_rune_consumption. Source and fixtures frozen until it exits. Do not start another compiler concurrently.
+
+Since109: seven encrypted tutorial booth cases; production transport queues game output from between-tick network pumps until the post-tick category flush (login/JS5 responses remain immediate). New TCP test exercises two cycles and between-tick logout. Application explicitly enables queue_until_tick before listening. Standalone Runtime/Transport callers retain explicit immediate mode unless configured; native order acceptance still pending.
+
+Ported custom projectile config204 decoder (required fields, defaults, signed length adjustment, extended heights), absent-group handling and original wrapping Int flight timing. Prepared4096-case original compiled decoder/builder/ProjAnim oracle and comparator; fixture absent, next projectiles001. Reviewed existing ranged modifier draft against original accuracy/max-hit operations and enum order; promoted it plus8192-case comparator and two order-sensitive unit tests. Modifier fixture absent, next ranged-modifiers001. Ranged roll draft remains under work; runtime attacks/projectile zone output and equipment attribute collection are still gaps. New functionality remains unvalidated pending114 and originals. No native acceptance, commits/pushes, Wiki work or client modifications.
+## Current validation checkpoint — startup109
+
+Startup108 compiled selected protocol/world/server production and test targets. Protocol library18, server library30, existing Kotlin rune-consumption comparison2048 cases, and two initial-login TCP cases PASS. Full lifecycle failed at its old deposit/withdraw expected packet order (actual47 vs expected18). Updated that tick expectation using the independent original-category fixture and the original inventory-after-info phase. Last complete lifecycle PASS remains079; newest tutorial behavior is not yet accepted.
+
+Startup109 deferred by another compiler. Added seven encrypted tutorial bank/poll booth cases covering gates, completed==1 bypass, coin gift versus no topup, messages, UI opening and progression. Rustfmt passed; behavior execution pending. No source build running. Next focused regression110 includes protocol/server/world libs plus tcp_login/runtime_lifecycle/npc_actions/door_actions/kotlin_rune_consumption. Original nexts: death003, magic-ui001, leave001, magic-tutor001, lecture-tutor001, bank001, ranged-ammo001. Archive tutorial005/native Rust creator003/Kotlin008 still pending. Continue independently under resource guards; full parity is unfinished.
+## Validation/recovery update
+
+Startup103 deferred. Startup104 obtained5.6GiB/14%CPU and began compiling, then exposed a duplicate rune_consumption module. A redundant draft had overwritten that pre-existing file. Restored exact bytes from checkpoint-20261012-02/rust-server-attempt-2, verified SHA256 BFA5C05F3D2279EA9A9DB69294C1A535E1C5CEDF94C8D024F68F600D917F013A against tutorial004 source manifest. Removed duplicate export; existing2048-case server comparator preserved. Redundant draft retained only under work/reboot-rune-consumption-redundant-draft-001.rs; restoration provenance work/reboot-rune-consumption-recovery-001.json. Existing component already implements important pouch-only empty-transaction failure. No rune-consumption behavior change adopted; connecting it to spell execution remains a gap. Other new source module paths verified absent from tutorial004 manifest; no duplicate world exports.
+
+Startup105 deferred by another compiler. Next106 should include server/world/protocol libs, tcp_login/runtime_lifecycle/npc_actions/door_actions and existing kotlin_rune_consumption. All new tutorial/transport changes still pending a complete regression pass. No owned process/session. Continue development and reference comparisons; not task completion.
+
+## Active continuation — Tutorial booth integration pending validation
+
+Startup099..102 deferred by another compiler; no owned process launched. Added original TutorialBankScript bank/poll gates at location reach, exact completed==1 bypass, bank gift25 only when coin total<=0, existing bank UI opening, exact messages and conditional forward progression. Runtime configuration validates booth locations/coin/presentation and startup resolves tut2_bankbooth/pollbooth_green/coins. Added model tests and21 reachable-world cases; original2016-case unchanged-script oracle/comparator prepared with explicit inventory/openBank/vars/focus doubles. Fixture absent, next bank001. Static literal audit is not behavior acceptance. Needs encrypted TCP booth/UI validation.
+
+Latest source remains uncompiled after084. Next regression103: protocol/server/world libraries + tcp_login/runtime_lifecycle/npc_actions/door_actions. Original nexts: death003, magic-ui001, leave001, magic-tutor001, lecture-tutor001, bank001. Fixture files for these remain absent. Archive tutorial005/native Rust creator003/Kotlin008 pending. Last full lifecycle PASS079 predates all newest changes. No owned process/session, Agent1 changes, baseline changes, Wiki tasks, commits or pushes. Continue autonomously; do not mark rewrite complete.
+
+## Active continuation — Prayer and Account Instructor ports pending
+
+Startup096..098 deferred by another compiler; no owned process launched. Added original PrayerTutorScript12 pages and AccountTutorScript26 pages with captured entry branches, Quiz/Happy expressions, exact recap choices, delayed final step changes, and tabs5/8. Both registered at startup. Model and two NPC lifecycle tests prepared. Original compiled672-case comparison scaffold (unchanged scripts; explicit dialogue/progression doubles) and Rust comparator prepared; fixture absent, next lecture-tutor001. Static exact text coverage audit saved separately; not behavior acceptance.
+
+Magic Tutor source includes TCP custom-title regression and prepared8064-case original comparison. Death672, MagicUI336, Leave180 still await original runs. All source after084 still uncompiled; latest actual full lifecycle PASS remains079. Next guarded regression099: protocol/server/world libraries plus tcp_login/runtime_lifecycle/npc_actions. No owned process/session. Archive tutorial005 and native Rust003/Kotlin008 remain pending. Continue existing parity scope, no Wiki queue, commits, client changes or weakened resource guards.
+
+## Active continuation — pending Magic Instructor validation
+
+Startup092..095 deferred at the other-compiler guard; no owned process launched. Latest source additionally includes Magic Instructor custom-title encrypted TCP test, four NPC lifecycle tests, two model tests, and an8064-case unchanged MagicTutorScript oracle/comparator with explicit suspension/inventory/progression/leave-call doubles. Fixture is absent; next original run001. Static exact text audit work/reboot-magic-tutor-literals-001.json PASS18 literals is not behavior acceptance. Framing encoded_len now rejects usize overflow and encode allocates exact validated cost; boundary/cipher-state regression prepared. New world/server/protocol code remains uncompiled. Next startup096 includes protocol/server/world libs, tcp_login/runtime_lifecycle/npc_actions.
+
+Current source preserves Agent1 priority, pinned client and immutable archives. Tutorial005 archive/native Rust003/Kotlin008 still pending. Death003/UI001/Leave001 original references also pending. Complete parity remains unfinished; continue lightweight source/reference work during resource deferrals and resume builds automatically.
+
+## Active continuation — Magic Instructor runtime port (pending validation)
+
+Startup089 deferred by another compiler;090 by client runtime below6GiB;091 by another compiler. No owned test process launched. Existing resource limits remain intact. Latest source is uncompiled, not a new PASS checkpoint.
+
+Ported original MagicTutorScript into tutorial_magic_tutor model and NPC reach/suspended-dialogue handlers: captured progress branches, deferred rune topups, immediate low-rune replenishment, custom mainland/path choice titles, Adventurer Jon/Ironman branches, self-cast instruction and direct leave-kit confirmation. Added generic titled-choice rendering and retained one-use dialogue tokens. Tutorial leave configuration is now available to already-admitted world dialogue so direct confirmation does not re-enter the UI protected-access gate. Startup resolves the existing airrune/mindrune symbols. Added model tests and three NPC lifecycle regressions for grant timing, custom-title choice flow, cancellation and immediate refill. Rustfmt parser passed for edited core files; no behavior acceptance yet. Original MagicTutor suspension oracle remains to prepare. Other tutorial death/UI/leave fixtures remain absent.
+
+Next guarded regression startup092: server/world libs plus tcp_login/runtime_lifecycle/npc_actions. Next immutable archive tutorial005 and native Rust creator003/Kotlin008 remain pending. Original death003, magic-ui001, leave001 remain pending. No owned process, commits/pushes, Wiki tasks, baseline changes or Agent1 changes.
+
+## Active source update — outgoing phases and tutorial magic/leave
+
+Startup084 compiled server/world source and server library30 PASS; two login TCP tests PASS. Full lifecycle reached the new Wind Strike test but its synthetic overlay shared the tutorial focus parent and was replaced on first selection. Fixed the synthetic spell parent to548:23, preserving the actual focus overlay at548:24. Startup085..088 deferred by another compiler. Latest source, including changes below, is NOT yet validated by a passing build. Next startup089. No owned process/session active.
+
+Beyond category batching, moved inventory snapshots after player/NPC and zone updates, matching PlayerPostTickProcess. Diagnostic work/reboot-initial-category-prediction-002.json preserves old-native ordering evidence and explicitly marks Kotlin's first cycle incomplete (no tick-end); missing stats/tail are UNKNOWN, not claimed omissions. Saved bootstrap41 payloads are identical; order differs. Normal logout sends57 and discards queued low-priority UI before encryption. New smart-opcode/budget/normal-logout tests await execution.
+
+Ported TutorialMagicUiScript Wind Strike overlay selection (49/50 ->50, exact completed==1 gate, refresh focus on repeat, message; no invented cast). Added prepared TCP branch test and336-case original callback oracle. Home decision model is implemented. Ported TutorialLeave ordered18 backpack grants, occupied-slot clearing, bank coin topup to25, worn preservation, Lumbridge3221,3218 teleport and completion. Runtime startup resolves19 object symbols (work/reboot-tutorial-leave-symbols-001.json PASS), Home overlay uses protected-access gate. Invalid destination follows original: report clear-map/engine message, retain kit and complete progression. Five core/world leave tests prepared; no native acceptance. Magic Instructor dialogue remains unported, so natural progression to all these steps is incomplete.
+
+Prepared original comparisons: TutorialCombatDeath672 (unchanged hooks/progression/journal; explicit hero/death/variables/focus doubles), TutorialMagicUi336 (direct callbacks; leave/protection launcher not validated), TutorialLeave180 (unchanged leave/progression; explicit inventory/teleport/focus doubles). All three fixture files currently absent. CombatDeath001 deferred Java workload transition,002 compiler active; next003. MagicUi next001; Leave next001. Guarded scripts and Rust comparators prepared. Kotlin/owned native source unchanged; no Agent1 processes modified, baseline retained, no Wiki backlog/commits/pushes.
+
+Next: finish current source regressions and original oracles; archive tutorial005; native Rust creator003/Kotlin008 when resources permit; continue server parity. Full rewrite is not complete. Existing low-level transport calls outside the tick batch remain immediate, so cross-pump scheduling parity still needs work.
+
+Current update: Startup079 PASS4 (three full runtime lifecycle scenarios and encrypted transport handshake/batch/logout test). Categories and reordered first-login hidden appearance validated. Startup080/081/082 deferred by another compiler. After079, added shared output-budget overflow and smart-opcode encryption tests plus normal logout opcode57/high-priority-only flush, derived from original PlayerPostTickProcess.closeClient. Those newest changes are not compiled yet. Prepared original TutorialCombatDeath672 oracle (unchanged hooks/progression/journal with explicit variable/focus/online-hero/death doubles) and comparator; fixture absent, next original run001. Next server regression083; next immutable archive tutorial005. No owned process/session active.
+
+Saved-capture diagnostic work/reboot-creator-order-attribution-001.json confirms all41 creator bootstrap packets have identical opcodes/payloads in Kotlin007 and Rust002; relative order differs (after versus before first info). This is DIAGNOSTIC only: failed native lifecycle and UI acceptance remain explicit. Updated extractor14 tests PASS; no normalization or acceptance override.
+
+## Current checkpoint — October 13: outgoing protocol scheduling
+
+Startup073 PASS273 (server30, TCP3, world195, doors9, NPC actions27, NPC death9). Includes tutorial rat/chicken death progression, but an original Kotlin death-hook oracle remains to be written. Four earlier original comparisons PASS: Anvil4096, smelting3072, MiningTutor5376, CombatTutor3960; explicit oracle doubles limit claims.
+
+Immutable tutorial004 archive D3837019E166C4159C3A7AD371DC8D47982F60A470CA1F9EDC5919DD9683143F contains612 source files and predates tutorial death changes. Kotlin creator007 FAIL: client exit1 / connection aborted10053 after202 packets; save0.015s PASS, server exit0 unforced. Rust creator002 against D383 FAIL: creator script8310 opcode106 unsupported by pinned client;2098 packets, save9.563s PASS, server exit0 unforced. Strict comparisons001/002 remain BLOCKED by failed Kotlin lifecycle. Neither native scenario establishes acceptance.
+
+Found foundational ordering divergence: Kotlin creator bootstrap follows first player info (first info ordinal31, CS2644 ordinal138); prior Rust bootstrap preceded it. Original RSProt Session.queue/writeAndFlush uses high-priority then low-priority FIFO queues. Do not move EngineLoginReady/tutorial mutation after the first appearance snapshot. Original category oracle003 now covers158 enum entries, including explicit UNSUPPORTED UNKNOWN_STRING without an encoder; non-wire negative opcode zone entries remain in provenance. Rust category fixture comparison001 PASS for every wire opcode. Oracle source, exact jar hashes and output in work/outgoing-category-oracle.
+
+Current source adds bounded world-tick transport batching before ISAAC encoding, exact validated wire-byte accounting, flush-before-disconnect, and batch cleanup on errors. Immediate APIs outside tick retain prior semantics: full cross-pump scheduling parity remains unfinished. Startup074 compiled server library30 PASS and first-login assertions passed; later TCP tests exposed old assumptions that high-priority context packets end a tick. Tests now drain through opcode83 and use independently extracted original categories, preserving payload/hidden-appearance checks. Startup076 two login tests PASS; full lifecycle reached potion ordering assertion. Startup077 is running after updating that assertion. No native test of this source yet.
+
+Creator extraction now reports bootstrap position relative to first player info instead of requiring before-info. Comparator explicitly fails ordering differences, preserves failed native assessment/lifecycle, and performs no packet normalization. Creator analysis14 tests PASS. Older captures/reports preserved. Next: finish focused TCP regressions, bounded queue/error tests, archive source, matched native capture; continue broader server parity afterward. No Git commits/pushes or Wiki task implementation.
+
 # Active rewrite progress — October 12, 2026
+
+Original comparisons now PASS: AnvilTier003 4096 original compiled bestTier cases plus exact188 product-slot/7-tier/7-XP tables; SmeltingIngredient006 3072 original compiled resolveInvIngredient/Inventory.count cases; MiningTutor002 5376 unchanged-script cases with explicit UI/inventory/progression doubles; CombatTutor001 3960 unchanged-script cases with equipment/backpack changes across suspension and exact dialogue/supply/progression output. Fixtures and provenance are saved under their test fixture/work oracle directories. Startup072 PASS262 remains current production regression evidence. New reference fixtures do not establish full-engine coroutine/native gameplay parity.
+
+Native creator Kotlin007 is now running against the unchanged pinned client and a new disposable creator-resume fixture (session49253), matched to previous Rust001 on EFB08B02059233ADEC5CB5CC1B1109569D8498830CD6815F63CEAEC2BF4C26D1. No Rust build runs concurrently. Next: finish native outcome/comparator, archive new tested source (reboot-tutorial-004), actual-cache startup/native validation. Full parity remains incomplete. No owned reference/compiler process remains.
+
+Startup072 PASS262: server library30, encrypted TCP3, world library193, door9, NPC27. New anvil startup/main-modal code and Mining/Combat Instructor ports compiled; TCP validates anvil CS2524-before-open, Make X cancellation/late input, Mining Instructor opcode115, named page text, Quiz animation, tool grants/progression. Startup071 compiled all production but the TCP packet-order drain consumed a previously-counted map flag;072 fixes test accounting and preserves exact total. Combat Instructor53 pages, worn/backpack branch capture and deferred sword/shield/bow/arrow grants, five recaps; five model/two world tests. This does not establish native acceptance or full combat/content parity.
+
+AnvilTier003 original reference is currently running; freeze Rust/fixtures until it completes (session36789). AnvilTier001/002, startup068..070 and MiningTutor001 deferred under unchanged compiler guard. Original MiningTutor5376 prepared (fixture absent; next002); CombatTutor3960 reference/stubs/script prepared (Rust comparator still to write; fixture absent). SmeltingIngredient next006. Native creator Kotlin next007; Rust001 remains pinned-client opcode106 FAIL on older EFB archive. Need new immutable archive/cache startup/native comparisons after references. No owned server running; no commits/pushes or Wiki content.
+
+New source after startup067 PASS230 (not compiled): wired anvil into startup, added missing Player.ifOpenMainModal CS2524(-1,-1) before interface312 with encrypted TCP ordering assertion, added Make X cancellation/late-count rejection assertion, reset numeric-dialog input tag on strong-queue/logout closure. Read-only owned-cache audit work/reboot-anvil-cache-001.json PASS:188 product slots covered by enums844/845/846,34 grid/quantity components have cached Op1. This is not native or Rust decoder acceptance. Symbols002 supersedes001 count typo (18 names).
+
+Ported MiningTutorScript: reach handler/startup binding,29 existing dialogue pages, deferred pickaxe/hammer grants, full-inventory hammer message, four recap choices and current-step recheck; named player pages resolve at presentation, Quiz expression loads chatquiz1..4. Four new world NPC tests cover grant timing/branch capture/full inventory/recap/cancellation. Prepared unchanged Kotlin MiningTutor5376-case oracle with explicit inventory/UI/progression doubles and Rust comparator; fixture absent. Rustfmt/parser checks PASS; no compilation or behavior PASS claimed. Startup068/069 and AnvilTier001/002 deferred under unchanged compiler guard. Next startup070 (server/world libs,TCP,door,NPC), AnvilTier003, SmeltingIngredient006, MiningTutor001. Native Kotlin creator006 already deferred; next007 against matched existing EFB archive. No owned process/session active. Preserve Agent1 priority and continue lightweight source work while compiler is active; no Wiki tasks/commits/pushes.
+
+Startup067 PASS230 (server library30, encrypted TCP3, world library188, door9). Confirms new anvil model/runtime/count-dialog handling, signed Make X(-5/Int.MIN_VALUE), bronze -> dagger+12.5XP, anvil reach/bar filtering, tutorial tin/copper furnace item-use/gate/stale-slot checks and decoded-cache template-sentinel fix. Anvil remains NOT wired in startup; explicit synthetic configure_anvil is what the TCP test validates. Original SmeltingIngredient005 deferred after067 due another compiler; next006. Original AnvilTier001 remains unrun, fixture absent. Native Kotlin creator006 still queued (001..005 deferred); Rust001/EFB archive remains native FAIL for pinned client script8310 opcode106, clean save/exit and complete captured bootstrap. Next work: original references, anvil startup configuration/cache validation, new archive after fixes, matched native creator comparison. No owned process/session active.
+
+Source expanded after startup066 deferral: anvil runtime explicit configuration, cache-enum/parent/varbit resolution, ordinary and bar-on-anvil reach events, interface312 literal quantity buttons, Make X numeric suspension/resume and weak production after modal-close callbacks. Startup registration remains DISABLED pending tests. Numeric continuation shares one-use generation but has an explicit input tag so generic count cancellation does not cancel SkillMulti; modal close/replacement aborts it. New TCP scenario chains furnace bronze -> hammer/anvil -> Make X(-5 and Int.MIN_VALUE) -> All -> dagger+12.5XP, drains completed tick output before the older door exact-packet assertion. New world anvil reach/bar-filter test. Anvil model has5 tests, resolver1. Fixed enriched-cache ore mapping: absent cert/placeholder templates are0, not-1; new decoded-cache alias regression. Corrected uncompiled test Inventory::new calls (returns Self) and anvil mainmodal symbol. Startup067 is currently compiling all server/world libraries, TCP and door regressions; freeze Rust/fixtures until completion. Native Kotlin005 and original SmeltingIngredient004 deferred earlier; next Kotlin006, SmeltingIngredient005, AnvilTier001, bread002. EFB archive/native Rust001 predates latest fixes and all anvil work. No full parity/native creator success claimed.
+
+Native creator Rust001 against archive EFB08B02059233ADEC5CB5CC1B1109569D8498830CD6815F63CEAEC2BF4C26D1 authenticated/rebuilt tutorial scene/received2099 packets; save PASS9.828s, unforced server exit0. Native acceptance FAIL: pinned client creator679 script8310 opcode106 unported. Wire extractor observed complete initial bootstrap (work/reboot-creator-rust-001-wire.json). Kotlin creator001..004 deferred under compiler guard (002 provisioned a disposable fixture before inner guard, no launched run); next005. Comparator002 PASS7 now retains hashed native acceptance outcomes even when scoped wire output matches. Inventory clock-attribution001 identifies date_vars3077 (38.109s versus34.011s matches respective logout seconds), map_clock3079 and playtime65515; strict differential003 remains FAIL, callback-count attribution incomplete; no filtering/normalization.
+
+New source AFTER221-test064/archive (uncompiled): anvil prepare/select model4 tests, original188 product-slot/7-tier/7-XP tables with source hashes; no anvil runtime/UI yet. Original compiled AnvilTier4096 + actual tables oracle/test prepared, parser PASS; fixture absent. SmeltingIngredient3072 actual original resolver/Inventory.count oracle/test prepared,001..004 deferred; fixture absent. Reference recheck found TutorialSkillsScript explicitly binds tin/copper item-on-furnace. Corrected Furnace with optional explicit ore_ids and tutorial startup binding both, canonical ore validation/held-use registration, no generic iron permission; new 12-case reach/gate/stale-slot regression. Generic furnace content bindings unchanged. Startup065 deferred; next066 server/world libs+TCP+door (new anvil and item-use changes unvalidated). Next original SmeltingIngredient005/AnvilTier001, bread002; native Kotlin005 when headroom permits. No owned process/session active. Do not claim full parity or finish at this checkpoint.
+
+Verified startup064 PASS221 (server28, TCP3, world183, door7), including delayed SkillMulti cancellation and furnace selection -> bronze+6.2XP over encrypted TCP. SkillMulti002 PASS36 exact compiled original ifSkillMulti/RSProt wire cases with runtime-JAR/source/fixture provenance. Immutable archive reboot-tutorial-003 succeeded: EFB08B02059233ADEC5CB5CC1B1109569D8498830CD6815F63CEAEC2BF4C26D1, 599 source files; source identity unchanged across build. Includes current tutorial/bootstrap/gates/skills/smelting production code. Native creator Rust001 has started against this archive and pinned client baseline; final outcome pending. No full parity claim. SmeltingIngredient3072 and bread896 original comparisons still pending.
+
+Startup058/062 compiled new furnace/runtime source: server library28 and two login TCP cases passed; full lifecycle initially timed out at an exact zone-packet boundary. The added furnace removal could coalesce into the subsequent door zone packet. Furnace teardown now has its own published/drained tick, retaining exact door packet checks and delimiter validation. 062 reached bronze production and delayed-resume cancellation, then exposed a test map-flag expectation error: source emits one clear on furnace reach and two for the door; corrected without production changes. Startup059..061/063 deferred under unchanged resource guards. Startup064 is running the complete server/world library + TCP + door suite; keep Rust/fixtures frozen until it finishes. New original compiled SmeltingIngredientOracle3072 and differential test prepared (fixture absent): actual resolveInvIngredient/Inventory.count, explicit type fixtures and unused constructor dependencies omitted; parser PASS only. docs/PROGRESS.md recovered with 90KB historical content and backup work/PROGRESS-restored-20261013.md. Native archive/new creator acceptance still pending.
+
+Source checkpoint after startup051 (PASS214: server28/TCP3/world183): corrected permitted delayed SkillMulti resumes to cancel protected continuation and retain queued UI close, with new TCP regression. Added smelting runtime configuration and quantity mirroring, normal/tutorial furnace reach dispatch, ore-on-furnace routing, startup ten Kotlin bar recipes, queue27 and real symbol resolution. Startup now loads queue.sym; tutorial furnace gates MineSmelt25 and uses real SkillMulti; generic furnaces use smithing_furnace content group. Canonical recipe/ingredient definitions and current-level checks feed the cancellable weak queue; no instant tutorial bronze shortcut. Added furnace world reach/gate test and TCP furnace-click to row selection to bronze+6.2XP test; test fixtures now include Smithing13 in initial stat sync. These changes AFTER051 remain UNCOMPILED/unvalidated: startup052..057 deferred at compiler guard, world036 deferred. Smelting-symbols002 PASS31 explicit/literal names;001 was a false-positive audit pattern classifying content smithing_ore as an object. Cache payloads/native startup not yet checked. Next startup058 (server/world --lib + runtime_lifecycle + door_actions), SkillMulti002, bread002, archive reboot-tutorial-003. No owned process/session active. Native archive remains95717410 and does not include new tutorial work. Keep source frozen during any next build. Do not claim complete parity or stop after a checkpoint.
+
+Documentation recovery: restored the latest first100 lines from the saved session tool output and the remaining historical body from checkpoint-20261012-02/rust-server-attempt-2 after an encoding-error truncation. Added subsequent checkpoint entries from INTEGRATION_PROGRESS.md. Recovery inputs and mutation records remain under work/progress-recovery*. No source, fixtures or test artifacts were affected.
+
+Latest confirmed original comparisons: dough008 PASS2688 unchanged TutorialSkillsScript.mixDough with explicit inventory/progression doubles; smithing-make002 PASS12500 unchanged MakeLoop arithmetic with invTotal double. SkillMulti001 and archive reboot-tutorial-002 deferred at compiler guard; bread001 deferred because the client runtime was active below6GiB. Source after startup049 adds smelting selection/ore-alias resolution/current-level guards, generic quantity-dialog continuation, Runtime SkillMulti opening/permission/resume/cancellation, and an encrypted TCP quantity29-rejected/row2-count7-accepted case. Startup050/world036 deferred; startup051 is compiling these changes now (no Rust edits until completion). Source review found a pending correction: original ResumePauseButton queues closure then resumes even when delayed; ProtectedAccessLost cancels rather than preserving the quantity continuation. Correct world/runtime delayed-resume behavior and its test AFTER051; do not claim current SkillMulti delayed behavior is parity. Native creator acceptance/new archive still absent. Next startup052 after correction, SkillMulti002, archive003.
+
+Startup049 PASS31 (server library28 + encrypted TCP3): network movement closes an actual modal and cancels the pending weak smithing job, alongside prior tutorial/lifecycle tests. SkillMulti presentation3 unit tests pass; no runtime dialog binding yet. World035 PASS205 remains valid. Immutable archive attempt reboot-tutorial-001 deferred at unclassified-Java guard; no archive record/executable published. SkillMulti36 original compiled Player.ifSkillMulti/RSProt wire oracle prepared (fixture absent, script parser PASS). Dough008 now running; freeze Rust/fixtures until it finishes. Next archive reboot-tutorial-002 after source validation; original smithing002/SkillMulti001 and other pending skill oracles remain queued. Current production compile/test evidence supersedes earlier uncompiled notes; complete functional/native parity is not claimed.
+
+World regression035 PASS205 (library178/door6/NPC21), compiling and validating fire expiry correction, fishing/wood interactions, smithing core/weak queue, and movement cancellation/callback-state model. Network movement handler now prepares delay/root and ctrl-speed before ifClose, then closes modals and cancels the coroutine without re-clearing weak work added by callbacks. New TCP case opens a modal and weak smithing job before an encrypted movement click; startup047/048 deferred, so network acceptance is still pending. Smithing-make001 also deferred. SkillMulti presentation/selection module is prepared from Kotlin ProtectedAccess.skillMultiDialog + Player.ifSkillMulti, with 18 option slots, 0..28 permission range and 22 setup arguments; not yet compiled or runtime-bound. No original skill/recipe fixtures generated or archive changed. Next startup049 (include server --lib for SkillMulti), smithing-make002, dough008.
+
+Current source continuation: smithing MakeLoop inventory/XP core and opt-in repeating weak queue are prepared, with first-animation/no-delay, input revalidation, independent consume/refund, fractional XP, tutorial bronze-bar/dagger progress and movement-cancellation tests. Corrected invTotal counting to first stack for stackable/Always inventories after inspecting original Inventory.count. Movement world action now clears weak work and remaining coroutine state, preserves normal queues/delay clock, and resets facing; delayed/rooted rejection remains side-effect free. Network modal-close ordering is still incomplete and is the next movement task. These new changes have NOT compiled or passed behavior tests yet. MakeLoop12500 unchanged-source arithmetic oracle with explicit invTotal double is prepared; fixture absent, script parser PASS only. Full SmithingActions, UI312/SkillMulti, furnace/anvil registration and startup wiring are not implemented. World030..033 and dough006/007 deferred at compiler guard; no owned build/process running. Latest actual behavior PASS remains startup046 TCP3 and location-target002 original2048. Corrected fire expiry, fishing/wood NPC/door tests still await world rerun. Next world034; smithing-make001; dough008. Immutable archive and native acceptance unchanged.
+
+
+
+Latest integration validation: startup046 PASS all3 encrypted TCP runtime_lifecycle cases after fixing synthetic range60001's missing world collision definition. Confirms gate dispatch, Survival/Chef/Quest dialogue, IF_BUTTONT dough, ordinary range bread, OPLOCT TgtLoc denial/acceptance, saved lifecycle and existing network regressions. Startup045 compiled production code and passed2 login cases; its full lifecycle stalled only at that incomplete range fixture. World029 deferred; the corrected fire-duration boundary still awaits complete world rerun. All production Rust changes through firemaking compiled in045/046, but fishing/wood NPC/door tests and original recipe/skill oracles remain pending. Location-target002 PASS2048 unchanged RSProt with provenance. No active owned process/session. Next world030, dough006, startup047 only if further server changes; recipe/skill oracles queued. New archive/native creator acceptance remains required; do not use old archive as evidence for new tutorial content.
+
+
+
+Newest verified evidence: location-target oracle002 PASS2048 original RSProt decoder comparisons (fixture and jar/source/fixture provenance now saved). World027 compiled new gameplay and ran168 library tests:167 PASS, one fire timer boundary assertion FAIL. Existing WorldPostTick runs lifecycle timers after Late increments the clock, matching Kotlin WorldPostTickProcess/LocRepository; corrected the test's last-present clock from deadline to deadline-1. Retry028 deferred when another compiler started during preflight. Server TCP startup045 is now running; do not edit Rust until its session finishes. Newer implementations: tin/copper mining with held-only bronze pickaxe,17.5 fine XP per ore, both-ore progression25; firemaking HeldU with consumed log/animation, four-cycle continuation, main-modal identity check, west walk and200-cycle location. Library167 passing tests cover new item-use, shrimp, mining and fire cancellation/blocked-west/modal guards; full library pass, NPC/door integration and server/native acceptance still pending. Mining7168 and fire896 unchanged-script harnesses prepared (fixtures absent); shared skills doubles support explicit fire suspension/route/location output. Symbols006 PASS75 literal startup lookups. Startup043/044, world025/026, dough005 deferred; no archive changed. Fire source and test details are in tutorial_fire.rs, simulation/tutorial_fire_actions.rs and reference/TutorialFireOracle.kt. Fire harness cancellation/route/location are doubles, not original full-engine execution.
+
+
+
+Latest continuation (after world018; still uncompiled): OPLOCT62 decoder, selected-interface TgtLoc13 validation, item-on-location route/reach dispatch with authoritative selected-slot recheck, bread use-on-range and tutorial shrimp-on-fire are prepared. Recipe shrimp: early/missing silent,30 Cooking XP, advance13/current-focus refresh/completed bypass; fire has no ordinary op1 binding. Original RSProt2048 decoder oracle and unchanged TutorialSkillsScript.cookShrimp896 oracle prepared; fixtures absent. World regressions cover stale slot despite matching item elsewhere, movement cancellation, removed loc, shrimp step guards, UI TgtLoc versus TgtCom. Full TCP extends bread with denied/granted item-on-range operation. Generic spells, multiloc/content/default script precedence and fire creation remain incomplete; current runtime target dispatch handles only the configured held component. Startup symbols004 PASS66 literal names; dynamic names/definition payloads UNKNOWN. Startup039..042, world021..024, dough004 and location-target001 deferred at compiler guard. No new behavior PASS or archive/native run; no owned process remains active. Next startup043/world025/location-target002/dough005; shrimp001/fishing001/wood001/bread001 and older oracles remain queued.
+
+
 
 The rewrite remains active and incomplete. Milestones are checkpoints, not completion.
 
+
+
+Source work after the201-test018 checkpoint: tutorial fishing and tree/oak world/runtime/startup handlers, model and reach tests, unchanged TutorialSkillsScript896/1344-case oracles are prepared. These have not compiled/run yet; startup038/world020 deferred. Startup-symbol audit003 PASS63 literal lookups only. Original queue/rules and other tutorial harnesses remain queued; full TCP and archive/native acceptance still required. No other agent process was modified.
+
+
+
+Latest validation supersedes pending library status below: world regression018 PASS201 (server25/world156/NPC-actions20). Original RSProt target-button002 PASS2048 with provenance. Library coverage now validates Quest dialogue and the item-use/dough/range modules. Full TCP startup035 deferred; original recipe/handler oracles, a new immutable archive and native creator acceptance remain pending. No source edits after018 except documentation at this checkpoint.
+
+
+
+Latest source continuation: Quest Tutor journal/ladder dialogue, IF_BUTTONT27 UI routing, authoritative HeldU dispatch, tutorial dough and operation1 range cooking are implemented but not yet behaviorally validated. Startup033 compiled production code and found three test-only Event Debug diagnostics; fixed afterward. Retry034 and world016 deferred. New original-script comparisons are prepared for Quest336, Chef2016, HeldU4608, decoder2048, dough2688 and bread896; fixtures remain absent. New TCP covers Chef gifts→dough→bread plus Quest, alongside the pending shared gate-dispatch correction. Library tests cover directional item-use precedence, UI permissions, cancellation/callback ordering, strict sequential inventory failures, recipe progress and range movement/removal. Do not infer parity from source completion or compilation. See INTEGRATION_PROGRESS.md for exact current attempt IDs and evidence.
+
+
+
+Latest reboot recovery and native A/B evidence are maintained in `../INTEGRATION_PROGRESS.md`. Current immutable server archive remains 957174101281E4904DDC08E3204C234E0AC24182A1AB407249BC1FC94AD10FFA (516 source hashes). It excludes the tutorial changes described below. Native inventory009 PASS on that archive; 301=0 and 843=17 match Kotlin, while strict comparison retains three clock/playtime differences. Prayer005 Kotlin008 selected the correct tab but disconnected before any prayer47; operation behavior remains UNKNOWN.
+
+
+
+Current source adds initial creator bootstrap, protected creator/experience selection, tutorial panels, Guide/Survival Tutor/Master Chef dialogue, and18 tutorial gate bindings. World regression008 PASS141 library tests after correcting a test's Late-clock expectation; regression009 PASS combat3/NPC-actions18/prayer7 plus the original NPC-search1024 comparison. Combat's new fixture required an explicit XP multiplier (Npc defaults to0). Optional Strong player-hit/Normal death scheduling and post-area tutorial stat callbacks now have passing world coverage, but are not enabled at startup; full death scripts remain incomplete. Master Chef startup wiring is prepared. Original gates18816, Survival840, Chef2016, engine queues320 and rules11776 fixture generation/comparisons remain pending.
+
+
+
+Configured-login TCP cases passed014/015; the full lifecycle case failed at tutorial-door dispatch. Shared registration fix is prepared; latest startup023 deferred by compiler guard. Bootstrap TCP2, dialogue runtime14, guide TCP2, tutorial focus324, guide112 and cache creator14-list comparisons are earlier passes. Guide/Survival/Chef oracles use explicit suspension/output doubles, not full-engine coroutine validation. No new immutable server archive or native creator acceptance is claimed.
+
+
+
+Infrastructure006 PASS51 Python tests. Creator-resume uses an existing incomplete character and matching13-map surface/Tower profile; new-account registration and tutorial dungeon loading remain untested. Strict creator comparator checks build/scene/fixture/lifecycle provenance and exact bootstrap packets, leaving rendered visibility, hidden appearance and buttons unverified. Hint1152, interface5120 regeneration, composite spots512 and panels1008 remain pending. Wiki backlog work is not authorized.
+
 ## Verified evidence
 
+
+
 - Last full five-crate workspace: 213 tests passed (`work/door-pickup-workspace-tests.log`), after formatting. This includes location reach, door actions, ground pickup, private visibility, delayed continuation/cancellation, collision restoration and encrypted TCP door/pickup updates. A subsequent 2,048-case compiled ObjTakePlugin oracle also passed (`work/pickup-parity.log`). The subsequent normal-versus-lenient held-action cancellation regression passed all 11 focused door/pickup tests (`work/held-interaction-tests.log`). Earlier suites remain recorded below. No playable-client or full-parity claim is made.
+
 - Original Kotlin comparisons: 4,452 coordinates; 76,800 collision steps; 6,000 inventory operations; 8,000 exchanges; 1,452 coordinate routes; 6,000 bank shifts; 3,000 AreaIndex cases; 6,000 ground-object transitions; 6,000 rectangular reach cases and 600 routes; 2,048 actual PlayerQueueProcessor scenarios.
+
 - Latest independent Kotlin oracle: 4,096 PlayerStatExtensions cases plus all 53 EdibleFoods definitions/messages passed (`work/stat-food-parity.log`). These two fixture tests are included in subsequent full suites.
+
 - Original RSProt: 5,125 ISAAC outputs; 1,024 inventory/rebuild/stat payloads; 512 appearances and 512 facings; 512 NPC additions and 512 movement payloads. NPC visibility policy and extension bodies are outside the current oracle (`work/npc-parity.log`).
+
 - Original terrain decoder: 64 cases / 1,048,576 flags. Existing cache inspected read-only: 33,746 items, 16,298 NPCs, 62,194 locations, 1,027 inventories, 5,704 varps, 19,036 varbits, 25 stats. Map 12850 has 4,697 locations, 167 NPC spawns, 16 object spawns. Archive-24 names and human animation IDs resolved (`work/cache-names-inspect.log`).
+
+
 
 ## Implementation and current changes
 
+
+
 - Revision 239.1 packet tables/framing, login encryption, authentication/2FA/device handling, bounded account worker and nonblocking loopback transport. Port 43594 is forbidden. SQLite migrations, native Argon2/TOTP and character load/save preserve extra inventories and permanent varps.
+
 - Interface state and event-range precedence match 4,096 actual Kotlin cases; 2,048 incoming button/drag and 2,048 outgoing interface packet cases match RSProt. IF1/IF3 component decoding matches 1,024 actual compiled Kotlin encoder/decoder cases. Read-only cache inspection decoded 26,564 components (24,468 IF3); four retain trailing bytes, as the Kotlin decoder does. Validated input emits intents; inventory content execution remains unfinished.
+
 - World phases, actors/generations, player movement/energy, NPC wander/patrol/regeneration, collision/routes, areas, ground lifecycle and static cache spawns. Future AI actors use the same observation/action boundary.
+
 - Runtime player synchronization is connected when Presentation is configured before admission. Immutable snapshots precede movement reset. Appearance resolves equipment/kit hiding and override/NPC/weapon/human animations from definitions and read-only symbols.
+
 - NPC synchronization encodes retained movement, bent two-step runs, generations, additions/removals and teleport re-admission. New runtime integration carries spawn cycle/direction and emits root-world context, origin, empty world-entity info, player info and NPC info in reference order. This integration and the unsigned boosted-health regression passed the full suite. The encrypted socket test verifies spawn/removal and observer-fed wandering visibility.
+
 - Login inventory/equipment snapshots, changed-slot transmission, stop-transmit, stat snapshots/changes/forced invalidation, run energy and weight now reach sessions. The original PlayerInvUpdateProcessor, UpdateInventory and InvWeight match 1,024 scenarios including shared cleanup and ordering (`work/inventory-sync-parity.log`). RSProt context/run/stop encoders and empty WorldEntityInfo match 1,032 cases (`world-context.expected`, full-suite log). Runtime refreshes subscribed-inventory weight before energy updates, including in-tick mutations; shared inventory ownership is not yet runtime-wired.
+
 - Protected predicates match 4,096 compiled Kotlin Player cases (`work/protected-parity.log`). Processed-clock timing now gates movement/modal input. Configured food interactions consume authoritative inventory slots, heal, emit messages/animations, and delay actions; the encrypted TCP test verifies these outputs. Chat/sequence payloads match 2,048 RSProt cases (`work/food-output-parity.log`). Repeated held input cancels the previous coroutine but preserves its delay, matching Kotlin. The implemented continuation covers terminal food delays; general script coroutines remain unfinished.
+
 - Held inventory dragging is connected to sessions and uses the actual transaction semantics, matching 8,000 Kotlin cases (`work/move-slot-parity.log`). Weight is refreshed after in-tick mutations before energy updates. Generic equipment dispatch is session-tested; 2,048 compiled Kotlin transactions and 2,048 requirement/failure-message cases pass (`work/equipment-parity.log`, `work/equipment-requirements-parity.log`). Custom item callbacks remain unfinished. Inventory/equipment/banking cores, queued hits, ground transitions and synchronous queues exist; full combat/death/respawn, complete banking content, skills/content and general queues remain unfinished.
+
 - Immediate varp/varbit writes, reset/resync and client scripts are session-connected; 2,049 RSProt varp/script cases pass (`work/varp-script-parity.log`). Bank opening, guarded authoritative deposit/withdraw, tabs, capacity, delayed item-event refresh and stop-transmit are encrypted-TCP tested. Deposit X / Withdraw X use signed count packets, one-use continuation tokens, delay checks and cancellation when the main bank modal closes. Negative amounts use Kotlin wrapping absolute value; MIN_VALUE fails varbit bounds. The 139-test batch includes these paths; a further 2,048 RSProt count-decoder cases pass (`work/count-dialog-parity.log`).
+
 - Bank settings, main/side dragging, amount prompts, tab operations and permission ranges are connected to authenticated interface actions. Compiled Kotlin comparisons pass for 1,024 quantity/tab-display settings, 4,096 ordinary/extended grid drags, and 1,024 sidebar special/custom/wear/consume masks (`work/bank-settings-parity.log`, `work/bank-drag-parity.log`, `work/bank-sidebar-parity.log`). Parameter-default decoding matches 4,096 compiled Kotlin cases (`work/parameter-parity.log`). The 146-test workspace batch includes encrypted setting controls and expanded item/tab masks. The expanded 4,096-case tab collapse/reorder/release/compression oracle now passes (`work/bank-tabs-parity.log`). Bulk deposits match 4,096 compiled BankInvScript cases and dump transactions match 6,000 original cases; the placeholder base/template distinction was corrected. Main-modal close sends object-search closure and schedules normal protected compression through the existing Kotlin-validated scheduler. Full validation: 151 tests (`work/bank-bulk-workspace-tests.log`). Bank bonuses, filler confirmation, and all extra-op content remain incomplete.
+
 - Ground pickup deliberately reproduces Kotlin's delayed delete-before-inventory-retry behavior. Food preserves Kotlin's missing cake/pizza replacement behavior. These are documented compatibility choices, not claimed fixes to Kotlin.
+
 - A partial isolated Rust executable exists and passes actual-cache startup checks. Complete functional parity and a playable-client demonstration remain outstanding, including world streaming, complete combat/skills/content and extended synchronization.
+
+
 
 ## Isolated Kotlin reference
 
+
+
 Pinned commit `cb6e66cc0f16a25b60ba6705d8f157cc22ab4869`. Explicit source overlays and SHA256 hashes live in `reference/missing-module-overlay.json`, `reference/campus-api-overlay.json`, and `reference/tower-api-overlay.json`; original files are backed up in `reference/pre-overlay`. This is not pristine commit content.
+
+
 
 The isolated `:server:app:classes` build succeeded in 18m 1s: 282 actionable tasks, 87 executed and 195 up-to-date (`work/gradle-autocast-overlay.log`). This includes the documented autocast and missing-content overlays. No reference server was launched; no install or packCache task was invoked.
 
+
+
 ## Resource controls
+
+
 
 Agent 1 remains priority. Cargo/Gradle/temp/artifacts are isolated; Rust uses offline builds and at most two jobs; Kotlin uses one worker and in-process compilation. Owned processes use BelowNormal priority/two-core affinity, with memory/CPU guards. Cargo/rustc/kotlinc always defer server builds, including a second check after load sampling. An identified Agent 1 release client runtime is allowed only with stricter headroom (6 GiB available RAM and CPU at most 30%); unknown client binaries still defer builds. The base 4 GiB/70% limits apply without a client runtime. No client process is modified.
 
+
+
 Read-only jcmd inspection proved Agent 1's Java PID 7072 had finished its reference main routine and was held by an idle executor. A fresh thread dump confirmed the same idle state. The resource guard exempts only that exact PID/start time while RSS stays below 128 MiB and CPU grows by at most 0.25 seconds during preflight sampling; unknown or newly active Java workloads block builds. Evidence: `work/client-reference-7072-threads-recheck.txt`. No Agent 1 process was modified. Expensive Rust checks remain sequential with the isolated Kotlin build.
+
+
 
 ## Next work
 
+
+
 1. Use the successfully compiled isolated Kotlin reference for behavioral oracles.
+
 2. Continue protected action timing and authoritative inventory interaction execution; add differential cases.
+
 3. Continue zone/interface synchronization, gameplay packet handlers, protected queues, combat/skills/content and differential tests until full parity.
 
+
+
 The record below is historical.
+
 ---
+
 # Agent 2 progress — October 11, 2026
+
+
 
 ## Completed
 
+
+
 - Environment preflight and isolated server directory. The client workspace and existing live Java server remain untouched.
+
 - Pinned source-only Kotlin snapshot at `cb6e66cc0f16a25b60ba6705d8f157cc22ab4869`; local working-tree deltas inventoried separately. No production accounts, database, keys, or game caches copied.
+
 - Architecture, dependencies, tick order, persistence, networking boundaries, known reference limitations, and staged compatibility plan documented in `BASELINE.md`.
+
 - Offline Rust workspace with separate `gielinor-world` and `gielinor-protocol` crates, bounded builds, independent Cargo state, logs, temporary files and reference outputs.
+
 - Coordinate primitives: checked construction, raw packed coordinates and NULL sentinel, map-square/local components, translation with Kotlin integer semantics, and Chebyshev distance.
+
 - ISAAC-32 stream with explicit oversized-seed rejection and exact RSProt-compatible sequence generation.
+
 - Isolated original Kotlin map-module compilation and execution using cached Kotlin 2.2.0 compiler dependencies.
+
 - Six passing Rust tests, including differential fixture suites: 4,452 Kotlin coordinate cases and 5,125 RSProt ISAAC outputs. Fixture source and SHA-256 provenance are recorded under `reference/`.
+
+
 
 ## Validation evidence
 
+
+
 `work/coordinate-parity.log`: actual original Kotlin map sources executed and compared line-for-line with Rust, 4,452 matches. This is subsystem differential validation, not mock or live server connectivity.
+
+
 
 `work/isaac-fixtures.log`: Kotlin harness executed the cached RSProt crypto artifact `1.0.0-ALPHA-20260630` for five seeds and 1,025 outputs per seed. `crates/protocol/tests/rsprot_isaac.rs` compares Rust output across repeated refill boundaries with those 5,125 outputs.
 
+
+
 `work/rust-tests.log`: all six tests pass; no ignored tests. No network listener, account authentication, full world simulation or client integration test has run.
+
+
 
 ## Resource controls and findings
 
+
+
 Available RAM was approximately 6.4–6.8 GiB at build starts. Cargo uses at most two compilation jobs; Gradle uses one worker, no parallel build, no persistent daemon, in-process Kotlin compilation, 1.5 GiB maximum JVM heap and two active processors. Direct Kotlin compilation uses 768 MiB maximum heap; oracle execution uses 128 MiB. Invoking shells lower only their own priority and affinity; the private Gradle daemon was observed at Below Normal priority. Kotlin and Rust builds never overlap.
+
+
 
 The initial CIM query was denied; memory was obtained with GlobalMemoryStatusEx and CPU with performance counters. Build guards fail closed when telemetry is unavailable, RAM falls below 4 GiB, CPU samples exceed 70%, a compiler/client workload is visible, or an unclassified Java process is active. The recorded live Java PID/start time is the only Java exemption. No shared process was killed, paused, throttled or restarted.
 
+
+
 The original exhaustive Kotlin coordinate tests would traverse over a billion coordinates; they were not run. A bounded deterministic corpus covers representative values, edges, invalid bounds, overflow and raw signed values instead.
+
+
 
 ## Remaining milestones
 
+
+
 The first isolated Gradle attempt used an incorrect read-only dependency-cache root; this was corrected. The next failure was `AccessDeniedException` from JDK ZIP filesystem closure on the shared distribution's `javax.inject-1.jar`. Copying only Gradle 9.0.0 into the server's private `work/gradle-dist` resolved that failure. The build progressed through generated accessors and into `:build-logic:compileKotlin`.
+
+
 
 At approximately 22:10 PDT, an external Cargo process appeared, using Agent 1's client toolchain. To protect Agent 1, Agent 2 cancelled with `gradle --stop` scoped explicitly to `rust-server/work/gradle`; the command confirmed **1 daemon stopped** and the reference-build process exited. No further compilation was started. Resume `scripts/reference-build.ps1` when the build guard reports sufficient capacity; it can reuse completed work. This stop is a resource-priority decision, not evidence of a Kotlin source failure.
 

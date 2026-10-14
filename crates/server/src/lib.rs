@@ -11,9 +11,10 @@ pub mod bootstrap;
 pub mod characters;
 pub mod combat_display;
 pub mod combat_tab;
-pub mod content;
 pub mod constructed;
-pub mod tower_map;
+pub mod content;
+#[cfg(windows)]
+pub mod dialogue;
 pub mod doors;
 pub mod drop_dialog;
 pub mod gameframe;
@@ -28,29 +29,44 @@ pub mod js5;
 pub mod kronos_combat;
 mod kronos_json;
 pub mod login_init;
-#[cfg(windows)]
-pub mod music;
 pub mod magic_config;
 pub mod melee_config;
 pub mod melee_equipment_config;
+pub mod ranged_config;
+pub mod ranged_equipment_config;
+pub mod ranged_weapon_config;
+#[cfg(windows)]
+pub mod message_box;
+#[cfg(windows)]
+pub mod music;
 pub mod npc_combat_config;
 pub mod npc_death_config;
 pub mod npc_melee_config;
 pub mod npc_synchronization;
+pub mod player_design;
 pub mod potions;
-pub mod rune_catalog;
-#[cfg(windows)]
-pub mod runtime;
-#[cfg(windows)]
-pub mod startup;
-pub mod stat_sync;
-pub mod synchronization;
-pub mod transport;
-#[cfg(windows)]
-pub mod dialogue;
 #[cfg(windows)]
 pub mod prayer;
 #[cfg(windows)]
 pub mod prayer_book;
+pub mod rune_catalog;
+pub mod spell_equipment_config;
 #[cfg(windows)]
-pub mod message_box;
+pub mod spell_combat_config;
+#[cfg(windows)]
+pub mod runtime;
+pub mod skill_multi;
+pub mod smelting;
+#[cfg(windows)]
+pub mod startup;
+pub mod stat_sync;
+pub mod synchronization;
+pub mod tower_map;
+pub mod transport;
+#[cfg(windows)]
+pub mod tutorial_character;
+#[cfg(windows)]
+pub mod tutorial_ui;
+
+#[cfg(windows)]
+pub mod anvil;

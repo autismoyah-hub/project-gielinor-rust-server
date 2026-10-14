@@ -26,6 +26,7 @@ fn original_interface_lifecycle_and_event_encoders() {
             ),
             "move" => interfaces::move_sub(f[1].parse().unwrap(), f[2].parse().unwrap()),
             "text" => interfaces::text(f[1].parse().unwrap(), &format!("Bonus_{}€", f[2])).unwrap(),
+            "hide" => interfaces::hide(f[1].parse().unwrap(), f[2] == "1"),
             "events" => interfaces::events(
                 f[1].parse().unwrap(),
                 f[2].parse().unwrap(),
@@ -39,5 +40,5 @@ fn original_interface_lifecycle_and_event_encoders() {
         assert_eq!(hex, *f.last().unwrap(), "{line}");
         count += 1;
     }
-    assert_eq!(count, 4608);
+    assert_eq!(count, 5120);
 }

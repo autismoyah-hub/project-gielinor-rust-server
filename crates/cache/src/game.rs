@@ -87,6 +87,14 @@ impl GameCache {
     pub fn headbars(&mut self) -> io::Result<BTreeMap<u32, crate::headbars::HeadbarType>> {
         self.definitions(33, |_, b| crate::headbars::HeadbarType::decode(b))
     }
+    /// The original decoder treats an absent custom projectile group as empty.
+    pub fn projectiles(&mut self) -> io::Result<BTreeMap<u32, crate::projectiles::ProjectileType>> {
+        self.files(2, 204, None)?.unwrap_or_default().into_iter().map(|(id, bytes)| {
+            crate::projectiles::ProjectileType::decode(&bytes)
+                .map(|value| (id, value))
+                .map_err(|e| invalid(&format!("Config 204:{id}: {e:?}")))
+        }).collect()
+    }
     pub fn db_rows(&mut self) -> io::Result<BTreeMap<u32, crate::db::Row>> {
         self.definitions(38, |_, b| crate::db::Row::decode(b))
     }

@@ -22,7 +22,7 @@ impl World {
                 .npc_options
                 .has_operation(npc.type_id, &p.data.variables, op)
     }
-    fn clear_npc_route(&mut self, slot: usize) {
+    pub(super) fn clear_npc_route(&mut self, slot: usize) {
         if let Some(p) = self.players.get_mut(slot) {
             p.npc_interaction = None;
             p.movement.interacting = false;
@@ -212,6 +212,8 @@ impl World {
             let result = self.resolve_combat_attack(actor).and_then(|(attack, _)| {
                 if matches!(attack, crate::attack_profile::Attack::Melee { .. }) {
                     self.attack_npc_melee(actor, pending.target, attack, random)
+                } else if matches!(attack, crate::attack_profile::Attack::Ranged { .. }) {
+                    self.attack_npc_ranged(actor, pending.target, attack, random)
                 } else {
                     Err(ActionError::UnsupportedCombat)
                 }
@@ -224,6 +226,75 @@ impl World {
             return true;
         }
         if touches || bank_approach {
+            if let Some(Handler::LectureTutor(config)) = pending.handler {
+                self.clear_npc_route(slot);
+                if let Err(error) = self.start_lecture_tutor(actor, pending.target, config) {
+                    self.events
+                        .push(WorldEvent::ActionRejected { actor, error });
+                }
+                return true;
+            }
+            if let Some(Handler::MagicTutor(config)) = pending.handler {
+                self.clear_npc_route(slot);
+                if let Err(error) = self.start_magic_tutor(actor, pending.target, config) {
+                    self.events
+                        .push(WorldEvent::ActionRejected { actor, error });
+                }
+                return true;
+            }
+            if pending.handler == Some(Handler::TutorialFishing) {
+                self.clear_npc_route(slot);
+                self.process_tutorial_fishing(slot);
+                return true;
+            }
+            if let Some(Handler::CombatTutor(config)) = pending.handler {
+                self.clear_npc_route(slot);
+                if let Err(error) = self.start_combat_tutor(actor, pending.target, config) {
+                    self.events
+                        .push(WorldEvent::ActionRejected { actor, error });
+                }
+                return true;
+            }
+            if let Some(Handler::MiningTutor(config)) = pending.handler {
+                self.clear_npc_route(slot);
+                if let Err(error) = self.start_mining_tutor(actor, pending.target, config) {
+                    self.events
+                        .push(WorldEvent::ActionRejected { actor, error });
+                }
+                return true;
+            }
+            if let Some(Handler::QuestTutor { step_varp }) = pending.handler {
+                self.clear_npc_route(slot);
+                if let Err(error) = self.start_quest_tutor(actor, pending.target, step_varp) {
+                    self.events
+                        .push(WorldEvent::ActionRejected { actor, error });
+                }
+                return true;
+            }
+            if let Some(Handler::MasterChef(config)) = pending.handler {
+                self.clear_npc_route(slot);
+                if let Err(error) = self.start_master_chef(actor, pending.target, config) {
+                    self.events
+                        .push(WorldEvent::ActionRejected { actor, error });
+                }
+                return true;
+            }
+            if let Some(Handler::SurvivalTutor(config)) = pending.handler {
+                self.clear_npc_route(slot);
+                if let Err(error) = self.start_survival_tutor(actor, pending.target, config) {
+                    self.events
+                        .push(WorldEvent::ActionRejected { actor, error });
+                }
+                return true;
+            }
+            if let Some(Handler::TutorialGuide { step_varp }) = pending.handler {
+                self.clear_npc_route(slot);
+                if let Err(error) = self.start_tutorial_guide(actor, pending.target, step_varp) {
+                    self.events
+                        .push(WorldEvent::ActionRejected { actor, error });
+                }
+                return true;
+            }
             if pending.handler == Some(Handler::Person) {
                 self.clear_npc_route(slot);
                 if let Err(error) = self.start_person(actor, pending.target) {
@@ -240,6 +311,19 @@ impl World {
                 Some(Handler::Bank) => Event::Bank,
                 Some(Handler::Combat) => unreachable!("Combat handled above"),
                 Some(Handler::Person) => unreachable!("Dialogue handled above"),
+                Some(Handler::TutorialFishing) => unreachable!("Fishing handled above"),
+                Some(
+                    Handler::TutorialGuide { .. }
+                    | Handler::SurvivalTutor(_)
+                    | Handler::MasterChef(_)
+                    | Handler::MiningTutor(_)
+                    | Handler::CombatTutor(_)
+                    | Handler::MagicTutor(_)
+                    | Handler::LectureTutor(_)
+                    | Handler::QuestTutor { .. },
+                ) => {
+                    unreachable!("Tutorial dialogue handled above")
+                }
                 None => Event::Message("Nothing interesting happens."),
             };
             self.events

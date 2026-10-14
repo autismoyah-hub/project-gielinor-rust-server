@@ -17,6 +17,35 @@ pub struct Drag {
     pub target_slot: i32,
     pub target_object: i32,
 }
+/// IF_BUTTONT (27), selected item/component onto a target component. This has
+/// the same logical fields as a drag, but a distinct wire order and permissions.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct Target {
+    pub source: u32,
+    pub source_slot: i32,
+    pub source_object: i32,
+    pub target: u32,
+    pub target_slot: i32,
+    pub target_object: i32,
+}
+pub fn target(payload: &[u8]) -> Result<Target, DecodeError> {
+    let mut r = Reader::new(payload);
+    let target = r.u32()?;
+    let source_slot = nullable(r.u16_add(false)?);
+    let target_object = nullable(r.u16_add(true)?);
+    let target_slot = nullable(r.u16_le()?);
+    let source_object = nullable(r.u16_add(false)?);
+    let source = r.u32_order(Order::Middle)?;
+    r.finish()?;
+    Ok(Target {
+        source,
+        source_slot,
+        source_object,
+        target,
+        target_slot,
+        target_object,
+    })
+}
 fn nullable(value: u16) -> i32 {
     if value == u16::MAX {
         -1

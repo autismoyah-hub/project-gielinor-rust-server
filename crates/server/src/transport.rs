@@ -36,6 +36,8 @@ struct Connection {
     socket: TcpStream,
     session: Session,
     output: Vec<u8>,
+    pending: [Vec<Packet>; 2],
+    pending_bytes: usize,
     written: usize,
     created: Instant,
     last_read: Instant,
@@ -45,6 +47,8 @@ struct Connection {
 pub struct Transport {
     listener: Option<TcpListener>,
     accepting: bool,
+    batching: bool,
+    tick_queued: bool,
     connections: BTreeMap<u64, Connection>,
     next_id: u64,
     key: PrivateKey,
@@ -74,6 +78,8 @@ impl Transport {
         Ok(Self {
             listener: None,
             accepting: false,
+            batching: false,
+            tick_queued: false,
             connections: BTreeMap::new(),
             next_id: 0,
             key,
@@ -81,6 +87,17 @@ impl Transport {
             limits,
             js5: None,
         })
+    }
+    /// Game output from worker completions and input handlers belongs to the
+    /// next post-tick flush too. Login/JS5 bytes still bypass these game queues.
+    pub fn queue_until_tick(&mut self) -> io::Result<()> {
+        if self.batching || !self.connections.is_empty() {
+            return Err(io::Error::other(
+                "Configure tick output before accepting connections",
+            ));
+        }
+        self.tick_queued = true;
+        Ok(())
     }
     pub fn listen(&mut self, address: SocketAddr) -> io::Result<()> {
         if self.listener.is_some() {
@@ -126,6 +143,8 @@ impl Transport {
         if bytes.len() > limit.saturating_sub(c.output.len() - c.written) {
             c.session.close();
             c.closing = true;
+            c.pending = [vec![], vec![]];
+            c.pending_bytes = 0;
             c.output.clear();
             c.written = 0;
             return Err(io::Error::new(
@@ -165,14 +184,135 @@ impl Transport {
             .connections
             .get_mut(&id)
             .ok_or_else(|| io::Error::new(io::ErrorKind::NotConnected, "Session disconnected"))?;
+        if self.batching || self.tick_queued {
+            use gielinor_protocol::{
+                framing::{encoded_len, OpcodeWidth},
+                outgoing_category::{category, Category},
+                tables,
+            };
+            if c.session.state() != State::Active || c.closing {
+                return Err(io::Error::new(
+                    io::ErrorKind::NotConnected,
+                    "Session is not active",
+                ));
+            }
+            let category = category(opcode).ok_or_else(|| {
+                io::Error::new(io::ErrorKind::InvalidData, "Unsupported outgoing category")
+            })?;
+            let def = *tables::SERVER
+                .iter()
+                .find(|def| def.opcode == opcode)
+                .ok_or_else(|| {
+                    io::Error::new(io::ErrorKind::InvalidData, "Unknown outgoing opcode")
+                })?;
+            let cost = encoded_len(def, payload.len(), OpcodeWidth::Smart)
+                .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, format!("{e:?}")))?;
+            if cost
+                > self
+                    .limits
+                    .output_bytes
+                    .saturating_sub(c.output.len() - c.written + c.pending_bytes)
+            {
+                c.session.close();
+                c.closing = true;
+                c.pending = [vec![], vec![]];
+                c.pending_bytes = 0;
+                c.output.clear();
+                c.written = 0;
+                return Err(io::Error::new(
+                    io::ErrorKind::OutOfMemory,
+                    "Session output limit exceeded",
+                ));
+            }
+            let index = match category {
+                Category::High => 0,
+                Category::Low => 1,
+            };
+            c.pending[index].push(Packet {
+                opcode,
+                payload: payload.to_vec(),
+            });
+            c.pending_bytes += cost;
+            return Ok(());
+        }
         let bytes = c
             .session
             .encode(opcode, payload)
             .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, format!("{e:?}")))?;
         Self::append(c, &bytes, self.limits.output_bytes)
     }
+    /// World ticks must queue before encryption: RSProt flushes high, then low priority.
+    /// With queue_until_tick, calls outside this scope join the next tick batch.
+    pub fn begin_batch(&mut self) -> io::Result<()> {
+        if self.batching {
+            return Err(io::Error::other("Outgoing batch already active"));
+        }
+        self.batching = true;
+        Ok(())
+    }
+    fn flush_connection(c: &mut Connection, limit: usize) -> io::Result<()> {
+        let queues = std::mem::replace(&mut c.pending, [vec![], vec![]]);
+        c.pending_bytes = 0;
+        for queue in queues {
+            for packet in queue {
+                let bytes = match c.session.encode(packet.opcode, &packet.payload) {
+                    Ok(bytes) => bytes,
+                    Err(e) => {
+                        c.session.close();
+                        c.closing = true;
+                        c.output.clear();
+                        c.written = 0;
+                        return Err(io::Error::new(io::ErrorKind::InvalidData, format!("{e:?}")));
+                    }
+                };
+                Self::append(c, &bytes, limit)?;
+            }
+        }
+        Ok(())
+    }
+    /// Always leaves batch mode, including when one peer's flush fails.
+    pub fn end_batch(&mut self) -> io::Result<()> {
+        self.batching = false;
+        let mut error = None;
+        for c in self.connections.values_mut() {
+            if let Err(e) = Self::flush_connection(c, self.limits.output_bytes) {
+                if error.is_none() {
+                    error = Some(e);
+                }
+            }
+        }
+        match error {
+            Some(e) => Err(e),
+            None => Ok(()),
+        }
+    }
+    /// PlayerPostTickProcess.closeClient sends LOGOUT and flushes only high priority.
+    pub fn logout(&mut self, id: u64) -> io::Result<()> {
+        if let Some(c) = self.connections.get_mut(&id) {
+            use gielinor_protocol::framing::{encoded_len, OpcodeWidth};
+            // Bytes already encoded by earlier completed batches cannot be withdrawn.
+            let discarded: usize = c.pending[1]
+                .iter()
+                .map(|packet| {
+                    let def = *gielinor_protocol::tables::SERVER
+                        .iter()
+                        .find(|def| def.opcode == packet.opcode)
+                        .unwrap();
+                    encoded_len(def, packet.payload.len(), OpcodeWidth::Smart)
+                        .expect("Queued packet already validated")
+                })
+                .sum();
+            c.pending[1].clear();
+            c.pending_bytes -= discarded;
+        }
+        let result = self.send(id, 57, &[]);
+        self.disconnect(id);
+        result
+    }
     pub fn disconnect(&mut self, id: u64) {
         if let Some(c) = self.connections.get_mut(&id) {
+            // Preserve already queued logout output before close destroys ISAAC state.
+            let _ = Self::flush_connection(c, self.limits.output_bytes);
             c.session.close();
             c.closing = true;
         }
@@ -207,6 +347,8 @@ impl Transport {
                             socket,
                             session: Session::new(seed()?, self.crcs),
                             output: vec![],
+                            pending: [vec![], vec![]],
+                            pending_bytes: 0,
                             written: 0,
                             created: now,
                             last_read: now,

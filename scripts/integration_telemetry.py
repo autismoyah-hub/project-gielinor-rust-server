@@ -64,6 +64,8 @@ def import_run(run,out,environment,scenario,baseline,fixture,cache,detail='packe
                     if prayer_continue:w.emit('prayer.continue',{'outgoing_opcodes':[int(s.strip()) for s in prayer_continue[1].split(',') if s.strip()],'server_acceptance':None},evidence('client.log',number))
                     bit=re.search(r'Client observed Thick Skin (?:active|inactive): bit4104=([01])',line)
                     if bit:w.emit('prayer.client_state',{'varbit':4104,'value':int(bit[1]),'server_acceptance':None},evidence('client.log',number))
+                    mirror=re.search(r'^Prayer server mirror matched: bit4104=([01])',line)
+                    if mirror:w.emit('prayer.server_mirror',{'varbit':4104,'value':int(mirror[1]),'entire_base_matches':True,'server_acceptance':None},evidence('client.log',number))
                     if line.startswith('Observed server prayer requirement notice:'):
                         w.emit('action.effect',{'action':'prayer.requirement_notice','parameters':{'text':line.split(':',1)[1].strip()},'client_dispatch_result':'effect_observed','server_acceptance':None},evidence('client.log',number))
                     if line.startswith('Prayer scenario observed activation, deactivation, requirement notice and native Continue closure'):
@@ -122,7 +124,7 @@ def compare(a,b):
     completion=[[e for e in rows if e['kind']=='persistence.completion'] for rows in (a,b)]
     if any(len(rows)!=1 or rows[0]['observation']!='observed' or rows[0]['data'].get('save_completed') is not True for rows in completion):
         return dict(report,status='BLOCKED',classification='logout save completion is UNKNOWN or incomplete',persistence_evidence=completion)
-    kinds=('state.initial','tower.initial','action.effect','action.target','client.continue','dialogue.response','prayer.dispatch','prayer.continue','prayer.client_state','state.persisted','tower.persisted','session.end','interface.hidden','npc.state','object.state','server.decision')
+    kinds=('state.initial','tower.initial','action.effect','action.target','client.continue','dialogue.response','prayer.dispatch','prayer.continue','prayer.client_state','prayer.server_mirror','state.persisted','tower.persisted','session.end','interface.hidden','npc.state','object.state','server.decision')
     for kind in kinds:
         left=[e for e in a if e['kind']==kind];right=[e for e in b if e['kind']==kind]
         report['coverage'][kind]={'kotlin':len(left),'rust':len(right)}

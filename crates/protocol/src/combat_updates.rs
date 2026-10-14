@@ -8,6 +8,7 @@ pub struct NpcUpdates<'a> {
     pub hitmarks: Option<&'a [u8]>,
     pub headbars: Option<&'a [u8]>,
     pub sequence: Option<(u16, u8)>,
+    pub spot_animations: Option<&'a [u8]>,
     pub face: Option<&'a [u8]>,
 }
 impl NpcUpdates<'_> {
@@ -26,6 +27,10 @@ impl NpcUpdates<'_> {
             mask |= 128;
             body.extend(id.to_be_bytes());
             body.push(delay.wrapping_neg());
+        }
+        if let Some(spots) = self.spot_animations {
+            mask |= 0x40000;
+            body.extend(spots);
         }
         if let Some(face) = self.face {
             mask |= 8;

@@ -16,6 +16,7 @@ impl Names {
             "stat",
             "seq",
             "synth",
+            "spotanim",
             "param",
             "obj",
             "npc",
@@ -30,6 +31,7 @@ impl Names {
             "content",
             "font",
             "timer",
+            "queue",
             "midi",
             "dbtable",
         ] {
@@ -277,6 +279,34 @@ pub fn configure<B: AccountBackend>(
         .resolve(names.combat_stats()?)
         .map_err(io::Error::other)?,
     )?;
+    runtime.configure_wearpos(
+        crate::magic_config::Inputs {
+            objs: n("obj"),
+            params: n("param"),
+            bits: n("varbit"),
+            enums: n("enum"),
+            categories: n("category"),
+            parameter_types: &parameters,
+            tables: &tables,
+            defs: &runtime.definitions,
+        }
+        .wearpos(n("varp"), n("synth"), names.combat_stats()?)
+        .map_err(io::Error::other)?,
+    )?;
+    runtime.configure_bulwark_wear(
+        crate::magic_config::Inputs {
+            objs: n("obj"),
+            params: n("param"),
+            bits: n("varbit"),
+            enums: n("enum"),
+            categories: n("category"),
+            parameter_types: &parameters,
+            tables: &tables,
+            defs: &runtime.definitions,
+        }
+        .bulwark(n("varp"), n("spotanim"))
+        .map_err(io::Error::other)?,
+    )?;
     runtime.configure_autocast_picker(
         crate::autocast_picker::Presentation::resolve(n("interface"), n("component"), n("varp"))
             .map_err(io::Error::other)?,
@@ -387,6 +417,14 @@ pub fn configure<B: AccountBackend>(
         )
         .map_err(io::Error::other)?,
     );
+    runtime.world.ranged = Some(
+        crate::ranged_config::resolve(names, &parameters, &runtime.definitions)
+            .map_err(io::Error::other)?,
+    );
+    runtime.world.ranged_weapons = Some(
+        crate::ranged_weapon_config::resolve(names, &parameters, &runtime.definitions,
+            &cache.projectiles()?).map_err(io::Error::other)?,
+    );
     runtime.world.npc_melee = Some(
         crate::npc_melee_config::resolve(names, &runtime.definitions, &parameters)
             .map_err(io::Error::other)?,
@@ -474,6 +512,132 @@ pub fn configure<B: AccountBackend>(
         names.id("content", "person")? as i32,
         names.id("obj", "flier")? as i32,
     )?;
+    let creator_kits = crate::player_design::Kits::resolve(
+        &cache.db_rows()?,
+        &cache.db_tables()?,
+        n("dbtable"),
+        n("dbcol"),
+    )
+    .map_err(io::Error::other)?;
+    runtime.configure_player_design(
+        crate::player_design::Bindings::resolve(
+            creator_kits,
+            n("component"),
+            n("varbit"),
+            &runtime.definitions,
+        )
+        .map_err(io::Error::other)?,
+    )?;
+    runtime.configure_tutorial(crate::tutorial_character::Config::resolve(
+        names,
+        &runtime.definitions,
+    )?)?;
+    let leave_items = gielinor_world::tutorial_leave::ITEMS
+        .into_iter()
+        .map(|(name, _)| names.id("obj", name).map(|id| id as i32))
+        .collect::<io::Result<Vec<_>>>()?;
+    runtime.configure_tutorial_leave(
+        leave_items
+            .try_into()
+            .map_err(|_| io::Error::other("Invalid tutorial leave kit length"))?,
+        names.id("obj", "coins")? as i32,
+    )?;
+    runtime.configure_magic_tutor(names.id("obj", "airrune")? as i32, names.id("obj", "mindrune")? as i32)?;
+    let tutorial_gates = gielinor_world::tutorial_gates::BINDINGS
+        .into_iter()
+        .map(|(name, gate)| names.id("loc", name).map(|id| (id, gate)))
+        .collect::<io::Result<_>>()?;
+    runtime.configure_tutorial_gates(tutorial_gates)?;
+    runtime.configure_survival_tutor(
+        names.id("obj", "net")? as i32,
+        names.id("obj", "bronze_axe")? as i32,
+        names.id("obj", "tinderbox")? as i32,
+    )?;
+    runtime.configure_master_chef(
+        names.id("obj", "pot_flour")? as i32,
+        names.id("obj", "bucket_water")? as i32,
+    )?;
+    runtime.configure_quest_tutor()?;
+    runtime.configure_lecture_tutors()?;
+    runtime.configure_tutorial_bank(names.id("loc","tut2_bankbooth")?,names.id("loc","pollbooth_green")?,names.id("obj","coins")? as i32)?;
+    runtime.configure_tutorial_combat(
+        names.short("npc", "tut2_giantrat")?,
+        names.short("npc", "tut2_chicken")?,
+    )?;
+    runtime.configure_combat_tutor(
+        names.id("obj", "bronze_dagger")? as i32,
+        names.id("obj", "bronze_sword")? as i32,
+        names.id("obj", "wooden_shield")? as i32,
+        names.id("obj", "shortbow")? as i32,
+        names.id("obj", "bronze_arrow")? as i32,
+    )?;
+    runtime.configure_mining_tutor(
+        names.id("obj", "bronze_pickaxe")? as i32,
+        names.id("obj", "hammer")? as i32,
+    )?;
+    runtime.configure_tutorial_woodcutting(
+        [
+            names.id("loc", "tut2_tree")?,
+            names.id("loc", "tut2_tree2")?,
+        ],
+        names.id("loc", "tut2_oak")?,
+        names.id("obj", "tut2_logs")? as i32,
+        names.short("seq", "human_woodcutting_bronze_axe")?,
+        u8::try_from(names.id("stat", "woodcutting")?).map_err(io::Error::other)?,
+    )?;
+    runtime.configure_tutorial_fishing(
+        names.short("npc", "0_26_95_tut2_fishing")?,
+        names.id("obj", "tut2_raw_shrimp")? as i32,
+        names.short("seq", "human_smallnet")?,
+        u8::try_from(names.id("stat", "fishing")?).map_err(io::Error::other)?,
+    )?;
+    runtime.configure_tutorial_mining(
+        [
+            names.id("loc", "tut2_tinrock")?,
+            names.id("loc", "tut2_copperrock")?,
+        ],
+        [
+            names.id("obj", "tin_ore")? as i32,
+            names.id("obj", "copper_ore")? as i32,
+        ],
+        names.id("obj", "bronze_pickaxe")? as i32,
+        names.short("seq", "human_mining_bronze_pickaxe")?,
+        u8::try_from(names.id("stat", "mining")?).map_err(io::Error::other)?,
+    )?;
+    runtime.configure_tutorial_bread(
+        names.id("loc", "tut2_range")?,
+        names.id("obj", "bread_dough")? as i32,
+        names.id("obj", "bread")? as i32,
+        names.short("seq", "human_cooking")?,
+        u8::try_from(names.id("stat", "cooking")?).map_err(io::Error::other)?,
+    )?;
+    runtime.configure_tutorial_shrimp(
+        names.id("loc", "fire")?,
+        names.id("obj", "tut2_raw_shrimp")? as i32,
+        names.id("obj", "shrimp")? as i32,
+        names.short("seq", "human_firecooking")?,
+        u8::try_from(names.id("stat", "cooking")?).map_err(io::Error::other)?,
+    )?;
+    runtime.configure_tutorial_fire(
+        names.id("obj", "tinderbox")? as i32,
+        names.id("obj", "tut2_logs")? as i32,
+        names.id("loc", "fire")?,
+        names.short("seq", "human_createfire")?,
+        u8::try_from(names.id("stat", "firemaking")?).map_err(io::Error::other)?,
+    )?;
+    runtime.configure_tutorial_dough(
+        names.id("obj", "pot_flour")? as i32,
+        names.id("obj", "bucket_water")? as i32,
+        names.id("obj", "pot_empty")? as i32,
+        names.id("obj", "bucket_empty")? as i32,
+        names.id("obj", "bread_dough")? as i32,
+    )?;
+    runtime.configure_smelting_names(names)?;
+    runtime.configure_anvil(crate::anvil::Config::resolve(
+        names,
+        &runtime.definitions,
+        &tables,
+    )?)?;
     for (&id, npc) in &runtime.definitions.npcs {
         if npc.ops[1]
             .as_deref()

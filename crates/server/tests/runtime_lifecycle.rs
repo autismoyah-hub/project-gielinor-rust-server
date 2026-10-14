@@ -95,6 +95,7 @@ fn pump(runtime: &mut Runtime<Backend>) -> Vec<Event> {
         .pump(1791770523, "2026-10-12T01:02:03", || Ok(0x1020304050607080))
         .unwrap()
 }
+#[track_caller]
 fn read(runtime: &mut Runtime<Backend>, client: &mut TcpStream, bytes: &mut [u8]) {
     client.set_nonblocking(true).unwrap();
     let deadline = Instant::now() + Duration::from_secs(2);
@@ -107,22 +108,74 @@ fn read(runtime: &mut Runtime<Backend>, client: &mut TcpStream, bytes: &mut [u8]
             Err(e) if e.kind() == std::io::ErrorKind::WouldBlock => (),
             Err(e) => panic!("{e}"),
         };
-        assert!(Instant::now() < deadline);
+        assert!(
+            Instant::now() < deadline,
+            "TCP read timed out after {offset}/{} bytes",
+            bytes.len()
+        );
         if offset < bytes.len() {
             std::thread::sleep(Duration::from_millis(1));
         }
     }
     client.set_nonblocking(false).unwrap();
 }
+// Context switches are high priority and no longer delimit a completed tick.
+fn finish_tick(
+    runtime: &mut Runtime<Backend>,
+    client: &mut TcpStream,
+    decoder: &mut TickDecoder,
+) -> Vec<gielinor_protocol::framing::Packet> {
+    let end = decoder.tick_ends + 1;
+    let mut packets = Vec::new();
+    while decoder.tick_ends < end {
+        if let Some(packet) = decoder.next_packet().unwrap() {
+            packets.push(packet);
+        } else if decoder.tick_ends < end {
+            let mut byte = [0];
+            read(runtime, client, &mut byte);
+            decoder.feed(&byte).unwrap();
+        }
+    }
+    packets
+}
+fn reference_sorted<const N: usize>(mut opcodes: [u16; N]) -> [u16; N] {
+    reference_order(&mut opcodes);
+    opcodes
+}
+fn reference_order(opcodes: &mut [u16]) {
+    let categories = include_str!("../../protocol/tests/fixtures/outgoing-categories.expected");
+    opcodes.sort_by_key(|opcode| {
+        let row = categories
+            .lines()
+            .find(|row| {
+                row.split_whitespace()
+                    .next()
+                    .and_then(|op| op.parse::<u16>().ok())
+                    == Some(*opcode)
+            })
+            .unwrap();
+        match row.split_whitespace().nth(2).unwrap() {
+            // Original post-tick process emits inventory after info/zone updates.
+            "HIGH_PRIORITY_PROT" if matches!(*opcode, 18 | 22) => 1,
+            "HIGH_PRIORITY_PROT" => 0,
+            "LOW_PRIORITY_PROT" => 2,
+            value => panic!("Unexpected original category {value}"),
+        }
+    });
+}
 #[test]
 fn tcp_login_world_admission_and_save_backpressure_keep_account_reserved() {
-    exercise_lifecycle(false);
+    exercise_lifecycle(false, false);
 }
 #[test]
 fn configured_login_initializes_vars_camera_gameframe_menus_and_minimap_over_tcp() {
-    exercise_lifecycle(true);
+    exercise_lifecycle(true, false);
 }
-fn exercise_lifecycle(with_login: bool) {
+#[test]
+fn tutorial_completed_login_preserves_visible_appearance_and_standard_packet_order() {
+    exercise_lifecycle(true, true);
+}
+fn exercise_lifecycle(with_login: bool, completed_tutorial: bool) {
     let mut defs = Definitions {
         inventories: [93, 94, 95]
             .into_iter()
@@ -165,6 +218,45 @@ fn exercise_lifecycle(with_login: bool) {
         stats: BTreeMap::from([(3, StatType::decode(&[4, 10, 0]).unwrap())]),
     };
     defs.inventories.get_mut(&95).unwrap().stack = gielinor_world::inventory::StackType::Always;
+    for id in [
+        1933, 1929, 1931, 1925, 2307, 2309, 436, 438, 2349, 2347, 1205, 1265,
+    ] {
+        defs.items.insert(
+            id,
+            gielinor_cache::definitions::ItemType::decode(&[0]).unwrap(),
+        );
+    }
+    defs.stats.insert(7, StatType::decode(&[0]).unwrap());
+    defs.stats.insert(13, StatType::decode(&[0]).unwrap());
+    defs.varps.insert(
+        7000,
+        gielinor_world::variables::Varp {
+            id: 7000,
+            permanent: true,
+            transmit: gielinor_world::variables::Transmit::Always,
+            bit_protect: false,
+            client_code: -1,
+        },
+    );
+    let mut bar_varp = defs.varps[&7000];
+    bar_varp.id = 7002;
+    defs.varps.insert(7002, bar_varp);
+    defs.varbits.insert(
+        7100,
+        gielinor_world::variables::Varbit {
+            base: 7002,
+            lsb: 0,
+            msb: 3,
+        },
+    );
+    defs.locations.insert(
+        60002,
+        gielinor_cache::locations::LocationType::decode(&[0]).unwrap(),
+    );
+    defs.locations.insert(
+        60001,
+        gielinor_cache::locations::LocationType::decode(&[0]).unwrap(),
+    );
     if with_login {
         for id in 100..115 {
             defs.varps.insert(
@@ -310,6 +402,7 @@ fn exercise_lifecycle(with_login: bool) {
         ((193 << 16) | 1, component(0)),
         ((193 << 16) | 2, component(0)),
         (219 << 16, component(0)),
+        ((219 << 16) | 1, component(0)),
         (584 << 16, component(0)),
         ((155 << 16) | 5, component(2)),
         ((155 << 16) | 6, component(2)),
@@ -329,6 +422,16 @@ fn exercise_lifecycle(with_login: bool) {
         (154 << 16, component(0)),
         (600 << 16, component(2)),
         ((229 << 16) | 4, component(1)),
+        (679 << 16, component(2)),
+        ((679 << 16) | 1, component(2)),
+        ((679 << 16) | 2, component(2)),
+        ((679 << 16) | 3, component(2)),
+        (929 << 16, component(0)),
+        ((929 << 16) | 1, component(0)),
+        ((929 << 16) | 2, component(0)),
+        (162 << 16, component(2)),
+        ((548 << 16) | 24, component(0)),
+        ((548 << 16) | 25, component(0)),
     ]);
     components.extend(
         bank_control_symbols
@@ -351,16 +454,243 @@ fn exercise_lifecycle(with_login: bool) {
     for child in 0..5 {
         components.insert((155 << 16) | child, component(2));
     }
+    for child in 0..6 {
+        components.insert(
+            (614 << 16) | child,
+            component(if child == 0 { 2 } else { 0 }),
+        );
+    }
+    for interface in [217, 231] {
+        for child in 0..7 {
+            components.insert(
+                (interface << 16) | child,
+                component(if child == 5 { 1 } else { 0 }),
+            );
+        }
+    }
+    for child in 15..33 {
+        components.insert((270 << 16) | child, component(0));
+    }
+    for child in 3..=9 {
+        components.insert((312 << 16) | child, component(2));
+    }
     runtime.configure_interfaces(components).unwrap();
+    runtime
+        .configure_smelting(
+            gielinor_server::smelting::Config {
+                presentation: gielinor_server::skill_multi::Presentation {
+                    interface: 270,
+                    parent: gielinor_world::ui::Component::new(548, 20),
+                    setup_script: 2046,
+                },
+                recipes: vec![gielinor_world::smelting::Recipe {
+                    bar: 2349,
+                    label: "Bronze".into(),
+                    level: 1,
+                    xp: 6.2,
+                    ingredients: vec![(436, 1), (438, 1)],
+                }],
+                types: [(436, "Copper ore"), (438, "Tin ore"), (2349, "Bronze bar")]
+                    .into_iter()
+                    .map(|(id, name)| {
+                        (
+                            id,
+                            gielinor_world::smelting::ItemType {
+                                name: name.into(),
+                                certificate: false,
+                                placeholder: false,
+                            },
+                        )
+                    })
+                    .collect(),
+                quantity_varp: 7000,
+                skill: 13,
+                animation: 899,
+            },
+            gielinor_world::smithing_make::Config {
+                queue: 900,
+                skill: 13,
+                max_level: 99,
+                xp_rate: 1.0,
+                tutorial: None,
+            },
+        )
+        .unwrap();
+    runtime
+        .configure_furnaces(
+            BTreeMap::from([(
+                60002,
+                gielinor_world::smelting::Furnace {
+                    operations: 1 << 1,
+                    item_use: true,
+                    ore_ids: None,
+                    tutorial: None,
+                },
+            )]),
+            [436, 438].into_iter().collect(),
+        )
+        .unwrap();
+    runtime
+        .configure_anvil(gielinor_server::anvil::Config {
+            rules: gielinor_world::anvil::Config {
+                hammer: 2347,
+                skill: 13,
+                animation: 898,
+                bar_by_tier: BTreeMap::from([(1, 2349)]),
+                products: BTreeMap::from([(2349, BTreeMap::from([(9, 1205)]))]),
+                quantity: BTreeMap::new(),
+                bars: BTreeMap::new(),
+                level: BTreeMap::from([(1205, 0)]),
+                xp_per_bar: BTreeMap::from([(2349, 12.5)]),
+                names: [(2349, "Bronze bar"), (1205, "Bronze dagger")]
+                    .into_iter()
+                    .map(|(id, name)| (id, name.into()))
+                    .collect(),
+            },
+            interface: 312,
+            parent: gielinor_world::ui::Component::new(548, 20),
+            bar_type: gielinor_world::bank_actions::Binding {
+                base: runtime.definitions.varps[&7002],
+                bit: runtime.definitions.varbits[&7100],
+            },
+            bar_type_id: 7100,
+            quantity: runtime.definitions.varps[&7000],
+            quantity_buttons: [
+                (3, Some(1)),
+                (4, Some(5)),
+                (5, Some(10)),
+                (6, None),
+                (7, Some(28)),
+            ]
+            .into_iter()
+            .map(|(slot, count)| ((312 << 16) | slot, count))
+            .collect(),
+            locations: Default::default(),
+            bars: [2349].into_iter().collect(),
+        })
+        .unwrap();
+    {
+        use gielinor_server::player_design::{Bindings, Config, Control, Kits};
+        use gielinor_world::{
+            bank_actions::Binding,
+            variables::{Transmit, Varbit, Varp},
+        };
+        let binding = |id| Binding {
+            base: Varp {
+                id,
+                permanent: false,
+                transmit: Transmit::Always,
+                bit_protect: false,
+                client_code: -1,
+            },
+            bit: Varbit {
+                base: id,
+                lsb: 0,
+                msb: 1,
+            },
+        };
+        runtime
+            .configure_player_design(Bindings {
+                config: Config {
+                    kits: Kits::default(),
+                    body: binding(5000),
+                    pronoun: binding(5001),
+                },
+                buttons: [
+                    (679 << 16, Control::Body(1)),
+                    ((679 << 16) | 1, Control::Body(0)),
+                ]
+                .into(),
+                pronoun_component: (679 << 16) | 2,
+            })
+            .unwrap();
+        for id in 5000..=5005 {
+            runtime
+                .definitions
+                .varps
+                .insert(id as u32, binding(id).base);
+            runtime.definitions.varbits.insert(
+                id as u32,
+                gielinor_world::variables::Varbit {
+                    base: id,
+                    lsb: 0,
+                    msb: if id == 5002 { 3 } else { 1 },
+                },
+            );
+        }
+        use gielinor_world::ui::Component;
+        runtime
+            .configure_tutorial(gielinor_server::tutorial_character::Config {
+                panels: [
+                    (162 << 16, gielinor_world::tutorial_panels::Panel::Worn),
+                    (614 << 16, gielinor_world::tutorial_panels::Panel::Settings),
+                ]
+                .into(),
+                progression: gielinor_world::tutorial_progression::Config {
+                    step: binding(5003).base,
+                    completed: binding(5004).base,
+                },
+                focus: gielinor_server::tutorial_ui::Config {
+                    overlay: 614,
+                    atmosphere: Component::new(548, 24),
+                    blocker: (614 << 16) | 1,
+                    texts: [2, 3, 4, 5].map(|child| (614 << 16) | child),
+                    mesoverlay: 162,
+                    chatmodal: Component::new(548, 25),
+                    panels: vec![],
+                    flashside: 5002,
+                    wind_strike: (679 << 16) | 3,
+                    home_teleport: 0,
+                    npcs: gielinor_world::tutorial_steps::Step::ALL
+                        .into_iter()
+                        .flat_map(|step| {
+                            [
+                                gielinor_world::tutorial_focus::hint_npc(step),
+                                gielinor_world::tutorial_focus::outline_npc(step),
+                            ]
+                            .into_iter()
+                            .flatten()
+                        })
+                        .map(|name| (name, 1))
+                        .collect(),
+                    locations: gielinor_world::tutorial_steps::Step::ALL
+                        .into_iter()
+                        .filter_map(gielinor_world::tutorial_focus::outline_location)
+                        .map(|name| (name, 1))
+                        .collect(),
+                },
+                mainmodal: Component::new(548, 23),
+                creator: 679,
+                confirm: (679 << 16) | 3,
+                pronouns: Component::new(679, 2),
+                experience: 929,
+                experience_buttons: [0, 1, 2].map(|child| Component::new(929, child)),
+                body_bit: 5000,
+                pronoun_bit: 5001,
+                adventure_bit: 5005,
+            })
+            .unwrap();
+    }
+    runtime
+        .configure_tutorial_gates(
+            [(60000, gielinor_world::tutorial_gates::Gate::SurvivalEntry)].into(),
+        )
+        .unwrap();
+    runtime
+        .configure_tutorial_dough(1933, 1929, 1931, 1925, 2307)
+        .unwrap();
+    runtime
+        .configure_tutorial_bread(60001, 2307, 2309, 897, 7)
+        .unwrap();
     runtime
         .configure_dialogue(
             gielinor_server::dialogue::Presentation {
-                parent: gielinor_world::ui::Component::new(548, 23),
+                parent: gielinor_world::ui::Component::new(548, 25),
                 unclamp: 2000,
                 player: 217,
                 npc: 231,
                 choice: 219,
-                animations: [[0; 4]; 4],
+                animations: [[0; 4], [0; 4], [0; 4], [0; 4], [6000, 6001, 6002, 6003]],
                 font: gielinor_world::dialogue_text::Font {
                     advances: [6; 256],
                     kerning: vec![],
@@ -609,6 +939,19 @@ fn exercise_lifecycle(with_login: bool) {
             ),
         )
         .unwrap();
+    for id in [61000, 61001] {
+        runtime.world.location_types.insert(
+            id,
+            gielinor_world::loc_collision::LocCollision {
+                width: 1,
+                length: 1,
+                block_walk: 0,
+                block_range: false,
+                break_route_finding: false,
+            },
+        );
+    }
+    runtime.configure_tutorial_bank(61000, 61001, 8).unwrap();
     runtime
         .enable_player_synchronization(gielinor_server::runtime::Presentation {
             animations: gielinor_server::appearance::AnimationPolicy {
@@ -705,7 +1048,10 @@ fn exercise_lifecycle(with_login: bool) {
     let mut accounts = Accounts::from_database(Database::memory().unwrap());
     accounts.initialize().unwrap();
     accounts.create("parity_actor", "fixture-hash", 1).unwrap();
-    let account = accounts.load("parity_actor", 1).unwrap().unwrap();
+    let mut account = accounts.load("parity_actor", 1).unwrap().unwrap();
+    if completed_tutorial {
+        account.varps_json = "{\"5004\":1}".into();
+    }
     let observer_id = account.character_id;
     queues
         .completed
@@ -755,7 +1101,7 @@ fn exercise_lifecycle(with_login: bool) {
         player_info: false,
     };
     let mut inventory_ids = vec![];
-    let initial_opcodes = if with_login {
+    let mut initial_opcodes = if with_login {
         vec![
             49, 124, 75, 21, 73, 44, 97, 97, 97, 97, 97, 97, 3, 114, 114, 96, 7, 108, 7, 114, 114,
             7, 108, 7, 114, 114, 114, 114, 114, 6, 6, 6, 6, 6, 114, 46, 31, 64, 92, 43, 22, 22, 47,
@@ -764,7 +1110,65 @@ fn exercise_lifecycle(with_login: bool) {
     } else {
         vec![49, 22, 22, 46, 31, 64, 47, 116, 122, 28, 85, 47]
     };
-    for expected in initial_opcodes {
+    if completed_tutorial {
+        initial_opcodes.insert(12, 97);
+    }
+    // Ordered fixture stats: Hitpoints3, Cooking7, Smithing13.
+    let first_stat = initial_opcodes.iter().position(|&op| op == 46).unwrap();
+    initial_opcodes.insert(first_stat + 1, 46);
+    initial_opcodes.insert(first_stat + 2, 46);
+    // Build hook-order expectations from original fixtures, then apply the independently
+    // extracted RSProt category schedule. Payload checks remain exact.
+    let mut initial: Vec<(u16, Option<Vec<u8>>)> =
+        initial_opcodes.into_iter().map(|op| (op, None)).collect();
+    if with_login && !completed_tutorial {
+        let fixture = std::fs::read_to_string(concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/tests/fixtures/tutorial-bootstrap.expected"
+        ))
+        .unwrap();
+        let row = fixture
+            .lines()
+            .find(|row| row.starts_with("0|0|0|-1|"))
+            .unwrap();
+        let bootstrap = row.split('|').nth(6).unwrap().split(',').map(|encoded| {
+            let (op, payload) = encoded.split_once(':').unwrap();
+            (op.parse::<u16>().unwrap(), Some(hex(payload)))
+        });
+        initial.splice(26..26, bootstrap);
+        assert!(runtime.appearance_design(actor).unwrap().hidden);
+        assert!(runtime
+            .interface_state(actor)
+            .unwrap()
+            .modals
+            .contains_interface(679));
+    }
+    for x in (24..=72).step_by(8) {
+        for z in (24..=72).step_by(8) {
+            let packet = gielinor_protocol::zone::reset(x, z, 0);
+            initial.push((packet.opcode, Some(packet.payload)));
+        }
+    }
+    let categories = include_str!("../../protocol/tests/fixtures/outgoing-categories.expected");
+    initial.sort_by_key(|(opcode, _)| {
+        let row = categories
+            .lines()
+            .find(|row| {
+                row.split_whitespace()
+                    .next()
+                    .and_then(|op| op.parse::<u16>().ok())
+                    == Some(*opcode)
+            })
+            .unwrap();
+        match row.split_whitespace().nth(2).unwrap() {
+            "HIGH_PRIORITY_PROT" if matches!(*opcode, 18 | 22) => 1,
+            "HIGH_PRIORITY_PROT" => 0,
+            "LOW_PRIORITY_PROT" => 2,
+            value => panic!("Unexpected original category {value}"),
+        }
+    });
+    let first_stat = initial.iter().position(|(op, _)| *op == 46).unwrap();
+    for (index, (expected, payload)) in initial.into_iter().enumerate() {
         let packet = loop {
             if let Some(packet) = outgoing.next_packet().unwrap() {
                 break packet;
@@ -773,7 +1177,11 @@ fn exercise_lifecycle(with_login: bool) {
             read(&mut runtime, &mut client, &mut byte);
             outgoing.feed(&byte).unwrap();
         };
-        assert_eq!(packet.opcode, expected);
+        assert_eq!(packet.opcode, expected, "initial packet {index}");
+        if let Some(payload) = payload {
+            assert_eq!(packet.payload, payload, "initial reference payload {index}");
+            continue;
+        }
         if expected == 49 {
             assert!(packet.payload.len() > 4600);
         } else if expected == 28 {
@@ -789,13 +1197,32 @@ fn exercise_lifecycle(with_login: bool) {
                 .payload
                 .windows(name.len())
                 .any(|bytes| bytes == name));
+            let name_start = packet
+                .payload
+                .windows(name.len())
+                .position(|bytes| bytes == name)
+                .unwrap();
+            assert_eq!(
+                packet.payload[name_start + name.len() + 4],
+                128 + u8::from(with_login && !completed_tutorial),
+                "hidden bit in first appearance"
+            );
         } else if expected == 22 {
             let id = u16::from_be_bytes([packet.payload[4], packet.payload[5]]);
             inventory_ids.push(id);
             assert_eq!(&packet.payload[..4], &(-(1234 + id as i32)).to_be_bytes());
             assert_eq!(&packet.payload[6..], &[0, 0]);
         } else if expected == 46 {
-            assert_eq!(&packet.payload[..3], &[10, 10, 131]);
+            assert_eq!(
+                &packet.payload[..3],
+                if index == first_stat {
+                    &[10, 10, 131]
+                } else if index == first_stat + 1 {
+                    &[1, 1, 135]
+                } else {
+                    &[1, 1, 141]
+                }
+            );
         } else if expected == 31 {
             assert_eq!(packet.payload, [0, 0]);
         } else if expected == 64 {
@@ -828,20 +1255,6 @@ fn exercise_lifecycle(with_login: bool) {
         }
     }
     assert_eq!(inventory_ids, [93, 94]);
-    // The initial viewport resets all 49 neighbouring zones in x-major order.
-    for x in (24..=72).step_by(8) {
-        for z in (24..=72).step_by(8) {
-            let packet = loop {
-                if let Some(packet) = outgoing.next_packet().unwrap() {
-                    break packet;
-                }
-                let mut byte = [0];
-                read(&mut runtime, &mut client, &mut byte);
-                outgoing.feed(&byte).unwrap();
-            };
-            assert_eq!(packet, gielinor_protocol::zone::reset(x, z, 0));
-        }
-    }
     while outgoing.tick_ends == 0 {
         assert!(outgoing.next_packet().unwrap().is_none());
         if outgoing.tick_ends == 0 {
@@ -860,6 +1273,27 @@ fn exercise_lifecycle(with_login: bool) {
             vec![100, 20, 45, 25, 3]
         );
         assert_eq!(data.variables.get(106), 549);
+        if !completed_tutorial {
+            // Finish inspecting the first-login UI before the independent overlay
+            // and gameplay scenarios below. Modal input must not leak into them.
+            for child in [23, 24, 25] {
+                runtime
+                    .close_interface(actor, gielinor_world::ui::Component::new(548, child))
+                    .unwrap();
+                let packet = loop {
+                    if let Some(packet) = outgoing.next_packet().unwrap() {
+                        break packet;
+                    }
+                    let mut byte = [0];
+                    read(&mut runtime, &mut client, &mut byte);
+                    outgoing.feed(&byte).unwrap();
+                };
+                assert_eq!(packet.opcode, 23);
+            }
+            let mut design = runtime.appearance_design(actor).unwrap().clone();
+            design.hidden = false;
+            runtime.set_appearance(actor, design).unwrap();
+        }
         // Kotlin suppresses immediate writes until processedMapClock is positive.
         runtime.tick().unwrap();
         let mut root_contexts = 0;
@@ -876,6 +1310,10 @@ fn exercise_lifecycle(with_login: bool) {
                 root_contexts += 1;
             }
         }
+        let tail = finish_tick(&mut runtime, &mut client, &mut outgoing);
+        assert!(tail.iter().all(|packet| matches!(packet.opcode, 18 | 22)
+            || gielinor_protocol::outgoing_category::category(packet.opcode)
+                == Some(gielinor_protocol::outgoing_category::Category::Low)));
         // A dynamically granted permission dispatches the overlay listener over ISAAC.
         let mut cipher =
             Some(gielinor_protocol::isaac::Isaac::new(&[0x80000000, 239, 1, u32::MAX]).unwrap());
@@ -1020,6 +1458,11 @@ fn exercise_lifecycle(with_login: bool) {
                 }
                 opcodes.push(packet.opcode);
             }
+            opcodes.extend(
+                finish_tick(&mut runtime, &mut client, &mut outgoing)
+                    .into_iter()
+                    .map(|packet| packet.opcode),
+            );
             if runtime.world.data(actor).unwrap().variables.get(108) == 3 {
                 assert_eq!(&opcodes[..4], &[97, 97, 97, 97]);
                 applied = true;
@@ -1130,6 +1573,10 @@ fn exercise_lifecycle(with_login: bool) {
                 contexts += 1;
             }
         }
+        let tail = finish_tick(&mut runtime, &mut client, &mut outgoing);
+        assert!(tail.iter().all(|packet| matches!(packet.opcode, 18 | 22)
+            || gielinor_protocol::outgoing_category::category(packet.opcode)
+                == Some(gielinor_protocol::outgoing_category::Category::Low)));
         assert_eq!(runtime.interface_state(actor).unwrap().top_level, Some(548));
         runtime.world.delay_player(actor, 5).unwrap();
         let mut payload = (149u32 << 16).to_be_bytes().to_vec();
@@ -1183,14 +1630,21 @@ fn exercise_lifecycle(with_login: bool) {
                 }
                 opcodes.push(packet.opcode);
             }
+            opcodes.extend(
+                finish_tick(&mut runtime, &mut client, &mut outgoing)
+                    .into_iter()
+                    .map(|packet| packet.opcode),
+            );
             if cycle == 0 {
                 assert!(!opcodes.contains(&96));
                 assert_eq!(runtime.interface_state(actor).unwrap().top_level, Some(548));
             } else {
-                assert_eq!(
-                    &opcodes[..17],
-                    &[97, 97, 97, 96, 123, 114, 114, 123, 7, 96, 123, 114, 114, 123, 7, 7, 43]
-                );
+                let mut expected = vec![
+                    97, 97, 97, 96, 123, 114, 114, 123, 7, 96, 123, 114, 114, 123, 7, 7, 43, 47,
+                    116, 122, 28, 85, 47,
+                ];
+                reference_order(&mut expected);
+                assert_eq!(opcodes, expected);
                 assert_eq!(runtime.interface_state(actor).unwrap().top_level, Some(550));
             }
         }
@@ -1301,6 +1755,7 @@ fn exercise_lifecycle(with_login: bool) {
             headbars: Some(&bars),
             sequence: None,
             face: None,
+            spot_animations: None,
         }
         .encode();
         for cycle in 0..2 {
@@ -1327,6 +1782,13 @@ fn exercise_lifecycle(with_login: bool) {
                     assert_eq!(packet.payload.ends_with(&block), cycle == 0);
                 }
             }
+            let tail = finish_tick(&mut runtime, &mut client, &mut outgoing);
+            assert!(tail
+                .iter()
+                .all(
+                    |packet| gielinor_protocol::outgoing_category::category(packet.opcode)
+                        == Some(gielinor_protocol::outgoing_category::Category::Low)
+                ));
             assert!(saw_npc);
         }
         assert_eq!(runtime.world.npc(npc).unwrap().stats[3], impact.health);
@@ -1348,7 +1810,7 @@ fn exercise_lifecycle(with_login: bool) {
         .unwrap();
     runtime.world.despawn_npc(npc).unwrap();
     runtime.tick().unwrap();
-    for expected in [18, 47, 116, 122, 28, 85, 47] {
+    for expected in reference_sorted([18, 47, 116, 122, 28, 85, 47]) {
         let packet = loop {
             if let Some(packet) = outgoing.next_packet().unwrap() {
                 break packet;
@@ -1449,7 +1911,9 @@ fn exercise_lifecycle(with_login: bool) {
         } else {
             &[47, 116, 122, 28, 47]
         };
-        for &opcode in expected {
+        let mut expected = expected.to_vec();
+        reference_order(&mut expected);
+        for opcode in expected {
             let packet = loop {
                 if let Some(packet) = outgoing.next_packet().unwrap() {
                     break packet;
@@ -1525,7 +1989,7 @@ fn exercise_lifecycle(with_login: bool) {
         std::thread::sleep(Duration::from_millis(1));
     }
     runtime.tick().unwrap();
-    for opcode in [18, 47, 116, 122, 28, 47] {
+    for opcode in reference_sorted([18, 47, 116, 122, 28, 47]) {
         let packet = loop {
             if let Some(packet) = outgoing.next_packet().unwrap() {
                 break packet;
@@ -1568,6 +2032,32 @@ fn exercise_lifecycle(with_login: bool) {
             }),
         )
         .unwrap();
+    // Exercise the new wear-position packet adapter over encrypted TCP. This
+    // fixture wears a hat: sound and player-op5 follow high-priority inventory
+    // synchronization; hand-slot variables are covered by the Kotlin oracle.
+    let wear_binding = gielinor_world::bank_actions::Binding {
+        base: runtime.definitions.varps[&1000],
+        bit: gielinor_world::variables::Varbit {
+            base: 1000,
+            lsb: 0,
+            msb: 7,
+        },
+    };
+    runtime.world.wearpos = Some(gielinor_world::wearpos::Config {
+        special: wear_binding.base,
+        stance: wear_binding.base,
+        category: wear_binding,
+        level: wear_binding,
+        decimal: wear_binding,
+        combat_stats: [0, 1, 2, 3, 4, 6, 5],
+        items: BTreeMap::from([(
+            8,
+            gielinor_world::wearpos::Item {
+                sound: Some(2238),
+                ..Default::default()
+            },
+        )]),
+    });
     for (component, slot, op, equipping) in [
         (149u32 << 16, 6u16, 3u8, true),
         ((149u32 << 16) | 1, 65535u16, 1u8, false),
@@ -1603,7 +2093,7 @@ fn exercise_lifecycle(with_login: bool) {
                 ..
             })
         )));
-        for opcode in [18, 18, 47, 116, 122, 28, 47] {
+        for opcode in reference_sorted([77, 6, 18, 18, 47, 116, 122, 28, 47]) {
             let packet = loop {
                 if let Some(packet) = outgoing.next_packet().unwrap() {
                     break packet;
@@ -1613,6 +2103,14 @@ fn exercise_lifecycle(with_login: bool) {
                 outgoing.feed(&byte).unwrap();
             };
             assert_eq!(packet.opcode, opcode);
+            if opcode == 77 {
+                assert_eq!(packet, gielinor_protocol::game::synth_sound(2238, 1, 0));
+            } else if opcode == 6 {
+                assert_eq!(
+                    packet,
+                    gielinor_protocol::login_init::player_operation(5, false, None).unwrap()
+                );
+            }
         }
         assert_eq!(
             runtime
@@ -1636,6 +2134,7 @@ fn exercise_lifecycle(with_login: bool) {
             .id,
         8
     );
+    runtime.world.wearpos = None;
     runtime.set_varp(actor, 1000, 127).unwrap();
     runtime.set_varp(actor, 1000, 127).unwrap();
     runtime.set_varp(actor, 1000, 128).unwrap();
@@ -1740,7 +2239,9 @@ fn exercise_lifecycle(with_login: bool) {
                 97, 18, 18, 47, 116, 122, 28, 47, 108, 108, 108, 108, 108, 108,
             ]
         };
-        for &opcode in expected {
+        let mut expected = expected.to_vec();
+        reference_order(&mut expected);
+        for opcode in expected {
             let packet = loop {
                 if let Some(packet) = outgoing.next_packet().unwrap() {
                     break packet;
@@ -1799,7 +2300,7 @@ fn exercise_lifecycle(with_login: bool) {
             std::thread::sleep(Duration::from_millis(1));
         }
         runtime.tick().unwrap();
-        for opcode in [97, 47, 116, 122, 28, 47] {
+        for opcode in reference_sorted([97, 47, 116, 122, 28, 47]) {
             let packet = loop {
                 if let Some(packet) = outgoing.next_packet().unwrap() {
                     break packet;
@@ -1839,7 +2340,7 @@ fn exercise_lifecycle(with_login: bool) {
         }
         runtime.tick().unwrap();
         assert!(runtime.world.protection(actor).unwrap().suspended);
-        for opcode in [114, 47, 116, 122, 28, 47] {
+        for opcode in reference_sorted([114, 47, 116, 122, 28, 47]) {
             let packet = loop {
                 if let Some(packet) = outgoing.next_packet().unwrap() {
                     break packet;
@@ -1890,7 +2391,7 @@ fn exercise_lifecycle(with_login: bool) {
         }
         runtime.tick().unwrap();
         assert!(!runtime.world.protection(actor).unwrap().suspended);
-        for opcode in [97, 97, 18, 18, 47, 116, 122, 28, 47] {
+        for opcode in reference_sorted([97, 97, 18, 18, 47, 116, 122, 28, 47]) {
             let packet = loop {
                 if let Some(packet) = outgoing.next_packet().unwrap() {
                     break packet;
@@ -1928,7 +2429,7 @@ fn exercise_lifecycle(with_login: bool) {
         std::thread::sleep(Duration::from_millis(1));
     }
     runtime.tick().unwrap();
-    for opcode in [114, 47, 116, 122, 28, 47] {
+    for opcode in reference_sorted([114, 47, 116, 122, 28, 47]) {
         let packet = loop {
             if let Some(packet) = outgoing.next_packet().unwrap() {
                 break packet;
@@ -2024,22 +2525,29 @@ fn exercise_lifecycle(with_login: bool) {
             }
             packets.push(packet);
         }
+        let tail = finish_tick(&mut runtime, &mut client, &mut outgoing);
+        assert!(tail.iter().all(|packet| matches!(packet.opcode, 18 | 22)
+            || gielinor_protocol::outgoing_category::category(packet.opcode)
+                == Some(gielinor_protocol::outgoing_category::Category::Low)));
+        packets.extend(tail);
         if cycle == 0 {
             assert_eq!(
-                packets[..3].iter().map(|p| p.opcode).collect::<Vec<_>>(),
-                [64, 74, 74]
+                packets[..2].iter().map(|p| p.opcode).collect::<Vec<_>>(),
+                [74, 74]
             );
+            let energies: Vec<_> = packets.iter().filter(|p| p.opcode == 64).collect();
+            assert_eq!(energies.len(), 1);
             assert_eq!(
-                packets[0].payload,
+                energies[0].payload,
                 gielinor_protocol::game::run_energy(10000).unwrap()
             );
             assert_eq!(
-                packets[1],
+                packets[0],
                 gielinor_protocol::chat::game(0, None, "You drink some of your super energy.")
                     .unwrap()
             );
             assert_eq!(
-                packets[2],
+                packets[1],
                 gielinor_protocol::chat::game(0, None, "You have 3 doses of potion left.").unwrap()
             );
             assert!(packets.iter().any(|p| p.opcode == 18));
@@ -2194,6 +2702,34 @@ fn exercise_lifecycle(with_login: bool) {
     client.write_all(&bytes).unwrap();
     // Exercise encrypted gameplay through the actual socket/session/action boundary.
     runtime.world.collision.allocate(3200, 3200, 0);
+    // A real movement packet must close a modal and cancel weak production,
+    // rather than merely replacing the destination while the job continues.
+    runtime
+        .open_interface(actor, Some(parent), 149, false)
+        .unwrap();
+    runtime.world.smithing = Some(gielinor_world::smithing_make::Config {
+        queue: 900,
+        skill: 13,
+        max_level: 99,
+        xp_rate: 1.0,
+        tutorial: None,
+    });
+    let smithing_before = runtime.world.data(actor).unwrap().stats.fine_xp(13);
+    runtime
+        .world
+        .start_smithing(
+            actor,
+            std::sync::Arc::new(gielinor_world::smithing_make::Request {
+                product: 8,
+                produced: 1,
+                consumed: vec![],
+                xp: 6.2,
+                animation: 899,
+                cycles: 5,
+            }),
+            28,
+        )
+        .unwrap();
     let movement = *gielinor_protocol::tables::CLIENT
         .iter()
         .find(|d| d.opcode == 114)
@@ -2220,7 +2756,492 @@ fn exercise_lifecycle(with_login: bool) {
         assert!(Instant::now() < deadline);
         std::thread::sleep(Duration::from_millis(1));
     }
+    assert!(runtime
+        .interface_state(actor)
+        .unwrap()
+        .modals
+        .get(parent)
+        .is_none());
+    for _ in 0..6 {
+        runtime.tick().unwrap();
+    }
+    assert_eq!(
+        runtime.world.data(actor).unwrap().stats.fine_xp(13),
+        smithing_before
+    );
+    // SkillMulti uses pause-button subcomponents as quantities, not item slots.
+    // Reject quantity29 at the permission boundary, then accept the second row7.
+    {
+        use gielinor_server::skill_multi::{Dialog, OptionItem, Presentation, Selection};
+        use gielinor_world::ui::Component;
+        let presentation = Presentation {
+            interface: 270,
+            parent,
+            setup_script: 2046,
+        };
+        let dialog = Dialog {
+            title: "Smelt".into(),
+            options: vec![
+                OptionItem {
+                    object: 2349,
+                    label: "Bronze".into(),
+                },
+                OptionItem {
+                    object: 2351,
+                    label: "Iron".into(),
+                },
+            ],
+            verb: 13,
+            max_count: 28,
+            selected_count: 1,
+        };
+        runtime
+            .open_skill_multi(actor, presentation, dialog.clone())
+            .unwrap();
+        let token = runtime.world.quantity_dialog_token(actor).unwrap().unwrap();
+        let pause = *gielinor_protocol::tables::CLIENT
+            .iter()
+            .find(|d| d.opcode == 115)
+            .unwrap();
+        let component = Component::new(270, 16).0.to_be_bytes();
+        for count in [29u16, 7] {
+            let payload = [
+                component[1],
+                component[0],
+                component[3],
+                component[2],
+                (count >> 8) as u8,
+                count as u8,
+            ];
+            let bytes = gielinor_protocol::framing::encode(
+                pause,
+                &payload,
+                &mut cipher,
+                gielinor_protocol::framing::OpcodeWidth::Byte,
+            )
+            .unwrap();
+            client.write_all(&bytes).unwrap();
+        }
+        let deadline = Instant::now() + Duration::from_secs(2);
+        loop {
+            let events = pump(&mut runtime);
+            let selected: Vec<_> = events
+                .iter()
+                .filter_map(|e| match e {
+                    Event::SkillMultiSelected { selection, .. } => Some(*selection),
+                    _ => None,
+                })
+                .collect();
+            if !selected.is_empty() {
+                assert_eq!(selected, vec![Some(Selection { index: 1, count: 7 })]);
+                break;
+            }
+            assert!(Instant::now() < deadline, "SkillMulti resume timed out");
+            std::thread::sleep(Duration::from_millis(1));
+        }
+        assert_eq!(runtime.world.quantity_dialog_token(actor).unwrap(), None);
+        assert!(!runtime.world.resume_quantity_dialog(actor, token).unwrap());
+        assert!(runtime
+            .interface_state(actor)
+            .unwrap()
+            .modals
+            .get(parent)
+            .is_none());
+        runtime
+            .open_skill_multi(actor, presentation, dialog)
+            .unwrap();
+        runtime.world.delay_player(actor, 2).unwrap();
+        let payload = [component[1], component[0], component[3], component[2], 0, 1];
+        let bytes = gielinor_protocol::framing::encode(
+            pause,
+            &payload,
+            &mut cipher,
+            gielinor_protocol::framing::OpcodeWidth::Byte,
+        )
+        .unwrap();
+        client.write_all(&bytes).unwrap();
+        let deadline = Instant::now() + Duration::from_secs(2);
+        while runtime
+            .world
+            .quantity_dialog_token(actor)
+            .unwrap()
+            .is_some()
+        {
+            let events = pump(&mut runtime);
+            assert!(!events
+                .iter()
+                .any(|e| matches!(e, Event::SkillMultiSelected { .. })));
+            assert!(
+                Instant::now() < deadline,
+                "Delayed SkillMulti did not cancel"
+            );
+            std::thread::sleep(Duration::from_millis(1));
+        }
+        assert!(runtime
+            .interface_state(actor)
+            .unwrap()
+            .close_queue
+            .contains(&parent));
+        for _ in 0..3 {
+            runtime.tick().unwrap();
+        }
+        assert!(runtime
+            .interface_state(actor)
+            .unwrap()
+            .modals
+            .get(parent)
+            .is_none());
+    }
     // Encrypted OpLocV2 must reach the authoritative door action and observer zone stream.
+    // First exercise furnace reach -> skillmulti -> weak production over TCP.
+    {
+        use gielinor_world::{
+            inventory::{Catalog, Delete, Insert},
+            loc_collision::LocCollision,
+            locations::Location,
+        };
+        let coords = runtime
+            .world
+            .data(actor)
+            .unwrap()
+            .coords
+            .translate(1, 0, 0)
+            .unwrap();
+        let furnace = Location::new(coords, 60002, 10, 0).unwrap();
+        runtime.world.location_types.insert(
+            60002,
+            LocCollision {
+                width: 1,
+                length: 1,
+                block_walk: 2,
+                block_range: false,
+                break_route_finding: false,
+            },
+        );
+        runtime.world.change_location(furnace, true).unwrap();
+        let before = runtime
+            .world
+            .data(actor)
+            .unwrap()
+            .inventory
+            .slots()
+            .to_vec();
+        let xp = runtime.world.data(actor).unwrap().stats.fine_xp(13);
+        for ore in [436, 438] {
+            runtime
+                .world
+                .data_mut(actor)
+                .unwrap()
+                .inventory
+                .insert(&Catalog::default(), Insert::new(ore, 1))
+                .unwrap();
+        }
+        let op = *gielinor_protocol::tables::CLIENT
+            .iter()
+            .find(|d| d.opcode == 73)
+            .unwrap();
+        let payload = [
+            (coords.z() >> 8) as u8,
+            (coords.z() as u8).wrapping_add(128),
+            coords.x() as u8,
+            (coords.x() >> 8) as u8,
+            128,
+            128,
+            (60002u16 >> 8) as u8,
+            60002u16 as u8,
+        ];
+        client
+            .write_all(
+                &gielinor_protocol::framing::encode(
+                    op,
+                    &payload,
+                    &mut cipher,
+                    gielinor_protocol::framing::OpcodeWidth::Byte,
+                )
+                .unwrap(),
+            )
+            .unwrap();
+        let deadline = Instant::now() + Duration::from_secs(2);
+        while runtime
+            .world
+            .quantity_dialog_token(actor)
+            .unwrap()
+            .is_none()
+        {
+            pump(&mut runtime);
+            runtime.tick().unwrap();
+            assert!(Instant::now() < deadline, "Furnace did not open SkillMulti");
+            std::thread::sleep(Duration::from_millis(1));
+        }
+        let pause = *gielinor_protocol::tables::CLIENT
+            .iter()
+            .find(|d| d.opcode == 115)
+            .unwrap();
+        let component = gielinor_world::ui::Component::new(270, 15).0.to_be_bytes();
+        let payload = [
+            component[1],
+            component[0],
+            component[3],
+            component[2],
+            0,
+            28,
+        ];
+        client
+            .write_all(
+                &gielinor_protocol::framing::encode(
+                    pause,
+                    &payload,
+                    &mut cipher,
+                    gielinor_protocol::framing::OpcodeWidth::Byte,
+                )
+                .unwrap(),
+            )
+            .unwrap();
+        let deadline = Instant::now() + Duration::from_secs(2);
+        while runtime.world.data(actor).unwrap().stats.fine_xp(13) == xp {
+            pump(&mut runtime);
+            runtime.tick().unwrap();
+            assert!(Instant::now() < deadline, "Furnace did not produce bronze");
+            std::thread::sleep(Duration::from_millis(1));
+        }
+        assert_eq!(
+            runtime.world.data(actor).unwrap().stats.fine_xp(13),
+            xp + 62
+        );
+        assert_eq!(runtime.world.data(actor).unwrap().variables.get(7000), 28);
+        assert!(!runtime.world.protection(actor).unwrap().delayed());
+        runtime
+            .world
+            .data_mut(actor)
+            .unwrap()
+            .inventory
+            .insert(&Catalog::default(), Insert::new(2347, 1))
+            .unwrap();
+        runtime.open_anvil(actor, None).unwrap();
+        let background = gielinor_protocol::client_script::run(
+            2524,
+            &[
+                gielinor_protocol::client_script::Argument::Int(-1),
+                gielinor_protocol::client_script::Argument::Int(-1),
+            ],
+        )
+        .unwrap();
+        let opened = gielinor_protocol::interfaces::open_sub(
+            runtime.interface_state(actor).unwrap().translate(parent).0,
+            312,
+            false,
+        );
+        let mut saw_background = false;
+        let mut map_flags = 0;
+        loop {
+            if let Some(packet) = outgoing.next_packet().unwrap() {
+                if packet.opcode == 143 {
+                    assert_eq!(packet, gielinor_protocol::game::clear_map_flag());
+                    map_flags += 1;
+                }
+                if packet == background {
+                    saw_background = true;
+                }
+                if packet == opened {
+                    assert!(
+                        saw_background,
+                        "Anvil must prepare the main modal before opening it"
+                    );
+                    break;
+                }
+            } else {
+                let mut byte = [0];
+                read(&mut runtime, &mut client, &mut byte);
+                outgoing.feed(&byte).unwrap();
+            }
+        }
+        assert_eq!(
+            runtime.interface_state(actor).unwrap().modals.get(parent),
+            Some(312)
+        );
+        assert_eq!(runtime.world.data(actor).unwrap().variables.get(7002), 1);
+        let count_def = *gielinor_protocol::tables::CLIENT
+            .iter()
+            .find(|d| d.opcode == 75)
+            .unwrap();
+        for (input, expected) in [(-5i32, 5), (i32::MIN, 1)] {
+            let mut payload = ((312u32 << 16) | 6).to_be_bytes().to_vec();
+            payload.extend(u16::MAX.to_be_bytes());
+            payload.extend(u16::MAX.to_be_bytes());
+            payload.push(1);
+            client
+                .write_all(
+                    &gielinor_protocol::framing::encode(
+                        button,
+                        &payload,
+                        &mut cipher,
+                        gielinor_protocol::framing::OpcodeWidth::Byte,
+                    )
+                    .unwrap(),
+                )
+                .unwrap();
+            let deadline = Instant::now() + Duration::from_secs(2);
+            while runtime
+                .world
+                .quantity_dialog_token(actor)
+                .unwrap()
+                .is_none()
+            {
+                pump(&mut runtime);
+                assert!(Instant::now() < deadline, "Make X did not suspend");
+                std::thread::sleep(Duration::from_millis(1));
+            }
+            client
+                .write_all(
+                    &gielinor_protocol::framing::encode(
+                        count_def,
+                        &input.to_be_bytes(),
+                        &mut cipher,
+                        gielinor_protocol::framing::OpcodeWidth::Byte,
+                    )
+                    .unwrap(),
+                )
+                .unwrap();
+            let deadline = Instant::now() + Duration::from_secs(2);
+            while runtime
+                .world
+                .quantity_dialog_token(actor)
+                .unwrap()
+                .is_some()
+            {
+                pump(&mut runtime);
+                assert!(Instant::now() < deadline, "Make X did not resume");
+                std::thread::sleep(Duration::from_millis(1));
+            }
+            assert_eq!(
+                runtime.world.data(actor).unwrap().variables.get(7000),
+                expected
+            );
+            assert_eq!(
+                runtime.interface_state(actor).unwrap().modals.get(parent),
+                Some(312)
+            );
+        }
+        // A second valid modal button cancels Make X before its protection
+        // check. A late numeric reply must not change the new literal quantity.
+        for child in [6u32, 4] {
+            let mut payload = ((312u32 << 16) | child).to_be_bytes().to_vec();
+            payload.extend(u16::MAX.to_be_bytes());
+            payload.extend(u16::MAX.to_be_bytes());
+            payload.push(1);
+            client
+                .write_all(
+                    &gielinor_protocol::framing::encode(
+                        button,
+                        &payload,
+                        &mut cipher,
+                        gielinor_protocol::framing::OpcodeWidth::Byte,
+                    )
+                    .unwrap(),
+                )
+                .unwrap();
+        }
+        let deadline = Instant::now() + Duration::from_secs(2);
+        while runtime.world.data(actor).unwrap().variables.get(7000) != 5 {
+            pump(&mut runtime);
+            assert!(
+                Instant::now() < deadline,
+                "Literal button did not cancel Make X"
+            );
+            std::thread::sleep(Duration::from_millis(1));
+        }
+        assert_eq!(runtime.world.quantity_dialog_token(actor).unwrap(), None);
+        assert!(!runtime.interface_state(actor).unwrap().input_dialog_open);
+        client
+            .write_all(
+                &gielinor_protocol::framing::encode(
+                    count_def,
+                    &99i32.to_be_bytes(),
+                    &mut cipher,
+                    gielinor_protocol::framing::OpcodeWidth::Byte,
+                )
+                .unwrap(),
+            )
+            .unwrap();
+        let deadline = Instant::now() + Duration::from_secs(2);
+        while !pump(&mut runtime).iter().any(|event| {
+            matches!(
+                event,
+                Event::CountDialogInput {
+                    count: 99,
+                    accepted: false,
+                    ..
+                }
+            )
+        }) {
+            assert!(Instant::now() < deadline, "Stale count input not rejected");
+            std::thread::sleep(Duration::from_millis(1));
+        }
+        assert_eq!(runtime.world.data(actor).unwrap().variables.get(7000), 5);
+        for child in [7u32, 9] {
+            let mut payload = ((312u32 << 16) | child).to_be_bytes().to_vec();
+            payload.extend(u16::MAX.to_be_bytes());
+            payload.extend(u16::MAX.to_be_bytes());
+            payload.push(1);
+            client
+                .write_all(
+                    &gielinor_protocol::framing::encode(
+                        button,
+                        &payload,
+                        &mut cipher,
+                        gielinor_protocol::framing::OpcodeWidth::Byte,
+                    )
+                    .unwrap(),
+                )
+                .unwrap();
+        }
+        let deadline = Instant::now() + Duration::from_secs(2);
+        while runtime.world.data(actor).unwrap().stats.fine_xp(13) == xp + 62 {
+            pump(&mut runtime);
+            runtime.tick().unwrap();
+            assert!(Instant::now() < deadline, "Anvil did not produce dagger");
+            std::thread::sleep(Duration::from_millis(1));
+        }
+        assert_eq!(
+            runtime.world.data(actor).unwrap().stats.fine_xp(13),
+            xp + 62 + 125
+        );
+        assert_eq!(runtime.world.data(actor).unwrap().variables.get(7000), 28);
+        assert_eq!(
+            runtime.interface_state(actor).unwrap().modals.get(parent),
+            None
+        );
+        for item in [2347, 1205] {
+            runtime
+                .world
+                .data_mut(actor)
+                .unwrap()
+                .inventory
+                .delete(&Catalog::default(), Delete::new(item, 1))
+                .unwrap();
+        }
+        assert_eq!(runtime.world.data(actor).unwrap().inventory.slots(), before);
+        runtime.world.change_location(furnace, false).unwrap();
+        // Publish furnace teardown in its own tick. Otherwise its LocDelete
+        // coalesces with the next door update in the same zone, invalidating
+        // that scenario's exact packet assertion. Drain through the delimiter
+        // so the door's map-flag assertion measures only its own action.
+        runtime.tick().unwrap();
+        let completed_ticks = runtime.world.clock.0 as usize;
+        while outgoing.tick_ends < completed_ticks {
+            if let Some(packet) = outgoing.next_packet().unwrap() {
+                if packet.opcode == 143 {
+                    assert_eq!(packet, gielinor_protocol::game::clear_map_flag());
+                    map_flags += 1;
+                }
+            } else if outgoing.tick_ends < completed_ticks {
+                let mut byte = [0];
+                read(&mut runtime, &mut client, &mut byte);
+                outgoing.feed(&byte).unwrap();
+            }
+        }
+        assert_eq!(map_flags, 1, "furnace reach clears its map flag");
+    }
     {
         use gielinor_world::{
             doors::{Door, Kind},
@@ -2325,6 +3346,17 @@ fn exercise_lifecycle(with_login: bool) {
             }
             if packet == expected {
                 break;
+            }
+        }
+        for packet in finish_tick(&mut runtime, &mut client, &mut outgoing) {
+            if packet.opcode == 77 {
+                assert_eq!(packet, gielinor_protocol::game::synth_sound(62, 1, 0));
+                assert!(!sound, "Duplicate door sound");
+                sound = true;
+            }
+            if packet.opcode == 143 {
+                assert_eq!(packet, gielinor_protocol::game::clear_map_flag());
+                resets += 1;
             }
         }
         assert!(sound);
@@ -2433,6 +3465,13 @@ fn exercise_lifecycle(with_login: bool) {
             .unwrap();
             if packet.opcode == 105 && packet.payload.ends_with(&deletion) {
                 break;
+            }
+        }
+        for packet in finish_tick(&mut runtime, &mut client, &mut outgoing) {
+            if packet.opcode == 77 {
+                assert_eq!(packet, gielinor_protocol::game::synth_sound(2582, 1, 0));
+                assert!(!sound, "Duplicate pickup sound");
+                sound = true;
             }
         }
         assert!(sound);
@@ -2706,6 +3745,9 @@ fn exercise_lifecycle(with_login: bool) {
         }
     }
     exercise_prayer_tab(&mut runtime, actor, &mut client, &mut cipher, &mut outgoing);
+    exercise_creator_controls(&mut runtime, actor, &mut client, &mut cipher, &mut outgoing);
+    exercise_tutorial_output(&mut runtime, actor, &mut client, &mut outgoing);
+    exercise_tutorial_character(&mut runtime, actor, &mut client, &mut cipher, &mut outgoing);
     // A real encrypted NPC option reaches the banker approach handler and opens both panes.
     let coords = runtime.world.data(actor).unwrap().coords;
     let banker = runtime
@@ -2844,6 +3886,1337 @@ fn exercise_lifecycle(with_login: bool) {
             .x(),
         3203
     );
+}
+fn exercise_tutorial_character(
+    runtime: &mut Runtime<Backend>,
+    actor: gielinor_world::simulation::ActorId,
+    client: &mut TcpStream,
+    cipher: &mut Option<gielinor_protocol::isaac::Isaac>,
+    outgoing: &mut TickDecoder,
+) {
+    use gielinor_world::ui::Component;
+    fn drain(
+        runtime: &mut Runtime<Backend>,
+        actor: gielinor_world::simulation::ActorId,
+        client: &mut TcpStream,
+        outgoing: &mut TickDecoder,
+    ) -> Vec<gielinor_protocol::framing::Packet> {
+        let marker = gielinor_protocol::varp::update(65000, 239929);
+        let connection = runtime.connection(actor).unwrap();
+        runtime
+            .transport
+            .send(connection, marker.opcode, &marker.payload)
+            .unwrap();
+        let mut packets = vec![];
+        loop {
+            if let Some(packet) = outgoing.next_packet().unwrap() {
+                if packet == marker {
+                    return packets;
+                }
+                packets.push(packet);
+            } else {
+                let mut byte = [0];
+                read(runtime, client, &mut byte);
+                outgoing.feed(&byte).unwrap();
+            }
+        }
+    }
+    fn button(
+        runtime: &mut Runtime<Backend>,
+        client: &mut TcpStream,
+        cipher: &mut Option<gielinor_protocol::isaac::Isaac>,
+        component: u32,
+        expected_route: gielinor_world::ui::ButtonRoute,
+    ) {
+        let def = *gielinor_protocol::tables::CLIENT
+            .iter()
+            .find(|d| d.opcode == 47)
+            .unwrap();
+        let mut payload = component.to_be_bytes().to_vec();
+        payload.extend(u16::MAX.to_be_bytes());
+        payload.extend(u16::MAX.to_be_bytes());
+        payload.push(1);
+        client
+            .write_all(
+                &gielinor_protocol::framing::encode(
+                    def,
+                    &payload,
+                    cipher,
+                    gielinor_protocol::framing::OpcodeWidth::Byte,
+                )
+                .unwrap(),
+            )
+            .unwrap();
+        let deadline = Instant::now() + Duration::from_secs(2);
+        loop {
+            let events = pump(runtime);
+            assert!(!events
+                .iter()
+                .any(|e| matches!(e, Event::PacketRejected { .. })));
+            if events.iter().any(|e|matches!(e,Event::InterfaceButton{button,route,..} if button.component==component && *route==expected_route)) {break;}
+            assert!(Instant::now() < deadline, "tutorial button not admitted");
+            std::thread::sleep(Duration::from_millis(1));
+        }
+    }
+    for choice in 0..3 {
+        runtime.set_varp(actor, 5003, 0).unwrap();
+        runtime.set_varp(actor, 5004, 0).unwrap();
+        drain(runtime, actor, client, outgoing);
+        runtime.begin_tutorial(actor).unwrap();
+        assert!(runtime
+            .interface_state(actor)
+            .unwrap()
+            .modals
+            .contains_interface(679));
+        let packets = drain(runtime, actor, client, outgoing);
+        let hides: Vec<_> = packets.iter().filter(|p| p.opcode == 63).cloned().collect();
+        assert_eq!(
+            hides,
+            [false, true, false].map(|v| gielinor_protocol::interfaces::hide((614 << 16) | 1, v))
+        );
+        assert!(packets.contains(&gielinor_protocol::music::song(62, 0, 0, 0, 0)));
+        button(
+            runtime,
+            client,
+            cipher,
+            (679 << 16) | 3,
+            gielinor_world::ui::ButtonRoute::Modal,
+        );
+        assert_eq!(runtime.world.data(actor).unwrap().variables.get(5003), 1);
+        assert!(runtime
+            .interface_state(actor)
+            .unwrap()
+            .modals
+            .contains_interface(929));
+        assert!(!runtime
+            .interface_state(actor)
+            .unwrap()
+            .modals
+            .contains_interface(679));
+        drain(runtime, actor, client, outgoing);
+        button(
+            runtime,
+            client,
+            cipher,
+            (929 << 16) | choice,
+            gielinor_world::ui::ButtonRoute::Modal,
+        );
+        let vars = &runtime.world.data(actor).unwrap().variables;
+        assert_eq!(vars.get(5003), 2);
+        assert_eq!(vars.get(5005), i32::from(choice == 0));
+        assert!(!runtime
+            .interface_state(actor)
+            .unwrap()
+            .modals
+            .contains_interface(929));
+        let packets = drain(runtime, actor, client, outgoing);
+        assert!(
+            packets.contains(&gielinor_protocol::interfaces::hide((614 << 16) | 1, true)),
+            "world click blocker must be released"
+        );
+    }
+    // Original bootstrap fixtures cover completed accounts, both body types,
+    // invalid progress, and both creator stages. Compare the actual TCP stream.
+    let fixture = std::fs::read_to_string(concat!(
+        env!("CARGO_MANIFEST_DIR"),
+        "/tests/fixtures/tutorial-bootstrap.expected"
+    ))
+    .expect("generate the original tutorial bootstrap fixture first");
+    let mut compared = 0;
+    for row in fixture.lines() {
+        let fields: Vec<_> = row.split('|').collect();
+        assert_eq!(fields.len(), 7);
+        if fields[3] != "10" {
+            continue;
+        }
+        for child in [23, 24, 25] {
+            runtime
+                .close_interface(actor, Component::new(548, child))
+                .unwrap();
+        }
+        for id in 5000..=5005 {
+            runtime.set_varp(actor, id, 0).unwrap();
+        }
+        runtime
+            .set_varp(actor, 5003, fields[0].parse().unwrap())
+            .unwrap();
+        runtime
+            .set_varp(actor, 5004, fields[1].parse().unwrap())
+            .unwrap();
+        let mut design = runtime.appearance_design(actor).unwrap().clone();
+        design.body_type = fields[2].parse().unwrap();
+        design.pronoun = design.body_type + 1;
+        design.hidden = false;
+        runtime.set_appearance(actor, design).unwrap();
+        drain(runtime, actor, client, outgoing);
+        runtime.begin_tutorial(actor).unwrap();
+        let actual = drain(runtime, actor, client, outgoing)
+            .iter()
+            .map(|p| {
+                format!(
+                    "{}:{}",
+                    p.opcode,
+                    p.payload
+                        .iter()
+                        .map(|b| format!("{b:02x}"))
+                        .collect::<String>()
+                )
+            })
+            .collect::<Vec<_>>()
+            .join(",");
+        assert_eq!(actual, fields[6], "bootstrap packets: {row}");
+        assert_eq!(
+            runtime.appearance_design(actor).unwrap().hidden.to_string(),
+            fields[4]
+        );
+        let vars = &runtime.world.data(actor).unwrap().variables;
+        let values = (5000..=5005)
+            .map(|id| vars.get(id).to_string())
+            .collect::<Vec<_>>()
+            .join(",");
+        assert_eq!(values, fields[5], "bootstrap variables: {row}");
+        compared += 1;
+    }
+    assert_eq!(compared, 12);
+    for child in [23, 24, 25] {
+        runtime
+            .close_interface(actor, Component::new(548, child))
+            .unwrap();
+    }
+    // Side-panel hooks do not test the completed flag in the original.
+    runtime.set_varp(actor, 5004, 1).unwrap();
+    runtime.set_varp(actor, 5003, 30).unwrap();
+    runtime
+        .open_interface(actor, Some(Component::new(548, 25)), 162, true)
+        .unwrap();
+    drain(runtime, actor, client, outgoing);
+    for step in [31, 32] {
+        button(
+            runtime,
+            client,
+            cipher,
+            162 << 16,
+            gielinor_world::ui::ButtonRoute::Overlay,
+        );
+        assert_eq!(runtime.world.data(actor).unwrap().variables.get(5003), step);
+        assert_eq!(runtime.world.data(actor).unwrap().variables.get(5004), 1);
+        assert!(!drain(runtime, actor, client, outgoing).is_empty());
+    }
+    runtime.set_varp(actor, 5003, 3).unwrap();
+    drain(runtime, actor, client, outgoing);
+    button(
+        runtime,
+        client,
+        cipher,
+        614 << 16,
+        gielinor_world::ui::ButtonRoute::Overlay,
+    );
+    let packets = drain(runtime, actor, client, outgoing);
+    assert_eq!(runtime.world.data(actor).unwrap().variables.get(5003), 3);
+    assert!(packets.iter().all(|p| p.opcode == 50 || p.opcode == 114));
+    assert_eq!(packets.last().unwrap(), &gielinor_protocol::client_script::run(1974, &[gielinor_protocol::client_script::Argument::String("<col=0000ff>Settings menu</col><br>Good. Now speak to the Gielinor Guide again to continue.".into())]).unwrap());
+    drain(runtime, actor, client, outgoing);
+    runtime.begin_tutorial(actor).unwrap();
+    assert!(drain(runtime, actor, client, outgoing).is_empty());
+    // Real encrypted NPC op1 and Continue packets traverse the protected
+    // dialogue pipeline. Its final focus replaces the chat modal with overlay162.
+    runtime.set_varp(actor, 5004, 0).unwrap();
+    runtime.set_varp(actor, 5003, 2).unwrap();
+    let coords = runtime.world.observe(actor).unwrap().coords;
+    let guide = runtime
+        .world
+        .spawn_npc(
+            gielinor_world::npc::Npc::new(
+                1,
+                coords.translate(1, 0, 0).unwrap(),
+                1,
+                gielinor_world::npc::Restrict::NoMove,
+                gielinor_world::npc::BlockWalk::None,
+            )
+            .unwrap(),
+        )
+        .unwrap();
+    runtime.world.npc_options.types.insert(
+        1,
+        gielinor_world::npc_options::Definition {
+            operations: [Some("Talk-to".into()), None, None, None, None],
+            ..Default::default()
+        },
+    );
+    runtime.world.npc_handlers.insert(
+        (1, 1),
+        gielinor_world::npc_interaction::Handler::TutorialGuide { step_varp: 5003 },
+    );
+    drain(runtime, actor, client, outgoing);
+    let send = |client: &mut TcpStream,
+                cipher: &mut Option<gielinor_protocol::isaac::Isaac>,
+                opcode,
+                payload: &[u8]| {
+        let def = *gielinor_protocol::tables::CLIENT
+            .iter()
+            .find(|d| d.opcode == opcode)
+            .unwrap();
+        client
+            .write_all(
+                &gielinor_protocol::framing::encode(
+                    def,
+                    payload,
+                    cipher,
+                    gielinor_protocol::framing::OpcodeWidth::Byte,
+                )
+                .unwrap(),
+            )
+            .unwrap();
+    };
+    let [lo, hi] = guide.slot.to_le_bytes();
+    send(client, cipher, 102, &[lo, hi, 0, 128]);
+    let deadline = Instant::now() + Duration::from_secs(2);
+    while runtime.world.dialogue_token(actor).unwrap().is_none() {
+        let mut events = pump(runtime);
+        events.extend(runtime.tick().unwrap());
+        assert!(!events.iter().any(|e| matches!(
+            e,
+            Event::PacketRejected { .. } | Event::SynchronizationFailed { .. }
+        )));
+        assert!(
+            Instant::now() < deadline,
+            "native guide operation did not start dialogue"
+        );
+        std::thread::sleep(Duration::from_millis(1));
+    }
+    drain(runtime, actor, client, outgoing);
+    for page in 0..4 {
+        assert_eq!(runtime.world.data(actor).unwrap().variables.get(5003), 2);
+        assert!(runtime
+            .interface_state(actor)
+            .unwrap()
+            .modals
+            .contains_interface(231));
+        let token = runtime.world.dialogue_token(actor).unwrap();
+        let [a, b, c, d] = ((231u32 << 16) | 5).to_be_bytes();
+        send(client, cipher, 115, &[b, a, d, c, 255, 255]);
+        let deadline = Instant::now() + Duration::from_secs(2);
+        while runtime.world.dialogue_token(actor).unwrap() == token {
+            let mut events = pump(runtime);
+            events.extend(runtime.tick().unwrap());
+            assert!(!events.iter().any(|e| matches!(
+                e,
+                Event::PacketRejected { .. } | Event::SynchronizationFailed { .. }
+            )));
+            assert!(
+                Instant::now() < deadline,
+                "guide Continue did not advance page{page}"
+            );
+            std::thread::sleep(Duration::from_millis(1));
+        }
+        let packets = drain(runtime, actor, client, outgoing);
+        if page == 3 {
+            assert_eq!(runtime.world.data(actor).unwrap().variables.get(5003), 3);
+            assert!(packets.contains(
+                &gielinor_protocol::client_script::run(
+                    915,
+                    &[gielinor_protocol::client_script::Argument::Int(11)]
+                )
+                .unwrap()
+            ));
+            assert!(runtime
+                .interface_state(actor)
+                .unwrap()
+                .overlays
+                .contains_interface(162));
+            assert!(!runtime
+                .interface_state(actor)
+                .unwrap()
+                .modals
+                .contains_interface(231));
+            assert!(!runtime.world.protection(actor).unwrap().suspended);
+        }
+    }
+    // Real encrypted location operations cross the tutorial doorway in both
+    // directions. The second op refreshes progress without rewinding it.
+    let source = runtime.world.data(actor).unwrap().coords;
+    let loc = gielinor_world::locations::Location::new(source, 60000, 0, 0).unwrap();
+    runtime.world.location_types.insert(
+        60000,
+        gielinor_world::loc_collision::LocCollision {
+            width: 1,
+            length: 1,
+            block_walk: 0,
+            block_range: false,
+            break_route_finding: false,
+        },
+    );
+    // Earlier door coverage leaves a dynamic replacement on this tile. Install
+    // through the live registry so it cannot shadow a static test location.
+    runtime.world.change_location(loc, true).unwrap();
+    assert_eq!(runtime.world.locations.find_type(source, 60000), Some(loc));
+    runtime
+        .set_tutorial_step(
+            actor,
+            gielinor_world::tutorial_steps::Step::GielinorDoor,
+            None,
+        )
+        .unwrap();
+    drain(runtime, actor, client, outgoing);
+    for target in [source.translate(-1, 0, 0).unwrap(), source] {
+        let [zh, zl] = (source.z() as u16).to_be_bytes();
+        let [xl, xh] = (source.x() as u16).to_le_bytes();
+        let [idh, idl] = 60000u16.to_be_bytes();
+        send(
+            client,
+            cipher,
+            73,
+            &[zh, zl.wrapping_add(128), xl, xh, 128, 128, idh, idl],
+        );
+        let deadline = Instant::now() + Duration::from_secs(2);
+        while runtime.world.data(actor).unwrap().coords != target {
+            let mut events = pump(runtime);
+            events.extend(runtime.tick().unwrap());
+            assert!(!events.iter().any(|e| matches!(
+                e,
+                Event::PacketRejected { .. } | Event::SynchronizationFailed { .. }
+            )));
+            assert!(
+                Instant::now() < deadline,
+                "tutorial gate operation did not cross doorway: target={target:?}, current={:?}",
+                runtime.world.data(actor).unwrap().coords
+            );
+            std::thread::sleep(Duration::from_millis(1));
+        }
+        assert_eq!(runtime.world.data(actor).unwrap().variables.get(5003), 5);
+        let packets = drain(runtime, actor, client, outgoing);
+        let hint = gielinor_protocol::hint_arrow::Arrow::Npc(guide.slot).encode();
+        assert!(packets.contains(&hint));
+        assert!(
+            packets.iter().position(|p| *p == hint).unwrap()
+                > packets.iter().rposition(|p| p.opcode == 28).unwrap()
+        );
+    }
+    runtime.world.change_location(loc, false).unwrap();
+    runtime.world.npc_handlers.insert(
+        (1, 1),
+        gielinor_world::npc_interaction::Handler::SurvivalTutor(
+            gielinor_world::tutorial_survival::Config {
+                step_varp: 5003,
+                net: 8,
+                axe: 8,
+                tinderbox: 8,
+            },
+        ),
+    );
+    let item_count = |runtime: &Runtime<Backend>| {
+        runtime
+            .world
+            .data(actor)
+            .unwrap()
+            .inventory
+            .slots()
+            .iter()
+            .flatten()
+            .filter(|item| item.id == 8)
+            .map(|item| item.count)
+            .sum::<i32>()
+    };
+    let before = item_count(runtime);
+    drain(runtime, actor, client, outgoing);
+    let [lo, hi] = guide.slot.to_le_bytes();
+    send(client, cipher, 102, &[lo, hi, 0, 128]);
+    let deadline = Instant::now() + Duration::from_secs(2);
+    while runtime.world.dialogue_token(actor).unwrap().is_none() {
+        pump(runtime);
+        runtime.tick().unwrap();
+        assert!(
+            Instant::now() < deadline,
+            "Survival Tutor dialogue did not begin"
+        );
+        std::thread::sleep(Duration::from_millis(1));
+    }
+    drain(runtime, actor, client, outgoing);
+    for page in 0..2 {
+        assert_eq!(item_count(runtime), before);
+        let token = runtime.world.dialogue_token(actor).unwrap();
+        let [a, b, c, d] = ((231u32 << 16) | 5).to_be_bytes();
+        send(client, cipher, 115, &[b, a, d, c, 255, 255]);
+        let deadline = Instant::now() + Duration::from_secs(2);
+        while runtime.world.dialogue_token(actor).unwrap() == token {
+            pump(runtime);
+            runtime.tick().unwrap();
+            assert!(Instant::now() < deadline, "Survival Tutor Continue stalled");
+            std::thread::sleep(Duration::from_millis(1));
+        }
+        let packets = drain(runtime, actor, client, outgoing);
+        if page == 1 {
+            assert_eq!(item_count(runtime), before + 1);
+            assert_eq!(runtime.world.data(actor).unwrap().variables.get(5003), 6);
+            assert!(packets.contains(
+                &gielinor_protocol::client_script::run(
+                    915,
+                    &[gielinor_protocol::client_script::Argument::Int(3)]
+                )
+                .unwrap()
+            ));
+            assert!(runtime
+                .interface_state(actor)
+                .unwrap()
+                .overlays
+                .contains_interface(162));
+        }
+    }
+    use gielinor_world::npc_interaction::Handler;
+    let tutor_cases: Vec<(i32, Handler, &[u32], i32, Option<i32>)> = vec![
+        (
+            15,
+            Handler::MasterChef(gielinor_world::tutorial_chef::Config {
+                step_varp: 5003,
+                flour: 1933,
+                water: 1929,
+            }),
+            &[231, 217, 231],
+            16,
+            None,
+        ),
+        (
+            20,
+            Handler::QuestTutor { step_varp: 5003 },
+            &[231],
+            21,
+            Some(2),
+        ),
+        (
+            21,
+            Handler::QuestTutor { step_varp: 5003 },
+            &[231, 231, 231, 231, 231],
+            22,
+            None,
+        ),
+        (
+            23,
+            Handler::MiningTutor(gielinor_world::tutorial_mining_tutor::Config {
+                step_varp: 5003,
+                pickaxe: 1265,
+                hammer: 2347,
+            }),
+            &[231, 217, 231, 231],
+            24,
+            None,
+        ),
+        (
+            26,
+            Handler::MiningTutor(gielinor_world::tutorial_mining_tutor::Config {
+                step_varp: 5003,
+                pickaxe: 1265,
+                hammer: 2347,
+            }),
+            &[217, 231],
+            27,
+            None,
+        ),
+    ];
+    for (initial, handler, interfaces, expected, tab) in tutor_cases {
+        runtime.world.npc_handlers.insert((1, 1), handler);
+        runtime
+            .set_tutorial_step(
+                actor,
+                gielinor_world::tutorial_steps::Step::from_var(initial),
+                None,
+            )
+            .unwrap();
+        drain(runtime, actor, client, outgoing);
+        send(client, cipher, 102, &[lo, hi, 0, 128]);
+        let deadline = Instant::now() + Duration::from_secs(2);
+        while runtime.world.dialogue_token(actor).unwrap().is_none() {
+            pump(runtime);
+            runtime.tick().unwrap();
+            assert!(
+                Instant::now() < deadline,
+                "Tutor{initial} dialogue did not begin"
+            );
+            std::thread::sleep(Duration::from_millis(1));
+        }
+        let opening_packets = drain(runtime, actor, client, outgoing);
+        if initial == 26 {
+            assert!(
+                opening_packets.contains(&gielinor_protocol::interfaces::animation(
+                    (217 << 16) | 2,
+                    Some(6000)
+                ))
+            );
+        }
+        for (index, &interface) in interfaces.iter().enumerate() {
+            assert_eq!(
+                runtime.world.data(actor).unwrap().variables.get(5003),
+                initial
+            );
+            assert!(runtime
+                .interface_state(actor)
+                .unwrap()
+                .modals
+                .contains_interface(interface as u16));
+            let token = runtime.world.dialogue_token(actor).unwrap();
+            let [a, b, c, d] = ((interface << 16) | 5).to_be_bytes();
+            send(client, cipher, 115, &[b, a, d, c, 255, 255]);
+            let deadline = Instant::now() + Duration::from_secs(2);
+            while runtime.world.dialogue_token(actor).unwrap() == token {
+                pump(runtime);
+                runtime.tick().unwrap();
+                assert!(
+                    Instant::now() < deadline,
+                    "Tutor{initial} Continue stalled on page{index}"
+                );
+                std::thread::sleep(Duration::from_millis(1));
+            }
+            let packets = drain(runtime, actor, client, outgoing);
+            if initial == 23 && index == 0 {
+                let name = &runtime.world.data(actor).unwrap().display_name;
+                assert!(packets.contains(
+                    &gielinor_protocol::interfaces::text(
+                        (217 << 16) | 6,
+                        &format!("You can call me {name}.")
+                    )
+                    .unwrap()
+                ));
+            }
+            if index + 1 == interfaces.len() {
+                assert_eq!(
+                    runtime.world.data(actor).unwrap().variables.get(5003),
+                    expected
+                );
+                assert!(runtime
+                    .interface_state(actor)
+                    .unwrap()
+                    .overlays
+                    .contains_interface(162));
+                if let Some(tab) = tab {
+                    assert!(packets.contains(
+                        &gielinor_protocol::client_script::run(
+                            915,
+                            &[gielinor_protocol::client_script::Argument::Int(tab)]
+                        )
+                        .unwrap()
+                    ));
+                }
+            }
+        }
+        if initial == 23 || initial == 26 {
+            let item = if initial == 23 { 1265 } else { 2347 };
+            assert_eq!(
+                runtime
+                    .world
+                    .data(actor)
+                    .unwrap()
+                    .inventory
+                    .slots()
+                    .iter()
+                    .flatten()
+                    .filter(|entry| entry.id == item)
+                    .map(|entry| entry.count)
+                    .sum::<i32>(),
+                1
+            );
+        }
+        if initial == 15 {
+            for id in [1933, 1929] {
+                assert_eq!(
+                    runtime
+                        .world
+                        .data(actor)
+                        .unwrap()
+                        .inventory
+                        .slots()
+                        .iter()
+                        .flatten()
+                        .filter(|i| i.id == id)
+                        .map(|i| i.count)
+                        .sum::<i32>(),
+                    1
+                );
+            }
+            // Exercise IF_BUTTONT through encryption, permissions, protected
+            // cancellation, authoritative slots, recipe and tutorial focus.
+            let inv_component = Component::new(149, 0);
+            runtime
+                .open_interface(actor, Some(Component::new(548, 20)), 149, true)
+                .unwrap();
+            runtime
+                .set_interface_events(actor, inv_component, 0, 27, (1 << 16) | (1 << 21))
+                .unwrap();
+            let inv = &runtime.world.data(actor).unwrap().inventory;
+            let slot = |id| {
+                inv.slots()
+                    .iter()
+                    .position(|item| item.is_some_and(|i| i.id == id))
+                    .unwrap() as u16
+            };
+            let [sh, sl] = slot(1933).to_be_bytes();
+            let [tl, th] = slot(1929).to_le_bytes();
+            let [oh, ol] = 1933u16.to_be_bytes();
+            let [dl, dh] = 1929u16.to_le_bytes();
+            let [a, b, c, d] = inv_component.0.to_be_bytes();
+            let mut request = inv_component.0.to_be_bytes().to_vec();
+            request.extend([
+                sh,
+                sl.wrapping_add(128),
+                dl.wrapping_add(128),
+                dh,
+                tl,
+                th,
+                oh,
+                ol.wrapping_add(128),
+                c,
+                d,
+                a,
+                b,
+            ]);
+            drain(runtime, actor, client, outgoing);
+            send(client, cipher, 27, &request);
+            let deadline = Instant::now() + Duration::from_secs(2);
+            while runtime.world.data(actor).unwrap().variables.get(5003) == 16 {
+                let mut events = pump(runtime);
+                events.extend(runtime.tick().unwrap());
+                assert!(
+                    !events.iter().any(|e| matches!(
+                        e,
+                        Event::PacketRejected { .. } | Event::SynchronizationFailed { .. }
+                    )),
+                    "Dough operation was rejected or synchronization failed"
+                );
+                assert!(Instant::now() < deadline, "Dough target operation stalled");
+                std::thread::sleep(Duration::from_millis(1));
+            }
+            assert_eq!(runtime.world.data(actor).unwrap().variables.get(5003), 17);
+            let inv = &runtime.world.data(actor).unwrap().inventory;
+            for id in [1931, 1925, 2307] {
+                assert!(
+                    inv.slots().iter().flatten().any(|i| i.id == id),
+                    "Recipe item {id} missing"
+                );
+            }
+            assert!(!inv
+                .slots()
+                .iter()
+                .flatten()
+                .any(|i| matches!(i.id, 1933 | 1929)));
+            let packets = drain(runtime, actor, client, outgoing);
+            assert!(packets.contains(
+                &gielinor_protocol::chat::game(0, None, "You make some dough.").unwrap()
+            ));
+            let range_coords = runtime
+                .world
+                .data(actor)
+                .unwrap()
+                .coords
+                .translate(1, 0, 0)
+                .unwrap();
+            let range =
+                gielinor_world::locations::Location::new(range_coords, 60001, 10, 0).unwrap();
+            runtime.world.location_types.insert(
+                60001,
+                gielinor_world::loc_collision::LocCollision {
+                    width: 1,
+                    length: 1,
+                    block_walk: 2,
+                    block_range: false,
+                    break_route_finding: false,
+                },
+            );
+            runtime.world.change_location(range, true).unwrap();
+            let before_xp = runtime.world.data(actor).unwrap().stats.xp(7);
+            let [zh, zl] = (range_coords.z() as u16).to_be_bytes();
+            let [xl, xh] = (range_coords.x() as u16).to_le_bytes();
+            let [idh, idl] = 60001u16.to_be_bytes();
+            send(
+                client,
+                cipher,
+                73,
+                &[zh, zl.wrapping_add(128), xl, xh, 128, 128, idh, idl],
+            );
+            let deadline = Instant::now() + Duration::from_secs(2);
+            while runtime.world.data(actor).unwrap().variables.get(5003) == 17 {
+                let mut events = pump(runtime);
+                events.extend(runtime.tick().unwrap());
+                assert!(
+                    !events.iter().any(|e| matches!(
+                        e,
+                        Event::PacketRejected { .. } | Event::SynchronizationFailed { .. }
+                    )),
+                    "Range operation was rejected or synchronization failed"
+                );
+                for event in &events {
+                    if let Event::World(gielinor_world::simulation::WorldEvent::ActionRejected {
+                        error,
+                        ..
+                    }) = event
+                    {
+                        panic!("Range world action rejected: {error:?}");
+                    }
+                }
+                assert!(
+                    Instant::now() < deadline,
+                    "Tutorial range operation stalled"
+                );
+                std::thread::sleep(Duration::from_millis(1));
+            }
+            assert_eq!(runtime.world.data(actor).unwrap().variables.get(5003), 18);
+            assert_eq!(
+                runtime.world.data(actor).unwrap().stats.xp(7),
+                before_xp + 40
+            );
+            let inv = &runtime.world.data(actor).unwrap().inventory;
+            assert!(inv.slots().iter().flatten().any(|i| i.id == 2309));
+            assert!(!inv.slots().iter().flatten().any(|i| i.id == 2307));
+            let packets = drain(runtime, actor, client, outgoing);
+            assert!(packets.contains(
+                &gielinor_protocol::chat::game(0, None, "You manage to bake some bread.").unwrap()
+            ));
+            // Use the same range through OPLOCT, retaining authoritative slot
+            // checks and distinguishing TgtLoc from IF_BUTTONT permissions.
+            let inv = &mut runtime.world.data_mut(actor).unwrap().inventory;
+            let dough_slot = inv.slots().iter().position(Option::is_none).unwrap();
+            inv.restore_slot(
+                dough_slot,
+                Some(gielinor_world::inventory::Item {
+                    id: 2307,
+                    count: 1,
+                    vars: 0,
+                }),
+            )
+            .unwrap();
+            let [sh, sl] = (dough_slot as u16).to_be_bytes();
+            let mut use_range = vec![0, sh, sl.wrapping_add(128), idl, idh];
+            use_range.extend(inv_component.0.to_le_bytes());
+            use_range.extend([zl.wrapping_add(128), zh, xl, xh]);
+            use_range.extend(2307u16.to_le_bytes());
+            send(client, cipher, 62, &use_range);
+            let deadline = Instant::now() + Duration::from_secs(2);
+            loop {
+                let mut events = pump(runtime);
+                events.extend(runtime.tick().unwrap());
+                if events.iter().any(|e| matches!(e, Event::World(gielinor_world::simulation::WorldEvent::ClearMapFlag(id)) if *id == actor)) { break; }
+                assert!(
+                    Instant::now() < deadline,
+                    "Denied location target not processed"
+                );
+                std::thread::sleep(Duration::from_millis(1));
+            }
+            assert_eq!(
+                runtime.world.data(actor).unwrap().stats.xp(7),
+                before_xp + 40
+            );
+            assert_eq!(
+                runtime
+                    .world
+                    .data(actor)
+                    .unwrap()
+                    .inventory
+                    .get(dough_slot)
+                    .unwrap()
+                    .id,
+                2307
+            );
+            drain(runtime, actor, client, outgoing);
+            runtime
+                .set_interface_events(
+                    actor,
+                    inv_component,
+                    0,
+                    27,
+                    (1 << 13) | (1 << 16) | (1 << 21),
+                )
+                .unwrap();
+            send(client, cipher, 62, &use_range);
+            let deadline = Instant::now() + Duration::from_secs(2);
+            while runtime.world.data(actor).unwrap().stats.xp(7) == before_xp + 40 {
+                let mut events = pump(runtime);
+                events.extend(runtime.tick().unwrap());
+                assert!(
+                    !events.iter().any(|e| matches!(
+                        e,
+                        Event::PacketRejected { .. } | Event::SynchronizationFailed { .. }
+                    )),
+                    "Item-on-range operation rejected"
+                );
+                assert!(Instant::now() < deadline, "Item-on-range operation stalled");
+                std::thread::sleep(Duration::from_millis(1));
+            }
+            assert_eq!(
+                runtime.world.data(actor).unwrap().stats.xp(7),
+                before_xp + 80
+            );
+            assert_eq!(runtime.world.data(actor).unwrap().variables.get(5003), 18);
+            let packets = drain(runtime, actor, client, outgoing);
+            assert!(packets.contains(
+                &gielinor_protocol::chat::game(0, None, "You manage to bake some bread.").unwrap()
+            ));
+            runtime.world.change_location(range, false).unwrap();
+        }
+    }
+    // The original Magic Instructor uses a custom choice title, not the default.
+    runtime.world.npc_handlers.insert(
+        (1, 1),
+        gielinor_world::npc_interaction::Handler::MagicTutor(
+            gielinor_world::tutorial_magic_tutor::Config {
+                step_varp: 5003,
+                air: 8,
+                mind: 8,
+            },
+        ),
+    );
+    runtime.set_varp(actor, 5003, 51).unwrap();
+    runtime.set_varp(actor, 5004, 0).unwrap();
+    drain(runtime, actor, client, outgoing);
+    let [lo, hi] = guide.slot.to_le_bytes();
+    send(client, cipher, 102, &[lo, hi, 0, 128]);
+    let deadline = Instant::now() + Duration::from_secs(2);
+    while runtime.world.dialogue_token(actor).unwrap().is_none() {
+        pump(runtime);
+        runtime.tick().unwrap();
+        assert!(Instant::now() < deadline, "Magic Instructor did not start");
+        std::thread::sleep(Duration::from_millis(1));
+    }
+    drain(runtime, actor, client, outgoing);
+    for (component, selection) in [((231u32 << 16) | 5, u16::MAX), ((219u32 << 16) | 1, 2)] {
+        let token = runtime.world.dialogue_token(actor).unwrap();
+        let [a, b, c, d] = component.to_be_bytes();
+        let [high, low] = selection.to_be_bytes();
+        send(client, cipher, 115, &[b, a, d, c, high, low]);
+        let deadline = Instant::now() + Duration::from_secs(2);
+        while runtime.world.dialogue_token(actor).unwrap() == token {
+            let mut events = pump(runtime);
+            events.extend(runtime.tick().unwrap());
+            assert!(!events.iter().any(|e| matches!(
+                e,
+                Event::PacketRejected { .. } | Event::SynchronizationFailed { .. }
+            )));
+            assert!(
+                Instant::now() < deadline,
+                "Magic Instructor resume did not advance"
+            );
+            std::thread::sleep(Duration::from_millis(1));
+        }
+        let packets = drain(runtime, actor, client, outgoing);
+        if selection == u16::MAX {
+            use gielinor_protocol::client_script::Argument;
+            assert!(packets.contains(
+                &gielinor_protocol::client_script::run(
+                    58,
+                    &[
+                        Argument::String(gielinor_world::tutorial_magic_tutor::GO_TITLE.into()),
+                        Argument::String("Yes.|No.".into()),
+                    ]
+                )
+                .unwrap()
+            ));
+        }
+    }
+    assert_eq!(runtime.world.data(actor).unwrap().variables.get(5003), 51);
+    assert!(runtime.world.dialogue_token(actor).unwrap().is_none());
+    // Original Wind Strike selection changes focus but never fabricates a cast.
+    let wind = (679 << 16) | 3;
+    runtime
+        .open_interface(actor, Some(Component::new(548, 23)), 679, true)
+        .unwrap();
+    runtime
+        .set_interface_events(
+            actor,
+            Component(wind),
+            -1,
+            -1,
+            gielinor_world::ui::operation_mask(1).unwrap(),
+        )
+        .unwrap();
+    for (raw, done, eligible) in [
+        (49, 0, true),
+        (50, 0, true),
+        (48, 0, false),
+        (49, 1, false),
+        (49, 2, true),
+    ] {
+        runtime.set_varp(actor, 5003, raw).unwrap();
+        runtime.set_varp(actor, 5004, done).unwrap();
+        drain(runtime, actor, client, outgoing);
+        button(
+            runtime,
+            client,
+            cipher,
+            wind,
+            gielinor_world::ui::ButtonRoute::Overlay,
+        );
+        let packets = drain(runtime, actor, client, outgoing);
+        assert_eq!(
+            runtime.world.data(actor).unwrap().variables.get(5003),
+            if eligible { 50 } else { raw }
+        );
+        let message =
+            gielinor_protocol::chat::game(0, None, gielinor_world::tutorial_magic_ui::WIND_MESSAGE)
+                .unwrap();
+        assert_eq!(
+            packets.iter().filter(|packet| **packet == message).count(),
+            usize::from(eligible)
+        );
+        if eligible {
+            assert!(packets.contains(
+                &gielinor_protocol::client_script::run(
+                    2081,
+                    &[gielinor_protocol::client_script::Argument::Int(wind as i32)]
+                )
+                .unwrap()
+            ));
+        } else {
+            assert!(packets.is_empty());
+        }
+    }
+    runtime
+        .close_interface(actor, Component::new(548, 23))
+        .unwrap();
+    // Reach both booths through encrypted OPLOC1, including denial, the
+    // completed-flag bypass, and the distinction between gifting and topping up.
+    let saved_bank = runtime.world.data(actor).unwrap().bank.clone();
+    for (id, raw, done, coins, expected_step, allowed) in [
+        (61000u16, 40, 0, 0, 40, false),
+        (61000, 41, 0, 0, 42, true),
+        (61000, 41, 0, 1, 42, true),
+        (61000, 0, 1, 24, 42, true),
+        (61001, 41, 0, 0, 41, false),
+        (61001, 42, 0, 0, 43, true),
+        (61001, 0, 1, 0, 43, true),
+    ] {
+        use gielinor_world::{
+            inventory::{Insert, Inventory, StackType},
+            tutorial_bank,
+        };
+        runtime.set_varp(actor, 5003, raw).unwrap();
+        runtime.set_varp(actor, 5004, done).unwrap();
+        let mut bank = Inventory::new(28, StackType::Always, false);
+        if coins > 0 {
+            bank.insert(&runtime.world.object_types, Insert::new(8, coins))
+                .unwrap();
+        }
+        runtime.world.data_mut(actor).unwrap().bank = bank;
+        let coords = runtime.world.data(actor).unwrap().coords;
+        let booth = gielinor_world::locations::Location::new(coords, id as u32, 10, 0).unwrap();
+        runtime.world.change_location(booth, true).unwrap();
+        drain(runtime, actor, client, outgoing);
+        let [zh, zl] = (coords.z() as u16).to_be_bytes();
+        let [xl, xh] = (coords.x() as u16).to_le_bytes();
+        let [idh, idl] = id.to_be_bytes();
+        send(
+            client,
+            cipher,
+            73,
+            &[zh, zl.wrapping_add(128), xl, xh, 128, 128, idh, idl],
+        );
+        let deadline = Instant::now() + Duration::from_secs(2);
+        loop {
+            let mut events = pump(runtime);
+            events.extend(runtime.tick().unwrap());
+            assert!(!events.iter().any(|e| matches!(
+                e,
+                Event::PacketRejected { .. } | Event::SynchronizationFailed { .. }
+            )));
+            if events.iter().any(|e| {
+                matches!(
+                    e,
+                    Event::World(
+                        gielinor_world::simulation::WorldEvent::TutorialBank { .. }
+                            | gielinor_world::simulation::WorldEvent::LocationMessage { .. }
+                    )
+                )
+            }) {
+                break;
+            }
+            assert!(Instant::now() < deadline, "tutorial booth did not resolve");
+            std::thread::sleep(Duration::from_millis(1));
+        }
+        let packets = drain(runtime, actor, client, outgoing);
+        assert_eq!(
+            runtime.world.data(actor).unwrap().variables.get(5003),
+            expected_step
+        );
+        let messages: &[&str] = match (id, allowed) {
+            (61000, true) => &[tutorial_bank::BANK_MESSAGE],
+            (61000, false) => &[tutorial_bank::BANK_DENY],
+            (_, true) => &tutorial_bank::POLL_MESSAGES,
+            (_, false) => &[tutorial_bank::POLL_DENY],
+        };
+        for message in messages {
+            let packet = gielinor_protocol::chat::game(0, None, message).unwrap();
+            assert_eq!(packets.iter().filter(|p| **p == packet).count(), 1);
+        }
+        assert_eq!(
+            runtime
+                .world
+                .data(actor)
+                .unwrap()
+                .bank
+                .get(0)
+                .map_or(0, |item| item.count),
+            if id == 61000 && allowed && coins == 0 {
+                25
+            } else {
+                coins
+            }
+        );
+        assert_eq!(
+            runtime
+                .interface_state(actor)
+                .unwrap()
+                .modals
+                .contains_interface(12),
+            id == 61000 && allowed
+        );
+        if id == 61000 && allowed {
+            runtime
+                .close_interface(actor, Component::new(548, 21))
+                .unwrap();
+            runtime
+                .close_interface(actor, Component::new(548, 22))
+                .unwrap();
+        }
+        runtime.world.change_location(booth, false).unwrap();
+        drain(runtime, actor, client, outgoing);
+    }
+    runtime.world.data_mut(actor).unwrap().bank = saved_bank;
+    runtime.world.despawn_npc(guide).unwrap();
+    runtime.set_varp(actor, 5004, 1).unwrap();
+    drain(runtime, actor, client, outgoing);
+    runtime
+        .close_interface(actor, Component::new(548, 24))
+        .unwrap();
+    runtime
+        .close_interface(actor, Component::new(548, 25))
+        .unwrap();
+    drain(runtime, actor, client, outgoing);
+}
+
+fn exercise_tutorial_output(
+    runtime: &mut Runtime<Backend>,
+    actor: gielinor_world::simulation::ActorId,
+    client: &mut TcpStream,
+    outgoing: &mut TickDecoder,
+) {
+    use gielinor_server::tutorial_ui::Effect;
+    use gielinor_world::{
+        ui::Component,
+        variables::{Transmit, Varbit, Varp},
+    };
+    let parent = Component::new(548, 23);
+    let connection = runtime.connection(actor).unwrap();
+    let marker = gielinor_protocol::varp::update(65000, 239614);
+    runtime
+        .transport
+        .send(connection, marker.opcode, &marker.payload)
+        .unwrap();
+    loop {
+        if let Some(packet) = outgoing.next_packet().unwrap() {
+            if packet == marker {
+                break;
+            }
+        } else {
+            let mut byte = [0];
+            read(runtime, client, &mut byte);
+            outgoing.feed(&byte).unwrap();
+        }
+    }
+    runtime.definitions.varps.insert(
+        5002,
+        Varp {
+            id: 5002,
+            permanent: false,
+            transmit: Transmit::Always,
+            bit_protect: false,
+            client_code: -1,
+        },
+    );
+    runtime.definitions.varbits.insert(
+        5002,
+        Varbit {
+            base: 5002,
+            lsb: 4,
+            msb: 7,
+        },
+    );
+    let arrow = gielinor_protocol::hint_arrow::Arrow::Npc(37).encode();
+    let hide = gielinor_protocol::interfaces::hide(679 << 16, true);
+    runtime
+        .apply_tutorial_effects(
+            actor,
+            [
+                Effect::Panel {
+                    parent,
+                    interface: 679,
+                    open: true,
+                },
+                Effect::Panel {
+                    parent,
+                    interface: 679,
+                    open: true,
+                },
+                Effect::Packet(arrow.clone()),
+                Effect::Packet(hide.clone()),
+                Effect::VariableBit {
+                    bit: 5002,
+                    value: 12,
+                },
+                Effect::VariableBit {
+                    bit: 5002,
+                    value: 0,
+                },
+                Effect::Panel {
+                    parent,
+                    interface: 679,
+                    open: false,
+                },
+                Effect::Panel {
+                    parent,
+                    interface: 679,
+                    open: false,
+                },
+            ],
+        )
+        .unwrap();
+    assert!(!runtime
+        .interface_state(actor)
+        .unwrap()
+        .overlays
+        .contains_interface(679));
+    assert_eq!(runtime.world.data(actor).unwrap().variables.get(5002), 0);
+    runtime
+        .transport
+        .send(connection, marker.opcode, &marker.payload)
+        .unwrap();
+    let mut actual = vec![];
+    loop {
+        if let Some(packet) = outgoing.next_packet().unwrap() {
+            if packet == marker {
+                break;
+            }
+            actual.push(packet);
+        } else {
+            let mut byte = [0];
+            read(runtime, client, &mut byte);
+            outgoing.feed(&byte).unwrap();
+        }
+    }
+    assert_eq!(
+        actual,
+        vec![
+            gielinor_protocol::interfaces::open_sub(
+                runtime.interface_state(actor).unwrap().translate(parent).0,
+                679,
+                true
+            ),
+            arrow,
+            hide,
+            gielinor_protocol::varp::update(5002, 192),
+            gielinor_protocol::varp::update(5002, 0),
+            gielinor_protocol::interfaces::close_sub(
+                runtime.interface_state(actor).unwrap().translate(parent).0
+            ),
+        ]
+    );
+}
+
+fn exercise_creator_controls(
+    runtime: &mut Runtime<Backend>,
+    actor: gielinor_world::simulation::ActorId,
+    client: &mut TcpStream,
+    cipher: &mut Option<gielinor_protocol::isaac::Isaac>,
+    outgoing: &mut TickDecoder,
+) {
+    use gielinor_world::ui::{ButtonRoute, Component};
+    let parent = Component::new(548, 23);
+    runtime
+        .open_interface(actor, Some(parent), 679, false)
+        .unwrap();
+    runtime
+        .set_interface_events(
+            actor,
+            Component::new(679, 2),
+            1,
+            3,
+            gielinor_world::ui::operation_mask(1).unwrap(),
+        )
+        .unwrap();
+    let button = *gielinor_protocol::tables::CLIENT
+        .iter()
+        .find(|d| d.opcode == 47)
+        .unwrap();
+    for (component, child, expected) in [
+        (679u32 << 16, -1, vec![(5000, 1), (5001, 1)]),
+        (679u32 << 16, -1, vec![(5000, 1)]), // same body still resynchronizes UI
+        ((679u32 << 16) | 2, 2, vec![(5001, 1)]), // repeated pronoun sets rebuild
+        ((679u32 << 16) | 2, 3, vec![(5001, 2)]),
+        ((679u32 << 16) | 1, -1, vec![(5000, 0), (5001, 0)]),
+    ] {
+        let mut payload = component.to_be_bytes().to_vec();
+        payload.extend((child as u16).to_be_bytes());
+        payload.extend(u16::MAX.to_be_bytes());
+        payload.push(1);
+        client
+            .write_all(
+                &gielinor_protocol::framing::encode(
+                    button,
+                    &payload,
+                    cipher,
+                    gielinor_protocol::framing::OpcodeWidth::Byte,
+                )
+                .unwrap(),
+            )
+            .unwrap();
+        let deadline = Instant::now() + Duration::from_secs(2);
+        loop {
+            let events = pump(runtime);
+            assert!(!events
+                .iter()
+                .any(|e| matches!(e, Event::PacketRejected { .. })));
+            if events.iter().any(|e| matches!(e, Event::InterfaceButton {button, route: ButtonRoute::Modal, ..} if button.component == component)) { break; }
+            assert!(
+                Instant::now() < deadline,
+                "creator modal input not admitted"
+            );
+            std::thread::sleep(Duration::from_millis(1));
+        }
+        for &(id, value) in &expected {
+            assert_eq!(runtime.world.data(actor).unwrap().variables.get(id), value);
+        }
+        // A diagnostic packet delimits writes from this admitted input; pending
+        // earlier tick output is consumed but never mistaken for creator writes.
+        let marker = gielinor_protocol::varp::update(65000, 239679);
+        runtime
+            .transport
+            .send(
+                runtime.connection(actor).unwrap(),
+                marker.opcode,
+                &marker.payload,
+            )
+            .unwrap();
+        let mut actual = vec![];
+        loop {
+            if let Some(packet) = outgoing.next_packet().unwrap() {
+                if packet == marker {
+                    break;
+                }
+                if expected
+                    .iter()
+                    .any(|&(id, value)| packet == gielinor_protocol::varp::update(id, value))
+                {
+                    actual.push(packet);
+                }
+            } else {
+                let mut byte = [0];
+                read(runtime, client, &mut byte);
+                outgoing.feed(&byte).unwrap();
+            }
+        }
+        assert_eq!(
+            actual,
+            expected
+                .into_iter()
+                .map(|(id, value)| gielinor_protocol::varp::update(id, value))
+                .collect::<Vec<_>>()
+        );
+    }
+    runtime.close_interface(actor, parent).unwrap();
 }
 fn exercise_prayer_tab(
     runtime: &mut Runtime<Backend>,
@@ -3081,6 +5454,10 @@ fn exercise_prayer_tab(
     runtime
         .close_interface(actor, Component::new(548, 22))
         .unwrap();
+    // The processed clock trails the next input clock. Let the delay expire in
+    // PlayerMain before the following banker input, which is otherwise rejected.
+    runtime.tick().unwrap();
+    assert!(!runtime.world.protection(actor).unwrap().delayed());
 }
 fn configure_autocast(runtime: &mut Runtime<Backend>) {
     use gielinor_world::{

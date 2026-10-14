@@ -34,6 +34,13 @@ $quoted = $runArgs | ForEach-Object { '"' + $_.Replace('\','/') + '"' }
 Set-Content "$oracleDir/run.args" $quoted -Encoding utf8
 & $java "@$oracleDir/run.args"
 if ($LASTEXITCODE -ne 0) { throw 'Ranged roll oracle execution failed.' }
+[ordered]@{
+    method='Original compiled ranged operations: 4096 formula and random replay cases. Equipment attribute collection and runtime attacks are not covered.'
+    sources=@('api/combat/combat-formulas/src/main/kotlin/org/rsmod/api/combat/formulas/accuracy/ranged/RangedAccuracyOperations.kt','api/combat/combat-formulas/src/main/kotlin/org/rsmod/api/combat/formulas/maxhit/ranged/RangedMaxHitOperations.kt') | ForEach-Object { [ordered]@{path=$_;sha256=(Get-FileHash "$serverRoot/reference/kotlin/$_").Hash} }
+    oracleSha256=(Get-FileHash "$serverRoot/reference/RangedRollOracle.kt").Hash
+    jars=@($references | Sort-Object -Unique | ForEach-Object { [ordered]@{path=$_;sha256=(Get-FileHash -LiteralPath $_).Hash} })
+    fixtureSha256=(Get-FileHash "$serverRoot/crates/world/tests/fixtures/ranged-roll.expected").Hash
+} | ConvertTo-Json -Depth 5 | Set-Content "$oracleDir/provenance.json" -Encoding utf8
 & "$serverRoot/build.ps1" -Action test -CargoArgs @('-p','gielinor-world','--test','kotlin_ranged_roll')
 
 

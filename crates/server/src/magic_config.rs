@@ -107,6 +107,91 @@ impl Inputs<'_> {
             combat_stats,
         })
     }
+    pub fn bulwark(
+        &self,
+        varps: &Symbols,
+        spots: &Symbols,
+    ) -> Result<gielinor_world::bulwark_wear::Config, String> {
+        let category = self.symbol(self.categories, "dinhs_bulwark")?;
+        let passive_delay = *self
+            .defs
+            .varps
+            .get(&(self.symbol(varps, "dinhs_passive_delay")? as u32))
+            .ok_or("Missing bulwark passive delay")?;
+        let glow = u16::try_from(self.symbol(spots, "dinhs_bulwark_glow_idle")?)
+            .map_err(|_| "Invalid bulwark glow")?;
+        Ok(gielinor_world::bulwark_wear::Config {
+            items: self
+                .defs
+                .items
+                .iter()
+                .filter(|(_, item)| item.category == category)
+                .map(|(&id, _)| id as i32)
+                .collect(),
+            passive_delay,
+            glow,
+        })
+    }
+    pub fn wearpos(
+        &self,
+        varps: &Symbols,
+        synths: &Symbols,
+        combat_stats: [u8; 7],
+    ) -> Result<gielinor_world::wearpos::Config, String> {
+        let varp = |name: &str| {
+            self.defs
+                .varps
+                .get(&(self.symbol(varps, name)? as u32))
+                .copied()
+                .ok_or_else(|| format!("Missing wearpos varp {name}"))
+        };
+        let default_sound = self.symbol(synths, "default_equipment")?;
+        // BaseObjs.snowball is a source alias for the cache's gublinch_snowball.
+        let snowball = self.obj("gublinch_snowball")?;
+        let items = self
+            .defs
+            .items
+            .iter()
+            .map(|(&id, item)| {
+                let sound = self.int(item, "equipment_sound")?.unwrap_or(default_sound);
+                let has_params =
+                    item.params_present || !item.params.is_empty() || id as i32 == snowball;
+                let sound = if !has_params {
+                    None
+                } else {
+                    Some(if sound == -1 {
+                        u16::MAX
+                    } else {
+                        u16::try_from(sound).map_err(|_| "Invalid equipment sound")?
+                    })
+                };
+                // ObjEdits and ParamBuilds are source-side additions to cache data.
+                let player_op = if id as i32 == snowball {
+                    Some("Pelt".to_owned())
+                } else {
+                    self.string(item, "player_op5_text")?
+                };
+                Ok((
+                    id as i32,
+                    gielinor_world::wearpos::Item {
+                        two_handed: item.wear[1..].contains(&5),
+                        category: item.weapon_category,
+                        sound,
+                        player_op,
+                    },
+                ))
+            })
+            .collect::<Result<_, String>>()?;
+        Ok(gielinor_world::wearpos::Config {
+            special: varp("sa_attack")?,
+            stance: varp("com_mode")?,
+            category: self.binding("combat_weapon_category")?,
+            level: self.binding("combatlevel_transmit")?,
+            decimal: self.binding("combatlevel_decimal_transmit")?,
+            combat_stats,
+            items,
+        })
+    }
     fn autocast(&self) -> Result<autocast::Config, String> {
         let autocast_items: BTreeMap<_, _> = self
             .integers(self.table("autocast_spells")?)?
@@ -349,5 +434,79 @@ impl Inputs<'_> {
             packs,
             names,
         })
+    }
+}
+
+#[cfg(test)]
+mod wearpos_tests {
+    use super::*;
+    use gielinor_world::variables::{Transmit, Varbit, Varp};
+    #[test]
+    fn source_defaults_keep_null_maps_and_snowball_operation_distinct() {
+        let varp = |id| Varp {
+            id,
+            permanent: true,
+            transmit: Transmit::Always,
+            bit_protect: false,
+            client_code: -1,
+        };
+        let defs = Definitions {
+            inventories: BTreeMap::new(),
+            locations: BTreeMap::new(),
+            npcs: BTreeMap::new(),
+            stats: BTreeMap::new(),
+            items: BTreeMap::from([
+                (1, ItemType::decode(&[0]).unwrap()),
+                (2, ItemType::decode(&[249, 0, 0]).unwrap()),
+                (3, ItemType::decode(&[0]).unwrap()),
+            ]),
+            varps: (0..5).map(|id| (id as u32, varp(id))).collect(),
+            varbits: (0..3)
+                .map(|id| {
+                    (
+                        id as u32,
+                        Varbit {
+                            base: id + 2,
+                            lsb: 0,
+                            msb: 7,
+                        },
+                    )
+                })
+                .collect(),
+        };
+        let objs = Symbols::from([("gublinch_snowball".into(), 3)]);
+        let params = Symbols::from([
+            ("equipment_sound".into(), 50),
+            ("player_op5_text".into(), 51),
+        ]);
+        let bits = Symbols::from([
+            ("combat_weapon_category".into(), 0),
+            ("combatlevel_transmit".into(), 1),
+            ("combatlevel_decimal_transmit".into(), 2),
+        ]);
+        let empty = Symbols::new();
+        let parameters = BTreeMap::new();
+        let tables = BTreeMap::new();
+        let config = Inputs {
+            objs: &objs,
+            params: &params,
+            bits: &bits,
+            enums: &empty,
+            categories: &empty,
+            parameter_types: &parameters,
+            tables: &tables,
+            defs: &defs,
+        }
+        .wearpos(
+            &Symbols::from([("sa_attack".into(), 0), ("com_mode".into(), 1)]),
+            &Symbols::from([("default_equipment".into(), 2238)]),
+            [0, 1, 2, 3, 4, 6, 5],
+        )
+        .unwrap();
+        assert_eq!(config.items[&1].sound, None);
+        assert_eq!(config.items[&2].sound, Some(2238));
+        assert_eq!(config.items[&2].player_op, None);
+        assert_eq!(config.items[&3].sound, Some(2238));
+        assert_eq!(config.items[&3].player_op.as_deref(), Some("Pelt"));
     }
 }

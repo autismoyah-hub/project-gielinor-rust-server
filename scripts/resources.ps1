@@ -32,10 +32,12 @@ public static class Agent2Memory {
     # Only exact, identified server runtimes are exempt; never alter those processes.
     # Unknown Java processes may be long-running Agent 1 Gradle daemons or tests.
     $knownLiveStart = [DateTimeOffset]::Parse('2026-10-02T18:17:04.3695206-07:00').UtcDateTime
-    # Agent 1's PID file and thread dump identify its isolated GameServer, port 43617.
+    # Fresh reboot identity: Agent 1 owned.pid15044, JVM GameServerKt command line,
+    # exact executable/start time, stdout-view-picks.log port43617.
+    # Evidence: work/reboot-java-15044-identity.txt; client work/kotlin-world/owned.pid.
     # This is a running test world, not a Gradle/compiler process. Pin its start time
     # as well as PID so a later PID reuse fails closed.
-    $knownClientWorldStart = [DateTimeOffset]::Parse('2026-10-12T06:10:00.7936528Z').UtcDateTime
+    $knownClientWorldStart = [DateTimeOffset]::Parse('2026-10-13T04:52:10.9645064Z').UtcDateTime
     # Read-only jcmd identified SocialNotificationVectors: main has exited, DestroyJavaVM
     # waits for an idle ThreadPoolExecutor. Fresh thread evidence confirms no compiler
     # tasks. Bound this exemption to identity, RSS and CPU growth during preflight;
@@ -47,7 +49,7 @@ public static class Agent2Memory {
     $idleCpuBefore = if ($idleBefore) { $idleBefore.CPU } else { 0 }
     $otherJava = @($javaBefore | Where-Object {
         -not (($_.Id -eq 8428 -and $_.StartTime.ToUniversalTime() -eq $knownLiveStart) -or
-              ($_.Id -eq 17720 -and $_.StartTime.ToUniversalTime() -eq $knownClientWorldStart) -or
+              ($_.Id -eq 15044 -and $_.Path -eq 'C:\Projects\OSRSRSPS\tools\jdk-21\bin\java.exe' -and $_.StartTime.ToUniversalTime() -eq $knownClientWorldStart) -or
               ($_.Id -eq 7072 -and $_.StartTime.ToUniversalTime() -eq $knownIdleReferenceStart -and $_.WorkingSet64 -lt 128MB))
     })
     if ($otherJava.Count -gt 0) { throw 'Build deferred: an unclassified Java workload is active.' }
@@ -58,7 +60,7 @@ public static class Agent2Memory {
     if (@(Get-Process -Name cargo,rustc,kotlinc -ErrorAction SilentlyContinue).Count -gt 0) { throw 'Build deferred: another compiler started during preflight.' }
     $otherJavaAfter = @(Get-Process -Name java -ErrorAction SilentlyContinue | Where-Object {
         -not (($_.Id -eq 8428 -and $_.StartTime.ToUniversalTime() -eq $knownLiveStart) -or
-              ($_.Id -eq 17720 -and $_.StartTime.ToUniversalTime() -eq $knownClientWorldStart) -or
+              ($_.Id -eq 15044 -and $_.Path -eq 'C:\Projects\OSRSRSPS\tools\jdk-21\bin\java.exe' -and $_.StartTime.ToUniversalTime() -eq $knownClientWorldStart) -or
               ($idleBefore -and $_.Id -eq 7072 -and $_.StartTime.ToUniversalTime() -eq $knownIdleReferenceStart -and $_.WorkingSet64 -lt 128MB -and ($_.CPU - $idleCpuBefore) -le 0.25))
     })
     if ($otherJavaAfter.Count -gt 0) { throw 'Build deferred: Java workload changed during preflight.' }
@@ -79,3 +81,4 @@ public static class Agent2Memory {
     $env:TMP = $env:TEMP
     New-Item -ItemType Directory -Force -Path $env:TEMP | Out-Null
 }
+

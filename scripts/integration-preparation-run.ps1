@@ -3,6 +3,7 @@ param(
  [Parameter(Mandatory)][ValidatePattern('^[a-z0-9-]{1,48}$')][string]$Run,
  [ValidateSet('login','actions','dialogue-ui','arrival','prayer','inventory','inventory-verify','render','floor','floor-content')][string]$Mode='actions',
  [string]$ReuseStateFrom,
+ [switch]$CreatorResume,
  [ValidatePattern('^[a-z0-9-]+$')][string]$DialogueDriver,
  [ValidatePattern('^[a-z0-9-]+$')][string]$ArrivalDriver,
  [ValidatePattern('^[a-z0-9-]+$')][string]$InventoryDriver,
@@ -10,11 +11,13 @@ param(
  [ValidatePattern('^[A-Fa-f0-9]{64}$')][string]$ServerHash='57917C5CE4204CDC52329F1395ED1B84250AE96090FE34DF39DA9CF84B09AAE7'
 )
 $ErrorActionPreference='Stop'
+if ($CreatorResume -and ($ReuseStateFrom -or $Mode -notin @('login','render'))) {throw 'CreatorResume requires a new login/render fixture'}
 $serverRoot=Split-Path $PSScriptRoot -Parent
 $python='C:/Users/backup/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe'
 $root="$serverRoot/work/integration"
 $client="$serverRoot/integration/client-builds/client-239.1-baseline-001-build-001"
 $driverArgs=@{}
+if ($CreatorResume) {$driverArgs.CreatorResume=$true}
 if ($PrayerDriver) {
  if ($Mode -ne 'prayer' -or $DialogueDriver -or $ArrivalDriver -or $InventoryDriver) {throw 'Prayer driver only applies to prayer'}
  $driverRoot="$serverRoot/integration/scenario-drivers/$PrayerDriver"
@@ -87,7 +90,7 @@ try {
   if (-not $stateRun -or $stateRun -notmatch '^[a-z0-9-]{1,48}$') {throw 'Predecessor state directory is invalid'}
  }
  if (-not $ReuseStateFrom) {
-  $fixturePreset=if ($Mode -like 'floor*') {'tower'} else {'basic'}
+  $fixturePreset=if ($CreatorResume) {'creator-resume'} elseif ($Mode -like 'floor*') {'tower'} else {'basic'}
   $provision=(& $python "$PSScriptRoot/integration-preparation-state.py" clone --run $Run --environment $Environment --fixture $fixturePreset | Out-String).Trim()
   if ($LASTEXITCODE -ne 0) {throw 'Fixture provisioning failed'}
   $fixture=($provision | ConvertFrom-Json).fixture_id
@@ -128,7 +131,8 @@ try {
    if ($InventoryDriver) {$reproduce+=" -InventoryDriver $InventoryDriver"}
    if ($PrayerDriver) {$reproduce+=" -PrayerDriver $PrayerDriver"}
    if ($ReuseStateFrom) {$reproduce+=" -ReuseStateFrom $ReuseStateFrom"}
-   [ordered]@{baseline='client-239.1-baseline-001-build-001';serverHash=$ServerHash;dialogueDriver=$DialogueDriver;arrivalDriver=$ArrivalDriver;inventoryDriver=$InventoryDriver;prayerDriver=$PrayerDriver;fixture=$fixture;stateRun=$stateRun;environment=$Environment;mode=$Mode;cacheProvenance='Both environments use the hashed owned Kotlin cache and symbols';reproduction=$reproduce} | ConvertTo-Json | Set-Content "$runDir/preparation.json"
+   if ($CreatorResume) {$reproduce+=' -CreatorResume'}
+   [ordered]@{baseline='client-239.1-baseline-001-build-001';serverHash=$ServerHash;dialogueDriver=$DialogueDriver;arrivalDriver=$ArrivalDriver;inventoryDriver=$InventoryDriver;prayerDriver=$PrayerDriver;fixture=$fixture;stateRun=$stateRun;environment=$Environment;mode=$Mode;creatorResume=[bool]$CreatorResume;cacheProvenance='Both environments use the hashed owned Kotlin cache and symbols';reproduction=$reproduce} | ConvertTo-Json | Set-Content "$runDir/preparation.json"
   }
  }
 } finally {

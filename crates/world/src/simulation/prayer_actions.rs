@@ -117,6 +117,22 @@ impl World {
         let Some(config) = &self.prayer else { return };
         match config.finish(&mut p.data, &self.object_types, pending) {
             Ok(Some(result)) => {
+                if self.tutorial_rules_completed_varp.is_some() {
+                    if p.stat_events
+                        .advance(
+                            &crate::tutorial_rules::bindings(),
+                            config.skill,
+                            result.advancement,
+                        )
+                        .is_err()
+                    {
+                        p.pending_logout = true;
+                        self.events.push(WorldEvent::ActionRejected {
+                            actor: p.id,
+                            error: ActionError::QueueFull,
+                        });
+                    }
+                }
                 self.events.push(WorldEvent::Prayer {
                     actor: p.id,
                     event: Event::Completed {

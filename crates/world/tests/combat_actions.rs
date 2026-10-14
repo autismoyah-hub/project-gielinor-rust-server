@@ -7,6 +7,55 @@ use gielinor_world::{
     CoordGrid,
 };
 #[test]
+fn tutorial_combat_callbacks_cap_levels_without_erasing_sublevel_hitpoints_xp() {
+    let mut world = World::default();
+    world.tutorial_rules_completed_varp = Some(900);
+    let coords = CoordGrid::new(3200, 3200, 0).unwrap();
+    world.collision.allocate(3200, 3200, 0);
+    let mut stats = Stats::default();
+    stats.set_base(3, 10);
+    stats.set_current(3, 7);
+    stats.set_xp(3, 1154).unwrap();
+    world
+        .queue_login(
+            1,
+            PlayerData::new(1, "Tutorial fighter".into(), coords, stats),
+        )
+        .unwrap();
+    world.tick().unwrap();
+    let actor = world.actors().next().unwrap();
+    let mut npc = Npc::new(1, coords, 1, Restrict::NoMove, BlockWalk::None).unwrap();
+    npc.stats[3] = 500;
+    npc.combat_xp_multiplier = 1000;
+    let target = world.spawn_npc(npc).unwrap();
+    let attack = Attack::Melee {
+        kind: Some(3),
+        style: Some(2),
+        stance: 0,
+    };
+    world
+        .give_npc_combat_xp(actor, target, attack, 100, 1.0)
+        .unwrap();
+    assert!(world.data(actor).unwrap().stats.base(0) > 3);
+    world.tick().unwrap();
+    let stats = &world.data(actor).unwrap().stats;
+    assert_eq!((stats.base(0), stats.current(0), stats.xp(0)), (3, 3, 174));
+    assert_eq!(
+        (stats.base(3), stats.current(3), stats.xp(3)),
+        (10, 7, 1287)
+    );
+    world
+        .give_npc_combat_xp(actor, target, attack, 200, 1.0)
+        .unwrap();
+    assert!(world.data(actor).unwrap().stats.base(3) > 10);
+    world.tick().unwrap();
+    let stats = &world.data(actor).unwrap().stats;
+    assert_eq!(
+        (stats.base(3), stats.current(3), stats.xp(3)),
+        (10, 7, 1154)
+    );
+}
+#[test]
 fn authoritative_awards_cap_damage_track_spawn_multiplier_and_reject_stale_target() {
     let mut world = World::default();
     let coords = CoordGrid::new(3200, 3200, 0).unwrap();

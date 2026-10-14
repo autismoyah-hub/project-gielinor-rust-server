@@ -212,3 +212,141 @@ fn invalid_animation_duration_removes_npc_without_drops() {
         .iter()
         .any(|e| matches!(e, WorldEvent::NpcCombatError { .. })));
 }
+
+fn tutorial_config(rat: u16, chicken: u16) -> gielinor_world::tutorial_combat::Config {
+    use gielinor_world::variables::{Transmit, Varp};
+    let varp = |id| Varp {
+        id,
+        permanent: true,
+        transmit: Transmit::Always,
+        bit_protect: false,
+        client_code: -1,
+    };
+    gielinor_world::tutorial_combat::Config {
+        progression: gielinor_world::tutorial_progression::Config {
+            step: varp(5003),
+            completed: varp(5004),
+        },
+        rat,
+        chicken,
+    }
+}
+#[test]
+fn tutorial_rat_progress_runs_once_at_death_start_then_normal_drop_and_respawn_continue() {
+    for (start, next) in [(35, 36), (36, 37)] {
+        let (mut w, id) = setup(true);
+        let actor = w.actors().next().unwrap();
+        w.tutorial_combat = Some(tutorial_config(1, 2));
+        w.data_mut(actor).unwrap().variables =
+            gielinor_world::variables::Variables::restore([(5003, start)].into());
+        // The custom death queue runs before deathWithDrops' arrival suspension.
+        w.npc_mut(id).unwrap().movement.last_movement = w.clock.0 - 1;
+        assert_eq!(w.data(actor).unwrap().variables.get(5003), start);
+        w.tick().unwrap();
+        let mut events = w.drain_events();
+        assert_eq!(w.data(actor).unwrap().variables.get(5003), next);
+        assert!(!events
+            .iter()
+            .any(|event| matches!(event, WorldEvent::NpcCombatAnimation { .. })));
+        for _ in 0..4 {
+            w.tick().unwrap();
+            events.extend(w.drain_events());
+        }
+        assert_eq!(w.data(actor).unwrap().variables.get(5003), next);
+        assert_eq!(
+            events
+                .iter()
+                .filter(|event| matches!(
+                    event,
+                    WorldEvent::LocationMessage {
+                        message: "You have defeated the giant rat!",
+                        ..
+                    }
+                ))
+                .count(),
+            1
+        );
+        assert_eq!(w.objects.at(coords()).count(), 1);
+        assert!(!w.npc(id).unwrap().visible);
+        for _ in 0..4 {
+            w.tick().unwrap();
+        }
+        assert!(
+            w.npc(id).is_none(),
+            "Normal respawn must replace the old generation"
+        );
+    }
+}
+#[test]
+fn tutorial_death_does_not_credit_runner_up_when_winning_character_is_offline() {
+    let (mut w, id) = setup(false);
+    let actor = w.actors().next().unwrap();
+    w.tutorial_combat = Some(tutorial_config(1, 2));
+    w.data_mut(actor).unwrap().variables =
+        gielinor_world::variables::Variables::restore([(5003, 35)].into());
+    w.npc_mut(id).unwrap().hero_points.credit(999, 100);
+    for _ in 0..4 {
+        w.tick().unwrap();
+    }
+    assert_eq!(w.data(actor).unwrap().variables.get(5003), 35);
+    assert!(!w
+        .drain_events()
+        .iter()
+        .any(|event| matches!(event, WorldEvent::TutorialCombatProgress { .. })));
+    assert!(w.npc(id).is_none());
+}
+#[test]
+fn tutorial_chicken_death_emits_completion_once_and_preserves_ordinary_death_sequence() {
+    use gielinor_world::{tutorial_progression::Effect as P, tutorial_steps::Step};
+    let (mut w, id) = setup(false);
+    let actor = w.actors().next().unwrap();
+    w.tutorial_combat = Some(tutorial_config(2, 1));
+    w.data_mut(actor).unwrap().variables =
+        gielinor_world::variables::Variables::restore([(5003, Step::MagicRunes as i32)].into());
+    let mut events = vec![];
+    for _ in 0..4 {
+        w.tick().unwrap();
+        events.extend(w.drain_events());
+    }
+    assert_eq!(
+        w.data(actor).unwrap().variables.get(5003),
+        Step::LeaveTalk as i32
+    );
+    assert_eq!(w.data(actor).unwrap().variables.get(5004), 0);
+    assert_eq!(
+        events
+            .iter()
+            .filter(|event| matches!(
+                event,
+                WorldEvent::LocationMessage {
+                    message: "Congratulations, you've completed a quest: Learning the Ropes",
+                    ..
+                }
+            ))
+            .count(),
+        1
+    );
+    assert_eq!(
+        events
+            .iter()
+            .filter_map(
+                |event| if let WorldEvent::TutorialCombatProgress { effects, .. } = event {
+                    Some(effects)
+                } else {
+                    None
+                }
+            )
+            .flatten()
+            .filter(|effect| matches!(
+                effect,
+                P::Focus {
+                    step: Step::LeaveTalk,
+                    npc: None
+                }
+            ))
+            .count(),
+        2
+    );
+    assert!(w.npc(id).is_none());
+    assert_eq!(w.objects.at(coords()).count(), 1);
+}

@@ -15,6 +15,220 @@ use gielinor_world::{
 };
 use std::collections::BTreeMap;
 struct Zero;
+struct RangedDraws(Vec<u32>);
+impl RandomSource for RangedDraws {
+    fn below(&mut self, bound: u32) -> u32 {
+        self.0.push(bound);
+        if bound == 5 {
+            4
+        } else {
+            0
+        }
+    }
+}
+fn setup_ranged() -> (World, ActorId, NpcId) {
+    use gielinor_world::{inventory::Item, projectile, ranged, ranged_ammo, ranged_weapon};
+    let (mut world, actor, target) = setup();
+    let common = world.melee.as_ref().unwrap();
+    world.ranged = Some(ranged::Config {
+        equipment: Default::default(),
+        npcs: [(
+            1,
+            ranged::NpcDefence {
+                bonuses: [0; 3],
+                magic_attack: 0,
+            },
+        )]
+        .into(),
+        prayers: [common.invocation; 5],
+        stat: 4,
+    });
+    let item = ranged_weapon::Item {
+        category: 1,
+        weapon: ranged_ammo::Weapon {
+            kind: ranged_ammo::Kind::Bow,
+            required: None,
+            level: 1,
+            bone: 0,
+        },
+        charged: false,
+        thrown: false,
+        projectile: Some(1),
+        travel: Some(1000),
+        launch: None,
+        animation: Some(426),
+        sound: Some(101),
+        recovery: None,
+        metallic: false,
+    };
+    world.ranged_weapons = Some(ranged_weapon::Catalog {
+        items: [(100, item), (101, item)].into(),
+        categories: ranged_ammo::Categories {
+            arrows: 1,
+            dragon_arrow: 2,
+            bolts: 3,
+            javelins: 4,
+        },
+        javelin: 4,
+        ballista_spot: 30,
+        styles: [(
+            1,
+            projectile::Style {
+                start_height: 40,
+                end_height: 30,
+                delay: 20,
+                angle: 15,
+                length_adjustment: 0,
+                progress: 11,
+                step_multiplier: 5,
+            },
+        )]
+        .into(),
+    });
+    world.attack_profiles.weapons.insert(
+        100,
+        gielinor_world::attack_profile::Weapon {
+            category: 0,
+            range: 7,
+            speed: 4,
+        },
+    );
+    world.attack_profiles.types.insert(0, 5);
+    world.attack_profiles.styles.insert(0, 5);
+    let data = world.data_mut(actor).unwrap();
+    data.stats.set_base(4, 50);
+    data.stats.set_current(4, 50);
+    for (slot, id, count) in [(3, 100, 1), (13, 101, 5)] {
+        data.equipment
+            .restore_slot(
+                slot,
+                Some(Item {
+                    id,
+                    count,
+                    vars: 17,
+                }),
+            )
+            .unwrap();
+    }
+    (world, actor, target)
+}
+#[test]
+fn ranged_shot_consumes_before_roll_and_delays_hit_and_defend_animation() {
+    let (mut w, actor, target) = setup_ranged();
+    let attack = gielinor_world::attack_profile::Attack::Ranged {
+        kind: 5,
+        style: Some(5),
+    };
+    let mut rng = RangedDraws(vec![]);
+    assert!(w
+        .attack_npc_ranged(actor, target, attack, &mut rng)
+        .unwrap());
+    assert_eq!(&rng.0[..2], &[5, 10000]);
+    assert_eq!(rng.0.len(), 3);
+    let item = w.data(actor).unwrap().equipment.get(13).unwrap();
+    assert_eq!((item.count, item.vars), (4, 17));
+    assert!(w.data(actor).unwrap().stats.xp(4) > 0);
+    assert_eq!(w.npc(target).unwrap().stats[3], 50);
+    let events = w.drain_events();
+    let position = |predicate: fn(&WorldEvent) -> bool| events.iter().position(predicate).unwrap();
+    assert!(
+        position(|e| matches!(e, WorldEvent::Projectile(_)))
+            < position(|e| matches!(e, WorldEvent::AmmoConsumed { .. }))
+    );
+    assert!(
+        position(|e| matches!(e, WorldEvent::AmmoConsumed { .. }))
+            < position(|e| matches!(e, WorldEvent::CombatXp { .. }))
+    );
+    assert!(events.iter().any(|e| matches!(
+        e,
+        WorldEvent::NpcDelayedAnimation {
+            sequence: 424,
+            delay: 40,
+            ..
+        }
+    )));
+    assert!(events.iter().any(|e| matches!(
+        e,
+        WorldEvent::PlayerSpotAnimation {
+            spot: 65535,
+            height: 96,
+            slot: 1,
+            ..
+        }
+    )));
+    w.tick_with_random(&mut rng).unwrap();
+    assert_eq!(w.npc(target).unwrap().stats[3], 50);
+    w.tick_with_random(&mut rng).unwrap();
+    assert_eq!(w.npc(target).unwrap().stats[3], 49);
+}
+#[test]
+fn ranged_ammo_failure_keeps_cooldown_without_drawing_or_launching() {
+    let (mut w, actor, target) = setup_ranged();
+    w.data_mut(actor)
+        .unwrap()
+        .equipment
+        .restore_slot(13, None)
+        .unwrap();
+    let mut rng = RangedDraws(vec![]);
+    assert!(!w
+        .attack_npc_ranged(
+            actor,
+            target,
+            gielinor_world::attack_profile::Attack::Ranged {
+                kind: 5,
+                style: Some(5)
+            },
+            &mut rng
+        )
+        .unwrap());
+    assert!(w.is_attack_delayed(actor).unwrap());
+    assert!(rng.0.is_empty());
+    let events = w.drain_events();
+    assert!(events.iter().any(|e| matches!(e,WorldEvent::CombatFeedback { events,.. }
+        if events.contains(&autocast::Event::Message("There is no ammo left in your quiver.".into())))));
+    assert!(!events.iter().any(|e| matches!(
+        e,
+        WorldEvent::Projectile(_) | WorldEvent::AmmoConsumed { .. }
+    )));
+}
+#[test]
+fn last_thrown_weapon_is_removed_before_formula_and_reports_last_one() {
+    let (mut w, actor, target) = setup_ranged();
+    let item = w
+        .ranged_weapons
+        .as_mut()
+        .unwrap()
+        .items
+        .get_mut(&100)
+        .unwrap();
+    item.thrown = true;
+    item.weapon.kind = gielinor_world::ranged_ammo::Kind::Other;
+    let mut bonus = gielinor_world::bonuses::ItemBonuses::default();
+    bonus.values[4] = 100;
+    bonus.values[11] = 100;
+    w.melee.as_mut().unwrap().bonuses.insert(100, bonus);
+    let mut rng = RangedDraws(vec![]);
+    w.attack_npc_ranged(
+        actor,
+        target,
+        gielinor_world::attack_profile::Attack::Ranged {
+            kind: 5,
+            style: Some(5),
+        },
+        &mut rng,
+    )
+    .unwrap();
+    assert!(w.data(actor).unwrap().equipment.get(3).is_none());
+    assert_eq!(w.data(actor).unwrap().equipment.get(13).unwrap().count, 5);
+    // Original max-hit computation reads worn bonuses after the last weapon is gone.
+    assert_eq!(w.data(actor).unwrap().variables.get(17), 6);
+    assert_eq!(rng.0, [5, 10000, 6]);
+    assert!(w
+        .drain_events()
+        .iter()
+        .any(|e| matches!(e,WorldEvent::CombatFeedback { events,.. }
+        if events.contains(&autocast::Event::Message("That was your last one!".into())))));
+}
 impl RandomSource for Zero {
     fn below(&mut self, max: u32) -> u32 {
         assert!(max > 0);
@@ -199,6 +413,52 @@ fn enable_retaliation(w: &mut World, target: NpcId) {
     w.npc_mut(target).unwrap().stats[2] = 30;
 }
 struct LandMaximum;
+#[test]
+fn npc_operation_dispatches_ranged_at_distance_and_repeats_on_weapon_cooldown() {
+    let (mut w, actor, target) = setup_ranged();
+    w.submit(
+        actor,
+        Action::OperateNpc {
+            target,
+            operation: 2,
+            control: false,
+        },
+    )
+    .unwrap();
+    let mut rng = RangedDraws(vec![]);
+    let mut launches = vec![];
+    let mut impacts = vec![];
+    for cycle in 0..11 {
+        w.tick_with_random(&mut rng).unwrap();
+        for event in w.drain_events() {
+            match event {
+                WorldEvent::Projectile(flight) => {
+                    assert_eq!(flight.duration.server_delay, 2);
+                    launches.push(cycle);
+                }
+                WorldEvent::Hit { impact, .. } => {
+                    assert_eq!(impact.hit.style, gielinor_world::hits::Style::Ranged);
+                    assert_eq!(impact.applied, 1);
+                    impacts.push(cycle);
+                }
+                WorldEvent::ActionRejected { error, .. } => panic!("Ranged rejection: {error:?}"),
+                _ => (),
+            }
+        }
+    }
+    assert_eq!(launches.len(), 3);
+    assert!(launches.windows(2).all(|pair| pair[1] - pair[0] == 4));
+    assert_eq!(
+        impacts,
+        launches
+            .iter()
+            .map(|cycle| cycle + 2)
+            .filter(|cycle| *cycle < 11)
+            .collect::<Vec<_>>()
+    );
+    assert_eq!(w.observe(actor).unwrap().coords.x(), 3200);
+    assert_eq!(w.data(actor).unwrap().equipment.get(13).unwrap().count, 2);
+}
 #[test]
 fn npc_stops_targeting_a_pending_logout_before_the_save_is_ready() {
     let (mut w, actor, target) = setup();
@@ -512,4 +772,81 @@ fn retreat_uses_spawn_bounds_and_attack_leash_cancels() {
     npc.spawn = CoordGrid::new(3220, 3220, 0).unwrap();
     w.tick_with_random(&mut Zero).unwrap();
     assert!(w.npc(target).unwrap().attacking_player.is_none());
+}
+#[test]
+fn spell_attempt_consumes_before_cast_xp_and_rejects_stale_or_logging_out_actor() {
+    use gielinor_world::{
+        inventory::Item,
+        runes::Requirement,
+        spell_cast::{Definition, ResultKindCast},
+    };
+    let (mut world, actor, _) = setup();
+    world.object_types.stackable.insert(500);
+    world
+        .data_mut(actor)
+        .unwrap()
+        .inventory
+        .restore_slot(
+            0,
+            Some(Item {
+                id: 500,
+                count: 2,
+                vars: 0,
+            }),
+        )
+        .unwrap();
+    let spell = Definition {
+        spell: autocast::Spell {
+            item: 600,
+            requirements: vec![Requirement {
+                item: 500,
+                count: 1,
+                worn_slot: None,
+            }],
+        },
+        book: Some(0),
+        level: 1,
+        cast_xp: 5.5,
+    };
+    let result = world.attempt_spell_cast(actor, &spell, 501, 1.0).unwrap();
+    assert!(result.success());
+    assert_eq!(
+        world.data(actor).unwrap().inventory.get(0).unwrap().count,
+        1
+    );
+    assert_eq!(world.data(actor).unwrap().stats.fine_xp(6), 55);
+    assert!(world
+        .drain_events()
+        .iter()
+        .any(|e| matches!(e, WorldEvent::SkillAdvanced { skill: 6, .. })));
+    let wrong_book = Definition {
+        book: Some(1),
+        ..spell
+    };
+    let result = world
+        .attempt_spell_cast(actor, &wrong_book, 501, 1.0)
+        .unwrap();
+    assert_eq!(result.kind, ResultKindCast::IncorrectSpellbook);
+    assert_eq!(result.message, None);
+    assert_eq!(
+        world.data(actor).unwrap().inventory.get(0).unwrap().count,
+        1
+    );
+    assert_eq!(world.data(actor).unwrap().stats.fine_xp(6), 55);
+    assert!(!world
+        .drain_events()
+        .iter()
+        .any(|e| matches!(e, WorldEvent::SkillAdvanced { .. })));
+    let stale = ActorId {
+        generation: actor.generation + 1,
+        ..actor
+    };
+    assert!(world
+        .attempt_spell_cast(stale, &wrong_book, 501, 1.0)
+        .is_err());
+    world.request_logout(actor).unwrap();
+    world.tick().unwrap();
+    assert!(world
+        .attempt_spell_cast(actor, &wrong_book, 501, 1.0)
+        .is_err());
 }

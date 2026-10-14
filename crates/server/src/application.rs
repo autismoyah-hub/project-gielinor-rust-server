@@ -343,6 +343,7 @@ pub fn run() -> io::Result<()> {
         })
         .map_err(fail)?,
     )))?;
+    runtime.transport.queue_until_tick()?;
     runtime.transport.listen(address)?;
     if unsafe { SetConsoleCtrlHandler(Some(interrupt), 1) } == 0 {
         return Err(io::Error::last_os_error());

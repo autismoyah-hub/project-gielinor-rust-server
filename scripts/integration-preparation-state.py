@@ -1,5 +1,6 @@
 """Create versioned fixtures and fresh run copies; never reset an existing database."""
 import argparse,hashlib,json,sqlite3
+from integration_creator_fixture import prepare_creator_resume
 from pathlib import Path
 ROOT=Path(__file__).resolve().parent.parent
 FIXTURE=ROOT/'work/preparation/fixtures/basic-v1'
@@ -41,7 +42,7 @@ def export(path):
         result['inventory']=[dict(r) for r in db.execute('SELECT i.inv_type,o.slot,o.obj,o.count,o.vars FROM inventories i JOIN inventory_objs o ON o.inventories_id=i.id WHERE i.character_id=? ORDER BY i.inv_type,o.slot',(cid,))]
         return result
 def main():
-    p=argparse.ArgumentParser();p.add_argument('mode',choices=['fixture','kotlin-fixture','clone','export']);p.add_argument('--run');p.add_argument('--environment',choices=['kotlin','rust']);p.add_argument('--output');p.add_argument('--fixture',choices=['basic','tower'],default='basic');a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('mode',choices=['fixture','kotlin-fixture','clone','export']);p.add_argument('--run');p.add_argument('--environment',choices=['kotlin','rust']);p.add_argument('--output');p.add_argument('--fixture',choices=['basic','tower','creator-resume'],default='basic');a=p.parse_args()
     if a.mode=='kotlin-fixture':kotlin_fixture();return
     if a.mode=='fixture':
         source=ROOT/'work/state/integration-b/accounts.sqlite'
@@ -66,6 +67,10 @@ def main():
         backup(template/'state.sqlite',database)
         if a.fixture=='tower':
             with sqlite3.connect(database) as db:db.execute("UPDATE characters SET x=10424,z=120,level=0 WHERE realm_id=1 AND account_id=(SELECT id FROM accounts WHERE login_username='integration239')")
+        if a.fixture=='creator-resume':
+            symbols=dict(line.split('\t',1)[::-1] for line in (ROOT/'work/integration/a-kotlin/.data/symbols/varp.sym').read_text().splitlines() if '\t' in line and not line.startswith('#'))
+            with sqlite3.connect(database) as db:
+                prepare_creator_resume(db,int(symbols['tutorial_2']),int(symbols['tut2_completed']))
         fid=hashlib.sha256(json.dumps(export(database),sort_keys=True,separators=(',',':')).encode()).hexdigest()
         print(json.dumps({'database':str(database),'fixture_id':fid,'fixture_setup_only':True}))
     else:

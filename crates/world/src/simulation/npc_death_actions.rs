@@ -18,6 +18,32 @@ impl World {
         let bones = config.bones;
         let clock = self.clock.0;
         if entry.death_state.is_none() {
+            if let Some((config, hero)) = self.tutorial_combat.zip(entry.npc.hero_points.winner()) {
+                let type_id = entry.npc.type_id;
+                // Match findHero: use the top character UUID; never fall back to a
+                // lower-ranked online player when the winner has logged out.
+                if let Some((_, player)) = self
+                    .players
+                    .iter_mut()
+                    .find(|(_, p)| p.data.character_id == hero)
+                {
+                    let actor = player.id;
+                    for effect in config.death(
+                        type_id,
+                        &mut player.data.variables,
+                        player.protection.processed_clock > 0,
+                    ) {
+                        match effect {
+                            crate::tutorial_combat::Effect::Message(message) => self
+                                .events
+                                .push(WorldEvent::LocationMessage { actor, message }),
+                            crate::tutorial_combat::Effect::Progress(effects) => self
+                                .events
+                                .push(WorldEvent::TutorialCombatProgress { actor, effects }),
+                        }
+                    }
+                }
+            }
             let entry = self.npcs.get_mut(id.slot as usize).unwrap();
             let npc = &mut entry.npc;
             let arrival = i32::from(npc.movement.last_movement == clock.wrapping_sub(1));
@@ -171,6 +197,8 @@ impl World {
                         });
                     }
                 }
+                let respawned = entry.id;
+                self.update_npc_hunt_zone(respawned, true);
             }
             _ => (),
         }

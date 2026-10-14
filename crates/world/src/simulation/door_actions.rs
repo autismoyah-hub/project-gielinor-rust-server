@@ -2,6 +2,28 @@ use super::*;
 use crate::{doors, loc_reach::Target, locations::Location, reach::Rectangle};
 
 impl World {
+    /// Shared admission check for network sessions and headless actors.
+    pub fn has_location_handler(&self, id: u32, operation: u8) -> bool {
+        if self
+            .furnaces
+            .get(&id)
+            .is_some_and(|furnace| furnace.supports(operation))
+        {
+            return true;
+        }
+        (operation == 1
+            && (self.anvils.contains(&id)
+                || self.tutorial_bank.is_some_and(|c| c.booth(id).is_some())
+                || self.doors.contains_key(&id)
+                || self.tutorial_bread.is_some_and(|c| c.location == id)
+                || self.tutorial_woodcutting.is_some_and(|c| c.contains(id))
+                || self.tutorial_mining.is_some_and(|c| c.ore(id).is_some())
+                || self
+                    .tutorial_gates
+                    .as_ref()
+                    .is_some_and(|c| c.gates.contains_key(&id))))
+            || self.location_handlers.contains_key(&(id, operation))
+    }
     fn door_target(&self, loc: Location) -> Result<Target, ActionError> {
         let ty = self
             .location_types
@@ -41,6 +63,39 @@ impl World {
         operation: u8,
         control: bool,
     ) -> Result<(), ActionError> {
+        self.request_location_action(
+            actor,
+            coords,
+            id,
+            LocationAction::Operation(operation),
+            control,
+        )
+    }
+    pub(super) fn request_location_use(
+        &mut self,
+        actor: ActorId,
+        coords: CoordGrid,
+        id: u32,
+        slot: i32,
+        object: i32,
+        control: bool,
+    ) -> Result<(), ActionError> {
+        self.request_location_action(
+            actor,
+            coords,
+            id,
+            LocationAction::HeldUse { slot, object },
+            control,
+        )
+    }
+    fn request_location_action(
+        &mut self,
+        actor: ActorId,
+        coords: CoordGrid,
+        id: u32,
+        action: LocationAction,
+        control: bool,
+    ) -> Result<(), ActionError> {
         let p = self.player(actor)?;
         if p.protection.delayed() {
             return Err(ActionError::Delayed);
@@ -52,10 +107,10 @@ impl World {
             self.events.push(WorldEvent::ClearMapFlag(actor));
             return Ok(());
         };
-        if !(operation == 1 && self.doors.contains_key(&id))
-            && !self.location_handlers.contains_key(&(id, operation))
-        {
-            return Err(ActionError::InvalidLocation);
+        if let LocationAction::Operation(operation) = action {
+            if !self.has_location_handler(id, operation) {
+                return Err(ActionError::InvalidLocation);
+            }
         }
         let target = self.door_target(loc)?;
         let route = crate::routing::location_route(
@@ -75,9 +130,12 @@ impl World {
         p.object_interaction = None;
         p.npc_interaction = None;
         p.food_delay = false;
+        p.tutorial_fire = None;
+        p.quantity_dialog = None;
+        p.quantity_input = false;
         p.bank_count = None;
         p.protection.suspended = false;
-        p.location_interaction = Some((loc, operation));
+        p.location_interaction = Some((loc, action));
         p.movement.interacting = true;
         p.movement.temporary_speed = if control {
             Some(if p.active_speed == Speed::Run || p.data.energy < 100 {
@@ -151,8 +209,12 @@ impl World {
         if p.saving || p.protection.access_protected(p.has_modal) {
             return;
         }
-        let Some((loc, operation)) = p.location_interaction else {
+        let Some((loc, action)) = p.location_interaction else {
             return;
+        };
+        let operation = match action {
+            LocationAction::Operation(op) => op,
+            LocationAction::HeldUse { .. } => 0,
         };
         let actor = p.id;
         if self.locations.find_type(loc.coords, loc.id) != Some(loc) {
@@ -205,6 +267,62 @@ impl World {
             self.events.push(WorldEvent::CannotReach(actor));
             return;
         }
+        if let LocationAction::HeldUse {
+            slot: inv_slot,
+            object,
+        } = action
+        {
+            self.process_location_use(slot, loc, inv_slot, object);
+            return;
+        }
+        if operation == 1
+            && self
+                .tutorial_gates
+                .as_ref()
+                .is_some_and(|c| c.gates.contains_key(&loc.id))
+        {
+            self.process_tutorial_gate(slot, loc);
+            return;
+        }
+        if operation == 1
+            && self
+                .tutorial_woodcutting
+                .is_some_and(|c| c.contains(loc.id))
+        {
+            self.process_tutorial_woodcutting(slot, loc.id);
+            return;
+        }
+        if operation == 1 && self.tutorial_bread.is_some_and(|c| c.location == loc.id) {
+            self.process_tutorial_bread(slot);
+            return;
+        }
+        if operation == 1 {
+            if let Some(ore) = self.tutorial_mining.and_then(|c| c.ore(loc.id)) {
+                self.process_tutorial_mining(slot, ore);
+                return;
+            }
+        }
+        if operation == 1 {
+            if let Some((config, booth)) = self
+                .tutorial_bank
+                .and_then(|c| c.booth(loc.id).map(|b| (c, b)))
+            {
+                if let Some(message) = config.denial(&p.data.variables, booth) {
+                    self.events
+                        .push(WorldEvent::LocationMessage { actor, message });
+                } else {
+                    if booth == crate::tutorial_bank::Booth::Bank {
+                        config.grant(&mut p.data.bank, &self.object_types);
+                    }
+                    self.events.push(WorldEvent::TutorialBank {
+                        actor,
+                        booth,
+                        next: config.next(&p.data.variables, booth),
+                    });
+                }
+                return;
+            }
+        }
         if let Some(&handler) = self.location_handlers.get(&(loc.id, operation)) {
             match handler.apply(&mut p.data, &self.object_types) {
                 Ok(Some(message)) => self
@@ -215,6 +333,21 @@ impl World {
                     "Location inventory transaction failed",
                 )),
             }
+            return;
+        }
+        if self
+            .furnaces
+            .get(&loc.id)
+            .is_some_and(|furnace| furnace.supports(operation))
+        {
+            self.process_smelting(slot, loc.id);
+            return;
+        }
+        if operation == 1 && self.anvils.contains(&loc.id) {
+            self.events.push(WorldEvent::AnvilRequested {
+                actor,
+                preferred: None,
+            });
             return;
         }
         let Some(&door) = self.doors.get(&loc.id).filter(|_| operation == 1) else {

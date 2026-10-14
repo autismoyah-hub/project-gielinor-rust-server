@@ -1,5 +1,38 @@
 //! Revision 239 OpLocV2 input payloads. Suboperations are retained for dispatch.
 use crate::buffer::{DecodeError, Reader, Transform};
+/// OPLOCT (62), used for selected interface items and spells targeting a loc.
+/// Nullable selected fields are retained; authority is checked by the UI/world.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct Target {
+    pub id: u16,
+    pub x: u16,
+    pub z: u16,
+    pub control: bool,
+    pub source: u32,
+    pub source_slot: i32,
+    pub source_object: i32,
+}
+pub fn target(bytes: &[u8]) -> Result<Target, DecodeError> {
+    let mut r = Reader::new(bytes);
+    let control = r.transformed_u8(Transform::Negate)? == 1;
+    let source_slot = r.u16_add(false)?;
+    let id = r.u16_le()?;
+    let source = r.u32_order(crate::buffer::Order::Little)?;
+    let z = r.u16_add(true)?;
+    let x = r.u16_le()?;
+    let source_object = r.u16_le()?;
+    r.finish()?;
+    let nullable = |v: u16| if v == u16::MAX { -1 } else { v as i32 };
+    Ok(Target {
+        id,
+        x,
+        z,
+        control,
+        source,
+        source_slot: nullable(source_slot),
+        source_object: nullable(source_object),
+    })
+}
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub struct Operation {
     pub id: u16,

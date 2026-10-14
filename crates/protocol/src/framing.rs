@@ -196,13 +196,12 @@ impl Decoder {
     }
 }
 
-/// Validate before consuming any cipher words so a failed encode is retryable.
-pub fn encode(
+/// Exact wire cost, validated without advancing ISAAC or allocating a payload.
+pub fn encoded_len(
     def: PacketDef,
-    payload: &[u8],
-    cipher: &mut Option<Isaac>,
+    payload_len: usize,
     width: OpcodeWidth,
-) -> Result<Vec<u8>, FrameError> {
+) -> Result<usize, FrameError> {
     if def.opcode
         > if width == OpcodeWidth::Byte {
             255
@@ -213,14 +212,34 @@ pub fn encode(
         return Err(FrameError::UnknownOpcode(def.opcode));
     }
     match def.size {
-        Size::Fixed(n) if payload.len() != n => return Err(FrameError::WrongSize),
-        Size::U8 if payload.len() > 255 => return Err(FrameError::PayloadTooLarge(payload.len())),
-        Size::U16 if payload.len() > 65535 => {
-            return Err(FrameError::PayloadTooLarge(payload.len()))
-        }
+        Size::Fixed(n) if payload_len != n => return Err(FrameError::WrongSize),
+        Size::U8 if payload_len > 255 => return Err(FrameError::PayloadTooLarge(payload_len)),
+        Size::U16 if payload_len > 65535 => return Err(FrameError::PayloadTooLarge(payload_len)),
         _ => (),
     }
-    let mut out = Vec::with_capacity(payload.len() + 4);
+    let overhead = if width == OpcodeWidth::Smart && def.opcode >= 128 {
+        2
+    } else {
+        1
+    } + match def.size {
+        Size::Fixed(_) => 0,
+        Size::U8 => 1,
+        Size::U16 => 2,
+    };
+    payload_len
+        .checked_add(overhead)
+        .ok_or(FrameError::PayloadTooLarge(payload_len))
+}
+
+/// Validate before consuming any cipher words so a failed encode is retryable.
+pub fn encode(
+    def: PacketDef,
+    payload: &[u8],
+    cipher: &mut Option<Isaac>,
+    width: OpcodeWidth,
+) -> Result<Vec<u8>, FrameError> {
+    let capacity = encoded_len(def, payload.len(), width)?;
+    let mut out = Vec::with_capacity(capacity);
     let mut push_opcode =
         |b: u8| out.push(b.wrapping_add(cipher.as_mut().map_or(0, |c| c.next_u32() as u8)));
     if width == OpcodeWidth::Smart && def.opcode >= 128 {
@@ -239,6 +258,30 @@ pub fn encode(
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn wire_budget_rejects_size_overflow_without_allocating_or_consuming_cipher() {
+        let def = PacketDef {
+            opcode: 128,
+            size: Size::Fixed(usize::MAX),
+            name: "oversize",
+        };
+        assert_eq!(
+            encoded_len(def, usize::MAX, OpcodeWidth::Smart),
+            Err(FrameError::PayloadTooLarge(usize::MAX))
+        );
+        let mut cipher = Some(Isaac::new(&[1, 2, 3, 4]).unwrap());
+        let mut expected = Some(Isaac::new(&[1, 2, 3, 4]).unwrap());
+        assert_eq!(
+            encode(def, &[], &mut cipher, OpcodeWidth::Smart),
+            Err(FrameError::WrongSize)
+        );
+        assert_eq!(
+            encode(DEFS[0], &[], &mut cipher, OpcodeWidth::Smart),
+            encode(DEFS[0], &[], &mut expected, OpcodeWidth::Smart)
+        );
+        assert_eq!(encoded_len(DEFS[1], 255, OpcodeWidth::Smart), Ok(257));
+        assert_eq!(encoded_len(DEFS[2], 65535, OpcodeWidth::Smart), Ok(65539));
+    }
     static DEFS: &[PacketDef] = &[
         PacketDef {
             opcode: 5,

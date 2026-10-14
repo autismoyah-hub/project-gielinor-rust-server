@@ -129,6 +129,8 @@ pub struct ItemType {
     pub buy_limit: u16,
     pub recalc_users: u16,
     pub objvars: Vec<u16>,
+    /// A null Kotlin ParamMap differs from an encoded empty map for defaults.
+    pub params_present: bool,
     pub params: BTreeMap<u32, Param>,
     /// Preserve every encoded field for later appearance/model consumers.
     pub encoded: Vec<u8>,
@@ -170,6 +172,7 @@ impl ItemType {
             buy_limit: 0,
             recalc_users: 0,
             objvars: vec![],
+            params_present: false,
             params: BTreeMap::new(),
             encoded: bytes.to_vec(),
         };
@@ -261,7 +264,10 @@ impl ItemType {
                 210 => d.transform.link = r.u16()? as i32,
                 211 => d.transform.template = r.u16()? as i32,
                 212 => d.weapon_category = r.u8()?,
-                249 => d.params = params(&mut r)?,
+                249 => {
+                    d.params_present = true;
+                    d.params = params(&mut r)?;
+                }
                 _ => return Err(DecodeError::InvalidValue("unknown item opcode")),
             }
         }
@@ -344,6 +350,14 @@ mod tests {
                 })
             ]
         );
+    }
+    #[test]
+    fn absent_and_empty_item_params_preserve_kotlin_nullable_map() {
+        let absent = ItemType::decode(&[0]).unwrap();
+        let empty = ItemType::decode(&[249, 0, 0]).unwrap();
+        assert_eq!(absent.params, empty.params);
+        assert!(!absent.params_present);
+        assert!(empty.params_present);
     }
     #[test]
     fn item_templates_signed_fields_and_params() {

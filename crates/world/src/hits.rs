@@ -1,5 +1,11 @@
 //! Hit queues and damage resolution. Attack selection, modifiers and death scripts are separate.
 use crate::simulation::{ActorId, NpcId};
+/// Resolved script queue IDs. Player hits use Strong and death uses Normal.
+#[derive(Debug, Clone, Copy)]
+pub struct PlayerQueues {
+    pub standard: i32,
+    pub death: i32,
+}
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum Target {
     Player(ActorId),

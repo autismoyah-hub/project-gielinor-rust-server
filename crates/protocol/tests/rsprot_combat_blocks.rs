@@ -62,6 +62,7 @@ fn actual_rsprot_composite_masks_and_body_order() {
                 headbars,
                 sequence,
                 face: npc_face.as_deref(),
+                spot_animations: None,
             }
             .encode()
         } else {

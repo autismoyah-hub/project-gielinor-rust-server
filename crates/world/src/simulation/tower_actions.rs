@@ -43,7 +43,7 @@ impl World {
             .slots()
             .iter()
             .enumerate()
-            .filter_map(|(slot, item)| item.is_some().then_some(slot))
+            .filter_map(|(slot, item)| item.map(|item| (slot, item.id)))
             .collect();
         let hitpoints_message = if arrival.first {
             config.progression.ensure_starter_hitpoints(&mut p.data)
@@ -53,8 +53,8 @@ impl World {
         crate::tower_arrival::apply(&mut p.data, arrival);
         let actor = p.id;
         if arrival.strip {
-            for slot in worn {
-                self.worn_changed(actor, slot);
+            for (slot, item) in worn {
+                self.worn_changed(actor, slot, item);
             }
         }
         self.events.push(WorldEvent::ClearMapFlag(actor));

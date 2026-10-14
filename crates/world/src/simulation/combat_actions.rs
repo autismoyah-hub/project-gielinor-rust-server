@@ -124,6 +124,14 @@ impl World {
         let awards =
             crate::combat_xp::advance(&mut stats, attack, damage, health, multiplier, rate)
                 .map_err(|_| ActionError::InvalidStat)?;
+        if self.tutorial_rules_completed_varp.is_some() {
+            p.stat_events
+                .advance_batch(
+                    &crate::tutorial_rules::bindings(),
+                    awards.iter().map(|(skill, change)| (skill.id(), *change)),
+                )
+                .map_err(|_| ActionError::QueueFull)?;
+        }
         p.data.stats = stats;
         self.events.push(WorldEvent::CombatXp { actor, awards });
         Ok(())

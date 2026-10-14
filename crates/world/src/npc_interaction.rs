@@ -5,6 +5,15 @@ pub enum Handler {
     Bank,
     Combat,
     Person,
+    TutorialFishing,
+    MagicTutor(crate::tutorial_magic_tutor::Config),
+    LectureTutor(crate::tutorial_lecture_tutor::Config),
+    CombatTutor(crate::tutorial_combat_tutor::Config),
+    MiningTutor(crate::tutorial_mining_tutor::Config),
+    TutorialGuide { step_varp: u16 },
+    SurvivalTutor(crate::tutorial_survival::Config),
+    MasterChef(crate::tutorial_chef::Config),
+    QuestTutor { step_varp: u16 },
 }
 #[derive(Clone, Copy, Debug)]
 pub struct Pending {

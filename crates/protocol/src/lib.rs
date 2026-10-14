@@ -27,3 +27,7 @@ pub mod world_context;
 pub mod xtea;
 pub mod zone;
 pub mod region_rebuild;
+pub mod spot_animation;
+pub mod hint_arrow;
+
+pub mod outgoing_category;

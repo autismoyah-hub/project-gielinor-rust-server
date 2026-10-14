@@ -13,13 +13,13 @@ pub struct Presentation {
     pub player: u16,
     pub npc: u16,
     pub choice: u16,
-    pub animations: [[u16; 4]; 4],
+    pub animations: [[u16; 4]; 5],
     pub font: Font,
 }
 impl Presentation {
     pub fn resolve(names: &Names, font: Font) -> io::Result<Self> {
-        let mut animations = [[0; 4]; 4];
-        for (row, prefix) in ["chathap", "chatneu", "chatang", "chatcon"]
+        let mut animations = [[0; 4]; 5];
+        for (row, prefix) in ["chathap", "chatneu", "chatang", "chatcon", "chatquiz"]
             .into_iter()
             .enumerate()
         {
@@ -43,6 +43,7 @@ impl Presentation {
             Expression::Neutral => 1,
             Expression::Angry => 2,
             Expression::Confused => 3,
+            Expression::Quiz => 4,
         };
         self.animations[row][lines.saturating_sub(1).min(3)]
     }

@@ -47,6 +47,14 @@ pub fn text(component: u32, text: &str) -> Result<Packet, DecodeError> {
         payload,
     })
 }
+/// IF_SETHIDE: combined-id alt3 followed by the boolean byte plus128.
+pub fn hide(component: u32, hidden: bool) -> Packet {
+    let [a, b, c, d] = component.to_be_bytes();
+    Packet {
+        opcode: 63,
+        payload: vec![b, a, d, c, 128 + hidden as u8],
+    }
+}
 pub fn open_top(interface: u16) -> Packet {
     let [a, b] = interface.to_be_bytes();
     Packet {

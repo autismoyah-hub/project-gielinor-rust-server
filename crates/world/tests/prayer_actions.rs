@@ -96,6 +96,37 @@ fn animation_precedes_one_cycle_consumption_and_first_matching_slot_is_deleted()
     assert_eq!(count(&w, a), 1);
 }
 #[test]
+fn tutorial_prayer_cap_runs_after_burial_resumes_in_the_same_main_pass() {
+    let (mut world, actor) = setup(false);
+    world.tutorial_rules_completed_varp = Some(900);
+    let stats = &mut world.data_mut(actor).unwrap().stats;
+    stats.set_base(5, 3);
+    stats.set_current(5, 3);
+    stats.set_xp(5, 385).unwrap();
+    bury(&mut world, actor);
+    assert_eq!(world.data(actor).unwrap().stats.xp(5), 385);
+    world.drain_events();
+    world.tick().unwrap();
+    let stats = &world.data(actor).unwrap().stats;
+    assert_eq!((stats.base(5), stats.current(5), stats.xp(5)), (3, 3, 174));
+    assert_eq!(count(&world, actor), 1);
+    let events = world.drain_events();
+    let buried = events
+        .iter()
+        .position(|e| {
+            matches!(
+                e,
+                WorldEvent::Prayer {
+                    event: Event::Completed { .. },
+                    ..
+                }
+            )
+        })
+        .unwrap();
+    let capped=events.iter().position(|e| matches!(e,WorldEvent::LocationMessage {message,..} if *message==gielinor_world::tutorial_rules::CAP_MESSAGE)).unwrap();
+    assert!(buried < capped);
+}
+#[test]
 fn removed_bone_during_delay_grants_no_xp_or_message() {
     let (mut w, a) = setup(false);
     bury(&mut w, a);

@@ -1,6 +1,6 @@
 //! Native prayer-tab/Continue scenario against the unchanged pinned client.
-//! A client varbit can be predicted by scripts; logs deliberately call it an
-//! observation. Server acceptance needs the paired server/TCP evidence.
+//! Client scripts can predict a varbit. Require convergence with the pinned
+//! client's separate server varp mirror before advancing either toggle.
 use gielinor_client::{
     client_state::ClientState, disk_cache::DiskCache, live_runtime::Connection,
     script_runtime::Source,
@@ -12,7 +12,36 @@ fn point(client: &mut ClientState, component: u32) -> Result<[i32; 2], Box<dyn s
         .widgets
         .get(&component)
         .filter(|p| !p.hidden && p.geometry.size.iter().all(|v| *v > 0))
-        .ok_or("native component is not visible")?;
+        .ok_or_else(|| {
+            println!(
+                "Prayer visibility: component={component} layout={:?}",
+                layout.widgets.get(&component)
+            );
+            let mut parent = Some(component);
+            for _ in 0..12 {
+                let Some(id) = parent else { break };
+                let Some(widget) = client.interfaces.widgets.get(&id) else {
+                    break;
+                };
+                println!(
+                    "Prayer widget ancestor: id={id} hidden={} parent={:?} size={:?}",
+                    widget.hidden, widget.parent, widget.raw_size
+                );
+                parent = widget.parent;
+            }
+            for (parent, sub) in client
+                .interfaces
+                .children
+                .iter()
+                .filter(|(_, sub)| sub.group == 541)
+            {
+                println!(
+                    "Prayer attachment: parent={parent} layout={:?}",
+                    layout.widgets.get(parent)
+                );
+            }
+            "native component is not visible"
+        })?;
     Ok([
         p.absolute[0] + p.geometry.size[0] / 2,
         p.absolute[1] + p.geometry.size[1] / 2,
@@ -35,6 +64,52 @@ fn button(client: &mut ClientState, component: u32) -> Result<(), Box<dyn std::e
         return Err("native prayer operation did not emit IF_BUTTONX47".into());
     }
     Ok(())
+}
+fn select_prayer_tab(client: &mut ClientState) -> Result<(), Box<dyn std::error::Error>> {
+    let layout = client.interfaces.layout(client.canvas)?;
+    let mut observed = Vec::new();
+    let mut candidates: Vec<_> = layout
+        .widgets
+        .keys()
+        .copied()
+        .filter(|id| id >> 16 == 548)
+        .collect();
+    candidates.sort_unstable();
+    for component in candidates {
+        let Some(p) = layout
+            .widgets
+            .get(&component)
+            .filter(|p| !p.hidden && p.geometry.size.iter().all(|v| *v > 0))
+        else {
+            continue;
+        };
+        let position = [
+            p.absolute[0] + p.geometry.size[0] / 2,
+            p.absolute[1] + p.geometry.size[1] / 2,
+        ];
+        let entries = client.interface_menu(position)?;
+        let Some(entry) = entries.last() else {
+            continue;
+        };
+        observed.push(format!("{component}:{}", entry.option));
+        if entry.option != "Prayer" {
+            continue;
+        }
+        if client.default_menu_opens(&entries) || client.begin_widget_drag(position, &entries)? {
+            return Err("Prayer tab requires unsupported context/drag action".into());
+        }
+        if !matches!(entry.action, gielinor_client::context_menu::Action::Interface { id, .. } if id >> 16 == 548)
+        {
+            return Err(format!("unexpected Prayer tab default action: {:?}", entry.action).into());
+        }
+        client.menu_action(entry.action)?;
+        println!(
+            "Native Prayer tab default menu: component={component} option={} target={}",
+            entry.option, entry.target
+        );
+        return Ok(());
+    }
+    Err(format!("visible Prayer tab default action absent: {observed:?}").into())
 }
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args: Vec<_> = std::env::args().collect();
@@ -66,6 +141,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             tick = Instant::now();
         }
         let active = skin.get(client.scripts.variables.player(skin.base));
+        let server_matches = !client
+            .scripts
+            .variables
+            .server_differences()
+            .contains(&skin.base);
         if report.elapsed() > Duration::from_secs(10) {
             println!("Prayer readiness: elapsed={} stage={stage} world={} scripts_busy={} tick={} active={active}", start.elapsed().as_secs(), live.world.is_some(), live.scripts_busy(), client.server_tick);
             report = Instant::now();
@@ -94,12 +174,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
         match stage {
             0 => {
-                client.input.pointer = point(&mut client, (548 << 16) | 68)?;
-                client.input.button(0, true);
-                client.input.button(0, false);
-                client.tick_interfaces(false)?;
-                client.input.begin_cycle();
-                println!("Native pointer selected Prayer tab");
+                // The viewport dispatches a tab's default menu operation in
+                // addition to ticking pointer listeners. Pointer events alone
+                // do not invoke the tab's on-operation clientscript.
+                select_prayer_tab(&mut client)?;
                 selected = Instant::now();
                 stage = 1;
             }
@@ -107,8 +185,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 button(&mut client, (541 << 16) | 9)?;
                 stage = 2;
             }
-            2 if active == 1 => {
+            2 if active == 1 && server_matches => {
                 println!("Client observed Thick Skin active: bit4104=1");
+                println!("Prayer server mirror matched: bit4104=1");
                 selected = Instant::now();
                 stage = 3;
             }
@@ -116,8 +195,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 button(&mut client, (541 << 16) | 9)?;
                 stage = 4;
             }
-            4 if active == 0 => {
+            4 if active == 0 && server_matches => {
                 println!("Client observed Thick Skin inactive: bit4104=0");
+                println!("Prayer server mirror matched: bit4104=0");
                 selected = Instant::now();
                 stage = 5;
             }

@@ -141,6 +141,54 @@ pub enum ButtonRoute {
     ProtectedModal,
 }
 impl State {
+    /// OpLocTHandler accepts either open modal or overlay, using TgtLoc (13).
+    /// This query has no modal/input side effects; clearPendingAction follows it.
+    pub fn location_target(&self, source: Component, slot: i32, baked: i32) -> bool {
+        (self.modals.contains_interface(source.interface())
+            || self.overlays.contains_interface(source.interface()))
+            && self.events.enabled(source, slot, baked, 1 << 13)
+    }
+    /// IfButtonTHandler checks selected TgtCom and target Target permissions.
+    /// A selected modal takes precedence even if the same interface is also an
+    /// overlay. Only an enabled modal operation closes its input dialog.
+    pub fn target_button(
+        &mut self,
+        source: Component,
+        source_slot: i32,
+        source_baked: i32,
+        target: Component,
+        target_slot: i32,
+        target_baked: i32,
+    ) -> ButtonRoute {
+        let modal = self.modals.contains_interface(source.interface());
+        if !modal && !self.overlays.contains_interface(source.interface()) {
+            return ButtonRoute::Ignored;
+        }
+        if source.interface() != target.interface()
+            && !self.modals.contains_interface(target.interface())
+            && !self.overlays.contains_interface(target.interface())
+        {
+            return ButtonRoute::Ignored;
+        }
+        if !self
+            .events
+            .enabled(source, source_slot, source_baked, 1 << 16)
+            || !self
+                .events
+                .enabled(target, target_slot, target_baked, 1 << 21)
+        {
+            return ButtonRoute::Ignored;
+        }
+        if !modal {
+            return ButtonRoute::Overlay;
+        }
+        self.input_dialog_open = false;
+        if self.modal_button_protected {
+            ButtonRoute::ProtectedModal
+        } else {
+            ButtonRoute::Modal
+        }
+    }
     pub fn queue_pause_close(&mut self, component: Component, slot: i32, baked: i32) -> bool {
         if !self.events.enabled(component, slot, baked, 1) {
             return false;
@@ -276,6 +324,83 @@ impl State {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn location_target_requires_open_interface_and_exact_target_permission() {
+        let component = Component::new(149, 0);
+        let mut ui = State::default();
+        ui.input_dialog_open = true;
+        ui.events.add(component, 0, 27, 1 << 13).unwrap();
+        assert!(!ui.location_target(component, 0, 0));
+        ui.modals.set(Component::new(548, 20), 149);
+        ui.modal_button_protected = true;
+        assert!(ui.location_target(component, 0, 0));
+        assert!(ui.input_dialog_open);
+        assert!(!ui.location_target(component, 28, 1 << 13));
+        ui.events.add(component, 0, 0, 1 << 16).unwrap();
+        assert!(!ui.location_target(component, 0, 1 << 13));
+        assert!(ui.location_target(component, -1, 1 << 13));
+    }
+    #[test]
+    fn targeted_buttons_require_both_masks_and_selected_modal_takes_precedence() {
+        let selected = Component::new(149, 0);
+        let target = Component::new(12, 4);
+        let mut ui = State::default();
+        ui.input_dialog_open = true;
+        ui.overlays.set(Component::new(548, 20), 149);
+        ui.events
+            .add(selected, 0, 27, (1 << 16) | (1 << 20))
+            .unwrap();
+        ui.events.add(target, 0, 27, (1 << 21) | (1 << 20)).unwrap();
+        assert_eq!(
+            ui.target_button(selected, 0, 0, target, 1, 0),
+            ButtonRoute::Ignored
+        );
+        assert!(ui.input_dialog_open);
+        ui.overlays.set(Component::new(548, 21), 12);
+        assert_eq!(
+            ui.target_button(selected, 0, 0, target, 1, 0),
+            ButtonRoute::Overlay
+        );
+        assert!(ui.input_dialog_open);
+        ui.events.add(target, 1, 1, 1 << 20).unwrap();
+        assert_eq!(
+            ui.target_button(selected, 0, 0, target, 1, 0),
+            ButtonRoute::Ignored,
+            "drag permission does not grant use-target permission"
+        );
+        ui.events.add(target, 1, 1, 1 << 21).unwrap();
+        ui.modals.set(Component::new(548, 22), 149);
+        ui.modal_button_protected = true;
+        assert_eq!(
+            ui.target_button(selected, 0, 0, target, 1, 0),
+            ButtonRoute::ProtectedModal
+        );
+        assert!(!ui.input_dialog_open);
+        ui.input_dialog_open = true;
+        ui.events.add(selected, 0, 0, 0).unwrap();
+        assert_eq!(
+            ui.target_button(selected, 0, 1 << 16, target, 1, 0),
+            ButtonRoute::Ignored
+        );
+        assert!(
+            ui.input_dialog_open,
+            "rejected operation preserves input dialog"
+        );
+    }
+    #[test]
+    fn targeted_button_static_permissions_apply_only_to_non_slot_components() {
+        let component = Component::new(149, 0);
+        let mut ui = State::default();
+        ui.overlays.set(Component::new(548, 20), 149);
+        assert_eq!(
+            ui.target_button(component, -1, 1 << 16, component, -1, 1 << 21),
+            ButtonRoute::Overlay
+        );
+        assert_eq!(
+            ui.target_button(component, 0, 1 << 16, component, 1, 1 << 21),
+            ButtonRoute::Ignored
+        );
+    }
     #[test]
     fn static_fallback_dynamic_permissions_and_zero_override() {
         let comp = Component::new(149, 0);

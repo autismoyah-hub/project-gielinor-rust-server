@@ -68,7 +68,7 @@ impl Character {
         }
         if auth.new_account {
             let hp = defs.stats.get(&(policy.hitpoints as u32)).ok_or(13u8)?;
-            if (stats.base(policy.hitpoints) as i32) < hp.min_level as i32 {
+            if (stats.base(policy.hitpoints) as u8 as i32) < hp.min_level as i32 {
                 let xp = gielinor_world::skills::xp_from_level(hp.min_level).ok_or(13u8)?;
                 stats.set_xp(policy.hitpoints, xp).map_err(|_| 13u8)?;
                 stats.set_base(policy.hitpoints, hp.min_level as i8);
@@ -274,6 +274,56 @@ mod tests {
                 (8, variables::varp(8, &[203, 0, 0]).unwrap()),
             ]),
             stats: BTreeMap::from([(3, StatType::decode(&[4, 10, 0]).unwrap())]),
+        }
+    }
+    #[test]
+    fn new_account_minimum_hp_compares_unsigned_stat_bytes() {
+        let defs = definitions();
+        let policy = Policy {
+            world: 1,
+            inventory: 93,
+            equipment: 94,
+            bank: 95,
+            hitpoints: 3,
+            spawn: CoordGrid::new(3094, 3107, 0).unwrap(),
+            base_xp_rate_hundreds: 100,
+            auto_display_names: true,
+            dev_modlevel: None,
+            modlevels: BTreeMap::new(),
+        };
+        let mut accounts = Accounts::from_database(Database::memory().unwrap());
+        accounts.initialize().unwrap();
+        accounts.create("fresh hp", "test-hash", 1).unwrap();
+        for level in [1u8, 9, 10, 127, 128, 200, 255] {
+            let mut account = accounts.load("fresh hp", 1).unwrap().unwrap();
+            account.stats.insert(
+                3,
+                Stat {
+                    base: level as i8,
+                    visible: 7,
+                    fine_xp: 123450,
+                },
+            );
+            let (_, data) = Character::load(
+                Authenticated {
+                    account,
+                    new_account: true,
+                    authenticator_code: None,
+                },
+                &defs,
+                &policy,
+                "2026-10-12T01:02:03".into(),
+            )
+            .unwrap();
+            if level < 10 {
+                assert_eq!(data.stats.base(3), 10);
+                assert_eq!(data.stats.current(3), 10);
+                assert_eq!(data.stats.fine_xp(3), 11540);
+            } else {
+                assert_eq!(data.stats.base(3) as u8, level);
+                assert_eq!(data.stats.current(3), 7);
+                assert_eq!(data.stats.fine_xp(3), 123450);
+            }
         }
     }
     #[test]

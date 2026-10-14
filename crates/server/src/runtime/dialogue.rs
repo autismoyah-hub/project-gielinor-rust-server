@@ -110,30 +110,93 @@ impl<B: AccountBackend> Runtime<B> {
             return Ok(());
         };
         match event {
+            DialogueEvent::TutorialStep {
+                npc,
+                step,
+                open_tab,
+            } => {
+                self.set_tutorial_step(actor, *step, Some(*npc))?;
+                if let Some(tab) = open_tab {
+                    self.run_client_script(actor, 915, &[Argument::Int(*tab)])?;
+                }
+                Ok(())
+            }
+            DialogueEvent::Survival {
+                npc,
+                step,
+                inventory_tab,
+            } => {
+                self.set_tutorial_step(actor, *step, Some(*npc))?;
+                if *inventory_tab {
+                    self.run_client_script(actor, 915, &[Argument::Int(3)])?;
+                }
+                Ok(())
+            }
+            DialogueEvent::TutorialGuide {
+                npc,
+                step,
+                open_settings,
+            } => {
+                self.set_tutorial_step(actor, *step, Some(*npc))?;
+                if *open_settings {
+                    self.run_client_script(actor, 915, &[Argument::Int(11)])?;
+                }
+                Ok(())
+            }
             DialogueEvent::Closed => {
                 let parent = presentation.parent;
-                self.active.get_mut(&actor).unwrap().dialogue = None;
-                self.close_interface(actor, parent)
+                let active = self.active.get_mut(&actor).unwrap();
+                let close = active.dialogue.take().is_some_and(|dialogue| {
+                    active
+                        .ui
+                        .modals
+                        .contains_interface(dialogue.button.interface())
+                });
+                // A final content effect can replace chat with the tutorial's
+                // guide overlay. Completion must not close that replacement.
+                if close {
+                    self.close_interface(actor, parent)
+                } else {
+                    Ok(())
+                }
             }
             DialogueEvent::Page { token, npc, page } => {
                 let (interface, remaining) = match page {
-                    Page::Chat { speaker, text, .. } => (
-                        if *speaker == Speaker::Player {
-                            presentation.player
+                    Page::Chat { speaker, text, .. } | Page::NamedChat { speaker, text, .. } => {
+                        let text = if matches!(page, Page::NamedChat { .. }) {
+                            std::borrow::Cow::Owned(
+                                text.replace(
+                                    "${player.displayName}",
+                                    &self
+                                        .world
+                                        .data(actor)
+                                        .map_err(|e| io::Error::other(format!("{e:?}")))?
+                                        .display_name,
+                                ),
+                            )
                         } else {
-                            presentation.npc
-                        },
-                        presentation
-                            .font
-                            .pages(text)
-                            .map_err(io::Error::other)?
-                            .into(),
-                    ),
-                    Page::Choice(_) => (presentation.choice, Default::default()),
+                            std::borrow::Cow::Borrowed(*text)
+                        };
+                        (
+                            if *speaker == Speaker::Player {
+                                presentation.player
+                            } else {
+                                presentation.npc
+                            },
+                            presentation
+                                .font
+                                .pages(&text)
+                                .map_err(io::Error::other)?
+                                .into(),
+                        )
+                    }
+                    Page::Choice(_) | Page::TitledChoice { .. } => {
+                        (presentation.choice, Default::default())
+                    }
                 };
                 let button = Component(
                     (interface as u32) << 16
-                        | if matches!(page, Page::Choice(_)) {
+                        | if matches!(page, Page::Choice(_) | Page::TitledChoice { .. }) {
                             1
                         } else {
                             5
@@ -159,12 +222,16 @@ impl<B: AccountBackend> Runtime<B> {
         let protocol =
             |e: gielinor_protocol::buffer::DecodeError| io::Error::other(format!("{e:?}"));
         let mode = match dialogue.page {
-            Page::Chat { .. } => 0,
-            Page::Choice(_) => 1,
+            Page::Chat { .. } | Page::NamedChat { .. } => 0,
+            Page::Choice(_) | Page::TitledChoice { .. } => 1,
         };
         let text_page = dialogue.remaining.pop_front();
         let title = match &dialogue.page {
             Page::Chat {
+                speaker: Speaker::Player,
+                ..
+            }
+            | Page::NamedChat {
                 speaker: Speaker::Player,
                 ..
             } => self
@@ -197,6 +264,11 @@ impl<B: AccountBackend> Runtime<B> {
         )?;
         match &dialogue.page {
             Page::Chat {
+                speaker,
+                expression,
+                ..
+            }
+            | Page::NamedChat {
                 speaker,
                 expression,
                 ..
@@ -246,13 +318,17 @@ impl<B: AccountBackend> Runtime<B> {
                         .map_err(protocol)?,
                 )?;
             }
-            Page::Choice(options) => {
+            Page::Choice(options) | Page::TitledChoice { options, .. } => {
+                let title = match &dialogue.page {
+                    Page::TitledChoice { title, .. } => *title,
+                    _ => "Select an option",
+                };
                 self.dialogue_packet(
                     actor,
                     client_script::run(
                         58,
                         &[
-                            Argument::String("Select an option".into()),
+                            Argument::String(title.into()),
                             Argument::String(options.join("|")),
                         ],
                     )

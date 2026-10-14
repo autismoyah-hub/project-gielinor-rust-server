@@ -8,6 +8,7 @@ pub enum Expression {
     Neutral,
     Angry,
     Confused,
+    Quiz,
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Speaker {
@@ -21,14 +22,53 @@ pub enum Page {
         expression: Expression,
         text: &'static str,
     },
+    /// Resolve the player name when this page is presented, after prior suspensions.
+    NamedChat {
+        speaker: Speaker,
+        expression: Expression,
+        text: &'static str,
+    },
     Choice(&'static [&'static str]),
+    TitledChoice {
+        title: &'static str,
+        options: &'static [&'static str],
+    },
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Effect {
+    LectureTutor {
+        config: crate::tutorial_lecture_tutor::Config,
+        stage: crate::tutorial_lecture_tutor::Stage,
+    },
+    MagicTutor {
+        config: crate::tutorial_magic_tutor::Config,
+        stage: crate::tutorial_magic_tutor::Stage,
+    },
+    CombatTutor {
+        config: crate::tutorial_combat_tutor::Config,
+        stage: crate::tutorial_combat_tutor::Stage,
+    },
+    MiningTutor {
+        config: crate::tutorial_mining_tutor::Config,
+        stage: crate::tutorial_mining_tutor::Stage,
+    },
+    Quest(crate::tutorial_quest::Stage),
+    Chef {
+        config: crate::tutorial_chef::Config,
+        stage: crate::tutorial_chef::Stage,
+    },
+    Survival {
+        config: crate::tutorial_survival::Config,
+        stage: crate::tutorial_survival::Stage,
+    },
     None,
     RollPersonResponse,
     GiveFlyer,
     Retaliate,
+    TutorialGuide {
+        step: crate::tutorial_steps::Step,
+        open_settings: bool,
+    },
 }
 #[derive(Clone, Debug)]
 pub struct Conversation {
@@ -43,6 +83,21 @@ pub struct Pending {
 }
 #[derive(Clone, Debug)]
 pub enum Event {
+    TutorialStep {
+        npc: crate::simulation::NpcId,
+        step: crate::tutorial_steps::Step,
+        open_tab: Option<i32>,
+    },
+    Survival {
+        npc: crate::simulation::NpcId,
+        step: crate::tutorial_steps::Step,
+        inventory_tab: bool,
+    },
+    TutorialGuide {
+        npc: crate::simulation::NpcId,
+        step: crate::tutorial_steps::Step,
+        open_settings: bool,
+    },
     Page {
         token: u64,
         npc: crate::simulation::NpcId,
@@ -58,6 +113,44 @@ pub const OPTIONS: &[&str] = &[
     "I'm in search of enemies to kill.",
 ];
 impl Conversation {
+    /// BasicsTutorScript captures progress when the conversation starts.
+    pub fn tutorial_guide(step: crate::tutorial_steps::Step) -> Self {
+        use crate::tutorial_steps::Step;
+        let (pages, next, open_settings): (&[&'static str], _, _) = if step < Step::GielinorSettings
+        {
+            (&[
+                "Greetings! I see you are a new arrival to the world of Gielinor. My job is to welcome all new visitors. So welcome!",
+                "You have already learned the first thing needed to succeed in this world: talking to other people!",
+                "You will find many inhabitants of this world have useful things to say to you. By clicking on them you can talk to them.",
+                "Now then, let's start by looking at your settings menu.",
+            ], Step::GielinorSettings, true)
+        } else if step < Step::GielinorDoor {
+            (&[
+                "Looks like you're making good progress! The menu you've just opened is one of many. You'll learn about the rest as you progress through the tutorial.",
+                "Anyway, I'd say it's time for you to go and meet your first instructor!",
+            ], Step::GielinorDoor, false)
+        } else {
+            (&[
+                "Welcome back. You have already learnt the first thing needed to succeed in this world: talking to other people!",
+                "You will find many inhabitants of this world have useful things to say to you. By clicking on them, you can talk to them.",
+                "To continue the tutorial go through that door over there and speak to your first instructor!",
+            ], Step::GielinorDoor, false)
+        };
+        Self {
+            pages: pages
+                .iter()
+                .map(|&text| Page::Chat {
+                    speaker: Speaker::Npc,
+                    expression: Expression::Happy,
+                    text,
+                })
+                .collect(),
+            after: Effect::TutorialGuide {
+                step: next,
+                open_settings,
+            },
+        }
+    }
     pub fn person() -> Self {
         let mut result = Self {
             pages: VecDeque::new(),

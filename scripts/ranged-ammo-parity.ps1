@@ -34,6 +34,13 @@ $quoted = $runArgs | ForEach-Object { '"' + $_.Replace('\','/') + '"' }
 Set-Content "$oracleDir/run.args" $quoted -Encoding utf8
 & $java "@$oracleDir/run.args"
 if ($LASTEXITCODE -ne 0) { throw 'Ranged ammo oracle execution failed.' }
+[ordered]@{
+    method='Original compiled RangedAmmunition.validateArrows/validateBolts/validateJavelins:4096 category/bone/level cases. Does not validate runtime conservation, equipment mutation, projectiles or combat.'
+    sourceSha256=(Get-FileHash "$serverRoot/reference/kotlin/api/combat/combat-commons/src/main/kotlin/org/rsmod/api/combat/commons/ranged/RangedAmmunition.kt").Hash
+    oracleSha256=(Get-FileHash "$serverRoot/reference/RangedAmmoOracle.kt").Hash
+    jars=@($references | Sort-Object -Unique | ForEach-Object { [ordered]@{path=$_;sha256=(Get-FileHash -LiteralPath $_).Hash} })
+    fixtureSha256=(Get-FileHash "$serverRoot/crates/world/tests/fixtures/ranged-ammo.expected").Hash
+} | ConvertTo-Json -Depth 5 | Set-Content "$oracleDir/provenance.json" -Encoding utf8
 & "$serverRoot/build.ps1" -Action test -CargoArgs @('-p','gielinor-world','--test','kotlin_ranged_ammo')
 
 

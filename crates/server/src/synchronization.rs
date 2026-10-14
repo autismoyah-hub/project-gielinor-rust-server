@@ -18,7 +18,9 @@ pub struct Avatar<'a> {
     pub actor: ActorId,
     pub movement: MovementSnapshot,
     pub appearance: &'a [u8],
+    pub appearance_rebuild: bool,
     pub sequence: Option<(u16, u8)>,
+    pub spot_animations: Vec<gielinor_protocol::spot_animation::Animation>,
     pub face_angle: Option<u16>,
     pub face_npc: Option<u16>,
     pub face_changed: bool,
@@ -90,28 +92,40 @@ impl Observer {
         avatars: &[Avatar<'_>],
         radius: i32,
     ) -> Result<(Self, Packet), DecodeError> {
+        Self::initialize_positions(
+            actor,
+            &avatars
+                .iter()
+                .map(|p| (p.actor, p.movement.coords))
+                .collect::<Vec<_>>(),
+            radius,
+        )
+    }
+    /// Login rebuilds need positions only. Content login hooks run after this
+    /// rebuild but before the first appearance snapshots are constructed.
+    pub fn initialize_positions(
+        actor: ActorId,
+        positions: &[(ActorId, CoordGrid)],
+        radius: i32,
+    ) -> Result<(Self, Packet), DecodeError> {
         if !(1..=127).contains(&radius) {
             return Err(DecodeError::InvalidValue("view radius"));
         }
-        let local = avatars
+        let local = positions
             .iter()
-            .find(|p| p.actor == actor)
+            .find(|p| p.0 == actor)
             .ok_or(DecodeError::InvalidValue("local avatar missing"))?;
         let mut regions = [0; 2048];
         let mut occupied = [false; 2048];
-        for avatar in avatars {
-            let slot = avatar.actor.slot as usize;
-            if slot == 0
-                || slot >= 2048
-                || occupied[slot]
-                || avatar.movement.coords == CoordGrid::NULL
-            {
+        for &(other, coords) in positions {
+            let slot = other.slot as usize;
+            if slot == 0 || slot >= 2048 || occupied[slot] || coords == CoordGrid::NULL {
                 return Err(DecodeError::InvalidValue("avatar initialization"));
             }
             occupied[slot] = true;
-            regions[slot] = region(avatar.movement.coords);
+            regions[slot] = region(coords);
         }
-        let coords = local.movement.coords;
+        let coords = local.1;
         let (state, gpi) =
             State::initialize(actor.slot, position(coords), actor.generation, &regions)?;
         let payload = player_sync::rebuild_login(
@@ -154,7 +168,8 @@ impl Observer {
             }
             let m = avatar.movement;
             let old = self.known.get(&avatar.actor);
-            let changed = old.is_none_or(|k| k.appearance != avatar.appearance);
+            let changed =
+                avatar.appearance_rebuild || old.is_none_or(|k| k.appearance != avatar.appearance);
             let speed_changed = old.is_none_or(|k| k.movement.cached_speed != m.cached_speed);
             let moved = old.is_none_or(|k| k.movement.coords != m.coords);
             let temporary = (moved && m.resolved_speed() != m.cached_speed)
@@ -184,6 +199,7 @@ impl Observer {
                 })
                 .transpose()?;
             let update = Updates {
+                spot_animations: Some(&avatar.spot_animations),
                 hitmarks: hits.as_deref(),
                 headbars: bars.as_deref(),
                 face: avatar
@@ -218,6 +234,7 @@ impl Observer {
             }
             .encode()?;
             let initial = Updates {
+                spot_animations: Some(&avatar.spot_animations),
                 hitmarks: hits.as_deref(),
                 headbars: bars.as_deref(),
                 face: avatar
@@ -306,7 +323,9 @@ mod tests {
                 },
                 movement: MovementSnapshot::from(&Movement::new(coords)),
                 appearance: &[0],
+                appearance_rebuild: false,
                 sequence: None,
+                spot_animations: Vec::new(),
                 face_angle: None,
                 face_npc: None,
                 face_changed: false,
@@ -321,6 +340,7 @@ mod tests {
             observer.cycle(&avatars).unwrap();
         }
         let display = crate::combat_display::Display {
+            spot_animations: vec![],
             sequence: None,
             hits: vec![Hitmark {
                 source_index: 65538,
@@ -342,6 +362,12 @@ mod tests {
             }],
         };
         avatars[0].combat = Some(&display);
+        avatars[0].spot_animations = vec![gielinor_protocol::spot_animation::Animation {
+            slot: 0,
+            id: 1336,
+            delay: 0,
+            height: 0,
+        }];
         let mut blocks = vec![];
         for (index, observer) in observers.iter_mut().enumerate() {
             let hits = combat_updates::hitmarks(false, index as u16 + 1, 1, &display.hits).unwrap();
@@ -349,6 +375,7 @@ mod tests {
             let block = Updates {
                 hitmarks: Some(&hits),
                 headbars: Some(&bars),
+                spot_animations: Some(&avatars[0].spot_animations),
                 ..Default::default()
             }
             .encode()
@@ -361,10 +388,31 @@ mod tests {
         assert_ne!(blocks[0], blocks[1]);
         assert_ne!(blocks[1], blocks[2]);
         avatars[0].combat = None;
+        avatars[0].spot_animations.clear();
         for (observer, block) in observers.iter_mut().zip(blocks) {
             assert!(!observer.cycle(&avatars).unwrap()[0]
                 .payload
                 .ends_with(&block));
+        }
+        // Creator setters mark a rebuild even when encoded appearance is equal.
+        // Every observer must receive it before the tick clears that flag.
+        avatars[0].appearance_rebuild = true;
+        let repeated = Updates {
+            appearance: Some(avatars[0].appearance),
+            ..Default::default()
+        }
+        .encode()
+        .unwrap();
+        for observer in &mut observers {
+            assert!(observer.cycle(&avatars).unwrap()[0]
+                .payload
+                .ends_with(&repeated));
+        }
+        avatars[0].appearance_rebuild = false;
+        for observer in &mut observers {
+            assert!(!observer.cycle(&avatars).unwrap()[0]
+                .payload
+                .ends_with(&repeated));
         }
     }
     #[test]
@@ -379,7 +427,9 @@ mod tests {
             actor,
             movement: MovementSnapshot::from(&Movement::new(coords)),
             appearance: &[0],
+            appearance_rebuild: false,
             sequence: None,
+            spot_animations: Vec::new(),
             face_angle: None,
             face_npc: None,
             face_changed: false,

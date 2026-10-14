@@ -2,6 +2,14 @@ import copy,json,tempfile,unittest
 from pathlib import Path
 from integration_telemetry import Writer,load,compare,import_run
 class TelemetryTests(unittest.TestCase):
+    def test_prayer_server_mirror_is_distinct_from_prediction(self):
+        with tempfile.TemporaryDirectory() as t:
+            root=Path(t)
+            (root/'client.log').write_text('Client observed Thick Skin active: bit4104=1\nPrayer server mirror matched: bit4104=1\nPrayer server mirror matched: bit4104=0\n')
+            import_run(root,root/'events.jsonl','rust','prayer','pin','fixture','cache')
+            mirror=[e['data'] for e in load(root/'events.jsonl') if e['kind']=='prayer.server_mirror']
+            self.assertEqual([e['value'] for e in mirror],[1,0])
+            self.assertTrue(all(e['entire_base_matches'] and e['server_acceptance'] is None for e in mirror))
     def test_prayer_prediction_does_not_become_server_acceptance(self):
         with tempfile.TemporaryDirectory() as t:
             root=Path(t)
