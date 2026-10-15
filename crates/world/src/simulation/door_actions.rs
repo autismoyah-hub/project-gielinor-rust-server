@@ -11,11 +11,16 @@ impl World {
         {
             return true;
         }
-        (matches!(operation, 1 | 3)
+        (operation == 1
             && self
-                .woodcutting
+                .mining
                 .as_ref()
-                .is_some_and(|c| c.trees.contains_key(&id)))
+                .is_some_and(|c| c.rocks.contains_key(&id)))
+            || (matches!(operation, 1 | 3)
+                && self
+                    .woodcutting
+                    .as_ref()
+                    .is_some_and(|c| c.trees.contains_key(&id)))
             || (operation == 1
                 && (self.tower_staff.as_ref().is_some_and(|c| c.location == id)
                     || self.tower_chest.as_ref().is_some_and(|c| c.location == id)
@@ -261,6 +266,16 @@ impl World {
             let p = self.players.get_mut(slot).unwrap();
             p.movement.abort();
             p.protection.delay(1);
+            return;
+        }
+        if reached
+            && operation == 1
+            && self
+                .mining
+                .as_ref()
+                .is_some_and(|c| c.rocks.contains_key(&loc.id))
+        {
+            self.process_mining(slot, loc, random);
             return;
         }
         if reached

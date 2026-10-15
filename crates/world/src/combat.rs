@@ -116,6 +116,16 @@ pub fn hit_chance(attack: i32, defence: i32, fang: bool) -> i32 {
 mod tests {
     use super::*;
     #[test]
+    fn wiki_unmodified_melee_vectors_keep_formula_and_basis_point_rounding_separate() {
+        for strength in [1, 2] {
+            let effective = effective_strength(strength, 8, 1.0, 1.0, 1.0).unwrap();
+            assert_eq!(base_damage(effective, 0), 1);
+        }
+        for (attack, defence, expected) in [(0, 0, 0), (100, 100, 4950), (101, 100, 5000)] {
+            assert_eq!(hit_chance(attack, defence, false), expected);
+        }
+    }
+    #[test]
     fn low_level_prayer_exception_and_roll_signs() {
         assert_eq!(effective_strength(1, 8, 1.05, 1.0, 1.0), Ok(10));
         assert_eq!(effective_attack(1, 8, 1.05, 1.0), Ok(9));

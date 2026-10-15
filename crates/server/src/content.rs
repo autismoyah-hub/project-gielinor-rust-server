@@ -93,6 +93,121 @@ pub fn foods(symbols: &Symbols, defs: &Definitions) -> Result<BTreeMap<i32, Edib
     }
     Ok(foods)
 }
+/// GR-24's bounded cake/plain-pizza correction. Other foods retain the reference
+/// profile; selected IDs must be unnoted, nonstackable, ordinary Eat definitions.
+pub fn wiki_multipart_foods(
+    symbols: &Symbols,
+    defs: &Definitions,
+    foods: &mut BTreeMap<i32, Edible>,
+) -> Result<std::collections::BTreeSet<i32>, String> {
+    let mut next = foods.clone();
+    let mut selected = std::collections::BTreeSet::new();
+    let rows = [
+        ("cake", Some("partial_cake"), 4),
+        ("partial_cake", Some("cake_slice"), 4),
+        ("cake_slice", None, 4),
+        ("plain_pizza", Some("half_plain_pizza"), 7),
+        ("half_plain_pizza", None, 7),
+    ];
+    for (symbol, replacement, heal) in rows {
+        let id = *symbols.get(symbol).ok_or("Missing multipart food symbol")?;
+        let item = u32::try_from(id)
+            .ok()
+            .and_then(|id| defs.items.get(&id))
+            .ok_or("Missing multipart food definition")?;
+        if item.stackable
+            || item.dummy == 1
+            || item.cert.template != 0
+            || item.placeholder.template != 0
+            || item.inventory_ops[0].as_deref() != Some("Eat")
+            || !selected.insert(id)
+        {
+            return Err("Invalid multipart food definition".into());
+        }
+        let food = next
+            .get_mut(&id)
+            .ok_or("Multipart food handler is absent")?;
+        food.heal = heal;
+        food.replacement = replacement
+            .map(|name| {
+                symbols
+                    .get(name)
+                    .copied()
+                    .ok_or("Missing multipart remainder symbol")
+            })
+            .transpose()?;
+    }
+    *foods = next;
+    Ok(selected)
+}
+
+#[cfg(test)]
+mod multipart_tests {
+    use super::*;
+
+    #[test]
+    fn selected_food_binding_validates_every_stage_before_changing_catalog() {
+        let symbols: Symbols = [
+            ("cake", 1891),
+            ("partial_cake", 1893),
+            ("cake_slice", 1895),
+            ("plain_pizza", 2289),
+            ("half_plain_pizza", 2291),
+        ]
+        .into_iter()
+        .map(|(name, id)| (name.into(), id))
+        .collect();
+        let mut defs = Definitions {
+            inventories: Default::default(),
+            locations: Default::default(),
+            npcs: Default::default(),
+            items: Default::default(),
+            varbits: Default::default(),
+            varps: Default::default(),
+            stats: Default::default(),
+        };
+        let mut foods = BTreeMap::new();
+        for &id in symbols.values() {
+            let mut item = gielinor_cache::definitions::ItemType::decode(&[0]).unwrap();
+            item.inventory_ops[0] = Some("Eat".into());
+            defs.items.insert(id as u32, item);
+            foods.insert(
+                id,
+                Edible {
+                    id,
+                    heal: 1,
+                    delay: 3,
+                    replacement: None,
+                    message: "Fixture".into(),
+                },
+            );
+        }
+        defs.items.get_mut(&1895).unwrap().stackable = true;
+        assert!(wiki_multipart_foods(&symbols, &defs, &mut foods).is_err());
+        assert!(foods
+            .values()
+            .all(|food| food.heal == 1 && food.replacement.is_none()));
+        defs.items.get_mut(&1895).unwrap().stackable = false;
+        assert_eq!(
+            wiki_multipart_foods(&symbols, &defs, &mut foods)
+                .unwrap()
+                .len(),
+            5
+        );
+        for (id, replacement, heal) in [
+            (1891, Some(1893), 4),
+            (1893, Some(1895), 4),
+            (1895, None, 4),
+            (2289, Some(2291), 7),
+            (2291, None, 7),
+        ] {
+            assert_eq!(
+                (foods[&id].replacement, foods[&id].heal),
+                (replacement, heal)
+            );
+        }
+    }
+}
 pub fn banking(
     varbit_symbols: &Symbols,
     param_symbols: &Symbols,

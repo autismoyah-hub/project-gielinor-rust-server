@@ -345,11 +345,13 @@ pub fn configure<B: AccountBackend>(
         );
     }
     runtime.configure_equipment(held, worn, n("param"))?;
-    runtime.configure_foods(
-        held,
-        crate::content::foods(n("obj"), &runtime.definitions).map_err(io::Error::other)?,
-        names.short("seq", "human_eat")?,
-    )?;
+    let mut foods =
+        crate::content::foods(n("obj"), &runtime.definitions).map_err(io::Error::other)?;
+    let slot_preserving_foods =
+        crate::content::wiki_multipart_foods(n("obj"), &runtime.definitions, &mut foods)
+            .map_err(io::Error::other)?;
+    runtime.configure_foods(held, foods, names.short("seq", "human_eat")?)?;
+    runtime.world.slot_preserving_foods = slot_preserving_foods;
     runtime.configure_potions(n("obj"), n("stat"))?;
     runtime.world.doors =
         crate::doors::resolve(n("content"), n("param"), &parameters, &runtime.definitions)

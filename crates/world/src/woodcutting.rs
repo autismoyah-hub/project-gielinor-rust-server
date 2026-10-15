@@ -55,7 +55,7 @@ impl Config {
                 || tree
                     .rates
                     .values()
-                    .any(|&(low, high)| low < 0 || high < low)
+                    .any(|&(low, high)| low < 0 || high < low || high > 65535)
             {
                 return Err("Invalid woodcutting tree");
             }
@@ -63,27 +63,8 @@ impl Config {
         Ok(())
     }
     pub fn axe(&self, inv: &Inventory, worn: &Inventory, level: i32) -> Option<(i32, Axe)> {
-        let eligible = |id: i32| {
-            self.axes
-                .get(&id)
-                .copied()
-                .filter(|a| level >= a.level)
-                .map(|a| (id, a))
-        };
-        // Inventory maxByOrNull keeps the first equal requirement; worn wins a tie.
-        let mut carried = None;
-        for item in inv.slots().iter().flatten() {
-            if let Some(candidate) = eligible(item.id) {
-                if carried.is_none_or(|(_, a): (i32, Axe)| candidate.1.level > a.level) {
-                    carried = Some(candidate);
-                }
-            }
-        }
-        let worn = worn.get(3).and_then(|i| eligible(i.id));
-        match (worn, carried) {
-            (Some(w), Some(c)) => Some(if w.1.level >= c.1.level { w } else { c }),
-            (w, c) => w.or(c),
-        }
+        crate::gathering::best_tool(inv, worn, level, |id| self.axes.get(&id).map(|a| a.level))
+            .map(|id| (id, self.axes[&id]))
     }
 }
 /// Per-location state, advanced once in ControllerMain, never once per player.
@@ -133,63 +114,7 @@ impl ActiveTrees {
         });
     }
 }
-#[derive(Clone, Debug)]
-pub struct Trace {
-    pub tick: i32,
-    pub location: Location,
-    pub revision: u64,
-    pub action_delay: i32,
-    pub result: &'static str,
-    pub roll: Option<u32>,
-    pub threshold: Option<f64>,
-    pub product: i32,
-    pub product_delta: i32,
-    pub fine_xp_delta: i32,
-    pub level: i32,
-    pub required_level: i32,
-    pub axe: Option<i32>,
-    pub free_slots: usize,
-    pub product_before: i64,
-    pub fine_xp_before: i32,
-}
-impl Trace {
-    /// Numeric and closed-vocabulary gameplay data only; no account/session secrets.
-    pub fn json(&self, actor: crate::simulation::ActorId) -> String {
-        let optional = |value: Option<String>| value.unwrap_or_else(|| "null".into());
-        format!(
-            concat!(
-                "{{\"schema\":1,\"actor_slot\":{},\"actor_generation\":{},\"tick\":{},",
-                "\"location\":[{},{},{},{},{},{}],\"revision\":{},\"scheduled_tick\":{},",
-                "\"result\":\"{}\",\"roll\":{},\"threshold\":{},\"product\":{},",
-                "\"product_delta\":{},\"fine_xp_delta\":{},\"level\":{},\"required_level\":{},",
-                "\"axe\":{},\"free_slots\":{},\"product_before\":{},\"fine_xp_before\":{}}}"
-            ),
-            actor.slot,
-            actor.generation,
-            self.tick,
-            self.location.coords.x(),
-            self.location.coords.z(),
-            self.location.coords.level(),
-            self.location.id,
-            self.location.shape,
-            self.location.angle,
-            self.revision,
-            self.action_delay,
-            self.result,
-            optional(self.roll.map(|v| v.to_string())),
-            optional(self.threshold.map(|v| v.to_string())),
-            self.product,
-            self.product_delta,
-            self.fine_xp_delta,
-            self.level,
-            self.required_level,
-            optional(self.axe.map(|v| v.to_string())),
-            self.free_slots,
-            self.product_before,
-            self.fine_xp_before
-        )
-    }
-}
+pub use crate::gathering::Trace;
 
 #[cfg(test)]
 mod tests {

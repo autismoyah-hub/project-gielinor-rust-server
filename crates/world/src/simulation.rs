@@ -25,6 +25,7 @@ mod melee_actions;
 mod movement_actions;
 pub use movement_actions::MovementInput;
 mod elemental_spell_actions;
+mod mining_actions;
 mod npc_actions;
 mod npc_combat_actions;
 mod npc_death_actions;
@@ -34,6 +35,7 @@ mod prayer_book_actions;
 mod quantity_dialog;
 mod ranged_actions;
 mod ranged_ammo_actions;
+mod shop_actions;
 mod smelting_actions;
 mod smithing_actions;
 mod soft_timer_actions;
@@ -249,6 +251,7 @@ struct Player {
     overhead: Option<u8>,
     dialogue: Option<crate::dialogue::Pending>,
     bank_count: Option<(u64, crate::bank_actions::CountPurpose)>,
+    shop_session: Option<crate::shop::Session>,
     quantity_dialog: Option<u64>,
     quantity_input: bool,
     dialog_generation: u64,
@@ -404,6 +407,10 @@ pub enum Action {
         count: i32,
     },
     Bank(crate::bank_actions::Request),
+    Shop {
+        session: u64,
+        request: crate::shop::Request,
+    },
     EquipSlot {
         slot: usize,
     },
@@ -417,6 +424,12 @@ pub enum Action {
     /// Held-op 1 reads the authoritative slot; it never trusts a client object ID.
     EatSlot {
         slot: usize,
+    },
+    /// Selected Wiki food profiles bind the claimed item as well as its slot.
+    /// Execution rechecks the claim after earlier queued inventory actions.
+    EatItemSlot {
+        slot: usize,
+        item: i32,
     },
     DrinkSlot {
         slot: usize,
@@ -461,9 +474,25 @@ pub enum AdmissionError {
 }
 #[derive(Debug)]
 pub enum WorldEvent {
+    LocationRestoration(crate::loc_timers::Restoration),
+    ShopValue {
+        actor: ActorId,
+        item: i32,
+        player_buys: bool,
+        result: Result<i32, crate::shop::Error>,
+    },
+    Shop {
+        actor: ActorId,
+        shop: u32,
+        result: Result<crate::shop::Exchange, crate::shop::Error>,
+    },
     Woodcutting {
         actor: ActorId,
         trace: crate::woodcutting::Trace,
+    },
+    Mining {
+        actor: ActorId,
+        trace: crate::gathering::Trace,
     },
     GameMessage {
         actor: ActorId,
@@ -558,6 +587,9 @@ pub enum WorldEvent {
         actor: NpcId,
         error: ActionError,
     },
+    NpcDrop(crate::npc_death::DropTrace),
+    NpcImpact(crate::hits::NpcImpactTrace),
+    NpcMeleeXp(crate::combat_xp::MeleeTrace),
     NpcCombatAnimation {
         actor: NpcId,
         sequence: u16,
@@ -676,6 +708,10 @@ pub enum WorldEvent {
         unequipping: bool,
         result: Result<Vec<crate::equipment::Event>, crate::equipment::Error>,
     },
+    FoodTransition {
+        actor: ActorId,
+        trace: crate::food::Transition,
+    },
     Food {
         actor: ActorId,
         event: crate::food::Event,
@@ -761,6 +797,9 @@ pub struct World {
     pub tower_restore: Option<crate::tower_restore::HandlerConfig>,
     pub tower_combat: Option<crate::tower_combat::Config>,
     pub woodcutting: Option<crate::woodcutting::Config>,
+    pub mining: Option<crate::mining::Config>,
+    /// Explicit stock partitions; empty until a verified content profile registers one.
+    pub shops: BTreeMap<u32, crate::shop::Shop>,
     active_trees: crate::woodcutting::ActiveTrees,
     pub combat_stance: Option<crate::combat_stance::Config>,
     pub combat_wear: Option<crate::combat_wear::Config>,
@@ -770,6 +809,7 @@ pub struct World {
     pub banking: Option<crate::bank_actions::Config>,
     pub wear_types: crate::equipment::WearCatalog,
     pub foods: BTreeMap<i32, crate::food::Edible>,
+    pub slot_preserving_foods: std::collections::BTreeSet<i32>,
     pub potions: BTreeMap<i32, crate::potions::Potion>,
     pub prayer: Option<crate::prayer::Config>,
     pub regeneration: Option<crate::player_regen::Config>,
@@ -784,6 +824,7 @@ pub struct World {
     pub object_types: crate::inventory::Catalog,
     pub object_respawns: BTreeMap<u16, i32>,
     pub pickup_effects: Option<crate::ground_transfer::PickupEffects>,
+    pub pickup_policy: crate::ground_transfer::PickupPolicy,
     pub dropping: Option<crate::drop_actions::Config>,
     pub person_flyer: Option<i32>,
     pub locations: crate::locations::Locations,
@@ -850,6 +891,8 @@ impl Default for World {
             tower_restore: None,
             tower_combat: None,
             woodcutting: None,
+            mining: None,
+            shops: BTreeMap::new(),
             active_trees: Default::default(),
             multiway_area: None,
             combat_stance: None,
@@ -860,6 +903,7 @@ impl Default for World {
             banking: None,
             wear_types: crate::equipment::WearCatalog::default(),
             foods: BTreeMap::new(),
+            slot_preserving_foods: Default::default(),
             potions: BTreeMap::new(),
             prayer: None,
             regeneration: None,
@@ -875,6 +919,7 @@ impl Default for World {
             object_types: crate::inventory::Catalog::default(),
             object_respawns: BTreeMap::new(),
             pickup_effects: None,
+            pickup_policy: Default::default(),
             dropping: None,
             person_flyer: None,
             locations: Default::default(),
@@ -1222,7 +1267,11 @@ impl World {
     }
     pub fn set_modal_open(&mut self, id: ActorId, open: bool) -> Result<(), ActionError> {
         self.player(id)?;
-        self.players.get_mut(id.slot as usize).unwrap().has_modal = open;
+        let p = self.players.get_mut(id.slot as usize).unwrap();
+        p.has_modal = open;
+        if !open {
+            p.shop_session = None;
+        }
         Ok(())
     }
     /// Bank close queues a normal one-cycle callback, retained while access is protected.
@@ -1337,6 +1386,7 @@ impl World {
     pub fn close_dialogs(&mut self, id: ActorId) -> Result<bool, ActionError> {
         self.player(id)?;
         let p = self.players.get_mut(id.slot as usize).unwrap();
+        p.shop_session = None;
         let count = p.bank_count.take().is_some();
         let quantity = p.quantity_dialog.take().is_some();
         p.quantity_input = false;
@@ -1567,6 +1617,9 @@ impl World {
             return Err(ActionError::LoggingOut);
         }
         match action {
+            Action::Shop { session, request } => {
+                return self.process_shop_action(id, session, request)
+            }
             Action::BurySlot { slot } => return self.start_bury(id, slot),
             Action::ResumeBury { token, choice } => return self.resume_bury(id, token, choice),
             Action::ResumeDialogue { token, choice } => {
@@ -1793,7 +1846,11 @@ impl World {
                     self.events.push(WorldEvent::Potion { actor: id, event });
                 }
             }
-            Action::EatSlot { slot } => {
+            Action::EatSlot { slot } | Action::EatItemSlot { slot, .. } => {
+                let expected = match action {
+                    Action::EatItemSlot { item, .. } => Some(item),
+                    _ => None,
+                };
                 let p = self.players.get_mut(id.slot as usize).unwrap();
                 // HeldOpScript.launchLenient cancels the previous coroutine even
                 // when objectVerify subsequently rejects the delayed operation.
@@ -1801,7 +1858,10 @@ impl World {
                 let item = p.data.inventory.get(slot);
                 let error = if p.protection.delayed() {
                     Some(ActionError::Delayed)
-                } else if item.is_none_or(|item| !self.foods.contains_key(&item.id)) {
+                } else if item.is_none_or(|item| {
+                    !self.foods.contains_key(&item.id)
+                        || expected.is_some_and(|expected| item.id != expected)
+                }) {
                     Some(ActionError::InvalidItem)
                 } else {
                     None
@@ -1815,16 +1875,48 @@ impl World {
                 }
                 let food = &self.foods[&item.unwrap().id];
                 let mut emitted = Vec::new();
-                crate::food::eat(
-                    food,
-                    &mut p.data.inventory,
-                    &mut p.data.stats,
-                    &self.object_types,
-                    3,
-                    self.eating_animation,
-                    |event| emitted.push(event),
-                )
+                let selected = self.slot_preserving_foods.contains(&food.id);
+                let hp_before = p.data.stats.current(3) as u8;
+                let fine_xp_before = p.data.stats.fine_xp(3);
+                let eaten = if selected {
+                    crate::food::eat_slot(
+                        food,
+                        slot,
+                        &mut p.data.inventory,
+                        &mut p.data.stats,
+                        &self.object_types,
+                        3,
+                        self.eating_animation,
+                        |event| emitted.push(event),
+                    )
+                } else {
+                    crate::food::eat(
+                        food,
+                        &mut p.data.inventory,
+                        &mut p.data.stats,
+                        &self.object_types,
+                        3,
+                        self.eating_animation,
+                        |event| emitted.push(event),
+                    )
+                }
                 .map_err(|_| ActionError::InvalidStat)?;
+                if eaten && selected {
+                    self.events.push(WorldEvent::FoodTransition {
+                        actor: id,
+                        trace: crate::food::Transition {
+                            tick: self.clock.0,
+                            slot,
+                            before: item.unwrap(),
+                            after: p.data.inventory.get(slot),
+                            hp_before,
+                            hp_after: p.data.stats.current(3) as u8,
+                            fine_xp_before,
+                            fine_xp_after: p.data.stats.fine_xp(3),
+                            configured_delay: food.delay,
+                        },
+                    });
+                }
                 for event in emitted {
                     if let crate::food::Event::Stat(update) = &event {
                         p.record_stat_update(
@@ -1942,6 +2034,9 @@ impl World {
         for phase in PHASES {
             if phase == Phase::Late {
                 self.clock.tick()?;
+                for shop in self.shops.values_mut() {
+                    shop.restock(self.clock.0);
+                }
             }
             self.events.push(WorldEvent::Phase(phase, self.clock.0));
             match phase {
@@ -1950,13 +2045,25 @@ impl World {
                     // Gathering deadlines use the action clock. Processing before
                     // PlayerMain keeps N ticks of visible stump lifetime; the
                     // post-tick clock has already advanced and would expire early.
-                    for loc in self
+                    for pending in self
                         .location_timers
                         .replacements_due(self.clock, &self.locations)
                     {
-                        if let Err(error) = self.change_location(loc, true) {
+                        let result = if !pending.current {
+                            "stale"
+                        } else if let Err(error) = self.change_location(pending.original, true) {
                             self.events.push(WorldEvent::LocationError(error));
-                        }
+                            "rejected"
+                        } else {
+                            "restored"
+                        };
+                        self.events.push(WorldEvent::LocationRestoration(
+                            crate::loc_timers::Restoration {
+                                tick: self.clock.0,
+                                pending,
+                                result,
+                            },
+                        ));
                     }
                 }
                 Phase::WorldMain => {
@@ -1969,7 +2076,7 @@ impl World {
                     let mut failed = vec![];
                     let ids: Vec<_> = self.npcs.iter().map(|(_, entry)| entry.id).collect();
                     for id in ids {
-                        if self.process_npc_death(id) {
+                        if self.process_npc_death(id, random) {
                             continue;
                         }
                         let entry = self.npcs.get_mut(id.slot as usize).unwrap();
@@ -1980,6 +2087,21 @@ impl World {
                         npc.regenerate();
                         for hit in entry.hits.process(self.clock.0, false) {
                             let impact = hit.impact(npc.stats[3], true);
+                            if self
+                                .npc_death
+                                .as_ref()
+                                .is_some_and(|config| config.chickens.contains_key(&npc.type_id))
+                            {
+                                self.events.push(WorldEvent::NpcImpact(
+                                    crate::hits::NpcImpactTrace {
+                                        tick: self.clock.0,
+                                        npc: entry.id,
+                                        npc_type: npc.type_id,
+                                        hp_before: npc.stats[3],
+                                        impact,
+                                    },
+                                ));
+                            }
                             npc.stats[3] = impact.health;
                             let target = crate::hits::Target::Npc(entry.id);
                             self.events.push(WorldEvent::Hit { target, impact });
@@ -2004,7 +2126,7 @@ impl World {
                                 self.events.push(WorldEvent::DeathRequested(target));
                             }
                         }
-                        if self.process_npc_death(id) {
+                        if self.process_npc_death(id, random) {
                             continue;
                         }
                         if self.process_npc_combat(id, random) {
@@ -2667,6 +2789,7 @@ impl World {
                             overhead: None,
                             dialogue: None,
                             bank_count: None,
+                            shop_session: None,
                             quantity_dialog: None,
                             quantity_input: false,
                             dialog_generation: 0,

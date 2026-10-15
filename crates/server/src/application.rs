@@ -89,9 +89,27 @@ fn seed() -> io::Result<u64> {
 fn report(events: Vec<runtime::Event>) {
     for event in events {
         match event {
+            runtime::Event::World(gielinor_world::simulation::WorldEvent::NpcMeleeXp(trace)) => {
+                println!("NPC melee XP: {}", trace.json());
+            }
+            runtime::Event::World(gielinor_world::simulation::WorldEvent::NpcImpact(trace)) => {
+                println!("NPC impact: {}", trace.json());
+            }
+            runtime::Event::World(gielinor_world::simulation::WorldEvent::NpcDrop(trace)) => {
+                println!("NPC drop: {}", trace.json());
+            }
+            runtime::Event::World(gielinor_world::simulation::WorldEvent::FoodTransition { actor, trace }) => {
+                println!("Food transition: {}", trace.json(actor));
+            }
+            runtime::Event::World(gielinor_world::simulation::WorldEvent::LocationRestoration(trace)) => {
+                println!("Location restoration: {}", trace.json());
+            }
             runtime::Event::SaveFailed { actor, reason } => {
                 eprintln!("Save failed for {actor:?}; retry pending: {reason}")
             }
+            runtime::Event::SaveCompleted { actor, generation, observed_tick } => println!(
+                "Save acknowledgement: {{\"actor_slot\":{},\"actor_generation\":{},\"save_generation\":{},\"observed_tick\":{},\"save_completed\":true}}",
+                actor.slot, actor.generation, generation, observed_tick),
             runtime::Event::SynchronizationFailed { actor, reason } => {
                 eprintln!("Synchronization failed for {actor:?}: {reason}")
             }
@@ -99,7 +117,17 @@ fn report(events: Vec<runtime::Event>) {
             runtime::Event::World(gielinor_world::simulation::WorldEvent::Woodcutting {
                 actor,
                 trace,
-            }) if trace.result != "waiting" => println!("Gathering: {}", trace.json(actor)),
+            }) if trace.result != "waiting" => println!(
+                "Gathering: {}",
+                trace.json(actor, gielinor_world::gathering::Activity::Woodcutting)
+            ),
+            runtime::Event::World(gielinor_world::simulation::WorldEvent::Mining {
+                actor,
+                trace,
+            }) if trace.result != "waiting" => println!(
+                "Gathering: {}",
+                trace.json(actor, gielinor_world::gathering::Activity::Mining)
+            ),
             _ => (),
         }
     }
@@ -345,6 +373,7 @@ pub fn run() -> io::Result<()> {
         names.short("npc", "chicken")?,
     )?;
     runtime.configure_woodcutting(&names, None)?;
+    runtime.configure_mining(&names)?;
     let offering_xp = names.id("param", "skill_xp")?;
     let offering_default = cache
         .parameters()?

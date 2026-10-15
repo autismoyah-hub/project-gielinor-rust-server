@@ -1,3 +1,5 @@
+Latest development checkpoint: see [SOURCE_CHECKPOINT.md](SOURCE_CHECKPOINT.md). Earlier Alpha validation applies to its recorded release source.
+
 # Project Gielinor Rust — Alpha 0.1.0
 
 A native Rust server targeting OSRS revision 239.1, built from the Project Gielinor/RS Mod foundation with RSProt-informed networking. This is a development alpha, not complete OSRS gameplay parity or a production-hosting release.

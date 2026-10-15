@@ -40,6 +40,55 @@ pub struct Impact {
     pub health: i32,
     pub death: bool,
 }
+/// Selected NPC's authoritative impact; a zero impact alone is not a hit-roll verdict.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct NpcImpactTrace {
+    pub tick: i32,
+    pub npc: NpcId,
+    pub npc_type: u16,
+    pub hp_before: i32,
+    pub impact: Impact,
+}
+impl NpcImpactTrace {
+    pub fn json(self) -> String {
+        let source = match self.impact.hit.source {
+            Some(Target::Player(id)) => format!(
+                "{{\"kind\":\"player\",\"slot\":{},\"generation\":{}}}",
+                id.slot, id.generation
+            ),
+            Some(Target::Npc(id)) => format!(
+                "{{\"kind\":\"npc\",\"slot\":{},\"generation\":{}}}",
+                id.slot, id.generation
+            ),
+            None => "null".into(),
+        };
+        let style = match self.impact.hit.style {
+            Style::Melee => "melee",
+            Style::Ranged => "ranged",
+            Style::Magic => "magic",
+            Style::Typeless => "typeless",
+        };
+        format!(
+            concat!(
+                "{{\"schema\":1,\"tick\":{},\"npc_slot\":{},\"npc_generation\":{},\"npc_type\":{},",
+                "\"source\":{},\"style\":\"{}\",\"hp_before\":{},\"hp_after\":{},",
+                "\"queued_damage\":{},\"applied_damage\":{},\"displayed_damage\":{},\"death\":{}}}"
+            ),
+            self.tick,
+            self.npc.slot,
+            self.npc.generation,
+            self.npc_type,
+            source,
+            style,
+            self.hp_before,
+            self.impact.health,
+            self.impact.hit.damage,
+            self.impact.applied,
+            self.impact.displayed,
+            self.impact.death
+        )
+    }
+}
 impl Hit {
     pub fn validate(self) -> Result<(), Error> {
         if self.display.is_some_and(|m| {
@@ -119,6 +168,26 @@ impl Queue {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn impact_preserves_explicit_zero_and_clamps_positive_overkill() {
+        for npc in [false, true] {
+            let zero = Hit {
+                display: None,
+                source: None,
+                style: Style::Melee,
+                damage: 0,
+            }
+            .impact(3, npc);
+            assert_eq!((zero.applied, zero.health, zero.death), (0, 3, false));
+            let hit = Hit {
+                damage: 30,
+                ..zero.hit
+            }
+            .impact(3, npc);
+            assert_eq!((hit.applied, hit.health, hit.death), (3, 0, true));
+            assert_eq!(hit.displayed, if npc { 3 } else { 30 });
+        }
+    }
     #[test]
     fn protected_hits_count_down_once_per_cycle_and_keep_order() {
         let hit = |damage| Hit {

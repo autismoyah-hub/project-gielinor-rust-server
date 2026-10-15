@@ -87,6 +87,14 @@ pub enum Taken {
     Added(i32),
     Gone,
     RemovedWithoutSpace,
+    NoSpace,
+}
+/// GR-13 retains reference behavior until an explicit runtime policy is selected.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub enum PickupPolicy {
+    #[default]
+    Reference,
+    PreserveOnFailure,
 }
 impl Pickup {
     /// Adjacent pickups are delayed by one cycle. Movement/reach validation is the caller's
@@ -131,20 +139,51 @@ impl Pickup {
         catalog: &Catalog,
         clock: MapClock,
     ) -> Result<Taken, Error> {
+        self.finish_with_policy(objects, inventory, catalog, clock, PickupPolicy::Reference)
+    }
+    pub fn finish_with_policy(
+        self,
+        objects: &mut Objects,
+        inventory: &mut Inventory,
+        catalog: &Catalog,
+        clock: MapClock,
+        policy: PickupPolicy,
+    ) -> Result<Taken, Error> {
         if clock.0 < self.ready_at {
             return Err(Error::NotReady);
         }
+        if policy == PickupPolicy::Reference {
+            if !objects.delete(&self.object, clock, self.respawn_ticks) {
+                return Ok(Taken::Gone);
+            }
+            let object = self.object.snapshot();
+            return Ok(
+                match inventory.insert(catalog, Insert::new(object.item as i32, object.count)) {
+                    Ok(result) => Taken::Added(result.completed),
+                    Err(_) => Taken::RemovedWithoutSpace,
+                },
+            );
+        }
+        let object = self.object.snapshot();
+        if !objects
+            .at(object.coords)
+            .any(|h| h.id() == self.object.id())
+        {
+            return Ok(Taken::Gone);
+        }
+        // Capacity may change during the adjacent-pickup delay. Prepare the
+        // insertion before removing the exact handle, then commit both on this
+        // exclusively owned world thread. Failed pickups preserve loot/timers.
+        // This intentionally fixes the Kotlin/OpenRune remove-before-insert loss.
+        let mut next = inventory.clone();
+        let Ok(result) = next.insert(catalog, Insert::new(object.item as i32, object.count)) else {
+            return Ok(Taken::NoSpace);
+        };
         if !objects.delete(&self.object, clock, self.respawn_ticks) {
             return Ok(Taken::Gone);
         }
-        let object = self.object.snapshot();
-        // Preserve the original ordering: takeClose removes before the second transaction.
-        // If inventory capacity changed during the delay, Kotlin loses the ground object.
-        // Expose this result explicitly rather than silently reporting success.
-        match inventory.insert(catalog, Insert::new(object.item as i32, object.count)) {
-            Ok(result) => Ok(Taken::Added(result.completed)),
-            Err(_) => Ok(Taken::RemovedWithoutSpace),
-        }
+        *inventory = next;
+        Ok(Taken::Added(result.completed))
     }
 }
 #[cfg(test)]
@@ -265,7 +304,91 @@ mod tests {
         assert_eq!(inventory.free_space(), 1);
     }
     #[test]
-    fn delayed_pickup_preserves_reference_second_transaction_failure() {
+    fn stack_growth_during_pickup_is_revalidated_without_losing_or_duplicating_loot() {
+        let mut objects = Objects::default();
+        let mut catalog = Catalog::default();
+        catalog.stackable.insert(1);
+        let mut inventory = Inventory::new(1, StackType::Normal, false);
+        inventory
+            .insert(&catalog, Insert::new(1, i32::MAX - 5))
+            .unwrap();
+        let drop = Object {
+            coords: coords(),
+            item: 1,
+            count: 5,
+            scope: Scope::Private,
+            created: 0,
+            receiver: Some(1),
+            owner: Some(1),
+        };
+        let handle = objects
+            .add(drop.clone(), &catalog, MapClock(0), 200, 100)
+            .unwrap()
+            .remove(0);
+        let pending = Pickup::prepare(
+            &handle,
+            1,
+            coords().translate(1, 0, 0).unwrap(),
+            &inventory,
+            &catalog,
+            MapClock(0),
+            i32::MAX,
+        )
+        .unwrap();
+        let merged = objects
+            .add(
+                Object { count: 10, ..drop },
+                &catalog,
+                MapClock(1),
+                200,
+                100,
+            )
+            .unwrap();
+        assert_eq!(merged[0].id(), handle.id());
+        let before = inventory.clone();
+        objects.drain_events();
+        assert_eq!(
+            pending.finish_with_policy(
+                &mut objects,
+                &mut inventory,
+                &catalog,
+                MapClock(1),
+                PickupPolicy::PreserveOnFailure
+            ),
+            Ok(Taken::NoSpace)
+        );
+        assert_eq!(inventory, before);
+        assert_eq!(handle.snapshot().count, 15);
+        assert_eq!(objects.count(), 1);
+        assert!(objects.drain_events().is_empty());
+        inventory.delete(&catalog, Delete::new(1, 10)).unwrap();
+        let retry = Pickup::prepare(
+            &handle,
+            1,
+            coords(),
+            &inventory,
+            &catalog,
+            MapClock(2),
+            i32::MAX,
+        )
+        .unwrap();
+        assert_eq!(
+            retry.finish_with_policy(
+                &mut objects,
+                &mut inventory,
+                &catalog,
+                MapClock(2),
+                PickupPolicy::PreserveOnFailure
+            ),
+            Ok(Taken::Added(15))
+        );
+        assert_eq!(inventory.get(0).unwrap().count, i32::MAX);
+        assert_eq!(objects.count(), 0);
+        objects.process_durations(MapClock(201), &catalog).unwrap();
+        assert_eq!(objects.count(), 0);
+    }
+    #[test]
+    fn delayed_pickup_capacity_failure_preserves_item_and_original_expiry() {
         let mut objects = Objects::default();
         let catalog = Catalog::default();
         let mut inventory = Inventory::new(1, StackType::Normal, false);
@@ -298,6 +421,7 @@ mod tests {
         )
         .unwrap();
         assert_eq!(pickup.ready_at(), 1);
+        objects.drain_events();
         inventory
             .restore_slot(
                 0,
@@ -309,10 +433,21 @@ mod tests {
             )
             .unwrap();
         assert_eq!(
-            pickup.finish(&mut objects, &mut inventory, &catalog, MapClock(1)),
-            Ok(Taken::RemovedWithoutSpace)
+            pickup.finish_with_policy(
+                &mut objects,
+                &mut inventory,
+                &catalog,
+                MapClock(1),
+                PickupPolicy::PreserveOnFailure
+            ),
+            Ok(Taken::NoSpace)
         );
-        assert_eq!(objects.count(), 0);
+        assert_eq!(objects.count(), 1);
         assert_eq!(inventory.get(0).unwrap().id, 2);
+        assert!(objects.drain_events().is_empty());
+        objects.process_durations(MapClock(199), &catalog).unwrap();
+        assert_eq!(objects.at(coords()).next().unwrap().id(), object.id());
+        objects.process_durations(MapClock(200), &catalog).unwrap();
+        assert_eq!(objects.count(), 0);
     }
 }

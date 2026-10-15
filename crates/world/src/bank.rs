@@ -798,6 +798,75 @@ mod tests {
     use super::*;
     use crate::inventory::{Item, StackType};
     #[test]
+    fn full_bank_and_full_backpack_distinguish_existing_feather_stack_from_new_type() {
+        let mut catalog = Catalog::default();
+        catalog.stackable.insert(314);
+        let mut bank = Inventory::new(1, StackType::Always, true);
+        let mut held = Inventory::new(2, StackType::Normal, false);
+        bank.restore_slot(
+            0,
+            Some(Item {
+                id: 314,
+                count: 10,
+                vars: 0,
+            }),
+        )
+        .unwrap();
+        held.restore_slot(
+            0,
+            Some(Item {
+                id: 314,
+                count: 3,
+                vars: 0,
+            }),
+        )
+        .unwrap();
+        held.restore_slot(
+            1,
+            Some(Item {
+                id: 1511,
+                count: 1,
+                vars: 0,
+            }),
+        )
+        .unwrap();
+        let mut banking = Banking {
+            tabs: Tabs::restore([0, 0, 0, 0, 0, 0, 0, 0, 0, 1], 1).unwrap(),
+            selected: Tabs::MAIN,
+            capacity: 1,
+            withdraw_notes: true,
+            always_placehold: false,
+        };
+        let initial = (held.clone(), bank.clone());
+        assert!(banking
+            .deposit(&mut held, &mut bank, &catalog, 1, 1, false)
+            .is_err());
+        assert_eq!((&held, &bank), (&initial.0, &initial.1));
+        banking
+            .deposit(&mut held, &mut bank, &catalog, 0, 2, false)
+            .unwrap();
+        assert_eq!(held.get(0).unwrap().count, 1);
+        assert_eq!(bank.get(0).unwrap().count, 12);
+        // No free backpack slot, but the existing unnoteable stack can grow.
+        let result = banking
+            .withdraw(&mut bank, &mut held, &catalog, 0, 2, false)
+            .unwrap();
+        assert!(matches!(
+            result,
+            Withdrawal::Moved {
+                cannot_note: true,
+                ..
+            }
+        ));
+        assert_eq!(
+            (held.get(0).unwrap().id, held.get(0).unwrap().count),
+            (314, 3)
+        );
+        assert_eq!(bank.get(0).unwrap().count, 10);
+        assert_eq!((held, bank), initial);
+    }
+
+    #[test]
     fn tab_reorder_collapse_and_placeholder_release_preserve_item_order() {
         let mut bank = Inventory::new(12, StackType::Always, true);
         for id in 1..=5 {

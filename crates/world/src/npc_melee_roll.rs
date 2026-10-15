@@ -88,3 +88,47 @@ impl Inputs {
         })
     }
 }
+
+#[cfg(test)]
+mod wiki_tests {
+    use super::*;
+    struct Draws(std::collections::VecDeque<(u32, u32)>);
+    impl RandomSource for Draws {
+        fn below(&mut self, bound: u32) -> u32 {
+            let (expected, value) = self.0.pop_front().expect("unexpected draw");
+            assert_eq!(bound, expected);
+            assert!(value < bound);
+            value
+        }
+    }
+    #[test]
+    fn prepared_chicken_bonuses_produce_hit_zero_distinct_from_a_miss() {
+        // R13 prepared NPC1173/1174: Strength1, param10=-42 and65512=-47.
+        // Owned param.sym binds these to melee_strength and attack_melee.
+        // This is a formula vector; runtime cache loading remains separate.
+        let input = Inputs {
+            attack_level: 1,
+            strength_level: 1,
+            attack_bonus: -47,
+            strength_bonus: -42,
+            defence_level: 1,
+            defence_bonus: 0,
+            defence_style: None,
+            defence_prayer: 1.0,
+            defence_armour: 1.0,
+            elysian: false,
+            bulwark: false,
+            justiciar: false,
+        };
+        assert!(input.chance().unwrap() > 0);
+        let mut hit = Draws([(10000, 0), (1, 0)].into());
+        let landed = input.roll(&mut hit).unwrap();
+        assert_eq!((landed.max_hit, landed.damage), (Some(0), 0));
+        assert!(hit.0.is_empty());
+        let mut miss = Draws([(10000, 9999)].into());
+        let missed = input.roll(&mut miss).unwrap();
+        assert_eq!((missed.max_hit, missed.damage), (None, 0));
+        assert!(miss.0.is_empty());
+        assert_eq!(landed.chance, missed.chance);
+    }
+}

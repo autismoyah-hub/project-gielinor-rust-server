@@ -1,5 +1,45 @@
 //! Ordered awards from PlayerAttackManager. Cast XP is awarded separately by spells.
 use crate::attack_profile::Attack;
+/// Selected melee award at the pre-impact XP boundary, not an applied-damage claim.
+#[derive(Clone, Debug, PartialEq)]
+pub struct MeleeTrace {
+    pub tick: i32,
+    pub actor: crate::simulation::ActorId,
+    pub target: crate::simulation::NpcId,
+    pub npc_type: u16,
+    pub style: Option<u8>,
+    pub stance: u8,
+    pub damage: i32,
+    pub target_health: i32,
+    pub npc_multiplier: i32,
+    pub rate: f64,
+    /// Skill id, fine XP before, fine XP after, in award order.
+    pub awards: Vec<(u8, i32, i32)>,
+}
+impl MeleeTrace {
+    pub fn json(&self) -> String {
+        let style = self
+            .style
+            .map(|value| value.to_string())
+            .unwrap_or_else(|| "null".into());
+        let rate = if self.rate.is_finite() {
+            self.rate.to_string()
+        } else {
+            "null".into()
+        };
+        let awards = self
+            .awards
+            .iter()
+            .map(|(skill, before, after)| format!("[{skill},{before},{after}]"))
+            .collect::<Vec<_>>()
+            .join(",");
+        format!(concat!("{{\"schema\":1,\"tick\":{},\"actor_slot\":{},\"actor_generation\":{},",
+            "\"npc_slot\":{},\"npc_generation\":{},\"npc_type\":{},\"policy\":\"selected_chicken_melee\",",
+            "\"style\":{},\"stance\":{},\"damage\":{},\"target_health\":{},\"npc_multiplier\":{},\"xp_rate\":{},\"awards\":[{}]}}"),
+            self.tick,self.actor.slot,self.actor.generation,self.target.slot,self.target.generation,
+            self.npc_type,style,self.stance,self.damage,self.target_health,self.npc_multiplier,rate,awards)
+    }
+}
 pub fn player_multiplier(combat_level: i32) -> f64 {
     (1.0 + 0.025 * (combat_level / 20) as f64).min(1.125)
 }
@@ -98,4 +138,37 @@ pub fn awards(
     }
     grant(Skill::Hitpoints, 1.33);
     xp
+}
+
+#[cfg(test)]
+mod wiki_tests {
+    use super::*;
+    #[test]
+    fn accurate_melee_truncates_each_hit_and_clamps_overkill() {
+        let attack = Attack::Melee {
+            kind: None,
+            style: Some(2),
+            stance: 0,
+        };
+        for (rate, per_hit_hp, combined_hp, attack_fine) in [(1.0, 13, 39, 40), (5.0, 66, 199, 200)]
+        {
+            let mut split = crate::stats::Stats::default();
+            for hits in 1..=3 {
+                let changes = advance(&mut split, attack, 1, 10, 1.0, rate).unwrap();
+                assert_eq!(
+                    changes.iter().map(|(skill, _)| *skill).collect::<Vec<_>>(),
+                    [Skill::Attack, Skill::Hitpoints]
+                );
+                assert_eq!(split.fine_xp(0), attack_fine * hits);
+                assert_eq!(split.fine_xp(3), per_hit_hp * hits);
+            }
+            let mut combined = crate::stats::Stats::default();
+            advance(&mut combined, attack, 30, 3, 1.0, rate).unwrap();
+            assert_eq!(combined.fine_xp(0), attack_fine * 3);
+            assert_eq!(combined.fine_xp(3), combined_hp);
+            let before = combined.clone();
+            advance(&mut combined, attack, 30, 0, 1.0, rate).unwrap();
+            assert_eq!(combined, before);
+        }
+    }
 }

@@ -122,16 +122,17 @@ impl World {
     }
     fn finish_pickup(&mut self, slot: usize, pickup: Pickup) {
         let p = self.players.get_mut(slot).unwrap();
-        let result = pickup.finish(
+        let result = pickup.finish_with_policy(
             &mut self.objects,
             &mut p.data.inventory,
             &self.object_types,
             self.clock,
+            self.pickup_policy,
         );
         let message = match result {
             Ok(Taken::Added(_)) => None,
             Ok(Taken::Gone) => Some(ground_transfer::TAKEN),
-            Ok(Taken::RemovedWithoutSpace) => Some(ground_transfer::NO_SPACE),
+            Ok(Taken::NoSpace | Taken::RemovedWithoutSpace) => Some(ground_transfer::NO_SPACE),
             Err(_) => Some(ground_transfer::NO_SPACE),
         };
         if let Some(message) = message {
@@ -224,5 +225,132 @@ impl World {
             Err(_) => {}
         }
         self.events.push(WorldEvent::ClearMapFlag(actor));
+    }
+}
+
+#[cfg(test)]
+mod wiki_tests {
+    use super::*;
+    #[test]
+    fn private_loot_follows_character_observer_across_relogin_not_actor_slot() {
+        use crate::ground::{Object, Scope};
+        for pickup in [false, true] {
+            let mut w = World::default();
+            let coords = CoordGrid::new(3200, 3200, 0).unwrap();
+            w.collision.set(3200, 3200, 0, 0);
+            w.pickup_effects = Some(ground_transfer::PickupEffects {
+                sound: 1,
+                animation: 1,
+            });
+            for id in [42, 99] {
+                w.queue_login(
+                    id,
+                    PlayerData::new(id, format!("Ground {id}"), coords, Stats::default()),
+                )
+                .unwrap();
+            }
+            w.tick().unwrap();
+            let owner = w
+                .actors()
+                .find(|&a| w.data(a).unwrap().character_id == 42)
+                .unwrap();
+            let other = w.actors().find(|&a| a != owner).unwrap();
+            w.set_observer_id(owner, 42).unwrap();
+            w.set_observer_id(other, 99).unwrap();
+            let created = w.clock;
+            let handle = w
+                .objects
+                .add(
+                    Object {
+                        coords,
+                        item: 526,
+                        count: 1,
+                        scope: Scope::Private,
+                        created: created.0,
+                        receiver: Some(42),
+                        owner: Some(42),
+                    },
+                    &w.object_types,
+                    created,
+                    300,
+                    100,
+                )
+                .unwrap()
+                .remove(0);
+            w.submit(
+                other,
+                Action::TakeObject {
+                    coords,
+                    id: 526,
+                    control: false,
+                },
+            )
+            .unwrap();
+            w.tick().unwrap();
+            assert_eq!(w.objects.count(), 1);
+            assert_eq!(w.data(other).unwrap().inventory.free_space(), 28);
+            w.request_logout(owner).unwrap();
+            let data = w
+                .drain_events()
+                .into_iter()
+                .find_map(|e| match e {
+                    WorldEvent::Save { actor, data } if actor == owner => Some(data),
+                    _ => None,
+                })
+                .unwrap();
+            w.saved(owner).unwrap();
+            w.tick().unwrap();
+            for _ in 0..20 {
+                w.tick().unwrap();
+            }
+            w.queue_login(3, data).unwrap();
+            w.tick().unwrap();
+            let returned = w.actors().find(|&a| a != other).unwrap();
+            assert_ne!(returned, owner);
+            w.set_observer_id(returned, 42).unwrap();
+            assert!(handle.snapshot().visible_to(Some(42)));
+            assert!(!handle.snapshot().visible_to(Some(99)));
+            if pickup {
+                w.submit(
+                    returned,
+                    Action::TakeObject {
+                        coords,
+                        id: 526,
+                        control: false,
+                    },
+                )
+                .unwrap();
+                for _ in 0..3 {
+                    w.tick().unwrap();
+                }
+                assert_eq!(w.objects.count(), 0);
+                assert_eq!(
+                    w.data(returned)
+                        .unwrap()
+                        .inventory
+                        .slots()
+                        .iter()
+                        .flatten()
+                        .filter(|i| i.id == 526)
+                        .map(|i| i.count)
+                        .sum::<i32>(),
+                    1
+                );
+                assert_eq!(w.data(other).unwrap().inventory.free_space(), 28);
+            } else {
+                while w.clock.0 < created.0 + 99 {
+                    w.tick().unwrap();
+                }
+                assert_eq!(handle.snapshot().scope, Scope::Private);
+                w.tick().unwrap();
+                assert_eq!(handle.snapshot().scope, Scope::Temporary);
+                while w.clock.0 < created.0 + 299 {
+                    w.tick().unwrap();
+                }
+                assert_eq!(w.objects.count(), 1);
+                w.tick().unwrap();
+                assert_eq!(w.objects.count(), 0);
+            }
+        }
     }
 }

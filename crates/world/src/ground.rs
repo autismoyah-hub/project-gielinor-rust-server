@@ -79,6 +79,50 @@ pub struct Objects {
     events: Vec<Event>,
 }
 impl Objects {
+    fn validate_add(object: &Object, catalog: &Catalog) -> Result<u64, Error> {
+        if object.count <= 0 || object.coords == CoordGrid::NULL {
+            return Err(Error::InvalidObject);
+        }
+        if catalog.dummy.contains(&(object.item as i32)) {
+            return Err(Error::DummyItem);
+        }
+        let stackable = catalog.stackable.contains(&(object.item as i32));
+        if !stackable && object.count > 128 {
+            return Err(Error::NonStackableLimit);
+        }
+        // add allocates the request handle even when it merges, then allocates
+        // single-copy handles when a nonstackable quantity is split.
+        Ok(1 + if !stackable && object.count > 1 {
+            object.count as u64
+        } else {
+            0
+        })
+    }
+    /// Prevalidate every insertion and its worst-case identity allocation before
+    /// touching stacks, timers or events. The world thread owns this registry,
+    /// so no other insertion can invalidate the reservation during this call.
+    pub fn add_batch(
+        &mut self,
+        objects: &[Object],
+        catalog: &Catalog,
+        clock: MapClock,
+        duration: i32,
+        reveal: i32,
+    ) -> Result<Vec<Vec<Handle>>, Error> {
+        let mut maximum = self.next;
+        for object in objects {
+            maximum = maximum
+                .checked_add(Self::validate_add(object, catalog)?)
+                .ok_or(Error::IdentityExhausted)?;
+        }
+        Ok(objects
+            .iter()
+            .map(|object| {
+                self.add(object.clone(), catalog, clock, duration, reveal)
+                    .expect("prevalidated ground insertion on exclusively owned registry")
+            })
+            .collect())
+    }
     /// Kotlin ObjStackEntryList preserves insertion order across all tiles in a zone.
     pub fn in_zone(&self, base: CoordGrid) -> impl Iterator<Item = &Handle> {
         self.zones.get(&zone_base(base)).into_iter().flatten()
@@ -101,16 +145,8 @@ impl Objects {
     }
     fn register(&mut self, handle: Handle, catalog: &Catalog) -> Result<Added, Error> {
         let object = handle.snapshot();
-        if object.count <= 0 || object.coords == CoordGrid::NULL {
-            return Err(Error::InvalidObject);
-        }
-        if catalog.dummy.contains(&(object.item as i32)) {
-            return Err(Error::DummyItem);
-        }
+        Self::validate_add(&object, catalog)?;
         let stackable = catalog.stackable.contains(&(object.item as i32));
-        if !stackable && object.count > 128 {
-            return Err(Error::NonStackableLimit);
-        }
         let merge = self
             .at(object.coords)
             .find(|entry| {
@@ -301,6 +337,83 @@ pub fn zone_base(coords: CoordGrid) -> CoordGrid {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn batch_rejection_preserves_existing_stacks_timers_events_and_identity() {
+        let mut catalog = Catalog::default();
+        catalog.stackable.insert(995);
+        for kind in 0..4 {
+            let mut objects = Objects::default();
+            let existing = objects
+                .add(object(Scope::Private, 10), &catalog, MapClock(0), 10, 5)
+                .unwrap()
+                .remove(0);
+            objects.drain_events();
+            let first = object(Scope::Private, 3);
+            let mut invalid = object(Scope::Private, 1);
+            if kind == 0 {
+                invalid.count = 0;
+            }
+            if kind == 1 {
+                invalid.coords = CoordGrid::NULL;
+            }
+            if kind == 2 {
+                invalid.item = 100;
+                invalid.count = 129;
+            }
+            if kind == 3 {
+                objects.next = u64::MAX - 1;
+            }
+            let identity = objects.next;
+            assert!(objects
+                .add_batch(&[first, invalid], &catalog, MapClock(3), 100, 50)
+                .is_err());
+            assert_eq!(objects.next, identity);
+            assert_eq!(existing.snapshot().count, 10);
+            assert_eq!(objects.count(), 1);
+            assert!(objects.drain_events().is_empty());
+            assert_eq!(
+                (objects.timers[0].delete, objects.timers[0].reveal),
+                (10, 5)
+            );
+        }
+    }
+    #[test]
+    fn batch_reuses_normal_merge_split_and_private_lifecycle() {
+        let mut catalog = Catalog::default();
+        catalog.stackable.insert(995);
+        let mut objects = Objects::default();
+        let existing = objects
+            .add(object(Scope::Private, 10), &catalog, MapClock(0), 10, 5)
+            .unwrap()
+            .remove(0);
+        objects.drain_events();
+        let mut bones = object(Scope::Private, 2);
+        bones.item = 526;
+        let batch = objects
+            .add_batch(
+                &[object(Scope::Private, 5), bones],
+                &catalog,
+                MapClock(2),
+                200,
+                100,
+            )
+            .unwrap();
+        assert_eq!(batch[0][0].id(), existing.id());
+        assert_eq!(existing.snapshot().count, 15);
+        assert_eq!(batch[1].len(), 2);
+        assert_eq!(objects.count(), 3);
+        assert!(batch
+            .iter()
+            .flatten()
+            .all(|h| !h.snapshot().visible_to(Some(8))));
+        objects.process_durations(MapClock(102), &catalog).unwrap();
+        assert!(batch
+            .iter()
+            .flatten()
+            .all(|h| h.snapshot().visible_to(Some(8))));
+        objects.process_durations(MapClock(202), &catalog).unwrap();
+        assert_eq!(objects.count(), 0);
+    }
     fn object(scope: Scope, count: i32) -> Object {
         Object {
             coords: CoordGrid::from_packed(0),
@@ -311,6 +424,82 @@ mod tests {
             receiver: Some(7),
             owner: Some(7),
         }
+    }
+    #[test]
+    fn configured_private_profiles_reveal_at_100_and_expire_at_200_or_300() {
+        for duration in [200, 300] {
+            let catalog = Catalog::default();
+            let mut objects = Objects::default();
+            let handle = objects
+                .add(
+                    object(Scope::Private, 1),
+                    &catalog,
+                    MapClock(0),
+                    duration,
+                    100,
+                )
+                .unwrap()
+                .remove(0);
+            objects.drain_events();
+            for clock in 1..duration {
+                objects
+                    .process_durations(MapClock(clock), &catalog)
+                    .unwrap();
+                assert_eq!(handle.snapshot().visible_to(Some(8)), clock >= 100);
+                assert_eq!(objects.count(), 1);
+            }
+            let events = objects.drain_events();
+            assert_eq!(
+                events
+                    .iter()
+                    .filter(|e| matches!(e, Event::Revealed(..)))
+                    .count(),
+                1
+            );
+            objects
+                .process_durations(MapClock(duration), &catalog)
+                .unwrap();
+            assert_eq!(objects.count(), 0);
+            assert_eq!(
+                objects
+                    .drain_events()
+                    .iter()
+                    .filter(|e| matches!(e, Event::Deleted(..)))
+                    .count(),
+                1
+            );
+        }
+    }
+    #[test]
+    fn coincident_reveal_expiry_is_ordered_and_stale_timer_cannot_delete_replacement() {
+        let catalog = Catalog::default();
+        let mut objects = Objects::default();
+        let first = objects
+            .add(object(Scope::Private, 1), &catalog, MapClock(0), 5, 5)
+            .unwrap()
+            .remove(0);
+        objects.drain_events();
+        objects.process_durations(MapClock(5), &catalog).unwrap();
+        let events = objects.drain_events();
+        assert!(
+            matches!(events.as_slice(),[Event::Revealed(id,_),Event::Deleted(other,_)] if *id==first.id() && id==other)
+        );
+        let stale = objects
+            .add(object(Scope::Private, 1), &catalog, MapClock(6), 5, 5)
+            .unwrap()
+            .remove(0);
+        assert!(objects.delete(&stale, MapClock(7), 0));
+        let replacement = objects
+            .add(object(Scope::Private, 1), &catalog, MapClock(7), 10, 8)
+            .unwrap()
+            .remove(0);
+        assert_ne!(stale.id(), replacement.id());
+        objects.drain_events();
+        objects.process_durations(MapClock(11), &catalog).unwrap();
+        assert_eq!(objects.count(), 1);
+        assert_eq!(replacement.snapshot().scope, Scope::Private);
+        assert!(objects.drain_events().is_empty());
+        assert!(!objects.delete(&stale, MapClock(11), 0));
     }
     #[test]
     fn private_merges_reset_timers_public_stacks_and_overflow_do_not_merge() {

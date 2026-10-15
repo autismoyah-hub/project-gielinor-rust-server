@@ -18,16 +18,18 @@ mod autocast_picker;
 mod dialogue;
 mod drop_dialog;
 mod location_target;
+mod mining;
 mod movement;
 mod npc_interaction;
 mod prayer;
 mod prayer_tab;
+mod shop;
 mod skill_multi;
 mod smelting;
-mod tower_restore;
 mod tower_combat;
-mod woodcutting;
+mod tower_restore;
 mod tutorial;
+mod woodcutting;
 
 fn inventory<'a>(
     data: &'a PlayerData,
@@ -141,6 +143,13 @@ pub enum Event {
         actor: ActorId,
         reason: String,
     },
+    /// Worker success acknowledgement. The tick records observation in the
+    /// runtime, not the wall-clock instant of the SQLite commit.
+    SaveCompleted {
+        actor: ActorId,
+        generation: u64,
+        observed_tick: i32,
+    },
     PacketRejected {
         connection: u64,
         actor: ActorId,
@@ -224,6 +233,7 @@ struct Active {
     npc_observer: crate::npc_synchronization::Observer,
     zone_observer: gielinor_world::zones::Observer,
     inventories: crate::inventory_sync::Transmissions,
+    shop_inventory: Option<shop::Transmission>,
     stats: crate::stat_sync::Observer,
     invisible_levels: BTreeMap<u8, i32>,
     run: Option<(i32, i32)>,
@@ -427,6 +437,7 @@ impl<B: AccountBackend> Runtime<B> {
         }
         self.held_component = Some(component);
         self.world.foods = foods;
+        self.world.slot_preserving_foods.clear();
         self.world.eating_animation = animation;
         Ok(())
     }
@@ -1168,6 +1179,11 @@ impl<B: AccountBackend> Runtime<B> {
                 .cancel_prayer_dialog(actor)
                 .map_err(|e| io::Error::other(format!("{e:?}")))?;
         }
+        for &(_, interface) in &closed {
+            self.world
+                .close_shop_interface(actor, interface)
+                .map_err(|e| io::Error::other(format!("{e:?}")))?;
+        }
         if self.message_box.is_some_and(|p| {
             closed
                 .iter()
@@ -1373,6 +1389,11 @@ impl<B: AccountBackend> Runtime<B> {
             active.prayer_dialog = None;
             self.world
                 .cancel_prayer_dialog(actor)
+                .map_err(|e| io::Error::other(format!("{e:?}")))?;
+        }
+        for &(_, interface) in &closed {
+            self.world
+                .close_shop_interface(actor, interface)
                 .map_err(|e| io::Error::other(format!("{e:?}")))?;
         }
         if self.message_box.is_some_and(|p| {
@@ -2389,6 +2410,21 @@ impl<B: AccountBackend> Runtime<B> {
                                                 .ok()
                                                 .and_then(|data| data.inventory.get(slot))
                                             {
+                                                if button.op == 2
+                                                    && (self
+                                                        .world
+                                                        .slot_preserving_foods
+                                                        .contains(&item.id)
+                                                        || self
+                                                            .world
+                                                            .slot_preserving_foods
+                                                            .contains(&button.object))
+                                                {
+                                                    return Some(Action::EatItemSlot {
+                                                        slot,
+                                                        item: button.object,
+                                                    });
+                                                }
                                                 if button.op == 7
                                                     && self.world.dropping.as_ref().is_some_and(
                                                         |config| {
@@ -2454,6 +2490,29 @@ impl<B: AccountBackend> Runtime<B> {
                                         }
                                     }
                                     if route == gielinor_world::ui::ButtonRoute::Modal {
+                                        // The UI map has already checked the open modal and
+                                        // operation mask. Only the current trusted shop's
+                                        // components may decode a generation-bound exchange.
+                                        let shop_action = self.world.shop_button_action(
+                                            actor,
+                                            gielinor_world::ui::Component(button.component),
+                                            button.slot,
+                                            button.op,
+                                            button.object,
+                                        );
+                                        let shop_result = shop_action.and_then(|action| {
+                                            action.map_or(Ok(()), |action| {
+                                                self.world.submit(actor, action)
+                                            })
+                                        });
+                                        if let Err(error) = shop_result {
+                                            self.events.push(Event::PacketRejected {
+                                                connection,
+                                                actor,
+                                                opcode: packet.opcode,
+                                                reason: format!("{error:?}"),
+                                            });
+                                        }
                                         let bank_action = self.bank_presentation.as_ref().and_then(|bank| {
                                             if let Some(&control) = self.bank_controls.get(&button.component) {
                                                 return Some(Action::Bank(gielinor_world::bank_actions::Request::Control { control, op: button.op, slot: button.slot }));
@@ -2811,6 +2870,11 @@ impl<B: AccountBackend> Runtime<B> {
                             .saved(actor)
                             .map_err(|_| io::Error::other("Save completed for invalid actor"))?;
                         self.saves.remove(&token);
+                        self.events.push(Event::SaveCompleted {
+                            actor,
+                            generation: token,
+                            observed_tick: self.world.clock.0,
+                        });
                     }
                     Err(reason) => {
                         pending.inflight = false;
@@ -2828,6 +2892,20 @@ impl<B: AccountBackend> Runtime<B> {
     fn world_events(&mut self) -> io::Result<()> {
         for event in self.world.drain_events() {
             match event {
+                WorldEvent::ShopValue {
+                    actor,
+                    item,
+                    player_buys,
+                    result,
+                } => {
+                    self.shop_value(actor, item, player_buys, result)?;
+                    self.events.push(Event::World(WorldEvent::ShopValue {
+                        actor,
+                        item,
+                        player_buys,
+                        result,
+                    }));
+                }
                 WorldEvent::GameMessage { actor, text } => {
                     if let Some(connection) = self.connection(actor) {
                         let packet = gielinor_protocol::chat::game(0, None, &text)
@@ -3000,6 +3078,7 @@ impl<B: AccountBackend> Runtime<B> {
                             stats: Default::default(),
                             invisible_levels: BTreeMap::new(),
                             run: None,
+                            shop_inventory: None,
                             inventories: {
                                 let mut tx = crate::inventory_sync::Transmissions::default();
                                 if self.presentation.is_some() {
@@ -4105,6 +4184,29 @@ impl<B: AccountBackend> Runtime<B> {
                 let inventory_batch = inventories
                     .cycle(|id| inventory(data, &self.policy, id))
                     .map_err(|e| io::Error::other(format!("{e:?}")))?;
+                let mut shop_inventory = active.shop_inventory.clone();
+                let mut shop_packets = vec![];
+                if let Some(subscription) = &mut shop_inventory {
+                    let current = self
+                        .world
+                        .shop_session_identity(actor)
+                        .map_err(|e| io::Error::other(format!("{e:?}")))?;
+                    if current != Some(subscription.identity) {
+                        shop_packets.push(subscription.updates.stop(subscription.container));
+                        shop_inventory = None;
+                    } else {
+                        let stock = self
+                            .world
+                            .shops
+                            .get(&subscription.identity.0)
+                            .ok_or_else(|| io::Error::other("Subscribed shop disappeared"))?;
+                        let batch = subscription
+                            .updates
+                            .cycle(|id| (id == subscription.container).then_some(stock.inventory()))
+                            .map_err(|e| io::Error::other(format!("{e:?}")))?;
+                        shop_packets.extend(batch.packets);
+                    }
+                }
                 if first && self.login_presentation.is_some() {
                     packets.extend(
                         crate::login_init::low_priority(
@@ -4184,6 +4286,7 @@ impl<B: AccountBackend> Runtime<B> {
                 // PlayerPostTickProcess: map/client info, zones, then inventory snapshots.
                 // LoginScript subscribes inventories; it does not send snapshots itself.
                 packets.extend(inventory_batch.packets);
+                packets.extend(shop_packets);
                 for packet in packets {
                     self.transport
                         .send(connection, packet.opcode, &packet.payload)?;
@@ -4192,6 +4295,7 @@ impl<B: AccountBackend> Runtime<B> {
                 active.npc_observer = npc_observer;
                 active.zone_observer = zone_observer;
                 active.inventories = inventories;
+                active.shop_inventory = shop_inventory;
                 active.stats = stats;
                 active.run = Some(run);
                 if let Ok(data) = self.world.data_mut(actor) {
@@ -4205,6 +4309,13 @@ impl<B: AccountBackend> Runtime<B> {
             })();
             if let Err(error) = result {
                 failures.push((actor, error.to_string()));
+            }
+        }
+        // Shared shop dirtiness must survive every observer in this cycle. A
+        // failed encoder/transport leaves it available for a later retry.
+        if failures.is_empty() {
+            for shop in self.world.shops.values_mut() {
+                shop.clear_transmitted();
             }
         }
         self.ground_updates.clear();

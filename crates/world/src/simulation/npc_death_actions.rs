@@ -2,7 +2,11 @@ use super::*;
 use crate::npc_death::State;
 impl World {
     /// Death coroutines resume before reveal, regeneration, queues and interactions.
-    pub(super) fn process_npc_death(&mut self, id: NpcId) -> bool {
+    pub(super) fn process_npc_death(
+        &mut self,
+        id: NpcId,
+        random: &mut impl crate::npc::RandomSource,
+    ) -> bool {
         let Some(entry) = self.npcs.get(id.slot as usize).filter(|e| e.id == id) else {
             return true;
         };
@@ -16,6 +20,7 @@ impl World {
             return true;
         };
         let bones = config.bones;
+        let chicken = config.chickens.get(&entry.npc.type_id).copied();
         let clock = self.clock.0;
         if entry.death_state.is_none() {
             if let Some((config, hero)) = self.tutorial_combat.zip(entry.npc.hero_points.winner()) {
@@ -114,6 +119,7 @@ impl World {
             State::Animation { until, drop_coords } if clock >= until => {
                 let entry = self.npcs.get_mut(id.slot as usize).unwrap();
                 let npc = &mut entry.npc;
+                let npc_type = npc.type_id;
                 let hero = npc.hero_points.winner();
                 let respawns = npc.respawns && npc.respawn_rate >= 0;
                 npc.movement.occupancy(&mut self.collision, false);
@@ -121,32 +127,84 @@ impl World {
                 entry.death_state = Some(State::Respawn {
                     at: clock.wrapping_add(npc.respawn_rate),
                 });
-                if let Some((observer, duration)) = hero.and_then(|uuid| {
+                let mut trace = chicken.map(|_| crate::npc_death::DropTrace {
+                    tick: clock,
+                    npc: id,
+                    npc_type,
+                    coords: drop_coords,
+                    owner: None,
+                    draw: None,
+                    products: Vec::new(),
+                    handles: Vec::new(),
+                    result: crate::npc_death::DropResult::NoEligibleOwner,
+                });
+                if let Some((owner, observer, duration)) = hero.and_then(|uuid| {
                     self.players
                         .iter()
                         .find(|(_, p)| p.data.character_id == uuid)
                         .and_then(|(_, p)| {
-                            p.observer_id
-                                .map(|observer| (observer, p.loot_drop_duration.unwrap_or(200)))
+                            p.observer_id.map(|observer| {
+                                (p.id, observer, p.loot_drop_duration.unwrap_or(200))
+                            })
                         })
                 }) {
-                    if let Err(error) = self.objects.add(
-                        crate::ground::Object {
+                    let mut products = vec![(bones, 1)];
+                    if let Some(profile) = chicken {
+                        products.push((profile.raw, 1));
+                        let draw = random.below(128);
+                        if let Some(trace) = &mut trace {
+                            trace.owner = Some(owner);
+                            trace.draw = Some(draw);
+                        }
+                        let feathers = crate::npc_death::Chicken::feather_count(draw)
+                            .expect("RandomSource must return a value below its exclusive bound");
+                        if feathers > 0 {
+                            products.push((profile.feather, feathers));
+                        }
+                    }
+                    if let Some(trace) = &mut trace {
+                        trace.products = products.clone();
+                    }
+                    let drops: Vec<_> = products
+                        .into_iter()
+                        .map(|(item, count)| crate::ground::Object {
                             coords: drop_coords,
-                            item: bones,
-                            count: 1,
+                            item,
+                            count,
                             scope: crate::ground::Scope::Private,
                             created: clock,
                             receiver: Some(observer),
                             owner: Some(observer),
-                        },
+                        })
+                        .collect();
+                    // Respawn state is already committed: invalid batches are
+                    // reported once and never retried as another death reward.
+                    match self.objects.add_batch(
+                        &drops,
                         &self.object_types,
                         self.clock,
                         duration,
                         100,
                     ) {
-                        self.events.push(WorldEvent::GroundError(error));
+                        Ok(handles) => {
+                            if let Some(trace) = &mut trace {
+                                trace.result = crate::npc_death::DropResult::Committed;
+                                trace.handles = handles
+                                    .iter()
+                                    .map(|group| group.iter().map(|h| h.id()).collect())
+                                    .collect();
+                            }
+                        }
+                        Err(error) => {
+                            if let Some(trace) = &mut trace {
+                                trace.result = crate::npc_death::DropResult::Rejected;
+                            }
+                            self.events.push(WorldEvent::GroundError(error));
+                        }
                     }
+                }
+                if let Some(trace) = trace {
+                    self.events.push(WorldEvent::NpcDrop(trace));
                 }
                 if !respawns {
                     self.npcs.remove(id.slot as usize);

@@ -40,7 +40,7 @@ impl World {
             fine_xp_delta: 0,
             level: p.data.stats.current(skill) as i32,
             required_level: tree.level,
-            axe: None,
+            tool: None,
             free_slots: p.data.inventory.free_space(),
             product_before: p
                 .data
@@ -52,6 +52,11 @@ impl World {
                 .map(|i| i64::from(i.count))
                 .sum(),
             fine_xp_before: p.data.stats.fine_xp(skill),
+            base_xp: tree.xp,
+            xp_rate_hundreds: p.data.xp_rate_hundreds,
+            depletion_roll: None,
+            active_ticks: None,
+            respawn_delay: None,
         };
         let mut denial = None;
         if self.locations.revision(loc) != Some(revision) {
@@ -69,7 +74,7 @@ impl World {
         }
         let level = p.data.stats.current(skill) as i32;
         let axe = config.axe(&p.data.inventory, &p.data.equipment, level);
-        trace.axe = axe.map(|(id, _)| id);
+        trace.tool = axe.map(|(id, _)| id);
         if denial.is_none() && level < tree.level {
             denial = Some("level");
             self.events.push(WorldEvent::GameMessage {
@@ -97,8 +102,11 @@ impl World {
         // Start on the first eligible reached interaction, including the initial
         // scheduled swing; resource success is not required to start the timer.
         let timed_depletion = if denial.is_none() && axe.is_some() {
-            tree.chopping_ticks
-                .map(|required| self.active_trees.swing(loc, revision, clock) >= required)
+            tree.chopping_ticks.map(|required| {
+                let ticks = self.active_trees.swing(loc, revision, clock);
+                trace.active_ticks = Some(ticks);
+                ticks >= required
+            })
         } else {
             None
         };
@@ -174,22 +182,13 @@ impl World {
             trace.threshold = Some(threshold);
             trace.result = "failed_roll";
             if (roll as f64) < threshold {
-                // Inventory/stat transaction is staged; no XP on a failed insertion.
-                let mut inv = p.data.inventory.clone();
-                let mut stats = p.data.stats.clone();
-                let before = stats.fine_xp(skill);
-                let result = inv.insert(
+                let Ok(reward) = crate::gathering::reward(
+                    &p.data,
                     &self.object_types,
-                    crate::inventory::Insert::new(tree.product, 1),
-                );
-                let advancement = crate::skills::advance(
-                    &mut stats,
                     skill,
+                    tree.product,
                     tree.xp,
-                    p.data.xp_rate_hundreds as f64 / 100.0,
-                    99,
-                );
-                if result.is_err() || advancement.is_err() {
+                ) else {
                     p.location_interaction = None;
                     p.movement.interacting = false;
                     self.events.push(WorldEvent::ActionRejected {
@@ -199,13 +198,42 @@ impl World {
                     trace.result = "transaction_rejected";
                     self.events.push(WorldEvent::Woodcutting { actor, trace });
                     return;
-                }
-                let advancement = advancement.unwrap();
-                trace.fine_xp_delta = stats.fine_xp(skill) - before;
+                };
+                let depleted = timed_depletion.unwrap_or_else(|| {
+                    let roll = random.below(255) + 1;
+                    trace.depletion_roll = Some(roll);
+                    roll > u32::from(tree.deplete_chance)
+                });
+                let replacement = if depleted {
+                    p.location_interaction = None;
+                    p.movement.interacting = false;
+                    let duration = if tree.respawn[0] == tree.respawn[1] {
+                        tree.respawn[0]
+                    } else {
+                        tree.respawn[0]
+                            + random.below((tree.respawn[1] - tree.respawn[0] + 1) as u32) as i32
+                    };
+                    let stump =
+                        Location::new(loc.coords, tree.stump, loc.shape, loc.angle).unwrap();
+                    trace.action_delay = p.action_delay;
+                    if let Err(error) = self.change_location(stump, true) {
+                        trace.result = "transaction_rejected";
+                        self.events.push(WorldEvent::LocationError(error));
+                        self.events.push(WorldEvent::Woodcutting { actor, trace });
+                        return;
+                    }
+                    let revision = self.locations.revision(stump).unwrap();
+                    self.location_timers
+                        .replace(loc, stump, revision, self.clock, duration);
+                    Some(duration)
+                } else {
+                    None
+                };
+                let p = self.players.get_mut(slot).unwrap();
+                let (advancement, delta) = reward.commit(&mut p.data);
+                trace.fine_xp_delta = delta;
                 trace.product_delta = 1;
                 trace.result = "success";
-                p.data.inventory = inv;
-                p.data.stats = stats;
                 if self.tutorial_rules_completed_varp.is_some()
                     && p.stat_events
                         .advance(&crate::tutorial_rules::bindings(), skill, advancement)
@@ -222,29 +250,10 @@ impl World {
                     skill,
                     advancement,
                 });
-                let depleted = timed_depletion
-                    .unwrap_or_else(|| random.below(255) + 1 > u32::from(tree.deplete_chance));
+                trace.action_delay = p.action_delay;
+                trace.respawn_delay = replacement;
+                self.events.push(WorldEvent::Woodcutting { actor, trace });
                 if depleted {
-                    p.location_interaction = None;
-                    p.movement.interacting = false;
-                    let duration = if tree.respawn[0] == tree.respawn[1] {
-                        tree.respawn[0]
-                    } else {
-                        tree.respawn[0]
-                            + random.below((tree.respawn[1] - tree.respawn[0] + 1) as u32) as i32
-                    };
-                    let stump =
-                        Location::new(loc.coords, tree.stump, loc.shape, loc.angle).unwrap();
-                    trace.action_delay = p.action_delay;
-                    self.events.push(WorldEvent::Woodcutting { actor, trace });
-                    match self.change_location(stump, true) {
-                        Ok(_) => {
-                            let revision = self.locations.revision(stump).unwrap();
-                            self.location_timers
-                                .replace(loc, stump, revision, self.clock, duration);
-                        }
-                        Err(error) => self.events.push(WorldEvent::LocationError(error)),
-                    }
                     self.events.push(WorldEvent::PlayerCombatAnimation {
                         actor,
                         sequence: u16::MAX,
@@ -255,6 +264,7 @@ impl World {
                     });
                     return;
                 }
+                return;
             }
         }
         trace.action_delay = p.action_delay;

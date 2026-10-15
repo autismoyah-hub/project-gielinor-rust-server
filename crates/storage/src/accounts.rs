@@ -341,6 +341,200 @@ mod tests {
         assert!(accounts.login_messages(999).is_err());
     }
     #[test]
+    fn wiki_shop_buy_and_sell_survive_database_close_and_reopen() {
+        use gielinor_world::{
+            inventory::{Catalog, Inventory, StackType},
+            shop::{Profile, Quantity, Shop, Stock},
+        };
+        let stamp = std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)
+            .unwrap()
+            .as_nanos();
+        let path = std::env::temp_dir().join(format!(
+            "gielinor-wiki-shop-{}-{stamp}.sqlite",
+            std::process::id()
+        ));
+        drop(
+            std::fs::OpenOptions::new()
+                .write(true)
+                .create_new(true)
+                .open(&path)
+                .unwrap(),
+        );
+        let mut accounts = Accounts::from_database(Database::open(&path, false).unwrap());
+        accounts.initialize().unwrap();
+        let (account_id, character_id) =
+            accounts.create("WikiShop", "fixture-hash-only", 1).unwrap();
+        let mut save = Save {
+            tower_diary: None,
+            tower_arrival: Default::default(),
+            account_id,
+            character_id,
+            display_name: Some("Wiki Shop".into()),
+            known_device: None,
+            modlevel: None,
+            coords: CoordGrid::new(3200, 3200, 0).unwrap(),
+            persistent_varps_json: "{}".into(),
+            last_login: None,
+            run_energy: 10000,
+            xp_rate_hundreds: 100,
+            stats: BTreeMap::new(),
+            inventories: BTreeMap::new(),
+        };
+        let mut catalog = Catalog::default();
+        catalog.stackable.insert(995);
+        let mut shop = Shop::new(Profile {
+            currency: 995,
+            capacity: 2,
+            stock: vec![Stock {
+                item: 100,
+                count: 2,
+                interval: 100,
+            }],
+            values: [(100, 10)].into(),
+            player_pays_percent: 100.0,
+            shop_pays_percent: 40.0,
+            change_percent: 10.0,
+            nonstock_interval: 100,
+        })
+        .unwrap();
+        let mut held = Inventory::new(28, StackType::Normal, false);
+        held.restore_slot(
+            0,
+            Some(Item {
+                id: 995,
+                count: 100,
+                vars: 0,
+            }),
+        )
+        .unwrap();
+        assert_eq!(
+            shop.buy(&mut held, &catalog, 0, 100, Quantity::One)
+                .unwrap()
+                .currency,
+            10
+        );
+        for (round, expected_coins, expected_goods) in [(0, 90, 1), (1, 95, 0)] {
+            if round == 1 {
+                assert_eq!(
+                    shop.sell(&mut held, &catalog, 1, 100, Quantity::One)
+                        .unwrap()
+                        .currency,
+                    5
+                );
+            }
+            save.inventories.insert(
+                93,
+                held.slots()
+                    .iter()
+                    .enumerate()
+                    .filter_map(|(slot, item)| item.map(|item| (slot, item)))
+                    .collect(),
+            );
+            accounts.save(&save).unwrap();
+            drop(accounts);
+            accounts = Accounts::from_database(Database::open(&path, false).unwrap());
+            let loaded = accounts.load("wikishop", 1).unwrap().unwrap();
+            assert_eq!(loaded.inventories, save.inventories);
+            held = Inventory::new(28, StackType::Normal, false);
+            for (&slot, &item) in &loaded.inventories[&93] {
+                held.restore_slot(slot, Some(item)).unwrap();
+            }
+            let total = |id| {
+                held.slots()
+                    .iter()
+                    .flatten()
+                    .filter(|i| i.id == id)
+                    .map(|i| i.count)
+                    .sum::<i32>()
+            };
+            assert_eq!((total(995), total(100)), (expected_coins, expected_goods));
+            // Loading character state must never replay an exchange.
+            assert_eq!(
+                accounts.load("wikishop", 1).unwrap().unwrap().inventories,
+                loaded.inventories
+            );
+        }
+        // Shop stock stayed in the same world here. This does not choose a shop
+        // stock restart/persistence policy or attest native UI/worker delivery.
+        assert_eq!(shop.inventory().get(0).unwrap().count, 2);
+        drop(accounts);
+        std::fs::remove_file(path).unwrap();
+    }
+    #[test]
+    fn wiki_fractional_awards_survive_database_close_and_reopen() {
+        use gielinor_world::{skills, stats::Stats};
+        let stamp = std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)
+            .unwrap()
+            .as_nanos();
+        let path = std::env::temp_dir().join(format!(
+            "gielinor-wiki-xp-{}-{stamp}.sqlite",
+            std::process::id()
+        ));
+        // Reserve an owned path without ever truncating an existing fixture.
+        drop(
+            std::fs::OpenOptions::new()
+                .write(true)
+                .create_new(true)
+                .open(&path)
+                .unwrap(),
+        );
+        let mut accounts = Accounts::from_database(Database::open(&path, false).unwrap());
+        accounts.initialize().unwrap();
+        let (account_id, character_id) = accounts.create("WikiXp", "fixture-hash-only", 1).unwrap();
+        let mut save = Save {
+            tower_diary: None,
+            tower_arrival: Default::default(),
+            account_id,
+            character_id,
+            display_name: Some("Wiki XP".into()),
+            known_device: None,
+            modlevel: None,
+            coords: CoordGrid::new(3200, 3200, 0).unwrap(),
+            persistent_varps_json: "{}".into(),
+            last_login: None,
+            run_energy: 10000,
+            xp_rate_hundreds: 100,
+            stats: BTreeMap::new(),
+            inventories: BTreeMap::new(),
+        };
+        for rate in [100, 500] {
+            let mut stats = Stats::default();
+            save.xp_rate_hundreds = rate;
+            for awards in 1..=3 {
+                for (skill, xp, fine) in
+                    [(5, 4.5, 45), (13, 6.2, 62), (14, 17.5, 175), (8, 37.5, 375)]
+                {
+                    skills::advance(&mut stats, skill, xp, rate as f64 / 100.0, 99).unwrap();
+                    assert_eq!(stats.fine_xp(skill), fine * (rate / 100) * awards);
+                    save.stats.insert(
+                        skill,
+                        Stat {
+                            visible: stats.current(skill),
+                            base: stats.base(skill),
+                            fine_xp: stats.fine_xp(skill),
+                        },
+                    );
+                }
+                accounts.save(&save).unwrap();
+                drop(accounts);
+                accounts = Accounts::from_database(Database::open(&path, false).unwrap());
+                let loaded = accounts.load("wikixp", 1).unwrap().unwrap();
+                assert_eq!(loaded.xp_rate_hundreds, rate);
+                assert_eq!(loaded.stats, save.stats);
+                stats = Stats::default();
+                for (&skill, stat) in &loaded.stats {
+                    stats.set_current(skill, stat.visible);
+                    stats.set_base(skill, stat.base);
+                    stats.set_fine_xp(skill, stat.fine_xp).unwrap();
+                }
+            }
+        }
+        drop(accounts);
+        std::fs::remove_file(path).unwrap();
+    }
+    #[test]
     fn schema_and_character_roundtrip_are_atomic() {
         let mut a = Accounts::from_database(Database::memory().unwrap());
         a.initialize().unwrap();

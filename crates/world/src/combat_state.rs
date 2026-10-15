@@ -35,3 +35,35 @@ impl Config {
         }
     }
 }
+
+#[cfg(test)]
+mod wiki_tests {
+    use super::*;
+    #[test]
+    fn single_combat_npc_guard_includes_eighth_tick_and_releases_ninth() {
+        let varp = |id| Varp {
+            id,
+            permanent: false,
+            transmit: crate::variables::Transmit::Never,
+            bit_protect: false,
+            client_code: 0,
+        };
+        let config = Config {
+            last_npc: varp(1),
+            last_pvp: varp(2),
+            aggressive_npc: varp(3),
+        };
+        let mut vars = Variables::default();
+        vars.set(config.last_pvp, -1000, false);
+        let first = npc_uid(1, 41);
+        let other = npc_uid(2, 41);
+        config.record(&mut vars, 100, first, false);
+        assert!(!config.denied(&vars, 108, first));
+        assert!(config.denied(&vars, 108, other));
+        assert!(!config.denied(&vars, 109, other));
+        config.clear_on_death(&mut vars, other, false);
+        assert_eq!(vars.get(config.last_npc.id), 100);
+        config.clear_on_death(&mut vars, first, false);
+        assert_eq!(vars.get(config.last_npc.id), 0);
+    }
+}

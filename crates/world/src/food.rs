@@ -208,10 +208,191 @@ pub fn eat(
     emit(Event::Delay(food.delay));
     Ok(true)
 }
+/// Selected nonstackable Wiki profile: consume the clicked slot and retain its
+/// remainder there. Inventory and healing are staged before any visible effect.
+/// `eat` remains the independently tested original-reference policy.
+pub fn eat_slot(
+    food: &Edible,
+    slot: usize,
+    inventory: &mut Inventory,
+    stats: &mut Stats,
+    items: &Catalog,
+    hitpoints: u8,
+    animation: u16,
+    mut emit: impl FnMut(Event),
+) -> Result<bool, stat_ops::Error> {
+    if inventory
+        .get(slot)
+        .is_none_or(|item| item.id != food.id || item.count != 1)
+        || items.stackable.contains(&food.id)
+        || food
+            .replacement
+            .is_some_and(|id| items.stackable.contains(&id))
+    {
+        return Ok(false);
+    }
+    let mut next_inventory = inventory.clone();
+    let mut debit = Delete::new(food.id, 1);
+    debit.slot = slot;
+    debit.strict_slot = Some(slot);
+    if next_inventory.delete(items, debit).is_err() {
+        return Ok(false);
+    }
+    if let Some(id) = food.replacement {
+        let mut credit = Insert::new(id, 1);
+        credit.slot = slot;
+        credit.strict_slot = Some(slot);
+        if next_inventory.insert(items, credit).is_err() {
+            return Ok(false);
+        }
+    }
+    let mut next_stats = stats.clone();
+    let update = next_stats.apply(hitpoints, Operation::Heal, food.heal, 0, true)?;
+    *inventory = next_inventory;
+    *stats = next_stats;
+    emit(Event::Animation(animation));
+    emit(Event::Stat(update));
+    emit(Event::Message(food.message.clone()));
+    emit(Event::Delay(food.delay));
+    Ok(true)
+}
+/// Successful selected-slot transaction, captured by the authoritative world.
+/// Configured food delay is not an observation of the combat attack clock.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct Transition {
+    pub tick: i32,
+    pub slot: usize,
+    pub before: crate::inventory::Item,
+    pub after: Option<crate::inventory::Item>,
+    pub hp_before: u8,
+    pub hp_after: u8,
+    pub fine_xp_before: i32,
+    pub fine_xp_after: i32,
+    pub configured_delay: i32,
+}
+impl Transition {
+    pub fn json(&self, actor: crate::simulation::ActorId) -> String {
+        let item = |v: crate::inventory::Item| format!("[{},{},{}]", v.id, v.count, v.vars);
+        format!(
+            concat!("{{\"schema\":1,\"actor_slot\":{},\"actor_generation\":{},\"tick\":{},",
+                "\"policy\":\"selected_slot\",\"result\":\"committed\",\"slot\":{},",
+                "\"before\":{},\"after\":{},\"hp_before\":{},\"hp_after\":{},",
+                "\"fine_xp_before\":{},\"fine_xp_after\":{},\"configured_delay\":{},\"attack_delay\":null}}"),
+            actor.slot, actor.generation, self.tick, self.slot, item(self.before),
+            self.after.map(item).unwrap_or_else(|| "null".into()), self.hp_before,
+            self.hp_after, self.fine_xp_before, self.fine_xp_after, self.configured_delay
+        )
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
     use crate::inventory::{Item, StackType};
+    #[test]
+    fn selected_bite_keeps_earlier_identical_food_and_empty_slot_untouched() {
+        let mut inv = Inventory::new(4, StackType::Normal, false);
+        for slot in [1, 3] {
+            inv.restore_slot(
+                slot,
+                Some(Item {
+                    id: 1,
+                    count: 1,
+                    vars: 0,
+                }),
+            )
+            .unwrap();
+        }
+        let mut stats = Stats::default();
+        stats.set_base(3, 20);
+        stats.set_current(3, 1);
+        let mut food = Edible {
+            id: 1,
+            heal: 4,
+            delay: 2,
+            replacement: Some(2),
+            message: "Cake".into(),
+        };
+        for (id, replacement, hp) in [(1, Some(2), 5), (2, Some(3), 9), (3, None, 13)] {
+            food.id = id;
+            food.replacement = replacement;
+            assert_eq!(
+                eat_slot(
+                    &food,
+                    3,
+                    &mut inv,
+                    &mut stats,
+                    &Catalog::default(),
+                    3,
+                    829,
+                    |_| {}
+                ),
+                Ok(true)
+            );
+            assert_eq!(inv.get(3).map(|i| i.id), replacement);
+            assert!(inv.get(0).is_none());
+            assert_eq!(inv.get(1).unwrap().id, 1);
+            assert_eq!(stats.current(3), hp);
+            assert_eq!(stats.fine_xp(3), 0);
+        }
+        assert_eq!(
+            eat_slot(
+                &food,
+                3,
+                &mut inv,
+                &mut stats,
+                &Catalog::default(),
+                3,
+                829,
+                |_| panic!()
+            ),
+            Ok(false)
+        );
+    }
+    #[test]
+    fn selected_bite_rejects_remainder_or_stat_failure_before_any_commit() {
+        for bad_stat in [false, true] {
+            let mut inv = Inventory::new(1, StackType::Normal, false);
+            inv.restore_slot(
+                0,
+                Some(Item {
+                    id: 1,
+                    count: 1,
+                    vars: 0,
+                }),
+            )
+            .unwrap();
+            let mut stats = Stats::default();
+            let mut catalog = Catalog::default();
+            if !bad_stat {
+                catalog.dummy.insert(2);
+            }
+            let food = Edible {
+                id: 1,
+                heal: if bad_stat { -1 } else { 4 },
+                delay: 2,
+                replacement: Some(2),
+                message: "Cake".into(),
+            };
+            let before = (inv.clone(), stats.clone());
+            let result = eat_slot(
+                &food,
+                0,
+                &mut inv,
+                &mut stats,
+                &catalog,
+                3,
+                829,
+                |_| panic!(),
+            );
+            if bad_stat {
+                assert_eq!(result, Err(stat_ops::Error::NegativeConstant));
+            } else {
+                assert_eq!(result, Ok(false));
+            }
+            assert_eq!((inv, stats), before);
+        }
+    }
     #[test]
     fn catalog_preserves_diary_heals_bowls_and_source_cake_quirk() {
         let foods = catalog();

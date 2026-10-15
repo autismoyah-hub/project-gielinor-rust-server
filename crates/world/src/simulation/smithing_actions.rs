@@ -197,6 +197,64 @@ mod tests {
         assert!(!world.protection(actor).unwrap().delayed());
     }
     #[test]
+    fn normal_smelting_characterizes_single_and_repeat_queue_phases() {
+        // Characterization of the existing PG-compatible weak scheduler, not
+        // acceptance of the Wiki first/repeat/single 4/5/6-tick profile.
+        for (count, regular_jobs, expected) in [
+            (1, 0, vec![5]),
+            (2, 0, vec![5, 9]),
+            (2, 1, vec![5, 10]),
+            (2, 2, vec![5, 9]),
+        ] {
+            let (mut world, actor, request) = prepared();
+            for index in 0..regular_jobs {
+                world
+                    .players
+                    .get_mut(actor.slot as usize)
+                    .unwrap()
+                    .queues
+                    .add(
+                        910 + index,
+                        crate::queues::Category::Normal,
+                        100,
+                        Deferred::Preserve,
+                    )
+                    .unwrap();
+            }
+            world.start_smithing(actor, request, count).unwrap();
+            let mut made_at = Vec::new();
+            for tick in 1..=12 {
+                world.tick().unwrap();
+                for event in world.drain_events() {
+                    if let WorldEvent::SmithingProductMade {
+                        actor: made_by,
+                        product,
+                        count,
+                    } = event
+                    {
+                        assert_eq!(made_by, actor);
+                        assert_eq!((product, count), (2349, 1));
+                        made_at.push(tick);
+                    }
+                }
+                let data = world.data(actor).unwrap();
+                assert_eq!(data.stats.fine_xp(13), made_at.len() as i32 * 62);
+                for ore in [436, 438] {
+                    assert_eq!(
+                        crate::smithing_make::total(&data.inventory, &world.object_types, ore),
+                        2 - made_at.len() as i32
+                    );
+                }
+            }
+            assert_eq!(
+                made_at, expected,
+                "count={count}, regular_jobs={regular_jobs}"
+            );
+            assert!(!world.player(actor).unwrap().queues.contains(900));
+        }
+    }
+
+    #[test]
     fn clicking_away_cancels_remaining_smithing_before_consumption() {
         let (mut world, actor, request) = prepared();
         world.start_smithing(actor, request, 28).unwrap();

@@ -90,6 +90,40 @@ pub fn combat_level(
 mod tests {
     use super::*;
     #[test]
+    fn wiki_base_awards_preserve_tenths_at_one_and_five_times_rate() {
+        for (base, one, five) in [
+            (25.0, 250, 1250),
+            (40.0, 400, 2000),
+            (4.5, 45, 225),
+            (6.2, 62, 310),
+            (17.5, 175, 875),
+            (37.5, 375, 1875),
+        ] {
+            for (rate, expected) in [(1.0, one), (5.0, five)] {
+                let mut stats = Stats::default();
+                for award in 1..=3 {
+                    advance(&mut stats, 8, base, rate, 99).unwrap();
+                    assert_eq!(stats.fine_xp(8), expected * award);
+                    assert_eq!(stats.xp(8), expected * award / 10);
+                }
+            }
+        }
+    }
+    #[test]
+    fn per_award_truncation_and_cap_preserve_fractional_storage() {
+        let mut stats = Stats::default();
+        for _ in 0..3 {
+            advance(&mut stats, 0, 0.09, 1.0, 99).unwrap();
+        }
+        assert_eq!(stats.fine_xp(0), 0);
+        stats.set_fine_xp(0, Stats::MAX_FINE_XP - 7).unwrap();
+        advance(&mut stats, 0, 4.5, 5.0, 99).unwrap();
+        assert_eq!(stats.fine_xp(0), Stats::MAX_FINE_XP);
+        let next = advance(&mut stats, 0, 4.5, 5.0, 99).unwrap();
+        assert_eq!(next.added_xp, 0);
+        assert_eq!(stats.fine_xp(0), Stats::MAX_FINE_XP);
+    }
+    #[test]
     fn xp_levels_and_boosts() {
         assert_eq!(xp_from_level(99), Some(13034431));
         assert_eq!(xp_from_level(2), Some(83));

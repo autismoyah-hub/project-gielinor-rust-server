@@ -268,6 +268,10 @@ pub mod tower_restore;
 
 pub mod tower_food;
 
-pub mod tower_tastes;
 pub mod tower_combat;
+pub mod tower_tastes;
 pub mod woodcutting;
+
+pub mod gathering;
+pub mod mining;
+pub mod shop;

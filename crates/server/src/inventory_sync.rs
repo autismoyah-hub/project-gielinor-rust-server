@@ -175,6 +175,80 @@ mod tests {
         assert_eq!(tx.cycle(|_| Some(&inv)).unwrap().packets[0].opcode, 22);
     }
     #[test]
+    fn shared_shop_sale_and_restock_are_encoded_for_every_observer_before_cleanup() {
+        use gielinor_world::{
+            inventory::Catalog,
+            shop::{Profile, Quantity, Shop, Stock},
+        };
+        let mut shop = Shop::new(Profile {
+            currency: 995,
+            capacity: 1,
+            stock: vec![Stock {
+                item: 100,
+                count: 1,
+                interval: 3,
+            }],
+            values: [(100, 10)].into(),
+            player_pays_percent: 100.0,
+            shop_pays_percent: 40.0,
+            change_percent: 10.0,
+            nonstock_interval: 100,
+        })
+        .unwrap();
+        let mut first = Transmissions::default();
+        let mut second = Transmissions::default();
+        first.start(300);
+        second.start(300);
+        assert_eq!(
+            first.cycle(|_| Some(shop.inventory())).unwrap().packets,
+            second.cycle(|_| Some(shop.inventory())).unwrap().packets
+        );
+        shop.clear_transmitted();
+        let mut held = Inventory::new(28, StackType::Normal, false);
+        held.restore_slot(
+            0,
+            Some(Item {
+                id: 995,
+                count: 10,
+                vars: 0,
+            }),
+        )
+        .unwrap();
+        let mut catalog = Catalog::default();
+        catalog.stackable.insert(995);
+        shop.buy(&mut held, &catalog, 0, 100, Quantity::One)
+            .unwrap();
+        let sale_a = first.cycle(|_| Some(shop.inventory())).unwrap().packets;
+        let sale_b = second.cycle(|_| Some(shop.inventory())).unwrap().packets;
+        assert_eq!(sale_a, sale_b);
+        assert_eq!(sale_a.len(), 1);
+        assert_eq!(sale_a[0].opcode, 18);
+        shop.clear_transmitted();
+        assert!(first
+            .cycle(|_| Some(shop.inventory()))
+            .unwrap()
+            .packets
+            .is_empty());
+        shop.restock(2);
+        assert!(first
+            .cycle(|_| Some(shop.inventory()))
+            .unwrap()
+            .packets
+            .is_empty());
+        shop.restock(3);
+        let restock_a = first.cycle(|_| Some(shop.inventory())).unwrap().packets;
+        let restock_b = second.cycle(|_| Some(shop.inventory())).unwrap().packets;
+        assert_eq!(restock_a, restock_b);
+        assert_eq!(restock_a.len(), 1);
+        assert_ne!(restock_a, sale_a);
+        shop.clear_transmitted();
+        assert!(second
+            .cycle(|_| Some(shop.inventory()))
+            .unwrap()
+            .packets
+            .is_empty());
+    }
+    #[test]
     fn weight_uses_subscriptions_and_slots_not_stack_counts() {
         let mut inv = Inventory::new(3, StackType::Normal, false);
         inv.restore_slot(

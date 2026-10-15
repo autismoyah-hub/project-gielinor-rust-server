@@ -334,6 +334,123 @@ mod tests {
         }
     }
     #[test]
+    fn multipart_food_remainder_and_fractional_xp_survive_database_reopen() {
+        use gielinor_world::{
+            food::{eat_slot, Edible},
+            inventory::Catalog,
+        };
+        let defs = definitions();
+        let policy = Policy {
+            world: 1,
+            inventory: 93,
+            equipment: 94,
+            bank: 95,
+            hitpoints: 3,
+            spawn: CoordGrid::new(3200, 3200, 0).unwrap(),
+            base_xp_rate_hundreds: 100,
+            auto_display_names: true,
+            dev_modlevel: None,
+            modlevels: BTreeMap::new(),
+        };
+        let stamp = std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)
+            .unwrap()
+            .as_nanos();
+        let path = std::env::temp_dir().join(format!(
+            "gielinor-food-{}-{stamp}.sqlite",
+            std::process::id()
+        ));
+        drop(
+            std::fs::OpenOptions::new()
+                .write(true)
+                .create_new(true)
+                .open(&path)
+                .unwrap(),
+        );
+        let mut accounts = Accounts::from_database(Database::open(&path, false).unwrap());
+        accounts.initialize().unwrap();
+        accounts
+            .create("Food Save", "fixture-hash-only", 1)
+            .unwrap();
+        let (character, mut data) = Character::load(
+            Authenticated {
+                account: accounts.load("food save", 1).unwrap().unwrap(),
+                new_account: true,
+                authenticator_code: None,
+            },
+            &defs,
+            &policy,
+            "2026-10-14T00:00:00".into(),
+        )
+        .unwrap();
+        data.stats.set_current(3, 1);
+        data.stats.set_fine_xp(3, 12349).unwrap();
+        data.inventory
+            .restore_slot(
+                3,
+                Some(Item {
+                    id: 1891,
+                    count: 1,
+                    vars: 0,
+                }),
+            )
+            .unwrap();
+        let food = Edible {
+            id: 1891,
+            heal: 4,
+            delay: 2,
+            replacement: Some(1893),
+            message: "Cake".into(),
+        };
+        assert!(eat_slot(
+            &food,
+            3,
+            &mut data.inventory,
+            &mut data.stats,
+            &Catalog::default(),
+            3,
+            829,
+            |_| {}
+        )
+        .unwrap());
+        accounts
+            .save(&character.save(&data, &defs, &policy).unwrap())
+            .unwrap();
+        drop(accounts);
+        let mut accounts = Accounts::from_database(Database::open(&path, false).unwrap());
+        let (_, mut returning) = Character::load(
+            Authenticated {
+                account: accounts.load("food save", 1).unwrap().unwrap(),
+                new_account: false,
+                authenticator_code: None,
+            },
+            &defs,
+            &policy,
+            "2026-10-14T00:01:00".into(),
+        )
+        .unwrap();
+        assert_eq!(returning.inventory.slots(), data.inventory.slots());
+        assert_eq!(returning.inventory.get(3).unwrap().id, 1893);
+        assert_eq!(returning.stats.current(3), 5);
+        assert_eq!(returning.stats.fine_xp(3), 12349);
+        // Replaying the pre-save whole-cake request cannot consume its remainder.
+        assert!(!eat_slot(
+            &food,
+            3,
+            &mut returning.inventory,
+            &mut returning.stats,
+            &Catalog::default(),
+            3,
+            829,
+            |_| panic!()
+        )
+        .unwrap());
+        assert_eq!(returning.stats.current(3), 5);
+        assert_eq!(returning.inventory.get(3).unwrap().id, 1893);
+        drop(accounts);
+        std::fs::remove_file(path).unwrap();
+    }
+    #[test]
     fn account_world_save_roundtrip_preserves_permanent_extra_inventories() {
         let defs = definitions();
         let policy = Policy {

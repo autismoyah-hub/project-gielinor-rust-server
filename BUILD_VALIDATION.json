@@ -14,5 +14,8 @@
   "toolchain": {
     "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)\nrelease: 1.99.0\ncommit-hash: 5f94df4789f005f9a352888e8355ffc645b7ed0e\ncommit-date: 2026-08-27\nhost: x86_64-pc-windows-gnu\nlibgit2: 1.9.6 (sys:0.21.0 vendored)\nlibcurl: 8.21.0-DEV (sys:0.4.90+curl-8.21.0 vendored ssl:Schannel)\nos: Windows 10.0.26200 (Windows 11 Professional) [64-bit]\n",
     "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-gnu\nrelease: 1.99.0\nLLVM version: 23.1.1\n"
-  }
+  },
+  "applies_to_release_commit": "abb31cca5b49912c5f538df669230c1677114c3f",
+  "latest_checkpoint_build_verified": false,
+  "latest_checkpoint_note": "See SOURCE_CHECKPOINT.md; historical release results are retained as historical evidence only."
 }

@@ -115,7 +115,13 @@ impl World {
         self.player(actor)?;
         let npc = self.npc(target).ok_or(ActionError::StaleActor)?;
         let health = npc.stats[3];
+        let npc_type = npc.type_id;
+        let npc_multiplier = npc.combat_xp_multiplier;
         let multiplier = npc.combat_xp_multiplier as f64 / 1000.0;
+        let selected = self
+            .npc_death
+            .as_ref()
+            .is_some_and(|config| config.chickens.contains_key(&npc_type));
         let p = self.players.get_mut(actor.slot as usize).unwrap();
         if p.saving {
             return Err(ActionError::LoggingOut);
@@ -132,8 +138,41 @@ impl World {
                 )
                 .map_err(|_| ActionError::QueueFull)?;
         }
+        let trace = if selected {
+            if let Attack::Melee { style, stance, .. } = attack {
+                Some(crate::combat_xp::MeleeTrace {
+                    tick: self.clock.0,
+                    actor,
+                    target,
+                    npc_type,
+                    style,
+                    stance,
+                    damage,
+                    target_health: health,
+                    npc_multiplier,
+                    rate,
+                    awards: awards
+                        .iter()
+                        .map(|(skill, _)| {
+                            (
+                                skill.id(),
+                                p.data.stats.fine_xp(skill.id()),
+                                stats.fine_xp(skill.id()),
+                            )
+                        })
+                        .collect(),
+                })
+            } else {
+                None
+            }
+        } else {
+            None
+        };
         p.data.stats = stats;
         self.events.push(WorldEvent::CombatXp { actor, awards });
+        if let Some(trace) = trace {
+            self.events.push(WorldEvent::NpcMeleeXp(trace));
+        }
         Ok(())
     }
 }
