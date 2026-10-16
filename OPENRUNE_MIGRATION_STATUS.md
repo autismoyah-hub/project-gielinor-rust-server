@@ -501,3 +501,49 @@ Dough login control `openrune-dough-login-control-001` PASS on B1DC825DE02F34E54
 - `work/integration/runs/openrune-native-dough-001/logout-observation.json` SHA256 `ea13c74a88d428051695fbb7d28dee9d3b6c41b1b62a9eedb7e5f92620d0aab7`
 - `work/integration/runs/openrune-native-dough-001/shutdown.json` SHA256 `75b58e484f283f7e48eb89c43a7f98c63b42d18d589f3a12a6f7a72208a473d7`
 - `work/integration/runs/openrune-native-dough-001/failure-conservation-assessment.json` SHA256 `cf29fb2744b08b38ff7c28132ab51c112604bde506dde6184f48ea35bc3ac613`
+
+## Dough driver UI-readiness correction (2026-10-16 UTC)
+
+Pie implementation commit c71f93f1988ba3e0c00c2a8fe5aa9489ed15a18f pushed; local/remote match; bounded issue12 comment6211239436, no closure. Dough002 build attempts001/002/003 deferred by active compiler. Attempt004 encountered relative Tee-Object path resolution after driver Push-Location (no archive); subsequent logs use absolute paths. Attempt005 compiled and exposed diagnostic Entry lacks Debug; corrected to print Action/label. Attempt006 PASS2.23s. Native dough002 FAIL: real held-use then option hit-test shows default static widgets, flags0, no dynamic Make action. Save/conservation vs login control PASS, server19544 clean0; original receipts retained.
+
+Dough003 driver waits within existing150s deadline for actual generated option actions after asynchronous skillmulti setup; no synthetic packet or client-library change. Driver build PASS1.53s (`work/dough-driver-003-attempt-001.log`), sourceE87FC330C46B9F9351B31BB6737827656897F205048951B479BFEFA1D8D269EE, binary07F6945E82376066F91468B60B8E558A2827DBEB3E1BDC5ACE9CE659CEBB82B7. Native003 subsequently generated all nine Make actions/opcode115; independent final receipt assessment and same-save continuation recorded separately. This establishes that waiting for setup resolves the observed harness failure; it is not a client production defect claim.
+
+Private offline dough assessor now additionally checks exact output rows/counts/vars, rejecting a merged-pot count mutation that preserves totals. Actual003 export passed stricter read-only reassessment; old receipts unchanged. This hardening is assessor validation, not additional gameplay evidence.
+
+- `openrune-native-dough-002/client.log` SHA256 `8a34fa0ba1efd93bf579a60dada731d18ea0b657a00230f8e96f26e947680aa1`
+- `openrune-native-dough-002/server.log` SHA256 `c04c1b4cbe916adf7c73cbb7111e73f2ed4575dc87698209696180fe0ac065a7`
+- `openrune-native-dough-002/initial-state.json` SHA256 `d3206078a741f942cbb12676a370e2c75aa6c47280802cf3bad3132814bc2358`
+- `openrune-native-dough-002/final-state.json` SHA256 `d3e9ce7da21104547d670138c6cf19b95c291826c787589da5fc35dd7791f80c`
+- `openrune-native-dough-002/result.json` SHA256 `cc07521ad9bde7a521a67ed3d284a27aab6f524f05bcee9af7b4cdc22904a17c`
+- `openrune-native-dough-002/logout-observation.json` SHA256 `e6b3af07412c44d2976094594e905cd8f12427d07fa1727a016305f2fc056bf0`
+- `openrune-native-dough-002/shutdown.json` SHA256 `49b0cf3dadff1dfc47d35a0b7daf6d11585add8dbb4d69c7a245d4a3a29b9711`
+
+## Ordinary dough native choices and same-save acceptance (2026-10-16 UTC)
+
+Native generated item-use and skillmulti option actions cover nine choices: three water containers times bread/pastry/pizza dough, quantity1. Both input directions exercised; flour/water containers remain in selected slots, three each dough, nine empty pots, three each empty water vessel and1000coins, noXP. All nine authoritative commits are queued_at+1, actor1 generation614, exact selected slots. Same-save relogin contains zero new dough transitions. Not a native Make-X repeat, full-inventory, stale, cancellation, multiplayer or animation acceptance claim. Wiki bread-container return inference remains explicitly bounded. No issue closure.
+
+Server archive B1DC825DE02F34E540EE380C2072383A797D8379785BD69928F43446D8D1AC7F; source before new pie batch. Driver dough-003: real generated actions only; waits for asynchronous option setup. Earlier runs001/002 rejected initial menu readiness and remain preserved. Pinned client library unchanged.
+
+`openrune-native-dough-003` PASS; owned server5636 clean0.
+- `client.log` SHA256 `601b18c922e192c3926dead1b9095a86f9a3a87a6ed4ee498d2b9238308642a2`
+- `server.log` SHA256 `a5e9e8b8c246bfa57066393257b7138cfa74fda42de142bfa2849d182774d635`
+- `initial-state.json` SHA256 `d3206078a741f942cbb12676a370e2c75aa6c47280802cf3bad3132814bc2358`
+- `final-state.json` SHA256 `ba9b00c8192f5811e4e459f25b2b949e5d5cd8cf4023e98005061c2df9f7edcf`
+- `pack-assessment.json` SHA256 `bb767e1c8201bc2ff8942154b893bbea9bd3edd3463f0cdbec68e8ee105b0227`
+- `dough-trace-assessment.json` SHA256 `e5fae32fd3009a1a314980819fbe5a8dc77340c8f12e3ca44c9adb3dda8ea02e`
+- `logout-observation.json` SHA256 `d07350084852cc43b79c9cf2d866ad3fdb1ce32d5b0c87516f8ca853eed35031`
+- `shutdown.json` SHA256 `d273f84bbebf320a39cdd9129d02433301bc061ec493076cd2a82155f8e99d34`
+- `result.json` SHA256 `bfb2d994c7d85c1ae3aad733fbf7a5cf16c4e170720a2eaac0a6afe2949d4ff2`
+- `pack-run.json` SHA256 `7a06c34dd027bd5b8989a3849977f5b161696886df6b0a5bdec5bc5c7646eee1`
+
+`openrune-native-dough-relogin-003` PASS; owned server1192 clean0.
+- `client.log` SHA256 `daf1307927614060de9af8b5be21520aff0b5344429941e2feddc508031222b8`
+- `server.log` SHA256 `19319987ce7b325dba9fe9abe4963933ce0afdd167cffdb7f7256d902f9842ad`
+- `initial-state.json` SHA256 `ba9b00c8192f5811e4e459f25b2b949e5d5cd8cf4023e98005061c2df9f7edcf`
+- `final-state.json` SHA256 `5d3aa1a2c7ff06ba1d134dc3837d88df23af1c28c021f36b2bea8641b3b67b08`
+- `pack-assessment.json` SHA256 `151b0b2f21833a9468f7b707bab6e1a47b7ac254d469ce54bd96a024210ccd90`
+- `dough-trace-assessment.json` SHA256 `a77f5d2245b7ff894a0d45b6cc3d69c95b0195c2d6a7ef5105a928a0c02fd014`
+- `logout-observation.json` SHA256 `8d862d522ab2ecce1333517e0403602d04a39aee9af7989fc8f9d59f742f2beb`
+- `shutdown.json` SHA256 `329371bc9d6e81f18609404b100b2dcae1692576daaa9a915cd9728852884d5f`
+- `result.json` SHA256 `768e55c4f1213bbe87b4145160758ce9dd8237d59aebc44560fb6790f897f4ee`
+- `pack-run.json` SHA256 `ac2f69769fc76441dd1778605de62ce50f703df8d5c0bfd4d56b61b192af7204`
