@@ -782,6 +782,95 @@ pub fn assembly(
             0,
             true,
         ),
+        (
+            "pie_shell",
+            "tomato",
+            "unfinished_garden_pie_1",
+            34,
+            0,
+            true,
+        ),
+        (
+            "unfinished_garden_pie_1",
+            "onion",
+            "unfinished_garden_pie_2",
+            34,
+            0,
+            true,
+        ),
+        (
+            "unfinished_garden_pie_2",
+            "cabbage",
+            "uncooked_garden_pie",
+            34,
+            0,
+            true,
+        ),
+        ("pie_shell", "trout", "unfinished_fish_pie_1", 47, 0, true),
+        (
+            "unfinished_fish_pie_1",
+            "cod",
+            "unfinished_fish_pie_2",
+            47,
+            0,
+            true,
+        ),
+        (
+            "unfinished_fish_pie_2",
+            "potato",
+            "uncooked_fish_pie",
+            47,
+            0,
+            true,
+        ),
+        (
+            "pie_shell",
+            "raw_bear_meat",
+            "unfinished_wild_pie_1",
+            85,
+            0,
+            true,
+        ),
+        (
+            "unfinished_wild_pie_1",
+            "raw_chompy",
+            "unfinished_wild_pie_2",
+            85,
+            0,
+            true,
+        ),
+        (
+            "unfinished_wild_pie_2",
+            "raw_rabbit",
+            "uncooked_wild_pie",
+            85,
+            0,
+            true,
+        ),
+        (
+            "pie_shell",
+            "strawberry",
+            "unfinished_summer_pie_1",
+            95,
+            0,
+            true,
+        ),
+        (
+            "unfinished_summer_pie_1",
+            "watermelon",
+            "unfinished_summer_pie_2",
+            95,
+            0,
+            true,
+        ),
+        (
+            "unfinished_summer_pie_2",
+            "cooking_apple",
+            "uncooked_summer_pie",
+            95,
+            0,
+            true,
+        ),
         ("pizza_base", "tomato", "incomplete_pizza", 35, 0, false),
         ("incomplete_pizza", "cheese", "uncooked_pizza", 35, 0, false),
         ("plain_pizza", "cooked_meat", "meat_pizza", 45, 26, false),
@@ -862,6 +951,28 @@ mod assembly_binding_tests {
             "uncooked_mushroom_pie",
             "dragonfruit",
             "uncooked_dragonfruit_pie",
+            "onion",
+            "cabbage",
+            "unfinished_garden_pie_1",
+            "unfinished_garden_pie_2",
+            "uncooked_garden_pie",
+            "trout",
+            "cod",
+            "potato",
+            "unfinished_fish_pie_1",
+            "unfinished_fish_pie_2",
+            "uncooked_fish_pie",
+            "raw_bear_meat",
+            "raw_chompy",
+            "raw_rabbit",
+            "unfinished_wild_pie_1",
+            "unfinished_wild_pie_2",
+            "uncooked_wild_pie",
+            "strawberry",
+            "watermelon",
+            "unfinished_summer_pie_1",
+            "unfinished_summer_pie_2",
+            "uncooked_summer_pie",
             "plain_pizza",
             "meat_pizza",
             "anchovies",
@@ -896,7 +1007,10 @@ mod assembly_binding_tests {
         let recipes = assembly(&symbols, &defs, 7).unwrap();
         assert_eq!(
             recipes.iter().map(|r| r.level).collect::<Vec<_>>(),
-            [1, 10, 20, 20, 30, 52, 60, 73, 35, 35, 45, 45, 55, 65, 65]
+            [
+                1, 10, 20, 20, 30, 52, 60, 73, 34, 34, 34, 47, 47, 47, 85, 85, 85, 95, 95, 95, 35,
+                35, 45, 45, 55, 65, 65
+            ]
         );
         for (ingredient, output, level, xp) in [
             ("cooked_meat", "meat_pizza", 45, 26),
@@ -928,7 +1042,7 @@ mod assembly_binding_tests {
                 (symbols["pineapple_pizza"], 65, 45, true)
             );
         }
-        assert_eq!(recipes.iter().filter(|r| r.members).count(), 5);
+        assert_eq!(recipes.iter().filter(|r| r.members).count(), 17);
         // Filling admission uses live boosts and membership; assembly gives no
         // baking XP. Unrelated input-gathering requirements are not pie gates.
         for (ingredient, output, level, member) in [
@@ -1007,6 +1121,151 @@ mod assembly_binding_tests {
             );
             assert_eq!(stats.fine_xp(7), 0);
             assert_eq!(stats, before);
+        }
+        // Complete each three-stage chain from a full backpack. Every stage
+        // independently rechecks membership/boost and commits no baking XP.
+        for (ingredients, outputs, level) in [
+            (
+                ["raw_bear_meat", "raw_chompy", "raw_rabbit"],
+                [
+                    "unfinished_wild_pie_1",
+                    "unfinished_wild_pie_2",
+                    "uncooked_wild_pie",
+                ],
+                85,
+            ),
+            (
+                ["strawberry", "watermelon", "cooking_apple"],
+                [
+                    "unfinished_summer_pie_1",
+                    "unfinished_summer_pie_2",
+                    "uncooked_summer_pie",
+                ],
+                95,
+            ),
+            (
+                ["tomato", "onion", "cabbage"],
+                [
+                    "unfinished_garden_pie_1",
+                    "unfinished_garden_pie_2",
+                    "uncooked_garden_pie",
+                ],
+                34,
+            ),
+            (
+                ["trout", "cod", "potato"],
+                [
+                    "unfinished_fish_pie_1",
+                    "unfinished_fish_pie_2",
+                    "uncooked_fish_pie",
+                ],
+                47,
+            ),
+        ] {
+            use gielinor_world::{
+                assembly::{Job, Outcome},
+                inventory::{Catalog, Inventory, Item, StackType},
+                stats::Stats,
+            };
+            let mut inv = Inventory::new(5, StackType::Normal, false);
+            for (slot, id) in std::iter::once(symbols["pie_shell"])
+                .chain(ingredients.iter().map(|n| symbols[*n]))
+                .enumerate()
+            {
+                inv.restore_slot(
+                    slot,
+                    Some(Item {
+                        id,
+                        count: 1,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+            }
+            inv.restore_slot(
+                4,
+                Some(Item {
+                    id: 995,
+                    count: 1000,
+                    vars: 0,
+                }),
+            )
+            .unwrap();
+            let coin = inv.get(4);
+            let mut stats = Stats::default();
+            let mut catalog = Catalog::default();
+            catalog.stackable.insert(995);
+            let mut base = symbols["pie_shell"];
+            for stage in 0..3 {
+                let recipe = *recipes
+                    .iter()
+                    .find(|r| r.first == base && r.second == symbols[ingredients[stage]])
+                    .unwrap();
+                assert_eq!(
+                    (recipe.output, recipe.level, recipe.base_xp, recipe.members),
+                    (symbols[outputs[stage]], level as u8, 0, true)
+                );
+                let job = Job {
+                    recipe,
+                    first_slot: 0,
+                    second_slot: stage + 1,
+                };
+                stats.set_current(7, level);
+                let original = inv.clone();
+                let skills = stats.clone();
+                assert_eq!(
+                    job.complete_awarding(&mut inv, &catalog, &mut stats, 500, false),
+                    (Outcome::Members, None)
+                );
+                assert_eq!(inv, original);
+                assert_eq!(stats, skills);
+                stats.set_current(7, level - 1);
+                let low = stats.clone();
+                assert_eq!(
+                    job.complete_awarding(&mut inv, &catalog, &mut stats, 500, true),
+                    (Outcome::Level, None)
+                );
+                assert_eq!(inv, original);
+                assert_eq!(stats, low);
+                stats.set_current(7, level);
+                catalog.dummy.insert(recipe.output);
+                assert_eq!(
+                    job.complete_awarding(&mut inv, &catalog, &mut stats, 500, true),
+                    (Outcome::Capacity, None)
+                );
+                assert_eq!(inv, original);
+                assert_eq!(stats, skills);
+                catalog.dummy.remove(&recipe.output);
+                assert_eq!(
+                    job.complete_awarding(&mut inv, &catalog, &mut stats, 500, true),
+                    (Outcome::Made, None)
+                );
+                assert_eq!(stats, skills);
+                assert_eq!(stats.base(7), 1);
+                assert_eq!(
+                    inv.get(0),
+                    Some(Item {
+                        id: recipe.output,
+                        count: 1,
+                        vars: 0
+                    })
+                );
+                assert_eq!(inv.get(4), coin);
+                for slot in 1..=stage + 1 {
+                    assert!(inv.get(slot).is_none());
+                }
+                for slot in stage + 2..4 {
+                    assert_eq!(inv.get(slot), original.get(slot));
+                }
+                let committed = inv.clone();
+                assert_eq!(
+                    job.complete_awarding(&mut inv, &catalog, &mut stats, 500, true),
+                    (Outcome::Stale, None)
+                );
+                assert_eq!(inv, committed);
+                assert_eq!(stats, skills);
+                base = recipe.output;
+            }
         }
         for (name, alias) in [
             ("pineapple_chunks", "plain_pizza"),

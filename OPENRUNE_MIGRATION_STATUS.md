@@ -786,3 +786,138 @@ Supersedes pending compilation above: `build.ps1 -Action test -CargoArgs @('-p',
 No native archive or gameplay acceptance for these three new fillings yet. Native negative pineapple drivers remain uncompiled; attempts after the suite were deferred when another compiler became active. Existing native archive2C311F8F continues to identify only the earlier implementation. No issue closure.
 
 - `work/member-pies-full-tests-attempt-002.log` SHA256 `ee1c05bba771332dbdc2b813d9601893f5cc3ecd51d111f843be77614e1d5d3b`
+
+## Native assembly interruption acceptance (2026-10-16 UTC)
+
+Ordered native topping Use then unsupported coin Use: observed server refusal and at least five client server-tick increments with exact inputs/allXP conserved, followed by both valid pineapple toppings. This is held-use interruption, not movement cancellation.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking parity or unrelated recipes. No issue closure.
+
+`openrune-native-pineapple-interrupt-001` PASS. Server archive `2C311F8F867C5FAE97B62F1278C0A9D282641F7A4F479D92B58365BD3B3C1B2F`, driver `pineapple-interrupt-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID13728.
+- Driver `NativePineappleInterruptScenario.rs` SHA256 `ECA363A95A2D5327F64A32982F5B83915481E0E431B01ADCDCACA9FFB6954985`
+- Driver `server_pineappleinterrupt.exe` SHA256 `8FDB9FF8344B9C0521005B72B4EC2F33AA7081F22D8E153F8B06C72BF275B792`
+- `client.log` SHA256 `1eb73a57e36eeb124c4678ef50ba43de4884d938e0d11dd81784e557e1580c46`
+- `server.log` SHA256 `4f32b8b288f351229c32bf9d457653256d9b9da2467fbef6f6deca3ca91f89ca`
+- `initial-state.json` SHA256 `badbe0105dd2ffd03483ceeed21a92bd00cd9ca8357b33ec0f00991c2e0bd81f`
+- `final-state.json` SHA256 `f9d000251c0d87a11ec152613a5aedc6c882650e40c913b4acd3ac25d9d31b05`
+- `pack-assessment.json` SHA256 `3665d1f0a72f0e7f61c0ba37dc8166561a357a61e2e6f775da3d0a799c1c3168`
+- `pineapple-trace-assessment.json` SHA256 `5ba44a1b624d48e925b042f34b6a8e1372eab41b9ae57a8cdda223cd44303cdc`
+- `logout-observation.json` SHA256 `36447d32c1cc5d22e0364a5875c30ce2a5bddfb4f5ec6095545566169b1a2d2f`
+- `shutdown.json` SHA256 `9bf807e3ced91b54eb19eebbb5ce0d48c820d2637acb5642190149d08d94ccc1`
+- `result.json` SHA256 `b2260f1e5bd56b827dfd0797c327877539aae86c8b8aca2ddf0865070288b07c`
+- `pack-run.json` SHA256 `90b1b3a2278e36cf4a205f4a7927bfe73e5f9b7ca8636667afb9d3336af9c9b3`
+- `native-packet-assessment.json` SHA256 `83f60dc7e86a0d5583d66ea9c89d77ea18f420712628c1af3ab5f896f59cfae7`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":200},"3077":{"before":0,"after":47428},"3079":{"before":0,"after":103},"65515":{"before":0,"after":97}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[{"actor_slot":1,"actor_generation":614,"first_slot":0,"second_slot":1,"first":2289,"second":2116,"output":2301,"count":1,"queued_at":77,"committed_at":79},{"actor_slot":1,"actor_generation":614,"first_slot":2,"second_slot":3,"first":2289,"second":2118,"output":2301,"count":1,"queued_at":83,"committed_at":85}],"scope":"Server assembly clocks and selected slots, not packet/display latency"}`
+
+## Native assembly stale acceptance (2026-10-16 UTC)
+
+Native Drop chunk slot1 then stale native Use claim before client refresh: only the deliberately dropped chunk leaves inventory; no topping, no XP, no assembly commits. Ground-object visibility/lifetime and pickup are outside this acceptance.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking parity or unrelated recipes. No issue closure.
+
+`openrune-native-pineapple-stale-001` PASS. Server archive `2C311F8F867C5FAE97B62F1278C0A9D282641F7A4F479D92B58365BD3B3C1B2F`, driver `pineapple-stale-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID16100.
+- Driver `server_pineapplestale.exe` SHA256 `51B0A05064CA03857496C33301E4569B15CF4AF4E9445D1EF9DB43760EB75839`
+- Driver `NativePineappleStaleScenario.rs` SHA256 `6F5AB8DDC93A5712E472C0BA55A486F17F3F5F5A8CA27A0E98EC03935FE60E80`
+- `client.log` SHA256 `de87a1fcd8016f78e31b1d3e1fec275770fedcb401f2a67ede742e79d1f5336f`
+- `server.log` SHA256 `18cbcd48c47d3f321ba03640f4a96de304f7ddf94fc18a2c14c290f8490ca0f8`
+- `initial-state.json` SHA256 `badbe0105dd2ffd03483ceeed21a92bd00cd9ca8357b33ec0f00991c2e0bd81f`
+- `final-state.json` SHA256 `465afe5f524c3a4ed1b6cb3507fbc178f1a5d47d05c1a6f63cc82ae8501eac9a`
+- `pack-assessment.json` SHA256 `63165436fad4dc5b2cc706f8b35c2d3496e7f96ab10a9c0bdbde3a2b5c7a2e0c`
+- `pineapple-trace-assessment.json` SHA256 `226bbade27c24b435c3ecc469273ebef200a2c2c10ce8d71870ea60a9342393d`
+- `logout-observation.json` SHA256 `da3f85457e04f2bfe25d30765643fa5e22f9c3dbebdc1d85a0a0fe2c93fce95f`
+- `shutdown.json` SHA256 `2e275165e75b89a85fc3607b383b0d2ac2329352abf69fd1cb7ac3daf810309d`
+- `result.json` SHA256 `92cf6e49bb008a2acb6856d319eef1454d9a706f136637501ef995c4c652bf03`
+- `pack-run.json` SHA256 `2950005ca4dc20ce5c19c4fb5f34cf24ef54374278a9f8de320e22cbd87aa8b4`
+- `native-packet-assessment.json` SHA256 `f25b072e9add6398d2a8700f31f928dafda867b01949d4f8cf2c4cb992894e1d`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":200},"3077":{"before":0,"after":24371},"3079":{"before":0,"after":100},"65515":{"before":0,"after":94}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Server assembly clocks and selected slots, not packet/display latency"}`
+
+## Garden and fish pie assembly prepared (2026-10-16 UTC; uncompiled)
+
+Six additional Wiki-backed bindings reuse the existing atomic assembly path. Garden: shell2315 + tomato1982 -> part7172; + onion1957 -> part7174; + cabbage1965 -> raw7176. Cooking34, current membership, boostable, two clocks and zero XP at every stage. Fish: shell2315 + cooked trout333 -> part7182; + cooked cod339 -> part7184; + potato1942 -> raw7186. Cooking47 with the same per-stage membership/boost/two-clock/zero-XP policy. No raw-fish substitutions; baking rewards and cooked-pie boosts remain separate.
+
+All13 target Names/ordinary item definitions pass. Tests authored for both complete three-stage chains from a full backpack with unrelated coins: each stage independently refuses low level/nonmember, preserves all state on invalid-output failure, permits boosts, conserves remaining inputs/stats, and rejects replay. No new engine, OpenRune code translation or241 numeric identifier import.
+
+This source batch is NOT COMPILED/NOT NATIVE TESTED at this entry. The newly built archiveE0207C899BF20438488E3CC9CFC5795BC695EA9F5D05A461A4D2518D4B39ECB5 (9.49s,373source files, sourceadd776a) predates these six stages and supports only the three prior member fillings. Driver memberpies001 built1.59s; its native state/trace verifier rejects120 synthetic mutations. Both new archive/driver await matching control/native acceptance. Preserve older archive2C311F8F for pending negative pineapple scenarios.
+
+- Wiki `Part garden pie (tomato)` revision15185769, wikitext SHA256 `a9e1ae1cd4046622745ca6503fcd8d5bba874f0a1df8061d73820ec8902954a0`
+
+- Wiki `Part garden pie (onion)` revision15185770, wikitext SHA256 `57cd83732fb9c2c4818104cf28c75d3216cd12528ebab19a67651e30c5983752`
+
+- Wiki `Raw garden pie` revision15185760, wikitext SHA256 `fd68fef7bfc9bf312dde96dedc3cb204d80c7aaec136ce7466746039325982a4`
+
+- Wiki `Part fish pie (trout)` revision15185767, wikitext SHA256 `5a39bc011691e5fface05f2af5868fda045027ed46810fd2e9f3117e15680a41`
+
+- Wiki `Part fish pie (cod)` revision15185768, wikitext SHA256 `0812e44d4fc168ec4279bd3e1ba33e894aea582897177086b101a34d4bd96c9e`
+
+- Wiki `Raw fish pie` revision15185759, wikitext SHA256 `231ae2113ee205ad9cad6771a60d8d52e2afbce7ce5fc266039e1a8baed341b6`
+- `work/openrune-garden-fish-pie-items-001.json` SHA256 `b8c880bc432e58951ef647d9dd17bcafd2794a36ca50f2bc1a0525f0da19f4a0`
+- `work/openrune-garden-fish-pie-readiness-001.json` SHA256 `cd0b42c1e1155df356db788ee00714f41b9ec525ef08ff9a0812fcc86abecaa9`
+- `integration/scenario-drivers/memberpies-001/manifest.json` SHA256 `e0fc4723ac2be348748baa5e9be912106accacec7cedad798a93d2a1d638e301`
+- `work/openrune-memberpies-001-server-build.json` SHA256 `a2267532b28c19d0ac96bef9b879f5be731f9e5bc8eafa16f9b3c48f6d302d89`
+
+## Negative-driver compilation and stale Drop packet refinement (2026-10-16 UTC)
+
+Supersedes earlier uncompiled-driver status: pineapple-interrupt001 built1.78s (attempt006), pineapple-stale001 built1.55s, pineappledenied001 built1.49s, all through unchanged resource guard and pinned client library. First two executed PASS as recorded above. Nonmember driver remains unexecuted: its matching login control passed on attempt004, native fixture prepared and account entitlement0 verified, launch attempt001 then deferred by another active compiler. Resume the exact prepared native fixture; do not reclone. No new relogin is claimed for these negative runs yet.
+
+Supplementary stale packet assessment002 independently decodes opcode47 IF_BUTTONX as component149:0/slot1/item2116/operation7 and requires it precede opcode27 stale Use. All13 altered Drop byte/opcode/length/order cases reject, and the prior99 IF_BUTTONT mutation checks still pass. Original assessment retained. This is saved native dispatch-log verification, not a socket capture or ground-object lifecycle acceptance.
+
+- `integration/scenario-drivers/pineapple-interrupt-001/manifest.json` SHA256 `a6796b4fc574810eaa42b5ee98f81cfed63f25e66bc6410a6f5856ade01c815e`
+
+- `integration/scenario-drivers/pineapple-stale-001/manifest.json` SHA256 `14f35658503838266170c944f90d46514a02f077e937a6bf4506a2b82d3b4391`
+
+- `integration/scenario-drivers/pineappledenied-001/manifest.json` SHA256 `0a39e3eb534caeaefe2dabb9f65665709c2a620ee6fd6853792edf63c1444dd4`
+
+- `work/integration/runs/openrune-native-pineapple-stale-001/native-packet-assessment-002.json` SHA256 `b0c059dee4d76bb866b5dcbfae36a37ebdf14a63480c5515eed53e11e1b56ca8`
+
+## Four staged pie chains validated (2026-10-16 UTC)
+
+Garden/fish stages above are now compiled. Added wild pie (Cooking85): shell2315 + raw bear2136 ->7202, + raw chompy2876 ->7204, + raw rabbit3226 ->7206. Summer (Cooking95): shell2315 + strawberry5504 ->7212, + whole watermelon5982 ->7214, + cooking apple1955 ->7216. Every stage requires current membership, accepts level boosts, takes two clocks and awards zero assembly XP. Baking and food effects remain excluded. All13 wild/summer target definitions pass.
+
+`build.ps1 -Action test -CargoArgs @('-p','gielinor-world','-p','gielinor-server','--lib')` PASS:45 server and354 world tests,0 failures,1 existing ignored; compilation7.34s. Resource guard measured5391MiB available,70.4% commit,0 pages-in/s,3.5ms disk,6.8% CPU and selected2 jobs. Existing binding regression covers all four complete chains with per-stage membership/level refusal, output-failure rollback, boost success, unrelated-item/stat preservation and replay rejection. Native execution of these twelve stages is still NOT TESTED; priorE0207C89 archive predates them.
+
+- Wiki `Raw wild pie` revision15185762, SHA256 `2cba4962246a82242e3d724736f822ec509beb247f833bf2fcad7a1e2ea26901`
+
+- Wiki `Part wild pie (raw chompy)` revision15185774, SHA256 `8886e32c34c305029056968ae1ec0a23e36eca6898407da88b60eadfcec58959`
+
+- Wiki `Part wild pie (raw bear meat)` revision15185773, SHA256 `5f69c6b8c834592cc9dcef6500ff73ed52fa77327848793775023b07293cba37`
+
+- Wiki `Raw summer pie` revision15185761, SHA256 `d68780d9667e1f708a95cd7f3926d95cbfbb1b38ff36f7521cf31fc69028333b`
+
+- Wiki `Part summer pie (watermelon)` revision15185772, SHA256 `5b9495f7bb5fef971bfbc692ace181d360ab5674ecc626756705cef613770ff7`
+
+- Wiki `Part summer pie (strawberry)` revision15185771, SHA256 `fe1c8d7140da6bf97e27588b859491ec5b6196d91404d4deb749e64199131516`
+- `work/openrune-wild-summer-pie-items-001.json` SHA256 `de899e538f7e4a0f282745db5e8d73e56e1b2a7906147a1faf660397762efb64`
+- `work/complex-pies-full-tests-001.log` SHA256 `5c9bd3c0c3ec6d22a936ab235a95a5ad28919d43266c7fb11d87743d962dc1d4`
+
+Admiral first-stage timing remains unresolved for this fixed-two-clock profile: Wiki Part admiral pie (salmon), revision15185765, SHA256 `e95c67f224a50b42ba9b984526bc7052055296a5a4baa73a2e4294218c0c4d19` specifies one tick, with Make-X one then two. Admiral is deliberately unregistered pending quantity-aware timing. No broad Cooking completion or issue closure.
+
+## Native assembly nonmember acceptance (2026-10-16 UTC)
+
+Cooking65 nonmember refuses both pineapple topping choices through native Use and two actual server membership messages. Exact ingredients, coins and XP retained, zero assembly commits, account entitlement independently zero before/after. Does not test mid-action membership revocation.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking parity or unrelated recipes. No issue closure.
+
+`openrune-native-pineappledenied-001` PASS. Server archive `2C311F8F867C5FAE97B62F1278C0A9D282641F7A4F479D92B58365BD3B3C1B2F`, driver `pineappledenied-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID13224.
+- Driver `NativePineappleDeniedScenario.rs` SHA256 `78EE76FA68D3E952976183E20151DE4BFCB70C27FF5D374F1080D6F7DF895A3D`
+- Driver `server_pineappledenied.exe` SHA256 `1DBFACE08609487BE3B89C59855E9CAF30A721320D9A88F2A1470DD42727DE56`
+- `client.log` SHA256 `2734c8bc5a2fa6025a8d3db19275576a1a095639e0207e30d7864b50dc7ea732`
+- `server.log` SHA256 `2178dfe5617de6fe8734c51eaf177cc567b19ddbe1eae38ff9eb8a23a946f207`
+- `initial-state.json` SHA256 `badbe0105dd2ffd03483ceeed21a92bd00cd9ca8357b33ec0f00991c2e0bd81f`
+- `final-state.json` SHA256 `9c5ee98b2f4a92bb3916d454a13cb63df6100265ffd56cbd33afd46bc0d6c433`
+- `pack-assessment.json` SHA256 `2b18182aa32892aec60e2ede47b19f1d081e09c3997e15204ccd6b9d151e8b27`
+- `pineappledenied-trace-assessment.json` SHA256 `51d93878ea9fa95e9798b7620a1754cbd5ff9efe93247f4f1f4e83fbf4c445d3`
+- `logout-observation.json` SHA256 `eab94af0298022a11511a9584fe4d4e41eea5b002bfabea65f411b6aaeef1d2e`
+- `shutdown.json` SHA256 `7bfc2a2dce222c00ee48d8b3efecff0f55ff2a9c84585f13594c155e77537360`
+- `result.json` SHA256 `db802ce7443be8d5b1576e06ce74a1a5148641c520290db35ee193e648fc49c6`
+- `pack-run.json` SHA256 `8467af06bd0f92ec9e2532760a52d05f856a621a3e604de533c4fe46b52ae36d`
+- `native-packet-assessment.json` SHA256 `6d1bfbe94397908975fc89d67f992c0da8fbf39e8629ca54c712160a631fe436`
+- `membership-before.json` SHA256 `c85f03fc0171c1bbb20f17064d0466981f8713876cdda6163d340901c4dfaa3c`
+- `membership-after.json` SHA256 `c85f03fc0171c1bbb20f17064d0466981f8713876cdda6163d340901c4dfaa3c`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":200},"3077":{"before":0,"after":15977},"3079":{"before":0,"after":106},"65515":{"before":0,"after":100}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Denied action fixture must have zero successful assembly transitions; native request/refusal evidence required separately"}`
