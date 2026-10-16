@@ -1535,11 +1535,13 @@ mod water_binding_tests {
 /// Crushed nest15184159, Dragon scale dust15184318, Goat horn dust15280508:
 /// one-for-one retained pestle, no XP, manual0 / automatic2 then3 ticks.
 /// Target ordinary definitions attested in openrune-grinding-three-evidence-001.json.
+/// Superior bones: Wiki15188636 cadence; MMG14246338 explicitly no skill/quest/XP.
+/// This is crushing, not burial or offering (which have separate Prayer gates).
 pub fn grinding(obj:&Symbols,seq:&Symbols,defs:&Definitions)->Result<Vec<gielinor_world::grinding::Recipe>,String>{
     let resolve=|symbols:&Symbols,name:&str|symbols.get(name).copied().ok_or_else(||format!("Missing grinding symbol {name}"));
     let animation=u16::try_from(resolve(seq,"human_herbing_grind")?).map_err(|_|"Invalid grinding sequence")?;
     let mut pairs=std::collections::BTreeSet::new();let mut recipes=Vec::new();
-    for (tool,input,output,members) in [("knife","chocolate_bar","chocolate_dust",false),("pestle_and_mortar","chocolate_bar","chocolate_dust",true),("pestle_and_mortar","unicorn_horn","unicorn_horn_dust",true),("pestle_and_mortar","bird_nest_empty","crushed_bird_nest",true),("pestle_and_mortar","blue_dragon_scale","dragon_scale_dust",true),("pestle_and_mortar","desert_goat_horn","ground_desert_goat_horn",true)] {
+    for (tool,input,output,members) in [("knife","chocolate_bar","chocolate_dust",false),("pestle_and_mortar","chocolate_bar","chocolate_dust",true),("pestle_and_mortar","unicorn_horn","unicorn_horn_dust",true),("pestle_and_mortar","bird_nest_empty","crushed_bird_nest",true),("pestle_and_mortar","blue_dragon_scale","dragon_scale_dust",true),("pestle_and_mortar","desert_goat_horn","ground_desert_goat_horn",true),("pestle_and_mortar","dragon_bones_superior","crushed_dragon_bones",true)] {
         let tool=resolve(obj,tool)?;let input=resolve(obj,input)?;let output=resolve(obj,output)?;
         if tool==input || input==output || tool==output || !pairs.insert((tool,input)) {return Err("Aliased grinding recipe".into());}
         for id in [tool,input,output]{
@@ -1558,11 +1560,11 @@ mod grinding_binding_tests {
     fn named_recipes_distinguish_member_tool_and_validate_items() {
         let mut obj=Symbols::new();let seq=Symbols::from([("human_herbing_grind".into(),901)]);
         let mut defs=Definitions{inventories:Default::default(),locations:Default::default(),npcs:Default::default(),items:Default::default(),varbits:Default::default(),varps:Default::default(),stats:Default::default()};
-        for (i,name) in ["knife","pestle_and_mortar","chocolate_bar","chocolate_dust","unicorn_horn","unicorn_horn_dust","bird_nest_empty","crushed_bird_nest","blue_dragon_scale","dragon_scale_dust","desert_goat_horn","ground_desert_goat_horn"].into_iter().enumerate(){
+        for (i,name) in ["knife","pestle_and_mortar","chocolate_bar","chocolate_dust","unicorn_horn","unicorn_horn_dust","bird_nest_empty","crushed_bird_nest","blue_dragon_scale","dragon_scale_dust","desert_goat_horn","ground_desert_goat_horn","dragon_bones_superior","crushed_dragon_bones"].into_iter().enumerate(){
             obj.insert(name.into(),100+i as i32);defs.items.insert(100+i as u32,gielinor_cache::definitions::ItemType::decode(&[0]).unwrap());
         }
-        let recipes=grinding(&obj,&seq,&defs).unwrap();assert_eq!(recipes.len(),6);
-        for (index,input,output) in [(3,106,107),(4,108,109),(5,110,111)] {
+        let recipes=grinding(&obj,&seq,&defs).unwrap();assert_eq!(recipes.len(),7);
+        for (index,input,output) in [(3,106,107),(4,108,109),(5,110,111),(6,112,113)] {
             assert_eq!((recipes[index].tool,recipes[index].input,recipes[index].output),(101,input,output));
             assert!(recipes[index].members);assert_eq!(recipes[index].animation,Some(901));
             let saved=defs.items.remove(&(output as u32)).unwrap();

@@ -2698,3 +2698,15 @@ Worn001/002 failed before Options: pointer-only tab dispatch could not invoke an
 Worn004 then emitted exact IF_BUTTON47 payload01 83 00 11 ff ff ff ff 02: static component387:17, null child and null object, operation2. Server incorrectly required client object21163. Corrected the claim check to permit null object with null child; a mismatched explicit object remains rejected. Actual amulet identity comes from the mapped live neck slot and is revalidated by world action/resume. Kotlin WornInteractions.kt SHA25639c1a49ab21a2a8d413b5bc74bc10540573aa704a82776fcf009042f2b612905 independently resolves current worn[wornSlot], not a required packet item; this is source comparison, not compiled parity. Exact captured-packet regression and stale explicit-claim/dynamic-child rejection pass. Native worn acceptance still pending on a new matching archive/control.
 
 chemistry-worn-static-tests-attempt-001 PASS56server10storage397world1ignored;391source hashes unchanged. Compile12.51s,world45.01s;guard3495MiB83.1percentcommit0page-ins/s2.4msdisk35percentCPU,j1.15synthetic worn packet/state checks updated to actual null-object dispatch PASS; prior synthetic001 retained but not actual packet evidence.
+
+
+## Final OpenRune crushing-table profile registered; native pending
+
+Crushed superior dragon bones revision15188636 SHA256ef97541de65ba5163e5a7b9bebd987f746f60a2583db296e7bd15b7c9df5a30a.
+Money making guide/Crushing superior dragon bones revision14246338 SHA256df9d34e927486eafd523520712e40ae6e1ad70e579561805445486eb2208ed0b.
+
+Added pestle233 + superior dragon bones22124 -> crushed superior dragon bones21975 through the same tool-preserving atomic replacement and0/2/3scheduler. The money-making article explicitly states Skill=None, Quest=None and no experience; this resolves the burial/offering Prayer gate ambiguity for crushing. Item definitions independently decoded ordinary/nonstackable/non-dummy. Seven bindings now cover six OpenRune crushing-table recipes plus the previously accepted knife/chocolate route. This is registration coverage, not complete native parity.
+
+Focused content::grinding_binding_tests PASS1,55filtered,compile10.48s; guard4437MiB78.2percentcommit0page-ins/s0.5msdisk44.6percentCPU,j2. No world/runtime source change for this recipe-only addition; prior56server10storage397world1ignored full regression remains separately pinned. New low-skill native bone fixture and acceptance still required. In-progress worn/crushing-three native chain uses immutable468CC43231C54428D71CC4D4A91B09BFAD12A9130D8584E80AE8DDD6BCBAB26D predating this new recipe.
+
+Explicit general zero-XP crushing evidence: Herblore revision15347160 SHA256b50617940515ae09f40c3fd2eb6eef8a74a2a4e26014f13fb34414ce4afc3400 states crushing raw ingredients does not reward experience. Individual three-output recipe XP omissions were not treated as zero; goat horn84XP belongs to subsequent combat-potion brewing.
