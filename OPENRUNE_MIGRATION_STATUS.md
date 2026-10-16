@@ -1189,3 +1189,81 @@ Native capacity driver doughcapacity001 built1.72s and pinned against the unchan
 - `crates/world/src/simulation/dough_actions.rs` SHA256 `c79c8fc5fdcd125472cdccc54032449ac85a8dc8c29487675a3f4fc4d357478e`
 
 - `crates/server/src/content.rs` SHA256 `3b33d44fab2be16032bd4c617fa2445a0955f3279eb4a9cb496d5e14e7e9bf90`
+
+## Fresh dough control supplemental check (2026-10-16 UTC)
+
+`openrune-doughcapacity-login-control-001/control-state-assessment.json` FAIL is preserved: the supplemental evaluator was invoked without a login reference and therefore applied same-save rules to a fresh fixture. It flagged six initial varps, not item/XP mutation. A separate scoped comparison to `openrune-stagedpies-login-control-001` on the same7C3952D6 archive confirms exact initial/final static varps and unchanged non-varp state, plus durable logout/clean shutdown. The six changes are {'21': [0, 67141640], '20': [0, 8519680], '65530': [0, 800], '843': [17, 0], '25': [0, 2], '18': [0, 1]}. This does not establish timer formulas or a same-save run. Native action acceptance still uses its own identical full-backpack login control.
+
+- `work\integration\runs\openrune-doughcapacity-login-control-001\control-initialization-assessment-001.json` SHA256 `f15aa1a6079c2e837929fa897f12da362f017ca528776ef80c21465ac36d858f`; statusPASS
+
+## Native assembly doughcapacity acceptance (2026-10-16 UTC)
+
+Full28-slot backpack native flour/water Use and bread recipe menu: actual capacity refusal, exact inputs/containers/coins and allXP conserved, zero successful dough commits. Does not settle Wiki container-return completeness.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking parity or unrelated recipes. No issue closure.
+
+`openrune-native-doughcapacity-001` PASS. Server archive `7C3952D63A84301C9E5D0C9B8C2C2639FC37AB9C96AA3DA80F5FD6DDA908AA45`, driver `doughcapacity-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID10848.
+- Driver `NativeDoughCapacityScenario.rs` SHA256 `695BF396D53BE8BDA503CDADC3D5381C9F3657DF936719B1403C8DCDB2E91121`
+- Driver `server_doughcapacity.exe` SHA256 `A23CB5AC99F1FF5CA34AB4BFDF3BD44A6961FDCE25FB3BE88905E36CB28860C6`
+- `client.log` SHA256 `b1878ba0595746102f2bd9cf6b39b77016b31d15bab997c202d07a8bd9fbe2e4`
+- `server.log` SHA256 `90f259c6c8b86f441299732a4869c60f5f93f6c7235fd9bfe67881f2883cd49b`
+- `initial-state.json` SHA256 `5fa0ea1004fa7252de76fd99ac0bcdf8dbf159a28fe9e435138985b55c449f96`
+- `final-state.json` SHA256 `d1c064c22d1157de86597352387362651f4a7aa9859599bbff7b609c385a8866`
+- `pack-assessment.json` SHA256 `42e9eae7ec81cb3445a05499a35874586c5ea06f2cb0a42e420f12be8f0d9f6c`
+- `doughcapacity-trace-assessment.json` SHA256 `9a2c62b2ae2d4e04efb12f9fe7d68d9c3b6a8946119adbf1fba2bf3a7cb518bc`
+- `logout-observation.json` SHA256 `dfde563d6deb7d095ff6e6c1c4fe5b8d72329d6ffce526335bc9fb8ea0f42592`
+- `shutdown.json` SHA256 `f19a908edf518e8602f86406539288bc85374bb0cf490394677264c084e822a0`
+- `result.json` SHA256 `0c93bafa628d853c5a1d59050f2c69f519e67f33bee545c0fa551489cbe30f21`
+- `pack-run.json` SHA256 `8e1bc10d2c0f926dff195df705507cfa19a4fba47052bdffd2b61913e69feb97`
+- `native-packet-assessment.json` SHA256 `2c8ad0106793733a43c7b7e4ce6456ce7e77fe00dfb226a53687ce491c178fce`
+- `native-capacity-assessment.json` SHA256 `b808770ec82c6baaacd8f4e9a5da313fa869c164c8f5ee2ed8757dae3d5ab469`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":200},"3077":{"before":0,"after":60977},"3079":{"before":0,"after":101},"65515":{"before":0,"after":94}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Denied action fixture must have zero successful dough transitions; native request/refusal evidence required separately"}`
+
+## Dough driver and archive reconciliation (2026-10-16 UTC)
+
+All driver doughall001 built1.52s on attempt003; attempts001/002 compiler-deferred. Eight relevant dough runtime files exactly match archived7C3952D6 source hashes; removing only the newly added test from dough_actions.rs and the unregistered herb append from content.rs reproduces the other two archived byte hashes. This bounded10-file reconciliation avoids a redundant server rebuild and does not claim the entire current tree equals the archive.
+
+Capacity control001 saved/exited cleanly. Native capacity001 PASS above, with actual menu/refusal evidence and exact28-slot conservation. Its relogin attempt001 is compiler-deferred. All control001 is prepared but compiler-deferred: resume its snapshot, do not clone again. All native gameplay remains NOT TESTED.
+
+- `integration/scenario-drivers/doughall-001/manifest.json` SHA256 `cb58f5e1f967343c0ed11aa26c5168d8f32f85a8957457dd22e01754e90a0ce5`
+
+- `work/doughall-driver-attempt-003.log` SHA256 `b600d4768e61013ecb602ebbf931d455786bdc595cce1e29441b9e7917d817c9`
+
+- `work/openrune-dough-archive-reconciliation-001.json` SHA256 `7306492678110b8c9e606cee7edb7c391cc47b124cf5d05abd0205337d7a3ff6`
+
+- `scripts/integration_doughcapacity_native_assessment.py` SHA256 `8473a6473caca2385d145d59daa77fdae31eb664bec206d0ded9f4ec913d9cd8`
+
+## Native assembly doughcapacity acceptance (2026-10-16 UTC)
+
+Full28-slot backpack native flour/water Use and bread recipe menu: actual capacity refusal, exact inputs/containers/coins and allXP conserved, zero successful dough commits. Does not settle Wiki container-return completeness.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking parity or unrelated recipes. No issue closure.
+
+`openrune-native-doughcapacity-relogin-001` PASS. Server archive `7C3952D63A84301C9E5D0C9B8C2C2639FC37AB9C96AA3DA80F5FD6DDA908AA45`, driver `doughcapacity-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor `openrune-native-doughcapacity-001`, owned PID2020.
+- Driver `NativeDoughCapacityScenario.rs` SHA256 `695BF396D53BE8BDA503CDADC3D5381C9F3657DF936719B1403C8DCDB2E91121`
+- Driver `server_doughcapacity.exe` SHA256 `A23CB5AC99F1FF5CA34AB4BFDF3BD44A6961FDCE25FB3BE88905E36CB28860C6`
+- `client.log` SHA256 `bab0649ee17c8f9cd111f9493cdeaad40a7aca5881eb705f69846733bb89bd8d`
+- `server.log` SHA256 `7120ef5762c2a2f9e9fba7fc9304b0f5d1ec2e16631ebfa2394dc980f9b23c66`
+- `initial-state.json` SHA256 `d1c064c22d1157de86597352387362651f4a7aa9859599bbff7b609c385a8866`
+- `final-state.json` SHA256 `28b99ddde4bc838d0b7b422be10655229ec90b7cf83acb070af311d759aac9d1`
+- `pack-assessment.json` SHA256 `c98e5549d0b78d9d711abb01bc39961b24d6c22eae7bc7579e9df858a71d6136`
+- `doughcapacity-trace-assessment.json` SHA256 `9a2c62b2ae2d4e04efb12f9fe7d68d9c3b6a8946119adbf1fba2bf3a7cb518bc`
+- `logout-observation.json` SHA256 `5427afaa5385ed77690b2c4b478f658e6cbab2177c14a341e6ce26f41d272723`
+- `shutdown.json` SHA256 `75a46a6edc14cd06f3fbe4c4d0929e9bffa76fcfcc29a2657fe068f562b07ae8`
+- `result.json` SHA256 `77a7f4f40e20832a11b680751ab88b6690945a522a4581e66797141496ff0b21`
+- `pack-run.json` SHA256 `3b9612a8603cf6b0f4d5886dd9c2ef00129854c44379ba3ac947a908ae677fb8`
+- `native-packet-assessment.json` SHA256 `12ff9d814526285c7f444e4d91682e82186d016a062ded7d70a7856a121c705f`
+- `native-capacity-assessment.json` SHA256 `b808770ec82c6baaacd8f4e9a5da313fa869c164c8f5ee2ed8757dae3d5ab469`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":200,"after":300},"3077":{"before":60977,"after":3324},"3079":{"before":101,"after":85},"65515":{"before":94,"after":174}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Denied action fixture must have zero successful dough transitions; native request/refusal evidence required separately"}`
+
+## Dough All native control and prepared action checkpoint (2026-10-16 UTC)
+
+`openrune-doughall-login-control-001` completed successfully on attempt002: native client exit0, durable logout PASS, owned server PID8308 clean exit0. `work/doughall-control-attempt-002.log` retains the resource guard and login output. The action fixture `openrune-native-doughall-001` was prepared once, then deferred by the active-compiler guard on attempt001; no native action acceptance is claimed. Resume that exact prepared snapshot. Capacity refusal and its exact same-save replay check are both PASS as recorded above, superseding earlier pending notes.
+
+Issue #80 owns the selected dough quantity/capacity scope. Issue #54 additionally requires feather stacking/cap boundaries, effective inventory93/catalog binding, reference comparison and several separate container profiles; this dough refusal is supplementary conservation evidence only and does not satisfy that full contract. Both issues remain open.
