@@ -2922,3 +2922,37 @@ mod divine_binding_tests {
         let mut quest=gielinor_cache::definitions::ItemType::decode(&[16,0]).unwrap();quest.name="Crystal dust".into();quest.inventory_ops[4]=Some("Destroy".into());defs.items.insert(23804,quest);symbols.insert("prif_crystal_shard_crushed".into(),23804);assert!(divine_upgrades(&symbols,&defs).is_err());
     }
 }
+
+/// Wiki15281186: four-dose inputs, either Torstol form, always four-dose output.
+pub fn combat_mixing_recipes(objects:&Symbols,defs:&Definitions)->Result<Vec<gielinor_world::combat_mixing::Recipe>,String> {
+    let mut unique=std::collections::BTreeSet::new();
+    let mut bind=|symbol:&str,name:&str,drink:bool|->Result<i32,String>{
+        let id=*objects.get(symbol).ok_or_else(||format!("Missing combat ingredient {symbol}"))?;
+        let item=defs.items.get(&(id as u32)).ok_or_else(||format!("Missing combat definition {symbol}"))?;
+        if id<0||!unique.insert(id)||item.stackable||!item.members||item.cert.template!=0||item.placeholder.template!=0||item.dummy==1||item.name!=name||drink&&item.inventory_ops[0].as_deref()!=Some("Drink") {return Err(format!("Invalid combat ingredient {symbol}"))}
+        Ok(id)
+    };
+    let attack=bind("4dose2attack","Super attack(4)",true)?;
+    let strength=bind("4dose2strength","Super strength(4)",true)?;
+    let defence=bind("4dose2defense","Super defence(4)",true)?;
+    let herb=bind("torstol","Torstol",false)?;
+    let unfinished=bind("torstolvial","Torstol potion (unf)",false)?;
+    let output=bind("4dose2combat","Super combat potion(4)",true)?;
+    Ok([herb,unfinished].into_iter().map(|secondary|gielinor_world::combat_mixing::Recipe{inputs:[attack,strength,defence,secondary],output}).collect())
+}
+
+#[cfg(test)]
+mod combat_mixing_binding_tests {
+    use super::*;
+    #[test]
+    fn binds_both_torstols_and_rejects_three_dose_or_transformed_items() {
+        let rows=[("4dose2attack",2436,"Super attack(4)"),("4dose2strength",2440,"Super strength(4)"),("4dose2defense",2442,"Super defence(4)"),("torstol",269,"Torstol"),("torstolvial",111,"Torstol potion (unf)"),("4dose2combat",12695,"Super combat potion(4)")];
+        for mode in 0..5 {
+            let mut symbols=Symbols::new();let mut defs=Definitions{inventories:Default::default(),locations:Default::default(),npcs:Default::default(),items:Default::default(),varbits:Default::default(),varps:Default::default(),stats:Default::default()};
+            for (symbol,id,name) in rows {let mut item=gielinor_cache::definitions::ItemType::decode(&[16,0]).unwrap();item.name=name.into();if symbol.starts_with("4dose"){item.inventory_ops[0]=Some("Drink".into());}defs.items.insert(id,item);symbols.insert(symbol.into(),id as i32);}
+            match mode {1=>defs.items.get_mut(&2436).unwrap().name="Super attack(3)".into(),2=>defs.items.get_mut(&269).unwrap().stackable=true,3=>defs.items.get_mut(&111).unwrap().cert.template=799,4=>{symbols.remove("torstolvial");},_=>{}}
+            let result=combat_mixing_recipes(&symbols,&defs);
+            if mode==0 {let rs=result.unwrap();assert_eq!(rs.len(),2);assert_eq!(rs[0].inputs,[2436,2440,2442,269]);assert_eq!(rs[1].inputs,[2436,2440,2442,111]);assert_eq!(rs[0].output,12695);}else{assert!(result.is_err(),"mode{mode}");}
+        }
+    }
+}

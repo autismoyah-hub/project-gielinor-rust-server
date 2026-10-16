@@ -42,6 +42,7 @@ pub(crate) struct Active {
     pub dough: Option<gielinor_world::dough::Request>,
     pub finished_potion: Option<gielinor_world::finished_potions::Request>,
     pub potion_upgrade: Option<gielinor_world::potion_upgrades::Request>,
+    pub combat_mixing: Option<gielinor_world::combat_mixing::Request>,
     pub unfinished_potion: Option<gielinor_world::unfinished_potions::Request>,
     pub token: u64,
     pub presentation: Presentation,

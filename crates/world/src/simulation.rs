@@ -34,6 +34,7 @@ mod swamp_tar_actions;
 mod dough_actions;
 mod finished_potion_actions;
 mod potion_upgrade_actions;
+mod combat_mixing_actions;
 mod unfinished_potion_actions;
 mod herb_cleaning_actions;
 mod mining_actions;
@@ -180,6 +181,7 @@ enum Deferred {
     Dough(crate::dough::Pending),
     FinishedPotion(crate::finished_potions::Pending),
     PotionUpgrade(crate::potion_upgrades::Pending),
+    CombatMixing(crate::combat_mixing::Pending),
     UnfinishedPotion(crate::unfinished_potions::Pending),
     ItemPack {
         pack: i32,
@@ -234,6 +236,7 @@ struct Player {
     dough_request: Option<crate::dough::Request>,
     finished_potion_request: Option<crate::finished_potions::Request>,
     potion_upgrade_request: Option<crate::potion_upgrades::Request>,
+    combat_mixing_request: Option<crate::combat_mixing::Request>,
     unfinished_potion_request: Option<crate::unfinished_potions::Request>,
     member: bool,
     stat_events: crate::stat_events::Events,
@@ -316,6 +319,8 @@ impl Player {
         self.finished_potion_request = None;
         self.queues.remove_all(crate::finished_potions::QUEUE);
         self.potion_upgrade_request = None;
+        self.combat_mixing_request = None;
+        self.queues.remove_all(crate::combat_mixing::QUEUE);
         self.queues.remove_all(crate::potion_upgrades::QUEUE);
         self.unfinished_potion_request = None;
         self.queues.remove_all(crate::unfinished_potions::QUEUE);
@@ -632,6 +637,7 @@ pub enum WorldEvent {
     DoughMade { actor: ActorId, trace: crate::dough::Transition },
     FinishedPotionMade { actor: ActorId, trace: crate::finished_potions::Transition },
     PotionUpgradeMade { actor: ActorId, trace: crate::potion_upgrades::Transition },
+    CombatMixingMade { actor: ActorId, trace: crate::combat_mixing::Transition },
     UnfinishedPotionMade { actor: ActorId, trace: crate::unfinished_potions::Transition },
     AssemblyMade { actor: ActorId, trace: crate::assembly::Transition },
     HerbCleaned { actor: ActorId, trace: crate::herb_cleaning::Transition },
@@ -884,6 +890,7 @@ pub struct World {
     pub dough: Option<crate::dough::Config>,
     pub finished_potions: Option<crate::finished_potions::Config>,
     pub potion_upgrades: Option<crate::potion_upgrades::Config>,
+    pub combat_mixing: Option<crate::combat_mixing::Config>,
     pub unfinished_potions: Option<crate::unfinished_potions::Config>,
     pub swamp_tar: Option<crate::swamp_tar::Config>,
     pub herb_cleaning: Option<crate::herb_cleaning::Config>,
@@ -991,6 +998,7 @@ impl Default for World {
             swamp_tar: None,
             finished_potions: None,
             potion_upgrades: None,
+            combat_mixing: None,
             prayer: None,
             regeneration: None,
             session_vars: None,
@@ -2440,6 +2448,9 @@ impl World {
                                                 Deferred::PotionUpgrade(job) => {
                                                     potion_upgrade_actions::complete(p, queues, job, &self.object_types, self.clock.0, &mut self.events, random, &mut chemistry_worn_changes);
                                                 }
+                                                Deferred::CombatMixing(job) => {
+                                                    combat_mixing_actions::complete(p, queues, job, &self.object_types, self.clock.0, &mut self.events, random);
+                                                }
                                                 Deferred::Dough(job) => {
                                                     dough_actions::complete(p, queues, job, &self.object_types, self.clock.0, &mut self.events);
                                                 }
@@ -2937,6 +2948,7 @@ impl World {
                             dough_request: None,
                             finished_potion_request: None,
                             potion_upgrade_request: None,
+                            combat_mixing_request: None,
                             unfinished_potion_request: None,
                             tower_restore_pending: false,
                             tower_tastes: Default::default(),

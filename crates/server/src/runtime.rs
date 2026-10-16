@@ -29,6 +29,7 @@ mod skill_multi;
 mod dough;
 mod finished_potions;
 mod potion_upgrades;
+mod combat_mixing;
 mod unfinished_potions;
 mod swamp_tar;
 mod herb_cleaning;
@@ -2826,6 +2827,9 @@ impl<B: AccountBackend> Runtime<B> {
                                             }
                                             if let Some(choice)=self.world.take_potion_upgrade_request(actor).map_err(|e|io::Error::other(format!("{e:?}")))? {
                                                 self.open_potion_upgrade(actor,choice)?;
+                                            }
+                                            if let Some(choice)=self.world.take_combat_mixing_request(actor).map_err(|e|io::Error::other(format!("{e:?}")))? {
+                                                self.open_combat_mixing(actor,choice)?;
                                             }
                                             if let Some(choice)=self.world.take_dough_request(actor).map_err(|e|io::Error::other(format!("{e:?}")))? {
                                                 self.open_dough(actor,choice)?;

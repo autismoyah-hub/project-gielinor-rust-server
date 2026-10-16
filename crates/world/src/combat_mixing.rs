@@ -264,3 +264,33 @@ mod tests {
         }
     }
 }
+
+pub(crate) const QUEUE:i32=-2391011;
+#[derive(Clone,Debug)]
+pub struct Config {pub recipes:Vec<Recipe>,pub goggles:[i32;2],pub quest_progress:u16,pub quest_complete:i32,pub animation:u16}
+#[derive(Clone,Copy,Debug)]
+pub struct Request {pub recipe_index:usize,pub slots:[usize;4],pub origin:crate::CoordGrid,pub last_movement:i32}
+impl Config {
+    pub fn request(&self,held:crate::held_use::Request,inventory:&Inventory,origin:crate::CoordGrid,last_movement:i32)->Option<Request> {
+        if held.selected_slot<0||held.target_slot<0||held.selected_slot==held.target_slot{return None}
+        for (recipe_index,r) in self.recipes.iter().enumerate() {
+            let (herb,potion)=if held.selected_id==r.inputs[3] {(held.selected_slot,held.target_slot)}else if held.target_id==r.inputs[3] {(held.target_slot,held.selected_slot)}else{continue};
+            let potion_id=if held.selected_id==r.inputs[3] {held.target_id}else{held.selected_id};
+            let Some(index)=r.inputs[..3].iter().position(|id|*id==potion_id)else{continue};
+            let mut slots=[usize::MAX;4];slots[3]=herb as usize;slots[index]=potion as usize;
+            for i in 0..3 {if i!=index {slots[i]=inventory.slots().iter().position(|v|v.is_some_and(|v|v.id==r.inputs[i]&&v.count==1&&v.vars==0))?;}}
+            if (0..4).any(|i|inventory.get(slots[i]).is_none_or(|v|v.id!=r.inputs[i]||v.count!=1||v.vars!=0)){return None}
+            return Some(Request{recipe_index,slots,origin,last_movement});
+        }
+        None
+    }
+}
+#[derive(Clone,Copy,Debug)]
+pub(crate) struct Pending {pub goggles:[i32;2],pub job:Job,pub request:Request,pub remaining:i32,pub queued_at:i32,pub index:u32,pub quest_progress:u16,pub quest_complete:i32,pub animation:u16}
+#[derive(Clone,Copy,Debug)]
+pub struct Transition {pub job:Job,pub secondary_saved:bool,pub queued_at:i32,pub committed_at:i32,pub index:u32,pub fine_before:i32,pub fine_after:i32,pub rate_hundreds:i32}
+impl Transition {
+    pub fn json(&self,actor:crate::simulation::ActorId)->String {
+        format!("{{\"actor_slot\":{},\"actor_generation\":{},\"slots\":{:?},\"inputs\":{:?},\"output\":{},\"secondary_saved\":{},\"queued_at\":{},\"committed_at\":{},\"index\":{},\"base_fine_xp\":1500,\"rate_hundreds\":{},\"fine_before\":{},\"fine_after\":{}}}",actor.slot,actor.generation,self.job.slots,self.job.recipe.inputs,self.job.recipe.output,self.secondary_saved,self.queued_at,self.committed_at,self.index,self.rate_hundreds,self.fine_before,self.fine_after)
+    }
+}

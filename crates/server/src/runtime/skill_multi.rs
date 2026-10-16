@@ -47,6 +47,7 @@ impl<B: AccountBackend> Runtime<B> {
             dough: None,
             finished_potion: None,
             potion_upgrade: None,
+            combat_mixing: None,
             unfinished_potion: None,
             token,
             presentation,
@@ -152,6 +153,11 @@ impl<B: AccountBackend> Runtime<B> {
         }
         if let (Some(request),Some(selection))=(dialog.potion_upgrade,selection) {
             if let Err(error)=self.world.start_potion_upgrade(actor,request,selection.index,selection.count) {
+                self.events.push(Event::World(gielinor_world::simulation::WorldEvent::ActionRejected{actor,error}));
+            }
+        }
+        if let (Some(request),Some(selection))=(dialog.combat_mixing,selection) {
+            if let Err(error)=self.world.start_combat_mixing(actor,request,selection.index,selection.count) {
                 self.events.push(Event::World(gielinor_world::simulation::WorldEvent::ActionRejected{actor,error}));
             }
         }

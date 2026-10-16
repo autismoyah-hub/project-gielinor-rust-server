@@ -116,6 +116,9 @@ fn report(events: Vec<runtime::Event>) {
             runtime::Event::World(gielinor_world::simulation::WorldEvent::PotionUpgradeMade {actor,trace}) => {
                 println!("Potion upgrade transition: {}", trace.json(actor));
             }
+            runtime::Event::World(gielinor_world::simulation::WorldEvent::CombatMixingMade {actor,trace}) => {
+                println!("Combat mixing transition: {}", trace.json(actor));
+            }
             runtime::Event::World(gielinor_world::simulation::WorldEvent::DoughMade {actor,trace}) => {
                 println!("Dough transition: {}",trace.json(actor));
             }
