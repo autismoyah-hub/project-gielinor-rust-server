@@ -335,3 +335,56 @@ Eleven target item definitions passed: pot_flour1933,pot_empty1931,bucket1929/19
 - `work/openrune-dough-full-tests-001.log` SHA256 `0f2dc48e691005d10b9b68a2b9758ddf51c8beeefde5f632be46e4b2bbb26898`
 
 - `work/openrune-dough-items-001.json` SHA256 `cd0921935b839c70ff1c8f0b25947e06abbf6d4618c8007421caffa70c76c1ff`
+
+## Water native investigation and dough archive startup (2026-10-16 UTC)
+
+Ordinary dough source commit d040860bde35da2ba80d5804c1c561bbe966f3f2 was committed and pushed with matching local/remote HEAD. New archive 88E7D83E1B4C122F2BEA8FC561FDA268EBEACC7E00BB68C5E419CE0D1A6D5336 contains 373 source hashes; build completed in22.83s (work/openrune-dough-server-build-001.log). Startup/login control openrune-water-login-control-002 PASS on isolated north-side water fixture3230,3207: client0, server6628 clean0/not forced, new logout2026-10-16 07:17:14 observed10.813s. This proves startup and durable logout, not dough gameplay acceptance.
+
+Preserved openrune-native-water-002 FAIL under AFCFB6 archive and water-002 driver, south-side fixture3230,3205. Bounded camera yaw0/pitch2048 exposed the rendered sink873 at pixel320,105. Genuine generated Use emitted opcode62 at clienttick59, payload[0,0,129,105,3,0,0,149,0,6,12,158,12,133,7]. No water transition followed; stage2 timed out. Server3168 saved and exited0/not forced. This supersedes the earlier visibility-only failure as diagnostic evidence; gameplay remains unaccepted. The saved BMP and all original run receipts are retained.
+
+Read-only investigation: source873 has no opcode69 approach override, effective plane0, no same-layer anchor replacement. Shared reached-location dispatch clears location_interaction before invoking water filling, ruling out that specific cancellation hypothesis. Cause of the failed native dispatch remains unresolved; no client defect or north-side repair is asserted.
+
+Prepared water-003 uses north-side spawn3230,3207 with collision/message diagnostics and unchanged pinned client library. Driver source EBEAF03E1E82984416431F553613EBDAD077E39F38C1124A9C534E2159DD7C65; executable86CFDDBFDCAA3E1DE576EA4E4CD2EED5D0BC694CC73458E34F9D72FC5D5D00B8. openrune-native-water-003 attempts001–003 deferred at the active-compiler guard; no native process launched and fixture state preserved. Retry with ResumePrepared and the new matching archive/control. Grinding and dough native drivers remain prepared, not yet built/run. No issue closed.
+
+- `work/openrune-dough-001-server-build.json` SHA256 `3d6948889c6bc4581bd1950dd40531dad8e1ab9168f3c0a59c4865bf42e7a508`
+- `work/openrune-dough-server-build-001.log` SHA256 `8570abad9976b87a017b238a8057a135ff00565b350096e63ebba4d7a67cf5fd`
+- `work/integration/runs/openrune-native-water-002/client.log` SHA256 `74c0d7ffea78c2126e41a243852e2ac08fbfee87c3295f9e8112713e6882f306`
+- `work/integration/runs/openrune-native-water-002/server.log` SHA256 `3b8083f1156ede599d65cc3dd64eb42b34ee34baf12fa059c1fa893375456cfe`
+- `work/integration/runs/openrune-native-water-002/final-state.json` SHA256 `906660ef88a2e848d37f549448a964b62d790d8daea29cb8f22c471374e21ec2`
+- `work/integration/runs/openrune-native-water-002/shutdown.json` SHA256 `33b9c0942a9bd9e30a7a9136fd75fa39c9c1a37ce2ce4d980a68da5b24eeef95`
+- `work/integration/runs/openrune-water-login-control-002/result.json` SHA256 `29c79a8b8febf2e269e93bf48fe95bef454b7fcf509a67e6605c9385511cd21b`
+- `work/integration/runs/openrune-water-login-control-002/logout-observation.json` SHA256 `1d9665cb4319da2ba513f6b7f4e589c516b0d82e6198a83a85744c89dbdf7129`
+- `work/integration/runs/openrune-water-login-control-002/shutdown.json` SHA256 `92cd561b7b1e49f2b1c6f5ecbc0e0428d0b2330bba579176dd11a63d74d013ba`
+
+## Ordinary sink native acceptance and same-save relogin (2026-10-16 UTC)
+
+Archive88E7D83E1B4C122F2BEA8FC561FDA268EBEACC7E00BB68C5E419CE0D1A6D5336, water-003 driver, control openrune-water-login-control-002. Native four-vessel run PASS through rendered sink873 at3230,3206, angle3, north-side actor3230,3207; generated opcode62 for selected slots1/3/5/7, automatic repeat slots0/2/4/6. Exactly two bucket1929/jug1937/bowl1921/vial227 outputs; coins1000 and XP/exported non-session gameplay conserved.
+
+Authoritative first/repeat queue-to-commit durations are1tick for all eight transitions:72->73,73->74;78->79,79->80;84->85,85->86;90->91,91->92. Client display ticks are separate and do not measure server cadence. The same database is reopened only after its export hash matches the predecessor final state; relogin preserves all outputs and emits no new water transitions.
+
+The north-side fixture resolves this acceptance path without a gameplay-code change. Client collision flags at south3230,3205=132354 (0x20502), north3230,3207=0, west3229,3206=82080, east3232,3206=147744. The old south fixture lies on a blocked tile; this is diagnostic evidence explaining why it was unsuitable, not a complete server/client route equivalence proof. Both prior failed runs remain immutable.
+
+Scope excludes wells and sink874 native tests, other source families, cups/cans/skins/transfers, full inventory native cases, native cancellation/replay/multiplayer, filling animations and session-clock policy. Deterministic negative tests remain distinct evidence. Issue54 stays open; no blanket water parity claim.
+
+- `openrune-native-water-003` PASS; server12888 clean0, new logout2026-10-16 07:27:18, save observed10.313s.
+  - `client.log` SHA256 `5829ae36110bd18473c6186e50fa997ba96b9fc6df86c013761f7e68eeb51471`
+  - `server.log` SHA256 `8db39c6c33bfa383704a9b8886a8ca6cfa44623c2c6d08fbd68790677962b635`
+  - `initial-state.json` SHA256 `e0ad78a5e204f1b4a9c08015ccbc5443544f2bb5c5dbcc65cc459d5e196e3d01`
+  - `final-state.json` SHA256 `e6b7d6395a25b0317659728ad203ea1a217612bb5be4134a2a243c6e838e6f8c`
+  - `pack-assessment.json` SHA256 `3e4a257a66d7233138462a632d59b70527b53380d45b0e43a16215cf5a749a0c`
+  - `water-trace-assessment.json` SHA256 `fc6d11e4cbd35b7001fffc0cb188bdbb184701c1c605d4db0cb745b11674954f`
+  - `logout-observation.json` SHA256 `7763abbae8903c61b5ef0baff94147ca1e60fb60a5e036abc5339850b73a750d`
+  - `shutdown.json` SHA256 `434eebfb0af332e9e29b99427e62b061d56fb735d7269cbf8529aea2f3b9c461`
+  - `result.json` SHA256 `50f73a0cc8266c02c8d213fb6e674795e816ae5a2092b818329fe45390b987ee`
+  - `pack-run.json` SHA256 `25f788646c1a30f0620f53453feab3633cbcf7c2d7282e332231071350524b7b`
+- `openrune-native-water-relogin-003` PASS; server1132 clean0, new logout2026-10-16 07:28:41, save observed10.328s.
+  - `client.log` SHA256 `5a0b87c1eedb40d5cb1b6bf81d969eada81a30ee4e31cee1c52568478ab636cc`
+  - `server.log` SHA256 `873f1a515098a3ed427dc945994a14312eee0b82fe0893c0188a044c8cacf1ad`
+  - `initial-state.json` SHA256 `e6b7d6395a25b0317659728ad203ea1a217612bb5be4134a2a243c6e838e6f8c`
+  - `final-state.json` SHA256 `f2f5aa54ace4499fff1ddc161de4b55780f93835cfc067dff9faf0063d0f84c3`
+  - `pack-assessment.json` SHA256 `db118d938fa5f423aae106c427eeff0dfb2128b2a97754f3a5eec0008d022626`
+  - `water-trace-assessment.json` SHA256 `588b8d8536e0decd5e7b4bee314463fb12cdc7ae8856d2519b50a040cd7a451c`
+  - `logout-observation.json` SHA256 `55302d192c4e30b925a5c24668d66d38b4e4d460d85490f481f624928d95e77f`
+  - `shutdown.json` SHA256 `f9869f484753c51d481f93a2926bbc45de1ae9c4d0e71cd93c14e76cbb648140`
+  - `result.json` SHA256 `84e20a009647c2622a00a64a94d55a67b366a57adc50aedfe69e39e485ccf42b`
+  - `pack-run.json` SHA256 `04ecfa2643a5165818cb8ba4499eb94d7ec5cc6486a73e8dbe7c0e57fd360a52`
