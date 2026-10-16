@@ -2168,3 +2168,163 @@ mod unfinished_potion_binding_tests {
         }
     }
 }
+
+/// Three ordinary finished-potion profiles; runtime and equipment modifiers are separate.
+/// Pinned Wiki/239.1 evidence: work/openrune-finished-potions-readiness-001.json.
+pub fn finished_potions(
+    objects: &Symbols,
+    defs: &Definitions,
+) -> Result<Vec<gielinor_world::finished_potions::Recipe>, String> {
+    let mut seen = std::collections::BTreeSet::new();
+    let mut bind = |name: &str, members: bool, drink: bool| -> Result<i32, String> {
+        let id = *objects
+            .get(name)
+            .ok_or_else(|| format!("Missing finished-potion symbol {name}"))?;
+        let item = defs
+            .items
+            .get(&(id as u32))
+            .ok_or_else(|| format!("Missing finished-potion definition {name}"))?;
+        if id < 0
+            || !seen.insert(id)
+            || item.stackable
+            || item.cert.template != 0
+            || item.placeholder.template != 0
+            || item.dummy == 1
+            || item.members != members
+            || (item.inventory_ops[0].as_deref() == Some("Drink")) != drink
+            || item
+                .inventory_ops
+                .iter()
+                .any(|op| op.as_deref() == Some("Clean"))
+        {
+            return Err(format!("Invalid ordinary finished-potion item {name}"));
+        }
+        Ok(id)
+    };
+    let mut result = Vec::new();
+    for (unf, secondary, output, secondary_member, output_member, level, boostable, base_fine_xp) in [
+        (
+            "guamvial",
+            "eye_of_newt",
+            "3dose1attack",
+            false,
+            true,
+            3,
+            false,
+            250,
+        ),
+        (
+            "marrentillvial",
+            "unicorn_horn_dust",
+            "3doseantipoison",
+            true,
+            false,
+            5,
+            true,
+            375,
+        ),
+        (
+            "tarrominvial",
+            "limpwurt_root",
+            "3dose1strength",
+            false,
+            false,
+            12,
+            true,
+            500,
+        ),
+    ] {
+        result.push(gielinor_world::finished_potions::Recipe {
+            unfinished: bind(unf, true, false)?,
+            secondary: bind(secondary, secondary_member, false)?,
+            output: bind(output, output_member, true)?,
+            level,
+            boostable,
+            base_fine_xp,
+        });
+    }
+    Ok(result)
+}
+#[cfg(test)]
+mod finished_potion_binding_tests {
+    use super::*;
+    fn fixture() -> (Symbols, Definitions) {
+        let mut symbols = Symbols::new();
+        let mut defs = Definitions {
+            inventories: Default::default(),
+            locations: Default::default(),
+            npcs: Default::default(),
+            items: Default::default(),
+            varbits: Default::default(),
+            varps: Default::default(),
+            stats: Default::default(),
+        };
+        for (name, id, member, drink) in [
+            ("guamvial", 91, true, false),
+            ("eye_of_newt", 221, false, false),
+            ("3dose1attack", 121, true, true),
+            ("marrentillvial", 93, true, false),
+            ("unicorn_horn_dust", 235, true, false),
+            ("3doseantipoison", 175, false, true),
+            ("tarrominvial", 95, true, false),
+            ("limpwurt_root", 225, false, false),
+            ("3dose1strength", 115, false, true),
+        ] {
+            symbols.insert(name.into(), id);
+            let mut item =
+                gielinor_cache::definitions::ItemType::decode(if member { &[16, 0] } else { &[0] })
+                    .unwrap();
+            if drink {
+                item.inventory_ops[0] = Some("Drink".into());
+            }
+            defs.items.insert(id as u32, item);
+        }
+        (symbols, defs)
+    }
+    #[test]
+    fn exact_profile_awards_and_target_item_membership_are_independent_of_recipe_membership() {
+        let (symbols, defs) = fixture();
+        let recipes = finished_potions(&symbols, &defs).unwrap();
+        assert_eq!(
+            recipes
+                .iter()
+                .map(|r| (
+                    r.unfinished,
+                    r.secondary,
+                    r.output,
+                    r.level,
+                    r.boostable,
+                    r.base_fine_xp
+                ))
+                .collect::<Vec<_>>(),
+            [
+                (91, 221, 121, 3, false, 250),
+                (93, 235, 175, 5, true, 375),
+                (95, 225, 115, 12, true, 500)
+            ]
+        );
+        assert!(!defs.items[&175].members && !defs.items[&115].members);
+        for mode in 0..10 {
+            let (mut symbols, mut defs) = fixture();
+            match mode {
+                0 => {
+                    symbols.remove("guamvial");
+                }
+                1 => {
+                    defs.items.remove(&121);
+                }
+                2 => defs.items.get_mut(&221).unwrap().stackable = true,
+                3 => defs.items.get_mut(&93).unwrap().cert.template = 799,
+                4 => defs.items.get_mut(&175).unwrap().placeholder.template = 14401,
+                5 => defs.items.get_mut(&115).unwrap().dummy = 1,
+                6 => defs.items.get_mut(&175).unwrap().members = true,
+                7 => defs.items.get_mut(&121).unwrap().inventory_ops[0] = None,
+                8 => defs.items.get_mut(&235).unwrap().inventory_ops[0] = Some("Clean".into()),
+                _ => {
+                    symbols.insert("3doseantipoison".into(), 121);
+                }
+            }
+            assert!(finished_potions(&symbols, &defs).is_err(), "mode{mode}");
+        }
+    }
+}

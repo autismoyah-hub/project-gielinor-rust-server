@@ -77,6 +77,7 @@ pub mod tick;
 pub mod tower_arrival;
 pub mod ui;
 pub mod unfinished_potions;
+pub mod finished_potions;
 pub mod variables;
 pub mod zones;
 
