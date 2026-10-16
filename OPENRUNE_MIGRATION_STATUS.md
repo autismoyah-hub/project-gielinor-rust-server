@@ -1019,3 +1019,114 @@ All listed runs require client exit0, fresh durable logout, clean owned exit0 an
 - `membership-after.json` SHA256 `c85f03fc0171c1bbb20f17064d0466981f8713876cdda6163d340901c4dfaa3c`
 - State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":200,"after":300},"3077":{"before":15977,"after":10460},"3079":{"before":106,"after":86},"65515":{"before":100,"after":180}}}`
 - Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Denied action fixture must have zero successful assembly transitions; native request/refusal evidence required separately"}`
+
+## Native assembly stagedpies acceptance (2026-10-16 UTC)
+
+Garden/fish three-stage chains through six genuine native item-use operations, alternating selected order: exactly one raw garden and fish pie, zero assembly XP, strict selected slots and two-clock commits. Baking and food effects excluded.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking parity or unrelated recipes. No issue closure.
+
+`openrune-native-stagedpies-001` PASS. Server archive `7C3952D63A84301C9E5D0C9B8C2C2639FC37AB9C96AA3DA80F5FD6DDA908AA45`, driver `stagedpies-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID17856.
+- Driver `NativeStagedPieScenario.rs` SHA256 `6432A79F9F8DB44900B214A1A228946F5B4A9B7F332000EC648780D38BB46BB7`
+- Driver `server_stagedpies.exe` SHA256 `F3E8638A6DCD55DBFB8F021DA2D20CB6128F38B56026502C2C7B74FFE3A2B00E`
+- `client.log` SHA256 `3223031ca26abf19cdff5071751ada5a7c5552d9ed60b2916007c3ae4a6169a9`
+- `server.log` SHA256 `3d8ee4cdab39e018b2d4fdbb26027f1c8774140d4d87cf532b8563a5363b4b2f`
+- `initial-state.json` SHA256 `c974ee788c36ee680912855b42086331553a5740308f89a35b85b7d12234644b`
+- `final-state.json` SHA256 `cd8d7c57afe17448f052967a7243ea843e108bebbb833afe337c2c9ea5e8f814`
+- `pack-assessment.json` SHA256 `b73ef2c0ca06626421f0d1698280320005981455abbbdd48276d6f68baa52c4a`
+- `stagedpies-trace-assessment.json` SHA256 `cdb28f3724a7f1cffbc2ca1a42827983d4b2eb99dd747f420ed9ac0b863d9595`
+- `logout-observation.json` SHA256 `a7a2c376305d614ca88e8ca5f5d83efdbc76a33131681629466b635596e67629`
+- `shutdown.json` SHA256 `3696db4a459b7fd80b5a54dac16cfdd1d4ae08a3ea5e83f1577d1e1af8fcefa7`
+- `result.json` SHA256 `55a755c5b38647fbe629ae4246f381259d6589c1fb63e026e0ad1054ec1f467f`
+- `pack-run.json` SHA256 `244d80166ef3640eb577847e65e80f39e7569070937cdb6b9de6fec636b0640c`
+- `native-packet-assessment.json` SHA256 `35c68c10f68c3dd96dedf89761e23acc35dcec5c98a2593704828c7cfd8e613e`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":200},"3077":{"before":0,"after":42241},"3079":{"before":0,"after":125},"65515":{"before":0,"after":119}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[{"actor_slot":1,"actor_generation":614,"first_slot":0,"second_slot":1,"first":2315,"second":1982,"output":7172,"count":1,"queued_at":75,"committed_at":77},{"actor_slot":1,"actor_generation":614,"first_slot":0,"second_slot":2,"first":7172,"second":1957,"output":7174,"count":1,"queued_at":81,"committed_at":83},{"actor_slot":1,"actor_generation":614,"first_slot":0,"second_slot":3,"first":7174,"second":1965,"output":7176,"count":1,"queued_at":87,"committed_at":89},{"actor_slot":1,"actor_generation":614,"first_slot":4,"second_slot":5,"first":2315,"second":333,"output":7182,"count":1,"queued_at":93,"committed_at":95},{"actor_slot":1,"actor_generation":614,"first_slot":1,"second_slot":6,"first":7182,"second":339,"output":7184,"count":1,"queued_at":99,"committed_at":101},{"actor_slot":1,"actor_generation":614,"first_slot":1,"second_slot":7,"first":7184,"second":1942,"output":7186,"count":1,"queued_at":104,"committed_at":106}],"scope":"Server assembly clocks and selected slots, not packet/display latency"}`
+
+## Native assembly stagedpies acceptance (2026-10-16 UTC)
+
+Garden/fish three-stage chains through six genuine native item-use operations, alternating selected order: exactly one raw garden and fish pie, zero assembly XP, strict selected slots and two-clock commits. Baking and food effects excluded.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking parity or unrelated recipes. No issue closure.
+
+`openrune-native-stagedpies-relogin-001` PASS. Server archive `7C3952D63A84301C9E5D0C9B8C2C2639FC37AB9C96AA3DA80F5FD6DDA908AA45`, driver `stagedpies-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor `openrune-native-stagedpies-001`, owned PID13232.
+- Driver `NativeStagedPieScenario.rs` SHA256 `6432A79F9F8DB44900B214A1A228946F5B4A9B7F332000EC648780D38BB46BB7`
+- Driver `server_stagedpies.exe` SHA256 `F3E8638A6DCD55DBFB8F021DA2D20CB6128F38B56026502C2C7B74FFE3A2B00E`
+- `client.log` SHA256 `954c18af631f6a96a33edf4f1d8902640b3bb977277e88212dd40f4c2f690d7e`
+- `server.log` SHA256 `2589fd8e83f3200a392d50ce7d1bfa137a0894f0dbbe3879a1608c7a69501a8e`
+- `initial-state.json` SHA256 `cd8d7c57afe17448f052967a7243ea843e108bebbb833afe337c2c9ea5e8f814`
+- `final-state.json` SHA256 `0c21cc426f1355f73f00d7e078bd1f1a986de9da74cff6445473c430bd220d83`
+- `pack-assessment.json` SHA256 `01e730e5f60174f78c6e2157803d953486eb43a349d27e946a5698cc3660e8ba`
+- `stagedpies-trace-assessment.json` SHA256 `226bbade27c24b435c3ecc469273ebef200a2c2c10ce8d71870ea60a9342393d`
+- `logout-observation.json` SHA256 `df75b9fed462fd23cbe7e7c0f699f662c42544e3ff076be6c011fefd6495a619`
+- `shutdown.json` SHA256 `7334d87b1aa521549e59f86d99e712395021c5ab21df793e4dd3add3c0c73355`
+- `result.json` SHA256 `8ba256f5b73156602a1f79876e7e11c388433a8d1cd53172b7811131e8e11bfa`
+- `pack-run.json` SHA256 `595c140c20c1c5c465356656085a0c02edf587b715732cfb76d9267c81a9b864`
+- `native-packet-assessment.json` SHA256 `204999b697eccc2cdf2ca006d2a31036c663271a7d0ec779f9db8cb73fddb9bc`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":200,"after":300},"3077":{"before":42241,"after":46418},"3079":{"before":125,"after":83},"65515":{"before":119,"after":197}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Server assembly clocks and selected slots, not packet/display latency"}`
+
+## Native assembly wildsummerpies acceptance (2026-10-16 UTC)
+
+Wild/summer three-stage chains through six genuine native item-use operations, alternating selected order: exactly one raw wild and summer pie, zero assembly XP, strict selected slots and two-clock commits. Ingredient acquisition, baking and food effects excluded.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking parity or unrelated recipes. No issue closure.
+
+`openrune-native-wildsummerpies-001` PASS. Server archive `7C3952D63A84301C9E5D0C9B8C2C2639FC37AB9C96AA3DA80F5FD6DDA908AA45`, driver `wildsummerpies-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID14300.
+- Driver `server_wildsummerpies.exe` SHA256 `42DBC1EECFE5E14D66264C0C91FBEEB90B86E947EEAF3863F203E6AC56706B37`
+- Driver `NativeWildSummerPieScenario.rs` SHA256 `D331FCD8C889DA383726A0C8A613DAEFC4D9FA532DD28724B8C871D27D7941E3`
+- `client.log` SHA256 `29e4a7fdea2951c51123be769e47d20c6d2c408f2103b2ad875121fdb282143c`
+- `server.log` SHA256 `6f0432988ed237d6dc1402200b4590fb0e8e7c9a2b025e44e4757cecc9af65f9`
+- `initial-state.json` SHA256 `40e4e262a600860ee21c7648bc950dd1c2f92cd92568c4cc58b3515a56fda86d`
+- `final-state.json` SHA256 `c7b13dc0f8f906f141c64742a8c4119e5a5d551f73c6dfe6b2a03cddef7892db`
+- `pack-assessment.json` SHA256 `12f39367f29014fb19aa4ef855e20a2f468ad33142d87c3fdc34d5cac40103a2`
+- `wildsummerpies-trace-assessment.json` SHA256 `0cec9347de74852d87416eb65882feabd835ebb52b25dccc6a0f47f36508548b`
+- `logout-observation.json` SHA256 `43b721fe499784f5520c91aa43824e5648b280b2c9149761adef9cfb79e4dd39`
+- `shutdown.json` SHA256 `5ba99d42a10f46821b4bd7f557d44b03517d83d025228b363ec0b5c793938005`
+- `result.json` SHA256 `8868a9ff493b0a12c407e1f7e20112993fe145670c3dae208bfe61bd41b50299`
+- `pack-run.json` SHA256 `d59786d46420ef5fdddcae2a84eb3fbe00225ffb2beeebff633529874d5210ff`
+- `native-packet-assessment.json` SHA256 `180788da1bd878a784abf30e48c477b4445b1777fb343431380ea4b3ec7df2ac`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":200},"3077":{"before":0,"after":28230},"3079":{"before":0,"after":125},"65515":{"before":0,"after":118}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[{"actor_slot":1,"actor_generation":614,"first_slot":0,"second_slot":1,"first":2315,"second":2136,"output":7202,"count":1,"queued_at":76,"committed_at":78},{"actor_slot":1,"actor_generation":614,"first_slot":0,"second_slot":2,"first":7202,"second":2876,"output":7204,"count":1,"queued_at":82,"committed_at":84},{"actor_slot":1,"actor_generation":614,"first_slot":0,"second_slot":3,"first":7204,"second":3226,"output":7206,"count":1,"queued_at":88,"committed_at":90},{"actor_slot":1,"actor_generation":614,"first_slot":4,"second_slot":5,"first":2315,"second":5504,"output":7212,"count":1,"queued_at":93,"committed_at":95},{"actor_slot":1,"actor_generation":614,"first_slot":1,"second_slot":6,"first":7212,"second":5982,"output":7214,"count":1,"queued_at":99,"committed_at":101},{"actor_slot":1,"actor_generation":614,"first_slot":1,"second_slot":7,"first":7214,"second":1955,"output":7216,"count":1,"queued_at":104,"committed_at":106}],"scope":"Server assembly clocks and selected slots, not packet/display latency"}`
+
+## Dough capacity acceptance prepared during compiler hold (2026-10-16 UTC)
+
+Focused #80 follow-up: a full28-slot Cooking47 backpack (flour1933slot0,bucket-of-water1929slot1,25empty pots1931slots2..26,1000coins27) opens the real native dough menu and selects bread. The expected lossless capacity refusal must preserve all slots and stats and produce zero dough commits. Native driver/control/relogin/state/trace wiring authored; no forged input packets. Synthetic assessor rejected216 inventory/stat/commit mutations. Rust parse/PowerShell/Python syntax checks PASS. Driver NOT BUILT and native NOT TESTED. This does not resolve Wiki completeness of returned containers or Make-X UI.
+
+New world scheduler regression authored for full-capacity rejection, no revival when space later opens, and an explicit new quantity2 request that commits one output then stops at capacity without consuming the remaining inputs. Test NOT COMPILED at this entry. The prior pie archive remains immutable and predates this test-only source change. Wild/summer fresh native PASS is recorded above; relogin attempts001..005 remain resource-deferred with the exact saved character preserved. One read-only process check identified another agent rust-client cargo test --offline --release -j1 with rustc music_synth; no process was changed.
+
+- `reference/NativeDoughCapacityScenario.rs` SHA256 `695bf396d53be8bda503cdadc3d5381c9f3657df936719b1403c8dcdb2e91121`
+
+- `scripts/integration_doughcapacity_assessment.py` SHA256 `cd790ab4e6323077d9d722e50c8502298c69ba813bb25879845a5bc6107e38f0`
+
+- `scripts/integration_doughcapacity_trace_assessment.py` SHA256 `c8b19ab323c7e7463bc7c902e3ca1eca1a249b72a6f3fd5cc673f734a1a3f4f6`
+
+- `scripts/integration-doughcapacity-run.ps1` SHA256 `a46d1393e9f476535d03fe4dc4b1371ded5f47ddb55d079c227ecc1b58ca9f8c`
+
+- `crates/world/src/simulation/dough_actions.rs` SHA256 `c79c8fc5fdcd125472cdccc54032449ac85a8dc8c29487675a3f4fc4d357478e`
+
+## Native acceptance follow-ups prepared during continued client release build (2026-10-16 UTC)
+
+Dough All profile authored: three flour/bucket-water pairs, Cooking47, one native item-use followed by an actual pointer click on a visible script-generated All control and native bread menu action. Expected three consecutive one-clock commits from one quantity request, exact selected containers/output slots, zeroXP and preservation of1000coins. Independent state/trace/menu-order verifier rejects170 corruptions; Rust/PowerShell/Python syntax PASS. Driver NOT BUILT/native NOT TESTED. Quantity-control lookup must succeed on actual UI text; no client-state quantity injection or manufactured resume packet. Static interface270 metadata only attests its identity and instruction text, not a working All control.
+
+Saved native packet evidence checks for memberpies/stagedpies/nonmember reject215 corruptions; wildsummerpies rejects116. These checks do not transmit packets or prove rendered appearance. Wild/summer same-save attempts001..011 are compiler-deferred; only fresh wild/summer assembly is accepted so far. Garden/fish fresh and exact same-save both PASS above.
+
+Bounded herb preparation: target Names unidentified_guam199 -> guam_leaf249 and unidentified_marentill201 -> marentill251 resolve to ordinary nonstackable/non-placeholder definitions. Both grimy inputs expose operation1 Clean; clean outputs do not. This closes only the item-definition readiness gap. Automatic continuation timing, mixed-herb policy, quest/membership rechecks and runtime/native acceptance remain unresolved; no herb gameplay registered. Prior Wiki hashes and quest row34/varp80/endstate4 evidence remain in openrune-herb-readiness001. The documented hourly cleaning estimate is not promoted to an exact tick policy.
+
+- `reference/NativeDoughAllScenario.rs` SHA256 `f28db437eedd720e6bceccbb36760e1863d64c119b0351d139a4d3709057029e`
+
+- `scripts/integration_doughall_assessment.py` SHA256 `32b362ddd141cf38fe158130a8a585f1c93f2ee518126748b08cefa339789fef`
+
+- `scripts/integration_doughall_trace_assessment.py` SHA256 `eaca623b684856d6c556514c3bac8b8eda925c8cd66e19e969e00f918f6501ef`
+
+- `scripts/integration_doughall_native_assessment.py` SHA256 `656374cdd74fe409cb1df7248bc3e7bd71090991ce01be9c2e4ad73054a565a0`
+
+- `work/openrune-dough-quantity-readiness-001.json` SHA256 `eea8d8ca5ce6fce0b1cbd62ad36aab3157380ed1b41408c38c01ff7ea5ab697c`
+
+- `work/openrune-herb-items-001.json` SHA256 `1c11e2cd978946518271a0d72f5b396c1a6d89d31f868e8ce399131db89a8e1e`
