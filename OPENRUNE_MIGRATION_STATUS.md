@@ -2608,3 +2608,12 @@ Added worn neck-slot Options through revision239 IF_BUTTON operation2, distinct 
 
 chemistry-worn-tests-attempt-001 PASS391source hashes unchanged: test result: ok. 55 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.52s; test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 5.63s; test result: ok. 397 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 21.28s
 Compile1m13s;4569MiB78.4percentcommit7page-ins/s1msdisk37.1percentCPUj2. Inventory UI native001 is independently running on pinned confirmation archiveD9D34F8681A9794A5FA966250A83F7DE8366455DC29C7FCCCA6708162BD14DC9; worn changes are not in that archive.
+
+
+## Native chemistry held-operation correction (2026-10-16)
+
+Native UI run002 failed: Stop text-child pointer emitted no response, and native Break emitted IF_BUTTON operation6 while the server expected5. Run002 ended with client exit1, durable logout and clean owned server exit0; original fixture, driver003, archiveD9 and logs are preserved, with hashes in work/chemistryui-native-failure-002.json. No native UI acceptance claimed.
+
+Corrected inventory Break routing and world action to operation6. Operation5 is explicitly rejected by regression coverage. Kotlin HeldOpScript.kt SHA256 7d10c514ee1c4a829dfd680a16ac9085d99b0e686d48f8384295d39aa6bfca09 independently maps Op4 to HeldOp3 and Op6 to HeldOp4; this is source comparison, not compiled Kotlin parity. Independent native assessor now expects6;24 synthetic checks PASS (chemistryui-assessor-tests-003.json).
+
+chemistry-operation-tests-attempt-001 PASS:55server,10storage,397world tests,1world ignored;391source hashes unchanged. Compilation28.95s,world32.32s. Guard5050MiB available,75.7percentcommit,3371page-ins/s with0.7msdisk,28.5percentCPU,j2. Server archiveF73ECB2C014469E82EF8E336C205ADCCC4DFC794DF55179E18A9723FE5AD7051 built16.62s,guard4788MiB76.8percentcommit3263page-ins/s0.8msdisk25percentCPU,j2. Native choice diagnostics now require actual response before driver advancement; new matched login control and UI acceptance pending. Prior production acceptance remains unchanged.

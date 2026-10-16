@@ -10,9 +10,9 @@ impl World {
         p.begin_held_action();p.queues.clear_weak();
         if p.protection.delayed(){return Err(ActionError::Delayed);}
         if item!=amulet || (worn && (slot!=2 || operation!=4)) || (if worn{p.data.equipment.get(slot)}else{p.data.inventory.get(slot)})!=Some(crate::inventory::Item{id:item,count:1,vars:0}) {return Err(ActionError::InvalidItem);}
-        if ![4,5].contains(&operation){return Err(ActionError::InvalidItem);}
+        if ![4,6].contains(&operation){return Err(ActionError::InvalidItem);}
         p.dialog_generation=p.dialog_generation.checked_add(1).ok_or(ActionError::QueueFull)?;
-        let token=p.dialog_generation;let breaking=operation==5;
+        let token=p.dialog_generation;let breaking=operation==6;
         p.pending_chemistry=Some((token,slot,item,breaking,worn));p.protection.suspended=true;
         self.events.push(WorldEvent::ChemistryDialog{actor,token:Some(token),remaining:p.data.chemistry.remaining(),breaking});Ok(())
     }
@@ -57,13 +57,15 @@ mod tests {
             w.resume_chemistry(a,token,choice).unwrap();assert_eq!(w.data(a).unwrap().chemistry.stop_on_crumble(),choice==2);
             w.resume_chemistry(a,token,3-choice).unwrap();assert_eq!(w.data(a).unwrap().chemistry.stop_on_crumble(),choice==2);
         }
+        assert!(w.chemistry_item(a,3,21163,5,false).is_err());
+        assert!(w.data(a).unwrap().inventory.get(3).is_some());
         let stats=w.data(a).unwrap().stats.clone();
-        w.chemistry_item(a,3,21163,5,false).unwrap();let token=w.players.get(a.slot as usize).unwrap().pending_chemistry.unwrap().0;
+        w.chemistry_item(a,3,21163,6,false).unwrap();let token=w.players.get(a.slot as usize).unwrap().pending_chemistry.unwrap().0;
         w.resume_chemistry(a,token,2).unwrap();assert_eq!(w.data(a).unwrap().chemistry.remaining(),1);assert!(w.data(a).unwrap().inventory.get(3).is_some());
-        w.chemistry_item(a,3,21163,5,false).unwrap();let token=w.players.get(a.slot as usize).unwrap().pending_chemistry.unwrap().0;
+        w.chemistry_item(a,3,21163,6,false).unwrap();let token=w.players.get(a.slot as usize).unwrap().pending_chemistry.unwrap().0;
         w.resume_chemistry(a,token,1).unwrap();assert!(w.data(a).unwrap().inventory.get(3).is_none());
         assert_eq!(w.data(a).unwrap().chemistry.remaining(),5);assert!(w.data(a).unwrap().chemistry.stop_on_crumble());assert_eq!(w.data(a).unwrap().stats,stats);
-        assert!(w.chemistry_item(a,3,21163,5,false).is_err());
+        assert!(w.chemistry_item(a,3,21163,6,false).is_err());
     }
     #[test]
     fn stale_slot_cancelled_and_invalid_choice_cannot_change_setting(){
@@ -75,7 +77,7 @@ mod tests {
     #[test]
     fn worn_options_recheck_neck_and_never_break_equipped_amulet(){
         for removed in [false,true]{let (mut w,a)=fixture();let data=w.data_mut(a).unwrap();data.inventory.restore_slot(3,None).unwrap();data.equipment.restore_slot(2,Some(Item{id:21163,count:1,vars:0})).unwrap();
-            assert!(w.chemistry_item(a,2,21163,5,true).is_err());assert!(w.data(a).unwrap().equipment.get(2).is_some());
+            assert!(w.chemistry_item(a,2,21163,6,true).is_err());assert!(w.data(a).unwrap().equipment.get(2).is_some());
             w.chemistry_item(a,2,21163,4,true).unwrap();let token=w.players.get(a.slot as usize).unwrap().pending_chemistry.unwrap().0;
             if removed{w.data_mut(a).unwrap().equipment.restore_slot(2,None).unwrap();}
             let result=w.resume_chemistry(a,token,2);assert_eq!(result.is_err(),removed);assert_eq!(w.data(a).unwrap().chemistry.stop_on_crumble(),!removed);assert_eq!(w.data(a).unwrap().chemistry.remaining(),1);

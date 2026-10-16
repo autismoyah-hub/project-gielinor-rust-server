@@ -2440,7 +2440,7 @@ impl<B: AccountBackend> Runtime<B> {
                                                 .ok()
                                                 .and_then(|data| data.inventory.get(slot))
                                             {
-                                                if matches!(button.op,4|5) && item.id==button.object && self.world.finished_potions.as_ref().is_some_and(|c|c.chemistry.values().any(|b|b.amulet==item.id)) {
+                                                if matches!(button.op,4|6) && item.id==button.object && self.world.finished_potions.as_ref().is_some_and(|c|c.chemistry.values().any(|b|b.amulet==item.id)) {
                                                     return Some(Action::ChemistryItem{slot,item:button.object,operation:button.op,worn:false});
                                                 }
                                                 if button.op == 2 && self.world.herb_cleaning.as_ref().is_some_and(|c| c.recipes.contains_key(&button.object)) {
