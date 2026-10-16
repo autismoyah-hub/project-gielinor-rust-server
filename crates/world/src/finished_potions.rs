@@ -210,7 +210,7 @@ mod tests {
             stats,
         )
     }
-    fn profiles() -> [Recipe; 25] {
+    fn profiles() -> [Recipe; 29] {
         [
             Recipe {
                 unfinished: 91,
@@ -248,6 +248,10 @@ mod tests {
             Recipe { unfinished: 103, secondary: 2970, output: 3018, level: 52, boostable: true, base_fine_xp: 1175 },
             Recipe { unfinished: 103, secondary: 10111, output: 10000, level: 53, boostable: true, base_fine_xp: 1200 },
             Recipe { unfinished: 105, secondary: 225, output: 157, level: 55, boostable: true, base_fine_xp: 1250 },
+            Recipe { unfinished: 5942, secondary: 6049, output: 5943, level: 68, boostable: true, base_fine_xp: 1550 },
+            Recipe { unfinished: 5951, secondary: 6051, output: 5952, level: 79, boostable: true, base_fine_xp: 1775 },
+            Recipe { unfinished: 22443, secondary: 245, output: 22464, level: 80, boostable: true, base_fine_xp: 1550 },
+            Recipe { unfinished: 22443, secondary: 3138, output: 22452, level: 80, boostable: true, base_fine_xp: 1550 },
             Recipe { unfinished: 3004, secondary: 223, output: 3026, level: 63, boostable: true, base_fine_xp: 1425 },
             Recipe { unfinished: 107, secondary: 239, output: 163, level: 66, boostable: true, base_fine_xp: 1500 },
             Recipe { unfinished: 2483, secondary: 241, output: 2454, level: 69, boostable: true, base_fine_xp: 1575 },
@@ -303,7 +307,7 @@ mod tests {
     #[test]
     fn ingredient_pairs_preserve_shared_bases_and_reverse_selected_slots() {
         let config=Config{goggles:[29974,29976],recipes:profiles().into_iter().map(|r|((r.unfinished,r.secondary),r)).collect(),quest_progress:80,quest_complete:4,animation:363};
-        assert_eq!(config.recipes.len(),25);
+        assert_eq!(config.recipes.len(),29);
         let origin=crate::CoordGrid::new(3200,3200,0).unwrap();
         for recipe in profiles() {
             for reverse in [false,true] {

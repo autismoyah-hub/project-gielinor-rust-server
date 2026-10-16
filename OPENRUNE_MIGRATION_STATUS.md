@@ -2333,3 +2333,20 @@ All listed runs require client exit0, fresh durable logout, clean owned exit0 an
 - `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
 - State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":400,"after":600},"3077":{"before":60671,"after":55166},"3079":{"before":202,"after":101},"65515":{"before":193,"after":287}}}`
 - Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Separate selected-profile two-tick commits; UI evidence and packet/display latency separate"}`
+
+
+## Antidote and blood-base finished recipes (2026-10-16)
+
+Expanded25to29production profiles using the existing exact-pair scheduler and atomic inventory/fineXP transaction. Antidote+ and Antidote++ produce their native four-dose items; Bastion and Battlemage produce three-dose items. Only unfinished-plus-secondary recipes are implemented; combined three-input recipes and drinking effects are separate.
+
+- Antidote+: Wiki revision15182643, SHA256 `932f1f33e74c03c530a936917e2be46ca176e7311daa17a0ee398b1242c687eb`; level68, boostableYes, XP155, ticks2; target IDs 5942,6049,5943.
+- Antidote++: Wiki revision15185228, SHA256 `1e381868fa7b34e057d6fb2fce8690296625a8e367d342e7362e9af62bf11279`; level79, boostableYes, XP177.5, ticks2; target IDs 5951,6051,5952.
+- Bastion potion: Wiki revision15293966, SHA256 `395e94450518bd13125e0cae78e028f222863c7e731af92093d2b12c1103485c`; level80, boostableYes, XP155, ticks2; target IDs 22443,245,22464.
+- Battlemage potion: Wiki revision15188871, SHA256 `05bec7dcc4774b54194e1d0701dec0832c52bfed1075be89fe6b4d14f55f8a86`; level80, boostableYes, XP155, ticks2; target IDs 22443,3138,22452.
+
+Readiness report preserves its research-only historical status. Target decoded-definition hashes are in work/openrune-alternate-finished-readiness-001.json. Wine of Zamorak remains a nonmember item while its recipe requires membership; both blood-base recipes coexist by distinct secondary.
+
+Validation alternate-finished-tests-attempt-002 PASS;382source hashes unchanged. test result: ok. 52 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.00s; test result: ok. 382 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 49.07s
+Compile16.56s/world49.07s; guard4481MiB,77.7percent commit,66page-ins/s,1.3msdisk,CPU30.8percent,j2. Expanded29-profile gates, both orders, rewards/caps and goggles draws pass. Attempt001 preserved FAIL: new expected recipe list inserted four tuples at the wrong position; runtime registration already appended them correctly. Corrected only expected ordering. Native four-profile acceptance pending;280synthetic state/trace corruption checks pass.
+
+Alternate unfinished native attempt001 FAILED with client deadline phase2/completed2. Server traces show water-toadflax committed in one tick and coconut-toadflax in two; irit-water was selected but not committed. Durable logout PASS, owned server exit0, not forced. Original driver unfinishedalternate-001, run database and logs are retained. Acceptance is not claimed. New driver unfinishedalternate-002 extends only the isolated total client budget150to240seconds; the associated run server budget300to500ticks accommodates loading and six menu interactions. Fresh run002 will use a new database and the same immutable server4DDC536085EB390DBA872CA2CE704AE6122BC5A58B0E8F693FE6F5FC5766D05B. Finished-alternate's four-profile driver uses the same bounded budget before its first build. No production client/server timeout changed.

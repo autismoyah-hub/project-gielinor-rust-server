@@ -2273,6 +2273,10 @@ pub fn finished_potions(
         ("toadflaxvial", "crushed_bird_nest", "3dosepotionofsaradomin", true, true, 81, true, 1800),
         ("huascavial", "aldarium", "3dose1prayer_regeneration", true, true, 58, true, 1320),
         ("harralandervial", "aldarium", "3dosegoading", true, true, 54, true, 1320),
+        ("unfinished_antidote+", "yew_roots", "antidote+4", true, true, 68, true, 1550),
+        ("unfinished_antidote++", "magic_roots", "antidote++4", true, true, 79, true, 1775),
+        ("cadantine_bloodvial", "wine_of_zamorak", "3dosebastion", false, true, 80, true, 1550),
+        ("cadantine_bloodvial", "cactus_potato", "3dosebattlemage", true, true, 80, true, 1550),
     ] {
         result.push(gielinor_world::finished_potions::Recipe {
             unfinished: bind(unf, true, false)?,
@@ -2323,6 +2327,15 @@ mod finished_potion_binding_tests {
             ("tarrominvial", 95, true, false),
             ("limpwurt_root", 225, false, false),
             ("3dose1strength", 115, false, true),
+            ("unfinished_antidote+", 5942, true, false),
+            ("yew_roots", 6049, true, false),
+            ("antidote+4", 5943, true, true),
+            ("unfinished_antidote++", 5951, true, false),
+            ("magic_roots", 6051, true, false),
+            ("antidote++4", 5952, true, true),
+            ("cadantine_bloodvial", 22443, true, false),
+            ("3dosebastion", 22464, true, true),
+            ("3dosebattlemage", 22452, true, true),
             ("weapon_poison", 187, true, false),
             ("crushed_bird_nest", 6693, true, false),
             ("3dosepotionofsaradomin", 6687, true, true),
@@ -2425,6 +2438,10 @@ mod finished_potion_binding_tests {
                 (3002, 6693, 6687, 81, true, 1800),
                 (30100, 29993, 30128, 58, true, 1320),
                 (97, 29993, 30140, 54, true, 1320),
+                (5942, 6049, 5943, 68, true, 1550),
+                (5951, 6051, 5952, 79, true, 1775),
+                (22443, 245, 22464, 80, true, 1550),
+                (22443, 3138, 22452, 80, true, 1550),
                 (105, 241, 187, 60, true, 1375),
             ]
         );
