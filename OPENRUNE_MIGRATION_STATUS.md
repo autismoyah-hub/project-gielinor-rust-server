@@ -2710,3 +2710,49 @@ Added pestle233 + superior dragon bones22124 -> crushed superior dragon bones219
 Focused content::grinding_binding_tests PASS1,55filtered,compile10.48s; guard4437MiB78.2percentcommit0page-ins/s0.5msdisk44.6percentCPU,j2. No world/runtime source change for this recipe-only addition; prior56server10storage397world1ignored full regression remains separately pinned. New low-skill native bone fixture and acceptance still required. In-progress worn/crushing-three native chain uses immutable468CC43231C54428D71CC4D4A91B09BFAD12A9130D8584E80AE8DDD6BCBAB26D predating this new recipe.
 
 Explicit general zero-XP crushing evidence: Herblore revision15347160 SHA256b50617940515ae09f40c3fd2eb6eef8a74a2a4e26014f13fb34414ce4afc3400 states crushing raw ingredients does not reward experience. Individual three-output recipe XP omissions were not treated as zero; goat horn84XP belongs to subsequent combat-potion brewing.
+
+## Native gameplay chemistryworn acceptance (2026-10-16 UTC)
+
+Native equipped neck Options operation2 and Stop choice2; unchanged worn amulet, remaining two charges, coins and every stat; named stop setting persisted and same-save no replay. Rendered clipping, other gear and alchemist variant remain separate.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking/Herblore parity or unrelated recipes. No issue closure.
+
+`openrune-native-chemistryworn-005` PASS. Server archive `468CC43231C54428D71CC4D4A91B09BFAD12A9130D8584E80AE8DDD6BCBAB26D`, driver `chemistryworn-004`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID16992.
+- Driver `server_chemistryworn.exe` SHA256 `43645AB5DB9D5E17B10D8E1B5904B3C7D5C70CEA57167429F0FDD60D8751F2FD`
+- Driver `NativeChemistryWornScenario.rs` SHA256 `4687EC297AFE811F344C00D1699D1E2033A03A7793068018C19A882A46528393`
+- `client.log` SHA256 `66ff5e35a28db29c333a652ab01f7c4cfad864066caa054418968179d37ac582`
+- `server.log` SHA256 `9d697d7a1925d00f7d6a0461586881d4df0ee0d0d79bebc76159a034f1b33ace`
+- `initial-state.json` SHA256 `6467f5927ca8fecb59929272d674c07994ecc88103275962e69a696518faab4d`
+- `final-state.json` SHA256 `6a9075a4ae27d7b9f8e4677c2c6c2cc89b6e37cb9276f94e33c4b7732ced34a6`
+- `pack-assessment.json` SHA256 `dca299d4fe9470abe6dcdb30fa542ff2c8f487a7878137b40b101b5762e308af`
+- `chemistryworn-trace-assessment.json` SHA256 `0c8c428023ad9267773f90f2a631ecd151f7607ae19831682837fb3d88238a1a`
+- `logout-observation.json` SHA256 `dee75eef99289bd70aa37617b93fdbd524f48a237d0499718f9ef77a5d65ce87`
+- `shutdown.json` SHA256 `d0ba8463625c8bf373adc3d99108ef7a2304e36340fb3f288e53ba8c45ce38c0`
+- `result.json` SHA256 `82b3fff82691958fef752021ae4eb696447dca130538620110eb20bc4f6ebc06`
+- `pack-run.json` SHA256 `1c052f31a0f608134635c933797926bbf6923d7a825519bad33bbaef92665ef7`
+- `native-packet-assessment.json` SHA256 `559284478742348066aa797fa4fda483374ddc64e6077e8bfc9065562215979a`
+- `native-quantity-assessment.json` SHA256 `559284478742348066aa797fa4fda483374ddc64e6077e8bfc9065562215979a`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":300},"3077":{"before":0,"after":25675},"3079":{"before":0,"after":171},"65515":{"before":0,"after":164}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Controls must not produce potions or XP; independent native dispatch and durable state required"}`
+
+`openrune-native-chemistryworn-relogin-005` PASS. Server archive `468CC43231C54428D71CC4D4A91B09BFAD12A9130D8584E80AE8DDD6BCBAB26D`, driver `chemistryworn-004`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor `openrune-native-chemistryworn-005`, owned PID18972.
+- Driver `server_chemistryworn.exe` SHA256 `43645AB5DB9D5E17B10D8E1B5904B3C7D5C70CEA57167429F0FDD60D8751F2FD`
+- Driver `NativeChemistryWornScenario.rs` SHA256 `4687EC297AFE811F344C00D1699D1E2033A03A7793068018C19A882A46528393`
+- `client.log` SHA256 `07b03e4057070e8ee8c3c2e029e3b133c1dc08b99ab439e3cca8e061eeb562de`
+- `server.log` SHA256 `9e78261680d7ceee4af06113d5ef61d438b5cb41653c4c8216576a579c79dd36`
+- `initial-state.json` SHA256 `6a9075a4ae27d7b9f8e4677c2c6c2cc89b6e37cb9276f94e33c4b7732ced34a6`
+- `final-state.json` SHA256 `4d37c80500908c74234ebf7743a90fac5d73a9e3a4eacc1eed0fc6ee5afe229d`
+- `pack-assessment.json` SHA256 `4496ac2e25560621b6b626e8fb265858a8ae77abfc9bba87965a8ca68b185c6b`
+- `chemistryworn-trace-assessment.json` SHA256 `0c8c428023ad9267773f90f2a631ecd151f7607ae19831682837fb3d88238a1a`
+- `logout-observation.json` SHA256 `0a3f55d978c5d351530dc03732abafd430cd8cd79c513b77b9af4ce95ad09b51`
+- `shutdown.json` SHA256 `19f9b2117bdd33729cdc2fd933c722dcdc8f728171744b03c47c7e2398f0ca65`
+- `result.json` SHA256 `a9eaac0d034876d49cce3558847797f56f285bf81ac5c79272ffcc78371d6157`
+- `pack-run.json` SHA256 `bcdc870530958c423462519ab2eff2a3bf7dad514418da501ec8e642bbdbbc31`
+- `native-packet-assessment.json` SHA256 `559284478742348066aa797fa4fda483374ddc64e6077e8bfc9065562215979a`
+- `native-quantity-assessment.json` SHA256 `559284478742348066aa797fa4fda483374ddc64e6077e8bfc9065562215979a`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":300,"after":500},"3077":{"before":25675,"after":13376},"3079":{"before":171,"after":140},"65515":{"before":164,"after":294}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Controls must not produce potions or XP; independent native dispatch and durable state required"}`
