@@ -1933,3 +1933,49 @@ Implemented the independently Wiki-backed10% saving rule for both target head-sl
 New deterministic tests cover nine profiles,both selected orders and all10draws; rejected work draws no RNG and preserves all state. Scheduler tests cover both variants and unequipping between repeats; server binding rejects missing/aliased/nonmember/stackable/cert/placeholder/dummy/wrong-slot/wrong-op definitions. work/finished-goggles-tests-attempt-001.json PASS:51server+381world,0failures,1existing ignored;382source hashes unchanged;compile1m00s,world13.85s. Guard5384MiB,74.4%commit,0page-ins/s,2.9msdisk,27.9%CPU,-j2. Native goggles acceptance pending; existing4D561 archive remains pre-modifier.
 
 Make All control attempt001 was RESOURCE_DEFERRED before launch (CPU74.9%,4520MiB,78.8%commit,27page-ins/s,2.2msdisk). Prepared state preserved. attempt002 resumed that exact fixture after fresh measurements (CPU52.7%,5094MiB,76.1%commit,673page-ins/s,2.0msdisk). This is a resource deferral, not a failed gameplay run or compiler-presence exclusion.
+
+## Native gameplay finishedall acceptance (2026-10-16 UTC)
+
+One genuine native reversed Use plus generated All/Make quantity28, three consecutive Antipoison commits with two-clock cadence, exact1875fineXP per potion at5x, selected-slot conservation and same-save no replay. Equipment modifiers are excluded in this fixture.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking/Herblore parity or unrelated recipes. No issue closure.
+
+`openrune-native-finishedall-001` PASS. Server archive `4D561DD9D9A0C3205FC85298841262ABFB193AF69B8AD6768DA27EA765EC18E9`, driver `finishedall-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID15164.
+- Driver `NativeFinishedAllScenario.rs` SHA256 `C66F9B37BB8F88B0F1EB31B9D64A57F8E70E0C70D76AE4373445CA0CC5AB753C`
+- Driver `server_finishedall.exe` SHA256 `08C3CA6C793FDDC134F89FE230C566B5CF58FD1E5B30B64AA58B84426F3A8CB7`
+- `client.log` SHA256 `658ac6fa14b8b020565f9ab9cd14aa87176bb3b9a6aaeebf1195cfe10efbbd91`
+- `server.log` SHA256 `d6ee169282e2e7bbbb950a3a4d4cbd6101245e0341c2777bacb4e73a872a70b5`
+- `initial-state.json` SHA256 `0674449962515c8c6b5e3acd1e75dd9e2102da34b94723287608c75982011ef7`
+- `final-state.json` SHA256 `88a8140763bd894715489809ced3b65591d88133deb5e90867bc2c860a252293`
+- `pack-assessment.json` SHA256 `b417054b2d7ea0a786693e622e89963931bf946671df19d9f12af17411852e60`
+- `finishedall-trace-assessment.json` SHA256 `bc6f6bc2ba15a390da5ed90ffe86ea7e29998509219b7f78726ce361d1d80ce4`
+- `logout-observation.json` SHA256 `d460b8bef29b0e9a01a114c492215b2b1d9451b45fc6ced827532a7f11164c76`
+- `shutdown.json` SHA256 `70a734a8ca0e7286d330165b49c9b682dcfd2e3a1e487c83df648e7195be3596`
+- `result.json` SHA256 `addf2831c73a6b5602f3ad06ca4c14db4e2b2da6ca546fb007b34ee77f565cfd`
+- `pack-run.json` SHA256 `114ee8a59aa8cfb95dffab020641b7fe7f41380feb7e88769646726b77f0e2ed`
+- `native-packet-assessment.json` SHA256 `0df44ce31d2edba53196692115193bfa2f34f38c18691cf2077a6bcb05460f4e`
+- `native-quantity-assessment.json` SHA256 `de8b5f2bfabf95f380cb064962ac393e19190cef5f35776a602e1de2d7aa4964`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":300},"3077":{"before":0,"after":9684},"3079":{"before":0,"after":179},"65515":{"before":0,"after":170}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[{"actor_slot":1,"actor_generation":614,"unfinished_slot":0,"secondary_slot":1,"unfinished":93,"secondary":235,"output":175,"count":1,"queued_at":153,"committed_at":155,"index":0,"base_fine_xp":375,"rate_hundreds":500,"fine_before":130344311,"fine_after":130346186},{"actor_slot":1,"actor_generation":614,"unfinished_slot":2,"secondary_slot":3,"unfinished":93,"secondary":235,"output":175,"count":1,"queued_at":155,"committed_at":157,"index":1,"base_fine_xp":375,"rate_hundreds":500,"fine_before":130346186,"fine_after":130348061},{"actor_slot":1,"actor_generation":614,"unfinished_slot":4,"secondary_slot":5,"unfinished":93,"secondary":235,"output":175,"count":1,"queued_at":157,"committed_at":159,"index":2,"base_fine_xp":375,"rate_hundreds":500,"fine_before":130348061,"fine_after":130349936}],"scope":"Three consecutive server finished-potion commits from one quantity request; UI evidence and packet/display latency separate"}`
+
+`openrune-native-finishedall-relogin-001` PASS. Server archive `4D561DD9D9A0C3205FC85298841262ABFB193AF69B8AD6768DA27EA765EC18E9`, driver `finishedall-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor `openrune-native-finishedall-001`, owned PID6916.
+- Driver `NativeFinishedAllScenario.rs` SHA256 `C66F9B37BB8F88B0F1EB31B9D64A57F8E70E0C70D76AE4373445CA0CC5AB753C`
+- Driver `server_finishedall.exe` SHA256 `08C3CA6C793FDDC134F89FE230C566B5CF58FD1E5B30B64AA58B84426F3A8CB7`
+- `client.log` SHA256 `e08e0b9ece0bc3d818e8a0dacd16bc7795de90501910aefcad9178ee241383cc`
+- `server.log` SHA256 `d4e4f77935d210453a9d5dc0f6f8141f52049b43371831f45c5536b34a652e04`
+- `initial-state.json` SHA256 `88a8140763bd894715489809ced3b65591d88133deb5e90867bc2c860a252293`
+- `final-state.json` SHA256 `a939ff8b0395c92df404f2d54035c12ccc9899cb0a687f0c4d8f6e4a73e58b84`
+- `pack-assessment.json` SHA256 `e2bba6ab71738cc066f595e96bbfa0f34bb5500492411d72bd17c4ef981f2778`
+- `finishedall-trace-assessment.json` SHA256 `97409267c10109b24817a15cd41057f817aa3077c69022dd062802dfe65e4031`
+- `logout-observation.json` SHA256 `7aa4da33e0ae4c4626b6bafeeedc20e24ba68ed207b8bde7239e6703b80333be`
+- `shutdown.json` SHA256 `0ab96f0518d3a52262c6f4c58f2bfc170ddd1c733ad99c98035a22b3ebc77745`
+- `result.json` SHA256 `387138cb337c665e9ade0409ca04132fed3003ae242e4e70c36a454901bb7c30`
+- `pack-run.json` SHA256 `94abf987240d355f784a6bdcb76eb514bb986e9fa6c9020489f44c057b9d1200`
+- `native-packet-assessment.json` SHA256 `1d856458c6a2bbd5026d5716a666b2bf96710bb5b08fb019e23d0e903e87556d`
+- `native-quantity-assessment.json` SHA256 `de8b5f2bfabf95f380cb064962ac393e19190cef5f35776a602e1de2d7aa4964`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":300,"after":600},"3077":{"before":9684,"after":33407},"3079":{"before":179,"after":163},"65515":{"before":170,"after":322}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Three consecutive server finished-potion commits from one quantity request; UI evidence and packet/display latency separate"}`
