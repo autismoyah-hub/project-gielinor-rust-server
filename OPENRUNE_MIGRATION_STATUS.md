@@ -1432,3 +1432,63 @@ Money making guide/Making guam potions revision15250776 independently requires D
 Current Project-Gielinor content/skills/herblore/src/main/kotlin/org/rsmod/content/skills/herblore/scripts/Herblore.kt SHA256635e2b6771702322117c4773546380da6e7cf879f46c3d5409400612134828ef is absent from original cb6e66cc0f16a25b60ba6705d8f157cc22ab4869 (git cat-file -e failed with path absent). It is a local-added Floor1 reference, not original Kotlin parity evidence. Its inspected makeUnf uses inventory totals and MIX_DELAY3, separate deletes/add and no visible quest/membership gate. No source copied and no execution comparison claimed. OpenRune UnfinishedPotionsEvents5e52ac3172339363f4da6c0ec442fde7124ebb94a6092a079cc33e647d729309 remains behavior-only reference with base-level/weak1-repeat4/free-space policy differences; Wiki current boosted/zeroXP/ticks1 recipes are separately attested. Native herb attempts013..015 still compiler-deferred; current archive and fixture remain preserved.
 
 Additional authored unfinished-potion regression now covers all756 distinct ordered ingredient-slot pairs in a full28-slot backpack, preserves every unrelated slot and all stats at the XP cap, and requires exactly one output/one free slot. Total new tests:3world+1server, still UNCOMPILED. Issue67 continuation comment6215840440 preserves native-pending status and verified control identity. Native attempts016..020 deferred; attempt019 observed18.6%CPU but a compiler started during preflight, correctly preventing launch. Original prepared herb state remains unchanged.
+
+## Native gameplay herbmanual acceptance (2026-10-16 UTC)
+
+Two genuine selected Clean menu operations in a full backpack: marrentill and guam, exact persisted fine XP3881 to4071 to4196, unchanged unrelated items and skills. Automatic cleaning and quest-specific herbs excluded.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking/Herblore parity or unrelated recipes. No issue closure.
+
+`openrune-native-herbmanual-001` PASS. Server archive `358F0AD94E130053CF7DE71ADF59F699EB42C6023366F961F4D3BB1C90A97D3B`, driver `herbmanual-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID8664.
+- Driver `server_herbmanual.exe` SHA256 `71E5B4EAAF87E7ACAFEC3140CC0E12FA02C6B0249A2AD6BC9B516803107B9680`
+- Driver `NativeHerbManualScenario.rs` SHA256 `1AD59B6C68FE9F10A09F75DB9C51899CDF977DA1B23795BD7B2BE2FA56F17FFD`
+- `client.log` SHA256 `157fcd4fcd8a3307648d003e72714401cbd6b6328f85e7709c0bcc4815bf674c`
+- `server.log` SHA256 `c7122699decfcf4e9d73015dc39e8dce9a1abba20b9f5e50a6c01c31f03c8bbb`
+- `initial-state.json` SHA256 `71cf67e764352a0deb9b31d88ba231a205b9e94086023951d4df91619d1f2465`
+- `final-state.json` SHA256 `79938560de65ec4604f24c09f6eb65a93d70826af766b52caef5232dc4e8690e`
+- `pack-assessment.json` SHA256 `8c47f2a9857dde676ffdaae774ae6d511c214057df695bd43d55d7ac1c1a2349`
+- `herbmanual-trace-assessment.json` SHA256 `79368ac39069790eb1e3f47c019d7b311c6664093d1c52b333c172f966ea8644`
+- `logout-observation.json` SHA256 `ab169d1ca53459a8cb044608ad70ca2dff3622da50679de70c7899a5f553b842`
+- `shutdown.json` SHA256 `964442cce1001ee05b76f506abfa352591e590428ec05e223ee4f3393d40e3d0`
+- `result.json` SHA256 `b6f6871e8b23eac9c164c781294d9b181e46466d555aff483e248c111c84466d`
+- `pack-run.json` SHA256 `360d6ae1690a581088cb8fde131ace6eba038f79165eef94fd229e4d44844aaf`
+- `native-herb-assessment.json` SHA256 `18d7db902f8c986fd18fd5527ff9e08b52e482bae1cc6d1dcce3547c5717f865`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":200},"3077":{"before":0,"after":32957},"3079":{"before":0,"after":142},"65515":{"before":0,"after":131}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[{"actor_slot":1,"actor_generation":614,"slot":0,"input":201,"output":251,"count":1,"clock":120,"fine_xp_before":3881,"fine_xp_after":4071},{"actor_slot":1,"actor_generation":614,"slot":1,"input":199,"output":249,"count":1,"clock":123,"fine_xp_before":4071,"fine_xp_after":4196}],"scope":"Selected manual exact-slot/fine-XP commits; incoming network latency and automatic cadence not accepted"}`
+
+`openrune-native-herbmanual-relogin-001` PASS. Server archive `358F0AD94E130053CF7DE71ADF59F699EB42C6023366F961F4D3BB1C90A97D3B`, driver `herbmanual-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor `openrune-native-herbmanual-001`, owned PID20084.
+- Driver `server_herbmanual.exe` SHA256 `71E5B4EAAF87E7ACAFEC3140CC0E12FA02C6B0249A2AD6BC9B516803107B9680`
+- Driver `NativeHerbManualScenario.rs` SHA256 `1AD59B6C68FE9F10A09F75DB9C51899CDF977DA1B23795BD7B2BE2FA56F17FFD`
+- `client.log` SHA256 `cf0d7a3e9157eba0342297c5651037131ac3d35e2787bb67ac3971a48613ea7d`
+- `server.log` SHA256 `70a61563e95fbc7d0ffc1ef9ed72d23c9646f44ace9e1dccecb1d2e969cbf293`
+- `initial-state.json` SHA256 `79938560de65ec4604f24c09f6eb65a93d70826af766b52caef5232dc4e8690e`
+- `final-state.json` SHA256 `25784b1d41963e59518e0420de50017408752b76ff05a40df3fd32e5eecc10e0`
+- `pack-assessment.json` SHA256 `404c770a0b2a8caa9c0fcd6ddf98e1ffd8f3614741087a232f744dae128899c1`
+- `herbmanual-trace-assessment.json` SHA256 `f64c75ef7f039b8d3743ce38994427cad543d0327bc0ceeb08fb96bb43685d41`
+- `logout-observation.json` SHA256 `0c6733ec78819cea0aceed8698a5065607ecb26b2d15e5759d76e145b4dae9f2`
+- `shutdown.json` SHA256 `4a7ee78b6694b4c4ffe792938c5448321b13ce3cd18f99cf015bac85da8a78e6`
+- `result.json` SHA256 `21aa7f2e013683d68d14b6ac2597b1c045a8c770c81b66996246eafc83bf0772`
+- `pack-run.json` SHA256 `bd9443be7ec61b7161442764ef08297ed584ea3a693f4fca43d9e9a2f2e20cc8`
+- `native-herb-assessment.json` SHA256 `ded57183332efb9823e66195d5952df9054f1071995e0a2ca6b3507fb9b5c44d`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":200,"after":400},"3077":{"before":32957,"after":17779},"3079":{"before":142,"after":121},"65515":{"before":131,"after":244}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Selected manual exact-slot/fine-XP commits; incoming network latency and automatic cadence not accepted"}`
+
+## Resource-based concurrency and Herblore acceptance (2026-10-16)
+
+User policy supersedes compiler-presence exclusion: other cargo/rustc/Java processes are informational. Agent2 uses measured Available MBytes (standby reclaimable), commit, paging, disk latency and CPU; minimum sampled RAM >4096MiB permits2jobs,1024..4096 permits1, below1024 defers. Commit>=95%, sustained3samples >1024pages-in/s plus >50ms disk latency, or falling low-memory/raising-commit trend defers with evidence. CPU ceiling70% for bounded build/native jobs, BelowNormal and at most2CPU affinity. No system-wide setting or other agent process changed. Agent2 build lease rejects duplicate guarded builds; actual second invocation rejection PASS while the authorized build continued. Twenty deterministic memory-policy cases PASS; all guard scripts parsed.
+
+Native manual-herb fresh attempt024 and exact same-save relogin001 PASS above. Attempt023 was a CPU deferral under the former30%native ceiling, not gameplay failure. Previously preserved001..022 compiler deferrals remain distinct. Actual native opcode47 Clean slots0/1 and exact fine3881->4071->4196 verified, full28 inventory and unrelated exported state conserved, save acknowledgements and clean exits confirmed. No relogin action or reward replay. Automatic cleaning, quest-specific herbs, rendered appearance and multiplayer excluded.
+
+At source48d70b958a735b015323c168b1382b70a1a6484a, build.ps1 -Action test -CargoArgs @('-p','gielinor-world','-p','gielinor-server','--lib') PASS:49server+367world,0failures,1existing ignored. Compile60s;server0.47s;world13.58s. Guard3457MiB,76.8%commit,1page-in/s,0.0ms disk,23.9%CPU selected-j1. All new unfinished-potion tests now COMPILED/PASS, including756slot pairs and15profiles; routing/timing/Make-X/native unfinished-potion acceptance still absent. This supersedes authored/uncompiled status only. Herb native archive remains358F0AD9, sourced8978ed, not the new unregistered potion code.
+- `scripts/resources.ps1` SHA256 `dc3c6e372de5369ab77c4ebbd7cf21c426d0916581e11f2377480eba79adcdfd`
+- `scripts/integration-capacity.ps1` SHA256 `f7cae0e453d35396278cec1e97548b0f0a7c4015a9b319d0583d27a4de071ba9`
+- `scripts/test-resource-policy.ps1` SHA256 `c5448fce1429d53c08be9a9d56fe93fc06a708937be2854d8337b92668082b23`
+- `work/resource-policy-concurrent-001.log` SHA256 `6d01dd0a3c7a37ffc6eef245867b20e2d1eedfffeeaa06eb4f83cf158f0d1703`
+- `work/resource-policy-build-lease-001.log` SHA256 `5bcd8f76796c072f76023455cb428f2ca9d5ed4c58b451de5d375a97322be9a4`
+- `work/herbmanual-native-attempt-024.log` SHA256 `80352850cc78d57b205bd6ecb0af598feae0d51be6cd4cbec616a6578bddd02e`
+- `work/herbmanual-relogin-attempt-001.log` SHA256 `70bf3c5390deafe998bafb959dd6f85281d89156fa1e5c96f9c95495490d3ffe`
+- `work/unfinished-potions-tests-attempt-001.log` SHA256 `4831a639d04a26c14b2a285030829ecc2c113500a28bbe89385f88f7f48d8991`
