@@ -2158,3 +2158,16 @@ All listed runs require client exit0, fresh durable logout, clean owned exit0 an
 - `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
 - State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":300,"after":500},"3077":{"before":48287,"after":60581},"3079":{"before":164,"after":140},"65515":{"before":152,"after":282}}}`
 - Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Zero finished-potion commits; actual denial messages and state checked separately"}`
+
+## Three additional ordinary potion recipes (2026-10-16)
+
+Extended existing pair-key recipes21to24: shared runtime, scheduler and atomic XP/inventory unchanged. Research-only readiness report preserves its original preimplementation status; this ledger records implementation and validation.
+
+- Saradomin brew: Wiki revision15322175, SHA256 `81aa7917ad13c82228b5bbf6a1164d57ebc3cc1a254471e7ba3567c73783df99`; level81, boostableYes, XP180, ticks2; target IDs 3002,6693,6687.
+- Prayer regeneration potion: Wiki revision15324376, SHA256 `d516825f14a721869ac9ae8cc83bf7ab8cc8498d373ed41693f0b063a1568ee4`; level58, boostableYes, XP132, ticks2; target IDs 30100,29993,30128.
+- Goading potion: Wiki revision15271198, SHA256 `61a61abd5cec4801bdfbe52566c7d2cca2307ed350c5752167dace16737e76d6`; level54, boostableYes, XP132, ticks2; target IDs 97,29993,30140.
+
+Target239.1 symbols and decoded-definition hashes in work/openrune-finished-potions-finalthree-readiness-001.json. Item membership remains separate from recipe membership; all three recipes and their decoded products require membership. Aldarium29993 is nonstackable, and exact pair keys distinguish huasca and harralander.
+
+Validation finished-finalthree-tests-attempt-001 PASS;382source hashes unchanged. test result: ok. 51 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.83s; test result: ok. 381 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 24.99s
+Guard4488MiB,78.7percent commit,1129page-ins/s,0.8msdisk,41.2percent CPU;Cargo-j2. Existing profile tests expand to24recipes including goggles draws, both selected orders, gates and exact/capped rewards. Native additional-three acceptance pending;271synthetic assessor checks PASS.

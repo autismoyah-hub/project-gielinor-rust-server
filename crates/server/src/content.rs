@@ -2251,6 +2251,9 @@ pub fn finished_potions(
         ("dwarfweedvial", "wine_of_zamorak", "3doserangerspotion", false, true, 72, true, 1625),
         ("lantadymevial", "cactus_potato", "3dose1magic", true, true, 76, true, 1725),
         ("torstolvial", "jangerberries", "3dosepotionofzamorak", true, true, 78, true, 1750),
+        ("toadflaxvial", "crushed_bird_nest", "3dosepotionofsaradomin", true, true, 81, true, 1800),
+        ("huascavial", "aldarium", "3dose1prayer_regeneration", true, true, 58, true, 1320),
+        ("harralandervial", "aldarium", "3dosegoading", true, true, 54, true, 1320),
     ] {
         result.push(gielinor_world::finished_potions::Recipe {
             unfinished: bind(unf, true, false)?,
@@ -2287,6 +2290,12 @@ mod finished_potion_binding_tests {
             ("tarrominvial", 95, true, false),
             ("limpwurt_root", 225, false, false),
             ("3dose1strength", 115, false, true),
+            ("crushed_bird_nest", 6693, true, false),
+            ("3dosepotionofsaradomin", 6687, true, true),
+            ("huascavial", 30100, true, false),
+            ("aldarium", 29993, true, false),
+            ("3dose1prayer_regeneration", 30128, true, true),
+            ("3dosegoading", 30140, true, true),
             ("snapdragonvial", 3004, true, false),
             ("3dose2restore", 3026, true, true),
             ("cadantinevial", 107, true, false),
@@ -2378,6 +2387,9 @@ mod finished_potion_binding_tests {
                 (109, 245, 169, 72, true, 1625),
                 (2483, 3138, 3042, 76, true, 1725),
                 (111, 247, 189, 78, true, 1750),
+                (3002, 6693, 6687, 81, true, 1800),
+                (30100, 29993, 30128, 58, true, 1320),
+                (97, 29993, 30140, 54, true, 1320),
             ]
         );
         assert!(!defs.items[&175].members && !defs.items[&115].members);
