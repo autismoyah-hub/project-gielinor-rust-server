@@ -1130,3 +1130,44 @@ Bounded herb preparation: target Names unidentified_guam199 -> guam_leaf249 and 
 - `work/openrune-dough-quantity-readiness-001.json` SHA256 `eea8d8ca5ce6fce0b1cbd62ad36aab3157380ed1b41408c38c01ff7ea5ab697c`
 
 - `work/openrune-herb-items-001.json` SHA256 `1c11e2cd978946518271a0d72f5b396c1a6d89d31f868e8ce399131db89a8e1e`
+
+## Herb transaction and profile preparation (2026-10-16 UTC; uncompiled)
+
+Added herb_cleaning transaction component using existing Inventory delete/insert and skills::advance. It stages inventory and stats together, rechecks supplied current membership/quest eligibility and boosted level, rejects stale selected slots without substitute herbs, keeps exact slots in a full bag and accepts fine-XP recipe values25/38. Four authored tests cover fractional5x rewards/replay, member/quest/level/refused-credit/invalid-rate rollback, stale/notes/count/vars and boosted marrentill with an existing fractional remainder. A separate prepared content profile builder resolves target Names and requires ordinary member definitions, unique inputs/outputs and exact Clean operations; its authored malformed-definition test covers eight rejection categories.
+
+NO live handler, automatic cleaning scheduler, quest binding or startup call was added. Timing/mixed-herb policy remains unresolved. This is UNCOMPILED preparation, not functional herb acceptance. Source is independently authored from pinned Wiki values and existing Rust transaction APIs; no OpenRune expression copied. Pinned native pie archive7C3952D6 predates these source additions and remains immutable.
+
+Additional target opcode16 decode confirms all four herb items are members items; prior item report preserved. Wiki Guam leaf15183585 and Marrentill15183543 explicitly mark Clean herb recipes boostable at3/5 and2.5/3.8XP. Herblore15347160 requires Druidic Ritual completion for training. Automatic hourly estimates were not converted into a claimed exact cadence.
+
+- `crates/world/src/herb_cleaning.rs` SHA256 `2102c7e95fc82a218558b16d13e6ecfeb39eca89bd2a892c7504d69d0da3f99b`
+
+- `crates/world/src/lib.rs` SHA256 `28f7682166cad444fa4bde6a5f543a16b7379382985310bccd845461e322e59d`
+
+- `crates/server/src/content.rs` SHA256 `3b33d44fab2be16032bd4c617fa2445a0955f3279eb4a9cb496d5e14e7e9bf90`
+
+- `work/openrune-herb-membership-items-001.json` SHA256 `aef25a0df3fd5efd5b09f6835984488f0f91a124ed4fc6653a8eb848a6b20502`
+
+## Native assembly wildsummerpies acceptance (2026-10-16 UTC)
+
+Wild/summer three-stage chains through six genuine native item-use operations, alternating selected order: exactly one raw wild and summer pie, zero assembly XP, strict selected slots and two-clock commits. Ingredient acquisition, baking and food effects excluded.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking parity or unrelated recipes. No issue closure.
+
+`openrune-native-wildsummerpies-relogin-001` PASS. Server archive `7C3952D63A84301C9E5D0C9B8C2C2639FC37AB9C96AA3DA80F5FD6DDA908AA45`, driver `wildsummerpies-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor `openrune-native-wildsummerpies-001`, owned PID18616.
+- Driver `server_wildsummerpies.exe` SHA256 `42DBC1EECFE5E14D66264C0C91FBEEB90B86E947EEAF3863F203E6AC56706B37`
+- Driver `NativeWildSummerPieScenario.rs` SHA256 `D331FCD8C889DA383726A0C8A613DAEFC4D9FA532DD28724B8C871D27D7941E3`
+- `client.log` SHA256 `a950aa1ebae822c6b281dbeda8be733c5f4df4df907523e223ba3a94c4a8b098`
+- `server.log` SHA256 `f785163e0fe3f2eee989fa5b02312fb915b31a447e830406b77472fa3cf83b20`
+- `initial-state.json` SHA256 `c7b13dc0f8f906f141c64742a8c4119e5a5d551f73c6dfe6b2a03cddef7892db`
+- `final-state.json` SHA256 `efd502d475b891bbe9c6927953c786569e78524f06f40077a97ae4b74e030e9c`
+- `pack-assessment.json` SHA256 `69a9ecbf58360ce49e183e719413b15a989c5eaa5d5309182b6c73374b525890`
+- `wildsummerpies-trace-assessment.json` SHA256 `226bbade27c24b435c3ecc469273ebef200a2c2c10ce8d71870ea60a9342393d`
+- `logout-observation.json` SHA256 `f952b1c584f94b3e44f5c024eff33e9298557ec0f65cbdacae96acf6e73b35af`
+- `shutdown.json` SHA256 `fa43f3fb6e13ab18ecf5bba3c225f3e1b116716223bf1008a786c111b8150713`
+- `result.json` SHA256 `8d5c3a66b1eb93fb87291380ee514e5f685c1fe8111daeece35c35e62f8d821e`
+- `pack-run.json` SHA256 `8aa4511763c61fa2a288f580b85fe3267ba3ca962d5dd50649a404aa0a2b8559`
+- `native-packet-assessment.json` SHA256 `49d90e29e4f855861e106575dfb7bedb3294c79d0bd10f0d5e1bed21ab68979c`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":200,"after":300},"3077":{"before":28230,"after":30309},"3079":{"before":125,"after":86},"65515":{"before":118,"after":198}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Server assembly clocks and selected slots, not packet/display latency"}`
