@@ -1879,3 +1879,49 @@ All listed runs require client exit0, fresh durable logout, clean owned exit0 an
 Added Restore, Energy, Defence, Agility, Combat and Prayer recipes from pinned local Wiki revisions and decoded239.1 definitions in work/openrune-finished-potions-expansion-readiness-001.json. Restore/Energy/Combat share harralander; Defence/Prayer share ranarr. Catalog and pending selection now key by both unfinished and secondary IDs, preserving selected/reversed slots and rejecting cross-pairs. Repeated use of the same named definition is allowed; conflicting symbol aliases remain rejected. All nine profiles retain exact fine rewards at1x/5x/5.01x, full backpack conservation and no replay; new pair-selection regression covers all9 in both orders.
 
 work/finished-expansion-tests-attempt-001.json PASS:50server+379world,0failures,1existing ignored;382source hashes unchanged. Compile58.42s,world19.00s. Guard5488MiB,74.6%commit,652page-ins/s with0.8msdisk,20.5%CPU,-j2. Existing9BE2 archive and native receipts establish only the earlier three recipes. The six-profile native fixture is prepared, not yet accepted; no modifiers/full-Herblore claim. Next: pin new executable and perform six-profile control/fresh/same-save acceptance.
+
+## Native gameplay finishedsix acceptance (2026-10-16 UTC)
+
+Six ordinary finished profiles: Restore, Energy, Defence, Agility, Combat and Prayer; native exact ingredient-pair selection with shared bases, alternating order, two-clock commits, exact22825fineXP at5x and same-save no replay. Modifiers, other recipes and level-boundary native acceptance separate.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking/Herblore parity or unrelated recipes. No issue closure.
+
+`openrune-native-finishedsix-001` PASS. Server archive `4D561DD9D9A0C3205FC85298841262ABFB193AF69B8AD6768DA27EA765EC18E9`, driver `finishedsix-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID5428.
+- Driver `NativeFinishedSixScenario.rs` SHA256 `2DC682200D9ED72145450E71BFDA43239C6E261BAD3CCDBE2D0BCDA575E5BA72`
+- Driver `server_finishedsix.exe` SHA256 `E47315D7997D3E3AE6141E20BD8CCAC4D90E142D9532D350F2127CD861DB7925`
+- `client.log` SHA256 `8ada064f7905a4e2c0f58c18ad0efe514167af9c926ac5ae431482eef0fc3f7c`
+- `server.log` SHA256 `6173c76d6b7f65a9aff313b092aaefa5a63800a495b48bcb8057e0a9dc5e8ba3`
+- `initial-state.json` SHA256 `a193d9b0c607a1ca2e4d58cde69e83344447c39d68f8c404d88e4fdaa40cdbe5`
+- `final-state.json` SHA256 `5f6eac01bb4ad06b6f3fc44ec4199a2997be2449d1989ae854417e8d31c26e6c`
+- `pack-assessment.json` SHA256 `e8e998db785983a19bd017751ff04f1161ad3013692706fab0c69a4e9eb4e3a6`
+- `finishedsix-trace-assessment.json` SHA256 `a3e63010d5b141ee663dccee89bb30b4c2fe73f7fb6b95841ed92c96c8d8abfd`
+- `logout-observation.json` SHA256 `11c9d3bbcba93e62c8c6624a91d5168264abccf9e51087d0d0930d4ff13ac784`
+- `shutdown.json` SHA256 `911d3a948dbef29aee057246893dfc9f89db6fc628319e10817340eda2e0dd31`
+- `result.json` SHA256 `52722316a9216cae42736b365fef5c491be3697add2da551e708b92e14c0e635`
+- `pack-run.json` SHA256 `a5fc10b71a58dceb1d4b22ffdbbb8c824b1a6374ebdb0bc9d0d2826e4a5d39b6`
+- `native-profile-assessment.json` SHA256 `3f14a170fae57aa7fb1d7cec162cb49aa87debcbb735e6b036598733a23eb947`
+- `native-packet-assessment.json` SHA256 `c318ea40d2ef06c766ee34b45d356ea9235c10da93dcfe3a74e889e3b5aa3a5e`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":400},"3077":{"before":0,"after":39180},"3079":{"before":0,"after":232},"65515":{"before":0,"after":223}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[{"actor_slot":1,"actor_generation":614,"unfinished_slot":0,"secondary_slot":1,"unfinished":97,"secondary":223,"output":127,"count":1,"queued_at":128,"committed_at":130,"index":0,"base_fine_xp":625,"rate_hundreds":500,"fine_before":130344311,"fine_after":130347436},{"actor_slot":1,"actor_generation":614,"unfinished_slot":2,"secondary_slot":3,"unfinished":97,"secondary":1975,"output":3010,"count":1,"queued_at":142,"committed_at":144,"index":0,"base_fine_xp":675,"rate_hundreds":500,"fine_before":130347436,"fine_after":130350811},{"actor_slot":1,"actor_generation":614,"unfinished_slot":4,"secondary_slot":5,"unfinished":99,"secondary":239,"output":133,"count":1,"queued_at":158,"committed_at":160,"index":0,"base_fine_xp":750,"rate_hundreds":500,"fine_before":130350811,"fine_after":130354561},{"actor_slot":1,"actor_generation":614,"unfinished_slot":6,"secondary_slot":7,"unfinished":3002,"secondary":2152,"output":3034,"count":1,"queued_at":179,"committed_at":181,"index":0,"base_fine_xp":800,"rate_hundreds":500,"fine_before":130354561,"fine_after":130358561},{"actor_slot":1,"actor_generation":614,"unfinished_slot":8,"secondary_slot":9,"unfinished":97,"secondary":9736,"output":9741,"count":1,"queued_at":196,"committed_at":198,"index":0,"base_fine_xp":840,"rate_hundreds":500,"fine_before":130358561,"fine_after":130362761},{"actor_slot":1,"actor_generation":614,"unfinished_slot":10,"secondary_slot":11,"unfinished":99,"secondary":231,"output":139,"count":1,"queued_at":211,"committed_at":213,"index":0,"base_fine_xp":875,"rate_hundreds":500,"fine_before":130362761,"fine_after":130367136}],"scope":"Separate selected-profile two-tick commits; UI evidence and packet/display latency separate"}`
+
+`openrune-native-finishedsix-relogin-001` PASS. Server archive `4D561DD9D9A0C3205FC85298841262ABFB193AF69B8AD6768DA27EA765EC18E9`, driver `finishedsix-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor `openrune-native-finishedsix-001`, owned PID444.
+- Driver `NativeFinishedSixScenario.rs` SHA256 `2DC682200D9ED72145450E71BFDA43239C6E261BAD3CCDBE2D0BCDA575E5BA72`
+- Driver `server_finishedsix.exe` SHA256 `E47315D7997D3E3AE6141E20BD8CCAC4D90E142D9532D350F2127CD861DB7925`
+- `client.log` SHA256 `b589787f391405b3c62c58424352fedb63ea6833eba427daea7eb0cc295f7672`
+- `server.log` SHA256 `6cc536f913657772f3c24362d3414f2ec40f4ee46f75eefe5d8d4a565a8f6ce5`
+- `initial-state.json` SHA256 `5f6eac01bb4ad06b6f3fc44ec4199a2997be2449d1989ae854417e8d31c26e6c`
+- `final-state.json` SHA256 `d642539cafc40848e5cdb09488705cd120610afd2b2c10f5d068b4da45047403`
+- `pack-assessment.json` SHA256 `3f9c0f5ccffe92a5056ab16eb6d138368db2fdc4260f69fd69012e7f6f2673e2`
+- `finishedsix-trace-assessment.json` SHA256 `15565119835c4387827e07e673e26fc0ec5897457d403e87d7333c03aaf96013`
+- `logout-observation.json` SHA256 `0821ac3d64058802f83fd0e14910f6132dd4096e1e2c8421a016fc81482d0edc`
+- `shutdown.json` SHA256 `86d08eb67c8b15c76c48ae477b08ccee9887f156cdec0ab19818610f9abda578`
+- `result.json` SHA256 `a98f6f323fb14301edca4c0b6e4253d10ac401a6b6f0297b9c08ca9e6ab87ebb`
+- `pack-run.json` SHA256 `2f1f4d2814c43ed1f62b469e9f5232b14ad5708b2240d5346890a5427cde57ff`
+- `native-profile-assessment.json` SHA256 `3f14a170fae57aa7fb1d7cec162cb49aa87debcbb735e6b036598733a23eb947`
+- `native-packet-assessment.json` SHA256 `9dda3efb588a52f5f5e24450a1a353d6f0faf093c9c5e9e3c7f0c40c9f715623`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":400,"after":600},"3077":{"before":39180,"after":48754},"3079":{"before":232,"after":135},"65515":{"before":223,"after":350}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Separate selected-profile two-tick commits; UI evidence and packet/display latency separate"}`
