@@ -1271,13 +1271,14 @@ impl<B: AccountBackend> Runtime<B> {
                 .map_err(|e| io::Error::other(format!("{e:?}")))?;
             let combat = self.presentation.as_ref().unwrap().combat_level(data);
             for packet in journal
-                .opened(
+                .opened_for_run(
                     interface,
                     &mut active.ui,
                     &data.variables,
                     combat,
                     journal.marks(data),
                     &self.interface_hooks,
+                    data.tower_run,
                 )
                 .map_err(io::Error::other)?
             {
@@ -2334,7 +2335,7 @@ impl<B: AccountBackend> Runtime<B> {
                                                     .combat_level(data);
                                                 let active = self.active.get_mut(&actor).unwrap();
                                                 let marks = journal.marks(data);
-                                                match journal.switch(
+                                                match journal.switch_for_run(
                                                     tab,
                                                     &mut active.ui,
                                                     &mut data.variables,
@@ -2343,6 +2344,7 @@ impl<B: AccountBackend> Runtime<B> {
                                                     logged_in,
                                                     marks,
                                                     &self.interface_hooks,
+                                                    data.tower_run,
                                                 ) {
                                                     Ok(packets) => {
                                                         for packet in packets {
@@ -2952,13 +2954,21 @@ impl<B: AccountBackend> Runtime<B> {
                         self.connection(actor),
                         self.journal.as_ref().and_then(|j| j.diary.as_ref()),
                     ) {
-                        for packet in diary.packets(marks).map_err(io::Error::other)? {
+                        let run=self.world.data(actor).map_err(|e|io::Error::other(format!("{e:?}")))?.tower_run;
+                        let packets=if run.id>0 {diary.cinderworks_packets(run)} else {diary.packets(marks)};
+                        for packet in packets.map_err(io::Error::other)? {
                             self.transport
                                 .send(connection, packet.opcode, &packet.payload)?;
                         }
                     }
                     self.events
                         .push(Event::World(WorldEvent::TowerDiary { actor, marks }));
+                }
+                WorldEvent::CinderworksProgress {actor,run} => {
+                    if let (Some(connection),Some(diary))=(self.connection(actor),self.journal.as_ref().and_then(|journal|journal.diary.as_ref())) {
+                        for packet in diary.cinderworks_packets(run).map_err(io::Error::other)? {self.transport.send(connection,packet.opcode,&packet.payload)?;}
+                    }
+                    self.events.push(Event::World(WorldEvent::CinderworksProgress {actor,run}));
                 }
                 WorldEvent::TowerArrival {
                     actor,
@@ -3928,13 +3938,14 @@ impl<B: AccountBackend> Runtime<B> {
                 if let Some(journal) = &self.journal {
                     packets.extend(
                         journal
-                            .opened(
+                            .opened_for_run(
                                 interface,
                                 &mut active.ui,
                                 &data.variables,
                                 policy.combat_level(data),
                                 journal.marks(data),
                                 &self.interface_hooks,
+                                data.tower_run,
                             )
                             .map_err(io::Error::other)?,
                     );

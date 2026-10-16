@@ -41,6 +41,7 @@ impl World {
             if let Some(config) = &self.cinderworks {
                 let p = self.players.get_mut(actor.slot as usize).unwrap();
                 if let Some(text) = config.credit(&mut p.data, p.movement.coords, crate::tower_run::Service::Altar) {
+                    self.events.push(WorldEvent::CinderworksProgress {actor,run:p.data.tower_run});
                     self.events.push(WorldEvent::GameMessage { actor, text:text.into() });
                 }
                 // The Cinderworks offering has no legacy forced walk to a crate.

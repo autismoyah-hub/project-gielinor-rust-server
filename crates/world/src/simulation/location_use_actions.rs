@@ -28,6 +28,8 @@ impl World {
             }
             return;
         }
+        if self.start_cinderworks_cooking(slot,loc,object) {return;}
+        let p = self.players.get_mut(slot).unwrap();
         if self.water_sources.as_ref().is_some_and(|c| c.output(loc.id, object).is_some()) {
             self.start_water_filling(slot, loc, inv_slot as usize, object);
             return;

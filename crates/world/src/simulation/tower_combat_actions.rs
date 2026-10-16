@@ -9,6 +9,7 @@ impl World {
         mut damage: i32,
     ) -> Result<i32, ActionError> {
         let kind = self.npc(target).ok_or(ActionError::StaleActor)?.type_id;
+        if let Some(actor)=source { self.begin_cinderworks_encounter(actor,target); }
         if let Some(config) = self.tower_combat.as_ref() {
             let player = source.and_then(|id| self.player(id).ok());
             if config.bosses.contains(&kind) {

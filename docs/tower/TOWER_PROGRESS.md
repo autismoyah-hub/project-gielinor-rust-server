@@ -44,3 +44,13 @@ Validation so far: 64 Tower world tests, three routed Cinderworks action tests, 
 Next: validate the configured live plaque/portal route, integrate scheduled visible vents and encounter ownership, implement the Imp and phased Warden, then complete authentic success/failure/recovery/replay sessions and polish.
 
 Checkpoint validation broadened: full world library suite passes (389 passed, two existing ignored); full server library suite passes (52 passed); storage suite passes (eight passed, one existing ignored). Enclosed tile-graphic wire test passes. Live native plaque interaction routed from the court, began run 1, and delivered the recovery tools and next-step messages. Live native portal interaction reached normal-world `[0,3224,3218]`; return is being checked. This is continued development, not overall acceptance.
+
+## Service and encounter implementation checkpoint
+
+The native run has now completed authentic ore mining, smelting through the configured furnace dialog, dagger smithing through the anvil dialog, wielding, net fishing and batch shrimp cooking. Workshop and kitchen credit were received from the authoritative callbacks. Full-pack fishing stopped without extra output or XP. Exit/return and tool persistence across logout/relogin are confirmed. Detailed action/state receipts and actual rendered frames remain private.
+
+Encounter implementation now includes exclusive ownership, prerequisite/equipment checks before combat XP, delayed visible smoke/fire graphics, an Imp escalation, three Warden health phases, routed coolant interruption, reset on departure/logout/death, authoritative hero-based kill credit and pending victory rewards. Native boss acceptance is still outstanding. Cache-resolved guardian death animations are validated before the server listens.
+
+The new task tab projects Cinderworks services, guardians, claims and replay history while preserving the legacy diary sidecar. Smithing now applies both the global and character XP rates; a regression check covers 1x and 5x rates. Current validation: full world suite 397 passed / two existing ignored; full server suite 52 passed; focused Cinderworks tests ten passed. Local client validation commit: `88e5768` on its isolated branch; the source-only patch now includes both adapter commits.
+
+Next: complete the native altar and both guardians; fix issues exposed by those sessions, then run full headless success/failure/relogin/replay coverage, improve layout/telegraph presentation and publish final evidence. This is not overall completion.

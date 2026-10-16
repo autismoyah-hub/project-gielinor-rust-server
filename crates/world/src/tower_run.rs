@@ -22,6 +22,21 @@ pub enum Reward {
     Replay,
 }
 impl Run {
+    pub fn journal(self) -> String {
+        let rows=[("Workshop: forge a bronze dagger",self.services&1!=0,true),
+            ("Kitchen: catch and cook shrimp",self.services&2!=0,true),
+            ("Altar: offer a creature's bones",self.services&4!=0,true),
+            ("Silence the Ash Imp",self.imp,self.services==7),
+            ("Quench the Ash Warden",self.victory,self.imp),
+            ("Claim the sanctuary reward",self.victory&&!self.reward_pending,self.victory)];
+        let mut text=format!("<col=ffb83f>Cinderworks — run {}</col><br>",self.id);
+        for (label,done,available) in rows {
+            let color=if done {"0dc10d"} else if available {"ffb83f"} else {"9f9f9f"};
+            text.push_str(&format!("<col={color}>{} {label}</col><br>",if done {"Done:"}else{"Next:"}));
+        }
+        text.push_str(&format!("<br>{}<br><br>Victories: {}. First-clear reward: {}.",self.guide(),self.clears,if self.first_reward_paid {"claimed"}else{"unclaimed"}));
+        text
+    }
     pub fn valid(self) -> bool {
         self.services <= 7
             && (!self.imp || self.services == 7)

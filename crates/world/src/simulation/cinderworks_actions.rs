@@ -4,6 +4,7 @@ impl World {
     /// Called only after ordinary location routing and approach validation.
     pub(super) fn cinderworks_location(&mut self, slot: usize, loc: crate::locations::Location, operation: u8) -> bool {
         let Some(config) = self.cinderworks.clone().filter(|c| c.handles(loc.id, operation)) else { return false };
+        if loc.id == config.quench { return self.quench_cinderworks(slot,loc); }
         let p = self.players.get_mut(slot).unwrap();
         let actor = p.id;
         let inside = crate::tower_layout::contains(config.origin, p.movement.coords);
@@ -43,6 +44,7 @@ impl World {
             // No partial kit or half-started run if the complete tool kit cannot fit.
             p.data.inventory = staged;
             let began = p.data.tower_run.begin();
+            self.events.push(WorldEvent::CinderworksProgress {actor,run:p.data.tower_run});
             p.data.tower_arrival.diary_progress = true;
             if began {
                 self.events.push(WorldEvent::GameMessage { actor, text:format!("Cinderworks run {} begins. Restore the workshop, kitchen and altar; then silence the Imp and Warden.", p.data.tower_run.id) });
@@ -64,6 +66,7 @@ impl World {
             if run.paid(run.id) {
                 p.data.inventory = inventory;
                 p.data.tower_run = run;
+                self.events.push(WorldEvent::CinderworksProgress {actor,run});
                 self.events.push(WorldEvent::GameMessage { actor, text:format!("The restored sanctuary yields {count} coins and a beer. The portal leads home; read the plaque to begin a replay.") });
             }
         } else {
@@ -84,7 +87,8 @@ mod tests {
         }
         world.collision.allocate(3224, 3216, 0);
         let config = Config { origin, outside:CoordGrid::new(3225,3218,0).unwrap(), plaque:1, portal:2, chest:3,
-            tools:vec![10,11], scimitar:12, dagger:13, coins:100, beer:101 };
+            tools:vec![10,11], scimitar:12, dagger:13, coins:100, beer:101,
+            imp:200,warden:201,quench:4,quench_tiles:vec![],warning_graphic:86,strike_graphic:78,work:None };
         let locations = [
             Location::new(origin.translate(55,56,0).unwrap(),1,10,0).unwrap(),
             Location::new(origin.translate(57,56,0).unwrap(),2,10,0).unwrap(),

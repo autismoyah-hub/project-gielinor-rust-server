@@ -428,9 +428,26 @@ pub fn run() -> io::Result<()> {
         dagger:names.id("obj", "bronze_dagger")? as i32,
         coins:names.id("obj", "coins")? as i32,
         beer:names.id("obj", "beer")? as i32,
+        imp:names.short("npc", "ash_imp")?,
+        warden:names.short("npc", "ash_warden")?,
+        quench:names.id("loc", "barrel")?,
+        quench_tiles:vec![tower_origin.translate(53,71,0).unwrap(),tower_origin.translate(60,71,0).unwrap()],
+        warning_graphic:names.short("spotanim", "smokepuff")?,
+        strike_graphic:names.short("spotanim", "zamorak_flame")?,
+        work:Some(gielinor_world::tower_cinderworks::WorkConfig {
+            fishing_spot:names.short("npc", "0_48_48_newbiefishing")?, net:names.id("obj", "net")? as i32,
+            raw:names.id("obj", "raw_shrimp")? as i32,cooked:names.id("obj", "shrimp")? as i32,
+            cooking_loc:names.id("loc", "newbierange")?,fish_skill:names.id("stat", "fishing")? as u8,
+            cook_skill:names.id("stat", "cooking")? as u8,fish_animation:names.short("seq", "human_smallnet")?,
+            cook_animation:names.short("seq", "human_cooking")?,queue:names.id("queue", "smithing_make")? as i32,
+        }),
     };
     let portal = gielinor_world::locations::Location::new(outside, config.portal, 10, 0).map_err(fail)?;
+    if !runtime.world.npc_death.as_ref().is_some_and(|death| [config.imp,config.warden].iter().all(|id| death.definitions.get(id).is_some_and(|definition| definition.animation_ticks>0))) {
+        return Err(fail("Cinderworks guardians require cache-resolved death animations before admission"));
+    }
     runtime.world.change_location(portal, true).map_err(fail)?;
+    runtime.world.npc_handlers.insert((config.work.unwrap().fishing_spot,1),gielinor_world::npc_interaction::Handler::CinderworksFishing);
     runtime.world.cinderworks = Some(config);
     if check {
         println!(

@@ -262,7 +262,14 @@ impl World {
             }
             return true;
         }
-        if touches || bank_approach {
+        let fishing_approach=pending.handler==Some(Handler::CinderworksFishing)
+            && source.chebyshev_distance(target)<=3;
+        if touches || bank_approach || fishing_approach {
+            if pending.handler == Some(Handler::CinderworksFishing) {
+                self.clear_npc_route(slot);
+                self.start_cinderworks_fishing(slot,pending.target);
+                return true;
+            }
             if pending.handler == Some(Handler::TowerTanner) {
                 self.clear_npc_route(slot);
                 if let Err(error) =
@@ -359,7 +366,7 @@ impl World {
                 Some(Handler::TowerTanner) => unreachable!("Tanning handled above"),
                 Some(Handler::Combat) => unreachable!("Combat handled above"),
                 Some(Handler::Person) => unreachable!("Dialogue handled above"),
-                Some(Handler::TutorialFishing) => unreachable!("Fishing handled above"),
+                Some(Handler::TutorialFishing | Handler::CinderworksFishing) => unreachable!("Fishing handled above"),
                 Some(
                     Handler::TutorialGuide { .. }
                     | Handler::SurvivalTutor(_)

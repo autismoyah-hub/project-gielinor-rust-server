@@ -51,6 +51,8 @@ mod spell_actions;
 mod stat_event_actions;
 mod tower_actions;
 mod cinderworks_actions;
+mod cinderworks_encounter_actions;
+mod cinderworks_work;
 mod tower_chest_actions;
 mod tower_combat_actions;
 mod tower_login_actions;
@@ -169,6 +171,7 @@ impl PlayerData {
 }
 #[derive(Clone)]
 enum Deferred {
+    Cinderworks(cinderworks_work::Work),
     Smithing(crate::smithing_make::Job),
     Assembly(crate::assembly::Pending),
     Milking(crate::milking::Job),
@@ -546,6 +549,7 @@ pub enum WorldEvent {
         actor: ActorId,
         marks: crate::tower_diary::Marks,
     },
+    CinderworksProgress { actor:ActorId, run:crate::tower_run::Run },
     TutorialBank {
         actor: ActorId,
         booth: crate::tutorial_bank::Booth,
@@ -851,6 +855,7 @@ pub struct World {
     pub tower_restore: Option<crate::tower_restore::HandlerConfig>,
     pub tower_combat: Option<crate::tower_combat::Config>,
     pub cinderworks: Option<crate::tower_cinderworks::Config>,
+    pub cinderworks_encounters: [Option<crate::cinderworks_encounter::Encounter>; 2],
     pub woodcutting: Option<crate::woodcutting::Config>,
     pub mining: Option<crate::mining::Config>,
     /// Explicit stock partitions; empty until a verified content profile registers one.
@@ -953,6 +958,7 @@ impl Default for World {
             tower_restore: None,
             tower_combat: None,
             cinderworks: None,
+            cinderworks_encounters: [None,None],
             woodcutting: None,
             mining: None,
             shops: BTreeMap::new(),
@@ -2143,6 +2149,7 @@ impl World {
             self.events.push(WorldEvent::Phase(phase, self.clock.0));
             match phase {
                 Phase::ControllerMain => {
+                    self.process_cinderworks_encounters();
                     self.active_trees.tick(self.clock.0, &self.locations);
                     // Gathering deadlines use the action clock. Processing before
                     // PlayerMain keeps N ticks of visible stump lifetime; the
@@ -2454,6 +2461,17 @@ impl World {
                                                         crate::assembly::Outcome::Members => "You need to be a member to make that item.",
                                                     };
                                                     self.events.push(WorldEvent::LocationMessage {actor:p.id,message});
+                                                }
+                                                Deferred::Cinderworks(job) => {
+                                                    if let Some(config)=&self.cinderworks {
+                                                        let valid=match job {
+                                                            cinderworks_work::Work::Fish {target,coords} => self.npcs.get(target.slot as usize).is_some_and(|entry|entry.id==target && entry.npc.movement.coords==coords),
+                                                            cinderworks_work::Work::Cook {location} => self.locations.find_type(location.coords,location.id)==Some(location),
+                                                        };
+                                                        if let Err(error)=cinderworks_work::complete(p,queues,config,job,valid,&self.object_types,self.tutorial_rules_completed_varp.is_some(),&mut self.events) {
+                                                            self.events.push(WorldEvent::ActionRejected {actor:p.id,error});
+                                                        }
+                                                    }
                                                 }
                                                 Deferred::Smithing(job) => {
                                                     if let Some(config) = self.smithing {

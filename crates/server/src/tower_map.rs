@@ -121,9 +121,11 @@ pub fn prepare(
         (34, 58, 0, "tinrock1"),
         (44, 54, 0, "copperrock1"),
         (44, 58, 0, "copperrock1"),
-        (34, 50, 0, "newbiefurnace"),
+        (34, 50, 0, "tut2_furnace"),
         (37, 50, 0, "anvil"),
         (67, 53, 0, "newbierange"),
+        (53, 71, 0, "barrel"),
+        (60, 71, 0, "barrel"),
     ] {
         put(x, z, level, name)?;
     }
@@ -189,11 +191,15 @@ pub fn npcs(
         // NpcRepository.add(Int.MAX_VALUE) owns this flag, not Npc's constructor.
         npc.respawns = true;
         if name == "ash_warden" {
-            npc.stats = [1, 1, 1, 24, 1, 80];
+            npc.regen_rate = 0;
+            npc.respawn_rate = 8;
+            npc.stats = [1, 1, 1, 42, 1, 80];
             npc.base_stats = npc.stats;
         } else if name == "ash_imp" {
-            npc.stats[..4].copy_from_slice(&[1, 1, 1, 6]);
-            npc.base_stats[..4].copy_from_slice(&[1, 1, 1, 6]);
+            npc.regen_rate = 0;
+            npc.respawn_rate = 8;
+            npc.stats[..4].copy_from_slice(&[1, 1, 1, 18]);
+            npc.base_stats[..4].copy_from_slice(&[1, 1, 1, 18]);
         }
         result.push(npc);
     }
@@ -304,9 +310,9 @@ mod tests {
         assert_eq!(actors[0].mode, gielinor_world::npc::Mode::None);
         assert_eq!(actors[5].mode, gielinor_world::npc::Mode::Wander);
         assert_eq!(actors[5].stats, [11, 12, 13, 14, 15, 16]);
-        assert_eq!(actors[25].stats, [1, 1, 1, 6, 15, 16]);
+        assert_eq!(actors[25].stats, [1, 1, 1, 18, 15, 16]);
         assert_eq!(actors[25].base_stats, actors[25].stats);
-        assert_eq!(actors[26].stats, [1, 1, 1, 24, 1, 80]);
+        assert_eq!(actors[26].stats, [1, 1, 1, 42, 1, 80]);
         assert_eq!(actors[26].base_stats, actors[26].stats);
         assert_eq!(actors[26].spawn, origin.translate(56, 72, 0).unwrap());
     }

@@ -1,7 +1,7 @@
 From 4001176798235e2230d6c69445a0b86e24323c5b Mon Sep 17 00:00:00 2001
 From: Tower Agent 5 <agent5@tower.invalid>
 Date: Fri, 16 Oct 2026 14:37:35 -0700
-Subject: [PATCH] Add opt-in Tower normal-action validation adapter without
+Subject: [PATCH 1/2] Add opt-in Tower normal-action validation adapter without
  desktop input
 
 ---
@@ -246,3 +246,300 @@ index 354c9b3..969d2f1 100644
              let bitmap = Bitmap {
                  size: 40,
                  width: fit.logical[0],
+
+From 88e5768f16a7008f972ad7b4bc015409012642c0 Mon Sep 17 00:00:00 2001
+From: Tower Agent 5 <agent5@tower.invalid>
+Date: Fri, 16 Oct 2026 15:30:51 -0700
+Subject: [PATCH 2/2] Extend Tower adapter with inventory actions and
+ authoritative observations
+
+---
+ examples/tower_actions.rs |  12 +-
+ src/tower_adapter.rs      | 226 +++++++++++++++++++++++++++++++-------
+ 2 files changed, 196 insertions(+), 42 deletions(-)
+
+diff --git a/examples/tower_actions.rs b/examples/tower_actions.rs
+index 5c91935..4a9a61e 100644
+--- a/examples/tower_actions.rs
++++ b/examples/tower_actions.rs
+@@ -14,8 +14,18 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
+     let mut client = ClientState::load(DiskCache::open(&args[1], 64 << 20)?)?;
+     let mut live = Connection::connect(&mut client, &args[2], &args[3], &args[4], &args[5])?;
+     let start = Instant::now();
++    let mut clock = gielinor_client::game_clock::Clock::default();
++    let mut input = gielinor_client::input::Input::default();
+     while start.elapsed() < Duration::from_secs(1800) {
+-        live.poll(&mut client)?;
++        let step = clock.advance(start.elapsed().as_nanos().min(i64::MAX as u128) as i64);
++        client.cycle = client.cycle.wrapping_add(step.ticks as i32);
++        live.poll_elapsed(&mut client, step.ticks)?;
++        if live.world.is_some() && !live.scripts_busy() {
++            for _ in 0..step.ticks {
++                client.tick_actor_sequences()?;
++            }
++            client.tick_interfaces_elapsed(step.ticks, &mut input, true)?;
++        }
+         let ready = live.world.is_some() && live.title.is_none() && !live.is_reconnecting();
+         adapter.poll(&mut client, ready)?;
+         if adapter.stop {
+diff --git a/src/tower_adapter.rs b/src/tower_adapter.rs
+index 1ce8533..ddcfcf7 100644
+--- a/src/tower_adapter.rs
++++ b/src/tower_adapter.rs
+@@ -2,6 +2,22 @@
+ //! never injects desktop input or changes server state directly.
+ use crate::{client_state::ClientState, context_menu::Action, raster::Raster, Result};
+ use std::path::PathBuf;
++fn quoted(value: &str) -> String {
++    let mut out = String::from("\"");
++    for c in value.chars() {
++        match c {
++            '"' => out.push_str("\\\""),
++            '\\' => out.push_str("\\\\"),
++            '\n' => out.push_str("\\n"),
++            '\r' => out.push_str("\\r"),
++            '\t' => out.push_str("\\t"),
++            c if c < ' ' => out.push_str(&format!("\\u{:04x}", c as u32)),
++            c => out.push(c),
++        }
++    }
++    out.push('"');
++    out
++}
+ 
+ pub struct Adapter {
+     directory: PathBuf,
+@@ -39,49 +55,109 @@ impl Adapter {
+             return Ok(());
+         }
+         let number = |i: usize| words.get(i).and_then(|s| s.parse::<u16>().ok());
+-        let action = match words.get(1).copied() {
+-            Some("walk") if words.len() == 4 => {
+-                number(2).zip(number(3)).map(|(x, y)| Action::Walk([x, y]))
+-            }
+-            Some("close") if words.len() == 2 => Some(Action::Close),
+-            Some("interface") if words.len() == 4 => words[2]
+-                .parse::<u32>()
+-                .ok()
+-                .zip(number(3))
+-                .filter(|(_, op)| (1..=32).contains(op))
+-                .map(|(id, op)| Action::Interface {
+-                    id,
+-                    operation: op as u8,
+-                    sub: None,
+-                }),
+-            Some("continue") if words.len() == 3 => {
+-                words[2].parse::<u32>().ok().map(Action::Continue)
+-            }
+-            Some("npc") if words.len() == 4 => number(2)
+-                .zip(number(3))
+-                .filter(|(_, op)| (1..=5).contains(op))
+-                .map(|(index, op)| Action::Npc {
+-                    index,
+-                    operation: op as u8,
+-                    sub: 0,
+-                }),
+-            Some("object") if words.len() == 6 => number(2)
++        let item_widget = |slot: u16| {
++            client
++                .interfaces
++                .runtime
++                .iter()
++                .filter(|(_, runtime)| {
++                    runtime.logical_id >> 16 == 149
++                        && runtime.child_index == slot as i32
++                        && runtime.item >= 0
++                })
++                .map(|(&id, _)| id)
++                .min()
++        };
++        if words.get(1) == Some(&"camera") && words.len() == 4 {
++            if let Some((pitch, yaw)) = number(2)
+                 .zip(number(3))
+-                .zip(number(4))
+-                .zip(number(5))
+-                .filter(|(_, op)| (1..=5).contains(op))
+-                .map(|(((id, x), y), op)| Action::Object {
+-                    id,
+-                    tile: [x, y],
+-                    operation: op as u8,
+-                    sub: 0,
+-                }),
+-            Some("observe" | "capture" | "stop") if words.len() == 2 => None,
+-            _ => {
++                .filter(|(pitch, yaw)| (1024..=3064).contains(pitch) && *yaw < 16384)
++            {
++                client.camera.pitch = pitch as i32;
++                client.camera.yaw = yaw as i32;
+                 self.sequence = sequence;
+-                return self.receipt(client, ready, "invalid command");
++                return self.receipt(client, ready, "camera updated");
+             }
+-        };
++        }
++        let action =
++            match words.get(1).copied() {
++                Some("item") if words.len() == 4 => number(2)
++                    .and_then(item_widget)
++                    .zip(number(3))
++                    .filter(|(_, op)| (1..=32).contains(op))
++                    .map(|(id, op)| Action::Interface {
++                        id,
++                        operation: op as u8,
++                        sub: None,
++                    }),
++                Some("select-item") if words.len() == 3 => {
++                    number(2).and_then(item_widget).map(Action::SelectSpell)
++                }
++                Some("use-object") if words.len() == 5 => number(2)
++                    .zip(number(3))
++                    .zip(number(4))
++                    .map(|((id, x), y)| Action::CastWorld {
++                        kind: 0,
++                        id,
++                        tile: [x, y],
++                    }),
++                Some("ground") if words.len() == 6 => number(2)
++                    .zip(number(3))
++                    .zip(number(4))
++                    .zip(number(5))
++                    .filter(|(_, op)| (1..=5).contains(op))
++                    .map(|(((id, x), y), op)| Action::Ground {
++                        id,
++                        tile: [x, y],
++                        operation: op as u8,
++                        sub: 0,
++                    }),
++                Some("walk") if words.len() == 4 => {
++                    number(2).zip(number(3)).map(|(x, y)| Action::Walk([x, y]))
++                }
++                Some("close") if words.len() == 2 => Some(Action::Close),
++                Some("interface") if words.len() == 4 => words[2]
++                    .parse::<u32>()
++                    .ok()
++                    .zip(number(3))
++                    .filter(|(_, op)| (1..=32).contains(op))
++                    .map(|(id, op)| Action::Interface {
++                        id,
++                        operation: op as u8,
++                        sub: None,
++                    }),
++                Some("continue") if words.len() == 3 => {
++                    words[2].parse::<u32>().ok().map(Action::Continue)
++                }
++                Some("npc") if words.len() == 4 => number(2)
++                    .zip(number(3))
++                    .filter(|(_, op)| (1..=5).contains(op))
++                    .map(|(index, op)| Action::Npc {
++                        index,
++                        operation: op as u8,
++                        sub: 0,
++                    }),
++                Some("object") if words.len() == 6 => number(2)
++                    .zip(number(3))
++                    .zip(number(4))
++                    .zip(number(5))
++                    .filter(|(_, op)| (1..=5).contains(op))
++                    .map(|(((id, x), y), op)| Action::Object {
++                        id,
++                        tile: [x, y],
++                        operation: op as u8,
++                        sub: 0,
++                    }),
++                Some("observe" | "capture" | "stop") if words.len() == 2 => None,
++                _ => {
++                    self.sequence = sequence;
++                    return self.receipt(client, ready, "invalid command");
++                }
++            };
++        if action.is_none() && !matches!(words.get(1), Some(&"observe" | &"capture" | &"stop")) {
++            self.sequence = sequence;
++            return self.receipt(client, ready, "invalid arguments or target not available");
++        }
+         if action.is_some() && !ready {
+             return Ok(());
+         }
+@@ -90,7 +166,14 @@ impl Adapter {
+                 self.sequence = sequence;
+                 return self.receipt(client, ready, "action blocked by normal client policy");
+             }
+-            client.menu_action(action)?;
++            if let Action::Interface { id, operation, sub } = action {
++                if !client.interface_operation(id, operation, sub)? {
++                    self.sequence = sequence;
++                    return self.receipt(client, ready, "interface operation unavailable");
++                }
++            } else {
++                client.menu_action(action)?;
++            }
+         }
+         self.sequence = sequence;
+         self.capture = words[1] == "capture";
+@@ -125,6 +208,67 @@ impl Adapter {
+             self.directory.join("receipt.txt"),
+         )?;
+         std::fs::write(self.directory.join("widgets.txt"), format!("{widgets:#?}"))?;
++        std::fs::write(
++            self.directory.join("inventory.txt"),
++            format!("{:?}", client.inventories.containers),
++        )?;
++        std::fs::write(
++            self.directory.join("experience.txt"),
++            format!("{:?}", client.data.experience),
++        )?;
++        let graphics: Vec<_> = client
++            .world_spots
++            .iter()
++            .map(|effect| (effect.position, effect.animation.id, effect.animation.start))
++            .collect();
++        std::fs::write(self.directory.join("graphics.txt"), format!("{graphics:?}"))?;
++        std::fs::write(
++            self.directory.join("levels.txt"),
++            format!(
++                "base={:?}\ncurrent={:?}",
++                client.data.base, client.data.boosted
++            ),
++        )?;
++        let items=client.inventories.containers.get(&93).into_iter().flatten().enumerate().map(|(slot,item)| {
++            let widget=client.interfaces.runtime.iter().filter(|(_,r)|r.logical_id>>16==149 && r.child_index==slot as i32 && r.item==item.id)
++                .map(|(&id,_)|id).min();
++            let operations=widget.and_then(|id|client.interfaces.widgets.get(&id)).map_or(String::new(),|w|w.actions.iter().map(|s|quoted(s)).collect::<Vec<_>>().join(","));
++            format!("{{\"slot\":{slot},\"id\":{},\"count\":{},\"widget\":{},\"operations\":[{operations}]}}",item.id,item.count,widget.map_or("null".into(),|id|id.to_string()))
++        }).collect::<Vec<_>>().join(",");
++        let npcs = client
++            .npc_state
++            .npcs
++            .iter()
++            .map(|(&index, n)| {
++                format!(
++                    "{{\"index\":{index},\"id\":{},\"x\":{},\"z\":{}}}",
++                    n.id, n.position[0], n.position[1]
++                )
++            })
++            .collect::<Vec<_>>()
++            .join(",");
++        let graphics = client
++            .world_spots
++            .iter()
++            .map(|g| {
++                format!(
++                    "{{\"id\":{},\"x\":{},\"z\":{},\"start\":{}}}",
++                    g.animation.id, g.position[1], g.position[2], g.animation.start
++                )
++            })
++            .collect::<Vec<_>>()
++            .join(",");
++        let messages = messages
++            .iter()
++            .map(|s| quoted(s))
++            .collect::<Vec<_>>()
++            .join(",");
++        let state=format!("{{\"sequence\":{},\"status\":{},\"ready\":{ready},\"position\":{:?},\"tick\":{},\"cycle\":{},\"hp\":{},\"base\":{:?},\"xp\":{:?},\"items\":[{items}],\"npcs\":[{npcs}],\"graphics\":[{graphics}],\"messages\":[{messages}]}}",self.sequence,quoted(status),client.data.position,client.server_tick,client.actor_cycle,client.data.boosted[3],client.data.base,client.data.experience);
++        std::fs::write(self.directory.join("state.tmp"), state)?;
++        std::fs::rename(
++            self.directory.join("state.tmp"),
++            self.directory.join("state.json"),
++        )?;
+         Ok(())
+     }
+     pub fn frame(&mut self, raster: &Raster) -> Result<()> {

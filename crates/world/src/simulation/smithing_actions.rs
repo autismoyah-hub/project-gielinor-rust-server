@@ -52,7 +52,7 @@ pub(super) fn complete(
             catalog,
             &mut p.data.stats,
             config.skill,
-            config.xp_rate,
+            config.xp_rate * p.data.xp_rate_hundreds as f64 / 100.0,
             config.max_level,
             random,
         )
@@ -107,6 +107,7 @@ pub(super) fn complete(
             });
             if let Some(config) = cinderworks.filter(|config| config.forged_weapon(product)) {
                 if let Some(text) = config.credit(&mut p.data, p.movement.coords, crate::tower_run::Service::Forge) {
+                    events.push(WorldEvent::CinderworksProgress {actor:p.id,run:p.data.tower_run});
                     events.push(WorldEvent::GameMessage { actor:p.id, text:text.into() });
                 }
             }
@@ -201,6 +202,16 @@ mod tests {
         });
         world.drain_events();
         (world, actor, request)
+    }
+    #[test]
+    fn queued_smithing_applies_character_rate_in_addition_to_global_rate() {
+        for (rate,expected) in [(100,62),(500,310)] {
+            let (mut world,actor,request)=prepared();
+            world.data_mut(actor).unwrap().xp_rate_hundreds=rate;
+            world.start_smithing(actor,request,1).unwrap();
+            for _ in 0..7 {world.tick().unwrap();}
+            assert_eq!(world.data(actor).unwrap().stats.fine_xp(13),expected);
+        }
     }
     #[test]
     fn changed_level_or_removed_tool_stops_pending_and_repeated_jobs() {
