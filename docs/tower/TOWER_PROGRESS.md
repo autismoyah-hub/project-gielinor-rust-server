@@ -24,3 +24,9 @@ Native rendered acceptance has not yet been established. No complete player-driv
 4. Implement layout, ordinary progression, demi-boss, final boss, completion/replay and polish, validating both authoritative simulation and rendered interaction throughout.
 
 Only the comprehensive criteria in [TOWER_ACCEPTANCE.md](TOWER_ACCEPTANCE.md) constitute overall completion.
+
+## Programmatic native validation checkpoint
+
+Published starting SHA verified: `2d8e1634683ceb0614fa7c01fa88e26d36089409`. The isolated native client authenticated to the local server and rendered the existing Tower, receiving the real arrival messages, NPCs and location changes. A local opt-in adapter uses `ClientState::menu_action`, with no desktop input injection and a window configured not to activate. Initial walk requests have not yet produced confirmed movement; this is under investigation and is not accepted gameplay evidence. Baseline frame also exposes camera/UI readability problems. Client validation changes remain on a separate local branch against pinned client baseline.
+
+Reward transaction correction is implemented and all 62 Tower world tests pass. Full floor acceptance remains outstanding. Next: prove native packet-driven movement, retain frame/state receipts, then implement the authored floor layout and route.

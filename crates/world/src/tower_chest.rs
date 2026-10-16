@@ -1,5 +1,5 @@
-//! FloorOneScript.searchBountyChest's inventory core. Each grant commits
-//! separately: a later insertion failure must not roll back earlier grants.
+//! Tower bounty rewards commit as one inventory transaction. A failed claim
+//! leaves both inventory and diary payment unchanged, so retries cannot mint items.
 use crate::{
     inventory::{Catalog, Insert, Inventory},
     tower_diary::{Marks, Sync},
@@ -104,7 +104,7 @@ pub struct Config {
 }
 #[derive(Debug)]
 pub struct Outcome {
-    /// None means no diary payment; preceding inventory grants may still exist.
+    /// None means neither inventory grants nor diary payment committed.
     pub sync: Option<Sync>,
     /// Sent before the optional diary refresh/synchronization effects.
     pub messages: Vec<String>,
@@ -153,11 +153,13 @@ impl Config {
             out.messages.push(waiting(row).into());
             return out;
         }
+        let mut staged = inventory.clone();
         for &(reward, count) in stacks {
-            if inventory
+            if staged
                 .insert(catalog, Insert::new(self.ids[reward as usize], count))
                 .is_err()
             {
+                out.messages.clear();
                 out.messages.push(waiting(row).into());
                 return out;
             }
@@ -168,6 +170,7 @@ impl Config {
                 format!("The chest yields {count} {name}.")
             });
         }
+        *inventory = staged;
         out.sync = Some(marks.pay().session_sync());
         out
     }
@@ -215,7 +218,7 @@ mod tests {
         assert_eq!(inventory.free_space(), 1);
     }
     #[test]
-    fn bank_coin_precheck_can_allow_partial_reward_before_beer_fails() {
+    fn bank_coin_precheck_cannot_mint_partial_rewards_on_retries() {
         let (config, catalog) = config();
         let mut inventory = inv(1);
         let mut bank = inv(1);
@@ -235,23 +238,13 @@ mod tests {
             ..Default::default()
         };
         marks.done[..10].fill(true);
-        let outcome = config.claim(&mut inventory, &inv(0), &bank, &catalog, marks);
-        assert!(outcome.sync.is_none());
-        assert_eq!(
-            outcome.messages,
-            [
-                "The chest yields 50 Coins.",
-                "Your coins are waiting. Drop something."
-            ]
-        );
-        assert_eq!(
-            inventory.get(0),
-            Some(Item {
-                id: 10,
-                count: 50,
-                vars: 0
-            })
-        );
+        let before = inventory.clone();
+        for _ in 0..3 {
+            let outcome = config.claim(&mut inventory, &inv(0), &bank, &catalog, marks);
+            assert!(outcome.sync.is_none());
+            assert_eq!(outcome.messages, ["Your coins are waiting. Drop something."]);
+            assert_eq!(inventory, before);
+        }
         assert_eq!(bank.get(0).unwrap().count, 1);
     }
     #[test]

@@ -18,3 +18,5 @@ Required demonstrations:
 - Published source, engine-delta ledger, integration risks and explicit remaining limitations.
 
 Record policy/unit, differential, simulation integration, native rendering and full end-to-end evidence separately. Missing external capabilities remain blockers, never silently waived criteria. Continue independent work while a blocker is investigated.
+
+Native validation must use programmatic normal client actions and real packets. Physical desktop mouse/keyboard injection, focus changes and coordinate-click automation are prohibited. Native and headless adapters share action encoding and authoritative server behavior. A receipt acknowledging submission is not proof of server acceptance; acceptance must assert resulting server-delivered state.
