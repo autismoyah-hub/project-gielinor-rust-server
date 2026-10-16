@@ -28,6 +28,7 @@ mod shop;
 mod skill_multi;
 mod dough;
 mod finished_potions;
+mod potion_upgrades;
 mod unfinished_potions;
 mod swamp_tar;
 mod herb_cleaning;
@@ -2822,6 +2823,9 @@ impl<B: AccountBackend> Runtime<B> {
                                             }
                                             if let Some(choice)=self.world.take_finished_potion_request(actor).map_err(|e|io::Error::other(format!("{e:?}")))? {
                                                 self.open_finished_potion(actor,choice)?;
+                                            }
+                                            if let Some(choice)=self.world.take_potion_upgrade_request(actor).map_err(|e|io::Error::other(format!("{e:?}")))? {
+                                                self.open_potion_upgrade(actor,choice)?;
                                             }
                                             if let Some(choice)=self.world.take_dough_request(actor).map_err(|e|io::Error::other(format!("{e:?}")))? {
                                                 self.open_dough(actor,choice)?;

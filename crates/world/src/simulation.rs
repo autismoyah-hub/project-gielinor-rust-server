@@ -33,6 +33,7 @@ mod grinding_actions;
 mod swamp_tar_actions;
 mod dough_actions;
 mod finished_potion_actions;
+mod potion_upgrade_actions;
 mod unfinished_potion_actions;
 mod herb_cleaning_actions;
 mod mining_actions;
@@ -178,6 +179,7 @@ enum Deferred {
     SwampTar(crate::swamp_tar::Pending),
     Dough(crate::dough::Pending),
     FinishedPotion(crate::finished_potions::Pending),
+    PotionUpgrade(crate::potion_upgrades::Pending),
     UnfinishedPotion(crate::unfinished_potions::Pending),
     ItemPack {
         pack: i32,
@@ -231,6 +233,7 @@ enum LocationAction {
 struct Player {
     dough_request: Option<crate::dough::Request>,
     finished_potion_request: Option<crate::finished_potions::Request>,
+    potion_upgrade_request: Option<crate::potion_upgrades::Request>,
     unfinished_potion_request: Option<crate::unfinished_potions::Request>,
     member: bool,
     stat_events: crate::stat_events::Events,
@@ -312,6 +315,8 @@ impl Player {
         self.dough_request = None;
         self.finished_potion_request = None;
         self.queues.remove_all(crate::finished_potions::QUEUE);
+        self.potion_upgrade_request = None;
+        self.queues.remove_all(crate::potion_upgrades::QUEUE);
         self.unfinished_potion_request = None;
         self.queues.remove_all(crate::unfinished_potions::QUEUE);
         // The current source's normal launch clears interactions; launchLenient
@@ -626,6 +631,7 @@ pub enum WorldEvent {
     SwampTarMade { actor: ActorId, trace: crate::swamp_tar::Transition },
     DoughMade { actor: ActorId, trace: crate::dough::Transition },
     FinishedPotionMade { actor: ActorId, trace: crate::finished_potions::Transition },
+    PotionUpgradeMade { actor: ActorId, trace: crate::potion_upgrades::Transition },
     UnfinishedPotionMade { actor: ActorId, trace: crate::unfinished_potions::Transition },
     AssemblyMade { actor: ActorId, trace: crate::assembly::Transition },
     HerbCleaned { actor: ActorId, trace: crate::herb_cleaning::Transition },
@@ -877,6 +883,7 @@ pub struct World {
     pub water_sources: Option<crate::water_sources::Config>,
     pub dough: Option<crate::dough::Config>,
     pub finished_potions: Option<crate::finished_potions::Config>,
+    pub potion_upgrades: Option<crate::potion_upgrades::Config>,
     pub unfinished_potions: Option<crate::unfinished_potions::Config>,
     pub swamp_tar: Option<crate::swamp_tar::Config>,
     pub herb_cleaning: Option<crate::herb_cleaning::Config>,
@@ -983,6 +990,7 @@ impl Default for World {
             unfinished_potions: None,
             swamp_tar: None,
             finished_potions: None,
+            potion_upgrades: None,
             prayer: None,
             regeneration: None,
             session_vars: None,
@@ -2429,6 +2437,9 @@ impl World {
                                                 Deferred::FinishedPotion(job) => {
                                                     finished_potion_actions::complete(p, queues, job, &self.object_types, self.clock.0, &mut self.events, random, &mut chemistry_worn_changes);
                                                 }
+                                                Deferred::PotionUpgrade(job) => {
+                                                    potion_upgrade_actions::complete(p, queues, job, &self.object_types, self.clock.0, &mut self.events, random, &mut chemistry_worn_changes);
+                                                }
                                                 Deferred::Dough(job) => {
                                                     dough_actions::complete(p, queues, job, &self.object_types, self.clock.0, &mut self.events);
                                                 }
@@ -2925,6 +2936,7 @@ impl World {
                             member: false,
                             dough_request: None,
                             finished_potion_request: None,
+                            potion_upgrade_request: None,
                             unfinished_potion_request: None,
                             tower_restore_pending: false,
                             tower_tastes: Default::default(),

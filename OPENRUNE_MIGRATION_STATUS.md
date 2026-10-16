@@ -2861,3 +2861,12 @@ All listed runs require client exit0, fresh durable logout, clean owned exit0 an
 - `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
 - State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":200,"after":400},"3077":{"before":3603,"after":49290},"3079":{"before":147,"after":133},"65515":{"before":136,"after":260}}}`
 - Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Server commit cadence and strict slots only; native action/state/save receipts required separately"}`
+
+
+## Stamina runtime integration (native pending)
+
+Four validated stamina dose recipes now use the existing native Make dialog, shared weak-queue scheduler, action cancellation and account state. Both selected-use orders resolve the exact base potion and shared amylase slot. Two-clock commits debit1/2/3/4 crystals and award25.5XP per input dose at the live rate; repeats preserve the selected stack and revalidate membership, quest, level, movement, inventory and worn modifiers. Ordinary potion routes remain separately typed. Chemistry extra output is the next validated dose; fourthose inputs are ineligible. Output, charges/crumble, goggles saving and exact fineXP are traced for independent native assessment. No new tick engine or persistence schema.
+
+Runtime regression attempt002 PASS57server403world1ignored; compile1m31s,world27.96s. Guard4389MiB78.7percentcommit42page-ins/s1.2msdisk35.8percentCPU,j2. Attempt001 was RESOURCE_DEFERRED by this agent's own process-lifetime build lease retained during the superior native pipeline; the pipeline was preserved and the build resumed after clean completion. Other agents' compiler presence was informational. A line-ending expansion from the integration helper was reconciled to original unchanged-line bytes before validation/review.
+
+Native stamina tooling prepared and installed: full28fixture with shared20amylase, four distinct input doses,22pots and1000coins; four actual Use/Make1 steps expect10crystals consumed and12750fineXP. Independent synthetic state/stat/cadence/packet/Make corruption checks101PASS. Matching server/driver builds, login control, fresh gameplay and same-save acceptance are next; no native stamina or broader upgrade claim yet.

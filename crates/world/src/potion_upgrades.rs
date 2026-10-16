@@ -535,3 +535,111 @@ mod tests {
         assert_eq!((inv, stats, gear, state), before);
     }
 }
+
+// Shared world scheduler content adapter; no independent tick engine.
+pub(crate) const QUEUE: i32 = -2391010;
+#[derive(Clone, Debug)]
+pub struct Config {
+    pub chemistry: std::collections::BTreeMap<i32, crate::chemistry_modifier::Binding>,
+    pub goggles: [i32;2],
+    pub recipes: std::collections::BTreeMap<(i32, i32), Recipe>,
+    pub quest_progress: u16,
+    pub quest_complete: i32,
+    pub animation: u16,
+}
+#[derive(Clone, Copy, Debug)]
+pub struct Request {
+    pub base: i32,
+    pub secondary: i32,
+    pub base_slot: usize,
+    pub secondary_slot: usize,
+    pub origin: crate::CoordGrid,
+    pub last_movement: i32,
+}
+impl Config {
+    pub fn request(
+        &self,
+        held: crate::held_use::Request,
+        origin: crate::CoordGrid,
+        last_movement: i32,
+    ) -> Option<Request> {
+        if held.selected_slot < 0 || held.target_slot < 0 || held.selected_slot == held.target_slot
+        {
+            return None;
+        }
+        let (base, base_slot, secondary, secondary_slot) =
+            if self.recipes.contains_key(&(held.selected_id, held.target_id)) {
+                (
+                    held.selected_id,
+                    held.selected_slot,
+                    held.target_id,
+                    held.target_slot,
+                )
+            } else {
+                (
+                    held.target_id,
+                    held.target_slot,
+                    held.selected_id,
+                    held.selected_slot,
+                )
+            };
+        self.recipes.get(&(base, secondary))?;
+        Some(Request {
+            base,
+            secondary,
+            base_slot: base_slot as usize,
+            secondary_slot: secondary_slot as usize,
+            origin,
+            last_movement,
+        })
+    }
+}
+#[derive(Clone, Copy, Debug)]
+pub(crate) struct Pending {
+    pub chemistry: Option<crate::chemistry_modifier::Binding>,
+    pub goggles: [i32;2],
+    pub job: Job,
+    pub request: Request,
+    pub remaining: i32,
+    pub queued_at: i32,
+    pub index: u32,
+    pub quest_progress: u16,
+    pub quest_complete: i32,
+    pub animation: u16,
+}
+#[derive(Clone, Copy, Debug)]
+pub struct Transition {
+    pub output: i32,
+    pub chemistry: crate::chemistry::Proc,
+    pub charges_remaining: u8,
+    pub secondary_saved: bool,
+    pub job: Job,
+    pub queued_at: i32,
+    pub committed_at: i32,
+    pub index: u32,
+    pub fine_before: i32,
+    pub fine_after: i32,
+    pub rate_hundreds: i32,
+}
+impl Transition {
+    pub fn json(self, actor: crate::simulation::ActorId) -> String {
+        format!(
+            "{{\"actor_slot\":{},\"actor_generation\":{},\"base_slot\":{},\"secondary_slot\":{},\"base\":{},\"secondary\":{},\"output\":{},\"count\":1,\"queued_at\":{},\"committed_at\":{},\"index\":{},\"base_fine_xp\":{},\"rate_hundreds\":{},\"fine_before\":{},\"fine_after\":{},\"secondary_saved\":{},\"extra_dose\":{},\"amulet_crumbled\":{},\"stop_on_crumble\":{},\"charges_remaining\":{}}}",
+            actor.slot,
+            actor.generation,
+            self.job.base_slot,
+            self.job.secondary_slot,
+            self.job.recipe.base,
+            self.job.recipe.secondary,
+            self.output,
+            self.queued_at,
+            self.committed_at,
+            self.index,
+            u32::from(self.job.recipe.fine_xp_per_dose) * u32::from(self.job.recipe.doses),
+            self.rate_hundreds,
+            self.fine_before,
+            self.fine_after,
+            self.secondary_saved, self.chemistry.extra_dose, self.chemistry.crumbled, self.chemistry.stop, self.charges_remaining
+        )
+    }
+}
