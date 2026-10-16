@@ -254,3 +254,61 @@ Preserved failed native run `openrune-native-milk-menu-001`: authentic rendered 
 Root cause: Rectangle::valid rejected cache approach bytes above 15; cow 60788 carries 23. Original Kotlin accepts the whole byte. High bits must survive until rotation; masking the byte before rotation changes valid sides. Removed that restriction without changing rotation. Angle 2 yields cardinal mask 13, permitting east access; new isolated fixture starts at 3254,3271, with cow at 3253,3271. Existing failed database is untouched.
 
 Validation: scripts/packed-reach-parity.ps1 compiled the original Kotlin routefinder and compared all 256 bytes, four rotations, three actor sizes and four cardinal sides (12,288 vectors). PASS, Rust test original_kotlin_full_byte_approach_flags_match. Fixture SHA256 91D5FDB52F14CA76D8D34956E110E11A7DB0D034B9485CAF7232CA803071B7EE; original Rotations.kt SHA256 659FF4B735711740E01E7946AA190CF55B8C66F888D2A8B7C689B5A7A473878B. Evidence work/packed-reach-parity-001.log. Targeted world regressions PASS 2/2 (packed rotation matrix and actual milk action routing), work/packed-reach-unit-001.log. Native fixed-build acceptance remains pending; no issue closure is warranted yet.
+
+Fixed approach archive: AFCFB6E5604B3591FCCB0D08C5C1DCCCA6339D07FD295BD34BFDF5EB29D4A02C, 370 source-file hashes, build 24.31s (`work/openrune-packed-approach-build-001.log`, receipt `work/openrune-packed-approach-001-server-build.json`). Repair committed/pushed as 231f33710596f8a9b4159f332e0e99a26d182b14; normal Git local/remote SHAs matched. Issue116 update comment6209353084 records failed native evidence and pending acceptance; issue54 comment6209381216 records bounded water/grinding deterministic validation and successful seventeen-pack native/same-save evidence.
+
+New milk-002 driver: source B9F4C06B8BC20575F8A1C3CBD49AF401F89ADB58415C067474D40998BAD7E836; executable 7C1B370025170801440DB016AE3290EBC483E66634062AA9306308791C601FC8; same immutable client library baseline. New east-side fixture identity 61c991da30534c81d0fa1d791ab33a46adf956d081e943852b45d719674c7cb3. Matching control openrune-milk-login-control-002 PASS: native client exit0, server14552 clean exit0, not forced, fresh logout2026-10-16 06:20:16; save observed in10.328s. Deferred attempts1–4 did not reset the prepared database; attempt5 resumed after exact initial-export hash verification and passed the unchanged immediate CPU/memory/paging/compiler guard. Gameplay runs are recorded separately when assessed.
+
+
+## Ordinary milk native acceptance, both routes and same-save relogin (2026-10-16 UTC)
+Archive AFCFB6E5604B3591FCCB0D08C5C1DCCCA6339D07FD295BD34BFDF5EB29D4A02C; driver milk-002; matching control openrune-milk-login-control-002. Menu and use runs start from separately cloned, identical east-side fixtures. Relogin runs reuse their predecessor database after exact final-state hash comparison, never reset it. Genuine rendered cow60788 selection and generated menu dispatch are required.
+
+- `openrune-native-milk-menu-002` PASS: slot0 admitted/queued71 -> commit74 (3ticks); slot1 admitted/queued74 -> commit82 (8ticks); fresh logout 2026-10-16 06:22:02, observed 10.313s; server3832 clean exit0.
+  - `client.log` SHA256 `bbe51faecbfc0a98b6e7b41727b76a4a093f38beb52779f03a801b346980eec5`
+  - `server.log` SHA256 `3fde59b713ce1021b84d98585366cdba2eaad84eff4cab27e226035ed391b69b`
+  - `initial-state.json` SHA256 `d71fe2753bf78c080d07903f5cb1e1f7adf2a9dda17f052de5b2b4c4b1fa92f4`
+  - `final-state.json` SHA256 `f08bcfe6ba955717e2dab009cb06ec345d5cf42fb401b9bb5805bddb431408a3`
+  - `pack-assessment.json` SHA256 `2bc62893617a8df7a79eafcddb989eb7091ae0a9e1ac5aa8469f972ef0636201`
+  - `milk-trace-assessment.json` SHA256 `b0b7e27ea4a7652819989bcc6538b550ba80133f383306515d8f3ad7ad21c170`
+  - `logout-observation.json` SHA256 `6cfd2a77849afe1799f59f2e979917cdb3ad4b0dff596457bc2b06e2204d9b92`
+  - `shutdown.json` SHA256 `381e62d59159fd9a153856c75e6609b2c742de62fe8bace886fecf95e90b6e2c`
+  - `result.json` SHA256 `fd80787ba5d37e2b5fb1d4bde638437b57c8800accb903c463ebb4bcc80eec1c`
+  - `pack-run.json` SHA256 `f3f94c5331dabdf1fbcb25942acc2dadb45f0b8b3043d03fb429450b7b23d4b4`
+
+- `openrune-native-milk-menu-relogin-002` PASS: no new milk transitions; fresh logout 2026-10-16 06:23:25, observed 10.094s; server2464 clean exit0.
+  - `client.log` SHA256 `f1be5faf085c30a2eeb1829a545bd7d5d40fe17723ffce32275a7772ea8eb2de`
+  - `server.log` SHA256 `10bd8d41280b813512d8cffea30809df17d4136242e62331c901a0fa0663eb78`
+  - `initial-state.json` SHA256 `f08bcfe6ba955717e2dab009cb06ec345d5cf42fb401b9bb5805bddb431408a3`
+  - `final-state.json` SHA256 `3dbc4a5eb4de9a9c71e9a03d757f3daff5ce5c1db5cb8fd9292faa206a91cef8`
+  - `pack-assessment.json` SHA256 `fd4a484a5892c3496ed8ca92f48ffb74ca5010ec3483e4ac77fe6a303b0e6dcd`
+  - `milk-trace-assessment.json` SHA256 `6f0388a9d56de705a16f260d75dda31ada34ad9ff98044d11fe61bd4c812472f`
+  - `logout-observation.json` SHA256 `6e48539440cb89fb7f2b8ebdf3b4a4aa9ce81969c30cf7dd81cd0b37ee69c248`
+  - `shutdown.json` SHA256 `eb6f6fa3ffd3ccc81eb2abc7813df5050a8e1f9e45519c11648d865370bf5151`
+  - `result.json` SHA256 `6ebbcf50807451dc1b7147d17755ed7a6137bbe253b0495fb34a389127871210`
+  - `pack-run.json` SHA256 `12ad63123d88bd6da8a191bd5a0043935434627dd9eb9ce17f92476e1f46ae24`
+
+- `openrune-native-milk-use-002` PASS: slot1 admitted/queued73 -> commit77 (4ticks); slot0 admitted/queued77 -> commit85 (8ticks); fresh logout 2026-10-16 06:24:59, observed 10.312s; server18684 clean exit0.
+  - `client.log` SHA256 `d7f723e91c86f210a7fcb416c18d6e3956fbfca891c2a6c9c35aa87dbea2b719`
+  - `server.log` SHA256 `5d8a8d0b1e3d531652290f39260c35461cf2cb73d8f5cf8e2a4088ef9a7ad264`
+  - `initial-state.json` SHA256 `d71fe2753bf78c080d07903f5cb1e1f7adf2a9dda17f052de5b2b4c4b1fa92f4`
+  - `final-state.json` SHA256 `0507f558923bdcf36908b1bdc98a28854d297caa1c1784c05fd53d7566d61ae1`
+  - `pack-assessment.json` SHA256 `df0359fa63ec2ef82e04c62c9394f64aecf935ae3d7027af22cd1461d71c4dc7`
+  - `milk-trace-assessment.json` SHA256 `09dfdb003917f3f2c6f5c98441259cdc8d7ca25525da3ae990e2c2c0093be5a4`
+  - `logout-observation.json` SHA256 `e29787a43371d7dd036f25389ae992551a85d195687bb787e03a8181d7c1c921`
+  - `shutdown.json` SHA256 `c45b0f8ea42f859e89880963a6871090aa71e7173eabe2c87de1be54c157e68f`
+  - `result.json` SHA256 `f373db0a2a65ef025086996134a97044f204d94acac8f1462f203c3133151bed`
+  - `pack-run.json` SHA256 `b5a1bd28db3d2198ba96570e47f98f7e218f0b5816b2977ddf915fe007ce37de`
+
+- `openrune-native-milk-use-relogin-002` PASS: no new milk transitions; fresh logout 2026-10-16 06:29:26, observed 10.578s; server18024 clean exit0.
+  - `client.log` SHA256 `03e80c4b79c1015b235b164102f3e1101e94c22804fbadfd29b177332acf4019`
+  - `server.log` SHA256 `e900e9db14748baff8cc40f09cf9cf8ad41ba3fe8c662fb0b587cf206f8a6443`
+  - `initial-state.json` SHA256 `0507f558923bdcf36908b1bdc98a28854d297caa1c1784c05fd53d7566d61ae1`
+  - `final-state.json` SHA256 `42be68832a6db9c9ff5d63a632658f993394b212ff498383a85f4369e3ebc42f`
+  - `pack-assessment.json` SHA256 `43f8d8f19921db755f2d138b1d3d3be7883dc2431024f548594afa7f5f3da9fe`
+  - `milk-trace-assessment.json` SHA256 `6f0388a9d56de705a16f260d75dda31ada34ad9ff98044d11fe61bd4c812472f`
+  - `logout-observation.json` SHA256 `d215a8522e5d7f321a010f6d5e648dea2f0f93dc0000a8c90b97cf8475ccbca7`
+  - `shutdown.json` SHA256 `eb9a79b5b1dcacd17054f4ece99c75cd53ce5dfd1b03662066b591ab3feee0d7`
+  - `result.json` SHA256 `82c8f7dcaba4944497840df02c6989778f8309115dbda1f43d3f307f9ff502c1`
+  - `pack-run.json` SHA256 `a6eafc268d3aebace58cc2bd10ab426fa38a1901a5bd9557da8db866f5253f00`
+
+Ordinary acceptance proves selected slot replacement, two-bucket automatic continuation, first3 menu/first4 use/repeat8 authoritative ticks, unchanged XP/coins/exported non-session state, static varps against the observed control, durable saves and native same-save restoration. Client packet/display ticks are separately recorded and are not the server admission clock. Bottomless buckets, 2026 content policy, other cow variants native acceptance, interruptions in native scenes, exact session timer behavior, rendered animation correctness and multiplayer remain unverified; #116 remains open.
