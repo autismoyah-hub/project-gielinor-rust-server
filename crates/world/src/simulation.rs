@@ -2406,7 +2406,7 @@ impl World {
                                                     unfinished_potion_actions::complete(p, queues, job, &self.object_types, self.clock.0, &mut self.events);
                                                 }
                                                 Deferred::FinishedPotion(job) => {
-                                                    finished_potion_actions::complete(p, queues, job, &self.object_types, self.clock.0, &mut self.events);
+                                                    finished_potion_actions::complete(p, queues, job, &self.object_types, self.clock.0, &mut self.events, random);
                                                 }
                                                 Deferred::Dough(job) => {
                                                     dough_actions::complete(p, queues, job, &self.object_types, self.clock.0, &mut self.events);

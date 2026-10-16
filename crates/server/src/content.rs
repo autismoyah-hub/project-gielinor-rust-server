@@ -2355,3 +2355,48 @@ mod finished_potion_binding_tests {
         }
     }
 }
+
+/// Two target-revision cosmetic variants of prescription goggles.
+pub fn finished_potion_goggles(objects: &Symbols, defs: &Definitions) -> Result<[i32; 2], String> {
+    let mut result = [0; 2];
+    for (index, name) in ["mm_alchemist_hat", "mm_alchemist_hat_alt"].into_iter().enumerate() {
+        let id = *objects.get(name).ok_or_else(|| format!("Missing goggles symbol {name}"))?;
+        let item = defs.items.get(&(id as u32)).ok_or_else(|| format!("Missing goggles definition {name}"))?;
+        if id < 0 || !item.members || item.stackable || item.cert.template != 0 || item.placeholder.template != 0
+            || item.dummy == 1 || item.wear[0] != 0 || item.inventory_ops[1].as_deref() != Some("Wear") {
+            return Err(format!("Invalid target goggles definition {name}"));
+        }
+        result[index] = id;
+    }
+    if result[0] == result[1] { return Err("Goggles variants alias".into()); }
+    Ok(result)
+}
+#[cfg(test)]
+mod finished_goggles_binding_tests {
+    use super::*;
+    #[test]
+    fn goggles_require_distinct_ordinary_member_head_equipment() {
+        for invalid in 0..10 {
+            let mut names=Symbols::new();
+            let mut defs=Definitions{inventories:Default::default(),locations:Default::default(),npcs:Default::default(),items:Default::default(),varbits:Default::default(),varps:Default::default(),stats:Default::default()};
+            for (name,id) in [("mm_alchemist_hat",29974),("mm_alchemist_hat_alt",29976)] {
+                names.insert(name.into(),id);
+                let mut item=gielinor_cache::definitions::ItemType::decode(&[16,13,0,0]).unwrap();
+                item.inventory_ops[1]=Some("Wear".into());defs.items.insert(id as u32,item);
+            }
+            match invalid {
+                0=>{assert_eq!(finished_potion_goggles(&names,&defs).unwrap(),[29974,29976]);continue;}
+                1=>{names.remove("mm_alchemist_hat");}
+                2=>{names.insert("mm_alchemist_hat_alt".into(),29974);}
+                3=>defs.items.get_mut(&29974).unwrap().members=false,
+                4=>defs.items.get_mut(&29974).unwrap().stackable=true,
+                5=>defs.items.get_mut(&29974).unwrap().cert.template=799,
+                6=>defs.items.get_mut(&29974).unwrap().placeholder.template=14401,
+                7=>defs.items.get_mut(&29974).unwrap().dummy=1,
+                8=>defs.items.get_mut(&29974).unwrap().wear[0]=1,
+                _=>defs.items.get_mut(&29974).unwrap().inventory_ops[1]=None,
+            }
+            assert!(finished_potion_goggles(&names,&defs).is_err(),"case{invalid}");
+        }
+    }
+}

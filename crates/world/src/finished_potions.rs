@@ -35,6 +35,42 @@ pub enum Outcome {
     InvalidReward,
 }
 impl Job {
+    /// Prescription goggles for the currently supported ordinary single-secondary
+    /// recipes. The caller resolves live equipment and recipe eligibility.
+    /// Validate the ordinary exchange before drawing; publish inventory and XP
+    /// together, including when the secondary is retained in its selected slot.
+    pub fn complete_with_goggles(
+        &self,
+        inventory: &mut Inventory,
+        catalog: &Catalog,
+        stats: &mut Stats,
+        member: bool,
+        quest_complete: bool,
+        rate_hundreds: i32,
+        eligible_goggles: bool,
+        random: &mut impl crate::npc::RandomSource,
+    ) -> (Outcome, bool) {
+        let mut next_inventory = inventory.clone();
+        let mut next_stats = stats.clone();
+        let outcome = self.complete(&mut next_inventory, catalog, &mut next_stats, member, quest_complete, rate_hundreds);
+        if !matches!(outcome, Outcome::Made(_)) { return (outcome, false); }
+        let saved = eligible_goggles && random.below(10) == 0;
+        if saved {
+            // Removing only the unfinished vial leaves the selected secondary
+            // untouched even when it precedes the vial in a full backpack.
+            next_inventory = inventory.clone();
+            let mut debit = crate::inventory::Delete::new(self.recipe.unfinished, 1);
+            debit.strict_slot = Some(self.unfinished_slot);
+            if next_inventory.delete(catalog, debit).is_err()
+                || next_inventory.insert(catalog, crate::inventory::Insert::new(self.recipe.output, 1)).is_err() {
+                return (Outcome::Capacity, false);
+            }
+        }
+        *inventory = next_inventory;
+        *stats = next_stats;
+        (outcome, saved)
+    }
+
     pub fn complete(
         &self,
         inventory: &mut Inventory,
@@ -209,8 +245,48 @@ mod tests {
         ]
     }
     #[test]
+    fn goggles_keep_selected_secondary_and_full_reward_for_every_profile_and_order() {
+        struct Draw { value:u32, calls:usize }
+        impl crate::npc::RandomSource for Draw {
+            fn below(&mut self, limit:u32)->u32 {assert_eq!(limit,10);self.calls+=1;self.value}
+        }
+        for recipe in profiles() {
+            for reverse in [false,true] {
+                for draw in 0..10 {
+                    let (job,mut inventory,catalog,mut stats)=fixture(recipe,reverse);
+                    let before=stats.fine_xp(15);let mut rng=Draw{value:draw,calls:0};
+                    let (outcome,saved)=job.complete_with_goggles(&mut inventory,&catalog,&mut stats,true,true,500,true,&mut rng);
+                    assert!(matches!(outcome,Outcome::Made(_)));assert_eq!(saved,draw==0);assert_eq!(rng.calls,1);
+                    assert_eq!(stats.fine_xp(15)-before,i32::from(recipe.base_fine_xp)*5);
+                    if saved {
+                        assert_eq!(inventory.get(job.secondary_slot),Some(Item{id:recipe.secondary,count:1,vars:0}));
+                        assert_eq!(inventory.get(job.unfinished_slot),Some(Item{id:recipe.output,count:1,vars:0}));
+                    } else {
+                        assert_eq!(inventory.get(0),Some(Item{id:recipe.output,count:1,vars:0}));assert!(inventory.get(1).is_none());
+                    }
+                    let final_state=(inventory.clone(),stats.clone());
+                    assert_eq!(job.complete_with_goggles(&mut inventory,&catalog,&mut stats,true,true,500,true,&mut rng),(Outcome::Stale,false));
+                    assert_eq!((inventory,stats),final_state);assert_eq!(rng.calls,1);
+                }
+            }
+        }
+        for mode in 0..6 {
+            let (job,mut inv,mut catalog,mut stats)=fixture(profiles()[1],false);
+            if mode==3 {inv.restore_slot(1,None).unwrap();}
+            if mode==4 {catalog.dummy.insert(job.recipe.output);}
+            if mode==5 {stats.set_current(15,1);}
+            let before=(inv.clone(),stats.clone());let mut rng=Draw{value:0,calls:0};
+            let (outcome,saved)=job.complete_with_goggles(&mut inv,&catalog,&mut stats,mode!=0,mode!=1,if mode==2{0}else{500},true,&mut rng);
+            assert!(!matches!(outcome,Outcome::Made(_)));assert!(!saved);assert_eq!(rng.calls,0);assert_eq!((inv,stats),before);
+        }
+        let (job,mut inv,catalog,mut stats)=fixture(profiles()[1],true);let mut rng=Draw{value:0,calls:0};
+        let (outcome,saved)=job.complete_with_goggles(&mut inv,&catalog,&mut stats,true,true,500,false,&mut rng);
+        assert!(matches!(outcome,Outcome::Made(_)));assert!(!saved);assert_eq!(rng.calls,0);
+    }
+
+    #[test]
     fn ingredient_pairs_preserve_shared_bases_and_reverse_selected_slots() {
-        let config=Config{recipes:profiles().into_iter().map(|r|((r.unfinished,r.secondary),r)).collect(),quest_progress:80,quest_complete:4,animation:363};
+        let config=Config{goggles:[29974,29976],recipes:profiles().into_iter().map(|r|((r.unfinished,r.secondary),r)).collect(),quest_progress:80,quest_complete:4,animation:363};
         assert_eq!(config.recipes.len(),9);
         let origin=crate::CoordGrid::new(3200,3200,0).unwrap();
         for recipe in profiles() {
@@ -360,6 +436,7 @@ mod tests {
 pub(crate) const QUEUE: i32 = -2391008;
 #[derive(Clone, Debug)]
 pub struct Config {
+    pub goggles: [i32;2],
     pub recipes: std::collections::BTreeMap<(i32, i32), Recipe>,
     pub quest_progress: u16,
     pub quest_complete: i32,
@@ -414,6 +491,7 @@ impl Config {
 }
 #[derive(Clone, Copy, Debug)]
 pub(crate) struct Pending {
+    pub goggles: [i32;2],
     pub job: Job,
     pub request: Request,
     pub remaining: i32,
@@ -425,6 +503,7 @@ pub(crate) struct Pending {
 }
 #[derive(Clone, Copy, Debug)]
 pub struct Transition {
+    pub secondary_saved: bool,
     pub job: Job,
     pub queued_at: i32,
     pub committed_at: i32,
@@ -436,7 +515,7 @@ pub struct Transition {
 impl Transition {
     pub fn json(self, actor: crate::simulation::ActorId) -> String {
         format!(
-            "{{\"actor_slot\":{},\"actor_generation\":{},\"unfinished_slot\":{},\"secondary_slot\":{},\"unfinished\":{},\"secondary\":{},\"output\":{},\"count\":1,\"queued_at\":{},\"committed_at\":{},\"index\":{},\"base_fine_xp\":{},\"rate_hundreds\":{},\"fine_before\":{},\"fine_after\":{}}}",
+            "{{\"actor_slot\":{},\"actor_generation\":{},\"unfinished_slot\":{},\"secondary_slot\":{},\"unfinished\":{},\"secondary\":{},\"output\":{},\"count\":1,\"queued_at\":{},\"committed_at\":{},\"index\":{},\"base_fine_xp\":{},\"rate_hundreds\":{},\"fine_before\":{},\"fine_after\":{},\"secondary_saved\":{}}}",
             actor.slot,
             actor.generation,
             self.job.unfinished_slot,
@@ -450,7 +529,8 @@ impl Transition {
             self.job.recipe.base_fine_xp,
             self.rate_hundreds,
             self.fine_before,
-            self.fine_after
+            self.fine_after,
+            self.secondary_saved
         )
     }
 }

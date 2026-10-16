@@ -43,6 +43,7 @@ impl World {
             .get(&(request.unfinished, request.secondary))
             .ok_or(ActionError::InvalidItem)?;
         let pending = Pending {
+            goggles:config.goggles,
             job: Job {
                 recipe,
                 unfinished_slot: request.unfinished_slot,
@@ -78,6 +79,7 @@ pub(super) fn complete(
     catalog: &crate::inventory::Catalog,
     clock: i32,
     events: &mut Vec<WorldEvent>,
+    random: &mut impl RandomSource,
 ) {
     if p.pending_logout
         || p.saving
@@ -93,13 +95,16 @@ pub(super) fn complete(
     let eligible = p.data.variables.get(pending.quest_progress) == pending.quest_complete;
     let fine_before = p.data.stats.fine_xp(15);
     let rate_hundreds = p.data.xp_rate_hundreds;
-    let outcome = pending.job.complete(
+    let eligible_goggles=p.data.equipment.get(0).is_some_and(|item| item.count==1 && item.vars==0 && pending.goggles.contains(&item.id));
+    let (outcome,secondary_saved) = pending.job.complete_with_goggles(
         &mut p.data.inventory,
         catalog,
         &mut p.data.stats,
         p.member,
         eligible,
         rate_hundreds,
+        eligible_goggles,
+        random,
     );
     let message = match outcome {
         Outcome::Made(_) => "You mix the ingredients into your potion.",
@@ -124,6 +129,7 @@ pub(super) fn complete(
     events.push(WorldEvent::FinishedPotionMade {
         actor: p.id,
         trace: crate::finished_potions::Transition {
+            secondary_saved,
             job: pending.job,
             queued_at: pending.queued_at,
             committed_at: clock,
@@ -204,6 +210,7 @@ mod tests {
         let pos = CoordGrid::new(3200, 3200, 0).unwrap();
         w.collision.allocate(3200, 3200, 0);
         w.finished_potions = Some(Config {
+            goggles:[29974,29976],
             recipes: [(
                 (93, 235),
                 Recipe {
@@ -445,4 +452,30 @@ mod tests {
         assert_eq!(products(&w, a), 0);
         assert_eq!(w.data(a).unwrap().stats, before);
     }
+    #[test]
+    fn goggles_variants_are_rechecked_on_each_repeat_and_preserve_saved_slot() {
+        struct Save { calls: usize }
+        impl RandomSource for Save {
+            fn below(&mut self, bound:u32)->u32 {assert_eq!(bound,10);self.calls+=1;0}
+        }
+        for hat in [29974,29976] {
+            let (mut w,a,r)=fixture();
+            w.data_mut(a).unwrap().equipment.restore_slot(0,Some(Item{id:hat,count:1,vars:0})).unwrap();
+            let request=choose(&mut w,a,r);w.start_finished_potion(a,request,0,28).unwrap();
+            let mut random=Save{calls:0};
+            for _ in 0..3 {w.tick_with_random(&mut random).unwrap();}
+            assert_eq!(random.calls,1);assert_eq!(products(&w,a),1);
+            assert_eq!(w.data(a).unwrap().inventory.get(3),Some(Item{id:235,count:1,vars:0}));
+            assert_eq!(w.data(a).unwrap().stats.fine_xp(15),5756);
+            w.data_mut(a).unwrap().equipment.restore_slot(0,None).unwrap();
+            for _ in 0..2 {w.tick_with_random(&mut random).unwrap();}
+            assert_eq!(products(&w,a),2);assert_eq!(random.calls,1);
+            assert_eq!(w.data(a).unwrap().stats.fine_xp(15),7631);
+            let saved=w.drain_events().iter().filter_map(|e|match e{WorldEvent::FinishedPotionMade{trace,..}=>Some(trace.secondary_saved),_=>None}).collect::<Vec<_>>();
+            assert_eq!(saved,[true,false]);
+            for _ in 0..4 {w.tick_with_random(&mut random).unwrap();}
+            assert_eq!(random.calls,1);assert_eq!(products(&w,a),2);
+        }
+    }
+
 }
