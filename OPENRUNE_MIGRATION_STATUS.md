@@ -2287,3 +2287,49 @@ Recipe selection now keys on (herb, vessel), preserving all 15 water profiles wh
 Rust validation alternate-unfinished-tests-attempt-002 PASS:52server+382world,1existing ignored;382 source hashes unchanged. Compile14.58s/world25.61s. Guard4327MiB available,79.4percent commit,0page-ins/s,0ms disk,43.2percent CPU,j2. New scheduler test checks six water/alternate profiles in both item-use orders, selected slots then repeats, per-recipe cadence, full inventory and zero XP/no replay. Initial attempt001 failed only its new expected-slot assertion (expected0/1; correct outputs0/2 after selecting2/3 first); failure evidence retained. No runtime behavior was changed to satisfy that assertion. Synthetic native state/trace assessors passed274 corruption-sensitivity checks; these are not native acceptance.
 
 Weapon poison native attempt001 RESOURCE_DEFERRED at CPU77.1percent,4030MiB,81.8percent commit,516page-ins/s,7msdisk; exact prepared fixture retained. Attempt002 resumed under CPU26.8percent,4906MiB,76.1percent commit,504page-ins/s,7.3msdisk. Final-three native evidence posted to Issue67 comment6223508877; issue remains open.
+
+## Native gameplay weaponpoison acceptance (2026-10-16 UTC)
+
+Two actual native kwuarm/dragon-scale-dust Use/Make1 operations in opposite selected orders produce two ordinary Weapon poisons. Exact13750fineXP at5x, two-clock commits, full28initial/first-free outputs, unrelated state and same-save no replay. This accepts production only; weapon application and poison damage remain separate.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking/Herblore parity or unrelated recipes. No issue closure.
+
+`openrune-native-weaponpoison-001` PASS. Server archive `41B9113FCF195E6F5E44A9582B5A48A74C197328B673184D179D9B061122AD5D`, driver `weaponpoison-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID7892.
+- Driver `server_weaponpoison.exe` SHA256 `2519C3E6B0C2F7FF882FE5AB799EEA2E9B05ED4A378ED2692715CC3F11CD434E`
+- Driver `NativeWeaponPoisonScenario.rs` SHA256 `51E4F59DBE426C6BE9183CDCD5169438FE82A716B7C873E71BD0EA40B0153DB2`
+- `client.log` SHA256 `9bbfb06b643af16c71abf6b4af1a3e51e27956d262a3fbb675e43cc5332ec795`
+- `server.log` SHA256 `317a85443bb6c4246f397f49ae8580060c6c26f0c2fcfdc99851b8b60cd7ac59`
+- `initial-state.json` SHA256 `1c5cddadf3cebfe9f7386186ff4260e60ad2182fb24facb30d2ac6785a9325cd`
+- `final-state.json` SHA256 `1e794c2dd131c6011c8bbb893a6eed230680506f4ebac0653ad8d4a7184f1b3d`
+- `pack-assessment.json` SHA256 `a342b0cdcd94efa27c9cd5f2066ac81cb99c31cd647eabf9b901305f1067d561`
+- `weaponpoison-trace-assessment.json` SHA256 `a3eb65d0219032c3b5faa4e046c74f8c5a937a6c30b1dd6786e6fe319ac1a8bd`
+- `logout-observation.json` SHA256 `8a241d3f7f2082709ef6c0d71b3510e7020f4105f72f90c92754a0f361d5ffaa`
+- `shutdown.json` SHA256 `dd0f95435493d0878e94d079a06df06e58acf3e96d55f93d3168d10902ee98d7`
+- `result.json` SHA256 `bb7efc1dff22e976eef674ecb69c909e1552287dd5314bfc2bc6b08f964df0b1`
+- `pack-run.json` SHA256 `122386329c4425e8948b5b28120fb92a52be6e1926b1b2a80de5772c379bd0b6`
+- `native-profile-assessment.json` SHA256 `3f14a170fae57aa7fb1d7cec162cb49aa87debcbb735e6b036598733a23eb947`
+- `native-packet-assessment.json` SHA256 `de5e4fc6e12f25cadb36408d940df5355f1a16a5fadef7473fb0fd9d1192af96`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":400},"3077":{"before":0,"after":60671},"3079":{"before":0,"after":202},"65515":{"before":0,"after":193}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[{"actor_slot":1,"actor_generation":614,"unfinished_slot":0,"secondary_slot":1,"unfinished":105,"secondary":241,"output":187,"count":1,"queued_at":167,"committed_at":169,"index":0,"base_fine_xp":1375,"rate_hundreds":500,"fine_before":130344311,"fine_after":130351186,"secondary_saved":false},{"actor_slot":1,"actor_generation":614,"unfinished_slot":2,"secondary_slot":3,"unfinished":105,"secondary":241,"output":187,"count":1,"queued_at":180,"committed_at":182,"index":0,"base_fine_xp":1375,"rate_hundreds":500,"fine_before":130351186,"fine_after":130358061,"secondary_saved":false}],"scope":"Separate selected-profile two-tick commits; UI evidence and packet/display latency separate"}`
+
+`openrune-native-weaponpoison-relogin-001` PASS. Server archive `41B9113FCF195E6F5E44A9582B5A48A74C197328B673184D179D9B061122AD5D`, driver `weaponpoison-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor `openrune-native-weaponpoison-001`, owned PID9712.
+- Driver `server_weaponpoison.exe` SHA256 `2519C3E6B0C2F7FF882FE5AB799EEA2E9B05ED4A378ED2692715CC3F11CD434E`
+- Driver `NativeWeaponPoisonScenario.rs` SHA256 `51E4F59DBE426C6BE9183CDCD5169438FE82A716B7C873E71BD0EA40B0153DB2`
+- `client.log` SHA256 `fee501d6c4597b74845dee4283d9ee00303eed15ed92cb244e6dea47e54b55d1`
+- `server.log` SHA256 `cac66b993146120f8de2402f5af67d1e518da791712c04bce9ce409890f4063c`
+- `initial-state.json` SHA256 `1e794c2dd131c6011c8bbb893a6eed230680506f4ebac0653ad8d4a7184f1b3d`
+- `final-state.json` SHA256 `99e955e329773e2c6ed756ca80d2d2c26527099f3211a16efb9f9083b7d3d587`
+- `pack-assessment.json` SHA256 `8c92bfad48a037d3a8375cebbd9dfda65210eb2efe60c9d8f579a21c5f2fa79e`
+- `weaponpoison-trace-assessment.json` SHA256 `15565119835c4387827e07e673e26fc0ec5897457d403e87d7333c03aaf96013`
+- `logout-observation.json` SHA256 `217b09f72a0d1ddd863e2e0cfe35d7babac661c11e9137c147febe449be03fb9`
+- `shutdown.json` SHA256 `1c3858289b32b226fb824904f9a57a40031af02f601f22f192861bdefa13ac64`
+- `result.json` SHA256 `193414a9cc1b1722c88a1f5d6eec74f17fb8409e98777655e6d47c5033e3c832`
+- `pack-run.json` SHA256 `ba780eb8feec72d5ebabb01ed3058fd2bb7d3dd7a078333726f1b9443c16dc12`
+- `native-profile-assessment.json` SHA256 `3f14a170fae57aa7fb1d7cec162cb49aa87debcbb735e6b036598733a23eb947`
+- `native-packet-assessment.json` SHA256 `0c4a87939678237a45fb62199ce54319ce51c9e5fbf0c301d16f518d4ef9de89`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":400,"after":600},"3077":{"before":60671,"after":55166},"3079":{"before":202,"after":101},"65515":{"before":193,"after":287}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Separate selected-profile two-tick commits; UI evidence and packet/display latency separate"}`
