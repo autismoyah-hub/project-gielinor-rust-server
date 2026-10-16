@@ -26,6 +26,7 @@ pub mod gameframe;
 pub mod ground;
 pub mod ground_transfer;
 pub mod held_use;
+pub mod herb_cleaning;
 pub mod hit_display;
 pub mod hits;
 pub mod inventory;

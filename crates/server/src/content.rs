@@ -1678,3 +1678,123 @@ mod dough_binding_tests {
         assert!(dough(&symbols, &defs, 7).is_err());
     }
 }
+
+/// Prepared herb profiles only: automatic timing and live operation registration remain pending.
+pub fn herb_cleaning(
+    symbols: &Symbols,
+    defs: &Definitions,
+    skill: u8,
+) -> Result<Vec<gielinor_world::herb_cleaning::Recipe>, String> {
+    let mut seen = std::collections::BTreeSet::new();
+    let mut recipes = Vec::new();
+    for (input, output, level, base_fine_xp) in [
+        ("unidentified_guam", "guam_leaf", 3, 25),
+        ("unidentified_marentill", "marentill", 5, 38),
+    ] {
+        let mut ids = Vec::new();
+        for (name, clean) in [(input, true), (output, false)] {
+            let id = *symbols
+                .get(name)
+                .ok_or_else(|| format!("Missing herb symbol {name}"))?;
+            let item = defs
+                .items
+                .get(&(id as u32))
+                .ok_or_else(|| format!("Missing herb definition {name}"))?;
+            if id < 0
+                || !seen.insert(id)
+                || item.stackable
+                || item.cert.template != 0
+                || item.placeholder.template != 0
+                || item.dummy == 1
+                || !item.members
+            {
+                return Err(format!("Invalid ordinary herb {name}"));
+            }
+            if clean && item.inventory_ops[0].as_deref() != Some("Clean") {
+                return Err(format!("Missing Clean operation for {name}"));
+            }
+            if !clean
+                && item
+                    .inventory_ops
+                    .iter()
+                    .any(|op| op.as_deref() == Some("Clean"))
+            {
+                return Err(format!("Clean output still has Clean operation: {name}"));
+            }
+            ids.push(id);
+        }
+        recipes.push(gielinor_world::herb_cleaning::Recipe {
+            input: ids[0],
+            output: ids[1],
+            skill,
+            level,
+            base_fine_xp,
+        });
+    }
+    Ok(recipes)
+}
+#[cfg(test)]
+mod herb_binding_tests {
+    use super::*;
+    fn fixture() -> (Symbols, Definitions) {
+        let mut symbols = Symbols::new();
+        let mut defs = Definitions {
+            inventories: Default::default(),
+            locations: Default::default(),
+            npcs: Default::default(),
+            items: Default::default(),
+            varbits: Default::default(),
+            varps: Default::default(),
+            stats: Default::default(),
+        };
+        for (i, name) in [
+            "unidentified_guam",
+            "guam_leaf",
+            "unidentified_marentill",
+            "marentill",
+        ]
+        .into_iter()
+        .enumerate()
+        {
+            let mut raw = vec![16];
+            if i % 2 == 0 {
+                raw.extend_from_slice(&[35, b'C', b'l', b'e', b'a', b'n', 0]);
+            }
+            raw.push(0);
+            symbols.insert(name.into(), 100 + i as i32);
+            defs.items.insert(
+                100 + i as u32,
+                gielinor_cache::definitions::ItemType::decode(&raw).unwrap(),
+            );
+        }
+        (symbols, defs)
+    }
+    #[test]
+    fn herb_profiles_require_member_unnoted_definitions_and_exact_clean_operations() {
+        let (symbols, defs) = fixture();
+        let recipes = herb_cleaning(&symbols, &defs, 15).unwrap();
+        assert_eq!(
+            recipes
+                .iter()
+                .map(|r| (r.input, r.output, r.level, r.base_fine_xp))
+                .collect::<Vec<_>>(),
+            [(100, 101, 3, 25), (102, 103, 5, 38)]
+        );
+        for mode in 0..8 {
+            let (mut symbols, mut defs) = fixture();
+            match mode {
+                0 => defs.items.get_mut(&100).unwrap().inventory_ops[0] = None,
+                1 => defs.items.get_mut(&101).unwrap().cert.template = 799,
+                2 => defs.items.get_mut(&101).unwrap().placeholder.template = 14401,
+                3 => defs.items.get_mut(&101).unwrap().dummy = 1,
+                4 => defs.items.get_mut(&100).unwrap().stackable = true,
+                5 => defs.items.get_mut(&100).unwrap().members = false,
+                6 => {
+                    symbols.insert("marentill".into(), 101);
+                }
+                _ => defs.items.get_mut(&101).unwrap().inventory_ops[0] = Some("Clean".into()),
+            }
+            assert!(herb_cleaning(&symbols, &defs, 15).is_err(), "mode{mode}");
+        }
+    }
+}

@@ -1171,3 +1171,21 @@ All listed runs require client exit0, fresh durable logout, clean owned exit0 an
 - `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
 - State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":200,"after":300},"3077":{"before":28230,"after":30309},"3079":{"before":125,"after":86},"65515":{"before":118,"after":198}}}`
 - Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Server assembly clocks and selected slots, not packet/display latency"}`
+
+## Herb transaction and dough capacity regressions validated (2026-10-16 UTC)
+
+`build.ps1 -Action test -CargoArgs @('-p','gielinor-world','-p','gielinor-server','--lib')` PASS on attempt002:46server +359world,0failures,1existing ignored. Compilation30.75s; server0.19s, world8.86s. Guard measured5390MiB available,70.2% commit,0pages-in/s,7.6% CPU and selected2jobs. This supersedes the uncompiled status of the four herb transaction tests, one herb-definition validation test and dough capacity/recovery scheduler test above. Marrentill verifies both1x and5x while preserving an existing fractional remainder. No herb runtime registration or auto-clean timing acceptance follows from these tests.
+
+Native capacity driver doughcapacity001 built1.72s and pinned against the unchanged isolated client baseline. Native control/action/relogin are still pending. All driver attempt001 was compiler-deferred, so it remains NOT BUILT. Use existing7C3952D6 archive for these dough acceptance profiles: it contains the existing dough runtime; new herb preparation is not included or accepted by that archive.
+
+- `work/herb-capacity-full-tests-attempt-002.log` SHA256 `2cefcf2c26c0bbfcac899c8ed516836eda5b8a80df473907cd6ec14449ff6790`
+
+- `integration/scenario-drivers/doughcapacity-001/manifest.json` SHA256 `473147b49b43ebd18e654c690dd18f3ca276f5b30d9f37ef8f18eb23ac0e04d6`
+
+- `work/doughcapacity-driver-attempt-001.log` SHA256 `136bbe0f10fdebff22f1f697465fbe14bc345a65d0de169383f082a232eff603`
+
+- `crates/world/src/herb_cleaning.rs` SHA256 `ff8574334314dee150c838c35d42f97c6f5fb8c99b629f3f1aafa15af4f9a226`
+
+- `crates/world/src/simulation/dough_actions.rs` SHA256 `c79c8fc5fdcd125472cdccc54032449ac85a8dc8c29487675a3f4fc4d357478e`
+
+- `crates/server/src/content.rs` SHA256 `3b33d44fab2be16032bd4c617fa2445a0955f3279eb4a9cb496d5e14e7e9bf90`

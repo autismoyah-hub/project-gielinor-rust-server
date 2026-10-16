@@ -297,6 +297,75 @@ mod tests {
         }
     }
     #[test]
+    fn capacity_failure_stops_quantity_and_requires_a_new_choice_after_space_is_freed() {
+        let (mut w, a, r) = fixture();
+        for slot in [4, 5] {
+            w.data_mut(a)
+                .unwrap()
+                .inventory
+                .restore_slot(
+                    slot,
+                    Some(Item {
+                        id: 995,
+                        count: 1,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+        }
+        let original = w.data(a).unwrap().inventory.clone();
+        let stats = w.data(a).unwrap().stats.clone();
+        let request = choose(&mut w, a, r);
+        w.start_dough(a, request, 0, 2).unwrap();
+        for _ in 0..5 {
+            w.tick().unwrap();
+        }
+        assert_eq!(w.data(a).unwrap().inventory, original);
+        assert_eq!(w.data(a).unwrap().stats, stats);
+        let events = w.drain_events();
+        assert!(
+            !events
+                .iter()
+                .any(|e| matches!(e, WorldEvent::DoughMade { .. }))
+        );
+        assert_eq!(events.iter().filter(|e| matches!(e, WorldEvent::LocationMessage { message, .. } if *message == "You need another free inventory space to keep the dough and both containers.")).count(), 1);
+
+        // Removing unrelated filler cannot revive a failed quantity operation.
+        w.data_mut(a)
+            .unwrap()
+            .inventory
+            .restore_slot(5, None)
+            .unwrap();
+        let freed = w.data(a).unwrap().inventory.clone();
+        for _ in 0..5 {
+            w.tick().unwrap();
+        }
+        assert_eq!(w.data(a).unwrap().inventory, freed);
+        let request = choose(&mut w, a, r);
+        w.start_dough(a, request, 0, 2).unwrap();
+        for _ in 0..5 {
+            w.tick().unwrap();
+        }
+        assert_eq!(count(&w, a, 14), 1);
+        assert_eq!(count(&w, a, 10), 1);
+        assert_eq!(count(&w, a, 11), 1);
+        assert_eq!(w.data(a).unwrap().inventory.get(0), original.get(0));
+        assert_eq!(w.data(a).unwrap().inventory.get(1), original.get(1));
+        assert_eq!(w.data(a).unwrap().inventory.get(4), original.get(4));
+        assert_eq!(w.data(a).unwrap().inventory.get(2).unwrap().id, 12);
+        assert_eq!(w.data(a).unwrap().inventory.get(3).unwrap().id, 13);
+        assert_eq!(w.data(a).unwrap().stats, stats);
+        let events = w.drain_events();
+        assert_eq!(
+            events
+                .iter()
+                .filter(|e| matches!(e, WorldEvent::DoughMade { .. }))
+                .count(),
+            1
+        );
+        assert_eq!(events.iter().filter(|e| matches!(e, WorldEvent::LocationMessage { message, .. } if *message == "You need another free inventory space to keep the dough and both containers.")).count(), 1);
+    }
+    #[test]
     fn interruption_after_first_output_preserves_only_committed_dough() {
         for mode in 0..3 {
             let (mut w, a, r) = fixture();
