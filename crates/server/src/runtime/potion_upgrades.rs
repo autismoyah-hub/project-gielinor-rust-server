@@ -24,8 +24,10 @@ impl<B: AccountBackend> Runtime<B> {
         let ordinary=self.world.finished_potions.as_ref().ok_or_else(||io::Error::other("Configure ordinary chemistry first"))?;
         let amulet=ordinary.chemistry.values().next().ok_or_else(||io::Error::other("Missing validated ordinary amulet"))?.amulet;
         let extended=crate::content::extended_venom_upgrades(names.group("obj"),&self.definitions).map_err(io::Error::other)?;
-        let chemistry=recipes.windows(2).chain(extended.windows(2)).map(|pair|(pair[0].output,gielinor_world::chemistry_modifier::Binding{amulet,extra_output:pair[1].output})).collect();
+        let divine=crate::content::divine_upgrades(names.group("obj"),&self.definitions).map_err(io::Error::other)?;
+        let chemistry=recipes.windows(2).chain(extended.windows(2)).chain(divine.chunks_exact(4).flat_map(|family|family.windows(2))).map(|pair|(pair[0].output,gielinor_world::chemistry_modifier::Binding{amulet,extra_output:pair[1].output})).collect();
         recipes.extend(extended);
+        recipes.extend(divine);
         self.world.potion_upgrades = Some(gielinor_world::potion_upgrades::Config {
             chemistry,
             goggles:crate::content::finished_potion_goggles(names.group("obj"), &self.definitions).map_err(io::Error::other)?,

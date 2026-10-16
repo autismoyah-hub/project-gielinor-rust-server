@@ -16,6 +16,7 @@ pub struct Recipe {
     pub fine_xp_per_dose: u16,
     pub level: u8,
     pub ticks: u8,
+    pub allow_goggles: bool,
 }
 #[derive(Clone, Copy, Debug)]
 pub struct Job {
@@ -49,6 +50,7 @@ impl Job {
         random: &mut impl crate::npc::RandomSource,
     ) -> (Outcome, bool) {
         let r = self.recipe;
+        let goggles = goggles && r.allow_goggles;
         let fail = |outcome| (outcome, false);
         let ordinary = |id| {
             id >= 0
@@ -173,6 +175,7 @@ impl Job {
         binding: Option<crate::chemistry_modifier::Binding>,
         random: &mut impl crate::npc::RandomSource,
     ) -> Modified {
+        let goggles = goggles && self.recipe.allow_goggles;
         let none = crate::chemistry::Proc {
             extra_dose: false,
             crumbled: false,
@@ -323,6 +326,7 @@ mod tests {
                 fine_xp_per_dose: 255,
                 level: 77,
                 ticks: 2,
+                allow_goggles: true,
             },
             base_slot: if reverse { 1 } else { 0 },
             secondary_slot: if reverse { 0 } else { 1 },
@@ -535,6 +539,16 @@ mod tests {
         );
         assert_eq!(result.outcome, Outcome::InvalidRecipe);
         assert_eq!((inv, stats, gear, state), before);
+    }
+    #[test]
+    fn divine_policy_never_draws_goggles_but_keeps_chemistry_and_fractional_xp(){
+        for doses in 1..=4 {
+            let (mut job,mut inv,catalog,mut stats)=fixture(doses,false);job.recipe.allow_goggles=false;job.recipe.fine_xp_per_dose=5;let fine=stats.fine_xp(15);
+            let mut gear=Inventory::new(14,StackType::Normal,false);gear.restore_slot(2,Some(Item{id:21163,count:1,vars:0})).unwrap();let mut state=crate::chemistry::State::restore(1,1).unwrap();
+            let mut rng=Sequence(if doses<4{[(100,0)].into()}else{Default::default()});
+            let result=job.complete_with_modifiers(&mut inv,&catalog,&mut stats,&mut gear,&mut state,true,true,500,true,Some(crate::chemistry_modifier::Binding{amulet:21163,extra_output:103}),&mut rng);
+            assert!(matches!(result.outcome,Outcome::Made(_)));assert!(!result.saved);assert_eq!(result.chemistry.extra_dose,doses<4);assert_eq!(stats.fine_xp(15)-fine,25*i32::from(doses));assert_eq!(inv.get(job.secondary_slot).unwrap().count,9-i32::from(doses));assert!(rng.0.is_empty());
+        }
     }
 }
 

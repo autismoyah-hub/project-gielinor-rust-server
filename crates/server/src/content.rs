@@ -2753,7 +2753,7 @@ pub fn stamina_upgrades(objects:&Symbols,defs:&Definitions)->Result<Vec<gielinor
     for doses in 1..=4 {
         let base=bind(&format!("{doses}dose2energy"),false,Some(doses))?;
         let output=bind(&format!("{doses}dosestamina"),false,Some(doses))?;
-        recipes.push(gielinor_world::potion_upgrades::Recipe{base,secondary,output,doses,secondary_per_dose:1,fine_xp_per_dose:255,level:77,ticks:2});
+        recipes.push(gielinor_world::potion_upgrades::Recipe{base,secondary,output,doses,secondary_per_dose:1,fine_xp_per_dose:255,level:77,ticks:2,allow_goggles:true});
     }
     Ok(recipes)
 }
@@ -2797,7 +2797,7 @@ pub fn extended_venom_upgrades(objects:&Symbols,defs:&Definitions)->Result<Vec<g
     for doses in 1..=4 {
         let base=bind(&format!("antivenom+{doses}"),false,Some(doses))?;
         let output=bind(&format!("extended_antivenom+{doses}"),false,Some(doses))?;
-        recipes.push(gielinor_world::potion_upgrades::Recipe{base,secondary,output,doses,secondary_per_dose:1,fine_xp_per_dose:200,level:94,ticks:3});
+        recipes.push(gielinor_world::potion_upgrades::Recipe{base,secondary,output,doses,secondary_per_dose:1,fine_xp_per_dose:200,level:94,ticks:3,allow_goggles:true});
     }
     Ok(recipes)
 }
@@ -2815,5 +2815,110 @@ mod extended_venom_binding_tests {
         let recipes=extended_venom_upgrades(&symbols,&defs).unwrap();assert_eq!(recipes.len(),4);
         for (i,r) in recipes.iter().enumerate(){let n=i as i32+1;assert_eq!((r.base,r.secondary,r.output,r.doses,r.secondary_per_dose,r.fine_xp_per_dose,r.level,r.ticks),(12921-2*n,29784,29836-3*n,n as u8,1,200,94,3));}
         symbols.remove("araxyte_venom_sack");symbols.insert("snakeboss_scale".into(),29784);assert!(extended_venom_upgrades(&symbols,&defs).is_err());
+    }
+}
+
+// Wiki divine recipes: ordinary dust23964,0.5XP/dose, no goggles saving.
+pub fn divine_upgrades(objects:&Symbols,defs:&Definitions)->Result<Vec<gielinor_world::potion_upgrades::Recipe>,String> {
+    let mut ids=std::collections::BTreeSet::new();
+    let mut bind=|name:&str,stackable:bool,dose:Option<u8>|->Result<i32,String>{
+        let id=*objects.get(name).ok_or_else(||format!("Missing upgrade symbol {name}"))?;
+        let item=defs.items.get(&(id as u32)).ok_or_else(||format!("Missing upgrade definition {name}"))?;
+        if id<0 || !ids.insert(id) || item.stackable!=stackable || !item.members || item.cert.template!=0 || item.placeholder.template!=0 || item.dummy==1
+            || dose.is_some_and(|n|item.inventory_ops[0].as_deref()!=Some("Drink") || !item.name.ends_with(&format!("({n})"))) {
+            return Err(format!("Invalid upgrade definition {name}"));
+        }
+        Ok(id)
+    };
+    let secondary=bind("prif_crystal_shard_crushed",true,None)?;
+    let mut recipes=Vec::new();
+    for (base_suffix,output_suffix,level) in [("2attack","divineattack",70),("2strength","divinestrength",70),("2defense","divinedefence",70),("rangerspotion","divinerange",74),("1magic","divinemagic",78),("bastion","divinebastion",86),("battlemage","divinebattlemage",86),("2combat","divinecombat",97)] {
+    for doses in 1..=4 {
+        let base=bind(&format!("{doses}dose{base_suffix}"),false,Some(doses))?;
+        let output=bind(&format!("{doses}dose{output_suffix}"),false,Some(doses))?;
+        recipes.push(gielinor_world::potion_upgrades::Recipe{base,secondary,output,doses,secondary_per_dose:1,fine_xp_per_dose:5,level,ticks:2,allow_goggles:false});
+    }
+    }
+    Ok(recipes)
+}
+
+#[cfg(test)]
+mod divine_binding_tests {
+    use super::*;
+    #[test]
+    fn all_thirty_two_doses_use_ordinary_dust_fractional_xp_and_no_goggles(){
+        let mut symbols=Symbols::new();let mut defs=Definitions{inventories:Default::default(),locations:Default::default(),npcs:Default::default(),items:Default::default(),varbits:Default::default(),varps:Default::default(),stats:Default::default()};
+        for (name,id,label,stackable) in [
+            ("prif_crystal_shard_crushed",23964,"Crystal dust",true),
+            ("1dose2attack",149,"Super attack(1)",false),
+            ("2dose2attack",147,"Super attack(2)",false),
+            ("3dose2attack",145,"Super attack(3)",false),
+            ("4dose2attack",2436,"Super attack(4)",false),
+            ("1dosedivineattack",23706,"Divine super attack potion(1)",false),
+            ("2dosedivineattack",23703,"Divine super attack potion(2)",false),
+            ("3dosedivineattack",23700,"Divine super attack potion(3)",false),
+            ("4dosedivineattack",23697,"Divine super attack potion(4)",false),
+            ("1dose2strength",161,"Super strength(1)",false),
+            ("2dose2strength",159,"Super strength(2)",false),
+            ("3dose2strength",157,"Super strength(3)",false),
+            ("4dose2strength",2440,"Super strength(4)",false),
+            ("1dosedivinestrength",23718,"Divine super strength potion(1)",false),
+            ("2dosedivinestrength",23715,"Divine super strength potion(2)",false),
+            ("3dosedivinestrength",23712,"Divine super strength potion(3)",false),
+            ("4dosedivinestrength",23709,"Divine super strength potion(4)",false),
+            ("1dose2defense",167,"Super defence(1)",false),
+            ("2dose2defense",165,"Super defence(2)",false),
+            ("3dose2defense",163,"Super defence(3)",false),
+            ("4dose2defense",2442,"Super defence(4)",false),
+            ("1dosedivinedefence",23730,"Divine super defence potion(1)",false),
+            ("2dosedivinedefence",23727,"Divine super defence potion(2)",false),
+            ("3dosedivinedefence",23724,"Divine super defence potion(3)",false),
+            ("4dosedivinedefence",23721,"Divine super defence potion(4)",false),
+            ("1doserangerspotion",173,"Ranging potion(1)",false),
+            ("2doserangerspotion",171,"Ranging potion(2)",false),
+            ("3doserangerspotion",169,"Ranging potion(3)",false),
+            ("4doserangerspotion",2444,"Ranging potion(4)",false),
+            ("1dosedivinerange",23742,"Divine ranging potion(1)",false),
+            ("2dosedivinerange",23739,"Divine ranging potion(2)",false),
+            ("3dosedivinerange",23736,"Divine ranging potion(3)",false),
+            ("4dosedivinerange",23733,"Divine ranging potion(4)",false),
+            ("1dose1magic",3046,"Magic potion(1)",false),
+            ("2dose1magic",3044,"Magic potion(2)",false),
+            ("3dose1magic",3042,"Magic potion(3)",false),
+            ("4dose1magic",3040,"Magic potion(4)",false),
+            ("1dosedivinemagic",23754,"Divine magic potion(1)",false),
+            ("2dosedivinemagic",23751,"Divine magic potion(2)",false),
+            ("3dosedivinemagic",23748,"Divine magic potion(3)",false),
+            ("4dosedivinemagic",23745,"Divine magic potion(4)",false),
+            ("1dosebastion",22470,"Bastion potion(1)",false),
+            ("2dosebastion",22467,"Bastion potion(2)",false),
+            ("3dosebastion",22464,"Bastion potion(3)",false),
+            ("4dosebastion",22461,"Bastion potion(4)",false),
+            ("1dosedivinebastion",24644,"Divine bastion potion(1)",false),
+            ("2dosedivinebastion",24641,"Divine bastion potion(2)",false),
+            ("3dosedivinebastion",24638,"Divine bastion potion(3)",false),
+            ("4dosedivinebastion",24635,"Divine bastion potion(4)",false),
+            ("1dosebattlemage",22458,"Battlemage potion(1)",false),
+            ("2dosebattlemage",22455,"Battlemage potion(2)",false),
+            ("3dosebattlemage",22452,"Battlemage potion(3)",false),
+            ("4dosebattlemage",22449,"Battlemage potion(4)",false),
+            ("1dosedivinebattlemage",24632,"Divine battlemage potion(1)",false),
+            ("2dosedivinebattlemage",24629,"Divine battlemage potion(2)",false),
+            ("3dosedivinebattlemage",24626,"Divine battlemage potion(3)",false),
+            ("4dosedivinebattlemage",24623,"Divine battlemage potion(4)",false),
+            ("1dose2combat",12701,"Super combat potion(1)",false),
+            ("2dose2combat",12699,"Super combat potion(2)",false),
+            ("3dose2combat",12697,"Super combat potion(3)",false),
+            ("4dose2combat",12695,"Super combat potion(4)",false),
+            ("1dosedivinecombat",23694,"Divine super combat potion(1)",false),
+            ("2dosedivinecombat",23691,"Divine super combat potion(2)",false),
+            ("3dosedivinecombat",23688,"Divine super combat potion(3)",false),
+            ("4dosedivinecombat",23685,"Divine super combat potion(4)",false),
+        ] {
+            let mut item=gielinor_cache::definitions::ItemType::decode(&[16,0]).unwrap();item.name=label.into();item.stackable=stackable;if !stackable{item.inventory_ops[0]=Some("Drink".into());}defs.items.insert(id as u32,item);symbols.insert(name.into(),id);
+        }
+        let recipes=divine_upgrades(&symbols,&defs).unwrap();assert_eq!(recipes.len(),32);
+        for (i,r) in recipes.iter().enumerate(){assert_eq!((r.secondary,r.doses,r.secondary_per_dose,r.fine_xp_per_dose,r.ticks,r.allow_goggles),(23964,(i%4+1) as u8,1,5,2,false));assert_eq!(r.level,[70,70,70,74,78,86,86,97][i/4]);}
+        let mut quest=gielinor_cache::definitions::ItemType::decode(&[16,0]).unwrap();quest.name="Crystal dust".into();quest.inventory_ops[4]=Some("Destroy".into());defs.items.insert(23804,quest);symbols.insert("prif_crystal_shard_crushed".into(),23804);assert!(divine_upgrades(&symbols,&defs).is_err());
     }
 }

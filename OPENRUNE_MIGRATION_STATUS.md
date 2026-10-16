@@ -2971,3 +2971,21 @@ All listed runs require client exit0, fresh durable logout, clean owned exit0 an
 - `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
 - State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":400,"after":600},"3077":{"before":18231,"after":6800},"3079":{"before":218,"after":126},"65515":{"before":207,"after":322}}}`
 - Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Separate selected-profile three-tick commits; UI evidence and packet/display latency separate"}`
+
+
+## Divine potion runtime: corrected dust and fractional XP (native pending)
+
+Registered all 32 dose recipes across eight OpenRune divine families through the existing dose-upgrade Make and scheduler path. Each input dose consumes one ordinary crystal dust and awards 0.5 XP, with a two-tick cadence. The recipes enforce the goggles exclusion internally; a caller cannot accidentally enable secondary saving. Ordinary chemistry remains eligible below four input doses, with no extra ingredient cost or XP. Each family has its own next-dose map.
+
+The donor uses sote_crystal_dust (23804), which independently decodes as nonstackable quest dust with Destroy and an Arianwyn replacement message. The pinned Wiki identifies ordinary Crystal dust as23964 and the quest variant as23804. Correct binding: prif_crystal_shard_crushed23964. All65 ordinary input/output/dust definitions were decoded and verified. The donor also supplies5XP per dose; the eight pinned Wiki recipe pages specify0.5XP. These discrepancies were corrected, not ported. Crystal-shard acquisition and crushing have a separate Song of the Elves requirement and are outside this potion-production implementation.
+
+- Divine super attack potion: revision15331554, SHA256 `b8389ef97c40c0d58ab9dafcbe879edf97da3f808b0d21102692bd94e9b85403`.
+- Divine super strength potion: revision15331557, SHA256 `2ec3e2bc018bd150cc38dc4214c9ab9b3f7083f39a900254d12928fb0bd1991d`.
+- Divine super defence potion: revision15331556, SHA256 `b87459cbf077372feeca317e3b0e3b74035b5664b801c0dd65634e668de25cec`.
+- Divine ranging potion: revision15331553, SHA256 `2d0fd39621e9ab33a59b6d6d0a102318a2c51c3b97c7c58b432dc5a40e9a1891`.
+- Divine magic potion: revision15331552, SHA256 `f3094163e953372a718c06e1e9c16c42aee4de78cb02eec99c75a0bc437256ce`.
+- Divine bastion potion: revision15331551, SHA256 `d1469cd10b86eaf6eb0cf5a9ade1514e44a16ca5356cab016474ed33e28ed6fe`.
+- Divine battlemage potion: revision15331550, SHA256 `a0035b3ca3f3840628f9327560640dfd41ca6573e2574d85a2c2f093ee4eb89e`.
+- Divine super combat potion: revision15331555, SHA256 `0c6f79050971d98443f021d94a16fada8506d4fc83447b3c46c979dbb2b83d7a`.
+
+Regression attempt001 passed59server405world tests, with1existing ignored test. Compile1m13s; world37.24s. Guard4238MiB available,79.0percentcommit,0page-ins/s,0.6msdisk,20.3percentCPU; Cargo-j2. Binding tests reject quest dust; modifier tests prove zero goggles draws, exact fractional XP and continuing chemistry eligibility. Four native batches are prepared, each with eight dose recipes and equipped goggles. Matching builds, independent native assessments and same-save acceptance remain pending; no rendered or full parity claim.
