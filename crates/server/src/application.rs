@@ -434,6 +434,7 @@ pub fn run() -> io::Result<()> {
         quench_tiles:vec![tower_origin.translate(53,71,0).unwrap(),tower_origin.translate(60,71,0).unwrap()],
         warning_graphic:names.short("spotanim", "smokepuff")?,
         strike_graphic:names.short("spotanim", "zamorak_flame")?,
+        death_animation:names.short("seq", "human_death")?,
         work:Some(gielinor_world::tower_cinderworks::WorkConfig {
             fishing_spot:names.short("npc", "0_48_48_newbiefishing")?, net:names.id("obj", "net")? as i32,
             raw:names.id("obj", "raw_shrimp")? as i32,cooked:names.id("obj", "shrimp")? as i32,

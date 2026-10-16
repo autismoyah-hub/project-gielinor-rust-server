@@ -110,7 +110,6 @@ pub fn prepare(
         (56, 52, 1, "plaque"),
         (60, 60, 1, "threshold_portal"),
         (60, 52, 0, "altar"),
-        (56, 76, 0, "threshold_stair"),
         (56, 60, 1, "threshold_stair"),
         (58, 43, 0, "crate_old"),
         (34, 70, 0, "tree"),

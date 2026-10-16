@@ -12,47 +12,18 @@ pub type Template = BTreeMap<(u8, u8, u8), Source>;
 
 pub fn template() -> Template {
     let mut zones = Template::new();
-    for (x, z, level, sx, sz) in [
-        (4, 4, 0, 407, 408),
-        (6, 4, 0, 388, 395),
-        (8, 4, 0, 406, 408),
-        (4, 6, 0, 404, 348),
-        (6, 6, 0, 404, 348),
-        (4, 8, 0, 407, 408),
-        (6, 8, 0, 404, 348),
-        (8, 8, 0, 404, 348),
-        (6, 6, 1, 404, 348),
-    ] {
-        for dx in 0..2 {
-            for dz in 0..2 {
-                zones.insert(
-                    (x + dx, z + dz, level),
-                    Source {
-                        x: sx,
-                        z: sz,
-                        level: 0,
-                        rotation: 0,
-                    },
-                );
-            }
-        }
+    // A cache-authored, flat charcoal stone tile with a matching ninth border.
+    // Repeating the old overlay-rich zones produced conspicuous gold seams.
+    let stone = Source {x:364,z:1245,level:0,rotation:0};
+    for x in 4..10 {
+        for z in 4..10 { zones.insert((x,z,0),stone); }
     }
-    for (x, z, sx, sz) in [
-        (8, 6, 404, 393),
-        (8, 7, 404, 394),
-        (9, 6, 405, 393),
-        (9, 7, 405, 394),
-    ] {
-        zones.insert(
-            (x, z, 0),
-            Source {
-                x: sx,
-                z: sz,
-                level: 0,
-                rotation: 0,
-            },
-        );
+    // Retain the actual river and its bank for net fishing.
+    for (x,z,sx,sz) in [(8,6,404,393),(8,7,404,394),(9,6,405,393),(9,7,405,394)] {
+        zones.insert((x,z,0),Source{x:sx,z:sz,level:0,rotation:0});
     }
+    // Kept allocated for compatibility, with no ground-level stair into the stub.
+    for x in 6..8 { for z in 6..8 { zones.insert((x,z,1),stone); } }
     zones
 }
 

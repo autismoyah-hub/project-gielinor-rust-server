@@ -47,6 +47,7 @@ impl World {
             self.events.push(WorldEvent::CinderworksProgress {actor,run:p.data.tower_run});
             p.data.tower_arrival.diary_progress = true;
             if began {
+                self.events.push(WorldEvent::GameMessage {actor,text:"Defeat returns you to this sanctuary with equipment and progress intact. Consumed supplies stay spent.".into()});
                 self.events.push(WorldEvent::GameMessage { actor, text:format!("Cinderworks run {} begins. Restore the workshop, kitchen and altar; then silence the Imp and Warden.", p.data.tower_run.id) });
             }
             if grants { self.events.push(WorldEvent::GameMessage { actor, text:"The sanctuary provides missing tools. Lost tools can be recovered by reading this plaque.".into() }); }
@@ -64,10 +65,8 @@ impl World {
             }
             let mut run = p.data.tower_run;
             if run.paid(run.id) {
-                p.data.inventory = inventory;
-                p.data.tower_run = run;
-                self.events.push(WorldEvent::CinderworksProgress {actor,run});
-                self.events.push(WorldEvent::GameMessage { actor, text:format!("The restored sanctuary yields {count} coins and a beer. The portal leads home; read the plaque to begin a replay.") });
+                self.checkpoint_cinderworks(actor, inventory, run,
+                    format!("The restored sanctuary yields {count} coins and a beer. The portal leads home; read the plaque to begin a replay."));
             }
         } else {
             self.events.push(WorldEvent::GameMessage { actor, text:p.data.tower_run.guide().into() });
@@ -88,7 +87,7 @@ mod tests {
         world.collision.allocate(3224, 3216, 0);
         let config = Config { origin, outside:CoordGrid::new(3225,3218,0).unwrap(), plaque:1, portal:2, chest:3,
             tools:vec![10,11], scimitar:12, dagger:13, coins:100, beer:101,
-            imp:200,warden:201,quench:4,quench_tiles:vec![],warning_graphic:86,strike_graphic:78,work:None };
+            imp:200,warden:201,quench:4,quench_tiles:vec![],warning_graphic:86,strike_graphic:78,work:None,death_animation:836 };
         let locations = [
             Location::new(origin.translate(55,56,0).unwrap(),1,10,0).unwrap(),
             Location::new(origin.translate(57,56,0).unwrap(),2,10,0).unwrap(),
@@ -143,13 +142,24 @@ mod tests {
         }
         world.data_mut(actor).unwrap().inventory = Inventory::new(2,StackType::Normal,false);
         operate(&mut world,actor,locations[2]);
+        // The proposed items are still unavailable until durable acknowledgement.
+        assert_eq!(world.data(actor).unwrap().tower_run,pending);
+        assert_eq!(world.data(actor).unwrap().inventory.free_space(),2);
+        assert!(world.cinderworks_checkpoint_pending(actor));
+        assert!(!world.movement_input_allowed(actor).unwrap());
+        assert_eq!(world.submit(actor,Action::Walk { destination: locations[0].coords, run:false }),Err(ActionError::LoggingOut));
+        world.request_logout(actor).unwrap();
+        assert!(!world.drain_events().iter().any(|e|matches!(e,WorldEvent::Save{..})));
+        world.cinderworks_checkpoint_saved(actor).unwrap();
+        assert!(world.cinderworks_checkpoint_saved(actor).is_err());
+        // Logout cannot overwrite the payment with an older snapshot.
+        world.tick().unwrap();
+        assert!(world.drain_events().iter().any(|e|matches!(e,WorldEvent::Save{data,..} if data.tower_run.first_reward_paid)));
         let data = world.data(actor).unwrap();
         assert!(data.tower_run.first_reward_paid);
         assert!(!data.tower_run.reward_pending);
         assert_eq!(data.inventory.get(0).unwrap().count,500);
-        let inventory = data.inventory.clone();
-        operate(&mut world,actor,locations[2]);
-        assert_eq!(world.data(actor).unwrap().inventory,inventory);
+        assert_eq!(data.inventory.get(1).unwrap().id,101);
     }
     #[test]
     fn ordinary_exit_and_return_preserve_run_and_avoid_recovery_pad() {

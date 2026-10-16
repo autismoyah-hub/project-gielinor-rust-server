@@ -19,20 +19,37 @@ pub struct Config {
     pub warning_graphic: u16,
     pub strike_graphic: u16,
     pub work: Option<WorkConfig>,
+    pub death_animation: u16,
 }
 #[derive(Clone, Copy, Debug)]
 pub struct WorkConfig {
-    pub fishing_spot:u16, pub net:i32, pub raw:i32, pub cooked:i32,
-    pub cooking_loc:u32, pub fish_skill:u8, pub cook_skill:u8,
-    pub fish_animation:u16, pub cook_animation:u16, pub queue:i32,
+    pub fishing_spot: u16,
+    pub net: i32,
+    pub raw: i32,
+    pub cooked: i32,
+    pub cooking_loc: u32,
+    pub fish_skill: u8,
+    pub cook_skill: u8,
+    pub fish_animation: u16,
+    pub cook_animation: u16,
+    pub queue: i32,
 }
 impl Config {
-    pub fn forged_weapon(&self, id: i32) -> bool { id == self.dagger || id == self.scimitar }
+    pub fn forged_weapon(&self, id: i32) -> bool {
+        id == self.dagger || id == self.scimitar
+    }
     pub fn handles(&self, id: u32, operation: u8) -> bool {
         operation == 1 && [self.plaque, self.portal, self.chest, self.quench].contains(&id)
     }
-    pub fn credit(&self, data: &mut PlayerData, coords: CoordGrid, service: Service) -> Option<&'static str> {
-        if !crate::tower_layout::contains(self.origin, coords) || !data.tower_run.service(service) { return None }
+    pub fn credit(
+        &self,
+        data: &mut PlayerData,
+        coords: CoordGrid,
+        service: Service,
+    ) -> Option<&'static str> {
+        if !crate::tower_layout::contains(self.origin, coords) || !data.tower_run.service(service) {
+            return None;
+        }
         Some(match service {
             Service::Forge => "The workshop is restored. Your forged bronze weapon can pierce the foundry guardians.",
             Service::Kitchen => "The kitchen is restored. Keep cooked food for the vent gallery and foundry.",

@@ -1,7 +1,7 @@
 From 4001176798235e2230d6c69445a0b86e24323c5b Mon Sep 17 00:00:00 2001
 From: Tower Agent 5 <agent5@tower.invalid>
 Date: Fri, 16 Oct 2026 14:37:35 -0700
-Subject: [PATCH 1/2] Add opt-in Tower normal-action validation adapter without
+Subject: [PATCH 1/4] Add opt-in Tower normal-action validation adapter without
  desktop input
 
 ---
@@ -250,7 +250,7 @@ index 354c9b3..969d2f1 100644
 From 88e5768f16a7008f972ad7b4bc015409012642c0 Mon Sep 17 00:00:00 2001
 From: Tower Agent 5 <agent5@tower.invalid>
 Date: Fri, 16 Oct 2026 15:30:51 -0700
-Subject: [PATCH 2/2] Extend Tower adapter with inventory actions and
+Subject: [PATCH 2/4] Extend Tower adapter with inventory actions and
  authoritative observations
 
 ---
@@ -543,3 +543,194 @@ index 1ce8533..ddcfcf7 100644
          Ok(())
      }
      pub fn frame(&mut self, raster: &Raster) -> Result<()> {
+
+From cf0bc84097aaf75ae49e2bb484dde248d1d17230 Mon Sep 17 00:00:00 2001
+From: Tower Agent 5 <agent5@tower.invalid>
+Date: Fri, 16 Oct 2026 16:10:34 -0700
+Subject: [PATCH 3/4] Guard visible inventory actions and improve Tower
+ validation observations
+
+---
+ examples/tower_actions.rs |  2 +-
+ src/tower_adapter.rs      | 79 ++++++++++++++++++++++++++++++++++++---
+ src/viewport.rs           |  5 +++
+ 3 files changed, 80 insertions(+), 6 deletions(-)
+
+diff --git a/examples/tower_actions.rs b/examples/tower_actions.rs
+index 4a9a61e..8710cf2 100644
+--- a/examples/tower_actions.rs
++++ b/examples/tower_actions.rs
+@@ -20,7 +20,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
+         let step = clock.advance(start.elapsed().as_nanos().min(i64::MAX as u128) as i64);
+         client.cycle = client.cycle.wrapping_add(step.ticks as i32);
+         live.poll_elapsed(&mut client, step.ticks)?;
+-        if live.world.is_some() && !live.scripts_busy() {
++        if live.world.is_some() && !live.scripts_busy() && client.interfaces.scripts.is_empty() {
+             for _ in 0..step.ticks {
+                 client.tick_actor_sequences()?;
+             }
+diff --git a/src/tower_adapter.rs b/src/tower_adapter.rs
+index ddcfcf7..93a8686 100644
+--- a/src/tower_adapter.rs
++++ b/src/tower_adapter.rs
+@@ -161,18 +161,44 @@ impl Adapter {
+         if action.is_some() && !ready {
+             return Ok(());
+         }
++        if words.get(1) == Some(&"item") {
++            if let Some(Action::Interface { id, operation, .. }) = action {
++                let visible = client
++                    .interfaces
++                    .widgets
++                    .get(&id)
++                    .and_then(|widget| widget.actions.get(operation as usize - 1))
++                    .is_some_and(|label| !label.trim().is_empty());
++                if !visible {
++                    self.sequence = sequence;
++                    return self.receipt(
++                        client,
++                        ready,
++                        "inventory operation has no displayed action",
++                    );
++                }
++            }
++        }
+         if let Some(action) = action {
+             if !client.scene_action_allowed(action)? {
+                 self.sequence = sequence;
+                 return self.receipt(client, ready, "action blocked by normal client policy");
+             }
+-            if let Action::Interface { id, operation, sub } = action {
+-                if !client.interface_operation(id, operation, sub)? {
++            let result = if let Action::Interface { id, operation, sub } = action {
++                client.interface_operation(id, operation, sub)
++            } else {
++                client.menu_action(action).map(|_| true)
++            };
++            match result {
++                Ok(false) => {
+                     self.sequence = sequence;
+                     return self.receipt(client, ready, "interface operation unavailable");
+                 }
+-            } else {
+-                client.menu_action(action)?;
++                Err(error) => {
++                    self.sequence = sequence;
++                    return self.receipt(client, ready, &format!("client action failed: {error}"));
++                }
++                Ok(true) => {}
+             }
+         }
+         self.sequence = sequence;
+@@ -263,7 +289,50 @@ impl Adapter {
+             .map(|s| quoted(s))
+             .collect::<Vec<_>>()
+             .join(",");
+-        let state=format!("{{\"sequence\":{},\"status\":{},\"ready\":{ready},\"position\":{:?},\"tick\":{},\"cycle\":{},\"hp\":{},\"base\":{:?},\"xp\":{:?},\"items\":[{items}],\"npcs\":[{npcs}],\"graphics\":[{graphics}],\"messages\":[{messages}]}}",self.sequence,quoted(status),client.data.position,client.server_tick,client.actor_cycle,client.data.boosted[3],client.data.base,client.data.experience);
++        let equipment = client
++            .inventories
++            .containers
++            .get(&94)
++            .into_iter()
++            .flatten()
++            .enumerate()
++            .filter(|(_, item)| item.id >= 0)
++            .map(|(slot, item)| {
++                format!(
++                    "{{\"slot\":{slot},\"id\":{},\"count\":{}}}",
++                    item.id, item.count
++                )
++            })
++            .collect::<Vec<_>>()
++            .join(",");
++        let ground = client
++            .zone
++            .piles
++            .iter()
++            .flat_map(|(position, pile)| {
++                pile.iter().map(move |item| {
++                    format!(
++                        "{{\"plane\":{},\"x\":{},\"z\":{},\"id\":{},\"count\":{}}}",
++                        position[0], position[1], position[2], item.id, item.quantity
++                    )
++                })
++            })
++            .collect::<Vec<_>>()
++            .join(",");
++        let modals = client
++            .interfaces
++            .children
++            .iter()
++            .filter(|(_, sub)| sub.kind == 0)
++            .map(|(_, sub)| sub.group.to_string())
++            .collect::<Vec<_>>()
++            .join(",");
++        let journal = client
++            .interfaces
++            .widgets
++            .get(&((259 << 16) | 1))
++            .map_or_else(|| quoted(""), |widget| quoted(&widget.text));
++        let state=format!("{{\"sequence\":{},\"status\":{},\"ready\":{ready},\"position\":{:?},\"tick\":{},\"cycle\":{},\"hp\":{},\"base\":{:?},\"xp\":{:?},\"items\":[{items}],\"equipment\":[{equipment}],\"ground\":[{ground}],\"modals\":[{modals}],\"journal\":{journal},\"npcs\":[{npcs}],\"graphics\":[{graphics}],\"messages\":[{messages}]}}",self.sequence,quoted(status),client.data.position,client.server_tick,client.actor_cycle,client.data.boosted[3],client.data.base,client.data.experience);
+         std::fs::write(self.directory.join("state.tmp"), state)?;
+         std::fs::rename(
+             self.directory.join("state.tmp"),
+diff --git a/src/viewport.rs b/src/viewport.rs
+index 969d2f1..e302bbb 100644
+--- a/src/viewport.rs
++++ b/src/viewport.rs
+@@ -467,6 +467,11 @@ mod windows {
+             }
+             if let Some(live) = live.as_mut() {
+                 live.poll_elapsed(&mut client, clock_step.ticks)?;
++                // Opt-in validation windows drain bootstrap scripts between
++                // paints; zero elapsed ticks preserves normal simulation time.
++                if tower_adapter.is_some() && client.server_tick==0 {
++                    for _ in 0..4 {if client.server_tick!=0 {break;} live.poll_elapsed(&mut client,0)?;}
++                }
+             }
+             audio_worker.set_mixer(client.audio.mixer());
+             let reconnecting = live.as_ref().is_some_and(|v| {
+
+From 2c5cb8f0920cbd9d7cc486aa630456e99f335c4f Mon Sep 17 00:00:00 2001
+From: Tower Agent 5 <agent5@tower.invalid>
+Date: Fri, 16 Oct 2026 16:43:10 -0700
+Subject: [PATCH 4/4] Report normal interface listener dispatch as a submitted
+ action
+
+---
+ src/tower_adapter.rs | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/src/tower_adapter.rs b/src/tower_adapter.rs
+index 93a8686..73932ac 100644
+--- a/src/tower_adapter.rs
++++ b/src/tower_adapter.rs
+@@ -184,13 +184,18 @@ impl Adapter {
+                 self.sequence = sequence;
+                 return self.receipt(client, ready, "action blocked by normal client policy");
+             }
++            // Some cache buttons act entirely through their normal onOp listener
++            // and deliberately have no direct IF_BUTTON operation mask.
++            let listener_dispatch = if let Action::Interface {id,..}=action {
++                client.interfaces.listener(id,1409).is_some()
++            } else { false };
+             let result = if let Action::Interface { id, operation, sub } = action {
+                 client.interface_operation(id, operation, sub)
+             } else {
+                 client.menu_action(action).map(|_| true)
+             };
+             match result {
+-                Ok(false) => {
++                Ok(false) if !listener_dispatch => {
+                     self.sequence = sequence;
+                     return self.receipt(client, ready, "interface operation unavailable");
+                 }
+@@ -198,7 +203,7 @@ impl Adapter {
+                     self.sequence = sequence;
+                     return self.receipt(client, ready, &format!("client action failed: {error}"));
+                 }
+-                Ok(true) => {}
++                Ok(_) => {}
+             }
+         }
+         self.sequence = sequence;

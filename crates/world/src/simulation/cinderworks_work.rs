@@ -151,6 +151,7 @@ mod tests {
             warning_graphic: 86,
             strike_graphic: 78,
             work: Some(work),
+            death_animation: 836,
         });
         let mut data = PlayerData::new(
             1,

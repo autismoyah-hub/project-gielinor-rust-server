@@ -247,6 +247,7 @@ struct PendingSave {
     data: Save,
     inflight: bool,
     retry_at: i32,
+    checkpoint: bool,
 }
 pub struct Runtime<B: AccountBackend> {
     pub constructed: crate::constructed::Regions,
@@ -292,6 +293,7 @@ pub struct Runtime<B: AccountBackend> {
     connections: BTreeMap<u64, ConnectionState>,
     active: HashMap<ActorId, Active>,
     saves: BTreeMap<u64, PendingSave>,
+    next_save_token: u64,
     events: Vec<Event>,
     shutting_down: bool,
     presentation: Option<Presentation>,
@@ -355,6 +357,7 @@ impl<B: AccountBackend> Runtime<B> {
             connections: BTreeMap::new(),
             active: HashMap::new(),
             saves: BTreeMap::new(),
+            next_save_token: 0,
             events: vec![],
             shutting_down: false,
             presentation: None,
@@ -1916,6 +1919,7 @@ impl<B: AccountBackend> Runtime<B> {
             NetworkEvent::Packet { connection, packet } => {
                 if let Some(ConnectionState::Playing(actor)) = self.connections.get(&connection) {
                     let actor = *actor;
+                    if self.world.cinderworks_checkpoint_pending(actor) { return Ok(()) }
                     let level = self
                         .world
                         .data(actor)
@@ -2899,13 +2903,17 @@ impl<B: AccountBackend> Runtime<B> {
                 match result {
                     Ok(()) => {
                         let actor = pending.actor;
-                        self.world
-                            .saved(actor)
-                            .map_err(|_| io::Error::other("Save completed for invalid actor"))?;
+                        if pending.checkpoint {
+                            self.world.cinderworks_checkpoint_saved(actor)
+                                .map_err(|_| io::Error::other("Checkpoint completed for invalid actor"))?;
+                        } else {
+                            self.world.saved(actor)
+                                .map_err(|_| io::Error::other("Save completed for invalid actor"))?;
+                        }
                         self.saves.remove(&token);
                         self.events.push(Event::SaveCompleted {
                             actor,
-                            generation: token,
+                            generation: actor.generation,
                             observed_tick: self.world.clock.0,
                         });
                     }
@@ -2976,13 +2984,15 @@ impl<B: AccountBackend> Runtime<B> {
                     hitpoints_message,
                 } => {
                     if let Some(connection) = self.connection(actor) {
-                        let first = if arrival.first {
+                        let first = if self.world.cinderworks.is_some() {
+                            "The Cinderworks sanctuary awaits. Read the plaque to restore its workshop, kitchen and altar."
+                        } else if arrival.first {
                             "The Threshold. Read the plaque. Wings are around you."
                         } else {
                             "You wake at the Threshold door."
                         };
                         let messages = std::iter::once(first).chain(hitpoints_message)
-                            .chain(arrival.fists_message.then_some("You arrive with nothing but your fists. The diary grants the next tool."));
+                            .chain((arrival.fists_message && self.world.cinderworks.is_none()).then_some("You arrive with nothing but your fists. The diary grants the next tool."));
                         for message in messages {
                             let packet = gielinor_protocol::chat::game(0, None, message)
                                 .map_err(|e| io::Error::other(format!("{e:?}")))?;
@@ -3170,7 +3180,8 @@ impl<B: AccountBackend> Runtime<B> {
                     self.events
                         .push(Event::World(WorldEvent::CloseModals { actor }));
                 }
-                WorldEvent::Save { actor, data } => self.queue_save(actor, data)?,
+                WorldEvent::Save { actor, data } => self.queue_save(actor, data, false)?,
+                WorldEvent::CinderworksCheckpoint {actor,data} => self.queue_save(actor,data,true)?,
                 WorldEvent::WearposEffects { actor, result } => {
                     if let Some(connection) = self.connection(actor) {
                         for event in result.as_ref().map_err(|e| io::Error::other(e.clone()))? {
@@ -4389,7 +4400,7 @@ impl<B: AccountBackend> Runtime<B> {
                 .flat_map(|active| active.npc_observer.actors()),
         );
     }
-    fn queue_save(&mut self, actor: ActorId, data: PlayerData) -> io::Result<()> {
+    fn queue_save(&mut self, actor: ActorId, data: PlayerData, checkpoint: bool) -> io::Result<()> {
         let active = self
             .active
             .get(&actor)
@@ -4398,12 +4409,19 @@ impl<B: AccountBackend> Runtime<B> {
             .character
             .save(&data, &self.definitions, &self.policy)
             .map_err(io::Error::other)?;
-        // At most one pending save per world actor; the world owns the admission bound.
-        self.saves.entry(actor.generation).or_insert(PendingSave {
+        // One writer per actor. A checkpoint blocks logout snapshots until its
+        // acknowledgement; unique tokens also reject late duplicate completions.
+        if self.saves.values().any(|p|p.actor==actor) {
+            return Err(io::Error::other("Overlapping actor saves"));
+        }
+        self.next_save_token = self.next_save_token.checked_add(1)
+            .ok_or_else(||io::Error::other("Account save token exhausted"))?;
+        self.saves.insert(self.next_save_token, PendingSave {
             actor,
             data: save,
             inflight: false,
             retry_at: self.world.clock.0,
+            checkpoint,
         });
         Ok(())
     }

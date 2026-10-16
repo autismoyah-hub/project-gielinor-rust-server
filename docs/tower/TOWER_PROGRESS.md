@@ -54,3 +54,15 @@ Encounter implementation now includes exclusive ownership, prerequisite/equipmen
 The new task tab projects Cinderworks services, guardians, claims and replay history while preserving the legacy diary sidecar. Smithing now applies both the global and character XP rates; a regression check covers 1x and 5x rates. Current validation: full world suite 397 passed / two existing ignored; full server suite 52 passed; focused Cinderworks tests ten passed. Local client validation commit: `88e5768` on its isolated branch; the source-only patch now includes both adapter commits.
 
 Next: complete the native altar and both guardians; fix issues exposed by those sessions, then run full headless success/failure/relogin/replay coverage, improve layout/telegraph presentation and publish final evidence. This is not overall completion.
+
+## Native guardian and durable reward checkpoint
+
+The genuine native client defeated both guardians using normal Attack, movement, food and coolant actions. The refined Warden run observed phases two and three and reached authoritative victory with 9 HP; actual frame sequences 1676, 2007, 2268 and 2604 are retained privately. A normal walk then left the court. The earlier Warden retreat is recorded as a failed attempt, never as victory. Client validation commit cf0bc84 additionally rejects unavailable inventory operations and reports equipment and visible item actions.
+
+Sanctuary recovery now uses ordinary death animation, delayed movement and stat authorities. Defeat retains equipment and durable services/unlocks/reward eligibility while consumed supplies remain spent. Recovery reconstructs from a saved zero-health character. The unreachable ground stair into the old upstairs stub has been removed.
+
+Guardian victory and reward claims now checkpoint through the existing asynchronous account worker. Proposed reward items are withheld until the inventory plus payment marker transaction succeeds. A short per-actor barrier blocks gameplay and logout snapshots during the write; failed writes retry the same snapshot. Unique save tokens reject late duplicate completions. This closes the pre-logout payout window without a second persistence authority.
+
+Validation: 400 world tests pass, two existing ignored; 52 server tests pass; server check and build pass. Full fresh headless route, actual death/recovery, full-pack reward retry, durable claim/replay and final layout polish remain in progress. This is not overall completion.
+
+Native full-pack chest rejection and recovery now pass: no partial grant, then exactly 500 coins and one beer after two normal drops, no second payment. Read-only SQLite inspection confirms paid run flags before logout. A flat charcoal cache template replaces repeated gold overlay zones for visual review; native review of this revision remains pending. Headless service controllers exposed cache-listener receipt semantics and ordinary full-pack/action-delay handling; these are corrected without granting gameplay state.

@@ -53,6 +53,8 @@ mod tower_actions;
 mod cinderworks_actions;
 mod cinderworks_encounter_actions;
 mod cinderworks_work;
+mod cinderworks_recovery;
+mod cinderworks_checkpoint;
 mod tower_chest_actions;
 mod tower_combat_actions;
 mod tower_login_actions;
@@ -241,6 +243,7 @@ struct Player {
     login_cycle: i32,
     tower_diary_login: Option<(crate::tower_diary::Sync, CoordGrid)>,
     tower_restore_pending: bool,
+    cinderworks_recovery_at: Option<i32>,
     tower_tastes: crate::tower_tastes::State,
     aggressive_npc: Option<NpcId>,
     last_npc_combat: i32,
@@ -253,6 +256,7 @@ struct Player {
     movement: Movement,
     active_speed: Speed,
     saving: bool,
+    cinderworks_checkpoint: Option<cinderworks_checkpoint::Pending>,
     pending_logout: bool,
     logout_modal_close_pending: bool,
     disconnect_grace: crate::disconnect::Grace,
@@ -787,6 +791,7 @@ pub enum WorldEvent {
         connection: u64,
         reason: AdmissionError,
     },
+    CinderworksCheckpoint { actor: ActorId, data: PlayerData },
     Save {
         actor: ActorId,
         data: PlayerData,
@@ -1336,7 +1341,7 @@ impl World {
     /// Network movement must reject these states before running ifClose callbacks.
     pub fn movement_input_allowed(&self, id: ActorId) -> Result<bool, ActionError> {
         let player = self.player(id)?;
-        Ok(!player.protection.delayed() && !player.movement.rooted)
+        Ok(!player.protection.delayed() && !player.movement.rooted && player.cinderworks_checkpoint.is_none())
     }
     pub fn count_dialog_token(&self, id: ActorId) -> Result<Option<u64>, ActionError> {
         Ok(self.player(id)?.bank_count.map(|pending| pending.0))
@@ -1522,7 +1527,7 @@ impl World {
     }
     pub fn submit(&mut self, id: ActorId, action: Action) -> Result<(), ActionError> {
         let p = self.player(id)?;
-        if p.saving || p.pending_logout {
+        if p.saving || p.pending_logout || p.cinderworks_checkpoint.is_some() {
             return Err(ActionError::LoggingOut);
         }
         if self.actions.len() >= 4096 {
@@ -1581,7 +1586,7 @@ impl World {
     fn process_pending_logout(&mut self, id: ActorId) -> Result<(), ActionError> {
         self.player(id)?;
         let p = self.players.get_mut(id.slot as usize).unwrap();
-        if !p.pending_logout || p.saving {
+        if !p.pending_logout || p.saving || p.cinderworks_checkpoint.is_some() {
             return Ok(());
         }
         let closing_modal = p.has_modal;
@@ -1695,7 +1700,7 @@ impl World {
         random: &mut impl RandomSource,
     ) -> Result<(), ActionError> {
         let p = self.player(id)?;
-        if p.saving || p.pending_logout {
+        if p.saving || p.pending_logout || p.cinderworks_checkpoint.is_some() {
             return Err(ActionError::LoggingOut);
         }
         match action {
@@ -2150,6 +2155,7 @@ impl World {
             match phase {
                 Phase::ControllerMain => {
                     self.process_cinderworks_encounters();
+                    self.process_cinderworks_recovery();
                     self.active_trees.tick(self.clock.0, &self.locations);
                     // Gathering deadlines use the action clock. Processing before
                     // PlayerMain keeps N ticks of visible stump lifetime; the
@@ -2345,6 +2351,7 @@ impl World {
                         .map(|(_, e)| e.id)
                         .collect();
                     for slot in self.order.clone() {
+                        if self.players.get(slot).is_some_and(|p|p.cinderworks_checkpoint.is_some()) { continue; }
                         self.process_tower_arrival(slot);
                         self.process_prayer(slot);
                         self.resume_tutorial_fire(slot);
@@ -2927,6 +2934,7 @@ impl World {
                             finished_potion_request: None,
                             unfinished_potion_request: None,
                             tower_restore_pending: false,
+                            cinderworks_recovery_at: None,
                             tower_tastes: Default::default(),
                             tower_diary_login,
                             stat_events: Default::default(),
@@ -2945,6 +2953,7 @@ impl World {
                             movement,
                             active_speed: Speed::Walk,
                             saving: false,
+                            cinderworks_checkpoint: None,
                             pending_logout: false,
                             logout_modal_close_pending: false,
                             disconnect_grace: Default::default(),

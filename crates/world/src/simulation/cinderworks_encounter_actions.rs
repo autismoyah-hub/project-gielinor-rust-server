@@ -21,6 +21,7 @@ impl World {
         let config = self.cinderworks.as_ref()?;
         let player = self.player(actor).ok()?;
         let run = player.data.tower_run;
+        if run.id > 0 && !run.active() { return Some(run.guide()); }
         if !run.active() || run.services != 7 {
             return Some(
                 "Restore the workshop, kitchen and altar before challenging the foundry guardians.",
@@ -121,7 +122,7 @@ impl World {
             let valid = self.player(encounter.owner).is_ok_and(|p| {
                 !p.saving
                     && !p.pending_logout
-                    && p.data.stats.current(3) > 0
+                    && p.data.stats.current(3) as u8 > 0
                     && p.data.tower_run.id == encounter.run_id
                     && encounter.boss.contains(config.origin, p.movement.coords)
             });
@@ -141,11 +142,18 @@ impl World {
                         Boss::Warden => p.data.tower_run.defeat_warden(),
                     };
                     if credited {
-                        self.events.push(WorldEvent::CinderworksProgress {actor:p.id,run:p.data.tower_run});
-                        self.events.push(WorldEvent::GameMessage {actor:p.id,text:match encounter.boss {
+                        self.events.push(WorldEvent::CinderworksProgress {
+                            actor: p.id,
+                            run: p.data.tower_run,
+                        });
+                        let message = match encounter.boss {
                         Boss::Imp=>"The Ash Imp falls. The northern foundry is unlocked; your services and unlock are preserved if you leave.",
                         Boss::Warden=>"The Warden is quenched. The Cinderworks sanctuary is restored. Return to its chest to claim your reward.",
-                    }.into()});
+                    }.into();
+                        let actor=p.id;
+                        let inventory=p.data.inventory.clone();
+                        let run=p.data.tower_run;
+                        self.checkpoint_cinderworks(actor,inventory,run,message);
                     }
                 }
                 continue;
@@ -200,7 +208,13 @@ impl World {
                         .boss
                         .pattern(config.origin, encounter.phase, aim, encounter.cycle);
                 encounter.cycle = encounter.cycle.wrapping_add(1);
-                encounter.warning = Some(self.clock.deadline(3));
+                encounter.warning = Some(self.clock.deadline(
+                    if encounter.boss == Boss::Warden && encounter.phase < 3 {
+                        4
+                    } else {
+                        3
+                    },
+                ));
                 self.events.push(WorldEvent::GameMessage {
                     actor: encounter.owner,
                     text: "Heat gathers beneath the smoking tiles. Move clear before the eruption!"
@@ -260,7 +274,7 @@ impl World {
     }
 }
 #[cfg(test)]
-mod tests {
+pub(super) mod tests {
     use super::*;
     use crate::{
         inventory::Item,
@@ -270,7 +284,7 @@ mod tests {
         tower_cinderworks::Config,
         tower_run::Service,
     };
-    fn setup(boss: Boss) -> (World, ActorId, NpcId) {
+    pub(in crate::simulation) fn setup(boss: Boss) -> (World, ActorId, NpcId) {
         let mut world = World::default();
         let origin = CoordGrid::new(10368, 64, 0).unwrap();
         for x in (32..80).step_by(8) {
@@ -297,6 +311,7 @@ mod tests {
             warning_graphic: 86,
             strike_graphic: 78,
             work: None,
+            death_animation: 836,
         });
         let loc = Location::new(quench, 4, 10, 0).unwrap();
         world.locations.load(loc);
