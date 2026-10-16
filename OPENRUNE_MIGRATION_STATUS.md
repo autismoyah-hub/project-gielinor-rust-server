@@ -2396,3 +2396,21 @@ All listed runs require client exit0, fresh durable logout, clean owned exit0 an
 - `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
 - State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":400,"after":600},"3077":{"before":31789,"after":19495},"3079":{"before":207,"after":114},"65515":{"before":200,"after":304}}}`
 - Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Separate selected-profile recipe-specific commits; UI evidence and packet/display latency separate"}`
+
+
+## Swamp-tar atomic batch primitive (2026-10-16)
+
+Implemented an independently authored atomic selected-herb plus15stacked-tar exchange yielding15stacked products with live pestle/member/quest/boosted-level validation. Inputs/output and fineXP publish together; full backpack permitted when the consumed herb supplies capacity. No goggles or chemistry assumption. This primitive is NOT registered into gameplay yet; scheduler, startup bindings and native acceptance remain pending.
+
+- Guam tar, herb249: Wiki revision15183062, SHA256 `f82f50b23f392e00bd8b737425f14e3bab94794b60f81be37c35857431ff9c27`; level19, XP30, ticks3.
+- Guam tar, herb6681: Wiki revision15183062, SHA256 `f82f50b23f392e00bd8b737425f14e3bab94794b60f81be37c35857431ff9c27`; level19, XP30, ticks3.
+- Marrentill tar, herb251: Wiki revision15183124, SHA256 `08480a74a23e432be9890a23de1b9bb9d283b3293f04410f0c086f2c785c56a7`; level31, XP42.5, ticks3.
+- Tarromin tar, herb253: Wiki revision15184685, SHA256 `79da5467750ae285ecf7ffa6f5bc8ebca2b973922bf1ab97f1ddabf9f47c2b17`; level39, XP55, ticks3.
+- Harralander tar, herb255: Wiki revision15184745, SHA256 `f33be2d638c02a2a66e5e8ada5725bbfd63b7ebafef5fdcfb4c2b652b0764fb7`; level44, XP72.5, ticks3.
+
+OpenRune behavior inspected, source SHA256 `05eea27b65dc356c9aa856ac2b225a875b9aa0928c965b7e8334db969d495c22`: weak1/3 and15free-slot gate differ from the independent policy; no expression copied. Target symbols/definition hashes and ground-guam alternative pinned in work/openrune-swamp-tar-readiness-001.json.
+
+Validation swamp-tar-primitive-tests-attempt-001 PASS;383source hashes unchanged. test result: ok. 52 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.14s; test result: ok. 385 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 25.37s
+Compile69s/world25.37s;4895MiB available,76.9percent commit,711page-ins/s,4.1msdisk,CPU42.5percent,j2. Covers five profiles,both orders,15/16/30tar,fullbackpack,exactfractional rewards,no replay,12refusal/overflow modes,existing output merge andXPcap.
+
+Finished-alternate control attempt001 RESOURCE_DEFERRED before native launch:CPU84.7percent,3788MiB,82.7percent commit,716page-ins/s,2.2msdisk,j1. Prepared fixture preserved for ResumePrepared attempt002.
