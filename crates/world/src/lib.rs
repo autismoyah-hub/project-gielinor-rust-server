@@ -288,3 +288,4 @@ pub mod dough;
 pub mod swamp_tar;
 pub mod chemistry;
 pub mod chemistry_modifier;
+pub mod potion_upgrades;

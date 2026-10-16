@@ -2734,3 +2734,48 @@ mod chemistry_binding_tests {
         }
     }
 }
+
+/// Wiki Stamina potion15281677: level77,25.5XP and one amylase per input dose.
+/// This binding is not admitted until the upgrade runtime is configured.
+pub fn stamina_upgrades(objects:&Symbols,defs:&Definitions)->Result<Vec<gielinor_world::potion_upgrades::Recipe>,String> {
+    let mut ids=std::collections::BTreeSet::new();
+    let mut bind=|name:&str,stackable:bool,dose:Option<u8>|->Result<i32,String>{
+        let id=*objects.get(name).ok_or_else(||format!("Missing upgrade symbol {name}"))?;
+        let item=defs.items.get(&(id as u32)).ok_or_else(||format!("Missing upgrade definition {name}"))?;
+        if id<0 || !ids.insert(id) || item.stackable!=stackable || !item.members || item.cert.template!=0 || item.placeholder.template!=0 || item.dummy==1
+            || dose.is_some_and(|n|item.inventory_ops[0].as_deref()!=Some("Drink") || !item.name.ends_with(&format!("({n})"))) {
+            return Err(format!("Invalid upgrade definition {name}"));
+        }
+        Ok(id)
+    };
+    let secondary=bind("amylase",true,None)?;
+    let mut recipes=Vec::new();
+    for doses in 1..=4 {
+        let base=bind(&format!("{doses}dose2energy"),false,Some(doses))?;
+        let output=bind(&format!("{doses}dosestamina"),false,Some(doses))?;
+        recipes.push(gielinor_world::potion_upgrades::Recipe{base,secondary,output,doses,secondary_per_dose:1,fine_xp_per_dose:255,level:77});
+    }
+    Ok(recipes)
+}
+#[cfg(test)]
+mod stamina_binding_tests {
+    use super::*;
+    fn fixture()->(Symbols,Definitions){
+        let mut symbols=Symbols::new();let mut defs=Definitions{inventories:Default::default(),locations:Default::default(),npcs:Default::default(),items:Default::default(),varbits:Default::default(),varps:Default::default(),stats:Default::default()};
+        let mut secondary=gielinor_cache::definitions::ItemType::decode(&[16,0]).unwrap();secondary.stackable=true;defs.items.insert(12640,secondary);symbols.insert("amylase".into(),12640);
+        for n in 1..=4 {for (name,id) in [(format!("{n}dose2energy"),3024-2*n),(format!("{n}dosestamina"),12633-2*n)] {
+            let mut item=gielinor_cache::definitions::ItemType::decode(&[16,0]).unwrap();item.name=format!("Potion({n})");item.inventory_ops[0]=Some("Drink".into());defs.items.insert(id as u32,item);symbols.insert(name,id);
+        }}
+        (symbols,defs)
+    }
+    #[test]
+    fn dose_bindings_reject_missing_alias_noted_and_non_drink_definitions(){
+        let (symbols,defs)=fixture();let recipes=stamina_upgrades(&symbols,&defs).unwrap();assert_eq!(recipes.len(),4);
+        for (i,r) in recipes.iter().enumerate(){let n=i as i32+1;assert_eq!((r.base,r.secondary,r.output,r.doses,r.fine_xp_per_dose),(3024-2*n,12640,12633-2*n,n as u8,255));}
+        for mode in 0..7 {
+            let (mut symbols,mut defs)=fixture();
+            match mode {0=>{symbols.remove("amylase");},1=>{symbols.insert("2dosestamina".into(),12631);},2=>defs.items.get_mut(&12631).unwrap().cert.template=799,3=>defs.items.get_mut(&12640).unwrap().stackable=false,4=>defs.items.get_mut(&3022).unwrap().inventory_ops[0]=None,5=>defs.items.get_mut(&12631).unwrap().name="Stamina(4)".into(),_=>defs.items.get_mut(&12631).unwrap().members=false}
+            assert!(stamina_upgrades(&symbols,&defs).is_err(),"mode{mode}");
+        }
+    }
+}
