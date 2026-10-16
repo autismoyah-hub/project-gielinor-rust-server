@@ -2090,3 +2090,21 @@ All listed runs require client exit0, fresh durable logout, clean owned exit0 an
 - `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
 - State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":400,"after":600},"3077":{"before":16784,"after":22425},"3079":{"before":205,"after":143},"65515":{"before":193,"after":326}}}`
 - Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Separate selected-profile two-tick commits; UI evidence and packet/display latency separate"}`
+
+## Six upper-level ordinary potion recipes (2026-10-16)
+
+Extended existing pair-key recipes15to21: shared runtime, scheduler and atomic XP/inventory unchanged. Research-only readiness report preserves its original preimplementation status; this ledger records implementation and validation.
+
+- Super restore: Wiki revision15183989, SHA256 `4fbd00f341f12243df9fec653b74313346be535f838e55413dae09a961f0b99a`; level63, boostableYes, XP142.5, ticks2; target IDs 3004,223,3026.
+- Super defence: Wiki revision15183946, SHA256 `b02fbbaf913ec5519bba08765b118f47542b9162a51463bc4a4f7aa7a3f3941d`; level66, boostableYes, XP150, ticks2; target IDs 107,239,163.
+- Antifire potion: Wiki revision15185102, SHA256 `7cf6f6043a1c19bd8beaaba5e91595cb3f0b5f747e97fa934aa6006483498170`; level69, boostableYes, XP157.5, ticks2; target IDs 2483,241,2454.
+- Ranging potion: Wiki revision15293943, SHA256 `952ab9d1722f82194cd835a25219473ed6a93e5c6c3b27d9d0ae4f5c0b4c5613`; level72, boostableYes, XP162.5, ticks2; target IDs 109,245,169.
+- Magic potion: Wiki revision15247721, SHA256 `cd3395cdfe96eefc0c347c9dfcac68f03e372960ada88fee8fa45103e7d28bb4`; level76, boostableYes, XP172.5, ticks2; target IDs 2483,3138,3042.
+- Zamorak brew: Wiki revision15184356, SHA256 `2540950a5339bc6398d02a1186ae2dfa1b73c36dbc40c88b84515be7a32a2e78`; level78, boostableYes, XP175, ticks2; target IDs 111,247,189.
+
+Target239.1 symbols and decoded-definition hashes in work/openrune-finished-potions-upper-readiness-001.json. Item membership remains separate from recipe membership; wine245 is nonmember but selected Herblore recipe is member. Shared lantadyme base resolves independently for Antifire/Magic.
+
+Validation finished-upper-tests-attempt-001 PASS;382source hashes unchanged. test result: ok. 51 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.06s; test result: ok. 381 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 31.09s
+Guard4568MiB,78.5percent commit,0page-ins/s,1.3msdisk,21.4percent CPU;Cargo-j2. Existing profile tests expand to21recipes including goggles draws, both selected orders, gates and exact/capped rewards. Native upper-six acceptance pending;298synthetic assessor checks PASS.
+
+Earlier high driver attempt001 failed before compilation because a relative Tee path followed Push-Location; failure diagnosis preserved in work/finishedhigh-driver-build-attempt-001-failure.txt. Attempt002 used absolute evidence path and built5.44s. No gameplay failure inferred.
