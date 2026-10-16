@@ -1665,3 +1665,47 @@ Unfinished native checkpoint attribution: runtime source commit872e0264f03de4fc0
 openrune-unfinishedall-login-control-001 PASS. Fresh openrune-native-unfinishedall-001 PASS: actualopcode27selectedwater227slot1,targetguam249slot0; actualopcode115component17694735,count28; three server transitions128->129,129->130,130->131; exactfine3881 unchanged. Same-save openrune-native-unfinishedall-relogin-001 PASS with zero actions/transitions. Both durable-save and cleanexit PASS. Source/dependency attribution is the archived379file hash manifest, including existing unrelated local dependency configuration; do not infer a pristine checkout binary.
 
 Next: native incomplete-quest rejection both selected orders using separately prepared unfinisheddenied fixture/driver.242synthetic state/trace/terminal corruptions rejected; actual refusal remains pending. Other unfinished recipes have deterministic binding coverage, not native acceptance. All prior build/native failures and resource deferrals retained. Issue67 stays open.
+
+## Native gameplay unfinisheddenied acceptance (2026-10-16 UTC)
+
+Genuine native vial-on-herb and herb-on-vial Use with incomplete Druidic Ritual state3: two actual quest refusals, zero unfinished-potion commits, full28slots and exact fine Herblore3881 unchanged. Quest completion/rewards and other refusal gates remain separate.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking/Herblore parity or unrelated recipes. No issue closure.
+
+`openrune-native-unfinisheddenied-001` PASS. Server archive `254F54107BA90A6C8013D5E22B1D7DA7EA08E8A19BF27D8972D51F1EDB6B26C7`, driver `unfinisheddenied-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID20468.
+- Driver `NativeUnfinishedDeniedScenario.rs` SHA256 `EC99BEB5B7F14F35D73D7E747AF5BCD08B298009A221D5FEC31F5F81082C5274`
+- Driver `server_unfinisheddenied.exe` SHA256 `1BF5E1E3C6046DE6F0256819FD7B1FDAFFD66C9852A61C44811ABE5934A89BDB`
+- `client.log` SHA256 `bd781d95119be4da6341a736020f0589a0f0547626f42873992e1943b452f622`
+- `server.log` SHA256 `2509d1599a82a3deb13cb6ec593e286b2878756c6fd6661b9221086e70a89e01`
+- `initial-state.json` SHA256 `ae5b8706546e75dacea1e6183ce51dde6fb0674151f31993b40f193a22d0962c`
+- `final-state.json` SHA256 `cb348bb73443d109823343be8050865403fc9d85212f19d8e91c00d811cb9891`
+- `pack-assessment.json` SHA256 `317207d16ac654fd6c169b5bd33cc761a08a21182f77289aadb14105e142a5c2`
+- `unfinisheddenied-trace-assessment.json` SHA256 `56cd59b97b9da1f75720897c11d516e2f87777afb2eeb127e887c21a251cf454`
+- `logout-observation.json` SHA256 `9a5ebd25a8ed0a361abb8e2486c3e9472ce229eec62a150a0e42f5e1f7d6e14d`
+- `shutdown.json` SHA256 `05813582abfb9a7e68248e4b3d9e4fa9be9326aade6302dc9fa4a84a9b6eadba`
+- `result.json` SHA256 `a62ad9cd2c3042c1e061692d65707ff22baffea8e32983bddf7ebf669aed6716`
+- `pack-run.json` SHA256 `cf011b7b87990aa20a339236cdfe7d65f7e79ae0cb1d9bcbf44d61156ef7294d`
+- `native-denial-assessment.json` SHA256 `f10142922a1999d642a391c6382bdc396e54eade52c27f49c41aaaaa4e125c86`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":200},"3077":{"before":0,"after":44364},"3079":{"before":0,"after":134},"65515":{"before":0,"after":124}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Zero herb commits; actual denial messages and state checked separately"}`
+
+`openrune-native-unfinisheddenied-relogin-001` PASS. Server archive `254F54107BA90A6C8013D5E22B1D7DA7EA08E8A19BF27D8972D51F1EDB6B26C7`, driver `unfinisheddenied-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor `openrune-native-unfinisheddenied-001`, owned PID8264.
+- Driver `NativeUnfinishedDeniedScenario.rs` SHA256 `EC99BEB5B7F14F35D73D7E747AF5BCD08B298009A221D5FEC31F5F81082C5274`
+- Driver `server_unfinisheddenied.exe` SHA256 `1BF5E1E3C6046DE6F0256819FD7B1FDAFFD66C9852A61C44811ABE5934A89BDB`
+- `client.log` SHA256 `1c0b234ddca94f19f2a30631715ae63084e060da5b4322a48c2ce01ad677571b`
+- `server.log` SHA256 `c9fd582f7a0c133fd11edb9204a7f64b8be6f3c7f08e9c7210cb46dce3295c07`
+- `initial-state.json` SHA256 `cb348bb73443d109823343be8050865403fc9d85212f19d8e91c00d811cb9891`
+- `final-state.json` SHA256 `53e484acebd5f6672c8462f0b52be2d3480f76f83dca0710204b299859c12a17`
+- `pack-assessment.json` SHA256 `c0afcc64f695057685756e818fd918be288d8364ce420c86da86fe9fa2c78690`
+- `unfinisheddenied-trace-assessment.json` SHA256 `56cd59b97b9da1f75720897c11d516e2f87777afb2eeb127e887c21a251cf454`
+- `logout-observation.json` SHA256 `b70e759c1e7da2bd1baf53494c1e11c9a9f50aa8a64db9435f2eb0fc4d6de33d`
+- `shutdown.json` SHA256 `27c99c73e6d333df8462224d49b6d24a2964bc99513526a502af6d7a67fa65b5`
+- `result.json` SHA256 `7191269246ef45cf2c58bf5a2553da677eb6440f931354814f64f0a128a8de86`
+- `pack-run.json` SHA256 `1354247c1b67e6349110cee551bf3fa411f3c615f10241eed16f8cfafddce520`
+- `native-denial-assessment.json` SHA256 `1dfaaf63a00fd055f1568ccaac0babed35bc4683540f6ec1e32d39d18576659c`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":200,"after":400},"3077":{"before":44364,"after":42845},"3079":{"before":134,"after":134},"65515":{"before":124,"after":247}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Zero herb commits; actual denial messages and state checked separately"}`
