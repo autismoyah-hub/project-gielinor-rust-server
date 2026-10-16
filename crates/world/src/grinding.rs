@@ -146,4 +146,32 @@ pub(crate) struct Pending {
     pub job: Job,
     pub origin: crate::CoordGrid,
     pub last_movement: i32,
+    pub queued_at: i32,
+    pub index: u32,
+}
+
+/// Successful authoritative commits only; failed or cancelled jobs emit none.
+#[derive(Clone, Copy, Debug)]
+pub struct Transition {
+    pub job: Job,
+    pub queued_at: i32,
+    pub committed_at: i32,
+    pub index: u32,
+}
+impl Transition {
+    pub fn json(self, actor: crate::simulation::ActorId) -> String {
+        format!(
+            "{{\"actor_slot\":{},\"actor_generation\":{},\"tool_slot\":{},\"input_slot\":{},\"tool\":{},\"input\":{},\"output\":{},\"count\":1,\"queued_at\":{},\"committed_at\":{},\"index\":{}}}",
+            actor.slot,
+            actor.generation,
+            self.job.tool_slot,
+            self.job.input_slot,
+            self.job.recipe.tool,
+            self.job.recipe.input,
+            self.job.recipe.output,
+            self.queued_at,
+            self.committed_at,
+            self.index
+        )
+    }
 }

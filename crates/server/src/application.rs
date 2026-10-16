@@ -101,6 +101,12 @@ fn report(events: Vec<runtime::Event>) {
             runtime::Event::World(gielinor_world::simulation::WorldEvent::NpcDrop(trace)) => {
                 println!("NPC drop: {}", trace.json());
             }
+            runtime::Event::World(gielinor_world::simulation::WorldEvent::DoughMade {actor,trace}) => {
+                println!("Dough transition: {}",trace.json(actor));
+            }
+            runtime::Event::World(gielinor_world::simulation::WorldEvent::Grinding {actor,trace}) => {
+                println!("Grinding transition: {}",trace.json(actor));
+            }
             runtime::Event::World(gielinor_world::simulation::WorldEvent::WaterFilled {actor,trace}) => {
                 println!("Water transition: {}",trace.json(actor));
             }

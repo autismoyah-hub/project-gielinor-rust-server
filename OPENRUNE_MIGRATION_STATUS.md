@@ -388,3 +388,21 @@ Scope excludes wells and sink874 native tests, other source families, cups/cans/
   - `shutdown.json` SHA256 `f9869f484753c51d481f93a2926bbc45de1ae9c4d0e71cd93c14e76cbb648140`
   - `result.json` SHA256 `84e20a009647c2622a00a64a94d55a67b366a57adc50aedfe69e39e485ccf42b`
   - `pack-run.json` SHA256 `04ecfa2643a5165818cb8ba4499eb94d7ec5cc6486a73e8dbe7c0e57fd360a52`
+
+## Authoritative processing phase correction (2026-10-16 UTC)
+
+Water evidence commit03f242499e44bb413322e329a7dc1ec2f848aed8 was pushed with matching local/remote SHA; issue54 comment6210419835 records its bounded native/same-save PASS and exclusions.
+
+New grinding commit trace exposed an earlier timing-test weakness: counting World::tick calls from an input callback is not the same as comparing authoritative processing clocks. Input uses the upcoming cycle, and its queue decrements in that cycle. Existing queue2 produced the second grinding output at clock+1, despite the previous test counting two calls. The new timestamp assertion failed as expected in work/grinding-trace-tests-001.log (1serverPASS,5worldPASS/1FAIL). Prior deterministic0/2/3 wording is superseded by this measured correction; no native grinding acceptance had been claimed.
+
+Corrected initial grinding repeat queue2->3: immediate first result index0, second at+2, later at+3 using the unchanged callback queue4. Dough had the analogous first-delay issue: queue1 committed in the selection cycle; queue2 now commits at+1. Dough callback queue2 already yields repeat+1 and is unchanged. No input timestamp was shifted to manufacture agreement. Both traces record raw World.clock, successful exact-slot commits, actor identity, recipe identifiers and sequence index. Cancelled/rejected jobs emit no successful transition. Existing tests now compare timestamps, selected slots and inventory outcomes; interrupted grinding retains only its first trace.
+
+Validation: grinding-trace-tests-002 PASS1server+6world; processing-phase-full-tests-001 PASS45server+347world,0fail/1existingignored original shop-price oracle. Full compile40.12s, server0.33s/world7.58s. Existing warnings unchanged. New immutable archiveB1DC825DE02F34E540EE380C2072383A797D8379785BD69928F43446D8D1AC7F built18.17s,373source hashes. It supersedes88E only for these processing cadence fixes; earlier sink/milk acceptance retains its exact original archive identities.
+
+Native grinding-001 built1.45s, sourceA526B3746D8324640112519FEEF0C92D8E1CD913E73376DDC3C624A9DF765180, executableF9E80FFF46C2C4E5A55DCE0982771468A25ECA6B2C94B94A21D8BF2BBF7B934D. Grinding/dough native runners now require authoritative trace assessments and same-save predecessor trace PASS. Synthetic assessor tests reject70grinding/120dough invalid variations; these are harness checks, not gameplay. Native gameplay remains pending separately recorded acceptance. No issue closure.
+
+- `work/grinding-trace-tests-001.log` SHA256 `ab745f86f1b2dd03902536a803e399503ef36bb3824aa439bedc2e55a661324f`
+- `work/grinding-trace-tests-002.log` SHA256 `a52a8be8e1734bbf206f6fb5363784c5003aff1f92659135877c23bdb6e40d2f`
+- `work/processing-phase-full-tests-001.log` SHA256 `79fba2b20a8951d68798ebaab98f915c1ece1eeb6eb47706d61d24db78293b36`
+- `work/processing-phase-server-build-001.log` SHA256 `c85db4fbd9e0666bbe31162651b29f58ec8aed02d4e3d2e326f7a2745dcd4e55`
+- `work/openrune-processing-phase-001-server-build.json` SHA256 `5534ca550669598b948598a899fa344bdd21b7077084f5490154526d3beb63a1`

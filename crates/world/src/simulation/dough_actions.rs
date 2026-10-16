@@ -1,5 +1,5 @@
 use super::*;
-use crate::dough::{Job, Outcome, Pending, Request, QUEUE};
+use crate::dough::{Job, Outcome, Pending, QUEUE, Request};
 
 impl World {
     pub fn take_dough_request(&mut self, actor: ActorId) -> Result<Option<Request>, ActionError> {
@@ -43,7 +43,9 @@ impl World {
             .add(
                 QUEUE,
                 crate::queues::Category::Weak,
-                1,
+                // Input is stamped with the upcoming cycle: queue2 commits
+                // one processing-clock interval after selection.
+                2,
                 Deferred::Dough(Pending {
                     job: Job {
                         recipe,
@@ -52,6 +54,8 @@ impl World {
                     },
                     request,
                     remaining: count,
+                    queued_at: self.clock.0,
+                    index: 0,
                 }),
             )
             .map_err(|_| ActionError::QueueFull)?;
@@ -63,6 +67,7 @@ pub(super) fn complete(
     queues: &mut crate::queues::Scheduler<Deferred>,
     pending: Pending,
     catalog: &crate::inventory::Catalog,
+    clock: i32,
     events: &mut Vec<WorldEvent>,
 ) {
     if p.pending_logout
@@ -79,6 +84,17 @@ pub(super) fn complete(
     let outcome = pending
         .job
         .complete(&mut p.data.inventory, catalog, &p.data.stats);
+    if outcome == Outcome::Made {
+        events.push(WorldEvent::DoughMade {
+            actor: p.id,
+            trace: crate::dough::Transition {
+                job: pending.job,
+                queued_at: pending.queued_at,
+                committed_at: clock,
+                index: pending.index,
+            },
+        });
+    }
     let message = match outcome {
         Outcome::Made => "You mix the flour and water to make dough.",
         Outcome::Level => "You need a higher Cooking level to make that.",
@@ -114,6 +130,8 @@ pub(super) fn complete(
             ..pending.job
         },
         remaining: pending.remaining - 1,
+        queued_at: clock,
+        index: pending.index + 1,
         ..pending
     };
     // Callback-added queue2 reaches the next commit one world tick later.
@@ -218,6 +236,8 @@ mod tests {
         w.start_dough(a, request, 1, 2).unwrap();
         assert_eq!(count(&w, a, 15), 0);
         w.tick().unwrap();
+        assert_eq!(count(&w, a, 15), 0);
+        w.tick().unwrap();
         assert_eq!(count(&w, a, 15), 1);
         assert_eq!(w.data(a).unwrap().inventory.get(2).unwrap().id, 12);
         assert_eq!(w.data(a).unwrap().inventory.get(3).unwrap().id, 13);
@@ -226,6 +246,28 @@ mod tests {
         assert_eq!(count(&w, a, 12), 2);
         assert_eq!(count(&w, a, 13), 2);
         assert_eq!(w.data(a).unwrap().stats, stats);
+        let traces: Vec<_> = w
+            .drain_events()
+            .into_iter()
+            .filter_map(|e| {
+                if let WorldEvent::DoughMade { actor, trace } = e {
+                    assert_eq!(actor, a);
+                    Some(trace)
+                } else {
+                    None
+                }
+            })
+            .collect();
+        assert_eq!(traces.len(), 2);
+        for (i, trace) in traces.iter().enumerate() {
+            assert_eq!(trace.index, i as u32);
+            assert_eq!(trace.committed_at - trace.queued_at, 1);
+            assert_eq!(
+                (trace.job.flour_slot, trace.job.water_slot),
+                [(2, 3), (0, 1)][i]
+            );
+        }
+        assert_eq!(traces[1].queued_at, traces[0].committed_at);
         w.tick().unwrap();
         assert_eq!(count(&w, a, 15), 2);
     }
@@ -260,6 +302,7 @@ mod tests {
             let (mut w, a, r) = fixture();
             let request = choose(&mut w, a, r);
             w.start_dough(a, request, 0, 2).unwrap();
+            w.tick().unwrap();
             w.tick().unwrap();
             match mode {
                 0 => {
@@ -383,14 +426,17 @@ mod admission_tests {
             .unwrap();
         world.start_dough(actor, choice, 0, 1).unwrap();
         world.tick().unwrap();
+        world.tick().unwrap();
         assert_eq!(world.data(actor).unwrap().inventory.get(0).unwrap().id, 10);
-        assert!(!world
-            .data(actor)
-            .unwrap()
-            .inventory
-            .slots()
-            .iter()
-            .flatten()
-            .any(|i| i.id == 14));
+        assert!(
+            !world
+                .data(actor)
+                .unwrap()
+                .inventory
+                .slots()
+                .iter()
+                .flatten()
+                .any(|i| i.id == 14)
+        );
     }
 }

@@ -219,6 +219,8 @@ pub(crate) struct Pending {
     pub job: Job,
     pub request: Request,
     pub remaining: i32,
+    pub queued_at: i32,
+    pub index: u32,
 }
 impl Config {
     pub fn recipe(&self, water: i32, index: usize) -> Option<Recipe> {
@@ -259,5 +261,33 @@ impl Config {
             origin,
             last_movement,
         })
+    }
+}
+
+/// Successful commits use the raw world processing clock, not client display time.
+#[derive(Clone, Copy, Debug)]
+pub struct Transition {
+    pub job: Job,
+    pub queued_at: i32,
+    pub committed_at: i32,
+    pub index: u32,
+}
+impl Transition {
+    pub fn json(self, actor: crate::simulation::ActorId) -> String {
+        format!(
+            "{{\"actor_slot\":{},\"actor_generation\":{},\"flour_slot\":{},\"water_slot\":{},\"flour\":{},\"water\":{},\"pot\":{},\"vessel\":{},\"dough\":{},\"count\":1,\"queued_at\":{},\"committed_at\":{},\"index\":{}}}",
+            actor.slot,
+            actor.generation,
+            self.job.flour_slot,
+            self.job.water_slot,
+            self.job.recipe.flour,
+            self.job.recipe.water,
+            self.job.recipe.pot,
+            self.job.recipe.vessel,
+            self.job.recipe.dough,
+            self.queued_at,
+            self.committed_at,
+            self.index
+        )
     }
 }

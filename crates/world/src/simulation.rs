@@ -596,6 +596,8 @@ pub enum WorldEvent {
     },
     Milking { actor:ActorId, trace:crate::milking::Transition },
     WaterFilled { actor: ActorId, trace: crate::water_sources::Transition },
+    Grinding { actor: ActorId, trace: crate::grinding::Transition },
+    DoughMade { actor: ActorId, trace: crate::dough::Transition },
     CombatSound {
         actor: ActorId,
         sound: u16,
@@ -2375,10 +2377,10 @@ impl World {
                                                     );
                                                 }
                                                 Deferred::Dough(job) => {
-                                                    dough_actions::complete(p, queues, job, &self.object_types, &mut self.events);
+                                                    dough_actions::complete(p, queues, job, &self.object_types, self.clock.0, &mut self.events);
                                                 }
                                                 Deferred::Grinding(job) => {
-                                                    grinding_actions::complete(p, queues, job, &self.object_types, &mut self.events);
+                                                    grinding_actions::complete(p, queues, job, &self.object_types, self.clock.0, &mut self.events);
                                                 }
                                                 Deferred::WaterFilling(job) => {
                                                     if let Some(config) = &self.water_sources {

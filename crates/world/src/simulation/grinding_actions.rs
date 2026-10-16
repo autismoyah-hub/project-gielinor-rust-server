@@ -22,7 +22,15 @@ impl World {
             tool_slot,
             input_slot,
         };
-        if !apply(p, job, &self.object_types, &mut self.events) {
+        if !apply(
+            p,
+            job,
+            &self.object_types,
+            self.clock.0,
+            self.clock.0,
+            0,
+            &mut self.events,
+        ) {
             return Ok(());
         }
         if let Some(input_slot) = next_input(p, recipe.input) {
@@ -30,13 +38,17 @@ impl World {
                 job: Job { input_slot, ..job },
                 origin: p.movement.coords,
                 last_movement: p.movement.last_movement,
+                queued_at: self.clock.0,
+                index: 1,
             };
-            // Held-use input precedes the next world tick: second output after2.
+            // Input is stamped with the upcoming processing cycle. Its queue
+            // decrements in that cycle, so three yields a two-clock gap.
+            // The first output is synchronized in that initial cycle.
             p.queues
                 .add(
                     QUEUE,
                     crate::queues::Category::Weak,
-                    2,
+                    3,
                     Deferred::Grinding(pending),
                 )
                 .map_err(|_| ActionError::QueueFull)?;
@@ -55,10 +67,22 @@ fn apply(
     p: &mut Player,
     job: Job,
     catalog: &crate::inventory::Catalog,
+    queued_at: i32,
+    clock: i32,
+    index: u32,
     events: &mut Vec<WorldEvent>,
 ) -> bool {
     match job.complete(&mut p.data.inventory, catalog, p.member) {
         Outcome::Made => {
+            events.push(WorldEvent::Grinding {
+                actor: p.id,
+                trace: crate::grinding::Transition {
+                    job,
+                    queued_at,
+                    committed_at: clock,
+                    index,
+                },
+            });
             if let Some(sequence) = job.recipe.animation {
                 events.push(WorldEvent::PlayerCombatAnimation {
                     actor: p.id,
@@ -86,6 +110,7 @@ pub(super) fn complete(
     queues: &mut crate::queues::Scheduler<Deferred>,
     pending: Pending,
     catalog: &crate::inventory::Catalog,
+    clock: i32,
     events: &mut Vec<WorldEvent>,
 ) {
     if p.pending_logout
@@ -99,7 +124,15 @@ pub(super) fn complete(
     {
         return;
     }
-    if !apply(p, pending.job, catalog, events) {
+    if !apply(
+        p,
+        pending.job,
+        catalog,
+        pending.queued_at,
+        clock,
+        pending.index,
+        events,
+    ) {
         return;
     }
     if let Some(input_slot) = next_input(p, pending.job.recipe.input) {
@@ -108,6 +141,8 @@ pub(super) fn complete(
                 input_slot,
                 ..pending.job
             },
+            queued_at: clock,
+            index: pending.index + 1,
             ..pending
         };
         // Callback-added queues decrement in this phase;4 gives3subsequent ticks.
@@ -212,9 +247,9 @@ mod tests {
             w.tick().unwrap();
             assert_eq!(
                 count(&w, actor, 12),
-                if tick < 2 {
+                if tick < 3 {
                     1
-                } else if tick < 5 {
+                } else if tick < 6 {
                     2
                 } else {
                     3
@@ -224,6 +259,28 @@ mod tests {
             assert_eq!(w.data(actor).unwrap().inventory.get(0).unwrap().id, 10);
         }
         assert_eq!(w.data(actor).unwrap().stats, stats);
+        let traces: Vec<_> = w
+            .drain_events()
+            .into_iter()
+            .filter_map(|event| {
+                if let WorldEvent::Grinding { actor: who, trace } = event {
+                    assert_eq!(who, actor);
+                    Some(trace)
+                } else {
+                    None
+                }
+            })
+            .collect();
+        assert_eq!(traces.len(), 3);
+        for (i, trace) in traces.iter().enumerate() {
+            assert_eq!(trace.index, i as u32);
+            assert_eq!(trace.committed_at - trace.queued_at, [0, 2, 3][i]);
+            assert_eq!(trace.job.input_slot, [3, 1, 2][i]);
+            assert_eq!(trace.job.tool_slot, 0);
+            if i > 0 {
+                assert_eq!(trace.queued_at, traces[i - 1].committed_at);
+            }
+        }
     }
     #[test]
     fn membership_is_required_at_admission_and_each_continuation() {
@@ -291,6 +348,13 @@ mod tests {
             }
             assert_eq!(count(&w, actor, 12), 1, "mutation{mutation}");
             assert_eq!(count(&w, actor, 10), 1);
+            assert_eq!(
+                w.drain_events()
+                    .into_iter()
+                    .filter(|e| matches!(e, WorldEvent::Grinding { .. }))
+                    .count(),
+                1
+            );
         }
     }
 }
