@@ -2612,3 +2612,91 @@ mod swamp_tar_binding_tests {
         }
     }
 }
+
+/// Explicit target239.1 three-to-four dose mappings, Wiki chemistry rev15338661.
+const CHEMISTRY_DOSES: [(&str,&str);26] = [
+    ("3dose1attack", "4dose1attack"),
+    ("3doseantipoison", "4doseantipoison"),
+    ("3dose1strength", "strength4"),
+    ("3dosestatrestore", "4dosestatrestore"),
+    ("3dose1energy", "4dose1energy"),
+    ("3dose1defense", "4dose1defense"),
+    ("3dose1agility", "4dose1agility"),
+    ("3dosecombat", "4dosecombat"),
+    ("3doseprayerrestore", "4doseprayerrestore"),
+    ("3dose2attack", "4dose2attack"),
+    ("3dose2antipoison", "4dose2antipoison"),
+    ("3dosefisherspotion", "4dosefisherspotion"),
+    ("3dose2energy", "4dose2energy"),
+    ("3dosehunting", "4dosehunting"),
+    ("3dose2strength", "4dose2strength"),
+    ("3dose2restore", "4dose2restore"),
+    ("3dose2defense", "4dose2defense"),
+    ("3dose1antidragon", "4dose1antidragon"),
+    ("3doserangerspotion", "4doserangerspotion"),
+    ("3dose1magic", "4dose1magic"),
+    ("3dosepotionofzamorak", "4dosepotionofzamorak"),
+    ("3dosepotionofsaradomin", "4dosepotionofsaradomin"),
+    ("3dose1prayer_regeneration", "4dose1prayer_regeneration"),
+    ("3dosegoading", "4dosegoading"),
+    ("3dosebastion", "4dosebastion"),
+    ("3dosebattlemage", "4dosebattlemage")
+];
+pub fn finished_potion_chemistry(objects:&Symbols,defs:&Definitions)->Result<std::collections::BTreeMap<i32,gielinor_world::chemistry_modifier::Binding>,String> {
+    let id=*objects.get("amulet_of_chemistry").ok_or("Missing chemistry amulet symbol")?;
+    let amulet=defs.items.get(&(id as u32)).ok_or("Missing chemistry amulet definition")?;
+    let ordinary=|item:&gielinor_cache::definitions::ItemType| !item.stackable && item.cert.template==0 && item.placeholder.template==0 && item.dummy!=1;
+    if id<0 || !ordinary(amulet) || !amulet.members || amulet.wear[0]!=2 || amulet.inventory_ops != [None,Some("Wear".into()),Some("Options".into()),Some("Break".into()),None] {return Err("Invalid ordinary chemistry amulet".into());}
+    let mut seen=std::collections::BTreeSet::from([id]);let mut result=std::collections::BTreeMap::new();
+    for (three,four) in CHEMISTRY_DOSES {
+        let a=*objects.get(three).ok_or_else(||format!("Missing chemistry dose {three}"))?;
+        let b=*objects.get(four).ok_or_else(||format!("Missing chemistry dose {four}"))?;
+        if a<0 || b<0 || !seen.insert(a) || !seen.insert(b) {return Err("Aliased chemistry dose".into());}
+        let x=defs.items.get(&(a as u32)).ok_or("Missing three-dose definition")?;
+        let y=defs.items.get(&(b as u32)).ok_or("Missing four-dose definition")?;
+        if !ordinary(x) || !ordinary(y) || x.members!=y.members || x.inventory_ops[0].as_deref()!=Some("Drink") || y.inventory_ops[0].as_deref()!=Some("Drink") || !x.name.ends_with("(3)") || x.name.strip_suffix("(3)")!=y.name.strip_suffix("(4)") {return Err(format!("Invalid chemistry dose pair {three}/{four}"));}
+        result.insert(a,gielinor_world::chemistry_modifier::Binding{amulet:id,extra_output:b});
+    }
+    Ok(result)
+}
+#[cfg(test)]
+mod chemistry_binding_tests {
+    use super::*;
+    fn fixture()->(Symbols,Definitions) {
+        let mut names=Symbols::default();let mut defs=Definitions{inventories:Default::default(),locations:Default::default(),npcs:Default::default(),items:Default::default(),varbits:Default::default(),varps:Default::default(),stats:Default::default()};
+        names.insert("amulet_of_chemistry".into(),21163);
+        let mut amulet=gielinor_cache::definitions::ItemType::decode(&[0]).unwrap();amulet.members=true;amulet.wear[0]=2;
+        amulet.inventory_ops=[None,Some("Wear".into()),Some("Options".into()),Some("Break".into()),None];defs.items.insert(21163,amulet);
+        for (index,(a,b)) in CHEMISTRY_DOSES.into_iter().enumerate() {
+            for (dose,name) in [(3,a),(4,b)] {let id=(1000+index*2+(dose-3)) as i32;names.insert(name.into(),id);
+                let mut item=gielinor_cache::definitions::ItemType::decode(&[0]).unwrap();item.name=format!("Potion{index}({dose})");item.members=index!=1;item.inventory_ops[0]=Some("Drink".into());defs.items.insert(id as u32,item);
+            }
+        }
+        (names,defs)
+    }
+    #[test]
+    fn exact_named_pairs_reject_malformed_amulet_and_dose_definitions() {
+        for mode in 0..16 {
+            let (mut names,mut defs)=fixture();
+            match mode {
+                0=>{let map=finished_potion_chemistry(&names,&defs).unwrap();assert_eq!(map.len(),26);for i in 0..26{assert_eq!(map[&(1000+i*2)].extra_output,1001+i*2);}continue;},
+                1=>defs.items.get_mut(&21163).unwrap().wear[0]=0,
+                2=>defs.items.get_mut(&21163).unwrap().members=false,
+                3=>defs.items.get_mut(&21163).unwrap().inventory_ops[3]=None,
+                4=>defs.items.get_mut(&21163).unwrap().stackable=true,
+                5=>defs.items.get_mut(&1001).unwrap().cert.template=799,
+                6=>defs.items.get_mut(&1001).unwrap().placeholder.template=14401,
+                7=>defs.items.get_mut(&1001).unwrap().dummy=1,
+                8=>defs.items.get_mut(&1001).unwrap().stackable=true,
+                9=>defs.items.get_mut(&1001).unwrap().name="Potion0(3)".into(),
+                10=>defs.items.get_mut(&1001).unwrap().inventory_ops[0]=Some("Empty".into()),
+                11=>defs.items.get_mut(&1001).unwrap().members=false,
+                12=>{names.insert("4dose1attack".into(),1000);},
+                13=>{names.insert("4dose1attack".into(),21163);},
+                14=>{names.remove("strength4");},
+                _=>{defs.items.remove(&1000);},
+            }
+            assert!(finished_potion_chemistry(&names,&defs).is_err(),"mode{mode}");
+        }
+    }
+}

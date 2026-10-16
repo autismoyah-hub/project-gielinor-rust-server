@@ -43,6 +43,7 @@ impl World {
             .get(&(request.unfinished, request.secondary))
             .ok_or(ActionError::InvalidItem)?;
         let pending = Pending {
+            chemistry:config.chemistry.get(&recipe.output).copied(),
             goggles:config.goggles,
             job: Job {
                 recipe,
@@ -80,6 +81,7 @@ pub(super) fn complete(
     clock: i32,
     events: &mut Vec<WorldEvent>,
     random: &mut impl RandomSource,
+    worn_changes: &mut Vec<(ActorId, usize, i32)>,
 ) {
     if p.pending_logout
         || p.saving
@@ -96,16 +98,25 @@ pub(super) fn complete(
     let fine_before = p.data.stats.fine_xp(15);
     let rate_hundreds = p.data.xp_rate_hundreds;
     let eligible_goggles=p.data.equipment.get(0).is_some_and(|item| item.count==1 && item.vars==0 && pending.goggles.contains(&item.id));
-    let (outcome,secondary_saved) = pending.job.complete_with_goggles(
+    let result = pending.job.complete_with_modifiers(
         &mut p.data.inventory,
         catalog,
         &mut p.data.stats,
+        &mut p.data.equipment,
+        &mut p.data.chemistry,
         p.member,
         eligible,
         rate_hundreds,
         eligible_goggles,
+        pending.chemistry,
         random,
     );
+    let outcome=result.outcome;
+    let secondary_saved=result.secondary_saved;
+    if result.chemistry.crumbled {
+        worn_changes.push((p.id,2,pending.chemistry.expect("validated chemistry binding").amulet));
+        events.push(WorldEvent::LocationMessage{actor:p.id,message:"Your amulet of chemistry has crumbled to dust."});
+    }
     let message = match outcome {
         Outcome::Made(_) => "You mix the ingredients into your potion.",
         Outcome::Members => "You need to be a member to make potions.",
@@ -129,6 +140,9 @@ pub(super) fn complete(
     events.push(WorldEvent::FinishedPotionMade {
         actor: p.id,
         trace: crate::finished_potions::Transition {
+            output:result.output,
+            chemistry:result.chemistry,
+            charges_remaining:p.data.chemistry.remaining(),
             secondary_saved,
             job: pending.job,
             queued_at: pending.queued_at,
@@ -143,7 +157,7 @@ pub(super) fn complete(
         actor: p.id,
         sequence: pending.animation,
     });
-    if pending.remaining <= 1 {
+    if pending.remaining <= 1 || result.chemistry.stop {
         return;
     }
     let slot = |id| {
@@ -210,6 +224,7 @@ mod tests {
         let pos = CoordGrid::new(3200, 3200, 0).unwrap();
         w.collision.allocate(3200, 3200, 0);
         w.finished_potions = Some(Config {
+            chemistry:Default::default(),
             goggles:[29974,29976],
             recipes: [(
                 (93, 235),
@@ -478,4 +493,42 @@ mod tests {
         }
     }
 
+    #[test]
+    fn chemistry_last_charge_stops_or_continues_and_publishes_actual_output() {
+        struct Proc;
+        impl RandomSource for Proc { fn below(&mut self,bound:u32)->u32 {assert_eq!(bound,100);0} }
+        for stop in [false,true] {
+            let (mut w,a,r)=fixture();
+            w.finished_potions.as_mut().unwrap().chemistry.insert(175,crate::chemistry_modifier::Binding{amulet:21163,extra_output:2446});
+            let data=w.data_mut(a).unwrap();data.chemistry=crate::chemistry::State::restore(1,stop as i32).unwrap();
+            data.equipment.restore_slot(2,Some(Item{id:21163,count:1,vars:0})).unwrap();
+            let request=choose(&mut w,a,r);w.start_finished_potion(a,request,0,28).unwrap();
+            for _ in 0..7 {w.tick_with_random(&mut Proc).unwrap();}
+            let data=w.data(a).unwrap();assert!(data.equipment.get(2).is_none());assert_eq!(data.chemistry.remaining(),5);
+            assert_eq!(data.stats.fine_xp(15),if stop{5756}else{7631});
+            let traces=w.drain_events().into_iter().filter_map(|e|if let WorldEvent::FinishedPotionMade{trace,..}=e{Some(trace)}else{None}).collect::<Vec<_>>();
+            assert_eq!(traces.len(),if stop{1}else{2});assert_eq!(traces[0].output,2446);assert!(traces[0].chemistry.crumbled);assert_eq!(traces[0].chemistry.stop,stop);
+            assert!(traces[0].json(a).contains("\"output\":2446"));
+            if !stop{assert_eq!(traces[1].output,175);assert!(!traces[1].chemistry.extra_dose);assert_eq!(traces[1].committed_at-traces[0].committed_at,2);}
+        }
+    }
+    #[test]
+    fn chemistry_checks_live_neck_slot_and_keeps_character_charges_after_swap() {
+        struct Proc{calls:usize}
+        impl RandomSource for Proc {fn below(&mut self,bound:u32)->u32{assert_eq!(bound,100);self.calls+=1;0}}
+        for mode in 0..4 {
+            let (mut w,a,r)=fixture();
+            w.finished_potions.as_mut().unwrap().chemistry.insert(175,crate::chemistry_modifier::Binding{amulet:21163,extra_output:2446});
+            let data=w.data_mut(a).unwrap();data.chemistry=crate::chemistry::State::restore(2,0).unwrap();
+            data.equipment.restore_slot(2,Some(Item{id:21163,count:1,vars:0})).unwrap();
+            let request=choose(&mut w,a,r);w.start_finished_potion(a,request,0,28).unwrap();
+            let mut rng=Proc{calls:0};for _ in 0..3{w.tick_with_random(&mut rng).unwrap();}
+            assert_eq!(rng.calls,1);assert_eq!(w.data(a).unwrap().chemistry.remaining(),1);
+            let data=w.data_mut(a).unwrap();data.equipment.restore_slot(2,None).unwrap();
+            match mode {0=>(),1=>data.equipment.restore_slot(2,Some(Item{id:21163,count:1,vars:0})).unwrap(),2=>data.equipment.restore_slot(0,Some(Item{id:21163,count:1,vars:0})).unwrap(),_=>{data.variables.set(quest(),3,false);}}
+            for _ in 0..4{w.tick_with_random(&mut rng).unwrap();}
+            assert_eq!(rng.calls,if mode==1{2}else{1});assert_eq!(w.data(a).unwrap().chemistry.remaining(),if mode==1{5}else{1});
+            assert_eq!(w.data(a).unwrap().stats.fine_xp(15),if mode==3{5756}else{7631});
+        }
+    }
 }

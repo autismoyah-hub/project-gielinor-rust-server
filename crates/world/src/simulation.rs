@@ -2333,6 +2333,7 @@ impl World {
                     }
                 }
                 Phase::PlayerMain => {
+                    let mut chemistry_worn_changes=Vec::new();
                     let alive_npcs: HashSet<_> = self
                         .npcs
                         .iter()
@@ -2414,7 +2415,7 @@ impl World {
                                                     unfinished_potion_actions::complete(p, queues, job, &self.object_types, self.clock.0, &mut self.events);
                                                 }
                                                 Deferred::FinishedPotion(job) => {
-                                                    finished_potion_actions::complete(p, queues, job, &self.object_types, self.clock.0, &mut self.events, random);
+                                                    finished_potion_actions::complete(p, queues, job, &self.object_types, self.clock.0, &mut self.events, random, &mut chemistry_worn_changes);
                                                 }
                                                 Deferred::Dough(job) => {
                                                     dough_actions::complete(p, queues, job, &self.object_types, self.clock.0, &mut self.events);
@@ -2794,6 +2795,7 @@ impl World {
                             }
                         }
                     }
+                    for (actor,slot,item) in chemistry_worn_changes { self.worn_changed(actor,slot,item); }
                 }
                 Phase::PlayerLogout => {
                     let due: Vec<_> = self

@@ -306,7 +306,7 @@ mod tests {
 
     #[test]
     fn ingredient_pairs_preserve_shared_bases_and_reverse_selected_slots() {
-        let config=Config{goggles:[29974,29976],recipes:profiles().into_iter().map(|r|((r.unfinished,r.secondary),r)).collect(),quest_progress:80,quest_complete:4,animation:363};
+        let config=Config{chemistry:Default::default(),goggles:[29974,29976],recipes:profiles().into_iter().map(|r|((r.unfinished,r.secondary),r)).collect(),quest_progress:80,quest_complete:4,animation:363};
         assert_eq!(config.recipes.len(),29);
         let origin=crate::CoordGrid::new(3200,3200,0).unwrap();
         for recipe in profiles() {
@@ -456,6 +456,7 @@ mod tests {
 pub(crate) const QUEUE: i32 = -2391008;
 #[derive(Clone, Debug)]
 pub struct Config {
+    pub chemistry: std::collections::BTreeMap<i32, crate::chemistry_modifier::Binding>,
     pub goggles: [i32;2],
     pub recipes: std::collections::BTreeMap<(i32, i32), Recipe>,
     pub quest_progress: u16,
@@ -511,6 +512,7 @@ impl Config {
 }
 #[derive(Clone, Copy, Debug)]
 pub(crate) struct Pending {
+    pub chemistry: Option<crate::chemistry_modifier::Binding>,
     pub goggles: [i32;2],
     pub job: Job,
     pub request: Request,
@@ -523,6 +525,9 @@ pub(crate) struct Pending {
 }
 #[derive(Clone, Copy, Debug)]
 pub struct Transition {
+    pub output: i32,
+    pub chemistry: crate::chemistry::Proc,
+    pub charges_remaining: u8,
     pub secondary_saved: bool,
     pub job: Job,
     pub queued_at: i32,
@@ -535,14 +540,14 @@ pub struct Transition {
 impl Transition {
     pub fn json(self, actor: crate::simulation::ActorId) -> String {
         format!(
-            "{{\"actor_slot\":{},\"actor_generation\":{},\"unfinished_slot\":{},\"secondary_slot\":{},\"unfinished\":{},\"secondary\":{},\"output\":{},\"count\":1,\"queued_at\":{},\"committed_at\":{},\"index\":{},\"base_fine_xp\":{},\"rate_hundreds\":{},\"fine_before\":{},\"fine_after\":{},\"secondary_saved\":{}}}",
+            "{{\"actor_slot\":{},\"actor_generation\":{},\"unfinished_slot\":{},\"secondary_slot\":{},\"unfinished\":{},\"secondary\":{},\"output\":{},\"count\":1,\"queued_at\":{},\"committed_at\":{},\"index\":{},\"base_fine_xp\":{},\"rate_hundreds\":{},\"fine_before\":{},\"fine_after\":{},\"secondary_saved\":{},\"extra_dose\":{},\"amulet_crumbled\":{},\"stop_on_crumble\":{},\"charges_remaining\":{}}}",
             actor.slot,
             actor.generation,
             self.job.unfinished_slot,
             self.job.secondary_slot,
             self.job.recipe.unfinished,
             self.job.recipe.secondary,
-            self.job.recipe.output,
+            self.output,
             self.queued_at,
             self.committed_at,
             self.index,
@@ -550,7 +555,7 @@ impl Transition {
             self.rate_hundreds,
             self.fine_before,
             self.fine_after,
-            self.secondary_saved
+            self.secondary_saved, self.chemistry.extra_dose, self.chemistry.crumbled, self.chemistry.stop, self.charges_remaining
         )
     }
 }
