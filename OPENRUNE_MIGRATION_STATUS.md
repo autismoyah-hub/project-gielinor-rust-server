@@ -3003,3 +3003,49 @@ OpenRune Herblore.kt lines410-420 instead specifies three-dose ingredients/outpu
 - Amulet of chemistry: revision15338661, raw SHA256 `43eb8d9575c8fd45b45ae660bd178b7dfe45fa40d82113039bf76e13bf5c3ba8`.
 
 Focused command: build.ps1 -Action test -CargoArgs -p,gielinor-world,--lib,combat_mixing::tests. Attempt001 PASS2,406filtered;54.66s compile. Available4094MiB,commit78.9percent,page-ins701/s,disk1.1ms,CPU36.6percent;Cargo-j1. The concurrent native run used its immutable archive and was not interrupted.
+
+## Native gameplay divinebasic acceptance (2026-10-16 UTC)
+
+Eight dose-preserving divine upgrades, ordinary crystal dust debited1/2/3/4 twice despite equipped goggles,500fineXP at5x, two-tick commits, full28 backpack and equipment conserved; same-save no replay. Chemistry proc, acquisition and drinking remain separate.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking/Herblore parity or unrelated recipes. No issue closure.
+
+`openrune-native-divinebasic-001` PASS. Server archive `29BB4FD3587E30689BCAFA18C2DEF348ACC58653E4AB6C81FEF489D400A311FD`, driver `divinebasic-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID18308.
+- Driver `server_divinebasic.exe` SHA256 `D594B4AB41984052644BC112C6A9402087CFFBB16B4DFF289DE3CDE18169C0CD`
+- Driver `NativeDivineBasicScenario.rs` SHA256 `377311258678EA277EAD73739D171CB161FAE6BABB79BD6EFC6F4BC68F9B132C`
+- `client.log` SHA256 `e5a57ef3b12e0ebfddfbd8779022af99c0001ae05176bc6f69e689812d497fba`
+- `server.log` SHA256 `8db6ad235c494e50606c057d4b980639cfc2fab1e4084ff3979c8db9ce6d8372`
+- `initial-state.json` SHA256 `f911095cb3b9b915357d8f6a6f091419d25c9f7f16c7779953546d260db15377`
+- `final-state.json` SHA256 `54f459ba251bba415634ab7298510ade31de61ff0c92f2fb468648abec0a52fd`
+- `pack-assessment.json` SHA256 `723085285bf7620c6eb88867947ae234aa121ef948fc057f108062e0e23ca1d2`
+- `divinebasic-trace-assessment.json` SHA256 `9e93d50414712db1af2c9167d1f005bae6b5b9456d8c4076127f84d713e2bc6a`
+- `logout-observation.json` SHA256 `42e702164a3c994984f134a2742cef922c1ebc3d2eae7f2e59fc56cd35f2f98e`
+- `shutdown.json` SHA256 `d4422ebf3def1f9fdb489d983e4c3dcdb255697514b2311e54758d4e4d874091`
+- `result.json` SHA256 `475885d8f7a0dee726079b8a2286dfb6c28777cc3f45262f09ae9dc15597d02e`
+- `pack-run.json` SHA256 `7f9c33e0e50e9b7bb2539c464073f29dbe9e3c67dda2d641b1146af1fe623bf4`
+- `native-profile-assessment.json` SHA256 `3f14a170fae57aa7fb1d7cec162cb49aa87debcbb735e6b036598733a23eb947`
+- `native-packet-assessment.json` SHA256 `db01a679015584fa463c7aaed4d85b8c6e6caa5ac55971bd42a3f1f1a5c9f7f6`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":600},"3077":{"before":0,"after":5420},"3079":{"before":0,"after":302},"65515":{"before":0,"after":293}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[{"actor_slot":1,"actor_generation":614,"base_slot":1,"secondary_slot":0,"base":149,"secondary":23964,"output":23706,"count":1,"queued_at":174,"committed_at":176,"index":0,"base_fine_xp":5,"rate_hundreds":500,"fine_before":130344311,"fine_after":130344336,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"base_slot":2,"secondary_slot":0,"base":147,"secondary":23964,"output":23703,"count":1,"queued_at":194,"committed_at":196,"index":0,"base_fine_xp":10,"rate_hundreds":500,"fine_before":130344336,"fine_after":130344386,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"base_slot":3,"secondary_slot":0,"base":145,"secondary":23964,"output":23700,"count":1,"queued_at":207,"committed_at":209,"index":0,"base_fine_xp":15,"rate_hundreds":500,"fine_before":130344386,"fine_after":130344461,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"base_slot":4,"secondary_slot":0,"base":2436,"secondary":23964,"output":23697,"count":1,"queued_at":224,"committed_at":226,"index":0,"base_fine_xp":20,"rate_hundreds":500,"fine_before":130344461,"fine_after":130344561,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"base_slot":5,"secondary_slot":0,"base":161,"secondary":23964,"output":23718,"count":1,"queued_at":237,"committed_at":239,"index":0,"base_fine_xp":5,"rate_hundreds":500,"fine_before":130344561,"fine_after":130344586,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"base_slot":6,"secondary_slot":0,"base":159,"secondary":23964,"output":23715,"count":1,"queued_at":253,"committed_at":255,"index":0,"base_fine_xp":10,"rate_hundreds":500,"fine_before":130344586,"fine_after":130344636,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"base_slot":7,"secondary_slot":0,"base":157,"secondary":23964,"output":23712,"count":1,"queued_at":265,"committed_at":267,"index":0,"base_fine_xp":15,"rate_hundreds":500,"fine_before":130344636,"fine_after":130344711,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"base_slot":8,"secondary_slot":0,"base":2440,"secondary":23964,"output":23709,"count":1,"queued_at":280,"committed_at":282,"index":0,"base_fine_xp":20,"rate_hundreds":500,"fine_before":130344711,"fine_after":130344811,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5}],"scope":"Separate selected-profile two-tick commits; UI evidence and packet/display latency separate"}`
+
+`openrune-divinebasic-relogin-001` PASS. Server archive `29BB4FD3587E30689BCAFA18C2DEF348ACC58653E4AB6C81FEF489D400A311FD`, driver `divinebasic-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor `openrune-native-divinebasic-001`, owned PID2408.
+- Driver `server_divinebasic.exe` SHA256 `D594B4AB41984052644BC112C6A9402087CFFBB16B4DFF289DE3CDE18169C0CD`
+- Driver `NativeDivineBasicScenario.rs` SHA256 `377311258678EA277EAD73739D171CB161FAE6BABB79BD6EFC6F4BC68F9B132C`
+- `client.log` SHA256 `e473277dfb1faa0e8a6446d1985ac67b2c7bbf213bec1bd705bdcb725016b19c`
+- `server.log` SHA256 `3e19b68c52977f78bc9500289cdbe59285d5332787a1af40a01ef361604382b7`
+- `initial-state.json` SHA256 `54f459ba251bba415634ab7298510ade31de61ff0c92f2fb468648abec0a52fd`
+- `final-state.json` SHA256 `f55c3d5d50695c9e60b3a30d1a0f2a367f5372f34c80a1769dec548551c6ca64`
+- `pack-assessment.json` SHA256 `03dc742b93a323a01177c4c187b22ab1c0aeb5457f53f87498641e7f345b15b2`
+- `divinebasic-trace-assessment.json` SHA256 `15565119835c4387827e07e673e26fc0ec5897457d403e87d7333c03aaf96013`
+- `logout-observation.json` SHA256 `c8a074d4fa393f405fcf2e9ed290c67718c4247d0024a799d8746dac40fa2ab6`
+- `shutdown.json` SHA256 `13f8f5a6fa27039e050952bd4e99973199851a4aacf93ed4b15e33ca3484e95c`
+- `result.json` SHA256 `b347118cd8f6b3c7d451872956c03eac7a3e26a41ede96535f86e8dc9c6cc2dc`
+- `pack-run.json` SHA256 `b6f138bedd2bfb89e80956d96d9b5250338898063d76f2c35f3712f79f8866df`
+- `native-profile-assessment.json` SHA256 `3f14a170fae57aa7fb1d7cec162cb49aa87debcbb735e6b036598733a23eb947`
+- `native-packet-assessment.json` SHA256 `24ae9618a891a406d3f004e5040a866544879b7a73e8c62339c66a8909b09ea3`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":600,"after":900},"3077":{"before":5420,"after":3128},"3079":{"before":302,"after":149},"65515":{"before":293,"after":434}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Separate selected-profile two-tick commits; UI evidence and packet/display latency separate"}`
