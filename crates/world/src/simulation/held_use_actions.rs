@@ -77,6 +77,34 @@ impl World {
             }
         };
         match handler {
+            Some(Handler::Assembly(recipe)) => {
+                let p = self.players.get_mut(actor.slot as usize).unwrap();
+                if (p.data.stats.current(recipe.skill) as u8) < recipe.level {
+                    self.events.push(WorldEvent::LocationMessage {
+                        actor,
+                        message: "You need a higher Cooking level to make that.",
+                    });
+                    return Ok(());
+                }
+                let (first_slot, second_slot) = if request.selected_id == recipe.first {
+                    (request.selected_slot as usize, request.target_slot as usize)
+                } else {
+                    (request.target_slot as usize, request.selected_slot as usize)
+                };
+                p.queues.clear_weak();
+                p.queues
+                    .add(
+                        crate::assembly::QUEUE,
+                        crate::queues::Category::Weak,
+                        2,
+                        Deferred::Assembly(crate::assembly::Job {
+                            recipe,
+                            first_slot,
+                            second_slot,
+                        }),
+                    )
+                    .map_err(|_| ActionError::QueueFull)?;
+            }
             Some(Handler::TutorialFire(config)) => self.start_tutorial_fire(actor, config),
             None => self.events.push(WorldEvent::EngineMessage {
                 actor,
@@ -304,5 +332,127 @@ mod tests {
                 ..
             }
         )));
+    }
+}
+
+#[cfg(test)]
+mod assembly_tests {
+    use super::*;
+    use crate::{
+        assembly::Recipe,
+        held_use::{Scope, Type},
+        inventory::{Insert, StackType},
+    };
+    fn fixture() -> (World, ActorId, Request) {
+        let mut world = World::default();
+        world.collision.allocate(3200, 3200, 0);
+        world.held_use_types = [10, 11, 12].map(|id| (id, Type { id, content: 0 })).into();
+        world
+            .held_use_handlers
+            .register(
+                Scope::Types,
+                10,
+                11,
+                Handler::Assembly(Recipe {
+                    first: 10,
+                    second: 11,
+                    output: 12,
+                    skill: 7,
+                    level: 1,
+                }),
+            )
+            .unwrap();
+        let mut data = PlayerData::new(
+            1,
+            "Assembler".into(),
+            CoordGrid::new(3200, 3200, 0).unwrap(),
+            Stats::default(),
+        );
+        data.inventory = Inventory::new(3, StackType::Normal, false);
+        for id in [10, 11] {
+            data.inventory
+                .insert(&world.object_types, Insert::new(id, 1))
+                .unwrap();
+        }
+        world.queue_login(1, data).unwrap();
+        world.tick().unwrap();
+        let actor = world.actors().next().unwrap();
+        (
+            world,
+            actor,
+            Request {
+                selected_slot: 1,
+                selected_id: 11,
+                target_slot: 0,
+                target_id: 10,
+            },
+        )
+    }
+    #[test]
+    fn assembly_reverse_pair_rechecks_slots_level_and_cancellation() {
+        for change in 0..4 {
+            let (mut w, actor, request) = fixture();
+            let xp = w.data(actor).unwrap().stats.clone();
+            w.prepare_held_use(actor, request).unwrap();
+            w.finish_held_use(actor, request).unwrap();
+            assert_eq!(w.data(actor).unwrap().inventory.get(0).unwrap().id, 10);
+            match change {
+                1 => {
+                    // Same item elsewhere does not authorize a moved selected input.
+                    let inv = &mut w.data_mut(actor).unwrap().inventory;
+                    let old = inv.get(0);
+                    inv.restore_slot(0, None).unwrap();
+                    inv.restore_slot(2, old).unwrap();
+                }
+                2 => {
+                    w.data_mut(actor).unwrap().stats.set_current(7, 0);
+                }
+                3 => {
+                    w.submit(
+                        actor,
+                        Action::MoveClick {
+                            destination: CoordGrid::new(3201, 3200, 0).unwrap(),
+                            control: false,
+                        },
+                    )
+                    .unwrap();
+                }
+                _ => (),
+            }
+            for tick in 1..=4 {
+                w.tick().unwrap();
+                if change == 0 {
+                    assert_eq!(
+                        w.data(actor)
+                            .unwrap()
+                            .inventory
+                            .slots()
+                            .iter()
+                            .flatten()
+                            .any(|i| i.id == 12),
+                        tick >= 2
+                    );
+                }
+            }
+            let data = w.data(actor).unwrap();
+            assert_eq!(
+                data.inventory.slots().iter().flatten().any(|i| i.id == 12),
+                change == 0
+            );
+            if change == 0 {
+                assert_eq!(data.stats, xp);
+                let inventory = data.inventory.clone();
+                assert_eq!(
+                    w.finish_held_use(actor, request),
+                    Err(ActionError::InvalidItem)
+                );
+                for _ in 0..3 {
+                    w.tick().unwrap();
+                }
+                assert_eq!(w.data(actor).unwrap().inventory, inventory);
+            } else {
+                assert!(data.inventory.slots().iter().flatten().any(|i| i.id == 10));
+            }
+        }
     }
 }

@@ -272,7 +272,8 @@ pub mod tower_combat;
 pub mod tower_tastes;
 pub mod woodcutting;
 
+pub mod assembly;
 pub mod gathering;
+pub mod item_packs;
 pub mod mining;
 pub mod shop;
-pub mod item_packs;

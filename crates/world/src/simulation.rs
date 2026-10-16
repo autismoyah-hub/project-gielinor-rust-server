@@ -160,6 +160,7 @@ impl PlayerData {
 #[derive(Clone)]
 enum Deferred {
     Smithing(crate::smithing_make::Job),
+    Assembly(crate::assembly::Job),
     ItemPack {
         pack: i32,
         rule: crate::item_packs::Rule,
@@ -279,6 +280,7 @@ impl Player {
         Ok(())
     }
     fn begin_held_action(&mut self) {
+        self.queues.remove_all(crate::assembly::QUEUE);
         // The current source's normal launch clears interactions; launchLenient
         // only replaces the suspended coroutine, even if objectVerify rejects it.
         if !self.protection.access_protected(self.has_modal) {
@@ -2342,6 +2344,16 @@ impl World {
                                                         rule,
                                                         &mut self.events,
                                                     );
+                                                }
+                                                Deferred::Assembly(job) => {
+                                                    let outcome = job.complete(&mut p.data.inventory, &self.object_types, &p.data.stats);
+                                                    let message = match outcome {
+                                                        crate::assembly::Outcome::Made => "You combine the ingredients.",
+                                                        crate::assembly::Outcome::Level => "You need a higher Cooking level to make that.",
+                                                        crate::assembly::Outcome::Stale => "You no longer have those ingredients in the selected slots.",
+                                                        crate::assembly::Outcome::Capacity => "You don't have enough inventory space to make that.",
+                                                    };
+                                                    self.events.push(WorldEvent::LocationMessage {actor:p.id,message});
                                                 }
                                                 Deferred::Smithing(job) => {
                                                     if let Some(config) = self.smithing {

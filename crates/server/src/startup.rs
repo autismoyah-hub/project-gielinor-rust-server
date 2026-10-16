@@ -651,6 +651,24 @@ pub fn configure<B: AccountBackend>(
         names.id("obj", "bucket_empty")? as i32,
         names.id("obj", "bread_dough")? as i32,
     )?;
+    for recipe in crate::content::assembly(
+        n("obj"),
+        &runtime.definitions,
+        u8::try_from(names.id("stat", "cooking")?).map_err(io::Error::other)?,
+    )
+    .map_err(io::Error::other)?
+    {
+        runtime
+            .world
+            .held_use_handlers
+            .register(
+                gielinor_world::held_use::Scope::Types,
+                recipe.first,
+                recipe.second,
+                gielinor_world::held_use::Handler::Assembly(recipe),
+            )
+            .map_err(|e| io::Error::other(format!("Assembly registration: {e:?}")))?;
+    }
     runtime.configure_smelting_names(names)?;
     runtime.configure_anvil(crate::anvil::Config::resolve(
         names,

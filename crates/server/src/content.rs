@@ -610,3 +610,88 @@ mod pack_binding_tests {
         assert!(item_packs(&symbols, &defs).is_err());
     }
 }
+
+/// Wiki-pinned zero-XP assembly; no OpenRune numeric IDs or unchecked mutations.
+pub fn assembly(
+    symbols: &Symbols,
+    defs: &Definitions,
+    skill: u8,
+) -> Result<Vec<gielinor_world::assembly::Recipe>, String> {
+    let mut recipes = Vec::new();
+    for (first, second, output, level) in [
+        ("pastry_dough", "piedish", "pie_shell", 1),
+        ("pie_shell", "redberries", "uncooked_redberry_pie", 10),
+        ("pizza_base", "tomato", "incomplete_pizza", 35),
+        ("incomplete_pizza", "cheese", "uncooked_pizza", 35),
+    ] {
+        let resolve = |name: &str| -> Result<i32, String> {
+            let id = *symbols
+                .get(name)
+                .ok_or_else(|| format!("Missing assembly symbol {name}"))?;
+            let ty = defs
+                .items
+                .get(&(id as u32))
+                .ok_or_else(|| format!("Missing assembly definition {name}"))?;
+            if ty.cert.template != 0 || ty.placeholder.template != 0 || ty.stackable {
+                return Err(format!("Invalid assembly profile {name}"));
+            }
+            Ok(id)
+        };
+        recipes.push(gielinor_world::assembly::Recipe {
+            first: resolve(first)?,
+            second: resolve(second)?,
+            output: resolve(output)?,
+            skill,
+            level,
+        });
+    }
+    Ok(recipes)
+}
+
+#[cfg(test)]
+mod assembly_binding_tests {
+    use super::*;
+    #[test]
+    fn assembly_profiles_require_real_unnoted_definitions() {
+        let names = [
+            "pastry_dough",
+            "piedish",
+            "pie_shell",
+            "redberries",
+            "uncooked_redberry_pie",
+            "pizza_base",
+            "tomato",
+            "incomplete_pizza",
+            "cheese",
+            "uncooked_pizza",
+        ];
+        let mut symbols = Symbols::new();
+        let mut defs = Definitions {
+            inventories: Default::default(),
+            locations: Default::default(),
+            npcs: Default::default(),
+            items: Default::default(),
+            varbits: Default::default(),
+            varps: Default::default(),
+            stats: Default::default(),
+        };
+        for (index, name) in names.iter().enumerate() {
+            let id = index as i32 + 1;
+            symbols.insert((*name).into(), id);
+            defs.items.insert(
+                id as u32,
+                gielinor_cache::definitions::ItemType::decode(&[0]).unwrap(),
+            );
+        }
+        let recipes = assembly(&symbols, &defs, 7).unwrap();
+        assert_eq!(
+            recipes.iter().map(|r| r.level).collect::<Vec<_>>(),
+            [1, 10, 35, 35]
+        );
+        defs.items.get_mut(&1).unwrap().cert.template = 799;
+        assert!(assembly(&symbols, &defs, 7).is_err());
+        defs.items.get_mut(&1).unwrap().cert.template = 0;
+        symbols.remove("tomato");
+        assert!(assembly(&symbols, &defs, 7).is_err());
+    }
+}
