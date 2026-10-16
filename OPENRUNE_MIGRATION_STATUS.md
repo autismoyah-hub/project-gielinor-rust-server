@@ -2678,3 +2678,14 @@ UI003 driver004 proved Stop child2 had native flags1, but its geometric center[2
 UI004 client and packets passed, but original pack-assessment.json failed because generic conservation omitted the intentional choice layout bit. Cache varbit10670 chatmodal_unclamp is exactly varp1021 bit28 (definitionSHA256bcc996077289632de0e1704bb53e29907e472cb10aa546359d141e51b647703d). Kotlin ifChoice/ifOpenChat and Rust both set mode1. Versioned pack-assessment-002.json requires exactly that change, rejects all other bits/varps, and retains the FAIL file unchanged.35synthetic checks passed including adjacent-bit corruption and same-save preservation. PredecessorAssessment explicitly selects version002 for relogin; early relogin attempt failed preflight before launching because assessments were incomplete, retained in chemistryui-relogin-attempt-004.log. Completed relogin004 uses attempt004b.
 
 Worn native driver001 compiled5.65s with4330MiB78.6percentcommit0page-ins/s1.9msdisk34.3percentCPU,j2;15synthetic packet/state checks PASS after correcting synthetic inventory ordering (no production change). Worn control/fresh/same-save remain pending.
+
+
+## Three additional ordinary crushing recipes (native pending)
+
+Crushed nest Wiki revision15184159 SHA256c695eff9612a1ff6fd4fbf569a59c097863fad211789e143ddb129fe6755efcb; pestle_and_mortar=233, bird_nest_empty=5075, crushed_bird_nest=6693.
+Dragon scale dust Wiki revision15184318 SHA256a5580c50758c4d9cc1ecf74204b555285c45153e636b55b95366dd2a39685f20; pestle_and_mortar=233, blue_dragon_scale=243, dragon_scale_dust=241.
+Goat horn dust Wiki revision15280508 SHA256ffce05d085579ac0d73a60f0dce69add67f1d5a2975749e1b4249460a5b0811a; pestle_and_mortar=233, desert_goat_horn=9735, ground_desert_goat_horn=9736.
+
+Registered empty bird nests, blue dragon scales and goat horns through the existing retained-tool atomic replacement and held-use scheduler. Wiki explicitly gives manual0 / automatic2 then3 ticks, one-for-one outputs and no XP; target definitions decoded as ordinary nonstackable, non-dummy objects. No item acquisition, noted-input or broader crushing acceptance claim. OpenRune table behavior reviewed independently; no expression reused. Three additional cache-binding missing-output/slot assertions; existing membership/stale/interrupt/full-inventory and schedule regressions retained.
+
+grinding-three-tests-attempt-001 PASS55server10storage397world1ignored,391source hashes unchanged; compile14.99s,world43.67s. Guard4261MiB available79.3percentcommit517page-ins/s1.7msdisk36.3percentCPU,j2. This validation ran alongside isolated pinned chemistry-worn acceptance; that immutable archive is unaffected by newer source. New crushing fixture/driver/assessors prepared locally but not yet installed or native-accepted.
