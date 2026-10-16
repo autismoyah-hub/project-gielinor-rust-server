@@ -1,4 +1,4 @@
-//! Ordinary two-input finished-potion transactions, not runtime registration.
+//! Ordinary two-input finished-potion transactions and shared-runtime configuration.
 //! Wiki Attack potion15247702, Antipoison15292478, Strength potion15183998.
 //! Equipment modifiers and alternate recipes must be resolved by the caller.
 use crate::{
@@ -174,7 +174,7 @@ mod tests {
             stats,
         )
     }
-    fn profiles() -> [Recipe; 3] {
+    fn profiles() -> [Recipe; 9] {
         [
             Recipe {
                 unfinished: 91,
@@ -200,7 +200,32 @@ mod tests {
                 boostable: true,
                 base_fine_xp: 500,
             },
+            Recipe { unfinished: 97, secondary: 223, output: 127, level: 22, boostable: true, base_fine_xp: 625 },
+            Recipe { unfinished: 97, secondary: 1975, output: 3010, level: 26, boostable: true, base_fine_xp: 675 },
+            Recipe { unfinished: 99, secondary: 239, output: 133, level: 30, boostable: true, base_fine_xp: 750 },
+            Recipe { unfinished: 3002, secondary: 2152, output: 3034, level: 34, boostable: true, base_fine_xp: 800 },
+            Recipe { unfinished: 97, secondary: 9736, output: 9741, level: 36, boostable: true, base_fine_xp: 840 },
+            Recipe { unfinished: 99, secondary: 231, output: 139, level: 38, boostable: true, base_fine_xp: 875 },
         ]
+    }
+    #[test]
+    fn ingredient_pairs_preserve_shared_bases_and_reverse_selected_slots() {
+        let config=Config{recipes:profiles().into_iter().map(|r|((r.unfinished,r.secondary),r)).collect(),quest_progress:80,quest_complete:4,animation:363};
+        assert_eq!(config.recipes.len(),9);
+        let origin=crate::CoordGrid::new(3200,3200,0).unwrap();
+        for recipe in profiles() {
+            for reverse in [false,true] {
+                let held=crate::held_use::Request{selected_id:if reverse {recipe.secondary}else{recipe.unfinished},target_id:if reverse{recipe.unfinished}else{recipe.secondary},selected_slot:7,target_slot:19};
+                let request=config.request(held,origin,41).unwrap();
+                assert_eq!((request.unfinished,request.secondary),(recipe.unfinished,recipe.secondary));
+                assert_eq!((request.unfinished_slot,request.secondary_slot),if reverse{(19,7)}else{(7,19)});
+                assert_eq!(config.recipes[&(request.unfinished,request.secondary)].output,recipe.output);
+                assert_eq!(request.origin,origin);assert_eq!(request.last_movement,41);
+            }
+        }
+        for (a,b) in [(97,231),(99,1975),(97,97),(995,221)] {
+            assert!(config.request(crate::held_use::Request{selected_id:a,target_id:b,selected_slot:0,target_slot:1},origin,0).is_none());
+        }
     }
     #[test]
     fn full_backpack_rewards_preserve_fractions_and_no_replay() {
@@ -335,7 +360,7 @@ mod tests {
 pub(crate) const QUEUE: i32 = -2391008;
 #[derive(Clone, Debug)]
 pub struct Config {
-    pub recipes: std::collections::BTreeMap<i32, Recipe>,
+    pub recipes: std::collections::BTreeMap<(i32, i32), Recipe>,
     pub quest_progress: u16,
     pub quest_complete: i32,
     pub animation: u16,
@@ -343,6 +368,7 @@ pub struct Config {
 #[derive(Clone, Copy, Debug)]
 pub struct Request {
     pub unfinished: i32,
+    pub secondary: i32,
     pub unfinished_slot: usize,
     pub secondary_slot: usize,
     pub origin: crate::CoordGrid,
@@ -360,7 +386,7 @@ impl Config {
             return None;
         }
         let (unfinished, unfinished_slot, secondary, secondary_slot) =
-            if self.recipes.contains_key(&held.selected_id) {
+            if self.recipes.contains_key(&(held.selected_id, held.target_id)) {
                 (
                     held.selected_id,
                     held.selected_slot,
@@ -375,11 +401,10 @@ impl Config {
                     held.selected_slot,
                 )
             };
-        if self.recipes.get(&unfinished)?.secondary != secondary {
-            return None;
-        }
+        self.recipes.get(&(unfinished, secondary))?;
         Some(Request {
             unfinished,
+            secondary,
             unfinished_slot: unfinished_slot as usize,
             secondary_slot: secondary_slot as usize,
             origin,

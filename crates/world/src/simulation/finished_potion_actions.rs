@@ -40,7 +40,7 @@ impl World {
             .ok_or(ActionError::InvalidItem)?;
         let recipe = *config
             .recipes
-            .get(&request.unfinished)
+            .get(&(request.unfinished, request.secondary))
             .ok_or(ActionError::InvalidItem)?;
         let pending = Pending {
             job: Job {
@@ -205,7 +205,7 @@ mod tests {
         w.collision.allocate(3200, 3200, 0);
         w.finished_potions = Some(Config {
             recipes: [(
-                93,
+                (93, 235),
                 Recipe {
                     unfinished: 93,
                     secondary: 235,

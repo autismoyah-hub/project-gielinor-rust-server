@@ -2175,7 +2175,7 @@ pub fn finished_potions(
     objects: &Symbols,
     defs: &Definitions,
 ) -> Result<Vec<gielinor_world::finished_potions::Recipe>, String> {
-    let mut seen = std::collections::BTreeSet::new();
+    let mut seen = std::collections::BTreeMap::<i32, String>::new();
     let mut bind = |name: &str, members: bool, drink: bool| -> Result<i32, String> {
         let id = *objects
             .get(name)
@@ -2185,7 +2185,7 @@ pub fn finished_potions(
             .get(&(id as u32))
             .ok_or_else(|| format!("Missing finished-potion definition {name}"))?;
         if id < 0
-            || !seen.insert(id)
+            || seen.insert(id, name.to_owned()).is_some_and(|previous| previous != name)
             || item.stackable
             || item.cert.template != 0
             || item.placeholder.template != 0
@@ -2233,6 +2233,12 @@ pub fn finished_potions(
             true,
             500,
         ),
+        ("harralandervial", "red_spiders_eggs", "3dosestatrestore", false, true, 22, true, 625),
+        ("harralandervial", "chocolate_dust", "3dose1energy", false, false, 26, true, 675),
+        ("ranarrvial", "white_berries", "3dose1defense", true, true, 30, true, 750),
+        ("toadflaxvial", "toads_legs", "3dose1agility", true, true, 34, true, 800),
+        ("harralandervial", "ground_desert_goat_horn", "3dosecombat", true, true, 36, true, 840),
+        ("ranarrvial", "snape_grass", "3doseprayerrestore", true, true, 38, true, 875),
     ] {
         result.push(gielinor_world::finished_potions::Recipe {
             unfinished: bind(unf, true, false)?,
@@ -2269,6 +2275,21 @@ mod finished_potion_binding_tests {
             ("tarrominvial", 95, true, false),
             ("limpwurt_root", 225, false, false),
             ("3dose1strength", 115, false, true),
+            ("harralandervial", 97, true, false),
+            ("red_spiders_eggs", 223, false, false),
+            ("3dosestatrestore", 127, true, true),
+            ("chocolate_dust", 1975, false, false),
+            ("3dose1energy", 3010, false, true),
+            ("ranarrvial", 99, true, false),
+            ("white_berries", 239, true, false),
+            ("3dose1defense", 133, true, true),
+            ("toadflaxvial", 3002, true, false),
+            ("toads_legs", 2152, true, false),
+            ("3dose1agility", 3034, true, true),
+            ("ground_desert_goat_horn", 9736, true, false),
+            ("3dosecombat", 9741, true, true),
+            ("snape_grass", 231, true, false),
+            ("3doseprayerrestore", 139, true, true),
         ] {
             symbols.insert(name.into(), id);
             let mut item =
@@ -2300,7 +2321,13 @@ mod finished_potion_binding_tests {
             [
                 (91, 221, 121, 3, false, 250),
                 (93, 235, 175, 5, true, 375),
-                (95, 225, 115, 12, true, 500)
+                (95, 225, 115, 12, true, 500),
+                (97, 223, 127, 22, true, 625),
+                (97, 1975, 3010, 26, true, 675),
+                (99, 239, 133, 30, true, 750),
+                (3002, 2152, 3034, 34, true, 800),
+                (97, 9736, 9741, 36, true, 840),
+                (99, 231, 139, 38, true, 875),
             ]
         );
         assert!(!defs.items[&175].members && !defs.items[&115].members);
