@@ -718,3 +718,31 @@ All listed runs require client exit0, fresh durable logout, clean owned exit0 an
 - `pack-run.json` SHA256 `369cafc50d4a8de71f728694d71cbf4918fca7531590d407edd0b4e72e16fc3f`
 - State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":200,"after":300},"3077":{"before":35206,"after":58467},"3079":{"before":100,"after":86},"65515":{"before":94,"after":174}}}`
 - Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Server assembly clocks and selected slots, not packet/display latency"}`
+
+## Pineapple slicing overflow evidence (2026-10-16 UTC; not implemented)
+
+Bounded read-only local Wiki follow-up: Pineapple revision15302325, wikitext SHA256 `e3138bad10c668e4eef898021828079c908d79d3b0a85b2c1d05e77957e6231b`, explicitly states that rings drop to the ground when inventory space is insufficient. Pineapple ring revision15184663 (`988e52cf5861e02cb2ea8acb4e9ec1b7e47094a18550445270b84bc4145a2b8c`) specifies four rings per ordinary pineapple, knife retained, members, two ticks. Chunks revision15183792 (`61870cc9c8ad20407c819b47169e16db79deba6c79c1a94a17bf5a8d68c33f86`) specifies the separate one-chunk Dice route. Tenti variants remain excluded.
+
+Therefore a prospective slicing implementation must not silently reuse the one-for-one grinding transaction or claim full Wiki acceptance with a full-inventory refusal. Reuse the existing inventory and ground-object primitives, but establish the exact partial inventory/overflow split, ground ownership and expiry, capacity-failure atomicity, menu selection and two-clock timing first. Recipe entries contain no explicit skill/XP fields; missing fields remain distinct from an executed zero-XP observation. No slicing source/runtime changes or acceptance claim in this review. Pineapple topping acceptance is unaffected.
+
+## Native assembly piedenied acceptance (2026-10-16 UTC)
+
+Cooking19 refusal for meat/chicken/apple pie attempts: three genuine opcode27 attempts, three actual server level messages, no assembly commits and exact ingredients/coins/XP conservation.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking parity or unrelated recipes. No issue closure.
+
+`openrune-native-piedenied-001` PASS. Server archive `2C311F8F867C5FAE97B62F1278C0A9D282641F7A4F479D92B58365BD3B3C1B2F`, driver `piedenied-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID18180.
+- Driver `NativePieDeniedScenario.rs` SHA256 `99933C7B96D071D5202684A1C8AE0D788DD3817896890F0393BA2E1C82C04CE8`
+- Driver `server_piedenied.exe` SHA256 `DD88119D52AE552C2A12FDD53946232D2492160BBE8849C1128CD78460A3A2FD`
+- `client.log` SHA256 `47d3b84e4dee6d80bf185bfd8338fdc8117c781d3a0c00193040384dc76e01dd`
+- `server.log` SHA256 `d37fdc2368f0db2bb3b1b5021d157f7aaca7a029cac90ebb321c23096c571ed7`
+- `initial-state.json` SHA256 `09ec495b5c15a8f209a6559e91bb9694811beb299dfde3014af8941afbdcae59`
+- `final-state.json` SHA256 `189255240683cb250ae4324cd4d6d42fb80c14efb14b6e307a0eeb0fa5f373b6`
+- `pack-assessment.json` SHA256 `62505bcdbe1c20022d0d31064b8ce3d69c12ec77f53615ce582bd4b94d00d2a5`
+- `piedenied-trace-assessment.json` SHA256 `51d93878ea9fa95e9798b7620a1754cbd5ff9efe93247f4f1f4e83fbf4c445d3`
+- `logout-observation.json` SHA256 `92de719ecaa589b3de5c90879979938179e1837afced51abdeb9dc5ff1c98c3a`
+- `shutdown.json` SHA256 `cbfcc1e4bd8b61a8fb208a3247483f6f74aa740b6fa279f2dad05673e587bec1`
+- `result.json` SHA256 `1cc757715fa92b7f6dc86a1c7c1d46dfdf785a255b52de81ddf151aa2d8c56d2`
+- `pack-run.json` SHA256 `003be629b5f2c7ca46d5bfbce30815b83831ed10eed1e05409c94354926b7242`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":200},"3077":{"before":0,"after":37691},"3079":{"before":0,"after":102},"65515":{"before":0,"after":96}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Denied action fixture must have zero successful assembly transitions; native request/refusal evidence required separately"}`
