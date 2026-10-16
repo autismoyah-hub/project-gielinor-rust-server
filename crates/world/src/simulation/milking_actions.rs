@@ -374,4 +374,24 @@ mod tests {
         }
         assert_eq!(count(&w, actor, 20), 0);
     }
+    #[test]
+    fn packed_cow_approach_byte_reaches_existing_milk_handler() {
+        let (mut w, actor, loc) = fixture();
+        // Angle0 with packed23 permits the west approach used by this fixture.
+        w.location_approach.insert(loc.id, 23);
+        w.submit(
+            actor,
+            Action::OperateLocation {
+                coords: loc.coords,
+                id: loc.id,
+                operation: 1,
+                control: false,
+            },
+        )
+        .unwrap();
+        for _ in 0..4 {
+            w.tick().unwrap();
+        }
+        assert_eq!(count(&w, actor, 20), 1);
+    }
 }

@@ -1,5 +1,5 @@
 //! Rectangular interaction reach, including the original size-dependent wall checks.
-use crate::{collision::CollisionMap, CoordGrid};
+use crate::{CoordGrid, collision::CollisionMap};
 #[derive(Clone, Copy, Debug)]
 pub struct Rectangle {
     pub coords: CoordGrid,
@@ -15,7 +15,6 @@ impl Rectangle {
             && (1..=64).contains(&self.width)
             && (1..=64).contains(&self.length)
             && self.angle < 4
-            && self.blocked < 16
     }
     pub fn dimensions(self) -> (i32, i32) {
         if self.angle & 1 != 0 {
@@ -105,5 +104,45 @@ mod tests {
         assert!(!target.reached(&map, c(3200, 3202), 2));
         target.exclusive = false;
         assert!(target.reached(&map, c(3202, 3203), 1));
+    }
+    #[test]
+    fn packed_cache_approach_flags_preserve_reference_rotation() {
+        // Kotlin Rotations.rotate accepts the whole unsigned cache byte. High
+        // bits must not reject a target or be masked away before rotation.
+        let c = |x, z| CoordGrid::new(x, z, 0).unwrap();
+        let mut map = CollisionMap::default();
+        map.allocate(3200, 3200, 0);
+        let cases = [
+            (23u8, [7u8, 14, 13, 11]),
+            (30, [14, 15, 15, 15]),
+            (128, [0, 0, 0, 0]),
+            (16, [0, 2, 4, 8]),
+        ];
+        for (packed, masks) in cases {
+            for angle in 0..4 {
+                let r = Rectangle {
+                    coords: c(3202, 3202),
+                    width: 1,
+                    length: 2,
+                    angle,
+                    blocked: packed,
+                    exclusive: true,
+                };
+                assert!(r.valid());
+                let (width, length) = r.dimensions();
+                for (source, bit) in [
+                    (c(3201, 3202), 8),
+                    (c(3202 + width, 3202), 2),
+                    (c(3202, 3201), 4),
+                    (c(3202, 3202 + length), 1),
+                ] {
+                    assert_eq!(
+                        r.reached(&map, source, 1),
+                        masks[angle as usize] & bit == 0,
+                        "packed{packed} angle{angle} side{bit}"
+                    );
+                }
+            }
+        }
     }
 }
