@@ -30,6 +30,7 @@ mod milking_actions;
 mod water_source_actions;
 mod grinding_actions;
 mod dough_actions;
+mod unfinished_potion_actions;
 mod herb_cleaning_actions;
 mod mining_actions;
 mod npc_actions;
@@ -170,6 +171,7 @@ enum Deferred {
     WaterFilling(crate::water_sources::Job),
     Grinding(crate::grinding::Pending),
     Dough(crate::dough::Pending),
+    UnfinishedPotion(crate::unfinished_potions::Pending),
     ItemPack {
         pack: i32,
         rule: crate::item_packs::Rule,
@@ -221,6 +223,7 @@ enum LocationAction {
 }
 struct Player {
     dough_request: Option<crate::dough::Request>,
+    unfinished_potion_request: Option<crate::unfinished_potions::Request>,
     member: bool,
     stat_events: crate::stat_events::Events,
     areas: crate::area_tracking::State,
@@ -297,6 +300,8 @@ impl Player {
         self.queues.remove_all(crate::grinding::QUEUE);
         self.queues.remove_all(crate::dough::QUEUE);
         self.dough_request = None;
+        self.unfinished_potion_request = None;
+        self.queues.remove_all(crate::unfinished_potions::QUEUE);
         // The current source's normal launch clears interactions; launchLenient
         // only replaces the suspended coroutine, even if objectVerify rejects it.
         if !self.protection.access_protected(self.has_modal) {
@@ -603,6 +608,7 @@ pub enum WorldEvent {
     WaterFilled { actor: ActorId, trace: crate::water_sources::Transition },
     Grinding { actor: ActorId, trace: crate::grinding::Transition },
     DoughMade { actor: ActorId, trace: crate::dough::Transition },
+    UnfinishedPotionMade { actor: ActorId, trace: crate::unfinished_potions::Transition },
     AssemblyMade { actor: ActorId, trace: crate::assembly::Transition },
     HerbCleaned { actor: ActorId, trace: crate::herb_cleaning::Transition },
     CombatSound {
@@ -852,6 +858,7 @@ pub struct World {
     pub milking: Option<crate::milking::Config>,
     pub water_sources: Option<crate::water_sources::Config>,
     pub dough: Option<crate::dough::Config>,
+    pub unfinished_potions: Option<crate::unfinished_potions::Config>,
     pub herb_cleaning: Option<crate::herb_cleaning::Config>,
     pub item_packs: BTreeMap<i32, crate::item_packs::Rule>,
     pub prayer: Option<crate::prayer::Config>,
@@ -953,6 +960,7 @@ impl Default for World {
             water_sources: None,
             dough: None,
             herb_cleaning: None,
+            unfinished_potions: None,
             prayer: None,
             regeneration: None,
             session_vars: None,
@@ -2386,6 +2394,9 @@ impl World {
                                                         &mut self.events,
                                                     );
                                                 }
+                                                Deferred::UnfinishedPotion(job) => {
+                                                    unfinished_potion_actions::complete(p, queues, job, &self.object_types, self.clock.0, &mut self.events);
+                                                }
                                                 Deferred::Dough(job) => {
                                                     dough_actions::complete(p, queues, job, &self.object_types, self.clock.0, &mut self.events);
                                                 }
@@ -2877,6 +2888,7 @@ impl World {
                         let player = Player {
                             member: false,
                             dough_request: None,
+                            unfinished_potion_request: None,
                             tower_restore_pending: false,
                             tower_tastes: Default::default(),
                             tower_diary_login,

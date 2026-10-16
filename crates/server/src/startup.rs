@@ -687,6 +687,7 @@ pub fn configure<B: AccountBackend>(
     runtime.configure_smelting_names(names)?;
     runtime.configure_dough_names(names)?;
     runtime.configure_herb_cleaning_names(names)?;
+    runtime.configure_unfinished_potions_names(names)?;
     runtime.configure_anvil(crate::anvil::Config::resolve(
         names,
         &runtime.definitions,

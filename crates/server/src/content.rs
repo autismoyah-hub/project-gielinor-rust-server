@@ -1960,7 +1960,7 @@ mod herb_binding_tests {
     }
 }
 
-/// Fifteen ordinary water-based unfinished-potion profiles, not yet registered with Make-X.
+/// Fifteen ordinary water-based unfinished-potion profiles for the shared Make-X dialog.
 /// Per-page Wiki evidence: openrune-unfinished-potions-profiles-001.json; no revision241 IDs reused.
 pub fn unfinished_potions(
     objects: &Symbols,

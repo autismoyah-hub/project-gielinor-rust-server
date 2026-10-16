@@ -295,3 +295,95 @@ mod tests {
         }
     }
 }
+
+// Shared world scheduler content adapter; no independent tick engine.
+pub(crate) const QUEUE: i32 = -2391007;
+#[derive(Clone, Debug)]
+pub struct Config {
+    pub recipes: std::collections::BTreeMap<i32, Recipe>,
+    pub quest_progress: u16,
+    pub quest_complete: i32,
+    pub animation: u16,
+}
+#[derive(Clone, Copy, Debug)]
+pub struct Request {
+    pub herb: i32,
+    pub herb_slot: usize,
+    pub vessel_slot: usize,
+    pub origin: crate::CoordGrid,
+    pub last_movement: i32,
+}
+impl Config {
+    pub fn request(
+        &self,
+        held: crate::held_use::Request,
+        origin: crate::CoordGrid,
+        last_movement: i32,
+    ) -> Option<Request> {
+        if held.selected_slot < 0 || held.target_slot < 0 || held.selected_slot == held.target_slot
+        {
+            return None;
+        }
+        let (herb, herb_slot, vessel, vessel_slot) = if self.recipes.contains_key(&held.selected_id)
+        {
+            (
+                held.selected_id,
+                held.selected_slot,
+                held.target_id,
+                held.target_slot,
+            )
+        } else {
+            (
+                held.target_id,
+                held.target_slot,
+                held.selected_id,
+                held.selected_slot,
+            )
+        };
+        if self.recipes.get(&herb)?.vessel != vessel {
+            return None;
+        }
+        Some(Request {
+            herb,
+            herb_slot: herb_slot as usize,
+            vessel_slot: vessel_slot as usize,
+            origin,
+            last_movement,
+        })
+    }
+}
+#[derive(Clone, Copy, Debug)]
+pub(crate) struct Pending {
+    pub job: Job,
+    pub request: Request,
+    pub remaining: i32,
+    pub queued_at: i32,
+    pub index: u32,
+    pub quest_progress: u16,
+    pub quest_complete: i32,
+    pub animation: u16,
+}
+#[derive(Clone, Copy, Debug)]
+pub struct Transition {
+    pub job: Job,
+    pub queued_at: i32,
+    pub committed_at: i32,
+    pub index: u32,
+}
+impl Transition {
+    pub fn json(self, actor: crate::simulation::ActorId) -> String {
+        format!(
+            "{{\"actor_slot\":{},\"actor_generation\":{},\"herb_slot\":{},\"vessel_slot\":{},\"herb\":{},\"vessel\":{},\"output\":{},\"count\":1,\"queued_at\":{},\"committed_at\":{},\"index\":{}}}",
+            actor.slot,
+            actor.generation,
+            self.job.herb_slot,
+            self.job.vessel_slot,
+            self.job.recipe.herb,
+            self.job.recipe.vessel,
+            self.job.recipe.output,
+            self.queued_at,
+            self.committed_at,
+            self.index
+        )
+    }
+}
