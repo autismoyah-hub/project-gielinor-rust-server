@@ -1341,3 +1341,27 @@ All listed runs require client exit0, fresh durable logout, clean owned exit0 an
 - Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Three consecutive server dough commits from one quantity request; UI evidence and packet/display latency separate"}`
 
 The revised All assessor suite also passed174 corrupted state/stat/trace/action-order cases plus22 focused pause/quantity cases. Exact same-save All002 PASS above supersedes pending notes. Two additional scheduler regressions remain uncompiled because another compiler was active at test attempt001; their source is not included in this native evidence checkpoint. Existing accepted runtime remains archive7C3952D6.
+
+## Selected manual herb runtime authored; validation pending (2026-10-16 UTC)
+
+Independent Wiki-backed manual guam/marrentill Clean now routes through held operation2 to authoritative world CleanHerb. Current membership, named/attested Druidic Ritual varp80 state4, boosted level, exact claimed slot/item, modal/delay and logout checks precede atomic inventory+fine-XP commit. Quest state is only read, not awarded or advanced. The target varp bytes00 decode permanent; raw SHA2566e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d. Recipe creation tabs in Guam15183585 and Marrentill15183543 specify0ticks for selected manual Clean. Automatic continuation is explicitly absent: its cadence/mixed-herb selection remain unresolved. This is partial gameplay implementation, not full Herblore parity.
+
+Three new world tests cover full-bag selected immediate commit/fractional remainder, replay, membership/quest/level/slot/rate changes between submit and execution, modal/delay and pending logout. These and the two dough repeat regressions remain UNCOMPILED because client release tests are active (manual-herb-full-tests attempts001..006 deferred). Prior405-test baseline remains valid only for its earlier source.
+
+NativeHerbManualScenario.rs and herbmanual fixture/runners/assessors are prepared, NOT BUILT/NOT RUN. Fixture holds28items: selected marrentill0/guam1, pots2..26,1000coins27; persisted rate500,Herblore5/fine3881,quest80=4,members1. Expected exact fine4196 after two genuine Clean menu operations; no automatic action expected. Independent state/trace/actual opcode47 verifier positive baselines and258 corruptions PASS; PowerShell syntax PASS. No fixture was created. Native source is isolated from Agent1.
+
+- `work/openrune-herb-manual-policy-001.json` SHA256 `124b1794e98c81f45189e4717ead8cc5fac892354f317892e567502876027221`
+
+## Normal manual herb coverage expanded; tests still pending (2026-10-16 UTC)
+
+The same runtime now registers15 ordinary normal herbs, including target-attested huasca, from30 decoded revision239.1 definitions. Each clean herb Wiki creation recipe independently supplies Herblore level, fractional XP, boostable/member flags and0tick manual timing. Jungle Potion and other quest-specific herbs are excluded; automatic cadence remains unimplemented. New server tests cover missing/mismatched/nonpermanent quest binding and every profile below/at its required level with exact5x fine-XP and fractional remainder. Total new validation is three world manual-action tests, two server binding/profile tests and two dough-repeat tests; none is accepted until Cargo succeeds. Attempts007..009 also compiler-deferred.
+
+`work/openrune-normal-herb-profiles-001.json` SHA256 `06d277b6100c807fb2ad09dc88e077eaa124dc3c8a2416020ec35c8edd712c8e`. Normal profile name/level/fineXP: Guam leaf 3/25; Marrentill 5/38; Tarromin 11/50; Harralander 20/63; Ranarr weed 25/75; Toadflax 30/80; Irit leaf 40/88; Avantoe 48/100; Kwuarm 54/113; Huasca 58/118; Snapdragon 59/118; Cadantine 65/125; Lantadyme 67/131; Dwarf weed 70/138; Torstol 75/150.
+
+## Manual normal-herb runtime and dough regressions validated (2026-10-16 UTC)
+
+`build.ps1 -Action test -CargoArgs @('-p','gielinor-world','-p','gielinor-server','--lib')` PASS on attempt011:48server+364world,0failures,1existing ignored. Compilation53.26s; world11.47s. Guard measured5092MiB available,71.0%commit,1page-in/s,2.7ms disk and1.2%CPU;2jobs. This supersedes all authored/uncompiled notes for the15 manual profiles, strict quest definition binding, three action tests and two dough repeat regressions. Current15-profile runtime excludes automatic continuation and quest-specific herbs.
+
+New native server archive attempt001 compiler-deferred; no herb native driver build/run yet. Existing7C3952D6 archive is not a herb runtime acceptance artifact. Native preparation and258 negative assessor cases remain distinct from gameplay acceptance. No issue closure.
+
+- `work/manual-herb-full-tests-attempt-011.log` SHA256 `86e7427915fef2f8ffced10bb4f35207c07e8560eeb1a01ffbba40d0813faab7`

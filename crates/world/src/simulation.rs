@@ -30,6 +30,7 @@ mod milking_actions;
 mod water_source_actions;
 mod grinding_actions;
 mod dough_actions;
+mod herb_cleaning_actions;
 mod mining_actions;
 mod npc_actions;
 mod npc_combat_actions;
@@ -453,6 +454,10 @@ pub enum Action {
         slot: usize,
         item: i32,
     },
+    CleanHerb {
+        slot: usize,
+        item: i32,
+    },
     OpenItemPack {
         slot: usize,
         item: i32,
@@ -599,6 +604,7 @@ pub enum WorldEvent {
     Grinding { actor: ActorId, trace: crate::grinding::Transition },
     DoughMade { actor: ActorId, trace: crate::dough::Transition },
     AssemblyMade { actor: ActorId, trace: crate::assembly::Transition },
+    HerbCleaned { actor: ActorId, trace: crate::herb_cleaning::Transition },
     CombatSound {
         actor: ActorId,
         sound: u16,
@@ -846,6 +852,7 @@ pub struct World {
     pub milking: Option<crate::milking::Config>,
     pub water_sources: Option<crate::water_sources::Config>,
     pub dough: Option<crate::dough::Config>,
+    pub herb_cleaning: Option<crate::herb_cleaning::Config>,
     pub item_packs: BTreeMap<i32, crate::item_packs::Rule>,
     pub prayer: Option<crate::prayer::Config>,
     pub regeneration: Option<crate::player_regen::Config>,
@@ -945,6 +952,7 @@ impl Default for World {
             milking: None,
             water_sources: None,
             dough: None,
+            herb_cleaning: None,
             prayer: None,
             regeneration: None,
             session_vars: None,
@@ -1865,6 +1873,7 @@ impl World {
                     .map_err(|_| ActionError::InvalidItem)?;
             }
             Action::OpenItemPack { slot, item } => self.open_item_pack(id, slot, item)?,
+            Action::CleanHerb { slot, item } => self.clean_herb(id, slot, item)?,
             Action::DrinkSlot {
                 slot,
                 item: expected,

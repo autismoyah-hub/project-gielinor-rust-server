@@ -366,6 +366,85 @@ mod tests {
         assert_eq!(events.iter().filter(|e| matches!(e, WorldEvent::LocationMessage { message, .. } if *message == "You need another free inventory space to keep the dough and both containers.")).count(), 1);
     }
     #[test]
+    fn repeated_dough_rechecks_level_and_does_not_resume_after_recovery() {
+        let (mut w, a, r) = fixture();
+        w.data_mut(a).unwrap().stats.set_current(7, 35);
+        let request = choose(&mut w, a, r);
+        w.start_dough(a, request, 2, 2).unwrap();
+        w.tick().unwrap();
+        w.tick().unwrap();
+        assert_eq!(count(&w, a, 16), 1);
+        let committed = w.data(a).unwrap().inventory.clone();
+        w.data_mut(a).unwrap().stats.set_current(7, 34);
+        let drained = w.data(a).unwrap().stats.clone();
+        w.tick().unwrap();
+        assert_eq!(w.data(a).unwrap().inventory, committed);
+        assert_eq!(w.data(a).unwrap().stats, drained);
+        w.data_mut(a).unwrap().stats.set_current(7, 35);
+        for _ in 0..4 {
+            w.tick().unwrap();
+        }
+        assert_eq!(w.data(a).unwrap().inventory, committed);
+        let events = w.drain_events();
+        assert_eq!(
+            events
+                .iter()
+                .filter(|e| matches!(e, WorldEvent::DoughMade { .. }))
+                .count(),
+            1
+        );
+        assert_eq!(events.iter().filter(|e| matches!(e, WorldEvent::LocationMessage { message, .. } if *message == "You need a higher Cooking level to make that.")).count(), 1);
+    }
+    #[test]
+    fn repeated_dough_keeps_queued_slots_and_stops_when_input_moves() {
+        let (mut w, a, r) = fixture();
+        let request = choose(&mut w, a, r);
+        w.start_dough(a, request, 0, 2).unwrap();
+        w.tick().unwrap();
+        w.tick().unwrap();
+        assert_eq!(count(&w, a, 14), 1);
+        // The next job already selected flour0/water1. Moving flour to the
+        // remaining empty slot must not redirect that queued operation.
+        let flour = w.data(a).unwrap().inventory.get(0);
+        w.data_mut(a)
+            .unwrap()
+            .inventory
+            .restore_slot(0, None)
+            .unwrap();
+        w.data_mut(a)
+            .unwrap()
+            .inventory
+            .restore_slot(5, flour)
+            .unwrap();
+        let moved = w.data(a).unwrap().inventory.clone();
+        let stats = w.data(a).unwrap().stats.clone();
+        w.tick().unwrap();
+        assert_eq!(w.data(a).unwrap().inventory, moved);
+        w.data_mut(a)
+            .unwrap()
+            .inventory
+            .restore_slot(5, None)
+            .unwrap();
+        w.data_mut(a)
+            .unwrap()
+            .inventory
+            .restore_slot(0, flour)
+            .unwrap();
+        let restored = w.data(a).unwrap().inventory.clone();
+        for _ in 0..4 {
+            w.tick().unwrap();
+        }
+        assert_eq!(w.data(a).unwrap().inventory, restored);
+        assert_eq!(w.data(a).unwrap().stats, stats);
+        assert_eq!(
+            w.drain_events()
+                .iter()
+                .filter(|e| matches!(e, WorldEvent::DoughMade { .. }))
+                .count(),
+            1
+        );
+    }
+    #[test]
     fn interruption_after_first_output_preserves_only_committed_dough() {
         for mode in 0..3 {
             let (mut w, a, r) = fixture();

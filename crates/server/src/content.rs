@@ -1679,7 +1679,7 @@ mod dough_binding_tests {
     }
 }
 
-/// Prepared herb profiles only: automatic timing and live operation registration remain pending.
+/// Selected manual herb profiles; automatic continuation timing remains pending.
 pub fn herb_cleaning(
     symbols: &Symbols,
     defs: &Definitions,
@@ -1690,6 +1690,19 @@ pub fn herb_cleaning(
     for (input, output, level, base_fine_xp) in [
         ("unidentified_guam", "guam_leaf", 3, 25),
         ("unidentified_marentill", "marentill", 5, 38),
+        ("unidentified_tarromin", "tarromin", 11, 50),
+        ("unidentified_harralander", "harralander", 20, 63),
+        ("unidentified_ranarr", "ranarr_weed", 25, 75),
+        ("unidentified_toadflax", "toadflax", 30, 80),
+        ("unidentified_irit", "irit_leaf", 40, 88),
+        ("unidentified_avantoe", "avantoe", 48, 100),
+        ("unidentified_kwuarm", "kwuarm", 54, 113),
+        ("unidentified_huasca", "huasca", 58, 118),
+        ("unidentified_snapdragon", "snapdragon", 59, 118),
+        ("unidentified_cadantine", "cadantine", 65, 125),
+        ("unidentified_lantadyme", "lantadyme", 67, 131),
+        ("unidentified_dwarf_weed", "dwarf_weed", 70, 138),
+        ("unidentified_torstol", "torstol", 75, 150),
     ] {
         let mut ids = Vec::new();
         for (name, clean) in [(input, true), (output, false)] {
@@ -1733,6 +1746,32 @@ pub fn herb_cleaning(
     }
     Ok(recipes)
 }
+/// Read only the attested Druidic Ritual progress state; never infer quest completion.
+pub fn herb_cleaning_config(
+    objects: &Symbols,
+    varps: &Symbols,
+    defs: &Definitions,
+    skill: u8,
+) -> Result<gielinor_world::herb_cleaning::Config, String> {
+    let quest = *varps
+        .get("druidquest")
+        .ok_or("Missing Druidic Ritual symbol")?;
+    let progress = defs
+        .varps
+        .get(&(quest as u32))
+        .ok_or("Missing Druidic Ritual progress")?;
+    if quest != 80 || progress.id != 80 || !progress.permanent {
+        return Err("Druidic Ritual progress differs from attested239.1 binding".into());
+    }
+    Ok(gielinor_world::herb_cleaning::Config {
+        recipes: herb_cleaning(objects, defs, skill)?
+            .into_iter()
+            .map(|r| (r.input, r))
+            .collect(),
+        quest_progress: progress.id,
+        quest_complete: 4,
+    })
+}
 #[cfg(test)]
 mod herb_binding_tests {
     use super::*;
@@ -1752,6 +1791,32 @@ mod herb_binding_tests {
             "guam_leaf",
             "unidentified_marentill",
             "marentill",
+            "unidentified_tarromin",
+            "tarromin",
+            "unidentified_harralander",
+            "harralander",
+            "unidentified_ranarr",
+            "ranarr_weed",
+            "unidentified_toadflax",
+            "toadflax",
+            "unidentified_irit",
+            "irit_leaf",
+            "unidentified_avantoe",
+            "avantoe",
+            "unidentified_kwuarm",
+            "kwuarm",
+            "unidentified_huasca",
+            "huasca",
+            "unidentified_snapdragon",
+            "snapdragon",
+            "unidentified_cadantine",
+            "cadantine",
+            "unidentified_lantadyme",
+            "lantadyme",
+            "unidentified_dwarf_weed",
+            "dwarf_weed",
+            "unidentified_torstol",
+            "torstol",
         ]
         .into_iter()
         .enumerate()
@@ -1770,6 +1835,86 @@ mod herb_binding_tests {
         (symbols, defs)
     }
     #[test]
+    fn all_normal_herbs_reject_below_level_and_award_exact_fine_xp_at_threshold() {
+        use gielinor_world::{
+            herb_cleaning::{Job, Outcome},
+            inventory::{Catalog, Inventory, Item, StackType},
+            stats::Stats,
+        };
+        let (symbols, defs) = fixture();
+        for recipe in herb_cleaning(&symbols, &defs, 15).unwrap() {
+            let mut inv = Inventory::new(1, StackType::Normal, false);
+            inv.restore_slot(
+                0,
+                Some(Item {
+                    id: recipe.input,
+                    count: 1,
+                    vars: 0,
+                }),
+            )
+            .unwrap();
+            let mut stats = Stats::default();
+            stats.set_fine_xp(15, 100_001).unwrap();
+            stats.set_current(15, recipe.level as i8 - 1);
+            let original = inv.clone();
+            let job = Job { recipe, slot: 0 };
+            assert_eq!(
+                job.complete(&mut inv, &Catalog::default(), &mut stats, 500, true, true)
+                    .0,
+                Outcome::Level
+            );
+            assert_eq!(inv, original);
+            assert_eq!(stats.fine_xp(15), 100_001);
+            stats.set_current(15, recipe.level as i8);
+            assert_eq!(
+                job.complete(&mut inv, &Catalog::default(), &mut stats, 500, true, true)
+                    .0,
+                Outcome::Cleaned
+            );
+            assert_eq!(inv.get(0).unwrap().id, recipe.output);
+            assert_eq!(
+                stats.fine_xp(15),
+                100_001 + i32::from(recipe.base_fine_xp) * 5,
+                "herb{}",
+                recipe.input
+            );
+        }
+    }
+    #[test]
+    fn manual_herb_permission_binding_rejects_missing_or_different_quest_state() {
+        let (objects, mut defs) = fixture();
+        let mut symbols = Symbols::new();
+        assert!(herb_cleaning_config(&objects, &symbols, &defs, 15).is_err());
+        symbols.insert("druidquest".into(), 80);
+        assert!(herb_cleaning_config(&objects, &symbols, &defs, 15).is_err());
+        let varp = gielinor_world::variables::Varp {
+            id: 80,
+            permanent: true,
+            transmit: gielinor_world::variables::Transmit::Always,
+            bit_protect: false,
+            client_code: -1,
+        };
+        defs.varps.insert(80, varp);
+        let config = herb_cleaning_config(&objects, &symbols, &defs, 15).unwrap();
+        assert_eq!(
+            (
+                config.quest_progress,
+                config.quest_complete,
+                config.recipes.len()
+            ),
+            (80, 4, 15)
+        );
+        defs.varps.get_mut(&80).unwrap().permanent = false;
+        assert!(herb_cleaning_config(&objects, &symbols, &defs, 15).is_err());
+        defs.varps
+            .insert(80, gielinor_world::variables::Varp { id: 81, ..varp });
+        assert!(herb_cleaning_config(&objects, &symbols, &defs, 15).is_err());
+        symbols.insert("druidquest".into(), 81);
+        defs.varps
+            .insert(81, gielinor_world::variables::Varp { id: 81, ..varp });
+        assert!(herb_cleaning_config(&objects, &symbols, &defs, 15).is_err());
+    }
+    #[test]
     fn herb_profiles_require_member_unnoted_definitions_and_exact_clean_operations() {
         let (symbols, defs) = fixture();
         let recipes = herb_cleaning(&symbols, &defs, 15).unwrap();
@@ -1778,7 +1923,23 @@ mod herb_binding_tests {
                 .iter()
                 .map(|r| (r.input, r.output, r.level, r.base_fine_xp))
                 .collect::<Vec<_>>(),
-            [(100, 101, 3, 25), (102, 103, 5, 38)]
+            [
+                (100, 101, 3, 25),
+                (102, 103, 5, 38),
+                (104, 105, 11, 50),
+                (106, 107, 20, 63),
+                (108, 109, 25, 75),
+                (110, 111, 30, 80),
+                (112, 113, 40, 88),
+                (114, 115, 48, 100),
+                (116, 117, 54, 113),
+                (118, 119, 58, 118),
+                (120, 121, 59, 118),
+                (122, 123, 65, 125),
+                (124, 125, 67, 131),
+                (126, 127, 70, 138),
+                (128, 129, 75, 150),
+            ]
         );
         for mode in 0..8 {
             let (mut symbols, mut defs) = fixture();

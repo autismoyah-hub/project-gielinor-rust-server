@@ -26,6 +26,7 @@ mod prayer_tab;
 mod shop;
 mod skill_multi;
 mod dough;
+mod herb_cleaning;
 mod smelting;
 mod tower_combat;
 mod tower_restore;
@@ -2413,6 +2414,9 @@ impl<B: AccountBackend> Runtime<B> {
                                                 .ok()
                                                 .and_then(|data| data.inventory.get(slot))
                                             {
+                                                if button.op == 2 && self.world.herb_cleaning.as_ref().is_some_and(|c| c.recipes.contains_key(&button.object)) {
+                                                    return Some(Action::CleanHerb { slot, item: button.object });
+                                                }
                                                 if button.op == 2
                                                     && self
                                                         .world

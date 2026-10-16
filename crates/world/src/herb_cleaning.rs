@@ -1,4 +1,4 @@
-//! Atomic selected-slot herb cleaning; no runtime registration or cadence policy.
+//! Atomic selected-slot herb cleaning; automatic continuation remains unregistered.
 //! The host must supply current membership and authoritative quest eligibility.
 use crate::{
     inventory::{Catalog, Delete, Insert, Inventory},
@@ -272,5 +272,35 @@ mod tests {
             assert_eq!(inv.get(0).unwrap().id, 251);
             assert_eq!(stats, expected);
         }
+    }
+}
+
+/// Selected manual cleaning only. Automatic continuation policy is not registered.
+#[derive(Clone, Debug)]
+pub struct Config {
+    pub recipes: std::collections::BTreeMap<i32, Recipe>,
+    pub quest_progress: u16,
+    pub quest_complete: i32,
+}
+#[derive(Clone, Copy, Debug)]
+pub struct Transition {
+    pub job: Job,
+    pub clock: i32,
+    pub fine_xp_before: i32,
+    pub fine_xp_after: i32,
+}
+impl Transition {
+    pub fn json(self, actor: crate::simulation::ActorId) -> String {
+        format!(
+            "{{\"actor_slot\":{},\"actor_generation\":{},\"slot\":{},\"input\":{},\"output\":{},\"count\":1,\"clock\":{},\"fine_xp_before\":{},\"fine_xp_after\":{}}}",
+            actor.slot,
+            actor.generation,
+            self.job.slot,
+            self.job.recipe.input,
+            self.job.recipe.output,
+            self.clock,
+            self.fine_xp_before,
+            self.fine_xp_after
+        )
     }
 }
