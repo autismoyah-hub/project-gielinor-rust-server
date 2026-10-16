@@ -2350,3 +2350,49 @@ Validation alternate-finished-tests-attempt-002 PASS;382source hashes unchanged.
 Compile16.56s/world49.07s; guard4481MiB,77.7percent commit,66page-ins/s,1.3msdisk,CPU30.8percent,j2. Expanded29-profile gates, both orders, rewards/caps and goggles draws pass. Attempt001 preserved FAIL: new expected recipe list inserted four tuples at the wrong position; runtime registration already appended them correctly. Corrected only expected ordering. Native four-profile acceptance pending;280synthetic state/trace corruption checks pass.
 
 Alternate unfinished native attempt001 FAILED with client deadline phase2/completed2. Server traces show water-toadflax committed in one tick and coconut-toadflax in two; irit-water was selected but not committed. Durable logout PASS, owned server exit0, not forced. Original driver unfinishedalternate-001, run database and logs are retained. Acceptance is not claimed. New driver unfinishedalternate-002 extends only the isolated total client budget150to240seconds; the associated run server budget300to500ticks accommodates loading and six menu interactions. Fresh run002 will use a new database and the same immutable server4DDC536085EB390DBA872CA2CE704AE6122BC5A58B0E8F693FE6F5FC5766D05B. Finished-alternate's four-profile driver uses the same bounded budget before its first build. No production client/server timeout changed.
+
+## Native gameplay unfinishedalternate acceptance (2026-10-16 UTC)
+
+Six native interleaved water/alternate-vessel profiles: toadflax water and coconut milk, irit water and coconut milk, cadantine water and blood. Exact selected pairs, zero XP, one-tick cadence except Antidote+ unfinished two ticks; same-save no replay. Failed run001 timeout remains preserved.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking/Herblore parity or unrelated recipes. No issue closure.
+
+`openrune-native-unfinishedalternate-002` PASS. Server archive `4DDC536085EB390DBA872CA2CE704AE6122BC5A58B0E8F693FE6F5FC5766D05B`, driver `unfinishedalternate-002`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID6700.
+- Driver `server_unfinishedalternate.exe` SHA256 `853E52D4B75D197D8AB29F0F6C19E2DE173AA832679500B925FC7571A6870CB9`
+- Driver `NativeUnfinishedAlternateScenario.rs` SHA256 `752C93C5E9C9DF7E90F823B4E3CEEE33178BC7E9CE8D3FC4BDDD13138FCCC8A5`
+- `client.log` SHA256 `031424e60ad3c059e66ca15711a4085cf17dd91dfbfa1562f22774179f622ddf`
+- `server.log` SHA256 `3c5870283954108f57d805a7ec2eec5541e4f5e1c1a50b2ff886b63ac6812c9e`
+- `initial-state.json` SHA256 `4fd92f54d86e8e4347e5920265a6993367ad0fdb67c84cd5eae3f7425932f68d`
+- `final-state.json` SHA256 `9affa30611bd09e456c8f541bacddc4ee0a6eebdbd4e6bb9ebe91c91540e5660`
+- `pack-assessment.json` SHA256 `629a19a5b55ed53f0c9ecc3614e9296bee43310e8cb0cbad1cc0b0198843b371`
+- `unfinishedalternate-trace-assessment.json` SHA256 `8ec51ab30342dbb78abb8b2252015d9097534c38c60e9bb269fa370048b87d18`
+- `logout-observation.json` SHA256 `a2044f34a1fcd6d198151f539cc555e06318bcf34324228a1ac7568f059d2108`
+- `shutdown.json` SHA256 `c98fd5513483b16388584a6a8a52f6df0dd537d08abee8b8a7f69f7e727442d7`
+- `result.json` SHA256 `542f654030a76d270b9ea4efc056e699e96d31fbda0bcb54793471e8f15c7e65`
+- `pack-run.json` SHA256 `8021a4a5423b614aaee13f2205ad14cd9b5f757556abf82c8af17eddc60baee1`
+- `native-profile-assessment.json` SHA256 `3f14a170fae57aa7fb1d7cec162cb49aa87debcbb735e6b036598733a23eb947`
+- `native-packet-assessment.json` SHA256 `3249a9b6a8b8338d23ff77daa2606497c2876810d9ace173b001af2267359583`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":400},"3077":{"before":0,"after":31789},"3079":{"before":0,"after":207},"65515":{"before":0,"after":200}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[{"actor_slot":1,"actor_generation":614,"herb_slot":0,"vessel_slot":1,"herb":2998,"vessel":227,"output":3002,"count":1,"queued_at":115,"committed_at":116,"index":0},{"actor_slot":1,"actor_generation":614,"herb_slot":2,"vessel_slot":3,"herb":2998,"vessel":5935,"output":5942,"count":1,"queued_at":130,"committed_at":132,"index":0},{"actor_slot":1,"actor_generation":614,"herb_slot":4,"vessel_slot":5,"herb":259,"vessel":227,"output":101,"count":1,"queued_at":142,"committed_at":143,"index":0},{"actor_slot":1,"actor_generation":614,"herb_slot":6,"vessel_slot":7,"herb":259,"vessel":5935,"output":5951,"count":1,"queued_at":155,"committed_at":156,"index":0},{"actor_slot":1,"actor_generation":614,"herb_slot":8,"vessel_slot":9,"herb":265,"vessel":227,"output":107,"count":1,"queued_at":170,"committed_at":171,"index":0},{"actor_slot":1,"actor_generation":614,"herb_slot":10,"vessel_slot":11,"herb":265,"vessel":22446,"output":22443,"count":1,"queued_at":183,"committed_at":184,"index":0}],"scope":"Separate selected-profile recipe-specific commits; UI evidence and packet/display latency separate"}`
+
+`openrune-native-unfinishedalternate-relogin-002` PASS. Server archive `4DDC536085EB390DBA872CA2CE704AE6122BC5A58B0E8F693FE6F5FC5766D05B`, driver `unfinishedalternate-002`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor `openrune-native-unfinishedalternate-002`, owned PID7364.
+- Driver `server_unfinishedalternate.exe` SHA256 `853E52D4B75D197D8AB29F0F6C19E2DE173AA832679500B925FC7571A6870CB9`
+- Driver `NativeUnfinishedAlternateScenario.rs` SHA256 `752C93C5E9C9DF7E90F823B4E3CEEE33178BC7E9CE8D3FC4BDDD13138FCCC8A5`
+- `client.log` SHA256 `ef9046a794a5c0ae51a57d4b038e25712eb74dd71fdc425aa74fb98aa448fda7`
+- `server.log` SHA256 `1be25d590edde6abdea0ac8c18447d26f828c146a31101f42b88bc44723a7dfb`
+- `initial-state.json` SHA256 `9affa30611bd09e456c8f541bacddc4ee0a6eebdbd4e6bb9ebe91c91540e5660`
+- `final-state.json` SHA256 `7160048dad8f2f6d00c2357be3b7daef00672993a7b7df0423223c3d7f4f9c20`
+- `pack-assessment.json` SHA256 `ec6e14f100110d6c35a97eabae27d23ae8f27ece73f47e7093e825d5973f90a5`
+- `unfinishedalternate-trace-assessment.json` SHA256 `c63ff27e31079b43f522fd062c3c11a290b408fd5ecd360a564e92662265e9f4`
+- `logout-observation.json` SHA256 `f943adb6dfa58e02c2208ad45ad15accfc1cb716cd537f8416904f8c5558140a`
+- `shutdown.json` SHA256 `85ab6251ec28c6c8d53bb152554c9606aeb20522dc133b1f7dd576458390570e`
+- `result.json` SHA256 `9b56a23f5e5ae77666e18a84969914303bb6b19c662268d4ebc03ce126be94b9`
+- `pack-run.json` SHA256 `1211c1ecf14e73d987e80b10e7eda330a7741d92b468586eb144611377d70088`
+- `native-profile-assessment.json` SHA256 `3f14a170fae57aa7fb1d7cec162cb49aa87debcbb735e6b036598733a23eb947`
+- `native-packet-assessment.json` SHA256 `c6d47e039388488b7f4982e80bab3fac29c2be397c01d551cbace71c0ce87283`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":400,"after":600},"3077":{"before":31789,"after":19495},"3079":{"before":207,"after":114},"65515":{"before":200,"after":304}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Separate selected-profile recipe-specific commits; UI evidence and packet/display latency separate"}`
