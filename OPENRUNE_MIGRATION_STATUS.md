@@ -1761,3 +1761,49 @@ All listed runs require client exit0, fresh durable logout, clean owned exit0 an
 - `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
 - State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":400,"after":600},"3077":{"before":49433,"after":3674},"3079":{"before":241,"after":133},"65515":{"before":229,"after":354}}}`
 - Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Separate selected-profile one-tick commits; UI evidence and packet/display latency separate"}`
+
+## Native gameplay unfinishedhigh acceptance (2026-10-16 UTC)
+
+Eight higher-level ordinary unfinished profiles (avantoe through torstol, including huasca), alternating native selected order and actual single-quantity Make dispatches, exact outputs and zero XP. Level-boundary native acceptance is separate.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking/Herblore parity or unrelated recipes. No issue closure.
+
+`openrune-native-unfinishedhigh-001` PASS. Server archive `254F54107BA90A6C8013D5E22B1D7DA7EA08E8A19BF27D8972D51F1EDB6B26C7`, driver `unfinishedhigh-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID17524.
+- Driver `server_unfinishedhigh.exe` SHA256 `ACC0F71253304D9B14CB8E29DCD4AA3A27CA0E24F2EE5103637E3AE787FD7566`
+- Driver `NativeUnfinishedHighScenario.rs` SHA256 `FC7FE014E6078E6F1FEF02A4186D46094E5C980918EA5E73B587AFA6849A9365`
+- `client.log` SHA256 `a15dbed072211a3789052f8d1d7668032f93e536cca5248fbd97350668c027cf`
+- `server.log` SHA256 `1ea7202b9e433cb40c9ed00c323af5fb5a1cf50848a19cac4bba10ef5ef5a223`
+- `initial-state.json` SHA256 `5525c7100709b2c5efab13e779a4166b9648026468da4fe9cae27a00d1c2cf6d`
+- `final-state.json` SHA256 `d4df1d8c8f0646dfb9c5b69a96c60deed9bbf5e8712e4408d8bbb96df4599520`
+- `pack-assessment.json` SHA256 `48665fbb449ae418f89199aaee43558f6448451d1825602330202270664ddb53`
+- `unfinishedhigh-trace-assessment.json` SHA256 `e94b05c0b25a228f2507857efe33dee3b82f4af07f8f6f046ff3220cfe0025af`
+- `logout-observation.json` SHA256 `0f9a120f6408a2ebcf94c6c099d3c5290a28e464a5d03c845123bc8e35ed63fd`
+- `shutdown.json` SHA256 `a0a2f76dce65956c2031cc8afe944d1150a6388ae2360e8b9bf180bc7fbca6d3`
+- `result.json` SHA256 `658f23f1723f3c0590724f54caf6fc1951afebaa8f4d377d0ca8b805b4dfa734`
+- `pack-run.json` SHA256 `ab295b4ac8e02aebadd1f06c2f3068c381924a7307418566c120cfac15728257`
+- `native-profile-assessment.json` SHA256 `3f14a170fae57aa7fb1d7cec162cb49aa87debcbb735e6b036598733a23eb947`
+- `native-packet-assessment.json` SHA256 `882bdc80b9d469c65e5d1cc4d7e708fc154200c7cc8a3fca47c5376deca93e84`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":500},"3077":{"before":0,"after":48808},"3079":{"before":0,"after":255},"65515":{"before":0,"after":244}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[{"actor_slot":1,"actor_generation":614,"herb_slot":0,"vessel_slot":1,"herb":261,"vessel":227,"output":103,"count":1,"queued_at":129,"committed_at":130,"index":0},{"actor_slot":1,"actor_generation":614,"herb_slot":2,"vessel_slot":3,"herb":263,"vessel":227,"output":105,"count":1,"queued_at":141,"committed_at":142,"index":0},{"actor_slot":1,"actor_generation":614,"herb_slot":4,"vessel_slot":5,"herb":30097,"vessel":227,"output":30100,"count":1,"queued_at":153,"committed_at":154,"index":0},{"actor_slot":1,"actor_generation":614,"herb_slot":6,"vessel_slot":7,"herb":3000,"vessel":227,"output":3004,"count":1,"queued_at":166,"committed_at":167,"index":0},{"actor_slot":1,"actor_generation":614,"herb_slot":8,"vessel_slot":9,"herb":265,"vessel":227,"output":107,"count":1,"queued_at":178,"committed_at":179,"index":0},{"actor_slot":1,"actor_generation":614,"herb_slot":10,"vessel_slot":11,"herb":2481,"vessel":227,"output":2483,"count":1,"queued_at":193,"committed_at":194,"index":0},{"actor_slot":1,"actor_generation":614,"herb_slot":12,"vessel_slot":13,"herb":267,"vessel":227,"output":109,"count":1,"queued_at":210,"committed_at":211,"index":0},{"actor_slot":1,"actor_generation":614,"herb_slot":14,"vessel_slot":15,"herb":269,"vessel":227,"output":111,"count":1,"queued_at":233,"committed_at":234,"index":0}],"scope":"Separate selected-profile one-tick commits; UI evidence and packet/display latency separate"}`
+
+`openrune-native-unfinishedhigh-relogin-001` PASS. Server archive `254F54107BA90A6C8013D5E22B1D7DA7EA08E8A19BF27D8972D51F1EDB6B26C7`, driver `unfinishedhigh-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor `openrune-native-unfinishedhigh-001`, owned PID8232.
+- Driver `server_unfinishedhigh.exe` SHA256 `ACC0F71253304D9B14CB8E29DCD4AA3A27CA0E24F2EE5103637E3AE787FD7566`
+- Driver `NativeUnfinishedHighScenario.rs` SHA256 `FC7FE014E6078E6F1FEF02A4186D46094E5C980918EA5E73B587AFA6849A9365`
+- `client.log` SHA256 `fa3ab1496f3889971137a464a8c25cb5612f697e17594d654069beacc889a968`
+- `server.log` SHA256 `0be31a7e4e11012aba522b09fb65d78b9c59b135804135a301d9efb6bee09ac5`
+- `initial-state.json` SHA256 `d4df1d8c8f0646dfb9c5b69a96c60deed9bbf5e8712e4408d8bbb96df4599520`
+- `final-state.json` SHA256 `ab01652d76026e5e8ae6d3de546a59e276318e20de70d85738759615980be5e5`
+- `pack-assessment.json` SHA256 `149e1d90c4fee4152236bb270d7d3cd917ba42ef849a468500c3440064c22698`
+- `unfinishedhigh-trace-assessment.json` SHA256 `99c784d8db1cc80cc9d83fd737505afb251dce1d344f1ebefea54f1a1b9c4a8a`
+- `logout-observation.json` SHA256 `f8df3f176c1211b234e4f9c2d0483c79b3fff34c2b28ce85557fdbe4062ce432`
+- `shutdown.json` SHA256 `85e441c9e23bcf24f8c290e5149c33dd43e68f92db5321ff3fe0e5b3e0d06fc4`
+- `result.json` SHA256 `7e708d5fe757772e1c839bc026186dd7e491b2de9aee067a78d90b92ef1c3d39`
+- `pack-run.json` SHA256 `6f118e38b9f15d10e776e9d86f064b0fa52308373851feab9d6e00f222694252`
+- `native-profile-assessment.json` SHA256 `3f14a170fae57aa7fb1d7cec162cb49aa87debcbb735e6b036598733a23eb947`
+- `native-packet-assessment.json` SHA256 `2e8e79a009a561f5b8173ad50a8f87d5c31aba0841b0dab2064ce2343cf7c4d7`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":500,"after":700},"3077":{"before":48808,"after":1584},"3079":{"before":255,"after":115},"65515":{"before":244,"after":351}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Separate selected-profile one-tick commits; UI evidence and packet/display latency separate"}`
