@@ -2264,6 +2264,20 @@ pub fn finished_potions(
             base_fine_xp,
         });
     }
+    // Weapon poison is an ordinary two-input Herblore product, but not a drink.
+    // Keep the drink validation above intact and bind this output explicitly.
+    let poison = bind("weapon_poison", true, false)?;
+    if defs.items[&(poison as u32)].inventory_ops != [None, None, None, Some("Empty".into()), None] {
+        return Err("Invalid weapon-poison output operations".into());
+    }
+    result.push(gielinor_world::finished_potions::Recipe {
+        unfinished: bind("kwuarmvial", true, false)?,
+        secondary: bind("dragon_scale_dust", true, false)?,
+        output: poison,
+        level: 60,
+        boostable: true,
+        base_fine_xp: 1375,
+    });
     Ok(result)
 }
 #[cfg(test)]
@@ -2290,6 +2304,7 @@ mod finished_potion_binding_tests {
             ("tarrominvial", 95, true, false),
             ("limpwurt_root", 225, false, false),
             ("3dose1strength", 115, false, true),
+            ("weapon_poison", 187, true, false),
             ("crushed_bird_nest", 6693, true, false),
             ("3dosepotionofsaradomin", 6687, true, true),
             ("huascavial", 30100, true, false),
@@ -2345,6 +2360,7 @@ mod finished_potion_binding_tests {
             if drink {
                 item.inventory_ops[0] = Some("Drink".into());
             }
+            if id == 187 { item.inventory_ops[3] = Some("Empty".into()); }
             defs.items.insert(id as u32, item);
         }
         (symbols, defs)
@@ -2390,6 +2406,7 @@ mod finished_potion_binding_tests {
                 (3002, 6693, 6687, 81, true, 1800),
                 (30100, 29993, 30128, 58, true, 1320),
                 (97, 29993, 30140, 54, true, 1320),
+                (105, 241, 187, 60, true, 1375),
             ]
         );
         assert!(!defs.items[&175].members && !defs.items[&115].members);
@@ -2416,6 +2433,25 @@ mod finished_potion_binding_tests {
             assert!(finished_potions(&symbols, &defs).is_err(), "mode{mode}");
         }
     }
+    #[test]
+    fn weapon_poison_has_an_explicit_non_drink_output_contract() {
+        for mode in 0..9 {
+            let (mut symbols, mut defs) = fixture();
+            match mode {
+                0 => { symbols.remove("weapon_poison"); }
+                1 => defs.items.get_mut(&187).unwrap().inventory_ops[0] = Some("Drink".into()),
+                2 => defs.items.get_mut(&187).unwrap().inventory_ops[0] = Some("Eat".into()),
+                3 => defs.items.get_mut(&187).unwrap().inventory_ops[3] = None,
+                4 => defs.items.get_mut(&187).unwrap().stackable = true,
+                5 => defs.items.get_mut(&187).unwrap().members = false,
+                6 => defs.items.get_mut(&187).unwrap().cert.template = 799,
+                7 => defs.items.get_mut(&187).unwrap().placeholder.template = 14401,
+                _ => defs.items.get_mut(&187).unwrap().dummy = 1,
+            }
+            assert!(finished_potions(&symbols, &defs).is_err(), "mode{mode}");
+        }
+    }
+
 }
 
 /// Two target-revision cosmetic variants of prescription goggles.

@@ -2219,3 +2219,12 @@ All listed runs require client exit0, fresh durable logout, clean owned exit0 an
 - `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
 - State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":500,"after":800},"3077":{"before":34494,"after":2010},"3079":{"before":263,"after":157},"65515":{"before":247,"after":393}}}`
 - Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Separate selected-profile two-tick commits; UI evidence and packet/display latency separate"}`
+
+## Weapon poison production binding (2026-10-16)
+
+Wiki Weapon poison revision15184209, wikitext SHA256 `3643e259abae2a8ea457865f86bfea17010037eb6a7ff1927304c41d4f6be170`: level60boostable,137.5XP,two ticks; kwuarm unfinished105 plus dragon-scale dust241 produces187. Target239.1 output187 SHA256 `35926017015899cd8bc7764f0838e3f8a3d32e4aff623b0ab7f3774b9040afbd` has only Empty at operation4. The new explicit non-drink binding preserves all24existing Drink-profile checks and rejects unexpected operations, notes/placeholders/dummy/stackable/nonmember outputs. Reuses the existing pair-key scheduler and atomic item/fineXP/goggles transaction. Weapon application and poison damage are not implemented by this recipe.
+
+Validation weapon-poison-tests-attempt-001 PASS;382source hashes unchanged. test result: ok. 52 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.60s; test result: ok. 381 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 19.52s
+Compile33.71s;world19.52s. Guard4933MiB,75.9percent commit,1page-in/s,0.5msdisk,CPU23.8percent,j2. Nine new binding rejection vectors and25profile transaction loops pass. Native two-order poison production pending;262synthetic assessor checks PASS.
+
+Final-three native control attempt001 RESOURCE_DEFERRED before launch:CPU76.9percent,4494MiB,77.9percent commit,6207page-ins/s,0.4msdisk;prepared exact fixture retained. Retrying with ResumePrepared after owned tests complete. Weapon-poison server-build attempt001 RESOURCE_DEFERRED before compilation:CPU85.5percent,3950MiB,81.1percent commit,10page-ins/s,0msdisk,j1. No compiler-presence exclusion and no other agent process touched.
