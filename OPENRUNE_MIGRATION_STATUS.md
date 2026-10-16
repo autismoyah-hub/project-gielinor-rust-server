@@ -1492,3 +1492,68 @@ At source48d70b958a735b015323c168b1382b70a1a6484a, build.ps1 -Action test -Cargo
 - `work/herbmanual-native-attempt-024.log` SHA256 `80352850cc78d57b205bd6ecb0af598feae0d51be6cd4cbec616a6578bddd02e`
 - `work/herbmanual-relogin-attempt-001.log` SHA256 `70bf3c5390deafe998bafb959dd6f85281d89156fa1e5c96f9c95495490d3ffe`
 - `work/unfinished-potions-tests-attempt-001.log` SHA256 `4831a639d04a26c14b2a285030829ecc2c113500a28bbe89385f88f7f48d8991`
+
+## Native gameplay herbquestdenied acceptance (2026-10-16 UTC)
+
+Two genuine Clean menu operations with incomplete Druidic Ritual state3: two actual quest refusals, zero successful transitions and exact item/fine-XP conservation. Quest completion/rewards excluded.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking/Herblore parity or unrelated recipes. No issue closure.
+
+`openrune-native-herbquestdenied-001` PASS. Server archive `358F0AD94E130053CF7DE71ADF59F699EB42C6023366F961F4D3BB1C90A97D3B`, driver `herbquestdenied-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID17076.
+- Driver `NativeHerbQuestDeniedScenario.rs` SHA256 `328F208E7045BB569CB59EECAED2649D9C0787E823539305D12C9FDB74C0051D`
+- Driver `server_herbquestdenied.exe` SHA256 `E5357F6EC37C03E5E7C3EE6FD8F7EB1C2B2A620765CF9CA2DB2C7157C5258793`
+- `client.log` SHA256 `8c5c4a98c8f8efaea9bbefe919b3741802bf363afa651fc6530f91410eb5929a`
+- `server.log` SHA256 `cc2bb25aa8e1cbafed54c2302be321f8e5dad98b262b21460d1836387fc3cf13`
+- `initial-state.json` SHA256 `7dc517b739a24c37c182b858fd9e934dcdf64fe8169734b54585be7137277431`
+- `final-state.json` SHA256 `85a481ce7041f44f79d21ea8f679f5a7544232b1c1d23a9ce83298d1c7695553`
+- `pack-assessment.json` SHA256 `1890079b514a0d0fc2c8772acc39aa35a54b62e7eacac17be231e6abbf593360`
+- `herbquestdenied-trace-assessment.json` SHA256 `56cd59b97b9da1f75720897c11d516e2f87777afb2eeb127e887c21a251cf454`
+- `logout-observation.json` SHA256 `b63ae3cf8b9b53e4610dd380890b805070a983b377e45cd4f48f4619dce28559`
+- `shutdown.json` SHA256 `90b9755f167f6dc21c261b4e11e3695e419c9f650998608808f68ccf339a1d99`
+- `result.json` SHA256 `d7d0add2e8cd45d9e4200cbd1016e2e725e511a1b372811d32a64e192f79b82a`
+- `pack-run.json` SHA256 `da25fc019087568835241151981d6abbcf853a18b86487da6bbaddc293d1cb6a`
+- `native-herb-assessment.json` SHA256 `18d7db902f8c986fd18fd5527ff9e08b52e482bae1cc6d1dcce3547c5717f865`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":200},"3077":{"before":0,"after":36331},"3079":{"before":0,"after":138},"65515":{"before":0,"after":131}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Zero herb commits; actual denial messages and state checked separately"}`
+
+## Native gameplay herbquestdenied acceptance (2026-10-16 UTC)
+
+Two genuine Clean menu operations with incomplete Druidic Ritual state3: two actual quest refusals, zero successful transitions and exact item/fine-XP conservation. Quest completion/rewards excluded.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking/Herblore parity or unrelated recipes. No issue closure.
+
+`openrune-native-herbquestdenied-relogin-001` PASS. Server archive `358F0AD94E130053CF7DE71ADF59F699EB42C6023366F961F4D3BB1C90A97D3B`, driver `herbquestdenied-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor `openrune-native-herbquestdenied-001`, owned PID6808.
+- Driver `NativeHerbQuestDeniedScenario.rs` SHA256 `328F208E7045BB569CB59EECAED2649D9C0787E823539305D12C9FDB74C0051D`
+- Driver `server_herbquestdenied.exe` SHA256 `E5357F6EC37C03E5E7C3EE6FD8F7EB1C2B2A620765CF9CA2DB2C7157C5258793`
+- `client.log` SHA256 `aab9b874e0e8bb74e59fd69d402c6423c8da8da75440ed0df605f379c5f45ed7`
+- `server.log` SHA256 `e8a91789312b744c43417aba4d0a7636d45a9a75e6d50814de757a623cd23e84`
+- `initial-state.json` SHA256 `85a481ce7041f44f79d21ea8f679f5a7544232b1c1d23a9ce83298d1c7695553`
+- `final-state.json` SHA256 `8b48c423cbcfeb4063cb6adb8ffdbcb58cb45bb43611e0eebff72a95c5127505`
+- `pack-assessment.json` SHA256 `4d4c556059dd91daddca4ccc4ada0eca0237bdb4a8d68420583e137ca357bc71`
+- `herbquestdenied-trace-assessment.json` SHA256 `56cd59b97b9da1f75720897c11d516e2f87777afb2eeb127e887c21a251cf454`
+- `logout-observation.json` SHA256 `785c8abe7e04b21c858624b1b8ca13044fc1b3baaf74d6a7b20ead16c126a703`
+- `shutdown.json` SHA256 `303d60bd0de2104ed4596aeecd48c83d6b4d5d76c857296c14bf298623cbbb62`
+- `result.json` SHA256 `d975a7991a193c7fc93d68992b48eaea229f3b3e9bdbca0499de20ec2402baae`
+- `pack-run.json` SHA256 `128bae96ec07b1dbeed7f774a5c118ad88d810ac005d68268d89ca78fdd9b2bb`
+- `native-herb-assessment.json` SHA256 `ded57183332efb9823e66195d5952df9054f1071995e0a2ca6b3507fb9b5c44d`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":200,"after":400},"3077":{"before":36331,"after":54870},"3079":{"before":138,"after":113},"65515":{"before":131,"after":238}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Zero herb commits; actual denial messages and state checked separately"}`
+
+## Native Druidic Ritual refusal and same-save verification (2026-10-16)
+
+herbquestdenied001 driver built2.30s and matching login control PASS. Fresh openrune-native-herbquestdenied-001 and exact-save openrune-native-herbquestdenied-relogin-001 PASS: two genuine Clean opcode47 actions at quest80=3 yield two actual quest-refusal messages, full28inventory/1000coins/fine3881 unchanged, zero herb commits. Same-save emits no Clean actions, no reward replay; save acknowledgements/owned clean exits verified. First relogin attempt CPU-deferred at73.9% with4960MiB/76.8%commit/no page-ins; second admitted at12.9%CPU/5353MiB and PASS. This validates refusal for this incomplete state, not quest completion/rewards or every possible quest state. Issue67 prior native completion evidence comment6220769922; no issue closure.
+
+herbnormal001 driver built2.38s under revised guard despite informational other compilers:5071MiB,76.0%commit,651page-ins/s but1.0ms disk,39.5%CPU allowed2jobs. Native15-profile control PASS; action run currently active, no15-profile acceptance claim yet.
+- `work/herbquestdenied-driver-attempt-001.log` SHA256 `6e9f3baaef7fcbe98799a9c8fddb34942605f0e36d626c8e56ae6004ac2a6769`
+- `work/herbquestdenied-control-attempt-001.log` SHA256 `ff5f16e11dcc126ac7b1fc454ab6431c3b728f4820a860252bc1e43b07f78eb2`
+- `work/herbquestdenied-native-attempt-001.log` SHA256 `eb075c513a0183ec7ac36f9e694fa83a75caaa92f907e4de6de0b9765ffc91b6`
+- `work/herbquestdenied-relogin-attempt-001.log` SHA256 `4652670a30e3307b4d904ee2ae9d193801232dea196d095f863dc4e7c84237a6`
+- `work/herbquestdenied-relogin-attempt-002.log` SHA256 `d6d95c6fe92d5932e7dcfbe372e90728429612f1a8206bc57392a20a068412c0`
+- `work/herbnormal-driver-attempt-001.log` SHA256 `b6f58cb7fa08725525e3ce68807acf53f171fb1104eaf7745f6a11ab8709fc86`
+- `work/herbnormal-control-attempt-001.log` SHA256 `d7a1b6852dc8f5b516898eb360e80995f1dde1b11654d714cba552a337cdfaa2`
+- Driver `herbquestdenied-001` files: `{"NativeHerbQuestDeniedScenario.rs":"328F208E7045BB569CB59EECAED2649D9C0787E823539305D12C9FDB74C0051D","server_herbquestdenied.exe":"E5357F6EC37C03E5E7C3EE6FD8F7EB1C2B2A620765CF9CA2DB2C7157C5258793"}`
+- Driver `herbnormal-001` files: `{"server_herbnormal.exe":"E84EA597265A8160BFB58CC87900D92F8255AFDC541799B6B1964D218775453A","NativeHerbNormalScenario.rs":"76AFA79CB02C61F10767C61A8DF8E0DC41755ED554D505FDCA292863504F93FF"}`
