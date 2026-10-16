@@ -50,6 +50,7 @@ mod soft_timer_actions;
 mod spell_actions;
 mod stat_event_actions;
 mod tower_actions;
+mod cinderworks_actions;
 mod tower_chest_actions;
 mod tower_combat_actions;
 mod tower_login_actions;
@@ -125,6 +126,7 @@ pub struct PlayerData {
     pub tower_arrival: crate::tower_arrival::State,
     /// None means the legacy arrival projection cannot establish diary marks.
     pub tower_diary: Option<crate::tower_diary::Progress>,
+    pub tower_run: crate::tower_run::Run,
 }
 #[derive(Clone, Copy, Debug)]
 pub enum WeightSource {
@@ -161,6 +163,7 @@ impl PlayerData {
             energy: 10000,
             tower_arrival: Default::default(),
             tower_diary: None,
+            tower_run: Default::default(),
         }
     }
 }
@@ -637,6 +640,7 @@ pub enum WorldEvent {
         error: ActionError,
     },
     NpcDrop(crate::npc_death::DropTrace),
+    TileGraphic(crate::zones::Graphic),
     NpcImpact(crate::hits::NpcImpactTrace),
     NpcMeleeXp(crate::combat_xp::MeleeTrace),
     NpcCombatAnimation {
@@ -846,6 +850,7 @@ pub struct World {
     pub tower_offering: Option<crate::tower_offering::HandlerConfig>,
     pub tower_restore: Option<crate::tower_restore::HandlerConfig>,
     pub tower_combat: Option<crate::tower_combat::Config>,
+    pub cinderworks: Option<crate::tower_cinderworks::Config>,
     pub woodcutting: Option<crate::woodcutting::Config>,
     pub mining: Option<crate::mining::Config>,
     /// Explicit stock partitions; empty until a verified content profile registers one.
@@ -947,6 +952,7 @@ impl Default for World {
             tower_offering: None,
             tower_restore: None,
             tower_combat: None,
+            cinderworks: None,
             woodcutting: None,
             mining: None,
             shops: BTreeMap::new(),
@@ -2460,6 +2466,7 @@ impl World {
                                                                 &self.object_types,
                                                                 self.tutorial_rules_completed_varp
                                                                     .is_some(),
+                                                                self.cinderworks.as_ref(),
                                                                 &mut self.events,
                                                                 random,
                                                             )

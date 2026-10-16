@@ -1005,7 +1005,20 @@ impl<B: AccountBackend> Runtime<B> {
                     }],
                 )?;
                 self.tutorial_close(actor)?;
-                self.set_tutorial_step(actor, Step::GielinorTalk, None)?;
+                // Tower is an alternative onboarding route. After the normal
+                // appearance and experience choices, its own guide takes over.
+                let coords = self.world.data(actor).map_err(|e| io::Error::other(format!("{e:?}")))?.coords;
+                let tower = self.world.tower_arrival.is_some_and(|config| gielinor_world::tower_layout::contains(config.origin, coords));
+                self.set_tutorial_step(actor, if tower { Step::Completed } else { Step::GielinorTalk }, None)?;
+                if tower {
+                    self.close_interface(actor, config.focus.chatmodal)?;
+                    self.close_interface(actor, config.focus.atmosphere)?;
+                    if let Some(connection) = self.connection(actor) {
+                        let packet = gielinor_protocol::chat::game(0, None, "Welcome to the Cinderworks. Read the sanctuary plaque to begin your run.")
+                            .map_err(|e| io::Error::other(format!("{e:?}")))?;
+                        self.transport.send(connection, packet.opcode, &packet.payload)?;
+                    }
+                }
             }
         }
         Ok(())

@@ -75,6 +75,8 @@ pub mod stat_ops;
 pub mod stats;
 pub mod tick;
 pub mod tower_arrival;
+pub mod tower_run;
+pub mod tower_cinderworks;
 pub mod ui;
 pub mod unfinished_potions;
 pub mod finished_potions;

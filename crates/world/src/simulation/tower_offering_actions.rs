@@ -12,7 +12,7 @@ impl World {
         if !crate::tower_layout::contains(config.origin, p.movement.coords) {
             return Ok(());
         }
-        p.data.tower_diary.ok_or(ActionError::UnknownTowerDiary)?;
+        if p.data.tower_run.id == 0 { p.data.tower_diary.ok_or(ActionError::UnknownTowerDiary)?; }
         config
             .bones
             .take_from_bank(&mut p.data.inventory, &mut p.data.bank, &self.object_types);
@@ -37,6 +37,19 @@ impl World {
         continuation: Continuation,
         offered: bool,
     ) {
+        if offered {
+            if let Some(config) = &self.cinderworks {
+                let p = self.players.get_mut(actor.slot as usize).unwrap();
+                if let Some(text) = config.credit(&mut p.data, p.movement.coords, crate::tower_run::Service::Altar) {
+                    self.events.push(WorldEvent::GameMessage { actor, text:text.into() });
+                }
+                // The Cinderworks offering has no legacy forced walk to a crate.
+                if p.data.tower_run.id > 0 {
+                    p.data.tower_arrival.bones_offered = Some(true);
+                    return;
+                }
+            }
+        }
         let Some(config) = self.tower_offering.as_ref() else {
             return;
         };

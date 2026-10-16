@@ -13,6 +13,11 @@ impl World {
         ) {
             Ok(None) => {}
             Ok(Some(result)) => {
+                if let Some(config) = &self.cinderworks {
+                    if let Some(text) = config.credit(&mut p.data, p.movement.coords, crate::tower_run::Service::Kitchen) {
+                        self.events.push(WorldEvent::GameMessage {actor, text:text.into()});
+                    }
+                }
                 self.events.push(WorldEvent::PlayerCombatAnimation {
                     actor,
                     sequence: config.animation,

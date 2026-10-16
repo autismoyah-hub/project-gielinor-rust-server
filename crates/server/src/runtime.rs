@@ -3744,6 +3744,10 @@ impl<B: AccountBackend> Runtime<B> {
                     self.events
                         .push(Event::World(WorldEvent::Projectile(flight)));
                 }
+                WorldEvent::TileGraphic(graphic) => {
+                    if self.zones_enabled { self.ground_updates.push(gielinor_world::zones::Change::Graphic(graphic)); }
+                    self.events.push(Event::World(WorldEvent::TileGraphic(graphic)));
+                }
                 WorldEvent::AreaSound(sound) => {
                     if self.zones_enabled {
                         self.ground_updates

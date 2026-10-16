@@ -416,6 +416,22 @@ pub fn run() -> io::Result<()> {
         offering_xp,
         offering_default,
     )?;
+    let outside = CoordGrid::new(3225, 3218, 0).map_err(|e| fail(format!("{e:?}")))?;
+    let config = gielinor_world::tower_cinderworks::Config {
+        origin:tower_origin, outside,
+        plaque:names.id("loc", "plaque")?,
+        portal:names.id("loc", "threshold_portal")?,
+        chest:names.id("loc", "threshold_chest")?,
+        tools:["bronze_axe", "bronze_pickaxe", "net", "hammer", "tinderbox", "knife"]
+            .into_iter().map(|name| names.id("obj", name).map(|id| id as i32)).collect::<io::Result<Vec<_>>>()?,
+        scimitar:names.id("obj", "bronze_scimitar")? as i32,
+        dagger:names.id("obj", "bronze_dagger")? as i32,
+        coins:names.id("obj", "coins")? as i32,
+        beer:names.id("obj", "beer")? as i32,
+    };
+    let portal = gielinor_world::locations::Location::new(outside, config.portal, 10, 0).map_err(fail)?;
+    runtime.world.change_location(portal, true).map_err(fail)?;
+    runtime.world.cinderworks = Some(config);
     if check {
         println!(
             "Implemented content configuration validated. Full gameplay parity remains incomplete."

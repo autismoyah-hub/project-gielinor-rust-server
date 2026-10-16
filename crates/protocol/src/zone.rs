@@ -1,5 +1,15 @@
 //! Revision 239 desktop enclosed ground-object messages and zone headers.
 use crate::{buffer::DecodeError, framing::Packet};
+#[cfg(test)]
+mod graphic_tests {
+    use super::*;
+    #[test]
+    fn enclosed_graphic_uses_revision_239_record_five_and_checks_coordinates() {
+        assert_eq!(Object::Graphic {id:0x1234,height:7,delay:0x5678,x:3,z:6}.encode().unwrap(),
+            [5,7,0x34,0x12,0x78,0x56,0x36]);
+        assert!(Object::Graphic {id:1,height:0,delay:0,x:8,z:0}.encode().is_err());
+    }
+}
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub struct Add {
     pub id: u16,
@@ -29,6 +39,7 @@ impl Add {
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Object {
+    Graphic { id:u16, height:u8, delay:u16, x:u8, z:u8 },
     SoundArea(SoundArea),
     Projectile(Projectile),
     Add(Add),
@@ -105,6 +116,13 @@ impl Object {
     pub fn encode(self) -> Result<Vec<u8>, DecodeError> {
         let mut out = Vec::new();
         match self {
+            Self::Graphic { id, height, delay, x, z } => {
+                // Revision 239 enclosed record 5; mirrored by world_spot::Request.
+                out.extend([5, height]);
+                out.extend(id.to_le_bytes());
+                out.extend(delay.to_le_bytes());
+                out.push(coord(x,z)?);
+            }
             Self::SoundArea(v) => {
                 out.extend([
                     14,

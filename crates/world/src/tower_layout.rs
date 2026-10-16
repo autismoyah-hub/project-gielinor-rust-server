@@ -127,14 +127,9 @@ pub fn shell() -> Vec<Wall> {
         edge(32, z, 0);
         edge(79, z, 2);
     }
-    for z in 32..80 {
-        edge(48, z, 0);
-        edge(64, z, 0);
-    }
-    for x in 32..80 {
-        edge(x, 48, 3);
-        edge(x, 64, 3);
-    }
+    // The Cinderworks is an open sanctuary with visible service branches.
+    // Keep the exterior boundary, but remove the old nine-room partition:
+    // its full-tile wall models hid the player and every nearby landmark.
     result
 }
 
@@ -148,6 +143,10 @@ pub fn prepare_collision(
         return Err("Invalid floor origin");
     }
     let gaps = openings();
+    let walls: BTreeSet<_> = shell().into_iter()
+        .filter(|wall| wall.shape == 10)
+        .map(|wall| (wall.x as i32, wall.z as i32))
+        .collect();
     for x in 32..80 {
         for z in 32..80 {
             for level in 0..=1 {
@@ -160,7 +159,7 @@ pub fn prepare_collision(
             if x >= 72 && (48..=63).contains(&z) {
                 continue;
             }
-            let wall = [32, 48, 64, 79].contains(&x) || [32, 48, 64, 79].contains(&z);
+            let wall = walls.contains(&(x, z));
             if wall && !gaps.contains(&(x as u8, z as u8)) {
                 map.remove(origin.x() + x, origin.z() + z, 0, 0x200000);
             } else {

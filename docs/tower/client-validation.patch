@@ -1,0 +1,248 @@
+From 4001176798235e2230d6c69445a0b86e24323c5b Mon Sep 17 00:00:00 2001
+From: Tower Agent 5 <agent5@tower.invalid>
+Date: Fri, 16 Oct 2026 14:37:35 -0700
+Subject: [PATCH] Add opt-in Tower normal-action validation adapter without
+ desktop input
+
+---
+ examples/tower_actions.rs |  29 ++++++++
+ src/lib.rs                |   1 +
+ src/tower_adapter.rs      | 139 ++++++++++++++++++++++++++++++++++++++
+ src/viewport.rs           |   9 ++-
+ 4 files changed, 177 insertions(+), 1 deletion(-)
+ create mode 100644 examples/tower_actions.rs
+ create mode 100644 src/tower_adapter.rs
+
+diff --git a/examples/tower_actions.rs b/examples/tower_actions.rs
+new file mode 100644
+index 0000000..5c91935
+--- /dev/null
++++ b/examples/tower_actions.rs
+@@ -0,0 +1,29 @@
++//! Headless use of the same normal-action adapter as native live-view.
++//! CACHE ADDRESS USER PASSWORD_FILE PUBLIC_KEY; TOWER_ACTION_DIRECTORY required.
++use gielinor_client::{
++    client_state::ClientState, disk_cache::DiskCache, live_runtime::Connection,
++    tower_adapter::Adapter,
++};
++use std::time::{Duration, Instant};
++fn main() -> Result<(), Box<dyn std::error::Error>> {
++    let args: Vec<_> = std::env::args().collect();
++    if args.len() != 6 {
++        return Err("expected CACHE ADDRESS USER PASSWORD_FILE PUBLIC_KEY".into());
++    }
++    let mut adapter = Adapter::from_env()?.ok_or("TOWER_ACTION_DIRECTORY required")?;
++    let mut client = ClientState::load(DiskCache::open(&args[1], 64 << 20)?)?;
++    let mut live = Connection::connect(&mut client, &args[2], &args[3], &args[4], &args[5])?;
++    let start = Instant::now();
++    while start.elapsed() < Duration::from_secs(1800) {
++        live.poll(&mut client)?;
++        let ready = live.world.is_some() && live.title.is_none() && !live.is_reconnecting();
++        adapter.poll(&mut client, ready)?;
++        if adapter.stop {
++            live.session.close();
++            return Ok(());
++        }
++        std::thread::sleep(Duration::from_millis(10));
++    }
++    live.session.close();
++    Err("headless validation timed out".into())
++}
+diff --git a/src/lib.rs b/src/lib.rs
+index 9f3b7e7..dcce686 100644
+--- a/src/lib.rs
++++ b/src/lib.rs
+@@ -128,6 +128,7 @@ pub type Result<T> = std::result::Result<T, Error>;
+ pub mod player_update;
+ pub mod player_info;
+ pub mod live_runtime;
++pub mod tower_adapter;
+ pub mod world_actors;
+ pub mod world_action;
+ pub mod script_params;
+diff --git a/src/tower_adapter.rs b/src/tower_adapter.rs
+new file mode 100644
+index 0000000..1ce8533
+--- /dev/null
++++ b/src/tower_adapter.rs
+@@ -0,0 +1,139 @@
++//! Opt-in local validation adapter. Uses the same menu actions as the native UI;
++//! never injects desktop input or changes server state directly.
++use crate::{client_state::ClientState, context_menu::Action, raster::Raster, Result};
++use std::path::PathBuf;
++
++pub struct Adapter {
++    directory: PathBuf,
++    sequence: u64,
++    capture: bool,
++    pub stop: bool,
++}
++impl Adapter {
++    pub fn from_env() -> Result<Option<Self>> {
++        let Some(path) = std::env::var_os("TOWER_ACTION_DIRECTORY") else {
++            return Ok(None);
++        };
++        let directory = PathBuf::from(path);
++        std::fs::create_dir_all(&directory)?;
++        Ok(Some(Self {
++            directory,
++            sequence: 0,
++            capture: false,
++            stop: false,
++        }))
++    }
++    pub fn poll(&mut self, client: &mut ClientState, ready: bool) -> Result<()> {
++        // A controller atomically replaces command.txt with: SEQUENCE VERB ARGS.
++        // Only one outstanding command is allowed; receipt.txt acknowledges it.
++        let text = match std::fs::read_to_string(self.directory.join("command.txt")) {
++            Ok(text) => text,
++            Err(error) if error.kind() == std::io::ErrorKind::NotFound => return Ok(()),
++            Err(error) => return Err(error.into()),
++        };
++        let words: Vec<_> = text.split_whitespace().collect();
++        let Some(sequence) = words.first().and_then(|s| s.parse::<u64>().ok()) else {
++            return Ok(());
++        };
++        if sequence <= self.sequence {
++            return Ok(());
++        }
++        let number = |i: usize| words.get(i).and_then(|s| s.parse::<u16>().ok());
++        let action = match words.get(1).copied() {
++            Some("walk") if words.len() == 4 => {
++                number(2).zip(number(3)).map(|(x, y)| Action::Walk([x, y]))
++            }
++            Some("close") if words.len() == 2 => Some(Action::Close),
++            Some("interface") if words.len() == 4 => words[2]
++                .parse::<u32>()
++                .ok()
++                .zip(number(3))
++                .filter(|(_, op)| (1..=32).contains(op))
++                .map(|(id, op)| Action::Interface {
++                    id,
++                    operation: op as u8,
++                    sub: None,
++                }),
++            Some("continue") if words.len() == 3 => {
++                words[2].parse::<u32>().ok().map(Action::Continue)
++            }
++            Some("npc") if words.len() == 4 => number(2)
++                .zip(number(3))
++                .filter(|(_, op)| (1..=5).contains(op))
++                .map(|(index, op)| Action::Npc {
++                    index,
++                    operation: op as u8,
++                    sub: 0,
++                }),
++            Some("object") if words.len() == 6 => number(2)
++                .zip(number(3))
++                .zip(number(4))
++                .zip(number(5))
++                .filter(|(_, op)| (1..=5).contains(op))
++                .map(|(((id, x), y), op)| Action::Object {
++                    id,
++                    tile: [x, y],
++                    operation: op as u8,
++                    sub: 0,
++                }),
++            Some("observe" | "capture" | "stop") if words.len() == 2 => None,
++            _ => {
++                self.sequence = sequence;
++                return self.receipt(client, ready, "invalid command");
++            }
++        };
++        if action.is_some() && !ready {
++            return Ok(());
++        }
++        if let Some(action) = action {
++            if !client.scene_action_allowed(action)? {
++                self.sequence = sequence;
++                return self.receipt(client, ready, "action blocked by normal client policy");
++            }
++            client.menu_action(action)?;
++        }
++        self.sequence = sequence;
++        self.capture = words[1] == "capture";
++        self.stop = words[1] == "stop";
++        self.receipt(client, ready, "accepted")
++    }
++    fn receipt(&self, client: &ClientState, ready: bool, status: &str) -> Result<()> {
++        let npcs: Vec<_> = client
++            .npc_state
++            .npcs
++            .iter()
++            .map(|(&index, n)| (index, n.id, n.position))
++            .collect();
++        let messages: Vec<_> = client
++            .game_messages
++            .iter()
++            .rev()
++            .take(12)
++            .map(|m| &m.text)
++            .collect();
++        let widgets: Vec<_> = client
++            .interfaces
++            .widgets
++            .iter()
++            .filter(|(_, w)| !w.actions.is_empty() || !w.button_text.is_empty())
++            .map(|(&id, w)| (id, &w.text, &w.actions, &w.button_text))
++            .collect();
++        let text = format!("sequence={}\nstatus={status}\nready={ready}\nposition={:?}\nserver_tick={}\nqueued_packets={}\nmap_flag={:?}\ninterfaces={:?}\nnpcs={npcs:?}\nmessages={messages:?}\n", self.sequence, client.data.position, client.server_tick, client.outbound.len(), client.map_flag, client.interfaces.children);
++        std::fs::write(self.directory.join("receipt.tmp"), text)?;
++        std::fs::rename(
++            self.directory.join("receipt.tmp"),
++            self.directory.join("receipt.txt"),
++        )?;
++        std::fs::write(self.directory.join("widgets.txt"), format!("{widgets:#?}"))?;
++        Ok(())
++    }
++    pub fn frame(&mut self, raster: &Raster) -> Result<()> {
++        if std::mem::take(&mut self.capture) {
++            std::fs::write(
++                self.directory.join(format!("frame-{}.bmp", self.sequence)),
++                raster.bmp()?,
++            )?;
++        }
++        Ok(())
++    }
++}
+diff --git a/src/viewport.rs b/src/viewport.rs
+index 354c9b3..969d2f1 100644
+--- a/src/viewport.rs
++++ b/src/viewport.rs
+@@ -190,6 +190,7 @@ mod windows {
+             raster::Raster,
+         };
+         let mut client = ClientState::load(DiskCache::open(cache_path, 64 << 20)?)?;
++        let mut tower_adapter = crate::tower_adapter::Adapter::from_env()?;
+         let mut profile = if let Some((address, _, _, key)) = login {
+             let public_key = std::fs::read(key)?;
+             match crate::saved_preferences::Profile::open(
+@@ -279,7 +280,7 @@ mod windows {
+         let title = wide(&format!("OSRS 239 Rust — interface {group:?}"));
+         let window = Window(unsafe {
+             CreateWindowExW(
+-                0,
++                if tower_adapter.is_some() { 0x08000000 } else { 0 }, // WS_EX_NOACTIVATE
+                 name.as_ptr(),
+                 title.as_ptr(),
+                 if smoke { 0x00cf0000 } else { 0x10cf0000 },
+@@ -459,6 +460,11 @@ mod windows {
+             let title_input_frame = live.as_ref().is_some_and(|v| {
+                 v.is_reconnecting() || v.logged_out().is_some() || v.title.is_some()
+             });
++            if let Some(adapter) = tower_adapter.as_mut() {
++                let ready = live.as_ref().is_some_and(|v| v.world.is_some() && v.title.is_none() && !v.is_reconnecting());
++                adapter.poll(&mut client, ready)?;
++                if adapter.stop { break 'main; }
++            }
+             if let Some(live) = live.as_mut() {
+                 live.poll_elapsed(&mut client, clock_step.ticks)?;
+             }
+@@ -770,6 +776,7 @@ mod windows {
+                 std::fs::write("work/live-widget-drag.bmp", raster.bmp()?)?;
+             }
+             if exercise && std::mem::take(&mut actions.map_capture) {std::fs::write("work/live-world-map.bmp",raster.bmp()?)?;}
++            if let Some(adapter) = tower_adapter.as_mut() { adapter.frame(&raster)?; }
+             let bitmap = Bitmap {
+                 size: 40,
+                 width: fit.logical[0],

@@ -6,6 +6,7 @@ use crate::{
 };
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum Update {
+    Graphic(Graphic),
     Sound(Sound),
     Projectile(crate::projectile::Flight),
     Add(Object),
@@ -15,6 +16,7 @@ pub enum Update {
 }
 #[derive(Clone, Debug)]
 pub enum Change {
+    Graphic(Graphic),
     Sound(Sound),
     Projectile(crate::projectile::Flight),
     Ground(Event),
@@ -28,6 +30,13 @@ pub struct Sound {
     pub loops: i32,
     pub radius: i32,
     pub size: i32,
+}
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct Graphic {
+    pub coords: CoordGrid,
+    pub id: u16,
+    pub height: u8,
+    pub delay: u16,
 }
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum Emission {
@@ -140,6 +149,10 @@ impl Observer {
             let mut shared = Vec::new();
             for event in events {
                 let event = match event {
+                    Change::Graphic(graphic) => {
+                        if ground::zone_base(graphic.coords) == base { shared.push(Update::Graphic(*graphic)); }
+                        continue;
+                    }
                     Change::Sound(sound) => {
                         if ground::zone_base(sound.coords) == base {
                             shared.push(Update::Sound(*sound));

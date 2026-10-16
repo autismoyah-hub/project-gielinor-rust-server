@@ -42,6 +42,7 @@ pub(super) fn complete(
     job: Job,
     catalog: &crate::inventory::Catalog,
     tutorial_stats: bool,
+    cinderworks: Option<&crate::tower_cinderworks::Config>,
     events: &mut Vec<WorldEvent>,
     random: &mut impl RandomSource,
 ) -> Result<(), ActionError> {
@@ -104,6 +105,11 @@ pub(super) fn complete(
                 product,
                 count,
             });
+            if let Some(config) = cinderworks.filter(|config| config.forged_weapon(product)) {
+                if let Some(text) = config.credit(&mut p.data, p.movement.coords, crate::tower_run::Service::Forge) {
+                    events.push(WorldEvent::GameMessage { actor:p.id, text:text.into() });
+                }
+            }
             // The original synchronously publishes SmithingProductMade before
             // deciding whether to animate and enqueue another iteration.
             if let Some((progression, bar, dagger)) = config.tutorial {

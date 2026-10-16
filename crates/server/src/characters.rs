@@ -87,6 +87,7 @@ impl Character {
         let mut data = PlayerData::new(a.account_id as u64, name, coords, stats);
         data.character_id = a.character_id as u64;
         data.tower_arrival = a.tower_arrival;
+        data.tower_run = a.tower_run;
         if auth.new_account && data.tower_arrival.bones_offered.is_none() {
             data.tower_arrival.bones_offered = Some(false);
         }
@@ -216,6 +217,7 @@ impl Character {
         Ok(Save {
             tower_arrival: data.tower_arrival,
             tower_diary: data.tower_diary,
+            tower_run: data.tower_run,
             account_id: self.account_id,
             character_id: self.character_id,
             display_name: Some(data.display_name.clone()),

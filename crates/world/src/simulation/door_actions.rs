@@ -4,6 +4,7 @@ use crate::{doors, loc_reach::Target, locations::Location, reach::Rectangle};
 impl World {
     /// Shared admission check for network sessions and headless actors.
     pub fn has_location_handler(&self, id: u32, operation: u8) -> bool {
+        if self.cinderworks.as_ref().is_some_and(|c| c.handles(id, operation)) { return true; }
         if self
             .furnaces
             .get(&id)
@@ -316,6 +317,8 @@ impl World {
             self.process_location_use(slot, loc, inv_slot, object);
             return;
         }
+        if self.cinderworks_location(slot, loc, operation) { return; }
+        let p = self.players.get_mut(slot).unwrap();
         if self
             .milking
             .as_ref()

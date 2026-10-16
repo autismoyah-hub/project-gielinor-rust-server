@@ -7,6 +7,11 @@ impl<B: AccountBackend> Runtime<B> {
         control: bool,
     ) -> io::Result<()> {
         let err = |e| io::Error::other(format!("{e:?}"));
+        // A required creator modal must not be closed by walking: its character
+        // remains hidden until the ordinary Confirm action is accepted.
+        if self.active.get(&actor).is_some_and(|active| active.design.hidden) {
+            return Ok(());
+        }
         let Some(input) = self
             .world
             .prepare_movement_input(actor, destination, control)

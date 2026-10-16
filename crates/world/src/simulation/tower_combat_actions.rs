@@ -14,7 +14,8 @@ impl World {
             if config.bosses.contains(&kind) {
                 let armed = player
                     .and_then(|p| p.data.equipment.get(3))
-                    .is_some_and(|item| config.scimitars.contains(&item.id));
+                    .is_some_and(|item| config.scimitars.contains(&item.id)
+                        || self.cinderworks.as_ref().is_some_and(|c| player.is_some_and(|p| p.data.tower_run.active()) && c.forged_weapon(item.id)));
                 if !armed {
                     damage = 0;
                     if let Some(p) = player {
