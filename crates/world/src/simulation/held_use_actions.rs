@@ -94,6 +94,20 @@ impl World {
                 }
             }
         }
+        if ordinary_handler {
+            if let Some(config) = &self.finished_potions {
+                if let Some(choice) = config.request(request,p.movement.coords,p.movement.last_movement) {
+                    let recipe = config.recipes.get(&choice.unfinished).unwrap();
+                    let message = if !p.member { Some("You need to be a member to make potions.") }
+                        else if p.data.variables.get(config.quest_progress) != config.quest_complete { Some("You must complete Druidic Ritual before making potions.") }
+                        else if i32::from(p.data.stats.current(15)) < i32::from(recipe.level) || (!recipe.boostable && i32::from(p.data.stats.base(15)) < i32::from(recipe.level)) { Some("You need a higher Herblore level to make that potion.") }
+                        else { None };
+                    if let Some(message)=message {self.events.push(WorldEvent::LocationMessage{actor,message});}
+                    else {self.players.get_mut(actor.slot as usize).unwrap().finished_potion_request=Some(choice);}
+                    return Ok(());
+                }
+            }
+        }
         if ordinary_handler && !tutorial_active && !self.dough.as_ref().and_then(|c|c.tutorial).is_some_and(|t|t.active(&p.data.variables)) {
             if let Some(choice) = self.dough.as_ref().and_then(|config| config.request(request,p.movement.coords,p.movement.last_movement)) {
                 self.players.get_mut(actor.slot as usize).unwrap().dough_request=Some(choice);

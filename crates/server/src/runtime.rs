@@ -26,6 +26,7 @@ mod prayer_tab;
 mod shop;
 mod skill_multi;
 mod dough;
+mod finished_potions;
 mod unfinished_potions;
 mod herb_cleaning;
 mod smelting;
@@ -2786,6 +2787,9 @@ impl<B: AccountBackend> Runtime<B> {
                                         if result.is_ok() {
                                             if let Some(choice)=self.world.take_unfinished_potion_request(actor).map_err(|e|io::Error::other(format!("{e:?}")))? {
                                                 self.open_unfinished_potion(actor,choice)?;
+                                            }
+                                            if let Some(choice)=self.world.take_finished_potion_request(actor).map_err(|e|io::Error::other(format!("{e:?}")))? {
+                                                self.open_finished_potion(actor,choice)?;
                                             }
                                             if let Some(choice)=self.world.take_dough_request(actor).map_err(|e|io::Error::other(format!("{e:?}")))? {
                                                 self.open_dough(actor,choice)?;

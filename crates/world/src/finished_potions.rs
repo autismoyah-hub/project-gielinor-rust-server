@@ -330,3 +330,102 @@ mod tests {
         }
     }
 }
+
+// Shared world scheduler content adapter; no independent tick engine.
+pub(crate) const QUEUE: i32 = -2391008;
+#[derive(Clone, Debug)]
+pub struct Config {
+    pub recipes: std::collections::BTreeMap<i32, Recipe>,
+    pub quest_progress: u16,
+    pub quest_complete: i32,
+    pub animation: u16,
+}
+#[derive(Clone, Copy, Debug)]
+pub struct Request {
+    pub unfinished: i32,
+    pub unfinished_slot: usize,
+    pub secondary_slot: usize,
+    pub origin: crate::CoordGrid,
+    pub last_movement: i32,
+}
+impl Config {
+    pub fn request(
+        &self,
+        held: crate::held_use::Request,
+        origin: crate::CoordGrid,
+        last_movement: i32,
+    ) -> Option<Request> {
+        if held.selected_slot < 0 || held.target_slot < 0 || held.selected_slot == held.target_slot
+        {
+            return None;
+        }
+        let (unfinished, unfinished_slot, secondary, secondary_slot) =
+            if self.recipes.contains_key(&held.selected_id) {
+                (
+                    held.selected_id,
+                    held.selected_slot,
+                    held.target_id,
+                    held.target_slot,
+                )
+            } else {
+                (
+                    held.target_id,
+                    held.target_slot,
+                    held.selected_id,
+                    held.selected_slot,
+                )
+            };
+        if self.recipes.get(&unfinished)?.secondary != secondary {
+            return None;
+        }
+        Some(Request {
+            unfinished,
+            unfinished_slot: unfinished_slot as usize,
+            secondary_slot: secondary_slot as usize,
+            origin,
+            last_movement,
+        })
+    }
+}
+#[derive(Clone, Copy, Debug)]
+pub(crate) struct Pending {
+    pub job: Job,
+    pub request: Request,
+    pub remaining: i32,
+    pub queued_at: i32,
+    pub index: u32,
+    pub quest_progress: u16,
+    pub quest_complete: i32,
+    pub animation: u16,
+}
+#[derive(Clone, Copy, Debug)]
+pub struct Transition {
+    pub job: Job,
+    pub queued_at: i32,
+    pub committed_at: i32,
+    pub index: u32,
+    pub fine_before: i32,
+    pub fine_after: i32,
+    pub rate_hundreds: i32,
+}
+impl Transition {
+    pub fn json(self, actor: crate::simulation::ActorId) -> String {
+        format!(
+            "{{\"actor_slot\":{},\"actor_generation\":{},\"unfinished_slot\":{},\"secondary_slot\":{},\"unfinished\":{},\"secondary\":{},\"output\":{},\"count\":1,\"queued_at\":{},\"committed_at\":{},\"index\":{},\"base_fine_xp\":{},\"rate_hundreds\":{},\"fine_before\":{},\"fine_after\":{}}}",
+            actor.slot,
+            actor.generation,
+            self.job.unfinished_slot,
+            self.job.secondary_slot,
+            self.job.recipe.unfinished,
+            self.job.recipe.secondary,
+            self.job.recipe.output,
+            self.queued_at,
+            self.committed_at,
+            self.index,
+            self.job.recipe.base_fine_xp,
+            self.rate_hundreds,
+            self.fine_before,
+            self.fine_after
+        )
+    }
+}

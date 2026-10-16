@@ -45,6 +45,7 @@ impl<B: AccountBackend> Runtime<B> {
             .skill_multi = Some(SkillDialog {
             smelting: false,
             dough: None,
+            finished_potion: None,
             unfinished_potion: None,
             token,
             presentation,
@@ -140,6 +141,11 @@ impl<B: AccountBackend> Runtime<B> {
         }
         if let (Some(request),Some(selection))=(dialog.unfinished_potion,selection) {
             if let Err(error)=self.world.start_unfinished_potion(actor,request,selection.index,selection.count) {
+                self.events.push(Event::World(gielinor_world::simulation::WorldEvent::ActionRejected{actor,error}));
+            }
+        }
+        if let (Some(request),Some(selection))=(dialog.finished_potion,selection) {
+            if let Err(error)=self.world.start_finished_potion(actor,request,selection.index,selection.count) {
                 self.events.push(Event::World(gielinor_world::simulation::WorldEvent::ActionRejected{actor,error}));
             }
         }
