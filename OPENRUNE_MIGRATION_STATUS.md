@@ -547,3 +547,60 @@ Server archive B1DC825DE02F34E540EE380C2072383A797D8379785BD69928F43446D8D1AC7F;
 - `shutdown.json` SHA256 `329371bc9d6e81f18609404b100b2dcae1692576daaa9a915cd9728852884d5f`
 - `result.json` SHA256 `768e55c4f1213bbe87b4145160758ce9dd8237d59aebc44560fb6790f897f4ee`
 - `pack-run.json` SHA256 `ac2f69769fc76441dd1778605de62ce50f703df8d5c0bfd4d56b61b192af7204`
+
+## Ordinary pizza topping preparation during guarded pie acceptance (2026-10-16 UTC)
+
+Dough acceptance published04094253298e412e3b082a81bd1ab86cceef8d2c, local/remote matched, issue12 comment6211386962. Pie archive A121A5BB839C04F1E4A3D54D5942F9BDE8A009A4957D48C7B214437CD12FEC09 built19.31s,373source hashes, before the following topping edits. Pie driver001 source127A2D5215DCD18ADCC87ACAE585C1B035300D899B8C018699122B99ABD349B4 binary1D46D4EBFF204E2A01F2E1982DB8148B84EFE6BF209C1C5761A3DAC322D28B2D built1.48s after three compiler deferrals. Prepared login control resumed unchanged after compiler deferral; native outcome pending.
+
+Three F2P pizza topping recipes authored, NOT YET COMPILED: plain pizza2289 + cooked meat2142/cooked chicken2140 -> meat pizza2293, Cooking45,26baseXP; +anchovies319 -> anchovy pizza2297,Cooking55,39baseXP. Wiki recipes explicitly boostable,2ticks. Nine relevant target item definitions passed, but pineapple recipes are not implemented: member policy and slicing yield remain separate. OpenRune source omits sourced levels/XP and yields only one ring; do not copy those unsupported behaviors. Local Wiki says four rings per pineapple.
+
+Reuse assembly registry/queue/skills: atomic cloned inventory+stats commit, signed effective-level gate, account xp_rate_hundreds, cap99 via existing skill advance. Inventory-only helper private; zero-XP pie recipes unchanged. Tests authored for1x/5x rewards, caps, failed inventory credit, invalid rate, stale/replayed actions, cancellation and one SkillAdvanced event; compilation pending. No change to pinned pie archive or client production. No issue closure.
+
+- Meat pizza: revision15184071, wikitextSHA256 `fed01df8f7e8b58a790f75dd07337430ec279977813779d34aa9d3995a7a2a96`.
+- Anchovy pizza: revision15182680, wikitextSHA256 `f144e9e44b5652d3742d49f98d3e1dd82b7402bc705e6abd64f5c5680f584ee2`.
+- Pineapple pizza: revision15183661, wikitextSHA256 `81e23f5744e2975cfb43ffe852928de95789919b9704123b81b10e700b7011c3`.
+- Pineapple ring: revision15184663, wikitextSHA256 `988e52cf5861e02cb2ea8acb4e9ec1b7e47094a18550445270b84bc4145a2b8c`.
+- Pineapple chunks: revision15183792, wikitextSHA256 `61870cc9c8ad20407c819b47169e16db79deba6c79c1a94a17bf5a8d68c33f86`.
+- `work/openrune-pizza-topping-items-001.json` SHA256 `8168123fd1bfada415b74a7bb67be37c7500141b571609447258d241c48bb776`
+- `work/openrune-pizza-topping-readiness-001.json` SHA256 `f12e1fc338ad5a0b1f669cb950716a8b37a969d28b3ee4101f89b147ce96651e`
+- `work/openrune-simple-pies-001-server-build.json` SHA256 `2ccf844dc7e8ab16910a1d1894eb87410fa4dae5cc5ac35ed15331ba8c89af33`
+
+## Native ordinary meat/chicken/apple pie acceptance (2026-10-16 UTC)
+
+Selected three fillings PASS on archiveA121A5BB839C04F1E4A3D54D5942F9BDE8A009A4957D48C7B214437CD12FEC09 (source c71f93f pie implementation, before pending pizza rewards). Driverpies001 source127A2D5215DCD18ADCC87ACAE585C1B035300D899B8C018699122B99ABD349B4 binary1D46D4EBFF204E2A01F2E1982DB8148B84EFE6BF209C1C5761A3DAC322D28B2D. Matching login-only control passed; exact prepared fixture preserved across compiler deferral.
+
+Real client-generated opcode27 held-use actions: shell0/meat1, chicken3/shell2 (reversed), shell4/apple5. Exact debit slots, first-free outputs0/1meat pies and2apple pie,1000coins unchanged. Authoritative server clock transitions81->83,87->89,92->94: each two ticks. NoXP or unrelated exported gameplay changes outside documented session-varp differences. Fresh durable logout and clean owned exit0; same saved database native relogin retains every output with zero new assembly transitions and another durable save/clean exit.
+
+This accepts the three positive native fillings and same-save persistence only. Deterministic level/boost/stale/cancellation/negative-level/atomic rejection coverage remains distinct from native acceptance. Native negative actions, other recipe chains on this archive, full rendering, multiplayer, animations, other pie fillings and pending pizza rewards are NOT TESTED. No issue closure.
+
+`openrune-native-pies-001` PASS; owned server18232,clean0.
+- `client.log` SHA256 `22b3205d98b04b7b9d6bdcb32bcb6d03c91d2d2725c18ebbdcfa47f5c1464aeb`
+- `server.log` SHA256 `7382f2573b9d92a41c9ff6bcf555a8150c8cd8a71bc9a56a8e1ce10c45a8b536`
+- `initial-state.json` SHA256 `396f64849b263b97cd7c4c48f9414c7fa80bbdf30f341bcf8fb8f1efae23e59a`
+- `final-state.json` SHA256 `459d09dfe16ea85bdb9a160f3db403f6cefdb7f3b8a58fa337b9f7d22a09d7c8`
+- `pack-assessment.json` SHA256 `985f374a63bcd99080eb60f0f4a672b3f7300b5fcbad1cabd8a6b12a1645e1ec`
+- `pies-trace-assessment.json` SHA256 `b461f331630e4198f32b29339503387dcd093024c3ca9ee11b02e64970029779`
+- `logout-observation.json` SHA256 `b1dc5c6b0cf9bc749e0d0b479daf17b67748b3f50e8f759e405309ec4afaccdb`
+- `shutdown.json` SHA256 `b6ce398ec99543d238fae469b33a3d318076b18fea3a842fb00667c17994c8df`
+- `result.json` SHA256 `30fac480fbdaf0db5b3d0b80b604491a35752a547411ee7500aa61efb900b9bb`
+- `pack-run.json` SHA256 `56cbea0bff4efd5fd7a755462cdcc3271b0b95607f342600adbdc4b39bf71d83`
+
+`openrune-native-pies-relogin-001` PASS; owned server18404,clean0.
+- `client.log` SHA256 `e7634c797bce2298030f9ef86e2178a1509d11c1548e6ae7d45588352d8c304d`
+- `server.log` SHA256 `2eb959fe587ec9c1c5ef97df06757b68e8c9645e504c147a11a25633c83ec520`
+- `initial-state.json` SHA256 `459d09dfe16ea85bdb9a160f3db403f6cefdb7f3b8a58fa337b9f7d22a09d7c8`
+- `final-state.json` SHA256 `4d2f8af096e0e83b1019ceacff54cfaf2b88dbcbcf33a45307eaf97efd91859d`
+- `pack-assessment.json` SHA256 `ac61b8f6eeff4d988af5b12e3ff65d55c858673df1786cf7c116389213c7af93`
+- `pies-trace-assessment.json` SHA256 `226bbade27c24b435c3ecc469273ebef200a2c2c10ce8d71870ea60a9342393d`
+- `logout-observation.json` SHA256 `48cfec046936f46c2b2518f7e62853790cbd441c9955179d5d625a96ceced3d1`
+- `shutdown.json` SHA256 `25b5fdbc036637d6a8240605b28b727c24a7f686b10356b39cdef6aa749c13d9`
+- `result.json` SHA256 `a80ec2026dedd4f2efb6e124dc84f868bbccbd66c1e5fee97e0061a8ccc617dc`
+- `pack-run.json` SHA256 `f71c8713a4f1f8e6b0145d7e77b4b788584291438afd5edc40e66273dd114e3b`
+
+## Pizza topping deterministic validation (2026-10-16 UTC)
+
+Supersedes prior uncompiled topping status: full server/world libraries PASS45server+351world,0failed,1existingignored. Command `build.ps1 -Action test -CargoArgs @('-p','gielinor-world','-p','gielinor-server','--lib')`; compile30.92s,world9.38s, guard5510MiB available,70.1%commit,0pages-in/s,2.7msdisk,CPU1.2%,j2. Atomic inventory/XP reward tests pass at1x/5x including cap, replay, invalid rate and output failure; world cancellation grants noXP/product and successful action emits one advancement. All prior pie/dough tests pass.
+
+Owned topping native driver/fixture/control/trace/state harness prepared but not built/run. FixtureCooking55,166636baseXP,storedrate500,plain-pizza slots0/2/4,toppings meat1/chicken3/anchovy5,coins6. Expected2meat pizzas+1anchovy pizza at0/1/2,1000coins and455CookingXP (4550fineXP),allotherstats preserved. No native topping claim yet. Pinned prior pie archive remains independent of this new source.
+
+- `work/pizza-toppings-full-tests-001.log` SHA256 `6494d7528f7719699ce59331f7428d5ab04147b97eaa220310a5e474c135cab4`

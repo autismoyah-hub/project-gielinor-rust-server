@@ -361,6 +361,9 @@ mod assembly_tests {
         inventory::{Insert, StackType},
     };
     fn fixture() -> (World, ActorId, Request) {
+        fixture_with_xp(0)
+    }
+    fn fixture_with_xp(base_xp: u16) -> (World, ActorId, Request) {
         let mut world = World::default();
         world.collision.allocate(3200, 3200, 0);
         world.held_use_types = [10, 11, 12].map(|id| (id, Type { id, content: 0 })).into();
@@ -376,6 +379,7 @@ mod assembly_tests {
                     output: 12,
                     skill: 7,
                     level: 1,
+                    base_xp,
                 }),
             )
             .unwrap();
@@ -470,13 +474,25 @@ mod assembly_tests {
             } else {
                 assert!(data.inventory.slots().iter().flatten().any(|i| i.id == 10));
             }
-            let traces: Vec<_> = w.drain_events().into_iter().filter_map(|e| {
-                if let WorldEvent::AssemblyMade { actor: who, trace } = e { assert_eq!(who, actor); Some(trace) } else { None }
-            }).collect();
+            let traces: Vec<_> = w
+                .drain_events()
+                .into_iter()
+                .filter_map(|e| {
+                    if let WorldEvent::AssemblyMade { actor: who, trace } = e {
+                        assert_eq!(who, actor);
+                        Some(trace)
+                    } else {
+                        None
+                    }
+                })
+                .collect();
             assert_eq!(traces.len(), if change == 0 { 1 } else { 0 });
             if change == 0 {
                 assert_eq!(traces[0].committed_at - traces[0].queued_at, 2);
-                assert_eq!((traces[0].job.first_slot, traces[0].job.second_slot), (0,1));
+                assert_eq!(
+                    (traces[0].job.first_slot, traces[0].job.second_slot),
+                    (0, 1)
+                );
             }
         }
     }
@@ -488,9 +504,58 @@ mod assembly_tests {
             let before = w.data(actor).unwrap().inventory.clone();
             w.prepare_held_use(actor, request).unwrap();
             w.finish_held_use(actor, request).unwrap();
-            for _ in 0..5 { w.tick().unwrap(); }
+            for _ in 0..5 {
+                w.tick().unwrap();
+            }
             assert_eq!(w.data(actor).unwrap().inventory, before);
-            assert!(!w.drain_events().into_iter().any(|e| matches!(e, WorldEvent::AssemblyMade { .. })));
+            assert!(
+                !w.drain_events()
+                    .into_iter()
+                    .any(|e| matches!(e, WorldEvent::AssemblyMade { .. }))
+            );
+        }
+    }
+    #[test]
+    fn assembly_reward_is_once_only_and_cancelled_work_has_no_xp() {
+        for cancel in [false, true] {
+            let (mut w, actor, request) = fixture_with_xp(26);
+            w.data_mut(actor).unwrap().xp_rate_hundreds = 500;
+            w.prepare_held_use(actor, request).unwrap();
+            w.finish_held_use(actor, request).unwrap();
+            w.tick().unwrap();
+            assert_eq!(w.data(actor).unwrap().stats.fine_xp(7), 0);
+            if cancel {
+                w.submit(
+                    actor,
+                    Action::MoveClick {
+                        destination: CoordGrid::new(3201, 3200, 0).unwrap(),
+                        control: false,
+                    },
+                )
+                .unwrap();
+            }
+            for _ in 0..5 {
+                w.tick().unwrap();
+            }
+            assert_eq!(
+                w.data(actor).unwrap().stats.fine_xp(7),
+                if cancel { 0 } else { 1300 }
+            );
+            let events = w.drain_events();
+            assert_eq!(
+                events
+                    .iter()
+                    .filter(|e| matches!(e, WorldEvent::SkillAdvanced { .. }))
+                    .count(),
+                if cancel { 0 } else { 1 }
+            );
+            assert_eq!(
+                events
+                    .iter()
+                    .filter(|e| matches!(e, WorldEvent::AssemblyMade { .. }))
+                    .count(),
+                if cancel { 0 } else { 1 }
+            );
         }
     }
 }

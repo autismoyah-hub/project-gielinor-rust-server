@@ -2401,7 +2401,10 @@ impl World {
                                                 }
                                                 Deferred::Assembly(pending) => {
                                                     let job = pending.job;
-                                                    let outcome = job.complete(&mut p.data.inventory, &self.object_types, &p.data.stats);
+                                                    let (outcome, advancement) = job.complete_awarding(&mut p.data.inventory, &self.object_types, &mut p.data.stats, p.data.xp_rate_hundreds);
+                                                    if let Some(advancement) = advancement {
+                                                        self.events.push(WorldEvent::SkillAdvanced { actor: p.id, skill: job.recipe.skill, advancement });
+                                                    }
                                                     if outcome == crate::assembly::Outcome::Made {
                                                         self.events.push(WorldEvent::AssemblyMade { actor: p.id, trace: crate::assembly::Transition { job, queued_at: pending.queued_at, committed_at: self.clock.0 } });
                                                     }
@@ -2410,6 +2413,7 @@ impl World {
                                                         crate::assembly::Outcome::Level => "You need a higher Cooking level to make that.",
                                                         crate::assembly::Outcome::Stale => "You no longer have those ingredients in the selected slots.",
                                                         crate::assembly::Outcome::Capacity => "You don't have enough inventory space to make that.",
+                                                        crate::assembly::Outcome::InvalidReward => "You cannot make that item right now.",
                                                     };
                                                     self.events.push(WorldEvent::LocationMessage {actor:p.id,message});
                                                 }
