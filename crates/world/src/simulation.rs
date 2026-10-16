@@ -2401,7 +2401,7 @@ impl World {
                                                 }
                                                 Deferred::Assembly(pending) => {
                                                     let job = pending.job;
-                                                    let (outcome, advancement) = job.complete_awarding(&mut p.data.inventory, &self.object_types, &mut p.data.stats, p.data.xp_rate_hundreds);
+                                                    let (outcome, advancement) = job.complete_awarding(&mut p.data.inventory, &self.object_types, &mut p.data.stats, p.data.xp_rate_hundreds, p.member);
                                                     if let Some(advancement) = advancement {
                                                         self.events.push(WorldEvent::SkillAdvanced { actor: p.id, skill: job.recipe.skill, advancement });
                                                     }
@@ -2414,6 +2414,7 @@ impl World {
                                                         crate::assembly::Outcome::Stale => "You no longer have those ingredients in the selected slots.",
                                                         crate::assembly::Outcome::Capacity => "You don't have enough inventory space to make that.",
                                                         crate::assembly::Outcome::InvalidReward => "You cannot make that item right now.",
+                                                        crate::assembly::Outcome::Members => "You need to be a member to make that item.",
                                                     };
                                                     self.events.push(WorldEvent::LocationMessage {actor:p.id,message});
                                                 }

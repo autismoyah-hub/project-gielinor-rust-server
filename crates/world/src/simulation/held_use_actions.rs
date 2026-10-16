@@ -95,6 +95,10 @@ impl World {
             }
             Some(Handler::Assembly(recipe)) => {
                 let p = self.players.get_mut(actor.slot as usize).unwrap();
+                if recipe.members && !p.member {
+                    self.events.push(WorldEvent::LocationMessage { actor, message: "You need to be a member to make that item." });
+                    return Ok(());
+                }
                 if i32::from(p.data.stats.current(recipe.skill)) < i32::from(recipe.level) {
                     self.events.push(WorldEvent::LocationMessage {
                         actor,
@@ -364,6 +368,9 @@ mod assembly_tests {
         fixture_with_xp(0)
     }
     fn fixture_with_xp(base_xp: u16) -> (World, ActorId, Request) {
+        fixture_with_policy(base_xp, false)
+    }
+    fn fixture_with_policy(base_xp: u16, members: bool) -> (World, ActorId, Request) {
         let mut world = World::default();
         world.collision.allocate(3200, 3200, 0);
         world.held_use_types = [10, 11, 12].map(|id| (id, Type { id, content: 0 })).into();
@@ -380,6 +387,7 @@ mod assembly_tests {
                     skill: 7,
                     level: 1,
                     base_xp,
+                    members,
                 }),
             )
             .unwrap();
@@ -555,6 +563,45 @@ mod assembly_tests {
                     .filter(|e| matches!(e, WorldEvent::AssemblyMade { .. }))
                     .count(),
                 if cancel { 0 } else { 1 }
+            );
+        }
+    }
+    #[test]
+    fn member_assembly_rechecks_revocation_without_input_or_xp_loss() {
+        for (admitted, retained) in [(false, false), (true, false), (true, true)] {
+            let (mut w, actor, request) = fixture_with_policy(45, true);
+            w.data_mut(actor).unwrap().xp_rate_hundreds = 500;
+            w.set_membership(actor, admitted).unwrap();
+            let before = w.data(actor).unwrap().inventory.clone();
+            w.prepare_held_use(actor, request).unwrap();
+            w.finish_held_use(actor, request).unwrap();
+            w.tick().unwrap();
+            w.set_membership(actor, retained).unwrap();
+            for _ in 0..4 {
+                w.tick().unwrap();
+            }
+            let made = admitted && retained;
+            assert_eq!(
+                w.data(actor).unwrap().stats.fine_xp(7),
+                if made { 2250 } else { 0 }
+            );
+            if !made {
+                assert_eq!(w.data(actor).unwrap().inventory, before);
+            }
+            let events = w.drain_events();
+            assert_eq!(
+                events
+                    .iter()
+                    .filter(|e| matches!(e, WorldEvent::AssemblyMade { .. }))
+                    .count(),
+                usize::from(made)
+            );
+            assert_eq!(
+                events
+                    .iter()
+                    .filter(|e| matches!(e, WorldEvent::SkillAdvanced { .. }))
+                    .count(),
+                usize::from(made)
             );
         }
     }

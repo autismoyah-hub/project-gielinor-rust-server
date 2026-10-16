@@ -604,3 +604,79 @@ Supersedes prior uncompiled topping status: full server/world libraries PASS45se
 Owned topping native driver/fixture/control/trace/state harness prepared but not built/run. FixtureCooking55,166636baseXP,storedrate500,plain-pizza slots0/2/4,toppings meat1/chicken3/anchovy5,coins6. Expected2meat pizzas+1anchovy pizza at0/1/2,1000coins and455CookingXP (4550fineXP),allotherstats preserved. No native topping claim yet. Pinned prior pie archive remains independent of this new source.
 
 - `work/pizza-toppings-full-tests-001.log` SHA256 `6494d7528f7719699ce59331f7428d5ab04147b97eaa220310a5e474c135cab4`
+
+## Topping native preparation and pineapple membership extension (2026-10-16 UTC)
+
+Published5e3de6cf5bf5216ed2d772feac43fe9a3e04ba2b with local/remote match; issue12 comment6211652191. Immutable topping archiveD530FA11BF9B6F671B493DFAF62DF9D36B4194D72529448C0E124F381956398A built14.06s,373source hashes after one compiler deferral. This archive includes ordinary meat/chicken/anchovy toppings but NOT the later pineapple extension. Native driver attempt001 exposed missing Option<[i32;25]> type annotation; fixed owned driver only, attempt002PASS1.77s. Toppings control001PASS; native topping001 in progress. Synthetic state/XP/trace assessors reject75invalid mutations; not native evidence.
+
+Next source extension authored, NOT YET COMPILED: plain pizza2289+pineapple chunks2116 or ring2118 -> pineapple pizza2301, currentCooking65,45baseXP,two-clock assembly,members only. Pinned Wiki Pineapple pizza revision15183661 SHA81e23f5744e2975cfb43ffe852928de95789919b9704123b81b10e700b7011c3 explicitly covers both inputs,boostableYes,45XP,2ticks,membersYes. Target definitions already attested in work/openrune-pizza-topping-items-001.json. Independent Wiki implementation; no OpenRune expression copied.
+
+Existing trusted login-host membership field reused at admission and atomic completion, so queued revocation cannot consume or award. Added refusal/revocation/boosted-level/exact5x2250fineXP tests; ordinary F2P recipes retain no membership requirement. New native pineapple acceptance, slicing chunks/rings and original Kotlin differential remain pending. Current native topping archive/driver unchanged. No issue closure.
+
+- toppings001 `server_toppings.exe` SHA256 `2DFBC8605C4FD169C69BDDD089518C5E68426959FEF4B3E95650080393186DE5`
+- toppings001 `NativeToppingScenario.rs` SHA256 `435DBF442808655E84A3E4746C72489DA7A50BFD2C09F2F78E805D1A4EA8ECF9`
+- `work/openrune-pizza-toppings-001-server-build.json` SHA256 `1156ff4a48d03c072b410d83911e45ca13b550b93630546bd58fb05d8bdd360c`
+- `work/pizza-toppings-server-build-002.log` SHA256 `7a105c16cad6669822d4b179979a2a34584eb90c9d92e7b65567de6b1817cda1`
+- `work/toppings-driver-001-attempt-001.log` SHA256 `70ae0628c50179ff5d17d32422fcba17282381eb6c71dcb4bd0a34d5fc0bd559`
+- `work/toppings-driver-001-attempt-002.log` SHA256 `7781f4c9ae9a720640486652667958c82d397ade496277eaa8cb367c78f5202a`
+
+## Native topping positive result; persistence continuation and next builds pending (2026-10-16 UTC)
+
+`openrune-native-toppings-001` PASS: actual opcode27 routes plain pizza0/meat1, chicken3/plain pizza2, plain pizza4/anchovies5. Exact output slots0/1meat2293 and2anchovy2297; coins1000. FineCookingXP1666360->1670910,455XP atstored500rate. Authoritative two-clock transitions71->73,77->79,83->85. Independent state/control and trace assessors PASS; fresh save and clean exit0. Driver success prose retains a cosmetic inherited 'apple topping' phrase; exact source assertions and independent output-ID/XP checks require anchovy2297.
+
+Same-save relogin001 attempts001..007 deferred by compiler guard; run directory not created and predecessor database preserved. Some immediate-throw attempts produce no Tee-Object file; tool failure output is the deferral evidence, not a fabricated log. Memory-only reassessment5179MiB available,72.1%commit,741pages-in/s with1.1msdisk passed policy; active compiler still blocks admission. Read-only ownership check: cargo19504,parent18596, command `cargo test --offline --release -j1 --tests`, created2026-10-16 01:49:43local; rustc1756 observed01:54:24. This is not any owned Agent2 build (ours are debug library/build/example commands); no process terminated or modified.
+
+Pineapple membership extension and tests remain uncompiled. Native pineapple driver/fixture/control/runner plus exact inventory/450XP/zero-replay assessors prepared; trusted member database receipts before/after reuse existing grinding membership reader. Synthetic assessors reject60invalid mutations. FixtureCooking65,449428baseXP,500rate,plain pizzas0/2,chunks1,ring3,1000coins4; expectedtwo2301 at0/1 plus450XP. No native pineapple claim.
+
+Additional low-level native pie refusal harness prepared and wired but not built/run. FixtureCooking19/3973XP,three pie pairs unchanged; driver requires three real server level-refusal messages after genuine generated item-use and checks every input/coin slot and allXP. Fresh control and same-save modes prepared; zero-successful-assembly trace requirement. Synthetic assessor rejects53inventory/XP mutations. Pending priority: same-save topping relogin, guarded pineapple Rust tests, then native pineapple and low-level refusal acceptance. No issue closure.
+
+- `openrune-native-toppings-001/client.log` SHA256 `71a5afa1b1aa5b283417cfd8971d488d9d3c95e096760a3ed32cecefedde3201`
+- `openrune-native-toppings-001/server.log` SHA256 `790f89207d5d79f7ffaee8f77847a7aab3217bea8a4c54ba5ef4ba502ea87fc6`
+- `openrune-native-toppings-001/initial-state.json` SHA256 `d99eb3c01b1d40dfa937a08a331aca7c2059f24c55618831cf5795805a39f713`
+- `openrune-native-toppings-001/final-state.json` SHA256 `b4c41e15393a7eb98d2299958dd0304deae112936ab23a96ac3e448c7e13953d`
+- `openrune-native-toppings-001/pack-assessment.json` SHA256 `2ae4fd9edc8b91721780dd5c98de701270d646688dfec52a0549a022e89a81de`
+- `openrune-native-toppings-001/toppings-trace-assessment.json` SHA256 `5ccfd77132b0f870f42691a55bf86ffb633f14f56adf2042272c6dcddd575a9e`
+- `openrune-native-toppings-001/logout-observation.json` SHA256 `dfa8f8235428541bf1c98b0f9f2e0aca877e8838ae98df29ec8a1c3cff9ff49c`
+- `openrune-native-toppings-001/shutdown.json` SHA256 `6c0bc70277936f65938de4ad7a497d6a3d249810d3b3d65503fbaad9c3b7aa76`
+
+## Ordinary pizza topping native acceptance (2026-10-16 UTC)
+
+Native meat/chicken/anchovy toppings and same-save relogin PASS on immutable archiveD530FA11BF9B6F671B493DFAF62DF9D36B4194D72529448C0E124F381956398A, source5e3de6c (before pineapple membership extension). Driver toppings001 uses genuine generated opcode27; no client library change or packet fallback. Selected plain-pizza slots0/2/4 and toppings1/3/5, reversed chicken pair. Outputs0/1meat pizza2293,2anchovy pizza2297,1000coins6. Client's final human-readable success line has a cosmetic inherited 'apple topping' label; source assertions and independent exported-state assessor require anchovy2297 and are authoritative.
+
+Cooking55 remains55; fineXP1666360 ->1670910, exactly4550fineXP/455XP at persisted500 rate:26+26+39 base awards times5. All other exported stats unchanged. Server clocks71->73,77->79,83->85 each2ticks. Fresh durable logout, clean owned exit0, login-control conservation outside explicitly reported session vars. Exact same database relogin retains all products/XP with zero replay transitions and another durable save/clean0.
+
+Native low-level, stale/cancellation/full-capacity, membership, multiplayer, animations and pineapple recipes are NOT TESTED by this fixture. Existing deterministic negatives remain separate. No issue closure.
+
+- Driver `server_toppings.exe` SHA256 `2DFBC8605C4FD169C69BDDD089518C5E68426959FEF4B3E95650080393186DE5`
+
+- Driver `NativeToppingScenario.rs` SHA256 `435DBF442808655E84A3E4746C72489DA7A50BFD2C09F2F78E805D1A4EA8ECF9`
+
+`openrune-native-toppings-001` PASS,server4584,clean0.
+- `client.log` SHA256 `71a5afa1b1aa5b283417cfd8971d488d9d3c95e096760a3ed32cecefedde3201`
+- `server.log` SHA256 `790f89207d5d79f7ffaee8f77847a7aab3217bea8a4c54ba5ef4ba502ea87fc6`
+- `initial-state.json` SHA256 `d99eb3c01b1d40dfa937a08a331aca7c2059f24c55618831cf5795805a39f713`
+- `final-state.json` SHA256 `b4c41e15393a7eb98d2299958dd0304deae112936ab23a96ac3e448c7e13953d`
+- `pack-assessment.json` SHA256 `2ae4fd9edc8b91721780dd5c98de701270d646688dfec52a0549a022e89a81de`
+- `toppings-trace-assessment.json` SHA256 `5ccfd77132b0f870f42691a55bf86ffb633f14f56adf2042272c6dcddd575a9e`
+- `logout-observation.json` SHA256 `dfa8f8235428541bf1c98b0f9f2e0aca877e8838ae98df29ec8a1c3cff9ff49c`
+- `shutdown.json` SHA256 `6c0bc70277936f65938de4ad7a497d6a3d249810d3b3d65503fbaad9c3b7aa76`
+- `result.json` SHA256 `b3c248ad8a08134cde14c38e8917cc6a7fded3163fd4871e1ca70ac8301c61ee`
+- `pack-run.json` SHA256 `d99349eab9ef149c04b20f297ca112cf3bdf7d7fa55c85670ad056769c500558`
+
+`openrune-native-toppings-relogin-001` PASS,server2844,clean0.
+- `client.log` SHA256 `764dd273712821c8a93c84b24e2f3e7762ed9a1fbc0c45f583d1e84454056f98`
+- `server.log` SHA256 `d022d4d6bb1aa20486ce4d246dc99ab2836c2903b0df4b26cc0c11e5bf84518d`
+- `initial-state.json` SHA256 `b4c41e15393a7eb98d2299958dd0304deae112936ab23a96ac3e448c7e13953d`
+- `final-state.json` SHA256 `07a73b6b1a7185c832e691a8500ecb886398ae73dc40ef2e6f555c3244fe80dc`
+- `pack-assessment.json` SHA256 `0802754bb4f80e83433da6df7e1d780361dbd38ecc42cb72618cdddf55522f77`
+- `toppings-trace-assessment.json` SHA256 `226bbade27c24b435c3ecc469273ebef200a2c2c10ce8d71870ea60a9342393d`
+- `logout-observation.json` SHA256 `0cf63e7f82a5ee562468e7af950f68b9a9af8637832b18251a4629c234612b89`
+- `shutdown.json` SHA256 `72fc188dc16ab117e73056a90b00210e78ce244ccb665d48a2622dde6c337b43`
+- `result.json` SHA256 `3110002253653a6d44a636d5c8c09df19272db7b7060032cab40a447c2798813`
+- `pack-run.json` SHA256 `47ca563eb504a8561ec57752eb67e6be2e990d0915b8cd358cf9f9c6cd4e6456`
+
+## Pineapple membership and binding validation PASS (2026-10-16 UTC)
+
+Supersedes pending compilation status: `build.ps1 -Action test -CargoArgs @('-p','gielinor-world','-p','gielinor-server','--lib')` PASS45server+353world,0failed,1existingignored,compile31.80s,world7.58s. Guard5485MiB available,70.1%commit,0pages-in/s,5.4msdisk,CPU2%,j2. Live membership refusal/revocation preserve inputs/XP; member Cooking65 boost and2250fineXP at5x pass. Assembly binder now rejects per-recipe input/output aliases and dummy definitions; shared valid product IDs remain permitted. Earlier ordinary recipe coverage still passes. Native pineapple and low-level pie refusal remain pending; no issue closure.
+
+- `work/pineapple-full-tests-001.log` SHA256 `37882d846edc49824253638d9a516bfd87594b11578b571dbacba6d66c4c2bc0`

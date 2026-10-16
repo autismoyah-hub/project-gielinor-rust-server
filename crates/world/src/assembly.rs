@@ -15,6 +15,7 @@ pub struct Recipe {
     pub skill: u8,
     pub level: u8,
     pub base_xp: u16,
+    pub members: bool,
 }
 #[derive(Clone, Copy, Debug)]
 pub struct Job {
@@ -29,6 +30,7 @@ pub enum Outcome {
     Stale,
     Capacity,
     InvalidReward,
+    Members,
 }
 impl Job {
     /// Commit inventory and skill advancement together. Failed credit, stale
@@ -39,7 +41,11 @@ impl Job {
         catalog: &Catalog,
         stats: &mut Stats,
         rate_hundreds: i32,
+        member: bool,
     ) -> (Outcome, Option<crate::skills::Advancement>) {
+        if self.recipe.members && !member {
+            return (Outcome::Members, None);
+        }
         let mut next_inv = inv.clone();
         let outcome = self.exchange(&mut next_inv, catalog, stats);
         if outcome != Outcome::Made {
@@ -113,6 +119,7 @@ mod tests {
             skill: 7,
             level: 1,
             base_xp: 0,
+            members: false,
         };
         let mut inv = Inventory::new(2, StackType::Normal, false);
         for (slot, id) in [(0, 10), (1, 11)] {
@@ -180,7 +187,7 @@ mod tests {
             let (mut job, mut inv, catalog, mut stats) = fixture();
             job.recipe.base_xp = base_xp;
             let (outcome, advancement) =
-                job.complete_awarding(&mut inv, &catalog, &mut stats, rate);
+                job.complete_awarding(&mut inv, &catalog, &mut stats, rate, false);
             assert_eq!(outcome, Outcome::Made);
             assert_eq!(stats.fine_xp(7), fine);
             assert_eq!(advancement.unwrap().added_xp, fine / 10);
@@ -188,7 +195,7 @@ mod tests {
             assert!(inv.get(1).is_none());
             let before = (inv.clone(), stats.clone());
             assert_eq!(
-                job.complete_awarding(&mut inv, &catalog, &mut stats, rate),
+                job.complete_awarding(&mut inv, &catalog, &mut stats, rate, false),
                 (Outcome::Stale, None)
             );
             assert_eq!((inv, stats), before);
@@ -224,7 +231,7 @@ mod tests {
             };
             let before = (inv.clone(), stats.clone());
             assert_eq!(
-                job.complete_awarding(&mut inv, &catalog, &mut stats, rate),
+                job.complete_awarding(&mut inv, &catalog, &mut stats, rate, false),
                 (expected, None)
             );
             assert_eq!((inv, stats), before);
@@ -233,10 +240,40 @@ mod tests {
         job.recipe.base_xp = 39;
         stats.set_fine_xp(7, Stats::MAX_FINE_XP - 7).unwrap();
         assert_eq!(
-            job.complete_awarding(&mut inv, &catalog, &mut stats, 500).0,
+            job.complete_awarding(&mut inv, &catalog, &mut stats, 500, false)
+                .0,
             Outcome::Made
         );
         assert_eq!(stats.fine_xp(7), Stats::MAX_FINE_XP);
+    }
+    #[test]
+    fn member_recipe_checks_entitlement_and_boosted_level_before_awarding() {
+        let (mut job, mut inv, catalog, mut stats) = fixture();
+        job.recipe.members = true;
+        job.recipe.level = 65;
+        job.recipe.base_xp = 45;
+        stats.set_current(7, 65);
+        let before = (inv.clone(), stats.clone());
+        assert_eq!(
+            job.complete_awarding(&mut inv, &catalog, &mut stats, 500, false),
+            (Outcome::Members, None)
+        );
+        assert_eq!((inv.clone(), stats.clone()), before);
+        stats.set_current(7, 64);
+        assert_eq!(
+            job.complete_awarding(&mut inv, &catalog, &mut stats, 500, true),
+            (Outcome::Level, None)
+        );
+        assert_eq!(inv, before.0);
+        assert_eq!(stats.fine_xp(7), 0);
+        stats.set_current(7, 65);
+        assert_eq!(
+            job.complete_awarding(&mut inv, &catalog, &mut stats, 500, true)
+                .0,
+            Outcome::Made
+        );
+        assert_eq!(stats.fine_xp(7), 2250);
+        assert_eq!(stats.current(7), 65);
     }
 }
 

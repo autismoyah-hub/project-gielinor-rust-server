@@ -724,17 +724,61 @@ pub fn assembly(
     skill: u8,
 ) -> Result<Vec<gielinor_world::assembly::Recipe>, String> {
     let mut recipes = Vec::new();
-    for (first, second, output, level, base_xp) in [
-        ("pastry_dough", "piedish", "pie_shell", 1, 0),
-        ("pie_shell", "redberries", "uncooked_redberry_pie", 10, 0),
-        ("pie_shell", "cooked_meat", "uncooked_meat_pie", 20, 0),
-        ("pie_shell", "cooked_chicken", "uncooked_meat_pie", 20, 0),
-        ("pie_shell", "cooking_apple", "uncooked_apple_pie", 30, 0),
-        ("pizza_base", "tomato", "incomplete_pizza", 35, 0),
-        ("incomplete_pizza", "cheese", "uncooked_pizza", 35, 0),
-        ("plain_pizza", "cooked_meat", "meat_pizza", 45, 26),
-        ("plain_pizza", "cooked_chicken", "meat_pizza", 45, 26),
-        ("plain_pizza", "anchovies", "anchovie_pizza", 55, 39),
+    for (first, second, output, level, base_xp, members) in [
+        ("pastry_dough", "piedish", "pie_shell", 1, 0, false),
+        (
+            "pie_shell",
+            "redberries",
+            "uncooked_redberry_pie",
+            10,
+            0,
+            false,
+        ),
+        (
+            "pie_shell",
+            "cooked_meat",
+            "uncooked_meat_pie",
+            20,
+            0,
+            false,
+        ),
+        (
+            "pie_shell",
+            "cooked_chicken",
+            "uncooked_meat_pie",
+            20,
+            0,
+            false,
+        ),
+        (
+            "pie_shell",
+            "cooking_apple",
+            "uncooked_apple_pie",
+            30,
+            0,
+            false,
+        ),
+        ("pizza_base", "tomato", "incomplete_pizza", 35, 0, false),
+        ("incomplete_pizza", "cheese", "uncooked_pizza", 35, 0, false),
+        ("plain_pizza", "cooked_meat", "meat_pizza", 45, 26, false),
+        ("plain_pizza", "cooked_chicken", "meat_pizza", 45, 26, false),
+        ("plain_pizza", "anchovies", "anchovie_pizza", 55, 39, false),
+        (
+            "plain_pizza",
+            "pineapple_chunks",
+            "pineapple_pizza",
+            65,
+            45,
+            true,
+        ),
+        (
+            "plain_pizza",
+            "pineapple_ring",
+            "pineapple_pizza",
+            65,
+            45,
+            true,
+        ),
     ] {
         let resolve = |name: &str| -> Result<i32, String> {
             let id = *symbols
@@ -744,18 +788,29 @@ pub fn assembly(
                 .items
                 .get(&(id as u32))
                 .ok_or_else(|| format!("Missing assembly definition {name}"))?;
-            if ty.cert.template != 0 || ty.placeholder.template != 0 || ty.stackable {
+            if ty.cert.template != 0
+                || ty.placeholder.template != 0
+                || ty.stackable
+                || ty.dummy == 1
+            {
                 return Err(format!("Invalid assembly profile {name}"));
             }
             Ok(id)
         };
+        let first = resolve(first)?;
+        let second = resolve(second)?;
+        let output = resolve(output)?;
+        if first == second || first == output || second == output {
+            return Err("Aliased assembly ingredients/output".into());
+        }
         recipes.push(gielinor_world::assembly::Recipe {
-            first: resolve(first)?,
-            second: resolve(second)?,
-            output: resolve(output)?,
+            first,
+            second,
+            output,
             skill,
             level,
             base_xp,
+            members,
         });
     }
     Ok(recipes)
@@ -781,6 +836,9 @@ mod assembly_binding_tests {
             "meat_pizza",
             "anchovies",
             "anchovie_pizza",
+            "pineapple_chunks",
+            "pineapple_ring",
+            "pineapple_pizza",
             "pizza_base",
             "tomato",
             "incomplete_pizza",
@@ -808,7 +866,7 @@ mod assembly_binding_tests {
         let recipes = assembly(&symbols, &defs, 7).unwrap();
         assert_eq!(
             recipes.iter().map(|r| r.level).collect::<Vec<_>>(),
-            [1, 10, 20, 20, 30, 35, 35, 45, 45, 55]
+            [1, 10, 20, 20, 30, 35, 35, 45, 45, 55, 65, 65]
         );
         for (ingredient, output, level, xp) in [
             ("cooked_meat", "meat_pizza", 45, 26),
@@ -829,6 +887,22 @@ mod assembly_binding_tests {
                 .iter()
                 .filter(|r| r.first != symbols["plain_pizza"])
                 .all(|r| r.base_xp == 0)
+        );
+        for input in ["pineapple_chunks", "pineapple_ring"] {
+            let recipe = recipes
+                .iter()
+                .find(|r| r.first == symbols["plain_pizza"] && r.second == symbols[input])
+                .unwrap();
+            assert_eq!(
+                (recipe.output, recipe.level, recipe.base_xp, recipe.members),
+                (symbols["pineapple_pizza"], 65, 45, true)
+            );
+        }
+        assert!(
+            recipes
+                .iter()
+                .filter(|r| r.output != symbols["pineapple_pizza"])
+                .all(|r| !r.members)
         );
         // These three distinct fillings share atomic assembly but have sourced
         // level gates. A temporary boost qualifies; missing levels never debit.
@@ -870,7 +944,7 @@ mod assembly_binding_tests {
             for low in [-1, level - 1] {
                 stats.set_current(7, low);
                 assert_eq!(
-                    job.complete_awarding(&mut inv, &Catalog::default(), &mut stats, 100)
+                    job.complete_awarding(&mut inv, &Catalog::default(), &mut stats, 100, false)
                         .0,
                     Outcome::Level
                 );
@@ -879,7 +953,7 @@ mod assembly_binding_tests {
             stats.set_current(7, level);
             assert_eq!(stats.base(7), 1);
             assert_eq!(
-                job.complete_awarding(&mut inv, &Catalog::default(), &mut stats, 100)
+                job.complete_awarding(&mut inv, &Catalog::default(), &mut stats, 100, false)
                     .0,
                 Outcome::Made
             );
@@ -893,6 +967,22 @@ mod assembly_binding_tests {
             );
             assert_eq!(stats.fine_xp(7), 0);
         }
+        for (name, alias) in [
+            ("pineapple_chunks", "plain_pizza"),
+            ("pineapple_pizza", "plain_pizza"),
+            ("pineapple_pizza", "pineapple_chunks"),
+        ] {
+            let original = symbols[name];
+            let alias = symbols[alias];
+            symbols.insert(name.into(), alias);
+            assert!(assembly(&symbols, &defs, 7).is_err());
+            symbols.insert(name.into(), original);
+        }
+        let output = symbols["pineapple_pizza"] as u32;
+        defs.items.get_mut(&output).unwrap().dummy = 1;
+        assert!(assembly(&symbols, &defs, 7).is_err());
+        defs.items.get_mut(&output).unwrap().dummy = -1;
+        assert!(assembly(&symbols, &defs, 7).is_ok());
         defs.items.get_mut(&1).unwrap().cert.template = 799;
         assert!(assembly(&symbols, &defs, 7).is_err());
         defs.items.get_mut(&1).unwrap().cert.template = 0;
