@@ -2239,6 +2239,12 @@ pub fn finished_potions(
         ("toadflaxvial", "toads_legs", "3dose1agility", true, true, 34, true, 800),
         ("harralandervial", "ground_desert_goat_horn", "3dosecombat", true, true, 36, true, 840),
         ("ranarrvial", "snape_grass", "3doseprayerrestore", true, true, 38, true, 875),
+        ("iritvial", "eye_of_newt", "3dose2attack", false, true, 45, true, 1000),
+        ("iritvial", "unicorn_horn_dust", "3dose2antipoison", true, true, 48, true, 1063),
+        ("avantoevial", "snape_grass", "3dosefisherspotion", true, true, 50, true, 1125),
+        ("avantoevial", "mortmyremushroom", "3dose2energy", true, true, 52, true, 1175),
+        ("avantoevial", "huntingbeast_sabreteeth_dust", "3dosehunting", true, true, 53, true, 1200),
+        ("kwuarmvial", "limpwurt_root", "3dose2strength", false, true, 55, true, 1250),
     ] {
         result.push(gielinor_world::finished_potions::Recipe {
             unfinished: bind(unf, true, false)?,
@@ -2275,6 +2281,17 @@ mod finished_potion_binding_tests {
             ("tarrominvial", 95, true, false),
             ("limpwurt_root", 225, false, false),
             ("3dose1strength", 115, false, true),
+            ("iritvial", 101, true, false),
+            ("3dose2attack", 145, true, true),
+            ("3dose2antipoison", 181, true, true),
+            ("avantoevial", 103, true, false),
+            ("3dosefisherspotion", 151, true, true),
+            ("mortmyremushroom", 2970, true, false),
+            ("3dose2energy", 3018, true, true),
+            ("huntingbeast_sabreteeth_dust", 10111, true, false),
+            ("3dosehunting", 10000, true, true),
+            ("kwuarmvial", 105, true, false),
+            ("3dose2strength", 157, true, true),
             ("harralandervial", 97, true, false),
             ("red_spiders_eggs", 223, false, false),
             ("3dosestatrestore", 127, true, true),
@@ -2328,6 +2345,12 @@ mod finished_potion_binding_tests {
                 (3002, 2152, 3034, 34, true, 800),
                 (97, 9736, 9741, 36, true, 840),
                 (99, 231, 139, 38, true, 875),
+                (101, 221, 145, 45, true, 1000),
+                (101, 235, 181, 48, true, 1063),
+                (103, 231, 151, 50, true, 1125),
+                (103, 2970, 3018, 52, true, 1175),
+                (103, 10111, 10000, 53, true, 1200),
+                (105, 225, 157, 55, true, 1250),
             ]
         );
         assert!(!defs.items[&175].members && !defs.items[&115].members);

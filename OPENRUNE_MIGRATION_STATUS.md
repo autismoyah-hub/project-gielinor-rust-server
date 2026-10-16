@@ -2029,3 +2029,18 @@ All listed runs require client exit0, fresh durable logout, clean owned exit0 an
 ## Goggles fixture repair and native acceptance scope (2026-10-16)
 
 Native attempt001 failed before production with missing equipped goggles. The fixture installer copied an adjacent herb branch and placed the equipment insertion there; no gameplay modifier result was inferred. Preserved failure001, control001, prior helper work/fixture-pre-goggles-repair-001.py and repair report work/goggles-fixture-repair-001.json. Removed only introduced duplicate branches and added exact pre-launch fixture validation. Fresh control002 and gameplay002 use fixture c63832595fd5a6e6ce739647fe86d63c2bf8f323dcdc8f17a985563efced28b2 including head29974. No previous database was modified. New native002 observed one random save among14commits and full26250fineXP; same-save relogin002 preserves items/equipment/rewards with no replay. This small sample is not a probability estimate. Focused-variant native acceptance and other modifier families remain incomplete.
+
+## Six higher-level ordinary finished potions (2026-10-16)
+
+Extended the existing ingredient-pair runtime from9 to15ordinary recipes. No parallel scheduler or copied OpenRune implementation. New recipes retain live gates, selected slots, atomic inventory/fineXP, goggles eligibility and shared Make-X.
+
+- Super attack: Wiki revision15184104, wikitext SHA256 `3f7262308867118f2d98946d66ced8f1e9e9b68fb30abd502bb2f296545fdcec`; level45, boostableYes, XP100, ticks2. Target IDs 101, 221, 145.
+- Superantipoison: Wiki revision15183481, wikitext SHA256 `c6db4e5c633c5ac94f1ecbeffa4e4504465c65870e8f23b12426a98094d1fdd6`; level48, boostableYes, XP106.3, ticks2. Target IDs 101, 235, 181.
+- Fishing potion: Wiki revision15183994, wikitext SHA256 `446e15f1f7cde9a207ad4c2ac7cbd1dc706cbb5f99cdc132b217be702243e41e`; level50, boostableYes, XP112.5, ticks2. Target IDs 103, 231, 151.
+- Super energy: Wiki revision15185231, wikitext SHA256 `9e90f927e5cf1c241b98e1fcf09283d540b2974f40e4de69740e58d34d16cfb9`; level52, boostableYes, XP117.5, ticks2. Target IDs 103, 2970, 3018.
+- Hunter potion: Wiki revision15184175, wikitext SHA256 `34b1bf95173877fe30255eb17bdc6c191250a98682bfbdbef375df8d1388ade8`; level53, boostableYes, XP120, ticks2. Target IDs 103, 10111, 10000.
+- Super strength: Wiki revision15184084, wikitext SHA256 `c292c7faffd1d7b83778699a1c3b34ee7b38ce252fb4b7eac33d6cb905faf705`; level55, boostableYes, XP125, ticks2. Target IDs 105, 225, 157.
+
+Target symbols/decoded239.1 definitions and hashes remain in private work/openrune-finished-potions-high-readiness-001.json. Superantipoison uses1063base fineXP (106.3XP), awarding5315fineXP at5x without rounding to106XP.
+
+Validation finished-high-tests-attempt-001 PASS:51server+381world,0failed,1existing ignored;382source hashes unchanged. Build/test28.82s plus world22.74s. Guard4344MiB available,79.8percent commit,209page-ins/s,1.4ms disk,CPU68.7percent;Cargo-j2. Existing tests now exercise all15profiles, both orders, threshold/refusal conservation, capped/fractional rewards, goggles draws0..9 and shared bases. Native six-profile acceptance pending; prepared assessors298synthetic checks PASS, not native acceptance. Earlier nine-profile/goggles archives remain immutable.
