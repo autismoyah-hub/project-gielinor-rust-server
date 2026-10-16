@@ -16,6 +16,7 @@ mod combat_actions;
 mod dialogue_actions;
 mod door_actions;
 mod drop_action;
+mod chemistry_actions;
 mod ground_actions;
 mod held_use_actions;
 mod location_use_actions;
@@ -273,6 +274,7 @@ struct Player {
     npc_interaction: Option<crate::npc_interaction::Pending>,
     pending_pickup: Option<crate::ground_transfer::Pickup>,
     pending_drop: Option<(u64, crate::drop_actions::Pending)>,
+    pending_chemistry: Option<(u64,usize,i32)>,
     prayer: Option<crate::prayer::State>,
     prayer_notice: Option<u64>,
     overhead: Option<u8>,
@@ -328,6 +330,7 @@ impl Player {
         self.pending_door = None;
         self.pending_pickup = None;
         self.pending_drop = None;
+        self.pending_chemistry = None;
         self.prayer = None;
         self.dialogue = None;
     }
@@ -410,6 +413,8 @@ pub enum Action {
         spell: i32,
         control: bool,
     },
+    ChemistryItem {slot:usize,item:i32,operation:u8},
+    ResumeChemistry {token:u64,choice:i32},
     DropSlot {
         slot: usize,
     },
@@ -520,6 +525,7 @@ pub enum AdmissionError {
 }
 #[derive(Debug)]
 pub enum WorldEvent {
+    ChemistryDialog {actor:ActorId,token:Option<u64>,remaining:u8},
     LocationRestoration(crate::loc_timers::Restoration),
     ShopValue {
         actor: ActorId,
@@ -1468,7 +1474,7 @@ impl World {
         let count = p.bank_count.take().is_some();
         let quantity = p.quantity_dialog.take().is_some();
         p.quantity_input = false;
-        let pause = p.pending_drop.take().is_some();
+        let pause = p.pending_drop.take().is_some() | p.pending_chemistry.take().is_some();
         let prayer = matches!(p.prayer, Some(crate::prayer::State::Confirm { .. }));
         let notice = p.prayer_notice.take().is_some();
         if prayer {
@@ -1715,6 +1721,8 @@ impl World {
             } => {
                 return self.request_npc_spell(id, target, spell, control);
             }
+            Action::ChemistryItem {slot,item,operation} => return self.chemistry_item(id,slot,item,operation),
+            Action::ResumeChemistry {token,choice} => return self.resume_chemistry(id,token,choice),
             Action::DropSlot { slot } => return self.start_drop(id, slot),
             Action::ResumeDrop { token, choice } => return self.resume_drop(id, token, choice),
             Action::TakeObject {
@@ -2096,6 +2104,10 @@ impl World {
                         event: crate::prayer::Event::Closed,
                     });
                 }
+                if p.pending_chemistry.take().is_some() {
+                    p.protection.suspended=false;
+                    self.events.push(WorldEvent::ChemistryDialog{actor:id,token:None,remaining:p.data.chemistry.remaining()});
+                }
                 if p.pending_drop.take().is_some() {
                     p.protection.suspended = false;
                     self.events.push(WorldEvent::Drop {
@@ -2373,7 +2385,7 @@ impl World {
                                                 p.logout_modal_close_pending = true;
                                             }
                                             let count = p.bank_count.take().is_some();
-                                            let drop = p.pending_drop.take().is_some();
+                                            let drop = p.pending_drop.take().is_some() | p.pending_chemistry.take().is_some();
                                             let notice = p.prayer_notice.take().is_some();
                                             let dialogue = p.dialogue.take().is_some();
                                             let quantity = p.quantity_dialog.take().is_some();
@@ -2592,7 +2604,7 @@ impl World {
                                                         p.pending_door = None;
                                                         p.prayer = None;
                                                         p.pending_pickup = None;
-                                                        p.pending_drop = None;
+                                                        p.pending_drop = None; p.pending_chemistry = None;
                                                         p.dialogue = None;
                                                         p.quantity_dialog = None;
                                                         p.quantity_input = false;
@@ -2746,7 +2758,7 @@ impl World {
                                 let quantity = p.quantity_dialog.take().is_some();
                                 p.quantity_input = false;
                                 let count = p.bank_count.take().is_some();
-                                let drop = p.pending_drop.take().is_some();
+                                let drop = p.pending_drop.take().is_some() | p.pending_chemistry.take().is_some();
                                 let notice = p.prayer_notice.take().is_some();
                                 let prayer =
                                     matches!(p.prayer, Some(crate::prayer::State::Confirm { .. }));
@@ -2955,6 +2967,7 @@ impl World {
                             npc_interaction: None,
                             pending_pickup: None,
                             pending_drop: None,
+                            pending_chemistry: None,
                             prayer: None,
                             prayer_notice: None,
                             overhead: None,

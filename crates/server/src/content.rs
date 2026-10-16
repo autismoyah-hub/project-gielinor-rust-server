@@ -2699,4 +2699,23 @@ mod chemistry_binding_tests {
             assert!(finished_potion_chemistry(&names,&defs).is_err(),"mode{mode}");
         }
     }
+    #[test]
+    fn ordinary_reverse_links_survive_real_catalog_registration() {
+        use gielinor_world::{finished_potions::{Job,Recipe,Outcome},inventory::{Inventory,Item,StackType,Template},chemistry::State};
+        struct Proc;impl gielinor_world::npc::RandomSource for Proc{fn below(&mut self,bound:u32)->u32{assert_eq!(bound,100);0}}
+        for invalid in 0..4 {
+            let (names,mut defs)=fixture();
+            for id in [1000,1001,21163] {let item=defs.items.get_mut(&id).unwrap();item.cert=Template{link:id as i32+100000,template:0};item.placeholder=Template{link:id as i32+200000,template:0};}
+            let bindings=finished_potion_chemistry(&names,&defs).unwrap();
+            match invalid {1=>defs.items.get_mut(&1001).unwrap().cert.template=799,2=>defs.items.get_mut(&1001).unwrap().placeholder.template=14401,3=>defs.items.get_mut(&1001).unwrap().transform=Template{link:1000,template:1},_=>()}
+            let catalog=defs.inventory_catalog();let mut inv=Inventory::new(28,StackType::Normal,false);let mut equip=Inventory::new(14,StackType::Normal,false);
+            inv.restore_slot(0,Some(Item{id:91,count:1,vars:0})).unwrap();inv.restore_slot(1,Some(Item{id:221,count:1,vars:0})).unwrap();equip.restore_slot(2,Some(Item{id:21163,count:1,vars:0})).unwrap();
+            let mut stats=gielinor_world::stats::Stats::default();stats.set_base(15,99);stats.set_current(15,99);let mut state=State::default();
+            let job=Job{recipe:Recipe{unfinished:91,secondary:221,output:1000,level:3,boostable:false,base_fine_xp:250},unfinished_slot:0,secondary_slot:1};
+            let before=(inv.clone(),equip.clone(),stats.clone(),state);
+            let result=job.complete_with_modifiers(&mut inv,&catalog,&mut stats,&mut equip,&mut state,true,true,500,false,Some(bindings[&1000]),&mut Proc);
+            if invalid==0 {assert!(matches!(result.outcome,Outcome::Made(_)));assert_eq!(inv.get(0).unwrap().id,1001);assert_eq!(state.remaining(),4);assert_eq!(stats.fine_xp(15),1250);}
+            else {assert_eq!(result.outcome,Outcome::InvalidRecipe);assert_eq!((inv,equip,stats,state),before);}
+        }
+    }
 }

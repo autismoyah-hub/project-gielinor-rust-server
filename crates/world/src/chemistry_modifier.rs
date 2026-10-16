@@ -24,7 +24,7 @@ impl Job {
         if let Some(b) = binding {
             if b.amulet < 0 || b.extra_output < 0 || [self.recipe.unfinished, self.recipe.secondary, self.recipe.output, b.amulet].contains(&b.extra_output)
                 || [self.recipe.unfinished, self.recipe.secondary, self.recipe.output].contains(&b.amulet)
-                || [b.amulet, b.extra_output, self.recipe.output].iter().any(|id| catalog.stackable.contains(id) || catalog.notes.contains_key(id) || catalog.placeholders.contains_key(id) || catalog.transforms.contains_key(id) || catalog.dummy.contains(id)) {
+                || [b.amulet, b.extra_output, self.recipe.output].iter().any(|id| catalog.stackable.contains(id) || catalog.notes.get(id).is_some_and(|t| t.template != 0) || catalog.placeholders.get(id).is_some_and(|t| t.template != 0) || catalog.transforms.get(id).is_some_and(|t| t.template != 0) || catalog.dummy.contains(id)) {
                 return refused(Outcome::InvalidRecipe);
             }
         }

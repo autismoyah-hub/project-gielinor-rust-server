@@ -17,6 +17,7 @@ mod anvil;
 mod autocast_picker;
 mod dialogue;
 mod drop_dialog;
+mod chemistry_dialog;
 mod location_target;
 mod mining;
 mod movement;
@@ -218,6 +219,7 @@ struct Active {
     login_messages: Vec<&'static str>,
     face_npc: Option<gielinor_world::simulation::NpcId>,
     drop_dialog: Option<(u64, gielinor_world::ui::Component)>,
+    chemistry_dialog: Option<(u64,gielinor_world::ui::Component)>,
     prayer_dialog: Option<(u64, gielinor_world::ui::Component)>,
     prayer_notice: Option<crate::message_box::Active>,
     dialogue: Option<crate::dialogue::Active>,
@@ -1176,6 +1178,16 @@ impl<B: AccountBackend> Runtime<B> {
                 .cancel_drop_dialog(actor)
                 .map_err(|e| io::Error::other(format!("{e:?}")))?;
         }
+        if active.chemistry_dialog.is_some_and(|(_, button)| {
+            closed
+                .iter()
+                .any(|(_, interface)| *interface == button.interface())
+        }) {
+            active.chemistry_dialog = None;
+            self.world
+                .cancel_chemistry_dialog(actor)
+                .map_err(|e| io::Error::other(format!("{e:?}")))?;
+        }
         if active.prayer_dialog.is_some_and(|(_, button)| {
             closed
                 .iter()
@@ -1386,6 +1398,16 @@ impl<B: AccountBackend> Runtime<B> {
             active.drop_dialog = None;
             self.world
                 .cancel_drop_dialog(actor)
+                .map_err(|e| io::Error::other(format!("{e:?}")))?;
+        }
+        if active.chemistry_dialog.is_some_and(|(_, button)| {
+            closed
+                .iter()
+                .any(|(_, interface)| *interface == button.interface())
+        }) {
+            active.chemistry_dialog = None;
+            self.world
+                .cancel_chemistry_dialog(actor)
                 .map_err(|e| io::Error::other(format!("{e:?}")))?;
         }
         if active.prayer_dialog.is_some_and(|(_, button)| {
@@ -2116,6 +2138,7 @@ impl<B: AccountBackend> Runtime<B> {
                             self.resume_prayer_notice(actor, pause)?;
                             self.resume_dialogue_pause(actor, pause)?;
                             self.resume_drop_pause(actor, pause)?;
+                            self.resume_chemistry_pause(actor,pause)?;
                             self.resume_prayer_pause(actor, pause)?;
                         }
                         Ok(crate::gameplay::Request::ResumeCount(count)) => {
@@ -2417,6 +2440,9 @@ impl<B: AccountBackend> Runtime<B> {
                                                 .ok()
                                                 .and_then(|data| data.inventory.get(slot))
                                             {
+                                                if matches!(button.op,4|5) && item.id==button.object && self.world.finished_potions.as_ref().is_some_and(|c|c.chemistry.values().any(|b|b.amulet==item.id)) {
+                                                    return Some(Action::ChemistryItem{slot,item:button.object,operation:button.op});
+                                                }
                                                 if button.op == 2 && self.world.herb_cleaning.as_ref().is_some_and(|c| c.recipes.contains_key(&button.object)) {
                                                     return Some(Action::CleanHerb { slot, item: button.object });
                                                 }
@@ -3087,6 +3113,7 @@ impl<B: AccountBackend> Runtime<B> {
                             login_messages,
                             bank_events_due: None,
                             drop_dialog: None,
+                            chemistry_dialog: None,
                             prayer_dialog: None,
                             prayer_notice: None,
                             dialogue: None,
@@ -3625,6 +3652,10 @@ impl<B: AccountBackend> Runtime<B> {
                         width,
                         length,
                     }));
+                }
+                WorldEvent::ChemistryDialog {actor,token,remaining} => {
+                    self.chemistry_dialog_event(actor,token,remaining)?;
+                    self.events.push(Event::World(WorldEvent::ChemistryDialog{actor,token,remaining}));
                 }
                 WorldEvent::Drop { actor, event } => {
                     self.drop_event(actor, &event)?;
