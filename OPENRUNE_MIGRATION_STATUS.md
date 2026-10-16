@@ -2171,3 +2171,51 @@ Target239.1 symbols and decoded-definition hashes in work/openrune-finished-poti
 
 Validation finished-finalthree-tests-attempt-001 PASS;382source hashes unchanged. test result: ok. 51 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.83s; test result: ok. 381 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 24.99s
 Guard4488MiB,78.7percent commit,1129page-ins/s,0.8msdisk,41.2percent CPU;Cargo-j2. Existing profile tests expand to24recipes including goggles draws, both selected orders, gates and exact/capped rewards. Native additional-three acceptance pending;271synthetic assessor checks PASS.
+
+Final-three driver attempt001 was RESOURCE_DEFERRED before compilation: CPU77.4percent,4326MiB,78.6percent commit,1page-in/s,3.2msdisk. Attempt002 resumed after independent preparation and fresh measurements: CPU43.8percent,4382MiB,79.2percent commit,799page-ins/s,0.8msdisk,j2; build3.56sPASS. Other agents' compiler presence was informational. Prior deferral evidence retained in work/finishedfinalthree-driver-build-attempt-001.log; successful retry in attempt002.log.
+
+## Native gameplay finishedupper acceptance (2026-10-16 UTC)
+
+Six upper-level ordinary profiles: Super restore, Super defence, Antifire, Ranging, Magic and Zamorak brew. Actual native Use/Make1, alternating order, separate lantadyme pairs, two-clock commits, exact48000fineXP at5x, full28initial and same-save no replay. Potion drinking/effects, chemistry and other families remain separate.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking/Herblore parity or unrelated recipes. No issue closure.
+
+`openrune-native-finishedupper-001` PASS. Server archive `7784A1364EF12292C216E312DAF68B765EB3D10DFCAAB3734AC461E0CBE9AA1A`, driver `finishedupper-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID18612.
+- Driver `server_finishedupper.exe` SHA256 `F323E5C7870BFCF615BA628EDAA2922B1F060DBF8DBE30B1A05DF3ECB7C7FE0D`
+- Driver `NativeFinishedUpperScenario.rs` SHA256 `63BE416D6B298E7EC68826E30E217813DB8C95B87EB7C9323981DE194D44C64A`
+- `client.log` SHA256 `650aaed46e08dbd777f9345ecb186efadb99be7c791b816939cab842dda99873`
+- `server.log` SHA256 `8472f11c7f1a688836a3f2bc168c981766c1053765a7f3d37def130608a7f6fb`
+- `initial-state.json` SHA256 `9779b88f062044ef1326cebd3bd89f14e8acbb481c691bb6100d9a5e5484ff6a`
+- `final-state.json` SHA256 `a968c55115d0ab8bbe938d1a9c57b798f75bc6dc0bd35da2c40e4b391a909408`
+- `pack-assessment.json` SHA256 `e648ac4f187644bed1b16502848a2f29ef7b42ca25544c044437d1dc289b7525`
+- `finishedupper-trace-assessment.json` SHA256 `9be5a4577e6df38c21ba0ba4df802c5730d7693a02775b9b7a2921d127284e3f`
+- `logout-observation.json` SHA256 `46bbd8d30dab865ec013d024b2af7b4f67815d586efeafa2c74b6b929f1cd00a`
+- `shutdown.json` SHA256 `182f82bcd3d3cc28f9325551a00bc089b58510b1440caade159aa13df4a7dc84`
+- `result.json` SHA256 `5e92b5774113c7b77df074a3959fafe893fc89997032277a67cb04bc1c329ed0`
+- `pack-run.json` SHA256 `b1992aae93bd8ea98bb24323ab6ee374e47ac3d1a8924097a7c7906a126d48bc`
+- `native-profile-assessment.json` SHA256 `3f14a170fae57aa7fb1d7cec162cb49aa87debcbb735e6b036598733a23eb947`
+- `native-packet-assessment.json` SHA256 `c272c37dcd99db397cb5589ae79ee4ed8b36caab2a09eb4bdf399fc11dc8090a`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":500},"3077":{"before":0,"after":34494},"3079":{"before":0,"after":263},"65515":{"before":0,"after":247}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[{"actor_slot":1,"actor_generation":614,"unfinished_slot":0,"secondary_slot":1,"unfinished":3004,"secondary":223,"output":3026,"count":1,"queued_at":161,"committed_at":163,"index":0,"base_fine_xp":1425,"rate_hundreds":500,"fine_before":130344311,"fine_after":130351436,"secondary_saved":false},{"actor_slot":1,"actor_generation":614,"unfinished_slot":2,"secondary_slot":3,"unfinished":107,"secondary":239,"output":163,"count":1,"queued_at":183,"committed_at":185,"index":0,"base_fine_xp":1500,"rate_hundreds":500,"fine_before":130351436,"fine_after":130358936,"secondary_saved":false},{"actor_slot":1,"actor_generation":614,"unfinished_slot":4,"secondary_slot":5,"unfinished":2483,"secondary":241,"output":2454,"count":1,"queued_at":198,"committed_at":200,"index":0,"base_fine_xp":1575,"rate_hundreds":500,"fine_before":130358936,"fine_after":130366811,"secondary_saved":false},{"actor_slot":1,"actor_generation":614,"unfinished_slot":6,"secondary_slot":7,"unfinished":109,"secondary":245,"output":169,"count":1,"queued_at":213,"committed_at":215,"index":0,"base_fine_xp":1625,"rate_hundreds":500,"fine_before":130366811,"fine_after":130374936,"secondary_saved":false},{"actor_slot":1,"actor_generation":614,"unfinished_slot":8,"secondary_slot":9,"unfinished":2483,"secondary":3138,"output":3042,"count":1,"queued_at":226,"committed_at":228,"index":0,"base_fine_xp":1725,"rate_hundreds":500,"fine_before":130374936,"fine_after":130383561,"secondary_saved":false},{"actor_slot":1,"actor_generation":614,"unfinished_slot":10,"secondary_slot":11,"unfinished":111,"secondary":247,"output":189,"count":1,"queued_at":240,"committed_at":242,"index":0,"base_fine_xp":1750,"rate_hundreds":500,"fine_before":130383561,"fine_after":130392311,"secondary_saved":false}],"scope":"Separate selected-profile two-tick commits; UI evidence and packet/display latency separate"}`
+
+`openrune-native-finishedupper-relogin-001` PASS. Server archive `7784A1364EF12292C216E312DAF68B765EB3D10DFCAAB3734AC461E0CBE9AA1A`, driver `finishedupper-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor `openrune-native-finishedupper-001`, owned PID15416.
+- Driver `server_finishedupper.exe` SHA256 `F323E5C7870BFCF615BA628EDAA2922B1F060DBF8DBE30B1A05DF3ECB7C7FE0D`
+- Driver `NativeFinishedUpperScenario.rs` SHA256 `63BE416D6B298E7EC68826E30E217813DB8C95B87EB7C9323981DE194D44C64A`
+- `client.log` SHA256 `2b5e222a06f4851400c809c43b22992bc794bd630bc5713a8334d3deeef01529`
+- `server.log` SHA256 `caac29aab5b408d921428799c04154aaf5d98c8ba58e3ecd7bc3c4cb98f96c3c`
+- `initial-state.json` SHA256 `a968c55115d0ab8bbe938d1a9c57b798f75bc6dc0bd35da2c40e4b391a909408`
+- `final-state.json` SHA256 `534d2180651d9b2a34170aeb0ff9892a1ebecd3f776034abd0e4c8c3f2507bc7`
+- `pack-assessment.json` SHA256 `0003571178dd8e7e957a1767d81191a0b077c09b5508f02bb0215ba6ac23e0c7`
+- `finishedupper-trace-assessment.json` SHA256 `15565119835c4387827e07e673e26fc0ec5897457d403e87d7333c03aaf96013`
+- `logout-observation.json` SHA256 `539ad6222e3a11666754ef7b0ae98bb9b6f500bd9fb3276a6bab11366ba728a1`
+- `shutdown.json` SHA256 `3ebfc34ab61a83acc9d5af8be4751dead686ba9bcd3592c378879d42fc7773fe`
+- `result.json` SHA256 `094911c312fa902fa85a06f43c65be1aa943b1df9e098f5636604bacb1116459`
+- `pack-run.json` SHA256 `5d6886b859928c1b74198e141b7ff40dde8bbb25252288e5cfc58e2cab7ed7f4`
+- `native-profile-assessment.json` SHA256 `3f14a170fae57aa7fb1d7cec162cb49aa87debcbb735e6b036598733a23eb947`
+- `native-packet-assessment.json` SHA256 `48b05f80bff0dc9612ae7c559614d75c4edb668cfae2832a5c4f872d72ad61e4`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":500,"after":800},"3077":{"before":34494,"after":2010},"3079":{"before":263,"after":157},"65515":{"before":247,"after":393}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Separate selected-profile two-tick commits; UI evidence and packet/display latency separate"}`
