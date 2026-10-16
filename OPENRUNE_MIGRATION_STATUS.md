@@ -2617,3 +2617,64 @@ Native UI run002 failed: Stop text-child pointer emitted no response, and native
 Corrected inventory Break routing and world action to operation6. Operation5 is explicitly rejected by regression coverage. Kotlin HeldOpScript.kt SHA256 7d10c514ee1c4a829dfd680a16ac9085d99b0e686d48f8384295d39aa6bfca09 independently maps Op4 to HeldOp3 and Op6 to HeldOp4; this is source comparison, not compiled Kotlin parity. Independent native assessor now expects6;24 synthetic checks PASS (chemistryui-assessor-tests-003.json).
 
 chemistry-operation-tests-attempt-001 PASS:55server,10storage,397world tests,1world ignored;391source hashes unchanged. Compilation28.95s,world32.32s. Guard5050MiB available,75.7percentcommit,3371page-ins/s with0.7msdisk,28.5percentCPU,j2. Server archiveF73ECB2C014469E82EF8E336C205ADCCC4DFC794DF55179E18A9723FE5AD7051 built16.62s,guard4788MiB76.8percentcommit3263page-ins/s0.8msdisk25percentCPU,j2. Native choice diagnostics now require actual response before driver advancement; new matched login control and UI acceptance pending. Prior production acceptance remains unchanged.
+
+## Native gameplay chemistryui acceptance (2026-10-16 UTC)
+
+Native inventory Options, Stop choice and Break dispatch; selected amulet consumed, two remaining charges reset to five, stop setting persisted, coins and every stat conserved; same-save no replay. Worn Options and alchemist variant remain separate.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking/Herblore parity or unrelated recipes. No issue closure.
+
+`openrune-native-chemistryui-004` PASS. Server archive `F73ECB2C014469E82EF8E336C205ADCCC4DFC794DF55179E18A9723FE5AD7051`, driver `chemistryui-005`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID8440.
+- Driver `NativeChemistryUiScenario.rs` SHA256 `2E9E9493760C96A711D7F4635AEEDECC2CB309CE8F1077A306021BA0506989D2`
+- Driver `server_chemistryui.exe` SHA256 `1D0A9F8CA038B3B05BEC79B566660782795A4E322C4C9E5E99B05E1D90A073E0`
+- `client.log` SHA256 `af3108a6f1ae483349e5bba3e223ea79a366ffa36a75c502938de525612c6754`
+- `server.log` SHA256 `46578bc4e81182594aec5c9ad1e631d9be199b57bcd1ddb5ce0a7babb5872b3b`
+- `initial-state.json` SHA256 `b2d06334e0902a04d0e525d5d49357690040be71c9d496b6637d311efc650416`
+- `final-state.json` SHA256 `b31b938c383da558ef2584e2ee735382c3420e2411c30b17f18d6a6a9475a1ab`
+- `pack-assessment-002.json` SHA256 `f551ede46e1a8002e41bdb9b6f940174868abbc354678ef56faebde388ae915d`
+- `chemistryui-trace-assessment.json` SHA256 `0c8c428023ad9267773f90f2a631ecd151f7607ae19831682837fb3d88238a1a`
+- `logout-observation.json` SHA256 `ae886edb93956b43fa35638ac9be4c3e6be22da863ffa4481d516bbdd09aeb74`
+- `shutdown.json` SHA256 `4e10ab963396c2f3872f01133e8d7133c0d81a4ce15da333c9b231e27b8d8f02`
+- `result.json` SHA256 `2353a3ce9f99957da553ee650c71aed2e6f6777b62da069bc26d399e535975b2`
+- `pack-run.json` SHA256 `00f3aac5eebbffe8e8a70aa39aa26a06b51877c7924e82ba80471950edba7cb2`
+- `native-packet-assessment.json` SHA256 `33f403eaed15db26b33dcea7e31d0ffd5fb6f2631be8004307929f42dbf17d8c`
+- `native-quantity-assessment.json` SHA256 `33f403eaed15db26b33dcea7e31d0ffd5fb6f2631be8004307929f42dbf17d8c`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":300},"3077":{"before":0,"after":55413},"3079":{"before":0,"after":184},"65515":{"before":0,"after":174}},"supersedes":"pack-assessment.json retained FAIL; exact cache-attested choice layout bit was missing from expected state"}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Controls must not produce potions or XP; independent native dispatch and durable state required"}`
+
+## Native gameplay chemistryui acceptance (2026-10-16 UTC)
+
+Native inventory Options, Stop choice and Break dispatch; selected amulet consumed, two remaining charges reset to five, stop setting persisted, coins and every stat conserved; same-save no replay. Worn Options and alchemist variant remain separate.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking/Herblore parity or unrelated recipes. No issue closure.
+
+`openrune-native-chemistryui-relogin-004` PASS. Server archive `F73ECB2C014469E82EF8E336C205ADCCC4DFC794DF55179E18A9723FE5AD7051`, driver `chemistryui-005`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor `openrune-native-chemistryui-004`, owned PID14448.
+- Driver `NativeChemistryUiScenario.rs` SHA256 `2E9E9493760C96A711D7F4635AEEDECC2CB309CE8F1077A306021BA0506989D2`
+- Driver `server_chemistryui.exe` SHA256 `1D0A9F8CA038B3B05BEC79B566660782795A4E322C4C9E5E99B05E1D90A073E0`
+- `client.log` SHA256 `261bff0cafcf6d522a549f9aa4f53e21e115b575c5d38fc0da501d9cdf07b3e9`
+- `server.log` SHA256 `f703cb41c4a4ef8a57debb75fdaa2a283d8d6a925a4bb92bb20c5d4ffc36d902`
+- `initial-state.json` SHA256 `b31b938c383da558ef2584e2ee735382c3420e2411c30b17f18d6a6a9475a1ab`
+- `final-state.json` SHA256 `f6f362d461b7ef7e9b1cc5752e491fef6f7b86ad0d5bf957d538436c53beb696`
+- `pack-assessment.json` SHA256 `a91fb09469beaa7cdaf32d76bca18158b5680d7f3fa87c62bb827f2c3f017ad0`
+- `chemistryui-trace-assessment.json` SHA256 `0c8c428023ad9267773f90f2a631ecd151f7607ae19831682837fb3d88238a1a`
+- `logout-observation.json` SHA256 `5a8bb2d8d3ae5632f6c217917dc9a7b9b1925cb460c60f5ca8ad60bbc04b65be`
+- `shutdown.json` SHA256 `02300db10ade665a69053a6e23e19f0fa440298d625a7315769ef398bcf11215`
+- `result.json` SHA256 `819230d93c3544b7f3616795679612af8ea0e99a08577aad0dbd77d6badb9f1d`
+- `pack-run.json` SHA256 `f3f65d32f80afab74a62d70d124b734153e7345cb6cb35fd1979863a61997148`
+- `native-packet-assessment.json` SHA256 `33f403eaed15db26b33dcea7e31d0ffd5fb6f2631be8004307929f42dbf17d8c`
+- `native-quantity-assessment.json` SHA256 `33f403eaed15db26b33dcea7e31d0ffd5fb6f2631be8004307929f42dbf17d8c`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":300,"after":500},"3077":{"before":55413,"after":7528},"3079":{"before":184,"after":144},"65515":{"before":174,"after":306}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Controls must not produce potions or XP; independent native dispatch and durable state required"}`
+
+
+## Chemistry UI native diagnosis and accepted scope
+
+UI003 driver004 proved Stop child2 had native flags1, but its geometric center[279,457] lay at the excluded bottom of clip[40,445,499,457]. Driver005 selects the visible clip midpoint[269,451] through the actual Continue menu and requires generated115; no packet injection, client source changes or widget mutation. Diagnostic failure003 and earlier failures are retained. Partial rendered clipping remains a presentation limitation, not accepted visual parity. Driver005 compiled2.63s with4800MiB76.4percentcommit84page-ins/s1.7msdisk37.8percentCPU,j2.
+
+UI004 client and packets passed, but original pack-assessment.json failed because generic conservation omitted the intentional choice layout bit. Cache varbit10670 chatmodal_unclamp is exactly varp1021 bit28 (definitionSHA256bcc996077289632de0e1704bb53e29907e472cb10aa546359d141e51b647703d). Kotlin ifChoice/ifOpenChat and Rust both set mode1. Versioned pack-assessment-002.json requires exactly that change, rejects all other bits/varps, and retains the FAIL file unchanged.35synthetic checks passed including adjacent-bit corruption and same-save preservation. PredecessorAssessment explicitly selects version002 for relogin; early relogin attempt failed preflight before launching because assessments were incomplete, retained in chemistryui-relogin-attempt-004.log. Completed relogin004 uses attempt004b.
+
+Worn native driver001 compiled5.65s with4330MiB78.6percentcommit0page-ins/s1.9msdisk34.3percentCPU,j2;15synthetic packet/state checks PASS after correcting synthetic inventory ordering (no production change). Worn control/fresh/same-save remain pending.
