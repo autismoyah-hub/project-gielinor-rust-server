@@ -228,4 +228,70 @@ mod tests {
             assert_eq!((inv, stats), before);
         }
     }
+
+    #[test]
+    fn every_full_backpack_slot_pair_conserves_unrelated_state() {
+        for herb_slot in 0..28 {
+            for vessel_slot in 0..28 {
+                if herb_slot == vessel_slot {
+                    continue;
+                }
+                let (mut job, mut inv, catalog, mut stats) = fixture(false);
+                for slot in 0..28 {
+                    inv.restore_slot(
+                        slot,
+                        Some(Item {
+                            id: 1931,
+                            count: 1,
+                            vars: 0,
+                        }),
+                    )
+                    .unwrap();
+                }
+                inv.restore_slot(
+                    herb_slot,
+                    Some(Item {
+                        id: 249,
+                        count: 1,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+                inv.restore_slot(
+                    vessel_slot,
+                    Some(Item {
+                        id: 227,
+                        count: 1,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+                job.herb_slot = herb_slot;
+                job.vessel_slot = vessel_slot;
+                stats.set_fine_xp(15, Stats::MAX_FINE_XP).unwrap();
+                let before = (inv.clone(), stats.clone());
+                assert_eq!(
+                    job.complete(&mut inv, &catalog, &mut stats, true, true),
+                    Outcome::Made
+                );
+                assert_eq!(inv.free_space(), 1);
+                assert_eq!(
+                    inv.slots().iter().flatten().filter(|i| i.id == 91).count(),
+                    1
+                );
+                assert!(
+                    !inv.slots()
+                        .iter()
+                        .flatten()
+                        .any(|i| i.id == 249 || i.id == 227)
+                );
+                for slot in 0..28 {
+                    if slot != herb_slot && slot != vessel_slot {
+                        assert_eq!(inv.get(slot), before.0.get(slot));
+                    }
+                }
+                assert_eq!(stats, before.1);
+            }
+        }
+    }
 }
