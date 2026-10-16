@@ -2044,3 +2044,49 @@ Extended the existing ingredient-pair runtime from9 to15ordinary recipes. No par
 Target symbols/decoded239.1 definitions and hashes remain in private work/openrune-finished-potions-high-readiness-001.json. Superantipoison uses1063base fineXP (106.3XP), awarding5315fineXP at5x without rounding to106XP.
 
 Validation finished-high-tests-attempt-001 PASS:51server+381world,0failed,1existing ignored;382source hashes unchanged. Build/test28.82s plus world22.74s. Guard4344MiB available,79.8percent commit,209page-ins/s,1.4ms disk,CPU68.7percent;Cargo-j2. Existing tests now exercise all15profiles, both orders, threshold/refusal conservation, capped/fractional rewards, goggles draws0..9 and shared bases. Native six-profile acceptance pending; prepared assessors298synthetic checks PASS, not native acceptance. Earlier nine-profile/goggles archives remain immutable.
+
+## Native gameplay finishedhigh acceptance (2026-10-16 UTC)
+
+Six higher-level ordinary profiles: Super attack, Superantipoison, Fishing, Super energy, Hunter and Super strength. Genuine native Use/Make1, alternating selected order, shared-base resolution, exact34065fineXP including5315Superantipoison at5x, full28initial and same-save no replay. Modifiers and native level boundaries are separate.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking/Herblore parity or unrelated recipes. No issue closure.
+
+`openrune-native-finishedhigh-001` PASS. Server archive `6D89674EAB75A6265F6312A3EF4488701678BDB5A0966F136C1ED9CC867C587F`, driver `finishedhigh-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID4664.
+- Driver `NativeFinishedHighScenario.rs` SHA256 `A5C9E0D1C82CB2FBB1A34AFD727C68CECE23D5283915DA6AB8C06797436D58B8`
+- Driver `server_finishedhigh.exe` SHA256 `DC3D02C98EAC31F98AA9123FDB1CDEDBEC78EA93F161F30DBE0C428A09A79730`
+- `client.log` SHA256 `74ffff937d73a14ca1f2564b4b85e2c40035b9adc933cb25ad9af96cabd63c99`
+- `server.log` SHA256 `c1d5f9f0a14961c8338358b0223a193768b3e8770039053082c320deb3db5002`
+- `initial-state.json` SHA256 `eb0ae05d262cd599580c1eea6110043596c6f0200fed9884bf4d754163a5ba07`
+- `final-state.json` SHA256 `001420606167839608bc669da9125a0ed82cc570f6dbda031ed3f875ad919cfd`
+- `pack-assessment.json` SHA256 `d4cd733f4e4178e8fad3c6ab3db7e8041d32608d605cd9e56a981d3659d9d24f`
+- `finishedhigh-trace-assessment.json` SHA256 `04da0a25343c6c6f1b48b07704e1f31e8ff911c1539649b19dac1a2c19be9121`
+- `logout-observation.json` SHA256 `b048ee14f4ed3d7d605ab61dc767e4acbeecdfcbf76834738e4204fea59b6b51`
+- `shutdown.json` SHA256 `89c847ebd1af082ae7f43f437863f5a4a6a12e1b188ee42c5f211d23c6a3af23`
+- `result.json` SHA256 `452027e38a483446796a644d9da5e2d652ccc647fba95023fb58dfdba3385ce8`
+- `pack-run.json` SHA256 `112d909e8e18c16edfe3c30261ad90d17175e29cc4b16ba296697ec8ac46339b`
+- `native-profile-assessment.json` SHA256 `3f14a170fae57aa7fb1d7cec162cb49aa87debcbb735e6b036598733a23eb947`
+- `native-packet-assessment.json` SHA256 `558edd2c693d79b9da184ea8409a7dd0679326ac13851343dfc3a33bf9d41aad`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":400},"3077":{"before":0,"after":16784},"3079":{"before":0,"after":205},"65515":{"before":0,"after":193}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[{"actor_slot":1,"actor_generation":614,"unfinished_slot":0,"secondary_slot":1,"unfinished":101,"secondary":221,"output":145,"count":1,"queued_at":114,"committed_at":116,"index":0,"base_fine_xp":1000,"rate_hundreds":500,"fine_before":130344311,"fine_after":130349311,"secondary_saved":false},{"actor_slot":1,"actor_generation":614,"unfinished_slot":2,"secondary_slot":3,"unfinished":101,"secondary":235,"output":181,"count":1,"queued_at":124,"committed_at":126,"index":0,"base_fine_xp":1063,"rate_hundreds":500,"fine_before":130349311,"fine_after":130354626,"secondary_saved":false},{"actor_slot":1,"actor_generation":614,"unfinished_slot":4,"secondary_slot":5,"unfinished":103,"secondary":231,"output":151,"count":1,"queued_at":137,"committed_at":139,"index":0,"base_fine_xp":1125,"rate_hundreds":500,"fine_before":130354626,"fine_after":130360251,"secondary_saved":false},{"actor_slot":1,"actor_generation":614,"unfinished_slot":6,"secondary_slot":7,"unfinished":103,"secondary":2970,"output":3018,"count":1,"queued_at":153,"committed_at":155,"index":0,"base_fine_xp":1175,"rate_hundreds":500,"fine_before":130360251,"fine_after":130366126,"secondary_saved":false},{"actor_slot":1,"actor_generation":614,"unfinished_slot":8,"secondary_slot":9,"unfinished":103,"secondary":10111,"output":10000,"count":1,"queued_at":168,"committed_at":170,"index":0,"base_fine_xp":1200,"rate_hundreds":500,"fine_before":130366126,"fine_after":130372126,"secondary_saved":false},{"actor_slot":1,"actor_generation":614,"unfinished_slot":10,"secondary_slot":11,"unfinished":105,"secondary":225,"output":157,"count":1,"queued_at":183,"committed_at":185,"index":0,"base_fine_xp":1250,"rate_hundreds":500,"fine_before":130372126,"fine_after":130378376,"secondary_saved":false}],"scope":"Separate selected-profile two-tick commits; UI evidence and packet/display latency separate"}`
+
+`openrune-native-finishedhigh-relogin-001` PASS. Server archive `6D89674EAB75A6265F6312A3EF4488701678BDB5A0966F136C1ED9CC867C587F`, driver `finishedhigh-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor `openrune-native-finishedhigh-001`, owned PID14816.
+- Driver `NativeFinishedHighScenario.rs` SHA256 `A5C9E0D1C82CB2FBB1A34AFD727C68CECE23D5283915DA6AB8C06797436D58B8`
+- Driver `server_finishedhigh.exe` SHA256 `DC3D02C98EAC31F98AA9123FDB1CDEDBEC78EA93F161F30DBE0C428A09A79730`
+- `client.log` SHA256 `b7e1578da71d2b1ed21118bd8c74964f9a9128c8eebbd7f83b06a4def8a153d8`
+- `server.log` SHA256 `48f0d6ca70a0209180aae0dee48e91694e57396e72e23e8a81af84f3c445f1a6`
+- `initial-state.json` SHA256 `001420606167839608bc669da9125a0ed82cc570f6dbda031ed3f875ad919cfd`
+- `final-state.json` SHA256 `b229d41c3fb862daa00e8e354f161ea44d25f256ab73fd1b2fc129ab0e417d0d`
+- `pack-assessment.json` SHA256 `f58ce628131be498c1b351268151568ff5000ebf89e4b9742a794f64f70a46d6`
+- `finishedhigh-trace-assessment.json` SHA256 `15565119835c4387827e07e673e26fc0ec5897457d403e87d7333c03aaf96013`
+- `logout-observation.json` SHA256 `2002a37225e4e9e49db407e2ac55756387a3d851d0f975c6b06c17607dec5b97`
+- `shutdown.json` SHA256 `14115775ab46d01952249d5f0e73dd4ff09ad8937b6a50848e6ae78539239c04`
+- `result.json` SHA256 `95bf204d099c15e462df209137628c0edf2aa19e64869c3ecee240fc09473a51`
+- `pack-run.json` SHA256 `55fbdafc427789dfbd3f1ab9dc14a61bb76b31c0feb6228df3fa28bcba98f4f9`
+- `native-profile-assessment.json` SHA256 `3f14a170fae57aa7fb1d7cec162cb49aa87debcbb735e6b036598733a23eb947`
+- `native-packet-assessment.json` SHA256 `aa55b90c2517bc81293818c44d26cf5a63026cd60adeb9af6632f3df28c5f52d`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":400,"after":600},"3077":{"before":16784,"after":22425},"3079":{"before":205,"after":143},"65515":{"before":193,"after":326}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Separate selected-profile two-tick commits; UI evidence and packet/display latency separate"}`
