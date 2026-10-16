@@ -29,3 +29,22 @@ impl<B:AccountBackend> Runtime<B>{
         self.active.get_mut(&actor).unwrap().chemistry_dialog=Some((token,presentation.choice_button));Ok(())
     }
 }
+
+// Static worn buttons use nullable child/object fields; the mapped component and
+// current equipment remain authoritative. Explicit stale item claims still fail.
+pub(super) fn worn_item_claim_matches(button:&gielinor_protocol::buttons::Button,item:i32)->bool {
+    button.slot == -1 && (button.object == -1 || button.object == item)
+}
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn native_static_neck_packet_uses_null_item_but_rejects_stale_explicit_claims() {
+        let mut button=gielinor_protocol::buttons::button(&[1,131,0,17,255,255,255,255,2]).unwrap();
+        assert_eq!((button.component,button.slot,button.object,button.op),((387<<16)|17,-1,-1,2));
+        assert!(worn_item_claim_matches(&button,21163));
+        button.object=21163;assert!(worn_item_claim_matches(&button,21163));
+        button.object=21164;assert!(!worn_item_claim_matches(&button,21163));
+        button.object=-1;button.slot=2;assert!(!worn_item_claim_matches(&button,21163));
+    }
+}

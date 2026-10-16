@@ -2511,7 +2511,7 @@ impl<B: AccountBackend> Runtime<B> {
                                     } else if button.op == 2 {
                                         self.worn_components.get(&button.component).and_then(|&slot| {
                                             let item=self.world.data(actor).ok()?.equipment.get(slot)?;
-                                            (slot==2 && item.id==button.object && self.world.finished_potions.as_ref().is_some_and(|c|c.chemistry.values().any(|b|b.amulet==item.id))).then_some(Action::ChemistryItem{slot,item:item.id,operation:4,worn:true})
+                                            (slot==2 && chemistry_dialog::worn_item_claim_matches(&button,item.id) && self.world.finished_potions.as_ref().is_some_and(|c|c.chemistry.values().any(|b|b.amulet==item.id))).then_some(Action::ChemistryItem{slot,item:item.id,operation:4,worn:true})
                                         })
                                     } else if button.op == 1 {
                                         self.worn_components
