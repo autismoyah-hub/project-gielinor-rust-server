@@ -905,3 +905,176 @@ mod milking_binding_tests {
         assert!(milking(&obj, &loc, &seq, &synth, &defs).is_err());
     }
 }
+
+/// Narrow ordinary sink/well profiles attested in the prepared 239.1 cache.
+/// Does not infer source behavior from a display name or map icon alone.
+pub fn water_sources(
+    obj: &Symbols,
+    loc: &Symbols,
+    defs: &Definitions,
+) -> Result<gielinor_world::water_sources::Config, String> {
+    use gielinor_world::water_sources::{Config, Source, Vessel};
+    let resolve = |symbols: &Symbols, name: &str| {
+        symbols
+            .get(name)
+            .copied()
+            .ok_or_else(|| format!("Missing water-source symbol {name}"))
+    };
+    let mut config = Config::default();
+    for (input, output, well) in [
+        ("bucket_empty", "bucket_water", true),
+        ("jug_empty", "jug_water", false),
+        ("bowl_empty", "bowl_water", false),
+        ("vial_empty", "vial_water", false),
+    ] {
+        let input = resolve(obj, input)?;
+        let output = resolve(obj, output)?;
+        if input == output {
+            return Err("Water input/output aliases".into());
+        }
+        for id in [input, output] {
+            let item = defs
+                .items
+                .get(&(id as u32))
+                .ok_or("Missing water vessel definition")?;
+            if item.stackable || item.cert.template != 0 || item.placeholder.template != 0 {
+                return Err("Invalid ordinary water vessel".into());
+            }
+        }
+        if config
+            .vessels
+            .insert(input, Vessel { output, well })
+            .is_some()
+        {
+            return Err("Duplicate water vessel".into());
+        }
+    }
+    for (symbol, kind, name, width, length) in [
+        ("sink", Source::Sink, "Sink", 1, 2),
+        ("sink2", Source::Sink, "Sink", 1, 2),
+        ("desertwell", Source::Well, "Well", 1, 1),
+        ("well", Source::Well, "Well", 2, 2),
+    ] {
+        let id = resolve(loc, symbol)? as u32;
+        let def = defs
+            .locations
+            .get(&id)
+            .ok_or("Missing water source definition")?;
+        if def.name != name
+            || !def.multi.is_empty()
+            || def.collision.width != width
+            || def.collision.length != length
+            || def.ops.iter().any(Option::is_some)
+        {
+            return Err(format!("Unattested water source {symbol}"));
+        }
+        if config.sources.insert(id, kind).is_some() {
+            return Err("Duplicate water source".into());
+        }
+    }
+    Ok(config)
+}
+
+#[cfg(test)]
+mod water_binding_tests {
+    use super::*;
+    #[test]
+    fn names_bind_separate_source_policies_and_reject_malformed_definitions() {
+        let mut obj = Symbols::new();
+        let mut loc = Symbols::new();
+        let mut defs = Definitions {
+            inventories: Default::default(),
+            locations: Default::default(),
+            npcs: Default::default(),
+            items: Default::default(),
+            varbits: Default::default(),
+            varps: Default::default(),
+            stats: Default::default(),
+        };
+        for (index, name) in [
+            "bucket_empty",
+            "bucket_water",
+            "jug_empty",
+            "jug_water",
+            "bowl_empty",
+            "bowl_water",
+            "vial_empty",
+            "vial_water",
+        ]
+        .into_iter()
+        .enumerate()
+        {
+            let id = 100 + index as i32;
+            obj.insert(name.into(), id);
+            defs.items.insert(
+                id as u32,
+                gielinor_cache::definitions::ItemType::decode(&[0]).unwrap(),
+            );
+        }
+        for (index, (symbol, name, width, length)) in [
+            ("sink", "Sink", 1, 2),
+            ("sink2", "Sink", 1, 2),
+            ("desertwell", "Well", 1, 1),
+            ("well", "Well", 2, 2),
+        ]
+        .into_iter()
+        .enumerate()
+        {
+            let id = 300 + index as i32;
+            loc.insert(symbol.into(), id);
+            let mut raw = vec![2];
+            raw.extend_from_slice(name.as_bytes());
+            raw.extend_from_slice(&[0, 14, width, 15, length, 0]);
+            defs.locations.insert(
+                id as u32,
+                gielinor_cache::locations::LocationType::decode(&raw).unwrap(),
+            );
+        }
+        let config = water_sources(&obj, &loc, &defs).unwrap();
+        assert_eq!(config.output(300, 102), Some(103));
+        assert_eq!(config.output(303, 100), Some(101));
+        assert_eq!(config.output(303, 102), None);
+        defs.items.get_mut(&101).unwrap().cert.template = 799;
+        assert!(water_sources(&obj, &loc, &defs).is_err());
+        defs.items.get_mut(&101).unwrap().cert.template = 0;
+        defs.locations.get_mut(&300).unwrap().name = "Decorative sink".into();
+        assert!(water_sources(&obj, &loc, &defs).is_err());
+    }
+}
+
+/// Independently Wiki-pinned recipes. Other crushing-table rows remain unassessed.
+pub fn grinding(obj:&Symbols,seq:&Symbols,defs:&Definitions)->Result<Vec<gielinor_world::grinding::Recipe>,String>{
+    let resolve=|symbols:&Symbols,name:&str|symbols.get(name).copied().ok_or_else(||format!("Missing grinding symbol {name}"));
+    let animation=u16::try_from(resolve(seq,"human_herbing_grind")?).map_err(|_|"Invalid grinding sequence")?;
+    let mut pairs=std::collections::BTreeSet::new();let mut recipes=Vec::new();
+    for (tool,input,output,members) in [("knife","chocolate_bar","chocolate_dust",false),("pestle_and_mortar","chocolate_bar","chocolate_dust",true),("pestle_and_mortar","unicorn_horn","unicorn_horn_dust",true)] {
+        let tool=resolve(obj,tool)?;let input=resolve(obj,input)?;let output=resolve(obj,output)?;
+        if tool==input || input==output || tool==output || !pairs.insert((tool,input)) {return Err("Aliased grinding recipe".into());}
+        for id in [tool,input,output]{
+            let item=defs.items.get(&(id as u32)).ok_or("Missing grinding item definition")?;
+            if item.stackable || item.cert.template!=0 || item.placeholder.template!=0 {return Err("Invalid ordinary grinding item".into());}
+        }
+        recipes.push(gielinor_world::grinding::Recipe{tool,input,output,members,animation:members.then_some(animation)});
+    }
+    Ok(recipes)
+}
+
+#[cfg(test)]
+mod grinding_binding_tests {
+    use super::*;
+    #[test]
+    fn named_recipes_distinguish_member_tool_and_validate_items() {
+        let mut obj=Symbols::new();let seq=Symbols::from([("human_herbing_grind".into(),901)]);
+        let mut defs=Definitions{inventories:Default::default(),locations:Default::default(),npcs:Default::default(),items:Default::default(),varbits:Default::default(),varps:Default::default(),stats:Default::default()};
+        for (i,name) in ["knife","pestle_and_mortar","chocolate_bar","chocolate_dust","unicorn_horn","unicorn_horn_dust"].into_iter().enumerate(){
+            obj.insert(name.into(),100+i as i32);defs.items.insert(100+i as u32,gielinor_cache::definitions::ItemType::decode(&[0]).unwrap());
+        }
+        let recipes=grinding(&obj,&seq,&defs).unwrap();assert_eq!(recipes.len(),3);
+        assert_eq!((recipes[0].tool,recipes[0].input,recipes[0].output),(100,102,103));
+        assert!(!recipes[0].members);assert_eq!(recipes[0].animation,None);
+        assert!(recipes[1].members);assert_eq!(recipes[1].animation,Some(901));
+        assert_eq!((recipes[2].tool,recipes[2].input,recipes[2].output),(101,104,105));
+        defs.items.get_mut(&103).unwrap().cert.template=799;assert!(grinding(&obj,&seq,&defs).is_err());
+        defs.items.get_mut(&103).unwrap().cert.template=0;obj.insert("chocolate_dust".into(),102);assert!(grinding(&obj,&seq,&defs).is_err());
+    }
+}

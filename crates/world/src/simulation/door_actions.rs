@@ -140,6 +140,8 @@ impl World {
         );
         let p = self.players.get_mut(actor.slot as usize).unwrap();
         p.queues.remove_all(crate::milking::QUEUE);
+        p.queues.remove_all(crate::water_sources::QUEUE);
+        p.queues.remove_all(crate::grinding::QUEUE);
         p.pending_door = None;
         p.prayer = None;
         p.pending_pickup = None;

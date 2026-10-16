@@ -3016,6 +3016,8 @@ impl<B: AccountBackend> Runtime<B> {
                         ));
                     };
                     character.identity.slot = actor.slot;
+                    self.world.set_membership(actor,character.identity.member)
+                        .map_err(|e|io::Error::other(format!("Membership admission: {e:?}")))?;
                     self.world
                         .set_music_resizable(actor, resized)
                         .map_err(|e| io::Error::other(format!("{e:?}")))?;

@@ -27,6 +27,8 @@ pub use movement_actions::MovementInput;
 mod elemental_spell_actions;
 mod item_pack_actions;
 mod milking_actions;
+mod water_source_actions;
+mod grinding_actions;
 mod mining_actions;
 mod npc_actions;
 mod npc_combat_actions;
@@ -163,6 +165,8 @@ enum Deferred {
     Smithing(crate::smithing_make::Job),
     Assembly(crate::assembly::Job),
     Milking(crate::milking::Job),
+    WaterFilling(crate::water_sources::Job),
+    Grinding(crate::grinding::Pending),
     ItemPack {
         pack: i32,
         rule: crate::item_packs::Rule,
@@ -213,6 +217,7 @@ enum LocationAction {
     HeldUse { slot: i32, object: i32 },
 }
 struct Player {
+    member: bool,
     stat_events: crate::stat_events::Events,
     areas: crate::area_tracking::State,
     pending_areas: VecDeque<crate::area_tracking::Event>,
@@ -284,6 +289,8 @@ impl Player {
     fn begin_held_action(&mut self) {
         self.queues.remove_all(crate::assembly::QUEUE);
         self.queues.remove_all(crate::milking::QUEUE);
+        self.queues.remove_all(crate::water_sources::QUEUE);
+        self.queues.remove_all(crate::grinding::QUEUE);
         // The current source's normal launch clears interactions; launchLenient
         // only replaces the suspended coroutine, even if objectVerify rejects it.
         if !self.protection.access_protected(self.has_modal) {
@@ -583,6 +590,7 @@ pub enum WorldEvent {
         event: crate::dialogue::Event,
     },
     Milking { actor:ActorId, trace:crate::milking::Transition },
+    WaterFilled { actor: ActorId, trace: crate::water_sources::Transition },
     CombatSound {
         actor: ActorId,
         sound: u16,
@@ -828,6 +836,7 @@ pub struct World {
     pub slot_preserving_foods: std::collections::BTreeSet<i32>,
     pub potions: BTreeMap<i32, crate::potions::Potion>,
     pub milking: Option<crate::milking::Config>,
+    pub water_sources: Option<crate::water_sources::Config>,
     pub item_packs: BTreeMap<i32, crate::item_packs::Rule>,
     pub prayer: Option<crate::prayer::Config>,
     pub regeneration: Option<crate::player_regen::Config>,
@@ -925,6 +934,7 @@ impl Default for World {
             potions: BTreeMap::new(),
             item_packs: BTreeMap::new(),
             milking: None,
+            water_sources: None,
             prayer: None,
             regeneration: None,
             session_vars: None,
@@ -1291,6 +1301,8 @@ impl World {
         p.has_modal = open;
         if open {
             p.queues.remove_all(crate::milking::QUEUE);
+            p.queues.remove_all(crate::water_sources::QUEUE);
+            p.queues.remove_all(crate::grinding::QUEUE);
         }
         if !open {
             p.shop_session = None;
@@ -2354,6 +2366,14 @@ impl World {
                                                         &mut self.events,
                                                     );
                                                 }
+                                                Deferred::Grinding(job) => {
+                                                    grinding_actions::complete(p, queues, job, &self.object_types, &mut self.events);
+                                                }
+                                                Deferred::WaterFilling(job) => {
+                                                    if let Some(config) = &self.water_sources {
+                                                        water_source_actions::complete(p, queues, job, config, &self.object_types, self.locations.revision(job.target), self.clock.0, &mut self.events);
+                                                    }
+                                                }
                                                 Deferred::Milking(job) => {
                                                     if let Some(config) = &self.milking {
                                                         milking_actions::complete(
@@ -2823,6 +2843,7 @@ impl World {
                                 .expect("positive interval");
                         }
                         let player = Player {
+                            member: false,
                             tower_restore_pending: false,
                             tower_tastes: Default::default(),
                             tower_diary_login,

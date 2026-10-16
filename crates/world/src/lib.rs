@@ -279,3 +279,5 @@ pub mod mining;
 pub mod shop;
 
 pub mod milking;
+pub mod water_sources;
+pub mod grinding;

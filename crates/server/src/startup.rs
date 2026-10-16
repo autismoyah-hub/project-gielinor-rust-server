@@ -679,6 +679,11 @@ pub fn configure<B: AccountBackend>(
         )
         .map_err(io::Error::other)?,
     );
+    runtime.world.water_sources = Some(crate::content::water_sources(n("obj"), n("loc"), &runtime.definitions).map_err(io::Error::other)?);
+    for recipe in crate::content::grinding(n("obj"),n("seq"),&runtime.definitions).map_err(io::Error::other)? {
+        runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.tool,recipe.input,gielinor_world::held_use::Handler::Grinding(recipe))
+            .map_err(|e|io::Error::other(format!("Grinding registration: {e:?}")))?;
+    }
     runtime.configure_smelting_names(names)?;
     runtime.configure_anvil(crate::anvil::Config::resolve(
         names,

@@ -27,6 +27,7 @@ pub struct Preparation {
 #[derive(Clone, Copy, Debug)]
 pub enum Handler {
     Assembly(crate::assembly::Recipe),
+    Grinding(crate::grinding::Recipe),
     TutorialDough(crate::tutorial_dough::Config),
     TutorialFire(crate::tutorial_fire::Config),
 }

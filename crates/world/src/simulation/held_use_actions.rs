@@ -77,6 +77,12 @@ impl World {
             }
         };
         match handler {
+            Some(Handler::Grinding(recipe)) => {
+                let (tool_slot,input_slot)=if request.selected_id==recipe.tool {
+                    (request.selected_slot as usize,request.target_slot as usize)
+                } else {(request.target_slot as usize,request.selected_slot as usize)};
+                self.start_grinding(actor,recipe,tool_slot,input_slot)?;
+            }
             Some(Handler::Assembly(recipe)) => {
                 let p = self.players.get_mut(actor.slot as usize).unwrap();
                 if (p.data.stats.current(recipe.skill) as u8) < recipe.level {

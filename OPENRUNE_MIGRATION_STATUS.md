@@ -173,3 +173,76 @@ Both owned native drivers compiled: integration/scenario-drivers/pack-profiles-0
 - work/openrune-runes-milk-build-003.log: SHA256 a1274b01b8ceda11de83dcaa25237c3bf776c1096aae434fdb03f1ecdc6092e8
 - work/openrune-pack-profile-driver-001.log: SHA256 bd931aa3259e651ee27b0a694ecf65a5006513bd45f5f49314ec002b9113b38e
 - work/openrune-milk-driver-001.log: SHA256 634d27b9981facee5cffc11a67537057fbf876d50a4b867c599864f423cab19c
+
+
+### 2026-10-15: next bounded water-source implementation (unvalidated)
+
+While Agent1 compiled, independently implemented selected ordinary bucket/jug/bowl/vial filling through existing use-location routing and weak scheduler, no parallel gameplay engine. Reached admission schedules one subsequent tick, strict selected slot retained, stage debit+credit before commit, recheck source revision and movement/modal/logout state. This narrow operation fills one selected vessel; automatic multi-vessel continuation has not been established/implemented. No XP. Runtime binding limited to Names sink/sink2/desertwell/well, with expected names/dimensions/no transforms/no operations; vessels validated unnoted/unstackable. Other sources, cups, waterskins, watering cans, fishbowls, source-specific animations and transfers excluded. New tests authored, compilation/runtime/native NOT TESTED yet. Do not use the earlier8E7505 archive to claim this new water implementation passed.
+
+OpenRune WaterSourceScript.kt SHA c3c64fbf782253bde735ca06e0f32b99e403230681388d4a713351f0dc041926 read completely: onOpContentLocU water_source; four mappings; separate invDel/invAdd, no selected-slot transaction, no source-kind restriction in handler. Effective241 registration may narrow source coverage; no deployed defect claim. No source expression/dialogue copied. Wiki source table explicitly distinguishes wells; within the four selected vessel families only buckets qualify. Well page also allows cups, which this bounded batch excludes. Water source is a redirect to Water, not an independent behavior page. Bounded issue search found shared #54/#10 but no focused water-fill issue; farming watering issue119 is unrelated scope.
+
+Pinned Wiki/definition identities: work/openrune-water-preflight-001.json. Wiki revisions and content SHA256:
+- Water: 15285916, 2798a9879306fd27f27302bf7863d07a2e1fab4699e1e192ef1729e3b60ccb74
+- Water source: 144949, 534b315a2b71098008aea200f8879f00e70314b13e8d5877eec7cce274559e8e
+- Bucket of water: 15183449, 64b046c1f1fa7fc1399df8ee27c2977a8fa59882aa4331e2f5521f31e0d18b46
+- Jug of water: 15229681, 6445bf1c584ccc6a4dba5e8365aafa815223ef407218589bc04a2f1a70e7daf4
+- Bowl of water: 15183420, 8c750bd09728cf043102bbd541f26a9dc1d2873c8f788a0da7659600bf8571a2
+- Vial of water: 15301413, ebb10d0d9681e76a1bc12d222a275f9ad22254cdfe79e2aa8a5230f71ed91290
+- Well: 15241970, 79b7ffca4bb125814a3269f82d465c9eed4807ee926cba0cb950471791904a40
+
+
+### 2026-10-15: native seventeen-pack matrix and same-save acceptance
+
+Source checkpoint caefcf424869d2a54d711acd22a279351f098be0 (normal Git push/remote SHA matched), archived server8E7505F10AF909499C570BB8FC9CEE5E9280198F032983F808BBA3B918C3A28C. All365archive source hashes matched the source tree before subsequent water work. Driver pack-profiles-001 sourceF337459109F0FF401FEC38C2708562C4D620508DEE8B3D91C4FA81C9B069DBF7/executable229054A38B77CD6B5E92D509E32E9D914C841885F9C07A113BC528E7D9E34973, pinned baseline client239.1 library unchanged. Native interface operation2 generated each pack Open, output100 of each expected profile,1000coins and XP unchanged. Profiles include all previous7, ordinary6runes, filledpot/sack/basket/olive4. Fill output5355 explicitly confirmed. This does not validate shop stock/availability, all32OpenRune enum entries, exact native repeat cadence, rendering or multiplayer.
+
+Fresh fixture78e98252c8692ccb3a7244a778c92b33e268a93006c3be889fb8ef889f6688f9 reused unchanged across capacity deferrals; no reset/re-clone. Matching-archive login-only control PASS; full exported item/XP/gameplay conservation with static-varp control PASS. Session varps300/3077/3079/65515 are separately reported, not exact clock/regeneration acceptance. Same SQLite database relogin checked exact predecessor final-state hash before login and PASS conservation after new logout save. Every native run client0/server0, forced=false. Issue54 remains open for broader mandatory contract. Private evidence under work/integration/runs/:
+
+openrune-pack-profile-control-001: client0, new logout save, server0 clean shutdown.
+- initial-state.json: SHA256 08538a9e5f2e565953031f3fe7cbe382334b7f84fd7655703a3f8682e791ea35
+- final-state.json: SHA256 d2bec4b45da77e3aea9df34f4e55658d9f6c8667b9a38602c9138a15c49c9b4a
+- client.log: SHA256 445fb3543dfa167e8d347e8b1154c66757c6ad082ff9ae6fd8b2f34a41106c67
+- server.log: SHA256 130827400f7cdc63c13003f96cac916777aca254779357427a5c718d79ec8f5e
+- logout-observation.json: SHA256 b4fa277ed235e4b133edd10ef3791951e7be218a11b2662634d06fd76577bdc8
+- shutdown.json: SHA256 e3716b285e5d9345150ed8bb2334f8b9fb99d9f274ad6a0a945342b43fc9d4f0
+
+openrune-native-pack-profiles-001: client0, new logout save, server0 clean shutdown.
+- initial-state.json: SHA256 08538a9e5f2e565953031f3fe7cbe382334b7f84fd7655703a3f8682e791ea35
+- final-state.json: SHA256 1383f50e8990306398c06063cedc6615ad4bade047955419951c264d68009006
+- client.log: SHA256 3acdf074d5054ae06e00c98c38f489708665eff491a65c6a138186850df4abce
+- server.log: SHA256 979d190f3a3d6cb0dd7a7991711bffc257e00a8c88e09faa2c980837fe5124b0
+- logout-observation.json: SHA256 eefb48a4cab78304d24788d9bc3795d004a8bba60ce018798d6572b9875fbc69
+- shutdown.json: SHA256 2596e87822b32710312563fc4b727603c1cae14fbc03948a9a3e2abbac269796
+- pack-assessment.json: SHA256 4115e42372f20815fedcf32e9af21a0522baa6c4c0eb537a6aa515ee283e7e38
+
+openrune-native-pack-profiles-relogin-001: client0, new logout save, server0 clean shutdown.
+- initial-state.json: SHA256 1383f50e8990306398c06063cedc6615ad4bade047955419951c264d68009006
+- final-state.json: SHA256 54cafdf28e7a66b5cc88d2d86a674e61cbd3fcf40fca5b105c3877c02d1210e3
+- client.log: SHA256 d00ed66ec24795e7f22030d6d518b2a74c587f5e40b06a42d701ba89ad64a1f2
+- server.log: SHA256 31678adce42697f2940bf33fc8adf3e30ebf4125d97897366590210905caa74b
+- logout-observation.json: SHA256 519155b3b9965086853706487c4d2f13911946c84435baf2a5ebbec4f0428ac3
+- shutdown.json: SHA256 be8879bf35e86f34280ccc394923768af00b736a7f26cee5c9680e651d536283
+- pack-assessment.json: SHA256 163881916017ed8b5d8935c23893a6802d2fb55fc7cb3017b500dced58252b4f
+
+
+Water follow-up supersedes single-selected-only limitation above: local Wiki Money making guide/Filling water containers revision14207581 SHA0127035253ffcd30969c024839cbe59ff676d23a1ef7da0c13f08d897f11d5a3 explicitly describes automatic continuation after using one vessel. Hosidius kitchen14712696 SHAa2f94b361dc262b6a9512de35d186dba8e6567019612cb9b4317e80ca1e9f6bd corroborates container filling throughput; per-vessel recipe1tick remains the timing basis, not throughput estimation. Added same-input automatic repeats: initial selected slot, then first remaining matching ordinary vessel, callback queue2 for one subsequent world tick. Each callback retains generation/origin/cancellation checks and atomic replacement. Added first/repeat timing and post-first modal cancellation tests, still compilation PENDING. Other source/vessel/animation exclusions retained. Prepared target-vessel Names/definition report work/openrune-water-vessels-001.json PASS8items; no gameplay claim.
+
+Native continuation: pack matrix/control/relogin all PASS under8E7505, issue54 comment6208792381. Milk control fresh fixture02418761f23257dd08602a38ccf4728bd295688e44d1e4fa7cbfc5314bda1691 was created then deferred at31percent CPU; resume001 reused exact state hash and is running. Scripts integration-milk-control-run.ps1 and both pack/milk gameplay runners now have explicit ResumePrepared hash checks; no reset or duplicate fixture. Milk trace assessor synthetic checks reject absent/bool/invalid actor and tick identities and relogin rewards. Water scene work/openrune-water-scene-001.json found sink873 at3230,3206 plane0shape10angle3 and well884 at3161,3220 plane0shape10angle0; native reach untested. Pending new-source validation: build.ps1 -Action test -CargoArgs @('-p','gielinor-world','-p','gielinor-server','--lib','water_'); do not compile during native acceptance or Agent1 builds.
+
+Continuation at native milk/resource checkpoint: matching8E7505 milk control openrune-milk-login-control-001 PASS, new last_logout2026-10-16 05:33:54, server7956 clean0/forcedfalse; control result client0. Milk menu fixture openrune-native-milk-menu-001 is prepared and unchanged but NO native run directory: firstattempt001 deferred at initial compiler guard; attempt002 prepared fixture then launch guard deferred; resume001..004 deferred; none are native failures. Resume with integration-milk-run.ps1 -Run openrune-native-milk-menu-001 -ResumePrepared -ServerHash8E7505... (normal separated parameter value). Both capacity and source isolation remain: scripts/integration-capacity.ps1 and resources.ps1 unchanged. Redundant wrapper pre-preparation guard removed only; integration-rust-login.ps1 still performs full compiler/CPU/memory/paging guard immediately before any native process launch. No weakened thresholds. Last read-only compiler identity: Agent1 cargo4920, release tests-j1 started22:36; rustc14428 actor_freeze_clear at22:42;5838MiBavailable/70.86percentcommit. Never terminate/alter these processes.
+
+Water current uncommitted implementation now includes authoritative WaterFilled committed events/JSON and deterministic first/repeat one-tick assertions. Synthetic private trace assessor PASS8expected commits and rejects wrong slots/outputs/ticks/identities/flags/relogin rewards. Rust focused attempt work/openrune-water-tests-001.log deferred before compilation. NativeWaterScenario.rs prepared, not compiled/pinned; water-001 future driver, new server archive REQUIRED. integration-water-run.ps1 explicitly rejects an archive without water_sources.rs; same-archive control and trace/conservation gates required. Clone fixture water is defined (3230,3205;2each bucket/jug/bowl/vial+1000coins), but no water fixtures created. Driver/scenario mappings and launcher modes prepared and PowerShell parsed. Preserve8E7505 archive for pending milk; it predates water. Next water test command: build.ps1 -Action test -CargoArgs @('-p','gielinor-world','-p','gielinor-server','--lib','water_').
+
+Bounded subsequent source assessment (no crushing implementation yet): CrushingEvents.kt SHA1b1be23f0152d102b9fb1e932a8d7155ea3cca06d61fd2206abab3719c5a92ad fully read; startup recipes from HerbloreDefinitions.crushingRecipes/HerbloreCrushingRow.all(), stat/item/tool rechecks, free-space precondition, weak1 thenweak3, separate invDel/invAdd with compensating add, optionalXP. HerbloreDefinitions.kt SHAd813fd6485a19c5577a2cde40773ad589f9589374922a4d093d8033024c1942f fully read; actual effective table values not yet established. RootISC/nofileheader/history means reference-only; no expression copied. Wiki Chocolate dust15344089 SHAaac4b2bf607869f0ffd72f2f6692429922bcc67c8446575a9ebc6ed9854b0676 specifies knife(F2P) or pestle(members),0then2then3ticks; Unicorn horn dust15183414 SHA59aed953781fcab653eaa18cfbe3780498f5d538ec2a0249d5931a2a8cdd36ed and Crushed nest15184159 SHAc695eff9612a1ff6fd4fbf569a59c097863fad211789e143ddb129fe6755efcb same0/2/3cadence. Pestle and mortar15343438 SHAea72198cc66fc07d7dadcb9d639bed1d2c940310ac48623c4d28cc4d82b599e9 corroborates automatic repeat3ticks and 2014change. Do not copy reference queueconstants or unnecessary free-slot gate into atomic selected-slot replacement without evidence. Membership policy, table/IDs, tool retention, full-inventory behavior, target239.1 bindings and native tests are outstanding. Bounded GitHub crushing search returned0issues; no broad parent closure implied.
+
+Prepared independent grinding.rs transaction primitive while Agent1 compiles: exact retained tool and ingredient slots, live membership parameter, staged one-for-one replacement even when inventory full, dummy-output rollback, alias rejection. Tests authored, NOT COMPILED; no runtime handler/scheduler/recipe binding yet. This is preparation, not migrated gameplay completion. Existing held_use registry is the intended dispatch route. Account membership currently observed at Accepted.member in characters.rs, not yet reconciled into world-content authorization; do not silently hardcode member=true. First0/second2/subsequent3 timing must be validated through held-use admission and runtime tick phase rather than copied from reference queue constants. Current water source/source traces also uncompiled; active milk8E7505 native archive remains unchanged.
+
+
+### 2026-10-15: water and grinding regression validation
+
+work/openrune-water-grinding-tests-003.log SHA2566dd50d7b69f35e9b34d655031fa182f2090b23f75d6fc0dc3656e919363396d6: full server/world --lib regression PASS:44server tests and338world tests,0failures,1existing ignored world test. Earlier water-tests001/002 and water-grinding-tests001/002 were capacity deferrals, not compilations. Guard5801MiB available,69.7percentcommit,CPU1.7percent,-j2. Preserve full logs for exact timings.
+
+Grinding now registered through existing held_use::Handler and scheduler for knife+chocolate(F2P),pestle+chocolate,pestle+unicorn(members). Actual target items946/233/1973/1975/237/235 decoded in work/openrune-grinding-items-001.json PASS. Authenticated Accepted.member now populates ephemeral world player membership on Initialized; trusted headless hosts can explicitly set membership; client actions cannot set it. Each continuation rechecks live authorization. Initial result immediate, second2ticks, later3ticks, tool retained, strict first/repeat input slots, full inventory allowed transactionally, noXP. Member-tool animation uses target seq symbol human_herbing_grind364; knife animation deliberately unset pending attestation. Other crushing recipes, shops, membership-expiry backend synchronization and native cadence/save acceptance excluded. New deterministic tests verify admission/revocation, reverse pair, exact slots, tool retention and interruptions. This supersedes earlier primitive-only/no-runtime preparation notes.
+
+Water now validates first1tick and repeat1tick via committed events; all four selected ordinary vessels repeat same-input while source/movement/slot remains valid. Native water runner/driver/fixture/trace/conservation preparation exists, not yet compiled/pinned/run. Current8E7505 archive still excludes water/grinding; a new archive is required for their native acceptance. Pending milk acceptance continues against8E7505 only. No issue closure from this regression result.
+
+The existing ignored test is shop::tests::original_standard_price_oracle_matches_selected_finite_vectors, which requires an immutable original Kotlin fixture from scripts/shop-price-parity.ps1. No new test was ignored.
