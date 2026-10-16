@@ -1613,3 +1613,55 @@ Target animation human_herbing_vial363 verified in symbol table and raw config2/
 Validation: work/unfinished-runtime-tests-attempt-001.log FAIL E0063 missing optional World initializer, preserved. Corrected initializer; attempt002 PASS49server+371world,0failures,1existing ignored. Compilation90s; server0.25s/world17.92s. Measured5217MiB,76.2%commit,812page-ins/s,2.0ms disk,56.2%CPU allowed -j2 despite other compilers. Four new scheduler tests cover selected/reversed pairs and repeats, live eligibility/slot/credit failure, quest revocation between outputs, invalid quantities and intervening held actions. Prior756full-slot-pair and15profile regressions also pass.
 
 Isolated native unfinishedall preparation uses full28slots with three guam/vial pairs,21pots and1000coins,Herblore5 fine3881,quest80=4,persisted5x. Actual generated All selection and recipe action must independently decode to quantity28; expected three zero-XP products then exhaustion.266 synthetic assessor corruptions rejected. Native run/save/relogin acceptance remains PENDING; do not infer it from tests. Preserve existing immutable pins and earlier failures. Automatic herb cleaning, secondary ingredients, alternatives, capes, quest-specific recipes, rendering and multiplayer remain unaccepted.
+
+## Native gameplay unfinishedall acceptance (2026-10-16 UTC)
+
+Genuine native vial-on-guam Use and generated All/Make controls; independently decoded quantity28. Three consecutive one-clock unfinished-potion commits from full28slots, products in first-free slots0/1/2,21pots and1000coins preserved; all stats including fine Herblore3881 unchanged. Other recipes/quantities and modifiers not accepted by this fixture.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking/Herblore parity or unrelated recipes. No issue closure.
+
+`openrune-native-unfinishedall-001` PASS. Server archive `254F54107BA90A6C8013D5E22B1D7DA7EA08E8A19BF27D8972D51F1EDB6B26C7`, driver `unfinishedall-002`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID19544.
+- Driver `NativeUnfinishedAllScenario.rs` SHA256 `05DC6B33F2CF4ADE7C812A1001E2E3943D0FBF217F8EA3BD2C7F3BB31903F27B`
+- Driver `server_unfinishedall.exe` SHA256 `20A7F1D0132F71C0D5046D2A1052AD4D7E601247051D2F0E0171C9607F8C285E`
+- `client.log` SHA256 `8f7d06ecf514c814f0804f69417ca88a1311c4a8d3a07558003d02177bdfb20f`
+- `server.log` SHA256 `2d62363392bad882388769d1b3a8056d1d2bf902c063b4e31adc1d5ae604a00b`
+- `initial-state.json` SHA256 `471a08229c5fc0cce13912087dfe9995ec970e30a15c268287cf66de2dbb281a`
+- `final-state.json` SHA256 `4130a002bf44482e6d15b7a87b3195195c7d66fbd52878832adbc661d79405b6`
+- `pack-assessment.json` SHA256 `525ce07ce4d749afabd0403f7a2d069c92811deac5f8b3e47d2fb5f973ccfe9b`
+- `unfinishedall-trace-assessment.json` SHA256 `582617648825e8284087c736f4bbe90d30fcb125ec2774bdc27b0f1cc1946bbe`
+- `logout-observation.json` SHA256 `440af0f017d2236947d1c61c9c85ef6888f51780a3b378d86a562e41a11e4a02`
+- `shutdown.json` SHA256 `ceb04be69dcf23cfc9f070368c841b79f0cf22ec1d28fe72cd91fe86d02e4338`
+- `result.json` SHA256 `ef96728fd3d348949c4c6cef7a3c6fb6f1ad4a84767c61ef9066d57cc8954651`
+- `pack-run.json` SHA256 `621ea909809e769fab3955a1e6dd502cd1c85a4594fa7d3d82a652210a49b79e`
+- `native-packet-assessment.json` SHA256 `0da73c3f1263fd55096d8c2a9bc32ae81b88e9a4e381aafb140af217f0a8b0cf`
+- `native-quantity-assessment.json` SHA256 `de8b5f2bfabf95f380cb064962ac393e19190cef5f35776a602e1de2d7aa4964`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":300},"3077":{"before":0,"after":8886},"3079":{"before":0,"after":150},"65515":{"before":0,"after":140}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[{"actor_slot":1,"actor_generation":614,"herb_slot":0,"vessel_slot":1,"herb":249,"vessel":227,"output":91,"count":1,"queued_at":128,"committed_at":129,"index":0},{"actor_slot":1,"actor_generation":614,"herb_slot":2,"vessel_slot":3,"herb":249,"vessel":227,"output":91,"count":1,"queued_at":129,"committed_at":130,"index":1},{"actor_slot":1,"actor_generation":614,"herb_slot":4,"vessel_slot":5,"herb":249,"vessel":227,"output":91,"count":1,"queued_at":130,"committed_at":131,"index":2}],"scope":"Three consecutive server unfinished-potion commits from one quantity request; UI evidence and packet/display latency separate"}`
+
+`openrune-native-unfinishedall-relogin-001` PASS. Server archive `254F54107BA90A6C8013D5E22B1D7DA7EA08E8A19BF27D8972D51F1EDB6B26C7`, driver `unfinishedall-002`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor `openrune-native-unfinishedall-001`, owned PID15736.
+- Driver `NativeUnfinishedAllScenario.rs` SHA256 `05DC6B33F2CF4ADE7C812A1001E2E3943D0FBF217F8EA3BD2C7F3BB31903F27B`
+- Driver `server_unfinishedall.exe` SHA256 `20A7F1D0132F71C0D5046D2A1052AD4D7E601247051D2F0E0171C9607F8C285E`
+- `client.log` SHA256 `a90487ad513d15df4db67326ee6999fa5b3542fd026f37c1fab6a59681744adf`
+- `server.log` SHA256 `91b24863cd49e91667778ec7b2a5f57468601df89bd4d2946abb5144fea9b829`
+- `initial-state.json` SHA256 `4130a002bf44482e6d15b7a87b3195195c7d66fbd52878832adbc661d79405b6`
+- `final-state.json` SHA256 `bea6f919714182976773e8bbc45b76ceec4d305d76d949c15f9e9975c683df4b`
+- `pack-assessment.json` SHA256 `7387ee9fbae13923937ebce7505ad10bce724148777ae69b03f561965cb79be2`
+- `unfinishedall-trace-assessment.json` SHA256 `86706551d4166020231d48c945beab85cd16f4d1863caecdafa40d4dd638ddfa`
+- `logout-observation.json` SHA256 `71b45dfd5736fc50d9829d24b48479e1b645fb7885b6d64ef38880b4c0df13bd`
+- `shutdown.json` SHA256 `30bfb9c00d9fcb119e92345de7c015737bbe6dde841963fa399f6d3b7bcfb1c1`
+- `result.json` SHA256 `193bfa0195de22a3e615aead53a587e08c45d198ba634fa2be431fc24fe350c8`
+- `pack-run.json` SHA256 `95264b62601398e8eac27f18b4cbaa47e245b68ce51415a4107a443bbfc8d00c`
+- `native-packet-assessment.json` SHA256 `dcd6c52ecd23eaaa54291adca460ef793d9a5c5e06607cac856be271c7c0ecfe`
+- `native-quantity-assessment.json` SHA256 `de8b5f2bfabf95f380cb064962ac393e19190cef5f35776a602e1de2d7aa4964`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":300,"after":500},"3077":{"before":8886,"after":20688},"3079":{"before":150,"after":129},"65515":{"before":140,"after":261}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Three consecutive server unfinished-potion commits from one quantity request; UI evidence and packet/display latency separate"}`
+
+Unfinished native checkpoint attribution: runtime source commit872e0264f03de4fc0d0becf5c7fc783faf69466c, archived executable254F54107BA90A6C8013D5E22B1D7DA7EA08E8A19BF27D8972D51F1EDB6B26C7;379source files unchanged during42.87s build. Native driver unfinishedall-002 executable20A7F1D0132F71C0D5046D2A1052AD4D7E601247051D2F0E0171C9607F8C285E,source05DC6B33F2CF4ADE7C812A1001E2E3943D0FBF217F8EA3BD2C7F3BB31903F27B. Driver001 compiled but was never run: pre-run review corrected final slots to shared first-free insertion0/1/2; old pin preserved,002compiled2.88s. No server correction required.
+
+openrune-unfinishedall-login-control-001 PASS. Fresh openrune-native-unfinishedall-001 PASS: actualopcode27selectedwater227slot1,targetguam249slot0; actualopcode115component17694735,count28; three server transitions128->129,129->130,130->131; exactfine3881 unchanged. Same-save openrune-native-unfinishedall-relogin-001 PASS with zero actions/transitions. Both durable-save and cleanexit PASS. Source/dependency attribution is the archived379file hash manifest, including existing unrelated local dependency configuration; do not infer a pristine checkout binary.
+
+Next: native incomplete-quest rejection both selected orders using separately prepared unfinisheddenied fixture/driver.242synthetic state/trace/terminal corruptions rejected; actual refusal remains pending. Other unfinished recipes have deterministic binding coverage, not native acceptance. All prior build/native failures and resource deferrals retained. Issue67 stays open.
