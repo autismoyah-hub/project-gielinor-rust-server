@@ -54,44 +54,72 @@ pub fn equipment(
     }
     Ok(catalog)
 }
-/// Initially bind only the Wiki-attested feather pack; other packs need their
-/// own definition/output validation. A symbol without valid definitions fails closed.
+/// Independently Wiki-pinned ordinary packs. Missing optional symbols are not
+/// enabled; present profiles must have a valid operation and output/note pair.
 pub fn item_packs(
     symbols: &Symbols,
     defs: &Definitions,
 ) -> Result<BTreeMap<i32, gielinor_world::item_packs::Rule>, String> {
     let mut rules = BTreeMap::new();
-    let Some(&pack) = symbols.get("pack_feather") else {
-        return Ok(rules);
-    };
-    let &output = symbols.get("feather").ok_or("Missing feather symbol")?;
-    let pack_type = defs
-        .items
-        .get(&(pack as u32))
-        .ok_or("Missing feather pack definition")?;
-    let output_type = defs
-        .items
-        .get(&(output as u32))
-        .ok_or("Missing feather definition")?;
-    if pack_type.cert.template > 0
-        || pack_type.placeholder.template > 0
-        || pack_type.inventory_ops[0]
-            .as_deref()
-            .is_none_or(|op| !op.eq_ignore_ascii_case("Open"))
-        || !output_type.stackable
-        || output_type.cert.template > 0
-        || output == pack
-    {
-        return Err("Invalid feather pack/output profile".into());
+    for (pack_name, output_name, noted) in [
+        ("pack_feather", "feather", false),
+        ("pack_fishing_bait", "fishing_bait", false),
+        ("pack_bucket", "bucket_empty", true),
+        ("pack_jug_empty", "jug_empty", true),
+        ("pack_vial_empty", "vial_empty", true),
+        ("pack_vial_water", "vial_water", true),
+        ("pack_compost", "bucket_compost", true),
+    ] {
+        let Some(&pack) = symbols.get(pack_name) else {
+            continue;
+        };
+        let &output = symbols
+            .get(output_name)
+            .ok_or_else(|| format!("Missing pack output {output_name}"))?;
+        let pack_type = defs
+            .items
+            .get(&(pack as u32))
+            .ok_or_else(|| format!("Missing pack definition {pack_name}"))?;
+        let output_type = defs
+            .items
+            .get(&(output as u32))
+            .ok_or_else(|| format!("Missing pack output definition {output_name}"))?;
+        if pack_type.cert.template != 0
+            || pack_type.placeholder.template != 0
+            || pack_type.inventory_ops[0]
+                .as_deref()
+                .is_none_or(|op| !op.eq_ignore_ascii_case("Open"))
+            || output_type.cert.template != 0
+            || output_type.placeholder.template != 0
+            || output_type.stackable == noted
+            || output == pack
+        {
+            return Err(format!("Invalid pack/output profile {pack_name}"));
+        }
+        if noted {
+            let note_id = u32::try_from(output_type.cert.link).map_err(|_| "Invalid note ID")?;
+            let note = defs
+                .items
+                .get(&note_id)
+                .ok_or_else(|| format!("Missing pack output note {output_name}"))?;
+            if note_id == 0 || note.cert.template == 0 || note.cert.link != output {
+                return Err(format!("Invalid reciprocal note mapping {output_name}"));
+            }
+        }
+        if rules
+            .insert(
+                pack,
+                gielinor_world::item_packs::Rule {
+                    output,
+                    count: 100,
+                    noted,
+                },
+            )
+            .is_some()
+        {
+            return Err(format!("Duplicate pack binding {pack_name}"));
+        }
     }
-    rules.insert(
-        pack,
-        gielinor_world::item_packs::Rule {
-            output,
-            count: 100,
-            noted: false,
-        },
-    );
     Ok(rules)
 }
 pub fn foods(symbols: &Symbols, defs: &Definitions) -> Result<BTreeMap<i32, Edible>, String> {
@@ -563,5 +591,22 @@ mod pack_binding_tests {
         defs.items.get_mut(&11881).unwrap().inventory_ops[0] = None;
         assert!(item_packs(&symbols, &defs).is_err());
         assert!(item_packs(&Symbols::new(), &defs).unwrap().is_empty());
+        let symbols: Symbols = [("pack_bucket".into(), 22660), ("bucket_empty".into(), 1925)]
+            .into_iter()
+            .collect();
+        let mut pack = gielinor_cache::definitions::ItemType::decode(&[0]).unwrap();
+        pack.inventory_ops[0] = Some("Open".into());
+        defs.items.insert(22660, pack);
+        let mut bucket = gielinor_cache::definitions::ItemType::decode(&[0]).unwrap();
+        bucket.cert.link = 1926;
+        defs.items.insert(1925, bucket);
+        assert!(item_packs(&symbols, &defs).is_err());
+        let mut note = gielinor_cache::definitions::ItemType::decode(&[0]).unwrap();
+        note.cert.template = 799;
+        note.cert.link = 1925;
+        defs.items.insert(1926, note);
+        assert!(item_packs(&symbols, &defs).unwrap()[&22660].noted);
+        defs.items.get_mut(&1926).unwrap().cert.link = 1935;
+        assert!(item_packs(&symbols, &defs).is_err());
     }
 }
