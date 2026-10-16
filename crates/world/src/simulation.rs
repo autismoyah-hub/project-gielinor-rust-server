@@ -702,6 +702,7 @@ pub enum WorldEvent {
         actor: ActorId,
         result: Result<Vec<crate::bank_actions::Event>, crate::bank_actions::Error>,
     },
+    BankCount(crate::bank_actions::CountTrace),
     EquipmentResult {
         actor: ActorId,
         item: i32,
@@ -1671,7 +1672,22 @@ impl World {
                 return self.request_location_use(id, coords, location_id, slot, object, control);
             }
             Action::ResumeBankCount { token, count } => {
+                let remembered = self
+                    .banking
+                    .as_ref()
+                    .and_then(|config| config.last_quantity.get(&p.data.variables).ok());
+                let mut trace = crate::bank_actions::CountTrace {
+                    tick: self.clock.0,
+                    actor: id,
+                    token,
+                    pending: p.bank_count,
+                    input: count,
+                    remembered_before: remembered,
+                    remembered_after: remembered,
+                    outcome: crate::bank_actions::CountOutcome::Stale,
+                };
                 if p.bank_count.is_none_or(|pending| pending.0 != token) {
+                    self.events.push(WorldEvent::BankCount(trace));
                     return Ok(());
                 }
                 let config = self.banking.as_ref().ok_or(ActionError::InvalidBank)?;
@@ -1679,9 +1695,17 @@ impl World {
                 let (_, purpose) = p.bank_count.take().unwrap();
                 p.protection.suspended = false;
                 if p.protection.delayed() {
+                    trace.outcome = crate::bank_actions::CountOutcome::Delayed;
+                    self.events.push(WorldEvent::BankCount(trace));
                     return Err(ActionError::Delayed);
                 }
                 let result = config.resume_count(&mut p.data, &self.object_types, purpose, count);
+                trace.remembered_after = config.last_quantity.get(&p.data.variables).ok();
+                trace.outcome = if result.is_ok() {
+                    crate::bank_actions::CountOutcome::Resolved
+                } else {
+                    crate::bank_actions::CountOutcome::Error
+                };
                 if let Ok(events) = &result {
                     for event in events {
                         if let crate::bank_actions::Event::WornDeposited { slot, item } = event {
@@ -1690,6 +1714,7 @@ impl World {
                     }
                 }
                 self.events.push(WorldEvent::Bank { actor: id, result });
+                self.events.push(WorldEvent::BankCount(trace));
             }
             Action::Bank(request) => {
                 if p.protection.modal_button_protected() {
@@ -3701,7 +3726,32 @@ mod tests {
             .unwrap();
         world.tick().unwrap();
         assert_eq!(world.data(actor).unwrap().bank.get(0).unwrap().count, 5);
-        assert!(world.drain_events().iter().any(|event| matches!(
+        let events = world.drain_events();
+        let traces = events
+            .iter()
+            .filter_map(|event| match event {
+                WorldEvent::BankCount(trace) => Some(trace),
+                _ => None,
+            })
+            .collect::<Vec<_>>();
+        assert_eq!(
+            traces.iter().map(|trace| trace.outcome).collect::<Vec<_>>(),
+            [
+                crate::bank_actions::CountOutcome::Stale,
+                crate::bank_actions::CountOutcome::Resolved,
+                crate::bank_actions::CountOutcome::Stale,
+                crate::bank_actions::CountOutcome::Error,
+            ]
+        );
+        assert_eq!(traces[0].token, old);
+        assert_ne!(traces[0].pending.unwrap().0, old);
+        assert!(traces[2].pending.is_none());
+        assert_eq!(traces[3].input, i32::MIN);
+        assert_eq!(
+            (traces[3].remembered_before, traces[3].remembered_after),
+            (Some(5), Some(5))
+        );
+        assert!(events.iter().any(|event| matches!(
             event,
             WorldEvent::Bank {
                 result: Err(crate::bank_actions::Error::Variable(
@@ -3710,6 +3760,182 @@ mod tests {
                 ..
             }
         )));
+    }
+    #[test]
+    fn bank_delayed_count_consumes_prompt_without_transfer_or_remembered_quantity() {
+        let (mut world, actor) = admitted();
+        let config = crate::bank_actions::tests::config();
+        let data = world.data_mut(actor).unwrap();
+        config.capacity.set(&mut data.variables, 10).unwrap();
+        config.last_quantity.set(&mut data.variables, 3).unwrap();
+        data.inventory
+            .restore_slot(
+                0,
+                Some(crate::inventory::Item {
+                    id: 995,
+                    count: 20,
+                    vars: 0,
+                }),
+            )
+            .unwrap();
+        world.object_types.stackable.insert(995);
+        world.banking = Some(config.clone());
+        world
+            .submit(
+                actor,
+                Action::Bank(crate::bank_actions::Request::Button {
+                    deposit: true,
+                    slot: 0,
+                    op: 7,
+                }),
+            )
+            .unwrap();
+        world.tick().unwrap();
+        let token = world.count_dialog_token(actor).unwrap().unwrap();
+        world.drain_events();
+        world.delay_player(actor, 2).unwrap();
+        world
+            .submit(actor, Action::ResumeBankCount { token, count: 5 })
+            .unwrap();
+        world.tick().unwrap();
+        assert_eq!(world.count_dialog_token(actor).unwrap(), None);
+        assert!(!world.protection(actor).unwrap().suspended);
+        let events = world.drain_events();
+        let trace = events
+            .iter()
+            .find_map(|event| match event {
+                WorldEvent::BankCount(trace) => Some(trace),
+                _ => None,
+            })
+            .unwrap();
+        assert_eq!(trace.outcome, crate::bank_actions::CountOutcome::Delayed);
+        assert_eq!(trace.pending.map(|p| p.0), Some(token));
+        assert_eq!(
+            (trace.remembered_before, trace.remembered_after),
+            (Some(3), Some(3))
+        );
+        assert!(trace
+            .json()
+            .contains("\"outcome\":\"delayed\",\"transfer_accepted\":null"));
+        assert!(events.iter().any(|event| matches!(
+            event,
+            WorldEvent::ActionRejected {
+                error: ActionError::Delayed,
+                ..
+            }
+        )));
+        assert!(!events
+            .iter()
+            .any(|event| matches!(event, WorldEvent::Bank { .. })));
+        for _ in 0..3 {
+            world.tick().unwrap();
+        }
+        // A duplicate server token cannot resurrect the consumed coroutine.
+        world
+            .submit(actor, Action::ResumeBankCount { token, count: 5 })
+            .unwrap();
+        world.tick().unwrap();
+        let data = world.data(actor).unwrap();
+        assert_eq!(data.inventory.get(0).unwrap().count, 20);
+        assert!(data.bank.get(0).is_none());
+        assert_eq!(config.last_quantity.get(&data.variables), Ok(3));
+        assert!(!world
+            .drain_events()
+            .iter()
+            .any(|event| matches!(event, WorldEvent::Bank { .. })));
+    }
+    #[test]
+    fn bank_count_resolves_current_slot_and_remembers_quantity_when_slot_is_empty() {
+        // Characterization of the existing slot-bound purpose, not native wire
+        // generation protection or a compiled Kotlin parity claim.
+        for replacement in [
+            None,
+            Some(crate::inventory::Item {
+                id: 314,
+                count: 9,
+                vars: 0,
+            }),
+        ] {
+            let (mut world, actor) = admitted();
+            let config = crate::bank_actions::tests::config();
+            let data = world.data_mut(actor).unwrap();
+            config.capacity.set(&mut data.variables, 10).unwrap();
+            data.inventory
+                .restore_slot(
+                    0,
+                    Some(crate::inventory::Item {
+                        id: 995,
+                        count: 20,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+            world.object_types.stackable.extend([995, 314]);
+            world.banking = Some(config.clone());
+            world
+                .submit(
+                    actor,
+                    Action::Bank(crate::bank_actions::Request::Button {
+                        deposit: true,
+                        slot: 0,
+                        op: 7,
+                    }),
+                )
+                .unwrap();
+            world.tick().unwrap();
+            let token = world.count_dialog_token(actor).unwrap().unwrap();
+            // Trusted fixture mutation while suspended: original coins remain
+            // in another slot; the count purpose captures a slot, not item ID.
+            let data = world.data_mut(actor).unwrap();
+            let original = data.inventory.get(0);
+            data.inventory.restore_slot(1, original).unwrap();
+            data.inventory.restore_slot(0, replacement).unwrap();
+            world
+                .submit(actor, Action::ResumeBankCount { token, count: -5 })
+                .unwrap();
+            world.tick().unwrap();
+            let data = world.data(actor).unwrap();
+            assert_eq!(data.inventory.get(1).unwrap().count, 20);
+            assert_eq!(config.last_quantity.get(&data.variables), Ok(5));
+            if replacement.is_some() {
+                assert_eq!(data.inventory.get(0).unwrap().count, 4);
+                assert_eq!(data.bank.get(0).unwrap().id, 314);
+                assert_eq!(data.bank.get(0).unwrap().count, 5);
+            } else {
+                assert!(data.inventory.get(0).is_none());
+                assert!(data.bank.get(0).is_none());
+            }
+            assert_eq!(world.count_dialog_token(actor).unwrap(), None);
+            assert!(!world.protection(actor).unwrap().suspended);
+            let traces = world
+                .drain_events()
+                .into_iter()
+                .filter_map(|event| match event {
+                    WorldEvent::BankCount(trace) => Some(trace),
+                    _ => None,
+                })
+                .collect::<Vec<_>>();
+            assert_eq!(traces.len(), 1);
+            assert_eq!(
+                traces[0].outcome,
+                crate::bank_actions::CountOutcome::Resolved
+            );
+            assert_eq!(traces[0].input, -5);
+            assert_eq!(traces[0].remembered_after, Some(5));
+            assert_eq!(
+                traces[0].pending,
+                Some((
+                    token,
+                    crate::bank_actions::CountPurpose::Transfer {
+                        deposit: true,
+                        slot: 0,
+                    }
+                ))
+            );
+            // Both a completed transfer and an empty-slot no-op resolve the
+            // coroutine; neither is converted to an invented transfer verdict.
+            assert!(traces[0].json().contains("\"transfer_accepted\":null"));
+        }
     }
     #[test]
     fn queued_potions_reject_stale_items_share_delays_and_empty_without_delay() {

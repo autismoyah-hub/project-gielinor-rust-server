@@ -198,6 +198,160 @@ pub(crate) mod tests {
         assert_eq!(data.inventory.get(0).unwrap().id, 1);
     }
     #[test]
+    fn count_transfer_signed_boundaries_respect_binding_width_before_inventory_mutation() {
+        // Fixture widths deliberately differ: source arithmetic alone does not
+        // prove the prepared cache's remembered-count binding accepts MAX_VALUE.
+        for width in [15, 30] {
+            for input in [0i32, -5, i32::MIN, i32::MAX] {
+                let mut config = config();
+                config.last_quantity.bit.msb = width;
+                let mut data =
+                    PlayerData::new(1, "bank_bounds".into(), CoordGrid::ZERO, Stats::default());
+                config.capacity.set(&mut data.variables, 6).unwrap();
+                config.last_quantity.set(&mut data.variables, 3).unwrap();
+                data.inventory
+                    .restore_slot(
+                        0,
+                        Some(Item {
+                            id: 995,
+                            count: 20,
+                            vars: 0,
+                        }),
+                    )
+                    .unwrap();
+                let mut items = Catalog::default();
+                items.stackable.insert(995);
+                let result = config.resume_count(
+                    &mut data,
+                    &items,
+                    CountPurpose::Transfer {
+                        deposit: true,
+                        slot: 0,
+                    },
+                    input,
+                );
+                let rejected = input == i32::MIN || (width == 15 && input == i32::MAX);
+                let transferred = if rejected || input == 0 {
+                    0
+                } else if input == -5 {
+                    5
+                } else {
+                    20
+                };
+                if rejected {
+                    assert!(matches!(
+                        result,
+                        Err(Error::Variable(variables::Error::ValueOutOfRange))
+                    ));
+                    assert_eq!(config.last_quantity.get(&data.variables), Ok(3));
+                } else {
+                    assert!(result.is_ok());
+                    assert_eq!(
+                        config.last_quantity.get(&data.variables),
+                        Ok(input.wrapping_abs())
+                    );
+                }
+                assert_eq!(
+                    data.inventory.get(0).map_or(0, |item| item.count),
+                    20 - transferred
+                );
+                assert_eq!(data.bank.get(0).map_or(0, |item| item.count), transferred);
+            }
+        }
+    }
+    #[test]
+    fn rejected_capacity_transfer_still_remembers_resumed_count() {
+        let config = config();
+        let mut data = PlayerData::new(1, "bank_full".into(), CoordGrid::ZERO, Stats::default());
+        config.capacity.set(&mut data.variables, 1).unwrap();
+        config.tabs[9].set(&mut data.variables, 1).unwrap();
+        data.bank
+            .restore_slot(
+                0,
+                Some(Item {
+                    id: 1511,
+                    count: 1,
+                    vars: 0,
+                }),
+            )
+            .unwrap();
+        data.bank.clear_modified();
+        let bank_before = data.bank.clone();
+        data.inventory
+            .restore_slot(
+                0,
+                Some(Item {
+                    id: 995,
+                    count: 20,
+                    vars: 0,
+                }),
+            )
+            .unwrap();
+        let mut items = Catalog::default();
+        items.stackable.insert(995);
+        let events = config
+            .resume_count(
+                &mut data,
+                &items,
+                CountPurpose::Transfer {
+                    deposit: true,
+                    slot: 0,
+                },
+                -5,
+            )
+            .unwrap();
+        assert_eq!(config.last_quantity.get(&data.variables), Ok(5));
+        assert_eq!(data.inventory.get(0).unwrap().count, 20);
+        assert_eq!(data.bank, bank_before);
+        assert!(events
+            .iter()
+            .any(|event| matches!(event, Event::Message(_))));
+    }
+    #[test]
+    fn prepared_count_layout_preserves_neighbor_bit_and_persistent_signed_base() {
+        // Prepared varbit3960 uses varp304 bits1..31 (metadata receipt
+        // work/wiki-bank-bindings-001.json). This is a source-level replay,
+        // not evidence that a live UI accepted these signed boundary inputs.
+        for sibling in [0, 1] {
+            let mut config = config();
+            config.last_quantity.base.id = 304;
+            config.last_quantity.bit = Varbit {
+                base: 304,
+                lsb: 1,
+                msb: 31,
+            };
+            let mut data = PlayerData::new(
+                1,
+                "bank_packed_count".into(),
+                CoordGrid::ZERO,
+                Stats::default(),
+            );
+            data.variables
+                .set(config.last_quantity.base, sibling, false);
+            config.capacity.set(&mut data.variables, 6).unwrap();
+            let purpose = CountPurpose::Transfer {
+                deposit: true,
+                slot: 0,
+            };
+            config
+                .resume_count(&mut data, &Catalog::default(), purpose, i32::MAX)
+                .unwrap();
+            assert_eq!(config.last_quantity.get(&data.variables), Ok(i32::MAX));
+            assert_eq!(data.variables.get(304), -2 + sibling);
+            let saved = data
+                .variables
+                .persistent(&[(304, config.last_quantity.base)].into());
+            let restored = Variables::restore(saved);
+            assert_eq!(config.last_quantity.get(&restored), Ok(i32::MAX));
+            assert_eq!(restored.get(304) & 1, sibling);
+            assert!(matches!(
+                config.resume_count(&mut data, &Catalog::default(), purpose, i32::MIN),
+                Err(Error::Variable(variables::Error::ValueOutOfRange))
+            ));
+            assert_eq!(data.variables.get(304), -2 + sibling);
+        }
+    }
+    #[test]
     fn setting_controls_and_quantity_prompt_update_authoritative_variables() {
         let config = config();
         let mut data =
@@ -348,6 +502,57 @@ pub enum Control {
 pub enum CountPurpose {
     Transfer { deposit: bool, slot: usize },
     QuantityMode,
+}
+/// Count resolution, not proof of an inventory transfer or original wire-dialog identity.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum CountOutcome {
+    Stale,
+    Delayed,
+    Resolved,
+    Error,
+}
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct CountTrace {
+    pub tick: i32,
+    pub actor: crate::simulation::ActorId,
+    pub token: u64,
+    pub pending: Option<(u64, CountPurpose)>,
+    pub input: i32,
+    pub remembered_before: Option<i32>,
+    pub remembered_after: Option<i32>,
+    pub outcome: CountOutcome,
+}
+impl CountTrace {
+    pub fn json(&self) -> String {
+        let pending_token = self
+            .pending
+            .map(|p| p.0.to_string())
+            .unwrap_or_else(|| "null".into());
+        let (purpose, slot) = match self.pending.map(|p| p.1) {
+            Some(CountPurpose::Transfer { deposit, slot }) => (
+                if deposit { "deposit" } else { "withdraw" },
+                slot.to_string(),
+            ),
+            Some(CountPurpose::QuantityMode) => ("quantity_mode", "null".into()),
+            None => ("none", "null".into()),
+        };
+        let optional = |value: Option<i32>| {
+            value
+                .map(|v| v.to_string())
+                .unwrap_or_else(|| "null".into())
+        };
+        let outcome = match self.outcome {
+            CountOutcome::Stale => "stale",
+            CountOutcome::Delayed => "delayed",
+            CountOutcome::Resolved => "resolved",
+            CountOutcome::Error => "error",
+        };
+        format!(concat!("{{\"schema\":1,\"tick\":{},\"actor_slot\":{},\"actor_generation\":{},",
+            "\"count_generation\":{},\"pending_count_generation\":{},\"purpose\":\"{}\",\"slot\":{},\"input\":{},",
+            "\"remembered_before\":{},\"remembered_after\":{},\"outcome\":\"{}\",\"transfer_accepted\":null}}"),
+            self.tick,self.actor.slot,self.actor.generation,self.token,pending_token,purpose,slot,self.input,
+            optional(self.remembered_before),optional(self.remembered_after),outcome)
+    }
 }
 #[derive(Clone, Copy, Debug)]
 pub enum Request {

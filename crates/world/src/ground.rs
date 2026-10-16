@@ -86,7 +86,11 @@ impl Objects {
         if catalog.dummy.contains(&(object.item as i32)) {
             return Err(Error::DummyItem);
         }
-        let stackable = catalog.stackable.contains(&(object.item as i32));
+        let stackable = catalog.stackable.contains(&(object.item as i32))
+            || catalog
+                .notes
+                .get(&(object.item as i32))
+                .is_some_and(|note| note.template > 0);
         if !stackable && object.count > 128 {
             return Err(Error::NonStackableLimit);
         }
@@ -146,7 +150,11 @@ impl Objects {
     fn register(&mut self, handle: Handle, catalog: &Catalog) -> Result<Added, Error> {
         let object = handle.snapshot();
         Self::validate_add(&object, catalog)?;
-        let stackable = catalog.stackable.contains(&(object.item as i32));
+        let stackable = catalog.stackable.contains(&(object.item as i32))
+            || catalog
+                .notes
+                .get(&(object.item as i32))
+                .is_some_and(|note| note.template > 0);
         let merge = self
             .at(object.coords)
             .find(|entry| {
@@ -413,6 +421,106 @@ mod tests {
             .all(|h| h.snapshot().visible_to(Some(8))));
         objects.process_durations(MapClock(202), &catalog).unwrap();
         assert_eq!(objects.count(), 0);
+    }
+    #[test]
+    fn noted_ground_stacks_use_template_and_preserve_private_owner() {
+        let mut catalog = Catalog::default();
+        catalog.notes.insert(
+            1512,
+            crate::inventory::Template {
+                link: 1511,
+                template: 799,
+            },
+        );
+        catalog.notes.insert(
+            1511,
+            crate::inventory::Template {
+                link: 1512,
+                template: 0,
+            },
+        );
+        let mut objects = Objects::default();
+        let note = Object {
+            item: 1512,
+            ..object(Scope::Private, 1000)
+        };
+        let first = objects
+            .add(note.clone(), &catalog, MapClock(0), 200, 100)
+            .unwrap();
+        assert_eq!(first.len(), 1);
+        assert_eq!(first[0].snapshot().count, 1000);
+        assert_eq!(first[0].snapshot().owner, Some(7));
+        let merged = objects
+            .add(note.clone(), &catalog, MapClock(1), 200, 100)
+            .unwrap();
+        assert_eq!(merged[0].id(), first[0].id());
+        assert_eq!(merged[0].snapshot().count, 2000);
+        let foreign = objects
+            .add(
+                Object {
+                    receiver: Some(8),
+                    owner: Some(8),
+                    ..note
+                },
+                &catalog,
+                MapClock(1),
+                200,
+                100,
+            )
+            .unwrap();
+        assert_ne!(foreign[0].id(), first[0].id());
+        assert!(!foreign[0].snapshot().visible_to(Some(7)));
+        assert_eq!(objects.count(), 2);
+        assert!(matches!(
+            objects.add(
+                Object {
+                    item: 1511,
+                    ..object(Scope::Private, 129)
+                },
+                &catalog,
+                MapClock(1),
+                200,
+                100
+            ),
+            Err(Error::NonStackableLimit)
+        ));
+        assert_eq!(objects.count(), 2);
+    }
+    #[test]
+    fn noted_batch_stack_overflow_creates_distinct_stack_without_losing_count() {
+        let mut catalog = Catalog::default();
+        catalog.notes.insert(
+            1512,
+            crate::inventory::Template {
+                link: 1511,
+                template: 799,
+            },
+        );
+        let mut objects = Objects::default();
+        let note = Object {
+            item: 1512,
+            ..object(Scope::Private, i32::MAX)
+        };
+        let result = objects
+            .add_batch(
+                &[note.clone(), Object { count: 1, ..note }],
+                &catalog,
+                MapClock(0),
+                200,
+                100,
+            )
+            .unwrap();
+        assert_eq!(result.iter().map(Vec::len).collect::<Vec<_>>(), [1, 1]);
+        assert_ne!(result[0][0].id(), result[1][0].id());
+        assert_eq!(objects.count(), 2);
+        assert_eq!(
+            result
+                .iter()
+                .flatten()
+                .map(|h| i64::from(h.snapshot().count))
+                .sum::<i64>(),
+            i64::from(i32::MAX) + 1
+        );
     }
     fn object(scope: Scope, count: i32) -> Object {
         Object {

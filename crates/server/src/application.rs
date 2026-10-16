@@ -89,6 +89,9 @@ fn seed() -> io::Result<u64> {
 fn report(events: Vec<runtime::Event>) {
     for event in events {
         match event {
+            runtime::Event::World(gielinor_world::simulation::WorldEvent::BankCount(trace)) => {
+                println!("Bank count: {}", trace.json());
+            }
             runtime::Event::World(gielinor_world::simulation::WorldEvent::NpcMeleeXp(trace)) => {
                 println!("NPC melee XP: {}", trace.json());
             }

@@ -1,35 +1,34 @@
 use super::*;
 impl<B: AccountBackend> Runtime<B> {
-    /// Original PG cb6e66 ordinary copper/tin profile; no Kronos source dependency.
-    /// Advanced picks, guild modifiers, gems and specialised rocks are excluded.
+    /// Ordinary copper/tin with Wiki standard metal pickaxe intervals.
+    /// Special picks, guild modifiers, gems and specialised rocks are excluded.
     pub fn configure_mining(&mut self, names: &crate::startup::Names) -> io::Result<()> {
         use gielinor_world::mining::{Config, Pickaxe, Rock};
         if !self.connections.is_empty() {
             return Err(io::Error::other("Configure mining before admission"));
         }
-        let bronze = names.id("obj", "bronze_pickaxe")? as i32;
-        let iron = names.id("obj", "iron_pickaxe")? as i32;
+        let mut picks = BTreeMap::new();
+        for (metal, level, interval) in [
+            ("bronze", 1, 8),
+            ("iron", 1, 7),
+            ("steel", 6, 6),
+            ("black", 11, 5),
+            ("mithril", 21, 5),
+            ("adamant", 31, 4),
+            ("rune", 41, 3),
+        ] {
+            picks.insert(
+                names.id("obj", &format!("{metal}_pickaxe"))? as i32,
+                Pickaxe {
+                    level,
+                    animation: names.short("seq", &format!("human_mining_{metal}_pickaxe"))?,
+                    interval,
+                },
+            );
+        }
         let mut config = Config {
             skill: u8::try_from(names.id("stat", "mining")?).map_err(io::Error::other)?,
-            picks: [
-                (
-                    bronze,
-                    Pickaxe {
-                        level: 1,
-                        animation: names.short("seq", "human_mining_bronze_pickaxe")?,
-                        interval: 8,
-                    },
-                ),
-                (
-                    iron,
-                    Pickaxe {
-                        level: 1,
-                        animation: names.short("seq", "human_mining_iron_pickaxe")?,
-                        interval: 7,
-                    },
-                ),
-            ]
-            .into(),
+            picks,
             rocks: Default::default(),
             full_sound: names.short("synth", "pillory_wrong")?,
         };

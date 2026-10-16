@@ -1,6 +1,6 @@
 # Source synchronization checkpoint
 
-Authoritative source captured 2026-10-15T18:09:50.004Z through 2026-10-15T18:12:46.619Z UTC. Parent public commit: abb31cca5b49912c5f538df669230c1677114c3f. Matching selected-file hash scans and verified independent recovery establish observed byte stability, not an atomic or semantically consistent snapshot. Later active edits belong to a future checkpoint.
+Authoritative source captured 2026-10-16T01:28:41.507Z through 2026-10-16T01:31:29.500Z UTC. Parent public commit: dc17b90e768603e22555be991c35f8811ac4fc28. Matching selected-file hash scans and verified independent recovery establish observed byte stability, not an atomic or semantically consistent snapshot. Later active edits belong to a future checkpoint.
 
 This development checkpoint is not independently build- or test-verified. No builds, gameplay suites or servers were run. Previous Alpha 0.1.0 validation documents apply to that published source, not automatically to these newer changes. Incomplete development work is preserved.
 

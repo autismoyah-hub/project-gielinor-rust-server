@@ -451,6 +451,86 @@ mod tests {
         std::fs::remove_file(path).unwrap();
     }
     #[test]
+    fn packed_bank_count_survives_character_sqlite_reopen() {
+        let mut defs = definitions();
+        let base = variables::varp(304, &[0]).unwrap();
+        defs.varps.insert(304, base);
+        let bit = variables::varbit(&[1, 1, 48, 1, 31, 0]).unwrap();
+        assert_eq!(bit.base, 304);
+        let policy = Policy {
+            world: 1,
+            inventory: 93,
+            equipment: 94,
+            bank: 95,
+            hitpoints: 3,
+            spawn: CoordGrid::new(3200, 3200, 0).unwrap(),
+            base_xp_rate_hundreds: 100,
+            auto_display_names: true,
+            dev_modlevel: None,
+            modlevels: BTreeMap::new(),
+        };
+        let stamp = std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)
+            .unwrap()
+            .as_nanos();
+        let path = std::env::temp_dir().join(format!(
+            "gielinor-bank-count-{}-{stamp}.sqlite",
+            std::process::id()
+        ));
+        drop(
+            std::fs::OpenOptions::new()
+                .write(true)
+                .create_new(true)
+                .open(&path)
+                .unwrap(),
+        );
+        let mut accounts = Accounts::from_database(Database::open(&path, false).unwrap());
+        accounts.initialize().unwrap();
+        accounts
+            .create("bank count save", "fixture-hash-only", 1)
+            .unwrap();
+        for sibling in [0, 1] {
+            let (character, mut data) = Character::load(
+                Authenticated {
+                    account: accounts.load("bank count save", 1).unwrap().unwrap(),
+                    new_account: false,
+                    authenticator_code: None,
+                },
+                &defs,
+                &policy,
+                "2026-10-15T01:00:00".into(),
+            )
+            .unwrap();
+            data.variables.set(base, sibling, false);
+            data.variables.set_bit(base, bit, i32::MAX, false).unwrap();
+            let packed = -2 + sibling;
+            assert_eq!(data.variables.get(304), packed);
+            let save = character.save(&data, &defs, &policy).unwrap();
+            assert!(save
+                .persistent_varps_json
+                .contains(&format!("\"304\":{packed}")));
+            accounts.save(&save).unwrap();
+            drop(accounts);
+            accounts = Accounts::from_database(Database::open(&path, false).unwrap());
+            let (_, restored) = Character::load(
+                Authenticated {
+                    account: accounts.load("bank count save", 1).unwrap().unwrap(),
+                    new_account: false,
+                    authenticator_code: None,
+                },
+                &defs,
+                &policy,
+                "2026-10-15T01:01:00".into(),
+            )
+            .unwrap();
+            assert_eq!(restored.variables.get(304), packed);
+            assert_eq!(restored.variables.bit(bit), Ok(i32::MAX));
+            assert_eq!(restored.variables.get(304) & 1, sibling);
+        }
+        drop(accounts);
+        std::fs::remove_file(path).unwrap();
+    }
+    #[test]
     fn account_world_save_roundtrip_preserves_permanent_extra_inventories() {
         let defs = definitions();
         let policy = Policy {
