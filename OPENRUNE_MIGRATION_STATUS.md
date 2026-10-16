@@ -2519,3 +2519,12 @@ All listed runs require client exit0, fresh durable logout, clean owned exit0 an
 - `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
 - State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":300,"after":500},"3077":{"before":18502,"after":12455},"3079":{"before":191,"after":140},"65515":{"before":182,"after":313}}}`
 - Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Six atomic tar batches; separate native dispatch and durable state required"}`
+
+
+## Ordinary chemistry character-state foundation (2026-10-16)
+
+Wiki Amulet of chemistry revision15338661 specifies per-character charges. Added named character state and additive V12 table rather than guessing a target varp/objvar. Defaults five charges and continue on crumble; validated restoration, five-percent primitive, charge depletion/reset and break-setting retention. Account save transaction includes chemistry, failed inventory saves roll back charges, version11 migration is idempotent and preserves existing state; real SQLite close/reopen preserves two charges and stop setting. No extra-dose gameplay, equipment consumption, Options/Break UI or native chemistry acceptance claimed yet. Alchemist amulet remains separate and unimplemented.
+
+chemistry-state-tests-attempt-002 PASS; 388 source hashes unchanged. test result: ok. 53 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.64s; test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 4.96s; test result: ok. 389 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 18.19s
+Compile41.25s; fresh guard4398MiB available,79.5percent commit,35page-ins/s,1ms disk,36percent CPU,j2. Attempt001 FAIL is preserved: edit-helper encoding corrupted an existing display-name character; repaired UTF-8 and restored original unchanged-line endings without discarding chemistry changes. Repair hashes retained in work/chemistry-encoding-repair-001.json. Validation record SHA256 7829a02d8a2f4d7937a1d51db05b9d4f950365445b1bc6462605187c9a2a1f49.
+Tar native evidence posted to Issue54 comment6224291625; broader issue remains open.

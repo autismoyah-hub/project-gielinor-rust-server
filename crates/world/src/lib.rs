@@ -286,3 +286,4 @@ pub mod water_sources;
 pub mod grinding;
 pub mod dough;
 pub mod swamp_tar;
+pub mod chemistry;

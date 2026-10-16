@@ -95,6 +95,7 @@ impl Character {
             .or_else(|| auth.new_account.then(Default::default));
         data.variables = Variables::restore(varps::decode(&a.varps_json).map_err(|_| 13u8)?);
         data.energy = a.run_energy;
+        data.chemistry = a.chemistry;
         data.xp_rate_hundreds = if auth.new_account {
             policy.base_xp_rate_hundreds
         } else {
@@ -214,6 +215,7 @@ impl Character {
             })
             .collect::<Result<_, &'static str>>()?;
         Ok(Save {
+            chemistry: data.chemistry,
             tower_arrival: data.tower_arrival,
             tower_diary: data.tower_diary,
             account_id: self.account_id,
@@ -413,6 +415,7 @@ mod tests {
             |_| {}
         )
         .unwrap());
+        data.chemistry=gielinor_world::chemistry::State::restore(2,1).unwrap();
         accounts
             .save(&character.save(&data, &defs, &policy).unwrap())
             .unwrap();
@@ -430,6 +433,9 @@ mod tests {
         )
         .unwrap();
         assert_eq!(returning.inventory.slots(), data.inventory.slots());
+        assert_eq!(returning.chemistry,data.chemistry);
+        assert_eq!(returning.chemistry.remaining(),2);
+        assert!(returning.chemistry.stop_on_crumble());
         assert_eq!(returning.inventory.get(3).unwrap().id, 1893);
         assert_eq!(returning.stats.current(3), 5);
         assert_eq!(returning.stats.fine_xp(3), 12349);

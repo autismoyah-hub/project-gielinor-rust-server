@@ -126,6 +126,7 @@ pub struct PlayerData {
     pub tower_arrival: crate::tower_arrival::State,
     /// None means the legacy arrival projection cannot establish diary marks.
     pub tower_diary: Option<crate::tower_diary::Progress>,
+    pub chemistry: crate::chemistry::State,
 }
 #[derive(Clone, Copy, Debug)]
 pub enum WeightSource {
@@ -162,6 +163,7 @@ impl PlayerData {
             energy: 10000,
             tower_arrival: Default::default(),
             tower_diary: None,
+            chemistry: Default::default(),
         }
     }
 }

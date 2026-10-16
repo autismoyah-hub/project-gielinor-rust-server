@@ -1,7 +1,7 @@
 use crate::sqlite::{Database, Error, Value};
 use gielinor_world::{inventory::Item, CoordGrid};
 use std::collections::BTreeMap;
-const MIGRATIONS: [&str; 11] = [
+const MIGRATIONS: [&str; 12] = [
     include_str!("../migrations/V1__init.sql"),
     include_str!("../migrations/V2__add_run_energy_to_characters.sql"),
     include_str!("../migrations/V3__add_realm_config_columns.sql"),
@@ -13,6 +13,7 @@ const MIGRATIONS: [&str; 11] = [
     include_str!("../migrations/V9__tower_arrival.sql"),
     include_str!("../migrations/V10__tower_diary.sql"),
     include_str!("../migrations/V11__tower_bones_offered.sql"),
+    include_str!("../migrations/V12__chemistry_state.sql"),
 ];
 fn int(v: i64) -> Value {
     Value::Integer(v)
@@ -57,6 +58,7 @@ fn i32_value(v: &Value) -> Result<i32, Error> {
 
 pub struct Account {
     pub tower_diary: Option<gielinor_world::tower_diary::Progress>,
+    pub chemistry: gielinor_world::chemistry::State,
     pub tower_arrival: gielinor_world::tower_arrival::State,
     pub account_id: i64,
     pub character_id: i64,
@@ -96,6 +98,7 @@ pub struct Stat {
 #[derive(Clone, Debug)]
 pub struct Save {
     pub tower_diary: Option<gielinor_world::tower_diary::Progress>,
+    pub chemistry: gielinor_world::chemistry::State,
     pub tower_arrival: gielinor_world::tower_arrival::State,
     pub account_id: i64,
     pub character_id: i64,
@@ -254,6 +257,7 @@ impl Accounts {
         };
         let tower_diary = crate::tower_diary::load(&self.db, character_id)?;
         Ok(Some(Account {
+            chemistry: crate::chemistry::load(&self.db,character_id)?,
             tower_diary,
             tower_arrival,
             account_id: integer(&r[0])?,
@@ -296,6 +300,7 @@ impl Accounts {
             db.execute("UPDATE accounts SET display_name=?,known_device=?,modlevel=? WHERE id=?",&[optional(&s.display_name),s.known_device.map_or(Value::Null,int),optional(&s.modlevel),int(s.account_id)])?;
             db.execute("INSERT INTO tower_arrival(character_id,kit_given,staff_taken,diary_progress,bones_offered) VALUES(?,?,?,?,?) ON CONFLICT(character_id) DO UPDATE SET kit_given=excluded.kit_given,staff_taken=excluded.staff_taken,diary_progress=excluded.diary_progress,bones_offered=COALESCE(excluded.bones_offered,tower_arrival.bones_offered)", &[int(s.character_id),int(s.tower_arrival.kit_given as i64),int(s.tower_arrival.staff_taken as i64),int(s.tower_arrival.diary_progress as i64),s.tower_arrival.bones_offered.map_or(Value::Null,|v|int(v as i64))])?;
             if let Some(progress) = s.tower_diary { crate::tower_diary::save(db, s.character_id, progress)?; }
+            crate::chemistry::save(db,s.character_id,s.chemistry)?;
             for (id,stat) in &s.stats {if !(0..=2_000_000_000).contains(&stat.fine_xp){return Err(Error::from("Invalid fine XP".to_string()))}db.execute("INSERT INTO stats(character_id,stat_id,vis_level,base_level,fine_xp) VALUES(?,?,?,?,?) ON CONFLICT(character_id,stat_id) DO UPDATE SET vis_level=excluded.vis_level,base_level=excluded.base_level,fine_xp=excluded.fine_xp,updated_at=CASE WHEN stats.fine_xp!=excluded.fine_xp THEN CURRENT_TIMESTAMP ELSE stats.updated_at END",&[int(s.character_id),int(*id as i64),int(stat.visible as i64),int(stat.base as i64),int(stat.fine_xp as i64)])?;}
             db.execute("DELETE FROM inventories WHERE character_id=?",&[int(s.character_id)])?;
             for (kind,items) in &s.inventories {if items.is_empty(){continue}db.execute("INSERT INTO inventories(character_id,inv_type) VALUES(?,?)",&[int(s.character_id),int(*kind as i64)])?;let inv=db.last_insert_id();for (slot,item) in items {if *slot>=65536||item.id<0||item.count<1{return Err(Error::from("Invalid inventory item".to_string()))}db.execute("INSERT INTO inventory_objs VALUES(?,?,?,?,?)",&[int(inv),int(*slot as i64),int(item.id as i64),int(item.count as i64),int(item.vars as i64)])?;}}
@@ -366,6 +371,7 @@ mod tests {
         let (account_id, character_id) =
             accounts.create("WikiShop", "fixture-hash-only", 1).unwrap();
         let mut save = Save {
+            chemistry: Default::default(),
             tower_diary: None,
             tower_arrival: Default::default(),
             account_id,
@@ -484,6 +490,7 @@ mod tests {
         accounts.initialize().unwrap();
         let (account_id, character_id) = accounts.create("WikiXp", "fixture-hash-only", 1).unwrap();
         let mut save = Save {
+            chemistry: Default::default(),
             tower_diary: None,
             tower_arrival: Default::default(),
             account_id,
@@ -541,6 +548,7 @@ mod tests {
         a.initialize().unwrap();
         let (account_id, character_id) = a.create("Parity_Actor", "fixture-hash-only", 1).unwrap();
         let mut s = Save {
+            chemistry: gielinor_world::chemistry::State::restore(1,1).unwrap(),
             tower_diary: Some(gielinor_world::tower_diary::Progress {
                 counts: [5, 4, 2, 1, 0, 15],
                 actions: [true, false, true, false, true, false, true],
@@ -593,6 +601,7 @@ mod tests {
         assert_eq!(loaded.coords, s.coords);
         assert_eq!(loaded.inventories, s.inventories);
         assert_eq!(loaded.stats, s.stats);
+        assert_eq!(loaded.chemistry,s.chemistry);
         assert_eq!(loaded.tower_arrival, s.tower_arrival);
         assert_eq!(loaded.tower_diary, s.tower_diary);
         assert_eq!(loaded.run_energy, 1234);
@@ -616,6 +625,7 @@ mod tests {
         s.tower_diary = known_diary;
         s.tower_arrival.bones_offered = Some(false);
         s.run_energy = 999;
+        s.chemistry.break_amulet();
         s.tower_arrival.kit_given = false;
         s.tower_diary.as_mut().unwrap().counts[0] = 1;
         s.inventories.get_mut(&93).unwrap().insert(
@@ -627,6 +637,7 @@ mod tests {
             },
         );
         assert!(a.save(&s).is_err());
+        assert_eq!(a.load("parity_actor",1).unwrap().unwrap().chemistry,gielinor_world::chemistry::State::restore(1,1).unwrap());
         assert_eq!(
             a.load("parity_actor", 1)
                 .unwrap()
@@ -665,6 +676,7 @@ mod tests {
         )
         .unwrap();
         // Reconstruct the preceding owned schema entirely in this memory database.
+        a.db.execute("DROP TABLE chemistry_state", &[]).unwrap();
         a.db.execute("DROP TABLE tower_diary", &[]).unwrap();
         a.db.execute("DROP TABLE tower_arrival", &[]).unwrap();
         a.db.execute("DELETE FROM _rust_migrations WHERE version>=9", &[])
@@ -677,4 +689,20 @@ mod tests {
         assert_eq!(loaded.tower_diary, None);
         a.initialize().unwrap();
     }
+    #[test]
+    fn version_eleven_adds_named_chemistry_without_resetting_existing_state() {
+        let mut a=Accounts::from_database(Database::memory().unwrap());a.initialize().unwrap();
+        let (_,id)=a.create("Chemistry migration","fixture-hash-only",1).unwrap();
+        a.db.execute("UPDATE characters SET run_energy=4321 WHERE id=?",&[int(id)]).unwrap();
+        a.db.execute("DROP TABLE chemistry_state",&[]).unwrap();
+        a.db.execute("DELETE FROM _rust_migrations WHERE version=12",&[]).unwrap();
+        a.initialize().unwrap();a.initialize().unwrap();
+        let loaded=a.load("chemistry migration",1).unwrap().unwrap();
+        assert_eq!(loaded.run_energy,4321);assert_eq!(loaded.chemistry,Default::default());
+        for (remaining,stop) in [(0,0),(6,0),(5,2)] {
+            assert!(a.db.execute("INSERT INTO chemistry_state(character_id,remaining,stop_on_crumble) VALUES(?,?,?)",&[int(id),int(remaining),int(stop)]).is_err());
+        }
+        assert_eq!(a.load("chemistry migration",1).unwrap().unwrap().chemistry,Default::default());
+    }
+
 }
