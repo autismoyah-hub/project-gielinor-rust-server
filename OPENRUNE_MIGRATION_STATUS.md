@@ -2108,3 +2108,53 @@ Validation finished-upper-tests-attempt-001 PASS;382source hashes unchanged. tes
 Guard4568MiB,78.5percent commit,0page-ins/s,1.3msdisk,21.4percent CPU;Cargo-j2. Existing profile tests expand to21recipes including goggles draws, both selected orders, gates and exact/capped rewards. Native upper-six acceptance pending;298synthetic assessor checks PASS.
 
 Earlier high driver attempt001 failed before compilation because a relative Tee path followed Push-Location; failure diagnosis preserved in work/finishedhigh-driver-build-attempt-001-failure.txt. Attempt002 used absolute evidence path and built5.44s. No gameplay failure inferred.
+
+## Native level-refusal driver correction (2026-10-16)
+
+Attempt openrune-native-finisheddenied-001 failed with profiles deadline phase2 completed0. It incorrectly waited for a Make dialog after a low-level item-use admission rejection. The existing held_use_actions.rs checks member/quest/live level before exposing the dialog; gameplay code was unchanged. Native client exit1, durable save completed, owned shutdown exit0/not forced. The first driver pin and all run001 evidence remain intact.
+
+Driver finisheddenied-002 instead verifies two genuine Use orders, two actual level refusal messages, no Make dispatch and full item/XP conservation. Corrected assessor corruption checks254PASS in finisheddenied-assessor-corruptions-002.log; prior259checks only exercised the incorrect Make expectation and remain preserved as superseded harness evidence. Driver002 build2.56s,4732MiB,77.7percent commit,1page-in/s,1.4msdisk,10.5percent CPU,j2. Acceptance receipts below, when present, are for corrected002 only.
+
+## Native gameplay finisheddenied acceptance (2026-10-16 UTC)
+
+Herblore5 Strength-potion attempts in both native Use orders: two exact held-use admission refusals, no Make dispatch, zero finished-potion commits, full28ingredients/coins and fine3881 conserved, same-save no replay. Only this lower-level admission gate is accepted; boost threshold, quest/member and mid-queue changes remain separate.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking/Herblore parity or unrelated recipes. No issue closure.
+
+`openrune-native-finisheddenied-002` PASS. Server archive `6D89674EAB75A6265F6312A3EF4488701678BDB5A0966F136C1ED9CC867C587F`, driver `finisheddenied-002`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID17888.
+- Driver `NativeFinishedDeniedScenario.rs` SHA256 `3A1331461F5C9B1EE74F326FF53C035A9D5B008FEC7EE13B235032A884C87FFC`
+- Driver `server_finisheddenied.exe` SHA256 `12CD8627EE8EFEC4306552DE09D92E8823A30060C820CAF2007A29DFA8CBB118`
+- `client.log` SHA256 `b2da97353191805a8f5e980ce49691781a88b355482c3c7f45d255cbd64d580b`
+- `server.log` SHA256 `e6edaccc34da2ee9e1103dfa38f7980d4e734846f40ecb367df2a1376ced9fdc`
+- `initial-state.json` SHA256 `18f62fbe07bb9b1856c7d0bd842eacf9daa1ae041d65ebd0797035a8f528a029`
+- `final-state.json` SHA256 `f2125edd242112975312d1d0bf7d842e8688a4eebb02863dcfd9b9f4ee5a98fe`
+- `pack-assessment.json` SHA256 `94255890a8d846bc3db66858e3341588949fff7bbe01fde9f71fdd88651e5676`
+- `finisheddenied-trace-assessment.json` SHA256 `88d3b4ed9bb53f709248d8199d7d5a203d31d6c8cf387fda4c9f723d43019a8f`
+- `logout-observation.json` SHA256 `06f1599d5f8b48b4308bb6e467259d8f749ced1e115325decb18a1695aa8e176`
+- `shutdown.json` SHA256 `f988e382783b5f18ec3d93e4479730a6172dae0235ef9b151f56455cc112ca0c`
+- `result.json` SHA256 `46e45f906171043a5cdb653f1e49bead3f4f0bb94c4cf327d474944ce30e74d4`
+- `pack-run.json` SHA256 `dcff930f13b91219c449c96575599ff5eefc236969c947dea12d4fb781c00de1`
+- `native-denial-assessment.json` SHA256 `0cf3c7c3703d305334918cea06c8abe71f4513863d78cac45951f5a1dd35cafd`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":300},"3077":{"before":0,"after":48287},"3079":{"before":0,"after":164},"65515":{"before":0,"after":152}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Zero finished-potion commits; actual denial messages and state checked separately"}`
+
+`openrune-native-finisheddenied-relogin-002` PASS. Server archive `6D89674EAB75A6265F6312A3EF4488701678BDB5A0966F136C1ED9CC867C587F`, driver `finisheddenied-002`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor `openrune-native-finisheddenied-002`, owned PID14940.
+- Driver `NativeFinishedDeniedScenario.rs` SHA256 `3A1331461F5C9B1EE74F326FF53C035A9D5B008FEC7EE13B235032A884C87FFC`
+- Driver `server_finisheddenied.exe` SHA256 `12CD8627EE8EFEC4306552DE09D92E8823A30060C820CAF2007A29DFA8CBB118`
+- `client.log` SHA256 `b13872430e47437016b7abc4d63de693bb4e1692348361ad4b99ffe014d78152`
+- `server.log` SHA256 `2b709aa604aacafbf070cedb755b298d5b6ff6746832448eff4144cbeca87f3d`
+- `initial-state.json` SHA256 `f2125edd242112975312d1d0bf7d842e8688a4eebb02863dcfd9b9f4ee5a98fe`
+- `final-state.json` SHA256 `fce2b1e3b1977b031070329e1e197865bb1440079803a1da0c85b492347c4cc5`
+- `pack-assessment.json` SHA256 `8aac8249827141d586ad14750ff8115ab3fef37957f000d115374a7531f864a5`
+- `finisheddenied-trace-assessment.json` SHA256 `88d3b4ed9bb53f709248d8199d7d5a203d31d6c8cf387fda4c9f723d43019a8f`
+- `logout-observation.json` SHA256 `3ef05911cbb3d40dc7d61c56763f62cac32d05920974016e919016daf41ba6f0`
+- `shutdown.json` SHA256 `94da89ec197bf0bf8030f967347c0f3c1a236f0d2eef5f0f79d0a0f693ae6c35`
+- `result.json` SHA256 `d8d6750fc9b7ce581c6054b3004677e648131690135a19fe70f3256f5939e442`
+- `pack-run.json` SHA256 `4e0e5653ce006f0f0ccf63208b47d0bac9b24e64d89e6703ec3bade7baf79345`
+- `native-denial-assessment.json` SHA256 `325d537e4c159d9648f8b8a5719f57e5ba6aff291779cd1b0e7ebef71e119650`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":300,"after":500},"3077":{"before":48287,"after":60581},"3079":{"before":164,"after":140},"65515":{"before":152,"after":282}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Zero finished-potion commits; actual denial messages and state checked separately"}`
