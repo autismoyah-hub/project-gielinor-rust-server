@@ -11,7 +11,7 @@ impl<B:AccountBackend> Runtime<B>{
         if !active.ui.events.enabled(component,pause.subcomponent as i32,definition.events,1){return Ok(());}
         self.world.submit(actor,Action::ResumeChemistry{token,choice:pause.subcomponent as i32}).map_err(|e|io::Error::other(format!("{e:?}")))
     }
-    pub(super) fn chemistry_dialog_event(&mut self,actor:ActorId,token:Option<u64>,remaining:u8)->io::Result<()>{
+    pub(super) fn chemistry_dialog_event(&mut self,actor:ActorId,token:Option<u64>,remaining:u8,breaking:bool)->io::Result<()>{
         let Some(connection)=self.connection(actor) else{return Ok(());};
         let presentation=self.drop_presentation.ok_or_else(||io::Error::other("Shared choice presentation missing"))?;
         let Some(token)=token else{
@@ -23,7 +23,7 @@ impl<B:AccountBackend> Runtime<B>{
         let packet=client_script::run(2379,&[]).map_err(|e|io::Error::other(format!("{e:?}")))?;
         self.transport.send(connection,packet.opcode,&packet.payload)?;
         self.open_interface(actor,Some(presentation.parent),presentation.choice_interface,false)?;
-        let packet=client_script::run(58,&[Argument::String(format!("Amulet of chemistry: {remaining} charges remaining")),Argument::String("Stop when the amulet crumbles|Continue when the amulet crumbles".into())]).map_err(|e|io::Error::other(format!("{e:?}")))?;
+        let packet=client_script::run(58,&[Argument::String(if breaking{"Break this amulet?".into()}else{format!("Amulet of chemistry: {remaining} charges remaining")}),Argument::String(if breaking{"Break amulet|Cancel"}else{"Continue when the amulet crumbles|Stop when the amulet crumbles"}.into())]).map_err(|e|io::Error::other(format!("{e:?}")))?;
         self.transport.send(connection,packet.opcode,&packet.payload)?;
         self.set_interface_events(actor,presentation.choice_button,1,2,1)?;
         self.active.get_mut(&actor).unwrap().chemistry_dialog=Some((token,presentation.choice_button));Ok(())

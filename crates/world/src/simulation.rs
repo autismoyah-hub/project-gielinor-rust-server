@@ -274,7 +274,7 @@ struct Player {
     npc_interaction: Option<crate::npc_interaction::Pending>,
     pending_pickup: Option<crate::ground_transfer::Pickup>,
     pending_drop: Option<(u64, crate::drop_actions::Pending)>,
-    pending_chemistry: Option<(u64,usize,i32)>,
+    pending_chemistry: Option<(u64,usize,i32,bool)>,
     prayer: Option<crate::prayer::State>,
     prayer_notice: Option<u64>,
     overhead: Option<u8>,
@@ -525,7 +525,7 @@ pub enum AdmissionError {
 }
 #[derive(Debug)]
 pub enum WorldEvent {
-    ChemistryDialog {actor:ActorId,token:Option<u64>,remaining:u8},
+    ChemistryDialog {actor:ActorId,token:Option<u64>,remaining:u8,breaking:bool},
     LocationRestoration(crate::loc_timers::Restoration),
     ShopValue {
         actor: ActorId,
@@ -2106,7 +2106,7 @@ impl World {
                 }
                 if p.pending_chemistry.take().is_some() {
                     p.protection.suspended=false;
-                    self.events.push(WorldEvent::ChemistryDialog{actor:id,token:None,remaining:p.data.chemistry.remaining()});
+                    self.events.push(WorldEvent::ChemistryDialog{actor:id,token:None,remaining:p.data.chemistry.remaining(),breaking:false});
                 }
                 if p.pending_drop.take().is_some() {
                     p.protection.suspended = false;

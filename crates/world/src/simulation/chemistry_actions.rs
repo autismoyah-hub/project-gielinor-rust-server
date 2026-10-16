@@ -10,31 +10,32 @@ impl World {
         p.begin_held_action();p.queues.clear_weak();
         if p.protection.delayed(){return Err(ActionError::Delayed);}
         if item!=amulet || p.data.inventory.get(slot)!=Some(crate::inventory::Item{id:item,count:1,vars:0}) {return Err(ActionError::InvalidItem);}
-        match operation {
-            4=>{
-                p.dialog_generation=p.dialog_generation.checked_add(1).ok_or(ActionError::QueueFull)?;
-                let token=p.dialog_generation;p.pending_chemistry=Some((token,slot,item));p.protection.suspended=true;
-                self.events.push(WorldEvent::ChemistryDialog{actor,token:Some(token),remaining:p.data.chemistry.remaining()});Ok(())
-            },
-            5=>{
-                let mut inventory=p.data.inventory.clone();let mut query=crate::inventory::Delete::new(item,1);query.strict_slot=Some(slot);
-                inventory.delete(&self.object_types,query).map_err(|_|ActionError::InvalidItem)?;
-                p.data.inventory=inventory;p.data.chemistry.break_amulet();
-                self.events.push(WorldEvent::LocationMessage{actor,message:"You break the amulet. Your next amulet of chemistry will have five charges."});Ok(())
-            },
-            _=>Err(ActionError::InvalidItem),
-        }
+        if ![4,5].contains(&operation){return Err(ActionError::InvalidItem);}
+        p.dialog_generation=p.dialog_generation.checked_add(1).ok_or(ActionError::QueueFull)?;
+        let token=p.dialog_generation;let breaking=operation==5;
+        p.pending_chemistry=Some((token,slot,item,breaking));p.protection.suspended=true;
+        self.events.push(WorldEvent::ChemistryDialog{actor,token:Some(token),remaining:p.data.chemistry.remaining(),breaking});Ok(())
     }
+
     pub(super) fn resume_chemistry(&mut self,actor:ActorId,token:u64,choice:i32)->Result<(),ActionError> {
         let p=self.players.get_mut(actor.slot as usize).ok_or(ActionError::StaleActor)?;
-        let Some((current,slot,item))=p.pending_chemistry else{return Ok(());};
+        let Some((current,slot,item,breaking))=p.pending_chemistry else{return Ok(());};
         if current!=token{return Ok(());}
         p.pending_chemistry=None;p.protection.suspended=false;
-        self.events.push(WorldEvent::ChemistryDialog{actor,token:None,remaining:p.data.chemistry.remaining()});
+        self.events.push(WorldEvent::ChemistryDialog{actor,token:None,remaining:p.data.chemistry.remaining(),breaking});
         if p.protection.delayed(){return Err(ActionError::Delayed);}
         if ![1,2].contains(&choice) || p.data.inventory.get(slot)!=Some(crate::inventory::Item{id:item,count:1,vars:0}) {return Err(ActionError::InvalidItem);}
-        p.data.chemistry.set_stop_on_crumble(choice==1);
-        self.events.push(WorldEvent::LocationMessage{actor,message:if choice==1{"You will stop making potions when your amulet of chemistry crumbles."}else{"You will continue making potions when your amulet of chemistry crumbles."}});Ok(())
+        if breaking {
+            if choice==2{return Ok(());}
+            let mut inventory=p.data.inventory.clone();let mut query=crate::inventory::Delete::new(item,1);query.strict_slot=Some(slot);
+            inventory.delete(&self.object_types,query).map_err(|_|ActionError::InvalidItem)?;
+            p.data.inventory=inventory;p.data.chemistry.break_amulet();
+            self.events.push(WorldEvent::LocationMessage{actor,message:"You break the amulet. Your next amulet of chemistry will have five charges."});
+        } else {
+            p.data.chemistry.set_stop_on_crumble(choice==2);
+            self.events.push(WorldEvent::LocationMessage{actor,message:if choice==2{"You will stop making potions when your amulet of chemistry crumbles."}else{"You will continue making potions when your amulet of chemistry crumbles."}});
+        }
+        Ok(())
     }
 }
 #[cfg(test)]
@@ -50,13 +51,17 @@ mod tests {
     #[test]
     fn options_preserve_charges_and_break_resets_without_replay(){
         let (mut w,a)=fixture();
-        for choice in [1,2,1]{
+        for choice in [2,1,2]{
             w.chemistry_item(a,3,21163,4).unwrap();let token=w.players.get(a.slot as usize).unwrap().pending_chemistry.unwrap().0;
             w.resume_chemistry(a,token+1,choice).unwrap();assert_eq!(w.data(a).unwrap().chemistry.remaining(),1);
-            w.resume_chemistry(a,token,choice).unwrap();assert_eq!(w.data(a).unwrap().chemistry.stop_on_crumble(),choice==1);
-            w.resume_chemistry(a,token,3-choice).unwrap();assert_eq!(w.data(a).unwrap().chemistry.stop_on_crumble(),choice==1);
+            w.resume_chemistry(a,token,choice).unwrap();assert_eq!(w.data(a).unwrap().chemistry.stop_on_crumble(),choice==2);
+            w.resume_chemistry(a,token,3-choice).unwrap();assert_eq!(w.data(a).unwrap().chemistry.stop_on_crumble(),choice==2);
         }
-        let stats=w.data(a).unwrap().stats.clone();w.chemistry_item(a,3,21163,5).unwrap();assert!(w.data(a).unwrap().inventory.get(3).is_none());
+        let stats=w.data(a).unwrap().stats.clone();
+        w.chemistry_item(a,3,21163,5).unwrap();let token=w.players.get(a.slot as usize).unwrap().pending_chemistry.unwrap().0;
+        w.resume_chemistry(a,token,2).unwrap();assert_eq!(w.data(a).unwrap().chemistry.remaining(),1);assert!(w.data(a).unwrap().inventory.get(3).is_some());
+        w.chemistry_item(a,3,21163,5).unwrap();let token=w.players.get(a.slot as usize).unwrap().pending_chemistry.unwrap().0;
+        w.resume_chemistry(a,token,1).unwrap();assert!(w.data(a).unwrap().inventory.get(3).is_none());
         assert_eq!(w.data(a).unwrap().chemistry.remaining(),5);assert!(w.data(a).unwrap().chemistry.stop_on_crumble());assert_eq!(w.data(a).unwrap().stats,stats);
         assert!(w.chemistry_item(a,3,21163,5).is_err());
     }
@@ -64,7 +69,7 @@ mod tests {
     fn stale_slot_cancelled_and_invalid_choice_cannot_change_setting(){
         for mode in 0..4{let (mut w,a)=fixture();w.chemistry_item(a,3,21163,4).unwrap();let token=w.players.get(a.slot as usize).unwrap().pending_chemistry.unwrap().0;
             match mode{0=>{w.data_mut(a).unwrap().inventory.restore_slot(3,None).unwrap();},1=>{w.cancel_chemistry_dialog(a).unwrap();},2=>{w.players.get_mut(a.slot as usize).unwrap().begin_held_action();},_=>()}
-            let _=w.resume_chemistry(a,token,if mode==3{0}else{1});assert!(!w.data(a).unwrap().chemistry.stop_on_crumble());assert_eq!(w.data(a).unwrap().chemistry.remaining(),1);
+            let _=w.resume_chemistry(a,token,if mode==3{0}else{2});assert!(!w.data(a).unwrap().chemistry.stop_on_crumble());assert_eq!(w.data(a).unwrap().chemistry.remaining(),1);
         }
     }
 }

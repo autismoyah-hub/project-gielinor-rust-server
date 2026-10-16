@@ -3653,9 +3653,9 @@ impl<B: AccountBackend> Runtime<B> {
                         length,
                     }));
                 }
-                WorldEvent::ChemistryDialog {actor,token,remaining} => {
-                    self.chemistry_dialog_event(actor,token,remaining)?;
-                    self.events.push(Event::World(WorldEvent::ChemistryDialog{actor,token,remaining}));
+                WorldEvent::ChemistryDialog {actor,token,remaining,breaking} => {
+                    self.chemistry_dialog_event(actor,token,remaining,breaking)?;
+                    self.events.push(Event::World(WorldEvent::ChemistryDialog{actor,token,remaining,breaking}));
                 }
                 WorldEvent::Drop { actor, event } => {
                     self.drop_event(actor, &event)?;
