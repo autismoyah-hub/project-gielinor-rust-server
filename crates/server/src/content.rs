@@ -2753,7 +2753,7 @@ pub fn stamina_upgrades(objects:&Symbols,defs:&Definitions)->Result<Vec<gielinor
     for doses in 1..=4 {
         let base=bind(&format!("{doses}dose2energy"),false,Some(doses))?;
         let output=bind(&format!("{doses}dosestamina"),false,Some(doses))?;
-        recipes.push(gielinor_world::potion_upgrades::Recipe{base,secondary,output,doses,secondary_per_dose:1,fine_xp_per_dose:255,level:77});
+        recipes.push(gielinor_world::potion_upgrades::Recipe{base,secondary,output,doses,secondary_per_dose:1,fine_xp_per_dose:255,level:77,ticks:2});
     }
     Ok(recipes)
 }
@@ -2777,5 +2777,43 @@ mod stamina_binding_tests {
             match mode {0=>{symbols.remove("amylase");},1=>{symbols.insert("2dosestamina".into(),12631);},2=>defs.items.get_mut(&12631).unwrap().cert.template=799,3=>defs.items.get_mut(&12640).unwrap().stackable=false,4=>defs.items.get_mut(&3022).unwrap().inventory_ops[0]=None,5=>defs.items.get_mut(&12631).unwrap().name="Stamina(4)".into(),_=>defs.items.get_mut(&12631).unwrap().members=false}
             assert!(stamina_upgrades(&symbols,&defs).is_err(),"mode{mode}");
         }
+    }
+}
+
+// Wiki Extended anti-venom+15267078 corrects donor secondary, XP and cadence.
+pub fn extended_venom_upgrades(objects:&Symbols,defs:&Definitions)->Result<Vec<gielinor_world::potion_upgrades::Recipe>,String> {
+    let mut ids=std::collections::BTreeSet::new();
+    let mut bind=|name:&str,stackable:bool,dose:Option<u8>|->Result<i32,String>{
+        let id=*objects.get(name).ok_or_else(||format!("Missing upgrade symbol {name}"))?;
+        let item=defs.items.get(&(id as u32)).ok_or_else(||format!("Missing upgrade definition {name}"))?;
+        if id<0 || !ids.insert(id) || item.stackable!=stackable || !item.members || item.cert.template!=0 || item.placeholder.template!=0 || item.dummy==1
+            || dose.is_some_and(|n|item.inventory_ops[0].as_deref()!=Some("Drink") || !item.name.ends_with(&format!("({n})"))) {
+            return Err(format!("Invalid upgrade definition {name}"));
+        }
+        Ok(id)
+    };
+    let secondary=bind("araxyte_venom_sack",true,None)?;
+    let mut recipes=Vec::new();
+    for doses in 1..=4 {
+        let base=bind(&format!("antivenom+{doses}"),false,Some(doses))?;
+        let output=bind(&format!("extended_antivenom+{doses}"),false,Some(doses))?;
+        recipes.push(gielinor_world::potion_upgrades::Recipe{base,secondary,output,doses,secondary_per_dose:1,fine_xp_per_dose:200,level:94,ticks:3});
+    }
+    Ok(recipes)
+}
+
+#[cfg(test)]
+mod extended_venom_binding_tests {
+    use super::*;
+    #[test]
+    fn actual_sacs_four_doses_twenty_xp_and_three_ticks_replace_donor_row(){
+        let mut symbols=Symbols::new();let mut defs=Definitions{inventories:Default::default(),locations:Default::default(),npcs:Default::default(),items:Default::default(),varbits:Default::default(),varps:Default::default(),stats:Default::default()};
+        let mut sac=gielinor_cache::definitions::ItemType::decode(&[16,0]).unwrap();sac.stackable=true;defs.items.insert(29784,sac);symbols.insert("araxyte_venom_sack".into(),29784);
+        for n in 1..=4{for (name,id) in [(format!("antivenom+{n}"),12921-2*n),(format!("extended_antivenom+{n}"),29836-3*n)]{
+            let mut item=gielinor_cache::definitions::ItemType::decode(&[16,0]).unwrap();item.name=format!("Potion({n})");item.inventory_ops[0]=Some("Drink".into());defs.items.insert(id as u32,item);symbols.insert(name,id);
+        }}
+        let recipes=extended_venom_upgrades(&symbols,&defs).unwrap();assert_eq!(recipes.len(),4);
+        for (i,r) in recipes.iter().enumerate(){let n=i as i32+1;assert_eq!((r.base,r.secondary,r.output,r.doses,r.secondary_per_dose,r.fine_xp_per_dose,r.level,r.ticks),(12921-2*n,29784,29836-3*n,n as u8,1,200,94,3));}
+        symbols.remove("araxyte_venom_sack");symbols.insert("snakeboss_scale".into(),29784);assert!(extended_venom_upgrades(&symbols,&defs).is_err());
     }
 }

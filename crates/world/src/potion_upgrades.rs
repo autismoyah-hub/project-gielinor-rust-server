@@ -15,6 +15,7 @@ pub struct Recipe {
     pub secondary_per_dose: u8,
     pub fine_xp_per_dose: u16,
     pub level: u8,
+    pub ticks: u8,
 }
 #[derive(Clone, Copy, Debug)]
 pub struct Job {
@@ -59,7 +60,7 @@ impl Job {
                     .is_some_and(|v| v.template != 0)
                 && !catalog.transforms.get(&id).is_some_and(|v| v.template != 0)
         };
-        if !(1..=4).contains(&r.doses)
+        if !matches!(r.ticks,2|3) || !(1..=4).contains(&r.doses)
             || r.secondary_per_dose == 0
             || r.fine_xp_per_dose == 0
             || !(1..=99).contains(&r.level)
@@ -321,6 +322,7 @@ mod tests {
                 secondary_per_dose: 1,
                 fine_xp_per_dose: 255,
                 level: 77,
+                ticks: 2,
             },
             base_slot: if reverse { 1 } else { 0 },
             secondary_slot: if reverse { 0 } else { 1 },

@@ -61,12 +61,12 @@ impl World {
         let p = self.players.get_mut(actor.slot as usize).unwrap();
         p.begin_held_action();
         p.queues.clear_weak();
-        // Wiki recipe2ticks: input-cycle decrement means queue3 commits two clocks later.
+        // Input-cycle decrement: queue delay is the validated recipe ticks plus one.
         p.queues
             .add(
                 QUEUE,
                 crate::queues::Category::Weak,
-                3,
+                i32::from(recipe.ticks)+1,
                 Deferred::PotionUpgrade(pending),
             )
             .map_err(|_| ActionError::QueueFull)?;
@@ -183,12 +183,12 @@ pub(super) fn complete(
         index: pending.index + 1,
         ..pending
     };
-    // Callback-added queue3 preserves two processing-clock intervals per output.
+    // Callback-added delay preserves the validated recipe cadence per output.
     if queues
         .add(
             QUEUE,
             crate::queues::Category::Weak,
-            3,
+            i32::from(pending.job.recipe.ticks)+1,
             Deferred::PotionUpgrade(next),
         )
         .is_err()
@@ -208,7 +208,7 @@ mod tests {
     fn quest()->Varp{Varp{id:80,permanent:true,transmit:Transmit::Always,bit_protect:false,client_code:-1}}
     fn fixture()->(World,ActorId,held_use::Request){
         let mut w=World::default();let pos=CoordGrid::new(3200,3200,0).unwrap();w.collision.allocate(3200,3200,0);
-        let recipe=Recipe{base:3018,secondary:12640,output:12627,doses:3,secondary_per_dose:1,fine_xp_per_dose:255,level:77};
+        let recipe=Recipe{base:3018,secondary:12640,output:12627,doses:3,secondary_per_dose:1,fine_xp_per_dose:255,level:77,ticks:2};
         w.potion_upgrades=Some(Config{recipes:[((3018,12640),recipe)].into(),chemistry:Default::default(),goggles:[29974,29976],quest_progress:80,quest_complete:4,animation:363});
         w.held_use_types=[3018,12640,995].map(|id|(id,held_use::Type{id,content:0})).into();w.object_types.stackable.extend([12640,995]);
         let mut data=PlayerData::new(1,"Upgrades".into(),pos,Stats::default());data.stats.set_base(15,99);data.stats.set_current(15,99);data.stats.set_fine_xp(15,130344311).unwrap();data.xp_rate_hundreds=500;data.variables.set(quest(),4,false);
@@ -235,5 +235,15 @@ mod tests {
             let before=w.data(a).unwrap().inventory.clone();w.drain_events();for _ in 0..5{w.tick().unwrap();}assert_eq!(w.data(a).unwrap().inventory,before);assert_eq!(w.data(a).unwrap().stats.fine_xp(15),130348136);
             assert!(!w.drain_events().iter().any(|e|matches!(e,WorldEvent::PotionUpgradeMade{..})));
         }
+    }
+    #[test]
+    fn three_tick_upgrades_preserve_dose_scaled_reward_and_repeat_boundary(){
+        let (mut w,a,r)=fixture();let recipe=w.potion_upgrades.as_mut().unwrap().recipes.get_mut(&(3018,12640)).unwrap();recipe.ticks=3;recipe.level=94;recipe.fine_xp_per_dose=200;
+        choose(&mut w,a,r);for _ in 0..3{w.tick().unwrap();}assert_eq!(w.data(a).unwrap().stats.fine_xp(15),130344311);
+        w.tick().unwrap();assert_eq!(w.data(a).unwrap().stats.fine_xp(15),130347311);
+        for _ in 0..2{w.tick().unwrap();}assert_eq!(w.data(a).unwrap().stats.fine_xp(15),130347311);
+        w.tick().unwrap();assert_eq!(w.data(a).unwrap().stats.fine_xp(15),130350311);
+        let traces:Vec<_>=w.drain_events().into_iter().filter_map(|e|if let WorldEvent::PotionUpgradeMade{trace,..}=e{Some(trace)}else{None}).collect();assert_eq!(traces.len(),2);
+        for t in &traces{assert_eq!(t.committed_at-t.queued_at,3);assert_eq!(t.fine_after-t.fine_before,3000);}assert_eq!(traces[1].queued_at,traces[0].committed_at);
     }
 }

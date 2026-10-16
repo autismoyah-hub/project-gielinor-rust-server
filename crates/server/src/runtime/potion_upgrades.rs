@@ -17,13 +17,15 @@ impl<B: AccountBackend> Runtime<B> {
             self.world.herb_cleaning.as_ref().ok_or_else(|| {
                 io::Error::other("Configure validated Herblore quest binding first")
             })?;
-        let recipes = crate::content::stamina_upgrades(names.group("obj"), &self.definitions)
+        let mut recipes = crate::content::stamina_upgrades(names.group("obj"), &self.definitions)
             .map_err(io::Error::other)?;
         let animation =
             u16::try_from(names.id("seq", "human_herbing_vial")?).map_err(io::Error::other)?;
         let ordinary=self.world.finished_potions.as_ref().ok_or_else(||io::Error::other("Configure ordinary chemistry first"))?;
         let amulet=ordinary.chemistry.values().next().ok_or_else(||io::Error::other("Missing validated ordinary amulet"))?.amulet;
-        let chemistry=recipes.windows(2).map(|pair|(pair[0].output,gielinor_world::chemistry_modifier::Binding{amulet,extra_output:pair[1].output})).collect();
+        let extended=crate::content::extended_venom_upgrades(names.group("obj"),&self.definitions).map_err(io::Error::other)?;
+        let chemistry=recipes.windows(2).chain(extended.windows(2)).map(|pair|(pair[0].output,gielinor_world::chemistry_modifier::Binding{amulet,extra_output:pair[1].output})).collect();
+        recipes.extend(extended);
         self.world.potion_upgrades = Some(gielinor_world::potion_upgrades::Config {
             chemistry,
             goggles:crate::content::finished_potion_goggles(names.group("obj"), &self.definitions).map_err(io::Error::other)?,
