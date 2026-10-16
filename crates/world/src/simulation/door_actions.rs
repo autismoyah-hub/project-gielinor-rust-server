@@ -142,6 +142,8 @@ impl World {
         p.queues.remove_all(crate::milking::QUEUE);
         p.queues.remove_all(crate::water_sources::QUEUE);
         p.queues.remove_all(crate::grinding::QUEUE);
+        p.queues.remove_all(crate::dough::QUEUE);
+        p.dough_request = None;
         p.pending_door = None;
         p.prayer = None;
         p.pending_pickup = None;

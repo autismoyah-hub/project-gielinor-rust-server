@@ -29,6 +29,7 @@ mod item_pack_actions;
 mod milking_actions;
 mod water_source_actions;
 mod grinding_actions;
+mod dough_actions;
 mod mining_actions;
 mod npc_actions;
 mod npc_combat_actions;
@@ -167,6 +168,7 @@ enum Deferred {
     Milking(crate::milking::Job),
     WaterFilling(crate::water_sources::Job),
     Grinding(crate::grinding::Pending),
+    Dough(crate::dough::Pending),
     ItemPack {
         pack: i32,
         rule: crate::item_packs::Rule,
@@ -217,6 +219,7 @@ enum LocationAction {
     HeldUse { slot: i32, object: i32 },
 }
 struct Player {
+    dough_request: Option<crate::dough::Request>,
     member: bool,
     stat_events: crate::stat_events::Events,
     areas: crate::area_tracking::State,
@@ -291,6 +294,8 @@ impl Player {
         self.queues.remove_all(crate::milking::QUEUE);
         self.queues.remove_all(crate::water_sources::QUEUE);
         self.queues.remove_all(crate::grinding::QUEUE);
+        self.queues.remove_all(crate::dough::QUEUE);
+        self.dough_request = None;
         // The current source's normal launch clears interactions; launchLenient
         // only replaces the suspended coroutine, even if objectVerify rejects it.
         if !self.protection.access_protected(self.has_modal) {
@@ -837,6 +842,7 @@ pub struct World {
     pub potions: BTreeMap<i32, crate::potions::Potion>,
     pub milking: Option<crate::milking::Config>,
     pub water_sources: Option<crate::water_sources::Config>,
+    pub dough: Option<crate::dough::Config>,
     pub item_packs: BTreeMap<i32, crate::item_packs::Rule>,
     pub prayer: Option<crate::prayer::Config>,
     pub regeneration: Option<crate::player_regen::Config>,
@@ -935,6 +941,7 @@ impl Default for World {
             item_packs: BTreeMap::new(),
             milking: None,
             water_sources: None,
+            dough: None,
             prayer: None,
             regeneration: None,
             session_vars: None,
@@ -1303,6 +1310,7 @@ impl World {
             p.queues.remove_all(crate::milking::QUEUE);
             p.queues.remove_all(crate::water_sources::QUEUE);
             p.queues.remove_all(crate::grinding::QUEUE);
+            p.queues.remove_all(crate::dough::QUEUE);
         }
         if !open {
             p.shop_session = None;
@@ -2366,6 +2374,9 @@ impl World {
                                                         &mut self.events,
                                                     );
                                                 }
+                                                Deferred::Dough(job) => {
+                                                    dough_actions::complete(p, queues, job, &self.object_types, &mut self.events);
+                                                }
                                                 Deferred::Grinding(job) => {
                                                     grinding_actions::complete(p, queues, job, &self.object_types, &mut self.events);
                                                 }
@@ -2844,6 +2855,7 @@ impl World {
                         }
                         let player = Player {
                             member: false,
+                            dough_request: None,
                             tower_restore_pending: false,
                             tower_tastes: Default::default(),
                             tower_diary_login,

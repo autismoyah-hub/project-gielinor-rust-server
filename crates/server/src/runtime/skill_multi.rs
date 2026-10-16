@@ -44,6 +44,7 @@ impl<B: AccountBackend> Runtime<B> {
             .ok_or_else(|| io::Error::other("Invalid skillmulti actor"))?
             .skill_multi = Some(SkillDialog {
             smelting: false,
+            dough: None,
             token,
             presentation,
             dialog: dialog.clone(),
@@ -131,6 +132,11 @@ impl<B: AccountBackend> Runtime<B> {
         let selection = dialog
             .dialog
             .select(dialog.presentation, component, pause.subcomponent);
+        if let (Some(request),Some(selection))=(dialog.dough,selection) {
+            if let Err(error)=self.world.start_dough(actor,request,selection.index,selection.count) {
+                self.events.push(Event::World(gielinor_world::simulation::WorldEvent::ActionRejected{actor,error}));
+            }
+        }
         if dialog.smelting {
             if let Some(selection) = selection {
                 self.select_smelting(actor, selection)?;

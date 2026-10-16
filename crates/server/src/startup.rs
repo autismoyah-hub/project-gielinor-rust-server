@@ -685,6 +685,7 @@ pub fn configure<B: AccountBackend>(
             .map_err(|e|io::Error::other(format!("Grinding registration: {e:?}")))?;
     }
     runtime.configure_smelting_names(names)?;
+    runtime.configure_dough_names(names)?;
     runtime.configure_anvil(crate::anvil::Config::resolve(
         names,
         &runtime.definitions,

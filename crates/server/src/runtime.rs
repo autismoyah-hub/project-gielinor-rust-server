@@ -25,6 +25,7 @@ mod prayer;
 mod prayer_tab;
 mod shop;
 mod skill_multi;
+mod dough;
 mod smelting;
 mod tower_combat;
 mod tower_restore;
@@ -252,6 +253,7 @@ pub struct Runtime<B: AccountBackend> {
     drop_presentation: Option<crate::drop_dialog::Presentation>,
     dialogue_presentation: Option<crate::dialogue::Presentation>,
     smelting: Option<crate::smelting::Config>,
+    dough_presentation: Option<crate::skill_multi::Presentation>,
     anvil: Option<crate::anvil::Config>,
     pub message_box: Option<crate::message_box::Presentation>,
     zones_enabled: bool,
@@ -314,6 +316,7 @@ impl<B: AccountBackend> Runtime<B> {
             drop_presentation: None,
             dialogue_presentation: None,
             smelting: None,
+            dough_presentation: None,
             anvil: None,
             message_box: None,
             ground_updates: Vec::new(),
@@ -2775,6 +2778,11 @@ impl<B: AccountBackend> Runtime<B> {
                                             Ok(None) => Ok(()),
                                             Err(error) => Err(error),
                                         };
+                                        if result.is_ok() {
+                                            if let Some(choice)=self.world.take_dough_request(actor).map_err(|e|io::Error::other(format!("{e:?}")))? {
+                                                self.open_dough(actor,choice)?;
+                                            }
+                                        }
                                         if let Err(error) = result {
                                             self.events.push(Event::PacketRejected {
                                                 connection,

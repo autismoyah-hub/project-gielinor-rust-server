@@ -312,3 +312,26 @@ Archive AFCFB6E5604B3591FCCB0D08C5C1DCCCA6339D07FD295BD34BFDF5EB29D4A02C; driver
   - `pack-run.json` SHA256 `a6eafc268d3aebace58cc2bd10ab426fa38a1901a5bd9557da8db866f5253f00`
 
 Ordinary acceptance proves selected slot replacement, two-bucket automatic continuation, first3 menu/first4 use/repeat8 authoritative ticks, unchanged XP/coins/exported non-session state, static varps against the observed control, durable saves and native same-save restoration. Client packet/display ticks are separately recorded and are not the server admission clock. Bottomless buckets, 2026 content policy, other cow variants native acceptance, interruptions in native scenes, exact session timer behavior, rendered animation correctness and multiplayer remain unverified; #116 remains open.
+
+## Next acceptance and ordinary dough work in progress (2026-10-16 UTC)
+
+Water control openrune-water-login-control-001 passed with AFCFB6archive. Failed gameplay run openrune-native-water-001 used water-001 (source6219CC167E3F69A185483E7A10F2F62D1CE4675FC643596DFAF535111A83EF4F, executableFF817D83AC914CACD7A96F4B6474C807A14836DFA4E81AC6A67187CDB8FDE93F): sink873 existed in the decoded native scene but had no rendered pick pixel at the initial camera view. No vessel-use packet was dispatched; no accepted filling is claimed. Client exit1; server4884 clean exit0/not forced with new logout2026-10-16 06:39:26. Failed state/logs remain preserved. water-002 adds bounded camera views and optional saved rendered frames; its first build attempt deferred because another compiler was active. Same archive/control remains valid for future camera-only attempts with new run identities.
+
+Ordinary dough implementation is in progress, NOT compiled or accepted: new dough.rs atomic strict-slot flour+water -> dough+pot+empty vessel, shared weak quantity jobs with intended1tick continuation, protected existing skillmulti UI, Names-bound three water/three output choices, Cooking35 pizza-base gate, active tutorial guard. OpenRune's unchecked sequential deletion/insertion is not copied. A full inventory is conservatively rejected without debit; native full-capacity behavior is still unverified. Bread empty-container return is inferred from shared ordinary vessel behavior and existing source, not an explicit return field in its pinned Wiki recipe; pastry/pizza recipe fields explicitly list containers. Script Make verb22 is verified in original api/player/ui/SkillMulti.kt; ordinary timing pins remain as recorded above. First targeted build work/openrune-dough-tests-001.log deferred at compiler guard before compilation. Tests and runtime integration remain pending; active acceptance continues to use immutable AFCFB6 archive without these new dough changes.
+
+Grinding native harness prepared for separate knife/chocolate and pestle/chocolate routes, each including pestle/unicorn repeats. Dedicated fixture membership is attested read-only before/after, and inventory assessor synthetic checks reject38 invalid mutations. No grinding driver build/native result claimed yet. This is harness preparation, not gameplay acceptance.
+
+
+## Ordinary dough Rust validation (2026-10-16 UTC)
+
+Targeted `build.ps1 -Action test -CargoArgs @('-p','gielinor-world','-p','gielinor-server','--lib','dough')` PASS1server+11world (7new ordinary-world cases plus4existing tutorial/bread cases), compile49.13s. Broader server/world lib suite PASS45server+347world,0fail,1existing ignored original shop-price oracle fixture test. No new ignored tests. Attempts001–006 stopped at the compiler guard before compilation. Existing unused-mut warning in characters.rs:420 and vendored warnings were retained. New binding/test section formatted without changing behavior after validation.
+
+Implemented nine ordinary choices through existing held-use admission and protected skillmulti270. Make verb22 matches original SkillMulti.kt. Active tutorial blocks ordinary choices; its bucket/flour handler and progress semantics are retained. Existing explicit non-tutorial held-use handlers retain precedence. Server captures selected flour/water slots and position, rechecks on selection and callback, returns empty containers to those slots atomically, awards noXP, and stops on interruption or stale input. First and repeated jobs each take1world tick in deterministic tests; this is not a native timing claim. Pizza base uses symbol-resolved current Cooking35 (pinned raw fields skill1lvl35/boostableYes/exp0), while bread/pastry minimum1.
+
+Eleven target item definitions passed: pot_flour1933,pot_empty1931,bucket1929/1925,jug1937/1935,bowl1921/1923,bread2307,pastry1953,pizza2283. Ordinary native nine-choice fixture/driver and state conservation scripts are prepared but not built/run. Full-capacity lossless rejection, exact output-slot policy, bread return-container inference, live quantity UI, native interruption, new startup/archive and same-save acceptance remain explicitly outside completion. No source/Kotlin full-parity claim.
+
+- `work/openrune-dough-tests-007.log` SHA256 `80fff75bcdd3bcb210b50ec9ae9dbbb10404053befc797f808ae63e8bf216323`
+
+- `work/openrune-dough-full-tests-001.log` SHA256 `0f2dc48e691005d10b9b68a2b9758ddf51c8beeefde5f632be46e4b2bbb26898`
+
+- `work/openrune-dough-items-001.json` SHA256 `cd0921935b839c70ff1c8f0b25947e06abbf6d4618c8007421caffa70c76c1ff`

@@ -281,3 +281,4 @@ pub mod shop;
 pub mod milking;
 pub mod water_sources;
 pub mod grinding;
+pub mod dough;

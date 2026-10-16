@@ -39,6 +39,7 @@ pub struct Selection {
 #[derive(Clone)]
 pub(crate) struct Active {
     pub smelting: bool,
+    pub dough: Option<gielinor_world::dough::Request>,
     pub token: u64,
     pub presentation: Presentation,
     pub dialog: Dialog,

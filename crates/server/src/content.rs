@@ -1078,3 +1078,114 @@ mod grinding_binding_tests {
         defs.items.get_mut(&103).unwrap().cert.template=0;obj.insert("chocolate_dust".into(),102);assert!(grinding(&obj,&seq,&defs).is_err());
     }
 }
+
+/// Ordinary dough inputs are bound independently of tutorial progression.
+pub fn dough(
+    symbols: &Symbols,
+    defs: &Definitions,
+    skill: u8,
+) -> Result<gielinor_world::dough::Config, String> {
+    let resolve = |name: &str| -> Result<i32, String> {
+        let id = *symbols
+            .get(name)
+            .ok_or_else(|| format!("Missing dough symbol {name}"))?;
+        let ty = defs
+            .items
+            .get(&(id as u32))
+            .ok_or_else(|| format!("Missing dough definition {name}"))?;
+        if ty.cert.template != 0 || ty.placeholder.template != 0 || ty.stackable {
+            return Err(format!("Invalid ordinary dough item {name}"));
+        }
+        Ok(id)
+    };
+    let waters = [
+        ("bucket_water", "bucket_empty"),
+        ("jug_water", "jug_empty"),
+        ("bowl_water", "bowl_empty"),
+    ]
+    .into_iter()
+    .map(|(w, v)| Ok((resolve(w)?, resolve(v)?)))
+    .collect::<Result<Vec<_>, String>>()?;
+    let config = gielinor_world::dough::Config {
+        skill,
+        tutorial: None,
+        flour: resolve("pot_flour")?,
+        pot: resolve("pot_empty")?,
+        waters,
+        outputs: [
+            gielinor_world::dough::Output {
+                id: resolve("bread_dough")?,
+                level: 1,
+            },
+            gielinor_world::dough::Output {
+                id: resolve("pastry_dough")?,
+                level: 1,
+            },
+            gielinor_world::dough::Output {
+                id: resolve("pizza_base")?,
+                level: 35,
+            },
+        ],
+    };
+    let ids: Vec<_> = std::iter::once(config.flour)
+        .chain(std::iter::once(config.pot))
+        .chain(config.waters.iter().flat_map(|&(a, b)| [a, b]))
+        .chain(config.outputs.iter().map(|v| v.id))
+        .collect();
+    if ids.iter().enumerate().any(|(i, id)| ids[..i].contains(id)) {
+        return Err("Dough symbol alias".into());
+    }
+    Ok(config)
+}
+
+#[cfg(test)]
+mod dough_binding_tests {
+    use super::*;
+    #[test]
+    fn ordinary_dough_has_nine_bound_choices_and_rejects_aliases_and_notes() {
+        let names = [
+            "pot_flour",
+            "pot_empty",
+            "bucket_water",
+            "bucket_empty",
+            "jug_water",
+            "jug_empty",
+            "bowl_water",
+            "bowl_empty",
+            "bread_dough",
+            "pastry_dough",
+            "pizza_base",
+        ];
+        let mut symbols = Symbols::new();
+        let mut defs = Definitions {
+            inventories: Default::default(),
+            locations: Default::default(),
+            npcs: Default::default(),
+            items: Default::default(),
+            varbits: Default::default(),
+            varps: Default::default(),
+            stats: Default::default(),
+        };
+        for (i, name) in names.iter().enumerate() {
+            let id = i as i32 + 1;
+            symbols.insert((*name).into(), id);
+            defs.items.insert(
+                id as u32,
+                gielinor_cache::definitions::ItemType::decode(&[0]).unwrap(),
+            );
+        }
+        let config = dough(&symbols, &defs, 7).unwrap();
+        assert_eq!(config.outputs.map(|o| o.level), [1, 1, 35]);
+        for (water, vessel) in config.waters.iter().copied() {
+            for index in 0..3 {
+                let r = config.recipe(water, index).unwrap();
+                assert_eq!(r.vessel, vessel);
+            }
+        }
+        defs.items.get_mut(&1).unwrap().cert.template = 799;
+        assert!(dough(&symbols, &defs, 7).is_err());
+        defs.items.get_mut(&1).unwrap().cert.template = 0;
+        symbols.insert("pot_empty".into(), 1);
+        assert!(dough(&symbols, &defs, 7).is_err());
+    }
+}
