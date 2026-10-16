@@ -353,6 +353,8 @@ pub fn configure<B: AccountBackend>(
     runtime.configure_foods(held, foods, names.short("seq", "human_eat")?)?;
     runtime.world.slot_preserving_foods = slot_preserving_foods;
     runtime.configure_potions(n("obj"), n("stat"))?;
+    runtime.world.item_packs =
+        crate::content::item_packs(n("obj"), &runtime.definitions).map_err(io::Error::other)?;
     runtime.world.doors =
         crate::doors::resolve(n("content"), n("param"), &parameters, &runtime.definitions)
             .map_err(io::Error::other)?;

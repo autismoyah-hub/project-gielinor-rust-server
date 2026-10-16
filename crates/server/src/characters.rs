@@ -451,6 +451,102 @@ mod tests {
         std::fs::remove_file(path).unwrap();
     }
     #[test]
+    fn opened_pack_and_remaining_pack_survive_database_reopen_without_replay() {
+        use gielinor_world::{
+            inventory::Catalog,
+            item_packs::{open, Rule},
+        };
+        let defs = definitions();
+        let policy = Policy {
+            world: 1,
+            inventory: 93,
+            equipment: 94,
+            bank: 95,
+            hitpoints: 3,
+            spawn: CoordGrid::new(3200, 3200, 0).unwrap(),
+            base_xp_rate_hundreds: 100,
+            auto_display_names: true,
+            dev_modlevel: None,
+            modlevels: BTreeMap::new(),
+        };
+        let stamp = std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)
+            .unwrap()
+            .as_nanos();
+        let path = std::env::temp_dir().join(format!(
+            "gielinor-pack-{}-{stamp}.sqlite",
+            std::process::id()
+        ));
+        drop(
+            std::fs::OpenOptions::new()
+                .write(true)
+                .create_new(true)
+                .open(&path)
+                .unwrap(),
+        );
+        let mut accounts = Accounts::from_database(Database::open(&path, false).unwrap());
+        accounts.initialize().unwrap();
+        accounts
+            .create("Pack Save", "fixture-hash-only", 1)
+            .unwrap();
+        let (character, mut data) = Character::load(
+            Authenticated {
+                account: accounts.load("pack save", 1).unwrap().unwrap(),
+                new_account: true,
+                authenticator_code: None,
+            },
+            &defs,
+            &policy,
+            "2026-10-15T00:00:00".into(),
+        )
+        .unwrap();
+        for slot in [3, 4] {
+            data.inventory
+                .restore_slot(
+                    slot,
+                    Some(Item {
+                        id: 11881,
+                        count: 1,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+        }
+        let mut catalog = Catalog::default();
+        catalog.stackable.insert(314);
+        let rule = Rule {
+            output: 314,
+            count: 100,
+            noted: false,
+        };
+        let xp = data.stats.fine_xp(13);
+        open(&mut data.inventory, &catalog, 3, 11881, rule).unwrap();
+        accounts
+            .save(&character.save(&data, &defs, &policy).unwrap())
+            .unwrap();
+        drop(accounts);
+        let accounts = Accounts::from_database(Database::open(&path, false).unwrap());
+        let (_, mut restored) = Character::load(
+            Authenticated {
+                account: accounts.load("pack save", 1).unwrap().unwrap(),
+                new_account: false,
+                authenticator_code: None,
+            },
+            &defs,
+            &policy,
+            "2026-10-15T00:01:00".into(),
+        )
+        .unwrap();
+        assert_eq!(restored.inventory.slots(), data.inventory.slots());
+        assert_eq!(restored.stats.fine_xp(13), xp);
+        assert!(open(&mut restored.inventory, &catalog, 3, 11881, rule).is_err());
+        assert_eq!(restored.inventory.slots(), data.inventory.slots());
+        assert_eq!(restored.inventory.get(4).unwrap().id, 11881);
+        drop(accounts);
+        std::fs::remove_file(path).unwrap();
+    }
+
+    #[test]
     fn packed_bank_count_survives_character_sqlite_reopen() {
         let mut defs = definitions();
         let base = variables::varp(304, &[0]).unwrap();

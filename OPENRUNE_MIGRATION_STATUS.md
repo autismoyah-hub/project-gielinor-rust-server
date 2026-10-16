@@ -33,3 +33,24 @@ Validation so far:
 5. Native iron/ring, smithing cadence, furnace generation, charge durability and modifier combinations remain separate unresolved work. Do not substitute test presence for acceptance.
 
 Private evidence remains under work/. The earlier work/PAUSED_CHECKPOINT.json is historical; the user has resumed this program. This ledger is the current continuation record.
+
+## Continuation update: batch001 published; batch002 feather packs
+
+Batch001 CLI commit/remote SHA c8b9aef260db3101dafb2b591ebbdfa4add69f5b. Issue #79 comment6207051903 and #82 comment6207052103 record partial evidence and remaining gates. Both remain open. The queue above is historical where superseded here.
+
+Batch002 independently implements selected-slot atomic pack exchange through existing Inventory clone/strict transactions. Runtime held component/op2 dispatches claimed pack+slot; world revalidates, opens once, and weak-queues remaining packs. Movement cancels. Internal negative queue ID -2391001 is a server identifier, not a revision-241 cache ID. Startup currently binds only pack_feather -> feather and validates actual decoded Open operation and stackable real output. No source enum or assets copied. Nonstackable/noted pack profiles remain unbound.
+
+OpenRune ItemPackScript SHA256 0b230789a760d7f0c8e83bddd53ffbef59675108033fcc3b9d5bd53b0ace9dcd. Actual registration and referenced pack TOML inspected. No literal pack_feather/item_pack_contents handler found in bounded original/local PG content search; that is not global absence proof.
+
+Pinned local Wiki evidence (SHA256 of wikitext): Feather pack rev15215041 ecae23431709e5da350e554d14bbf1f46db978b9cfa4b1688149db370f596164; Item pack rev15305800 12a37b2cced4f5df168901caa2200c519bee5237998fc70f16f123b9d995eb31. Selected requirements:100 feathers; left-click opening; repeats at1-2ticks; outputs noted unless already stackable. URLs: https://oldschool.runescape.wiki/w/Special:Redirect/revision/15215041 and https://oldschool.runescape.wiki/w/Special:Redirect/revision/15305800. Smithing hammer evidence can now be pinned to local Hammer rev15327830 hash105d725f698b6bdef9862626e7d55c7c45ea59c6ff97d415b2f4aee6327540cb.
+
+Pack validation: openrune-packs-001.log failed because an overbroad edit inserted a match arm into private test calls; corrected separately. openrune-packs-002.log:3 focused PASS. openrune-packs-003.log:37 server library +318 world library PASS,1 existing ignored; one-to-two tick reward intervals asserted. Source compiled59.14s; guard5544MiB/77.8%commit/7.6%CPU, actual -j1. Full logs private. Native rendered pack action, pack-specific save/relogin and multiplayer remain NOT TESTED. Current startup smoke is pending and must be inspected before publishing batch002.
+
+Exact next actions: finish session76149 (openrune-packs-smoke-001.log), resolve actual cache binding errors if any; add/execute pack-specific persistence coverage; review/stage only pack sources and tracking docs, CLI commit/push and record scoped #54 evidence; then bind additional independently sourced pack profiles or continue cooking/other content. No issue qualifies for closure yet. Do not stop at this checkpoint.
+
+
+Batch002 validation completion: openrune-packs-smoke-001 compiled successfully, but startup failed because Argon2 DLL path was relative. Retry used the same executable, an absolute DLL path, fresh state openrune-packs-smoke-002 and bind127.0.0.1:0: loaded11map squares/586NPCs/24220locations, listened on59502 for revision239.1, exited0 after2ticks and drained accounts. LogSHA256 2f4e82a6ff5301b352ae75969e2487e6d8269d5316252af7edbbbe4cf7b07cba. This validates startup definition checks, not a rendered pack action.
+
+Pack-specific SQLite reopen test added to existing Character persistence tests: accepted pack outputs and unconsumed pack survive database close/reopen, fineXP is unchanged, stale pre-save slot cannot consume the remaining pack. openrune-packs-save-001.log:4 filtered tests PASS including this case; no native save-ack/relogin claim. Guard5508MiB,77.6%commit,6.3%CPU, actual-j1. Pack world/server suite logSHA256 ed3e22696af249e795f931a7175f39757b279e154876fdd9fc0463100e2a1d77.
+
+Next after batch002 commit/push: inspect native pack packet acceptance or extend separately Wiki-pinned bait/noted-container profiles using the same exchange/queue. Candidate Wiki revisions: Bait pack15215039, Empty bucket pack15215062, Empty jug pack15215060, Empty vial pack15215044, Water-filled vial pack15215043, Compost pack15215045. Existing target symbols for these packs exist; outputs and note links must be validated before binding. No blanket100-count assumption across other packs. Continue other corpus assessment and native acceptance; do not mark the entire ItemPackScript VERIFIED while only feather is bound.

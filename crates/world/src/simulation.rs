@@ -25,6 +25,7 @@ mod melee_actions;
 mod movement_actions;
 pub use movement_actions::MovementInput;
 mod elemental_spell_actions;
+mod item_pack_actions;
 mod mining_actions;
 mod npc_actions;
 mod npc_combat_actions;
@@ -159,6 +160,10 @@ impl PlayerData {
 #[derive(Clone)]
 enum Deferred {
     Smithing(crate::smithing_make::Job),
+    ItemPack {
+        pack: i32,
+        rule: crate::item_packs::Rule,
+    },
     StandardHit(crate::hits::Hit),
     PlayerDeath,
     BankCompression,
@@ -428,6 +433,10 @@ pub enum Action {
     /// Selected Wiki food profiles bind the claimed item as well as its slot.
     /// Execution rechecks the claim after earlier queued inventory actions.
     EatItemSlot {
+        slot: usize,
+        item: i32,
+    },
+    OpenItemPack {
         slot: usize,
         item: i32,
     },
@@ -812,6 +821,7 @@ pub struct World {
     pub foods: BTreeMap<i32, crate::food::Edible>,
     pub slot_preserving_foods: std::collections::BTreeSet<i32>,
     pub potions: BTreeMap<i32, crate::potions::Potion>,
+    pub item_packs: BTreeMap<i32, crate::item_packs::Rule>,
     pub prayer: Option<crate::prayer::Config>,
     pub regeneration: Option<crate::player_regen::Config>,
     pub prayer_book: Option<crate::prayer_runtime::Config>,
@@ -906,6 +916,7 @@ impl Default for World {
             foods: BTreeMap::new(),
             slot_preserving_foods: Default::default(),
             potions: BTreeMap::new(),
+            item_packs: BTreeMap::new(),
             prayer: None,
             regeneration: None,
             session_vars: None,
@@ -1819,6 +1830,7 @@ impl World {
                     .move_slot(&self.object_types, from, into)
                     .map_err(|_| ActionError::InvalidItem)?;
             }
+            Action::OpenItemPack { slot, item } => self.open_item_pack(id, slot, item)?,
             Action::DrinkSlot {
                 slot,
                 item: expected,
@@ -2321,6 +2333,16 @@ impl World {
                                         }
                                         if let crate::queues::Event::Launch(queue) = event {
                                             match queue.args {
+                                                Deferred::ItemPack { pack, rule } => {
+                                                    item_pack_actions::complete(
+                                                        p,
+                                                        queues,
+                                                        &self.object_types,
+                                                        pack,
+                                                        rule,
+                                                        &mut self.events,
+                                                    );
+                                                }
                                                 Deferred::Smithing(job) => {
                                                     if let Some(config) = self.smithing {
                                                         if let Err(error) =

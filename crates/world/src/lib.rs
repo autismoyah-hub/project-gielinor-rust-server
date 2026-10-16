@@ -275,3 +275,4 @@ pub mod woodcutting;
 pub mod gathering;
 pub mod mining;
 pub mod shop;
+pub mod item_packs;

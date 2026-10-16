@@ -2411,6 +2411,17 @@ impl<B: AccountBackend> Runtime<B> {
                                                 .and_then(|data| data.inventory.get(slot))
                                             {
                                                 if button.op == 2
+                                                    && self
+                                                        .world
+                                                        .item_packs
+                                                        .contains_key(&button.object)
+                                                {
+                                                    return Some(Action::OpenItemPack {
+                                                        slot,
+                                                        item: button.object,
+                                                    });
+                                                }
+                                                if button.op == 2
                                                     && (self
                                                         .world
                                                         .slot_preserving_foods

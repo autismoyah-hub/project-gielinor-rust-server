@@ -54,6 +54,46 @@ pub fn equipment(
     }
     Ok(catalog)
 }
+/// Initially bind only the Wiki-attested feather pack; other packs need their
+/// own definition/output validation. A symbol without valid definitions fails closed.
+pub fn item_packs(
+    symbols: &Symbols,
+    defs: &Definitions,
+) -> Result<BTreeMap<i32, gielinor_world::item_packs::Rule>, String> {
+    let mut rules = BTreeMap::new();
+    let Some(&pack) = symbols.get("pack_feather") else {
+        return Ok(rules);
+    };
+    let &output = symbols.get("feather").ok_or("Missing feather symbol")?;
+    let pack_type = defs
+        .items
+        .get(&(pack as u32))
+        .ok_or("Missing feather pack definition")?;
+    let output_type = defs
+        .items
+        .get(&(output as u32))
+        .ok_or("Missing feather definition")?;
+    if pack_type.cert.template > 0
+        || pack_type.placeholder.template > 0
+        || pack_type.inventory_ops[0]
+            .as_deref()
+            .is_none_or(|op| !op.eq_ignore_ascii_case("Open"))
+        || !output_type.stackable
+        || output_type.cert.template > 0
+        || output == pack
+    {
+        return Err("Invalid feather pack/output profile".into());
+    }
+    rules.insert(
+        pack,
+        gielinor_world::item_packs::Rule {
+            output,
+            count: 100,
+            noted: false,
+        },
+    );
+    Ok(rules)
+}
 pub fn foods(symbols: &Symbols, defs: &Definitions) -> Result<BTreeMap<i32, Edible>, String> {
     let resolve = |name: &str| {
         symbols
@@ -491,4 +531,37 @@ pub fn equipment_requirement_messages(
             .replace(&format!("{{level{}}}", i + 1), &level.to_string());
     }
     Ok(vec![first, second])
+}
+
+#[cfg(test)]
+mod pack_binding_tests {
+    use super::*;
+    #[test]
+    fn pack_registration_requires_open_operation_and_real_stackable_output() {
+        let symbols: Symbols = [("pack_feather".into(), 11881), ("feather".into(), 314)]
+            .into_iter()
+            .collect();
+        let mut defs = Definitions {
+            inventories: Default::default(),
+            locations: Default::default(),
+            npcs: Default::default(),
+            items: Default::default(),
+            varbits: Default::default(),
+            varps: Default::default(),
+            stats: Default::default(),
+        };
+        let mut pack = gielinor_cache::definitions::ItemType::decode(&[0]).unwrap();
+        pack.inventory_ops[0] = Some("Open".into());
+        let mut feather = gielinor_cache::definitions::ItemType::decode(&[0]).unwrap();
+        feather.stackable = true;
+        defs.items.insert(11881, pack);
+        defs.items.insert(314, feather);
+        assert_eq!(item_packs(&symbols, &defs).unwrap()[&11881].count, 100);
+        defs.items.get_mut(&314).unwrap().stackable = false;
+        assert!(item_packs(&symbols, &defs).is_err());
+        defs.items.get_mut(&314).unwrap().stackable = true;
+        defs.items.get_mut(&11881).unwrap().inventory_ops[0] = None;
+        assert!(item_packs(&symbols, &defs).is_err());
+        assert!(item_packs(&Symbols::new(), &defs).unwrap().is_empty());
+    }
 }
