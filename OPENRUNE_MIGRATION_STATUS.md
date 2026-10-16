@@ -1557,3 +1557,47 @@ herbnormal001 driver built2.38s under revised guard despite informational other 
 - `work/herbnormal-control-attempt-001.log` SHA256 `d7a1b6852dc8f5b516898eb360e80995f1dde1b11654d714cba552a337cdfaa2`
 - Driver `herbquestdenied-001` files: `{"NativeHerbQuestDeniedScenario.rs":"328F208E7045BB569CB59EECAED2649D9C0787E823539305D12C9FDB74C0051D","server_herbquestdenied.exe":"E5357F6EC37C03E5E7C3EE6FD8F7EB1C2B2A620765CF9CA2DB2C7157C5258793"}`
 - Driver `herbnormal-001` files: `{"server_herbnormal.exe":"E84EA597265A8160BFB58CC87900D92F8255AFDC541799B6B1964D218775453A","NativeHerbNormalScenario.rs":"76AFA79CB02C61F10767C61A8DF8E0DC41755ED554D505FDCA292863504F93FF"}`
+
+## Native gameplay herbnormal acceptance (2026-10-16 UTC)
+
+Fifteen genuine selected Clean menu operations for all registered ordinary herbs in a full backpack: exact per-profile products and fractional XP, fine130344311 to130351371. Automatic cleaning, level-boundary and quest-specific herb acceptance excluded.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking/Herblore parity or unrelated recipes. No issue closure.
+
+`openrune-native-herbnormal-001` PASS. Server archive `358F0AD94E130053CF7DE71ADF59F699EB42C6023366F961F4D3BB1C90A97D3B`, driver `herbnormal-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID17484.
+- Driver `server_herbnormal.exe` SHA256 `E84EA597265A8160BFB58CC87900D92F8255AFDC541799B6B1964D218775453A`
+- Driver `NativeHerbNormalScenario.rs` SHA256 `76AFA79CB02C61F10767C61A8DF8E0DC41755ED554D505FDCA292863504F93FF`
+- `client.log` SHA256 `f657d992389454e2c6bdb2508216ea07105186545d74db82b2dc879b949ae750`
+- `server.log` SHA256 `7ba1504206f07566093bea430e9329b2e3e0e320bfbea956592156369bd43b15`
+- `initial-state.json` SHA256 `9854e4977d3370f3a92e76bf13f1c8df5311f4a7ea13223add61ad9fec06f005`
+- `final-state.json` SHA256 `d68d250c365c6268af4ff9244f3ef90e4fcba8d8a889947f9edea454aa373d59`
+- `pack-assessment.json` SHA256 `83f99ae71b013d9d685f9bb10af6892a666e01d4da089312de960730ac7a0920`
+- `herbnormal-trace-assessment.json` SHA256 `abcdca8fb0d7af915ea653de0bbce4acab66e27ad12697b55fa6b4da5de03613`
+- `logout-observation.json` SHA256 `e8e528f944e5ebb7e27e7367c4a500864976cf878426951bee66794b18184267`
+- `shutdown.json` SHA256 `746f4c48f97514649ab40f9af50b43df9ec6f29736495c839a5639dee03fe26e`
+- `result.json` SHA256 `68f488b44bc7aec865b626e5ab1d0eb4039081b2324fc3dd58915202af869e5c`
+- `pack-run.json` SHA256 `4b7eee16c011d31b07f733f3e276436c85045a0711deb657402acdd644def2ae`
+- `native-herb-assessment.json` SHA256 `56dce24c022861d5643c9683d06386b33ec1c5e3599902dff180cfcb61b523ac`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":400},"3077":{"before":0,"after":1405},"3079":{"before":0,"after":213},"65515":{"before":0,"after":204}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[{"actor_slot":1,"actor_generation":614,"slot":0,"input":199,"output":249,"count":1,"clock":127,"fine_xp_before":130344311,"fine_xp_after":130344436},{"actor_slot":1,"actor_generation":614,"slot":1,"input":201,"output":251,"count":1,"clock":132,"fine_xp_before":130344436,"fine_xp_after":130344626},{"actor_slot":1,"actor_generation":614,"slot":2,"input":203,"output":253,"count":1,"clock":136,"fine_xp_before":130344626,"fine_xp_after":130344876},{"actor_slot":1,"actor_generation":614,"slot":3,"input":205,"output":255,"count":1,"clock":141,"fine_xp_before":130344876,"fine_xp_after":130345191},{"actor_slot":1,"actor_generation":614,"slot":4,"input":207,"output":257,"count":1,"clock":145,"fine_xp_before":130345191,"fine_xp_after":130345566},{"actor_slot":1,"actor_generation":614,"slot":5,"input":3049,"output":2998,"count":1,"clock":149,"fine_xp_before":130345566,"fine_xp_after":130345966},{"actor_slot":1,"actor_generation":614,"slot":6,"input":209,"output":259,"count":1,"clock":154,"fine_xp_before":130345966,"fine_xp_after":130346406},{"actor_slot":1,"actor_generation":614,"slot":7,"input":211,"output":261,"count":1,"clock":159,"fine_xp_before":130346406,"fine_xp_after":130346906},{"actor_slot":1,"actor_generation":614,"slot":8,"input":213,"output":263,"count":1,"clock":164,"fine_xp_before":130346906,"fine_xp_after":130347471},{"actor_slot":1,"actor_generation":614,"slot":9,"input":30094,"output":30097,"count":1,"clock":168,"fine_xp_before":130347471,"fine_xp_after":130348061},{"actor_slot":1,"actor_generation":614,"slot":10,"input":3051,"output":3000,"count":1,"clock":172,"fine_xp_before":130348061,"fine_xp_after":130348651},{"actor_slot":1,"actor_generation":614,"slot":11,"input":215,"output":265,"count":1,"clock":176,"fine_xp_before":130348651,"fine_xp_after":130349276},{"actor_slot":1,"actor_generation":614,"slot":12,"input":2485,"output":2481,"count":1,"clock":183,"fine_xp_before":130349276,"fine_xp_after":130349931},{"actor_slot":1,"actor_generation":614,"slot":13,"input":217,"output":267,"count":1,"clock":188,"fine_xp_before":130349931,"fine_xp_after":130350621},{"actor_slot":1,"actor_generation":614,"slot":14,"input":219,"output":269,"count":1,"clock":193,"fine_xp_before":130350621,"fine_xp_after":130351371}],"scope":"Selected manual exact-slot/fine-XP commits; incoming network latency and automatic cadence not accepted"}`
+
+`openrune-native-herbnormal-relogin-001` PASS. Server archive `358F0AD94E130053CF7DE71ADF59F699EB42C6023366F961F4D3BB1C90A97D3B`, driver `herbnormal-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor `openrune-native-herbnormal-001`, owned PID12664.
+- Driver `server_herbnormal.exe` SHA256 `E84EA597265A8160BFB58CC87900D92F8255AFDC541799B6B1964D218775453A`
+- Driver `NativeHerbNormalScenario.rs` SHA256 `76AFA79CB02C61F10767C61A8DF8E0DC41755ED554D505FDCA292863504F93FF`
+- `client.log` SHA256 `a865bb7179eec96b81ab0f1e18df775c4aed1ef707db8ab61adb50a409a825e7`
+- `server.log` SHA256 `d5f68178d2436592cd8ba3f61c1b26caae1e89409d01f145e7d1959d279dbe3f`
+- `initial-state.json` SHA256 `d68d250c365c6268af4ff9244f3ef90e4fcba8d8a889947f9edea454aa373d59`
+- `final-state.json` SHA256 `e32c90d932282683a910363151104e647622763464abc05aaab4951db00626bd`
+- `pack-assessment.json` SHA256 `4d94aa54c4e3d3f786d11d9366aead9541017e192120ea332ab968a5d49b63dd`
+- `herbnormal-trace-assessment.json` SHA256 `f64c75ef7f039b8d3743ce38994427cad543d0327bc0ceeb08fb96bb43685d41`
+- `logout-observation.json` SHA256 `1ec0c3bf250b8da0bb3c0805cea3b8b1ccfbd6a13d581e2d177e6b35a6205d30`
+- `shutdown.json` SHA256 `5d814016b261af78e1fad6532891783d9269c9a17ac0149acfd375d2871fb800`
+- `result.json` SHA256 `ab566bfd7d055b325ed68dbd1aec230c888570903b1f8cfdc1df4608be2adf4e`
+- `pack-run.json` SHA256 `1e99671fe213cac989f79e3f31e0fb8fe35874824bbf22d4735632ca466b22d5`
+- `native-herb-assessment.json` SHA256 `ded57183332efb9823e66195d5952df9054f1071995e0a2ca6b3507fb9b5c44d`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":400,"after":600},"3077":{"before":1405,"after":10551},"3079":{"before":213,"after":134},"65515":{"before":204,"after":329}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Selected manual exact-slot/fine-XP commits; incoming network latency and automatic cadence not accepted"}`
