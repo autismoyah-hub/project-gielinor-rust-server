@@ -2470,3 +2470,52 @@ Corrected unfinished coconut-milk and blood success text, which previously said 
 
 Validation swamp-tar-runtime-tests-attempt-002 PASS;385source hashes unchanged. test result: ok. 53 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.83s; test result: ok. 387 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 48.30s
 Compile54.87s/world48.30s;4632MiB,79.4percent commit,0page-ins/s,0msdisk,CPU54percent,j2. Nine startup malformed-definition/alias vectors, selected/repeat three-tick traces, exact fractional XP and six mid-repeat revocation/interruption modes pass. Attempt001 FAIL preserved: test account defaulted1x while expecting5x and checked before the queued boundary; fixed fixture rate and test tick count, not scheduler timing.313synthetic native-assessor corruption checks PASS.
+
+
+Inventory reconciliation: CleaningHerbsEvents row still said fifteen-profile native running although existing openrune-native-herbnormal-001 and same-save receipts had passed. Re-read saved state/trace/native/save/shutdown evidence and updated only the scoped manual acceptance status; no rerun and no automatic-cleaning claim.
+
+## Native gameplay swamptar acceptance (2026-10-16 UTC)
+
+Five native herb profiles including ground guam, six atomic15-unit batches with one automatic repeat, exact13000fineXP at5x, selected tar stack, pestle and full-backpack conservation, three-tick commits and same-save no replay. No goggles/chemistry or broader Herblore claim.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking/Herblore parity or unrelated recipes. No issue closure.
+
+`openrune-native-swamptar-001` PASS. Server archive `72E7E587F1A7629AEC80D27C04D4C3532580313089B6F06A66BDF5B53555E6C2`, driver `swamptar-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID10432.
+- Driver `NativeSwampTarScenario.rs` SHA256 `F5116A6F506809D9DDDCB8C7941846DCCB8386A3BF9858573A7A7273AC6A8B73`
+- Driver `server_swamptar.exe` SHA256 `811051C394796F30A6448378237E564725C4349E915DEFC595E8B5B33AD99CA7`
+- `client.log` SHA256 `1cae01a8d780aa77e09d50393a2180b68de7bfd4b2ea1ffda21533eec8560ee3`
+- `server.log` SHA256 `00fdcd72dc2448ffdcbc0d4e78bead5efeec19311e2014740bf8f68b31c2031d`
+- `initial-state.json` SHA256 `447809d5564ad0fb5a7539cd8b4670d73e6ecc959119bf85a69cac09c534a741`
+- `final-state.json` SHA256 `7ada678ceea00c37191fd109f6b984b5472097bd530d7ccdd80a09bf81904643`
+- `pack-assessment.json` SHA256 `9106dd266af5c4001db82dd25bd888b26b3d3529a6e3d41bab31f4953acb786c`
+- `swamptar-trace-assessment.json` SHA256 `aa8eec2c9f114beee93ff8ef4800f5bedfbc6087e67c0d630cfe01eb76093848`
+- `logout-observation.json` SHA256 `339e76ffb584c3bdabe082fbeed290e1924929773dbe1c7a1cbccc832cea4ce6`
+- `shutdown.json` SHA256 `39ce4ad112189fdbadcfa20a1d21f0ef31164318cc9d1f279f7341a48b1b1315`
+- `result.json` SHA256 `fa412b0a293d9a5f2e1bebe576a1a66c5c157d7461de0c6deda41eeffa5d04c2`
+- `pack-run.json` SHA256 `d734c14d1e9d30e51f5dde24d93e1ff46c855cf3cc75bb9efb9c3716f74c6950`
+- `native-profile-assessment.json` SHA256 `6a8d08b50f6fd92d1726870312d360b7ae86f7d695e9c3eacb2012ad516669fb`
+- `native-packet-assessment.json` SHA256 `6d4999149b2e2afbbbc7ec7b349369e53094f0ce62f9d3dbca3323fd365218d8`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":300},"3077":{"before":0,"after":18502},"3079":{"before":0,"after":191},"65515":{"before":0,"after":182}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[{"actor_slot":1,"actor_generation":614,"herb_slot":2,"tar_slot":0,"herb":249,"tar":1939,"output":10142,"count":15,"queued_at":133,"committed_at":136,"index":0,"base_fine_xp":300,"rate_hundreds":500,"fine_before":130344311,"fine_after":130345811},{"actor_slot":1,"actor_generation":614,"herb_slot":3,"tar_slot":0,"herb":249,"tar":1939,"output":10142,"count":15,"queued_at":136,"committed_at":139,"index":1,"base_fine_xp":300,"rate_hundreds":500,"fine_before":130345811,"fine_after":130347311},{"actor_slot":1,"actor_generation":614,"herb_slot":4,"tar_slot":0,"herb":6681,"tar":1939,"output":10142,"count":15,"queued_at":145,"committed_at":148,"index":0,"base_fine_xp":300,"rate_hundreds":500,"fine_before":130347311,"fine_after":130348811},{"actor_slot":1,"actor_generation":614,"herb_slot":5,"tar_slot":0,"herb":251,"tar":1939,"output":10143,"count":15,"queued_at":153,"committed_at":156,"index":0,"base_fine_xp":425,"rate_hundreds":500,"fine_before":130348811,"fine_after":130350936},{"actor_slot":1,"actor_generation":614,"herb_slot":6,"tar_slot":0,"herb":253,"tar":1939,"output":10144,"count":15,"queued_at":161,"committed_at":164,"index":0,"base_fine_xp":550,"rate_hundreds":500,"fine_before":130350936,"fine_after":130353686},{"actor_slot":1,"actor_generation":614,"herb_slot":7,"tar_slot":0,"herb":255,"tar":1939,"output":10145,"count":15,"queued_at":169,"committed_at":172,"index":0,"base_fine_xp":725,"rate_hundreds":500,"fine_before":130353686,"fine_after":130357311}],"scope":"Six atomic tar batches; separate native dispatch and durable state required"}`
+
+`openrune-native-swamptar-relogin-001` PASS. Server archive `72E7E587F1A7629AEC80D27C04D4C3532580313089B6F06A66BDF5B53555E6C2`, driver `swamptar-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor `openrune-native-swamptar-001`, owned PID12168.
+- Driver `NativeSwampTarScenario.rs` SHA256 `F5116A6F506809D9DDDCB8C7941846DCCB8386A3BF9858573A7A7273AC6A8B73`
+- Driver `server_swamptar.exe` SHA256 `811051C394796F30A6448378237E564725C4349E915DEFC595E8B5B33AD99CA7`
+- `client.log` SHA256 `7093c0bff58f2055693b26672e2016b00caf1aa16ec46a948ba5d2d09db16474`
+- `server.log` SHA256 `0a44c543e5d2d0dea83e826baf857fde61de6f116613d63f9703e65fabb1bc8d`
+- `initial-state.json` SHA256 `7ada678ceea00c37191fd109f6b984b5472097bd530d7ccdd80a09bf81904643`
+- `final-state.json` SHA256 `54bb43792b58a176f9d389f60cbe4f15bc2d16886c7acb7a04ec02b985339fdb`
+- `pack-assessment.json` SHA256 `6ce4916b2817d01080601ad2fbfd7bee9c095c9957b3791b222afb52473ea72f`
+- `swamptar-trace-assessment.json` SHA256 `5e96740664a7e3ac3f295c7492d746a7199bd54375a4683a69146c5f7fad93e2`
+- `logout-observation.json` SHA256 `f1209df73b29da20c21fe047b0b8173c3fffe2ea920d6a125ba62959f2a8d172`
+- `shutdown.json` SHA256 `dbcea17cf6d649ad23f7e1ce061dc0ea4bc53dd909c27662c32cd03fa0d58eb4`
+- `result.json` SHA256 `287645bd5be6f88e27129601deb5f20e86f1db96bf3de6259f31218b687588f5`
+- `pack-run.json` SHA256 `72ec8bad331100be8a9f43c34f05e8056ad61415508a415d7fdd48cb438caec7`
+- `native-profile-assessment.json` SHA256 `6a8d08b50f6fd92d1726870312d360b7ae86f7d695e9c3eacb2012ad516669fb`
+- `native-packet-assessment.json` SHA256 `09a39adee736c9876dba92a9a2d2778893c7901946275c41a7ee4e08f4d1b2b3`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":300,"after":500},"3077":{"before":18502,"after":12455},"3079":{"before":191,"after":140},"65515":{"before":182,"after":313}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Six atomic tar batches; separate native dispatch and durable state required"}`
