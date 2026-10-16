@@ -1,0 +1,12 @@
+# OpenRune compatibility and provenance gaps
+
+Target OSRS 239.1. OpenRune config says 241; its AGENTS introduction says 240.2. Local archive has no Git identity. Per-file hashes identify inspected bytes only.
+
+- Entire discovered corpus: behavior, effective registration, IDs, Wiki revision and individual provenance are NOT_ASSESSED unless explicitly recorded otherwise. Root ISC does not establish every dependency's reuse terms. Drop-table notification condition and routefinder BSD-style notices remain in DEVELOPMENT_RESOURCES.md.
+- Furnace/anvil: existing Rust Names-bound identifiers retained; no OpenRune numeric IDs imported. Independent current-level/tool revalidation implemented, native acceptance outstanding. OpenRune's strong/weak queue delays are not automatically target cadence. Wiki bronze 4/5/6 versus current queue characterization remains open (#79).
+- Iron: 50% ordinary impurity implemented and unit-tested. Ring guarantee is visible in OpenRune but its inspected handler does not prove player-owned 140-charge persistence/break/check behavior. Target obj.sym resolves ring_of_forging=2568, cert=2569, placeholder=16359; no matching charge varp found in bounded symbol search. That search is not proof no storage mechanism exists. Do not invent a varp. #82 stays open.
+- Furnace exceptions: Lovakite furnace restrictions, catalyst consumption, Varrock armour, goldsmith modifiers, Superheat and Blast Furnace require independent revision-policy and runtime-binding work. Current generic recipe availability is not acceptance.
+- Anvil: normal inventory hammer is bound; Imcando equipped/inventory alternatives require source, Wiki and 239.1 equipment attestation. Do not silently widen the selected tool policy.
+- Item packs: source registration and invTransaction mechanism identified; output table, 100-item count, auto-repeat and two-tick constant are reference observations only until Wiki/239.1 comparison. No implementation yet.
+- Cooking: #80 retains ordinary/tutor routing, per-surface burn levels, 1/3/4 cadence, selected slot/hearth generation, quantity UI and same-save requirements. Source helper presence does not satisfy those gates.
+- Diaries, quests, shops, bosses and minigames: directory/file discovery does not establish complete registry coverage. Continue actual source assessment rather than report a coverage percentage.

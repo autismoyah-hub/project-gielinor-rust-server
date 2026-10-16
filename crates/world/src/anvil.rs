@@ -135,6 +135,9 @@ impl Config {
                 xp: xp * bars as f64,
                 animation: self.animation,
                 cycles: 5,
+                impurity: false,
+                required_level: level,
+                required_tools: vec![self.hammer],
             }),
         }
     }

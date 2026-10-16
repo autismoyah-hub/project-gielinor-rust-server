@@ -57,6 +57,7 @@ impl<B: AccountBackend> Runtime<B> {
         let mut recipes = vec![];
         for &(bar, label, level, xp, ingredients) in definitions {
             recipes.push(Recipe {
+                impurity: bar == "iron_bar",
                 bar: names.id("obj", bar)? as i32,
                 label: label.into(),
                 level,

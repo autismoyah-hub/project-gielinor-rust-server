@@ -43,8 +43,9 @@ pub(super) fn complete(
     catalog: &crate::inventory::Catalog,
     tutorial_stats: bool,
     events: &mut Vec<WorldEvent>,
+    random: &mut impl RandomSource,
 ) -> Result<(), ActionError> {
-    match job
+    let next = match job
         .complete(
             &mut p.data.inventory,
             catalog,
@@ -52,14 +53,32 @@ pub(super) fn complete(
             config.skill,
             config.xp_rate,
             config.max_level,
+            random,
         )
         .map_err(|_| ActionError::InvalidStat)?
     {
-        Outcome::MissingInputs => (),
-        Outcome::NoSpace => events.push(WorldEvent::LocationMessage {
-            actor: p.id,
-            message: "You don't have enough inventory space to hold that item.",
-        }),
+        Outcome::MissingInputs => None,
+        Outcome::RequirementsChanged => {
+            events.push(WorldEvent::LocationMessage {
+                actor: p.id,
+                message: "You no longer meet the requirements to make that item.",
+            });
+            None
+        }
+        Outcome::NoSpace => {
+            events.push(WorldEvent::LocationMessage {
+                actor: p.id,
+                message: "You don't have enough inventory space to hold that item.",
+            });
+            None
+        }
+        Outcome::Impure { next } => {
+            events.push(WorldEvent::LocationMessage {
+                actor: p.id,
+                message: "The ore is too impure to make a bar.",
+            });
+            next
+        }
         Outcome::Made {
             product,
             count,
@@ -110,21 +129,22 @@ pub(super) fn complete(
                     }
                 }
             }
-            if let Some(next) = next {
-                events.push(WorldEvent::PlayerCombatAnimation {
-                    actor: p.id,
-                    sequence: next.request.animation,
-                });
-                queues
-                    .add(
-                        config.queue,
-                        crate::queues::Category::Weak,
-                        next.request.cycles,
-                        Deferred::Smithing(next),
-                    )
-                    .map_err(|_| ActionError::QueueFull)?;
-            }
+            next
         }
+    };
+    if let Some(next) = next {
+        events.push(WorldEvent::PlayerCombatAnimation {
+            actor: p.id,
+            sequence: next.request.animation,
+        });
+        queues
+            .add(
+                config.queue,
+                crate::queues::Category::Weak,
+                next.request.cycles,
+                Deferred::Smithing(next),
+            )
+            .map_err(|_| ActionError::QueueFull)?;
     }
     Ok(())
 }
@@ -169,9 +189,203 @@ mod tests {
             xp: 6.2,
             animation: 899,
             cycles: 5,
+            impurity: false,
+            required_level: 1,
+            required_tools: vec![],
         });
         world.drain_events();
         (world, actor, request)
+    }
+    #[test]
+    fn changed_level_or_removed_tool_stops_pending_and_repeated_jobs() {
+        for after_first in [false, true] {
+            for remove_tool in [false, true] {
+                let (mut world, actor, mut request) = prepared();
+                Arc::get_mut(&mut request).unwrap().required_tools = vec![2347];
+                world
+                    .data_mut(actor)
+                    .unwrap()
+                    .inventory
+                    .insert(
+                        &crate::inventory::Catalog::default(),
+                        crate::inventory::Insert::new(2347, 1),
+                    )
+                    .unwrap();
+                world.start_smithing(actor, request, 2).unwrap();
+                if after_first {
+                    for _ in 0..5 {
+                        world.tick().unwrap();
+                    }
+                    assert_eq!(world.data(actor).unwrap().stats.fine_xp(13), 62);
+                }
+                if remove_tool {
+                    world
+                        .data_mut(actor)
+                        .unwrap()
+                        .inventory
+                        .delete(
+                            &crate::inventory::Catalog::default(),
+                            crate::inventory::Delete::new(2347, 1),
+                        )
+                        .unwrap();
+                } else {
+                    world.data_mut(actor).unwrap().stats.set_current(13, 0);
+                }
+                let before = world.data(actor).unwrap().clone();
+                world.drain_events();
+                for _ in 0..15 {
+                    world.tick().unwrap();
+                }
+                let after = world.data(actor).unwrap();
+                assert_eq!(after.inventory, before.inventory);
+                assert_eq!(after.stats.fine_xp(13), before.stats.fine_xp(13));
+                assert!(!world.player(actor).unwrap().queues.contains(900));
+                let events = world.drain_events();
+                assert!(!events.iter().any(|event| matches!(
+                    event,
+                    WorldEvent::SmithingProductMade { .. } | WorldEvent::SkillAdvanced { .. }
+                )));
+                assert!(events.iter().any(|event| matches!(
+                    event,
+                    WorldEvent::LocationMessage {
+                        message: "You no longer meet the requirements to make that item.",
+                        ..
+                    }
+                )));
+            }
+        }
+    }
+    #[test]
+    fn ordinary_iron_failure_continues_or_cancels_through_existing_weak_queue() {
+        struct Draw(VecDeque<u32>);
+        impl RandomSource for Draw {
+            fn below(&mut self, bound: u32) -> u32 {
+                assert_eq!(bound, 2);
+                self.0
+                    .pop_front()
+                    .expect("no draw after completion/cancellation")
+            }
+        }
+        for cancel in [false, true] {
+            let (mut world, actor, mut request) = prepared();
+            let recipe = Arc::get_mut(&mut request).unwrap();
+            recipe.product = 2351;
+            recipe.consumed = vec![(440, 1)];
+            recipe.xp = 12.5;
+            recipe.impurity = true;
+            let data = world.data_mut(actor).unwrap();
+            data.inventory = Inventory::new(28, StackType::Normal, false);
+            for _ in 0..2 {
+                data.inventory
+                    .insert(
+                        &crate::inventory::Catalog::default(),
+                        crate::inventory::Insert::new(440, 1),
+                    )
+                    .unwrap();
+            }
+            let mut random = Draw(VecDeque::from([0, 1]));
+            world.start_smithing(actor, request, 2).unwrap();
+            for _ in 0..5 {
+                world.tick_with_random(&mut random).unwrap();
+            }
+            assert_eq!(world.data(actor).unwrap().stats.fine_xp(13), 0);
+            assert_eq!(
+                crate::smithing_make::total(
+                    &world.data(actor).unwrap().inventory,
+                    &world.object_types,
+                    440
+                ),
+                1
+            );
+            let events = world.drain_events();
+            assert!(events.iter().any(|e| matches!(
+                e,
+                WorldEvent::LocationMessage {
+                    message: "The ore is too impure to make a bar.",
+                    ..
+                }
+            )));
+            assert!(!events.iter().any(|e| matches!(
+                e,
+                WorldEvent::SmithingProductMade { .. } | WorldEvent::SkillAdvanced { .. }
+            )));
+            if cancel {
+                world
+                    .submit(
+                        actor,
+                        Action::MoveClick {
+                            destination: CoordGrid::new(3202, 3200, 0).unwrap(),
+                            control: false,
+                        },
+                    )
+                    .unwrap();
+            }
+            for _ in 0..12 {
+                world.tick_with_random(&mut random).unwrap();
+            }
+            let data = world.data(actor).unwrap();
+            assert_eq!(data.stats.fine_xp(13), if cancel { 0 } else { 125 });
+            assert_eq!(
+                crate::smithing_make::total(&data.inventory, &world.object_types, 2351),
+                if cancel { 0 } else { 1 }
+            );
+            assert_eq!(
+                crate::smithing_make::total(&data.inventory, &world.object_types, 440),
+                if cancel { 1 } else { 0 }
+            );
+            assert_eq!(random.0.len(), usize::from(cancel));
+            assert!(!world.player(actor).unwrap().queues.contains(900));
+        }
+    }
+    #[test]
+    fn invalid_advancement_rejects_queued_make_without_consumption_or_credit() {
+        let (mut world, actor, request) = prepared();
+        world.smithing.as_mut().unwrap().xp_rate = f64::INFINITY;
+        let before = world.data(actor).unwrap().clone();
+        world.start_smithing(actor, request.clone(), 2).unwrap();
+        for _ in 0..10 {
+            world.tick().unwrap();
+        }
+        let data = world.data(actor).unwrap();
+        assert_eq!(data.inventory, before.inventory);
+        assert_eq!(data.stats, before.stats);
+        assert!(!world.player(actor).unwrap().queues.contains(900));
+        let events = world.drain_events();
+        assert!(events.iter().any(|event| matches!(event,
+            WorldEvent::ActionRejected { actor: a, error: ActionError::InvalidStat } if *a == actor
+        )));
+        assert!(!events.iter().any(|event| matches!(
+            event,
+            WorldEvent::SmithingProductMade { .. } | WorldEvent::SkillAdvanced { .. }
+        )));
+        // The existing fatal-action path requests a save and logout. Its save
+        // snapshot must contain the untouched ingredients, not a free product.
+        let saved_data = events
+            .iter()
+            .find_map(|event| match event {
+                WorldEvent::Save { actor: a, data } if *a == actor => Some(data.clone()),
+                _ => None,
+            })
+            .expect("failed make must request a save");
+        assert_eq!(saved_data.inventory, before.inventory);
+        assert_eq!(saved_data.stats, before.stats);
+        world.saved(actor).unwrap();
+        world.tick().unwrap();
+        world.queue_login(2, saved_data).unwrap();
+        world.tick().unwrap();
+        let actor = world.actors().next().unwrap();
+        // Retrying the restored snapshot after correcting content credits once.
+        world.smithing.as_mut().unwrap().xp_rate = 1.0;
+        world.start_smithing(actor, request, 1).unwrap();
+        for _ in 0..6 {
+            world.tick().unwrap();
+        }
+        let data = world.data(actor).unwrap();
+        assert_eq!(data.stats.fine_xp(13), 62);
+        assert_eq!(
+            crate::smithing_make::total(&data.inventory, &world.object_types, 2349),
+            1
+        );
     }
     #[test]
     fn weak_make_animates_before_output_and_repeats_without_delaying_player() {

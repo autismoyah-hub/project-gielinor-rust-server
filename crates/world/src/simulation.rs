@@ -2333,6 +2333,7 @@ impl World {
                                                                 self.tutorial_rules_completed_varp
                                                                     .is_some(),
                                                                 &mut self.events,
+                                                                random,
                                                             )
                                                         {
                                                             p.pending_logout = true;

@@ -20,6 +20,7 @@ pub struct Recipe {
     pub level: i32,
     pub xp: f64,
     pub ingredients: Vec<(i32, i32)>,
+    pub impurity: bool,
 }
 #[derive(Debug)]
 pub enum Selection {
@@ -161,6 +162,9 @@ impl Recipe {
             xp: self.xp,
             animation,
             cycles: 5,
+            impurity: self.impurity,
+            required_level: self.level,
+            required_tools: vec![],
         });
         if request
             .affordable_count(inv, catalog, count)
@@ -218,6 +222,7 @@ mod tests {
     }
     fn recipe() -> Recipe {
         Recipe {
+            impurity: false,
             bar: 2349,
             label: "Bronze".into(),
             level: 1,
