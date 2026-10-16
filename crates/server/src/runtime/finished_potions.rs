@@ -22,7 +22,7 @@ impl<B: AccountBackend> Runtime<B> {
         let animation =
             u16::try_from(names.id("seq", "human_herbing_vial")?).map_err(io::Error::other)?;
         self.world.finished_potions = Some(gielinor_world::finished_potions::Config {
-            chemistry:crate::content::finished_potion_chemistry(names.group("obj"), &self.definitions).map_err(io::Error::other)?,
+            chemistry:crate::content::finished_potion_chemistry(names.group("obj"), names.group("param"), &self.definitions).map_err(io::Error::other)?,
             goggles:crate::content::finished_potion_goggles(names.group("obj"), &self.definitions).map_err(io::Error::other)?,
             recipes: recipes.into_iter().map(|r| ((r.unfinished, r.secondary), r)).collect(),
             quest_progress: quest.quest_progress,

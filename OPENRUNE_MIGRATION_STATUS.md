@@ -2600,3 +2600,11 @@ Inspected AmuletOfChemistryScript behavior-only source822775e66d7c2c311749ae9a2b
 
 chemistry-confirmation-tests-attempt-001 PASS391source hashes unchanged: test result: ok. 55 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.43s; test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 6.01s; test result: ok. 396 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 25.03s
 Compile58.65s;4582MiB,78.7percentcommit,0page-ins/s,2msdisk,27.6percentCPU,j2. Confirmation native source and24synthetic packet/state checks prepared; prior chemistryui001 driver immutable and superseded, not accepted.
+
+
+## Worn chemistry Options (2026-10-16)
+
+Added worn neck-slot Options through revision239 IF_BUTTON operation2, distinct from Remove operation1. Target wear_op1 symbol resolves to451 and the bound amulet must carry Options; no guessed donor-private variable IDs. Local WornInteractions.kt SHA256 39c1a49ab21a2a8d413b5bc74bc10540573aa704a82776fcf009042f2b612905 inspected for operation mapping; not compiled Kotlin parity evidence. Resume verifies current neck item/count/vars and preserves charges; equipped Break requests rejected. Existing inventory Options/confirmed Break routes retained. Worn native acceptance pending.
+
+chemistry-worn-tests-attempt-001 PASS391source hashes unchanged: test result: ok. 55 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.52s; test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 5.63s; test result: ok. 397 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 21.28s
+Compile1m13s;4569MiB78.4percentcommit7page-ins/s1msdisk37.1percentCPUj2. Inventory UI native001 is independently running on pinned confirmation archiveD9D34F8681A9794A5FA966250A83F7DE8366455DC29C7FCCCA6708162BD14DC9; worn changes are not in that archive.

@@ -274,7 +274,7 @@ struct Player {
     npc_interaction: Option<crate::npc_interaction::Pending>,
     pending_pickup: Option<crate::ground_transfer::Pickup>,
     pending_drop: Option<(u64, crate::drop_actions::Pending)>,
-    pending_chemistry: Option<(u64,usize,i32,bool)>,
+    pending_chemistry: Option<(u64,usize,i32,bool,bool)>,
     prayer: Option<crate::prayer::State>,
     prayer_notice: Option<u64>,
     overhead: Option<u8>,
@@ -413,7 +413,7 @@ pub enum Action {
         spell: i32,
         control: bool,
     },
-    ChemistryItem {slot:usize,item:i32,operation:u8},
+    ChemistryItem {slot:usize,item:i32,operation:u8,worn:bool},
     ResumeChemistry {token:u64,choice:i32},
     DropSlot {
         slot: usize,
@@ -1721,7 +1721,7 @@ impl World {
             } => {
                 return self.request_npc_spell(id, target, spell, control);
             }
-            Action::ChemistryItem {slot,item,operation} => return self.chemistry_item(id,slot,item,operation),
+            Action::ChemistryItem {slot,item,operation,worn} => return self.chemistry_item(id,slot,item,operation,worn),
             Action::ResumeChemistry {token,choice} => return self.resume_chemistry(id,token,choice),
             Action::DropSlot { slot } => return self.start_drop(id, slot),
             Action::ResumeDrop { token, choice } => return self.resume_drop(id, token, choice),

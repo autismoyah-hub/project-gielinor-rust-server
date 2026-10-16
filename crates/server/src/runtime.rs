@@ -2441,7 +2441,7 @@ impl<B: AccountBackend> Runtime<B> {
                                                 .and_then(|data| data.inventory.get(slot))
                                             {
                                                 if matches!(button.op,4|5) && item.id==button.object && self.world.finished_potions.as_ref().is_some_and(|c|c.chemistry.values().any(|b|b.amulet==item.id)) {
-                                                    return Some(Action::ChemistryItem{slot,item:button.object,operation:button.op});
+                                                    return Some(Action::ChemistryItem{slot,item:button.object,operation:button.op,worn:false});
                                                 }
                                                 if button.op == 2 && self.world.herb_cleaning.as_ref().is_some_and(|c| c.recipes.contains_key(&button.object)) {
                                                     return Some(Action::CleanHerb { slot, item: button.object });
@@ -2507,6 +2507,11 @@ impl<B: AccountBackend> Runtime<B> {
                                                 }
                                                 _ => None,
                                             }
+                                        })
+                                    } else if button.op == 2 {
+                                        self.worn_components.get(&button.component).and_then(|&slot| {
+                                            let item=self.world.data(actor).ok()?.equipment.get(slot)?;
+                                            (slot==2 && item.id==button.object && self.world.finished_potions.as_ref().is_some_and(|c|c.chemistry.values().any(|b|b.amulet==item.id))).then_some(Action::ChemistryItem{slot,item:item.id,operation:4,worn:true})
                                         })
                                     } else if button.op == 1 {
                                         self.worn_components

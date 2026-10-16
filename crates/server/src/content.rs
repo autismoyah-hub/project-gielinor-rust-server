@@ -2642,9 +2642,11 @@ const CHEMISTRY_DOSES: [(&str,&str);26] = [
     ("3dosebastion", "4dosebastion"),
     ("3dosebattlemage", "4dosebattlemage")
 ];
-pub fn finished_potion_chemistry(objects:&Symbols,defs:&Definitions)->Result<std::collections::BTreeMap<i32,gielinor_world::chemistry_modifier::Binding>,String> {
+pub fn finished_potion_chemistry(objects:&Symbols,params:&Symbols,defs:&Definitions)->Result<std::collections::BTreeMap<i32,gielinor_world::chemistry_modifier::Binding>,String> {
     let id=*objects.get("amulet_of_chemistry").ok_or("Missing chemistry amulet symbol")?;
     let amulet=defs.items.get(&(id as u32)).ok_or("Missing chemistry amulet definition")?;
+    let wear_op=*params.get("wear_op1").ok_or("Missing worn option parameter")? as u32;
+    if amulet.params.get(&wear_op)!=Some(&gielinor_cache::definitions::Param::String("Options".into())){return Err("Invalid chemistry worn option".into());}
     let ordinary=|item:&gielinor_cache::definitions::ItemType| !item.stackable && item.cert.template==0 && item.placeholder.template==0 && item.dummy!=1;
     if id<0 || !ordinary(amulet) || !amulet.members || amulet.wear[0]!=2 || amulet.inventory_ops != [None,Some("Wear".into()),Some("Options".into()),Some("Break".into()),None] {return Err("Invalid ordinary chemistry amulet".into());}
     let mut seen=std::collections::BTreeSet::from([id]);let mut result=std::collections::BTreeMap::new();
@@ -2665,7 +2667,7 @@ mod chemistry_binding_tests {
     fn fixture()->(Symbols,Definitions) {
         let mut names=Symbols::default();let mut defs=Definitions{inventories:Default::default(),locations:Default::default(),npcs:Default::default(),items:Default::default(),varbits:Default::default(),varps:Default::default(),stats:Default::default()};
         names.insert("amulet_of_chemistry".into(),21163);
-        let mut amulet=gielinor_cache::definitions::ItemType::decode(&[0]).unwrap();amulet.members=true;amulet.wear[0]=2;
+        let mut amulet=gielinor_cache::definitions::ItemType::decode(&[0]).unwrap();amulet.params.insert(451,gielinor_cache::definitions::Param::String("Options".into()));amulet.members=true;amulet.wear[0]=2;
         amulet.inventory_ops=[None,Some("Wear".into()),Some("Options".into()),Some("Break".into()),None];defs.items.insert(21163,amulet);
         for (index,(a,b)) in CHEMISTRY_DOSES.into_iter().enumerate() {
             for (dose,name) in [(3,a),(4,b)] {let id=(1000+index*2+(dose-3)) as i32;names.insert(name.into(),id);
@@ -2676,10 +2678,10 @@ mod chemistry_binding_tests {
     }
     #[test]
     fn exact_named_pairs_reject_malformed_amulet_and_dose_definitions() {
-        for mode in 0..16 {
+        for mode in 0..18 {
             let (mut names,mut defs)=fixture();
             match mode {
-                0=>{let map=finished_potion_chemistry(&names,&defs).unwrap();assert_eq!(map.len(),26);for i in 0..26{assert_eq!(map[&(1000+i*2)].extra_output,1001+i*2);}continue;},
+                0=>{let map=finished_potion_chemistry(&names,&[("wear_op1".into(),451)].into(),&defs).unwrap();assert_eq!(map.len(),26);for i in 0..26{assert_eq!(map[&(1000+i*2)].extra_output,1001+i*2);}continue;},
                 1=>defs.items.get_mut(&21163).unwrap().wear[0]=0,
                 2=>defs.items.get_mut(&21163).unwrap().members=false,
                 3=>defs.items.get_mut(&21163).unwrap().inventory_ops[3]=None,
@@ -2694,9 +2696,11 @@ mod chemistry_binding_tests {
                 12=>{names.insert("4dose1attack".into(),1000);},
                 13=>{names.insert("4dose1attack".into(),21163);},
                 14=>{names.remove("strength4");},
-                _=>{defs.items.remove(&1000);},
+                15=>{defs.items.remove(&1000);},
+                16=>{defs.items.get_mut(&21163).unwrap().params.remove(&451);},
+                _=>{defs.items.get_mut(&21163).unwrap().params.insert(451,gielinor_cache::definitions::Param::String("Charge".into()));},
             }
-            assert!(finished_potion_chemistry(&names,&defs).is_err(),"mode{mode}");
+            assert!(finished_potion_chemistry(&names,&[("wear_op1".into(),451)].into(),&defs).is_err(),"mode{mode}");
         }
     }
     #[test]
@@ -2706,7 +2710,7 @@ mod chemistry_binding_tests {
         for invalid in 0..4 {
             let (names,mut defs)=fixture();
             for id in [1000,1001,21163] {let item=defs.items.get_mut(&id).unwrap();item.cert=Template{link:id as i32+100000,template:0};item.placeholder=Template{link:id as i32+200000,template:0};}
-            let bindings=finished_potion_chemistry(&names,&defs).unwrap();
+            let bindings=finished_potion_chemistry(&names,&[("wear_op1".into(),451)].into(),&defs).unwrap();
             match invalid {1=>defs.items.get_mut(&1001).unwrap().cert.template=799,2=>defs.items.get_mut(&1001).unwrap().placeholder.template=14401,3=>defs.items.get_mut(&1001).unwrap().transform=Template{link:1000,template:1},_=>()}
             let catalog=defs.inventory_catalog();let mut inv=Inventory::new(28,StackType::Normal,false);let mut equip=Inventory::new(14,StackType::Normal,false);
             inv.restore_slot(0,Some(Item{id:91,count:1,vars:0})).unwrap();inv.restore_slot(1,Some(Item{id:221,count:1,vars:0})).unwrap();equip.restore_slot(2,Some(Item{id:21163,count:1,vars:0})).unwrap();
