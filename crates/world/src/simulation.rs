@@ -164,7 +164,7 @@ impl PlayerData {
 #[derive(Clone)]
 enum Deferred {
     Smithing(crate::smithing_make::Job),
-    Assembly(crate::assembly::Job),
+    Assembly(crate::assembly::Pending),
     Milking(crate::milking::Job),
     WaterFilling(crate::water_sources::Job),
     Grinding(crate::grinding::Pending),
@@ -598,6 +598,7 @@ pub enum WorldEvent {
     WaterFilled { actor: ActorId, trace: crate::water_sources::Transition },
     Grinding { actor: ActorId, trace: crate::grinding::Transition },
     DoughMade { actor: ActorId, trace: crate::dough::Transition },
+    AssemblyMade { actor: ActorId, trace: crate::assembly::Transition },
     CombatSound {
         actor: ActorId,
         sound: u16,
@@ -2398,8 +2399,12 @@ impl World {
                                                         );
                                                     }
                                                 }
-                                                Deferred::Assembly(job) => {
+                                                Deferred::Assembly(pending) => {
+                                                    let job = pending.job;
                                                     let outcome = job.complete(&mut p.data.inventory, &self.object_types, &p.data.stats);
+                                                    if outcome == crate::assembly::Outcome::Made {
+                                                        self.events.push(WorldEvent::AssemblyMade { actor: p.id, trace: crate::assembly::Transition { job, queued_at: pending.queued_at, committed_at: self.clock.0 } });
+                                                    }
                                                     let message = match outcome {
                                                         crate::assembly::Outcome::Made => "You combine the ingredients.",
                                                         crate::assembly::Outcome::Level => "You need a higher Cooking level to make that.",

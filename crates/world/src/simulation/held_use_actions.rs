@@ -95,7 +95,7 @@ impl World {
             }
             Some(Handler::Assembly(recipe)) => {
                 let p = self.players.get_mut(actor.slot as usize).unwrap();
-                if (p.data.stats.current(recipe.skill) as u8) < recipe.level {
+                if i32::from(p.data.stats.current(recipe.skill)) < i32::from(recipe.level) {
                     self.events.push(WorldEvent::LocationMessage {
                         actor,
                         message: "You need a higher Cooking level to make that.",
@@ -112,11 +112,12 @@ impl World {
                     .add(
                         crate::assembly::QUEUE,
                         crate::queues::Category::Weak,
-                        2,
-                        Deferred::Assembly(crate::assembly::Job {
-                            recipe,
-                            first_slot,
-                            second_slot,
+                        // Input's queue decrements in its stamped cycle.
+                        // Three gives the sourced two-clock processing delay.
+                        3,
+                        Deferred::Assembly(crate::assembly::Pending {
+                            job: crate::assembly::Job { recipe, first_slot, second_slot },
+                            queued_at: self.clock.0,
                         }),
                     )
                     .map_err(|_| ActionError::QueueFull)?;
@@ -446,7 +447,7 @@ mod assembly_tests {
                             .iter()
                             .flatten()
                             .any(|i| i.id == 12),
-                        tick >= 2
+                        tick >= 3
                     );
                 }
             }
@@ -469,6 +470,27 @@ mod assembly_tests {
             } else {
                 assert!(data.inventory.slots().iter().flatten().any(|i| i.id == 10));
             }
+            let traces: Vec<_> = w.drain_events().into_iter().filter_map(|e| {
+                if let WorldEvent::AssemblyMade { actor: who, trace } = e { assert_eq!(who, actor); Some(trace) } else { None }
+            }).collect();
+            assert_eq!(traces.len(), if change == 0 { 1 } else { 0 });
+            if change == 0 {
+                assert_eq!(traces[0].committed_at - traces[0].queued_at, 2);
+                assert_eq!((traces[0].job.first_slot, traces[0].job.second_slot), (0,1));
+            }
+        }
+    }
+    #[test]
+    fn nonpositive_current_cooking_cannot_admit_assembly() {
+        for level in [-1, 0] {
+            let (mut w, actor, request) = fixture();
+            w.data_mut(actor).unwrap().stats.set_current(7, level);
+            let before = w.data(actor).unwrap().inventory.clone();
+            w.prepare_held_use(actor, request).unwrap();
+            w.finish_held_use(actor, request).unwrap();
+            for _ in 0..5 { w.tick().unwrap(); }
+            assert_eq!(w.data(actor).unwrap().inventory, before);
+            assert!(!w.drain_events().into_iter().any(|e| matches!(e, WorldEvent::AssemblyMade { .. })));
         }
     }
 }

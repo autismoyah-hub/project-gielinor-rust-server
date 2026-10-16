@@ -727,6 +727,9 @@ pub fn assembly(
     for (first, second, output, level) in [
         ("pastry_dough", "piedish", "pie_shell", 1),
         ("pie_shell", "redberries", "uncooked_redberry_pie", 10),
+        ("pie_shell", "cooked_meat", "uncooked_meat_pie", 20),
+        ("pie_shell", "cooked_chicken", "uncooked_meat_pie", 20),
+        ("pie_shell", "cooking_apple", "uncooked_apple_pie", 30),
         ("pizza_base", "tomato", "incomplete_pizza", 35),
         ("incomplete_pizza", "cheese", "uncooked_pizza", 35),
     ] {
@@ -765,6 +768,11 @@ mod assembly_binding_tests {
             "pie_shell",
             "redberries",
             "uncooked_redberry_pie",
+            "cooked_meat",
+            "cooked_chicken",
+            "cooking_apple",
+            "uncooked_meat_pie",
+            "uncooked_apple_pie",
             "pizza_base",
             "tomato",
             "incomplete_pizza",
@@ -792,8 +800,69 @@ mod assembly_binding_tests {
         let recipes = assembly(&symbols, &defs, 7).unwrap();
         assert_eq!(
             recipes.iter().map(|r| r.level).collect::<Vec<_>>(),
-            [1, 10, 35, 35]
+            [1, 10, 20, 20, 30, 35, 35]
         );
+        // These three distinct fillings share atomic assembly but have sourced
+        // level gates. A temporary boost qualifies; missing levels never debit.
+        for (ingredient, output, level) in [
+            ("cooked_meat", "uncooked_meat_pie", 20),
+            ("cooked_chicken", "uncooked_meat_pie", 20),
+            ("cooking_apple", "uncooked_apple_pie", 30),
+        ] {
+            use gielinor_world::{
+                assembly::{Job, Outcome},
+                inventory::{Catalog, Inventory, Item, StackType},
+                stats::Stats,
+            };
+            let recipe = *recipes
+                .iter()
+                .find(|r| r.second == symbols[ingredient])
+                .unwrap();
+            assert_eq!(recipe.first, symbols["pie_shell"]);
+            assert_eq!(recipe.output, symbols[output]);
+            let mut inv = Inventory::new(2, StackType::Normal, false);
+            for (slot, id) in [(0, recipe.first), (1, recipe.second)] {
+                inv.restore_slot(
+                    slot,
+                    Some(Item {
+                        id,
+                        count: 1,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+            }
+            let original = inv.clone();
+            let mut stats = Stats::default();
+            let job = Job {
+                recipe,
+                first_slot: 0,
+                second_slot: 1,
+            };
+            for low in [-1, level - 1] {
+                stats.set_current(7, low);
+                assert_eq!(
+                    job.complete(&mut inv, &Catalog::default(), &stats),
+                    Outcome::Level
+                );
+                assert_eq!(inv, original);
+            }
+            stats.set_current(7, level);
+            assert_eq!(stats.base(7), 1);
+            assert_eq!(
+                job.complete(&mut inv, &Catalog::default(), &stats),
+                Outcome::Made
+            );
+            assert_eq!(
+                inv.slots()
+                    .iter()
+                    .flatten()
+                    .map(|i| (i.id, i.count))
+                    .collect::<Vec<_>>(),
+                vec![(symbols[output], 1)]
+            );
+            assert_eq!(stats.fine_xp(7), 0);
+        }
         defs.items.get_mut(&1).unwrap().cert.template = 799;
         assert!(assembly(&symbols, &defs, 7).is_err());
         defs.items.get_mut(&1).unwrap().cert.template = 0;

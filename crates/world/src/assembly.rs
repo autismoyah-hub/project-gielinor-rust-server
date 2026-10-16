@@ -31,7 +31,7 @@ pub enum Outcome {
 impl Job {
     pub fn complete(&self, inv: &mut Inventory, catalog: &Catalog, stats: &Stats) -> Outcome {
         let r = self.recipe;
-        if (stats.current(r.skill) as u8) < r.level {
+        if i32::from(stats.current(r.skill)) < i32::from(r.level) {
             return Outcome::Level;
         }
         if self.first_slot == self.second_slot
@@ -128,5 +128,33 @@ mod tests {
         let before = inv.clone();
         assert_eq!(job.complete(&mut inv, &catalog, &stats), Outcome::Capacity);
         assert_eq!(inv, before);
+    }
+}
+
+#[derive(Clone, Copy, Debug)]
+pub(crate) struct Pending {
+    pub job: Job,
+    pub queued_at: i32,
+}
+#[derive(Clone, Copy, Debug)]
+pub struct Transition {
+    pub job: Job,
+    pub queued_at: i32,
+    pub committed_at: i32,
+}
+impl Transition {
+    pub fn json(self, actor: crate::simulation::ActorId) -> String {
+        format!(
+            "{{\"actor_slot\":{},\"actor_generation\":{},\"first_slot\":{},\"second_slot\":{},\"first\":{},\"second\":{},\"output\":{},\"count\":1,\"queued_at\":{},\"committed_at\":{}}}",
+            actor.slot,
+            actor.generation,
+            self.job.first_slot,
+            self.job.second_slot,
+            self.job.recipe.first,
+            self.job.recipe.second,
+            self.job.recipe.output,
+            self.queued_at,
+            self.committed_at
+        )
     }
 }

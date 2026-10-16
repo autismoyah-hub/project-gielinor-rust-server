@@ -469,3 +469,35 @@ Scope remains selected three recipes only. Native nonmember refusal, membership 
   - `shutdown.json` SHA256 `24afbedfc6a94f298e2bd22f822e9ac561710d57a2a1fbd3ecad4d47926b95ec`
   - `result.json` SHA256 `507e0bb3ce608440648079694ac2b0d9fa0db68f81d30bd66ca08cd4390cb6fa`
   - `pack-run.json` SHA256 `108ef5a31ba317ecf718d5f0763244b46309cab70fe17370eed35e21ca846cbd`
+
+## Next ordinary pie profiles prepared; validation pending (2026-10-16 UTC)
+
+Grinding receipts published asab4b2f1cebeb5e73a29d90a3b3bc905596f5adde with matching remote SHA; issue54 comment6210774053. Both gameplay routes and same-save relogins passed. Dough driver attempts001–004 and control001 attempt001 deferred at active compiler guard; no dough native acceptance. Control fixture is prepared and must resume with ResumePrepared, archiveB1DC825D. Compiler ownership read once confirms rust-client toolchain process16368(parent3044), started2026-10-16 00:51:08 local; never terminated/modified. Separate memory recheck5602MiB/70.9%commit,799pages-in/s but1.2msdisklatency passed memory policy; active compiler remains the admission gate.
+
+Implemented but NOT YET COMPILED: three additional ordinary pie fillings through existing assembly registry/atomic inventory transaction: pie_shell2315+cooked_meat2142 or cooked_chicken2140 -> uncooked_meat_pie2319 (currentCooking20); pie_shell2315+cooking_apple1955 -> uncooked_apple_pie2317 (currentCooking30). All six prepared239.1 definitions PASS, ordinary unnoted/nonplaceholder/nonstackable. Full two-slot inventory, temporary boost and negative-level rejection assertions added to binding tests. Signed effective-level comparison replaces the old u8 cast in admission and transaction, preventing negative effective values from wrapping into eligibility.
+
+Pinned local Wiki: Uncooked meat pie revision15185764 wikitextSHAa2e149356f935d2050a5d037ae7dc13437fcce632588b268e5a1e0a94cd8edc1; Uncooked apple pie revision15185763 SHAd519a21993078b61d6bb6bd4d2a1a51d45fd81f62f6bbf434e9a8966f5649f25. Both recipe fields specify2ticks,0XP,boostableYes,membersNo. Meat page explicitly supplies both cooked-meat and cooked-chicken inputs. URLs https://oldschool.runescape.wiki/w/Special:Redirect/revision/15185764 and https://oldschool.runescape.wiki/w/Special:Redirect/revision/15185763 . OpenRune PieAssemblyEvents.kt SHA7a050da4ecf496f15ec03cf137feacdd86f452d973b3cc5d211519e71f727895 independently inspected; its unchecked deletions/additions and missing level/delay are not copied.
+
+The same input-phase pattern exists in the earlier shared assembly queue2, so changed it to3 and added successful AssemblyMade clock/slot traces plus a2-clock assertion and zero-trace rejection cases. Prior existing native four-chain inventory/save acceptance remains tied to its old archive; it did not establish raw-clock timing. Revisited existing Pie shell15183753,Uncooked berry pie15183752,Incomplete pizza15187004,Uncooked pizza15184746 recipe fields all specify2ticks/0XP. This phase correction remains uncompiled pending resource capacity; new archive/native timing acceptance required.
+
+Private NativePieScenario.rs and pies fixture/runner/control/state/trace assessors are prepared, not built/run. Fresh slots0/2/4shell,1meat,3chicken,5apple,6coins1000; Cooking35. Expected final slots0/1meatpies,2applepie,6coins (existing first-free output placement); noXP. Real generated item-use menus only, including reversed chicken pair; no forged packet fallback. Script syntax PASS and synthetic state/trace checks reject56invalid variations. Source B1DC825D does NOT include these new pie changes; keep it for pending dough acceptance. No issue closure.
+
+Next lead only: inspected OpenRune CleaningHerbsEvents and local Guam/Marrentill/Herb/Herblore articles. Cleaning requires source-backed membership, Druidic Ritual completion, target quest binding and automatic-continuation policy; no cleaning code or runtime acceptance claimed. This bounded lead is not a whole-tree absence finding. Continue current pie/dough work rather than infer quest eligibility from level alone.
+
+- `work/openrune-simple-pie-items-001.json` SHA256 `00d22cc0be0e53ea802871875721f82c184d917a1d0323af9a563a36d9e2b303`
+
+## Pie deterministic validation and preserved dough UI failure (2026-10-16 UTC)
+
+Supersedes the preceding uncompiled status: `build.ps1 -Action test -CargoArgs @('-p','gielinor-world','-p','gielinor-server','--lib')` PASS,45server+348world,0failed,1existingignored; compile47.86s,world14.58s. Log `work/simple-pies-full-tests-001.log`. Admission5609MiB available,70.0%commit,0pages-in/s,0msdisk,CPU0.7%,j2. New pie definitions, signed effective-level admission, strict slots, cancellation/stale rejection and two-clock assembly delay passed deterministic coverage. New archive and native pie acceptance remain pending.
+
+Dough login control `openrune-dough-login-control-001` PASS on B1DC825DE02F34E540EE380C2072383A797D8379785BD69928F43446D8D1AC7F. Fresh run `openrune-native-dough-001` FAIL with immutable dough-001 driver: generated opcode27 from flour slot0 to bucket slot9 at clienttick67; visible skillmulti option had no matching native menu action in the driver's parent-only lookup. No dough acceptance claim. Native client exit1, owned server9632 clean0, fresh durable logout2026-10-16 08:16:18. Failure-state conservation PASS (not gameplay completion). Source/fixture/log receipts retained. No client library or production changes. Owned dough-002 driver now recognizes genuine dynamic-child actions belonging to the selected logical option and logs hit-test diagnostics; not yet built/run. First build deferred by active compiler guard. No forged selection packets or issue closure.
+
+- `work/simple-pies-full-tests-001.log` SHA256 `f3bc88809c79256248d7ea987db4eac434743f78c02eaa600f6bd106413f745a`
+- `work/integration/runs/openrune-native-dough-001/client.log` SHA256 `8d3c687f6f2106ef43ebb8a6cee4e3d6f9a40cce3027e31decebb8f171e5b243`
+- `work/integration/runs/openrune-native-dough-001/server.log` SHA256 `186f1d2017059af168a53f5f1b836045167d2afc07d9e043c38440fe15c2d9a4`
+- `work/integration/runs/openrune-native-dough-001/initial-state.json` SHA256 `d3206078a741f942cbb12676a370e2c75aa6c47280802cf3bad3132814bc2358`
+- `work/integration/runs/openrune-native-dough-001/final-state.json` SHA256 `7a968d2d6f6f55ff979157f5f7d54b90081fec4d90e88ea24703a76b6cfc98ca`
+- `work/integration/runs/openrune-native-dough-001/result.json` SHA256 `61322fe4876a57da9dc83bd8ea7637005b8029a13ebca99ad10ff4f67d7fa94e`
+- `work/integration/runs/openrune-native-dough-001/logout-observation.json` SHA256 `ea13c74a88d428051695fbb7d28dee9d3b6c41b1b62a9eedb7e5f92620d0aab7`
+- `work/integration/runs/openrune-native-dough-001/shutdown.json` SHA256 `75b58e484f283f7e48eb89c43a7f98c63b42d18d589f3a12a6f7a72208a473d7`
+- `work/integration/runs/openrune-native-dough-001/failure-conservation-assessment.json` SHA256 `cf29fb2744b08b38ff7c28132ab51c112604bde506dde6184f48ea35bc3ac613`
