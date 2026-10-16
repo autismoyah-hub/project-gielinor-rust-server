@@ -680,3 +680,41 @@ Native low-level, stale/cancellation/full-capacity, membership, multiplayer, ani
 Supersedes pending compilation status: `build.ps1 -Action test -CargoArgs @('-p','gielinor-world','-p','gielinor-server','--lib')` PASS45server+353world,0failed,1existingignored,compile31.80s,world7.58s. Guard5485MiB available,70.1%commit,0pages-in/s,5.4msdisk,CPU2%,j2. Live membership refusal/revocation preserve inputs/XP; member Cooking65 boost and2250fineXP at5x pass. Assembly binder now rejects per-recipe input/output aliases and dummy definitions; shared valid product IDs remain permitted. Earlier ordinary recipe coverage still passes. Native pineapple and low-level pie refusal remain pending; no issue closure.
 
 - `work/pineapple-full-tests-001.log` SHA256 `37882d846edc49824253638d9a516bfd87594b11578b571dbacba6d66c4c2bc0`
+
+## Native assembly pineapple acceptance (2026-10-16 UTC)
+
+Member Cooking65 chunk/ring toppings: two pineapple pizzas, exactly450 CookingXP at persisted5x; genuine opcode27 including reversed ring pair, two-clock commits, exact slots and unrelated exported state.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking parity or unrelated recipes. No issue closure.
+
+`openrune-native-pineapple-001` PASS. Server archive `2C311F8F867C5FAE97B62F1278C0A9D282641F7A4F479D92B58365BD3B3C1B2F`, driver `pineapple-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID6352.
+- Driver `NativePineappleScenario.rs` SHA256 `D580F56A6FE6217FF8D60D2B20D08F50A4378C43B81E8EAA68AD23EE4D28EFF0`
+- Driver `server_pineapple.exe` SHA256 `4E1E7FE07C62D02527C519A5D92C29C0A4EF13DEAE501BC235F02D2451B1DD20`
+- `client.log` SHA256 `6df8a7f02a710f0560a6797519f72e417b0335b776a89580285dcb352c896710`
+- `server.log` SHA256 `57ffbc655839e845f630f3282141ee609b98afd8d3bb66aa4b4be24a88acea84`
+- `initial-state.json` SHA256 `badbe0105dd2ffd03483ceeed21a92bd00cd9ca8357b33ec0f00991c2e0bd81f`
+- `final-state.json` SHA256 `1fdf5d4cfaa9a49627fee906012f3c606d0093f3ab6772b4f38c2b84be2ed5d0`
+- `pack-assessment.json` SHA256 `c8c3716346c3f6290201c1b5e63163ab43188c954a1dde06692aa2cc5483272c`
+- `pineapple-trace-assessment.json` SHA256 `ecfec7bba138f3f477ab0964014c580d6407c14d0de3b01901c7776aabf4b67d`
+- `logout-observation.json` SHA256 `f7d9536aa3c6308073a57dedeaa71095469544d48c42dd742e01d6ba4401111f`
+- `shutdown.json` SHA256 `a7181f21d140901d5610a094aa0d853ef6e60c93a3aed64d70b554a3876d8488`
+- `result.json` SHA256 `5e51ed8baa24d0d22817960f7cc4f015502b0bbae6a3b8326e0500a19f0de11b`
+- `pack-run.json` SHA256 `16f77fdb33c430e68d8326a8af5dfd8dddb62e6d76de962ab64f918c805368ef`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":200},"3077":{"before":0,"after":35206},"3079":{"before":0,"after":100},"65515":{"before":0,"after":94}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[{"actor_slot":1,"actor_generation":614,"first_slot":0,"second_slot":1,"first":2289,"second":2116,"output":2301,"count":1,"queued_at":73,"committed_at":75},{"actor_slot":1,"actor_generation":614,"first_slot":2,"second_slot":3,"first":2289,"second":2118,"output":2301,"count":1,"queued_at":79,"committed_at":81}],"scope":"Server assembly clocks and selected slots, not packet/display latency"}`
+
+`openrune-native-pineapple-relogin-001` PASS. Server archive `2C311F8F867C5FAE97B62F1278C0A9D282641F7A4F479D92B58365BD3B3C1B2F`, driver `pineapple-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor `openrune-native-pineapple-001`, owned PID17080.
+- Driver `NativePineappleScenario.rs` SHA256 `D580F56A6FE6217FF8D60D2B20D08F50A4378C43B81E8EAA68AD23EE4D28EFF0`
+- Driver `server_pineapple.exe` SHA256 `4E1E7FE07C62D02527C519A5D92C29C0A4EF13DEAE501BC235F02D2451B1DD20`
+- `client.log` SHA256 `85e4431794d926956ecda206beee247591a8e36f747fb7998d4756222df69142`
+- `server.log` SHA256 `fcad3644946da602955ef6d54b9d12ae10bc31e4c5729d94badb0d94ca2f242e`
+- `initial-state.json` SHA256 `1fdf5d4cfaa9a49627fee906012f3c606d0093f3ab6772b4f38c2b84be2ed5d0`
+- `final-state.json` SHA256 `b89a0be82f249df41e8e7e501789674b739a380c6dc14477bb34a866fbe01807`
+- `pack-assessment.json` SHA256 `b079faf82875497b800cb6a2601069db3d1598e1337e398a446cd6b3be524b7a`
+- `pineapple-trace-assessment.json` SHA256 `226bbade27c24b435c3ecc469273ebef200a2c2c10ce8d71870ea60a9342393d`
+- `logout-observation.json` SHA256 `65187a76817e509a8e7a0a32efff657e1399897b8e4e582199f47070cbabbae2`
+- `shutdown.json` SHA256 `1ddbcf62f48375293256bbfff10ddf7c96b4a69b636a08468a5d7f0da7a1ce6e`
+- `result.json` SHA256 `43e8e87d9fa7e80a9b0e54827e1e9d74ddde8305b9ad09ada9dd5e18fb0e8ae1`
+- `pack-run.json` SHA256 `369cafc50d4a8de71f728694d71cbf4918fca7531590d407edd0b4e72e16fc3f`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":200,"after":300},"3077":{"before":35206,"after":58467},"3079":{"before":100,"after":86},"65515":{"before":94,"after":174}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Server assembly clocks and selected slots, not packet/display latency"}`
