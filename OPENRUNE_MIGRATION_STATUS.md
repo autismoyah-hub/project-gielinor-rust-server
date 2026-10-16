@@ -1365,3 +1365,64 @@ The same runtime now registers15 ordinary normal herbs, including target-atteste
 New native server archive attempt001 compiler-deferred; no herb native driver build/run yet. Existing7C3952D6 archive is not a herb runtime acceptance artifact. Native preparation and258 negative assessor cases remain distinct from gameplay acceptance. No issue closure.
 
 - `work/manual-herb-full-tests-attempt-011.log` SHA256 `86e7427915fef2f8ffced10bb4f35207c07e8560eeb1a01ffbba40d0813faab7`
+
+## Manual herb native archive prepared (2026-10-16 UTC)
+
+Archive358F0AD94E130053CF7DE71ADF59F699EB42C6023366F961F4D3BB1C90A97D3B built25.34s on attempt003 with376 source files and unchanged before/after source hashes. Implementation commitd8978ede56778fc7821fbb85fa0617d5b8f0c683; native build includes the actual working dependency/config state pinned by source-hashes.json. Do not substitute the older7C archive for herb acceptance. Driver herbmanual001 build attempt001 compiler-deferred. No herb native fixture has been created or run.
+
+An additional native incomplete-Druidic-Ritual fixture/driver/herbquestdenied pipeline is prepared (member1,Herblore5/fine3881,quest80=3): two genuine Clean actions must produce two exact quest-refusal messages, zero transitions and unchanged full backpack/XP, followed by same-save verification.231 synthetic corruption cases PASS; driver NOT BUILT/native NOT TESTED. This preparation does not complete the quest or alter any shared account.
+- `work/openrune-herbmanual-001-server-build.json` SHA256 `39262668510fea912e9afe64f31a131c8181baa21ae721e9bc8703b4c35736b0`
+- `work/herbmanual-server-build-attempt-003.log` SHA256 `5d3150894579b2c4d2b8087362df55c81f16ad5e6e11769cbc6630d88a9ad172`
+
+## Native herb build/preparation continuation (2026-10-16 UTC)
+
+Manual driver attempts001..004 compiler-deferred. Attempt005 used an incorrect log directory (OSRSPS rather than OSRSRSPS), so no log was created; a read-only check confirmed no driver pin or compiler remained before retry. Attempt006 reached compilation and failedE0308: native inventory.item expects a signedi32 slot, while the helper passedusize. The three unpinned owned herb drivers were corrected to the actual API; client library/vendor code unchanged. Attempt007 compiler-deferred. Do not label these drivers built.
+
+Additional herbnormal001 native scenario is prepared for all15 registered profiles, full28-slot inventory, member1,quest80=4,Herblore99/fine130344311. Individual5x awards total7060fine; expected final130351371 (integer display13035137), preserving the initial fractional remainder. Initial99XP was independently calculated from the existing level-table formula. Profile slots0..14, twelve pots15..26 and1000coins27. Native driver/fixture/control/fresh/same-save assessors prepared;382 synthetic corruptions and PowerShell syntax PASS. No database/driver build/native run yet; successful two-profile manual and quest-denial scenarios remain the first native steps.
+
+- `work/herbmanual-driver-attempt-006.log` SHA256 `93a93f2edd09c2facaeccacd32ff9d134988e89936f27009d865b1db4d109bfa`
+
+## Corrected manual herb driver built; control active (2026-10-16 UTC)
+
+Driver herbmanual001 built1.53s on attempt008 after the signed-slot correction. Prior failed/deferred attempts remain. Full baseline library/vendor/Cargo.lock verification passed before build. Login-only control openrune-herbmanual-login-control-001 is running on the new358F0AD9 archive; no native Clean acceptance yet.
+- Driver `server_herbmanual.exe` SHA256 `71E5B4EAAF87E7ACAFEC3140CC0E12FA02C6B0249A2AD6BC9B516803107B9680`
+- Driver `NativeHerbManualScenario.rs` SHA256 `1AD59B6C68FE9F10A09F75DB9C51899CDF977DA1B23795BD7B2BE2FA56F17FFD`
+- `work/herbmanual-driver-attempt-008.log` SHA256 `d9747f7053bc4646e923f8f80ec41793bd90ee43eef000c9e5ccfb7b70036d0e`
+
+Focused issue#67 owns the fractional-XP/persistence boundary for this caller. Comment6215188181 records tested sourced8978ede56778fc7821fbb85fa0617d5b8f0c683 and explicitly pending native evidence. No dedicated herb-cleaning issue was found in the bounded existing-issue search; no new issue or closure.
+
+## Herb control passed; current fixture and next-component preparation (2026-10-16 UTC)
+
+Login-only control openrune-herbmanual-login-control-001 PASS on archive358F0AD94E130053CF7DE71ADF59F699EB42C6023366F961F4D3BB1C90A97D3B: client exit0, observed durable save and clean owned shutdown. This supersedes control-active notes. Native action fixture openrune-native-herbmanual-001 remains prepared and unchanged; attempts001..006 compiler-deferred. ResumePrepared is mandatory for its next attempt. No native Clean or same-save acceptance claim yet.
+- Control `result.json` SHA256 `6319dc35b6fbb840f9d3dded26b0d162415b42136438519a0da554dcd78889f3`
+- Control `logout-observation.json` SHA256 `933b80b74eb3b38754e453fe7c2939d11e7b8695c17a6646bd47c50dfa3d2859`
+- Control `shutdown.json` SHA256 `70ed7e2471cbb580ebca73d07f801cfcc846cc5bbb6675da7cc17a7e4ed2414c`
+
+Bounded unfinished-potion readiness covers Guam potion (unf) Wiki15185604 and Marrentill potion (unf)15345595: current boostable Herblore3/5, member, zeroXP, recipe ticks1. Target definitions independently decoded: guam_leaf249/vial_water227/guamvial91 and marentill251/vial_water227/marrentillvial93. Repeated Make-X cadence remains unresolved; OpenRune weak1/repeat4 and existing food scheduler2 are not adopted.
+
+A quest-gated unfinished_potions::Job adapter now reuses assembly::Job for atomic exact-slot two-input/one-output exchange. It accepts live quest/member/boosted-level state, rejects malformed recipes and modified/stale slots, and preserves every stat. Two tests cover full28-slot reversed input positions, fractional XP conservation, replay and nine refusal/credit failures. Authored, NOT COMPILED, NOT REGISTERED, NOT NATIVE TESTED; this source is newer than the pinned herb archive and does not change its acceptance identity. No copied OpenRune expression, quest completion or redundant scheduler.
+- `work/openrune-unfinished-potions-readiness-001.json` SHA256 `8429e4043ff65929f792b08b653163dd5a62e045d2d771ab639e0eaad5d82439`
+
+Starter unfinished-potion content bindings and an additional server test are now authored: named vial_water is ordinary/nonmember; clean herb and unfinished output are ordinary/member. Missing/duplicate/malformed/noted/placeholder/grimy definitions fail closed. Both profiles test current boosted thresholds and unchanged fractionalXP; nine malformed-definition cases. Still NOT COMPILED and NOT REGISTERED. A focused existing-issue search for Herblore titles and exact unfinished-potion text found no dedicated issue; no unrelated quest issue is claimed. Native herb action attempts007..009 remain compiler-deferred, fixture unchanged. The herb receipt recorder now requires native-herb-assessment.json PASS rather than accepting a missing optional packet receipt.
+
+## Fifteen unfinished-potion profiles prepared, not registered (2026-10-16 UTC)
+
+The same shared-transaction adapter now has strict content bindings for all15 ordinary water-based unfinished potions. Each independent Wiki recipe specifies member, boostable, zeroXP, ticks1;31 unique ordinary target definitions (15clean herbs,15outputs,water) decoded. The server threshold test covers every profile; runtime Make-X/quest admission, quantity cadence and native/save remain absent. Source tests remain UNCOMPILED while Agent1 full release suite is active. This supersedes the narrower two-profile preparation count only; no runtime acceptance claim. Blood/coconut-milk/cape/quest-specific routes excluded.
+- Guam potion (unf), Wiki revision15185604, Herblore3, zeroXP; target249+227->91; Wiki SHA256 `786afc3ccdc06953bea299c46f88446b8b4785d71f5697500e5d391a78eac464`.
+- Marrentill potion (unf), Wiki revision15345595, Herblore5, zeroXP; target251+227->93; Wiki SHA256 `1ddd8f01fa3729abf441d64d6befa75e782951ed58147519a97b04c24734af18`.
+- Tarromin potion (unf), Wiki revision15185606, Herblore12, zeroXP; target253+227->95; Wiki SHA256 `5f35c505b1e06617ad98b5cb8d3fd0dffacb2344b09df6ff651f4364800c475a`.
+- Harralander potion (unf), Wiki revision15184260, Herblore22, zeroXP; target255+227->97; Wiki SHA256 `d2a05e2a1a59410db2c513d7f187548d18b76b0e7a05add8215cd80864f75441`.
+- Ranarr potion (unf), Wiki revision15185607, Herblore30, zeroXP; target257+227->99; Wiki SHA256 `8c4bd0462d10a039a910d8dc15f3440bae3ce78fe6f214ab6c208c909229a2ab`.
+- Toadflax potion (unf), Wiki revision15185608, Herblore34, zeroXP; target2998+227->3002; Wiki SHA256 `4484608e2c49569c9578335d8271d389091675f641d75040c7ae31e3142f0f09`.
+- Irit potion (unf), Wiki revision15185609, Herblore45, zeroXP; target259+227->101; Wiki SHA256 `8b11e2482bb98ed9fc63470117e7fa65bf72f31a6df73c0c945e4290cf316640`.
+- Avantoe potion (unf), Wiki revision15185610, Herblore50, zeroXP; target261+227->103; Wiki SHA256 `fa6ab0e197cdc4e23a1ee28f4dd2f26637569b6840b780916fff38a608bed3f2`.
+- Kwuarm potion (unf), Wiki revision15185611, Herblore55, zeroXP; target263+227->105; Wiki SHA256 `b7c829574b264b1db204a3388676e2b35fbfc391b6bb8bc34113303168288b57`.
+- Huasca potion (unf), Wiki revision15192710, Herblore58, zeroXP; target30097+227->30100; Wiki SHA256 `b1f6c06ad79438d9843c97d03b0b18e71d837c906717e2f39fe58598687996f6`.
+- Snapdragon potion (unf), Wiki revision15185612, Herblore63, zeroXP; target3000+227->3004; Wiki SHA256 `74719078d03000441af9b013259184222f8f077c457a52501f36c0706105e631`.
+- Cadantine potion (unf), Wiki revision15185616, Herblore66, zeroXP; target265+227->107; Wiki SHA256 `5851dff05356e268877bc8f8af5900f6f9c21c0fed1a85cdffde8deb1595a164`.
+- Lantadyme potion (unf), Wiki revision15185617, Herblore69, zeroXP; target2481+227->2483; Wiki SHA256 `901236463d2b5d0aa348282d58f8c04aca1d4a2af84494c054c78d36e9e91def`.
+- Dwarf weed potion (unf), Wiki revision15294004, Herblore72, zeroXP; target267+227->109; Wiki SHA256 `1dd46c79cd0a8dc33d0543056565b6348ec089d7d34a4dfb3d611b12fb861241`.
+- Torstol potion (unf), Wiki revision15185812, Herblore78, zeroXP; target269+227->111; Wiki SHA256 `4f6f537922f2a1d84273168536b5c9de5124e7b0e46723c539c6194f4dd8ed99`.
+- Profile report SHA256 `169a50e03531f3e4dfca77130b39c7b96db22b7340199db628bf0dbfbf581bd6`.
+
+Money making guide/Making guam potions revision15250776 independently requires Druidic Ritual and describes the actual menu/Make-all and14+14 inputs to14outputs. Its13seconds includes banking and is not adopted as exact repeat timing. Native manual-herb attempts010..012 remained compiler-deferred; next attempt must resume the exact prepared fixture.

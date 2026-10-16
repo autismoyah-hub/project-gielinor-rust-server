@@ -1959,3 +1959,212 @@ mod herb_binding_tests {
         }
     }
 }
+
+/// Fifteen ordinary water-based unfinished-potion profiles, not yet registered with Make-X.
+/// Per-page Wiki evidence: openrune-unfinished-potions-profiles-001.json; no revision241 IDs reused.
+pub fn unfinished_potions(
+    objects: &Symbols,
+    defs: &Definitions,
+) -> Result<Vec<gielinor_world::unfinished_potions::Recipe>, String> {
+    let mut seen = std::collections::BTreeSet::new();
+    let mut bind = |name: &str, members: bool| -> Result<i32, String> {
+        let id = *objects
+            .get(name)
+            .ok_or_else(|| format!("Missing potion symbol {name}"))?;
+        let item = defs
+            .items
+            .get(&(id as u32))
+            .ok_or_else(|| format!("Missing potion item {name}"))?;
+        if id < 0
+            || !seen.insert(id)
+            || item.stackable
+            || item.cert.template != 0
+            || item.placeholder.template != 0
+            || item.dummy == 1
+            || item.members != members
+            || item
+                .inventory_ops
+                .iter()
+                .any(|op| op.as_deref() == Some("Clean"))
+        {
+            return Err(format!(
+                "Invalid ordinary potion ingredient or output {name}"
+            ));
+        }
+        Ok(id)
+    };
+    let vessel = bind("vial_water", false)?;
+    let mut recipes = Vec::new();
+    for (herb, output, level) in [
+        ("guam_leaf", "guamvial", 3),
+        ("marentill", "marrentillvial", 5),
+        ("tarromin", "tarrominvial", 12),
+        ("harralander", "harralandervial", 22),
+        ("ranarr_weed", "ranarrvial", 30),
+        ("toadflax", "toadflaxvial", 34),
+        ("irit_leaf", "iritvial", 45),
+        ("avantoe", "avantoevial", 50),
+        ("kwuarm", "kwuarmvial", 55),
+        ("huasca", "huascavial", 58),
+        ("snapdragon", "snapdragonvial", 63),
+        ("cadantine", "cadantinevial", 66),
+        ("lantadyme", "lantadymevial", 69),
+        ("dwarf_weed", "dwarfweedvial", 72),
+        ("torstol", "torstolvial", 78),
+    ] {
+        recipes.push(gielinor_world::unfinished_potions::Recipe {
+            herb: bind(herb, true)?,
+            vessel,
+            output: bind(output, true)?,
+            level,
+        });
+    }
+    Ok(recipes)
+}
+#[cfg(test)]
+mod unfinished_potion_binding_tests {
+    use super::*;
+    fn fixture() -> (Symbols, Definitions) {
+        let mut symbols = Symbols::new();
+        let mut defs = Definitions {
+            inventories: Default::default(),
+            locations: Default::default(),
+            npcs: Default::default(),
+            items: Default::default(),
+            varbits: Default::default(),
+            varps: Default::default(),
+            stats: Default::default(),
+        };
+        for (name, id, member) in [
+            ("guam_leaf", 249, true),
+            ("vial_water", 227, false),
+            ("guamvial", 91, true),
+            ("marentill", 251, true),
+            ("marrentillvial", 93, true),
+            ("tarromin", 253, true),
+            ("tarrominvial", 95, true),
+            ("harralander", 255, true),
+            ("harralandervial", 97, true),
+            ("ranarr_weed", 257, true),
+            ("ranarrvial", 99, true),
+            ("toadflax", 2998, true),
+            ("toadflaxvial", 3002, true),
+            ("irit_leaf", 259, true),
+            ("iritvial", 101, true),
+            ("avantoe", 261, true),
+            ("avantoevial", 103, true),
+            ("kwuarm", 263, true),
+            ("kwuarmvial", 105, true),
+            ("huasca", 30097, true),
+            ("huascavial", 30100, true),
+            ("snapdragon", 3000, true),
+            ("snapdragonvial", 3004, true),
+            ("cadantine", 265, true),
+            ("cadantinevial", 107, true),
+            ("lantadyme", 2481, true),
+            ("lantadymevial", 2483, true),
+            ("dwarf_weed", 267, true),
+            ("dwarfweedvial", 109, true),
+            ("torstol", 269, true),
+            ("torstolvial", 111, true),
+        ] {
+            symbols.insert(name.into(), id);
+            defs.items.insert(
+                id as u32,
+                gielinor_cache::definitions::ItemType::decode(if member { &[16, 0] } else { &[0] })
+                    .unwrap(),
+            );
+        }
+        (symbols, defs)
+    }
+    #[test]
+    fn named_profiles_have_zero_reward_at_boosted_threshold_and_reject_invalid_definitions() {
+        use gielinor_world::{
+            inventory::{Catalog, Inventory, Item, StackType},
+            stats::Stats,
+            unfinished_potions::{Job, Outcome},
+        };
+        let (symbols, defs) = fixture();
+        let recipes = unfinished_potions(&symbols, &defs).unwrap();
+        assert_eq!(
+            recipes
+                .iter()
+                .map(|r| (r.herb, r.vessel, r.output, r.level))
+                .collect::<Vec<_>>(),
+            [
+                (249, 227, 91, 3),
+                (251, 227, 93, 5),
+                (253, 227, 95, 12),
+                (255, 227, 97, 22),
+                (257, 227, 99, 30),
+                (2998, 227, 3002, 34),
+                (259, 227, 101, 45),
+                (261, 227, 103, 50),
+                (263, 227, 105, 55),
+                (30097, 227, 30100, 58),
+                (3000, 227, 3004, 63),
+                (265, 227, 107, 66),
+                (2481, 227, 2483, 69),
+                (267, 227, 109, 72),
+                (269, 227, 111, 78)
+            ]
+        );
+        for recipe in recipes {
+            let mut inv = Inventory::new(2, StackType::Normal, false);
+            for (slot, id) in [(0, recipe.herb), (1, recipe.vessel)] {
+                inv.restore_slot(
+                    slot,
+                    Some(Item {
+                        id,
+                        count: 1,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+            }
+            let mut stats = Stats::default();
+            stats.set_fine_xp(15, 3881).unwrap();
+            stats.set_current(15, recipe.level as i8 - 1);
+            let job = Job {
+                recipe,
+                herb_slot: 0,
+                vessel_slot: 1,
+            };
+            let original = inv.clone();
+            assert_eq!(
+                job.complete(&mut inv, &Catalog::default(), &mut stats, true, true),
+                Outcome::Level
+            );
+            assert_eq!(inv, original);
+            stats.set_current(15, recipe.level as i8);
+            let unchanged = stats.clone();
+            assert_eq!(
+                job.complete(&mut inv, &Catalog::default(), &mut stats, true, true),
+                Outcome::Made
+            );
+            assert_eq!(inv.get(0).unwrap().id, recipe.output);
+            assert_eq!(stats, unchanged);
+        }
+        for mode in 0..9 {
+            let (mut symbols, mut defs) = fixture();
+            match mode {
+                0 => {
+                    symbols.remove("guamvial");
+                }
+                1 => {
+                    defs.items.remove(&91);
+                }
+                2 => defs.items.get_mut(&91).unwrap().stackable = true,
+                3 => defs.items.get_mut(&249).unwrap().cert.template = 799,
+                4 => defs.items.get_mut(&93).unwrap().placeholder.template = 14401,
+                5 => defs.items.get_mut(&91).unwrap().dummy = 1,
+                6 => defs.items.get_mut(&227).unwrap().members = true,
+                7 => defs.items.get_mut(&249).unwrap().inventory_ops[0] = Some("Clean".into()),
+                _ => {
+                    symbols.insert("marrentillvial".into(), 91);
+                }
+            }
+            assert!(unfinished_potions(&symbols, &defs).is_err(), "mode{mode}");
+        }
+    }
+}
