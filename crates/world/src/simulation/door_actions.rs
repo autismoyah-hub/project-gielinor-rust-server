@@ -34,6 +34,10 @@ impl World {
                         .tutorial_gates
                         .as_ref()
                         .is_some_and(|c| c.gates.contains_key(&id))))
+            || self
+                .milking
+                .as_ref()
+                .is_some_and(|c| c.cows.get(&id) == Some(&operation))
             || self.location_handlers.contains_key(&(id, operation))
     }
     fn door_target(&self, loc: Location) -> Result<Target, ActionError> {
@@ -135,6 +139,7 @@ impl World {
             Strategy::Normal,
         );
         let p = self.players.get_mut(actor.slot as usize).unwrap();
+        p.queues.remove_all(crate::milking::QUEUE);
         p.pending_door = None;
         p.prayer = None;
         p.pending_pickup = None;
@@ -305,6 +310,14 @@ impl World {
         } = action
         {
             self.process_location_use(slot, loc, inv_slot, object);
+            return;
+        }
+        if self
+            .milking
+            .as_ref()
+            .is_some_and(|c| c.cows.get(&loc.id) == Some(&operation))
+        {
+            self.start_milking(slot, loc, None);
             return;
         }
         if operation == 1

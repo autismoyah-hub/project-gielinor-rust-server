@@ -69,6 +69,12 @@ pub fn item_packs(
         ("pack_vial_empty", "vial_empty", true),
         ("pack_vial_water", "vial_water", true),
         ("pack_compost", "bucket_compost", true),
+        ("pack_airrune", "airrune", false),
+        ("pack_waterrune", "waterrune", false),
+        ("pack_earthrune", "earthrune", false),
+        ("pack_firerune", "firerune", false),
+        ("pack_mindrune", "mindrune", false),
+        ("pack_chaosrune", "chaosrune", false),
     ] {
         let Some(&pack) = symbols.get(pack_name) else {
             continue;
@@ -565,6 +571,49 @@ pub fn equipment_requirement_messages(
 mod pack_binding_tests {
     use super::*;
     #[test]
+    fn rune_profiles_resolve_symbols_and_reject_malformed_outputs() {
+        let mut symbols = Symbols::new();
+        let mut defs = Definitions {
+            inventories: Default::default(),
+            locations: Default::default(),
+            npcs: Default::default(),
+            items: Default::default(),
+            varbits: Default::default(),
+            varps: Default::default(),
+            stats: Default::default(),
+        };
+        // Synthetic identities ensure registration uses Names, not revision241 IDs.
+        for (index, rune) in ["air", "water", "earth", "fire", "mind", "chaos"]
+            .into_iter()
+            .enumerate()
+        {
+            let pack = 10000 + index as i32;
+            let output = 20000 + index as i32;
+            symbols.insert(format!("pack_{rune}rune"), pack);
+            symbols.insert(format!("{rune}rune"), output);
+            let mut pack_type = gielinor_cache::definitions::ItemType::decode(&[0]).unwrap();
+            pack_type.inventory_ops[0] = Some("Open".into());
+            let mut output_type = gielinor_cache::definitions::ItemType::decode(&[0]).unwrap();
+            output_type.stackable = true;
+            defs.items.insert(pack as u32, pack_type);
+            defs.items.insert(output as u32, output_type);
+        }
+        let rules = item_packs(&symbols, &defs).unwrap();
+        assert_eq!(rules.len(), 6);
+        for index in 0..6 {
+            let rule = rules[&(10000 + index)];
+            assert_eq!(
+                (rule.output, rule.count, rule.noted),
+                (20000 + index, 100, false)
+            );
+        }
+        defs.items.get_mut(&20005).unwrap().placeholder.template = 1;
+        assert!(item_packs(&symbols, &defs).is_err());
+        defs.items.get_mut(&20005).unwrap().placeholder.template = 0;
+        symbols.remove("chaosrune");
+        assert!(item_packs(&symbols, &defs).is_err());
+    }
+    #[test]
     fn pack_registration_requires_open_operation_and_real_stackable_output() {
         let symbols: Symbols = [("pack_feather".into(), 11881), ("feather".into(), 314)]
             .into_iter()
@@ -693,5 +742,109 @@ mod assembly_binding_tests {
         defs.items.get_mut(&1).unwrap().cert.template = 0;
         symbols.remove("tomato");
         assert!(assembly(&symbols, &defs, 7).is_err());
+    }
+}
+
+/// Ordinary bucket profile. Numeric60788 was independently attested in the
+/// prepared239.1 cache (scene roots004), not imported from OpenRune241.
+pub fn milking(
+    obj: &Symbols,
+    loc: &Symbols,
+    seq: &Symbols,
+    synth: &Symbols,
+    defs: &Definitions,
+) -> Result<gielinor_world::milking::Config, String> {
+    let resolve = |map: &Symbols, key: &str| {
+        map.get(key)
+            .copied()
+            .ok_or_else(|| format!("Missing milk symbol {key}"))
+    };
+    let bucket = resolve(obj, "bucket_empty")?;
+    let milk = resolve(obj, "bucket_milk")?;
+    for id in [bucket, milk] {
+        let item = defs
+            .items
+            .get(&(id as u32))
+            .ok_or("Missing milk item definition")?;
+        if item.stackable || item.cert.template != 0 || item.placeholder.template != 0 {
+            return Err("Invalid ordinary milk vessel".into());
+        }
+    }
+    if bucket == milk {
+        return Err("Milk input/output aliases".into());
+    }
+    let mut cows = BTreeMap::new();
+    for (id, operation) in [
+        (resolve(loc, "fat_cow")?, 1),
+        (resolve(loc, "fairy_fat_cow")?, 2),
+        (60788, 1),
+    ] {
+        let Some(def) = defs.locations.get(&(id as u32)) else {
+            if id == 60788 {
+                continue;
+            }
+            return Err("Missing cow definition".into());
+        };
+        if !def.name.eq_ignore_ascii_case("Dairy cow")
+            || !def.multi.is_empty()
+            || def.ops[operation as usize - 1].as_deref() != Some("Milk")
+            || def.collision.width != 1
+            || def.collision.length != 2
+        {
+            return Err(format!("Unattested cow profile {id}"));
+        }
+        cows.insert(id as u32, operation);
+    }
+    Ok(gielinor_world::milking::Config {
+        cows,
+        bucket,
+        milk,
+        animation: u16::try_from(resolve(seq, "milkit")?).map_err(|_| "Invalid milk animation")?,
+        sound: u16::try_from(resolve(synth, "milk_cow")?).map_err(|_| "Invalid milk sound")?,
+    })
+}
+
+#[cfg(test)]
+mod milking_binding_tests {
+    use super::*;
+    #[test]
+    fn milk_bindings_require_ordinary_vessels_and_exact_cow_operations() {
+        let obj = [("bucket_empty".into(), 10), ("bucket_milk".into(), 20)].into();
+        let loc = [("fat_cow".into(), 1), ("fairy_fat_cow".into(), 2)].into();
+        let seq = [("milkit".into(), 2305)].into();
+        let synth = [("milk_cow".into(), 372)].into();
+        let mut defs = Definitions {
+            inventories: Default::default(),
+            locations: Default::default(),
+            npcs: Default::default(),
+            items: Default::default(),
+            varbits: Default::default(),
+            varps: Default::default(),
+            stats: Default::default(),
+        };
+        for id in [10, 20] {
+            defs.items.insert(
+                id,
+                gielinor_cache::definitions::ItemType::decode(&[0]).unwrap(),
+            );
+        }
+        for (id, op) in [(1, 0), (2, 1), (60788, 0)] {
+            let mut ty = gielinor_cache::locations::LocationType::decode(&[0]).unwrap();
+            ty.name = "Dairy cow".into();
+            ty.collision.length = 2;
+            ty.ops[op] = Some("Milk".into());
+            defs.locations.insert(id, ty);
+        }
+        let config = milking(&obj, &loc, &seq, &synth, &defs).unwrap();
+        assert_eq!(config.cows, [(1, 1), (2, 2), (60788, 1)].into());
+        defs.locations.get_mut(&60788).unwrap().ops[0] = Some("Talk-to".into());
+        assert!(milking(&obj, &loc, &seq, &synth, &defs).is_err());
+        defs.locations.remove(&60788);
+        assert!(milking(&obj, &loc, &seq, &synth, &defs).is_ok());
+        defs.locations.get_mut(&1).unwrap().multi.push(2);
+        assert!(milking(&obj, &loc, &seq, &synth, &defs).is_err());
+        defs.locations.get_mut(&1).unwrap().multi.clear();
+        defs.items.get_mut(&20).unwrap().cert.template = 1;
+        assert!(milking(&obj, &loc, &seq, &synth, &defs).is_err());
     }
 }

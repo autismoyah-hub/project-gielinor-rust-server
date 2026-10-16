@@ -29,6 +29,14 @@ impl World {
             return;
         }
         if self
+            .milking
+            .as_ref()
+            .is_some_and(|c| c.cows.contains_key(&loc.id) && object == c.bucket)
+        {
+            self.start_milking(slot, loc, Some(inv_slot as usize));
+            return;
+        }
+        if self
             .tower_offering
             .as_ref()
             .is_some_and(|c| c.location == loc.id && c.accepted.contains(&object))

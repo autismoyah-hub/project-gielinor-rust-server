@@ -669,6 +669,16 @@ pub fn configure<B: AccountBackend>(
             )
             .map_err(|e| io::Error::other(format!("Assembly registration: {e:?}")))?;
     }
+    runtime.world.milking = Some(
+        crate::content::milking(
+            n("obj"),
+            n("loc"),
+            n("seq"),
+            n("synth"),
+            &runtime.definitions,
+        )
+        .map_err(io::Error::other)?,
+    );
     runtime.configure_smelting_names(names)?;
     runtime.configure_anvil(crate::anvil::Config::resolve(
         names,

@@ -26,6 +26,7 @@ mod movement_actions;
 pub use movement_actions::MovementInput;
 mod elemental_spell_actions;
 mod item_pack_actions;
+mod milking_actions;
 mod mining_actions;
 mod npc_actions;
 mod npc_combat_actions;
@@ -161,6 +162,7 @@ impl PlayerData {
 enum Deferred {
     Smithing(crate::smithing_make::Job),
     Assembly(crate::assembly::Job),
+    Milking(crate::milking::Job),
     ItemPack {
         pack: i32,
         rule: crate::item_packs::Rule,
@@ -281,6 +283,7 @@ impl Player {
     }
     fn begin_held_action(&mut self) {
         self.queues.remove_all(crate::assembly::QUEUE);
+        self.queues.remove_all(crate::milking::QUEUE);
         // The current source's normal launch clears interactions; launchLenient
         // only replaces the suspended coroutine, even if objectVerify rejects it.
         if !self.protection.access_protected(self.has_modal) {
@@ -823,6 +826,7 @@ pub struct World {
     pub foods: BTreeMap<i32, crate::food::Edible>,
     pub slot_preserving_foods: std::collections::BTreeSet<i32>,
     pub potions: BTreeMap<i32, crate::potions::Potion>,
+    pub milking: Option<crate::milking::Config>,
     pub item_packs: BTreeMap<i32, crate::item_packs::Rule>,
     pub prayer: Option<crate::prayer::Config>,
     pub regeneration: Option<crate::player_regen::Config>,
@@ -919,6 +923,7 @@ impl Default for World {
             slot_preserving_foods: Default::default(),
             potions: BTreeMap::new(),
             item_packs: BTreeMap::new(),
+            milking: None,
             prayer: None,
             regeneration: None,
             session_vars: None,
@@ -1283,6 +1288,9 @@ impl World {
         self.player(id)?;
         let p = self.players.get_mut(id.slot as usize).unwrap();
         p.has_modal = open;
+        if open {
+            p.queues.remove_all(crate::milking::QUEUE);
+        }
         if !open {
             p.shop_session = None;
         }
@@ -2344,6 +2352,16 @@ impl World {
                                                         rule,
                                                         &mut self.events,
                                                     );
+                                                }
+                                                Deferred::Milking(job) => {
+                                                    if let Some(config) = &self.milking {
+                                                        milking_actions::complete(
+                                                            p, queues, job, config,
+                                                            &self.object_types,
+                                                            self.locations.revision(job.target),
+                                                            &mut self.events,
+                                                        );
+                                                    }
                                                 }
                                                 Deferred::Assembly(job) => {
                                                     let outcome = job.complete(&mut p.data.inventory, &self.object_types, &p.data.stats);

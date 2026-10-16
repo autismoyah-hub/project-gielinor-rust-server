@@ -277,3 +277,5 @@ pub mod gathering;
 pub mod item_packs;
 pub mod mining;
 pub mod shop;
+
+pub mod milking;
