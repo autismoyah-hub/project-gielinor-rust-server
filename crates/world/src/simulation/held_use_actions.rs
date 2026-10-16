@@ -567,6 +567,74 @@ mod assembly_tests {
         }
     }
     #[test]
+    fn unsupported_held_pair_interrupts_pending_assembly_without_reward() {
+        let (mut w, actor, request) = fixture_with_xp(45);
+        w.data_mut(actor)
+            .unwrap()
+            .inventory
+            .restore_slot(
+                2,
+                Some(crate::inventory::Item {
+                    id: 12,
+                    count: 1,
+                    vars: 0,
+                }),
+            )
+            .unwrap();
+        let before = w.data(actor).unwrap().inventory.clone();
+        let stats = w.data(actor).unwrap().stats.clone();
+        w.prepare_held_use(actor, request).unwrap();
+        w.finish_held_use(actor, request).unwrap();
+        // A second genuine pair resolves valid current items but no recipe.
+        let unsupported = Request {
+            selected_slot: 0,
+            selected_id: 10,
+            target_slot: 2,
+            target_id: 12,
+        };
+        w.prepare_held_use(actor, unsupported).unwrap();
+        w.finish_held_use(actor, unsupported).unwrap();
+        for _ in 0..5 {
+            w.tick().unwrap();
+        }
+        assert_eq!(w.data(actor).unwrap().inventory, before);
+        assert_eq!(w.data(actor).unwrap().stats, stats);
+        let events = w.drain_events();
+        assert!(events.iter().any(|e| matches!(
+            e,
+            WorldEvent::EngineMessage {
+                message: "Nothing interesting happens.",
+                ..
+            }
+        )));
+        assert!(!events.iter().any(|e| matches!(
+            e,
+            WorldEvent::AssemblyMade { .. } | WorldEvent::SkillAdvanced { .. }
+        )));
+        // Cancellation does not poison a subsequent legitimate use.
+        w.prepare_held_use(actor, request).unwrap();
+        w.finish_held_use(actor, request).unwrap();
+        for _ in 0..5 {
+            w.tick().unwrap();
+        }
+        let events = w.drain_events();
+        assert_eq!(
+            events
+                .iter()
+                .filter(|e| matches!(e, WorldEvent::AssemblyMade { .. }))
+                .count(),
+            1
+        );
+        assert_eq!(
+            events
+                .iter()
+                .filter(|e| matches!(e, WorldEvent::SkillAdvanced { .. }))
+                .count(),
+            1
+        );
+        assert_eq!(w.data(actor).unwrap().inventory.get(2), before.get(2));
+    }
+    #[test]
     fn member_assembly_rechecks_revocation_without_input_or_xp_loss() {
         for (admitted, retained) in [(false, false), (true, false), (true, true)] {
             let (mut w, actor, request) = fixture_with_policy(45, true);

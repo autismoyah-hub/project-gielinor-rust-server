@@ -746,3 +746,43 @@ All listed runs require client exit0, fresh durable logout, clean owned exit0 an
 - `pack-run.json` SHA256 `003be629b5f2c7ca46d5bfbce30815b83831ed10eed1e05409c94354926b7242`
 - State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":200},"3077":{"before":0,"after":37691},"3079":{"before":0,"after":102},"65515":{"before":0,"after":96}}}`
 - Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Denied action fixture must have zero successful assembly transitions; native request/refusal evidence required separately"}`
+
+## Additional native packet-field verification and pending negative drivers (2026-10-16 UTC)
+
+The saved native pineapple positive and three low-level pie refusal logs pass an independent revision239 IF_BUTTONT/opcode27 decoder: both inventory component IDs149:0, exact source/target item IDs, selected/target slots, endian/add transformations and exact dispatch counts. Decoder mutation checks reject99 corrupted-byte/opcode/length/count cases. This is saved dispatch-log verification, not a socket capture, rendered UI or a new gameplay run. Existing receipts remain intact; supplementary reports have new names.
+
+Prepared private native drivers `NativePineappleInterruptScenario.rs`, `NativePineappleStaleScenario.rs`, `NativePineappleDeniedScenario.rs` cover respectively valid-use cancellation by a subsequent unsupported coin pair, Drop then stale Use before refresh, and two nonmember topping refusals. They use real generated menu actions with no manufactured packet fallback; all three remain NOT COMPILED/NOT RUN at this entry. Independent stale-state verifier rejected81 mutations; nonmember verifier rejected100. Runner PowerShell and fixture Python syntax checks passed. The additional world regression `unsupported_held_pair_interrupts_pending_assembly_without_reward` is authored but unexecuted; build attempts001–003 and interruption-driver attempts001–003 were deferred before compilation by another active compiler. Existing398 passing tests are historical implementation evidence, not validation of this new test.
+
+Future slicing preparation verified only four ordinary target definitions: knife946, pineapple2114, chunks2116, ring2118; no note template, placeholder template, stacking or dummy profile. Existing `ground::Objects::add_batch` prevalidates a whole batch before ground mutation, and existing `ground_transfer::drop_slot` stages inventory before publishing a ground object. Reuse these boundaries when implementing sourced overflow; do not invent a second ground engine or infer slicing ground-visibility/timer policy from ordinary Drop defaults. No slicing runtime registration or XP policy acceptance yet.
+
+- `scripts/integration_assembly_packet_assessment.py` SHA256 `5d9afba8c87a720298d3f46c06602ec9100846d17a0eea2f6b193b74a00b0b4a`
+
+- `work/openrune-pineapple-slicing-items-001.json` SHA256 `5f425f498ecac483dfe95b4fc8fb7c84900d054232dde529094512451c09ba70`
+
+- `work/integration/runs/openrune-native-pineapple-001/native-packet-assessment-001.json` SHA256 `8325d695972d6beab0befef906b82ab1f6134e654d3b12635c31d1f1dfebc87b`
+
+- `work/integration/runs/openrune-native-piedenied-001/native-packet-assessment-001.json` SHA256 `f035e31e2e2601db5c898b80b11e530ebb4eb308149a1ecfce1449b85dc084f8`
+
+## Three member pie fillings prepared (2026-10-16 UTC; validation pending)
+
+Independent Wiki-backed additions through existing content::assembly and shared held-use scheduler: pie shell2315 + Golovanova top19653 -> uncooked botanical pie19656 (Cooking52); + Sulliuscep cap21626 -> uncooked mushroom pie21684 (Cooking60); + dragonfruit22929 -> uncooked dragonfruit pie22789 (Cooking73). All require current membership, accept temporary Cooking boosts, take two assembly clocks and award zero assembly XP. Baking180/200/220XP is a separate operation and is not awarded here. Acquisition Woodcutting/quest requirements are not transplanted into ingredient assembly.
+
+Seven target239 ordinary item definitions pass the bounded Names/definition report. OpenRune is discovery/behavior reference only, with uncertain source reuse rights; no Kotlin code translated or revision241 numeric IDs imported. Existing atomic inventory/stat transaction, runtime registration and live membership revalidation are reused. Binding tests now include all three sourced levels, nonmember refusal, boosted success and full-stat conservation. The previously authored unsupported-held-pair interruption regression remains in this same pending validation batch.
+
+`build.ps1 -Action test -CargoArgs @('-p','gielinor-world','-p','gielinor-server','--lib')` attempt001 deferred before compilation because another compiler is active. Rust parsing/format and diff review are not a build PASS. No new server archive or native acceptance for these fillings yet; previous archive2C311F8F does not include them. Continue the pinned negative assembly runs separately when resources permit, then build/test/archive these additions. No issue closure.
+
+- Wiki `Uncooked botanical pie` revision15187550, wikitext SHA256 `8700abc614c140df202be00914394d8c501d825ec9a7c7a48762bdc9e0d3bc85`
+
+- Wiki `Uncooked mushroom pie` revision15188408, wikitext SHA256 `faed1c8cfd004354c8a7080a01213aa41bac9be6109db9eb73a3d1ee4b3649df`
+
+- Wiki `Uncooked dragonfruit pie` revision15189013, wikitext SHA256 `c1611a4efc2de528749e236aef8091c963c2226f19cbd8f4424fb8744225b90b`
+- `work/openrune-member-pie-items-001.json` SHA256 `f09b50fe229fa8aaee3ea984898c5fd9a8fabd1ce9e5d3c0c4ee47a1cfe62ee7`
+- `work/openrune-member-pie-readiness-001.json` SHA256 `b11570b192923866dd42f80159a55e1d8c55c362e2a7e4a3c4108a0cebd63809`
+
+## Member pie fillings and held-use interruption regression PASS (2026-10-16 UTC)
+
+Supersedes pending compilation above: `build.ps1 -Action test -CargoArgs @('-p','gielinor-world','-p','gielinor-server','--lib')` PASS45server+354world,0failed,1existingignored. Compile19.31s; server0.24s; world11.64s. Guard5360MiB available,70.6%commit,0pages-in/s,0.9msdisk,CPU1.5%,j2. Three new member filling bindings pass low-level/nonmember no-mutation, live-boost success and zero-XP/full-stat conservation checks. The new scheduler regression proves unsupported current-item use cancels pending assembly and that a subsequent valid use can succeed exactly once. Existing library coverage remains green.
+
+No native archive or gameplay acceptance for these three new fillings yet. Native negative pineapple drivers remain uncompiled; attempts after the suite were deferred when another compiler became active. Existing native archive2C311F8F continues to identify only the earlier implementation. No issue closure.
+
+- `work/member-pies-full-tests-attempt-002.log` SHA256 `ee1c05bba771332dbdc2b813d9601893f5cc3ecd51d111f843be77614e1d5d3b`

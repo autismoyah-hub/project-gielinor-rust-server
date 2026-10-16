@@ -717,7 +717,7 @@ mod pack_binding_tests {
     }
 }
 
-/// Wiki-pinned zero-XP assembly; no OpenRune numeric IDs or unchecked mutations.
+/// Wiki-pinned assembly and topping awards; target Names and atomic mutations.
 pub fn assembly(
     symbols: &Symbols,
     defs: &Definitions,
@@ -757,6 +757,30 @@ pub fn assembly(
             30,
             0,
             false,
+        ),
+        (
+            "pie_shell",
+            "golovanova_top",
+            "uncooked_botanical_pie",
+            52,
+            0,
+            true,
+        ),
+        (
+            "pie_shell",
+            "fossil_sulliuscep_cap",
+            "uncooked_mushroom_pie",
+            60,
+            0,
+            true,
+        ),
+        (
+            "pie_shell",
+            "dragonfruit",
+            "uncooked_dragonfruit_pie",
+            73,
+            0,
+            true,
         ),
         ("pizza_base", "tomato", "incomplete_pizza", 35, 0, false),
         ("incomplete_pizza", "cheese", "uncooked_pizza", 35, 0, false),
@@ -832,6 +856,12 @@ mod assembly_binding_tests {
             "cooking_apple",
             "uncooked_meat_pie",
             "uncooked_apple_pie",
+            "golovanova_top",
+            "uncooked_botanical_pie",
+            "fossil_sulliuscep_cap",
+            "uncooked_mushroom_pie",
+            "dragonfruit",
+            "uncooked_dragonfruit_pie",
             "plain_pizza",
             "meat_pizza",
             "anchovies",
@@ -866,7 +896,7 @@ mod assembly_binding_tests {
         let recipes = assembly(&symbols, &defs, 7).unwrap();
         assert_eq!(
             recipes.iter().map(|r| r.level).collect::<Vec<_>>(),
-            [1, 10, 20, 20, 30, 35, 35, 45, 45, 55, 65, 65]
+            [1, 10, 20, 20, 30, 52, 60, 73, 35, 35, 45, 45, 55, 65, 65]
         );
         for (ingredient, output, level, xp) in [
             ("cooked_meat", "meat_pizza", 45, 26),
@@ -898,18 +928,16 @@ mod assembly_binding_tests {
                 (symbols["pineapple_pizza"], 65, 45, true)
             );
         }
-        assert!(
-            recipes
-                .iter()
-                .filter(|r| r.output != symbols["pineapple_pizza"])
-                .all(|r| !r.members)
-        );
-        // These three distinct fillings share atomic assembly but have sourced
-        // level gates. A temporary boost qualifies; missing levels never debit.
-        for (ingredient, output, level) in [
-            ("cooked_meat", "uncooked_meat_pie", 20),
-            ("cooked_chicken", "uncooked_meat_pie", 20),
-            ("cooking_apple", "uncooked_apple_pie", 30),
+        assert_eq!(recipes.iter().filter(|r| r.members).count(), 5);
+        // Filling admission uses live boosts and membership; assembly gives no
+        // baking XP. Unrelated input-gathering requirements are not pie gates.
+        for (ingredient, output, level, member) in [
+            ("cooked_meat", "uncooked_meat_pie", 20, false),
+            ("cooked_chicken", "uncooked_meat_pie", 20, false),
+            ("cooking_apple", "uncooked_apple_pie", 30, false),
+            ("golovanova_top", "uncooked_botanical_pie", 52, true),
+            ("fossil_sulliuscep_cap", "uncooked_mushroom_pie", 60, true),
+            ("dragonfruit", "uncooked_dragonfruit_pie", 73, true),
         ] {
             use gielinor_world::{
                 assembly::{Job, Outcome},
@@ -922,6 +950,7 @@ mod assembly_binding_tests {
                 .unwrap();
             assert_eq!(recipe.first, symbols["pie_shell"]);
             assert_eq!(recipe.output, symbols[output]);
+            assert_eq!(recipe.members, member);
             let mut inv = Inventory::new(2, StackType::Normal, false);
             for (slot, id) in [(0, recipe.first), (1, recipe.second)] {
                 inv.restore_slot(
@@ -941,10 +970,20 @@ mod assembly_binding_tests {
                 first_slot: 0,
                 second_slot: 1,
             };
+            if member {
+                stats.set_current(7, level);
+                let before = stats.clone();
+                assert_eq!(
+                    job.complete_awarding(&mut inv, &Catalog::default(), &mut stats, 500, false),
+                    (Outcome::Members, None)
+                );
+                assert_eq!(inv, original);
+                assert_eq!(stats, before);
+            }
             for low in [-1, level - 1] {
                 stats.set_current(7, low);
                 assert_eq!(
-                    job.complete_awarding(&mut inv, &Catalog::default(), &mut stats, 100, false)
+                    job.complete_awarding(&mut inv, &Catalog::default(), &mut stats, 500, member)
                         .0,
                     Outcome::Level
                 );
@@ -952,8 +991,9 @@ mod assembly_binding_tests {
             }
             stats.set_current(7, level);
             assert_eq!(stats.base(7), 1);
+            let before = stats.clone();
             assert_eq!(
-                job.complete_awarding(&mut inv, &Catalog::default(), &mut stats, 100, false)
+                job.complete_awarding(&mut inv, &Catalog::default(), &mut stats, 500, member)
                     .0,
                 Outcome::Made
             );
@@ -966,6 +1006,7 @@ mod assembly_binding_tests {
                 vec![(symbols[output], 1)]
             );
             assert_eq!(stats.fine_xp(7), 0);
+            assert_eq!(stats, before);
         }
         for (name, alias) in [
             ("pineapple_chunks", "plain_pizza"),
