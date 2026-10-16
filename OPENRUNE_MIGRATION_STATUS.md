@@ -2815,3 +2815,49 @@ Focused upgrade tests4PASS398filtered,49.47s compile on attempt004; guard4364MiB
 ## Superior crushing native fixture correction
 
 Server D03ADF1DFCA9D428D274CB051BE063D85687AE6BB4C3827EB542DADA75AE3364 compiled26.70s on attempt002 with391source hashes unchanged. Attempt001 CPU73.4percent resource deferral preserved. Driver001 compiled2.76s. Native001 failed before any crushing dispatch: its Herblore1/zeroXP assertion conflicted with established FloorOne unconditional login floor3/fine1740; Prayer remained1/zeroXP. Owned exit0 and durable save PASS, clientexit1; failure hashes retained in grindingsuperior-native-failure-001.json. Control001 login success alone did not establish non-varp conservation. Corrected future fixture to Prayer1/fine0 and Herblore3/fine1740, retaining old fixtures/driver/logs;64 synthetic checks002PASS. Driver002 and separate control002/fresh002/same-save002 are pending. No production behavior changed for this fixture correction.
+
+## Native gameplay grindingsuperior acceptance (2026-10-16 UTC)
+
+Native pestle/superior bones with Prayer1 and Herblore3 (established login floor): full28slots, three exact replacements at0/2/3ticks, retained tool/coins/23pots and zeroXP; same-save no replay. Bone acquisition, burial and offering are separate.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking/Herblore parity or unrelated recipes. No issue closure.
+
+`openrune-native-grindingsuperior-002` PASS. Server archive `D03ADF1DFCA9D428D274CB051BE063D85687AE6BB4C3827EB542DADA75AE3364`, driver `grindingsuperior-002`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID4584.
+- Driver `server_grindingsuperior.exe` SHA256 `7834D9C44576F21B4A8735B5D45650ADC93419503C837D1EC3768C8B266D4CD8`
+- Driver `NativeGrindingSuperiorScenario.rs` SHA256 `6ED2C77A96ABFAC556D194A9D79995E5071158FD7DC34A0C51E95C0AC8C56C0B`
+- `client.log` SHA256 `fc7d015f09d10fcbbf1734b9aa854e11448b3a29f141be8b061db680c600f40a`
+- `server.log` SHA256 `0535405bad760b5b198d5ff4167f6ee5b2841fec03cd2f85cd5015aa8b10fd9b`
+- `initial-state.json` SHA256 `ee92338221d16034a1d9b872146182f99ed63196645e218d2b767fab2f5d7557`
+- `final-state.json` SHA256 `8f0d8e7f360853b7609857e95b6757e0e8e16fa8c5dad45768a782324b1924a1`
+- `pack-assessment.json` SHA256 `eb960562c1c257315c6d05c3301f9340fb50305128dec5e3ee29cbd8216e7722`
+- `grindingsuperior-trace-assessment.json` SHA256 `434f02705bbfeb2599a257deaeeb048bea776670bf6dc39ea9ea70ad2f5a0b38`
+- `logout-observation.json` SHA256 `24d717abf646d6f2570d193fc9580cbdb7c912a0675bc4ca2f10d73faa5842b1`
+- `shutdown.json` SHA256 `650bf6b816b4d73204bfdf29655316f861ba76964816bf1efb01a443b12658be`
+- `result.json` SHA256 `04caa4a80948f508c5c458b2827171ccabdcd0b087abfe6d5b477b953615ff35`
+- `pack-run.json` SHA256 `117ecfa6c8c1739bca159043da6fe0c0af8e7ade88c8c7488813ccab5de8621f`
+- `native-packet-assessment.json` SHA256 `088e766783eb4dcf2a14eeb9adc3baf6741a2e654655501d37563ac081f5b62c`
+- `native-quantity-assessment.json` SHA256 `088e766783eb4dcf2a14eeb9adc3baf6741a2e654655501d37563ac081f5b62c`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":200},"3077":{"before":0,"after":3603},"3079":{"before":0,"after":147},"65515":{"before":0,"after":136}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[{"actor_slot":1,"actor_generation":614,"tool_slot":0,"input_slot":1,"tool":233,"input":22124,"output":21975,"count":1,"queued_at":123,"committed_at":123,"index":0},{"actor_slot":1,"actor_generation":614,"tool_slot":0,"input_slot":2,"tool":233,"input":22124,"output":21975,"count":1,"queued_at":123,"committed_at":125,"index":1},{"actor_slot":1,"actor_generation":614,"tool_slot":0,"input_slot":3,"tool":233,"input":22124,"output":21975,"count":1,"queued_at":125,"committed_at":128,"index":2}],"scope":"Server commit cadence and strict slots only; native action/state/save receipts required separately"}`
+
+`openrune-grindingsuperior-relogin-002` PASS. Server archive `D03ADF1DFCA9D428D274CB051BE063D85687AE6BB4C3827EB542DADA75AE3364`, driver `grindingsuperior-002`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor `openrune-native-grindingsuperior-002`, owned PID5916.
+- Driver `server_grindingsuperior.exe` SHA256 `7834D9C44576F21B4A8735B5D45650ADC93419503C837D1EC3768C8B266D4CD8`
+- Driver `NativeGrindingSuperiorScenario.rs` SHA256 `6ED2C77A96ABFAC556D194A9D79995E5071158FD7DC34A0C51E95C0AC8C56C0B`
+- `client.log` SHA256 `54bf2ae4750095c91ebf6b4ef2980255a3f23e5dd6ebd8ff6e279b64ce547a65`
+- `server.log` SHA256 `cc98e8ba2a9e52c5b1061b3ed6e6b9eac97389bb4f31ebfe2dc583eec0b8708b`
+- `initial-state.json` SHA256 `8f0d8e7f360853b7609857e95b6757e0e8e16fa8c5dad45768a782324b1924a1`
+- `final-state.json` SHA256 `09a9040ce4998451bd67115ecdb47a27224c2c05bc698be6308cbe93585e8a34`
+- `pack-assessment.json` SHA256 `cc43ee7e2ffa8a56ac7af37e0ef53de1c4240ec71607aa279e83a9fbdd79342e`
+- `grindingsuperior-trace-assessment.json` SHA256 `d1d113d1f5f6b46bc1ca733dd487f6d47b50c76b42f4587c9c278865dbe39af9`
+- `logout-observation.json` SHA256 `b30685821f154b9f54a03b0eee43a720ff0d2b22d4762c74bf784c353c75666c`
+- `shutdown.json` SHA256 `a53593f488d84988a030b150e6e58b58ba0bee84b7dd2e14a8478f42fd5b4d5b`
+- `result.json` SHA256 `ae1bdba1380e5234a1c4fd70edeae6fe67abbad662222a9393dc3466718ec580`
+- `pack-run.json` SHA256 `3081c865a4e82f9fc9c68d0c1892b0393cf9d38d0dc5fa50ccaa569e065a284c`
+- `native-packet-assessment.json` SHA256 `13b398861bf50862ab6818aa6dcdd1b1304ca0b469e189c7ee7652dc156278c8`
+- `native-quantity-assessment.json` SHA256 `13b398861bf50862ab6818aa6dcdd1b1304ca0b469e189c7ee7652dc156278c8`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":200,"after":400},"3077":{"before":3603,"after":49290},"3079":{"before":147,"after":133},"65515":{"before":136,"after":260}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Server commit cadence and strict slots only; native action/state/save receipts required separately"}`
