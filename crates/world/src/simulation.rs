@@ -29,6 +29,7 @@ mod item_pack_actions;
 mod milking_actions;
 mod water_source_actions;
 mod grinding_actions;
+mod swamp_tar_actions;
 mod dough_actions;
 mod finished_potion_actions;
 mod unfinished_potion_actions;
@@ -171,6 +172,7 @@ enum Deferred {
     Milking(crate::milking::Job),
     WaterFilling(crate::water_sources::Job),
     Grinding(crate::grinding::Pending),
+    SwampTar(crate::swamp_tar::Pending),
     Dough(crate::dough::Pending),
     FinishedPotion(crate::finished_potions::Pending),
     UnfinishedPotion(crate::unfinished_potions::Pending),
@@ -301,6 +303,7 @@ impl Player {
         self.queues.remove_all(crate::milking::QUEUE);
         self.queues.remove_all(crate::water_sources::QUEUE);
         self.queues.remove_all(crate::grinding::QUEUE);
+        self.queues.remove_all(crate::swamp_tar::QUEUE);
         self.queues.remove_all(crate::dough::QUEUE);
         self.dough_request = None;
         self.finished_potion_request = None;
@@ -612,6 +615,7 @@ pub enum WorldEvent {
     Milking { actor:ActorId, trace:crate::milking::Transition },
     WaterFilled { actor: ActorId, trace: crate::water_sources::Transition },
     Grinding { actor: ActorId, trace: crate::grinding::Transition },
+    SwampTarMade { actor: ActorId, trace: crate::swamp_tar::Transition },
     DoughMade { actor: ActorId, trace: crate::dough::Transition },
     FinishedPotionMade { actor: ActorId, trace: crate::finished_potions::Transition },
     UnfinishedPotionMade { actor: ActorId, trace: crate::unfinished_potions::Transition },
@@ -866,6 +870,7 @@ pub struct World {
     pub dough: Option<crate::dough::Config>,
     pub finished_potions: Option<crate::finished_potions::Config>,
     pub unfinished_potions: Option<crate::unfinished_potions::Config>,
+    pub swamp_tar: Option<crate::swamp_tar::Config>,
     pub herb_cleaning: Option<crate::herb_cleaning::Config>,
     pub item_packs: BTreeMap<i32, crate::item_packs::Rule>,
     pub prayer: Option<crate::prayer::Config>,
@@ -968,6 +973,7 @@ impl Default for World {
             dough: None,
             herb_cleaning: None,
             unfinished_potions: None,
+            swamp_tar: None,
             finished_potions: None,
             prayer: None,
             regeneration: None,
@@ -2410,6 +2416,9 @@ impl World {
                                                 }
                                                 Deferred::Dough(job) => {
                                                     dough_actions::complete(p, queues, job, &self.object_types, self.clock.0, &mut self.events);
+                                                }
+                                                Deferred::SwampTar(job) => {
+                                                    swamp_tar_actions::complete(p,queues,job,&self.object_types,self.clock.0,&mut self.events);
                                                 }
                                                 Deferred::Grinding(job) => {
                                                     grinding_actions::complete(p, queues, job, &self.object_types, self.clock.0, &mut self.events);

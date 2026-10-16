@@ -2414,3 +2414,59 @@ Validation swamp-tar-primitive-tests-attempt-001 PASS;383source hashes unchanged
 Compile69s/world25.37s;4895MiB available,76.9percent commit,711page-ins/s,4.1msdisk,CPU42.5percent,j2. Covers five profiles,both orders,15/16/30tar,fullbackpack,exactfractional rewards,no replay,12refusal/overflow modes,existing output merge andXPcap.
 
 Finished-alternate control attempt001 RESOURCE_DEFERRED before native launch:CPU84.7percent,3788MiB,82.7percent commit,716page-ins/s,2.2msdisk,j1. Prepared fixture preserved for ResumePrepared attempt002.
+
+## Native gameplay finishedalternate acceptance (2026-10-16 UTC)
+
+Native Antidote+ four-dose, Antidote++ four-dose, Bastion three-dose and Battlemage three-dose production. Four exact ingredient pairs, two-tick commits,32125fineXP at5x, full28initial and same-save no replay. Combined three-input recipes, chemistry and drinking effects remain separate.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking/Herblore parity or unrelated recipes. No issue closure.
+
+`openrune-native-finishedalternate-001` PASS. Server archive `BEC88128C4F79FC5572C6AEFBC2DBA693E011EAD471F705802FF43DC085AE3EB`, driver `finishedalternate-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID12528.
+- Driver `NativeFinishedAlternateScenario.rs` SHA256 `8C9F3B324E91CCB4545875B2C25C9629E734655604110038A466119B7F8C2801`
+- Driver `server_finishedalternate.exe` SHA256 `1B3DD50DC8E17D7C209CE71B7576B0326D5AE77233917285729D634B5818538A`
+- `client.log` SHA256 `8ad83ac66c71b80dbd622b6498af5c52700c5ae507bad7af495032a1bedeb894`
+- `server.log` SHA256 `9601d684062bc7c356746c20bf0ed43c2f53d01b21433affb35fda424f1c435f`
+- `initial-state.json` SHA256 `2d8e2454491b99f8727f2cb30b4eb481b75944f42295f7b08f6fcc146508758f`
+- `final-state.json` SHA256 `89dfd734ba8f8336fb6f5001bfc8f28898f3715caf47155376dab0ffa9e8881a`
+- `pack-assessment.json` SHA256 `0e9fae60692498c25f507c62ad0807e858e77bfea043a657ae3907eab463c8e8`
+- `finishedalternate-trace-assessment.json` SHA256 `727036bfdbf3abd4b9d791fefeea35d0dc2457447f2d68dda809ef9e8b495cd8`
+- `logout-observation.json` SHA256 `3737546c279c7af59138d5cdcb37a52e918bcd7bceded53da774552ad45a5c5f`
+- `shutdown.json` SHA256 `bad9323f7dac2954767c64269818bed9adae25cde3e840f065c1318ec26b1af8`
+- `result.json` SHA256 `464203de0fa26f792a4dcbc60bab264cc99d838c18233d4f93a6912e710e399c`
+- `pack-run.json` SHA256 `2e4e43052e7fee5430059477488bd3a236e2fa1116239fa785a59cbbb64cc764`
+- `native-profile-assessment.json` SHA256 `3f14a170fae57aa7fb1d7cec162cb49aa87debcbb735e6b036598733a23eb947`
+- `native-packet-assessment.json` SHA256 `b24463aafe8feeb9714c0bbadee18114a9903c6170b7eaaf394d81f4683df236`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":700},"3077":{"before":0,"after":53944},"3079":{"before":0,"after":385},"65515":{"before":0,"after":376}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[{"actor_slot":1,"actor_generation":614,"unfinished_slot":0,"secondary_slot":1,"unfinished":5942,"secondary":6049,"output":5943,"count":1,"queued_at":275,"committed_at":277,"index":0,"base_fine_xp":1550,"rate_hundreds":500,"fine_before":130344311,"fine_after":130352061,"secondary_saved":false},{"actor_slot":1,"actor_generation":614,"unfinished_slot":2,"secondary_slot":3,"unfinished":5951,"secondary":6051,"output":5952,"count":1,"queued_at":307,"committed_at":309,"index":0,"base_fine_xp":1775,"rate_hundreds":500,"fine_before":130352061,"fine_after":130360936,"secondary_saved":false},{"actor_slot":1,"actor_generation":614,"unfinished_slot":4,"secondary_slot":5,"unfinished":22443,"secondary":245,"output":22464,"count":1,"queued_at":333,"committed_at":335,"index":0,"base_fine_xp":1550,"rate_hundreds":500,"fine_before":130360936,"fine_after":130368686,"secondary_saved":false},{"actor_slot":1,"actor_generation":614,"unfinished_slot":6,"secondary_slot":7,"unfinished":22443,"secondary":3138,"output":22452,"count":1,"queued_at":362,"committed_at":364,"index":0,"base_fine_xp":1550,"rate_hundreds":500,"fine_before":130368686,"fine_after":130376436,"secondary_saved":false}],"scope":"Separate selected-profile two-tick commits; UI evidence and packet/display latency separate"}`
+
+`openrune-native-finishedalternate-relogin-001` PASS. Server archive `BEC88128C4F79FC5572C6AEFBC2DBA693E011EAD471F705802FF43DC085AE3EB`, driver `finishedalternate-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor `openrune-native-finishedalternate-001`, owned PID16676.
+- Driver `NativeFinishedAlternateScenario.rs` SHA256 `8C9F3B324E91CCB4545875B2C25C9629E734655604110038A466119B7F8C2801`
+- Driver `server_finishedalternate.exe` SHA256 `1B3DD50DC8E17D7C209CE71B7576B0326D5AE77233917285729D634B5818538A`
+- `client.log` SHA256 `81d55ff543e62c4910a48359a081cf7c1d4414560d052e7cd38dad994137a0e0`
+- `server.log` SHA256 `ef490e8efa19b11d5806d9241c5e54b9212ad4961c132d6f0f0e0134788ad466`
+- `initial-state.json` SHA256 `89dfd734ba8f8336fb6f5001bfc8f28898f3715caf47155376dab0ffa9e8881a`
+- `final-state.json` SHA256 `7a6d811a7238487bc6cbd4ab3e7e63aef66d6a17bb8e83391a5ac68e0262dbc3`
+- `pack-assessment.json` SHA256 `dcea28ca2deaec2bd3a0cdba8aaba1510112adcbd2a3bea8b05543c5e622f228`
+- `finishedalternate-trace-assessment.json` SHA256 `15565119835c4387827e07e673e26fc0ec5897457d403e87d7333c03aaf96013`
+- `logout-observation.json` SHA256 `2cce5453f6b04af7aba023416f95dd02a636a9301620fbcba201b4090a033195`
+- `shutdown.json` SHA256 `e7abd1bd76839feef57332508c5b3b03076961d352d75066457ef78d94958142`
+- `result.json` SHA256 `6b65e145acd1349bbdb44fad003afd4d18e476d11efcab33ece503442ebdf085`
+- `pack-run.json` SHA256 `3ee7a0b59cef0d5134ac479c72ace6c37cedf073aafa1109ae6c4e8363c45997`
+- `native-profile-assessment.json` SHA256 `3f14a170fae57aa7fb1d7cec162cb49aa87debcbb735e6b036598733a23eb947`
+- `native-packet-assessment.json` SHA256 `b7a54acd544eaa375d4f117d3836c3589daaad3a4cac146bc2cc8fae73423bc4`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":700,"after":1000},"3077":{"before":53944,"after":7981},"3079":{"before":385,"after":243},"65515":{"before":376,"after":609}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Separate selected-profile two-tick commits; UI evidence and packet/display latency separate"}`
+
+
+## Swamp-tar gameplay registration and alternate-vessel text (2026-10-16)
+
+Registered five Wiki/cache-verified tar profiles at startup, live held-use admission and weak three-tick first/repeat scheduling. Every batch rechecks selected tar stack, current herb/tool/member/quest/level/rate; movement, modal/other actions and logout prevent stale completion. Exact item/fineXP transition receipts emitted. Ground guam and clean guam independently resolve to the same output. No goggles/chemistry effects assumed. Native five-profile/six-batch fixture and independent packet/state/trace assessors installed; acceptance pending.
+
+Corrected unfinished coconut-milk and blood success text, which previously said water. Existing water text retained. Six-profile scheduler test now asserts two correct vessel-specific messages per repeated recipe in both selected directions. Earlier native18profile inventory/XP/cadence evidence remains valid; native text capture is not claimed.
+
+Validation swamp-tar-runtime-tests-attempt-002 PASS;385source hashes unchanged. test result: ok. 53 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.83s; test result: ok. 387 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 48.30s
+Compile54.87s/world48.30s;4632MiB,79.4percent commit,0page-ins/s,0msdisk,CPU54percent,j2. Nine startup malformed-definition/alias vectors, selected/repeat three-tick traces, exact fractional XP and six mid-repeat revocation/interruption modes pass. Attempt001 FAIL preserved: test account defaulted1x while expecting5x and checked before the queued boundary; fixed fixture rate and test tick count, not scheduler timing.313synthetic native-assessor corruption checks PASS.

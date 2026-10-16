@@ -81,6 +81,12 @@ impl World {
         let tutorial_active = matches!(handler, Some(Handler::TutorialDough(config)) if config.progression.active(&p.data.variables));
         let ordinary_handler = handler.is_none() || matches!(handler, Some(Handler::TutorialDough(_)));
         if ordinary_handler {
+            if let Some(job)=self.swamp_tar.as_ref().and_then(|config|config.job(request)) {
+                self.start_swamp_tar(actor,job)?;
+                return Ok(());
+            }
+        }
+        if ordinary_handler {
             if let Some(config) = &self.unfinished_potions {
                 if let Some(choice) = config.request(request,p.movement.coords,p.movement.last_movement) {
                     let recipe = config.recipes.get(&(choice.herb, choice.vessel)).unwrap();

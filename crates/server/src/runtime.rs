@@ -28,6 +28,7 @@ mod skill_multi;
 mod dough;
 mod finished_potions;
 mod unfinished_potions;
+mod swamp_tar;
 mod herb_cleaning;
 mod smelting;
 mod tower_combat;

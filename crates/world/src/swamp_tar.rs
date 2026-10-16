@@ -112,3 +112,35 @@ mod tests {
         assert_eq!(inv.get(0),None);assert_eq!(inv.get(1),None);
     }
 }
+
+pub(crate) const QUEUE:i32=-2391009;
+#[derive(Clone,Debug)]
+pub struct Config {
+    pub recipes:std::collections::BTreeMap<(i32,i32),Recipe>,
+    pub quest_progress:u16, pub quest_complete:i32, pub animation:u16,
+}
+impl Config {
+    pub fn job(&self,r:crate::held_use::Request)->Option<Job> {
+        if r.selected_slot<0 || r.target_slot<0 || r.selected_slot==r.target_slot {return None;}
+        if let Some(&recipe)=self.recipes.get(&(r.selected_id,r.target_id)) {
+            Some(Job{recipe,herb_slot:r.selected_slot as usize,tar_slot:r.target_slot as usize})
+        } else {
+            self.recipes.get(&(r.target_id,r.selected_id)).map(|&recipe|Job{recipe,herb_slot:r.target_slot as usize,tar_slot:r.selected_slot as usize})
+        }
+    }
+}
+#[derive(Clone,Copy,Debug)]
+pub(crate) struct Pending {
+    pub job:Job,pub origin:crate::CoordGrid,pub last_movement:i32,
+    pub queued_at:i32,pub index:u32,pub quest_progress:u16,pub quest_complete:i32,pub animation:u16,
+}
+#[derive(Clone,Copy,Debug)]
+pub struct Transition {
+    pub job:Job,pub queued_at:i32,pub committed_at:i32,pub index:u32,
+    pub fine_before:i32,pub fine_after:i32,pub rate_hundreds:i32,
+}
+impl Transition {
+    pub fn json(self,actor:crate::simulation::ActorId)->String {
+        format!("{{\"actor_slot\":{},\"actor_generation\":{},\"herb_slot\":{},\"tar_slot\":{},\"herb\":{},\"tar\":{},\"output\":{},\"count\":15,\"queued_at\":{},\"committed_at\":{},\"index\":{},\"base_fine_xp\":{},\"rate_hundreds\":{},\"fine_before\":{},\"fine_after\":{}}}",actor.slot,actor.generation,self.job.herb_slot,self.job.tar_slot,self.job.recipe.herb,self.job.recipe.tar,self.job.recipe.output,self.queued_at,self.committed_at,self.index,self.job.recipe.base_fine_xp,self.rate_hundreds,self.fine_before,self.fine_after)
+    }
+}

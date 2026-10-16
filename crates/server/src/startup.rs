@@ -689,6 +689,7 @@ pub fn configure<B: AccountBackend>(
     runtime.configure_herb_cleaning_names(names)?;
     runtime.configure_finished_potions_names(names)?;
     runtime.configure_unfinished_potions_names(names)?;
+    runtime.configure_swamp_tar_names(names)?;
     runtime.configure_anvil(crate::anvil::Config::resolve(
         names,
         &runtime.definitions,

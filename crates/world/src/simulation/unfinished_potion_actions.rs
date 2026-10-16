@@ -100,7 +100,12 @@ pub(super) fn complete(
         eligible,
     );
     let message = match outcome {
-        Outcome::Made => "You put the herb into the vial of water.",
+        Outcome::Made => match pending.job.recipe.vessel {
+            227 => "You put the herb into the vial of water.",
+            5935 => "You put the herb into the coconut milk.",
+            22446 => "You put the herb into the vial of blood.",
+            _ => "You mix the herb into the liquid.",
+        },
         Outcome::Members => "You need to be a member to make potions.",
         Outcome::Quest => "You must complete Druidic Ritual before making potions.",
         Outcome::Level => "You need a higher Herblore level to make that potion.",
@@ -434,7 +439,15 @@ mod tests {
                 for slot in [0,2] {assert_eq!(data.inventory.get(slot),Some(Item{id:recipe.output,count:1,vars:0}));}
                 for slot in [1,3] {assert_eq!(data.inventory.get(slot),None);}
                 for slot in 4..28 {assert_eq!(data.inventory.get(slot),original.inventory.get(slot));}
-                let traces:Vec<_>=w.drain_events().into_iter().filter_map(|e| {
+                let events=w.drain_events();
+                let expected_message=match recipe.vessel {
+                    227=>"You put the herb into the vial of water.",
+                    5935=>"You put the herb into the coconut milk.",
+                    22446=>"You put the herb into the vial of blood.",
+                    _=>unreachable!(),
+                };
+                assert_eq!(events.iter().filter(|e|matches!(e,WorldEvent::LocationMessage{message,..} if *message==expected_message)).count(),2);
+                let traces:Vec<_>=events.into_iter().filter_map(|e| {
                     if let WorldEvent::UnfinishedPotionMade{trace,..}=e {Some(trace)} else {None}
                 }).collect();
                 assert_eq!(traces.len(),2);

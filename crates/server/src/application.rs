@@ -116,6 +116,9 @@ fn report(events: Vec<runtime::Event>) {
             runtime::Event::World(gielinor_world::simulation::WorldEvent::DoughMade {actor,trace}) => {
                 println!("Dough transition: {}",trace.json(actor));
             }
+            runtime::Event::World(gielinor_world::simulation::WorldEvent::SwampTarMade {actor,trace}) => {
+                println!("Swamp tar transition: {}",trace.json(actor));
+            }
             runtime::Event::World(gielinor_world::simulation::WorldEvent::Grinding {actor,trace}) => {
                 println!("Grinding transition: {}",trace.json(actor));
             }

@@ -2534,3 +2534,81 @@ mod finished_goggles_binding_tests {
         }
     }
 }
+
+/// Wiki-backed herb/tar recipes with exact target item characteristics.
+pub fn swamp_tar(objects:&Symbols,defs:&Definitions)->Result<Vec<gielinor_world::swamp_tar::Recipe>,String> {
+    let mut bound=std::collections::BTreeMap::new();
+    let mut ids=std::collections::BTreeSet::new();
+    for (name,stackable,members) in [
+        ("guam_leaf",false,true),
+        ("swamp_tar",true,true),
+        ("salamander_tar_green",true,true),
+        ("pestle_and_mortar",false,true),
+        ("ground_guam",false,true),
+        ("marentill",false,true),
+        ("salamander_tar_orange",true,true),
+        ("tarromin",false,true),
+        ("salamander_tar_red",true,true),
+        ("harralander",false,true),
+        ("salamander_tar_black",true,true),
+    ] {
+        let id=*objects.get(name).ok_or_else(||format!("Missing tar symbol {name}"))?;
+        let item=defs.items.get(&(id as u32)).ok_or_else(||format!("Missing tar definition {name}"))?;
+        if id<0 || !ids.insert(id) || item.stackable!=stackable || item.members!=members || item.cert.template!=0 || item.placeholder.template!=0 || item.dummy==1 {
+            return Err(format!("Invalid tar definition {name}"));
+        }
+        bound.insert(name,id);
+    }
+    Ok(vec![
+        gielinor_world::swamp_tar::Recipe{herb:bound["guam_leaf"],tar:bound["swamp_tar"],output:bound["salamander_tar_green"],tool:bound["pestle_and_mortar"],level:19,base_fine_xp:300},
+        gielinor_world::swamp_tar::Recipe{herb:bound["ground_guam"],tar:bound["swamp_tar"],output:bound["salamander_tar_green"],tool:bound["pestle_and_mortar"],level:19,base_fine_xp:300},
+        gielinor_world::swamp_tar::Recipe{herb:bound["marentill"],tar:bound["swamp_tar"],output:bound["salamander_tar_orange"],tool:bound["pestle_and_mortar"],level:31,base_fine_xp:425},
+        gielinor_world::swamp_tar::Recipe{herb:bound["tarromin"],tar:bound["swamp_tar"],output:bound["salamander_tar_red"],tool:bound["pestle_and_mortar"],level:39,base_fine_xp:550},
+        gielinor_world::swamp_tar::Recipe{herb:bound["harralander"],tar:bound["swamp_tar"],output:bound["salamander_tar_black"],tool:bound["pestle_and_mortar"],level:44,base_fine_xp:725},
+    ])
+}
+
+#[cfg(test)]
+mod swamp_tar_binding_tests {
+    use super::*;
+    fn fixture()->(Symbols,Definitions) {
+        let mut symbols=Symbols::new();
+        let mut defs=Definitions{inventories:Default::default(),locations:Default::default(),npcs:Default::default(),items:Default::default(),varbits:Default::default(),varps:Default::default(),stats:Default::default()};
+        for (name,id,stackable) in [
+            ("guam_leaf",249,false),
+            ("swamp_tar",1939,true),
+            ("salamander_tar_green",10142,true),
+            ("pestle_and_mortar",233,false),
+            ("ground_guam",6681,false),
+            ("marentill",251,false),
+            ("salamander_tar_orange",10143,true),
+            ("tarromin",253,false),
+            ("salamander_tar_red",10144,true),
+            ("harralander",255,false),
+            ("salamander_tar_black",10145,true),
+        ] {
+            symbols.insert(name.into(),id);
+            let mut item=gielinor_cache::definitions::ItemType::decode(&[16,0]).unwrap();item.stackable=stackable;defs.items.insert(id as u32,item);
+        }
+        (symbols,defs)
+    }
+    #[test]
+    fn exact_five_profiles_reject_aliases_and_invalid_stacks_or_templates() {
+        let (symbols,defs)=fixture();let recipes=swamp_tar(&symbols,&defs).unwrap();
+        assert_eq!(recipes.iter().map(|r|(r.herb,r.tar,r.output,r.tool,r.level,r.base_fine_xp)).collect::<Vec<_>>(),vec![(249,1939,10142,233,19,300),(6681,1939,10142,233,19,300),(251,1939,10143,233,31,425),(253,1939,10144,233,39,550),(255,1939,10145,233,44,725)]);
+        for mode in 0..9 {
+            let (mut symbols,mut defs)=fixture();
+            match mode {
+                0=>{symbols.remove("swamp_tar");},1=>{defs.items.remove(&233);},
+                2=>defs.items.get_mut(&1939).unwrap().stackable=false,
+                3=>defs.items.get_mut(&10142).unwrap().stackable=false,
+                4=>defs.items.get_mut(&6681).unwrap().stackable=true,
+                5=>defs.items.get_mut(&233).unwrap().members=false,
+                6=>defs.items.get_mut(&10143).unwrap().cert.template=799,
+                7=>defs.items.get_mut(&249).unwrap().placeholder.template=14401,
+                _=>{symbols.insert("ground_guam".into(),249);},
+            }
+            assert!(swamp_tar(&symbols,&defs).is_err(),"mode{mode}");
+        }
+    }
+}
