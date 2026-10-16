@@ -83,7 +83,7 @@ impl World {
         if ordinary_handler {
             if let Some(config) = &self.unfinished_potions {
                 if let Some(choice) = config.request(request,p.movement.coords,p.movement.last_movement) {
-                    let recipe = config.recipes.get(&choice.herb).unwrap();
+                    let recipe = config.recipes.get(&(choice.herb, choice.vessel)).unwrap();
                     let message = if !p.member { Some("You need to be a member to make potions.") }
                         else if p.data.variables.get(config.quest_progress) != config.quest_complete { Some("You must complete Druidic Ritual before making potions.") }
                         else if i32::from(p.data.stats.current(15)) < i32::from(recipe.level) { Some("You need a higher Herblore level to make that potion.") }

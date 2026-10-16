@@ -2274,3 +2274,16 @@ All listed runs require client exit0, fresh durable logout, clean owned exit0 an
 - `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
 - State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":300,"after":500},"3077":{"before":1669,"after":4969},"3079":{"before":186,"after":123},"65515":{"before":174,"after":287}}}`
 - Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Separate selected-profile two-tick commits; UI evidence and packet/display latency separate"}`
+
+
+## Alternate unfinished-potion vessel implementation (2026-10-16)
+
+Recipe selection now keys on (herb, vessel), preserving all 15 water profiles while admitting coconut-milk Antidote+ and Antidote++ and cadantine blood unfinished recipes. Antidote+ uses toadflax/5935 at level68 and two ticks; Antidote++ uses irit/5935 at level79 and one tick; cadantine/blood22446 uses level80 and one tick. All award zero XP and preserve existing quest/member/live eligibility and selected-slot transactions. Native acceptance is pending.
+
+- Local Wiki Antidote+ (unf), revision15186533, wikitext SHA256 `092aaea445aa723815d5ed82153e6e9ad8eaf45e34a9bb6aa274556620b8d34f`.
+- Local Wiki Antidote++ (unf), revision15186535, wikitext SHA256 `ab64c6a66ac0a2637a325bc92f0efd18f110c1406d54c75d12e9be8e5a1f031b`.
+- Local Wiki Cadantine blood potion (unf), revision15188875, wikitext SHA256 `0700d3ba52d87dcfa4ad8978841f9c4751324c776c79a0c70d0ba912baa39bf5`.
+
+Rust validation alternate-unfinished-tests-attempt-002 PASS:52server+382world,1existing ignored;382 source hashes unchanged. Compile14.58s/world25.61s. Guard4327MiB available,79.4percent commit,0page-ins/s,0ms disk,43.2percent CPU,j2. New scheduler test checks six water/alternate profiles in both item-use orders, selected slots then repeats, per-recipe cadence, full inventory and zero XP/no replay. Initial attempt001 failed only its new expected-slot assertion (expected0/1; correct outputs0/2 after selecting2/3 first); failure evidence retained. No runtime behavior was changed to satisfy that assertion. Synthetic native state/trace assessors passed274 corruption-sensitivity checks; these are not native acceptance.
+
+Weapon poison native attempt001 RESOURCE_DEFERRED at CPU77.1percent,4030MiB,81.8percent commit,516page-ins/s,7msdisk; exact prepared fixture retained. Attempt002 resumed under CPU26.8percent,4906MiB,76.1percent commit,504page-ins/s,7.3msdisk. Final-three native evidence posted to Issue67 comment6223508877; issue remains open.

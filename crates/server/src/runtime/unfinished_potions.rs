@@ -22,7 +22,7 @@ impl<B: AccountBackend> Runtime<B> {
         let animation =
             u16::try_from(names.id("seq", "human_herbing_vial")?).map_err(io::Error::other)?;
         self.world.unfinished_potions = Some(gielinor_world::unfinished_potions::Config {
-            recipes: recipes.into_iter().map(|r| (r.herb, r)).collect(),
+            recipes: recipes.into_iter().map(|r| ((r.herb, r.vessel), r)).collect(),
             quest_progress: quest.quest_progress,
             quest_complete: quest.quest_complete,
             animation,
@@ -38,7 +38,7 @@ impl<B: AccountBackend> Runtime<B> {
             .world
             .unfinished_potions
             .as_ref()
-            .and_then(|c| c.recipes.get(&request.herb))
+            .and_then(|c| c.recipes.get(&(request.herb, request.vessel)))
             .ok_or_else(|| io::Error::other("Unfinished potion recipe missing"))?;
         let label = self
             .definitions

@@ -1966,7 +1966,7 @@ pub fn unfinished_potions(
     objects: &Symbols,
     defs: &Definitions,
 ) -> Result<Vec<gielinor_world::unfinished_potions::Recipe>, String> {
-    let mut seen = std::collections::BTreeSet::new();
+    let mut seen = std::collections::BTreeMap::<i32, String>::new();
     let mut bind = |name: &str, members: bool| -> Result<i32, String> {
         let id = *objects
             .get(name)
@@ -1976,7 +1976,7 @@ pub fn unfinished_potions(
             .get(&(id as u32))
             .ok_or_else(|| format!("Missing potion item {name}"))?;
         if id < 0
-            || !seen.insert(id)
+            || seen.insert(id, name.to_owned()).is_some_and(|prior| prior != name)
             || item.stackable
             || item.cert.template != 0
             || item.placeholder.template != 0
@@ -2017,6 +2017,17 @@ pub fn unfinished_potions(
             vessel,
             output: bind(output, true)?,
             level,
+            ticks: 1,
+        });
+    }
+    for (herb, vessel, output, level, ticks) in [
+        ("toadflax", "vial_coconut_milk", "unfinished_antidote+", 68, 2),
+        ("irit_leaf", "vial_coconut_milk", "unfinished_antidote++", 79, 1),
+        ("cadantine", "vial_blood", "cadantine_bloodvial", 80, 1),
+    ] {
+        recipes.push(gielinor_world::unfinished_potions::Recipe {
+            herb: bind(herb, true)?, vessel: bind(vessel, true)?,
+            output: bind(output, true)?, level, ticks,
         });
     }
     Ok(recipes)
@@ -2038,6 +2049,11 @@ mod unfinished_potion_binding_tests {
         for (name, id, member) in [
             ("guam_leaf", 249, true),
             ("vial_water", 227, false),
+            ("vial_coconut_milk", 5935, true),
+            ("unfinished_antidote+", 5942, true),
+            ("unfinished_antidote++", 5951, true),
+            ("vial_blood", 22446, true),
+            ("cadantine_bloodvial", 22443, true),
             ("guamvial", 91, true),
             ("marentill", 251, true),
             ("marrentillvial", 93, true),
@@ -2089,24 +2105,27 @@ mod unfinished_potion_binding_tests {
         assert_eq!(
             recipes
                 .iter()
-                .map(|r| (r.herb, r.vessel, r.output, r.level))
+                .map(|r| (r.herb, r.vessel, r.output, r.level, r.ticks))
                 .collect::<Vec<_>>(),
             [
-                (249, 227, 91, 3),
-                (251, 227, 93, 5),
-                (253, 227, 95, 12),
-                (255, 227, 97, 22),
-                (257, 227, 99, 30),
-                (2998, 227, 3002, 34),
-                (259, 227, 101, 45),
-                (261, 227, 103, 50),
-                (263, 227, 105, 55),
-                (30097, 227, 30100, 58),
-                (3000, 227, 3004, 63),
-                (265, 227, 107, 66),
-                (2481, 227, 2483, 69),
-                (267, 227, 109, 72),
-                (269, 227, 111, 78)
+                (249, 227, 91, 3, 1),
+                (251, 227, 93, 5, 1),
+                (253, 227, 95, 12, 1),
+                (255, 227, 97, 22, 1),
+                (257, 227, 99, 30, 1),
+                (2998, 227, 3002, 34, 1),
+                (259, 227, 101, 45, 1),
+                (261, 227, 103, 50, 1),
+                (263, 227, 105, 55, 1),
+                (30097, 227, 30100, 58, 1),
+                (3000, 227, 3004, 63, 1),
+                (265, 227, 107, 66, 1),
+                (2481, 227, 2483, 69, 1),
+                (267, 227, 109, 72, 1),
+                (269, 227, 111, 78, 1),
+                (2998, 5935, 5942, 68, 2),
+                (259, 5935, 5951, 79, 1),
+                (265, 22446, 22443, 80, 1)
             ]
         );
         for recipe in recipes {

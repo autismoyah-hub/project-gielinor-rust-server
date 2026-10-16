@@ -14,6 +14,7 @@ pub struct Recipe {
     pub vessel: i32,
     pub output: i32,
     pub level: u8,
+    pub ticks: u8,
 }
 #[derive(Clone, Copy, Debug)]
 pub struct Job {
@@ -47,6 +48,7 @@ impl Job {
             || r.output < 0
             || r.level == 0
             || r.level > 99
+            || !(1..=2).contains(&r.ticks)
             || r.herb == r.vessel
             || r.herb == r.output
             || r.vessel == r.output
@@ -129,6 +131,7 @@ mod tests {
                     vessel: 227,
                     output: 91,
                     level: 3,
+                    ticks: 1,
                 },
                 herb_slot,
                 vessel_slot,
@@ -300,7 +303,7 @@ mod tests {
 pub(crate) const QUEUE: i32 = -2391007;
 #[derive(Clone, Debug)]
 pub struct Config {
-    pub recipes: std::collections::BTreeMap<i32, Recipe>,
+    pub recipes: std::collections::BTreeMap<(i32, i32), Recipe>,
     pub quest_progress: u16,
     pub quest_complete: i32,
     pub animation: u16,
@@ -308,6 +311,7 @@ pub struct Config {
 #[derive(Clone, Copy, Debug)]
 pub struct Request {
     pub herb: i32,
+    pub vessel: i32,
     pub herb_slot: usize,
     pub vessel_slot: usize,
     pub origin: crate::CoordGrid,
@@ -324,7 +328,7 @@ impl Config {
         {
             return None;
         }
-        let (herb, herb_slot, vessel, vessel_slot) = if self.recipes.contains_key(&held.selected_id)
+        let (herb, herb_slot, vessel, vessel_slot) = if self.recipes.contains_key(&(held.selected_id, held.target_id))
         {
             (
                 held.selected_id,
@@ -340,11 +344,10 @@ impl Config {
                 held.selected_slot,
             )
         };
-        if self.recipes.get(&herb)?.vessel != vessel {
-            return None;
-        }
+        self.recipes.get(&(herb, vessel))?;
         Some(Request {
             herb,
+            vessel,
             herb_slot: herb_slot as usize,
             vessel_slot: vessel_slot as usize,
             origin,

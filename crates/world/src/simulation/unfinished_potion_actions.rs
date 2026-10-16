@@ -40,8 +40,9 @@ impl World {
             .ok_or(ActionError::InvalidItem)?;
         let recipe = *config
             .recipes
-            .get(&request.herb)
+            .get(&(request.herb, request.vessel))
             .ok_or(ActionError::InvalidItem)?;
+        if !(1..=2).contains(&recipe.ticks) { return Err(ActionError::InvalidItem); }
         let pending = Pending {
             job: Job {
                 recipe,
@@ -59,12 +60,12 @@ impl World {
         let p = self.players.get_mut(actor.slot as usize).unwrap();
         p.begin_held_action();
         p.queues.clear_weak();
-        // Wiki recipe1tick: input-cycle decrement means queue2 commits next clock.
+        // Input-cycle decrement requires one extra queue count beyond recipe ticks.
         p.queues
             .add(
                 QUEUE,
                 crate::queues::Category::Weak,
-                2,
+                i32::from(recipe.ticks) + 1,
                 Deferred::UnfinishedPotion(pending),
             )
             .map_err(|_| ActionError::QueueFull)?;
@@ -153,12 +154,12 @@ pub(super) fn complete(
         index: pending.index + 1,
         ..pending
     };
-    // Callback-added queue2 preserves one processing-clock interval per output.
+    // Preserve the selected recipe cadence on every continuation.
     if queues
         .add(
             QUEUE,
             crate::queues::Category::Weak,
-            2,
+            i32::from(next.job.recipe.ticks) + 1,
             Deferred::UnfinishedPotion(next),
         )
         .is_err()
@@ -194,12 +195,13 @@ mod tests {
         w.collision.allocate(3200, 3200, 0);
         w.unfinished_potions = Some(Config {
             recipes: [(
-                249,
+                (249, 227),
                 Recipe {
                     herb: 249,
                     vessel: 227,
                     output: 91,
                     level: 3,
+                    ticks: 1,
                 },
             )]
             .into(),
@@ -389,4 +391,64 @@ mod tests {
         }
         assert_eq!(products(&w, a), 0);
     }
+    #[test]
+    fn alternate_vessels_preserve_water_choices_and_recipe_cadence() {
+        let recipes = [
+            Recipe { herb:2998, vessel:227, output:3002, level:34, ticks:1 },
+            Recipe { herb:2998, vessel:5935, output:5942, level:68, ticks:2 },
+            Recipe { herb:259, vessel:227, output:101, level:45, ticks:1 },
+            Recipe { herb:259, vessel:5935, output:5951, level:79, ticks:1 },
+            Recipe { herb:265, vessel:227, output:107, level:66, ticks:1 },
+            Recipe { herb:265, vessel:22446, output:22443, level:80, ticks:1 },
+        ];
+        for recipe in recipes {
+            for reverse in [false, true] {
+                let (mut w,a,_) = fixture();
+                w.unfinished_potions.as_mut().unwrap().recipes = recipes.into_iter()
+                    .map(|r| ((r.herb,r.vessel),r)).collect();
+                assert_eq!(w.unfinished_potions.as_ref().unwrap().recipes.len(),6);
+                for id in [recipe.herb,recipe.vessel] {
+                    w.held_use_types.insert(id,held_use::Type{id,content:0});
+                }
+                let data = w.data_mut(a).unwrap();
+                data.stats.set_base(15,99);data.stats.set_current(15,99);
+                data.stats.set_fine_xp(15,130344311).unwrap();
+                for slot in 0..4 {
+                    data.inventory.restore_slot(slot,Some(Item {
+                        id:if slot%2==0 {recipe.herb} else {recipe.vessel},count:1,vars:0,
+                    })).unwrap();
+                }
+                let original=data.clone();
+                let held=held_use::Request {
+                    selected_id:if reverse {recipe.vessel} else {recipe.herb},
+                    target_id:if reverse {recipe.herb} else {recipe.vessel},
+                    selected_slot:if reverse {3} else {2},target_slot:if reverse {2} else {3},
+                };
+                let request=choose(&mut w,a,held);
+                assert_eq!((request.herb,request.vessel,request.herb_slot,request.vessel_slot),
+                    (recipe.herb,recipe.vessel,2,3));
+                w.start_unfinished_potion(a,request,0,28).unwrap();
+                for _ in 0..(recipe.ticks*2+3) {w.tick().unwrap();}
+                let data=w.data(a).unwrap();
+                assert_eq!(data.stats,original.stats);
+                for slot in [0,2] {assert_eq!(data.inventory.get(slot),Some(Item{id:recipe.output,count:1,vars:0}));}
+                for slot in [1,3] {assert_eq!(data.inventory.get(slot),None);}
+                for slot in 4..28 {assert_eq!(data.inventory.get(slot),original.inventory.get(slot));}
+                let traces:Vec<_>=w.drain_events().into_iter().filter_map(|e| {
+                    if let WorldEvent::UnfinishedPotionMade{trace,..}=e {Some(trace)} else {None}
+                }).collect();
+                assert_eq!(traces.len(),2);
+                for (index,t) in traces.iter().enumerate() {
+                    assert_eq!(t.committed_at-t.queued_at,i32::from(recipe.ticks));
+                    assert_eq!((t.job.recipe.herb,t.job.recipe.vessel,t.job.recipe.output),(recipe.herb,recipe.vessel,recipe.output));
+                    assert_eq!((t.job.herb_slot,t.job.vessel_slot),[(2,3),(0,1)][index]);
+                    assert_eq!(t.index,index as u32);
+                }
+                assert_eq!(traces[1].queued_at,traces[0].committed_at);
+                for _ in 0..3 {w.tick().unwrap();}
+                assert!(!w.drain_events().iter().any(|e|matches!(e,WorldEvent::UnfinishedPotionMade{..})));
+            }
+        }
+    }
+
 }
