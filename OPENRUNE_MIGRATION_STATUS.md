@@ -2879,3 +2879,49 @@ Wiki Extended anti-venom+ revision15267078 SHA2565f6fa19fd183cf7633ae28fff6bb163
 Bound anti-venom+12919/12917/12915/12913 plus stackable sac29784 to extended29833/29830/29827/29824. Ordinary members/Drink/dose definitions independently decoded. Upgrade recipes now carry explicit validated2/3tick cadence; stamina remains2ticks,extendedvenom3. Each family builds its own next-dose chemistry mapping, never across family boundaries. Runtime uses the existing Make/action/weak-queue/persistence architecture; ingredient acquisition and potion drinking remain separate.
 
 Regression attempt001 PASS58server404world1ignored; compile1m36s,world31.08s;guard4247MiB79.3percentcommit107page-ins/s3.2msdisk39.1percentCPU,j2. Tests verify the corrected real IDs/quantities/XP/level/cadence and exact third-tick first/repeat boundaries alongside existing stamina and modifier cases. Native extendedvenom tooling installed with four-dose full28fixture/shared20sacs;101independent synthetic corruption checksPASS. Matching binaries/control/fresh/relogin pending. In-progress stamina acceptance remains pinned to earlier92AD0B554C5172C0607AE8702789225BF9AB54A3B6419622C7390EBA4AFD55DF.
+
+## Native gameplay stamina acceptance (2026-10-16 UTC)
+
+Four native dose-preserving stamina upgrades from one shared20-amylase stack: one/two/three/four crystals debited, exact12750fineXP at5x, full28slots with22pots and1000coins conserved, two-tick commits and same-save no replay. Native goggles/chemistry and other upgrades remain separate.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking/Herblore parity or unrelated recipes. No issue closure.
+
+`openrune-native-stamina-001` PASS. Server archive `92AD0B554C5172C0607AE8702789225BF9AB54A3B6419622C7390EBA4AFD55DF`, driver `stamina-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID13080.
+- Driver `server_stamina.exe` SHA256 `F8512D5B7CED7E6E59EADAD8B97522A0174387E1FA901B6570F2C3211A12ABF5`
+- Driver `NativeStaminaScenario.rs` SHA256 `793A67DF39F28E244BF771B9A1A6FA2065F995F4E5FE316FC376211B3B3EAE77`
+- `client.log` SHA256 `94d7d8042d5628f5aae0017b01c8271cc5e806b11019c696c9c68c8571693c28`
+- `server.log` SHA256 `044cc979535141761406beae1289ed30a440861173aa326fd431818c0ca3cbd7`
+- `initial-state.json` SHA256 `e00a90484cbac2f73f8818188bf1de6650b3b9afdd742a93964ae6869f409986`
+- `final-state.json` SHA256 `a8da0e9457edfe600ab8a3c54c6dc2e8bd422e1c580227868e7175e5a7c9322e`
+- `pack-assessment.json` SHA256 `7b6e290b9659253da4cd7f29c06f1a1217509c7077783a59d0fa8bd14af8bb08`
+- `stamina-trace-assessment.json` SHA256 `719b8b3322397a1c661e9a231f78991e5f7fcdca28a7934c380f0a1001931ec6`
+- `logout-observation.json` SHA256 `f0e3435069e916cf843c3aad869f1a9a07dc6f1d804557fa286dbc0cc056ed29`
+- `shutdown.json` SHA256 `49395b7d204f316fcde3cfbc4b6cf0d94f20f3c275ba1dae1231edc15505f0e4`
+- `result.json` SHA256 `af56686b92997aa56765ef7c9e75e4238e0fa62789a52f7aad41f46f5574f47e`
+- `pack-run.json` SHA256 `e4eb7761c23760332b48fe21261e44dbde82a14794582780c70d977adffd1ae8`
+- `native-profile-assessment.json` SHA256 `3f14a170fae57aa7fb1d7cec162cb49aa87debcbb735e6b036598733a23eb947`
+- `native-packet-assessment.json` SHA256 `ab1095a939e409762a120df7a57155f6d3212481f3551cde8cb817a6da115d3b`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":400},"3077":{"before":0,"after":46936},"3079":{"before":0,"after":210},"65515":{"before":0,"after":193}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[{"actor_slot":1,"actor_generation":614,"base_slot":1,"secondary_slot":0,"base":3022,"secondary":12640,"output":12631,"count":1,"queued_at":154,"committed_at":156,"index":0,"base_fine_xp":255,"rate_hundreds":500,"fine_before":130344311,"fine_after":130345586,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"base_slot":2,"secondary_slot":0,"base":3020,"secondary":12640,"output":12629,"count":1,"queued_at":164,"committed_at":166,"index":0,"base_fine_xp":510,"rate_hundreds":500,"fine_before":130345586,"fine_after":130348136,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"base_slot":3,"secondary_slot":0,"base":3018,"secondary":12640,"output":12627,"count":1,"queued_at":174,"committed_at":176,"index":0,"base_fine_xp":765,"rate_hundreds":500,"fine_before":130348136,"fine_after":130351961,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"base_slot":4,"secondary_slot":0,"base":3016,"secondary":12640,"output":12625,"count":1,"queued_at":188,"committed_at":190,"index":0,"base_fine_xp":1020,"rate_hundreds":500,"fine_before":130351961,"fine_after":130357061,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5}],"scope":"Separate selected-profile two-tick commits; UI evidence and packet/display latency separate"}`
+
+`openrune-stamina-relogin-001` PASS. Server archive `92AD0B554C5172C0607AE8702789225BF9AB54A3B6419622C7390EBA4AFD55DF`, driver `stamina-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor `openrune-native-stamina-001`, owned PID16564.
+- Driver `server_stamina.exe` SHA256 `F8512D5B7CED7E6E59EADAD8B97522A0174387E1FA901B6570F2C3211A12ABF5`
+- Driver `NativeStaminaScenario.rs` SHA256 `793A67DF39F28E244BF771B9A1A6FA2065F995F4E5FE316FC376211B3B3EAE77`
+- `client.log` SHA256 `e9ff575c217202b35f1c11dd35e5f2098339eab2f6279843373617cf632b63e4`
+- `server.log` SHA256 `cf8f4dfa184f8ac6b67cea5e949b5bb5b5a2ebbd742e6ee29b9a1d4ade3f3382`
+- `initial-state.json` SHA256 `a8da0e9457edfe600ab8a3c54c6dc2e8bd422e1c580227868e7175e5a7c9322e`
+- `final-state.json` SHA256 `25c5db6f6d4ff4a5eb3759259ef97139c223d6dc97eba5b167702ed29c9114f0`
+- `pack-assessment.json` SHA256 `0471a0111c29d1ea8586904a24223d6247a779e14000643b5339e7e7e88380a1`
+- `stamina-trace-assessment.json` SHA256 `15565119835c4387827e07e673e26fc0ec5897457d403e87d7333c03aaf96013`
+- `logout-observation.json` SHA256 `4e624131ba53be31db84977dd8505ef335e5b2c3c95f270462d0effac8fd766c`
+- `shutdown.json` SHA256 `89d1544520fd367a1190fbfe0d42e839ea853ab992eaef18c4fa7776d06a3807`
+- `result.json` SHA256 `a36fb5d69145ba9817f3f58548633ede06c11b47d77ce43408738c87f30e0e5f`
+- `pack-run.json` SHA256 `dae407cc8f04f298fc8015d77147ffb6eb82e7e13488f99b04a661dc9c448ee1`
+- `native-profile-assessment.json` SHA256 `3f14a170fae57aa7fb1d7cec162cb49aa87debcbb735e6b036598733a23eb947`
+- `native-packet-assessment.json` SHA256 `50f7a1c22ac0923cacc463b758bfe217bf6f039a32111afe2da3834dcdd7fc76`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":400,"after":700},"3077":{"before":46936,"after":47472},"3079":{"before":210,"after":166},"65515":{"before":193,"after":351}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Separate selected-profile two-tick commits; UI evidence and packet/display latency separate"}`
