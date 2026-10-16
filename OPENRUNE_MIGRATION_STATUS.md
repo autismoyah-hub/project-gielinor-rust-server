@@ -2989,3 +2989,17 @@ The donor uses sote_crystal_dust (23804), which independently decodes as nonstac
 - Divine super combat potion: revision15331555, SHA256 `0c6f79050971d98443f021d94a16fada8506d4fc83447b3c46c979dbb2b83d7a`.
 
 Regression attempt001 passed59server405world tests, with1existing ignored test. Compile1m13s; world37.24s. Guard4238MiB available,79.0percentcommit,0page-ins/s,0.6msdisk,20.3percentCPU; Cargo-j2. Binding tests reject quest dust; modifier tests prove zero goggles draws, exact fractional XP and continuing chemistry eligibility. Four native batches are prepared, each with eight dose recipes and equipped goggles. Matching builds, independent native assessments and same-save acceptance remain pending; no rendered or full parity claim.
+
+## Super combat transaction foundation (runtime and native pending)
+
+Added an atomic four-input transaction using existing Inventory and skills::advance. Three four-dose potions plus either clean Torstol269 or Torstol potion(unf)111 produce Super combat potion(4)12695 at boosted Herblore90,150baseXP. Goggles can retain only Torstol; this always-four-dose output has no chemistry roll. Inputs, definitions, gates and both potential inventories validate before RNG and publication. Runtime selection, Make routing, two-tick scheduling, native acceptance and persistence remain pending. No full parity claim.
+
+OpenRune Herblore.kt lines410-420 instead specifies three-dose ingredients/output and omits the unfinished alternative. The selected Wiki recipe explicitly requires four-dose ingredients/output and both Torstol forms; this mismatch is preserved rather than inherited. Six target item definitions were independently decoded in work/openrune-supercombat-cache-evidence-001.json.
+
+- Super combat potion: revision15281186, raw SHA256 `6456039f12edaad9c9e268aa2ffa67035fd34e81e4999e7f017895d0de58aeb8`.
+- Torstol potion (unf): revision15185812, raw SHA256 `4f6f537922f2a1d84273168536b5c9de5124e7b0e46723c539c6194f4dd8ed99`.
+- Torstol: revision15293002, raw SHA256 `a93a03473f21ce2ea38243dbe2ceed1a1ff83c4072f312b4f6c1619de19edde8`.
+- Prescription goggles: revision15240969, raw SHA256 `0c135eedea248d163b2fe8a98cfc8dccf69e5e2662c35b3f53ac72c0fb591fb3`.
+- Amulet of chemistry: revision15338661, raw SHA256 `43eb8d9575c8fd45b45ae660bd178b7dfe45fa40d82113039bf76e13bf5c3ba8`.
+
+Focused command: build.ps1 -Action test -CargoArgs -p,gielinor-world,--lib,combat_mixing::tests. Attempt001 PASS2,406filtered;54.66s compile. Available4094MiB,commit78.9percent,page-ins701/s,disk1.1ms,CPU36.6percent;Cargo-j1. The concurrent native run used its immutable archive and was not interrupted.
