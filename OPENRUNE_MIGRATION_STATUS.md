@@ -1267,3 +1267,77 @@ All listed runs require client exit0, fresh durable logout, clean owned exit0 an
 `openrune-doughall-login-control-001` completed successfully on attempt002: native client exit0, durable logout PASS, owned server PID8308 clean exit0. `work/doughall-control-attempt-002.log` retains the resource guard and login output. The action fixture `openrune-native-doughall-001` was prepared once, then deferred by the active-compiler guard on attempt001; no native action acceptance is claimed. Resume that exact prepared snapshot. Capacity refusal and its exact same-save replay check are both PASS as recorded above, superseding earlier pending notes.
 
 Issue #80 owns the selected dough quantity/capacity scope. Issue #54 additionally requires feather stacking/cap boundaries, effective inventory93/catalog binding, reference comparison and several separate container profiles; this dough refusal is supplementary conservation evidence only and does not satisfy that full contract. Both issues remain open.
+
+## Native All attempt001 failure retained (2026-10-16 UTC)
+
+Driver doughall001/run openrune-native-doughall-001 FAIL: actual Use and visible All pointer click then bread Make produced one dough transition (clock80 to81), not three. Driver timed out stage4 and exited1; durable logout completed and owned server PID6780 exited0 without force. Independent state, trace and native terminal evaluators all FAIL in failure-assessment-001.json. The first two attempts were compiler-deferred; attempt003 executed. The saved one-output fixture is preserved, not reused as a fresh three-output fixture. A new doughall002 diagnostic driver invokes the actual generated All menu entry after pointer interaction and logs the action/dispatch; no client library changes or fabricated packets. Build attempt001 compiler-deferred. No client/server defect attribution yet.
+- `client.log` SHA256 `3437d2fefb210711788d7b35ff382f6044ff91147952d22b7ac4c846ba68f008`
+- `server.log` SHA256 `36d2d132d2a607d5eb0bb6229db7b9697c2dfa4ab882c7734b8e918ba73385cd`
+- `initial-state.json` SHA256 `3817232634767753fc21bc5939dfc16ac643a39b5fa8f9e8e9db1f3650c7ac8c`
+- `final-state.json` SHA256 `0bba8baee45bfc9753afe1cd93156849532eb2bde90a4cd9ffd8065f61010b8f`
+- `failure-assessment-001.json` SHA256 `4fcdea20dae4b4ad5067b4eec29c1da4910482a55065f22be0f4b5ba17b9b6d8`
+- `shutdown.json` SHA256 `a5f2f0e58cb5da1a02479f478db0089c9d66861bae30e52563f945929e97b78f`
+- `logout-observation.json` SHA256 `c1b37c1965685a80a0f43de185b5dbe88427bf6570575c7ad8ab0f12bf911421`
+
+## Native assembly doughall acceptance (2026-10-16 UTC)
+
+One native flour/water Use, actual generated All control pointer click and bread menu: three consecutive selected-slot dough commits with containers retained, exact products/coins, zeroXP. Other quantities/recipes and cancellation remain separate.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking parity or unrelated recipes. No issue closure.
+
+`openrune-native-doughall-002` PASS. Server archive `7C3952D63A84301C9E5D0C9B8C2C2639FC37AB9C96AA3DA80F5FD6DDA908AA45`, driver `doughall-002`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID9736.
+- Driver `server_doughall.exe` SHA256 `AF5147A4229E5C1F5233BA9171837C7B1666663B0A5FE201ACA2559B0086324B`
+- Driver `NativeDoughAllScenario.rs` SHA256 `7360AC338EB21DE0DEF1847875B18C8BA2DB67CCBC4BC2E2A61F58C186F43C13`
+- `client.log` SHA256 `d7769e1962735726c996445c7d9ff4f93c91bbbbfc164bf9e0a06797c40765cb`
+- `server.log` SHA256 `fcdeee2f579e627f7333d12be369a99c21dffa15c841e88ddb8faf70f04662ba`
+- `initial-state.json` SHA256 `3817232634767753fc21bc5939dfc16ac643a39b5fa8f9e8e9db1f3650c7ac8c`
+- `final-state.json` SHA256 `4f318733f8c907bfcd1c6215841a3e22e118929df8e3d1f08f451635e76514af`
+- `pack-assessment.json` SHA256 `9015ebace16ce7386144604d73116a4d2691c2765712485173439b832ee8ce61`
+- `doughall-trace-assessment.json` SHA256 `978dbfb75b4783409c10f5d23a74eb580e00d06e1b61eacb614bfa582da321fd`
+- `logout-observation.json` SHA256 `4c51189cfdcb3ac8a19d3d2e51730e3423d57c8b00bf4e7c0b8e6979fd252354`
+- `shutdown.json` SHA256 `ca899d6263d010ee4e9acd580e744e1f90e22614660dc31e3c0c53ae61f19285`
+- `result.json` SHA256 `fdd261268fbda640fad5da79080165f717b9199c2d94c6cbdf072d224d5585ed`
+- `pack-run.json` SHA256 `e7f83f8bfd00017daeb3528d4bdf74ef4ef0a12e409203252ac00e68337cbb10`
+- `native-packet-assessment.json` SHA256 `c9986cf8d1ac50714fd78a2bcf07d3d791d8afb3b9afc3f73fbfc181f83bed88`
+- `native-quantity-assessment.json` SHA256 `de8b5f2bfabf95f380cb064962ac393e19190cef5f35776a602e1de2d7aa4964`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":200},"3077":{"before":0,"after":36802},"3079":{"before":0,"after":109},"65515":{"before":0,"after":103}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[{"actor_slot":1,"actor_generation":614,"flour_slot":0,"water_slot":1,"flour":1933,"water":1929,"pot":1931,"vessel":1925,"dough":2307,"count":1,"queued_at":88,"committed_at":89,"index":0},{"actor_slot":1,"actor_generation":614,"flour_slot":2,"water_slot":3,"flour":1933,"water":1929,"pot":1931,"vessel":1925,"dough":2307,"count":1,"queued_at":89,"committed_at":90,"index":1},{"actor_slot":1,"actor_generation":614,"flour_slot":4,"water_slot":5,"flour":1933,"water":1929,"pot":1931,"vessel":1925,"dough":2307,"count":1,"queued_at":90,"committed_at":91,"index":2}],"scope":"Three consecutive server dough commits from one quantity request; UI evidence and packet/display latency separate"}`
+
+## All control diagnosis and superseding driver002 (2026-10-16 UTC)
+
+Native All label widget4294841025 had neither click nor operation listener. Its visible generated menu exposed All on logical component270:12 (17694732). Dispatching that actual menu action, then the bread Make action, emitted client-generated opcode115 payload0e010f00001c: component270:15, quantity28. Driver002 now passes three consecutive commits (88->89,89->90,90->91) and exact saved products/containers/XP. This isolates attempt001 as harness input incompleteness; no client/server production fix was necessary. Pinned driver001/run001 and FAIL reports remain intact. Driver002 built1.71s on attempt004; earlier three attempts compiler-deferred. Native attempt002 fixture runs are distinct from preserved failed001. Same-save validation is pending.
+
+Quantity verifier additionally requires the decoded actual pause quantity28;22 synthetic malformed/missing/duplicate/count/order/relogin cases rejected. Existing full-state/trace synthetic checks remain historical; no TCP capture or rendered-appearance claim. Two new world regressions cover level drain and moved selected inputs between repeats, including non-resumption after recovery; currently UNCOMPILED.
+- `integration/scenario-drivers/doughall-002/manifest.json` SHA256 `57c4c482f80104916c007ac0d4efc1805eb2c55e8167f5f1cffe0ed4396ee2a0`
+- `work/doughall-driver-002-attempt-004.log` SHA256 `42e7afd893bbcbc79b68812e639c9c60b6a43e3bf0cb37ff329ada04e391f8a9`
+- `scripts/integration_doughall_native_assessment.py` SHA256 `2791c1d03c719aee7afd01154302cf7626bb20e2d7bb426683cb564fe9ea3b50`
+
+## Native assembly doughall acceptance (2026-10-16 UTC)
+
+One native flour/water Use, actual generated All control pointer click and bread menu: three consecutive selected-slot dough commits with containers retained, exact products/coins, zeroXP. Other quantities/recipes and cancellation remain separate.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking parity or unrelated recipes. No issue closure.
+
+`openrune-native-doughall-relogin-002` PASS. Server archive `7C3952D63A84301C9E5D0C9B8C2C2639FC37AB9C96AA3DA80F5FD6DDA908AA45`, driver `doughall-002`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor `openrune-native-doughall-002`, owned PID12188.
+- Driver `server_doughall.exe` SHA256 `AF5147A4229E5C1F5233BA9171837C7B1666663B0A5FE201ACA2559B0086324B`
+- Driver `NativeDoughAllScenario.rs` SHA256 `7360AC338EB21DE0DEF1847875B18C8BA2DB67CCBC4BC2E2A61F58C186F43C13`
+- `client.log` SHA256 `50bb4ed0983973147e075dcd599d08738877ca9c96d715d9b956f2e4e8caf805`
+- `server.log` SHA256 `12b19bd988ef867d641d66de61ff0b8f0942c9c916645677d4f4efc0dae94251`
+- `initial-state.json` SHA256 `4f318733f8c907bfcd1c6215841a3e22e118929df8e3d1f08f451635e76514af`
+- `final-state.json` SHA256 `6476fa2ac9551e159ba90b1055c9000a7af53ca5b73ff3d6a8600f5aa68b413b`
+- `pack-assessment.json` SHA256 `cc44f5e22382260736e86059ce9d5644fa2471b655bebc3cd7ae3934168284cd`
+- `doughall-trace-assessment.json` SHA256 `930f159a4b269ff9cc146f1efb8cee02f7dda2f2638fe40ed73798ac086eab32`
+- `logout-observation.json` SHA256 `15f18923dc2503fbac85fa38fc95de218d54f255705408a5e265a0035a15c9fa`
+- `shutdown.json` SHA256 `064be162849d08475c48df3be19dd25e21c85ba0a4c52fa6290037a23aed886c`
+- `result.json` SHA256 `ce1cc1303f1d10a019a1d61dea29940506a93b83c9a975db06cf0800005e0f54`
+- `pack-run.json` SHA256 `de24c630e77dfc4703356b113c122f39b4d009014c941e9f201e08df04848062`
+- `native-packet-assessment.json` SHA256 `d7937a0d585cd6ff3c2b8feaaaca825fa9002e6a62e7ff360758c53c3b60129d`
+- `native-quantity-assessment.json` SHA256 `de8b5f2bfabf95f380cb064962ac393e19190cef5f35776a602e1de2d7aa4964`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":200,"after":300},"3077":{"before":36802,"after":958},"3079":{"before":109,"after":97},"65515":{"before":103,"after":194}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Three consecutive server dough commits from one quantity request; UI evidence and packet/display latency separate"}`
+
+The revised All assessor suite also passed174 corrupted state/stat/trace/action-order cases plus22 focused pause/quantity cases. Exact same-save All002 PASS above supersedes pending notes. Two additional scheduler regressions remain uncompiled because another compiler was active at test attempt001; their source is not included in this native evidence checkpoint. Existing accepted runtime remains archive7C3952D6.
