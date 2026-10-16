@@ -42,6 +42,9 @@ impl World {
             origin: p.movement.coords,
             last_movement: p.movement.last_movement,
             slot: inv_slot,
+            queued_at: self.clock.0,
+            item_use: selected.is_some(),
+            repeat: false,
         };
         // Wiki first-action durations differ for menu and bucket-on-cow. These
         // are measured from reached admission; native route phase is separate.
@@ -70,6 +73,7 @@ pub(super) fn complete(
     config: &Config,
     catalog: &crate::inventory::Catalog,
     revision: Option<u64>,
+    clock: i32,
     events: &mut Vec<WorldEvent>,
 ) {
     if p.location_interaction.is_some()
@@ -90,6 +94,19 @@ pub(super) fn complete(
     {
         return;
     }
+    events.push(WorldEvent::Milking {
+        actor: p.id,
+        trace: crate::milking::Transition {
+            target: job.target,
+            slot: job.slot,
+            input: config.bucket,
+            output: config.milk,
+            queued_at: job.queued_at,
+            committed_at: clock,
+            item_use: job.item_use,
+            repeat: job.repeat,
+        },
+    });
     events.push(WorldEvent::PlayerCombatAnimation {
         actor: p.id,
         sequence: config.animation,
@@ -116,7 +133,12 @@ pub(super) fn complete(
                 // A callback-added queue is visited in this same phase.
                 // Nine decrements yield eight subsequent world ticks.
                 9,
-                Deferred::Milking(Job { slot, ..job }),
+                Deferred::Milking(Job {
+                    slot,
+                    queued_at: clock,
+                    repeat: true,
+                    ..job
+                }),
             )
             .is_err()
         {
@@ -203,7 +225,26 @@ mod tests {
         for selected in [None, Some(1)] {
             let (mut w, actor, loc) = fixture();
             let stats = w.data(actor).unwrap().stats.clone();
-            w.start_milking(actor.slot as usize, loc, selected);
+            let action = if let Some(slot) = selected {
+                Action::UseLocation {
+                    coords: loc.coords,
+                    id: loc.id,
+                    slot: slot as i32,
+                    object: 10,
+                    control: false,
+                }
+            } else {
+                Action::OperateLocation {
+                    coords: loc.coords,
+                    id: loc.id,
+                    operation: 1,
+                    control: false,
+                }
+            };
+            w.submit(actor, action).unwrap();
+            // Admit through PlayerMain's reached-location phase, after queues.
+            w.tick().unwrap();
+            assert_eq!(count(&w, actor, 20), 0);
             let first = if selected.is_some() { 4 } else { 3 };
             for tick in 1..=first + 8 {
                 w.tick().unwrap();
@@ -231,6 +272,22 @@ mod tests {
                 }
             }
             assert_eq!(w.data(actor).unwrap().stats, stats);
+            let traces = w
+                .drain_events()
+                .into_iter()
+                .filter_map(|e| {
+                    if let WorldEvent::Milking { trace, .. } = e {
+                        Some(trace)
+                    } else {
+                        None
+                    }
+                })
+                .collect::<Vec<_>>();
+            assert_eq!(traces.len(), 2);
+            assert_eq!(traces[0].committed_at - traces[0].queued_at, first);
+            assert_eq!(traces[1].committed_at - traces[1].queued_at, 8);
+            assert!(!traces[0].repeat);
+            assert!(traces[1].repeat);
         }
     }
     #[test]

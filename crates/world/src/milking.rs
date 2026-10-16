@@ -21,6 +21,9 @@ pub(crate) struct Job {
     pub origin: CoordGrid,
     pub last_movement: i32,
     pub slot: usize,
+    pub queued_at: i32,
+    pub item_use: bool,
+    pub repeat: bool,
 }
 impl Config {
     pub fn fill(
@@ -83,5 +86,38 @@ mod tests {
         let after = inv.clone();
         assert!(config.fill(&mut inv, &catalog, 1).is_err());
         assert_eq!(inv, after);
+    }
+}
+
+/// Committed transition only; packet arrival and client display clocks are separate.
+#[derive(Clone, Debug)]
+pub struct Transition {
+    pub target: Location,
+    pub slot: usize,
+    pub input: i32,
+    pub output: i32,
+    pub queued_at: i32,
+    pub committed_at: i32,
+    pub item_use: bool,
+    pub repeat: bool,
+}
+impl Transition {
+    pub fn json(&self, actor: crate::simulation::ActorId) -> String {
+        format!(
+            r#"{{"actor_slot":{},"actor_generation":{},"location":{},"x":{},"z":{},"plane":{},"slot":{},"input":{},"output":{},"count":1,"queued_at":{},"committed_at":{},"item_use":{},"repeat":{}}}"#,
+            actor.slot,
+            actor.generation,
+            self.target.id,
+            self.target.coords.x(),
+            self.target.coords.z(),
+            self.target.coords.level(),
+            self.slot,
+            self.input,
+            self.output,
+            self.queued_at,
+            self.committed_at,
+            self.item_use,
+            self.repeat
+        )
     }
 }

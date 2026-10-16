@@ -582,6 +582,7 @@ pub enum WorldEvent {
         actor: ActorId,
         event: crate::dialogue::Event,
     },
+    Milking { actor:ActorId, trace:crate::milking::Transition },
     CombatSound {
         actor: ActorId,
         sound: u16,
@@ -2359,6 +2360,7 @@ impl World {
                                                             p, queues, job, config,
                                                             &self.object_types,
                                                             self.locations.revision(job.target),
+                                                            self.clock.0,
                                                             &mut self.events,
                                                         );
                                                     }

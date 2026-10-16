@@ -69,6 +69,12 @@ pub fn item_packs(
         ("pack_vial_empty", "vial_empty", true),
         ("pack_vial_water", "vial_water", true),
         ("pack_compost", "bucket_compost", true),
+        // Wiki plant-pot packs contain filled pots; do not copy the reference
+        // enum's plantpot_empty symbol without effective-definition evidence.
+        ("pack_plant_pot_compost", "plantpot_compost", true),
+        ("pack_sack", "sack_empty", true),
+        ("pack_basket", "basket_empty", true),
+        ("pack_olive_oil", "oliveoil4", true),
         ("pack_airrune", "airrune", false),
         ("pack_waterrune", "waterrune", false),
         ("pack_earthrune", "earthrune", false),
@@ -570,6 +576,57 @@ pub fn equipment_requirement_messages(
 #[cfg(test)]
 mod pack_binding_tests {
     use super::*;
+    #[test]
+    fn additional_noted_packs_select_filled_pots_and_reciprocal_notes() {
+        let mut symbols = Symbols::new();
+        let mut defs = Definitions {
+            inventories: Default::default(),
+            locations: Default::default(),
+            npcs: Default::default(),
+            items: Default::default(),
+            varbits: Default::default(),
+            varps: Default::default(),
+            stats: Default::default(),
+        };
+        symbols.insert("plantpot_empty".into(), 999);
+        for (index, (pack_name, output_name)) in [
+            ("pack_plant_pot_compost", "plantpot_compost"),
+            ("pack_sack", "sack_empty"),
+            ("pack_basket", "basket_empty"),
+            ("pack_olive_oil", "oliveoil4"),
+        ]
+        .into_iter()
+        .enumerate()
+        {
+            let pack = 100 + index as i32;
+            let output = 200 + index as i32;
+            let note = 300 + index as i32;
+            symbols.insert(pack_name.into(), pack);
+            symbols.insert(output_name.into(), output);
+            let mut pack_type = gielinor_cache::definitions::ItemType::decode(&[0]).unwrap();
+            pack_type.inventory_ops[0] = Some("Open".into());
+            let mut output_type = gielinor_cache::definitions::ItemType::decode(&[0]).unwrap();
+            output_type.cert.link = note;
+            let mut note_type = gielinor_cache::definitions::ItemType::decode(&[0]).unwrap();
+            note_type.cert.template = 799;
+            note_type.cert.link = output;
+            defs.items.insert(pack as u32, pack_type);
+            defs.items.insert(output as u32, output_type);
+            defs.items.insert(note as u32, note_type);
+        }
+        let rules = item_packs(&symbols, &defs).unwrap();
+        assert_eq!(rules.len(), 4);
+        for index in 0..4 {
+            let rule = rules[&(100 + index)];
+            assert_eq!(
+                (rule.output, rule.count, rule.noted),
+                (200 + index, 100, true)
+            );
+        }
+        assert_ne!(rules[&100].output, symbols["plantpot_empty"]);
+        defs.items.get_mut(&300).unwrap().cert.link = 999;
+        assert!(item_packs(&symbols, &defs).is_err());
+    }
     #[test]
     fn rune_profiles_resolve_symbols_and_reject_malformed_outputs() {
         let mut symbols = Symbols::new();
