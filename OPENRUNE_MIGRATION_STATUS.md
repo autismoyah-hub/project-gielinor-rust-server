@@ -406,3 +406,66 @@ Native grinding-001 built1.45s, sourceA526B3746D8324640112519FEEF0C92D8E1CD913E7
 - `work/processing-phase-full-tests-001.log` SHA256 `79fba2b20a8951d68798ebaab98f915c1ece1eeb6eb47706d61d24db78293b36`
 - `work/processing-phase-server-build-001.log` SHA256 `c85db4fbd9e0666bbe31162651b29f58ec8aed02d4e3d2e326f7a2745dcd4e55`
 - `work/openrune-processing-phase-001-server-build.json` SHA256 `5534ca550669598b948598a899fa344bdd21b7077084f5490154526d3beb63a1`
+
+## Ordinary grinding native routes and persistence (2026-10-16 UTC)
+
+Implementation5417d4685cf211cdb3992ca13daa8f6129895eb7 pushed with matching remote SHA; issue12 comment6210616377 records the phase correction. Immutable archiveB1DC825DE02F34E540EE380C2072383A797D8379785BD69928F43446D8D1AC7F and grinding-001 driver, matching openrune-grinding-login-control-001. Dedicated member entitlement1 attested read-only before and after each gameplay/relogin run. No account entitlement changed during acceptance.
+
+PASS native generated interface-target opcode27 for knife946/chocolate1973 and pestle233/unicorn237 in the first fixture, then pestle233/chocolate1973 and pestle233/unicorn237 in the second fixture. Each selected input is followed by two same-input repeats. Three chocolate dust1975 and three unicorn dust235 replace exact ingredient slots2..7; retained knife/pestle slots0/1 and1000coins; XP and unrelated exported gameplay conserved. Authoritative traces prove immediate0, second+2, later+3, independently of client display tick numbers. Both native same-save checks reopen exactly their predecessor database/export state and produce zero new grinding transitions. Fresh logout saves and clean unforced exit0 are required for every PASS.
+
+Scope remains selected three recipes only. Native nonmember refusal, membership revocation, full-inventory/stale/cancel/replay/multiplayer, expiry synchronization and animation appearance remain unverified; deterministic admission/revocation/cancellation tests are separate evidence. This member fixture does not prove the knife route under a nonmember account. Other crushing rows remain excluded; no issue closed.
+
+- `openrune-native-grinding-001` PASS; server16896 clean0, new logout2026-10-16 07:44:54, save observed10.578s.
+  - Successful clock pairs: 73->73, 73->75, 75->78, 81->81, 81->83, 83->86.
+  - `client.log` SHA256 `596aa85b10a0913f9837307cdd5c8c79b90211ced7050d991d758605677bb422`
+  - `server.log` SHA256 `4e8b66608f26a39f001458dec434731e430e31ab8fa670cd7b141928b161ba01`
+  - `initial-state.json` SHA256 `405256435e193b124f0e45ebdbcb694afe4019635ea323794d4d356c97671f0f`
+  - `final-state.json` SHA256 `8e768907c5f6597a4215a4ce8bd10a0f5e4b190b7c44efc1a9ad86d20ad043d3`
+  - `pack-assessment.json` SHA256 `8ffba707f6d77f9f85cb915965f75378c08f274eb176be3375748da62f31470b`
+  - `grinding-trace-assessment.json` SHA256 `e8c81071c88cbaac2d7d38cb6bc37a3e2fd56b22127531faaf1e8420cb95cbf7`
+  - `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+  - `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+  - `logout-observation.json` SHA256 `55b705cb62df2ab346f9edbb459022558bd2fadb44c61fe3e0e740afe10eaa9e`
+  - `shutdown.json` SHA256 `323ff37eef9952b4934ee3e2a54b336c599d1fb71918013c4678ad9ef0441694`
+  - `result.json` SHA256 `e3f1839c9a4735c2553fc3abb6c52f9e7a7c874dcc0fcff51723f521752b9606`
+  - `pack-run.json` SHA256 `4b7aaf108840e84634ca4c81e0743ad337e6216e9dba86d27723d890daa1186b`
+- `openrune-native-grinding-relogin-001` PASS; server19916 clean0, new logout2026-10-16 07:46:41, save observed10.828s.
+  - `client.log` SHA256 `85f93565b7e57fb6ecd7a32a36d3df12a5d06124b79ee2bc4679992d92e56e0f`
+  - `server.log` SHA256 `84e50e2a93ef6334ae4816f32480548347f4633be62118eb9f723652dfb196c5`
+  - `initial-state.json` SHA256 `8e768907c5f6597a4215a4ce8bd10a0f5e4b190b7c44efc1a9ad86d20ad043d3`
+  - `final-state.json` SHA256 `20c5429a052e045862fa11ad1683c59ff6a274f3677207382974bf20153bad07`
+  - `pack-assessment.json` SHA256 `5b686bca61ee787e64d5eab6b81bd0ed5aa4040272ba9a482688048becde4498`
+  - `grinding-trace-assessment.json` SHA256 `d1d113d1f5f6b46bc1ca733dd487f6d47b50c76b42f4587c9c278865dbe39af9`
+  - `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+  - `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+  - `logout-observation.json` SHA256 `95ae0ae33ee0bf9e74a0a22229824b72138ba5cf9dff836f32e39163295c3d61`
+  - `shutdown.json` SHA256 `274a3de9e97578f8b44cda930fa660bf37919db91a41289111475c78ef075fb5`
+  - `result.json` SHA256 `666110d27f6f2aae16ff9a8e127859fad077a0860183a47f6184a17da94cda4c`
+  - `pack-run.json` SHA256 `73fb22007c801e66f60f087a62f2acfb2c99c81534e56eeeea83b39d8f263624`
+- `openrune-native-grinding-pestle-001` PASS; server17440 clean0, new logout2026-10-16 07:48:23, save observed10.328s.
+  - Successful clock pairs: 69->69, 69->71, 71->74, 77->77, 77->79, 79->82.
+  - `client.log` SHA256 `b92874260a52b1646207c7972b5b06bab5b66c7e7508e3b341a8309eb5da3864`
+  - `server.log` SHA256 `f9281b185bd65bcce9ede6bec61e44fa42e91b363e05b97842e17a9295b64c3c`
+  - `initial-state.json` SHA256 `405256435e193b124f0e45ebdbcb694afe4019635ea323794d4d356c97671f0f`
+  - `final-state.json` SHA256 `7a9e7987640d2cc99ec5009e9d0935fe8c3c1b2186983bc8fe2c30a9ca8fd08d`
+  - `pack-assessment.json` SHA256 `894d09dc4e049c62fa15515dc2520739e45f2399118aede65401d570f9d69945`
+  - `grinding-trace-assessment.json` SHA256 `cedea416f942c22670aa12bff33c4453187dc156ff6b065aecb745e7eee3e3c4`
+  - `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+  - `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+  - `logout-observation.json` SHA256 `7ecd72001c85990d5e7371b41fa14fe9c9d00874c720eb57b304b82b0978b966`
+  - `shutdown.json` SHA256 `84e10920116cf370b66c168c04e06c22605bde730f701c3e43e9215ddea0e481`
+  - `result.json` SHA256 `f545696acd4c587c5021d8743e3b4434698e584dfa34a344393c60b988d3c8c9`
+  - `pack-run.json` SHA256 `a9c413652291726c4278a3815ae59a9499c179d1616b46a8f36ed7cd12385973`
+- `openrune-grinding-pestle-relogin-001` PASS; server20428 clean0, new logout2026-10-16 07:50:05, save observed10.312s.
+  - `client.log` SHA256 `619e7739f0cc5a0ad3b358ac8a0e106734d6730aadd03593df6239907ef09b31`
+  - `server.log` SHA256 `f2c0731bb0397c9e46e883ea97a9e62b52e64602d2a7853272d29263700de0ea`
+  - `initial-state.json` SHA256 `7a9e7987640d2cc99ec5009e9d0935fe8c3c1b2186983bc8fe2c30a9ca8fd08d`
+  - `final-state.json` SHA256 `a4f55dabb892fcdc0cbc8a1341737a42bf03a1baea73cbfd9c23654f51a90499`
+  - `pack-assessment.json` SHA256 `0f8c0b745f8b05da1eb314334ef056632411ec46d58729c14e678dcc270fe034`
+  - `grinding-trace-assessment.json` SHA256 `d1d113d1f5f6b46bc1ca733dd487f6d47b50c76b42f4587c9c278865dbe39af9`
+  - `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+  - `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+  - `logout-observation.json` SHA256 `39b89a9f5f8235371a568eb70a4595e4a9ccf8f599774f44284239c816d73970`
+  - `shutdown.json` SHA256 `24afbedfc6a94f298e2bd22f822e9ac561710d57a2a1fbd3ecad4d47926b95ec`
+  - `result.json` SHA256 `507e0bb3ce608440648079694ac2b0d9fa0db68f81d30bd66ca08cd4390cb6fa`
+  - `pack-run.json` SHA256 `108ef5a31ba317ecf718d5f0763244b46309cab70fe17370eed35e21ca846cbd`
