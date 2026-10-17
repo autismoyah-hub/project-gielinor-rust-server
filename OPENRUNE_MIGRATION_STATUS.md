@@ -3107,3 +3107,14 @@ All listed runs require client exit0, fresh durable logout, clean owned exit0 an
 - `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
 - State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":500,"after":700},"3077":{"before":13100,"after":54900},"3079":{"before":266,"after":126},"65515":{"before":256,"after":372}}}`
 - Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Separate selected-profile two-tick commits; UI evidence and packet/display latency separate"}`
+
+## Compatible dose-upgrade extension: anti-venom and extended antifire (native pending)
+
+Added eight Wiki-backed recipes through the existing OpenRune-informed dose transaction/Make/scheduler. Anti-venom uses five Zulrah scales per input dose,30XP/dose,Herblore87; extended antifire uses one lava shard per input dose,27.5XP/dose,Herblore84. Both preserve one-to-four input doses, two-tick cadence, goggles and eligible chemistry. No new engine. These are explicitly Wiki-supported coverage extensions, not a claim that the inspected donor table contained correct matching rows.
+
+Independent decoding of18target definitions confirms symbol2antidragon means Extended antifire11951/11953/11955/11957. The donor row labelled super antifire instead uses lantadyme vial plus crushed bones and3dose2antidragon; that row is not silently accepted as correct. True super antifire and its learned Primula/DragonSlayerII gate remain separate. Candidate varbit6140 super_antifire_unlocked was found, but its writer/value semantics are not established and no gate is fabricated. Forgotten brew4has145XP versus36perdose for lower doses; it was not forced into a linear award formula.
+
+- Anti-venom: revision15287107, raw SHA256 `88b43f46bae4d94f7c6bf4e6bfb59a744715fb3df09b1918617a1462f1049395`.
+- Extended antifire: revision15185448, raw SHA256 `635b491098364af6cc80f8a80f75b2166aa860eec3635eda1b21362a4d6fa7e8`.
+
+compatible-upgrades-tests-attempt-001 PASS61server410world,1existing ignored; compile50.19s/world47.55s. Guard4030MiB,80.5percentcommit,0page-ins/s,2.6msdisk,45.0percentCPU;Cargo-j1. New transaction vectors prove five-per-dose exact debit, insufficient-stack atomic refusal without RNG/XP change, and one goggles draw retaining the entire requirement. Separate native suites have101synthetic corruption checks each; build/native/same-save acceptance pending. Existing divine and combat native binaries remain immutable and distinct.

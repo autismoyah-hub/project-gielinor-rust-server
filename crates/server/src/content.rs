@@ -2956,3 +2956,63 @@ mod combat_mixing_binding_tests {
         }
     }
 }
+
+pub fn antivenom_upgrades(objects:&Symbols,defs:&Definitions)->Result<Vec<gielinor_world::potion_upgrades::Recipe>,String> {
+    let mut ids=std::collections::BTreeSet::new();
+    let mut bind=|name:&str,stackable:bool,dose:Option<u8>|->Result<i32,String>{
+        let id=*objects.get(name).ok_or_else(||format!("Missing upgrade symbol {name}"))?;
+        let item=defs.items.get(&(id as u32)).ok_or_else(||format!("Missing upgrade definition {name}"))?;
+        if id<0 || !ids.insert(id) || item.stackable!=stackable || !item.members || item.cert.template!=0 || item.placeholder.template!=0 || item.dummy==1
+            || dose.is_some_and(|n|item.inventory_ops[0].as_deref()!=Some("Drink") || !item.name.ends_with(&format!("({n})"))) {
+            return Err(format!("Invalid upgrade definition {name}"));
+        }
+        Ok(id)
+    };
+    let secondary=bind("snakeboss_scale",true,None)?;
+    let mut recipes=Vec::new();
+    for doses in 1..=4 {
+        let base=bind(&format!("antidote++{doses}"),false,Some(doses))?;
+        let output=bind(&format!("antivenom{doses}"),false,Some(doses))?;
+        recipes.push(gielinor_world::potion_upgrades::Recipe{base,secondary,output,doses,secondary_per_dose:5,fine_xp_per_dose:300,level:87,ticks:2,allow_goggles:true});
+    }
+    Ok(recipes)
+}
+
+pub fn extended_antifire_upgrades(objects:&Symbols,defs:&Definitions)->Result<Vec<gielinor_world::potion_upgrades::Recipe>,String> {
+    let mut ids=std::collections::BTreeSet::new();
+    let mut bind=|name:&str,stackable:bool,dose:Option<u8>|->Result<i32,String>{
+        let id=*objects.get(name).ok_or_else(||format!("Missing upgrade symbol {name}"))?;
+        let item=defs.items.get(&(id as u32)).ok_or_else(||format!("Missing upgrade definition {name}"))?;
+        if id<0 || !ids.insert(id) || item.stackable!=stackable || !item.members || item.cert.template!=0 || item.placeholder.template!=0 || item.dummy==1
+            || dose.is_some_and(|n|item.inventory_ops[0].as_deref()!=Some("Drink") || !item.name.ends_with(&format!("({n})"))) {
+            return Err(format!("Invalid upgrade definition {name}"));
+        }
+        Ok(id)
+    };
+    let secondary=bind("lava_shard",true,None)?;
+    let mut recipes=Vec::new();
+    for doses in 1..=4 {
+        let base=bind(&format!("{doses}dose1antidragon"),false,Some(doses))?;
+        let output=bind(&format!("{doses}dose2antidragon"),false,Some(doses))?;
+        recipes.push(gielinor_world::potion_upgrades::Recipe{base,secondary,output,doses,secondary_per_dose:1,fine_xp_per_dose:275,level:84,ticks:2,allow_goggles:true});
+    }
+    Ok(recipes)
+}
+
+#[cfg(test)]
+mod compatible_upgrade_binding_tests {
+    use super::*;
+    #[test]
+    fn antivenom_five_scales_per_dose_and_extended_antifire_fractional_xp() {
+        let mut symbols=Symbols::new();let mut defs=Definitions{inventories:Default::default(),locations:Default::default(),npcs:Default::default(),items:Default::default(),varbits:Default::default(),varps:Default::default(),stats:Default::default()};
+        for (symbol,id) in [("snakeboss_scale",12934),("lava_shard",11994)] {let mut v=gielinor_cache::definitions::ItemType::decode(&[16,0]).unwrap();v.stackable=true;defs.items.insert(id,v);symbols.insert(symbol.into(),id as i32);}
+        for n in 1..=4 {for (symbol,id,name) in [(format!("antidote++{n}"),5960-2*n,"Antidote++"),(format!("antivenom{n}"),12913-2*n,"Anti-venom"),(format!("{n}dose1antidragon"),2460-2*n,"Antifire potion"),(format!("{n}dose2antidragon"),11959-2*n,"Extended antifire")] {
+            let mut v=gielinor_cache::definitions::ItemType::decode(&[16,0]).unwrap();v.name=format!("{name}({n})");v.inventory_ops[0]=Some("Drink".into());defs.items.insert(id as u32,v);symbols.insert(symbol,id);
+        }}
+        for (family,cost,xp,level,secondary) in [(antivenom_upgrades(&symbols,&defs).unwrap(),5,300,87,12934),(extended_antifire_upgrades(&symbols,&defs).unwrap(),1,275,84,11994)] {
+            assert_eq!(family.len(),4);for (i,r) in family.iter().enumerate(){assert_eq!((r.doses,r.secondary,r.secondary_per_dose,r.fine_xp_per_dose,r.level,r.ticks,r.allow_goggles),((i+1) as u8,secondary,cost,xp,level,2,true));}
+        }
+        defs.items.get_mut(&12934).unwrap().stackable=false;assert!(antivenom_upgrades(&symbols,&defs).is_err());
+        defs.items.get_mut(&11953).unwrap().inventory_ops[0]=None;assert!(extended_antifire_upgrades(&symbols,&defs).is_err());
+    }
+}

@@ -315,6 +315,20 @@ mod tests {
             self.value
         }
     }
+
+    #[test]
+    fn five_secondaries_per_dose_are_atomic_and_goggles_save_whole_requirement() {
+        for doses in 1..=4 {for goggles in [false,true] {
+            let (mut job,mut inv,catalog,mut stats)=fixture(doses,false);job.recipe.secondary_per_dose=5;job.recipe.fine_xp_per_dose=300;
+            let required=i32::from(doses)*5;inv.restore_slot(1,Some(Item{id:101,count:required-1,vars:0})).unwrap();
+            let before=inv.clone();let fine=stats.fine_xp(15);let mut rng=Draw{value:0,calls:0};
+            assert_eq!(job.complete(&mut inv,&catalog,&mut stats,true,true,500,goggles,&mut rng).0,Outcome::Stale);assert_eq!(inv,before);assert_eq!(stats.fine_xp(15),fine);assert_eq!(rng.calls,0);
+            inv.restore_slot(1,Some(Item{id:101,count:required,vars:0})).unwrap();
+            let (result,saved)=job.complete(&mut inv,&catalog,&mut stats,true,true,500,goggles,&mut rng);assert!(matches!(result,Outcome::Made(_)));assert_eq!(saved,goggles);assert_eq!(rng.calls,usize::from(goggles));assert_eq!(stats.fine_xp(15),fine+i32::from(doses)*1500);
+            assert_eq!(inv.get(1).map(|i|i.count).unwrap_or(0),if goggles{required}else{0});assert_eq!(inv.get(0).unwrap().id,102);
+        }}
+    }
+
     fn fixture(doses: u8, reverse: bool) -> (Job, Inventory, Catalog, Stats) {
         let job = Job {
             recipe: Recipe {
