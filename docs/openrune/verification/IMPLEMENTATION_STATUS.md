@@ -11,3 +11,9 @@ Current throughput:17 contracts backfilled;0 new gameplay units in the initial m
 No PROVING GROUND defects have been received in this resumed session. Existing broad GitHub issues remain open. Independent findings are triaged using the correction policy in README.md.
 
 Next: publish queue/schema/validator, continue dependency-aware eligible gameplay implementation with bounded checks, append exact-SHA contracts, and continue reconciling older implemented batches and unassessed inventory. Learned super-antifire/barbarian gates, alchemist storage, automatic cleaning timing, acquisition and drinking behavior remain unresolved where documented; those gaps do not block unrelated implementation.
+
+## Implementation checkpoint OR-MIG-0018
+
+Source71289e622cdfac55d5f11e1c857f325929ebff3f published: selected-slot atomic potion consumption is reachable through existing held Drink/Empty -> Action::DrinkSlot -> consume_slot. Bounded3server38world potion-filtered testsPASS; legacy reference API/tests retained. Independent V0-V4 acceptance queued; no new native driver built.
+
+Current throughput:17historical contracts backfilled plus1new shared gameplay implementation;18queue units. Inventory now8partially contracted eligible source files/tables,656configuration records,2844not-yet-assessed. Full source/module reconciliation and earlier-batch backfill remain outstanding. No PROVING GROUND findings received. Continue next eligible implementation without waiting for acceptance.
