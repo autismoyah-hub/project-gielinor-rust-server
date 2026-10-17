@@ -1,3 +1,7 @@
+## Current sanctuary combined lifecycle checkpoint
+
+Production runtime sourceaedd586 /6D39C747D63296C3 unchanged by evidence parentf9a7249ae9c8354e448984786795a796002dad25. Clean fresh native28 and headless29 first clears, exact normal reconnects and fresh-process-verified connected-session crash/restart pass. Actual stored Bankitem survives normal reconnect and crash, then ordinary withdrawal restores exact original pack; both final saves/banks zero read-only verified. Original closed-display precheck and unavailable first withdrawal diagnostics retained, independent corrected checks pass. Clientff9cef17/11patch/exacttree48e96da6f47ac9ef9a3aece11001139883e3dd9e unchanged; no client push. Fresh read-only agent2/openrune-content521e2e047071a7e7d481ab458829bb88a57b76e2 and agent2/workspace-readiness-20261015377b797848c7b87d63fe7cdd690c09b2baf3a6af confirmed; no fetch/merge/workspace mutation. V12 integration constraint remains. See SANCTUARY_FIRST_CLEAR_AND_LIFECYCLE_20261017.json.
+
 ## Current6D39 native firstclear checkpoint
 
 Sourceaedd586 production unchanged; this checkpoint adds evidence only. Clean fresh native28 full route838.19s and ordinary reconnect pass. Native56currentfloorviews and current service/phase/reward views inspected. Independent quiet native27/fresh native28 Warden pairing passes within0.0971s. Current headless29 full run and crash recovery remain pending. Client11patch source/tree unchanged; no client push or Agent2 mutation. See NATIVE_SANCTUARY_FIRST_CLEAR_20261017.json.

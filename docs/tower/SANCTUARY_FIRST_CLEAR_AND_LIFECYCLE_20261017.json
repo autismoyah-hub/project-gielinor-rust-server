@@ -1,0 +1,783 @@
+{
+  "runtime_source": "aedd586 (f9a7249 and this checkpoint change evidence only)",
+  "runtime_sha256": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964",
+  "scope": "Combined guarded sanctuary Bank, six supported service-alcove returns, genuine dressed-stone terrain, prior hall/headrace/fortress and all eight personal transformations. Both clean fresh firstclears, ordinary reconnects and an independently verified committed-state server crash/restart pass.",
+  "native": {
+    "clean_first_clear": {
+      "accepted": true,
+      "source": "f633939 + four genuine dressed-stone sanctuary zones; 6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964 server",
+      "method": "continuous normal-action native fresh first clear; real preparation/rescue; not human pacing guarantee",
+      "elapsed_seconds": 838.19,
+      "steps": [
+        {
+          "step": "services.py",
+          "arguments": [
+            "--onboard",
+            "--gate-check",
+            "--order",
+            "workshop-first",
+            "--scene-checks",
+            "--landmarks",
+            "8",
+            "--coolant-lesson",
+            "--native-frames"
+          ],
+          "seconds": 332.49,
+          "exit_code": 0
+        },
+        {
+          "step": "recovery.py",
+          "arguments": [],
+          "seconds": 40.95,
+          "exit_code": 0
+        },
+        {
+          "step": "guardian.py",
+          "arguments": [
+            "imp",
+            "--style",
+            "accurate",
+            "--native-frames",
+            "--label",
+            "first-sanctuary"
+          ],
+          "seconds": 129.07,
+          "exit_code": 0
+        },
+        {
+          "step": "guardian.py",
+          "arguments": [
+            "warden",
+            "--style",
+            "accurate",
+            "--require-coolant",
+            "--native-frames",
+            "--timeout",
+            "600",
+            "--label",
+            "first-sanctuary"
+          ],
+          "seconds": 274.2,
+          "exit_code": 0
+        },
+        {
+          "step": "restoration.py",
+          "arguments": [
+            "--label",
+            "victory",
+            "--expected",
+            "18526,18511,16811,16811,16810,18525,18525,18525",
+            "--native-frames"
+          ],
+          "seconds": 3.8,
+          "exit_code": 0
+        },
+        {
+          "step": "claim.py",
+          "arguments": [
+            "--full-pack",
+            "--native-frames"
+          ],
+          "seconds": 45.51,
+          "exit_code": 0
+        },
+        {
+          "step": "exit_return.py",
+          "arguments": [],
+          "seconds": 12.15,
+          "exit_code": 0
+        }
+      ]
+    },
+    "detailed_native_receipt": "NATIVE_SANCTUARY_FIRST_CLEAR_20261017.json",
+    "coins": 500,
+    "beer": 1,
+    "fresh_claim_reply_uids": [
+      82,
+      83,
+      84
+    ]
+  },
+  "headless": {
+    "clean_first_clear": {
+      "accepted": true,
+      "source": "f633939 + four genuine dressed-stone sanctuary zones; 6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964 server",
+      "mode": "headless",
+      "elapsed_seconds_including_native_wait": 793.15,
+      "steps": [
+        {
+          "step": "services.py",
+          "arguments": [
+            "--onboard",
+            "--gate-check",
+            "--order",
+            "kitchen-first",
+            "--scene-checks",
+            "--landmarks",
+            "8",
+            "--coolant-lesson"
+          ],
+          "seconds": 265.08,
+          "exit_code": 0
+        },
+        {
+          "step": "recovery.py",
+          "arguments": [],
+          "seconds": 39.54,
+          "exit_code": 0
+        },
+        {
+          "step": "guardian.py",
+          "arguments": [
+            "imp",
+            "--style",
+            "accurate",
+            "--label",
+            "first-sanctuary"
+          ],
+          "seconds": 104.17,
+          "exit_code": 0
+        },
+        {
+          "step": "guardian.py",
+          "arguments": [
+            "warden",
+            "--style",
+            "accurate",
+            "--require-coolant",
+            "--timeout",
+            "600",
+            "--label",
+            "first-sanctuary"
+          ],
+          "seconds": 327.56,
+          "exit_code": 0
+        },
+        {
+          "step": "restoration.py",
+          "arguments": [
+            "--label",
+            "victory",
+            "--expected",
+            "18526,18511,16811,16811,16810,18525,18525,18525"
+          ],
+          "seconds": 0.83,
+          "exit_code": 0
+        },
+        {
+          "step": "claim.py",
+          "arguments": [
+            "--full-pack"
+          ],
+          "seconds": 44.42,
+          "exit_code": 0
+        },
+        {
+          "step": "exit_return.py",
+          "arguments": [],
+          "seconds": 11.53,
+          "exit_code": 0
+        }
+      ]
+    },
+    "automated_elapsed_seconds": 793.15,
+    "active_step_seconds": 793.13,
+    "qualification": "Independent complete kitchen-first run launched after the native run succeeded; no native wait within its active route, no reset/admin grants/save edits/continuation from failure. Headless observation sequences are not screenshots.",
+    "coins": 500,
+    "beer": 1,
+    "fresh_claim_reply_uids": [
+      82,
+      83,
+      84
+    ],
+    "coolant_ack_uids": [
+      73
+    ],
+    "phases_seen": [
+      2,
+      3
+    ],
+    "native_frames_claimed": false
+  },
+  "lifecycle": {
+    "native": {
+      "relogin": {
+        "accepted": true,
+        "checks": [
+          "exact firstpaid item slots/equipment/all25XP/journal",
+          "fresh UID duplicate reply pays zero",
+          "8 quiet landmarks",
+          "3 headrace walls/pipe absence",
+          "12 hall rails and open cross bays/normal movement",
+          "2 real feeding troughs/low entrance and rear support"
+        ],
+        "fresh_duplicate_reply_uids": [
+          1
+        ],
+        "static_scene": [
+          {
+            "id": "5575",
+            "plane": "0",
+            "x": "10408",
+            "z": "99",
+            "shape": "10",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "5575",
+            "plane": "0",
+            "x": "10440",
+            "z": "99",
+            "shape": "10",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "17097",
+            "plane": "0",
+            "x": "10430",
+            "z": "123",
+            "shape": "10",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "7017",
+            "plane": "0",
+            "x": "10430",
+            "z": "126",
+            "shape": "10",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          }
+        ],
+        "six_sanctuary_edges_and_normal_Bank_Pray_routes": true
+      },
+      "crash": {
+        "accepted": true,
+        "checks": [
+          "exact firstpaid item slots/equipment/all25XP/journal",
+          "fresh UID duplicate reply pays zero",
+          "8 quiet landmarks",
+          "3 headrace walls/pipe absence",
+          "12 hall rails and open cross bays/normal movement",
+          "2 real feeding troughs/low entrance and rear support"
+        ],
+        "fresh_duplicate_reply_uids": [
+          1
+        ],
+        "static_scene": [
+          {
+            "id": "5575",
+            "plane": "0",
+            "x": "10408",
+            "z": "99",
+            "shape": "10",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "5575",
+            "plane": "0",
+            "x": "10440",
+            "z": "99",
+            "shape": "10",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "17097",
+            "plane": "0",
+            "x": "10430",
+            "z": "123",
+            "shape": "10",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "7017",
+            "plane": "0",
+            "x": "10430",
+            "z": "126",
+            "shape": "10",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          }
+        ],
+        "six_sanctuary_edges_and_normal_Bank_Pray_routes": true,
+        "observed_actual_open_bank": [
+          {
+            "inventory": 95,
+            "slot": 0,
+            "item": 1351,
+            "count": 1
+          }
+        ]
+      }
+    },
+    "headless": {
+      "relogin": {
+        "accepted": true,
+        "checks": [
+          "exact firstpaid item slots/equipment/all25XP/journal",
+          "fresh UID duplicate reply pays zero",
+          "8 quiet landmarks",
+          "3 headrace walls/pipe absence",
+          "12 hall rails and open cross bays/normal movement",
+          "2 real feeding troughs/low entrance and rear support"
+        ],
+        "fresh_duplicate_reply_uids": [
+          1
+        ],
+        "static_scene": [
+          {
+            "id": "5575",
+            "plane": "0",
+            "x": "10408",
+            "z": "99",
+            "shape": "10",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "5575",
+            "plane": "0",
+            "x": "10440",
+            "z": "99",
+            "shape": "10",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "17097",
+            "plane": "0",
+            "x": "10430",
+            "z": "123",
+            "shape": "10",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "7017",
+            "plane": "0",
+            "x": "10430",
+            "z": "126",
+            "shape": "10",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          }
+        ],
+        "six_sanctuary_edges_and_normal_Bank_Pray_routes": true
+      },
+      "crash": {
+        "accepted": true,
+        "checks": [
+          "exact firstpaid item slots/equipment/all25XP/journal",
+          "fresh UID duplicate reply pays zero",
+          "8 quiet landmarks",
+          "3 headrace walls/pipe absence",
+          "12 hall rails and open cross bays/normal movement",
+          "2 real feeding troughs/low entrance and rear support"
+        ],
+        "fresh_duplicate_reply_uids": [
+          1
+        ],
+        "static_scene": [
+          {
+            "id": "5575",
+            "plane": "0",
+            "x": "10408",
+            "z": "99",
+            "shape": "10",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "5575",
+            "plane": "0",
+            "x": "10440",
+            "z": "99",
+            "shape": "10",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "17097",
+            "plane": "0",
+            "x": "10430",
+            "z": "123",
+            "shape": "10",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "7017",
+            "plane": "0",
+            "x": "10430",
+            "z": "126",
+            "shape": "10",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          }
+        ],
+        "six_sanctuary_edges_and_normal_Bank_Pray_routes": true,
+        "observed_actual_open_bank": []
+      }
+    }
+  },
+  "crash_process_proof": {
+    "verified_test_connections": [
+      {
+        "pid": 10008,
+        "path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\client-runs\\native-7BFA8172AB31E362.exe",
+        "name": "native-7BFA8172AB31E362.exe"
+      },
+      {
+        "pid": 16772,
+        "path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\client-runs\\headless-0D6677D450C47955.exe",
+        "name": "headless-0D6677D450C47955.exe"
+      }
+    ],
+    "phase": "After accepted ordinary reconnects; deliberate connected-session crash, no in-flight transaction claim",
+    "path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\server-runs\\gielinor-server-6D39C747D63296C3.exe",
+    "server_pid": 11836,
+    "endpoint": "127.0.0.1:63215",
+    "sha256": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964"
+  },
+  "identical_restart_proof": {
+    "sha256": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964",
+    "independently_verified_after_restart": true,
+    "pid": 20924,
+    "endpoint": "127.0.0.1:63215",
+    "path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\server-runs\\gielinor-server-6D39C747D63296C3.exe"
+  },
+  "committed_before_crash": {
+    "phase": "After independently accepted fresh firstclears and normal reconnects. Native28 additionally stores one actual axe and reconnects normally before this committed-state crash; no interrupted in-flight transaction claim.",
+    "read_only_database": true,
+    "runs": [
+      [
+        "tower28",
+        1,
+        7,
+        11,
+        1
+      ],
+      [
+        "tower29",
+        1,
+        7,
+        11,
+        1
+      ]
+    ],
+    "rewards": [
+      {
+        "character": "tower28",
+        "coins": 500,
+        "beer": 1
+      },
+      {
+        "character": "tower29",
+        "coins": 500,
+        "beer": 1
+      }
+    ],
+    "bank_rows": [
+      {
+        "character": "tower28",
+        "rows": [
+          [
+            95,
+            0,
+            1351,
+            1
+          ]
+        ]
+      },
+      {
+        "character": "tower29",
+        "rows": []
+      }
+    ]
+  },
+  "bank_durability": {
+    "actual_normal_deposit": true,
+    "actual_bank_item": {
+      "item": 1351,
+      "count": 1,
+      "bank_slot": 0
+    },
+    "ordinary_relogin_bank": [
+      {
+        "inventory": 95,
+        "slot": 0,
+        "item": 1351,
+        "count": 1
+      }
+    ],
+    "read_only_database_bank": [
+      [
+        95,
+        0,
+        1351,
+        1
+      ]
+    ],
+    "survives_current_verified_crash": true,
+    "normal_withdrawal_restores_exact_original_full_paid_pack_equipment_all25XP_journal": true,
+    "bank_after_withdraw_while_UI_open": [],
+    "final_normal_saves": {
+      "accepted": true,
+      "read_only_database": true,
+      "both_normal_closed_after_current_crash": true,
+      "rows": [
+        {
+          "character": "tower28",
+          "positive_bank_items": [],
+          "rewards": {
+            "995": 500,
+            "1917": 1
+          },
+          "run": [
+            1,
+            7,
+            11,
+            1
+          ]
+        },
+        {
+          "character": "tower29",
+          "positive_bank_items": [],
+          "rewards": {
+            "995": 500,
+            "1917": 1
+          },
+          "run": [
+            1,
+            7,
+            11,
+            1
+          ]
+        }
+      ]
+    },
+    "scope": "Committed stored item survives normal logout/relogin and then a server crash. No interrupted in-flight bank/reward transaction claim.",
+    "actual_native_frames": [
+      {
+        "label": "normal_deposit",
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary28-relogin\\frame-455.bmp",
+        "sha256": "7931d87ba9d225e7593ecfd2a082c28d90939c461441a8928a75599de94758a2",
+        "inspected": true
+      },
+      {
+        "label": "stored_after_normal_relogin",
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary28-bank-stored\\frame-92.bmp",
+        "sha256": "ba950ba1828a268d6a344812bc67ba358cb0449b426d7fc3afc7d5a007d6e7c6",
+        "inspected": true
+      },
+      {
+        "label": "stored_after_crash",
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary28-crash\\frame-418.bmp",
+        "sha256": "fdd7f62511b9a57513292719bd1a4c2f13884572c40cb039cffe93f62d4d4a7f",
+        "inspected": true
+      },
+      {
+        "label": "withdrawn_original_pack_restored",
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary28-crash\\frame-571.bmp",
+        "sha256": "cd1b3ee48dbcca47d6d8e1e52e8902f3a0b72fd5fdccf27305af3b21789abf13",
+        "inspected": true
+      }
+    ]
+  },
+  "retained_new_diagnostics": [
+    {
+      "accepted": false,
+      "server_crashed": false,
+      "failure": "Read-only precheck compared client bank95 while its normal UI subscription was closed to the actual stored item. Assertion failed before any crash command.",
+      "observed_closed_client_export": [],
+      "read_only_database_bank": [
+        [
+          95,
+          0,
+          1351,
+          1
+        ]
+      ],
+      "primary_source": "rust-client-reference/src/inventory.rs:31 Update::Stop removes only the client-side container. Existing UI close ends bank transmission.",
+      "correction": "Open the actual bank and wait for its normal subscription before reading bank95; no gameplay, storage or adapter source changes. Original failed helper preserved privately."
+    },
+    {
+      "accepted": false,
+      "crash_recovery_itself_accepted": true,
+      "failure": "First normal interface operation returned interface operation unavailable; original controller tolerated that status and subsequently timed out waiting for restored pack.",
+      "actual_operation": {
+        "runtime_id": 4294845578,
+        "operation": 1,
+        "status": "interface operation unavailable"
+      },
+      "after_failed_attempt": {
+        "bank95": [
+          {
+            "inventory": 95,
+            "slot": 0,
+            "item": 1351,
+            "count": 1
+          }
+        ],
+        "axe_in_pack": false,
+        "coins": 500,
+        "beer": 1
+      },
+      "correction": "Separate retry waits three actual ticks after the new bank-open observation, refreshes visible metadata, and requires accepted dispatch before waiting for exact pack. No bank/client/storage/gameplay source change. Original failed log/controller retained."
+    }
+  ],
+  "observation_correction": "Closing the normal bank sends inventory Stop; client inventory.rs removes container95. An empty closed-window export is not bank-balance evidence. Corrected pre/postcrash checks inspect actual open Bank and independently read committed DB. First precheck refused to crash; first unavailable normal withdraw moved no item; separate actual-tick/accepted-dispatch retry passed. No gameplay/storage/renderer/adapter-policy change.",
+  "geometry_suites": {
+    "cache": 24,
+    "server": 57,
+    "world": 410,
+    "world_existing_ignored": 2,
+    "reachable_tiles": 2098,
+    "legal_lethal_pattern_escape_cases": 1512
+  },
+  "native_review": {
+    "all56_current_floor_frames_inspected": true,
+    "service4_Imp4_Warden6_pendingreward_fullpack_firstpayment_normalrelogin_inspected": true,
+    "postcrash12_sanctuary_views_inspected": true,
+    "postcrash_paid_restoration_frame_inspected": true,
+    "frames": [
+      {
+        "area": "sanctuary threshold",
+        "yaw": 0,
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary28-crash\\frame-608.bmp",
+        "sha256": "fe43e3ec9a85d47e94ad68e466db066c13e030cd66c1b4ed06edf972a6759d8d",
+        "inspected": true
+      },
+      {
+        "area": "sanctuary threshold",
+        "yaw": 4096,
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary28-crash\\frame-610.bmp",
+        "sha256": "64df9dd6c952ff051810d30d8ae22f8f9fd4eb0486be680505ac89d4209f58f0",
+        "inspected": true
+      },
+      {
+        "area": "sanctuary threshold",
+        "yaw": 8192,
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary28-crash\\frame-612.bmp",
+        "sha256": "39a2eed7f142b87231297b3cc512d0ef10cc182511f0ff01f8c0d6b1dee649e0",
+        "inspected": true
+      },
+      {
+        "area": "sanctuary threshold",
+        "yaw": 12288,
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary28-crash\\frame-614.bmp",
+        "sha256": "94075df9ecbce8ca67e6c1be1c80cd5c2440a2bf5def32cfc313ae59b3460902",
+        "inspected": true
+      },
+      {
+        "area": "sanctuary hearth",
+        "yaw": 0,
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary28-crash\\frame-635.bmp",
+        "sha256": "a25d6a7259b083d5e6156ee67e6e9394d28a5226876441ddea2d0feb7830565a",
+        "inspected": true
+      },
+      {
+        "area": "sanctuary hearth",
+        "yaw": 4096,
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary28-crash\\frame-637.bmp",
+        "sha256": "f21ad43c6db813efba9873f3ede4d777113d377a0e8e11061a605a55f3739562",
+        "inspected": true
+      },
+      {
+        "area": "sanctuary hearth",
+        "yaw": 8192,
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary28-crash\\frame-639.bmp",
+        "sha256": "f649387873bffd8af4b5002a7b426eafd3053cd3bd5508c954ba304aca026323",
+        "inspected": true
+      },
+      {
+        "area": "sanctuary hearth",
+        "yaw": 12288,
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary28-crash\\frame-641.bmp",
+        "sha256": "04831e08bb4a579054360a02640d3de258c162c367851a166fadbeaf1ffaa15d",
+        "inspected": true
+      },
+      {
+        "area": "eastern arrival",
+        "yaw": 0,
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary28-crash\\frame-669.bmp",
+        "sha256": "1386fa2dc5e5b490bba09108db961836b067daa0f933e6744b25e48d5a601a90",
+        "inspected": true
+      },
+      {
+        "area": "eastern arrival",
+        "yaw": 4096,
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary28-crash\\frame-671.bmp",
+        "sha256": "14d0e5daf3d045bc7bc23708a46e62073a2d08b775483b83b57ca88041b74dd2",
+        "inspected": true
+      },
+      {
+        "area": "eastern arrival",
+        "yaw": 8192,
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary28-crash\\frame-673.bmp",
+        "sha256": "f37e4129e3faa38e03fecc030a407a54c2c0c7688e4588ae4829dc43c4dca173",
+        "inspected": true
+      },
+      {
+        "area": "eastern arrival",
+        "yaw": 12288,
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary28-crash\\frame-675.bmp",
+        "sha256": "fed0bf035e64ba10d6545a149dac27aadfba4e452a83f7a732667f4ae827c94c",
+        "inspected": true
+      }
+    ],
+    "gallery": "evidence/native-sanctuary27-complete-gallery/gallery.html",
+    "journey": "evidence/native-sanctuary28-fresh/journey.html",
+    "scope": "Full56gallery uses current6D39 rendering with an earned predecessor character27. Fresh native28 actual service/combat/reward journey is separate. Neither is synthetic gameplay evidence.",
+    "postcrash_paid_frame": {
+      "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary28-crash\\frame-31.bmp",
+      "sha256": "6ee868d1133a29062afc4bdad678cdd7b908cb3d801637c7e665db9ec9cf2e56",
+      "inspected": true
+    }
+  },
+  "paired_quiet_observer": "NATIVE_SANCTUARY_FIRST_CLEAR_20261017.json pins four accepted actual native27/native28 Warden pairs within0.0971s, actual peer avatars visible; ordinary earned walk into owner footprint succeeds.",
+  "latest_read_only_upstream_refs": {
+    "refs/heads/agent2/openrune-content": "521e2e047071a7e7d481ab458829bb88a57b76e2",
+    "refs/heads/agent2/workspace-readiness-20261015": "377b797848c7b87d63fe7cdd690c09b2baf3a6af",
+    "mutation_or_merge": false,
+    "V12_migration_reconciliation": "pending separate integration"
+  },
+  "client_validation": {
+    "commit": "ff9cef17fd1ce3ec2ebf8d1181fee31411999c4c",
+    "patches": 11,
+    "tree": "48e96da6f47ac9ef9a3aece11001139883e3dd9e",
+    "native_sha256": "7BFA8172AB31E362798F71D4BA34BE2B6FAD08A8EEBE330775F1FC846EB29165",
+    "headless_sha256": "0D6677D450C479551EEAC3AD21E708E334054AE95A77BE9E875E5D940A9AAEF5",
+    "remote_push": false
+  },
+  "current_runtime_final_state": "Both test clients closed normally, actual process exits verified, final paid states and zero positive bank items read-only corroborated; server drained normally after identical restart validation.",
+  "user_artistic_acceptance": "pending",
+  "human_first_play_pacing": "Unmeasured; automated838.19native and793.15headless seconds do not establish human20-30minutes.",
+  "overall_complete": false,
+  "next_authored_work": [
+    "Overgrown structural grove/cloister candidate is private only, not applied to this source.",
+    "Further arena perimeter environmental storytelling and whole-floor artistic review."
+  ]
+}

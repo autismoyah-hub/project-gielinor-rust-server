@@ -1,5 +1,5 @@
 {
-  "status": "Current6D39 clean native28 full7steps838.19s/first500beer/fullpack/dupack/portals/normalreloginPASS; native56+combat/currentquietpairinspected. Independentheadless29fullRUNNING/currentcrashpending/artisticapproval-humanpacingpending",
+  "status": "Current6D39 both cleanfreshfirstclears838.19native/793.15headless, first500beer/fullpack/dupack/portals/exactnormalrelogin/verifiedcurrentcrash PASS. ActualstoredBankitem survivesnormalreloginandcrash; independentnormalwithdrawrestoresexactoriginalslots, finalDBbankszero. Native56combat12postviewsreviewed; retainedprecheck/firstwithdraw failures; furtherart/humanpacing/userapprovalpending",
   "scope": "Cinderworks Floor One on the isolated agent5/tower-development branch; upstream integration is a separate Agent 2 review",
   "server_gameplay_commit": "aedd5863dcf8cfb8803ac3730f4918449b4025a5",
   "client_baseline": "95eed88159b06cebea24559a814a5111b54a59cd",
@@ -64,15 +64,15 @@
   "integration": {
     "observed_agent2_ref": "521e2e047071a7e7d481ab458829bb88a57b76e2",
     "merged": false,
-    "migration_collision": "Tower V12 versus upstream V12 chemistry; append/renumber during integration"
+    "migration_collision": "Tower V12 versus upstream V12 chemistry; append/renumber during integration",
+    "latest_read_only_workspace_readiness_ref": "refs/heads/agent2/workspace-readiness-20261015",
+    "latest_read_only_workspace_readiness_sha": "377b797848c7b87d63fe7cdd690c09b2baf3a6af"
   },
   "protected_resources_published": false,
   "remaining_authored_floor_one_work": [
-    "Independent current headless29 fresh firstclear and normal reconnect",
-    "Current6D39 deliberate crash recovery",
-    "Further grove and arena-edge environmental storytelling",
-    "Realistic human first-play pacing measurement",
-    "Final user artistic acceptance"
+    "Further grove and arena perimeter environmental storytelling",
+    "Whole-floor artistic acceptance by user",
+    "Realistic human first-play pacing measurement"
   ],
   "client_patch_tree": "48e96da6f47ac9ef9a3aece11001139883e3dd9e",
   "baseline_publication": "34bb31d1b5a48449b3c960951ec43f93b4f17fd9",
@@ -3928,7 +3928,6 @@
         "normal_entry_exact": true,
         "items_equipment_all25XP_journal_preserved": true,
         "exact_portals": true,
-        "bank95_empty_after_service_checks": true,
         "checks": {
           "entry": {
             "actual6masonryrows": [
@@ -4152,14 +4151,15 @@
               18526
             ]
           }
-        }
+        },
+        "closed_bank_client_export_empty": true,
+        "bank_balance_observation_scope": "Closed-window export is not a bank balance. No items moved during these affected checks; actual open-bank and committed balance evidence is separately pinned in the later lifecycle receipt."
       },
       "headless": {
         "accepted": true,
         "normal_entry_exact": true,
         "items_equipment_all25XP_journal_preserved": true,
         "exact_portals": true,
-        "bank95_empty_after_service_checks": true,
         "checks": {
           "entry": {
             "actual6masonryrows": [
@@ -4385,7 +4385,9 @@
               18525
             ]
           }
-        }
+        },
+        "closed_bank_client_export_empty": true,
+        "bank_balance_observation_scope": "Closed-window export is not a bank balance. No items moved during these affected checks; actual open-bank and committed balance evidence is separately pinned in the later lifecycle receipt."
       }
     },
     "native_comparison": [
@@ -5501,6 +5503,21 @@
       "Further grove and arena-edge environmental storytelling",
       "Realistic human first-play pacing measurement",
       "Final user artistic acceptance"
-    ]
+    ],
+    "later_validation_receipt": "SANCTUARY_FIRST_CLEAR_AND_LIFECYCLE_20261017.json",
+    "scope_update": "The pending list records original native-only publication. Independent headless/crash/bank durability now pass in the later receipt; artistic acceptance and human pacing remain pending."
+  },
+  "sanctuary_first_clear_and_lifecycle": {
+    "receipt": "SANCTUARY_FIRST_CLEAR_AND_LIFECYCLE_20261017.json",
+    "runtime_source": "aedd586",
+    "binary": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964",
+    "both_clean_fresh_first_clears": true,
+    "both_exact_normal_relogin": true,
+    "both_current_crash_recovery": true,
+    "positive_bank_normal_relogin_crash_and_exact_withdraw": true,
+    "postcrash12_native_views_reviewed": true,
+    "original_precheck_and_withdraw_diagnostics_retained": true,
+    "overall_complete": false,
+    "postcrash_paid_frame_inspected": true
   }
 }

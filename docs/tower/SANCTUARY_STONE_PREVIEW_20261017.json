@@ -59,7 +59,6 @@
       "normal_entry_exact": true,
       "items_equipment_all25XP_journal_preserved": true,
       "exact_portals": true,
-      "bank95_empty_after_service_checks": true,
       "checks": {
         "entry": {
           "actual6masonryrows": [
@@ -283,14 +282,15 @@
             18526
           ]
         }
-      }
+      },
+      "closed_bank_client_export_empty": true,
+      "bank_balance_observation_scope": "Closed-window export is not a bank balance. No items moved during these affected checks; actual open-bank and committed balance evidence is separately pinned in the later lifecycle receipt."
     },
     "headless": {
       "accepted": true,
       "normal_entry_exact": true,
       "items_equipment_all25XP_journal_preserved": true,
       "exact_portals": true,
-      "bank95_empty_after_service_checks": true,
       "checks": {
         "entry": {
           "actual6masonryrows": [
@@ -516,7 +516,9 @@
             18525
           ]
         }
-      }
+      },
+      "closed_bank_client_export_empty": true,
+      "bank_balance_observation_scope": "Closed-window export is not a bank balance. No items moved during these affected checks; actual open-bank and committed balance evidence is separately pinned in the later lifecycle receipt."
     }
   },
   "native_comparison": [

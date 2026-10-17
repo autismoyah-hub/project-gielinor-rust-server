@@ -770,5 +770,7 @@
     "Further grove and arena-edge environmental storytelling",
     "Realistic human first-play pacing measurement",
     "Final user artistic acceptance"
-  ]
+  ],
+  "later_validation_receipt": "SANCTUARY_FIRST_CLEAR_AND_LIFECYCLE_20261017.json",
+  "scope_update": "The pending list records original native-only publication. Independent headless/crash/bank durability now pass in the later receipt; artistic acceptance and human pacing remain pending."
 }
