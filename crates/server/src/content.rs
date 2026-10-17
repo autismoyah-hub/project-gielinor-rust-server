@@ -3117,3 +3117,31 @@ mod nihil_grinding_binding_tests {
         defs.items.get_mut(&26231).unwrap().stackable=true;defs.items.get_mut(&26368).unwrap().members=false;assert!(nihil_grinding(&obj,&seq,&defs).is_err());
     }
 }
+
+/// Wiki Anti-venom+15243456 explicitly attests four-dose input/output and either Torstol.
+pub fn antivenom_plus_recipes(objects:&Symbols,defs:&Definitions)->Result<Vec<gielinor_world::finished_potions::Recipe>,String>{
+    let mut seen=std::collections::BTreeSet::new();
+    let mut bind=|symbol:&str,name:&str,drink:bool|->Result<i32,String>{
+        let id=*objects.get(symbol).ok_or_else(||format!("Missing Anti-venom+ symbol {symbol}"))?;
+        let item=defs.items.get(&(id as u32)).ok_or_else(||format!("Missing Anti-venom+ definition {symbol}"))?;
+        if id<0 || !seen.insert(id) || item.name!=name || item.stackable || !item.members || item.cert.template!=0 || item.placeholder.template!=0 || item.dummy==1 || (item.inventory_ops[0].as_deref()==Some("Drink"))!=drink || item.inventory_ops.iter().any(|op|op.as_deref()==Some("Clean")) {return Err(format!("Invalid Anti-venom+ definition {symbol}"));}
+        Ok(id)
+    };
+    let base=bind("antivenom4","Anti-venom(4)",true)?;
+    let output=bind("antivenom+4","Anti-venom+(4)",true)?;
+    let clean=bind("torstol","Torstol",false)?;let unfinished=bind("torstolvial","Torstol potion (unf)",false)?;
+    Ok([clean,unfinished].into_iter().map(|secondary|gielinor_world::finished_potions::Recipe{unfinished:base,secondary,output,level:94,boostable:true,base_fine_xp:1250}).collect())
+}
+#[cfg(test)]
+mod antivenom_plus_binding_tests {
+    use super::*;
+    #[test]
+    fn antivenom_plus_requires_four_doses_and_accepts_both_torstols() {
+        let mut symbols=Symbols::new();let mut defs=Definitions{inventories:Default::default(),locations:Default::default(),npcs:Default::default(),items:Default::default(),varbits:Default::default(),varps:Default::default(),stats:Default::default()};
+        for (symbol,id,name,drink) in [("antivenom4",12905,"Anti-venom(4)",true),("antivenom+4",12913,"Anti-venom+(4)",true),("torstol",269,"Torstol",false),("torstolvial",111,"Torstol potion (unf)",false)] {let mut v=gielinor_cache::definitions::ItemType::decode(&[16,0]).unwrap();v.name=name.into();if drink{v.inventory_ops[0]=Some("Drink".into());}defs.items.insert(id,v);symbols.insert(symbol.into(),id as i32);}
+        let recipes=antivenom_plus_recipes(&symbols,&defs).unwrap();assert_eq!(recipes.len(),2);
+        for (i,r) in recipes.iter().enumerate(){assert_eq!((r.unfinished,r.secondary,r.output,r.level,r.base_fine_xp),(12905,[269,111][i],12913,94,1250));}
+        defs.items.get_mut(&12905).unwrap().name="Anti-venom(3)".into();assert!(antivenom_plus_recipes(&symbols,&defs).is_err());
+        defs.items.get_mut(&12905).unwrap().name="Anti-venom(4)".into();defs.items.get_mut(&269).unwrap().inventory_ops[0]=Some("Clean".into());assert!(antivenom_plus_recipes(&symbols,&defs).is_err());
+    }
+}
