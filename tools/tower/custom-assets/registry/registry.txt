@@ -1,0 +1,4 @@
+TOWER_ASSET_PACKAGE 1
+model 1000000 archway.model 37239405
+object 65000 archway.object 262ed744
+object 65001 column.object 16d07d5b

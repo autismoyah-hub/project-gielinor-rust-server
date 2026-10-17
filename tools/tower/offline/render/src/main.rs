@@ -90,7 +90,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let corners = [(tx, tz), (tx + 1, tz), (tx, tz + 1), (tx + 1, tz + 1)]
         .map(|(cx, cz)| s.height(0, cx, cz));
     println!("OFFLINE pose ground vertices: {corners:?}; inspect slopes before choosing a playable approach");
-    let center = [(x - 24.0) * 128.0, -240.0, (z - 24.0) * 128.0];
+    let mut center = [(x - 24.0) * 128.0, -240.0, (z - 24.0) * 128.0];
     let yaw: f32 = a[6].parse::<f32>()? * std::f32::consts::TAU / 16384.0;
     let distance: f32 = a.get(7).map(|s| s.parse()).transpose()?.unwrap_or(1800.0);
     let preset = a.get(8).map(String::as_str).unwrap_or("detail");
@@ -98,8 +98,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         "detail" => (765, 503, 1300.0, 760.0),
         "overview" => (1600, 1200, 10000.0, 2000.0),
         "plan" => (1600, 1400, 12000.0, 2200.0),
+        "asset-plan" => (765, 503, 1800.0, 1100.0),
+        "asset-passage" => (765, 503, 80.0, 760.0),
         _ => return Err("Unknown camera preset".into()),
     };
+    if preset == "asset-passage" { center[1] -= 240.0; }
     let camera = Camera::look_at(
         [
             center[0] + yaw.sin() * distance,
@@ -113,7 +116,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     frame.draw(&camera, &mesh.triangles, &p, &textures);
     fs::write(&a[3], frame.raster()?.bmp()?)?;
     fs::write(format!("{}.camera.txt", a[3]), format!(
-        "OFFLINE ONLY\npreset={preset}\nobject_assembly={assembly}\ncanvas={width}x{height}\nlocal_target={x},{z}\ntarget_height=-240\nyaw_units={}\ndistance={distance}\nelevation={elevation}\nfocal={focal}\nscene={}\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n", a[6], a[2]))?;
+        "OFFLINE ONLY\npreset={preset}\nobject_assembly={assembly}\ncanvas={width}x{height}\nlocal_target={x},{z}\ntarget_height={}\nyaw_units={}\ndistance={distance}\nelevation={elevation}\nfocal={focal}\nscene={}\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n", center[1], a[6], a[2]))?;
     println!(
         "OFFLINE shell {} triangles; pose {x},{z} yaw {yaw}; actors/UI/runtime animations absent",
         mesh.triangles.len()

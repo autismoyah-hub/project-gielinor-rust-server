@@ -1,0 +1,31 @@
+{
+  "source_sha256": "7be3609e84a669d462740e759db55755924372b313945e9b66a06292d43a8203",
+  "model_sha256": "db5a638ea53a1b1fe54d91dd8fddfb15b5109ad7ddea0dcd0797da0b05ec305f",
+  "model_crc32": "37239405",
+  "vertices": 552,
+  "triangles": 1012,
+  "palette": [
+    5567,
+    6213,
+    7375,
+    37929
+  ],
+  "bounds_native": [
+    [
+      -255,
+      255
+    ],
+    [
+      -504,
+      0
+    ],
+    [
+      -64,
+      64
+    ]
+  ],
+  "encoding": "Legacy; flat per-face HSL; signed smart deltas",
+  "quantization": "nearest integer; 128 native units per tile",
+  "closed_consistent_winding": true,
+  "deterministic": true
+}

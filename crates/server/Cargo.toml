@@ -16,3 +16,7 @@ gielinor-cache = { path = "../cache" }
 [[example]]
 name = "custom_asset_account"
 path = "examples/custom_asset_account.rs"
+
+[[example]]
+name = "custom_asset_collision"
+path = "examples/custom_asset_collision.rs"

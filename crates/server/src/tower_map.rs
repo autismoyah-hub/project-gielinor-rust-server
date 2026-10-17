@@ -238,7 +238,7 @@ pub fn prepare(
     if std::env::var_os("TOWER_ASSET_PACKAGE").is_some() {
         // Experimental compound collision: open visual object plus ordinary
         // single-tile ground-location clipping underneath each stone column.
-        for (x,z,angle) in [(54,40,0),(60,44,1)] {
+        for (x,z,angle) in [(54,40,0),(60,38,1)] {
             shell.stamp_shaped(origin.translate(x,z,0).unwrap(),65000,10,angle,definitions)?;
             for (dx,dz) in if angle==0 { [(0,0),(3,0)] } else { [(0,0),(0,3)] } {
                 shell.stamp_shaped(origin.translate(x+dx,z+dz,0).unwrap(),65001,22,0,definitions)?;

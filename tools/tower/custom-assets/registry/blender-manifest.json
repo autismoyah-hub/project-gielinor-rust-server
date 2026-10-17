@@ -1,0 +1,61 @@
+{
+  "blender_version": "5.2.2 LTS",
+  "origin": "Fully original bpy geometry; no cache asset dependencies",
+  "units": "one Blender unit = one game tile = 128 native model units",
+  "bounds_blender_xyz": [
+    [
+      -1.9900000095367432,
+      1.9900000095367432
+    ],
+    [
+      -0.5,
+      0.5
+    ],
+    [
+      0.0,
+      3.938951253890991
+    ]
+  ],
+  "vertices_blender": 552,
+  "triangles_blender": 1012,
+  "materials": [
+    {
+      "name": "Cut stone",
+      "linear_rgba": [
+        0.4099999964237213,
+        0.36500000953674316,
+        0.2800000011920929,
+        1.0
+      ]
+    },
+    {
+      "name": "Quarried stone",
+      "linear_rgba": [
+        0.28999999165534973,
+        0.26499998569488525,
+        0.22499999403953552,
+        1.0
+      ]
+    },
+    {
+      "name": "Forged iron",
+      "linear_rgba": [
+        0.07500000298023224,
+        0.08500000089406967,
+        0.0949999988079071,
+        1.0
+      ]
+    },
+    {
+      "name": "Keystone ochre",
+      "linear_rgba": [
+        0.4300000071525574,
+        0.2199999988079071,
+        0.07500000298023224,
+        1.0
+      ]
+    }
+  ],
+  "glb_sha256": "7be3609e84a669d462740e759db55755924372b313945e9b66a06292d43a8203",
+  "generator_sha256": "fddb9ea72171fa9ce5065d53453e62876fa1553fbea826a3ba9a804f67a20e15"
+}
