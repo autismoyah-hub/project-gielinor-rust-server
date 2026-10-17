@@ -3492,3 +3492,53 @@ Ancient brew immutable archive: executable SHA256 `94A16AD2FE8EE279D49504069C6D1
 Wiki Menaphite remedy revision15344098, raw SHA256 `bbec4e4e56dc0b2de79c557d4fdbd468d11ad0f635ea447006a0dca285e274ed`: unfinished dwarf weed plus one Lily of the Sands,Herblore88(boostable),200XP,two ticks,three-dose output. Independent target decoding verified ordinary member nonstackable dwarf weed109,lily27272 and Drink outputs27205/27202. Added the recipe through the existing ordinary transaction,Make dialog,weak scheduler,goggles and28th ordinary chemistry mapping. Thirty ordinary-table profiles plus the separately bound Ancient brew are now registered; prior accepted recipe subsets remain individually scoped. Drinking renewal/divine-removal effects and ingredient acquisition remain separate.
 
 menaphite-tests-attempt-001 FAIL: an existing profile-count assertion expected29 after expanding the unit catalog to30. Updated the exact expected count and retained the failure. Attempt002 PASS64server415world,1existing ignored,397source hashes unchanged; compile12.02s/world18.40s. Guard6944MiB,48.8percentcommit,5467page-ins/s with0.7msdisk,15.3percentCPU;Cargo-j2. All ordinary fractional-XP,boost,full-bag,goggles,selected-order and live-refusal vectors now include Menaphite remedy.93state/trace and10menu/packet synthetic corruption checksPASS; genuine native All/save/same-save acceptance pending.
+
+## Native gameplay nihilgrinding acceptance (2026-10-17 UTC)
+
+Native Nihil crushing: selectedthree-shard stack debited into existingdust10to13,retainedpestle,24pots/1000coins/full28 conservation,zeroXP,0/2/3tick commits and same-save no replay. Native capacity/overflow/movement negatives and acquisition remain separate.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking/Herblore parity or unrelated recipes. No issue closure.
+
+`openrune-native-nihilgrinding-001` PASS. Server archive `5D3254E5D553C75391D8338CA71DF82159D9B79FCC9C114C304A7535FBF63A4C`, driver `nihilgrinding-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID9556.
+- Driver `NativeNihilGrindingScenario.rs` SHA256 `5ACA6B369E6051AB76C09907FF4E8685B68605CF1717231C16CC262EFEEA409A`
+- Driver `server_nihilgrinding.exe` SHA256 `5F2876D4D5A07B55C072A1BEF7D9BBC9CEEBCB6B4F7D437A208905863D427EA7`
+- `client.log` SHA256 `bf42487010856cfdb38f9fdee9fb20cee31f0fe177dc25dc7f52eb4358db7884`
+- `server.log` SHA256 `1dd76542287cdfc76da1f6819f925d2c5de199858304388f34fd49282edce207`
+- `server.json` SHA256 `e671407482e8782cf8a836f06b631af12a33655d78c77655860b3e2163653c86`
+- `initial-state.json` SHA256 `3bed9d2787af7a755550ba22b56db4ed2d64d809209df373c864947ea33e759f`
+- `final-state.json` SHA256 `7ee1d690d57999b05b652be2621c6811e6e2c76a3b07f6333264e92ba35f2cda`
+- `pack-assessment.json` SHA256 `9584249cd71e32fb56568e60d458ab5833de9758383ee10155ccebe936bae72f`
+- `nihilgrinding-trace-assessment.json` SHA256 `8f536c40878154fcd6d3c61f5ca6431917214834ad49c249b00ae1cab14e69b2`
+- `logout-observation.json` SHA256 `7c800cc6098a75e5d36ce704f4e61de1a6dde0bc6c62e2ef08f47467d68e06a5`
+- `shutdown.json` SHA256 `ce3e7f9d2cc2e296b66843f2811ad6508984b872b928aeb5035b5010bbaeee05`
+- `result.json` SHA256 `06c711c9330f03c5c856959d474ea5587357800e595cc39c37ee2e4f567fa1a2`
+- `pack-run.json` SHA256 `9be4d6be1694887a32fedbcb5db0fd84e2a894cd4da1eb52eb24d915224933f7`
+- `native-packet-assessment.json` SHA256 `df2bd0665413dbe94a9c31bfe92b41ed185cc60575a433ff25cc92bc93182b21`
+- `native-quantity-assessment.json` SHA256 `df2bd0665413dbe94a9c31bfe92b41ed185cc60575a433ff25cc92bc93182b21`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":200},"3077":{"before":0,"after":28472},"3079":{"before":0,"after":114},"65515":{"before":0,"after":106}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[{"actor_slot":1,"actor_generation":614,"tool_slot":0,"input_slot":1,"tool":233,"input":26231,"output":26368,"count":1,"queued_at":91,"committed_at":91,"index":0},{"actor_slot":1,"actor_generation":614,"tool_slot":0,"input_slot":1,"tool":233,"input":26231,"output":26368,"count":1,"queued_at":91,"committed_at":93,"index":1},{"actor_slot":1,"actor_generation":614,"tool_slot":0,"input_slot":1,"tool":233,"input":26231,"output":26368,"count":1,"queued_at":93,"committed_at":96,"index":2}],"scope":"Server commit cadence and strict slots only; native action/state/save receipts required separately"}`
+
+`openrune-nihilgrinding-relogin-001` PASS. Server archive `5D3254E5D553C75391D8338CA71DF82159D9B79FCC9C114C304A7535FBF63A4C`, driver `nihilgrinding-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor `openrune-native-nihilgrinding-001`, owned PID8024.
+- Driver `NativeNihilGrindingScenario.rs` SHA256 `5ACA6B369E6051AB76C09907FF4E8685B68605CF1717231C16CC262EFEEA409A`
+- Driver `server_nihilgrinding.exe` SHA256 `5F2876D4D5A07B55C072A1BEF7D9BBC9CEEBCB6B4F7D437A208905863D427EA7`
+- `client.log` SHA256 `692c57d2f6c35398bf8e7652d0b1de8b1984778189834d347cb677031dbf9384`
+- `server.log` SHA256 `d97f60cc13e3cba189fe0b37727bfefe181ff215239fb98a3a3952041d66d9a8`
+- `server.json` SHA256 `ee788a8a11bd3acdf1c44727ec95f9b87eedf65fe7180115b63ae4982ab5ab12`
+- `initial-state.json` SHA256 `7ee1d690d57999b05b652be2621c6811e6e2c76a3b07f6333264e92ba35f2cda`
+- `final-state.json` SHA256 `b2378a2be5cde8c0848048efb8aa207f1174d24246d416e7e86e3618f68f5398`
+- `pack-assessment.json` SHA256 `67d781ff4b97544c5436cfe34f9f32cbceeebe07a9ee516e5fbee0ec7c232e2e`
+- `nihilgrinding-trace-assessment.json` SHA256 `d1d113d1f5f6b46bc1ca733dd487f6d47b50c76b42f4587c9c278865dbe39af9`
+- `logout-observation.json` SHA256 `d74614aa9c7c151c624910a57c397a3d9db1500fa5b5b03907eafe59921ba4aa`
+- `shutdown.json` SHA256 `450d4c9241dc37b57e0082eb890467e8386bde5a592f8bd916dbff8fb95cda38`
+- `result.json` SHA256 `dd40ff0d7405b75deaff32d04add29e7ca0dda3d011d4e112e9e7514e2717aab`
+- `pack-run.json` SHA256 `12d4206898d1c32764ad15249d70d4f6c8682f180d97b39bdffc17f96e1f188e`
+- `native-packet-assessment.json` SHA256 `49a4c94930050f8d2fc40ceeae1472ada1affc6d4695fbca639c495b7d84b172`
+- `native-quantity-assessment.json` SHA256 `49a4c94930050f8d2fc40ceeae1472ada1affc6d4695fbca639c495b7d84b172`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":200,"after":400},"3077":{"before":28472,"after":59269},"3079":{"before":114,"after":121},"65515":{"before":106,"after":221}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Server commit cadence and strict slots only; native action/state/save receipts required separately"}`
+
+Nihil crushing immutable archive: executable SHA256 `5D3254E5D553C75391D8338CA71DF82159D9B79FCC9C114C304A7535FBF63A4C`,397source files,manifest SHA256 `e2e957681ded97156bf7eeb7d017095cb10c317700af5fbb099df9e1e461740e`. Server build21.51s,guard6609MiB/50.2%commit/774page-ins/s/0.9msdisk/31.7%CPU,j2. Driver build2.46s,guard6225MiB/51.9%commit/711page-ins/s/1.0msdisk/35.5%CPU,j2.78synthetic corruption checksPASS. Prelaunch native attempt001 FAIL from copied default driver002 rather than pinned001; no gameplay run created. Original wrapper/hash/failure JSON/log retained; attempt002 explicit001 accepted with the existing successful control. The corrected private wrapper defaults001.
