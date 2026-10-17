@@ -3210,3 +3210,59 @@ All listed runs require client exit0, fresh durable logout, clean owned exit0 an
 - `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
 - State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":300,"after":500},"3077":{"before":58687,"after":22626},"3079":{"before":189,"after":112},"65515":{"before":182,"after":289}}}`
 - Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Separate selected-profile two-tick commits; UI evidence and packet/display latency separate"}`
+
+## Acceptance archive source identities
+
+Each build compares its complete397(or394)source-file hash map before and after compilation, then copies the binary and source manifest into an immutable archive. These manifests describe the actual preserved working tree, including pre-existing changes; a Git checkpoint alone is not substituted for the executable/source evidence. Current native sessions use pinned paths and do not read a later rebuilt target executable.
+
+- `divine-native-001`: executable SHA256`29BB4FD3587E30689BCAFA18C2DEF348ACC58653E4AB6C81FEF489D400A311FD`,394source files, source-hashes.json SHA256`5cb5aa5969c34ba6ca0857dfe48e3a9a5f27a65450702d422f698dbb8780acb2`.
+- `combatmixing-native-001`: executable SHA256`5EF5A3FD7BFB560C25C6AFBB7461FD71EB30764B95CB216727FF6A091150C4D9`,397source files, source-hashes.json SHA256`52a315d6141d36aa7a97b9dd2ded9eb1e50f17ec72ced5198433a7412cec847e`.
+- `compatible-upgrades-native-001`: executable SHA256`72AA23CD517817FFB20E92728AEC5F1C170E12FD7DEF5A335B98FFEF491D2B29`,397source files, source-hashes.json SHA256`53e4e3ccc21c527bc38fe990ea5220ba6262de279a784392bb9025dfdcf77e36`.
+
+## Native gameplay combatmixing acceptance (2026-10-17 UTC)
+
+Six native four-input super combat groups: clean and unfinished Torstol, all three selected base types and alternating order. Exact six four-dose outputs,45000fineXP at5x, two-tick commits, selected slots, unrelated state and same-save no replay. Goggles native proc, acquisition and drinking remain separate.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking/Herblore parity or unrelated recipes. No issue closure.
+
+`openrune-native-combatmixing-001` PASS. Server archive `5EF5A3FD7BFB560C25C6AFBB7461FD71EB30764B95CB216727FF6A091150C4D9`, driver `combatmixing-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID20084.
+- Driver `NativeCombatMixingScenario.rs` SHA256 `E305BFB6F18342B3E0E00B971F89AFC3BEA50F2B2BF71828D2F5D69D78B826B2`
+- Driver `server_combatmixing.exe` SHA256 `8B2C8895BCF798B65D26047E9933EE831935ADF11F2460343497612353796814`
+- `client.log` SHA256 `6b384d440b44618683fdc54b74c3d826e1dea441ddb997e3b02a3b39d52ca733`
+- `server.log` SHA256 `19227494e760dc81731e8dab2fdc1774dcf16270f22586f2f1a4666a185e6bd2`
+- `server.json` SHA256 `0581f39842c92645921918b58481f1bb5c284f5b486126305f9ef8f862897d72`
+- `initial-state.json` SHA256 `50784eb2f82db476850694b1e91c16dadd6ead235b4f4b26530c7fa6c4a0557d`
+- `final-state.json` SHA256 `fb62b1f8506e5a41b00f47cef20adb8d812020af54e5c696148b2c04c00946ad`
+- `pack-assessment.json` SHA256 `b40e85b583b5ebd5636555955111a74796dc7aae537cd93a066890d57fdcbe70`
+- `combatmixing-trace-assessment.json` SHA256 `e050b2998fea5016cab9b44b042dafd19c37a2522b6a159ee8d82efc0a17b440`
+- `logout-observation.json` SHA256 `7bf9b27b856172264e961d3d8ac33048e85bf7304f22bcdd4306e5f36cd6e023`
+- `shutdown.json` SHA256 `d56661ef6ec3cc2fef23fe096267ae9f78e8e844248147188c3c8dd2b3ee85af`
+- `result.json` SHA256 `91470be1140914ed102ef0864ba4ba0f62b8b133f5fb6a012df0c047a171b8d9`
+- `pack-run.json` SHA256 `c2557838e6bed1971547084def53d4083eede7376039eb5e86d2c8bdd0f52b57`
+- `native-profile-assessment.json` SHA256 `3f14a170fae57aa7fb1d7cec162cb49aa87debcbb735e6b036598733a23eb947`
+- `native-packet-assessment.json` SHA256 `65b12fc428d723673081d2c94de4d279621ed0a10b3952ce1ff25b9125041a47`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":400},"3077":{"before":0,"after":50591},"3079":{"before":0,"after":238},"65515":{"before":0,"after":224}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[{"actor_slot":1,"actor_generation":614,"slots":[0,1,2,3],"inputs":[2436,2440,2442,269],"output":12695,"secondary_saved":false,"queued_at":138,"committed_at":140,"index":0,"base_fine_xp":1500,"rate_hundreds":500,"fine_before":130344311,"fine_after":130351811},{"actor_slot":1,"actor_generation":614,"slots":[4,5,6,7],"inputs":[2436,2440,2442,269],"output":12695,"secondary_saved":false,"queued_at":154,"committed_at":156,"index":0,"base_fine_xp":1500,"rate_hundreds":500,"fine_before":130351811,"fine_after":130359311},{"actor_slot":1,"actor_generation":614,"slots":[8,9,10,11],"inputs":[2436,2440,2442,269],"output":12695,"secondary_saved":false,"queued_at":170,"committed_at":172,"index":0,"base_fine_xp":1500,"rate_hundreds":500,"fine_before":130359311,"fine_after":130366811},{"actor_slot":1,"actor_generation":614,"slots":[12,13,14,15],"inputs":[2436,2440,2442,111],"output":12695,"secondary_saved":false,"queued_at":186,"committed_at":188,"index":0,"base_fine_xp":1500,"rate_hundreds":500,"fine_before":130366811,"fine_after":130374311},{"actor_slot":1,"actor_generation":614,"slots":[16,17,18,19],"inputs":[2436,2440,2442,111],"output":12695,"secondary_saved":false,"queued_at":201,"committed_at":203,"index":0,"base_fine_xp":1500,"rate_hundreds":500,"fine_before":130374311,"fine_after":130381811},{"actor_slot":1,"actor_generation":614,"slots":[20,21,22,23],"inputs":[2436,2440,2442,111],"output":12695,"secondary_saved":false,"queued_at":217,"committed_at":219,"index":0,"base_fine_xp":1500,"rate_hundreds":500,"fine_before":130381811,"fine_after":130389311}]}`
+
+`openrune-combatmixing-relogin-001` PASS. Server archive `5EF5A3FD7BFB560C25C6AFBB7461FD71EB30764B95CB216727FF6A091150C4D9`, driver `combatmixing-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor `openrune-native-combatmixing-001`, owned PID13956.
+- Driver `NativeCombatMixingScenario.rs` SHA256 `E305BFB6F18342B3E0E00B971F89AFC3BEA50F2B2BF71828D2F5D69D78B826B2`
+- Driver `server_combatmixing.exe` SHA256 `8B2C8895BCF798B65D26047E9933EE831935ADF11F2460343497612353796814`
+- `client.log` SHA256 `d3d185bc35bab2cdc5fd0857d906215a539246308095790f45da2f9e961321bf`
+- `server.log` SHA256 `f04b465ea1998c4731fa6ea27c543cde3eb627de439bfe601126b922a1d4d66d`
+- `server.json` SHA256 `8eda701130816ff6db993290e833e699dbf3c3a7eba4fad94bf0bc576e36dfe2`
+- `initial-state.json` SHA256 `fb62b1f8506e5a41b00f47cef20adb8d812020af54e5c696148b2c04c00946ad`
+- `final-state.json` SHA256 `e9421fb6e926fdbf1609778fc6dbc19888b74ff01361b5640919a11d66acea20`
+- `pack-assessment.json` SHA256 `891dfc2d29b6fbfa07d0cb2c222cd750d6ced9832f9fc783cabee80117074311`
+- `combatmixing-trace-assessment.json` SHA256 `5f543854682d135b89c262154b877c1cd419eb0fb111ce93e4bfaaa844cbfb19`
+- `logout-observation.json` SHA256 `912a8f8dd22fdae1a410612ffa1c10595a15ec459755bd4c806609ebf29ce1df`
+- `shutdown.json` SHA256 `52b4e3a286638c7de1b1ca2ecf2fd686b234c415e69976857d3b08ff44a0cafc`
+- `result.json` SHA256 `f62092578713817e8100078f3287cb3fe07e7053c235446e138c37603475ce14`
+- `pack-run.json` SHA256 `8ac60783d48772e2ae1e4fb00aa144a356f9d85a0d62cee15ddac5f637858ba8`
+- `native-profile-assessment.json` SHA256 `3f14a170fae57aa7fb1d7cec162cb49aa87debcbb735e6b036598733a23eb947`
+- `native-packet-assessment.json` SHA256 `35979a9ea96ee0ed922955d722e76bd7a5575abfd440ade9985de68c3ed79632`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":400,"after":600},"3077":{"before":50591,"after":36966},"3079":{"before":238,"after":142},"65515":{"before":224,"after":360}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[]}`
