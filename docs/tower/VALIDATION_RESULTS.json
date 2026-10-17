@@ -1,5 +1,5 @@
 {
-  "status": "CurrentC555 hall affected24camera comparison PASS; fresh native26/headless27 first-clears RUNNING, no current fullcombat/crash credit; broaderart/userapproval pending",
+  "status": "CurrentC555 native cleanfreshfirstclear832.30s/normalrelogin/56nativeviews/combat/pairedquietWarden PASS. HeadlessoriginalFAILED241.37s copperRNG55bound; independentcontinuationRUNNING; currentC555crashpending; broaderart/humanpacing/userapprovalpending",
   "scope": "Cinderworks Floor One on the isolated agent5/tower-development branch; upstream integration is a separate Agent 2 review",
   "server_gameplay_commit": "420729798ffc3b0d31c7aff7497d1841597c2104",
   "client_baseline": "95eed88159b06cebea24559a814a5111b54a59cd",
@@ -2753,5 +2753,14 @@
     "current_full_first_clear": "RUNNING",
     "current_crash": false,
     "current_full56_native": "not yet captured"
+  },
+  "native_hall_first_clear": {
+    "receipt": "NATIVE_HALL_FIRST_CLEAR_20261017.json",
+    "native_fresh_first_clear": true,
+    "native_normal_relogin": true,
+    "native56_reviewed": true,
+    "headless_original_failed": true,
+    "headless_independent_continuation": "RUNNING",
+    "current_crash": false
   }
 }

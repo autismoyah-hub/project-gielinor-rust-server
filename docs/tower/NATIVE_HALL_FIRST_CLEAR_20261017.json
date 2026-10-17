@@ -1,0 +1,994 @@
+{
+  "runtime_source": "e70dd2a (later evidence-only commits do not change the runtime)",
+  "runtime_sha256": "C555FBA455ED46C4818FFAF475700F9A4C96927E6A5EEA77906A86C17ECBB62E",
+  "scope": "Current native clean fresh first clear and ordinary reconnect accepted; independent headless continuation still running, original headless attempt remains failed. Current C555 crash not yet tested.",
+  "native_first_clear": {
+    "scenario": {
+      "accepted": true,
+      "source": "80e55e6 + twelve processional hall rails; C555FBA455ED46C4818FFAF475700F9A4C96927E6A5EEA77906A86C17ECBB62E server",
+      "method": "continuous normal-action native fresh first clear; real preparation/rescue; not human pacing guarantee",
+      "elapsed_seconds": 832.3,
+      "steps": [
+        {
+          "step": "services.py",
+          "arguments": [
+            "--onboard",
+            "--gate-check",
+            "--order",
+            "workshop-first",
+            "--scene-checks",
+            "--landmarks",
+            "8",
+            "--coolant-lesson",
+            "--native-frames"
+          ],
+          "seconds": 325.14,
+          "exit_code": 0
+        },
+        {
+          "step": "recovery.py",
+          "arguments": [],
+          "seconds": 40.23,
+          "exit_code": 0
+        },
+        {
+          "step": "guardian.py",
+          "arguments": [
+            "imp",
+            "--style",
+            "accurate",
+            "--native-frames",
+            "--label",
+            "first-hall"
+          ],
+          "seconds": 128.68,
+          "exit_code": 0
+        },
+        {
+          "step": "guardian.py",
+          "arguments": [
+            "warden",
+            "--style",
+            "accurate",
+            "--require-coolant",
+            "--native-frames",
+            "--timeout",
+            "600",
+            "--label",
+            "first-hall"
+          ],
+          "seconds": 276.78,
+          "exit_code": 0
+        },
+        {
+          "step": "restoration.py",
+          "arguments": [
+            "--label",
+            "victory",
+            "--expected",
+            "18526,18511,16811,16811,16810,18525,18525,18525",
+            "--native-frames"
+          ],
+          "seconds": 5.14,
+          "exit_code": 0
+        },
+        {
+          "step": "claim.py",
+          "arguments": [
+            "--full-pack",
+            "--native-frames"
+          ],
+          "seconds": 43.98,
+          "exit_code": 0
+        },
+        {
+          "step": "exit_return.py",
+          "arguments": [],
+          "seconds": 12.35,
+          "exit_code": 0
+        }
+      ]
+    },
+    "claim_expected": 500,
+    "fresh_chest_reply_uids": [
+      82,
+      83,
+      84
+    ],
+    "full_pack_refusal_and_normal_drop_recovery": true,
+    "coolant_reply_uids": [
+      73
+    ],
+    "read_only_durable_run": [
+      1,
+      7,
+      11,
+      1
+    ],
+    "coins": 500,
+    "beer": 1
+  },
+  "native_normal_relogin": {
+    "accepted": true,
+    "checks": [
+      "exact firstpaid item slots/equipment/all25XP/journal",
+      "fresh UID duplicate reply pays zero",
+      "8 quiet landmarks",
+      "3 headrace walls/pipe absence",
+      "12 hall rails and open cross bays/normal movement",
+      "2 real feeding troughs/low entrance and rear support"
+    ],
+    "fresh_duplicate_reply_uids": [
+      1
+    ],
+    "static_scene": [
+      {
+        "id": "5575",
+        "plane": "0",
+        "x": "10408",
+        "z": "99",
+        "shape": "10",
+        "rotation": "0",
+        "runtime": "true",
+        "rejected": "false"
+      },
+      {
+        "id": "5575",
+        "plane": "0",
+        "x": "10440",
+        "z": "99",
+        "shape": "10",
+        "rotation": "0",
+        "runtime": "true",
+        "rejected": "false"
+      },
+      {
+        "id": "17097",
+        "plane": "0",
+        "x": "10430",
+        "z": "123",
+        "shape": "10",
+        "rotation": "0",
+        "runtime": "true",
+        "rejected": "false"
+      },
+      {
+        "id": "7017",
+        "plane": "0",
+        "x": "10430",
+        "z": "126",
+        "shape": "10",
+        "rotation": "0",
+        "runtime": "true",
+        "rejected": "false"
+      }
+    ]
+  },
+  "native_visual_review": {
+    "all56_current_floor_views_inspected": true,
+    "four_service_views_inspected": true,
+    "four_Imp_and_six_Warden_views_inspected": true,
+    "full_pack_refusal_and_settled_paid_journal_inspected": true,
+    "quiet_four_Warden_views_inspected": true,
+    "current_gallery": "evidence/native-hall26-complete-gallery/gallery.html",
+    "current_journey": "evidence/native-hall26-fresh/journey.html",
+    "full56_raw_frame_hashes": [
+      {
+        "area": "arrival",
+        "yaw": 0,
+        "filename": "frame-2725.bmp",
+        "sha256": "bc1074c44552500931f2e18f4820e41dee0eea5b77176e9ee885f6881ea20bd5"
+      },
+      {
+        "area": "arrival",
+        "yaw": 4096,
+        "filename": "frame-2727.bmp",
+        "sha256": "c910c80e11f201b1c0054d49282f65014700718a71ad74f62101fdaa45c5829e"
+      },
+      {
+        "area": "arrival",
+        "yaw": 8192,
+        "filename": "frame-2729.bmp",
+        "sha256": "f1b5cee702adad97c1a9af0f5580192e7cfd5758297895f9ea4d1b770a9b5de9"
+      },
+      {
+        "area": "arrival",
+        "yaw": 12288,
+        "filename": "frame-2731.bmp",
+        "sha256": "3770ff205a9bd7fa9fbf4e47f78a76e8926ddfff1f7b8960c570f4ddeb00fe67"
+      },
+      {
+        "area": "sanctuary",
+        "yaw": 0,
+        "filename": "frame-2759.bmp",
+        "sha256": "63bbabcfc8cd001439acc5299de4a59926666e4de4ad2db51b5fd0226e69be20"
+      },
+      {
+        "area": "sanctuary",
+        "yaw": 4096,
+        "filename": "frame-2761.bmp",
+        "sha256": "48296deb347d5396c447bb859041c49d58a28c2f74b4e839caf8e3ce4e85d8f5"
+      },
+      {
+        "area": "sanctuary",
+        "yaw": 8192,
+        "filename": "frame-2763.bmp",
+        "sha256": "bb235ba4e4588d9b9723adeb87a4dd21b32e57d6e267ec4a36ecf001d177c6c3"
+      },
+      {
+        "area": "sanctuary",
+        "yaw": 12288,
+        "filename": "frame-2765.bmp",
+        "sha256": "e62ee2ffaf5b704276c2d40d75636fa1a54b7c56a9f4edb6a68b75edc7b7dd9a"
+      },
+      {
+        "area": "restoration hearth",
+        "yaw": 0,
+        "filename": "frame-2780.bmp",
+        "sha256": "76c57da3fafcdbdcd1c1bff597adfc36343d77c66e4cd53c407b95a8a468ff88"
+      },
+      {
+        "area": "restoration hearth",
+        "yaw": 4096,
+        "filename": "frame-2782.bmp",
+        "sha256": "cd814b83f5a8deb0f5bc888e154a28907b94a910f78170a6c80ebdf66e898faf"
+      },
+      {
+        "area": "restoration hearth",
+        "yaw": 8192,
+        "filename": "frame-2784.bmp",
+        "sha256": "7edce7ea4f14600c31bb22029a7b1525f4d17bd174c54afb2996fdeb8d91dbeb"
+      },
+      {
+        "area": "restoration hearth",
+        "yaw": 12288,
+        "filename": "frame-2786.bmp",
+        "sha256": "36eeb7024398e02da16ae9a09ec47707db2978100d174f4f20c25f9ad406108f"
+      },
+      {
+        "area": "plaque and reward",
+        "yaw": 0,
+        "filename": "frame-2809.bmp",
+        "sha256": "a7220d33f2dc27768c8b5f0e92d983abe193913d06cfe059fe138f69c4d03082"
+      },
+      {
+        "area": "plaque and reward",
+        "yaw": 4096,
+        "filename": "frame-2811.bmp",
+        "sha256": "cd48fdf3242297627811203c737b164fe31d4209c16641d1a9610bdf00a4d5ab"
+      },
+      {
+        "area": "plaque and reward",
+        "yaw": 8192,
+        "filename": "frame-2813.bmp",
+        "sha256": "dd62c23c33f96250b8a154c0d74ffc25a8bb9844ff05831899e9ad972b5ce4ff"
+      },
+      {
+        "area": "plaque and reward",
+        "yaw": 12288,
+        "filename": "frame-2815.bmp",
+        "sha256": "4a1ab86a1b02ba3138e5b0b5ce887ec8d61acf00457a84c29cc5c60861d3ccb8"
+      },
+      {
+        "area": "workshop",
+        "yaw": 0,
+        "filename": "frame-2862.bmp",
+        "sha256": "12cdb36899db3b8dd83f0321797d6dd9f7f5d80acf9ecf8e55fab696ddc0be5a"
+      },
+      {
+        "area": "workshop",
+        "yaw": 4096,
+        "filename": "frame-2864.bmp",
+        "sha256": "e3c4dcc56224aee3cbb6cc4d158869e96e39d6e5b889217ec33b623df21f21e6"
+      },
+      {
+        "area": "workshop",
+        "yaw": 8192,
+        "filename": "frame-2866.bmp",
+        "sha256": "d96bee1f48900dc16186b8b3479e66dab4ceadd32b94be0b7cedf30f91d68545"
+      },
+      {
+        "area": "workshop",
+        "yaw": 12288,
+        "filename": "frame-2868.bmp",
+        "sha256": "39602a2a5a55582ddb0deee6a5d0effaf9dc838c90ffe952e26d943fc308890c"
+      },
+      {
+        "area": "moss supply court",
+        "yaw": 0,
+        "filename": "frame-2907.bmp",
+        "sha256": "bd576e9a4eb8f8f603b8cc9ef30f3de3b3c6dcc85b48d6d40a2540727dd7a865"
+      },
+      {
+        "area": "moss supply court",
+        "yaw": 4096,
+        "filename": "frame-2909.bmp",
+        "sha256": "6c04e7ae0043cbb4a179bce161136f8d0eff17e958b3499419f44fa91c6e6337"
+      },
+      {
+        "area": "moss supply court",
+        "yaw": 8192,
+        "filename": "frame-2911.bmp",
+        "sha256": "4ac757ee617151622d7f09e6d24451249fb26e36db0c131b878d6ebb329c6517"
+      },
+      {
+        "area": "moss supply court",
+        "yaw": 12288,
+        "filename": "frame-2913.bmp",
+        "sha256": "99f3a57666f92ec3cce02a6033971b450b80cf8aa12b84d8b1b227c1f707055b"
+      },
+      {
+        "area": "southern processional hall",
+        "yaw": 0,
+        "filename": "frame-2955.bmp",
+        "sha256": "6fe694a6ca020bf63a334634669bad5357439f02e12ddd8cf4c3c58dbe9a8fbb"
+      },
+      {
+        "area": "southern processional hall",
+        "yaw": 4096,
+        "filename": "frame-2957.bmp",
+        "sha256": "5158d269886366b51fe656225e5640402beb9253a070f4a344a302a12a2b7db3"
+      },
+      {
+        "area": "southern processional hall",
+        "yaw": 8192,
+        "filename": "frame-2959.bmp",
+        "sha256": "43ccbb3cbc178537acf7823e007604fc7372d03c579409bdcc7dc46d002f312a"
+      },
+      {
+        "area": "southern processional hall",
+        "yaw": 12288,
+        "filename": "frame-2961.bmp",
+        "sha256": "959cb191389982d65d6ed1667c746f08df8a038f846ebbc58563c282592e2b51"
+      },
+      {
+        "area": "poultry supply court",
+        "yaw": 0,
+        "filename": "frame-3007.bmp",
+        "sha256": "3e698e18dc6e1813fa2df330ef01dcb8aaabe99ea5d75f014a1863cb8a1e208c"
+      },
+      {
+        "area": "poultry supply court",
+        "yaw": 4096,
+        "filename": "frame-3009.bmp",
+        "sha256": "887709c4894d11588eb9534dac8b0079c5bc77cdc9d867e677301ca9250cb809"
+      },
+      {
+        "area": "poultry supply court",
+        "yaw": 8192,
+        "filename": "frame-3011.bmp",
+        "sha256": "07d58b8f30af2bad797d2068d15671d6c9f452b74fe73faad5f8d13d861bface"
+      },
+      {
+        "area": "poultry supply court",
+        "yaw": 12288,
+        "filename": "frame-3013.bmp",
+        "sha256": "89b8d1e2a99adb3b0a17c7e6a112de778c1bdb0b827d3469329cd9ea38167e8e"
+      },
+      {
+        "area": "waterworks",
+        "yaw": 0,
+        "filename": "frame-3051.bmp",
+        "sha256": "ceff879e1b15f5fa62f27855ffe2d7311a5295fa9526069e86cc2b91443ba3c2"
+      },
+      {
+        "area": "waterworks",
+        "yaw": 4096,
+        "filename": "frame-3053.bmp",
+        "sha256": "f70d09bab67887b2f9b3d9e0f29296479e762b12c3a0b1762f25c10afc1244ea"
+      },
+      {
+        "area": "waterworks",
+        "yaw": 8192,
+        "filename": "frame-3055.bmp",
+        "sha256": "594d53e22041cf35ed75f34af229fa21cf41afc07fc18a6c0a5aa582e3c3bc4f"
+      },
+      {
+        "area": "waterworks",
+        "yaw": 12288,
+        "filename": "frame-3057.bmp",
+        "sha256": "946bd223482d1cd8091e0e5b825a1c8084fc161d7e8f4c03a468880049427d88"
+      },
+      {
+        "area": "sluice wheel",
+        "yaw": 0,
+        "filename": "frame-3087.bmp",
+        "sha256": "2fc94bf3bdbc9c74e647eda9559841ce6f5b21c9e3707103e0eda12d7994c22c"
+      },
+      {
+        "area": "sluice wheel",
+        "yaw": 4096,
+        "filename": "frame-3089.bmp",
+        "sha256": "3a02c79e264b610ef4b1c0876431522bd7f3b37b0651664939a5e5617e207fc6"
+      },
+      {
+        "area": "sluice wheel",
+        "yaw": 8192,
+        "filename": "frame-3091.bmp",
+        "sha256": "efa69c4a8a1c196347e9cc6bb95526db8a73d04d8c32fc157548d8b66e127154"
+      },
+      {
+        "area": "sluice wheel",
+        "yaw": 12288,
+        "filename": "frame-3093.bmp",
+        "sha256": "dd5f05255ae4f778b6046239fd82f18e6ab7ee0108a1e32e10dad0a6be0cacd4"
+      },
+      {
+        "area": "grove",
+        "yaw": 0,
+        "filename": "frame-3177.bmp",
+        "sha256": "ec298031741ae6c75f92bd865b3249762f6a6c845ae3a708db58f86cb7118731"
+      },
+      {
+        "area": "grove",
+        "yaw": 4096,
+        "filename": "frame-3179.bmp",
+        "sha256": "fb8804c2e238caa2f3803583373714defec36554f77ac73d45c446dbe53f1a5f"
+      },
+      {
+        "area": "grove",
+        "yaw": 8192,
+        "filename": "frame-3181.bmp",
+        "sha256": "39c349bd20b7ec27a9e64f45d0080b2b5839458b4128e3100f88385f34751bf6"
+      },
+      {
+        "area": "grove",
+        "yaw": 12288,
+        "filename": "frame-3183.bmp",
+        "sha256": "e4e0bc92e6fa34dbcd60b39b49eb1fb5f1e02a21954b74d827df48b44bf9f801"
+      },
+      {
+        "area": "foundry vestibule",
+        "yaw": 0,
+        "filename": "frame-3227.bmp",
+        "sha256": "0bccc33b98f7515cc542505b04f6800f3afda2c5bd923debc6d26ad5981491ac"
+      },
+      {
+        "area": "foundry vestibule",
+        "yaw": 4096,
+        "filename": "frame-3229.bmp",
+        "sha256": "9a927b01bb9d23a9e62b0661318fa9c3953ee843d7f6bc05204619deb9f72f79"
+      },
+      {
+        "area": "foundry vestibule",
+        "yaw": 8192,
+        "filename": "frame-3231.bmp",
+        "sha256": "b81ddd3d211f6d7069b2b64c6ba5b64daedc64f32cf20def5ee9d8f132d36873"
+      },
+      {
+        "area": "foundry vestibule",
+        "yaw": 12288,
+        "filename": "frame-3233.bmp",
+        "sha256": "853fff1e9eb34ad0af6b1905a2c2052efb3c7024799af5f31cfc769b42540944"
+      },
+      {
+        "area": "Ash Warden chamber",
+        "yaw": 0,
+        "filename": "frame-3259.bmp",
+        "sha256": "cc121faee082d5aee8d73e8eac19dd9991010ce55ab217f62180996db4a1ccc4"
+      },
+      {
+        "area": "Ash Warden chamber",
+        "yaw": 4096,
+        "filename": "frame-3261.bmp",
+        "sha256": "125e23cc310e83745771942c9d09f4f6bc9ac162a4b8b54692234c3ba5118ad4"
+      },
+      {
+        "area": "Ash Warden chamber",
+        "yaw": 8192,
+        "filename": "frame-3263.bmp",
+        "sha256": "b32001e737e50b1b2c513b8e06699b8a0f0f77780774d0222ff17e53da737d72"
+      },
+      {
+        "area": "Ash Warden chamber",
+        "yaw": 12288,
+        "filename": "frame-3265.bmp",
+        "sha256": "8fabb7e373e704a3799f0fa5f27d762f663d40491202972ab00ac5de6d447a0c"
+      },
+      {
+        "area": "Ash Imp vent gallery",
+        "yaw": 0,
+        "filename": "frame-3325.bmp",
+        "sha256": "4d61aa68bea42b141297268cf3506a26deab31170feda971eaa743acfcb05859"
+      },
+      {
+        "area": "Ash Imp vent gallery",
+        "yaw": 4096,
+        "filename": "frame-3327.bmp",
+        "sha256": "80d07936fbebe25705c24d457d9d32394309dc9839746e1c9d4723a94e82ee3e"
+      },
+      {
+        "area": "Ash Imp vent gallery",
+        "yaw": 8192,
+        "filename": "frame-3329.bmp",
+        "sha256": "ce8ece373a7d773517fb07f1757ad2dc189e6b8e40a6c410b02f19252b752990"
+      },
+      {
+        "area": "Ash Imp vent gallery",
+        "yaw": 12288,
+        "filename": "frame-3331.bmp",
+        "sha256": "dfb5993934be4aecfd7f6f119ad32176018adfe159f4b5def1363f56609f90c8"
+      }
+    ],
+    "journey_raw_frame_hashes": [
+      {
+        "label": "before-services",
+        "filename": "frame-251.bmp",
+        "sha256": "3579d4e42348302d8a0fa9af6592b64ab206a88e2b52f3ce35d8ea201d38cae0"
+      },
+      {
+        "label": "after-workshop",
+        "filename": "frame-510.bmp",
+        "sha256": "4940e496e1a325f3db611ff5f59968a593aef72b57d8c7cb6d4e3aa0a0d05894"
+      },
+      {
+        "label": "after-kitchen",
+        "filename": "frame-839.bmp",
+        "sha256": "ada728d2e66c7e3380b41a2860e3b9c210cb73e41cfe7944f018f4538b50d8cf"
+      },
+      {
+        "label": "after-altar",
+        "filename": "frame-990.bmp",
+        "sha256": "36420710b25af371a1783a93e9dce339403521159856292ea4dcf9ba093e8ece"
+      },
+      {
+        "label": "imp warning pattern 1",
+        "filename": "frame-1194.bmp",
+        "sha256": "97ff0a084160ead418c754902ae9fbfa61872492222794d61f9cc6ee94cec863"
+      },
+      {
+        "label": "imp warning pattern 2",
+        "filename": "frame-1381.bmp",
+        "sha256": "5548d5c031ad511a0c3d08b3ce15e8df7fff90edd80679d9bec2737edb17c5c3"
+      },
+      {
+        "label": "imp victory in arena",
+        "filename": "frame-1538.bmp",
+        "sha256": "9bdc63d2b12b065af780ffb6a29b7612afda3d25a704878b96aecf238228c8a7"
+      },
+      {
+        "label": "warden warning pattern 1",
+        "filename": "frame-1624.bmp",
+        "sha256": "ccdfead51a68900f5a5003dd3b64a515aa7ebc86caebbd3ad09b872dfcedcc3c"
+      },
+      {
+        "label": "warden warning pattern 2",
+        "filename": "frame-1958.bmp",
+        "sha256": "7628fdbb0818b8d013ee533939bec0e039ca9923bcad35e3fc452a4439cec535"
+      },
+      {
+        "label": "warden warning pattern 3",
+        "filename": "frame-2265.bmp",
+        "sha256": "3485ac623e0f63b568d82941ee2276f89495c2a6cbf7c1d9ad9546dd590757dc"
+      },
+      {
+        "label": "warden coolant steam and flinch",
+        "filename": "frame-1628.bmp",
+        "sha256": "57d68242d4c843a823cdbdee1c6cd3df08c50fe9a12722cdd108c1d049116b4f"
+      },
+      {
+        "label": "warden victory in arena",
+        "filename": "frame-2482.bmp",
+        "sha256": "1ee43f6c1b8bebf40731bf57a418e8a38a7e6675efc75f501898612ae67bc33d"
+      },
+      {
+        "label": "First reward waits safely while the real pack is full",
+        "filename": "frame-2628.bmp",
+        "sha256": "9e92464b500dca917b563720c89373d7314a48f7faa6961172c243298ce3d8e5"
+      },
+      {
+        "label": "First reward paid; settled journal and restored sanctuary",
+        "filename": "frame-2759.bmp",
+        "sha256": "63bbabcfc8cd001439acc5299de4a59926666e4de4ad2db51b5fd0226e69be20"
+      }
+    ]
+  },
+  "paired_quiet_Warden": {
+    "accepted": true,
+    "binary": "C555FBA455ED46C4818FFAF475700F9A4C96927E6A5EEA77906A86C17ECBB62E",
+    "method": "Independent proper active-Warden window after earlier incidental Imp approach had no active hazard evidence and stayed acceptedFALSE. Nearest real concurrent owner observations paired with unchanged earned native captures. Shared-region personal presentation; actual peer avatars remain visible. Normal earned walk to10424,136 succeeds inside actual Warden footprint. No game-rule or render override.",
+    "pairs": [
+      {
+        "native_frame": 297,
+        "separation_seconds": 0.0287,
+        "native_position": [
+          0,
+          10424,
+          136
+        ],
+        "active_position": [
+          0,
+          10425,
+          134
+        ],
+        "active_warden_visible": true,
+        "earned_warden_visible": false,
+        "active_hazard_graphics": [
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86
+        ],
+        "earned_hazard_graphics": []
+      },
+      {
+        "native_frame": 299,
+        "separation_seconds": 0.0706,
+        "native_position": [
+          0,
+          10424,
+          136
+        ],
+        "active_position": [
+          0,
+          10425,
+          134
+        ],
+        "active_warden_visible": true,
+        "earned_warden_visible": false,
+        "active_hazard_graphics": [
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86
+        ],
+        "earned_hazard_graphics": []
+      },
+      {
+        "native_frame": 301,
+        "separation_seconds": 0.0753,
+        "native_position": [
+          0,
+          10424,
+          136
+        ],
+        "active_position": [
+          0,
+          10425,
+          134
+        ],
+        "active_warden_visible": true,
+        "earned_warden_visible": false,
+        "active_hazard_graphics": [],
+        "earned_hazard_graphics": []
+      },
+      {
+        "native_frame": 303,
+        "separation_seconds": 0.0833,
+        "native_position": [
+          0,
+          10424,
+          136
+        ],
+        "active_position": [
+          0,
+          10425,
+          135
+        ],
+        "active_warden_visible": true,
+        "earned_warden_visible": false,
+        "active_hazard_graphics": [
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86,
+          86
+        ],
+        "earned_hazard_graphics": []
+      }
+    ]
+  },
+  "insufficient_incidental_Imp_comparison": {
+    "accepted": false,
+    "binary": "C555FBA455ED46C4818FFAF475700F9A4C96927E6A5EEA77906A86C17ECBB62E",
+    "method": "Nearest actual concurrent owner observations paired with unchanged native earned-state cameras. Shared-region personal presentation; actual peer avatars remain visible. No concurrent gateway control added.",
+    "pairs": [
+      {
+        "native_frame": 3325,
+        "separation_seconds": 0.1156,
+        "native_position": [
+          0,
+          10439,
+          136
+        ],
+        "active_position": [
+          0,
+          10439,
+          130
+        ],
+        "active_imp_visible": true,
+        "earned_imp_visible": false,
+        "active_hazard_graphics": [],
+        "earned_hazard_graphics": []
+      },
+      {
+        "native_frame": 3327,
+        "separation_seconds": 0.204,
+        "native_position": [
+          0,
+          10439,
+          136
+        ],
+        "active_position": [
+          0,
+          10439,
+          132
+        ],
+        "active_imp_visible": true,
+        "earned_imp_visible": false,
+        "active_hazard_graphics": [],
+        "earned_hazard_graphics": []
+      },
+      {
+        "native_frame": 3329,
+        "separation_seconds": 0.0479,
+        "native_position": [
+          0,
+          10439,
+          136
+        ],
+        "active_position": [
+          0,
+          10439,
+          134
+        ],
+        "active_imp_visible": true,
+        "earned_imp_visible": false,
+        "active_hazard_graphics": [],
+        "earned_hazard_graphics": []
+      },
+      {
+        "native_frame": 3331,
+        "separation_seconds": 0.0916,
+        "native_position": [
+          0,
+          10439,
+          136
+        ],
+        "active_position": [
+          0,
+          10439,
+          136
+        ],
+        "active_imp_visible": true,
+        "earned_imp_visible": false,
+        "active_hazard_graphics": [],
+        "earned_hazard_graphics": []
+      }
+    ]
+  },
+  "headless_original_failure": {
+    "scenario": {
+      "accepted": false,
+      "source": "80e55e6 + twelve processional hall rails; C555FBA455ED46C4818FFAF475700F9A4C96927E6A5EEA77906A86C17ECBB62E server",
+      "mode": "headless",
+      "elapsed_seconds_including_native_wait": 241.37,
+      "steps": [
+        {
+          "step": "services.py",
+          "arguments": [
+            "--onboard",
+            "--gate-check",
+            "--order",
+            "kitchen-first",
+            "--scene-checks",
+            "--landmarks",
+            "8",
+            "--coolant-lesson"
+          ],
+          "seconds": 241.37,
+          "exit_code": 1
+        }
+      ]
+    },
+    "classification": "Normal copper mining RNG: ten genuine failed rolls at threshold104 before unchanged55-second integration-driver bound. No competing depletion and no blocked approach. Original preserved; no guardian/reward credit.",
+    "actual_failed_rolls": [
+      {
+        "tick": 1695,
+        "roll": 194,
+        "threshold": 104
+      },
+      {
+        "tick": 1703,
+        "roll": 199,
+        "threshold": 104
+      },
+      {
+        "tick": 1711,
+        "roll": 212,
+        "threshold": 104
+      },
+      {
+        "tick": 1719,
+        "roll": 243,
+        "threshold": 104
+      },
+      {
+        "tick": 1727,
+        "roll": 154,
+        "threshold": 104
+      },
+      {
+        "tick": 1735,
+        "roll": 122,
+        "threshold": 104
+      },
+      {
+        "tick": 1743,
+        "roll": 118,
+        "threshold": 104
+      },
+      {
+        "tick": 1751,
+        "roll": 211,
+        "threshold": 104
+      },
+      {
+        "tick": 1759,
+        "roll": 201,
+        "threshold": 104
+      },
+      {
+        "tick": 1767,
+        "roll": 227,
+        "threshold": 104
+      }
+    ],
+    "actual_clicks": [
+      {
+        "action": "object 10943 10412 118 1",
+        "time": 1792243522.234347,
+        "position": [
+          0,
+          10403,
+          118
+        ],
+        "tick": 298
+      },
+      {
+        "action": "object 10943 10412 118 1",
+        "time": 1792243530.635169,
+        "position": [
+          0,
+          10411,
+          118
+        ],
+        "tick": 312
+      },
+      {
+        "action": "object 10943 10412 118 1",
+        "time": 1792243539.1562824,
+        "position": [
+          0,
+          10411,
+          118
+        ],
+        "tick": 326
+      },
+      {
+        "action": "object 10943 10412 118 1",
+        "time": 1792243547.662109,
+        "position": [
+          0,
+          10411,
+          118
+        ],
+        "tick": 340
+      },
+      {
+        "action": "object 10943 10412 118 1",
+        "time": 1792243556.6167004,
+        "position": [
+          0,
+          10411,
+          118
+        ],
+        "tick": 355
+      },
+      {
+        "action": "object 10943 10412 118 1",
+        "time": 1792243564.963103,
+        "position": [
+          0,
+          10411,
+          118
+        ],
+        "tick": 369
+      },
+      {
+        "action": "object 10943 10412 118 1",
+        "time": 1792243573.0630243,
+        "position": [
+          0,
+          10411,
+          118
+        ],
+        "tick": 383
+      }
+    ],
+    "private_diagnostic": "evidence/headless-hall27-mining-diagnostic.json"
+  },
+  "headless_independent_continuation": "RUNNING evidence/headless-hall27-continued; same legitimately earned kitchen/tin/XP preserved; no grants, resets, save edits or engine/timer changes. This cannot become a clean uninterrupted fresh-run claim.",
+  "human_first_play_pacing": "unmeasured; automated832.30seconds is not human20\u201330minute acceptance",
+  "user_artistic_acceptance": "pending",
+  "overall_complete": false
+}
