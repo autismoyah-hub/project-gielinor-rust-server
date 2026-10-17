@@ -3754,3 +3754,253 @@ mod fire_fish_binding_tests {
         assert!(c.recipes.is_empty());
     }
 }
+
+/// Bowl-contained preparation and manual fire cooking. Other stew/curry effects
+/// and automatic quantities are separate from these ordinary recipes.
+pub struct StewBindings {
+    pub assembly: Vec<gielinor_world::assembly::Recipe>,
+    pub cooking: gielinor_world::cooking::Recipe,
+}
+pub fn stew_recipes(obj: &Symbols, defs: &Definitions, skill: u8) -> Result<StewBindings, String> {
+    let stat = defs
+        .stats
+        .get(&(skill as u32))
+        .ok_or("Missing Cooking stat for stew")?;
+    if stat.name != "Cooking" || stat.max_level != 99 || stat.min_level != 1 || stat.unreleased {
+        return Err("Unattested stew Cooking stat".into());
+    }
+    let mut ids = BTreeMap::new();
+    for (symbol, name) in [
+        ("bowl_water", "Bowl of water"),
+        ("potato", "Potato"),
+        ("cooked_meat", "Cooked meat"),
+        ("cooked_chicken", "Cooked chicken"),
+        ("stew1", "Incomplete stew"),
+        ("stew2", "Incomplete stew"),
+        ("uncooked_stew", "Uncooked stew"),
+        ("stew", "Stew"),
+        ("burnt_stew", "Burnt stew"),
+    ] {
+        let id = *obj.get(symbol).ok_or("Missing stew object symbol")?;
+        let d = u32::try_from(id)
+            .ok()
+            .and_then(|v| defs.items.get(&v))
+            .ok_or("Missing stew object definition")?;
+        if ids.values().any(|v| *v == id)
+            || d.name != name
+            || d.members
+            || d.stackable
+            || d.dummy == 1
+            || d.cert.template != 0
+            || d.placeholder.template != 0
+            || d.transform.template != 0
+        {
+            return Err("Unattested or aliased stew object".into());
+        }
+        ids.insert(symbol, id);
+    }
+    if defs.items[&(ids["stew"] as u32)].inventory_ops[0].as_deref() != Some("Eat") {
+        return Err("Stew output lacks Eat".into());
+    }
+    let assembly = [
+        ("bowl_water", "potato", "stew1"),
+        ("bowl_water", "cooked_meat", "stew2"),
+        ("bowl_water", "cooked_chicken", "stew2"),
+        ("stew1", "cooked_meat", "uncooked_stew"),
+        ("stew1", "cooked_chicken", "uncooked_stew"),
+        ("stew2", "potato", "uncooked_stew"),
+    ]
+    .into_iter()
+    .map(|(a, b, c)| gielinor_world::assembly::Recipe {
+        first: ids[a],
+        second: ids[b],
+        output: ids[c],
+        skill,
+        level: 25,
+        base_xp: 0,
+        members: false,
+    })
+    .collect();
+    Ok(StewBindings {
+        assembly,
+        cooking: gielinor_world::cooking::Recipe {
+            raw: ids["uncooked_stew"],
+            cooked: ids["stew"],
+            burnt: ids["burnt_stew"],
+            level: 25,
+            stop_burn: 58,
+            low: 68,
+            high: 392,
+            xp: 117,
+            ticks: 1,
+        },
+    })
+}
+#[cfg(test)]
+mod stew_binding_tests {
+    use super::*;
+    use gielinor_world::{
+        inventory::{Catalog, Inventory, Item, StackType},
+        npc::RandomSource,
+        stats::Stats,
+    };
+    struct Draw(u32);
+    impl RandomSource for Draw {
+        fn below(&mut self, n: u32) -> u32 {
+            assert_eq!(n, 256);
+            self.0
+        }
+    }
+    #[test]
+    fn stew_all_orders_live_level_no_assembly_xp_and_burn_or117_cooking_are_atomic() {
+        let mut obj = Symbols::new();
+        let mut defs = Definitions {
+            inventories: Default::default(),
+            locations: Default::default(),
+            npcs: Default::default(),
+            items: Default::default(),
+            varbits: Default::default(),
+            varps: Default::default(),
+            stats: Default::default(),
+        };
+        defs.stats.insert(
+            7,
+            gielinor_cache::definitions::StatType {
+                name: "Cooking".into(),
+                unreleased: false,
+                max_level: 99,
+                min_level: 1,
+            },
+        );
+        for (symbol, id, name) in [
+            ("bowl_water", 1921, "Bowl of water"),
+            ("potato", 1942, "Potato"),
+            ("cooked_meat", 2142, "Cooked meat"),
+            ("cooked_chicken", 2140, "Cooked chicken"),
+            ("stew1", 1997, "Incomplete stew"),
+            ("stew2", 1999, "Incomplete stew"),
+            ("uncooked_stew", 2001, "Uncooked stew"),
+            ("stew", 2003, "Stew"),
+            ("burnt_stew", 2005, "Burnt stew"),
+        ] {
+            obj.insert(symbol.into(), id);
+            let mut d = gielinor_cache::definitions::ItemType::decode(&[0]).unwrap();
+            d.name = name.into();
+            if symbol == "stew" {
+                d.inventory_ops[0] = Some("Eat".into());
+            }
+            defs.items.insert(id as u32, d);
+        }
+        let bindings = stew_recipes(&obj, &defs, 7).unwrap();
+        assert_eq!(bindings.assembly.len(), 6);
+        for recipe in bindings.assembly {
+            let mut inv = Inventory::new(2, StackType::Normal, false);
+            for (slot, id) in [(0, recipe.first), (1, recipe.second)] {
+                inv.restore_slot(
+                    slot,
+                    Some(Item {
+                        id,
+                        count: 1,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+            }
+            let mut stats = Stats::default();
+            stats.set_base(7, 24);
+            stats.set_current(7, 24);
+            let before = inv.clone();
+            let job = gielinor_world::assembly::Job {
+                recipe,
+                first_slot: 0,
+                second_slot: 1,
+            };
+            assert_eq!(
+                job.complete_awarding(&mut inv, &Catalog::default(), &mut stats, 500, false)
+                    .0,
+                gielinor_world::assembly::Outcome::Level
+            );
+            assert_eq!(inv, before);
+            stats.set_current(7, 25);
+            let before_stats = stats.clone();
+            assert_eq!(
+                job.complete_awarding(&mut inv, &Catalog::default(), &mut stats, 500, false)
+                    .0,
+                gielinor_world::assembly::Outcome::Made
+            );
+            assert_eq!(stats, before_stats);
+            assert_eq!(
+                inv.slots()
+                    .iter()
+                    .flatten()
+                    .map(|i| (i.id, i.count))
+                    .collect::<Vec<_>>(),
+                vec![(recipe.output, 1)]
+            );
+        }
+        for burned in [false, true] {
+            let mut inv = Inventory::new(1, StackType::Normal, false);
+            inv.restore_slot(
+                0,
+                Some(Item {
+                    id: 2001,
+                    count: 1,
+                    vars: 0,
+                }),
+            )
+            .unwrap();
+            let mut stats = Stats::default();
+            stats.set_current(7, 25);
+            let outcome = bindings
+                .cooking
+                .complete(
+                    0,
+                    &mut inv,
+                    &Catalog::default(),
+                    &mut stats,
+                    7,
+                    99,
+                    125,
+                    &mut Draw(if burned { 255 } else { 0 }),
+                )
+                .unwrap();
+            assert_eq!(outcome.burned, burned);
+            assert_eq!(inv.get(0).unwrap().id, if burned { 2005 } else { 2003 });
+            assert_eq!(stats.fine_xp(7), if burned { 0 } else { 1462 });
+        }
+        defs.items.get_mut(&2005).unwrap().dummy = 1;
+        assert!(stew_recipes(&obj, &defs, 7).is_err());
+        defs.items.get_mut(&2005).unwrap().dummy = -1;
+        obj.insert("stew2".into(), 1997);
+        assert!(stew_recipes(&obj, &defs, 7).is_err());
+    }
+}
+
+
+/// Ordinary stew healing and retained bowl, through the existing food transaction.
+pub fn stew_food(objects:&Symbols,defs:&Definitions,foods:&mut BTreeMap<i32,Edible>)->Result<i32,String>{
+    let mut next=foods.clone();
+    apply_ordinary_food_profiles(objects,defs,&mut next,&[("stew","Stew",11)])?;
+    let id=objects["stew"];
+    let bowl=*objects.get("bowl_empty").ok_or("Missing stew bowl symbol")?;
+    let d=u32::try_from(bowl).ok().and_then(|v|defs.items.get(&v)).ok_or("Missing stew bowl definition")?;
+    if bowl==id || d.name!="Bowl" || d.members || d.stackable || d.dummy==1 || d.cert.template!=0 || d.placeholder.template!=0 || d.transform.template!=0 || defs.items[&(id as u32)].members {return Err("Unattested stew/bowl definition".into());}
+    next.get_mut(&id).unwrap().replacement=Some(bowl);
+    *foods=next;Ok(id)
+}
+#[cfg(test)]
+mod stew_food_tests{
+    use super::*;
+    #[test]fn stew_food_selected_fullbag_heals11_caps_and_retains_bowl_without_xp(){
+        let objects=Symbols::from([("stew".into(),2003),("bowl_empty".into(),1923)]);
+        let mut defs=Definitions{inventories:Default::default(),locations:Default::default(),npcs:Default::default(),items:Default::default(),varbits:Default::default(),varps:Default::default(),stats:Default::default()};
+        for(id,name,eat)in[(2003,"Stew",true),(1923,"Bowl",false)]{let mut d=gielinor_cache::definitions::ItemType::decode(&[0]).unwrap();d.name=name.into();if eat{d.inventory_ops[0]=Some("Eat".into());}defs.items.insert(id,d);}
+        let mut foods=BTreeMap::new();assert_eq!(stew_food(&objects,&defs,&mut foods).unwrap(),2003);
+        for(current,expected)in[(10,21),(29,30),(40,40)]{
+            let mut inv=gielinor_world::inventory::Inventory::new(2,gielinor_world::inventory::StackType::Normal,false);for slot in 0..2{inv.restore_slot(slot,Some(gielinor_world::inventory::Item{id:2003,count:1,vars:0})).unwrap();}
+            let mut stats=gielinor_world::stats::Stats::default();stats.set_base(3,30);stats.set_current(3,current);
+            assert!(gielinor_world::food::eat_slot(&foods[&2003],1,&mut inv,&mut stats,&Default::default(),3,829,|_|{}).unwrap());assert_eq!(inv.get(0).unwrap().id,2003);assert_eq!(inv.get(1).unwrap().id,1923);assert_eq!(stats.current(3),expected);assert_eq!(stats.fine_xp(3),0);
+        }
+        foods.clear();defs.items.get_mut(&1923).unwrap().cert.template=799;assert!(stew_food(&objects,&defs,&mut foods).is_err());assert!(foods.is_empty());
+    }
+}

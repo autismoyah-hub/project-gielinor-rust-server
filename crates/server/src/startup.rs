@@ -353,6 +353,7 @@ pub fn configure<B: AccountBackend>(
         crate::content::wiki_multipart_foods(n("obj"), &runtime.definitions, &mut foods)
             .map_err(io::Error::other)?;
     slot_preserving_foods.extend(crate::content::additional_multipart_foods(n("obj"),&runtime.definitions,&mut foods).map_err(io::Error::other)?);
+    slot_preserving_foods.insert(crate::content::stew_food(n("obj"),&runtime.definitions,&mut foods).map_err(io::Error::other)?);
     let mut boost_foods=crate::content::boost_pie_foods(n("obj"),n("stat"),&runtime.definitions,&mut foods).map_err(io::Error::other)?;
     let energy_foods=crate::content::energy_foods(n("obj"),n("stat"),&runtime.definitions,&mut foods).map_err(io::Error::other)?;
     boost_foods.selected.extend(energy_foods.selected);boost_foods.boosts.extend(energy_foods.boosts);boost_foods.energy.extend(energy_foods.energy);
@@ -684,6 +685,10 @@ pub fn configure<B: AccountBackend>(
     for (recipe,ticks) in crate::content::admiral_pie_assembly(n("obj"),&runtime.definitions,u8::try_from(names.id("stat","cooking")?).map_err(io::Error::other)?).map_err(io::Error::other)? {
         runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.first,recipe.second,gielinor_world::held_use::Handler::AssemblyTimed{recipe,ticks}).map_err(|e|io::Error::other(format!("Admiral assembly registration: {e:?}")))?;
     }
+    let stew=crate::content::stew_recipes(n("obj"),&runtime.definitions,u8::try_from(names.id("stat","cooking")?).map_err(io::Error::other)?).map_err(io::Error::other)?;
+    for recipe in stew.assembly {
+        runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.first,recipe.second,gielinor_world::held_use::Handler::Assembly(recipe)).map_err(|e|io::Error::other(format!("Stew assembly registration: {e:?}")))?;
+    }
     runtime.world.milking = Some(
         crate::content::milking(
             n("obj"),
@@ -696,6 +701,7 @@ pub fn configure<B: AccountBackend>(
     );
     let mut cooking=crate::content::manual_fire_cooking(n("obj"),n("loc"),n("seq"),&runtime.definitions,u8::try_from(names.id("stat","cooking")?).map_err(io::Error::other)?).map_err(io::Error::other)?;
     crate::content::additional_fire_fish(n("obj"),&runtime.definitions,&mut cooking).map_err(io::Error::other)?;
+    if cooking.recipes.insert(stew.cooking.raw,stew.cooking).is_some() {return Err(io::Error::other("Duplicate stew cooking registration"));}
     cooking.tutorial=runtime.world.tutorial_shrimp.map(|c|c.progression);
     runtime.world.cooking=Some(cooking);
     runtime.world.water_sources = Some(crate::content::water_sources(n("obj"), n("loc"), &runtime.definitions).map_err(io::Error::other)?);
