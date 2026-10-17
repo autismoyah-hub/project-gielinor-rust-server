@@ -1,0 +1,966 @@
+{
+  "source_engine": "09bf492 eight-landmark foundry banks; later088d489 adds only tests/docs",
+  "server_executable_sha256": "F45E497F8E5821B0A33C5B40D82161774245F0530E40E88602577A235D2FFB3E",
+  "native_replay": {
+    "accepted": true,
+    "source": "6061 plus eight-landmark foundry bank draft; F45E497F8E5821B0 server",
+    "method": "continuous normal-action native replay; real preparation/rescue; not human pacing guarantee",
+    "elapsed_seconds": 637.67,
+    "steps": [
+      {
+        "step": "services.py",
+        "arguments": [
+          "--order",
+          "workshop-first",
+          "--scene-checks",
+          "--landmarks",
+          "8",
+          "--coolant-lesson",
+          "--native-frames"
+        ],
+        "seconds": 192.69,
+        "exit_code": 0
+      },
+      {
+        "step": "recovery.py",
+        "arguments": [],
+        "seconds": 46.56,
+        "exit_code": 0
+      },
+      {
+        "step": "guardian.py",
+        "arguments": [
+          "imp",
+          "--style",
+          "accurate",
+          "--native-frames",
+          "--label",
+          "foundry-banks"
+        ],
+        "seconds": 101.2,
+        "exit_code": 0
+      },
+      {
+        "step": "guardian.py",
+        "arguments": [
+          "warden",
+          "--style",
+          "accurate",
+          "--require-coolant",
+          "--native-frames",
+          "--timeout",
+          "600",
+          "--label",
+          "foundry-banks"
+        ],
+        "seconds": 270.17,
+        "exit_code": 0
+      },
+      {
+        "step": "restoration.py",
+        "arguments": [
+          "--label",
+          "victory",
+          "--expected",
+          "18526,18511,16811,16811,16810,18525,18525,18525",
+          "--native-frames"
+        ],
+        "seconds": 1.97,
+        "exit_code": 0
+      },
+      {
+        "step": "claim.py",
+        "arguments": [
+          "--coins",
+          "25",
+          "--native-frames"
+        ],
+        "seconds": 13.46,
+        "exit_code": 0
+      },
+      {
+        "step": "exit_return.py",
+        "arguments": [],
+        "seconds": 11.62,
+        "exit_code": 0
+      }
+    ]
+  },
+  "headless_replay": {
+    "accepted": true,
+    "source": "09bf492 / F45E497F8E5821B0 server",
+    "mode": "headless",
+    "elapsed_seconds_including_native_wait": 925.5,
+    "steps": [
+      {
+        "step": "services.py",
+        "arguments": [
+          "--order",
+          "kitchen-first",
+          "--scene-checks",
+          "--landmarks",
+          "8",
+          "--coolant-lesson"
+        ],
+        "seconds": 159.38,
+        "exit_code": 0
+      },
+      {
+        "step": "recovery.py",
+        "arguments": [],
+        "seconds": 41.76,
+        "exit_code": 0
+      },
+      {
+        "step": "guardian.py",
+        "arguments": [
+          "imp",
+          "--style",
+          "accurate",
+          "--label",
+          "foundry-banks"
+        ],
+        "seconds": 105.72,
+        "exit_code": 0
+      },
+      {
+        "step": "guardian.py",
+        "arguments": [
+          "warden",
+          "--style",
+          "accurate",
+          "--require-coolant",
+          "--timeout",
+          "600",
+          "--label",
+          "foundry-banks"
+        ],
+        "seconds": 243.12,
+        "exit_code": 0
+      },
+      {
+        "step": "restoration.py",
+        "arguments": [
+          "--label",
+          "victory",
+          "--expected",
+          "18526,18511,16811,16811,16810,18525,18525,18525"
+        ],
+        "seconds": 1.0,
+        "exit_code": 0
+      },
+      {
+        "step": "claim.py",
+        "arguments": [
+          "--coins",
+          "25"
+        ],
+        "seconds": 12.89,
+        "exit_code": 0
+      },
+      {
+        "step": "exit_return.py",
+        "arguments": [],
+        "seconds": 10.48,
+        "exit_code": 0
+      }
+    ]
+  },
+  "headless_active_scenario_seconds": 574.35,
+  "scene_ids": [
+    18526,
+    18511,
+    16811,
+    16811,
+    16810,
+    18525,
+    18525,
+    18525
+  ],
+  "ordinary_reconnect": {
+    "native": true,
+    "headless": true,
+    "exact_inventory_equipment_all25XP_journal": true,
+    "actual_eight_scene_landmarks_rebuilt": true,
+    "retained_failure": "Immediate native reconnect rejected while account still logged in; both120second waits fail. Independent later native reconnect passes without server changes. Genuine title diagnostic retained."
+  },
+  "crash": {
+    "accepted": true,
+    "method": "Read-only DB confirms nativeRune3 coins550/beer3/clears3 and headlessRune2 coins525/beer2/clears2; verify exact ownedPID7216/path/hash/private listener; kill only ownedserver while both clients remain connected; restart identical F45Ebinary; ordinary native/headless login.",
+    "checks": [
+      "same inventory, equipment, all 25 XP and journal after crash without logout",
+      "duplicate chest remains unpaid after restart",
+      "both real eight-landmark scenes reconstructed after crash"
+    ],
+    "duplicate_reward": 0
+  },
+  "gallery": {
+    "inspected_all": true,
+    "areas": 14,
+    "views": 56,
+    "frames": [
+      {
+        "area": "arrival",
+        "position": [
+          0,
+          10430,
+          124
+        ],
+        "pitch": 2048,
+        "yaw": 0,
+        "sequence": 2197,
+        "sha256": "863e16e00b4eba9ddbfb67a1d4264d2842f36b9cba00a9aee2d982e84048e97b"
+      },
+      {
+        "area": "arrival",
+        "position": [
+          0,
+          10430,
+          124
+        ],
+        "pitch": 2048,
+        "yaw": 4096,
+        "sequence": 2199,
+        "sha256": "47137f9a911f8bae1bb03140311f4362da74a12b237bb1a341b2105295be3e41"
+      },
+      {
+        "area": "arrival",
+        "position": [
+          0,
+          10430,
+          124
+        ],
+        "pitch": 2048,
+        "yaw": 8192,
+        "sequence": 2201,
+        "sha256": "8eed5467ddfd3e328dfa85c752c4eb48f05c41c094199f4b7b5268a5fe3dc0bf"
+      },
+      {
+        "area": "arrival",
+        "position": [
+          0,
+          10430,
+          124
+        ],
+        "pitch": 2048,
+        "yaw": 12288,
+        "sequence": 2203,
+        "sha256": "f8a848dea96b921bd92b4b8d3605141504b8610034e27ba361d051e43ab31f4f"
+      },
+      {
+        "area": "sanctuary",
+        "position": [
+          0,
+          10424,
+          120
+        ],
+        "pitch": 2048,
+        "yaw": 0,
+        "sequence": 2230,
+        "sha256": "581eac318977e162eb4cdb0759836f4463f9ab37ba274fae46ab4de95a51162f"
+      },
+      {
+        "area": "sanctuary",
+        "position": [
+          0,
+          10424,
+          120
+        ],
+        "pitch": 2048,
+        "yaw": 4096,
+        "sequence": 2232,
+        "sha256": "ac6ecf69d77df89d3bff1640f20640e50865aa5256e4aeb12f342d862b0bd523"
+      },
+      {
+        "area": "sanctuary",
+        "position": [
+          0,
+          10424,
+          120
+        ],
+        "pitch": 2048,
+        "yaw": 8192,
+        "sequence": 2234,
+        "sha256": "17040b69c394f39025cabd8dc8d1b5b58a6ab377b93f292ce2adc244bbb5386a"
+      },
+      {
+        "area": "sanctuary",
+        "position": [
+          0,
+          10424,
+          120
+        ],
+        "pitch": 2048,
+        "yaw": 12288,
+        "sequence": 2236,
+        "sha256": "e95d6704aaaff496bd95aca0147ad1d8cd83e9e82faaf5e5506bf2fb5e500cda"
+      },
+      {
+        "area": "restoration hearth",
+        "position": [
+          0,
+          10424,
+          121
+        ],
+        "pitch": 2048,
+        "yaw": 0,
+        "sequence": 2251,
+        "sha256": "a6f3d3d3f178e383ac1be15da3fa70c93c4a207305c297f93a5d90c4526f9f51"
+      },
+      {
+        "area": "restoration hearth",
+        "position": [
+          0,
+          10424,
+          121
+        ],
+        "pitch": 2048,
+        "yaw": 4096,
+        "sequence": 2253,
+        "sha256": "ef4ad39a2d07ebd4f9a78b279f36aaaca174349089d692bfe0f8020517e49a76"
+      },
+      {
+        "area": "restoration hearth",
+        "position": [
+          0,
+          10424,
+          121
+        ],
+        "pitch": 2048,
+        "yaw": 8192,
+        "sequence": 2255,
+        "sha256": "b270fd32310250561cb2ec7ec45a1f2dba996417e9242f2c5135d37157f686d2"
+      },
+      {
+        "area": "restoration hearth",
+        "position": [
+          0,
+          10424,
+          121
+        ],
+        "pitch": 2048,
+        "yaw": 12288,
+        "sequence": 2257,
+        "sha256": "53fc262419be2b4d0aad380bf910a33d417dd8db43b5edd69a925d436f51f9dd"
+      },
+      {
+        "area": "plaque and reward",
+        "position": [
+          0,
+          10424,
+          116
+        ],
+        "pitch": 2048,
+        "yaw": 0,
+        "sequence": 2280,
+        "sha256": "4886d22719ac0340f16f175f575864f804fb71222718a6479568fe024d0f7ff3"
+      },
+      {
+        "area": "plaque and reward",
+        "position": [
+          0,
+          10424,
+          116
+        ],
+        "pitch": 2048,
+        "yaw": 4096,
+        "sequence": 2282,
+        "sha256": "90112af49b1c67e3c2bad39ae5bed66950ac92c74b90ffe7bc6a6973f719423b"
+      },
+      {
+        "area": "plaque and reward",
+        "position": [
+          0,
+          10424,
+          116
+        ],
+        "pitch": 2048,
+        "yaw": 8192,
+        "sequence": 2284,
+        "sha256": "cbd70d8a1ef9d22f02171e0bfcf6ea2ade34944b37c4ac872787119efd26471b"
+      },
+      {
+        "area": "plaque and reward",
+        "position": [
+          0,
+          10424,
+          116
+        ],
+        "pitch": 2048,
+        "yaw": 12288,
+        "sequence": 2286,
+        "sha256": "f328e3200ada1076cd583117790a73a6cb28a25ae378b133b574d966faa05fb7"
+      },
+      {
+        "area": "workshop",
+        "position": [
+          0,
+          10406,
+          118
+        ],
+        "pitch": 2048,
+        "yaw": 0,
+        "sequence": 2331,
+        "sha256": "8f23e4610770efe0f6f025193c11c2bc7339b46be9c859a36ac52090dcd7f3fc"
+      },
+      {
+        "area": "workshop",
+        "position": [
+          0,
+          10406,
+          118
+        ],
+        "pitch": 2048,
+        "yaw": 4096,
+        "sequence": 2333,
+        "sha256": "d6df334c57e80d5befe126317540c71dda50d173f4d59b734bf678dc285ea325"
+      },
+      {
+        "area": "workshop",
+        "position": [
+          0,
+          10406,
+          118
+        ],
+        "pitch": 2048,
+        "yaw": 8192,
+        "sequence": 2335,
+        "sha256": "17d79be4ad6e33cf3dfaf09acebdde36d370b9812dedda2c9a4bb9c9af403903"
+      },
+      {
+        "area": "workshop",
+        "position": [
+          0,
+          10406,
+          118
+        ],
+        "pitch": 2048,
+        "yaw": 12288,
+        "sequence": 2337,
+        "sha256": "54addea2ae7c043accc46ff5e768f93dd99ac2c361179237c7313f7ed75f7d21"
+      },
+      {
+        "area": "moss supply court",
+        "position": [
+          0,
+          10408,
+          104
+        ],
+        "pitch": 2048,
+        "yaw": 0,
+        "sequence": 2376,
+        "sha256": "48459821a8cfa979a32077c04b0792aed5bc867eb22734b1f107d3ea4d651cb2"
+      },
+      {
+        "area": "moss supply court",
+        "position": [
+          0,
+          10408,
+          104
+        ],
+        "pitch": 2048,
+        "yaw": 4096,
+        "sequence": 2378,
+        "sha256": "182d00f6201bce3967760598a0273bd9e9c47fa8990e5b34e1290cc78085b4d0"
+      },
+      {
+        "area": "moss supply court",
+        "position": [
+          0,
+          10408,
+          104
+        ],
+        "pitch": 2048,
+        "yaw": 8192,
+        "sequence": 2380,
+        "sha256": "3b09dfa42e751f08bf975e674dd70eed348181877cb65e5510e748bef1df053f"
+      },
+      {
+        "area": "moss supply court",
+        "position": [
+          0,
+          10408,
+          104
+        ],
+        "pitch": 2048,
+        "yaw": 12288,
+        "sequence": 2382,
+        "sha256": "d56d54d39603b5c9e837cf7d3f92ee4e7a12cfc3cfebff2585ead31f91db73f5"
+      },
+      {
+        "area": "southern processional hall",
+        "position": [
+          0,
+          10424,
+          104
+        ],
+        "pitch": 2048,
+        "yaw": 0,
+        "sequence": 2425,
+        "sha256": "f0824a441e2e866022307594174c61130187ec5d14e0eba5cc3050acf20515e5"
+      },
+      {
+        "area": "southern processional hall",
+        "position": [
+          0,
+          10424,
+          104
+        ],
+        "pitch": 2048,
+        "yaw": 4096,
+        "sequence": 2427,
+        "sha256": "6cf22994aad1b70ec3efaf0d8e152fc451ae481758d918ba2d497930d983f0aa"
+      },
+      {
+        "area": "southern processional hall",
+        "position": [
+          0,
+          10424,
+          104
+        ],
+        "pitch": 2048,
+        "yaw": 8192,
+        "sequence": 2429,
+        "sha256": "c6a7547273604310c00aae7326f1c6b509a1f40e7c6d420ffb7841ad9d7c4fbf"
+      },
+      {
+        "area": "southern processional hall",
+        "position": [
+          0,
+          10424,
+          104
+        ],
+        "pitch": 2048,
+        "yaw": 12288,
+        "sequence": 2431,
+        "sha256": "69c0d936652c84e87cd368a15c865da81165cede25cfcd6c30cb1bfa8dd01c9a"
+      },
+      {
+        "area": "poultry supply court",
+        "position": [
+          0,
+          10440,
+          104
+        ],
+        "pitch": 2048,
+        "yaw": 0,
+        "sequence": 2478,
+        "sha256": "8443f2ed9f257bae22239aafb489b94dccf100248f69b148423cad1f78c40d0e"
+      },
+      {
+        "area": "poultry supply court",
+        "position": [
+          0,
+          10440,
+          104
+        ],
+        "pitch": 2048,
+        "yaw": 4096,
+        "sequence": 2480,
+        "sha256": "474884adba0a1cff07c29874716fd7a0f25e1aad88b1ed3ba6832c94959d0993"
+      },
+      {
+        "area": "poultry supply court",
+        "position": [
+          0,
+          10440,
+          104
+        ],
+        "pitch": 2048,
+        "yaw": 8192,
+        "sequence": 2482,
+        "sha256": "01864a9dde0b5bb9959ded98cf54cddbd3d63a4800100058a5aa2e04baea9f99"
+      },
+      {
+        "area": "poultry supply court",
+        "position": [
+          0,
+          10440,
+          104
+        ],
+        "pitch": 2048,
+        "yaw": 12288,
+        "sequence": 2484,
+        "sha256": "5cff64719e225c2091119b3a6bbe3833190bb40921d9627c2d65c683b76662b2"
+      },
+      {
+        "area": "waterworks",
+        "position": [
+          0,
+          10439,
+          116
+        ],
+        "pitch": 2048,
+        "yaw": 0,
+        "sequence": 2522,
+        "sha256": "5080d7a9ff51e9e149635ff83b5c93e3b5b67988c36a12d9fde2d3015e7eb1a1"
+      },
+      {
+        "area": "waterworks",
+        "position": [
+          0,
+          10439,
+          116
+        ],
+        "pitch": 2048,
+        "yaw": 4096,
+        "sequence": 2524,
+        "sha256": "5fe1c4115cb63918091842b944ab19e12af2fef2587bc8299b240f5223aac727"
+      },
+      {
+        "area": "waterworks",
+        "position": [
+          0,
+          10439,
+          116
+        ],
+        "pitch": 2048,
+        "yaw": 8192,
+        "sequence": 2526,
+        "sha256": "5ab1aab9766c40ba22c4a615f7779b7da0d7581a77a501e94627c8c0eec8de54"
+      },
+      {
+        "area": "waterworks",
+        "position": [
+          0,
+          10439,
+          116
+        ],
+        "pitch": 2048,
+        "yaw": 12288,
+        "sequence": 2528,
+        "sha256": "3fe49fc515570c9b4bcd4f67f17b3993116b2178e68a04acf9929fb2b12cff06"
+      },
+      {
+        "area": "sluice wheel",
+        "position": [
+          0,
+          10444,
+          122
+        ],
+        "pitch": 2048,
+        "yaw": 0,
+        "sequence": 2559,
+        "sha256": "62889bf5581c7e03a1d0f020f976a68c42bb526aea4c776410b2fb8e0cf5bf0a"
+      },
+      {
+        "area": "sluice wheel",
+        "position": [
+          0,
+          10444,
+          122
+        ],
+        "pitch": 2048,
+        "yaw": 4096,
+        "sequence": 2561,
+        "sha256": "9d77cd1b7fd5e0a0930f0cc4848f987b9429745daa3e8c1a540a84f259c2d035"
+      },
+      {
+        "area": "sluice wheel",
+        "position": [
+          0,
+          10444,
+          122
+        ],
+        "pitch": 2048,
+        "yaw": 8192,
+        "sequence": 2563,
+        "sha256": "8636bf434b6d7da4606fcc9205a126aaffa7b8197c2df0add6ee6bae3b17adf4"
+      },
+      {
+        "area": "sluice wheel",
+        "position": [
+          0,
+          10444,
+          122
+        ],
+        "pitch": 2048,
+        "yaw": 12288,
+        "sequence": 2565,
+        "sha256": "5a4dca13b5ed6fdcc0b3c490d6aa2ed77ce845341cb1542b93d9c2ed6e93e8f2"
+      },
+      {
+        "area": "grove",
+        "position": [
+          0,
+          10408,
+          136
+        ],
+        "pitch": 2048,
+        "yaw": 0,
+        "sequence": 2653,
+        "sha256": "dd54cb52a51c6f611b39ccbf02848b2663c1c5fe19c1c0fe05c52f3b6f3c93d4"
+      },
+      {
+        "area": "grove",
+        "position": [
+          0,
+          10408,
+          136
+        ],
+        "pitch": 2048,
+        "yaw": 4096,
+        "sequence": 2655,
+        "sha256": "a39067331a8b00ce2f27f1aae0dfd480dab5c1383da2039c4e5105fc9db3f4f4"
+      },
+      {
+        "area": "grove",
+        "position": [
+          0,
+          10408,
+          136
+        ],
+        "pitch": 2048,
+        "yaw": 8192,
+        "sequence": 2657,
+        "sha256": "21680d7a824a1e372e8dc8d3edccb1f0d64f044fd8b1bdc24b3237f1f6748b82"
+      },
+      {
+        "area": "grove",
+        "position": [
+          0,
+          10408,
+          136
+        ],
+        "pitch": 2048,
+        "yaw": 12288,
+        "sequence": 2659,
+        "sha256": "7757dece9790c29541c356ab6d06c7f11207122a71c6d24c22f234caf1940b33"
+      },
+      {
+        "area": "foundry vestibule",
+        "position": [
+          0,
+          10424,
+          130
+        ],
+        "pitch": 2048,
+        "yaw": 0,
+        "sequence": 2704,
+        "sha256": "43bd3897b270bee40b161bb9f02b22b443b4b0f0b3a0084ae31351f720e0f0b6"
+      },
+      {
+        "area": "foundry vestibule",
+        "position": [
+          0,
+          10424,
+          130
+        ],
+        "pitch": 2048,
+        "yaw": 4096,
+        "sequence": 2706,
+        "sha256": "e41d336e789d6cdb297ff2a9edf25eb1f72cf64efde9a394b8428a09b21e8300"
+      },
+      {
+        "area": "foundry vestibule",
+        "position": [
+          0,
+          10424,
+          130
+        ],
+        "pitch": 2048,
+        "yaw": 8192,
+        "sequence": 2708,
+        "sha256": "49a6ac1e408c71aa60789b60604234e5bd18f62780ac16c82a550a230ba3e8f8"
+      },
+      {
+        "area": "foundry vestibule",
+        "position": [
+          0,
+          10424,
+          130
+        ],
+        "pitch": 2048,
+        "yaw": 12288,
+        "sequence": 2710,
+        "sha256": "dd80cc475c7690162049d45d5c0af2c016b8c0f4c35a1b10951483da27f07e34"
+      },
+      {
+        "area": "Ash Warden chamber",
+        "position": [
+          0,
+          10423,
+          136
+        ],
+        "pitch": 2048,
+        "yaw": 0,
+        "sequence": 2736,
+        "sha256": "4bc2849597fbc3a1ff8bfedc357841366c7bd5f21002697b3d092a1404651142"
+      },
+      {
+        "area": "Ash Warden chamber",
+        "position": [
+          0,
+          10423,
+          136
+        ],
+        "pitch": 2048,
+        "yaw": 4096,
+        "sequence": 2738,
+        "sha256": "8af51d111c3ab3dfefdbc32ff45cf8a3a795a85af1312087a68c45d50d1de8fe"
+      },
+      {
+        "area": "Ash Warden chamber",
+        "position": [
+          0,
+          10423,
+          136
+        ],
+        "pitch": 2048,
+        "yaw": 8192,
+        "sequence": 2740,
+        "sha256": "675e833bb63be7c0ea34705334c320afb41e59826a1d91f55c12c3c7d18f0053"
+      },
+      {
+        "area": "Ash Warden chamber",
+        "position": [
+          0,
+          10423,
+          136
+        ],
+        "pitch": 2048,
+        "yaw": 12288,
+        "sequence": 2742,
+        "sha256": "26a60a2352d440d24eff8d2f1b2bc77b988a32cf0ce3a6e248ad88019cb158ee"
+      },
+      {
+        "area": "Ash Imp vent gallery",
+        "position": [
+          0,
+          10439,
+          136
+        ],
+        "pitch": 2048,
+        "yaw": 0,
+        "sequence": 2803,
+        "sha256": "9f0afd5ab05967011498bc3f2742b13e006bbdf6020d6dd3b7bf93db82d1edc5"
+      },
+      {
+        "area": "Ash Imp vent gallery",
+        "position": [
+          0,
+          10439,
+          136
+        ],
+        "pitch": 2048,
+        "yaw": 4096,
+        "sequence": 2805,
+        "sha256": "2a8ab15b7ba8ade8e21bd996c0aa7a229dfefcc738f81a2f67044c92b33cfed3"
+      },
+      {
+        "area": "Ash Imp vent gallery",
+        "position": [
+          0,
+          10439,
+          136
+        ],
+        "pitch": 2048,
+        "yaw": 8192,
+        "sequence": 2807,
+        "sha256": "4a3a83347024cdfc627bbd2f70a0b9ce8044e0a46e72deec7dbb79abff4c3492"
+      },
+      {
+        "area": "Ash Imp vent gallery",
+        "position": [
+          0,
+          10439,
+          136
+        ],
+        "pitch": 2048,
+        "yaw": 12288,
+        "sequence": 2809,
+        "sha256": "f1923f1cc0847ad4c72dfdbb7887991dc5198b6e3677f706236aff984bd61a94"
+      }
+    ],
+    "note": "Shared peer avatars remain visible. A completed character sees quiet courts and no earned guardian telegraphs while another character is fighting; this is personal presentation in a shared region, not isolated cooperative instances."
+  },
+  "paired_current_observer": {
+    "accepted": true,
+    "scope": "Same live source09bf492 binary; actual native quiet views while a separate headless restorer owns the live Warden court. Shared peer avatars remain visible, correct NPC and hazard presentation derives from personal earned progress.",
+    "pairs": [
+      {
+        "native_sequence": 2736,
+        "observation_gap_seconds": 0.14,
+        "native_warden_present": false,
+        "native_phase_graphics": [],
+        "native_completed": true,
+        "headless_warden_present": true,
+        "headless_completed": false,
+        "headless_position": [
+          0,
+          10425,
+          135
+        ],
+        "native_position": [
+          0,
+          10423,
+          136
+        ]
+      },
+      {
+        "native_sequence": 2738,
+        "observation_gap_seconds": 0.111,
+        "native_warden_present": false,
+        "native_phase_graphics": [],
+        "native_completed": true,
+        "headless_warden_present": true,
+        "headless_completed": false,
+        "headless_position": [
+          0,
+          10425,
+          135
+        ],
+        "native_position": [
+          0,
+          10423,
+          136
+        ]
+      },
+      {
+        "native_sequence": 2740,
+        "observation_gap_seconds": 0.153,
+        "native_warden_present": false,
+        "native_phase_graphics": [],
+        "native_completed": true,
+        "headless_warden_present": true,
+        "headless_completed": false,
+        "headless_position": [
+          0,
+          10425,
+          135
+        ],
+        "native_position": [
+          0,
+          10423,
+          136
+        ]
+      },
+      {
+        "native_sequence": 2742,
+        "observation_gap_seconds": 0.141,
+        "native_warden_present": false,
+        "native_phase_graphics": [],
+        "native_completed": true,
+        "headless_warden_present": true,
+        "headless_completed": false,
+        "headless_position": [
+          0,
+          10425,
+          135
+        ],
+        "native_position": [
+          0,
+          10423,
+          136
+        ]
+      }
+    ]
+  },
+  "pending": [
+    "Fresh current-build native initial run and full-pack500firstreward",
+    "Fresh current-build headless initial run and full-pack500firstreward",
+    "human first-play pacing",
+    "user artistic acceptance"
+  ],
+  "scope": "Current technical replay/lifecycle acceptance; no artistic completion claim or transfer of predecessor fresh-clear evidence."
+}

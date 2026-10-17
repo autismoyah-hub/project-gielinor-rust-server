@@ -1,0 +1,184 @@
+{
+  "source_engine": "09bf492 / F45E497F8E5821B0 server",
+  "native_rune": 3,
+  "accepted": true,
+  "timing": {
+    "accepted": true,
+    "source": "6061 plus eight-landmark foundry bank draft; F45E497F8E5821B0 server",
+    "method": "continuous normal-action native replay; real preparation/rescue; not human pacing guarantee",
+    "elapsed_seconds": 637.67,
+    "steps": [
+      {
+        "step": "services.py",
+        "arguments": [
+          "--order",
+          "workshop-first",
+          "--scene-checks",
+          "--landmarks",
+          "8",
+          "--coolant-lesson",
+          "--native-frames"
+        ],
+        "seconds": 192.69,
+        "exit_code": 0
+      },
+      {
+        "step": "recovery.py",
+        "arguments": [],
+        "seconds": 46.56,
+        "exit_code": 0
+      },
+      {
+        "step": "guardian.py",
+        "arguments": [
+          "imp",
+          "--style",
+          "accurate",
+          "--native-frames",
+          "--label",
+          "foundry-banks"
+        ],
+        "seconds": 101.2,
+        "exit_code": 0
+      },
+      {
+        "step": "guardian.py",
+        "arguments": [
+          "warden",
+          "--style",
+          "accurate",
+          "--require-coolant",
+          "--native-frames",
+          "--timeout",
+          "600",
+          "--label",
+          "foundry-banks"
+        ],
+        "seconds": 270.17,
+        "exit_code": 0
+      },
+      {
+        "step": "restoration.py",
+        "arguments": [
+          "--label",
+          "victory",
+          "--expected",
+          "18526,18511,16811,16811,16810,18525,18525,18525",
+          "--native-frames"
+        ],
+        "seconds": 1.97,
+        "exit_code": 0
+      },
+      {
+        "step": "claim.py",
+        "arguments": [
+          "--coins",
+          "25",
+          "--native-frames"
+        ],
+        "seconds": 13.46,
+        "exit_code": 0
+      },
+      {
+        "step": "exit_return.py",
+        "arguments": [],
+        "seconds": 11.62,
+        "exit_code": 0
+      }
+    ]
+  },
+  "scene_ids_after_victory": [
+    18526,
+    18511,
+    16811,
+    16811,
+    16810,
+    18525,
+    18525,
+    18525
+  ],
+  "imp": {
+    "phases_seen": [
+      2
+    ],
+    "evasion_requests": 24,
+    "style": "accurate"
+  },
+  "warden": {
+    "phases_seen": [
+      2,
+      3
+    ],
+    "evasion_requests": 88,
+    "coolant_ack_uids": [
+      28
+    ],
+    "coolant_required": true,
+    "style": "accurate"
+  },
+  "native_frames": [
+    {
+      "boss": "imp",
+      "sequence": 923,
+      "sha256": "804b7f5cf7fbd2f604c5d0e273183d5694c6226400beca62aa8baf153b925fc9"
+    },
+    {
+      "boss": "imp",
+      "sequence": 1010,
+      "sha256": "25e78833b83e29a2ed36bb23c5c26cecde78a048bf4d80110c34d40ffdc00bac"
+    },
+    {
+      "boss": "imp",
+      "sequence": 1136,
+      "sha256": "92e4bd7be25e74a9a870d85121b8c9170089a49e0e77051a50d7d6cc6378f94f"
+    },
+    {
+      "boss": "imp",
+      "sequence": 1183,
+      "sha256": "e1035bcaadd435f7f53fb9bdaf1af5abe072b7ced66fe965c6688c99fe0d3bad"
+    },
+    {
+      "boss": "warden",
+      "sequence": 1225,
+      "sha256": "00818016364e6b943b829b557f00660e56241ae9054cddac03869eccf806d7e6"
+    },
+    {
+      "boss": "warden",
+      "sequence": 1229,
+      "sha256": "20ad7955030a04b1e87ed9f693679c8a70d8c345b8dbbbecbbdc648ceae0947c"
+    },
+    {
+      "boss": "warden",
+      "sequence": 1446,
+      "sha256": "92b6b9d8164bc9fa3b65d2b4ccc6ea9d50727df85b584eb7b571e5cd507e4b0a"
+    },
+    {
+      "boss": "warden",
+      "sequence": 1824,
+      "sha256": "cf01b7dd2c850e186cbba7f98ba5a8d15fa6ea140e5e7c6f097687a92e645bc4"
+    },
+    {
+      "boss": "warden",
+      "sequence": 2062,
+      "sha256": "0ecd6b7004dcca5039bb7ad1d354d3acec4721b88e7179f22857da1fe7c9aa67"
+    },
+    {
+      "boss": "warden",
+      "sequence": 2080,
+      "sha256": "b295d26a26ec43b2a5ecbfc0d49e7866cc33913214608d700326366d76374884"
+    }
+  ],
+  "checks": [
+    "workshop-first genuine preparation and harmless coolant lesson",
+    "real lethal rescue preserving existing earned progress and supplies except consumption",
+    "both guardians; all Warden phases; required real coolant acknowledgement",
+    "eight actual scene replacements after victory",
+    "durably acknowledged repeat25coins plusbeer and duplicatezero",
+    "exact exit/return inventory/equipment/all25XP/journal"
+  ],
+  "limitations": [
+    "Replay on legitimately developed character; not fresh first-clear or human pacing measurement",
+    "current headless/gallery/crash acceptance still pending",
+    "user artistic acceptance pending"
+  ]
+}
