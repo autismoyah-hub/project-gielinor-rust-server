@@ -37,3 +37,17 @@ The final production walkthrough uses `tools/tower/visual_walkthrough.py`: twelv
 Actual native gallery: local `evidence/visual-gallery-164b/gallery.html`; machine-readable walkthrough lists all 48 original BMPs, twelve areas at yaw 0/4096/8192/12288. Arrival 815/817/819/821; sanctuary 843/845/847/849; plaque 866/868/870/872; workshop 915/917/919/921; moss court 955/957/959/961; hall 999/1001/1003/1005; poultry 1044/1046/1048/1050; waterworks 1077/1079/1081/1083; grove 1144/1146/1148/1150; vestibule 1189/1191/1193/1195; Warden 1214/1216/1218/1220; Imp 1258/1260/1262/1264. Original captures are in `work/native-clear12`. All four angles of all twelve areas were visually reviewed. The latest user mandate judges these spaces too sparse; this is the next reconstruction's before-reference.
 
 Native current Warden win: phase views 69/283/518, victory in arena 638, retreat 651, same private native-clear12 directory. 13 HP, 19 food retained. First reward capacity/duplicate and exact portal results are in `evidence/native-clear12`. Headless current Warden requires a new normal coolant message UID (8); its first claim and exact exit/return passed in `evidence/headless-clear11`. Headless records are observations, never native images. New fresh headless/replay results will be indexed separately, and intermediate failures stay failures.
+
+
+## Fallen Cinderworks draft evidence (not artistic acceptance)
+
+Private current evidence: `evidence/fallen-refined-native-gallery/visual-walkthrough-summary.json` indexes fourteen locations and four settled cardinal angles, with normal journal UI; captures are in `work/native-fallen12b`. The gallery includes a close sanctuary hearth and sluice-wheel approach in addition to the twelve principal areas. Genuine first-draft wheel close-up is native-fallen12 frame302; its inland placement caused the river-contact refinement.
+
+`evidence/headless-fallen16` contains actual ClientState scene CSV checks before services and after workshop, kitchen and altar. Observed IDs progress from [18525,18512,16810,16810,16811] through [18526,18512,16810,16810,16811], [18526,18511,16810,16810,16811], then [18526,18511,16811,16810,16811]. The central hearth is deliberately still unlit before final victory. The separate optional Search lesson preserves inventory/XP/health and grants no progress. Current full encounters and later lifecycle checks must be recorded separately; old 164b successes are not substituted.
+
+Completed 164b native replay coolant is actual native-resume12 frame572; victory frame1140. Fresh headless 164b complete route is in evidence/headless-visual13. Exact no-logout crash survival and post-restart duplicate denial are in evidence/visual-164b-crash-relogin.json, with prior read-only database verification. Original failed diagnostics are retained. All raw captures, scene CSV, account/session data and logs remain private.
+
+
+### Known defects in the current draft gallery
+
+Native-fallen12b frame535/537 shows global peer warning/eruption effects in an otherwise completed Imp court. Native frame451 and corresponding cardinal views show the mismatched broken-wall models. Both are retained as failed visual diagnostics. The corrected source must produce new native evidence before these items can be marked fixed. Native-fallen15 service scene files prove kitchen-first ordering; stable-journal confirmation is separate from the original failed immediate aggregate log. Headless-fallen16's first Warden timeout is not a victory.

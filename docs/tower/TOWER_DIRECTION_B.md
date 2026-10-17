@@ -45,3 +45,22 @@ Foreground southern room edges use supported low stone wall 5154 through `prepar
 Coolant uses stock rainwater barrel 30124 (`mistmyst_barrel_water`), whose genuine native cache has Search operation 1. Storage barrel 362 has no native Search action and is no longer a coolant fixture. Four coolant corners (10421,135), (10421,138), (10428,135), (10428,138) keep central cardinal/diagonal escapes clear. Obsolete lamps/stump inside hazard fields are removed or moved to perimeter recesses.
 
 The shield eligibility rule is preserved, but automatic melee retries no longer flood chat with identical shell-denial messages. Initial instructions and phase/coolant cues remain. The first visible warning explains heat; subsequent waves use the actual animated telegraphs. The displayed aggressive dagger style (Combat Options → Lunge) trains Strength through ordinary combat, with no injected levels or XP.
+
+
+## The Fallen Cinderworks: selected production work
+
+The reviewed 164b reconstruction is a rejected artistic baseline. The active direction is a dwarven-industrial fortress overtaken by ash, with functional restoration visible in the world. This pass composes a colonnaded supply hall, framed sanctuary hearth, auxiliary blast furnace/work table, livestock provisioning bays, river-driven wheel on the actual bank, damaged containment masonry, and an eight-tile-wide inner Imp chamber with a maintenance gallery. All use real cache geometry and collision. The Warden retains its rectangular clear movement field: perimeter machinery, damaged walls and a rear fire establish its identity without compromising tested diagonal escape routes.
+
+Preparation remains three services, available in any order. The plaque now says so; native kitchen-first and headless workshop-first scenarios are supported. Searching the actual waterworks barrel offers an optional harmless coolant lesson. It grants no item, XP, service or guardian credit. Nothing adds a mandatory grind or an extra objective.
+
+| Landmark | Authoritative trigger | Visible response |
+|---|---|---|
+| Auxiliary workshop furnace | Successful ordinary forging | Cold blast furnace becomes a glowing working furnace |
+| River wheel | Kitchen restoration through ordinary cooking | Still wheel begins turning |
+| Altar hearth | Successful bones offering | Cold brazier lights |
+| Imp perimeter vents | Personal Imp defeat | Ambient steam ceases; normal death sequence plays; later shared respawn stays absent for that restorer |
+| Sanctuary master hearth | Warden victory | Beacon lights when the foundry is quenched |
+| Foundry rear fire | Warden victory | Consuming fire goes out and the chamber becomes quiet |
+| Permanent restoration recognition | Durably paid first clear | Sanctuary beacon remains lit during replay; ordinary service mechanisms reset |
+
+Rewards remain 500 coins/beer on first clear and 25/beer on replay. The permanent beacon uses existing durable paid history; no currency policy, reward barrier or schema is weakened. Artistic approval is still required. Further composition and polish continue after this checkpoint; the presence of these features is not a production acceptance claim.

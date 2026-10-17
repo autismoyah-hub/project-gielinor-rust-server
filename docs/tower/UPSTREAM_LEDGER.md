@@ -16,3 +16,8 @@ No external gameplay source is overlaid onto either clone. Direction B deliberat
 ## Visual production continuation baseline
 
 Server pre-redesign baseline: `34bb31d1b5a48449b3c960951ec43f93b4f17fd9`. Client pre-redesign baseline: `a32b66deeeb30a2be159fbd379a9ffb07f423b72`. Current isolated validation client: `8276b5737f8e3beed17eba28eeb50e6ed051135d`; nine raw-byte mail patches reproduce tree `740e2a56e84c30eb1ef79aa3e2c438c4066baf1b`. No client remote push. The previously observed Agent 2 ref remains unmerged. Visual production and release-candidate acceptance require further native review and user artistic acceptance.
+
+
+## Fallen Cinderworks continuation
+
+Parent published checkpoint: `ce03598` (accurate reconstruction regression/controller fixes). The engine draft continues only on agent5/tower-development. Current local validation client: `2f2aeb088c14328f1497104487d235e156d31797`, ten raw mail patches, exact verified tree `8c7ef706196f7bdae2fe0045647d2c71eb54f6d6`. The first nine patches retain the previously recorded history; the tenth exposes read-only scene inventory in headless mode. No client remote push or Agent 2 merge/workspace change.

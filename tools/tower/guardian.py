@@ -5,6 +5,7 @@ p.add_argument('boss', choices=['imp', 'warden'])
 p.add_argument('--directory', type=pathlib.Path, required=True)
 p.add_argument('--output', type=pathlib.Path, required=True)
 p.add_argument('--native-frames', action='store_true')
+p.add_argument('--style', choices=['aggressive','accurate'], default='aggressive')
 p.add_argument('--require-coolant', action='store_true', help='Demonstrate an acknowledged adjacent coolant interruption before resuming melee')
 p.add_argument('--timeout', type=float, default=360)
 p.add_argument('--label', default='accepted')
@@ -15,7 +16,7 @@ a.output.mkdir(parents=True, exist_ok=True)
 g = Gateway(a.directory, a.output / f'{a.boss}-{a.label}-actions.ndjson')
 kind = 16300 if a.boss == 'imp' else 2075
 destination = [10439, 136] if a.boss == 'imp' else [10423, 136]
-bounds = (10434, 10445, 130, 141) if a.boss == 'imp' else (10418, 10430, 131, 141)
+bounds = (10436, 10443, 132, 139) if a.boss == 'imp' else (10418, 10430, 131, 141)
 coolant=[(10421,135),(10421,138),(10428,135),(10428,138)]
 s = g.wait(lambda s: s.get('ready') and s.get('tick', 0) > 0 and (s.get('hp', 0) > 0), 120)
 if s.get('equipment') is not None and (not any((item['id'] in (1205, 1321) for item in s['equipment']))):
@@ -26,7 +27,7 @@ g.act('close')
 # Select the displayed aggressive dagger style through normal UI operations.
 # Strength is earned from real combat; no levels, damage or XP are injected.
 g.interface(35913792)
-g.interface(38862858)
+g.interface(38862854 if a.style=='accurate' else 38862858)
 g.wait(lambda s:s['ready'],20)
 g.interface(35913795)
 g.act('camera 2048 0')
@@ -79,7 +80,7 @@ while time.monotonic() < end:
         g.wait(lambda state: state['position'][1:] == [10424, 128], 55)
         shot = g.act('capture' if a.native_frames else 'observe')
         captures.append(shot['sequence'])
-        result = {'boss': a.boss, 'accepted': True, 'state': s, 'mode': 'native' if a.native_frames else 'headless', 'frame_sequences': captures if a.native_frames else [], 'observation_sequences': captures, 'evasion_requests': warnings, 'phases_seen': sorted(phases), 'coolant_ack_uids':coolant_events, 'coolant_required':a.require_coolant, 'feedback_captures':feedback_captures}
+        result = {'boss': a.boss, 'accepted': True, 'state': s, 'mode': 'native' if a.native_frames else 'headless', 'frame_sequences': captures if a.native_frames else [], 'observation_sequences': captures, 'evasion_requests': warnings, 'phases_seen': sorted(phases), 'coolant_ack_uids':coolant_events, 'coolant_required':a.require_coolant, 'style':a.style, 'feedback_captures':feedback_captures}
         (a.output / f'{a.boss}-{a.label}-summary.json').write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding='utf-8')
         print('Authoritative victory confirmed', a.boss, 'HP', s['hp'], 'captures', captures, flush=True)
         break

@@ -65,6 +65,7 @@ pub mod startup;
 pub mod stat_sync;
 pub mod synchronization;
 pub mod tower_map;
+pub mod tower_scene;
 pub mod transport;
 #[cfg(windows)]
 pub mod tutorial_character;

@@ -76,3 +76,21 @@ Coolant uses stock rainwater barrel 30124 (`mistmyst_barrel_water`), whose genui
 The shield eligibility rule is preserved, but automatic melee retries no longer flood chat with identical shell-denial messages. Initial instructions and phase/coolant cues remain. The first visible warning explains heat; subsequent waves use the actual animated telegraphs. The displayed aggressive dagger style (Combat Options → Lunge) trains Strength through ordinary combat, with no injected levels or XP.
 
 The validation adapter now exposes existing normal Chat UIDs/cycles in JSON. This is observation only; it fixes acknowledgement ambiguity from repeated text and prevents old win messages from counting toward a new encounter. Native input readiness and all parity behavior remain unchanged. The current nine-patch handoff includes this observer change and the read-only scene inventory.
+
+
+## Fallen Cinderworks scenery and personal presentation
+
+- `world/tower_scenery`: explicit cache palette, restoration predicates from durable Run, guardian presentation predicate, river lesson anchor and harmless perimeter vents. No new persistence authority or migration.
+- `server/tower_map`: validates matching real collision and absent operations for dormant/restored pairs, installs dormant landmarks and supported shaped fixtures. The canonical interactive furnace, altar, chest, plaque, portals and coolant retain their own identities.
+- `server/tower_scene`: cloneable per-observer projection after standard zone snapshots. Normal LocAdd packets replace only decorative, noninteractive counterparts with identical clipping. Progress changes, new zone resets, build-area changes, relog and replay reconstruct from Run. An observer commits projection state only after its packet batch sends. No cache or renderer edits.
+- `server/runtime`: attaches that observer beside existing zone transmission; scopes guardian visibility to Tower identities and personal earned credit. Dying actors remain visible for their normal death sequence; healthy shared respawns are omitted only for already credited restorers. Boss cache BlockWalk is Npc, not player clipping; no invisible player barrier is created. Other players retain their own live guardian.
+- `world/tower_layout` and encounter bounds: true masonry feeding bays and an inner Imp containment chamber; Imp core is local [68..75,68..75], Warden movement bounds unchanged. Four-tick warnings, scheduling, ownership, damage, combat metadata and rewards are unchanged. Actual cache clipping verifies 1,512 lethal-pattern one-step escapes and all required route anchors.
+- `simulation/cinderworks_encounter_actions`: ordinary Search at the waterworks barrel demonstrates harmless steam and explains exposure/recovery. It cannot begin an encounter, damage, consume, train or unlock anything. Foundry coolant ownership/cooldown behavior is preserved.
+- Local client validation commit `2f2aeb088c14328f1497104487d235e156d31797` adds the existing read-only scene inventory hook to the headless loop. Ten raw mail patches reproduce exact tree `8c7ef706196f7bdae2fe0045647d2c71eb54f6d6`. Native input/readiness/renderer paths remain unchanged.
+
+The constructed region remains shared with personal progress/presentation and one owner per guardian court. This is not per-party instance allocation or cooperative credit. Ambient/per-fight graphics still use ordinary zone mechanisms. Preserve this distinction during integration.
+
+
+### Quiet-state effect projection correction
+
+Normal global encounter graphics need the same personal progress scope as guardian presentation. `tower_scene::phase_effects` filters only Tower warning/eruption IDs inside the corresponding already-earned court. Active owners get the unmodified baseline stream; unrelated graphics and effects outside Tower remain. World damage, scheduling and ownership are untouched. Native inspection also rejected the first broken-wall palette, now replaced by already-supported low masonry 5154 with its real cache range policy.

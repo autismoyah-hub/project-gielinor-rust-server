@@ -36,3 +36,8 @@ Failed diagnostics remain failed: the early Warden retreat, controller capacity/
 Agent 2's latest observed ref is `521e2e047071a7e7d481ab458829bb88a57b76e2`; it is not merged. Its V12 chemistry migration collides in version number with this branch's V12 Tower migration. Agent 2 must append/renumber the Tower migration and preserve both state projections during integration. Shared runtime/player/queue changes also require review; acceptance against that newer branch is not claimed. See [TOWER_INTEGRATION_CONTRACT.md](TOWER_INTEGRATION_CONTRACT.md).
 
 Three historical prototype differential expected files (tower-bones, tower-chest, tower-kit) were absent. They were not fabricated or reported as passing; Direction B intentionally redesigns that prototype and is accepted through its own policy, integration and authentic client scenarios. The generic combat-catalog loader retains its documented missing-source warning; configured Tower guardians and ordinary creature combat were demonstrated. Whole-client/server parity, other floors, per-party instances and cooperative boss credit are outside this Floor One acceptance. Private caches, binaries, keys, credentials, databases, raw sessions and captures are excluded from publication.
+
+
+## Latest mandate status
+
+The latest user review explicitly requires further Fallen Cinderworks environmental composition, visible restoration, preparation choice and encounter staging. These are under active implementation and current-build regression; the floor is not artistically accepted or a release candidate. The historical 164b route/replay/crash checks are now complete, but are not used to claim the new engine draft passes. See TOWER_PROGRESS.md and TOWER_VISUAL_ACCEPTANCE.md for the current unfinished scope.

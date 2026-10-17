@@ -123,7 +123,6 @@ pub fn prepare(
         (53, 60, 0, "aide_bankbooth"),
         (55, 51, 0, "threshold_chest"),
         (60, 52, 0, "altar"),
-        (60, 52, 0, "altar"),
         (34, 70, 0, "tree"),
         (42, 70, 0, "tree"),
         (34, 76, 0, "tree"),
@@ -144,6 +143,64 @@ pub fn prepare(
     for row in FURNISHINGS {
         put(row.x as i32, row.z as i32, 0, row.symbol)?;
     }
+    // Exact real cache pairs share clipping and expose no gameplay actions.
+    // Their per-restorer state is derived in tower_scene after ordinary zones.
+    for row in gielinor_world::tower_scenery::LANDMARKS {
+        let cold = definitions
+            .locations
+            .get(&row.dormant)
+            .ok_or("Missing dormant landmark")?;
+        let hot = definitions
+            .locations
+            .get(&row.restored)
+            .ok_or("Missing restored landmark")?;
+        let clip = |t: &gielinor_cache::locations::LocationType| {
+            let c = t.collision;
+            (
+                c.width,
+                c.length,
+                c.block_walk,
+                c.block_range,
+                c.break_route_finding,
+            )
+        };
+        if clip(cold) != clip(hot) || cold.ops.iter().chain(&hot.ops).any(Option::is_some) {
+            return Err(format!(
+                "Unsafe restoration pair {} / {}",
+                row.dormant, row.restored
+            ));
+        }
+        if row.x + cold.collision.width as i32 > 80 || row.z + cold.collision.length as i32 > 80 {
+            return Err("Landmark extends beyond authored floor".into());
+        }
+        shell.stamp(
+            origin.translate(row.x, row.z, 0).unwrap(),
+            row.dormant,
+            definitions,
+        )?;
+    }
+    for f in gielinor_world::tower_scenery::FIXTURES {
+        let t = definitions
+            .locations
+            .get(&f.id)
+            .ok_or("Missing fortress fixture")?;
+        if t.ops.iter().any(Option::is_some) {
+            return Err(format!("Unimplemented fixture operation {}", f.id));
+        }
+        shell.stamp_shaped(
+            origin.translate(f.x, f.z, 0).unwrap(),
+            f.id,
+            f.shape,
+            f.angle,
+            definitions,
+        )?;
+    }
+    let (x, z) = gielinor_world::tower_scenery::TRAINING_COOLANT;
+    shell.stamp(
+        origin.translate(x, z, 0).unwrap(),
+        resolve("mistmyst_barrel_water")?,
+        definitions,
+    )?;
     shell.stamp_shaped(
         origin.translate(54, 51, 0).unwrap(),
         resolve("plaque")?,

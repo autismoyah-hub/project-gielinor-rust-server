@@ -120,7 +120,7 @@ impl Wall {
     /// Lower southern room edges keep the normal north-facing traversal camera
     /// readable. Exterior, northern back walls and plaque supports remain high.
     pub fn parapet(&self) -> bool {
-        [48, 50, 62, 64, 67].contains(&self.z)
+        [37, 44, 48, 50, 62, 64, 67, 68].contains(&self.z)
             && (self.angle == 3 || (self.shape == 2 && ((self.angle + 1) & 3) == 3))
     }
 }
@@ -147,6 +147,13 @@ pub fn shell() -> Vec<Wall> {
         if !(39..=42).contains(&z) {
             edge(50, z, 0);
             edge(62, z, 0);
+        }
+    }
+    // Provisioning yards: low masonry feeding bays flank a four-tile route.
+    // Real gaps keep two-tile livestock and players out of dead-end pens.
+    for z in [37, 44] {
+        for x in (33..38).chain(42..47).chain(65..70).chain(74..79) {
+            edge(x, z, 3);
         }
     }
     // Service wings and northern courts. Three separate thresholds lead north.
@@ -211,6 +218,18 @@ pub fn shell() -> Vec<Wall> {
         if ![55, 56].contains(&x) {
             edge(x, 67, 3);
         }
+    }
+    // Intimate inner vent chamber, with a maintenance gallery around its
+    // perimeter. Every combat tile keeps its original four-tick warning.
+    for x in 68..76 {
+        edge(x, 76, 3);
+        if ![71, 72].contains(&x) {
+            edge(x, 68, 3);
+        }
+    }
+    for z in 68..76 {
+        edge(68, z, 0);
+        edge(76, z, 0);
     }
     // A masonry information alcove supports the plaque's wall-decoration model.
     edge(53, 51, 3);

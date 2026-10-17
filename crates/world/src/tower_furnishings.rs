@@ -7,6 +7,31 @@ pub struct Furnishing {
 }
 pub const FURNISHINGS: &[Furnishing] = &[
     Furnishing {
+        x: 38,
+        z: 52,
+        symbol: "table",
+    },
+    Furnishing {
+        x: 39,
+        z: 51,
+        symbol: "stool",
+    },
+    Furnishing {
+        x: 38,
+        z: 51,
+        symbol: "chair",
+    },
+    Furnishing {
+        x: 33,
+        z: 62,
+        symbol: "bookcase",
+    },
+    Furnishing {
+        x: 35,
+        z: 62,
+        symbol: "bookcase",
+    },
+    Furnishing {
         x: 50,
         z: 61,
         symbol: "bookcase",
@@ -35,26 +60,6 @@ pub const FURNISHINGS: &[Furnishing] = &[
         x: 62,
         z: 58,
         symbol: "barrel",
-    },
-    Furnishing {
-        x: 50,
-        z: 59,
-        symbol: "table",
-    },
-    Furnishing {
-        x: 51,
-        z: 58,
-        symbol: "chair",
-    },
-    Furnishing {
-        x: 50,
-        z: 58,
-        symbol: "stool",
-    },
-    Furnishing {
-        x: 59,
-        z: 51,
-        symbol: "bench",
     },
     Furnishing {
         x: 52,
@@ -263,16 +268,6 @@ pub const FURNISHINGS: &[Furnishing] = &[
     },
     Furnishing {
         x: 51,
-        z: 34,
-        symbol: "bookcase",
-    },
-    Furnishing {
-        x: 61,
-        z: 34,
-        symbol: "bookcase",
-    },
-    Furnishing {
-        x: 51,
         z: 45,
         symbol: "enakh_brazier_coal_lit",
     },
@@ -303,11 +298,6 @@ pub const FURNISHINGS: &[Furnishing] = &[
     },
     Furnishing {
         x: 52,
-        z: 49,
-        symbol: "enakh_brazier_coal_lit",
-    },
-    Furnishing {
-        x: 60,
         z: 49,
         symbol: "enakh_brazier_coal_lit",
     },

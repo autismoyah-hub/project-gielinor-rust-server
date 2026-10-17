@@ -41,3 +41,22 @@ Foreground southern room edges use supported low stone wall 5154 through `prepar
 Coolant uses stock rainwater barrel 30124 (`mistmyst_barrel_water`), whose genuine native cache has Search operation 1. Storage barrel 362 has no native Search action and is no longer a coolant fixture. Four coolant corners (10421,135), (10421,138), (10428,135), (10428,138) keep central cardinal/diagonal escapes clear. Obsolete lamps/stump inside hazard fields are removed or moved to perimeter recesses.
 
 The shield eligibility rule is preserved, but automatic melee retries no longer flood chat with identical shell-denial messages. Initial instructions and phase/coolant cues remain. The first visible warning explains heat; subsequent waves use the actual animated telegraphs. The displayed aggressive dagger style (Combat Options → Lunge) trains Strength through ordinary combat, with no injected levels or XP.
+
+
+## Active Fallen Cinderworks implementation checkpoint
+
+The outstanding 164b functional reconstruction regression is now completed: fresh headless ordinary onboarding/services, real lethal recovery, Imp and all Warden phases with a genuine coolant acknowledgement, full-pack first reward, duplicate denial and exact portals. Native replay also passes all three services, lethal rescue, both bosses, required coolant, 25-coin replay payout (525 total/two beers) and exact portals. Both characters survive a deliberately verified isolated server crash with exact inventory, equipment, all 25 XP and journal; duplicate searches still pay zero. These are historical evidence for 164b, not acceptance of the new environment.
+
+The current engine draft implements the selected Fallen Cinderworks architecture, visible personal restoration, harmless coolant lesson, explicit preparation choice and persistent first-clear beacon described in TOWER_DIRECTION_B.md. Affected tests: cache 24, protocol 20, server 55; world 406 passed/two ignored, followed by the journal-specific tests after wording refinement. Real cache collision validates all scenario anchors and 1,512 legal hazard escapes. Client scene-export patch is now ten commits with exact roundtrip tree 8c7ef706196f7bdae2fe0045647d2c71eb54f6d6.
+
+Live validation is underway: fresh headless Search lesson passes without damage, item use, XP or unlock; exact cold scene and each of the three service transformations pass. Its sanctuary master hearth correctly stays cold until Warden victory. A 56-view native tour uses the actual journal UI, settled traversal camera and normally persisted completion. Full current-build boss/reward/recovery/replay/crash evidence and artistic review remain outstanding. Keep development active; do not declare production completion.
+
+
+### Draft inspection and current unfinished regression
+
+The fourteen-area/fifty-six-view native tour is complete, with actual journal UI. Inspection found mismatched broken-wall panels and peer encounter effects leaking into personal quiet-state courts. Source corrections are implemented and the focused projection tests pass; their live validation is next. The gallery is diagnostic and is not final artistic evidence.
+
+Native kitchen-first services each produce the correct actual scene change; a transient blank final journal observation was independently corrected and confirmed without changing gameplay. Headless restoration, lethal rescue and inner Imp pass, but the first Warden attempt timed out in phase three and remains failed. It withdrew normally and must retry independently. Optional ordinary Stab/accuracy training is now supported alongside Lunge/Strength. Full current-build rewards, quiet-state paired observation, relog/rebuild, replay and crash checks are still required. Continue production composition after those checks; no artistic acceptance is granted.
+
+
+Latest corrected engine suites: server **56 passed**, world **406 passed/two existing ignored**, zero failures. Cache 24 and protocol 20 passed in the affected-suite run and are unchanged by the quiet-state correction. Live correction/encounter/lifecycle validation remains pending; this is not artistic acceptance.

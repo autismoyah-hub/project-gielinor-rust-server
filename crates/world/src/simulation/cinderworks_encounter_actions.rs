@@ -249,6 +249,18 @@ impl World {
         let Some(config) = &self.cinderworks else {
             return false;
         };
+        let (x, z) = crate::tower_scenery::TRAINING_COOLANT;
+        if loc.id == config.quench && config.origin.translate(x, z, 0).ok() == Some(loc.coords) {
+            let actor = self.players.get(slot).unwrap().id;
+            self.events.push(WorldEvent::TileGraphic(Graphic {
+                coords: loc.coords,
+                id: config.warning_graphic,
+                height: 0,
+                delay: 0,
+            }));
+            self.events.push(WorldEvent::GameMessage {actor,text:"Cold water draws the heat into harmless steam. In the foundry, stand beside a water barrel and Search as the Warden charges. Coolant interrupts its warning and exposes its shell; you can also evade and strike during recovery.".into()});
+            return true;
+        }
         if loc.id != config.quench || !config.quench_tiles.contains(&loc.coords) {
             return false;
         }
@@ -519,5 +531,31 @@ pub(super) mod tests {
             world.tick().unwrap();
             assert_eq!(world.data(actor).unwrap().tower_run, run);
         }
+    }
+    #[test]
+    fn waterworks_lesson_never_creates_an_encounter_damage_or_progress() {
+        let (mut world, actor, _) = setup(Boss::Imp);
+        world.cinderworks_encounters = [None, None];
+        let config = world.cinderworks.as_ref().unwrap();
+        let (x, z) = crate::tower_scenery::TRAINING_COOLANT;
+        let location = Location::new(
+            config.origin.translate(x, z, 0).unwrap(),
+            config.quench,
+            10,
+            0,
+        )
+        .unwrap();
+        let before = world.data(actor).unwrap().tower_run;
+        let hp = world.data(actor).unwrap().stats.current(3);
+        world.events.clear();
+        assert!(world.quench_cinderworks(actor.slot as usize, location));
+        assert_eq!(world.data(actor).unwrap().tower_run, before);
+        assert_eq!(world.data(actor).unwrap().stats.current(3), hp);
+        assert!(world.cinderworks_encounters.iter().all(Option::is_none));
+        assert!(world.events.iter().any(|e|matches!(e,WorldEvent::GameMessage {text,..} if text.contains("Cold water draws the heat"))));
+        assert!(world
+            .events
+            .iter()
+            .any(|e| matches!(e, WorldEvent::TileGraphic(_))));
     }
 }

@@ -67,6 +67,7 @@ impl Run {
         let hint = if self.id == 0 { "Read the sanctuary plaque." }
             else if self.reward_pending { "Search the sanctuary chest.<br>Leave two inventory slots." }
             else if self.victory { "Portal: leave or return.<br>Plaque: begin another run." }
+            else if self.services == 0 { "Prepare in any order.<br>Forge west; fish east.<br>Search water to learn." }
             else if self.services & 1 == 0 { "Mine copper and tin west.<br>Smelt, then forge a dagger." }
             else if self.services & 2 == 0 { "Net shrimp at the east bank.<br>Use raw shrimp on the range." }
             else if self.services & 4 == 0 { "Defeat a creature south.<br>Use its bones on the altar." }
@@ -154,6 +155,8 @@ impl Run {
             "The foundry is quiet. Claim your reward from the sanctuary chest."
         } else if self.victory {
             "The sanctuary is restored. Leave through the portal, or read the plaque to begin another run."
+        } else if self.services == 0 {
+            "Restore services in any order: forge a dagger west, cook shrimp at the river, and offer bones at the altar. Search the waterworks barrel to learn coolant."
         } else if self.services & 1 == 0 {
             "Restore the workshop: mine copper and tin, smelt bronze, then smith a bronze dagger."
         } else if self.services & 2 == 0 {

@@ -1,8 +1,8 @@
 From 4001176798235e2230d6c69445a0b86e24323c5b Mon Sep 17 00:00:00 2001
 From: Tower Agent 5 <agent5@tower.invalid>
 Date: Fri, 16 Oct 2026 14:37:35 -0700
-Subject: [PATCH 1/9] Add opt-in Tower normal-action validation adapter without
- desktop input
+Subject: [PATCH 01/10] Add opt-in Tower normal-action validation adapter
+ without desktop input
 
 ---
  examples/tower_actions.rs |  29 ++++++++
@@ -250,7 +250,7 @@ index 354c9b3..969d2f1 100644
 From 88e5768f16a7008f972ad7b4bc015409012642c0 Mon Sep 17 00:00:00 2001
 From: Tower Agent 5 <agent5@tower.invalid>
 Date: Fri, 16 Oct 2026 15:30:51 -0700
-Subject: [PATCH 2/9] Extend Tower adapter with inventory actions and
+Subject: [PATCH 02/10] Extend Tower adapter with inventory actions and
  authoritative observations
 
 ---
@@ -547,7 +547,7 @@ index 1ce8533..ddcfcf7 100644
 From cf0bc84097aaf75ae49e2bb484dde248d1d17230 Mon Sep 17 00:00:00 2001
 From: Tower Agent 5 <agent5@tower.invalid>
 Date: Fri, 16 Oct 2026 16:10:34 -0700
-Subject: [PATCH 3/9] Guard visible inventory actions and improve Tower
+Subject: [PATCH 03/10] Guard visible inventory actions and improve Tower
  validation observations
 
 ---
@@ -694,8 +694,8 @@ index 969d2f1..e302bbb 100644
 From 2c5cb8f0920cbd9d7cc486aa630456e99f335c4f Mon Sep 17 00:00:00 2001
 From: Tower Agent 5 <agent5@tower.invalid>
 Date: Fri, 16 Oct 2026 16:43:10 -0700
-Subject: [PATCH 4/9] Report normal interface listener dispatch as a submitted
- action
+Subject: [PATCH 04/10] Report normal interface listener dispatch as a
+ submitted action
 
 ---
  src/tower_adapter.rs | 9 +++++++--
@@ -738,7 +738,7 @@ index 93a8686..73932ac 100644
 From aeb4066e1781b3ec0e651c89f23767d18e120d8c Mon Sep 17 00:00:00 2001
 From: Tower Agent 5 <agent5@tower.invalid>
 Date: Fri, 16 Oct 2026 17:13:12 -0700
-Subject: [PATCH 5/9] Wait for normal UI script readiness before automated
+Subject: [PATCH 05/10] Wait for normal UI script readiness before automated
  actions
 
 ---
@@ -776,7 +776,7 @@ index e302bbb..322b83f 100644
 From 65457900b34891d0e9e8b211995e26e202d6fb8a Mon Sep 17 00:00:00 2001
 From: Tower Agent 5 <agent5@tower.invalid>
 Date: Fri, 16 Oct 2026 17:26:37 -0700
-Subject: [PATCH 6/9] Defer dynamic action targets until normal UI readiness
+Subject: [PATCH 06/10] Defer dynamic action targets until normal UI readiness
 
 ---
  src/tower_adapter.rs | 5 +++++
@@ -802,7 +802,7 @@ index 73932ac..b0955a1 100644
 From a32b66deeeb30a2be159fbd379a9ffb07f423b72 Mon Sep 17 00:00:00 2001
 From: Tower Agent 5 <agent5@tower.invalid>
 Date: Fri, 16 Oct 2026 17:59:27 -0700
-Subject: [PATCH 7/9] Retry observation sharing violations without replaying
+Subject: [PATCH 07/10] Retry observation sharing violations without replaying
  gameplay actions
 
 ---
@@ -1055,7 +1055,7 @@ index b0955a1..548762d 100644
 From 2012745a02da321e7a1189f494c0a7ea81ed494a Mon Sep 17 00:00:00 2001
 From: Tower Agent 5 <agent5@tower.invalid>
 Date: Fri, 16 Oct 2026 20:00:11 -0700
-Subject: [PATCH 8/9] Add read-only native scene provenance for Tower visual
+Subject: [PATCH 08/10] Add read-only native scene provenance for Tower visual
  audits
 
 ---
@@ -1124,7 +1124,8 @@ index 322b83f..0163535 100644
 From 8276b5737f8e3beed17eba28eeb50e6ed051135d Mon Sep 17 00:00:00 2001
 From: Tower Agent 5 <agent5@tower.invalid>
 Date: Fri, 16 Oct 2026 20:47:40 -0700
-Subject: [PATCH 9/9] Expose normal chat UIDs for exact Tower acknowledgements
+Subject: [PATCH 09/10] Expose normal chat UIDs for exact Tower
+ acknowledgements
 
 ---
  src/tower_adapter.rs | 10 +++++++++-
@@ -1158,3 +1159,27 @@ index 5886e74..86d60ec 100644
          std::fs::write(self.directory.join("state.tmp"), state)?;
          std::fs::rename(
              self.directory.join("state.tmp"),
+
+From 2f2aeb088c14328f1497104487d235e156d31797 Mon Sep 17 00:00:00 2001
+From: Tower Agent 5 <agent5@tower.invalid>
+Date: Fri, 16 Oct 2026 22:08:37 -0700
+Subject: [PATCH 10/10] Expose read-only scene inventory in headless validation
+
+---
+ examples/tower_actions.rs | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/examples/tower_actions.rs b/examples/tower_actions.rs
+index 94ad7d0..d811f06 100644
+--- a/examples/tower_actions.rs
++++ b/examples/tower_actions.rs
+@@ -27,7 +27,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
+             client.tick_interfaces_elapsed(step.ticks, &mut input, true)?;
+         }
+         let ready = live.world.is_some() && !live.scripts_busy() && client.interfaces.scripts.is_empty();
+-        adapter.poll(&mut client, ready)?;
++        adapter.poll(&mut client, ready)?;
++        adapter.inspect_scene(&live)?;
+         if adapter.stop {
+             live.session.close();
+             return Ok(());

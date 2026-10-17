@@ -18,7 +18,7 @@ impl Boss {
     }
     pub fn bounds(self) -> ([i32; 2], [i32; 2]) {
         match self {
-            Self::Imp => ([66, 66], [77, 77]),
+            Self::Imp => ([68, 68], [75, 75]),
             Self::Warden => ([50, 67], [62, 77]),
         }
     }

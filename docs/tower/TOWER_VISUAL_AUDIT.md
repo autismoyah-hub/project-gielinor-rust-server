@@ -41,3 +41,25 @@ Further native combat review exposed blocked diagonal escape corners when coolan
 The normal storage barrel had no native Search action. The selected rainwater variant 30124 has genuine Search operation 1 in the read-only client cache and accepted native scene entries. This closes a gap in earlier packet-only interaction evidence. Duplicate shell-denial chat was also causing unnecessary UI work and obscuring phase feedback; it is suppressed while the shield rejection itself remains authoritative.
 
 Foreground high walls obscured the avatar at the foundry threshold in an intermediate capture. Low stock masonry on southern room edges fixes the view using ordinary architecture, with movement/range clipping taken from each actual cache definition. Native comparison: old threshold frame266 in `work/native-visual12-final`, readable threshold frame703 in `work/native-readable12`.
+
+
+## Fallen Cinderworks reconstruction after the latest review
+
+The 48-view 164b gallery remains a rejected before-reference. Principal causes were sparse unstructured floor expanses, weak center composition, provisioning rooms without working boundaries, and restoration conveyed mostly through text.
+
+The current draft adds a permanent-capable master hearth with dwarven columns, repeated hall supports, real low masonry feeding bays, a work table and auxiliary blast furnace, an actual river-bank water wheel with stone abutments, damaged wall replacements, rear foundry fire/debris and a smaller inner Imp chamber. The first wheel draft was too far inland; real terrain collision showed the water line at local x77, so the wheel is moved to (77,58). These are real supported scene placements, not artificial floor tiles or renderer concealment.
+
+The first native draft renders the palette, and simultaneous fresh headless observations show cold counterparts while the normally completed native character sees restored counterparts. A later refined gallery and full normal-action route are underway. Several views still require composition review, including pillar scale, sanctuary negative space, workshop circulation, river contact, camera occlusion and quiet-state arena identity. Do not infer artistic approval from a scene-ID check or a passing test.
+
+Diagnostic unit fixture errors during development were corrected: the coolant lesson test initially called the wrong helper, then inherited an already-started fixture encounter. It now explicitly starts its isolated logic assertion without an encounter. Production behavior was not weakened; final world suite is 406 passed/two existing ignored. Actual cache geometry validates 2,117 reachable floor tiles and 1,512 legal one-step hazard escapes. Full native/headless regression against this engine draft is still required.
+
+
+### Corrections from the 56-view draft tour
+
+The completed 56-view tour remains diagnostic. The selected broken-wall models 13583/13584/13585 rendered as mismatched projecting panels, despite valid shape/collision. They are replaced by known compatible low stone masonry 5154 at the same exact wall edges, producing height loss without incoherent assets. Native confirmation of this correction remains pending.
+
+The completed restorer could also see another player's global warning/eruption effects in a personally quiet court. NPC phasing alone was insufficient. `tower_scene::phase_effects` now projects only Tower 78/86 ground effects out of already credited arenas, preserving every original effect for the active restorer and unrelated/world-outside effects. A focused two-observer test passes; paired live native/headless verification remains required. This fixes personal presentation, not damage or encounter timing.
+
+Native kitchen-first preparation produced all three real scene changes and a valid service journal. Its final immediate aggregate check hit a transient blank journal during normal UI rebuilding; the failed log is retained. An independent stable-journal verification confirms the same earned state and each saved actual scene result. The controller now waits for visible journal content before captures and aggregate assertions.
+
+The first current-build headless Warden run reached phase three but exceeded its 360-second bound; it is a failed diagnostic, not a completion. Normal retreat reset the encounter before a separate retry. The optional `--style accurate` selects the genuinely displayed Stab action, observed at native widget 593:6, through the ordinary combat panel. It trains Attack from actual combat rather than leaving accuracy at level one while training only Strength. No HP, XP, damage, shield or hazard rule is modified. A bounded independent retry remains required.

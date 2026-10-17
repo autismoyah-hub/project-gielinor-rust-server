@@ -223,6 +223,7 @@ pub mod smithing_make;
 pub mod tower_diary;
 pub mod tower_diary_ui;
 pub mod tower_furnishings;
+pub mod tower_scenery;
 pub mod tower_hazards;
 pub mod tower_layout;
 pub mod tower_tanning;

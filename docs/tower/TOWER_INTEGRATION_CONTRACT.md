@@ -35,3 +35,10 @@ Foreground southern room edges use supported low stone wall 5154 through `prepar
 Coolant uses stock rainwater barrel 30124 (`mistmyst_barrel_water`), whose genuine native cache has Search operation 1. Storage barrel 362 has no native Search action and is no longer a coolant fixture. Four coolant corners (10421,135), (10421,138), (10428,135), (10428,138) keep central cardinal/diagonal escapes clear. Obsolete lamps/stump inside hazard fields are removed or moved to perimeter recesses.
 
 The shield eligibility rule is preserved, but automatic melee retries no longer flood chat with identical shell-denial messages. Initial instructions and phase/coolant cues remain. The first visible warning explains heat; subsequent waves use the actual animated telegraphs. The displayed aggressive dagger style (Combat Options → Lunge) trains Strength through ordinary combat, with no injected levels or XP.
+
+
+## Fallen Cinderworks integration additions
+
+Review the scoped `tower_scene` observer hook in runtime synchronization and the personal guardian visibility filter separately from the content palette. Keep standard zone baseline ordering, clone-before-send semantics, actor-specific Run selection and generation-safe NPC synchronization. Decorative variants are deliberately operation-free and collision-identical. Do not apply one player's restoration to the global Locations registry or another player's progress.
+
+No schema migration is added by the environmental pass. The previously recorded Tower V12 / Agent 2 chemistry V12 collision still requires renumbering at eventual integration; preserve Agent 2 chemistry/save projections. No broad upstream merge is performed. Client validation is now ten commits, with an exact byte-preserved roundtrip; apply using `git am --keep-cr`. Private cache, database, credentials, native frames and raw logs remain excluded.

@@ -1,9 +1,9 @@
 {
-  "status": "functional baseline accepted; visual production pass in progress",
+  "status": "Fallen Cinderworks production work active; current full gameplay regression underway",
   "scope": "Cinderworks Floor One on the isolated agent5/tower-development branch; upstream integration is a separate Agent 2 review",
   "server_gameplay_commit": "420729798ffc3b0d31c7aff7497d1841597c2104",
   "client_baseline": "95eed88159b06cebea24559a814a5111b54a59cd",
-  "client_validation_commit": "8276b5737f8e3beed17eba28eeb50e6ed051135d",
+  "client_validation_commit": "2f2aeb088c14328f1497104487d235e156d31797",
   "checks": {
     "clean_services": "passed",
     "lethal_recovery": "passed",
@@ -72,8 +72,8 @@
   "baseline_publication": "34bb31d1b5a48449b3c960951ec43f93b4f17fd9",
   "historical_client_validation_commit": "a32b66deeeb30a2be159fbd379a9ffb07f423b72",
   "current_client_patch": {
-    "commits": 9,
-    "tree": "740e2a56e84c30eb1ef79aa3e2c438c4066baf1b",
+    "commits": 10,
+    "tree": "8c7ef706196f7bdae2fe0045647d2c71eb54f6d6",
     "roundtrip": "passed",
     "apply": "git am --keep-cr"
   },
@@ -108,5 +108,29 @@
     "current_first_reward": "native and headless full-pack atomicity, 500 coins/beer and duplicate denial passed",
     "current_exit_return": "native and headless exact inventory, equipment, XP and journal preservation passed",
     "native_gallery": "48 actual views; twelve areas/four cardinal directions; reviewed; latest user rejects sparse composition"
+  },
+  "fallen_cinderworks": {
+    "status": "engine draft; native/headless current-build full regression underway",
+    "artistic_acceptance": "not granted",
+    "library_tests": {
+      "cache": 24,
+      "protocol": 20,
+      "server": 56,
+      "world": 406,
+      "world_ignored": 2
+    },
+    "real_cache_geometry": {
+      "reachable_floor_tiles": 2117,
+      "legal_lethal_pattern_escapes": 1512
+    },
+    "actual_cold_scene": "passed headless",
+    "service_transformations": "all three passed headless",
+    "coolant_lesson": "passed; normal Search; no damage, inventory or XP change; no unlock",
+    "full_current_encounters_rewards_lifecycle": "pending",
+    "native_gallery": "56 actual settled journal views complete; diagnostic defects retained; corrections pending native recheck",
+    "native_preparation_order": "kitchen-first actual service scene changes and independent stable-journal confirmation passed",
+    "first_current_warden_diagnostic": "failed 360-second timeout in phase three; ordinary retreat reset; independent retry required",
+    "quiet_peer_projection": "corrected source; full server 56/world 406 pass; paired live proof pending",
+    "broken_masonry": "mismatched panel assets replaced by known compatible low stone; native recheck pending"
   }
 }

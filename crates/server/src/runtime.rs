@@ -236,6 +236,7 @@ struct Active {
     observer: Option<crate::synchronization::Observer>,
     npc_observer: crate::npc_synchronization::Observer,
     zone_observer: gielinor_world::zones::Observer,
+    tower_scene: crate::tower_scene::Observer,
     inventories: crate::inventory_sync::Transmissions,
     shop_inventory: Option<shop::Transmission>,
     stats: crate::stat_sync::Observer,
@@ -3137,6 +3138,7 @@ impl<B: AccountBackend> Runtime<B> {
                             observer: None,
                             npc_observer: Default::default(),
                             zone_observer: Default::default(),
+                            tower_scene: Default::default(),
                             stats: Default::default(),
                             invisible_levels: BTreeMap::new(),
                             run: None,
@@ -4134,6 +4136,7 @@ impl<B: AccountBackend> Runtime<B> {
                 continue;
             }
             let result = (|| -> io::Result<()> {
+                let restorer_run=self.world.data(actor).map_err(|e|io::Error::other(format!("{e:?}")))?.tower_run;
                 let npc_blocks: Vec<_> = self
                     .npc_snapshots
                     .iter()
@@ -4207,6 +4210,11 @@ impl<B: AccountBackend> Runtime<B> {
                     .npc_snapshots
                     .iter()
                     .zip(&npc_blocks)
+                    .filter(|(n,_)| self.world.cinderworks.as_ref().is_none_or(|c| {
+                        !gielinor_world::tower_layout::contains(c.origin,n.movement.coords)
+                        || gielinor_world::tower_scenery::guardian_visible(restorer_run,n.type_id,c.imp,c.warden,
+                            self.world.npc(n.actor).is_some_and(|npc|npc.stats[3]>0))
+                    }))
                     .map(|(n, block)| crate::npc_synchronization::Avatar {
                         actor: n.actor,
                         type_id: n.type_id,
@@ -4342,8 +4350,9 @@ impl<B: AccountBackend> Runtime<B> {
                 }
                 packets.push(active_world);
                 let mut zone_observer = active.zone_observer.clone();
+                let mut tower_scene = active.tower_scene.clone();
                 if self.zones_enabled {
-                    let emissions = zone_observer
+                    let mut emissions = zone_observer
                         .cycle_all(
                             origin,
                             base,
@@ -4353,6 +4362,12 @@ impl<B: AccountBackend> Runtime<B> {
                             &self.ground_updates,
                         )
                         .map_err(io::Error::other)?;
+                    if let Some(config) = &self.world.cinderworks {
+                        crate::tower_scene::phase_effects(config.origin,data.tower_run,origin,&mut emissions);
+                        let scenery=tower_scene.cycle(config.origin,data.tower_run,origin,base,
+                            zone_observer.visible(),&emissions,self.world.clock.0).map_err(io::Error::other)?;
+                        emissions.extend(scenery);
+                    }
                     packets.extend(
                         crate::ground_sync::encode(base, &emissions)
                             .map_err(|e| io::Error::other(format!("{e:?}")))?,
@@ -4369,6 +4384,7 @@ impl<B: AccountBackend> Runtime<B> {
                 active.observer = observer;
                 active.npc_observer = npc_observer;
                 active.zone_observer = zone_observer;
+                active.tower_scene = tower_scene;
                 active.inventories = inventories;
                 active.shop_inventory = shop_inventory;
                 active.stats = stats;
