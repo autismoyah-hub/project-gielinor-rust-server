@@ -1,5 +1,5 @@
 {
-  "status": "Forge/poultry native comparison and affected suites pass; latest replay next; preceding4ac fresh native/headless/crash accepted; artistic acceptance pending",
+  "status": "Eight-landmark foundry native preview/suites pass; current replay running; user artistic acceptance pending",
   "scope": "Cinderworks Floor One on the isolated agent5/tower-development branch; upstream integration is a separate Agent 2 review",
   "server_gameplay_commit": "420729798ffc3b0d31c7aff7497d1841597c2104",
   "client_baseline": "95eed88159b06cebea24559a814a5111b54a59cd",
@@ -390,6 +390,142 @@
       "latest native replay with new service/Imp feedback",
       "latest headless/relog/crash regression as affected",
       "broader foundry/environment composition",
+      "human pacing review",
+      "user artistic acceptance"
+    ]
+  },
+  "foundry_banks_20261017": {
+    "source_parent": "6061e83204374284c9ac62ea28dd0d440bc554ae",
+    "draft": "Two flanking foundry banks plus authentic rear apertures; existing victory flag; no schema or combat changes.",
+    "server_executable_sha256": "F45E497F8E5821B0A33C5B40D82161774245F0530E40E88602577A235D2FFB3E",
+    "native_preview": {
+      "accepted_technical": true,
+      "views": [
+        {
+          "area": "foundry cooled rear banks",
+          "yaw": 0,
+          "sequence": 49,
+          "position": [
+            0,
+            10423,
+            136
+          ],
+          "sha256": "ef632a9c506dc5264141b6dddcc413e385ea0df48eba5fa2f75a641b97473261"
+        },
+        {
+          "area": "foundry cooled rear banks",
+          "yaw": 4096,
+          "sequence": 51,
+          "position": [
+            0,
+            10423,
+            136
+          ],
+          "sha256": "4d2d11020381801e5adc31f5a89d9631081e8a522acded0b9ffc8ed4dd3eb1fd"
+        },
+        {
+          "area": "foundry cooled rear banks",
+          "yaw": 8192,
+          "sequence": 53,
+          "position": [
+            0,
+            10423,
+            136
+          ],
+          "sha256": "3c01c1ed0edea19c962c33d3e5e8fa5ab537ef4699c068ff4d7b56beba586c68"
+        },
+        {
+          "area": "foundry cooled rear banks",
+          "yaw": 12288,
+          "sequence": 55,
+          "position": [
+            0,
+            10423,
+            136
+          ],
+          "sha256": "9fa857a30fe29d0d7ae1cfe4b43a122ddd70febab89b4921aac98d3e6beb1b89"
+        },
+        {
+          "area": "foundry rear gallery",
+          "yaw": 0,
+          "sequence": 74,
+          "position": [
+            0,
+            10424,
+            140
+          ],
+          "sha256": "10eb9d53ff0e3005e1b77a2f7dfc14ff450bc93db17434a39c5efcd6a4f99d21"
+        },
+        {
+          "area": "foundry rear gallery",
+          "yaw": 4096,
+          "sequence": 76,
+          "position": [
+            0,
+            10424,
+            140
+          ],
+          "sha256": "718ab0d23b0a35c0438a75ba161cb8584c086fee844a76f80fba202362314975"
+        },
+        {
+          "area": "foundry rear gallery",
+          "yaw": 8192,
+          "sequence": 78,
+          "position": [
+            0,
+            10424,
+            140
+          ],
+          "sha256": "0b39723bc26f56176005c2740350af332721a83306959bb55c112ea29a6950cb"
+        },
+        {
+          "area": "foundry rear gallery",
+          "yaw": 12288,
+          "sequence": 80,
+          "position": [
+            0,
+            10424,
+            140
+          ],
+          "sha256": "b25ab7d214d59c509406cd9f6fd212e1fe66508941b47031a10c0cb76cd16f6b"
+        }
+      ],
+      "actual_cold_banks": [
+        {
+          "x": 10419,
+          "z": 142,
+          "id": 18525,
+          "rotation": 1
+        },
+        {
+          "x": 10428,
+          "z": 142,
+          "id": 18525,
+          "rotation": 1
+        }
+      ],
+      "meaning": "Real earned Rune2 saved state reconstructed at login; these cold previews are not evidence of the current build completing its own fight."
+    },
+    "tests": {
+      "cache": 24,
+      "server": 57,
+      "world": 407,
+      "existing_ignored": 2,
+      "real_cache_reachable": 2100,
+      "legal_lethal_pattern_escapes": 1512
+    },
+    "predecessor_native_replay": {
+      "source": "6061e83204374284c9ac62ea28dd0d440bc554ae",
+      "accepted": true,
+      "automated_seconds": 624.16,
+      "scenarios": "kitchen-first services, real lethal rescue, both guardians/all Warden phases/required coolant, six real scene states, repeat25coins/beer, duplicate zero, exact portals",
+      "not": "Human pacing measurement or eight-bank lifecycle acceptance"
+    },
+    "pending": [
+      "current eight-landmark native full replay",
+      "current headless replay",
+      "hot native foundry review",
+      "current relog/crash reconstruction",
       "human pacing review",
       "user artistic acceptance"
     ]

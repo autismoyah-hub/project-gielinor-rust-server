@@ -9,6 +9,7 @@ p.add_argument('--gate-check', action='store_true')
 p.add_argument('--stage', choices=['all', 'kitchen', 'altar'], default='all')
 p.add_argument('--order', choices=['workshop-first','kitchen-first'], default='workshop-first')
 p.add_argument('--scene-checks', action='store_true')
+p.add_argument('--landmarks', type=int, choices=[6,8], default=6, help='Expected source palette; use 8 for the foundry forge-bank build')
 p.add_argument('--native-frames', action='store_true')
 p.add_argument('--coolant-lesson', action='store_true')
 a = p.parse_args()
@@ -183,6 +184,7 @@ def check_scene(label):
     ids=[18526 if forge else 18525,18511 if water else 18512,16811 if altar_done else 16810,
          16811 if 'Done: Quench Ash Warden' in j or 'First reward: claimed' in j else 16810,
          16810 if 'Done: Quench Ash Warden' in j else 16811, 18525 if 'Done: Silence Ash Imp' in j else 18526]
+    if a.landmarks==8:ids.extend([18525 if 'Done: Quench Ash Warden' in j else 18526]*2)
     command=[sys.executable,str(pathlib.Path(__file__).with_name('restoration.py')),'--directory',str(a.directory),'--output',str(a.output),'--label',label,'--expected',','.join(map(str,ids))]
     if a.native_frames:command.append('--native-frames')
     subprocess.run(command,check=True)

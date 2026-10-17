@@ -311,14 +311,4 @@ pub const FURNISHINGS: &[Furnishing] = &[
         z: 65,
         symbol: "enakh_brazier_coal_lit",
     },
-    Furnishing {
-        x: 51,
-        z: 78,
-        symbol: "enakh_brazier_coal_lit",
-    },
-    Furnishing {
-        x: 61,
-        z: 78,
-        symbol: "enakh_brazier_coal_lit",
-    },
 ];

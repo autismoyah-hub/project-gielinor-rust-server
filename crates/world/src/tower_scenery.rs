@@ -97,6 +97,24 @@ pub const LANDMARKS: &[Landmark] = &[
         state: State::Imp,
         angle: 1,
     },
+    // Flanking forge banks belong to the foundry's actual working rear wall.
+    // The Warden's defeat extinguishes both mouths for this restorer.
+    Landmark {
+        x: 51,
+        z: 78,
+        dormant: 18526,
+        restored: 18525,
+        state: State::Foundry,
+        angle: 1,
+    },
+    Landmark {
+        x: 60,
+        z: 78,
+        dormant: 18526,
+        restored: 18525,
+        state: State::Foundry,
+        angle: 1,
+    },
 ];
 #[derive(Clone, Copy, Debug)]
 pub struct Fixture {

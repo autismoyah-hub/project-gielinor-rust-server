@@ -264,9 +264,9 @@ pub fn shell() -> Vec<Wall> {
         }
     }
     for x in 50..63 {
-        // Real forge-mouth recess: the solid rear hearth fills this aperture,
+        // Real forge-mouth recesses: the solid hearth and paired banks fill them,
         // while the outer north wall still encloses the authored floor.
-        if ![55, 56].contains(&x) {
+        if ![51, 52, 53, 55, 56, 60, 61, 62].contains(&x) {
             edge(x, 78, 3);
         }
         if ![55, 56].contains(&x) {

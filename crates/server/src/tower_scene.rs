@@ -183,7 +183,10 @@ mod tests {
         run.services = 0;
         run.victory = false;
         let replay = ids(&observer.cycle(o, run, p, b, &z, &[], 3).unwrap());
-        assert_eq!(replay, [18525, 18512, 16810, 16811, 16811, 18526]);
+        assert_eq!(
+            replay,
+            [18525, 18512, 16810, 16811, 16811, 18526, 18526, 18526]
+        );
     }
     #[test]
     fn boiler_mouth_keeps_its_real_rotation_through_progress_and_scene_resets() {

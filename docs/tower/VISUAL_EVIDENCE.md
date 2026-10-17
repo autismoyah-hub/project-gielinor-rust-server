@@ -1,3 +1,11 @@
+## Latest foundry-bank draft — native review and regression in progress
+
+The rear foundry now has two genuine three-by-two furnace banks flanking the existing hearth. Both fit authored apertures outside the hazard field; the overlapping decorative coal braziers are removed. Existing Warden victory extinguishes both banks for the restorer, with no new progress or save fields. Eight genuine native cold-state views have been inspected, and actual scene CSV confirms both quiet IDs 18525 at rotation 1 after an earned Rune2 login. These previews demonstrate reconstruction and composition, not a current-build fight or hot-state acceptance.
+
+Affected suites pass: cache 24, server 57, world 407, with two existing ignored tests. Real cache clipping passes 2,100 reachable tiles and all 1,512 legal lethal-pattern escapes. The lower reachable count reflects the new real furnace footprints behind the arena, not loss of hazard escapes. Native full replay on the eight-landmark F45E497F8E5821B0 binary is running; current headless, hot native review and crash regression remain pending. `FOUNDRY_BANKS_PREVIEW_20261017.json` pins this scope.
+
+The preceding published 6061 forge/yard engine independently passed the complete native Rune2 replay in 624.16 automated seconds: kitchen-first preparation, genuine lethal rescue, Imp and all Warden phases with coolant, six scene transformations, repeat 25 coins/beer, duplicate zero and exact exit/return. This does not replace current eight-landmark validation. Earlier 4ac fresh native/headless and paired no-logout crash evidence remains scoped to that engine. Human pacing and user artistic acceptance remain outstanding. Failed diagnostics are retained.
+
 # Visual evidence index
 
 Private evidence is retained locally; no cache assets or binary captures are published here.
