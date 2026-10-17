@@ -3410,3 +3410,347 @@ mod cooking_binding_tests{
   defs.stats.get_mut(&7).unwrap().max_level=126;assert!(manual_fire_cooking(&obj,&loc,&seq,&defs,7).is_err());
  }
 }
+
+
+/// Wiki-pinned F2P fish, using the existing manual cooking adapter. Shared burnt
+/// fish definitions are intentional; raw/output aliases and partial publication are not.
+pub fn additional_fire_fish(
+    obj: &Symbols,
+    defs: &Definitions,
+    config: &mut gielinor_world::cooking::Config,
+) -> Result<(), String> {
+    use gielinor_world::cooking::Recipe;
+    let mut next = config.recipes.clone();
+    let mut raw_ids: std::collections::BTreeSet<_> = next.keys().copied().collect();
+    let mut output_ids: std::collections::BTreeSet<_> =
+        next.values().flat_map(|r| [r.cooked, r.burnt]).collect();
+    let resolve = |name: &str| {
+        obj.get(name)
+            .copied()
+            .filter(|v| *v >= 0)
+            .ok_or_else(|| format!("Missing fire-fish symbol {name}"))
+    };
+    for (
+        raw,
+        cooked,
+        burnt,
+        raw_name,
+        cooked_name,
+        burnt_name,
+        level,
+        xp,
+        stop,
+        low,
+        high,
+        ticks,
+    ) in [
+        (
+            "raw_anchovies",
+            "anchovies",
+            "burntfish1",
+            "Raw anchovies",
+            "Anchovies",
+            "Burnt fish",
+            1,
+            30,
+            34,
+            128,
+            512,
+            4,
+        ),
+        (
+            "raw_sardine",
+            "sardine",
+            "burntfish1",
+            "Raw sardine",
+            "Sardine",
+            "Burnt fish",
+            1,
+            40,
+            38,
+            118,
+            492,
+            1,
+        ),
+        (
+            "raw_herring",
+            "herring",
+            "burntfish2",
+            "Raw herring",
+            "Herring",
+            "Burnt fish",
+            5,
+            50,
+            41,
+            108,
+            472,
+            4,
+        ),
+        (
+            "raw_trout",
+            "trout",
+            "burntfish3",
+            "Raw trout",
+            "Trout",
+            "Burnt fish",
+            15,
+            70,
+            49,
+            88,
+            432,
+            4,
+        ),
+        (
+            "raw_pike",
+            "pike",
+            "burntfish3",
+            "Raw pike",
+            "Pike",
+            "Burnt fish",
+            20,
+            80,
+            54,
+            78,
+            412,
+            1,
+        ),
+        (
+            "raw_salmon",
+            "salmon",
+            "burntfish3",
+            "Raw salmon",
+            "Salmon",
+            "Burnt fish",
+            25,
+            90,
+            58,
+            68,
+            392,
+            1,
+        ),
+        (
+            "raw_tuna",
+            "tuna",
+            "burntfish4",
+            "Raw tuna",
+            "Tuna",
+            "Burnt fish",
+            30,
+            100,
+            63,
+            58,
+            372,
+            4,
+        ),
+        (
+            "raw_lobster",
+            "lobster",
+            "burnt_lobster",
+            "Raw lobster",
+            "Lobster",
+            "Burnt lobster",
+            40,
+            120,
+            74,
+            38,
+            332,
+            4,
+        ),
+        (
+            "raw_swordfish",
+            "swordfish",
+            "burnt_swordfish",
+            "Raw swordfish",
+            "Swordfish",
+            "Burnt swordfish",
+            45,
+            140,
+            86,
+            18,
+            292,
+            4,
+        ),
+    ] {
+        let raw = resolve(raw)?;
+        let cooked = resolve(cooked)?;
+        let burnt = resolve(burnt)?;
+        if raw == cooked
+            || raw == burnt
+            || cooked == burnt
+            || output_ids.contains(&raw)
+            || !raw_ids.insert(raw)
+            || raw_ids.contains(&cooked)
+            || raw_ids.contains(&burnt)
+        {
+            return Err("Aliased fire-fish recipe".into());
+        }
+        for (id, name) in [(raw, raw_name), (cooked, cooked_name), (burnt, burnt_name)] {
+            let d = defs
+                .items
+                .get(&(id as u32))
+                .ok_or("Missing fire-fish definition")?;
+            if d.name != name
+                || d.members
+                || d.stackable
+                || d.dummy == 1
+                || d.cert.template != 0
+                || d.placeholder.template != 0
+                || d.transform.template != 0
+            {
+                return Err(format!("Unattested ordinary fire-fish item {name}"));
+            }
+        }
+        if defs.items[&(cooked as u32)].inventory_ops[0].as_deref() != Some("Eat") {
+            return Err("Fire-fish cooked output lacks Eat".into());
+        }
+        output_ids.extend([cooked, burnt]);
+        next.insert(
+            raw,
+            Recipe {
+                raw,
+                cooked,
+                burnt,
+                level,
+                stop_burn: stop,
+                low,
+                high,
+                xp,
+                ticks,
+            },
+        );
+    }
+    config.recipes = next;
+    Ok(())
+}
+
+#[cfg(test)]
+mod fire_fish_binding_tests {
+    use super::*;
+    use gielinor_world::{
+        cooking::Config,
+        inventory::{Catalog, Inventory, Item, StackType},
+        npc::RandomSource,
+        stats::Stats,
+    };
+    struct Draw(u32);
+    impl RandomSource for Draw {
+        fn below(&mut self, n: u32) -> u32 {
+            assert_eq!(n, 256);
+            self.0
+        }
+    }
+    #[test]
+    fn fish_bind_real_shared_outputs_award_selected_xp_and_rollback_late_bad_metadata() {
+        let mut obj = Symbols::new();
+        let mut defs = Definitions {
+            inventories: Default::default(),
+            locations: Default::default(),
+            npcs: Default::default(),
+            items: Default::default(),
+            varbits: Default::default(),
+            varps: Default::default(),
+            stats: Default::default(),
+        };
+        for (symbol, id, name, eat) in [
+            ("raw_anchovies", 321, "Raw anchovies", false),
+            ("anchovies", 319, "Anchovies", true),
+            ("burntfish1", 323, "Burnt fish", false),
+            ("raw_sardine", 327, "Raw sardine", false),
+            ("sardine", 325, "Sardine", true),
+            ("raw_herring", 345, "Raw herring", false),
+            ("herring", 347, "Herring", true),
+            ("burntfish2", 343, "Burnt fish", false),
+            ("raw_trout", 335, "Raw trout", false),
+            ("trout", 333, "Trout", true),
+            ("burntfish3", 357, "Burnt fish", false),
+            ("raw_pike", 349, "Raw pike", false),
+            ("pike", 351, "Pike", true),
+            ("raw_salmon", 331, "Raw salmon", false),
+            ("salmon", 329, "Salmon", true),
+            ("raw_tuna", 359, "Raw tuna", false),
+            ("tuna", 361, "Tuna", true),
+            ("burntfish4", 367, "Burnt fish", false),
+            ("raw_lobster", 377, "Raw lobster", false),
+            ("lobster", 379, "Lobster", true),
+            ("burnt_lobster", 381, "Burnt lobster", false),
+            ("raw_swordfish", 371, "Raw swordfish", false),
+            ("swordfish", 373, "Swordfish", true),
+            ("burnt_swordfish", 375, "Burnt swordfish", false),
+        ] {
+            obj.insert(symbol.into(), id);
+            let mut d = gielinor_cache::definitions::ItemType::decode(&[0]).unwrap();
+            d.name = name.into();
+            if eat {
+                d.inventory_ops[0] = Some("Eat".into());
+            }
+            defs.items.insert(id as u32, d);
+        }
+        let empty = Config {
+            fire: 26185,
+            animation: 897,
+            skill: 7,
+            max_level: 99,
+            recipes: BTreeMap::new(),
+            tutorial: None,
+        };
+        let mut c = empty.clone();
+        additional_fire_fish(&obj, &defs, &mut c).unwrap();
+        assert_eq!(c.recipes.len(), 9);
+        assert_eq!(
+            (c.recipes[&349].stop_burn, c.recipes[&371].stop_burn),
+            (54, 86)
+        );
+        for recipe in c.recipes.values() {
+            for burned in [false, true] {
+                let mut inv = Inventory::new(2, StackType::Normal, false);
+                for slot in 0..2 {
+                    inv.restore_slot(
+                        slot,
+                        Some(Item {
+                            id: recipe.raw,
+                            count: 1,
+                            vars: 0,
+                        }),
+                    )
+                    .unwrap();
+                }
+                let mut stats = Stats::default();
+                stats.set_current(7, recipe.level as i8);
+                let outcome = recipe
+                    .complete(
+                        1,
+                        &mut inv,
+                        &Catalog::default(),
+                        &mut stats,
+                        7,
+                        99,
+                        125,
+                        &mut Draw(if burned { 255 } else { 0 }),
+                    )
+                    .unwrap();
+                assert_eq!(outcome.burned, burned);
+                assert_eq!(inv.get(0).unwrap().id, recipe.raw);
+                assert_eq!(
+                    inv.get(1).unwrap().id,
+                    if burned { recipe.burnt } else { recipe.cooked }
+                );
+                assert_eq!(
+                    stats.fine_xp(7),
+                    if burned {
+                        0
+                    } else {
+                        i32::from(recipe.xp) * 125 / 10
+                    }
+                );
+            }
+        }
+        let mut c = empty.clone();
+        defs.items.get_mut(&375).unwrap().members = true;
+        assert!(additional_fire_fish(&obj, &defs, &mut c).is_err());
+        assert!(c.recipes.is_empty());
+        defs.items.get_mut(&375).unwrap().members = false;
+        obj.insert("raw_swordfish".into(), 323);
+        assert!(additional_fire_fish(&obj, &defs, &mut c).is_err());
+        assert!(c.recipes.is_empty());
+    }
+}
