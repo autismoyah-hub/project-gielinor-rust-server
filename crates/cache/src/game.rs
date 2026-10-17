@@ -122,7 +122,7 @@ impl GameCache {
         self.definitions(12, |_, b| crate::sequences::SequenceType::decode(b))
     }
     pub fn definitions_all(&mut self) -> io::Result<Definitions> {
-        Ok(Definitions {
+        let mut definitions = Definitions {
             inventories: self.definitions(5, |_, b| InventoryType::decode(b))?,
             locations: self.definitions(6, |_, b| LocationType::decode(b))?,
             npcs: self.definitions(9, |_, b| NpcType::decode(b))?,
@@ -135,7 +135,36 @@ impl GameCache {
                 )
             })?,
             stats: self.definitions(200, |_, b| StatType::decode(b))?,
-        })
+        };
+        if let Some(root) = std::env::var_os("TOWER_ASSET_PACKAGE") {
+            let root = Path::new(&root);
+            let text = std::fs::read_to_string(root.join("registry.txt"))?;
+            if text.len()>65536 { return Err(invalid("asset registry size")); }
+            let mut lines=text.lines();
+            if lines.next()!=Some("TOWER_ASSET_PACKAGE 1") { return Err(invalid("asset registry version")); }
+            let mut seen=std::collections::BTreeSet::new();
+            for line in lines {
+                let row:Vec<_>=line.split_whitespace().collect();
+                if row.len()!=4 || row[2].is_empty() || row[2].contains("..") || !row[2].bytes().all(|b|b.is_ascii_alphanumeric() || b==b'.' || b==b'-') { return Err(invalid("asset registry path")); }
+                let id:u32=row[1].parse().map_err(|_|invalid("asset ID"))?;
+                let crc=u32::from_str_radix(row[3],16).map_err(|_|invalid("asset CRC"))?;
+                if !seen.insert((row[0],id)) { return Err(invalid("duplicate asset ID")); }
+                let path=root.join(row[2]);
+                if std::fs::symlink_metadata(&path)?.file_type().is_symlink() || std::fs::metadata(&path)?.len()>16<<20 { return Err(invalid("asset file bounds")); }
+                let bytes=std::fs::read(path)?;
+                if crate::crc32(&bytes)!=crc { return Err(invalid("asset checksum")); }
+                match row[0] {
+                    "object" if id<=65535 => {
+                        if definitions.locations.contains_key(&id) { return Err(invalid("custom object replaces original ID")); }
+                        let ty=LocationType::decode(&bytes).map_err(|_|invalid("custom object encoding"))?;
+                        definitions.locations.insert(id,ty);
+                    },
+                    "model" => { if self.groups(7)?.contains(&id) { return Err(invalid("custom model replaces original ID")); } },
+                    _ => return Err(invalid("asset kind/ID")),
+                }
+            }
+        }
+        Ok(definitions)
     }
     pub fn names(&mut self) -> io::Result<crate::names::Names> {
         let mut names = crate::names::Names::default();

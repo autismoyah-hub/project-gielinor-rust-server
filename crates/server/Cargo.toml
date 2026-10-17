@@ -12,3 +12,7 @@ gielinor-protocol = { path = "../protocol" }
 gielinor-world = { path = "../world" }
 gielinor-storage = { path = "../storage" }
 gielinor-cache = { path = "../cache" }
+
+[[example]]
+name = "custom_asset_account"
+path = "examples/custom_asset_account.rs"
