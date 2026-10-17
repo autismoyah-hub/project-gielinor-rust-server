@@ -1,0 +1,191 @@
+{
+  "source_parent": "eaa953fbe3817745386a85c2472aa7a7422fd510",
+  "runtime_sha256": "75C0DA039D2AD303CCFE520F960FF77A50E5DBA7ACD7A6634B5FBC6FE0E6EE10",
+  "source_change": "Only five hint string literals in tower_run.rs: task labels, progression, rewards/history, geometry, timers and renderer unchanged.",
+  "source_file_sha256": "866731f081e8f9ec5ca391cfa87a38412a21283295f7975c4e46e39abb57ca14",
+  "targeted_checks": {
+    "world_run_lifecycle_tests": 2,
+    "server_journal_packet_test": 1,
+    "native_actual_Run2_services_gate_coolant_eight_landmarks": true,
+    "headless_exact_paid_transition_static15walls_and_cross_routes": true
+  },
+  "cache_font": {
+    "id": 496,
+    "original_clipped_lines_px": {
+      "Dagger: Lunge trains Strength.": 203,
+      "Net shrimp at the east bank.": 188,
+      "Use raw shrimp on the range.": 192,
+      "Search the sanctuary chest.": 187
+    },
+    "new_lines_px": {
+      "Stab trains Attack.": 125,
+      "Lunge trains Strength.": 149,
+      "Enter the east gallery.": 149,
+      "Net shrimp to the east.": 153,
+      "Use raw shrimp on range.": 166,
+      "Search the reward chest.": 165,
+      "Leave two pack slots.": 142,
+      "Smelt; forge a dagger.": 148,
+      "Use bones on the altar.": 155
+    },
+    "method": "Read-only actual native cache bitmap font metrics; original/new runtime renderer and cache assets unmodified."
+  },
+  "clients": {
+    "native": {
+      "paid_entry": {
+        "accepted": true,
+        "checks": [
+          "exact paid inventory/equipment/all25XP/journal across normal UI-copy binary transition",
+          "fresh UID duplicate reward pays zero"
+        ],
+        "fresh_reply_uids": [
+          1
+        ]
+      },
+      "scenario": {
+        "accepted": true,
+        "scope": "Real normal Run2 preparation after exact paid transition. Actual crafting/gathering legitimately changes XP/food/materials; no new guardian/reward/crash claim.",
+        "journal": "<col=ffb83f>Cinderworks \u2014 run 2</col><br><col=0dc10d>Done: Workshop: dagger</col><br><col=0dc10d>Done: Kitchen: cook shrimp</col><br><col=0dc10d>Done: Altar: offer bones</col><br><col=ffb83f>Next: Silence Ash Imp</col><br><col=9f9f9f>Next: Quench Ash Warden</col><br><col=9f9f9f>Next: Claim reward</col><br><br>Stab trains Attack.<br>Lunge trains Strength.<br>Enter the east gallery.<br><br>Victories: 1<br>First reward: claimed"
+      }
+    },
+    "headless": {
+      "paid_entry": {
+        "accepted": true,
+        "checks": [
+          "exact paid inventory/equipment/all25XP/journal across normal UI-copy binary transition",
+          "fresh UID duplicate reward pays zero"
+        ],
+        "fresh_reply_uids": [
+          1
+        ]
+      },
+      "scenario": {
+        "accepted": true,
+        "scope": "Exact earned paid state, fresh UID duplicatezero and all established geometry/normal routes on UI-copy binary. Full combat/crash independently pinned to C555 predecessor."
+      }
+    }
+  },
+  "native_views": [
+    {
+      "label": "paid history before replay",
+      "filename": "frame-11.bmp",
+      "sha256": "ece304b83f4d88390e054f741f018fe1d9f4ef946c2d4ba4643668c47f3552a9"
+    },
+    {
+      "label": "before-services",
+      "filename": "frame-217.bmp",
+      "sha256": "f85f38f46b0b4b70f19fda1c9ff2171500925dabdfeb2d2fd58ce90934122618"
+    },
+    {
+      "label": "after-workshop",
+      "filename": "frame-438.bmp",
+      "sha256": "dcc1002350f3064b20809c21606b4727f32ec6c590d4184c044082ff2261fc1d"
+    },
+    {
+      "label": "after-kitchen",
+      "filename": "frame-555.bmp",
+      "sha256": "a297008f1fd396c2b1ffbf9d19c22ee21ac24dc1bec6a6e7fe3010f0cb66a932"
+    },
+    {
+      "label": "after-altar",
+      "filename": "frame-701.bmp",
+      "sha256": "3bdcfb323342c4e19d4f79d5e09eba852491bfe1ed7d1df8f75c86d6ac578a2a"
+    }
+  ],
+  "all_five_current_native_views_inspected": true,
+  "qualification": "Native Run2 preparation is real gameplay and legitimately changes materials/food/XP; exact state preservation is asserted for paid reconnect before beginning that replay, not across resource gathering. Current pending-reward text is metric checked; current native frames cover paid state and four service stages.",
+  "historical_full_combat_and_crash": "HALL_FIRST_CLEAR_AND_LIFECYCLE_20261017.json pins preceding C555; not rerun on75C0 text-only draft.",
+  "human_first_play_pacing": "unmeasured",
+  "user_final_artistic_acceptance": "pending",
+  "overall_complete": false,
+  "private_gallery": "evidence\\native-journal26-validation\\journal-fit.html",
+  "static_scene": {
+    "accepted": true,
+    "actual": {
+      "native": [
+        {
+          "id": "5575",
+          "plane": "0",
+          "x": "10408",
+          "z": "99",
+          "shape": "10",
+          "rotation": "0",
+          "runtime": "true",
+          "rejected": "false"
+        },
+        {
+          "id": "5575",
+          "plane": "0",
+          "x": "10440",
+          "z": "99",
+          "shape": "10",
+          "rotation": "0",
+          "runtime": "true",
+          "rejected": "false"
+        },
+        {
+          "id": "17097",
+          "plane": "0",
+          "x": "10430",
+          "z": "123",
+          "shape": "10",
+          "rotation": "0",
+          "runtime": "true",
+          "rejected": "false"
+        },
+        {
+          "id": "7017",
+          "plane": "0",
+          "x": "10430",
+          "z": "126",
+          "shape": "10",
+          "rotation": "0",
+          "runtime": "true",
+          "rejected": "false"
+        }
+      ],
+      "headless": [
+        {
+          "id": "5575",
+          "plane": "0",
+          "x": "10408",
+          "z": "99",
+          "shape": "10",
+          "rotation": "0",
+          "runtime": "true",
+          "rejected": "false"
+        },
+        {
+          "id": "5575",
+          "plane": "0",
+          "x": "10440",
+          "z": "99",
+          "shape": "10",
+          "rotation": "0",
+          "runtime": "true",
+          "rejected": "false"
+        },
+        {
+          "id": "17097",
+          "plane": "0",
+          "x": "10430",
+          "z": "123",
+          "shape": "10",
+          "rotation": "0",
+          "runtime": "true",
+          "rejected": "false"
+        },
+        {
+          "id": "7017",
+          "plane": "0",
+          "x": "10430",
+          "z": "126",
+          "shape": "10",
+          "rotation": "0",
+          "runtime": "true",
+          "rejected": "false"
+        }
+      ]
+    }
+  }
+}

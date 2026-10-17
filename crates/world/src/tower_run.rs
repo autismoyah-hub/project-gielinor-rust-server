@@ -65,13 +65,13 @@ impl Run {
             ));
         }
         let hint = if self.id == 0 { "Read the sanctuary plaque." }
-            else if self.reward_pending { "Search the sanctuary chest.<br>Leave two inventory slots." }
+            else if self.reward_pending { "Search the reward chest.<br>Leave two pack slots." }
             else if self.victory { "Portal: leave or return.<br>Plaque: begin another run." }
             else if self.services == 0 { "Prepare in any order.<br>Forge west; fish east.<br>Search water to learn." }
-            else if self.services & 1 == 0 { "Mine copper and tin west.<br>Smelt, then forge a dagger." }
-            else if self.services & 2 == 0 { "Net shrimp at the east bank.<br>Use raw shrimp on the range." }
-            else if self.services & 4 == 0 { "Defeat a creature south.<br>Use its bones on the altar." }
-            else if !self.imp { "Dagger: Lunge trains Strength.<br>Enter the east vent gallery." }
+            else if self.services & 1 == 0 { "Mine copper and tin west.<br>Smelt; forge a dagger." }
+            else if self.services & 2 == 0 { "Net shrimp to the east.<br>Use raw shrimp on range." }
+            else if self.services & 4 == 0 { "Defeat a creature south.<br>Use bones on the altar." }
+            else if !self.imp { "Stab trains Attack.<br>Lunge trains Strength.<br>Enter the east gallery." }
             else { "Evade the smoking tiles.<br>Search water from safety." };
         text.push_str(&format!("<br>{hint}<br><br>Victories: {}<br>First reward: {}", self.clears,
             if self.first_reward_paid {"claimed"} else {"unclaimed"}));

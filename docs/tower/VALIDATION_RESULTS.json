@@ -1,5 +1,5 @@
 {
-  "status": "CurrentC555 native cleanfirstclear832.30s/headlesscontinuedfirstclear644.89active/first500fullpackdupack/bothnormalrelogin/verifiedcurrentconnectedcrash/exactstate8landmarks15walls/56nativecombatquietpost12views PASS. Originalheadless241.37sRNGtimeout and incidentalImpnohazards remainfailed/insufficient. Userart/humanpacing/broaderproductionpending",
+  "status": "Current75C0 journal-only hints targetedtests/native5viewfit+ordinaryRun2prep/bothpaidtransitiondupack/headless15wallsroutes PASS. Full firstclear/crash remainsC555eaa. Broaderart/humanpacing/userapprovalpending",
   "scope": "Cinderworks Floor One on the isolated agent5/tower-development branch; upstream integration is a separate Agent 2 review",
   "server_gameplay_commit": "420729798ffc3b0d31c7aff7497d1841597c2104",
   "client_baseline": "95eed88159b06cebea24559a814a5111b54a59cd",
@@ -2775,5 +2775,12 @@
     "postcrash12_views_reviewed": true,
     "crash_phase": "Connected sessions after normal relogin, not an in-flight transaction test",
     "overall_complete": false
+  },
+  "journal_hint_fit": {
+    "receipt": "JOURNAL_HINTS_VALIDATION_20261017.json",
+    "binary": "75C0DA039D2AD303CCFE520F960FF77A50E5DBA7ACD7A6634B5FBC6FE0E6EE10",
+    "scope": "Five hint literals only, current targeted checks; no new fullgauntlet/crash claim",
+    "native5_views_reviewed": true,
+    "old_first_reward_history_visible_in_replay": true
   }
 }
