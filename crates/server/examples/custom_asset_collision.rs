@@ -3,6 +3,7 @@ use gielinor_cache::{game::GameCache,symbols};
 use gielinor_world::{collision::{CollisionMap,Strategy},tower_layout,CoordGrid};
 use std::{collections::BTreeSet,fs,path::PathBuf};
 fn main()->Result<(),Box<dyn std::error::Error>>{
+    if std::env::var_os("TOWER_ASSET_PACKAGE").is_none(){return Err("Set TOWER_ASSET_PACKAGE to the original arch package".into());}
     let a:Vec<_>=std::env::args().collect(); let root=PathBuf::from(&a[1]);
     let mut cache=GameCache::open(&root.join("cache/game"),8<<20)?;
     let definitions=cache.definitions_all()?;
