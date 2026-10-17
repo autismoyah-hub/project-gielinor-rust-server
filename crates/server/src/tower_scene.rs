@@ -189,34 +189,37 @@ mod tests {
         );
     }
     #[test]
-    fn boiler_mouth_keeps_its_real_rotation_through_progress_and_scene_resets() {
+    fn machinery_mouths_keep_real_rotations_and_independent_progress_on_scene_resets() {
         let (o, b, z) = setup();
         let p = o.translate(71, 72, 0).unwrap();
-        let boiler = o.translate(71, 76, 0).unwrap();
-        let mut observer = Observer::default();
-        for (cleared, expected) in [(false, 18526), (true, 18525), (false, 18526)] {
-            let mut run = Run::default();
-            run.imp = cleared;
-            let resets = z.iter().copied().map(Emission::Reset).collect::<Vec<_>>();
-            let updates = [
-                observer.cycle(o, run, p, b, &z, &resets, 1).unwrap(),
-                Observer::default().cycle(o, run, p, b, &z, &[], 1).unwrap(),
-            ];
-            for events in updates {
-                let directions = events
-                    .iter()
-                    .flat_map(|e| match e {
-                        Emission::Enclosed { updates, .. } => updates.as_slice(),
-                        _ => &[],
-                    })
-                    .filter_map(|u| match u {
-                        Update::Location(Event::Add(loc)) if loc.coords == boiler => {
-                            Some((loc.id, loc.shape, loc.angle))
-                        }
-                        _ => None,
-                    })
-                    .collect::<Vec<_>>();
-                assert_eq!(directions, [(expected, 10, 1)]);
+        for (x, local_z, is_imp) in [(71, 76, true), (51, 78, false), (60, 78, false)] {
+            let boiler = o.translate(x, local_z, 0).unwrap();
+            let mut observer = Observer::default();
+            for (cleared, expected) in [(false, 18526), (true, 18525), (false, 18526)] {
+                let mut run = Run::default();
+                run.imp = cleared && is_imp;
+                run.victory = cleared && !is_imp;
+                let resets = z.iter().copied().map(Emission::Reset).collect::<Vec<_>>();
+                let updates = [
+                    observer.cycle(o, run, p, b, &z, &resets, 1).unwrap(),
+                    Observer::default().cycle(o, run, p, b, &z, &[], 1).unwrap(),
+                ];
+                for events in updates {
+                    let directions = events
+                        .iter()
+                        .flat_map(|e| match e {
+                            Emission::Enclosed { updates, .. } => updates.as_slice(),
+                            _ => &[],
+                        })
+                        .filter_map(|u| match u {
+                            Update::Location(Event::Add(loc)) if loc.coords == boiler => {
+                                Some((loc.id, loc.shape, loc.angle))
+                            }
+                            _ => None,
+                        })
+                        .collect::<Vec<_>>();
+                    assert_eq!(directions, [(expected, 10, 1)]);
+                }
             }
         }
     }

@@ -128,9 +128,122 @@
   "pending": [
     "current eight-landmark native full replay",
     "current headless replay",
-    "hot native foundry review",
     "current relog/crash reconstruction",
     "human pacing review",
     "user artistic acceptance"
-  ]
+  ],
+  "hot_native_preview": {
+    "accepted_technical": true,
+    "character": "existing Rune1 / services0 / zero clears",
+    "actual_banks": [
+      {
+        "x": 10419,
+        "z": 142,
+        "id": 18526,
+        "rotation": 1
+      },
+      {
+        "x": 10428,
+        "z": 142,
+        "id": 18526,
+        "rotation": 1
+      }
+    ],
+    "views": [
+      {
+        "area": "foundry active rear banks",
+        "yaw": 0,
+        "sequence": 63,
+        "position": [
+          0,
+          10423,
+          136
+        ],
+        "sha256": "8ff9eafaefa803b439a97c179ee1d44b84d0e24a6ce689311bb8a7c1171c899c"
+      },
+      {
+        "area": "foundry active rear banks",
+        "yaw": 4096,
+        "sequence": 65,
+        "position": [
+          0,
+          10423,
+          136
+        ],
+        "sha256": "3d901facc4d050b1e0b35f7b66db46e5945530e4c221687d08bb6f5eebbf1d64"
+      },
+      {
+        "area": "foundry active rear banks",
+        "yaw": 8192,
+        "sequence": 67,
+        "position": [
+          0,
+          10423,
+          136
+        ],
+        "sha256": "49d19342cc39d022344e4ff44976d43bb564306af6582e48fc0d39fb7a105250"
+      },
+      {
+        "area": "foundry active rear banks",
+        "yaw": 12288,
+        "sequence": 69,
+        "position": [
+          0,
+          10423,
+          136
+        ],
+        "sha256": "01b770778a72bd05abd061cce7109438a0188b6e7cf00792bb2ad14e7a9f01ce"
+      },
+      {
+        "area": "foundry rear gallery",
+        "yaw": 0,
+        "sequence": 86,
+        "position": [
+          0,
+          10424,
+          140
+        ],
+        "sha256": "7f36b605e8376e2b5e2dbac0e66198073269fc6d2b091be2bd050b31a0a2733c"
+      },
+      {
+        "area": "foundry rear gallery",
+        "yaw": 4096,
+        "sequence": 88,
+        "position": [
+          0,
+          10424,
+          140
+        ],
+        "sha256": "3b13c424fa68f9e62c7a35b35232c8823b1f22247a8a5a1a8797dd1cb4bd8ec6"
+      },
+      {
+        "area": "foundry rear gallery",
+        "yaw": 8192,
+        "sequence": 90,
+        "position": [
+          0,
+          10424,
+          140
+        ],
+        "sha256": "f4e2d264622df2e7a130e87a0a9b93b10c1d36c3881e708ab9b06375290419b8"
+      },
+      {
+        "area": "foundry rear gallery",
+        "yaw": 12288,
+        "sequence": 92,
+        "position": [
+          0,
+          10424,
+          140
+        ],
+        "sha256": "1c98a4dff3e1db2735981d258e35600d3b4f94e7db7c0f30c191ce24ab853873"
+      }
+    ],
+    "meaning": "Eight genuine native views with normal Warden visible; distinct saved character from the cold preview, not a fabricated same-character transition. Walked back and stopped normally."
+  },
+  "focused_scene_regression": {
+    "passed": 5,
+    "scope": "Both flanking banks and Imp boiler keep actual rotation through independent progress, replay, relogin and zone reset; current runtime unchanged.",
+    "retained_diagnostic": "Initial test-local z variable shadow caused compile failure; corrected and independently rerun, original failed compiler log retained."
+  }
 }
