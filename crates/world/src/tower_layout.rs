@@ -122,12 +122,14 @@ pub fn template() -> Template {
             );
         }
     }
-    // Retain the actual river and its bank for net fishing.
-    for (x, z, sx, sz) in [
-        (8, 6, 404, 393),
-        (8, 7, 404, 394),
-        (9, 6, 405, 393),
-        (9, 7, 405, 394),
+    // A dressed-stone working quay adjoins the real cache water surface.
+    // Water retains its own source clipping; no painted or walkable fake water.
+    // The height change is the visible bulkhead below the raised service floor.
+    for (x, z, sx, sz, rotation) in [
+        (8, 6, 377, 545, 0),
+        (8, 7, 377, 545, 1),
+        (9, 6, 187, 566, 0),
+        (9, 7, 187, 566, 0),
     ] {
         zones.insert(
             (x, z, 0),
@@ -135,7 +137,7 @@ pub fn template() -> Template {
                 x: sx,
                 z: sz,
                 level: 0,
-                rotation: 0,
+                rotation,
             },
         );
     }
@@ -156,10 +158,10 @@ pub fn openings() -> BTreeSet<(u8, u8)> {
         (40, 64),
         (39, 48),
         (40, 48),
-        (71, 64),
-        (72, 64),
-        (71, 48),
-        (72, 48),
+        (69, 64),
+        (70, 64),
+        (69, 48),
+        (70, 48),
         (48, 71),
         (48, 72),
         (64, 71),
@@ -222,11 +224,11 @@ pub fn shell() -> Vec<Wall> {
     }
     // Service wings and northern courts. Three separate thresholds lead north.
     for x in 33..79 {
-        if ![39, 40, 55, 56, 71, 72].contains(&x) {
+        if ![39, 40, 55, 56, 69, 70].contains(&x) {
             edge(x, 64, 3);
         }
         if x < 48 || x >= 64 {
-            if ![39, 40, 71, 72].contains(&x) {
+            if ![39, 40, 69, 70].contains(&x) {
                 edge(x, 48, 3);
             }
         }
@@ -280,7 +282,7 @@ pub fn shell() -> Vec<Wall> {
     for x in 50..63 {
         // Real forge-mouth recesses: the solid hearth and paired banks fill them,
         // while the outer north wall still encloses the authored floor.
-        if ![51, 52, 53, 55, 56, 60, 61, 62].contains(&x) {
+        if ![51, 52, 53, 55, 56, 57, 60, 61, 62].contains(&x) {
             edge(x, 78, 3);
         }
         if ![55, 56].contains(&x) {
@@ -323,7 +325,7 @@ pub fn shell() -> Vec<Wall> {
 }
 
 /// Clear obsolete source clipping before authored masonry is installed. River
-/// terrain keeps its real banks; walls must be applied AFTER this preparation.
+/// terrain keeps its real channel; walls must be applied AFTER this preparation.
 pub fn prepare_collision(
     map: &mut crate::collision::CollisionMap,
     origin: crate::CoordGrid,

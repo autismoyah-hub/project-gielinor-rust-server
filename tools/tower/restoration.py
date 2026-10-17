@@ -11,7 +11,7 @@ a=p.parse_args();a.output.mkdir(parents=True,exist_ok=True)
 expected=list(map(int,a.expected.split(',')));assert len(expected) in (5,6,8)
 g=Gateway(a.directory,a.output/f'{a.label}-restoration-actions.ndjson')
 s=g.wait(lambda s:s['ready'] and s['hp']>0,120)
-positions=[(10411,114),(10445,122),(10427,113),(10423,122),(10423,142),(10439,140),(10419,142),(10428,142)][:len(expected)]
+positions=[(10411,114),(10440,122),(10427,113),(10423,122),(10423,142),(10439,140),(10419,142),(10428,142)][:len(expected)]
 end=time.monotonic()+40
 while True:
     g.act('inspect');time.sleep(.2)

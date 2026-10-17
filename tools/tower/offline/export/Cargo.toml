@@ -1,0 +1,13 @@
+[package]
+name = "tower-scene-export"
+default-run = "tower-scene-export"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[workspace]
+
+[dependencies]
+gielinor-cache = { path = "../../../../crates/cache" }
+gielinor-world = { path = "../../../../crates/world" }
+gielinor-server = { path = "../../../../crates/server" }

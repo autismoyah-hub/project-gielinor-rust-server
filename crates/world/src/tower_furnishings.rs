@@ -32,36 +32,6 @@ pub const FURNISHINGS: &[Furnishing] = &[
         symbol: "bookcase",
     },
     Furnishing {
-        x: 50,
-        z: 61,
-        symbol: "bookcase",
-    },
-    Furnishing {
-        x: 51,
-        z: 61,
-        symbol: "bookcase",
-    },
-    Furnishing {
-        x: 62,
-        z: 61,
-        symbol: "bookcase",
-    },
-    Furnishing {
-        x: 49,
-        z: 60,
-        symbol: "barrel",
-    },
-    Furnishing {
-        x: 49,
-        z: 58,
-        symbol: "sacks",
-    },
-    Furnishing {
-        x: 62,
-        z: 58,
-        symbol: "barrel",
-    },
-    Furnishing {
         x: 52,
         z: 51,
         symbol: "candles",
@@ -70,16 +40,6 @@ pub const FURNISHINGS: &[Furnishing] = &[
         x: 61,
         z: 51,
         symbol: "candles",
-    },
-    Furnishing {
-        x: 49,
-        z: 62,
-        symbol: "torch",
-    },
-    Furnishing {
-        x: 62,
-        z: 62,
-        symbol: "torch",
     },
     Furnishing {
         x: 33,
@@ -175,21 +135,6 @@ pub const FURNISHINGS: &[Furnishing] = &[
         x: 68,
         z: 58,
         symbol: "barrel_fish",
-    },
-    Furnishing {
-        x: 66,
-        z: 50,
-        symbol: "sacks",
-    },
-    Furnishing {
-        x: 68,
-        z: 50,
-        symbol: "barrel",
-    },
-    Furnishing {
-        x: 65,
-        z: 54,
-        symbol: "barrel",
     },
     // A real two-tile feeder replaces a stock prop; open pen routes stay clear.
     Furnishing {

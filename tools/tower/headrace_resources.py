@@ -49,7 +49,7 @@ try:
             s = stable()
         old_raw = count(s, 317)
         old_fish_xp = s['xp'][10]
-        walk(10439, 116)
+        walk(10438, 116)
         s = stable()
         fish = next((n for n in s['npcs'] if n['id'] == 3317))
         g.act(f"npc {fish['index']} 1")

@@ -1,0 +1,10 @@
+[package]
+name = "tower-scene-render"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[workspace]
+
+[dependencies]
+gielinor-client = { path = "../../../../../rust-client-reference" }

@@ -153,10 +153,22 @@ def workshop():
     print('Workshop forged and equipped', flush=True)
 def kitchen():
     if count(g.observe(), 317) == 0:
-        walk(10439, 116)
+        walk(10438, 116)
         s = g.observe()
         fish = next((n for n in s['npcs'] if n['id'] == 3317))
         g.act(f"npc {fish['index']} 1")
+        if a.native_frames:
+            tick = g.observe()['tick']
+            g.wait(lambda s: s['ready'] and s['tick'] > tick + 1, 15)
+            g.act('camera 2048 4096')
+            shot = g.act('capture')
+            frame = a.directory / f"frame-{shot['sequence']}.bmp"
+            end = time.monotonic() + 10
+            while not frame.exists():
+                if time.monotonic() > end:
+                    raise TimeoutError('No genuine native net-fishing capture')
+                time.sleep(.1)
+            (a.output / 'native-net-fishing-capture.json').write_text(json.dumps({'frame': str(frame.resolve()), 'state': shot, 'scope': 'Actual normal net-fishing attempt on flat quay; success independently required below'}, indent=2), encoding='utf8')
         g.wait(lambda s: count(s, 317) >= 18 or sum(i['count'] > 0 for i in s['items']) >= 28, 110)
     s = g.wait(lambda state:any(i['id']==317 and i['widget'] is not None for i in state['items']),40)
     raw = next((i for i in s['items'] if i['id'] == 317 and i['widget'] is not None))
@@ -236,7 +248,7 @@ def check_scene(label):
     forge='Done: Workshop:' in j;water='Done: Kitchen:' in j;altar_done='Done: Altar:' in j
     ids=[18526 if forge else 18525,18511 if water else 18512,16811 if altar_done else 16810,
          16811 if 'Done: Quench Ash Warden' in j or 'First reward: claimed' in j else 16810,
-         16810 if 'Done: Quench Ash Warden' in j else 16811, 18525 if 'Done: Silence Ash Imp' in j else 18526]
+         18525 if 'Done: Quench Ash Warden' in j else 18526, 18525 if 'Done: Silence Ash Imp' in j else 18526]
     if a.landmarks==8:ids.extend([18525 if 'Done: Quench Ash Warden' in j else 18526]*2)
     command=[sys.executable,str(pathlib.Path(__file__).with_name('restoration.py')),'--directory',str(a.directory),'--output',str(a.output),'--label',label,'--expected',','.join(map(str,ids))]
     if a.native_frames:command.append('--native-frames')

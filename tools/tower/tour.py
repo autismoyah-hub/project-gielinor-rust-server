@@ -13,7 +13,7 @@ g.act('close')
 g.act('camera 2048 0')
 g.interface(35913794)
 g.interface(41222162)
-points = [('pasture', 10408, 104), ('southern court', 10424, 104), ('poultry yard', 10440, 104), ('waterworks', 10439, 116), ('sanctuary', 10424, 120), ('workshop', 10406, 118), ('grove', 10408, 136), ('foundry entrance', 10423, 132), ('vent gallery', 10438, 132), ('sanctuary return', 10424, 120)]
+points = [('pasture', 10408, 104), ('southern court', 10424, 104), ('poultry yard', 10440, 104), ('waterworks', 10438, 116), ('sanctuary', 10424, 120), ('workshop', 10406, 118), ('grove', 10408, 136), ('foundry entrance', 10423, 132), ('vent gallery', 10438, 132), ('sanctuary return', 10424, 120)]
 records = []
 for name, x, z in points:
     end = time.monotonic() + 55

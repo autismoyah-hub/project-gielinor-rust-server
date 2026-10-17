@@ -185,14 +185,14 @@ mod tests {
         let replay = ids(&observer.cycle(o, run, p, b, &z, &[], 3).unwrap());
         assert_eq!(
             replay,
-            [18525, 18512, 16810, 16811, 16811, 18526, 18526, 18526]
+            [18525, 18512, 16810, 16811, 18526, 18526, 18526, 18526]
         );
     }
     #[test]
     fn machinery_mouths_keep_real_rotations_and_independent_progress_on_scene_resets() {
         let (o, b, z) = setup();
         let p = o.translate(71, 72, 0).unwrap();
-        for (x, local_z, is_imp) in [(71, 76, true), (51, 78, false), (60, 78, false)] {
+        for (x, local_z, is_imp) in [(71, 76, true), (51, 78, false), (55, 78, false), (60, 78, false)] {
             let boiler = o.translate(x, local_z, 0).unwrap();
             let mut observer = Observer::default();
             for (cleared, expected) in [(false, 18526), (true, 18525), (false, 18526)] {

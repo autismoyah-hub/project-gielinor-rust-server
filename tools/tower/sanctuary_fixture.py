@@ -19,6 +19,12 @@ before = g.wait(lambda s: s['ready'] and s['tick'] > 0 and 'Cinderworks' in s['j
 g.act('inspect')
 rows = list(csv.DictReader((a.directory / 'scene-objects.csv').open(encoding='utf8', newline='')))
 actual = []
+removed_legacy = [(10418, 125, 380), (10419, 125, 380), (10430, 125, 380),
+                  (10417, 124, 362), (10417, 122, 365), (10430, 122, 362),
+                  (10417, 126, 196), (10430, 126, 196)]
+for x, z, id in removed_legacy:
+    assert not any(r['plane'] == '0' and r['x'] == str(x) and r['z'] == str(z) and r['id'] == str(id) and r['rejected'] == 'false' for r in rows), 'Legacy sanctuary prop remains'
+
 for x in (10420, 10428):
     for z in (118, 121, 122):
         matches = [r for r in rows if r['plane'] == '0' and r['x'] == str(x) and r['z'] == str(z) and r['shape'] == '0' and r['rotation'] == '0' and r['rejected'] == 'false']
@@ -73,5 +79,5 @@ after = g.observe()
 def pack(s):
     return sorted((i['slot'], i['id'], i['count']) for i in s['items'] if i['count'] > 0)
 assert pack(before) == pack(after) and before['equipment'] == after['equipment'] and before['xp'] == after['xp'] and before['journal'] == after['journal']
-(a.output / f'{a.label}-sanctuary-summary.json').write_text(json.dumps({'accepted': True, 'baseline': a.baseline, 'actual': actual, 'crossing_gaps_open': True, 'normal_routes': visits, 'bank_modal_ids': bank['modals'], 'bank_action': 'Normal displayed Bank operation2 on18491', 'altar_action': 'Normal Pray operation1 on409 from its actual adjacent western tile', 'exact_items_equipment_all25XP_journal_preserved': True, 'native_bank_frames': frames}, indent=2), encoding='utf8')
+(a.output / f'{a.label}-sanctuary-summary.json').write_text(json.dumps({'accepted': True, 'baseline': a.baseline, 'actual': actual, 'audited_legacy_rows_absent': True, 'crossing_gaps_open': True, 'normal_routes': visits, 'bank_modal_ids': bank['modals'], 'bank_action': 'Normal displayed Bank operation2 on18491', 'altar_action': 'Normal Pray operation1 on409 from its actual adjacent western tile', 'exact_items_equipment_all25XP_journal_preserved': True, 'native_bank_frames': frames}, indent=2), encoding='utf8')
 print('Real Bank/Pray and sanctuary crossings preserve exact earned state', flush=True)
