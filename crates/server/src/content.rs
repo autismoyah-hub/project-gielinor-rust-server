@@ -173,6 +173,39 @@ pub fn foods(symbols: &Symbols, defs: &Definitions) -> Result<BTreeMap<i32, Edib
     }
     Ok(foods)
 }
+/// Independently Wiki-specified ordinary healing profiles absent from the
+/// original-reference catalog. Commit all definitions together at startup.
+pub fn additional_ordinary_foods(symbols:&Symbols,defs:&Definitions,foods:&mut BTreeMap<i32,Edible>)->Result<usize,String>{
+    let mut next=foods.clone();let mut count=0;
+    for (symbol,name,heal) in [
+        ("anchovies","Anchovies",1),("lava_eel","Lava eel",11),
+        ("onion","Onion",1),("tomato","Tomato",2),("cheese","Cheese",2),
+        ("cooked_ugthanki_meat","Ugthanki meat",3),("ugthanki_kebab","Ugthanki kebab",19),
+        ("locust_meat","Locust meat",3),("brut_roe","Roe",3),("brut_caviar","Caviar",5),
+    ] {
+        let id=*symbols.get(symbol).ok_or_else(||format!("Missing ordinary food symbol {symbol}"))?;
+        let item=u32::try_from(id).ok().and_then(|id|defs.items.get(&id)).ok_or("Missing ordinary food definition")?;
+        if item.name!=name || item.stackable || item.dummy==1 || item.cert.template!=0 || item.placeholder.template!=0 || item.transform.template!=0 || item.inventory_ops[0].as_deref()!=Some("Eat") || next.contains_key(&id){return Err(format!("Invalid ordinary food profile {symbol}"));}
+        next.insert(id,Edible{id,heal,delay:3,replacement:None,message:format!("You eat the {}.",name.to_lowercase())});count+=1;
+    }
+    *foods=next;Ok(count)
+}
+#[cfg(test)]
+mod additional_ordinary_food_tests {
+    use super::*;
+    fn fixture()->(Symbols,Definitions){
+        let mut defs=Definitions{inventories:Default::default(),locations:Default::default(),npcs:Default::default(),items:Default::default(),varbits:Default::default(),varps:Default::default(),stats:Default::default()};let mut symbols=Symbols::new();
+        for (symbol,id,name) in [("anchovies",319,"Anchovies"),("lava_eel",2149,"Lava eel"),("onion",1957,"Onion"),("tomato",1982,"Tomato"),("cheese",1985,"Cheese"),("cooked_ugthanki_meat",1861,"Ugthanki meat"),("ugthanki_kebab",1885,"Ugthanki kebab"),("locust_meat",9052,"Locust meat"),("brut_roe",11324,"Roe"),("brut_caviar",11326,"Caviar")]{symbols.insert(symbol.into(),id);let mut item=gielinor_cache::definitions::ItemType::decode(&[0]).unwrap();item.name=name.into();item.inventory_ops[0]=Some("Eat".into());defs.items.insert(id as u32,item);}
+        (symbols,defs)
+    }
+    #[test]
+    fn ordinary_food_profiles_publish_together_and_reject_late_alias_or_bad_definition(){
+        let (symbols,defs)=fixture();let mut foods=BTreeMap::new();assert_eq!(additional_ordinary_foods(&symbols,&defs,&mut foods).unwrap(),10);assert_eq!(foods[&11326].heal,5);
+        for (&id,food) in &foods {let mut inv=gielinor_world::inventory::Inventory::new(2,gielinor_world::inventory::StackType::Normal,false);for slot in 0..2{inv.restore_slot(slot,Some(gielinor_world::inventory::Item{id,count:1,vars:0})).unwrap();}let mut stats=gielinor_world::stats::Stats::default();stats.set_base(3,99);stats.set_current(3,90);let xp=stats.fine_xp(3);assert!(gielinor_world::food::eat_slot(food,1,&mut inv,&mut stats,&Default::default(),3,829,|_|{}).unwrap());assert!(inv.get(1).is_none());assert_eq!(inv.get(0).unwrap().id,id);assert_eq!(stats.current(3),(90+food.heal).min(99) as i8);assert_eq!(stats.fine_xp(3),xp);}
+        for mode in 0..7 {let (symbols,mut defs)=fixture();let mut foods=BTreeMap::new();let item=defs.items.get_mut(&11326).unwrap();match mode{0=>item.stackable=true,1=>item.cert.template=799,2=>item.placeholder.template=14401,3=>item.transform.template=1,4=>item.inventory_ops[0]=None,5=>item.name="Not caviar".into(),_=>{foods.insert(11326,Edible{id:11326,heal:99,delay:3,replacement:None,message:"Existing".into()});}}let before=foods.len();assert!(additional_ordinary_foods(&symbols,&defs,&mut foods).is_err());assert_eq!(foods.len(),before);if mode==6{assert_eq!(foods[&11326].heal,99);}}
+    }
+}
+
 /// GR-24's bounded cake/plain-pizza correction. Other foods retain the reference
 /// profile; selected IDs must be unnoted, nonstackable, ordinary Eat definitions.
 pub fn wiki_multipart_foods(
