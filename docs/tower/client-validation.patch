@@ -1183,3 +1183,54 @@ index 94ad7d0..d811f06 100644
          if adapter.stop {
              live.session.close();
              return Ok(());
+
+From ff9cef17fd1ce3ec2ebf8d1181fee31411999c4c Mon Sep 17 00:00:00 2001
+From: Tower Agent 5 <agent5@tower.invalid>
+Date: Sat, 17 Oct 2026 07:40:56 -0700
+Subject: [PATCH] Expose read-only visible item controls for bank validation
+
+---
+ src/tower_adapter.rs | 27 +++++++++++++++++++++++++++
+ 1 file changed, 27 insertions(+)
+
+diff --git a/src/tower_adapter.rs b/src/tower_adapter.rs
+index 86d60ec..5531c72 100644
+--- a/src/tower_adapter.rs
++++ b/src/tower_adapter.rs
+@@ -300,6 +300,33 @@ impl Adapter {
+             self.directory.join("receipt.txt"),
+         )?;
+         if self.inspect {
++            // Read-only diagnostics for actual visible bank/inventory controls.
++            // Commands still use the ordinary interface/menu policy unchanged.
++            let layout = client.interfaces.layout(client.canvas)
++                .map_err(|error| io::Error::other(error.to_string()))?;
++            let mut ui_items = Vec::new();
++            for (&id, runtime) in &client.interfaces.runtime {
++                if runtime.item < 0 || runtime.count <= 0 || runtime.child_index < 0 {
++                    continue;
++                }
++                let Some(placement) = layout.widgets.get(&id) else { continue; };
++                if placement.hidden || placement.clip[0] >= placement.clip[2]
++                    || placement.clip[1] >= placement.clip[3] { continue; }
++                let Some(widget) = client.interfaces.widgets.get(&id) else { continue; };
++                let actions = widget.actions.iter().map(|s| quoted(s)).collect::<Vec<_>>().join(",");
++                ui_items.push(format!("{{\"id\":{id},\"logical_id\":{},\"slot\":{},\"item\":{},\"count\":{},\"actions\":[{actions}]}}",
++                    runtime.logical_id, runtime.child_index, runtime.item, runtime.count));
++            }
++            std::fs::write(self.directory.join("ui-items.ndjson"), ui_items.join("\n"))?;
++            let mut containers = Vec::new();
++            for (&inventory, items) in &client.inventories.containers {
++                for (slot, item) in items.iter().enumerate() {
++                    if item.id >= 0 && item.count > 0 {
++                        containers.push(format!("{{\"inventory\":{inventory},\"slot\":{slot},\"item\":{},\"count\":{}}}", item.id, item.count));
++                    }
++                }
++            }
++            std::fs::write(self.directory.join("containers.ndjson"), containers.join("\n"))?;
+             std::fs::write(self.directory.join("widgets.txt"), format!("{widgets:#?}"))?;
+             std::fs::write(
+                 self.directory.join("inventory.txt"),
+-- 
+2.44.0.windows.1
+

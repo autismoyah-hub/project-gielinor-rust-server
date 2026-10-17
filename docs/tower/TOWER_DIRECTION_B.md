@@ -1,3 +1,11 @@
+## Sanctuary bank: ordinary service and item roundtrip verified
+
+Runtime08BB264E468F1E84 binds the real sanctuary booth18491 Bank operation2 at10421,124,0 to the existing banking UI. Baseline native and headless attempts exposed the missing location handler before any new sanctuary rails were live. The scoped handler retains normal reach, delay, plane and live-target guards; identical booths elsewhere cannot open it. It grants no tutorial coins or progression. Cache24/server57/world410 pass (two existing ignored); three added regressions cover reach/exact site/protection and removed targets. Main build passes.
+
+Both actual clients preserve exact earned items, equipment, all25XP and journal across entry, Bank/Pray and sanctuary crossing checks. Each then deposits one bronze axe through the displayed bank-side control and withdraws it through the displayed bank control. Actual containers move93->95->93, the bank ends empty, and exact original slots and all earned state return. Native open-bank/deposited/restored frames are inspected. The opt-in client adapter adds read-only visible item/container metadata only: eleven raw mail patches reproduce exact tree48e96da6f47ac9ef9a3aece11001139883e3dd9e, preserving the previous ten patch bytes. No new input action or renderer change. Client commitff9cef17 stays local; no client push.
+
+`SANCTUARY_BANK_VALIDATION_20261017.json` pins current source/binary, scoped checks and frame hashes. Full combat/crash evidence remains separately pinned to C555; it is not relabeled as current08BB. Original failures remain retained. No six-wall sanctuary art draft is included. Sanctuary composition, realistic human pacing and user artistic acceptance remain open; continue the standing development mandate.
+
 ## Current journal copy: native hint fit and replay history verified
 
 The current75C0DA039D2AD303 build changes only five journal hint literals. Real cache font496 measured the clipped Strength line at203px and fishing instructions at188/192px. New lines use125–166px, including separate Stab/Attack and Lunge/Strength guidance. Reward chest, spare-slot, smithing and altar instructions are shorter. All task labels, progression, inventory/reward rules, geometry, clocks and renderer remain unchanged.

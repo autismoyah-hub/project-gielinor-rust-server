@@ -400,6 +400,14 @@ impl World {
             return;
         }
         if let Some(&handler) = self.location_handlers.get(&(loc.id, operation)) {
+            // A booth is scoped to its authored site. Reuse the normal reach,
+            // protection and live-location checks above before requesting UI.
+            if let crate::location_content::Handler::BankBooth { at } = handler {
+                if loc.coords == at {
+                    self.events.push(WorldEvent::BankRequested { actor });
+                }
+                return;
+            }
             match handler.apply(&mut p.data, &self.object_types) {
                 Ok(Some(message)) => self
                     .events
@@ -455,6 +463,84 @@ impl World {
         } else {
             self.finish_door(started.pending);
             self.events.push(WorldEvent::ClearMapFlag(actor));
+        }
+    }
+}
+#[cfg(test)]
+mod bank_booth_tests {
+    use super::*;
+    use crate::{loc_collision::LocCollision, location_content::Handler};
+
+    fn fixture() -> (World, ActorId, Location, Location) {
+        let mut world = World::default();
+        world.collision.allocate(3200, 3200, 0);
+        let at = Location::new(CoordGrid::new(3203, 3202, 0).unwrap(), 18491, 10, 0).unwrap();
+        let elsewhere = Location::new(CoordGrid::new(3205, 3202, 0).unwrap(), 18491, 10, 0).unwrap();
+        let ty = LocCollision { width: 1, length: 1, block_walk: 1, block_range: false, break_route_finding: true };
+        world.location_types.insert(at.id, ty);
+        for loc in [at, elsewhere] {
+            world.locations.load(loc);
+            crate::loc_collision::toggle(&mut world.collision, loc.coords, loc.shape, loc.angle, ty, true).unwrap();
+        }
+        world.location_handlers.insert((at.id, 2), Handler::BankBooth { at: at.coords });
+        world.queue_login(1, PlayerData::new(1, "Bank visitor".into(), CoordGrid::new(3200, 3200, 0).unwrap(), Stats::default())).unwrap();
+        world.tick().unwrap();
+        let actor = world.actors().next().unwrap();
+        world.drain_events();
+        (world, actor, at, elsewhere)
+    }
+    fn request(world: &mut World, actor: ActorId, loc: Location, operation: u8) -> Result<(), ActionError> {
+        world.submit(actor, Action::OperateLocation { coords: loc.coords, id: loc.id, operation, control: false })
+    }
+    #[test]
+    fn scoped_bank_waits_for_normal_reach_and_grants_no_items_or_progress() {
+        let (mut world, actor, at, _) = fixture();
+        let inventory = world.data(actor).unwrap().inventory.slots().to_vec();
+        let bank = world.data(actor).unwrap().bank.slots().to_vec();
+        let run = world.data(actor).unwrap().tower_run;
+        assert!(!world.has_location_handler(at.id, 1));
+        assert!(world.has_location_handler(at.id, 2));
+        request(&mut world, actor, at, 2).unwrap();
+        world.tick().unwrap();
+        assert!(!world.drain_events().iter().any(|e| matches!(e, WorldEvent::BankRequested { .. })));
+        let mut opens = 0;
+        for _ in 0..12 {
+            world.tick().unwrap();
+            opens += world.drain_events().iter().filter(|e| matches!(e, WorldEvent::BankRequested { actor: visitor } if *visitor == actor)).count();
+        }
+        assert_eq!(opens, 1);
+        assert_eq!(world.data(actor).unwrap().inventory.slots(), inventory);
+        assert_eq!(world.data(actor).unwrap().bank.slots(), bank);
+        assert_eq!(world.data(actor).unwrap().tower_run, run);
+    }
+    #[test]
+    fn same_cache_booth_elsewhere_cannot_open_the_scoped_bank() {
+        let (mut world, actor, _, elsewhere) = fixture();
+        request(&mut world, actor, elsewhere, 2).unwrap();
+        for _ in 0..15 {
+            world.tick().unwrap();
+            assert!(!world.drain_events().iter().any(|e| matches!(e, WorldEvent::BankRequested { .. })));
+        }
+    }
+    #[test]
+    fn scoped_bank_keeps_delay_plane_and_removed_target_guards() {
+        let (mut world, actor, at, _) = fixture();
+        world.delay_player(actor, 2).unwrap();
+        request(&mut world, actor, at, 2).unwrap();
+        world.tick().unwrap();
+        assert!(world.drain_events().iter().any(|e| matches!(e,
+            WorldEvent::ActionRejected { error: ActionError::Delayed, .. })));
+        for _ in 0..3 { world.tick().unwrap(); }
+        let wrong_plane = Location::new(CoordGrid::new(at.coords.x(), at.coords.z(), 1).unwrap(), at.id, 10, 0).unwrap();
+        request(&mut world, actor, wrong_plane, 2).unwrap();
+        world.tick().unwrap();
+        assert!(world.drain_events().iter().any(|e| matches!(e,
+            WorldEvent::ActionRejected { error: ActionError::WrongPlane, .. })));
+        request(&mut world, actor, at, 2).unwrap();
+        world.locations.delete(at);
+        for _ in 0..12 {
+            world.tick().unwrap();
+            assert!(!world.drain_events().iter().any(|e| matches!(e, WorldEvent::BankRequested { .. })));
         }
     }
 }

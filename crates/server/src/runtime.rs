@@ -3567,6 +3567,13 @@ impl<B: AccountBackend> Runtime<B> {
                     self.events
                         .push(Event::World(WorldEvent::ResetFaceEntity { actor }));
                 }
+                WorldEvent::BankRequested { actor } => {
+                    let (main, side) = self.npc_bank_parents
+                        .ok_or_else(|| io::Error::other("Missing bank presentation parents"))?;
+                    // Normal banking only: no tutorial gifts or progression.
+                    self.open_bank(actor, main, side)?;
+                    self.events.push(Event::World(WorldEvent::BankRequested { actor }));
+                }
                 WorldEvent::AnvilRequested { actor, preferred } => {
                     self.open_anvil(actor, preferred)?;
                     self.events.push(Event::World(WorldEvent::AnvilRequested {

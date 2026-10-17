@@ -8,6 +8,7 @@ use crate::{
 pub enum Handler {
     VialCrate { origin: CoordGrid, item: i32 },
     PrayerAltar { origin: CoordGrid, prayer: u8 },
+    BankBooth { at: CoordGrid },
 }
 impl Handler {
     pub fn arrival_delay(self) -> bool {
@@ -20,6 +21,7 @@ impl Handler {
     ) -> Result<Option<&'static str>, Error> {
         let origin = match self {
             Self::VialCrate { origin, .. } | Self::PrayerAltar { origin, .. } => origin,
+            Self::BankBooth { .. } => return Ok(None),
         };
         // TowerMap.contains: the same cached types elsewhere do not run floor hooks.
         if player.coords.level() > 1
@@ -29,6 +31,7 @@ impl Handler {
             return Ok(None);
         }
         match self {
+            Self::BankBooth { .. } => Ok(None),
             Self::VialCrate { item, .. } => {
                 let count = player.inventory.free_space().min(5) as i32;
                 if count == 0 {

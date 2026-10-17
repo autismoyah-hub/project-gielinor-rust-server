@@ -188,6 +188,21 @@ pub fn configure<B: AccountBackend>(
             prayer: stat("prayer")?,
         },
     );
+    // The sanctuary booth advertises Bank in cache operation2. Bind only its
+    // authored site; identical cache booths elsewhere keep their existing rules.
+    let sanctuary_bank = names.id("loc", "aide_bankbooth")?;
+    if runtime.definitions.locations.get(&sanctuary_bank)
+        .and_then(|t| t.ops[1].as_deref()) != Some("Bank")
+    {
+        return Err(io::Error::other("Sanctuary booth requires cache Bank operation2"));
+    }
+    runtime.world.location_handlers.insert(
+        (sanctuary_bank, 2),
+        gielinor_world::location_content::Handler::BankBooth {
+            at: gielinor_world::CoordGrid::new(10421, 124, 0)
+                .map_err(|e| io::Error::other(format!("{e:?}")))?,
+        },
+    );
     runtime.world.multiway_area = Some(names.short("area", "multiway")?);
     runtime.combat_display = Some(crate::combat_display::resolve(
         names,

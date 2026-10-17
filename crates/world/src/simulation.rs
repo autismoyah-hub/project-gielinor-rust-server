@@ -563,6 +563,9 @@ pub enum WorldEvent {
         actor: ActorId,
         effects: Vec<crate::tutorial_progression::Effect>,
     },
+    BankRequested {
+        actor: ActorId,
+    },
     AnvilRequested {
         actor: ActorId,
         preferred: Option<i32>,
