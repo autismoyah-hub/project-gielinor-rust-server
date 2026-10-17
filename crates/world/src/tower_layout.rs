@@ -93,21 +93,20 @@ pub fn template() -> Template {
             zones.insert((x, z, 0), ash);
         }
     }
-    // Intact cross-banded paving is genuine cache terrain, with the same
-    // explicit -240 height at every tile and border as the charcoal base.
-    // Four panels give the sanctuary its own brass-and-stone floor identity.
-    // No decorative floor objects or renderer changes are involved.
-    for x in 6..8 {
-        for z in 6..8 {
-            zones.insert(
-                (x, z, 0),
-                Source {
-                    x: 232,
-                    z: 883,
-                    ..stone
-                },
-            );
-        }
+    // Real cache dressed-stone tiles give the sanctuary a grounded court.
+    // The complete source overlay keeps its joints and texture in every tile.
+    // Every source/border vertex shares height -240 with adjoining galleries.
+    // Existing masonry and service routes remain the only local collision.
+    for (x, z, rotation) in [(6, 6, 0), (7, 6, 1), (7, 7, 2), (6, 7, 3)] {
+        zones.insert(
+            (x, z, 0),
+            Source {
+                x: 377,
+                z: 545,
+                rotation,
+                ..stone
+            },
+        );
     }
     // Broad transverse bands pace the processional hall between its columns.
     // This companion terrain panel shares the sanctuary's material and height.

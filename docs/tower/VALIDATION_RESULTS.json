@@ -1,5 +1,5 @@
 {
-  "status": "CurrentAA88 sanctuary sixedges native12matchedposes/bothactualservice-routes-scenes/normalentry/portalrebuildPASS; fullcombat/crash historicalC555. Broaderart/humanpacing/userapprovalpending",
+  "status": "Current6D39 dressedstone: native12matchedviews/bothaffectedentryBankPrayroutes/eight/portalrebuildPASS. Freshnative28fullrouteRUNNINGnotaccepted; fullcurrentheadless/lifecycle/crashpending. Userartisticapproval/humanpacingpending",
   "scope": "Cinderworks Floor One on the isolated agent5/tower-development branch; upstream integration is a separate Agent 2 review",
   "server_gameplay_commit": "420729798ffc3b0d31c7aff7497d1841597c2104",
   "client_baseline": "95eed88159b06cebea24559a814a5111b54a59cd",
@@ -3859,6 +3859,860 @@
       "No currentAA88 full combat or deliberate crash claim; complete C555 lifecycle remains separate.",
       "Real human first-play pacing unmeasured.",
       "First private insertion attempted CRLF-only anchor on LF source and failed before source edits; subsequent unchanged-source test log is not used as candidate evidence. Corrected applied-source tests/build/geometry logs are separate."
+    ]
+  },
+  "sanctuary_stone_current": {
+    "source_parent": "f633939",
+    "runtime_sha256": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964",
+    "source_change": "Only tower_layout.rs: four sanctuary terrain zones now use actual source377,545 rotations0/1/2/3. All64source tiles carry opaque textured overlay174. No new floor objects, renderer changes or gameplay changes.",
+    "source_file_sha256": "6dafe86f836506170908e30f3d0626786e8160e01cbe51262034593ef3e65c38",
+    "terrain_height_proof": {
+      "accepted": true,
+      "sources": [
+        {
+          "zone": [
+            377,
+            545
+          ],
+          "sampled_vertices": 81,
+          "explicit_height": -240,
+          "blocked_or_bridge_tiles": 0,
+          "source_sha256": "95b89113d2aa7b5a6b19b23a9acf74ebf6f52914244bb26de44d37b4ad3cae33"
+        },
+        {
+          "zone": [
+            236,
+            883
+          ],
+          "sampled_vertices": 81,
+          "explicit_height": -240,
+          "blocked_or_bridge_tiles": 0,
+          "source_sha256": "d5bed7ce8647e8575698c75f4bab2e6fe182c78f8e364250f3432eecbbb16379"
+        },
+        {
+          "zone": [
+            364,
+            1245
+          ],
+          "sampled_vertices": 81,
+          "explicit_height": -240,
+          "blocked_or_bridge_tiles": 0,
+          "source_sha256": "76a569ea4586a96c28d819068808b162818319bdcf9f448bf62fb37b7d43f02c"
+        }
+      ]
+    },
+    "cache_parity": {
+      "source_square": 12100,
+      "files_0_1_byte_exact_game_and_native": true,
+      "terrain_bytes": 62885,
+      "location_bytes": 5304
+    },
+    "tests": {
+      "cache": 24,
+      "server": 57,
+      "world": 410,
+      "world_existing_ignored": 2,
+      "reachable_floor_tiles": 2098,
+      "legal_lethal_pattern_escapes": 1512,
+      "main_build": "passed"
+    },
+    "clients": {
+      "native": {
+        "accepted": true,
+        "normal_entry_exact": true,
+        "items_equipment_all25XP_journal_preserved": true,
+        "exact_portals": true,
+        "bank95_empty_after_service_checks": true,
+        "checks": {
+          "entry": {
+            "actual6masonryrows": [
+              {
+                "id": "6143",
+                "plane": "0",
+                "x": "10420",
+                "z": "118",
+                "shape": "0",
+                "rotation": "0",
+                "runtime": "true",
+                "rejected": "false"
+              },
+              {
+                "id": "6143",
+                "plane": "0",
+                "x": "10420",
+                "z": "121",
+                "shape": "0",
+                "rotation": "0",
+                "runtime": "true",
+                "rejected": "false"
+              },
+              {
+                "id": "6143",
+                "plane": "0",
+                "x": "10420",
+                "z": "122",
+                "shape": "0",
+                "rotation": "0",
+                "runtime": "true",
+                "rejected": "false"
+              },
+              {
+                "id": "6143",
+                "plane": "0",
+                "x": "10428",
+                "z": "118",
+                "shape": "0",
+                "rotation": "0",
+                "runtime": "true",
+                "rejected": "false"
+              },
+              {
+                "id": "6143",
+                "plane": "0",
+                "x": "10428",
+                "z": "121",
+                "shape": "0",
+                "rotation": "0",
+                "runtime": "true",
+                "rejected": "false"
+              },
+              {
+                "id": "6143",
+                "plane": "0",
+                "x": "10428",
+                "z": "122",
+                "shape": "0",
+                "rotation": "0",
+                "runtime": "true",
+                "rejected": "false"
+              }
+            ],
+            "crossing_gaps_open": true,
+            "routes": [
+              [
+                0,
+                10418,
+                120
+              ],
+              [
+                0,
+                10430,
+                120
+              ],
+              [
+                0,
+                10424,
+                120
+              ],
+              [
+                0,
+                10422,
+                124
+              ],
+              [
+                0,
+                10427,
+                116
+              ],
+              [
+                0,
+                10424,
+                120
+              ]
+            ],
+            "bank_modals": [
+              12
+            ],
+            "pray": "Normal Pray operation1 on409 from its actual adjacent western tile",
+            "eight_landmarks": [
+              18526,
+              18511,
+              16811,
+              16811,
+              16811,
+              18526,
+              18526,
+              18526
+            ]
+          },
+          "rebuilt": {
+            "actual6masonryrows": [
+              {
+                "id": "6143",
+                "plane": "0",
+                "x": "10420",
+                "z": "118",
+                "shape": "0",
+                "rotation": "0",
+                "runtime": "true",
+                "rejected": "false"
+              },
+              {
+                "id": "6143",
+                "plane": "0",
+                "x": "10420",
+                "z": "121",
+                "shape": "0",
+                "rotation": "0",
+                "runtime": "true",
+                "rejected": "false"
+              },
+              {
+                "id": "6143",
+                "plane": "0",
+                "x": "10420",
+                "z": "122",
+                "shape": "0",
+                "rotation": "0",
+                "runtime": "true",
+                "rejected": "false"
+              },
+              {
+                "id": "6143",
+                "plane": "0",
+                "x": "10428",
+                "z": "118",
+                "shape": "0",
+                "rotation": "0",
+                "runtime": "true",
+                "rejected": "false"
+              },
+              {
+                "id": "6143",
+                "plane": "0",
+                "x": "10428",
+                "z": "121",
+                "shape": "0",
+                "rotation": "0",
+                "runtime": "true",
+                "rejected": "false"
+              },
+              {
+                "id": "6143",
+                "plane": "0",
+                "x": "10428",
+                "z": "122",
+                "shape": "0",
+                "rotation": "0",
+                "runtime": "true",
+                "rejected": "false"
+              }
+            ],
+            "crossing_gaps_open": true,
+            "routes": [
+              [
+                0,
+                10418,
+                120
+              ],
+              [
+                0,
+                10430,
+                120
+              ],
+              [
+                0,
+                10424,
+                120
+              ],
+              [
+                0,
+                10422,
+                124
+              ],
+              [
+                0,
+                10427,
+                116
+              ],
+              [
+                0,
+                10424,
+                120
+              ]
+            ],
+            "bank_modals": [
+              12
+            ],
+            "pray": "Normal Pray operation1 on409 from its actual adjacent western tile",
+            "eight_landmarks": [
+              18526,
+              18511,
+              16811,
+              16811,
+              16811,
+              18526,
+              18526,
+              18526
+            ]
+          }
+        }
+      },
+      "headless": {
+        "accepted": true,
+        "normal_entry_exact": true,
+        "items_equipment_all25XP_journal_preserved": true,
+        "exact_portals": true,
+        "bank95_empty_after_service_checks": true,
+        "checks": {
+          "entry": {
+            "actual6masonryrows": [
+              {
+                "id": "6143",
+                "plane": "0",
+                "x": "10420",
+                "z": "118",
+                "shape": "0",
+                "rotation": "0",
+                "runtime": "true",
+                "rejected": "false"
+              },
+              {
+                "id": "6143",
+                "plane": "0",
+                "x": "10420",
+                "z": "121",
+                "shape": "0",
+                "rotation": "0",
+                "runtime": "true",
+                "rejected": "false"
+              },
+              {
+                "id": "6143",
+                "plane": "0",
+                "x": "10420",
+                "z": "122",
+                "shape": "0",
+                "rotation": "0",
+                "runtime": "true",
+                "rejected": "false"
+              },
+              {
+                "id": "6143",
+                "plane": "0",
+                "x": "10428",
+                "z": "118",
+                "shape": "0",
+                "rotation": "0",
+                "runtime": "true",
+                "rejected": "false"
+              },
+              {
+                "id": "6143",
+                "plane": "0",
+                "x": "10428",
+                "z": "121",
+                "shape": "0",
+                "rotation": "0",
+                "runtime": "true",
+                "rejected": "false"
+              },
+              {
+                "id": "6143",
+                "plane": "0",
+                "x": "10428",
+                "z": "122",
+                "shape": "0",
+                "rotation": "0",
+                "runtime": "true",
+                "rejected": "false"
+              }
+            ],
+            "crossing_gaps_open": true,
+            "routes": [
+              [
+                0,
+                10418,
+                120
+              ],
+              [
+                0,
+                10430,
+                120
+              ],
+              [
+                0,
+                10424,
+                120
+              ],
+              [
+                0,
+                10422,
+                124
+              ],
+              [
+                0,
+                10427,
+                116
+              ],
+              [
+                0,
+                10424,
+                120
+              ]
+            ],
+            "bank_modals": [
+              12,
+              15
+            ],
+            "pray": "Normal Pray operation1 on409 from its actual adjacent western tile",
+            "eight_landmarks": [
+              18526,
+              18511,
+              16811,
+              16811,
+              16810,
+              18525,
+              18525,
+              18525
+            ]
+          },
+          "rebuilt": {
+            "actual6masonryrows": [
+              {
+                "id": "6143",
+                "plane": "0",
+                "x": "10420",
+                "z": "118",
+                "shape": "0",
+                "rotation": "0",
+                "runtime": "true",
+                "rejected": "false"
+              },
+              {
+                "id": "6143",
+                "plane": "0",
+                "x": "10420",
+                "z": "121",
+                "shape": "0",
+                "rotation": "0",
+                "runtime": "true",
+                "rejected": "false"
+              },
+              {
+                "id": "6143",
+                "plane": "0",
+                "x": "10420",
+                "z": "122",
+                "shape": "0",
+                "rotation": "0",
+                "runtime": "true",
+                "rejected": "false"
+              },
+              {
+                "id": "6143",
+                "plane": "0",
+                "x": "10428",
+                "z": "118",
+                "shape": "0",
+                "rotation": "0",
+                "runtime": "true",
+                "rejected": "false"
+              },
+              {
+                "id": "6143",
+                "plane": "0",
+                "x": "10428",
+                "z": "121",
+                "shape": "0",
+                "rotation": "0",
+                "runtime": "true",
+                "rejected": "false"
+              },
+              {
+                "id": "6143",
+                "plane": "0",
+                "x": "10428",
+                "z": "122",
+                "shape": "0",
+                "rotation": "0",
+                "runtime": "true",
+                "rejected": "false"
+              }
+            ],
+            "crossing_gaps_open": true,
+            "routes": [
+              [
+                0,
+                10418,
+                120
+              ],
+              [
+                0,
+                10430,
+                120
+              ],
+              [
+                0,
+                10424,
+                120
+              ],
+              [
+                0,
+                10422,
+                124
+              ],
+              [
+                0,
+                10427,
+                116
+              ],
+              [
+                0,
+                10424,
+                120
+              ]
+            ],
+            "bank_modals": [
+              12,
+              15
+            ],
+            "pray": "Normal Pray operation1 on409 from its actual adjacent western tile",
+            "eight_landmarks": [
+              18526,
+              18511,
+              16811,
+              16811,
+              16810,
+              18525,
+              18525,
+              18525
+            ]
+          }
+        }
+      }
+    },
+    "native_comparison": [
+      {
+        "phase": "before",
+        "area": "sanctuary threshold",
+        "yaw": 0,
+        "position": [
+          0,
+          10424,
+          116
+        ],
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary26-arcades\\frame-29.bmp",
+        "sha256": "709f7ea6e7f54992a13c9c84b22c2902ebda1f15c4ae4acabc230fa810fefb42",
+        "inspected": true
+      },
+      {
+        "phase": "before",
+        "area": "sanctuary threshold",
+        "yaw": 4096,
+        "position": [
+          0,
+          10424,
+          116
+        ],
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary26-arcades\\frame-31.bmp",
+        "sha256": "6a7cf33dfd55b1f9566c9b1a1fa5cd808774ed446b579f0cfeb7bd438dac0481",
+        "inspected": true
+      },
+      {
+        "phase": "before",
+        "area": "sanctuary threshold",
+        "yaw": 8192,
+        "position": [
+          0,
+          10424,
+          116
+        ],
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary26-arcades\\frame-33.bmp",
+        "sha256": "5b043573eb54e8cd59eef44b4de1c917d374613d5034ce3531cb7d2fb8c4b345",
+        "inspected": true
+      },
+      {
+        "phase": "before",
+        "area": "sanctuary threshold",
+        "yaw": 12288,
+        "position": [
+          0,
+          10424,
+          116
+        ],
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary26-arcades\\frame-35.bmp",
+        "sha256": "e87b5eb7cecac8f9e8b1db278d8083304a9b9354e8ad0f15f94a80dbc9792a8f",
+        "inspected": true
+      },
+      {
+        "phase": "before",
+        "area": "sanctuary hearth",
+        "yaw": 0,
+        "position": [
+          0,
+          10424,
+          120
+        ],
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary26-arcades\\frame-58.bmp",
+        "sha256": "b4baa58a7e4942ca2503975ecb5c85b53364486dda78fd3ac6ba4fbf34dd457b",
+        "inspected": true
+      },
+      {
+        "phase": "before",
+        "area": "sanctuary hearth",
+        "yaw": 4096,
+        "position": [
+          0,
+          10424,
+          120
+        ],
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary26-arcades\\frame-60.bmp",
+        "sha256": "64f48b44d9a3d2b0d1aa8493fc0827c65acf0a7b1553a657e648438448566f5a",
+        "inspected": true
+      },
+      {
+        "phase": "before",
+        "area": "sanctuary hearth",
+        "yaw": 8192,
+        "position": [
+          0,
+          10424,
+          120
+        ],
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary26-arcades\\frame-62.bmp",
+        "sha256": "4761eeac87080796138c77facc417f1189f89692d801f0381e1f65e7bd030a65",
+        "inspected": true
+      },
+      {
+        "phase": "before",
+        "area": "sanctuary hearth",
+        "yaw": 12288,
+        "position": [
+          0,
+          10424,
+          120
+        ],
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary26-arcades\\frame-64.bmp",
+        "sha256": "f3da97761dcd103a4b4bf1d34d668734b415278ec56fcbd872f82f5dd4115ec6",
+        "inspected": true
+      },
+      {
+        "phase": "before",
+        "area": "eastern arrival",
+        "yaw": 0,
+        "position": [
+          0,
+          10430,
+          124
+        ],
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary26-arcades\\frame-91.bmp",
+        "sha256": "4927e668352496b7013823f42cce910f30230e3d18c305c66f22c484c389f16c",
+        "inspected": true
+      },
+      {
+        "phase": "before",
+        "area": "eastern arrival",
+        "yaw": 4096,
+        "position": [
+          0,
+          10430,
+          124
+        ],
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary26-arcades\\frame-93.bmp",
+        "sha256": "fad8df773be30cf9ba6e1f3c06f190c660d0a7e1579af1b6e058a556f859cf6f",
+        "inspected": true
+      },
+      {
+        "phase": "before",
+        "area": "eastern arrival",
+        "yaw": 8192,
+        "position": [
+          0,
+          10430,
+          124
+        ],
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary26-arcades\\frame-95.bmp",
+        "sha256": "4db3f55d8ea5ed70b79248e8e533a05e4b471324bdbd475f39cc9af501bbc16a",
+        "inspected": true
+      },
+      {
+        "phase": "before",
+        "area": "eastern arrival",
+        "yaw": 12288,
+        "position": [
+          0,
+          10430,
+          124
+        ],
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary26-arcades\\frame-97.bmp",
+        "sha256": "9fa6e2793b8fee5db0dff37645bda24ba0bd6b9b8c7b001f7d3692fcd2a01d4c",
+        "inspected": true
+      },
+      {
+        "phase": "after",
+        "area": "sanctuary threshold",
+        "yaw": 0,
+        "position": [
+          0,
+          10424,
+          116
+        ],
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary26-tiles\\frame-27.bmp",
+        "sha256": "8f04b4aa59a42c7f2ce5dc014bb9f9329eca870cd257dc529d93da0899c9e691",
+        "inspected": true
+      },
+      {
+        "phase": "after",
+        "area": "sanctuary threshold",
+        "yaw": 4096,
+        "position": [
+          0,
+          10424,
+          116
+        ],
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary26-tiles\\frame-29.bmp",
+        "sha256": "8286669d1b45b1a80dc9b97cd40b09d2b2e316b9dd8eea15e3589cc267ebb6c1",
+        "inspected": true
+      },
+      {
+        "phase": "after",
+        "area": "sanctuary threshold",
+        "yaw": 8192,
+        "position": [
+          0,
+          10424,
+          116
+        ],
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary26-tiles\\frame-31.bmp",
+        "sha256": "0603756e016b78625f042ed1c74fa6888009aaaf197d229eda3d387c2219707a",
+        "inspected": true
+      },
+      {
+        "phase": "after",
+        "area": "sanctuary threshold",
+        "yaw": 12288,
+        "position": [
+          0,
+          10424,
+          116
+        ],
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary26-tiles\\frame-33.bmp",
+        "sha256": "4233453b92242ce1fc3077b2599c47f8dca48f8f2919a728d3a0e99efcab291f",
+        "inspected": true
+      },
+      {
+        "phase": "after",
+        "area": "sanctuary hearth",
+        "yaw": 0,
+        "position": [
+          0,
+          10424,
+          120
+        ],
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary26-tiles\\frame-56.bmp",
+        "sha256": "bc081bb32fef37ce460d63277e6d3a5693acb05f8ac81a1b0db0901be4782550",
+        "inspected": true
+      },
+      {
+        "phase": "after",
+        "area": "sanctuary hearth",
+        "yaw": 4096,
+        "position": [
+          0,
+          10424,
+          120
+        ],
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary26-tiles\\frame-58.bmp",
+        "sha256": "f6beebc0d4a44e43780cb9cb6ee8de9a5f1525668e1095610dcdfc41a3057b51",
+        "inspected": true
+      },
+      {
+        "phase": "after",
+        "area": "sanctuary hearth",
+        "yaw": 8192,
+        "position": [
+          0,
+          10424,
+          120
+        ],
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary26-tiles\\frame-60.bmp",
+        "sha256": "caf13235b775a8b92f177d7690bed93509f7ae6fe0aab1375e88a460be419984",
+        "inspected": true
+      },
+      {
+        "phase": "after",
+        "area": "sanctuary hearth",
+        "yaw": 12288,
+        "position": [
+          0,
+          10424,
+          120
+        ],
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary26-tiles\\frame-62.bmp",
+        "sha256": "653032eeb9277b46a356183aae6d5e2da0b1c4e700d200b7dd636022f741bfc0",
+        "inspected": true
+      },
+      {
+        "phase": "after",
+        "area": "eastern arrival",
+        "yaw": 0,
+        "position": [
+          0,
+          10430,
+          124
+        ],
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary26-tiles\\frame-89.bmp",
+        "sha256": "2e626409358b80700bb52e6304db115afdb7f9243c37f55dc1fc3f88563ffb0d",
+        "inspected": true
+      },
+      {
+        "phase": "after",
+        "area": "eastern arrival",
+        "yaw": 4096,
+        "position": [
+          0,
+          10430,
+          124
+        ],
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary26-tiles\\frame-91.bmp",
+        "sha256": "e762edc00469614ce1fc8bc9d78cf52a216a68ffcbcf6204db3492f03a31c547",
+        "inspected": true
+      },
+      {
+        "phase": "after",
+        "area": "eastern arrival",
+        "yaw": 8192,
+        "position": [
+          0,
+          10430,
+          124
+        ],
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary26-tiles\\frame-93.bmp",
+        "sha256": "e1a0c1644d88d4b4a17d579e5f72e4838fb2f26a972e5d61b05c5da21ba530be",
+        "inspected": true
+      },
+      {
+        "phase": "after",
+        "area": "eastern arrival",
+        "yaw": 12288,
+        "position": [
+          0,
+          10430,
+          124
+        ],
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary26-tiles\\frame-95.bmp",
+        "sha256": "45395b495f7b14f291d0debaf2b487524cf8934bf66d5b2be34a84e05f8cc080",
+        "inspected": true
+      }
+    ],
+    "rejected_candidate": {
+      "artistic_acceptance": false,
+      "technical_affected_checks": "Both passed ordinary entry/Bank/Pray/routes/eight landmarks/exact portals/region rebuild; tests24/57/410twoignored and2098tiles1512escapes passed. Not overall art acceptance.",
+      "runtime_sha256": "F842D696A6DC7938D12DE6FA9AE8F651041DDA85B07E34C1EAC1B372597D86ED",
+      "source_candidate": [
+        169,
+        1195
+      ],
+      "reason": "Actual native threshold exposes green underlay patches through curved stone inlay. Surface does not form a cohesive sanctuary; reject despite technical success.",
+      "frames": "evidence/sanctuary-stone-inlay-after.json twelve native views all inspected; comparison sheets0..2 inspected.",
+      "published": false
+    },
+    "interpretation": "Native twelve matched poses show grounded gray stone joints tying the dark pillars and low alcove masonry together. Threshold and hearth stay visible; the lit brazier stands out. This is a local production improvement; user final artistic acceptance remains pending.",
+    "scope_limits": [
+      "Fresh native28 full route is running separately and is not yet accepted. Current headless29 full route, full current lifecycle and crash evidence remain outstanding.",
+      "Earlier complete C555 first-clear/crash evidence stays separate.",
+      "Human first-play20-30minute pacing target is not measured."
     ]
   }
 }

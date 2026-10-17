@@ -1,3 +1,11 @@
+## Sanctuary dressed stone: native comparison and affected checks pass
+
+Current6D39C747D63296C3 changes only four sanctuary terrain sources to377,545, rotated0/1/2/3. All64source cells have the genuine opaque dressed-stone texture. Its81sampled height/border vertices match adjoining galleries at-240 with no bridge/block bits. Game/native12100files0/1 are byte identical. It replaces the broad brown panels with visible stone joints that join the dark pillars and six low alcove returns. All twelve matched before/after native views are inspected, including threshold/hearth/arrival. No floor objects or renderer changes.
+
+Both exact saved entries, real6edge/open-crossing rows, Bank/Pray/routes/eightpersonal landmarks, exact portal exit/return and repeated scene/service checks after region rebuild pass; bank95 ends empty. Cache24/server57/world410(twoexistingignored),2098reachable tiles/1512legal lethal-pattern escapes and main build pass. `SANCTUARY_STONE_PREVIEW_20261017.json` pins source/runtime, actual frame hashes, terrain/cache evidence and current scope. The earlier169,1195 inlay passed technical checks but exposed green underlay in actual native views; it is artistically rejected and unpublished, with diagnostics retained.
+
+A genuinely fresh native28 full ordinary route is running separately; its outcome is not yet accepted. Current full headless/lifecycle/crash checks remain outstanding; complete C555 evidence stays historical. The sanctuary and whole floor retain pending user artistic acceptance, and human first-play pacing remains unmeasured. Continue the standing production mandate.
+
 ## Sanctuary alcoves: six supported returns and native comparison verified
 
 CurrentAA88DF685E87FCCB adds six low6143 masonry edges between existing sanctuary column faces, leaving the two-tile main crossing open. All twelve matched before/after native poses are inspected: bank and altar alcoves gain boundaries, with the hearth and central route visible. This is a local composition improvement; the sanctuary still needs stronger visual focus and final user artistic acceptance.

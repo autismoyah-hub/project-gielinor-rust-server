@@ -1,3 +1,7 @@
+## Sanctuary dressed-stone preview
+
+Parentf633939 retained. Only tower_layout.rs production source changes: four genuine377,545 terrain panels, native/game cache12100files0/1 exact; no shared-engine/rule/schema/renderer change. Twelve matched native views inspected; both affected entry/service/portal/rebuild checks pass.169,1195 candidate rejected artistically and unpublished. Fresh current native28 full route runs separately; no current full lifecycle/crash acceptance yet. Client eleven-patch source/tree unchanged, no client push or Agent2 changes. See SANCTUARY_STONE_PREVIEW_20261017.json.
+
 ## Sanctuary six-edge composition checkpoint
 
 Parentc92ace3 published bank fix retained. Only tower_scenery.rs changes production: six real6143 edge returns, no shared-engine/rule/schema/renderer change. Both exact earned entries and affected service/rebuild checks pass,24matched native frames inspected. Client eleven-patch source/tree unchanged; no client push/Agent2 changes. Full current combat/crash not claimed. See SANCTUARY_ARCADES_PREVIEW_20261017.json.
