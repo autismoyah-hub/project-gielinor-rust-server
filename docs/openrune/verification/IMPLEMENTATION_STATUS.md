@@ -73,3 +73,9 @@ Throughput:22historical contracts plus8new gameplay/shared units;30units/31appen
 Manual Admiral source0fe7d767e630ace7d5518be979adf094bb285026 registers three stages with optional shared1/2/2clock timing;70server427worldPASS/1existingignored;397hashes unchanged;7target definitionsPASS. Recipe ABI/player schema/default27timing preserved. Make-X and baking remain excluded. Historical27recipe sourcefe04a83de2b6f7f3edefc92c7f7031290a5908b0 backfilled with actual registration/atomicity/reward/requirement limits and preserved native/failure evidence;no old validation repeated. Independent V0-V4 queued.
 
 Throughput:23historical contracts plus9new gameplay/shared units;32units/33append-only records. Inventory22partially contracted eligible source files/tables,656configuration records,2830not-yet-assessed. No complete eligible-module denominator or migration-completion claim;remaining source reconciliation,content and prior backfill continue.
+
+## Checkpoint OR-MIG-0033 and OR-MIG-0024revision3
+
+Sourceae3d234c71764dd2364f8452fc1974a54a6783f0 registers14bites across7skill-boost pie families and stages shared secondary boosts with food/HP. Effective member-food definitions gate actual Eat using trusted account membership.71server429worldPASS/1existingignored;397hashes unchanged;15target item definitions/7stat symbolsPASS. Shared food contract revision3 links revision2/a560034a59e766d1faf400b61187fec861d13475 without overwriting evidence. Dragonfruit dish return follows Wiki over omitted donor stage. All independent levels queued.
+
+Throughput:23historical contracts plus10new gameplay/shared units;33units/35append-only records. Inventory23partially contracted eligible source files/tables,656configuration records,2829not-yet-assessed. Full remaining food/creation/cooking/skills/source reconciliation and earlier backfill remain incomplete.
