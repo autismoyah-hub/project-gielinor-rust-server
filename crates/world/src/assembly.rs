@@ -1,7 +1,7 @@
 //! Selected-slot food assembly with atomic inventory replacement and live levels.
 //! Timing and held-item registration are owned by the existing world scheduler.
 use crate::{
-    inventory::{Catalog, Delete, Error, Insert, Inventory},
+    inventory::{Catalog, Delete, Insert, Inventory},
     stats::Stats,
 };
 
@@ -51,24 +51,11 @@ impl Job {
         if outcome != Outcome::Made {
             return (outcome, None);
         }
-        let mut next_stats = stats.clone();
-        let advancement = if self.recipe.base_xp == 0 {
-            None
-        } else {
-            if rate_hundreds <= 0 {
-                return (Outcome::InvalidReward, None);
-            }
-            match crate::skills::advance(
-                &mut next_stats,
-                self.recipe.skill,
-                f64::from(self.recipe.base_xp),
-                f64::from(rate_hundreds) / 100.0,
-                99,
-            ) {
-                Ok(value) => Some(value),
-                Err(_) => return (Outcome::InvalidReward, None),
-            }
-        };
+        let (next_stats, advancement) =
+            match prepare_reward(stats, self.recipe.skill, self.recipe.base_xp, rate_hundreds) {
+                Ok(v) => v,
+                Err(outcome) => return (outcome, None),
+            };
         *inv = next_inv;
         *stats = next_stats;
         (Outcome::Made, advancement)
@@ -79,30 +66,17 @@ impl Job {
         if i32::from(stats.current(r.skill)) < i32::from(r.level) {
             return Outcome::Level;
         }
-        if self.first_slot == self.second_slot
-            || inv
-                .get(self.first_slot)
-                .is_none_or(|i| i.id != r.first || i.count <= 0 || i.vars != 0)
-            || inv
-                .get(self.second_slot)
-                .is_none_or(|i| i.id != r.second || i.count <= 0 || i.vars != 0)
-        {
-            return Outcome::Stale;
+        match exchange_slots(
+            inv,
+            catalog,
+            &[(r.first, self.first_slot), (r.second, self.second_slot)],
+            &[r.output],
+            false,
+        ) {
+            Ok(next) => *inv = next,
+            Err(outcome) => return outcome,
         }
-        let mut next = inv.clone();
-        let result = (|| -> Result<(), Error> {
-            for (id, slot) in [(r.first, self.first_slot), (r.second, self.second_slot)] {
-                let mut debit = Delete::new(id, 1);
-                debit.strict_slot = Some(slot);
-                next.delete(catalog, debit)?;
-            }
-            next.insert(catalog, Insert::new(r.output, 1))?;
-            Ok(())
-        })();
-        if result.is_err() {
-            return Outcome::Capacity;
-        }
-        *inv = next;
+
         Outcome::Made
     }
 }
@@ -302,5 +276,311 @@ impl Transition {
             self.queued_at,
             self.committed_at
         )
+    }
+}
+
+// Both pair and multi-material assembly share this inventory transaction and XP
+// preparation. Existing pair behavior is retained; ordinary multi-material jobs
+// additionally require each captured slot to contain a single unmodified item.
+fn exchange_slots(
+    inv: &Inventory,
+    catalog: &Catalog,
+    inputs: &[(i32, usize)],
+    outputs: &[i32],
+    single: bool,
+) -> Result<Inventory, Outcome> {
+    let mut slots = std::collections::BTreeSet::new();
+    if inputs.iter().any(|&(id, slot)| {
+        !slots.insert(slot)
+            || inv.get(slot).is_none_or(|i| {
+                i.id != id || i.count <= 0 || (single && i.count != 1) || i.vars != 0
+            })
+    }) {
+        return Err(Outcome::Stale);
+    }
+    let mut next = inv.clone();
+    for &(id, slot) in inputs {
+        let mut debit = Delete::new(id, 1);
+        debit.strict_slot = Some(slot);
+        next.delete(catalog, debit).map_err(|_| Outcome::Capacity)?;
+    }
+    for &id in outputs {
+        next.insert(catalog, Insert::new(id, 1))
+            .map_err(|_| Outcome::Capacity)?;
+    }
+    Ok(next)
+}
+fn prepare_reward(
+    stats: &Stats,
+    skill: u8,
+    base_xp: u16,
+    rate: i32,
+) -> Result<(Stats, Option<crate::skills::Advancement>), Outcome> {
+    let mut next = stats.clone();
+    let advancement = if base_xp == 0 {
+        None
+    } else {
+        if rate <= 0 {
+            return Err(Outcome::InvalidReward);
+        }
+        Some(
+            crate::skills::advance(
+                &mut next,
+                skill,
+                f64::from(base_xp),
+                f64::from(rate) / 100.0,
+                99,
+            )
+            .map_err(|_| Outcome::InvalidReward)?,
+        )
+    };
+    Ok((next, advancement))
+}
+#[derive(Clone, Debug)]
+pub struct BatchRecipe {
+    pub inputs: Vec<i32>,
+    pub outputs: Vec<i32>,
+    pub skill: u8,
+    pub level: u8,
+    pub base_xp: u16,
+    pub members: bool,
+    pub ticks: u8,
+}
+#[derive(Clone, Debug)]
+pub struct BatchJob {
+    pub recipe: std::sync::Arc<BatchRecipe>,
+    pub slots: Vec<usize>,
+}
+impl BatchRecipe {
+    fn valid(&self) -> bool {
+        self.inputs.len() >= 2
+            && !self.outputs.is_empty()
+            && self.ticks > 0
+            && self.level > 0
+            && self.inputs.iter().all(|v| *v >= 0)
+            && self.outputs.iter().all(|v| *v >= 0)
+            && self
+                .inputs
+                .iter()
+                .collect::<std::collections::BTreeSet<_>>()
+                .len()
+                == self.inputs.len()
+    }
+    /// Retain both client-selected slots; resolve the remaining ingredients once
+    /// at admission. Completion cannot substitute a different matching item.
+    pub fn bind(
+        self: &std::sync::Arc<Self>,
+        request: crate::held_use::Request,
+        inv: &Inventory,
+    ) -> Option<BatchJob> {
+        if !self.valid()
+            || request.selected_id == request.target_id
+            || request.selected_slot == request.target_slot
+            || !self.inputs.contains(&request.selected_id)
+            || !self.inputs.contains(&request.target_id)
+        {
+            return None;
+        }
+        let selected = usize::try_from(request.selected_slot).ok()?;
+        let target = usize::try_from(request.target_slot).ok()?;
+        let mut slots = Vec::with_capacity(self.inputs.len());
+        for &id in &self.inputs {
+            let slot = if id == request.selected_id {
+                selected
+            } else if id == request.target_id {
+                target
+            } else {
+                inv.slots()
+                    .iter()
+                    .position(|v| v.is_some_and(|i| i.id == id && i.count == 1 && i.vars == 0))?
+            };
+            if slots.contains(&slot)
+                || inv
+                    .get(slot)
+                    .is_none_or(|i| i.id != id || i.count != 1 || i.vars != 0)
+            {
+                return None;
+            }
+            slots.push(slot);
+        }
+        Some(BatchJob {
+            recipe: self.clone(),
+            slots,
+        })
+    }
+}
+impl BatchJob {
+    pub fn complete_awarding(
+        &self,
+        inv: &mut Inventory,
+        catalog: &Catalog,
+        stats: &mut Stats,
+        rate: i32,
+        member: bool,
+    ) -> (Outcome, Option<crate::skills::Advancement>) {
+        let r = &self.recipe;
+        if inv.stack == crate::inventory::StackType::Always {
+            return (Outcome::Capacity, None);
+        }
+        if !r.valid() || self.slots.len() != r.inputs.len() {
+            return (Outcome::Stale, None);
+        }
+        if r.members && !member {
+            return (Outcome::Members, None);
+        }
+        if i32::from(stats.current(r.skill)) < i32::from(r.level) {
+            return (Outcome::Level, None);
+        }
+        let ordinary = |id| {
+            !catalog.stackable.contains(&id)
+                && !catalog.dummy.contains(&id)
+                && !catalog.notes.get(&id).is_some_and(|v| v.template != 0)
+                && !catalog
+                    .placeholders
+                    .get(&id)
+                    .is_some_and(|v| v.template != 0)
+                && !catalog.transforms.get(&id).is_some_and(|v| v.template != 0)
+        };
+        if !r.inputs.iter().chain(&r.outputs).copied().all(ordinary) {
+            return (Outcome::Capacity, None);
+        }
+        let inputs: Vec<_> = r
+            .inputs
+            .iter()
+            .copied()
+            .zip(self.slots.iter().copied())
+            .collect();
+        let next = match exchange_slots(inv, catalog, &inputs, &r.outputs, true) {
+            Ok(v) => v,
+            Err(e) => return (e, None),
+        };
+        let (next_stats, advancement) = match prepare_reward(stats, r.skill, r.base_xp, rate) {
+            Ok(v) => v,
+            Err(e) => return (e, None),
+        };
+        *inv = next;
+        *stats = next_stats;
+        (Outcome::Made, advancement)
+    }
+}
+#[derive(Clone, Debug)]
+pub(crate) struct BatchPending {
+    pub job: BatchJob,
+    pub queued_at: i32,
+}
+#[derive(Clone, Debug)]
+pub struct BatchTransition {
+    pub job: BatchJob,
+    pub queued_at: i32,
+    pub committed_at: i32,
+}
+impl BatchTransition {
+    pub fn json(&self, actor: crate::simulation::ActorId) -> String {
+        format!("{{\"actor_slot\":{},\"actor_generation\":{},\"inputs\":{:?},\"slots\":{:?},\"outputs\":{:?},\"queued_at\":{},\"committed_at\":{}}}",actor.slot,actor.generation,self.job.recipe.inputs,self.job.slots,self.job.recipe.outputs,self.queued_at,self.committed_at)
+    }
+}
+
+pub fn outcome_message(outcome: Outcome) -> &'static str {
+    match outcome {
+        Outcome::Made => "You combine the ingredients.",
+        Outcome::Level => "You need a higher Cooking level to make that.",
+        Outcome::Stale => "You no longer have those ingredients in the selected slots.",
+        Outcome::Capacity => "You don't have enough inventory space to make that.",
+        Outcome::InvalidReward => "You cannot make that item right now.",
+        Outcome::Members => "You need to be a member to make that item.",
+    }
+}
+
+#[cfg(test)]
+mod batch_tests {
+    use super::*;
+    use crate::{
+        held_use::Request,
+        inventory::{Item, StackType},
+    };
+    use std::sync::Arc;
+    #[test]
+    fn batch_selected_duplicate_fullbag_returns_and_late_refusals_are_atomic() {
+        for mode in 0..7 {
+            let mut recipe = BatchRecipe {
+                inputs: vec![10, 11, 12, 13],
+                outputs: vec![20, 21, 22],
+                skill: 7,
+                level: 40,
+                base_xp: 0,
+                members: false,
+                ticks: 2,
+            };
+            if mode == 5 {
+                recipe.base_xp = 30;
+            }
+            if mode == 6 {
+                recipe.members = true;
+            }
+            let recipe = Arc::new(recipe);
+            let mut inv = Inventory::new(6, StackType::Normal, false);
+            for (slot, id) in [(0, 10), (1, 11), (2, 12), (3, 13), (4, 10), (5, 99)] {
+                inv.restore_slot(
+                    slot,
+                    Some(Item {
+                        id,
+                        count: 1,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+            }
+            let request = Request {
+                selected_slot: 4,
+                selected_id: 10,
+                target_slot: 1,
+                target_id: 11,
+            };
+            let job = recipe.bind(request, &inv).unwrap();
+            assert_eq!(job.slots, vec![4, 1, 2, 3]);
+            let mut stats = Stats::default();
+            stats.set_base(7, 39);
+            stats.set_current(7, 40);
+            let mut catalog = Catalog::default();
+            match mode {
+                1 => {
+                    catalog.dummy.insert(22);
+                }
+                2 => {
+                    let item = inv.get(2);
+                    inv.restore_slot(2, None).unwrap();
+                    inv.restore_slot(5, item).unwrap();
+                }
+                3 => stats.set_current(7, 39),
+                4 => inv.stack = StackType::Always,
+                _ => {}
+            }
+            let before = (inv.clone(), stats.clone());
+            let (outcome, _) = job.complete_awarding(
+                &mut inv,
+                &catalog,
+                &mut stats,
+                if mode == 5 { 0 } else { 500 },
+                false,
+            );
+            if mode == 0 {
+                assert_eq!(outcome, Outcome::Made);
+                assert_eq!(stats, before.1);
+                for id in [10, 20, 21, 22, 99] {
+                    assert_eq!(
+                        inv.slots().iter().flatten().filter(|i| i.id == id).count(),
+                        1
+                    );
+                }
+                assert_eq!(
+                    job.complete_awarding(&mut inv, &catalog, &mut stats, 500, false)
+                        .0,
+                    Outcome::Stale
+                );
+            } else {
+                assert_ne!(outcome, Outcome::Made);
+                assert_eq!((inv, stats), before);
+            }
+        }
     }
 }

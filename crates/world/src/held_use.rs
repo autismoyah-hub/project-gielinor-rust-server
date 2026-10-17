@@ -24,10 +24,14 @@ pub struct Request {
 pub struct Preparation {
     pub abort_dialog: bool,
 }
-#[derive(Clone, Copy, Debug)]
+#[derive(Clone, Debug)]
 pub enum Handler {
+    AssemblyBatch(std::sync::Arc<crate::assembly::BatchRecipe>),
     Assembly(crate::assembly::Recipe),
-    AssemblyTimed { recipe: crate::assembly::Recipe, ticks: u8 },
+    AssemblyTimed {
+        recipe: crate::assembly::Recipe,
+        ticks: u8,
+    },
     Grinding(crate::grinding::Recipe),
     TutorialDough(crate::tutorial_dough::Config),
     TutorialFire(crate::tutorial_fire::Config),

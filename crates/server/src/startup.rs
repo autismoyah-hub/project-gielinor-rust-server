@@ -688,6 +688,10 @@ pub fn configure<B: AccountBackend>(
     for recipe in crate::content::chocolate_cake_assembly(n("obj"),&runtime.definitions,u8::try_from(names.id("stat","cooking")?).map_err(io::Error::other)?).map_err(io::Error::other)? {
         runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.first,recipe.second,gielinor_world::held_use::Handler::Assembly(recipe)).map_err(|e|io::Error::other(format!("Chocolate-cake assembly registration: {e:?}")))?;
     }
+    let batter=crate::content::cake_batter_assembly(n("obj"),&runtime.definitions,u8::try_from(names.id("stat","cooking")?).map_err(io::Error::other)?).map_err(io::Error::other)?;
+    for &ingredient in &batter.inputs[1..] {
+        runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,batter.inputs[0],ingredient,gielinor_world::held_use::Handler::AssemblyBatch(batter.clone())).map_err(|e|io::Error::other(format!("Cake-batter registration: {e:?}")))?;
+    }
     let stew=crate::content::stew_recipes(n("obj"),&runtime.definitions,u8::try_from(names.id("stat","cooking")?).map_err(io::Error::other)?).map_err(io::Error::other)?;
     for recipe in stew.assembly {
         runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.first,recipe.second,gielinor_world::held_use::Handler::Assembly(recipe)).map_err(|e|io::Error::other(format!("Stew assembly registration: {e:?}")))?;

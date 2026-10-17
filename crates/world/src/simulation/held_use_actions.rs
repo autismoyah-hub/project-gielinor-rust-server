@@ -70,7 +70,7 @@ impl World {
             request.target_slot,
             request.target_id,
         ) {
-            Ok(selected) => selected.map(|s| *s.handler),
+            Ok(selected) => selected.map(|s| s.handler.clone()),
             Err(_) => {
                 self.resend_held_use(actor);
                 return Err(ActionError::InvalidItem);
@@ -149,6 +149,14 @@ impl World {
             }
         }
         match handler {
+            Some(Handler::AssemblyBatch(recipe)) => {
+                let p=self.players.get_mut(actor.slot as usize).unwrap();
+                if recipe.members && !p.member {self.events.push(WorldEvent::LocationMessage{actor,message:"You need to be a member to make that item."});return Ok(());}
+                if i32::from(p.data.stats.current(recipe.skill))<i32::from(recipe.level){self.events.push(WorldEvent::LocationMessage{actor,message:"You need a higher Cooking level to make that."});return Ok(());}
+                let Some(job)=recipe.bind(request,&p.data.inventory) else{self.events.push(WorldEvent::LocationMessage{actor,message:"You do not have all the required ingredients."});return Ok(());};
+                p.queues.clear_weak();
+                p.queues.add(crate::assembly::QUEUE,crate::queues::Category::Weak,i32::from(recipe.ticks)+1,Deferred::AssemblyBatch(crate::assembly::BatchPending{job,queued_at:self.clock.0})).map_err(|_|ActionError::QueueFull)?;
+            }
             Some(Handler::Grinding(recipe)) => {
                 let (tool_slot,input_slot)=if request.selected_id==recipe.tool {
                     (request.selected_slot as usize,request.target_slot as usize)
@@ -751,4 +759,30 @@ mod assembly_tests {
             );
         }
     }
+    #[test]
+    fn batch_assembly_actual_held_route_two_clocks_and_interrupts_preserve_pair_users(){
+        for mode in 0..6 {
+            let(mut w,actor,_)=fixture();w.held_use_handlers=Default::default();
+            let recipe=std::sync::Arc::new(crate::assembly::BatchRecipe{inputs:vec![10,11,12,13],outputs:vec![20,21,22],skill:7,level:40,base_xp:0,members:false,ticks:2});
+            w.held_use_handlers.register(Scope::Types,10,11,Handler::AssemblyBatch(recipe)).unwrap();w.held_use_types.insert(13,Type{id:13,content:0});
+            let mut inv=Inventory::new(6,StackType::Normal,false);for(slot,id)in[(0,10),(1,11),(2,12),(3,13),(4,10),(5,99)]{inv.restore_slot(slot,Some(crate::inventory::Item{id,count:1,vars:0})).unwrap();}
+            let data=w.data_mut(actor).unwrap();data.inventory=inv;data.stats.set_base(7,39);data.stats.set_current(7,40);let stats=data.stats.clone();
+            let request=Request{selected_slot:4,selected_id:10,target_slot:1,target_id:11};w.prepare_held_use(actor,request).unwrap();w.finish_held_use(actor,request).unwrap();
+            match mode{
+                1=>{let inv=&mut w.data_mut(actor).unwrap().inventory;let item=inv.get(2);inv.restore_slot(2,None).unwrap();inv.restore_slot(5,item).unwrap();},
+                2=>{w.submit(actor,Action::MoveClick{destination:CoordGrid::new(3201,3200,0).unwrap(),control:false}).unwrap();},
+                3=>w.data_mut(actor).unwrap().stats.set_current(7,39),
+                4=>w.set_modal_open(actor,true).unwrap(),
+                5=>w.players.get_mut(actor.slot as usize).unwrap().begin_held_action(),
+                _=>{}
+            }
+            for _ in 0..6{w.tick().unwrap();}
+            if mode==4{w.set_modal_open(actor,false).unwrap();for _ in 0..4{w.tick().unwrap();}}
+            let traces=w.drain_events().into_iter().filter_map(|e|if let WorldEvent::AssemblyBatchMade{trace,..}=e{Some(trace)}else{None}).collect::<Vec<_>>();
+            assert_eq!(traces.len(),usize::from(mode==0));assert_eq!(w.data(actor).unwrap().stats.fine_xp(7),0);
+            if mode==0{assert_eq!(traces[0].committed_at-traces[0].queued_at,2);assert_eq!(traces[0].job.slots,vec![4,1,2,3]);assert_eq!(w.data(actor).unwrap().stats,stats);assert_eq!(w.data(actor).unwrap().inventory.get(0).unwrap().id,10);for id in [20,21,22]{assert!(w.data(actor).unwrap().inventory.slots().iter().flatten().any(|i|i.id==id));}}
+            else{assert!(!w.data(actor).unwrap().inventory.slots().iter().flatten().any(|i|[20,21,22].contains(&i.id)));}
+        }
+    }
+
 }

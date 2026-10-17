@@ -175,6 +175,7 @@ impl PlayerData {
 enum Deferred {
     Smithing(crate::smithing_make::Job),
     Assembly(crate::assembly::Pending),
+    AssemblyBatch(crate::assembly::BatchPending),
     Milking(crate::milking::Job),
     WaterFilling(crate::water_sources::Job),
     Cooking(crate::cooking::Job),
@@ -643,6 +644,7 @@ pub enum WorldEvent {
     PotionUpgradeMade { actor: ActorId, trace: crate::potion_upgrades::Transition },
     CombatMixingMade { actor: ActorId, trace: crate::combat_mixing::Transition },
     UnfinishedPotionMade { actor: ActorId, trace: crate::unfinished_potions::Transition },
+    AssemblyBatchMade {actor:ActorId,trace:crate::assembly::BatchTransition},
     AssemblyMade { actor: ActorId, trace: crate::assembly::Transition },
     HerbCleaned { actor: ActorId, trace: crate::herb_cleaning::Transition },
     CombatSound {
@@ -1378,6 +1380,7 @@ impl World {
         let p = self.players.get_mut(id.slot as usize).unwrap();
         p.has_modal = open;
         if open {
+            p.queues.remove_all(crate::assembly::QUEUE);
             p.queues.remove_all(crate::milking::QUEUE);
             p.queues.remove_all(crate::water_sources::QUEUE);
             p.queues.remove_all(crate::cooking::QUEUE);
@@ -2493,6 +2496,14 @@ impl World {
                                                         );
                                                     }
                                                 }
+                                                Deferred::AssemblyBatch(pending) => {
+                                                    if p.has_modal || p.pending_logout || p.saving {return;}
+                                                    let job=pending.job;
+                                                    let (outcome,advancement)=job.complete_awarding(&mut p.data.inventory,&self.object_types,&mut p.data.stats,p.data.xp_rate_hundreds,p.member);
+                                                    if let Some(advancement)=advancement {self.events.push(WorldEvent::SkillAdvanced{actor:p.id,skill:job.recipe.skill,advancement});}
+                                                    if outcome==crate::assembly::Outcome::Made {self.events.push(WorldEvent::AssemblyBatchMade{actor:p.id,trace:crate::assembly::BatchTransition{job,queued_at:pending.queued_at,committed_at:self.clock.0}});}
+                                                    self.events.push(WorldEvent::LocationMessage{actor:p.id,message:crate::assembly::outcome_message(outcome)});
+                                                }
                                                 Deferred::Assembly(pending) => {
                                                     let job = pending.job;
                                                     let (outcome, advancement) = job.complete_awarding(&mut p.data.inventory, &self.object_types, &mut p.data.stats, p.data.xp_rate_hundreds, p.member);
@@ -2502,14 +2513,7 @@ impl World {
                                                     if outcome == crate::assembly::Outcome::Made {
                                                         self.events.push(WorldEvent::AssemblyMade { actor: p.id, trace: crate::assembly::Transition { job, queued_at: pending.queued_at, committed_at: self.clock.0 } });
                                                     }
-                                                    let message = match outcome {
-                                                        crate::assembly::Outcome::Made => "You combine the ingredients.",
-                                                        crate::assembly::Outcome::Level => "You need a higher Cooking level to make that.",
-                                                        crate::assembly::Outcome::Stale => "You no longer have those ingredients in the selected slots.",
-                                                        crate::assembly::Outcome::Capacity => "You don't have enough inventory space to make that.",
-                                                        crate::assembly::Outcome::InvalidReward => "You cannot make that item right now.",
-                                                        crate::assembly::Outcome::Members => "You need to be a member to make that item.",
-                                                    };
+                                                    let message=crate::assembly::outcome_message(outcome);
                                                     self.events.push(WorldEvent::LocationMessage {actor:p.id,message});
                                                 }
                                                 Deferred::Smithing(job) => {

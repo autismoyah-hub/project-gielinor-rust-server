@@ -128,6 +128,9 @@ fn report(events: Vec<runtime::Event>) {
             runtime::Event::World(gielinor_world::simulation::WorldEvent::Grinding {actor,trace}) => {
                 println!("Grinding transition: {}",trace.json(actor));
             }
+            runtime::Event::World(gielinor_world::simulation::WorldEvent::AssemblyBatchMade {actor,trace}) => {
+                println!("Assembly batch transition: {}",trace.json(actor));
+            }
             runtime::Event::World(gielinor_world::simulation::WorldEvent::CookingMade {actor,trace}) => {
                 println!("Cooking transition: {}",trace.json(actor));
             }

@@ -4170,3 +4170,158 @@ mod chocolate_cake_binding_tests {
         assert!(chocolate_cake_assembly(&objects, &defs, 7).is_err());
     }
 }
+
+
+/// Four ingredients and three returned objects over shared assembly transactions.
+pub fn cake_batter_assembly(
+    objects: &Symbols,
+    defs: &Definitions,
+    skill: u8,
+) -> Result<std::sync::Arc<gielinor_world::assembly::BatchRecipe>, String> {
+    let stat = defs
+        .stats
+        .get(&(skill as u32))
+        .ok_or("Missing cake-batter Cooking stat")?;
+    if stat.name != "Cooking" || stat.min_level != 1 || stat.max_level != 99 || stat.unreleased {
+        return Err("Unattested cake-batter Cooking stat".into());
+    }
+    let mut ids = BTreeMap::new();
+    for (symbol, name) in [
+        ("cake_tin", "Cake tin"),
+        ("egg", "Egg"),
+        ("bucket_milk", "Bucket of milk"),
+        ("pot_flour", "Pot of flour"),
+        ("uncooked_cake", "Uncooked cake"),
+        ("bucket_empty", "Bucket"),
+        ("pot_empty", "Pot"),
+    ] {
+        let id = *objects.get(symbol).ok_or("Missing cake-batter symbol")?;
+        let d = u32::try_from(id)
+            .ok()
+            .and_then(|v| defs.items.get(&v))
+            .ok_or("Missing cake-batter item")?;
+        if ids.values().any(|v| *v == id)
+            || d.name != name
+            || d.members
+            || d.stackable
+            || d.dummy == 1
+            || d.cert.template != 0
+            || d.placeholder.template != 0
+            || d.transform.template != 0
+        {
+            return Err("Unattested or aliased cake-batter item".into());
+        }
+        ids.insert(symbol, id);
+    }
+    Ok(std::sync::Arc::new(gielinor_world::assembly::BatchRecipe {
+        inputs: vec![
+            ids["cake_tin"],
+            ids["egg"],
+            ids["bucket_milk"],
+            ids["pot_flour"],
+        ],
+        outputs: vec![ids["uncooked_cake"], ids["bucket_empty"], ids["pot_empty"]],
+        skill,
+        level: 40,
+        base_xp: 0,
+        members: false,
+        ticks: 2,
+    }))
+}
+#[cfg(test)]
+mod cake_batter_tests {
+    use super::*;
+    #[test]
+    fn cake_batter_four_real_inputs_return_uncooked_cake_bucket_and_pot() {
+        let mut objects = Symbols::new();
+        let mut defs = Definitions {
+            inventories: Default::default(),
+            locations: Default::default(),
+            npcs: Default::default(),
+            items: Default::default(),
+            varbits: Default::default(),
+            varps: Default::default(),
+            stats: Default::default(),
+        };
+        defs.stats.insert(
+            7,
+            gielinor_cache::definitions::StatType {
+                name: "Cooking".into(),
+                unreleased: false,
+                max_level: 99,
+                min_level: 1,
+            },
+        );
+        for (symbol, id, name) in [
+            ("cake_tin", 1887, "Cake tin"),
+            ("egg", 1944, "Egg"),
+            ("bucket_milk", 1927, "Bucket of milk"),
+            ("pot_flour", 1933, "Pot of flour"),
+            ("uncooked_cake", 1889, "Uncooked cake"),
+            ("bucket_empty", 1925, "Bucket"),
+            ("pot_empty", 1931, "Pot"),
+        ] {
+            objects.insert(symbol.into(), id);
+            let mut d = gielinor_cache::definitions::ItemType::decode(&[0]).unwrap();
+            d.name = name.into();
+            defs.items.insert(id as u32, d);
+        }
+        let recipe = cake_batter_assembly(&objects, &defs, 7).unwrap();
+        assert_eq!(recipe.inputs, vec![1887, 1944, 1927, 1933]);
+        assert_eq!(recipe.outputs, vec![1889, 1925, 1931]);
+        assert_eq!(
+            (recipe.level, recipe.ticks, recipe.base_xp, recipe.members),
+            (40, 2, 0, false)
+        );
+        let mut inv = gielinor_world::inventory::Inventory::new(
+            4,
+            gielinor_world::inventory::StackType::Normal,
+            false,
+        );
+        for (slot, &id) in recipe.inputs.iter().enumerate() {
+            inv.restore_slot(
+                slot,
+                Some(gielinor_world::inventory::Item {
+                    id,
+                    count: 1,
+                    vars: 0,
+                }),
+            )
+            .unwrap();
+        }
+        for target_slot in [1, 2, 3] {
+            let job = recipe
+                .bind(
+                    gielinor_world::held_use::Request {
+                        selected_slot: 0,
+                        selected_id: 1887,
+                        target_slot,
+                        target_id: recipe.inputs[target_slot as usize],
+                    },
+                    &inv,
+                )
+                .unwrap();
+            let mut next = inv.clone();
+            let mut stats = gielinor_world::stats::Stats::default();
+            stats.set_base(7, 39);
+            stats.set_current(7, 40);
+            let before = stats.clone();
+            assert_eq!(
+                job.complete_awarding(&mut next, &Default::default(), &mut stats, 500, false)
+                    .0,
+                gielinor_world::assembly::Outcome::Made
+            );
+            assert_eq!(stats, before);
+            assert_eq!(
+                next.slots()
+                    .iter()
+                    .flatten()
+                    .map(|v| v.id)
+                    .collect::<Vec<_>>(),
+                recipe.outputs
+            );
+        }
+        defs.items.get_mut(&1931).unwrap().dummy = 1;
+        assert!(cake_batter_assembly(&objects, &defs, 7).is_err());
+    }
+}
