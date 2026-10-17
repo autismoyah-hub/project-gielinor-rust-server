@@ -11,15 +11,14 @@ impl World {
         let Some(c) = self.cooking.as_ref() else {
             return;
         };
-        let Some(recipe) = c.recipes.get(&raw) else {
+        let Some(recipe) = c.recipe(target.id, raw) else {
             return;
         };
         let Some(revision) = self.locations.revision(target) else {
             return;
         };
         let p = self.players.get_mut(slot).unwrap();
-        if target.id != c.fire
-            || p.location_revision != Some(revision)
+        if p.location_revision != Some(revision)
             || c.tutorial.is_some_and(|v| v.active(&p.data.variables))
         {
             return;
@@ -62,7 +61,7 @@ impl World {
         }
         self.events.push(WorldEvent::PlayerCombatAnimation {
             actor: p.id,
-            sequence: c.animation,
+            sequence: c.animation_for(target.id).unwrap(),
         });
     }
 }
@@ -86,12 +85,11 @@ pub(super) fn complete(
         || p.movement.coords != job.origin
         || p.movement.last_movement != job.last_movement
         || revision != Some(job.revision)
-        || job.target.id != c.fire
         || c.tutorial.is_some_and(|v| v.active(&p.data.variables))
     {
         return;
     }
-    let Some(recipe) = c.recipes.get(&job.raw) else {
+    let Some(recipe) = c.recipe(job.target.id, job.raw) else {
         return;
     };
     if let Ok(outcome) = recipe.complete(
@@ -165,6 +163,7 @@ mod tests {
         crate::loc_collision::toggle(&mut w.collision, loc.coords, loc.shape, loc.angle, ty, true)
             .unwrap();
         w.cooking = Some(crate::cooking::Config {
+            surfaces: Default::default(),
             fire: 1,
             animation: 897,
             skill: 7,
@@ -376,6 +375,115 @@ mod tests {
                     progression.current(&w.data(actor).unwrap().variables),
                     crate::tutorial_steps::Step::SurvivalGate
                 );
+            }
+        }
+    }
+    #[test]
+    fn range_only_bread_actual_location_use_animation_generation_and_selected_slot() {
+        struct NoDraw;
+        impl RandomSource for NoDraw {
+            fn below(&mut self, _: u32) -> u32 {
+                panic!("guaranteed or rejected recipe must not draw")
+            }
+        }
+        for mode in 0..4 {
+            let (mut w, actor, fire) = fixture();
+            let range = Location::new(fire.coords, 2, fire.shape, fire.angle).unwrap();
+            w.location_types.insert(2, w.location_types[&1]);
+            w.locations.load(range);
+            let recipe = crate::cooking::Recipe {
+                raw: 40,
+                cooked: 50,
+                burnt: 60,
+                level: 1,
+                stop_burn: 38,
+                low: 118,
+                high: 492,
+                xp: 40,
+                ticks: 1,
+            };
+            w.cooking.as_mut().unwrap().surfaces.insert(
+                2,
+                crate::cooking::Surface {
+                    animation: 896,
+                    recipes: [(40, recipe)].into(),
+                },
+            );
+            w.held_use_types
+                .insert(40, crate::held_use::Type { id: 40, content: 0 });
+            w.data_mut(actor)
+                .unwrap()
+                .inventory
+                .restore_slot(
+                    1,
+                    Some(Item {
+                        id: 40,
+                        count: 1,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+            w.data_mut(actor).unwrap().stats.set_current(7, 38);
+            let loc = if mode == 1 { fire } else { range };
+            w.players
+                .get_mut(actor.slot as usize)
+                .unwrap()
+                .location_revision = w.locations.revision(loc);
+            w.submit(
+                actor,
+                Action::UseLocation {
+                    coords: loc.coords,
+                    id: loc.id,
+                    slot: 1,
+                    object: 40,
+                    control: false,
+                },
+            )
+            .unwrap();
+            w.tick_with_random(&mut NoDraw).unwrap();
+            if mode == 2 {
+                w.locations.delete(range);
+                w.locations.add(range).unwrap();
+            }
+            if mode == 3 {
+                let inv = &mut w.data_mut(actor).unwrap().inventory;
+                let item = inv.get(1);
+                inv.restore_slot(1, None).unwrap();
+                inv.restore_slot(2, item).unwrap();
+            }
+            w.tick_with_random(&mut NoDraw).unwrap();
+            let events = w.drain_events();
+            let traces = events
+                .iter()
+                .filter_map(|e| {
+                    if let WorldEvent::CookingMade { trace, .. } = e {
+                        Some(trace)
+                    } else {
+                        None
+                    }
+                })
+                .collect::<Vec<_>>();
+            assert_eq!(traces.len(), usize::from(mode == 0));
+            assert_eq!(
+                w.data(actor).unwrap().stats.fine_xp(7),
+                if mode == 0 { 400 } else { 0 }
+            );
+            assert_eq!(w.data(actor).unwrap().inventory.get(0).unwrap().id, 10);
+            if mode == 0 {
+                assert_eq!(w.data(actor).unwrap().inventory.get(1).unwrap().id, 50);
+                assert_eq!(traces[0].committed_at - traces[0].job.queued_at, 1);
+                assert!(events
+                    .iter()
+                    .any(|e| matches!(e, WorldEvent::PlayerCombatAnimation { sequence: 896, .. })));
+            } else {
+                assert!(!w
+                    .data(actor)
+                    .unwrap()
+                    .inventory
+                    .slots()
+                    .iter()
+                    .flatten()
+                    .any(|i| i.id == 50));
             }
         }
     }

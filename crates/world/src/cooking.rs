@@ -19,13 +19,35 @@ pub struct Recipe {
     pub ticks: u8,
 }
 #[derive(Clone, Debug)]
+pub struct Surface {
+    pub animation: u16,
+    pub recipes: BTreeMap<i32, Recipe>,
+}
+#[derive(Clone, Debug)]
 pub struct Config {
+    pub surfaces: BTreeMap<u32, Surface>,
     pub fire: u32,
     pub animation: u16,
     pub skill: u8,
     pub max_level: u8,
     pub recipes: BTreeMap<i32, Recipe>,
     pub tutorial: Option<crate::tutorial_progression::Config>,
+}
+impl Config {
+    pub fn recipe(&self, source: u32, input: i32) -> Option<&Recipe> {
+        if source == self.fire {
+            self.recipes.get(&input)
+        } else {
+            self.surfaces.get(&source)?.recipes.get(&input)
+        }
+    }
+    pub fn animation_for(&self, source: u32) -> Option<u16> {
+        if source == self.fire {
+            Some(self.animation)
+        } else {
+            self.surfaces.get(&source).map(|v| v.animation)
+        }
+    }
 }
 #[derive(Clone, Copy, Debug)]
 pub struct Job {

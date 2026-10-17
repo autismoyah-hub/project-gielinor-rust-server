@@ -66,7 +66,7 @@ impl World {
             self.process_tutorial_shrimp(slot);
             return;
         }
-        if self.cooking.as_ref().is_some_and(|c|c.fire==loc.id && c.recipes.contains_key(&object)) {
+        if self.cooking.as_ref().is_some_and(|c|c.recipe(loc.id,object).is_some()) {
             self.start_cooking(slot,loc,inv_slot as usize,object);
             return;
         }

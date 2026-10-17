@@ -3391,7 +3391,7 @@ pub fn manual_fire_cooking(obj:&Symbols,loc:&Symbols,seq:&Symbols,defs:&Definiti
   if defs.items[&(cooked as u32)].inventory_ops[0].as_deref()!=Some("Eat"){return Err("Cooked food lacks Eat".into());}
   recipes.insert(raw,Recipe{raw,cooked,burnt,level:1,stop_burn:34,low:128,high:512,xp:30,ticks});
  }
- Ok(Config{fire,animation,skill,max_level:stat.max_level,recipes,tutorial:None})
+ Ok(Config{fire,animation,skill,max_level:stat.max_level,recipes,tutorial:None,surfaces:Default::default()})
 }
 #[cfg(test)]
 mod cooking_binding_tests{
@@ -3686,6 +3686,7 @@ mod fire_fish_binding_tests {
             defs.items.insert(id as u32, d);
         }
         let empty = Config {
+            surfaces:Default::default(),
             fire: 26185,
             animation: 897,
             skill: 7,
@@ -4323,5 +4324,235 @@ mod cake_batter_tests {
         }
         defs.items.get_mut(&1931).unwrap().dummy = 1;
         assert!(cake_batter_assembly(&objects, &defs, 7).is_err());
+    }
+}
+
+
+/// Only the attested ordinary range. Quest/Hosidius/tutorial variants and Cook
+/// option menus remain separate; this is manual item-on-range dispatch.
+pub fn standard_cooking_range(
+    objects: &Symbols,
+    locations: &Symbols,
+    sequences: &Symbols,
+    defs: &Definitions,
+    config: &mut gielinor_world::cooking::Config,
+) -> Result<(), String> {
+    use gielinor_world::cooking::{Recipe, Surface};
+    let id = u32::try_from(
+        *locations
+            .get("range")
+            .ok_or("Missing ordinary range symbol")?,
+    )
+    .map_err(|_| "Invalid ordinary range ID")?;
+    if id == config.fire
+        || locations
+            .get("newbierange")
+            .is_some_and(|v| *v as u32 == id)
+        || config.surfaces.contains_key(&id)
+    {
+        return Err("Aliased or duplicate ordinary range".into());
+    }
+    let d = defs
+        .locations
+        .get(&id)
+        .ok_or("Missing ordinary range definition")?;
+    if d.name != "Range"
+        || d.collision.width != 1
+        || d.collision.length != 2
+        || !d.multi.is_empty()
+        || d.ops[0].as_deref() != Some("Cook")
+    {
+        return Err("Unattested ordinary range".into());
+    }
+    let animation = u16::try_from(
+        *sequences
+            .get("human_cooking")
+            .ok_or("Missing range cooking sequence")?,
+    )
+    .map_err(|_| "Invalid range cooking animation")?;
+    let mut recipes = BTreeMap::new();
+    for symbol in [
+        "raw_chicken",
+        "raw_beef",
+        "raw_shrimp",
+        "raw_anchovies",
+        "raw_sardine",
+        "raw_herring",
+        "raw_trout",
+        "raw_pike",
+        "raw_salmon",
+        "raw_tuna",
+        "raw_lobster",
+        "raw_swordfish",
+        "uncooked_stew",
+    ] {
+        let raw = *objects
+            .get(symbol)
+            .ok_or("Missing existing range-food symbol")?;
+        let mut recipe = *config
+            .recipes
+            .get(&raw)
+            .ok_or("Missing prerequisite fire recipe")?;
+        if recipe.raw != raw {
+            return Err("Aliased prerequisite range recipe".into());
+        }
+        if symbol == "raw_swordfish" {
+            recipe.stop_burn = 80;
+            recipe.low = 30;
+            recipe.high = 310;
+        }
+        recipes.insert(raw, recipe);
+    }
+    let mut bread = BTreeMap::new();
+    for (symbol, name) in [
+        ("bread_dough", "Bread dough"),
+        ("bread", "Bread"),
+        ("burnt_bread", "Burnt bread"),
+    ] {
+        let item = *objects.get(symbol).ok_or("Missing bread object symbol")?;
+        let d = u32::try_from(item)
+            .ok()
+            .and_then(|v| defs.items.get(&v))
+            .ok_or("Missing bread definition")?;
+        if bread.values().any(|v| *v == item)
+            || recipes.contains_key(&item)
+            || d.name != name
+            || d.members
+            || d.stackable
+            || d.dummy == 1
+            || d.cert.template != 0
+            || d.placeholder.template != 0
+            || d.transform.template != 0
+        {
+            return Err("Unattested or aliased ordinary bread".into());
+        }
+        bread.insert(symbol, item);
+    }
+    if defs.items[&(bread["bread"] as u32)].inventory_ops[0].as_deref() != Some("Eat") {
+        return Err("Bread output lacks Eat".into());
+    }
+    recipes.insert(
+        bread["bread_dough"],
+        Recipe {
+            raw: bread["bread_dough"],
+            cooked: bread["bread"],
+            burnt: bread["burnt_bread"],
+            level: 1,
+            stop_burn: 38,
+            low: 118,
+            high: 492,
+            xp: 40,
+            ticks: 1,
+        },
+    );
+    config.surfaces.insert(id, Surface { animation, recipes });
+    Ok(())
+}
+#[cfg(test)]
+mod standard_range_tests {
+    use super::*;
+    use gielinor_world::cooking::{Config, Recipe};
+    #[test]
+    fn standard_range_adds_bread_and_asymmetric_swordfish_without_changing_fire() {
+        let locations = Symbols::from([("range".into(), 26181), ("newbierange".into(), 9736)]);
+        let sequences = Symbols::from([("human_cooking".into(), 896)]);
+        let mut objects = Symbols::new();
+        let mut defs = Definitions {
+            inventories: Default::default(),
+            locations: Default::default(),
+            npcs: Default::default(),
+            items: Default::default(),
+            varbits: Default::default(),
+            varps: Default::default(),
+            stats: Default::default(),
+        };
+        let mut config = Config {
+            fire: 26185,
+            animation: 897,
+            skill: 7,
+            max_level: 99,
+            tutorial: None,
+            surfaces: BTreeMap::new(),
+            recipes: BTreeMap::new(),
+        };
+        for (symbol, raw) in [
+            ("raw_chicken", 2138),
+            ("raw_beef", 2132),
+            ("raw_shrimp", 317),
+            ("raw_anchovies", 321),
+            ("raw_sardine", 327),
+            ("raw_herring", 345),
+            ("raw_trout", 335),
+            ("raw_pike", 349),
+            ("raw_salmon", 331),
+            ("raw_tuna", 359),
+            ("raw_lobster", 377),
+            ("raw_swordfish", 371),
+            ("uncooked_stew", 2001),
+        ] {
+            objects.insert(symbol.into(), raw);
+            config.recipes.insert(
+                raw,
+                Recipe {
+                    raw,
+                    cooked: 10000 + raw,
+                    burnt: 20000 + raw,
+                    level: 1,
+                    stop_burn: 86,
+                    low: 18,
+                    high: 292,
+                    xp: 30,
+                    ticks: 4,
+                },
+            );
+        }
+        // Earlier units attest those prerequisite profiles; this test isolates
+        // surface registration, method overrides and the newly introduced bread.
+        for (symbol, id, name) in [
+            ("bread_dough", 2307, "Bread dough"),
+            ("bread", 2309, "Bread"),
+            ("burnt_bread", 2311, "Burnt bread"),
+        ] {
+            objects.insert(symbol.into(), id);
+            let mut d = gielinor_cache::definitions::ItemType::decode(&[0]).unwrap();
+            d.name = name.into();
+            if id == 2309 {
+                d.inventory_ops[0] = Some("Eat".into());
+            }
+            defs.items.insert(id as u32, d);
+        }
+        let mut d = gielinor_cache::locations::LocationType::decode(&[0]).unwrap();
+        d.name = "Range".into();
+        d.collision.length = 2;
+        d.ops[0] = Some("Cook".into());
+        defs.locations.insert(26181, d);
+        standard_cooking_range(&objects, &locations, &sequences, &defs, &mut config).unwrap();
+        assert_eq!(config.surfaces[&26181].recipes.len(), 14);
+        assert_eq!(config.animation_for(26181), Some(896));
+        assert_eq!(config.animation_for(26185), Some(897));
+        let range = config.recipe(26181, 371).unwrap();
+        let fire = config.recipe(26185, 371).unwrap();
+        assert_eq!((range.stop_burn, range.low, range.high), (80, 30, 310));
+        assert_eq!((fire.stop_burn, fire.low, fire.high), (86, 18, 292));
+        let bread = config.recipe(26181, 2307).unwrap();
+        assert_eq!(
+            (
+                bread.cooked,
+                bread.burnt,
+                bread.xp,
+                bread.stop_burn,
+                bread.ticks
+            ),
+            (2309, 2311, 40, 38, 1)
+        );
+        assert!(config.recipe(26185, 2307).is_none());
+        assert!(config.recipe(9736, 2307).is_none());
+        assert!(config.recipe(114, 2307).is_none());
+        config.surfaces.clear();
+        defs.items.get_mut(&2311).unwrap().cert.template = 799;
+        assert!(
+            standard_cooking_range(&objects, &locations, &sequences, &defs, &mut config).is_err()
+        );
+        assert!(config.surfaces.is_empty());
     }
 }
