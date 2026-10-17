@@ -1,0 +1,7 @@
+   Compiling gielinor-world v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\5a260c1bd6efa5f8a221bed7c96e6ac72fd428bc\crates\world)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 53.68s
+     Running unittests src\lib.rs (C:\Projects\OSRSRSPS\agent7-verification\work\5a260c1bd6efa5f8a221bed7c96e6ac72fd428bc\target\debug\deps\gielinor_world-379bc28e5667f47e.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 410 filtered out; finished in 0.00s

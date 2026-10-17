@@ -1,0 +1,12 @@
+   Compiling gielinor-world v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\71289e622cdfac55d5f11e1c857f325929ebff3f\crates\world)
+   Compiling proving-ground-transactions v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\71289e622cdfac55d5f11e1c857f325929ebff3f\independent-harness)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 28.51s
+     Running tests\transactions.rs (C:\Projects\OSRSRSPS\agent7-verification\work\71289e622cdfac55d5f11e1c857f325929ebff3f\target\debug\deps\transactions-0abfb078445d5cfc.exe)
+
+running 4 tests
+test stack_always_cannot_redirect_replacement_or_overflow_an_existing_stack ... ok
+test late_effect_failure_rolls_back_prior_stat_energy_and_all_events ... ok
+test malformed_or_stale_identity_and_nonordinary_inputs_or_outputs_are_lossless ... ok
+test every_selected_slot_with_duplicates_and_full_bag_drink_and_empty ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s

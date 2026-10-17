@@ -1,0 +1,53 @@
+{
+  "implementation_id": "OR-MIG-0018",
+  "implementation_commit_sha": "71289e622cdfac55d5f11e1c857f325929ebff3f",
+  "source_tree": "0bb4c20f5cab2967d3144f466c857067f69c7f00",
+  "queue_commit": "b323ebdee860a052b2c42a32542e61bfd8340a7d",
+  "independent_verification": true,
+  "timestamp_utc": "2026-10-17T22:03:13.741408+00:00",
+  "available_memory_bytes": 7825707008,
+  "active_compilers": [],
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\71289e622cdfac55d5f11e1c857f325929ebff3f\\independent-harness\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.09,
+      "log": "docs\\openrune\\verification\\independent\\OR-MIG-0018-71289e622cdf-independent\\run-0.log",
+      "tests_passed": 0,
+      "zero_tests": false
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\71289e622cdfac55d5f11e1c857f325929ebff3f\\independent-harness\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 28.7,
+      "log": "docs\\openrune\\verification\\independent\\OR-MIG-0018-71289e622cdf-independent\\run-1.log",
+      "tests_passed": 4,
+      "zero_tests": false
+    }
+  ],
+  "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-gnu\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+  "harness_sha256": {
+    "verification\\potion-slot\\tests\\transactions.rs": "0e890cf543e3a742055622929d7eb208c08bf6d6d06e822ddafa5ca9b45268d3"
+  },
+  "outcome": "PARTIAL",
+  "test_binary_sha256": {
+    "target\\debug\\deps\\gielinor_server-894795c80ff17bc3.exe": "d9aed1ac218ca2c51d035e91d883f571f04e43ec36a53d49bea48e74b8b33be9",
+    "target\\debug\\deps\\gielinor_world-379bc28e5667f47e.exe": "8e911678c2d617c1a078eaea2801f88558011e4ec1c2a4104cdd28f8a5f67844",
+    "target\\debug\\deps\\transactions-0abfb078445d5cfc.exe": "14190fb07999a42fb7171e3d23fb6ae3dc1dfba8e5695521f9458663c60283b1"
+  }
+}

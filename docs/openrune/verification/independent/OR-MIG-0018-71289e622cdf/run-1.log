@@ -1,0 +1,21 @@
+   Compiling gielinor-world v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\71289e622cdfac55d5f11e1c857f325929ebff3f\crates\world)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 57.25s
+     Running unittests src\lib.rs (C:\Projects\OSRSRSPS\agent7-verification\work\71289e622cdfac55d5f11e1c857f325929ebff3f\target\debug\deps\gielinor_world-379bc28e5667f47e.exe)
+
+running 14 tests
+test finished_potions::tests::ingredient_pairs_preserve_shared_bases_and_reverse_selected_slots ... ok
+test potions::tests::recovery_skips_boosted_stats_and_full_energy_without_reducing_them ... ok
+test finished_potions::tests::experience_cap_does_not_prevent_valid_inventory_exchange ... ok
+test potions::tests::failed_replacement_is_atomic_but_reference_still_applies_drink_effects ... ok
+test finished_potions::tests::ancient_brew_selected_stack_debits_one_and_never_accepts_stacked_vials ... ok
+test potions::tests::selected_dose_failures_publish_no_items_stats_energy_events_or_delay ... ok
+test potions::tests::selected_dose_stays_in_place_with_duplicates_and_a_full_inventory ... ok
+test unfinished_potions::tests::full_backpack_boosted_exchange_preserves_all_stats_and_cannot_replay ... ok
+test unfinished_potions::tests::live_refusals_and_failed_credit_conserve_every_item_and_stat ... ok
+test finished_potions::tests::explicit_boost_policy_and_live_refusals_conserve_state ... ok
+test finished_potions::tests::full_backpack_rewards_preserve_fractions_and_no_replay ... ok
+test unfinished_potions::tests::every_full_backpack_slot_pair_conserves_unrelated_state ... ok
+test finished_potions::tests::goggles_keep_selected_secondary_and_full_reward_for_every_profile_and_order ... ok
+test simulation::tests::queued_potions_reject_stale_items_share_delays_and_empty_without_delay ... ok
+
+test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 405 filtered out; finished in 0.07s

@@ -1,0 +1,103 @@
+{
+  "queue_commit": "b323ebdee860a052b2c42a32542e61bfd8340a7d",
+  "initial_contract_commit": "ba455a0278f3f0b5ac6cbe377b6a8b83f0e95348",
+  "supplied_ba455a6_resolves": false,
+  "initial_validator_stdout": "PASS 17 records; 17 implementation units; contract integrity only, not gameplay acceptance\n",
+  "current_validator_units": 21,
+  "initial_validator_exact_sha_git_checks": "PASS",
+  "timestamp_utc": "2026-10-17T22:03:55.205523+00:00",
+  "independent_verification": true,
+  "claim_scope": "Queue integrity only; not V0 compilation or gameplay acceptance",
+  "dependency_ancestry": [
+    {
+      "feature": "OR-MIG-0002",
+      "dependency": "OR-MIG-0001",
+      "present": true
+    },
+    {
+      "feature": "OR-MIG-0003",
+      "dependency": "OR-MIG-0002",
+      "present": true
+    },
+    {
+      "feature": "OR-MIG-0004",
+      "dependency": "OR-MIG-0001",
+      "present": true
+    },
+    {
+      "feature": "OR-MIG-0006",
+      "dependency": "OR-MIG-0003",
+      "present": true
+    },
+    {
+      "feature": "OR-MIG-0007",
+      "dependency": "OR-MIG-0006",
+      "present": true
+    },
+    {
+      "feature": "OR-MIG-0008",
+      "dependency": "OR-MIG-0006",
+      "present": true
+    },
+    {
+      "feature": "OR-MIG-0009",
+      "dependency": "OR-MIG-0006",
+      "present": true
+    },
+    {
+      "feature": "OR-MIG-0010",
+      "dependency": "OR-MIG-0002",
+      "present": true
+    },
+    {
+      "feature": "OR-MIG-0011",
+      "dependency": "OR-MIG-0006",
+      "present": true
+    },
+    {
+      "feature": "OR-MIG-0012",
+      "dependency": "OR-MIG-0006",
+      "present": true
+    },
+    {
+      "feature": "OR-MIG-0013",
+      "dependency": "OR-MIG-0006",
+      "present": true
+    },
+    {
+      "feature": "OR-MIG-0014",
+      "dependency": "OR-MIG-0002",
+      "present": true
+    },
+    {
+      "feature": "OR-MIG-0015",
+      "dependency": "OR-MIG-0005",
+      "present": true
+    },
+    {
+      "feature": "OR-MIG-0016",
+      "dependency": "OR-MIG-0002",
+      "present": true
+    },
+    {
+      "feature": "OR-MIG-0017",
+      "dependency": "OR-MIG-0011",
+      "present": true
+    },
+    {
+      "feature": "OR-MIG-0019",
+      "dependency": "OR-MIG-0018",
+      "present": true
+    },
+    {
+      "feature": "OR-MIG-0020",
+      "dependency": "OR-MIG-0018",
+      "present": true
+    },
+    {
+      "feature": "OR-MIG-0020",
+      "dependency": "OR-MIG-0019",
+      "present": true
+    }
+  ]
+}

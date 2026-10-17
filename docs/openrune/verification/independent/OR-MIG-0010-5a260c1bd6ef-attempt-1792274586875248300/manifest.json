@@ -1,0 +1,67 @@
+{
+  "implementation_id": "OR-MIG-0010",
+  "implementation_commit_sha": "5a260c1bd6efa5f8a221bed7c96e6ac72fd428bc",
+  "source_tree": "c65ecf5aadecaf01ca55b91b819ad3aff5fc5563",
+  "queue_commit": "b323ebdee860a052b2c42a32542e61bfd8340a7d",
+  "independent_verification": true,
+  "timestamp_utc": "2026-10-17T22:03:07.433197+00:00",
+  "available_memory_bytes": 7833190400,
+  "active_compilers": [],
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "--version"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.03,
+      "log": "docs\\openrune\\verification\\independent\\OR-MIG-0010-5a260c1bd6ef-attempt-1792274586875248300\\run-0.log",
+      "tests_passed": 0,
+      "zero_tests": false
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "-p",
+        "gielinor-world",
+        "--lib",
+        "combat_mixing"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.89,
+      "log": "docs\\openrune\\verification\\independent\\OR-MIG-0010-5a260c1bd6ef-attempt-1792274586875248300\\run-1.log",
+      "tests_passed": 4,
+      "zero_tests": false
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "-p",
+        "gielinor-server",
+        "--lib",
+        "combat_mixing"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.11,
+      "log": "docs\\openrune\\verification\\independent\\OR-MIG-0010-5a260c1bd6ef-attempt-1792274586875248300\\run-2.log",
+      "tests_passed": 1,
+      "zero_tests": false
+    }
+  ],
+  "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-gnu\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+  "outcome": "PARTIAL",
+  "test_binary_sha256": {
+    "target\\debug\\deps\\gielinor_server-894795c80ff17bc3.exe": "35ddcc038b7e9cd6f113a0f44e66add96e4aefc4473cec502a5c5017c0b1b7e9",
+    "target\\debug\\deps\\gielinor_world-379bc28e5667f47e.exe": "97a82d1a4f20062be83231e25f93695de2a2f1b6d0644a2cc3dad5680814932e"
+  }
+}

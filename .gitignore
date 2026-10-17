@@ -1192,3 +1192,18 @@
 /scripts/*
 !/scripts/validate-openrune-queue.py
 !/scripts/test-openrune-queue.py
+
+# PROVING GROUND: synthetic tests and independent source-only evidence.
+!/scripts/proving-ground.py
+!/scripts/proving-ground-sync.py
+!/scripts/proving-ground-finalize.py
+!/docs/openrune/verification/VERIFICATION_RESULTS.jsonl
+!/docs/openrune/verification/CORRECTION_BACKLOG.md
+!/docs/openrune/verification/PROVING_GROUND.md
+!/docs/openrune/verification/independent/
+/docs/openrune/verification/independent/**
+!/docs/openrune/verification/independent/**/
+!/docs/openrune/verification/independent/**/*.json
+!/docs/openrune/verification/independent/**/*.jsonl
+!/docs/openrune/verification/independent/**/*.txt
+!/docs/openrune/verification/independent/**/*.log

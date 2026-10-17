@@ -1,0 +1,56 @@
+{
+  "implementation_id": "OR-MIG-0018",
+  "implementation_commit_sha": "71289e622cdfac55d5f11e1c857f325929ebff3f",
+  "source_tree": "0bb4c20f5cab2967d3144f466c857067f69c7f00",
+  "queue_commit": "aa36efb30cfa1003e46177d3b9dfe5a4e1d9ae3d",
+  "independent_verification": true,
+  "timestamp_utc": "2026-10-17T21:56:16.897037+00:00",
+  "available_memory_bytes": 6872104960,
+  "active_compilers": [],
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "--version"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.05,
+      "log": "docs\\openrune\\verification\\independent\\OR-MIG-0018-71289e622cdf\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "-p",
+        "gielinor-world",
+        "--lib",
+        "potions"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 57.44,
+      "log": "docs\\openrune\\verification\\independent\\OR-MIG-0018-71289e622cdf\\run-1.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "-p",
+        "gielinor-server",
+        "--lib",
+        "potion"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 78.7,
+      "log": "docs\\openrune\\verification\\independent\\OR-MIG-0018-71289e622cdf\\run-2.log"
+    }
+  ],
+  "outcome": "PARTIAL"
+}

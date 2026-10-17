@@ -1,0 +1,21 @@
+{
+  "scope": "Initial independent checkpoint; partial V0/V1 only",
+  "consumed_contracts": 21,
+  "latest_outcomes": {
+    "VERIFIED": 0,
+    "PARTIAL": 3,
+    "FAILED": 0,
+    "BLOCKED": 0,
+    "NOT_ASSESSED": 18
+  },
+  "rust_test_functions_passed": 39,
+  "historical_blocked_attempts": [
+    "OR-MIG-0010-5a260c1bd6ef"
+  ],
+  "required_open_levels": [
+    "V2",
+    "V3",
+    "V4"
+  ],
+  "historical_FORGE_evidence_counted_as_independent": false
+}
