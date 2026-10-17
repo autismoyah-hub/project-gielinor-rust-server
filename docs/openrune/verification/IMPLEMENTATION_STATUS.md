@@ -23,3 +23,11 @@ Current throughput:17historical contracts backfilled plus1new shared gameplay im
 Published source d02633e45576cbea0ba4e14e7d3cb8c164886950 implements all eight Ancient/Forgotten brew drinking doses through existing held DrinkSlot dispatch, using shared overrestore/current-drain primitives and selected-slot atomic transactions. Bounded4server41world potion-filtered testsPASS;397source hashes unchanged. Independent V0-V4 acceptance queued.
 
 Throughput:17historical contracts plus2new gameplay units,19queue units. Inventory now12partially contracted eligible source files/tables,656configuration records,2840not-yet-assessed. No PROVING GROUND findings received. Full earlier-batch backfill, eligible-module reconciliation and remaining potion/gameplay obligations remain outstanding.
+
+## Checkpoints OR-MIG-0020 and historical OR-MIG-0021
+
+Saradomin brew source cf75fa343a0fc86c50f4451a22600cc10a0ee500: four registered doses, capped HP/Defence boosts, current offensive drains, atomic dose exchange and foul-liquid message. Focused4server43world testsPASS;397hashes unchanged. Explicit V4 discrepancy: Wiki minimum0 selected over donor helper default1.
+
+Backfilled historical smithing c8b9aef260db3101dafb2b591ebbdfa4add69f5b as OR-MIG-0021 using its existing compile/test evidence and actual queue/registration paths; no completed build/native work repeated. Scope is queued live requirements and ordinary iron outcome safety, not full smithing parity. All independent levels remain queued.
+
+Throughput:18historical contracts plus3new implementation units;21queue units. Inventory14partially contracted eligible source files/tables,656configuration records,2838not-yet-assessed. Remaining prior-batch backfill and eligible-gameplay reconciliation continue. No PROVING GROUND findings received.
