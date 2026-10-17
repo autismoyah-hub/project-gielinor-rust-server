@@ -1,0 +1,1675 @@
+{
+  "runtime_source": "e70dd2a (7c3d81d and subsequent evidence-only commits do not alter this runtime)",
+  "runtime_sha256": "C555FBA455ED46C4818FFAF475700F9A4C96927E6A5EEA77906A86C17ECBB62E",
+  "scope": "Current combined three-edge headrace and twelve-edge processional hall. Native clean fresh first clear; headless legitimate first-ever clear by independent continuation after retained RNG failure. Both normal reconnects and independently verified connected-session crash/restart pass. Not an interrupted in-flight transaction claim.",
+  "native": {
+    "clean_first_clear": {
+      "accepted": true,
+      "source": "80e55e6 + twelve processional hall rails; C555FBA455ED46C4818FFAF475700F9A4C96927E6A5EEA77906A86C17ECBB62E server",
+      "method": "continuous normal-action native fresh first clear; real preparation/rescue; not human pacing guarantee",
+      "elapsed_seconds": 832.3,
+      "steps": [
+        {
+          "step": "services.py",
+          "arguments": [
+            "--onboard",
+            "--gate-check",
+            "--order",
+            "workshop-first",
+            "--scene-checks",
+            "--landmarks",
+            "8",
+            "--coolant-lesson",
+            "--native-frames"
+          ],
+          "seconds": 325.14,
+          "exit_code": 0
+        },
+        {
+          "step": "recovery.py",
+          "arguments": [],
+          "seconds": 40.23,
+          "exit_code": 0
+        },
+        {
+          "step": "guardian.py",
+          "arguments": [
+            "imp",
+            "--style",
+            "accurate",
+            "--native-frames",
+            "--label",
+            "first-hall"
+          ],
+          "seconds": 128.68,
+          "exit_code": 0
+        },
+        {
+          "step": "guardian.py",
+          "arguments": [
+            "warden",
+            "--style",
+            "accurate",
+            "--require-coolant",
+            "--native-frames",
+            "--timeout",
+            "600",
+            "--label",
+            "first-hall"
+          ],
+          "seconds": 276.78,
+          "exit_code": 0
+        },
+        {
+          "step": "restoration.py",
+          "arguments": [
+            "--label",
+            "victory",
+            "--expected",
+            "18526,18511,16811,16811,16810,18525,18525,18525",
+            "--native-frames"
+          ],
+          "seconds": 5.14,
+          "exit_code": 0
+        },
+        {
+          "step": "claim.py",
+          "arguments": [
+            "--full-pack",
+            "--native-frames"
+          ],
+          "seconds": 43.98,
+          "exit_code": 0
+        },
+        {
+          "step": "exit_return.py",
+          "arguments": [],
+          "seconds": 12.35,
+          "exit_code": 0
+        }
+      ]
+    },
+    "detailed_native_receipt": "NATIVE_HALL_FIRST_CLEAR_20261017.json",
+    "coins": 500,
+    "beer": 1,
+    "claim_reply_uids": [
+      82,
+      83,
+      84
+    ]
+  },
+  "headless": {
+    "continued_first_clear": {
+      "accepted": true,
+      "source": "80e55e6 + twelve processional hall rails; C555FBA455ED46C4818FFAF475700F9A4C96927E6A5EEA77906A86C17ECBB62E server",
+      "mode": "headless",
+      "qualification": "Legitimate continuation after retained241.37-second mining RNG timeout; original first-clear attempt remains failed. Same normally earned kitchen/tin/XP preserved; no onboarding/reset/grants/save edits.",
+      "elapsed_seconds_including_native_wait": 644.91,
+      "steps": [
+        {
+          "step": "services.py",
+          "arguments": [
+            "--gate-check",
+            "--order",
+            "kitchen-first",
+            "--scene-checks",
+            "--landmarks",
+            "8",
+            "--coolant-lesson"
+          ],
+          "seconds": 164.75,
+          "exit_code": 0
+        },
+        {
+          "step": "recovery.py",
+          "arguments": [],
+          "seconds": 39.52,
+          "exit_code": 0
+        },
+        {
+          "step": "guardian.py",
+          "arguments": [
+            "imp",
+            "--style",
+            "accurate",
+            "--label",
+            "first-hall"
+          ],
+          "seconds": 108.63,
+          "exit_code": 0
+        },
+        {
+          "step": "guardian.py",
+          "arguments": [
+            "warden",
+            "--style",
+            "accurate",
+            "--require-coolant",
+            "--timeout",
+            "600",
+            "--label",
+            "first-hall"
+          ],
+          "seconds": 277.86,
+          "exit_code": 0
+        },
+        {
+          "step": "restoration.py",
+          "arguments": [
+            "--label",
+            "victory",
+            "--expected",
+            "18526,18511,16811,16811,16810,18525,18525,18525"
+          ],
+          "seconds": 0.83,
+          "exit_code": 0
+        },
+        {
+          "step": "claim.py",
+          "arguments": [
+            "--full-pack"
+          ],
+          "seconds": 42.04,
+          "exit_code": 0
+        },
+        {
+          "step": "exit_return.py",
+          "arguments": [],
+          "seconds": 11.26,
+          "exit_code": 0
+        }
+      ]
+    },
+    "active_continuation_seconds": 644.89,
+    "coins": 500,
+    "beer": 1,
+    "claim_reply_uids": [
+      86,
+      87,
+      88
+    ],
+    "original_failed_attempt": {
+      "accepted": false,
+      "source": "80e55e6 + twelve processional hall rails; C555FBA455ED46C4818FFAF475700F9A4C96927E6A5EEA77906A86C17ECBB62E server",
+      "mode": "headless",
+      "elapsed_seconds_including_native_wait": 241.37,
+      "steps": [
+        {
+          "step": "services.py",
+          "arguments": [
+            "--onboard",
+            "--gate-check",
+            "--order",
+            "kitchen-first",
+            "--scene-checks",
+            "--landmarks",
+            "8",
+            "--coolant-lesson"
+          ],
+          "seconds": 241.37,
+          "exit_code": 1
+        }
+      ]
+    },
+    "qualification": "Original241.37s services attempt remains FAILED: ten real copper rolls above104 before unchanged55-second driver bound; ordinary withdrawal. Independent continuation keeps legitimate kitchen/tin/XP, no onboarding reset/admin grants/save edits/engine changes. Never label this a clean uninterrupted fresh run.",
+    "private_continuation": "evidence/headless-hall27-continued"
+  },
+  "lifecycle": {
+    "native": {
+      "relogin": {
+        "accepted": true,
+        "checks": [
+          "exact firstpaid item slots/equipment/all25XP/journal",
+          "fresh UID duplicate reply pays zero",
+          "8 quiet landmarks",
+          "3 headrace walls/pipe absence",
+          "12 hall rails and open cross bays/normal movement",
+          "2 real feeding troughs/low entrance and rear support"
+        ],
+        "fresh_duplicate_reply_uids": [
+          1
+        ],
+        "static_scene": [
+          {
+            "id": "5575",
+            "plane": "0",
+            "x": "10408",
+            "z": "99",
+            "shape": "10",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "5575",
+            "plane": "0",
+            "x": "10440",
+            "z": "99",
+            "shape": "10",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "17097",
+            "plane": "0",
+            "x": "10430",
+            "z": "123",
+            "shape": "10",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "7017",
+            "plane": "0",
+            "x": "10430",
+            "z": "126",
+            "shape": "10",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          }
+        ],
+        "hall": {
+          "accepted": true,
+          "actual": [
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10421",
+              "z": "100",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10421",
+              "z": "101",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10421",
+              "z": "102",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10421",
+              "z": "106",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10421",
+              "z": "107",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10421",
+              "z": "108",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10427",
+              "z": "100",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10427",
+              "z": "101",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10427",
+              "z": "102",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10427",
+              "z": "106",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10427",
+              "z": "107",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10427",
+              "z": "108",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            }
+          ],
+          "open_cross_bays": true,
+          "normal_bay_routes": [
+            [
+              0,
+              10420,
+              104
+            ],
+            [
+              0,
+              10428,
+              104
+            ],
+            [
+              0,
+              10420,
+              104
+            ],
+            [
+              0,
+              10420,
+              110
+            ],
+            [
+              0,
+              10428,
+              110
+            ],
+            [
+              0,
+              10420,
+              110
+            ],
+            [
+              0,
+              10424,
+              100
+            ],
+            [
+              0,
+              10424,
+              110
+            ],
+            [
+              0,
+              10424,
+              120
+            ]
+          ],
+          "exact_earned_state_preserved": true
+        },
+        "headrace": {
+          "accepted": true,
+          "actual": [
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10445",
+              "z": "119",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10445",
+              "z": "120",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10445",
+              "z": "121",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            }
+          ],
+          "rejected_pipe_absent": true,
+          "exact_state_preserved": true
+        },
+        "restoration": {
+          "accepted": true,
+          "expected": [
+            18526,
+            18511,
+            16811,
+            16811,
+            16810,
+            18525,
+            18525,
+            18525
+          ],
+          "actual": [
+            18526,
+            18511,
+            16811,
+            16811,
+            16810,
+            18525,
+            18525,
+            18525
+          ],
+          "landmark_positions": [
+            [
+              10411,
+              114
+            ],
+            [
+              10445,
+              122
+            ],
+            [
+              10427,
+              113
+            ],
+            [
+              10423,
+              122
+            ],
+            [
+              10423,
+              142
+            ],
+            [
+              10439,
+              140
+            ],
+            [
+              10419,
+              142
+            ],
+            [
+              10428,
+              142
+            ]
+          ]
+        }
+      },
+      "crash": {
+        "accepted": true,
+        "checks": [
+          "exact firstpaid item slots/equipment/all25XP/journal",
+          "fresh UID duplicate reply pays zero",
+          "8 quiet landmarks",
+          "3 headrace walls/pipe absence",
+          "12 hall rails and open cross bays/normal movement",
+          "2 real feeding troughs/low entrance and rear support"
+        ],
+        "fresh_duplicate_reply_uids": [
+          1
+        ],
+        "static_scene": [
+          {
+            "id": "5575",
+            "plane": "0",
+            "x": "10408",
+            "z": "99",
+            "shape": "10",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "5575",
+            "plane": "0",
+            "x": "10440",
+            "z": "99",
+            "shape": "10",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "17097",
+            "plane": "0",
+            "x": "10430",
+            "z": "123",
+            "shape": "10",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "7017",
+            "plane": "0",
+            "x": "10430",
+            "z": "126",
+            "shape": "10",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          }
+        ],
+        "hall": {
+          "accepted": true,
+          "actual": [
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10421",
+              "z": "100",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10421",
+              "z": "101",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10421",
+              "z": "102",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10421",
+              "z": "106",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10421",
+              "z": "107",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10421",
+              "z": "108",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10427",
+              "z": "100",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10427",
+              "z": "101",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10427",
+              "z": "102",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10427",
+              "z": "106",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10427",
+              "z": "107",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10427",
+              "z": "108",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            }
+          ],
+          "open_cross_bays": true,
+          "normal_bay_routes": [
+            [
+              0,
+              10420,
+              104
+            ],
+            [
+              0,
+              10428,
+              104
+            ],
+            [
+              0,
+              10420,
+              104
+            ],
+            [
+              0,
+              10420,
+              110
+            ],
+            [
+              0,
+              10428,
+              110
+            ],
+            [
+              0,
+              10420,
+              110
+            ],
+            [
+              0,
+              10424,
+              100
+            ],
+            [
+              0,
+              10424,
+              110
+            ],
+            [
+              0,
+              10424,
+              120
+            ]
+          ],
+          "exact_earned_state_preserved": true
+        },
+        "headrace": {
+          "accepted": true,
+          "actual": [
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10445",
+              "z": "119",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10445",
+              "z": "120",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10445",
+              "z": "121",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            }
+          ],
+          "rejected_pipe_absent": true,
+          "exact_state_preserved": true
+        },
+        "restoration": {
+          "accepted": true,
+          "expected": [
+            18526,
+            18511,
+            16811,
+            16811,
+            16810,
+            18525,
+            18525,
+            18525
+          ],
+          "actual": [
+            18526,
+            18511,
+            16811,
+            16811,
+            16810,
+            18525,
+            18525,
+            18525
+          ],
+          "landmark_positions": [
+            [
+              10411,
+              114
+            ],
+            [
+              10445,
+              122
+            ],
+            [
+              10427,
+              113
+            ],
+            [
+              10423,
+              122
+            ],
+            [
+              10423,
+              142
+            ],
+            [
+              10439,
+              140
+            ],
+            [
+              10419,
+              142
+            ],
+            [
+              10428,
+              142
+            ]
+          ]
+        }
+      }
+    },
+    "headless": {
+      "relogin": {
+        "accepted": true,
+        "checks": [
+          "exact firstpaid item slots/equipment/all25XP/journal",
+          "fresh UID duplicate reply pays zero",
+          "8 quiet landmarks",
+          "3 headrace walls/pipe absence",
+          "12 hall rails and open cross bays/normal movement",
+          "2 real feeding troughs/low entrance and rear support"
+        ],
+        "fresh_duplicate_reply_uids": [
+          1
+        ],
+        "static_scene": [
+          {
+            "id": "5575",
+            "plane": "0",
+            "x": "10408",
+            "z": "99",
+            "shape": "10",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "5575",
+            "plane": "0",
+            "x": "10440",
+            "z": "99",
+            "shape": "10",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "17097",
+            "plane": "0",
+            "x": "10430",
+            "z": "123",
+            "shape": "10",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "7017",
+            "plane": "0",
+            "x": "10430",
+            "z": "126",
+            "shape": "10",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          }
+        ],
+        "hall": {
+          "accepted": true,
+          "actual": [
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10421",
+              "z": "100",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10421",
+              "z": "101",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10421",
+              "z": "102",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10421",
+              "z": "106",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10421",
+              "z": "107",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10421",
+              "z": "108",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10427",
+              "z": "100",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10427",
+              "z": "101",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10427",
+              "z": "102",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10427",
+              "z": "106",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10427",
+              "z": "107",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10427",
+              "z": "108",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            }
+          ],
+          "open_cross_bays": true,
+          "normal_bay_routes": [
+            [
+              0,
+              10420,
+              104
+            ],
+            [
+              0,
+              10428,
+              104
+            ],
+            [
+              0,
+              10420,
+              104
+            ],
+            [
+              0,
+              10420,
+              110
+            ],
+            [
+              0,
+              10428,
+              110
+            ],
+            [
+              0,
+              10420,
+              110
+            ],
+            [
+              0,
+              10424,
+              100
+            ],
+            [
+              0,
+              10424,
+              110
+            ],
+            [
+              0,
+              10424,
+              120
+            ]
+          ],
+          "exact_earned_state_preserved": true
+        },
+        "headrace": {
+          "accepted": true,
+          "actual": [
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10445",
+              "z": "119",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10445",
+              "z": "120",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10445",
+              "z": "121",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            }
+          ],
+          "rejected_pipe_absent": true,
+          "exact_state_preserved": true
+        },
+        "restoration": {
+          "accepted": true,
+          "expected": [
+            18526,
+            18511,
+            16811,
+            16811,
+            16810,
+            18525,
+            18525,
+            18525
+          ],
+          "actual": [
+            18526,
+            18511,
+            16811,
+            16811,
+            16810,
+            18525,
+            18525,
+            18525
+          ],
+          "landmark_positions": [
+            [
+              10411,
+              114
+            ],
+            [
+              10445,
+              122
+            ],
+            [
+              10427,
+              113
+            ],
+            [
+              10423,
+              122
+            ],
+            [
+              10423,
+              142
+            ],
+            [
+              10439,
+              140
+            ],
+            [
+              10419,
+              142
+            ],
+            [
+              10428,
+              142
+            ]
+          ]
+        }
+      },
+      "crash": {
+        "accepted": true,
+        "checks": [
+          "exact firstpaid item slots/equipment/all25XP/journal",
+          "fresh UID duplicate reply pays zero",
+          "8 quiet landmarks",
+          "3 headrace walls/pipe absence",
+          "12 hall rails and open cross bays/normal movement",
+          "2 real feeding troughs/low entrance and rear support"
+        ],
+        "fresh_duplicate_reply_uids": [
+          1
+        ],
+        "static_scene": [
+          {
+            "id": "5575",
+            "plane": "0",
+            "x": "10408",
+            "z": "99",
+            "shape": "10",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "5575",
+            "plane": "0",
+            "x": "10440",
+            "z": "99",
+            "shape": "10",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "17097",
+            "plane": "0",
+            "x": "10430",
+            "z": "123",
+            "shape": "10",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "7017",
+            "plane": "0",
+            "x": "10430",
+            "z": "126",
+            "shape": "10",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          }
+        ],
+        "hall": {
+          "accepted": true,
+          "actual": [
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10421",
+              "z": "100",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10421",
+              "z": "101",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10421",
+              "z": "102",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10421",
+              "z": "106",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10421",
+              "z": "107",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10421",
+              "z": "108",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10427",
+              "z": "100",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10427",
+              "z": "101",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10427",
+              "z": "102",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10427",
+              "z": "106",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10427",
+              "z": "107",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10427",
+              "z": "108",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            }
+          ],
+          "open_cross_bays": true,
+          "normal_bay_routes": [
+            [
+              0,
+              10420,
+              104
+            ],
+            [
+              0,
+              10428,
+              104
+            ],
+            [
+              0,
+              10420,
+              104
+            ],
+            [
+              0,
+              10420,
+              110
+            ],
+            [
+              0,
+              10428,
+              110
+            ],
+            [
+              0,
+              10420,
+              110
+            ],
+            [
+              0,
+              10424,
+              100
+            ],
+            [
+              0,
+              10424,
+              110
+            ],
+            [
+              0,
+              10424,
+              120
+            ]
+          ],
+          "exact_earned_state_preserved": true
+        },
+        "headrace": {
+          "accepted": true,
+          "actual": [
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10445",
+              "z": "119",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10445",
+              "z": "120",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            },
+            {
+              "id": "6143",
+              "plane": "0",
+              "x": "10445",
+              "z": "121",
+              "shape": "0",
+              "rotation": "0",
+              "runtime": "true",
+              "rejected": "false"
+            }
+          ],
+          "rejected_pipe_absent": true,
+          "exact_state_preserved": true
+        },
+        "restoration": {
+          "accepted": true,
+          "expected": [
+            18526,
+            18511,
+            16811,
+            16811,
+            16810,
+            18525,
+            18525,
+            18525
+          ],
+          "actual": [
+            18526,
+            18511,
+            16811,
+            16811,
+            16810,
+            18525,
+            18525,
+            18525
+          ],
+          "landmark_positions": [
+            [
+              10411,
+              114
+            ],
+            [
+              10445,
+              122
+            ],
+            [
+              10427,
+              113
+            ],
+            [
+              10423,
+              122
+            ],
+            [
+              10423,
+              142
+            ],
+            [
+              10439,
+              140
+            ],
+            [
+              10419,
+              142
+            ],
+            [
+              10428,
+              142
+            ]
+          ]
+        }
+      }
+    }
+  },
+  "crash_process_proof": {
+    "sha256": "C555FBA455ED46C4818FFAF475700F9A4C96927E6A5EEA77906A86C17ECBB62E",
+    "phase": "After accepted ordinary reconnects; deliberate connected-session crash, no in-flight transaction claim",
+    "verified_test_connections": [
+      {
+        "name": "headless-F5AD7EF49B264953.exe",
+        "pid": 6776,
+        "path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\client-runs\\headless-F5AD7EF49B264953.exe"
+      },
+      {
+        "name": "native-52202F8E7CD5DC6B.exe",
+        "pid": 21260,
+        "path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\client-runs\\native-52202F8E7CD5DC6B.exe"
+      }
+    ],
+    "endpoint": "127.0.0.1:63215",
+    "path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\server-runs\\gielinor-server-C555FBA455ED46C4.exe",
+    "server_pid": 16500
+  },
+  "identical_restart_proof": {
+    "sha256": "C555FBA455ED46C4818FFAF475700F9A4C96927E6A5EEA77906A86C17ECBB62E",
+    "endpoint": "127.0.0.1:63215",
+    "server_pid": 8560,
+    "identical_current_restart": true,
+    "path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\server-runs\\gielinor-server-C555FBA455ED46C4.exe"
+  },
+  "read_only_durable_before_crash": {
+    "runs": [
+      [
+        "tower26",
+        1,
+        7,
+        11,
+        1
+      ],
+      [
+        "tower27",
+        1,
+        7,
+        11,
+        1
+      ]
+    ],
+    "rewards": [
+      {
+        "character": "tower26",
+        "coins": 500,
+        "beer": 1
+      },
+      {
+        "character": "tower27",
+        "coins": 500,
+        "beer": 1
+      }
+    ],
+    "phase": "Both ordinary reconnects already independently verified. Deliberate connected-session crash after committed rewards; no interrupted in-flight transaction claim."
+  },
+  "geometry_suites": {
+    "cache": 24,
+    "server": 57,
+    "world": 407,
+    "world_existing_ignored": 2,
+    "reachable_tiles": 2098,
+    "legal_lethal_pattern_escape_cases": 1512
+  },
+  "native_review": {
+    "current56_floor_frames": "NATIVE_HALL_FIRST_CLEAR_20261017.json",
+    "all56_current_frames_inspected": true,
+    "service4_Imp4_Warden6_fullpack_settledpaid_normal_relogin_and4quiet_views_inspected": true,
+    "postcrash12_hall_views_inspected": true,
+    "postcrash_paid_restoration_frame_inspected": true,
+    "postcrash_frames": [
+      {
+        "area": "southern hall entry",
+        "yaw": 0,
+        "filename": "frame-310.bmp",
+        "sha256": "19e17e5e4e4af0c09c9e9a45d5a39e776daba103f3693d33cab77c349ada126d"
+      },
+      {
+        "area": "southern hall entry",
+        "yaw": 4096,
+        "filename": "frame-312.bmp",
+        "sha256": "c6eb8647dff1b6bc0a7bfd9c006736996d868edb17db7ba5f1a695f1f0388fe1"
+      },
+      {
+        "area": "southern hall entry",
+        "yaw": 8192,
+        "filename": "frame-314.bmp",
+        "sha256": "cf4b7e9418a9875f81b095523b48301d112fc4ccfcd78cd3fb9c40707541d5d7"
+      },
+      {
+        "area": "southern hall entry",
+        "yaw": 12288,
+        "filename": "frame-316.bmp",
+        "sha256": "97a395bf33302552886c94759953b582f770afd5db731a2943e4b99a18360c72"
+      },
+      {
+        "area": "court crossing",
+        "yaw": 0,
+        "filename": "frame-338.bmp",
+        "sha256": "919057465ba30e07c3447ff9c902ff683a2d63714fe9e419d4a116736b033346"
+      },
+      {
+        "area": "court crossing",
+        "yaw": 4096,
+        "filename": "frame-340.bmp",
+        "sha256": "52b7637119fc2e5f4297dc49147c22d9e762a63dfaa64c14605f5c52b3d6f231"
+      },
+      {
+        "area": "court crossing",
+        "yaw": 8192,
+        "filename": "frame-342.bmp",
+        "sha256": "65e113b90a63d5c85ff2ca98b94bef978ed3f71d24487356555fd7cbb9a78c7f"
+      },
+      {
+        "area": "court crossing",
+        "yaw": 12288,
+        "filename": "frame-344.bmp",
+        "sha256": "4e16fb427cbf4ab17a7c5c4b0d0ec0683cd2d307eea6a9a568deaa20fd670b1c"
+      },
+      {
+        "area": "sanctuary approach",
+        "yaw": 0,
+        "filename": "frame-369.bmp",
+        "sha256": "3bc2cd7a50da2ee689f093669e569a1046e544d3099957661f1874ceadd71f82"
+      },
+      {
+        "area": "sanctuary approach",
+        "yaw": 4096,
+        "filename": "frame-371.bmp",
+        "sha256": "7c9768c4c6a88c1507694e6b6dba7eb97e1e5114ba022a52a0137387f16e004b"
+      },
+      {
+        "area": "sanctuary approach",
+        "yaw": 8192,
+        "filename": "frame-373.bmp",
+        "sha256": "e5ed2194fbc04153503a3dc4edfbc8f02cd5c2ec88dfb85b8f04d97fcea8dc0b"
+      },
+      {
+        "area": "sanctuary approach",
+        "yaw": 12288,
+        "filename": "frame-375.bmp",
+        "sha256": "a0ab3be802efed8d1ebe4c2d6fedacd0f6035a0bf11f9cc47f6659e0f65954c9"
+      }
+    ],
+    "genuine_private_gallery": "evidence/native-hall26-complete-gallery/gallery.html",
+    "genuine_private_journey": "evidence/native-hall26-fresh/journey.html",
+    "postcrash_restoration_frame": {
+      "filename": "frame-41.bmp",
+      "sha256": "2b86984f34891887dd98b25baa3801ba7c7c5d457c9c456e8c95b67b14c75c38"
+    }
+  },
+  "paired_quiet_observer": "NATIVE_HALL_FIRST_CLEAR_20261017.json contains independent accepted active Warden pairing and retained insufficient incidental Imp comparison acceptedFALSE",
+  "user_artistic_acceptance": "pending",
+  "human_first_play_pacing": "unmeasured; automated832.30native/644.89continuedheadless active seconds do not establish human20\u201330minutes",
+  "overall_complete": false
+}

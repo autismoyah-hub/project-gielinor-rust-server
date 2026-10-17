@@ -33,3 +33,7 @@ Local/remote Tower HEAD both verified as `46ccb7160cf1d1848b0b8d1820c9f2bed2f0ba
 ## 2026-10-17 stone headrace source check
 
 Local/remote Tower parent verified identical at30b3c3aa3385e6353d8c34d2375ae0a5c924721c. Three low bank fixtures and two ordinary-action validation drivers only. Agent2 references last read-only check remain521e2e047071a7e7d481ab458829bb88a57b76e2 /377b797848c7b87d63fe7cdd690c09b2baf3a6af; no merge, branch mutation or workspace access. V12 integration constraint unchanged.
+
+## 2026-10-17 current combined floor lifecycle
+
+Runtime sourcee70dd2a, C555FBA455ED46C4 fullhash in HALL_FIRST_CLEAR_AND_LIFECYCLE_20261017.json. Parent published7c3d81d verified from own successful push; later checkpoint is evidence only. Client ten-patch source/tree unchanged. Agent2 branches/workspace untouched; last read-only SHA references and V12 integration constraint remain as recorded.

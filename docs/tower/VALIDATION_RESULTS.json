@@ -1,5 +1,5 @@
 {
-  "status": "CurrentC555 native cleanfreshfirstclear832.30s/normalrelogin/56nativeviews/combat/pairedquietWarden PASS. HeadlessoriginalFAILED241.37s copperRNG55bound; independentcontinuationRUNNING; currentC555crashpending; broaderart/humanpacing/userapprovalpending",
+  "status": "CurrentC555 native cleanfirstclear832.30s/headlesscontinuedfirstclear644.89active/first500fullpackdupack/bothnormalrelogin/verifiedcurrentconnectedcrash/exactstate8landmarks15walls/56nativecombatquietpost12views PASS. Originalheadless241.37sRNGtimeout and incidentalImpnohazards remainfailed/insufficient. Userart/humanpacing/broaderproductionpending",
   "scope": "Cinderworks Floor One on the isolated agent5/tower-development branch; upstream integration is a separate Agent 2 review",
   "server_gameplay_commit": "420729798ffc3b0d31c7aff7497d1841597c2104",
   "client_baseline": "95eed88159b06cebea24559a814a5111b54a59cd",
@@ -2762,5 +2762,18 @@
     "headless_original_failed": true,
     "headless_independent_continuation": "RUNNING",
     "current_crash": false
+  },
+  "hall_first_clear_and_lifecycle": {
+    "receipt": "HALL_FIRST_CLEAR_AND_LIFECYCLE_20261017.json",
+    "runtime_source": "e70dd2a",
+    "binary": "C555FBA455ED46C4818FFAF475700F9A4C96927E6A5EEA77906A86C17ECBB62E",
+    "native_clean_first_clear": true,
+    "headless_independent_continued_first_clear": true,
+    "headless_original_failed": true,
+    "both_exact_normal_relogin": true,
+    "both_current_crash_recovery": true,
+    "postcrash12_views_reviewed": true,
+    "crash_phase": "Connected sessions after normal relogin, not an in-flight transaction test",
+    "overall_complete": false
   }
 }
