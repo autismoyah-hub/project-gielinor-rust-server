@@ -711,6 +711,12 @@ pub fn configure<B: AccountBackend>(
     if cooking.recipes.insert(stew.cooking.raw,stew.cooking).is_some() {return Err(io::Error::other("Duplicate stew cooking registration"));}
     crate::content::standard_cooking_range(n("obj"),n("loc"),n("seq"),&runtime.definitions,&mut cooking).map_err(io::Error::other)?;
     crate::content::ordinary_range_baking(n("obj"),n("loc"),&runtime.definitions,&mut cooking).map_err(io::Error::other)?;
+    crate::content::member_pie_baking(n("obj"),n("loc"),&runtime.definitions,&mut cooking).map_err(io::Error::other)?;
+    let mut cooking_member_inputs=std::collections::BTreeSet::new();
+    for &raw in cooking.recipes.keys().chain(cooking.surfaces.values().flat_map(|surface|surface.recipes.keys())) {
+        if runtime.definitions.items.get(&(raw as u32)).ok_or_else(||io::Error::other("Missing cooking input membership definition"))?.members {cooking_member_inputs.insert(raw);}
+    }
+    cooking.member_inputs=cooking_member_inputs;
     cooking.tutorial=runtime.world.tutorial_shrimp.map(|c|c.progression);
     runtime.world.cooking=Some(cooking);
     runtime.world.water_sources = Some(crate::content::water_sources(n("obj"), n("loc"), &runtime.definitions).map_err(io::Error::other)?);

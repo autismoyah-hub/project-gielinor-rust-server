@@ -3389,9 +3389,9 @@ pub fn manual_fire_cooking(obj:&Symbols,loc:&Symbols,seq:&Symbols,defs:&Definiti
    if !ids.insert(id) || d.name!=name || d.members || d.stackable || d.dummy==1 || d.cert.template!=0 || d.placeholder.template!=0 || d.transform.template!=0 {return Err("Unattested or aliased cooking item".into());}
   }
   if defs.items[&(cooked as u32)].inventory_ops[0].as_deref()!=Some("Eat"){return Err("Cooked food lacks Eat".into());}
-  recipes.insert(raw,Recipe{raw,cooked,burnt,level:1,stop_burn:34,low:128,high:512,xp:30,ticks});
+  recipes.insert(raw,Recipe{raw,cooked,burnt,level:1,stop_burn: Some(34),low:128,high:512,xp:30,ticks});
  }
- Ok(Config{fire,animation,skill,max_level:stat.max_level,recipes,tutorial:None,surfaces:Default::default()})
+ Ok(Config{member_inputs:Default::default(),fire,animation,skill,max_level:stat.max_level,recipes,tutorial:None,surfaces:Default::default()})
 }
 #[cfg(test)]
 mod cooking_binding_tests{
@@ -3611,7 +3611,7 @@ pub fn additional_fire_fish(
                 cooked,
                 burnt,
                 level,
-                stop_burn: stop,
+                stop_burn: Some(stop),
                 low,
                 high,
                 xp,
@@ -3686,6 +3686,7 @@ mod fire_fish_binding_tests {
             defs.items.insert(id as u32, d);
         }
         let empty = Config {
+            member_inputs:Default::default(),
             surfaces:Default::default(),
             fire: 26185,
             animation: 897,
@@ -3699,7 +3700,7 @@ mod fire_fish_binding_tests {
         assert_eq!(c.recipes.len(), 9);
         assert_eq!(
             (c.recipes[&349].stop_burn, c.recipes[&371].stop_burn),
-            (54, 86)
+            (Some(54), Some(86))
         );
         for recipe in c.recipes.values() {
             for burned in [false, true] {
@@ -3829,7 +3830,7 @@ pub fn stew_recipes(obj: &Symbols, defs: &Definitions, skill: u8) -> Result<Stew
             cooked: ids["stew"],
             burnt: ids["burnt_stew"],
             level: 25,
-            stop_burn: 58,
+            stop_burn: Some(58),
             low: 68,
             high: 392,
             xp: 117,
@@ -4397,7 +4398,7 @@ pub fn standard_cooking_range(
             return Err("Aliased prerequisite range recipe".into());
         }
         if symbol == "raw_swordfish" {
-            recipe.stop_burn = 80;
+            recipe.stop_burn = Some(80);
             recipe.low = 30;
             recipe.high = 310;
         }
@@ -4438,7 +4439,7 @@ pub fn standard_cooking_range(
             cooked: bread["bread"],
             burnt: bread["burnt_bread"],
             level: 1,
-            stop_burn: 38,
+            stop_burn: Some(38),
             low: 118,
             high: 492,
             xp: 40,
@@ -4467,6 +4468,7 @@ mod standard_range_tests {
             stats: Default::default(),
         };
         let mut config = Config {
+            member_inputs:Default::default(),
             fire: 26185,
             animation: 897,
             skill: 7,
@@ -4498,7 +4500,7 @@ mod standard_range_tests {
                     cooked: 10000 + raw,
                     burnt: 20000 + raw,
                     level: 1,
-                    stop_burn: 86,
+                    stop_burn: Some(86),
                     low: 18,
                     high: 292,
                     xp: 30,
@@ -4532,8 +4534,8 @@ mod standard_range_tests {
         assert_eq!(config.animation_for(26185), Some(897));
         let range = config.recipe(26181, 371).unwrap();
         let fire = config.recipe(26185, 371).unwrap();
-        assert_eq!((range.stop_burn, range.low, range.high), (80, 30, 310));
-        assert_eq!((fire.stop_burn, fire.low, fire.high), (86, 18, 292));
+        assert_eq!((range.stop_burn, range.low, range.high), (Some(80), 30, 310));
+        assert_eq!((fire.stop_burn, fire.low, fire.high), (Some(86), 18, 292));
         let bread = config.recipe(26181, 2307).unwrap();
         assert_eq!(
             (
@@ -4543,7 +4545,7 @@ mod standard_range_tests {
                 bread.stop_burn,
                 bread.ticks
             ),
-            (2309, 2311, 40, 38, 1)
+            (2309, 2311, 40, Some(38), 1)
         );
         assert!(config.recipe(26185, 2307).is_none());
         assert!(config.recipe(9736, 2307).is_none());
@@ -4680,7 +4682,7 @@ pub fn ordinary_range_baking(
                 cooked,
                 burnt,
                 level,
-                stop_burn: stop,
+                stop_burn: Some(stop),
                 low,
                 high,
                 xp,
@@ -4741,6 +4743,7 @@ mod ordinary_baking_tests {
             defs.items.insert(id as u32, d);
         }
         let empty = Config {
+            member_inputs:Default::default(),
             fire: 26185,
             animation: 897,
             skill: 7,
@@ -4823,6 +4826,360 @@ mod ordinary_baking_tests {
         let mut config = empty;
         defs.items.get_mut(&2305).unwrap().dummy = 1;
         assert!(ordinary_range_baking(&objects, &locations, &defs, &mut config).is_err());
+        assert!(config.surfaces[&26181].recipes.is_empty());
+    }
+}
+
+/// Member pie baking on the ordinary range. None preserves a probabilistic burn
+/// at99 for dragonfruit/wild/summer instead of inventing a forced level99 cutoff.
+pub fn member_pie_baking(
+    objects: &Symbols,
+    locations: &Symbols,
+    defs: &Definitions,
+    config: &mut gielinor_world::cooking::Config,
+) -> Result<(), String> {
+    use gielinor_world::cooking::Recipe;
+    let range = u32::try_from(*locations.get("range").ok_or("Missing member-pie range")?)
+        .map_err(|_| "Invalid member-pie range")?;
+    let mut next = config
+        .surfaces
+        .get(&range)
+        .ok_or("Configure ordinary range before member pies")?
+        .recipes
+        .clone();
+    let mut members = config.member_inputs.clone();
+    let mut raws: std::collections::BTreeSet<_> = next.keys().copied().collect();
+    let mut outputs: std::collections::BTreeSet<_> =
+        next.values().flat_map(|r| [r.cooked, r.burnt]).collect();
+    for (raw, cooked, raw_name, cooked_name, level, xp, stop, low, high) in [
+        (
+            "uncooked_garden_pie",
+            "garden_pie",
+            "Raw garden pie",
+            "Garden pie",
+            34,
+            138,
+            Some(68),
+            48,
+            352,
+        ),
+        (
+            "uncooked_fish_pie",
+            "fish_pie",
+            "Raw fish pie",
+            "Fish pie",
+            47,
+            164,
+            Some(74),
+            38,
+            332,
+        ),
+        (
+            "uncooked_botanical_pie",
+            "botanical_pie",
+            "Uncooked botanical pie",
+            "Botanical pie",
+            52,
+            180,
+            Some(84),
+            20,
+            300,
+        ),
+        (
+            "uncooked_mushroom_pie",
+            "mushroom_pie",
+            "Uncooked mushroom pie",
+            "Mushroom pie",
+            60,
+            200,
+            Some(89),
+            17,
+            285,
+        ),
+        (
+            "uncooked_admiral_pie",
+            "admiral_pie",
+            "Raw admiral pie",
+            "Admiral pie",
+            70,
+            210,
+            Some(94),
+            15,
+            270,
+        ),
+        (
+            "uncooked_dragonfruit_pie",
+            "dragonfruit_pie",
+            "Uncooked dragonfruit pie",
+            "Dragonfruit pie",
+            73,
+            220,
+            None,
+            8,
+            250,
+        ),
+        (
+            "uncooked_wild_pie",
+            "wild_pie",
+            "Raw wild pie",
+            "Wild pie",
+            85,
+            240,
+            None,
+            1,
+            222,
+        ),
+        (
+            "uncooked_summer_pie",
+            "summer_pie",
+            "Raw summer pie",
+            "Summer pie",
+            95,
+            260,
+            None,
+            1,
+            212,
+        ),
+    ] {
+        let resolve = |n: &str| {
+            objects
+                .get(n)
+                .copied()
+                .ok_or_else(|| format!("Missing member-pie symbol {n}"))
+        };
+        let raw = resolve(raw)?;
+        let cooked = resolve(cooked)?;
+        let burnt = resolve("burnt_pie")?;
+        if raw == cooked
+            || raw == burnt
+            || cooked == burnt
+            || outputs.contains(&raw)
+            || !raws.insert(raw)
+            || raws.contains(&cooked)
+            || raws.contains(&burnt)
+        {
+            return Err("Aliased member-pie profile".into());
+        }
+        for (id, name, member) in [
+            (raw, raw_name, true),
+            (cooked, cooked_name, true),
+            (burnt, "Burnt pie", false),
+        ] {
+            let d = u32::try_from(id)
+                .ok()
+                .and_then(|v| defs.items.get(&v))
+                .ok_or("Missing member-pie definition")?;
+            if d.name != name
+                || d.members != member
+                || d.stackable
+                || d.dummy == 1
+                || d.cert.template != 0
+                || d.placeholder.template != 0
+                || d.transform.template != 0
+            {
+                return Err("Unattested ordinary member-pie item".into());
+            }
+        }
+        if defs.items[&(cooked as u32)].inventory_ops[0].as_deref() != Some("Eat") {
+            return Err("Member-pie cooked output lacks Eat".into());
+        }
+        outputs.extend([cooked, burnt]);
+        members.insert(raw);
+        next.insert(
+            raw,
+            Recipe {
+                raw,
+                cooked,
+                burnt,
+                level,
+                stop_burn: stop,
+                low,
+                high,
+                xp,
+                ticks: 1,
+            },
+        );
+    }
+    config.surfaces.get_mut(&range).unwrap().recipes = next;
+    config.member_inputs = members;
+    Ok(())
+}
+#[cfg(test)]
+mod member_pie_baking_tests {
+    use super::*;
+    use gielinor_world::{
+        cooking::{Config, Surface},
+        inventory::{Catalog, Inventory, Item, StackType},
+        npc::RandomSource,
+        stats::Stats,
+    };
+    struct Draw {
+        value: u32,
+        calls: u32,
+    }
+    impl RandomSource for Draw {
+        fn below(&mut self, n: u32) -> u32 {
+            assert_eq!(n, 256);
+            self.calls += 1;
+            self.value
+        }
+    }
+    #[test]
+    fn member_pies_eight_profiles_keep99_burns_exact_rewards_and_atomic_publication() {
+        let mut objects = Symbols::new();
+        let locations = Symbols::from([("range".into(), 26181)]);
+        let mut defs = Definitions {
+            inventories: Default::default(),
+            locations: Default::default(),
+            npcs: Default::default(),
+            items: Default::default(),
+            varbits: Default::default(),
+            varps: Default::default(),
+            stats: Default::default(),
+        };
+        for (symbol, id, name) in [
+            ("uncooked_garden_pie", 7176, "Raw garden pie"),
+            ("garden_pie", 7178, "Garden pie"),
+            ("uncooked_fish_pie", 7186, "Raw fish pie"),
+            ("fish_pie", 7188, "Fish pie"),
+            ("uncooked_botanical_pie", 19656, "Uncooked botanical pie"),
+            ("botanical_pie", 19662, "Botanical pie"),
+            ("uncooked_mushroom_pie", 21684, "Uncooked mushroom pie"),
+            ("mushroom_pie", 21690, "Mushroom pie"),
+            ("uncooked_admiral_pie", 7196, "Raw admiral pie"),
+            ("admiral_pie", 7198, "Admiral pie"),
+            (
+                "uncooked_dragonfruit_pie",
+                22789,
+                "Uncooked dragonfruit pie",
+            ),
+            ("dragonfruit_pie", 22795, "Dragonfruit pie"),
+            ("uncooked_wild_pie", 7206, "Raw wild pie"),
+            ("wild_pie", 7208, "Wild pie"),
+            ("uncooked_summer_pie", 7216, "Raw summer pie"),
+            ("summer_pie", 7218, "Summer pie"),
+            ("burnt_pie", 2329, "Burnt pie"),
+        ] {
+            objects.insert(symbol.into(), id);
+            let mut d = gielinor_cache::definitions::ItemType::decode(&[0]).unwrap();
+            d.name = name.into();
+            d.members = id != 2329;
+            if !symbol.starts_with("uncooked_") && id != 2329 {
+                d.inventory_ops[0] = Some("Eat".into());
+            }
+            defs.items.insert(id as u32, d);
+        }
+        let empty = Config {
+            fire: 26185,
+            animation: 897,
+            skill: 7,
+            max_level: 99,
+            tutorial: None,
+            member_inputs: Default::default(),
+            recipes: BTreeMap::new(),
+            surfaces: [(
+                26181,
+                Surface {
+                    animation: 896,
+                    recipes: BTreeMap::new(),
+                },
+            )]
+            .into(),
+        };
+        let mut config = empty.clone();
+        member_pie_baking(&objects, &locations, &defs, &mut config).unwrap();
+        assert_eq!(config.member_inputs.len(), 8);
+        assert_eq!(config.surfaces[&26181].recipes.len(), 8);
+        assert_eq!(config.recipe(26181, 22789).unwrap().xp, 220);
+        for recipe in config.surfaces[&26181].recipes.values() {
+            assert!(config.member_inputs.contains(&recipe.raw));
+            assert!(config.recipe(26185, recipe.raw).is_none());
+            for burned in [false, true] {
+                let mut inv = Inventory::new(2, StackType::Normal, false);
+                for slot in 0..2 {
+                    inv.restore_slot(
+                        slot,
+                        Some(Item {
+                            id: recipe.raw,
+                            count: 1,
+                            vars: 0,
+                        }),
+                    )
+                    .unwrap();
+                }
+                let mut stats = Stats::default();
+                stats.set_current(7, recipe.level as i8);
+                let mut rng = Draw {
+                    value: if burned { 255 } else { 0 },
+                    calls: 0,
+                };
+                let outcome = recipe
+                    .complete(
+                        1,
+                        &mut inv,
+                        &Catalog::default(),
+                        &mut stats,
+                        7,
+                        99,
+                        125,
+                        &mut rng,
+                    )
+                    .unwrap();
+                assert_eq!(outcome.burned, burned);
+                assert_eq!(inv.get(0).unwrap().id, recipe.raw);
+                assert_eq!(
+                    inv.get(1).unwrap().id,
+                    if burned { 2329 } else { recipe.cooked }
+                );
+                assert_eq!(
+                    stats.fine_xp(7),
+                    if burned {
+                        0
+                    } else {
+                        i32::from(recipe.xp) * 125 / 10
+                    }
+                );
+            }
+            if recipe.stop_burn.is_none() {
+                let mut inv = Inventory::new(1, StackType::Normal, false);
+                inv.restore_slot(
+                    0,
+                    Some(Item {
+                        id: recipe.raw,
+                        count: 1,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+                let mut stats = Stats::default();
+                stats.set_current(7, 99);
+                let mut rng = Draw {
+                    value: 255,
+                    calls: 0,
+                };
+                assert!(
+                    recipe
+                        .complete(
+                            0,
+                            &mut inv,
+                            &Catalog::default(),
+                            &mut stats,
+                            7,
+                            99,
+                            100,
+                            &mut rng
+                        )
+                        .unwrap()
+                        .burned
+                );
+                assert_eq!(rng.calls, 1);
+                assert_eq!(stats.fine_xp(7), 0);
+            }
+        }
+        let mut config = empty;
+        defs.items.get_mut(&7216).unwrap().cert.template = 799;
+        assert!(member_pie_baking(&objects, &locations, &defs, &mut config).is_err());
+        assert!(config.member_inputs.is_empty());
         assert!(config.surfaces[&26181].recipes.is_empty());
     }
 }

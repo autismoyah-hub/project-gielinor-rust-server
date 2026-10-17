@@ -12,7 +12,8 @@ pub struct Recipe {
     pub cooked: i32,
     pub burnt: i32,
     pub level: u8,
-    pub stop_burn: u8,
+    /// None means there is no forced no-burn level; the curve still applies.
+    pub stop_burn: Option<u8>,
     pub low: i32,
     pub high: i32,
     pub xp: u16,
@@ -25,6 +26,7 @@ pub struct Surface {
 }
 #[derive(Clone, Debug)]
 pub struct Config {
+    pub member_inputs: std::collections::BTreeSet<i32>,
     pub surfaces: BTreeMap<u32, Surface>,
     pub fire: u32,
     pub animation: u16,
@@ -89,7 +91,7 @@ impl Recipe {
         let r = *self;
         if r.ticks == 0
             || r.level == 0
-            || r.stop_burn < r.level
+            || r.stop_burn.is_some_and(|stop| stop < r.level)
             || max_level < 2
             || r.low < 0
             || r.high < r.low
@@ -150,7 +152,7 @@ impl Recipe {
             max_level,
         )
         .map_err(|_| Error::InvalidPolicy)?;
-        let burned = level < r.stop_burn
+        let burned = r.stop_burn.is_none_or(|stop| level < stop)
             && f64::from(random.below(256))
                 >= crate::skills::success_rate(
                     r.low,
@@ -216,7 +218,7 @@ mod tests {
                 cooked: 11,
                 burnt: 12,
                 level: 1,
-                stop_burn: 34,
+                stop_burn: Some(34),
                 low: 128,
                 high: 512,
                 xp: 30,

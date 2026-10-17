@@ -23,6 +23,13 @@ impl World {
         {
             return;
         }
+        if c.member_inputs.contains(&raw) && !p.member {
+            self.events.push(WorldEvent::LocationMessage {
+                actor: p.id,
+                message: "You need to be a member to cook that.",
+            });
+            return;
+        }
         if (p.data.stats.current(c.skill) as u8) < recipe.level || recipe.ticks == 0 {
             return;
         }
@@ -85,6 +92,7 @@ pub(super) fn complete(
         || p.movement.coords != job.origin
         || p.movement.last_movement != job.last_movement
         || revision != Some(job.revision)
+        || (c.member_inputs.contains(&job.raw) && !p.member)
         || c.tutorial.is_some_and(|v| v.active(&p.data.variables))
     {
         return;
@@ -163,6 +171,7 @@ mod tests {
         crate::loc_collision::toggle(&mut w.collision, loc.coords, loc.shape, loc.angle, ty, true)
             .unwrap();
         w.cooking = Some(crate::cooking::Config {
+            member_inputs: Default::default(),
             surfaces: Default::default(),
             fire: 1,
             animation: 897,
@@ -176,7 +185,7 @@ mod tests {
                     cooked: 20,
                     burnt: 30,
                     level: 1,
-                    stop_burn: 34,
+                    stop_burn: Some(34),
                     low: 128,
                     high: 512,
                     xp: 30,
@@ -396,7 +405,7 @@ mod tests {
                 cooked: 50,
                 burnt: 60,
                 level: 1,
-                stop_burn: 38,
+                stop_burn: Some(38),
                 low: 118,
                 high: 492,
                 xp: 40,
@@ -485,6 +494,41 @@ mod tests {
                     .flatten()
                     .any(|i| i.id == 50));
             }
+        }
+    }
+    #[test]
+    fn cooking_member_requirement_is_live_at_admission_and_completion() {
+        for mode in 0..4 {
+            let (mut w, actor, loc) = fixture();
+            w.cooking.as_mut().unwrap().member_inputs.insert(10);
+            w.players.get_mut(actor.slot as usize).unwrap().member = mode == 1 || mode == 2;
+            w.submit(actor, action(loc)).unwrap();
+            w.tick().unwrap();
+            if mode == 2 {
+                w.players.get_mut(actor.slot as usize).unwrap().member = false;
+            }
+            if mode == 3 {
+                w.players.get_mut(actor.slot as usize).unwrap().member = true;
+            }
+            w.tick().unwrap();
+            let events = w.drain_events();
+            let made = mode == 1;
+            assert_eq!(
+                events
+                    .iter()
+                    .filter(|e| matches!(e, WorldEvent::CookingMade { .. }))
+                    .count(),
+                usize::from(made)
+            );
+            assert_eq!(
+                w.data(actor).unwrap().inventory.get(1).unwrap().id,
+                if made { 20 } else { 10 }
+            );
+            assert_eq!(w.data(actor).unwrap().inventory.get(0).unwrap().id, 10);
+            assert_eq!(
+                w.data(actor).unwrap().stats.fine_xp(7),
+                if made { 300 } else { 0 }
+            );
         }
     }
 }
