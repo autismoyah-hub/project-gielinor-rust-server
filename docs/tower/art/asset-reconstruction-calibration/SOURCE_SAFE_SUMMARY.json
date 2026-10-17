@@ -1,0 +1,241 @@
+{
+  "status": {
+    "stage1": "PASS for selected untextured wall; three native views pixel exact",
+    "stage2": "Independent static study rendered; dimensional and visual comparison supplied; artistic approval not asserted",
+    "stage3": "PASS selected untextured classic NPC geometry/material/skin/depth channels",
+    "stage4": "PASS sampled original and re-encoded classic animations, plus native masked blend; not general cached-skeletal conversion",
+    "stage5": "Independent model and five authored actions render natively; likeness and choreography differ; artistic approval not asserted",
+    "floor_production": "SUSPENDED; no promotion or map change"
+  },
+  "geometry": {
+    "static": {
+      "native": {
+        "vertices": 90,
+        "faces": 114,
+        "bounds": [
+          [
+            -68.0,
+            -239.0,
+            -64.0
+          ],
+          [
+            64.0,
+            1.0,
+            64.0
+          ]
+        ],
+        "boundary_edges": 52,
+        "overlapping_edges": 0,
+        "palette_colors": 4,
+        "texture_faces": 0,
+        "face_priorities": true,
+        "skin_labels": 0
+      },
+      "roundtrip": {
+        "vertices": 90,
+        "faces": 114,
+        "bounds": [
+          [
+            -68.0,
+            -239.0,
+            -64.0
+          ],
+          [
+            64.0,
+            1.0,
+            64.0
+          ]
+        ],
+        "boundary_edges": 52,
+        "overlapping_edges": 0,
+        "palette_colors": 4,
+        "texture_faces": 0,
+        "face_priorities": true,
+        "skin_labels": 0
+      },
+      "independent": {
+        "vertices": 160,
+        "faces": 292,
+        "bounds": [
+          [
+            -64.0,
+            -239.0,
+            -64.0
+          ],
+          [
+            64.0,
+            1.0,
+            64.0
+          ]
+        ],
+        "boundary_edges": 0,
+        "overlapping_edges": 0,
+        "palette_colors": 3,
+        "texture_faces": 0,
+        "face_priorities": false,
+        "skin_labels": 0
+      }
+    },
+    "npc": {
+      "native": {
+        "vertices": 936,
+        "faces": 1910,
+        "bounds": [
+          [
+            -81.0,
+            -158.0,
+            -68.0
+          ],
+          [
+            110.0,
+            0.0,
+            27.0
+          ]
+        ],
+        "boundary_edges": 8,
+        "overlapping_edges": 78,
+        "palette_colors": 35,
+        "texture_faces": 0,
+        "face_priorities": true,
+        "skin_labels": 53
+      },
+      "roundtrip": {
+        "vertices": 936,
+        "faces": 1910,
+        "bounds": [
+          [
+            -81.0,
+            -158.0,
+            -68.0
+          ],
+          [
+            110.0,
+            0.0,
+            27.0
+          ]
+        ],
+        "boundary_edges": 8,
+        "overlapping_edges": 78,
+        "palette_colors": 35,
+        "texture_faces": 0,
+        "face_priorities": true,
+        "skin_labels": 53
+      },
+      "independent": {
+        "vertices": 672,
+        "faces": 1176,
+        "bounds": [
+          [
+            -81.0,
+            -158.0,
+            -67.0
+          ],
+          [
+            111.0,
+            0.0,
+            18.0
+          ]
+        ],
+        "boundary_edges": 0,
+        "overlapping_edges": 0,
+        "palette_colors": 13,
+        "texture_faces": 0,
+        "face_priorities": false,
+        "skin_labels": 6
+      }
+    }
+  },
+  "roundtrip": {
+    "static": {
+      "frames": 7,
+      "all_pixels_exact": true,
+      "channels": {
+        "vertices": true,
+        "faces": true,
+        "colors": true,
+        "render_types": true,
+        "priorities": true,
+        "priority": "unused fallback: arrays identical",
+        "alpha": true,
+        "vertex_skins": true,
+        "face_skins": true,
+        "bone_weights": true,
+        "face_textures": true,
+        "texture_coords": true,
+        "texture_types": true,
+        "texture_triangles": true,
+        "face_flags": true
+      }
+    },
+    "npc": {
+      "frames": 560,
+      "all_pixels_exact": true,
+      "channels": {
+        "vertices": true,
+        "faces": true,
+        "colors": true,
+        "render_types": true,
+        "priorities": true,
+        "priority": "unused fallback: arrays identical",
+        "alpha": true,
+        "vertex_skins": true,
+        "face_skins": true,
+        "bone_weights": true,
+        "face_textures": true,
+        "texture_coords": true,
+        "texture_types": true,
+        "texture_triangles": true,
+        "face_flags": true
+      }
+    }
+  },
+  "witness": {
+    "static.json": true,
+    "walk/animation.json": true
+  },
+  "native_binary_sha256": "c1acb0fca33773ea91f284bb4c3a55aeb61bfb0e52538318d9d8405ded2b7892",
+  "independent_mask_metrics": {
+    "static": {
+      "front": {
+        "changed_pixels": 40527,
+        "silhouette_iou": 0.9199392056502984,
+        "meaning": "same pose/camera union masks; diagnostic, not artistic approval"
+      },
+      "quarter": {
+        "changed_pixels": 54421,
+        "silhouette_iou": 0.9797091352434033,
+        "meaning": "same pose/camera union masks; diagnostic, not artistic approval"
+      },
+      "reverse": {
+        "changed_pixels": 31240,
+        "silhouette_iou": 0.9213193416745146,
+        "meaning": "same pose/camera union masks; diagnostic, not artistic approval"
+      }
+    },
+    "npc": {
+      "front": {
+        "changed_pixels": 19007,
+        "silhouette_iou": 0.602318781100908,
+        "meaning": "same pose/camera union masks; diagnostic, not artistic approval"
+      },
+      "quarter": {
+        "changed_pixels": 20618,
+        "silhouette_iou": 0.6794525737557419,
+        "meaning": "same pose/camera union masks; diagnostic, not artistic approval"
+      },
+      "reverse": {
+        "changed_pixels": 17784,
+        "silhouette_iou": 0.598353409216488,
+        "meaning": "same pose/camera union masks; diagnostic, not artistic approval"
+      }
+    }
+  },
+  "animation_samples": {
+    "idle": 64,
+    "walk": 49,
+    "attack": 37,
+    "hit": 96,
+    "death": 258,
+    "blend": 49
+  }
+}
