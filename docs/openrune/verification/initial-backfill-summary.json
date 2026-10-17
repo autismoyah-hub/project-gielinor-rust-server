@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "units": 17,
+  "discovery_records": 3508,
+  "classification_counts": {
+    "not_yet_assessed": 2845,
+    "configuration": 656,
+    "eligible_gameplay_behavior": 7
+  },
+  "scope": "Initial recent Herblore backfill only; earlier cooking/packs/smithing and other legacy implementations still require contracts. No gameplay completeness percentage."
+}

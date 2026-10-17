@@ -1175,3 +1175,20 @@
 /integration/scenario-drivers/chicken-001/server_chicken.exe
 /integration/scenario-drivers/chicken-002/server_chicken.exe
 /integration/scenario-drivers/chicken-003/server_chicken.exe
+
+# FORGE: publish only the explicitly requested verification handoff artifacts.
+!/docs/
+/docs/*
+!/docs/openrune/
+/docs/openrune/*
+!/docs/openrune/verification/
+/docs/openrune/verification/*
+!/docs/openrune/verification/IMPLEMENTATION_QUEUE.jsonl
+!/docs/openrune/verification/IMPLEMENTATION_QUEUE.schema.json
+!/docs/openrune/verification/IMPLEMENTATION_STATUS.md
+!/docs/openrune/verification/README.md
+!/docs/openrune/verification/initial-backfill-summary.json
+!/scripts/
+/scripts/*
+!/scripts/validate-openrune-queue.py
+!/scripts/test-openrune-queue.py

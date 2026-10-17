@@ -1,0 +1,359 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "rust_paths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "expected_normal_behavior": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "expected_negative_behavior": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "known_limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "schema_version": {
+      "const": 1
+    },
+    "implementation_id": {
+      "type": "string",
+      "pattern": "^OR-MIG-[0-9]{4}$"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "feature_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "implementation_commit_sha": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "source_references": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "enum": [
+              "openrune",
+              "wiki",
+              "project_gielinor"
+            ]
+          },
+          "reference": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "availability": {
+            "enum": [
+              "protected_local_reference",
+              "public_revision",
+              "repository"
+            ]
+          },
+          "revision": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "reference",
+          "sha256",
+          "availability",
+          "revision"
+        ]
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "independent_behavior_adaptation",
+            "cleared_adaptation"
+          ]
+        },
+        "basis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "restrictions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "status",
+        "basis",
+        "restrictions"
+      ]
+    },
+    "registration_dispatch": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "symbol": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "path",
+          "symbol",
+          "role"
+        ]
+      }
+    },
+    "identifiers": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": [
+            "string",
+            "integer"
+          ]
+        }
+      }
+    },
+    "timing_and_transactions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "timing": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "transactions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "timing",
+        "transactions"
+      ]
+    },
+    "required_verification_levels": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "level": {
+            "enum": [
+              "V0",
+              "V1",
+              "V2",
+              "V3",
+              "V4"
+            ]
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "level",
+          "required",
+          "reason"
+        ]
+      }
+    },
+    "implementation_status": {
+      "enum": [
+        "implemented_pending_verification",
+        "correction_pending_retest"
+      ]
+    },
+    "verification_status": {
+      "const": "queued_independent"
+    },
+    "behavior_basis": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "observed_in_source": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "wiki_supported": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "intentional_adaptations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "inferred_or_unresolved": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "observed_in_source",
+        "wiki_supported",
+        "intentional_adaptations",
+        "inferred_or_unresolved"
+      ]
+    },
+    "legacy_evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "reference": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope": {
+            "type": "string",
+            "minLength": 1
+          },
+          "independent_verification": {
+            "const": false
+          }
+        },
+        "required": [
+          "reference",
+          "scope",
+          "independent_verification"
+        ]
+      }
+    },
+    "supersedes": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "revision": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "implementation_commit_sha": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{40}$"
+            }
+          },
+          "required": [
+            "revision",
+            "implementation_commit_sha"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "rust_paths",
+    "dependencies",
+    "expected_normal_behavior",
+    "expected_negative_behavior",
+    "known_limitations",
+    "schema_version",
+    "implementation_id",
+    "revision",
+    "feature_name",
+    "implementation_commit_sha",
+    "source_references",
+    "provenance",
+    "registration_dispatch",
+    "identifiers",
+    "timing_and_transactions",
+    "required_verification_levels",
+    "implementation_status",
+    "verification_status",
+    "behavior_basis",
+    "legacy_evidence",
+    "supersedes"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:project-gielinor:openrune:implementation-contract:1",
+  "title": "One OpenRune implementation queue revision"
+}
