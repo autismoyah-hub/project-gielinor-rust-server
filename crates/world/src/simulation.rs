@@ -29,6 +29,7 @@ mod elemental_spell_actions;
 mod item_pack_actions;
 mod milking_actions;
 mod water_source_actions;
+mod cooking_actions;
 mod grinding_actions;
 mod swamp_tar_actions;
 mod dough_actions;
@@ -176,6 +177,7 @@ enum Deferred {
     Assembly(crate::assembly::Pending),
     Milking(crate::milking::Job),
     WaterFilling(crate::water_sources::Job),
+    Cooking(crate::cooking::Job),
     Grinding(crate::grinding::Pending),
     SwampTar(crate::swamp_tar::Pending),
     Dough(crate::dough::Pending),
@@ -312,6 +314,7 @@ impl Player {
         self.queues.remove_all(crate::assembly::QUEUE);
         self.queues.remove_all(crate::milking::QUEUE);
         self.queues.remove_all(crate::water_sources::QUEUE);
+        self.queues.remove_all(crate::cooking::QUEUE);
         self.queues.remove_all(crate::grinding::QUEUE);
         self.queues.remove_all(crate::swamp_tar::QUEUE);
         self.queues.remove_all(crate::dough::QUEUE);
@@ -632,6 +635,7 @@ pub enum WorldEvent {
     },
     Milking { actor:ActorId, trace:crate::milking::Transition },
     WaterFilled { actor: ActorId, trace: crate::water_sources::Transition },
+    CookingMade { actor: ActorId, trace: crate::cooking::Transition },
     Grinding { actor: ActorId, trace: crate::grinding::Transition },
     SwampTarMade { actor: ActorId, trace: crate::swamp_tar::Transition },
     DoughMade { actor: ActorId, trace: crate::dough::Transition },
@@ -891,6 +895,7 @@ pub struct World {
     pub potions: BTreeMap<i32, crate::potions::Potion>,
     pub milking: Option<crate::milking::Config>,
     pub water_sources: Option<crate::water_sources::Config>,
+    pub cooking: Option<crate::cooking::Config>,
     pub dough: Option<crate::dough::Config>,
     pub finished_potions: Option<crate::finished_potions::Config>,
     pub potion_upgrades: Option<crate::potion_upgrades::Config>,
@@ -1000,6 +1005,7 @@ impl Default for World {
             item_packs: BTreeMap::new(),
             milking: None,
             water_sources: None,
+            cooking: None,
             dough: None,
             herb_cleaning: None,
             unfinished_potions: None,
@@ -1374,6 +1380,7 @@ impl World {
         if open {
             p.queues.remove_all(crate::milking::QUEUE);
             p.queues.remove_all(crate::water_sources::QUEUE);
+            p.queues.remove_all(crate::cooking::QUEUE);
             p.queues.remove_all(crate::grinding::QUEUE);
             p.queues.remove_all(crate::dough::QUEUE);
         }
@@ -2466,6 +2473,9 @@ impl World {
                                                 }
                                                 Deferred::Grinding(job) => {
                                                     grinding_actions::complete(p, queues, job, &self.object_types, self.clock.0, &mut self.events);
+                                                }
+                                                Deferred::Cooking(job) => {
+                                                    if let Some(config)=&self.cooking {cooking_actions::complete(p,job,config,&self.object_types,self.locations.revision(job.target),self.clock.0,self.tutorial_rules_completed_varp.is_some(),&mut self.events,random);}
                                                 }
                                                 Deferred::WaterFilling(job) => {
                                                     if let Some(config) = &self.water_sources {

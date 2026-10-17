@@ -694,6 +694,9 @@ pub fn configure<B: AccountBackend>(
         )
         .map_err(io::Error::other)?,
     );
+    let mut cooking=crate::content::manual_fire_cooking(n("obj"),n("loc"),n("seq"),&runtime.definitions,u8::try_from(names.id("stat","cooking")?).map_err(io::Error::other)?).map_err(io::Error::other)?;
+    cooking.tutorial=runtime.world.tutorial_shrimp.map(|c|c.progression);
+    runtime.world.cooking=Some(cooking);
     runtime.world.water_sources = Some(crate::content::water_sources(n("obj"), n("loc"), &runtime.definitions).map_err(io::Error::other)?);
     for recipe in crate::content::grinding(n("obj"),n("seq"),&runtime.definitions).map_err(io::Error::other)?.into_iter().chain([crate::content::nihil_grinding(n("obj"),n("seq"),&runtime.definitions).map_err(io::Error::other)?]) {
         runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.tool,recipe.input,gielinor_world::held_use::Handler::Grinding(recipe))

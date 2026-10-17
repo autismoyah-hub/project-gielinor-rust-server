@@ -61,9 +61,13 @@ impl World {
         }
         if self
             .tutorial_shrimp
-            .is_some_and(|c| c.location == loc.id && c.raw == object)
+            .is_some_and(|c| c.location == loc.id && c.raw == object && (self.cooking.is_none() || c.progression.active(&p.data.variables)))
         {
             self.process_tutorial_shrimp(slot);
+            return;
+        }
+        if self.cooking.as_ref().is_some_and(|c|c.fire==loc.id && c.recipes.contains_key(&object)) {
+            self.start_cooking(slot,loc,inv_slot as usize,object);
             return;
         }
         if self

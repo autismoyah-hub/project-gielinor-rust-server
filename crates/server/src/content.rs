@@ -3365,3 +3365,48 @@ mod antivenom_plus_binding_tests {
         defs.items.get_mut(&12905).unwrap().name="Anti-venom(4)".into();defs.items.get_mut(&269).unwrap().inventory_ops[0]=Some("Clean".into());assert!(antivenom_plus_recipes(&symbols,&defs).is_err());
     }
 }
+
+
+/// Three manual ordinary-fire profiles. Explicit pinned Wiki rules take precedence
+/// over older enriched-cache parameters; quantities and special surfaces are separate.
+pub fn manual_fire_cooking(obj:&Symbols,loc:&Symbols,seq:&Symbols,defs:&Definitions,skill:u8)->Result<gielinor_world::cooking::Config,String>{
+ use gielinor_world::cooking::{Config,Recipe};
+ let resolve=|s:&Symbols,n:&str|s.get(n).copied().filter(|v|*v>=0).ok_or_else(||format!("Missing cooking symbol {n}"));
+ let stat=defs.stats.get(&(skill as u32)).ok_or("Missing Cooking stat")?;
+ if stat.name!="Cooking" || stat.max_level!=99 || stat.min_level!=1 || stat.unreleased{return Err("Unattested Cooking stat".into());}
+ let fire=resolve(loc,"fire")? as u32;let f=defs.locations.get(&fire).ok_or("Missing ordinary fire")?;
+ if f.name!="Fire" || !f.multi.is_empty() || f.collision.width!=1 || f.collision.length!=1 {return Err("Unattested ordinary fire".into());}
+ let animation=u16::try_from(resolve(seq,"human_firecooking")?).map_err(|_|"Invalid cooking animation")?;
+ let mut recipes=BTreeMap::new();let mut ids=std::collections::BTreeSet::new();
+ for (raw,cooked,burnt,raw_name,cooked_name,burnt_name,ticks) in [
+  ("raw_chicken","cooked_chicken","burnt_chicken","Raw chicken","Cooked chicken","Burnt chicken",1),
+  ("raw_beef","cooked_meat","burnt_meat","Raw beef","Cooked meat","Burnt meat",1),
+  ("raw_shrimp","shrimp","burnt_shrimp","Raw shrimps","Shrimps","Burnt shrimp",4),
+ ] {
+  let raw=resolve(obj,raw)?;let cooked=resolve(obj,cooked)?;let burnt=resolve(obj,burnt)?;
+  for(id,name) in [(raw,raw_name),(cooked,cooked_name),(burnt,burnt_name)]{
+   let d=defs.items.get(&(id as u32)).ok_or("Missing cooking item")?;
+   if !ids.insert(id) || d.name!=name || d.members || d.stackable || d.dummy==1 || d.cert.template!=0 || d.placeholder.template!=0 || d.transform.template!=0 {return Err("Unattested or aliased cooking item".into());}
+  }
+  if defs.items[&(cooked as u32)].inventory_ops[0].as_deref()!=Some("Eat"){return Err("Cooked food lacks Eat".into());}
+  recipes.insert(raw,Recipe{raw,cooked,burnt,level:1,stop_burn:34,low:128,high:512,xp:30,ticks});
+ }
+ Ok(Config{fire,animation,skill,max_level:stat.max_level,recipes,tutorial:None})
+}
+#[cfg(test)]
+mod cooking_binding_tests{
+ use super::*;
+ #[test]fn binds_exact_fire_profiles_and_rejects_late_aliases_and_bad_stat(){
+  let mut obj=Symbols::new();let loc=Symbols::from([("fire".into(),26185)]);let seq=Symbols::from([("human_firecooking".into(),897)]);
+  let mut defs=Definitions{inventories:Default::default(),locations:Default::default(),npcs:Default::default(),items:Default::default(),varbits:Default::default(),varps:Default::default(),stats:Default::default()};
+  defs.stats.insert(7,gielinor_cache::definitions::StatType{name:"Cooking".into(),unreleased:false,max_level:99,min_level:1});
+  defs.locations.insert(26185,gielinor_cache::locations::LocationType::decode(b"\x02Fire\0\0").unwrap());
+  for(symbol,id,name,eat) in [("raw_chicken",2138,"Raw chicken",false),("cooked_chicken",2140,"Cooked chicken",true),("burnt_chicken",2144,"Burnt chicken",false),("raw_beef",2132,"Raw beef",false),("cooked_meat",2142,"Cooked meat",true),("burnt_meat",2146,"Burnt meat",false),("raw_shrimp",317,"Raw shrimps",false),("shrimp",315,"Shrimps",true),("burnt_shrimp",7954,"Burnt shrimp",false)]{
+   obj.insert(symbol.into(),id);let mut d=gielinor_cache::definitions::ItemType::decode(&[0]).unwrap();d.name=name.into();if eat{d.inventory_ops[0]=Some("Eat".into());}defs.items.insert(id as u32,d);
+  }
+  let c=manual_fire_cooking(&obj,&loc,&seq,&defs,7).unwrap();assert_eq!(c.recipes.len(),3);assert_eq!((c.recipes[&2138].ticks,c.recipes[&2132].ticks,c.recipes[&317].ticks),(1,1,4));assert_eq!(c.recipes[&317].burnt,7954);
+  defs.items.get_mut(&7954).unwrap().cert.template=799;assert!(manual_fire_cooking(&obj,&loc,&seq,&defs,7).is_err());defs.items.get_mut(&7954).unwrap().cert.template=0;
+  obj.insert("burnt_shrimp".into(),2144);assert!(manual_fire_cooking(&obj,&loc,&seq,&defs,7).is_err());obj.insert("burnt_shrimp".into(),7954);
+  defs.stats.get_mut(&7).unwrap().max_level=126;assert!(manual_fire_cooking(&obj,&loc,&seq,&defs,7).is_err());
+ }
+}

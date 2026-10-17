@@ -283,6 +283,7 @@ pub mod shop;
 
 pub mod milking;
 pub mod water_sources;
+pub mod cooking;
 pub mod grinding;
 pub mod dough;
 pub mod swamp_tar;
