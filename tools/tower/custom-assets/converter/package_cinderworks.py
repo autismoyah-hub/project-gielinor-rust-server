@@ -10,6 +10,7 @@ from convert_glb import convert,encode,require
 def main():
     p=argparse.ArgumentParser();p.add_argument('input',type=Path);p.add_argument('output',type=Path);a=p.parse_args()
     a.output.mkdir(parents=True,exist_ok=True)
+    (a.output/'validation').mkdir(exist_ok=True)
     manifest=json.loads((a.input/'kit-manifest.json').read_text())
     rows=['TOWER_ASSET_PACKAGE 1'];catalogue=[];failures=[]
     for index,asset in enumerate(manifest['assets']):
@@ -20,6 +21,8 @@ def main():
         except Exception as error:
             failures.append(f'{name}: {error}');continue
         model_id=1100000+index;object_id=63000+index
+        expected=''.join('v %d %d %d\n'%v for v in vertices)+''.join('f %d %d %d %d\n'%(*f,c) for f,c in zip(faces,colors))
+        (a.output/'validation'/(name+'.txt')).write_text(expected,encoding='ascii')
         width,length=asset['footprint']
         definition=bytes([7,1])+struct.pack('>I',model_id)+b'\x02'+name.replace('_',' ').encode('ascii')+b'\0'+bytes([14,width,15,length,17,19,0,0])
         for kind,id,extension,content in [('model',model_id,'model',model),('object',object_id,'object',definition)]:

@@ -107,7 +107,7 @@ def main():
                         span=l if rotation%2 else w
                         if across not in [0,span-1]:continue
                     blocked.add((x+dx,z+dz))
-        if name=='bridge':
+        if name in ['bridge','long_bridge']:
             bridges.update((x+dx,z+dz) for dx in range(w) for dz in range(l))
 
     floors=[]
@@ -117,6 +117,11 @@ def main():
             radius=math.hypot(x+.5-66.5,z+.5-57.5)
             if 4.1<radius<5.5:material='paving'
         elif area=='foundry' and (x in [53,71] or z in [102,117]):material='ash_paving'
+        elif area=='foundry' and 54<=x<=71 and 103<=z<=116:material='ash_paving'
+        elif area=='garden' and 'moss_ground' in assets and math.hypot(x-101,z-88)<7:material='moss_ground'
+        if material not in ['water','moss_ground'] and f'{material}_v0' in assets:
+            variation=(x//3*7+z//4*11)%13
+            if variation in [0,1,2]:material+=f'_v{variation%2}'
         floors.append(dict(asset=material,id=assets[material]['object_id'],x=x,z=z,shape=10,rotation=((x+z)%2)*2))
 
     # Outer masonry follows the complete irregular footprint, with a cutaway
@@ -167,6 +172,10 @@ def main():
     put('rubble',43,98)
     for x,z in [(31,58),(49,69),(33,76)]:put('pillar',x,z)
     put('scale_figure',43,68,obstacle=False)
+    if 'casting_hoist' in assets:
+        put('casting_hoist',40,69)
+        for x,z,r in [(30,61,0),(34,57,0),(46,74,1),(56,60,1),(96,76,0)]:put('supply_rack',x,z,r)
+        for x,z in [(27,82),(28,90),(34,93),(42,90),(40,78),(106,94),(108,82)]:put('rock_buttress',x,z)
 
     # Headgate: visible water source, wheel, pressure conversion and pipework.
     put('waterwheel',90,63,story='Coolant drives the wheel before feeding the western pump bank.')
@@ -183,7 +192,7 @@ def main():
     for x,z in [(105,82),(107,90),(94,92)]:put('root_tree',x,z)
     for x,z in [(96,84),(104,94),(92,86),(106,87)]:put('fungus',x,z)
     put('timber_stack',103,80);put('rubble',108,92);put('rubble',94,95)
-    put('bridge',97,87,obstacle=False)
+    put('long_bridge' if 'long_bridge' in assets else 'bridge',97,87,obstacle=False)
 
     # Central heat transition: quiet, constricted cooling gallery before the
     # final broad reveal. Pipe pairs form a deliberate visual route north.
@@ -202,6 +211,8 @@ def main():
     for x,z in [(79,87),(84,87),(79,96),(84,96)]:put('metal_plate',x,z,obstacle=False)
     put('broken_arch',79,82);put('arch',71,96,1)
     put('scale_figure',81,93,obstacle=False)
+    if 'heat_fissure' in assets:
+        for x,z in [(76,89),(87,93),(82,97),(72,92),(89,88),(56,117),(68,117),(55,101),(69,101)]:put('heat_fissure',x,z,obstacle=False)
 
     # Climax: the clear combat rectangle is framed by tall buttresses, twin
     # coolant alcoves and a single unmistakable furnace silhouette.

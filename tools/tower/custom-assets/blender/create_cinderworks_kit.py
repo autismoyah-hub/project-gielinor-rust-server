@@ -19,7 +19,7 @@ PALETTE={
 }
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True)
+    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--layout',type=Path)
     a=p.parse_args(sys.argv[sys.argv.index('--')+1:]);a.output.mkdir(parents=True,exist_ok=True)
     bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
     mats={}
@@ -80,7 +80,8 @@ def main():
 
     def column(height=3):
         block((0,0,.15),(.95,.95,.3),'edge')
-        for n in range(5):block((0,0,.50+n*(height-.65)/5),(.63,.63,(height-.65)/5-.04),'stone')
+        step=(height-.55)/5
+        for n in range(5):block((0,0,.30+(n+.5)*step),(.63,.63,step-.035),'stone')
         for z in [.8,height-.6]:block((0,0,z),(.69,.69,.10),'iron',.01)
         block((0,0,height-.1),(1.02,1.02,.25),'bone')
 
@@ -93,7 +94,7 @@ def main():
         if diagonal:
             for o in collection:o.rotation_euler[2]+=math.pi/4;o.location.x,o.location.y=-o.location.y/math.sqrt(2),o.location.y/math.sqrt(2)
 
-    def asset(name,size,build,use):
+    def asset(name,size,build,use,anchor=None):
         nonlocal collection
         collection=[]
         bpy.ops.object.select_all(action='DESELECT');build()
@@ -108,13 +109,14 @@ def main():
         bpy.ops.export_scene.gltf(filepath=str(a.output/(name+'.glb')),export_format='GLB',use_selection=True,export_apply=True,export_yup=True,export_materials='EXPORT',export_cameras=False,export_lights=False)
         points=[tuple(v.co) for v in obj.data.vertices]
         catalogue.append(dict(name=name,footprint=size,vertices=len(points),triangles=len(obj.data.polygons),materials=[m.name for m in obj.data.materials],bounds=[[min(v[i] for v in points),max(v[i] for v in points)] for i in range(3)],purpose=use))
+        if anchor is not None:catalogue[-1]['world_anchor']=anchor
         obj.location=((len(catalogue)-1)%8*10,(len(catalogue)-1)//8*11,0);obj.select_set(False)
 
     def floor(material='slate',seams=True):
-        block((0,0,-.105),(1,1,.18),'basalt',0)
-        if seams:
-            for x in [-.245,.245]:block((x,0,-.005),(.46,.95,.035),material,0)
-        else:block((0,0,-.005),(.98,.98,.035),material,0)
+        block((0,0,-.105),(1,1,.18),material,0)
+        if material.startswith(('soil','ash','moss')):
+            block((0,0,-.005),(1,1,.035),material,0)
+        else:block((0,0,-.005),(.985,.985,.035),material,0)
 
     for name,material in [('paving','slate'),('sanctuary_paving','stone'),('forge_paving','ore'),('ash_paving','ash'),('garden_soil','soil')]:
         asset(name,[1,1],lambda m=material:floor(m),'Reusable original untextured floor; top at walking datum')
@@ -233,12 +235,13 @@ def main():
             cylinder((x,y,h/2),.075,h,'bone',vertices=6);cylinder((x,y,h),.35,.22,'verdigris',vertices=8,radius2=.08)
     asset('fungus',[2,2],fungus,'Water-fed fungal life in the reservoir garden')
 
-    def bridge():
-        block((0,0,.12),(4,2,.24),'stone',.03)
+    def bridge(span=4):
+        half=span/2-.2
+        block((0,0,.12),(span,2,.24),'stone',.03)
         for y in [-.9,.9]:
-            beam((-1.8,y,.9),(1.8,y,.9),.1,'iron')
-            for x in [-1.8,-.6,.6,1.8]:block((x,y,.48),(.12,.12,.9),'iron',.01)
-        for x in [-1.8,1.8]:block((x,0,-.35),(.4,2,.8),'basalt',.03)
+            beam((-half,y,.9),(half,y,.9),.1,'iron')
+            for i in range(span):block((-half+i*(2*half)/(span-1),y,.48),(.12,.12,.9),'iron',.01)
+        for x in [-half,half]:block((x,0,-.35),(.4,2,.8),'basalt',.03)
     asset('bridge',[4,2],bridge,'Four-tile service bridge with open railings and visible supporting abutments')
 
     def water():
@@ -313,6 +316,94 @@ def main():
         block((0,0,.55),(2.3,1.05,.05),'water',0)
         block((0,-.3,.59),(1.2,.035,.02),'ripple',0)
     asset('coolant_trough',[3,2],trough,'Readable stone coolant station with an open water surface')
+
+    def hoist():
+        for x in [-1.6,1.6]:
+            block((x,0,.18),(.8,1,.36),'stone',.035);block((x,0,2),(.28,.35,3.6),'timber',.025)
+            beam((x,0,2.2),(x*.45,0,3.7),.20,'iron')
+        block((0,0,3.8),(3.8,.48,.4),'timber',.035)
+        cylinder((0,0,3.1),.55,.30,'brass',axis=(0,1,0),vertices=12)
+        for x in [-.18,.18]:cylinder((x,0,2.2),.045,1.4,'iron',vertices=6)
+        block((0,0,1.25),(1.3,1.3,.3),'iron',.035)
+    asset('casting_hoist',[4,3],hoist,'Timber and iron gantry gives the cast-house a readable production line')
+
+    def rockwall():
+        for x,y,z,s in [(-.65,0,1.1,1.3),(.55,.3,1.35,1.5),(.1,-.5,.8,1.1)]:
+            bpy.ops.mesh.primitive_ico_sphere_add(subdivisions=1,radius=s,location=(x,y,z));o=bpy.context.object;o.scale=(.8,.72,1.15);finish(o,'basalt')
+        block((.4,-.7,1.1),(.35,.15,.5),'ore',.02,.3)
+    asset('rock_buttress',[4,3],rockwall,'Original fractured rock face for quarry edges and failed excavation')
+
+    def fissure():
+        points=[(-.22,-.9),(.15,-.35),(-.1,.1),(.22,.65)]
+        for u,v in zip(points,points[1:]):
+            delta=Vector(v)-Vector(u);delta.normalize()
+            first=tuple(u[i]+delta[i]*.04 for i in range(2));last=tuple(v[i]-delta[i]*.04 for i in range(2))
+            beam((*first,-.025),(*last,-.025),.14,'basalt');beam((*first,.075),(*last,.075),.045,'ember')
+    asset('heat_fissure',[1,2],fissure,'Static heat-stressed paving; visual storytelling, not a live hazard')
+
+    def relief():
+        block((0,0,1.5),(1.5,.18,1.5),'basalt',.05)
+        ring((0,-.16,1.5),.47,.09,'brass',axis=(0,1,0),segments=8)
+        block((0,-.18,1.5),(.14,.12,.85),'verdigris',.01)
+    asset('wall_relief',[2,1],relief,'Repeated industrial sanctuary emblem, never borrowed cache art')
+
+    def rack():
+        for x in [-.8,.8]:block((x,0,1),(.12,.35,2),'timber',.01)
+        for z in [.6,1.2,1.8]:block((0,0,z),(1.8,.65,.10),'timber',.01)
+        for x in [-.5,0,.5]:cylinder((x,0,1.42),.11,.4,'copper',vertices=6)
+    asset('supply_rack',[2,1],rack,'Shelved supplies make alcoves read as occupied working infrastructure')
+
+    # Subtle material variation breaks repetition without procedural textures.
+    for base in ['slate','stone','ore','ash','soil']:
+        for variant,factor in enumerate([.92,1.07]):
+            key=f'{base}-v{variant}';color=tuple(min(1,c*factor) for c in PALETTE[base][:3])+(1,)
+            m=bpy.data.materials.new(key);m.diffuse_color=color;m.use_nodes=True;m.use_backface_culling=True
+            m.node_tree.nodes.get('Principled BSDF').inputs['Base Color'].default_value=color;mats[key]=m
+            names={'slate':'paving','stone':'sanctuary_paving','ore':'forge_paving','ash':'ash_paving','soil':'garden_soil'}
+            asset(f'{names[base]}_v{variant}',[1,1],lambda material=key:floor(material),'Subtle original paving tone; no texture dependencies')
+
+    asset('moss_ground',[1,1],lambda:floor('moss'),'Moist original ground under the roof breach and around cistern roots')
+    asset('long_bridge',[6,2],lambda:bridge(6),'A full bank-to-bank reservoir crossing with open railings')
+
+    if a.layout:
+        recipe=json.loads(a.layout.read_text(encoding='utf-8'))['curtain_recipe']
+        for area,segments in recipe.items():
+            if not segments:continue
+            xmin=math.floor(min(p[0] for segment in segments for p in segment)-.8)
+            ymin=math.floor(min(p[1] for segment in segments for p in segment)-.8)
+            xmax=math.ceil(max(p[0] for segment in segments for p in segment)+.8)
+            ymax=math.ceil(max(p[1] for segment in segments for p in segment)+.8)
+            size=[xmax-xmin,ymax-ymin];center=(xmin+size[0]/2,ymin+size[1]/2)
+            def curtain(segments=segments,area=area,center=center):
+                vertices=[];faces=[];material_ids=[]
+                material_names=['basalt','stone','edge']
+                def solid(pos,size,material,bevel,angle):
+                    offset=len(vertices);c,s=math.cos(angle),math.sin(angle)
+                    for x,y,z in [(-1,-1,-1),(1,-1,-1),(1,1,-1),(-1,1,-1),(-1,-1,1),(1,-1,1),(1,1,1),(-1,1,1)]:
+                        x*=size[0]/2;y*=size[1]/2;z*=size[2]/2
+                        vertices.append((pos[0]+x*c-y*s,pos[1]+x*s+y*c,pos[2]+z))
+                    for f in [(0,3,2,1),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)]:
+                        faces.append(tuple(offset+i for i in f));material_ids.append(material_names.index(material))
+                for start,end in segments:
+                    dx,dy=end[0]-start[0],end[1]-start[1];length=math.hypot(dx,dy);angle=math.atan2(dy,dx)
+                    nx,ny=-dy/length,dx/length
+                    x=(start[0]+end[0])/2-center[0]+nx*.12;y=(start[1]+end[1])/2-center[1]+ny*.12
+                    low=dx>0 or dy>0
+                    height=1.10 if low else 2.75
+                    if area in ['quarry','garden']:height=1.4 if low else 2.1
+                    material='basalt' if area in ['foundry','vents','quarry'] else 'stone'
+                    solid((x,y,0),(length+.15,1.55,.50),'basalt',.025,angle)
+                    count=max(1,math.ceil(length/1.3));step=length/count;courses=2 if height<1.5 else 5
+                    for n in range(courses):
+                        for k in range(count):
+                            t=(k+.5)*step-length/2
+                            solid((x+math.cos(angle)*t,y+math.sin(angle)*t,.18+(n+.5)*(height-.25)/courses),(step-.035,.40,(height-.25)/courses-.035),material,.015,angle)
+                    solid((x,y,height),(length+.05,.53,.18),'edge',.025,angle)
+                mesh=bpy.data.meshes.new('authored-masonry-sector');mesh.from_pydata(vertices,[],faces);mesh.update()
+                for material in material_names:mesh.materials.append(mats[material])
+                for face,index in zip(mesh.polygons,material_ids):face.material_index=index
+                obj=bpy.data.objects.new('authored-masonry-sector',mesh);bpy.context.collection.objects.link(obj);finish(obj,'basalt')
+            asset('curtain_'+area,size,curtain,'Continuous authored cutaway masonry sector; partition into smaller placements for live collision later',anchor=[xmin,ymin])
 
     (a.output/'kit-manifest.json').write_text(json.dumps(dict(blender=bpy.app.version_string,origin='Entirely original procedural geometry; no cache or external art',palette=PALETTE,assets=catalogue),indent=2)+'\n')
     bpy.ops.wm.save_as_mainfile(filepath=str(a.output/'cinderworks-kit.blend'))

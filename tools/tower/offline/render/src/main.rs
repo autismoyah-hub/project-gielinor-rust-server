@@ -105,7 +105,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         "asset-plan" => (765, 503, 1800.0, 1100.0),
         "asset-passage" => (765, 503, 80.0, 760.0),
         "floor-iso" => (1800, 1600, 10000.0, 1800.0),
-        "floor-plan" => (1800, 1900, 14500.0, 2300.0),
+        "floor-plan" => (1800, 1900, 17500.0, 2200.0),
         "room" => (1200, 900, 2200.0, 1250.0),
         "player" => (1200, 900, 1100.0, 1000.0),
         _ => return Err("Unknown camera preset".into()),
@@ -125,7 +125,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     frame.draw(&camera, &mesh.triangles, &p, &textures);
     fs::write(&a[3], frame.raster()?.bmp()?)?;
     fs::write(format!("{}.camera.txt", a[3]), format!(
-        "OFFLINE ONLY\npreset={preset}\nobject_assembly={assembly}\ncanvas={width}x{height}\nlocal_target={x},{z}\ntarget_height={}\nyaw_units={}\ndistance={distance}\nelevation={elevation}\nfocal={focal}\nscene={}\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n", center[1], a[6], a[2]))?;
+        "OFFLINE ONLY\noriginal_art_only={original_only}\npreset={preset}\nobject_assembly={assembly}\ncanvas={width}x{height}\nlocal_target={x},{z}\ntarget_height={}\nyaw_units={}\ndistance={distance}\nelevation={elevation}\nfocal={focal}\nscene={}\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n", center[1], a[6], a[2]))?;
     println!(
         "OFFLINE shell {} triangles; pose {x},{z} yaw {yaw}; actors/UI/runtime animations absent",
         mesh.triangles.len()
