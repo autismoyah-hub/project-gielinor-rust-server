@@ -1,0 +1,116 @@
+{
+  "source_engine": "09bf492 / F45E497F8E5821B0 binary; subsequent tests/docs/controller-only publication57eb6a0",
+  "fresh_headless": true,
+  "accepted": true,
+  "timing": {
+    "accepted": true,
+    "source": "09bf492 / F45E497F8E5821B0 server",
+    "mode": "headless",
+    "elapsed_seconds_including_native_wait": 754.05,
+    "steps": [
+      {
+        "step": "services.py",
+        "arguments": [
+          "--onboard",
+          "--gate-check",
+          "--order",
+          "kitchen-first",
+          "--scene-checks",
+          "--landmarks",
+          "8",
+          "--coolant-lesson"
+        ],
+        "seconds": 267.0,
+        "exit_code": 0
+      },
+      {
+        "step": "recovery.py",
+        "arguments": [],
+        "seconds": 41.43,
+        "exit_code": 0
+      },
+      {
+        "step": "guardian.py",
+        "arguments": [
+          "imp",
+          "--style",
+          "accurate",
+          "--label",
+          "first-foundry"
+        ],
+        "seconds": 122.13,
+        "exit_code": 0
+      },
+      {
+        "step": "guardian.py",
+        "arguments": [
+          "warden",
+          "--style",
+          "accurate",
+          "--require-coolant",
+          "--timeout",
+          "600",
+          "--label",
+          "first-foundry"
+        ],
+        "seconds": 271.35,
+        "exit_code": 0
+      },
+      {
+        "step": "restoration.py",
+        "arguments": [
+          "--label",
+          "victory",
+          "--expected",
+          "18526,18511,16811,16811,16810,18525,18525,18525"
+        ],
+        "seconds": 0.75,
+        "exit_code": 0
+      },
+      {
+        "step": "claim.py",
+        "arguments": [
+          "--full-pack"
+        ],
+        "seconds": 40.3,
+        "exit_code": 0
+      },
+      {
+        "step": "exit_return.py",
+        "arguments": [],
+        "seconds": 11.08,
+        "exit_code": 0
+      }
+    ]
+  },
+  "active_scenario_seconds": 754.04,
+  "warden_phases": [
+    2,
+    3
+  ],
+  "coolant_uid": [
+    75
+  ],
+  "warden_end_hp": 11,
+  "remaining_normally_gathered_shrimp": 18,
+  "checks": [
+    "ordinary registration, appearance and experience choices",
+    "fresh progression-gate denial without XP/unlock",
+    "harmless coolant lesson",
+    "kitchen-first services and all8initial/restored scenes",
+    "actual paired-player creature-ownership denial then normal retarget to another visible creature",
+    "real lethal sanctuary rescue preserving supplies except consumption",
+    "both guardians/allWarden phases/required real coolant",
+    "all8victorysceneobjects",
+    "fullpackfirstrewarddenial without partial payment; ordinarydrop2rawshrimp thenfirst500coins/beer; duplicatezero",
+    "exactexit/return",
+    "ROdatabasefirstpaidrun1/services7/flags11/clears1 and500coins/1beer before normalclose",
+    "exactinventoryslots/counts,equipment,all25XP,journal and8landmarks afterordinaryrelogin"
+  ],
+  "original_failed_headless22": "Retained failed and never reclassified. Fresh23 is an independent initial character and includes a real successful contention regression.",
+  "pending": [
+    "human first-play pacing",
+    "user artistic acceptance"
+  ],
+  "pacing_note": "Automated scenario times are not human first-play pacing; elapsed includes explicit native-court wait if any."
+}
