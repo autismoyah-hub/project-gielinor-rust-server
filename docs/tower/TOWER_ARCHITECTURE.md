@@ -1,3 +1,9 @@
+## Current guarded waterworks and furnace composition
+
+Implementation `c7e4230b897d93ba2cb83fd7b9a60eaf16097ffc`, executable `6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9`. Floor origin remains 10368,64. The four existing passive3317 fish NPCs stand at local72,50/52/54/56; ordinary net fishing reaches them from flat dry local70,50/52/54/56. The wheel landmark moves to local72,58 and retains Water state/angle0/dormant18512/restored18511. Continuous low masonry on local70,z48..63 and two endcaps protect the height seam; ordinary through-crossings are local69/70,z48/64 in both shell and opening declarations. Quay chunks use actual377,545 rotations0/1; genuine water uses187,566. No terrain-byte or interaction-reach override.
+
+Middle Foundry landmark local55,78 now uses18526/18525 angle1, matching the two neighboring rotated forge mouths; the extra mouth tile has a real shell opening. Piers local54/59,78 and boiler connections local69/74,76 remain beyond combat bounds. Imp and Warden bounds, coolant coordinates, authoritative encounter rules, service flags, inventory, rewards and persistence format are unchanged. Current victory palette is18526,18511,16811,16811,18525,18525,18525,18525. See `WATERLINE_ART_AND_LIFECYCLE_20261017.json` for exact evidence scope and preserved failures. Older coordinate/palette statements below describe historical checkpoints.
+
 # Tower architecture
 
 Continue from the pinned engine baseline using its authoritative world simulation, inventory, combat, networking and transactional account saves. Do not introduce competing engine authorities.

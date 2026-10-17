@@ -1,0 +1,1096 @@
+{
+  "status": "All 84 prepared hub objects classified; current native reconstruction verified. Final user artistic acceptance remains open.",
+  "source_parent": "840c3094",
+  "audit_scope": "Every final prepared plane0 scene location in local48..64 \u00d748..64, including hub, arrival and adjoining threshold edges. Initial/cold presentation; native personal restoration checks recorded independently.",
+  "prepared_record_count": 84,
+  "records": [
+    {
+      "local_position": [
+        48,
+        50
+      ],
+      "id": 6145,
+      "cache_name": "null",
+      "shape": 2,
+      "angle": 3,
+      "classification": "intentional_architecture",
+      "reason": "High dwarven masonry defines the sanctuary, service recesses and plaque support."
+    },
+    {
+      "local_position": [
+        48,
+        51
+      ],
+      "id": 6145,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 0,
+      "classification": "intentional_architecture",
+      "reason": "High dwarven masonry defines the sanctuary, service recesses and plaque support."
+    },
+    {
+      "local_position": [
+        48,
+        52
+      ],
+      "id": 6145,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 0,
+      "classification": "intentional_architecture",
+      "reason": "High dwarven masonry defines the sanctuary, service recesses and plaque support."
+    },
+    {
+      "local_position": [
+        48,
+        53
+      ],
+      "id": 6145,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 0,
+      "classification": "intentional_architecture",
+      "reason": "High dwarven masonry defines the sanctuary, service recesses and plaque support."
+    },
+    {
+      "local_position": [
+        48,
+        54
+      ],
+      "id": 6145,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 0,
+      "classification": "intentional_architecture",
+      "reason": "High dwarven masonry defines the sanctuary, service recesses and plaque support."
+    },
+    {
+      "local_position": [
+        48,
+        57
+      ],
+      "id": 6145,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 0,
+      "classification": "intentional_architecture",
+      "reason": "High dwarven masonry defines the sanctuary, service recesses and plaque support."
+    },
+    {
+      "local_position": [
+        48,
+        58
+      ],
+      "id": 6145,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 0,
+      "classification": "intentional_architecture",
+      "reason": "High dwarven masonry defines the sanctuary, service recesses and plaque support."
+    },
+    {
+      "local_position": [
+        48,
+        59
+      ],
+      "id": 6145,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 0,
+      "classification": "intentional_architecture",
+      "reason": "High dwarven masonry defines the sanctuary, service recesses and plaque support."
+    },
+    {
+      "local_position": [
+        48,
+        60
+      ],
+      "id": 6145,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 0,
+      "classification": "intentional_architecture",
+      "reason": "High dwarven masonry defines the sanctuary, service recesses and plaque support."
+    },
+    {
+      "local_position": [
+        48,
+        61
+      ],
+      "id": 6145,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 0,
+      "classification": "intentional_architecture",
+      "reason": "High dwarven masonry defines the sanctuary, service recesses and plaque support."
+    },
+    {
+      "local_position": [
+        48,
+        62
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 3,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        48,
+        64
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 3,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        49,
+        50
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 3,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        49,
+        62
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 3,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        49,
+        64
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 3,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        50,
+        48
+      ],
+      "id": 6145,
+      "cache_name": "null",
+      "shape": 2,
+      "angle": 3,
+      "classification": "intentional_architecture",
+      "reason": "High dwarven masonry defines the sanctuary, service recesses and plaque support."
+    },
+    {
+      "local_position": [
+        50,
+        49
+      ],
+      "id": 6145,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 0,
+      "classification": "intentional_architecture",
+      "reason": "High dwarven masonry defines the sanctuary, service recesses and plaque support."
+    },
+    {
+      "local_position": [
+        50,
+        62
+      ],
+      "id": 6145,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 0,
+      "classification": "intentional_architecture",
+      "reason": "High dwarven masonry defines the sanctuary, service recesses and plaque support."
+    },
+    {
+      "local_position": [
+        50,
+        63
+      ],
+      "id": 6145,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 0,
+      "classification": "intentional_architecture",
+      "reason": "High dwarven masonry defines the sanctuary, service recesses and plaque support."
+    },
+    {
+      "local_position": [
+        50,
+        64
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 3,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        51,
+        48
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 3,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        51,
+        64
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 3,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        52,
+        48
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 3,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        52,
+        64
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 3,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        53,
+        48
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 3,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        53,
+        51
+      ],
+      "id": 6145,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 3,
+      "classification": "intentional_architecture",
+      "reason": "High dwarven masonry defines the sanctuary, service recesses and plaque support."
+    },
+    {
+      "local_position": [
+        53,
+        64
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 3,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        54,
+        48
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 3,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        54,
+        51
+      ],
+      "id": 6145,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 3,
+      "classification": "intentional_architecture",
+      "reason": "High dwarven masonry defines the sanctuary, service recesses and plaque support."
+    },
+    {
+      "local_position": [
+        54,
+        64
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 3,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        57,
+        48
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 3,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        57,
+        64
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 3,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        58,
+        48
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 3,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        58,
+        64
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 3,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        59,
+        48
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 3,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        59,
+        64
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 3,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        60,
+        48
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 3,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        60,
+        64
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 3,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        61,
+        48
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 3,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        61,
+        64
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 3,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        62,
+        48
+      ],
+      "id": 6145,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 0,
+      "classification": "intentional_architecture",
+      "reason": "High dwarven masonry defines the sanctuary, service recesses and plaque support."
+    },
+    {
+      "local_position": [
+        62,
+        49
+      ],
+      "id": 6145,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 0,
+      "classification": "intentional_architecture",
+      "reason": "High dwarven masonry defines the sanctuary, service recesses and plaque support."
+    },
+    {
+      "local_position": [
+        62,
+        50
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 3,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        62,
+        62
+      ],
+      "id": 6145,
+      "cache_name": "null",
+      "shape": 2,
+      "angle": 3,
+      "classification": "intentional_architecture",
+      "reason": "High dwarven masonry defines the sanctuary, service recesses and plaque support."
+    },
+    {
+      "local_position": [
+        62,
+        63
+      ],
+      "id": 6145,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 0,
+      "classification": "intentional_architecture",
+      "reason": "High dwarven masonry defines the sanctuary, service recesses and plaque support."
+    },
+    {
+      "local_position": [
+        62,
+        64
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 3,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        63,
+        50
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 3,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        63,
+        62
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 3,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        63,
+        64
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 3,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        64,
+        48
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 3,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        64,
+        50
+      ],
+      "id": 6145,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 0,
+      "classification": "intentional_architecture",
+      "reason": "High dwarven masonry defines the sanctuary, service recesses and plaque support."
+    },
+    {
+      "local_position": [
+        64,
+        51
+      ],
+      "id": 6145,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 0,
+      "classification": "intentional_architecture",
+      "reason": "High dwarven masonry defines the sanctuary, service recesses and plaque support."
+    },
+    {
+      "local_position": [
+        64,
+        52
+      ],
+      "id": 6145,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 0,
+      "classification": "intentional_architecture",
+      "reason": "High dwarven masonry defines the sanctuary, service recesses and plaque support."
+    },
+    {
+      "local_position": [
+        64,
+        53
+      ],
+      "id": 6145,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 0,
+      "classification": "intentional_architecture",
+      "reason": "High dwarven masonry defines the sanctuary, service recesses and plaque support."
+    },
+    {
+      "local_position": [
+        64,
+        54
+      ],
+      "id": 6145,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 0,
+      "classification": "intentional_architecture",
+      "reason": "High dwarven masonry defines the sanctuary, service recesses and plaque support."
+    },
+    {
+      "local_position": [
+        64,
+        57
+      ],
+      "id": 6145,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 0,
+      "classification": "intentional_architecture",
+      "reason": "High dwarven masonry defines the sanctuary, service recesses and plaque support."
+    },
+    {
+      "local_position": [
+        64,
+        58
+      ],
+      "id": 6145,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 0,
+      "classification": "intentional_architecture",
+      "reason": "High dwarven masonry defines the sanctuary, service recesses and plaque support."
+    },
+    {
+      "local_position": [
+        64,
+        59
+      ],
+      "id": 6145,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 0,
+      "classification": "intentional_architecture",
+      "reason": "High dwarven masonry defines the sanctuary, service recesses and plaque support."
+    },
+    {
+      "local_position": [
+        64,
+        61
+      ],
+      "id": 6145,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 0,
+      "classification": "intentional_architecture",
+      "reason": "High dwarven masonry defines the sanctuary, service recesses and plaque support."
+    },
+    {
+      "local_position": [
+        64,
+        64
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 3,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        53,
+        60
+      ],
+      "id": 18491,
+      "cache_name": "Bank booth",
+      "shape": 10,
+      "angle": 0,
+      "classification": "required_gameplay_fixture",
+      "reason": "Actual Bank operation uses the tested scoped booth and normal bank UI/persistence."
+    },
+    {
+      "local_position": [
+        55,
+        51
+      ],
+      "id": 57694,
+      "cache_name": "Chest",
+      "shape": 10,
+      "angle": 0,
+      "classification": "required_gameplay_fixture",
+      "reason": "Reward chest remains reachable beside the plaque; atomic full-pack and duplicate rules preserved."
+    },
+    {
+      "local_position": [
+        60,
+        52
+      ],
+      "id": 409,
+      "cache_name": "Altar",
+      "shape": 10,
+      "angle": 0,
+      "classification": "required_gameplay_fixture",
+      "reason": "Altar supports the real bone-offering service and ordinary Pray."
+    },
+    {
+      "local_position": [
+        52,
+        51
+      ],
+      "id": 202,
+      "cache_name": "Candles",
+      "shape": 10,
+      "angle": 0,
+      "classification": "intentional_environmental_detail",
+      "reason": "Paired candle stands mark the reward/information and altar side of the hub."
+    },
+    {
+      "local_position": [
+        61,
+        51
+      ],
+      "id": 202,
+      "cache_name": "Candles",
+      "shape": 10,
+      "angle": 0,
+      "classification": "intentional_environmental_detail",
+      "reason": "Paired candle stands mark the reward/information and altar side of the hub."
+    },
+    {
+      "local_position": [
+        52,
+        49
+      ],
+      "id": 11025,
+      "cache_name": "Brazier",
+      "shape": 10,
+      "angle": 0,
+      "classification": "intentional_optional_interaction",
+      "reason": "Coal brazier supplies an existing contextual clue and marks the sanctuary route."
+    },
+    {
+      "local_position": [
+        59,
+        49
+      ],
+      "id": 16810,
+      "cache_name": "Ceremonial Brazier",
+      "shape": 10,
+      "angle": 0,
+      "classification": "intentional_personal_landmark",
+      "reason": "Cold/restored ceremonial brazier pair derives from existing service or first-clear state."
+    },
+    {
+      "local_position": [
+        55,
+        58
+      ],
+      "id": 16810,
+      "cache_name": "Ceremonial Brazier",
+      "shape": 10,
+      "angle": 0,
+      "classification": "intentional_personal_landmark",
+      "reason": "Cold/restored ceremonial brazier pair derives from existing service or first-clear state."
+    },
+    {
+      "local_position": [
+        52,
+        54
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 0,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        52,
+        57
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 0,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        52,
+        58
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 0,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        60,
+        54
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 0,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        60,
+        57
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 0,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        60,
+        58
+      ],
+      "id": 6143,
+      "cache_name": "null",
+      "shape": 0,
+      "angle": 0,
+      "classification": "intentional_architecture",
+      "reason": "Low masonry defines service alcoves while retaining readable crossing routes."
+    },
+    {
+      "local_position": [
+        51,
+        53
+      ],
+      "id": 7016,
+      "cache_name": "Pillar",
+      "shape": 10,
+      "angle": 0,
+      "classification": "intentional_architecture",
+      "reason": "Dwarven pillars frame the safe hub and its adjoining service galleries."
+    },
+    {
+      "local_position": [
+        60,
+        53
+      ],
+      "id": 7016,
+      "cache_name": "Pillar",
+      "shape": 10,
+      "angle": 0,
+      "classification": "intentional_architecture",
+      "reason": "Dwarven pillars frame the safe hub and its adjoining service galleries."
+    },
+    {
+      "local_position": [
+        51,
+        59
+      ],
+      "id": 7016,
+      "cache_name": "Pillar",
+      "shape": 10,
+      "angle": 0,
+      "classification": "intentional_architecture",
+      "reason": "Dwarven pillars frame the safe hub and its adjoining service galleries."
+    },
+    {
+      "local_position": [
+        60,
+        59
+      ],
+      "id": 7016,
+      "cache_name": "Pillar",
+      "shape": 10,
+      "angle": 0,
+      "classification": "intentional_architecture",
+      "reason": "Dwarven pillars frame the safe hub and its adjoining service galleries."
+    },
+    {
+      "local_position": [
+        62,
+        59
+      ],
+      "id": 17097,
+      "cache_name": "null",
+      "shape": 10,
+      "angle": 0,
+      "classification": "intentional_environmental_detail",
+      "reason": "Collapsed threshold support communicates ruin without the old intact foreground occlusion."
+    },
+    {
+      "local_position": [
+        62,
+        62
+      ],
+      "id": 7017,
+      "cache_name": "Pillar",
+      "shape": 10,
+      "angle": 0,
+      "classification": "intentional_architecture",
+      "reason": "The retained rear threshold support pairs with the collapsed foreground support."
+    },
+    {
+      "local_position": [
+        53,
+        49
+      ],
+      "id": 568,
+      "cache_name": "Dwarf statue",
+      "shape": 10,
+      "angle": 0,
+      "classification": "intentional_environmental_detail",
+      "reason": "Dwarven miner statues identify the forge complex and its workers."
+    },
+    {
+      "local_position": [
+        58,
+        49
+      ],
+      "id": 568,
+      "cache_name": "Dwarf statue",
+      "shape": 10,
+      "angle": 0,
+      "classification": "intentional_environmental_detail",
+      "reason": "Dwarven miner statues identify the forge complex and its workers."
+    },
+    {
+      "local_position": [
+        54,
+        51
+      ],
+      "id": 909,
+      "cache_name": "Plaque",
+      "shape": 4,
+      "angle": 1,
+      "classification": "required_gameplay_fixture",
+      "reason": "Supported wall plaque introduces the loop and starts legitimate repeats."
+    },
+    {
+      "local_position": [
+        64,
+        60
+      ],
+      "id": 57692,
+      "cache_name": "Portal",
+      "shape": 0,
+      "angle": 0,
+      "classification": "required_gameplay_fixture",
+      "reason": "Cache-supported shimmering wall portal preserves the tested exit/return route."
+    }
+  ],
+  "removed_sanctuary_authoring_entries": [
+    {
+      "x": 50,
+      "z": 61,
+      "symbol": "bookcase"
+    },
+    {
+      "x": 51,
+      "z": 61,
+      "symbol": "bookcase"
+    },
+    {
+      "x": 62,
+      "z": 61,
+      "symbol": "bookcase"
+    },
+    {
+      "x": 49,
+      "z": 60,
+      "symbol": "barrel"
+    },
+    {
+      "x": 49,
+      "z": 58,
+      "symbol": "sacks"
+    },
+    {
+      "x": 62,
+      "z": 58,
+      "symbol": "barrel"
+    },
+    {
+      "x": 49,
+      "z": 62,
+      "symbol": "torch"
+    },
+    {
+      "x": 62,
+      "z": 62,
+      "symbol": "torch"
+    }
+  ],
+  "actual_live_sanctuary_props_removed": 7,
+  "already_shadowed_entry_removed": {
+    "symbol": "torch",
+    "local_position": [
+      62,
+      62
+    ],
+    "reason": "Earlier final preparation replaced this centrepiece with pillar7017. This is an obsolete authoring entry, not an eighth visible prop."
+  },
+  "waterworks_generic_stock_removed": [
+    {
+      "x": 66,
+      "z": 50,
+      "symbol": "sacks"
+    },
+    {
+      "x": 68,
+      "z": 50,
+      "symbol": "barrel"
+    },
+    {
+      "x": 65,
+      "z": 54,
+      "symbol": "barrel"
+    }
+  ],
+  "retained_fixtures_considered_as_hub": "Arrival portal and threshold lead into the protected crossing. Bank to northwest, permanent first-clear hearth as central beacon, reward/plaque as one southern information alcove, altar and candles to southeast, dwarven statues on the processional approach. All original interaction sites and saved state stay authoritative. Hearth scale and whole-floor final artistic acceptance remain open.",
+  "existing_npcs": [
+    {
+      "role": "banker",
+      "status": "Retained alongside bank; actual scoped booth tested."
+    },
+    {
+      "role": "tanner",
+      "status": "Existing ordinary tanning service retained; no new tanning acceptance claim in this art pass."
+    }
+  ],
+  "provisional_asset_studies": "Twelve genuine cache brazier assets and four archways inspected offline; none selected to replace the working personal hearth or threshold. Models alone do not justify a placement."
+}

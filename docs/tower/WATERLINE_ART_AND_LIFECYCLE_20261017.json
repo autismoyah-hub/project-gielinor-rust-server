@@ -1,0 +1,2259 @@
+{
+  "status": "Current guarded quay, sanctuary cleanup and arena infrastructure verified; final user artistic approval open",
+  "implementation_commit": "c7e4230b897d93ba2cb83fd7b9a60eaf16097ffc",
+  "source_parent": "840c3094d3b4ee950607664f12389f3cb8411976",
+  "executable_sha256": "6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9",
+  "production_source_sha256": {
+    "crates/server/src/tower_map.rs": "1bbc48e1804d49903d9d1d599467599b3e755f9255ee6442e910036209f97a3c",
+    "crates/server/src/tower_scene.rs": "911eb9c1334cbee630fbd31998d0a95d7fd9f10c6fd80ad389ff3e30f45bd9bc",
+    "crates/world/src/tower_furnishings.rs": "4dea1f9883b09d09dfb68011bc942d8bea36412f7a74aceebda7e68f1f589031",
+    "crates/world/src/tower_layout.rs": "278dda7c548fead16046fefde2cd58dccc3836499ac1f4868b90b4a3dd74be27",
+    "crates/world/src/tower_scenery.rs": "e22f7c815afb38e2db3135c28584e7a8c46af2c49860f8ea06d553572c947811"
+  },
+  "sanctuary": {
+    "prepared_objects_classified": 84,
+    "visible_legacy_props_removed": 7,
+    "already_shadowed_authoring_entry_removed": 1,
+    "required_services_preserved": true,
+    "audit": "SANCTUARY_OBJECT_AUDIT_20261017.json"
+  },
+  "waterworks": {
+    "composition": "Raised dressed-stone working quay, real blocked channel, continuous safety parapet, grounded wheel and aligned dry north/south crossings",
+    "real_water_tiles": 128,
+    "all_four_real_fishing_spots_accepted": true,
+    "protected_sloping_strip": true,
+    "wheel_local": [
+      72,
+      58
+    ],
+    "dry_casting_local": [
+      [
+        70,
+        50
+      ],
+      [
+        70,
+        52
+      ],
+      [
+        70,
+        54
+      ],
+      [
+        70,
+        56
+      ]
+    ],
+    "threshold_local": [
+      [
+        69,
+        48
+      ],
+      [
+        70,
+        48
+      ],
+      [
+        69,
+        64
+      ],
+      [
+        70,
+        64
+      ]
+    ]
+  },
+  "arenas": {
+    "presentation": "Three actual forge mouths with piers behind Warden; two boiler connections behind Imp",
+    "standing_tiles_unchanged": true,
+    "directed_steps_unchanged": {
+      "imp": 420,
+      "warden": 1004
+    },
+    "mechanics_timers_damage_rewards_unchanged": true,
+    "static_comparison_scope": "Prepared reference predates this quay/furnace pass and includes held grove fixtures outside both courts. Comparison checks actual cache standing tiles and directed movements inside unchanged encounter bounds; live native/headless phases and coolant are separately exercised."
+  },
+  "checks": {
+    "cache_unit": 24,
+    "server_unit": 57,
+    "world_unit": 410,
+    "existing_ignored": 2,
+    "actual_reachable_tiles": 1992,
+    "unchanged_hazard_escape_cases": 1512,
+    "native_affected_checks": true,
+    "headless_affected_checks": true
+  },
+  "native_original_fresh_route": {
+    "accepted": false,
+    "reason": "Warden food exhaustion; subsequent normal sanctuary rescue preserved tools, service/Imp credit and unpaid first reward",
+    "original_timing": {
+      "accepted": false,
+      "source": "840c3094 + guarded industrial quay, sanctuary cleanup, furnace battery and boiler plumbing; 6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9 server",
+      "method": "continuous normal-action native fresh first clear; real preparation/rescue; not human pacing guarantee",
+      "elapsed_seconds": 677.42,
+      "steps": [
+        {
+          "step": "services.py",
+          "arguments": [
+            "--onboard",
+            "--gate-check",
+            "--order",
+            "workshop-first",
+            "--scene-checks",
+            "--landmarks",
+            "8",
+            "--coolant-lesson",
+            "--native-frames"
+          ],
+          "seconds": 367.32,
+          "exit_code": 0
+        },
+        {
+          "step": "recovery.py",
+          "arguments": [],
+          "seconds": 41.36,
+          "exit_code": 0
+        },
+        {
+          "step": "guardian.py",
+          "arguments": [
+            "imp",
+            "--style",
+            "accurate",
+            "--native-frames",
+            "--label",
+            "first-guarded"
+          ],
+          "seconds": 146.3,
+          "exit_code": 0
+        },
+        {
+          "step": "guardian.py",
+          "arguments": [
+            "warden",
+            "--style",
+            "accurate",
+            "--require-coolant",
+            "--native-frames",
+            "--timeout",
+            "600",
+            "--label",
+            "first-guarded"
+          ],
+          "seconds": 122.43,
+          "exit_code": 1
+        }
+      ]
+    },
+    "evidence": "evidence/native-guarded30-fresh/scenario-timing.json"
+  },
+  "native_continued_first_clear": {
+    "accepted": true,
+    "method": "Continued first clear after preserved initial Warden food failure and ordinary sanctuary rescue/restock; not a clean uninterrupted route",
+    "binary": "6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9",
+    "elapsed_seconds": 354.64,
+    "steps": [
+      {
+        "step": "guardian.py",
+        "arguments": [
+          "warden",
+          "--style",
+          "accurate",
+          "--require-coolant",
+          "--native-frames",
+          "--timeout",
+          "600",
+          "--label",
+          "continued-after-restock"
+        ],
+        "seconds": 287.45,
+        "exit_code": 0
+      },
+      {
+        "step": "restoration.py",
+        "arguments": [
+          "--label",
+          "victory",
+          "--expected",
+          "18526,18511,16811,16811,18525,18525,18525,18525",
+          "--native-frames"
+        ],
+        "seconds": 5.69,
+        "exit_code": 0
+      },
+      {
+        "step": "claim.py",
+        "arguments": [
+          "--full-pack",
+          "--native-frames"
+        ],
+        "seconds": 46.3,
+        "exit_code": 0
+      },
+      {
+        "step": "exit_return.py",
+        "arguments": [],
+        "seconds": 15.2,
+        "exit_code": 0
+      }
+    ]
+  },
+  "headless_continued_fresh_profile_first_clear": {
+    "accepted": true,
+    "binary": "6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9",
+    "method": "Same fresh first-clear profile continued after preserved preparation walk timeout; normal repeat walking clicks and fishing/cooking, no encounter failure or grants",
+    "elapsed_seconds": 501.85,
+    "prior_route": "evidence/headless-waterline31-first-retry/scenario-timing.json",
+    "steps": [
+      {
+        "step": "restock_for_guardian.py",
+        "arguments": [],
+        "seconds": 58.57,
+        "exit_code": 0
+      },
+      {
+        "step": "guardian.py",
+        "arguments": [
+          "warden",
+          "--style",
+          "accurate",
+          "--require-coolant",
+          "--timeout",
+          "600",
+          "--label",
+          "continued-after-preparation"
+        ],
+        "seconds": 361.84,
+        "exit_code": 0
+      },
+      {
+        "step": "restoration.py",
+        "arguments": [
+          "--label",
+          "victory",
+          "--expected",
+          "18526,18511,16811,16811,18525,18525,18525,18525"
+        ],
+        "seconds": 1.0,
+        "exit_code": 0
+      },
+      {
+        "step": "claim.py",
+        "arguments": [
+          "--full-pack"
+        ],
+        "seconds": 65.96,
+        "exit_code": 0
+      },
+      {
+        "step": "exit_return.py",
+        "arguments": [],
+        "seconds": 14.48,
+        "exit_code": 0
+      }
+    ]
+  },
+  "lifecycle": {
+    "native_relogin": {
+      "accepted": true,
+      "evidence": "evidence/native-waterline30-relogin-accepted.json",
+      "exact_pack_equipment_all25xp_journal": true,
+      "observed_open_bank": []
+    },
+    "native_crash": {
+      "accepted": true,
+      "evidence": "evidence/native-waterline30-crash-accepted.json",
+      "exact_pack_equipment_all25xp_journal": true,
+      "observed_open_bank": [
+        {
+          "inventory": 95,
+          "slot": 0,
+          "item": 1351,
+          "count": 1
+        }
+      ]
+    },
+    "headless_relogin": {
+      "accepted": true,
+      "evidence": "evidence/headless-waterline31-relogin-accepted.json",
+      "exact_pack_equipment_all25xp_journal": true,
+      "observed_open_bank": []
+    },
+    "headless_crash": {
+      "accepted": true,
+      "evidence": "evidence/headless-waterline31-crash-accepted.json",
+      "exact_pack_equipment_all25xp_journal": true,
+      "observed_open_bank": []
+    }
+  },
+  "positive_bank_item": {
+    "accepted": true,
+    "item": 1351,
+    "count": 1,
+    "ordinary_deposit_relogin_crash_withdraw": true,
+    "exact_original_paid_pack_restored": true,
+    "bank_final_open": [],
+    "qualification": "Committed stored item survived an ordinary logout and then an independently verified server crash/restart; this does not claim interruption of an in-flight bank transaction."
+  },
+  "crash_process_proof": {
+    "server_pid": 19352,
+    "sha256": "6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9",
+    "path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\server-runs\\gielinor-server-6D94F65F360C95B7.exe",
+    "phase": "After accepted ordinary reconnects; deliberate connected-session crash, no in-flight transaction claim",
+    "verified_test_connections": [
+      {
+        "pid": 17452,
+        "path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\client-runs\\native-7BFA8172AB31E362.exe",
+        "name": "native-7BFA8172AB31E362.exe"
+      },
+      {
+        "pid": 20668,
+        "path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\client-runs\\headless-0D6677D450C47955.exe",
+        "name": "headless-0D6677D450C47955.exe"
+      }
+    ],
+    "endpoint": "127.0.0.1:63215"
+  },
+  "native_visual_review": {
+    "runtime": "6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9",
+    "all_56_native_frames_inspected": true,
+    "areas": 14,
+    "local_milestone_visual_selection": true,
+    "final_user_artistic_acceptance": false,
+    "before_after_scope": "Seven comparisons, with exact original/current positions disclosed. Sanctuary/arrival/hearth and both boss courts retain matching requested poses. Quay/wheel stances change with layout, so no same-position claim.",
+    "review": "Seven actual legacy hub props removed, required services and sacred/industrial hub identity retained. Raised stone working quay and genuine blocked channel replace irregular grass pond. Flat casting stance, guarded height seam and supported wheel at water line visible. North/south thresholds follow dry quay. Warden rear furnace battery now consistent; Imp boiler connections remain behind combat boundary. Existing hall/workshop/provisioning/grove architecture and terrain retained for current whole-floor pass.",
+    "limitations": "Current gallery uses earned observer with earlier first-clear history. Fresh current native30/headless31 encounters/lifecycle are separate. Real peer avatars can remain visible; no group-instance claim. Grove held6props not staged; optional ordinary woodcutting handler remains a known source finding, not a resource acceptance claim."
+  },
+  "native_frame_hashes": [
+    {
+      "area": "arrival",
+      "yaw": 0,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-935.bmp",
+      "sha256": "0b1d016d0165222f08454b2b7f2d2651db478dd29b51f1cfbb35065c9aa2728f"
+    },
+    {
+      "area": "arrival",
+      "yaw": 4096,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-937.bmp",
+      "sha256": "6157901014f00cc041e08868410280d3298ddb067f3e856b3ae06cf9f313d8cd"
+    },
+    {
+      "area": "arrival",
+      "yaw": 8192,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-939.bmp",
+      "sha256": "8851f960058148b3469a5a1ba6d63edc0977d5f25786ad9e2adf7ab3bb82b5e5"
+    },
+    {
+      "area": "arrival",
+      "yaw": 12288,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-941.bmp",
+      "sha256": "592cd6f53fa17a302775af7e240332d17513a14795a1545dac587e7e3a75348d"
+    },
+    {
+      "area": "sanctuary",
+      "yaw": 0,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-970.bmp",
+      "sha256": "780283394ad2039b7eadc54a71aec514e1906387b40be954b361ccbc0c9efc44"
+    },
+    {
+      "area": "sanctuary",
+      "yaw": 4096,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-972.bmp",
+      "sha256": "df35566300fbc85a32f268a90802f95abc5536d613609d7803b14f20c89969c7"
+    },
+    {
+      "area": "sanctuary",
+      "yaw": 8192,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-974.bmp",
+      "sha256": "a15c9bccc4fa918aa09637028eea6418df40a926c39d0217f2fbddc1413b2f06"
+    },
+    {
+      "area": "sanctuary",
+      "yaw": 12288,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-976.bmp",
+      "sha256": "bc0c3226c529bf9cf6524b1096f8f7e763c21ed80edf5e586158e3d1a66ca574"
+    },
+    {
+      "area": "restoration hearth",
+      "yaw": 0,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-999.bmp",
+      "sha256": "310d832de30eb535e6fc68e8c2c0160427d6999fc1d8bcbd35a9a4e8472d4ca2"
+    },
+    {
+      "area": "restoration hearth",
+      "yaw": 4096,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1001.bmp",
+      "sha256": "3eea573fdf626beab11df1e133a9cf698b5bcaa7ab3b688933a92b688a432f52"
+    },
+    {
+      "area": "restoration hearth",
+      "yaw": 8192,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1003.bmp",
+      "sha256": "b9ba6bdfc1edc4ae1e9cbd29370aad0dd861efe16719952afb75448906e7ca84"
+    },
+    {
+      "area": "restoration hearth",
+      "yaw": 12288,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1005.bmp",
+      "sha256": "a1224573cb31c44e905f909f445a57b0db5b5eda9b220f377350d3f130915851"
+    },
+    {
+      "area": "plaque and reward",
+      "yaw": 0,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1033.bmp",
+      "sha256": "913e88897a335fb1049991681043c5d36bca417fcb99801a10224295eab3fc71"
+    },
+    {
+      "area": "plaque and reward",
+      "yaw": 4096,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1035.bmp",
+      "sha256": "97c6ac54720850d8797da69ff3f46f605976b5862dd3092687a97a3882b51b6c"
+    },
+    {
+      "area": "plaque and reward",
+      "yaw": 8192,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1037.bmp",
+      "sha256": "f6beaaabb4e3de8351ae3ea2ee059229dab571b6e4cfb0c8cca7675cfcb3904c"
+    },
+    {
+      "area": "plaque and reward",
+      "yaw": 12288,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1039.bmp",
+      "sha256": "1c69da0f9c0ab2ee58ce3d4dc3d805738296194f014c204fd212c819a7af5ba5"
+    },
+    {
+      "area": "workshop",
+      "yaw": 0,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1083.bmp",
+      "sha256": "efd1992dc612d779b4dbcde3fbe22bc518164d806ad08556ad8e70c5d67c847f"
+    },
+    {
+      "area": "workshop",
+      "yaw": 4096,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1085.bmp",
+      "sha256": "a0bee4b7c01593d7f2758dca1a4529dcd02db71e096c791dc324c6621ec40f1d"
+    },
+    {
+      "area": "workshop",
+      "yaw": 8192,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1087.bmp",
+      "sha256": "7f81a2ed69e5b226f467bd0b6d092a6afd5088c8e15c487c26930eaa3471afd4"
+    },
+    {
+      "area": "workshop",
+      "yaw": 12288,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1089.bmp",
+      "sha256": "333d2f97894eb9dee9348b25ee15efc344ef149349c8b137167912ab57a55428"
+    },
+    {
+      "area": "moss supply court",
+      "yaw": 0,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1128.bmp",
+      "sha256": "4357d541405dbaf7115c54b3551633af9ce1bb4f0f90a5997e767c4c97ed4f03"
+    },
+    {
+      "area": "moss supply court",
+      "yaw": 4096,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1130.bmp",
+      "sha256": "ae46edfd3109435cb1135154300cf823b4d23eda9ade3ec1f1cb27e5de0d827a"
+    },
+    {
+      "area": "moss supply court",
+      "yaw": 8192,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1132.bmp",
+      "sha256": "da344ff25c5cae44017ff9538a52c368d895efeef48f54721f9349ef5e21498a"
+    },
+    {
+      "area": "moss supply court",
+      "yaw": 12288,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1134.bmp",
+      "sha256": "d48db177bde93b522dc822760d6bc7d48cefe20e54e33f3c0244cefd3972ad23"
+    },
+    {
+      "area": "southern processional hall",
+      "yaw": 0,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1176.bmp",
+      "sha256": "4da1e4e565bed2aa3bdbea712f2c9f04b7409d8f7cc03e6acb7c7e04819442cc"
+    },
+    {
+      "area": "southern processional hall",
+      "yaw": 4096,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1178.bmp",
+      "sha256": "58d2f89196b6e2a21f2bef2345e0a6007e8a94b43aa7a8db54f61677eb98f094"
+    },
+    {
+      "area": "southern processional hall",
+      "yaw": 8192,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1180.bmp",
+      "sha256": "38d375c4c18506b91cf863e299904b87bded410c2891d2a85e193708ec927fd2"
+    },
+    {
+      "area": "southern processional hall",
+      "yaw": 12288,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1182.bmp",
+      "sha256": "2eea3026381cbca1c6940f1f267ee8e6c5f37695fe0c36dab1dc9425aaa1b42e"
+    },
+    {
+      "area": "poultry supply court",
+      "yaw": 0,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1224.bmp",
+      "sha256": "17dee654117e1d2d56829b130d38b35ee171c4db418f7c390cc150badb79e788"
+    },
+    {
+      "area": "poultry supply court",
+      "yaw": 4096,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1226.bmp",
+      "sha256": "6f2cb161e7ee7c7066dfb3836b9477f7d6957365a44c2af024baa1aba20ce4de"
+    },
+    {
+      "area": "poultry supply court",
+      "yaw": 8192,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1228.bmp",
+      "sha256": "9acf774d404d8ca30c4bfebc5ce9a281fed821af48a796898b96f68e97908a27"
+    },
+    {
+      "area": "poultry supply court",
+      "yaw": 12288,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1230.bmp",
+      "sha256": "55e3e613e5e21c986d77feed72189f1c7ae2d33668613a0b7d0ffe655d19deea"
+    },
+    {
+      "area": "waterworks",
+      "yaw": 0,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1267.bmp",
+      "sha256": "a1c57a0b003fd2d459e2fd7371297802d3c57aaed1a8aab59e60f4ef34a67065"
+    },
+    {
+      "area": "waterworks",
+      "yaw": 4096,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1269.bmp",
+      "sha256": "b5c77cfb91483e0bdf3359e170dbfcac1a099f59dd238c0d2bae22a717a4fb85"
+    },
+    {
+      "area": "waterworks",
+      "yaw": 8192,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1271.bmp",
+      "sha256": "a32ae5c9721eecec457f532c1433778be35e29737c3b7fa1889188ed978f889a"
+    },
+    {
+      "area": "waterworks",
+      "yaw": 12288,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1273.bmp",
+      "sha256": "e9b880db018626b308ca2d1ad0e38ebb57a52d7b6ac1b91718fc1c5903dd3cb6"
+    },
+    {
+      "area": "sluice wheel",
+      "yaw": 0,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1302.bmp",
+      "sha256": "9e09ca9f148fa3854d788790d285158c513c1dbc43d8ec0e8da4fde75bdff031"
+    },
+    {
+      "area": "sluice wheel",
+      "yaw": 4096,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1304.bmp",
+      "sha256": "ee94d845e5f6fe2ae1833f2258aba86b9e85d4b0f2ad79eeb9c8708b32170b84"
+    },
+    {
+      "area": "sluice wheel",
+      "yaw": 8192,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1306.bmp",
+      "sha256": "50e85728f2678e96513393c51b5ed86a2dc389edd8cf2e3fca236a7ae5b65f61"
+    },
+    {
+      "area": "sluice wheel",
+      "yaw": 12288,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1308.bmp",
+      "sha256": "18780b8c7e6dbc9b09bf219207017056ee300f97b674a8472c3ac32726bcf880"
+    },
+    {
+      "area": "grove",
+      "yaw": 0,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1372.bmp",
+      "sha256": "ff5669d75447ccaeca3a5612b2f91000edc4af97897ea8ec44e776a639271eda"
+    },
+    {
+      "area": "grove",
+      "yaw": 4096,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1374.bmp",
+      "sha256": "b1fcf2ca5195f586b0359d7e401d2a1867a0e01570ed63e839902476e5902fef"
+    },
+    {
+      "area": "grove",
+      "yaw": 8192,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1376.bmp",
+      "sha256": "5a9e175d2d686b0fae3ea8e6f7c00f328b5937dc96db99b77bf0b30c03de21ac"
+    },
+    {
+      "area": "grove",
+      "yaw": 12288,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1378.bmp",
+      "sha256": "b11b1fdcb32bdec4ec02331baf7fb5f540ee764525ce92971106c1e969eb3929"
+    },
+    {
+      "area": "foundry vestibule",
+      "yaw": 0,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1420.bmp",
+      "sha256": "268797375c66acd5e363a8dfade2de119d41374bf63d8049a4f92947c309b076"
+    },
+    {
+      "area": "foundry vestibule",
+      "yaw": 4096,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1422.bmp",
+      "sha256": "ec74adb01a17719810567effb23fbe63aaabed6d2a1d08a425b376c495f9b22a"
+    },
+    {
+      "area": "foundry vestibule",
+      "yaw": 8192,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1424.bmp",
+      "sha256": "32af65d5802a988d84b0780bd9b5b631dcabf3de6c4692179a043f7133424b8d"
+    },
+    {
+      "area": "foundry vestibule",
+      "yaw": 12288,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1426.bmp",
+      "sha256": "504eccef34d62bd3e57b045d051d7f79dc37475d6551f674077af36789547d11"
+    },
+    {
+      "area": "Ash Warden chamber",
+      "yaw": 0,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1457.bmp",
+      "sha256": "d21bee40bac7bd9059d565669ca88b6063e24e5104cdf7e8a0347fa195cb735a"
+    },
+    {
+      "area": "Ash Warden chamber",
+      "yaw": 4096,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1459.bmp",
+      "sha256": "2e4664899c5efb7aaf69625d75d44a931534cf60d9c30bfbb477ed7e181c7f83"
+    },
+    {
+      "area": "Ash Warden chamber",
+      "yaw": 8192,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1461.bmp",
+      "sha256": "e55495187276688da9088bc406f9c6cf6342b65c0c4a313577aa8fcf6c59dbf1"
+    },
+    {
+      "area": "Ash Warden chamber",
+      "yaw": 12288,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1463.bmp",
+      "sha256": "110a321d1802596d2b7eb8ce22a150c52518ed5822a12b14323088f6231c3336"
+    },
+    {
+      "area": "Ash Imp vent gallery",
+      "yaw": 0,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1520.bmp",
+      "sha256": "acbe07f5b7237af11cdb960986b8b19245ebdfd4582158d1ce1498e3f1ddbd25"
+    },
+    {
+      "area": "Ash Imp vent gallery",
+      "yaw": 4096,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1522.bmp",
+      "sha256": "16564e8ae64d37bb102e73e8996cb06427c0068c0087b29e7ddb82d3f2764045"
+    },
+    {
+      "area": "Ash Imp vent gallery",
+      "yaw": 8192,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1524.bmp",
+      "sha256": "9e9120e97a2ab813ef19244e34aecd999061f8b29b1ed00959cc2206fcb2e1ed"
+    },
+    {
+      "area": "Ash Imp vent gallery",
+      "yaw": 12288,
+      "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1526.bmp",
+      "sha256": "992d13255f21962061d3a52e4fde4309b576a33a56a2513d307989c457fc1ba4"
+    }
+  ],
+  "comparisons": [
+    {
+      "area": "arrival",
+      "same_profile": true,
+      "same_positions": true,
+      "same_requested_yaws": true,
+      "file": "C:\\Projects\\OSRSRSPS\\Tower-Development\\evidence\\native-waterline27-preview\\comparison-arrival.jpg"
+    },
+    {
+      "area": "sanctuary",
+      "same_profile": true,
+      "same_positions": true,
+      "same_requested_yaws": true,
+      "file": "C:\\Projects\\OSRSRSPS\\Tower-Development\\evidence\\native-waterline27-preview\\comparison-sanctuary.jpg"
+    },
+    {
+      "area": "restoration hearth",
+      "same_profile": true,
+      "same_positions": true,
+      "same_requested_yaws": true,
+      "file": "C:\\Projects\\OSRSRSPS\\Tower-Development\\evidence\\native-waterline27-preview\\comparison-restoration-hearth.jpg"
+    },
+    {
+      "area": "waterworks",
+      "same_profile": true,
+      "same_positions": false,
+      "same_requested_yaws": true,
+      "file": "C:\\Projects\\OSRSRSPS\\Tower-Development\\evidence\\native-waterline27-preview\\comparison-waterworks.jpg"
+    },
+    {
+      "area": "sluice wheel",
+      "same_profile": true,
+      "same_positions": false,
+      "same_requested_yaws": true,
+      "file": "C:\\Projects\\OSRSRSPS\\Tower-Development\\evidence\\native-waterline27-preview\\comparison-sluice-wheel.jpg"
+    },
+    {
+      "area": "Ash Warden chamber",
+      "same_profile": true,
+      "same_positions": true,
+      "same_requested_yaws": true,
+      "file": "C:\\Projects\\OSRSRSPS\\Tower-Development\\evidence\\native-waterline27-preview\\comparison-Ash-Warden-chamber.jpg"
+    },
+    {
+      "area": "Ash Imp vent gallery",
+      "same_profile": true,
+      "same_positions": true,
+      "same_requested_yaws": true,
+      "file": "C:\\Projects\\OSRSRSPS\\Tower-Development\\evidence\\native-waterline27-preview\\comparison-Ash-Imp-vent-gallery.jpg"
+    }
+  ],
+  "offline_workflow": {
+    "source": "tools/tower/offline/README.md",
+    "existing_native_library": true,
+    "no_client_changes": true,
+    "no_pixel_equivalence_claim": true,
+    "omits": "Actors, UI, live animation/hazards, personal state, zone lifecycle and gameplay camera; object identity and lighting history can differ"
+  },
+  "retained_rejections": [
+    "BF6E functional candidate rejected after native sloping quay footing",
+    "15A guarded candidate rejected for wheel contact at the height seam",
+    "Initial guarded shell unit failure retained; actual opening arrays corrected without weakening tests",
+    "Original native30 Warden food failure remains failed; continuation is separately scoped",
+    "Headless31 preparation walking timeout after successful services/rescue/Imp preserved; separate normal-click-retry continuation accepted",
+    "First headless31 startup blocked by sandbox socket10013 before login; account absence verified, owned controller/frontend stopped, new directory retry recorded separately",
+    "Initial final-storage probe three seconds after frontend stop preceded asynchronous logout save acknowledgement and failed; independent unchanged exact read after actual save acknowledgements passes",
+    "Automatic headless reconnect launch refused while its normally stopped frontend was still closing; actual exit and grace verified before the fresh launch, with no concurrent login"
+  ],
+  "limitations": [
+    "Final user artistic acceptance open",
+    "Human 20\u201330 minute first-play pacing not measured",
+    "No optional woodcutting acceptance; ordinary regular-tree handler binding remains a separate known source finding",
+    "Real peer avatars can remain visible; no group-instance claim",
+    "Earlier 6D39 complete lifecycle receipt remains historical and is not relabeled"
+  ],
+  "client": "ff9cef17fd1ce3ec2ebf8d1181fee31411999c4c / eleven existing validation patches, unchanged; no client push",
+  "upstream": "No Agent 2 merge or mutation; integration remains separate",
+  "native_journey": {
+    "review": {
+      "all_frames_inspected": true,
+      "count": 10,
+      "runtime": "6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9",
+      "scope": "Original native30 services, Imp, preserved failed original Warden frames and separate real-preparation Warden continuation/payment as individually labeled; no clean uninterrupted native-route claim",
+      "review": "Readable ordinary UI and smoke warnings, genuine coolant steam and all Warden phases, native victory and distinct unpaid/full-pack/first500beer/duplicate-zero states inspected. Source arena fixtures do not cover combat lanes.",
+      "final_user_artistic_acceptance": false
+    },
+    "frames": [
+      {
+        "label": "after-altar-restoration-actions",
+        "original_failed_warden": false,
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-guarded30-fresh\\frame-787.bmp",
+        "sha256": "74d358e6e66b386c3380a4ba8b13db17c6c7cf0be5fcad1fe6fb4e41aced4821",
+        "position": [
+          0,
+          10429,
+          117
+        ],
+        "sequence": 787
+      },
+      {
+        "label": "after-kitchen-restoration-actions",
+        "original_failed_warden": false,
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-guarded30-fresh\\frame-683.bmp",
+        "sha256": "034646eddb6f6dd266616c7225a1890f28f877997848ab2c3ab7fc1b3093e568",
+        "position": [
+          0,
+          10428,
+          120
+        ],
+        "sequence": 683
+      },
+      {
+        "label": "after-workshop-restoration-actions",
+        "original_failed_warden": false,
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-guarded30-fresh\\frame-444.bmp",
+        "sha256": "cd1d3257c1fd93aff2a65b405e6ceac568c2dbf0620d37331a1a9165a82dff24",
+        "position": [
+          0,
+          10405,
+          115
+        ],
+        "sequence": 444
+      },
+      {
+        "label": "before-services-restoration-actions",
+        "original_failed_warden": false,
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-guarded30-fresh\\frame-265.bmp",
+        "sha256": "c150c619ccdc89488f6a8f622a4350f9104221bfa0632d9bf62fb2707cf21c19",
+        "position": [
+          0,
+          10438,
+          116
+        ],
+        "sequence": 265
+      },
+      {
+        "label": "services-actions",
+        "original_failed_warden": false,
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-guarded30-fresh\\frame-508.bmp",
+        "sha256": "2bd8c4191d1840f75b24152129cd93c81088083552542d0aa1c0b825d26ae745",
+        "position": [
+          0,
+          10438,
+          117
+        ],
+        "sequence": 508
+      },
+      {
+        "label": "warden-first-guarded-actions",
+        "original_failed_warden": true,
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-guarded30-fresh\\frame-1269.bmp",
+        "sha256": "83501b729182530ee3165c8a5dd6519976ba66df93cbb6dfcd799171f99ed658",
+        "position": [
+          0,
+          10422,
+          135
+        ],
+        "sequence": 1269
+      },
+      {
+        "label": "warden-first-guarded-actions",
+        "original_failed_warden": true,
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-guarded30-fresh\\frame-1402.bmp",
+        "sha256": "6f5c38c1b4165880fa56dd8f3a144009213680b603b065b4750d478c867288cc",
+        "position": [
+          0,
+          10422,
+          135
+        ],
+        "sequence": 1402
+      },
+      {
+        "label": "claim-actions",
+        "original_failed_warden": false,
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-guarded30-fresh\\frame-2685.bmp",
+        "sha256": "28fde4902518f3b045e5e8f19836a59c81c15f1e839616677b8d98a1c96fc407",
+        "position": [
+          0,
+          10423,
+          116
+        ],
+        "sequence": 2685
+      },
+      {
+        "label": "claim-actions",
+        "original_failed_warden": false,
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-guarded30-fresh\\frame-2711.bmp",
+        "sha256": "1de79e5d10b0c99b20cdc583db515924e5400f52eaf4adad8791cddf495c4d22",
+        "position": [
+          0,
+          10423,
+          116
+        ],
+        "sequence": 2711
+      },
+      {
+        "label": "victory-restoration-actions",
+        "original_failed_warden": false,
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-guarded30-fresh\\frame-2597.bmp",
+        "sha256": "d097fab33b3b58e03dd975bac8d70316207d024a2c92499c523d46aae4d9a625",
+        "position": [
+          0,
+          10424,
+          128
+        ],
+        "sequence": 2597
+      }
+    ]
+  },
+  "native_combat": {
+    "review": {
+      "all_frames_inspected": true,
+      "count": 10,
+      "runtime": "6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9",
+      "scope": "Original native30 services, Imp, preserved failed original Warden frames and separate real-preparation Warden continuation/payment as individually labeled; no clean uninterrupted native-route claim",
+      "review": "Readable ordinary UI and smoke warnings, genuine coolant steam and all Warden phases, native victory and distinct unpaid/full-pack/first500beer/duplicate-zero states inspected. Source arena fixtures do not cover combat lanes.",
+      "final_user_artistic_acceptance": false
+    },
+    "frames": [
+      {
+        "label": "Imp actual phase/victory",
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-guarded30-fresh\\frame-943.bmp",
+        "sha256": "da6d113e0d08366384b9c3db6be88dfe2f379f5172989319bc544453d91dbe92"
+      },
+      {
+        "label": "Imp actual phase/victory",
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-guarded30-fresh\\frame-1078.bmp",
+        "sha256": "932e222c4e9ec4c35597670524615c55fbe3ed4eff5858be57f5e373c6abddb8"
+      },
+      {
+        "label": "Imp actual phase/victory",
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-guarded30-fresh\\frame-1237.bmp",
+        "sha256": "9402863d248055c18d93a17461691f199ddc9db840679d81403f3451e4c0fa79"
+      },
+      {
+        "label": "Imp arena victory",
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-guarded30-fresh\\frame-1208.bmp",
+        "sha256": "523a1a26d98ef9f36f5c2b94dea876aaab8c5b90317c58542de17fcc7943648c"
+      },
+      {
+        "label": "Warden phase/victory",
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-guarded30-fresh\\frame-1837.bmp",
+        "sha256": "c8803ea063429be705a94eea17b3c368cf9199f01b49089111e0cbff58b90d40"
+      },
+      {
+        "label": "Warden phase/victory",
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-guarded30-fresh\\frame-2099.bmp",
+        "sha256": "fbd283e73b5a8825bacbf688d60e98025c03ff3ff404b6a8d4b721d56a3541ce"
+      },
+      {
+        "label": "Warden phase/victory",
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-guarded30-fresh\\frame-2370.bmp",
+        "sha256": "5ec57f6be6122cd2f638a53ad4bf1846ebbef777ca020a37e4ea174392a160c6"
+      },
+      {
+        "label": "Warden phase/victory",
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-guarded30-fresh\\frame-2584.bmp",
+        "sha256": "a5777cbdf5ea9cc108931c50956ec73ce2ad211f51c9f5603f1665be3510248c"
+      },
+      {
+        "label": "Warden coolant steam and flinch",
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-guarded30-fresh\\frame-1841.bmp",
+        "sha256": "b2d4cd000edf198897100cdad102a00a3bc8f36763fa392ddbb5141a59409a12"
+      },
+      {
+        "label": "Warden victory in arena",
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-guarded30-fresh\\frame-2568.bmp",
+        "sha256": "a9b0929240d7ee01e9a3f4aebbccd2ac025ec16af3e007d1ab1f894258ea9ce7"
+      }
+    ]
+  },
+  "headless_original_preparation_route": {
+    "accepted": false,
+    "source": "840c3094 + guarded industrial quay, sanctuary cleanup, furnace battery and boiler plumbing; 6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9 server",
+    "mode": "headless",
+    "elapsed_seconds_including_native_wait": 522.74,
+    "steps": [
+      {
+        "step": "services.py",
+        "arguments": [
+          "--onboard",
+          "--gate-check",
+          "--order",
+          "kitchen-first",
+          "--scene-checks",
+          "--landmarks",
+          "8",
+          "--coolant-lesson"
+        ],
+        "seconds": 271.17,
+        "exit_code": 0
+      },
+      {
+        "step": "recovery.py",
+        "arguments": [],
+        "seconds": 40.05,
+        "exit_code": 0
+      },
+      {
+        "step": "guardian.py",
+        "arguments": [
+          "imp",
+          "--style",
+          "accurate",
+          "--label",
+          "first-guarded"
+        ],
+        "seconds": 152.53,
+        "exit_code": 0
+      },
+      {
+        "step": "restock_for_guardian.py",
+        "arguments": [],
+        "seconds": 58.97,
+        "exit_code": 1
+      }
+    ]
+  },
+  "headless_original_sandbox_startup": {
+    "accepted": false,
+    "source": "840c3094 + guarded industrial quay, sanctuary cleanup, furnace battery and boiler plumbing; 6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9 server",
+    "mode": "headless",
+    "elapsed_seconds_including_native_wait": 37.85,
+    "steps": [
+      {
+        "step": "services.py",
+        "arguments": [
+          "--onboard",
+          "--gate-check",
+          "--order",
+          "kitchen-first",
+          "--scene-checks",
+          "--landmarks",
+          "8",
+          "--coolant-lesson"
+        ],
+        "seconds": 37.84,
+        "exit_code": 4294967295
+      }
+    ]
+  },
+  "final_normal_saves_read_only_durable_audit": {
+    "accepted": true,
+    "durable": {
+      "tower30": {
+        "pack": [
+          [
+            0,
+            1351,
+            1
+          ],
+          [
+            1,
+            1265,
+            1
+          ],
+          [
+            2,
+            303,
+            1
+          ],
+          [
+            3,
+            2347,
+            1
+          ],
+          [
+            4,
+            590,
+            1
+          ],
+          [
+            5,
+            946,
+            1
+          ],
+          [
+            6,
+            995,
+            500
+          ],
+          [
+            7,
+            1917,
+            1
+          ],
+          [
+            8,
+            317,
+            1
+          ],
+          [
+            9,
+            315,
+            1
+          ],
+          [
+            10,
+            315,
+            1
+          ],
+          [
+            11,
+            315,
+            1
+          ],
+          [
+            12,
+            315,
+            1
+          ],
+          [
+            13,
+            315,
+            1
+          ],
+          [
+            14,
+            315,
+            1
+          ],
+          [
+            15,
+            315,
+            1
+          ],
+          [
+            16,
+            315,
+            1
+          ],
+          [
+            17,
+            315,
+            1
+          ],
+          [
+            18,
+            315,
+            1
+          ],
+          [
+            19,
+            315,
+            1
+          ],
+          [
+            20,
+            315,
+            1
+          ],
+          [
+            21,
+            315,
+            1
+          ],
+          [
+            22,
+            315,
+            1
+          ],
+          [
+            23,
+            315,
+            1
+          ],
+          [
+            24,
+            315,
+            1
+          ],
+          [
+            25,
+            315,
+            1
+          ],
+          [
+            26,
+            315,
+            1
+          ],
+          [
+            27,
+            315,
+            1
+          ]
+        ],
+        "positive_bank_rows": [],
+        "run": [
+          1,
+          7,
+          11,
+          1
+        ],
+        "coins": 500,
+        "beer": 1
+      },
+      "tower31": {
+        "pack": [
+          [
+            0,
+            1351,
+            1
+          ],
+          [
+            1,
+            1265,
+            1
+          ],
+          [
+            2,
+            303,
+            1
+          ],
+          [
+            3,
+            2347,
+            1
+          ],
+          [
+            4,
+            590,
+            1
+          ],
+          [
+            5,
+            946,
+            1
+          ],
+          [
+            6,
+            995,
+            500
+          ],
+          [
+            7,
+            1917,
+            1
+          ],
+          [
+            8,
+            317,
+            1
+          ],
+          [
+            9,
+            317,
+            1
+          ],
+          [
+            10,
+            317,
+            1
+          ],
+          [
+            11,
+            317,
+            1
+          ],
+          [
+            12,
+            317,
+            1
+          ],
+          [
+            13,
+            317,
+            1
+          ],
+          [
+            14,
+            317,
+            1
+          ],
+          [
+            15,
+            317,
+            1
+          ],
+          [
+            16,
+            317,
+            1
+          ],
+          [
+            17,
+            317,
+            1
+          ],
+          [
+            18,
+            315,
+            1
+          ],
+          [
+            19,
+            315,
+            1
+          ],
+          [
+            20,
+            315,
+            1
+          ],
+          [
+            21,
+            315,
+            1
+          ],
+          [
+            22,
+            315,
+            1
+          ],
+          [
+            23,
+            315,
+            1
+          ],
+          [
+            24,
+            315,
+            1
+          ],
+          [
+            25,
+            315,
+            1
+          ],
+          [
+            26,
+            315,
+            1
+          ],
+          [
+            27,
+            315,
+            1
+          ]
+        ],
+        "positive_bank_rows": [],
+        "run": [
+          1,
+          7,
+          11,
+          1
+        ],
+        "coins": 500,
+        "beer": 1
+      }
+    },
+    "actual_logout_save_acknowledgements": [
+      {
+        "actor_slot": 1,
+        "actor_generation": 607,
+        "save_generation": 607,
+        "observed_tick": 827,
+        "save_completed": true
+      },
+      {
+        "actor_slot": 2,
+        "actor_generation": 608,
+        "save_generation": 608,
+        "observed_tick": 827,
+        "save_completed": true
+      }
+    ],
+    "qualification": "Original three-second post-stop probe ran before asynchronous save acknowledgement and failed; evidence/waterline-final-durable-audit.log is preserved. This independent exact read follows actual completed save acknowledgements, with no storage writes or relaxed comparisons."
+  },
+  "normal_server_shutdown": {
+    "accepted": true,
+    "normal_exit_code": 0,
+    "accounts_drained": true,
+    "verified_stop_request": {
+      "pid": 17524,
+      "live_peers": 0,
+      "owned_frontends_remaining": 0,
+      "path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\server-runs\\gielinor-server-6D94F65F360C95B7.exe",
+      "normal_stop_requested": true,
+      "sha256": "6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9"
+    },
+    "log": "evidence\\waterline-postcrash-live-server.log",
+    "log_sha256": "5813d7f263242ebb0d02c70f825a7addbe7dbfb75f12ae7bcd3a1ec27bd82338"
+  },
+  "ordinary_preparation_cli": {
+    "source": "tools/tower/preparation.py",
+    "command": "python rust-server/tools/tower/preparation.py --directory <fresh-profile-directory> --output <new-evidence-directory>",
+    "scope": "Fresh unpaid run after Imp; normal fishing/cooking and visible Eat operations replenish full health and 22 shrimp. Ordinary walking retries retain the original 55-second bound. Mirrors the exercised private helper body; no direct save/item/stat/timer writes."
+  },
+  "native_postcrash_views": {
+    "all_12_inspected": true,
+    "exact_original_paid_state_preserved": true,
+    "views": [
+      {
+        "area": "sanctuary",
+        "position": [
+          0,
+          10424,
+          120
+        ],
+        "yaw": 0,
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline30-crash\\frame-765.bmp",
+        "sha256": "1b30081e7186d700c5075752ecab6eb23285d7b5d1d0048dfb1f479387293788"
+      },
+      {
+        "area": "sanctuary",
+        "position": [
+          0,
+          10424,
+          120
+        ],
+        "yaw": 4096,
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline30-crash\\frame-767.bmp",
+        "sha256": "b25323b83fdc326b9335a6dc9376ba4db2b8a6127e08fe068df8e296c08f1fdf"
+      },
+      {
+        "area": "sanctuary",
+        "position": [
+          0,
+          10424,
+          120
+        ],
+        "yaw": 8192,
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline30-crash\\frame-769.bmp",
+        "sha256": "f16831604a63b5b19d94fe3fa4b5823c6814cfe061f20f20e1cbc88d3c0e8790"
+      },
+      {
+        "area": "sanctuary",
+        "position": [
+          0,
+          10424,
+          120
+        ],
+        "yaw": 12288,
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline30-crash\\frame-771.bmp",
+        "sha256": "66dadd18f9e15617949d13b4afbb4af88319301df6a315ab893d1a5450e80a4a"
+      },
+      {
+        "area": "working quay and wheel",
+        "position": [
+          0,
+          10437,
+          122
+        ],
+        "yaw": 0,
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline30-crash\\frame-810.bmp",
+        "sha256": "816ead7a4534c491bcef4ba733366657624227b8c1d78f2e7b90fedd66e30b94"
+      },
+      {
+        "area": "working quay and wheel",
+        "position": [
+          0,
+          10437,
+          122
+        ],
+        "yaw": 4096,
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline30-crash\\frame-812.bmp",
+        "sha256": "3186d70ac19c728a562a0355646160b45d74c87ac9f8a12488009d3a6bbf536d"
+      },
+      {
+        "area": "working quay and wheel",
+        "position": [
+          0,
+          10437,
+          122
+        ],
+        "yaw": 8192,
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline30-crash\\frame-814.bmp",
+        "sha256": "31ad6883d948535cc51d1e363f2696cb29e53a5b5cb83b386075263ae1af55b4"
+      },
+      {
+        "area": "working quay and wheel",
+        "position": [
+          0,
+          10437,
+          122
+        ],
+        "yaw": 12288,
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline30-crash\\frame-816.bmp",
+        "sha256": "ea12f5521292b5bba129e00e91a4d1b0721d4c5e47805d12daf801d6659c3ddd"
+      },
+      {
+        "area": "Warden furnace bank",
+        "position": [
+          0,
+          10423,
+          136
+        ],
+        "yaw": 0,
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline30-crash\\frame-868.bmp",
+        "sha256": "d879d362f756a90132f0d75440c7a98165e803b313fb488ae8ed83c7d4e8abe1"
+      },
+      {
+        "area": "Warden furnace bank",
+        "position": [
+          0,
+          10423,
+          136
+        ],
+        "yaw": 4096,
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline30-crash\\frame-870.bmp",
+        "sha256": "3ed26132b2075b210b8443a919baef61cb6a6354c9142dd8db992fd388e1be0d"
+      },
+      {
+        "area": "Warden furnace bank",
+        "position": [
+          0,
+          10423,
+          136
+        ],
+        "yaw": 8192,
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline30-crash\\frame-872.bmp",
+        "sha256": "627b2da939cccb0c983477e2588d779cf4133dcfef9c7ca30c84ed77b3b8f8ac"
+      },
+      {
+        "area": "Warden furnace bank",
+        "position": [
+          0,
+          10423,
+          136
+        ],
+        "yaw": 12288,
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline30-crash\\frame-874.bmp",
+        "sha256": "eaf028955feaa958b665a11dce1b35d295bbd5ed1eaedbe0b37ffef31005b1db"
+      }
+    ]
+  },
+  "bank_and_paid_native_review": {
+    "all_frames_inspected": true,
+    "count": 6,
+    "scope": "Each listed unaltered native frame manually inspected; actual open bank contents separately corroborated by displayed controls, container95 and read-only persisted rows. Closed-bank exports are not balance evidence.",
+    "frames": [
+      {
+        "label": "Empty bank on normal reconnect",
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline30-relogin\\frame-584.bmp",
+        "sha256": "9ae665dc29c091f03338a405103e7bd5bb19829a53328c46a855bd96aea5681d"
+      },
+      {
+        "label": "Settled paid journal",
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline30-relogin\\frame-606.bmp",
+        "sha256": "291b944881725e9e7e2b6238e1e8b2b309f03d6e097703a5b1d99c4a9617eca9"
+      },
+      {
+        "label": "Legitimate axe deposited",
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline30-relogin\\frame-664.bmp",
+        "sha256": "722ffbcd5b86d98eada4da66048977021e48a8fb048e3646bb0303a8b9c161f8"
+      },
+      {
+        "label": "Same axe after normal logout/reconnect",
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline30-bank-stored\\frame-110.bmp",
+        "sha256": "98c52b460f2077f7cd3cd988d56361e1107bf0af1e0bb2fba47e5bb227d37750"
+      },
+      {
+        "label": "Same axe recovered after verified crash",
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline30-crash\\frame-661.bmp",
+        "sha256": "f59743b78b3b7c6d8b43e60ab9eb78e925be0ce9a1df8374418a3ea368287105"
+      },
+      {
+        "label": "Empty open bank and original pack after normal withdrawal",
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline30-crash\\frame-734.bmp",
+        "sha256": "e8582f78f44ae121165404702006464afa81d5efe56089f60b26626b8b67b34a"
+      }
+    ]
+  },
+  "before_after_raw_native_pairs": [
+    {
+      "area": "arrival",
+      "before_executable": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964",
+      "after_executable": "6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9",
+      "same_positions": true,
+      "before": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary27-gallery\\frame-63.bmp",
+        "sha256": "b623c592e8ecac784839af98d63dc5cbfe74c081148c463cc7d3330aa749e770",
+        "position": [
+          0,
+          10430,
+          124
+        ],
+        "requested_yaw": 0
+      },
+      "after": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-935.bmp",
+        "sha256": "0b1d016d0165222f08454b2b7f2d2651db478dd29b51f1cfbb35065c9aa2728f",
+        "position": [
+          0,
+          10430,
+          124
+        ],
+        "requested_yaw": 0
+      }
+    },
+    {
+      "area": "arrival",
+      "before_executable": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964",
+      "after_executable": "6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9",
+      "same_positions": true,
+      "before": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary27-gallery\\frame-65.bmp",
+        "sha256": "d54f907cd107f1d099e1cab7603064df8cd8d48396b9517ca5576b4055d3209f",
+        "position": [
+          0,
+          10430,
+          124
+        ],
+        "requested_yaw": 4096
+      },
+      "after": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-937.bmp",
+        "sha256": "6157901014f00cc041e08868410280d3298ddb067f3e856b3ae06cf9f313d8cd",
+        "position": [
+          0,
+          10430,
+          124
+        ],
+        "requested_yaw": 4096
+      }
+    },
+    {
+      "area": "arrival",
+      "before_executable": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964",
+      "after_executable": "6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9",
+      "same_positions": true,
+      "before": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary27-gallery\\frame-67.bmp",
+        "sha256": "913be15165923fdfe9d6dcf5fa24859c5de9fedea1cbb9aec975dfca7892b1c4",
+        "position": [
+          0,
+          10430,
+          124
+        ],
+        "requested_yaw": 8192
+      },
+      "after": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-939.bmp",
+        "sha256": "8851f960058148b3469a5a1ba6d63edc0977d5f25786ad9e2adf7ab3bb82b5e5",
+        "position": [
+          0,
+          10430,
+          124
+        ],
+        "requested_yaw": 8192
+      }
+    },
+    {
+      "area": "arrival",
+      "before_executable": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964",
+      "after_executable": "6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9",
+      "same_positions": true,
+      "before": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary27-gallery\\frame-69.bmp",
+        "sha256": "b597d3b7004524b2fa38ef9f209356de9e65837f87be8623695eb3c747f316e7",
+        "position": [
+          0,
+          10430,
+          124
+        ],
+        "requested_yaw": 12288
+      },
+      "after": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-941.bmp",
+        "sha256": "592cd6f53fa17a302775af7e240332d17513a14795a1545dac587e7e3a75348d",
+        "position": [
+          0,
+          10430,
+          124
+        ],
+        "requested_yaw": 12288
+      }
+    },
+    {
+      "area": "sanctuary",
+      "before_executable": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964",
+      "after_executable": "6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9",
+      "same_positions": true,
+      "before": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary27-gallery\\frame-95.bmp",
+        "sha256": "79ad5a867b47b0ea6e63949087a96b4cd131aed138cbeba6d2a97a40553b55c7",
+        "position": [
+          0,
+          10424,
+          120
+        ],
+        "requested_yaw": 0
+      },
+      "after": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-970.bmp",
+        "sha256": "780283394ad2039b7eadc54a71aec514e1906387b40be954b361ccbc0c9efc44",
+        "position": [
+          0,
+          10424,
+          120
+        ],
+        "requested_yaw": 0
+      }
+    },
+    {
+      "area": "sanctuary",
+      "before_executable": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964",
+      "after_executable": "6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9",
+      "same_positions": true,
+      "before": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary27-gallery\\frame-97.bmp",
+        "sha256": "2785af46f9e5d72aefc83ec479ef5252e1439073ed7b84f6f4263a8fe49cd2d7",
+        "position": [
+          0,
+          10424,
+          120
+        ],
+        "requested_yaw": 4096
+      },
+      "after": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-972.bmp",
+        "sha256": "df35566300fbc85a32f268a90802f95abc5536d613609d7803b14f20c89969c7",
+        "position": [
+          0,
+          10424,
+          120
+        ],
+        "requested_yaw": 4096
+      }
+    },
+    {
+      "area": "sanctuary",
+      "before_executable": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964",
+      "after_executable": "6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9",
+      "same_positions": true,
+      "before": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary27-gallery\\frame-99.bmp",
+        "sha256": "269f6bff4380092a5cb513ce31be4441b2a794586d21ce9fb95f7f42db2e75b6",
+        "position": [
+          0,
+          10424,
+          120
+        ],
+        "requested_yaw": 8192
+      },
+      "after": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-974.bmp",
+        "sha256": "a15c9bccc4fa918aa09637028eea6418df40a926c39d0217f2fbddc1413b2f06",
+        "position": [
+          0,
+          10424,
+          120
+        ],
+        "requested_yaw": 8192
+      }
+    },
+    {
+      "area": "sanctuary",
+      "before_executable": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964",
+      "after_executable": "6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9",
+      "same_positions": true,
+      "before": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary27-gallery\\frame-101.bmp",
+        "sha256": "1ac7b040162c938d535b34f96934f09a8065a93dbb580b7dd318d3685a0a91e9",
+        "position": [
+          0,
+          10424,
+          120
+        ],
+        "requested_yaw": 12288
+      },
+      "after": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-976.bmp",
+        "sha256": "bc0c3226c529bf9cf6524b1096f8f7e763c21ed80edf5e586158e3d1a66ca574",
+        "position": [
+          0,
+          10424,
+          120
+        ],
+        "requested_yaw": 12288
+      }
+    },
+    {
+      "area": "restoration hearth",
+      "before_executable": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964",
+      "after_executable": "6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9",
+      "same_positions": true,
+      "before": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary27-gallery\\frame-118.bmp",
+        "sha256": "88efec0f3e444b4ad0a9cf91c039bc640f7992dc8171f10dfe5dd394f0990457",
+        "position": [
+          0,
+          10424,
+          121
+        ],
+        "requested_yaw": 0
+      },
+      "after": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-999.bmp",
+        "sha256": "310d832de30eb535e6fc68e8c2c0160427d6999fc1d8bcbd35a9a4e8472d4ca2",
+        "position": [
+          0,
+          10424,
+          121
+        ],
+        "requested_yaw": 0
+      }
+    },
+    {
+      "area": "restoration hearth",
+      "before_executable": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964",
+      "after_executable": "6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9",
+      "same_positions": true,
+      "before": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary27-gallery\\frame-120.bmp",
+        "sha256": "82d192222d170140ab93a0390045ca8e655ea9d01cc0fa009371e1710a19002c",
+        "position": [
+          0,
+          10424,
+          121
+        ],
+        "requested_yaw": 4096
+      },
+      "after": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1001.bmp",
+        "sha256": "3eea573fdf626beab11df1e133a9cf698b5bcaa7ab3b688933a92b688a432f52",
+        "position": [
+          0,
+          10424,
+          121
+        ],
+        "requested_yaw": 4096
+      }
+    },
+    {
+      "area": "restoration hearth",
+      "before_executable": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964",
+      "after_executable": "6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9",
+      "same_positions": true,
+      "before": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary27-gallery\\frame-122.bmp",
+        "sha256": "c70fbdc186b274a970d097578c61060951f35a32776e13ab337898f670be10ae",
+        "position": [
+          0,
+          10424,
+          121
+        ],
+        "requested_yaw": 8192
+      },
+      "after": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1003.bmp",
+        "sha256": "b9ba6bdfc1edc4ae1e9cbd29370aad0dd861efe16719952afb75448906e7ca84",
+        "position": [
+          0,
+          10424,
+          121
+        ],
+        "requested_yaw": 8192
+      }
+    },
+    {
+      "area": "restoration hearth",
+      "before_executable": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964",
+      "after_executable": "6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9",
+      "same_positions": true,
+      "before": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary27-gallery\\frame-124.bmp",
+        "sha256": "3aeaeb1aac013e3cc6fca381d3e8676d0aa65e1753b600fd045bc9629fd5ebfa",
+        "position": [
+          0,
+          10424,
+          121
+        ],
+        "requested_yaw": 12288
+      },
+      "after": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1005.bmp",
+        "sha256": "a1224573cb31c44e905f909f445a57b0db5b5eda9b220f377350d3f130915851",
+        "position": [
+          0,
+          10424,
+          121
+        ],
+        "requested_yaw": 12288
+      }
+    },
+    {
+      "area": "waterworks",
+      "before_executable": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964",
+      "after_executable": "6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9",
+      "same_positions": false,
+      "before": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary27-gallery\\frame-395.bmp",
+        "sha256": "ea76a4188c8c1697fbeaafae12fe9c0a2b71e04398d99ae671890db27459180e",
+        "position": [
+          0,
+          10439,
+          116
+        ],
+        "requested_yaw": 0
+      },
+      "after": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1267.bmp",
+        "sha256": "a1c57a0b003fd2d459e2fd7371297802d3c57aaed1a8aab59e60f4ef34a67065",
+        "position": [
+          0,
+          10438,
+          116
+        ],
+        "requested_yaw": 0
+      }
+    },
+    {
+      "area": "waterworks",
+      "before_executable": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964",
+      "after_executable": "6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9",
+      "same_positions": false,
+      "before": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary27-gallery\\frame-397.bmp",
+        "sha256": "a43dfbc55270982809a383bc396e6b19eee2e197aa37f2a90c8ed87b3142530f",
+        "position": [
+          0,
+          10439,
+          116
+        ],
+        "requested_yaw": 4096
+      },
+      "after": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1269.bmp",
+        "sha256": "b5c77cfb91483e0bdf3359e170dbfcac1a099f59dd238c0d2bae22a717a4fb85",
+        "position": [
+          0,
+          10438,
+          116
+        ],
+        "requested_yaw": 4096
+      }
+    },
+    {
+      "area": "waterworks",
+      "before_executable": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964",
+      "after_executable": "6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9",
+      "same_positions": false,
+      "before": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary27-gallery\\frame-399.bmp",
+        "sha256": "d6d353827198bc66dee41dad46f99797ade7f9173d6069c08bd33e3dcd786f93",
+        "position": [
+          0,
+          10439,
+          116
+        ],
+        "requested_yaw": 8192
+      },
+      "after": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1271.bmp",
+        "sha256": "a32ae5c9721eecec457f532c1433778be35e29737c3b7fa1889188ed978f889a",
+        "position": [
+          0,
+          10438,
+          116
+        ],
+        "requested_yaw": 8192
+      }
+    },
+    {
+      "area": "waterworks",
+      "before_executable": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964",
+      "after_executable": "6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9",
+      "same_positions": false,
+      "before": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary27-gallery\\frame-401.bmp",
+        "sha256": "5a065ddeb4c3c13ed56f0e56f2c6254f63f3f6564332c68f36b540b80d1dce2c",
+        "position": [
+          0,
+          10439,
+          116
+        ],
+        "requested_yaw": 12288
+      },
+      "after": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1273.bmp",
+        "sha256": "e9b880db018626b308ca2d1ad0e38ebb57a52d7b6ac1b91718fc1c5903dd3cb6",
+        "position": [
+          0,
+          10438,
+          116
+        ],
+        "requested_yaw": 12288
+      }
+    },
+    {
+      "area": "sluice wheel",
+      "before_executable": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964",
+      "after_executable": "6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9",
+      "same_positions": false,
+      "before": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary27-gallery\\frame-431.bmp",
+        "sha256": "1c266c98edd18bd1daefa879d9a10dea2a6dc81984bf44f127dfa15e4cd635f0",
+        "position": [
+          0,
+          10444,
+          122
+        ],
+        "requested_yaw": 0
+      },
+      "after": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1302.bmp",
+        "sha256": "9e09ca9f148fa3854d788790d285158c513c1dbc43d8ec0e8da4fde75bdff031",
+        "position": [
+          0,
+          10437,
+          122
+        ],
+        "requested_yaw": 0
+      }
+    },
+    {
+      "area": "sluice wheel",
+      "before_executable": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964",
+      "after_executable": "6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9",
+      "same_positions": false,
+      "before": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary27-gallery\\frame-433.bmp",
+        "sha256": "99ebec0302fac5863e38e3c1cb30b49fa6f8a96bdaf836a5a0f0bd0773a8785b",
+        "position": [
+          0,
+          10444,
+          122
+        ],
+        "requested_yaw": 4096
+      },
+      "after": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1304.bmp",
+        "sha256": "ee94d845e5f6fe2ae1833f2258aba86b9e85d4b0f2ad79eeb9c8708b32170b84",
+        "position": [
+          0,
+          10437,
+          122
+        ],
+        "requested_yaw": 4096
+      }
+    },
+    {
+      "area": "sluice wheel",
+      "before_executable": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964",
+      "after_executable": "6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9",
+      "same_positions": false,
+      "before": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary27-gallery\\frame-435.bmp",
+        "sha256": "18c8266c8a6d8d76631626d3a25d00046564ab63140167daa67ac24f7164eb8b",
+        "position": [
+          0,
+          10444,
+          122
+        ],
+        "requested_yaw": 8192
+      },
+      "after": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1306.bmp",
+        "sha256": "50e85728f2678e96513393c51b5ed86a2dc389edd8cf2e3fca236a7ae5b65f61",
+        "position": [
+          0,
+          10437,
+          122
+        ],
+        "requested_yaw": 8192
+      }
+    },
+    {
+      "area": "sluice wheel",
+      "before_executable": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964",
+      "after_executable": "6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9",
+      "same_positions": false,
+      "before": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary27-gallery\\frame-437.bmp",
+        "sha256": "b3709becc5cf7d87d073cda8ae99d0cc94864296899a1b97a3ccee8bdf88a45c",
+        "position": [
+          0,
+          10444,
+          122
+        ],
+        "requested_yaw": 12288
+      },
+      "after": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1308.bmp",
+        "sha256": "18780b8c7e6dbc9b09bf219207017056ee300f97b674a8472c3ac32726bcf880",
+        "position": [
+          0,
+          10437,
+          122
+        ],
+        "requested_yaw": 12288
+      }
+    },
+    {
+      "area": "Ash Warden chamber",
+      "before_executable": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964",
+      "after_executable": "6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9",
+      "same_positions": true,
+      "before": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary27-gallery\\frame-601.bmp",
+        "sha256": "d9b93fb42810bd4005832e9dfb96aa8462a982e5f5a4adda2e499b9eef3f3f0c",
+        "position": [
+          0,
+          10423,
+          136
+        ],
+        "requested_yaw": 0
+      },
+      "after": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1457.bmp",
+        "sha256": "d21bee40bac7bd9059d565669ca88b6063e24e5104cdf7e8a0347fa195cb735a",
+        "position": [
+          0,
+          10423,
+          136
+        ],
+        "requested_yaw": 0
+      }
+    },
+    {
+      "area": "Ash Warden chamber",
+      "before_executable": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964",
+      "after_executable": "6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9",
+      "same_positions": true,
+      "before": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary27-gallery\\frame-603.bmp",
+        "sha256": "fe2690705bcf7acb91cda82a76621b25895eab146fd8daffbee130685ab98585",
+        "position": [
+          0,
+          10423,
+          136
+        ],
+        "requested_yaw": 4096
+      },
+      "after": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1459.bmp",
+        "sha256": "2e4664899c5efb7aaf69625d75d44a931534cf60d9c30bfbb477ed7e181c7f83",
+        "position": [
+          0,
+          10423,
+          136
+        ],
+        "requested_yaw": 4096
+      }
+    },
+    {
+      "area": "Ash Warden chamber",
+      "before_executable": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964",
+      "after_executable": "6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9",
+      "same_positions": true,
+      "before": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary27-gallery\\frame-605.bmp",
+        "sha256": "4f10f61e40a26f2dd6a38590e1fdc643fecb22b8bf17609dc91469b9e85e6c66",
+        "position": [
+          0,
+          10423,
+          136
+        ],
+        "requested_yaw": 8192
+      },
+      "after": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1461.bmp",
+        "sha256": "e55495187276688da9088bc406f9c6cf6342b65c0c4a313577aa8fcf6c59dbf1",
+        "position": [
+          0,
+          10423,
+          136
+        ],
+        "requested_yaw": 8192
+      }
+    },
+    {
+      "area": "Ash Warden chamber",
+      "before_executable": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964",
+      "after_executable": "6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9",
+      "same_positions": true,
+      "before": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary27-gallery\\frame-607.bmp",
+        "sha256": "53552a97b43c03ec0bd3f32733d71c6c6466ebc1e263d02e9e4febebc6178b61",
+        "position": [
+          0,
+          10423,
+          136
+        ],
+        "requested_yaw": 12288
+      },
+      "after": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1463.bmp",
+        "sha256": "110a321d1802596d2b7eb8ce22a150c52518ed5822a12b14323088f6231c3336",
+        "position": [
+          0,
+          10423,
+          136
+        ],
+        "requested_yaw": 12288
+      }
+    },
+    {
+      "area": "Ash Imp vent gallery",
+      "before_executable": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964",
+      "after_executable": "6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9",
+      "same_positions": true,
+      "before": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary27-gallery\\frame-664.bmp",
+        "sha256": "0cb6334d0bcdb57c2c4a87c330a8323d67d360ad20a671c1db73652ec75b2f44",
+        "position": [
+          0,
+          10439,
+          136
+        ],
+        "requested_yaw": 0
+      },
+      "after": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1520.bmp",
+        "sha256": "acbe07f5b7237af11cdb960986b8b19245ebdfd4582158d1ce1498e3f1ddbd25",
+        "position": [
+          0,
+          10439,
+          136
+        ],
+        "requested_yaw": 0
+      }
+    },
+    {
+      "area": "Ash Imp vent gallery",
+      "before_executable": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964",
+      "after_executable": "6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9",
+      "same_positions": true,
+      "before": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary27-gallery\\frame-666.bmp",
+        "sha256": "9218241ed6a8964d465cfbda09cc2a9ea5525cec8d032487722678039dc6b634",
+        "position": [
+          0,
+          10439,
+          136
+        ],
+        "requested_yaw": 4096
+      },
+      "after": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1522.bmp",
+        "sha256": "16564e8ae64d37bb102e73e8996cb06427c0068c0087b29e7ddb82d3f2764045",
+        "position": [
+          0,
+          10439,
+          136
+        ],
+        "requested_yaw": 4096
+      }
+    },
+    {
+      "area": "Ash Imp vent gallery",
+      "before_executable": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964",
+      "after_executable": "6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9",
+      "same_positions": true,
+      "before": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary27-gallery\\frame-668.bmp",
+        "sha256": "54ca26a1edf7e6c3a500d6ebdc8b1f7b5f27a10b4e46d662e19838b038edfcd6",
+        "position": [
+          0,
+          10439,
+          136
+        ],
+        "requested_yaw": 8192
+      },
+      "after": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1524.bmp",
+        "sha256": "9e9120e97a2ab813ef19244e34aecd999061f8b29b1ed00959cc2206fcb2e1ed",
+        "position": [
+          0,
+          10439,
+          136
+        ],
+        "requested_yaw": 8192
+      }
+    },
+    {
+      "area": "Ash Imp vent gallery",
+      "before_executable": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964",
+      "after_executable": "6D94F65F360C95B789506EDCBCCA03F416A3433DC4EA15218A566E9934ABA5A9",
+      "same_positions": true,
+      "before": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary27-gallery\\frame-670.bmp",
+        "sha256": "0c5d7eb1566b5c5a0f6f8473ff108d90512df604b7b64715c44c9bdba2e37218",
+        "position": [
+          0,
+          10439,
+          136
+        ],
+        "requested_yaw": 12288
+      },
+      "after": {
+        "frame": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-waterline27-preview\\frame-1526.bmp",
+        "sha256": "992d13255f21962061d3a52e4fde4309b576a33a56a2513d307989c457fc1ba4",
+        "position": [
+          0,
+          10439,
+          136
+        ],
+        "requested_yaw": 12288
+      }
+    }
+  ]
+}
