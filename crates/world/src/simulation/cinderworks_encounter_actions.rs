@@ -414,6 +414,49 @@ pub(super) mod tests {
         panic!("encounter did not warn");
     }
     #[test]
+    fn locked_guardian_attack_reports_once_then_releases_the_player() {
+        let (mut world, actor, target) = setup(Boss::Imp);
+        world.cinderworks_encounters = [None, None];
+        world.data_mut(actor).unwrap().tower_run.services = 0;
+        let before = world.data(actor).unwrap().clone();
+        let mut options = crate::npc_options::Definition::default();
+        options.operations[1] = Some("Attack".into());
+        world.npc_options.types.insert(200, options);
+        world
+            .npc_handlers
+            .insert((200, 2), crate::npc_interaction::Handler::Combat);
+        world.drain_events();
+        world.request_npc(actor, target, 2, false).unwrap();
+        for _ in 0..8 {
+            world.tick().unwrap();
+        }
+        let messages = world
+            .drain_events()
+            .into_iter()
+            .filter(|event| {
+                matches!(event,
+            WorldEvent::NpcInteraction { event: crate::npc_interaction::Event::Message(text), .. }
+                if text.contains("Restore the workshop, kitchen and altar"))
+            })
+            .count();
+        assert_eq!(messages, 1, "Rejected attacks must not repeat each tick");
+        assert!(world.player(actor).unwrap().npc_interaction.is_none());
+        assert!(world.cinderworks_encounters[0].is_none());
+        assert_eq!(world.data(actor).unwrap().stats, before.stats);
+        assert_eq!(world.data(actor).unwrap().tower_run, before.tower_run);
+        assert_eq!(world.npc(target).unwrap().stats[3], 18);
+        let destination = before.coords.translate(0, -2, 0).unwrap();
+        let input = world
+            .prepare_movement_input(actor, destination, false)
+            .unwrap()
+            .unwrap();
+        world.finish_movement_input(input).unwrap();
+        for _ in 0..3 {
+            world.tick().unwrap();
+        }
+        assert_eq!(world.player(actor).unwrap().movement.coords, destination);
+    }
+    #[test]
     fn warned_vent_damages_only_on_expiry_and_movement_avoids_it() {
         for escape in [false, true] {
             let (mut world, actor, _) = setup(Boss::Imp);

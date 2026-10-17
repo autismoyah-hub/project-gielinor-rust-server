@@ -1,5 +1,23 @@
 # Visual production acceptance — not granted
 
+## Active composition build — sanctuary paving and boiler direction
+
+### Current locked-guardian correction and native proof
+
+Fresh native17 completed onboarding and demonstrated the progression denial, but its original single-command gate retreat timed out; that route and timing receipt remain failed. Source inspection and an added regression reproduce eight repeated rejection messages across eight ticks. Tower-only non-shell denials now cancel the inadmissible Attack after one explanation. The active Warden's temporary shell still retains its normal automatic retry; ownership, progression eligibility, damage and telegraph timing are unchanged.
+
+The corrected full suites pass cache 24, server 57, world 407 (two existing ignores). Native17 then independently confirms exactly one fresh denial UID across eight real server ticks, unchanged health/XP/progress, one-command sanctuary retreat, and actual hot boiler 18526 at shape 10/rotation 1. Genuine native frame116 shows the hot mouth and the one instruction. This is gate/geometry acceptance, not a completed floor run. A separate fresh native18 has started the full corrected-build route, including normal onboarding, preparation, real rescue, both bosses, first/full-pack reward and portals; its result is still pending. No uninterrupted pacing result is claimed from the failed predecessor attempt.
+
+
+The next environment pass replaces the sanctuary's blank charcoal floor with four cross-banded panels copied from actual cache terrain (source zone 232,883), and adds transverse paving bands in the southern processional hall (source 236,883). Every sampled tile and ninth border vertex shares the former stone's explicit -240 height; neither panel has blocked/bridge terrain tiles. Server and native source map files 0/1 are byte-identical, so the ordinary source-aware deletion stage masks the same inherited objects. No floor-tile objects, material override or renderer workaround is used.
+
+The Imp boiler now uses rotation 1, exposing its actual large mouth toward the chamber. Its real footprint becomes three by two tiles outside the existing hazard field. The masonry aperture spans its three-tile front. Startup checks rotated extents; baseline collision and per-restorer scene updates use the same orientation. A new reset/relogin/replay test checks that normal personal scene updates cannot rotate the boiler back to its narrow side.
+
+This exact draft passes cache 24, server 57 and world 406 tests (two existing world ignores); protected-cache geometry confirms 2,115 reachable floor tiles and 1,512 legal lethal-pattern escapes. Actual loopback startup succeeds. Sixteen unaltered native captures cover sanctuary, hall, Imp boiler and arrival at all four cardinal angles; all were inspected. The earned quiet boiler appears at rotation 1 in actual native scene CSV. `COMPOSITION_PREVIEW_20261017.json` contains source/build/frame hashes. Private comparison: `evidence/composed-paving-comparison.html`.
+
+These are positive composition changes, not final artistic acceptance. The fresh native17 gate-retreat failure is retained; the separate native18 run now covers the corrected build. Fresh headless, current-build lifecycle and broader composition work remain; the accepted six-landmark crash proof applies to the preceding engine. Do not substitute that predecessor's results for this build. Continue development without routine approval pauses.
+
+
 ## Current continuation status — 2026-10-17
 
 ### Six-landmark replay and no-logout crash follow-through

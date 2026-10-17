@@ -63,3 +63,11 @@ Current independent headless Warden acceptance: `evidence/headless-forge16/warde
 ## Six-landmark native replay and crash proof
 
 Native replay source engine 1c0d408: `evidence/native-replay15-six-resumed` contains accepted services, lethal rescue, Imp, three-phase Warden with coolant, six landmarks, repeat reward/duplicate and portals. Native Warden warnings: frames 1750/1984/2244; quench 1754; actual arena victory 2461; retreat 2479, in `work/native-replay15-six`. All four combat/victory views were inspected. Failure logs remain separate; this is a resumed legitimate run, not an uninterrupted pacing measurement. Both native/headless exact no-logout crash recovery and six restored scene rebuilds pass in `evidence/six-landmark-crash-relogin.json` and the two persisted-restoration receipts. The newer uncommitted paving/orientation source is not covered by this engine proof.
+
+## Native paving / mouth-direction comparison
+
+Private `evidence/composed-paving-comparison.html` compares the preceding six-landmark engine with the next real-terrain composition. Original current native-paving15 frames: sanctuary 23/25/27/29; hall 68/70/72/74; cooled Imp boiler 156/158/160/162; arrival 216/218/220/222. Every angle was inspected. Actual scene CSV confirms cooled boiler 18525, shape 10, rotation 1, not rejected. New source/build/frame hashes are in `COMPOSITION_PREVIEW_20261017.json`. Fresh current-build native route is running separately in `evidence/native-paving17`; it is not yet accepted. Earlier offline cache studies are asset research only and are never gameplay proof.
+
+## Corrected locked-guardian native check
+
+`evidence/native-gate17-summary.json` independently accepts one denial message across eight server ticks and one-command retreat without health, XP or progression changes. Original native-gate17 frame116 shows the actual hot boiler mouth, Imp and initial run journal; inspected. Source/build and safe frame hashes are in `COMPOSITION_GATE_CHECKPOINT_20261017.json`. Original native-paving17 gate-retreat failure remains failed. The separate fresh native-composition18 full route is pending.

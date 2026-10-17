@@ -79,7 +79,7 @@ impl Observer {
                         at,
                         f.id(run),
                         10,
-                        0,
+                        f.angle,
                     )?))],
                 });
             }
@@ -184,6 +184,38 @@ mod tests {
         run.victory = false;
         let replay = ids(&observer.cycle(o, run, p, b, &z, &[], 3).unwrap());
         assert_eq!(replay, [18525, 18512, 16810, 16811, 16811, 18526]);
+    }
+    #[test]
+    fn boiler_mouth_keeps_its_real_rotation_through_progress_and_scene_resets() {
+        let (o, b, z) = setup();
+        let p = o.translate(71, 72, 0).unwrap();
+        let boiler = o.translate(71, 76, 0).unwrap();
+        let mut observer = Observer::default();
+        for (cleared, expected) in [(false, 18526), (true, 18525), (false, 18526)] {
+            let mut run = Run::default();
+            run.imp = cleared;
+            let resets = z.iter().copied().map(Emission::Reset).collect::<Vec<_>>();
+            let updates = [
+                observer.cycle(o, run, p, b, &z, &resets, 1).unwrap(),
+                Observer::default().cycle(o, run, p, b, &z, &[], 1).unwrap(),
+            ];
+            for events in updates {
+                let directions = events
+                    .iter()
+                    .flat_map(|e| match e {
+                        Emission::Enclosed { updates, .. } => updates.as_slice(),
+                        _ => &[],
+                    })
+                    .filter_map(|u| match u {
+                        Update::Location(Event::Add(loc)) if loc.coords == boiler => {
+                            Some((loc.id, loc.shape, loc.angle))
+                        }
+                        _ => None,
+                    })
+                    .collect::<Vec<_>>();
+                assert_eq!(directions, [(expected, 10, 1)]);
+            }
+        }
     }
     #[test]
     fn hidden_zones_get_no_updates_and_imp_victory_stops_ambient_steam() {

@@ -1,0 +1,109 @@
+{
+  "status": "current native composition preview; full current-build gameplay regression continuing; artistic acceptance pending",
+  "parent": "ca6d618508ce2ebfcbcebeda19535e3438c23697",
+  "source_sha256": {
+    "crates/world/src/tower_layout.rs": "064969c98478d061ad0db4921af9384988a281eae46749b7c46be02be987c7b8",
+    "crates/world/src/tower_scenery.rs": "c4739484aacecc1425a82fc46d489d02c82caa042c2325a018e83927412bdabc",
+    "crates/server/src/tower_map.rs": "6e17bf71ece72f1eb0705f2461f6d2e073a10ae02c53fafcaa5c290ff96b7eb1",
+    "crates/server/src/tower_scene.rs": "079167eb94bc4fcc61d98704b378b83aaf5eee5d764c8a4d1204869dd8c36203"
+  },
+  "server_executable_sha256": "e10e2ab22e12dda8063788096b53ed6969b2de6f443af570be72fd078d454306",
+  "views": [
+    {
+      "area": "sanctuary",
+      "yaw": 0,
+      "sequence": 23,
+      "sha256": "a05f459d5ec02e4c4d3dab202461ff6a61dcc6bbc24f2aaaca256afe39523b55"
+    },
+    {
+      "area": "sanctuary",
+      "yaw": 4096,
+      "sequence": 25,
+      "sha256": "787a0a480b86079b0334753271df5a5d49ad09fd24c960da3ce8520838fb68c4"
+    },
+    {
+      "area": "sanctuary",
+      "yaw": 8192,
+      "sequence": 27,
+      "sha256": "2709ddf3d866c50d7f7a937432d889e6960fca80ed12fb63fd336affb783d1ac"
+    },
+    {
+      "area": "sanctuary",
+      "yaw": 12288,
+      "sequence": 29,
+      "sha256": "699bac593cb8b6321882c98221a611ca31f8fe668506ed37c73021d26e9bf45a"
+    },
+    {
+      "area": "hall",
+      "yaw": 0,
+      "sequence": 68,
+      "sha256": "051d27fbfcd7a7d789e153e47e76de6d858aba3d1a940ff95dc9cc47f25d1993"
+    },
+    {
+      "area": "hall",
+      "yaw": 4096,
+      "sequence": 70,
+      "sha256": "59783ae52db67df72efb1e27f3d8888e35104e949ad099c9d36b35eff109da07"
+    },
+    {
+      "area": "hall",
+      "yaw": 8192,
+      "sequence": 72,
+      "sha256": "e546270634fee769d4a34bca16f189bb83bd79e49bf34a42b39d14bb4ef87003"
+    },
+    {
+      "area": "hall",
+      "yaw": 12288,
+      "sequence": 74,
+      "sha256": "b332c7e38a9e9355fe82b135cfb1c96561efb0f86dace433f98df2f52d9c53f6"
+    },
+    {
+      "area": "Imp boiler",
+      "yaw": 0,
+      "sequence": 156,
+      "sha256": "00317087528133d39931cca8df09391a519ea22b9a76924d73e02859fedd37b3"
+    },
+    {
+      "area": "Imp boiler",
+      "yaw": 4096,
+      "sequence": 158,
+      "sha256": "d11c482b724f6b5c043ea1b86a89b60f18d2f48aacd7179f558c23561167f299"
+    },
+    {
+      "area": "Imp boiler",
+      "yaw": 8192,
+      "sequence": 160,
+      "sha256": "f1970abbaa21b1660bcdacf36a90e47adab4664422badec52d655945b6108318"
+    },
+    {
+      "area": "Imp boiler",
+      "yaw": 12288,
+      "sequence": 162,
+      "sha256": "bd6df763d58e41528786608448f487a883818e96a3722f6373149e90b13af123"
+    },
+    {
+      "area": "arrival",
+      "yaw": 0,
+      "sequence": 216,
+      "sha256": "bc17b408aac7ec94916e821be82e71b7c5c2d9eae19e6bc89ca2e276e77522d7"
+    },
+    {
+      "area": "arrival",
+      "yaw": 4096,
+      "sequence": 218,
+      "sha256": "ef85e314fabb28eaac03acabbf7de37ca631facb47b66e0cce798a5af98ad37f"
+    },
+    {
+      "area": "arrival",
+      "yaw": 8192,
+      "sequence": 220,
+      "sha256": "416ac85289030023639e21a36ac2938bb91e240028fe8eec6eebd1d19736155f"
+    },
+    {
+      "area": "arrival",
+      "yaw": 12288,
+      "sequence": 222,
+      "sha256": "7e5529dd98979bf3b473fcb63e52e56dd3c3108030ddca12db589d4cc6ee75f4"
+    }
+  ]
+}

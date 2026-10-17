@@ -58,6 +58,36 @@ pub fn template() -> Template {
             zones.insert((x, z, 0), ash);
         }
     }
+    // Intact cross-banded paving is genuine cache terrain, with the same
+    // explicit -240 height at every tile and border as the charcoal base.
+    // Four panels give the sanctuary its own brass-and-stone floor identity.
+    // No decorative floor objects or renderer changes are involved.
+    for x in 6..8 {
+        for z in 6..8 {
+            zones.insert(
+                (x, z, 0),
+                Source {
+                    x: 232,
+                    z: 883,
+                    ..stone
+                },
+            );
+        }
+    }
+    // Broad transverse bands pace the processional hall between its columns.
+    // This companion terrain panel shares the sanctuary's material and height.
+    for x in 6..8 {
+        for z in 4..6 {
+            zones.insert(
+                (x, z, 0),
+                Source {
+                    x: 236,
+                    z: 883,
+                    ..stone
+                },
+            );
+        }
+    }
     // Retain the actual river and its bank for net fishing.
     for (x, z, sx, sz) in [
         (8, 6, 404, 393),
@@ -227,7 +257,7 @@ pub fn shell() -> Vec<Wall> {
     // perimeter. Every combat tile keeps its original four-tick warning.
     for x in 68..76 {
         // Expose the boiler's actual front instead of hiding it behind masonry.
-        if ![71, 72].contains(&x) {
+        if ![71, 72, 73].contains(&x) {
             edge(x, 76, 3);
         }
         if ![71, 72].contains(&x) {

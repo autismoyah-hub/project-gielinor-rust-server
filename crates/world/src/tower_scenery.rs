@@ -33,6 +33,7 @@ pub struct Landmark {
     pub dormant: u32,
     pub restored: u32,
     pub state: State,
+    pub angle: u8,
 }
 impl Landmark {
     pub fn id(self, run: Run) -> u32 {
@@ -53,6 +54,7 @@ pub const LANDMARKS: &[Landmark] = &[
         dormant: 18525,
         restored: 18526,
         state: State::Forge,
+        angle: 0,
     },
     Landmark {
         x: 77,
@@ -60,6 +62,7 @@ pub const LANDMARKS: &[Landmark] = &[
         dormant: 18512,
         restored: 18511,
         state: State::Water,
+        angle: 0,
     },
     Landmark {
         x: 59,
@@ -67,6 +70,7 @@ pub const LANDMARKS: &[Landmark] = &[
         dormant: 16810,
         restored: 16811,
         state: State::Altar,
+        angle: 0,
     },
     Landmark {
         x: 55,
@@ -74,6 +78,7 @@ pub const LANDMARKS: &[Landmark] = &[
         dormant: 16810,
         restored: 16811,
         state: State::Sanctuary,
+        angle: 0,
     },
     // The foundry loses its consuming fire when the Warden is quenched.
     Landmark {
@@ -82,6 +87,7 @@ pub const LANDMARKS: &[Landmark] = &[
         dormant: 16811,
         restored: 16810,
         state: State::Foundry,
+        angle: 0,
     },
     Landmark {
         x: 71,
@@ -89,6 +95,7 @@ pub const LANDMARKS: &[Landmark] = &[
         dormant: 18526,
         restored: 18525,
         state: State::Imp,
+        angle: 1,
     },
 ];
 #[derive(Clone, Copy, Debug)]

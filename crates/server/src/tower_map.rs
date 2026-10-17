@@ -180,12 +180,22 @@ pub fn prepare(
                 row.dormant, row.restored
             ));
         }
-        if row.x + cold.collision.width as i32 > 80 || row.z + cold.collision.length as i32 > 80 {
+        if row.angle > 3 {
+            return Err("Invalid landmark rotation".into());
+        }
+        let (width, length) = if row.angle & 1 == 0 {
+            (cold.collision.width, cold.collision.length)
+        } else {
+            (cold.collision.length, cold.collision.width)
+        };
+        if row.x + width as i32 > 80 || row.z + length as i32 > 80 {
             return Err("Landmark extends beyond authored floor".into());
         }
-        shell.stamp(
+        shell.stamp_shaped(
             origin.translate(row.x, row.z, 0).unwrap(),
             row.dormant,
+            10,
+            row.angle,
             definitions,
         )?;
     }

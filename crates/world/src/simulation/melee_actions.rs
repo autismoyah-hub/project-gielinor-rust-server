@@ -11,12 +11,11 @@ impl World {
     ) -> Option<(Option<&'static str>, bool)> {
         let p = self.player(actor).ok()?;
         if let Some(message) = self.cinderworks_denial(actor, target) {
-            // The initial encounter instruction and visible charge explain the
-            // shell. Automatic melee retries must not rebuild chat every tick.
-            return Some((
-                (message != crate::tower_cinderworks::SHELL_HINT).then_some(message),
-                false,
-            ));
+            // Only the active Warden's temporary shell should keep an Attack
+            // intent alive. Progression/equipment/ownership denials cancel the
+            // inadmissible action after one explanation instead of retry spam.
+            let shell = message == crate::tower_cinderworks::SHELL_HINT;
+            return Some(((!shell).then_some(message), !shell));
         }
         if let Some(config) = &self.combat_stance {
             let weapon = p

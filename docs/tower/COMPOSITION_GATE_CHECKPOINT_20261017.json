@@ -1,0 +1,41 @@
+{
+  "status": "production continuation; full current-build gameplay and final artistic acceptance pending",
+  "parent": "ca6d618508ce2ebfcbcebeda19535e3438c23697",
+  "source_sha256": {
+    "crates/world/src/tower_layout.rs": "82b36ba19ab210019aa62e69a2d7aa07488ac7bc72c97d15c7ecae7486db2ede",
+    "crates/world/src/tower_scenery.rs": "c4739484aacecc1425a82fc46d489d02c82caa042c2325a018e83927412bdabc",
+    "crates/server/src/tower_map.rs": "6e17bf71ece72f1eb0705f2461f6d2e073a10ae02c53fafcaa5c290ff96b7eb1",
+    "crates/server/src/tower_scene.rs": "079167eb94bc4fcc61d98704b378b83aaf5eee5d764c8a4d1204869dd8c36203",
+    "crates/world/src/simulation/melee_actions.rs": "59f6103d869073ed82fbd39a4dde974a442c20ac37ffaeba4b47f51f86847739",
+    "crates/world/src/simulation/cinderworks_encounter_actions.rs": "df110ce0579efe9da3131cb27ed35a3bdab1072d8d8980ac308610a5288ace40"
+  },
+  "server_executable_sha256": "bad0d3944bc6727215cb687917c83ce4fc2b4724a57e918f686ab4e1afa67fd7",
+  "tests": {
+    "cache": 24,
+    "server": 57,
+    "world": 407,
+    "world_existing_ignored": 2
+  },
+  "native_gate": {
+    "accepted": true,
+    "fresh_denial_uids": [
+      1
+    ],
+    "observed_ticks": 8,
+    "one_command_retreat": true,
+    "no_damage_xp_or_progress": true,
+    "hot_boiler_id": 18526,
+    "shape": 10,
+    "rotation": 1,
+    "frame_sequence": 116,
+    "frame_sha256": "219503580b197fedcfc4e1576522fce50e18850d961166029a70264e3386a3cc"
+  },
+  "geometry_native_preview": "COMPOSITION_PREVIEW_20261017.json describes the preceding geometry-identical build, before this Tower denial correction and source whitespace formatting",
+  "pending": [
+    "fresh native18 full route",
+    "fresh headless full route",
+    "current engine replay/relog/crash",
+    "further production composition",
+    "user artistic acceptance"
+  ]
+}
