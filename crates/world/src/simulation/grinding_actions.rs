@@ -33,7 +33,7 @@ impl World {
         ) {
             return Ok(());
         }
-        if let Some(input_slot) = next_input(p, recipe.input) {
+        if let Some(input_slot) = next_input(p, job, &self.object_types) {
             let pending = Pending {
                 job: Job { input_slot, ..job },
                 origin: p.movement.coords,
@@ -56,7 +56,13 @@ impl World {
         Ok(())
     }
 }
-fn next_input(p: &Player, input: i32) -> Option<usize> {
+fn next_input(p: &Player, job: Job, catalog: &crate::inventory::Catalog) -> Option<usize> {
+    let input=job.recipe.input;
+    if catalog.stackable.contains(&input) {
+        return p.data.inventory.get(job.input_slot)
+            .filter(|i| i.id==input && i.count>0 && i.vars==0).map(|_|job.input_slot);
+    }
+
     p.data
         .inventory
         .slots()
@@ -135,7 +141,7 @@ pub(super) fn complete(
     ) {
         return;
     }
-    if let Some(input_slot) = next_input(p, pending.job.recipe.input) {
+    if let Some(input_slot) = next_input(p, pending.job, catalog) {
         let next = Pending {
             job: Job {
                 input_slot,
@@ -235,6 +241,21 @@ mod tests {
     fn start(w: &mut World, actor: ActorId, request: Request) {
         w.prepare_held_use(actor, request).unwrap();
         w.finish_held_use(actor, request).unwrap();
+    }
+    #[test]
+    fn selected_shard_stack_repeats_without_touching_other_stack_or_awarding_xp() {
+        for stale in [false,true] {
+            let (mut w,a,r)=fixture(true);w.set_membership(a,true).unwrap();w.object_types.stackable.extend([11,12]);
+            w.data_mut(a).unwrap().inventory.restore_slot(2,None).unwrap();
+            w.data_mut(a).unwrap().inventory.restore_slot(3,Some(Item{id:11,count:3,vars:0})).unwrap();
+            let stats=w.data(a).unwrap().stats.clone();start(&mut w,a,r);
+            assert_eq!(w.data(a).unwrap().inventory.get(3).unwrap().count,2);
+            if stale {w.data_mut(a).unwrap().inventory.restore_slot(3,None).unwrap();}
+            for _ in 0..10{w.tick().unwrap();}
+            assert_eq!(w.data(a).unwrap().inventory.get(1).unwrap(),Item{id:11,count:1,vars:0});
+            assert_eq!(w.data(a).unwrap().inventory.get(2).unwrap(),Item{id:12,count:if stale{1}else{3},vars:0});
+            assert_eq!(w.data(a).unwrap().stats,stats);
+        }
     }
     #[test]
     fn reverse_tool_use_is_immediate_then_two_then_three_ticks_with_no_xp() {

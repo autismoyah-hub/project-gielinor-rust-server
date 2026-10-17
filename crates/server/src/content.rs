@@ -3084,3 +3084,31 @@ mod ancient_brew_binding_tests {
         defs.items.get_mut(&26368).unwrap().stackable=true;defs.items.get_mut(&26342).unwrap().inventory_ops[0]=None;assert!(ancient_brew_recipe(&symbols,&defs).is_err());
     }
 }
+
+/// Wiki Nihil dust15263916: tool retained,one shard to one dust,0/2/3ticks,noXP.
+pub fn nihil_grinding(obj:&Symbols,seq:&Symbols,defs:&Definitions)->Result<gielinor_world::grinding::Recipe,String>{
+    let mut seen=std::collections::BTreeSet::new();
+    let mut bind=|name:&str,stackable:bool|->Result<i32,String>{
+        let id=*obj.get(name).ok_or_else(||format!("Missing Nihil grinding symbol {name}"))?;
+        let item=defs.items.get(&(id as u32)).ok_or_else(||format!("Missing Nihil grinding definition {name}"))?;
+        if id<0 || !seen.insert(id) || item.stackable!=stackable || item.cert.template!=0 || item.placeholder.template!=0 || item.dummy==1 || (stackable && !item.members) {return Err(format!("Invalid Nihil grinding definition {name}"));}
+        Ok(id)
+    };
+    let animation=*seq.get("human_herbing_grind").ok_or("Missing Nihil grinding animation")?;
+    Ok(gielinor_world::grinding::Recipe{tool:bind("pestle_and_mortar",false)?,input:bind("nihil_shard",true)?,output:bind("nihil_dust",true)?,members:true,animation:Some(u16::try_from(animation).map_err(|_|"Invalid Nihil grinding animation")?)})
+}
+
+#[cfg(test)]
+mod nihil_grinding_binding_tests {
+    use super::*;
+    #[test]
+    fn nihil_shards_and_dust_must_be_normal_member_stacks() {
+        let obj:Symbols=[("pestle_and_mortar".into(),233),("nihil_shard".into(),26231),("nihil_dust".into(),26368)].into();
+        let seq:Symbols=[("human_herbing_grind".into(),364)].into();
+        let mut defs=Definitions{inventories:Default::default(),locations:Default::default(),npcs:Default::default(),items:Default::default(),varbits:Default::default(),varps:Default::default(),stats:Default::default()};
+        for id in [233,26231,26368] {let mut v=gielinor_cache::definitions::ItemType::decode(&[0]).unwrap();v.stackable=id!=233;v.members=id!=233;defs.items.insert(id,v);}
+        let recipe=nihil_grinding(&obj,&seq,&defs).unwrap();assert_eq!((recipe.tool,recipe.input,recipe.output,recipe.members,recipe.animation),(233,26231,26368,true,Some(364)));
+        defs.items.get_mut(&26231).unwrap().stackable=false;assert!(nihil_grinding(&obj,&seq,&defs).is_err());
+        defs.items.get_mut(&26231).unwrap().stackable=true;defs.items.get_mut(&26368).unwrap().members=false;assert!(nihil_grinding(&obj,&seq,&defs).is_err());
+    }
+}

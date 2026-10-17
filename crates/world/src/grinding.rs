@@ -41,7 +41,7 @@ impl Job {
                 .is_none_or(|i| i.id != r.tool || i.count != 1 || i.vars != 0)
             || inv
                 .get(self.input_slot)
-                .is_none_or(|i| i.id != r.input || i.count != 1 || i.vars != 0)
+                .is_none_or(|i| i.id != r.input || i.count <= 0 || (i.count != 1 && !catalog.stackable.contains(&r.input)) || i.vars != 0)
         {
             return Outcome::Stale;
         }
@@ -52,7 +52,7 @@ impl Job {
             return Outcome::Capacity;
         }
         let mut credit = Insert::new(r.output, 1);
-        credit.strict_slot = Some(self.input_slot);
+        if !catalog.stackable.contains(&r.output) { credit.strict_slot = Some(self.input_slot); }
         if next.insert(catalog, credit).is_err() {
             return Outcome::Capacity;
         }
@@ -89,6 +89,22 @@ mod tests {
             .unwrap();
         }
         (job, inv, Catalog::default())
+    }
+    #[test]
+    fn stack_crushing_conserves_selected_input_on_capacity_and_overflow() {
+        for mode in 0..5 {
+            let (job,_,mut catalog)=fixture();catalog.stackable.extend([2,3]);
+            let mut inv=Inventory::new(4,StackType::Normal,false);
+            inv.restore_slot(0,Some(Item{id:1,count:1,vars:0})).unwrap();
+            inv.restore_slot(1,Some(Item{id:2,count:if mode==4{1}else{3},vars:0})).unwrap();
+            inv.restore_slot(2,match mode {0=>None,1|4=>Some(Item{id:995,count:1,vars:0}),_=>Some(Item{id:3,count:if mode==3{i32::MAX}else{10},vars:0})}).unwrap();
+            inv.restore_slot(3,Some(Item{id:995,count:1,vars:0})).unwrap();let before=inv.clone();
+            let outcome=job.complete(&mut inv,&catalog,false);
+            if mode==1 || mode==3 {assert_eq!(outcome,Outcome::Capacity);assert_eq!(inv,before);}
+            else {assert_eq!(outcome,Outcome::Made);assert_eq!(inv.get(0),before.get(0));assert_eq!(inv.get(3),before.get(3));
+                assert_eq!(inv.slots().iter().flatten().find(|i|i.id==2).map(|i|i.count).unwrap_or(0),if mode==4{0}else{2});
+                assert_eq!(inv.slots().iter().flatten().find(|i|i.id==3).unwrap().count,if mode==2{11}else{1});}
+        }
     }
     #[test]
     fn full_inventory_retains_tool_and_selected_output() {
