@@ -125,6 +125,50 @@ pub struct Fixture {
     pub angle: u8,
 }
 pub const FIXTURES: &[Fixture] = &[
+    // The sanctuary service alcoves open on the main east-west crossing.
+    // Low returns meet the column faces and keep the central hearth visible.
+    Fixture {
+        x: 52,
+        z: 54,
+        id: MASONRY[1],
+        shape: 0,
+        angle: 0,
+    },
+    Fixture {
+        x: 52,
+        z: 57,
+        id: MASONRY[1],
+        shape: 0,
+        angle: 0,
+    },
+    Fixture {
+        x: 52,
+        z: 58,
+        id: MASONRY[1],
+        shape: 0,
+        angle: 0,
+    },
+    Fixture {
+        x: 60,
+        z: 54,
+        id: MASONRY[1],
+        shape: 0,
+        angle: 0,
+    },
+    Fixture {
+        x: 60,
+        z: 57,
+        id: MASONRY[1],
+        shape: 0,
+        angle: 0,
+    },
+    Fixture {
+        x: 60,
+        z: 58,
+        id: MASONRY[1],
+        shape: 0,
+        angle: 0,
+    },
     // Low rails tie the existing hall columns into service galleries.
     // Three-tile cross bays retain the direct court and workshop approaches.
     Fixture {

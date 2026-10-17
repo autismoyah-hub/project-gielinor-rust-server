@@ -1,3 +1,7 @@
+## Sanctuary six-edge composition checkpoint
+
+Parentc92ace3 published bank fix retained. Only tower_scenery.rs changes production: six real6143 edge returns, no shared-engine/rule/schema/renderer change. Both exact earned entries and affected service/rebuild checks pass,24matched native frames inspected. Client eleven-patch source/tree unchanged; no client push/Agent2 changes. Full current combat/crash not claimed. See SANCTUARY_ARCADES_PREVIEW_20261017.json.
+
 ## Sanctuary bank isolated checkpoint
 
 Own branch local/remote parent8dd63333759992274ec6ebca0b3eac1f9d21a7d7 verified before publication. Five Rust source files implement scoped BankBooth/BankRequested through existing open_bank, with three meaningful guard regressions. Client validation advances locally toff9cef17fd1ce3ec2ebf8d1181fee31411999c4c: eleven raw patches, exact tree48e96da6f47ac9ef9a3aece11001139883e3dd9e, first ten bytes preserved. No client remote push or Agent2 workspace change. Existing V12 integration constraint remains. Six-wall art draft excluded. See SANCTUARY_BANK_VALIDATION_20261017.json.

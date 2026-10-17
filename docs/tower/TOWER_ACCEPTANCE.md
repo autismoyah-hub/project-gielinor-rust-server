@@ -1,3 +1,9 @@
+## Sanctuary alcoves: six supported returns and native comparison verified
+
+CurrentAA88DF685E87FCCB adds six low6143 masonry edges between existing sanctuary column faces, leaving the two-tile main crossing open. All twelve matched before/after native poses are inspected: bank and altar alcoves gain boundaries, with the hearth and central route visible. This is a local composition improvement; the sanctuary still needs stronger visual focus and final user artistic acceptance.
+
+Both saved characters enter with exact items/equipment/all25XP/journal, verify all six real scene rows, open crossing gaps, normal Bank/Pray and routes, and their eight correct personal landmarks. Exact portal exit/return and a second complete service/scene check pass after region rebuild. Cache24/server57/world410(two existing ignored), main build,2098reachable tiles and1512legal lethal-pattern escapes pass on the applied source. `SANCTUARY_ARCADES_PREVIEW_20261017.json` pins scope and hashes for all24 actual comparison frames. No currentAA88 full combat/crash claim; C555 lifecycle evidence remains separate. Continue sanctuary composition and the standing production mandate; human first-play pacing remains unmeasured.
+
 ## Sanctuary bank: ordinary service and item roundtrip verified
 
 Runtime08BB264E468F1E84 binds the real sanctuary booth18491 Bank operation2 at10421,124,0 to the existing banking UI. Baseline native and headless attempts exposed the missing location handler before any new sanctuary rails were live. The scoped handler retains normal reach, delay, plane and live-target guards; identical booths elsewhere cannot open it. It grants no tutorial coins or progression. Cache24/server57/world410 pass (two existing ignored); three added regressions cover reach/exact site/protection and removed targets. Main build passes.
