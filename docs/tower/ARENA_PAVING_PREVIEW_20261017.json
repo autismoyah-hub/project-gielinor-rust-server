@@ -1,0 +1,222 @@
+{
+  "source_parent": "1cf7ed834ed4f129c46cf24ca0c63c100ebd56e9",
+  "server_binary_sha256": "DDF1B8B3415FF4D996C719898E830A4EE2F83F982095DB6333CBDD11AC69B8C1",
+  "change": "Warden/vestibule four genuine458,1086 terrain panels rotated0/1/2/3 atdestinationzones6,8/7,8/7,9/6,9. Existingash242,620 moves toImp zones8..9,8..9. Props/encounter/renderer/reward/save code unchanged.",
+  "source_terrain": {
+    "warden_zone": [
+      458,
+      1086
+    ],
+    "square": 14727,
+    "all81_heights": 30,
+    "all81_flags": 4,
+    "floor_block_or_bridge": false,
+    "server_native_cache_files_0_and_1": "byte-identical",
+    "imp_zone": [
+      242,
+      620
+    ],
+    "imp_material": "existing ash already native-validated under predecessorWarden"
+  },
+  "native_preview": {
+    "inspected_after_views": 12,
+    "matching_before_views": 12,
+    "areas": [
+      "foundry vestibule",
+      "Ash Warden chamber",
+      "Ash Imp vent gallery"
+    ],
+    "exact_items_equipment_all25XP_journal": true,
+    "all_eight_landmarks_reconstructed": true,
+    "source_junk_observed": false,
+    "composition": "Muted red/brass bonds give the main court a center and frame; darker ash distinguishes the quieter Imp gallery. No additional scenery blocks a combat tile."
+  },
+  "checks": {
+    "cache": 24,
+    "server": 57,
+    "world": 407,
+    "existing_ignored": 2,
+    "actual_reachable_tiles": 2098,
+    "legal_lethal_pattern_escapes": 1512,
+    "main_build": "passed"
+  },
+  "full_current_build_gameplay": {
+    "native": "paid run2 kitchen-first replay running; firstpaid500 remains historicalEFFA",
+    "headless": "paid run2 workshop-first replay running; waits nativebefore sharedcourts",
+    "hazard_readability_in_combat": "pending current native phasecaptures",
+    "ordinary_reconnect": "pending currentDDF",
+    "crash": "not rerunDDF; fullEFFAlifecycle separately1cf7ed8"
+  },
+  "raw_frame_hashes": [
+    {
+      "set": "Before EFFA",
+      "area": "foundry vestibule",
+      "yaw": 0,
+      "filename": "frame-3213.bmp",
+      "sha256": "2ff1d1278c9b3ad94e171b5430ed7e1d3059be92a012566541a81529ae8c81d1"
+    },
+    {
+      "set": "Arena paving draft DDF1",
+      "area": "foundry vestibule",
+      "yaw": 0,
+      "filename": "frame-51.bmp",
+      "sha256": "2b8798301234d40bcf102ff34b2a7378441f5fa64393ecd357f74aa7c26b1f76"
+    },
+    {
+      "set": "Before EFFA",
+      "area": "foundry vestibule",
+      "yaw": 4096,
+      "filename": "frame-3215.bmp",
+      "sha256": "e036bbf9b9d6f0447d6cc6573e586a7f7e8d2b1139f94f10aa749b81a5913a68"
+    },
+    {
+      "set": "Arena paving draft DDF1",
+      "area": "foundry vestibule",
+      "yaw": 4096,
+      "filename": "frame-53.bmp",
+      "sha256": "0f6e44e51560d09fc2158d31bbee5e4630c0effa4bd9adae0dd7a48e34dc4af3"
+    },
+    {
+      "set": "Before EFFA",
+      "area": "foundry vestibule",
+      "yaw": 8192,
+      "filename": "frame-3217.bmp",
+      "sha256": "b3fb001605bf50826a3ddd2687378c75a7602fd4baff68a9e1e8b71b34eac1ed"
+    },
+    {
+      "set": "Arena paving draft DDF1",
+      "area": "foundry vestibule",
+      "yaw": 8192,
+      "filename": "frame-55.bmp",
+      "sha256": "a0c25f371d9fe6c6dbc31d05bd8abb4ecc33405e3d1b7fd50e707d8060a33c66"
+    },
+    {
+      "set": "Before EFFA",
+      "area": "foundry vestibule",
+      "yaw": 12288,
+      "filename": "frame-3219.bmp",
+      "sha256": "852941c4d8dc64a8bba5f43f76c9a8ee9d80a776418d8bd1a37ebf3cbba461bf"
+    },
+    {
+      "set": "Arena paving draft DDF1",
+      "area": "foundry vestibule",
+      "yaw": 12288,
+      "filename": "frame-57.bmp",
+      "sha256": "be3e697bbb072fb0faee41d1cbabde54ecac3269741ce86f0e385b6dd230ad8a"
+    },
+    {
+      "set": "Before EFFA",
+      "area": "Ash Warden chamber",
+      "yaw": 0,
+      "filename": "frame-3244.bmp",
+      "sha256": "8ff6ea5d0725f497be3248050c08c86fe834c00ee441d7ddd5cfffc8410682fa"
+    },
+    {
+      "set": "Arena paving draft DDF1",
+      "area": "Ash Warden chamber",
+      "yaw": 0,
+      "filename": "frame-80.bmp",
+      "sha256": "7189f157280c3b3138c2faad83b32fd41762e8771242b7d2835534dc9ec52a2e"
+    },
+    {
+      "set": "Before EFFA",
+      "area": "Ash Warden chamber",
+      "yaw": 4096,
+      "filename": "frame-3246.bmp",
+      "sha256": "a2e7ca3a1ad3cd00cfe4b799f095efc1db3370adca1db11ea5c23e3b2ddc7d2c"
+    },
+    {
+      "set": "Arena paving draft DDF1",
+      "area": "Ash Warden chamber",
+      "yaw": 4096,
+      "filename": "frame-82.bmp",
+      "sha256": "09af33cee9ec13f657ad7ebbf282ad26b369d47d7376136485307b6618a687bb"
+    },
+    {
+      "set": "Before EFFA",
+      "area": "Ash Warden chamber",
+      "yaw": 8192,
+      "filename": "frame-3248.bmp",
+      "sha256": "70f4ab87a4b957295e8e7ba1018ca68a514fc4778d0717ec1f113a39dc3a382a"
+    },
+    {
+      "set": "Arena paving draft DDF1",
+      "area": "Ash Warden chamber",
+      "yaw": 8192,
+      "filename": "frame-84.bmp",
+      "sha256": "f505fe1ab5bd56a706c51c9a63bf7f927e3f7f6639f15895b18a4839729a4d1a"
+    },
+    {
+      "set": "Before EFFA",
+      "area": "Ash Warden chamber",
+      "yaw": 12288,
+      "filename": "frame-3250.bmp",
+      "sha256": "0575dbf75ff9335449abca4f0a8d44c3b6ee7e806e61c61e8bffede370de97d3"
+    },
+    {
+      "set": "Arena paving draft DDF1",
+      "area": "Ash Warden chamber",
+      "yaw": 12288,
+      "filename": "frame-86.bmp",
+      "sha256": "8a36d9e7bc40c479f68d1bb9875d351486e231c88ba2772e2293963434e53750"
+    },
+    {
+      "set": "Before EFFA",
+      "area": "Ash Imp vent gallery",
+      "yaw": 0,
+      "filename": "frame-3310.bmp",
+      "sha256": "622ba9feac7894f0e823c16dc26acae1cf8705514628c59e64ea26a695441ffa"
+    },
+    {
+      "set": "Arena paving draft DDF1",
+      "area": "Ash Imp vent gallery",
+      "yaw": 0,
+      "filename": "frame-140.bmp",
+      "sha256": "ffd9a7ab965a72f8079340b1673fb9558fddb3bbca9ceff41f2ba7d8dcffeb28"
+    },
+    {
+      "set": "Before EFFA",
+      "area": "Ash Imp vent gallery",
+      "yaw": 4096,
+      "filename": "frame-3312.bmp",
+      "sha256": "902a40b6cde7efaf011fa5e5cca0957e780ec24aea2f17117acddafff9429bbf"
+    },
+    {
+      "set": "Arena paving draft DDF1",
+      "area": "Ash Imp vent gallery",
+      "yaw": 4096,
+      "filename": "frame-142.bmp",
+      "sha256": "0d09faca47490f368d210e4fc445417acc19f1f5e87bf84dbdb278cc5289cb4c"
+    },
+    {
+      "set": "Before EFFA",
+      "area": "Ash Imp vent gallery",
+      "yaw": 8192,
+      "filename": "frame-3314.bmp",
+      "sha256": "c4fbd91dceb4fadf5c29f4cf2c362fdc4aba01f40be5f24e73af17661f7e5ad7"
+    },
+    {
+      "set": "Arena paving draft DDF1",
+      "area": "Ash Imp vent gallery",
+      "yaw": 8192,
+      "filename": "frame-144.bmp",
+      "sha256": "6cdb7a9ef15926bc32215a9ab0dbca93875e59a8925d510281467c70412c8425"
+    },
+    {
+      "set": "Before EFFA",
+      "area": "Ash Imp vent gallery",
+      "yaw": 12288,
+      "filename": "frame-3316.bmp",
+      "sha256": "f90ada70a384840777e64579d726519200889f8fc27f3762ee0f980adeaef4d2"
+    },
+    {
+      "set": "Arena paving draft DDF1",
+      "area": "Ash Imp vent gallery",
+      "yaw": 12288,
+      "filename": "frame-146.bmp",
+      "sha256": "12377e88be51191c7760c0b1a19e1b633b9ee663859366345ff3065650802f32"
+    }
+  ],
+  "artistic_acceptance": "pending user review; no overall completion claim",
+  "human_pacing": "unmeasured"
+}

@@ -73,7 +73,22 @@ pub fn template() -> Template {
             zones.insert((x, z, 0), earth);
         }
     }
-    for x in 6..8 {
+    // Worn red-and-brass bonds in real cache paving frame the Warden court.
+    // Four rotations join the dark panels without adding floor objects or
+    // changing the encounter's collision, warning interval or escape tiles.
+    for (x, z, rotation) in [(6, 8, 0), (7, 8, 1), (7, 9, 2), (6, 9, 3)] {
+        zones.insert(
+            (x, z, 0),
+            Source {
+                x: 458,
+                z: 1086,
+                rotation,
+                ..stone
+            },
+        );
+    }
+    // The Imp's ash-stained vent gallery stays quieter than the main foundry.
+    for x in 8..10 {
         for z in 8..10 {
             zones.insert((x, z, 0), ash);
         }
