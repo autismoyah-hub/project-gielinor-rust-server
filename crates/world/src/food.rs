@@ -221,13 +221,16 @@ pub fn eat_slot(
     animation: u16,
     mut emit: impl FnMut(Event),
 ) -> Result<bool, stat_ops::Error> {
+    let ordinary=|id| id>=0 && !items.stackable.contains(&id)
+        && !items.dummy.contains(&id)
+        && !items.notes.get(&id).is_some_and(|v|v.template!=0)
+        && !items.placeholders.get(&id).is_some_and(|v|v.template!=0)
+        && !items.transforms.get(&id).is_some_and(|v|v.template!=0);
     if inventory
         .get(slot)
         .is_none_or(|item| item.id != food.id || item.count != 1)
-        || items.stackable.contains(&food.id)
-        || food
-            .replacement
-            .is_some_and(|id| items.stackable.contains(&id))
+        || !ordinary(food.id)
+        || food.replacement.is_some_and(|id|id==food.id || !ordinary(id))
     {
         return Ok(false);
     }
@@ -242,16 +245,21 @@ pub fn eat_slot(
         let mut credit = Insert::new(id, 1);
         credit.slot = slot;
         credit.strict_slot = Some(slot);
-        if next_inventory.insert(items, credit).is_err() {
+        if next_inventory.insert(items, credit).is_err()
+            || next_inventory.get(slot).is_none_or(|item|item.id!=id || item.count!=1 || item.vars!=0) {
             return Ok(false);
         }
     }
+    if food.heal<0 {return Err(stat_ops::Error::NegativeConstant);}
     let mut next_stats = stats.clone();
-    let update = next_stats.apply(hitpoints, Operation::Heal, food.heal, 0, true)?;
+    let current=stats.current(hitpoints) as u8 as i32;
+    let base=stats.base(hitpoints) as u8 as i32;
+    let gain=food.heal.min((base-current).max(0));
+    let update = if gain>0 {Some(next_stats.apply(hitpoints,Operation::Add,gain,0,true)?)} else {None};
     *inventory = next_inventory;
     *stats = next_stats;
     emit(Event::Animation(animation));
-    emit(Event::Stat(update));
+    if let Some(update)=update {emit(Event::Stat(update));}
     emit(Event::Message(food.message.clone()));
     emit(Event::Delay(food.delay));
     Ok(true)
@@ -289,6 +297,22 @@ impl Transition {
 mod tests {
     use super::*;
     use crate::inventory::{Item, StackType};
+    #[test]
+    fn ordinary_food_preserves_overhealed_health_and_rejects_malformed_exchange() {
+        for hp in [50,99,115] {
+            let mut inv=Inventory::new(2,StackType::Normal,false);for slot in 0..2{inv.restore_slot(slot,Some(Item{id:1,count:1,vars:0})).unwrap();}
+            let mut stats=Stats::default();stats.set_base(3,99);stats.set_current(3,hp);let xp=stats.fine_xp(3);let mut events=Vec::new();
+            let food=Edible{id:1,heal:20,delay:3,replacement:None,message:"Shark".into()};
+            assert!(eat_slot(&food,1,&mut inv,&mut stats,&Catalog::default(),3,829,|e|events.push(e)).unwrap());
+            assert_eq!(stats.current(3),if hp==50{70}else{hp});assert_eq!(stats.fine_xp(3),xp);assert!(inv.get(1).is_none());assert_eq!(inv.get(0).unwrap().id,1);assert_eq!(events.len(),if hp==50{4}else{3});
+        }
+        for mode in 0..8 {
+            let mut inv=Inventory::new(2,if mode==7{StackType::Always}else{StackType::Normal},false);inv.restore_slot(1,Some(Item{id:1,count:1,vars:0})).unwrap();if mode==7{inv.restore_slot(0,Some(Item{id:2,count:1,vars:0})).unwrap();}
+            let mut items=Catalog::default();match mode{0=>{items.dummy.insert(1);},1=>{items.notes.insert(1,crate::inventory::Template{link:8,template:799});},2=>{items.placeholders.insert(1,crate::inventory::Template{link:8,template:14401});},3=>{items.transforms.insert(2,crate::inventory::Template{link:8,template:1});},4=>{items.stackable.insert(2);},_=>{}}
+            let food=Edible{id:1,heal:if mode==6{-1}else{20},delay:3,replacement:Some(if mode==5{1}else{2}),message:"Food".into()};let mut stats=Stats::default();stats.set_base(3,99);stats.set_current(3,115);let before=(inv.clone(),stats.clone());let mut events=Vec::new();
+            let result=eat_slot(&food,1,&mut inv,&mut stats,&items,3,829,|e|events.push(e));if mode==6{assert_eq!(result,Err(stat_ops::Error::NegativeConstant));}else{assert_eq!(result,Ok(false));}assert_eq!((inv,stats),before);assert!(events.is_empty());
+        }
+    }
     #[test]
     fn selected_bite_keeps_earlier_identical_food_and_empty_slot_untouched() {
         let mut inv = Inventory::new(4, StackType::Normal, false);

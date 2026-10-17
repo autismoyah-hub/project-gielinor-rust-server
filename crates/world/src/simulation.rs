@@ -2008,29 +2008,12 @@ impl World {
                 let selected = self.slot_preserving_foods.contains(&food.id);
                 let hp_before = p.data.stats.current(3) as u8;
                 let fine_xp_before = p.data.stats.fine_xp(3);
-                let eaten = if selected {
-                    crate::food::eat_slot(
-                        food,
-                        slot,
-                        &mut p.data.inventory,
-                        &mut p.data.stats,
-                        &self.object_types,
-                        3,
-                        self.eating_animation,
-                        |event| emitted.push(event),
-                    )
-                } else {
-                    crate::food::eat(
-                        food,
-                        &mut p.data.inventory,
-                        &mut p.data.stats,
-                        &self.object_types,
-                        3,
-                        self.eating_animation,
-                        |event| emitted.push(event),
-                    )
-                }
-                .map_err(|_| ActionError::InvalidStat)?;
+                let eaten = crate::food::eat_slot(
+                    food,slot,&mut p.data.inventory,&mut p.data.stats,
+                    &self.object_types,3,self.eating_animation,
+                    |event| emitted.push(event),
+                ).map_err(|_| ActionError::InvalidStat)?;
+                if !eaten {return Err(ActionError::InvalidItem);}
                 if eaten && selected {
                     self.events.push(WorldEvent::FoodTransition {
                         actor: id,
@@ -4256,6 +4239,12 @@ mod tests {
         )));
     }
     #[test]
+    fn queued_ordinary_food_uses_selected_duplicate_and_can_eat_after_brew_overheal() {
+        let (mut w,actor)=admitted();let food=crate::food::Edible{id:991,heal:20,delay:3,replacement:None,message:"Shark".into()};w.foods.insert(food.id,food);
+        let p=w.players.get_mut(actor.slot as usize).unwrap();p.data.stats.set_base(3,99);p.data.stats.set_current(3,115);for slot in [0,2]{p.data.inventory.restore_slot(slot,Some(crate::inventory::Item{id:991,count:1,vars:0})).unwrap();}
+        w.submit(actor,Action::EatItemSlot{slot:2,item:991}).unwrap();w.tick().unwrap();let p=w.players.get(actor.slot as usize).unwrap();assert_eq!(p.data.stats.current(3),115);assert!(p.data.inventory.get(2).is_none());assert_eq!(p.data.inventory.get(0).unwrap().id,991);assert!(p.protection.delayed());
+    }
+    #[test]
     fn queued_food_uses_current_slot_and_blocks_repeated_eating_until_processed_expiry() {
         let (mut world, actor) = admitted();
         world.foods.insert(
@@ -4271,16 +4260,9 @@ mod tests {
         let data = world.data_mut(actor).unwrap();
         data.stats.set_base(3, 10);
         data.stats.set_current(3, 2);
-        data.inventory
-            .restore_slot(
-                2,
-                Some(crate::inventory::Item {
-                    id: 7,
-                    count: 3,
-                    vars: 0,
-                }),
-            )
-            .unwrap();
+        // Ordinary food uses one item per slot; malformed nonstackable stacks
+        // are rejected by the gameplay adapter rather than defining queue timing.
+        for slot in [2,3,5] {data.inventory.restore_slot(slot,Some(crate::inventory::Item{id:7,count:1,vars:0})).unwrap();}
         world.submit(actor, Action::EatSlot { slot: 2 }).unwrap();
         world.submit(actor, Action::EatSlot { slot: 2 }).unwrap();
         world
@@ -4288,10 +4270,7 @@ mod tests {
             .unwrap();
         world.tick().unwrap();
         assert_eq!(world.data(actor).unwrap().stats.current(3), 5);
-        assert_eq!(
-            world.data(actor).unwrap().inventory.get(2).unwrap().count,
-            2
-        );
+        assert!(world.data(actor).unwrap().inventory.get(2).is_none());
         assert!(world.protection(actor).unwrap().delayed());
         assert!(!world.protection(actor).unwrap().suspended);
         assert!(world.drain_events().iter().any(|e| matches!(
@@ -4305,13 +4284,11 @@ mod tests {
         world.tick().unwrap();
         assert!(!world.protection(actor).unwrap().suspended);
         assert_eq!(world.data(actor).unwrap().stats.current(3), 5);
-        world.submit(actor, Action::EatSlot { slot: 2 }).unwrap();
+        world.submit(actor, Action::EatSlot { slot: 3 }).unwrap();
         world.tick().unwrap();
         assert_eq!(world.data(actor).unwrap().stats.current(3), 8);
-        assert_eq!(
-            world.data(actor).unwrap().inventory.get(2).unwrap().count,
-            1
-        );
+        assert!(world.data(actor).unwrap().inventory.get(3).is_none());
+        assert_eq!(world.data(actor).unwrap().inventory.get(5).unwrap().count,1);
     }
     #[test]
     fn delay_expiry_is_processed_after_input_and_does_not_stop_existing_routes() {
