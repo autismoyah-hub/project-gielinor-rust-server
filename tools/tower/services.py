@@ -1,5 +1,5 @@
 """Drive Cinderworks services through normal client packets, with outcome assertions."""
-import argparse, json, pathlib, time, subprocess, sys
+import argparse, json, pathlib, time, subprocess, sys, csv
 from tower_gateway import Gateway
 p = argparse.ArgumentParser()
 p.add_argument('--directory', type=pathlib.Path, required=True)
@@ -15,6 +15,7 @@ p.add_argument('--coolant-lesson', action='store_true')
 a = p.parse_args()
 a.output.mkdir(parents=True, exist_ok=True)
 g = Gateway(a.directory, a.output / 'services-actions.ndjson')
+mining_trace = []
 
 def count(s, item):
     return sum((i['count'] for i in s['items'] if i['id'] == item))
@@ -34,6 +35,42 @@ def walk(x, z):
 
 def obj(id, x, z):
     return g.act(f'object {id} {x} {z} 1')
+
+def mine_material(rock, x, z, material):
+    # A competing miner can deplete the selected rock and invalidate our
+    # normal interaction. Observe its real scene state and click again after
+    # respawn; keep the original 55-second bound and normal mining clocks.
+    end = time.monotonic() + 55
+    retry = 0
+    attempts = 0
+    depleted = False
+    while time.monotonic() < end:
+        state = g.observe()
+        if count(state, material) > 0:
+            return state
+        if not state['ready']:
+            time.sleep(.2)
+            continue
+        g.act('inspect')
+        time.sleep(.2)
+        rows = list(csv.DictReader((g.directory / 'scene-objects.csv').open(encoding='utf8', newline='')))
+        cell = [r for r in rows if r['plane'] == '0' and r['x'] == str(x) and r['z'] == str(z) and r['shape'] == '10' and r['rejected'] == 'false']
+        active = any(int(r['id']) == rock for r in cell)
+        if not active:
+            if not depleted:
+                mining_trace.append({'rock': rock, 'event': 'depleted_scene_observed', 'tick': state['tick'], 'actual_ids': [int(r['id']) for r in cell]})
+            depleted = True
+            retry = 0
+        elif time.monotonic() >= retry:
+            attempts += 1
+            mining_trace.append({'rock': rock, 'event': 'normal_mine_click', 'attempt': attempts, 'after_depletion': depleted, 'tick': state['tick']})
+            obj(rock, x, z)
+            depleted = False
+            retry = time.monotonic() + 8
+        time.sleep(.2)
+    walk(10424, 120)
+    raise TimeoutError('No ordinarily mined material within the original 55-second bound')
+
 
 def itemop(item, label):
     s = g.wait(lambda state:any(i['id']==item and any(v.lower()==label.lower() for v in i['operations']) for i in state['items']),40)
@@ -95,11 +132,9 @@ def workshop():
         g.wait(lambda state:sum(i['count'] > 0 for i in state['items']) < before, 20)
     if count(g.observe(), 2349) == 0:
         if count(g.observe(), 438) == 0:
-            obj(11360, 10402, 118)
-            g.wait(lambda s: count(s, 438) > 0, 55)
+            mine_material(11360, 10402, 118, 438)
         if count(g.observe(), 436) == 0:
-            obj(10943, 10412, 118)
-            g.wait(lambda s: count(s, 436) > 0, 55)
+            mine_material(10943, 10412, 118, 436)
         obj(37947, 10402, 114)
         g.wait(lambda s: 270 in s['modals'], 55)
         time.sleep(1)
@@ -230,5 +265,5 @@ for stage in stages:
     if a.scene_checks:check_scene('after-'+stage)
 read_journal()
 s=g.wait(lambda s:s['ready'] and all(label in s['journal'] for label in ['Done: Workshop:','Done: Kitchen:','Done: Altar:']),30)
-(a.output/'services-summary.json').write_text(json.dumps({'accepted':True,'order':stages,'state':s},indent=2),encoding='utf8')
+(a.output/'services-summary.json').write_text(json.dumps({'accepted':True,'order':stages,'mining_trace':mining_trace,'state':s},indent=2),encoding='utf8')
 print('All three services confirmed through authoritative journal',flush=True)

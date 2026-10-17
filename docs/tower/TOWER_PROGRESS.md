@@ -1,3 +1,11 @@
+## Current DDF replay diagnostic: shared-rock retry corrected; continuations running
+
+The first native Run2 replay failed at142.85seconds: both real characters selected the tin rock; the headless miner obtained ore, correctly invalidating the native interaction's old location revision. The native driver waited55seconds without reclicking. The headless preparation passed192.83seconds, then its shared-court wait deliberately aborted after the native failure. Both original runs remain FAILED; neither is credited with guardian victories or rewards.
+
+The normal-action driver now observes the actual scene rock, waits for its real respawn and retries the ordinary interaction within the same55-second bound. No game mining timers, ownership, XP, inventory or save rules changed. A separate live check executes the unchanged actual public function: the native observes depleted11390 at tick909, sees restored11360, normally clicks at tick912, and earns one real tin/87MiningXP (175->262). The helper earns its own real ore and spends it by normal Drop; no XP is undone. A setup-only capacity assertion failure is also retained separately. `LIVE_MINING_RESPAWN_20261017.json` records the scope.
+
+Current native/headless Run2 continuations preserve their legitimately earned service progress and are recorded in separate outputs. They are not clean uninterrupted runs. Full DDF combat/readability/reward/reconnect results remain pending; earlier EFFA lifecycle evidence stays historical. Continue the production mandate; user artistic acceptance is still outstanding.
+
 ## Current arena paving: native comparison checked; gameplay replays running
 
 The current DDF1B8B3415FF4D9 draft gives the Warden court and its vestibule real dark paving with worn red/brass bonds from cachezone458,1086. Four rotated panels join the foundation; the former foundry ash242,620 moves to the Imp gallery, separating the two encounters visually. No scenery, renderer, hazard, combat, reward or save logic changes. All12 matching native before/after views are inspected, with exact same-character items/equipment/all25XP/journal preserved and all eight landmarks reconstructed. New source14727 terrain/location files0/1 are byte-identical between server/native caches; all81 relevant vertices are height30 and flags4, without floor-block/bridge bits.

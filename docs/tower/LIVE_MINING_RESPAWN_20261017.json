@@ -1,0 +1,52 @@
+{
+  "server_runtime": "8a0ea4e arena paving / DDF1B8B3415FF4D996C719898E830A4EE2F83F982095DB6333CBDD11AC69B8C1",
+  "change_scope": "Normal-action services.py driver only; observes real scene rock IDs and retries a normal mining click after depletion/respawn or interrupted interaction. Original55-second bound retained, no engine/timer/resource/XP/save changes.",
+  "original_native_run": {
+    "accepted": false,
+    "evidence": "evidence/native-arena24-replay/scenario-timing.json",
+    "seconds": 142.85,
+    "reason": "Other real miner depleted the shared tin rock during the native interaction; stale revision correctly cancelled it, but the driver waited without retrying. Native retained its legitimately earned kitchen service and received no guardians/reward."
+  },
+  "original_headless_run": {
+    "accepted": false,
+    "preparation_completed_seconds": 192.83,
+    "evidence": "evidence/headless-arena25-replay/scenario-timing.json",
+    "reason": "Preparation completed, then the controller deliberately aborted its shared-court wait after native failure. No encounter/reward was credited."
+  },
+  "live_actual_public_function_probe": {
+    "accepted": true,
+    "method": "Unchanged actual public mine_material function executed against the real native gateway after another real character depleted the rock. Real sceneID/respawn, ordinary clicks and actual ore/XP; no mocks or engine changes.",
+    "trace": [
+      {
+        "rock": 11360,
+        "event": "depleted_scene_observed",
+        "tick": 909,
+        "actual_ids": [
+          11390
+        ]
+      },
+      {
+        "rock": 11360,
+        "event": "normal_mine_click",
+        "attempt": 1,
+        "after_depletion": true,
+        "tick": 912
+      },
+      {
+        "rock": 11360,
+        "event": "normal_mine_click",
+        "attempt": 2,
+        "after_depletion": false,
+        "tick": 927
+      }
+    ],
+    "native_actual_tin": 1,
+    "native_mining_XP_before": 175,
+    "native_mining_XP_after": 262,
+    "helper_actual_tin": 1,
+    "helper_extra_ore": "Spent by ordinary Drop after the probe; actual earned XP stays earned.",
+    "no_mocks": true
+  },
+  "retained_setup_failure": "evidence/arena-mining-respawn-live-probe.log: fixed28-slot array was incorrectly counted as occupied capacity, before any helper mining. Corrected retry counts positive slot contents; original remains failed.",
+  "current_followup": "Separate native/headless Run2 continuations are running against the same live clients, preserving legitimate preparation. Not clean uninterrupted runs; original failures stay failed. New DDF phase/readability/reward/reconnect acceptance remains pending."
+}
