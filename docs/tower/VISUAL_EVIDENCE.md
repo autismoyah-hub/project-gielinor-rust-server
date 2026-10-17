@@ -71,3 +71,7 @@ Private `evidence/composed-paving-comparison.html` compares the preceding six-la
 ## Corrected locked-guardian native check
 
 `evidence/native-gate17-summary.json` independently accepts one denial message across eight server ticks and one-command retreat without health, XP or progression changes. Original native-gate17 frame116 shows the actual hot boiler mouth, Imp and initial run journal; inspected. Source/build and safe frame hashes are in `COMPOSITION_GATE_CHECKPOINT_20261017.json`. Original native-paving17 gate-retreat failure remains failed. The separate fresh native-composition18 full route is pending.
+
+## Fresh 4ac native full route and settled full gallery
+
+`evidence/native-composition18` accepts the fresh first clear, real rescue, full-pack first claim/duplicate and exact portals in 832.72 automated seconds. Warden: native frames 1581/1999/2449, quench 1585, arena victory 2745, retreat 2762. All phase/victory views inspected. Original earned first-clear walkthrough is `evidence/native-4ac-complete-gallery/gallery.html`; all 56 views at fourteen points were inspected with the actual journal visible. `NATIVE_FIRST_CLEAR_4AC.json` contains safe hashes and timings. This is not artistic acceptance or proof for the unpublished workshop/poultry draft. The fresh headless20 run remains pending; two prior headless launcher/gate diagnostics remain failed.

@@ -1,0 +1,478 @@
+{
+  "status": "fresh native first clear accepted; broader production and user artistic acceptance remain pending",
+  "engine": "4acff21229f0e118a49651508ec2c30fa1b6e8ca",
+  "server_executable_sha256": "bad0d3944bc6727215cb687917c83ce4fc2b4724a57e918f686ab4e1afa67fd7",
+  "checks": [
+    "ordinary onboarding",
+    "locked guardian denial/no XP",
+    "optional coolant lesson/no resources or progress granted",
+    "workshop-first preparation through all three services",
+    "six real personal scene landmarks",
+    "real lethal rescue preserving services/items/equipment",
+    "Ash Imp",
+    "Ash Warden all phases and coolant",
+    "first 500 coins and one beer/full-pack recovery/exactly once",
+    "normal exit/return preserving inventory/equipment/all XP/journal"
+  ],
+  "warden": {
+    "hp": 11,
+    "shrimp_remaining": 18,
+    "phases": [
+      2,
+      3
+    ],
+    "coolant_uids": [
+      73
+    ],
+    "frame_sequences": [
+      1581,
+      1999,
+      2449,
+      2762
+    ],
+    "feedback_captures": [
+      {
+        "reason": "coolant steam and flinch",
+        "sequence": 1585
+      },
+      {
+        "reason": "victory in arena",
+        "sequence": 2745
+      }
+    ]
+  },
+  "timing": {
+    "automated_seconds": 832.72,
+    "method": "continuous normal-action automated client; includes real preparation, deliberate rescue and evidence capture; not a human pacing guarantee",
+    "steps": [
+      {
+        "step": "services.py",
+        "arguments": [
+          "--onboard",
+          "--gate-check",
+          "--order",
+          "workshop-first",
+          "--scene-checks",
+          "--coolant-lesson",
+          "--native-frames"
+        ],
+        "seconds": 293.63,
+        "exit_code": 0
+      },
+      {
+        "step": "recovery.py",
+        "arguments": [],
+        "seconds": 40.78,
+        "exit_code": 0
+      },
+      {
+        "step": "guardian.py",
+        "arguments": [
+          "imp",
+          "--style",
+          "accurate",
+          "--native-frames",
+          "--label",
+          "paving"
+        ],
+        "seconds": 120.75,
+        "exit_code": 0
+      },
+      {
+        "step": "guardian.py",
+        "arguments": [
+          "warden",
+          "--style",
+          "accurate",
+          "--require-coolant",
+          "--native-frames",
+          "--timeout",
+          "600",
+          "--label",
+          "paving"
+        ],
+        "seconds": 324.3,
+        "exit_code": 0
+      },
+      {
+        "step": "restoration.py",
+        "arguments": [
+          "--label",
+          "victory",
+          "--expected",
+          "18526,18511,16811,16811,16810,18525",
+          "--native-frames"
+        ],
+        "seconds": 1.8,
+        "exit_code": 0
+      },
+      {
+        "step": "claim.py",
+        "arguments": [
+          "--full-pack",
+          "--native-frames"
+        ],
+        "seconds": 39.86,
+        "exit_code": 0
+      },
+      {
+        "step": "exit_return.py",
+        "arguments": [],
+        "seconds": 11.59,
+        "exit_code": 0
+      }
+    ],
+    "human_20_to_30_minute_objective": "unmeasured; automated critical-path timing is not a human pacing guarantee"
+  },
+  "gallery": {
+    "areas": 14,
+    "views": 56,
+    "all_inspected": true,
+    "interface": "actual earned journal; ordinary post-clear messages",
+    "frames": [
+      {
+        "area": "arrival",
+        "yaw": 0,
+        "sequence": 2960,
+        "sha256": "52b2276b102d5a8d919584255c117ca88bce3ef85d6ec96a78ffb13bd1beb298"
+      },
+      {
+        "area": "arrival",
+        "yaw": 4096,
+        "sequence": 2962,
+        "sha256": "780e9fb197fe102490a76bd10ddff0c21b02d74399ccdbc1eb80c2de9a20e2c8"
+      },
+      {
+        "area": "arrival",
+        "yaw": 8192,
+        "sequence": 2964,
+        "sha256": "428b71c66200e49123aa86d24cd00a46b5f83db357c50ba589dc21d9a8f78910"
+      },
+      {
+        "area": "arrival",
+        "yaw": 12288,
+        "sequence": 2966,
+        "sha256": "44b8ee98f47dc9af7c920816ca44602e5b336c7cf6755fd27d4d6d7a0679749a"
+      },
+      {
+        "area": "sanctuary",
+        "yaw": 0,
+        "sequence": 2989,
+        "sha256": "d340d36711609199500f093a858a2faf6016af072c34a69ead661eed840d7958"
+      },
+      {
+        "area": "sanctuary",
+        "yaw": 4096,
+        "sequence": 2991,
+        "sha256": "c0c9001fc1aa45a701fbbe814c904d2f58c5520485284c34c0fdda00451a27a8"
+      },
+      {
+        "area": "sanctuary",
+        "yaw": 8192,
+        "sequence": 2993,
+        "sha256": "f540708a30a08c9f7828a0cfb17616c94e9b8dc0ea38ee978db4e9c71353f9cd"
+      },
+      {
+        "area": "sanctuary",
+        "yaw": 12288,
+        "sequence": 2995,
+        "sha256": "e5cf95b78b886b67f5036deee1e1376a8da095267116bbae591266a932f5d965"
+      },
+      {
+        "area": "restoration hearth",
+        "yaw": 0,
+        "sequence": 3011,
+        "sha256": "3149e4b35d6794a296246cfc1dfc5d46b4936dce3d84ca5a33ec08ecdca23b38"
+      },
+      {
+        "area": "restoration hearth",
+        "yaw": 4096,
+        "sequence": 3013,
+        "sha256": "07967b13b5252d8fe255d3b80e4a471e47919f704327558d1195daa50e237ca7"
+      },
+      {
+        "area": "restoration hearth",
+        "yaw": 8192,
+        "sequence": 3015,
+        "sha256": "2bc909c4e8ef7d1980d844b2e2c941886eca8dd88ee4d52e66d2ac33abd766bf"
+      },
+      {
+        "area": "restoration hearth",
+        "yaw": 12288,
+        "sequence": 3017,
+        "sha256": "02bc80bf6d17d799cf321edd78148762ef9ad94d0c2d15b25e8e05f2fe3e9743"
+      },
+      {
+        "area": "plaque and reward",
+        "yaw": 0,
+        "sequence": 3042,
+        "sha256": "f71e2282c7d0de3145d8a039c2e4328d54ea103856c2bcd7d8952618d294fd8c"
+      },
+      {
+        "area": "plaque and reward",
+        "yaw": 4096,
+        "sequence": 3044,
+        "sha256": "3b4112750701b38b564f3ec0729efec3638a846ff4cc7d56c438dc81c31ef2a2"
+      },
+      {
+        "area": "plaque and reward",
+        "yaw": 8192,
+        "sequence": 3046,
+        "sha256": "5fcf1a4f59d3acd14535a6ce96c09f1007a0f879f70fdcdb3b28e1f4e6fced41"
+      },
+      {
+        "area": "plaque and reward",
+        "yaw": 12288,
+        "sequence": 3048,
+        "sha256": "a5b23e24acd756b95d95650ac9f18f52fe582daca45f542ae1782241bd9d4cd1"
+      },
+      {
+        "area": "workshop",
+        "yaw": 0,
+        "sequence": 3094,
+        "sha256": "8305fb03834d7a583238cb9ab478fd7e61046950fa7a556076cb597c48fca53e"
+      },
+      {
+        "area": "workshop",
+        "yaw": 4096,
+        "sequence": 3096,
+        "sha256": "1e495df6ee747a9bed67ef06d601f03bf21012a87ad94c1e2f090f271e7394a0"
+      },
+      {
+        "area": "workshop",
+        "yaw": 8192,
+        "sequence": 3098,
+        "sha256": "e9c721a2feb2b54a3d83c40089bee7b4cb28c48919151e2551e6d051c2cd9749"
+      },
+      {
+        "area": "workshop",
+        "yaw": 12288,
+        "sequence": 3100,
+        "sha256": "10cdc8d1385f6cf174254f2b4232a0233c4df633830c44ce8ad6b3daffca299f"
+      },
+      {
+        "area": "moss supply court",
+        "yaw": 0,
+        "sequence": 3144,
+        "sha256": "371337c8468c0a98760e01364d0b63014c51791a70f9e77e926ac220ae81f918"
+      },
+      {
+        "area": "moss supply court",
+        "yaw": 4096,
+        "sequence": 3146,
+        "sha256": "77e4304132c4578d5d9f069c3261339544125cb9ef48af9f1821d7ee07c889e5"
+      },
+      {
+        "area": "moss supply court",
+        "yaw": 8192,
+        "sequence": 3148,
+        "sha256": "7a5cc88a27989be27008895db6f030c18b36ba47e279c404ea01f91787e060b6"
+      },
+      {
+        "area": "moss supply court",
+        "yaw": 12288,
+        "sequence": 3150,
+        "sha256": "5dcfb16b18d5e69e13a6481a8374dcdf2f5636704d475debfe2b916f39dbc7b9"
+      },
+      {
+        "area": "southern processional hall",
+        "yaw": 0,
+        "sequence": 3198,
+        "sha256": "87dbd7f90c6ff252ea172d4a097eaa47b1666b8aead2fe8fb93870a0653ea357"
+      },
+      {
+        "area": "southern processional hall",
+        "yaw": 4096,
+        "sequence": 3200,
+        "sha256": "3b6f8eb885e829ec33935d2189f8a10928c73904c4716874b3fa338aefab75f4"
+      },
+      {
+        "area": "southern processional hall",
+        "yaw": 8192,
+        "sequence": 3202,
+        "sha256": "7b53b22d02e0048c7c290ec2a821e18eedc83a990e193dad3d6cda63e865a02c"
+      },
+      {
+        "area": "southern processional hall",
+        "yaw": 12288,
+        "sequence": 3204,
+        "sha256": "72750e4a19903188b903ca60f1391b1f6bde739a417a21c0ed6ab223442c7b17"
+      },
+      {
+        "area": "poultry supply court",
+        "yaw": 0,
+        "sequence": 3246,
+        "sha256": "43b4dc2b9122cea5a053e3bd5454baece6e920c2032783df45b830e44f2b392a"
+      },
+      {
+        "area": "poultry supply court",
+        "yaw": 4096,
+        "sequence": 3248,
+        "sha256": "b7fcd43148c16a919f4ac85892c1eab988efbf5fcb047c2e0f252a87d4d1da5f"
+      },
+      {
+        "area": "poultry supply court",
+        "yaw": 8192,
+        "sequence": 3250,
+        "sha256": "0cab2d5f5516a1541b355a406e00d79053920b000e601de7caeb12249bb1b869"
+      },
+      {
+        "area": "poultry supply court",
+        "yaw": 12288,
+        "sequence": 3252,
+        "sha256": "ed1aca62cba68124a337e7baf6d559eafd14c22b989af61eabc89023b6f629a0"
+      },
+      {
+        "area": "waterworks",
+        "yaw": 0,
+        "sequence": 3285,
+        "sha256": "a8817b3ab526a9838dce6c0d28997a4ca01544c4cf2252329ee1b90154bd8ba5"
+      },
+      {
+        "area": "waterworks",
+        "yaw": 4096,
+        "sequence": 3287,
+        "sha256": "2f63f6e1dc2ee2cd5b25c64436b9c10ba0afbebaa989df12f23f4523d788d1d2"
+      },
+      {
+        "area": "waterworks",
+        "yaw": 8192,
+        "sequence": 3289,
+        "sha256": "ac7567bec22735a612f6d64ca0374616bf901cd9572557e4f1dbd4c2cd452bdf"
+      },
+      {
+        "area": "waterworks",
+        "yaw": 12288,
+        "sequence": 3291,
+        "sha256": "abc8f5153dfd1ed66d75d2b523c27aa5347eb050fe3e45b42d508e1f3765c90a"
+      },
+      {
+        "area": "sluice wheel",
+        "yaw": 0,
+        "sequence": 3319,
+        "sha256": "5d41b2377b43752d4f38e1b2ed3a66f9b6c041444d95ebdc11e0cc2b5c8a5cf0"
+      },
+      {
+        "area": "sluice wheel",
+        "yaw": 4096,
+        "sequence": 3321,
+        "sha256": "64aecc3ce416ef536d0f825cf004ca24c1eed0c3eef1115fb129c6c079cbad2f"
+      },
+      {
+        "area": "sluice wheel",
+        "yaw": 8192,
+        "sequence": 3323,
+        "sha256": "a95832f367cfeed6c66a012a307abefb92136f2e5c7034de4a096e767680570d"
+      },
+      {
+        "area": "sluice wheel",
+        "yaw": 12288,
+        "sequence": 3325,
+        "sha256": "e37d91275bf43d88e7bd551d9b428a3707f42379c16a77852d207334fca4f706"
+      },
+      {
+        "area": "grove",
+        "yaw": 0,
+        "sequence": 3409,
+        "sha256": "d92ec15d399ea83f0a815e1f83765f83a6ffc74225f9a838043ea28c9c00b33e"
+      },
+      {
+        "area": "grove",
+        "yaw": 4096,
+        "sequence": 3411,
+        "sha256": "f0378fa674f147a18c6a7d691a71b7cde88d670ad10824418c3be06e2be6b33b"
+      },
+      {
+        "area": "grove",
+        "yaw": 8192,
+        "sequence": 3413,
+        "sha256": "302a213a83350cee3ca1d868420b77d8e9056980b1b426bde01ac0932d466cb2"
+      },
+      {
+        "area": "grove",
+        "yaw": 12288,
+        "sequence": 3415,
+        "sha256": "296c348a5a96b935901932466ef96cee9f00644e6c135638a0fa5d5065565023"
+      },
+      {
+        "area": "foundry vestibule",
+        "yaw": 0,
+        "sequence": 3458,
+        "sha256": "77362a14e689000e05f48af97cbcb43bcb878a3f210e5166efb3a8d77998fc0c"
+      },
+      {
+        "area": "foundry vestibule",
+        "yaw": 4096,
+        "sequence": 3460,
+        "sha256": "ea3bbf046c0184e7daf21a3ab8114129c05b91735da98d9d133d9d5e411e565c"
+      },
+      {
+        "area": "foundry vestibule",
+        "yaw": 8192,
+        "sequence": 3462,
+        "sha256": "5bbabba89a4e396d04bc90178972ac669e5906c538c1c0bd63c478fbbec79502"
+      },
+      {
+        "area": "foundry vestibule",
+        "yaw": 12288,
+        "sequence": 3464,
+        "sha256": "1557b02e75b9f8a2333d3b4f1bad1d99d9c280ea6be757039c3d55a6e8ab3b3b"
+      },
+      {
+        "area": "Ash Warden chamber",
+        "yaw": 0,
+        "sequence": 3488,
+        "sha256": "49a2f0df288228e076e0046d95d112c8cf1d93eca1e1574f4fc1c86e3c2ceb8c"
+      },
+      {
+        "area": "Ash Warden chamber",
+        "yaw": 4096,
+        "sequence": 3490,
+        "sha256": "de1c2f4a0f989353c4596795fe0ae19043f008263017b305785aff14dbb3ed1f"
+      },
+      {
+        "area": "Ash Warden chamber",
+        "yaw": 8192,
+        "sequence": 3492,
+        "sha256": "a9f5ad57df8a48975eae358673a8b07057043071e6ce22465886c3482a3bf30e"
+      },
+      {
+        "area": "Ash Warden chamber",
+        "yaw": 12288,
+        "sequence": 3494,
+        "sha256": "e55edbd80d27417c91f0babd3950657f9c9734eefa96a3672833bf7db50fbb30"
+      },
+      {
+        "area": "Ash Imp vent gallery",
+        "yaw": 0,
+        "sequence": 3553,
+        "sha256": "82e910746a8f4c37f6570cb869e48924df4ff2e2521df6c70a3dacd2dbdf8988"
+      },
+      {
+        "area": "Ash Imp vent gallery",
+        "yaw": 4096,
+        "sequence": 3555,
+        "sha256": "89e8177e1e0527575c20f27a958418eb065557a9d398a2178bfce9f142dd0479"
+      },
+      {
+        "area": "Ash Imp vent gallery",
+        "yaw": 8192,
+        "sequence": 3557,
+        "sha256": "e6d480560597ae939baabf2564ffd1a91c24956c263b42383508ba5a19eb3d36"
+      },
+      {
+        "area": "Ash Imp vent gallery",
+        "yaw": 12288,
+        "sequence": 3559,
+        "sha256": "73315954c7c66f57cfc72fd3da3626686031876d27836656b8c98c8d46173d73"
+      }
+    ]
+  },
+  "pending": [
+    "fresh headless20 full run",
+    "4ac replay/relog/crash checks",
+    "next unpublished workshop/poultry composition native validation",
+    "further production polish",
+    "user artistic acceptance"
+  ]
+}

@@ -19,8 +19,17 @@ def count(s, item):
     return sum((i['count'] for i in s['items'] if i['id'] == item))
 
 def walk(x, z):
+    # A normal server protection tick can discard a click even after the
+    # client UI is ready. Retry an ordinary click rather than forcing input.
     g.act(f'walk {x} {z}')
-    return g.wait(lambda s: s['position'][1:] == [x, z], 55)
+    end=time.monotonic()+55;retry=time.monotonic()+4
+    while time.monotonic()<end:
+        s=g.observe()
+        if s['position'][1:]==[x,z]:return s
+        if s['ready'] and time.monotonic()>=retry:
+            g.act(f'walk {x} {z}');retry=time.monotonic()+4
+        time.sleep(.2)
+    raise TimeoutError(f'Normal walking did not reach {x},{z}')
 
 def obj(id, x, z):
     return g.act(f'object {id} {x} {z} 1')
@@ -60,12 +69,14 @@ if a.gate_check:
     walk(10439, 136)
     s = g.observe()
     xp = s['xp'][:]
+    gate_uid=max((e['uid']for e in s['message_events']),default=-1)
     target = next((n for n in s['npcs'] if n['id'] == 16300))
     g.act(f"npc {target['index']} 2")
-    s = msg('Restore the workshop, kitchen and altar')
+    s = g.wait(lambda s:s['ready'] and any(e['uid']>gate_uid and 'Restore the workshop, kitchen and altar' in e['text'] for e in s['message_events']),40)
     assert s['xp'] == xp, 'Denied guardian must not grant combat XP'
-    g.act('walk 10424 120')
-    g.wait(lambda s: s['position'][1:] == [10424, 120], 55)
+    returned=walk(10424,120)
+    assert returned['xp']==xp
+    (a.output/'gate-check-summary.json').write_text(json.dumps({'accepted':True,'fresh_denial_uids':[e['uid']for e in s['message_events']if e['uid']>gate_uid and 'Restore the workshop, kitchen and altar' in e['text']],'before':s,'returned':returned},indent=2),encoding='utf8')
 def workshop():
     # Kitchen-first replay can legitimately leave a full pack of cooked food.
     # Reserve room through ordinary displayed Drop actions before mining.

@@ -2,6 +2,19 @@
 
 ## Active composition build — sanctuary paving and boiler direction
 
+### Fresh native first clear and full native review now pass on 4acff21
+
+A newly created native character completes the published 4acff21 route in one uninterrupted automated session: normal onboarding; progression-gate denial; harmless coolant lesson; workshop-first services; actual lethal rescue; both guardians; every Warden phase and a new coolant acknowledgement (UID 73); all six real scene changes; 500 coins/one beer with full-pack recovery and duplicate denial; exact portals preserving inventory/equipment/all 25 XP/journal. Warden ends at 11 HP with all 18 shrimp remaining. No administrative action, save edit, item grant or protection bypass is used.
+
+The measured automated route is 832.72 seconds (13m 52.72s), including 40.78 seconds of deliberate lethal recovery and normal evidence capture. Services take 293.63s, Imp 120.75s, Warden 324.30s. This is an automated critical path, not a human first-play pacing guarantee; the 20–30 minute human exploration objective remains unmeasured. Do not add mandatory padding to disguise this distinction.
+
+The same earned first-clear character then completes a fourteen-area/fifty-six-view native walkthrough with its actual journal visible. Every cardinal view was inspected. Private gallery: `evidence/native-4ac-complete-gallery/gallery.html`. Safe source/build/scenario metadata and original frame hashes: `NATIVE_FIRST_CLEAR_4AC.json`. Some individual immediate service captures still catch a transient blank right pane; they remain state/scene diagnostics, and the settled full gallery supplies the visual/UI proof.
+
+The initial automatic headless launcher failed in a legacy shell before connecting; its failed timing/log is retained. The following headless19 gate-retreat attempt also timed out and remains failed. The controller now waits for a fresh denial UID and may re-issue ordinary walking clicks at four-second intervals while ready. It never forces client/server protection. A separate fresh headless20 already passes the gate and harmless lesson and is gathering through a kitchen-first route; full headless combat/reward acceptance remains pending. Current 4ac replay/relog/crash evidence remains separate from the accepted historical six-landmark 1c0d408 crash test.
+
+Unpublished next draft: actual fractured forge paving, a dry earth poultry yard, clearer optional Stab/Lunge guidance and messages connecting each earned restoration with its visible mechanism. Protected source parity, flat ninth-border heights, real clipping and affected suites (24/57/407 with two existing ignores) pass, but that draft is not live or natively reviewed. Production composition and user artistic acceptance remain outstanding.
+
+
 ### Current locked-guardian correction and native proof
 
 Fresh native17 completed onboarding and demonstrated the progression denial, but its original single-command gate retreat timed out; that route and timing receipt remain failed. Source inspection and an added regression reproduce eight repeated rejection messages across eight ticks. Tower-only non-shell denials now cancel the inadmissible Attack after one explanation. The active Warden's temporary shell still retains its normal automatic retry; ownership, progression eligibility, damage and telegraph timing are unchanged.
