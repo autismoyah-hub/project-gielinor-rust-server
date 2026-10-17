@@ -3057,3 +3057,53 @@ Registered both independently decoded Torstol recipes through the existing held-
 combat-mixing-runtime-tests-attempt-001.log: PASS60server409world,1existing ignored; compile3m21s,world49.94s. Tests cover both Torstol forms, all three selected potion pairs in both directions, selected slots, automatic repeat, full-backpack conservation, fineXP and all four live ingredient checks. Guard4108MiB final available (sample minimum selected-j1),78.8percentcommit,682page-ins/s,0.3msdisk,38.6percentCPU. Another compiler and immutable divine native run were informational, not deferral conditions.
 
 Prepared private six-group native scenario covers both Torstol forms and all three selected base types, alternating use direction,45000fineXP at5x and same-save verification. Independent synthetic assessor checks175PASS. Matching server/driver build and actual native acceptance remain pending. Divine acceptance continues on its earlier immutable29BB4F archive; this implementation is not retroactively attributed to those runs.
+
+## Preserved divine defence/ranging deadline failure
+
+openrune-native-divinemiddle-001 on29BB4F archive/driverdivinemiddle001 failed its240second client deadline atphase3/completed7, after all eight Make dispatches. This is failed native acceptance, not resource deferral or a pass inferred from the server. Existing logs, fixture, source and driver remain immutable; work/divinemiddle-native-failure-001.json records hashes. Future eight-profile drivers use360seconds and700server ticks to allow bounded startup/action/save overhead under concurrent load. The successful basic001 driver is unchanged. Fresh middle002 plus same-save acceptance are required; no failed fixture is reset or reused for production replay.
+
+## Native gameplay divinemiddle acceptance (2026-10-16 UTC)
+
+Eight dose-preserving divine upgrades, ordinary crystal dust debited1/2/3/4 twice despite equipped goggles,500fineXP at5x, two-tick commits, full28 backpack and equipment conserved; same-save no replay. Chemistry proc, acquisition and drinking remain separate.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking/Herblore parity or unrelated recipes. No issue closure.
+
+`openrune-native-divinemiddle-002` PASS. Server archive `29BB4FD3587E30689BCAFA18C2DEF348ACC58653E4AB6C81FEF489D400A311FD`, driver `divinemiddle-002`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID11588.
+- Driver `NativeDivineMiddleScenario.rs` SHA256 `27E81A396877864B0E7C588D21D3E3A65B96B66458D976CD37435E086FA075F0`
+- Driver `server_divinemiddle.exe` SHA256 `6B0E9F3CC07B8A9B2D74A0D280A38A3344FE6475EBC843EDF7159BA838087700`
+- `client.log` SHA256 `81ffecbaea0ab0a21ac6bf2e69330b662425e2a685ef5cefbe42d7718d45e413`
+- `server.log` SHA256 `1e9beaaea0e71c08967c94f6c81f98fba5923e56d9d17b7bcd7bba6b315cc17c`
+- `initial-state.json` SHA256 `2a4d0b6003fc8bdb55a2c49dba66dd0af0adc4715aa2acaf04f1a88cc9aef5b2`
+- `final-state.json` SHA256 `7205edf3f2ba5494ec0d86a941f4a9caeecec3795100c0778c3996f6ad31ccdd`
+- `pack-assessment.json` SHA256 `cfa602bea83127bfa2ac9501fcf23445389443fd2d77db07a27374c83536935c`
+- `divinemiddle-trace-assessment.json` SHA256 `4c4bcfd9faba983929d615d24341998a2f98da5cdabb03027bd7a16fe944385b`
+- `logout-observation.json` SHA256 `8891def0a6cb9ac1db8a2eed81399ecbcec01cd4182b60f2738d4156916ae50d`
+- `shutdown.json` SHA256 `d309eb54b586bbaa31561b59b4d99b2decb975cd57ed360c5664322a0e4ff5d0`
+- `result.json` SHA256 `d912dd43408dc7b23d7366723611e1282a0e1d0f28f21ad79338d75e5cdccf8e`
+- `pack-run.json` SHA256 `cd93add8406e3dee87ae165cadd59da19e3a3439835f9f765a471830df763539`
+- `native-profile-assessment.json` SHA256 `3f14a170fae57aa7fb1d7cec162cb49aa87debcbb735e6b036598733a23eb947`
+- `native-packet-assessment.json` SHA256 `9e8c0573b925acd08f143405c2e35e34d1c2fc048140a22bae2fb6e18013211a`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":500},"3077":{"before":0,"after":13100},"3079":{"before":0,"after":266},"65515":{"before":0,"after":256}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[{"actor_slot":1,"actor_generation":614,"base_slot":1,"secondary_slot":0,"base":167,"secondary":23964,"output":23730,"count":1,"queued_at":138,"committed_at":140,"index":0,"base_fine_xp":5,"rate_hundreds":500,"fine_before":130344311,"fine_after":130344336,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"base_slot":2,"secondary_slot":0,"base":165,"secondary":23964,"output":23727,"count":1,"queued_at":153,"committed_at":155,"index":0,"base_fine_xp":10,"rate_hundreds":500,"fine_before":130344336,"fine_after":130344386,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"base_slot":3,"secondary_slot":0,"base":163,"secondary":23964,"output":23724,"count":1,"queued_at":168,"committed_at":170,"index":0,"base_fine_xp":15,"rate_hundreds":500,"fine_before":130344386,"fine_after":130344461,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"base_slot":4,"secondary_slot":0,"base":2442,"secondary":23964,"output":23721,"count":1,"queued_at":182,"committed_at":184,"index":0,"base_fine_xp":20,"rate_hundreds":500,"fine_before":130344461,"fine_after":130344561,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"base_slot":5,"secondary_slot":0,"base":173,"secondary":23964,"output":23742,"count":1,"queued_at":197,"committed_at":199,"index":0,"base_fine_xp":5,"rate_hundreds":500,"fine_before":130344561,"fine_after":130344586,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"base_slot":6,"secondary_slot":0,"base":171,"secondary":23964,"output":23739,"count":1,"queued_at":215,"committed_at":217,"index":0,"base_fine_xp":10,"rate_hundreds":500,"fine_before":130344586,"fine_after":130344636,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"base_slot":7,"secondary_slot":0,"base":169,"secondary":23964,"output":23736,"count":1,"queued_at":229,"committed_at":231,"index":0,"base_fine_xp":15,"rate_hundreds":500,"fine_before":130344636,"fine_after":130344711,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"base_slot":8,"secondary_slot":0,"base":2444,"secondary":23964,"output":23733,"count":1,"queued_at":244,"committed_at":246,"index":0,"base_fine_xp":20,"rate_hundreds":500,"fine_before":130344711,"fine_after":130344811,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5}],"scope":"Separate selected-profile two-tick commits; UI evidence and packet/display latency separate"}`
+
+`openrune-divinemiddle-relogin-002` PASS. Server archive `29BB4FD3587E30689BCAFA18C2DEF348ACC58653E4AB6C81FEF489D400A311FD`, driver `divinemiddle-002`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor `openrune-native-divinemiddle-002`, owned PID19228.
+- Driver `NativeDivineMiddleScenario.rs` SHA256 `27E81A396877864B0E7C588D21D3E3A65B96B66458D976CD37435E086FA075F0`
+- Driver `server_divinemiddle.exe` SHA256 `6B0E9F3CC07B8A9B2D74A0D280A38A3344FE6475EBC843EDF7159BA838087700`
+- `client.log` SHA256 `3ca5401f299b78fde7c5fe3d7d7039ece6786a64b1185fd51903cf9fb6eae3df`
+- `server.log` SHA256 `a94a9e367ea60fff63749c1befc45095d5942e19ace91f4400641cb541f9db9e`
+- `initial-state.json` SHA256 `7205edf3f2ba5494ec0d86a941f4a9caeecec3795100c0778c3996f6ad31ccdd`
+- `final-state.json` SHA256 `917c68e9e0ff93fd04524bc96ee90d1dd72e2fb4aa00a0e83286a03d4f7e0984`
+- `pack-assessment.json` SHA256 `62e7e2dba8e413c22e7f88a5528b43adf6aa3bacfeb5f16c45e0b7c87dbd58c2`
+- `divinemiddle-trace-assessment.json` SHA256 `15565119835c4387827e07e673e26fc0ec5897457d403e87d7333c03aaf96013`
+- `logout-observation.json` SHA256 `905e461ba23e4683a38008b87eb5a460faa441765b57e19b2148fee0104b42c8`
+- `shutdown.json` SHA256 `5c5f4aa9c1bb07994230ac62ef95d291c52d472d00c5dea7e31e4806cf33697f`
+- `result.json` SHA256 `5d78507a2d80d26dee7dc308514e9f461421b98f83b6674dd9a36d707f0dbf0f`
+- `pack-run.json` SHA256 `c2b53db5b3d2c7217d64d4a0b650927796ffcececb6b3a0b649aa0d99ca2db6c`
+- `native-profile-assessment.json` SHA256 `3f14a170fae57aa7fb1d7cec162cb49aa87debcbb735e6b036598733a23eb947`
+- `native-packet-assessment.json` SHA256 `e6829a4798a9de0ff37d5f296002148bd24ade4eec17a91e1b24015f1f0e9c49`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":500,"after":700},"3077":{"before":13100,"after":54900},"3079":{"before":266,"after":126},"65515":{"before":256,"after":372}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Separate selected-profile two-tick commits; UI evidence and packet/display latency separate"}`
