@@ -12,9 +12,9 @@ use gielinor_client::{
 use std::{collections::HashMap, env, fs};
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let a: Vec<_> = env::args().collect();
-    if !(7..=8).contains(&a.len()) {
+    if !(7..=9).contains(&a.len()) {
         return Err(
-            "Usage: tower-scene-render JS5_CACHE SCENE OUTPUT_BMP LOCAL_X LOCAL_Z YAW [DISTANCE]"
+            "Usage: tower-scene-render JS5_CACHE SCENE OUTPUT_BMP LOCAL_X LOCAL_Z YAW [DISTANCE] [detail|overview|plan]"
                 .into(),
         );
     }
@@ -88,18 +88,27 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let center = [(x - 24.0) * 128.0, -240.0, (z - 24.0) * 128.0];
     let yaw: f32 = a[6].parse::<f32>()? * std::f32::consts::TAU / 16384.0;
     let distance: f32 = a.get(7).map(|s| s.parse()).transpose()?.unwrap_or(1800.0);
+    let preset = a.get(8).map(String::as_str).unwrap_or("detail");
+    let (width, height, elevation, focal) = match preset {
+        "detail" => (765, 503, 1300.0, 760.0),
+        "overview" => (1600, 1200, 10000.0, 2000.0),
+        "plan" => (1600, 1400, 12000.0, 2200.0),
+        _ => return Err("Unknown camera preset".into()),
+    };
     let camera = Camera::look_at(
         [
             center[0] + yaw.sin() * distance,
-            center[1] - 1300.0,
+            center[1] - elevation,
             center[2] - yaw.cos() * distance,
         ],
         center,
-        760.0,
+        focal,
     )?;
-    let mut frame = Frame::new(765, 503)?;
+    let mut frame = Frame::new(width, height)?;
     frame.draw(&camera, &mesh.triangles, &p, &textures);
     fs::write(&a[3], frame.raster()?.bmp()?)?;
+    fs::write(format!("{}.camera.txt", a[3]), format!(
+        "OFFLINE ONLY\npreset={preset}\ncanvas={width}x{height}\nlocal_target={x},{z}\ntarget_height=-240\nyaw_units={}\ndistance={distance}\nelevation={elevation}\nfocal={focal}\nscene={}\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n", a[6], a[2]))?;
     println!(
         "OFFLINE shell {} triangles; pose {x},{z} yaw {yaw}; actors/UI/runtime animations absent",
         mesh.triangles.len()

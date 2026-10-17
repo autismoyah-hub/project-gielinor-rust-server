@@ -1,0 +1,1803 @@
+{
+  "scope": "Authentic native-library OFFLINE raster; no actors, live animation, UI, gameplay or lifecycle acceptance. Private pending media-rights clearance.",
+  "renderer_sha256": "9b06511735cf2573b5db9a7ebd0a3afbb3b6fa88ca95682f9370110385a313da",
+  "views": [
+    {
+      "candidate": "a",
+      "name": "overview",
+      "frame": "work/floor-one-design-review/selected-review/candidate-a/overview.png",
+      "raw_bmp": "work/floor-one-design-review/selected-review/candidate-a/overview.bmp",
+      "raw_sha256": "5947970203aa6b0bf8a82890b2f8549e56a45ed0d945a4165cf828cd81a4b655",
+      "png_sha256": "99feb64efa0f33a11c7c50cd4458018c0fd0f42fcd19cbe502f403a41b0e9dc4",
+      "camera": [
+        56,
+        56,
+        2048,
+        9000,
+        "overview"
+      ],
+      "metadata": "work/floor-one-design-review/selected-review/candidate-a/overview.bmp.camera.txt",
+      "visually_reviewed": true,
+      "camera_sidecar_text": "OFFLINE ONLY\npreset=overview\ncanvas=1600x1200\nlocal_target=56,56\ntarget_height=-240\nyaw_units=2048\ndistance=9000\nelevation=10000\nfocal=2000\nscene=work\\floor-one-design-review\\selected-review\\candidate-a\\candidate.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+    },
+    {
+      "candidate": "a",
+      "name": "overview-reverse",
+      "frame": "work/floor-one-design-review/selected-review/candidate-a/overview-reverse.png",
+      "raw_bmp": "work/floor-one-design-review/selected-review/candidate-a/overview-reverse.bmp",
+      "raw_sha256": "e97813b2dff32d0b7e236e85dcb53d99829e10e37ba4bafdf7326f3dd4c61a63",
+      "png_sha256": "4bc997558ff283b944bcde84e3589b6b84b8332ad270a9c216a42af5097f4a8e",
+      "camera": [
+        56,
+        56,
+        10240,
+        9000,
+        "overview"
+      ],
+      "metadata": "work/floor-one-design-review/selected-review/candidate-a/overview-reverse.bmp.camera.txt",
+      "visually_reviewed": true,
+      "camera_sidecar_text": "OFFLINE ONLY\npreset=overview\ncanvas=1600x1200\nlocal_target=56,56\ntarget_height=-240\nyaw_units=10240\ndistance=9000\nelevation=10000\nfocal=2000\nscene=work\\floor-one-design-review\\selected-review\\candidate-a\\candidate.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+    },
+    {
+      "candidate": "a",
+      "name": "plan",
+      "frame": "work/floor-one-design-review/selected-review/candidate-a/plan.png",
+      "raw_bmp": "work/floor-one-design-review/selected-review/candidate-a/plan.bmp",
+      "raw_sha256": "1f8d1b5247815c0541b04c8cb7e9d9a08d86daeadf0875fa843f6777aa823547",
+      "png_sha256": "fe48ce5b2c7dfec0b5d7d56dd8641eee74dbaef8cef745a75f6064598d835d5b",
+      "camera": [
+        56,
+        56,
+        0,
+        1,
+        "plan"
+      ],
+      "metadata": "work/floor-one-design-review/selected-review/candidate-a/plan.bmp.camera.txt",
+      "visually_reviewed": true,
+      "camera_sidecar_text": "OFFLINE ONLY\npreset=plan\ncanvas=1600x1400\nlocal_target=56,56\ntarget_height=-240\nyaw_units=0\ndistance=1\nelevation=12000\nfocal=2200\nscene=work\\floor-one-design-review\\selected-review\\candidate-a\\candidate.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+    },
+    {
+      "candidate": "a",
+      "name": "sanctuary",
+      "frame": "work/floor-one-design-review/selected-review/candidate-a/sanctuary.png",
+      "raw_bmp": "work/floor-one-design-review/selected-review/candidate-a/sanctuary.bmp",
+      "raw_sha256": "178ee329c48e70264ea6325e7690f93470c8d4a02e1b1f76cf19e3ca3ba8e739",
+      "png_sha256": "e6e9a1cceecab8fa4e28d65962abae946733e0bfdad6d40492cf91b24493b7f6",
+      "camera": [
+        55,
+        51,
+        0,
+        1800,
+        "detail"
+      ],
+      "metadata": "work/floor-one-design-review/selected-review/candidate-a/sanctuary.bmp.camera.txt",
+      "visually_reviewed": true,
+      "camera_sidecar_text": "OFFLINE ONLY\npreset=detail\ncanvas=765x503\nlocal_target=55,51\ntarget_height=-240\nyaw_units=0\ndistance=1800\nelevation=1300\nfocal=760\nscene=work\\floor-one-design-review\\selected-review\\candidate-a\\candidate.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+    },
+    {
+      "candidate": "a",
+      "name": "waterworks",
+      "frame": "work/floor-one-design-review/selected-review/candidate-a/waterworks.png",
+      "raw_bmp": "work/floor-one-design-review/selected-review/candidate-a/waterworks.bmp",
+      "raw_sha256": "f3bb2cdea20d8a0f39cc142db20c3efc36e5ee1f339e2f59307c971fdcb492da",
+      "png_sha256": "1c5aa2b25b3524cb001dbd3ab355fa2e060243a844f2b78a5381d8b314bde54e",
+      "camera": [
+        69,
+        55,
+        4096,
+        1800,
+        "detail"
+      ],
+      "metadata": "work/floor-one-design-review/selected-review/candidate-a/waterworks.bmp.camera.txt",
+      "visually_reviewed": true,
+      "camera_sidecar_text": "OFFLINE ONLY\npreset=detail\ncanvas=765x503\nlocal_target=69,55\ntarget_height=-240\nyaw_units=4096\ndistance=1800\nelevation=1300\nfocal=760\nscene=work\\floor-one-design-review\\selected-review\\candidate-a\\candidate.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+    },
+    {
+      "candidate": "a",
+      "name": "boss-approach",
+      "frame": "work/floor-one-design-review/selected-review/candidate-a/boss-approach.png",
+      "raw_bmp": "work/floor-one-design-review/selected-review/candidate-a/boss-approach.bmp",
+      "raw_sha256": "00ad845f95e88e32e7e677e4db472ffb1bc3aaeeff4bb13f7778a62d120c067f",
+      "png_sha256": "8f6ea863b45ae82b5b4554f7b796c6d5cf05fd12a400a87d3c9b3e81fdff84dc",
+      "camera": [
+        56,
+        65,
+        0,
+        1800,
+        "detail"
+      ],
+      "metadata": "work/floor-one-design-review/selected-review/candidate-a/boss-approach.bmp.camera.txt",
+      "visually_reviewed": true,
+      "camera_sidecar_text": "OFFLINE ONLY\npreset=detail\ncanvas=765x503\nlocal_target=56,65\ntarget_height=-240\nyaw_units=0\ndistance=1800\nelevation=1300\nfocal=760\nscene=work\\floor-one-design-review\\selected-review\\candidate-a\\candidate.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+    },
+    {
+      "candidate": "b",
+      "name": "overview",
+      "frame": "work/floor-one-design-review/selected-review/candidate-b/overview.png",
+      "raw_bmp": "work/floor-one-design-review/selected-review/candidate-b/overview.bmp",
+      "raw_sha256": "7968b379ea9b51844a1972145a0580b1987004ae80e8e30c256b7f841acdb9c7",
+      "png_sha256": "a16458a43ddb198d689b245c97a396ba38e2eca9a20c1620a456c7e2ca767aad",
+      "camera": [
+        56,
+        56,
+        2048,
+        9000,
+        "overview"
+      ],
+      "metadata": "work/floor-one-design-review/selected-review/candidate-b/overview.bmp.camera.txt",
+      "visually_reviewed": true,
+      "camera_sidecar_text": "OFFLINE ONLY\npreset=overview\ncanvas=1600x1200\nlocal_target=56,56\ntarget_height=-240\nyaw_units=2048\ndistance=9000\nelevation=10000\nfocal=2000\nscene=work\\floor-one-design-review\\selected-review\\candidate-b\\candidate.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+    },
+    {
+      "candidate": "b",
+      "name": "overview-reverse",
+      "frame": "work/floor-one-design-review/selected-review/candidate-b/overview-reverse.png",
+      "raw_bmp": "work/floor-one-design-review/selected-review/candidate-b/overview-reverse.bmp",
+      "raw_sha256": "0bd510060a95912dfc8533a2d299060f2f2606b3556173ce4b86a9b4ac94b3a0",
+      "png_sha256": "6e8b22606d6e66d49284c82cefdab3d2a1d96fac857fc213e2886ac485d92798",
+      "camera": [
+        56,
+        56,
+        10240,
+        9000,
+        "overview"
+      ],
+      "metadata": "work/floor-one-design-review/selected-review/candidate-b/overview-reverse.bmp.camera.txt",
+      "visually_reviewed": true,
+      "camera_sidecar_text": "OFFLINE ONLY\npreset=overview\ncanvas=1600x1200\nlocal_target=56,56\ntarget_height=-240\nyaw_units=10240\ndistance=9000\nelevation=10000\nfocal=2000\nscene=work\\floor-one-design-review\\selected-review\\candidate-b\\candidate.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+    },
+    {
+      "candidate": "b",
+      "name": "plan",
+      "frame": "work/floor-one-design-review/selected-review/candidate-b/plan.png",
+      "raw_bmp": "work/floor-one-design-review/selected-review/candidate-b/plan.bmp",
+      "raw_sha256": "95954b19f8d47fa757b678c9e87709e6afa1115b5de80d81f8542f52ccc8a642",
+      "png_sha256": "41be900a522f015ebc2660135a2e512163e1bdaef5f3fa09c7fa2307c89064df",
+      "camera": [
+        56,
+        56,
+        0,
+        1,
+        "plan"
+      ],
+      "metadata": "work/floor-one-design-review/selected-review/candidate-b/plan.bmp.camera.txt",
+      "visually_reviewed": true,
+      "camera_sidecar_text": "OFFLINE ONLY\npreset=plan\ncanvas=1600x1400\nlocal_target=56,56\ntarget_height=-240\nyaw_units=0\ndistance=1\nelevation=12000\nfocal=2200\nscene=work\\floor-one-design-review\\selected-review\\candidate-b\\candidate.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+    },
+    {
+      "candidate": "b",
+      "name": "sanctuary",
+      "frame": "work/floor-one-design-review/selected-review/candidate-b/sanctuary.png",
+      "raw_bmp": "work/floor-one-design-review/selected-review/candidate-b/sanctuary.bmp",
+      "raw_sha256": "e066c2088876facdf8ad18b0ffedbf03a75ceb7ba93d33d3c3318b6a83721ae2",
+      "png_sha256": "606d160a88ac1cd5a03fda1d4969d2dcce2104a65fc99c78dc832e9893c06e11",
+      "camera": [
+        42,
+        46,
+        0,
+        1800,
+        "detail"
+      ],
+      "metadata": "work/floor-one-design-review/selected-review/candidate-b/sanctuary.bmp.camera.txt",
+      "visually_reviewed": true,
+      "camera_sidecar_text": "OFFLINE ONLY\npreset=detail\ncanvas=765x503\nlocal_target=42,46\ntarget_height=-240\nyaw_units=0\ndistance=1800\nelevation=1300\nfocal=760\nscene=work\\floor-one-design-review\\selected-review\\candidate-b\\candidate.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+    },
+    {
+      "candidate": "b",
+      "name": "waterworks",
+      "frame": "work/floor-one-design-review/selected-review/candidate-b/waterworks.png",
+      "raw_bmp": "work/floor-one-design-review/selected-review/candidate-b/waterworks.bmp",
+      "raw_sha256": "3400de73bc736c0d44d36013fe4be7a2c1159b1615f7935722bc3dc1c9a1cede",
+      "png_sha256": "1760862edb80310ff6ccab5375d53795022f1774211dc0d5f51bfb995f856891",
+      "camera": [
+        54,
+        58,
+        4096,
+        1800,
+        "detail"
+      ],
+      "metadata": "work/floor-one-design-review/selected-review/candidate-b/waterworks.bmp.camera.txt",
+      "visually_reviewed": true,
+      "camera_sidecar_text": "OFFLINE ONLY\npreset=detail\ncanvas=765x503\nlocal_target=54,58\ntarget_height=-240\nyaw_units=4096\ndistance=1800\nelevation=1300\nfocal=760\nscene=work\\floor-one-design-review\\selected-review\\candidate-b\\candidate.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+    },
+    {
+      "candidate": "b",
+      "name": "boss-approach",
+      "frame": "work/floor-one-design-review/selected-review/candidate-b/boss-approach.png",
+      "raw_bmp": "work/floor-one-design-review/selected-review/candidate-b/boss-approach.bmp",
+      "raw_sha256": "19a7e41ba90dd89dfe8c287ad700f5d368b603ca73716338c99d8ac5bb40b6d1",
+      "png_sha256": "6f2846152c1f1d5040949372f597ae5774f8b43f340be90007afc94267a35300",
+      "camera": [
+        71,
+        48,
+        8192,
+        1800,
+        "detail"
+      ],
+      "metadata": "work/floor-one-design-review/selected-review/candidate-b/boss-approach.bmp.camera.txt",
+      "visually_reviewed": true,
+      "camera_sidecar_text": "OFFLINE ONLY\npreset=detail\ncanvas=765x503\nlocal_target=71,48\ntarget_height=-240\nyaw_units=8192\ndistance=1800\nelevation=1300\nfocal=760\nscene=work\\floor-one-design-review\\selected-review\\candidate-b\\candidate.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+    },
+    {
+      "candidate": "c",
+      "name": "overview",
+      "frame": "work/floor-one-design-review/selected-review/candidate-c/overview.png",
+      "raw_bmp": "work/floor-one-design-review/selected-review/candidate-c/overview.bmp",
+      "raw_sha256": "6d8e0531318e65437db6532e8b99a1dc34ccaeb66582d8aa93ce4156fc90ec5e",
+      "png_sha256": "1a46ced2c27060243f4adce700c8febe99ab7c4909871cd9eedc2fbe51188fb5",
+      "camera": [
+        56,
+        56,
+        2048,
+        9000,
+        "overview"
+      ],
+      "metadata": "work/floor-one-design-review/selected-review/candidate-c/overview.bmp.camera.txt",
+      "visually_reviewed": true,
+      "camera_sidecar_text": "OFFLINE ONLY\npreset=overview\ncanvas=1600x1200\nlocal_target=56,56\ntarget_height=-240\nyaw_units=2048\ndistance=9000\nelevation=10000\nfocal=2000\nscene=work\\floor-one-design-review\\selected-review\\candidate-c\\candidate.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+    },
+    {
+      "candidate": "c",
+      "name": "overview-reverse",
+      "frame": "work/floor-one-design-review/selected-review/candidate-c/overview-reverse.png",
+      "raw_bmp": "work/floor-one-design-review/selected-review/candidate-c/overview-reverse.bmp",
+      "raw_sha256": "79f143f5a7546e1549ca99f42053c1bd615ec0b7e16f801e1fab3ff2bc575508",
+      "png_sha256": "1f81290d7e987349230e2fcc9d91e1841582d299ee046617a2120f3b3682e08c",
+      "camera": [
+        56,
+        56,
+        10240,
+        9000,
+        "overview"
+      ],
+      "metadata": "work/floor-one-design-review/selected-review/candidate-c/overview-reverse.bmp.camera.txt",
+      "visually_reviewed": true,
+      "camera_sidecar_text": "OFFLINE ONLY\npreset=overview\ncanvas=1600x1200\nlocal_target=56,56\ntarget_height=-240\nyaw_units=10240\ndistance=9000\nelevation=10000\nfocal=2000\nscene=work\\floor-one-design-review\\selected-review\\candidate-c\\candidate.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+    },
+    {
+      "candidate": "c",
+      "name": "plan",
+      "frame": "work/floor-one-design-review/selected-review/candidate-c/plan.png",
+      "raw_bmp": "work/floor-one-design-review/selected-review/candidate-c/plan.bmp",
+      "raw_sha256": "69c9d8005cec037f951b8f20bbfd45e009589acba162a7112a3a78ffd8cde0f1",
+      "png_sha256": "eb651590dee1b7c27f756c97b41d18732bd3b864bb0996ba9cfa557977edf211",
+      "camera": [
+        56,
+        56,
+        0,
+        1,
+        "plan"
+      ],
+      "metadata": "work/floor-one-design-review/selected-review/candidate-c/plan.bmp.camera.txt",
+      "visually_reviewed": true,
+      "camera_sidecar_text": "OFFLINE ONLY\npreset=plan\ncanvas=1600x1400\nlocal_target=56,56\ntarget_height=-240\nyaw_units=0\ndistance=1\nelevation=12000\nfocal=2200\nscene=work\\floor-one-design-review\\selected-review\\candidate-c\\candidate.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+    },
+    {
+      "candidate": "c",
+      "name": "sanctuary",
+      "frame": "work/floor-one-design-review/selected-review/candidate-c/sanctuary.png",
+      "raw_bmp": "work/floor-one-design-review/selected-review/candidate-c/sanctuary.bmp",
+      "raw_sha256": "f8ac83070a86fdd9ba1f78c609712ec8d1510ab3fa49b8b92d7bda6f47c20366",
+      "png_sha256": "5b57f0c62e50ad7375aada8c6390e698a4ca6238121276a4c6f7597c1a859c66",
+      "camera": [
+        43,
+        44,
+        4096,
+        1800,
+        "detail"
+      ],
+      "metadata": "work/floor-one-design-review/selected-review/candidate-c/sanctuary.bmp.camera.txt",
+      "visually_reviewed": true,
+      "camera_sidecar_text": "OFFLINE ONLY\npreset=detail\ncanvas=765x503\nlocal_target=43,44\ntarget_height=-240\nyaw_units=4096\ndistance=1800\nelevation=1300\nfocal=760\nscene=work\\floor-one-design-review\\selected-review\\candidate-c\\candidate.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+    },
+    {
+      "candidate": "c",
+      "name": "waterworks",
+      "frame": "work/floor-one-design-review/selected-review/candidate-c/waterworks.png",
+      "raw_bmp": "work/floor-one-design-review/selected-review/candidate-c/waterworks.bmp",
+      "raw_sha256": "73067100e7497f289ea9faae88e3db9ee6d32cee0e532b69269c28c64d0ed380",
+      "png_sha256": "0d973c5228160477f1686782572d8f524bdff550900927640584708f24e57280",
+      "camera": [
+        61,
+        52,
+        0,
+        1800,
+        "detail"
+      ],
+      "metadata": "work/floor-one-design-review/selected-review/candidate-c/waterworks.bmp.camera.txt",
+      "visually_reviewed": true,
+      "camera_sidecar_text": "OFFLINE ONLY\npreset=detail\ncanvas=765x503\nlocal_target=61,52\ntarget_height=-240\nyaw_units=0\ndistance=1800\nelevation=1300\nfocal=760\nscene=work\\floor-one-design-review\\selected-review\\candidate-c\\candidate.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+    },
+    {
+      "candidate": "c",
+      "name": "boss-approach",
+      "frame": "work/floor-one-design-review/selected-review/candidate-c/boss-approach.png",
+      "raw_bmp": "work/floor-one-design-review/selected-review/candidate-c/boss-approach.bmp",
+      "raw_sha256": "cca84082b8dfb63cdd72085caa0638770e5f7d5f79309b30cb73f5ef24508db0",
+      "png_sha256": "1e8911d8e5a5e0a03555d8dfe06432cae029f398fd8980756d7daa458676d454",
+      "camera": [
+        69,
+        65,
+        0,
+        1800,
+        "detail"
+      ],
+      "metadata": "work/floor-one-design-review/selected-review/candidate-c/boss-approach.bmp.camera.txt",
+      "visually_reviewed": true,
+      "camera_sidecar_text": "OFFLINE ONLY\npreset=detail\ncanvas=765x503\nlocal_target=69,65\ntarget_height=-240\nyaw_units=0\ndistance=1800\nelevation=1300\nfocal=760\nscene=work\\floor-one-design-review\\selected-review\\candidate-c\\candidate.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+    }
+  ],
+  "baseline_commit": "1153b4e7281435e83f60bff5131b4a3f0a8e0023",
+  "selection": "OPEN: no production map change",
+  "rights": "Cache-rendered pixels withheld locally; published PNGs are original geometric diagrams only",
+  "static_audits": {
+    "a": {
+      "loaded": 2048,
+      "reached": 1648,
+      "water": 128,
+      "hazard_escapes": 1512,
+      "issues": 0,
+      "illustrated_route_steps": 119,
+      "assets": [
+        "ASSET 409 \"Altar\" 2x1 walk=2 ops=[Some(\"Pray\"), None, None, None, None]",
+        "ASSET 568 \"Dwarf statue\" 1x1 walk=2 ops=[None, None, None, None, None]",
+        "ASSET 909 \"Plaque\" 1x1 walk=2 ops=[Some(\"Read\"), None, None, None, None]",
+        "ASSET 1276 \"Tree\" 2x2 walk=2 ops=[Some(\"Chop down\"), None, None, None, None]",
+        "ASSET 2097 \"Anvil\" 1x1 walk=2 ops=[Some(\"Smith\"), None, None, None, None]",
+        "ASSET 6143 \"null\" 1x1 walk=2 ops=[None, None, None, None, None]",
+        "ASSET 6145 \"null\" 1x1 walk=2 ops=[None, None, None, None, None]",
+        "ASSET 7016 \"Pillar\" 1x1 walk=2 ops=[None, None, None, None, None]",
+        "ASSET 7017 \"Pillar\" 1x1 walk=2 ops=[None, None, None, None, None]",
+        "ASSET 9116 \"Pipes\" 1x1 walk=2 ops=[None, None, None, None, None]",
+        "ASSET 9120 \"Pipes\" 1x1 walk=2 ops=[None, None, None, None, None]",
+        "ASSET 9736 \"Range\" 1x2 walk=2 ops=[Some(\"Cook\"), None, None, None, None]",
+        "ASSET 10943 \"Copper rocks\" 1x1 walk=2 ops=[Some(\"Mine\"), None, Some(\"hidden\"), None, None]",
+        "ASSET 11360 \"Tin rocks\" 1x1 walk=2 ops=[Some(\"Mine\"), None, Some(\"hidden\"), None, None]",
+        "ASSET 16811 \"Ceremonial Brazier\" 2x2 walk=2 ops=[None, None, None, None, None]",
+        "ASSET 18491 \"Bank booth\" 1x1 walk=1 ops=[None, Some(\"Bank\"), None, None, None]",
+        "ASSET 18511 \"Water wheel\" 1x3 walk=2 ops=[None, None, None, None, None]",
+        "ASSET 18526 \"Furnace\" 2x3 walk=2 ops=[None, None, None, None, None]",
+        "ASSET 30124 \"A barrel of rainwater\" 1x1 walk=2 ops=[Some(\"Search\"), None, None, None, None]",
+        "ASSET 37947 \"Furnace\" 2x3 walk=2 ops=[Some(\"Use\"), None, None, None, None]",
+        "ASSET 57692 \"Portal\" 1x1 walk=2 ops=[Some(\"Enter\"), None, None, None, None]",
+        "ASSET 57694 \"Chest\" 1x1 walk=2 ops=[Some(\"Search\"), Some(\"\"), Some(\"\"), Some(\"\"), Some(\"\")]",
+        "NPC 16300 size=1 block=Npc",
+        "NPC 16295 size=2 block=Npc",
+        "NPC 2075 size=2 block=Npc",
+        "NPC 3317 size=1 block=Npc",
+        "NPC 1173 size=1 block=Npc",
+        "NPC 1017 size=1 block=Npc"
+      ],
+      "audit_log_sha256": "1ed77f1eb56d823422fda29625ce9c86b57c5a0f65b65b0c14c55ae13a6ffe93",
+      "scene_sha256": "335f0b8695bac2e6249f295489ecf9685d8f2b4d6504ea8bcd4cc28b434ffe53",
+      "composition": {
+        "id": "a",
+        "title": "The Hearthring Citadel",
+        "chunks": 32,
+        "loaded_tiles": 2048,
+        "water_tiles": 128,
+        "planned_inner_walkable_tiles": 1722,
+        "points": {
+          "entry": [
+            55,
+            38
+          ],
+          "recovery": [
+            55,
+            50
+          ],
+          "hub": [
+            54,
+            54
+          ],
+          "grove approach": [
+            43,
+            72
+          ],
+          "provisions": [
+            59,
+            37
+          ],
+          "Imp approach": [
+            42,
+            58
+          ],
+          "Warden approach": [
+            56,
+            65
+          ],
+          "view-sanctuary": [
+            55,
+            51
+          ],
+          "view-waterworks": [
+            69,
+            55
+          ],
+          "view-boss-approach": [
+            56,
+            65
+          ],
+          "route-0": [
+            55,
+            37
+          ],
+          "route-1": [
+            55,
+            48
+          ],
+          "route-2": [
+            46,
+            54
+          ],
+          "route-3": [
+            40,
+            54
+          ],
+          "route-4": [
+            42,
+            58
+          ],
+          "route-5": [
+            39,
+            63
+          ],
+          "route-6": [
+            46,
+            70
+          ],
+          "route-7": [
+            55,
+            65
+          ],
+          "route-8": [
+            55,
+            69
+          ],
+          "route-9": [
+            66,
+            68
+          ],
+          "route-10": [
+            68,
+            54
+          ],
+          "route-11": [
+            65,
+            43
+          ],
+          "route-12": [
+            55,
+            43
+          ]
+        },
+        "assets": [
+          {
+            "label": "bank",
+            "id": 18491,
+            "x": 48,
+            "z": 55,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "altar",
+            "id": 409,
+            "x": 60,
+            "z": 49,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "chest",
+            "id": 57694,
+            "x": 51,
+            "z": 48,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "range",
+            "id": 9736,
+            "x": 67,
+            "z": 52,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "entry/exit portal",
+            "id": 57692,
+            "x": 55,
+            "z": 40,
+            "shape": 0,
+            "rotation": 0
+          },
+          {
+            "label": "plaque",
+            "id": 909,
+            "x": 50,
+            "z": 48,
+            "shape": 4,
+            "rotation": 1
+          },
+          {
+            "label": "sanctuary hearth",
+            "id": 16811,
+            "x": 55,
+            "z": 54,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "altar fire",
+            "id": 16811,
+            "x": 58,
+            "z": 51,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "workshop forge landmark",
+            "id": 18526,
+            "x": 42,
+            "z": 45,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "sanctuary dwarf monument",
+            "id": 568,
+            "x": 51,
+            "z": 51,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "sanctuary dwarf monument",
+            "id": 568,
+            "x": 59,
+            "z": 51,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "wheel pier",
+            "id": 7017,
+            "x": 70,
+            "z": 57,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "wheel pier",
+            "id": 7017,
+            "x": 70,
+            "z": 61,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "anvil",
+            "id": 2097,
+            "x": 39,
+            "z": 45,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "smelting furnace",
+            "id": 37947,
+            "x": 36,
+            "z": 45,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "tin",
+            "id": 11360,
+            "x": 36,
+            "z": 51,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "copper",
+            "id": 10943,
+            "x": 43,
+            "z": 51,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "wheel",
+            "id": 18511,
+            "x": 72,
+            "z": 58,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "tree reserve",
+            "id": 1276,
+            "x": 41,
+            "z": 73,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "tree reserve",
+            "id": 1276,
+            "x": 45,
+            "z": 76,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "Imp boiler",
+            "id": 18526,
+            "x": 39,
+            "z": 68,
+            "shape": 10,
+            "rotation": 1
+          },
+          {
+            "label": "boiler inlet",
+            "id": 9116,
+            "x": 37,
+            "z": 68,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "boiler outlet",
+            "id": 9120,
+            "x": 42,
+            "z": 68,
+            "shape": 10,
+            "rotation": 2
+          },
+          {
+            "label": "foundry forge",
+            "id": 18526,
+            "x": 51,
+            "z": 78,
+            "shape": 10,
+            "rotation": 1
+          },
+          {
+            "label": "foundry forge",
+            "id": 18526,
+            "x": 55,
+            "z": 78,
+            "shape": 10,
+            "rotation": 1
+          },
+          {
+            "label": "foundry forge",
+            "id": 18526,
+            "x": 60,
+            "z": 78,
+            "shape": 10,
+            "rotation": 1
+          },
+          {
+            "label": "foundry threshold pier",
+            "id": 7016,
+            "x": 53,
+            "z": 64,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "foundry threshold pier",
+            "id": 7016,
+            "x": 59,
+            "z": 64,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "coolant",
+            "id": 30124,
+            "x": 53,
+            "z": 71,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "coolant",
+            "id": 30124,
+            "x": 53,
+            "z": 74,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "coolant",
+            "id": 30124,
+            "x": 60,
+            "z": 71,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "coolant",
+            "id": 30124,
+            "x": 60,
+            "z": 74,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "hub pier",
+            "id": 7016,
+            "x": 52,
+            "z": 58,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "hub pier",
+            "id": 7016,
+            "x": 58,
+            "z": 58,
+            "shape": 10,
+            "rotation": 0
+          }
+        ],
+        "materials": {
+          "5,4": "dark",
+          "6,4": "earth",
+          "7,4": "earth",
+          "8,4": "earth",
+          "4,5": "forge",
+          "5,5": "forge",
+          "6,5": "earth",
+          "7,5": "earth",
+          "8,5": "dark",
+          "9,5": "dark",
+          "4,6": "forge",
+          "5,6": "forge",
+          "6,6": "stone",
+          "7,6": "stone",
+          "8,6": "dark",
+          "9,6": "water",
+          "4,7": "ash",
+          "5,7": "ash",
+          "6,7": "stone",
+          "7,7": "stone",
+          "8,7": "dark",
+          "9,7": "water",
+          "4,8": "ash",
+          "5,8": "ash",
+          "6,8": "forge",
+          "7,8": "forge",
+          "8,8": "dark",
+          "9,8": "dark",
+          "5,9": "moss",
+          "6,9": "forge",
+          "7,9": "forge",
+          "8,9": "dark"
+        },
+        "scope": "Detached proposal, actual cache material chunks and wall/location definitions. No actors, live scripts, personal state or saved accounts. Static feasibility checked separately.",
+        "scene_sha256": "335f0b8695bac2e6249f295489ecf9685d8f2b4d6504ea8bcd4cc28b434ffe53",
+        "config_sha256": "ce6a7289c5f45dc326d59110bb4f96196aae74072cbbd4640f2fbc82c7c1c17c"
+      }
+    },
+    "b": {
+      "loaded": 2112,
+      "reached": 1492,
+      "water": 256,
+      "hazard_escapes": 1512,
+      "issues": 0,
+      "illustrated_route_steps": 129,
+      "assets": [
+        "ASSET 409 \"Altar\" 2x1 walk=2 ops=[Some(\"Pray\"), None, None, None, None]",
+        "ASSET 568 \"Dwarf statue\" 1x1 walk=2 ops=[None, None, None, None, None]",
+        "ASSET 909 \"Plaque\" 1x1 walk=2 ops=[Some(\"Read\"), None, None, None, None]",
+        "ASSET 1276 \"Tree\" 2x2 walk=2 ops=[Some(\"Chop down\"), None, None, None, None]",
+        "ASSET 2097 \"Anvil\" 1x1 walk=2 ops=[Some(\"Smith\"), None, None, None, None]",
+        "ASSET 6143 \"null\" 1x1 walk=2 ops=[None, None, None, None, None]",
+        "ASSET 6145 \"null\" 1x1 walk=2 ops=[None, None, None, None, None]",
+        "ASSET 6915 \"Rubble\" 3x1 walk=2 ops=[None, None, None, None, None]",
+        "ASSET 7016 \"Pillar\" 1x1 walk=2 ops=[None, None, None, None, None]",
+        "ASSET 7017 \"Pillar\" 1x1 walk=2 ops=[None, None, None, None, None]",
+        "ASSET 9116 \"Pipes\" 1x1 walk=2 ops=[None, None, None, None, None]",
+        "ASSET 9120 \"Pipes\" 1x1 walk=2 ops=[None, None, None, None, None]",
+        "ASSET 9736 \"Range\" 1x2 walk=2 ops=[Some(\"Cook\"), None, None, None, None]",
+        "ASSET 10943 \"Copper rocks\" 1x1 walk=2 ops=[Some(\"Mine\"), None, Some(\"hidden\"), None, None]",
+        "ASSET 11360 \"Tin rocks\" 1x1 walk=2 ops=[Some(\"Mine\"), None, Some(\"hidden\"), None, None]",
+        "ASSET 16811 \"Ceremonial Brazier\" 2x2 walk=2 ops=[None, None, None, None, None]",
+        "ASSET 18491 \"Bank booth\" 1x1 walk=1 ops=[None, Some(\"Bank\"), None, None, None]",
+        "ASSET 18511 \"Water wheel\" 1x3 walk=2 ops=[None, None, None, None, None]",
+        "ASSET 18526 \"Furnace\" 2x3 walk=2 ops=[None, None, None, None, None]",
+        "ASSET 30124 \"A barrel of rainwater\" 1x1 walk=2 ops=[Some(\"Search\"), None, None, None, None]",
+        "ASSET 37947 \"Furnace\" 2x3 walk=2 ops=[Some(\"Use\"), None, None, None, None]",
+        "ASSET 57692 \"Portal\" 1x1 walk=2 ops=[Some(\"Enter\"), None, None, None, None]",
+        "ASSET 57694 \"Chest\" 1x1 walk=2 ops=[Some(\"Search\"), Some(\"\"), Some(\"\"), Some(\"\"), Some(\"\")]",
+        "NPC 16300 size=1 block=Npc",
+        "NPC 16295 size=2 block=Npc",
+        "NPC 2075 size=2 block=Npc",
+        "NPC 3317 size=1 block=Npc",
+        "NPC 1173 size=1 block=Npc",
+        "NPC 1017 size=1 block=Npc"
+      ],
+      "audit_log_sha256": "7fa5c45a442c3c5c02b6229531b12109f88bd5432e7bc32de336381198f21816",
+      "scene_sha256": "209e807cf59fe7aa139aac03fcf49113333fdb1e10213799788ce845bf1b1027",
+      "composition": {
+        "id": "b",
+        "title": "The Broken Waterway",
+        "chunks": 33,
+        "loaded_tiles": 2112,
+        "water_tiles": 256,
+        "planned_inner_walkable_tiles": 1594,
+        "points": {
+          "entry": [
+            38,
+            38
+          ],
+          "recovery": [
+            42,
+            46
+          ],
+          "hub": [
+            42,
+            46
+          ],
+          "grove approach": [
+            46,
+            71
+          ],
+          "provisions": [
+            68,
+            56
+          ],
+          "Imp approach": [
+            70,
+            65
+          ],
+          "Warden approach": [
+            71,
+            48
+          ],
+          "view-sanctuary": [
+            42,
+            46
+          ],
+          "view-waterworks": [
+            54,
+            58
+          ],
+          "view-boss-approach": [
+            71,
+            48
+          ],
+          "route-0": [
+            38,
+            38
+          ],
+          "route-1": [
+            42,
+            46
+          ],
+          "route-2": [
+            43,
+            54
+          ],
+          "route-3": [
+            43,
+            66
+          ],
+          "route-4": [
+            47,
+            71
+          ],
+          "route-5": [
+            52,
+            67
+          ],
+          "route-6": [
+            62,
+            67
+          ],
+          "route-7": [
+            70,
+            65
+          ],
+          "route-8": [
+            70,
+            72
+          ],
+          "route-9": [
+            76,
+            61
+          ],
+          "route-10": [
+            72,
+            51
+          ],
+          "route-11": [
+            72,
+            48
+          ],
+          "route-12": [
+            71,
+            44
+          ],
+          "route-13": [
+            72,
+            48
+          ],
+          "route-14": [
+            66,
+            51
+          ],
+          "route-15": [
+            56,
+            51
+          ],
+          "route-16": [
+            48,
+            49
+          ],
+          "route-17": [
+            42,
+            46
+          ]
+        },
+        "assets": [
+          {
+            "label": "bank",
+            "id": 18491,
+            "x": 38,
+            "z": 47,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "altar",
+            "id": 409,
+            "x": 51,
+            "z": 68,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "chest",
+            "id": 57694,
+            "x": 45,
+            "z": 43,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "range",
+            "id": 9736,
+            "x": 51,
+            "z": 55,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "entry/exit portal",
+            "id": 57692,
+            "x": 38,
+            "z": 35,
+            "shape": 0,
+            "rotation": 0
+          },
+          {
+            "label": "plaque",
+            "id": 909,
+            "x": 44,
+            "z": 43,
+            "shape": 4,
+            "rotation": 1
+          },
+          {
+            "label": "sanctuary hearth",
+            "id": 16811,
+            "x": 43,
+            "z": 46,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "altar fire",
+            "id": 16811,
+            "x": 49,
+            "z": 70,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "workshop forge landmark",
+            "id": 18526,
+            "x": 45,
+            "z": 55,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "sanctuary dwarf monument",
+            "id": 568,
+            "x": 39,
+            "z": 43,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "sanctuary dwarf monument",
+            "id": 568,
+            "x": 47,
+            "z": 43,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "wheel pier",
+            "id": 7017,
+            "x": 54,
+            "z": 57,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "wheel pier",
+            "id": 7017,
+            "x": 54,
+            "z": 61,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "anvil",
+            "id": 2097,
+            "x": 42,
+            "z": 55,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "smelting furnace",
+            "id": 37947,
+            "x": 39,
+            "z": 55,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "tin",
+            "id": 11360,
+            "x": 39,
+            "z": 61,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "copper",
+            "id": 10943,
+            "x": 46,
+            "z": 61,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "wheel",
+            "id": 18511,
+            "x": 56,
+            "z": 58,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "tree reserve",
+            "id": 1276,
+            "x": 44,
+            "z": 72,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "tree reserve",
+            "id": 1276,
+            "x": 48,
+            "z": 75,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "tree reserve",
+            "id": 1276,
+            "x": 43,
+            "z": 76,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "Imp boiler",
+            "id": 18526,
+            "x": 71,
+            "z": 76,
+            "shape": 10,
+            "rotation": 1
+          },
+          {
+            "label": "boiler inlet",
+            "id": 9116,
+            "x": 69,
+            "z": 76,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "boiler outlet",
+            "id": 9120,
+            "x": 74,
+            "z": 76,
+            "shape": 10,
+            "rotation": 2
+          },
+          {
+            "label": "foundry forge",
+            "id": 18526,
+            "x": 67,
+            "z": 33,
+            "shape": 10,
+            "rotation": 3
+          },
+          {
+            "label": "foundry forge",
+            "id": 18526,
+            "x": 71,
+            "z": 33,
+            "shape": 10,
+            "rotation": 3
+          },
+          {
+            "label": "foundry forge",
+            "id": 18526,
+            "x": 76,
+            "z": 33,
+            "shape": 10,
+            "rotation": 3
+          },
+          {
+            "label": "foundry threshold pier",
+            "id": 7016,
+            "x": 68,
+            "z": 49,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "foundry threshold pier",
+            "id": 7016,
+            "x": 74,
+            "z": 49,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "coolant",
+            "id": 30124,
+            "x": 69,
+            "z": 39,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "coolant",
+            "id": 30124,
+            "x": 69,
+            "z": 42,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "coolant",
+            "id": 30124,
+            "x": 76,
+            "z": 39,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "coolant",
+            "id": 30124,
+            "x": 76,
+            "z": 42,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "collapse outside court",
+            "id": 6915,
+            "x": 35,
+            "z": 51,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "collapse outside court",
+            "id": 6915,
+            "x": 48,
+            "z": 54,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "collapse outside court",
+            "id": 6915,
+            "x": 49,
+            "z": 64,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "collapse outside court",
+            "id": 6915,
+            "x": 65,
+            "z": 61,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "collapse outside court",
+            "id": 6915,
+            "x": 68,
+            "z": 77,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "collapse outside court",
+            "id": 6915,
+            "x": 76,
+            "z": 66,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "hub pier",
+            "id": 7016,
+            "x": 40,
+            "z": 50,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "hub pier",
+            "id": 7016,
+            "x": 46,
+            "z": 50,
+            "shape": 10,
+            "rotation": 0
+          }
+        ],
+        "materials": {
+          "4,4": "dark",
+          "5,4": "stone",
+          "7,4": "water",
+          "8,4": "forge",
+          "9,4": "forge",
+          "4,5": "stone",
+          "5,5": "stone",
+          "6,5": "stone",
+          "7,5": "water",
+          "8,5": "forge",
+          "9,5": "forge",
+          "4,6": "forge",
+          "5,6": "forge",
+          "6,6": "stone",
+          "7,6": "earth",
+          "8,6": "earth",
+          "9,6": "earth",
+          "4,7": "forge",
+          "5,7": "forge",
+          "6,7": "forge",
+          "7,7": "water",
+          "8,7": "earth",
+          "9,7": "earth",
+          "5,8": "moss",
+          "6,8": "moss",
+          "7,8": "dark",
+          "8,8": "ash",
+          "9,8": "ash",
+          "5,9": "moss",
+          "6,9": "moss",
+          "7,9": "water",
+          "8,9": "ash",
+          "9,9": "ash"
+        },
+        "scope": "Detached proposal, actual cache material chunks and wall/location definitions. No actors, live scripts, personal state or saved accounts. Static feasibility checked separately.",
+        "scene_sha256": "209e807cf59fe7aa139aac03fcf49113333fdb1e10213799788ce845bf1b1027",
+        "config_sha256": "49943b765b55badde48ea4249d09757a847f6a28513e63484e7bad9b620c040d"
+      }
+    },
+    "c": {
+      "loaded": 1600,
+      "reached": 1282,
+      "water": 64,
+      "hazard_escapes": 1512,
+      "issues": 0,
+      "illustrated_route_steps": 78,
+      "assets": [
+        "ASSET 409 \"Altar\" 2x1 walk=2 ops=[Some(\"Pray\"), None, None, None, None]",
+        "ASSET 568 \"Dwarf statue\" 1x1 walk=2 ops=[None, None, None, None, None]",
+        "ASSET 909 \"Plaque\" 1x1 walk=2 ops=[Some(\"Read\"), None, None, None, None]",
+        "ASSET 1276 \"Tree\" 2x2 walk=2 ops=[Some(\"Chop down\"), None, None, None, None]",
+        "ASSET 2097 \"Anvil\" 1x1 walk=2 ops=[Some(\"Smith\"), None, None, None, None]",
+        "ASSET 6143 \"null\" 1x1 walk=2 ops=[None, None, None, None, None]",
+        "ASSET 6145 \"null\" 1x1 walk=2 ops=[None, None, None, None, None]",
+        "ASSET 7016 \"Pillar\" 1x1 walk=2 ops=[None, None, None, None, None]",
+        "ASSET 7017 \"Pillar\" 1x1 walk=2 ops=[None, None, None, None, None]",
+        "ASSET 9116 \"Pipes\" 1x1 walk=2 ops=[None, None, None, None, None]",
+        "ASSET 9120 \"Pipes\" 1x1 walk=2 ops=[None, None, None, None, None]",
+        "ASSET 9736 \"Range\" 1x2 walk=2 ops=[Some(\"Cook\"), None, None, None, None]",
+        "ASSET 10943 \"Copper rocks\" 1x1 walk=2 ops=[Some(\"Mine\"), None, Some(\"hidden\"), None, None]",
+        "ASSET 11360 \"Tin rocks\" 1x1 walk=2 ops=[Some(\"Mine\"), None, Some(\"hidden\"), None, None]",
+        "ASSET 16811 \"Ceremonial Brazier\" 2x2 walk=2 ops=[None, None, None, None, None]",
+        "ASSET 18491 \"Bank booth\" 1x1 walk=1 ops=[None, Some(\"Bank\"), None, None, None]",
+        "ASSET 18511 \"Water wheel\" 1x3 walk=2 ops=[None, None, None, None, None]",
+        "ASSET 18526 \"Furnace\" 2x3 walk=2 ops=[None, None, None, None, None]",
+        "ASSET 30124 \"A barrel of rainwater\" 1x1 walk=2 ops=[Some(\"Search\"), None, None, None, None]",
+        "ASSET 37947 \"Furnace\" 2x3 walk=2 ops=[Some(\"Use\"), None, None, None, None]",
+        "ASSET 57692 \"Portal\" 1x1 walk=2 ops=[Some(\"Enter\"), None, None, None, None]",
+        "ASSET 57694 \"Chest\" 1x1 walk=2 ops=[Some(\"Search\"), Some(\"\"), Some(\"\"), Some(\"\"), Some(\"\")]",
+        "NPC 16300 size=1 block=Npc",
+        "NPC 16295 size=2 block=Npc",
+        "NPC 2075 size=2 block=Npc",
+        "NPC 3317 size=1 block=Npc",
+        "NPC 1173 size=1 block=Npc",
+        "NPC 1017 size=1 block=Npc"
+      ],
+      "audit_log_sha256": "08f76d4bae203e178458c092227345eee5d9841b5ad80a08d85ce8641a794d24",
+      "scene_sha256": "b6e9fc03fdaae6a45054d2c0232224a0b7d3bc26b3108159e01c6359a4b2ce89",
+      "composition": {
+        "id": "c",
+        "title": "The Foundry Procession",
+        "chunks": 25,
+        "loaded_tiles": 1600,
+        "water_tiles": 64,
+        "planned_inner_walkable_tiles": 1352,
+        "points": {
+          "entry": [
+            39,
+            36
+          ],
+          "recovery": [
+            43,
+            44
+          ],
+          "hub": [
+            43,
+            44
+          ],
+          "grove approach": [
+            57,
+            68
+          ],
+          "provisions": [
+            49,
+            52
+          ],
+          "Imp approach": [
+            49,
+            58
+          ],
+          "Warden approach": [
+            69,
+            65
+          ],
+          "view-sanctuary": [
+            43,
+            44
+          ],
+          "view-waterworks": [
+            61,
+            52
+          ],
+          "view-boss-approach": [
+            69,
+            65
+          ],
+          "route-0": [
+            39,
+            35
+          ],
+          "route-1": [
+            43,
+            44
+          ],
+          "route-2": [
+            52,
+            45
+          ],
+          "route-3": [
+            58,
+            49
+          ],
+          "route-4": [
+            60,
+            56
+          ],
+          "route-5": [
+            49,
+            58
+          ],
+          "route-6": [
+            49,
+            64
+          ],
+          "route-7": [
+            55,
+            67
+          ],
+          "route-8": [
+            58,
+            72
+          ],
+          "route-9": [
+            64,
+            65
+          ],
+          "route-10": [
+            69,
+            65
+          ],
+          "route-11": [
+            71,
+            69
+          ]
+        },
+        "assets": [
+          {
+            "label": "bank",
+            "id": 18491,
+            "x": 39,
+            "z": 45,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "altar",
+            "id": 409,
+            "x": 48,
+            "z": 40,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "chest",
+            "id": 57694,
+            "x": 44,
+            "z": 40,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "range",
+            "id": 9736,
+            "x": 59,
+            "z": 51,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "entry/exit portal",
+            "id": 57692,
+            "x": 39,
+            "z": 34,
+            "shape": 0,
+            "rotation": 0
+          },
+          {
+            "label": "plaque",
+            "id": 909,
+            "x": 43,
+            "z": 40,
+            "shape": 4,
+            "rotation": 1
+          },
+          {
+            "label": "sanctuary hearth",
+            "id": 16811,
+            "x": 44,
+            "z": 44,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "altar fire",
+            "id": 16811,
+            "x": 46,
+            "z": 42,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "workshop forge landmark",
+            "id": 18526,
+            "x": 59,
+            "z": 42,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "sanctuary dwarf monument",
+            "id": 568,
+            "x": 40,
+            "z": 41,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "sanctuary dwarf monument",
+            "id": 568,
+            "x": 48,
+            "z": 41,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "wheel pier",
+            "id": 7017,
+            "x": 62,
+            "z": 49,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "wheel pier",
+            "id": 7017,
+            "x": 62,
+            "z": 53,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "anvil",
+            "id": 2097,
+            "x": 56,
+            "z": 42,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "smelting furnace",
+            "id": 37947,
+            "x": 53,
+            "z": 42,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "tin",
+            "id": 11360,
+            "x": 53,
+            "z": 48,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "copper",
+            "id": 10943,
+            "x": 60,
+            "z": 48,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "wheel",
+            "id": 18511,
+            "x": 64,
+            "z": 50,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "tree reserve",
+            "id": 1276,
+            "x": 55,
+            "z": 69,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "tree reserve",
+            "id": 1276,
+            "x": 59,
+            "z": 72,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "tree reserve",
+            "id": 1276,
+            "x": 54,
+            "z": 73,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "Imp boiler",
+            "id": 18526,
+            "x": 47,
+            "z": 68,
+            "shape": 10,
+            "rotation": 1
+          },
+          {
+            "label": "boiler inlet",
+            "id": 9116,
+            "x": 45,
+            "z": 68,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "boiler outlet",
+            "id": 9120,
+            "x": 50,
+            "z": 68,
+            "shape": 10,
+            "rotation": 2
+          },
+          {
+            "label": "foundry forge",
+            "id": 18526,
+            "x": 67,
+            "z": 78,
+            "shape": 10,
+            "rotation": 1
+          },
+          {
+            "label": "foundry forge",
+            "id": 18526,
+            "x": 71,
+            "z": 78,
+            "shape": 10,
+            "rotation": 1
+          },
+          {
+            "label": "foundry forge",
+            "id": 18526,
+            "x": 76,
+            "z": 78,
+            "shape": 10,
+            "rotation": 1
+          },
+          {
+            "label": "foundry threshold pier",
+            "id": 7016,
+            "x": 66,
+            "z": 64,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "foundry threshold pier",
+            "id": 7016,
+            "x": 72,
+            "z": 64,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "coolant",
+            "id": 30124,
+            "x": 69,
+            "z": 71,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "coolant",
+            "id": 30124,
+            "x": 69,
+            "z": 74,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "coolant",
+            "id": 30124,
+            "x": 76,
+            "z": 71,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "coolant",
+            "id": 30124,
+            "x": 76,
+            "z": 74,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "hub pier",
+            "id": 7016,
+            "x": 41,
+            "z": 48,
+            "shape": 10,
+            "rotation": 0
+          },
+          {
+            "label": "hub pier",
+            "id": 7016,
+            "x": 47,
+            "z": 48,
+            "shape": 10,
+            "rotation": 0
+          }
+        ],
+        "materials": {
+          "4,4": "dark",
+          "5,4": "stone",
+          "6,4": "forge",
+          "4,5": "stone",
+          "5,5": "earth",
+          "6,5": "earth",
+          "7,5": "forge",
+          "5,6": "earth",
+          "6,6": "earth",
+          "7,6": "earth",
+          "8,6": "water",
+          "5,7": "ash",
+          "6,7": "ash",
+          "7,7": "moss",
+          "8,7": "dark",
+          "9,7": "dark",
+          "5,8": "ash",
+          "6,8": "ash",
+          "7,8": "moss",
+          "8,8": "forge",
+          "9,8": "forge",
+          "6,9": "moss",
+          "7,9": "moss",
+          "8,9": "forge",
+          "9,9": "forge"
+        },
+        "scope": "Detached proposal, actual cache material chunks and wall/location definitions. No actors, live scripts, personal state or saved accounts. Static feasibility checked separately.",
+        "scene_sha256": "b6e9fc03fdaae6a45054d2c0232224a0b7d3bc26b3108159e01c6359a4b2ce89",
+        "config_sha256": "97126ed40befc9ef03ede7e20eee66985cf1055adffb536349395f0ed1862292"
+      }
+    }
+  },
+  "native_client_commit": "ff9cef17fd1ce3ec2ebf8d1181fee31411999c4c",
+  "baseline_local_remote_verified_before_work": true,
+  "production_changes": false,
+  "baseline_frames_local": "work/floor-one-design-review/final/baseline",
+  "known_limits": "No actors, live animation, UI, gameplay, scene lifecycle or personal-state acceptance; look-at camera and lighting differ from live viewport.",
+  "retained_failed_iterations": [
+    "evidence/design-candidate-b-audit-initial.log",
+    "evidence/design-candidate-c-audit-initial.log",
+    "evidence/design-exploration-audit-build.log",
+    "evidence/design-exploration-render-build.log"
+  ],
+  "source_sha256": {
+    "docs/tower/design-review/floor-one/candidate-a/config.json": "ce6a7289c5f45dc326d59110bb4f96196aae74072cbbd4640f2fbc82c7c1c17c",
+    "docs/tower/design-review/floor-one/candidate-b/config.json": "49943b765b55badde48ea4249d09757a847f6a28513e63484e7bad9b620c040d",
+    "docs/tower/design-review/floor-one/candidate-c/config.json": "97126ed40befc9ef03ede7e20eee66985cf1055adffb536349395f0ed1862292",
+    "tools/tower/offline/design/generate.py": "c00780a4d5837a722a76f5d020b2c9e1b9e8b7438e62f902fb0b45ca34fe3cc9",
+    "tools/tower/offline/design/render_review.py": "21c09943efbf12f204b2877e3410a1ec29c2a23e0f78dc0c101149c6c1d3d4e2",
+    "tools/tower/offline/render/src/main.rs": "92a898a15761a8d0172e09ec6439a4d02e6aa9a8259f4feae08fb3de9c1e7dd1",
+    "tools/tower/offline/export/src/bin/design_audit.rs": "9cd6b35d5b2f33970018e7e32e4785e871e839e001c1e6b0ed9d164b611cb968"
+  },
+  "public_diagram_sha256": {
+    "baseline.png": "cce4b25edb9b04069a0663d6e924b0ae23126ded4869184c342594313ac2e78f",
+    "comparison.png": "c7da4a23becf241b08c063409b908c70f3ff212c29cacb7ded69dee6ae87f174",
+    "candidate-a/overview.png": "96aaca19eddfcc91a700acdc9741d9d2d7559ed1fff354dcbc9044d9daec620d",
+    "candidate-b/overview.png": "669d0d69e604090749f15f2c7f1383a1e1e5ca29c0de7c0e71a9b20bfa93a54f",
+    "candidate-c/overview.png": "5d9d23893881daf4e1d9433d0b90a665d36b3aea8897838dc8dfad257cfdc1e2"
+  },
+  "preserved_production_source_sha256": {
+    "crates/server/src/tower_map.rs": "1bbc48e1804d49903d9d1d599467599b3e755f9255ee6442e910036209f97a3c",
+    "crates/server/src/tower_scene.rs": "911eb9c1334cbee630fbd31998d0a95d7fd9f10c6fd80ad389ff3e30f45bd9bc",
+    "crates/world/src/tower_furnishings.rs": "4dea1f9883b09d09dfb68011bc942d8bea36412f7a74aceebda7e68f1f589031",
+    "crates/world/src/tower_layout.rs": "278dda7c548fead16046fefde2cd58dccc3836499ac1f4868b90b4a3dd74be27",
+    "crates/world/src/tower_scenery.rs": "e22f7c815afb38e2db3135c28584e7a8c46af2c49860f8ea06d553572c947811"
+  }
+}
