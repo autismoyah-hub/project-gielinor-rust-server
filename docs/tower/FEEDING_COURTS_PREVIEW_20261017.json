@@ -1,0 +1,275 @@
+{
+  "source_parent": "077900ccdf688b2321df36810d614eaf35762b76",
+  "server_binary_sha256": "EFFA227332F6C7645179EDB6841F57783631FE8C1F27EAF1F9900C220E254077",
+  "change": "Two existing enclosure props replaced with stable filled wooden trough5575; local40,35/world10408,99 andlocal72,35/world10440,99; shape10 rotation0. Prop count unchanged; each footprint1x1 becomes2x1.",
+  "native_preview": {
+    "actual_scene_ids": [
+      5575,
+      5575
+    ],
+    "before_views_inspected": 16,
+    "after_views_inspected": 16,
+    "same_character_exact_items_equipment_all25XP_journal": true,
+    "renderer_changed": false,
+    "composition": "Low troughs define existing feeding bays; resource animals, targets and routes remain visible."
+  },
+  "cache_definition": {
+    "id": 5575,
+    "width": 2,
+    "length": 1,
+    "ops": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "transforms": false,
+    "block_walk": 2,
+    "block_range": true
+  },
+  "checks": {
+    "cache_passed": 24,
+    "server_passed": 57,
+    "world_passed": 407,
+    "existing_ignored": 2,
+    "reachable_tiles": 2098,
+    "legal_lethal_pattern_escapes": 1512,
+    "server_build": "passed"
+  },
+  "current_build_full_fresh_tests": {
+    "native": "running; workshop-first",
+    "headless": "running; kitchen-first; waits before shared courts",
+    "full_pack_first_reward_and_fresh_ack": "pending",
+    "ordinary_reconnect": "pending",
+    "crash": "not rerun on EFFA; prior5BE proof separate"
+  },
+  "native_frames": [
+    {
+      "set": "Before",
+      "area": "pasture court",
+      "yaw": 0,
+      "filename": "frame-101.bmp",
+      "sha256": "eda27713a9713c6722cb6d60e3b3cc5886fd873b0ae27deb0ea156d77e8d744f"
+    },
+    {
+      "set": "Current feeding court",
+      "area": "pasture court",
+      "yaw": 0,
+      "filename": "frame-74.bmp",
+      "sha256": "5d89853114c43b79a968963468d460891bd670eee060dacb6c0c2c178b67be75"
+    },
+    {
+      "set": "Before",
+      "area": "pasture court",
+      "yaw": 4096,
+      "filename": "frame-103.bmp",
+      "sha256": "db9b1708c386a743d3254ebc4f7f4a6205a4f30df223b7693ead49d3c6b7a48f"
+    },
+    {
+      "set": "Current feeding court",
+      "area": "pasture court",
+      "yaw": 4096,
+      "filename": "frame-76.bmp",
+      "sha256": "2f98955a7ebd306fd58d3a1ddf401b44c5575b8a0f578047ce3a74e268ef5ce0"
+    },
+    {
+      "set": "Before",
+      "area": "pasture court",
+      "yaw": 8192,
+      "filename": "frame-105.bmp",
+      "sha256": "82570e42d3a4e9539b57ab2211a6a76eac4cac93702e4333c2847d81a12a533c"
+    },
+    {
+      "set": "Current feeding court",
+      "area": "pasture court",
+      "yaw": 8192,
+      "filename": "frame-78.bmp",
+      "sha256": "763c006a5854f439b2a5aecda3b425dd04b79148ba6e98f82da1a43e435d8a3f"
+    },
+    {
+      "set": "Before",
+      "area": "pasture court",
+      "yaw": 12288,
+      "filename": "frame-107.bmp",
+      "sha256": "41cb5e4aa89a73977a0cdc1c86cbe596e0dad55047fb4527eb49f6f05295152a"
+    },
+    {
+      "set": "Current feeding court",
+      "area": "pasture court",
+      "yaw": 12288,
+      "filename": "frame-80.bmp",
+      "sha256": "3f6b427c64ef6b8b594e481185b99dabfbf916e6eeb2ab3352e177891f7caba9"
+    },
+    {
+      "set": "Before",
+      "area": "pasture feeding bay",
+      "yaw": 0,
+      "filename": "frame-121.bmp",
+      "sha256": "8a43186ae460d5284d3ada2d6abe2d789fd0b2f79069022c13f6649f1798114e"
+    },
+    {
+      "set": "Current feeding court",
+      "area": "pasture feeding bay",
+      "yaw": 0,
+      "filename": "frame-97.bmp",
+      "sha256": "a37127608ff9ccde6c0cc3527aa12e853e93e0003fd2a298d3c9c38c9c551f5e"
+    },
+    {
+      "set": "Before",
+      "area": "pasture feeding bay",
+      "yaw": 4096,
+      "filename": "frame-123.bmp",
+      "sha256": "6d53d030e6c9a767abc2cceb806c31f0ab65182d22b0efbdb0392944df4d1f14"
+    },
+    {
+      "set": "Current feeding court",
+      "area": "pasture feeding bay",
+      "yaw": 4096,
+      "filename": "frame-99.bmp",
+      "sha256": "d86c5ae62a886c7810425026a71fb4af1bc5b0c09204f8704eff6dd0c6a2d5bc"
+    },
+    {
+      "set": "Before",
+      "area": "pasture feeding bay",
+      "yaw": 8192,
+      "filename": "frame-125.bmp",
+      "sha256": "4cec9694ceb6a27dc70a7d947839806fc84393f9a1ceb7aef0642b3e191e0883"
+    },
+    {
+      "set": "Current feeding court",
+      "area": "pasture feeding bay",
+      "yaw": 8192,
+      "filename": "frame-101.bmp",
+      "sha256": "6ad57ecbaa2c7bbcd206be617fff108d2f6f50823de1b627095304d946ee0035"
+    },
+    {
+      "set": "Before",
+      "area": "pasture feeding bay",
+      "yaw": 12288,
+      "filename": "frame-127.bmp",
+      "sha256": "b71bbf126af62bc8ef38d391a17223b263c6fbc5762a9b8d35deb8cc5d2ca7bf"
+    },
+    {
+      "set": "Current feeding court",
+      "area": "pasture feeding bay",
+      "yaw": 12288,
+      "filename": "frame-103.bmp",
+      "sha256": "20b28b0818d809ed08250d489fab9ca9b1a902128a3cfecf571e6a4348ad017d"
+    },
+    {
+      "set": "Before",
+      "area": "poultry court",
+      "yaw": 0,
+      "filename": "frame-196.bmp",
+      "sha256": "71141bfa1b7086057efe1c071e3dad3f07809b78d03a86d76fe0d5a516052fe9"
+    },
+    {
+      "set": "Current feeding court",
+      "area": "poultry court",
+      "yaw": 0,
+      "filename": "frame-169.bmp",
+      "sha256": "37021c00ab7f4b4a3c08c701531aefe63fc4cdf362119fd983d5dcd249450274"
+    },
+    {
+      "set": "Before",
+      "area": "poultry court",
+      "yaw": 4096,
+      "filename": "frame-198.bmp",
+      "sha256": "7bb9566e5c78e65599952e439ac6b8da5abb13a1ab6b65bd4480d2c00b60a658"
+    },
+    {
+      "set": "Current feeding court",
+      "area": "poultry court",
+      "yaw": 4096,
+      "filename": "frame-171.bmp",
+      "sha256": "4bc54c9e1550257762f6cba2867ef798b34c95cf6d609884f668fb872cd0eef3"
+    },
+    {
+      "set": "Before",
+      "area": "poultry court",
+      "yaw": 8192,
+      "filename": "frame-200.bmp",
+      "sha256": "5c472ddf6c96c15bd5ab5a3aeb29c7bade6e532605b59ccf11f56684b964cffe"
+    },
+    {
+      "set": "Current feeding court",
+      "area": "poultry court",
+      "yaw": 8192,
+      "filename": "frame-173.bmp",
+      "sha256": "4a3b0d5911f7cbec987707eab77a274405a99c9ddb293cf03b28b6af7426d583"
+    },
+    {
+      "set": "Before",
+      "area": "poultry court",
+      "yaw": 12288,
+      "filename": "frame-202.bmp",
+      "sha256": "a0cd1ac10c2cf8a319cda8aa6a51ba8ba54dff047d7ee4447210841809b3c1d5"
+    },
+    {
+      "set": "Current feeding court",
+      "area": "poultry court",
+      "yaw": 12288,
+      "filename": "frame-175.bmp",
+      "sha256": "89bb52d0a0fe06edaa8c23f5fb9a0da9cd1f5105523ed8033aaeea9c613296d1"
+    },
+    {
+      "set": "Before",
+      "area": "poultry feeding bay",
+      "yaw": 0,
+      "filename": "frame-217.bmp",
+      "sha256": "7e7ef24fd304fe4c4c54032834df3258f60bb1228ce4cfabecd05845d23d2666"
+    },
+    {
+      "set": "Current feeding court",
+      "area": "poultry feeding bay",
+      "yaw": 0,
+      "filename": "frame-191.bmp",
+      "sha256": "9ec93c915287dd10c923d72be85a34b36d084059c5ff085436df6edbea8fc4bb"
+    },
+    {
+      "set": "Before",
+      "area": "poultry feeding bay",
+      "yaw": 4096,
+      "filename": "frame-219.bmp",
+      "sha256": "54000b91ad07271c455de18ca895e0b8d3b8b9088a1d2a1a07498b1c1c9bcc1d"
+    },
+    {
+      "set": "Current feeding court",
+      "area": "poultry feeding bay",
+      "yaw": 4096,
+      "filename": "frame-193.bmp",
+      "sha256": "4df8e1a3c588ab371a5d6c578ef0fecdbdd58761f50c00a653951eed0bd8fb6a"
+    },
+    {
+      "set": "Before",
+      "area": "poultry feeding bay",
+      "yaw": 8192,
+      "filename": "frame-221.bmp",
+      "sha256": "7bc694ec311eb5292dbef82bed06e4c62935104d3868c8034922b58eff81604c"
+    },
+    {
+      "set": "Current feeding court",
+      "area": "poultry feeding bay",
+      "yaw": 8192,
+      "filename": "frame-195.bmp",
+      "sha256": "f066a1c4aebf057cc87004c3ffea57f3252d51be3f32ff2383009d70be9bb247"
+    },
+    {
+      "set": "Before",
+      "area": "poultry feeding bay",
+      "yaw": 12288,
+      "filename": "frame-223.bmp",
+      "sha256": "0d467bc25583f6731028f94ca16a83b748cf835412df04daebd5d70814a9ca9d"
+    },
+    {
+      "set": "Current feeding court",
+      "area": "poultry feeding bay",
+      "yaw": 12288,
+      "filename": "frame-197.bmp",
+      "sha256": "23ab988ec0d8c95b342f346ecdf4e56653f7f15c399e62c7dfb9c5ea2a20633d"
+    }
+  ],
+  "artistic_acceptance": "pending user review; no completion claim",
+  "human_pacing": "unmeasured"
+}
