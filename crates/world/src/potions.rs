@@ -10,6 +10,9 @@ pub const EMPTY_MESSAGE: &str = "You empty the contents of the vial on the floor
 pub const DRINK_DELAY: i32 = 3;
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum Effect {
+    OverRestore { skill: &'static str, constant: i32, percent: i32, cap_percent: i32 },
+    DrainCurrent { skill: &'static str, constant: i32, percent: i32, minimum: u8 },
+
     Boost {
         skill: &'static str,
         constant: i32,
@@ -239,6 +242,18 @@ pub fn catalog() -> Vec<Dose> {
                 .collect(),
         );
     }
+    // Independently pinned Ancient/Forgotten brew effects, all four doses.
+    for (name,symbols,constant,percent) in [
+        ("ancient brew",["4doseancientbrew","3doseancientbrew","2doseancientbrew","1doseancientbrew"],2,5),
+        ("forgotten brew",["4doseforgottenbrew","3doseforgottenbrew","2doseforgottenbrew","1doseforgottenbrew"],3,8),
+    ] {
+        let mut effects=vec![Effect::Boost{skill:"magic",constant,percent},
+            Effect::OverRestore{skill:"prayer",constant:2,percent:10,cap_percent:5}];
+        for skill in ["attack","strength","defence"] {
+            effects.push(Effect::DrainCurrent{skill,constant:2,percent:10,minimum:0});
+        }
+        chain(name,symbols,effects);
+    }
     for (name, symbols, kind) in [
         (
             "prayer potion",
@@ -346,6 +361,9 @@ pub fn restored_energy(current: i32, percent: i32, max: i32) -> i32 {
 }
 #[derive(Clone, Debug)]
 pub enum ResolvedEffect {
+    OverRestore { skill: u8, constant: i32, percent: i32, cap_percent: i32 },
+    DrainCurrent { skill: u8, constant: i32, percent: i32, minimum: u8 },
+
     Boost {
         skill: u8,
         constant: i32,
@@ -421,6 +439,21 @@ fn apply_drink_effects(
                         false,
                     )?));
                 }
+            }
+            ResolvedEffect::OverRestore{skill,constant,percent,cap_percent} => {
+                if constant<0 {return Err(stat_ops::Error::NegativeConstant);}
+                if !(0..=100).contains(&percent) || !(0..=100).contains(&cap_percent) {return Err(stat_ops::Error::InvalidPercent);}
+                let current=stats.current(skill) as u8 as i32;let base=stats.base(skill) as u8 as i32;
+                let cap=(base+base*cap_percent/100).min(255);
+                let amount=constant.saturating_add(base*percent/100).min((cap-current).max(0));
+                if amount>0 {emit(Event::Stat(stats.apply(skill,Operation::Add,amount,0,false)?));}
+            }
+            ResolvedEffect::DrainCurrent{skill,constant,percent,minimum} => {
+                if constant<0 {return Err(stat_ops::Error::NegativeConstant);}
+                if !(0..=100).contains(&percent) {return Err(stat_ops::Error::InvalidPercent);}
+                let current=stats.current(skill) as u8 as i32;
+                let amount=constant.saturating_add(current*percent/100).min((current-i32::from(minimum)).max(0));
+                if amount>0 {emit(Event::Stat(stats.apply(skill,Operation::Subtract,amount,0,false)?));}
             }
             ResolvedEffect::Energy(percent) => {
                 let next = restored_energy(*energy, percent, 10_000);
@@ -516,6 +549,45 @@ mod tests {
             remaining: "remaining".into(),
             effects,
         }
+    }
+    fn brew_effects(constant:i32,percent:i32)->Vec<ResolvedEffect> {
+        vec![ResolvedEffect::Boost{skill:6,constant,percent},ResolvedEffect::OverRestore{skill:5,constant:2,percent:10,cap_percent:5},
+            ResolvedEffect::DrainCurrent{skill:0,constant:2,percent:10,minimum:0},ResolvedEffect::DrainCurrent{skill:2,constant:2,percent:10,minimum:0},ResolvedEffect::DrainCurrent{skill:1,constant:2,percent:10,minimum:0}]
+    }
+    #[test]
+    fn ancient_and_forgotten_potion_doses_apply_boost_overrestore_and_current_drains() {
+        for (constant,percent,magic) in [(2,5,105),(3,8,109)] {for dose in 1..=4 {
+            let mut inv=Inventory::new(2,StackType::Normal,false);inv.restore_slot(1,Some(Item{id:1,count:1,vars:0})).unwrap();
+            let mut stats=Stats::default();for skill in [0,1,2,5,6] {stats.set_base(skill,99);stats.set_current(skill,99);}
+            stats.set_current(0,118);stats.set_current(2,90);stats.set_current(1,1);let before=stats.clone();let mut energy=6000;
+            let mut p=potion(brew_effects(constant,percent));p.next=if dose==1{3}else{2};
+            assert!(consume_slot(&p,1,false,&mut inv,&mut stats,&mut energy,&Catalog::default(),829,|_|{}).unwrap());
+            assert_eq!((stats.current(6),stats.current(5),stats.current(0),stats.current(2),stats.current(1)),(magic,103,105,79,0));
+            assert_eq!(inv.get(1).unwrap().id,if dose==1{3}else{2});assert_eq!(energy,6000);
+            for skill in 0..25 {assert_eq!(stats.fine_xp(skill),before.fine_xp(skill));}
+        }}
+        let doses:Vec<_>=catalog().into_iter().filter(|d|matches!(d.name,"ancient brew"|"forgotten brew")).collect();assert_eq!(doses.len(),8);
+        for d in doses {assert_eq!(d.effects.len(),5);assert!(d.effects.contains(&Effect::OverRestore{skill:"prayer",constant:2,percent:10,cap_percent:5}));if d.left==0{assert_eq!(d.next,EMPTY_VIAL);}}
+    }
+    #[test]
+    fn potion_overrestore_respects_floor_cap_and_preserves_preexisting_higher_boost() {
+        for (base,current,expected) in [(99,0,11),(99,98,103),(99,103,103),(99,105,105),(1,0,1),(60,59,63)] {
+            let mut inv=Inventory::new(1,StackType::Normal,false);inv.restore_slot(0,Some(Item{id:1,count:1,vars:0})).unwrap();
+            let mut stats=Stats::default();stats.set_base(5,base);stats.set_current(5,current);let mut energy=0;
+            consume_slot(&potion(vec![ResolvedEffect::OverRestore{skill:5,constant:2,percent:10,cap_percent:5}]),0,false,&mut inv,&mut stats,&mut energy,&Catalog::default(),829,|_|{}).unwrap();assert_eq!(stats.current(5),expected);
+        }
+        for (current,expected) in [(0,0),(1,0),(9,7),(10,7),(99,88),(118,105),(255,228)] {
+            let mut inv=Inventory::new(1,StackType::Normal,false);inv.restore_slot(0,Some(Item{id:1,count:1,vars:0})).unwrap();
+            let mut stats=Stats::default();stats.set_base(0,99);stats.set_current(0,current as u8 as i8);let mut energy=0;
+            consume_slot(&potion(vec![ResolvedEffect::DrainCurrent{skill:0,constant:2,percent:10,minimum:0}]),0,false,&mut inv,&mut stats,&mut energy,&Catalog::default(),829,|_|{}).unwrap();assert_eq!(stats.current(0) as u8 as i32,expected);
+        }
+    }
+    #[test]
+    fn invalid_potion_cap_after_magic_preparation_rolls_back_every_effect() {
+        let mut inv=Inventory::new(1,StackType::Normal,false);inv.restore_slot(0,Some(Item{id:1,count:1,vars:0})).unwrap();
+        let mut stats=Stats::default();stats.set_base(6,99);stats.set_current(6,99);let mut energy=1000;let before=(inv.clone(),stats.clone(),energy);let mut events=Vec::new();
+        let p=potion(vec![ResolvedEffect::Boost{skill:6,constant:3,percent:8},ResolvedEffect::OverRestore{skill:5,constant:2,percent:10,cap_percent:101}]);
+        assert!(consume_slot(&p,0,false,&mut inv,&mut stats,&mut energy,&Catalog::default(),829,|e|events.push(e)).is_err());assert_eq!((inv,stats,energy),before);assert!(events.is_empty());
     }
     #[test]
     fn selected_dose_stays_in_place_with_duplicates_and_a_full_inventory() {
