@@ -385,31 +385,11 @@ fn replace(inv: &mut Inventory, items: &Catalog, id: i32, next: i32) {
         *inv = copy;
     }
 }
-pub fn consume(
-    potion: &Potion,
-    empty: bool,
-    inv: &mut Inventory,
-    stats: &mut Stats,
-    energy: &mut i32,
-    items: &Catalog,
-    animation: u16,
-    mut emit: impl FnMut(Event),
-) -> Result<bool, stat_ops::Error> {
-    if !inv
-        .slots()
-        .iter()
-        .flatten()
-        .any(|obj| obj.id == potion.id && obj.count > 0)
-    {
-        return Ok(false);
-    }
-    if empty {
-        replace(inv, items, potion.id, potion.vial);
-        emit(Event::Message(EMPTY_MESSAGE.into()));
-        return Ok(true);
-    }
-    emit(Event::Animation(animation));
-    replace(inv, items, potion.id, potion.next);
+// Shared arithmetic/messages preserve the legacy reference function below.
+fn apply_drink_effects(
+    potion: &Potion, stats: &mut Stats, energy: &mut i32,
+    emit: &mut impl FnMut(Event),
+) -> Result<(), stat_ops::Error> {
     for effect in &potion.effects {
         match *effect {
             ResolvedEffect::Boost {
@@ -454,6 +434,72 @@ pub fn consume(
     emit(Event::Message(potion.sip.clone()));
     emit(Event::Message(potion.remaining.clone()));
     emit(Event::Delay(DRINK_DELAY));
+    Ok(())
+}
+
+/// Gameplay adapter: replace the selected dose and publish inventory/effects
+/// together. The legacy item-ID API remains available for reference comparison.
+pub fn consume_slot(
+    potion: &Potion, slot: usize, empty: bool,
+    inv: &mut Inventory, stats: &mut Stats, energy: &mut i32,
+    items: &Catalog, animation: u16, mut emit: impl FnMut(Event),
+) -> Result<bool, stat_ops::Error> {
+    if inv.get(slot).is_none_or(|i|i.id!=potion.id || i.count!=1) {
+        return Ok(false);
+    }
+    let next=if empty {potion.vial}else{potion.next};
+    let ordinary=|id| id>=0 && !items.stackable.contains(&id)
+        && !items.dummy.contains(&id)
+        && !items.notes.get(&id).is_some_and(|v|v.template!=0)
+        && !items.placeholders.get(&id).is_some_and(|v|v.template!=0)
+        && !items.transforms.get(&id).is_some_and(|v|v.template!=0);
+    if next==potion.id || !ordinary(potion.id) || !ordinary(next) {
+        return Ok(false);
+    }
+    let mut inventory=inv.clone();
+    let mut debit=Delete::new(potion.id,1);debit.strict_slot=Some(slot);
+    if inventory.delete(items,debit).is_err() {return Ok(false);}
+    let mut credit=Insert::new(next,1);credit.strict_slot=Some(slot);
+    if inventory.insert(items,credit).is_err() {return Ok(false);}
+    if inventory.get(slot).is_none_or(|i|i.id!=next || i.count!=1 || i.vars!=0) {return Ok(false);}
+    let mut next_stats=stats.clone();let mut next_energy=*energy;
+    let mut events=Vec::new();
+    if empty {events.push(Event::Message(EMPTY_MESSAGE.into()));}
+    else {
+        events.push(Event::Animation(animation));
+        apply_drink_effects(potion,&mut next_stats,&mut next_energy,&mut |event|events.push(event))?;
+    }
+    *inv=inventory;*stats=next_stats;*energy=next_energy;
+    for event in events {emit(event);}
+    Ok(true)
+}
+
+pub fn consume(
+    potion: &Potion,
+    empty: bool,
+    inv: &mut Inventory,
+    stats: &mut Stats,
+    energy: &mut i32,
+    items: &Catalog,
+    animation: u16,
+    mut emit: impl FnMut(Event),
+) -> Result<bool, stat_ops::Error> {
+    if !inv
+        .slots()
+        .iter()
+        .flatten()
+        .any(|obj| obj.id == potion.id && obj.count > 0)
+    {
+        return Ok(false);
+    }
+    if empty {
+        replace(inv, items, potion.id, potion.vial);
+        emit(Event::Message(EMPTY_MESSAGE.into()));
+        return Ok(true);
+    }
+    emit(Event::Animation(animation));
+    replace(inv, items, potion.id, potion.next);
+    apply_drink_effects(potion, stats, energy, &mut emit)?;
     Ok(true)
 }
 
@@ -469,6 +515,36 @@ mod tests {
             sip: "sip".into(),
             remaining: "remaining".into(),
             effects,
+        }
+    }
+    #[test]
+    fn selected_dose_stays_in_place_with_duplicates_and_a_full_inventory() {
+        for empty in [false,true] {
+            let mut inv=Inventory::new(28,StackType::Normal,false);
+            for slot in 0..28 {inv.restore_slot(slot,Some(Item{id:if slot==0||slot==27{1}else{99},count:1,vars:if slot==27{10}else{0}})).unwrap();}
+            let before=inv.clone();let mut stats=Stats::default();stats.set_base(0,50);stats.set_current(0,45);let before_stats=stats.clone();let mut energy=6000;let mut events=Vec::new();
+            let p=potion(vec![ResolvedEffect::Boost{skill:0,constant:3,percent:10},ResolvedEffect::Energy(20)]);
+            assert!(consume_slot(&p,27,empty,&mut inv,&mut stats,&mut energy,&Catalog::default(),829,|e|events.push(e)).unwrap());
+            assert_eq!(inv.get(27),Some(Item{id:if empty{3}else{2},count:1,vars:0}));
+            for slot in 0..27 {assert_eq!(inv.get(slot),before.get(slot));}
+            for skill in 0..25 {assert_eq!(stats.fine_xp(skill),before_stats.fine_xp(skill));}
+            if empty {assert_eq!(stats,before_stats);assert_eq!(energy,6000);assert_eq!(events,vec![Event::Message(EMPTY_MESSAGE.into())]);}
+            else {assert_eq!(stats.current(0),53);assert_eq!(energy,8000);assert_eq!(events.first(),Some(&Event::Animation(829)));assert_eq!(events.last(),Some(&Event::Delay(3)));}
+        }
+    }
+    #[test]
+    fn selected_dose_failures_publish_no_items_stats_energy_events_or_delay() {
+        for mode in 0..5 {
+            let mut inv=Inventory::new(3,if mode==4{StackType::Always}else{StackType::Normal},false);
+            inv.restore_slot(0,Some(Item{id:1,count:1,vars:0})).unwrap();
+            inv.restore_slot(2,Some(Item{id:1,count:if mode==0{2}else{1},vars:0})).unwrap();
+            if mode==4 {inv.restore_slot(1,Some(Item{id:2,count:1,vars:0})).unwrap();}
+            let mut catalog=Catalog::default();if mode==1{catalog.dummy.insert(2);}if mode==2{catalog.stackable.insert(1);}
+            let effects=if mode==3{vec![ResolvedEffect::Energy(20),ResolvedEffect::Boost{skill:0,constant:-1,percent:10}]}else{vec![ResolvedEffect::Energy(20)]};
+            let p=potion(effects);let mut stats=Stats::default();let mut energy=6000;let state=(inv.clone(),stats.clone(),energy);let mut events=Vec::new();
+            let result=consume_slot(&p,2,false,&mut inv,&mut stats,&mut energy,&catalog,829,|e|events.push(e));
+            if mode==3 {assert!(result.is_err());}else{assert!(!result.unwrap());}
+            assert_eq!((inv,stats,energy),state);assert!(events.is_empty());
         }
     }
     #[test]

@@ -1948,8 +1948,9 @@ impl World {
                 }
                 let potion = &self.potions[&expected];
                 let mut emitted = Vec::new();
-                crate::potions::consume(
+                let consumed=crate::potions::consume_slot(
                     potion,
+                    slot,
                     empty,
                     &mut p.data.inventory,
                     &mut p.data.stats,
@@ -1959,6 +1960,7 @@ impl World {
                     |e| emitted.push(e),
                 )
                 .map_err(|_| ActionError::InvalidStat)?;
+                if !consumed {return Err(ActionError::InvalidItem);}
                 for event in emitted {
                     if let crate::potions::Event::Stat(update) = &event {
                         p.record_stat_update(
@@ -4121,6 +4123,19 @@ mod tests {
         }
     }
     #[test]
+    fn queued_potion_consumption_uses_claimed_slot_and_refuses_failed_replacement() {
+        use crate::{inventory::Item,potions::{Potion,Event}};
+        for reject in [false,true] {
+            let (mut w,a)=admitted();w.potions.insert(1,Potion{id:1,next:2,vial:3,sip:"sip".into(),remaining:"left".into(),effects:Vec::new()});
+            if reject {w.object_types.dummy.insert(2);}
+            for slot in [0,2] {w.data_mut(a).unwrap().inventory.restore_slot(slot,Some(Item{id:1,count:1,vars:0})).unwrap();}
+            let before=w.data(a).unwrap().inventory.clone();w.submit(a,Action::DrinkSlot{slot:2,item:1,empty:false}).unwrap();w.tick().unwrap();
+            assert_eq!(w.data(a).unwrap().inventory.get(0),before.get(0));let events=w.drain_events();
+            if reject {assert_eq!(w.data(a).unwrap().inventory,before);assert!(!w.protection(a).unwrap().delayed());assert!(!events.iter().any(|e|matches!(e,WorldEvent::Potion{..})));}
+            else {assert_eq!(w.data(a).unwrap().inventory.get(2).unwrap().id,2);assert!(events.iter().any(|e|matches!(e,WorldEvent::Potion{event:Event::Animation(_),..})));}
+        }
+    }
+    #[test]
     fn queued_potions_reject_stale_items_share_delays_and_empty_without_delay() {
         use crate::{
             inventory::Item,
@@ -4182,7 +4197,7 @@ mod tests {
             .submit(
                 actor,
                 Action::DrinkSlot {
-                    slot: 0,
+                    slot: 2,
                     item: 8,
                     empty: true,
                 },
@@ -4191,14 +4206,14 @@ mod tests {
         world.tick().unwrap();
         assert_eq!(world.data(actor).unwrap().stats.current(0), 53);
         assert_eq!(
-            world.data(actor).unwrap().inventory.get(0),
+            world.data(actor).unwrap().inventory.get(2),
             Some(Item {
                 id: 8,
                 count: 1,
                 vars: 0
             })
         );
-        assert!(world.data(actor).unwrap().inventory.get(2).is_none());
+        assert!(world.data(actor).unwrap().inventory.get(0).is_none());
         assert!(world.drain_events().iter().any(|e| matches!(
             e,
             WorldEvent::ActionRejected {
@@ -4214,14 +4229,14 @@ mod tests {
             .submit(
                 actor,
                 Action::DrinkSlot {
-                    slot: 0,
+                    slot: 2,
                     item: 8,
                     empty: true,
                 },
             )
             .unwrap();
         world.tick().unwrap();
-        assert_eq!(world.data(actor).unwrap().inventory.get(0).unwrap().id, 9);
+        assert_eq!(world.data(actor).unwrap().inventory.get(2).unwrap().id, 9);
         assert_eq!(world.data(actor).unwrap().stats.current(0), 53);
         assert!(!world.protection(actor).unwrap().delayed());
         let events = world.drain_events();
