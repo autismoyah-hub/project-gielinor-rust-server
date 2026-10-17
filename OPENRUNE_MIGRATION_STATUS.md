@@ -3600,3 +3600,61 @@ All listed runs require client exit0, fresh durable logout, clean owned exit0 an
 - Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Three consecutive server finished-potion commits from one quantity request; UI evidence and packet/display latency separate"}`
 
 Menaphite immutable archive: executable SHA256 `EE37B3949C2089467391BE8C0A2E42F4C3463913B68F197CE4221108AFC80E59`,397source files,manifest SHA256 `a78afeff2349d7ae1202f4ad850e0c5690bdc439aedf3a7631624d55ac178ad5`. Server build10.14s,guard6689MiB/50.0%commit/0page-ins/s/1.0msdisk/5.6%CPU,j2. Driver build4.09s,guard5672MiB/56.2%commit/0page-ins/s/4.4msdisk/32.7%CPU,j2.93state/trace and10menu/packet synthetic checksPASS. Original failed profile-count assertion and corrected regression remain preserved; no accepted native attempt was repeated.
+
+## Native gameplay antivenomplus acceptance (2026-10-17 UTC)
+
+Native Anti-venom+ using clean and unfinished Torstol,alternating Use order,two exact four-dose outputs,12500fineXP at5x,two-tick commits,23pots/1000coins and same-save no replay. Partial-dose upgrades,modifiers,drinking/acquisition and original compiled Kotlin remain separate.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking/Herblore parity or unrelated recipes. No issue closure.
+
+`openrune-native-antivenomplus-001` PASS. Server archive `61707788E0FFA5178F10D638409868DB382117F482C38061A86B384136930804`, driver `antivenomplus-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID15644.
+- Driver `server_antivenomplus.exe` SHA256 `9EDB864303A2A7B2247E7F5B953E6331CEED7840524B15895ECEDFF8CD226876`
+- Driver `NativeAntivenomPlusScenario.rs` SHA256 `395A13BCD9EE4EB40E45515D7D0A4FA0CB115832C23A0EABE54A6C122B2FE021`
+- `client.log` SHA256 `fd6a3cfa13cb1de2db50296c14ca6be2ce7ecdad138fa3070fb63e661ad723e7`
+- `server.log` SHA256 `e39fc6de81053284d41a2715323f3d0a8ff781cc4b963abc2084bb937f04d61b`
+- `server.json` SHA256 `7838ae13a738cb7fb3f06769383e1a3ac16925352ee2d88aece65b01a373a6d9`
+- `initial-state.json` SHA256 `0ad0553f6a7e9321ff73ce13160ad5ffa63c87411d836da8c34b99df2c6aa559`
+- `final-state.json` SHA256 `e2c3070bbcc66a54b1f12aeb6024edc4ddb0db9a38bfdf46c00ae62574cb5c15`
+- `pack-assessment.json` SHA256 `bb59077fa7c145566d5a8bad810217e3de265568c0655ffed221b5297ea9f503`
+- `antivenomplus-trace-assessment.json` SHA256 `386f531c182f030bab9b106a4dce4d9d6a23b37fbd91c86b4c924c9fe647a67a`
+- `logout-observation.json` SHA256 `d833a1996e1c62d33aba46c0bf8b65df468f19823d454377748b21922b9b50a1`
+- `shutdown.json` SHA256 `42dfddf3445e77803218630199d520add2d116cdc7851ba51cfc39518a1422db`
+- `result.json` SHA256 `911e364cf2388dc3f544cb09af04292a228b9dd38f245372862d85f463ba2d66`
+- `pack-run.json` SHA256 `c9fd60cf212a154dc2531f71d2ef80550f64bbfd53abb8c96b280e6e5c8d9b21`
+- `native-profile-assessment.json` SHA256 `3f14a170fae57aa7fb1d7cec162cb49aa87debcbb735e6b036598733a23eb947`
+- `native-packet-assessment.json` SHA256 `ad20b878f131d99e6ee04588c8f8e82cf571bb58cd4ca5d3d48ac726b51cf845`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":200},"3077":{"before":0,"after":6426},"3079":{"before":0,"after":108},"65515":{"before":0,"after":101}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[{"actor_slot":1,"actor_generation":614,"unfinished_slot":0,"secondary_slot":1,"unfinished":12905,"secondary":269,"output":12913,"count":1,"queued_at":77,"committed_at":79,"index":0,"base_fine_xp":1250,"rate_hundreds":500,"fine_before":130344311,"fine_after":130350561,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"unfinished_slot":2,"secondary_slot":3,"unfinished":12905,"secondary":111,"output":12913,"count":1,"queued_at":87,"committed_at":89,"index":0,"base_fine_xp":1250,"rate_hundreds":500,"fine_before":130350561,"fine_after":130356811,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5}],"scope":"Separate selected-profile two-tick commits; UI evidence and packet/display latency separate"}`
+
+`openrune-antivenomplus-relogin-001` PASS. Server archive `61707788E0FFA5178F10D638409868DB382117F482C38061A86B384136930804`, driver `antivenomplus-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor `openrune-native-antivenomplus-001`, owned PID2016.
+- Driver `server_antivenomplus.exe` SHA256 `9EDB864303A2A7B2247E7F5B953E6331CEED7840524B15895ECEDFF8CD226876`
+- Driver `NativeAntivenomPlusScenario.rs` SHA256 `395A13BCD9EE4EB40E45515D7D0A4FA0CB115832C23A0EABE54A6C122B2FE021`
+- `client.log` SHA256 `2199bf0bdc37a2e94fbcf11875cf875a6739ac142ef73474e1746c0dd8f9fabe`
+- `server.log` SHA256 `be6f603cce7f0864dc975398fa3e40094ffc895ba1056e466c200cbadfb18c42`
+- `server.json` SHA256 `9f7c808962ce4c7c4b536afea4d92a2422408db271bc845b889f7e35f244016a`
+- `initial-state.json` SHA256 `e2c3070bbcc66a54b1f12aeb6024edc4ddb0db9a38bfdf46c00ae62574cb5c15`
+- `final-state.json` SHA256 `6b140e71d0800c02978df78683937c3575d1f0cf43c0130c899e6f40e84edac8`
+- `pack-assessment.json` SHA256 `5b0b8def108a85cabc6b8a3fbe0349125982c2baa93af528f423c17ed2d70b41`
+- `antivenomplus-trace-assessment.json` SHA256 `15565119835c4387827e07e673e26fc0ec5897457d403e87d7333c03aaf96013`
+- `logout-observation.json` SHA256 `ecfa28b475d70b75396feb6eaf0b701319c5f8c468e8cf0d252cdb2a06aaef27`
+- `shutdown.json` SHA256 `86eb386315840b17f380b9ab7a5bf9998cc4cb604fff88557907188d07d47af8`
+- `result.json` SHA256 `57349c60583de0574fabd84fdcdb0f191231cf9fc52be9ce6d572e451d28d780`
+- `pack-run.json` SHA256 `62a80f37048475fa35aea1c5e38a4d0d4e573f16b88aa2902786d7cf041eb761`
+- `native-profile-assessment.json` SHA256 `3f14a170fae57aa7fb1d7cec162cb49aa87debcbb735e6b036598733a23eb947`
+- `native-packet-assessment.json` SHA256 `88187e9a4a44710d54a11e28578ba5e85e1ee3a53819419b2c9c8af6ada33981`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":200,"after":300},"3077":{"before":6426,"after":21773},"3079":{"before":108,"after":97},"65515":{"before":101,"after":192}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Separate selected-profile two-tick commits; UI evidence and packet/display latency separate"}`
+
+Anti-venom+ immutable archive: executable SHA256 `61707788E0FFA5178F10D638409868DB382117F482C38061A86B384136930804`,397source files,manifest SHA256 `aab322dc1a2647fc58cf52150937c6631d303d948dd1c9717803f5f08532375b`. Server build13.22s,guard7268MiB/49.0%commit/0page-ins/s/0.0msdisk/10.7%CPU,j2. Driver build1.80s,guard6728MiB/51.7%commit/81page-ins/s/2.3msdisk/23.3%CPU,j2.91synthetic corruption checksPASS. Native both-Torstol production and same-save receipts establish only their stated scope; full migration remains incomplete.
+
+## User-requested pause checkpoint (2026-10-17)
+
+Completed the current Menaphite remedy and four-dose Anti-venom+ production acceptance tasks, including native menu/packet/state/trace validation, durable saves and same-save relogin without replay. Latest source regression:65server415worldPASS,1existing ignored. All earlier accepted recipes, private fixtures, immutable archives, failed attempts and unrelated working-tree edits are retained.
+
+Agent2 is paused at the user's request. Verified no owned native server/driver processes, no native session lock and no active Agent2 build lease. Other agents' processes were not modified. No new content work or builds are queued.
+
+This is a pause after the current task, not full OpenRune migration completion. Resume only when requested, using this ledger and the private continuation JSON. Remaining scope includes broader inventory parity, acquisition/drinking behavior, learned super-antifire and barbarian-training gates, alchemist storage, automatic cleaning timing, broader native negatives and compiled-original-Kotlin differential validation. Do not repeat the accepted native runs or overwrite preserved failures.
