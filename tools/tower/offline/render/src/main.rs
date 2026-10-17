@@ -18,15 +18,19 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 .into(),
         );
     }
-    let mut c = DiskCache::open(&a[1], 64 << 20)?;
+    let original_only=env::var_os("TOWER_ORIGINAL_ART_ONLY").is_some();
+    let mut c = if original_only {DiskCache::open_package_only(&a[1],64<<20)?} else {DiskCache::open(&a[1], 64 << 20)?};
     let assembly = a.get(9).map(String::as_str).unwrap_or("runtime");
     if !matches!(assembly, "runtime" | "authored") {
         return Err("Unknown object assembly mode".into());
     }
     let text = fs::read_to_string(&a[2])?;
-    let mut s = Scene::empty_sized(10368 + 24, 64 + 24, 64, 64)?;
+    let dimensions=text.lines().find(|l|l.starts_with("S ")).map(|l|l.split_whitespace().skip(1).map(str::parse::<usize>).collect::<Result<Vec<_>,_>>()).transpose()?.unwrap_or(vec![64,64]);
+    if dimensions.len()!=2 {return Err("S requires width height".into());}
+    let mut s = Scene::empty_sized(10368 + 24, 64 + 24, dimensions[0], dimensions[1])?;
     let mut regions = HashMap::new();
     for line in text.lines().filter(|l| l.starts_with("T ")) {
+        if original_only {return Err("Original-art-only studies cannot copy cache terrain".into());}
         let v = line
             .split_whitespace()
             .skip(1)
@@ -79,9 +83,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
     let mesh = WorldMesh::build(&s, &mut c, 0)?;
     let mut textures = HashMap::new();
-    for (id, def) in texture::Definition::load_all(&mut c)? {
+    if !original_only {for (id, def) in texture::Definition::load_all(&mut c)? {
         textures.insert(id, texture::Texture::load(&mut c, def, 128, 0.8)?);
-    }
+    }}
     let p = floor::palette(0.8)?;
     let x: f32 = a[4].parse()?;
     let z: f32 = a[5].parse()?;
@@ -100,9 +104,14 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         "plan" => (1600, 1400, 12000.0, 2200.0),
         "asset-plan" => (765, 503, 1800.0, 1100.0),
         "asset-passage" => (765, 503, 80.0, 760.0),
+        "floor-iso" => (1800, 1600, 10000.0, 1800.0),
+        "floor-plan" => (1800, 1900, 14500.0, 2300.0),
+        "room" => (1200, 900, 2200.0, 1250.0),
+        "player" => (1200, 900, 1100.0, 1000.0),
         _ => return Err("Unknown camera preset".into()),
     };
     if preset == "asset-passage" { center[1] -= 240.0; }
+    if original_only {center[1]=if preset=="player" {-220.0} else {-80.0};}
     let camera = Camera::look_at(
         [
             center[0] + yaw.sin() * distance,
