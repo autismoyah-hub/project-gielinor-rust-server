@@ -20,3 +20,14 @@ Published commit identities are the Git commits containing each checkpoint. Deta
 - Continuing: fresh headless acceptance, crash/relog claims, replay and visual polish.
 
 Native first-clear chest atomicity is confirmed. Isolated client adapter now at `2c5cb8f`, included as the fourth source-only patch commit. Flat-stone layout and corrected onboarding are under native review; full world 400 passed/two ignored and server 52 passed again after source changes.
+
+## Authentic recovery, crash persistence and final court presentation
+
+- Published starting checkpoint: `0e2c54c7afd8ac1b097bf973dfce44a786bf0f82`.
+- Fresh headless lethal-vent rescue, Imp victory, crash/relogin, phased Warden victory, first reward and duplicate rejection demonstrated. Native first payout also survived the deliberate crash before logout.
+- Strict exit/return exposed and then verified removal of obsolete movement cinder XP.
+- Final native ten-point navigation tour and material/journal review completed. Replay start preserves first-clear history and resets only run objectives.
+- Latest optimized local client adapter: `6545790`, six-commit source-only patch.
+- Continuing: final clean scenario, complete replay/25-coin durable payment, final relog and publication.
+
+The clean service controller now handles compressed inventory observations by counting against 28 real slots and waits for visible item actions. Profile nine completed services and lethal-vent recovery through the corrected scripts. A native replay Imp attempt failed with no food; four-tick warnings and safe adjacent attacks are under active validation. No failed attempt is counted as a clear.

@@ -1,6 +1,9 @@
 use super::*;
 impl World {
     pub(super) fn process_tower_ash(&mut self, slot: usize) {
+        // Direction B has its own services and hazards. Legacy movement cinders
+        // and automatic diary restoration must not award unrelated XP here.
+        if self.cinderworks.is_some() { return; }
         self.try_tower_login_restore(slot);
         let Some(config) = self.tower_restore.as_ref() else {
             return;

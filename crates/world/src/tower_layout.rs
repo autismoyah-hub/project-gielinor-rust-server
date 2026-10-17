@@ -18,6 +18,17 @@ pub fn template() -> Template {
     for x in 4..10 {
         for z in 4..10 { zones.insert((x,z,0),stone); }
     }
+    // Equal-height, unpatterned materials distinguish the service courts without
+    // restoring the prototype's internal walls or repeated overlay seams.
+    let earth = Source {x:321,z:649,..stone};
+    let moss = Source {x:212,z:571,..stone};
+    let ash = Source {x:242,z:620,..stone};
+    for x in 4..6 {
+        for z in 4..6 { zones.insert((x,z,0),moss); }
+        for z in 6..8 { zones.insert((x,z,0),earth); }
+        for z in 8..10 { zones.insert((x,z,0),moss); }
+    }
+    for x in 6..10 { for z in 8..10 { zones.insert((x,z,0),ash); } }
     // Retain the actual river and its bank for net fishing.
     for (x,z,sx,sz) in [(8,6,404,393),(8,7,404,394),(9,6,405,393),(9,7,405,394)] {
         zones.insert((x,z,0),Source{x:sx,z:sz,level:0,rotation:0});

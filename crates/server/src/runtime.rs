@@ -546,7 +546,15 @@ impl<B: AccountBackend> Runtime<B> {
         self.interface_controls = controls;
         Ok(())
     }
-    pub fn configure_journal(&mut self, journal: crate::journal::Journal) -> io::Result<()> {
+    /// Content is configured after the generic startup UI. Enable its journal
+    /// in either configuration order, before any player can be admitted.
+    pub fn configure_cinderworks(&mut self, config: gielinor_world::tower_cinderworks::Config) -> io::Result<()> {
+        if !self.connections.is_empty() { return Err(io::Error::other("Configure Cinderworks before admission")); }
+        self.world.cinderworks = Some(config);
+        if let Some(journal) = &mut self.journal { journal.cinderworks = true; }
+        Ok(())
+    }
+    pub fn configure_journal(&mut self, mut journal: crate::journal::Journal) -> io::Result<()> {
         if !self.connections.is_empty() || self.presentation.is_none() {
             return Err(io::Error::other(
                 "Configure journal after presentation and before admission",
@@ -584,6 +592,7 @@ impl<B: AccountBackend> Runtime<B> {
         }) {
             return Err(io::Error::other("Invalid Tower diary configuration"));
         }
+        journal.cinderworks = self.world.cinderworks.is_some();
         self.journal = Some(journal);
         Ok(())
     }

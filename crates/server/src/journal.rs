@@ -43,6 +43,7 @@ mod tests {
     #[test]
     fn task_tab_requires_known_marks_and_reopens_with_current_levels() {
         let journal = Journal {
+            cinderworks: false,
             diary: Some(Diary {
                 header: (259 << 16) | 1,
                 hidden: [2, 3, 4, 5].map(|id| (259 << 16) | id),
@@ -141,9 +142,18 @@ mod tests {
         assert!(!body.contains("Hides"));
         assert_eq!(journal.login_packets(&data).unwrap(),current);
         assert_eq!(data.tower_diary,legacy);
+        let mut journal = journal;
+        journal.cinderworks = true;
+        data.tower_run = Default::default();
+        let intro=journal.login_packets(&data).unwrap();
+        let body=String::from_utf8_lossy(&intro.last().unwrap().payload);
+        assert!(body.contains("Read the sanctuary plaque"));
+        assert!(!body.contains("Hides"));
+        assert_eq!(data.tower_run.id,0); // Showing the introduction does not start a run.
     }
 }
 pub struct Journal {
+    pub cinderworks: bool,
     pub diary: Option<Diary>,
     pub interface: u16,
     pub tabs: [u16; 3],
@@ -164,15 +174,15 @@ impl Diary {
         &self,
         marks: gielinor_world::tower_diary::Marks,
     ) -> Result<Vec<Packet>, String> {
-        self.text_packets(&gielinor_world::tower_diary_ui::body(marks))
+        self.text_packets(&gielinor_world::tower_diary_ui::body(marks),10)
     }
     pub(crate) fn cinderworks_packets(&self,run:gielinor_world::tower_run::Run)->Result<Vec<Packet>,String> {
-        self.text_packets(&run.journal())
+        self.text_packets(&run.journal(),14)
     }
-    fn text_packets(&self,text:&str)->Result<Vec<Packet>,String> {
+    fn text_packets(&self,text:&str,line_height:i32)->Result<Vec<Packet>,String> {
         let mut packets = self.hidden.map(|c| interfaces::hide(c, true)).to_vec();
         packets.push(
-            client_script::run(600, &[0, 0, 10, self.header as i32].map(Argument::Int))
+            client_script::run(600, &[0, 0, line_height, self.header as i32].map(Argument::Int))
                 .map_err(|e| format!("{e:?}"))?,
         );
         packets.push(
@@ -185,16 +195,16 @@ impl Diary {
 impl Journal {
     pub fn opened_for_run(&self,interface:u16,ui:&mut State,vars:&Variables,combat:i32,
         marks:Option<gielinor_world::tower_diary::Marks>,hooks:&crate::interface_hooks::Hooks,run:gielinor_world::tower_run::Run)->Result<Vec<Packet>,String> {
-        let mut packets=self.opened(interface,ui,vars,combat,if run.id>0 {None}else{marks},hooks)?;
-        if run.id>0 && (interface==self.interface || interface==self.tabs[2]) {
+        let mut packets=self.opened(interface,ui,vars,combat,if run.id>0 || self.cinderworks {None}else{marks},hooks)?;
+        if (run.id>0 || self.cinderworks) && (interface==self.interface || interface==self.tabs[2]) {
             if let Some(diary)=&self.diary {packets.extend(diary.cinderworks_packets(run)?);}
         }
         Ok(packets)
     }
     pub fn switch_for_run(&self,tab:usize,ui:&mut State,vars:&mut Variables,combat:i32,member:bool,logged_in:bool,
         marks:Option<gielinor_world::tower_diary::Marks>,hooks:&crate::interface_hooks::Hooks,run:gielinor_world::tower_run::Run)->Result<Vec<Packet>,String> {
-        let mut packets=self.switch(tab,ui,vars,combat,member,logged_in,if run.id>0 {None}else{marks},hooks)?;
-        if run.id>0 {if let Some(diary)=&self.diary {packets.extend(diary.cinderworks_packets(run)?);}}
+        let mut packets=self.switch(tab,ui,vars,combat,member,logged_in,if run.id>0 || self.cinderworks {None}else{marks},hooks)?;
+        if run.id>0 || self.cinderworks {if let Some(diary)=&self.diary {packets.extend(diary.cinderworks_packets(run)?);}}
         Ok(packets)
     }
     /// FloorOneScript.restoreDiaryCounts -> syncDiary -> persistDiaryCounts
@@ -204,7 +214,7 @@ impl Journal {
         &self,
         data: &gielinor_world::simulation::PlayerData,
     ) -> Result<Vec<Packet>, String> {
-        if data.tower_run.id>0 {
+        if data.tower_run.id>0 || self.cinderworks {
             return self.diary.as_ref().map_or_else(||Ok(Vec::new()),|diary|diary.cinderworks_packets(data.tower_run));
         }
         match (&self.diary, self.marks(data)) {
@@ -260,6 +270,7 @@ impl Journal {
             .get(&(bit.base as u32))
             .ok_or("Missing journal base varp")?;
         Ok(Self {
+            cinderworks: false,
             diary: Some(Diary {
                 header: symbol(components, "area_task:header")? as u32,
                 hidden: [

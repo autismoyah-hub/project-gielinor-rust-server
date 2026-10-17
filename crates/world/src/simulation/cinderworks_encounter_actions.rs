@@ -208,13 +208,9 @@ impl World {
                         .boss
                         .pattern(config.origin, encounter.phase, aim, encounter.cycle);
                 encounter.cycle = encounter.cycle.wrapping_add(1);
-                encounter.warning = Some(self.clock.deadline(
-                    if encounter.boss == Boss::Warden && encounter.phase < 3 {
-                        4
-                    } else {
-                        3
-                    },
-                ));
+                // Keep the visual reaction window readable in the native client.
+                // The final phase accelerates recovery/cadence, not input latency.
+                encounter.warning = Some(self.clock.deadline(4));
                 self.events.push(WorldEvent::GameMessage {
                     actor: encounter.owner,
                     text: "Heat gathers beneath the smoking tiles. Move clear before the eruption!"

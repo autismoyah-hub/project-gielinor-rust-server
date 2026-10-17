@@ -1,7 +1,7 @@
 From 4001176798235e2230d6c69445a0b86e24323c5b Mon Sep 17 00:00:00 2001
 From: Tower Agent 5 <agent5@tower.invalid>
 Date: Fri, 16 Oct 2026 14:37:35 -0700
-Subject: [PATCH 1/4] Add opt-in Tower normal-action validation adapter without
+Subject: [PATCH 1/6] Add opt-in Tower normal-action validation adapter without
  desktop input
 
 ---
@@ -250,7 +250,7 @@ index 354c9b3..969d2f1 100644
 From 88e5768f16a7008f972ad7b4bc015409012642c0 Mon Sep 17 00:00:00 2001
 From: Tower Agent 5 <agent5@tower.invalid>
 Date: Fri, 16 Oct 2026 15:30:51 -0700
-Subject: [PATCH 2/4] Extend Tower adapter with inventory actions and
+Subject: [PATCH 2/6] Extend Tower adapter with inventory actions and
  authoritative observations
 
 ---
@@ -547,7 +547,7 @@ index 1ce8533..ddcfcf7 100644
 From cf0bc84097aaf75ae49e2bb484dde248d1d17230 Mon Sep 17 00:00:00 2001
 From: Tower Agent 5 <agent5@tower.invalid>
 Date: Fri, 16 Oct 2026 16:10:34 -0700
-Subject: [PATCH 3/4] Guard visible inventory actions and improve Tower
+Subject: [PATCH 3/6] Guard visible inventory actions and improve Tower
  validation observations
 
 ---
@@ -694,7 +694,7 @@ index 969d2f1..e302bbb 100644
 From 2c5cb8f0920cbd9d7cc486aa630456e99f335c4f Mon Sep 17 00:00:00 2001
 From: Tower Agent 5 <agent5@tower.invalid>
 Date: Fri, 16 Oct 2026 16:43:10 -0700
-Subject: [PATCH 4/4] Report normal interface listener dispatch as a submitted
+Subject: [PATCH 4/6] Report normal interface listener dispatch as a submitted
  action
 
 ---
@@ -734,3 +734,67 @@ index 93a8686..73932ac 100644
              }
          }
          self.sequence = sequence;
+
+From aeb4066e1781b3ec0e651c89f23767d18e120d8c Mon Sep 17 00:00:00 2001
+From: Tower Agent 5 <agent5@tower.invalid>
+Date: Fri, 16 Oct 2026 17:13:12 -0700
+Subject: [PATCH 5/6] Wait for normal UI script readiness before automated
+ actions
+
+---
+ examples/tower_actions.rs | 2 +-
+ src/viewport.rs           | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/examples/tower_actions.rs b/examples/tower_actions.rs
+index 8710cf2..94ad7d0 100644
+--- a/examples/tower_actions.rs
++++ b/examples/tower_actions.rs
+@@ -26,7 +26,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
+             }
+             client.tick_interfaces_elapsed(step.ticks, &mut input, true)?;
+         }
+-        let ready = live.world.is_some() && live.title.is_none() && !live.is_reconnecting();
++        let ready = live.world.is_some() && !live.scripts_busy() && client.interfaces.scripts.is_empty();
+         adapter.poll(&mut client, ready)?;
+         if adapter.stop {
+             live.session.close();
+diff --git a/src/viewport.rs b/src/viewport.rs
+index e302bbb..322b83f 100644
+--- a/src/viewport.rs
++++ b/src/viewport.rs
+@@ -461,7 +461,7 @@ mod windows {
+                 v.is_reconnecting() || v.logged_out().is_some() || v.title.is_some()
+             });
+             if let Some(adapter) = tower_adapter.as_mut() {
+-                let ready = live.as_ref().is_some_and(|v| v.world.is_some() && v.title.is_none() && !v.is_reconnecting());
++                let ready = live.as_ref().is_some_and(|v| v.world.is_some() && !v.scripts_busy()) && client.interfaces.scripts.is_empty();
+                 adapter.poll(&mut client, ready)?;
+                 if adapter.stop { break 'main; }
+             }
+
+From 65457900b34891d0e9e8b211995e26e202d6fb8a Mon Sep 17 00:00:00 2001
+From: Tower Agent 5 <agent5@tower.invalid>
+Date: Fri, 16 Oct 2026 17:26:37 -0700
+Subject: [PATCH 6/6] Defer dynamic action targets until normal UI readiness
+
+---
+ src/tower_adapter.rs | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/tower_adapter.rs b/src/tower_adapter.rs
+index 73932ac..b0955a1 100644
+--- a/src/tower_adapter.rs
++++ b/src/tower_adapter.rs
+@@ -54,6 +54,11 @@ impl Adapter {
+         if sequence <= self.sequence {
+             return Ok(());
+         }
++        // Resolve dynamic inventory widgets only after the same UI/script
++        // barrier that blocks normal native input has cleared.
++        if !ready && !matches!(words.get(1), Some(&"observe" | &"capture" | &"stop")) {
++            return Ok(());
++        }
+         let number = |i: usize| words.get(i).and_then(|s| s.parse::<u16>().ok());
+         let item_widget = |slot: u16| {
+             client

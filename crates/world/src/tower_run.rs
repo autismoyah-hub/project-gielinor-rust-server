@@ -23,26 +23,29 @@ pub enum Reward {
 }
 impl Run {
     pub fn journal(self) -> String {
+        if self.id == 0 {
+            return "<col=ffb83f>The Cinderworks</col><br><br>Restore three services:<br>Workshop, kitchen, altar.<br><br>Silence the Ash Imp.<br>Quench the Ash Warden.<br><br>Smoke warns of eruptions.<br>Move before it ignites.<br><br>Read the sanctuary plaque<br>to begin and collect tools.".into();
+        }
         let rows = [
             (
-                "Workshop: forge a bronze dagger",
+                "Workshop: dagger",
                 self.services & 1 != 0,
                 true,
             ),
             (
-                "Kitchen: catch and cook shrimp",
+                "Kitchen: cook shrimp",
                 self.services & 2 != 0,
                 true,
             ),
             (
-                "Altar: offer a creature's bones",
+                "Altar: offer bones",
                 self.services & 4 != 0,
                 true,
             ),
-            ("Silence the Ash Imp", self.imp, self.services == 7),
-            ("Quench the Ash Warden", self.victory, self.imp),
+            ("Silence Ash Imp", self.imp, self.services == 7),
+            ("Quench Ash Warden", self.victory, self.imp),
             (
-                "Claim the sanctuary reward",
+                "Claim reward",
                 self.victory && !self.reward_pending,
                 self.victory,
             ),
@@ -61,16 +64,16 @@ impl Run {
                 if done { "Done:" } else { "Next:" }
             ));
         }
-        text.push_str(&format!(
-            "<br>{}<br><br>Victories: {}. First-clear reward: {}.",
-            self.guide(),
-            self.clears,
-            if self.first_reward_paid {
-                "claimed"
-            } else {
-                "unclaimed"
-            }
-        ));
+        let hint = if self.id == 0 { "Read the sanctuary plaque." }
+            else if self.reward_pending { "Search the sanctuary chest.<br>Leave two inventory slots." }
+            else if self.victory { "Portal: leave or return.<br>Plaque: begin another run." }
+            else if self.services & 1 == 0 { "Mine copper and tin west.<br>Smelt, then forge a dagger." }
+            else if self.services & 2 == 0 { "Net shrimp at the east bank.<br>Use raw shrimp on the range." }
+            else if self.services & 4 == 0 { "Defeat a creature south.<br>Use its bones on the altar." }
+            else if !self.imp { "Wield your bronze dagger.<br>Enter the east vent gallery." }
+            else { "Enter the northern foundry.<br>Search barrels during smoke." };
+        text.push_str(&format!("<br>{hint}<br><br>Victories: {}<br>First reward: {}", self.clears,
+            if self.first_reward_paid {"claimed"} else {"unclaimed"}));
         text
     }
     pub fn valid(self) -> bool {

@@ -1,68 +1,34 @@
-# Tower Floor One development
+# Cinderworks Floor One — current development status
 
-Standing mandate: deliver a comprehensive, polished, playable Direction B Floor One. Milestones are continuation checkpoints, not completion.
+Standing mandate: complete a comprehensive, polished Direction B floor. Overall acceptance remains in progress; individual milestones are continuation checkpoints.
 
-## Baseline and publication
+## Ownership and baseline
 
-- Initial engine baseline: `6a1ea78022bd1c9cbc7e259bcb3595652e5eaae5`.
-- Development branch: `agent5/tower-development`.
-- Native client baseline: `95eed88159b06cebea24559a814a5111b54a59cd`.
-- Latest observed Agent 2 ref: `924e929438c952d994287fad6f0c0bce749438ce`; not merged.
-- Checkpoint history: [CHECKPOINTS.md](CHECKPOINTS.md).
+- Server baseline: `6a1ea78022bd1c9cbc7e259bcb3595652e5eaae5`.
+- Own published branch: `agent5/tower-development`; last verified remote checkpoint `0e2c54c7afd8ac1b097bf973dfce44a786bf0f82`.
+- Client baseline: `95eed88159b06cebea24559a814a5111b54a59cd`; isolated validation branch now `6545790`. The source-only six-commit patch is supplied here; the client repository is never pushed.
+- Last observed Agent 2 ref: `924e929438c952d994287fad6f0c0bce749438ce`, not merged. No other workspace, process or branch is modified.
 
-## Initial verified foundation
+## Implemented and demonstrated
 
-82 isolated tests passed: 62 Tower world tests, nine available differential targets, two map-publication tests, eight storage tests and one native hashing test. Server offline build, client library check, cache/content validation and bounded loopback startup/shutdown succeeded. Private resources and detailed local evidence remain outside publication.
+The Cinderworks is an open sanctuary with a workshop, waterworks kitchen, creature yards, altar, grove, Ash Imp gallery and northern Ash Warden foundry. Equal-height cache-authored materials distinguish moss, earth, slate and ash courts. The river retains actual bank/water clipping; the outer shell stays closed. The ground stair into the old upstairs stub is removed.
 
-Native rendered acceptance has not yet been established. No complete player-driven Floor One route exists at this baseline: objective callbacks, boss credit, cinders and special transitions require integration. Final-chest partial payout must be corrected. Three historical differential fixtures are unavailable; no replacement expected data will be fabricated.
+Normal first-login appearance and experience choices lead to the authored introduction. The plaque starts a run and atomically supplies missing tools. Ordinary mining, smelting, dagger smithing, wielding, net fishing, item-on-range cooking, creature combat, bones pickup and item-on-altar offering restore three services. A readable six-step task journal gives concise next actions. Legacy diary state remains stored separately, while obsolete movement cinders and automatic kit restoration are excluded from this route.
 
-## Active work
+The Imp escalates to three-tile warnings. The Warden has three health phases, visible timed smoke/eruption patterns, a closed shell during charges and routed coolant interruption/exposure. Ownership, prerequisites, equipment, authoritative hero credit, departure reset, damage and ordinary food healing are integrated into the existing simulation. Defeat animates and returns the player to the sanctuary without resetting equipment, services or pending rewards; consumed supplies remain spent.
 
-1. Publish this branch and verify the remote SHA.
-2. Authenticate the isolated native Rust client, render the existing Tower, and capture real baseline evidence.
-3. Author the full floor identity, layout and dependency-aware gameplay plan.
-4. Implement layout, ordinary progression, demi-boss, final boss, completion/replay and polish, validating both authoritative simulation and rendered interaction throughout.
+Guardian victories and reward proposals use the existing asynchronous account worker and SQLite transaction. Rewards remain unspendable until inventory plus paid marker are committed. Logout waits for the checkpoint; failures retain the proposal and retry. Unique request tokens reject stale duplicate completions. First clear pays 500 coins plus a beer; a replay pays 25 plus a beer. Claim, exit, return and new-run rules preserve first-clear history.
 
-Only the comprehensive criteria in [TOWER_ACCEPTANCE.md](TOWER_ACCEPTANCE.md) constitute overall completion.
+Genuine native gameplay has completed all services, both guardians, all three Warden phases, full-pack chest denial/recovery, one first-clear payment and duplicate-search rejection. A fresh headless character independently completed all services, actual lethal vents and sanctuary recovery, Imp victory, deliberate server crash/relogin, three-phase Warden victory, first-clear claim and duplicate-search rejection. Both the native paid reward and fresh Imp unlock survived a deliberate crash before logout. Strict exit/return now preserves inventory, equipment, XP and the completed journal exactly.
 
-## Programmatic native validation checkpoint
+The final native layout tour reached all ten review points with real normal movement and framebuffer captures. The native character has started run two through the plaque, retaining paid history while resetting services and boss credit. Current work runs a clean first-login headless route and the native replay through the public controllers.
 
-Published starting SHA verified: `2d8e1634683ceb0614fa7c01fa88e26d36089409`. The isolated native client authenticated to the local server and rendered the existing Tower, receiving the real arrival messages, NPCs and location changes. A local opt-in adapter uses `ClientState::menu_action`, with no desktop input injection and a window configured not to activate. Initial walk requests have not yet produced confirmed movement; this is under investigation and is not accepted gameplay evidence. Baseline frame also exposes camera/UI readability problems. Client validation changes remain on a separate local branch against pinned client baseline.
+## Validation and remaining work
 
-Reward transaction correction is implemented and all 62 Tower world tests pass. Full floor acceptance remains outstanding. Next: prove native packet-driven movement, retain frame/state receipts, then implement the authored floor layout and route.
+Latest world suite: 400 passed, two existing ignored. Server suite: 52 passed. Storage checkpoint suite: eight passed, one existing ignored. Server and optimized native/headless builds pass. Actual action receipts, structured outcomes, process identities, read-only database checks and native frames are private; no protected resource or binary is published.
 
-## Native control and Cinderworks foundation
+Remaining overall criteria: complete the final clean scripted route; complete and durably verify the replay payment; recheck relog with the latest adapter; consolidate final acceptance and visual evidence, then publish the completed source and limitations. Historical chronology is in CHECKPOINTS.md; the acceptance matrix is authoritative for completion.
 
-Native programmatic movement is confirmed in a live session, including after normal appearance confirmation and experience selection: `[0,10424,120]` to `[0,10425,120]`, server tick 529, with no desktop input or activation. Headless movement also confirmed independently. Frames and state receipts are retained privately. Login interface setup is slow; submission acknowledgements alone are not accepted as outcomes.
+Final clean character: normal onboarding, prerequisite denial, all services and actual lethal-vent recovery pass in single scenario invocations. The native replay completed its services but one Imp attempt exhausted food and ended in sanctuary recovery; no victory was credited. Four-tick warnings and safe adjacent Imp attacks are being validated in both modes, with supplies replenished only through normal skills.
 
-The authored Cinderworks design is recorded in TOWER_DIRECTION_B.md. The first layout revision removes internal nine-room wall partitions while retaining the exterior boundary and river. Actual native frames show the open service court and visible player. This is an early layout revision, not final visual acceptance.
-
-Implemented foundation: durable run lifecycle and migration V12, alternate Tower onboarding after normal character choices, plaque run start/recovery tools, progress-preserving exit/return, atomic first/replay reward claim, and service credit at successful smithing/cooking/offering callbacks. Boss victory transitions exist as lifecycle functions but are not yet integrated into live encounters. No complete floor route is claimed.
-
-Validation so far: 64 Tower world tests, three routed Cinderworks action tests, eight storage tests (one native test excluded by its existing ignored flag), cache shell test, two layout tests, server check/build and isolated native/headless sessions. A schema-upgrade fixture initially failed because it retained the newly added V12 table; the fixture now reconstructs the preceding schema correctly and passes.
-
-Next: validate the configured live plaque/portal route, integrate scheduled visible vents and encounter ownership, implement the Imp and phased Warden, then complete authentic success/failure/recovery/replay sessions and polish.
-
-Checkpoint validation broadened: full world library suite passes (389 passed, two existing ignored); full server library suite passes (52 passed); storage suite passes (eight passed, one existing ignored). Enclosed tile-graphic wire test passes. Live native plaque interaction routed from the court, began run 1, and delivered the recovery tools and next-step messages. Live native portal interaction reached normal-world `[0,3224,3218]`; return is being checked. This is continued development, not overall acceptance.
-
-## Service and encounter implementation checkpoint
-
-The native run has now completed authentic ore mining, smelting through the configured furnace dialog, dagger smithing through the anvil dialog, wielding, net fishing and batch shrimp cooking. Workshop and kitchen credit were received from the authoritative callbacks. Full-pack fishing stopped without extra output or XP. Exit/return and tool persistence across logout/relogin are confirmed. Detailed action/state receipts and actual rendered frames remain private.
-
-Encounter implementation now includes exclusive ownership, prerequisite/equipment checks before combat XP, delayed visible smoke/fire graphics, an Imp escalation, three Warden health phases, routed coolant interruption, reset on departure/logout/death, authoritative hero-based kill credit and pending victory rewards. Native boss acceptance is still outstanding. Cache-resolved guardian death animations are validated before the server listens.
-
-The new task tab projects Cinderworks services, guardians, claims and replay history while preserving the legacy diary sidecar. Smithing now applies both the global and character XP rates; a regression check covers 1x and 5x rates. Current validation: full world suite 397 passed / two existing ignored; full server suite 52 passed; focused Cinderworks tests ten passed. Local client validation commit: `88e5768` on its isolated branch; the source-only patch now includes both adapter commits.
-
-Next: complete the native altar and both guardians; fix issues exposed by those sessions, then run full headless success/failure/relogin/replay coverage, improve layout/telegraph presentation and publish final evidence. This is not overall completion.
-
-## Native guardian and durable reward checkpoint
-
-The genuine native client defeated both guardians using normal Attack, movement, food and coolant actions. The refined Warden run observed phases two and three and reached authoritative victory with 9 HP; actual frame sequences 1676, 2007, 2268 and 2604 are retained privately. A normal walk then left the court. The earlier Warden retreat is recorded as a failed attempt, never as victory. Client validation commit cf0bc84 additionally rejects unavailable inventory operations and reports equipment and visible item actions.
-
-Sanctuary recovery now uses ordinary death animation, delayed movement and stat authorities. Defeat retains equipment and durable services/unlocks/reward eligibility while consumed supplies remain spent. Recovery reconstructs from a saved zero-health character. The unreachable ground stair into the old upstairs stub has been removed.
-
-Guardian victory and reward claims now checkpoint through the existing asynchronous account worker. Proposed reward items are withheld until the inventory plus payment marker transaction succeeds. A short per-actor barrier blocks gameplay and logout snapshots during the write; failed writes retry the same snapshot. Unique save tokens reject late duplicate completions. This closes the pre-logout payout window without a second persistence authority.
-
-Validation: 400 world tests pass, two existing ignored; 52 server tests pass; server check and build pass. Full fresh headless route, actual death/recovery, full-pack reward retry, durable claim/replay and final layout polish remain in progress. This is not overall completion.
-
-Native full-pack chest rejection and recovery now pass: no partial grant, then exactly 500 coins and one beer after two normal drops, no second payment. Read-only SQLite inspection confirms paid run flags before logout. A flat charcoal cache template replaces repeated gold overlay zones for visual review; native review of this revision remains pending. Headless service controllers exposed cache-listener receipt semantics and ordinary full-pack/action-delay handling; these are corrected without granting gameplay state.
+The clean headless character has now defeated the four-tick Imp at full health without spending food. Its Warden and the native replay Imp are running in separate courts. Latest native and headless validation binaries both use adapter `6545790`; the introduction configuration-order correction is active before admission.

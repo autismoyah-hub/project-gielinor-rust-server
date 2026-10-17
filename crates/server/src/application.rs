@@ -449,7 +449,7 @@ pub fn run() -> io::Result<()> {
     }
     runtime.world.change_location(portal, true).map_err(fail)?;
     runtime.world.npc_handlers.insert((config.work.unwrap().fishing_spot,1),gielinor_world::npc_interaction::Handler::CinderworksFishing);
-    runtime.world.cinderworks = Some(config);
+    runtime.configure_cinderworks(config)?;
     if check {
         println!(
             "Implemented content configuration validated. Full gameplay parity remains incomplete."
