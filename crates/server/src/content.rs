@@ -2753,7 +2753,7 @@ pub fn stamina_upgrades(objects:&Symbols,defs:&Definitions)->Result<Vec<gielinor
     for doses in 1..=4 {
         let base=bind(&format!("{doses}dose2energy"),false,Some(doses))?;
         let output=bind(&format!("{doses}dosestamina"),false,Some(doses))?;
-        recipes.push(gielinor_world::potion_upgrades::Recipe{base,secondary,output,doses,secondary_per_dose:1,fine_xp_per_dose:255,level:77,ticks:2,allow_goggles:true});
+        recipes.push(gielinor_world::potion_upgrades::Recipe{base,secondary,output,doses,secondary_per_dose:1,fine_xp_per_dose:255, fine_xp_override:None,level:77,ticks:2,allow_goggles:true});
     }
     Ok(recipes)
 }
@@ -2797,7 +2797,7 @@ pub fn extended_venom_upgrades(objects:&Symbols,defs:&Definitions)->Result<Vec<g
     for doses in 1..=4 {
         let base=bind(&format!("antivenom+{doses}"),false,Some(doses))?;
         let output=bind(&format!("extended_antivenom+{doses}"),false,Some(doses))?;
-        recipes.push(gielinor_world::potion_upgrades::Recipe{base,secondary,output,doses,secondary_per_dose:1,fine_xp_per_dose:200,level:94,ticks:3,allow_goggles:true});
+        recipes.push(gielinor_world::potion_upgrades::Recipe{base,secondary,output,doses,secondary_per_dose:1,fine_xp_per_dose:200, fine_xp_override:None,level:94,ticks:3,allow_goggles:true});
     }
     Ok(recipes)
 }
@@ -2836,7 +2836,7 @@ pub fn divine_upgrades(objects:&Symbols,defs:&Definitions)->Result<Vec<gielinor_
     for doses in 1..=4 {
         let base=bind(&format!("{doses}dose{base_suffix}"),false,Some(doses))?;
         let output=bind(&format!("{doses}dose{output_suffix}"),false,Some(doses))?;
-        recipes.push(gielinor_world::potion_upgrades::Recipe{base,secondary,output,doses,secondary_per_dose:1,fine_xp_per_dose:5,level,ticks:2,allow_goggles:false});
+        recipes.push(gielinor_world::potion_upgrades::Recipe{base,secondary,output,doses,secondary_per_dose:1,fine_xp_per_dose:5, fine_xp_override:None,level,ticks:2,allow_goggles:false});
     }
     }
     Ok(recipes)
@@ -2973,7 +2973,7 @@ pub fn antivenom_upgrades(objects:&Symbols,defs:&Definitions)->Result<Vec<gielin
     for doses in 1..=4 {
         let base=bind(&format!("antidote++{doses}"),false,Some(doses))?;
         let output=bind(&format!("antivenom{doses}"),false,Some(doses))?;
-        recipes.push(gielinor_world::potion_upgrades::Recipe{base,secondary,output,doses,secondary_per_dose:5,fine_xp_per_dose:300,level:87,ticks:2,allow_goggles:true});
+        recipes.push(gielinor_world::potion_upgrades::Recipe{base,secondary,output,doses,secondary_per_dose:5,fine_xp_per_dose:300, fine_xp_override:None,level:87,ticks:2,allow_goggles:true});
     }
     Ok(recipes)
 }
@@ -2994,7 +2994,7 @@ pub fn extended_antifire_upgrades(objects:&Symbols,defs:&Definitions)->Result<Ve
     for doses in 1..=4 {
         let base=bind(&format!("{doses}dose1antidragon"),false,Some(doses))?;
         let output=bind(&format!("{doses}dose2antidragon"),false,Some(doses))?;
-        recipes.push(gielinor_world::potion_upgrades::Recipe{base,secondary,output,doses,secondary_per_dose:1,fine_xp_per_dose:275,level:84,ticks:2,allow_goggles:true});
+        recipes.push(gielinor_world::potion_upgrades::Recipe{base,secondary,output,doses,secondary_per_dose:1,fine_xp_per_dose:275, fine_xp_override:None,level:84,ticks:2,allow_goggles:true});
     }
     Ok(recipes)
 }
@@ -3014,5 +3014,44 @@ mod compatible_upgrade_binding_tests {
         }
         defs.items.get_mut(&12934).unwrap().stackable=false;assert!(antivenom_upgrades(&symbols,&defs).is_err());
         defs.items.get_mut(&11953).unwrap().inventory_ops[0]=None;assert!(extended_antifire_upgrades(&symbols,&defs).is_err());
+    }
+}
+
+pub fn forgotten_brew_upgrades(objects:&Symbols,defs:&Definitions)->Result<Vec<gielinor_world::potion_upgrades::Recipe>,String> {
+    let mut ids=std::collections::BTreeSet::new();
+    let mut bind=|name:&str,stackable:bool,dose:Option<u8>|->Result<i32,String>{
+        let id=*objects.get(name).ok_or_else(||format!("Missing upgrade symbol {name}"))?;
+        let item=defs.items.get(&(id as u32)).ok_or_else(||format!("Missing upgrade definition {name}"))?;
+        if id<0 || !ids.insert(id) || item.stackable!=stackable || !item.members || item.cert.template!=0 || item.placeholder.template!=0 || item.dummy==1
+            || dose.is_some_and(|n|item.inventory_ops[0].as_deref()!=Some("Drink") || !item.name.ends_with(&format!("({n})"))) {
+            return Err(format!("Invalid upgrade definition {name}"));
+        }
+        Ok(id)
+    };
+    let secondary=bind("ancient_essence",true,None)?;
+    let mut recipes=Vec::new();
+    for doses in 1..=4 {
+        let base=bind(&format!("{doses}doseancientbrew"),false,Some(doses))?;
+        let output=bind(&format!("{doses}doseforgottenbrew"),false,Some(doses))?;
+        recipes.push(gielinor_world::potion_upgrades::Recipe{base,secondary,output,doses,secondary_per_dose:20,fine_xp_per_dose:360, fine_xp_override:if doses==4{Some(1450)}else{None},level:91,ticks:3,allow_goggles:true});
+    }
+    Ok(recipes)
+}
+
+
+#[cfg(test)]
+mod forgotten_brew_binding_tests {
+    use super::*;
+    #[test]
+    fn forgotten_brew_four_doses_bind_to_exact_cache_types_and_nonlinear_awards() {
+        let mut symbols=Symbols::new();let mut defs=Definitions{inventories:Default::default(),locations:Default::default(),npcs:Default::default(),items:Default::default(),varbits:Default::default(),varps:Default::default(),stats:Default::default()};
+        let mut essence=gielinor_cache::definitions::ItemType::decode(&[16,0]).unwrap();essence.stackable=true;defs.items.insert(27616,essence);symbols.insert("ancient_essence".into(),27616);
+        for n in 1..=4 {for (symbol,id,name) in [(format!("{n}doseancientbrew"),26348-2*n,"Ancient brew"),(format!("{n}doseforgottenbrew"),27641-3*n,"Forgotten brew")] {
+            let mut v=gielinor_cache::definitions::ItemType::decode(&[16,0]).unwrap();v.name=format!("{name}({n})");v.inventory_ops[0]=Some("Drink".into());defs.items.insert(id as u32,v);symbols.insert(symbol,id);
+        }}
+        let recipes=forgotten_brew_upgrades(&symbols,&defs).unwrap();assert_eq!(recipes.len(),4);
+        for (i,r) in recipes.iter().enumerate() {let n=i as i32+1;assert_eq!((r.base,r.secondary,r.output,r.doses,r.secondary_per_dose,r.level,r.ticks),(26348-2*n,27616,27641-3*n,n as u8,20,91,3));assert_eq!(r.base_fine_xp(),[360,720,1080,1450][i]);}
+        defs.items.get_mut(&27629).unwrap().inventory_ops[0]=None;assert!(forgotten_brew_upgrades(&symbols,&defs).is_err());
+        defs.items.get_mut(&27629).unwrap().inventory_ops[0]=Some("Drink".into());defs.items.get_mut(&27616).unwrap().stackable=false;assert!(forgotten_brew_upgrades(&symbols,&defs).is_err());
     }
 }

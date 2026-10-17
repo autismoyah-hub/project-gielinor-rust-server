@@ -208,7 +208,7 @@ mod tests {
     fn quest()->Varp{Varp{id:80,permanent:true,transmit:Transmit::Always,bit_protect:false,client_code:-1}}
     fn fixture()->(World,ActorId,held_use::Request){
         let mut w=World::default();let pos=CoordGrid::new(3200,3200,0).unwrap();w.collision.allocate(3200,3200,0);
-        let recipe=Recipe{base:3018,secondary:12640,output:12627,doses:3,secondary_per_dose:1,fine_xp_per_dose:255,level:77,ticks:2,allow_goggles:true};
+        let recipe=Recipe{base:3018,secondary:12640,output:12627,doses:3,secondary_per_dose:1,fine_xp_per_dose:255, fine_xp_override:None,level:77,ticks:2,allow_goggles:true};
         w.potion_upgrades=Some(Config{recipes:[((3018,12640),recipe)].into(),chemistry:Default::default(),goggles:[29974,29976],quest_progress:80,quest_complete:4,animation:363});
         w.held_use_types=[3018,12640,995].map(|id|(id,held_use::Type{id,content:0})).into();w.object_types.stackable.extend([12640,995]);
         let mut data=PlayerData::new(1,"Upgrades".into(),pos,Stats::default());data.stats.set_base(15,99);data.stats.set_current(15,99);data.stats.set_fine_xp(15,130344311).unwrap();data.xp_rate_hundreds=500;data.variables.set(quest(),4,false);

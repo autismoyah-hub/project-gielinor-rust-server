@@ -27,11 +27,13 @@ impl<B: AccountBackend> Runtime<B> {
         let divine=crate::content::divine_upgrades(names.group("obj"),&self.definitions).map_err(io::Error::other)?;
         let antivenom=crate::content::antivenom_upgrades(names.group("obj"),&self.definitions).map_err(io::Error::other)?;
         let antifire=crate::content::extended_antifire_upgrades(names.group("obj"),&self.definitions).map_err(io::Error::other)?;
-        let chemistry=recipes.windows(2).chain(extended.windows(2)).chain(antivenom.windows(2)).chain(antifire.windows(2)).chain(divine.chunks_exact(4).flat_map(|family|family.windows(2))).map(|pair|(pair[0].output,gielinor_world::chemistry_modifier::Binding{amulet,extra_output:pair[1].output})).collect();
+        let forgotten=crate::content::forgotten_brew_upgrades(names.group("obj"),&self.definitions).map_err(io::Error::other)?;
+        let chemistry=recipes.windows(2).chain(extended.windows(2)).chain(antivenom.windows(2)).chain(antifire.windows(2)).chain(forgotten.windows(2)).chain(divine.chunks_exact(4).flat_map(|family|family.windows(2))).map(|pair|(pair[0].output,gielinor_world::chemistry_modifier::Binding{amulet,extra_output:pair[1].output})).collect();
         recipes.extend(extended);
         recipes.extend(divine);
         recipes.extend(antivenom);
         recipes.extend(antifire);
+        recipes.extend(forgotten);
         self.world.potion_upgrades = Some(gielinor_world::potion_upgrades::Config {
             chemistry,
             goggles:crate::content::finished_potion_goggles(names.group("obj"), &self.definitions).map_err(io::Error::other)?,

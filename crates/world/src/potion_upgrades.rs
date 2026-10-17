@@ -14,9 +14,17 @@ pub struct Recipe {
     pub doses: u8,
     pub secondary_per_dose: u8,
     pub fine_xp_per_dose: u16,
+    /// Explicit total award for recipes whose doses do not scale linearly.
+    pub fine_xp_override: Option<u16>,
     pub level: u8,
     pub ticks: u8,
     pub allow_goggles: bool,
+}
+impl Recipe {
+    pub fn base_fine_xp(self) -> u32 {
+        self.fine_xp_override.map(u32::from).unwrap_or_else(||
+            u32::from(self.fine_xp_per_dose) * u32::from(self.doses))
+    }
 }
 #[derive(Clone, Copy, Debug)]
 pub struct Job {
@@ -64,7 +72,7 @@ impl Job {
         };
         if !matches!(r.ticks,2|3) || !(1..=4).contains(&r.doses)
             || r.secondary_per_dose == 0
-            || r.fine_xp_per_dose == 0
+            || r.base_fine_xp() == 0
             || !(1..=99).contains(&r.level)
             || r.base == r.secondary
             || r.base == r.output
@@ -137,7 +145,7 @@ impl Job {
         let advancement = match skills::advance(
             &mut next_stats,
             15,
-            f64::from(r.fine_xp_per_dose) * f64::from(r.doses) / 10.0,
+            f64::from(r.base_fine_xp()) / 10.0,
             f64::from(rate) / 100.0,
             99,
         ) {
@@ -329,6 +337,33 @@ mod tests {
         }}
     }
 
+    #[test]
+    fn forgotten_brew_uses_input_doses_for_cost_and_explicit_four_dose_award() {
+        for doses in 1..=4 { for reverse in [false,true] { for goggles in [false,true] {
+            let (mut job,mut inv,catalog,mut stats)=fixture(doses,reverse);
+            job.recipe.secondary_per_dose=20; job.recipe.fine_xp_per_dose=360;
+            job.recipe.fine_xp_override=if doses==4 {Some(1450)}else{None};
+            job.recipe.level=91;job.recipe.ticks=3;stats.set_current(15,91);
+            let required=i32::from(doses)*20;
+            inv.restore_slot(job.secondary_slot,Some(Item{id:101,count:required-1,vars:0})).unwrap();
+            let before=inv.clone();let fine=stats.fine_xp(15);let mut rng=Draw{value:0,calls:0};
+            assert_eq!(job.complete(&mut inv,&catalog,&mut stats,true,true,500,goggles,&mut rng).0,Outcome::Stale);
+            assert_eq!(inv,before);assert_eq!(stats.fine_xp(15),fine);assert_eq!(rng.calls,0);
+            inv.restore_slot(job.secondary_slot,Some(Item{id:101,count:required,vars:0})).unwrap();
+            let (outcome,saved)=job.complete(&mut inv,&catalog,&mut stats,true,true,500,goggles,&mut rng);
+            assert!(matches!(outcome,Outcome::Made(_)));assert_eq!(saved,goggles);
+            let award=[360,720,1080,1450][usize::from(doses-1)];
+            assert_eq!(job.recipe.base_fine_xp(),award as u32);
+            assert_eq!(stats.fine_xp(15),fine+award*5);assert_eq!(rng.calls,usize::from(goggles));
+            assert_eq!(inv.slots().iter().flatten().filter(|i|i.id==102).count(),1);
+            assert_eq!(inv.slots().iter().flatten().find(|i|i.id==101).map(|i|i.count).unwrap_or(0),if goggles{required}else{0});
+        }}}
+        let (mut job,mut inv,catalog,mut stats)=fixture(4,false);
+        job.recipe.fine_xp_override=Some(0);let before=inv.clone();let fine=stats.fine_xp(15);let mut rng=Draw{value:0,calls:0};
+        assert_eq!(job.complete(&mut inv,&catalog,&mut stats,true,true,500,true,&mut rng).0,Outcome::InvalidRecipe);
+        assert_eq!(inv,before);assert_eq!(stats.fine_xp(15),fine);assert_eq!(rng.calls,0);
+    }
+
     fn fixture(doses: u8, reverse: bool) -> (Job, Inventory, Catalog, Stats) {
         let job = Job {
             recipe: Recipe {
@@ -337,7 +372,7 @@ mod tests {
                 output: 102,
                 doses,
                 secondary_per_dose: 1,
-                fine_xp_per_dose: 255,
+                fine_xp_per_dose: 255, fine_xp_override:None,
                 level: 77,
                 ticks: 2,
                 allow_goggles: true,
@@ -665,7 +700,7 @@ impl Transition {
             self.queued_at,
             self.committed_at,
             self.index,
-            u32::from(self.job.recipe.fine_xp_per_dose) * u32::from(self.job.recipe.doses),
+            self.job.recipe.base_fine_xp(),
             self.rate_hundreds,
             self.fine_before,
             self.fine_after,
