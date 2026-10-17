@@ -353,7 +353,10 @@ pub fn configure<B: AccountBackend>(
         crate::content::wiki_multipart_foods(n("obj"), &runtime.definitions, &mut foods)
             .map_err(io::Error::other)?;
     slot_preserving_foods.extend(crate::content::additional_multipart_foods(n("obj"),&runtime.definitions,&mut foods).map_err(io::Error::other)?);
+    let boost_foods=crate::content::boost_pie_foods(n("obj"),n("stat"),&runtime.definitions,&mut foods).map_err(io::Error::other)?;
+    slot_preserving_foods.extend(boost_foods.selected);
     runtime.configure_foods(held, foods, names.short("seq", "human_eat")?)?;
+    runtime.world.food_boosts=boost_foods.boosts;
     runtime.world.slot_preserving_foods = slot_preserving_foods;
     runtime.configure_potions(n("obj"), n("stat"))?;
     runtime.world.item_packs =

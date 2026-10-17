@@ -217,6 +217,23 @@ mod prepared_fruit_food_tests {
 }
 
 #[cfg(test)]
+mod boost_pie_food_tests{
+    use super::*;
+    fn fixture()->(Symbols,Symbols,Definitions){
+        let mut defs=Definitions{inventories:Default::default(),locations:Default::default(),npcs:Default::default(),items:Default::default(),varbits:Default::default(),varps:Default::default(),stats:Default::default()};let mut objects=Symbols::new();let mut stats=Symbols::new();
+        for (symbol,id,name) in [("garden_pie",7178,"Garden pie"),("half_garden_pie",7180,"Half a garden pie"),("fish_pie",7188,"Fish pie"),("half_fish_pie",7190,"Half a fish pie"),("botanical_pie",19662,"Botanical pie"),("half_botanical_pie",19659,"Half a botanical pie"),("mushroom_pie",21690,"Mushroom pie"),("half_mushroom_pie",21687,"Half a mushroom pie"),("admiral_pie",7198,"Admiral pie"),("half_admiral_pie",7200,"Half an admiral pie"),("wild_pie",7208,"Wild pie"),("half_wild_pie",7210,"Half a wild pie"),("dragonfruit_pie",22795,"Dragonfruit pie"),("half_dragonfruit_pie",22792,"Half a dragonfruit pie"),("piedish",2313,"Pie dish")]{objects.insert(symbol.into(),id);let mut item=gielinor_cache::definitions::ItemType::decode(&[16,0]).unwrap();item.name=name.into();if symbol!="piedish"{item.inventory_ops[0]=Some("Eat".into());}defs.items.insert(id as u32,item);}
+        for (name,id) in [("farming",19),("fishing",10),("herblore",15),("crafting",12),("slayer",18),("ranged",4),("fletching",9)]{stats.insert(name.into(),id);defs.stats.insert(id as u32,gielinor_cache::definitions::StatType::decode(&[0]).unwrap());}
+        (objects,stats,defs)
+    }
+    #[test]
+    fn boost_pie_foods_bind_all_bites_and_reject_missing_late_definitions_atomically(){
+        let (objects,stat_symbols,defs)=fixture();let mut foods=BTreeMap::new();let binding=boost_pie_foods(&objects,&stat_symbols,&defs,&mut foods).unwrap();assert_eq!(binding.selected.len(),14);assert_eq!(binding.boosts[&7208],vec![gielinor_world::food::StatBoost{skill:18,amount:5},gielinor_world::food::StatBoost{skill:4,amount:4}]);
+        for id in binding.selected.iter().copied(){let f=&foods[&id];let mut inv=gielinor_world::inventory::Inventory::new(2,gielinor_world::inventory::StackType::Normal,false);for slot in 0..2{inv.restore_slot(slot,Some(gielinor_world::inventory::Item{id,count:1,vars:0})).unwrap();}let mut stats=gielinor_world::stats::Stats::default();for skill in 0..25{stats.set_base(skill,99);stats.set_current(skill,99);}let before=stats.clone();gielinor_world::food::eat_slot_with_boosts(f,1,&mut inv,&mut stats,&Default::default(),3,829,&binding.boosts[&id],|_|{}).unwrap();assert_eq!(inv.get(1).unwrap().id,f.replacement.unwrap());assert_eq!(inv.get(0).unwrap().id,id);for effect in &binding.boosts[&id]{assert_eq!(stats.current(effect.skill),99+effect.amount as i8);}for skill in 0..25{assert_eq!(stats.fine_xp(skill),before.fine_xp(skill));}}
+        for mode in 0..5{let (objects,symbols,mut defs)=fixture();match mode{0=>{defs.stats.remove(&9);},1=>{defs.items.get_mut(&22792).unwrap().cert.template=799;},2=>{defs.items.get_mut(&2313).unwrap().placeholder.template=14401;},3=>{defs.items.get_mut(&22792).unwrap().members=false;},_=>{defs.items.get_mut(&22792).unwrap().inventory_ops[0]=None;}}let mut foods=BTreeMap::new();assert!(boost_pie_foods(&objects,&symbols,&defs,&mut foods).is_err());assert!(foods.is_empty());}
+    }
+}
+
+#[cfg(test)]
 mod additional_ordinary_food_tests {
     use super::*;
     fn fixture()->(Symbols,Definitions){
@@ -230,6 +247,33 @@ mod additional_ordinary_food_tests {
         for (&id,food) in &foods {let mut inv=gielinor_world::inventory::Inventory::new(2,gielinor_world::inventory::StackType::Normal,false);for slot in 0..2{inv.restore_slot(slot,Some(gielinor_world::inventory::Item{id,count:1,vars:0})).unwrap();}let mut stats=gielinor_world::stats::Stats::default();stats.set_base(3,99);stats.set_current(3,90);let xp=stats.fine_xp(3);assert!(gielinor_world::food::eat_slot(food,1,&mut inv,&mut stats,&Default::default(),3,829,|_|{}).unwrap());assert!(inv.get(1).is_none());assert_eq!(inv.get(0).unwrap().id,id);assert_eq!(stats.current(3),(90+food.heal).min(99) as i8);assert_eq!(stats.fine_xp(3),xp);}
         for mode in 0..7 {let (symbols,mut defs)=fixture();let mut foods=BTreeMap::new();let item=defs.items.get_mut(&11326).unwrap();match mode{0=>item.stackable=true,1=>item.cert.template=799,2=>item.placeholder.template=14401,3=>item.transform.template=1,4=>item.inventory_ops[0]=None,5=>item.name="Not caviar".into(),_=>{foods.insert(11326,Edible{id:11326,heal:99,delay:3,replacement:None,message:"Existing".into()});}}let before=foods.len();assert!(additional_ordinary_foods(&symbols,&defs,&mut foods).is_err());assert_eq!(foods.len(),before);if mode==6{assert_eq!(foods[&11326].heal,99);}}
     }
+}
+
+pub struct BoostFoodBindings {
+    pub selected:std::collections::BTreeSet<i32>,
+    pub boosts:BTreeMap<i32,Vec<gielinor_world::food::StatBoost>>,
+}
+/// Ordinary seven-family pie healing/stage/boost data, independently Wiki-pinned.
+pub fn boost_pie_foods(objects:&Symbols,stats:&Symbols,defs:&Definitions,foods:&mut BTreeMap<i32,Edible>)->Result<BoostFoodBindings,String>{
+    let ordinary=|symbol:&str|->Result<i32,String>{let id=*objects.get(symbol).ok_or("Missing boost-pie object")?;let item=u32::try_from(id).ok().and_then(|id|defs.items.get(&id)).ok_or("Missing boost-pie definition")?;if item.stackable || item.dummy==1 || item.cert.template!=0 || item.placeholder.template!=0 || item.transform.template!=0{return Err("Invalid ordinary boost-pie object".into());}Ok(id)};
+    let dish=ordinary("piedish")?;let mut next=foods.clone();let mut selected=std::collections::BTreeSet::new();let mut boosts=BTreeMap::new();
+    for (whole,half,label,heal,policy) in [
+        ("garden_pie","half_garden_pie","Garden pie",6,&[("farming",3)][..]),
+        ("fish_pie","half_fish_pie","Fish pie",6,&[("fishing",3)][..]),
+        ("botanical_pie","half_botanical_pie","Botanical pie",7,&[("herblore",4)][..]),
+        ("mushroom_pie","half_mushroom_pie","Mushroom pie",8,&[("crafting",4)][..]),
+        ("admiral_pie","half_admiral_pie","Admiral pie",8,&[("fishing",5)][..]),
+        ("wild_pie","half_wild_pie","Wild pie",11,&[("slayer",5),("ranged",4)][..]),
+        ("dragonfruit_pie","half_dragonfruit_pie","Dragonfruit pie",10,&[("fletching",4)][..]),
+    ] {
+        let mut effects=Vec::new();for &(name,amount) in policy{let id=*stats.get(name).ok_or("Missing food boost stat symbol")?;let id=u8::try_from(id).map_err(|_|"Invalid food boost stat ID")?;if !defs.stats.contains_key(&(id as u32)){return Err("Missing food boost stat definition".into());}effects.push(gielinor_world::food::StatBoost{skill:id,amount});}
+        let whole=ordinary(whole)?;let half=ordinary(half)?;if whole==half || whole==dish || half==dish{return Err("Aliased boost pie stages".into());}
+        for (id,name,replacement) in [(whole,label.to_string(),half),(half,format!("Half {} {}",if label=="Admiral pie"{"an"}else{"a"},label.to_lowercase()),dish)]{
+            let item=&defs.items[&(id as u32)];if item.name!=name || !item.members || item.inventory_ops[0].as_deref()!=Some("Eat") || next.contains_key(&id) || !selected.insert(id){return Err("Invalid boost pie stage profile".into());}
+            next.insert(id,Edible{id,heal,delay:1,replacement:Some(replacement),message:format!("You eat the {}.",name.to_lowercase())});boosts.insert(id,effects.clone());
+        }
+    }
+    *foods=next;Ok(BoostFoodBindings{selected,boosts})
 }
 
 /// GR-24's bounded cake/plain-pizza correction. Other foods retain the reference

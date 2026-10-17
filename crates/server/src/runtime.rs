@@ -447,8 +447,10 @@ impl<B: AccountBackend> Runtime<B> {
                 .map_err(|e| io::Error::other(format!("{e:?}")))?;
         }
         self.held_component = Some(component);
+        self.world.member_foods=foods.keys().filter(|id|self.definitions.items.get(&(**id as u32)).is_some_and(|item|item.members)).copied().collect();
         self.world.foods = foods;
         self.world.slot_preserving_foods.clear();
+        self.world.food_boosts.clear();
         self.world.eating_animation = animation;
         Ok(())
     }

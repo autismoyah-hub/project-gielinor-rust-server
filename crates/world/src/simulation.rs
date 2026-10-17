@@ -883,6 +883,8 @@ pub struct World {
     pub banking: Option<crate::bank_actions::Config>,
     pub wear_types: crate::equipment::WearCatalog,
     pub foods: BTreeMap<i32, crate::food::Edible>,
+    pub member_foods: std::collections::BTreeSet<i32>,
+    pub food_boosts: BTreeMap<i32,Vec<crate::food::StatBoost>>,
     pub slot_preserving_foods: std::collections::BTreeSet<i32>,
     pub potions: BTreeMap<i32, crate::potions::Potion>,
     pub milking: Option<crate::milking::Config>,
@@ -987,6 +989,8 @@ impl Default for World {
             banking: None,
             wear_types: crate::equipment::WearCatalog::default(),
             foods: BTreeMap::new(),
+            member_foods: Default::default(),
+            food_boosts: BTreeMap::new(),
             slot_preserving_foods: Default::default(),
             potions: BTreeMap::new(),
             item_packs: BTreeMap::new(),
@@ -2003,14 +2007,19 @@ impl World {
                     }
                     return Err(error);
                 }
+                if self.member_foods.contains(&item.unwrap().id) && !p.member {
+                    self.events.push(WorldEvent::LocationMessage{actor:id,message:"You need to be a member to eat that."});
+                    return Err(ActionError::InvalidItem);
+                }
                 let food = &self.foods[&item.unwrap().id];
                 let mut emitted = Vec::new();
                 let selected = self.slot_preserving_foods.contains(&food.id);
                 let hp_before = p.data.stats.current(3) as u8;
                 let fine_xp_before = p.data.stats.fine_xp(3);
-                let eaten = crate::food::eat_slot(
+                let eaten = crate::food::eat_slot_with_boosts(
                     food,slot,&mut p.data.inventory,&mut p.data.stats,
                     &self.object_types,3,self.eating_animation,
+                    self.food_boosts.get(&food.id).map(Vec::as_slice).unwrap_or(&[]),
                     |event| emitted.push(event),
                 ).map_err(|_| ActionError::InvalidStat)?;
                 if !eaten {return Err(ActionError::InvalidItem);}
@@ -4237,6 +4246,10 @@ mod tests {
                 ..
             }
         )));
+    }
+    #[test]
+    fn queued_food_secondary_boosts_follow_actual_eat_dispatch(){
+        let (mut w,actor)=admitted();w.foods.insert(991,crate::food::Edible{id:991,heal:11,delay:1,replacement:Some(992),message:"Wild pie".into()});w.food_boosts.insert(991,vec![crate::food::StatBoost{skill:18,amount:5},crate::food::StatBoost{skill:4,amount:4}]);let p=w.players.get_mut(actor.slot as usize).unwrap();for skill in [3,4,18]{p.data.stats.set_base(skill,99);p.data.stats.set_current(skill,99);}p.data.inventory.restore_slot(2,Some(crate::inventory::Item{id:991,count:1,vars:0})).unwrap();w.member_foods.insert(991);w.submit(actor,Action::EatItemSlot{slot:2,item:991}).unwrap();w.tick().unwrap();assert_eq!(w.data(actor).unwrap().inventory.get(2).unwrap().id,991);assert_eq!(w.data(actor).unwrap().stats.current(18),99);w.players.get_mut(actor.slot as usize).unwrap().member=true;w.submit(actor,Action::EatItemSlot{slot:2,item:991}).unwrap();w.tick().unwrap();let p=w.data(actor).unwrap();assert_eq!((p.stats.current(3),p.stats.current(18),p.stats.current(4)),(99,104,103));assert_eq!(p.inventory.get(2).unwrap().id,992);assert_eq!(p.stats.fine_xp(18),0);
     }
     #[test]
     fn queued_ordinary_food_uses_selected_duplicate_and_can_eat_after_brew_overheal() {

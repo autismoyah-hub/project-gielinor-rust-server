@@ -208,6 +208,10 @@ pub fn eat(
     emit(Event::Delay(food.delay));
     Ok(true)
 }
+/// Ordinary food secondary boosts use the existing stat operation, not a
+/// separate progression engine. Definitions resolve skills before registration.
+#[derive(Clone,Copy,Debug,PartialEq,Eq)]
+pub struct StatBoost {pub skill:u8,pub amount:i32}
 /// Selected nonstackable Wiki profile: consume the clicked slot and retain its
 /// remainder there. Inventory and healing are staged before any visible effect.
 /// `eat` remains the independently tested original-reference policy.
@@ -219,8 +223,15 @@ pub fn eat_slot(
     items: &Catalog,
     hitpoints: u8,
     animation: u16,
-    mut emit: impl FnMut(Event),
+    emit: impl FnMut(Event),
 ) -> Result<bool, stat_ops::Error> {
+    eat_slot_with_boosts(food,slot,inventory,stats,items,hitpoints,animation,&[],emit)
+}
+/// Stage secondary skill boosts with the same selected food/HP transaction.
+pub fn eat_slot_with_boosts(
+    food:&Edible,slot:usize,inventory:&mut Inventory,stats:&mut Stats,
+    items:&Catalog,hitpoints:u8,animation:u16,boosts:&[StatBoost],mut emit:impl FnMut(Event),
+)->Result<bool,stat_ops::Error>{
     let ordinary=|id| id>=0 && !items.stackable.contains(&id)
         && !items.dummy.contains(&id)
         && !items.notes.get(&id).is_some_and(|v|v.template!=0)
@@ -256,12 +267,15 @@ pub fn eat_slot(
     let base=stats.base(hitpoints) as u8 as i32;
     let gain=food.heal.min((base-current).max(0));
     let update = if gain>0 {Some(next_stats.apply(hitpoints,Operation::Add,gain,0,true)?)} else {None};
+    let mut secondary=Vec::new();
+    for boost in boosts {secondary.push(next_stats.apply(boost.skill,Operation::Boost,boost.amount,0,false)?);}
     *inventory = next_inventory;
     *stats = next_stats;
     emit(Event::Animation(animation));
     if let Some(update)=update {emit(Event::Stat(update));}
     emit(Event::Message(food.message.clone()));
     emit(Event::Delay(food.delay));
+    for update in secondary {emit(Event::Stat(update));}
     Ok(true)
 }
 /// Successful selected-slot transaction, captured by the authoritative world.
@@ -297,6 +311,12 @@ impl Transition {
 mod tests {
     use super::*;
     use crate::inventory::{Item, StackType};
+    #[test]
+    fn secondary_food_boosts_cap_and_rollback_with_selected_item_and_healing(){
+        let food=Edible{id:1,heal:8,delay:1,replacement:Some(2),message:"Pie".into()};
+        for current in [50,99,105,110]{let mut inv=Inventory::new(1,StackType::Normal,false);inv.restore_slot(0,Some(Item{id:1,count:1,vars:0})).unwrap();let mut stats=Stats::default();stats.set_base(3,99);stats.set_current(3,115);stats.set_base(10,99);stats.set_current(10,current);let xp=stats.fine_xp(10);eat_slot_with_boosts(&food,0,&mut inv,&mut stats,&Default::default(),3,829,&[StatBoost{skill:10,amount:5}],|_|{}).unwrap();assert_eq!(stats.current(3),115);assert_eq!(stats.current(10),match current{50=>55,99=>104,_=>current});assert_eq!(stats.fine_xp(10),xp);assert_eq!(inv.get(0).unwrap().id,2);}
+        let mut inv=Inventory::new(1,StackType::Normal,false);inv.restore_slot(0,Some(Item{id:1,count:1,vars:0})).unwrap();let mut stats=Stats::default();stats.set_base(3,99);stats.set_current(3,50);stats.set_base(10,99);stats.set_current(10,99);let before=(inv.clone(),stats.clone());let mut events=Vec::new();assert!(eat_slot_with_boosts(&food,0,&mut inv,&mut stats,&Default::default(),3,829,&[StatBoost{skill:10,amount:5},StatBoost{skill:18,amount:-1}],|e|events.push(e)).is_err());assert_eq!((inv,stats),before);assert!(events.is_empty());
+    }
     #[test]
     fn ordinary_food_preserves_overhealed_health_and_rejects_malformed_exchange() {
         for hp in [50,99,115] {
