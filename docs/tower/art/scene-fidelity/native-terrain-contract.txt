@@ -1,0 +1,1 @@
+ORIGINAL_TERRAIN_NATIVE_PASS 392 terrain triangles; slopes and native floors assembled; malformed/duplicate/original IDs and cache textures rejected; ordinary cache cannot accept study floors

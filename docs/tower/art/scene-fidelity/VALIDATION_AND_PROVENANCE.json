@@ -1,0 +1,30 @@
+{
+  "renderer_sha256": "309ecc16f90e66afec7c4c6110913c3671bc0acad10a69d31f37bdd63057e446",
+  "source_file_sha256": {
+    "rust-server\\tools\\tower\\offline\\render\\src\\main.rs": "61ef2707e899d27b79d055e352db57224fb50503a65493663967403ee70e643d",
+    "rust-server\\tools\\tower\\offline\\render\\Cargo.toml": "3e774f27fb4e7f1522262b4a25a76632c06fc9381cf1a44b14022ba7fc8e8480",
+    "rust-server\\tools\\tower\\offline\\render\\Cargo.lock": "c05cfb4592a1f6a2ef8f693720ce40342549839e9a7976db5c8a38092c192013",
+    "rust-client-reference\\src\\disk_cache.rs": "0e8f8d66d6d88f24e59dd4a371534c5d07e313a1e59164472f12c5932f5032bb",
+    "rust-server\\tools\\tower\\custom-assets\\blender\\create_scene_sample_assets.py": "b71307a84f3683a665faedcb636cf6acc3e3cf9d618f651fadcdf5739951065b",
+    "rust-server\\tools\\tower\\custom-assets\\design\\compose_scene_calibration.py": "679a289ea20011bc6d2f0ba9b65b3cd4ba5726ce12f433819f17b65b4caa3d48",
+    "rust-server\\tools\\tower\\custom-assets\\design\\render_scene_fidelity.py": "d2b866fc2e7ff04e7c63345e4d0af154c91ae8c5703eaa6cbfda354b86685e5d",
+    "rust-server\\tools\\tower\\custom-assets\\converter\\package_cinderworks.py": "2eb9dca60b116807f7344c4fac3f816f8d57ba84b0f2cc6ec1dec75674c4f2fb",
+    "rust-server\\tools\\tower\\custom-assets\\converter\\convert_glb.py": "c8d9aed92a76f8fdffb4b13eea0a4c816d1540db1a58fe01cf1f16c5be786d38"
+  },
+  "blender": "5.2.2 LTS; d13f752e3b9c",
+  "sample_native_models": 58,
+  "sample_unique_triangles": 6596,
+  "sample_used_families": 38,
+  "sample_placements": 93,
+  "reference_scenes": 3,
+  "matched_review_frames": 24,
+  "all_native_frames_complete_source_regions": true,
+  "all_native_frames_no_pending_assets": true,
+  "protected_cache_files": 50,
+  "protected_cache_bytes": 453219756,
+  "protected_cache_all_sha256_unchanged": true,
+  "fresh_blender_generation_native_bytes_identical": true,
+  "metadata_and_bounds_changes_native_raster_hashes_identical": 24,
+  "full_floor_status": "Paused pending human artistic review; not integrated",
+  "current_native_live_captures": 0
+}

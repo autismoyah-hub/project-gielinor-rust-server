@@ -1,0 +1,1 @@
+HUMAN_REFERENCE id=3106 name="Man" models=[215, 246, 28515, 326, 26632, 177, 12138, 181] scale=[128, 128] min=[-35.0, -196.0, -20.0] max=[35.0, 6.0, 13.0] extent_tiles=[0.546875, 1.578125, 0.2578125] vertices=292 faces=536; native NPC mesh/resize; static unanimated bind pose, not live player/idle height

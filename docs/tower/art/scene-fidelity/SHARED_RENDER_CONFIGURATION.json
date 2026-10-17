@@ -1,0 +1,24 @@
+{
+  "viewport": [
+    765,
+    503
+  ],
+  "fov": [
+    256,
+    205
+  ],
+  "zoom": [
+    256,
+    320
+  ],
+  "focal": 308,
+  "pitch": 2560,
+  "orbit": 1560,
+  "follow_height": 50,
+  "brightness": 0.8,
+  "far_clip": 5250,
+  "roof_max_plane": 0,
+  "actors": false,
+  "ui": false,
+  "skybox": false
+}

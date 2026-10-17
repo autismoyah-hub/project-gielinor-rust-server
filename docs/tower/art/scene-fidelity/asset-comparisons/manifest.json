@@ -1,0 +1,34 @@
+[
+  {
+    "name": "rack-before",
+    "original_only": true,
+    "raw_sha256": "4c8e2ed5f1583aa78c05feb1b56667300efd91ebc45dd20bb3873b6e517691d6",
+    "scene_sha256": "b747b852734ef89764360a9bc90c3b87dde2df75a20acc4fd56a1ede8dbbe89c",
+    "registry_sha256": "fd234ba5d2713b5b2b827c1dd6f1c95aecea25fee7d676fa1fe827dcd64efef9",
+    "camera": "OFFLINE ONLY\noriginal_art_only=true\npreset=reference\nobject_assembly=authored\ncanvas=1100x850\nlocal_target=37,38.5\ntarget_height=-160\nyaw_units=2048\ndistance_argument=850\nelevation=650\nfocal=1100\nscene=C:\\Projects\\OSRSRSPS\\Tower-Development\\experiments\\custom-model-pipeline\\scene-fidelity\\asset-comparisons\\rack-before.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+  },
+  {
+    "name": "rack-after",
+    "original_only": true,
+    "raw_sha256": "5aad6d6bf89790ec007d06cbeb1e6a2bb43217ff50d2cd25bfde9e9b139b70ac",
+    "scene_sha256": "03401c13370ead9334905348ea40fbefaa73f39170555700483bb6e52224b9fe",
+    "registry_sha256": "9ec9d37b5d7c734a64a43091464d4dd9353aeccff7dff696e8bb8cfe3fe809c8",
+    "camera": "OFFLINE ONLY\noriginal_art_only=true\npreset=reference\nobject_assembly=authored\ncanvas=1100x850\nlocal_target=37,38.5\ntarget_height=-160\nyaw_units=2048\ndistance_argument=850\nelevation=650\nfocal=1100\nscene=C:\\Projects\\OSRSRSPS\\Tower-Development\\experiments\\custom-model-pipeline\\scene-fidelity\\asset-comparisons\\rack-after.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+  },
+  {
+    "name": "rock-before",
+    "original_only": true,
+    "raw_sha256": "0fdc97c4033f7c65cbe6512476d38a107bdec0d255e5fe3cfddfd361af28967f",
+    "scene_sha256": "97057e4d2429d0ac4f2edc2f5401e676c041d449e820d1066f9a25498e3dcd81",
+    "registry_sha256": "fd234ba5d2713b5b2b827c1dd6f1c95aecea25fee7d676fa1fe827dcd64efef9",
+    "camera": "OFFLINE ONLY\noriginal_art_only=true\npreset=reference\nobject_assembly=authored\ncanvas=1100x850\nlocal_target=37.5,39.5\ntarget_height=-160\nyaw_units=2048\ndistance_argument=850\nelevation=650\nfocal=1100\nscene=C:\\Projects\\OSRSRSPS\\Tower-Development\\experiments\\custom-model-pipeline\\scene-fidelity\\asset-comparisons\\rock-before.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+  },
+  {
+    "name": "rock-after",
+    "original_only": true,
+    "raw_sha256": "08ad2d2b6d73c0da14bd8e0bcd624218c49ab7382f9f96dae3aab818f72c1b1c",
+    "scene_sha256": "97057e4d2429d0ac4f2edc2f5401e676c041d449e820d1066f9a25498e3dcd81",
+    "registry_sha256": "9ec9d37b5d7c734a64a43091464d4dd9353aeccff7dff696e8bb8cfe3fe809c8",
+    "camera": "OFFLINE ONLY\noriginal_art_only=true\npreset=reference\nobject_assembly=authored\ncanvas=1100x850\nlocal_target=37.5,39.5\ntarget_height=-160\nyaw_units=2048\ndistance_argument=850\nelevation=650\nfocal=1100\nscene=C:\\Projects\\OSRSRSPS\\Tower-Development\\experiments\\custom-model-pipeline\\scene-fidelity\\asset-comparisons\\rock-after.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+  }
+]

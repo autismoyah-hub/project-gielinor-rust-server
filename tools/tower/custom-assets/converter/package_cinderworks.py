@@ -28,7 +28,8 @@ def main():
         (a.output/'validation'/(name+'.txt')).write_text(expected,encoding='ascii')
         (a.output/'validation'/(name+'.shading')).write_text(' '.join(map(str,shading)),encoding='ascii')
         width,length=asset['footprint']
-        definition=bytes([7,1])+struct.pack('>I',model_id)+b'\x02'+name.replace('_',' ').encode('ascii')+b'\0'+bytes([14,width,15,length,17,19,0,0])
+        (a.output/'validation'/(name+'.definition')).write_text(f'{object_id} {model_id} {width} {length} {int(bool(asset.get("scene_non_flat_shading")))}',encoding='ascii')
+        definition=bytes([7,1])+struct.pack('>I',model_id)+b'\x02'+name.replace('_',' ').encode('ascii')+b'\0'+bytes([14,width,15,length])+(bytes([22]) if asset.get('scene_non_flat_shading') else b'')+bytes([17,19,0,0])
         for kind,id,extension,content in [('model',model_id,'model',model),('object',object_id,'object',definition)]:
             filename=f'{name.replace("_","-")}.{extension}';(a.output/filename).write_bytes(content)
             rows.append(f'{kind} {id} {filename} {zlib.crc32(content):08x}')

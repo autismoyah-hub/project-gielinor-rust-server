@@ -8,3 +8,4 @@ publish = false
 
 [dependencies]
 gielinor-client = { path = "../../../../../rust-client-reference" }
+sha2 = { path = "../../../../../rust-client-reference/vendor/sha2-0.10.8", features = ["force-soft"] }

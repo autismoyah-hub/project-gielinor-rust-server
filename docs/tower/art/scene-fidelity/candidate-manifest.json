@@ -1,0 +1,915 @@
+{
+  "title": "The Springhouse Service Suite",
+  "stage": "Small complete scene calibration; not approval for full-floor production",
+  "iteration": 2,
+  "original_only": true,
+  "scene_size": [
+    64,
+    64
+  ],
+  "source": "Entirely authored terrain, original underlay/overlay colors and original Tower meshes; no extracted geometry or textures",
+  "native_terrain": {
+    "underlays": [
+      [
+        "U",
+        5000,
+        "5b5953"
+      ],
+      [
+        "U",
+        5001,
+        "615b50"
+      ],
+      [
+        "U",
+        5002,
+        "424944"
+      ],
+      [
+        "U",
+        5003,
+        "3c4140"
+      ],
+      [
+        "U",
+        5004,
+        "696254"
+      ],
+      [
+        "O",
+        5010,
+        "334d50"
+      ]
+    ],
+    "terrain_tiles": 4096,
+    "assembly": "Region/Scene.add_chunk -> native underlay neighborhood blending/terrain light/TileMesh; no new rasterizer",
+    "collision": "Visual-only authored terrain; no authoritative gameplay collision changes"
+  },
+  "floor_planning_bounds": [
+    42,
+    49,
+    68,
+    63
+  ],
+  "props": [
+    {
+      "asset": "wall",
+      "id": 63005,
+      "x": 55,
+      "z": 63,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "wall",
+      "id": 63005,
+      "x": 57,
+      "z": 63,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "wall",
+      "id": 63005,
+      "x": 59,
+      "z": 63,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "wall",
+      "id": 63005,
+      "x": 61,
+      "z": 63,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "wall",
+      "id": 63005,
+      "x": 63,
+      "z": 63,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "wall",
+      "id": 63005,
+      "x": 65,
+      "z": 63,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "wall",
+      "id": 63005,
+      "x": 67,
+      "z": 63,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "wall",
+      "id": 63005,
+      "x": 68,
+      "z": 50,
+      "shape": 10,
+      "rotation": 1,
+      "story": ""
+    },
+    {
+      "asset": "wall",
+      "id": 63005,
+      "x": 68,
+      "z": 52,
+      "shape": 10,
+      "rotation": 1,
+      "story": ""
+    },
+    {
+      "asset": "wall",
+      "id": 63005,
+      "x": 68,
+      "z": 54,
+      "shape": 10,
+      "rotation": 1,
+      "story": ""
+    },
+    {
+      "asset": "wall",
+      "id": 63005,
+      "x": 68,
+      "z": 56,
+      "shape": 10,
+      "rotation": 1,
+      "story": ""
+    },
+    {
+      "asset": "wall",
+      "id": 63005,
+      "x": 68,
+      "z": 58,
+      "shape": 10,
+      "rotation": 1,
+      "story": ""
+    },
+    {
+      "asset": "wall",
+      "id": 63005,
+      "x": 68,
+      "z": 60,
+      "shape": 10,
+      "rotation": 1,
+      "story": ""
+    },
+    {
+      "asset": "wall",
+      "id": 63005,
+      "x": 54,
+      "z": 49,
+      "shape": 10,
+      "rotation": 1,
+      "story": ""
+    },
+    {
+      "asset": "wall",
+      "id": 63005,
+      "x": 54,
+      "z": 51,
+      "shape": 10,
+      "rotation": 1,
+      "story": ""
+    },
+    {
+      "asset": "wall",
+      "id": 63005,
+      "x": 54,
+      "z": 58,
+      "shape": 10,
+      "rotation": 1,
+      "story": ""
+    },
+    {
+      "asset": "wall",
+      "id": 63005,
+      "x": 54,
+      "z": 60,
+      "shape": 10,
+      "rotation": 1,
+      "story": ""
+    },
+    {
+      "asset": "wall",
+      "id": 63005,
+      "x": 54,
+      "z": 62,
+      "shape": 10,
+      "rotation": 1,
+      "story": ""
+    },
+    {
+      "asset": "arch",
+      "id": 63010,
+      "x": 63,
+      "z": 48,
+      "shape": 10,
+      "rotation": 0,
+      "story": "Main worker entry frames the spring; foreground facade is cut away."
+    },
+    {
+      "asset": "parapet",
+      "id": 63006,
+      "x": 57,
+      "z": 48,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "parapet",
+      "id": 63006,
+      "x": 60,
+      "z": 48,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "pillar",
+      "id": 63008,
+      "x": 67,
+      "z": 48,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "arch",
+      "id": 63010,
+      "x": 53,
+      "z": 54,
+      "shape": 10,
+      "rotation": 1,
+      "story": "Shared service threshold opens into the workshop."
+    },
+    {
+      "asset": "restoration_font",
+      "id": 63013,
+      "x": 60,
+      "z": 55,
+      "shape": 10,
+      "rotation": 0,
+      "story": "Maintained water source; damp terrain is localized around its use."
+    },
+    {
+      "asset": "worker_bed",
+      "id": 63070,
+      "x": 56,
+      "z": 61,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "worker_bed",
+      "id": 63070,
+      "x": 58,
+      "z": 61,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "worker_bench",
+      "id": 63078,
+      "x": 60,
+      "z": 60,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "worker_bench",
+      "id": 63078,
+      "x": 65,
+      "z": 59,
+      "shape": 10,
+      "rotation": 1,
+      "story": ""
+    },
+    {
+      "asset": "bank_counter",
+      "id": 63039,
+      "x": 55,
+      "z": 50,
+      "shape": 10,
+      "rotation": 1,
+      "story": "Wages/ledger station faces the entrance side."
+    },
+    {
+      "asset": "ledger_table",
+      "id": 63069,
+      "x": 65,
+      "z": 55,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "stool",
+      "id": 63071,
+      "x": 65,
+      "z": 54,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "water_barrel",
+      "id": 63079,
+      "x": 56,
+      "z": 58,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "water_barrel",
+      "id": 63079,
+      "x": 57,
+      "z": 58,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "worker_kettle",
+      "id": 63080,
+      "x": 58,
+      "z": 57,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "brazier",
+      "id": 63030,
+      "x": 58,
+      "z": 56,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "stores",
+      "id": 63024,
+      "x": 65,
+      "z": 61,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "supply_rack",
+      "id": 63045,
+      "x": 62,
+      "z": 63,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "banner",
+      "id": 63031,
+      "x": 59,
+      "z": 62,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "repair_slab",
+      "id": 63072,
+      "x": 62,
+      "z": 50,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "wall",
+      "id": 63005,
+      "x": 42,
+      "z": 62,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "wall",
+      "id": 63005,
+      "x": 44,
+      "z": 62,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "wall",
+      "id": 63005,
+      "x": 46,
+      "z": 62,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "wall",
+      "id": 63005,
+      "x": 48,
+      "z": 62,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "wall",
+      "id": 63005,
+      "x": 50,
+      "z": 62,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "wall",
+      "id": 63005,
+      "x": 52,
+      "z": 62,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "wall",
+      "id": 63005,
+      "x": 41,
+      "z": 50,
+      "shape": 10,
+      "rotation": 1,
+      "story": ""
+    },
+    {
+      "asset": "wall",
+      "id": 63005,
+      "x": 41,
+      "z": 52,
+      "shape": 10,
+      "rotation": 1,
+      "story": ""
+    },
+    {
+      "asset": "wall",
+      "id": 63005,
+      "x": 41,
+      "z": 54,
+      "shape": 10,
+      "rotation": 1,
+      "story": ""
+    },
+    {
+      "asset": "wall",
+      "id": 63005,
+      "x": 41,
+      "z": 56,
+      "shape": 10,
+      "rotation": 1,
+      "story": ""
+    },
+    {
+      "asset": "wall",
+      "id": 63005,
+      "x": 41,
+      "z": 58,
+      "shape": 10,
+      "rotation": 1,
+      "story": ""
+    },
+    {
+      "asset": "wall",
+      "id": 63005,
+      "x": 41,
+      "z": 60,
+      "shape": 10,
+      "rotation": 1,
+      "story": ""
+    },
+    {
+      "asset": "furnace",
+      "id": 63014,
+      "x": 42,
+      "z": 56,
+      "shape": 10,
+      "rotation": 3,
+      "story": "A compact hot face opens into a usable handling lane."
+    },
+    {
+      "asset": "anvil",
+      "id": 63020,
+      "x": 45,
+      "z": 56,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "workbench",
+      "id": 63019,
+      "x": 45,
+      "z": 50,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "pressure_pump",
+      "id": 63017,
+      "x": 50,
+      "z": 59,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "pipe",
+      "id": 63018,
+      "x": 51,
+      "z": 61,
+      "shape": 10,
+      "rotation": 1,
+      "story": ""
+    },
+    {
+      "asset": "coolant_trough",
+      "id": 63040,
+      "x": 50,
+      "z": 54,
+      "shape": 10,
+      "rotation": 1,
+      "story": ""
+    },
+    {
+      "asset": "supply_rack",
+      "id": 63045,
+      "x": 44,
+      "z": 62,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "timber_stack",
+      "id": 63025,
+      "x": 48,
+      "z": 60,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "stores",
+      "id": 63024,
+      "x": 42,
+      "z": 50,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "ore_cart",
+      "id": 63038,
+      "x": 48,
+      "z": 50,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "track",
+      "id": 63037,
+      "x": 48,
+      "z": 53,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "track",
+      "id": 63037,
+      "x": 48,
+      "z": 55,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "ledger_table",
+      "id": 63069,
+      "x": 43,
+      "z": 60,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "worker_bench",
+      "id": 63078,
+      "x": 42,
+      "z": 53,
+      "shape": 10,
+      "rotation": 1,
+      "story": ""
+    },
+    {
+      "asset": "brazier",
+      "id": 63030,
+      "x": 52,
+      "z": 60,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "water_barrel",
+      "id": 63079,
+      "x": 51,
+      "z": 50,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "pit_prop",
+      "id": 63076,
+      "x": 45,
+      "z": 60,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "pillar",
+      "id": 63008,
+      "x": 53,
+      "z": 61,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "pillar",
+      "id": 63008,
+      "x": 42,
+      "z": 49,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "wall_broken",
+      "id": 63007,
+      "x": 68,
+      "z": 61,
+      "shape": 10,
+      "rotation": 1,
+      "story": ""
+    },
+    {
+      "asset": "rubble",
+      "id": 63022,
+      "x": 69,
+      "z": 62,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "cave_mass",
+      "id": 63073,
+      "x": 39,
+      "z": 55,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "cave_mass",
+      "id": 63073,
+      "x": 43,
+      "z": 64,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "cave_mass",
+      "id": 63073,
+      "x": 65,
+      "z": 65,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "cave_shoulder",
+      "id": 63074,
+      "x": 40,
+      "z": 49,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "cave_shoulder",
+      "id": 63074,
+      "x": 69,
+      "z": 52,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "scale_figure",
+      "id": 63032,
+      "x": 52,
+      "z": 55,
+      "shape": 10,
+      "rotation": 0,
+      "story": "Static 1.72-tile ruler convention; not an actor."
+    },
+    {
+      "asset": "wall_lantern",
+      "id": 63081,
+      "x": 46,
+      "z": 62,
+      "shape": 10,
+      "rotation": 0,
+      "story": "Small working light fixture; no dynamic light is emitted."
+    },
+    {
+      "asset": "wall_lantern",
+      "id": 63081,
+      "x": 52,
+      "z": 62,
+      "shape": 10,
+      "rotation": 0,
+      "story": "Small working light fixture; no dynamic light is emitted."
+    },
+    {
+      "asset": "wall_lantern",
+      "id": 63081,
+      "x": 62,
+      "z": 63,
+      "shape": 10,
+      "rotation": 0,
+      "story": "Small working light fixture; no dynamic light is emitted."
+    },
+    {
+      "asset": "wall_lantern",
+      "id": 63081,
+      "x": 68,
+      "z": 58,
+      "shape": 10,
+      "rotation": 1,
+      "story": "Small working light fixture; no dynamic light is emitted."
+    },
+    {
+      "asset": "wall_coats",
+      "id": 63082,
+      "x": 56,
+      "z": 63,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "personal_shelf",
+      "id": 63083,
+      "x": 62,
+      "z": 62,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "personal_shelf",
+      "id": 63083,
+      "x": 41,
+      "z": 59,
+      "shape": 10,
+      "rotation": 3,
+      "story": ""
+    },
+    {
+      "asset": "worker_rug",
+      "id": 63085,
+      "x": 57,
+      "z": 59,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "stone_threshold",
+      "id": 63086,
+      "x": 63,
+      "z": 48,
+      "shape": 10,
+      "rotation": 0,
+      "story": ""
+    },
+    {
+      "asset": "ground_scatter",
+      "id": 63084,
+      "x": 42,
+      "z": 55,
+      "shape": 10,
+      "rotation": 0,
+      "story": "A small occupational edge cluster, kept out of the central lane."
+    },
+    {
+      "asset": "ground_scatter",
+      "id": 63084,
+      "x": 43,
+      "z": 52,
+      "shape": 10,
+      "rotation": 0,
+      "story": "A small occupational edge cluster, kept out of the central lane."
+    },
+    {
+      "asset": "ground_scatter",
+      "id": 63084,
+      "x": 49,
+      "z": 59,
+      "shape": 10,
+      "rotation": 0,
+      "story": "A small occupational edge cluster, kept out of the central lane."
+    },
+    {
+      "asset": "ground_scatter",
+      "id": 63084,
+      "x": 52,
+      "z": 57,
+      "shape": 10,
+      "rotation": 0,
+      "story": "A small occupational edge cluster, kept out of the central lane."
+    },
+    {
+      "asset": "ground_scatter",
+      "id": 63084,
+      "x": 66,
+      "z": 60,
+      "shape": 10,
+      "rotation": 0,
+      "story": "A small occupational edge cluster, kept out of the central lane."
+    },
+    {
+      "asset": "ground_scatter",
+      "id": 63084,
+      "x": 59,
+      "z": 54,
+      "shape": 10,
+      "rotation": 0,
+      "story": "A small occupational edge cluster, kept out of the central lane."
+    }
+  ],
+  "camera_targets": {
+    "suite": [
+      55,
+      56
+    ],
+    "sanctuary": [
+      61,
+      56
+    ],
+    "workshop": [
+      48,
+      56
+    ]
+  },
+  "purpose": "Occupied sanctuary linked by a working threshold to a compact furnace/repair/quench workshop; terrain boundary and a drainage course give surrounding context",
+  "limitations": [
+    "No gameplay actors or UI",
+    "Static flames/water; no smoke, reflection, transparency or emitted dynamic light",
+    "Original opaque color materials only; no custom textures",
+    "Foreground is an authored cutaway; no dynamic roof/occlusion lifecycle",
+    "Artistic approval required before changes are scaled across Floor One"
+  ]
+}

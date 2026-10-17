@@ -1,0 +1,752 @@
+{
+  "revision": "239.1",
+  "source": "Authorized staged paired cache/js5; read-only dat2/idx",
+  "coordinates": "128 units per tile; X east, Y negative up, Z north",
+  "source_format": "Legacy u16 disk revision validated against low bits of reference version plus full group CRC; expanded only in memory; normal client strict validation unchanged",
+  "distribution": "Measurements and IDs only. No proprietary mesh, texture or reference image included.",
+  "sample_limits": "Thirty targeted industrial/architectural objects. Symbol names suggest asset families, not verified world placements. Static object compositions at rotation zero, not animation/lifecycle acceptance. 1.72-tile custom scale figure is a comparison convention, not measured universal player height.",
+  "assets": [
+    {
+      "object_id": 1417,
+      "name": "null",
+      "symbol": "cavewall_face1",
+      "model_ids": [
+        782
+      ],
+      "shape": 0,
+      "rotation": 0,
+      "definition_tiles": [
+        1,
+        1
+      ],
+      "vertices": 12,
+      "faces": 10,
+      "bounds_native": [
+        [
+          -64.0,
+          -240.0,
+          -64.0
+        ],
+        [
+          64.0,
+          160.0,
+          64.0
+        ]
+      ],
+      "visible_extent_tiles": [
+        1.0,
+        3.125,
+        1.0
+      ],
+      "colors_unique": 2,
+      "packed_hsl_lightness_range": [
+        0,
+        33
+      ],
+      "texture_ids": [],
+      "render_type_counts": {
+        "0": 10
+      },
+      "ambient": 15,
+      "contrast": 75,
+      "non_flat_shading": true,
+      "scale": [
+        128,
+        128,
+        128
+      ],
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "edge_incidence_counts": {
+        "1": 12,
+        "2": 9
+      },
+      "local_interchange_sha256": "7c3fc99ae3d4e0a78526824dd8fad887260e0ea0e61377451bfa7069d87b8918",
+      "inspection": "3 native Rust views; 4 Blender topology views; preserved local only"
+    },
+    {
+      "object_id": 1434,
+      "name": "null",
+      "symbol": "cavewall_top",
+      "model_ids": [
+        834
+      ],
+      "shape": 10,
+      "rotation": 0,
+      "definition_tiles": [
+        1,
+        1
+      ],
+      "vertices": 4,
+      "faces": 2,
+      "bounds_native": [
+        [
+          -64.0,
+          -240.0,
+          -64.0
+        ],
+        [
+          64.0,
+          -240.0,
+          64.0
+        ]
+      ],
+      "visible_extent_tiles": [
+        1.0,
+        0.0,
+        1.0
+      ],
+      "colors_unique": 1,
+      "packed_hsl_lightness_range": [
+        33,
+        33
+      ],
+      "texture_ids": [],
+      "render_type_counts": {
+        "0": 2
+      },
+      "ambient": 15,
+      "contrast": 75,
+      "non_flat_shading": true,
+      "scale": [
+        128,
+        128,
+        128
+      ],
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "edge_incidence_counts": {
+        "1": 4,
+        "2": 1
+      },
+      "local_interchange_sha256": "2fb1d3c3bcb1792c5fb7bf066bb838eee33318a06040e9e10f0e6c081eb26a8a",
+      "inspection": "3 native Rust views; 4 Blender topology views; preserved local only"
+    },
+    {
+      "object_id": 1658,
+      "name": "null",
+      "symbol": "oldwall_blackback_a",
+      "model_ids": [
+        16340
+      ],
+      "shape": 10,
+      "rotation": 0,
+      "definition_tiles": [
+        1,
+        1
+      ],
+      "vertices": 22,
+      "faces": 16,
+      "bounds_native": [
+        [
+          -176.0,
+          -239.0,
+          -64.0
+        ],
+        [
+          64.0,
+          1.0,
+          176.0
+        ]
+      ],
+      "visible_extent_tiles": [
+        1.875,
+        1.875,
+        1.875
+      ],
+      "colors_unique": 3,
+      "packed_hsl_lightness_range": [
+        0,
+        127
+      ],
+      "texture_ids": [
+        23
+      ],
+      "render_type_counts": {
+        "0": 16
+      },
+      "ambient": 25,
+      "contrast": 125,
+      "non_flat_shading": true,
+      "scale": [
+        128,
+        128,
+        128
+      ],
+      "offset": [
+        0,
+        1,
+        0
+      ],
+      "edge_incidence_counts": {
+        "1": 10,
+        "2": 19
+      },
+      "local_interchange_sha256": "dc48972b55130d223b22b8303e40eb4fd64b2d99265aa3c053c3a1d2a4b063fb",
+      "inspection": "3 native Rust views; 4 Blender topology views; preserved local only"
+    },
+    {
+      "object_id": 206,
+      "name": "null",
+      "symbol": "skulltorch",
+      "model_ids": [
+        2256
+      ],
+      "shape": 4,
+      "rotation": 0,
+      "definition_tiles": [
+        1,
+        1
+      ],
+      "vertices": 176,
+      "faces": 210,
+      "bounds_native": [
+        [
+          -64.0,
+          -227.0,
+          -18.0
+        ],
+        [
+          -6.0,
+          -105.0,
+          17.0
+        ]
+      ],
+      "visible_extent_tiles": [
+        0.45312,
+        0.95312,
+        0.27344
+      ],
+      "colors_unique": 10,
+      "packed_hsl_lightness_range": [
+        0,
+        127
+      ],
+      "texture_ids": [],
+      "render_type_counts": {
+        "0": 210
+      },
+      "ambient": 0,
+      "contrast": 0,
+      "non_flat_shading": false,
+      "scale": [
+        128,
+        128,
+        128
+      ],
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "edge_incidence_counts": {
+        "1": 130,
+        "2": 241,
+        "3": 6
+      },
+      "local_interchange_sha256": "75dc7be9ffdfd802f03ba78e2e2594e86a2586b20a97e1adce8a8b8c9f72589c",
+      "inspection": "3 native Rust views; 4 Blender topology views; preserved local only"
+    },
+    {
+      "object_id": 325,
+      "name": "null",
+      "symbol": "dugupsoil2_light2",
+      "model_ids": [
+        1139
+      ],
+      "shape": 22,
+      "rotation": 0,
+      "definition_tiles": [
+        1,
+        1
+      ],
+      "vertices": 24,
+      "faces": 18,
+      "bounds_native": [
+        [
+          -48.0,
+          -8.0,
+          -48.0
+        ],
+        [
+          46.0,
+          0.0,
+          36.0
+        ]
+      ],
+      "visible_extent_tiles": [
+        0.73438,
+        0.0625,
+        0.65625
+      ],
+      "colors_unique": 1,
+      "packed_hsl_lightness_range": [
+        16,
+        16
+      ],
+      "texture_ids": [],
+      "render_type_counts": {
+        "0": 18
+      },
+      "ambient": 0,
+      "contrast": 0,
+      "non_flat_shading": false,
+      "scale": [
+        128,
+        128,
+        128
+      ],
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "edge_incidence_counts": {
+        "2": 18,
+        "1": 18
+      },
+      "local_interchange_sha256": "18aa3998cae266fd826a938c123542e6ced9dbce16aee426b7bef43bbebcc350",
+      "inspection": "3 native Rust views; 4 Blender topology views; preserved local only"
+    },
+    {
+      "object_id": 3474,
+      "name": "null",
+      "symbol": "hanginglantern",
+      "model_ids": [
+        3511
+      ],
+      "shape": 4,
+      "rotation": 0,
+      "definition_tiles": [
+        1,
+        1
+      ],
+      "vertices": 111,
+      "faces": 186,
+      "bounds_native": [
+        [
+          -64.0,
+          -224.0,
+          -12.0
+        ],
+        [
+          -30.0,
+          -178.0,
+          12.0
+        ]
+      ],
+      "visible_extent_tiles": [
+        0.26562,
+        0.35938,
+        0.1875
+      ],
+      "colors_unique": 6,
+      "packed_hsl_lightness_range": [
+        20,
+        64
+      ],
+      "texture_ids": [],
+      "render_type_counts": {
+        "1": 26,
+        "0": 160
+      },
+      "ambient": 0,
+      "contrast": 0,
+      "non_flat_shading": false,
+      "scale": [
+        128,
+        128,
+        128
+      ],
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "edge_incidence_counts": {
+        "2": 239,
+        "1": 61,
+        "3": 1,
+        "4": 4
+      },
+      "local_interchange_sha256": "2bbf7afe7a9a3f74be8b09f375418800f1c126cd4a59b6a6fee1171fb265a3ae",
+      "inspection": "3 native Rust views; 4 Blender topology views; preserved local only"
+    },
+    {
+      "object_id": 4735,
+      "name": "null",
+      "symbol": "short_grass_1",
+      "model_ids": [
+        4401
+      ],
+      "shape": 22,
+      "rotation": 0,
+      "definition_tiles": [
+        1,
+        1
+      ],
+      "vertices": 35,
+      "faces": 42,
+      "bounds_native": [
+        [
+          -50.0,
+          -34.0,
+          -56.0
+        ],
+        [
+          42.0,
+          0.0,
+          40.0
+        ]
+      ],
+      "visible_extent_tiles": [
+        0.71875,
+        0.26562,
+        0.75
+      ],
+      "colors_unique": 3,
+      "packed_hsl_lightness_range": [
+        28,
+        35
+      ],
+      "texture_ids": [],
+      "render_type_counts": {
+        "0": 42
+      },
+      "ambient": 20,
+      "contrast": 0,
+      "non_flat_shading": false,
+      "scale": [
+        128,
+        128,
+        128
+      ],
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "edge_incidence_counts": {
+        "4": 7,
+        "2": 49
+      },
+      "local_interchange_sha256": "31d1f8e67cf8f4416abbfbfb655d417af2897db477ad26e3eda057b436184a7e",
+      "inspection": "3 native Rust views; 4 Blender topology views; preserved local only"
+    },
+    {
+      "object_id": 6062,
+      "name": "null",
+      "symbol": "dwarf_keldagrim_clothes",
+      "model_ids": [
+        5968
+      ],
+      "shape": 4,
+      "rotation": 0,
+      "definition_tiles": [
+        1,
+        1
+      ],
+      "vertices": 98,
+      "faces": 133,
+      "bounds_native": [
+        [
+          -64.0,
+          -159.0,
+          -53.0
+        ],
+        [
+          -34.0,
+          -60.0,
+          52.0
+        ]
+      ],
+      "visible_extent_tiles": [
+        0.23438,
+        0.77344,
+        0.82031
+      ],
+      "colors_unique": 5,
+      "packed_hsl_lightness_range": [
+        18,
+        57
+      ],
+      "texture_ids": [],
+      "render_type_counts": {
+        "0": 133
+      },
+      "ambient": 15,
+      "contrast": 75,
+      "non_flat_shading": false,
+      "scale": [
+        128,
+        128,
+        128
+      ],
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "edge_incidence_counts": {
+        "2": 168,
+        "1": 63
+      },
+      "local_interchange_sha256": "771fad53b5a7398632a328e3b990e454d3a718e4711297d97f26b3c3a9873fc0",
+      "inspection": "3 native Rust views; 4 Blender topology views; preserved local only"
+    },
+    {
+      "object_id": 6098,
+      "name": "null",
+      "symbol": "dwarf_keldagrim_wall",
+      "model_ids": [
+        5884
+      ],
+      "shape": 0,
+      "rotation": 0,
+      "definition_tiles": [
+        1,
+        1
+      ],
+      "vertices": 90,
+      "faces": 114,
+      "bounds_native": [
+        [
+          -68.0,
+          -239.0,
+          -64.0
+        ],
+        [
+          64.0,
+          1.0,
+          64.0
+        ]
+      ],
+      "visible_extent_tiles": [
+        1.03125,
+        1.875,
+        1.0
+      ],
+      "colors_unique": 4,
+      "packed_hsl_lightness_range": [
+        18,
+        43
+      ],
+      "texture_ids": [],
+      "render_type_counts": {
+        "0": 114
+      },
+      "ambient": 0,
+      "contrast": 0,
+      "non_flat_shading": true,
+      "scale": [
+        128,
+        128,
+        128
+      ],
+      "offset": [
+        0,
+        1,
+        0
+      ],
+      "edge_incidence_counts": {
+        "2": 145,
+        "1": 52
+      },
+      "local_interchange_sha256": "2b0036bd0c69d7cb1a4817946b12860a8766b1a85ed8dc8cc90502765384189d",
+      "inspection": "3 native Rust views; 4 Blender topology views; preserved local only"
+    },
+    {
+      "object_id": 6155,
+      "name": "Shelves",
+      "symbol": "dwarf_keldagrim_shelves2",
+      "model_ids": [
+        2133
+      ],
+      "shape": 10,
+      "rotation": 0,
+      "definition_tiles": [
+        1,
+        1
+      ],
+      "vertices": 66,
+      "faces": 68,
+      "bounds_native": [
+        [
+          -61.0,
+          -175.0,
+          -63.0
+        ],
+        [
+          -10.0,
+          0.0,
+          63.0
+        ]
+      ],
+      "visible_extent_tiles": [
+        0.39844,
+        1.36719,
+        0.98438
+      ],
+      "colors_unique": 5,
+      "packed_hsl_lightness_range": [
+        16,
+        45
+      ],
+      "texture_ids": [],
+      "render_type_counts": {
+        "0": 68
+      },
+      "ambient": 0,
+      "contrast": 0,
+      "non_flat_shading": false,
+      "scale": [
+        128,
+        100,
+        128
+      ],
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "edge_incidence_counts": {
+        "1": 46,
+        "2": 79
+      },
+      "local_interchange_sha256": "a76ad703a5811dc12a9fd8f28e80d7d8dd932528233746763c2a89a937233f15",
+      "inspection": "3 native Rust views; 4 Blender topology views; preserved local only"
+    },
+    {
+      "object_id": 6189,
+      "name": "Furnace",
+      "symbol": "dwarf_keldagrim_furnace",
+      "model_ids": [
+        1192
+      ],
+      "shape": 10,
+      "rotation": 0,
+      "definition_tiles": [
+        2,
+        2
+      ],
+      "vertices": 136,
+      "faces": 158,
+      "bounds_native": [
+        [
+          -110.0,
+          -150.0,
+          -120.0
+        ],
+        [
+          110.0,
+          0.0,
+          110.0
+        ]
+      ],
+      "visible_extent_tiles": [
+        1.71875,
+        1.17188,
+        1.79688
+      ],
+      "colors_unique": 9,
+      "packed_hsl_lightness_range": [
+        0,
+        72
+      ],
+      "texture_ids": [],
+      "render_type_counts": {
+        "0": 126,
+        "1": 32
+      },
+      "ambient": 0,
+      "contrast": 0,
+      "non_flat_shading": true,
+      "scale": [
+        80,
+        80,
+        80
+      ],
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "edge_incidence_counts": {
+        "2": 187,
+        "1": 100
+      },
+      "local_interchange_sha256": "f6c99c95d8b0c3938a7d20a6071b775d2a2aa555ec52dd0a7ece71ca39ea8d35",
+      "inspection": "3 native Rust views; 4 Blender topology views; preserved local only"
+    },
+    {
+      "object_id": 6195,
+      "name": "Chair",
+      "symbol": "dwarf_keldagrim_chair_posh",
+      "model_ids": [
+        5934
+      ],
+      "shape": 10,
+      "rotation": 0,
+      "definition_tiles": [
+        1,
+        1
+      ],
+      "vertices": 71,
+      "faces": 129,
+      "bounds_native": [
+        [
+          -37.0,
+          -108.0,
+          -37.0
+        ],
+        [
+          37.0,
+          0.0,
+          29.0
+        ]
+      ],
+      "visible_extent_tiles": [
+        0.57812,
+        0.84375,
+        0.51562
+      ],
+      "colors_unique": 3,
+      "packed_hsl_lightness_range": [
+        14,
+        43
+      ],
+      "texture_ids": [],
+      "render_type_counts": {
+        "0": 125,
+        "1": 4
+      },
+      "ambient": 0,
+      "contrast": 0,
+      "non_flat_shading": false,
+      "scale": [
+        128,
+        128,
+        128
+      ],
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "edge_incidence_counts": {
+        "2": 157,
+        "3": 9,
+        "4": 4,
+        "1": 30
+      },
+      "local_interchange_sha256": "84fea60beb47a8b51c849a65ce19711cc6d600d493186dfa84bc7652689bcf3f",
+      "inspection": "3 native Rust views; 4 Blender topology views; preserved local only"
+    }
+  ]
+}

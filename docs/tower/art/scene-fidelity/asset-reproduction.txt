@@ -1,0 +1,1 @@
+SAMPLE_REPRODUCTION_PASS 58 original models and definitions; all native bytes and registry identical after fresh headless Blender generation
