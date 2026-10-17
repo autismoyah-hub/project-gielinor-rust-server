@@ -2625,7 +2625,7 @@ mod swamp_tar_binding_tests {
 }
 
 /// Explicit target239.1 three-to-four dose mappings, Wiki chemistry rev15338661.
-const CHEMISTRY_DOSES: [(&str,&str);26] = [
+const CHEMISTRY_DOSES: [(&str,&str);27] = [
     ("3dose1attack", "4dose1attack"),
     ("3doseantipoison", "4doseantipoison"),
     ("3dose1strength", "strength4"),
@@ -2650,6 +2650,7 @@ const CHEMISTRY_DOSES: [(&str,&str);26] = [
     ("3dosepotionofsaradomin", "4dosepotionofsaradomin"),
     ("3dose1prayer_regeneration", "4dose1prayer_regeneration"),
     ("3dosegoading", "4dosegoading"),
+    ("3doseancientbrew", "4doseancientbrew"),
     ("3dosebastion", "4dosebastion"),
     ("3dosebattlemage", "4dosebattlemage")
 ];
@@ -2692,7 +2693,7 @@ mod chemistry_binding_tests {
         for mode in 0..18 {
             let (mut names,mut defs)=fixture();
             match mode {
-                0=>{let map=finished_potion_chemistry(&names,&[("wear_op1".into(),451)].into(),&defs).unwrap();assert_eq!(map.len(),26);for i in 0..26{assert_eq!(map[&(1000+i*2)].extra_output,1001+i*2);}continue;},
+                0=>{let map=finished_potion_chemistry(&names,&[("wear_op1".into(),451)].into(),&defs).unwrap();assert_eq!(map.len(),27);for i in 0..27{assert_eq!(map[&(1000+i*2)].extra_output,1001+i*2);}continue;},
                 1=>defs.items.get_mut(&21163).unwrap().wear[0]=0,
                 2=>defs.items.get_mut(&21163).unwrap().members=false,
                 3=>defs.items.get_mut(&21163).unwrap().inventory_ops[3]=None,
@@ -3053,5 +3054,33 @@ mod forgotten_brew_binding_tests {
         for (i,r) in recipes.iter().enumerate() {let n=i as i32+1;assert_eq!((r.base,r.secondary,r.output,r.doses,r.secondary_per_dose,r.level,r.ticks),(26348-2*n,27616,27641-3*n,n as u8,20,91,3));assert_eq!(r.base_fine_xp(),[360,720,1080,1450][i]);}
         defs.items.get_mut(&27629).unwrap().inventory_ops[0]=None;assert!(forgotten_brew_upgrades(&symbols,&defs).is_err());
         defs.items.get_mut(&27629).unwrap().inventory_ops[0]=Some("Drink".into());defs.items.get_mut(&27616).unwrap().stackable=false;assert!(forgotten_brew_upgrades(&symbols,&defs).is_err());
+    }
+}
+
+/// Wiki Ancient brew15342079: one Nihil dust,85Herblore,190XP,three-dose output.
+pub fn ancient_brew_recipe(objects:&Symbols,defs:&Definitions)->Result<gielinor_world::finished_potions::Recipe,String> {
+    let mut seen=std::collections::BTreeSet::new();
+    let mut bind=|name:&str,stackable:bool,drink:bool|->Result<i32,String>{
+        let id=*objects.get(name).ok_or_else(||format!("Missing Ancient brew symbol {name}"))?;
+        let item=defs.items.get(&(id as u32)).ok_or_else(||format!("Missing Ancient brew definition {name}"))?;
+        if id<0 || !seen.insert(id) || item.stackable!=stackable || !item.members || item.cert.template!=0 || item.placeholder.template!=0 || item.dummy==1 || (item.inventory_ops[0].as_deref()==Some("Drink"))!=drink || item.inventory_ops.iter().any(|op|op.as_deref()==Some("Clean")) {
+            return Err(format!("Invalid Ancient brew definition {name}"));
+        }
+        Ok(id)
+    };
+    Ok(gielinor_world::finished_potions::Recipe{unfinished:bind("dwarfweedvial",false,false)?,secondary:bind("nihil_dust",true,false)?,output:bind("3doseancientbrew",false,true)?,level:85,boostable:true,base_fine_xp:1900})
+}
+
+#[cfg(test)]
+mod ancient_brew_binding_tests {
+    use super::*;
+    #[test]
+    fn ancient_brew_requires_stackable_dust_ordinary_vial_and_drink_output() {
+        let symbols:Symbols=[("dwarfweedvial".into(),109),("nihil_dust".into(),26368),("3doseancientbrew".into(),26342)].into();
+        let mut defs=Definitions{inventories:Default::default(),locations:Default::default(),npcs:Default::default(),items:Default::default(),varbits:Default::default(),varps:Default::default(),stats:Default::default()};
+        for id in [109,26368,26342] {let mut v=gielinor_cache::definitions::ItemType::decode(&[16,0]).unwrap();v.stackable=id==26368;if id==26342{v.inventory_ops[0]=Some("Drink".into());}defs.items.insert(id,v);}
+        let recipe=ancient_brew_recipe(&symbols,&defs).unwrap();assert_eq!((recipe.unfinished,recipe.secondary,recipe.output,recipe.level,recipe.base_fine_xp),(109,26368,26342,85,1900));
+        defs.items.get_mut(&26368).unwrap().stackable=false;assert!(ancient_brew_recipe(&symbols,&defs).is_err());
+        defs.items.get_mut(&26368).unwrap().stackable=true;defs.items.get_mut(&26342).unwrap().inventory_ops[0]=None;assert!(ancient_brew_recipe(&symbols,&defs).is_err());
     }
 }

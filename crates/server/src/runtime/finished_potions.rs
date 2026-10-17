@@ -17,8 +17,9 @@ impl<B: AccountBackend> Runtime<B> {
             self.world.herb_cleaning.as_ref().ok_or_else(|| {
                 io::Error::other("Configure validated Herblore quest binding first")
             })?;
-        let recipes = crate::content::finished_potions(names.group("obj"), &self.definitions)
+        let mut recipes = crate::content::finished_potions(names.group("obj"), &self.definitions)
             .map_err(io::Error::other)?;
+        recipes.push(crate::content::ancient_brew_recipe(names.group("obj"), &self.definitions).map_err(io::Error::other)?);
         let animation =
             u16::try_from(names.id("seq", "human_herbing_vial")?).map_err(io::Error::other)?;
         self.world.finished_potions = Some(gielinor_world::finished_potions::Config {

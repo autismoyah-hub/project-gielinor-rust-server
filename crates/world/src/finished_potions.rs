@@ -115,7 +115,7 @@ impl Job {
             .any(|&(s, id)| {
                 inventory
                     .get(s)
-                    .is_none_or(|i| i.id != id || i.count != 1 || i.vars != 0)
+                    .is_none_or(|i| i.id != id || i.count <= 0 || (i.count != 1 && (s != self.secondary_slot || !catalog.stackable.contains(&id))) || i.vars != 0)
             })
         {
             return Outcome::Stale;
@@ -209,6 +209,25 @@ mod tests {
             Catalog::default(),
             stats,
         )
+    }
+    #[test]
+    fn ancient_brew_selected_stack_debits_one_and_never_accepts_stacked_vials() {
+        let recipe=Recipe{unfinished:109,secondary:26368,output:26342,level:85,boostable:true,base_fine_xp:1900};
+        for reverse in [false,true] { for count in [1,2,100] {
+            let (job,mut inv,mut catalog,mut stats)=fixture(recipe,reverse);catalog.stackable.insert(recipe.secondary);
+            inv.restore_slot(job.secondary_slot,Some(Item{id:recipe.secondary,count,vars:0})).unwrap();
+            let fine=stats.fine_xp(15);let pots=inv.slots()[2..].to_vec();
+            assert!(matches!(job.complete(&mut inv,&catalog,&mut stats,true,true,500),Outcome::Made(_)));
+            assert_eq!(stats.fine_xp(15),fine+9500);
+            assert_eq!(inv.slots().iter().flatten().find(|i|i.id==recipe.secondary).map(|i|i.count).unwrap_or(0),count-1);
+            assert_eq!(inv.slots().iter().flatten().filter(|i|i.id==recipe.output).count(),1);assert_eq!(&inv.slots()[2..],pots);
+        }}
+        for stackable in [false,true] {
+            let (job,mut inv,mut catalog,mut stats)=fixture(recipe,false);if stackable{catalog.stackable.insert(recipe.secondary);}
+            let slot=if stackable{job.unfinished_slot}else{job.secondary_slot};let id=if stackable{recipe.unfinished}else{recipe.secondary};
+            inv.restore_slot(slot,Some(Item{id,count:2,vars:0})).unwrap();let state=(inv.clone(),stats.clone());
+            assert_eq!(job.complete(&mut inv,&catalog,&mut stats,true,true,500),Outcome::Stale);assert_eq!((inv,stats),state);
+        }
     }
     fn profiles() -> [Recipe; 29] {
         [

@@ -167,9 +167,16 @@ pub(super) fn complete(
             .iter()
             .position(|v| v.is_some_and(|i| i.id == id && i.count == 1 && i.vars == 0))
     };
+    // A stackable secondary stays pinned to the selected stack across repeats.
+    // Ordinary individual secondaries retain the established first-valid search.
+    let secondary_slot = if catalog.stackable.contains(&pending.job.recipe.secondary) {
+        p.data.inventory.get(pending.job.secondary_slot).filter(|i|
+            i.id == pending.job.recipe.secondary && i.count > 0 && i.vars == 0)
+            .map(|_| pending.job.secondary_slot)
+    } else { slot(pending.job.recipe.secondary) };
     let (Some(unfinished_slot), Some(secondary_slot)) = (
         slot(pending.job.recipe.unfinished),
-        slot(pending.job.recipe.secondary),
+        secondary_slot,
     ) else {
         return;
     };
@@ -298,6 +305,22 @@ mod tests {
             .flatten()
             .filter(|i| i.id == 175)
             .count()
+    }
+    #[test]
+    fn stackable_secondaries_repeat_from_selected_stack_and_stop_if_it_changes() {
+        for stale in [false,true] {
+            let (mut w,a,r)=fixture();w.object_types.stackable.insert(235);
+            w.data_mut(a).unwrap().inventory.restore_slot(3,Some(Item{id:235,count:3,vars:0})).unwrap();
+            let request=choose(&mut w,a,r);w.start_finished_potion(a,request,0,28).unwrap();
+            for _ in 0..3 {w.tick().unwrap();}assert_eq!(products(&w,a),1);
+            assert_eq!(w.data(a).unwrap().inventory.get(3).unwrap().count,2);
+            if stale {w.data_mut(a).unwrap().inventory.restore_slot(3,None).unwrap();}
+            for _ in 0..4 {w.tick().unwrap();}
+            assert_eq!(products(&w,a),if stale{1}else{2});
+            assert_eq!(w.data(a).unwrap().inventory.get(1).unwrap(),Item{id:235,count:1,vars:0});
+            assert_eq!(w.data(a).unwrap().stats.fine_xp(15),if stale{5756}else{7631});
+            if !stale {assert_eq!(w.data(a).unwrap().inventory.get(3).unwrap().count,1);}
+        }
     }
     #[test]
     fn selected_pair_and_repeats_take_two_ticks_with_exact_fractional_rewards() {
