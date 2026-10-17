@@ -1,0 +1,5209 @@
+{
+  "title": "The Fallen Cinderworks",
+  "stage": "Offline artistic proposal; not gameplay-tested content",
+  "revision": 1,
+  "origin": [
+    24,
+    24
+  ],
+  "scene_size": [
+    96,
+    112
+  ],
+  "tile_units": 128,
+  "areas": [
+    {
+      "key": "arrival",
+      "title": "The Broken Processional",
+      "polygon": [
+        [
+          60,
+          31
+        ],
+        [
+          74,
+          31
+        ],
+        [
+          79,
+          36
+        ],
+        [
+          76,
+          43
+        ],
+        [
+          70,
+          47
+        ],
+        [
+          62,
+          46
+        ],
+        [
+          57,
+          40
+        ]
+      ],
+      "material": "paving",
+      "center": [
+        67,
+        38
+      ]
+    },
+    {
+      "key": "sanctuary",
+      "title": "The Fourfold Refuge",
+      "polygon": [
+        [
+          56,
+          47
+        ],
+        [
+          72,
+          47
+        ],
+        [
+          79,
+          54
+        ],
+        [
+          79,
+          60
+        ],
+        [
+          71,
+          68
+        ],
+        [
+          59,
+          68
+        ],
+        [
+          52,
+          61
+        ],
+        [
+          52,
+          54
+        ]
+      ],
+      "material": "sanctuary_paving",
+      "center": [
+        66,
+        57
+      ]
+    },
+    {
+      "key": "workshop",
+      "title": "The Brass Service Hall",
+      "polygon": [
+        [
+          32,
+          57
+        ],
+        [
+          42,
+          54
+        ],
+        [
+          50,
+          59
+        ],
+        [
+          52,
+          69
+        ],
+        [
+          47,
+          77
+        ],
+        [
+          33,
+          78
+        ],
+        [
+          29,
+          71
+        ],
+        [
+          29,
+          63
+        ]
+      ],
+      "material": "forge_paving",
+      "center": [
+        41,
+        67
+      ]
+    },
+    {
+      "key": "quarry",
+      "title": "The Fractured Haulage Court",
+      "polygon": [
+        [
+          29,
+          79
+        ],
+        [
+          37,
+          76
+        ],
+        [
+          44,
+          81
+        ],
+        [
+          47,
+          89
+        ],
+        [
+          40,
+          96
+        ],
+        [
+          28,
+          94
+        ],
+        [
+          25,
+          88
+        ]
+      ],
+      "material": "ash_paving",
+      "center": [
+        36,
+        86
+      ]
+    },
+    {
+      "key": "waterworks",
+      "title": "The Headgate and Wheel",
+      "polygon": [
+        [
+          83,
+          54
+        ],
+        [
+          95,
+          51
+        ],
+        [
+          103,
+          59
+        ],
+        [
+          104,
+          71
+        ],
+        [
+          98,
+          79
+        ],
+        [
+          87,
+          80
+        ],
+        [
+          79,
+          73
+        ],
+        [
+          79,
+          63
+        ]
+      ],
+      "material": "paving",
+      "center": [
+        91,
+        66
+      ]
+    },
+    {
+      "key": "garden",
+      "title": "The Breached Root Cistern",
+      "polygon": [
+        [
+          93,
+          79
+        ],
+        [
+          104,
+          78
+        ],
+        [
+          111,
+          85
+        ],
+        [
+          110,
+          94
+        ],
+        [
+          102,
+          99
+        ],
+        [
+          93,
+          94
+        ],
+        [
+          90,
+          87
+        ]
+      ],
+      "material": "garden_soil",
+      "center": [
+        101,
+        88
+      ]
+    },
+    {
+      "key": "vents",
+      "title": "The Cinder Lung",
+      "polygon": [
+        [
+          77,
+          83
+        ],
+        [
+          87,
+          82
+        ],
+        [
+          94,
+          89
+        ],
+        [
+          91,
+          98
+        ],
+        [
+          83,
+          103
+        ],
+        [
+          74,
+          99
+        ],
+        [
+          70,
+          91
+        ]
+      ],
+      "material": "ash_paving",
+      "center": [
+        82,
+        92
+      ]
+    },
+    {
+      "key": "narthex",
+      "title": "The Last Cooling Gallery",
+      "polygon": [
+        [
+          59,
+          82
+        ],
+        [
+          67,
+          82
+        ],
+        [
+          72,
+          87
+        ],
+        [
+          71,
+          94
+        ],
+        [
+          65,
+          99
+        ],
+        [
+          57,
+          95
+        ],
+        [
+          55,
+          88
+        ]
+      ],
+      "material": "paving",
+      "center": [
+        63,
+        90
+      ]
+    },
+    {
+      "key": "foundry",
+      "title": "The Bound Crucible",
+      "polygon": [
+        [
+          54,
+          98
+        ],
+        [
+          70,
+          98
+        ],
+        [
+          77,
+          105
+        ],
+        [
+          77,
+          116
+        ],
+        [
+          70,
+          123
+        ],
+        [
+          54,
+          123
+        ],
+        [
+          47,
+          116
+        ],
+        [
+          47,
+          105
+        ]
+      ],
+      "material": "forge_paving",
+      "center": [
+        62,
+        110
+      ]
+    },
+    {
+      "key": "ascent",
+      "title": "The Upper Bearing",
+      "polygon": [
+        [
+          56,
+          122
+        ],
+        [
+          69,
+          122
+        ],
+        [
+          74,
+          127
+        ],
+        [
+          72,
+          132
+        ],
+        [
+          58,
+          133
+        ],
+        [
+          52,
+          129
+        ]
+      ],
+      "material": "sanctuary_paving",
+      "center": [
+        64,
+        127
+      ]
+    }
+  ],
+  "paths": [
+    {
+      "points": [
+        [
+          67,
+          28
+        ],
+        [
+          67,
+          37
+        ],
+        [
+          66,
+          48
+        ]
+      ],
+      "width": 5
+    },
+    {
+      "points": [
+        [
+          54,
+          58
+        ],
+        [
+          49,
+          59
+        ],
+        [
+          46,
+          64
+        ]
+      ],
+      "width": 4
+    },
+    {
+      "points": [
+        [
+          77,
+          57
+        ],
+        [
+          83,
+          58
+        ],
+        [
+          87,
+          62
+        ]
+      ],
+      "width": 4
+    },
+    {
+      "points": [
+        [
+          39,
+          74
+        ],
+        [
+          37,
+          80
+        ],
+        [
+          36,
+          86
+        ]
+      ],
+      "width": 4
+    },
+    {
+      "points": [
+        [
+          67,
+          65
+        ],
+        [
+          65,
+          75
+        ],
+        [
+          63,
+          86
+        ]
+      ],
+      "width": 5
+    },
+    {
+      "points": [
+        [
+          48,
+          72
+        ],
+        [
+          53,
+          77
+        ],
+        [
+          63,
+          80
+        ],
+        [
+          65,
+          85
+        ]
+      ],
+      "width": 4
+    },
+    {
+      "points": [
+        [
+          91,
+          75
+        ],
+        [
+          95,
+          81
+        ],
+        [
+          98,
+          85
+        ]
+      ],
+      "width": 4
+    },
+    {
+      "points": [
+        [
+          86,
+          77
+        ],
+        [
+          84,
+          83
+        ],
+        [
+          82,
+          88
+        ]
+      ],
+      "width": 4
+    },
+    {
+      "points": [
+        [
+          68,
+          76
+        ],
+        [
+          75,
+          78
+        ],
+        [
+          79,
+          85
+        ]
+      ],
+      "width": 4
+    },
+    {
+      "points": [
+        [
+          74,
+          96
+        ],
+        [
+          70,
+          98
+        ],
+        [
+          68,
+          102
+        ]
+      ],
+      "width": 4
+    },
+    {
+      "points": [
+        [
+          63,
+          94
+        ],
+        [
+          62,
+          100
+        ],
+        [
+          62,
+          105
+        ]
+      ],
+      "width": 5
+    },
+    {
+      "points": [
+        [
+          39,
+          93
+        ],
+        [
+          43,
+          98
+        ],
+        [
+          49,
+          104
+        ]
+      ],
+      "width": 3
+    },
+    {
+      "points": [
+        [
+          70,
+          120
+        ],
+        [
+          70,
+          125
+        ],
+        [
+          66,
+          127
+        ]
+      ],
+      "width": 4
+    }
+  ],
+  "placements": [
+    {
+      "asset": "curtain_arrival",
+      "id": 63058,
+      "x": 55,
+      "z": 30,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        25,
+        18
+      ],
+      "story": ""
+    },
+    {
+      "asset": "curtain_sanctuary",
+      "id": 63059,
+      "x": 50,
+      "z": 46,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        31,
+        32
+      ],
+      "story": ""
+    },
+    {
+      "asset": "curtain_workshop",
+      "id": 63060,
+      "x": 28,
+      "z": 53,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        28,
+        28
+      ],
+      "story": ""
+    },
+    {
+      "asset": "curtain_quarry",
+      "id": 63061,
+      "x": 24,
+      "z": 74,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        26,
+        31
+      ],
+      "story": ""
+    },
+    {
+      "asset": "curtain_waterworks",
+      "id": 63062,
+      "x": 78,
+      "z": 50,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        27,
+        28
+      ],
+      "story": ""
+    },
+    {
+      "asset": "curtain_garden",
+      "id": 63063,
+      "x": 86,
+      "z": 73,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        26,
+        27
+      ],
+      "story": ""
+    },
+    {
+      "asset": "curtain_vents",
+      "id": 63064,
+      "x": 70,
+      "z": 75,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        23,
+        31
+      ],
+      "story": ""
+    },
+    {
+      "asset": "curtain_narthex",
+      "id": 63065,
+      "x": 52,
+      "z": 73,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        25,
+        26
+      ],
+      "story": ""
+    },
+    {
+      "asset": "curtain_foundry",
+      "id": 63066,
+      "x": 46,
+      "z": 97,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        32,
+        27
+      ],
+      "story": ""
+    },
+    {
+      "asset": "curtain_ascent",
+      "id": 63067,
+      "x": 51,
+      "z": 115,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        27,
+        19
+      ],
+      "story": ""
+    },
+    {
+      "asset": "great_arch",
+      "id": 63012,
+      "x": 64,
+      "z": 32,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        6,
+        2
+      ],
+      "story": "The once-grand worker entrance still frames the refuge beyond."
+    },
+    {
+      "asset": "broken_arch",
+      "id": 63011,
+      "x": 60,
+      "z": 40,
+      "shape": 10,
+      "rotation": 1,
+      "footprint": [
+        1,
+        4
+      ],
+      "story": "Fallen stones mark an older collapsed side entry."
+    },
+    {
+      "asset": "rubble",
+      "id": 63022,
+      "x": 60,
+      "z": 34,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "rubble",
+      "id": 63022,
+      "x": 74,
+      "z": 35,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "rubble",
+      "id": 63022,
+      "x": 59,
+      "z": 39,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "brazier",
+      "id": 63030,
+      "x": 62,
+      "z": 37,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "brazier",
+      "id": 63030,
+      "x": 73,
+      "z": 38,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "banner",
+      "id": 63031,
+      "x": 71,
+      "z": 42,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "scale_figure",
+      "id": 63032,
+      "x": 67,
+      "z": 40,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "sanctuary_seal",
+      "id": 63036,
+      "x": 63,
+      "z": 54,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        7,
+        7
+      ],
+      "story": ""
+    },
+    {
+      "asset": "restoration_font",
+      "id": 63013,
+      "x": 64,
+      "z": 55,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        5,
+        5
+      ],
+      "story": ""
+    },
+    {
+      "asset": "bank_counter",
+      "id": 63039,
+      "x": 55,
+      "z": 56,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        3,
+        2
+      ],
+      "story": "West niche: banking, guidance and a worker ledger."
+    },
+    {
+      "asset": "workbench",
+      "id": 63019,
+      "x": 72,
+      "z": 60,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        1
+      ],
+      "story": "Recovery and restoration alcove outside the circulation ring."
+    },
+    {
+      "asset": "coolant_trough",
+      "id": 63040,
+      "x": 70,
+      "z": 51,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        3,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "pillar",
+      "id": 63008,
+      "x": 55,
+      "z": 51,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "pillar",
+      "id": 63008,
+      "x": 75,
+      "z": 53,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "pillar",
+      "id": 63008,
+      "x": 56,
+      "z": 63,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "pillar",
+      "id": 63008,
+      "x": 73,
+      "z": 64,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "banner",
+      "id": 63031,
+      "x": 58,
+      "z": 53,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "banner",
+      "id": 63031,
+      "x": 73,
+      "z": 62,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "arch",
+      "id": 63010,
+      "x": 64,
+      "z": 46,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        4,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "arch",
+      "id": 63010,
+      "x": 51,
+      "z": 57,
+      "shape": 10,
+      "rotation": 1,
+      "footprint": [
+        1,
+        4
+      ],
+      "story": ""
+    },
+    {
+      "asset": "arch",
+      "id": 63010,
+      "x": 77,
+      "z": 56,
+      "shape": 10,
+      "rotation": 1,
+      "footprint": [
+        1,
+        4
+      ],
+      "story": ""
+    },
+    {
+      "asset": "arch",
+      "id": 63010,
+      "x": 63,
+      "z": 67,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        4,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "brazier",
+      "id": 63030,
+      "x": 60,
+      "z": 48,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "brazier",
+      "id": 63030,
+      "x": 71,
+      "z": 48,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "brazier",
+      "id": 63030,
+      "x": 58,
+      "z": 65,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "brazier",
+      "id": 63030,
+      "x": 71,
+      "z": 65,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "scale_figure",
+      "id": 63032,
+      "x": 61,
+      "z": 57,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "furnace",
+      "id": 63014,
+      "x": 32,
+      "z": 68,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        4,
+        4
+      ],
+      "story": "The old smelting hearth receives ore directly from the haulage court."
+    },
+    {
+      "asset": "furnace",
+      "id": 63014,
+      "x": 39,
+      "z": 73,
+      "shape": 10,
+      "rotation": 2,
+      "footprint": [
+        4,
+        4
+      ],
+      "story": "A paired casting hearth has cooled to a dull red."
+    },
+    {
+      "asset": "pressure_pump",
+      "id": 63017,
+      "x": 46,
+      "z": 70,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        3
+      ],
+      "story": ""
+    },
+    {
+      "asset": "anvil",
+      "id": 63020,
+      "x": 44,
+      "z": 64,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "anvil",
+      "id": 63020,
+      "x": 47,
+      "z": 66,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "workbench",
+      "id": 63019,
+      "x": 32,
+      "z": 60,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "workbench",
+      "id": 63019,
+      "x": 36,
+      "z": 57,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "workbench",
+      "id": 63019,
+      "x": 47,
+      "z": 60,
+      "shape": 10,
+      "rotation": 1,
+      "footprint": [
+        1,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "stores",
+      "id": 63024,
+      "x": 31,
+      "z": 64,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "stores",
+      "id": 63024,
+      "x": 36,
+      "z": 63,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "stores",
+      "id": 63024,
+      "x": 44,
+      "z": 74,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "timber_stack",
+      "id": 63025,
+      "x": 30,
+      "z": 66,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "ore_cart",
+      "id": 63038,
+      "x": 39,
+      "z": 66,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "track",
+      "id": 63037,
+      "x": 37,
+      "z": 74,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "track",
+      "id": 63037,
+      "x": 37,
+      "z": 76,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "track",
+      "id": 63037,
+      "x": 37,
+      "z": 78,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "track",
+      "id": 63037,
+      "x": 37,
+      "z": 80,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "track",
+      "id": 63037,
+      "x": 37,
+      "z": 82,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "track",
+      "id": 63037,
+      "x": 37,
+      "z": 84,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "track",
+      "id": 63037,
+      "x": 37,
+      "z": 86,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "ore_cart",
+      "id": 63038,
+      "x": 36,
+      "z": 81,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "ore_outcrop",
+      "id": 63023,
+      "x": 29,
+      "z": 84,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "ore_outcrop",
+      "id": 63023,
+      "x": 28,
+      "z": 88,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "ore_outcrop",
+      "id": 63023,
+      "x": 32,
+      "z": 91,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "ore_outcrop",
+      "id": 63023,
+      "x": 41,
+      "z": 85,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "ore_outcrop",
+      "id": 63023,
+      "x": 41,
+      "z": 89,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "rubble",
+      "id": 63022,
+      "x": 26,
+      "z": 86,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "rubble",
+      "id": 63022,
+      "x": 30,
+      "z": 93,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "rubble",
+      "id": 63022,
+      "x": 42,
+      "z": 93,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "broken_arch",
+      "id": 63011,
+      "x": 41,
+      "z": 97,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        4,
+        1
+      ],
+      "story": "Collapsed maintenance return; future repair shortcut, not a required route."
+    },
+    {
+      "asset": "rubble",
+      "id": 63022,
+      "x": 43,
+      "z": 98,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "pillar",
+      "id": 63008,
+      "x": 31,
+      "z": 58,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "pillar",
+      "id": 63008,
+      "x": 49,
+      "z": 69,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "pillar",
+      "id": 63008,
+      "x": 33,
+      "z": 76,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "scale_figure",
+      "id": 63032,
+      "x": 43,
+      "z": 68,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "casting_hoist",
+      "id": 63041,
+      "x": 40,
+      "z": 69,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        4,
+        3
+      ],
+      "story": ""
+    },
+    {
+      "asset": "supply_rack",
+      "id": 63045,
+      "x": 30,
+      "z": 61,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "supply_rack",
+      "id": 63045,
+      "x": 34,
+      "z": 57,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "supply_rack",
+      "id": 63045,
+      "x": 46,
+      "z": 74,
+      "shape": 10,
+      "rotation": 1,
+      "footprint": [
+        1,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "supply_rack",
+      "id": 63045,
+      "x": 56,
+      "z": 60,
+      "shape": 10,
+      "rotation": 1,
+      "footprint": [
+        1,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "supply_rack",
+      "id": 63045,
+      "x": 96,
+      "z": 76,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "rock_buttress",
+      "id": 63042,
+      "x": 27,
+      "z": 82,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        4,
+        3
+      ],
+      "story": ""
+    },
+    {
+      "asset": "rock_buttress",
+      "id": 63042,
+      "x": 28,
+      "z": 90,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        4,
+        3
+      ],
+      "story": ""
+    },
+    {
+      "asset": "rock_buttress",
+      "id": 63042,
+      "x": 34,
+      "z": 93,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        4,
+        3
+      ],
+      "story": ""
+    },
+    {
+      "asset": "rock_buttress",
+      "id": 63042,
+      "x": 42,
+      "z": 90,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        4,
+        3
+      ],
+      "story": ""
+    },
+    {
+      "asset": "rock_buttress",
+      "id": 63042,
+      "x": 40,
+      "z": 78,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        4,
+        3
+      ],
+      "story": ""
+    },
+    {
+      "asset": "rock_buttress",
+      "id": 63042,
+      "x": 106,
+      "z": 94,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        4,
+        3
+      ],
+      "story": ""
+    },
+    {
+      "asset": "rock_buttress",
+      "id": 63042,
+      "x": 108,
+      "z": 82,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        4,
+        3
+      ],
+      "story": ""
+    },
+    {
+      "asset": "waterwheel",
+      "id": 63016,
+      "x": 90,
+      "z": 63,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        4,
+        4
+      ],
+      "story": "Coolant drives the wheel before feeding the western pump bank."
+    },
+    {
+      "asset": "bridge",
+      "id": 63028,
+      "x": 90,
+      "z": 57,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        4,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "bridge",
+      "id": 63028,
+      "x": 90,
+      "z": 69,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        4,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "bridge",
+      "id": 63028,
+      "x": 90,
+      "z": 76,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        4,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "pressure_pump",
+      "id": 63017,
+      "x": 83,
+      "z": 64,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        3
+      ],
+      "story": ""
+    },
+    {
+      "asset": "pressure_pump",
+      "id": 63017,
+      "x": 85,
+      "z": 70,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        3
+      ],
+      "story": ""
+    },
+    {
+      "asset": "pressure_pump",
+      "id": 63017,
+      "x": 98,
+      "z": 63,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        3
+      ],
+      "story": ""
+    },
+    {
+      "asset": "pipe",
+      "id": 63018,
+      "x": 84,
+      "z": 60,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "pipe",
+      "id": 63018,
+      "x": 84,
+      "z": 62,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "pipe",
+      "id": 63018,
+      "x": 86,
+      "z": 74,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "pipe",
+      "id": 63018,
+      "x": 86,
+      "z": 76,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "coolant_trough",
+      "id": 63040,
+      "x": 96,
+      "z": 72,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        3,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "workbench",
+      "id": 63019,
+      "x": 99,
+      "z": 59,
+      "shape": 10,
+      "rotation": 1,
+      "footprint": [
+        1,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "stores",
+      "id": 63024,
+      "x": 99,
+      "z": 68,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "railing",
+      "id": 63034,
+      "x": 90,
+      "z": 54,
+      "shape": 10,
+      "rotation": 1,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "railing",
+      "id": 63034,
+      "x": 93,
+      "z": 54,
+      "shape": 10,
+      "rotation": 1,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "railing",
+      "id": 63034,
+      "x": 90,
+      "z": 57,
+      "shape": 10,
+      "rotation": 1,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "railing",
+      "id": 63034,
+      "x": 93,
+      "z": 57,
+      "shape": 10,
+      "rotation": 1,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "railing",
+      "id": 63034,
+      "x": 90,
+      "z": 60,
+      "shape": 10,
+      "rotation": 1,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "railing",
+      "id": 63034,
+      "x": 93,
+      "z": 60,
+      "shape": 10,
+      "rotation": 1,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "railing",
+      "id": 63034,
+      "x": 90,
+      "z": 63,
+      "shape": 10,
+      "rotation": 1,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "railing",
+      "id": 63034,
+      "x": 93,
+      "z": 63,
+      "shape": 10,
+      "rotation": 1,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "railing",
+      "id": 63034,
+      "x": 90,
+      "z": 66,
+      "shape": 10,
+      "rotation": 1,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "railing",
+      "id": 63034,
+      "x": 93,
+      "z": 66,
+      "shape": 10,
+      "rotation": 1,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "railing",
+      "id": 63034,
+      "x": 90,
+      "z": 69,
+      "shape": 10,
+      "rotation": 1,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "railing",
+      "id": 63034,
+      "x": 93,
+      "z": 69,
+      "shape": 10,
+      "rotation": 1,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "railing",
+      "id": 63034,
+      "x": 90,
+      "z": 72,
+      "shape": 10,
+      "rotation": 1,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "railing",
+      "id": 63034,
+      "x": 93,
+      "z": 72,
+      "shape": 10,
+      "rotation": 1,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "railing",
+      "id": 63034,
+      "x": 90,
+      "z": 75,
+      "shape": 10,
+      "rotation": 1,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "railing",
+      "id": 63034,
+      "x": 93,
+      "z": 75,
+      "shape": 10,
+      "rotation": 1,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "railing",
+      "id": 63034,
+      "x": 90,
+      "z": 78,
+      "shape": 10,
+      "rotation": 1,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "grand_pillar",
+      "id": 63009,
+      "x": 88,
+      "z": 52,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "pillar",
+      "id": 63008,
+      "x": 101,
+      "z": 70,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "scale_figure",
+      "id": 63032,
+      "x": 87,
+      "z": 67,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "root_tree",
+      "id": 63026,
+      "x": 105,
+      "z": 82,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        3,
+        3
+      ],
+      "story": ""
+    },
+    {
+      "asset": "root_tree",
+      "id": 63026,
+      "x": 107,
+      "z": 90,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        3,
+        3
+      ],
+      "story": ""
+    },
+    {
+      "asset": "root_tree",
+      "id": 63026,
+      "x": 94,
+      "z": 92,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        3,
+        3
+      ],
+      "story": ""
+    },
+    {
+      "asset": "fungus",
+      "id": 63027,
+      "x": 96,
+      "z": 84,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "fungus",
+      "id": 63027,
+      "x": 104,
+      "z": 94,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "fungus",
+      "id": 63027,
+      "x": 92,
+      "z": 86,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "fungus",
+      "id": 63027,
+      "x": 106,
+      "z": 87,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "timber_stack",
+      "id": 63025,
+      "x": 103,
+      "z": 80,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "rubble",
+      "id": 63022,
+      "x": 108,
+      "z": 92,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "rubble",
+      "id": 63022,
+      "x": 94,
+      "z": 95,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "long_bridge",
+      "id": 63057,
+      "x": 97,
+      "z": 87,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        6,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "pipe",
+      "id": 63018,
+      "x": 68,
+      "z": 75,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "pipe",
+      "id": 63018,
+      "x": 60,
+      "z": 79,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "pipe",
+      "id": 63018,
+      "x": 60,
+      "z": 84,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "pipe",
+      "id": 63018,
+      "x": 68,
+      "z": 84,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "pipe",
+      "id": 63018,
+      "x": 60,
+      "z": 90,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "pipe",
+      "id": 63018,
+      "x": 68,
+      "z": 90,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "pillar",
+      "id": 63008,
+      "x": 60,
+      "z": 85,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "pillar",
+      "id": 63008,
+      "x": 67,
+      "z": 85,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "pillar",
+      "id": 63008,
+      "x": 57,
+      "z": 91,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "pillar",
+      "id": 63008,
+      "x": 69,
+      "z": 91,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "coolant_trough",
+      "id": 63040,
+      "x": 56,
+      "z": 87,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        3,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "coolant_trough",
+      "id": 63040,
+      "x": 67,
+      "z": 93,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        3,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "arch",
+      "id": 63010,
+      "x": 61,
+      "z": 81,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        4,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "arch",
+      "id": 63010,
+      "x": 60,
+      "z": 95,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        4,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "brazier",
+      "id": 63030,
+      "x": 58,
+      "z": 83,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "brazier",
+      "id": 63030,
+      "x": 68,
+      "z": 93,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "vent",
+      "id": 63021,
+      "x": 74,
+      "z": 87,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "vent",
+      "id": 63021,
+      "x": 87,
+      "z": 86,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "vent",
+      "id": 63021,
+      "x": 88,
+      "z": 95,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "vent",
+      "id": 63021,
+      "x": 75,
+      "z": 97,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "pressure_pump",
+      "id": 63017,
+      "x": 72,
+      "z": 90,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        3
+      ],
+      "story": ""
+    },
+    {
+      "asset": "pressure_pump",
+      "id": 63017,
+      "x": 90,
+      "z": 90,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        3
+      ],
+      "story": ""
+    },
+    {
+      "asset": "pressure_pump",
+      "id": 63017,
+      "x": 81,
+      "z": 99,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        3
+      ],
+      "story": ""
+    },
+    {
+      "asset": "rubble",
+      "id": 63022,
+      "x": 73,
+      "z": 95,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "rubble",
+      "id": 63022,
+      "x": 89,
+      "z": 94,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "rubble",
+      "id": 63022,
+      "x": 76,
+      "z": 84,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "metal_plate",
+      "id": 63035,
+      "x": 79,
+      "z": 87,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "metal_plate",
+      "id": 63035,
+      "x": 84,
+      "z": 87,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "metal_plate",
+      "id": 63035,
+      "x": 79,
+      "z": 96,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "metal_plate",
+      "id": 63035,
+      "x": 84,
+      "z": 96,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "broken_arch",
+      "id": 63011,
+      "x": 79,
+      "z": 82,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        4,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "arch",
+      "id": 63010,
+      "x": 71,
+      "z": 96,
+      "shape": 10,
+      "rotation": 1,
+      "footprint": [
+        1,
+        4
+      ],
+      "story": ""
+    },
+    {
+      "asset": "scale_figure",
+      "id": 63032,
+      "x": 81,
+      "z": 93,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "heat_fissure",
+      "id": 63043,
+      "x": 76,
+      "z": 89,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "heat_fissure",
+      "id": 63043,
+      "x": 87,
+      "z": 93,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "heat_fissure",
+      "id": 63043,
+      "x": 82,
+      "z": 97,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "heat_fissure",
+      "id": 63043,
+      "x": 72,
+      "z": 92,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "heat_fissure",
+      "id": 63043,
+      "x": 89,
+      "z": 88,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "heat_fissure",
+      "id": 63043,
+      "x": 56,
+      "z": 117,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "heat_fissure",
+      "id": 63043,
+      "x": 68,
+      "z": 117,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "heat_fissure",
+      "id": 63043,
+      "x": 55,
+      "z": 101,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "heat_fissure",
+      "id": 63043,
+      "x": 69,
+      "z": 101,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "great_arch",
+      "id": 63012,
+      "x": 59,
+      "z": 97,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        6,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "great_crucible",
+      "id": 63015,
+      "x": 58,
+      "z": 117,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        8,
+        6
+      ],
+      "story": "The bound furnace is the floor\u2019s visual and industrial destination."
+    },
+    {
+      "asset": "grand_pillar",
+      "id": 63009,
+      "x": 49,
+      "z": 103,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "grand_pillar",
+      "id": 63009,
+      "x": 74,
+      "z": 103,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "grand_pillar",
+      "id": 63009,
+      "x": 49,
+      "z": 114,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "grand_pillar",
+      "id": 63009,
+      "x": 74,
+      "z": 114,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "coolant_trough",
+      "id": 63040,
+      "x": 49,
+      "z": 109,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        3,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "coolant_trough",
+      "id": 63040,
+      "x": 73,
+      "z": 109,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        3,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "pressure_pump",
+      "id": 63017,
+      "x": 50,
+      "z": 106,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        3
+      ],
+      "story": ""
+    },
+    {
+      "asset": "pressure_pump",
+      "id": 63017,
+      "x": 73,
+      "z": 106,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        3
+      ],
+      "story": ""
+    },
+    {
+      "asset": "vent",
+      "id": 63021,
+      "x": 50,
+      "z": 118,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "vent",
+      "id": 63021,
+      "x": 71,
+      "z": 119,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        2
+      ],
+      "story": ""
+    },
+    {
+      "asset": "metal_plate",
+      "id": 63035,
+      "x": 55,
+      "z": 102,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "metal_plate",
+      "id": 63035,
+      "x": 55,
+      "z": 115,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "metal_plate",
+      "id": 63035,
+      "x": 58,
+      "z": 102,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "metal_plate",
+      "id": 63035,
+      "x": 58,
+      "z": 115,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "metal_plate",
+      "id": 63035,
+      "x": 61,
+      "z": 102,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "metal_plate",
+      "id": 63035,
+      "x": 61,
+      "z": 115,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "metal_plate",
+      "id": 63035,
+      "x": 64,
+      "z": 102,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "metal_plate",
+      "id": 63035,
+      "x": 64,
+      "z": 115,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "metal_plate",
+      "id": 63035,
+      "x": 67,
+      "z": 102,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "metal_plate",
+      "id": 63035,
+      "x": 67,
+      "z": 115,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "metal_plate",
+      "id": 63035,
+      "x": 70,
+      "z": 102,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "metal_plate",
+      "id": 63035,
+      "x": 70,
+      "z": 115,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "brazier",
+      "id": 63030,
+      "x": 54,
+      "z": 100,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "brazier",
+      "id": 63030,
+      "x": 70,
+      "z": 100,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "brazier",
+      "id": 63030,
+      "x": 52,
+      "z": 117,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "brazier",
+      "id": 63030,
+      "x": 72,
+      "z": 117,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "scale_figure",
+      "id": 63032,
+      "x": 62,
+      "z": 109,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "ascent_stair",
+      "id": 63033,
+      "x": 60,
+      "z": 125,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        6,
+        6
+      ],
+      "story": "A surviving upper bearing hints at the next floor; no live transition is implemented."
+    },
+    {
+      "asset": "arch",
+      "id": 63010,
+      "x": 68,
+      "z": 122,
+      "shape": 10,
+      "rotation": 1,
+      "footprint": [
+        1,
+        4
+      ],
+      "story": ""
+    },
+    {
+      "asset": "banner",
+      "id": 63031,
+      "x": 55,
+      "z": 126,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "banner",
+      "id": 63031,
+      "x": 69,
+      "z": 129,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        2,
+        1
+      ],
+      "story": ""
+    },
+    {
+      "asset": "brazier",
+      "id": 63030,
+      "x": 56,
+      "z": 128,
+      "shape": 10,
+      "rotation": 0,
+      "footprint": [
+        1,
+        1
+      ],
+      "story": ""
+    }
+  ],
+  "floor_tiles": 3988,
+  "water_tiles": 101,
+  "authored_walkable_tiles": 3329,
+  "reachable_walkable_tiles": 3310,
+  "anchors": {
+    "arrival": [
+      67,
+      38
+    ],
+    "sanctuary": [
+      61,
+      57
+    ],
+    "workshop": [
+      43,
+      68
+    ],
+    "quarry": [
+      36,
+      87
+    ],
+    "waterworks": [
+      87,
+      67
+    ],
+    "garden": [
+      103,
+      88
+    ],
+    "vents": [
+      82,
+      93
+    ],
+    "narthex": [
+      64,
+      90
+    ],
+    "foundry": [
+      62,
+      109
+    ],
+    "ascent": [
+      67,
+      127
+    ]
+  },
+  "connectivity": {
+    "arrival": true,
+    "sanctuary": true,
+    "workshop": true,
+    "quarry": true,
+    "waterworks": true,
+    "garden": true,
+    "vents": true,
+    "narthex": true,
+    "foundry": true,
+    "ascent": true
+  },
+  "encounter_proposals": {
+    "ash_imp": {
+      "clear_bounds": [
+        78,
+        89,
+        86,
+        96
+      ],
+      "size": [
+        9,
+        8
+      ],
+      "entry": [
+        81,
+        85
+      ],
+      "exit": [
+        73,
+        97
+      ]
+    },
+    "ash_warden": {
+      "clear_bounds": [
+        54,
+        103,
+        71,
+        116
+      ],
+      "size": [
+        18,
+        14
+      ],
+      "entry": [
+        62,
+        99
+      ],
+      "coolant": [
+        [
+          50,
+          110
+        ],
+        [
+          74,
+          110
+        ]
+      ],
+      "exit": [
+        69,
+        122
+      ]
+    }
+  },
+  "asset_usage": {
+    "ash_paving_v1": 70,
+    "ash_paving": 771,
+    "forge_paving": 557,
+    "forge_paving_v1": 50,
+    "ash_paving_v0": 122,
+    "forge_paving_v0": 124,
+    "paving": 1047,
+    "paving_v0": 181,
+    "sanctuary_paving_v0": 84,
+    "sanctuary_paving": 475,
+    "sanctuary_paving_v1": 48,
+    "paving_v1": 101,
+    "water": 101,
+    "garden_soil_v1": 11,
+    "garden_soil": 99,
+    "garden_soil_v0": 38,
+    "moss_ground": 109,
+    "curtain_arrival": 1,
+    "curtain_sanctuary": 1,
+    "curtain_workshop": 1,
+    "curtain_quarry": 1,
+    "curtain_waterworks": 1,
+    "curtain_garden": 1,
+    "curtain_vents": 1,
+    "curtain_narthex": 1,
+    "curtain_foundry": 1,
+    "curtain_ascent": 1,
+    "great_arch": 2,
+    "broken_arch": 3,
+    "rubble": 12,
+    "brazier": 13,
+    "banner": 5,
+    "scale_figure": 6,
+    "sanctuary_seal": 1,
+    "restoration_font": 1,
+    "bank_counter": 1,
+    "workbench": 5,
+    "coolant_trough": 6,
+    "pillar": 12,
+    "arch": 8,
+    "furnace": 2,
+    "pressure_pump": 9,
+    "anvil": 2,
+    "stores": 4,
+    "timber_stack": 2,
+    "ore_cart": 2,
+    "track": 7,
+    "ore_outcrop": 5,
+    "casting_hoist": 1,
+    "supply_rack": 5,
+    "rock_buttress": 7,
+    "waterwheel": 1,
+    "bridge": 3,
+    "pipe": 10,
+    "railing": 17,
+    "grand_pillar": 5,
+    "root_tree": 3,
+    "fungus": 4,
+    "long_bridge": 1,
+    "vent": 6,
+    "metal_plate": 16,
+    "heat_fissure": 9,
+    "great_crucible": 1,
+    "ascent_stair": 1
+  },
+  "curtain_recipe": {
+    "arrival": [
+      [
+        [
+          56,
+          47
+        ],
+        [
+          64,
+          47
+        ]
+      ],
+      [
+        [
+          64,
+          47
+        ],
+        [
+          64,
+          46
+        ]
+      ],
+      [
+        [
+          64,
+          46
+        ],
+        [
+          62,
+          46
+        ]
+      ],
+      [
+        [
+          62,
+          46
+        ],
+        [
+          57,
+          41
+        ]
+      ],
+      [
+        [
+          57,
+          41
+        ],
+        [
+          57,
+          38
+        ]
+      ],
+      [
+        [
+          57,
+          38
+        ],
+        [
+          58,
+          38
+        ]
+      ],
+      [
+        [
+          58,
+          38
+        ],
+        [
+          59,
+          32
+        ]
+      ],
+      [
+        [
+          59,
+          32
+        ],
+        [
+          60,
+          31
+        ]
+      ],
+      [
+        [
+          74,
+          31
+        ],
+        [
+          79,
+          36
+        ]
+      ],
+      [
+        [
+          79,
+          36
+        ],
+        [
+          78,
+          39
+        ]
+      ],
+      [
+        [
+          78,
+          39
+        ],
+        [
+          77,
+          39
+        ]
+      ],
+      [
+        [
+          77,
+          39
+        ],
+        [
+          77,
+          42
+        ]
+      ],
+      [
+        [
+          77,
+          42
+        ],
+        [
+          74,
+          45
+        ]
+      ],
+      [
+        [
+          74,
+          45
+        ],
+        [
+          72,
+          45
+        ]
+      ],
+      [
+        [
+          72,
+          45
+        ],
+        [
+          71,
+          47
+        ]
+      ]
+    ],
+    "sanctuary": [
+      [
+        [
+          51,
+          57
+        ],
+        [
+          52,
+          56
+        ]
+      ],
+      [
+        [
+          52,
+          56
+        ],
+        [
+          52,
+          53
+        ]
+      ],
+      [
+        [
+          52,
+          53
+        ],
+        [
+          53,
+          53
+        ]
+      ],
+      [
+        [
+          53,
+          53
+        ],
+        [
+          53,
+          51
+        ]
+      ],
+      [
+        [
+          53,
+          51
+        ],
+        [
+          55,
+          50
+        ]
+      ],
+      [
+        [
+          55,
+          50
+        ],
+        [
+          56,
+          47
+        ]
+      ],
+      [
+        [
+          71,
+          47
+        ],
+        [
+          80,
+          56
+        ]
+      ],
+      [
+        [
+          62,
+          77
+        ],
+        [
+          64,
+          68
+        ]
+      ],
+      [
+        [
+          64,
+          68
+        ],
+        [
+          58,
+          68
+        ]
+      ],
+      [
+        [
+          58,
+          68
+        ],
+        [
+          52,
+          61
+        ]
+      ],
+      [
+        [
+          68,
+          70
+        ],
+        [
+          68,
+          74
+        ]
+      ],
+      [
+        [
+          80,
+          59
+        ],
+        [
+          71,
+          68
+        ]
+      ],
+      [
+        [
+          71,
+          68
+        ],
+        [
+          69,
+          68
+        ]
+      ],
+      [
+        [
+          69,
+          68
+        ],
+        [
+          69,
+          70
+        ]
+      ],
+      [
+        [
+          69,
+          70
+        ],
+        [
+          68,
+          70
+        ]
+      ]
+    ],
+    "workshop": [
+      [
+        [
+          32,
+          75
+        ],
+        [
+          30,
+          74
+        ]
+      ],
+      [
+        [
+          30,
+          74
+        ],
+        [
+          30,
+          72
+        ]
+      ],
+      [
+        [
+          30,
+          72
+        ],
+        [
+          29,
+          72
+        ]
+      ],
+      [
+        [
+          29,
+          72
+        ],
+        [
+          29,
+          62
+        ]
+      ],
+      [
+        [
+          29,
+          62
+        ],
+        [
+          30,
+          62
+        ]
+      ],
+      [
+        [
+          30,
+          62
+        ],
+        [
+          31,
+          58
+        ]
+      ],
+      [
+        [
+          31,
+          58
+        ],
+        [
+          34,
+          57
+        ]
+      ],
+      [
+        [
+          34,
+          57
+        ],
+        [
+          34,
+          56
+        ]
+      ],
+      [
+        [
+          34,
+          56
+        ],
+        [
+          37,
+          56
+        ]
+      ],
+      [
+        [
+          37,
+          56
+        ],
+        [
+          37,
+          55
+        ]
+      ],
+      [
+        [
+          37,
+          55
+        ],
+        [
+          40,
+          55
+        ]
+      ],
+      [
+        [
+          40,
+          55
+        ],
+        [
+          40,
+          54
+        ]
+      ],
+      [
+        [
+          40,
+          54
+        ],
+        [
+          43,
+          54
+        ]
+      ],
+      [
+        [
+          43,
+          54
+        ],
+        [
+          46,
+          57
+        ]
+      ],
+      [
+        [
+          46,
+          57
+        ],
+        [
+          51,
+          57
+        ]
+      ],
+      [
+        [
+          54,
+          80
+        ],
+        [
+          49,
+          75
+        ]
+      ],
+      [
+        [
+          49,
+          75
+        ],
+        [
+          47,
+          77
+        ]
+      ],
+      [
+        [
+          47,
+          77
+        ],
+        [
+          40,
+          77
+        ]
+      ],
+      [
+        [
+          50,
+          61
+        ],
+        [
+          51,
+          62
+        ]
+      ],
+      [
+        [
+          51,
+          62
+        ],
+        [
+          51,
+          67
+        ]
+      ],
+      [
+        [
+          51,
+          67
+        ],
+        [
+          52,
+          67
+        ]
+      ],
+      [
+        [
+          52,
+          67
+        ],
+        [
+          52,
+          70
+        ]
+      ],
+      [
+        [
+          52,
+          70
+        ],
+        [
+          50,
+          72
+        ]
+      ],
+      [
+        [
+          50,
+          72
+        ],
+        [
+          53,
+          75
+        ]
+      ],
+      [
+        [
+          53,
+          75
+        ],
+        [
+          55,
+          75
+        ]
+      ],
+      [
+        [
+          55,
+          75
+        ],
+        [
+          55,
+          76
+        ]
+      ],
+      [
+        [
+          52,
+          61
+        ],
+        [
+          50,
+          61
+        ]
+      ]
+    ],
+    "quarry": [
+      [
+        [
+          25,
+          87
+        ],
+        [
+          27,
+          85
+        ]
+      ],
+      [
+        [
+          27,
+          85
+        ],
+        [
+          28,
+          80
+        ]
+      ],
+      [
+        [
+          28,
+          80
+        ],
+        [
+          30,
+          78
+        ]
+      ],
+      [
+        [
+          30,
+          78
+        ],
+        [
+          33,
+          78
+        ]
+      ],
+      [
+        [
+          33,
+          78
+        ],
+        [
+          32,
+          75
+        ]
+      ],
+      [
+        [
+          47,
+          104
+        ],
+        [
+          41,
+          99
+        ]
+      ],
+      [
+        [
+          41,
+          99
+        ],
+        [
+          40,
+          96
+        ]
+      ],
+      [
+        [
+          40,
+          96
+        ],
+        [
+          28,
+          94
+        ]
+      ],
+      [
+        [
+          28,
+          94
+        ],
+        [
+          27,
+          91
+        ]
+      ],
+      [
+        [
+          27,
+          91
+        ],
+        [
+          26,
+          91
+        ]
+      ],
+      [
+        [
+          26,
+          91
+        ],
+        [
+          26,
+          89
+        ]
+      ],
+      [
+        [
+          26,
+          89
+        ],
+        [
+          25,
+          89
+        ]
+      ],
+      [
+        [
+          25,
+          89
+        ],
+        [
+          25,
+          87
+        ]
+      ],
+      [
+        [
+          40,
+          77
+        ],
+        [
+          40,
+          79
+        ]
+      ],
+      [
+        [
+          40,
+          79
+        ],
+        [
+          42,
+          79
+        ]
+      ],
+      [
+        [
+          42,
+          79
+        ],
+        [
+          45,
+          82
+        ]
+      ],
+      [
+        [
+          45,
+          82
+        ],
+        [
+          46,
+          88
+        ]
+      ],
+      [
+        [
+          46,
+          88
+        ],
+        [
+          47,
+          88
+        ]
+      ],
+      [
+        [
+          47,
+          88
+        ],
+        [
+          42,
+          93
+        ]
+      ],
+      [
+        [
+          42,
+          93
+        ],
+        [
+          42,
+          95
+        ]
+      ],
+      [
+        [
+          42,
+          95
+        ],
+        [
+          49,
+          102
+        ]
+      ]
+    ],
+    "waterworks": [
+      [
+        [
+          80,
+          56
+        ],
+        [
+          82,
+          56
+        ]
+      ],
+      [
+        [
+          82,
+          56
+        ],
+        [
+          85,
+          53
+        ]
+      ],
+      [
+        [
+          85,
+          53
+        ],
+        [
+          89,
+          53
+        ]
+      ],
+      [
+        [
+          89,
+          53
+        ],
+        [
+          89,
+          52
+        ]
+      ],
+      [
+        [
+          89,
+          52
+        ],
+        [
+          95,
+          51
+        ]
+      ],
+      [
+        [
+          95,
+          51
+        ],
+        [
+          103,
+          59
+        ]
+      ],
+      [
+        [
+          103,
+          59
+        ],
+        [
+          104,
+          72
+        ]
+      ],
+      [
+        [
+          104,
+          72
+        ],
+        [
+          101,
+          74
+        ]
+      ],
+      [
+        [
+          84,
+          77
+        ],
+        [
+          79,
+          73
+        ]
+      ],
+      [
+        [
+          79,
+          73
+        ],
+        [
+          79,
+          62
+        ]
+      ],
+      [
+        [
+          79,
+          62
+        ],
+        [
+          80,
+          62
+        ]
+      ],
+      [
+        [
+          80,
+          62
+        ],
+        [
+          80,
+          59
+        ]
+      ]
+    ],
+    "garden": [
+      [
+        [
+          101,
+          74
+        ],
+        [
+          101,
+          76
+        ]
+      ],
+      [
+        [
+          101,
+          76
+        ],
+        [
+          99,
+          78
+        ]
+      ],
+      [
+        [
+          99,
+          78
+        ],
+        [
+          104,
+          78
+        ]
+      ],
+      [
+        [
+          104,
+          78
+        ],
+        [
+          111,
+          85
+        ]
+      ],
+      [
+        [
+          111,
+          85
+        ],
+        [
+          110,
+          94
+        ]
+      ],
+      [
+        [
+          110,
+          94
+        ],
+        [
+          108,
+          96
+        ]
+      ],
+      [
+        [
+          108,
+          96
+        ],
+        [
+          104,
+          97
+        ]
+      ],
+      [
+        [
+          104,
+          97
+        ],
+        [
+          103,
+          99
+        ]
+      ],
+      [
+        [
+          103,
+          99
+        ],
+        [
+          97,
+          97
+        ]
+      ],
+      [
+        [
+          97,
+          97
+        ],
+        [
+          93,
+          93
+        ]
+      ],
+      [
+        [
+          93,
+          93
+        ],
+        [
+          92,
+          93
+        ]
+      ],
+      [
+        [
+          91,
+          86
+        ],
+        [
+          92,
+          80
+        ]
+      ],
+      [
+        [
+          92,
+          80
+        ],
+        [
+          87,
+          80
+        ]
+      ]
+    ],
+    "vents": [
+      [
+        [
+          92,
+          93
+        ],
+        [
+          91,
+          98
+        ]
+      ],
+      [
+        [
+          91,
+          98
+        ],
+        [
+          89,
+          100
+        ]
+      ],
+      [
+        [
+          89,
+          100
+        ],
+        [
+          85,
+          101
+        ]
+      ],
+      [
+        [
+          85,
+          101
+        ],
+        [
+          84,
+          103
+        ]
+      ],
+      [
+        [
+          84,
+          103
+        ],
+        [
+          82,
+          103
+        ]
+      ],
+      [
+        [
+          82,
+          103
+        ],
+        [
+          80,
+          101
+        ]
+      ],
+      [
+        [
+          80,
+          101
+        ],
+        [
+          77,
+          101
+        ]
+      ],
+      [
+        [
+          77,
+          101
+        ],
+        [
+          74,
+          98
+        ]
+      ],
+      [
+        [
+          74,
+          98
+        ],
+        [
+          71,
+          99
+        ]
+      ],
+      [
+        [
+          71,
+          99
+        ],
+        [
+          77,
+          105
+        ]
+      ],
+      [
+        [
+          72,
+          88
+        ],
+        [
+          76,
+          85
+        ]
+      ],
+      [
+        [
+          76,
+          85
+        ],
+        [
+          76,
+          83
+        ]
+      ],
+      [
+        [
+          76,
+          83
+        ],
+        [
+          75,
+          83
+        ]
+      ],
+      [
+        [
+          75,
+          83
+        ],
+        [
+          75,
+          81
+        ]
+      ],
+      [
+        [
+          75,
+          81
+        ],
+        [
+          73,
+          79
+        ]
+      ],
+      [
+        [
+          76,
+          76
+        ],
+        [
+          78,
+          78
+        ]
+      ],
+      [
+        [
+          78,
+          78
+        ],
+        [
+          79,
+          82
+        ]
+      ],
+      [
+        [
+          79,
+          82
+        ],
+        [
+          82,
+          83
+        ]
+      ],
+      [
+        [
+          82,
+          83
+        ],
+        [
+          84,
+          77
+        ]
+      ],
+      [
+        [
+          87,
+          80
+        ],
+        [
+          87,
+          83
+        ]
+      ],
+      [
+        [
+          87,
+          83
+        ],
+        [
+          91,
+          86
+        ]
+      ]
+    ],
+    "narthex": [
+      [
+        [
+          53,
+          98
+        ],
+        [
+          60,
+          98
+        ]
+      ],
+      [
+        [
+          60,
+          98
+        ],
+        [
+          60,
+          96
+        ]
+      ],
+      [
+        [
+          60,
+          96
+        ],
+        [
+          58,
+          96
+        ]
+      ],
+      [
+        [
+          58,
+          96
+        ],
+        [
+          57,
+          93
+        ]
+      ],
+      [
+        [
+          57,
+          93
+        ],
+        [
+          56,
+          93
+        ]
+      ],
+      [
+        [
+          56,
+          93
+        ],
+        [
+          55,
+          87
+        ]
+      ],
+      [
+        [
+          55,
+          87
+        ],
+        [
+          61,
+          81
+        ]
+      ],
+      [
+        [
+          61,
+          81
+        ],
+        [
+          54,
+          80
+        ]
+      ],
+      [
+        [
+          55,
+          76
+        ],
+        [
+          62,
+          77
+        ]
+      ],
+      [
+        [
+          66,
+          81
+        ],
+        [
+          72,
+          88
+        ]
+      ],
+      [
+        [
+          73,
+          79
+        ],
+        [
+          67,
+          78
+        ]
+      ],
+      [
+        [
+          67,
+          78
+        ],
+        [
+          67,
+          81
+        ]
+      ],
+      [
+        [
+          67,
+          81
+        ],
+        [
+          66,
+          81
+        ]
+      ],
+      [
+        [
+          67,
+          97
+        ],
+        [
+          68,
+          98
+        ]
+      ],
+      [
+        [
+          68,
+          98
+        ],
+        [
+          67,
+          97
+        ]
+      ],
+      [
+        [
+          68,
+          74
+        ],
+        [
+          76,
+          76
+        ]
+      ],
+      [
+        [
+          68,
+          96
+        ],
+        [
+          69,
+          97
+        ]
+      ],
+      [
+        [
+          69,
+          97
+        ],
+        [
+          68,
+          96
+        ]
+      ],
+      [
+        [
+          69,
+          95
+        ],
+        [
+          69,
+          96
+        ]
+      ],
+      [
+        [
+          69,
+          96
+        ],
+        [
+          71,
+          96
+        ]
+      ],
+      [
+        [
+          71,
+          96
+        ],
+        [
+          72,
+          94
+        ]
+      ],
+      [
+        [
+          72,
+          94
+        ],
+        [
+          69,
+          95
+        ]
+      ]
+    ],
+    "foundry": [
+      [
+        [
+          77,
+          105
+        ],
+        [
+          77,
+          116
+        ]
+      ],
+      [
+        [
+          53,
+          123
+        ],
+        [
+          47,
+          117
+        ]
+      ],
+      [
+        [
+          47,
+          117
+        ],
+        [
+          47,
+          104
+        ]
+      ],
+      [
+        [
+          49,
+          102
+        ],
+        [
+          53,
+          98
+        ]
+      ]
+    ],
+    "ascent": [
+      [
+        [
+          77,
+          116
+        ],
+        [
+          72,
+          120
+        ]
+      ],
+      [
+        [
+          72,
+          120
+        ],
+        [
+          72,
+          126
+        ]
+      ],
+      [
+        [
+          72,
+          126
+        ],
+        [
+          74,
+          127
+        ]
+      ],
+      [
+        [
+          74,
+          127
+        ],
+        [
+          73,
+          128
+        ]
+      ],
+      [
+        [
+          73,
+          128
+        ],
+        [
+          73,
+          131
+        ]
+      ],
+      [
+        [
+          73,
+          131
+        ],
+        [
+          72,
+          132
+        ]
+      ],
+      [
+        [
+          72,
+          132
+        ],
+        [
+          65,
+          132
+        ]
+      ],
+      [
+        [
+          65,
+          132
+        ],
+        [
+          65,
+          133
+        ]
+      ],
+      [
+        [
+          65,
+          133
+        ],
+        [
+          57,
+          133
+        ]
+      ],
+      [
+        [
+          57,
+          133
+        ],
+        [
+          56,
+          131
+        ]
+      ],
+      [
+        [
+          56,
+          131
+        ],
+        [
+          54,
+          131
+        ]
+      ],
+      [
+        [
+          54,
+          131
+        ],
+        [
+          52,
+          129
+        ]
+      ],
+      [
+        [
+          52,
+          129
+        ],
+        [
+          53,
+          126
+        ]
+      ],
+      [
+        [
+          53,
+          126
+        ],
+        [
+          55,
+          125
+        ]
+      ],
+      [
+        [
+          55,
+          125
+        ],
+        [
+          55,
+          123
+        ]
+      ],
+      [
+        [
+          55,
+          123
+        ],
+        [
+          53,
+          123
+        ]
+      ]
+    ]
+  }
+}

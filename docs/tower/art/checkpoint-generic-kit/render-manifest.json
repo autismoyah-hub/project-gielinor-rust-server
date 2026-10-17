@@ -1,0 +1,1725 @@
+{
+  "origin": "OFFLINE Rust native library; entirely original geometry; no original cache source",
+  "renderer_sha256": "ca119fe4cdd03c1bea1359d1c1b6b84b1bd0581fb1c864d8ebc14bc4943e5ec6",
+  "scene_sha256": "173246b2a71b6f26969c3374e94a4b4b6fd04bcc39f7bb533d30e3a77644fef6",
+  "registry_sha256": "68972089a6513ea1df0d92f796752d06ca2c572ae54a4690056350f135b66437",
+  "frames": [
+    {
+      "name": "whole-isometric",
+      "title": "The Fallen Cinderworks \u2014 complete floor",
+      "file": "views\\whole-isometric.png",
+      "raw": "views\\whole-isometric.bmp",
+      "camera": {
+        "x": 67,
+        "z": 81,
+        "yaw": 2048,
+        "distance": 11500,
+        "preset": "floor-iso"
+      },
+      "seconds": 0.68,
+      "raw_sha256": "58f6cef5f98364b4630b88b586dce623db42dc0de519bcc436e2ab164351f287",
+      "png_sha256": "7f35e01b4aed919b2f63db47dfcf4a5221bf4d842568becab0f8a3ecf65b4c4b",
+      "scene_sha256": "173246b2a71b6f26969c3374e94a4b4b6fd04bcc39f7bb533d30e3a77644fef6"
+    },
+    {
+      "name": "whole-reverse",
+      "title": "The Fallen Cinderworks \u2014 reverse isometric",
+      "file": "views\\whole-reverse.png",
+      "raw": "views\\whole-reverse.bmp",
+      "camera": {
+        "x": 67,
+        "z": 81,
+        "yaw": 10240,
+        "distance": 11500,
+        "preset": "floor-iso"
+      },
+      "seconds": 0.593,
+      "raw_sha256": "75dc69d0c8c91e7bd591cb0ad099637ad52bab1ebb81effe6ac200c8d740a6dd",
+      "png_sha256": "848aaacdb34394ee55772930b0a8da34bf3c01a2c0224c7e793c88189f708a51",
+      "scene_sha256": "173246b2a71b6f26969c3374e94a4b4b6fd04bcc39f7bb533d30e3a77644fef6"
+    },
+    {
+      "name": "whole-plan",
+      "title": "The Fallen Cinderworks \u2014 architectural plan",
+      "file": "views\\whole-plan.png",
+      "raw": "views\\whole-plan.bmp",
+      "camera": {
+        "x": 67,
+        "z": 81,
+        "yaw": 0,
+        "distance": 64,
+        "preset": "floor-plan"
+      },
+      "seconds": 0.702,
+      "raw_sha256": "2f48ddbe2d557423b39d3d0eea740898eac261b45ac0c7966180acefe2971900",
+      "png_sha256": "7b6aa51581281b944f68d0aaaabba9919286e528e172fd27bf03f66cb3ad297b",
+      "scene_sha256": "173246b2a71b6f26969c3374e94a4b4b6fd04bcc39f7bb533d30e3a77644fef6"
+    },
+    {
+      "name": "arrival-overview",
+      "title": "The Broken Processional \u2014 room composition",
+      "file": "views\\arrival-overview.png",
+      "raw": "views\\arrival-overview.bmp",
+      "camera": {
+        "x": 67,
+        "z": 38,
+        "yaw": 2048,
+        "distance": 2100,
+        "preset": "room"
+      },
+      "seconds": 0.411,
+      "raw_sha256": "24111a490e26648716f1e50adc3f309e68d99d0f80465e4c49821ba085e19719",
+      "png_sha256": "59e82b3f2f75f6b5986f29739689842bcedc4b749629e9121a22b3dddd3f3113",
+      "scene_sha256": "173246b2a71b6f26969c3374e94a4b4b6fd04bcc39f7bb533d30e3a77644fef6"
+    },
+    {
+      "name": "arrival-reverse",
+      "title": "The Broken Processional \u2014 reverse inspection",
+      "file": "views\\arrival-reverse.png",
+      "raw": "views\\arrival-reverse.bmp",
+      "camera": {
+        "x": 67,
+        "z": 38,
+        "yaw": 10240,
+        "distance": 2100,
+        "preset": "room"
+      },
+      "seconds": 0.323,
+      "raw_sha256": "b0a4a1a1acda53006a386b63b2b604477d09efa3f28b7abad7ba53b00a092898",
+      "png_sha256": "759362b605cfa3d90e104d0a750708f956573ea44517d74bad8558d799a42dc8",
+      "scene_sha256": "173246b2a71b6f26969c3374e94a4b4b6fd04bcc39f7bb533d30e3a77644fef6"
+    },
+    {
+      "name": "arrival-player",
+      "title": "The Broken Processional \u2014 close player-oriented view",
+      "file": "views\\arrival-player.png",
+      "raw": "views\\arrival-player.bmp",
+      "camera": {
+        "x": 67,
+        "z": 38,
+        "yaw": 0,
+        "distance": 1800,
+        "preset": "player"
+      },
+      "seconds": 0.343,
+      "raw_sha256": "754d5ef38817ae00ae7f1865a8c4d76945ef9c93899b1d3a8715b8ae18adc91d",
+      "png_sha256": "9c862d2ca839a383a5eb6e6785367197313d94e00c5ecfd509f9eba4333dcf63",
+      "scene_sha256": "173246b2a71b6f26969c3374e94a4b4b6fd04bcc39f7bb533d30e3a77644fef6"
+    },
+    {
+      "name": "sanctuary-overview",
+      "title": "The Fourfold Refuge \u2014 room composition",
+      "file": "views\\sanctuary-overview.png",
+      "raw": "views\\sanctuary-overview.bmp",
+      "camera": {
+        "x": 66,
+        "z": 57,
+        "yaw": 2048,
+        "distance": 2400,
+        "preset": "room"
+      },
+      "seconds": 0.352,
+      "raw_sha256": "4926e7fd66c77ce3ddffdbda7cbf61e52dc49c7c4a7c0faeb922eebe1e5275b5",
+      "png_sha256": "a044f69db4ab9df4299ae5b9195275ba17c43870f9dc336a6336358f5e11fece",
+      "scene_sha256": "173246b2a71b6f26969c3374e94a4b4b6fd04bcc39f7bb533d30e3a77644fef6"
+    },
+    {
+      "name": "sanctuary-reverse",
+      "title": "The Fourfold Refuge \u2014 reverse inspection",
+      "file": "views\\sanctuary-reverse.png",
+      "raw": "views\\sanctuary-reverse.bmp",
+      "camera": {
+        "x": 66,
+        "z": 57,
+        "yaw": 10240,
+        "distance": 2400,
+        "preset": "room"
+      },
+      "seconds": 0.356,
+      "raw_sha256": "bd756caa6709c86c9c56cd4a3cbea87b7c477452899f4fa38db817133db09f63",
+      "png_sha256": "724844aa97a9f9a3072d056e7ba4a5dc348597ea817326adc3d2957ad4104613",
+      "scene_sha256": "173246b2a71b6f26969c3374e94a4b4b6fd04bcc39f7bb533d30e3a77644fef6"
+    },
+    {
+      "name": "sanctuary-player",
+      "title": "The Fourfold Refuge \u2014 close player-oriented view",
+      "file": "views\\sanctuary-player.png",
+      "raw": "views\\sanctuary-player.bmp",
+      "camera": {
+        "x": 66,
+        "z": 57,
+        "yaw": 2048,
+        "distance": 1800,
+        "preset": "player"
+      },
+      "seconds": 0.417,
+      "raw_sha256": "a7ca359d7060fb06ac8ab331a737769b5935945c16d7cc38488e764993993772",
+      "png_sha256": "913a9710d919f994f082ee5244c86963f931170012097399efd9dd2530626e50",
+      "scene_sha256": "173246b2a71b6f26969c3374e94a4b4b6fd04bcc39f7bb533d30e3a77644fef6"
+    },
+    {
+      "name": "workshop-overview",
+      "title": "The Brass Service Hall \u2014 room composition",
+      "file": "views\\workshop-overview.png",
+      "raw": "views\\workshop-overview.bmp",
+      "camera": {
+        "x": 41,
+        "z": 67,
+        "yaw": 2048,
+        "distance": 2600,
+        "preset": "room"
+      },
+      "seconds": 0.343,
+      "raw_sha256": "e2b1b32154f3ff9b5dfa3aa2005be467f55308559db6faf5c19b44f677aff104",
+      "png_sha256": "7dd9c855d1a143440e6094507d4a635ae43c9701f4124c00b7e03afe6f8d8251",
+      "scene_sha256": "173246b2a71b6f26969c3374e94a4b4b6fd04bcc39f7bb533d30e3a77644fef6"
+    },
+    {
+      "name": "workshop-reverse",
+      "title": "The Brass Service Hall \u2014 reverse inspection",
+      "file": "views\\workshop-reverse.png",
+      "raw": "views\\workshop-reverse.bmp",
+      "camera": {
+        "x": 41,
+        "z": 67,
+        "yaw": 10240,
+        "distance": 2600,
+        "preset": "room"
+      },
+      "seconds": 0.348,
+      "raw_sha256": "4fa1ea6ff20d835781306681a97e8ee60d4e3f5e1b728b53b8d24345d0a8ca4f",
+      "png_sha256": "73c1a97e47c5c55b43758fe5df0177e970875ae337be8828a5ff7a541aeb1da9",
+      "scene_sha256": "173246b2a71b6f26969c3374e94a4b4b6fd04bcc39f7bb533d30e3a77644fef6"
+    },
+    {
+      "name": "workshop-player",
+      "title": "The Brass Service Hall \u2014 close player-oriented view",
+      "file": "views\\workshop-player.png",
+      "raw": "views\\workshop-player.bmp",
+      "camera": {
+        "x": 34,
+        "z": 70,
+        "yaw": 0,
+        "distance": 1900,
+        "preset": "player"
+      },
+      "seconds": 0.333,
+      "raw_sha256": "f72bca7d189398c9c21524ede19145da0a346e66542aab89062e051c76c8ce07",
+      "png_sha256": "2bbadde0169e0f3ef0aa2d023cd98a93248850b3e39cb241715162551189df08",
+      "scene_sha256": "173246b2a71b6f26969c3374e94a4b4b6fd04bcc39f7bb533d30e3a77644fef6"
+    },
+    {
+      "name": "quarry-overview",
+      "title": "The Fractured Haulage Court \u2014 room composition",
+      "file": "views\\quarry-overview.png",
+      "raw": "views\\quarry-overview.bmp",
+      "camera": {
+        "x": 36,
+        "z": 86,
+        "yaw": 2048,
+        "distance": 2400,
+        "preset": "room"
+      },
+      "seconds": 0.31,
+      "raw_sha256": "0ba24ec233ccb403bbc0ab5866250698a829fae99cc29e16a955ce81c640c85b",
+      "png_sha256": "b861aa3063327485a22a15a42c1dc4c282a6eede733c427429f754b6468cca78",
+      "scene_sha256": "173246b2a71b6f26969c3374e94a4b4b6fd04bcc39f7bb533d30e3a77644fef6"
+    },
+    {
+      "name": "quarry-reverse",
+      "title": "The Fractured Haulage Court \u2014 reverse inspection",
+      "file": "views\\quarry-reverse.png",
+      "raw": "views\\quarry-reverse.bmp",
+      "camera": {
+        "x": 36,
+        "z": 86,
+        "yaw": 10240,
+        "distance": 2400,
+        "preset": "room"
+      },
+      "seconds": 0.345,
+      "raw_sha256": "5a7b4bb7e33653a55575f0147146982ee308bc5f803d2bedba5104e537c99398",
+      "png_sha256": "8fe03e1d63a8fe624fe83a4d95f661a8728ec18b1a132479ff9f7ca75705a917",
+      "scene_sha256": "173246b2a71b6f26969c3374e94a4b4b6fd04bcc39f7bb533d30e3a77644fef6"
+    },
+    {
+      "name": "quarry-player",
+      "title": "The Fractured Haulage Court \u2014 close player-oriented view",
+      "file": "views\\quarry-player.png",
+      "raw": "views\\quarry-player.bmp",
+      "camera": {
+        "x": 33,
+        "z": 88,
+        "yaw": 0,
+        "distance": 1900,
+        "preset": "player"
+      },
+      "seconds": 0.32,
+      "raw_sha256": "c12bf17cf7ec55f17142971b8dc634d7b774489fef71d472649fbf09a5bfd33a",
+      "png_sha256": "8b71112a98f56f42a864361241e7066dae3ea7c967aa01f88801e5757551bab2",
+      "scene_sha256": "173246b2a71b6f26969c3374e94a4b4b6fd04bcc39f7bb533d30e3a77644fef6"
+    },
+    {
+      "name": "waterworks-overview",
+      "title": "The Headgate and Wheel \u2014 room composition",
+      "file": "views\\waterworks-overview.png",
+      "raw": "views\\waterworks-overview.bmp",
+      "camera": {
+        "x": 91,
+        "z": 66,
+        "yaw": 2048,
+        "distance": 2800,
+        "preset": "room"
+      },
+      "seconds": 0.366,
+      "raw_sha256": "78c1d98fbde5d4193014bf33c605bbe22f09eb3c3de75904ab06b0c803c2cc81",
+      "png_sha256": "682c679b01810c631841d567612293df6a71068653ea2a0bc75067bb712ebc74",
+      "scene_sha256": "173246b2a71b6f26969c3374e94a4b4b6fd04bcc39f7bb533d30e3a77644fef6"
+    },
+    {
+      "name": "waterworks-reverse",
+      "title": "The Headgate and Wheel \u2014 reverse inspection",
+      "file": "views\\waterworks-reverse.png",
+      "raw": "views\\waterworks-reverse.bmp",
+      "camera": {
+        "x": 91,
+        "z": 66,
+        "yaw": 10240,
+        "distance": 2800,
+        "preset": "room"
+      },
+      "seconds": 0.343,
+      "raw_sha256": "2ba235254261115cf1d930473c7dc07396bd8decfcbd4224fffd8cf45dae0134",
+      "png_sha256": "fddef37e53e76b11845598485fad1405c8436a1451cd3e5c96339b72ffe1098e",
+      "scene_sha256": "173246b2a71b6f26969c3374e94a4b4b6fd04bcc39f7bb533d30e3a77644fef6"
+    },
+    {
+      "name": "waterworks-player",
+      "title": "The Headgate and Wheel \u2014 close player-oriented view",
+      "file": "views\\waterworks-player.png",
+      "raw": "views\\waterworks-player.bmp",
+      "camera": {
+        "x": 92,
+        "z": 65,
+        "yaw": 4096,
+        "distance": 1900,
+        "preset": "player"
+      },
+      "seconds": 0.398,
+      "raw_sha256": "6fb54cc4225fae4802c06c6ebb6298e9fc40a8530db265e5c182a0d519dca2fe",
+      "png_sha256": "92cccd05247b5b3a592a095f81e40193dc4e5de8ed0d1c275d64388d958b6c93",
+      "scene_sha256": "173246b2a71b6f26969c3374e94a4b4b6fd04bcc39f7bb533d30e3a77644fef6"
+    },
+    {
+      "name": "garden-overview",
+      "title": "The Breached Root Cistern \u2014 room composition",
+      "file": "views\\garden-overview.png",
+      "raw": "views\\garden-overview.bmp",
+      "camera": {
+        "x": 101,
+        "z": 88,
+        "yaw": 2048,
+        "distance": 2500,
+        "preset": "room"
+      },
+      "seconds": 0.337,
+      "raw_sha256": "0e465bf278f4df7b20680526672314faec7d8c2b959a757ef75fd6a2e123463f",
+      "png_sha256": "8eedbdfd1e2f5a0031230cbe18778108964844d66ecdcd56601f3b7820fae33b",
+      "scene_sha256": "173246b2a71b6f26969c3374e94a4b4b6fd04bcc39f7bb533d30e3a77644fef6"
+    },
+    {
+      "name": "garden-reverse",
+      "title": "The Breached Root Cistern \u2014 reverse inspection",
+      "file": "views\\garden-reverse.png",
+      "raw": "views\\garden-reverse.bmp",
+      "camera": {
+        "x": 101,
+        "z": 88,
+        "yaw": 10240,
+        "distance": 2500,
+        "preset": "room"
+      },
+      "seconds": 0.344,
+      "raw_sha256": "d06a12d6e2659ccb9a31c5a1985915794399adc61fe5934a19d647b1da6877c4",
+      "png_sha256": "8bbbdc9e86615739a39081b9da06fb271f2e358bba92cb806f64cda8dc4fe29b",
+      "scene_sha256": "173246b2a71b6f26969c3374e94a4b4b6fd04bcc39f7bb533d30e3a77644fef6"
+    },
+    {
+      "name": "garden-player",
+      "title": "The Breached Root Cistern \u2014 close player-oriented view",
+      "file": "views\\garden-player.png",
+      "raw": "views\\garden-player.bmp",
+      "camera": {
+        "x": 100,
+        "z": 88,
+        "yaw": 1024,
+        "distance": 2100,
+        "preset": "player"
+      },
+      "seconds": 0.338,
+      "raw_sha256": "92d8565b8dea9153e329f4d47cef1dee22f5c62f0c286ef53a70928f0fff2345",
+      "png_sha256": "bec48f98a423d51f8ca3115582301d3cc6bfbe5d2d1a46898f62df763beb0a20",
+      "scene_sha256": "173246b2a71b6f26969c3374e94a4b4b6fd04bcc39f7bb533d30e3a77644fef6"
+    },
+    {
+      "name": "vents-overview",
+      "title": "The Cinder Lung \u2014 room composition",
+      "file": "views\\vents-overview.png",
+      "raw": "views\\vents-overview.bmp",
+      "camera": {
+        "x": 82,
+        "z": 92,
+        "yaw": 2048,
+        "distance": 2600,
+        "preset": "room"
+      },
+      "seconds": 0.376,
+      "raw_sha256": "702f29e8fc53a6f1086284aaf0745b13d6edb2c39b50a01845f3315a5ebf02b1",
+      "png_sha256": "49d1007f65197d3c07cf670b7bc27ebd137a6472bf83c5b64ea0e5e6c2066474",
+      "scene_sha256": "173246b2a71b6f26969c3374e94a4b4b6fd04bcc39f7bb533d30e3a77644fef6"
+    },
+    {
+      "name": "vents-reverse",
+      "title": "The Cinder Lung \u2014 reverse inspection",
+      "file": "views\\vents-reverse.png",
+      "raw": "views\\vents-reverse.bmp",
+      "camera": {
+        "x": 82,
+        "z": 92,
+        "yaw": 10240,
+        "distance": 2600,
+        "preset": "room"
+      },
+      "seconds": 0.372,
+      "raw_sha256": "2cf1a6172f4db1ee16983bb6e1fb703a59e51f078e5650ff34b50dc68e5decf8",
+      "png_sha256": "6b7afe0710a6aa43594e0307424a8a0d58b40cc87df0aa8e704fa3eaf57a10ed",
+      "scene_sha256": "173246b2a71b6f26969c3374e94a4b4b6fd04bcc39f7bb533d30e3a77644fef6"
+    },
+    {
+      "name": "vents-player",
+      "title": "The Cinder Lung \u2014 close player-oriented view",
+      "file": "views\\vents-player.png",
+      "raw": "views\\vents-player.bmp",
+      "camera": {
+        "x": 82,
+        "z": 92,
+        "yaw": 2048,
+        "distance": 1900,
+        "preset": "player"
+      },
+      "seconds": 0.367,
+      "raw_sha256": "a33655e2b772c58bfc8a9fea11dc7ec3614ce6f3ccca0f3f199c951f489471cd",
+      "png_sha256": "26ce47e6d1b4a42676b5cd424c2037e2c199457a905776260a9e66935093dbb8",
+      "scene_sha256": "173246b2a71b6f26969c3374e94a4b4b6fd04bcc39f7bb533d30e3a77644fef6"
+    },
+    {
+      "name": "narthex-overview",
+      "title": "The Last Cooling Gallery \u2014 room composition",
+      "file": "views\\narthex-overview.png",
+      "raw": "views\\narthex-overview.bmp",
+      "camera": {
+        "x": 63,
+        "z": 90,
+        "yaw": 2048,
+        "distance": 2100,
+        "preset": "room"
+      },
+      "seconds": 0.361,
+      "raw_sha256": "145ef86775134364b122445cced498079b1348d63edcbd04cc5db87ffe6eeac9",
+      "png_sha256": "16d845fe73374c9e78140b25d3b39fa45aaafbbcc59011421e920b3e5d9f6bfc",
+      "scene_sha256": "173246b2a71b6f26969c3374e94a4b4b6fd04bcc39f7bb533d30e3a77644fef6"
+    },
+    {
+      "name": "narthex-reverse",
+      "title": "The Last Cooling Gallery \u2014 reverse inspection",
+      "file": "views\\narthex-reverse.png",
+      "raw": "views\\narthex-reverse.bmp",
+      "camera": {
+        "x": 63,
+        "z": 90,
+        "yaw": 10240,
+        "distance": 2100,
+        "preset": "room"
+      },
+      "seconds": 0.387,
+      "raw_sha256": "36c5b6f3d52252955d217da88691690756df9e363891adfd534d18407027e627",
+      "png_sha256": "9492f0980835460fe6ce2baf24fe21ef6cda9ec27fe4c0e4e9f6e3130dac5e61",
+      "scene_sha256": "173246b2a71b6f26969c3374e94a4b4b6fd04bcc39f7bb533d30e3a77644fef6"
+    },
+    {
+      "name": "narthex-player",
+      "title": "The Last Cooling Gallery \u2014 close player-oriented view",
+      "file": "views\\narthex-player.png",
+      "raw": "views\\narthex-player.bmp",
+      "camera": {
+        "x": 63,
+        "z": 90,
+        "yaw": 0,
+        "distance": 1900,
+        "preset": "player"
+      },
+      "seconds": 0.359,
+      "raw_sha256": "ae48e670d0e1e45a69c71f9eb95d90c8a96976bb934c7edc55239d71b2c6b98f",
+      "png_sha256": "12502f75bc292945cea6b8fa5529728b0ce1f8dd0dfdbf3b588d5ef2b87f0f9c",
+      "scene_sha256": "173246b2a71b6f26969c3374e94a4b4b6fd04bcc39f7bb533d30e3a77644fef6"
+    },
+    {
+      "name": "foundry-overview",
+      "title": "The Bound Crucible \u2014 room composition",
+      "file": "views\\foundry-overview.png",
+      "raw": "views\\foundry-overview.bmp",
+      "camera": {
+        "x": 62,
+        "z": 110,
+        "yaw": 2048,
+        "distance": 3300,
+        "preset": "room"
+      },
+      "seconds": 0.368,
+      "raw_sha256": "2e5a565176bee591d53b21b507b8fccec2e46d6a4950c60dec8d1b181738cbe4",
+      "png_sha256": "d09bc448f31f05f99afb950767dc1f0073e1eaae61dc074e6506981cacda4d9d",
+      "scene_sha256": "173246b2a71b6f26969c3374e94a4b4b6fd04bcc39f7bb533d30e3a77644fef6"
+    },
+    {
+      "name": "foundry-reverse",
+      "title": "The Bound Crucible \u2014 reverse inspection",
+      "file": "views\\foundry-reverse.png",
+      "raw": "views\\foundry-reverse.bmp",
+      "camera": {
+        "x": 62,
+        "z": 110,
+        "yaw": 10240,
+        "distance": 3300,
+        "preset": "room"
+      },
+      "seconds": 0.485,
+      "raw_sha256": "3cf6baa2c6989fd93c8eb16a2c513e77b79f35885aa3c13c84ed5330496bab11",
+      "png_sha256": "acc5a9298bfaabf38f8f2dc402f4cc9a43213ec386acb411c3814ea06a9276bf",
+      "scene_sha256": "173246b2a71b6f26969c3374e94a4b4b6fd04bcc39f7bb533d30e3a77644fef6"
+    },
+    {
+      "name": "foundry-player",
+      "title": "The Bound Crucible \u2014 close player-oriented view",
+      "file": "views\\foundry-player.png",
+      "raw": "views\\foundry-player.bmp",
+      "camera": {
+        "x": 62,
+        "z": 115,
+        "yaw": 0,
+        "distance": 3000,
+        "preset": "player"
+      },
+      "seconds": 0.312,
+      "raw_sha256": "2affa355f4b672936461947efa2635d2f0c2da0e52ca5aa6958baf7ac3e4b2dc",
+      "png_sha256": "627ddae4fd341a3c7073c7ceba6a6183d286d4f444f3f100db20065eaa225da5",
+      "scene_sha256": "173246b2a71b6f26969c3374e94a4b4b6fd04bcc39f7bb533d30e3a77644fef6"
+    },
+    {
+      "name": "ascent-overview",
+      "title": "The Upper Bearing \u2014 room composition",
+      "file": "views\\ascent-overview.png",
+      "raw": "views\\ascent-overview.bmp",
+      "camera": {
+        "x": 64,
+        "z": 127,
+        "yaw": 2048,
+        "distance": 2200,
+        "preset": "room"
+      },
+      "seconds": 0.319,
+      "raw_sha256": "9d90fba10356093d8725fb9568a2c4203e814f809060c7bab00a100da3a50b79",
+      "png_sha256": "fbfce4cc9d2aa75111477557baae91f65a3d78fc16e93f3a06e21175149af02e",
+      "scene_sha256": "173246b2a71b6f26969c3374e94a4b4b6fd04bcc39f7bb533d30e3a77644fef6"
+    },
+    {
+      "name": "ascent-reverse",
+      "title": "The Upper Bearing \u2014 reverse inspection",
+      "file": "views\\ascent-reverse.png",
+      "raw": "views\\ascent-reverse.bmp",
+      "camera": {
+        "x": 64,
+        "z": 127,
+        "yaw": 10240,
+        "distance": 2200,
+        "preset": "room"
+      },
+      "seconds": 0.349,
+      "raw_sha256": "cbd92925b4b30641ea19fd4c08b2118e82ea12e8793f7b7229d6b80b20d4da6a",
+      "png_sha256": "40248f71486f62412088bb452c59e62c9ce7a7f35a88ae0fb986092e98e63cb5",
+      "scene_sha256": "173246b2a71b6f26969c3374e94a4b4b6fd04bcc39f7bb533d30e3a77644fef6"
+    },
+    {
+      "name": "ascent-player",
+      "title": "The Upper Bearing \u2014 close player-oriented view",
+      "file": "views\\ascent-player.png",
+      "raw": "views\\ascent-player.bmp",
+      "camera": {
+        "x": 63,
+        "z": 128,
+        "yaw": 10240,
+        "distance": 1900,
+        "preset": "player"
+      },
+      "seconds": 0.351,
+      "raw_sha256": "26de3c7e0b52ccc8b7596f258c118359f669f4b18df1bb2d4d3ac96d3a12272c",
+      "png_sha256": "c88780a720364a3f44c6cb5657cd9b0e3a1eeb69374884c7f483497e5e29452c",
+      "scene_sha256": "173246b2a71b6f26969c3374e94a4b4b6fd04bcc39f7bb533d30e3a77644fef6"
+    },
+    {
+      "name": "paving",
+      "title": "Paving",
+      "file": "assets\\paving.png",
+      "raw": "assets\\paving.bmp",
+      "camera": {
+        "x": 30.5,
+        "z": 30.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.108,
+      "raw_sha256": "ad7faf9be4bdb3d6f45b8b1753c3513fe730df0fc5041d33d9891a718e5cda03",
+      "png_sha256": "bda333528d4b5b324c23193df336efa27ead4c215868fbb9bcb3be1961f790e9",
+      "scene_sha256": "f2e6f248afc8a45068ecaa5f4e292b2139b091aa2118a2420e1a52736323e5c4"
+    },
+    {
+      "name": "sanctuary_paving",
+      "title": "Sanctuary Paving",
+      "file": "assets\\sanctuary_paving.png",
+      "raw": "assets\\sanctuary_paving.bmp",
+      "camera": {
+        "x": 30.5,
+        "z": 30.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.114,
+      "raw_sha256": "30cd5438a8274ad89430429fe0f82a1ed3ff0e42eb0117d08dddcb43964e04f8",
+      "png_sha256": "6bd1e74da2c780d1879dc802e6f4ff307a3523ab7b60f6f74d618d803e769ce0",
+      "scene_sha256": "20584c7a4fcae960c3777d88dadf4f2495b64e9d5cd6df356c156293d6dc1feb"
+    },
+    {
+      "name": "forge_paving",
+      "title": "Forge Paving",
+      "file": "assets\\forge_paving.png",
+      "raw": "assets\\forge_paving.bmp",
+      "camera": {
+        "x": 30.5,
+        "z": 30.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.113,
+      "raw_sha256": "742971f1d07e42540fe2b1954a42669656515b1b61c4a95f57f75b91df8d188a",
+      "png_sha256": "05aa23fc99cbcb48aef0b9badca83838857c9acc92c22800f6e7dd94afa08027",
+      "scene_sha256": "de1204f11b39e5726ef6cb15504e20ea8e4cb4d4512259ee3558beed9f62bbdc"
+    },
+    {
+      "name": "ash_paving",
+      "title": "Ash Paving",
+      "file": "assets\\ash_paving.png",
+      "raw": "assets\\ash_paving.bmp",
+      "camera": {
+        "x": 30.5,
+        "z": 30.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.116,
+      "raw_sha256": "a0aeda46354b94b6226246f2bbef96ffb1b95778e0e367868e2f6fd4b84e2a98",
+      "png_sha256": "cf377af206878782cf4b4a85e47f69cae49cfbd901a4c2f6b4e8579aefc84a0a",
+      "scene_sha256": "aeddccdf281e9c0a596a31490f2c72da471c008b77609428b06145b213787924"
+    },
+    {
+      "name": "garden_soil",
+      "title": "Garden Soil",
+      "file": "assets\\garden_soil.png",
+      "raw": "assets\\garden_soil.bmp",
+      "camera": {
+        "x": 30.5,
+        "z": 30.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.121,
+      "raw_sha256": "3a3b9b735a588064103f7fadd8cdd27ce348826f0d5a875761513d1957382407",
+      "png_sha256": "cccc2351e26a1ecc2bb0129932c30300e2d709b955268ce107fec175f245d54c",
+      "scene_sha256": "49cba3322edc1633871046144f75ff51f1ea20a6e385b565685e98b95c074618"
+    },
+    {
+      "name": "wall",
+      "title": "Wall",
+      "file": "assets\\wall.png",
+      "raw": "assets\\wall.bmp",
+      "camera": {
+        "x": 30.5,
+        "z": 30.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.109,
+      "raw_sha256": "4a842b28662c29f732cab5792128e157421f5794d86f9b1c1708191da5d74b49",
+      "png_sha256": "8cb43a0de033b8889d8d13ff7ddb0eaf93c6be9d7525c28573570e3511864e5c",
+      "scene_sha256": "db702b27474ff8f42839d55f27d3aeaf0fc50c027623820b0becba26e9308154"
+    },
+    {
+      "name": "parapet",
+      "title": "Parapet",
+      "file": "assets\\parapet.png",
+      "raw": "assets\\parapet.bmp",
+      "camera": {
+        "x": 30.5,
+        "z": 30.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.115,
+      "raw_sha256": "68dce4f8be7fc7119093b0ce38cf67c5c381dc82bd74e128318463e230510fc8",
+      "png_sha256": "245fa33b7e29fe7f30d03058e6a25d9fefef5c987bdb369fc4a7afe7fb5ffaaf",
+      "scene_sha256": "c88de69ac90b9e9fdf9a7f187186bec0ce565195813ac30de3285ef6d05275ae"
+    },
+    {
+      "name": "wall_broken",
+      "title": "Wall Broken",
+      "file": "assets\\wall_broken.png",
+      "raw": "assets\\wall_broken.bmp",
+      "camera": {
+        "x": 30.5,
+        "z": 30.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.106,
+      "raw_sha256": "564e56a9f313707244367593f5f26dae6525583ea6b8b72487ce9203e3d05e9c",
+      "png_sha256": "64433edf4c84d5ff054d4c061683d8991c3f61a51b7ee2434a2a4f36960a9efd",
+      "scene_sha256": "7c73cd517a35cb8530ad92dd345a732f99966b27a2220648524d41bd8ed46b54"
+    },
+    {
+      "name": "pillar",
+      "title": "Pillar",
+      "file": "assets\\pillar.png",
+      "raw": "assets\\pillar.bmp",
+      "camera": {
+        "x": 30.5,
+        "z": 30.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.108,
+      "raw_sha256": "2feddd6fd13897bc3a9a48ef2a0c07b170443f51c813c3c6e8f6157b48b3efbd",
+      "png_sha256": "74aa0ebaeefd642dcdd0a0323d042b2dae092090c1a39994b5c81de2c398174f",
+      "scene_sha256": "c7a38bd8a97cc92a8767e9ae353018898537417d5c8cb4228ec957cef58dec96"
+    },
+    {
+      "name": "grand_pillar",
+      "title": "Grand Pillar",
+      "file": "assets\\grand_pillar.png",
+      "raw": "assets\\grand_pillar.bmp",
+      "camera": {
+        "x": 31.0,
+        "z": 31.0,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.144,
+      "raw_sha256": "fa5260f3baeaf69eb9506e05d928e38edf0704200dd32cdb764b21e88653d463",
+      "png_sha256": "53499302f2fd3f93ec468f2c09575490cf13f0e3e8d48e47d32dd55868275080",
+      "scene_sha256": "3724c87506e27cbd806cb2c45efbb4e0d8882b77eefebec297fd7f0d526219e2"
+    },
+    {
+      "name": "arch",
+      "title": "Arch",
+      "file": "assets\\arch.png",
+      "raw": "assets\\arch.bmp",
+      "camera": {
+        "x": 32.0,
+        "z": 30.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.118,
+      "raw_sha256": "538924b4014be1a54e89112c0286fec70602c49feacee325c2a8c35015c8cee6",
+      "png_sha256": "08f90fe6bd11cfdab0a435d37beecc6cf6647ec1665bee15640db4e7f6dc83e9",
+      "scene_sha256": "62a8b9cf9fede111ca312f6964e590a0bd2acd87005fc67342d465d288538350"
+    },
+    {
+      "name": "broken_arch",
+      "title": "Broken Arch",
+      "file": "assets\\broken_arch.png",
+      "raw": "assets\\broken_arch.bmp",
+      "camera": {
+        "x": 32.0,
+        "z": 30.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.125,
+      "raw_sha256": "b72b1886ce6ff9e9d330dc5e56e66ca9cb2a9e2c64a9b44106456161239d7cce",
+      "png_sha256": "3b76bc4b240c9b27e75955af59c6008685d65a6aa455dd53fae93844d194ee05",
+      "scene_sha256": "2190c9b12d27e072724be62d9f7a94d0db17ed8d839d5ea17e252e9e3e7fa228"
+    },
+    {
+      "name": "great_arch",
+      "title": "Great Arch",
+      "file": "assets\\great_arch.png",
+      "raw": "assets\\great_arch.bmp",
+      "camera": {
+        "x": 33.0,
+        "z": 31.0,
+        "yaw": 2048,
+        "distance": 1680,
+        "preset": "detail"
+      },
+      "seconds": 0.127,
+      "raw_sha256": "3ca5f3aed3f552dcac9e49cb01c67bf6d617427ac0adc09c29026cbb2c9942a8",
+      "png_sha256": "4bc57816e0f45981b196ad5a7bf567519e8e56ae14d6b27de9f5b4a2934a7485",
+      "scene_sha256": "980ba9b17bc8237f699447e880866204f67079089c7fe7e41d78effad57fd3a6"
+    },
+    {
+      "name": "restoration_font",
+      "title": "Restoration Font",
+      "file": "assets\\restoration_font.png",
+      "raw": "assets\\restoration_font.bmp",
+      "camera": {
+        "x": 32.5,
+        "z": 32.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.155,
+      "raw_sha256": "b05126c4717243dd978028ecfcfc61ce18a903347c4f515260f61a89616dc437",
+      "png_sha256": "801fe031e27e37ace5e3257fc09f518e815b21fec4ae5de60e11e87daa5fb9c4",
+      "scene_sha256": "0f6ffbfe5e88e5bf65aed82e237f3f129332e8abbe11133cd5f994bc9b1c9c35"
+    },
+    {
+      "name": "furnace",
+      "title": "Furnace",
+      "file": "assets\\furnace.png",
+      "raw": "assets\\furnace.bmp",
+      "camera": {
+        "x": 32.0,
+        "z": 32.0,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.173,
+      "raw_sha256": "21170a94ff29e427794ea1a01ae341f4ad7f7fc160d3900712a57ea167ecd38b",
+      "png_sha256": "8d9b6ea29a81a5ef8fa3421ed952eb49ada9b34895e8b82b0c86141959cb24be",
+      "scene_sha256": "1385d304ede22f5a6aa1652dc3a0b22a5ab581f3af40a423f3ea6abb5caf4187"
+    },
+    {
+      "name": "great_crucible",
+      "title": "Great Crucible",
+      "file": "assets\\great_crucible.png",
+      "raw": "assets\\great_crucible.bmp",
+      "camera": {
+        "x": 34.0,
+        "z": 33.0,
+        "yaw": 2048,
+        "distance": 2240,
+        "preset": "detail"
+      },
+      "seconds": 0.265,
+      "raw_sha256": "7d8b99da7a03ce462197942cd33cd3a41911e9d2d03f58cfa353ba13b9e6936d",
+      "png_sha256": "b2dc84fca5cafd16f2baf88077e8227bd2c5e13b4474f01c907e3393fc2bab1e",
+      "scene_sha256": "f607493dc85de59feedf9102599ef34517b944dadfc86944f3580469327daaae"
+    },
+    {
+      "name": "waterwheel",
+      "title": "Waterwheel",
+      "file": "assets\\waterwheel.png",
+      "raw": "assets\\waterwheel.bmp",
+      "camera": {
+        "x": 32.0,
+        "z": 32.0,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.22,
+      "raw_sha256": "c1d994c9a83621c9c420f9ce8cea1f791631d23b68bc0479da501d7f2be482d7",
+      "png_sha256": "04bcc83a08f52c6f09f5ee8c3ee10f2f3f3f071ecff933e5e3db52a8eae5f642",
+      "scene_sha256": "11634f62584978273ff03da9bf2cf468a8e4b3b4a75ad6928ec19e06bfd65d58"
+    },
+    {
+      "name": "pressure_pump",
+      "title": "Pressure Pump",
+      "file": "assets\\pressure_pump.png",
+      "raw": "assets\\pressure_pump.bmp",
+      "camera": {
+        "x": 31.0,
+        "z": 31.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.187,
+      "raw_sha256": "da5650f68fe1b896ebea998e70755f723ff20124fd1c9cac0333e6b1edc7de15",
+      "png_sha256": "9e7a026c5eeb86c169621b0943ed99d15ca89cb91d8cea20a80e194266c5bfb4",
+      "scene_sha256": "668c128d2f09ee8268c06881c9cd0a5173fb08b9a66edb708ada13f6603f8241"
+    },
+    {
+      "name": "pipe",
+      "title": "Pipe",
+      "file": "assets\\pipe.png",
+      "raw": "assets\\pipe.bmp",
+      "camera": {
+        "x": 30.5,
+        "z": 31.0,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.188,
+      "raw_sha256": "09eed7870b4137f25141383923cabdf58e630d9ba81931ef50a3ca96d683697c",
+      "png_sha256": "046a09444e1b25e8ca3499d2ac8e784a40ce7ef6f18f777a320b37c1e892b8fb",
+      "scene_sha256": "4eb7d8a49506c656400bef5b89a505b35b50352d24db8f718661fad33f738846"
+    },
+    {
+      "name": "workbench",
+      "title": "Workbench",
+      "file": "assets\\workbench.png",
+      "raw": "assets\\workbench.bmp",
+      "camera": {
+        "x": 31.0,
+        "z": 30.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.121,
+      "raw_sha256": "18f620a44ede4ca28fec3735ae2550640528083b1629d8c7302bbb96b755b25e",
+      "png_sha256": "d82fa1a5f5a4313b0244668fc2c651412beb8eb3b1bd0f9c2461e72f56324d93",
+      "scene_sha256": "a7c6787fd343a4ea6d07f7e36d853642bd2774a350b43dd6bad03c3c2eab00af"
+    },
+    {
+      "name": "anvil",
+      "title": "Anvil",
+      "file": "assets\\anvil.png",
+      "raw": "assets\\anvil.bmp",
+      "camera": {
+        "x": 31.0,
+        "z": 30.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.203,
+      "raw_sha256": "85b670a799af7527b73ceb6daf0b6e88f9e296ead0787657fbbaa3f33374dceb",
+      "png_sha256": "7d58dcf2ea29733f7512bfd74a62826c02b56fc5c9730f391a8907a6578633ad",
+      "scene_sha256": "d1a76f9a51ecd2b2c5bbd47eac8da1862ade046ca3ba0c490a561ab7b5b26d3a"
+    },
+    {
+      "name": "vent",
+      "title": "Vent",
+      "file": "assets\\vent.png",
+      "raw": "assets\\vent.bmp",
+      "camera": {
+        "x": 31.0,
+        "z": 31.0,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.144,
+      "raw_sha256": "c1733e478c0d95ff76cfcda111c6fe4463f1b63ef55775f4c0ce40d50eb0d501",
+      "png_sha256": "4b55f6fc26070829f21d34b67fc7512e94b3a319dbd0ee596b85543c285282f1",
+      "scene_sha256": "f038567881abf287e562c504e2ca4d8117984dbd5583118af5ca497ef49296df"
+    },
+    {
+      "name": "rubble",
+      "title": "Rubble",
+      "file": "assets\\rubble.png",
+      "raw": "assets\\rubble.bmp",
+      "camera": {
+        "x": 31.0,
+        "z": 31.0,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.134,
+      "raw_sha256": "768468fffde8539f96fb5985a9a34aef694e88655fb5e57fe4f5b019611ad7a3",
+      "png_sha256": "aedd6c86a451becbe59cd6e936d50e7ec34b55d61937ac2c71b6aaf5bdcbf53c",
+      "scene_sha256": "9e025bdd0559b9b89ca5e90236a0b8d13cd39a563ad14a27345c8443f224f3a5"
+    },
+    {
+      "name": "ore_outcrop",
+      "title": "Ore Outcrop",
+      "file": "assets\\ore_outcrop.png",
+      "raw": "assets\\ore_outcrop.bmp",
+      "camera": {
+        "x": 31.0,
+        "z": 31.0,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.112,
+      "raw_sha256": "7d89cde85db8bf8c19b995bdc465898de1e4b9838c0f4f0370eef6976b09f101",
+      "png_sha256": "5d1327897347acca102aae2eed96ba893fe833781e2940f30974fa80d49fe8f7",
+      "scene_sha256": "0c37f26e65817cb20608395388710c2b70e30282496654b75256b22e76b4c18b"
+    },
+    {
+      "name": "stores",
+      "title": "Stores",
+      "file": "assets\\stores.png",
+      "raw": "assets\\stores.bmp",
+      "camera": {
+        "x": 31.0,
+        "z": 31.0,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.108,
+      "raw_sha256": "383f9cdf248e2f86ffea2d09c87be2becbc6e70a225441d3cc61eceb8fe3a4b4",
+      "png_sha256": "6b2d7056a761dd6238ca78a72f31c3c67ebdf90ec3f2ff438671caaa9890e91c",
+      "scene_sha256": "2431c63f8bf8e96902b6593bbe51d0f4e892994b290aa565e04d5e55c605c75c"
+    },
+    {
+      "name": "timber_stack",
+      "title": "Timber Stack",
+      "file": "assets\\timber_stack.png",
+      "raw": "assets\\timber_stack.bmp",
+      "camera": {
+        "x": 31.0,
+        "z": 31.0,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.119,
+      "raw_sha256": "4ab6a384aa09c5dc99348efaf87291bd6158d8ca3c6d60b7e592525ddb38ab24",
+      "png_sha256": "4b2921bc134be0727eb03b80eb1c15d85502a8e66663bc7f8d9addcb8f6f08c0",
+      "scene_sha256": "ecba9ed09a1bf262a792f683a60a89a6749b81c4038371d3cd726a1342309041"
+    },
+    {
+      "name": "root_tree",
+      "title": "Root Tree",
+      "file": "assets\\root_tree.png",
+      "raw": "assets\\root_tree.bmp",
+      "camera": {
+        "x": 31.5,
+        "z": 31.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.139,
+      "raw_sha256": "098940b8ff5d0407335ce8f40a8364d9ae1675ae0313d4b68f005e1a1246a935",
+      "png_sha256": "198f38c989736135ec60614ca920c6687f63bfb25d619c609c3f020d37a66279",
+      "scene_sha256": "1d84d2c8c4152ad0b39e95fbd34076e44dd2c88bc36fc3b3de58ec963662a971"
+    },
+    {
+      "name": "fungus",
+      "title": "Fungus",
+      "file": "assets\\fungus.png",
+      "raw": "assets\\fungus.bmp",
+      "camera": {
+        "x": 31.0,
+        "z": 31.0,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.13,
+      "raw_sha256": "14b66af61e4e49e4e50f68a1383ab4034f4c5c51d8f65834512d53050d0eda81",
+      "png_sha256": "6290d3f48647772dcea8b199795784bacf7ed9a0105d526537f7cb89453bc8f2",
+      "scene_sha256": "207fea939d8ede7036c25c4242fa87c0e540c235462ae9fee8c2381c1beadb88"
+    },
+    {
+      "name": "bridge",
+      "title": "Bridge",
+      "file": "assets\\bridge.png",
+      "raw": "assets\\bridge.bmp",
+      "camera": {
+        "x": 32.0,
+        "z": 31.0,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.136,
+      "raw_sha256": "01f573bd8299035932170df70c5134f1e009d93751b276d2bba7cd2fd6b54701",
+      "png_sha256": "17bf1dc7779b2ddbe3afd5369184d05c1d0abf93dd7e8f025957e920d9c8e484",
+      "scene_sha256": "0d69a94541e2c7600c41033ef88cacdcec33efddcd597ade0977bfc0dbe5732a"
+    },
+    {
+      "name": "water",
+      "title": "Water",
+      "file": "assets\\water.png",
+      "raw": "assets\\water.bmp",
+      "camera": {
+        "x": 30.5,
+        "z": 30.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.11,
+      "raw_sha256": "ad7faf9be4bdb3d6f45b8b1753c3513fe730df0fc5041d33d9891a718e5cda03",
+      "png_sha256": "798a683a11af528032671e11bcc596e7f9b5e0620623f9ab4bb72c0941c7197d",
+      "scene_sha256": "89c093db700d2b6aa6008eb4ca47bbd8f4258c01cb7d6e41a508d1afa0653882"
+    },
+    {
+      "name": "brazier",
+      "title": "Brazier",
+      "file": "assets\\brazier.png",
+      "raw": "assets\\brazier.bmp",
+      "camera": {
+        "x": 30.5,
+        "z": 30.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.107,
+      "raw_sha256": "30aa31a837ce3d781b4df65ed5dd11deee19551d08fc69ac86a8f4e32dd1e41e",
+      "png_sha256": "f5efdaf247895ba09745bb4774e8302ef68c4d643d721c814779c74a3b995194",
+      "scene_sha256": "54fe32232d73b3489ab62d52920d24dfaa4fa093ec1a94f9479e1b596fa78967"
+    },
+    {
+      "name": "banner",
+      "title": "Banner",
+      "file": "assets\\banner.png",
+      "raw": "assets\\banner.bmp",
+      "camera": {
+        "x": 31.0,
+        "z": 30.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.112,
+      "raw_sha256": "9acf79f420222f21e9d0edd1ce989f8e52a4c443b452bf1d32921fda4de85959",
+      "png_sha256": "2d4549cd6f5581d08fb3aac277746e9dff48ed9c3927f1e66515f582a3ec53f4",
+      "scene_sha256": "ba9d509ccb11f346a967632a3f23d69e232f8f32fdee56b359198faeb9ff561a"
+    },
+    {
+      "name": "scale_figure",
+      "title": "Scale Figure",
+      "file": "assets\\scale_figure.png",
+      "raw": "assets\\scale_figure.bmp",
+      "camera": {
+        "x": 30.5,
+        "z": 30.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.108,
+      "raw_sha256": "b04b5631cdefafe53bba2a399926645ed0487fadd8ff0c20ab18e7e35339a3c9",
+      "png_sha256": "626f88e4eafcc725f26f65691ec69ffe356a1cb2f957fde888e89d897ab53cee",
+      "scene_sha256": "c35cd3d80f13b26c75e25f50400e5ba10f73f35bff870ab42ff781062985efb7"
+    },
+    {
+      "name": "ascent_stair",
+      "title": "Ascent Stair",
+      "file": "assets\\ascent_stair.png",
+      "raw": "assets\\ascent_stair.bmp",
+      "camera": {
+        "x": 33.0,
+        "z": 33.0,
+        "yaw": 2048,
+        "distance": 1680,
+        "preset": "detail"
+      },
+      "seconds": 0.127,
+      "raw_sha256": "a14e79b28af9dee4c8cbca769bf4c3138a20ea0942a9fa7fba602f186e1d0afd",
+      "png_sha256": "b245609e21f17c43b5915a27089a57b95571490abcea242c6d5c63840c700797",
+      "scene_sha256": "40a1e79390a60c3906548766248c845a8f8f4133c70912048339ac4bb70908ea"
+    },
+    {
+      "name": "railing",
+      "title": "Railing",
+      "file": "assets\\railing.png",
+      "raw": "assets\\railing.bmp",
+      "camera": {
+        "x": 30.5,
+        "z": 30.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.114,
+      "raw_sha256": "ab3f65305792fc42fafdac4a0a0465c6aa98ef8e476a470ef75674a1499af24b",
+      "png_sha256": "a9e4edddbaa9fadeb4b9de28a0d3c01abc907afe9db6df634aa1fb7d2a51fc68",
+      "scene_sha256": "411578b72ebfe77161d031d863193c17210a9daada3fbb38740fd785becdb6ab"
+    },
+    {
+      "name": "metal_plate",
+      "title": "Metal Plate",
+      "file": "assets\\metal_plate.png",
+      "raw": "assets\\metal_plate.bmp",
+      "camera": {
+        "x": 30.5,
+        "z": 30.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.112,
+      "raw_sha256": "35aab125fdbd8a7dd2e679652efe1508e6434f33e22f815c87e57391b722fb89",
+      "png_sha256": "ed6cb58460693518c85bc7aecc6851dd1eb1bd745561510dbb7b8cf4039fbdee",
+      "scene_sha256": "5be56733993b8c450158b9ca1e08796db2781bf8d88155605a27cbaa414dfe6a"
+    },
+    {
+      "name": "sanctuary_seal",
+      "title": "Sanctuary Seal",
+      "file": "assets\\sanctuary_seal.png",
+      "raw": "assets\\sanctuary_seal.bmp",
+      "camera": {
+        "x": 33.5,
+        "z": 33.5,
+        "yaw": 2048,
+        "distance": 1960,
+        "preset": "detail"
+      },
+      "seconds": 0.114,
+      "raw_sha256": "73e26b8c50db369957bcc7d193dd65744ed74182f0d475245d3d671c12f74e08",
+      "png_sha256": "6756cbbc23106138207547b8a2694e0caed420ad6473f80e9d0411d9ba7d70e3",
+      "scene_sha256": "39dd78bb3802f246fd1a6beb19ab564632dbd5a66132f05970424655cdf19de3"
+    },
+    {
+      "name": "track",
+      "title": "Track",
+      "file": "assets\\track.png",
+      "raw": "assets\\track.bmp",
+      "camera": {
+        "x": 30.5,
+        "z": 31.0,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.115,
+      "raw_sha256": "9cc339373ea3c0129091f8cb8cc2812f6355ba262f838ece80496a2650677c10",
+      "png_sha256": "79e9a1ac47af00363ee7f974cf64a474cebc402d0184cb2b8450701809d43657",
+      "scene_sha256": "c7cd9e711dcee6cc7510f10674e2bcfc7bd0aad1915bcce0606c3d2a8b34295d"
+    },
+    {
+      "name": "ore_cart",
+      "title": "Ore Cart",
+      "file": "assets\\ore_cart.png",
+      "raw": "assets\\ore_cart.bmp",
+      "camera": {
+        "x": 31.0,
+        "z": 31.0,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.113,
+      "raw_sha256": "d71c1476918be5759a1b6ab1533b34327451b33f12c135e64d154e6ff750bfd4",
+      "png_sha256": "db33172f0d894df25371e318e68596fec37e9ee04e8faff3b53776260dcd70e2",
+      "scene_sha256": "339afcdc9f6d1ca355f4039ab10dbf9af232c3b61a56fbeaccdb6bc96f6862da"
+    },
+    {
+      "name": "bank_counter",
+      "title": "Bank Counter",
+      "file": "assets\\bank_counter.png",
+      "raw": "assets\\bank_counter.bmp",
+      "camera": {
+        "x": 31.5,
+        "z": 31.0,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.109,
+      "raw_sha256": "0f5f820282667bf84a7de55e8982ce1e97f38457f078f0177e6079ca9dc462f7",
+      "png_sha256": "57a6f7127c81d196b88e8b08c29aacddffe724dced664da64c8e296a1d05f190",
+      "scene_sha256": "886d66f25286c165ca92bfe3564e09959685f3dceda17d6014d232074af00105"
+    },
+    {
+      "name": "coolant_trough",
+      "title": "Coolant Trough",
+      "file": "assets\\coolant_trough.png",
+      "raw": "assets\\coolant_trough.bmp",
+      "camera": {
+        "x": 31.5,
+        "z": 31.0,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.11,
+      "raw_sha256": "782e66e18c0d87039549f692e8a8c22e772537d43cc090af66f6868f30331fa5",
+      "png_sha256": "fa5231ed006c5e50f6390d161075ae8c1a1dafdbc40aa9d5d3709dff00a7a8c2",
+      "scene_sha256": "8d6010a50f11dee0c2db5cedb60efee3e707387961d9c336200e5381bee4bbbb"
+    },
+    {
+      "name": "casting_hoist",
+      "title": "Casting Hoist",
+      "file": "assets\\casting_hoist.png",
+      "raw": "assets\\casting_hoist.bmp",
+      "camera": {
+        "x": 32.0,
+        "z": 31.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.136,
+      "raw_sha256": "c06a581cb2e4eb7f0eb9a5d50a189038971cddeabad0619dba96a1385c87806a",
+      "png_sha256": "7975bf466318167938f68c186d82fa6ceed28576dc9083d72c9ba1cbc8c42ac0",
+      "scene_sha256": "a77141454d6c3316cfa55a1c8cefd71d132e625ea25b64ecb053c6426c59dff0"
+    },
+    {
+      "name": "rock_buttress",
+      "title": "Rock Buttress",
+      "file": "assets\\rock_buttress.png",
+      "raw": "assets\\rock_buttress.bmp",
+      "camera": {
+        "x": 32.0,
+        "z": 31.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.113,
+      "raw_sha256": "5a7d361fd9cb5d9f45959f2ada18b462c8d9c6be75c7ec07077690283e834bb7",
+      "png_sha256": "04f015fea8393dd43c3b80de42ac14fdfdaf5321a4817b8a225faf1650d10140",
+      "scene_sha256": "55c2be668cf2ebeadba83056ea1384c577815c4562b4aa9b09308b099a28bbce"
+    },
+    {
+      "name": "heat_fissure",
+      "title": "Heat Fissure",
+      "file": "assets\\heat_fissure.png",
+      "raw": "assets\\heat_fissure.bmp",
+      "camera": {
+        "x": 30.5,
+        "z": 31.0,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.115,
+      "raw_sha256": "5f5e0ef5c0ecd20c974f21f712dd4dd272a3a49b9bf15626896fc8fc2972d439",
+      "png_sha256": "50f957dbc0390381de4e450a733002037e38df39dbc02790727b3145cd14fa7e",
+      "scene_sha256": "438546c1db9a6d66828d12575272b5d03ae1b93b2d638ae5dc7af71cff925e20"
+    },
+    {
+      "name": "wall_relief",
+      "title": "Wall Relief",
+      "file": "assets\\wall_relief.png",
+      "raw": "assets\\wall_relief.bmp",
+      "camera": {
+        "x": 31.0,
+        "z": 30.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.116,
+      "raw_sha256": "b6d1de5d5eb4984e589dcc4295ede241eef683622c2a59b27cd4e8f1e3c2285d",
+      "png_sha256": "6bfa76a3de59128ebf6feb20fbb034898a033404f58fa5e7a944c0c2d898dbf7",
+      "scene_sha256": "3c853eefd7d639b0f65882936ee98eca09fac7d8d0e1d7eda68f617c3a7ce148"
+    },
+    {
+      "name": "supply_rack",
+      "title": "Supply Rack",
+      "file": "assets\\supply_rack.png",
+      "raw": "assets\\supply_rack.bmp",
+      "camera": {
+        "x": 31.0,
+        "z": 30.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.112,
+      "raw_sha256": "19f6206b9336767c9e672bf16a433d9893852789a5244219f6c706e48036ddba",
+      "png_sha256": "cf75b82ecf0834b343b2f45bc8026afd6ee454319e34694a6aa8ac674f52e6b2",
+      "scene_sha256": "89a70fce1c950c5a55efb0868def725d824a125c46ce854357c3142a8776e6cc"
+    },
+    {
+      "name": "paving_v0",
+      "title": "Paving V0",
+      "file": "assets\\paving_v0.png",
+      "raw": "assets\\paving_v0.bmp",
+      "camera": {
+        "x": 30.5,
+        "z": 30.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.115,
+      "raw_sha256": "e7d2aa0868325775298144108e404ffd8394aaada1304d88dbf8bd61bfaad8b9",
+      "png_sha256": "0ce18256466442767eb440fa7f4e6a6b1866a11b54e669a661d2cd022ee81279",
+      "scene_sha256": "3b7a6fb98a10ba91ebd0ecccfe5baf2a5276e541e4b6317f8d0dc2ac87c9abd1"
+    },
+    {
+      "name": "paving_v1",
+      "title": "Paving V1",
+      "file": "assets\\paving_v1.png",
+      "raw": "assets\\paving_v1.bmp",
+      "camera": {
+        "x": 30.5,
+        "z": 30.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.113,
+      "raw_sha256": "16075859d7bbf8555814cfb4483e6f3c575c7943b758200756617d6b8cf14d22",
+      "png_sha256": "29678eb141f61c4be925368aca1212169a825b02f8a7c8e398965301d680af15",
+      "scene_sha256": "179bd2aff7df0c3eedcad17f390df695294cd17992f2668386c0096dab88cb8e"
+    },
+    {
+      "name": "sanctuary_paving_v0",
+      "title": "Sanctuary Paving V0",
+      "file": "assets\\sanctuary_paving_v0.png",
+      "raw": "assets\\sanctuary_paving_v0.bmp",
+      "camera": {
+        "x": 30.5,
+        "z": 30.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.114,
+      "raw_sha256": "87c8f759a49cf13f139b261f17a60eb7ebc16559be69d100e6adc8eec3a48493",
+      "png_sha256": "57edb5872001f7d3e31f4f47cf6e80e6b1324864fb50ec665cc6fbf5719cc5ac",
+      "scene_sha256": "a370e0dfd7d61203572a32dfc7a0ce293d05cb98026a5654f29a7c85d18101a5"
+    },
+    {
+      "name": "sanctuary_paving_v1",
+      "title": "Sanctuary Paving V1",
+      "file": "assets\\sanctuary_paving_v1.png",
+      "raw": "assets\\sanctuary_paving_v1.bmp",
+      "camera": {
+        "x": 30.5,
+        "z": 30.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.112,
+      "raw_sha256": "71f1b6f071a33f33a4c651aeba7e5e85b1094d493d7f2da293a731cd6875ecc5",
+      "png_sha256": "c72e4cf5d360ae0feebbd80d5ec544fd7390a7b15510d81ca2e81cf192efaa0f",
+      "scene_sha256": "c2b6dc70c7071c64fc5472660c3e47f61856f996592c5ee10687e7ea4adc9f53"
+    },
+    {
+      "name": "forge_paving_v0",
+      "title": "Forge Paving V0",
+      "file": "assets\\forge_paving_v0.png",
+      "raw": "assets\\forge_paving_v0.bmp",
+      "camera": {
+        "x": 30.5,
+        "z": 30.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.118,
+      "raw_sha256": "25c263cfb1eeb9b9866c8305bebbf819bb3a4a8276d2ed4d590de40e8ef21ef4",
+      "png_sha256": "8c7f04cbf1428f54b5aa6154c7379d513f12e619b15ef3cf2cabadc466450baa",
+      "scene_sha256": "2606dcc00757c38989137dae5b834d20a5287a42f3ff4b582c1d90f46dd043f9"
+    },
+    {
+      "name": "forge_paving_v1",
+      "title": "Forge Paving V1",
+      "file": "assets\\forge_paving_v1.png",
+      "raw": "assets\\forge_paving_v1.bmp",
+      "camera": {
+        "x": 30.5,
+        "z": 30.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.111,
+      "raw_sha256": "e22c59f3ba0d9d8e4cc8caf043cce8720a9849f164b9918ec96c7b32400865f2",
+      "png_sha256": "0268fb8150e470eb0331a99a8789f8f3e3272f883ac27d438e387b7982f519c1",
+      "scene_sha256": "0d9c5dd3cb1995fa4e4bd2e1bb18b7c7c2abe46d21eba946df691076cfc3047c"
+    },
+    {
+      "name": "ash_paving_v0",
+      "title": "Ash Paving V0",
+      "file": "assets\\ash_paving_v0.png",
+      "raw": "assets\\ash_paving_v0.bmp",
+      "camera": {
+        "x": 30.5,
+        "z": 30.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.132,
+      "raw_sha256": "de9951529ac281de7d28fd7e504c8d1bf45db9ad480850d43fdd4981d18ac8df",
+      "png_sha256": "33005930200bf948c7a8044420ed9f487e6083e0a1118f128bb156bb1bf20910",
+      "scene_sha256": "77d30dfda774a1105cbfc0016119fdd42ddeb442264d0e24890767d2727d9ad0"
+    },
+    {
+      "name": "ash_paving_v1",
+      "title": "Ash Paving V1",
+      "file": "assets\\ash_paving_v1.png",
+      "raw": "assets\\ash_paving_v1.bmp",
+      "camera": {
+        "x": 30.5,
+        "z": 30.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.118,
+      "raw_sha256": "ceb0606e6381986801e650bdafe114782f8500e6b43a19371577584026386eb7",
+      "png_sha256": "610eaef9d26ab55a516f3f9465fd3390451fc2be042535625d20b79905024cc3",
+      "scene_sha256": "5a33f3c8978f25f1877861b56f6cc4a90a9adf497ba4ad2d9aeb7ed018786736"
+    },
+    {
+      "name": "garden_soil_v0",
+      "title": "Garden Soil V0",
+      "file": "assets\\garden_soil_v0.png",
+      "raw": "assets\\garden_soil_v0.bmp",
+      "camera": {
+        "x": 30.5,
+        "z": 30.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.108,
+      "raw_sha256": "37a14cc9f0c75d90aab43d17324b617588edb471c39b21a1131662ac1606d94f",
+      "png_sha256": "eff062b7430cdca4a50f8f261189a3950933c2dbee1b2431235f088540e3e112",
+      "scene_sha256": "c6807c30f997cae3372bc60f0306547c8c3bb080e4dae039044c0ce3c0ec477b"
+    },
+    {
+      "name": "garden_soil_v1",
+      "title": "Garden Soil V1",
+      "file": "assets\\garden_soil_v1.png",
+      "raw": "assets\\garden_soil_v1.bmp",
+      "camera": {
+        "x": 30.5,
+        "z": 30.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.116,
+      "raw_sha256": "72f20263a18b23d53dd6534289342b20590e5603ec8fc45869568f0ebf60c4ec",
+      "png_sha256": "a287d08d8ea5587614967487e5e77169e992e77dae022fc3ffb41ccf957ff2cf",
+      "scene_sha256": "68f1756ab72eed6c12d11377030ebb1b9823f379d327054d21711e581465dc2b"
+    },
+    {
+      "name": "moss_ground",
+      "title": "Moss Ground",
+      "file": "assets\\moss_ground.png",
+      "raw": "assets\\moss_ground.bmp",
+      "camera": {
+        "x": 30.5,
+        "z": 30.5,
+        "yaw": 2048,
+        "distance": 1400,
+        "preset": "detail"
+      },
+      "seconds": 0.126,
+      "raw_sha256": "9f117da9d568d6c0de31412838ac3573a0b70eacd28a4397226dc1610b2441ab",
+      "png_sha256": "25a80e1cab57340f750127ec377b6a1cae042481cd2a5aeb40695967f555e205",
+      "scene_sha256": "dfead8e55d6d5d33755d4133ac0a004725892bc08d70fcbeccc07716c4b5ee8a"
+    },
+    {
+      "name": "long_bridge",
+      "title": "Long Bridge",
+      "file": "assets\\long_bridge.png",
+      "raw": "assets\\long_bridge.bmp",
+      "camera": {
+        "x": 33.0,
+        "z": 31.0,
+        "yaw": 2048,
+        "distance": 1680,
+        "preset": "detail"
+      },
+      "seconds": 0.116,
+      "raw_sha256": "1fa7b39ab81f0722bcc0f3c8ae59e9b83954e46cd45190976b88f30bf594162d",
+      "png_sha256": "dd5a65ccb6cefc41271dfdab098ac124a08595deb304a0fb1c9f401dbf3f3e17",
+      "scene_sha256": "900a689eb0dc96d6bc5ccede0104a18391ef1f684808aa4da921dbf5a85110da"
+    },
+    {
+      "name": "curtain_arrival",
+      "title": "Curtain Arrival",
+      "file": "assets\\curtain_arrival.png",
+      "raw": "assets\\curtain_arrival.bmp",
+      "camera": {
+        "x": 42.5,
+        "z": 39.0,
+        "yaw": 2048,
+        "distance": 7000,
+        "preset": "detail"
+      },
+      "seconds": 0.112,
+      "raw_sha256": "7b14677cb60e0e1eafc12350da4892a6bf837e8b451e7eefc458433b85091679",
+      "png_sha256": "4f48bad927f56f11e35f0bcca2f019a8de609362c23afcbe893414957bd6e0b6",
+      "scene_sha256": "111b8dc726e8a98579e1772d4e16cb5b4968f84c7141ae9c35672500306ecce3"
+    },
+    {
+      "name": "curtain_sanctuary",
+      "title": "Curtain Sanctuary",
+      "file": "assets\\curtain_sanctuary.png",
+      "raw": "assets\\curtain_sanctuary.bmp",
+      "camera": {
+        "x": 45.5,
+        "z": 46.0,
+        "yaw": 2048,
+        "distance": 8960,
+        "preset": "detail"
+      },
+      "seconds": 0.117,
+      "raw_sha256": "72065dd2c94cb8360f114c7c111bf474112f9edc6bceabbb0137ce66f504381d",
+      "png_sha256": "bf46370e4f50ce99ae2172a70952faccda84d09ab9482d6c85e43404609a8054",
+      "scene_sha256": "e06d307a16d756da2b1f333f53d56a418205a7d4ed87f30bda458df969a0b601"
+    },
+    {
+      "name": "curtain_workshop",
+      "title": "Curtain Workshop",
+      "file": "assets\\curtain_workshop.png",
+      "raw": "assets\\curtain_workshop.bmp",
+      "camera": {
+        "x": 44.0,
+        "z": 44.0,
+        "yaw": 2048,
+        "distance": 7840,
+        "preset": "detail"
+      },
+      "seconds": 0.109,
+      "raw_sha256": "96fabb7aee7fdaf6137350a00a46f997d017a842624ba6fad5a7d67ed7ec817e",
+      "png_sha256": "86fb0af6fd6d13d9b71824a0dfe34d31c40125e081955468fb3caa60d0f806dd",
+      "scene_sha256": "4e2ef4707336959c21ba076113c89acd209e3209ce936632fd2ed3079a6cd507"
+    },
+    {
+      "name": "curtain_quarry",
+      "title": "Curtain Quarry",
+      "file": "assets\\curtain_quarry.png",
+      "raw": "assets\\curtain_quarry.bmp",
+      "camera": {
+        "x": 43.0,
+        "z": 45.5,
+        "yaw": 2048,
+        "distance": 8680,
+        "preset": "detail"
+      },
+      "seconds": 0.104,
+      "raw_sha256": "d9d9d3a7d5e09eb4d5d4215f9a9daf5cbebd0f6cc5fce697a9bf4b79f8534eb1",
+      "png_sha256": "b2acde5aaf0afcfa233e71791c0a01d7089244e57b80287b81e736653dfa2553",
+      "scene_sha256": "9d90d4bba387ef43c3f83d42333e80da6dad2430eb65e5c5e5247503000167af"
+    },
+    {
+      "name": "curtain_waterworks",
+      "title": "Curtain Waterworks",
+      "file": "assets\\curtain_waterworks.png",
+      "raw": "assets\\curtain_waterworks.bmp",
+      "camera": {
+        "x": 43.5,
+        "z": 44.0,
+        "yaw": 2048,
+        "distance": 7840,
+        "preset": "detail"
+      },
+      "seconds": 0.106,
+      "raw_sha256": "c3f5c86affca269ccc45a66cfb745ede3a00e0cbf6433ae40bb1341b55bc76bb",
+      "png_sha256": "b5e9e58ffd7cd4028701658c94edab1304078a8e2bd9aef343d7ef4992f3b559",
+      "scene_sha256": "64daf253c89698c2da14b36bfbbb084890267a849c0db447c61e4341f86be41f"
+    },
+    {
+      "name": "curtain_garden",
+      "title": "Curtain Garden",
+      "file": "assets\\curtain_garden.png",
+      "raw": "assets\\curtain_garden.bmp",
+      "camera": {
+        "x": 43.0,
+        "z": 43.5,
+        "yaw": 2048,
+        "distance": 7560,
+        "preset": "detail"
+      },
+      "seconds": 0.106,
+      "raw_sha256": "7a39355398e8992c27127ee589d20b233b3f7608cb04383229dae68647663942",
+      "png_sha256": "f2ff8607decf5d3e20b668f849e76dba5fb98e183949f1ab6af1c4b63b8022ff",
+      "scene_sha256": "f811b02cd0bd54aa93cd3191ea2694e656e0104b5bc36df1f3bb9279e3c1f641"
+    },
+    {
+      "name": "curtain_vents",
+      "title": "Curtain Vents",
+      "file": "assets\\curtain_vents.png",
+      "raw": "assets\\curtain_vents.bmp",
+      "camera": {
+        "x": 41.5,
+        "z": 45.5,
+        "yaw": 2048,
+        "distance": 8680,
+        "preset": "detail"
+      },
+      "seconds": 0.102,
+      "raw_sha256": "36b200551f9b6e1c4eea3bc149866ec629d8f0f97949f8f52ab92a8b2d526c57",
+      "png_sha256": "a52064d6b8cb04a69a715687c5b95a0dbbe2441de377ba5f2b05ecf366cc9200",
+      "scene_sha256": "c1b2f1fe7d60b6a81a04ab3bfd4aac88f28f133ab9dc0dc0fc41067f39d95526"
+    },
+    {
+      "name": "curtain_narthex",
+      "title": "Curtain Narthex",
+      "file": "assets\\curtain_narthex.png",
+      "raw": "assets\\curtain_narthex.bmp",
+      "camera": {
+        "x": 42.5,
+        "z": 43.0,
+        "yaw": 2048,
+        "distance": 7280,
+        "preset": "detail"
+      },
+      "seconds": 0.108,
+      "raw_sha256": "2d897f2e10f2219224dd8345e4f6356ee0e76c9e9c98c32b1cd10fd1912b3df4",
+      "png_sha256": "346fde25d904773a33e3ec620b0bc8854318e06529893c4f85190f721b02203a",
+      "scene_sha256": "2f4af0dc8918e260f2c6240dfb243d015d3c359577289f4d66cf54d82d51e152"
+    },
+    {
+      "name": "curtain_foundry",
+      "title": "Curtain Foundry",
+      "file": "assets\\curtain_foundry.png",
+      "raw": "assets\\curtain_foundry.bmp",
+      "camera": {
+        "x": 46.0,
+        "z": 43.5,
+        "yaw": 2048,
+        "distance": 8960,
+        "preset": "detail"
+      },
+      "seconds": 0.114,
+      "raw_sha256": "e99acb4dcfbb80e7ec95c87885408c587e0bdd7e728d3181a4137b9fdd88cfc9",
+      "png_sha256": "eee4a11900b8b741ea648929b7b4904534a209e0888937424e892a219c0d3d43",
+      "scene_sha256": "c82174a0a80a70a3cd4e9e26c8962a8de353ad682208317fb34f855f38d600ae"
+    },
+    {
+      "name": "curtain_ascent",
+      "title": "Curtain Ascent",
+      "file": "assets\\curtain_ascent.png",
+      "raw": "assets\\curtain_ascent.bmp",
+      "camera": {
+        "x": 43.5,
+        "z": 39.5,
+        "yaw": 2048,
+        "distance": 7560,
+        "preset": "detail"
+      },
+      "seconds": 0.111,
+      "raw_sha256": "aa97539ad76785139ffae59dabb454bdfceec90023da21f88bc87b795bfd2924",
+      "png_sha256": "9792788da9e530c41f7a2177b16cc25da99fdedba74b5a10c910b44fb61591f5",
+      "scene_sha256": "22e0e2202981e611ccf33b404ce000042f8039f1e691b0e1e4767958857bc87e"
+    }
+  ]
+}

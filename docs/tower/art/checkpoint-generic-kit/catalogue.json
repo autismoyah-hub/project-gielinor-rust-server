@@ -1,0 +1,2911 @@
+{
+  "origin": "Entirely original procedural geometry; no cache or external art",
+  "blender": "5.2.2 LTS",
+  "palette": {
+    "basalt": [
+      0.075,
+      0.095,
+      0.105,
+      1
+    ],
+    "slate": [
+      0.125,
+      0.165,
+      0.175,
+      1
+    ],
+    "stone": [
+      0.29,
+      0.285,
+      0.235,
+      1
+    ],
+    "edge": [
+      0.23,
+      0.26,
+      0.26,
+      1
+    ],
+    "bone": [
+      0.44,
+      0.4,
+      0.3,
+      1
+    ],
+    "iron": [
+      0.035,
+      0.045,
+      0.05,
+      1
+    ],
+    "brass": [
+      0.32,
+      0.18,
+      0.06,
+      1
+    ],
+    "copper": [
+      0.23,
+      0.095,
+      0.04,
+      1
+    ],
+    "verdigris": [
+      0.055,
+      0.18,
+      0.145,
+      1
+    ],
+    "water": [
+      0.015,
+      0.095,
+      0.13,
+      1
+    ],
+    "ripple": [
+      0.065,
+      0.24,
+      0.26,
+      1
+    ],
+    "ash": [
+      0.14,
+      0.125,
+      0.105,
+      1
+    ],
+    "ember": [
+      0.9,
+      0.15,
+      0.015,
+      1
+    ],
+    "molten": [
+      1,
+      0.48,
+      0.05,
+      1
+    ],
+    "moss": [
+      0.065,
+      0.12,
+      0.055,
+      1
+    ],
+    "timber": [
+      0.13,
+      0.07,
+      0.035,
+      1
+    ],
+    "ore": [
+      0.23,
+      0.14,
+      0.1,
+      1
+    ],
+    "cloth": [
+      0.1,
+      0.22,
+      0.23,
+      1
+    ],
+    "soil": [
+      0.1,
+      0.075,
+      0.045,
+      1
+    ]
+  },
+  "assets": [
+    {
+      "name": "paving",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 16,
+      "triangles": 24,
+      "materials": [
+        "slate"
+      ],
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.19499999284744263,
+          0.012499995529651642
+        ]
+      ],
+      "purpose": "Reusable original untextured floor; top at walking datum",
+      "model_id": 1100000,
+      "object_id": 63000,
+      "vertices_native": 16,
+      "triangles_native": 24,
+      "palette": [
+        33846
+      ],
+      "glb_sha256": "980bf8bb0cd170c759a7e25719bb39dd6e53540931d602ee1812f8d22dbd8818",
+      "model_sha256": "4f64b27bdd498c42318fa14fe03b07945e26b23cbd3d8243e81eb3162d285962",
+      "model_bytes": 240
+    },
+    {
+      "name": "sanctuary_paving",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 16,
+      "triangles": 24,
+      "materials": [
+        "stone"
+      ],
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.19499999284744263,
+          0.012499995529651642
+        ]
+      ],
+      "purpose": "Reusable original untextured floor; top at walking datum",
+      "model_id": 1100001,
+      "object_id": 63001,
+      "vertices_native": 16,
+      "triangles_native": 24,
+      "palette": [
+        9286
+      ],
+      "glb_sha256": "7cb3edd327401379e4fdc1833c42840b6a343ec77ef622990c77400108c30ce4",
+      "model_sha256": "421df43e36b0cfcb4e49cffbdb5ff1a6b166b910f9f4eb2d5e0438e7e7592bae",
+      "model_bytes": 240
+    },
+    {
+      "name": "forge_paving",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 16,
+      "triangles": 24,
+      "materials": [
+        "ore"
+      ],
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.19499999284744263,
+          0.012499995529651642
+        ]
+      ],
+      "purpose": "Reusable original untextured floor; top at walking datum",
+      "model_id": 1100002,
+      "object_id": 63002,
+      "vertices_native": 16,
+      "triangles_native": 24,
+      "palette": [
+        3255
+      ],
+      "glb_sha256": "bb8be6f919b0f3ad9fa16a5bcb5a29c5c4a568f8375c15cd53ffa3d8ad632d5c",
+      "model_sha256": "4f73307209691921de1d4010488d81796cb041914287aef93a0e6cb2860742f6",
+      "model_bytes": 240
+    },
+    {
+      "name": "ash_paving",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 16,
+      "triangles": 24,
+      "materials": [
+        "ash"
+      ],
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.19499999284744263,
+          0.012499995529651642
+        ]
+      ],
+      "purpose": "Reusable original untextured floor; top at walking datum",
+      "model_id": 1100003,
+      "object_id": 63003,
+      "vertices_native": 16,
+      "triangles_native": 24,
+      "palette": [
+        6193
+      ],
+      "glb_sha256": "7cc8c75e6b45c782d9f3da2cdce83d2d57ad569ed700caaa8d8e4897f8f43f64",
+      "model_sha256": "d5490d987a91112f20db289c68439bc0bf41d034945cf3816b56ae1c9d20fbdb",
+      "model_bytes": 240
+    },
+    {
+      "name": "garden_soil",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 16,
+      "triangles": 24,
+      "materials": [
+        "soil"
+      ],
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.19499999284744263,
+          0.012499995529651642
+        ]
+      ],
+      "purpose": "Reusable original untextured floor; top at walking datum",
+      "model_id": 1100004,
+      "object_id": 63004,
+      "vertices_native": 16,
+      "triangles_native": 24,
+      "palette": [
+        6309
+      ],
+      "glb_sha256": "a02f4562a30435a819470772985f123c74809ec6a2d324c1a56737913e1acdc2",
+      "model_sha256": "56b0cf30b4957578985366f8a96166345f2e7ce52cb63e4740ac26991748622d",
+      "model_bytes": 240
+    },
+    {
+      "name": "wall",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 144,
+      "triangles": 264,
+      "materials": [
+        "basalt",
+        "stone",
+        "edge"
+      ],
+      "bounds": [
+        [
+          -0.5149999856948853,
+          0.5149999856948853
+        ],
+        [
+          0.15999998152256012,
+          0.6200000047683716
+        ],
+        [
+          0.027499988675117493,
+          2.6050000190734863
+        ]
+      ],
+      "purpose": "Five-course dressed masonry with a continuous cap",
+      "model_id": 1100005,
+      "object_id": 63005,
+      "vertices_native": 144,
+      "triangles_native": 264,
+      "palette": [
+        9286,
+        32836,
+        35882
+      ],
+      "glb_sha256": "f27377747416cb1ed49f36c8cd24ff4e01ff1342dace129baa825eb9da239aa5",
+      "model_sha256": "2315172a0f5bb56d011e583ff43dfd81d719095f68ceb310386bd723a87e4ee2",
+      "model_bytes": 2339
+    },
+    {
+      "name": "parapet",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 72,
+      "triangles": 132,
+      "materials": [
+        "basalt",
+        "stone",
+        "edge"
+      ],
+      "bounds": [
+        [
+          -0.5149999856948853,
+          0.5149999856948853
+        ],
+        [
+          0.15999998152256012,
+          0.6200000047683716
+        ],
+        [
+          0.11999999731779099,
+          0.8549999594688416
+        ]
+      ],
+      "purpose": "Low broken wall for player-camera visibility",
+      "model_id": 1100006,
+      "object_id": 63006,
+      "vertices_native": 72,
+      "triangles_native": 132,
+      "palette": [
+        9286,
+        32836,
+        35882
+      ],
+      "glb_sha256": "956de8e7c6fe66cd313e964f6f480fd302d5d47a3bb3af9e39120db0baff284f",
+      "model_sha256": "dcf9651625fc6d8e9b7a7c80d45be2295e5ddc37a1f78888305082f0c8519b7f",
+      "model_bytes": 1178
+    },
+    {
+      "name": "wall_broken",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 96,
+      "triangles": 176,
+      "materials": [
+        "basalt",
+        "stone",
+        "edge"
+      ],
+      "bounds": [
+        [
+          -0.5149999856948853,
+          0.5149999856948853
+        ],
+        [
+          0.15999998152256012,
+          0.6200000047683716
+        ],
+        [
+          -0.017499998211860657,
+          1.8000000715255737
+        ]
+      ],
+      "purpose": "Failed masonry and damaged service bays",
+      "model_id": 1100007,
+      "object_id": 63007,
+      "vertices_native": 96,
+      "triangles_native": 176,
+      "palette": [
+        9286,
+        32836,
+        35882
+      ],
+      "glb_sha256": "e74f6d9580f06d389739f0ee826e67a2d3f6a882602909bc0629383ab2899130",
+      "model_sha256": "70b2fb09a4ebafbd92deb9c3c71ffe2909ea51faa54f77b2225154e4f6d9c9b5",
+      "model_bytes": 1567
+    },
+    {
+      "name": "pillar",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 216,
+      "triangles": 396,
+      "materials": [
+        "edge",
+        "stone",
+        "iron",
+        "bone"
+      ],
+      "bounds": [
+        [
+          -0.5099999904632568,
+          0.5099999904632568
+        ],
+        [
+          -0.5099999904632568,
+          0.5099999904632568
+        ],
+        [
+          0.0,
+          3.125
+        ]
+      ],
+      "purpose": "Collared structural pier matching the arch kit",
+      "model_id": 1100008,
+      "object_id": 63008,
+      "vertices_native": 216,
+      "triangles_native": 396,
+      "palette": [
+        7377,
+        9286,
+        32836,
+        35869
+      ],
+      "glb_sha256": "c1da30ea8a490c81b9cfda238dc20bf1b25eebbed70f6d7ae1b0a7f97147a23e",
+      "model_sha256": "c5386c26fa1ec3833e10e6c44c7b4eceafc8336a1a69a9179c2ec78e13dd8fa2",
+      "model_bytes": 3536
+    },
+    {
+      "name": "grand_pillar",
+      "footprint": [
+        2,
+        2
+      ],
+      "vertices": 240,
+      "triangles": 440,
+      "materials": [
+        "edge",
+        "stone",
+        "iron",
+        "bone",
+        "basalt"
+      ],
+      "bounds": [
+        [
+          -0.800000011920929,
+          0.800000011920929
+        ],
+        [
+          -0.800000011920929,
+          0.800000011920929
+        ],
+        [
+          0.0,
+          4.425000190734863
+        ]
+      ],
+      "purpose": "Foundry buttress and entrance landmark",
+      "model_id": 1100009,
+      "object_id": 63009,
+      "vertices_native": 240,
+      "triangles_native": 440,
+      "palette": [
+        7377,
+        9286,
+        32836,
+        35869,
+        35882
+      ],
+      "glb_sha256": "7a518f51846acbf476a2fc94b692f5a42ef581de6aba4caebeaa95f01e43a0ff",
+      "model_sha256": "2cc236d4e34e1e94c266bdb94d2cae9048f22afd2009e7b761bd5b5e1f66b1f5",
+      "model_bytes": 3963
+    },
+    {
+      "name": "arch",
+      "footprint": [
+        4,
+        1
+      ],
+      "vertices": 360,
+      "triangles": 636,
+      "materials": [
+        "edge",
+        "stone",
+        "bone",
+        "iron",
+        "brass"
+      ],
+      "bounds": [
+        [
+          -2.0299999713897705,
+          2.0299999713897705
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          0.0,
+          3.7144322395324707
+        ]
+      ],
+      "purpose": "Open four-tile modular portal with two-tile passage",
+      "model_id": 1100010,
+      "object_id": 63010,
+      "vertices_native": 360,
+      "triangles_native": 636,
+      "palette": [
+        6583,
+        7377,
+        9286,
+        32836,
+        35869
+      ],
+      "glb_sha256": "3b1cdac5a1123f399d6bc124ba1f14008009d2d59fb51ae98ca860436beb71a9",
+      "model_sha256": "d0595a6f89a1762636bc27661994df0170b4f753a9e2377f17a88462f45ba2bb",
+      "model_bytes": 5775
+    },
+    {
+      "name": "broken_arch",
+      "footprint": [
+        4,
+        1
+      ],
+      "vertices": 344,
+      "triangles": 612,
+      "materials": [
+        "edge",
+        "stone",
+        "bone",
+        "iron",
+        "brass"
+      ],
+      "bounds": [
+        [
+          -2.0299999713897705,
+          2.0299999713897705
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          0.0,
+          3.7144322395324707
+        ]
+      ],
+      "purpose": "Collapsed portal; missing crown-side voussoirs",
+      "model_id": 1100011,
+      "object_id": 63011,
+      "vertices_native": 344,
+      "triangles_native": 612,
+      "palette": [
+        6583,
+        7377,
+        9286,
+        32836,
+        35869
+      ],
+      "glb_sha256": "666cfeb69174862c1e8aaca3166a0b9a5c37cfd3a46b30d4f92b496cdfb4f070",
+      "model_sha256": "14da1570551ed5532afec9a5441a7c05e8988eda13591e7294bd96067f5272ed",
+      "model_bytes": 5541
+    },
+    {
+      "name": "great_arch",
+      "footprint": [
+        6,
+        2
+      ],
+      "vertices": 360,
+      "triangles": 636,
+      "materials": [
+        "edge",
+        "stone",
+        "bone",
+        "iron",
+        "brass"
+      ],
+      "bounds": [
+        [
+          -3.0299999713897705,
+          3.0300002098083496
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          0.0,
+          5.5012526512146
+        ]
+      ],
+      "purpose": "Monumental foundry portal; four-tile opening",
+      "model_id": 1100012,
+      "object_id": 63012,
+      "vertices_native": 360,
+      "triangles_native": 636,
+      "palette": [
+        6583,
+        7377,
+        9286,
+        32836,
+        35869
+      ],
+      "glb_sha256": "dcd4ef8a4aa97a5f44c0836292933ad891014d06d5c94ad76bd258a1dea0a0a1",
+      "model_sha256": "e7055ef3169e001d59956347ce0c1108b03538a486d9fe34c4975f9d260bacd4",
+      "model_bytes": 5835
+    },
+    {
+      "name": "restoration_font",
+      "footprint": [
+        5,
+        5
+      ],
+      "vertices": 276,
+      "triangles": 500,
+      "materials": [
+        "basalt",
+        "stone",
+        "water",
+        "verdigris",
+        "bone",
+        "brass"
+      ],
+      "bounds": [
+        [
+          -2.4000000953674316,
+          2.4000000953674316
+        ],
+        [
+          -2.4000000953674316,
+          2.4000000953674316
+        ],
+        [
+          0.0,
+          2.390000104904175
+        ]
+      ],
+      "purpose": "Central fourfold restoration monument; water and brass identify the safe hub",
+      "model_id": 1100013,
+      "object_id": 63013,
+      "vertices_native": 276,
+      "triangles_native": 500,
+      "palette": [
+        6583,
+        7377,
+        9286,
+        29998,
+        35361,
+        35882
+      ],
+      "glb_sha256": "c062a397ef36da62b27d1d5430db751dd45c83207f92405fc68480b3f114ec64",
+      "model_sha256": "778709d22b24c0cca67b3ffb2226be3de0060dd7a69a2e01f5fec65a98ad730d",
+      "model_bytes": 4519
+    },
+    {
+      "name": "furnace",
+      "footprint": [
+        4,
+        4
+      ],
+      "vertices": 304,
+      "triangles": 564,
+      "materials": [
+        "basalt",
+        "stone",
+        "iron",
+        "ember",
+        "copper"
+      ],
+      "bounds": [
+        [
+          -1.899999976158142,
+          1.899999976158142
+        ],
+        [
+          -1.9000000953674316,
+          1.6600000858306885
+        ],
+        [
+          0.0,
+          4.0
+        ]
+      ],
+      "purpose": "Worker-scale smelting furnace, barred orange firebox and casting runnel",
+      "model_id": 1100014,
+      "object_id": 63014,
+      "vertices_native": 304,
+      "triangles_native": 564,
+      "palette": [
+        4037,
+        4527,
+        9286,
+        35869,
+        35882
+      ],
+      "glb_sha256": "eea9f2340d86dabf43992bc7832ac23d50da9fa7b9c65586c41de4eec20723e4",
+      "model_sha256": "3494fa62ec70b4d3862aa405a25f182203ff5218a0f92cbb4e723c885fe08059",
+      "model_bytes": 5093
+    },
+    {
+      "name": "great_crucible",
+      "footprint": [
+        8,
+        6
+      ],
+      "vertices": 616,
+      "triangles": 1136,
+      "materials": [
+        "basalt",
+        "stone",
+        "brass",
+        "iron",
+        "ember",
+        "copper",
+        "molten"
+      ],
+      "bounds": [
+        [
+          -4.0,
+          4.0
+        ],
+        [
+          -1.8499999046325684,
+          2.930000066757202
+        ],
+        [
+          0.0,
+          6.599999904632568
+        ]
+      ],
+      "purpose": "Final foundry furnace: massive buttresses, containment grille and casting throat",
+      "model_id": 1100015,
+      "object_id": 63015,
+      "vertices_native": 616,
+      "triangles_native": 1136,
+      "palette": [
+        4037,
+        4527,
+        6583,
+        7119,
+        9286,
+        35869,
+        35882
+      ],
+      "glb_sha256": "559c3229452a594fa7025db82fbfc43681f79781dfb4aaa6518ef1540a6f1550",
+      "model_sha256": "074b49c912c53e84cb6f52ee9086ce62f61ff406e8cbfd8c055af51313a6f511",
+      "model_bytes": 10257
+    },
+    {
+      "name": "waterwheel",
+      "footprint": [
+        4,
+        4
+      ],
+      "vertices": 1064,
+      "triangles": 1972,
+      "materials": [
+        "stone",
+        "timber",
+        "iron"
+      ],
+      "bounds": [
+        [
+          -1.850000023841858,
+          1.850000023841858
+        ],
+        [
+          -1.7400000095367432,
+          1.7400000095367432
+        ],
+        [
+          -0.24000000953674316,
+          3.240000009536743
+        ]
+      ],
+      "purpose": "Original broad undershot wheel, shaft, spokes and stone bearing piers",
+      "model_id": 1100016,
+      "object_id": 63016,
+      "vertices_native": 1064,
+      "triangles_native": 1972,
+      "palette": [
+        4390,
+        9286,
+        35869
+      ],
+      "glb_sha256": "4a325d338af47e76f25c08078c7496ec245b7f80160448ad946b64ef38697369",
+      "model_sha256": "30ab56f2adecfe6ddc3a0bef103f630c85d2715947f0a26670337c0b0bf90a2e",
+      "model_bytes": 17912
+    },
+    {
+      "name": "pressure_pump",
+      "footprint": [
+        2,
+        3
+      ],
+      "vertices": 312,
+      "triangles": 604,
+      "materials": [
+        "basalt",
+        "verdigris",
+        "brass",
+        "iron",
+        "copper"
+      ],
+      "bounds": [
+        [
+          -0.949999988079071,
+          0.949999988079071
+        ],
+        [
+          -1.315000057220459,
+          0.800000011920929
+        ],
+        [
+          0.0,
+          2.549999952316284
+        ]
+      ],
+      "purpose": "Riveted coolant vessel with an identifiable hand valve",
+      "model_id": 1100017,
+      "object_id": 63017,
+      "vertices_native": 312,
+      "triangles_native": 604,
+      "palette": [
+        4527,
+        6583,
+        29998,
+        35869,
+        35882
+      ],
+      "glb_sha256": "3e492d1dda6cdab50f370481f28a64219b0995b52afdafda6aab3b4c16a42248",
+      "model_sha256": "90d62a1e9550e3fda1cc35f1cf2f163939b2520d67a14ed1f7c36089678b1306",
+      "model_bytes": 5405
+    },
+    {
+      "name": "pipe",
+      "footprint": [
+        1,
+        2
+      ],
+      "vertices": 168,
+      "triangles": 324,
+      "materials": [
+        "copper",
+        "iron",
+        "basalt"
+      ],
+      "bounds": [
+        [
+          -0.25999999046325684,
+          0.25999999046325684
+        ],
+        [
+          -0.949999988079071,
+          0.949999988079071
+        ],
+        [
+          0.0,
+          0.8600000143051147
+        ]
+      ],
+      "purpose": "Two-tile supply pipe with visible joints and supports",
+      "model_id": 1100018,
+      "object_id": 63018,
+      "vertices_native": 168,
+      "triangles_native": 324,
+      "palette": [
+        4527,
+        35869,
+        35882
+      ],
+      "glb_sha256": "9ab5021f2f33b546a76d0c5710e904bda8184514677ea99cb2d660e9008fd8a0",
+      "model_sha256": "9ae6760062889993882e73f440f0fec95b0f7ca95f20dd216f044a17e24e5d68",
+      "model_bytes": 2901
+    },
+    {
+      "name": "workbench",
+      "footprint": [
+        2,
+        1
+      ],
+      "vertices": 144,
+      "triangles": 264,
+      "materials": [
+        "timber",
+        "iron",
+        "brass"
+      ],
+      "bounds": [
+        [
+          -1.0,
+          0.9999999403953552
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          0.0,
+          1.4850000143051147
+        ]
+      ],
+      "purpose": "Readable repair bench with vise, workpiece and hand tool",
+      "model_id": 1100019,
+      "object_id": 63019,
+      "vertices_native": 144,
+      "triangles_native": 264,
+      "palette": [
+        4390,
+        6583,
+        35869
+      ],
+      "glb_sha256": "7d8f9de50215e50c292fb2fe1ea9a2d6849be493a9135753dc9743feff0dccc6",
+      "model_sha256": "decfe446bd3640a0589d51db0aec1d096c0f5950a0186428fdb09a32af806564",
+      "model_bytes": 2374
+    },
+    {
+      "name": "anvil",
+      "footprint": [
+        2,
+        1
+      ],
+      "vertices": 52,
+      "triangles": 92,
+      "materials": [
+        "timber",
+        "iron"
+      ],
+      "bounds": [
+        [
+          -0.550000011920929,
+          1.0
+        ],
+        [
+          -0.550000011920929,
+          0.550000011920929
+        ],
+        [
+          0.0,
+          1.3200000524520874
+        ]
+      ],
+      "purpose": "Iron anvil on a worker-scale timber stump",
+      "model_id": 1100020,
+      "object_id": 63020,
+      "vertices_native": 52,
+      "triangles_native": 92,
+      "palette": [
+        4390,
+        35869
+      ],
+      "glb_sha256": "e3829ff73d7fd91f34d36c5d9616311219adc011dadb52a3c56d6b40b8abca1d",
+      "model_sha256": "f8e4a55f054c7189c7197cc283265a7395811646043f6e4fb0f4f5f0b976aaf5",
+      "model_bytes": 863
+    },
+    {
+      "name": "vent",
+      "footprint": [
+        2,
+        2
+      ],
+      "vertices": 152,
+      "triangles": 280,
+      "materials": [
+        "basalt",
+        "iron",
+        "brass",
+        "ember"
+      ],
+      "bounds": [
+        [
+          -0.8999999761581421,
+          0.8999999761581421
+        ],
+        [
+          -0.8999999761581421,
+          0.8999999761581421
+        ],
+        [
+          0.0,
+          1.3700000047683716
+        ]
+      ],
+      "purpose": "Containment vent; orange core and grating communicate supernatural heat",
+      "model_id": 1100021,
+      "object_id": 63021,
+      "vertices_native": 152,
+      "triangles_native": 280,
+      "palette": [
+        4037,
+        6583,
+        35869,
+        35882
+      ],
+      "glb_sha256": "522df0bf7d06c870d0d6f81aae9019c8dc8ef271b50299a1311858f5863542e4",
+      "model_sha256": "5d8980117d6a2406f8f9fd0bf8874386b08525679fd243ae48cc01190e4ec188",
+      "model_bytes": 2505
+    },
+    {
+      "name": "rubble",
+      "footprint": [
+        2,
+        2
+      ],
+      "vertices": 120,
+      "triangles": 220,
+      "materials": [
+        "stone",
+        "iron"
+      ],
+      "bounds": [
+        [
+          -0.7658768892288208,
+          0.7574152946472168
+        ],
+        [
+          -0.5865598917007446,
+          0.6548004746437073
+        ],
+        [
+          0.0,
+          0.5600000023841858
+        ]
+      ],
+      "purpose": "Clustered fallen masonry with one broken tie; used selectively at damage sites",
+      "model_id": 1100022,
+      "object_id": 63022,
+      "vertices_native": 120,
+      "triangles_native": 220,
+      "palette": [
+        9286,
+        35869
+      ],
+      "glb_sha256": "62b641a7d7cb867c7e9481dd85156a824fad70cf973cafe53a6205cf72024695",
+      "model_sha256": "71a2e73e078a5ae44e5e73e3b112bcb32ba9a543a001cb108427dec72a42ff70",
+      "model_bytes": 2020
+    },
+    {
+      "name": "ore_outcrop",
+      "footprint": [
+        2,
+        2
+      ],
+      "vertices": 108,
+      "triangles": 192,
+      "materials": [
+        "basalt",
+        "ore"
+      ],
+      "bounds": [
+        [
+          -1.0313761234283447,
+          1.065539836883545
+        ],
+        [
+          -0.8722048401832581,
+          0.644409716129303
+        ],
+        [
+          -0.19999998807907104,
+          1.0
+        ]
+      ],
+      "purpose": "Original exposed stone with copper-red mineral seams",
+      "model_id": 1100023,
+      "object_id": 63023,
+      "vertices_native": 108,
+      "triangles_native": 192,
+      "palette": [
+        3255,
+        35882
+      ],
+      "glb_sha256": "47f0f95cd2f6a6acf3ca985df0922cd83d2738db9b62d669eb4a16088616fbbd",
+      "model_sha256": "9f9621713ca7883d50bc7cfbbd3357ae279ff77d8b569b3fb514d09eafd891b9",
+      "model_bytes": 1767
+    },
+    {
+      "name": "stores",
+      "footprint": [
+        2,
+        2
+      ],
+      "vertices": 144,
+      "triangles": 264,
+      "materials": [
+        "timber",
+        "iron"
+      ],
+      "bounds": [
+        [
+          -0.8500000238418579,
+          0.8499999642372131
+        ],
+        [
+          -0.625,
+          0.625
+        ],
+        [
+          0.0,
+          0.800000011920929
+        ]
+      ],
+      "purpose": "Banded workshop stores and resource handling",
+      "model_id": 1100024,
+      "object_id": 63024,
+      "vertices_native": 144,
+      "triangles_native": 264,
+      "palette": [
+        4390,
+        35869
+      ],
+      "glb_sha256": "9275eeb5f6bc60aac6011be038673598017b9e3dd874dabd224f18892f7aca9d",
+      "model_sha256": "974ff705fb60fd6b7a169de872a5e26e39257af901786feb00593bc6bb9f33e8",
+      "model_bytes": 2346
+    },
+    {
+      "name": "timber_stack",
+      "footprint": [
+        2,
+        2
+      ],
+      "vertices": 96,
+      "triangles": 172,
+      "materials": [
+        "timber",
+        "iron"
+      ],
+      "bounds": [
+        [
+          -0.699999988079071,
+          0.7000000476837158
+        ],
+        [
+          -0.8999999761581421,
+          0.8999999761581421
+        ],
+        [
+          0.09999999403953552,
+          0.4800000786781311
+        ]
+      ],
+      "purpose": "Dry timber stock justified by the workshop and maintenance stores",
+      "model_id": 1100025,
+      "object_id": 63025,
+      "vertices_native": 96,
+      "triangles_native": 172,
+      "palette": [
+        4390,
+        35869
+      ],
+      "glb_sha256": "80b1d20880e37021a505170653b08548202b6957890d95e6335e106c8a6189b4",
+      "model_sha256": "78ff25f9c1c234f61a7e66a4ee3fc854ab2700668fe465b1f72f5a6022404a36",
+      "model_bytes": 1574
+    },
+    {
+      "name": "root_tree",
+      "footprint": [
+        3,
+        3
+      ],
+      "vertices": 242,
+      "triangles": 436,
+      "materials": [
+        "timber",
+        "moss"
+      ],
+      "bounds": [
+        [
+          -1.2384549379348755,
+          1.5155400037765503
+        ],
+        [
+          -1.2179028987884521,
+          1.3398988246917725
+        ],
+        [
+          0.0,
+          3.4600000381469727
+        ]
+      ],
+      "purpose": "A small tree only for the breached, water-fed root courtyard",
+      "model_id": 1100026,
+      "object_id": 63026,
+      "vertices_native": 238,
+      "triangles_native": 436,
+      "palette": [
+        4390,
+        19625
+      ],
+      "glb_sha256": "72b6ea8e55382e4b9ae56a0d1d952847420cf13f5f532307209b3085ac022524",
+      "model_sha256": "66c41eacddd6ec3dbd54c23ab6358afcaa486de775dab5e22ecb58b955293719",
+      "model_bytes": 4092
+    },
+    {
+      "name": "fungus",
+      "footprint": [
+        2,
+        2
+      ],
+      "vertices": 84,
+      "triangles": 144,
+      "materials": [
+        "bone",
+        "verdigris"
+      ],
+      "bounds": [
+        [
+          -0.699999988079071,
+          0.6499999761581421
+        ],
+        [
+          -0.7500000596046448,
+          0.550000011920929
+        ],
+        [
+          0.0,
+          0.9099999666213989
+        ]
+      ],
+      "purpose": "Water-fed fungal life in the reservoir garden",
+      "model_id": 1100027,
+      "object_id": 63027,
+      "vertices_native": 84,
+      "triangles_native": 144,
+      "palette": [
+        7377,
+        29998
+      ],
+      "glb_sha256": "09cf3f22eaf0f4e834787542667645a1a3da8e7d750ae8213e07861635ea57cc",
+      "model_sha256": "b9087dbfc44adadf26ddd6a2fcdc44e8943f652c683c8ce33e2c2054b556ef98",
+      "model_bytes": 1337
+    },
+    {
+      "name": "bridge",
+      "footprint": [
+        4,
+        2
+      ],
+      "vertices": 312,
+      "triangles": 572,
+      "materials": [
+        "stone",
+        "iron",
+        "basalt"
+      ],
+      "bounds": [
+        [
+          -2.0,
+          2.0
+        ],
+        [
+          -1.0,
+          1.0
+        ],
+        [
+          -0.75,
+          0.9500000476837158
+        ]
+      ],
+      "purpose": "Four-tile service bridge with open railings and visible supporting abutments",
+      "model_id": 1100028,
+      "object_id": 63028,
+      "vertices_native": 312,
+      "triangles_native": 572,
+      "palette": [
+        9286,
+        35869,
+        35882
+      ],
+      "glb_sha256": "e95211188bd4f79de25512841b63f6b3b937bf61bcac85dce34236bdbea83368",
+      "model_sha256": "a11e5bc0d96c935f308b36164cca37c868d379e98ee1cffb7dd69dcb710526e7",
+      "model_bytes": 5145
+    },
+    {
+      "name": "water",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 24,
+      "triangles": 36,
+      "materials": [
+        "water",
+        "ripple"
+      ],
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.22999998927116394,
+          -0.1355000138282776
+        ]
+      ],
+      "purpose": "Original untextured lowered coolant surface with two restrained ripples",
+      "model_id": 1100029,
+      "object_id": 63029,
+      "vertices_native": 24,
+      "triangles_native": 36,
+      "palette": [
+        33077,
+        35361
+      ],
+      "glb_sha256": "32d69c1b2447bc775e13076f2cf75407b10f27a5beed3de8ef4097506caf16f7",
+      "model_sha256": "e875cf41e71c362d53ba885ca88fbee70bfe00ed05abcb228f5d47ef2dafc327",
+      "model_bytes": 344
+    },
+    {
+      "name": "brazier",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 52,
+      "triangles": 88,
+      "materials": [
+        "iron",
+        "brass",
+        "ember",
+        "molten"
+      ],
+      "bounds": [
+        [
+          -0.5600000023841858,
+          0.5600000023841858
+        ],
+        [
+          -0.5600000023841858,
+          0.5600000023841858
+        ],
+        [
+          0.0,
+          1.350000023841858
+        ]
+      ],
+      "purpose": "Warm route marker; fixed original geometry, no simulated fire",
+      "model_id": 1100030,
+      "object_id": 63030,
+      "vertices_native": 52,
+      "triangles_native": 88,
+      "palette": [
+        4037,
+        6583,
+        7119,
+        35869
+      ],
+      "glb_sha256": "3cf52294abfd0f35e1f3aeeea73b8d23d2860987d4dff7855f7c30a1d881254f",
+      "model_sha256": "9166f2ed8bd99d8b480cf32bc7b4e4e433bb10e3b1abcae4cc069263730e7744",
+      "model_bytes": 837
+    },
+    {
+      "name": "banner",
+      "footprint": [
+        2,
+        1
+      ],
+      "vertices": 52,
+      "triangles": 88,
+      "materials": [
+        "iron",
+        "brass",
+        "cloth"
+      ],
+      "bounds": [
+        [
+          -0.4519615173339844,
+          0.8000000715255737
+        ],
+        [
+          -0.05999999865889549,
+          0.07000000029802322
+        ],
+        [
+          0.0,
+          3.4000000953674316
+        ]
+      ],
+      "purpose": "Sanctuary identity: restrained teal field and brass seam",
+      "model_id": 1100031,
+      "object_id": 63031,
+      "vertices_native": 52,
+      "triangles_native": 88,
+      "palette": [
+        6583,
+        32951,
+        35869
+      ],
+      "glb_sha256": "f6f3626ac41f052e7136070ea601f573c9389f1c53012380badf7b47d823a128",
+      "model_sha256": "9584ac664f164024d59eab0b66c0285c2576301e71d4217b166885339aa4a4a0",
+      "model_bytes": 825
+    },
+    {
+      "name": "scale_figure",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 136,
+      "triangles": 248,
+      "materials": [
+        "timber",
+        "cloth",
+        "bone"
+      ],
+      "bounds": [
+        [
+          -0.4099999964237213,
+          0.4100000262260437
+        ],
+        [
+          -0.1899999976158142,
+          0.1899999976158142
+        ],
+        [
+          0.004999995231628418,
+          1.7200000286102295
+        ]
+      ],
+      "purpose": "Original static1.72-tile scale mannequin; not a simulated NPC",
+      "model_id": 1100032,
+      "object_id": 63032,
+      "vertices_native": 136,
+      "triangles_native": 248,
+      "palette": [
+        4390,
+        7377,
+        32951
+      ],
+      "glb_sha256": "497bc2cd4e7f84a338148d7277ad577327862b39fadfadd9ba68253668add660",
+      "model_sha256": "9f90891852e3dc8fb610b53050a287f846f8fc70a245544b3d5c95d329e8438c",
+      "model_bytes": 2227
+    },
+    {
+      "name": "ascent_stair",
+      "footprint": [
+        6,
+        6
+      ],
+      "vertices": 504,
+      "triangles": 932,
+      "materials": [
+        "basalt",
+        "stone",
+        "iron",
+        "brass"
+      ],
+      "bounds": [
+        [
+          -2.25,
+          2.25
+        ],
+        [
+          -2.1935338973999023,
+          2.25
+        ],
+        [
+          0.0,
+          4.269999980926514
+        ]
+      ],
+      "purpose": "Original spiral ascent landmark; future height/plane engineering required",
+      "model_id": 1100033,
+      "object_id": 63033,
+      "vertices_native": 504,
+      "triangles_native": 932,
+      "palette": [
+        6583,
+        9286,
+        35869,
+        35882
+      ],
+      "glb_sha256": "67fcf6f76c79a94e5168e0471036b7392008e0194f529e368f9609bd88afe242",
+      "model_sha256": "2beaafcbd4a19594d5d93d6323dd735823ca6c3199279f7781bd14d4c2e9c686",
+      "model_bytes": 8394
+    },
+    {
+      "name": "railing",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 72,
+      "triangles": 132,
+      "materials": [
+        "iron"
+      ],
+      "bounds": [
+        [
+          -0.5,
+          0.4999999701976776
+        ],
+        [
+          -0.05999999865889549,
+          0.05999999865889549
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "purpose": "Open industrial railing preserves camera sightlines",
+      "model_id": 1100034,
+      "object_id": 63034,
+      "vertices_native": 72,
+      "triangles_native": 132,
+      "palette": [
+        35869
+      ],
+      "glb_sha256": "560da60f83ef207edd02dd596fd760b62fb3c50839fd8eb17b2c12d3c2113156",
+      "model_sha256": "c9517f2c1211504ab9d2567959298dc94c2a41ed481f479287c3249a230e5eee",
+      "model_bytes": 1196
+    },
+    {
+      "name": "metal_plate",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 32,
+      "triangles": 56,
+      "materials": [
+        "iron",
+        "brass"
+      ],
+      "bounds": [
+        [
+          -0.4699999988079071,
+          0.4699999988079071
+        ],
+        [
+          -0.4699999988079071,
+          0.4699999988079071
+        ],
+        [
+          0.0,
+          0.05249999836087227
+        ]
+      ],
+      "purpose": "Inspection hatch and machinery apron",
+      "model_id": 1100035,
+      "object_id": 63035,
+      "vertices_native": 32,
+      "triangles_native": 56,
+      "palette": [
+        6583,
+        35869
+      ],
+      "glb_sha256": "b9313263aada03603275efa3f0e5174cfec851fcdf4ff3e2788b1f3a138bd3ad",
+      "model_sha256": "8a9f4b443ae34f170fe3cb1df15b6f27491e6befd51f5159c9eb2e7ab6821927",
+      "model_bytes": 515
+    },
+    {
+      "name": "sanctuary_seal",
+      "footprint": [
+        7,
+        7
+      ],
+      "vertices": 320,
+      "triangles": 544,
+      "materials": [
+        "brass",
+        "verdigris"
+      ],
+      "bounds": [
+        [
+          -3.059999942779541,
+          3.059999942779541
+        ],
+        [
+          -3.059999942779541,
+          3.06000018119812
+        ],
+        [
+          0.0024998895823955536,
+          0.06750011444091797
+        ]
+      ],
+      "purpose": "Fourfold restoration court inlay; original brass and verdigris pattern",
+      "model_id": 1100036,
+      "object_id": 63036,
+      "vertices_native": 320,
+      "triangles_native": 544,
+      "palette": [
+        6583,
+        29998
+      ],
+      "glb_sha256": "e775b24987c637aab793268127771eb941fc91d54464264dcc1ad1ba7e40072e",
+      "model_sha256": "50cabac70ed899e6e4a60c9c9be7385050ef4e0a526824ca1ca5a50eac62ae92",
+      "model_bytes": 4975
+    },
+    {
+      "name": "track",
+      "footprint": [
+        1,
+        2
+      ],
+      "vertices": 40,
+      "triangles": 60,
+      "materials": [
+        "iron",
+        "timber"
+      ],
+      "bounds": [
+        [
+          -0.46000000834465027,
+          0.4599999785423279
+        ],
+        [
+          -0.9900000095367432,
+          0.9900000095367432
+        ],
+        [
+          0.004999998956918716,
+          0.10499999672174454
+        ]
+      ],
+      "purpose": "Quarry-to-workshop narrow-gauge haulage track",
+      "model_id": 1100037,
+      "object_id": 63037,
+      "vertices_native": 40,
+      "triangles_native": 60,
+      "palette": [
+        4390,
+        35869
+      ],
+      "glb_sha256": "cd722408217aae09d2ffac49d973b7758090bf34c0033ff68ba38050598f876d",
+      "model_sha256": "9814499a1bb887b66abb09f9163d53d34f2d0e730a5aed91ab1654fff1ad3a8f",
+      "model_bytes": 566
+    },
+    {
+      "name": "ore_cart",
+      "footprint": [
+        2,
+        2
+      ],
+      "vertices": 124,
+      "triangles": 216,
+      "materials": [
+        "iron",
+        "ore"
+      ],
+      "bounds": [
+        [
+          -0.7400000095367432,
+          0.7400000095367432
+        ],
+        [
+          -0.7699999809265137,
+          0.7699999809265137
+        ],
+        [
+          -0.009999990463256836,
+          1.4700000286102295
+        ]
+      ],
+      "purpose": "Original loaded ore cart ties quarry deposits to production",
+      "model_id": 1100038,
+      "object_id": 63038,
+      "vertices_native": 124,
+      "triangles_native": 216,
+      "palette": [
+        3255,
+        35869
+      ],
+      "glb_sha256": "b7208dc141fc0b6c94a5564ab6197f3a5a9a7ec288adf0c255b64e6dae189911",
+      "model_sha256": "d9dc526e0c7a727b1dabcbc2c43df5ee9dcdf4b78f74ecf21ef2a66e8ccea657",
+      "model_bytes": 1940
+    },
+    {
+      "name": "bank_counter",
+      "footprint": [
+        3,
+        2
+      ],
+      "vertices": 128,
+      "triangles": 232,
+      "materials": [
+        "timber",
+        "brass",
+        "iron",
+        "bone"
+      ],
+      "bounds": [
+        [
+          -1.5,
+          1.5
+        ],
+        [
+          -0.699999988079071,
+          0.699999988079071
+        ],
+        [
+          0.0,
+          2.0149998664855957
+        ]
+      ],
+      "purpose": "Sanctuary strongbox counter and a ledger; future bank anchor",
+      "model_id": 1100039,
+      "object_id": 63039,
+      "vertices_native": 128,
+      "triangles_native": 232,
+      "palette": [
+        4390,
+        6583,
+        7377,
+        35869
+      ],
+      "glb_sha256": "d02ea77699c6fb4325a3e18746996dc14d4a41c227ac71773d334962a69ae1cb",
+      "model_sha256": "c382ff00852a25765480f05501fd4b82deff7e50727997f2fdb998bb767c894d",
+      "model_bytes": 2109
+    },
+    {
+      "name": "coolant_trough",
+      "footprint": [
+        3,
+        2
+      ],
+      "vertices": 136,
+      "triangles": 244,
+      "materials": [
+        "basalt",
+        "stone",
+        "water",
+        "ripple"
+      ],
+      "bounds": [
+        [
+          -1.4500000476837158,
+          1.4500000476837158
+        ],
+        [
+          -0.8500000238418579,
+          0.8500000238418579
+        ],
+        [
+          0.0,
+          0.800000011920929
+        ]
+      ],
+      "purpose": "Readable stone coolant station with an open water surface",
+      "model_id": 1100040,
+      "object_id": 63040,
+      "vertices_native": 136,
+      "triangles_native": 244,
+      "palette": [
+        9286,
+        33077,
+        35361,
+        35882
+      ],
+      "glb_sha256": "a9662a9330d13d73c37a98684ee3149cb60d879ab76049eb74fa5fd3d8b5a637",
+      "model_sha256": "e8b1eb7f8d34db133c1505429d100237ccd58ca9dec97bdeab04c8d925a9a4a9",
+      "model_bytes": 2215
+    },
+    {
+      "name": "casting_hoist",
+      "footprint": [
+        4,
+        3
+      ],
+      "vertices": 240,
+      "triangles": 436,
+      "materials": [
+        "stone",
+        "timber",
+        "iron",
+        "brass"
+      ],
+      "bounds": [
+        [
+          -2.0,
+          2.0
+        ],
+        [
+          -0.6499999761581421,
+          0.6499999761581421
+        ],
+        [
+          0.0,
+          4.0
+        ]
+      ],
+      "purpose": "Timber and iron gantry gives the cast-house a readable production line",
+      "model_id": 1100041,
+      "object_id": 63041,
+      "vertices_native": 240,
+      "triangles_native": 436,
+      "palette": [
+        4390,
+        6583,
+        9286,
+        35869
+      ],
+      "glb_sha256": "dfc417acece199502532c84d58d4ee5bc48c32d3026c2f8ae1fc673b18fb6401",
+      "model_sha256": "6355fef52da76d4bc2f57589e05545ca1dd1224b6ef1cbdb9cdedccfe12273c8",
+      "model_bytes": 3946
+    },
+    {
+      "name": "rock_buttress",
+      "footprint": [
+        4,
+        3
+      ],
+      "vertices": 60,
+      "triangles": 104,
+      "materials": [
+        "basalt",
+        "ore"
+      ],
+      "bounds": [
+        [
+          -1.5802018642425537,
+          1.6233099699020386
+        ],
+        [
+          -1.1737070083618164,
+          1.2186912298202515
+        ],
+        [
+          -0.4650000333786011,
+          3.0749998092651367
+        ]
+      ],
+      "purpose": "Original fractured rock face for quarry edges and failed excavation",
+      "model_id": 1100042,
+      "object_id": 63042,
+      "vertices_native": 60,
+      "triangles_native": 104,
+      "palette": [
+        3255,
+        35882
+      ],
+      "glb_sha256": "2abb9a178b54eaac2e3f6e5be4b7604c1a56bc41d8b983741914f13504847286",
+      "model_sha256": "d289e85f024d5eb2f39eb036488b5f3bb26ca728ecadf07b623df012d5475caf",
+      "model_bytes": 1005
+    },
+    {
+      "name": "heat_fissure",
+      "footprint": [
+        1,
+        2
+      ],
+      "vertices": 144,
+      "triangles": 264,
+      "materials": [
+        "basalt",
+        "ember"
+      ],
+      "bounds": [
+        [
+          -0.2473808228969574,
+          0.25284525752067566
+        ],
+        [
+          -0.897510826587677,
+          0.643085241317749
+        ],
+        [
+          -0.09500004351139069,
+          0.09750004857778549
+        ]
+      ],
+      "purpose": "Static heat-stressed paving; visual storytelling, not a live hazard",
+      "model_id": 1100043,
+      "object_id": 63043,
+      "vertices_native": 144,
+      "triangles_native": 264,
+      "palette": [
+        4037,
+        35882
+      ],
+      "glb_sha256": "da2c307906bbf9580e9e42ab6cb140009dc3a9a76d30e57e91ac9221324aea9f",
+      "model_sha256": "eda46c3558fd45dc134dbe8554b90402414f60088f90d3c6df0ffaa17676c720",
+      "model_bytes": 2403
+    },
+    {
+      "name": "wall_relief",
+      "footprint": [
+        2,
+        1
+      ],
+      "vertices": 80,
+      "triangles": 152,
+      "materials": [
+        "basalt",
+        "brass",
+        "verdigris"
+      ],
+      "bounds": [
+        [
+          -0.75,
+          0.75
+        ],
+        [
+          -0.2500000298023224,
+          0.09000000357627869
+        ],
+        [
+          0.75,
+          2.25
+        ]
+      ],
+      "purpose": "Repeated industrial sanctuary emblem, never borrowed cache art",
+      "model_id": 1100044,
+      "object_id": 63044,
+      "vertices_native": 80,
+      "triangles_native": 152,
+      "palette": [
+        6583,
+        29998,
+        35882
+      ],
+      "glb_sha256": "9866dfff2c59f97061791040d49bbb6a1d08b80c4f86ec7cff98045b4363d216",
+      "model_sha256": "636b441e743ede00b9b627c578521586143dd1fc4682341e93f176e7abbdbedc",
+      "model_bytes": 1371
+    },
+    {
+      "name": "supply_rack",
+      "footprint": [
+        2,
+        1
+      ],
+      "vertices": 156,
+      "triangles": 280,
+      "materials": [
+        "timber",
+        "copper"
+      ],
+      "bounds": [
+        [
+          -0.8999999761581421,
+          0.9000000357627869
+        ],
+        [
+          -0.32499998807907104,
+          0.32499998807907104
+        ],
+        [
+          0.0,
+          2.0
+        ]
+      ],
+      "purpose": "Shelved supplies make alcoves read as occupied working infrastructure",
+      "model_id": 1100045,
+      "object_id": 63045,
+      "vertices_native": 156,
+      "triangles_native": 280,
+      "palette": [
+        4390,
+        4527
+      ],
+      "glb_sha256": "2dd26121c83c9c1da26766d0830d71042ad1945507cbb272107bc606cf4eebfe",
+      "model_sha256": "5e0b455e2fb4bbfdd81170a79e8e623a46d10580b86f29a54be0b3b86041c42f",
+      "model_bytes": 2503
+    },
+    {
+      "name": "paving_v0",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 16,
+      "triangles": 24,
+      "materials": [
+        "slate-v0"
+      ],
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.19499999284744263,
+          0.012499995529651642
+        ]
+      ],
+      "purpose": "Subtle original paving tone; no texture dependencies",
+      "model_id": 1100046,
+      "object_id": 63046,
+      "vertices_native": 16,
+      "triangles_native": 24,
+      "palette": [
+        33843
+      ],
+      "glb_sha256": "7db440c7c9a2e2a30a0644955849235a5840f741c5426049a2e68a6b662fbb32",
+      "model_sha256": "6818628303865d7f23f49d1d2c4ba513bb25bdb3749c8caf7c2dce67f01ed471",
+      "model_bytes": 240
+    },
+    {
+      "name": "paving_v1",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 16,
+      "triangles": 24,
+      "materials": [
+        "slate-v1"
+      ],
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.19499999284744263,
+          0.012499995529651642
+        ]
+      ],
+      "purpose": "Subtle original paving tone; no texture dependencies",
+      "model_id": 1100047,
+      "object_id": 63047,
+      "vertices_native": 16,
+      "triangles_native": 24,
+      "palette": [
+        33847
+      ],
+      "glb_sha256": "b169e6d4e31dcce4be0fa4688ea73af2c521eea38fc50f107e7eb5785a02e58c",
+      "model_sha256": "86259183cc36377bc25319ec31951dfec4d49199d335134f6458f16e5c852bba",
+      "model_bytes": 240
+    },
+    {
+      "name": "sanctuary_paving_v0",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 16,
+      "triangles": 24,
+      "materials": [
+        "stone-v0"
+      ],
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.19499999284744263,
+          0.012499995529651642
+        ]
+      ],
+      "purpose": "Subtle original paving tone; no texture dependencies",
+      "model_id": 1100048,
+      "object_id": 63048,
+      "vertices_native": 16,
+      "triangles_native": 24,
+      "palette": [
+        9283
+      ],
+      "glb_sha256": "7133d6066d7b99ef7c5461a1fd6779e292a5f339437e74d96f953241c3cf7c9a",
+      "model_sha256": "8cc25b427083a7eb471309b51890fca5058e5a64628ac69d2230392576238d76",
+      "model_bytes": 240
+    },
+    {
+      "name": "sanctuary_paving_v1",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 16,
+      "triangles": 24,
+      "materials": [
+        "stone-v1"
+      ],
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.19499999284744263,
+          0.012499995529651642
+        ]
+      ],
+      "purpose": "Subtle original paving tone; no texture dependencies",
+      "model_id": 1100049,
+      "object_id": 63049,
+      "vertices_native": 16,
+      "triangles_native": 24,
+      "palette": [
+        9288
+      ],
+      "glb_sha256": "aaa4b7f2805165f626384ac67a353194d8fed25c968ace565cb807a71b6b58f2",
+      "model_sha256": "4a74d1b5e9397012823d6f97f1d4822dae97e1765ddb69fded99d74319cb70b3",
+      "model_bytes": 240
+    },
+    {
+      "name": "forge_paving_v0",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 16,
+      "triangles": 24,
+      "materials": [
+        "ore-v0"
+      ],
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.19499999284744263,
+          0.012499995529651642
+        ]
+      ],
+      "purpose": "Subtle original paving tone; no texture dependencies",
+      "model_id": 1100050,
+      "object_id": 63050,
+      "vertices_native": 16,
+      "triangles_native": 24,
+      "palette": [
+        3253
+      ],
+      "glb_sha256": "376f0431dd50967a9a397e25930388ae48febf0057d6be4e26e4ce1ae33dbd48",
+      "model_sha256": "96460acb5eb0cba16f55a24bfef83a85d57873b64cb0765b7a5814e26a64bddd",
+      "model_bytes": 240
+    },
+    {
+      "name": "forge_paving_v1",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 16,
+      "triangles": 24,
+      "materials": [
+        "ore-v1"
+      ],
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.19499999284744263,
+          0.012499995529651642
+        ]
+      ],
+      "purpose": "Subtle original paving tone; no texture dependencies",
+      "model_id": 1100051,
+      "object_id": 63051,
+      "vertices_native": 16,
+      "triangles_native": 24,
+      "palette": [
+        3257
+      ],
+      "glb_sha256": "953b61826779a872895d4a6ae4bf871781bbaca6fb1e33fc24971bbb9241ac60",
+      "model_sha256": "1243ab8d6ef765277d5b6589d54e901e097834003e941a54de550388371e803e",
+      "model_bytes": 240
+    },
+    {
+      "name": "ash_paving_v0",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 16,
+      "triangles": 24,
+      "materials": [
+        "ash-v0"
+      ],
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.19499999284744263,
+          0.012499995529651642
+        ]
+      ],
+      "purpose": "Subtle original paving tone; no texture dependencies",
+      "model_id": 1100052,
+      "object_id": 63052,
+      "vertices_native": 16,
+      "triangles_native": 24,
+      "palette": [
+        6191
+      ],
+      "glb_sha256": "cdeff484c01583233dca0db004cf489016079fbd254396d7ae82342d3e84cd04",
+      "model_sha256": "a13ecd519cca32ad5832cfcdb52f3dd0d875de4c6a6e9e49b7b6b1367b5c6e16",
+      "model_bytes": 240
+    },
+    {
+      "name": "ash_paving_v1",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 16,
+      "triangles": 24,
+      "materials": [
+        "ash-v1"
+      ],
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.19499999284744263,
+          0.012499995529651642
+        ]
+      ],
+      "purpose": "Subtle original paving tone; no texture dependencies",
+      "model_id": 1100053,
+      "object_id": 63053,
+      "vertices_native": 16,
+      "triangles_native": 24,
+      "palette": [
+        6194
+      ],
+      "glb_sha256": "f47af93dde6c9e2861d2034a610bd87616acb7e233b91575f4148336aef065d2",
+      "model_sha256": "b0986e074d0b69a9b57f87e336c3b085fae8e627c4facdca09907923e9a3a52d",
+      "model_bytes": 240
+    },
+    {
+      "name": "garden_soil_v0",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 16,
+      "triangles": 24,
+      "materials": [
+        "soil-v0"
+      ],
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.19499999284744263,
+          0.012499995529651642
+        ]
+      ],
+      "purpose": "Subtle original paving tone; no texture dependencies",
+      "model_id": 1100054,
+      "object_id": 63054,
+      "vertices_native": 16,
+      "triangles_native": 24,
+      "palette": [
+        6307
+      ],
+      "glb_sha256": "967c34f30c8b4aaac6fef76cf4456df297229b1e9c6063f4bb3bcdb98411283e",
+      "model_sha256": "c54681cd8988f25181a97d64781a3ab170d89b2e5b30e0ded60dcc8cebeb33b6",
+      "model_bytes": 240
+    },
+    {
+      "name": "garden_soil_v1",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 16,
+      "triangles": 24,
+      "materials": [
+        "soil-v1"
+      ],
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.19499999284744263,
+          0.012499995529651642
+        ]
+      ],
+      "purpose": "Subtle original paving tone; no texture dependencies",
+      "model_id": 1100055,
+      "object_id": 63055,
+      "vertices_native": 16,
+      "triangles_native": 24,
+      "palette": [
+        6310
+      ],
+      "glb_sha256": "7cb1da8d52ddcf171d1a4366c690e805394b277916f824523d1c2e3eea4ce1df",
+      "model_sha256": "962e9e687844c00bad38b8818985c68bfff00bc428971b888b51f08bd32772f6",
+      "model_bytes": 240
+    },
+    {
+      "name": "moss_ground",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 16,
+      "triangles": 24,
+      "materials": [
+        "moss"
+      ],
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.19499999284744263,
+          0.012499995529651642
+        ]
+      ],
+      "purpose": "Moist original ground under the roof breach and around cistern roots",
+      "model_id": 1100056,
+      "object_id": 63056,
+      "vertices_native": 16,
+      "triangles_native": 24,
+      "palette": [
+        19625
+      ],
+      "glb_sha256": "726b194060b16f70674ea9ce976e24af2a29004a7d3e6634cf861f411264d5fd",
+      "model_sha256": "69a70af28a1399e7504c9065cd94f873e0711d540b4ed3d1f7c72d04be23af65",
+      "model_bytes": 240
+    },
+    {
+      "name": "long_bridge",
+      "footprint": [
+        6,
+        2
+      ],
+      "vertices": 408,
+      "triangles": 748,
+      "materials": [
+        "stone",
+        "iron",
+        "basalt"
+      ],
+      "bounds": [
+        [
+          -3.0,
+          3.0
+        ],
+        [
+          -1.0,
+          1.0
+        ],
+        [
+          -0.75,
+          0.9500001072883606
+        ]
+      ],
+      "purpose": "A full bank-to-bank reservoir crossing with open railings",
+      "model_id": 1100057,
+      "object_id": 63057,
+      "vertices_native": 408,
+      "triangles_native": 748,
+      "palette": [
+        9286,
+        35869,
+        35882
+      ],
+      "glb_sha256": "9e87b7203d206dafd66d3c07aca3da0fb7d9c02473175e8a686a5133b1e5d823",
+      "model_sha256": "7186373de3cad9f52f412ced1e02773681c8bf8fb61a9202a57083dfa2f74f99",
+      "model_bytes": 6721
+    },
+    {
+      "name": "curtain_arrival",
+      "footprint": [
+        25,
+        18
+      ],
+      "vertices": 1368,
+      "triangles": 2052,
+      "materials": [
+        "basalt",
+        "stone",
+        "edge",
+        "basalt"
+      ],
+      "bounds": [
+        [
+          -11.574999809265137,
+          12.14510440826416
+        ],
+        [
+          -8.51618766784668,
+          8.895000457763672
+        ],
+        [
+          -0.25,
+          2.8399999141693115
+        ]
+      ],
+      "purpose": "Continuous authored cutaway masonry sector; partition into smaller placements for live collision later",
+      "world_anchor": [
+        55,
+        30
+      ],
+      "model_id": 1100058,
+      "object_id": 63058,
+      "vertices_native": 1368,
+      "triangles_native": 2052,
+      "palette": [
+        9286,
+        32836,
+        35882
+      ],
+      "glb_sha256": "8fe2b31d51236e554944cc6201cb1316ed6902678da3de9e52b7f9d441304916",
+      "model_sha256": "4ca83466227800bdc5189d238b32ba78439216a3a0e711470f2260d824db4fd6",
+      "model_bytes": 19519
+    },
+    {
+      "name": "curtain_sanctuary",
+      "footprint": [
+        31,
+        32
+      ],
+      "vertices": 1752,
+      "triangles": 2628,
+      "materials": [
+        "basalt",
+        "stone",
+        "edge",
+        "basalt"
+      ],
+      "bounds": [
+        [
+          -15.01618766784668,
+          15.01618766784668
+        ],
+        [
+          -15.51618766784668,
+          15.267366409301758
+        ],
+        [
+          -0.25,
+          2.8399999141693115
+        ]
+      ],
+      "purpose": "Continuous authored cutaway masonry sector; partition into smaller placements for live collision later",
+      "world_anchor": [
+        50,
+        46
+      ],
+      "model_id": 1100059,
+      "object_id": 63059,
+      "vertices_native": 1752,
+      "triangles_native": 2628,
+      "palette": [
+        9286,
+        32836,
+        35882
+      ],
+      "glb_sha256": "8c190a7aaa06e2bc656b2aa167956590d3d4ca339b9931249714051a506bfb17",
+      "model_sha256": "6904445a7f869a0d72aa415c95c89dfa2bb041c0e08185f3d12044cf34f46000",
+      "model_bytes": 25130
+    },
+    {
+      "name": "curtain_workshop",
+      "footprint": [
+        28,
+        28
+      ],
+      "vertices": 2400,
+      "triangles": 3600,
+      "materials": [
+        "basalt",
+        "stone",
+        "edge",
+        "basalt"
+      ],
+      "bounds": [
+        [
+          -13.654999732971191,
+          13.654999732971191
+        ],
+        [
+          -13.654999732971191,
+          13.51618766784668
+        ],
+        [
+          -0.25,
+          2.8399999141693115
+        ]
+      ],
+      "purpose": "Continuous authored cutaway masonry sector; partition into smaller placements for live collision later",
+      "world_anchor": [
+        28,
+        53
+      ],
+      "model_id": 1100060,
+      "object_id": 63060,
+      "vertices_native": 2400,
+      "triangles_native": 3600,
+      "palette": [
+        9286,
+        32836,
+        35882
+      ],
+      "glb_sha256": "30323fb84695db97bb7ac637fb16e59813e640c2325afe09b24e6ad4b35b5f2a",
+      "model_sha256": "818fafad794eba5cd6cfaf50a4d080335a59fc90ec785412efe8e5914142f21b",
+      "model_bytes": 33710
+    },
+    {
+      "name": "curtain_quarry",
+      "footprint": [
+        26,
+        31
+      ],
+      "vertices": 2304,
+      "triangles": 3456,
+      "materials": [
+        "basalt",
+        "stone",
+        "edge",
+        "basalt"
+      ],
+      "bounds": [
+        [
+          -12.654999732971191,
+          12.51618766784668
+        ],
+        [
+          -14.854175567626953,
+          15.051198959350586
+        ],
+        [
+          -0.25,
+          2.190000057220459
+        ]
+      ],
+      "purpose": "Continuous authored cutaway masonry sector; partition into smaller placements for live collision later",
+      "world_anchor": [
+        24,
+        74
+      ],
+      "model_id": 1100061,
+      "object_id": 63061,
+      "vertices_native": 2304,
+      "triangles_native": 3456,
+      "palette": [
+        32836,
+        35882
+      ],
+      "glb_sha256": "d04e5e02740459b6da6fe556a632f12120814e7d8690761684fbd8936c43984a",
+      "model_sha256": "2b812865f549bc84269aa5dec00df821e5d08c90ac5691f10a6beceab0ed2f3d",
+      "model_bytes": 33465
+    },
+    {
+      "name": "curtain_waterworks",
+      "footprint": [
+        27,
+        28
+      ],
+      "vertices": 1536,
+      "triangles": 2304,
+      "materials": [
+        "basalt",
+        "stone",
+        "edge",
+        "basalt"
+      ],
+      "bounds": [
+        [
+          -13.154999732971191,
+          13.158823013305664
+        ],
+        [
+          -13.658417701721191,
+          13.558320999145508
+        ],
+        [
+          -0.25,
+          2.8399999141693115
+        ]
+      ],
+      "purpose": "Continuous authored cutaway masonry sector; partition into smaller placements for live collision later",
+      "world_anchor": [
+        78,
+        50
+      ],
+      "model_id": 1100062,
+      "object_id": 63062,
+      "vertices_native": 1536,
+      "triangles_native": 2304,
+      "palette": [
+        9286,
+        32836,
+        35882
+      ],
+      "glb_sha256": "eb5c6e9ad28a6f58096803877b3428fc14c92a501636276dbab9c57952b19fee",
+      "model_sha256": "d77346d5a72e1a3970fde89b893ba4f704140a407c81ce2a56c3d92ada55b06b",
+      "model_bytes": 21889
+    },
+    {
+      "name": "curtain_garden",
+      "footprint": [
+        26,
+        27
+      ],
+      "vertices": 1416,
+      "triangles": 2124,
+      "materials": [
+        "basalt",
+        "stone",
+        "edge",
+        "basalt"
+      ],
+      "bounds": [
+        [
+          -12.074999809265137,
+          12.659276008605957
+        ],
+        [
+          -12.574999809265137,
+          13.14510440826416
+        ],
+        [
+          -0.25,
+          2.190000057220459
+        ]
+      ],
+      "purpose": "Continuous authored cutaway masonry sector; partition into smaller placements for live collision later",
+      "world_anchor": [
+        86,
+        73
+      ],
+      "model_id": 1100063,
+      "object_id": 63063,
+      "vertices_native": 1416,
+      "triangles_native": 2124,
+      "palette": [
+        9286,
+        32836,
+        35882
+      ],
+      "glb_sha256": "d3b6f891849dfec75d8deef07a8c96c96f02719b2c09f945c587e630779f88ef",
+      "model_sha256": "66273f68be87602c994ae78a46e63574e44f0b009b00c2f58def0dfee5f91831",
+      "model_bytes": 20656
+    },
+    {
+      "name": "curtain_vents",
+      "footprint": [
+        23,
+        31
+      ],
+      "vertices": 1920,
+      "triangles": 2880,
+      "materials": [
+        "basalt",
+        "stone",
+        "edge",
+        "basalt"
+      ],
+      "bounds": [
+        [
+          -11.185894012451172,
+          11.156989097595215
+        ],
+        [
+          -15.01618766784668,
+          15.185894012451172
+        ],
+        [
+          -0.25,
+          2.8399999141693115
+        ]
+      ],
+      "purpose": "Continuous authored cutaway masonry sector; partition into smaller placements for live collision later",
+      "world_anchor": [
+        70,
+        75
+      ],
+      "model_id": 1100064,
+      "object_id": 63064,
+      "vertices_native": 1920,
+      "triangles_native": 2880,
+      "palette": [
+        32836,
+        35882
+      ],
+      "glb_sha256": "14450dc60309ed9ff6ce2b3e77a857d19fd5f5375b918099fa0e3573c51890bf",
+      "model_sha256": "4f374e9a6ae5f99e5cc3cc73d09e2adcc48dea436e9413a883390c330e9e8fe2",
+      "model_bytes": 27859
+    },
+    {
+      "name": "curtain_narthex",
+      "footprint": [
+        25,
+        26
+      ],
+      "vertices": 2296,
+      "triangles": 3444,
+      "materials": [
+        "basalt",
+        "stone",
+        "edge",
+        "basalt"
+      ],
+      "bounds": [
+        [
+          -11.574999809265137,
+          11.731621742248535
+        ],
+        [
+          -12.653633117675781,
+          12.895000457763672
+        ],
+        [
+          -0.25,
+          2.8399999141693115
+        ]
+      ],
+      "purpose": "Continuous authored cutaway masonry sector; partition into smaller placements for live collision later",
+      "world_anchor": [
+        52,
+        73
+      ],
+      "model_id": 1100065,
+      "object_id": 63065,
+      "vertices_native": 2296,
+      "triangles_native": 3444,
+      "palette": [
+        9286,
+        32836,
+        35882
+      ],
+      "glb_sha256": "f6628da12ea2dbd879a98fe36720035dfa2be2ce054162ea2f0d4a9cfe56fdd7",
+      "model_sha256": "a48881603d2a404cea6a6c99b5193b3106924d222955dbee2010eacc25428fbe",
+      "model_bytes": 32933
+    },
+    {
+      "name": "curtain_foundry",
+      "footprint": [
+        32,
+        27
+      ],
+      "vertices": 968,
+      "triangles": 1452,
+      "materials": [
+        "basalt",
+        "stone",
+        "edge",
+        "basalt"
+      ],
+      "bounds": [
+        [
+          -15.654999732971191,
+          15.654999732971191
+        ],
+        [
+          -13.01618766784668,
+          13.01618766784668
+        ],
+        [
+          -0.25,
+          2.8399999141693115
+        ]
+      ],
+      "purpose": "Continuous authored cutaway masonry sector; partition into smaller placements for live collision later",
+      "world_anchor": [
+        46,
+        97
+      ],
+      "model_id": 1100066,
+      "object_id": 63066,
+      "vertices_native": 968,
+      "triangles_native": 1452,
+      "palette": [
+        32836,
+        35882
+      ],
+      "glb_sha256": "2bf2489e1a808034d9f55b75e3065f4aba30c52edeb891e089f9ecdde9928806",
+      "model_sha256": "3e37faf3815043b3f60f48b20102a9b7bf38864d447eb484d5ab288838a3c8fd",
+      "model_bytes": 13708
+    },
+    {
+      "name": "curtain_ascent",
+      "footprint": [
+        27,
+        19
+      ],
+      "vertices": 1616,
+      "triangles": 2424,
+      "materials": [
+        "basalt",
+        "stone",
+        "edge",
+        "basalt"
+      ],
+      "bounds": [
+        [
+          -13.14510440826416,
+          12.967740058898926
+        ],
+        [
+          -9.245729446411133,
+          9.154999732971191
+        ],
+        [
+          -0.25,
+          2.8399999141693115
+        ]
+      ],
+      "purpose": "Continuous authored cutaway masonry sector; partition into smaller placements for live collision later",
+      "world_anchor": [
+        51,
+        115
+      ],
+      "model_id": 1100067,
+      "object_id": 63067,
+      "vertices_native": 1616,
+      "triangles_native": 2424,
+      "palette": [
+        9286,
+        32836,
+        35882
+      ],
+      "glb_sha256": "4f240a98262ad28971592053cf3980f5d8881c0bcda22b8e75a87a92e48a5c13",
+      "model_sha256": "eb5b16ddbc83df468329f1251310906f807299689edf6351a3893471005a4b2d",
+      "model_bytes": 22659
+    }
+  ]
+}

@@ -1,0 +1,2121 @@
+{
+  "blender": "5.2.2 LTS",
+  "origin": "Entirely original procedural geometry; no cache or external art",
+  "palette": {
+    "basalt": [
+      0.075,
+      0.095,
+      0.105,
+      1
+    ],
+    "slate": [
+      0.125,
+      0.165,
+      0.175,
+      1
+    ],
+    "stone": [
+      0.29,
+      0.285,
+      0.235,
+      1
+    ],
+    "edge": [
+      0.23,
+      0.26,
+      0.26,
+      1
+    ],
+    "bone": [
+      0.44,
+      0.4,
+      0.3,
+      1
+    ],
+    "iron": [
+      0.035,
+      0.045,
+      0.05,
+      1
+    ],
+    "brass": [
+      0.32,
+      0.18,
+      0.06,
+      1
+    ],
+    "copper": [
+      0.23,
+      0.095,
+      0.04,
+      1
+    ],
+    "verdigris": [
+      0.055,
+      0.18,
+      0.145,
+      1
+    ],
+    "water": [
+      0.015,
+      0.095,
+      0.13,
+      1
+    ],
+    "ripple": [
+      0.065,
+      0.24,
+      0.26,
+      1
+    ],
+    "ash": [
+      0.14,
+      0.125,
+      0.105,
+      1
+    ],
+    "ember": [
+      0.9,
+      0.15,
+      0.015,
+      1
+    ],
+    "molten": [
+      1,
+      0.48,
+      0.05,
+      1
+    ],
+    "moss": [
+      0.065,
+      0.12,
+      0.055,
+      1
+    ],
+    "timber": [
+      0.13,
+      0.07,
+      0.035,
+      1
+    ],
+    "ore": [
+      0.23,
+      0.14,
+      0.1,
+      1
+    ],
+    "cloth": [
+      0.1,
+      0.22,
+      0.23,
+      1
+    ],
+    "soil": [
+      0.1,
+      0.075,
+      0.045,
+      1
+    ]
+  },
+  "assets": [
+    {
+      "name": "paving",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 16,
+      "triangles": 24,
+      "materials": [
+        "slate"
+      ],
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.19499999284744263,
+          0.012499995529651642
+        ]
+      ],
+      "purpose": "Reusable original untextured floor; top at walking datum"
+    },
+    {
+      "name": "sanctuary_paving",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 16,
+      "triangles": 24,
+      "materials": [
+        "stone"
+      ],
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.19499999284744263,
+          0.012499995529651642
+        ]
+      ],
+      "purpose": "Reusable original untextured floor; top at walking datum"
+    },
+    {
+      "name": "forge_paving",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 16,
+      "triangles": 24,
+      "materials": [
+        "ore"
+      ],
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.19499999284744263,
+          0.012499995529651642
+        ]
+      ],
+      "purpose": "Reusable original untextured floor; top at walking datum"
+    },
+    {
+      "name": "ash_paving",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 16,
+      "triangles": 24,
+      "materials": [
+        "ash"
+      ],
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.19499999284744263,
+          0.012499995529651642
+        ]
+      ],
+      "purpose": "Reusable original untextured floor; top at walking datum"
+    },
+    {
+      "name": "garden_soil",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 16,
+      "triangles": 24,
+      "materials": [
+        "soil"
+      ],
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.19499999284744263,
+          0.012499995529651642
+        ]
+      ],
+      "purpose": "Reusable original untextured floor; top at walking datum"
+    },
+    {
+      "name": "wall",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 144,
+      "triangles": 264,
+      "materials": [
+        "basalt",
+        "stone",
+        "edge"
+      ],
+      "bounds": [
+        [
+          -0.5149999856948853,
+          0.5149999856948853
+        ],
+        [
+          0.15999998152256012,
+          0.6200000047683716
+        ],
+        [
+          0.027499988675117493,
+          2.6050000190734863
+        ]
+      ],
+      "purpose": "Five-course dressed masonry with a continuous cap"
+    },
+    {
+      "name": "parapet",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 72,
+      "triangles": 132,
+      "materials": [
+        "basalt",
+        "stone",
+        "edge"
+      ],
+      "bounds": [
+        [
+          -0.5149999856948853,
+          0.5149999856948853
+        ],
+        [
+          0.15999998152256012,
+          0.6200000047683716
+        ],
+        [
+          0.11999999731779099,
+          0.8549999594688416
+        ]
+      ],
+      "purpose": "Low broken wall for player-camera visibility"
+    },
+    {
+      "name": "wall_broken",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 96,
+      "triangles": 176,
+      "materials": [
+        "basalt",
+        "stone",
+        "edge"
+      ],
+      "bounds": [
+        [
+          -0.5149999856948853,
+          0.5149999856948853
+        ],
+        [
+          0.15999998152256012,
+          0.6200000047683716
+        ],
+        [
+          -0.017499998211860657,
+          1.8000000715255737
+        ]
+      ],
+      "purpose": "Failed masonry and damaged service bays"
+    },
+    {
+      "name": "pillar",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 216,
+      "triangles": 396,
+      "materials": [
+        "edge",
+        "stone",
+        "iron",
+        "bone"
+      ],
+      "bounds": [
+        [
+          -0.5099999904632568,
+          0.5099999904632568
+        ],
+        [
+          -0.5099999904632568,
+          0.5099999904632568
+        ],
+        [
+          0.0,
+          3.125
+        ]
+      ],
+      "purpose": "Collared structural pier matching the arch kit"
+    },
+    {
+      "name": "grand_pillar",
+      "footprint": [
+        2,
+        2
+      ],
+      "vertices": 240,
+      "triangles": 440,
+      "materials": [
+        "edge",
+        "stone",
+        "iron",
+        "bone",
+        "basalt"
+      ],
+      "bounds": [
+        [
+          -0.800000011920929,
+          0.800000011920929
+        ],
+        [
+          -0.800000011920929,
+          0.800000011920929
+        ],
+        [
+          0.0,
+          4.425000190734863
+        ]
+      ],
+      "purpose": "Foundry buttress and entrance landmark"
+    },
+    {
+      "name": "arch",
+      "footprint": [
+        4,
+        1
+      ],
+      "vertices": 360,
+      "triangles": 636,
+      "materials": [
+        "edge",
+        "stone",
+        "bone",
+        "iron",
+        "brass"
+      ],
+      "bounds": [
+        [
+          -2.0299999713897705,
+          2.0299999713897705
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          0.0,
+          3.7144322395324707
+        ]
+      ],
+      "purpose": "Open four-tile modular portal with two-tile passage"
+    },
+    {
+      "name": "broken_arch",
+      "footprint": [
+        4,
+        1
+      ],
+      "vertices": 344,
+      "triangles": 612,
+      "materials": [
+        "edge",
+        "stone",
+        "bone",
+        "iron",
+        "brass"
+      ],
+      "bounds": [
+        [
+          -2.0299999713897705,
+          2.0299999713897705
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          0.0,
+          3.7144322395324707
+        ]
+      ],
+      "purpose": "Collapsed portal; missing crown-side voussoirs"
+    },
+    {
+      "name": "great_arch",
+      "footprint": [
+        6,
+        2
+      ],
+      "vertices": 360,
+      "triangles": 636,
+      "materials": [
+        "edge",
+        "stone",
+        "bone",
+        "iron",
+        "brass"
+      ],
+      "bounds": [
+        [
+          -3.0299999713897705,
+          3.0300002098083496
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          0.0,
+          5.5012526512146
+        ]
+      ],
+      "purpose": "Monumental foundry portal; four-tile opening"
+    },
+    {
+      "name": "restoration_font",
+      "footprint": [
+        5,
+        5
+      ],
+      "vertices": 276,
+      "triangles": 500,
+      "materials": [
+        "basalt",
+        "stone",
+        "water",
+        "verdigris",
+        "bone",
+        "brass"
+      ],
+      "bounds": [
+        [
+          -2.4000000953674316,
+          2.4000000953674316
+        ],
+        [
+          -2.4000000953674316,
+          2.4000000953674316
+        ],
+        [
+          0.0,
+          2.390000104904175
+        ]
+      ],
+      "purpose": "Central fourfold restoration monument; water and brass identify the safe hub"
+    },
+    {
+      "name": "furnace",
+      "footprint": [
+        4,
+        4
+      ],
+      "vertices": 304,
+      "triangles": 564,
+      "materials": [
+        "basalt",
+        "stone",
+        "iron",
+        "ember",
+        "copper"
+      ],
+      "bounds": [
+        [
+          -1.899999976158142,
+          1.899999976158142
+        ],
+        [
+          -1.9000000953674316,
+          1.6600000858306885
+        ],
+        [
+          0.0,
+          4.0
+        ]
+      ],
+      "purpose": "Worker-scale smelting furnace, barred orange firebox and casting runnel"
+    },
+    {
+      "name": "great_crucible",
+      "footprint": [
+        8,
+        6
+      ],
+      "vertices": 616,
+      "triangles": 1136,
+      "materials": [
+        "basalt",
+        "stone",
+        "brass",
+        "iron",
+        "ember",
+        "copper",
+        "molten"
+      ],
+      "bounds": [
+        [
+          -4.0,
+          4.0
+        ],
+        [
+          -1.8499999046325684,
+          2.930000066757202
+        ],
+        [
+          0.0,
+          6.599999904632568
+        ]
+      ],
+      "purpose": "Final foundry furnace: massive buttresses, containment grille and casting throat"
+    },
+    {
+      "name": "waterwheel",
+      "footprint": [
+        4,
+        4
+      ],
+      "vertices": 1064,
+      "triangles": 1972,
+      "materials": [
+        "stone",
+        "timber",
+        "iron"
+      ],
+      "bounds": [
+        [
+          -1.850000023841858,
+          1.850000023841858
+        ],
+        [
+          -1.7400000095367432,
+          1.7400000095367432
+        ],
+        [
+          -0.24000000953674316,
+          3.240000009536743
+        ]
+      ],
+      "purpose": "Original broad undershot wheel, shaft, spokes and stone bearing piers"
+    },
+    {
+      "name": "pressure_pump",
+      "footprint": [
+        2,
+        3
+      ],
+      "vertices": 312,
+      "triangles": 604,
+      "materials": [
+        "basalt",
+        "verdigris",
+        "brass",
+        "iron",
+        "copper"
+      ],
+      "bounds": [
+        [
+          -0.949999988079071,
+          0.949999988079071
+        ],
+        [
+          -1.315000057220459,
+          0.800000011920929
+        ],
+        [
+          0.0,
+          2.549999952316284
+        ]
+      ],
+      "purpose": "Riveted coolant vessel with an identifiable hand valve"
+    },
+    {
+      "name": "pipe",
+      "footprint": [
+        1,
+        2
+      ],
+      "vertices": 168,
+      "triangles": 324,
+      "materials": [
+        "copper",
+        "iron",
+        "basalt"
+      ],
+      "bounds": [
+        [
+          -0.25999999046325684,
+          0.25999999046325684
+        ],
+        [
+          -0.949999988079071,
+          0.949999988079071
+        ],
+        [
+          0.0,
+          0.8600000143051147
+        ]
+      ],
+      "purpose": "Two-tile supply pipe with visible joints and supports"
+    },
+    {
+      "name": "workbench",
+      "footprint": [
+        2,
+        1
+      ],
+      "vertices": 144,
+      "triangles": 264,
+      "materials": [
+        "timber",
+        "iron",
+        "brass"
+      ],
+      "bounds": [
+        [
+          -1.0,
+          0.9999999403953552
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          0.0,
+          1.4850000143051147
+        ]
+      ],
+      "purpose": "Readable repair bench with vise, workpiece and hand tool"
+    },
+    {
+      "name": "anvil",
+      "footprint": [
+        2,
+        1
+      ],
+      "vertices": 52,
+      "triangles": 92,
+      "materials": [
+        "timber",
+        "iron"
+      ],
+      "bounds": [
+        [
+          -0.550000011920929,
+          1.0
+        ],
+        [
+          -0.550000011920929,
+          0.550000011920929
+        ],
+        [
+          0.0,
+          1.3200000524520874
+        ]
+      ],
+      "purpose": "Iron anvil on a worker-scale timber stump"
+    },
+    {
+      "name": "vent",
+      "footprint": [
+        2,
+        2
+      ],
+      "vertices": 152,
+      "triangles": 280,
+      "materials": [
+        "basalt",
+        "iron",
+        "brass",
+        "ember"
+      ],
+      "bounds": [
+        [
+          -0.8999999761581421,
+          0.8999999761581421
+        ],
+        [
+          -0.8999999761581421,
+          0.8999999761581421
+        ],
+        [
+          0.0,
+          1.3700000047683716
+        ]
+      ],
+      "purpose": "Containment vent; orange core and grating communicate supernatural heat"
+    },
+    {
+      "name": "rubble",
+      "footprint": [
+        2,
+        2
+      ],
+      "vertices": 120,
+      "triangles": 220,
+      "materials": [
+        "stone",
+        "iron"
+      ],
+      "bounds": [
+        [
+          -0.7658768892288208,
+          0.7574152946472168
+        ],
+        [
+          -0.5865598917007446,
+          0.6548004746437073
+        ],
+        [
+          0.0,
+          0.5600000023841858
+        ]
+      ],
+      "purpose": "Clustered fallen masonry with one broken tie; used selectively at damage sites"
+    },
+    {
+      "name": "ore_outcrop",
+      "footprint": [
+        2,
+        2
+      ],
+      "vertices": 108,
+      "triangles": 192,
+      "materials": [
+        "basalt",
+        "ore"
+      ],
+      "bounds": [
+        [
+          -1.0313761234283447,
+          1.065539836883545
+        ],
+        [
+          -0.8722048401832581,
+          0.644409716129303
+        ],
+        [
+          -0.19999998807907104,
+          1.0
+        ]
+      ],
+      "purpose": "Original exposed stone with copper-red mineral seams"
+    },
+    {
+      "name": "stores",
+      "footprint": [
+        2,
+        2
+      ],
+      "vertices": 144,
+      "triangles": 264,
+      "materials": [
+        "timber",
+        "iron"
+      ],
+      "bounds": [
+        [
+          -0.8500000238418579,
+          0.8499999642372131
+        ],
+        [
+          -0.625,
+          0.625
+        ],
+        [
+          0.0,
+          0.800000011920929
+        ]
+      ],
+      "purpose": "Banded workshop stores and resource handling"
+    },
+    {
+      "name": "timber_stack",
+      "footprint": [
+        2,
+        2
+      ],
+      "vertices": 96,
+      "triangles": 172,
+      "materials": [
+        "timber",
+        "iron"
+      ],
+      "bounds": [
+        [
+          -0.699999988079071,
+          0.7000000476837158
+        ],
+        [
+          -0.8999999761581421,
+          0.8999999761581421
+        ],
+        [
+          0.09999999403953552,
+          0.4800000786781311
+        ]
+      ],
+      "purpose": "Dry timber stock justified by the workshop and maintenance stores"
+    },
+    {
+      "name": "root_tree",
+      "footprint": [
+        3,
+        3
+      ],
+      "vertices": 242,
+      "triangles": 436,
+      "materials": [
+        "timber",
+        "moss"
+      ],
+      "bounds": [
+        [
+          -1.2384549379348755,
+          1.5155400037765503
+        ],
+        [
+          -1.2179028987884521,
+          1.3398988246917725
+        ],
+        [
+          0.0,
+          3.4600000381469727
+        ]
+      ],
+      "purpose": "A small tree only for the breached, water-fed root courtyard"
+    },
+    {
+      "name": "fungus",
+      "footprint": [
+        2,
+        2
+      ],
+      "vertices": 84,
+      "triangles": 144,
+      "materials": [
+        "bone",
+        "verdigris"
+      ],
+      "bounds": [
+        [
+          -0.699999988079071,
+          0.6499999761581421
+        ],
+        [
+          -0.7500000596046448,
+          0.550000011920929
+        ],
+        [
+          0.0,
+          0.9099999666213989
+        ]
+      ],
+      "purpose": "Water-fed fungal life in the reservoir garden"
+    },
+    {
+      "name": "bridge",
+      "footprint": [
+        4,
+        2
+      ],
+      "vertices": 312,
+      "triangles": 572,
+      "materials": [
+        "stone",
+        "iron",
+        "basalt"
+      ],
+      "bounds": [
+        [
+          -2.0,
+          2.0
+        ],
+        [
+          -1.0,
+          1.0
+        ],
+        [
+          -0.75,
+          0.9500000476837158
+        ]
+      ],
+      "purpose": "Four-tile service bridge with open railings and visible supporting abutments"
+    },
+    {
+      "name": "water",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 24,
+      "triangles": 36,
+      "materials": [
+        "water",
+        "ripple"
+      ],
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.22999998927116394,
+          -0.1355000138282776
+        ]
+      ],
+      "purpose": "Original untextured lowered coolant surface with two restrained ripples"
+    },
+    {
+      "name": "brazier",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 52,
+      "triangles": 88,
+      "materials": [
+        "iron",
+        "brass",
+        "ember",
+        "molten"
+      ],
+      "bounds": [
+        [
+          -0.5600000023841858,
+          0.5600000023841858
+        ],
+        [
+          -0.5600000023841858,
+          0.5600000023841858
+        ],
+        [
+          0.0,
+          1.350000023841858
+        ]
+      ],
+      "purpose": "Warm route marker; fixed original geometry, no simulated fire"
+    },
+    {
+      "name": "banner",
+      "footprint": [
+        2,
+        1
+      ],
+      "vertices": 52,
+      "triangles": 88,
+      "materials": [
+        "iron",
+        "brass",
+        "cloth"
+      ],
+      "bounds": [
+        [
+          -0.4519615173339844,
+          0.8000000715255737
+        ],
+        [
+          -0.05999999865889549,
+          0.07000000029802322
+        ],
+        [
+          0.0,
+          3.4000000953674316
+        ]
+      ],
+      "purpose": "Sanctuary identity: restrained teal field and brass seam"
+    },
+    {
+      "name": "scale_figure",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 136,
+      "triangles": 248,
+      "materials": [
+        "timber",
+        "cloth",
+        "bone"
+      ],
+      "bounds": [
+        [
+          -0.4099999964237213,
+          0.4100000262260437
+        ],
+        [
+          -0.1899999976158142,
+          0.1899999976158142
+        ],
+        [
+          0.004999995231628418,
+          1.7200000286102295
+        ]
+      ],
+      "purpose": "Original static1.72-tile scale mannequin; not a simulated NPC"
+    },
+    {
+      "name": "ascent_stair",
+      "footprint": [
+        6,
+        6
+      ],
+      "vertices": 504,
+      "triangles": 932,
+      "materials": [
+        "basalt",
+        "stone",
+        "iron",
+        "brass"
+      ],
+      "bounds": [
+        [
+          -2.25,
+          2.25
+        ],
+        [
+          -2.1935338973999023,
+          2.25
+        ],
+        [
+          0.0,
+          4.269999980926514
+        ]
+      ],
+      "purpose": "Original spiral ascent landmark; future height/plane engineering required"
+    },
+    {
+      "name": "railing",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 72,
+      "triangles": 132,
+      "materials": [
+        "iron"
+      ],
+      "bounds": [
+        [
+          -0.5,
+          0.4999999701976776
+        ],
+        [
+          -0.05999999865889549,
+          0.05999999865889549
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "purpose": "Open industrial railing preserves camera sightlines"
+    },
+    {
+      "name": "metal_plate",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 32,
+      "triangles": 56,
+      "materials": [
+        "iron",
+        "brass"
+      ],
+      "bounds": [
+        [
+          -0.4699999988079071,
+          0.4699999988079071
+        ],
+        [
+          -0.4699999988079071,
+          0.4699999988079071
+        ],
+        [
+          0.0,
+          0.05249999836087227
+        ]
+      ],
+      "purpose": "Inspection hatch and machinery apron"
+    },
+    {
+      "name": "sanctuary_seal",
+      "footprint": [
+        7,
+        7
+      ],
+      "vertices": 320,
+      "triangles": 544,
+      "materials": [
+        "brass",
+        "verdigris"
+      ],
+      "bounds": [
+        [
+          -3.059999942779541,
+          3.059999942779541
+        ],
+        [
+          -3.059999942779541,
+          3.06000018119812
+        ],
+        [
+          0.0024998895823955536,
+          0.06750011444091797
+        ]
+      ],
+      "purpose": "Fourfold restoration court inlay; original brass and verdigris pattern"
+    },
+    {
+      "name": "track",
+      "footprint": [
+        1,
+        2
+      ],
+      "vertices": 40,
+      "triangles": 60,
+      "materials": [
+        "iron",
+        "timber"
+      ],
+      "bounds": [
+        [
+          -0.46000000834465027,
+          0.4599999785423279
+        ],
+        [
+          -0.9900000095367432,
+          0.9900000095367432
+        ],
+        [
+          0.004999998956918716,
+          0.10499999672174454
+        ]
+      ],
+      "purpose": "Quarry-to-workshop narrow-gauge haulage track"
+    },
+    {
+      "name": "ore_cart",
+      "footprint": [
+        2,
+        2
+      ],
+      "vertices": 124,
+      "triangles": 216,
+      "materials": [
+        "iron",
+        "ore"
+      ],
+      "bounds": [
+        [
+          -0.7400000095367432,
+          0.7400000095367432
+        ],
+        [
+          -0.7699999809265137,
+          0.7699999809265137
+        ],
+        [
+          -0.009999990463256836,
+          1.4700000286102295
+        ]
+      ],
+      "purpose": "Original loaded ore cart ties quarry deposits to production"
+    },
+    {
+      "name": "bank_counter",
+      "footprint": [
+        3,
+        2
+      ],
+      "vertices": 128,
+      "triangles": 232,
+      "materials": [
+        "timber",
+        "brass",
+        "iron",
+        "bone"
+      ],
+      "bounds": [
+        [
+          -1.5,
+          1.5
+        ],
+        [
+          -0.699999988079071,
+          0.699999988079071
+        ],
+        [
+          0.0,
+          2.0149998664855957
+        ]
+      ],
+      "purpose": "Sanctuary strongbox counter and a ledger; future bank anchor"
+    },
+    {
+      "name": "coolant_trough",
+      "footprint": [
+        3,
+        2
+      ],
+      "vertices": 136,
+      "triangles": 244,
+      "materials": [
+        "basalt",
+        "stone",
+        "water",
+        "ripple"
+      ],
+      "bounds": [
+        [
+          -1.4500000476837158,
+          1.4500000476837158
+        ],
+        [
+          -0.8500000238418579,
+          0.8500000238418579
+        ],
+        [
+          0.0,
+          0.800000011920929
+        ]
+      ],
+      "purpose": "Readable stone coolant station with an open water surface"
+    },
+    {
+      "name": "casting_hoist",
+      "footprint": [
+        4,
+        3
+      ],
+      "vertices": 240,
+      "triangles": 436,
+      "materials": [
+        "stone",
+        "timber",
+        "iron",
+        "brass"
+      ],
+      "bounds": [
+        [
+          -2.0,
+          2.0
+        ],
+        [
+          -0.6499999761581421,
+          0.6499999761581421
+        ],
+        [
+          0.0,
+          4.0
+        ]
+      ],
+      "purpose": "Timber and iron gantry gives the cast-house a readable production line"
+    },
+    {
+      "name": "rock_buttress",
+      "footprint": [
+        4,
+        3
+      ],
+      "vertices": 60,
+      "triangles": 104,
+      "materials": [
+        "basalt",
+        "ore"
+      ],
+      "bounds": [
+        [
+          -1.5802018642425537,
+          1.6233099699020386
+        ],
+        [
+          -1.1737070083618164,
+          1.2186912298202515
+        ],
+        [
+          -0.4650000333786011,
+          3.0749998092651367
+        ]
+      ],
+      "purpose": "Original fractured rock face for quarry edges and failed excavation"
+    },
+    {
+      "name": "heat_fissure",
+      "footprint": [
+        1,
+        2
+      ],
+      "vertices": 144,
+      "triangles": 264,
+      "materials": [
+        "basalt",
+        "ember"
+      ],
+      "bounds": [
+        [
+          -0.2473808228969574,
+          0.25284525752067566
+        ],
+        [
+          -0.897510826587677,
+          0.643085241317749
+        ],
+        [
+          -0.09500004351139069,
+          0.09750004857778549
+        ]
+      ],
+      "purpose": "Static heat-stressed paving; visual storytelling, not a live hazard"
+    },
+    {
+      "name": "wall_relief",
+      "footprint": [
+        2,
+        1
+      ],
+      "vertices": 80,
+      "triangles": 152,
+      "materials": [
+        "basalt",
+        "brass",
+        "verdigris"
+      ],
+      "bounds": [
+        [
+          -0.75,
+          0.75
+        ],
+        [
+          -0.2500000298023224,
+          0.09000000357627869
+        ],
+        [
+          0.75,
+          2.25
+        ]
+      ],
+      "purpose": "Repeated industrial sanctuary emblem, never borrowed cache art"
+    },
+    {
+      "name": "supply_rack",
+      "footprint": [
+        2,
+        1
+      ],
+      "vertices": 156,
+      "triangles": 280,
+      "materials": [
+        "timber",
+        "copper"
+      ],
+      "bounds": [
+        [
+          -0.8999999761581421,
+          0.9000000357627869
+        ],
+        [
+          -0.32499998807907104,
+          0.32499998807907104
+        ],
+        [
+          0.0,
+          2.0
+        ]
+      ],
+      "purpose": "Shelved supplies make alcoves read as occupied working infrastructure"
+    },
+    {
+      "name": "paving_v0",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 16,
+      "triangles": 24,
+      "materials": [
+        "slate-v0"
+      ],
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.19499999284744263,
+          0.012499995529651642
+        ]
+      ],
+      "purpose": "Subtle original paving tone; no texture dependencies"
+    },
+    {
+      "name": "paving_v1",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 16,
+      "triangles": 24,
+      "materials": [
+        "slate-v1"
+      ],
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.19499999284744263,
+          0.012499995529651642
+        ]
+      ],
+      "purpose": "Subtle original paving tone; no texture dependencies"
+    },
+    {
+      "name": "sanctuary_paving_v0",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 16,
+      "triangles": 24,
+      "materials": [
+        "stone-v0"
+      ],
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.19499999284744263,
+          0.012499995529651642
+        ]
+      ],
+      "purpose": "Subtle original paving tone; no texture dependencies"
+    },
+    {
+      "name": "sanctuary_paving_v1",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 16,
+      "triangles": 24,
+      "materials": [
+        "stone-v1"
+      ],
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.19499999284744263,
+          0.012499995529651642
+        ]
+      ],
+      "purpose": "Subtle original paving tone; no texture dependencies"
+    },
+    {
+      "name": "forge_paving_v0",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 16,
+      "triangles": 24,
+      "materials": [
+        "ore-v0"
+      ],
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.19499999284744263,
+          0.012499995529651642
+        ]
+      ],
+      "purpose": "Subtle original paving tone; no texture dependencies"
+    },
+    {
+      "name": "forge_paving_v1",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 16,
+      "triangles": 24,
+      "materials": [
+        "ore-v1"
+      ],
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.19499999284744263,
+          0.012499995529651642
+        ]
+      ],
+      "purpose": "Subtle original paving tone; no texture dependencies"
+    },
+    {
+      "name": "ash_paving_v0",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 16,
+      "triangles": 24,
+      "materials": [
+        "ash-v0"
+      ],
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.19499999284744263,
+          0.012499995529651642
+        ]
+      ],
+      "purpose": "Subtle original paving tone; no texture dependencies"
+    },
+    {
+      "name": "ash_paving_v1",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 16,
+      "triangles": 24,
+      "materials": [
+        "ash-v1"
+      ],
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.19499999284744263,
+          0.012499995529651642
+        ]
+      ],
+      "purpose": "Subtle original paving tone; no texture dependencies"
+    },
+    {
+      "name": "garden_soil_v0",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 16,
+      "triangles": 24,
+      "materials": [
+        "soil-v0"
+      ],
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.19499999284744263,
+          0.012499995529651642
+        ]
+      ],
+      "purpose": "Subtle original paving tone; no texture dependencies"
+    },
+    {
+      "name": "garden_soil_v1",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 16,
+      "triangles": 24,
+      "materials": [
+        "soil-v1"
+      ],
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.19499999284744263,
+          0.012499995529651642
+        ]
+      ],
+      "purpose": "Subtle original paving tone; no texture dependencies"
+    },
+    {
+      "name": "moss_ground",
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 16,
+      "triangles": 24,
+      "materials": [
+        "moss"
+      ],
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.19499999284744263,
+          0.012499995529651642
+        ]
+      ],
+      "purpose": "Moist original ground under the roof breach and around cistern roots"
+    },
+    {
+      "name": "long_bridge",
+      "footprint": [
+        6,
+        2
+      ],
+      "vertices": 408,
+      "triangles": 748,
+      "materials": [
+        "stone",
+        "iron",
+        "basalt"
+      ],
+      "bounds": [
+        [
+          -3.0,
+          3.0
+        ],
+        [
+          -1.0,
+          1.0
+        ],
+        [
+          -0.75,
+          0.9500001072883606
+        ]
+      ],
+      "purpose": "A full bank-to-bank reservoir crossing with open railings"
+    },
+    {
+      "name": "curtain_arrival",
+      "footprint": [
+        25,
+        18
+      ],
+      "vertices": 1368,
+      "triangles": 2052,
+      "materials": [
+        "basalt",
+        "stone",
+        "edge",
+        "basalt"
+      ],
+      "bounds": [
+        [
+          -11.574999809265137,
+          12.14510440826416
+        ],
+        [
+          -8.51618766784668,
+          8.895000457763672
+        ],
+        [
+          -0.25,
+          2.8399999141693115
+        ]
+      ],
+      "purpose": "Continuous authored cutaway masonry sector; partition into smaller placements for live collision later",
+      "world_anchor": [
+        55,
+        30
+      ]
+    },
+    {
+      "name": "curtain_sanctuary",
+      "footprint": [
+        31,
+        32
+      ],
+      "vertices": 1752,
+      "triangles": 2628,
+      "materials": [
+        "basalt",
+        "stone",
+        "edge",
+        "basalt"
+      ],
+      "bounds": [
+        [
+          -15.01618766784668,
+          15.01618766784668
+        ],
+        [
+          -15.51618766784668,
+          15.267366409301758
+        ],
+        [
+          -0.25,
+          2.8399999141693115
+        ]
+      ],
+      "purpose": "Continuous authored cutaway masonry sector; partition into smaller placements for live collision later",
+      "world_anchor": [
+        50,
+        46
+      ]
+    },
+    {
+      "name": "curtain_workshop",
+      "footprint": [
+        28,
+        28
+      ],
+      "vertices": 2400,
+      "triangles": 3600,
+      "materials": [
+        "basalt",
+        "stone",
+        "edge",
+        "basalt"
+      ],
+      "bounds": [
+        [
+          -13.654999732971191,
+          13.654999732971191
+        ],
+        [
+          -13.654999732971191,
+          13.51618766784668
+        ],
+        [
+          -0.25,
+          2.8399999141693115
+        ]
+      ],
+      "purpose": "Continuous authored cutaway masonry sector; partition into smaller placements for live collision later",
+      "world_anchor": [
+        28,
+        53
+      ]
+    },
+    {
+      "name": "curtain_quarry",
+      "footprint": [
+        26,
+        31
+      ],
+      "vertices": 2304,
+      "triangles": 3456,
+      "materials": [
+        "basalt",
+        "stone",
+        "edge",
+        "basalt"
+      ],
+      "bounds": [
+        [
+          -12.654999732971191,
+          12.51618766784668
+        ],
+        [
+          -14.854175567626953,
+          15.051198959350586
+        ],
+        [
+          -0.25,
+          2.190000057220459
+        ]
+      ],
+      "purpose": "Continuous authored cutaway masonry sector; partition into smaller placements for live collision later",
+      "world_anchor": [
+        24,
+        74
+      ]
+    },
+    {
+      "name": "curtain_waterworks",
+      "footprint": [
+        27,
+        28
+      ],
+      "vertices": 1536,
+      "triangles": 2304,
+      "materials": [
+        "basalt",
+        "stone",
+        "edge",
+        "basalt"
+      ],
+      "bounds": [
+        [
+          -13.154999732971191,
+          13.158823013305664
+        ],
+        [
+          -13.658417701721191,
+          13.558320999145508
+        ],
+        [
+          -0.25,
+          2.8399999141693115
+        ]
+      ],
+      "purpose": "Continuous authored cutaway masonry sector; partition into smaller placements for live collision later",
+      "world_anchor": [
+        78,
+        50
+      ]
+    },
+    {
+      "name": "curtain_garden",
+      "footprint": [
+        26,
+        27
+      ],
+      "vertices": 1416,
+      "triangles": 2124,
+      "materials": [
+        "basalt",
+        "stone",
+        "edge",
+        "basalt"
+      ],
+      "bounds": [
+        [
+          -12.074999809265137,
+          12.659276008605957
+        ],
+        [
+          -12.574999809265137,
+          13.14510440826416
+        ],
+        [
+          -0.25,
+          2.190000057220459
+        ]
+      ],
+      "purpose": "Continuous authored cutaway masonry sector; partition into smaller placements for live collision later",
+      "world_anchor": [
+        86,
+        73
+      ]
+    },
+    {
+      "name": "curtain_vents",
+      "footprint": [
+        23,
+        31
+      ],
+      "vertices": 1920,
+      "triangles": 2880,
+      "materials": [
+        "basalt",
+        "stone",
+        "edge",
+        "basalt"
+      ],
+      "bounds": [
+        [
+          -11.185894012451172,
+          11.156989097595215
+        ],
+        [
+          -15.01618766784668,
+          15.185894012451172
+        ],
+        [
+          -0.25,
+          2.8399999141693115
+        ]
+      ],
+      "purpose": "Continuous authored cutaway masonry sector; partition into smaller placements for live collision later",
+      "world_anchor": [
+        70,
+        75
+      ]
+    },
+    {
+      "name": "curtain_narthex",
+      "footprint": [
+        25,
+        26
+      ],
+      "vertices": 2296,
+      "triangles": 3444,
+      "materials": [
+        "basalt",
+        "stone",
+        "edge",
+        "basalt"
+      ],
+      "bounds": [
+        [
+          -11.574999809265137,
+          11.731621742248535
+        ],
+        [
+          -12.653633117675781,
+          12.895000457763672
+        ],
+        [
+          -0.25,
+          2.8399999141693115
+        ]
+      ],
+      "purpose": "Continuous authored cutaway masonry sector; partition into smaller placements for live collision later",
+      "world_anchor": [
+        52,
+        73
+      ]
+    },
+    {
+      "name": "curtain_foundry",
+      "footprint": [
+        32,
+        27
+      ],
+      "vertices": 968,
+      "triangles": 1452,
+      "materials": [
+        "basalt",
+        "stone",
+        "edge",
+        "basalt"
+      ],
+      "bounds": [
+        [
+          -15.654999732971191,
+          15.654999732971191
+        ],
+        [
+          -13.01618766784668,
+          13.01618766784668
+        ],
+        [
+          -0.25,
+          2.8399999141693115
+        ]
+      ],
+      "purpose": "Continuous authored cutaway masonry sector; partition into smaller placements for live collision later",
+      "world_anchor": [
+        46,
+        97
+      ]
+    },
+    {
+      "name": "curtain_ascent",
+      "footprint": [
+        27,
+        19
+      ],
+      "vertices": 1616,
+      "triangles": 2424,
+      "materials": [
+        "basalt",
+        "stone",
+        "edge",
+        "basalt"
+      ],
+      "bounds": [
+        [
+          -13.14510440826416,
+          12.967740058898926
+        ],
+        [
+          -9.245729446411133,
+          9.154999732971191
+        ],
+        [
+          -0.25,
+          2.8399999141693115
+        ]
+      ],
+      "purpose": "Continuous authored cutaway masonry sector; partition into smaller placements for live collision later",
+      "world_anchor": [
+        51,
+        115
+      ]
+    }
+  ]
+}
