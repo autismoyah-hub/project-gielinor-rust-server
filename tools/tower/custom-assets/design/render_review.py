@@ -16,9 +16,10 @@ from PIL import Image,ImageDraw,ImageFont
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('renderer',type=Path);p.add_argument('package',type=Path);p.add_argument('scene',type=Path);p.add_argument('output',type=Path);p.add_argument('--catalogue',action='store_true');a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('renderer',type=Path);p.add_argument('package',type=Path);p.add_argument('scene',type=Path);p.add_argument('output',type=Path);p.add_argument('--catalogue',action='store_true');p.add_argument('--design',type=Path);a=p.parse_args()
     a.output.mkdir(parents=True,exist_ok=True);a.renderer=a.renderer.resolve();a.package=a.package.resolve();a.scene=a.scene.resolve()
     env=dict(os.environ,TOWER_ORIGINAL_ART_ONLY='1');env.pop('TOWER_JS5_READTHROUGH_ADDR',None);env.pop('TOWER_ASSET_PACKAGE',None)
+    env.pop('TOWER_LEGACY_REFERENCE_ONLY',None);env.pop('TOWER_TARGET_HEIGHT',None)
     catalogue=json.loads((a.package/'catalogue.json').read_text())
     results=dict(origin='OFFLINE Rust native library; entirely original geometry; no original cache source',renderer_sha256=sha(a.renderer),scene_sha256=sha(a.scene),registry_sha256=sha(a.package/'registry.txt'),frames=[])
     try:font=ImageFont.truetype('C:/Windows/Fonts/segoeui.ttf',21)
@@ -46,6 +47,16 @@ def main():
            ('waterworks','The Headgate and Wheel',91,66,2800,92,65,4096,1900),('garden','The Breached Root Cistern',101,88,2500,100,88,1024,2100),
            ('vents','The Cinder Lung',82,92,2600,82,92,2048,1900),('narthex','The Last Cooling Gallery',63,90,2100,63,90,0,1900),
            ('foundry','The Bound Crucible',62,110,3300,62,115,0,3000),('ascent','The Upper Bearing',64,127,2200,63,128,10240,1900)]
+    if a.design:
+        design=json.loads(a.design.read_text());areas=[]
+        for area in design['areas']:
+            key=area['key'];x,z=area['center'];px,pz=x,z;yaw=0;distance=1800;overview_distance=2200
+            if key=='waterworks':yaw=4096;distance=2100
+            if key=='garden':yaw=2048;distance=2000
+            if key=='foundry':pz=112;distance=2700;overview_distance=3100
+            if key=='ascent':yaw=10240;distance=1900
+            if key=='quarry':yaw=2048
+            areas.append((key,area['title'],x,z,overview_distance,px,pz,yaw,distance))
     for key,title,x,z,d,px,pz,yaw,pd in areas:
         render(key+'-overview',title+' — room composition',x,z,2048,d,'room')
         render(key+'-reverse',title+' — reverse inspection',x,z,10240,d,'room')

@@ -1,0 +1,569 @@
+{
+  "origin": "OFFLINE Rust native library; entirely original geometry; no original cache source",
+  "renderer_sha256": "f78f64d8b3c6a30c9b240d99cb9657f99d419d761d57b74b83f8c08cb48d547b",
+  "scene_sha256": "2ede865b12aef4983ab29110914678852423ee3b6cae7975748ca12b8cf1cfce",
+  "registry_sha256": "fd234ba5d2713b5b2b827c1dd6f1c95aecea25fee7d676fa1fe827dcd64efef9",
+  "frames": [
+    {
+      "name": "whole-isometric",
+      "title": "The Fallen Cinderworks \u2014 complete floor",
+      "file": "views\\whole-isometric.png",
+      "raw": "views\\whole-isometric.bmp",
+      "camera": {
+        "x": 67,
+        "z": 81,
+        "yaw": 2048,
+        "distance": 11500,
+        "preset": "floor-iso"
+      },
+      "seconds": 1.545,
+      "raw_sha256": "464da50ddc7b630fe89a416d0996c06601fdd72ecb7e1d8144d5bf57d8a333e5",
+      "png_sha256": "1f147dc1d7595c282db3797bf3228fd1b8925e759f89527b3ffd5626438d0bab",
+      "scene_sha256": "2ede865b12aef4983ab29110914678852423ee3b6cae7975748ca12b8cf1cfce"
+    },
+    {
+      "name": "whole-reverse",
+      "title": "The Fallen Cinderworks \u2014 reverse isometric",
+      "file": "views\\whole-reverse.png",
+      "raw": "views\\whole-reverse.bmp",
+      "camera": {
+        "x": 67,
+        "z": 81,
+        "yaw": 10240,
+        "distance": 11500,
+        "preset": "floor-iso"
+      },
+      "seconds": 0.336,
+      "raw_sha256": "2bf5f4c1ee58da2b71ec3886b528361eef8656b3953e13bbc438a2f4879b68db",
+      "png_sha256": "687fcbe7ce9b726120497d9c81f8dba41f193b2088a168e58d3485e551ed8d59",
+      "scene_sha256": "2ede865b12aef4983ab29110914678852423ee3b6cae7975748ca12b8cf1cfce"
+    },
+    {
+      "name": "whole-plan",
+      "title": "The Fallen Cinderworks \u2014 architectural plan",
+      "file": "views\\whole-plan.png",
+      "raw": "views\\whole-plan.bmp",
+      "camera": {
+        "x": 67,
+        "z": 81,
+        "yaw": 0,
+        "distance": 64,
+        "preset": "floor-plan"
+      },
+      "seconds": 0.371,
+      "raw_sha256": "9eaf06135d77299947f0b322887e4d7adea550c64f898ffb06b0c7c836ea16bd",
+      "png_sha256": "66c62151a945424d3a5e19e8b76d958694325607bf9cf7860acd3baf5dc14289",
+      "scene_sha256": "2ede865b12aef4983ab29110914678852423ee3b6cae7975748ca12b8cf1cfce"
+    },
+    {
+      "name": "arrival-overview",
+      "title": "The Workers' Descent \u2014 room composition",
+      "file": "views\\arrival-overview.png",
+      "raw": "views\\arrival-overview.bmp",
+      "camera": {
+        "x": 62,
+        "z": 37,
+        "yaw": 2048,
+        "distance": 2200,
+        "preset": "room"
+      },
+      "seconds": 0.197,
+      "raw_sha256": "e7d301b256894c578eed849899ae59837d7fac30692300cd261b0fee2aa9b91f",
+      "png_sha256": "6f3565b7e42b0f44531176a3f6fd1becf33ff2779046a6ef1eaeee9c5d2f27af",
+      "scene_sha256": "2ede865b12aef4983ab29110914678852423ee3b6cae7975748ca12b8cf1cfce"
+    },
+    {
+      "name": "arrival-reverse",
+      "title": "The Workers' Descent \u2014 reverse inspection",
+      "file": "views\\arrival-reverse.png",
+      "raw": "views\\arrival-reverse.bmp",
+      "camera": {
+        "x": 62,
+        "z": 37,
+        "yaw": 10240,
+        "distance": 2200,
+        "preset": "room"
+      },
+      "seconds": 0.188,
+      "raw_sha256": "9745a7a25422a670df551a46532b4cfd02254bccf7130086ae3844dba27ba567",
+      "png_sha256": "e0213e24998b7ce798dc4c8335c05591e093955599da7c8ed5562644e7898e31",
+      "scene_sha256": "2ede865b12aef4983ab29110914678852423ee3b6cae7975748ca12b8cf1cfce"
+    },
+    {
+      "name": "arrival-player",
+      "title": "The Workers' Descent \u2014 close player-oriented view",
+      "file": "views\\arrival-player.png",
+      "raw": "views\\arrival-player.bmp",
+      "camera": {
+        "x": 62,
+        "z": 37,
+        "yaw": 0,
+        "distance": 1800,
+        "preset": "player"
+      },
+      "seconds": 0.212,
+      "raw_sha256": "36839d86b961d37b98f27232e4b1089711172b78c33ba358ab1d42bfc11133ee",
+      "png_sha256": "7bc883b8afb70a0a6a72da62682f5c90b41fec1ad92518ca140fa601a65f9d2c",
+      "scene_sha256": "2ede865b12aef4983ab29110914678852423ee3b6cae7975748ca12b8cf1cfce"
+    },
+    {
+      "name": "sanctuary-overview",
+      "title": "The Springhouse Refuge \u2014 room composition",
+      "file": "views\\sanctuary-overview.png",
+      "raw": "views\\sanctuary-overview.bmp",
+      "camera": {
+        "x": 62,
+        "z": 55,
+        "yaw": 2048,
+        "distance": 2200,
+        "preset": "room"
+      },
+      "seconds": 0.227,
+      "raw_sha256": "e68adea53426b1067ee7e1b675b9023bc9e28776688893489389565171b8878c",
+      "png_sha256": "9fe49ca98e6e73f89fe7d8bd5196d5511e91ff16185e925ae383650553accb0a",
+      "scene_sha256": "2ede865b12aef4983ab29110914678852423ee3b6cae7975748ca12b8cf1cfce"
+    },
+    {
+      "name": "sanctuary-reverse",
+      "title": "The Springhouse Refuge \u2014 reverse inspection",
+      "file": "views\\sanctuary-reverse.png",
+      "raw": "views\\sanctuary-reverse.bmp",
+      "camera": {
+        "x": 62,
+        "z": 55,
+        "yaw": 10240,
+        "distance": 2200,
+        "preset": "room"
+      },
+      "seconds": 0.234,
+      "raw_sha256": "687983c7ec3be91fee58bec33df9e6139cca9dc2f025bf3ef1d13774b886306f",
+      "png_sha256": "4ef66e11d86f347a0a9b5ddc1729af63f940c6fd775dc5efd17f33dffc659472",
+      "scene_sha256": "2ede865b12aef4983ab29110914678852423ee3b6cae7975748ca12b8cf1cfce"
+    },
+    {
+      "name": "sanctuary-player",
+      "title": "The Springhouse Refuge \u2014 close player-oriented view",
+      "file": "views\\sanctuary-player.png",
+      "raw": "views\\sanctuary-player.bmp",
+      "camera": {
+        "x": 62,
+        "z": 55,
+        "yaw": 0,
+        "distance": 1800,
+        "preset": "player"
+      },
+      "seconds": 0.233,
+      "raw_sha256": "1e65ac68449a94f1e71179872d990aad0f5e30735d8c03c3932528f3291d6e38",
+      "png_sha256": "e82a4ba7faa1079cfc49736e82aecd9ae5779479764c19f26611306c5392a439",
+      "scene_sha256": "2ede865b12aef4983ab29110914678852423ee3b6cae7975748ca12b8cf1cfce"
+    },
+    {
+      "name": "workshop-overview",
+      "title": "The Repair and Casting Hall \u2014 room composition",
+      "file": "views\\workshop-overview.png",
+      "raw": "views\\workshop-overview.bmp",
+      "camera": {
+        "x": 43,
+        "z": 65,
+        "yaw": 2048,
+        "distance": 2200,
+        "preset": "room"
+      },
+      "seconds": 0.227,
+      "raw_sha256": "5a0dc0df31278539e4164244a1e8fd51fe619acd4d283291e568c6282a69ba0c",
+      "png_sha256": "98142c0cdbecf580223d67e693c17e18498b151d7dda84e04d94f771e6ebef79",
+      "scene_sha256": "2ede865b12aef4983ab29110914678852423ee3b6cae7975748ca12b8cf1cfce"
+    },
+    {
+      "name": "workshop-reverse",
+      "title": "The Repair and Casting Hall \u2014 reverse inspection",
+      "file": "views\\workshop-reverse.png",
+      "raw": "views\\workshop-reverse.bmp",
+      "camera": {
+        "x": 43,
+        "z": 65,
+        "yaw": 10240,
+        "distance": 2200,
+        "preset": "room"
+      },
+      "seconds": 0.227,
+      "raw_sha256": "9165f93037a413c239260d6fa165a5f14dfa25500c3d624e5eae4e304487df12",
+      "png_sha256": "35bc115e542822ba7c1e1baf0657c6997205a6887f70bcb3f4768457e38cbb31",
+      "scene_sha256": "2ede865b12aef4983ab29110914678852423ee3b6cae7975748ca12b8cf1cfce"
+    },
+    {
+      "name": "workshop-player",
+      "title": "The Repair and Casting Hall \u2014 close player-oriented view",
+      "file": "views\\workshop-player.png",
+      "raw": "views\\workshop-player.bmp",
+      "camera": {
+        "x": 43,
+        "z": 65,
+        "yaw": 0,
+        "distance": 1800,
+        "preset": "player"
+      },
+      "seconds": 0.218,
+      "raw_sha256": "f08f709bf859ce3e696404e3a30e3e444d60c741d67ce3dbd8380abeca083c25",
+      "png_sha256": "e0fd6c995d638324344ea677aee55003d0339a6223125f1e481744c36a1403dd",
+      "scene_sha256": "2ede865b12aef4983ab29110914678852423ee3b6cae7975748ca12b8cf1cfce"
+    },
+    {
+      "name": "quarry-overview",
+      "title": "The Worked Seam \u2014 room composition",
+      "file": "views\\quarry-overview.png",
+      "raw": "views\\quarry-overview.bmp",
+      "camera": {
+        "x": 38,
+        "z": 87,
+        "yaw": 2048,
+        "distance": 2200,
+        "preset": "room"
+      },
+      "seconds": 0.235,
+      "raw_sha256": "6b4ebf1a227d1a7903cfc60ddd48bcee6a2f04f48e6fa9581f25b8fb078a2e95",
+      "png_sha256": "876dc9a66de2a3abe5ff9d127abb4a9cc1fade3e9588d965d56778be1599e4d0",
+      "scene_sha256": "2ede865b12aef4983ab29110914678852423ee3b6cae7975748ca12b8cf1cfce"
+    },
+    {
+      "name": "quarry-reverse",
+      "title": "The Worked Seam \u2014 reverse inspection",
+      "file": "views\\quarry-reverse.png",
+      "raw": "views\\quarry-reverse.bmp",
+      "camera": {
+        "x": 38,
+        "z": 87,
+        "yaw": 10240,
+        "distance": 2200,
+        "preset": "room"
+      },
+      "seconds": 0.232,
+      "raw_sha256": "d48d373061c0a12ff6cd4ae59fb298bc5b268fa0b82e1540c4645b35019e4db4",
+      "png_sha256": "eb93c4c788ffcd724abd72a3e8ca8fe0f2877b82d4b417aacdd42c08b58e74ee",
+      "scene_sha256": "2ede865b12aef4983ab29110914678852423ee3b6cae7975748ca12b8cf1cfce"
+    },
+    {
+      "name": "quarry-player",
+      "title": "The Worked Seam \u2014 close player-oriented view",
+      "file": "views\\quarry-player.png",
+      "raw": "views\\quarry-player.bmp",
+      "camera": {
+        "x": 38,
+        "z": 87,
+        "yaw": 2048,
+        "distance": 1800,
+        "preset": "player"
+      },
+      "seconds": 0.203,
+      "raw_sha256": "b302c6a1851203e25f210f032d228ffa40f88eb1b521b9907833ff925f611e5a",
+      "png_sha256": "a0e502977f63859aa158c1cbfe7d21e988af47f5d14e9c4fdd75b6bb0f26a1ee",
+      "scene_sha256": "2ede865b12aef4983ab29110914678852423ee3b6cae7975748ca12b8cf1cfce"
+    },
+    {
+      "name": "waterworks-overview",
+      "title": "The Headgate House \u2014 room composition",
+      "file": "views\\waterworks-overview.png",
+      "raw": "views\\waterworks-overview.bmp",
+      "camera": {
+        "x": 85,
+        "z": 63,
+        "yaw": 2048,
+        "distance": 2200,
+        "preset": "room"
+      },
+      "seconds": 0.28,
+      "raw_sha256": "8ce8233f68fa73f87bbb0174c36a6ad9e04793bf03f36a6d768db02c4cd19a0c",
+      "png_sha256": "cd258fbaa0ac1317e0459d7c9429279f8e0782ce3c2c75e7d1664e3ea3f2ebbe",
+      "scene_sha256": "2ede865b12aef4983ab29110914678852423ee3b6cae7975748ca12b8cf1cfce"
+    },
+    {
+      "name": "waterworks-reverse",
+      "title": "The Headgate House \u2014 reverse inspection",
+      "file": "views\\waterworks-reverse.png",
+      "raw": "views\\waterworks-reverse.bmp",
+      "camera": {
+        "x": 85,
+        "z": 63,
+        "yaw": 10240,
+        "distance": 2200,
+        "preset": "room"
+      },
+      "seconds": 0.302,
+      "raw_sha256": "17896dcd5a5e83c30eb0bf762f964182fb14b2e5c0244c01af176545438d6920",
+      "png_sha256": "5d0ae8c613a571fa725af9ec81826b29ea617beffb1789ff232956a9b67bd294",
+      "scene_sha256": "2ede865b12aef4983ab29110914678852423ee3b6cae7975748ca12b8cf1cfce"
+    },
+    {
+      "name": "waterworks-player",
+      "title": "The Headgate House \u2014 close player-oriented view",
+      "file": "views\\waterworks-player.png",
+      "raw": "views\\waterworks-player.bmp",
+      "camera": {
+        "x": 85,
+        "z": 63,
+        "yaw": 4096,
+        "distance": 2100,
+        "preset": "player"
+      },
+      "seconds": 0.218,
+      "raw_sha256": "81f58c4d3c0b5e2bbccb6e0a5d0bfe01e5a908b61c9267fedfcaad849b3add34",
+      "png_sha256": "7db8b9e6317fe7e9fa57597fecaedf3f1721243de79e973844c16395a6933ca9",
+      "scene_sha256": "2ede865b12aef4983ab29110914678852423ee3b6cae7975748ca12b8cf1cfce"
+    },
+    {
+      "name": "garden-overview",
+      "title": "The Root-fed Cistern \u2014 room composition",
+      "file": "views\\garden-overview.png",
+      "raw": "views\\garden-overview.bmp",
+      "camera": {
+        "x": 89,
+        "z": 86,
+        "yaw": 2048,
+        "distance": 2200,
+        "preset": "room"
+      },
+      "seconds": 0.226,
+      "raw_sha256": "804bc476e8401a7c438711184ef8a1901e009337faf0eefb2e6d84fb090b811d",
+      "png_sha256": "cd48078ccc7cbef1fc7710f37c43edefd2f599ba651429a0d6c22e38be3c739e",
+      "scene_sha256": "2ede865b12aef4983ab29110914678852423ee3b6cae7975748ca12b8cf1cfce"
+    },
+    {
+      "name": "garden-reverse",
+      "title": "The Root-fed Cistern \u2014 reverse inspection",
+      "file": "views\\garden-reverse.png",
+      "raw": "views\\garden-reverse.bmp",
+      "camera": {
+        "x": 89,
+        "z": 86,
+        "yaw": 10240,
+        "distance": 2200,
+        "preset": "room"
+      },
+      "seconds": 0.212,
+      "raw_sha256": "c1335f1044995fda8f15924b7359034c72606e1a291bea52972655b6cef29bad",
+      "png_sha256": "aa84b40b2b34ddab73b14b1f4410d9b4dbbc097b126cee175c6d53ae3a542cb0",
+      "scene_sha256": "2ede865b12aef4983ab29110914678852423ee3b6cae7975748ca12b8cf1cfce"
+    },
+    {
+      "name": "garden-player",
+      "title": "The Root-fed Cistern \u2014 close player-oriented view",
+      "file": "views\\garden-player.png",
+      "raw": "views\\garden-player.bmp",
+      "camera": {
+        "x": 89,
+        "z": 86,
+        "yaw": 2048,
+        "distance": 2000,
+        "preset": "player"
+      },
+      "seconds": 0.232,
+      "raw_sha256": "c1f629bfe4c9f704a11cdbd5fc3efa514c6cacd30145c17b0429809e6ace4167",
+      "png_sha256": "f292221131d3255a03015ec1198772792ba17017d22593b675a1432fbcfc70f8",
+      "scene_sha256": "2ede865b12aef4983ab29110914678852423ee3b6cae7975748ca12b8cf1cfce"
+    },
+    {
+      "name": "vents-overview",
+      "title": "The Broken Exhaust \u2014 room composition",
+      "file": "views\\vents-overview.png",
+      "raw": "views\\vents-overview.bmp",
+      "camera": {
+        "x": 75,
+        "z": 88,
+        "yaw": 2048,
+        "distance": 2200,
+        "preset": "room"
+      },
+      "seconds": 0.221,
+      "raw_sha256": "f42e2821d452adec7696cd83ba42e4486a192b2930ebcbbfaabdceff048988c5",
+      "png_sha256": "888fc382be0c755a647e5e00ebf9a73654dc688617a8c268ed8ea0acac79cb36",
+      "scene_sha256": "2ede865b12aef4983ab29110914678852423ee3b6cae7975748ca12b8cf1cfce"
+    },
+    {
+      "name": "vents-reverse",
+      "title": "The Broken Exhaust \u2014 reverse inspection",
+      "file": "views\\vents-reverse.png",
+      "raw": "views\\vents-reverse.bmp",
+      "camera": {
+        "x": 75,
+        "z": 88,
+        "yaw": 10240,
+        "distance": 2200,
+        "preset": "room"
+      },
+      "seconds": 0.3,
+      "raw_sha256": "caf310472d4dd4f8653756ed80f42e15ae8788d3822a23b7250bfd2016a4b844",
+      "png_sha256": "7e73173447e8855806637995acdf991f41eb05fd3c5af994a7af7945539f1a19",
+      "scene_sha256": "2ede865b12aef4983ab29110914678852423ee3b6cae7975748ca12b8cf1cfce"
+    },
+    {
+      "name": "vents-player",
+      "title": "The Broken Exhaust \u2014 close player-oriented view",
+      "file": "views\\vents-player.png",
+      "raw": "views\\vents-player.bmp",
+      "camera": {
+        "x": 75,
+        "z": 88,
+        "yaw": 0,
+        "distance": 1800,
+        "preset": "player"
+      },
+      "seconds": 0.2,
+      "raw_sha256": "adb32dc7491901a8b1b26e221f9a8c7850469b6163a1cc721d6833023cc3eca3",
+      "png_sha256": "3c95ddd751a8d3f9c9ed368786becc3ef8ffcc71736fa0e6348eb989f632f987",
+      "scene_sha256": "2ede865b12aef4983ab29110914678852423ee3b6cae7975748ca12b8cf1cfce"
+    },
+    {
+      "name": "narthex-overview",
+      "title": "The Cooling Walk \u2014 room composition",
+      "file": "views\\narthex-overview.png",
+      "raw": "views\\narthex-overview.bmp",
+      "camera": {
+        "x": 60,
+        "z": 85,
+        "yaw": 2048,
+        "distance": 2200,
+        "preset": "room"
+      },
+      "seconds": 0.203,
+      "raw_sha256": "c82d89263918159fa2161b7a2e3b74dc7ebbe4ef12e11de7c03a50f12356038e",
+      "png_sha256": "db013184eafad6c535e0b947bdf84634da547e5f2afaf8bc32f2dd0923769cc0",
+      "scene_sha256": "2ede865b12aef4983ab29110914678852423ee3b6cae7975748ca12b8cf1cfce"
+    },
+    {
+      "name": "narthex-reverse",
+      "title": "The Cooling Walk \u2014 reverse inspection",
+      "file": "views\\narthex-reverse.png",
+      "raw": "views\\narthex-reverse.bmp",
+      "camera": {
+        "x": 60,
+        "z": 85,
+        "yaw": 10240,
+        "distance": 2200,
+        "preset": "room"
+      },
+      "seconds": 0.215,
+      "raw_sha256": "0e73d4926b878601c93744a458364e84bbb3b48b40913454109bbf9da5ca0003",
+      "png_sha256": "5edf658ba576675e0bce90575b501a47351b3c8c345a3b8df69e73d7e3d7ca7f",
+      "scene_sha256": "2ede865b12aef4983ab29110914678852423ee3b6cae7975748ca12b8cf1cfce"
+    },
+    {
+      "name": "narthex-player",
+      "title": "The Cooling Walk \u2014 close player-oriented view",
+      "file": "views\\narthex-player.png",
+      "raw": "views\\narthex-player.bmp",
+      "camera": {
+        "x": 60,
+        "z": 85,
+        "yaw": 0,
+        "distance": 1800,
+        "preset": "player"
+      },
+      "seconds": 0.205,
+      "raw_sha256": "7c4fc6ecce2e0bdf1173cb17589396929eff10e45f85c279ea948c39c14b4c4a",
+      "png_sha256": "ee9f712cfdead9ef2acfdab22b65d0e0d0bae5c742e4eade23e70e79d1cdd4ec",
+      "scene_sha256": "2ede865b12aef4983ab29110914678852423ee3b6cae7975748ca12b8cf1cfce"
+    },
+    {
+      "name": "foundry-overview",
+      "title": "The Bound Vessel \u2014 room composition",
+      "file": "views\\foundry-overview.png",
+      "raw": "views\\foundry-overview.bmp",
+      "camera": {
+        "x": 60,
+        "z": 109,
+        "yaw": 2048,
+        "distance": 3100,
+        "preset": "room"
+      },
+      "seconds": 0.201,
+      "raw_sha256": "516609d06b91a3a5efed2083770afcd1332ae696f3e364bd50fc3eba606099a1",
+      "png_sha256": "d2f15549dd3aa1da8634b18b433ee2ea2ce25aa2c2b44bfb287153c4da73dd36",
+      "scene_sha256": "2ede865b12aef4983ab29110914678852423ee3b6cae7975748ca12b8cf1cfce"
+    },
+    {
+      "name": "foundry-reverse",
+      "title": "The Bound Vessel \u2014 reverse inspection",
+      "file": "views\\foundry-reverse.png",
+      "raw": "views\\foundry-reverse.bmp",
+      "camera": {
+        "x": 60,
+        "z": 109,
+        "yaw": 10240,
+        "distance": 3100,
+        "preset": "room"
+      },
+      "seconds": 0.222,
+      "raw_sha256": "5b91aada3e6c5a81f0a6a00c87a7e45e720ead9f3ac27991083030203f6b7eb8",
+      "png_sha256": "85b51d0f221a19e99cb93c92e9b3fe2f4cb6af0cf05789a23d4f37bb52e33e61",
+      "scene_sha256": "2ede865b12aef4983ab29110914678852423ee3b6cae7975748ca12b8cf1cfce"
+    },
+    {
+      "name": "foundry-player",
+      "title": "The Bound Vessel \u2014 close player-oriented view",
+      "file": "views\\foundry-player.png",
+      "raw": "views\\foundry-player.bmp",
+      "camera": {
+        "x": 60,
+        "z": 112,
+        "yaw": 0,
+        "distance": 2700,
+        "preset": "player"
+      },
+      "seconds": 0.174,
+      "raw_sha256": "44e0dd32b73bf9f65b4082a375a2f9951d947a3928e8fdb66650897fe1302cea",
+      "png_sha256": "093a292951e0d1755168fa011273e5d279ff8489d6394c648412cf53f01dd76d",
+      "scene_sha256": "2ede865b12aef4983ab29110914678852423ee3b6cae7975748ca12b8cf1cfce"
+    },
+    {
+      "name": "ascent-overview",
+      "title": "The Last Bearing \u2014 room composition",
+      "file": "views\\ascent-overview.png",
+      "raw": "views\\ascent-overview.bmp",
+      "camera": {
+        "x": 68,
+        "z": 128,
+        "yaw": 2048,
+        "distance": 2200,
+        "preset": "room"
+      },
+      "seconds": 0.211,
+      "raw_sha256": "c54ca1301087e5a1c6ed0a4b4dae49b611593ff71db63564df427adb9d422c2a",
+      "png_sha256": "63d0615760b8780f033e74bed43b9ce8180e7b24885c6dbd9924b9f21db0405f",
+      "scene_sha256": "2ede865b12aef4983ab29110914678852423ee3b6cae7975748ca12b8cf1cfce"
+    },
+    {
+      "name": "ascent-reverse",
+      "title": "The Last Bearing \u2014 reverse inspection",
+      "file": "views\\ascent-reverse.png",
+      "raw": "views\\ascent-reverse.bmp",
+      "camera": {
+        "x": 68,
+        "z": 128,
+        "yaw": 10240,
+        "distance": 2200,
+        "preset": "room"
+      },
+      "seconds": 0.228,
+      "raw_sha256": "ccac487810fe45171f68ccd251297f8c8af0283288d9a552db2a535e40f82c30",
+      "png_sha256": "9967514b25ad206f29fb2080259325e731577176d9820b6be6fc4738600fa34e",
+      "scene_sha256": "2ede865b12aef4983ab29110914678852423ee3b6cae7975748ca12b8cf1cfce"
+    },
+    {
+      "name": "ascent-player",
+      "title": "The Last Bearing \u2014 close player-oriented view",
+      "file": "views\\ascent-player.png",
+      "raw": "views\\ascent-player.bmp",
+      "camera": {
+        "x": 68,
+        "z": 128,
+        "yaw": 10240,
+        "distance": 1900,
+        "preset": "player"
+      },
+      "seconds": 0.257,
+      "raw_sha256": "427b9127ee9cb5a7e72c102e16ca9ea48488711ad38b4e4029494a1281cbea25",
+      "png_sha256": "333ba0eb027de0263563f9353c4b681f7b06523d4bf56d542431ed40b278ff69",
+      "scene_sha256": "2ede865b12aef4983ab29110914678852423ee3b6cae7975748ca12b8cf1cfce"
+    }
+  ]
+}

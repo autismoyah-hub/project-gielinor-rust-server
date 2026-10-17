@@ -17,6 +17,7 @@ def main():
         name=asset['name'];source=a.input/(name+'.glb')
         try:
             vertices,faces,colors,shading=convert(source,with_shading=True);model=encode(vertices,faces,colors,shading)
+            require(max(x*x+z*z for x,y,z in vertices)<2900**2,'native model radius limit; partition large geometry before rendering')
             require(model==encode(*convert(source,with_shading=True)),'conversion must be deterministic')
         except Exception as error:
             failures.append(f'{name}: {error}');continue

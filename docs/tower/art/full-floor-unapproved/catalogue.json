@@ -1,0 +1,5129 @@
+{
+  "origin": "Entirely original geometry; measured reference analysis only; no proprietary inputs",
+  "blender": "5.2.2 LTS",
+  "palette": {
+    "stone": [
+      6,
+      0,
+      30
+    ],
+    "stone_light": [
+      6,
+      0,
+      35
+    ],
+    "stone_dark": [
+      6,
+      0,
+      25
+    ],
+    "cap": [
+      6,
+      0,
+      38
+    ],
+    "mortar": [
+      6,
+      1,
+      20
+    ],
+    "iron": [
+      0,
+      0,
+      25
+    ],
+    "iron_light": [
+      0,
+      0,
+      34
+    ],
+    "soot": [
+      0,
+      0,
+      16
+    ],
+    "wood": [
+      6,
+      3,
+      32
+    ],
+    "wood_light": [
+      6,
+      3,
+      38
+    ],
+    "brass": [
+      9,
+      3,
+      48
+    ],
+    "copper": [
+      4,
+      3,
+      37
+    ],
+    "heat": [
+      3,
+      6,
+      62
+    ],
+    "hot": [
+      7,
+      6,
+      79
+    ],
+    "water": [
+      30,
+      3,
+      35
+    ],
+    "damp": [
+      25,
+      2,
+      28
+    ],
+    "soil": [
+      6,
+      2,
+      29
+    ],
+    "moss": [
+      16,
+      2,
+      26
+    ],
+    "cloth": [
+      27,
+      3,
+      39
+    ],
+    "paper": [
+      8,
+      2,
+      68
+    ]
+  },
+  "assets": [
+    {
+      "name": "arch",
+      "model_id": 1100010,
+      "object_id": 63010,
+      "footprint": [
+        3,
+        1
+      ],
+      "vertices": 132,
+      "triangles": 204,
+      "bounds": [
+        [
+          -1.2899999618530273,
+          1.2899999618530273
+        ],
+        [
+          -0.28999999165534973,
+          0.2549999952316284
+        ],
+        [
+          0.0,
+          2.5365779399871826
+        ]
+      ],
+      "purpose": "Worker portal; tapered jambs, restrained stone crown and single localized repair",
+      "reference_analysis_ids": [
+        1868,
+        2109,
+        7016
+      ],
+      "collision_requirement": "Block jambs only; opening remains traversable; future per-tile support definitions",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 132,
+      "triangles_native": 204,
+      "palette": [
+        25,
+        34,
+        6169,
+        6174,
+        6179,
+        6182
+      ],
+      "glb_sha256": "67efba52432e2d2233e689582144008d47fade3731403d7a05a7a02066d5cccc",
+      "model_sha256": "9c64b7a357627b4d3e3026d076ee79600d184eacaca1d3b28bd856f5e2b0e11b",
+      "model_bytes": 1858
+    },
+    {
+      "name": "wall",
+      "model_id": 1100005,
+      "object_id": 63005,
+      "footprint": [
+        2,
+        1
+      ],
+      "vertices": 76,
+      "triangles": 116,
+      "bounds": [
+        [
+          -1.0199999809265137,
+          1.0199999809265137
+        ],
+        [
+          -0.27000001072883606,
+          0.24500000476837158
+        ],
+        [
+          -0.10000000149011612,
+          2.1649999618530273
+        ]
+      ],
+      "purpose": "Continuous load-bearing masonry, coping and shallow repairs",
+      "reference_analysis_ids": [
+        6132,
+        6010,
+        6143
+      ],
+      "collision_requirement": "Two tile barrier; visual thickness does not define collision automatically",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 76,
+      "triangles_native": 116,
+      "palette": [
+        6169,
+        6174,
+        6179,
+        6182,
+        6292
+      ],
+      "glb_sha256": "4b9f8ec488ed4318a94f689d38f6d80d2d871045611552cd16d47b97cf3c01af",
+      "model_sha256": "2764de7ec19bc56ae62e3615c44ea105c05c9332deefbb759fdeca0b43c56d69",
+      "model_bytes": 1048
+    },
+    {
+      "name": "wall_corner",
+      "model_id": 1100068,
+      "object_id": 63068,
+      "footprint": [
+        2,
+        2
+      ],
+      "vertices": 28,
+      "triangles": 44,
+      "bounds": [
+        [
+          -1.0800000429153442,
+          1.0
+        ],
+        [
+          -1.0800000429153442,
+          1.0
+        ],
+        [
+          0.0,
+          2.325000047683716
+        ]
+      ],
+      "purpose": "Bonded L corner with substantial end pier; complements straight wall",
+      "reference_analysis_ids": [
+        6001,
+        6132
+      ],
+      "collision_requirement": "Block only L occupied edge cells, not all four cells",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 28,
+      "triangles_native": 44,
+      "palette": [
+        6169,
+        6174,
+        6182
+      ],
+      "glb_sha256": "90d2727debbd654926fc34393b7794ea900cee7f22d1093eea86d05743908d11",
+      "model_sha256": "c5b1f7b5bc28f37fe9c7724af1f5f81648a639a76621fb4a79012dcd79d562eb",
+      "model_bytes": 410
+    },
+    {
+      "name": "pressure_pump",
+      "model_id": 1100017,
+      "object_id": 63017,
+      "footprint": [
+        2,
+        2
+      ],
+      "vertices": 156,
+      "triangles": 268,
+      "bounds": [
+        [
+          -0.824999988079071,
+          1.0399999618530273
+        ],
+        [
+          -0.6499999761581421,
+          0.6700000166893005
+        ],
+        [
+          0.0,
+          1.899999976158142
+        ]
+      ],
+      "purpose": "Asymmetric pressure vessel with accessible gauge, outlet and shutoff",
+      "reference_analysis_ids": [
+        9089,
+        9114,
+        9085
+      ],
+      "collision_requirement": "Two tile machine; leave front operating apron clear",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 156,
+      "triangles_native": 268,
+      "palette": [
+        16,
+        25,
+        34,
+        6169,
+        6560,
+        9648,
+        25884
+      ],
+      "glb_sha256": "f01f100994c223bcfff40cc0e4104f369441b2e6a1b822c78ff30c1b73cf8346",
+      "model_sha256": "05e5572e049e2b6845ac74c41ccbe658b63df404509f154ab20ffb00202ac257",
+      "model_bytes": 2374
+    },
+    {
+      "name": "scale_figure",
+      "model_id": 1100032,
+      "object_id": 63032,
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 58,
+      "triangles": 92,
+      "bounds": [
+        [
+          -0.4179741144180298,
+          0.4179741144180298
+        ],
+        [
+          -0.1550000011920929,
+          0.1550000011920929
+        ],
+        [
+          0.0,
+          1.7200000286102295
+        ]
+      ],
+      "purpose": "Static 1.72-tile comparison convention; not an NPC or measured original player",
+      "reference_analysis_ids": [],
+      "collision_requirement": "No collision; offline ruler only",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 58,
+      "triangles_native": 92,
+      "palette": [
+        6182,
+        6560,
+        28071
+      ],
+      "glb_sha256": "bc1f56a8c9654bf5c39374839c146b2bb221b95e8f55680b27050ab870d5863a",
+      "model_sha256": "e05d19445b4b3f8c1e4eb8871bad8acf60170e037a0d3cf8f8d9e3f9b73ba966",
+      "model_bytes": 824
+    },
+    {
+      "name": "pillar",
+      "model_id": 1100008,
+      "object_id": 63008,
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 64,
+      "triangles": 120,
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          0.0,
+          2.4200000762939453
+        ]
+      ],
+      "purpose": "Tapered polygonal service pier with distinct base and capital",
+      "reference_analysis_ids": [
+        7016,
+        7017
+      ],
+      "collision_requirement": "Single occupied tile",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 64,
+      "triangles_native": 120,
+      "palette": [
+        6174,
+        6182
+      ],
+      "glb_sha256": "b0b1426ece9863736ed2075db30d7361c165a45600d3c0a5a8ec122c2977bfd0",
+      "model_sha256": "3ee0e2cf42978e6991676fcb2b5fa592b8385fcc5c58ea4c915ac9ccb80692d8",
+      "model_bytes": 1059
+    },
+    {
+      "name": "grand_pillar",
+      "model_id": 1100009,
+      "object_id": 63009,
+      "footprint": [
+        2,
+        2
+      ],
+      "vertices": 64,
+      "triangles": 120,
+      "bounds": [
+        [
+          -0.699999988079071,
+          0.699999988079071
+        ],
+        [
+          -0.699999988079071,
+          0.699999988079071
+        ],
+        [
+          0.0,
+          3.9200000762939453
+        ]
+      ],
+      "purpose": "Major foundry bearing; hierarchy through profile, not stacked collars",
+      "reference_analysis_ids": [
+        7016,
+        6147
+      ],
+      "collision_requirement": "Two tile structural support",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 64,
+      "triangles_native": 120,
+      "palette": [
+        6174,
+        6182
+      ],
+      "glb_sha256": "27b5a82579b32bea6a4a7ebb29be19df6323d3187120e3b8698d3b5615915b7a",
+      "model_sha256": "242b44c427cae93188f6ef0964d4332baaeafdaf80967e3555be3d0c27770e2c",
+      "model_bytes": 1062
+    },
+    {
+      "name": "wall_broken",
+      "model_id": 1100007,
+      "object_id": 63007,
+      "footprint": [
+        2,
+        1
+      ],
+      "vertices": 54,
+      "triangles": 96,
+      "bounds": [
+        [
+          -1.0,
+          1.0
+        ],
+        [
+          -0.45682206749916077,
+          0.23499999940395355
+        ],
+        [
+          0.0,
+          2.109999895095825
+        ]
+      ],
+      "purpose": "Directional failure; irregular break rather than random missing cubes",
+      "reference_analysis_ids": [
+        6011,
+        174
+      ],
+      "collision_requirement": "Barrier edge with separate rubble access check",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 54,
+      "triangles_native": 96,
+      "palette": [
+        6169,
+        6174,
+        6182
+      ],
+      "glb_sha256": "205257149d3faa730fd175cf23a80b5823559d6bb5815aef3436b99f384ee05c",
+      "model_sha256": "78dae6a32e3a1119657107bab26861f3cb770b5982d6ece3a1e9f6717a8fe801",
+      "model_bytes": 859
+    },
+    {
+      "name": "parapet",
+      "model_id": 1100006,
+      "object_id": 63006,
+      "footprint": [
+        2,
+        1
+      ],
+      "vertices": 18,
+      "triangles": 28,
+      "bounds": [
+        [
+          -1.0149999856948853,
+          1.0149999856948853
+        ],
+        [
+          -0.23499999940395355,
+          0.23499999940395355
+        ],
+        [
+          0.0,
+          0.9300000071525574
+        ]
+      ],
+      "purpose": "Low coping for visible water banks and foreground cutaway",
+      "reference_analysis_ids": [
+        6143
+      ],
+      "collision_requirement": "Retaining edge; cannot imply safe traversal",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 18,
+      "triangles_native": 28,
+      "palette": [
+        6169,
+        6182
+      ],
+      "glb_sha256": "f532f3b37d90d0d4c0fc13d9758760ceb6c3ffba994561298e18ad4f02cea483",
+      "model_sha256": "a8c29958ca91e636da7a1ca729b858350e36823cb3328c5cd6e3860b8d9d8b6f",
+      "model_bytes": 271
+    },
+    {
+      "name": "rock_buttress",
+      "model_id": 1100042,
+      "object_id": 63042,
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 28,
+      "triangles": 44,
+      "bounds": [
+        [
+          -0.41999998688697815,
+          0.41999998688697815
+        ],
+        [
+          -0.5,
+          0.4699999988079071
+        ],
+        [
+          0.0,
+          2.809999942779541
+        ]
+      ],
+      "purpose": "Leaning masonry bearing with broad foot and repaired strap",
+      "reference_analysis_ids": [
+        23505
+      ],
+      "collision_requirement": "One tile occupied support",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 28,
+      "triangles_native": 44,
+      "palette": [
+        25,
+        6169,
+        6182
+      ],
+      "glb_sha256": "8733d7f2f59592af467073c550f5a7a9bb676da02c85c6222b2220506858cf68",
+      "model_sha256": "5a248a97b94cee7acfc8f3e1120a51cb5ee644c6fa530c1c8029fd6b8bbf463f",
+      "model_bytes": 416
+    },
+    {
+      "name": "great_arch",
+      "model_id": 1100012,
+      "object_id": 63012,
+      "footprint": [
+        5,
+        2
+      ],
+      "vertices": 132,
+      "triangles": 204,
+      "bounds": [
+        [
+          -2.063999891281128,
+          2.063999891281128
+        ],
+        [
+          -0.5219999551773071,
+          0.45899999141693115
+        ],
+        [
+          0.0,
+          3.9316956996917725
+        ]
+      ],
+      "purpose": "Foundry threshold derived from service architecture, with deliberate monumental scale",
+      "reference_analysis_ids": [
+        1868,
+        2109
+      ],
+      "collision_requirement": "Columns block; central passage requires dedicated supports",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 132,
+      "triangles_native": 204,
+      "palette": [
+        25,
+        34,
+        6169,
+        6174,
+        6179,
+        6182
+      ],
+      "glb_sha256": "ee424106deeef8e0faf667323931cbe46014d1d05ba666c67fcf54b490c8cc52",
+      "model_sha256": "e6cb23a6579c478932e307c0908672084f59bcdc3f02ada3f379e0e78653e8ea",
+      "model_bytes": 1936
+    },
+    {
+      "name": "broken_arch",
+      "model_id": 1100011,
+      "object_id": 63011,
+      "footprint": [
+        3,
+        1
+      ],
+      "vertices": 50,
+      "triangles": 88,
+      "bounds": [
+        [
+          -1.2799999713897705,
+          1.2799999713897705
+        ],
+        [
+          -0.2537912428379059,
+          0.2472245991230011
+        ],
+        [
+          0.0,
+          1.7200000286102295
+        ]
+      ],
+      "purpose": "Old blocked maintenance threshold, with load-bearing remnants",
+      "reference_analysis_ids": [
+        2106,
+        174
+      ],
+      "collision_requirement": "Rubble-defined access; not an open portal",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 50,
+      "triangles_native": 88,
+      "palette": [
+        6169,
+        6174
+      ],
+      "glb_sha256": "273155a564914b2fb52b226903c91cfc7567a17110560b1e7f6707dcbff93d4e",
+      "model_sha256": "15fc119c880d947cedf4ef89e215c9b63d299fa6b48e56c998d3586382153636",
+      "model_bytes": 790
+    },
+    {
+      "name": "furnace",
+      "model_id": 1100014,
+      "object_id": 63014,
+      "footprint": [
+        2,
+        2
+      ],
+      "vertices": 68,
+      "triangles": 112,
+      "bounds": [
+        [
+          -0.9200000166893005,
+          0.9200000166893005
+        ],
+        [
+          -1.2400000095367432,
+          0.7749999761581421
+        ],
+        [
+          0.0,
+          1.590000033378601
+        ]
+      ],
+      "purpose": "Compact vaulted worker furnace with a localized hot mouth",
+      "reference_analysis_ids": [
+        6189,
+        9085
+      ],
+      "collision_requirement": "Two tile fixture; leave front handling apron",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 68,
+      "triangles_native": 112,
+      "palette": [
+        16,
+        25,
+        3902,
+        6169
+      ],
+      "glb_sha256": "cd767e20a8cd3aef512251f2d190fc76b623b91ae180561a286b7e967fa1fd36",
+      "model_sha256": "253a00dab8b30e12f3197b096562397b9c7faf2bafb9915758c14091c62cbd4c",
+      "model_bytes": 1019
+    },
+    {
+      "name": "workbench",
+      "model_id": 1100019,
+      "object_id": 63019,
+      "footprint": [
+        2,
+        1
+      ],
+      "vertices": 72,
+      "triangles": 108,
+      "bounds": [
+        [
+          -0.800000011920929,
+          0.800000011920929
+        ],
+        [
+          -0.3499999940395355,
+          0.3499999940395355
+        ],
+        [
+          0.0,
+          0.9300000071525574
+        ]
+      ],
+      "purpose": "Usable-height repair table with vise and a single hand tool",
+      "reference_analysis_ids": [
+        6196,
+        6188
+      ],
+      "collision_requirement": "One tile wide access apron at front",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 72,
+      "triangles_native": 108,
+      "palette": [
+        25,
+        34,
+        6560,
+        6566
+      ],
+      "glb_sha256": "05b56b33eebdec602ef05facb02ee448c7135b714c82c265e9572b6c3174e768",
+      "model_sha256": "0232abbee69d6a7f0f79ff4c67c999d169b4a32ea0e1bf3f14f731b671b9499f",
+      "model_bytes": 985
+    },
+    {
+      "name": "anvil",
+      "model_id": 1100020,
+      "object_id": 63020,
+      "footprint": [
+        2,
+        1
+      ],
+      "vertices": 32,
+      "triangles": 56,
+      "bounds": [
+        [
+          -0.4300000071525574,
+          0.75
+        ],
+        [
+          -0.3412247598171234,
+          0.3412247598171234
+        ],
+        [
+          0.0,
+          0.6499999761581421
+        ]
+      ],
+      "purpose": "Low, unmistakable heel and horn over a short working stump",
+      "reference_analysis_ids": [
+        6150
+      ],
+      "collision_requirement": "Keep striking side clear",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 32,
+      "triangles_native": 56,
+      "palette": [
+        34,
+        6560
+      ],
+      "glb_sha256": "ad5c366135a5e37aac679633d8092aa03ae2481ea603cf181b3b54e42c1e5348",
+      "model_sha256": "c36c38f89b74ba64083deb43f535ca53bef8f727e8fc429f23a461c3e299b198",
+      "model_bytes": 506
+    },
+    {
+      "name": "ledger_table",
+      "model_id": 1100069,
+      "object_id": 63069,
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 48,
+      "triangles": 72,
+      "bounds": [
+        [
+          -0.4699999988079071,
+          0.4699999988079071
+        ],
+        [
+          -0.41999998688697815,
+          0.41999998688697815
+        ],
+        [
+          0.0,
+          0.737500011920929
+        ]
+      ],
+      "purpose": "Worker ledger and intake/meal table; compact occupied scale",
+      "reference_analysis_ids": [
+        6196
+      ],
+      "collision_requirement": "Accessible interaction edge required later",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 48,
+      "triangles_native": 72,
+      "palette": [
+        6560,
+        6566,
+        8516
+      ],
+      "glb_sha256": "e9c7e04139cbd6f6dd331cb6573255b93ba6c3e22427e0531c983bbff17d097c",
+      "model_sha256": "ab31039e4768102f05b60bc197211e0a8b314f9a57b285da1a28c7a8b3f1ae8c",
+      "model_bytes": 652
+    },
+    {
+      "name": "worker_bed",
+      "model_id": 1100070,
+      "object_id": 63070,
+      "footprint": [
+        1,
+        2
+      ],
+      "vertices": 80,
+      "triangles": 120,
+      "bounds": [
+        [
+          -0.45000001788139343,
+          0.45000001788139343
+        ],
+        [
+          -0.875,
+          0.875
+        ],
+        [
+          0.0,
+          0.7549999952316284
+        ]
+      ],
+      "purpose": "Sanctuary bunk: evidence of occupation and a maintained sleeping bay",
+      "reference_analysis_ids": [
+        6183
+      ],
+      "collision_requirement": "Sleeping bay not a walk lane",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 80,
+      "triangles_native": 120,
+      "palette": [
+        6560,
+        6566,
+        8516,
+        28071
+      ],
+      "glb_sha256": "b5d5cfcd33b8beed6779eb35784f76933fce730b103782eafa60a0b19a7a80d1",
+      "model_sha256": "5f725dbe96986af2fbc22f7cd8b0b21c63bc82c352de6fabbeabf55b5ab192d6",
+      "model_bytes": 1080
+    },
+    {
+      "name": "stool",
+      "model_id": 1100071,
+      "object_id": 63071,
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 38,
+      "triangles": 60,
+      "bounds": [
+        [
+          -0.3001393675804138,
+          0.30013930797576904
+        ],
+        [
+          -0.2827290892601013,
+          0.3072218894958496
+        ],
+        [
+          -0.005605146288871765,
+          0.5600000619888306
+        ]
+      ],
+      "purpose": "Small movable furniture for occupied service pockets",
+      "reference_analysis_ids": [
+        6196
+      ],
+      "collision_requirement": "Scenery obstruction only if later enabled",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 38,
+      "triangles_native": 60,
+      "palette": [
+        6560,
+        6566
+      ],
+      "glb_sha256": "6143ceccd42a86fb0048850100083059426279cabc8e76ab00db5eac1e9cb5d9",
+      "model_sha256": "cd8584aea395ef0c943f4961cc22e1fdca6fe1f9c679798b7de2d00cad472d71",
+      "model_bytes": 557
+    },
+    {
+      "name": "worker_bench",
+      "model_id": 1100078,
+      "object_id": 63078,
+      "footprint": [
+        2,
+        1
+      ],
+      "vertices": 48,
+      "triangles": 72,
+      "bounds": [
+        [
+          -0.8299999833106995,
+          0.8299999833106995
+        ],
+        [
+          -0.2800000011920929,
+          0.2800000011920929
+        ],
+        [
+          0.0,
+          1.0199999809265137
+        ]
+      ],
+      "purpose": "Backed worker seating; makes maintained rest bays visibly habitable",
+      "reference_analysis_ids": [
+        6196,
+        6183
+      ],
+      "collision_requirement": "Leave front approach clear",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 48,
+      "triangles_native": 72,
+      "palette": [
+        6560,
+        6566
+      ],
+      "glb_sha256": "a0c91877b1582be809b702ec4ab70bad8ab10e12b7b612aefa9c2eb69f153878",
+      "model_sha256": "de2a6a121b25e7803a9c714b50f2232ecc1e7762ec284b2b99a0c01d31737778",
+      "model_bytes": 654
+    },
+    {
+      "name": "water_barrel",
+      "model_id": 1100079,
+      "object_id": 63079,
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 89,
+      "triangles": 162,
+      "bounds": [
+        [
+          -0.4050000011920929,
+          0.4000000059604645
+        ],
+        [
+          -0.39884713292121887,
+          0.39884713292121887
+        ],
+        [
+          0.0,
+          0.9399999976158142
+        ]
+      ],
+      "purpose": "Faceted worker water/fuel store with restrained iron hoops",
+      "reference_analysis_ids": [
+        6178
+      ],
+      "collision_requirement": "Stored scenery; future water interaction not implemented",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 89,
+      "triangles_native": 162,
+      "palette": [
+        25,
+        6560,
+        6566
+      ],
+      "glb_sha256": "3614227ea9aae6815d38294f8fcbebea6d3c9fdbce88732c607c28de1a53258d",
+      "model_sha256": "3333fa0b5113e9af0691ec8c90b039362583d9ab10ef704bab697e29a941aca5",
+      "model_bytes": 1414
+    },
+    {
+      "name": "worker_kettle",
+      "model_id": 1100080,
+      "object_id": 63080,
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 80,
+      "triangles": 140,
+      "bounds": [
+        [
+          -0.43375927209854126,
+          0.43375927209854126
+        ],
+        [
+          -0.3400000035762787,
+          0.3400000035762787
+        ],
+        [
+          0.03999999910593033,
+          0.5924999713897705
+        ]
+      ],
+      "purpose": "Small kettle beside the rest-bay fire, localized signs of occupation",
+      "reference_analysis_ids": [
+        6196,
+        11020
+      ],
+      "collision_requirement": "Static scenery, no cooking system",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 80,
+      "triangles_native": 140,
+      "palette": [
+        16,
+        25,
+        34
+      ],
+      "glb_sha256": "a5bfb18906760982f69505ce257ac315f5f94b1942c08b2edcf68c18912f74ac",
+      "model_sha256": "643048e0a74d3807a791d4fe9cc4bc960d6451ed9a32930628d9b81810692874",
+      "model_bytes": 1238
+    },
+    {
+      "name": "supply_rack",
+      "model_id": 1100045,
+      "object_id": 63045,
+      "footprint": [
+        2,
+        1
+      ],
+      "vertices": 64,
+      "triangles": 96,
+      "bounds": [
+        [
+          -0.800000011920929,
+          0.800000011920929
+        ],
+        [
+          -0.03999999910593033,
+          0.1850000023841858
+        ],
+        [
+          0.6850000023841858,
+          1.440000057220459
+        ]
+      ],
+      "purpose": "Wall-hung smith tools, below eye level and visibly reachable",
+      "reference_analysis_ids": [
+        6188,
+        6055
+      ],
+      "collision_requirement": "Wall attachment; avoid phantom floor blockage",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 64,
+      "triangles_native": 96,
+      "palette": [
+        25,
+        34,
+        6560,
+        6566
+      ],
+      "glb_sha256": "0f78562b676427431d0b836af2382989571dc6bc4ffec4ba5d270c565cd237db",
+      "model_sha256": "0716cda49113d91f9f535d8d2bdd3b9eabf255ea7b6033e0b1fac273f375f48e",
+      "model_bytes": 856
+    },
+    {
+      "name": "stores",
+      "model_id": 1100024,
+      "object_id": 63024,
+      "footprint": [
+        2,
+        1
+      ],
+      "vertices": 96,
+      "triangles": 144,
+      "bounds": [
+        [
+          -0.7450000047683716,
+          0.7099999785423279
+        ],
+        [
+          -0.3595000207424164,
+          0.3297500014305115
+        ],
+        [
+          0.0,
+          1.309999942779541
+        ]
+      ],
+      "purpose": "Uneven braced crates with an accessible stock face",
+      "reference_analysis_ids": [
+        6178
+      ],
+      "collision_requirement": "Stock edges block; front lane remains clear",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 96,
+      "triangles_native": 144,
+      "palette": [
+        6560,
+        6566
+      ],
+      "glb_sha256": "aa9373e23ed83b23082dc23e0b8d33e19cac00ca8e62df9190645b67fdc1303f",
+      "model_sha256": "7576af0cfd4cafffadd191839365892510f8cfa068d40ce3430e8344f0be95f7",
+      "model_bytes": 1314
+    },
+    {
+      "name": "bank_counter",
+      "model_id": 1100039,
+      "object_id": 63039,
+      "footprint": [
+        3,
+        1
+      ],
+      "vertices": 40,
+      "triangles": 60,
+      "bounds": [
+        [
+          -1.3799999952316284,
+          1.3799999952316284
+        ],
+        [
+          -0.4300000071525574,
+          0.4300000071525574
+        ],
+        [
+          0.0,
+          1.090000033378601
+        ]
+      ],
+      "purpose": "Converted wages/ledger station, part of the sanctuary habitation",
+      "reference_analysis_ids": [
+        6081,
+        6196
+      ],
+      "collision_requirement": "Future bank action; keep customer side clear",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 40,
+      "triangles_native": 60,
+      "palette": [
+        25,
+        6560,
+        6566,
+        8516,
+        9648
+      ],
+      "glb_sha256": "ed26ce6143290b76764a747aff44a9f597a0de29e04ad272585fe0ed445bca5d",
+      "model_sha256": "47af70976ce6dbcee5afc66f6ebafdaf735c4a277630f2804cd7c11e9cd78bf7",
+      "model_bytes": 550
+    },
+    {
+      "name": "restoration_font",
+      "model_id": 1100013,
+      "object_id": 63013,
+      "footprint": [
+        3,
+        3
+      ],
+      "vertices": 92,
+      "triangles": 168,
+      "bounds": [
+        [
+          -1.2999999523162842,
+          1.2999999523162842
+        ],
+        [
+          -1.2363734245300293,
+          1.2363734245300293
+        ],
+        [
+          0.0,
+          1.5700000524520874
+        ]
+      ],
+      "purpose": "Maintained service spring with a simple dedication stone and spout",
+      "reference_analysis_ids": [
+        6097,
+        7016
+      ],
+      "collision_requirement": "Water basin blocks; safe ambulatory outside",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 92,
+      "triangles_native": 168,
+      "palette": [
+        4517,
+        6174,
+        6182,
+        31139
+      ],
+      "glb_sha256": "aefa6f87c926c252d7f78456ef3abe4a04a35ee395e4648e99e60e377fb9cb5b",
+      "model_sha256": "59e6a6124353dd4f5f2921c6e0caf45316ccb4138eea9a36423abfb8eb6382ae",
+      "model_bytes": 1516
+    },
+    {
+      "name": "sanctuary_seal",
+      "model_id": 1100036,
+      "object_id": 63036,
+      "footprint": [
+        6,
+        6
+      ],
+      "vertices": 64,
+      "triangles": 128,
+      "bounds": [
+        [
+          -2.609999895095825,
+          2.609999895095825
+        ],
+        [
+          -2.609999895095825,
+          2.609999895095825
+        ],
+        [
+          0.02199999988079071,
+          0.05000000074505806
+        ]
+      ],
+      "purpose": "Restrained angular floor dedication around the maintained spring",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Nonblocking inlay, no altered movement height",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 64,
+      "triangles_native": 128,
+      "palette": [
+        6179
+      ],
+      "glb_sha256": "d63261e3325737e186c4231c53846880ebb44402a17efaaef01cc08bbc46ebe9",
+      "model_sha256": "670093b74eff63af98c7af4eabe6d3f168056a95ad63810bd03b2b4a7a34fab0",
+      "model_bytes": 1203
+    },
+    {
+      "name": "repair_slab",
+      "model_id": 1100072,
+      "object_id": 63072,
+      "footprint": [
+        2,
+        1
+      ],
+      "vertices": 10,
+      "triangles": 16,
+      "bounds": [
+        [
+          -0.6499999761581421,
+          0.7200000286102295
+        ],
+        [
+          -0.42500001192092896,
+          0.42500001192092896
+        ],
+        [
+          0.0,
+          0.15000000596046448
+        ]
+      ],
+      "purpose": "Placed replacement paving; use only where repairs or a threshold explain it",
+      "reference_analysis_ids": [
+        174
+      ],
+      "collision_requirement": "Low slab requires later height/collision treatment",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 10,
+      "triangles_native": 16,
+      "palette": [
+        6179
+      ],
+      "glb_sha256": "d7e9db81bcfa0f3f29bd5b62743e70ebb31a596f32128b65db2cbe1cee5afeed",
+      "model_sha256": "c3a3214b9ed82ad18d468b2599bbe548c4cc89c01a423b2f3060bf31a9c0aa33",
+      "model_bytes": 165
+    },
+    {
+      "name": "rubble",
+      "model_id": 1100022,
+      "object_id": 63022,
+      "footprint": [
+        2,
+        2
+      ],
+      "vertices": 92,
+      "triangles": 168,
+      "bounds": [
+        [
+          -0.7197996377944946,
+          0.8138810992240906
+        ],
+        [
+          -0.3520234227180481,
+          0.4873007535934448
+        ],
+        [
+          0.0,
+          0.3799999952316284
+        ]
+      ],
+      "purpose": "Directional failure cluster with one broken tie",
+      "reference_analysis_ids": [
+        174,
+        5950
+      ],
+      "collision_requirement": "Place next to source failure, outside key route",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 92,
+      "triangles_native": 168,
+      "palette": [
+        25,
+        6169
+      ],
+      "glb_sha256": "265a8e71a69af7780d0d8d336cba594b61b8af19c74283a38bac8c463722128b",
+      "model_sha256": "8f0ba9353ef9b3cd815b73f1dd9f14ba8bfa0f632ac7c5eccb0588635b51f984",
+      "model_bytes": 1483
+    },
+    {
+      "name": "ore_outcrop",
+      "model_id": 1100023,
+      "object_id": 63023,
+      "footprint": [
+        2,
+        2
+      ],
+      "vertices": 64,
+      "triangles": 116,
+      "bounds": [
+        [
+          -0.94526207447052,
+          0.9984564781188965
+        ],
+        [
+          -0.48676034808158875,
+          0.702023446559906
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "purpose": "Cleaved lode with a small directional mineral seam",
+      "reference_analysis_ids": [
+        5950,
+        6147
+      ],
+      "collision_requirement": "Future resource binding and respawn ownership required",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 64,
+      "triangles_native": 116,
+      "palette": [
+        4517,
+        6169
+      ],
+      "glb_sha256": "a2d31b8f9e101bbc9e8c7a0c12e5cb0474ed5391d4939f63ece75a20b6d2f9fe",
+      "model_sha256": "4bdfc74a6363e25e1767f32efcbf6b11d1ed663e709850dfaee2a5c72a572416",
+      "model_bytes": 1040
+    },
+    {
+      "name": "cave_mass",
+      "model_id": 1100073,
+      "object_id": 63073,
+      "footprint": [
+        3,
+        3
+      ],
+      "vertices": 28,
+      "triangles": 52,
+      "bounds": [
+        [
+          -1.6089051961898804,
+          1.8078370094299316
+        ],
+        [
+          -1.2816978693008423,
+          1.4413175582885742
+        ],
+        [
+          -0.1599999964237213,
+          3.0399999618530273
+        ]
+      ],
+      "purpose": "Large directional bedrock support, no uniform sphere piles",
+      "reference_analysis_ids": [
+        6147,
+        6000
+      ],
+      "collision_requirement": "Approximate bounds; author walk edge explicitly",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 28,
+      "triangles_native": 52,
+      "palette": [
+        6169
+      ],
+      "glb_sha256": "e617c85b54d7d07d977b40adf29c29c071001be0f4a1828dfed5ca10ac5c4727",
+      "model_sha256": "c1b3d4ba455c607b00f82a4090b890581b01437c65212e9645abbe3f64bb1c43",
+      "model_bytes": 507
+    },
+    {
+      "name": "cave_shoulder",
+      "model_id": 1100074,
+      "object_id": 63074,
+      "footprint": [
+        2,
+        2
+      ],
+      "vertices": 28,
+      "triangles": 52,
+      "bounds": [
+        [
+          -1.1344903707504272,
+          1.1987853050231934
+        ],
+        [
+          -0.9870869517326355,
+          0.9413143396377563
+        ],
+        [
+          -0.15000000596046448,
+          1.0499999523162842
+        ]
+      ],
+      "purpose": "Low exposed shoulder to blend floor and high cave mass",
+      "reference_analysis_ids": [
+        5950,
+        6001
+      ],
+      "collision_requirement": "Low obstacle; no implied climbability",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 28,
+      "triangles_native": 52,
+      "palette": [
+        6169
+      ],
+      "glb_sha256": "5a168ead1d2bbff9e9d4f790115b7b79e05fd533e724ebba51ee2a2f0d0edcf0",
+      "model_sha256": "c2a1240e329c3fbb8cb46b8a8fbdbf3d26e91b5ee05e3dac67dcab92ddd128dc",
+      "model_bytes": 494
+    },
+    {
+      "name": "waterwheel",
+      "model_id": 1100016,
+      "object_id": 63016,
+      "footprint": [
+        3,
+        2
+      ],
+      "vertices": 216,
+      "triangles": 376,
+      "bounds": [
+        [
+          -1.4500000476837158,
+          1.4500000476837158
+        ],
+        [
+          -0.8999999761581421,
+          0.8999999761581421
+        ],
+        [
+          0.07999999821186066,
+          2.9800000190734863
+        ]
+      ],
+      "purpose": "Restrained broad rim and paddle silhouette; axis clearly meets bearings",
+      "reference_analysis_ids": [
+        5589
+      ],
+      "collision_requirement": "Wheel is scenery; separate bearings and channel collision",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 216,
+      "triangles_native": 376,
+      "palette": [
+        25,
+        6560,
+        6566
+      ],
+      "glb_sha256": "4506a0a9d04b5f8e96ba6062729a965143ecd08f3bee6e5570fabc160294eff4",
+      "model_sha256": "56f0357d0c823463abc975a222537b68fcb07195bd8d6d59285bcef5c5f04f28",
+      "model_bytes": 3406
+    },
+    {
+      "name": "pipe",
+      "model_id": 1100018,
+      "object_id": 63018,
+      "footprint": [
+        1,
+        2
+      ],
+      "vertices": 52,
+      "triangles": 84,
+      "bounds": [
+        [
+          -0.23500001430511475,
+          0.23499999940395355
+        ],
+        [
+          -0.8999999761581421,
+          0.8999999761581421
+        ],
+        [
+          -2.9802322387695312e-08,
+          0.6032050848007202
+        ]
+      ],
+      "purpose": "Ground supply pipe with two credible supports and flanges",
+      "reference_analysis_ids": [
+        9114
+      ],
+      "collision_requirement": "Future scenery collision; not a walkable railing",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 52,
+      "triangles_native": 84,
+      "palette": [
+        25,
+        34,
+        6169
+      ],
+      "glb_sha256": "128a05ab12f75f3afab9baf48d7951a0deb6a494600cc714490f669ff985cc14",
+      "model_sha256": "f3253c489f462539589da802128fe93eade46ca9d923296dba40f0c39c59c6e7",
+      "model_bytes": 751
+    },
+    {
+      "name": "sluice_gate",
+      "model_id": 1100075,
+      "object_id": 63075,
+      "footprint": [
+        3,
+        1
+      ],
+      "vertices": 68,
+      "triangles": 104,
+      "bounds": [
+        [
+          -1.399999976158142,
+          1.399999976158142
+        ],
+        [
+          -0.3499999940395355,
+          0.3499999940395355
+        ],
+        [
+          0.0,
+          2.825000047683716
+        ]
+      ],
+      "purpose": "Headgate with visible lifting screw and braced leaf",
+      "reference_analysis_ids": [
+        9114,
+        5589
+      ],
+      "collision_requirement": "Blocks water lane; maintenance bridge separate",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 68,
+      "triangles_native": 104,
+      "palette": [
+        25,
+        34,
+        6174,
+        6182,
+        6560
+      ],
+      "glb_sha256": "0fc9a4e3680cdcf9a476ffa05b65f48524cc21d18345dc86120c458b52b7dd25",
+      "model_sha256": "a9322a9b38f226ea7534623c1874e00615bec2dff094b86ba154476e9d08f29c",
+      "model_bytes": 951
+    },
+    {
+      "name": "pit_prop",
+      "model_id": 1100076,
+      "object_id": 63076,
+      "footprint": [
+        3,
+        1
+      ],
+      "vertices": 40,
+      "triangles": 60,
+      "bounds": [
+        [
+          -1.2500001192092896,
+          1.2500001192092896
+        ],
+        [
+          -0.11500006169080734,
+          0.11500006169080734
+        ],
+        [
+          -0.0026661157608032227,
+          2.3550000190734863
+        ]
+      ],
+      "purpose": "Original timber working-face support with braced load path",
+      "reference_analysis_ids": [
+        23505
+      ],
+      "collision_requirement": "Posts block only; opening must remain usable",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 40,
+      "triangles_native": 60,
+      "palette": [
+        6560,
+        6566
+      ],
+      "glb_sha256": "9599070ac14ec09647f8a3063f728bc3c4c3048f41944fe7f1ec95be7b837483",
+      "model_sha256": "978f23a5d6ea24e934864665cfa56f749ad5a91202de5b232f6aef2b50697a4d",
+      "model_bytes": 551
+    },
+    {
+      "name": "exhaust_stack",
+      "model_id": 1100077,
+      "object_id": 63077,
+      "footprint": [
+        2,
+        2
+      ],
+      "vertices": 49,
+      "triangles": 82,
+      "bounds": [
+        [
+          -0.800000011920929,
+          0.800000011920929
+        ],
+        [
+          -0.675000011920929,
+          0.675000011920929
+        ],
+        [
+          0.0,
+          2.5199999809265137
+        ]
+      ],
+      "purpose": "Capped containment exhaust links vent grates to a coherent industrial system",
+      "reference_analysis_ids": [
+        9085,
+        9114
+      ],
+      "collision_requirement": "Two tile fixture; no simulated smoke/light",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 49,
+      "triangles_native": 82,
+      "palette": [
+        25,
+        3902,
+        6169
+      ],
+      "glb_sha256": "81456f8d9c28354f23574d3d5410b9b7568b86ba85de5eb8407eb0f679bdd666",
+      "model_sha256": "f0a0a5642ed99c06729545669b699c7f319d72d5f77d3949e1602bcaee76b24f",
+      "model_bytes": 753
+    },
+    {
+      "name": "bridge",
+      "model_id": 1100028,
+      "object_id": 63028,
+      "footprint": [
+        2,
+        3
+      ],
+      "vertices": 144,
+      "triangles": 216,
+      "bounds": [
+        [
+          -0.8200000524520874,
+          0.8200000524520874
+        ],
+        [
+          -1.600000023841858,
+          1.600000023841858
+        ],
+        [
+          -0.03500013425946236,
+          1.0299999713897705
+        ]
+      ],
+      "purpose": "Narrow timber maintenance bridge with visible bearers",
+      "reference_analysis_ids": [
+        5589
+      ],
+      "collision_requirement": "Future walking height .26 tile, banks must connect",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 144,
+      "triangles_native": 216,
+      "palette": [
+        6560,
+        6566
+      ],
+      "glb_sha256": "6bca175509e6edd9aebc45a3015508bcfc37cab82e4988addb7b75fd1cfa556e",
+      "model_sha256": "7bf5b90d67a51d6f8978dad28a4b5f815b198ca56bcf180517cf9e4b244cac90",
+      "model_bytes": 1930
+    },
+    {
+      "name": "long_bridge",
+      "model_id": 1100057,
+      "object_id": 63057,
+      "footprint": [
+        2,
+        6
+      ],
+      "vertices": 144,
+      "triangles": 216,
+      "bounds": [
+        [
+          -0.8200000524520874,
+          0.8200000524520874
+        ],
+        [
+          -2.8530001640319824,
+          2.8530001640319824
+        ],
+        [
+          -0.10300013422966003,
+          1.03000009059906
+        ]
+      ],
+      "purpose": "Longer beam-and-plank crossing for a reservoir neck",
+      "reference_analysis_ids": [
+        5589
+      ],
+      "collision_requirement": "Requires height plane and connected landings",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 144,
+      "triangles_native": 216,
+      "palette": [
+        6560,
+        6566
+      ],
+      "glb_sha256": "75d2abf88022923b365fd070f19369e5df3e62a4966802b5c946ed2b2e2bfcff",
+      "model_sha256": "a465e59ba9fd4a27d8943ed6c7396db4c3e36e1cf73a984672227ec626c5b73a",
+      "model_bytes": 1962
+    },
+    {
+      "name": "coolant_trough",
+      "model_id": 1100040,
+      "object_id": 63040,
+      "footprint": [
+        3,
+        1
+      ],
+      "vertices": 48,
+      "triangles": 72,
+      "bounds": [
+        [
+          -1.3550000190734863,
+          1.3550000190734863
+        ],
+        [
+          -0.5049999952316284,
+          0.5049999952316284
+        ],
+        [
+          0.0,
+          0.5600000023841858
+        ]
+      ],
+      "purpose": "Accessible quenching basin beside hot work, not floating decoration",
+      "reference_analysis_ids": [
+        6189
+      ],
+      "collision_requirement": "Basin solid; water/actions future integration",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 48,
+      "triangles_native": 72,
+      "palette": [
+        6169,
+        6174,
+        31139
+      ],
+      "glb_sha256": "65da249ab4cb33fc91824a7f3f778763908b5b69f05d87cd0803e644aa548394",
+      "model_sha256": "3fb4cea891da2fed5b77fa42589b3b9f1be65fd40c6bdf0cec5ac1a77dc75414",
+      "model_bytes": 668
+    },
+    {
+      "name": "railing",
+      "model_id": 1100034,
+      "object_id": 63034,
+      "footprint": [
+        2,
+        1
+      ],
+      "vertices": 24,
+      "triangles": 36,
+      "bounds": [
+        [
+          -0.949999988079071,
+          0.949999988079071
+        ],
+        [
+          -0.05000000074505806,
+          0.05000000074505806
+        ],
+        [
+          0.0,
+          0.8399999737739563
+        ]
+      ],
+      "purpose": "Thin iron safety rail at falls and wheel apron",
+      "reference_analysis_ids": [
+        9114
+      ],
+      "collision_requirement": "Barrier collision explicitly required later",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 24,
+      "triangles_native": 36,
+      "palette": [
+        25,
+        34
+      ],
+      "glb_sha256": "1a4b93fe0e0f06ad3143dc20c5376aed7451f80276432d07d5b323ea7f3fc0ad",
+      "model_sha256": "f150fc906159dd9008b8851f717bedddaf2cb07657387be728ddacec57540b43",
+      "model_bytes": 333
+    },
+    {
+      "name": "brazier",
+      "model_id": 1100030,
+      "object_id": 63030,
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 90,
+      "triangles": 152,
+      "bounds": [
+        [
+          -0.3333584666252136,
+          0.3989536762237549
+        ],
+        [
+          -0.3655039966106415,
+          0.36550402641296387
+        ],
+        [
+          -0.009089231491088867,
+          1.2300002574920654
+        ]
+      ],
+      "purpose": "Small localized warm flame in a tripod bowl; no fake emitted light",
+      "reference_analysis_ids": [
+        11020,
+        5981
+      ],
+      "collision_requirement": "Future fire animation/light is not implemented",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 90,
+      "triangles_native": 152,
+      "palette": [
+        25,
+        3902
+      ],
+      "glb_sha256": "300734aa49688ee733fd2070c1ca82255b43c0c879b9b39e97a6746ccf575b7f",
+      "model_sha256": "e48f3602620cefef4f74cc4aca7139ee370f07804db3fa29272130058e66d89e",
+      "model_bytes": 1365
+    },
+    {
+      "name": "vent",
+      "model_id": 1100021,
+      "object_id": 63021,
+      "footprint": [
+        2,
+        2
+      ],
+      "vertices": 72,
+      "triangles": 108,
+      "bounds": [
+        [
+          -0.75,
+          0.75
+        ],
+        [
+          -0.625,
+          0.625
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ]
+      ],
+      "purpose": "Recessed containment grate; connected ducts explain danger",
+      "reference_analysis_ids": [
+        5981,
+        9114
+      ],
+      "collision_requirement": "Future encounter hazard binding; no dynamic heat now",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 72,
+      "triangles_native": 108,
+      "palette": [
+        25,
+        34,
+        3902,
+        6169
+      ],
+      "glb_sha256": "2f9cbf3662c97c32dd3bfd22d845cdeb7fcbd02726b8cafb4a579958f0818ece",
+      "model_sha256": "ebb156533a704a9204bedc2941010801d1a7825a958243df810f187310fd4de1",
+      "model_bytes": 991
+    },
+    {
+      "name": "heat_fissure",
+      "model_id": 1100043,
+      "object_id": 63043,
+      "footprint": [
+        2,
+        1
+      ],
+      "vertices": 12,
+      "triangles": 20,
+      "bounds": [
+        [
+          -0.949999988079071,
+          0.9300000071525574
+        ],
+        [
+          -0.07000000029802322,
+          0.07000000029802322
+        ],
+        [
+          0.0,
+          0.10000000149011612
+        ]
+      ],
+      "purpose": "Narrow contained leak, only at a failed joint",
+      "reference_analysis_ids": [
+        5981
+      ],
+      "collision_requirement": "Hazard behavior remains future work",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 12,
+      "triangles_native": 20,
+      "palette": [
+        3902
+      ],
+      "glb_sha256": "dc80d935d0e076224d0d7be7b848ff3436ee3c460555e19916d98ec665263f5c",
+      "model_sha256": "7a5f0db2664c8dde475898915b4b38b27537e81d371050153cf97cae9f4010e2",
+      "model_bytes": 198
+    },
+    {
+      "name": "ore_cart",
+      "model_id": 1100038,
+      "object_id": 63038,
+      "footprint": [
+        2,
+        2
+      ],
+      "vertices": 124,
+      "triangles": 208,
+      "bounds": [
+        [
+          -0.7450000047683716,
+          0.7450000047683716
+        ],
+        [
+          -0.7900000214576721,
+          0.7900000214576721
+        ],
+        [
+          0.02676945924758911,
+          1.2599999904632568
+        ]
+      ],
+      "purpose": "Loaded haulage cart with visible running gear",
+      "reference_analysis_ids": [
+        6178,
+        5950
+      ],
+      "collision_requirement": "Future scenery route must remain clear",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 124,
+      "triangles_native": 208,
+      "palette": [
+        25,
+        6169,
+        6560
+      ],
+      "glb_sha256": "8c601f1b8a092ab43e0dc6151d2efe97be7653faa637b953d4fd32ca123294ef",
+      "model_sha256": "c426d515ef8ddb4be44ca141edd0b19d595f1427b998051dc11def767345f7fb",
+      "model_bytes": 1867
+    },
+    {
+      "name": "track",
+      "model_id": 1100037,
+      "object_id": 63037,
+      "footprint": [
+        2,
+        2
+      ],
+      "vertices": 40,
+      "triangles": 60,
+      "bounds": [
+        [
+          -0.75,
+          0.75
+        ],
+        [
+          -1.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.17000000178813934
+        ]
+      ],
+      "purpose": "Two-tile ore transport section; sparse defined route, not floor wallpaper",
+      "reference_analysis_ids": [
+        9114
+      ],
+      "collision_requirement": "Near-ground obstruction/decoration only",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 40,
+      "triangles_native": 60,
+      "palette": [
+        25,
+        6560
+      ],
+      "glb_sha256": "dc0352a22bb472b7d7f6785fad62c9d38eb44bf86acdb26f8e9eabbb99b4a23e",
+      "model_sha256": "a7fd08b43a3862d9d4774a6a503acdd55604ca4130283c01483e14a43ca2dc26",
+      "model_bytes": 555
+    },
+    {
+      "name": "timber_stack",
+      "model_id": 1100025,
+      "object_id": 63025,
+      "footprint": [
+        2,
+        2
+      ],
+      "vertices": 48,
+      "triangles": 80,
+      "bounds": [
+        [
+          -0.4099999964237213,
+          0.4000000059604645
+        ],
+        [
+          -0.949999988079071,
+          0.9500000476837158
+        ],
+        [
+          0.035455092787742615,
+          0.724544882774353
+        ]
+      ],
+      "purpose": "Grouped replacement pit props near the working face",
+      "reference_analysis_ids": [
+        23505
+      ],
+      "collision_requirement": "Stored material blocks its bay only",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 48,
+      "triangles_native": 80,
+      "palette": [
+        6560
+      ],
+      "glb_sha256": "c8bb961d0dd4f9249fec48ce1b481971c17548a7a539cabd9f9015dac919901f",
+      "model_sha256": "125cd36b2dc165c6050944415355a3fa434447f5d9176db9102bcb0c5925c6e1",
+      "model_bytes": 724
+    },
+    {
+      "name": "root_tree",
+      "model_id": 1100026,
+      "object_id": 63026,
+      "footprint": [
+        3,
+        3
+      ],
+      "vertices": 67,
+      "triangles": 114,
+      "bounds": [
+        [
+          -0.9668799638748169,
+          1.2653987407684326
+        ],
+        [
+          -0.6829898357391357,
+          0.8727824687957764
+        ],
+        [
+          -0.08385131508111954,
+          3.0999999046325684
+        ]
+      ],
+      "purpose": "One directional root breach rather than repeated upright trees",
+      "reference_analysis_ids": [
+        6147
+      ],
+      "collision_requirement": "Original gathering identity; behavior not changed",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 67,
+      "triangles_native": 114,
+      "palette": [
+        6560
+      ],
+      "glb_sha256": "08a5bb00ea89f91f4f04f591aa8f14698c0546679007c9d577b4cd978db5e22f",
+      "model_sha256": "7db92c860cafc38973b916b5e27c31a5065876334df6cf2b4c6a809498ff2372",
+      "model_bytes": 1055
+    },
+    {
+      "name": "fungus",
+      "model_id": 1100027,
+      "object_id": 63027,
+      "footprint": [
+        2,
+        2
+      ],
+      "vertices": 93,
+      "triangles": 162,
+      "bounds": [
+        [
+          -0.6293003559112549,
+          0.7099999189376831
+        ],
+        [
+          -0.5722276568412781,
+          0.44222766160964966
+        ],
+        [
+          0.0,
+          0.8700000047683716
+        ]
+      ],
+      "purpose": "Damp low growth clusters confined to the leaking cistern",
+      "reference_analysis_ids": [
+        6158
+      ],
+      "collision_requirement": "Future ordinary resource/creature placement separate",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 93,
+      "triangles_native": 162,
+      "palette": [
+        6566,
+        16666
+      ],
+      "glb_sha256": "d7ddecd7ca4dac106bbf7c17dec3411dc1b41e858df2fedc9479351e9cfe8b1e",
+      "model_sha256": "fd5fac19bea62011e122c8afb3f65fee1f4b688ebf9f1329503491b4a95d0f38",
+      "model_bytes": 1433
+    },
+    {
+      "name": "casting_hoist",
+      "model_id": 1100041,
+      "object_id": 63041,
+      "footprint": [
+        4,
+        2
+      ],
+      "vertices": 64,
+      "triangles": 100,
+      "bounds": [
+        [
+          -1.75,
+          1.75
+        ],
+        [
+          -0.11490948498249054,
+          0.2900000810623169
+        ],
+        [
+          -0.0045359134674072266,
+          3.940000057220459
+        ]
+      ],
+      "purpose": "Working load path and overhead structure beside the casting apron",
+      "reference_analysis_ids": [
+        9114
+      ],
+      "collision_requirement": "Posts block; hanging load is scenery until animated",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 64,
+      "triangles_native": 100,
+      "palette": [
+        25,
+        34,
+        6560,
+        6566
+      ],
+      "glb_sha256": "f2171859160b0c7fff02dfc326bf20ded713709d3a8b207bd190ad216872dca3",
+      "model_sha256": "c75bd6ca8230ca80d54e994abaf278594af88ed6932d0e536de29bb46635daac",
+      "model_bytes": 907
+    },
+    {
+      "name": "great_crucible",
+      "model_id": 1100015,
+      "object_id": 63015,
+      "footprint": [
+        6,
+        6
+      ],
+      "vertices": 138,
+      "triangles": 236,
+      "bounds": [
+        [
+          -2.6500000953674316,
+          2.6500000953674316
+        ],
+        [
+          -2.8499999046325684,
+          2.78987717628479
+        ],
+        [
+          0.0,
+          3.990000009536743
+        ]
+      ],
+      "purpose": "Single bound vessel with buttresses, barred tap and casting throat; foundry landmark",
+      "reference_analysis_ids": [
+        6189,
+        9085
+      ],
+      "collision_requirement": "Containment blocks; preserve broad combat apron in front",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 138,
+      "triangles_native": 236,
+      "palette": [
+        16,
+        25,
+        3902,
+        6169,
+        8015
+      ],
+      "glb_sha256": "8cff8022cc48198753b68442c54a4bf734e92e206abe698f328fc5b136bcdbdb",
+      "model_sha256": "16b93275e21288101ad5bfcb89abfd1617383477d15da297d4bfcc10f3da9c06",
+      "model_bytes": 2191
+    },
+    {
+      "name": "ascent_stair",
+      "model_id": 1100033,
+      "object_id": 63033,
+      "footprint": [
+        4,
+        4
+      ],
+      "vertices": 128,
+      "triangles": 196,
+      "bounds": [
+        [
+          -1.620566487312317,
+          1.6230745315551758
+        ],
+        [
+          -0.4000000059604645,
+          1.6241562366485596
+        ],
+        [
+          0.0,
+          3.1500000953674316
+        ]
+      ],
+      "purpose": "Distinct rise around a central bearing at the completion destination",
+      "reference_analysis_ids": [
+        6085,
+        7016
+      ],
+      "collision_requirement": "Offline visual; future height planes and ascent interaction required",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 128,
+      "triangles_native": 196,
+      "palette": [
+        6169,
+        6174
+      ],
+      "glb_sha256": "c8ac3bd39ba754aab87c1176111a596d0e592220f65fede11a97f1b5f52632ed",
+      "model_sha256": "a017567831bb3408bf97d926eaea6fc2523b6b980b9550da5d87ebb41feb515f",
+      "model_bytes": 1901
+    },
+    {
+      "name": "banner",
+      "model_id": 1100031,
+      "object_id": 63031,
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 24,
+      "triangles": 36,
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.042500000447034836,
+          0.05999999865889549
+        ],
+        [
+          0.6899999976158142,
+          2.075000047683716
+        ]
+      ],
+      "purpose": "Single maintained worker sign rather than repeated ceremonial ribbons",
+      "reference_analysis_ids": [
+        6046
+      ],
+      "collision_requirement": "Wall mounted; no floor blockage",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 24,
+      "triangles_native": 36,
+      "palette": [
+        6560,
+        9648,
+        28071
+      ],
+      "glb_sha256": "627670cb033140d614e213b3fabeec988791e775a87a396e6b74b99d91eabdc6",
+      "model_sha256": "e23505d946d4c27f42fada91268839497a120f272ad0edd0c592223085509218",
+      "model_bytes": 335
+    },
+    {
+      "name": "ground_arrival_stone_dark_1_0",
+      "model_id": 1100201,
+      "object_id": 63201,
+      "footprint": [
+        14,
+        17
+      ],
+      "vertices": 450,
+      "triangles": 896,
+      "bounds": [
+        [
+          -7.0,
+          7.0
+        ],
+        [
+          -8.5,
+          8.5
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        54,
+        29
+      ],
+      "vertices_native": 450,
+      "triangles_native": 896,
+      "palette": [
+        6169,
+        6292
+      ],
+      "glb_sha256": "42f0156b328bdee0fd5f363a6993f5cb9acc0ee71da32f671c2dda44da1f2ccc",
+      "model_sha256": "852e65201a4a560bb21b82367e59dbc8a5e0b2e06151e1234d98047d3a35f095",
+      "model_bytes": 8284
+    },
+    {
+      "name": "ground_arrival_stone_dark_2_0",
+      "model_id": 1100202,
+      "object_id": 63202,
+      "footprint": [
+        3,
+        13
+      ],
+      "vertices": 84,
+      "triangles": 164,
+      "bounds": [
+        [
+          -1.5,
+          1.5
+        ],
+        [
+          -6.5,
+          6.5
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        68,
+        30
+      ],
+      "vertices_native": 84,
+      "triangles_native": 164,
+      "palette": [
+        6169
+      ],
+      "glb_sha256": "b7cb817ac82cc763e41874423c84fbee60e3610ac26b5ce1b1ff831020636dcc",
+      "model_sha256": "47a0c3b4811dfb253e0249ed811fdf503f5dc913bc483b160fd823deab9975ea",
+      "model_bytes": 1436
+    },
+    {
+      "name": "ground_ascent_stone_1_4",
+      "model_id": 1100649,
+      "object_id": 63649,
+      "footprint": [
+        8,
+        13
+      ],
+      "vertices": 198,
+      "triangles": 392,
+      "bounds": [
+        [
+          -4.0,
+          4.0
+        ],
+        [
+          -6.5,
+          6.5
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        60,
+        121
+      ],
+      "vertices_native": 198,
+      "triangles_native": 392,
+      "palette": [
+        6169,
+        6174
+      ],
+      "glb_sha256": "9170eab4e0214b3a5a6ddf00229c44997e904a6eb901ea430b4ad53e9e395904",
+      "model_sha256": "4217f2db21eb1f59bf1c9560e6fd68b86c382c1dc337d577bf6fe944ef59c147",
+      "model_bytes": 3561
+    },
+    {
+      "name": "ground_ascent_stone_2_4",
+      "model_id": 1100650,
+      "object_id": 63650,
+      "footprint": [
+        8,
+        12
+      ],
+      "vertices": 192,
+      "triangles": 380,
+      "bounds": [
+        [
+          -4.0,
+          4.0
+        ],
+        [
+          -6.0,
+          6.0
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        68,
+        122
+      ],
+      "vertices_native": 192,
+      "triangles_native": 380,
+      "palette": [
+        6169,
+        6174
+      ],
+      "glb_sha256": "4823ea987bbb6f87620b3ca6b006e1cb78954e6bfa98bd70836c03a4b37b63e2",
+      "model_sha256": "440b9fded997b7f5f4cb5d67bb341b699a8882b493d8e0150ead38a37a7034e4",
+      "model_bytes": 3451
+    },
+    {
+      "name": "ground_foundry_stone_dark_1_3",
+      "model_id": 1100597,
+      "object_id": 63597,
+      "footprint": [
+        22,
+        15
+      ],
+      "vertices": 668,
+      "triangles": 1332,
+      "bounds": [
+        [
+          -11.0,
+          11.0
+        ],
+        [
+          -7.5,
+          7.5
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        46,
+        97
+      ],
+      "vertices_native": 668,
+      "triangles_native": 1332,
+      "palette": [
+        6169,
+        6292
+      ],
+      "glb_sha256": "fb8167dd0579326152a12a20e42ede9db8299c7f319dcd5db17a431ba169ac9e",
+      "model_sha256": "43eb148570ffccf4d7f5fb60887f8bfdff08fb466b4be16f15332245b162397c",
+      "model_bytes": 12341
+    },
+    {
+      "name": "ground_foundry_stone_dark_1_4",
+      "model_id": 1100601,
+      "object_id": 63601,
+      "footprint": [
+        22,
+        11
+      ],
+      "vertices": 490,
+      "triangles": 976,
+      "bounds": [
+        [
+          -11.0,
+          11.0
+        ],
+        [
+          -5.5,
+          5.5
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        46,
+        112
+      ],
+      "vertices_native": 490,
+      "triangles_native": 976,
+      "palette": [
+        6169,
+        6292
+      ],
+      "glb_sha256": "447683cf4149656f873a513121f628c22d7a9e11a8210de366b5c27ef5f3b497",
+      "model_sha256": "0f98e7b85112ebf81c45e079cf12b859ffed34e0ef4ab271665a8db2aeb2367d",
+      "model_bytes": 9075
+    },
+    {
+      "name": "ground_foundry_stone_dark_2_3",
+      "model_id": 1100598,
+      "object_id": 63598,
+      "footprint": [
+        6,
+        12
+      ],
+      "vertices": 152,
+      "triangles": 300,
+      "bounds": [
+        [
+          -3.0,
+          3.0
+        ],
+        [
+          -6.0,
+          6.0
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        68,
+        100
+      ],
+      "vertices_native": 152,
+      "triangles_native": 300,
+      "palette": [
+        6169,
+        6292
+      ],
+      "glb_sha256": "4e6830c97ae281871bea2a3474cdfe452c8d5b16b061f1969491f294fe9c6c22",
+      "model_sha256": "2120a72f9bc841558e2a0f5759adf24c89cb4dc99679cfa0007d583db87e7e15",
+      "model_bytes": 2839
+    },
+    {
+      "name": "ground_foundry_stone_dark_2_4",
+      "model_id": 1100602,
+      "object_id": 63602,
+      "footprint": [
+        6,
+        10
+      ],
+      "vertices": 118,
+      "triangles": 232,
+      "bounds": [
+        [
+          -3.0,
+          3.0
+        ],
+        [
+          -5.0,
+          5.0
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        68,
+        112
+      ],
+      "vertices_native": 118,
+      "triangles_native": 232,
+      "palette": [
+        6169,
+        6292
+      ],
+      "glb_sha256": "785388eaacbf2cfc633a7bc1b13cc508058541ceeeed736c69bc9384546ea1a8",
+      "model_sha256": "48c299fa64bce35933e1e548fb5ef77a425c5c911191e9242717f7c078a9bc4e",
+      "model_bytes": 2036
+    },
+    {
+      "name": "ground_garden_soil_2_2",
+      "model_id": 1100450,
+      "object_id": 63450,
+      "footprint": [
+        9,
+        14
+      ],
+      "vertices": 150,
+      "triangles": 288,
+      "bounds": [
+        [
+          -4.5,
+          4.5
+        ],
+        [
+          -7.0,
+          7.0
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        81,
+        76
+      ],
+      "vertices_native": 150,
+      "triangles_native": 288,
+      "palette": [
+        6169,
+        6429,
+        16666
+      ],
+      "glb_sha256": "31d620c275d68d32944a30be7f9e48040e8af2adaf0a2389bf040d17a53f7703",
+      "model_sha256": "967456ea85079123bc623cadc1cf437a484eac71e0b262a8feee1f6f4e8acee6",
+      "model_bytes": 2646
+    },
+    {
+      "name": "ground_garden_soil_2_3",
+      "model_id": 1100454,
+      "object_id": 63454,
+      "footprint": [
+        7,
+        7
+      ],
+      "vertices": 104,
+      "triangles": 204,
+      "bounds": [
+        [
+          -3.5,
+          3.5
+        ],
+        [
+          -3.5,
+          3.5
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        83,
+        90
+      ],
+      "vertices_native": 104,
+      "triangles_native": 204,
+      "palette": [
+        6169,
+        6429
+      ],
+      "glb_sha256": "080d17df2cd2db7386c22e792ae2b5cc7630d127d73dc94838c3d45165707ea6",
+      "model_sha256": "1bb9e9ed1f2af7d0b37c01106491f23949afbedc6ffa3f8dc53979c0c55018a2",
+      "model_bytes": 1791
+    },
+    {
+      "name": "ground_garden_soil_3_2",
+      "model_id": 1100451,
+      "object_id": 63451,
+      "footprint": [
+        9,
+        13
+      ],
+      "vertices": 212,
+      "triangles": 420,
+      "bounds": [
+        [
+          -4.5,
+          4.5
+        ],
+        [
+          -6.5,
+          6.5
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        90,
+        77
+      ],
+      "vertices_native": 212,
+      "triangles_native": 420,
+      "palette": [
+        6169,
+        6429,
+        16666
+      ],
+      "glb_sha256": "bb7670f89f026aca3fa736f97abcfd900353c3961df764b368c6d66e90463072",
+      "model_sha256": "ce118331742465fecaf02a116b79c3f871706c1075d0dbe4593e6dd8d6a76685",
+      "model_bytes": 3771
+    },
+    {
+      "name": "ground_garden_soil_3_3",
+      "model_id": 1100455,
+      "object_id": 63455,
+      "footprint": [
+        7,
+        6
+      ],
+      "vertices": 84,
+      "triangles": 164,
+      "bounds": [
+        [
+          -3.5,
+          3.5
+        ],
+        [
+          -3.0,
+          3.0
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        90,
+        90
+      ],
+      "vertices_native": 84,
+      "triangles_native": 164,
+      "palette": [
+        6169,
+        6429
+      ],
+      "glb_sha256": "0b1e90fd3d5c69303d7c9996a848fbb918fb62b31cb0bc24f4418585a46de088",
+      "model_sha256": "4ea07bc3d3e4af1db3cc874b27fbe419205f5c51ff2bc725c01b250f48f8aac4",
+      "model_bytes": 1451
+    },
+    {
+      "name": "ground_garden_water_2_2",
+      "model_id": 1100474,
+      "object_id": 63474,
+      "footprint": [
+        6,
+        11
+      ],
+      "vertices": 132,
+      "triangles": 260,
+      "bounds": [
+        [
+          -3.0,
+          3.0
+        ],
+        [
+          -5.5,
+          5.5
+        ],
+        [
+          -0.5199999809265137,
+          -0.11999999731779099
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        84,
+        76
+      ],
+      "vertices_native": 132,
+      "triangles_native": 260,
+      "palette": [
+        6169,
+        31139
+      ],
+      "glb_sha256": "60981afac96d3647969283ea36ab8f162fe37811e7280e51ac66a6c8208cc539",
+      "model_sha256": "391749061826382b49528a3b636e2adaf600390907ff865edab43fc5120e6813",
+      "model_bytes": 2388
+    },
+    {
+      "name": "ground_garden_water_3_2",
+      "model_id": 1100475,
+      "object_id": 63475,
+      "footprint": [
+        3,
+        6
+      ],
+      "vertices": 44,
+      "triangles": 84,
+      "bounds": [
+        [
+          -1.5,
+          1.5
+        ],
+        [
+          -3.0,
+          3.0
+        ],
+        [
+          -0.5199999809265137,
+          -0.11999999731779099
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        90,
+        81
+      ],
+      "vertices_native": 44,
+      "triangles_native": 84,
+      "palette": [
+        6169,
+        31139
+      ],
+      "glb_sha256": "25a002819b2b4934cbebd9736afeadbee1e68ff5ad0a135883bbd961a37a8e36",
+      "model_sha256": "6b0ec8d2a44c86a6003fd3b24ea39a09a58a2127581e51dc50b8beaf99571e55",
+      "model_bytes": 756
+    },
+    {
+      "name": "ground_geology_stone_dark_0_1",
+      "model_id": 1100780,
+      "object_id": 63780,
+      "footprint": [
+        19,
+        16
+      ],
+      "vertices": 234,
+      "triangles": 464,
+      "bounds": [
+        [
+          -9.5,
+          9.5
+        ],
+        [
+          -8.0,
+          8.0
+        ],
+        [
+          -0.4000000059604645,
+          3.581242799758911
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        27,
+        52
+      ],
+      "vertices_native": 234,
+      "triangles_native": 464,
+      "palette": [
+        6169
+      ],
+      "glb_sha256": "a3c1eebec2deae8aa5513ce02dfb721ee1b94d6a62691e97fb3b0fa366bada77",
+      "model_sha256": "4038fee83fd1a909a39f8f0c33f05fa6dd68f908912e2c031e5ff44e8582a16a",
+      "model_bytes": 4603
+    },
+    {
+      "name": "ground_geology_stone_dark_0_2",
+      "model_id": 1100784,
+      "object_id": 63784,
+      "footprint": [
+        21,
+        22
+      ],
+      "vertices": 246,
+      "triangles": 484,
+      "bounds": [
+        [
+          -10.5,
+          10.5
+        ],
+        [
+          -11.0,
+          11.0
+        ],
+        [
+          -0.4000000059604645,
+          3.496135950088501
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        25,
+        68
+      ],
+      "vertices_native": 246,
+      "triangles_native": 484,
+      "palette": [
+        6169,
+        6292
+      ],
+      "glb_sha256": "2f32153ba8094fb6d85e5280f7cf6e1aa0238cbb3eea0c7d194455e3a39cd394",
+      "model_sha256": "8b4c0077c1403e2e4d7436fe393332d8a11722877069d2c2f4d82b92765aa30c",
+      "model_bytes": 4678
+    },
+    {
+      "name": "ground_geology_stone_dark_0_3",
+      "model_id": 1100788,
+      "object_id": 63788,
+      "footprint": [
+        21,
+        22
+      ],
+      "vertices": 298,
+      "triangles": 592,
+      "bounds": [
+        [
+          -10.5,
+          10.5
+        ],
+        [
+          -11.0,
+          11.0
+        ],
+        [
+          -0.4000000059604645,
+          3.5837953090667725
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        25,
+        90
+      ],
+      "vertices_native": 298,
+      "triangles_native": 592,
+      "palette": [
+        6169,
+        6292
+      ],
+      "glb_sha256": "96f877b02765e23805165c9f8931486b208aeb006411f4c5433df0cc1607a2a2",
+      "model_sha256": "ca9679688deddfab159db10bfa57c853254feecbb0c61d0fbba06aaf7ada0ff3",
+      "model_bytes": 5866
+    },
+    {
+      "name": "ground_geology_stone_dark_0_4",
+      "model_id": 1100792,
+      "object_id": 63792,
+      "footprint": [
+        3,
+        8
+      ],
+      "vertices": 66,
+      "triangles": 128,
+      "bounds": [
+        [
+          -1.5,
+          1.5
+        ],
+        [
+          -4.0,
+          4.0
+        ],
+        [
+          -0.4000000059604645,
+          3.5732343196868896
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        43,
+        112
+      ],
+      "vertices_native": 66,
+      "triangles_native": 128,
+      "palette": [
+        6169,
+        6292
+      ],
+      "glb_sha256": "fb26279c6e7ce165c9402af90e61d01c9ecb57e8b5acf48ba088bac5ec780fe2",
+      "model_sha256": "a47842b5abc46ae05316ecb616def63e0a9614bdbc6ea402c52e3b4110b5b882",
+      "model_bytes": 1166
+    },
+    {
+      "name": "ground_geology_stone_dark_1_0",
+      "model_id": 1100777,
+      "object_id": 63777,
+      "footprint": [
+        18,
+        19
+      ],
+      "vertices": 290,
+      "triangles": 568,
+      "bounds": [
+        [
+          -9.0,
+          9.0
+        ],
+        [
+          -9.5,
+          9.5
+        ],
+        [
+          -0.4000000059604645,
+          3.5358290672302246
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        50,
+        27
+      ],
+      "vertices_native": 290,
+      "triangles_native": 568,
+      "palette": [
+        6169,
+        6292
+      ],
+      "glb_sha256": "e5e1adcf350939114450673119ebef3007576c0cee5c07c1fc879fa9e1244d24",
+      "model_sha256": "339ff97f667e4a18b8b184d3c683171163ff6c6bc0a5ec6008dfd78199ba3d39",
+      "model_bytes": 5583
+    },
+    {
+      "name": "ground_geology_stone_dark_1_1",
+      "model_id": 1100781,
+      "object_id": 63781,
+      "footprint": [
+        22,
+        22
+      ],
+      "vertices": 196,
+      "triangles": 380,
+      "bounds": [
+        [
+          -11.0,
+          11.0
+        ],
+        [
+          -11.0,
+          11.0
+        ],
+        [
+          -0.4000000059604645,
+          3.5430068969726562
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        46,
+        46
+      ],
+      "vertices_native": 196,
+      "triangles_native": 380,
+      "palette": [
+        6169,
+        6292
+      ],
+      "glb_sha256": "440c302925e1a053348dbae0666e4a0e2d7675a4530d303b7453989016eca424",
+      "model_sha256": "0083131805f7313664355b6736ea0090d12a07fa6db3e8fccb6fd11e5eedbfab",
+      "model_bytes": 3830
+    },
+    {
+      "name": "ground_geology_stone_dark_1_2",
+      "model_id": 1100785,
+      "object_id": 63785,
+      "footprint": [
+        22,
+        22
+      ],
+      "vertices": 434,
+      "triangles": 856,
+      "bounds": [
+        [
+          -11.0,
+          11.0
+        ],
+        [
+          -11.0,
+          11.0
+        ],
+        [
+          -0.4000000059604645,
+          3.449129819869995
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        46,
+        68
+      ],
+      "vertices_native": 434,
+      "triangles_native": 856,
+      "palette": [
+        6169,
+        6292
+      ],
+      "glb_sha256": "fa98edff8f118e7f5b12cbc9d940bc8964dd805320628aff82a497b2e351baec",
+      "model_sha256": "9d516bc7a2c2edac9fbd032cd5ce8ffac825fe3c92cefd18ea99d4bf62f8ac4a",
+      "model_bytes": 8391
+    },
+    {
+      "name": "ground_geology_stone_dark_1_3",
+      "model_id": 1100789,
+      "object_id": 63789,
+      "footprint": [
+        22,
+        15
+      ],
+      "vertices": 236,
+      "triangles": 464,
+      "bounds": [
+        [
+          -11.0,
+          11.0
+        ],
+        [
+          -7.5,
+          7.5
+        ],
+        [
+          -0.4000000059604645,
+          3.5122413635253906
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        46,
+        90
+      ],
+      "vertices_native": 236,
+      "triangles_native": 464,
+      "palette": [
+        6169
+      ],
+      "glb_sha256": "3b83bcd84edc6691817404351c28504e95a6621f84ee63110917602b28f47362",
+      "model_sha256": "0f17583ba3399664fb6ba459026b288b5046973beaf09df859f8d2751e5155ba",
+      "model_bytes": 4599
+    },
+    {
+      "name": "ground_geology_stone_dark_1_4",
+      "model_id": 1100793,
+      "object_id": 63793,
+      "footprint": [
+        18,
+        17
+      ],
+      "vertices": 258,
+      "triangles": 512,
+      "bounds": [
+        [
+          -9.0,
+          9.0
+        ],
+        [
+          -8.5,
+          8.5
+        ],
+        [
+          -0.4000000059604645,
+          3.580868721008301
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        46,
+        117
+      ],
+      "vertices_native": 258,
+      "triangles_native": 512,
+      "palette": [
+        6169,
+        6292
+      ],
+      "glb_sha256": "9a5bd281ae593aef0c4ab14fca0e97d2c08e3512f32d0ba62275008d501603b9",
+      "model_sha256": "cb50b56f6ea3ed2e6f17370ed1b932d2b6e952223bfa7a58e4d603a449b1c299",
+      "model_bytes": 5012
+    },
+    {
+      "name": "ground_geology_stone_dark_1_5",
+      "model_id": 1100797,
+      "object_id": 63797,
+      "footprint": [
+        8,
+        2
+      ],
+      "vertices": 52,
+      "triangles": 100,
+      "bounds": [
+        [
+          -4.0,
+          4.0
+        ],
+        [
+          -1.0,
+          1.0
+        ],
+        [
+          -0.4000000059604645,
+          3.397385835647583
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        60,
+        134
+      ],
+      "vertices_native": 52,
+      "triangles_native": 100,
+      "palette": [
+        6169
+      ],
+      "glb_sha256": "9c5153dc14c156b7a0aeeb0998ad2882a071a23ced671be37c9e5009ea68b210",
+      "model_sha256": "c1181dc39510b97c02ebddca54d0349ebe00745df73a02d98f8cfda34dbbe4bc",
+      "model_bytes": 961
+    },
+    {
+      "name": "ground_geology_stone_dark_2_0",
+      "model_id": 1100778,
+      "object_id": 63778,
+      "footprint": [
+        6,
+        19
+      ],
+      "vertices": 186,
+      "triangles": 368,
+      "bounds": [
+        [
+          -3.0,
+          3.0
+        ],
+        [
+          -9.5,
+          9.5
+        ],
+        [
+          -0.4000000059604645,
+          3.4246654510498047
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        68,
+        27
+      ],
+      "vertices_native": 186,
+      "triangles_native": 368,
+      "palette": [
+        6169,
+        6292
+      ],
+      "glb_sha256": "aa52fc1f53324a1707d366928227a904c55a641f30f85f7296784d851bb02906",
+      "model_sha256": "8037db579a088353404e68a2d9a35f70799d570248a069f0c67fc32ed8e7e896",
+      "model_bytes": 3604
+    },
+    {
+      "name": "ground_geology_stone_dark_2_1",
+      "model_id": 1100782,
+      "object_id": 63782,
+      "footprint": [
+        22,
+        22
+      ],
+      "vertices": 342,
+      "triangles": 676,
+      "bounds": [
+        [
+          -11.0,
+          11.0
+        ],
+        [
+          -11.0,
+          11.0
+        ],
+        [
+          -0.4000000059604645,
+          3.404553174972534
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        68,
+        46
+      ],
+      "vertices_native": 342,
+      "triangles_native": 676,
+      "palette": [
+        6169,
+        6292
+      ],
+      "glb_sha256": "d6799942effbef3307531371644a140274c0b91622e17e4ccacd664a97616707",
+      "model_sha256": "df32e498abdb82f60bb6186304792ceb1438cb1592bf0933b3a5e87082394217",
+      "model_bytes": 6682
+    },
+    {
+      "name": "ground_geology_stone_dark_2_2",
+      "model_id": 1100786,
+      "object_id": 63786,
+      "footprint": [
+        22,
+        14
+      ],
+      "vertices": 244,
+      "triangles": 468,
+      "bounds": [
+        [
+          -11.0,
+          11.0
+        ],
+        [
+          -7.0,
+          7.0
+        ],
+        [
+          -0.4000000059604645,
+          3.5764200687408447
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        68,
+        68
+      ],
+      "vertices_native": 244,
+      "triangles_native": 468,
+      "palette": [
+        6169,
+        6292
+      ],
+      "glb_sha256": "e4ce9cec33b98b134f233490db9af7f3e7e90978c4599bdb2cafd204ec2033e0",
+      "model_sha256": "af4d502c8db0dc28186bfdf5eb4ea5984a51ebc7597f55be306531149898e367",
+      "model_bytes": 4689
+    },
+    {
+      "name": "ground_geology_stone_dark_2_3",
+      "model_id": 1100790,
+      "object_id": 63790,
+      "footprint": [
+        22,
+        17
+      ],
+      "vertices": 316,
+      "triangles": 628,
+      "bounds": [
+        [
+          -11.0,
+          11.0
+        ],
+        [
+          -8.5,
+          8.5
+        ],
+        [
+          -0.4000000059604645,
+          3.5839338302612305
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        68,
+        95
+      ],
+      "vertices_native": 316,
+      "triangles_native": 628,
+      "palette": [
+        6169,
+        6292
+      ],
+      "glb_sha256": "805a23033de296fc5d684cc8d8117a9c0730dc1c970c2602a0d056cf0b1578fb",
+      "model_sha256": "9ac916cb21a2875bf744815f1eacf1b25ecdb5611ad367395f6f4572e7e0811c",
+      "model_bytes": 6249
+    },
+    {
+      "name": "ground_geology_stone_dark_2_4",
+      "model_id": 1100794,
+      "object_id": 63794,
+      "footprint": [
+        7,
+        22
+      ],
+      "vertices": 220,
+      "triangles": 436,
+      "bounds": [
+        [
+          -3.5,
+          3.5
+        ],
+        [
+          -11.0,
+          11.0
+        ],
+        [
+          -0.4000000059604645,
+          3.483940362930298
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        72,
+        112
+      ],
+      "vertices_native": 220,
+      "triangles_native": 436,
+      "palette": [
+        6169,
+        6292
+      ],
+      "glb_sha256": "3beabe5d70de86cb90214b2267e33c70bc9f571eaa5d2c689c614aef936e640f",
+      "model_sha256": "afdf0e5b7c48ce6766306599ed46bad3009855a581e73733d8a2b05c2ec1c05c",
+      "model_bytes": 4098
+    },
+    {
+      "name": "ground_geology_stone_dark_2_5",
+      "model_id": 1100798,
+      "object_id": 63798,
+      "footprint": [
+        8,
+        2
+      ],
+      "vertices": 52,
+      "triangles": 100,
+      "bounds": [
+        [
+          -4.0,
+          4.0
+        ],
+        [
+          -1.0,
+          1.0
+        ],
+        [
+          -0.4000000059604645,
+          3.5477118492126465
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        68,
+        134
+      ],
+      "vertices_native": 52,
+      "triangles_native": 100,
+      "palette": [
+        6169
+      ],
+      "glb_sha256": "f266428cc2ebe5d222e65ab9af63e260cff27aba06d8c2fe38cb38f60472b958",
+      "model_sha256": "11eac45a9e7b24dc9994ca4c9c0655d88ab99fad88202fc6154c3f7ebe17ac6f",
+      "model_bytes": 959
+    },
+    {
+      "name": "ground_geology_stone_dark_3_1",
+      "model_id": 1100783,
+      "object_id": 63783,
+      "footprint": [
+        8,
+        21
+      ],
+      "vertices": 194,
+      "triangles": 384,
+      "bounds": [
+        [
+          -4.0,
+          4.0
+        ],
+        [
+          -10.5,
+          10.5
+        ],
+        [
+          -0.4000000059604645,
+          3.5808303356170654
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        90,
+        47
+      ],
+      "vertices_native": 194,
+      "triangles_native": 384,
+      "palette": [
+        6169
+      ],
+      "glb_sha256": "cca2e271c5a6578fcca7c9f9c8e9e5aa3a419ce0a7e8db729306ac90f0c94115",
+      "model_sha256": "3ea780fed8e01bfb1eda03d862088ab971ab38739700cfa0445e6a8c9b27eea1",
+      "model_bytes": 3792
+    },
+    {
+      "name": "ground_geology_stone_dark_3_2",
+      "model_id": 1100787,
+      "object_id": 63787,
+      "footprint": [
+        11,
+        22
+      ],
+      "vertices": 232,
+      "triangles": 460,
+      "bounds": [
+        [
+          -5.5,
+          5.5
+        ],
+        [
+          -11.0,
+          11.0
+        ],
+        [
+          -0.4000000059604645,
+          3.5801663398742676
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        91,
+        68
+      ],
+      "vertices_native": 232,
+      "triangles_native": 460,
+      "palette": [
+        6169,
+        6292
+      ],
+      "glb_sha256": "aadd7fe589a93aa759b4512ffac4c5f543a1ab861433872d43045e0f8293cf44",
+      "model_sha256": "889e255a4ebe49595fab8b3bbb20542011f317b4c50dec560c72878d0c22021a",
+      "model_bytes": 4220
+    },
+    {
+      "name": "ground_geology_stone_dark_3_3",
+      "model_id": 1100791,
+      "object_id": 63791,
+      "footprint": [
+        10,
+        9
+      ],
+      "vertices": 114,
+      "triangles": 224,
+      "bounds": [
+        [
+          -5.0,
+          5.0
+        ],
+        [
+          -4.5,
+          4.5
+        ],
+        [
+          -0.4000000059604645,
+          3.582505941390991
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        90,
+        90
+      ],
+      "vertices_native": 114,
+      "triangles_native": 224,
+      "palette": [
+        6169
+      ],
+      "glb_sha256": "94dc085e57d1367de37f02895d80cc49cf163d278ec7039bdd9656e44a5ce661",
+      "model_sha256": "e27dceca5cbfeecd9b25072ea5de2d915fa940ac14be7504690950715bed2ac4",
+      "model_bytes": 2060
+    },
+    {
+      "name": "ground_narthex_stone_dark_1_2",
+      "model_id": 1100545,
+      "object_id": 63545,
+      "footprint": [
+        15,
+        17
+      ],
+      "vertices": 506,
+      "triangles": 1008,
+      "bounds": [
+        [
+          -7.5,
+          7.5
+        ],
+        [
+          -8.5,
+          8.5
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        52,
+        73
+      ],
+      "vertices_native": 506,
+      "triangles_native": 1008,
+      "palette": [
+        6169,
+        6292
+      ],
+      "glb_sha256": "d99afae89a5c851d320ea53ee138fd6f04ffbdd2dca2e1e9798b8ee052c7cb5d",
+      "model_sha256": "e978d37a9b9edd4fdc5b854d9bcfa9ef9c017bbff538df8b51e94268e2b708c8",
+      "model_bytes": 9221
+    },
+    {
+      "name": "ground_narthex_stone_dark_1_3",
+      "model_id": 1100549,
+      "object_id": 63549,
+      "footprint": [
+        13,
+        7
+      ],
+      "vertices": 192,
+      "triangles": 380,
+      "bounds": [
+        [
+          -6.5,
+          6.5
+        ],
+        [
+          -3.5,
+          3.5
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        53,
+        90
+      ],
+      "vertices_native": 192,
+      "triangles_native": 380,
+      "palette": [
+        6169
+      ],
+      "glb_sha256": "05a532e3a1e977d838231c860513e06df998e405f1fa71f6df099d506e888cb0",
+      "model_sha256": "c2501f11a80a0aba327e898404c8106c2c251a4ad1bb7958173be3a671bbab39",
+      "model_bytes": 3622
+    },
+    {
+      "name": "ground_quarry_soil_0_2",
+      "model_id": 1100352,
+      "object_id": 63352,
+      "footprint": [
+        19,
+        13
+      ],
+      "vertices": 504,
+      "triangles": 1004,
+      "bounds": [
+        [
+          -9.5,
+          9.5
+        ],
+        [
+          -6.5,
+          6.5
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        27,
+        77
+      ],
+      "vertices_native": 504,
+      "triangles_native": 1004,
+      "palette": [
+        6169,
+        6429,
+        16666
+      ],
+      "glb_sha256": "d35889aa5c3b912c58503fdb7c3472248f996341b9a3d70f8b45d8ec8cd148ab",
+      "model_sha256": "0bf967b64e2c417bcd9fb6f447b4906e1496509b266890eaae2eeb8a41f7e3f0",
+      "model_bytes": 9018
+    },
+    {
+      "name": "ground_quarry_soil_0_3",
+      "model_id": 1100356,
+      "object_id": 63356,
+      "footprint": [
+        19,
+        8
+      ],
+      "vertices": 310,
+      "triangles": 616,
+      "bounds": [
+        [
+          -9.5,
+          9.5
+        ],
+        [
+          -4.0,
+          4.0
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        27,
+        90
+      ],
+      "vertices_native": 310,
+      "triangles_native": 616,
+      "palette": [
+        6169,
+        6429
+      ],
+      "glb_sha256": "99e2ea6e4f6b3d50100ba20120403e20ce7c8d9ab7955e0e8aa998d0a648eff7",
+      "model_sha256": "04716d2cfb809b2e2eef179faf9835e47323fb720782546d7b0247615d6e7cfc",
+      "model_bytes": 5557
+    },
+    {
+      "name": "ground_quarry_soil_1_2",
+      "model_id": 1100353,
+      "object_id": 63353,
+      "footprint": [
+        3,
+        9
+      ],
+      "vertices": 66,
+      "triangles": 128,
+      "bounds": [
+        [
+          -1.5,
+          1.5
+        ],
+        [
+          -4.5,
+          4.5
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        46,
+        81
+      ],
+      "vertices_native": 66,
+      "triangles_native": 128,
+      "palette": [
+        6169,
+        6429
+      ],
+      "glb_sha256": "677f42d2148f737add59822f480d11bd16ec8a8e997cc7ad266dc2e222e841c4",
+      "model_sha256": "b0cba7b10a6a9ddeab2351a791f2963e77b071be61c166e2e878d4c589920233",
+      "model_bytes": 1129
+    },
+    {
+      "name": "ground_quarry_soil_1_3",
+      "model_id": 1100357,
+      "object_id": 63357,
+      "footprint": [
+        3,
+        4
+      ],
+      "vertices": 34,
+      "triangles": 64,
+      "bounds": [
+        [
+          -1.5,
+          1.5
+        ],
+        [
+          -2.0,
+          2.0
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        46,
+        90
+      ],
+      "vertices_native": 34,
+      "triangles_native": 64,
+      "palette": [
+        6169,
+        6429
+      ],
+      "glb_sha256": "cba343b442b0d2d26c42612dab82863ab22de46de1bb7507e7408d741ac8e194",
+      "model_sha256": "6dc9fe62b09a90e4417540d5f27ba165a2c89f5615b97dad192ba827b6607a6a",
+      "model_bytes": 585
+    },
+    {
+      "name": "ground_sanctuary_stone_1_1",
+      "model_id": 1100253,
+      "object_id": 63253,
+      "footprint": [
+        18,
+        20
+      ],
+      "vertices": 746,
+      "triangles": 1488,
+      "bounds": [
+        [
+          -9.0,
+          9.0
+        ],
+        [
+          -10.0,
+          10.0
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        50,
+        46
+      ],
+      "vertices_native": 746,
+      "triangles_native": 1488,
+      "palette": [
+        6169,
+        6174
+      ],
+      "glb_sha256": "f68978311dda067154974dfd5b7fd726ade6a74de4f6cb6f8c260adbf0c7c95a",
+      "model_sha256": "fd269d6720a5cd2ee7cdc7d6e12a7bf732928dcee68ce72e8ff4920040417b5e",
+      "model_bytes": 13061
+    },
+    {
+      "name": "ground_sanctuary_stone_2_1",
+      "model_id": 1100254,
+      "object_id": 63254,
+      "footprint": [
+        5,
+        20
+      ],
+      "vertices": 212,
+      "triangles": 420,
+      "bounds": [
+        [
+          -2.5,
+          2.5
+        ],
+        [
+          -10.0,
+          10.0
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        68,
+        46
+      ],
+      "vertices_native": 212,
+      "triangles_native": 420,
+      "palette": [
+        6169,
+        6174
+      ],
+      "glb_sha256": "a268acb89db79dac6b51b3a035a50e7047f146b980ee9b12c1db20e38181c873",
+      "model_sha256": "7fe4309f06d7a962b9275ea5f95c28ae0ae2294a687ab2eba166eb45455c3678",
+      "model_bytes": 3819
+    },
+    {
+      "name": "ground_spine_stone_dark_0_2",
+      "model_id": 1100688,
+      "object_id": 63688,
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 8,
+      "triangles": 12,
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        41,
+        77
+      ],
+      "vertices_native": 8,
+      "triangles_native": 12,
+      "palette": [
+        6169
+      ],
+      "glb_sha256": "5c72e4a98ed90ff3c3f3b932a08f5fd93b8bd2f38154c2e4ef77e0af9fca006b",
+      "model_sha256": "f8212c3c4c11f064a248fbbdfc81ddaa783ff75c7cce7953fc6ff034baf05dfb",
+      "model_bytes": 134
+    },
+    {
+      "name": "ground_spine_stone_dark_0_3",
+      "model_id": 1100692,
+      "object_id": 63692,
+      "footprint": [
+        2,
+        3
+      ],
+      "vertices": 20,
+      "triangles": 36,
+      "bounds": [
+        [
+          -1.0,
+          1.0
+        ],
+        [
+          -1.5,
+          1.5
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        44,
+        96
+      ],
+      "vertices_native": 20,
+      "triangles_native": 36,
+      "palette": [
+        6169
+      ],
+      "glb_sha256": "5b6d38b7e54ea494e2d4b8fb53b1bde6cb805ce99f6bf6ef7057bab3309747d4",
+      "model_sha256": "c232f646c68f0fb656f07c46436225ea62d25537cd4b2d1662ecf11971ae574e",
+      "model_bytes": 343
+    },
+    {
+      "name": "ground_spine_stone_dark_1_0",
+      "model_id": 1100681,
+      "object_id": 63681,
+      "footprint": [
+        4,
+        19
+      ],
+      "vertices": 54,
+      "triangles": 100,
+      "bounds": [
+        [
+          -2.0,
+          2.0
+        ],
+        [
+          -9.5,
+          9.5
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        60,
+        27
+      ],
+      "vertices_native": 54,
+      "triangles_native": 100,
+      "palette": [
+        6169
+      ],
+      "glb_sha256": "95fe9fcef4b39462247d79b327d10266d0464980939bb12d4b8b44347d3fa010",
+      "model_sha256": "87cf0ebd16e51ecc073abf715f3da4b3b88ae7a38177eba20a4dd93c9deb9072",
+      "model_bytes": 902
+    },
+    {
+      "name": "ground_spine_stone_dark_1_1",
+      "model_id": 1100685,
+      "object_id": 63685,
+      "footprint": [
+        15,
+        12
+      ],
+      "vertices": 42,
+      "triangles": 76,
+      "bounds": [
+        [
+          -7.5,
+          7.5
+        ],
+        [
+          -6.0,
+          6.0
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        49,
+        56
+      ],
+      "vertices_native": 42,
+      "triangles_native": 76,
+      "palette": [
+        6169
+      ],
+      "glb_sha256": "6d57f7dcb157aa649cdee2a0acc3b57133cda9ff4ca5c8a6668bac8ff3d09f1b",
+      "model_sha256": "b776e2dc14f07e68412e3bdf9511a3fba5e413e1edb64908e4522aecf576d5d5",
+      "model_bytes": 706
+    },
+    {
+      "name": "ground_spine_stone_dark_1_2",
+      "model_id": 1100689,
+      "object_id": 63689,
+      "footprint": [
+        17,
+        12
+      ],
+      "vertices": 144,
+      "triangles": 276,
+      "bounds": [
+        [
+          -8.5,
+          8.5
+        ],
+        [
+          -6.0,
+          6.0
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        51,
+        68
+      ],
+      "vertices_native": 144,
+      "triangles_native": 276,
+      "palette": [
+        6169,
+        6292
+      ],
+      "glb_sha256": "0b05e5d2f739e5793c50752e77728d086370624701f60c02d3f40c11e5ae0e88",
+      "model_sha256": "7b754a16ec845f63365d83d118d5ac83bbc68e2add66ee591dadf16eff8b6f3b",
+      "model_bytes": 2704
+    },
+    {
+      "name": "ground_spine_stone_dark_1_3",
+      "model_id": 1100693,
+      "object_id": 63693,
+      "footprint": [
+        22,
+        9
+      ],
+      "vertices": 88,
+      "triangles": 168,
+      "bounds": [
+        [
+          -11.0,
+          11.0
+        ],
+        [
+          -4.5,
+          4.5
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        46,
+        94
+      ],
+      "vertices_native": 88,
+      "triangles_native": 168,
+      "palette": [
+        6169
+      ],
+      "glb_sha256": "1e3ee120839447d53f3b1e9d1a93e4b62ecec4df7e515f237659eae7b362b592",
+      "model_sha256": "b39b0349246d1cdc246f34102770670bfcb47d5b8d160cb03d9fed3e1a1e2b04",
+      "model_bytes": 1492
+    },
+    {
+      "name": "ground_spine_stone_dark_2_1",
+      "model_id": 1100686,
+      "object_id": 63686,
+      "footprint": [
+        4,
+        5
+      ],
+      "vertices": 46,
+      "triangles": 88,
+      "bounds": [
+        [
+          -2.0,
+          2.0
+        ],
+        [
+          -2.5,
+          2.5
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        73,
+        53
+      ],
+      "vertices_native": 46,
+      "triangles_native": 88,
+      "palette": [
+        6169
+      ],
+      "glb_sha256": "20cb3aa1ee5abf9e5266e5256cd6ee58bfc46f9334b6009ad22e2974e0c52375",
+      "model_sha256": "31a6a56d724a3a6d356f19891fa37eabece0ea6d1f58d2456ffd317b77b5773e",
+      "model_bytes": 794
+    },
+    {
+      "name": "ground_spine_stone_dark_2_2",
+      "model_id": 1100690,
+      "object_id": 63690,
+      "footprint": [
+        13,
+        6
+      ],
+      "vertices": 64,
+      "triangles": 120,
+      "bounds": [
+        [
+          -6.5,
+          6.5
+        ],
+        [
+          -3.0,
+          3.0
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        68,
+        75
+      ],
+      "vertices_native": 64,
+      "triangles_native": 120,
+      "palette": [
+        6169,
+        6292
+      ],
+      "glb_sha256": "ece42854e860d7250ac774c1d712caac7570080ecc96bda787f851240091a1dd",
+      "model_sha256": "9175f88381d0783ef56b7808f375e142ab691934478b0349bdb46eac8548f91b",
+      "model_bytes": 1092
+    },
+    {
+      "name": "ground_spine_stone_dark_2_3",
+      "model_id": 1100694,
+      "object_id": 63694,
+      "footprint": [
+        15,
+        4
+      ],
+      "vertices": 24,
+      "triangles": 40,
+      "bounds": [
+        [
+          -7.5,
+          7.5
+        ],
+        [
+          -2.0,
+          2.0
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        68,
+        94
+      ],
+      "vertices_native": 24,
+      "triangles_native": 40,
+      "palette": [
+        6169
+      ],
+      "glb_sha256": "dfb73c9cb213dc219e744271918005fb68e6da3a60fac9384814eea96848d5da",
+      "model_sha256": "278f25498051356c2fa047082677f1c368177fe39183adf28ca28d550f299d7f",
+      "model_bytes": 386
+    },
+    {
+      "name": "ground_spine_stone_dark_2_4",
+      "model_id": 1100698,
+      "object_id": 63698,
+      "footprint": [
+        3,
+        4
+      ],
+      "vertices": 30,
+      "triangles": 56,
+      "bounds": [
+        [
+          -1.5,
+          1.5
+        ],
+        [
+          -2.0,
+          2.0
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        69,
+        118
+      ],
+      "vertices_native": 30,
+      "triangles_native": 56,
+      "palette": [
+        6169,
+        6292
+      ],
+      "glb_sha256": "6e74b8b0308c5003a68ca1efd5b64e0f6883fef68a305c3a793c2ea8eb8cb6f0",
+      "model_sha256": "84cfdd757474e281235577afd6ad8b31ed58f6cc1a5eac6ed8a3b1440765e21b",
+      "model_bytes": 517
+    },
+    {
+      "name": "ground_spine_stone_dark_3_2",
+      "model_id": 1100691,
+      "object_id": 63691,
+      "footprint": [
+        3,
+        3
+      ],
+      "vertices": 26,
+      "triangles": 48,
+      "bounds": [
+        [
+          -1.5,
+          1.5
+        ],
+        [
+          -1.5,
+          1.5
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        90,
+        74
+      ],
+      "vertices_native": 26,
+      "triangles_native": 48,
+      "palette": [
+        6169,
+        6292
+      ],
+      "glb_sha256": "02eb4e6fbd73c0720283636e676b9a67f59b0a275ff53b09902652c557cc8e99",
+      "model_sha256": "e943a0865bcb8231093dca5d335ea0589cf450aa579662d43d14a0898d8ad904",
+      "model_bytes": 448
+    },
+    {
+      "name": "ground_vents_stone_dark_1_2",
+      "model_id": 1100497,
+      "object_id": 63497,
+      "footprint": [
+        1,
+        6
+      ],
+      "vertices": 28,
+      "triangles": 52,
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -3.0,
+          3.0
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        67,
+        84
+      ],
+      "vertices_native": 28,
+      "triangles_native": 52,
+      "palette": [
+        6169
+      ],
+      "glb_sha256": "bc6e2ddec56cbb4cc85a3311f18bedf4c1e93cb6ffeb3d80bd60220dbce367a2",
+      "model_sha256": "5a432f82cc52e537625ff098d65b2de8bc3416d15f5077b6995bad7846c3231b",
+      "model_bytes": 475
+    },
+    {
+      "name": "ground_vents_stone_dark_1_3",
+      "model_id": 1100501,
+      "object_id": 63501,
+      "footprint": [
+        1,
+        3
+      ],
+      "vertices": 16,
+      "triangles": 28,
+      "bounds": [
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          -1.5,
+          1.5
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        67,
+        90
+      ],
+      "vertices_native": 16,
+      "triangles_native": 28,
+      "palette": [
+        6169
+      ],
+      "glb_sha256": "2a391c34ef154555359e8b2c1e7e0813fbfd6e1340610427a37d94e63e9f57a4",
+      "model_sha256": "aa5f2177573e4984b97eae1c586e6f70af278c67caddbffdffbf0c68cdda3876",
+      "model_bytes": 271
+    },
+    {
+      "name": "ground_vents_stone_dark_2_2",
+      "model_id": 1100498,
+      "object_id": 63498,
+      "footprint": [
+        17,
+        12
+      ],
+      "vertices": 400,
+      "triangles": 796,
+      "bounds": [
+        [
+          -8.5,
+          8.5
+        ],
+        [
+          -6.0,
+          6.0
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        68,
+        78
+      ],
+      "vertices_native": 400,
+      "triangles_native": 796,
+      "palette": [
+        6169,
+        6292
+      ],
+      "glb_sha256": "8b66dbc9b403bf1c2ae6d257b03273c8c97ca0f1c206089b9512645993ac8056",
+      "model_sha256": "46dbca6af1acc05ef8407a8e6b79e744f765c9c680414d1cdc63c0fd3bc953d0",
+      "model_bytes": 7414
+    },
+    {
+      "name": "ground_vents_stone_dark_2_3",
+      "model_id": 1100502,
+      "object_id": 63502,
+      "footprint": [
+        17,
+        7
+      ],
+      "vertices": 252,
+      "triangles": 500,
+      "bounds": [
+        [
+          -8.5,
+          8.5
+        ],
+        [
+          -3.5,
+          3.5
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        68,
+        90
+      ],
+      "vertices_native": 252,
+      "triangles_native": 500,
+      "palette": [
+        6169
+      ],
+      "glb_sha256": "ed1691a2d01f17531dd59515514cb37e34a7a5cca9ea7ecf91aa85eb755aa636",
+      "model_sha256": "e1a521939a381f4cd7272bb88239ddde6ae0293c9142fddd50ae11a3b6d0ae30",
+      "model_bytes": 4742
+    },
+    {
+      "name": "ground_waterworks_stone_dark_2_1",
+      "model_id": 1100398,
+      "object_id": 63398,
+      "footprint": [
+        15,
+        18
+      ],
+      "vertices": 502,
+      "triangles": 1000,
+      "bounds": [
+        [
+          -7.5,
+          7.5
+        ],
+        [
+          -9.0,
+          9.0
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        75,
+        50
+      ],
+      "vertices_native": 502,
+      "triangles_native": 1000,
+      "palette": [
+        6169
+      ],
+      "glb_sha256": "2e64e9d06a05c2468a886e1e531865bdee45c545271da94639093219c670b297",
+      "model_sha256": "3b1392040600cd6435d2d9ac845b901678c60072e75b9c7315c74dab93f78358",
+      "model_bytes": 9384
+    },
+    {
+      "name": "ground_waterworks_stone_dark_2_2",
+      "model_id": 1100402,
+      "object_id": 63402,
+      "footprint": [
+        15,
+        8
+      ],
+      "vertices": 214,
+      "triangles": 420,
+      "bounds": [
+        [
+          -7.5,
+          7.5
+        ],
+        [
+          -4.0,
+          4.0
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        75,
+        68
+      ],
+      "vertices_native": 214,
+      "triangles_native": 420,
+      "palette": [
+        6169,
+        6292
+      ],
+      "glb_sha256": "1fe24693cc96197de52291aa1cc4fa3f25cd98d95c41d5219f17f75473934f1d",
+      "model_sha256": "676fa9a0defc862e8918bd92951a98060cece9cb5a10a625ad49616a966c1ca8",
+      "model_bytes": 4008
+    },
+    {
+      "name": "ground_waterworks_stone_dark_3_1",
+      "model_id": 1100399,
+      "object_id": 63399,
+      "footprint": [
+        5,
+        17
+      ],
+      "vertices": 180,
+      "triangles": 356,
+      "bounds": [
+        [
+          -2.5,
+          2.5
+        ],
+        [
+          -8.5,
+          8.5
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        90,
+        51
+      ],
+      "vertices_native": 180,
+      "triangles_native": 356,
+      "palette": [
+        6169
+      ],
+      "glb_sha256": "ccd91623eff002de7ebc7abc7e88a579c16902b72a091a66f3f70df327d2d8ca",
+      "model_sha256": "daa1d44c57a8dd4b261e6da05a958b3c1246853871247b9b031a5bbf3f10334c",
+      "model_bytes": 3386
+    },
+    {
+      "name": "ground_waterworks_stone_dark_3_2",
+      "model_id": 1100403,
+      "object_id": 63403,
+      "footprint": [
+        4,
+        7
+      ],
+      "vertices": 60,
+      "triangles": 116,
+      "bounds": [
+        [
+          -2.0,
+          2.0
+        ],
+        [
+          -3.5,
+          3.5
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        90,
+        68
+      ],
+      "vertices_native": 60,
+      "triangles_native": 116,
+      "palette": [
+        6169,
+        6292
+      ],
+      "glb_sha256": "23e29c1c912ad27585ba24692622293ef47695806bdea59d244976531d49f44a",
+      "model_sha256": "53da4747c8353cd1797b02759b5f9d523873ef840a61bc03090f841ce4a47e20",
+      "model_bytes": 1036
+    },
+    {
+      "name": "ground_waterworks_water_2_1",
+      "model_id": 1100422,
+      "object_id": 63422,
+      "footprint": [
+        3,
+        16
+      ],
+      "vertices": 136,
+      "triangles": 268,
+      "bounds": [
+        [
+          -1.5,
+          1.5
+        ],
+        [
+          -8.0,
+          8.0
+        ],
+        [
+          -0.5199999809265137,
+          -0.11999999731779099
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        84,
+        52
+      ],
+      "vertices_native": 136,
+      "triangles_native": 268,
+      "palette": [
+        6169,
+        31139
+      ],
+      "glb_sha256": "4c6f8491a87d943c91ea42dbcb8ce4b91b8a9f5d307eb0cfae25cd5ad6fe242a",
+      "model_sha256": "fb94dd2226f93ae5b5da1b1d01f4020a21119de8a34bfc136c6034956e6b9ab0",
+      "model_bytes": 2466
+    },
+    {
+      "name": "ground_waterworks_water_2_2",
+      "model_id": 1100426,
+      "object_id": 63426,
+      "footprint": [
+        3,
+        8
+      ],
+      "vertices": 72,
+      "triangles": 140,
+      "bounds": [
+        [
+          -1.5,
+          1.5
+        ],
+        [
+          -4.0,
+          4.0
+        ],
+        [
+          -0.5199999809265137,
+          -0.11999999731779099
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        84,
+        68
+      ],
+      "vertices_native": 72,
+      "triangles_native": 140,
+      "palette": [
+        6169,
+        31139
+      ],
+      "glb_sha256": "e69f5f7ac13250a0153550836022a703ea70b242fdc0b40d6b55e74181c89c77",
+      "model_sha256": "86b74e86a16dff82093278da5740b498ea684e4285ce2b970ec5d73bbaefb651",
+      "model_bytes": 1232
+    },
+    {
+      "name": "ground_workshop_stone_dark_0_1",
+      "model_id": 1100300,
+      "object_id": 63300,
+      "footprint": [
+        16,
+        13
+      ],
+      "vertices": 418,
+      "triangles": 832,
+      "bounds": [
+        [
+          -8.0,
+          8.0
+        ],
+        [
+          -6.5,
+          6.5
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        30,
+        55
+      ],
+      "vertices_native": 418,
+      "triangles_native": 832,
+      "palette": [
+        6169
+      ],
+      "glb_sha256": "4effedfd9217f8a3b24c05b429052320509b9f8d68804fad97676c363664e19c",
+      "model_sha256": "fd1a1b656be4713e7be20e213e73b7d96f16fc5bed1fabb896997be6fb058254",
+      "model_bytes": 7756
+    },
+    {
+      "name": "ground_workshop_stone_dark_0_2",
+      "model_id": 1100304,
+      "object_id": 63304,
+      "footprint": [
+        16,
+        9
+      ],
+      "vertices": 320,
+      "triangles": 636,
+      "bounds": [
+        [
+          -8.0,
+          8.0
+        ],
+        [
+          -4.5,
+          4.5
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        30,
+        68
+      ],
+      "vertices_native": 320,
+      "triangles_native": 636,
+      "palette": [
+        6169,
+        6292
+      ],
+      "glb_sha256": "98820f39c6fe24276c337056d39b6932275039a2892b39a10238b3b837fbdfc6",
+      "model_sha256": "b6609c4349b33e23d6a0042b9977ec3542f212f515cbaa23ca89d72bbb7300b5",
+      "model_bytes": 5949
+    },
+    {
+      "name": "ground_workshop_stone_dark_1_1",
+      "model_id": 1100301,
+      "object_id": 63301,
+      "footprint": [
+        7,
+        13
+      ],
+      "vertices": 182,
+      "triangles": 360,
+      "bounds": [
+        [
+          -3.5,
+          3.5
+        ],
+        [
+          -6.5,
+          6.5
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        46,
+        55
+      ],
+      "vertices_native": 182,
+      "triangles_native": 360,
+      "palette": [
+        6169
+      ],
+      "glb_sha256": "8de94e62e4f694fd22e07e77ce7bf95daa0d149aa320e8dd60a37585966671fc",
+      "model_sha256": "0c603167d56f06f29fa3e9de450246754e8a1ebec2cfb32fa2cf19780b1c9958",
+      "model_bytes": 3418
+    },
+    {
+      "name": "ground_workshop_stone_dark_1_2",
+      "model_id": 1100305,
+      "object_id": 63305,
+      "footprint": [
+        6,
+        9
+      ],
+      "vertices": 116,
+      "triangles": 228,
+      "bounds": [
+        [
+          -3.0,
+          3.0
+        ],
+        [
+          -4.5,
+          4.5
+        ],
+        [
+          -0.4000000059604645,
+          0.0
+        ]
+      ],
+      "purpose": "Continuous original ground/water/cavern surface partitioned below native model-radius limit",
+      "reference_analysis_ids": [],
+      "collision_requirement": "Visual datum only; future terrain height/collision authoring required; geology is nonwalkable shoulder",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "world_anchor": [
+        46,
+        68
+      ],
+      "vertices_native": 116,
+      "triangles_native": 228,
+      "palette": [
+        6169
+      ],
+      "glb_sha256": "411711c502f569cc6948d1d189cc1718c5f019e31d4944e6b9880da998924573",
+      "model_sha256": "39940208a3f5a700eccc4edf3598e88425f323b70f5b4954fd3e1d70463bedb9",
+      "model_bytes": 2003
+    }
+  ]
+}
