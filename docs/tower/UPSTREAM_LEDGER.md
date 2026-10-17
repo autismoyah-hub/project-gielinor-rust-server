@@ -29,3 +29,7 @@ Local/remote Tower HEAD both verified as `46ccb7160cf1d1848b0b8d1820c9f2bed2f0ba
 ## 2026-10-17 refreshed read-only Agent2 references
 
 `git ls-remote` confirms agent2/openrune-content remains `521e2e047071a7e7d481ab458829bb88a57b76e2`; workspace-readiness-20261015 is `377b797848c7b87d63fe7cdd690c09b2baf3a6af`. No fetch/merge or other workspace change was performed. The V12 chemistry/Tower migration-number reconciliation remains pending integration. Tower parent before this surface iteration is 43f18e6073b7ed928b7d6b7501ba8b084ac86f0f; client validation remains 2f2aeb088c14328f1497104487d235e156d31797 with the same ten-patch tree.
+
+## 2026-10-17 stone headrace source check
+
+Local/remote Tower parent verified identical at30b3c3aa3385e6353d8c34d2375ae0a5c924721c. Three low bank fixtures and two ordinary-action validation drivers only. Agent2 references last read-only check remain521e2e047071a7e7d481ab458829bb88a57b76e2 /377b797848c7b87d63fe7cdd690c09b2baf3a6af; no merge, branch mutation or workspace access. V12 integration constraint unchanged.

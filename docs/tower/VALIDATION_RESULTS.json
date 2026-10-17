@@ -1,5 +1,5 @@
 {
-  "status": "CurrentDDF bothpaidRun2continuations/normalreconnect/verifiedcurrentcrash/56nativeviews+10combat+12postcrashviews PASS; originalfailures/invalidmixedproof retained; userartisticacceptance/humanpacingpending",
+  "status": "Current635703 headrace affected/native56review/normalrelogin PASS; full combat/crash historicalDDF, fresh first500 historicalEFFA; humanpacing/userartapproval pending",
   "scope": "Cinderworks Floor One on the isolated agent5/tower-development branch; upstream integration is a separate Agent 2 review",
   "server_gameplay_commit": "420729798ffc3b0d31c7aff7497d1841597c2104",
   "client_baseline": "95eed88159b06cebea24559a814a5111b54a59cd",
@@ -2735,5 +2735,14 @@
     "first500_fullpack_scope": "HistoricalEFFA fresh native/headless clears and lifecycle, separately FEEDING_COURTS_FIRST_CLEAR_AND_LIFECYCLE_20261017.json. DDF paid Run2 tests repeat25 only.",
     "human_first_play_pacing": "Unmeasured;617.16/438.50 active continuation seconds exclude failed preparation, live probes and operator pauses.",
     "artistic_status": "User artistic acceptance pending; overall production mandate not complete. Waterworks machinery connection is the next composition study, not an accepted placement."
+  },
+  "water_headrace_validation": {
+    "receipt": "WATER_HEADRACE_VALIDATION_20261017.json",
+    "binary": "63570305063C6732B6A95DCFB04266154ECB177D90BF657821DDE816108ACEDE",
+    "scope": "Three supported low masonry bank edges only. Current affected checks, reconstruction, ordinary relogin and 56 native floor views. Full gauntlet/crash are separately historical DDF evidence; no current635 crash or new first-clear claim.",
+    "affected_both_clients": true,
+    "normal_relogin_both_clients": true,
+    "native56_reviewed": true,
+    "current_crash_rerun": false
   }
 }

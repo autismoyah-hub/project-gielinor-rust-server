@@ -125,6 +125,29 @@ pub struct Fixture {
     pub angle: u8,
 }
 pub const FIXTURES: &[Fixture] = &[
+    // Low fortress masonry retains the headrace's western bank.
+    // It meets the wheel and leaves fishing and coolant approaches open.
+    Fixture {
+        x: 77,
+        z: 55,
+        id: MASONRY[1],
+        shape: 0,
+        angle: 0,
+    },
+    Fixture {
+        x: 77,
+        z: 56,
+        id: MASONRY[1],
+        shape: 0,
+        angle: 0,
+    },
+    Fixture {
+        x: 77,
+        z: 57,
+        id: MASONRY[1],
+        shape: 0,
+        angle: 0,
+    },
     Fixture {
         x: 51,
         z: 53,
