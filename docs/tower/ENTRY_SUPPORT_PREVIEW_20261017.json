@@ -1,0 +1,332 @@
+{
+  "source_parent": "aad1211",
+  "source_change": "One foreground entrance fixture atlocal62,59/world10430,123: full dwarf pillar7017 ->actual low dark broken support17097, shape10rotation0; northern intact7017 atworld10430,126 retained.",
+  "server_binary_sha256": "5BE2E72153221405CBFF7058D8DE88F31DC6A6C8CBF19C77822058AC8994E03C",
+  "native_composition": {
+    "accepted_technical_preview": true,
+    "views_inspected": 8,
+    "actual_scene_front_rear": [
+      17097,
+      7017
+    ],
+    "same_character_before_after_exact_items_equipment_all25XP_journal": true,
+    "renderer_changed": false,
+    "material_choice": "Dark broken base fits surrounding masonry and preserves player visibility; white1866 alternative technically worked but was artistically rejected and remains separate diagnostic evidence."
+  },
+  "cache_definition": {
+    "id": 17097,
+    "width": 1,
+    "length": 1,
+    "ops": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "active": 0,
+    "has_transforms": false,
+    "block_walk": 1,
+    "block_range": true
+  },
+  "tests": {
+    "cache": 24,
+    "server": 57,
+    "world": 407,
+    "existing_ignored": 2,
+    "actual_reachable_tiles": 2100,
+    "legal_lethal_pattern_escapes": 1512
+  },
+  "navigation_status_at_publication": {
+    "native": {
+      "tour": true,
+      "portals": true,
+      "scene": true
+    },
+    "headless": {
+      "tour": true,
+      "portals": true,
+      "scene": true
+    }
+  },
+  "native_original_frame_hashes": {
+    "entry-support-before": [
+      {
+        "area": "sanctuary threshold approach",
+        "position": [
+          0,
+          10430,
+          124
+        ],
+        "yaw": 0,
+        "sequence": 54,
+        "sha256": "2d046b66d85d70cba3b4d40f66bd4e99d6771cc856d04b397c3206223e3cea54"
+      },
+      {
+        "area": "sanctuary threshold approach",
+        "position": [
+          0,
+          10430,
+          124
+        ],
+        "yaw": 4096,
+        "sequence": 56,
+        "sha256": "261e57680461ef8acbeb136ef8bfde0caa9b14f24f3cea5e33b5530481e2594c"
+      },
+      {
+        "area": "sanctuary threshold approach",
+        "position": [
+          0,
+          10430,
+          124
+        ],
+        "yaw": 8192,
+        "sequence": 58,
+        "sha256": "e150c5b3440624f6264e91b3828b706c9e331dbb45c6324ed455d70b42bd316c"
+      },
+      {
+        "area": "sanctuary threshold approach",
+        "position": [
+          0,
+          10430,
+          124
+        ],
+        "yaw": 12288,
+        "sequence": 60,
+        "sha256": "c6bd85475afb7a593df8d32fe95566ea2f267fc36bd8ea997576238289a78dfd"
+      },
+      {
+        "area": "portal approach",
+        "position": [
+          0,
+          10431,
+          124
+        ],
+        "yaw": 0,
+        "sequence": 75,
+        "sha256": "f469bcd4be9b7fbff9189ca9759c50717459a5d41b6e74579a52378c33015b7a"
+      },
+      {
+        "area": "portal approach",
+        "position": [
+          0,
+          10431,
+          124
+        ],
+        "yaw": 4096,
+        "sequence": 77,
+        "sha256": "94eb2dd10fe8f1288523587de2150d0fbb005d4e5cc600fe64f39510ced988f0"
+      },
+      {
+        "area": "portal approach",
+        "position": [
+          0,
+          10431,
+          124
+        ],
+        "yaw": 8192,
+        "sequence": 79,
+        "sha256": "c5ed5108d558e7f2fa2e233c64cd63fbc60cdad43bc39f3dfcc41e273b6539a4"
+      },
+      {
+        "area": "portal approach",
+        "position": [
+          0,
+          10431,
+          124
+        ],
+        "yaw": 12288,
+        "sequence": 81,
+        "sha256": "36647cf17b60f4f13d1123dc461ca052c6951f3079e704674f3623a73b8d3a6a"
+      }
+    ],
+    "entry-support-broken": [
+      {
+        "area": "sanctuary threshold approach",
+        "position": [
+          0,
+          10430,
+          124
+        ],
+        "yaw": 0,
+        "sequence": 38,
+        "sha256": "aeebd11024e28fe666a71948e36660546f4040ce7689de0e970e75c711994e7a"
+      },
+      {
+        "area": "sanctuary threshold approach",
+        "position": [
+          0,
+          10430,
+          124
+        ],
+        "yaw": 4096,
+        "sequence": 40,
+        "sha256": "3efb35bd519a267ffdb9ed7ed3ee12cecb5948a5aeb99fc20f388b0f6eedcc96"
+      },
+      {
+        "area": "sanctuary threshold approach",
+        "position": [
+          0,
+          10430,
+          124
+        ],
+        "yaw": 8192,
+        "sequence": 42,
+        "sha256": "353b65fa1ff5f5a598613e90e19309b961dc5f9c268f0d5511a96e2f293c49ff"
+      },
+      {
+        "area": "sanctuary threshold approach",
+        "position": [
+          0,
+          10430,
+          124
+        ],
+        "yaw": 12288,
+        "sequence": 44,
+        "sha256": "f292be3c3c55979e0bf6282c1af5d3ec20b832b8fe4b8ce2d8722140db439ee0"
+      },
+      {
+        "area": "portal approach",
+        "position": [
+          0,
+          10431,
+          124
+        ],
+        "yaw": 0,
+        "sequence": 58,
+        "sha256": "f62b36d35b42376eb486bbbeb3152676ab3bc8eb037e4420401ee11638712e43"
+      },
+      {
+        "area": "portal approach",
+        "position": [
+          0,
+          10431,
+          124
+        ],
+        "yaw": 4096,
+        "sequence": 60,
+        "sha256": "1b922733708f04a3e56761780adb7c9cf47e1d9e7a0e3bfe8726f22f2398e31b"
+      },
+      {
+        "area": "portal approach",
+        "position": [
+          0,
+          10431,
+          124
+        ],
+        "yaw": 8192,
+        "sequence": 62,
+        "sha256": "6ad4bc64f063655c3098e608bcea8d1ef81b2cf006c083e7984e86d37cb68fd2"
+      },
+      {
+        "area": "portal approach",
+        "position": [
+          0,
+          10431,
+          124
+        ],
+        "yaw": 12288,
+        "sequence": 64,
+        "sha256": "5b6eead8d38ad4c00de60c4c546632c539c719b44b875715d28ce0897e611312"
+      }
+    ],
+    "entry-support-dark": [
+      {
+        "area": "sanctuary threshold approach",
+        "position": [
+          0,
+          10430,
+          124
+        ],
+        "yaw": 0,
+        "sequence": 37,
+        "sha256": "68155cd7caf727e21fcc17a10f0550afc51865f40dab526f400125ad86c939f6"
+      },
+      {
+        "area": "sanctuary threshold approach",
+        "position": [
+          0,
+          10430,
+          124
+        ],
+        "yaw": 4096,
+        "sequence": 39,
+        "sha256": "fef61ce8e9c52bda52e70e973f0f8bcdf23e4febdfda9ba6d0acbb202fd994d6"
+      },
+      {
+        "area": "sanctuary threshold approach",
+        "position": [
+          0,
+          10430,
+          124
+        ],
+        "yaw": 8192,
+        "sequence": 41,
+        "sha256": "b967cf2159fa87017a267fe2b9b14c9c39d66b20aafba838901067db55de1a26"
+      },
+      {
+        "area": "sanctuary threshold approach",
+        "position": [
+          0,
+          10430,
+          124
+        ],
+        "yaw": 12288,
+        "sequence": 43,
+        "sha256": "591fd1a8f4aab0e87abb4b83da628a528dfef937420c5c1f81d8882199e82a93"
+      },
+      {
+        "area": "portal approach",
+        "position": [
+          0,
+          10431,
+          124
+        ],
+        "yaw": 0,
+        "sequence": 58,
+        "sha256": "ef4b710f76ddcdd54a9e0f9cf90777b3d8955e9b7fe02d768e087e5d127dfcc4"
+      },
+      {
+        "area": "portal approach",
+        "position": [
+          0,
+          10431,
+          124
+        ],
+        "yaw": 4096,
+        "sequence": 60,
+        "sha256": "09cda3b747edd1d0bb11f416924310243739cb57e3d56b4a178a568637160ec0"
+      },
+      {
+        "area": "portal approach",
+        "position": [
+          0,
+          10431,
+          124
+        ],
+        "yaw": 8192,
+        "sequence": 62,
+        "sha256": "b826cc60bcb0dbb82a97dcb0ad381af4d1a3fa3ac41659e9b7fa222b58260e4e"
+      },
+      {
+        "area": "portal approach",
+        "position": [
+          0,
+          10431,
+          124
+        ],
+        "yaw": 12288,
+        "sequence": 64,
+        "sha256": "87d6bf8b11ce84008cf81924d7ba966833c75f639ee280e34ae619b82107648e"
+      }
+    ]
+  },
+  "predecessor": "F45E497F8E5821B0 engine09bf492 has accepted fresh native21/headless23 firstclears/fullpackfirst500/reconnects, native+headlessreplays/exactcrash/all56views; receipts publishedaad1211. Do not transfer those full results to this one-fixture build.",
+  "pending": [
+    "current dark-entry full native replay",
+    "current dark-entry full headless replay",
+    "current new-build lifecycle regression as affected",
+    "human first-play pacing",
+    "user artistic acceptance"
+  ]
+}

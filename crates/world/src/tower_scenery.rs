@@ -153,10 +153,12 @@ pub const FIXTURES: &[Fixture] = &[
         shape: 10,
         angle: 0,
     },
+    // A real collapsed foreground support frames the threshold without
+    // hiding the approaching player behind the intact dwarf pillar model.
     Fixture {
         x: 62,
         z: 59,
-        id: 7017,
+        id: 17097,
         shape: 10,
         angle: 0,
     },
