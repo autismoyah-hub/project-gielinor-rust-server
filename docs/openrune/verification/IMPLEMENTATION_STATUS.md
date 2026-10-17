@@ -43,3 +43,9 @@ Throughput:19historical contracts plus4new gameplay units;23queue units. Invento
 Common ordinary food gameplay now uses exact selected-slot transactions and safely permits eating above baseHP without extra healing/no-op update. Source0132d0737f7bcbab7f2387dc3151f238a055922d;66server426worldPASS/1existingignored. First malformed-fixture failure and final-source evidence retained. Legacy reference API/tests and configured multipart profiles preserved. Independent V0-V4 queued.
 
 Throughput:19historical contracts plus5new gameplay/shared safety units;24queue units. Inventory16partially contracted eligible source files/tables,656configuration records,2836not-yet-assessed. Full remaining food stages/special effects, earlier content backfill and eligible-module reconciliation continue. No independent finding delivered to FORGE this session.
+
+## Checkpoint OR-MIG-0025 and OR-MIG-0024revision2
+
+Sourcea560034a59e766d1faf400b61187fec861d13475 registers15additional chocolate-cake/topped-pizza/pie stages and preserves claimedIDs for all ordinary held Eat packets. OR-MIG-0024revision2 appends a link to revision1/0132d0737f7bcbab7f2387dc3151f238a055922d; earlier evidence/history is unchanged. OR-MIG-0025 explicitly follows Wiki healing where donor raw pizza values disagree. Focused3server12worldPASS;397hashes unchanged;16target cache definitionsPASS. All independent levels remain queued.
+
+Throughput:19historical contracts plus6new gameplay/shared units;25units/26append-only records. Inventory17partially contracted eligible source files/tables,656configuration records,2835not-yet-assessed. No complete eligible-module denominator or broad migration completion claim. Earlier content backfill, full source reconciliation and remaining gameplay obligations continue.
