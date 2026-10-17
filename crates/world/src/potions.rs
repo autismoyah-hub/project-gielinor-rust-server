@@ -243,6 +243,13 @@ pub fn catalog() -> Vec<Dose> {
                 .collect(),
         );
     }
+    for (name,symbols,skill,constant,percent) in [
+        ("bastion potion",["4dosebastion","3dosebastion","2dosebastion","1dosebastion"],"ranged",4,10),
+        ("battlemage potion",["4dosebattlemage","3dosebattlemage","2dosebattlemage","1dosebattlemage"],"magic",4,0),
+    ] {
+        chain(name,symbols,vec![Effect::Boost{skill,constant,percent},
+            Effect::Boost{skill:"defence",constant:5,percent:15}]);
+    }
     // Wiki-pinned Saradomin behavior; offensive drains deliberately floor at0.
     let mut saradomin=vec![Effect::HitpointsBoost{constant:2,percent:15},
         Effect::Boost{skill:"defence",constant:2,percent:20}];
@@ -560,6 +567,23 @@ mod tests {
             sip: "sip".into(),
             remaining: "remaining".into(),
             effects,
+        }
+    }
+    #[test]
+    fn compound_potion_catalog_drinks_all_doses_without_stacking_or_extra_stats() {
+        let doses:Vec<_>=catalog().into_iter().filter(|d|matches!(d.name,"bastion potion"|"battlemage potion")).collect();assert_eq!(doses.len(),8);
+        for d in doses {
+            let (skill,percent) = if d.name=="bastion potion"{(4,10)}else{(6,0)};
+            assert_eq!(d.effects,vec![Effect::Boost{skill:if skill==4{"ranged"}else{"magic"},constant:4,percent},Effect::Boost{skill:"defence",constant:5,percent:15}]);
+            if d.left==0{assert_eq!(d.next,EMPTY_VIAL);}
+            for (current,expected) in [(50,if skill==4{63}else{54}),(99,if skill==4{112}else{103}),(120,120)] {
+                let mut inv=Inventory::new(2,StackType::Normal,false);inv.restore_slot(0,Some(Item{id:1,count:1,vars:0})).unwrap();inv.restore_slot(1,Some(Item{id:1,count:1,vars:0})).unwrap();
+                let mut stats=Stats::default();stats.set_base(skill,99);stats.set_current(skill,current);stats.set_base(1,99);stats.set_current(1,99);let before=stats.clone();let mut energy=6000;
+                let mut p=potion(vec![ResolvedEffect::Boost{skill,constant:4,percent},ResolvedEffect::Boost{skill:1,constant:5,percent:15}]);p.next=if d.left==0{3}else{2};
+                consume_slot(&p,1,false,&mut inv,&mut stats,&mut energy,&Catalog::default(),829,|_|{}).unwrap();
+                assert_eq!(stats.current(skill),expected);assert_eq!(stats.current(1),118);assert_eq!(inv.get(0).unwrap().id,1);assert_eq!(inv.get(1).unwrap().id,p.next);assert_eq!(energy,6000);
+                for id in 0..25 {assert_eq!(stats.fine_xp(id),before.fine_xp(id));if id!=1 && id!=skill{assert_eq!(stats.current(id),before.current(id));}}
+            }
         }
     }
     #[test]
