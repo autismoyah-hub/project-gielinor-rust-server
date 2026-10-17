@@ -79,3 +79,9 @@ Throughput:23historical contracts plus9new gameplay/shared units;32units/33appen
 Sourceae3d234c71764dd2364f8452fc1974a54a6783f0 registers14bites across7skill-boost pie families and stages shared secondary boosts with food/HP. Effective member-food definitions gate actual Eat using trusted account membership.71server429worldPASS/1existingignored;397hashes unchanged;15target item definitions/7stat symbolsPASS. Shared food contract revision3 links revision2/a560034a59e766d1faf400b61187fec861d13475 without overwriting evidence. Dragonfruit dish return follows Wiki over omitted donor stage. All independent levels queued.
 
 Throughput:23historical contracts plus10new gameplay/shared units;33units/35append-only records. Inventory23partially contracted eligible source files/tables,656configuration records,2829not-yet-assessed. Full remaining food/creation/cooking/skills/source reconciliation and earlier backfill remain incomplete.
+
+## Checkpoint OR-MIG-0034
+
+Source97b25c57d4c6dc0606adf91dd00e41ec43600a27 registers Summerwhole/half andpapaya with shared food/boost/energy preparation and existing run-energy projection.72server430worldPASS/1existingignored;397hashes unchanged;4target definitionsPASS. Exact consumption energy is separated from passive recovery;invalid later effects cannot award energy. Summerdish return follows Wiki. Independent V0-V4 queued.
+
+Throughput:23historical contracts plus11new gameplay/shared units;34units/36append-only records. Inventory24partially contracted eligible source files/tables,656configuration records,2828not-yet-assessed. Remaining source reconciliation,content/creation/cooking/skills and prior backfill continue;no complete migration claim.
