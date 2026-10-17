@@ -347,9 +347,10 @@ pub fn configure<B: AccountBackend>(
     runtime.configure_equipment(held, worn, n("param"))?;
     let mut foods =
         crate::content::foods(n("obj"), &runtime.definitions).map_err(io::Error::other)?;
-    let slot_preserving_foods =
+    let mut slot_preserving_foods =
         crate::content::wiki_multipart_foods(n("obj"), &runtime.definitions, &mut foods)
             .map_err(io::Error::other)?;
+    slot_preserving_foods.extend(crate::content::additional_multipart_foods(n("obj"),&runtime.definitions,&mut foods).map_err(io::Error::other)?);
     runtime.configure_foods(held, foods, names.short("seq", "human_eat")?)?;
     runtime.world.slot_preserving_foods = slot_preserving_foods;
     runtime.configure_potions(n("obj"), n("stat"))?;

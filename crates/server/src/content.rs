@@ -180,8 +180,6 @@ pub fn wiki_multipart_foods(
     defs: &Definitions,
     foods: &mut BTreeMap<i32, Edible>,
 ) -> Result<std::collections::BTreeSet<i32>, String> {
-    let mut next = foods.clone();
-    let mut selected = std::collections::BTreeSet::new();
     let rows = [
         ("cake", Some("partial_cake"), 4),
         ("partial_cake", Some("cake_slice"), 4),
@@ -189,13 +187,36 @@ pub fn wiki_multipart_foods(
         ("plain_pizza", Some("half_plain_pizza"), 7),
         ("half_plain_pizza", None, 7),
     ];
-    for (symbol, replacement, heal) in rows {
+    apply_multipart_foods(symbols,defs,foods,&rows)
+}
+
+/// Independently Wiki-pinned remaining ordinary multipart profiles. Existing
+/// GR-24 cake/plain-pizza registration remains a separate caller.
+pub fn additional_multipart_foods(symbols:&Symbols,defs:&Definitions,foods:&mut BTreeMap<i32,Edible>)->Result<std::collections::BTreeSet<i32>,String>{
+    apply_multipart_foods(symbols,defs,foods,&[
+        ("chocolate_cake",Some("partial_chocolate_cake"),5),
+        ("partial_chocolate_cake",Some("chocolate_slice"),5),
+        ("chocolate_slice",None,5),
+        ("meat_pizza",Some("half_meat_pizza"),8),("half_meat_pizza",None,8),
+        ("anchovie_pizza",Some("half_anchovie_pizza"),9),("half_anchovie_pizza",None,9),
+        ("pineapple_pizza",Some("half_pineapple_pizza"),11),("half_pineapple_pizza",None,11),
+        ("redberry_pie",Some("half_a_redberry_pie"),5),("half_a_redberry_pie",Some("piedish"),5),
+        ("meat_pie",Some("half_a_meat_pie"),6),("half_a_meat_pie",Some("piedish"),6),
+        ("apple_pie",Some("half_an_apple_pie"),7),("half_an_apple_pie",Some("piedish"),7),
+    ])
+}
+fn apply_multipart_foods(symbols:&Symbols,defs:&Definitions,foods:&mut BTreeMap<i32,Edible>,rows:&[(&str,Option<&str>,i32)])->Result<std::collections::BTreeSet<i32>,String>{
+    let mut next = foods.clone();
+    let mut selected = std::collections::BTreeSet::new();
+
+    for &(symbol, replacement, heal) in rows {
         let id = *symbols.get(symbol).ok_or("Missing multipart food symbol")?;
         let item = u32::try_from(id)
             .ok()
             .and_then(|id| defs.items.get(&id))
             .ok_or("Missing multipart food definition")?;
         if item.stackable
+            || item.transform.template != 0
             || item.dummy == 1
             || item.cert.template != 0
             || item.placeholder.template != 0
@@ -217,8 +238,35 @@ pub fn wiki_multipart_foods(
             })
             .transpose()?;
     }
+    for food in next.values().filter(|f|selected.contains(&f.id)) {
+        if let Some(id)=food.replacement {
+            let item=u32::try_from(id).ok().and_then(|id|defs.items.get(&id)).ok_or("Missing multipart output definition")?;
+            if id==food.id || item.stackable || item.dummy==1 || item.cert.template!=0 || item.placeholder.template!=0 || item.transform.template!=0 {return Err("Invalid multipart output definition".into());}
+        }
+    }
     *foods = next;
     Ok(selected)
+}
+
+#[cfg(test)]
+mod additional_multipart_tests {
+    use super::*;
+    fn fixture()->(Symbols,Definitions,BTreeMap<i32,Edible>){
+        let rows=[("chocolate_cake",1897),("partial_chocolate_cake",1899),("chocolate_slice",1901),("meat_pizza",2293),("half_meat_pizza",2295),("anchovie_pizza",2297),("half_anchovie_pizza",2299),("pineapple_pizza",2301),("half_pineapple_pizza",2303),("redberry_pie",2325),("half_a_redberry_pie",2333),("meat_pie",2327),("half_a_meat_pie",2331),("apple_pie",2323),("half_an_apple_pie",2335),("piedish",2313)];
+        let mut defs=Definitions{inventories:Default::default(),locations:Default::default(),npcs:Default::default(),items:Default::default(),varbits:Default::default(),varps:Default::default(),stats:Default::default()};let mut symbols=Symbols::new();let mut foods=BTreeMap::new();
+        for (name,id) in rows{symbols.insert(name.into(),id);let mut item=gielinor_cache::definitions::ItemType::decode(&[0]).unwrap();if name!="piedish"{item.inventory_ops[0]=Some("Eat".into());foods.insert(id,Edible{id,heal:1,delay:3,replacement:None,message:"Fixture".into()});}defs.items.insert(id as u32,item);}
+        (symbols,defs,foods)
+    }
+    #[test]
+    fn additional_food_stages_bind_wiki_healing_and_last_pie_dishes_atomically(){
+        let (symbols,defs,mut foods)=fixture();assert_eq!(additional_multipart_foods(&symbols,&defs,&mut foods).unwrap().len(),15);
+        for (chain,heal) in [(vec![1897,1899,1901],5),(vec![2293,2295],8),(vec![2297,2299],9),(vec![2301,2303],11),(vec![2325,2333,2313],5),(vec![2327,2331,2313],6),(vec![2323,2335,2313],7)]{
+            let mut inv=gielinor_world::inventory::Inventory::new(2,gielinor_world::inventory::StackType::Normal,false);for slot in 0..2{inv.restore_slot(slot,Some(gielinor_world::inventory::Item{id:chain[0],count:1,vars:0})).unwrap();}let mut stats=gielinor_world::stats::Stats::default();stats.set_base(3,99);stats.set_current(3,1);let mut bites=0;
+            for (i,id) in chain.iter().copied().filter(|id|*id!=2313).enumerate(){let f=&foods[&id];assert_eq!(f.heal,heal);assert_eq!(f.replacement,chain.get(i+1).copied());assert!(gielinor_world::food::eat_slot(f,1,&mut inv,&mut stats,&Default::default(),3,829,|_|{}).unwrap());bites+=1;assert_eq!(inv.get(1).map(|i|i.id),f.replacement);assert_eq!(inv.get(0).unwrap().id,chain[0]);assert_eq!(stats.fine_xp(3),0);}
+            assert_eq!(stats.current(3),1+heal as i8*bites);
+        }
+        for mode in 0..5{let (symbols,mut defs,mut foods)=fixture();match mode{0=>{defs.items.remove(&2313);},1=>{defs.items.get_mut(&2313).unwrap().cert.template=799;},2=>{defs.items.get_mut(&2335).unwrap().inventory_ops[0]=None;},3=>{defs.items.get_mut(&1901).unwrap().stackable=true;},_=>{defs.items.get_mut(&2313).unwrap().transform.template=1;}}assert!(additional_multipart_foods(&symbols,&defs,&mut foods).is_err());assert!(foods.values().all(|f|f.heal==1 && f.replacement.is_none()));}
+    }
 }
 
 #[cfg(test)]

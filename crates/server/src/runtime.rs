@@ -2462,12 +2462,12 @@ impl<B: AccountBackend> Runtime<B> {
                                                 if button.op == 2
                                                     && (self
                                                         .world
-                                                        .slot_preserving_foods
-                                                        .contains(&item.id)
+                                                        .foods
+                                                        .contains_key(&item.id)
                                                         || self
                                                             .world
-                                                            .slot_preserving_foods
-                                                            .contains(&button.object))
+                                                            .foods
+                                                            .contains_key(&button.object))
                                                 {
                                                     return Some(Action::EatItemSlot {
                                                         slot,
