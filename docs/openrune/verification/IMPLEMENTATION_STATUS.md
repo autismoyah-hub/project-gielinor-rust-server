@@ -55,3 +55,9 @@ Throughput:19historical contracts plus6new gameplay/shared units;25units/26appen
 Source5b47d7fe42703ade7b97e10636c53abb35bd6e0e registers ten missing ordinary food healing profiles through actual startup and existing selected-slot dispatch. Focused4server12worldPASS;397hashes unchanged;10target definitionsPASS. All ten donor rows and Wiki values checked,including Caviar5. Cosmetic Onion/Ugthanki messages are explicit remaining obligations. Independent V0-V4 queued.
 
 Throughput:19historical contracts plus7new gameplay/shared units;26units/27append-only records. Inventory remains17partially contracted eligible source files/tables,656configuration records,2835not-yet-assessed. Full remaining source/module reconciliation, prior-batch backfill and gameplay behavior remain incomplete.
+
+## Historical foundation backfill OR-MIG-0027..0029
+
+Added exact-SHA scoped contracts for four-vessel water filling f1f0032d54405e6509a6250a94368531df78bb18,ordinary dairy harvesting/packed approach231f33710596f8a9b4159f332e0e99a26d182b14,and nine dough choices d8978ede56778fc7821fbb85fa0617d5b8f0c683. Existing tests/native/archive/failure evidence preserved; no completed build/native work repeated. Well cups remain outside selected four-vessel policy; dough lossless capacity refusal/return completeness and milk variant/quest limits explicit. V0-V4 acceptance queued independently.
+
+Throughput:22historical contracts plus7new gameplay/shared units;29units/30append-only records. Inventory20partially contracted eligible source files/tables,656configuration records,2832not-yet-assessed. No full eligible-module denominator or migration-completion claim. Remaining source reconciliation/content implementation and historical backfill continue.
