@@ -31,3 +31,9 @@ Saradomin brew source cf75fa343a0fc86c50f4451a22600cc10a0ee500: four registered 
 Backfilled historical smithing c8b9aef260db3101dafb2b591ebbdfa4add69f5b as OR-MIG-0021 using its existing compile/test evidence and actual queue/registration paths; no completed build/native work repeated. Scope is queued live requirements and ordinary iron outcome safety, not full smithing parity. All independent levels remain queued.
 
 Throughput:18historical contracts plus3new implementation units;21queue units. Inventory14partially contracted eligible source files/tables,656configuration records,2838not-yet-assessed. Remaining prior-batch backfill and eligible-gameplay reconciliation continue. No PROVING GROUND findings received.
+
+## Checkpoints OR-MIG-0022 and historical OR-MIG-0023
+
+Ordinary Bastion/Battlemage source71fa140f48a1860c90b294344ddb3bdcde2e8781:8registered doses reuse shared boosts and selected-slot atomic dispatch. Focused4server44worldPASS;397source hashes unchanged. Historical17profile pack adapter caefcf424869d2a54d711acd22a279351f098be0 backfilled with actual registration, transaction and repeat boundaries. Preserved native/same-save history is not independent acceptance.
+
+Throughput:19historical contracts plus4new gameplay units;23queue units. Inventory15partially contracted eligible source files/tables,656configuration records,2837not-yet-assessed. No completion percentage or complete eligible-module denominator claimed. Earlier content backfill and remaining gameplay obligations continue; no independent finding delivered to FORGE in this session.
