@@ -1,0 +1,17 @@
+{
+  "accepted": true,
+  "method": "Two ordinary owned players in same real server; helper attacks a visible chicken as fresh player approaches, withdraws normally after real ownership denial; no grant, save edit, immunity, ownership change or timer change.",
+  "claimed_target": {
+    "index": 599,
+    "id": 1173,
+    "x": 10432,
+    "z": 111
+  },
+  "fresh_denial": {
+    "uid": 61,
+    "cycle": 9263,
+    "text": "Someone else is fighting that."
+  },
+  "fresh_controller_selected_another_visible_creature": true,
+  "original_failed_headless22": "retained failed; this is an independent live contention probe on fresh23"
+}

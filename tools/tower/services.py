@@ -137,11 +137,28 @@ def altar():
     cow = min((n for n in s['npcs'] if n['id'] == 1173), key=lambda n: abs(n['x'] - 10437) + abs(n['z'] - 106))
     index = cow['index']
     last = (cow['x'], cow['z'])
+    contested = set()
+    denial_uid = max((e['uid'] for e in s['message_events']), default=-1)
     g.act(f'npc {index} 2')
     end = time.monotonic() + 120
     eat_at = 0
     while time.monotonic() < end:
         s = g.observe()
+        if any(e['uid'] > denial_uid and 'Someone else is fighting that.' in e['text'] for e in s['message_events']):
+            # Respect the real single-combat claim. Walk clear, then select a
+            # different visible creature; never wait on a stale claimed intent.
+            contested.add(index)
+            s = walk(10437, 105)
+            candidates = [n for n in s['npcs'] if n['id'] == 1173 and n['index'] not in contested]
+            if not candidates:
+                raise RuntimeError('No other visible creature is available; ownership remains enforced')
+            cow = min(candidates, key=lambda n: abs(n['x'] - 10437) + abs(n['z'] - 105))
+            index = cow['index']
+            last = (cow['x'], cow['z'])
+            denial_uid = max((e['uid'] for e in s['message_events']), default=-1)
+            g.act(f'npc {index} 2')
+            print('Contested creature respected; selected another visible creature', index, flush=True)
+            continue
         cow = next((n for n in s['npcs'] if n['index'] == index and n['id'] == 1173), None)
         if cow:
             last = (cow['x'], cow['z'])
@@ -167,6 +184,7 @@ def altar():
             raise RuntimeError('Creature combat failed')
         time.sleep(0.2)
     else:
+        walk(10424, 120)
         raise TimeoutError('Creature did not yield observable bones')
     s = g.wait(lambda state:any(i['id']==526 and i['widget'] is not None for i in state['items']),40)
     bone = next((i for i in s['items'] if i['id'] == 526 and i['widget'] is not None))

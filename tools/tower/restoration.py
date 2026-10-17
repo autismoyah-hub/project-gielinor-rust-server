@@ -29,7 +29,11 @@ while True:
 frames=[]
 if a.native_frames:
     g.interface(35913794);g.interface(41222162)
-    g.wait(lambda s:s['ready'] and 'Cinderworks' in s['journal'],30)
+    settled=g.wait(lambda s:s['ready'] and 'Cinderworks' in s['journal'],30)
+    # Observation text can be cached while the newly opened journal redraws.
+    # Let real game ticks settle the native UI before recording its pixels.
+    tick=settled['tick']
+    g.wait(lambda s:s['ready'] and s['tick']>tick+2 and 'Cinderworks' in s['journal'],10)
     shot=g.act('capture');frame=a.directory/f"frame-{shot['sequence']}.bmp"
     end=time.monotonic()+10
     while not frame.exists():

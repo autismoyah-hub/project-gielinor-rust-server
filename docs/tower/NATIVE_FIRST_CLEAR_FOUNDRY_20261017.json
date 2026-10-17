@@ -1,0 +1,211 @@
+{
+  "source_engine": "09bf492 / F45E497F8E5821B0 binary",
+  "fresh_native": true,
+  "accepted": true,
+  "timing": {
+    "accepted": true,
+    "source": "09bf492 eight-landmark foundry banks; F45E497F8E5821B0 server",
+    "method": "continuous normal-action native fresh first clear; real preparation/rescue; not human pacing guarantee",
+    "elapsed_seconds": 850.68,
+    "steps": [
+      {
+        "step": "services.py",
+        "arguments": [
+          "--onboard",
+          "--gate-check",
+          "--order",
+          "workshop-first",
+          "--scene-checks",
+          "--landmarks",
+          "8",
+          "--coolant-lesson",
+          "--native-frames"
+        ],
+        "seconds": 303.56,
+        "exit_code": 0
+      },
+      {
+        "step": "recovery.py",
+        "arguments": [],
+        "seconds": 40.08,
+        "exit_code": 0
+      },
+      {
+        "step": "guardian.py",
+        "arguments": [
+          "imp",
+          "--style",
+          "accurate",
+          "--native-frames",
+          "--label",
+          "first-foundry"
+        ],
+        "seconds": 121.98,
+        "exit_code": 0
+      },
+      {
+        "step": "guardian.py",
+        "arguments": [
+          "warden",
+          "--style",
+          "accurate",
+          "--require-coolant",
+          "--native-frames",
+          "--timeout",
+          "600",
+          "--label",
+          "first-foundry"
+        ],
+        "seconds": 325.05,
+        "exit_code": 0
+      },
+      {
+        "step": "restoration.py",
+        "arguments": [
+          "--label",
+          "victory",
+          "--expected",
+          "18526,18511,16811,16811,16810,18525,18525,18525",
+          "--native-frames"
+        ],
+        "seconds": 2.34,
+        "exit_code": 0
+      },
+      {
+        "step": "claim.py",
+        "arguments": [
+          "--full-pack",
+          "--native-frames"
+        ],
+        "seconds": 45.01,
+        "exit_code": 0
+      },
+      {
+        "step": "exit_return.py",
+        "arguments": [],
+        "seconds": 12.65,
+        "exit_code": 0
+      }
+    ]
+  },
+  "warden_phases": [
+    2,
+    3
+  ],
+  "required_coolant_uid": [
+    73
+  ],
+  "warden_end_hp": 11,
+  "remaining_normally_gathered_shrimp": 18,
+  "first_reward": {
+    "coins": 500,
+    "beer": 1,
+    "full_pack_partial_payment": 0,
+    "duplicate": 0,
+    "read_only_database_run": [
+      1,
+      7,
+      11,
+      1
+    ]
+  },
+  "normal_reconnect": {
+    "exact_items_equipment_all25XP_journal": true,
+    "all_eight_actual_landmarks": true
+  },
+  "inspected_native_combat_frames": 10,
+  "frames": [
+    {
+      "stage": "imp",
+      "sequence": 1215,
+      "sha256": "597f9dfeca816f50ea7989c4b8bbf858248eca0262cf9df5199be2a6663e76d4"
+    },
+    {
+      "stage": "imp",
+      "sequence": 1347,
+      "sha256": "c806790de3fc1a8df34d50db5d03f5e689a1779855a9c8157f51cda4c0618d70"
+    },
+    {
+      "stage": "imp",
+      "sequence": 1513,
+      "sha256": "43947189b9adbd0bf1b0f240febefce7353fbb5dfcd46ec11fcb9654cd9b7f22"
+    },
+    {
+      "stage": "imp",
+      "sequence": 1559,
+      "sha256": "b97cd30e4dca5b06bdedae41f6cf3cbb141ce22c911865a3a905f8cf5e92954c"
+    },
+    {
+      "stage": "warden",
+      "sequence": 1600,
+      "sha256": "52f6eb33b38e278ada42dded5da387f4c06766c5c22b099d9ab4be9d0191d9df"
+    },
+    {
+      "stage": "warden",
+      "sequence": 1604,
+      "sha256": "5bece0259c5cce99bbf7ca5b0c15af80296e211c6394e49dc2e42397cfb9b7da"
+    },
+    {
+      "stage": "warden",
+      "sequence": 1978,
+      "sha256": "6c784513cbd05deb6e761ef69e12c957b47adccf035c1c470ed9c52703dfb5c8"
+    },
+    {
+      "stage": "warden",
+      "sequence": 2367,
+      "sha256": "98bae21527d81a0cf7ab1ca2321ad5fa6f40330c65639be14a39e58125304b8a"
+    },
+    {
+      "stage": "warden",
+      "sequence": 2640,
+      "sha256": "c984af97c5a7877556d298db801dc067bb86078fde6b6707b612b69bb1289e9f"
+    },
+    {
+      "stage": "warden",
+      "sequence": 2657,
+      "sha256": "a68909add4c3b68135ffaa8574584cae32363270ab64f410a3f757e7b8558002"
+    },
+    {
+      "stage": "after-workshop",
+      "sequence": 497,
+      "sha256": "c53a5ee0d4ba801c11b7b327bacce302edfc3e2ed9c4d7bc843f7e5ec8bcb6bc"
+    },
+    {
+      "stage": "after-kitchen",
+      "sequence": 845,
+      "sha256": "4fb45bafa8377fd68a9b12f0a0cf9c57aa90e74bb4f65a4f211ae5287a673254"
+    },
+    {
+      "stage": "after-altar",
+      "sequence": 1000,
+      "sha256": "6297e046b976cb50ef806d79c06f4c6b97318dff0cb267eae7a0b5418d8a977b"
+    },
+    {
+      "stage": "victory",
+      "sequence": 2663,
+      "sha256": "d9454f46ef1984ef00a0d9443e93ddfabceebce262342efbfeef95195ac99578"
+    },
+    {
+      "stage": "first-paid-settled",
+      "sequence": 2829,
+      "sha256": "ec0a22c3628ae0f2eb9689c16949f77c14d17677377989249a101efbc56e10dc"
+    },
+    {
+      "stage": "first reward / full-pack recovery",
+      "sequence": 2764,
+      "sha256": "6528b78e63f9825cb77e953e3a34bdc6d03ff0ef08cdca78eb78bf0cb24ed44f"
+    },
+    {
+      "stage": "first reward / full-pack recovery",
+      "sequence": 2785,
+      "sha256": "f94bf34c19ccef27d54dce2a89a5c29f4cef767a9bf362d5a57c6cdc72aa94a8"
+    }
+  ],
+  "diagnostics": "Initial before-services frame207 catches a transient blank journal; retained as diagnostic. Complete56view current gallery uses actual settled journal. New native capture settling waits real ticks and frame2829 plus normalrelogin prove correct paid first-clear journal. No gameplay result or pixels are edited.",
+  "pending": [
+    "independent headless23fresh first clear underway",
+    "human first-play pacing",
+    "user artistic acceptance"
+  ],
+  "pacing_note": "850.68 seconds is automated first-clear scenario time, including deliberate rescue/evidence capture; not a human20\u201330minute measurement."
+}
