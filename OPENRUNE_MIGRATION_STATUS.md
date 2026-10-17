@@ -3436,3 +3436,53 @@ Wiki Nihil dust revision15263916, raw SHA256 `15b00937559fa049e2dccc6a79bac2756f
 Selected shard stacks debit one per commit. Stackable outputs use ordinary catalog merge/first-free insertion; individual existing outputs retain strict selected-slot replacement. Full inventory without an output stack or free slot and an overflowing dust stack refuse atomically. Stack repeats stay pinned to the selected shard slot and never take another matching stack after it disappears. Existing nonstack grinding behavior is retained.
 
 Regression attempt001 FAIL because the new runtime fixture requested a member recipe without setting trusted live membership; correct member refusal was observed. Corrected only fixture authorization and retained failed evidence. Attempt002 PASS64server415world,1existing ignored,397source hashes unchanged; compile19.46s/world34.41s. Guard6260MiB,51.8percentcommit,777page-ins/s,1.3msdisk,44.4percentCPU;Cargo-j2. Tests cover first free/merge,last shard/full bag,overflow/capacity rollback,selected-stack continuation/stale cancellation and zeroXP.78synthetic independent state/trace/packet corruption checksPASS. Native stack crushing and same-save remain pending; no acquisition/donor-wide/compiled-original-Kotlin parity claim.
+
+## Native gameplay ancientall acceptance (2026-10-17 UTC)
+
+Native Ancient brew All: independently decoded quantity28,three two-tick commits from one selected80dust stack ending77,three outputs,28500fineXP at5x,full28with23pots/1000coins and same-save no replay. Native modifiers,grinding/acquisition,drinking and compiled original Kotlin remain separate.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking/Herblore parity or unrelated recipes. No issue closure.
+
+`openrune-native-ancientall-001` PASS. Server archive `94A16AD2FE8EE279D49504069C6D12DBDF98F22B7811489FD3A87E5FDFACDC7D`, driver `ancientall-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID10676.
+- Driver `NativeAncientAllScenario.rs` SHA256 `7088AA0E1B1E2E078B3CD34EEDB7AE9E198A88D8312C00C0346A854739CDB563`
+- Driver `server_ancientall.exe` SHA256 `246E9B37C266909AD32B350DF90092A19F84BE8EA075404D53186994CE881095`
+- `client.log` SHA256 `92db5e0a4088ab3a34eb137bb9d8ceacb201901e7a7b9cdfd06e4959c810fc27`
+- `server.log` SHA256 `93aae8d3d502804503febbc205c9a7f2d96f4132c27e43a1c682dcc6b9290c54`
+- `server.json` SHA256 `be5c80694c0bb0a46bba27154465dabd6531a00484b4291d5c5df28ad4eb56ae`
+- `initial-state.json` SHA256 `56d8a136bb3693639da26f8113a916f379ef495196606d700dd69ffa1e18d99a`
+- `final-state.json` SHA256 `9cbd2b717f06547ca8e2cff7f435f03574b6d871ab07aa2ee172a978e52f7497`
+- `pack-assessment.json` SHA256 `1c710ac6180b3032674c38d09910b529c424623f12ceeeada5a00bb0ab4ccfcc`
+- `ancientall-trace-assessment.json` SHA256 `4f272a511d0f997d1701323cbab0a82632988bee76da3fd09658b69d160a0bab`
+- `logout-observation.json` SHA256 `15bfff644158fe2f094d98f146514e2d128a4590fdc8661d61edfb4737d8cd46`
+- `shutdown.json` SHA256 `f3980740fd103a7784f5ac3d0820f225b49c768d8eefad65a80bed023d98c8d2`
+- `result.json` SHA256 `3f6710bdcfbdc10db533840bcd50cec6d7d58c58ca367ac45d7ace8412bdd4eb`
+- `pack-run.json` SHA256 `fa78ecbffcbd97d534223d05e0f6d748c27c42bfd776220d4e5438d819ebe68f`
+- `native-packet-assessment.json` SHA256 `d0f595bfc451547570f1b3d95244d6171cbeba2888d5d86f14747a79de31a9c8`
+- `native-quantity-assessment.json` SHA256 `de8b5f2bfabf95f380cb064962ac393e19190cef5f35776a602e1de2d7aa4964`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":300},"3077":{"before":0,"after":13231},"3079":{"before":0,"after":182},"65515":{"before":0,"after":170}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[{"actor_slot":1,"actor_generation":614,"unfinished_slot":1,"secondary_slot":0,"unfinished":109,"secondary":26368,"output":26342,"count":1,"queued_at":158,"committed_at":160,"index":0,"base_fine_xp":1900,"rate_hundreds":500,"fine_before":130344311,"fine_after":130353811,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"unfinished_slot":2,"secondary_slot":0,"unfinished":109,"secondary":26368,"output":26342,"count":1,"queued_at":160,"committed_at":162,"index":1,"base_fine_xp":1900,"rate_hundreds":500,"fine_before":130353811,"fine_after":130363311,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"unfinished_slot":3,"secondary_slot":0,"unfinished":109,"secondary":26368,"output":26342,"count":1,"queued_at":162,"committed_at":164,"index":2,"base_fine_xp":1900,"rate_hundreds":500,"fine_before":130363311,"fine_after":130372811,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5}],"scope":"Three consecutive server finished-potion commits from one quantity request; UI evidence and packet/display latency separate"}`
+
+`openrune-ancientall-relogin-001` PASS. Server archive `94A16AD2FE8EE279D49504069C6D12DBDF98F22B7811489FD3A87E5FDFACDC7D`, driver `ancientall-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor `openrune-native-ancientall-001`, owned PID4840.
+- Driver `NativeAncientAllScenario.rs` SHA256 `7088AA0E1B1E2E078B3CD34EEDB7AE9E198A88D8312C00C0346A854739CDB563`
+- Driver `server_ancientall.exe` SHA256 `246E9B37C266909AD32B350DF90092A19F84BE8EA075404D53186994CE881095`
+- `client.log` SHA256 `75f14ad8ed98b93977ca359f29606b70bde28990aad4dee181762daa1b4af3aa`
+- `server.log` SHA256 `36eefa037c23c12e764bf873177ccfb9c1de4f4c47597fd4a69f1dc31e547e0b`
+- `server.json` SHA256 `c2316f23e0f644f20d07f21e3e4c6dd31bbda3700d5d39fbefb2d4e91a12a872`
+- `initial-state.json` SHA256 `9cbd2b717f06547ca8e2cff7f435f03574b6d871ab07aa2ee172a978e52f7497`
+- `final-state.json` SHA256 `191ca432a294668e73e7038d08b81e4247bf4e586819383d5a57ff22c35831f2`
+- `pack-assessment.json` SHA256 `7da998b67654b1eb7c7126f63ab9bf5d309e7bbedb3975fb6a65f9b3df7c273d`
+- `ancientall-trace-assessment.json` SHA256 `97409267c10109b24817a15cd41057f817aa3077c69022dd062802dfe65e4031`
+- `logout-observation.json` SHA256 `9961798acc4dd4472a8f1916956f35fbd752a1b225f0927846e0d7171f9e522e`
+- `shutdown.json` SHA256 `6f5e662af9f76b585096040e15cd2ab5371f508f606fe926bc289d7e6de1aa09`
+- `result.json` SHA256 `e4c5a806709a2bf9b27ed68817722030f613b80e92579a0e0c1183722f6e8eac`
+- `pack-run.json` SHA256 `b1007217aaf9b472db8556d285be0882d7a155b0192cd9e875fdd59b58795985`
+- `native-packet-assessment.json` SHA256 `87fa94559e0760d31f7103c3524a933496c9e80d69139a2be64be15a93c63255`
+- `native-quantity-assessment.json` SHA256 `de8b5f2bfabf95f380cb064962ac393e19190cef5f35776a602e1de2d7aa4964`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":300,"after":500},"3077":{"before":13231,"after":50786},"3079":{"before":182,"after":128},"65515":{"before":170,"after":283}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Three consecutive server finished-potion commits from one quantity request; UI evidence and packet/display latency separate"}`
+
+Ancient brew immutable archive: executable SHA256 `94A16AD2FE8EE279D49504069C6D12DBDF98F22B7811489FD3A87E5FDFACDC7D`,397source files,manifest SHA256 `c073d46b046e124b22923214d1694a302b7df5acf14f755b6b9e050873206197`. Server build26.27s,guard6287MiB/52.1%commit/740page-ins/s/2.9msdisk/32.4%CPU,j2. Driver build1.91s,guard6410MiB/51.5%commit/810page-ins/s/3.2msdisk/29.6%CPU,j2.96state/trace and10menu/packet synthetic checksPASS. Original control/fresh/relogin artifacts remain immutable.
