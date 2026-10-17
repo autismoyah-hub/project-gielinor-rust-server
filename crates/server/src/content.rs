@@ -176,13 +176,26 @@ pub fn foods(symbols: &Symbols, defs: &Definitions) -> Result<BTreeMap<i32, Edib
 /// Independently Wiki-specified ordinary healing profiles absent from the
 /// original-reference catalog. Commit all definitions together at startup.
 pub fn additional_ordinary_foods(symbols:&Symbols,defs:&Definitions,foods:&mut BTreeMap<i32,Edible>)->Result<usize,String>{
-    let mut next=foods.clone();let mut count=0;
-    for (symbol,name,heal) in [
+    apply_ordinary_food_profiles(symbols,defs,foods,&[
         ("anchovies","Anchovies",1),("lava_eel","Lava eel",11),
         ("onion","Onion",1),("tomato","Tomato",2),("cheese","Cheese",2),
         ("cooked_ugthanki_meat","Ugthanki meat",3),("ugthanki_kebab","Ugthanki kebab",19),
         ("locust_meat","Locust meat",3),("brut_roe","Roe",3),("brut_caviar","Caviar",5),
-    ] {
+    ])
+}
+/// Prepared fruit portions, independently pinned to article/all-food Wiki rows.
+pub fn prepared_fruit_foods(symbols:&Symbols,defs:&Definitions,foods:&mut BTreeMap<i32,Edible>)->Result<usize,String>{
+    apply_ordinary_food_profiles(symbols,defs,foods,&[
+        ("tbwt_sliced_banana","Sliced banana",2),
+        ("orange_chunks","Orange chunks",2),("orange_slices","Orange slices",2),
+        ("pineapple_chunks","Pineapple chunks",2),("pineapple_ring","Pineapple ring",2),
+        ("lemon_chunks","Lemon chunks",2),("lemon_slices","Lemon slices",2),
+        ("lime_chunks","Lime chunks",2),("lime_slices","Lime slices",2),
+    ])
+}
+fn apply_ordinary_food_profiles(symbols:&Symbols,defs:&Definitions,foods:&mut BTreeMap<i32,Edible>,profiles:&[(&str,&str,i32)])->Result<usize,String>{
+    let mut next=foods.clone();let mut count=0;
+    for &(symbol,name,heal) in profiles {
         let id=*symbols.get(symbol).ok_or_else(||format!("Missing ordinary food symbol {symbol}"))?;
         let item=u32::try_from(id).ok().and_then(|id|defs.items.get(&id)).ok_or("Missing ordinary food definition")?;
         if item.name!=name || item.stackable || item.dummy==1 || item.cert.template!=0 || item.placeholder.template!=0 || item.transform.template!=0 || item.inventory_ops[0].as_deref()!=Some("Eat") || next.contains_key(&id){return Err(format!("Invalid ordinary food profile {symbol}"));}
@@ -190,6 +203,19 @@ pub fn additional_ordinary_foods(symbols:&Symbols,defs:&Definitions,foods:&mut B
     }
     *foods=next;Ok(count)
 }
+#[cfg(test)]
+mod prepared_fruit_food_tests {
+    use super::*;
+    #[test]
+    fn prepared_fruit_foods_bind_all_profiles_and_preserve_catalog_on_late_failure(){
+        let mut defs=Definitions{inventories:Default::default(),locations:Default::default(),npcs:Default::default(),items:Default::default(),varbits:Default::default(),varps:Default::default(),stats:Default::default()};let mut symbols=Symbols::new();
+        for (symbol,id,name) in [("tbwt_sliced_banana",3162,"Sliced banana"),("orange_chunks",2110,"Orange chunks"),("orange_slices",2112,"Orange slices"),("pineapple_chunks",2116,"Pineapple chunks"),("pineapple_ring",2118,"Pineapple ring"),("lemon_chunks",2104,"Lemon chunks"),("lemon_slices",2106,"Lemon slices"),("lime_chunks",2122,"Lime chunks"),("lime_slices",2124,"Lime slices")]{symbols.insert(symbol.into(),id);let mut item=gielinor_cache::definitions::ItemType::decode(&[0]).unwrap();item.name=name.into();item.inventory_ops[0]=Some("Eat".into());defs.items.insert(id as u32,item);}
+        let mut foods=BTreeMap::new();assert_eq!(prepared_fruit_foods(&symbols,&defs,&mut foods).unwrap(),9);
+        for (&id,f) in &foods{let mut inv=gielinor_world::inventory::Inventory::new(1,gielinor_world::inventory::StackType::Normal,false);inv.restore_slot(0,Some(gielinor_world::inventory::Item{id,count:1,vars:0})).unwrap();let mut stats=gielinor_world::stats::Stats::default();stats.set_base(3,10);stats.set_current(3,9);assert!(gielinor_world::food::eat_slot(f,0,&mut inv,&mut stats,&Default::default(),3,829,|_|{}).unwrap());assert_eq!(stats.current(3),10);assert_eq!(stats.fine_xp(3),0);assert!(inv.get(0).is_none());}
+        foods.clear();defs.items.get_mut(&2124).unwrap().name="Wrong fruit".into();assert!(prepared_fruit_foods(&symbols,&defs,&mut foods).is_err());assert!(foods.is_empty());
+    }
+}
+
 #[cfg(test)]
 mod additional_ordinary_food_tests {
     use super::*;

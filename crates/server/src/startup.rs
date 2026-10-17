@@ -348,6 +348,7 @@ pub fn configure<B: AccountBackend>(
     let mut foods =
         crate::content::foods(n("obj"), &runtime.definitions).map_err(io::Error::other)?;
     crate::content::additional_ordinary_foods(n("obj"),&runtime.definitions,&mut foods).map_err(io::Error::other)?;
+    crate::content::prepared_fruit_foods(n("obj"),&runtime.definitions,&mut foods).map_err(io::Error::other)?;
     let mut slot_preserving_foods =
         crate::content::wiki_multipart_foods(n("obj"), &runtime.definitions, &mut foods)
             .map_err(io::Error::other)?;
