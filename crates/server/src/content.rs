@@ -2288,6 +2288,7 @@ pub fn finished_potions(
         ("unfinished_antidote++", "magic_roots", "antidote++4", true, true, 79, true, 1775),
         ("cadantine_bloodvial", "wine_of_zamorak", "3dosebastion", false, true, 80, true, 1550),
         ("cadantine_bloodvial", "cactus_potato", "3dosebattlemage", true, true, 80, true, 1550),
+        ("dwarfweedvial", "lily_of_the_sands", "3dosestatrenewal", true, true, 88, true, 2000),
     ] {
         result.push(gielinor_world::finished_potions::Recipe {
             unfinished: bind(unf, true, false)?,
@@ -2363,6 +2364,8 @@ mod finished_potion_binding_tests {
             ("3dose1antidragon", 2454, true, true),
             ("dwarfweedvial", 109, true, false),
             ("wine_of_zamorak", 245, false, false),
+            ("lily_of_the_sands", 27272, true, false),
+            ("3dosestatrenewal", 27205, true, true),
             ("3doserangerspotion", 169, true, true),
             ("cactus_potato", 3138, true, false),
             ("3dose1magic", 3042, true, true),
@@ -2453,6 +2456,7 @@ mod finished_potion_binding_tests {
                 (5951, 6051, 5952, 79, true, 1775),
                 (22443, 245, 22464, 80, true, 1550),
                 (22443, 3138, 22452, 80, true, 1550),
+                (109, 27272, 27205, 88, true, 2000),
                 (105, 241, 187, 60, true, 1375),
             ]
         );
@@ -2625,7 +2629,7 @@ mod swamp_tar_binding_tests {
 }
 
 /// Explicit target239.1 three-to-four dose mappings, Wiki chemistry rev15338661.
-const CHEMISTRY_DOSES: [(&str,&str);27] = [
+const CHEMISTRY_DOSES: [(&str,&str);28] = [
     ("3dose1attack", "4dose1attack"),
     ("3doseantipoison", "4doseantipoison"),
     ("3dose1strength", "strength4"),
@@ -2651,6 +2655,7 @@ const CHEMISTRY_DOSES: [(&str,&str);27] = [
     ("3dose1prayer_regeneration", "4dose1prayer_regeneration"),
     ("3dosegoading", "4dosegoading"),
     ("3doseancientbrew", "4doseancientbrew"),
+    ("3dosestatrenewal", "4dosestatrenewal"),
     ("3dosebastion", "4dosebastion"),
     ("3dosebattlemage", "4dosebattlemage")
 ];
@@ -2693,7 +2698,7 @@ mod chemistry_binding_tests {
         for mode in 0..18 {
             let (mut names,mut defs)=fixture();
             match mode {
-                0=>{let map=finished_potion_chemistry(&names,&[("wear_op1".into(),451)].into(),&defs).unwrap();assert_eq!(map.len(),27);for i in 0..27{assert_eq!(map[&(1000+i*2)].extra_output,1001+i*2);}continue;},
+                0=>{let map=finished_potion_chemistry(&names,&[("wear_op1".into(),451)].into(),&defs).unwrap();assert_eq!(map.len(),28);for i in 0..28{assert_eq!(map[&(1000+i*2)].extra_output,1001+i*2);}continue;},
                 1=>defs.items.get_mut(&21163).unwrap().wear[0]=0,
                 2=>defs.items.get_mut(&21163).unwrap().members=false,
                 3=>defs.items.get_mut(&21163).unwrap().inventory_ops[3]=None,

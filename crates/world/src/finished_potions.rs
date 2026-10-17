@@ -229,7 +229,7 @@ mod tests {
             assert_eq!(job.complete(&mut inv,&catalog,&mut stats,true,true,500),Outcome::Stale);assert_eq!((inv,stats),state);
         }
     }
-    fn profiles() -> [Recipe; 29] {
+    fn profiles() -> [Recipe; 30] {
         [
             Recipe {
                 unfinished: 91,
@@ -281,6 +281,7 @@ mod tests {
             Recipe { unfinished: 30100, secondary: 29993, output: 30128, level: 58, boostable: true, base_fine_xp: 1320 },
             Recipe { unfinished: 97, secondary: 29993, output: 30140, level: 54, boostable: true, base_fine_xp: 1320 },
             Recipe { unfinished: 105, secondary: 241, output: 187, level: 60, boostable: true, base_fine_xp: 1375 },
+            Recipe { unfinished: 109, secondary: 27272, output: 27205, level: 88, boostable: true, base_fine_xp: 2000 },
         ]
     }
     #[test]
@@ -326,7 +327,7 @@ mod tests {
     #[test]
     fn ingredient_pairs_preserve_shared_bases_and_reverse_selected_slots() {
         let config=Config{chemistry:Default::default(),goggles:[29974,29976],recipes:profiles().into_iter().map(|r|((r.unfinished,r.secondary),r)).collect(),quest_progress:80,quest_complete:4,animation:363};
-        assert_eq!(config.recipes.len(),29);
+        assert_eq!(config.recipes.len(),30);
         let origin=crate::CoordGrid::new(3200,3200,0).unwrap();
         for recipe in profiles() {
             for reverse in [false,true] {
