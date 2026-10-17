@@ -825,6 +825,28 @@ mod pack_binding_tests {
 }
 
 /// Wiki-pinned assembly and topping awards; target Names and atomic mutations.
+/// Manual Admiral pie stages use existing assembly with an explicit first clock.
+pub fn admiral_pie_assembly(symbols:&Symbols,defs:&Definitions,skill:u8)->Result<Vec<(gielinor_world::assembly::Recipe,u8)>,String>{
+    let mut ids=BTreeMap::new();
+    for (symbol,name) in [("pie_shell","Pie shell"),("salmon","Salmon"),("tuna","Tuna"),("potato","Potato"),("unfinished_admiral_pie_1","Part admiral pie"),("unfinished_admiral_pie_2","Part admiral pie"),("uncooked_admiral_pie","Raw admiral pie")]{
+        let id=*symbols.get(symbol).ok_or("Missing Admiral ingredient symbol")?;let item=u32::try_from(id).ok().and_then(|id|defs.items.get(&id)).ok_or("Missing Admiral ingredient definition")?;
+        if item.name!=name || item.stackable || item.dummy==1 || item.cert.template!=0 || item.placeholder.template!=0 || item.transform.template!=0 || ids.values().any(|v|*v==id){return Err("Invalid Admiral ingredient definition".into());}ids.insert(symbol,id);
+    }
+    Ok([("pie_shell","salmon","unfinished_admiral_pie_1",1),("unfinished_admiral_pie_1","tuna","unfinished_admiral_pie_2",2),("unfinished_admiral_pie_2","potato","uncooked_admiral_pie",2)].into_iter().map(|(first,second,output,ticks)|(gielinor_world::assembly::Recipe{first:ids[first],second:ids[second],output:ids[output],skill,level:70,base_xp:0,members:true},ticks)).collect())
+}
+#[cfg(test)]
+mod admiral_assembly_tests{
+    use super::*;
+    #[test]
+    fn admiral_assembly_binds_three_manual_stages_without_baking_xp(){
+        let mut symbols=Symbols::new();let mut defs=Definitions{inventories:Default::default(),locations:Default::default(),npcs:Default::default(),items:Default::default(),varbits:Default::default(),varps:Default::default(),stats:Default::default()};
+        for (symbol,id,name) in [("pie_shell",2315,"Pie shell"),("salmon",329,"Salmon"),("tuna",361,"Tuna"),("potato",1942,"Potato"),("unfinished_admiral_pie_1",7192,"Part admiral pie"),("unfinished_admiral_pie_2",7194,"Part admiral pie"),("uncooked_admiral_pie",7196,"Raw admiral pie")]{symbols.insert(symbol.into(),id);let mut item=gielinor_cache::definitions::ItemType::decode(&[0]).unwrap();item.name=name.into();defs.items.insert(id as u32,item);}
+        let rs=admiral_pie_assembly(&symbols,&defs,7).unwrap();assert_eq!(rs.iter().map(|(r,t)|(r.first,r.second,r.output,*t)).collect::<Vec<_>>(),vec![(2315,329,7192,1),(7192,361,7194,2),(7194,1942,7196,2)]);
+        for (r,_) in rs{assert_eq!((r.level,r.base_xp,r.members),(70,0,true));let mut inv=gielinor_world::inventory::Inventory::new(2,gielinor_world::inventory::StackType::Normal,false);inv.restore_slot(0,Some(gielinor_world::inventory::Item{id:r.first,count:1,vars:0})).unwrap();inv.restore_slot(1,Some(gielinor_world::inventory::Item{id:r.second,count:1,vars:0})).unwrap();let mut stats=gielinor_world::stats::Stats::default();stats.set_base(7,69);stats.set_current(7,70);let before=stats.clone();let job=gielinor_world::assembly::Job{recipe:r,first_slot:0,second_slot:1};assert_eq!(job.complete_awarding(&mut inv,&Default::default(),&mut stats,500,true).0,gielinor_world::assembly::Outcome::Made);assert_eq!(stats,before);assert_eq!(inv.slots().iter().flatten().filter(|i|i.id==r.output).count(),1);}
+        defs.items.get_mut(&7196).unwrap().cert.template=799;assert!(admiral_pie_assembly(&symbols,&defs,7).is_err());
+    }
+}
+
 pub fn assembly(
     symbols: &Symbols,
     defs: &Definitions,

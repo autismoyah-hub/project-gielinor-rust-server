@@ -155,7 +155,10 @@ impl World {
                 } else {(request.target_slot as usize,request.selected_slot as usize)};
                 self.start_grinding(actor,recipe,tool_slot,input_slot)?;
             }
-            Some(Handler::Assembly(recipe)) => {
+            Some(Handler::Assembly(recipe)) | Some(Handler::AssemblyTimed{recipe,..}) => {
+                let ticks=match handler {Some(Handler::AssemblyTimed{ticks,..})=>ticks,_=>2};
+                if ticks==0 {return Err(ActionError::InvalidItem);}
+
                 let p = self.players.get_mut(actor.slot as usize).unwrap();
                 if recipe.members && !p.member {
                     self.events.push(WorldEvent::LocationMessage { actor, message: "You need to be a member to make that item." });
@@ -179,8 +182,8 @@ impl World {
                         crate::assembly::QUEUE,
                         crate::queues::Category::Weak,
                         // Input's queue decrements in its stamped cycle.
-                        // Three gives the sourced two-clock processing delay.
-                        3,
+                        // Preserve default2; optional content timing is in clocks.
+                        i32::from(ticks)+1,
                         Deferred::Assembly(crate::assembly::Pending {
                             job: crate::assembly::Job { recipe, first_slot, second_slot },
                             queued_at: self.clock.0,
@@ -478,6 +481,19 @@ mod assembly_tests {
                 target_id: 10,
             },
         )
+    }
+    #[test]
+    fn timed_assembly_uses_requested_processing_clock_and_live_requirements(){
+        for ticks in [1,2] {for change in 0..4 {
+            let (mut w,actor,request)=fixture();w.held_use_handlers=Default::default();w.held_use_handlers.register(Scope::Types,10,11,Handler::AssemblyTimed{recipe:Recipe{first:10,second:11,output:12,skill:7,level:70,base_xp:0,members:true},ticks}).unwrap();
+            let p=w.players.get_mut(actor.slot as usize).unwrap();p.member=true;p.data.stats.set_base(7,69);p.data.stats.set_current(7,70);
+            let before=w.data(actor).unwrap().stats.clone();w.prepare_held_use(actor,request).unwrap();w.finish_held_use(actor,request).unwrap();
+            match change {1=>w.data_mut(actor).unwrap().stats.set_current(7,69),2=>w.players.get_mut(actor.slot as usize).unwrap().member=false,3=>{let inv=&mut w.data_mut(actor).unwrap().inventory;let i=inv.get(0);inv.restore_slot(0,None).unwrap();inv.restore_slot(2,i).unwrap();},_=>{}}
+            for _ in 0..5{w.tick().unwrap();}
+            let traces:Vec<_>=w.drain_events().into_iter().filter_map(|e|if let WorldEvent::AssemblyMade{trace,..}=e{Some(trace)}else{None}).collect();assert_eq!(traces.len(),if change==0{1}else{0});
+            if change==0{assert_eq!(traces[0].committed_at-traces[0].queued_at,i32::from(ticks));assert_eq!(w.data(actor).unwrap().stats,before);}else{assert!(!w.data(actor).unwrap().inventory.slots().iter().flatten().any(|i|i.id==12));assert_eq!(w.data(actor).unwrap().stats.fine_xp(7),before.fine_xp(7));}
+        }}
+        let (mut w,actor,request)=fixture();w.held_use_handlers=Default::default();w.held_use_handlers.register(Scope::Types,10,11,Handler::AssemblyTimed{recipe:Recipe{first:10,second:11,output:12,skill:7,level:1,base_xp:0,members:false},ticks:0}).unwrap();let before=w.data(actor).unwrap().inventory.clone();w.prepare_held_use(actor,request).unwrap();assert_eq!(w.finish_held_use(actor,request),Err(ActionError::InvalidItem));for _ in 0..4{w.tick().unwrap();}assert_eq!(w.data(actor).unwrap().inventory,before);
     }
     #[test]
     fn assembly_reverse_pair_rechecks_slots_level_and_cancellation() {

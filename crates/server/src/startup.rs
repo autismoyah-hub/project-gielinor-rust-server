@@ -672,6 +672,9 @@ pub fn configure<B: AccountBackend>(
             )
             .map_err(|e| io::Error::other(format!("Assembly registration: {e:?}")))?;
     }
+    for (recipe,ticks) in crate::content::admiral_pie_assembly(n("obj"),&runtime.definitions,u8::try_from(names.id("stat","cooking")?).map_err(io::Error::other)?).map_err(io::Error::other)? {
+        runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.first,recipe.second,gielinor_world::held_use::Handler::AssemblyTimed{recipe,ticks}).map_err(|e|io::Error::other(format!("Admiral assembly registration: {e:?}")))?;
+    }
     runtime.world.milking = Some(
         crate::content::milking(
             n("obj"),
