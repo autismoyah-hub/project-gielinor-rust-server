@@ -1,0 +1,278 @@
+{
+  "source_parent": "8dd63333759992274ec6ebca0b3eac1f9d21a7d7",
+  "runtime_sha256": "08BB264E468F1E84C6A0F8FAFE513F13C3EE5F707B7596E2E6F594799238BAB9",
+  "scope": "Bind normal Bank operation2 for actual cache booth18491 at10421,124,0 to existing open_bank. No tutorial reward/progression. No sanctuary alcove geometry in this checkpoint.",
+  "shared_engine_delta": "New scoped BankBooth handler and BankRequested event through existing guarded location action pipeline. Existing banking transactions, save schema and renderer unchanged.",
+  "tests": {
+    "cache_passed": 24,
+    "server_passed": 57,
+    "world_passed": 410,
+    "world_existing_ignored": 2,
+    "new_world_regressions": 3,
+    "main_build": "passed"
+  },
+  "client_validation": {
+    "accepted": true,
+    "baseline": "95eed88159b06cebea24559a814a5111b54a59cd",
+    "patches": 11,
+    "exact_tree": "48e96da6f47ac9ef9a3aece11001139883e3dd9e",
+    "apply": "git am --keep-cr",
+    "initial_check_failure": "Fresh private clone lacked local committer identity; no source conflict. Repeated with existing Agent5 identity via command-local configuration.",
+    "client_commit": "ff9cef17fd1ce3ec2ebf8d1181fee31411999c4c"
+  },
+  "client_prefix": {
+    "patches": 11,
+    "old_ten_patch_prefix_preserved_byte_for_byte": true,
+    "old_prefix_sha256": "48514801d3562145ac391fd8382ad2c99363385e44d2bd0732c5ac1a6264918b",
+    "new_mbox_sha256": "0d2fad9073d55710f42a94b03d556efa452ddaf891165595b2c4aecd4e0dd66a",
+    "client_commit": "ff9cef17fd1ce3ec2ebf8d1181fee31411999c4c",
+    "expected_tree": "48e96da6f47ac9ef9a3aece11001139883e3dd9e"
+  },
+  "clients": {
+    "native": {
+      "normal_entry_state_exact": true,
+      "normal_Bank_Pray_crossings": {
+        "accepted": true,
+        "normal_routes": [
+          [
+            0,
+            10418,
+            120
+          ],
+          [
+            0,
+            10430,
+            120
+          ],
+          [
+            0,
+            10424,
+            120
+          ],
+          [
+            0,
+            10422,
+            124
+          ],
+          [
+            0,
+            10427,
+            116
+          ],
+          [
+            0,
+            10424,
+            120
+          ]
+        ],
+        "bank_modal_ids": [
+          12
+        ],
+        "bank_action": "Normal displayed Bank operation2 on18491",
+        "altar_action": "Normal Pray operation1 on409 from its actual adjacent western tile",
+        "exact_items_equipment_all25XP_journal_preserved": true,
+        "native_bank_frames": [
+          "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-bank26-validation\\frame-122.bmp"
+        ]
+      },
+      "roundtrip": {
+        "accepted": true,
+        "actual_deposit_widget": {
+          "id": 4294842444,
+          "logical_id": 983043,
+          "slot": 0,
+          "item": 1351,
+          "count": 1,
+          "actions": [
+            "",
+            "Deposit-1",
+            "",
+            "Deposit-5",
+            "Deposit-10",
+            "",
+            "Deposit-X",
+            "Deposit-All",
+            "Wield",
+            "Examine"
+          ]
+        },
+        "actual_withdraw_widget": {
+          "id": 4294840852,
+          "logical_id": 786444,
+          "slot": 0,
+          "item": 1351,
+          "count": 1,
+          "actions": [
+            "Withdraw-1",
+            "",
+            "Withdraw-5",
+            "Withdraw-10",
+            "",
+            "Withdraw-X",
+            "Withdraw-All",
+            "Withdraw-All-but-1",
+            "",
+            "Placeholder",
+            "Examine"
+          ]
+        },
+        "bank_before": [],
+        "bank_after_deposit": [
+          {
+            "inventory": 95,
+            "slot": 0,
+            "item": 1351,
+            "count": 1
+          }
+        ],
+        "bank_after_withdraw": [],
+        "checks": [
+          "Normal actual visible bank controls only, no direct packets/admin/state edits",
+          "One real item93->95->93, no tutorial coins or extra items",
+          "Exact original item slots/counts, equipment, all25XP and journal restored",
+          "Current preparedRun2/paidRun1 history preserved"
+        ]
+      }
+    },
+    "headless": {
+      "normal_entry_state_exact": true,
+      "normal_Bank_Pray_crossings": {
+        "accepted": true,
+        "normal_routes": [
+          [
+            0,
+            10418,
+            120
+          ],
+          [
+            0,
+            10430,
+            120
+          ],
+          [
+            0,
+            10424,
+            120
+          ],
+          [
+            0,
+            10422,
+            124
+          ],
+          [
+            0,
+            10427,
+            116
+          ],
+          [
+            0,
+            10424,
+            120
+          ]
+        ],
+        "bank_modal_ids": [
+          12,
+          15
+        ],
+        "bank_action": "Normal displayed Bank operation2 on18491",
+        "altar_action": "Normal Pray operation1 on409 from its actual adjacent western tile",
+        "exact_items_equipment_all25XP_journal_preserved": true,
+        "native_bank_frames": []
+      },
+      "roundtrip": {
+        "accepted": true,
+        "actual_deposit_widget": {
+          "id": 4294842444,
+          "logical_id": 983043,
+          "slot": 0,
+          "item": 1351,
+          "count": 1,
+          "actions": [
+            "",
+            "Deposit-1",
+            "",
+            "Deposit-5",
+            "Deposit-10",
+            "",
+            "Deposit-X",
+            "Deposit-All",
+            "Wield",
+            "Examine"
+          ]
+        },
+        "actual_withdraw_widget": {
+          "id": 4294840852,
+          "logical_id": 786444,
+          "slot": 0,
+          "item": 1351,
+          "count": 1,
+          "actions": [
+            "Withdraw-1",
+            "",
+            "Withdraw-5",
+            "Withdraw-10",
+            "",
+            "Withdraw-X",
+            "Withdraw-All",
+            "Withdraw-All-but-1",
+            "",
+            "Placeholder",
+            "Examine"
+          ]
+        },
+        "bank_before": [],
+        "bank_after_deposit": [
+          {
+            "inventory": 95,
+            "slot": 0,
+            "item": 1351,
+            "count": 1
+          }
+        ],
+        "bank_after_withdraw": [],
+        "checks": [
+          "Normal actual visible bank controls only, no direct packets/admin/state edits",
+          "One real item93->95->93, no tutorial coins or extra items",
+          "Exact original item slots/counts, equipment, all25XP and journal restored",
+          "Current preparedRun2/paidRun1 history preserved"
+        ]
+      }
+    }
+  },
+  "native_frames": [
+    {
+      "private_path": "work/native-bank26-validation/frame-122.bmp",
+      "sha256": "de7659bfa89b190b98ccb0740d746e1e87dbeb4fa0b9dbd9568bfe427b4a4e43",
+      "visually_inspected": true
+    },
+    {
+      "private_path": "work/native-bank26-roundtrip/frame-61.bmp",
+      "sha256": "4fe7fb2a1ac597cacb6a15d40f5fe1d045be671decb99e572814e67f35035f32",
+      "visually_inspected": true
+    },
+    {
+      "private_path": "work/native-bank26-roundtrip/frame-72.bmp",
+      "sha256": "76b1db799c8770681b430a514795b626ab10c521c940d907b535bc9089869bde",
+      "visually_inspected": true
+    }
+  ],
+  "limits": [
+    "No current08BB full combat or deliberate crash claim; complete C555 lifecycle remains separately pinned to HALL_FIRST_CLEAR_AND_LIFECYCLE_20261017.json.",
+    "Final user artistic acceptance and realistic human first-play pacing remain pending.",
+    "Bank ended empty after actual one-item roundtrip; this does not claim crash interruption of a bank transaction."
+  ],
+  "retained_diagnostics": [
+    "Both old75 Bank operations timed out before any six-wall geometry was live. Actual booth had no handler.",
+    "First added regression expected synchronous rejection; corrected to queued ActionRejected without changing production guards.",
+    "Initial adapter build failed error conversion, corrected in separate successful build.",
+    "Initial readonly widget parser failed before deposit; initial controller syntax failed before actions.",
+    "Fresh private git-am check lacked committer identity; command-local existing Agent5 identity completed exact-tree check."
+  ],
+  "source_files": {
+    "crates/world/src/location_content.rs": "13886815a135f08f69f9bfe4e91896846e380c4d91a68352a17c9110fb4611fa",
+    "crates/world/src/simulation.rs": "ec64881b8ee874d8d43b72c76d6add1176c9b0682c22df7e6af6c50203a5f9d9",
+    "crates/world/src/simulation/door_actions.rs": "eb195b6e446dda319d23a7962305d546bc3c3da32d3d7e60efa79163fe49ed15",
+    "crates/server/src/runtime.rs": "3a1a81ce663edde3d8dad15f4bdeb08c65e969c3f7337f5f5b64efce1f00f049",
+    "crates/server/src/startup.rs": "6aee4057692b81b9e683868e819110428ea1ee221160d74959bdbcf25f49c086"
+  }
+}
