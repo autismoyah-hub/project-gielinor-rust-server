@@ -3266,3 +3266,99 @@ All listed runs require client exit0, fresh durable logout, clean owned exit0 an
 - `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
 - State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":400,"after":600},"3077":{"before":50591,"after":36966},"3079":{"before":238,"after":142},"65515":{"before":224,"after":360}}}`
 - Transition assessment: `{"status":"PASS","errors":[],"transitions":[]}`
+
+## Native gameplay antivenomupgrade acceptance (2026-10-17 UTC)
+
+Four native Anti-venom doses,5/10/15/20Zulrah scales debited from one selected stack,15000fineXP at5x, two-tick commits, full28slots22pots/1000coins and same-save no replay. Native modifiers, drinking/acquisition and original compiled Kotlin remain separate.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking/Herblore parity or unrelated recipes. No issue closure.
+
+`openrune-native-antivenomupgrade-001` PASS. Server archive `72AA23CD517817FFB20E92728AEC5F1C170E12FD7DEF5A335B98FFEF491D2B29`, driver `antivenomupgrade-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID2848.
+- Driver `server_antivenomupgrade.exe` SHA256 `99FE1CF311008C35939D583B813216CD1F4F68477BA48F93461272D60D3B0ABA`
+- Driver `NativeAntivenomUpgradeScenario.rs` SHA256 `87A66E3514A8E9E15B959585CCF272EDA031F4095D69FF42EDF8E8245741CDFD`
+- `client.log` SHA256 `854f285a99141254e0d4f828f7827683e7391ac17e273a75c8ab63e62f8bbc5b`
+- `server.log` SHA256 `2a096141315f43c638a79b0e4c203f923457e7bf8eca45097c7b021d03403e7e`
+- `server.json` SHA256 `9c16d4bfae0e61d375c3f1f12825cd3dc2de4e5f1ae69c25db84e5dcbd38de8f`
+- `initial-state.json` SHA256 `75d09912585a508a9414bd1e1b3e3aea6e93c68edc57876e2cacb97b36c27778`
+- `final-state.json` SHA256 `5b05f06f3ccb2278f379746c2e006f43a87884c971fba797b3074ef365b24536`
+- `pack-assessment.json` SHA256 `95ef1b47a95eb9451014fa0a6502894e01d6cc9a96fe17499e1e9b2c23ba1a9c`
+- `antivenomupgrade-trace-assessment.json` SHA256 `305026b93823c3761e4587b95cbb08b962b749dba8bbab742f4f920db88cba7a`
+- `logout-observation.json` SHA256 `7682b1585d7d06e6ce1967aa15cc91b5da59bfa853dd47f65552de5e83208b84`
+- `shutdown.json` SHA256 `e9db56f2e4d595f3f267b84c6bebf2c8863a1548b39e8da4f537fe2945c2e47f`
+- `result.json` SHA256 `6baccc97fd57c37bc6a1f5575a4350f42ef4b0881734fa97155eaee1a1ee7c6c`
+- `pack-run.json` SHA256 `f93bfc0deae9c963266ebf6c908fc73da14ed0c4f779d02d4848ffda80b63de7`
+- `native-profile-assessment.json` SHA256 `3f14a170fae57aa7fb1d7cec162cb49aa87debcbb735e6b036598733a23eb947`
+- `native-packet-assessment.json` SHA256 `b27140d586be8b315baa069f3b938405a25c69fdee11646c300b6958ab0304c9`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":300},"3077":{"before":0,"after":58479},"3079":{"before":0,"after":179},"65515":{"before":0,"after":170}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[{"actor_slot":1,"actor_generation":614,"base_slot":1,"secondary_slot":0,"base":5958,"secondary":12934,"output":12911,"count":1,"queued_at":121,"committed_at":123,"index":0,"base_fine_xp":300,"rate_hundreds":500,"fine_before":130344311,"fine_after":130345811,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"base_slot":2,"secondary_slot":0,"base":5956,"secondary":12934,"output":12909,"count":1,"queued_at":133,"committed_at":135,"index":0,"base_fine_xp":600,"rate_hundreds":500,"fine_before":130345811,"fine_after":130348811,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"base_slot":3,"secondary_slot":0,"base":5954,"secondary":12934,"output":12907,"count":1,"queued_at":145,"committed_at":147,"index":0,"base_fine_xp":900,"rate_hundreds":500,"fine_before":130348811,"fine_after":130353311,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"base_slot":4,"secondary_slot":0,"base":5952,"secondary":12934,"output":12905,"count":1,"queued_at":158,"committed_at":160,"index":0,"base_fine_xp":1200,"rate_hundreds":500,"fine_before":130353311,"fine_after":130359311,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5}],"scope":"Separate selected-profile two-tick commits; UI evidence and packet/display latency separate"}`
+
+`openrune-antivenomupgrade-relogin-001` PASS. Server archive `72AA23CD517817FFB20E92728AEC5F1C170E12FD7DEF5A335B98FFEF491D2B29`, driver `antivenomupgrade-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor `openrune-native-antivenomupgrade-001`, owned PID18568.
+- Driver `server_antivenomupgrade.exe` SHA256 `99FE1CF311008C35939D583B813216CD1F4F68477BA48F93461272D60D3B0ABA`
+- Driver `NativeAntivenomUpgradeScenario.rs` SHA256 `87A66E3514A8E9E15B959585CCF272EDA031F4095D69FF42EDF8E8245741CDFD`
+- `client.log` SHA256 `77b5a9f55d3ceb4546448ff52d000791662e36dd5b85dfb7fad23aa80bca17d8`
+- `server.log` SHA256 `7f90bd9d359e2770f37e57e68336f73e0f30c5d43642b958c20b74e67c92c390`
+- `server.json` SHA256 `1e9b9ac425e9e2b26a34c5ce47b094af779782cb38fa10af385ff1f7e43236e6`
+- `initial-state.json` SHA256 `5b05f06f3ccb2278f379746c2e006f43a87884c971fba797b3074ef365b24536`
+- `final-state.json` SHA256 `d3634148559d161e73662aa5d67c98dd1dcec1a721d6a6d533c2f2ab4bb1bde1`
+- `pack-assessment.json` SHA256 `1110a396211200a6e6a8203010869eca2890755ab5ca544c9852cc6e54e35b69`
+- `antivenomupgrade-trace-assessment.json` SHA256 `15565119835c4387827e07e673e26fc0ec5897457d403e87d7333c03aaf96013`
+- `logout-observation.json` SHA256 `72e65dee9e13fc2b140a5e919a93bed108d3c859cb39ab3aa88ccc9ee97ed215`
+- `shutdown.json` SHA256 `aa68f03a5c9e0e74d1846b2827546efca481228f11e89c153456d59b5ab711ff`
+- `result.json` SHA256 `0bfc281aa24aa4aa4ee4bd6dd7bbfb29886c3a1effc94e22ba133dec562b1952`
+- `pack-run.json` SHA256 `9584abc531ea1f63d9a449c99a94a4c7ceeebbe05d6286e0c5957a451c087f3b`
+- `native-profile-assessment.json` SHA256 `3f14a170fae57aa7fb1d7cec162cb49aa87debcbb735e6b036598733a23eb947`
+- `native-packet-assessment.json` SHA256 `c3f2095877130cc544b834c89668fea35529906821b8b828e4dd34dc0d673363`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":300,"after":500},"3077":{"before":58479,"after":20480},"3079":{"before":179,"after":105},"65515":{"before":170,"after":268}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Separate selected-profile two-tick commits; UI evidence and packet/display latency separate"}`
+
+## Native gameplay extendedantifire acceptance (2026-10-17 UTC)
+
+Four native Extended antifire doses,1/2/3/4lava shards debited from one selected stack,13750fineXP at5x with preserved fractions, two-tick commits, full28slots22pots/1000coins and same-save no replay. Native modifiers, drinking/acquisition and original compiled Kotlin remain separate.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking/Herblore parity or unrelated recipes. No issue closure.
+
+`openrune-native-extendedantifire-001` PASS. Server archive `72AA23CD517817FFB20E92728AEC5F1C170E12FD7DEF5A335B98FFEF491D2B29`, driver `extendedantifire-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID10008.
+- Driver `NativeExtendedAntifireScenario.rs` SHA256 `41EFEC75FFEF32DD245761E3B21D64B6D94E6B2F27CFE843F122F78389F63031`
+- Driver `server_extendedantifire.exe` SHA256 `2EFA2F9219108E17D406EA052A2D6DF232FE49559A0D1DD3F967F50C236BA784`
+- `client.log` SHA256 `7f304b5928750f15a758cff54b6140b9e901a2a90aa70a7e3cf65e794f8a8c91`
+- `server.log` SHA256 `90178c579b9741188d92f4ada3b0c66014631e99514d01b72208d8416ce9853c`
+- `server.json` SHA256 `a121b8a509368804607dd4dae890af0d6e2fa766c6c7136b8298db780edd9190`
+- `initial-state.json` SHA256 `8817477444e104ec4299828095c45696c979e74bf5d9e482259b85a24abd7c24`
+- `final-state.json` SHA256 `f8555f3d0b202365e97f751db1c88be74f5d4f04547496fb877ba4f144451480`
+- `pack-assessment.json` SHA256 `5bcb9c356325211071b63c67d191798ba36c9f56b3431c30c4276e0b8e7018e9`
+- `extendedantifire-trace-assessment.json` SHA256 `2531f285e3db32b470e2c807349d5265e54bb5e1d1c6cc9fcd518c5a798fdf01`
+- `logout-observation.json` SHA256 `e7d5e19cc0126457915efb676f8e2cd1588cc6e6a50eee044822cc979375457c`
+- `shutdown.json` SHA256 `0f77abb50bbc4e64076f3541839fe177212fee35379b0221fc458755867d599a`
+- `result.json` SHA256 `c093670d58b08926d0ebf1a2acd83288edd9f4693266adaaa627c83accc20fc9`
+- `pack-run.json` SHA256 `708d9060171fc7c2f44430440bcde987146a54380a782a57a11c260b139ba29a`
+- `native-profile-assessment.json` SHA256 `3f14a170fae57aa7fb1d7cec162cb49aa87debcbb735e6b036598733a23eb947`
+- `native-packet-assessment.json` SHA256 `d58fa27ef534380d9cf8407e16abf1f397bc01cadeb1b98cd944ea4973d70e0b`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":200},"3077":{"before":0,"after":23474},"3079":{"before":0,"after":133},"65515":{"before":0,"after":127}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[{"actor_slot":1,"actor_generation":614,"base_slot":1,"secondary_slot":0,"base":2458,"secondary":11994,"output":11957,"count":1,"queued_at":82,"committed_at":84,"index":0,"base_fine_xp":275,"rate_hundreds":500,"fine_before":130344311,"fine_after":130345686,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"base_slot":2,"secondary_slot":0,"base":2456,"secondary":11994,"output":11955,"count":1,"queued_at":92,"committed_at":94,"index":0,"base_fine_xp":550,"rate_hundreds":500,"fine_before":130345686,"fine_after":130348436,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"base_slot":3,"secondary_slot":0,"base":2454,"secondary":11994,"output":11953,"count":1,"queued_at":102,"committed_at":104,"index":0,"base_fine_xp":825,"rate_hundreds":500,"fine_before":130348436,"fine_after":130352561,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"base_slot":4,"secondary_slot":0,"base":2452,"secondary":11994,"output":11951,"count":1,"queued_at":112,"committed_at":114,"index":0,"base_fine_xp":1100,"rate_hundreds":500,"fine_before":130352561,"fine_after":130358061,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5}],"scope":"Separate selected-profile two-tick commits; UI evidence and packet/display latency separate"}`
+
+`openrune-extendedantifire-relogin-001` PASS. Server archive `72AA23CD517817FFB20E92728AEC5F1C170E12FD7DEF5A335B98FFEF491D2B29`, driver `extendedantifire-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor `openrune-native-extendedantifire-001`, owned PID6900.
+- Driver `NativeExtendedAntifireScenario.rs` SHA256 `41EFEC75FFEF32DD245761E3B21D64B6D94E6B2F27CFE843F122F78389F63031`
+- Driver `server_extendedantifire.exe` SHA256 `2EFA2F9219108E17D406EA052A2D6DF232FE49559A0D1DD3F967F50C236BA784`
+- `client.log` SHA256 `2d349ed88f338658e31644320bf21be29c32f6425a7409bde3068132b4aa5d3e`
+- `server.log` SHA256 `a95b01efd5e803f565756280d332c1261ffbc020bb952b750b12350f84aa8474`
+- `server.json` SHA256 `b879c6c2ba5418ad8dc0e3725364da55f1793830ceeeb8ab3359167e3247a3c5`
+- `initial-state.json` SHA256 `f8555f3d0b202365e97f751db1c88be74f5d4f04547496fb877ba4f144451480`
+- `final-state.json` SHA256 `27afaacf86675b382dd4002829cf649ea549f3f1abf6ebd9ef346ad5d9463522`
+- `pack-assessment.json` SHA256 `a8d019220832c6b81ff5dd05b9222fa6d0dd2c51812a59ca52f0ae9c53fcd2a1`
+- `extendedantifire-trace-assessment.json` SHA256 `15565119835c4387827e07e673e26fc0ec5897457d403e87d7333c03aaf96013`
+- `logout-observation.json` SHA256 `388a846a8fb3fe194373f2312ce39160db1afeba8247a09859a75526127dcfb3`
+- `shutdown.json` SHA256 `b74f95e66b34853a265092aac7426ca55275fed99a89515e966c13050a90261f`
+- `result.json` SHA256 `a5ad41203acc750f1bda6be34d4a30224a05580949afdd6b3342e0f6261ba8af`
+- `pack-run.json` SHA256 `4132c84689a4cdb2895d9c865c317305bc4310cb586205e9e3d89878d7e0a8b1`
+- `native-profile-assessment.json` SHA256 `3f14a170fae57aa7fb1d7cec162cb49aa87debcbb735e6b036598733a23eb947`
+- `native-packet-assessment.json` SHA256 `9081c73675b833d5b4dcd69975a915a9bfb0f4b7d4e1750ec5045f2f4db011be`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":200,"after":300},"3077":{"before":23474,"after":33843},"3079":{"before":133,"after":90},"65515":{"before":127,"after":212}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Separate selected-profile two-tick commits; UI evidence and packet/display latency separate"}`
