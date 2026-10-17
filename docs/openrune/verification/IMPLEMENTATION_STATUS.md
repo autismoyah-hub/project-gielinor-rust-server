@@ -67,3 +67,9 @@ Throughput:22historical contracts plus7new gameplay/shared units;29units/30appen
 Sourceeeb270e37b44388f784f2ac2bd40c34fb8c2df2e registers nine prepared fruit portion foods through shared ordinary binding and actual held Eat dispatch. Focused5server12worldPASS;397hashes unchanged;9target definitionsPASS. Pinned Food/Allfood15318406 explicitly supplies four heal fields omitted from individual pages. Existing ordinary/multipart regressions retained; native/lifecycle acceptance queued independently.
 
 Throughput:22historical contracts plus8new gameplay/shared units;30units/31append-only records. Inventory20partially contracted eligible source files/tables,656configuration records,2832not-yet-assessed. Remaining content/backfill/source reconciliation continues; no complete migration claim.
+
+## Checkpoints OR-MIG-0031 and historical OR-MIG-0032
+
+Manual Admiral source0fe7d767e630ace7d5518be979adf094bb285026 registers three stages with optional shared1/2/2clock timing;70server427worldPASS/1existingignored;397hashes unchanged;7target definitionsPASS. Recipe ABI/player schema/default27timing preserved. Make-X and baking remain excluded. Historical27recipe sourcefe04a83de2b6f7f3edefc92c7f7031290a5908b0 backfilled with actual registration/atomicity/reward/requirement limits and preserved native/failure evidence;no old validation repeated. Independent V0-V4 queued.
+
+Throughput:23historical contracts plus9new gameplay/shared units;32units/33append-only records. Inventory22partially contracted eligible source files/tables,656configuration records,2830not-yet-assessed. No complete eligible-module denominator or migration-completion claim;remaining source reconciliation,content and prior backfill continue.
