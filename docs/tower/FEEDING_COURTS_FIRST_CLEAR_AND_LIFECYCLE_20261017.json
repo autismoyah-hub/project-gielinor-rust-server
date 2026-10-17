@@ -1,0 +1,694 @@
+{
+  "server_runtime_source": "089814d feeding-court furnishings; c805cce adds safe preview metadata only",
+  "server_binary_sha256": "EFFA227332F6C7645179EDB6841F57783631FE8C1F27EAF1F9900C220E254077",
+  "change": "Two existing enclosure props become stable genuine filled trough5575; no combat, hazard, transaction or save changes.",
+  "tests": {
+    "cache": 24,
+    "server": 57,
+    "world": 407,
+    "existing_ignored": 2,
+    "real_reachable_tiles": 2098,
+    "legal_lethal_pattern_escapes": 1512
+  },
+  "first_clears": {
+    "native": {
+      "accepted": true,
+      "service_order": "workshop-first",
+      "active_seconds": 828.86,
+      "steps": [
+        {
+          "step": "services.py",
+          "arguments": [
+            "--onboard",
+            "--gate-check",
+            "--order",
+            "workshop-first",
+            "--scene-checks",
+            "--landmarks",
+            "8",
+            "--coolant-lesson",
+            "--native-frames"
+          ],
+          "seconds": 288.61,
+          "exit_code": 0
+        },
+        {
+          "step": "recovery.py",
+          "arguments": [],
+          "seconds": 40.54,
+          "exit_code": 0
+        },
+        {
+          "step": "guardian.py",
+          "arguments": [
+            "imp",
+            "--style",
+            "accurate",
+            "--native-frames",
+            "--label",
+            "first-feeding"
+          ],
+          "seconds": 107.69,
+          "exit_code": 0
+        },
+        {
+          "step": "guardian.py",
+          "arguments": [
+            "warden",
+            "--style",
+            "accurate",
+            "--require-coolant",
+            "--native-frames",
+            "--timeout",
+            "600",
+            "--label",
+            "first-feeding"
+          ],
+          "seconds": 329.06,
+          "exit_code": 0
+        },
+        {
+          "step": "restoration.py",
+          "arguments": [
+            "--label",
+            "victory",
+            "--expected",
+            "18526,18511,16811,16811,16810,18525,18525,18525",
+            "--native-frames"
+          ],
+          "seconds": 4.87,
+          "exit_code": 0
+        },
+        {
+          "step": "claim.py",
+          "arguments": [
+            "--full-pack",
+            "--native-frames"
+          ],
+          "seconds": 44.74,
+          "exit_code": 0
+        },
+        {
+          "step": "exit_return.py",
+          "arguments": [],
+          "seconds": 13.35,
+          "exit_code": 0
+        }
+      ],
+      "real_lethal_rescue": true,
+      "eight_scene_states": true,
+      "phases_seen": [
+        2,
+        3
+      ],
+      "coolant_ack_uids": [
+        73
+      ],
+      "first_coins": 500,
+      "first_beer": 1,
+      "full_pack_atomic_denial_then_legitimate_space_recovery": true,
+      "chest_reply_uids_capacity_payout_duplicate": [
+        82,
+        83,
+        84
+      ],
+      "duplicate_minted": 0,
+      "exact_portal_state": true
+    },
+    "headless": {
+      "accepted": true,
+      "service_order": "kitchen-first",
+      "active_seconds": 788.48,
+      "steps": [
+        {
+          "step": "services.py",
+          "arguments": [
+            "--onboard",
+            "--gate-check",
+            "--order",
+            "kitchen-first",
+            "--scene-checks",
+            "--landmarks",
+            "8",
+            "--coolant-lesson"
+          ],
+          "seconds": 266.42,
+          "exit_code": 0
+        },
+        {
+          "step": "recovery.py",
+          "arguments": [],
+          "seconds": 39.02,
+          "exit_code": 0
+        },
+        {
+          "step": "guardian.py",
+          "arguments": [
+            "imp",
+            "--style",
+            "accurate",
+            "--label",
+            "first-feeding"
+          ],
+          "seconds": 94.23,
+          "exit_code": 0
+        },
+        {
+          "step": "guardian.py",
+          "arguments": [
+            "warden",
+            "--style",
+            "accurate",
+            "--require-coolant",
+            "--timeout",
+            "600",
+            "--label",
+            "first-feeding"
+          ],
+          "seconds": 333.27,
+          "exit_code": 0
+        },
+        {
+          "step": "restoration.py",
+          "arguments": [
+            "--label",
+            "victory",
+            "--expected",
+            "18526,18511,16811,16811,16810,18525,18525,18525"
+          ],
+          "seconds": 0.78,
+          "exit_code": 0
+        },
+        {
+          "step": "claim.py",
+          "arguments": [
+            "--full-pack"
+          ],
+          "seconds": 43.53,
+          "exit_code": 0
+        },
+        {
+          "step": "exit_return.py",
+          "arguments": [],
+          "seconds": 11.23,
+          "exit_code": 0
+        }
+      ],
+      "real_lethal_rescue": true,
+      "eight_scene_states": true,
+      "phases_seen": [
+        2,
+        3
+      ],
+      "coolant_ack_uids": [
+        73
+      ],
+      "first_coins": 500,
+      "first_beer": 1,
+      "full_pack_atomic_denial_then_legitimate_space_recovery": true,
+      "chest_reply_uids_capacity_payout_duplicate": [
+        82,
+        83,
+        84
+      ],
+      "duplicate_minted": 0,
+      "exact_portal_state": true
+    }
+  },
+  "ordinary_reconnect": {
+    "native": {
+      "accepted": true,
+      "checks": [
+        "exact inventory slots/counts",
+        "exact equipment",
+        "all25XP",
+        "exact journal/paid history",
+        "eight durable scene landmarks",
+        "both feeding trough5575",
+        "entrance17097/rear7017"
+      ]
+    },
+    "headless": {
+      "accepted": true,
+      "checks": [
+        "exact inventory slots/counts",
+        "exact equipment",
+        "all25XP",
+        "exact journal/paid history",
+        "eight durable scene landmarks",
+        "both feeding trough5575",
+        "entrance17097/rear7017"
+      ]
+    }
+  },
+  "native_review": {
+    "views_inspected": 56,
+    "areas": 14,
+    "camera_yaws": [
+      0,
+      4096,
+      8192,
+      12288
+    ],
+    "service_frames_inspected": 4,
+    "imp_frames_inspected": 4,
+    "warden_frames_inspected": 6,
+    "settled_first_paid_journal_inspected": true,
+    "raw_frame_hashes": [
+      {
+        "area": "arrival",
+        "yaw": 0,
+        "filename": "frame-2710.bmp",
+        "sha256": "87068c1bc7ac4c05ec07e040230e7b9e9b45c0be728ef4a5beed7c344106e888"
+      },
+      {
+        "area": "arrival",
+        "yaw": 4096,
+        "filename": "frame-2712.bmp",
+        "sha256": "dc83a94e967fc45efb3080aa70beec011d2604545b6985b515d072c0da9b1dfb"
+      },
+      {
+        "area": "arrival",
+        "yaw": 8192,
+        "filename": "frame-2714.bmp",
+        "sha256": "b5a79d57bbe7779d03613ecce407d942fb7dae008bbe8c8bcc2ceb7766a4ab09"
+      },
+      {
+        "area": "arrival",
+        "yaw": 12288,
+        "filename": "frame-2716.bmp",
+        "sha256": "edab1672aed13d2f8c013bb3052896b1763997b1271d6af804f6d9554b253fac"
+      },
+      {
+        "area": "sanctuary",
+        "yaw": 0,
+        "filename": "frame-2742.bmp",
+        "sha256": "27b3f74f85288bb8f981500a3e4ba3f29ddd7803a0ce51891e1c93b50734faad"
+      },
+      {
+        "area": "sanctuary",
+        "yaw": 4096,
+        "filename": "frame-2744.bmp",
+        "sha256": "abb93d1ba69e4b097685e1a0d433d51b059331f56948cd4122d25b10a3e175c3"
+      },
+      {
+        "area": "sanctuary",
+        "yaw": 8192,
+        "filename": "frame-2746.bmp",
+        "sha256": "445ff558bae7486b06cd95f28cfa5a54391c8b741d5f92faff8933cf99d05b52"
+      },
+      {
+        "area": "sanctuary",
+        "yaw": 12288,
+        "filename": "frame-2748.bmp",
+        "sha256": "edd9dbf3eebff9cd32b05e0526514c33b6d0ba566edc9c00c4eeee4f193dcc3f"
+      },
+      {
+        "area": "restoration hearth",
+        "yaw": 0,
+        "filename": "frame-2764.bmp",
+        "sha256": "3408e0273e0674c9f66674a95291da4bf873a430388817395e2574a7000dc0b9"
+      },
+      {
+        "area": "restoration hearth",
+        "yaw": 4096,
+        "filename": "frame-2766.bmp",
+        "sha256": "3450227454f4be0d72fb7bffb2b7e928dd1d90ae46d9adb1e79888db8b9205cf"
+      },
+      {
+        "area": "restoration hearth",
+        "yaw": 8192,
+        "filename": "frame-2768.bmp",
+        "sha256": "84a3255855851f15b7aa91967ef0b59af8209c4c51f137f329a4a85042481bfe"
+      },
+      {
+        "area": "restoration hearth",
+        "yaw": 12288,
+        "filename": "frame-2770.bmp",
+        "sha256": "6b25c1a20e688224c7f19be8a5a999e72c9ca13402bfde76d601829d54ea1ff1"
+      },
+      {
+        "area": "plaque and reward",
+        "yaw": 0,
+        "filename": "frame-2793.bmp",
+        "sha256": "a5fd529f0b9af01bdeedb351fba42396369ca9e52f71dc9bd9aa72116c59a275"
+      },
+      {
+        "area": "plaque and reward",
+        "yaw": 4096,
+        "filename": "frame-2795.bmp",
+        "sha256": "c1c6cd08f58619ea765cb70a3f6a2cc9732ab0205aa2f86f6754ed77f0d2519d"
+      },
+      {
+        "area": "plaque and reward",
+        "yaw": 8192,
+        "filename": "frame-2797.bmp",
+        "sha256": "04edea5a5964e56fb972236b70efca4b3cf3e74e0f301f91ef79bba7b43d595a"
+      },
+      {
+        "area": "plaque and reward",
+        "yaw": 12288,
+        "filename": "frame-2799.bmp",
+        "sha256": "6ac36c68108d3460fff59ab19d21226472948faee8a5dd83edf13b5872d97d04"
+      },
+      {
+        "area": "workshop",
+        "yaw": 0,
+        "filename": "frame-2848.bmp",
+        "sha256": "4484186e8c4538a7fcf040bfa87e445206d467e265a6db4f0b3221d0b6b0883a"
+      },
+      {
+        "area": "workshop",
+        "yaw": 4096,
+        "filename": "frame-2850.bmp",
+        "sha256": "6f3c7d977b2befcc57442b0948d01294b3b1aec687c11087d670d2a23c8ad2f6"
+      },
+      {
+        "area": "workshop",
+        "yaw": 8192,
+        "filename": "frame-2852.bmp",
+        "sha256": "990ff24c4931921cd3ab2ae3f3a1b81d27d28d67d17955e73145601a37f8098f"
+      },
+      {
+        "area": "workshop",
+        "yaw": 12288,
+        "filename": "frame-2854.bmp",
+        "sha256": "f5abf002316d7928e394fd24df850cd24023c0d35cffc865414a018cf191aa61"
+      },
+      {
+        "area": "moss supply court",
+        "yaw": 0,
+        "filename": "frame-2894.bmp",
+        "sha256": "69d1595b97b14d134e7862a4209b56d6d572c4ddf430aea62188166f6b97440f"
+      },
+      {
+        "area": "moss supply court",
+        "yaw": 4096,
+        "filename": "frame-2896.bmp",
+        "sha256": "1298cffe6d89d326c7b689cd9e1c5f3bbd83ed818ca4b681379993d26f533838"
+      },
+      {
+        "area": "moss supply court",
+        "yaw": 8192,
+        "filename": "frame-2898.bmp",
+        "sha256": "9d21cadeff93afb285c6983a19aca1b48e9fd62d809c3454c76c6e6b12491ac3"
+      },
+      {
+        "area": "moss supply court",
+        "yaw": 12288,
+        "filename": "frame-2900.bmp",
+        "sha256": "6d3aa7d98a250ed84d878fa209ec7fd87d43d40f9e0838b158b1ea8cde4b250f"
+      },
+      {
+        "area": "southern processional hall",
+        "yaw": 0,
+        "filename": "frame-2943.bmp",
+        "sha256": "c60692197e0bbae43723eb80f8aba8906b33a875423a36a4062687cec177a701"
+      },
+      {
+        "area": "southern processional hall",
+        "yaw": 4096,
+        "filename": "frame-2945.bmp",
+        "sha256": "2b61ef9a51f8b38cfdb9d1a2e95c345be1cea885e7be7a3e14afcc8c80ad6fba"
+      },
+      {
+        "area": "southern processional hall",
+        "yaw": 8192,
+        "filename": "frame-2947.bmp",
+        "sha256": "28395e7e94feda7a76792d905daa58ef62aab3f41a296d32c8b18b97a301eecf"
+      },
+      {
+        "area": "southern processional hall",
+        "yaw": 12288,
+        "filename": "frame-2949.bmp",
+        "sha256": "0022885818cf201d8cef0c98d69918e33096a535332b13d7a1ee907128b4c4f4"
+      },
+      {
+        "area": "poultry supply court",
+        "yaw": 0,
+        "filename": "frame-2994.bmp",
+        "sha256": "e0497666903c217f398cf8bc2199e22e60db52f2203ed3b046b854e5b9baffdd"
+      },
+      {
+        "area": "poultry supply court",
+        "yaw": 4096,
+        "filename": "frame-2996.bmp",
+        "sha256": "70d6bd8e8ff9b640fa5773a2ee9a35f5617307eeb0fbce76e9c520a4c39d86bb"
+      },
+      {
+        "area": "poultry supply court",
+        "yaw": 8192,
+        "filename": "frame-2998.bmp",
+        "sha256": "17dbd2cfb1675e3b5e306fa9faf5de66c40f89f9a4388630d960382f8811a429"
+      },
+      {
+        "area": "poultry supply court",
+        "yaw": 12288,
+        "filename": "frame-3000.bmp",
+        "sha256": "bbebd745bba20af15ef5591c9d9303b1a4e32c9efa55c7f3fe4520102deaa28b"
+      },
+      {
+        "area": "waterworks",
+        "yaw": 0,
+        "filename": "frame-3036.bmp",
+        "sha256": "5870285a7612e2fc09b9d5a6d7f88f435ead517590535df1161d44d42340ddc4"
+      },
+      {
+        "area": "waterworks",
+        "yaw": 4096,
+        "filename": "frame-3038.bmp",
+        "sha256": "b4e4f8401914fef7e7c479218dd08989082465c749933c441ddf8b16f3b34423"
+      },
+      {
+        "area": "waterworks",
+        "yaw": 8192,
+        "filename": "frame-3040.bmp",
+        "sha256": "715b2ec88c41d04907047c74e622c1befafa0407156ef9fc15ee26fd45257bc0"
+      },
+      {
+        "area": "waterworks",
+        "yaw": 12288,
+        "filename": "frame-3042.bmp",
+        "sha256": "b75183f11122b8649bd19d98820a271087fc1488aa7339e591fab10fb18421b8"
+      },
+      {
+        "area": "sluice wheel",
+        "yaw": 0,
+        "filename": "frame-3073.bmp",
+        "sha256": "c85fb61829c15f4d0202ec125df12e112bacd103923642e7a02c4fd636b7b0b9"
+      },
+      {
+        "area": "sluice wheel",
+        "yaw": 4096,
+        "filename": "frame-3075.bmp",
+        "sha256": "852a0ad09c02e09df46bb4bf72e91b1201a9826b42bf55178d089c37bddcc1bf"
+      },
+      {
+        "area": "sluice wheel",
+        "yaw": 8192,
+        "filename": "frame-3077.bmp",
+        "sha256": "3e7f08117a8deba07d5ee270d118698fe8b519062b2804c2a6243ceb8dd391fb"
+      },
+      {
+        "area": "sluice wheel",
+        "yaw": 12288,
+        "filename": "frame-3079.bmp",
+        "sha256": "e6a2daed467d0cec74b49340c6a56526423a001ee47199caac758359fddd3e22"
+      },
+      {
+        "area": "grove",
+        "yaw": 0,
+        "filename": "frame-3165.bmp",
+        "sha256": "29ba0a7b957685684de5539882df7597ee3319e0690ace1d1a5de59dd309b671"
+      },
+      {
+        "area": "grove",
+        "yaw": 4096,
+        "filename": "frame-3167.bmp",
+        "sha256": "325e6b431820059a52cd23fb99b69a1b3474dbadd5e380312b7780ac735868c1"
+      },
+      {
+        "area": "grove",
+        "yaw": 8192,
+        "filename": "frame-3169.bmp",
+        "sha256": "0cf2add66ebca06b8ba8e463c09ffaea621f78e030d6cb5ca13aed05ea52d684"
+      },
+      {
+        "area": "grove",
+        "yaw": 12288,
+        "filename": "frame-3171.bmp",
+        "sha256": "556ef6b2c0a8e6371d074ffa9ddcbca425fc2dd0a4e5e8c190d20296cd1c06ad"
+      },
+      {
+        "area": "foundry vestibule",
+        "yaw": 0,
+        "filename": "frame-3213.bmp",
+        "sha256": "2ff1d1278c9b3ad94e171b5430ed7e1d3059be92a012566541a81529ae8c81d1"
+      },
+      {
+        "area": "foundry vestibule",
+        "yaw": 4096,
+        "filename": "frame-3215.bmp",
+        "sha256": "e036bbf9b9d6f0447d6cc6573e586a7f7e8d2b1139f94f10aa749b81a5913a68"
+      },
+      {
+        "area": "foundry vestibule",
+        "yaw": 8192,
+        "filename": "frame-3217.bmp",
+        "sha256": "b3fb001605bf50826a3ddd2687378c75a7602fd4baff68a9e1e8b71b34eac1ed"
+      },
+      {
+        "area": "foundry vestibule",
+        "yaw": 12288,
+        "filename": "frame-3219.bmp",
+        "sha256": "852941c4d8dc64a8bba5f43f76c9a8ee9d80a776418d8bd1a37ebf3cbba461bf"
+      },
+      {
+        "area": "Ash Warden chamber",
+        "yaw": 0,
+        "filename": "frame-3244.bmp",
+        "sha256": "8ff6ea5d0725f497be3248050c08c86fe834c00ee441d7ddd5cfffc8410682fa"
+      },
+      {
+        "area": "Ash Warden chamber",
+        "yaw": 4096,
+        "filename": "frame-3246.bmp",
+        "sha256": "a2e7ca3a1ad3cd00cfe4b799f095efc1db3370adca1db11ea5c23e3b2ddc7d2c"
+      },
+      {
+        "area": "Ash Warden chamber",
+        "yaw": 8192,
+        "filename": "frame-3248.bmp",
+        "sha256": "70f4ab87a4b957295e8e7ba1018ca68a514fc4778d0717ec1f113a39dc3a382a"
+      },
+      {
+        "area": "Ash Warden chamber",
+        "yaw": 12288,
+        "filename": "frame-3250.bmp",
+        "sha256": "0575dbf75ff9335449abca4f0a8d44c3b6ee7e806e61c61e8bffede370de97d3"
+      },
+      {
+        "area": "Ash Imp vent gallery",
+        "yaw": 0,
+        "filename": "frame-3310.bmp",
+        "sha256": "622ba9feac7894f0e823c16dc26acae1cf8705514628c59e64ea26a695441ffa"
+      },
+      {
+        "area": "Ash Imp vent gallery",
+        "yaw": 4096,
+        "filename": "frame-3312.bmp",
+        "sha256": "902a40b6cde7efaf011fa5e5cca0957e780ec24aea2f17117acddafff9429bbf"
+      },
+      {
+        "area": "Ash Imp vent gallery",
+        "yaw": 8192,
+        "filename": "frame-3314.bmp",
+        "sha256": "c4fbd91dceb4fadf5c29f4cf2c362fdc4aba01f40be5f24e73af17661f7e5ad7"
+      },
+      {
+        "area": "Ash Imp vent gallery",
+        "yaw": 12288,
+        "filename": "frame-3316.bmp",
+        "sha256": "f90ada70a384840777e64579d726519200889f8fc27f3762ee0f980adeaef4d2"
+      }
+    ],
+    "journey_frame_hashes": [
+      {
+        "label": "before-services",
+        "filename": "frame-215.bmp",
+        "sha256": "121e651b83129d9489ed81850915ba11b54f4f88f92f56f2b214ba9be41da0ee"
+      },
+      {
+        "label": "after-workshop",
+        "filename": "frame-427.bmp",
+        "sha256": "3bc3d475b56584c252b855078d25df7dd69bd139291a6dfa375e19a2276b8452"
+      },
+      {
+        "label": "after-kitchen",
+        "filename": "frame-774.bmp",
+        "sha256": "600673210fcaf0c391a5da9c395cde133cfddfd08cb1b3a5c0e6c62a0b38dae0"
+      },
+      {
+        "label": "after-altar",
+        "filename": "frame-921.bmp",
+        "sha256": "2c015668b941c61a9da62c8d378778e841693a476f0e26b15ca5a6eb61e7490e"
+      },
+      {
+        "label": "imp warning phase 1",
+        "filename": "frame-1136.bmp",
+        "sha256": "3e8747b732e4e7236bb0ffd3c9f592889b7379f8a72ff259b977053c15b6f3f3"
+      },
+      {
+        "label": "imp warning phase 2",
+        "filename": "frame-1243.bmp",
+        "sha256": "cea28bb8f844b7c11fc00a8fc5d0f90fe7c9d99e00602106f7dec9f47c9d244c"
+      },
+      {
+        "label": "imp victory in arena",
+        "filename": "frame-1358.bmp",
+        "sha256": "30f7b74810b7eb6a0d328b5a89c835f07dbbfb8329e8bb53a474dacb245c231c"
+      },
+      {
+        "label": "warden warning phase 1",
+        "filename": "frame-1445.bmp",
+        "sha256": "0cb47bb02f1577c5acff81f48f8368f7a12ad084b3e4d7a4fe48bf0dcffdf5f0"
+      },
+      {
+        "label": "warden warning phase 2",
+        "filename": "frame-1850.bmp",
+        "sha256": "3ca11d044d7d50fbc7dd20d6b4ada0cac0355f06c9fa6631f14ebadb5bca07cc"
+      },
+      {
+        "label": "warden warning phase 3",
+        "filename": "frame-2231.bmp",
+        "sha256": "a6d43082730b4e40e554120c12b9de8115288a93d5af4846b53b4b24dce72db8"
+      },
+      {
+        "label": "warden coolant steam and flinch",
+        "filename": "frame-1449.bmp",
+        "sha256": "c36b67b44025638299ce237b23ed916b18a1668a8f9795fa227ee7b91c6fcfb0"
+      },
+      {
+        "label": "warden victory in arena",
+        "filename": "frame-2466.bmp",
+        "sha256": "4760a32a5ee4c5c60da8b1a6a067f88c60a37fb7cc17efc12af584730be7524c"
+      },
+      {
+        "label": "First reward paid; restored sanctuary and settled journal",
+        "filename": "frame-2742.bmp",
+        "sha256": "27b3f74f85288bb8f981500a3e4ba3f29ddd7803a0ce51891e1c93b50734faad"
+      }
+    ]
+  },
+  "artistic_acceptance": "Pending user review; overall production mandate remains unfinished. Next arena paving is an offline study only.",
+  "human_20_30_minute_first_play": "Unmeasured; automated timings are not a human pacing guarantee.",
+  "failed_launch_retained": {
+    "accepted": false,
+    "evidence": "evidence/headless-feeding25-fresh/scenario-timing.json",
+    "reason": "Local socket10013 before login, then120-second readiness timeout. Original client stopped normally. Independent retry used ordinary fresh registration with required local-network permission."
+  },
+  "paired_earned_observer": {
+    "accepted": true,
+    "native_cameras": 4,
+    "max_separation_seconds": 0.1118,
+    "active_warden_present": true,
+    "active_warning_and_strike_observed": true,
+    "earned_warden_and_hazards_absent": true,
+    "peer_avatars_remain_visible": true,
+    "scope": "Personal shared-region presentation, not cooperative encounter ownership."
+  },
+  "crash_recovery": {
+    "accepted": true,
+    "scope": "Both ordinary reconnects verified first; then exact state survived a deliberate crash of their connected sessions, with independently committed paid states confirmed before crash. This is not an interrupted in-flight transaction claim.",
+    "checks": [
+      "same inventory, equipment, all 25 XP and journal after crash without logout",
+      "fresh server UID acknowledges each duplicate Search after restart; exact items stay unchanged",
+      "all eight landmarks",
+      "both trough5575",
+      "entrance17097/rear7017"
+    ],
+    "duplicate_ack": "Each post-crash Search required a fresh server UID and preserved exact items.",
+    "server_process_proof": "evidence/feeding-courts-crash-process-proof.json",
+    "committed_database_proof": "evidence/feeding-courts-crash-before.json"
+  }
+}
