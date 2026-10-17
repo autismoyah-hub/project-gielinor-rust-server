@@ -1,0 +1,1152 @@
+{
+  "observed_utc": "2026-10-17T23:09:19.312043+00:00",
+  "forge_head": "1efda0299062de44fd7196e6555c19b87f02d12b",
+  "queue_sha256": "17040ee9bd9695e52145e32fb1d26e9d9302b9f2b6b541d314c3d3bdcdeef187",
+  "published_validator_sha256": "5e5a3a2aa9a8e83db555150e09332188486a6b13c9bb3be1925eac2357346354",
+  "published_validator_status": "PASS",
+  "json_schema_status": "UNAVAILABLE: jsonschema package; published validator PASS",
+  "records": 37,
+  "implementation_units": 35,
+  "new_contracts": [],
+  "updated_contracts": [],
+  "new_since_initial_checkpoint": [
+    "OR-MIG-0022",
+    "OR-MIG-0023",
+    "OR-MIG-0024",
+    "OR-MIG-0025",
+    "OR-MIG-0026",
+    "OR-MIG-0027",
+    "OR-MIG-0028",
+    "OR-MIG-0029",
+    "OR-MIG-0030",
+    "OR-MIG-0031",
+    "OR-MIG-0032",
+    "OR-MIG-0033",
+    "OR-MIG-0034",
+    "OR-MIG-0035"
+  ],
+  "resume_queue": [
+    {
+      "lane": "B",
+      "feature": "OR-MIG-0006",
+      "action": "Complete native negative/cancelled held and worn dialogs, last-charge production/modifiers and interrupted production persistence; retain completed positive controls/restart evidence",
+      "sha": "e7ac3608e61893d80b2de6a1a2e512b3ab785505"
+    },
+    {
+      "lane": "C",
+      "feature": "OR-MIG-0006",
+      "action": "Inspect shared changes since the last recorded native integration campaign; select affected current-build regression scopes without inheriting older PASS results",
+      "sha": "1efda0299062de44fd7196e6555c19b87f02d12b"
+    },
+    {
+      "lane": "A",
+      "feature": "OR-MIG-0024",
+      "action": "Expand runtime packet and genuine native ordinary/remainder food acceptance after completed revision-3 authoritative tests; item-pack native/lifecycle remains separate",
+      "sha": "ae3d234c71764dd2364f8452fc1974a54a6783f0"
+    }
+  ],
+  "contract_revisions": [
+    {
+      "implementation_id": "OR-MIG-0001",
+      "revision": 1,
+      "implementation_sha": "d8978ede56778fc7821fbb85fa0617d5b8f0c683",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0002",
+      "revision": 1,
+      "implementation_sha": "a5e21e03c483b0a0fead9958f69965e3bc1d2be7",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0003",
+      "revision": 1,
+      "implementation_sha": "f3b4b984af8f62ff3b3dd4505cbb6378c795b464",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0004",
+      "revision": 1,
+      "implementation_sha": "613b29ac4e3d39a924079b4fe23fbc6f7da825ad",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0005",
+      "revision": 1,
+      "implementation_sha": "87c4a3def09272158b488a8e3d24be5463d879a7",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0006",
+      "revision": 1,
+      "implementation_sha": "e7ac3608e61893d80b2de6a1a2e512b3ab785505",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "PASS",
+          "reason": "Exact-SHA server compiled; full runtime startup and cache-backed definitions succeeded; native actions reached configured gameplay dispatch.",
+          "evidence": [
+            "docs/openrune/verification/independent/deep-chemistry/independent-assessment.json"
+          ]
+        },
+        "V1": {
+          "status": "IN_PROGRESS",
+          "reason": "Historical headless checks and native positive transitions passed; complete independently specified authoritative negative/modifier matrix remains open.",
+          "evidence": [
+            "docs/openrune/verification/independent/deep-chemistry/independent-assessment.json"
+          ]
+        },
+        "V2": {
+          "status": "IN_PROGRESS",
+          "reason": "Exact historical SHA now has separate genuine native held controls/break and worn Options -> Stop campaigns, each with acknowledged save, actual restart and native relogin. Equipped item, charges, stop policy, coins and XP subchecks PASS; negative/cancelled dialogs, production/modifier and interrupted-transaction acceptance remain open.",
+          "evidence": [
+            "docs/openrune/verification/independent/deep-chemistry-worn/hist-worn-002/independent-assessment.json",
+            "docs/openrune/verification/independent/deep-chemistry/independent-assessment.json"
+          ]
+        },
+        "V3": {
+          "status": "IN_PROGRESS",
+          "reason": "Exact historical SHA now has separate genuine native held controls/break and worn Options -> Stop campaigns, each with acknowledged save, actual restart and native relogin. Equipped item, charges, stop policy, coins and XP subchecks PASS; negative/cancelled dialogs, production/modifier and interrupted-transaction acceptance remain open.",
+          "evidence": [
+            "docs/openrune/verification/independent/deep-chemistry-worn/hist-worn-002/independent-assessment.json",
+            "docs/openrune/verification/independent/deep-chemistry/independent-assessment.json"
+          ]
+        },
+        "V4": {
+          "status": "IN_PROGRESS",
+          "reason": "Independent protected-source and pinned-documentation subcomparisons PASS within recorded scope; complete feature comparison remains open. No executable donor parity is claimed.",
+          "evidence": [
+            "docs/openrune/verification/independent/deep-chemistry/independent-assessment.json"
+          ]
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0007",
+      "revision": 1,
+      "implementation_sha": "693dd370dac7e111b2903042f7f6415074b8d166",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0008",
+      "revision": 1,
+      "implementation_sha": "03bffb1fab1d30eaa92e20753c5152ceae845289",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0009",
+      "revision": 1,
+      "implementation_sha": "29d9751117da03956b79682fb6b5ebe219b0848d",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0010",
+      "revision": 1,
+      "implementation_sha": "5a260c1bd6efa5f8a221bed7c96e6ac72fd428bc",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "PASS",
+          "reason": "Exact-SHA server compiled; full runtime startup and cache-backed definitions succeeded; native actions reached configured gameplay dispatch.",
+          "evidence": [
+            "docs/openrune/verification/independent/deep-combat/independent-assessment.json"
+          ]
+        },
+        "V1": {
+          "status": "IN_PROGRESS",
+          "reason": "Historical headless checks and native positive transitions passed; complete independently specified authoritative negative/modifier matrix remains open.",
+          "evidence": [
+            "docs/openrune/verification/independent/deep-combat/independent-assessment.json"
+          ]
+        },
+        "V2": {
+          "status": "IN_PROGRESS",
+          "reason": "Genuine programmatic native menu/action/packet and authoritative-state subchecks PASS. Native stale/interruption/modifier cases and any applicable rendered acceptance remain open.",
+          "evidence": [
+            "docs/openrune/verification/independent/deep-combat/independent-assessment.json"
+          ]
+        },
+        "V3": {
+          "status": "IN_PROGRESS",
+          "reason": "Actual acknowledged-save, process restart, native relogin and durable inventory/XP/state checks PASS; interrupted/partial production and any applicable crash-recovery scenarios remain open.",
+          "evidence": [
+            "docs/openrune/verification/independent/deep-combat/independent-assessment.json"
+          ]
+        },
+        "V4": {
+          "status": "IN_PROGRESS",
+          "reason": "Independent protected-source and pinned-documentation subcomparisons PASS within recorded scope; complete feature comparison remains open. No executable donor parity is claimed.",
+          "evidence": [
+            "docs/openrune/verification/independent/deep-combat/independent-assessment.json",
+            "docs/openrune/verification/independent/deep-combat/reference-comparison.json"
+          ]
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0011",
+      "revision": 1,
+      "implementation_sha": "289981e0efb1cd0397aa4836311df05ff5d1c2aa",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0012",
+      "revision": 1,
+      "implementation_sha": "289981e0efb1cd0397aa4836311df05ff5d1c2aa",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0013",
+      "revision": 1,
+      "implementation_sha": "03ce46c812d4f5a6b91461367e9f3bec1e242fa7",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0014",
+      "revision": 1,
+      "implementation_sha": "da62d6154b74f0044498940e66837e7d80b98024",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0015",
+      "revision": 1,
+      "implementation_sha": "337cbd9e7209bc877a5920d2cd9a549c9d05a3ec",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0016",
+      "revision": 1,
+      "implementation_sha": "b1cade8a86f369a6bbd89145f6ea9673ba834f0a",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0017",
+      "revision": 1,
+      "implementation_sha": "d09659ad92659d2b7eedb3a562ecda6ad8a75ca9",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0018",
+      "revision": 1,
+      "implementation_sha": "71289e622cdfac55d5f11e1c857f325929ebff3f",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "IN_PROGRESS",
+          "reason": "Historical partial evidence retained; no complete level acceptance inferred"
+        },
+        "V1": {
+          "status": "IN_PROGRESS",
+          "reason": "Historical partial evidence retained; no complete level acceptance inferred"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0019",
+      "revision": 1,
+      "implementation_sha": "d02633e45576cbea0ba4e14e7d3cb8c164886950",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0020",
+      "revision": 1,
+      "implementation_sha": "cf75fa343a0fc86c50f4451a22600cc10a0ee500",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0021",
+      "revision": 1,
+      "implementation_sha": "c8b9aef260db3101dafb2b591ebbdfa4add69f5b",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0022",
+      "revision": 1,
+      "implementation_sha": "71fa140f48a1860c90b294344ddb3bdcde2e8781",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0023",
+      "revision": 1,
+      "implementation_sha": "caefcf424869d2a54d711acd22a279351f098be0",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "IN_PROGRESS",
+          "reason": "Exact-SHA world atomicity/overflow helpers and server pack-definition bindings PASS (five test functions); full repeat-queue/native/lifecycle/reference acceptance remains open.",
+          "evidence": [
+            "docs/openrune/verification/independent/OR-MIG-0023-caefcf424869/manifest.json"
+          ]
+        },
+        "V1": {
+          "status": "IN_PROGRESS",
+          "reason": "Four exact-SHA world tests PASS including authoritative repeat opening, movement cancellation and stale selected-slot refusal. Attested binary was replayed without rebuilding during CPU contention. Native/lifecycle/reference acceptance remains open.",
+          "evidence": [
+            "docs/openrune/verification/independent/OR-MIG-0023-caefcf424869-cached-1792277281132359500/manifest.json"
+          ]
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0024",
+      "revision": 1,
+      "implementation_sha": "0132d0737f7bcbab7f2387dc3151f238a055922d",
+      "is_latest_revision": false,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0024",
+      "revision": 2,
+      "implementation_sha": "a560034a59e766d1faf400b61187fec861d13475",
+      "is_latest_revision": false,
+      "levels": {
+        "V0": {
+          "status": "IN_PROGRESS",
+          "reason": "Exact-SHA production crate compiled; runtime cache/registration and packet decoder acceptance remain open.",
+          "evidence": [
+            "docs/openrune/verification/independent/OR-MIG-0024-a560034a59e7-independent-attempt-1792276433787880400/manifest.json"
+          ]
+        },
+        "V1": {
+          "status": "IN_PROGRESS",
+          "reason": "Four independent authoritative World action tests PASS across 319 fixtures: all selected slots, full bags, duplicate/stale input, overheal, remainders and malformed transactions. Runtime packet decode and complete food matrix remain open.",
+          "evidence": [
+            "docs/openrune/verification/independent/OR-MIG-0024-a560034a59e7-independent-attempt-1792276433787880400/manifest.json"
+          ]
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0025",
+      "revision": 1,
+      "implementation_sha": "a560034a59e766d1faf400b61187fec861d13475",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0026",
+      "revision": 1,
+      "implementation_sha": "5b47d7fe42703ade7b97e10636c53abb35bd6e0e",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0027",
+      "revision": 1,
+      "implementation_sha": "f1f0032d54405e6509a6250a94368531df78bb18",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0028",
+      "revision": 1,
+      "implementation_sha": "231f33710596f8a9b4159f332e0e99a26d182b14",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0029",
+      "revision": 1,
+      "implementation_sha": "d8978ede56778fc7821fbb85fa0617d5b8f0c683",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0030",
+      "revision": 1,
+      "implementation_sha": "eeb270e37b44388f784f2ac2bd40c34fb8c2df2e",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0031",
+      "revision": 1,
+      "implementation_sha": "0fe7d767e630ace7d5518be979adf094bb285026",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0032",
+      "revision": 1,
+      "implementation_sha": "fe04a83de2b6f7f3edefc92c7f7031290a5908b0",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0024",
+      "revision": 3,
+      "implementation_sha": "ae3d234c71764dd2364f8452fc1974a54a6783f0",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "IN_PROGRESS",
+          "reason": "Exact-SHA production crate compiled; runtime cache/registration and packet decoder acceptance remain open.",
+          "evidence": [
+            "docs/openrune/verification/independent/OR-MIG-0024-ae3d234c7176-independent/manifest.json"
+          ]
+        },
+        "V1": {
+          "status": "IN_PROGRESS",
+          "reason": "Four independent authoritative World action tests PASS across 319 fixtures: all selected slots, full bags, duplicate/stale input, overheal, remainders and malformed transactions. Runtime packet decode and complete food matrix remain open.",
+          "evidence": [
+            "docs/openrune/verification/independent/OR-MIG-0024-ae3d234c7176-independent/manifest.json"
+          ]
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0033",
+      "revision": 1,
+      "implementation_sha": "ae3d234c71764dd2364f8452fc1974a54a6783f0",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0034",
+      "revision": 1,
+      "implementation_sha": "97b25c57d4c6dc0606adf91dd00e41ec43600a27",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "IN_PROGRESS",
+          "reason": "Same exact source SHA was independently tested as a shared-food integration checkpoint before this contract arrived. Summer-whole 10% energy/HP/boost/remainder and failed-action no-award controls PASS; papaya/half/member-gate/runtime/native/lifecycle/reference coverage remains open.",
+          "evidence": [
+            "docs/openrune/verification/independent/integration-external-energy-food-97b25c57d4c6dc0606adf91dd00e41ec43600a27/manifest.json"
+          ]
+        },
+        "V1": {
+          "status": "IN_PROGRESS",
+          "reason": "Same exact source SHA was independently tested as a shared-food integration checkpoint before this contract arrived. Summer-whole 10% energy/HP/boost/remainder and failed-action no-award controls PASS; papaya/half/member-gate/runtime/native/lifecycle/reference coverage remains open.",
+          "evidence": [
+            "docs/openrune/verification/independent/integration-external-energy-food-97b25c57d4c6dc0606adf91dd00e41ec43600a27/manifest.json"
+          ]
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0035",
+      "revision": 1,
+      "implementation_sha": "1446167370dece10751c4c332929af880259ee23",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "IN_PROGRESS",
+          "reason": "Independent actual World action queue checks PASS: four healing policies across 99 base levels and four HP states (1584 fixtures), plus live-base/stale replay and seven invalid-rule/transaction cases. Full bags, duplicate selected input, bowl return, no XP and rollback verified. Configured runtime/profile binding, membership, native, persistence and reference acceptance remain open.",
+          "evidence": [
+            "docs/openrune/verification/independent/OR-MIG-0035-1446167370de-independent-attempt-1792278447261353100/manifest.json"
+          ]
+        },
+        "V1": {
+          "status": "IN_PROGRESS",
+          "reason": "Independent actual World action queue checks PASS: four healing policies across 99 base levels and four HP states (1584 fixtures), plus live-base/stale replay and seven invalid-rule/transaction cases. Full bags, duplicate selected input, bowl return, no XP and rollback verified. Configured runtime/profile binding, membership, native, persistence and reference acceptance remain open.",
+          "evidence": [
+            "docs/openrune/verification/independent/OR-MIG-0035-1446167370de-independent-attempt-1792278447261353100/manifest.json"
+          ]
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "IN_PROGRESS",
+          "reason": "Independently verified three protected-source hashes and four pinned Wiki revisions/content hashes. Strawberry prose/table conflict, deliberate watermelon donor/Wiki rounding difference, sweetcorn common policy and source-only bowl-return evidence remain explicit. Full native presentation/timing and complete integration fidelity remain open.",
+          "evidence": [
+            "docs/openrune/verification/independent/reference-food-1446167370dece10751c4c332929af880259ee23/comparison.json"
+          ]
+        }
+      }
+    }
+  ]
+}

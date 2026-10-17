@@ -1,0 +1,10 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.04s
+     Running unittests src\lib.rs (C:\Projects\OSRSRSPS\agent7-verification\work\4ef5f5c1ebc50b81e56de4f3e2421e2bba49de03\target\debug\deps\gielinor_world-379bc28e5667f47e.exe)
+
+running 4 tests
+test combat_mixing::tests::rejects_changed_inputs_and_gates_without_rng_or_partial_mutation ... ok
+test combat_mixing::tests::full_bag_boosted_both_torstols_and_selected_slot_orders ... ok
+test simulation::combat_mixing_actions::tests::pending_rechecks_each_input_level_membership_quest_and_movement ... ok
+test simulation::combat_mixing_actions::tests::both_torstols_all_three_native_pairs_both_orders_and_two_tick_repeat ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 423 filtered out; finished in 1.09s

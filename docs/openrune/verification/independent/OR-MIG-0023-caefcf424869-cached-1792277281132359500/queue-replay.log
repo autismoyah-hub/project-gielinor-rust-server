@@ -1,0 +1,8 @@
+
+running 4 tests
+test item_packs::tests::noted_outputs_use_freed_pack_slot_and_overflow_restores_pack ... ok
+test item_packs::tests::selected_pack_and_overflow_are_atomic ... ok
+test simulation::item_pack_actions::tests::selected_pack_opens_then_repeats_and_movement_cancels ... ok
+test simulation::item_pack_actions::tests::stale_slot_never_opens_a_matching_pack_elsewhere ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 323 filtered out; finished in 0.45s

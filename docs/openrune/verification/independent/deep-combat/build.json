@@ -1,0 +1,25 @@
+{
+  "implementation_id": "OR-MIG-0010",
+  "implementation_sha": "5a260c1bd6efa5f8a221bed7c96e6ac72fd428bc",
+  "source_tree": "c65ecf5aadecaf01ca55b91b819ad3aff5fc5563",
+  "command": [
+    "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+    "build",
+    "--offline",
+    "--locked",
+    "-j",
+    "1",
+    "-p",
+    "gielinor-server"
+  ],
+  "exit_code": 0,
+  "binary_sha256": "b5f211494fc4589960fb9f91192774fbdaf416ac62bac8b98a982e51f0797d92",
+  "resource": {
+    "available_ram": 8110346240,
+    "active_compilers": [
+      "\"cargo.exe\",\"12540\",\"RDP-Tcp#0\",\"2\",\"23,932 K\""
+    ],
+    "cpu_percent": 13.67,
+    "disk_free": 52775329792
+  }
+}

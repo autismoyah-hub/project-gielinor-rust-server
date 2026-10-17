@@ -1,0 +1,13 @@
+Live native login accepted, player 1
+World background load: 5.234s
+Live world built: 6409 objects, 522622 triangles, 0 missing regions
+Native pointer selected side tab 3 at [612, 186]
+Native chemistry item option=Options,action=Interface { id: 4294839415, operation: 4, sub: None }
+Native chemistry Options dispatch opcode=47 payload=[00, 95, 00, 00, 00, 03, 52, ab, 04]
+Native chemistry choice Stop widget=4294840983,action=Continue(4294840983),visible_pixel=[269, 451]
+Native chemistry Stop dispatch opcode=115 payload=[db, 00, 01, 00, 00, 02]
+Native chemistry item option=Break,action=Interface { id: 4294839415, operation: 6, sub: None }
+Native chemistry Break dispatch opcode=47 payload=[00, 95, 00, 00, 00, 03, 52, ab, 06]
+Native chemistry choice Confirm widget=4294840994,action=Continue(4294840994),visible_pixel=[269, 425]
+Native chemistry Confirm dispatch opcode=115 payload=[db, 00, 01, 00, 00, 01]
+Native chemistry controls PASS;Options=Stop,Break=1,coins=1000;verify=false

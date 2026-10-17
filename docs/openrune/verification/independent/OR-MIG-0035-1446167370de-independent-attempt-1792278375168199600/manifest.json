@@ -1,0 +1,71 @@
+{
+  "implementation_id": "OR-MIG-0035",
+  "implementation_commit_sha": "1446167370dece10751c4c332929af880259ee23",
+  "source_tree": "2e021c7b5c6a339d9f04cceeebdcf7f29fc7e0f3",
+  "queue_commit": "1efda0299062de44fd7196e6555c19b87f02d12b",
+  "independent_verification": true,
+  "timestamp_utc": "2026-10-17T23:06:16.043382+00:00",
+  "available_memory_bytes": 8396562432,
+  "active_compilers": [],
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\1446167370dece10751c4c332929af880259ee23\\independent-harness\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.03,
+      "log": "docs\\openrune\\verification\\independent\\OR-MIG-0035-1446167370de-independent-attempt-1792278375168199600\\run-0.log",
+      "tests_passed": 0,
+      "zero_tests": false
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\1446167370dece10751c4c332929af880259ee23\\independent-harness\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 26.58,
+      "log": "docs\\openrune\\verification\\independent\\OR-MIG-0035-1446167370de-independent-attempt-1792278375168199600\\run-1.log",
+      "tests_passed": 3,
+      "zero_tests": false
+    }
+  ],
+  "dependency_versions_present_at_target": [
+    {
+      "implementation_id": "OR-MIG-0024",
+      "revision": 3,
+      "sha": "ae3d234c71764dd2364f8452fc1974a54a6783f0",
+      "later_revisions_not_assumed_tested": false
+    },
+    {
+      "implementation_id": "OR-MIG-0033",
+      "revision": 1,
+      "sha": "ae3d234c71764dd2364f8452fc1974a54a6783f0",
+      "later_revisions_not_assumed_tested": false
+    }
+  ],
+  "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-gnu\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+  "resource_measurement": {
+    "available_ram": 8396161024,
+    "active_compilers": [],
+    "cpu_percent": 0.78,
+    "disk_free": 48523399168
+  },
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\OR-MIG-0035-1446167370de-independent-attempt-1792278375168199600\\harness\\authoritative.rs": "c4133b6f3ca73d42ee4173d1e9542fd837a7480619996debbc41bb47a6ef46fc"
+  },
+  "outcome": "PARTIAL",
+  "test_binary_sha256": {
+    "target\\debug\\deps\\authoritative-dbd3b5d3d9f92989.exe": "c0826baca1cf3fcc7ac77990ed2547531538e519f0dc6757ae8642361737318e"
+  }
+}

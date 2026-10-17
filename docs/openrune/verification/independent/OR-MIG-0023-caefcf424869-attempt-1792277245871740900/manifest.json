@@ -1,0 +1,25 @@
+{
+  "implementation_id": "OR-MIG-0023",
+  "implementation_commit_sha": "caefcf424869d2a54d711acd22a279351f098be0",
+  "source_tree": "c6174734e18b9fa5871ed5134c71c9a9d2dc0db1",
+  "queue_commit": "2c21a0f8d87dbe247b6be1cba4d0c0d2bb74658f",
+  "independent_verification": true,
+  "timestamp_utc": "2026-10-17T22:47:27.768169+00:00",
+  "available_memory_bytes": 6865580032,
+  "active_compilers": [
+    "\"cargo.exe\",\"1348\",\"RDP-Tcp#0\",\"2\",\"43,972 K\"",
+    "\"cargo.exe\",\"6232\",\"RDP-Tcp#0\",\"2\",\"21,692 K\"",
+    "\"rustc.exe\",\"10628\",\"RDP-Tcp#0\",\"2\",\"694,880 K\"",
+    "\"rustc.exe\",\"4648\",\"RDP-Tcp#0\",\"2\",\"487,612 K\"",
+    "\"rustc.exe\",\"14668\",\"RDP-Tcp#0\",\"2\",\"81,528 K\""
+  ],
+  "runs": [],
+  "dependency_versions_present_at_target": [],
+  "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-gnu\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+  "outcome": "BLOCKED",
+  "reason": "Resource measurement deferred owned build: Measured resource guard blocked; no other process altered",
+  "test_binary_sha256": {
+    "target\\debug\\deps\\gielinor_server-894795c80ff17bc3.exe": "3a51791ab661cc3051bc5fcffa0f4e984e9f6aa4a35f8ba3a6d0e959f0839f7a",
+    "target\\debug\\deps\\gielinor_world-379bc28e5667f47e.exe": "c9bb8e069659fe126490c25afea0fdce51fea67a05663b7443405ff20b598d93"
+  }
+}

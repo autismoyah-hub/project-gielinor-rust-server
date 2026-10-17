@@ -1,0 +1,258 @@
+{
+  "implementation_id": "OR-MIG-0010",
+  "implementation_sha": "5a260c1bd6efa5f8a221bed7c96e6ac72fd428bc",
+  "normal_native_matrix": "PASS",
+  "authoritative_transaction_trace": "PASS",
+  "durable_production_save": "PASS",
+  "decoded_packets": [
+    {
+      "source_component": 9764864,
+      "source_slot": 3,
+      "source_item": 269,
+      "target_component": 9764864,
+      "target_slot": 0,
+      "target_item": 2436
+    },
+    {
+      "source_component": 9764864,
+      "source_slot": 5,
+      "source_item": 2440,
+      "target_component": 9764864,
+      "target_slot": 7,
+      "target_item": 269
+    },
+    {
+      "source_component": 9764864,
+      "source_slot": 11,
+      "source_item": 269,
+      "target_component": 9764864,
+      "target_slot": 10,
+      "target_item": 2442
+    },
+    {
+      "source_component": 9764864,
+      "source_slot": 12,
+      "source_item": 2436,
+      "target_component": 9764864,
+      "target_slot": 15,
+      "target_item": 111
+    },
+    {
+      "source_component": 9764864,
+      "source_slot": 19,
+      "source_item": 111,
+      "target_component": 9764864,
+      "target_slot": 17,
+      "target_item": 2440
+    },
+    {
+      "source_component": 9764864,
+      "source_slot": 22,
+      "source_item": 2442,
+      "target_component": 9764864,
+      "target_slot": 23,
+      "target_item": 111
+    }
+  ],
+  "transitions": [
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "slots": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "inputs": [
+        2436,
+        2440,
+        2442,
+        269
+      ],
+      "output": 12695,
+      "secondary_saved": false,
+      "queued_at": 115,
+      "committed_at": 117,
+      "index": 0,
+      "base_fine_xp": 1500,
+      "rate_hundreds": 500,
+      "fine_before": 130344311,
+      "fine_after": 130351811
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "slots": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "inputs": [
+        2436,
+        2440,
+        2442,
+        269
+      ],
+      "output": 12695,
+      "secondary_saved": false,
+      "queued_at": 128,
+      "committed_at": 130,
+      "index": 0,
+      "base_fine_xp": 1500,
+      "rate_hundreds": 500,
+      "fine_before": 130351811,
+      "fine_after": 130359311
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "slots": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "inputs": [
+        2436,
+        2440,
+        2442,
+        269
+      ],
+      "output": 12695,
+      "secondary_saved": false,
+      "queued_at": 139,
+      "committed_at": 141,
+      "index": 0,
+      "base_fine_xp": 1500,
+      "rate_hundreds": 500,
+      "fine_before": 130359311,
+      "fine_after": 130366811
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "slots": [
+        12,
+        13,
+        14,
+        15
+      ],
+      "inputs": [
+        2436,
+        2440,
+        2442,
+        111
+      ],
+      "output": 12695,
+      "secondary_saved": false,
+      "queued_at": 152,
+      "committed_at": 154,
+      "index": 0,
+      "base_fine_xp": 1500,
+      "rate_hundreds": 500,
+      "fine_before": 130366811,
+      "fine_after": 130374311
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "slots": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "inputs": [
+        2436,
+        2440,
+        2442,
+        111
+      ],
+      "output": 12695,
+      "secondary_saved": false,
+      "queued_at": 166,
+      "committed_at": 168,
+      "index": 0,
+      "base_fine_xp": 1500,
+      "rate_hundreds": 500,
+      "fine_before": 130374311,
+      "fine_after": 130381811
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "slots": [
+        20,
+        21,
+        22,
+        23
+      ],
+      "inputs": [
+        2436,
+        2440,
+        2442,
+        111
+      ],
+      "output": 12695,
+      "secondary_saved": false,
+      "queued_at": 179,
+      "committed_at": 181,
+      "index": 0,
+      "base_fine_xp": 1500,
+      "rate_hundreds": 500,
+      "fine_before": 130381811,
+      "fine_after": 130389311
+    }
+  ],
+  "checks": [
+    "six actual native inventory/menu selections",
+    "six native Make requests",
+    "six authoritative two-tick exact-slot transactions",
+    "45000 fine XP; no other stat change",
+    "six outputs; all four inputs per operation consumed",
+    "1000 coins and fillers conserved",
+    "clean save acknowledgement; detached world_id; SQLite integrity ok"
+  ],
+  "limitations": [
+    "Native errors/interrupt/modifier matrix not yet complete",
+    "No rendered frame captured; programmatic native interface/network acceptance only",
+    "Acknowledged-save durability is not crash atomicity"
+  ],
+  "real_restart_and_native_relogin": "PASS",
+  "relogin_no_replay_or_extra_reward": "PASS",
+  "session_varp_differences": {
+    "300": {
+      "before": 400,
+      "after": 500,
+      "classification": "special energy regeneration"
+    },
+    "3077": {
+      "before": 27256,
+      "after": 45982,
+      "classification": "packed wall-clock date fields"
+    },
+    "3079": {
+      "before": 201,
+      "after": 92,
+      "classification": "process-relative map clock"
+    },
+    "65515": {
+      "before": 190,
+      "after": 276,
+      "classification": "elapsed playtime"
+    }
+  },
+  "session_difference_basis": "Exact target session_vars.rs::Config::tick and server startup.rs lines127-135; owned target varp symbols map these IDs. All other persisted varps and character coordinates/plane/run energy/world_id unchanged.",
+  "character_changes_on_relogin": {
+    "4": {
+      "before": "{\"18\":1,\"20\":8519680,\"21\":67141640,\"25\":2,\"43\":0,\"46\":1,\"80\":4,\"108\":0,\"168\":20,\"169\":45,\"300\":400,\"375\":0,\"439\":0,\"843\":0,\"872\":25,\"1021\":0,\"1055\":0,\"1105\":50331648,\"1737\":-2147483648,\"2256\":0,\"2690\":1,\"3074\":-2147483648,\"3077\":27256,\"3079\":201,\"3796\":100,\"5481\":0,\"65508\":548,\"65515\":190,\"65530\":800}",
+      "after": "{\"18\":1,\"20\":8519680,\"21\":67141640,\"25\":2,\"43\":0,\"46\":1,\"80\":4,\"108\":0,\"168\":20,\"169\":45,\"300\":500,\"375\":0,\"439\":0,\"843\":0,\"872\":25,\"1021\":0,\"1055\":0,\"1105\":50331648,\"1737\":-2147483648,\"2256\":0,\"2690\":1,\"3074\":-2147483648,\"3077\":45982,\"3079\":92,\"3796\":100,\"5481\":0,\"65508\":548,\"65515\":276,\"65530\":800}"
+    },
+    "5": {
+      "before": "2026-10-17 22:24:26",
+      "after": "2026-10-17 22:25:44"
+    }
+  }
+}

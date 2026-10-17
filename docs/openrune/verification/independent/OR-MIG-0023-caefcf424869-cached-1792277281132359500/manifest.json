@@ -1,0 +1,24 @@
+{
+  "implementation_id": "OR-MIG-0023",
+  "implementation_commit_sha": "caefcf424869d2a54d711acd22a279351f098be0",
+  "source_tree": "c6174734e18b9fa5871ed5134c71c9a9d2dc0db1",
+  "outcome": "PARTIAL",
+  "independent_verification": true,
+  "scope": "Expanded authoritative item-pack repeat, movement cancellation and stale-selected-slot tests; attested binary replay without Cargo or compilation.",
+  "test_binary_sha256": {
+    "target\\debug\\deps\\gielinor_world-379bc28e5667f47e.exe": "c9bb8e069659fe126490c25afea0fdce51fea67a05663b7443405ff20b598d93"
+  },
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\caefcf424869d2a54d711acd22a279351f098be0\\target\\debug\\deps\\gielinor_world-379bc28e5667f47e.exe",
+        "item_pack",
+        "--test-threads=1"
+      ],
+      "exit_code": 0,
+      "tests_passed": 4,
+      "zero_tests": false,
+      "log": "docs\\openrune\\verification\\independent\\OR-MIG-0023-caefcf424869-cached-1792277281132359500\\queue-replay.log"
+    }
+  ]
+}

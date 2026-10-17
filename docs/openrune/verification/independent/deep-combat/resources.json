@@ -1,0 +1,16 @@
+{
+  "cache_files": 95,
+  "cache_manifest_sha256": "8ba60ce0ba0fdc1add7ef2511bc9b4683c3b2fe42a80997583c51d4fa5b82717",
+  "driver_manifest": {
+    "driver": "combatmixing-001",
+    "scenario": "combatmixing",
+    "baseline": "client-239.1-baseline-001-build-001",
+    "reason": "Owned integration scenario; pinned client library unchanged",
+    "files": {
+      "NativeCombatMixingScenario.rs": "E305BFB6F18342B3E0E00B971F89AFC3BEA50F2B2BF71828D2F5D69D78B826B2",
+      "server_combatmixing.exe": "8B2C8895BCF798B65D26047E9933EE831935ADF11F2460343497612353796814"
+    }
+  },
+  "driver_sha256": "8b2c8895bcf798b65d26047e9933ee831935adf11f2460343497612353796814",
+  "scope": "Owned copies; original resources read-only. Private cache, keys, credentials and account template are not published."
+}

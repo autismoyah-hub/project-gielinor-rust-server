@@ -18,14 +18,15 @@ OUT.mkdir(exist_ok=True)
 def git(*args,check=True):
     return subprocess.run(['git','-c','safe.directory='+ROOT.as_posix(),*args],cwd=ROOT,capture_output=True,text=True,encoding='utf-8',check=check)
 head=git('rev-parse','origin/agent2/openrune-content').stdout.strip()
-raw=git('show',head+':docs/openrune/verification/IMPLEMENTATION_QUEUE.jsonl').stdout
+rawbytes=subprocess.check_output(['git','-c','safe.directory='+ROOT.as_posix(),'show',head+':docs/openrune/verification/IMPLEMENTATION_QUEUE.jsonl'],cwd=ROOT)
+raw=rawbytes.decode('utf-8')
 rows=[json.loads(s) for s in raw.splitlines()]
 spec=importlib.util.spec_from_file_location('validator',ROOT/'scripts/validate-openrune-queue.py')
 validator=importlib.util.module_from_spec(spec);spec.loader.exec_module(validator)
 validator.validate(rows,ROOT)
 snapshot=OUT/('queue-'+head+'.jsonl')
-if snapshot.exists():assert snapshot.read_text()==raw
-else:snapshot.write_text(raw,encoding='utf-8')
+if snapshot.exists():assert [json.loads(s) for s in snapshot.read_text().splitlines()]==rows
+snapshot.write_bytes(rawbytes)
 for old in OUT.glob('queue-*.jsonl'):
     oldrows=[json.loads(s) for s in old.read_text().splitlines()]
     if len(oldrows)<=len(rows):assert rows[:len(oldrows)]==oldrows,'Published queue history was rewritten'
@@ -71,8 +72,8 @@ for path in sorted(OUT.glob('OR-MIG-*/manifest.json')):
     if 'outcome' not in m:continue  # Never classify an in-progress attempt.
     for run in runs:
         content=(ROOT/run['log']).read_text(encoding='utf-8')
-        run['tests_passed']=sum(map(int,re.findall(r'test result: ok\. (\d+) passed;',content)))
-        run['zero_tests']='test' in run['command'] and run['tests_passed']==0
+        run['tests_passed']=sum(map(int,re.findall(r'test result: (?:ok|FAILED)\. (\d+) passed;',content)))
+        run['zero_tests']='test' in run['command'] and 'running 0 tests' in content
     outcome=m.get('outcome','BLOCKED')
     if any(x['zero_tests'] for x in runs):outcome='BLOCKED'
     attempt_id=path.parent.name

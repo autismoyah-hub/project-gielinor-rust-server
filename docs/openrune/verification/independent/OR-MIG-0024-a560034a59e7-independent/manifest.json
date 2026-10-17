@@ -1,0 +1,53 @@
+{
+  "implementation_id": "OR-MIG-0024",
+  "implementation_commit_sha": "a560034a59e766d1faf400b61187fec861d13475",
+  "source_tree": "f3452e81068159184cfc9b7e91897944bee7fcd9",
+  "queue_commit": "4ef5f5c1ebc50b81e56de4f3e2421e2bba49de03",
+  "independent_verification": true,
+  "timestamp_utc": "2026-10-17T22:32:39.868895+00:00",
+  "available_memory_bytes": 7232450560,
+  "active_compilers": [],
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\a560034a59e766d1faf400b61187fec861d13475\\independent-harness\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.12,
+      "log": "docs\\openrune\\verification\\independent\\OR-MIG-0024-a560034a59e7-independent\\run-0.log",
+      "tests_passed": 0,
+      "zero_tests": false
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\a560034a59e766d1faf400b61187fec861d13475\\independent-harness\\Cargo.toml"
+      ],
+      "exit_code": 101,
+      "elapsed_seconds": 35.92,
+      "log": "docs\\openrune\\verification\\independent\\OR-MIG-0024-a560034a59e7-independent\\run-1.log",
+      "tests_passed": 0,
+      "zero_tests": true
+    }
+  ],
+  "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-gnu\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+  "harness_sha256": {
+    "verification\\ordinary-food\\tests\\authoritative.rs": "6b4e9a1d5e609671a0bf0928323de96d07b3cb5193d1dce0aa036278d9342f37",
+    "verification\\potion-slot\\tests\\transactions.rs": "0e890cf543e3a742055622929d7eb208c08bf6d6d06e822ddafa5ca9b45268d3"
+  },
+  "outcome": "FAILED",
+  "reason": "Assertion failure; reproduce and classify before escalation",
+  "test_binary_sha256": {
+    "target\\debug\\deps\\authoritative-b310eb37681e3c85.exe": "201d0243bb3df3a8aba8b5805dd0e8b0bd1e22968b36abbd7fd5980151c47d92"
+  }
+}

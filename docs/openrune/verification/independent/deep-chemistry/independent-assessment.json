@@ -1,0 +1,112 @@
+{
+  "implementation_id": "OR-MIG-0006",
+  "implementation_sha": "e7ac3608e61893d80b2de6a1a2e512b3ab785505",
+  "native_options_stop_confirmed_break": "PASS",
+  "durable_charge_and_stop_setting_save": "PASS",
+  "exact_packet_sequence": [
+    [
+      "Options",
+      47,
+      [
+        0,
+        149,
+        0,
+        0,
+        0,
+        3,
+        82,
+        171,
+        4
+      ]
+    ],
+    [
+      "Stop",
+      115,
+      [
+        219,
+        0,
+        1,
+        0,
+        0,
+        2
+      ]
+    ],
+    [
+      "Break",
+      47,
+      [
+        0,
+        149,
+        0,
+        0,
+        0,
+        3,
+        82,
+        171,
+        6
+      ]
+    ],
+    [
+      "Confirm",
+      115,
+      [
+        219,
+        0,
+        1,
+        0,
+        0,
+        1
+      ]
+    ]
+  ],
+  "initial_state": [
+    2,
+    0
+  ],
+  "saved_state": [
+    5,
+    1
+  ],
+  "scope": "Native inventory Options -> Stop -> Break -> Confirm. No production proc frequency or worn controls native coverage claimed.",
+  "limitations": [
+    "Native stale/cancelled-dialog and worn-equipment scenarios remain queued",
+    "No crash injection or rendered-frame assertion"
+  ],
+  "real_restart_and_native_relogin": "PASS",
+  "relogin_varp_changes": {
+    "3077": {
+      "before": 53944,
+      "after": 36039
+    },
+    "300": {
+      "before": 200,
+      "after": 300
+    },
+    "3079": {
+      "before": 145,
+      "after": 93
+    },
+    "65515": {
+      "before": 137,
+      "after": 225
+    }
+  },
+  "varp_change_basis": "Target session_vars.rs timer processing: special energy, wall clock, process-relative map clock and accumulated playtime; all other varps stable.",
+  "independent_source_comparison": {
+    "status": "PASS",
+    "kind": "directly inspected source; not executable donor observation",
+    "files": {
+      "AmuletOfChemistry.kt": "06fc425e3fa407715d2a94a048a101023c2ad0a00dec04947720960d6290c801",
+      "AmuletOfChemistryScript.kt": "822775e66d7c2c311749ae9a2b670b1376e1ee01cc546504206e22058739d43f"
+    },
+    "findings": [
+      "Source registers held Options/Break and worn Options",
+      "Options writes per-character stop-on-crumble selection",
+      "Confirmed Break deletes selected amulet and resets next-amulet charges to five; stop setting remains selected"
+    ],
+    "exclusions": [
+      "Alchemist amulets excluded from this ordinary-amulet contract",
+      "No executable OpenRune 241 comparison; full V4 production modifier behavior remains open"
+    ]
+  }
+}

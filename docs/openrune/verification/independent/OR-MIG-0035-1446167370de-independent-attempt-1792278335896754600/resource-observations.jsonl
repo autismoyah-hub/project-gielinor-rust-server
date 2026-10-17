@@ -1,0 +1,1 @@
+{"observed_utc": "2026-10-17T23:05:38.236566+00:00", "decision": "DEFER", "measurement": {"available_ram": 8222773248, "active_compilers": ["\"cargo.exe\",\"5744\",\"RDP-Tcp#0\",\"2\",\"22,376 K\""], "cpu_percent": 35.55, "disk_free": 48524120064}}

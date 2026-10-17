@@ -1,0 +1,33 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.04s
+     Running unittests src\lib.rs (C:\Projects\OSRSRSPS\agent7-verification\work\4ef5f5c1ebc50b81e56de4f3e2421e2bba49de03\target\debug\deps\gielinor_world-379bc28e5667f47e.exe)
+
+running 27 tests
+test bank_actions::tests::restricted_deposit_does_not_change_inventory_or_prompt_state ... ok
+test assembly::tests::reward_and_inventory_commit_together_at_account_rate ... ok
+test assembly::tests::failed_exchange_or_reward_policy_preserves_inventory_and_stats ... ok
+test dough::tests::full_inventory_and_invalid_output_are_atomic ... ok
+test bank_actions::tests::transfers_refresh_sidebar_from_updated_inventory_without_duplicate_varp_writes ... ok
+test equipment::tests::full_inventory_keeps_both_weapon_and_shield_when_swap_cannot_fit ... ok
+test grinding::tests::full_inventory_retains_tool_and_selected_output ... ok
+test finished_potions::tests::experience_cap_does_not_prevent_valid_inventory_exchange ... ok
+test ground_transfer::tests::failed_drop_keeps_inventory_and_private_merge_keeps_counts ... ok
+test bank_actions::tests::count_transfer_signed_boundaries_respect_binding_width_before_inventory_mutation ... ok
+test herb_cleaning::tests::live_eligibility_and_failed_credit_preserve_both_inventory_and_stats ... ok
+test inventory::tests::bank_converts_notes_and_replaces_placeholders ... ok
+test inventory::tests::overflow_and_failed_transfer_do_not_lose_items ... ok
+test potions::tests::selected_dose_stays_in_place_with_duplicates_and_a_full_inventory ... ok
+test potion_upgrades::tests::refused_upgrade_preserves_inventory_stats_and_random_stream ... ok
+test smithing_make::tests::stackable_and_always_stack_inventory_count_only_first_matching_stack ... ok
+test smithing_make::tests::full_inventory_consumes_before_output_and_keeps_fractional_xp ... ok
+test tower_offering::tests::full_inventory_and_failed_first_bone_never_skip_to_later_bank_items ... ok
+test tutorial_combat_tutor::tests::worn_gear_is_not_duplicated_and_branch_survives_inventory_mutation ... ok
+test tower_staff::tests::arbitrary_staff_in_bank_does_not_count_but_inventory_or_weapon_does ... ok
+test tower_staff::tests::full_inventory_preserves_flag_and_successful_repeat_does_not_duplicate ... ok
+test tutorial_magic_tutor::tests::independent_topups_preserve_existing_stacks_and_partial_full_inventory_success ... ok
+test tutorial_mining::tests::inventory_pickaxe_two_ores_and_fractional_xp_follow_script_order ... ok
+test tutorial_fishing::tests::progress_completion_and_full_inventory_follow_original_exceptions ... ok
+test chemistry_modifier::tests::simultaneous_modifiers_full_inventory_both_orders_and_last_charge ... ok
+test simulation::tutorial_leave_actions::tests::protected_launcher_does_not_clear_inventory_or_run_early_home_denial ... ok
+test simulation::tower_actions::tests::missing_destination_never_strips_inventory_or_marks_kit ... ok
+
+test result: ok. 27 passed; 0 failed; 0 ignored; 0 measured; 400 filtered out; finished in 0.10s

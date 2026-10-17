@@ -1,0 +1,31 @@
+{
+  "implementation_id": "OR-MIG-0035",
+  "implementation_commit_sha": "1446167370dece10751c4c332929af880259ee23",
+  "source_tree": "2e021c7b5c6a339d9f04cceeebdcf7f29fc7e0f3",
+  "queue_commit": "1efda0299062de44fd7196e6555c19b87f02d12b",
+  "independent_verification": true,
+  "timestamp_utc": "2026-10-17T23:05:37.127434+00:00",
+  "available_memory_bytes": 8224006144,
+  "active_compilers": [
+    "\"cargo.exe\",\"5744\",\"RDP-Tcp#0\",\"2\",\"22,364 K\""
+  ],
+  "runs": [],
+  "dependency_versions_present_at_target": [
+    {
+      "implementation_id": "OR-MIG-0024",
+      "revision": 3,
+      "sha": "ae3d234c71764dd2364f8452fc1974a54a6783f0",
+      "later_revisions_not_assumed_tested": false
+    },
+    {
+      "implementation_id": "OR-MIG-0033",
+      "revision": 1,
+      "sha": "ae3d234c71764dd2364f8452fc1974a54a6783f0",
+      "later_revisions_not_assumed_tested": false
+    }
+  ],
+  "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-gnu\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+  "outcome": "BLOCKED",
+  "reason": "Resource measurement deferred owned build: Measured resource guard blocked; no other process altered",
+  "test_binary_sha256": {}
+}

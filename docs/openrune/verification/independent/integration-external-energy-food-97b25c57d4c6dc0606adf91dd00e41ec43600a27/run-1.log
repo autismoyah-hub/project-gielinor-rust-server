@@ -1,0 +1,10 @@
+   Compiling gielinor-world v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\97b25c57d4c6dc0606adf91dd00e41ec43600a27\crates\world)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\97b25c57d4c6dc0606adf91dd00e41ec43600a27\external-harness)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 27.33s
+     Running tests\authoritative.rs (C:\Projects\OSRSRSPS\agent7-verification\work\97b25c57d4c6dc0606adf91dd00e41ec43600a27\target\debug\deps\authoritative-5a81e2ecba381a65.exe)
+
+running 2 tests
+test selected_food_energy_hp_boost_and_remainder_commit_once_through_real_action_queue ... ok
+test failed_food_transaction_has_exactly_the_same_energy_as_a_no_action_control ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.43s

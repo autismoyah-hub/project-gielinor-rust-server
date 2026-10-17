@@ -1,0 +1,110 @@
+{
+  "tested_integration_sha": "4ef5f5c1ebc50b81e56de4f3e2421e2bba49de03",
+  "source_tree": "09d06f0eacd76ef1464adeecf711626bead51ace",
+  "resource_measurement": {
+    "available_ram": 8204521472,
+    "active_compilers": [
+      "\"cargo.exe\",\"10444\",\"RDP-Tcp#0\",\"2\",\"19,524 K\""
+    ],
+    "cpu_percent": 13.78,
+    "disk_free": 52242046976
+  },
+  "implementation_availability_is_not_integration_acceptance": true,
+  "runs": [
+    {
+      "filter": "potion",
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "-p",
+        "gielinor-world",
+        "--lib",
+        "potion"
+      ],
+      "exit_code": 0,
+      "tests_passed": 44,
+      "elapsed_seconds": 43.34
+    },
+    {
+      "filter": "chemistry",
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "-p",
+        "gielinor-world",
+        "--lib",
+        "chemistry"
+      ],
+      "exit_code": 0,
+      "tests_passed": 12,
+      "elapsed_seconds": 0.42
+    },
+    {
+      "filter": "combat_mixing",
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "-p",
+        "gielinor-world",
+        "--lib",
+        "combat_mixing"
+      ],
+      "exit_code": 0,
+      "tests_passed": 4,
+      "elapsed_seconds": 1.19
+    },
+    {
+      "filter": "inventory",
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "-p",
+        "gielinor-world",
+        "--lib",
+        "inventory"
+      ],
+      "exit_code": 0,
+      "tests_passed": 27,
+      "elapsed_seconds": 0.2
+    },
+    {
+      "filter": "queues",
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "-p",
+        "gielinor-world",
+        "--lib",
+        "queues"
+      ],
+      "exit_code": 0,
+      "tests_passed": 9,
+      "elapsed_seconds": 0.14
+    }
+  ],
+  "status": "PASS",
+  "scope": "Shared authoritative world regression filters only; no latest-native or complete-contract acceptance claim",
+  "binary_sha256": {
+    "target\\debug\\deps\\gielinor_world-379bc28e5667f47e.exe": "036ebbbddb681eab698a4aee51290c6d114e7ead3c244c49393917d41e63ad37"
+  }
+}

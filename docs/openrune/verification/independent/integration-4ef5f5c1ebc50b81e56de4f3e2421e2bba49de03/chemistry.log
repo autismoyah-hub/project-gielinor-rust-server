@@ -1,0 +1,18 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.04s
+     Running unittests src\lib.rs (C:\Projects\OSRSRSPS\agent7-verification\work\4ef5f5c1ebc50b81e56de4f3e2421e2bba49de03\target\debug\deps\gielinor_world-379bc28e5667f47e.exe)
+
+running 12 tests
+test chemistry::tests::exact_five_percent_no_ineligible_draw_and_per_character_depletion ... ok
+test chemistry::tests::restoration_and_break_preserve_setting_and_reject_invalid_state ... ok
+test potion_upgrades::tests::divine_policy_never_draws_goggles_but_keeps_chemistry_and_fractional_xp ... ok
+test chemistry_modifier::tests::unsupported_recipe_or_stale_equipment_has_no_chemistry_draw_and_cap_preserves_proc ... ok
+test chemistry_modifier::tests::invalid_transactions_do_not_draw_or_mutate_any_state ... ok
+test potion_upgrades::tests::chemistry_adds_one_dose_without_extra_debit_or_xp_and_four_doses_are_ineligible ... ok
+test chemistry_modifier::tests::simultaneous_modifiers_full_inventory_both_orders_and_last_charge ... ok
+test simulation::chemistry_actions::tests::options_preserve_charges_and_break_resets_without_replay ... ok
+test simulation::chemistry_actions::tests::worn_options_recheck_neck_and_never_break_equipped_amulet ... ok
+test simulation::chemistry_actions::tests::stale_slot_cancelled_and_invalid_choice_cannot_change_setting ... ok
+test simulation::finished_potion_actions::tests::chemistry_last_charge_stops_or_continues_and_publishes_actual_output ... ok
+test simulation::finished_potion_actions::tests::chemistry_checks_live_neck_slot_and_keeps_character_charges_after_swap ... ok
+
+test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 415 filtered out; finished in 0.32s

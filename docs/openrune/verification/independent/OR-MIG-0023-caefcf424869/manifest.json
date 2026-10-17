@@ -1,0 +1,73 @@
+{
+  "implementation_id": "OR-MIG-0023",
+  "implementation_commit_sha": "caefcf424869d2a54d711acd22a279351f098be0",
+  "source_tree": "c6174734e18b9fa5871ed5134c71c9a9d2dc0db1",
+  "queue_commit": "8ad59b108e1ecd55185570c88d1be8be06b39756",
+  "independent_verification": true,
+  "timestamp_utc": "2026-10-17T22:41:08.107868+00:00",
+  "available_memory_bytes": 7301365760,
+  "active_compilers": [],
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "--version"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.05,
+      "log": "docs\\openrune\\verification\\independent\\OR-MIG-0023-caefcf424869\\run-0.log",
+      "tests_passed": 0,
+      "zero_tests": false
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "-p",
+        "gielinor-world",
+        "--lib",
+        "item_packs"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 48.52,
+      "log": "docs\\openrune\\verification\\independent\\OR-MIG-0023-caefcf424869\\run-1.log",
+      "tests_passed": 2,
+      "zero_tests": false
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "-p",
+        "gielinor-server",
+        "--lib",
+        "pack_binding_tests"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 70.19,
+      "log": "docs\\openrune\\verification\\independent\\OR-MIG-0023-caefcf424869\\run-2.log",
+      "tests_passed": 3,
+      "zero_tests": false
+    }
+  ],
+  "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-gnu\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+  "resource_measurement": {
+    "available_ram": 7308505088,
+    "active_compilers": [],
+    "cpu_percent": 28.52,
+    "disk_free": 50130698240
+  },
+  "outcome": "PARTIAL",
+  "test_binary_sha256": {
+    "target\\debug\\deps\\gielinor_server-894795c80ff17bc3.exe": "3a51791ab661cc3051bc5fcffa0f4e984e9f6aa4a35f8ba3a6d0e959f0839f7a",
+    "target\\debug\\deps\\gielinor_world-379bc28e5667f47e.exe": "c9bb8e069659fe126490c25afea0fdce51fea67a05663b7443405ff20b598d93"
+  }
+}

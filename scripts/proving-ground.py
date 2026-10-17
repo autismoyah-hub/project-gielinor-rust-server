@@ -11,6 +11,7 @@ import sys
 import ctypes
 import time
 import re
+import importlib.util
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'docs/openrune/verification/independent'
@@ -51,13 +52,13 @@ def inspect():
                 print('CARGO:',p)
     print('PATH',os.environ.get('PATH'))
 
-def run_batch(ids,independent=False):
+def run_batch(ids,independent=False,world_only=False):
     OUT.mkdir(parents=True,exist_ok=True)
     toolbin=Path('C:/Projects/OSRSRSPS/rust-client/work/rustup/toolchains/stable-x86_64-pc-windows-gnu/bin')
-    filters={'OR-MIG-0018':'potion','OR-MIG-0006':'chemistry','OR-MIG-0010':'combat_mixing'}
+    filters={'OR-MIG-0018':'potion','OR-MIG-0006':'chemistry','OR-MIG-0010':'combat_mixing','OR-MIG-0024':'food','OR-MIG-0023':'item_pack','OR-MIG-0035':'dynamic_food'}
     for ident in ids:
         if ident not in filters:raise ValueError('No reviewed suite mapping for '+ident+'; design a suite before claiming coverage')
-        if independent and ident!='OR-MIG-0018':raise ValueError('External potion-slot scenarios are scoped only to OR-MIG-0018')
+        if independent and ident not in ['OR-MIG-0018','OR-MIG-0024','OR-MIG-0035']:raise ValueError('No reviewed external scenarios for this contract')
         r=next(x for x in reversed(records()) if x['implementation_id']==ident)
         sha=r['implementation_commit_sha']
         checkout=ROOT.parent/'agent7-targets'/sha
@@ -68,15 +69,18 @@ def run_batch(ids,independent=False):
         try:
             git('cat-file','-e',sha+'^{commit}')
             for path in r['rust_paths']:git('cat-file','-e',sha+':'+path)
+            dependency_versions=[]
             for dep in r['dependencies']:
                 if dep.startswith('ENV:'):continue
-                other=next(x for x in reversed(records()) if x['implementation_id']==dep)
-                git('merge-base','--is-ancestor',other['implementation_commit_sha'],sha)
+                candidates=[x for x in reversed(records()) if x['implementation_id']==dep]
+                other=next((x for x in candidates if git('merge-base','--is-ancestor',x['implementation_commit_sha'],sha,check=False).returncode==0),None)
+                if other is None:raise ValueError('No published '+dep+' implementation is present at exact target '+sha)
+                dependency_versions.append({'implementation_id':dep,'revision':other['revision'],'sha':other['implementation_commit_sha'],'later_revisions_not_assumed_tested':any(x['revision']>other['revision'] for x in candidates)})
             if not checkout.exists():git('worktree','add','--detach',str(checkout),sha)
-        except subprocess.CalledProcessError as exc:
+        except (subprocess.CalledProcessError,ValueError) as exc:
             blocked={'implementation_id':ident,'implementation_commit_sha':sha,'source_tree':None,
                      'outcome':'BLOCKED','independent_verification':True,'runs':[],
-                     'reason':'Exact target or dependency unavailable; no substitute build: '+repr(exc.cmd)+' '+exc.stderr}
+                     'reason':'Exact target or dependency unavailable; no substitute build: '+str(exc)+' '+str(getattr(exc,'stderr',''))}
             (evidence/'manifest.json').write_text(json.dumps(blocked,indent=2)+'\n')
             print(json.dumps(blocked),flush=True);continue
         assert git('rev-parse','HEAD',root=checkout).stdout.strip()==sha
@@ -97,23 +101,32 @@ def run_batch(ids,independent=False):
                   'queue_commit':git('rev-parse','origin/agent2/openrune-content').stdout.strip(),
                   'independent_verification':True,'timestamp_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
                   'available_memory_bytes':mem.avail,'active_compilers':active,'runs':[]}
+        manifest['dependency_versions_present_at_target']=dependency_versions
         manifest['rustc']=subprocess.run([str(toolbin/'rustc.exe'),'--version','--verbose'],env=env,capture_output=True,text=True,check=True).stdout
-        if active or mem.avail<4*1024**3:
-            manifest.update(outcome='BLOCKED',reason='Resource guard: active compiler or available memory below 4 GiB')
+        guard_spec=importlib.util.spec_from_file_location('capacity',ROOT/'scripts/proving-ground-native.py')
+        capacity=importlib.util.module_from_spec(guard_spec);guard_spec.loader.exec_module(capacity);capacity.OUT=evidence
+        guard_error=None
+        try:manifest['resource_measurement']=capacity.guard()
+        except (AssertionError,subprocess.CalledProcessError) as exc:guard_error=str(exc)
+        if guard_error:
+            manifest.update(outcome='BLOCKED',reason='Resource measurement deferred owned build: '+guard_error)
         else:
             manifests=[(p, p.read_text()) for p in checkout.glob('crates/*/Cargo.toml')]
             (evidence/'cargo-manifests.txt').write_text('\n'.join(str(p.relative_to(checkout))+'\n'+s for p,s in manifests))
             cmds=[['--version'],['test','--offline','--locked','-j','1','-p','gielinor-world','--lib',filters[ident]],
-                  ['test','--offline','--locked','-j','1','-p','gielinor-server','--lib',filters[ident]]]
+                  ['test','--offline','--locked','-j','1','-p','gielinor-server','--lib','pack_binding_tests' if ident=='OR-MIG-0023' else filters[ident]]]
+            if world_only:cmds=cmds[:2]
             if independent:
                 harness=work/'independent-harness'
                 harness.mkdir(exist_ok=True)
-                shutil.copytree(ROOT/'verification/potion-slot/tests',harness/'tests',dirs_exist_ok=True)
+                suite={'OR-MIG-0024':'ordinary-food','OR-MIG-0035':'dynamic-food'}.get(ident,'potion-slot')
+                shutil.copytree(ROOT/'verification'/suite/'tests',harness/'tests',dirs_exist_ok=True)
+                shutil.copytree(ROOT/'verification'/suite/'tests',evidence/'harness',dirs_exist_ok=True)
                 (harness/'Cargo.toml').write_text('[package]\nname="proving-ground-transactions"\nversion="0.1.0"\nedition="2021"\n[workspace]\n[dependencies]\ngielinor-world={path='+json.dumps((checkout/'crates/world').as_posix())+'}\n')
                 # Generate a lock file solely for this external test crate.
                 cmds=[['generate-lockfile','--offline','--manifest-path',str(harness/'Cargo.toml')],
                       ['test','--offline','--locked','-j','1','--manifest-path',str(harness/'Cargo.toml')]]
-                manifest['harness_sha256']={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in (ROOT/'verification').rglob('*.rs')}
+                manifest['harness_sha256']={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in (evidence/'harness').glob('*.rs')}
             for n,args in enumerate(cmds):
                 cmd=[str(toolbin/'cargo.exe'),*args];start=time.monotonic()
                 log=evidence/f'run-{n}.log'
@@ -129,8 +142,8 @@ def run_batch(ids,independent=False):
                 except OSError as exc:
                     log.write_text(str(exc),encoding='utf-8');rc=125
                 content=log.read_text(encoding='utf-8')
-                counts=[int(n) for n in re.findall(r'test result: ok\. (\d+) passed;',content)]
-                manifest['runs'].append({'command':cmd,'exit_code':rc,'elapsed_seconds':round(time.monotonic()-start,2),'log':str(log.relative_to(ROOT)), 'tests_passed':sum(counts), 'zero_tests':'test' in args and not sum(counts)})
+                counts=[int(n) for n in re.findall(r'test result: (?:ok|FAILED)\. (\d+) passed;',content)]
+                manifest['runs'].append({'command':cmd,'exit_code':rc,'elapsed_seconds':round(time.monotonic()-start,2),'log':str(log.relative_to(ROOT)), 'tests_passed':sum(counts), 'zero_tests':'test' in args and 'running 0 tests' in content})
                 (evidence/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
                 print(ident,'END',rc,log.read_text(encoding='utf-8')[-6000:],flush=True)
                 if rc:break
@@ -146,6 +159,6 @@ def run_batch(ids,independent=False):
         print('MANIFEST',json.dumps(manifest),flush=True)
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--batch',nargs='+');p.add_argument('--independent',action='store_true');a=p.parse_args()
-    if a.batch:run_batch(a.batch,a.independent)
+    p=argparse.ArgumentParser();p.add_argument('--batch',nargs='+');p.add_argument('--independent',action='store_true');p.add_argument('--world-only',action='store_true');a=p.parse_args()
+    if a.batch:run_batch(a.batch,a.independent,a.world_only)
     else:inspect()

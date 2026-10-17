@@ -1,0 +1,16 @@
+Live native login accepted, player 1
+World background load: 3.539s
+Live world built: 6409 objects, 522622 triangles, 0 missing regions
+Native equipment tab selected by label=Worn Equipment,widget=35913796,point=[675, 186],action=Interface { id: 35913796, operation: 1, sub: None }
+Worn diagnostic id=25362449 logical=Some((25362449, -1)) raw_hidden=false placement=Some(Placement { parent: Some(25362432), kind: 0, geometry: Geometry { position: [77, 43], size: [36, 36] }, absolute: [624, 248], clip: [624, 248, 660, 284], scroll: [0, 0], hidden: false })
+Worn diagnostic id=25362432 logical=Some((25362432, -1)) raw_hidden=false placement=Some(Placement { parent: Some(35913813), kind: 0, geometry: Geometry { position: [0, 0], size: [190, 261] }, absolute: [547, 205], clip: [547, 205, 737, 466], scroll: [0, 0], hidden: false })
+Worn diagnostic id=35913813 logical=Some((35913813, -1)) raw_hidden=false placement=Some(Placement { parent: Some(35913808), kind: 0, geometry: Geometry { position: [0, 0], size: [190, 261] }, absolute: [547, 205], clip: [547, 205, 737, 466], scroll: [0, 0], hidden: false })
+Worn diagnostic id=35913808 logical=Some((35913808, -1)) raw_hidden=false placement=Some(Placement { parent: Some(35913745), kind: 0, geometry: Geometry { position: [0, 0], size: [190, 261] }, absolute: [547, 205], clip: [547, 205, 737, 466], scroll: [0, 0], hidden: false })
+Worn diagnostic id=35913745 logical=Some((35913745, -1)) raw_hidden=false placement=Some(Placement { parent: Some(35913730), kind: 0, geometry: Geometry { position: [547, 205], size: [190, 261] }, absolute: [547, 205], clip: [547, 205, 737, 466], scroll: [0, 0], hidden: false })
+Worn diagnostic id=35913730 logical=Some((35913730, -1)) raw_hidden=false placement=Some(Placement { parent: Some(35913728), kind: 0, geometry: Geometry { position: [0, 0], size: [765, 503] }, absolute: [0, 0], clip: [0, 0, 765, 503], scroll: [0, 0], hidden: false })
+Worn diagnostic id=35913728 logical=Some((35913728, -1)) raw_hidden=false placement=Some(Placement { parent: None, kind: 0, geometry: Geometry { position: [0, 0], size: [765, 503] }, absolute: [0, 0], clip: [0, 0, 765, 503], scroll: [0, 0], hidden: false })
+Native chemistry worn Options widget=25362449,action=Interface { id: 25362449, operation: 2, sub: None }
+Native chemistry worn Options dispatch opcode=47 payload=[01, 83, 00, 11, ff, ff, ff, ff, 02]
+Native chemistry worn Stop widget=4294840983,action=Continue(4294840983),visible_pixel=[269, 451]
+Native chemistry worn Stop dispatch opcode=115 payload=[db, 00, 01, 00, 00, 02]
+Native chemistry worn Options PASS;choice=Stop,amulet=1,coins=1000;verify=false

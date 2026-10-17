@@ -1,0 +1,10 @@
+   Compiling proving-ground-transactions v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\1446167370dece10751c4c332929af880259ee23\independent-harness)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.99s
+     Running tests\authoritative.rs (C:\Projects\OSRSRSPS\agent7-verification\work\1446167370dece10751c4c332929af880259ee23\target\debug\deps\authoritative-dbd3b5d3d9f92989.exe)
+
+running 3 tests
+test live_base_level_is_read_at_execution_and_replayed_claim_does_not_consume_duplicate ... ok
+test invalid_rules_and_failed_bowl_transactions_publish_no_healing_or_item_changes ... ok
+test independent_rounding_tables_all_ordinary_base_levels_and_hp_states_through_action_queue ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 24.51s

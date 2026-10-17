@@ -1,0 +1,36 @@
+   Compiling gielinor-world v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\a560034a59e766d1faf400b61187fec861d13475\crates\world)
+   Compiling proving-ground-transactions v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\a560034a59e766d1faf400b61187fec861d13475\independent-harness)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 34.78s
+     Running tests\authoritative.rs (C:\Projects\OSRSRSPS\agent7-verification\work\a560034a59e766d1faf400b61187fec861d13475\target\debug\deps\authoritative-b310eb37681e3c85.exe)
+
+running 4 tests
+test actual_world_queue_preserves_every_other_slot_hp_cap_and_xp_under_duplicate_input ... FAILED
+test stale_claim_cannot_consume_a_different_configured_food_after_submission ... FAILED
+test invalid_prepared_exchange_or_heal_cannot_publish_a_partial_world_action ... ok
+test full_bag_remainder_stays_selected_and_does_not_merge_with_existing_identity ... ok
+
+failures:
+
+---- actual_world_queue_preserves_every_other_slot_hp_cap_and_xp_under_duplicate_input stdout ----
+
+thread 'actual_world_queue_preserves_every_other_slot_hp_cap_and_xp_under_duplicate_input' (16200) panicked at tests\authoritative.rs:24:37:
+assertion `left == right` failed
+  left: 0
+ right: 1
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- stale_claim_cannot_consume_a_different_configured_food_after_submission stdout ----
+
+thread 'stale_claim_cannot_consume_a_different_configured_food_after_submission' (13736) panicked at tests\authoritative.rs:40:9:
+assertion `left == right` failed
+  left: Inventory { stack: Normal, placeholders: false, slots: [Some(Item { id: 385, count: 1, vars: 0 }), Some(Item { id: 999, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 })], modified: {0, 1} }
+ right: Inventory { stack: Normal, placeholders: false, slots: [Some(Item { id: 385, count: 1, vars: 0 }), Some(Item { id: 999, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 }), Some(Item { id: 995, count: 1, vars: 0 })], modified: {1} }
+
+
+failures:
+    actual_world_queue_preserves_every_other_slot_hp_cap_and_xp_under_duplicate_input
+    stale_claim_cannot_consume_a_different_configured_food_after_submission
+
+test result: FAILED. 2 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.94s
+
+error: test failed, to rerun pass `--test authoritative`

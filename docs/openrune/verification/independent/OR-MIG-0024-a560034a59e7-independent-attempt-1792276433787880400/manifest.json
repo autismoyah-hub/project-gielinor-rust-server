@@ -1,0 +1,52 @@
+{
+  "implementation_id": "OR-MIG-0024",
+  "implementation_commit_sha": "a560034a59e766d1faf400b61187fec861d13475",
+  "source_tree": "f3452e81068159184cfc9b7e91897944bee7fcd9",
+  "queue_commit": "4ef5f5c1ebc50b81e56de4f3e2421e2bba49de03",
+  "independent_verification": true,
+  "timestamp_utc": "2026-10-17T22:33:54.664149+00:00",
+  "available_memory_bytes": 8184262656,
+  "active_compilers": [],
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\a560034a59e766d1faf400b61187fec861d13475\\independent-harness\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.03,
+      "log": "docs\\openrune\\verification\\independent\\OR-MIG-0024-a560034a59e7-independent-attempt-1792276433787880400\\run-0.log",
+      "tests_passed": 0,
+      "zero_tests": false
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\a560034a59e766d1faf400b61187fec861d13475\\independent-harness\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 11.53,
+      "log": "docs\\openrune\\verification\\independent\\OR-MIG-0024-a560034a59e7-independent-attempt-1792276433787880400\\run-1.log",
+      "tests_passed": 4,
+      "zero_tests": false
+    }
+  ],
+  "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-gnu\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+  "harness_sha256": {
+    "verification\\ordinary-food\\tests\\authoritative.rs": "3d9176c681356858ab7dae988b07e6e2c3038e9fa2bc6fd0e2c0c4218d82a5f0",
+    "verification\\potion-slot\\tests\\transactions.rs": "0e890cf543e3a742055622929d7eb208c08bf6d6d06e822ddafa5ca9b45268d3"
+  },
+  "outcome": "PARTIAL",
+  "test_binary_sha256": {
+    "target\\debug\\deps\\authoritative-b310eb37681e3c85.exe": "52e516bf4b402d73f58e5fd2ab2993c94e5bb078a9dbbb05a831679f2fd9db4f"
+  }
+}

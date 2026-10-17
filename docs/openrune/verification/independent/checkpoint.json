@@ -1,16 +1,19 @@
 {
-  "scope": "Initial independent checkpoint; partial V0/V1 only",
-  "consumed_contracts": 21,
+  "scope": "Coarse historical ledger summary only; use LEVEL_RESULTS.jsonl and WORKLIST.json for current V0-V4 and integration scope",
+  "consumed_contracts": 35,
   "latest_outcomes": {
     "VERIFIED": 0,
-    "PARTIAL": 3,
+    "PARTIAL": 6,
     "FAILED": 0,
     "BLOCKED": 0,
-    "NOT_ASSESSED": 18
+    "NOT_ASSESSED": 29
   },
-  "rust_test_functions_passed": 39,
+  "rust_test_executions_passed": 62,
   "historical_blocked_attempts": [
-    "OR-MIG-0010-5a260c1bd6ef"
+    "OR-MIG-0010-5a260c1bd6ef",
+    "OR-MIG-0023-caefcf424869-attempt-1792277245871740900",
+    "OR-MIG-0035-1446167370de-independent",
+    "OR-MIG-0035-1446167370de-independent-attempt-1792278335896754600"
   ],
   "required_open_levels": [
     "V2",

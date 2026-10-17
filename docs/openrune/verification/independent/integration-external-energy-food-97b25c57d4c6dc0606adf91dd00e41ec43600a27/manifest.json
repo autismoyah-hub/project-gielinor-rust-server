@@ -1,0 +1,53 @@
+{
+  "tested_integration_sha": "97b25c57d4c6dc0606adf91dd00e41ec43600a27",
+  "suite": "energy-food",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 8335859712,
+    "active_compilers": [
+      "\"cargo.exe\",\"1348\",\"RDP-Tcp#0\",\"2\",\"44,048 K\"",
+      "\"rustc.exe\",\"8848\",\"RDP-Tcp#0\",\"2\",\"82,468 K\""
+    ],
+    "cpu_percent": 14.17,
+    "disk_free": 49072766976
+  },
+  "source_tree": "f585f29336aeee75264c5ef3f2ad330a0defd35e",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\97b25c57d4c6dc0606adf91dd00e41ec43600a27\\external-harness\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-energy-food-97b25c57d4c6dc0606adf91dd00e41ec43600a27\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\97b25c57d4c6dc0606adf91dd00e41ec43600a27\\external-harness\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 2,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-energy-food-97b25c57d4c6dc0606adf91dd00e41ec43600a27\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative food-energy transaction scenarios; integration evidence only, not a historical implementation contract verdict",
+  "harness_sha256": {
+    "verification\\energy-food\\tests\\authoritative.rs": "523c8c691931d155fef17117b85d8c27fe1b0e67a09579661727eb6e6f3e46d0"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\authoritative-5a81e2ecba381a65.exe": "275ad57bc9adf077ef82a88b06ab4bac6d429a45848ca900a4d93a71aea5085f"
+  }
+}

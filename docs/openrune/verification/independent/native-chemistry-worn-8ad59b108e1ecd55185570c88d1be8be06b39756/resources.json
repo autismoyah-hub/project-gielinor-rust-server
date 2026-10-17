@@ -1,0 +1,16 @@
+{
+  "cache_files": 95,
+  "cache_manifest_sha256": "8ba60ce0ba0fdc1add7ef2511bc9b4683c3b2fe42a80997583c51d4fa5b82717",
+  "driver_manifest": {
+    "driver": "chemistryworn-004",
+    "scenario": "chemistryworn",
+    "baseline": "client-239.1-baseline-001-build-001",
+    "reason": "Owned integration scenario; pinned client library unchanged",
+    "files": {
+      "server_chemistryworn.exe": "43645AB5DB9D5E17B10D8E1B5904B3C7D5C70CEA57167429F0FDD60D8751F2FD",
+      "NativeChemistryWornScenario.rs": "4687EC297AFE811F344C00D1699D1E2033A03A7793068018C19A882A46528393"
+    }
+  },
+  "driver_sha256": "43645ab5db9d5e17b10d8e1b5904b3c7d5c70cea57167429f0fdd60d8751f2fd",
+  "scope": "Owned copies; original resources read-only. Private cache, keys, credentials and account template are not published."
+}

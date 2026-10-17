@@ -1,0 +1,68 @@
+{
+  "implementation_id": "OR-MIG-0006",
+  "contract_implementation_sha": "e7ac3608e61893d80b2de6a1a2e512b3ab785505",
+  "tested_sha": "8ad59b108e1ecd55185570c88d1be8be06b39756",
+  "campaign_kind": "integration",
+  "status": "PASS",
+  "scope": "Native current-integration worn Options -> Stop, equipped-item/coins/XP conservation and actual restart/native relogin; complete V2/V3 acceptance remains open.",
+  "native_menu_packet_state": "PASS",
+  "real_restart_and_relogin": "PASS",
+  "worn_item_and_durable_setting": "PASS",
+  "packets": [
+    [
+      "Options",
+      47,
+      [
+        1,
+        131,
+        0,
+        17,
+        255,
+        255,
+        255,
+        255,
+        2
+      ]
+    ],
+    [
+      "Stop",
+      115,
+      [
+        219,
+        0,
+        1,
+        0,
+        0,
+        2
+      ]
+    ]
+  ],
+  "character_session_varp_changes": {
+    "65515": {
+      "before": 113,
+      "after": 209
+    },
+    "3077": {
+      "before": 31830,
+      "after": 35490
+    },
+    "3079": {
+      "before": 119,
+      "after": 102
+    },
+    "300": {
+      "before": 200,
+      "after": 400
+    }
+  },
+  "limitations": [
+    "No inferred historical worn-Options acceptance at the earlier implementation SHA",
+    "No stale worn packet, crash injection or rendered-window assertion"
+  ],
+  "source_and_binary_evidence": [
+    "build.json",
+    "resources.json",
+    "produce/manifest.json",
+    "relogin/manifest.json"
+  ]
+}

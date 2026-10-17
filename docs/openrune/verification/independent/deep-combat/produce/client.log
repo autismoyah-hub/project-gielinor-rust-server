@@ -1,0 +1,29 @@
+Live native login accepted, player 1
+World background load: 5.409s
+Live world built: 6409 objects, 522622 triangles, 0 missing regions
+Native pointer selected side tab 3 at [612, 186]
+Native generated interface-target opcode=27 payload=[00, 95, 00, 00, 00, 83, 04, 09, 00, 00, 01, 8d, 00, 00, 00, 95]
+Native Use 269 on 2436, source_widget=4294839415, target_widget=4294839412, source_slot=3, target_slot=0, tick=96
+Native finished profile recipe index=0,output=12695,label=Make
+Native finished profile dispatch opcode=115 payload=[0e, 01, 0f, 00, 00, 01]
+Native generated interface-target opcode=27 payload=[00, 95, 00, 00, 00, 85, 8d, 01, 07, 00, 09, 08, 00, 00, 00, 95]
+Native Use 2440 on 269, source_widget=4294839417, target_widget=4294839419, source_slot=5, target_slot=7, tick=109
+Native finished profile recipe index=1,output=12695,label=Make
+Native finished profile dispatch opcode=115 payload=[0e, 01, 0f, 00, 00, 01]
+Native generated interface-target opcode=27 payload=[00, 95, 00, 00, 00, 8b, 0a, 09, 0a, 00, 01, 8d, 00, 00, 00, 95]
+Native Use 269 on 2442, source_widget=4294839423, target_widget=4294839422, source_slot=11, target_slot=10, tick=121
+Native finished profile recipe index=2,output=12695,label=Make
+Native finished profile dispatch opcode=115 payload=[0e, 01, 0f, 00, 00, 01]
+Native generated interface-target opcode=27 payload=[00, 95, 00, 00, 00, 8c, ef, 00, 0f, 00, 09, 04, 00, 00, 00, 95]
+Native Use 2436 on 111, source_widget=4294839424, target_widget=4294839427, source_slot=12, target_slot=15, tick=132
+Native finished profile recipe index=3,output=12695,label=Make
+Native finished profile dispatch opcode=115 payload=[0e, 01, 0f, 00, 00, 01]
+Native generated interface-target opcode=27 payload=[00, 95, 00, 00, 00, 93, 08, 09, 11, 00, 00, ef, 00, 00, 00, 95]
+Native Use 111 on 2440, source_widget=4294839431, target_widget=4294839429, source_slot=19, target_slot=17, tick=146
+Native finished profile recipe index=4,output=12695,label=Make
+Native finished profile dispatch opcode=115 payload=[0e, 01, 0f, 00, 00, 01]
+Native generated interface-target opcode=27 payload=[00, 95, 00, 00, 00, 96, ef, 00, 17, 00, 09, 0a, 00, 00, 00, 95]
+Native Use 2442 on 111, source_widget=4294839434, target_widget=4294839435, source_slot=22, target_slot=23, tick=159
+Native finished profile recipe index=5,output=12695,label=Make
+Native finished profile dispatch opcode=115 payload=[0e, 01, 0f, 00, 00, 01]
+Native finished profiles combatmixing PASS;profiles=6,full28initial,1000coins,fineXP45000;verify=false

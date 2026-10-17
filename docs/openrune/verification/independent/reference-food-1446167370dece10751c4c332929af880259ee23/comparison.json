@@ -1,0 +1,88 @@
+{
+  "implementation_id": "OR-MIG-0035",
+  "implementation_sha": "1446167370dece10751c4c332929af880259ee23",
+  "level": "V4",
+  "status": "IN_PROGRESS",
+  "source_documentation_subcheck": "PASS",
+  "sources": [
+    {
+      "reference": "content/other/consumables/src/main/kotlin/org.rsmod.content.other.consumables/food/ConsumeFoodScript.kt",
+      "sha256": "5d2604be8d9f691a2788b11aeb752e6ea2fb8637ceec30c3ba512718ff104a2d",
+      "revision": "Local archive; upstream commit unavailable; configured revision 241",
+      "kind": "independently_inspected_protected_source"
+    },
+    {
+      "reference": "content/other/consumables/src/main/kotlin/org.rsmod.content.other.consumables/food/FoodSpecialEffectService.kt",
+      "sha256": "449325b5ae3084143dad93caa1dfb7f80d93e2a88efa57832a1fc3f6960b0881",
+      "revision": "Local archive; upstream commit unavailable; configured revision 241",
+      "kind": "independently_inspected_protected_source"
+    },
+    {
+      "reference": "or-cache/src/main/kotlin/dev/openrune/tables/consumables/food/FoodData.kt",
+      "sha256": "d13e1c07e15fbbda7b0f4854f7e0a8dd15b11a1ee1ce552f1168c5bd31e13f49",
+      "revision": "Local archive; upstream commit unavailable; configured revision 241",
+      "kind": "independently_inspected_protected_source"
+    },
+    {
+      "reference": "Strawberry",
+      "sha256": "5052a4a8b32ab09b33868d4010758a5551e7f75611a9f2885bb872fd0b908bb1",
+      "revision": "15285885",
+      "kind": "independently_inspected_pinned_documentation"
+    },
+    {
+      "reference": "Watermelon slice",
+      "sha256": "efba30f912b6d1d6180a277ffd13841d999492cb7ac656dd9e828ba713ecea8c",
+      "revision": "15184916",
+      "kind": "independently_inspected_pinned_documentation"
+    },
+    {
+      "reference": "Cooked sweetcorn",
+      "sha256": "4206d62156e2f09bb84732eb213dc584331f594308e673e86b1e57222d5063ba",
+      "revision": "15238979",
+      "kind": "independently_inspected_pinned_documentation"
+    },
+    {
+      "reference": "Sweetcorn (bowl)",
+      "sha256": "6d9de41e5e27a6e595a37440147eb36925124beb40c027a6981b96dfcf9487d2",
+      "revision": "15185803",
+      "kind": "independently_inspected_pinned_documentation"
+    }
+  ],
+  "exact_rust_source_sha256": {
+    "crates/world/src/food.rs": "55068fd546e1085ddabd3c56919b5ee716276f4d04ef24b1b8759c7fe3c9bd20",
+    "crates/world/src/simulation.rs": "0f8349d3577a6dc0449e62e51fdc3d76343da607625423ddd1caa25663a568c7",
+    "crates/server/src/content.rs": "fa77a5a79f1f98b72906ee9da60e28a0d9bb8d7bf6d7fc541a336bbe10781d22",
+    "crates/server/src/startup.rs": "92a3467f0a2aeeafcb7037c8bf7eb7fe2de2aa68d782ee9fe4f9d23b8c4377f0"
+  },
+  "independent_comparison": [
+    {
+      "profile": "Strawberry / 5504",
+      "classification": "source_and_explicit_table_supported; prose_conflict_retained",
+      "expectation": "Six-percent ceiling; healing increases at base levels 1,17,34,51,67,84. Explicit table gives base50->3 and84..99->6. Introductory 1+6% prose disagrees at some levels.",
+      "resolution": "Current Rust chooses the explicit table and source special-effect arithmetic. This is a documented choice, not proof that all Wiki wording agrees."
+    },
+    {
+      "profile": "Watermelon slice / 5984",
+      "classification": "intentional_documented_donor_difference",
+      "expectation": "Pinned Wiki gives floor five-percent plus one; at base20/40/60/80 this is2/3/4/5. Protected source instead uses five-percent ceiling and gives1/2/3/4 at those boundaries.",
+      "resolution": "Current Rust chooses the Wiki table/prose. Do not report literal donor parity or award cutting seeds during Eat."
+    },
+    {
+      "profile": "Cooked sweetcorn / 5988 and bowl / 7088",
+      "classification": "supported_with_explicit_bowl_return_provenance",
+      "expectation": "Floor ten-percent plus one, calculated from base HP. Protected special-effect handler and both pinned pages agree. Protected food stage list returns empty bowl1923; bowl Wiki page establishes healing but is silent on the return.",
+      "resolution": "Rust supplies the common healing policy, with selected-slot bowl return. This does not certify cache registration or native reachability."
+    },
+    {
+      "profile": "Shared consumption, eligibility and publication",
+      "classification": "local_integration_policy_with_source_comparison",
+      "expectation": "Source food script prepares the outcome, replaces the stage before healing/effects, and has ordinary three-cycle defaults. Rust computes from live base HP before its staged selected-slot transaction; preserves existing overheal and XP, applies member gates and emits only after success.",
+      "resolution": "Independent action tests address arithmetic, atomicity and repeated input. Runtime binding, actual native cadence/sound/activity/combat interactions and persistence require separate acceptance."
+    }
+  ],
+  "limitations": [
+    "No executable original-reference differential was performed; source behavior is inferred from inspected code.",
+    "The strawberry prose/table conflict is preserved rather than treated as universally resolved documentation.",
+    "Native presentation, complete registration/eligibility and durable scenarios remain open; this is a scoped comparison, not full feature acceptance."
+  ]
+}

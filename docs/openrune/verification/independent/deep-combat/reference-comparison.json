@@ -1,0 +1,96 @@
+{
+  "implementation_id": "OR-MIG-0010",
+  "implementation_sha": "5a260c1bd6efa5f8a221bed7c96e6ac72fd428bc",
+  "level": "V4",
+  "status": "IN_PROGRESS",
+  "subchecks": {
+    "source_and_pinned_documentation_comparison": "PASS"
+  },
+  "sources": [
+    {
+      "reference": "content/skills/herblore/src/main/kotlin/org/rsmod/content/skills/herblore/FinishedPotionsEvents.kt",
+      "sha256": "851f9ddaed0c365348b00377fe74077d85ff5bb7f8bb15ecbb50630af48a7579",
+      "kind": "directly_inspected_source",
+      "revision": "configured 241; upstream commit unavailable"
+    },
+    {
+      "reference": "or-cache/src/main/kotlin/dev/openrune/tables/skills/Herblore.kt",
+      "sha256": "30b62b536da7696d98847a94a9edd2d8f601a3d61128f70947aa8bc3f5e1ef62",
+      "kind": "directly_inspected_source",
+      "revision": "configured 241; upstream commit unavailable"
+    },
+    {
+      "reference": "content\\skills\\herblore\\src\\main\\kotlin\\org\\rsmod\\content\\skills\\herblore\\HerbloreGoggles.kt",
+      "sha256": "c833d07a25acde14e20383266f7a7eb97f64fd28d03a4bbb367bdcfe4c21e611",
+      "kind": "directly_inspected_source",
+      "revision": "same protected local archive"
+    },
+    {
+      "reference": "content\\skills\\herblore\\src\\main\\kotlin\\org\\rsmod\\content\\skills\\herblore\\AmuletOfChemistry.kt",
+      "sha256": "06fc425e3fa407715d2a94a048a101023c2ad0a00dec04947720960d6290c801",
+      "kind": "directly_inspected_source",
+      "revision": "same protected local archive"
+    },
+    {
+      "reference": "Super combat potion",
+      "revision": 15281186,
+      "sha256": "6456039f12edaad9c9e268aa2ffa67035fd34e81e4999e7f017895d0de58aeb8",
+      "kind": "pinned_public_documentation_from_read_only_local_snapshot"
+    },
+    {
+      "reference": "Prescription goggles",
+      "revision": 15240969,
+      "sha256": "0c135eedea248d163b2fe8a98cfc8dccf69e5e2662c35b3f53ac72c0fb591fb3",
+      "kind": "pinned_public_documentation_from_read_only_local_snapshot"
+    },
+    {
+      "reference": "Herblore",
+      "revision": 15347160,
+      "sha256": "b50617940515ae09f40c3fd2eb6eef8a74a2a4e26014f13fb34414ce4afc3400",
+      "kind": "pinned_public_documentation_from_read_only_local_snapshot"
+    }
+  ],
+  "claims": [
+    {
+      "behavior": "Four-dose attack/strength/defence and clean or unfinished Torstol produce one four-dose super combat",
+      "classification": "documented_adaptation",
+      "reference": "Wiki Super combat potion revision 15281186; donor Herblore.kt lines 410-418 uses three-dose inputs/output and clean Torstol only",
+      "rust": "content::combat_mixing_recipes; combat_mixing::Job::complete"
+    },
+    {
+      "behavior": "Herblore 90, boostable; base reward 150 XP",
+      "classification": "supported",
+      "reference": "Pinned Wiki Creation recipes; donor table agrees level/reward, while donor initial UI uses base stat",
+      "rust": "live current Herblore gate; skills::advance at personal rate; at 5x expect 750 XP / 7500 fine XP per operation"
+    },
+    {
+      "behavior": "Two-tick production",
+      "classification": "documented_adaptation",
+      "reference": "Pinned Wiki recipes specify two ticks; FinishedPotionsEvents.kt queues first after one and repeats after four",
+      "rust": "simulation/combat_mixing_actions.rs; native authoritative traces must separately establish actual cadence"
+    },
+    {
+      "behavior": "Goggles may retain Torstol only; always-four-dose chemistry is ineligible",
+      "classification": "supported_adaptation",
+      "reference": "Prescription goggles revision 15240969 identifies Torstol forms; donor Goggles helper can retain all listed secondaries; donor Chemistry helper excludes Torstol/four-dose upgrades",
+      "rust": "combat_mixing::Job::complete prepares normal/saved candidates; only ingredient index 3 can be retained"
+    },
+    {
+      "behavior": "Failed transaction preserves all ingredients, XP and RNG; live eligibility rechecked",
+      "classification": "stronger_local_transaction_policy",
+      "reference": "Donor FinishedPotionsEvents.kt consumes with compensating refunds and rolls chemistry before later checks; this does not establish donor atomicity",
+      "rust": "prepared inventory/stat candidates before draw and publication; requires headless failure tests"
+    },
+    {
+      "behavior": "Druidic Ritual and membership required",
+      "classification": "supported",
+      "reference": "Herblore revision 15347160 and Super combat potion recipe membership",
+      "rust": "authoritative queued completion gates checked in exact target"
+    }
+  ],
+  "limitations": [
+    "No executable OpenRune 241 differential was performed; source-derived behavior is not an observed reference execution.",
+    "No claim of literal donor parity: dose policy, boost policy, timing and transaction publication intentionally differ.",
+    "Native modifier combinations and error paths require corresponding gameplay evidence; reference comparison alone cannot certify them."
+  ]
+}

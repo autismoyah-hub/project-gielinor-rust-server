@@ -1,0 +1,3900 @@
+{
+  "observed_utc": "2026-10-17T23:09:19.312043+00:00",
+  "forge_head": "1efda0299062de44fd7196e6555c19b87f02d12b",
+  "queue_sha256": "17040ee9bd9695e52145e32fb1d26e9d9302b9f2b6b541d314c3d3bdcdeef187",
+  "published_validator_sha256": "5e5a3a2aa9a8e83db555150e09332188486a6b13c9bb3be1925eac2357346354",
+  "published_validator_status": "PASS",
+  "json_schema_status": "UNAVAILABLE: jsonschema package; published validator PASS",
+  "records": 37,
+  "implementation_units": 35,
+  "new_contracts": [],
+  "updated_contracts": [],
+  "new_since_initial_checkpoint": [
+    "OR-MIG-0022",
+    "OR-MIG-0023",
+    "OR-MIG-0024",
+    "OR-MIG-0025",
+    "OR-MIG-0026",
+    "OR-MIG-0027",
+    "OR-MIG-0028",
+    "OR-MIG-0029",
+    "OR-MIG-0030",
+    "OR-MIG-0031",
+    "OR-MIG-0032",
+    "OR-MIG-0033",
+    "OR-MIG-0034",
+    "OR-MIG-0035"
+  ],
+  "items": [
+    {
+      "implementation_id": "OR-MIG-0001",
+      "revision": 1,
+      "feature_name": "Manual ordinary herb cleaning",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "d8978ede56778fc7821fbb85fa0617d5b8f0c683"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/application.rs",
+          "crates/server/src/characters.rs",
+          "crates/server/src/content.rs",
+          "crates/server/src/potions.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/chemistry_dialog.rs",
+          "crates/server/src/runtime/combat_mixing.rs",
+          "crates/server/src/runtime/finished_potions.rs",
+          "crates/server/src/runtime/potion_upgrades.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/swamp_tar.rs",
+          "crates/server/src/runtime/unfinished_potions.rs",
+          "crates/server/src/skill_multi.rs",
+          "crates/server/src/startup.rs",
+          "crates/storage/migrations/V12__chemistry_state.sql",
+          "crates/storage/src/accounts.rs",
+          "crates/storage/src/chemistry.rs",
+          "crates/storage/src/lib.rs",
+          "crates/world/src/chemistry.rs",
+          "crates/world/src/chemistry_modifier.rs",
+          "crates/world/src/combat_mixing.rs",
+          "crates/world/src/finished_potions.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/grinding.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/potion_upgrades.rs",
+          "crates/world/src/potions.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/chemistry_actions.rs",
+          "crates/world/src/simulation/combat_mixing_actions.rs",
+          "crates/world/src/simulation/finished_potion_actions.rs",
+          "crates/world/src/simulation/grinding_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/potion_upgrade_actions.rs",
+          "crates/world/src/simulation/swamp_tar_actions.rs",
+          "crates/world/src/simulation/unfinished_potion_actions.rs",
+          "crates/world/src/swamp_tar.rs",
+          "crates/world/src/unfinished_potions.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "Automatic cleaning, quest-specific herbs and full quest content remain unimplemented.",
+        "Independent verification pending; protected fixtures/oracles may need explicit availability resolution."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0002",
+      "revision": 1,
+      "feature_name": "Unfinished potions: ordinary water and three alternate bases",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "a5e21e03c483b0a0fead9958f69965e3bc1d2be7"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/application.rs",
+          "crates/server/src/characters.rs",
+          "crates/server/src/content.rs",
+          "crates/server/src/potions.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/chemistry_dialog.rs",
+          "crates/server/src/runtime/combat_mixing.rs",
+          "crates/server/src/runtime/finished_potions.rs",
+          "crates/server/src/runtime/potion_upgrades.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/swamp_tar.rs",
+          "crates/server/src/skill_multi.rs",
+          "crates/server/src/startup.rs",
+          "crates/storage/migrations/V12__chemistry_state.sql",
+          "crates/storage/src/accounts.rs",
+          "crates/storage/src/chemistry.rs",
+          "crates/storage/src/lib.rs",
+          "crates/world/src/chemistry.rs",
+          "crates/world/src/chemistry_modifier.rs",
+          "crates/world/src/combat_mixing.rs",
+          "crates/world/src/finished_potions.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/grinding.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/potion_upgrades.rs",
+          "crates/world/src/potions.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/chemistry_actions.rs",
+          "crates/world/src/simulation/combat_mixing_actions.rs",
+          "crates/world/src/simulation/finished_potion_actions.rs",
+          "crates/world/src/simulation/grinding_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/potion_upgrade_actions.rs",
+          "crates/world/src/simulation/swamp_tar_actions.rs",
+          "crates/world/src/simulation/unfinished_potion_actions.rs",
+          "crates/world/src/swamp_tar.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "Quest completion, acquisition and all other vessel recipes are outside this unit.",
+        "Independent verification pending; protected fixtures/oracles may need explicit availability resolution."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0003",
+      "revision": 1,
+      "feature_name": "Initial twenty-nine finished-potion profiles",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "f3b4b984af8f62ff3b3dd4505cbb6378c795b464"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/application.rs",
+          "crates/server/src/characters.rs",
+          "crates/server/src/content.rs",
+          "crates/server/src/potions.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/chemistry_dialog.rs",
+          "crates/server/src/runtime/combat_mixing.rs",
+          "crates/server/src/runtime/finished_potions.rs",
+          "crates/server/src/runtime/potion_upgrades.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/swamp_tar.rs",
+          "crates/server/src/skill_multi.rs",
+          "crates/server/src/startup.rs",
+          "crates/storage/migrations/V12__chemistry_state.sql",
+          "crates/storage/src/accounts.rs",
+          "crates/storage/src/chemistry.rs",
+          "crates/storage/src/lib.rs",
+          "crates/world/src/chemistry.rs",
+          "crates/world/src/chemistry_modifier.rs",
+          "crates/world/src/combat_mixing.rs",
+          "crates/world/src/finished_potions.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/grinding.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/potion_upgrades.rs",
+          "crates/world/src/potions.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/chemistry_actions.rs",
+          "crates/world/src/simulation/combat_mixing_actions.rs",
+          "crates/world/src/simulation/finished_potion_actions.rs",
+          "crates/world/src/simulation/grinding_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/potion_upgrade_actions.rs",
+          "crates/world/src/simulation/swamp_tar_actions.rs",
+          "crates/world/src/simulation/unfinished_potion_actions.rs",
+          "crates/world/src/swamp_tar.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "This historical unit excludes later Ancient brew, Menaphite remedy and Anti-venom+ extensions; drinking is separate.",
+        "Independent verification pending; protected fixtures/oracles may need explicit availability resolution."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0004",
+      "revision": 1,
+      "feature_name": "Herb tar batch production",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "613b29ac4e3d39a924079b4fe23fbc6f7da825ad"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/application.rs",
+          "crates/server/src/characters.rs",
+          "crates/server/src/content.rs",
+          "crates/server/src/potions.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/chemistry_dialog.rs",
+          "crates/server/src/runtime/combat_mixing.rs",
+          "crates/server/src/runtime/finished_potions.rs",
+          "crates/server/src/runtime/potion_upgrades.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/skill_multi.rs",
+          "crates/server/src/startup.rs",
+          "crates/storage/migrations/V12__chemistry_state.sql",
+          "crates/storage/src/accounts.rs",
+          "crates/storage/src/chemistry.rs",
+          "crates/storage/src/lib.rs",
+          "crates/world/src/chemistry.rs",
+          "crates/world/src/chemistry_modifier.rs",
+          "crates/world/src/combat_mixing.rs",
+          "crates/world/src/finished_potions.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/grinding.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/potion_upgrades.rs",
+          "crates/world/src/potions.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/chemistry_actions.rs",
+          "crates/world/src/simulation/combat_mixing_actions.rs",
+          "crates/world/src/simulation/finished_potion_actions.rs",
+          "crates/world/src/simulation/grinding_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/potion_upgrade_actions.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "All equipment modifiers, acquisition and ranged-weapon use require separate contracts.",
+        "Independent verification pending; protected fixtures/oracles may need explicit availability resolution."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0005",
+      "revision": 1,
+      "feature_name": "Seven ordinary tool-preserving grinding routes",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "87c4a3def09272158b488a8e3d24be5463d879a7"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/application.rs",
+          "crates/server/src/content.rs",
+          "crates/server/src/potions.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/combat_mixing.rs",
+          "crates/server/src/runtime/finished_potions.rs",
+          "crates/server/src/runtime/potion_upgrades.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/skill_multi.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/combat_mixing.rs",
+          "crates/world/src/finished_potions.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/grinding.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/potion_upgrades.rs",
+          "crates/world/src/potions.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/combat_mixing_actions.rs",
+          "crates/world/src/simulation/finished_potion_actions.rs",
+          "crates/world/src/simulation/grinding_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/potion_upgrade_actions.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "Wiki no-skill superior-bone policy intentionally differs from unverified donor stat rows; acquisition excluded.",
+        "Independent verification pending; protected fixtures/oracles may need explicit availability resolution."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0006",
+      "revision": 1,
+      "feature_name": "Ordinary chemistry charges and Options/Break controls",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "e7ac3608e61893d80b2de6a1a2e512b3ab785505"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "PASS",
+            "reason": "Exact-SHA server compiled; full runtime startup and cache-backed definitions succeeded; native actions reached configured gameplay dispatch.",
+            "evidence": [
+              "docs/openrune/verification/independent/deep-chemistry/independent-assessment.json"
+            ]
+          },
+          "V1": {
+            "status": "IN_PROGRESS",
+            "reason": "Historical headless checks and native positive transitions passed; complete independently specified authoritative negative/modifier matrix remains open.",
+            "evidence": [
+              "docs/openrune/verification/independent/deep-chemistry/independent-assessment.json"
+            ]
+          },
+          "V2": {
+            "status": "IN_PROGRESS",
+            "reason": "Exact historical SHA now has separate genuine native held controls/break and worn Options -> Stop campaigns, each with acknowledged save, actual restart and native relogin. Equipped item, charges, stop policy, coins and XP subchecks PASS; negative/cancelled dialogs, production/modifier and interrupted-transaction acceptance remain open.",
+            "evidence": [
+              "docs/openrune/verification/independent/deep-chemistry-worn/hist-worn-002/independent-assessment.json",
+              "docs/openrune/verification/independent/deep-chemistry/independent-assessment.json"
+            ]
+          },
+          "V3": {
+            "status": "IN_PROGRESS",
+            "reason": "Exact historical SHA now has separate genuine native held controls/break and worn Options -> Stop campaigns, each with acknowledged save, actual restart and native relogin. Equipped item, charges, stop policy, coins and XP subchecks PASS; negative/cancelled dialogs, production/modifier and interrupted-transaction acceptance remain open.",
+            "evidence": [
+              "docs/openrune/verification/independent/deep-chemistry-worn/hist-worn-002/independent-assessment.json",
+              "docs/openrune/verification/independent/deep-chemistry/independent-assessment.json"
+            ]
+          },
+          "V4": {
+            "status": "IN_PROGRESS",
+            "reason": "Independent protected-source and pinned-documentation subcomparisons PASS within recorded scope; complete feature comparison remains open. No executable donor parity is claimed.",
+            "evidence": [
+              "docs/openrune/verification/independent/deep-chemistry/independent-assessment.json"
+            ]
+          }
+        },
+        "evidence_attempts": [
+          "OR-MIG-0006-e7ac3608e618"
+        ]
+      },
+      "current_integration": {
+        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/application.rs",
+          "crates/server/src/content.rs",
+          "crates/server/src/potions.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/combat_mixing.rs",
+          "crates/server/src/runtime/finished_potions.rs",
+          "crates/server/src/runtime/potion_upgrades.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/skill_multi.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/combat_mixing.rs",
+          "crates/world/src/finished_potions.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/grinding.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/potion_upgrades.rs",
+          "crates/world/src/potions.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/combat_mixing_actions.rs",
+          "crates/world/src/simulation/finished_potion_actions.rs",
+          "crates/world/src/simulation/grinding_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/potion_upgrade_actions.rs"
+        ],
+        "last_executed_scope": {
+          "tested_sha": "8ad59b108e1ecd55185570c88d1be8be06b39756",
+          "level": "V3",
+          "status": "IN_PROGRESS",
+          "reason": "Native current-integration worn Options -> Stop, equipped-item/coins/XP conservation and actual restart/native relogin; complete V2/V3 acceptance remains open.",
+          "evidence": [
+            "docs/openrune/verification/independent/native-chemistry-worn-8ad59b108e1ecd55185570c88d1be8be06b39756/independent-assessment.json"
+          ]
+        }
+      },
+      "lane": "B",
+      "open_defects": [],
+      "reference_limitations": [
+        "Alchemist amulet/storage unsupported; legacy native samples do not establish probability or all combinations.",
+        "Independent verification pending; protected fixtures/oracles may need explicit availability resolution."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0007",
+      "revision": 1,
+      "feature_name": "Stamina dose upgrades",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "693dd370dac7e111b2903042f7f6415074b8d166"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/application.rs",
+          "crates/server/src/content.rs",
+          "crates/server/src/potions.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/combat_mixing.rs",
+          "crates/server/src/runtime/finished_potions.rs",
+          "crates/server/src/runtime/potion_upgrades.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/skill_multi.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/combat_mixing.rs",
+          "crates/world/src/finished_potions.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/grinding.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/potion_upgrades.rs",
+          "crates/world/src/potions.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/combat_mixing_actions.rs",
+          "crates/world/src/simulation/finished_potion_actions.rs",
+          "crates/world/src/simulation/grinding_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/potion_upgrade_actions.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "Drinking stamina effect, acquisition and native modifier combinations separate.",
+        "Independent verification pending; protected fixtures/oracles may need explicit availability resolution."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0008",
+      "revision": 1,
+      "feature_name": "Extended anti-venom+ dose upgrades",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "03bffb1fab1d30eaa92e20753c5152ceae845289"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/application.rs",
+          "crates/server/src/content.rs",
+          "crates/server/src/potions.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/combat_mixing.rs",
+          "crates/server/src/runtime/finished_potions.rs",
+          "crates/server/src/runtime/potion_upgrades.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/skill_multi.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/combat_mixing.rs",
+          "crates/world/src/finished_potions.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/grinding.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/potion_upgrades.rs",
+          "crates/world/src/potions.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/combat_mixing_actions.rs",
+          "crates/world/src/simulation/finished_potion_actions.rs",
+          "crates/world/src/simulation/grinding_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/potion_upgrade_actions.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "Wiki-supported extension; literal donor matching-row provenance and drinking effects are not claimed.",
+        "Independent verification pending; protected fixtures/oracles may need explicit availability resolution."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0009",
+      "revision": 1,
+      "feature_name": "Thirty-two divine dose upgrades",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "29d9751117da03956b79682fb6b5ebe219b0848d"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/application.rs",
+          "crates/server/src/content.rs",
+          "crates/server/src/potions.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/combat_mixing.rs",
+          "crates/server/src/runtime/finished_potions.rs",
+          "crates/server/src/runtime/potion_upgrades.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/skill_multi.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/combat_mixing.rs",
+          "crates/world/src/finished_potions.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/grinding.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/potion_upgrades.rs",
+          "crates/world/src/potions.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/combat_mixing_actions.rs",
+          "crates/world/src/simulation/finished_potion_actions.rs",
+          "crates/world/src/simulation/grinding_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/potion_upgrade_actions.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "Drinking divine effects, dust acquisition and every modifier combination remain separate.",
+        "Independent verification pending; protected fixtures/oracles may need explicit availability resolution."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0010",
+      "revision": 1,
+      "feature_name": "Four-input super combat production",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "5a260c1bd6efa5f8a221bed7c96e6ac72fd428bc"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "PASS",
+            "reason": "Exact-SHA server compiled; full runtime startup and cache-backed definitions succeeded; native actions reached configured gameplay dispatch.",
+            "evidence": [
+              "docs/openrune/verification/independent/deep-combat/independent-assessment.json"
+            ]
+          },
+          "V1": {
+            "status": "IN_PROGRESS",
+            "reason": "Historical headless checks and native positive transitions passed; complete independently specified authoritative negative/modifier matrix remains open.",
+            "evidence": [
+              "docs/openrune/verification/independent/deep-combat/independent-assessment.json"
+            ]
+          },
+          "V2": {
+            "status": "IN_PROGRESS",
+            "reason": "Genuine programmatic native menu/action/packet and authoritative-state subchecks PASS. Native stale/interruption/modifier cases and any applicable rendered acceptance remain open.",
+            "evidence": [
+              "docs/openrune/verification/independent/deep-combat/independent-assessment.json"
+            ]
+          },
+          "V3": {
+            "status": "IN_PROGRESS",
+            "reason": "Actual acknowledged-save, process restart, native relogin and durable inventory/XP/state checks PASS; interrupted/partial production and any applicable crash-recovery scenarios remain open.",
+            "evidence": [
+              "docs/openrune/verification/independent/deep-combat/independent-assessment.json"
+            ]
+          },
+          "V4": {
+            "status": "IN_PROGRESS",
+            "reason": "Independent protected-source and pinned-documentation subcomparisons PASS within recorded scope; complete feature comparison remains open. No executable donor parity is claimed.",
+            "evidence": [
+              "docs/openrune/verification/independent/deep-combat/independent-assessment.json",
+              "docs/openrune/verification/independent/deep-combat/reference-comparison.json"
+            ]
+          }
+        },
+        "evidence_attempts": [
+          "OR-MIG-0010-5a260c1bd6ef-attempt-1792274586875248300"
+        ]
+      },
+      "current_integration": {
+        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/potions.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/finished_potions.rs",
+          "crates/server/src/runtime/potion_upgrades.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/finished_potions.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/grinding.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/potion_upgrades.rs",
+          "crates/world/src/potions.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/finished_potion_actions.rs",
+          "crates/world/src/simulation/grinding_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/potion_upgrade_actions.rs"
+        ],
+        "last_executed_scope": {
+          "tested_sha": "4ef5f5c1ebc50b81e56de4f3e2421e2bba49de03",
+          "level": "V1",
+          "status": "IN_PROGRESS",
+          "reason": "Shared integration regression filters PASS: potion:44, chemistry:12, combat_mixing:4, inventory:27, queues:9. This is scoped regression evidence, not complete current contract acceptance.",
+          "evidence": [
+            "docs/openrune/verification/independent/integration-4ef5f5c1ebc50b81e56de4f3e2421e2bba49de03/manifest.json"
+          ]
+        }
+      },
+      "lane": "B",
+      "open_defects": [],
+      "reference_limitations": [
+        "Wiki four-dose policy corrects donor three-dose row; acquisition and drinking excluded.",
+        "Independent verification pending; protected fixtures/oracles may need explicit availability resolution."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0011",
+      "revision": 1,
+      "feature_name": "Anti-venom four-dose family",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "289981e0efb1cd0397aa4836311df05ff5d1c2aa"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/potions.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/finished_potions.rs",
+          "crates/server/src/runtime/potion_upgrades.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/finished_potions.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/grinding.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/potion_upgrades.rs",
+          "crates/world/src/potions.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/finished_potion_actions.rs",
+          "crates/world/src/simulation/grinding_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/potion_upgrade_actions.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "Wiki-supported family; donor literal matching row, drinking and acquisition not attested.",
+        "Independent verification pending; protected fixtures/oracles may need explicit availability resolution."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0012",
+      "revision": 1,
+      "feature_name": "Extended antifire dose family",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "289981e0efb1cd0397aa4836311df05ff5d1c2aa"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/potions.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/finished_potions.rs",
+          "crates/server/src/runtime/potion_upgrades.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/finished_potions.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/grinding.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/potion_upgrades.rs",
+          "crates/world/src/potions.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/finished_potion_actions.rs",
+          "crates/world/src/simulation/grinding_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/potion_upgrade_actions.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "Extended antifire is not true super antifire; learned-gate super antifire remains unresolved.",
+        "Independent verification pending; protected fixtures/oracles may need explicit availability resolution."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0013",
+      "revision": 1,
+      "feature_name": "Forgotten brew nonlinear dose awards",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "03ce46c812d4f5a6b91461367e9f3bec1e242fa7"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/potions.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/finished_potions.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/finished_potions.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/grinding.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/potions.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/finished_potion_actions.rs",
+          "crates/world/src/simulation/grinding_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "Drinking magic/prayer/drain effects and acquisition are separate.",
+        "Independent verification pending; protected fixtures/oracles may need explicit availability resolution."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0014",
+      "revision": 1,
+      "feature_name": "Ancient brew selected dust stack production",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "da62d6154b74f0044498940e66837e7d80b98024"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/potions.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/finished_potions.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/finished_potions.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/grinding.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/potions.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/grinding_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "Ingredient grinding is OR-MIG-0015; acquisition and drinking effects separate.",
+        "Independent verification pending; protected fixtures/oracles may need explicit availability resolution."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0015",
+      "revision": 1,
+      "feature_name": "Nihil shard stack crushing",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "337cbd9e7209bc877a5920d2cd9a549c9d05a3ec"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/potions.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/finished_potions.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/finished_potions.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/potions.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/held_use_actions.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "Wiki-supported stack extension; native capacity/overflow negatives and acquisition need independent verification.",
+        "Independent verification pending; protected fixtures/oracles may need explicit availability resolution."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0016",
+      "revision": 1,
+      "feature_name": "Menaphite remedy production",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "b1cade8a86f369a6bbd89145f6ea9673ba834f0a"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/potions.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/finished_potions.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/finished_potions.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/potions.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/held_use_actions.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "Drinking renewal/divine-removal effects and acquisition excluded.",
+        "Independent verification pending; protected fixtures/oracles may need explicit availability resolution."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0017",
+      "revision": 1,
+      "feature_name": "Four-dose Anti-venom+ with both Torstol forms",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "d09659ad92659d2b7eedb3a562ecda6ad8a75ca9"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/potions.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/potions.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/held_use_actions.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "Only explicitly attested four-dose recipes registered; partial-dose production, drinking and acquisition remain unverified.",
+        "Independent verification pending; protected fixtures/oracles may need explicit availability resolution."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0018",
+      "revision": 1,
+      "feature_name": "Selected-slot atomic potion consumption",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "71289e622cdfac55d5f11e1c857f325929ebff3f"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "IN_PROGRESS",
+            "reason": "Historical partial checks retained; full level acceptance not established"
+          },
+          "V1": {
+            "status": "IN_PROGRESS",
+            "reason": "Historical partial checks retained; full level acceptance not established"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": [
+          "OR-MIG-0018-71289e622cdf",
+          "OR-MIG-0018-71289e622cdf-independent"
+        ]
+      },
+      "current_integration": {
+        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/potions.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/potions.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/held_use_actions.rs"
+        ],
+        "last_executed_scope": {
+          "tested_sha": "4ef5f5c1ebc50b81e56de4f3e2421e2bba49de03",
+          "level": "V1",
+          "status": "IN_PROGRESS",
+          "reason": "Shared integration regression filters PASS: potion:44, chemistry:12, combat_mixing:4, inventory:27, queues:9. This is scoped regression evidence, not complete current contract acceptance.",
+          "evidence": [
+            "docs/openrune/verification/independent/integration-4ef5f5c1ebc50b81e56de4f3e2421e2bba49de03/manifest.json"
+          ]
+        }
+      },
+      "lane": "B",
+      "open_defects": [],
+      "reference_limitations": [
+        "Not full ConsumePotionScript parity: sound, area/activity restrictions, unsupported effects and complete delay policy remain separate.",
+        "Actual native/lifecycle/reference verification is queued; legacy fixtures are retained, not rewritten to claim parity."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0019",
+      "revision": 1,
+      "feature_name": "Ancient and Forgotten brew drinking effects, all eight doses",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "d02633e45576cbea0ba4e14e7d3cb8c164886950"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/potions.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/potions.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/held_use_actions.rs"
+        ],
+        "last_executed_scope": {
+          "tested_sha": "4ef5f5c1ebc50b81e56de4f3e2421e2bba49de03",
+          "level": "V1",
+          "status": "IN_PROGRESS",
+          "reason": "Shared integration regression filters PASS: potion:44, chemistry:12, combat_mixing:4, inventory:27, queues:9. This is scoped regression evidence, not complete current contract acceptance.",
+          "evidence": [
+            "docs/openrune/verification/independent/integration-4ef5f5c1ebc50b81e56de4f3e2421e2bba49de03/manifest.json"
+          ]
+        }
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "Sound, full activity/area restrictions and complete donor consumable timing are inherited outstanding obligations of OR-MIG-0018.",
+        "No independent native/lifecycle/differential acceptance yet; status is queued, not verified.",
+        "Original compiled Kotlin comparison is not assumed available."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0020",
+      "revision": 1,
+      "feature_name": "Saradomin brew drinking, four doses",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "cf75fa343a0fc86c50f4451a22600cc10a0ee500"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/potions.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/potions.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/held_use_actions.rs"
+        ],
+        "last_executed_scope": {
+          "tested_sha": "4ef5f5c1ebc50b81e56de4f3e2421e2bba49de03",
+          "level": "V1",
+          "status": "IN_PROGRESS",
+          "reason": "Shared integration regression filters PASS: potion:44, chemistry:12, combat_mixing:4, inventory:27, queues:9. This is scoped regression evidence, not complete current contract acceptance.",
+          "evidence": [
+            "docs/openrune/verification/independent/integration-4ef5f5c1ebc50b81e56de4f3e2421e2bba49de03/manifest.json"
+          ]
+        }
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "Explicit discrepancy: source helper defaults drain minimum1; pinned Wiki describes level1 drain to0; Rust deliberately uses Wiki minimum0.",
+        "Independent V0-V4 pending; inherited sound/activity/full delay policy remains incomplete.",
+        "No blanket source/dependency clearance; independently authored behavior adapter only."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0021",
+      "revision": 1,
+      "feature_name": "Queued smithing live requirements and ordinary iron outcome safety (historical backfill)",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "c8b9aef260db3101dafb2b591ebbdfa4add69f5b"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/application.rs",
+          "crates/server/src/characters.rs",
+          "crates/server/src/content.rs",
+          "crates/server/src/potions.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/chemistry_dialog.rs",
+          "crates/server/src/runtime/combat_mixing.rs",
+          "crates/server/src/runtime/dough.rs",
+          "crates/server/src/runtime/finished_potions.rs",
+          "crates/server/src/runtime/herb_cleaning.rs",
+          "crates/server/src/runtime/potion_upgrades.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/swamp_tar.rs",
+          "crates/server/src/runtime/unfinished_potions.rs",
+          "crates/server/src/skill_multi.rs",
+          "crates/server/src/startup.rs",
+          "crates/storage/migrations/V12__chemistry_state.sql",
+          "crates/storage/src/accounts.rs",
+          "crates/storage/src/chemistry.rs",
+          "crates/storage/src/lib.rs",
+          "crates/world/src/assembly.rs",
+          "crates/world/src/chemistry.rs",
+          "crates/world/src/chemistry_modifier.rs",
+          "crates/world/src/combat_mixing.rs",
+          "crates/world/src/dough.rs",
+          "crates/world/src/finished_potions.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/grinding.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/herb_cleaning.rs",
+          "crates/world/src/item_packs.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/milking.rs",
+          "crates/world/src/potion_upgrades.rs",
+          "crates/world/src/potions.rs",
+          "crates/world/src/reach.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/chemistry_actions.rs",
+          "crates/world/src/simulation/combat_mixing_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/dough_actions.rs",
+          "crates/world/src/simulation/finished_potion_actions.rs",
+          "crates/world/src/simulation/grinding_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/herb_cleaning_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/milking_actions.rs",
+          "crates/world/src/simulation/potion_upgrade_actions.rs",
+          "crates/world/src/simulation/swamp_tar_actions.rs",
+          "crates/world/src/simulation/unfinished_potion_actions.rs",
+          "crates/world/src/simulation/water_source_actions.rs",
+          "crates/world/src/swamp_tar.rs",
+          "crates/world/src/unfinished_potions.rs",
+          "crates/world/src/water_sources.rs",
+          "crates/world/tests/kotlin_packed_reach.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "Historical scoped correction, not full smithing port: modifiers, ring charges, furnace generation and cadence/native/lifecycle acceptance remain unresolved.",
+        "Only ordinary iron impurity policy covered; no equipped/Imcando tool support added.",
+        "Original PG admission-only level/tool check deliberately tightened; no exact original timing parity claimed."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0022",
+      "revision": 1,
+      "feature_name": "Ordinary Bastion and Battlemage potion drinking, eight doses",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "71fa140f48a1860c90b294344ddb3bdcde2e8781"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/held_use_actions.rs"
+        ],
+        "last_executed_scope": {
+          "tested_sha": "4ef5f5c1ebc50b81e56de4f3e2421e2bba49de03",
+          "level": "V1",
+          "status": "IN_PROGRESS",
+          "reason": "Shared integration regression filters PASS: potion:44, chemistry:12, combat_mixing:4, inventory:27, queues:9. This is scoped regression evidence, not complete current contract acceptance.",
+          "evidence": [
+            "docs/openrune/verification/independent/integration-4ef5f5c1ebc50b81e56de4f3e2421e2bba49de03/manifest.json"
+          ]
+        }
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "Ordinary only; divine variants and their timers/damage excluded.",
+        "Independent V0-V4 pending; sound/activity/full consumable delay obligations inherited from0018 remain."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0023",
+      "revision": 1,
+      "feature_name": "Seventeen ordinary item-pack profiles, atomic opening and weak repeat queue (historical backfill)",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "caefcf424869d2a54d711acd22a279351f098be0"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "IN_PROGRESS",
+            "reason": "Exact-SHA world atomicity/overflow helpers and server pack-definition bindings PASS (five test functions); full repeat-queue/native/lifecycle/reference acceptance remains open.",
+            "evidence": [
+              "docs/openrune/verification/independent/OR-MIG-0023-caefcf424869/manifest.json"
+            ]
+          },
+          "V1": {
+            "status": "IN_PROGRESS",
+            "reason": "Four exact-SHA world tests PASS including authoritative repeat opening, movement cancellation and stale selected-slot refusal. Attested binary was replayed without rebuilding during CPU contention. Native/lifecycle/reference acceptance remains open.",
+            "evidence": [
+              "docs/openrune/verification/independent/OR-MIG-0023-caefcf424869-cached-1792277281132359500/manifest.json"
+            ]
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": [
+          "OR-MIG-0023-caefcf424869",
+          "OR-MIG-0023-caefcf424869-cached-1792277281132359500"
+        ]
+      },
+      "current_integration": {
+        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/application.rs",
+          "crates/server/src/characters.rs",
+          "crates/server/src/content.rs",
+          "crates/server/src/potions.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/chemistry_dialog.rs",
+          "crates/server/src/runtime/combat_mixing.rs",
+          "crates/server/src/runtime/dough.rs",
+          "crates/server/src/runtime/finished_potions.rs",
+          "crates/server/src/runtime/herb_cleaning.rs",
+          "crates/server/src/runtime/potion_upgrades.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/swamp_tar.rs",
+          "crates/server/src/runtime/unfinished_potions.rs",
+          "crates/server/src/skill_multi.rs",
+          "crates/server/src/startup.rs",
+          "crates/storage/migrations/V12__chemistry_state.sql",
+          "crates/storage/src/accounts.rs",
+          "crates/storage/src/chemistry.rs",
+          "crates/storage/src/lib.rs",
+          "crates/world/src/assembly.rs",
+          "crates/world/src/chemistry.rs",
+          "crates/world/src/chemistry_modifier.rs",
+          "crates/world/src/combat_mixing.rs",
+          "crates/world/src/dough.rs",
+          "crates/world/src/finished_potions.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/grinding.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/herb_cleaning.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/potion_upgrades.rs",
+          "crates/world/src/potions.rs",
+          "crates/world/src/reach.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/chemistry_actions.rs",
+          "crates/world/src/simulation/combat_mixing_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/dough_actions.rs",
+          "crates/world/src/simulation/finished_potion_actions.rs",
+          "crates/world/src/simulation/grinding_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/herb_cleaning_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/milking_actions.rs",
+          "crates/world/src/simulation/potion_upgrade_actions.rs",
+          "crates/world/src/simulation/swamp_tar_actions.rs",
+          "crates/world/src/simulation/unfinished_potion_actions.rs",
+          "crates/world/src/simulation/water_source_actions.rs",
+          "crates/world/src/swamp_tar.rs",
+          "crates/world/src/unfinished_potions.rs",
+          "crates/world/src/water_sources.rs",
+          "crates/world/tests/kotlin_packed_reach.rs"
+        ]
+      },
+      "lane": "B",
+      "open_defects": [],
+      "reference_limitations": [
+        "Historical subset only: other configured packs and shops/stocks excluded.",
+        "Historical17profile native/same-save evidence retained but not relabelled independent acceptance; rendered client, multiplayer and exact native cadence excluded."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0024",
+      "revision": 3,
+      "feature_name": "Ordinary selected-slot food transaction and potion-overheal integration safety",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "ae3d234c71764dd2364f8452fc1974a54a6783f0"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "IN_PROGRESS",
+            "reason": "Exact-SHA production crate compiled; runtime cache/registration and packet decoder acceptance remain open.",
+            "evidence": [
+              "docs/openrune/verification/independent/OR-MIG-0024-ae3d234c7176-independent/manifest.json"
+            ]
+          },
+          "V1": {
+            "status": "IN_PROGRESS",
+            "reason": "Four independent authoritative World action tests PASS across 319 fixtures: all selected slots, full bags, duplicate/stale input, overheal, remainders and malformed transactions. Runtime packet decode and complete food matrix remain open.",
+            "evidence": [
+              "docs/openrune/verification/independent/OR-MIG-0024-ae3d234c7176-independent/manifest.json"
+            ]
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": [
+          "OR-MIG-0024-ae3d234c7176-independent"
+        ]
+      },
+      "current_integration": {
+        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/simulation.rs"
+        ],
+        "last_executed_scope": {
+          "tested_sha": "97b25c57d4c6dc0606adf91dd00e41ec43600a27",
+          "level": "V1",
+          "status": "IN_PROGRESS",
+          "reason": "Independent food-energy authoritative queue matrix PASS: successful HP/stat/energy/remainder publication once; failed transaction energy exactly matches no-action controls. Integration scope only; associated new contract/native/persistence/reference coverage remains open.",
+          "evidence": [
+            "docs/openrune/verification/independent/integration-external-energy-food-97b25c57d4c6dc0606adf91dd00e41ec43600a27/manifest.json"
+          ]
+        }
+      },
+      "lane": "B",
+      "open_defects": [],
+      "reference_limitations": [
+        "Shared ordinary food adapter only; special/dynamic/stackable foods and energy/timed effects excluded.",
+        "Configured skill-boost pie effects detailed in OR-MIG-0033; full food/content parity is not established.",
+        "Sound,full area/activity/combat timing and independent native/lifecycle/reference acceptance remain incomplete."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0025",
+      "revision": 1,
+      "feature_name": "Fifteen additional ordinary multipart food stages: chocolate cake, topped pizzas and pies",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "a560034a59e766d1faf400b61187fec861d13475"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/held_use_actions.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "Only seven food families/15edible stages; remaining special/dynamic/stackable/full FoodData behavior excluded.",
+        "Donor raw meat/anchovy pizza heals3/2 differ from Wiki8/9; Wiki values deliberately retained and V4 comparison requested.",
+        "No independent native/lifecycle acceptance; target16definition preflight is not startup gameplay acceptance.",
+        "Sound, activity/access and full combat timing remain incomplete."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0026",
+      "revision": 1,
+      "feature_name": "Ten missing ordinary food healing profiles",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "5b47d7fe42703ade7b97e10636c53abb35bd6e0e"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/held_use_actions.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "Ordinary healing/consumption subset only; Onion conditional flavor chat and Ugthanki kebab healed-only Yum overhead remain cosmetic obligations.",
+        "Full sound/activity/access/combat timing and independent native/lifecycle acceptance pending.",
+        "Target10definition preflight is not startup/native acceptance; no pristine-SHA rebuild claim."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0027",
+      "revision": 1,
+      "feature_name": "Four ordinary water-source vessels with checked selected-slot filling (historical backfill)",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "f1f0032d54405e6509a6250a94368531df78bb18"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/application.rs",
+          "crates/server/src/characters.rs",
+          "crates/server/src/content.rs",
+          "crates/server/src/potions.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/chemistry_dialog.rs",
+          "crates/server/src/runtime/combat_mixing.rs",
+          "crates/server/src/runtime/dough.rs",
+          "crates/server/src/runtime/finished_potions.rs",
+          "crates/server/src/runtime/herb_cleaning.rs",
+          "crates/server/src/runtime/potion_upgrades.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/swamp_tar.rs",
+          "crates/server/src/runtime/unfinished_potions.rs",
+          "crates/server/src/skill_multi.rs",
+          "crates/server/src/startup.rs",
+          "crates/storage/migrations/V12__chemistry_state.sql",
+          "crates/storage/src/accounts.rs",
+          "crates/storage/src/chemistry.rs",
+          "crates/storage/src/lib.rs",
+          "crates/world/src/assembly.rs",
+          "crates/world/src/chemistry.rs",
+          "crates/world/src/chemistry_modifier.rs",
+          "crates/world/src/combat_mixing.rs",
+          "crates/world/src/dough.rs",
+          "crates/world/src/finished_potions.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/grinding.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/herb_cleaning.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/potion_upgrades.rs",
+          "crates/world/src/potions.rs",
+          "crates/world/src/reach.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/chemistry_actions.rs",
+          "crates/world/src/simulation/combat_mixing_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/dough_actions.rs",
+          "crates/world/src/simulation/finished_potion_actions.rs",
+          "crates/world/src/simulation/grinding_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/herb_cleaning_actions.rs",
+          "crates/world/src/simulation/milking_actions.rs",
+          "crates/world/src/simulation/potion_upgrade_actions.rs",
+          "crates/world/src/simulation/swamp_tar_actions.rs",
+          "crates/world/src/simulation/unfinished_potion_actions.rs",
+          "crates/world/src/swamp_tar.rs",
+          "crates/world/src/unfinished_potions.rs",
+          "crates/world/tests/kotlin_packed_reach.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "Four-vessel/four-source subset only; cups/cans/skins/transfers and other source families excluded.",
+        "Wiki well cup evidence conflicts with earlier bucket-only wording; no blanket bucket-only policy asserted outside the four selected vessels.",
+        "Native sink873 history exists; wells/other sinks/complete negatives/rendering/multiplayer independently unverified."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0028",
+      "revision": 1,
+      "feature_name": "Ordinary dairy-cow harvesting with selected bucket and packed approach flags (historical backfill)",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "231f33710596f8a9b4159f332e0e99a26d182b14"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/application.rs",
+          "crates/server/src/characters.rs",
+          "crates/server/src/content.rs",
+          "crates/server/src/potions.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/chemistry_dialog.rs",
+          "crates/server/src/runtime/combat_mixing.rs",
+          "crates/server/src/runtime/dough.rs",
+          "crates/server/src/runtime/finished_potions.rs",
+          "crates/server/src/runtime/herb_cleaning.rs",
+          "crates/server/src/runtime/potion_upgrades.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/swamp_tar.rs",
+          "crates/server/src/runtime/unfinished_potions.rs",
+          "crates/server/src/skill_multi.rs",
+          "crates/server/src/startup.rs",
+          "crates/storage/migrations/V12__chemistry_state.sql",
+          "crates/storage/src/accounts.rs",
+          "crates/storage/src/chemistry.rs",
+          "crates/storage/src/lib.rs",
+          "crates/world/src/assembly.rs",
+          "crates/world/src/chemistry.rs",
+          "crates/world/src/chemistry_modifier.rs",
+          "crates/world/src/combat_mixing.rs",
+          "crates/world/src/dough.rs",
+          "crates/world/src/finished_potions.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/grinding.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/herb_cleaning.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/potion_upgrades.rs",
+          "crates/world/src/potions.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/chemistry_actions.rs",
+          "crates/world/src/simulation/combat_mixing_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/dough_actions.rs",
+          "crates/world/src/simulation/finished_potion_actions.rs",
+          "crates/world/src/simulation/grinding_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/herb_cleaning_actions.rs",
+          "crates/world/src/simulation/potion_upgrade_actions.rs",
+          "crates/world/src/simulation/swamp_tar_actions.rs",
+          "crates/world/src/simulation/unfinished_potion_actions.rs",
+          "crates/world/src/swamp_tar.rs",
+          "crates/world/src/unfinished_potions.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "Ordinary bucket harvesting only; bottomless bucket,cowbell quest and dialogue flows excluded.",
+        "Historical native60788 menu/use and same-savePASS; other variants/native interruption/rendered client/multiplayer remain independent."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0029",
+      "revision": 1,
+      "feature_name": "Nine ordinary dough choices with selected container returns and quantity repeats (historical backfill)",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "d8978ede56778fc7821fbb85fa0617d5b8f0c683"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/application.rs",
+          "crates/server/src/characters.rs",
+          "crates/server/src/content.rs",
+          "crates/server/src/potions.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/chemistry_dialog.rs",
+          "crates/server/src/runtime/combat_mixing.rs",
+          "crates/server/src/runtime/finished_potions.rs",
+          "crates/server/src/runtime/potion_upgrades.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/swamp_tar.rs",
+          "crates/server/src/runtime/unfinished_potions.rs",
+          "crates/server/src/skill_multi.rs",
+          "crates/server/src/startup.rs",
+          "crates/storage/migrations/V12__chemistry_state.sql",
+          "crates/storage/src/accounts.rs",
+          "crates/storage/src/chemistry.rs",
+          "crates/storage/src/lib.rs",
+          "crates/world/src/chemistry.rs",
+          "crates/world/src/chemistry_modifier.rs",
+          "crates/world/src/combat_mixing.rs",
+          "crates/world/src/finished_potions.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/grinding.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/potion_upgrades.rs",
+          "crates/world/src/potions.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/chemistry_actions.rs",
+          "crates/world/src/simulation/combat_mixing_actions.rs",
+          "crates/world/src/simulation/finished_potion_actions.rs",
+          "crates/world/src/simulation/grinding_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/potion_upgrade_actions.rs",
+          "crates/world/src/simulation/swamp_tar_actions.rs",
+          "crates/world/src/simulation/unfinished_potion_actions.rs",
+          "crates/world/src/swamp_tar.rs",
+          "crates/world/src/unfinished_potions.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "Nine choices only; nativeAll/same-save/capacity history retained but other negatives/multiplayer and independent acceptance remain pending.",
+        "Wiki bread-return field completeness remains unresolved; selected lossless pot/vessel return policy is explicit adaptation."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0030",
+      "revision": 1,
+      "feature_name": "Nine prepared fruit portion healing profiles",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "eeb270e37b44388f784f2ac2bd40c34fb8c2df2e"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/held_use_actions.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "Prepared fruit consumption only; cutting/creation,quest/gnome recipe interactions and whole fruit variants excluded.",
+        "Four individual pages omit heal amount; pinned Food/Allfood explicit2HP rows resolve those fields,not an inferred zero/default.",
+        "Independent native/lifecycle/reference acceptance pending; full sound/activity/access/combat timing remain incomplete."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0031",
+      "revision": 1,
+      "feature_name": "Manual three-stage Admiral pie assembly and optional shared timing",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "0fe7d767e630ace7d5518be979adf094bb285026"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/simulation.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "Manual assembly only; Make-X/automatic repeat remains pending as preserved earlier deferral.",
+        "Baking success/burn,210XP,cooked consumption and independent native/lifecycle/reference acceptance excluded.",
+        "Generic combine message retained rather than complete donor dialogue/output parity."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0032",
+      "revision": 1,
+      "feature_name": "Twenty-seven ordinary pie and pizza assembly recipes (historical backfill)",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "fe04a83de2b6f7f3edefc92c7f7031290a5908b0"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/application.rs",
+          "crates/server/src/characters.rs",
+          "crates/server/src/content.rs",
+          "crates/server/src/potions.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/chemistry_dialog.rs",
+          "crates/server/src/runtime/combat_mixing.rs",
+          "crates/server/src/runtime/finished_potions.rs",
+          "crates/server/src/runtime/herb_cleaning.rs",
+          "crates/server/src/runtime/potion_upgrades.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/swamp_tar.rs",
+          "crates/server/src/runtime/unfinished_potions.rs",
+          "crates/server/src/skill_multi.rs",
+          "crates/server/src/startup.rs",
+          "crates/storage/migrations/V12__chemistry_state.sql",
+          "crates/storage/src/accounts.rs",
+          "crates/storage/src/chemistry.rs",
+          "crates/storage/src/lib.rs",
+          "crates/world/src/chemistry.rs",
+          "crates/world/src/chemistry_modifier.rs",
+          "crates/world/src/combat_mixing.rs",
+          "crates/world/src/finished_potions.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/grinding.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/herb_cleaning.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/potion_upgrades.rs",
+          "crates/world/src/potions.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/chemistry_actions.rs",
+          "crates/world/src/simulation/combat_mixing_actions.rs",
+          "crates/world/src/simulation/dough_actions.rs",
+          "crates/world/src/simulation/finished_potion_actions.rs",
+          "crates/world/src/simulation/grinding_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/herb_cleaning_actions.rs",
+          "crates/world/src/simulation/potion_upgrade_actions.rs",
+          "crates/world/src/simulation/swamp_tar_actions.rs",
+          "crates/world/src/simulation/unfinished_potion_actions.rs",
+          "crates/world/src/swamp_tar.rs",
+          "crates/world/src/unfinished_potions.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "Historical27pair subset only; Pineapple cutting separate,Admiral manual added later in0031,Make-X/baking excluded.",
+        "Historical selected native normal/member/refusal/same-save tests retained but not independent acceptance or whole27matrix certification.",
+        "Generic messages/full activity/combat/quantity handling remain independent obligations."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0033",
+      "revision": 1,
+      "feature_name": "Seven skill-boost pie families, fourteen bites and dish returns",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "ae3d234c71764dd2364f8452fc1974a54a6783f0"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/simulation.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "Seven pie families only;baking/creation,cooked success and other special/dynamic/energy/timed foods excluded.",
+        "Dragonfruit donor item list omits final dish;Wiki explicitly retains it,so Rust returns dish intentionally.",
+        "Full sound/activity/access/combat timing and independent native/lifecycle/reference acceptance pending."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0034",
+      "revision": 1,
+      "feature_name": "Summer pie and papaya energy restoration through shared food effects",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "97b25c57d4c6dc0606adf91dd00e41ec43600a27"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "IN_PROGRESS",
+            "reason": "Same exact source SHA was independently tested as a shared-food integration checkpoint before this contract arrived. Summer-whole 10% energy/HP/boost/remainder and failed-action no-award controls PASS; papaya/half/member-gate/runtime/native/lifecycle/reference coverage remains open.",
+            "evidence": [
+              "docs/openrune/verification/independent/integration-external-energy-food-97b25c57d4c6dc0606adf91dd00e41ec43600a27/manifest.json"
+            ]
+          },
+          "V1": {
+            "status": "IN_PROGRESS",
+            "reason": "Same exact source SHA was independently tested as a shared-food integration checkpoint before this contract arrived. Summer-whole 10% energy/HP/boost/remainder and failed-action no-award controls PASS; papaya/half/member-gate/runtime/native/lifecycle/reference coverage remains open.",
+            "evidence": [
+              "docs/openrune/verification/independent/integration-external-energy-food-97b25c57d4c6dc0606adf91dd00e41ec43600a27/manifest.json"
+            ]
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/simulation.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "Two energy-food families only;other energy/timed/special foods,baking/recipes and full source/content parity excluded.",
+        "Summerdish return follows Wiki over donor omitted final dish.",
+        "Existing FoodTransition has HP/item fields;Energy events/state must supplement it,not be misrepresented as an energy trace receipt.",
+        "Independent native/lifecycle/reference and full sound/activity/combat timing acceptance pending."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0035",
+      "revision": 1,
+      "feature_name": "Four live-base-HP food healing profiles with explicit rounding rules",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "1446167370dece10751c4c332929af880259ee23"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "IN_PROGRESS",
+            "reason": "Independent actual World action queue checks PASS: four healing policies across 99 base levels and four HP states (1584 fixtures), plus live-base/stale replay and seven invalid-rule/transaction cases. Full bags, duplicate selected input, bowl return, no XP and rollback verified. Configured runtime/profile binding, membership, native, persistence and reference acceptance remain open.",
+            "evidence": [
+              "docs/openrune/verification/independent/OR-MIG-0035-1446167370de-independent-attempt-1792278447261353100/manifest.json"
+            ]
+          },
+          "V1": {
+            "status": "IN_PROGRESS",
+            "reason": "Independent actual World action queue checks PASS: four healing policies across 99 base levels and four HP states (1584 fixtures), plus live-base/stale replay and seven invalid-rule/transaction cases. Full bags, duplicate selected input, bowl return, no XP and rollback verified. Configured runtime/profile binding, membership, native, persistence and reference acceptance remain open.",
+            "evidence": [
+              "docs/openrune/verification/independent/OR-MIG-0035-1446167370de-independent-attempt-1792278447261353100/manifest.json"
+            ]
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "IN_PROGRESS",
+            "reason": "Independently verified three protected-source hashes and four pinned Wiki revisions/content hashes. Strawberry prose/table conflict, deliberate watermelon donor/Wiki rounding difference, sweetcorn common policy and source-only bowl-return evidence remain explicit. Full native presentation/timing and complete integration fidelity remain open.",
+            "evidence": [
+              "docs/openrune/verification/independent/reference-food-1446167370dece10751c4c332929af880259ee23/comparison.json"
+            ]
+          }
+        },
+        "evidence_attempts": [
+          "OR-MIG-0035-1446167370de-independent-attempt-1792278375168199600",
+          "OR-MIG-0035-1446167370de-independent-attempt-1792278447261353100"
+        ]
+      },
+      "current_integration": {
+        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": []
+      },
+      "lane": "B",
+      "open_defects": [],
+      "reference_limitations": [
+        "Strawberry prose1+6% differs/ambiguous against explicit table atbase50;table/sourceceil6% chosen and V4 comparison requested.",
+        "Watermelon donorceil5% differs from Wiki floor5%+1 atbase20/40/60/80;Wiki table/prose chosen deliberately.",
+        "Bowl return supported by donor stage list;Wiki bowl page confirms healing but does not explicitly describe return.",
+        "Independent native/lifecycle/reference and full sound/activity/combat timing acceptance pending;creation/cutting/cooking and other special foods excluded."
+      ]
+    }
+  ],
+  "resume_queue": [
+    {
+      "lane": "B",
+      "feature": "OR-MIG-0006",
+      "action": "Complete native negative/cancelled held and worn dialogs, last-charge production/modifiers and interrupted production persistence; retain completed positive controls/restart evidence",
+      "sha": "e7ac3608e61893d80b2de6a1a2e512b3ab785505"
+    },
+    {
+      "lane": "C",
+      "feature": "OR-MIG-0006",
+      "action": "Inspect shared changes since the last recorded native integration campaign; select affected current-build regression scopes without inheriting older PASS results",
+      "sha": "1efda0299062de44fd7196e6555c19b87f02d12b"
+    },
+    {
+      "lane": "A",
+      "feature": "OR-MIG-0024",
+      "action": "Expand runtime packet and genuine native ordinary/remainder food acceptance after completed revision-3 authoritative tests; item-pack native/lifecycle remains separate",
+      "sha": "ae3d234c71764dd2364f8452fc1974a54a6783f0"
+    }
+  ],
+  "contract_revisions": [
+    {
+      "implementation_id": "OR-MIG-0001",
+      "revision": 1,
+      "implementation_sha": "d8978ede56778fc7821fbb85fa0617d5b8f0c683",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0002",
+      "revision": 1,
+      "implementation_sha": "a5e21e03c483b0a0fead9958f69965e3bc1d2be7",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0003",
+      "revision": 1,
+      "implementation_sha": "f3b4b984af8f62ff3b3dd4505cbb6378c795b464",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0004",
+      "revision": 1,
+      "implementation_sha": "613b29ac4e3d39a924079b4fe23fbc6f7da825ad",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0005",
+      "revision": 1,
+      "implementation_sha": "87c4a3def09272158b488a8e3d24be5463d879a7",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0006",
+      "revision": 1,
+      "implementation_sha": "e7ac3608e61893d80b2de6a1a2e512b3ab785505",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "PASS",
+          "reason": "Exact-SHA server compiled; full runtime startup and cache-backed definitions succeeded; native actions reached configured gameplay dispatch.",
+          "evidence": [
+            "docs/openrune/verification/independent/deep-chemistry/independent-assessment.json"
+          ]
+        },
+        "V1": {
+          "status": "IN_PROGRESS",
+          "reason": "Historical headless checks and native positive transitions passed; complete independently specified authoritative negative/modifier matrix remains open.",
+          "evidence": [
+            "docs/openrune/verification/independent/deep-chemistry/independent-assessment.json"
+          ]
+        },
+        "V2": {
+          "status": "IN_PROGRESS",
+          "reason": "Exact historical SHA now has separate genuine native held controls/break and worn Options -> Stop campaigns, each with acknowledged save, actual restart and native relogin. Equipped item, charges, stop policy, coins and XP subchecks PASS; negative/cancelled dialogs, production/modifier and interrupted-transaction acceptance remain open.",
+          "evidence": [
+            "docs/openrune/verification/independent/deep-chemistry-worn/hist-worn-002/independent-assessment.json",
+            "docs/openrune/verification/independent/deep-chemistry/independent-assessment.json"
+          ]
+        },
+        "V3": {
+          "status": "IN_PROGRESS",
+          "reason": "Exact historical SHA now has separate genuine native held controls/break and worn Options -> Stop campaigns, each with acknowledged save, actual restart and native relogin. Equipped item, charges, stop policy, coins and XP subchecks PASS; negative/cancelled dialogs, production/modifier and interrupted-transaction acceptance remain open.",
+          "evidence": [
+            "docs/openrune/verification/independent/deep-chemistry-worn/hist-worn-002/independent-assessment.json",
+            "docs/openrune/verification/independent/deep-chemistry/independent-assessment.json"
+          ]
+        },
+        "V4": {
+          "status": "IN_PROGRESS",
+          "reason": "Independent protected-source and pinned-documentation subcomparisons PASS within recorded scope; complete feature comparison remains open. No executable donor parity is claimed.",
+          "evidence": [
+            "docs/openrune/verification/independent/deep-chemistry/independent-assessment.json"
+          ]
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0007",
+      "revision": 1,
+      "implementation_sha": "693dd370dac7e111b2903042f7f6415074b8d166",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0008",
+      "revision": 1,
+      "implementation_sha": "03bffb1fab1d30eaa92e20753c5152ceae845289",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0009",
+      "revision": 1,
+      "implementation_sha": "29d9751117da03956b79682fb6b5ebe219b0848d",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0010",
+      "revision": 1,
+      "implementation_sha": "5a260c1bd6efa5f8a221bed7c96e6ac72fd428bc",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "PASS",
+          "reason": "Exact-SHA server compiled; full runtime startup and cache-backed definitions succeeded; native actions reached configured gameplay dispatch.",
+          "evidence": [
+            "docs/openrune/verification/independent/deep-combat/independent-assessment.json"
+          ]
+        },
+        "V1": {
+          "status": "IN_PROGRESS",
+          "reason": "Historical headless checks and native positive transitions passed; complete independently specified authoritative negative/modifier matrix remains open.",
+          "evidence": [
+            "docs/openrune/verification/independent/deep-combat/independent-assessment.json"
+          ]
+        },
+        "V2": {
+          "status": "IN_PROGRESS",
+          "reason": "Genuine programmatic native menu/action/packet and authoritative-state subchecks PASS. Native stale/interruption/modifier cases and any applicable rendered acceptance remain open.",
+          "evidence": [
+            "docs/openrune/verification/independent/deep-combat/independent-assessment.json"
+          ]
+        },
+        "V3": {
+          "status": "IN_PROGRESS",
+          "reason": "Actual acknowledged-save, process restart, native relogin and durable inventory/XP/state checks PASS; interrupted/partial production and any applicable crash-recovery scenarios remain open.",
+          "evidence": [
+            "docs/openrune/verification/independent/deep-combat/independent-assessment.json"
+          ]
+        },
+        "V4": {
+          "status": "IN_PROGRESS",
+          "reason": "Independent protected-source and pinned-documentation subcomparisons PASS within recorded scope; complete feature comparison remains open. No executable donor parity is claimed.",
+          "evidence": [
+            "docs/openrune/verification/independent/deep-combat/independent-assessment.json",
+            "docs/openrune/verification/independent/deep-combat/reference-comparison.json"
+          ]
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0011",
+      "revision": 1,
+      "implementation_sha": "289981e0efb1cd0397aa4836311df05ff5d1c2aa",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0012",
+      "revision": 1,
+      "implementation_sha": "289981e0efb1cd0397aa4836311df05ff5d1c2aa",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0013",
+      "revision": 1,
+      "implementation_sha": "03ce46c812d4f5a6b91461367e9f3bec1e242fa7",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0014",
+      "revision": 1,
+      "implementation_sha": "da62d6154b74f0044498940e66837e7d80b98024",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0015",
+      "revision": 1,
+      "implementation_sha": "337cbd9e7209bc877a5920d2cd9a549c9d05a3ec",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0016",
+      "revision": 1,
+      "implementation_sha": "b1cade8a86f369a6bbd89145f6ea9673ba834f0a",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0017",
+      "revision": 1,
+      "implementation_sha": "d09659ad92659d2b7eedb3a562ecda6ad8a75ca9",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0018",
+      "revision": 1,
+      "implementation_sha": "71289e622cdfac55d5f11e1c857f325929ebff3f",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "IN_PROGRESS",
+          "reason": "Historical partial evidence retained; no complete level acceptance inferred"
+        },
+        "V1": {
+          "status": "IN_PROGRESS",
+          "reason": "Historical partial evidence retained; no complete level acceptance inferred"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0019",
+      "revision": 1,
+      "implementation_sha": "d02633e45576cbea0ba4e14e7d3cb8c164886950",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0020",
+      "revision": 1,
+      "implementation_sha": "cf75fa343a0fc86c50f4451a22600cc10a0ee500",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0021",
+      "revision": 1,
+      "implementation_sha": "c8b9aef260db3101dafb2b591ebbdfa4add69f5b",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0022",
+      "revision": 1,
+      "implementation_sha": "71fa140f48a1860c90b294344ddb3bdcde2e8781",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0023",
+      "revision": 1,
+      "implementation_sha": "caefcf424869d2a54d711acd22a279351f098be0",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "IN_PROGRESS",
+          "reason": "Exact-SHA world atomicity/overflow helpers and server pack-definition bindings PASS (five test functions); full repeat-queue/native/lifecycle/reference acceptance remains open.",
+          "evidence": [
+            "docs/openrune/verification/independent/OR-MIG-0023-caefcf424869/manifest.json"
+          ]
+        },
+        "V1": {
+          "status": "IN_PROGRESS",
+          "reason": "Four exact-SHA world tests PASS including authoritative repeat opening, movement cancellation and stale selected-slot refusal. Attested binary was replayed without rebuilding during CPU contention. Native/lifecycle/reference acceptance remains open.",
+          "evidence": [
+            "docs/openrune/verification/independent/OR-MIG-0023-caefcf424869-cached-1792277281132359500/manifest.json"
+          ]
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0024",
+      "revision": 1,
+      "implementation_sha": "0132d0737f7bcbab7f2387dc3151f238a055922d",
+      "is_latest_revision": false,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0024",
+      "revision": 2,
+      "implementation_sha": "a560034a59e766d1faf400b61187fec861d13475",
+      "is_latest_revision": false,
+      "levels": {
+        "V0": {
+          "status": "IN_PROGRESS",
+          "reason": "Exact-SHA production crate compiled; runtime cache/registration and packet decoder acceptance remain open.",
+          "evidence": [
+            "docs/openrune/verification/independent/OR-MIG-0024-a560034a59e7-independent-attempt-1792276433787880400/manifest.json"
+          ]
+        },
+        "V1": {
+          "status": "IN_PROGRESS",
+          "reason": "Four independent authoritative World action tests PASS across 319 fixtures: all selected slots, full bags, duplicate/stale input, overheal, remainders and malformed transactions. Runtime packet decode and complete food matrix remain open.",
+          "evidence": [
+            "docs/openrune/verification/independent/OR-MIG-0024-a560034a59e7-independent-attempt-1792276433787880400/manifest.json"
+          ]
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0025",
+      "revision": 1,
+      "implementation_sha": "a560034a59e766d1faf400b61187fec861d13475",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0026",
+      "revision": 1,
+      "implementation_sha": "5b47d7fe42703ade7b97e10636c53abb35bd6e0e",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0027",
+      "revision": 1,
+      "implementation_sha": "f1f0032d54405e6509a6250a94368531df78bb18",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0028",
+      "revision": 1,
+      "implementation_sha": "231f33710596f8a9b4159f332e0e99a26d182b14",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0029",
+      "revision": 1,
+      "implementation_sha": "d8978ede56778fc7821fbb85fa0617d5b8f0c683",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0030",
+      "revision": 1,
+      "implementation_sha": "eeb270e37b44388f784f2ac2bd40c34fb8c2df2e",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0031",
+      "revision": 1,
+      "implementation_sha": "0fe7d767e630ace7d5518be979adf094bb285026",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0032",
+      "revision": 1,
+      "implementation_sha": "fe04a83de2b6f7f3edefc92c7f7031290a5908b0",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0024",
+      "revision": 3,
+      "implementation_sha": "ae3d234c71764dd2364f8452fc1974a54a6783f0",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "IN_PROGRESS",
+          "reason": "Exact-SHA production crate compiled; runtime cache/registration and packet decoder acceptance remain open.",
+          "evidence": [
+            "docs/openrune/verification/independent/OR-MIG-0024-ae3d234c7176-independent/manifest.json"
+          ]
+        },
+        "V1": {
+          "status": "IN_PROGRESS",
+          "reason": "Four independent authoritative World action tests PASS across 319 fixtures: all selected slots, full bags, duplicate/stale input, overheal, remainders and malformed transactions. Runtime packet decode and complete food matrix remain open.",
+          "evidence": [
+            "docs/openrune/verification/independent/OR-MIG-0024-ae3d234c7176-independent/manifest.json"
+          ]
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0033",
+      "revision": 1,
+      "implementation_sha": "ae3d234c71764dd2364f8452fc1974a54a6783f0",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0034",
+      "revision": 1,
+      "implementation_sha": "97b25c57d4c6dc0606adf91dd00e41ec43600a27",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "IN_PROGRESS",
+          "reason": "Same exact source SHA was independently tested as a shared-food integration checkpoint before this contract arrived. Summer-whole 10% energy/HP/boost/remainder and failed-action no-award controls PASS; papaya/half/member-gate/runtime/native/lifecycle/reference coverage remains open.",
+          "evidence": [
+            "docs/openrune/verification/independent/integration-external-energy-food-97b25c57d4c6dc0606adf91dd00e41ec43600a27/manifest.json"
+          ]
+        },
+        "V1": {
+          "status": "IN_PROGRESS",
+          "reason": "Same exact source SHA was independently tested as a shared-food integration checkpoint before this contract arrived. Summer-whole 10% energy/HP/boost/remainder and failed-action no-award controls PASS; papaya/half/member-gate/runtime/native/lifecycle/reference coverage remains open.",
+          "evidence": [
+            "docs/openrune/verification/independent/integration-external-energy-food-97b25c57d4c6dc0606adf91dd00e41ec43600a27/manifest.json"
+          ]
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0035",
+      "revision": 1,
+      "implementation_sha": "1446167370dece10751c4c332929af880259ee23",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "IN_PROGRESS",
+          "reason": "Independent actual World action queue checks PASS: four healing policies across 99 base levels and four HP states (1584 fixtures), plus live-base/stale replay and seven invalid-rule/transaction cases. Full bags, duplicate selected input, bowl return, no XP and rollback verified. Configured runtime/profile binding, membership, native, persistence and reference acceptance remain open.",
+          "evidence": [
+            "docs/openrune/verification/independent/OR-MIG-0035-1446167370de-independent-attempt-1792278447261353100/manifest.json"
+          ]
+        },
+        "V1": {
+          "status": "IN_PROGRESS",
+          "reason": "Independent actual World action queue checks PASS: four healing policies across 99 base levels and four HP states (1584 fixtures), plus live-base/stale replay and seven invalid-rule/transaction cases. Full bags, duplicate selected input, bowl return, no XP and rollback verified. Configured runtime/profile binding, membership, native, persistence and reference acceptance remain open.",
+          "evidence": [
+            "docs/openrune/verification/independent/OR-MIG-0035-1446167370de-independent-attempt-1792278447261353100/manifest.json"
+          ]
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "IN_PROGRESS",
+          "reason": "Independently verified three protected-source hashes and four pinned Wiki revisions/content hashes. Strawberry prose/table conflict, deliberate watermelon donor/Wiki rounding difference, sweetcorn common policy and source-only bowl-return evidence remain explicit. Full native presentation/timing and complete integration fidelity remain open.",
+          "evidence": [
+            "docs/openrune/verification/independent/reference-food-1446167370dece10751c4c332929af880259ee23/comparison.json"
+          ]
+        }
+      }
+    }
+  ]
+}

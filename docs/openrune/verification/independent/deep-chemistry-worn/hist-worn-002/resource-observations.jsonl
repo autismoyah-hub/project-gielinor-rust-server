@@ -1,0 +1,3 @@
+{"observed_utc": "2026-10-17T23:02:01.640202+00:00", "decision": "PROCEED", "measurement": {"available_ram": 8455974912, "active_compilers": [], "cpu_percent": 1.2, "disk_free": 48753188864}}
+{"observed_utc": "2026-10-17T23:02:14.505163+00:00", "decision": "PROCEED", "measurement": {"available_ram": 8438968320, "active_compilers": [], "cpu_percent": 2.82, "disk_free": 48752230400}}
+{"observed_utc": "2026-10-17T23:03:40.098837+00:00", "decision": "PROCEED", "measurement": {"available_ram": 7532978176, "active_compilers": ["\"cargo.exe\",\"5744\",\"RDP-Tcp#0\",\"2\",\"22,848 K\"", "\"rustc.exe\",\"9540\",\"RDP-Tcp#0\",\"2\",\"911,968 K\""], "cpu_percent": 13.28, "disk_free": 48762089472}}

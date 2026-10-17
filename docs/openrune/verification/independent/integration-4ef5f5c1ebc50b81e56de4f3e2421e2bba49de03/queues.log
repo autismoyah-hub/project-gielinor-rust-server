@@ -1,0 +1,15 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.05s
+     Running unittests src\lib.rs (C:\Projects\OSRSRSPS\agent7-verification\work\4ef5f5c1ebc50b81e56de4f3e2421e2bba49de03\target\debug\deps\gielinor_world-379bc28e5667f47e.exe)
+
+running 9 tests
+test queues::tests::weak_append_quirk_and_clear_terminate_iterator ... ok
+test queues::tests::death_queue_speedup_depends_on_whether_another_node_remains ... ok
+test engine_queues::tests::append_visibility_depends_on_cursor_and_protection_retains_work ... ok
+test queues::tests::soft_bypasses_protection_strong_closes_modals_and_logout_accelerates ... ok
+test engine_queues::tests::clear_then_append_finishes_current_pass_and_bindings_preserve_signed_keys ... ok
+test tower_offering::completion_tests::fifth_eligible_offering_queues_crate_after_diary_and_summary ... ok
+test simulation::tests::close_dialogs_clears_only_weak_queues_and_preserves_non_dialog_delay ... ok
+test simulation::tests::accepted_movement_cancels_weak_work_but_retains_normal_queues ... ok
+test simulation::tests::weak_and_long_discard_queues_do_not_block_logout ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 418 filtered out; finished in 0.02s

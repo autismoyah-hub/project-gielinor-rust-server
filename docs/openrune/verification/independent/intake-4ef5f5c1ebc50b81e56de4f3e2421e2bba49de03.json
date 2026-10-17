@@ -1,0 +1,41 @@
+{
+  "observed_utc": "2026-10-17T22:26:28.495954+00:00",
+  "forge_head": "4ef5f5c1ebc50b81e56de4f3e2421e2bba49de03",
+  "queue_sha256": "97bdadc91d5d9aa44ce712e93c6244a96320ef756ad5e9f6f871d4c98b54cedd",
+  "published_validator_sha256": "5e5a3a2aa9a8e83db555150e09332188486a6b13c9bb3be1925eac2357346354",
+  "published_validator_status": "PASS",
+  "json_schema_status": "UNAVAILABLE: jsonschema package; published validator PASS",
+  "records": 31,
+  "implementation_units": 30,
+  "new_contracts": [
+    "OR-MIG-0022",
+    "OR-MIG-0023",
+    "OR-MIG-0024",
+    "OR-MIG-0025",
+    "OR-MIG-0026",
+    "OR-MIG-0027",
+    "OR-MIG-0028",
+    "OR-MIG-0029",
+    "OR-MIG-0030"
+  ],
+  "resume_queue": [
+    {
+      "lane": "B",
+      "feature": "OR-MIG-0010",
+      "action": "Native six-profile creation, restart/relogin, independent source comparison",
+      "sha": "5a260c1bd6efa5f8a221bed7c96e6ac72fd428bc"
+    },
+    {
+      "lane": "C",
+      "feature": "OR-MIG-0018",
+      "action": "Current pinned integration potion/transaction regression",
+      "sha": "4ef5f5c1ebc50b81e56de4f3e2421e2bba49de03"
+    },
+    {
+      "lane": "A",
+      "feature": "OR-MIG-0030",
+      "action": "Initial high-risk authoritative action coverage",
+      "sha": "eeb270e37b44388f784f2ac2bd40c34fb8c2df2e"
+    }
+  ]
+}

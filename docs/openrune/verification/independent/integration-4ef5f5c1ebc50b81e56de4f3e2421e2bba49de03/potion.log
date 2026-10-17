@@ -1,0 +1,51 @@
+   Compiling gielinor-world v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\4ef5f5c1ebc50b81e56de4f3e2421e2bba49de03\crates\world)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 41.69s
+     Running unittests src\lib.rs (C:\Projects\OSRSRSPS\agent7-verification\work\4ef5f5c1ebc50b81e56de4f3e2421e2bba49de03\target\debug\deps\gielinor_world-379bc28e5667f47e.exe)
+
+running 44 tests
+test finished_potions::tests::ingredient_pairs_preserve_shared_bases_and_reverse_selected_slots ... ok
+test finished_potions::tests::experience_cap_does_not_prevent_valid_inventory_exchange ... ok
+test finished_potions::tests::ancient_brew_selected_stack_debits_one_and_never_accepts_stacked_vials ... ok
+test potion_upgrades::tests::divine_policy_never_draws_goggles_but_keeps_chemistry_and_fractional_xp ... ok
+test potion_upgrades::tests::five_secondaries_per_dose_are_atomic_and_goggles_save_whole_requirement ... ok
+test potion_upgrades::tests::forgotten_brew_uses_input_doses_for_cost_and_explicit_four_dose_award ... ok
+test potion_upgrades::tests::all_doses_fractional_xp_full_bag_boosted_and_one_goggles_draw ... ok
+test potion_upgrades::tests::chemistry_adds_one_dose_without_extra_debit_or_xp_and_four_doses_are_ineligible ... ok
+test finished_potions::tests::explicit_boost_policy_and_live_refusals_conserve_state ... ok
+test finished_potions::tests::full_backpack_rewards_preserve_fractions_and_no_replay ... ok
+test potion_upgrades::tests::invalid_extra_output_cannot_consume_randomness_or_partial_state ... ok
+test potion_upgrades::tests::refused_upgrade_preserves_inventory_stats_and_random_stream ... ok
+test potions::tests::failed_replacement_is_atomic_but_reference_still_applies_drink_effects ... ok
+test potions::tests::invalid_potion_cap_after_magic_preparation_rolls_back_every_effect ... ok
+test potions::tests::invalid_potion_hitpoint_boost_preserves_selected_dose_and_events ... ok
+test potions::tests::ancient_and_forgotten_potion_doses_apply_boost_overrestore_and_current_drains ... ok
+test potions::tests::recovery_skips_boosted_stats_and_full_energy_without_reducing_them ... ok
+test potions::tests::potion_overrestore_respects_floor_cap_and_preserves_preexisting_higher_boost ... ok
+test potions::tests::selected_dose_failures_publish_no_items_stats_energy_events_or_delay ... ok
+test potions::tests::compound_potion_catalog_drinks_all_doses_without_stacking_or_extra_stats ... ok
+test potions::tests::saradomin_potion_overheals_caps_and_drains_current_levels_without_xp ... ok
+test potions::tests::selected_dose_stays_in_place_with_duplicates_and_a_full_inventory ... ok
+test finished_potions::tests::goggles_keep_selected_secondary_and_full_reward_for_every_profile_and_order ... ok
+test simulation::finished_potion_actions::tests::invalid_selection_and_intervening_held_action_never_award ... ok
+test simulation::finished_potion_actions::tests::selected_pair_and_repeats_take_two_ticks_with_exact_fractional_rewards ... ok
+test simulation::finished_potion_actions::tests::chemistry_last_charge_stops_or_continues_and_publishes_actual_output ... ok
+test simulation::finished_potion_actions::tests::repeats_use_current_rate_and_do_not_restart_after_quest_revocation ... ok
+test simulation::finished_potion_actions::tests::goggles_variants_are_rechecked_on_each_repeat_and_preserve_saved_slot ... ok
+test simulation::potion_upgrade_actions::tests::selected_base_repeat_uses_same_stack_and_two_tick_fractional_xp ... ok
+test simulation::finished_potion_actions::tests::stackable_secondaries_repeat_from_selected_stack_and_stop_if_it_changes ... ok
+test simulation::tests::queued_potion_consumption_uses_claimed_slot_and_refuses_failed_replacement ... ok
+test simulation::potion_upgrade_actions::tests::three_tick_upgrades_preserve_dose_scaled_reward_and_repeat_boundary ... ok
+test simulation::tests::queued_potions_reject_stale_items_share_delays_and_empty_without_delay ... ok
+test simulation::unfinished_potion_actions::tests::foreign_choice_and_intervening_held_action_cannot_mix ... ok
+test simulation::unfinished_potion_actions::tests::revoked_quest_stops_repeats_and_does_not_revive_after_restoration ... ok
+test simulation::unfinished_potion_actions::tests::selected_pair_then_quantity_repeat_are_one_tick_and_zero_xp ... ok
+test unfinished_potions::tests::live_refusals_and_failed_credit_conserve_every_item_and_stat ... ok
+test unfinished_potions::tests::full_backpack_boosted_exchange_preserves_all_stats_and_cannot_replay ... ok
+test simulation::finished_potion_actions::tests::chemistry_checks_live_neck_slot_and_keeps_character_charges_after_swap ... ok
+test unfinished_potions::tests::every_full_backpack_slot_pair_conserves_unrelated_state ... ok
+test simulation::finished_potion_actions::tests::live_eligibility_credit_and_rate_failures_conserve_items_and_stats ... ok
+test simulation::unfinished_potion_actions::tests::eligibility_and_selected_slots_are_rechecked_after_quantity_selection ... ok
+test simulation::potion_upgrade_actions::tests::repeat_revalidates_live_level_quest_membership_stack_and_movement ... ok
+test simulation::unfinished_potion_actions::tests::alternate_vessels_preserve_water_choices_and_recipe_cadence ... ok
+
+test result: ok. 44 passed; 0 failed; 0 ignored; 0 measured; 383 filtered out; finished in 1.54s

@@ -1,0 +1,76 @@
+{
+  "implementation_id": "OR-MIG-0035",
+  "implementation_commit_sha": "1446167370dece10751c4c332929af880259ee23",
+  "source_tree": "2e021c7b5c6a339d9f04cceeebdcf7f29fc7e0f3",
+  "queue_commit": "1efda0299062de44fd7196e6555c19b87f02d12b",
+  "independent_verification": true,
+  "timestamp_utc": "2026-10-17T23:04:40.565735+00:00",
+  "available_memory_bytes": 7929589760,
+  "active_compilers": [
+    "\"cargo.exe\",\"5744\",\"RDP-Tcp#0\",\"2\",\"22,832 K\"",
+    "\"rustc.exe\",\"9540\",\"RDP-Tcp#0\",\"2\",\"257,372 K\""
+  ],
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\1446167370dece10751c4c332929af880259ee23\\independent-harness\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.22,
+      "log": "docs\\openrune\\verification\\independent\\OR-MIG-0035-1446167370de-independent\\run-0.log",
+      "tests_passed": 0,
+      "zero_tests": false
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\1446167370dece10751c4c332929af880259ee23\\independent-harness\\Cargo.toml"
+      ],
+      "exit_code": 101,
+      "elapsed_seconds": 29.74,
+      "log": "docs\\openrune\\verification\\independent\\OR-MIG-0035-1446167370de-independent\\run-1.log",
+      "tests_passed": 0,
+      "zero_tests": false
+    }
+  ],
+  "dependency_versions_present_at_target": [
+    {
+      "implementation_id": "OR-MIG-0024",
+      "revision": 3,
+      "sha": "ae3d234c71764dd2364f8452fc1974a54a6783f0",
+      "later_revisions_not_assumed_tested": false
+    },
+    {
+      "implementation_id": "OR-MIG-0033",
+      "revision": 1,
+      "sha": "ae3d234c71764dd2364f8452fc1974a54a6783f0",
+      "later_revisions_not_assumed_tested": false
+    }
+  ],
+  "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-gnu\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+  "resource_measurement": {
+    "available_ram": 7936466944,
+    "active_compilers": [
+      "\"cargo.exe\",\"5744\",\"RDP-Tcp#0\",\"2\",\"22,832 K\"",
+      "\"rustc.exe\",\"9540\",\"RDP-Tcp#0\",\"2\",\"241,944 K\""
+    ],
+    "cpu_percent": 13.13,
+    "disk_free": 48746102784
+  },
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\OR-MIG-0035-1446167370de-independent\\harness\\authoritative.rs": "185baf9c9912d093aa779b2e80b6ea36e904be67d16c5b23d7ee40fdedbe71c5"
+  },
+  "outcome": "BLOCKED",
+  "reason": "Build/tool execution failed or no matching tests; inspect exact command logs before attributing a gameplay defect",
+  "test_binary_sha256": {}
+}

@@ -1,0 +1,12 @@
+   Compiling gielinor-world v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\ae3d234c71764dd2364f8452fc1974a54a6783f0\crates\world)
+   Compiling proving-ground-transactions v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\ae3d234c71764dd2364f8452fc1974a54a6783f0\independent-harness)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 32.81s
+     Running tests\authoritative.rs (C:\Projects\OSRSRSPS\agent7-verification\work\ae3d234c71764dd2364f8452fc1974a54a6783f0\target\debug\deps\authoritative-8140b369613ab475.exe)
+
+running 4 tests
+test invalid_prepared_exchange_or_heal_cannot_publish_a_partial_world_action ... ok
+test stale_claim_cannot_consume_a_different_configured_food_after_submission ... ok
+test full_bag_remainder_stays_selected_and_does_not_merge_with_existing_identity ... ok
+test actual_world_queue_preserves_every_other_slot_hp_cap_and_xp_under_duplicate_input ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 18.30s

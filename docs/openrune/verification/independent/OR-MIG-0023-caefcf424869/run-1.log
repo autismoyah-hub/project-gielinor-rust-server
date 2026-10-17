@@ -1,0 +1,9 @@
+   Compiling gielinor-world v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\caefcf424869d2a54d711acd22a279351f098be0\crates\world)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 48.41s
+     Running unittests src\lib.rs (C:\Projects\OSRSRSPS\agent7-verification\work\caefcf424869d2a54d711acd22a279351f098be0\target\debug\deps\gielinor_world-379bc28e5667f47e.exe)
+
+running 2 tests
+test item_packs::tests::selected_pack_and_overflow_are_atomic ... ok
+test item_packs::tests::noted_outputs_use_freed_pack_slot_and_overflow_restores_pack ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 325 filtered out; finished in 0.00s

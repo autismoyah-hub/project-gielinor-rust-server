@@ -1,0 +1,16 @@
+{
+  "cache_files": 95,
+  "cache_manifest_sha256": "8ba60ce0ba0fdc1add7ef2511bc9b4683c3b2fe42a80997583c51d4fa5b82717",
+  "driver_manifest": {
+    "driver": "chemistryui-005",
+    "scenario": "chemistryui",
+    "baseline": "client-239.1-baseline-001-build-001",
+    "reason": "Owned integration scenario; pinned client library unchanged",
+    "files": {
+      "NativeChemistryUiScenario.rs": "2E9E9493760C96A711D7F4635AEEDECC2CB309CE8F1077A306021BA0506989D2",
+      "server_chemistryui.exe": "1D0A9F8CA038B3B05BEC79B566660782795A4E322C4C9E5E99B05E1D90A073E0"
+    }
+  },
+  "driver_sha256": "1d0a9f8ca038b3b05bec79b566660782795a4e322c4c9e5e99b05e1d90a073e0",
+  "scope": "Owned copies; original resources read-only. Private cache, keys, credentials and account template are not published."
+}

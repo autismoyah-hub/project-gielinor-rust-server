@@ -1,1 +1,5 @@
 * -text
+
+# Fetched queue blobs retain their original CRLF bytes and recorded SHA256.
+docs/openrune/verification/IMPLEMENTATION_QUEUE.jsonl whitespace=cr-at-eol
+docs/openrune/verification/independent/queue-*.jsonl whitespace=cr-at-eol

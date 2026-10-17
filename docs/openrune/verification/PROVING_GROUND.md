@@ -1,6 +1,18 @@
 # PROVING GROUND independent verification
 
+Current intake, per-level coverage and regression health are in [DASHBOARD.md](DASHBOARD.md), backed by `WORKLIST.json`, `LEVEL_RESULTS.jsonl` and `RESUME_QUEUE.json`. The initial checkpoint sections below describe historical `418d552`; they are not the current backlog or a completion claim.
+
 Verification branch: `agent7/openrune-verification`.
+
+## Standing execution workflow
+
+Begin with `python scripts/proving-ground-recover.py --sync-point session-start`. Recovery fetches FORGE itself, executes the validator extracted from the observed published commit, preserves the exact queue blob/hash, reconciles revisions and updates per-level historical/current-integration work. Repeat after every batch, before publication and before ending execution; use meaningful `--sync-point` labels. `--fetched` is only for an immediately preceding successful fetch, never a stale-queue workaround.
+
+Keep three lanes moving: new exact-contract tests, deep native/lifecycle/reference acceptance, and newer pinned integration regressions. Finish a batch by recording evidence with `proving-ground-record.py`, reconciling intake, updating `proving-ground-dashboard.py`, and checking `proving-ground-finalize.py`. The coarse initial ledger remains historical; `LEVEL_RESULTS.jsonl` carries explicit V0–V4 statuses, while `WORKLIST.json` includes every contract revision and `RESUME_QUEUE.json` carries exact next targets and remaining cases.
+
+`proving-ground-native.py` runs owned resource copies, cache-backed exact-SHA server builds, genuine pinned native client menus/packets and disposable databases. Actions are `prepare`, `build`, `seed`, `produce`, `relogin`; select `--feature combat`, `chemistry` or `chemistry-worn`. A fresh `--run-id` preserves older attempts. `--integration-sha FULL_SHA` requires a fetched queue snapshot and labels tested integration identity separately from the historical contract SHA. The raw database, credentials, keys, cache and executables remain private. Do not use another agent's writable test environment.
+
+Native assessments and reference reports are scoped. A normal native matrix or acknowledged-save restart does not complete all negative/modifier/crash cases. Resource deferrals remain infrastructure observations; a small attested binary replay can proceed without Cargo when its measured cost is safe. Production fixes remain FORGE's responsibility. Preserve failed verifier attempts and distinguish them from implementation defects.
 
 This clone and its detached `../agent7-targets/<implementation SHA>` checkouts are independent of FORGE's working tree. Each build has a private `work/<SHA>/target`, Cargo home and temporary directory. The installed GNU compiler is a read-only tool reference. No live world, shared database, game port, client process or protected reference fixture is used by this initial batch.
 
