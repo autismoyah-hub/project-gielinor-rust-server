@@ -37,3 +37,9 @@ Throughput:18historical contracts plus3new implementation units;21queue units. I
 Ordinary Bastion/Battlemage source71fa140f48a1860c90b294344ddb3bdcde2e8781:8registered doses reuse shared boosts and selected-slot atomic dispatch. Focused4server44worldPASS;397source hashes unchanged. Historical17profile pack adapter caefcf424869d2a54d711acd22a279351f098be0 backfilled with actual registration, transaction and repeat boundaries. Preserved native/same-save history is not independent acceptance.
 
 Throughput:19historical contracts plus4new gameplay units;23queue units. Inventory15partially contracted eligible source files/tables,656configuration records,2837not-yet-assessed. No completion percentage or complete eligible-module denominator claimed. Earlier content backfill and remaining gameplay obligations continue; no independent finding delivered to FORGE in this session.
+
+## Checkpoint OR-MIG-0024
+
+Common ordinary food gameplay now uses exact selected-slot transactions and safely permits eating above baseHP without extra healing/no-op update. Source0132d0737f7bcbab7f2387dc3151f238a055922d;66server426worldPASS/1existingignored. First malformed-fixture failure and final-source evidence retained. Legacy reference API/tests and configured multipart profiles preserved. Independent V0-V4 queued.
+
+Throughput:19historical contracts plus5new gameplay/shared safety units;24queue units. Inventory16partially contracted eligible source files/tables,656configuration records,2836not-yet-assessed. Full remaining food stages/special effects, earlier content backfill and eligible-module reconciliation continue. No independent finding delivered to FORGE this session.
