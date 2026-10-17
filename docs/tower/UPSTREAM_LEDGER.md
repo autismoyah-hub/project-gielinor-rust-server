@@ -1,3 +1,7 @@
+## Current6D39 native firstclear checkpoint
+
+Sourceaedd586 production unchanged; this checkpoint adds evidence only. Clean fresh native28 full route838.19s and ordinary reconnect pass. Native56currentfloorviews and current service/phase/reward views inspected. Independent quiet native27/fresh native28 Warden pairing passes within0.0971s. Current headless29 full run and crash recovery remain pending. Client11patch source/tree unchanged; no client push or Agent2 mutation. See NATIVE_SANCTUARY_FIRST_CLEAR_20261017.json.
+
 ## Sanctuary dressed-stone preview
 
 Parentf633939 retained. Only tower_layout.rs production source changes: four genuine377,545 terrain panels, native/game cache12100files0/1 exact; no shared-engine/rule/schema/renderer change. Twelve matched native views inspected; both affected entry/service/portal/rebuild checks pass.169,1195 candidate rejected artistically and unpublished. Fresh current native28 full route runs separately; no current full lifecycle/crash acceptance yet. Client eleven-patch source/tree unchanged, no client push or Agent2 changes. See SANCTUARY_STONE_PREVIEW_20261017.json.

@@ -1,7 +1,7 @@
 {
-  "status": "Current6D39 dressedstone: native12matchedviews/bothaffectedentryBankPrayroutes/eight/portalrebuildPASS. Freshnative28fullrouteRUNNINGnotaccepted; fullcurrentheadless/lifecycle/crashpending. Userartisticapproval/humanpacingpending",
+  "status": "Current6D39 clean native28 full7steps838.19s/first500beer/fullpack/dupack/portals/normalreloginPASS; native56+combat/currentquietpairinspected. Independentheadless29fullRUNNING/currentcrashpending/artisticapproval-humanpacingpending",
   "scope": "Cinderworks Floor One on the isolated agent5/tower-development branch; upstream integration is a separate Agent 2 review",
-  "server_gameplay_commit": "420729798ffc3b0d31c7aff7497d1841597c2104",
+  "server_gameplay_commit": "aedd5863dcf8cfb8803ac3730f4918449b4025a5",
   "client_baseline": "95eed88159b06cebea24559a814a5111b54a59cd",
   "client_validation_commit": "ff9cef17fd1ce3ec2ebf8d1181fee31411999c4c",
   "checks": {
@@ -24,11 +24,11 @@
     "client_patch_roundtrip": "passed"
   },
   "unit_tests": {
-    "world_passed": 400,
-    "world_existing_ignored": 2,
-    "server_passed": 52,
-    "storage_passed": 8,
-    "storage_existing_ignored": 1
+    "runtime_sha256": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964",
+    "cache_passed": 24,
+    "server_passed": 57,
+    "world_passed": 410,
+    "world_existing_ignored": 2
   },
   "payouts": {
     "first_clear": {
@@ -67,7 +67,13 @@
     "migration_collision": "Tower V12 versus upstream V12 chemistry; append/renumber during integration"
   },
   "protected_resources_published": false,
-  "remaining_authored_floor_one_work": [],
+  "remaining_authored_floor_one_work": [
+    "Independent current headless29 fresh firstclear and normal reconnect",
+    "Current6D39 deliberate crash recovery",
+    "Further grove and arena-edge environmental storytelling",
+    "Realistic human first-play pacing measurement",
+    "Final user artistic acceptance"
+  ],
   "client_patch_tree": "48e96da6f47ac9ef9a3aece11001139883e3dd9e",
   "baseline_publication": "34bb31d1b5a48449b3c960951ec43f93b4f17fd9",
   "historical_client_validation_commit": "a32b66deeeb30a2be159fbd379a9ffb07f423b72",
@@ -145,7 +151,7 @@
       "full_current_encounters_lifecycle": "in progress"
     }
   },
-  "checks_scope": "The legacy top-level checks describe the historical pre-redesign baseline; current evidence is scoped separately below.",
+  "checks_scope": "Original initial-baseline checks retained below. Current6D39 native acceptance is separately pinned; current headless/crash not yet accepted.",
   "current_20261017": {
     "parent": "46ccb7160cf1d1848b0b8d1820c9f2bed2f0baab",
     "native_first_clear_parent": "passed including real recovery, all phases/coolant, full-pack first reward, duplicate, exact portals",
@@ -4713,6 +4719,788 @@
       "Fresh native28 full route is running separately and is not yet accepted. Current headless29 full route, full current lifecycle and crash evidence remain outstanding.",
       "Earlier complete C555 first-clear/crash evidence stays separate.",
       "Human first-play20-30minute pacing target is not measured."
+    ]
+  },
+  "historical_initial_server_gameplay_commit": "420729798ffc3b0d31c7aff7497d1841597c2104",
+  "historical_initial_unit_tests": {
+    "world_passed": 400,
+    "world_existing_ignored": 2,
+    "server_passed": 52,
+    "storage_passed": 8,
+    "storage_existing_ignored": 1
+  },
+  "native_sanctuary_first_clear_current": {
+    "runtime_source": "aedd5863dcf8cfb8803ac3730f4918449b4025a5",
+    "runtime_sha256": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964",
+    "native_clean_first_clear": {
+      "accepted": true,
+      "automated_seconds": 838.19,
+      "steps": [
+        {
+          "step": "services.py",
+          "arguments": [
+            "--onboard",
+            "--gate-check",
+            "--order",
+            "workshop-first",
+            "--scene-checks",
+            "--landmarks",
+            "8",
+            "--coolant-lesson",
+            "--native-frames"
+          ],
+          "seconds": 332.49,
+          "exit_code": 0
+        },
+        {
+          "step": "recovery.py",
+          "arguments": [],
+          "seconds": 40.95,
+          "exit_code": 0
+        },
+        {
+          "step": "guardian.py",
+          "arguments": [
+            "imp",
+            "--style",
+            "accurate",
+            "--native-frames",
+            "--label",
+            "first-sanctuary"
+          ],
+          "seconds": 129.07,
+          "exit_code": 0
+        },
+        {
+          "step": "guardian.py",
+          "arguments": [
+            "warden",
+            "--style",
+            "accurate",
+            "--require-coolant",
+            "--native-frames",
+            "--timeout",
+            "600",
+            "--label",
+            "first-sanctuary"
+          ],
+          "seconds": 274.2,
+          "exit_code": 0
+        },
+        {
+          "step": "restoration.py",
+          "arguments": [
+            "--label",
+            "victory",
+            "--expected",
+            "18526,18511,16811,16811,16810,18525,18525,18525",
+            "--native-frames"
+          ],
+          "seconds": 3.8,
+          "exit_code": 0
+        },
+        {
+          "step": "claim.py",
+          "arguments": [
+            "--full-pack",
+            "--native-frames"
+          ],
+          "seconds": 45.51,
+          "exit_code": 0
+        },
+        {
+          "step": "exit_return.py",
+          "arguments": [],
+          "seconds": 12.15,
+          "exit_code": 0
+        }
+      ],
+      "first_reward_coins": 500,
+      "fresh_chest_reply_uids": [
+        82,
+        83,
+        84
+      ],
+      "real_full_pack_denial_and_normal_Drop_recovery": true,
+      "coolant_ack_uids": [
+        73
+      ],
+      "warden_phases_seen": [
+        2,
+        3
+      ],
+      "eight_restored_landmarks": [
+        18526,
+        18511,
+        16811,
+        16811,
+        16810,
+        18525,
+        18525,
+        18525
+      ]
+    },
+    "normal_relogin": {
+      "accepted": true,
+      "checks": [
+        "exact firstpaid item slots/equipment/all25XP/journal",
+        "fresh UID duplicate reply pays zero",
+        "8 quiet landmarks",
+        "3 headrace walls/pipe absence",
+        "12 hall rails and open cross bays/normal movement",
+        "2 real feeding troughs/low entrance and rear support",
+        "Six actual sanctuary edges/open crossing/Bank/Pray routes",
+        "Bank95 empty"
+      ],
+      "fresh_duplicate_reply_uids": [
+        1
+      ],
+      "exact_item_slots_equipment_all25XP_journal": true,
+      "read_only_durable_run": [
+        1,
+        7,
+        11,
+        1
+      ]
+    },
+    "native_gameplay_frames": [
+      {
+        "label": "before-services",
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary28-fresh\\frame-267.bmp",
+        "sha256": "23b3397b2bb03211728a16479ec57cb3d900657d500deff971dfd547b4f6ef60",
+        "inspected": true
+      },
+      {
+        "label": "after-workshop",
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary28-fresh\\frame-497.bmp",
+        "sha256": "fb6f330815d23b59f380a615188f7e9eca452b6ec1f5fac1c0b2f52dcea4e375",
+        "inspected": true
+      },
+      {
+        "label": "after-kitchen",
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary28-fresh\\frame-839.bmp",
+        "sha256": "d4775aeade45460608e3f35e228b14844ec5577d61ac0465b8861de0374ce63d",
+        "inspected": true
+      },
+      {
+        "label": "after-altar",
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary28-fresh\\frame-1001.bmp",
+        "sha256": "32d2b1be0290bd626c93820031b00a0e2db02e3a6d7194d8c7e6a579cae1a3d6",
+        "inspected": true
+      },
+      {
+        "label": "victory",
+        "private_path": "C:\\Projects\\OSRSRSPS\\Tower-Development\\work\\native-sanctuary28-fresh\\frame-2516.bmp",
+        "sha256": "f8bccb6c75a380aafff933ba3d20bf93a6e73ab460a6910c6359ecf8345dacf9",
+        "inspected": true
+      },
+      {
+        "label": "imp",
+        "sequence": 1217,
+        "private_path": "work\\native-sanctuary28-fresh\\frame-1217.bmp",
+        "sha256": "ae6411de1f7ea14060f2f1c858181607f4357268f5889a2d7e14945e04a52cc9",
+        "inspected": true
+      },
+      {
+        "label": "imp",
+        "sequence": 1375,
+        "private_path": "work\\native-sanctuary28-fresh\\frame-1375.bmp",
+        "sha256": "1a482eaae634ae6f2b73d84a617786fbc86605d47855def35c77361d3cc149bb",
+        "inspected": true
+      },
+      {
+        "label": "imp",
+        "sequence": 1561,
+        "private_path": "work\\native-sanctuary28-fresh\\frame-1561.bmp",
+        "sha256": "b4c91951db0ee2340c68ec0690d95a20fd666db77dce6f73c1eb060d3b8ec8ba",
+        "inspected": true
+      },
+      {
+        "label": "imp",
+        "sequence": 1516,
+        "private_path": "work\\native-sanctuary28-fresh\\frame-1516.bmp",
+        "sha256": "5b48a07bbf4b8a2e705f2ea6a8b1aed90e9d5847ce2513c17966bd78ad907885",
+        "inspected": true
+      },
+      {
+        "label": "warden",
+        "sequence": 1602,
+        "private_path": "work\\native-sanctuary28-fresh\\frame-1602.bmp",
+        "sha256": "5a49d12020e566ece817c31b564baa264d259788aa9f75e77ac59a0debb60790",
+        "inspected": true
+      },
+      {
+        "label": "warden",
+        "sequence": 1886,
+        "private_path": "work\\native-sanctuary28-fresh\\frame-1886.bmp",
+        "sha256": "dcf8441c84456f06076cbfc175a1ff30fa48018f1db1f57b964ef95ba460369b",
+        "inspected": true
+      },
+      {
+        "label": "warden",
+        "sequence": 2267,
+        "private_path": "work\\native-sanctuary28-fresh\\frame-2267.bmp",
+        "sha256": "001bb9e864a0e36d6d27cdc9c1afa36b7e8b61aa9ebbd4834f2764a83307d326",
+        "inspected": true
+      },
+      {
+        "label": "warden",
+        "sequence": 2504,
+        "private_path": "work\\native-sanctuary28-fresh\\frame-2504.bmp",
+        "sha256": "39dfbea8421ab8081778ff28c0b52efed784c7a1529e5d32a693a1b3c1dd8d07",
+        "inspected": true
+      },
+      {
+        "label": "warden",
+        "sequence": 1606,
+        "private_path": "work\\native-sanctuary28-fresh\\frame-1606.bmp",
+        "sha256": "6e9452d66ead16fed075b8dd0ea26a261e678c2df8c2b273718dc4dd08164e13",
+        "inspected": true
+      },
+      {
+        "label": "warden",
+        "sequence": 2486,
+        "private_path": "work\\native-sanctuary28-fresh\\frame-2486.bmp",
+        "sha256": "e671469117818b3b1e03d8a62e93d1cc6b9fb21520660a8a87590e44ee99e1f5",
+        "inspected": true
+      },
+      {
+        "label": "actual_full_pack_refusal",
+        "private_path": "work/native-sanctuary28-fresh/frame-2631.bmp",
+        "sha256": "22de23f986e72abc91d4063e8b07b433e99ee1d34078a399943734eb38f86639",
+        "inspected": true
+      },
+      {
+        "label": "actual_first500_beer",
+        "private_path": "work/native-sanctuary28-fresh/frame-2659.bmp",
+        "sha256": "ef4e852a731f34241fa4e1461550f74c634c60fe426713e6c54e077fb60d4cf7",
+        "inspected": true
+      },
+      {
+        "label": "settled_paid_relogin_journal",
+        "private_path": "work/native-sanctuary28-relogin/frame-65.bmp",
+        "sha256": "0a9cf7e70b9c08eda7857994f40b70cf83c9f8b59994e2b82945c26fbba9b968",
+        "inspected": true
+      }
+    ],
+    "full_56_native_rendering_review": {
+      "inspected_all_56": true,
+      "areas": 14,
+      "cameras_per_area": 4,
+      "current_runtime": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964",
+      "source": "aedd586",
+      "frame_hashes": [
+        {
+          "area": "arrival",
+          "yaw": 0,
+          "filename": "frame-63.bmp",
+          "sha256": "b623c592e8ecac784839af98d63dc5cbfe74c081148c463cc7d3330aa749e770"
+        },
+        {
+          "area": "arrival",
+          "yaw": 4096,
+          "filename": "frame-65.bmp",
+          "sha256": "d54f907cd107f1d099e1cab7603064df8cd8d48396b9517ca5576b4055d3209f"
+        },
+        {
+          "area": "arrival",
+          "yaw": 8192,
+          "filename": "frame-67.bmp",
+          "sha256": "913be15165923fdfe9d6dcf5fa24859c5de9fedea1cbb9aec975dfca7892b1c4"
+        },
+        {
+          "area": "arrival",
+          "yaw": 12288,
+          "filename": "frame-69.bmp",
+          "sha256": "b597d3b7004524b2fa38ef9f209356de9e65837f87be8623695eb3c747f316e7"
+        },
+        {
+          "area": "sanctuary",
+          "yaw": 0,
+          "filename": "frame-95.bmp",
+          "sha256": "79ad5a867b47b0ea6e63949087a96b4cd131aed138cbeba6d2a97a40553b55c7"
+        },
+        {
+          "area": "sanctuary",
+          "yaw": 4096,
+          "filename": "frame-97.bmp",
+          "sha256": "2785af46f9e5d72aefc83ec479ef5252e1439073ed7b84f6f4263a8fe49cd2d7"
+        },
+        {
+          "area": "sanctuary",
+          "yaw": 8192,
+          "filename": "frame-99.bmp",
+          "sha256": "269f6bff4380092a5cb513ce31be4441b2a794586d21ce9fb95f7f42db2e75b6"
+        },
+        {
+          "area": "sanctuary",
+          "yaw": 12288,
+          "filename": "frame-101.bmp",
+          "sha256": "1ac7b040162c938d535b34f96934f09a8065a93dbb580b7dd318d3685a0a91e9"
+        },
+        {
+          "area": "restoration hearth",
+          "yaw": 0,
+          "filename": "frame-118.bmp",
+          "sha256": "88efec0f3e444b4ad0a9cf91c039bc640f7992dc8171f10dfe5dd394f0990457"
+        },
+        {
+          "area": "restoration hearth",
+          "yaw": 4096,
+          "filename": "frame-120.bmp",
+          "sha256": "82d192222d170140ab93a0390045ca8e655ea9d01cc0fa009371e1710a19002c"
+        },
+        {
+          "area": "restoration hearth",
+          "yaw": 8192,
+          "filename": "frame-122.bmp",
+          "sha256": "c70fbdc186b274a970d097578c61060951f35a32776e13ab337898f670be10ae"
+        },
+        {
+          "area": "restoration hearth",
+          "yaw": 12288,
+          "filename": "frame-124.bmp",
+          "sha256": "3aeaeb1aac013e3cc6fca381d3e8676d0aa65e1753b600fd045bc9629fd5ebfa"
+        },
+        {
+          "area": "plaque and reward",
+          "yaw": 0,
+          "filename": "frame-149.bmp",
+          "sha256": "6b7e02c92daa0efd40669f6b968fe383bbc97eb22ca0524ef78d9c9e4c50e209"
+        },
+        {
+          "area": "plaque and reward",
+          "yaw": 4096,
+          "filename": "frame-151.bmp",
+          "sha256": "858f3542c3ceaed6448ccd6000c2cf82935394f45bd5651b9c534587acf20f47"
+        },
+        {
+          "area": "plaque and reward",
+          "yaw": 8192,
+          "filename": "frame-153.bmp",
+          "sha256": "ea130f15e66c067cd6e6f12368a37c5f907c1bda9ffe850af3587120e5b4dc73"
+        },
+        {
+          "area": "plaque and reward",
+          "yaw": 12288,
+          "filename": "frame-155.bmp",
+          "sha256": "614a08edc6f19d5e5aad50e86762d298402fc9413e0bc654474f826667af0606"
+        },
+        {
+          "area": "workshop",
+          "yaw": 0,
+          "filename": "frame-204.bmp",
+          "sha256": "27892af4ab03225766eb97957508bc1f0c09523b41bbcb0480217fcbdedc0d84"
+        },
+        {
+          "area": "workshop",
+          "yaw": 4096,
+          "filename": "frame-206.bmp",
+          "sha256": "d160c5dc73f9aeb99972f91f63ff775e0ec6a36850a3cee089338da8f2207a6d"
+        },
+        {
+          "area": "workshop",
+          "yaw": 8192,
+          "filename": "frame-208.bmp",
+          "sha256": "1ab01ff1be0a60f9c8fbdd00309b8cb9d1c4566e6162a1ae8c2583f16b508242"
+        },
+        {
+          "area": "workshop",
+          "yaw": 12288,
+          "filename": "frame-210.bmp",
+          "sha256": "929da6a58560a80b7f520c1762166fc7983b002d40ca47dc76974012ae634ea9"
+        },
+        {
+          "area": "moss supply court",
+          "yaw": 0,
+          "filename": "frame-252.bmp",
+          "sha256": "8411245165cb658c2620fd8e4a07641017ac400a1816f550dc60b97215ecdf3f"
+        },
+        {
+          "area": "moss supply court",
+          "yaw": 4096,
+          "filename": "frame-254.bmp",
+          "sha256": "4d45dc22be854d8f9bec690d7bd2555e975366f1ff906c1649879411f7f90e58"
+        },
+        {
+          "area": "moss supply court",
+          "yaw": 8192,
+          "filename": "frame-256.bmp",
+          "sha256": "2bb6aec22ec1844670f661188ddcb67036f49fb56b2880a2462da26efe9f261c"
+        },
+        {
+          "area": "moss supply court",
+          "yaw": 12288,
+          "filename": "frame-258.bmp",
+          "sha256": "ea1266f4b24ca725065cb6cf95d6727bb4432ac290299f56477067f657208396"
+        },
+        {
+          "area": "southern processional hall",
+          "yaw": 0,
+          "filename": "frame-302.bmp",
+          "sha256": "3a06370edf6090cc7d46920ecdf8add08df81df4bb25733569db518b857b868f"
+        },
+        {
+          "area": "southern processional hall",
+          "yaw": 4096,
+          "filename": "frame-304.bmp",
+          "sha256": "17b820c3bf1bfea684774ef95d33fc5b26c348f8cecd9a930788b3c583791c63"
+        },
+        {
+          "area": "southern processional hall",
+          "yaw": 8192,
+          "filename": "frame-306.bmp",
+          "sha256": "c8552f355e834879fec437dac14eb45aa826c48c0a3d65bc8200ba3163ab4c1d"
+        },
+        {
+          "area": "southern processional hall",
+          "yaw": 12288,
+          "filename": "frame-308.bmp",
+          "sha256": "d7b9c5b68546e1a6c6162856e8cbe38b25ee15be5ebf608213b36575c77abf01"
+        },
+        {
+          "area": "poultry supply court",
+          "yaw": 0,
+          "filename": "frame-351.bmp",
+          "sha256": "ebd6058d13db9338a24c83c9c2c33ab4d0e167e2df265e9e7c537890f174530e"
+        },
+        {
+          "area": "poultry supply court",
+          "yaw": 4096,
+          "filename": "frame-353.bmp",
+          "sha256": "bf2770a240712572db9b4a3114c4de668542fc27464d97479d4533da63e5391b"
+        },
+        {
+          "area": "poultry supply court",
+          "yaw": 8192,
+          "filename": "frame-355.bmp",
+          "sha256": "def3ba3178a08e248aad335e8fd70dfe01b2928104169363d3ff8e7f351978de"
+        },
+        {
+          "area": "poultry supply court",
+          "yaw": 12288,
+          "filename": "frame-357.bmp",
+          "sha256": "e63597edac32ed91181d0b7296501b13b8ed0925ff63b8c7834c6b9c3c4d61ba"
+        },
+        {
+          "area": "waterworks",
+          "yaw": 0,
+          "filename": "frame-395.bmp",
+          "sha256": "ea76a4188c8c1697fbeaafae12fe9c0a2b71e04398d99ae671890db27459180e"
+        },
+        {
+          "area": "waterworks",
+          "yaw": 4096,
+          "filename": "frame-397.bmp",
+          "sha256": "a43dfbc55270982809a383bc396e6b19eee2e197aa37f2a90c8ed87b3142530f"
+        },
+        {
+          "area": "waterworks",
+          "yaw": 8192,
+          "filename": "frame-399.bmp",
+          "sha256": "d6d353827198bc66dee41dad46f99797ade7f9173d6069c08bd33e3dcd786f93"
+        },
+        {
+          "area": "waterworks",
+          "yaw": 12288,
+          "filename": "frame-401.bmp",
+          "sha256": "5a065ddeb4c3c13ed56f0e56f2c6254f63f3f6564332c68f36b540b80d1dce2c"
+        },
+        {
+          "area": "sluice wheel",
+          "yaw": 0,
+          "filename": "frame-431.bmp",
+          "sha256": "1c266c98edd18bd1daefa879d9a10dea2a6dc81984bf44f127dfa15e4cd635f0"
+        },
+        {
+          "area": "sluice wheel",
+          "yaw": 4096,
+          "filename": "frame-433.bmp",
+          "sha256": "99ebec0302fac5863e38e3c1cb30b49fa6f8a96bdaf836a5a0f0bd0773a8785b"
+        },
+        {
+          "area": "sluice wheel",
+          "yaw": 8192,
+          "filename": "frame-435.bmp",
+          "sha256": "18c8266c8a6d8d76631626d3a25d00046564ab63140167daa67ac24f7164eb8b"
+        },
+        {
+          "area": "sluice wheel",
+          "yaw": 12288,
+          "filename": "frame-437.bmp",
+          "sha256": "b3709becc5cf7d87d073cda8ae99d0cc94864296899a1b97a3ccee8bdf88a45c"
+        },
+        {
+          "area": "grove",
+          "yaw": 0,
+          "filename": "frame-523.bmp",
+          "sha256": "50968eb6650a51f34d2720fe4754e2cd5e4865cabd98bea578bfe6c121ff6dfd"
+        },
+        {
+          "area": "grove",
+          "yaw": 4096,
+          "filename": "frame-525.bmp",
+          "sha256": "c4d07471d63794d3435fc9ba40d63edc001ea207ffcd0801f595df076dad5193"
+        },
+        {
+          "area": "grove",
+          "yaw": 8192,
+          "filename": "frame-527.bmp",
+          "sha256": "aab1b578e2c79fecf52860ff6374afa668189d038a2e47d256c977d048066926"
+        },
+        {
+          "area": "grove",
+          "yaw": 12288,
+          "filename": "frame-529.bmp",
+          "sha256": "24e968a9715a797a9f8043fd59473c6620c8e63de78fbb1dfdd133da4615275f"
+        },
+        {
+          "area": "foundry vestibule",
+          "yaw": 0,
+          "filename": "frame-570.bmp",
+          "sha256": "22db340a710b77a3f029594054ac5e3e9682d63728566f5dbfd7ffe8568d7a31"
+        },
+        {
+          "area": "foundry vestibule",
+          "yaw": 4096,
+          "filename": "frame-572.bmp",
+          "sha256": "53ef4e4ce93393ae93ffec780c46179929d0750b218943162e78779b560f82be"
+        },
+        {
+          "area": "foundry vestibule",
+          "yaw": 8192,
+          "filename": "frame-574.bmp",
+          "sha256": "d59f675378e96e363ee9cfaa84f51e5fbc86518b1107b87d2fee70c7fd3933ab"
+        },
+        {
+          "area": "foundry vestibule",
+          "yaw": 12288,
+          "filename": "frame-576.bmp",
+          "sha256": "6e5c6bcb301107746c75f6c7952775e297a1896e6e705256ae345197499cb803"
+        },
+        {
+          "area": "Ash Warden chamber",
+          "yaw": 0,
+          "filename": "frame-601.bmp",
+          "sha256": "d9b93fb42810bd4005832e9dfb96aa8462a982e5f5a4adda2e499b9eef3f3f0c"
+        },
+        {
+          "area": "Ash Warden chamber",
+          "yaw": 4096,
+          "filename": "frame-603.bmp",
+          "sha256": "fe2690705bcf7acb91cda82a76621b25895eab146fd8daffbee130685ab98585"
+        },
+        {
+          "area": "Ash Warden chamber",
+          "yaw": 8192,
+          "filename": "frame-605.bmp",
+          "sha256": "4f10f61e40a26f2dd6a38590e1fdc643fecb22b8bf17609dc91469b9e85e6c66"
+        },
+        {
+          "area": "Ash Warden chamber",
+          "yaw": 12288,
+          "filename": "frame-607.bmp",
+          "sha256": "53552a97b43c03ec0bd3f32733d71c6c6466ebc1e263d02e9e4febebc6178b61"
+        },
+        {
+          "area": "Ash Imp vent gallery",
+          "yaw": 0,
+          "filename": "frame-664.bmp",
+          "sha256": "0cb6334d0bcdb57c2c4a87c330a8323d67d360ad20a671c1db73652ec75b2f44"
+        },
+        {
+          "area": "Ash Imp vent gallery",
+          "yaw": 4096,
+          "filename": "frame-666.bmp",
+          "sha256": "9218241ed6a8964d465cfbda09cc2a9ea5525cec8d032487722678039dc6b634"
+        },
+        {
+          "area": "Ash Imp vent gallery",
+          "yaw": 8192,
+          "filename": "frame-668.bmp",
+          "sha256": "54ca26a1edf7e6c3a500d6ebdc8b1f7b5f27a10b4e46d662e19838b038edfcd6"
+        },
+        {
+          "area": "Ash Imp vent gallery",
+          "yaw": 12288,
+          "filename": "frame-670.bmp",
+          "sha256": "0c5d7eb1566b5c5a0f6f8473ff108d90512df604b7b64715c44c9bdba2e37218"
+        }
+      ],
+      "qualification": "Earned predecessor first-paid character27 on currentruntime; rendering/scene reconstruction proof only. Fresh current28 firstclear separate.",
+      "artistic_notes": [
+        "Dressed stone coheres with dark column faces and alcove rails, actual bank and altar remain readable.",
+        "Hall rhythms, real headrace/wheel, workshop ore staging and foundry mouths read distinctly.",
+        "Grove and arena perimeter storytelling still need further authored composition; no final artistic acceptance."
+      ]
+    },
+    "paired_quiet_warden": {
+      "accepted": true,
+      "binary": "6D39C747D63296C3E2D42791AE2CCC0E437A574D6CFA6703350476F584726964",
+      "method": "Independent fresh native28 owner Warden window; native27 observer earned its first clear on separately recorded C555 predecessor. Nearest real concurrent owner observations paired with unchanged earned native captures. Shared-region personal presentation; actual peer avatars remain visible. Normal earned walk to10424,136 succeeds inside actual Warden footprint. No game-rule or render override.",
+      "pairs": [
+        {
+          "native_frame": 760,
+          "separation_seconds": 0.0286,
+          "native_position": [
+            0,
+            10424,
+            136
+          ],
+          "active_position": [
+            0,
+            10425,
+            135
+          ],
+          "active_warden_visible": true,
+          "earned_warden_visible": false,
+          "active_hazard_graphics": [
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86
+          ],
+          "earned_hazard_graphics": []
+        },
+        {
+          "native_frame": 762,
+          "separation_seconds": 0.0761,
+          "native_position": [
+            0,
+            10424,
+            136
+          ],
+          "active_position": [
+            0,
+            10424,
+            135
+          ],
+          "active_warden_visible": true,
+          "earned_warden_visible": false,
+          "active_hazard_graphics": [
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86
+          ],
+          "earned_hazard_graphics": []
+        },
+        {
+          "native_frame": 764,
+          "separation_seconds": 0.0971,
+          "native_position": [
+            0,
+            10424,
+            136
+          ],
+          "active_position": [
+            0,
+            10424,
+            135
+          ],
+          "active_warden_visible": true,
+          "earned_warden_visible": false,
+          "active_hazard_graphics": [
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86,
+            86
+          ],
+          "earned_hazard_graphics": []
+        },
+        {
+          "native_frame": 766,
+          "separation_seconds": 0.0818,
+          "native_position": [
+            0,
+            10424,
+            136
+          ],
+          "active_position": [
+            0,
+            10424,
+            135
+          ],
+          "active_warden_visible": true,
+          "earned_warden_visible": false,
+          "active_hazard_graphics": [
+            78,
+            78,
+            78,
+            78,
+            78,
+            78,
+            78,
+            78,
+            78,
+            78,
+            78
+          ],
+          "earned_hazard_graphics": []
+        }
+      ]
+    },
+    "client_validation": {
+      "commit": "ff9cef17fd1ce3ec2ebf8d1181fee31411999c4c",
+      "patches": 11,
+      "tree": "48e96da6f47ac9ef9a3aece11001139883e3dd9e",
+      "native_sha256": "7BFA8172AB31E362798F71D4BA34BE2B6FAD08A8EEBE330775F1FC846EB29165",
+      "headless_sha256": "0D6677D450C479551EEAC3AD21E708E334054AE95A77BE9E875E5D940A9AAEF5",
+      "remote_push": false
+    },
+    "private_review_artifacts": [
+      "evidence/native-sanctuary28-fresh/journey.html",
+      "evidence/native-sanctuary27-complete-gallery/gallery.html"
+    ],
+    "pending": [
+      "Independent current headless29 fresh firstclear and normal reconnect",
+      "Current6D39 deliberate crash recovery",
+      "Further grove and arena-edge environmental storytelling",
+      "Realistic human first-play pacing measurement",
+      "Final user artistic acceptance"
     ]
   }
 }
