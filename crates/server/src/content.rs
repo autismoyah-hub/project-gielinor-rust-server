@@ -4004,3 +4004,169 @@ mod stew_food_tests{
         foods.clear();defs.items.get_mut(&1923).unwrap().cert.template=799;assert!(stew_food(&objects,&defs,&mut foods).is_err());assert!(foods.is_empty());
     }
 }
+
+/// Chocolate topping only; four-material cake batter and baking are separate.
+pub fn chocolate_cake_assembly(
+    objects: &Symbols,
+    defs: &Definitions,
+    skill: u8,
+) -> Result<Vec<gielinor_world::assembly::Recipe>, String> {
+    let stat = defs
+        .stats
+        .get(&(skill as u32))
+        .ok_or("Missing chocolate-cake Cooking stat")?;
+    if stat.name != "Cooking" || stat.max_level != 99 || stat.min_level != 1 || stat.unreleased {
+        return Err("Unattested chocolate-cake Cooking stat".into());
+    }
+    let mut ids = BTreeMap::new();
+    for (symbol, name) in [
+        ("cake", "Cake"),
+        ("chocolate_bar", "Chocolate bar"),
+        ("chocolate_dust", "Chocolate dust"),
+        ("chocolate_cake", "Chocolate cake"),
+    ] {
+        let id = *objects.get(symbol).ok_or("Missing chocolate-cake symbol")?;
+        let d = u32::try_from(id)
+            .ok()
+            .and_then(|v| defs.items.get(&v))
+            .ok_or("Missing chocolate-cake definition")?;
+        if ids.values().any(|v| *v == id)
+            || d.name != name
+            || d.members
+            || d.stackable
+            || d.dummy == 1
+            || d.cert.template != 0
+            || d.placeholder.template != 0
+            || d.transform.template != 0
+        {
+            return Err("Unattested or aliased chocolate-cake item".into());
+        }
+        ids.insert(symbol, id);
+    }
+    if defs.items[&(ids["chocolate_cake"] as u32)].inventory_ops[0].as_deref() != Some("Eat") {
+        return Err("Chocolate-cake output lacks Eat".into());
+    }
+    Ok(["chocolate_bar", "chocolate_dust"]
+        .into_iter()
+        .map(|topping| gielinor_world::assembly::Recipe {
+            first: ids["cake"],
+            second: ids[topping],
+            output: ids["chocolate_cake"],
+            skill,
+            level: 50,
+            base_xp: 30,
+            members: false,
+        })
+        .collect())
+}
+#[cfg(test)]
+mod chocolate_cake_binding_tests {
+    use super::*;
+    use gielinor_world::{
+        assembly::{Job, Outcome},
+        inventory::{Catalog, Inventory, Item, StackType},
+        stats::Stats,
+    };
+    #[test]
+    fn chocolate_cake_bar_and_dust_use_live50_and30_xp_without_partial_debit() {
+        let mut objects = Symbols::new();
+        let mut defs = Definitions {
+            inventories: Default::default(),
+            locations: Default::default(),
+            npcs: Default::default(),
+            items: Default::default(),
+            varbits: Default::default(),
+            varps: Default::default(),
+            stats: Default::default(),
+        };
+        defs.stats.insert(
+            7,
+            gielinor_cache::definitions::StatType {
+                name: "Cooking".into(),
+                unreleased: false,
+                max_level: 99,
+                min_level: 1,
+            },
+        );
+        for (symbol, id, name) in [
+            ("cake", 1891, "Cake"),
+            ("chocolate_bar", 1973, "Chocolate bar"),
+            ("chocolate_dust", 1975, "Chocolate dust"),
+            ("chocolate_cake", 1897, "Chocolate cake"),
+        ] {
+            objects.insert(symbol.into(), id);
+            let mut d = gielinor_cache::definitions::ItemType::decode(&[0]).unwrap();
+            d.name = name.into();
+            if symbol == "chocolate_cake" {
+                d.inventory_ops[0] = Some("Eat".into());
+            }
+            defs.items.insert(id as u32, d);
+        }
+        let recipes = chocolate_cake_assembly(&objects, &defs, 7).unwrap();
+        assert_eq!(recipes.len(), 2);
+        for recipe in recipes {
+            let mut inv = Inventory::new(2, StackType::Normal, false);
+            for (slot, id) in [(0, recipe.first), (1, recipe.second)] {
+                inv.restore_slot(
+                    slot,
+                    Some(Item {
+                        id,
+                        count: 1,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+            }
+            let mut stats = Stats::default();
+            stats.set_base(7, 49);
+            stats.set_current(7, 49);
+            let job = Job {
+                recipe,
+                first_slot: 0,
+                second_slot: 1,
+            };
+            let before = inv.clone();
+            assert_eq!(
+                job.complete_awarding(&mut inv, &Catalog::default(), &mut stats, 125, false)
+                    .0,
+                Outcome::Level
+            );
+            assert_eq!(inv, before);
+            stats.set_current(7, 50);
+            let mut items = Catalog::default();
+            items.dummy.insert(1897);
+            assert_eq!(
+                job.complete_awarding(&mut inv, &items, &mut stats, 125, false)
+                    .0,
+                Outcome::Capacity
+            );
+            assert_eq!(inv, before);
+            assert_eq!(stats.fine_xp(7), 0);
+            assert_eq!(
+                job.complete_awarding(&mut inv, &Catalog::default(), &mut stats, 125, false)
+                    .0,
+                Outcome::Made
+            );
+            assert_eq!(stats.fine_xp(7), 375);
+            assert_eq!(
+                inv.slots()
+                    .iter()
+                    .flatten()
+                    .map(|i| (i.id, i.count))
+                    .collect::<Vec<_>>(),
+                vec![(1897, 1)]
+            );
+            assert_eq!(
+                job.complete_awarding(&mut inv, &Catalog::default(), &mut stats, 125, false)
+                    .0,
+                Outcome::Stale
+            );
+            assert_eq!(stats.fine_xp(7), 375);
+        }
+        defs.items.get_mut(&1897).unwrap().placeholder.template = 14401;
+        assert!(chocolate_cake_assembly(&objects, &defs, 7).is_err());
+        defs.items.get_mut(&1897).unwrap().placeholder.template = 0;
+        objects.insert("chocolate_dust".into(), 1973);
+        assert!(chocolate_cake_assembly(&objects, &defs, 7).is_err());
+    }
+}
