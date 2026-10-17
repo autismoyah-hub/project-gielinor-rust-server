@@ -191,10 +191,11 @@ pub const FURNISHINGS: &[Furnishing] = &[
         z: 54,
         symbol: "barrel",
     },
+    // A real two-tile feeder replaces a stock prop; open pen routes stay clear.
     Furnishing {
         x: 40,
         z: 35,
-        symbol: "hay_bale",
+        symbol: "foodtrough2",
     },
     Furnishing {
         x: 35,
@@ -251,10 +252,11 @@ pub const FURNISHINGS: &[Furnishing] = &[
         z: 45,
         symbol: "bush1",
     },
+    // A real two-tile feeder replaces a stock prop; open pen routes stay clear.
     Furnishing {
         x: 72,
         z: 35,
-        symbol: "sacks",
+        symbol: "foodtrough2",
     },
     Furnishing {
         x: 65,

@@ -1,3 +1,9 @@
+## Current feeding-court build: native preview checked; full fresh tests running
+
+Two existing enclosure props now use the cache's filled wooden trough5575 at world10408,99 and10440,99. Each genuine2x1 prop replaces a1x1 hay/sack prop, preserving the prop count. The low feeding bays give the resource courts a practical purpose while keeping animals and routes visible. All16 before and16 after native views have been inspected; exact inventory, equipment, all25XP and journal are unchanged for the comparison character. No renderer or combat/reward changes are involved.
+
+Current EFFA227332F6C764 build passes cache24/server57/world407 (two existing ignores),2098 reachable tiles and1512 legal hazard escapes. Independent fresh native workshop-first and headless kitchen-first runs are underway, including current first500/full-pack/duplicate server-reply checks. Full fresh acceptance, reconnect and any current-build crash result remain pending; earlier5BE/F45 lifecycle evidence is historical and is not inherited. `FEEDING_COURTS_PREVIEW_20261017.json` records the source, actual assets and raw frame hashes. Private comparison: `evidence/court-feeding-comparison.html`. User artistic acceptance and human first-play pacing remain outstanding; continue development.
+
 ## Current dark-entrance build: both replays and exact crash/reconnect pass
 
 The publisheda282e73 /5BE2E72153221405 build now independently passes the complete native Rune2 replay (608.43active scenarioseconds) and headless Rune2 replay (592.77active seconds). Both cover alternate preparation, actual lethal rescue, both guardians/allWarden phases/required coolant, all8victory scene states, repeat25coins/beer, duplicatezero and exact portals. Both ordinary reconnects preserve exact item slots/counts, equipment, all25XP, journal/paid history and all8landmarks. Eight current native phase/victory views were inspected; eight current entrance/portal angles and both ten-court routes remain accepted.
