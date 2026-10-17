@@ -21,3 +21,7 @@ Server pre-redesign baseline: `34bb31d1b5a48449b3c960951ec43f93b4f17fd9`. Client
 ## Fallen Cinderworks continuation
 
 Parent published checkpoint: `ce03598` (accurate reconstruction regression/controller fixes). The engine draft continues only on agent5/tower-development. Current local validation client: `2f2aeb088c14328f1497104487d235e156d31797`, ten raw mail patches, exact verified tree `8c7ef706196f7bdae2fe0045647d2c71eb54f6d6`. The first nine patches retain the previously recorded history; the tenth exposes read-only scene inventory in headless mode. No client remote push or Agent 2 merge/workspace change.
+
+## 2026-10-17 source reconciliation
+
+Local/remote Tower HEAD both verified as `46ccb7160cf1d1848b0b8d1820c9f2bed2f0baab` before the six-landmark continuation. No Agent 2 merge or branch mutation. Client validation remains `2f2aeb088c14328f1497104487d235e156d31797`; ten-patch tree `8c7ef706196f7bdae2fe0045647d2c71eb54f6d6`. V12 migration renumbering remains an integration constraint.

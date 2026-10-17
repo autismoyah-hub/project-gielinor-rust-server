@@ -1,5 +1,20 @@
 # Floor One acceptance — functional baseline; visual acceptance pending
 
+## Current continuation status — 2026-10-17
+
+Production work remains active; artistic acceptance has not been granted. This section supersedes stale pending statements in the historical notes below.
+
+Published parent: `46ccb7160cf1d1848b0b8d1820c9f2bed2f0baab`, verified equal to the remote Tower branch before this iteration. The current source adds actual forge-mouth wall apertures and a sixth personal landmark: the Imp boiler cools from 18526 to 18525 on the existing durable Imp credit. Replay heats it again. No save field, combat rule, warning interval, item grant, renderer concealment or input bypass is added.
+
+On the corrected 46ccb engine, native first clear independently passed real lethal recovery, Imp, all three Warden phases with coolant, the 500-coin/beer full-pack transaction, duplicate denial and exact exit/return. Warden ended at 10 HP with 15 shrimp. Both directions of paired native/headless quiet-state observation passed: the active owner retains hazards and the credited observer sees neither the respawned guardian nor its hazard effects. This is personal presentation in a shared region, not a cooperative instance.
+
+The first headless Fallen Warden controller timeout remains a failure. Its old controller left normal auto-attack active; the character subsequently earned a legitimate late credit before manual withdrawal. That credit and its legitimate first reward are not accepted bounded-fight evidence. A later replay attempt exhausted food, and the new barrel-preparation attempt also died; both remain failed. After normal rescue/resupply and closing two stale isolated test clients, a separate headless Warden retry on the six-landmark engine passed within its 600-second bound: phases two/three observed, fresh coolant acknowledgement UID 84, 9 HP and 17 shrimp remaining. Its six actual scene IDs, 25-coin replay claim, duplicate denial and exact exit/return passed. Reduced background load correlates with the successful retry; no stronger causal claim is made.
+
+Affected six-landmark suites pass: server 56; world 406 with two existing ignores. Actual protected-cache preparation validates 2,115 reachable tiles and 1,512 legal lethal-pattern escapes. Native relogin observes all six earned landmarks. Current six-landmark native replay and crash/relogin are still required; the historical 164b crash evidence does not satisfy those checks.
+
+The current native baseline contains 56 genuine captures across fourteen locations, each at four cardinal angles, using the actual journal. All 56 views were inspected. It remains diagnostic: the sanctuary and hall floors are too plain, the provisioning courts need stronger functional composition, and the recessed boiler does not read clearly enough from normal arena views. The rear foundry hearth is visible through its aperture. Continue architectural and terrain research using real cache geometry, followed by new native comparisons. Do not interpret this capture set as artistic completion.
+
+
 Production redesign mandate (2026-10-16): the user rejected the current environmental and artistic quality. Earlier comprehensive completion declarations were premature. Gameplay evidence below remains a regression baseline; visual production acceptance and release-candidate acceptance are **not granted**. Final artistic acceptance belongs to the user.
 
 Pinned pre-redesign baseline: server `34bb31d1b5a48449b3c960951ec43f93b4f17fd9`; client validation `a32b66deeeb30a2be159fbd379a9ffb07f423b72`.

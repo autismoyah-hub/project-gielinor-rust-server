@@ -214,7 +214,11 @@ pub fn shell() -> Vec<Wall> {
         }
     }
     for x in 50..63 {
-        edge(x, 78, 3);
+        // Real forge-mouth recess: the solid rear hearth fills this aperture,
+        // while the outer north wall still encloses the authored floor.
+        if ![55, 56].contains(&x) {
+            edge(x, 78, 3);
+        }
         if ![55, 56].contains(&x) {
             edge(x, 67, 3);
         }
@@ -222,7 +226,10 @@ pub fn shell() -> Vec<Wall> {
     // Intimate inner vent chamber, with a maintenance gallery around its
     // perimeter. Every combat tile keeps its original four-tick warning.
     for x in 68..76 {
-        edge(x, 76, 3);
+        // Expose the boiler's actual front instead of hiding it behind masonry.
+        if ![71, 72].contains(&x) {
+            edge(x, 76, 3);
+        }
         if ![71, 72].contains(&x) {
             edge(x, 68, 3);
         }

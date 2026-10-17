@@ -183,7 +183,7 @@ mod tests {
         run.services = 0;
         run.victory = false;
         let replay = ids(&observer.cycle(o, run, p, b, &z, &[], 3).unwrap());
-        assert_eq!(replay, [18525, 18512, 16810, 16811, 16811]);
+        assert_eq!(replay, [18525, 18512, 16810, 16811, 16811, 18526]);
     }
     #[test]
     fn hidden_zones_get_no_updates_and_imp_victory_stops_ambient_steam() {
@@ -204,10 +204,13 @@ mod tests {
         assert_eq!(steaming.len(), 4);
         let mut cleared = Run::default();
         cleared.imp = true;
-        assert!(observer
-            .cycle(o, cleared, p, b, &z, &[], 25)
-            .unwrap()
-            .is_empty());
+        let cooled = observer.cycle(o, cleared, p, b, &z, &[], 25).unwrap();
+        assert!(ids(&cooled).contains(&18525));
+        assert!(cooled.iter().all(|e| match e {
+            Emission::Enclosed { updates, .. } =>
+                updates.iter().all(|u| !matches!(u, Update::Graphic(_))),
+            _ => true,
+        }));
     }
     #[test]
     fn quiet_courts_hide_peer_telegraphs_without_hiding_the_active_owners_effects() {

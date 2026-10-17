@@ -199,7 +199,12 @@ mod tests {
             remapped: vec![],
         };
         let shell = prepare_palette(map, origin, [1, 2], &definitions).unwrap();
-        assert!(shell.map.locations.iter().filter(|loc|loc.shape==2).all(|loc|loc.id==1));
+        assert!(shell
+            .map
+            .locations
+            .iter()
+            .filter(|loc| loc.shape == 2)
+            .all(|loc| loc.id == 1));
         let front = origin.translate(54, 64, 0).unwrap();
         let back = origin.translate(54, 78, 0).unwrap();
         let front_flags = shell.map.collision.get(front.x(), front.z(), 0);

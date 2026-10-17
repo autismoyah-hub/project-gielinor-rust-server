@@ -12,6 +12,7 @@ pub enum State {
     Altar,
     Sanctuary,
     Foundry,
+    Imp,
 }
 impl State {
     pub fn restored(self, run: Run) -> bool {
@@ -21,6 +22,7 @@ impl State {
             Self::Altar => run.services & 4 != 0,
             Self::Sanctuary => run.victory || run.first_reward_paid,
             Self::Foundry => run.victory,
+            Self::Imp => run.imp,
         }
     }
 }
@@ -42,6 +44,8 @@ impl Landmark {
     }
 }
 pub const LANDMARKS: &[Landmark] = &[
+    // Entries retain their established order for the existing five-landmark
+    // validation interface; the Imp boiler is appended below.
     // Auxiliary blast furnace, river wheel, altar fire, central sanctuary hearth.
     Landmark {
         x: 43,
@@ -78,6 +82,13 @@ pub const LANDMARKS: &[Landmark] = &[
         dormant: 16811,
         restored: 16810,
         state: State::Foundry,
+    },
+    Landmark {
+        x: 71,
+        z: 76,
+        dormant: 18526,
+        restored: 18525,
+        state: State::Imp,
     },
 ];
 #[derive(Clone, Copy, Debug)]
@@ -254,13 +265,6 @@ pub const FIXTURES: &[Fixture] = &[
         x: 76,
         z: 76,
         id: 7017,
-        shape: 10,
-        angle: 0,
-    },
-    Fixture {
-        x: 71,
-        z: 78,
-        id: 11009,
         shape: 10,
         angle: 0,
     },

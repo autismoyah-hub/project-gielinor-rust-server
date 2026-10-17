@@ -43,6 +43,13 @@ last_quench_uid=fight_start_uid
 coolant_events=[]
 g.act(f'npc {index} 2')
 print('Started', a.boss, 'through normal Attack action', index, flush=True)
+if a.boss=='warden' and a.require_coolant:
+    # Engage legitimately, then prepare beside a barrel before the warning.
+    # This uses the visible wake cue and ordinary walking; no server timers or
+    # readiness checks are bypassed to fit two actions inside one warning.
+    g.wait(lambda state:state['ready'] and any(e['uid']>fight_start_uid and 'The Ash Warden wakes.' in e['text'] for e in state['message_events']),30)
+    g.act('walk 10422 135')
+    g.wait(lambda state:state['position'][1:]==[10422,135],20)
 end = time.monotonic() + a.timeout
 last_report = 0
 last_eat = 0
@@ -165,4 +172,11 @@ while time.monotonic() < end:
         last_report = now
     time.sleep(0.16)
 else:
+    # A failed bounded scenario must not silently keep auto-attacking afterward.
+    try:
+        g.act('walk 10424 128')
+        stopped=g.wait(lambda state:state['position'][1:]==[10424,128],40)
+    except (RuntimeError,TimeoutError):
+        stopped=g.read()
+    (a.output/f'{a.boss}-{a.label}-timeout-summary.json').write_text(json.dumps({'accepted':False,'reason':'controller time bound exceeded','state':stopped},indent=2),encoding='utf8')
     raise TimeoutError('No authoritative guardian victory within the bounded acceptance run')

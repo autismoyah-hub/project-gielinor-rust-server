@@ -146,7 +146,7 @@ def check_scene(label):
     forge='Done: Workshop:' in j;water='Done: Kitchen:' in j;altar_done='Done: Altar:' in j
     ids=[18526 if forge else 18525,18511 if water else 18512,16811 if altar_done else 16810,
          16811 if 'Done: Quench Ash Warden' in j or 'First reward: claimed' in j else 16810,
-         16810 if 'Done: Quench Ash Warden' in j else 16811]
+         16810 if 'Done: Quench Ash Warden' in j else 16811, 18525 if 'Done: Silence Ash Imp' in j else 18526]
     command=[sys.executable,str(pathlib.Path(__file__).with_name('restoration.py')),'--directory',str(a.directory),'--output',str(a.output),'--label',label,'--expected',','.join(map(str,ids))]
     if a.native_frames:command.append('--native-frames')
     subprocess.run(command,check=True)
