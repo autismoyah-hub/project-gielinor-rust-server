@@ -91,3 +91,9 @@ Throughput:23historical contracts plus11new gameplay/shared units;34units/36appe
 Source1446167370dece10751c4c332929af880259ee23 registers four live-baseHP food profiles through existing selected food/stat pipeline.73server432worldPASS/1existingignored;397hashes unchanged;5target definitionsPASS. Explicit Strawberrytable/sourceceil6% andWatermelonWiki floor5%+1 decisions preserve conflicting prose/donor rules for V4. Bowlreturn follows donor stage. Independent acceptance queued.
 
 Throughput:23historical contracts plus12new gameplay/shared units;35units/37append-only records. Inventory25partially contracted eligible source files/tables,656configuration records,2827not-yet-assessed. Full eligible-module reconciliation,remaining content/skills/creation/cooking and older backfill remain incomplete.
+
+## Checkpoint OR-MIG-0036
+
+Publishedsource 8065a96c23c16c7b7cfd90e402acd015e356d706 registers3manual ordinaryfire recipes through actual reached-location/weakqueue route. Final74server437worldPASS/1existingignored;399hashesunchanged. Active/completedtutorialboundary covered;testfixturecompilefailure002preserved. Source/Wiki/cacheprobabilityandtiming differencesexplicit;independentV0-V4pending.
+
+Throughput23historical+13newgameplay/sharedunits;36units/38records. Inventory{"configuration": 656, "eligible_gameplay_behavior": 28, "not_yet_assessed": 2824};3508discoveryrecords arenotmodulecompletiondenominator. Continueeligiblecontent;ordinaryfishnext.
