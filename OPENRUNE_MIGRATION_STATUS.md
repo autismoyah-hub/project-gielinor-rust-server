@@ -3658,3 +3658,13 @@ Completed the current Menaphite remedy and four-dose Anti-venom+ production acce
 Agent2 is paused at the user's request. Verified no owned native server/driver processes, no native session lock and no active Agent2 build lease. Other agents' processes were not modified. No new content work or builds are queued.
 
 This is a pause after the current task, not full OpenRune migration completion. Resume only when requested, using this ledger and the private continuation JSON. Remaining scope includes broader inventory parity, acquisition/drinking behavior, learned super-antifire and barbarian-training gates, alchemist storage, automatic cleaning timing, broader native negatives and compiled-original-Kotlin differential validation. Do not repeat the accepted native runs or overwrite preserved failures.
+
+## FORGE implementation and independent verification handoff (2026-10-17)
+
+User resumed Agent2 as FORGE. The historical pause above is superseded. Implementation throughput now uses bounded compilation, shared-system regression and registration/transaction checks; comprehensive native/headless/lifecycle/reference acceptance belongs to PROVING GROUND.
+
+Published initial verification handoff under docs/openrune/verification:17 coherent recent Herblore units, exact published implementation SHAs, source SHA256/provenance, dispatch chains, dependencies, normal/negative expectations, identifiers, timing/atomicity, allV0-V4 requirements and explicit limitations. Legacy evidence remains historical and is never relabelled independent acceptance. Queue revisions append and link previous exact SHAs; defects belong to independent GitHub findings and retest against new implementation SHAs.
+
+Bounded metadata validation:17records/17units PASS with every implementation commit/Rust path/dispatch symbol checked at its exact SHA;9validator testsPASS,including missing fields,bad identity,improper independent verdicts,revision links,dependency cycles and incomplete levels. No unchanged Rust build/native acceptance was repeated.
+
+Inventory3508discovered records now carries conservative classification/contract links:7source files/tables with partial eligible behavior contracts,656file-format configuration records,2845not-yet-assessed. This is not an eligible-module denominator or completion percentage. Earlier cooking,packs,smithing and other historical implementations still require contract backfill. No PROVING GROUND defect received in this resumed session. Continue implementation without waiting for independent acceptance.
