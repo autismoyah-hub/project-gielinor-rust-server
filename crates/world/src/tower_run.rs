@@ -166,7 +166,7 @@ impl Run {
         } else if !self.imp {
             "Follow the eastern path to the vent gallery. Defeat the Ash Imp to unlock the foundry."
         } else {
-            "Enter the northern foundry. Evade smoking tiles first, then Search a water barrel from safety. Your dagger's Lunge style trains Strength."
+            "Enter the northern foundry. Evade smoking tiles first, then Search a water barrel from safety. Stab improves Attack and accuracy; Lunge trains Strength. Choose a style in Combat Options."
         }
     }
 }

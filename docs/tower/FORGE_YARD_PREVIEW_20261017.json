@@ -1,0 +1,102 @@
+{
+  "status": "current terrain/feedback iteration; affected suites/native comparison pass; complete current-build replay still pending; artistic acceptance pending",
+  "parent": "43f18e6073b7ed928b7d6b7501ba8b084ac86f0f",
+  "server_executable_sha256": "8f58479649f331f29d2ab1f317423819a655055d1461140c54ddd7d11c5850d5",
+  "source_sha256": {
+    "crates/world/src/tower_layout.rs": "579faf12b5214d694530fa695027d2c94260902f629828361cc41185266bf8f1",
+    "crates/world/src/tower_run.rs": "5aa13922633ade711f17212ee64a68d789ce1ce3fae9a60da38598868e812a07",
+    "crates/world/src/tower_cinderworks.rs": "4421517b21466ed66446faa03c4233852c62969d35f19e2079d25f78cc1e3422",
+    "crates/world/src/simulation/cinderworks_encounter_actions.rs": "ec74da4e26694be36ad33aa9a94a9a82af858156b30cd1b1733ea573de999e1d"
+  },
+  "terrain": {
+    "forge_zone": [
+      362,
+      1211
+    ],
+    "forge_rotations": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "poultry_zone": [
+      321,
+      649
+    ],
+    "all_81_height_samples_each": -240,
+    "terrain_flags_each": 0,
+    "new_map11671_native_server_files0_1": "byte-identical"
+  },
+  "tests": {
+    "cache": 24,
+    "server": 57,
+    "world": 407,
+    "world_existing_ignored": 2,
+    "reachable_tiles": 2115,
+    "legal_lethal_escapes": 1512
+  },
+  "native": {
+    "areas": 2,
+    "views": 8,
+    "all_inspected": true,
+    "startup": "accepted",
+    "relogin_saved_scenery": "actual cooled boiler18525 at rotation1 confirmed",
+    "frames": [
+      {
+        "area": "workshop",
+        "yaw": 0,
+        "sequence": 86,
+        "sha256": "d527a4b61e4c541ac82df883dba0d50fabf5c68d9e79efa027deb3ff0e92ba39"
+      },
+      {
+        "area": "workshop",
+        "yaw": 4096,
+        "sequence": 88,
+        "sha256": "ad2f092ef16587ea286f0d5e19159014bcdebf5034eec79a794dfeea60762a64"
+      },
+      {
+        "area": "workshop",
+        "yaw": 8192,
+        "sequence": 90,
+        "sha256": "03f5700ab71f2bef7f4ea18785b7e08417fd4fe2d2d7dc73174aefc118484b29"
+      },
+      {
+        "area": "workshop",
+        "yaw": 12288,
+        "sequence": 92,
+        "sha256": "1935c27c2a4d813815cf10ccf9fb6333743318e82a0f7b8abca6d4299426fe62"
+      },
+      {
+        "area": "poultry yard",
+        "yaw": 0,
+        "sequence": 178,
+        "sha256": "bc1984a5b4cf7bd85cade2db8a79bba826b6ac49202dc14664fa5dff90d28b61"
+      },
+      {
+        "area": "poultry yard",
+        "yaw": 4096,
+        "sequence": 180,
+        "sha256": "a4c7a96b33208a5ad4ac89f5575106573944bf009fdc27e29d6a02a7481fbcc1"
+      },
+      {
+        "area": "poultry yard",
+        "yaw": 8192,
+        "sequence": 182,
+        "sha256": "5320d6546e2e257ffe345d3be150a60d87dce222b11f662bae9c6f0cf9144827"
+      },
+      {
+        "area": "poultry yard",
+        "yaw": 12288,
+        "sequence": 184,
+        "sha256": "f85869afff876d9b34fb275c92a5f5616f9395afb9db60087e8e489ade36bc3d"
+      }
+    ]
+  },
+  "pending": [
+    "latest native replay with new service/Imp feedback",
+    "latest headless/relog/crash regression as affected",
+    "broader foundry/environment composition",
+    "human pacing review",
+    "user artistic acceptance"
+  ]
+}

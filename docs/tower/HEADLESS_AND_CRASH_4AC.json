@@ -1,0 +1,114 @@
+{
+  "accepted": true,
+  "engine": "4acff21229f0e118a49651508ec2c30fa1b6e8ca",
+  "mode": "headless observations; never native images",
+  "route": "new ordinary character, kitchen-first, all seven scenario steps exit0",
+  "automated_seconds": 715.09,
+  "steps": [
+    {
+      "step": "services.py",
+      "arguments": [
+        "--onboard",
+        "--gate-check",
+        "--order",
+        "kitchen-first",
+        "--scene-checks",
+        "--coolant-lesson"
+      ],
+      "seconds": 260.86,
+      "exit_code": 0
+    },
+    {
+      "step": "recovery.py",
+      "arguments": [],
+      "seconds": 39.19,
+      "exit_code": 0
+    },
+    {
+      "step": "guardian.py",
+      "arguments": [
+        "imp",
+        "--style",
+        "accurate",
+        "--label",
+        "4ac"
+      ],
+      "seconds": 102.27,
+      "exit_code": 0
+    },
+    {
+      "step": "guardian.py",
+      "arguments": [
+        "warden",
+        "--style",
+        "accurate",
+        "--require-coolant",
+        "--timeout",
+        "600",
+        "--label",
+        "4ac"
+      ],
+      "seconds": 263.07,
+      "exit_code": 0
+    },
+    {
+      "step": "restoration.py",
+      "arguments": [
+        "--label",
+        "victory",
+        "--expected",
+        "18526,18511,16811,16811,16810,18525"
+      ],
+      "seconds": 0.74,
+      "exit_code": 0
+    },
+    {
+      "step": "claim.py",
+      "arguments": [
+        "--full-pack"
+      ],
+      "seconds": 38.73,
+      "exit_code": 0
+    },
+    {
+      "step": "exit_return.py",
+      "arguments": [],
+      "seconds": 10.22,
+      "exit_code": 0
+    }
+  ],
+  "warden": {
+    "hp": 11,
+    "shrimp_remaining": 18,
+    "phases": [
+      2,
+      3
+    ],
+    "coolant_uids": [
+      73
+    ]
+  },
+  "checks": [
+    "onboarding",
+    "gate denial/no XP/fresh UID",
+    "harmless lesson",
+    "all three scene restorations",
+    "real lethal rescue",
+    "Imp",
+    "Warden all phases/coolant",
+    "six restored landmarks",
+    "first500/beer/full-pack/duplicate",
+    "exact portals"
+  ],
+  "paired_current_crash": {
+    "accepted": true,
+    "binary": "gielinor-server-BAD0D3944BC67272.exe",
+    "method": "read-only committed DB proof, crash while both clients connected, ordinary relogin, exact items/equipment/all25XP/journal, duplicatezero, actual six scenes in both clients",
+    "private_receipt_sha256": "57e0ae1bdc8e2546849aca74c1b9b2ee34cdf7955c165a89bc84dc24596b2ef4"
+  },
+  "limitations": [
+    "current 4ac replay remains separate from historical1c0 replay",
+    "not proof of full gameplay on later terrain/feedback draft",
+    "human20\u201330minute pacing and artistic acceptance remain pending"
+  ]
+}

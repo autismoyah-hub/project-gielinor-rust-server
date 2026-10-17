@@ -149,7 +149,7 @@ impl World {
                             run: p.data.tower_run,
                         });
                         let message = match encounter.boss {
-                        Boss::Imp=>"The Ash Imp falls. The northern foundry is unlocked; your services and unlock are preserved if you leave.",
+                        Boss::Imp=>"The Ash Imp falls. Its boiler falls silent. The northern foundry is unlocked; your services and unlock are preserved if you leave.",
                         Boss::Warden=>"The Warden is quenched. The Cinderworks sanctuary is restored. Return to its chest to claim your reward.",
                     }.into();
                         let actor = p.id;

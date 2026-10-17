@@ -68,9 +68,9 @@ impl Config {
             return None;
         }
         Some(match service {
-            Service::Forge => "The workshop is restored. Your forged bronze weapon can pierce the foundry guardians.",
-            Service::Kitchen => "The kitchen is restored. Keep cooked food for the vent gallery and foundry.",
-            Service::Altar => "The altar is restored. Read the plaque to check the sanctuary services.",
+            Service::Forge => "The workshop is restored. Its blast furnace burns again. Your forged bronze weapon can pierce the foundry guardians.",
+            Service::Kitchen => "The kitchen is restored. The sluice wheel turns again. Keep cooked food for the vent gallery and foundry.",
+            Service::Altar => "The altar is restored. Its flame catches. Read the plaque to check the sanctuary services.",
         })
     }
 }

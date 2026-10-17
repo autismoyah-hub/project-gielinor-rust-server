@@ -1,5 +1,18 @@
 # Floor One acceptance — functional baseline; visual acceptance pending
 
+## Latest forge and provisioning composition — production continuation
+
+The workshop now uses real cache fractured stone paving (362,1211), in four quarter-turns, as a heat-worn industrial foundation. The poultry court uses actual dry earth (321,649), distinguishing a resource yard from the ceremonial hall. Existing ore targets, furnace/anvil/workbench, feeding bays, livestock and circulation remain. No decorative floor objects, unsupported shapes, height adjustment or renderer concealment is used. Both source panels have 81 explicit -240 height/border samples and zero terrain flags. New source map 11671 terrain and location files match the native cache byte-for-byte.
+
+The actual new loopback build passes cache **24**, server **57**, world **407** tests with two existing world ignores; real protected-cache clipping confirms 2,115 reachable floor tiles and 1,512 legal lethal-pattern escapes. Native relogin succeeds, and all eight original cardinal views across the forge/poultry court were inspected. Saved personal scenery still reconstructs the cooled boiler at rotation1. Private comparison: `evidence/forge-yard-comparison.html`; safe current source/build/frame receipt: `FORGE_YARD_PREVIEW_20261017.json`.
+
+The preparation guide now explains Stab/Attack/accuracy alongside Lunge/Strength. Service messages name their actual restored furnace, sluice wheel and altar flame; Imp defeat names its silenced boiler. This connects visible restoration with ordinary actions without adding objectives, grind, rewards, timers, damage or persistence fields. Complete replay/combat/regression against this new presentation build is the next live step. It is not declared fully verified or artistically complete from its predecessor's results.
+
+The preceding 4ac engine has now independently passed both fresh first clears: native workshop-first in 832.72 automated seconds and headless kitchen-first in 715.09 seconds. Both include real lethal rescue, both guardians/all Warden phases/coolant, six real scene transformations, first 500 coins/beer/full-pack recovery/duplicate denial and exact portals. The headless Warden ends at 11 HP with 18 shrimp and fresh coolant UID 73. Both characters then pass a verified no-logout crash of the exact BAD0D3944BC67272 server binary: read-only DB proof before termination, ordinary relogin preserving exact inventory/equipment/all25XP/journal/paid history, duplicate claims pay zero and independently reconstructed six landmarks. `HEADLESS_AND_CRASH_4AC.json` scopes this accepted predecessor evidence. Native 56-view review remains in `NATIVE_FIRST_CLEAR_4AC.json`. Failed headless19 launcher/gate diagnostics remain failed.
+
+Automated critical paths of about 12–14 minutes do not establish the human 20–30 minute exploration target. Do not add mandatory padding. Continue production composition, gameplay/pacing evaluation and current-source regressions; user artistic acceptance is still required.
+
+
 ## Active composition build — sanctuary paving and boiler direction
 
 ### Fresh native first clear and full native review now pass on 4acff21

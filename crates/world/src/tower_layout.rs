@@ -32,6 +32,13 @@ pub fn template() -> Template {
         z: 649,
         ..stone
     };
+    // Cache-authored fractured paving gives the forge a worn stone foundation.
+    // Its four rotations vary the real cracks without adding floor objects.
+    let forge_stone = Source {
+        x: 362,
+        z: 1211,
+        ..stone
+    };
     let moss = Source {
         x: 212,
         z: 571,
@@ -47,10 +54,23 @@ pub fn template() -> Template {
             zones.insert((x, z, 0), moss);
         }
         for z in 6..8 {
-            zones.insert((x, z, 0), earth);
+            zones.insert(
+                (x, z, 0),
+                Source {
+                    rotation: ((x - 4) * 2 + z - 6) & 3,
+                    ..forge_stone
+                },
+            );
         }
         for z in 8..10 {
             zones.insert((x, z, 0), moss);
+        }
+    }
+    // Poultry stores are a dry earth yard, distinct from the mossy western bays
+    // and the stone processional hall. Existing feeding walls and targets stay.
+    for x in 8..10 {
+        for z in 4..6 {
+            zones.insert((x, z, 0), earth);
         }
     }
     for x in 6..8 {

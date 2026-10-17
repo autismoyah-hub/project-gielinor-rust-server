@@ -75,3 +75,7 @@ Private `evidence/composed-paving-comparison.html` compares the preceding six-la
 ## Fresh 4ac native full route and settled full gallery
 
 `evidence/native-composition18` accepts the fresh first clear, real rescue, full-pack first claim/duplicate and exact portals in 832.72 automated seconds. Warden: native frames 1581/1999/2449, quench 1585, arena victory 2745, retreat 2762. All phase/victory views inspected. Original earned first-clear walkthrough is `evidence/native-4ac-complete-gallery/gallery.html`; all 56 views at fourteen points were inspected with the actual journal visible. `NATIVE_FIRST_CLEAR_4AC.json` contains safe hashes and timings. This is not artistic acceptance or proof for the unpublished workshop/poultry draft. The fresh headless20 run remains pending; two prior headless launcher/gate diagnostics remain failed.
+
+## Forge/poultry surfaces and preceding 4ac completed regression
+
+Actual new native-forgeyard18 workshop frames86/88/90/92 and poultry178/180/182/184 are inspected at all four angles. `evidence/forge-yard-comparison.html` retains the original before/after BMPs; `FORGE_YARD_PREVIEW_20261017.json` records hashes. Complete latest-build replay remains pending. Preceding4ac fresh headless20 all-seven-step route and native/headless no-logout crash pass; private receipts are `evidence/headless-composition20`, `evidence/4ac-crash-relogin.json` and both native-crash18-4ac/headless-crash20-4ac persisted-restoration receipts. The safe public summary is `HEADLESS_AND_CRASH_4AC.json`. Raw account/cache/session data stays private.
