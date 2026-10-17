@@ -17,3 +17,9 @@ Next: publish queue/schema/validator, continue dependency-aware eligible gamepla
 Source71289e622cdfac55d5f11e1c857f325929ebff3f published: selected-slot atomic potion consumption is reachable through existing held Drink/Empty -> Action::DrinkSlot -> consume_slot. Bounded3server38world potion-filtered testsPASS; legacy reference API/tests retained. Independent V0-V4 acceptance queued; no new native driver built.
 
 Current throughput:17historical contracts backfilled plus1new shared gameplay implementation;18queue units. Inventory now8partially contracted eligible source files/tables,656configuration records,2844not-yet-assessed. Full source/module reconciliation and earlier-batch backfill remain outstanding. No PROVING GROUND findings received. Continue next eligible implementation without waiting for acceptance.
+
+## Implementation checkpoint OR-MIG-0019
+
+Published source d02633e45576cbea0ba4e14e7d3cb8c164886950 implements all eight Ancient/Forgotten brew drinking doses through existing held DrinkSlot dispatch, using shared overrestore/current-drain primitives and selected-slot atomic transactions. Bounded4server41world potion-filtered testsPASS;397source hashes unchanged. Independent V0-V4 acceptance queued.
+
+Throughput:17historical contracts plus2new gameplay units,19queue units. Inventory now12partially contracted eligible source files/tables,656configuration records,2840not-yet-assessed. No PROVING GROUND findings received. Full earlier-batch backfill, eligible-module reconciliation and remaining potion/gameplay obligations remain outstanding.
