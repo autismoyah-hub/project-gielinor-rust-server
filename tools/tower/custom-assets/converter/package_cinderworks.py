@@ -16,13 +16,16 @@ def main():
     for index,asset in enumerate(manifest['assets']):
         name=asset['name'];source=a.input/(name+'.glb')
         try:
-            vertices,faces,colors=convert(source);model=encode(vertices,faces,colors)
-            require(model==encode(*convert(source)),'conversion must be deterministic')
+            vertices,faces,colors,shading=convert(source,with_shading=True);model=encode(vertices,faces,colors,shading)
+            require(model==encode(*convert(source,with_shading=True)),'conversion must be deterministic')
         except Exception as error:
             failures.append(f'{name}: {error}');continue
-        model_id=1100000+index;object_id=63000+index
+        model_id=asset.get('model_id',1100000+index);object_id=asset.get('object_id',63000+index)
+        require(model_id>=1100000 and 63000<=object_id<=64999,'reserved original-art ID range')
+        require(not any(x['model_id']==model_id or x['object_id']==object_id for x in catalogue),'duplicate custom ID')
         expected=''.join('v %d %d %d\n'%v for v in vertices)+''.join('f %d %d %d %d\n'%(*f,c) for f,c in zip(faces,colors))
         (a.output/'validation'/(name+'.txt')).write_text(expected,encoding='ascii')
+        (a.output/'validation'/(name+'.shading')).write_text(' '.join(map(str,shading)),encoding='ascii')
         width,length=asset['footprint']
         definition=bytes([7,1])+struct.pack('>I',model_id)+b'\x02'+name.replace('_',' ').encode('ascii')+b'\0'+bytes([14,width,15,length,17,19,0,0])
         for kind,id,extension,content in [('model',model_id,'model',model),('object',object_id,'object',definition)]:

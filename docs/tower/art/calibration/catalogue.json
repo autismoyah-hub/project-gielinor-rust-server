@@ -1,0 +1,332 @@
+{
+  "origin": "Entirely original geometry; measured reference analysis only; no proprietary inputs",
+  "blender": "5.2.2 LTS",
+  "palette": {
+    "stone": [
+      6,
+      0,
+      30
+    ],
+    "stone_light": [
+      6,
+      0,
+      35
+    ],
+    "stone_dark": [
+      6,
+      0,
+      25
+    ],
+    "cap": [
+      6,
+      0,
+      38
+    ],
+    "mortar": [
+      6,
+      1,
+      20
+    ],
+    "iron": [
+      0,
+      0,
+      25
+    ],
+    "iron_light": [
+      0,
+      0,
+      34
+    ],
+    "soot": [
+      0,
+      0,
+      16
+    ],
+    "wood": [
+      6,
+      3,
+      32
+    ],
+    "wood_light": [
+      6,
+      3,
+      38
+    ],
+    "brass": [
+      9,
+      3,
+      48
+    ],
+    "copper": [
+      4,
+      3,
+      37
+    ],
+    "heat": [
+      3,
+      6,
+      62
+    ],
+    "hot": [
+      7,
+      6,
+      79
+    ],
+    "water": [
+      30,
+      3,
+      35
+    ],
+    "damp": [
+      25,
+      2,
+      28
+    ],
+    "soil": [
+      6,
+      2,
+      29
+    ],
+    "moss": [
+      16,
+      2,
+      26
+    ],
+    "cloth": [
+      27,
+      3,
+      39
+    ],
+    "paper": [
+      8,
+      2,
+      68
+    ]
+  },
+  "assets": [
+    {
+      "name": "arch",
+      "model_id": 1100010,
+      "object_id": 63010,
+      "footprint": [
+        3,
+        1
+      ],
+      "vertices": 132,
+      "triangles": 204,
+      "bounds": [
+        [
+          -1.2899999618530273,
+          1.2899999618530273
+        ],
+        [
+          -0.28999999165534973,
+          0.2549999952316284
+        ],
+        [
+          0.0,
+          2.5365779399871826
+        ]
+      ],
+      "purpose": "Worker portal; tapered jambs, restrained stone crown and single localized repair",
+      "reference_analysis_ids": [
+        1868,
+        2109,
+        7016
+      ],
+      "collision_requirement": "Block jambs only; opening remains traversable; future per-tile support definitions",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 132,
+      "triangles_native": 204,
+      "palette": [
+        25,
+        34,
+        6169,
+        6174,
+        6179,
+        6182
+      ],
+      "glb_sha256": "67efba52432e2d2233e689582144008d47fade3731403d7a05a7a02066d5cccc",
+      "model_sha256": "9c64b7a357627b4d3e3026d076ee79600d184eacaca1d3b28bd856f5e2b0e11b",
+      "model_bytes": 1858
+    },
+    {
+      "name": "wall",
+      "model_id": 1100005,
+      "object_id": 63005,
+      "footprint": [
+        2,
+        1
+      ],
+      "vertices": 76,
+      "triangles": 116,
+      "bounds": [
+        [
+          -1.0199999809265137,
+          1.0199999809265137
+        ],
+        [
+          -0.27000001072883606,
+          0.24500000476837158
+        ],
+        [
+          -0.10000000149011612,
+          2.1649999618530273
+        ]
+      ],
+      "purpose": "Continuous load-bearing masonry, coping and shallow repairs",
+      "reference_analysis_ids": [
+        6132,
+        6010,
+        6143
+      ],
+      "collision_requirement": "Two tile barrier; visual thickness does not define collision automatically",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 76,
+      "triangles_native": 116,
+      "palette": [
+        6169,
+        6174,
+        6179,
+        6182,
+        6292
+      ],
+      "glb_sha256": "4b9f8ec488ed4318a94f689d38f6d80d2d871045611552cd16d47b97cf3c01af",
+      "model_sha256": "2764de7ec19bc56ae62e3615c44ea105c05c9332deefbb759fdeca0b43c56d69",
+      "model_bytes": 1048
+    },
+    {
+      "name": "wall_corner",
+      "model_id": 1100068,
+      "object_id": 63068,
+      "footprint": [
+        2,
+        2
+      ],
+      "vertices": 28,
+      "triangles": 44,
+      "bounds": [
+        [
+          -1.0800000429153442,
+          1.0
+        ],
+        [
+          -1.0800000429153442,
+          1.0
+        ],
+        [
+          0.0,
+          2.325000047683716
+        ]
+      ],
+      "purpose": "Bonded L corner with substantial end pier; complements straight wall",
+      "reference_analysis_ids": [
+        6001,
+        6132
+      ],
+      "collision_requirement": "Block only L occupied edge cells, not all four cells",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 28,
+      "triangles_native": 44,
+      "palette": [
+        6169,
+        6174,
+        6182
+      ],
+      "glb_sha256": "90d2727debbd654926fc34393b7794ea900cee7f22d1093eea86d05743908d11",
+      "model_sha256": "c5b1f7b5bc28f37fe9c7724af1f5f81648a639a76621fb4a79012dcd79d562eb",
+      "model_bytes": 410
+    },
+    {
+      "name": "pressure_pump",
+      "model_id": 1100017,
+      "object_id": 63017,
+      "footprint": [
+        2,
+        2
+      ],
+      "vertices": 156,
+      "triangles": 268,
+      "bounds": [
+        [
+          -0.824999988079071,
+          1.0399999618530273
+        ],
+        [
+          -0.6499999761581421,
+          0.6700000166893005
+        ],
+        [
+          0.0,
+          1.899999976158142
+        ]
+      ],
+      "purpose": "Asymmetric pressure vessel with accessible gauge, outlet and shutoff",
+      "reference_analysis_ids": [
+        9089,
+        9114,
+        9085
+      ],
+      "collision_requirement": "Two tile machine; leave front operating apron clear",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 156,
+      "triangles_native": 268,
+      "palette": [
+        16,
+        25,
+        34,
+        6169,
+        6560,
+        9648,
+        25884
+      ],
+      "glb_sha256": "f01f100994c223bcfff40cc0e4104f369441b2e6a1b822c78ff30c1b73cf8346",
+      "model_sha256": "05e5572e049e2b6845ac74c41ccbe658b63df404509f154ab20ffb00202ac257",
+      "model_bytes": 2374
+    },
+    {
+      "name": "scale_figure",
+      "model_id": 1100032,
+      "object_id": 63032,
+      "footprint": [
+        1,
+        1
+      ],
+      "vertices": 58,
+      "triangles": 92,
+      "bounds": [
+        [
+          -0.4179741144180298,
+          0.4179741144180298
+        ],
+        [
+          -0.1550000011920929,
+          0.1550000011920929
+        ],
+        [
+          0.0,
+          1.7200000286102295
+        ]
+      ],
+      "purpose": "Static 1.72-tile comparison convention; not an NPC or measured original player",
+      "reference_analysis_ids": [],
+      "collision_requirement": "No collision; offline ruler only",
+      "origin": "common ground datum; local centered X/Z; rotations cardinal; native128 units/tile",
+      "native_shading": "explicit material extras; 0 smooth / 1 flat",
+      "vertices_native": 58,
+      "triangles_native": 92,
+      "palette": [
+        6182,
+        6560,
+        28071
+      ],
+      "glb_sha256": "bc1f56a8c9654bf5c39374839c146b2bb221b95e8f55680b27050ab870d5863a",
+      "model_sha256": "e05d19445b4b3f8c1e4eb8871bad8acf60170e037a0d3cf8f8d9e3f9b73ba966",
+      "model_bytes": 824
+    }
+  ]
+}

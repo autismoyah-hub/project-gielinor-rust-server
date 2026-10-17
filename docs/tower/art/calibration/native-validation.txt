@@ -1,0 +1,1 @@
+ORIGINAL_KIT_NATIVE_ROUNDTRIP_PASS 5 models; 724 triangles; every vertex/index/color agrees; package-only reopen succeeds; private cache fallback rejected

@@ -23,8 +23,10 @@ def smart(value):
     return bytes([value + 64]) if -64 <= value < 64 else struct.pack('>H', value + 49152)
 
 
-def encode(vertices, faces, colors):
+def encode(vertices, faces, colors, render_types=None):
     require(0 < len(vertices) <= 65535 and 0 < len(faces) <= 65535, 'model count limit')
+    render_types = [1]*len(faces) if render_types is None else render_types
+    require(len(render_types)==len(faces) and all(t in (0,1) for t in render_types), 'unsupported native shading type')
     flags = bytearray()
     streams = [bytearray(), bytearray(), bytearray()]
     previous = (0, 0, 0)
@@ -45,7 +47,7 @@ def encode(vertices, faces, colors):
     require(all(len(s) <= 65535 for s in [*streams, indices]), 'model section limit')
     footer = struct.pack('>HHBBBBBBHHHH', len(vertices), len(faces), 0, 1, 0, 0, 0, 0,
                          *(len(s) for s in streams), len(indices))
-    return bytes(flags) + bytes([1])*len(faces) + bytes([1])*len(faces) + indices + b''.join(
+    return bytes(flags) + bytes([1])*len(faces) + bytes(render_types) + indices + b''.join(
         struct.pack('>H', c) for c in colors) + b''.join(streams) + footer
 
 
@@ -57,7 +59,7 @@ def palette(rgba):
     return (min(63, int(h*64)) << 10) | (min(7, int(s*8)) << 7) | min(127, int(l*128))
 
 
-def convert(path):
+def convert(path, with_shading=False):
     blob = path.read_bytes()
     magic, version, length = struct.unpack_from('<4sII', blob)
     require(magic == b'glTF' and version == 2 and length == len(blob), 'invalid GLB header')
@@ -98,6 +100,7 @@ def convert(path):
 
     identity = [[float(i == j) for j in range(4)] for i in range(4)]
     vertices, faces, colors, visited = [], [], [], set()
+    render_types=[]
     lookup = {}
 
     def visit(index, parent):
@@ -144,13 +147,15 @@ def convert(path):
                 pbr = material.get('pbrMetallicRoughness',{})
                 require(not any('Texture' in k for k in pbr) and not any('Texture' in k for k in material), 'unsupported material texture')
                 color = palette(pbr.get('baseColorFactor',[1,1,1,1]))
+                shading=material.get('extras',{}).get('native_render_type',1)
+                require(type(shading) is int and shading in (0,1),'unsupported explicit native material shading')
                 for k in range(0,len(indices),3):
                     f = tuple(mapped[i] for i in indices[k:k+3])
                     if det < 0: f = f[0],f[2],f[1]
                     a,b,c = [vertices[i] for i in f]
                     u,v = [b[i]-a[i] for i in range(3)],[c[i]-a[i] for i in range(3)]
                     require(any(u[i]*v[(i+1)%3]-u[(i+1)%3]*v[i] for i in range(3)), 'triangle collapsed after quantization')
-                    faces.append(f); colors.append(color)
+                    faces.append(f); colors.append(color);render_types.append(shading)
         for child in node.get('children',[]): visit(child, transform)
 
     for root in doc['scenes'][doc.get('scene',0)]['nodes']: visit(root, identity)
@@ -159,7 +164,7 @@ def convert(path):
         for a,b in zip(f, f[1:]+f[:1]):
             edges.setdefault(tuple(sorted((a,b))), []).append((a,b))
     require(all(len(e) == 2 and e[0] == e[1][::-1] for e in edges.values()), 'mesh must be closed with consistently oriented faces')
-    return vertices, faces, colors
+    return (vertices,faces,colors,render_types) if with_shading else (vertices,faces,colors)
 
 
 def main():

@@ -19,7 +19,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         );
     }
     let original_only=env::var_os("TOWER_ORIGINAL_ART_ONLY").is_some();
-    let mut c = if original_only {DiskCache::open_package_only(&a[1],64<<20)?} else {DiskCache::open(&a[1], 64 << 20)?};
+    let legacy_reference=env::var_os("TOWER_LEGACY_REFERENCE_ONLY").is_some();
+    let mut c = if original_only {DiskCache::open_package_only(&a[1],64<<20)?} else if legacy_reference {DiskCache::open_legacy_reference(&a[1],64<<20)?} else {DiskCache::open(&a[1], 64 << 20)?};
     let assembly = a.get(9).map(String::as_str).unwrap_or("runtime");
     if !matches!(assembly, "runtime" | "authored") {
         return Err("Unknown object assembly mode".into());
@@ -108,10 +109,16 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         "floor-plan" => (1800, 1900, 17500.0, 2200.0),
         "room" => (1200, 900, 2200.0, 1250.0),
         "player" => (1200, 900, 1100.0, 1000.0),
+        "reference" => (1100, 850, 650.0, 1100.0),
         _ => return Err("Unknown camera preset".into()),
     };
     if preset == "asset-passage" { center[1] -= 240.0; }
     if original_only {center[1]=if preset=="player" {-220.0} else {-80.0};}
+    if let Ok(height)=env::var("TOWER_TARGET_HEIGHT") {
+        let height:f32=height.parse()?;
+        if !height.is_finite() || height.abs()>8192.0 {return Err("Invalid offline target height".into());}
+        center[1]=height;
+    }
     let camera = Camera::look_at(
         [
             center[0] + yaw.sin() * distance,

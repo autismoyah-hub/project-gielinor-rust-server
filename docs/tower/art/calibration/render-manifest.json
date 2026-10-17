@@ -1,0 +1,341 @@
+{
+  "renderer_sha256": "f78f64d8b3c6a30c9b240d99cb9657f99d419d761d57b74b83f8c08cb48d547b",
+  "frames": [
+    {
+      "asset": "arch",
+      "view": "front",
+      "original_only": false,
+      "raw_sha256": "f9da2723604088e253cf7ff41b993ad0018b28e5c50cea0c317e1f1c31ab3667",
+      "camera": {
+        "x": 38,
+        "z": 38.5,
+        "yaw": 0,
+        "distance": 1650,
+        "target_height": -160,
+        "preset": "reference"
+      }
+    },
+    {
+      "asset": "arch",
+      "view": "quarter",
+      "original_only": false,
+      "raw_sha256": "7fb9fddde38865a9dbf6dae8f003d8eb3c15e1268c048441248d3c2354731dc1",
+      "camera": {
+        "x": 38,
+        "z": 38.5,
+        "yaw": 2048,
+        "distance": 1650,
+        "target_height": -160,
+        "preset": "reference"
+      }
+    },
+    {
+      "asset": "arch",
+      "view": "reverse",
+      "original_only": false,
+      "raw_sha256": "a3ae35f17cd5355ced80fa4dfbe613c1c9aaaa64a236024bcc5ac6bcc3c56287",
+      "camera": {
+        "x": 38,
+        "z": 38.5,
+        "yaw": 10240,
+        "distance": 1650,
+        "target_height": -160,
+        "preset": "reference"
+      }
+    },
+    {
+      "asset": "arch",
+      "view": "front",
+      "original_only": true,
+      "raw_sha256": "c05c78e6321a11feac23b0a6ebc94170ab13fb52331e3a3d1457b07f003d0c87",
+      "camera": {
+        "x": 41.5,
+        "z": 38.5,
+        "yaw": 0,
+        "distance": 850,
+        "target_height": -160,
+        "preset": "reference"
+      }
+    },
+    {
+      "asset": "arch",
+      "view": "quarter",
+      "original_only": true,
+      "raw_sha256": "f268b446734b6d4f0ea77fb5f9a9d57f3bc758a46fbe4124349fb46ae45dedd8",
+      "camera": {
+        "x": 41.5,
+        "z": 38.5,
+        "yaw": 2048,
+        "distance": 850,
+        "target_height": -160,
+        "preset": "reference"
+      }
+    },
+    {
+      "asset": "arch",
+      "view": "reverse",
+      "original_only": true,
+      "raw_sha256": "30fa482eef8d43b079d06084570f1f71b031e3f47aeeeb91a8d0be21c185e7af",
+      "camera": {
+        "x": 41.5,
+        "z": 38.5,
+        "yaw": 10240,
+        "distance": 850,
+        "target_height": -160,
+        "preset": "reference"
+      }
+    },
+    {
+      "asset": "wall",
+      "view": "front",
+      "original_only": false,
+      "raw_sha256": "fe02f72edcf73f6970962101705e7c2d98d20008858e51ad1ccef75f0a055e50",
+      "camera": {
+        "x": 38,
+        "z": 38.5,
+        "yaw": 0,
+        "distance": 1650,
+        "target_height": -160,
+        "preset": "reference"
+      }
+    },
+    {
+      "asset": "wall",
+      "view": "quarter",
+      "original_only": false,
+      "raw_sha256": "7032b94a1d967a07cb1d561c92cf30a660235d323ccf2647290cb982769abd3b",
+      "camera": {
+        "x": 38,
+        "z": 38.5,
+        "yaw": 2048,
+        "distance": 1650,
+        "target_height": -160,
+        "preset": "reference"
+      }
+    },
+    {
+      "asset": "wall",
+      "view": "reverse",
+      "original_only": false,
+      "raw_sha256": "628ae9c8ca22db85d79fb03aaed9fe2cca295a08f271f104fbc5674c332f1a6d",
+      "camera": {
+        "x": 38,
+        "z": 38.5,
+        "yaw": 10240,
+        "distance": 1650,
+        "target_height": -160,
+        "preset": "reference"
+      }
+    },
+    {
+      "asset": "wall",
+      "view": "front",
+      "original_only": true,
+      "raw_sha256": "06c2545ae3dccbff20bc3146dcf711d3979059d541a9c3bad1ef49f22c6f3dd0",
+      "camera": {
+        "x": 41.0,
+        "z": 38.5,
+        "yaw": 0,
+        "distance": 850,
+        "target_height": -160,
+        "preset": "reference"
+      }
+    },
+    {
+      "asset": "wall",
+      "view": "quarter",
+      "original_only": true,
+      "raw_sha256": "7b67b0d897b2d79b96e53a072d655121dbcf1be5197520620a3a1e163a816b18",
+      "camera": {
+        "x": 41.0,
+        "z": 38.5,
+        "yaw": 2048,
+        "distance": 850,
+        "target_height": -160,
+        "preset": "reference"
+      }
+    },
+    {
+      "asset": "wall",
+      "view": "reverse",
+      "original_only": true,
+      "raw_sha256": "7c12441e8af8a9b70bfe64f9b22fae5c1eb48f4259ef37a8a7f0bcb076ee2df3",
+      "camera": {
+        "x": 41.0,
+        "z": 38.5,
+        "yaw": 10240,
+        "distance": 850,
+        "target_height": -160,
+        "preset": "reference"
+      }
+    },
+    {
+      "asset": "wall_corner",
+      "view": "front",
+      "original_only": false,
+      "raw_sha256": "c33a71dd88ec7da7c5fe4d68fc31d1e45b22248745cf942d07c25c8a4c606f23",
+      "camera": {
+        "x": 38,
+        "z": 39.0,
+        "yaw": 0,
+        "distance": 1650,
+        "target_height": -160,
+        "preset": "reference"
+      }
+    },
+    {
+      "asset": "wall_corner",
+      "view": "quarter",
+      "original_only": false,
+      "raw_sha256": "b3a2e248126c358140b432b447a54820759136a73eb3b61b5b1d5abe9caccb73",
+      "camera": {
+        "x": 38,
+        "z": 39.0,
+        "yaw": 2048,
+        "distance": 1650,
+        "target_height": -160,
+        "preset": "reference"
+      }
+    },
+    {
+      "asset": "wall_corner",
+      "view": "reverse",
+      "original_only": false,
+      "raw_sha256": "fe4cd057e689b5f44dabf1427cdee1807a42197062a459bdcd694d5f9ac9ce15",
+      "camera": {
+        "x": 38,
+        "z": 39.0,
+        "yaw": 10240,
+        "distance": 1650,
+        "target_height": -160,
+        "preset": "reference"
+      }
+    },
+    {
+      "asset": "wall_corner",
+      "view": "front",
+      "original_only": true,
+      "raw_sha256": "ce75db713b7f044d560b7e4549c07461f0b6ec8a75485d7c290ceb9021995b90",
+      "camera": {
+        "x": 41.0,
+        "z": 39.0,
+        "yaw": 0,
+        "distance": 850,
+        "target_height": -160,
+        "preset": "reference"
+      }
+    },
+    {
+      "asset": "wall_corner",
+      "view": "quarter",
+      "original_only": true,
+      "raw_sha256": "957d79fa0662f0c51b972e1a8f32a28f66038f161bbf67a96ef51ff00505f973",
+      "camera": {
+        "x": 41.0,
+        "z": 39.0,
+        "yaw": 2048,
+        "distance": 850,
+        "target_height": -160,
+        "preset": "reference"
+      }
+    },
+    {
+      "asset": "wall_corner",
+      "view": "reverse",
+      "original_only": true,
+      "raw_sha256": "9f76eb6a8d1d08afe3c848712b75c0cd1f5cb4d9588c24002b50738a6f47bc1e",
+      "camera": {
+        "x": 41.0,
+        "z": 39.0,
+        "yaw": 10240,
+        "distance": 850,
+        "target_height": -160,
+        "preset": "reference"
+      }
+    },
+    {
+      "asset": "pressure_pump",
+      "view": "front",
+      "original_only": false,
+      "raw_sha256": "48ce0e98d2a5050fd98f96df4003c33d612b24b6d6386b2ec05d3b07eff7a3f9",
+      "camera": {
+        "x": 38,
+        "z": 39.0,
+        "yaw": 0,
+        "distance": 1650,
+        "target_height": -160,
+        "preset": "reference"
+      }
+    },
+    {
+      "asset": "pressure_pump",
+      "view": "quarter",
+      "original_only": false,
+      "raw_sha256": "3c4f46133f274b4da5ef37c7a0006361d1b69165fed560739dac9d0ea8fed1ba",
+      "camera": {
+        "x": 38,
+        "z": 39.0,
+        "yaw": 2048,
+        "distance": 1650,
+        "target_height": -160,
+        "preset": "reference"
+      }
+    },
+    {
+      "asset": "pressure_pump",
+      "view": "reverse",
+      "original_only": false,
+      "raw_sha256": "74e67d1d7ef33c7e7d0b0080b0f0235757b740e7b1a43aa1b596d3ffe0f4f0c1",
+      "camera": {
+        "x": 38,
+        "z": 39.0,
+        "yaw": 10240,
+        "distance": 1650,
+        "target_height": -160,
+        "preset": "reference"
+      }
+    },
+    {
+      "asset": "pressure_pump",
+      "view": "front",
+      "original_only": true,
+      "raw_sha256": "bd07f2d10faebdd85f48049aa24b6284f65871ae1c9c7ba586e543668b4ec8f9",
+      "camera": {
+        "x": 41.0,
+        "z": 39.0,
+        "yaw": 0,
+        "distance": 850,
+        "target_height": -160,
+        "preset": "reference"
+      }
+    },
+    {
+      "asset": "pressure_pump",
+      "view": "quarter",
+      "original_only": true,
+      "raw_sha256": "5be9295c211ab67bfaf2198ccc03d07e686b6695c353667c009c95320b4e587f",
+      "camera": {
+        "x": 41.0,
+        "z": 39.0,
+        "yaw": 2048,
+        "distance": 850,
+        "target_height": -160,
+        "preset": "reference"
+      }
+    },
+    {
+      "asset": "pressure_pump",
+      "view": "reverse",
+      "original_only": true,
+      "raw_sha256": "61e1583fcd50f1c9009d4bf69eb234bd5855d56e05441663abb867082fc6b7cd",
+      "camera": {
+        "x": 41.0,
+        "z": 39.0,
+        "yaw": 10240,
+        "distance": 850,
+        "target_height": -160,
+        "preset": "reference"
+      }
+    }
+  ]
+}

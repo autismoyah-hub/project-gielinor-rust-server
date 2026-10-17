@@ -1,0 +1,11 @@
+TOWER_ASSET_PACKAGE 1
+model 1100010 arch.model 5f313344
+object 63010 arch.object abe9ba8d
+model 1100005 wall.model 2d34da0b
+object 63005 wall.object ac616013
+model 1100068 wall-corner.model ce9b3021
+object 63068 wall-corner.object d3179f0a
+model 1100017 pressure-pump.model 8857619f
+object 63017 pressure-pump.object d5368990
+model 1100032 scale-figure.model 171a8457
+object 63032 scale-figure.object 350149cf

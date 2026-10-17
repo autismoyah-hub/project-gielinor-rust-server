@@ -1,0 +1,256 @@
+{
+  "root": "protected .data/cache",
+  "files": [
+    {
+      "file": "game/main_file_cache.dat2",
+      "size": 225833432,
+      "sha256": "06f14e1e68a294b057b3b7c2b534422e746017f7a650eb838e6276d492c81425"
+    },
+    {
+      "file": "game/main_file_cache.idx0",
+      "size": 87132,
+      "sha256": "7e532688aba7e3d5ef9ead532ca576c9912ae12b036dbf6e5ed677b91d5eaa15"
+    },
+    {
+      "file": "game/main_file_cache.idx1",
+      "size": 16044,
+      "sha256": "dbfab39921f629125ec27f109e97d51a84d279827db541d773c4d2f9f2d3aaeb"
+    },
+    {
+      "file": "game/main_file_cache.idx10",
+      "size": 24,
+      "sha256": "9a4ef5b84b5f600ab843a36ca11eab6dc7a4db5db76e96e93dd9c1ac1229c1f0"
+    },
+    {
+      "file": "game/main_file_cache.idx11",
+      "size": 5190,
+      "sha256": "15c83c8654ecbdd7e4f159dbedb7d9df5e47bee1540a8631f0d0320c6e1fbaea"
+    },
+    {
+      "file": "game/main_file_cache.idx12",
+      "size": 58362,
+      "sha256": "d72fe1f11c215c8e44940a48d69aaf85bb6bd3afcf268c00d9027432420386f6"
+    },
+    {
+      "file": "game/main_file_cache.idx13",
+      "size": 37896,
+      "sha256": "35b99e4fd3d65195440ad92d6bfff7c5b02553c0f2a42ad7ce44766e4f793d8e"
+    },
+    {
+      "file": "game/main_file_cache.idx14",
+      "size": 3492,
+      "sha256": "9a2c224da62b09d7282cc492a0e283a7f475e85c526c6f14a81a9f90895f9ba3"
+    },
+    {
+      "file": "game/main_file_cache.idx15",
+      "size": 1794,
+      "sha256": "fecd748a495ae49eeb4eaf1ce2f171d6b83850ecfed32c490c75c88a1fbee6a9"
+    },
+    {
+      "file": "game/main_file_cache.idx17",
+      "size": 24,
+      "sha256": "edc0e311918b5778ead52393087cc5da050df6457171ebdec4b841e51ebaefe9"
+    },
+    {
+      "file": "game/main_file_cache.idx18",
+      "size": 95628,
+      "sha256": "b0430f729ab2800b4da9a399f79def3898afb3a398bcaf591da48693a512a14c"
+    },
+    {
+      "file": "game/main_file_cache.idx19",
+      "size": 330,
+      "sha256": "d0645f2718cb4f2735c7ebdf6312f075ff6315c7071426e19912ee76e415ac92"
+    },
+    {
+      "file": "game/main_file_cache.idx2",
+      "size": 1236,
+      "sha256": "eaa4d74252fd2b1d19e8bbcd7d7566b5d094e8e4500320726b9e799786966c53"
+    },
+    {
+      "file": "game/main_file_cache.idx20",
+      "size": 95628,
+      "sha256": "3cb06742e802f3bfe643f714f4a00a36d8c711d2b8b55cf63aff8bc2b27e69c3"
+    },
+    {
+      "file": "game/main_file_cache.idx21",
+      "size": 1518,
+      "sha256": "fdcaca7f629d0794746e22e17326d6b855206e00de5e157df7df8f2041984ef3"
+    },
+    {
+      "file": "game/main_file_cache.idx22",
+      "size": 5484,
+      "sha256": "fb70956866bb5c664e2495ddab03997c41025e186e46a591dd4c656ed752527f"
+    },
+    {
+      "file": "game/main_file_cache.idx24",
+      "size": 96,
+      "sha256": "de0cde42f9b6e95ca92ab76c28904f3402f01ec42340597aa33e252fe06eb861"
+    },
+    {
+      "file": "game/main_file_cache.idx255",
+      "size": 150,
+      "sha256": "de435b451ba3c249af85e38c1fd39bb63f4746f9cda5d6d946b64967299ab666"
+    },
+    {
+      "file": "game/main_file_cache.idx3",
+      "size": 6006,
+      "sha256": "7b51abd07428276e01412f2e58e3c356bbdbf11c95c0dbb8f339f45f37e9f74c"
+    },
+    {
+      "file": "game/main_file_cache.idx4",
+      "size": 72036,
+      "sha256": "e32f272a1da3f2bad41a6d92d781418fe37bb2882fd4b209bf3adc4a870f45bf"
+    },
+    {
+      "file": "game/main_file_cache.idx5",
+      "size": 151728,
+      "sha256": "6dda1e8bd8a02b5a57ee65117bbcf5872cdbc1b2980e0674a3913080f00fd87b"
+    },
+    {
+      "file": "game/main_file_cache.idx6",
+      "size": 5310,
+      "sha256": "58dc96239ca4eb12d314e7057c632286343ee16f6f8948e79080496fdd7e640b"
+    },
+    {
+      "file": "game/main_file_cache.idx7",
+      "size": 369636,
+      "sha256": "df036a5ff204cdbc746116a58e0cacbafff0a3e1d13704fbe8411df69751a1e5"
+    },
+    {
+      "file": "game/main_file_cache.idx8",
+      "size": 51096,
+      "sha256": "adc3a44185674ee4b5a8407ce26411df11d01300dcaa23b7485b1c10af96a114"
+    },
+    {
+      "file": "game/main_file_cache.idx9",
+      "size": 6,
+      "sha256": "6f2ee5865647ef90117cbcbcbd5de116ecf589c8a29caefb63a02fb3a40da2ca"
+    },
+    {
+      "file": "js5/main_file_cache.dat2",
+      "size": 225255424,
+      "sha256": "9258ad24a92acb9e4f8459350f77b02093561af47de324acd3fca9581e595518"
+    },
+    {
+      "file": "js5/main_file_cache.idx0",
+      "size": 87132,
+      "sha256": "7e532688aba7e3d5ef9ead532ca576c9912ae12b036dbf6e5ed677b91d5eaa15"
+    },
+    {
+      "file": "js5/main_file_cache.idx1",
+      "size": 16044,
+      "sha256": "dbfab39921f629125ec27f109e97d51a84d279827db541d773c4d2f9f2d3aaeb"
+    },
+    {
+      "file": "js5/main_file_cache.idx10",
+      "size": 24,
+      "sha256": "9a4ef5b84b5f600ab843a36ca11eab6dc7a4db5db76e96e93dd9c1ac1229c1f0"
+    },
+    {
+      "file": "js5/main_file_cache.idx11",
+      "size": 5190,
+      "sha256": "15c83c8654ecbdd7e4f159dbedb7d9df5e47bee1540a8631f0d0320c6e1fbaea"
+    },
+    {
+      "file": "js5/main_file_cache.idx12",
+      "size": 58362,
+      "sha256": "d72fe1f11c215c8e44940a48d69aaf85bb6bd3afcf268c00d9027432420386f6"
+    },
+    {
+      "file": "js5/main_file_cache.idx13",
+      "size": 37896,
+      "sha256": "35b99e4fd3d65195440ad92d6bfff7c5b02553c0f2a42ad7ce44766e4f793d8e"
+    },
+    {
+      "file": "js5/main_file_cache.idx14",
+      "size": 3492,
+      "sha256": "9a2c224da62b09d7282cc492a0e283a7f475e85c526c6f14a81a9f90895f9ba3"
+    },
+    {
+      "file": "js5/main_file_cache.idx15",
+      "size": 1794,
+      "sha256": "fecd748a495ae49eeb4eaf1ce2f171d6b83850ecfed32c490c75c88a1fbee6a9"
+    },
+    {
+      "file": "js5/main_file_cache.idx17",
+      "size": 24,
+      "sha256": "edc0e311918b5778ead52393087cc5da050df6457171ebdec4b841e51ebaefe9"
+    },
+    {
+      "file": "js5/main_file_cache.idx18",
+      "size": 95628,
+      "sha256": "b0430f729ab2800b4da9a399f79def3898afb3a398bcaf591da48693a512a14c"
+    },
+    {
+      "file": "js5/main_file_cache.idx19",
+      "size": 330,
+      "sha256": "d0645f2718cb4f2735c7ebdf6312f075ff6315c7071426e19912ee76e415ac92"
+    },
+    {
+      "file": "js5/main_file_cache.idx2",
+      "size": 444,
+      "sha256": "d5d2cce1108a7a11ec059cf6a4efd0935f12d517f33650019160b2e1318d6c04"
+    },
+    {
+      "file": "js5/main_file_cache.idx20",
+      "size": 95628,
+      "sha256": "3cb06742e802f3bfe643f714f4a00a36d8c711d2b8b55cf63aff8bc2b27e69c3"
+    },
+    {
+      "file": "js5/main_file_cache.idx21",
+      "size": 1518,
+      "sha256": "fdcaca7f629d0794746e22e17326d6b855206e00de5e157df7df8f2041984ef3"
+    },
+    {
+      "file": "js5/main_file_cache.idx22",
+      "size": 5484,
+      "sha256": "fb70956866bb5c664e2495ddab03997c41025e186e46a591dd4c656ed752527f"
+    },
+    {
+      "file": "js5/main_file_cache.idx24",
+      "size": 96,
+      "sha256": "de0cde42f9b6e95ca92ab76c28904f3402f01ec42340597aa33e252fe06eb861"
+    },
+    {
+      "file": "js5/main_file_cache.idx255",
+      "size": 150,
+      "sha256": "08b2af002dd71ccb251cf6368256d131868b9cfb12ffadc1c603df8226797744"
+    },
+    {
+      "file": "js5/main_file_cache.idx3",
+      "size": 6006,
+      "sha256": "82418c49da73499e7289fdccc1a07dc9426c5e6fb74f8b09db5005c03ac4f97c"
+    },
+    {
+      "file": "js5/main_file_cache.idx4",
+      "size": 72036,
+      "sha256": "e32f272a1da3f2bad41a6d92d781418fe37bb2882fd4b209bf3adc4a870f45bf"
+    },
+    {
+      "file": "js5/main_file_cache.idx5",
+      "size": 151728,
+      "sha256": "564f78ef74050c5c36cbff873c4c4df37fcb024d011e7f8d04e20a922abbdf38"
+    },
+    {
+      "file": "js5/main_file_cache.idx6",
+      "size": 5310,
+      "sha256": "58dc96239ca4eb12d314e7057c632286343ee16f6f8948e79080496fdd7e640b"
+    },
+    {
+      "file": "js5/main_file_cache.idx7",
+      "size": 369636,
+      "sha256": "df036a5ff204cdbc746116a58e0cacbafff0a3e1d13704fbe8411df69751a1e5"
+    },
+    {
+      "file": "js5/main_file_cache.idx8",
+      "size": 51096,
+      "sha256": "adc3a44185674ee4b5a8407ce26411df11d01300dcaa23b7485b1c10af96a114"
+    },
+    {
+      "file": "js5/main_file_cache.idx9",
+      "size": 6,
+      "sha256": "6f2ee5865647ef90117cbcbcbd5de116ecf589c8a29caefb63a02fb3a40da2ca"
+    }
+  ],
+  "bytes": 453219756
+}
