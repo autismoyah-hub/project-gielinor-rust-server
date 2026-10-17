@@ -328,5 +328,6 @@
     "current new-build lifecycle regression as affected",
     "human first-play pacing",
     "user artistic acceptance"
-  ]
+  ],
+  "followup": "ENTRY_SUPPORT_REPLAY_AND_CRASH_20261017.json now independently accepts current replays/reconnect/crash. Original pending list describes the earlier preview publication."
 }

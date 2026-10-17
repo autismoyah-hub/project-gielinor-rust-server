@@ -1,0 +1,386 @@
+{
+  "source_engine": "a282e73 dark foreground support17097",
+  "server_executable_sha256": "5BE2E72153221405CBFF7058D8DE88F31DC6A6C8CBF19C77822058AC8994E03C",
+  "native_replay": {
+    "accepted": true,
+    "active_scenario_seconds": 608.43,
+    "timing": {
+      "accepted": true,
+      "source": "aad1211 plus single dark foreground support17097; 5BE2E72153221405 server",
+      "method": "continuous normal-action native replay; real preparation/rescue; not human pacing guarantee",
+      "elapsed_seconds": 608.44,
+      "steps": [
+        {
+          "step": "services.py",
+          "arguments": [
+            "--order",
+            "kitchen-first",
+            "--scene-checks",
+            "--landmarks",
+            "8",
+            "--coolant-lesson",
+            "--native-frames"
+          ],
+          "seconds": 177.04,
+          "exit_code": 0
+        },
+        {
+          "step": "recovery.py",
+          "arguments": [],
+          "seconds": 45.44,
+          "exit_code": 0
+        },
+        {
+          "step": "guardian.py",
+          "arguments": [
+            "imp",
+            "--style",
+            "accurate",
+            "--native-frames",
+            "--label",
+            "dark-entry"
+          ],
+          "seconds": 95.56,
+          "exit_code": 0
+        },
+        {
+          "step": "guardian.py",
+          "arguments": [
+            "warden",
+            "--style",
+            "accurate",
+            "--require-coolant",
+            "--native-frames",
+            "--timeout",
+            "600",
+            "--label",
+            "dark-entry"
+          ],
+          "seconds": 260.7,
+          "exit_code": 0
+        },
+        {
+          "step": "restoration.py",
+          "arguments": [
+            "--label",
+            "victory",
+            "--expected",
+            "18526,18511,16811,16811,16810,18525,18525,18525",
+            "--native-frames"
+          ],
+          "seconds": 4.11,
+          "exit_code": 0
+        },
+        {
+          "step": "claim.py",
+          "arguments": [
+            "--coins",
+            "25",
+            "--native-frames"
+          ],
+          "seconds": 13.14,
+          "exit_code": 0
+        },
+        {
+          "step": "exit_return.py",
+          "arguments": [],
+          "seconds": 12.44,
+          "exit_code": 0
+        }
+      ]
+    }
+  },
+  "headless_replay": {
+    "accepted": true,
+    "active_scenario_seconds": 592.77,
+    "timing": {
+      "accepted": true,
+      "source": "aad1211 plus single dark foreground support17097 / 5BE2E72153221405 server",
+      "mode": "headless",
+      "elapsed_seconds_including_native_wait": 1005.0,
+      "steps": [
+        {
+          "step": "services.py",
+          "arguments": [
+            "--order",
+            "workshop-first",
+            "--scene-checks",
+            "--landmarks",
+            "8",
+            "--coolant-lesson"
+          ],
+          "seconds": 174.45,
+          "exit_code": 0
+        },
+        {
+          "step": "recovery.py",
+          "arguments": [],
+          "seconds": 38.95,
+          "exit_code": 0
+        },
+        {
+          "step": "guardian.py",
+          "arguments": [
+            "imp",
+            "--style",
+            "accurate",
+            "--label",
+            "dark-entry"
+          ],
+          "seconds": 87.44,
+          "exit_code": 0
+        },
+        {
+          "step": "guardian.py",
+          "arguments": [
+            "warden",
+            "--style",
+            "accurate",
+            "--require-coolant",
+            "--timeout",
+            "600",
+            "--label",
+            "dark-entry"
+          ],
+          "seconds": 266.31,
+          "exit_code": 0
+        },
+        {
+          "step": "restoration.py",
+          "arguments": [
+            "--label",
+            "victory",
+            "--expected",
+            "18526,18511,16811,16811,16810,18525,18525,18525"
+          ],
+          "seconds": 0.83,
+          "exit_code": 0
+        },
+        {
+          "step": "claim.py",
+          "arguments": [
+            "--coins",
+            "25"
+          ],
+          "seconds": 13.49,
+          "exit_code": 0
+        },
+        {
+          "step": "exit_return.py",
+          "arguments": [],
+          "seconds": 11.3,
+          "exit_code": 0
+        }
+      ]
+    }
+  },
+  "normal_reconnect": {
+    "native": true,
+    "headless": true,
+    "exact_items_equipment_all25XP_journal_and8landmarks": true
+  },
+  "no_logout_crash": {
+    "accepted": true,
+    "verified_owned_pid": 868,
+    "connected_clients_before_crash": 2,
+    "method": "Read-only DB confirms both run2/services7/flags11/clears2 and525coins/beer2; exact owned PID/path/hash/127.0.0.1:63215 listener; kill only that server while both sessions connected; restart identical5BEbinary; ordinary native/headless login; exact inventory/equipment/all25XP/journal and8landmarks survive.",
+    "post_crash_entrance_fixtures": {
+      "native": [
+        17097,
+        7017
+      ],
+      "headless": [
+        17097,
+        7017
+      ]
+    },
+    "duplicate_prevention": "Independent fresh-UID server replies in both clients, exact items unchanged. Actual public claim.py chest function separately executes against both real post-crash sessions and requires fresh replies.",
+    "retained_timed_diagnostic": "Initial3second headless sample had onlyWelcomeUID0; exact restoration passes but duplicate acknowledgment was unproven. Original timed report is retained and qualified unaccepted; independent explicit-UID rerun establishes actual completed Search."
+  },
+  "actual_public_chest_live_check": {
+    "accepted": true,
+    "method": "Execute the actual public claim.py chest function in isolation against both real post-crash clients; no copied implementation, forged observations, admin actions or save edits.",
+    "checks": [
+      {
+        "directory": "native-crash21-dark-entry",
+        "accepted": true,
+        "fresh_server_reply_uid": 3,
+        "exact_items_equipment_xp_journal_unchanged": true
+      },
+      {
+        "directory": "headless-crash23-dark-entry",
+        "accepted": true,
+        "fresh_server_reply_uid": 3,
+        "exact_items_equipment_xp_journal_unchanged": true
+      }
+    ]
+  },
+  "prior_actual_claim_reply_audit": {
+    "accepted": true,
+    "scope": "Read-only audit of genuine prior ClientState action records, not a synthetic test. Every first/full-pack/repeat/duplicate Search has a new server reply before the next Search. Separate initial timed crash-headless check remains unaccepted; new explicit-UID crash rerun is independent.",
+    "cases": [
+      {
+        "directory": "native-foundry21-fresh",
+        "accepted": true,
+        "claims": [
+          {
+            "request_sequence": 2732,
+            "prior_uid": 81,
+            "fresh_reply_uid": 82,
+            "text": "Your reward is safe. Make room for coins and a beer, then search the chest again."
+          },
+          {
+            "request_sequence": 2777,
+            "prior_uid": 82,
+            "fresh_reply_uid": 83,
+            "text": "The restored sanctuary yields 500 coins and a beer. The portal leads home; read the plaque to begin a replay."
+          },
+          {
+            "request_sequence": 2783,
+            "prior_uid": 83,
+            "fresh_reply_uid": 84,
+            "text": "The sanctuary is restored. Leave through the portal, or read the plaque to begin another run."
+          }
+        ]
+      },
+      {
+        "directory": "headless-foundry23-fresh",
+        "accepted": true,
+        "claims": [
+          {
+            "request_sequence": 2516,
+            "prior_uid": 83,
+            "fresh_reply_uid": 84,
+            "text": "Your reward is safe. Make room for coins and a beer, then search the chest again."
+          },
+          {
+            "request_sequence": 2561,
+            "prior_uid": 84,
+            "fresh_reply_uid": 85,
+            "text": "The restored sanctuary yields 500 coins and a beer. The portal leads home; read the plaque to begin a replay."
+          },
+          {
+            "request_sequence": 2566,
+            "prior_uid": 85,
+            "fresh_reply_uid": 86,
+            "text": "The sanctuary is restored. Leave through the portal, or read the plaque to begin another run."
+          }
+        ]
+      },
+      {
+        "directory": "native-entry21-dark-replay",
+        "accepted": true,
+        "claims": [
+          {
+            "request_sequence": 2534,
+            "prior_uid": 30,
+            "fresh_reply_uid": 31,
+            "text": "The restored sanctuary yields 25 coins and a beer. The portal leads home; read the plaque to begin a replay."
+          },
+          {
+            "request_sequence": 2564,
+            "prior_uid": 31,
+            "fresh_reply_uid": 32,
+            "text": "The sanctuary is restored. Leave through the portal, or read the plaque to begin another run."
+          }
+        ]
+      },
+      {
+        "directory": "headless-entry23-dark-replay",
+        "accepted": true,
+        "claims": [
+          {
+            "request_sequence": 2440,
+            "prior_uid": 30,
+            "fresh_reply_uid": 31,
+            "text": "The restored sanctuary yields 25 coins and a beer. The portal leads home; read the plaque to begin a replay."
+          },
+          {
+            "request_sequence": 2471,
+            "prior_uid": 31,
+            "fresh_reply_uid": 32,
+            "text": "The sanctuary is restored. Leave through the portal, or read the plaque to begin another run."
+          }
+        ]
+      }
+    ]
+  },
+  "quiet_court_walk": {
+    "accepted": true,
+    "source": "a282e73 /5BE2E72153221405",
+    "target": {
+      "index": 606,
+      "id": 2075,
+      "x": 10424,
+      "z": 136
+    },
+    "native_completed_position": [
+      0,
+      10424,
+      136
+    ],
+    "native_guardian_present": false,
+    "uncredited_guardian_still_present": true,
+    "native_items_unchanged": true,
+    "native_xp_unchanged": true,
+    "native_capture_sequence": 2652,
+    "scope": "Ordinary completed-character Walk targets the actual two-tile guardian footprint seen by an uncredited observer; neither actor attacks or changes progression. No collision overrides or grants."
+  },
+  "native_phase_victory_frames": [
+    {
+      "boss": "imp",
+      "sequence": 1375,
+      "sha256": "b9118673d4b06b5fdc807ff3ed358a19c7851e063b36c5494faea8e9c329d2a9"
+    },
+    {
+      "boss": "imp",
+      "sequence": 1491,
+      "sha256": "750f8b7047671e4743669a7aa68d83459fbeb58f9dce45922f663db0a4d7c858"
+    },
+    {
+      "boss": "imp",
+      "sequence": 1580,
+      "sha256": "aa8c62ed0fe8786fb6ea293cd14a746ea5c808dec4ba79676c986b0d418fdb30"
+    },
+    {
+      "boss": "imp",
+      "sequence": 1625,
+      "sha256": "a378f28fb62e6ec136311629f1f2b22dd5788f7325cc2e9a3e5e76c015090ba1"
+    },
+    {
+      "boss": "warden",
+      "sequence": 1668,
+      "sha256": "f2acb5be4d4443900b173c2a3e907b7ddc8caff74937fcb2af897bcfecebab3b"
+    },
+    {
+      "boss": "warden",
+      "sequence": 1672,
+      "sha256": "e629d9545f249427ff6e959ddda8d16e73fce1811fd2831b09981f57233643a0"
+    },
+    {
+      "boss": "warden",
+      "sequence": 1971,
+      "sha256": "434e1d9516d0c7c1f1596d1cd937435028b08686a451ba21c572060dc4f432fe"
+    },
+    {
+      "boss": "warden",
+      "sequence": 2235,
+      "sha256": "0da97d84042e7887eaa3db13c646dfb771473b29445e3516f4675ac3d04beab9"
+    },
+    {
+      "boss": "warden",
+      "sequence": 2497,
+      "sha256": "7c2aae3250f4be2af3d7248b74c1170c43e38e34251f0e9cb2999de7786becc6"
+    },
+    {
+      "boss": "warden",
+      "sequence": 2516,
+      "sha256": "ae796fcb36e32a42cd051559ea4ed9413290604d97321a5d006d32904edd7668"
+    }
+  ],
+  "scope": "Current5BE replay/lifecycle and entrance/navigation acceptance. Fresh initial500/full-pack first-clear runs are separately scoped to the precedingF45binary with unchanged transaction code; do not label them fresh5BE runs.",
+  "pending": [
+    "human first-play pacing",
+    "user artistic acceptance"
+  ]
+}

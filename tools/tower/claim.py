@@ -10,12 +10,24 @@ p.add_argument('--full-pack', action='store_true')
 a = p.parse_args()
 a.output.mkdir(parents=True, exist_ok=True)
 g = Gateway(a.directory, a.output / 'claim-actions.ndjson')
+chest_reply_uids = []
 
 def count(s, id):
     return sum((i['count'] for i in s['items'] if i['id'] == id))
 
 def chest():
+    before = g.observe()
+    uid = max((e['uid'] for e in before['message_events']), default=-1)
     g.act('object 57694 10423 115 1')
+    # Dispatch and unchanged items do not prove a routed Search completed.
+    # Require a new ordinary server reply for denial, payout or duplicate.
+    reply = g.wait(lambda s: s['ready'] and any(e['uid'] > uid and e['text'].startswith(
+        ('Your reward is safe.', 'The restored sanctuary yields', 'The sanctuary is restored.'))
+        for e in s['message_events']), 55)
+    chest_reply_uids.append(max(e['uid'] for e in reply['message_events'] if e['uid'] > uid and e['text'].startswith(
+        ('Your reward is safe.', 'The restored sanctuary yields', 'The sanctuary is restored.'))))
+    return reply
+
 g.wait(lambda state:state.get('ready'),120)
 g.interface(35913795)
 s = g.wait(lambda s: s.get('ready') and 'Next: Claim reward' in s['journal'], 90)
@@ -46,5 +58,5 @@ time.sleep(2)
 s = g.observe()
 assert count(s, 995) == coins + a.coins and count(s, 1917) == beers + 1, 'Duplicate chest payout'
 g.act('capture' if a.native_frames else 'observe')
-(a.output / 'claim-summary.json').write_text(json.dumps({'accepted': True, 'expected_coins': a.coins, 'state': s}, indent=2), encoding='utf8')
+(a.output / 'claim-summary.json').write_text(json.dumps({'accepted': True, 'expected_coins': a.coins, 'chest_reply_uids': chest_reply_uids, 'state': s}, indent=2), encoding='utf8')
 print('Durably acknowledged reward confirmed; duplicate search paid nothing', flush=True)
