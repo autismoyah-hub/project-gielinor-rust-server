@@ -710,6 +710,7 @@ pub fn configure<B: AccountBackend>(
     crate::content::additional_fire_fish(n("obj"),&runtime.definitions,&mut cooking).map_err(io::Error::other)?;
     if cooking.recipes.insert(stew.cooking.raw,stew.cooking).is_some() {return Err(io::Error::other("Duplicate stew cooking registration"));}
     crate::content::standard_cooking_range(n("obj"),n("loc"),n("seq"),&runtime.definitions,&mut cooking).map_err(io::Error::other)?;
+    crate::content::ordinary_range_baking(n("obj"),n("loc"),&runtime.definitions,&mut cooking).map_err(io::Error::other)?;
     cooking.tutorial=runtime.world.tutorial_shrimp.map(|c|c.progression);
     runtime.world.cooking=Some(cooking);
     runtime.world.water_sources = Some(crate::content::water_sources(n("obj"), n("loc"), &runtime.definitions).map_err(io::Error::other)?);

@@ -4556,3 +4556,273 @@ mod standard_range_tests {
         assert!(config.surfaces.is_empty());
     }
 }
+
+/// Range-only baking of already assembled foods. Their dishes remain in the pie
+/// stages; emptying a burnt pie and quantity selection are separate operations.
+pub fn ordinary_range_baking(
+    objects: &Symbols,
+    locations: &Symbols,
+    defs: &Definitions,
+    config: &mut gielinor_world::cooking::Config,
+) -> Result<(), String> {
+    use gielinor_world::cooking::Recipe;
+    let range = u32::try_from(
+        *locations
+            .get("range")
+            .ok_or("Missing baking range symbol")?,
+    )
+    .map_err(|_| "Invalid baking range ID")?;
+    let surface = config
+        .surfaces
+        .get(&range)
+        .ok_or("Configure ordinary range before baking")?;
+    let mut next = surface.recipes.clone();
+    let mut raw_ids: std::collections::BTreeSet<_> = next.keys().copied().collect();
+    let mut output_ids: std::collections::BTreeSet<_> =
+        next.values().flat_map(|r| [r.cooked, r.burnt]).collect();
+    for (raw, cooked, burnt, raw_name, cooked_name, burnt_name, level, xp, stop, low, high) in [
+        (
+            "uncooked_redberry_pie",
+            "redberry_pie",
+            "burnt_pie",
+            "Uncooked berry pie",
+            "Redberry pie",
+            "Burnt pie",
+            10,
+            78,
+            45,
+            98,
+            452,
+        ),
+        (
+            "uncooked_meat_pie",
+            "meat_pie",
+            "burnt_pie",
+            "Uncooked meat pie",
+            "Meat pie",
+            "Burnt pie",
+            20,
+            110,
+            54,
+            78,
+            412,
+        ),
+        (
+            "uncooked_apple_pie",
+            "apple_pie",
+            "burnt_pie",
+            "Uncooked apple pie",
+            "Apple pie",
+            "Burnt pie",
+            30,
+            130,
+            63,
+            58,
+            372,
+        ),
+        (
+            "uncooked_pizza",
+            "plain_pizza",
+            "burnt_pizza",
+            "Uncooked pizza",
+            "Plain pizza",
+            "Burnt pizza",
+            35,
+            143,
+            68,
+            48,
+            352,
+        ),
+    ] {
+        let resolve = |n: &str| {
+            objects
+                .get(n)
+                .copied()
+                .ok_or_else(|| format!("Missing baking symbol {n}"))
+        };
+        let raw = resolve(raw)?;
+        let cooked = resolve(cooked)?;
+        let burnt = resolve(burnt)?;
+        if raw == cooked
+            || raw == burnt
+            || cooked == burnt
+            || output_ids.contains(&raw)
+            || !raw_ids.insert(raw)
+            || raw_ids.contains(&cooked)
+            || raw_ids.contains(&burnt)
+        {
+            return Err("Aliased ordinary baking profile".into());
+        }
+        for (id, name) in [(raw, raw_name), (cooked, cooked_name), (burnt, burnt_name)] {
+            let d = u32::try_from(id)
+                .ok()
+                .and_then(|v| defs.items.get(&v))
+                .ok_or("Missing baking item definition")?;
+            if d.name != name
+                || d.members
+                || d.stackable
+                || d.dummy == 1
+                || d.cert.template != 0
+                || d.placeholder.template != 0
+                || d.transform.template != 0
+            {
+                return Err("Unattested ordinary baking item".into());
+            }
+        }
+        if defs.items[&(cooked as u32)].inventory_ops[0].as_deref() != Some("Eat") {
+            return Err("Baking output lacks Eat".into());
+        }
+        output_ids.extend([cooked, burnt]);
+        next.insert(
+            raw,
+            Recipe {
+                raw,
+                cooked,
+                burnt,
+                level,
+                stop_burn: stop,
+                low,
+                high,
+                xp,
+                ticks: 1,
+            },
+        );
+    }
+    config.surfaces.get_mut(&range).unwrap().recipes = next;
+    Ok(())
+}
+#[cfg(test)]
+mod ordinary_baking_tests {
+    use super::*;
+    use gielinor_world::{
+        cooking::{Config, Surface},
+        inventory::{Catalog, Inventory, Item, StackType},
+        npc::RandomSource,
+        stats::Stats,
+    };
+    struct Draw(u32);
+    impl RandomSource for Draw {
+        fn below(&mut self, n: u32) -> u32 {
+            assert_eq!(n, 256);
+            self.0
+        }
+    }
+    #[test]
+    fn ordinary_baking_four_real_profiles_selected_outcomes_xp_and_late_catalog_rollback() {
+        let mut objects = Symbols::new();
+        let locations = Symbols::from([("range".into(), 26181)]);
+        let mut defs = Definitions {
+            inventories: Default::default(),
+            locations: Default::default(),
+            npcs: Default::default(),
+            items: Default::default(),
+            varbits: Default::default(),
+            varps: Default::default(),
+            stats: Default::default(),
+        };
+        for (symbol, id, name, eat) in [
+            ("uncooked_redberry_pie", 2321, "Uncooked berry pie", false),
+            ("redberry_pie", 2325, "Redberry pie", true),
+            ("uncooked_meat_pie", 2319, "Uncooked meat pie", false),
+            ("meat_pie", 2327, "Meat pie", true),
+            ("uncooked_apple_pie", 2317, "Uncooked apple pie", false),
+            ("apple_pie", 2323, "Apple pie", true),
+            ("burnt_pie", 2329, "Burnt pie", false),
+            ("uncooked_pizza", 2287, "Uncooked pizza", false),
+            ("plain_pizza", 2289, "Plain pizza", true),
+            ("burnt_pizza", 2305, "Burnt pizza", false),
+        ] {
+            objects.insert(symbol.into(), id);
+            let mut d = gielinor_cache::definitions::ItemType::decode(&[0]).unwrap();
+            d.name = name.into();
+            if eat {
+                d.inventory_ops[0] = Some("Eat".into());
+            }
+            defs.items.insert(id as u32, d);
+        }
+        let empty = Config {
+            fire: 26185,
+            animation: 897,
+            skill: 7,
+            max_level: 99,
+            tutorial: None,
+            recipes: BTreeMap::new(),
+            surfaces: [(
+                26181,
+                Surface {
+                    animation: 896,
+                    recipes: BTreeMap::new(),
+                },
+            )]
+            .into(),
+        };
+        let mut config = empty.clone();
+        ordinary_range_baking(&objects, &locations, &defs, &mut config).unwrap();
+        assert_eq!(config.surfaces[&26181].recipes.len(), 4);
+        for recipe in config.surfaces[&26181].recipes.values() {
+            assert!(config.recipe(26185, recipe.raw).is_none());
+            assert_eq!(recipe.ticks, 1);
+            for burned in [false, true] {
+                let mut inv = Inventory::new(2, StackType::Normal, false);
+                for slot in 0..2 {
+                    inv.restore_slot(
+                        slot,
+                        Some(Item {
+                            id: recipe.raw,
+                            count: 1,
+                            vars: 0,
+                        }),
+                    )
+                    .unwrap();
+                }
+                let mut stats = Stats::default();
+                stats.set_current(7, recipe.level as i8 - 1);
+                let before = inv.clone();
+                assert!(recipe
+                    .complete(
+                        1,
+                        &mut inv,
+                        &Catalog::default(),
+                        &mut stats,
+                        7,
+                        99,
+                        125,
+                        &mut Draw(0)
+                    )
+                    .is_err());
+                assert_eq!(inv, before);
+                stats.set_current(7, recipe.level as i8);
+                let outcome = recipe
+                    .complete(
+                        1,
+                        &mut inv,
+                        &Catalog::default(),
+                        &mut stats,
+                        7,
+                        99,
+                        125,
+                        &mut Draw(if burned { 255 } else { 0 }),
+                    )
+                    .unwrap();
+                assert_eq!(outcome.burned, burned);
+                assert_eq!(inv.get(0).unwrap().id, recipe.raw);
+                assert_eq!(
+                    inv.get(1).unwrap().id,
+                    if burned { recipe.burnt } else { recipe.cooked }
+                );
+                assert_eq!(
+                    stats.fine_xp(7),
+                    if burned {
+                        0
+                    } else {
+                        i32::from(recipe.xp) * 125 / 10
+                    }
+                );
+            }
+        }
+        let mut config = empty;
+        defs.items.get_mut(&2305).unwrap().dummy = 1;
+        assert!(ordinary_range_baking(&objects, &locations, &defs, &mut config).is_err());
+        assert!(config.surfaces[&26181].recipes.is_empty());
+    }
+}

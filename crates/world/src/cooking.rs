@@ -1,4 +1,4 @@
-//! Manual fire cooking adapter over existing inventory, skill and random systems.
+//! Manual cooking on configured surfaces over existing inventory, skill and random systems.
 use crate::{
     inventory::{Catalog, Delete, Insert, Inventory},
     npc::RandomSource,
