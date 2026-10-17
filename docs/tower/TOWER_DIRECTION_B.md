@@ -2,6 +2,15 @@
 
 ## Current continuation status — 2026-10-17
 
+### Six-landmark replay and no-logout crash follow-through
+
+Native Run 2 now passes all services, genuine lethal rescue, Imp and Warden, a fresh coolant acknowledgement (UID 42), all three Warden phases, six real scene changes, the 25-coin/beer replay reward, duplicate denial and exact portals. The Warden finished at 11 HP with 11 shrimp remaining. The initial kitchen-first controller ran out of pack space before mining; its failure is retained. The resumed controller uses displayed shrimp Drop actions to reserve three slots, reads the actual journal before deciding whether a service is already earned, and waits for a fresh plaque reply before another route. A temporary controller syntax diagnostic and two failed resume attempts remain private failures. No inventory, progress, collision or input-readiness rule is bypassed.
+
+Both completed Run 2 characters then remained connected during a deliberate termination of the verified isolated server PID/path/loopback listener. Read-only SQLite queries independently proved both 525-coin/two-beer balances and paid flags committed before the crash. Ordinary relogin to the exact same six-landmark binary preserves exact item slots/counts, equipment, all 25 XP values and journal; duplicate chest searches pay zero. Both clients independently rebuild all six restored landmark IDs. Private receipts: `evidence/six-landmark-crash-before.json`, `evidence/six-landmark-crash-relogin.json`, `evidence/native-crash15-six/persisted-restoration-summary.json`, and `evidence/headless-relogin16-six/persisted-restoration-summary.json`.
+
+These checks cover engine checkpoint `1c0d408` (binary ED14CD5ED52E0553). The next uncommitted paving/boiler-direction composition is a different build and must receive its own visual/regression evidence. The 20–30 minute initial-run target remains unmeasured by a clean uninterrupted session; debug pauses/restarts are not a pacing measurement. Production composition and user artistic acceptance remain outstanding.
+
+
 Production work remains active; artistic acceptance has not been granted. This section supersedes stale pending statements in the historical notes below.
 
 Published parent: `46ccb7160cf1d1848b0b8d1820c9f2bed2f0baab`, verified equal to the remote Tower branch before this iteration. The current source adds actual forge-mouth wall apertures and a sixth personal landmark: the Imp boiler cools from 18526 to 18525 on the existing durable Imp credit. Replay heats it again. No save field, combat rule, warning interval, item grant, renderer concealment or input bypass is added.
@@ -10,7 +19,7 @@ On the corrected 46ccb engine, native first clear independently passed real leth
 
 The first headless Fallen Warden controller timeout remains a failure. Its old controller left normal auto-attack active; the character subsequently earned a legitimate late credit before manual withdrawal. That credit and its legitimate first reward are not accepted bounded-fight evidence. A later replay attempt exhausted food, and the new barrel-preparation attempt also died; both remain failed. After normal rescue/resupply and closing two stale isolated test clients, a separate headless Warden retry on the six-landmark engine passed within its 600-second bound: phases two/three observed, fresh coolant acknowledgement UID 84, 9 HP and 17 shrimp remaining. Its six actual scene IDs, 25-coin replay claim, duplicate denial and exact exit/return passed. Reduced background load correlates with the successful retry; no stronger causal claim is made.
 
-Affected six-landmark suites pass: server 56; world 406 with two existing ignores. Actual protected-cache preparation validates 2,115 reachable tiles and 1,512 legal lethal-pattern escapes. Native relogin observes all six earned landmarks. Current six-landmark native replay and crash/relogin are still required; the historical 164b crash evidence does not satisfy those checks.
+Affected six-landmark suites pass: server 56; world 406 with two existing ignores. Actual protected-cache preparation validates 2,115 reachable tiles and 1,512 legal lethal-pattern escapes. Native relogin observes all six earned landmarks. Six-landmark native replay and crash/relogin have now passed as scoped above; the historical 164b crash evidence is retained separately.
 
 The current native baseline contains 56 genuine captures across fourteen locations, each at four cardinal angles, using the actual journal. All 56 views were inspected. It remains diagnostic: the sanctuary and hall floors are too plain, the provisioning courts need stronger functional composition, and the recessed boiler does not read clearly enough from normal arena views. The rear foundry hearth is visible through its aperture. Continue architectural and terrain research using real cache geometry, followed by new native comparisons. Do not interpret this capture set as artistic completion.
 

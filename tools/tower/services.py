@@ -44,7 +44,14 @@ if a.onboard:
 g.act('close')
 g.interface(35913795)
 before_plaque = g.observe()
+plaque_uid = max((e['uid'] for e in before_plaque['message_events']), default=-1)
 obj(909, 10422, 115)
+# An active replay may already own every tool. Wait for the new normal plaque
+# reply so a subsequent walk cannot race the still-pending location route.
+g.wait(lambda s:s['ready'] and any(e['uid'] > plaque_uid and e['text'].startswith(
+    ('Restore ', 'Follow the eastern path', 'Enter the northern foundry',
+     'The foundry is quiet.', 'The sanctuary is restored.'))
+    for e in s['message_events']), 65)
 if 'Done: Claim reward' in before_plaque['journal']:
     # Existing tools cannot acknowledge a replay reset. Wait for its journal.
     g.wait(lambda s: s['journal'] != before_plaque['journal'] and 'Next: Workshop:' in s['journal'], 55)
@@ -60,6 +67,20 @@ if a.gate_check:
     g.act('walk 10424 120')
     g.wait(lambda s: s['position'][1:] == [10424, 120], 55)
 def workshop():
+    # Kitchen-first replay can legitimately leave a full pack of cooked food.
+    # Reserve room through ordinary displayed Drop actions before mining.
+    # No tools, currency, quest items or materials are silently discarded.
+    while True:
+        state = g.wait(lambda state:state['ready'], 20)
+        if sum(i['count'] > 0 for i in state['items']) <= 25:
+            break
+        food = next((i for i in state['items'] if i['id'] == 315 and 'Drop' in i['operations']), None)
+        if food is None:
+            raise RuntimeError('Workshop needs three free pack slots; no disposable cooked shrimp are displayed')
+        before = sum(i['count'] > 0 for i in state['items'])
+        operation = next(n+1 for n,label in enumerate(food['operations']) if label == 'Drop')
+        g.act(f"item {food['slot']} {operation}")
+        g.wait(lambda state:sum(i['count'] > 0 for i in state['items']) < before, 20)
     if count(g.observe(), 2349) == 0:
         if count(g.observe(), 438) == 0:
             obj(11360, 10402, 118)
@@ -141,8 +162,12 @@ def altar():
     g.act('use-object 409 10428 116')
     s = g.wait(lambda s: count(s, 526) == 0 and 'Done: Altar:' in s['journal'], 55)
 
+def read_journal():
+    g.interface(35913794);g.interface(41222162)
+    return g.wait(lambda s:s['ready'] and 'Cinderworks' in s['journal'],30)
+
 def check_scene(label):
-    s=g.observe();j=s['journal']
+    s=read_journal();j=s['journal']
     forge='Done: Workshop:' in j;water='Done: Kitchen:' in j;altar_done='Done: Altar:' in j
     ids=[18526 if forge else 18525,18511 if water else 18512,16811 if altar_done else 16810,
          16811 if 'Done: Quench Ash Warden' in j or 'First reward: claimed' in j else 16810,
@@ -164,9 +189,15 @@ if a.scene_checks:check_scene('before-services')
 order=['workshop','kitchen','altar'] if a.order=='workshop-first' else ['kitchen','workshop','altar']
 stages=order if a.stage=='all' else ['kitchen','altar'] if a.stage=='kitchen' else ['altar']
 for stage in stages:
+    earned_journal=read_journal()['journal']
     g.interface(35913795)
-    {'workshop':workshop,'kitchen':kitchen,'altar':altar}[stage]()
+    done={'workshop':'Done: Workshop:','kitchen':'Done: Kitchen:','altar':'Done: Altar:'}[stage]
+    if done not in earned_journal:
+        {'workshop':workshop,'kitchen':kitchen,'altar':altar}[stage]()
+    else:
+        print('Preserving already earned service:',stage,flush=True)
     if a.scene_checks:check_scene('after-'+stage)
+read_journal()
 s=g.wait(lambda s:s['ready'] and all(label in s['journal'] for label in ['Done: Workshop:','Done: Kitchen:','Done: Altar:']),30)
 (a.output/'services-summary.json').write_text(json.dumps({'accepted':True,'order':stages,'state':s},indent=2),encoding='utf8')
 print('All three services confirmed through authoritative journal',flush=True)

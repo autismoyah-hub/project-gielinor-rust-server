@@ -1,5 +1,5 @@
 {
-  "status": "Production continuation active; current six-landmark headless Warden/reward/portals passed; artistic acceptance pending",
+  "status": "Six-landmark engine replay/crash regression passed; next environmental composition active; artistic acceptance pending",
   "scope": "Cinderworks Floor One on the isolated agent5/tower-development branch; upstream integration is a separate Agent 2 review",
   "server_gameplay_commit": "420729798ffc3b0d31c7aff7497d1841597c2104",
   "client_baseline": "95eed88159b06cebea24559a814a5111b54a59cd",
@@ -177,15 +177,48 @@
       "real_lethal_escapes": 1512
     },
     "pending": [
-      "six-landmark native replay",
-      "six-landmark crash/relogin",
+      "next paving/orientation build native visual and gameplay regression",
       "further environmental composition",
+      "clean uninterrupted first-run pacing measurement",
       "user artistic acceptance"
     ],
     "retained_failures": [
       "first headless Warden time bound, followed by unaccepted late normal credit",
       "replay food exhaustion",
       "prepared headless Warden death"
-    ]
+    ],
+    "six_landmark_native_replay": {
+      "accepted": true,
+      "engine": "1c0d408",
+      "warden_hp": 11,
+      "warden_shrimp": 11,
+      "coolant_uid": 42,
+      "phases": [
+        2,
+        3
+      ],
+      "route": "legitimate kitchen-first Run 2, resumed after retained controller failures",
+      "checks": [
+        "services",
+        "lethal rescue",
+        "Imp",
+        "Warden",
+        "six landmarks",
+        "25 coins/beer",
+        "duplicate denial",
+        "exact portals"
+      ]
+    },
+    "six_landmark_crash_relogin": {
+      "accepted": true,
+      "engine": "1c0d408",
+      "binary": "ED14CD5ED52E0553",
+      "checks": [
+        "read-only committed database proof before no-logout crash",
+        "both ordinary logins preserve inventory/equipment/all 25 XP/journal",
+        "both duplicates pay zero",
+        "both rebuild all six restored landmarks"
+      ]
+    }
   }
 }
