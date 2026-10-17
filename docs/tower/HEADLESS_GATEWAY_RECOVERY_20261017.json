@@ -1,0 +1,22 @@
+{
+  "original_mixed_gateway_reconnect_accepted": false,
+  "invalid_proof": "evidence/headless-arena25-midrun-relogin.json",
+  "original_unqualified_file_retained": "evidence/headless-arena25-midrun-relogin-unqualified-original.json",
+  "facts": "Original connected frontend and replacement disconnected frontend briefly shared one gateway directory after stopping only a parent driver. Their zero/ready observations mixed; a resumed lesson assertion failed. No gameplay or reconnect acceptance is taken from this period. The child recovery completed after its parent was stopped.",
+  "cleanup": "Disconnected duplicate was verified against process path/account/privateport and lack of TCP connection, then stopped. Remaining connected character withdrew normally and closed; all old frontend exits were verified before replacement.",
+  "independent_reconnect": {
+    "accepted": true,
+    "proof": "evidence/headless-arena25-midrun-relogin-isolated.json",
+    "checks": [
+      "exact items/slots/counts",
+      "exact equipment",
+      "all25XP",
+      "exact journal/paid history",
+      "eight correct pre-victory scene states"
+    ],
+    "new_directory": "work/headless-arena25-isolated",
+    "one_live_frontend_and_tcp_connection_verified": true
+  },
+  "followup": "New recovered continuation is running against the isolated folder. Any later relogin waits for actual frontend exit and uses another fresh folder.",
+  "production_engine_changed": false
+}

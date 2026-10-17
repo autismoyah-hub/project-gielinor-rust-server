@@ -1,0 +1,533 @@
+{
+  "server_source": "8a0ea4e arena paving; a4bbd3d normal mining driver followup only",
+  "server_binary_sha256": "DDF1B8B3415FF4D996C719898E830A4EE2F83F982095DB6333CBDD11AC69B8C1",
+  "native_Run2_continuation": {
+    "accepted": true,
+    "active_seconds": 617.16,
+    "steps": [
+      {
+        "step": "services.py",
+        "arguments": [
+          "--order",
+          "kitchen-first",
+          "--scene-checks",
+          "--landmarks",
+          "8",
+          "--coolant-lesson",
+          "--native-frames"
+        ],
+        "seconds": 160.44,
+        "exit_code": 0
+      },
+      {
+        "step": "recovery.py",
+        "arguments": [],
+        "seconds": 45.46,
+        "exit_code": 0
+      },
+      {
+        "step": "guardian.py",
+        "arguments": [
+          "imp",
+          "--style",
+          "accurate",
+          "--native-frames",
+          "--label",
+          "arena-paving"
+        ],
+        "seconds": 106.27,
+        "exit_code": 0
+      },
+      {
+        "step": "guardian.py",
+        "arguments": [
+          "warden",
+          "--style",
+          "accurate",
+          "--require-coolant",
+          "--native-frames",
+          "--timeout",
+          "600",
+          "--label",
+          "arena-paving"
+        ],
+        "seconds": 273.31,
+        "exit_code": 0
+      },
+      {
+        "step": "restoration.py",
+        "arguments": [
+          "--label",
+          "victory",
+          "--expected",
+          "18526,18511,16811,16811,16810,18525,18525,18525",
+          "--native-frames"
+        ],
+        "seconds": 3.78,
+        "exit_code": 0
+      },
+      {
+        "step": "claim.py",
+        "arguments": [
+          "--coins",
+          "25",
+          "--native-frames"
+        ],
+        "seconds": 15.12,
+        "exit_code": 0
+      },
+      {
+        "step": "exit_return.py",
+        "arguments": [],
+        "seconds": 12.78,
+        "exit_code": 0
+      }
+    ],
+    "scope": "Legitimate continuation after retained142.85-second shared-rock preparation timeout. Not a clean uninterrupted run; earlier failed preparation and live mining probe are separate. Earned kitchen service was preserved.",
+    "actual_rescue": true,
+    "imp": true,
+    "warden_phases_seen": [
+      2,
+      3
+    ],
+    "required_coolant_ack_uids": [
+      29
+    ],
+    "eight_victory_landmarks": true,
+    "repeat_coins": 25,
+    "repeat_beer": 1,
+    "durable_total_coins": 525,
+    "durable_total_beer": 2,
+    "chest_reply_uids_payout_duplicate": [
+      33,
+      34
+    ],
+    "duplicate_minted": 0,
+    "exact_exit_return": true
+  },
+  "normal_reconnect": {
+    "accepted": true,
+    "checks": [
+      "exact inventory slots/counts",
+      "exact equipment",
+      "all25XP",
+      "exact journal/paid history",
+      "eight durable scene landmarks",
+      "both feeding trough5575",
+      "entrance17097/rear7017"
+    ],
+    "saved_run": [
+      2,
+      7,
+      11,
+      2
+    ],
+    "saved_reward_totals": {
+      "coins": 525,
+      "beer": 2
+    },
+    "independent_readonly_database_before_normalclose": true
+  },
+  "current_native_review": {
+    "all56views_inspected": true,
+    "areas": 14,
+    "imp_frames_inspected": 4,
+    "warden_frames_inspected": 6,
+    "all_warning_patterns_clear_on_new_paving": true,
+    "unchanged_four_tick_warnings": true,
+    "raw56_frame_hashes": [
+      {
+        "area": "arrival",
+        "yaw": 0,
+        "filename": "frame-2544.bmp",
+        "sha256": "98b1daf889db77982ea5f72136d5a09e89741755623f47fb9c0a1c002a7265fa"
+      },
+      {
+        "area": "arrival",
+        "yaw": 4096,
+        "filename": "frame-2546.bmp",
+        "sha256": "260a0a0d9597bfee9d4749bec39e265bc089925b624337f0217022fe2a3b73b9"
+      },
+      {
+        "area": "arrival",
+        "yaw": 8192,
+        "filename": "frame-2548.bmp",
+        "sha256": "679ef990b27be01acbe62a3d361f8d91bac64112f29d2f422d94cebe4ac147be"
+      },
+      {
+        "area": "arrival",
+        "yaw": 12288,
+        "filename": "frame-2550.bmp",
+        "sha256": "60eea372114069f2b475b7e2a3ce72095697a749534838181ad8209853609427"
+      },
+      {
+        "area": "sanctuary",
+        "yaw": 0,
+        "filename": "frame-2575.bmp",
+        "sha256": "d5b195cce68a1d89c8bf922ecab4b001f508e4c5586f37a21263b5427b6b4d80"
+      },
+      {
+        "area": "sanctuary",
+        "yaw": 4096,
+        "filename": "frame-2577.bmp",
+        "sha256": "d5d66ea91f3b7fad0e7a9f25f574789528cedc49d153d67a34e78b2a7197a8fd"
+      },
+      {
+        "area": "sanctuary",
+        "yaw": 8192,
+        "filename": "frame-2579.bmp",
+        "sha256": "938dfb2ee5265f7c3eb8c63dffe233a4c5821b962def8206a81395a7d52fbc68"
+      },
+      {
+        "area": "sanctuary",
+        "yaw": 12288,
+        "filename": "frame-2581.bmp",
+        "sha256": "39a627cc7a59709b7b4043e0a4873c84ab410cf1ebc6d0921da6c1ed89e8ba9e"
+      },
+      {
+        "area": "restoration hearth",
+        "yaw": 0,
+        "filename": "frame-2596.bmp",
+        "sha256": "470f638513084e50ca8f0b0c26c782ff98c48e9564ca9459bb0216a7153b943c"
+      },
+      {
+        "area": "restoration hearth",
+        "yaw": 4096,
+        "filename": "frame-2598.bmp",
+        "sha256": "a2e2913da5682957042ad17bd8aa67aeb991fa4ccd97ee24f6d5c1b68194327a"
+      },
+      {
+        "area": "restoration hearth",
+        "yaw": 8192,
+        "filename": "frame-2600.bmp",
+        "sha256": "3ff507223775290dea07622a311561d03da4170ce9536a3558a350aa3de63f7c"
+      },
+      {
+        "area": "restoration hearth",
+        "yaw": 12288,
+        "filename": "frame-2602.bmp",
+        "sha256": "3984c25f9b475412accbe090fcc268747cb9e56b83026f9398141f8aab00d6cd"
+      },
+      {
+        "area": "plaque and reward",
+        "yaw": 0,
+        "filename": "frame-2624.bmp",
+        "sha256": "3dd1254f43b7acfd76c19c33df6dad3b933d3e6bda42a90db969174ba9f70ac7"
+      },
+      {
+        "area": "plaque and reward",
+        "yaw": 4096,
+        "filename": "frame-2626.bmp",
+        "sha256": "e45ad115190aa060affa436d0800735d9124216e50f4faa7a310d58254c7b068"
+      },
+      {
+        "area": "plaque and reward",
+        "yaw": 8192,
+        "filename": "frame-2628.bmp",
+        "sha256": "2c940fc3fdfd587755afd7d4fb1f58aaac9c7715625c501bee1eabddef9fe6e1"
+      },
+      {
+        "area": "plaque and reward",
+        "yaw": 12288,
+        "filename": "frame-2630.bmp",
+        "sha256": "cb352421a17286a249b9a0c2ffec53415f7cdccf791e959aa1a615f02dfe29da"
+      },
+      {
+        "area": "workshop",
+        "yaw": 0,
+        "filename": "frame-2679.bmp",
+        "sha256": "d67b941e2f78665701f3a754d2f065104a125cf86216d17af2ac152d324b3c30"
+      },
+      {
+        "area": "workshop",
+        "yaw": 4096,
+        "filename": "frame-2681.bmp",
+        "sha256": "f567746a0e0dd59c5a5ea415fde51c5ea6cf02f2aefa58d57d1048aa1a1d21c9"
+      },
+      {
+        "area": "workshop",
+        "yaw": 8192,
+        "filename": "frame-2683.bmp",
+        "sha256": "5e5a3e4680217c237f40cbbd5c2153038f96c1ba8942a8e896d6abbf812bbecb"
+      },
+      {
+        "area": "workshop",
+        "yaw": 12288,
+        "filename": "frame-2685.bmp",
+        "sha256": "68b39a4f50710b2cc3dda8d8e6aebc943fa39610a439dadd169a6d83d0beabba"
+      },
+      {
+        "area": "moss supply court",
+        "yaw": 0,
+        "filename": "frame-2725.bmp",
+        "sha256": "706b27d685b7ee4fa259296fd0a4835818fcf8339556a65bbee47ba91dd0011c"
+      },
+      {
+        "area": "moss supply court",
+        "yaw": 4096,
+        "filename": "frame-2727.bmp",
+        "sha256": "b132cc80b4bf7ce037c2fa3b0f9de8f449b9a230753903ed2ae6a01251ac9fc1"
+      },
+      {
+        "area": "moss supply court",
+        "yaw": 8192,
+        "filename": "frame-2729.bmp",
+        "sha256": "192d37653e68839df791b2143b8e2fc076e46eeb9624582c81d98c822641922b"
+      },
+      {
+        "area": "moss supply court",
+        "yaw": 12288,
+        "filename": "frame-2731.bmp",
+        "sha256": "fbe66a823c44af48689bc2dddf252a073d1f51f3a267d960d97485c3aa214444"
+      },
+      {
+        "area": "southern processional hall",
+        "yaw": 0,
+        "filename": "frame-2776.bmp",
+        "sha256": "6f8022359613b0c781c2663aa95315bc711fbefa5d2b30e89ec31dc2dbb0cbd4"
+      },
+      {
+        "area": "southern processional hall",
+        "yaw": 4096,
+        "filename": "frame-2778.bmp",
+        "sha256": "e1d923f531b92cbf8f390d4f4303c4823cab28691c047b5167c18ff6a8b3576c"
+      },
+      {
+        "area": "southern processional hall",
+        "yaw": 8192,
+        "filename": "frame-2780.bmp",
+        "sha256": "5ca0ca187ccee60df9a62bf5b6f73c6e32bde02abfccf41fd59508115c8c3d13"
+      },
+      {
+        "area": "southern processional hall",
+        "yaw": 12288,
+        "filename": "frame-2782.bmp",
+        "sha256": "242f26c7a6ef6f3f55654125ceb525426bb4562cb4c67257d743b9afc66c35f2"
+      },
+      {
+        "area": "poultry supply court",
+        "yaw": 0,
+        "filename": "frame-2830.bmp",
+        "sha256": "aaa0b9d2723ae7ed528967bc544405f79fbcc8d195ebfe59542f63c6bb48cb59"
+      },
+      {
+        "area": "poultry supply court",
+        "yaw": 4096,
+        "filename": "frame-2832.bmp",
+        "sha256": "a3706f72bc985ebead2df2c4cb113fa5ce0283a716dd21f953534563906f00d6"
+      },
+      {
+        "area": "poultry supply court",
+        "yaw": 8192,
+        "filename": "frame-2834.bmp",
+        "sha256": "8ee52d65986bb187420a3264eccbe79934bab75c6e58671bcae77dc736fa3c8b"
+      },
+      {
+        "area": "poultry supply court",
+        "yaw": 12288,
+        "filename": "frame-2836.bmp",
+        "sha256": "d86ffde9c7cad3eb8829a33b31666365c1950b147097d982c9a88d3afbe35018"
+      },
+      {
+        "area": "waterworks",
+        "yaw": 0,
+        "filename": "frame-2874.bmp",
+        "sha256": "86752a74160140497a4b27a87ba5818f18082dea1af7ee05746e15f2e8b988bd"
+      },
+      {
+        "area": "waterworks",
+        "yaw": 4096,
+        "filename": "frame-2876.bmp",
+        "sha256": "d970094f8939c586c1d8420556069a07c1ace104d8da56ca7b2d55ffa07996be"
+      },
+      {
+        "area": "waterworks",
+        "yaw": 8192,
+        "filename": "frame-2878.bmp",
+        "sha256": "bbfc6d2f80f390774d9529f52982e0d54a286f327070c9f42007fbbb8ea67498"
+      },
+      {
+        "area": "waterworks",
+        "yaw": 12288,
+        "filename": "frame-2880.bmp",
+        "sha256": "2c7b1b7a1dd223591028a2dbc495fd5d3284b79a1ce0cc1aad2d4ff1a0d23723"
+      },
+      {
+        "area": "sluice wheel",
+        "yaw": 0,
+        "filename": "frame-2910.bmp",
+        "sha256": "6878fe0b2a19fc6f7fac781bcb69acbc61c268d6fe8470ae2cea9b07b8496f0d"
+      },
+      {
+        "area": "sluice wheel",
+        "yaw": 4096,
+        "filename": "frame-2912.bmp",
+        "sha256": "91ed94888405a57510fe15a9c685a7730fdbfae608ca467a21b39af864fe1189"
+      },
+      {
+        "area": "sluice wheel",
+        "yaw": 8192,
+        "filename": "frame-2914.bmp",
+        "sha256": "758ed378e8dec734cf24da8f82ba80ef726f15ed474b5e8297de2458e9f8848a"
+      },
+      {
+        "area": "sluice wheel",
+        "yaw": 12288,
+        "filename": "frame-2916.bmp",
+        "sha256": "34b808d101e60a2462e8f135e5ca3cd20b93e2c01a511cf10c11e98e7049eded"
+      },
+      {
+        "area": "grove",
+        "yaw": 0,
+        "filename": "frame-3002.bmp",
+        "sha256": "3b6d1debc4caedf50cb70a0f0262ebc9629ffeff9869c08e990841da7b2adbca"
+      },
+      {
+        "area": "grove",
+        "yaw": 4096,
+        "filename": "frame-3004.bmp",
+        "sha256": "951bc06b1d80274c02fff9303a8d95b92d07ae624e3a298f4811b069d149c722"
+      },
+      {
+        "area": "grove",
+        "yaw": 8192,
+        "filename": "frame-3006.bmp",
+        "sha256": "2bf662dbe7bc5fbd9b5fa8ccb46b3f6d08d8394e5d8cd0e057d1c7166f01fddb"
+      },
+      {
+        "area": "grove",
+        "yaw": 12288,
+        "filename": "frame-3008.bmp",
+        "sha256": "94763c3e9dec185ecfdb206a01b4353f2007bb9e690ef82eb23f890002026874"
+      },
+      {
+        "area": "foundry vestibule",
+        "yaw": 0,
+        "filename": "frame-3051.bmp",
+        "sha256": "f98b53c4859a7fd698b32f5a8d8787f971b216191ca7af6f612c234d9a3fe6e3"
+      },
+      {
+        "area": "foundry vestibule",
+        "yaw": 4096,
+        "filename": "frame-3053.bmp",
+        "sha256": "891af34fd992233ebe44537ab60c29e007cba5e3b5d16558790dccfe7b332b91"
+      },
+      {
+        "area": "foundry vestibule",
+        "yaw": 8192,
+        "filename": "frame-3055.bmp",
+        "sha256": "1f021ca1aa5992fc6dfca1eca5a9b4150f59a3088f3b96fcce4c45059bdddc53"
+      },
+      {
+        "area": "foundry vestibule",
+        "yaw": 12288,
+        "filename": "frame-3057.bmp",
+        "sha256": "ec0b44d4b0c3823bf7a1d5eb41e6716e6ed7c02455e3a6caad5798edef4e5f29"
+      },
+      {
+        "area": "Ash Warden chamber",
+        "yaw": 0,
+        "filename": "frame-3083.bmp",
+        "sha256": "c6c6b3bab731379721569e7749800fa3fbff33c49de367157c5f2b11ed72e913"
+      },
+      {
+        "area": "Ash Warden chamber",
+        "yaw": 4096,
+        "filename": "frame-3085.bmp",
+        "sha256": "14d7e4851e89de1280876c11ffc0ff623605e888950d5992a317084b8cd362ee"
+      },
+      {
+        "area": "Ash Warden chamber",
+        "yaw": 8192,
+        "filename": "frame-3087.bmp",
+        "sha256": "36fdca23dfb4c065c99d53e66224432dfc8f636b8f05681b704aebb27895ce9e"
+      },
+      {
+        "area": "Ash Warden chamber",
+        "yaw": 12288,
+        "filename": "frame-3089.bmp",
+        "sha256": "f746c66fa0fd4147978653371105c35d5cd54ddba11fbaa38ca86818f49a8503"
+      },
+      {
+        "area": "Ash Imp vent gallery",
+        "yaw": 0,
+        "filename": "frame-3150.bmp",
+        "sha256": "940bdbf2f68574afe06b930dfb349c2a8990dd57057260b0cc9879ccbd989638"
+      },
+      {
+        "area": "Ash Imp vent gallery",
+        "yaw": 4096,
+        "filename": "frame-3152.bmp",
+        "sha256": "a9ae3f55efa7cf92337dfc9f4a024f6b93c59ea53c3d88f6ca0453324ff1d84d"
+      },
+      {
+        "area": "Ash Imp vent gallery",
+        "yaw": 8192,
+        "filename": "frame-3154.bmp",
+        "sha256": "6b9f6be483237647751b5b6725a81d139dc3e6c0a16f03617857454c85738771"
+      },
+      {
+        "area": "Ash Imp vent gallery",
+        "yaw": 12288,
+        "filename": "frame-3156.bmp",
+        "sha256": "00ce708c05f64c5e7fc1cc4fe73da8b978457fc3f294dedb97f755c84f01255a"
+      }
+    ],
+    "combat_frame_hashes": [
+      {
+        "boss": "imp",
+        "filename": "frame-1242.bmp",
+        "sha256": "b304cb816e70255d22793814b042c5dcd736c4e7c8949572399e0d610a6959d3"
+      },
+      {
+        "boss": "imp",
+        "filename": "frame-1369.bmp",
+        "sha256": "83b037447d3f7bdef1bf706747259c6a08b60baabf5791c8c22a6b1faec077a3"
+      },
+      {
+        "boss": "imp",
+        "filename": "frame-1521.bmp",
+        "sha256": "aa61fc7ad2e384fe8454ce0b4b3843b7be2b6b1d307a9c8d6e85187f197270ce"
+      },
+      {
+        "boss": "imp",
+        "filename": "frame-1477.bmp",
+        "sha256": "0693674854c09248fb0807c48f86095f98052afba22c16fb068274a72361e18d"
+      },
+      {
+        "boss": "warden",
+        "filename": "frame-1564.bmp",
+        "sha256": "db1303f8566e6d05b143832f5f5e05e2853fc863152b90a32f1ba3f4aa5ca7e5"
+      },
+      {
+        "boss": "warden",
+        "filename": "frame-1882.bmp",
+        "sha256": "5d20fdafd6a168ca43d12b099830f6aa922da914665a2595e2366423a45d1dda"
+      },
+      {
+        "boss": "warden",
+        "filename": "frame-2136.bmp",
+        "sha256": "9317149b13c1b789dfeb75a42b2d239edde214f95464ce03d9d72f178937e76b"
+      },
+      {
+        "boss": "warden",
+        "filename": "frame-2420.bmp",
+        "sha256": "86fed83f0fe8f943a3e5d1c2465d5e861fab2c6979c520805eff3b30a8d6977e"
+      },
+      {
+        "boss": "warden",
+        "filename": "frame-1568.bmp",
+        "sha256": "aa824db7ebd238ca570a996d2161b7809e1007df39e7942d68ab821123443a8d"
+      },
+      {
+        "boss": "warden",
+        "filename": "frame-2401.bmp",
+        "sha256": "577fa36f1279a5909346e9c773a86745631caaf4365c8c70028c94829074d989"
+      }
+    ]
+  },
+  "headless_current_build": "Recovered isolated Run2 continuation active; full payout/reconnect/crash remain pending. Earlier shared-rock/parent-wait failure and mixed-gateway reconnect proof remain failed/invalid.",
+  "first500_fullpack_scope": "HistoricalEFFA fresh first clears; not repeated or claimed on the paid DDFRun2 replay.",
+  "human_pacing": "Unmeasured; automated continuation timings exclude original failed prep, live probe and operator pauses.",
+  "artistic_acceptance": "Pending user review; overall production mandate not complete."
+}
