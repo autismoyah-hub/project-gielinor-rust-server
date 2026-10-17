@@ -3062,7 +3062,7 @@ Prepared private six-group native scenario covers both Torstol forms and all thr
 
 openrune-native-divinemiddle-001 on29BB4F archive/driverdivinemiddle001 failed its240second client deadline atphase3/completed7, after all eight Make dispatches. This is failed native acceptance, not resource deferral or a pass inferred from the server. Existing logs, fixture, source and driver remain immutable; work/divinemiddle-native-failure-001.json records hashes. Future eight-profile drivers use360seconds and700server ticks to allow bounded startup/action/save overhead under concurrent load. The successful basic001 driver is unchanged. Fresh middle002 plus same-save acceptance are required; no failed fixture is reset or reused for production replay.
 
-## Native gameplay divinemiddle acceptance (2026-10-16 UTC)
+## Native gameplay divinemiddle acceptance (2026-10-16 to 2026-10-17 UTC)
 
 Eight dose-preserving divine upgrades, ordinary crystal dust debited1/2/3/4 twice despite equipped goggles,500fineXP at5x, two-tick commits, full28 backpack and equipment conserved; same-save no replay. Chemistry proc, acquisition and drinking remain separate.
 
@@ -3118,3 +3118,49 @@ Independent decoding of18target definitions confirms symbol2antidragon means Ext
 - Extended antifire: revision15185448, raw SHA256 `635b491098364af6cc80f8a80f75b2166aa860eec3635eda1b21362a4d6fa7e8`.
 
 compatible-upgrades-tests-attempt-001 PASS61server410world,1existing ignored; compile50.19s/world47.55s. Guard4030MiB,80.5percentcommit,0page-ins/s,2.6msdisk,45.0percentCPU;Cargo-j1. New transaction vectors prove five-per-dose exact debit, insufficient-stack atomic refusal without RNG/XP change, and one goggles draw retaining the entire requirement. Separate native suites have101synthetic corruption checks each; build/native/same-save acceptance pending. Existing divine and combat native binaries remain immutable and distinct.
+
+## Native gameplay divineupper acceptance (2026-10-17 UTC)
+
+Eight dose-preserving divine upgrades, ordinary crystal dust debited1/2/3/4 twice despite equipped goggles,500fineXP at5x, two-tick commits, full28 backpack and equipment conserved; same-save no replay. Chemistry proc, acquisition and drinking remain separate.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking/Herblore parity or unrelated recipes. No issue closure.
+
+`openrune-native-divineupper-001` PASS. Server archive `29BB4FD3587E30689BCAFA18C2DEF348ACC58653E4AB6C81FEF489D400A311FD`, driver `divineupper-002`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID13828.
+- Driver `server_divineupper.exe` SHA256 `ECD5083A214F15197F95E4D711DFBB8350175F87EDF214C3668D17D943DB9D49`
+- Driver `NativeDivineUpperScenario.rs` SHA256 `5C806B2F1E75500008AF9D40980207909ED828F25007D60A1A2ACE3ADEEC900D`
+- `client.log` SHA256 `e2a648770d20525f449b80f7a60eb48d141f9f3b1ae1cd3c513d0019418cb1c9`
+- `server.log` SHA256 `fe27b1d069c053559dd2b36138862b265e8a990a96a0ed059c1b2cac5c72c1bb`
+- `initial-state.json` SHA256 `c641695b7f8ea30abcaa75c098a94a75146c0af6c2de864a1411f1dafd434ff1`
+- `final-state.json` SHA256 `cd97b44088c7ee9988f83868b020ce897fc51d77bcb212bdaa23ca1236cf69f7`
+- `pack-assessment.json` SHA256 `1ab32f384853695bdfbfb74ea2dbdd26c7781d0112cbfad6213c0be195338cb3`
+- `divineupper-trace-assessment.json` SHA256 `61efe0c7671b46fc6d68bab14a00b5eef8ed2ceac3187634ea5a557357fcf0c3`
+- `logout-observation.json` SHA256 `04ffba7cdf2b9205a8d8b676e82ccd4436fd3447196d2e550acaa38bde149db8`
+- `shutdown.json` SHA256 `ac534a1230113edf7d5ce15cf1478bb36201d737c89c83583ef9541f2840b0f4`
+- `result.json` SHA256 `0fa03590aa2c8a7f3af9fc8b587476eaff0c8e55fe25f39a64511e6749667dde`
+- `pack-run.json` SHA256 `77c8326d373c3d0cd505aa29f521dd21f0adcd0da7bae107f1bbbd4918a0c837`
+- `native-profile-assessment.json` SHA256 `3f14a170fae57aa7fb1d7cec162cb49aa87debcbb735e6b036598733a23eb947`
+- `native-packet-assessment.json` SHA256 `38b23739b0384e5d94347da6ce50759c080888cb7c36ac36df4c7ee7333c88e1`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":600},"3077":{"before":0,"after":19157},"3079":{"before":0,"after":328},"65515":{"before":0,"after":318}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[{"actor_slot":1,"actor_generation":614,"base_slot":1,"secondary_slot":0,"base":3046,"secondary":23964,"output":23754,"count":1,"queued_at":211,"committed_at":213,"index":0,"base_fine_xp":5,"rate_hundreds":500,"fine_before":130344311,"fine_after":130344336,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"base_slot":2,"secondary_slot":0,"base":3044,"secondary":23964,"output":23751,"count":1,"queued_at":223,"committed_at":225,"index":0,"base_fine_xp":10,"rate_hundreds":500,"fine_before":130344336,"fine_after":130344386,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"base_slot":3,"secondary_slot":0,"base":3042,"secondary":23964,"output":23748,"count":1,"queued_at":237,"committed_at":239,"index":0,"base_fine_xp":15,"rate_hundreds":500,"fine_before":130344386,"fine_after":130344461,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"base_slot":4,"secondary_slot":0,"base":3040,"secondary":23964,"output":23745,"count":1,"queued_at":251,"committed_at":253,"index":0,"base_fine_xp":20,"rate_hundreds":500,"fine_before":130344461,"fine_after":130344561,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"base_slot":5,"secondary_slot":0,"base":22470,"secondary":23964,"output":24644,"count":1,"queued_at":264,"committed_at":266,"index":0,"base_fine_xp":5,"rate_hundreds":500,"fine_before":130344561,"fine_after":130344586,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"base_slot":6,"secondary_slot":0,"base":22467,"secondary":23964,"output":24641,"count":1,"queued_at":276,"committed_at":278,"index":0,"base_fine_xp":10,"rate_hundreds":500,"fine_before":130344586,"fine_after":130344636,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"base_slot":7,"secondary_slot":0,"base":22464,"secondary":23964,"output":24638,"count":1,"queued_at":290,"committed_at":292,"index":0,"base_fine_xp":15,"rate_hundreds":500,"fine_before":130344636,"fine_after":130344711,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"base_slot":8,"secondary_slot":0,"base":22461,"secondary":23964,"output":24635,"count":1,"queued_at":306,"committed_at":308,"index":0,"base_fine_xp":20,"rate_hundreds":500,"fine_before":130344711,"fine_after":130344811,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5}],"scope":"Separate selected-profile two-tick commits; UI evidence and packet/display latency separate"}`
+
+`openrune-divineupper-relogin-001` PASS. Server archive `29BB4FD3587E30689BCAFA18C2DEF348ACC58653E4AB6C81FEF489D400A311FD`, driver `divineupper-002`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor `openrune-native-divineupper-001`, owned PID19696.
+- Driver `server_divineupper.exe` SHA256 `ECD5083A214F15197F95E4D711DFBB8350175F87EDF214C3668D17D943DB9D49`
+- Driver `NativeDivineUpperScenario.rs` SHA256 `5C806B2F1E75500008AF9D40980207909ED828F25007D60A1A2ACE3ADEEC900D`
+- `client.log` SHA256 `89f161e05ace53010a05b9db05a566bcc8b2e09302ccdf397faa5f636f754c8d`
+- `server.log` SHA256 `c42cc425e00876187b255886e9675c127786ba0785a6e5683bdcebf0f7c35577`
+- `initial-state.json` SHA256 `cd97b44088c7ee9988f83868b020ce897fc51d77bcb212bdaa23ca1236cf69f7`
+- `final-state.json` SHA256 `c9fe54a31b2a23d2baab85649541f39bf9f47cbfc540d5b216f308c3dcd24a26`
+- `pack-assessment.json` SHA256 `4b4fe3bf798ced690561e372ba631b5ea2a27ac9b164587314baf4ff960b5a83`
+- `divineupper-trace-assessment.json` SHA256 `15565119835c4387827e07e673e26fc0ec5897457d403e87d7333c03aaf96013`
+- `logout-observation.json` SHA256 `3488fedf9e889f2a92243d656d911b6522cfa4f06a2f6226b321b672afa0968b`
+- `shutdown.json` SHA256 `0dfc2395a8a85d83e84fae8be14f6b30075197a05eec54597ec3310640662aae`
+- `result.json` SHA256 `8b62b22727ed0d9f25de04993617df54867a36882ae009296c39b11a566e4ec4`
+- `pack-run.json` SHA256 `c74dcccb794544ba5eb2dd9c1852a964ecc2fa579f11ab25b96a985af3912fe9`
+- `native-profile-assessment.json` SHA256 `3f14a170fae57aa7fb1d7cec162cb49aa87debcbb735e6b036598733a23eb947`
+- `native-packet-assessment.json` SHA256 `9c31caa75d84ea516e7201d372778e15aa0a15632bd96e89254181ea3460f28f`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":600,"after":800},"3077":{"before":19157,"after":11947},"3079":{"before":328,"after":139},"65515":{"before":318,"after":442}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Separate selected-profile two-tick commits; UI evidence and packet/display latency separate"}`
