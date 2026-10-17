@@ -61,3 +61,9 @@ Throughput:19historical contracts plus7new gameplay/shared units;26units/27appen
 Added exact-SHA scoped contracts for four-vessel water filling f1f0032d54405e6509a6250a94368531df78bb18,ordinary dairy harvesting/packed approach231f33710596f8a9b4159f332e0e99a26d182b14,and nine dough choices d8978ede56778fc7821fbb85fa0617d5b8f0c683. Existing tests/native/archive/failure evidence preserved; no completed build/native work repeated. Well cups remain outside selected four-vessel policy; dough lossless capacity refusal/return completeness and milk variant/quest limits explicit. V0-V4 acceptance queued independently.
 
 Throughput:22historical contracts plus7new gameplay/shared units;29units/30append-only records. Inventory20partially contracted eligible source files/tables,656configuration records,2832not-yet-assessed. No full eligible-module denominator or migration-completion claim. Remaining source reconciliation/content implementation and historical backfill continue.
+
+## Checkpoint OR-MIG-0030
+
+Sourceeeb270e37b44388f784f2ac2bd40c34fb8c2df2e registers nine prepared fruit portion foods through shared ordinary binding and actual held Eat dispatch. Focused5server12worldPASS;397hashes unchanged;9target definitionsPASS. Pinned Food/Allfood15318406 explicitly supplies four heal fields omitted from individual pages. Existing ordinary/multipart regressions retained; native/lifecycle acceptance queued independently.
+
+Throughput:22historical contracts plus8new gameplay/shared units;30units/31append-only records. Inventory20partially contracted eligible source files/tables,656configuration records,2832not-yet-assessed. Remaining content/backfill/source reconciliation continues; no complete migration claim.
