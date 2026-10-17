@@ -85,3 +85,9 @@ Throughput:23historical contracts plus10new gameplay/shared units;33units/35appe
 Source97b25c57d4c6dc0606adf91dd00e41ec43600a27 registers Summerwhole/half andpapaya with shared food/boost/energy preparation and existing run-energy projection.72server430worldPASS/1existingignored;397hashes unchanged;4target definitionsPASS. Exact consumption energy is separated from passive recovery;invalid later effects cannot award energy. Summerdish return follows Wiki. Independent V0-V4 queued.
 
 Throughput:23historical contracts plus11new gameplay/shared units;34units/36append-only records. Inventory24partially contracted eligible source files/tables,656configuration records,2828not-yet-assessed. Remaining source reconciliation,content/creation/cooking/skills and prior backfill continue;no complete migration claim.
+
+## Checkpoint OR-MIG-0035
+
+Source1446167370dece10751c4c332929af880259ee23 registers four live-baseHP food profiles through existing selected food/stat pipeline.73server432worldPASS/1existingignored;397hashes unchanged;5target definitionsPASS. Explicit Strawberrytable/sourceceil6% andWatermelonWiki floor5%+1 decisions preserve conflicting prose/donor rules for V4. Bowlreturn follows donor stage. Independent acceptance queued.
+
+Throughput:23historical contracts plus12new gameplay/shared units;35units/37append-only records. Inventory25partially contracted eligible source files/tables,656configuration records,2827not-yet-assessed. Full eligible-module reconciliation,remaining content/skills/creation/cooking and older backfill remain incomplete.
