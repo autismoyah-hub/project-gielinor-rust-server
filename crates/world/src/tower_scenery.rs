@@ -125,6 +125,92 @@ pub struct Fixture {
     pub angle: u8,
 }
 pub const FIXTURES: &[Fixture] = &[
+    // Low rails tie the existing hall columns into service galleries.
+    // Three-tile cross bays retain the direct court and workshop approaches.
+    Fixture {
+        x: 53,
+        z: 36,
+        id: MASONRY[1],
+        shape: 0,
+        angle: 0,
+    },
+    Fixture {
+        x: 53,
+        z: 37,
+        id: MASONRY[1],
+        shape: 0,
+        angle: 0,
+    },
+    Fixture {
+        x: 53,
+        z: 38,
+        id: MASONRY[1],
+        shape: 0,
+        angle: 0,
+    },
+    Fixture {
+        x: 53,
+        z: 42,
+        id: MASONRY[1],
+        shape: 0,
+        angle: 0,
+    },
+    Fixture {
+        x: 53,
+        z: 43,
+        id: MASONRY[1],
+        shape: 0,
+        angle: 0,
+    },
+    Fixture {
+        x: 53,
+        z: 44,
+        id: MASONRY[1],
+        shape: 0,
+        angle: 0,
+    },
+    Fixture {
+        x: 59,
+        z: 36,
+        id: MASONRY[1],
+        shape: 0,
+        angle: 0,
+    },
+    Fixture {
+        x: 59,
+        z: 37,
+        id: MASONRY[1],
+        shape: 0,
+        angle: 0,
+    },
+    Fixture {
+        x: 59,
+        z: 38,
+        id: MASONRY[1],
+        shape: 0,
+        angle: 0,
+    },
+    Fixture {
+        x: 59,
+        z: 42,
+        id: MASONRY[1],
+        shape: 0,
+        angle: 0,
+    },
+    Fixture {
+        x: 59,
+        z: 43,
+        id: MASONRY[1],
+        shape: 0,
+        angle: 0,
+    },
+    Fixture {
+        x: 59,
+        z: 44,
+        id: MASONRY[1],
+        shape: 0,
+        angle: 0,
+    },
     // Low fortress masonry retains the headrace's western bank.
     // It meets the wheel and leaves fishing and coolant approaches open.
     Fixture {

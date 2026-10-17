@@ -1,0 +1,694 @@
+{
+  "source_parent": "80e55e6",
+  "runtime_sha256": "C555FBA455ED46C4818FFAF475700F9A4C96927E6A5EEA77906A86C17ECBB62E",
+  "scope": "Twelve real low rails only. Affected native/headless routes, geometry, initial normal transition from635 and portal reconstruction pass; fresh full first-clear scenarios are running. No current C555 full combat/crash/first500 claim yet.",
+  "fixtures": [
+    {
+      "id": 6143,
+      "x": 10421,
+      "z": 100,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "id": 6143,
+      "x": 10421,
+      "z": 101,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "id": 6143,
+      "x": 10421,
+      "z": 102,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "id": 6143,
+      "x": 10421,
+      "z": 106,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "id": 6143,
+      "x": 10421,
+      "z": 107,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "id": 6143,
+      "x": 10421,
+      "z": 108,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "id": 6143,
+      "x": 10427,
+      "z": 100,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "id": 6143,
+      "x": 10427,
+      "z": 101,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "id": 6143,
+      "x": 10427,
+      "z": 102,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "id": 6143,
+      "x": 10427,
+      "z": 106,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "id": 6143,
+      "x": 10427,
+      "z": 107,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "id": 6143,
+      "x": 10427,
+      "z": 108,
+      "shape": 0,
+      "rotation": 0
+    }
+  ],
+  "suites": {
+    "cache": 24,
+    "server": 57,
+    "world": 407,
+    "world_existing_ignored": 2,
+    "reachable_tiles": 2098,
+    "legal_lethal_pattern_escapes": 1512
+  },
+  "source_hashes": {
+    "crates/world/src/tower_scenery.rs": "13d650cd92f1e2aa1f039af6fe2ac79a9977fa3b6f4060edea2741dfc68b89c9",
+    "tools/tower/hall_fixture.py": "c609e3b045c9a60b8f38f5913c100035d51d84a2d95f8a66e16d784bab8b29b5"
+  },
+  "clients": {
+    "native": {
+      "affected_scenario": {
+        "accepted": true,
+        "binary": "C555FBA455ED46C4818FFAF475700F9A4C96927E6A5EEA77906A86C17ECBB62E",
+        "initial_exact_state_restored": true,
+        "scope": "Affected hall geometry/routes/rebuild only; historicalDDF full combat/crash separate",
+        "steps": [
+          {
+            "step": "tour.py",
+            "seconds": 133.25,
+            "exit_code": 0
+          },
+          {
+            "step": "exit_return.py",
+            "seconds": 10.88,
+            "exit_code": 0
+          },
+          {
+            "step": "restoration.py",
+            "seconds": 0.86,
+            "exit_code": 0
+          },
+          {
+            "step": "headrace_fixture.py",
+            "seconds": 1.21,
+            "exit_code": 0
+          },
+          {
+            "step": "hall_fixture.py",
+            "seconds": 63.02,
+            "exit_code": 0
+          }
+        ]
+      },
+      "exact_earned_state_from_prior_build_preserved": true,
+      "normal_exit_verified_before_replacing_frontend": true,
+      "hall_fixture": {
+        "accepted": true,
+        "actual": [
+          {
+            "id": "6143",
+            "plane": "0",
+            "x": "10421",
+            "z": "100",
+            "shape": "0",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "6143",
+            "plane": "0",
+            "x": "10421",
+            "z": "101",
+            "shape": "0",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "6143",
+            "plane": "0",
+            "x": "10421",
+            "z": "102",
+            "shape": "0",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "6143",
+            "plane": "0",
+            "x": "10421",
+            "z": "106",
+            "shape": "0",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "6143",
+            "plane": "0",
+            "x": "10421",
+            "z": "107",
+            "shape": "0",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "6143",
+            "plane": "0",
+            "x": "10421",
+            "z": "108",
+            "shape": "0",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "6143",
+            "plane": "0",
+            "x": "10427",
+            "z": "100",
+            "shape": "0",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "6143",
+            "plane": "0",
+            "x": "10427",
+            "z": "101",
+            "shape": "0",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "6143",
+            "plane": "0",
+            "x": "10427",
+            "z": "102",
+            "shape": "0",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "6143",
+            "plane": "0",
+            "x": "10427",
+            "z": "106",
+            "shape": "0",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "6143",
+            "plane": "0",
+            "x": "10427",
+            "z": "107",
+            "shape": "0",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "6143",
+            "plane": "0",
+            "x": "10427",
+            "z": "108",
+            "shape": "0",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          }
+        ],
+        "open_cross_bays": true,
+        "normal_bay_routes": [
+          [
+            0,
+            10420,
+            104
+          ],
+          [
+            0,
+            10428,
+            104
+          ],
+          [
+            0,
+            10420,
+            104
+          ],
+          [
+            0,
+            10420,
+            110
+          ],
+          [
+            0,
+            10428,
+            110
+          ],
+          [
+            0,
+            10420,
+            110
+          ],
+          [
+            0,
+            10424,
+            100
+          ],
+          [
+            0,
+            10424,
+            110
+          ],
+          [
+            0,
+            10424,
+            120
+          ]
+        ],
+        "exact_earned_state_preserved": true
+      },
+      "headrace_fixture": {
+        "accepted": true,
+        "three_edges_rebuilt": true,
+        "pipe_absent": true
+      },
+      "private_output": "evidence/native-hall24-validation"
+    },
+    "headless": {
+      "affected_scenario": {
+        "accepted": true,
+        "binary": "C555FBA455ED46C4818FFAF475700F9A4C96927E6A5EEA77906A86C17ECBB62E",
+        "initial_exact_state_restored": true,
+        "scope": "Affected hall geometry/routes/rebuild only; historicalDDF full combat/crash separate",
+        "steps": [
+          {
+            "step": "tour.py",
+            "seconds": 130.38,
+            "exit_code": 0
+          },
+          {
+            "step": "exit_return.py",
+            "seconds": 9.34,
+            "exit_code": 0
+          },
+          {
+            "step": "restoration.py",
+            "seconds": 0.82,
+            "exit_code": 0
+          },
+          {
+            "step": "headrace_fixture.py",
+            "seconds": 1.05,
+            "exit_code": 0
+          },
+          {
+            "step": "hall_fixture.py",
+            "seconds": 61.97,
+            "exit_code": 0
+          }
+        ]
+      },
+      "exact_earned_state_from_prior_build_preserved": true,
+      "normal_exit_verified_before_replacing_frontend": true,
+      "hall_fixture": {
+        "accepted": true,
+        "actual": [
+          {
+            "id": "6143",
+            "plane": "0",
+            "x": "10421",
+            "z": "100",
+            "shape": "0",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "6143",
+            "plane": "0",
+            "x": "10421",
+            "z": "101",
+            "shape": "0",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "6143",
+            "plane": "0",
+            "x": "10421",
+            "z": "102",
+            "shape": "0",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "6143",
+            "plane": "0",
+            "x": "10421",
+            "z": "106",
+            "shape": "0",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "6143",
+            "plane": "0",
+            "x": "10421",
+            "z": "107",
+            "shape": "0",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "6143",
+            "plane": "0",
+            "x": "10421",
+            "z": "108",
+            "shape": "0",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "6143",
+            "plane": "0",
+            "x": "10427",
+            "z": "100",
+            "shape": "0",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "6143",
+            "plane": "0",
+            "x": "10427",
+            "z": "101",
+            "shape": "0",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "6143",
+            "plane": "0",
+            "x": "10427",
+            "z": "102",
+            "shape": "0",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "6143",
+            "plane": "0",
+            "x": "10427",
+            "z": "106",
+            "shape": "0",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "6143",
+            "plane": "0",
+            "x": "10427",
+            "z": "107",
+            "shape": "0",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          },
+          {
+            "id": "6143",
+            "plane": "0",
+            "x": "10427",
+            "z": "108",
+            "shape": "0",
+            "rotation": "0",
+            "runtime": "true",
+            "rejected": "false"
+          }
+        ],
+        "open_cross_bays": true,
+        "normal_bay_routes": [
+          [
+            0,
+            10420,
+            104
+          ],
+          [
+            0,
+            10428,
+            104
+          ],
+          [
+            0,
+            10420,
+            104
+          ],
+          [
+            0,
+            10420,
+            110
+          ],
+          [
+            0,
+            10428,
+            110
+          ],
+          [
+            0,
+            10420,
+            110
+          ],
+          [
+            0,
+            10424,
+            100
+          ],
+          [
+            0,
+            10424,
+            110
+          ],
+          [
+            0,
+            10424,
+            120
+          ]
+        ],
+        "exact_earned_state_preserved": true
+      },
+      "headrace_fixture": {
+        "accepted": true,
+        "three_edges_rebuilt": true,
+        "pipe_absent": true
+      },
+      "private_output": "evidence/headless-hall25-validation"
+    }
+  },
+  "native_views": {
+    "before": [
+      {
+        "area": "southern hall entry",
+        "yaw": 0,
+        "filename": "frame-180.bmp",
+        "sha256": "aed7a12519283deaef37c9d4def25024b614f40e4247039883ec338596c87076"
+      },
+      {
+        "area": "southern hall entry",
+        "yaw": 4096,
+        "filename": "frame-182.bmp",
+        "sha256": "53d6b21fc83b9747cfa68e61545e4d656648384cf09c418dfb186bad93cb0983"
+      },
+      {
+        "area": "southern hall entry",
+        "yaw": 8192,
+        "filename": "frame-184.bmp",
+        "sha256": "1d6f483e2c9c20288e095d5ab478438f57483053722a3f3c3e737071cf7fda7b"
+      },
+      {
+        "area": "southern hall entry",
+        "yaw": 12288,
+        "filename": "frame-186.bmp",
+        "sha256": "efd8473dc5d323644137a7f18192880f5d3a36ec8b784c8870f96a067022e7b4"
+      },
+      {
+        "area": "court crossing",
+        "yaw": 0,
+        "filename": "frame-206.bmp",
+        "sha256": "acfcb9e59e23dc10f0ee80f38e013cade897e3ce45e3fa4ee49a1f402c17122f"
+      },
+      {
+        "area": "court crossing",
+        "yaw": 4096,
+        "filename": "frame-208.bmp",
+        "sha256": "4dbbee71449c398a42966f1444480fc7b6b4046ae2a85db806cb982713774dc3"
+      },
+      {
+        "area": "court crossing",
+        "yaw": 8192,
+        "filename": "frame-210.bmp",
+        "sha256": "abfb1bb917b90047f0c7366c5586d22e433b52836507251bd326965686004a4b"
+      },
+      {
+        "area": "court crossing",
+        "yaw": 12288,
+        "filename": "frame-212.bmp",
+        "sha256": "24ba5d7047b01c039b8d31ad69ae8619ede13b8d35aae62a179ab03b7e4b5804"
+      },
+      {
+        "area": "sanctuary approach",
+        "yaw": 0,
+        "filename": "frame-235.bmp",
+        "sha256": "0facac59570f437061513b8c6e1fdb5c65c2800aff3c2c817766f4652716dc31"
+      },
+      {
+        "area": "sanctuary approach",
+        "yaw": 4096,
+        "filename": "frame-237.bmp",
+        "sha256": "6bcd24c261664e7f4c4ea4b4f6109b88dbabf71de51f2372d7f642844ed953c9"
+      },
+      {
+        "area": "sanctuary approach",
+        "yaw": 8192,
+        "filename": "frame-239.bmp",
+        "sha256": "9acd5f8616453c446234b0352440ef7de9572823c4dc3825b76d27a76463299a"
+      },
+      {
+        "area": "sanctuary approach",
+        "yaw": 12288,
+        "filename": "frame-241.bmp",
+        "sha256": "fb3c1f3d9cd42376a1461c74526c71de6831e3e712f6c3bdb28b859d71408176"
+      }
+    ],
+    "after": [
+      {
+        "area": "southern hall entry",
+        "yaw": 0,
+        "filename": "frame-69.bmp",
+        "sha256": "738329b4523d1325abee2a6a935ab29a82547ffaf404e72aa1503a732543b1c0"
+      },
+      {
+        "area": "southern hall entry",
+        "yaw": 4096,
+        "filename": "frame-71.bmp",
+        "sha256": "0998a14f73142ad31bd777220cddc483b62a802bbca08ea0aa1ed75ecd32235e"
+      },
+      {
+        "area": "southern hall entry",
+        "yaw": 8192,
+        "filename": "frame-73.bmp",
+        "sha256": "603461756711780401c7fff63b8e82c2dc4e008ea9731f07d988c5445f018b04"
+      },
+      {
+        "area": "southern hall entry",
+        "yaw": 12288,
+        "filename": "frame-75.bmp",
+        "sha256": "bcf6fdcbf502ed3e0a040d33de2fb8bf767b974d9f8c69c410bfd265f42b10a6"
+      },
+      {
+        "area": "court crossing",
+        "yaw": 0,
+        "filename": "frame-95.bmp",
+        "sha256": "3fb10bc841be2a32c3bcf9e9686fcbd3715697c9a34863ebd247ef8c48432c11"
+      },
+      {
+        "area": "court crossing",
+        "yaw": 4096,
+        "filename": "frame-97.bmp",
+        "sha256": "a56759600b7798372b82879887fc5ee711e3e8e0b28a14145baa87cb929f6148"
+      },
+      {
+        "area": "court crossing",
+        "yaw": 8192,
+        "filename": "frame-99.bmp",
+        "sha256": "17ee823aac899f165021b59dcdbec67d605504cf28dec091c74a696c1400d4ae"
+      },
+      {
+        "area": "court crossing",
+        "yaw": 12288,
+        "filename": "frame-101.bmp",
+        "sha256": "45be2d9cbe29198b8ad60a63cdc93ec2855e179828eefe1e94b1535544485b95"
+      },
+      {
+        "area": "sanctuary approach",
+        "yaw": 0,
+        "filename": "frame-126.bmp",
+        "sha256": "92d7320c679c822a09407b299efcd94d68dfb7b750d6b709cb7a86f79dd343fa"
+      },
+      {
+        "area": "sanctuary approach",
+        "yaw": 4096,
+        "filename": "frame-128.bmp",
+        "sha256": "009379069aedd127f3cf5cce05326434963650f4ff40149211085b6a5964973a"
+      },
+      {
+        "area": "sanctuary approach",
+        "yaw": 8192,
+        "filename": "frame-130.bmp",
+        "sha256": "32c51436292a851b51a1f3399a9c890b1b2e23a949fa815f39becd06e15d75e9"
+      },
+      {
+        "area": "sanctuary approach",
+        "yaw": 12288,
+        "filename": "frame-132.bmp",
+        "sha256": "7591e134708dc6133b7fec66b509430c1380238560a03eb772a97cf21f1eeef9"
+      }
+    ]
+  },
+  "all24_comparison_frames_inspected": true,
+  "private_gallery": "evidence/hall-rails-comparison.html",
+  "assessment": "Low rails join the existing column rhythm, define service galleries and keep broad cross bays and player silhouette clear in all twelve new views. Local composition improvement only; broader sanctuary/floor production work continues.",
+  "fresh_current_full_acceptance": "RUNNING native26 workshop-first and headless27 kitchen-first; ordinary registration, no grants or save edits",
+  "overall_complete": false
+}

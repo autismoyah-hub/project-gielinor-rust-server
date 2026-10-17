@@ -1,5 +1,5 @@
 {
-  "status": "Current635703 headrace affected/native56review/normalrelogin PASS; full combat/crash historicalDDF, fresh first500 historicalEFFA; humanpacing/userartapproval pending",
+  "status": "CurrentC555 hall affected24camera comparison PASS; fresh native26/headless27 first-clears RUNNING, no current fullcombat/crash credit; broaderart/userapproval pending",
   "scope": "Cinderworks Floor One on the isolated agent5/tower-development branch; upstream integration is a separate Agent 2 review",
   "server_gameplay_commit": "420729798ffc3b0d31c7aff7497d1841597c2104",
   "client_baseline": "95eed88159b06cebea24559a814a5111b54a59cd",
@@ -2744,5 +2744,14 @@
     "normal_relogin_both_clients": true,
     "native56_reviewed": true,
     "current_crash_rerun": false
+  },
+  "checks_are_historical_aggregate": "Consult the latest scoped receipt for exact build acceptance; flat legacy checks do not apply automatically to a successor.",
+  "processional_hall_preview": {
+    "receipt": "PROCESSIONAL_HALL_PREVIEW_20261017.json",
+    "binary": "C555FBA455ED46C4818FFAF475700F9A4C96927E6A5EEA77906A86C17ECBB62E",
+    "affected_both_clients": true,
+    "current_full_first_clear": "RUNNING",
+    "current_crash": false,
+    "current_full56_native": "not yet captured"
   }
 }

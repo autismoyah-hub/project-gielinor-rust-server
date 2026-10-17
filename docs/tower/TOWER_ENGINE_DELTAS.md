@@ -1,3 +1,11 @@
+## Current hall galleries: affected checks pass; fresh full routes running
+
+Twelve supported low stone edges6143 join the processional hall's existing columns: localx53/59 atz36..38 and42..44. Broad crossing bays atz39..41 and45..47 keep direct court/workshop approaches open. All twelve new native camera views and their matching twelve baseline views are inspected. The repeated low rails give the service galleries a boundary and the central route a clearer rhythm without hiding the player. This is a local composition improvement, not final artistic acceptance.
+
+Current C555FBA455ED46C4 build passes cache24/server57/world407 (two existing ignores),2098 reachable tiles and1512 legal hazard escapes. Both clients preserve exact earned state across the normal prior-build transition, all ten court routes and portals, rebuild eight quiet landmarks and all three headrace edges, and confirm all twelve real hall rails, open cross bays and actual normal crossing routes. Completed test clients close normally with actual process exits verified.
+
+`PROCESSIONAL_HALL_PREVIEW_20261017.json` pins source parent80e55e6, full binary/source/frame hashes and actual scene rows. Private comparison: `evidence/hall-rails-comparison.html`. Fresh native26 workshop-first and headless27 kitchen-first full first-clear scenarios are now running on C555; their combat/first500/full-pack/relogin/crash results are NOT accepted yet. Current56-view full-floor review below belongs635703; full combat/crash below belongsDDF, first500 below belongsEFFA. Human first-play pacing and user final artistic approval remain open. Continue the production mandate and sanctuary composition.
+
 ## Current stone headrace: affected gameplay, rebuild and normal relogin verified
 
 Three real low masonry edges6143 (shape0, rotation0; world10445,119..121) retain the bank into the restored wheel. The native before/after comparison, portal rebuilt views, normal relogin views and all56 current floor cameras have been inspected. The bank fits the fortress palette and keeps the wheel/player visible. The oversized shipyard-pipe candidate was artistically rejected after eight native views; its failed composition and original evidence remain preserved.
