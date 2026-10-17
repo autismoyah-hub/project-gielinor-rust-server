@@ -39,7 +39,11 @@ if a.onboard:
     msg('Welcome to the Cinderworks')
 g.act('close')
 g.interface(35913795)
+before_plaque = g.observe()
 obj(909, 10422, 115)
+if 'Done: Claim reward' in before_plaque['journal']:
+    # Existing tools cannot acknowledge a replay reset. Wait for its journal.
+    g.wait(lambda s: s['journal'] != before_plaque['journal'] and 'Next: Workshop:' in s['journal'], 55)
 g.wait(lambda s: count(s, 1265) > 0, 40)
 if a.gate_check:
     walk(10439, 136)

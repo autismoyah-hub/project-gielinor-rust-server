@@ -78,19 +78,19 @@
     "apply": "git am --keep-cr"
   },
   "visual_production": {
-    "status": "in progress",
+    "status": "latest reconstruction reviewed; further Fallen Cinderworks production work required",
     "user_artistic_acceptance": "pending",
     "release_candidate": "not accepted",
     "native_source_remnants": "zero verified after precise JS5-only baseline masks",
     "native_plaque_portal_shapes": "both accepted scene entries",
     "native_fresh_services": "passed",
     "native_fresh_imp": "passed; full HP; no food used",
-    "native_warden": "in progress",
+    "native_warden": "passed; all three phases; 13 HP; all 19 food retained",
     "functional_history": "Original checks above are retained historical baseline outcomes, not claims of visual acceptance.",
-    "functional_regression": "pending corrected clear-dodge-path build; intermediate Warden failures not counted",
+    "functional_regression": "fresh exact-source full route, native replay and lifecycle remain in progress",
     "affected_library_suites": {
       "world": {
-        "passed": 399,
+        "passed": 401,
         "ignored": 2
       },
       "server": {
@@ -102,6 +102,11 @@
       "protocol": {
         "passed": 20
       }
-    }
+    },
+    "tested_server_source": "164b01c9dcf5306d08dd1044f2b03ad9ded4dc64",
+    "headless_warden": "passed; all three phases; real coolant UID 8",
+    "current_first_reward": "native and headless full-pack atomicity, 500 coins/beer and duplicate denial passed",
+    "current_exit_return": "native and headless exact inventory, equipment, XP and journal preservation passed",
+    "native_gallery": "48 actual views; twelve areas/four cardinal directions; reviewed; latest user rejects sparse composition"
   }
 }

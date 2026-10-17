@@ -1,23 +1,19 @@
-# Visual production acceptance — pending
+# Visual production acceptance — not granted
 
-Functional baseline is retained at server `34bb31d1b5a48449b3c960951ec43f93b4f17fd9` and client `a32b66deeeb30a2be159fbd379a9ffb07f423b72`.
+The latest user review rejects the sparse reconstructed checkpoint `164b01c9dcf5306d08dd1044f2b03ad9ded4dc64`. The active direction is **The Fallen Cinderworks**, an ancient dwarven-industrial sanctuary overtaken by ash and heat. Its restoration must be visible in the world. Passing gameplay, walls, a distinct NPC model and a gallery do not constitute artistic completion.
 
-The user has rejected the baseline environmental quality. Production readiness and release-candidate acceptance are withdrawn. Earlier successful gameplay results remain valid historical evidence, not artistic approval.
-
-| Review | Status |
+| Review | Current evidence |
 |---|---|
-| Native baseline walkthrough of all ten principal spaces | Captured; principal defects reviewed |
-| Four-angle arrival, boundary and reward audit | In progress |
-| Architectural reconstruction and obsolete prop removal | Implementing |
-| Real rendered walls, collision, line of sight and camera checks | Pending new build |
-| Coherent environmental identity and transitions | Pending iteration |
-| Distinct boss silhouettes and compatible animation | Baseline audited; presentation improvements pending |
-| Rendered charge, phase, quench and victory signals | Regression required |
-| Full normal-action gameplay, restart/replay and crash regression | Historical baseline accepted; new layout regression pending |
-| Comprehensive native walkthrough and comparison gallery | Pending |
-| User artistic acceptance | Required; not granted |
-| Release candidate | Not accepted |
+| Real masonry, removal of JS5-only conveyor remnants | Implemented; genuine native scene and captures |
+| Supported plaque/portal shapes; actual Search coolant | Implemented; real native entries/actions |
+| Distinct Warden body and animation | Implemented; cardinal views and three-phase victory |
+| Full-floor native baseline | 12 areas, four cardinal views each; reviewed; remains too sparse |
+| Sanctuary, corridors, workshop, waterworks composition | Further reconstruction required by latest review |
+| Progression-driven environmental transformations | Planned; implementation and regression required |
+| Native/headless current Warden, first reward and exact portal preservation | Passed against 164b; fresh full route and native replay/lifecycle remain in progress |
+| Native replay interrupted service diagnostic | Failed/incomplete; native process exit under investigation; resumed from normally saved progress |
+| Affected library suites | 497 passed, two existing ignored, zero failures against 164b |
+| User artistic acceptance | Not granted |
+| Production/release candidate | Not accepted |
 
-See [TOWER_VISUAL_AUDIT.md](TOWER_VISUAL_AUDIT.md) for coordinates, evidence and causes. Captures and protected cache data stay private; source-safe evidence indexes link local genuine frames. Development continues through the full-floor pass and gameplay regression before final artistic review.
-
-Current source checkpoint implements architecture, exact source-frame masks, supported plaque/portal shapes, low foreground masonry, a distinct fire-giant Warden with matching cache animations, searchable rainwater coolant stations outside escape lanes, and restrained repeated chat. New guardian acceptance requires normal chat UIDs; stale messages cannot count as a victory or coolant acknowledgement. Final native/headless combat and the cardinal-angle gallery remain pending. Intermediate food-exhausted diagnostics are explicitly not completions.
+The pre-redesign functional evidence at `34bb31d1b5a48449b3c960951ec43f93b4f17fd9` is historical and preserved. Current captures remain private; see VISUAL_EVIDENCE.md for a source-safe index. Development continues through composition, environmental response and full regression.

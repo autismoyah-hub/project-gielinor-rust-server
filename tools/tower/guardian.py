@@ -5,9 +5,12 @@ p.add_argument('boss', choices=['imp', 'warden'])
 p.add_argument('--directory', type=pathlib.Path, required=True)
 p.add_argument('--output', type=pathlib.Path, required=True)
 p.add_argument('--native-frames', action='store_true')
+p.add_argument('--require-coolant', action='store_true', help='Demonstrate an acknowledged adjacent coolant interruption before resuming melee')
 p.add_argument('--timeout', type=float, default=360)
 p.add_argument('--label', default='accepted')
 a = p.parse_args()
+if a.require_coolant and a.boss!='warden':
+    raise ValueError('Coolant belongs to the Warden encounter')
 a.output.mkdir(parents=True, exist_ok=True)
 g = Gateway(a.directory, a.output / f'{a.boss}-{a.label}-actions.ndjson')
 kind = 16300 if a.boss == 'imp' else 2075
@@ -68,13 +71,15 @@ while time.monotonic() < end:
     outcome_texts=[e['text'] for e in fresh_events]
     victory = any((('The Ash Imp falls' if a.boss == 'imp' else 'The Warden is quenched') in text for text in outcome_texts))
     if victory:
+        if a.require_coolant and not coolant_events:
+            raise RuntimeError('Victory did not exercise the required coolant mechanic')
         if a.native_frames:
             view=g.act('capture');feedback_captures.append({'reason':'victory in arena','sequence':view['sequence']})
         g.act('walk 10424 128')
         g.wait(lambda state: state['position'][1:] == [10424, 128], 55)
         shot = g.act('capture' if a.native_frames else 'observe')
         captures.append(shot['sequence'])
-        result = {'boss': a.boss, 'accepted': True, 'state': s, 'mode': 'native' if a.native_frames else 'headless', 'frame_sequences': captures if a.native_frames else [], 'observation_sequences': captures, 'evasion_requests': warnings, 'phases_seen': sorted(phases), 'coolant_ack_uids':coolant_events, 'feedback_captures':feedback_captures}
+        result = {'boss': a.boss, 'accepted': True, 'state': s, 'mode': 'native' if a.native_frames else 'headless', 'frame_sequences': captures if a.native_frames else [], 'observation_sequences': captures, 'evasion_requests': warnings, 'phases_seen': sorted(phases), 'coolant_ack_uids':coolant_events, 'coolant_required':a.require_coolant, 'feedback_captures':feedback_captures}
         (a.output / f'{a.boss}-{a.label}-summary.json').write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding='utf-8')
         print('Authoritative victory confirmed', a.boss, 'HP', s['hp'], 'captures', captures, flush=True)
         break
@@ -99,7 +104,9 @@ while time.monotonic() < end:
     if quench_events:
         event=max(quench_events,key=lambda e:e['uid'])
         last_quench_uid=event['uid'];coolant_events.append(event['uid'])
-        last_burst=max(last_burst,event['cycle'])
+        # Chat timestamps use the UI clock; ground graphics use actor time.
+        # Only compare graphics with the observed actor cycle.
+        last_burst=max(last_burst,s['cycle'])
         hold_until=s['tick']-1;wave_active=False;need_attack=True;quench_ready=s['tick']+9
         print('Authoritative coolant interruption confirmed',flush=True)
         if a.native_frames and not feedback_captures:
@@ -112,7 +119,12 @@ while time.monotonic() < end:
         hold_until = max(hold_until, s['tick'] + 2)
         # Evade an observed dangerous tile first. Chase no remote interaction
         # through a four-tick warning: quench only from a safe adjacent tile.
-        if tile in hot:
+        adjacent_barrel=min(coolant,key=lambda t:abs(t[0]-tile[0])+abs(t[1]-tile[1]))
+        instant_quench=a.boss=='warden' and a.require_coolant and not coolant_events and not attempted and s['tick']>=quench_ready and now>=quenching_until and abs(adjacent_barrel[0]-tile[0])+abs(adjacent_barrel[1]-tile[1])==1
+        if instant_quench:
+            g.act(f'object 30124 {adjacent_barrel[0]} {adjacent_barrel[1]} 1')
+            last_quench=s['tick'];quenching_until=now+1.0;need_attack=True;attempted=True
+        elif tile in hot:
             candidates = [(tile[0] + dx, tile[1] + dz) for dx, dz in [(-1, 0), (1, 0), (0, -1), (0, 1), (-1, -1), (-1, 1), (1, -1), (1, 1)]]
             size=2 if a.boss=='warden' else 1
             occupied={(target['x']+dx,target['z']+dz) for dx in range(size) for dz in range(size)}
@@ -144,7 +156,7 @@ while time.monotonic() < end:
         need_attack = True
         print('Requested food at HP', s['hp'], flush=True)
     safe_imp_melee = a.boss == 'imp' and tile not in hot and max(abs(tile[0]-target['x']),abs(tile[1]-target['z'])) == 1
-    if need_attack and ((not hot and s['tick'] > hold_until) or safe_imp_melee) and now-last_eat > 1.2:
+    if need_attack and (not a.require_coolant or coolant_events) and ((not hot and s['tick'] > hold_until) or safe_imp_melee) and now-last_eat > 1.2:
         g.act(f'npc {index} 2')
         need_attack = False
     if now - last_report >= 15:

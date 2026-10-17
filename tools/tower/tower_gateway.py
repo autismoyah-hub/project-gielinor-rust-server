@@ -20,7 +20,17 @@ class Gateway:
         self.sequence = max(self.sequence, self.read().get('sequence', 0)) + 1
         command = self.directory / 'gateway.tmp'
         command.write_text(f'{self.sequence} {action}\n', encoding='utf-8')
-        os.replace(command, self.directory / 'command.txt')
+        # Windows may briefly share-lock the command while the normal adapter
+        # reads it. Retry this same atomic publication, never a second action.
+        publish_end = time.monotonic() + 2
+        while True:
+            try:
+                os.replace(command, self.directory / 'command.txt')
+                break
+            except PermissionError:
+                if time.monotonic() >= publish_end:
+                    raise
+                time.sleep(0.025)
         end = time.monotonic() + timeout
         while time.monotonic() < end:
             s = self.read()

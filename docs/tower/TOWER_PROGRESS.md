@@ -10,9 +10,15 @@ Architecture is reconstructed with real masonry edges and collision, a clipped-c
 
 The Warden is visually transformed to a spiked fire giant with compatible cache sequences while retaining authoritative type 16295 and its original combat/XP metadata. Charge, phase and coolant cues use standard native animation/spot packets. Four visibly searchable rainwater barrels sit at (10421,135), (10421,138), (10428,135) and (10428,138), outside the central escape lanes. The controller excludes blocked diagonal corners and evades before seeking coolant; warnings and damage are unchanged. The Imp gallery uses lighter slate.
 
-Fresh native ordinary services and Imp victory pass on the refined layout; the Imp attempt retains full HP and all 19 food. Native Warden, full headless regression, cardinal-angle gallery and lifecycle rechecks are underway. Earlier diagnostic Warden failures remain failed. No artistic or release-candidate acceptance is claimed.
+Against published server `164b01c9dcf5306d08dd1044f2b03ad9ded4dc64`, native Warden passes all three phases at 13 HP with 19 food retained. Native and headless first-clear claims pass full-pack atomicity, exactly 500 coins/beer, duplicate denial and exact exit/return preservation. Headless Warden additionally records a new coolant acknowledgement. All four affected library suites pass: cache 24, protocol 20, server 52, world 401 (two existing ignores). The 48-view cardinal gallery is captured and reviewed. A fresh exact-source headless playthrough and native replay/lifecycle regression continue; no artistic or release-candidate acceptance is claimed.
 
 Read-only native scene provenance is local client commit `8276b5737f8e3beed17eba28eeb50e6ed051135d`. The nine raw-byte patches reproduce exact tree `740e2a56e84c30eb1ef79aa3e2c438c4066baf1b` from the pinned baseline; apply with `git am --keep-cr`.
+
+## Standing continuation: The Fallen Cinderworks
+
+The latest user mandate explicitly rejects the sparse reviewed reconstruction as artistically incomplete. Adopt an ancient dwarven forge fortress overtaken by supernatural ash: stronger sanctuary composition, structural rhythm in principal corridors, believable workshop/waterworks, staged boss chambers and visible restoration derived from authoritative progress. The 164b gallery is the next before-reference, not an accepted endpoint. Preserve exact source-frame masks, supported shapes, low foreground walls, compatible Warden sequences, real Search coolant and transactional rewards.
+
+Next: finish outstanding exact-164b native/headless regressions, then reconstruct major compositions and implement selected progression-driven environmental changes. Every changed build requires its own native, headless, rebuild, relog, replay and durability evidence. User artistic acceptance remains outstanding. The earlier gallery approval request is superseded by this concrete new direction.
 
 ## Historical functional acceptance record
 
