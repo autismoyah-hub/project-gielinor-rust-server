@@ -3550,3 +3550,53 @@ Wiki Anti-venom+ revision15243456,raw SHA256 `651ddf2a8b0568648ab4aa217e26904307
 Independent target decoding verifies Anti-venom(4)12905,Anti-venom+(4)12913,Torstol269,Torstol unfinished111,all normal member nonstackables with exact names and operations. Binding rejects a substituted three-dose name or grimy/Clean operation. Existing ordinary transaction vectors now include both recipes and reverse order,full bags,fractional XP,goggles and live eligibility refusals.
 
 antivenomplus-tests-attempt-001 PASS65server415world,1existing ignored,397source hashes unchanged; compile29.08s/world26.59s. Guard6886MiB,49.7percentcommit,0page-ins/s,3.0msdisk,17.2percentCPU;Cargo-j2.91synthetic independent state/trace/native-menu/packet corruption checksPASS. Native both-Torstol/save/same-save acceptance pending. Drinking protection,acquisition,partial-dose recipes and original compiled Kotlin differential parity remain separate.
+
+## Native gameplay menaphiteall acceptance (2026-10-17 UTC)
+
+Native Menaphite remedy All:decodedquantity28,three two-tick commits,three outputs,30000fineXP at5x,full28initial21pots/1000coins and same-save no replay. Native modifiers,renewal drinking/acquisition and original compiled Kotlin remain separate.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking/Herblore parity or unrelated recipes. No issue closure.
+
+`openrune-native-menaphiteall-001` PASS. Server archive `EE37B3949C2089467391BE8C0A2E42F4C3463913B68F197CE4221108AFC80E59`, driver `menaphiteall-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID3884.
+- Driver `server_menaphiteall.exe` SHA256 `5C460565FF167F2EF5166A19F2B3ED6D3EC14CB28B2488D2953B44545BC14C84`
+- Driver `NativeMenaphiteAllScenario.rs` SHA256 `409E1D8E9902573075AB3BF71855FA94520BD2F11750B72067611D24FB7F3A2B`
+- `client.log` SHA256 `91187dcdb5f5453819cb86df831a826d35475b620bef8062bdbcc1ea78da7938`
+- `server.log` SHA256 `60e3e0819eb50e3687a6f40ef25f02db40ad1380f712212b4d5aaa4c93ca78b2`
+- `server.json` SHA256 `589099ace51be2a901599b791d69b73cbe7df2d0c54a6fc71f1c4056ab31cfef`
+- `initial-state.json` SHA256 `42bc72761daf94cb18b0f88a28b63c6a696d0c1b589f7b0d37104682c9b42017`
+- `final-state.json` SHA256 `0c16f09b412857bf7566b4ad2d2899eca93a3cf6298f01aca74b9d1a17188074`
+- `pack-assessment.json` SHA256 `acf024aa943f737664c02973abbf057f6a9b76749d61fee8e0287764aa1a9bc7`
+- `menaphiteall-trace-assessment.json` SHA256 `f42fdd70a4382b54c7a8e170b09f0b76611482c91c23ddcc70ab0e9114d719e0`
+- `logout-observation.json` SHA256 `8cc2864e6b26151186d5ed9d91cf787bf4a5f746c7bcb47805aa7974039709e9`
+- `shutdown.json` SHA256 `d6466242d9400b1d2db3f2b02f1d896077f390b8429b2631b6bcc6e70e865035`
+- `result.json` SHA256 `3b8739d800266e1797a8653936ed2852d6a3a54cfcfda6284ee51b2d897ad27c`
+- `pack-run.json` SHA256 `161439b61279d58d0ed724a75b280121476d78deee429837203d64ab392aa854`
+- `native-packet-assessment.json` SHA256 `dc1c91e56791bb5c435cbfe9cda71db46d1cc5d323e7af868a2f0e9c7d274f5d`
+- `native-quantity-assessment.json` SHA256 `de8b5f2bfabf95f380cb064962ac393e19190cef5f35776a602e1de2d7aa4964`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":200},"3077":{"before":0,"after":29480},"3079":{"before":0,"after":119},"65515":{"before":0,"after":112}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[{"actor_slot":1,"actor_generation":614,"unfinished_slot":0,"secondary_slot":1,"unfinished":109,"secondary":27272,"output":27205,"count":1,"queued_at":94,"committed_at":96,"index":0,"base_fine_xp":2000,"rate_hundreds":500,"fine_before":130344311,"fine_after":130354311,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"unfinished_slot":2,"secondary_slot":3,"unfinished":109,"secondary":27272,"output":27205,"count":1,"queued_at":96,"committed_at":98,"index":1,"base_fine_xp":2000,"rate_hundreds":500,"fine_before":130354311,"fine_after":130364311,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"unfinished_slot":4,"secondary_slot":5,"unfinished":109,"secondary":27272,"output":27205,"count":1,"queued_at":98,"committed_at":100,"index":2,"base_fine_xp":2000,"rate_hundreds":500,"fine_before":130364311,"fine_after":130374311,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5}],"scope":"Three consecutive server finished-potion commits from one quantity request; UI evidence and packet/display latency separate"}`
+
+`openrune-menaphiteall-relogin-001` PASS. Server archive `EE37B3949C2089467391BE8C0A2E42F4C3463913B68F197CE4221108AFC80E59`, driver `menaphiteall-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor `openrune-native-menaphiteall-001`, owned PID3800.
+- Driver `server_menaphiteall.exe` SHA256 `5C460565FF167F2EF5166A19F2B3ED6D3EC14CB28B2488D2953B44545BC14C84`
+- Driver `NativeMenaphiteAllScenario.rs` SHA256 `409E1D8E9902573075AB3BF71855FA94520BD2F11750B72067611D24FB7F3A2B`
+- `client.log` SHA256 `a0ef7db198d1d918e40e38df7d230cef2e7e8f3872a5666fe83438d41f0ec399`
+- `server.log` SHA256 `575c22d197780fd6b7eecb48a6ef2437b77d66e8aea904b6d110c04a0f615d17`
+- `server.json` SHA256 `871a50fcf9041ee51a23efa4a07d91b2c1d902c64d661a6ac38424e0679ebd30`
+- `initial-state.json` SHA256 `0c16f09b412857bf7566b4ad2d2899eca93a3cf6298f01aca74b9d1a17188074`
+- `final-state.json` SHA256 `a14c89edd1b149f523310fea7ec8211a11b1dff5078a50ece0389493c509e257`
+- `pack-assessment.json` SHA256 `ef8e8d514ddab95f699d0690c6f1af5c86337526c1115885645e841b9beee715`
+- `menaphiteall-trace-assessment.json` SHA256 `97409267c10109b24817a15cd41057f817aa3077c69022dd062802dfe65e4031`
+- `logout-observation.json` SHA256 `beee2b95c647a618168a7c9f80ab72c79d66e339dd7da7a24db98c60955759e3`
+- `shutdown.json` SHA256 `f98ecf511ddf83d933ca30c9c7b9e6801ab3d15361db6be6ae7c1cd0dfc33ad3`
+- `result.json` SHA256 `c92a778edc6bcfcfcce2b9aed160db8ca3c995e47fad8ab9523a13a3fc07c8ad`
+- `pack-run.json` SHA256 `e2848c467b8336c19bc0847c1f671bc982b55e733853d8d3e8df80e1cfea08b9`
+- `native-packet-assessment.json` SHA256 `7edcd069b197076076a1b8b90036079ede9fd41c7353035a94e14ee2a1fe9d12`
+- `native-quantity-assessment.json` SHA256 `de8b5f2bfabf95f380cb064962ac393e19190cef5f35776a602e1de2d7aa4964`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":200,"after":300},"3077":{"before":29480,"after":50065},"3079":{"before":119,"after":97},"65515":{"before":112,"after":202}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Three consecutive server finished-potion commits from one quantity request; UI evidence and packet/display latency separate"}`
+
+Menaphite immutable archive: executable SHA256 `EE37B3949C2089467391BE8C0A2E42F4C3463913B68F197CE4221108AFC80E59`,397source files,manifest SHA256 `a78afeff2349d7ae1202f4ad850e0c5690bdc439aedf3a7631624d55ac178ad5`. Server build10.14s,guard6689MiB/50.0%commit/0page-ins/s/1.0msdisk/5.6%CPU,j2. Driver build4.09s,guard5672MiB/56.2%commit/0page-ins/s/4.4msdisk/32.7%CPU,j2.93state/trace and10menu/packet synthetic checksPASS. Original failed profile-count assertion and corrected regression remain preserved; no accepted native attempt was repeated.
