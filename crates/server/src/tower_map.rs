@@ -81,8 +81,18 @@ pub fn prepare(
         locations,
         definitions,
     )?;
+    let palette = gielinor_world::tower_scenery::MASONRY;
+    for id in palette {
+        let ty = definitions
+            .locations
+            .get(&id)
+            .ok_or("Missing fortress masonry")?;
+        if ty.ops.iter().any(Option::is_some) {
+            return Err(format!("Interactive fortress masonry {id}"));
+        }
+    }
     let mut shell =
-        gielinor_cache::tower_shell::prepare_palette(copied, origin, [2341, 5154], definitions)?;
+        gielinor_cache::tower_shell::prepare_palette(copied, origin, palette, definitions)?;
     // The revision 239.1 JS5 map contains five conveyor-frame decorations
     // which the paired server game-map intentionally omits. They still arrive
     // in the native constructed scene. Register their exact cache baseline so

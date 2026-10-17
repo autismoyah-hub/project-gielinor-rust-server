@@ -94,3 +94,8 @@ The constructed region remains shared with personal progress/presentation and on
 ### Quiet-state effect projection correction
 
 Normal global encounter graphics need the same personal progress scope as guardian presentation. `tower_scene::phase_effects` filters only Tower warning/eruption IDs inside the corresponding already-earned court. Active owners get the unmodified baseline stream; unrelated graphics and effects outside Tower remain. World damage, scheduling and ownership are untouched. Native inspection also rejected the first broken-wall palette, now replaced by already-supported low masonry 5154 with its real cache range policy.
+
+
+### Noninteractive masonry correction
+
+Startup of checkpoint 98c3cbb rejected fixture 5154 because its actual cache has a Remove operation. It is a failed startup, not a successful live validation. Further definition review also found the earlier high wall 2341 is a secret-door variant with Push. Both are superseded by noninteractive cache-authored dwarven masonry: high/interior 6145 and low straight 6143. The low asset supports shape 0 (and 3), not shape 2, so true L-corners use the supported high model. There is no whitelist or renderer bypass. Startup now validates absent menu operations for the whole wall palette as well as decorative fixtures. Real-cache prepare/geometry succeeds with 2,117 reachable tiles and 1,512 lethal-pattern escapes. New native appearance, current combat and lifecycle validation still follow; artistic acceptance is not granted.

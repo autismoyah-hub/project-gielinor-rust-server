@@ -60,3 +60,11 @@ Native kitchen-first services each produce the correct actual scene change; a tr
 
 
 Latest corrected engine suites: server **56 passed**, world **406 passed/two existing ignored**, zero failures. Cache 24 and protocol 20 passed in the affected-suite run and are unchanged by the quiet-state correction. Live correction/encounter/lifecycle validation remains pending; this is not artistic acceptance.
+
+
+### Noninteractive masonry correction
+
+Startup of checkpoint 98c3cbb rejected fixture 5154 because its actual cache has a Remove operation. It is a failed startup, not a successful live validation. Further definition review also found the earlier high wall 2341 is a secret-door variant with Push. Both are superseded by noninteractive cache-authored dwarven masonry: high/interior 6145 and low straight 6143. The low asset supports shape 0 (and 3), not shape 2, so true L-corners use the supported high model. There is no whitelist or renderer bypass. Startup now validates absent menu operations for the whole wall palette as well as decorative fixtures. Real-cache prepare/geometry succeeds with 2,117 reachable tiles and 1,512 lethal-pattern escapes. New native appearance, current combat and lifecycle validation still follow; artistic acceptance is not granted.
+
+
+Corrected masonry now passes real-cache preparation, all affected cache/server/world suites (24/56/406 passed, two existing world ignores), and actual loopback startup. Genuine native-fallen15c frame7 renders the noninteractive dwarven palette with normally earned services: altar fire lit, master hearth still cold before final victory. Current live recovery/encounter/paired quiet-state checks are running; no artistic or release acceptance is claimed.

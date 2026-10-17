@@ -131,6 +131,17 @@
     "native_preparation_order": "kitchen-first actual service scene changes and independent stable-journal confirmation passed",
     "first_current_warden_diagnostic": "failed 360-second timeout in phase three; ordinary retreat reset; independent retry required",
     "quiet_peer_projection": "corrected source; full server 56/world 406 pass; paired live proof pending",
-    "broken_masonry": "mismatched panel assets replaced by known compatible low stone; native recheck pending"
+    "broken_masonry": "mismatched panel assets replaced by known compatible low stone; native recheck pending",
+    "masonry": {
+      "superseded_failed_startup": "98c3cbb rejected interactive Remove asset 5154; retained as failure",
+      "high": 6145,
+      "low_straight": 6143,
+      "corners": "supported high shape-2 model",
+      "operations": "none, enforced at startup",
+      "real_cache_geometry": "passed; 2117 reachable tiles, 1512 legal hazard escapes",
+      "startup": "passed",
+      "native": "actual native-fallen15c frame7; current services verified",
+      "full_current_encounters_lifecycle": "in progress"
+    }
   }
 }

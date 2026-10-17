@@ -2,6 +2,9 @@
 //! each pair must have identical real cache clipping and no interactive ops.
 use crate::tower_run::Run;
 
+// Cache-authored dwarven interior masonry and low stone rail; no menu ops.
+pub const MASONRY: [u32; 2] = [6145, 6143];
+
 #[derive(Clone, Copy, Debug)]
 pub enum State {
     Forge,
@@ -264,35 +267,35 @@ pub const FIXTURES: &[Fixture] = &[
     Fixture {
         x: 50,
         z: 69,
-        id: 5154,
+        id: 6143,
         shape: 0,
         angle: 0,
     },
     Fixture {
         x: 63,
         z: 75,
-        id: 5154,
+        id: 6143,
         shape: 0,
         angle: 0,
     },
     Fixture {
         x: 68,
         z: 70,
-        id: 5154,
+        id: 6143,
         shape: 0,
         angle: 0,
     },
     Fixture {
         x: 76,
         z: 74,
-        id: 5154,
+        id: 6143,
         shape: 0,
         angle: 0,
     },
     Fixture {
         x: 52,
         z: 67,
-        id: 5154,
+        id: 6143,
         shape: 0,
         angle: 3,
     },

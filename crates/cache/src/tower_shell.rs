@@ -134,7 +134,9 @@ pub fn prepare_palette(
     tower_layout::prepare_collision(&mut map.collision, origin)?;
     let mut stamped = BTreeMap::new();
     for entry in tower_layout::shell() {
-        let wall = walls[entry.parapet() as usize];
+        // Low dwarven masonry has a straight edge model only. Keep a true
+        // supported high corner instead of asking the client for a missing L.
+        let wall = walls[(entry.parapet() && entry.shape == 0) as usize];
         let wall_type = &definitions.locations[&wall];
         let coords = origin
             .translate(entry.x as i32, entry.z as i32, 0)
@@ -197,6 +199,7 @@ mod tests {
             remapped: vec![],
         };
         let shell = prepare_palette(map, origin, [1, 2], &definitions).unwrap();
+        assert!(shell.map.locations.iter().filter(|loc|loc.shape==2).all(|loc|loc.id==1));
         let front = origin.translate(54, 64, 0).unwrap();
         let back = origin.translate(54, 78, 0).unwrap();
         let front_flags = shell.map.collision.get(front.x(), front.z(), 0);
