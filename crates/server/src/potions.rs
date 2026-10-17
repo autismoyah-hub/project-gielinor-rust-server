@@ -29,7 +29,7 @@ pub fn resolve(
     let mut result = BTreeMap::new();
     for dose in potions::catalog() {
         let id = object(dose.symbol)?;
-        if matches!(dose.name,"ancient brew"|"forgotten brew") {
+        if matches!(dose.name,"ancient brew"|"forgotten brew"|"Saradomin brew") {
             validate_brew_type(&dose,&defs.items[&(id as u32)])?;
         }
 
@@ -38,6 +38,10 @@ pub fn resolve(
             .iter()
             .map(|e| {
                 Ok(match *e {
+                    Effect::HitpointsBoost{constant,percent} => {
+                        if stat("hitpoints")?!=3 {return Err("Unexpected hitpoints stat identity".into());}
+                        ResolvedEffect::HitpointsBoost{constant,percent}
+                    },
                     Effect::Boost {
                         skill,
                         constant,
@@ -78,7 +82,7 @@ pub fn resolve(
 }
 
 fn validate_brew_type(dose:&potions::Dose,item:&gielinor_cache::definitions::ItemType)->Result<(),String>{
-    let name=match dose.name {"ancient brew"=>"Ancient brew","forgotten brew"=>"Forgotten brew",_=>return Err("Unexpected brew family".into())};
+    let name=match dose.name {"ancient brew"=>"Ancient brew","forgotten brew"=>"Forgotten brew","Saradomin brew"=>"Saradomin brew",_=>return Err("Unexpected brew family".into())};
     if dose.left>3 || item.name!=format!("{name}({})",dose.left+1) || !item.members || item.stackable || item.cert.template!=0 || item.placeholder.template!=0 || item.transform.template!=0 || item.dummy==1 || item.inventory_ops[0].as_deref()!=Some("Drink") {return Err(format!("Invalid ordinary brew dose {}",dose.symbol));}
     Ok(())
 }
@@ -88,8 +92,8 @@ mod tests {
     use super::*;
     #[test]
     fn brew_potion_bindings_require_exact_ordinary_member_drink_doses() {
-        for dose in potions::catalog().into_iter().filter(|d|matches!(d.name,"ancient brew"|"forgotten brew")) {
-            let mut item=gielinor_cache::definitions::ItemType::decode(&[16,0]).unwrap();let name=if dose.name=="ancient brew"{"Ancient brew"}else{"Forgotten brew"};item.name=format!("{name}({})",dose.left+1);item.inventory_ops[0]=Some("Drink".into());assert!(validate_brew_type(&dose,&item).is_ok());
+        for dose in potions::catalog().into_iter().filter(|d|matches!(d.name,"ancient brew"|"forgotten brew"|"Saradomin brew")) {
+            let mut item=gielinor_cache::definitions::ItemType::decode(&[16,0]).unwrap();let name=if dose.name=="ancient brew"{"Ancient brew"}else if dose.name=="forgotten brew"{"Forgotten brew"}else{"Saradomin brew"};item.name=format!("{name}({})",dose.left+1);item.inventory_ops[0]=Some("Drink".into());assert!(validate_brew_type(&dose,&item).is_ok());
             for mode in 0..7 {let mut bad=item.clone();match mode {0=>bad.stackable=true,1=>bad.members=false,2=>bad.cert.template=799,3=>bad.placeholder.template=14401,4=>bad.transform.template=1,5=>bad.name="Wrong brew(4)".into(),_=>bad.inventory_ops[0]=Some("Eat".into())};assert!(validate_brew_type(&dose,&bad).is_err());}
         }
     }

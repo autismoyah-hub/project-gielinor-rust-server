@@ -10,6 +10,7 @@ pub const EMPTY_MESSAGE: &str = "You empty the contents of the vial on the floor
 pub const DRINK_DELAY: i32 = 3;
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum Effect {
+    HitpointsBoost { constant: i32, percent: i32 },
     OverRestore { skill: &'static str, constant: i32, percent: i32, cap_percent: i32 },
     DrainCurrent { skill: &'static str, constant: i32, percent: i32, minimum: u8 },
 
@@ -242,6 +243,13 @@ pub fn catalog() -> Vec<Dose> {
                 .collect(),
         );
     }
+    // Wiki-pinned Saradomin behavior; offensive drains deliberately floor at0.
+    let mut saradomin=vec![Effect::HitpointsBoost{constant:2,percent:15},
+        Effect::Boost{skill:"defence",constant:2,percent:20}];
+    for skill in ["attack","strength","ranged","magic"] {
+        saradomin.push(Effect::DrainCurrent{skill,constant:2,percent:10,minimum:0});
+    }
+    chain("Saradomin brew",["4dosepotionofsaradomin","3dosepotionofsaradomin","2dosepotionofsaradomin","1dosepotionofsaradomin"],saradomin);
     // Independently pinned Ancient/Forgotten brew effects, all four doses.
     for (name,symbols,constant,percent) in [
         ("ancient brew",["4doseancientbrew","3doseancientbrew","2doseancientbrew","1doseancientbrew"],2,5),
@@ -337,6 +345,7 @@ pub fn catalog() -> Vec<Dose> {
     doses
 }
 pub fn sip(name: &str) -> String {
+    if name=="Saradomin brew" {return "You drink some of the foul liquid.".into();}
     format!("You drink some of your {name}.")
 }
 pub fn remaining(left: u8) -> String {
@@ -361,6 +370,7 @@ pub fn restored_energy(current: i32, percent: i32, max: i32) -> i32 {
 }
 #[derive(Clone, Debug)]
 pub enum ResolvedEffect {
+    HitpointsBoost { constant: i32, percent: i32 },
     OverRestore { skill: u8, constant: i32, percent: i32, cap_percent: i32 },
     DrainCurrent { skill: u8, constant: i32, percent: i32, minimum: u8 },
 
@@ -410,6 +420,8 @@ fn apply_drink_effects(
 ) -> Result<(), stat_ops::Error> {
     for effect in &potion.effects {
         match *effect {
+            ResolvedEffect::HitpointsBoost{constant,percent} => emit(Event::Stat(
+                stats.apply(3,Operation::Boost,constant,percent,true)?)),
             ResolvedEffect::Boost {
                 skill,
                 constant,
@@ -549,6 +561,34 @@ mod tests {
             remaining: "remaining".into(),
             effects,
         }
+    }
+    #[test]
+    fn saradomin_potion_overheals_caps_and_drains_current_levels_without_xp() {
+        let doses:Vec<_>=catalog().into_iter().filter(|d|d.name=="Saradomin brew").collect();assert_eq!(doses.len(),4);
+        for d in doses {assert_eq!(d.effects.len(),6);assert_eq!(sip(d.name),"You drink some of the foul liquid.");
+            let mut inv=Inventory::new(1,StackType::Normal,false);inv.restore_slot(0,Some(Item{id:1,count:1,vars:0})).unwrap();
+            let mut stats=Stats::default();for skill in [0,1,2,3,4,6]{stats.set_base(skill,99);stats.set_current(skill,99);}
+            stats.set_current(0,118);stats.set_current(2,1);stats.set_current(4,0);stats.set_current(6,90);
+            let before=stats.clone();let mut energy=5000;let mut events=Vec::new();
+            let mut p=potion(vec![ResolvedEffect::HitpointsBoost{constant:2,percent:15},ResolvedEffect::Boost{skill:1,constant:2,percent:20}]);
+            for skill in [0,2,4,6]{p.effects.push(ResolvedEffect::DrainCurrent{skill,constant:2,percent:10,minimum:0});}
+            p.next=if d.left==0{3}else{2};
+            consume_slot(&p,0,false,&mut inv,&mut stats,&mut energy,&Catalog::default(),829,|e|events.push(e)).unwrap();
+            assert_eq!((stats.current(3),stats.current(1),stats.current(0),stats.current(2),stats.current(4),stats.current(6)),(115,120,105,0,0,79));
+            assert_eq!(inv.get(0).unwrap().id,p.next);assert_eq!(energy,5000);
+            assert!(events.iter().any(|e|matches!(e,Event::Stat(u) if u.skill==3 && u.clear_hero_points)));
+            for skill in 0..25{assert_eq!(stats.fine_xp(skill),before.fine_xp(skill));}
+        }
+        for (current,expected) in [(10,26),(98,114),(99,115),(110,115),(115,115),(120,120)] {
+            let mut inv=Inventory::new(1,StackType::Normal,false);inv.restore_slot(0,Some(Item{id:1,count:1,vars:0})).unwrap();
+            let mut stats=Stats::default();stats.set_base(3,99);stats.set_current(3,current);let mut energy=0;
+            consume_slot(&potion(vec![ResolvedEffect::HitpointsBoost{constant:2,percent:15}]),0,false,&mut inv,&mut stats,&mut energy,&Catalog::default(),829,|_|{}).unwrap();assert_eq!(stats.current(3),expected);
+        }
+    }
+    #[test]
+    fn invalid_potion_hitpoint_boost_preserves_selected_dose_and_events() {
+        let mut inv=Inventory::new(1,StackType::Normal,false);inv.restore_slot(0,Some(Item{id:1,count:1,vars:0})).unwrap();let mut stats=Stats::default();stats.set_base(3,99);stats.set_current(3,50);let mut energy=0;let before=(inv.clone(),stats.clone());let mut events=Vec::new();
+        assert!(consume_slot(&potion(vec![ResolvedEffect::HitpointsBoost{constant:2,percent:101}]),0,false,&mut inv,&mut stats,&mut energy,&Catalog::default(),829,|e|events.push(e)).is_err());assert_eq!((inv,stats),before);assert!(events.is_empty());
     }
     fn brew_effects(constant:i32,percent:i32)->Vec<ResolvedEffect> {
         vec![ResolvedEffect::Boost{skill:6,constant,percent},ResolvedEffect::OverRestore{skill:5,constant:2,percent:10,cap_percent:5},
