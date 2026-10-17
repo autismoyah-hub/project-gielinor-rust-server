@@ -3378,3 +3378,53 @@ Wiki Ancient brew revision15342079, raw SHA256 `19f243f4203bb7869f71ecbddcf817fe
 Ordinary finished-potion transactions accept positive-count secondaries only when the immutable catalog declares that secondary stackable; unfinished vials and nonstackable secondaries still require exactly one. Strict selected-slot atomic debit consumes one dust, retains the rest and preserves unrelated slots/XP. Automatic repeats pin stackable secondaries to the original selected slot and refuse if it moves/disappears; individual secondaries retain existing first-valid selection. No new inventory or gameplay engine. Nihil shard grinding,acquisition and drinking remain separate.
 
 ancientbrew-tests-attempt-001 PASS63server413world,1existing ignored,397source hashes unchanged; compile1m00s/world29.23s. Resource guard5385MiB,51.9percentcommit,666page-ins/s,2.1msdisk,28.6percentCPU;Cargo-j2. New vectors cover both input orders,1/2/100dust stacks,stacked-vial/nonstackable-count refusals,selected-stack repeats and stale cancellation despite another matching secondary.96synthetic independent state/trace corruption checksPASS; genuine native All,packet decode,save and same-save acceptance pending. Existing Forgotten brew native session uses its earlier immutable archive and is not affected by later source edits.
+
+## Native gameplay forgottenbrew acceptance (2026-10-17 UTC)
+
+Four native Forgotten brew doses,20/40/60/80ancient essence debited from one selected stack,explicit36/72/108/145baseXP and18050fineXP at5x,three-tick commits,full28slots22pots/1000coins and same-save no replay. Native modifiers,drinking/acquisition and original compiled Kotlin remain separate.
+
+All listed runs require client exit0, fresh durable logout, clean owned exit0 and passing independent state/trace assessment. Same-save predecessor identity is preserved in pack-run.json; relogin runs assert no replay. This does not establish rendered appearance, multiplayer, full Cooking/Herblore parity or unrelated recipes. No issue closure.
+
+`openrune-native-forgottenbrew-001` PASS. Server archive `1EFA40070B15D4A799A602B8913C2DCA43321D94BFD3468EAC849140D5898E26`, driver `forgottenbrew-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor ``, owned PID13216.
+- Driver `server_forgottenbrew.exe` SHA256 `77E367486B2A0D2FEB4337A279202C7F9841ED51CC27CF12B6EA8E32E960980E`
+- Driver `NativeForgottenBrewScenario.rs` SHA256 `6ADEFE1C4F65DC36D467C380F60E2FAC683D600CBF7E7CFB298CAC26C9F75CE3`
+- `client.log` SHA256 `93dd945f81746a45aecde1d0a7ee15ad25239416030cf2f92d5615295657c3f3`
+- `server.log` SHA256 `3b67a69876b40ac81965ab8c2cef78bde501bdb75f174009e674268b5a5cefc3`
+- `server.json` SHA256 `6b39da46eefb77e141ee2f2c0db18da068678f0c8377f2560e2e5a3bdddaa7bf`
+- `initial-state.json` SHA256 `6a076072f8274d7af42729bc7019d69b3ff92015ca5c772e077c101e36710f09`
+- `final-state.json` SHA256 `e5a4784b1460431c6f5a992adff9b8269d22ef2cefb9c5188c5767ff1f4fc25c`
+- `pack-assessment.json` SHA256 `4f6974a8d9a03c45aa390efbb6772031bfc0fbfa6fc1cacb9b3af33a4f867809`
+- `forgottenbrew-trace-assessment.json` SHA256 `acae8abfe120a7608ff5c814811706fb2a23cf88f7fe0f255f428d16e10c09a4`
+- `logout-observation.json` SHA256 `85e2608747904ce628068f879da84575e4db3cfa3bbacf25e2660a034d334705`
+- `shutdown.json` SHA256 `a41b7c236e7b658dc92db7e621ef1b9c78659d9ee607ecf58b9a9f1a547b8d21`
+- `result.json` SHA256 `2f2e26c0a007c5d6ab77a872d6a47fbd5da2c55b05179cb4935030afd00828af`
+- `pack-run.json` SHA256 `bed78804e4ac1510ba77285a6ebf30be2c9446c3ce207127d12e6098e7902c56`
+- `native-profile-assessment.json` SHA256 `3f14a170fae57aa7fb1d7cec162cb49aa87debcbb735e6b036598733a23eb947`
+- `native-packet-assessment.json` SHA256 `8617802b87dcac94582fd80936ae350b7bce19dd24c82754f3698d3490a6b1f9`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":0,"after":400},"3077":{"before":0,"after":53494},"3079":{"before":0,"after":224},"65515":{"before":0,"after":215}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[{"actor_slot":1,"actor_generation":614,"base_slot":1,"secondary_slot":0,"base":26346,"secondary":27616,"output":27638,"count":1,"queued_at":145,"committed_at":148,"index":0,"base_fine_xp":360,"rate_hundreds":500,"fine_before":130344311,"fine_after":130346111,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"base_slot":2,"secondary_slot":0,"base":26344,"secondary":27616,"output":27635,"count":1,"queued_at":167,"committed_at":170,"index":0,"base_fine_xp":720,"rate_hundreds":500,"fine_before":130346111,"fine_after":130349711,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"base_slot":3,"secondary_slot":0,"base":26342,"secondary":27616,"output":27632,"count":1,"queued_at":182,"committed_at":185,"index":0,"base_fine_xp":1080,"rate_hundreds":500,"fine_before":130349711,"fine_after":130355111,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5},{"actor_slot":1,"actor_generation":614,"base_slot":4,"secondary_slot":0,"base":26340,"secondary":27616,"output":27629,"count":1,"queued_at":200,"committed_at":203,"index":0,"base_fine_xp":1450,"rate_hundreds":500,"fine_before":130355111,"fine_after":130362361,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":5}],"scope":"Separate selected-profile three-tick commits; UI evidence and packet/display latency separate"}`
+
+`openrune-forgottenbrew-relogin-001` PASS. Server archive `1EFA40070B15D4A799A602B8913C2DCA43321D94BFD3468EAC849140D5898E26`, driver `forgottenbrew-001`, cache `20dc2038dbd8d50667617ea867536cfa46e8205d89409990f17c843ccf9a3b0c`, predecessor `openrune-native-forgottenbrew-001`, owned PID8608.
+- Driver `server_forgottenbrew.exe` SHA256 `77E367486B2A0D2FEB4337A279202C7F9841ED51CC27CF12B6EA8E32E960980E`
+- Driver `NativeForgottenBrewScenario.rs` SHA256 `6ADEFE1C4F65DC36D467C380F60E2FAC683D600CBF7E7CFB298CAC26C9F75CE3`
+- `client.log` SHA256 `19e1e806c81fe1fe9711b63bce9bdbe932490b0d534476b7544de9467aae8e3e`
+- `server.log` SHA256 `efe41689767873c997b86bb58e5bfcfe776779ee9c0fdabf8e18190b18fa4660`
+- `server.json` SHA256 `76fb85fc777eb314c60b86273d06e3e2873e8adf4ce77b9d48440e501d118cdd`
+- `initial-state.json` SHA256 `e5a4784b1460431c6f5a992adff9b8269d22ef2cefb9c5188c5767ff1f4fc25c`
+- `final-state.json` SHA256 `7afc2d19a39c154321f77aa3272adb9289ae017c09eff22f0c5ae6f2a346635d`
+- `pack-assessment.json` SHA256 `76151e2bdc50721c5679d50cbe94a186b49711d0a16d222399466b998137a9b5`
+- `forgottenbrew-trace-assessment.json` SHA256 `96416297f972dc81767e2b5ba55466f521a8c7fda7b66210fc3523b75dce8ab2`
+- `logout-observation.json` SHA256 `96169900d913ea95065159a980e5fce289ac38985a3bca6f78ac000ad2a8ad81`
+- `shutdown.json` SHA256 `45c9abf1cd189146c1d4db5e5f58574b94a01c7fb7b795675fa2eef84146b13a`
+- `result.json` SHA256 `ee78389813055e84dc1b5a42f705eb71f16e5245919e14aa0c9bc9f058a943a8`
+- `pack-run.json` SHA256 `8a6234189f35109c93a274e44a64f552e67db662d9d1083fa59b70b39c801f4e`
+- `native-profile-assessment.json` SHA256 `3f14a170fae57aa7fb1d7cec162cb49aa87debcbb735e6b036598733a23eb947`
+- `native-packet-assessment.json` SHA256 `f81914cbd4ba86695fa72782dac6d1e28e2d0108df1247211eee23e7730175d9`
+- `membership-before.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- `membership-after.json` SHA256 `9bc11eefae7a59eaac2cc3dbcba2755ac7aa25348aee6e1a21759a861a3dfb19`
+- State assessment: `{"status":"PASS","errors":[],"scope":"item/XP/other exported gameplay conservation; static varps compared to login control or predecessor; missing and explicit zero varps equivalent","not_validated":["session clock correctness","special-energy timing","native rendered appearance","multiplayer"],"session_varp_changes":{"300":{"before":400,"after":600},"3077":{"before":53494,"after":35232},"3079":{"before":224,"after":136},"65515":{"before":215,"after":344}}}`
+- Transition assessment: `{"status":"PASS","errors":[],"transitions":[],"scope":"Separate selected-profile three-tick commits; UI evidence and packet/display latency separate"}`
+
+Forgotten brew archive: executable SHA256 1EFA40070B15D4A799A602B8913C2DCA43321D94BFD3468EAC849140D5898E26,397source hashes,manifest SHA256 A069EE24656E39A366D9617E97B8BDA3E5542B982FFACFD53068134A459EC9EC. Server build26.81s,guard6135MiB/48.0%commit/16page-ins/5.1ms/15.3%CPU,j2. Driver wrapper attempt001 FAIL before publication from relative logging path;failure JSON preserved,no owned compiler remained. Attempt002 absolute logging PASS12.02s,guard5137MiB/50.1%commit/234page-ins/1.7ms/22.6%CPU,j2. Independent assessor strengthening002 PASS121checks; original101checks retained. Full migration and drinking effects remain incomplete.
