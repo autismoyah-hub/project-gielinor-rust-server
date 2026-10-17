@@ -1,0 +1,8 @@
+{
+  "tested_integration_sha": "ae3d234c71764dd2364f8452fc1974a54a6783f0",
+  "suite": "food-regeneration",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "BLOCKED",
+  "reason": "Measured-resource deferral; no substitute target: Measured resource guard blocked; no other process altered"
+}

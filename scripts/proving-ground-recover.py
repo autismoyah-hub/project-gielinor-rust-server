@@ -76,6 +76,12 @@ for r in rows:
         if e.get('campaign_kind')=='historical' and e.get('implementation_id')==r['implementation_id'] and e['tested_sha']==r['implementation_commit_sha']:
             levels[e['level']]={k:e[k] for k in ['status','reason','evidence']}
     state['contract_revisions'].append({'implementation_id':r['implementation_id'],'revision':r['revision'],'implementation_sha':r['implementation_commit_sha'],'is_latest_revision':r['revision']==latest[r['implementation_id']]['revision'],'levels':levels})
+food=DOC/'independent/deep-food/independent-assessment.json'
+if food.exists() and json.loads(food.read_text(encoding='utf-8')).get('status')=='PARTIAL':
+    item=next(x for x in state['items'] if x['implementation_id']=='OR-MIG-0024')
+    item['verification_blockers']=[{'level':'V2','case_status':'BLOCKED','scope':'Remaining four bites and full six-action native client verdict',
+      'reason':'Pinned food-001 driver times out after first cake action at a strict intermediate HP equality. Server commit and durable native state are verified; passive-regeneration collision is supported by an exact-SHA reproducer, but original production-session packet observation is insufficient for conclusive root cause.',
+      'target_sha':item['implementation_availability']['sha'],'finding':'PG-INFRA-004','no_substituted_build':True}]
 save(DOC/'WORKLIST.json',state)
 sync_point=sys.argv[sys.argv.index('--sync-point')+1] if '--sync-point' in sys.argv else 'manual'
 with (DOC/'SYNC_OBSERVATIONS.jsonl').open('a',encoding='utf-8',newline='\n') as f:
@@ -104,6 +110,14 @@ for ident in ['OR-MIG-0034','OR-MIG-0035']:
     if ident in latest:
         resume['remaining_deep_scenarios'].append({'implementation_id':ident,'target_sha':latest[ident]['implementation_commit_sha'],
           'cases':['independently inspect protected source and pinned documentation','verify complete configured profile bindings and member gate','genuine native actions and durable recovery','retain partial authoritative evidence without inheriting newer-source acceptance']})
+if food.exists():
+    resume['native_food_observation_blocker']={'implementation_id':'OR-MIG-0024','target_sha':latest['OR-MIG-0024']['implementation_commit_sha'],
+      'finding':'PG-INFRA-004','completed':'Meat client confirmation; cake server commit; real saved inventory/XP restart and independently decoded native relogin capture.',
+      'next':'Use a new owned observer recording every received HP and inventory update plus script-busy state; correlate exact tick/trace and passive regeneration. Run remaining cake and pizza stages on a fresh disposable run. Preserve raw failed driver verdict; no newer source substitution.',
+      'do_not_rerun':'Existing deep-food/produce and relogin are immutable evidence, and their database is post-consumption state.'}
+if 'OR-MIG-0040' in latest:
+    resume['remaining_deep_scenarios'].append({'implementation_id':'OR-MIG-0040','target_sha':latest['OR-MIG-0040']['implementation_commit_sha'],
+      'priority':'HIGH shared assembly change','cases':['captured selected/other material slot refusal','third container-return failure atomicity','modal-open cancellation and no reward after closing','existing pair recipe regression','native full-bag four-input batter and interrupted save/restart']})
 save(DOC/'RESUME_QUEUE.json',resume)
 save(DOC/'independent'/('intake-'+head+'.json'),{k:value for k,value in state.items() if k!='items'})
 print(json.dumps({k:value for k,value in state.items() if k not in ['items','resume_queue','contract_revisions']},indent=2))

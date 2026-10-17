@@ -1,0 +1,168 @@
+{
+  "implementation_id": "OR-MIG-0024",
+  "revision": 3,
+  "tested_sha": "ae3d234c71764dd2364f8452fc1974a54a6783f0",
+  "campaign_kind": "historical",
+  "status": "PARTIAL",
+  "scope": "Native meat consumption confirmed by client, and cake stage selected-slot commit confirmed by server trace and restarted native inventory capture. Six-action driver timed out at its strict intermediate-HP equality check; remaining four bites are untested. Acknowledged save, actual restart/native authentication with independently decoded durable inventory and displayed stats PASS. Full V2/V3 acceptance remains open.",
+  "raw_production_driver_result": "FAIL",
+  "durable_native_relogin_subcheck": "PASS",
+  "native_actions": [
+    {
+      "kind": "native.food_observed",
+      "client_tick": 84,
+      "slot": 7,
+      "food": 2142,
+      "remainder": -1,
+      "hp_before": 2,
+      "hp_after": 5,
+      "display_xp": 1154
+    }
+  ],
+  "native_relogin_capture_sha256": "259a95ae41b502fc2ad6951c04466e4743f4a416309bd8274fffa74431e52ab3",
+  "capture_packet_count": 2061,
+  "native_relogin_inventory": [
+    [
+      93,
+      1,
+      1891,
+      1,
+      0
+    ],
+    [
+      93,
+      3,
+      1893,
+      1,
+      0
+    ],
+    [
+      93,
+      4,
+      2289,
+      1,
+      0
+    ],
+    [
+      93,
+      5,
+      2289,
+      1,
+      0
+    ],
+    [
+      93,
+      27,
+      995,
+      1000,
+      0
+    ]
+  ],
+  "native_relogin_stats": {
+    "0": {
+      "current": 1,
+      "display_xp": 0
+    },
+    "1": {
+      "current": 1,
+      "display_xp": 0
+    },
+    "2": {
+      "current": 1,
+      "display_xp": 0
+    },
+    "3": {
+      "current": 10,
+      "display_xp": 1154
+    },
+    "4": {
+      "current": 1,
+      "display_xp": 0
+    },
+    "5": {
+      "current": 1,
+      "display_xp": 0
+    },
+    "6": {
+      "current": 1,
+      "display_xp": 0
+    },
+    "7": {
+      "current": 1,
+      "display_xp": 0
+    },
+    "8": {
+      "current": 1,
+      "display_xp": 0
+    },
+    "9": {
+      "current": 1,
+      "display_xp": 0
+    },
+    "10": {
+      "current": 1,
+      "display_xp": 0
+    },
+    "11": {
+      "current": 1,
+      "display_xp": 0
+    },
+    "12": {
+      "current": 1,
+      "display_xp": 0
+    },
+    "13": {
+      "current": 1,
+      "display_xp": 0
+    },
+    "14": {
+      "current": 1,
+      "display_xp": 0
+    },
+    "15": {
+      "current": 99,
+      "display_xp": 13034431
+    },
+    "16": {
+      "current": 1,
+      "display_xp": 0
+    },
+    "17": {
+      "current": 1,
+      "display_xp": 0
+    },
+    "18": {
+      "current": 1,
+      "display_xp": 0
+    },
+    "19": {
+      "current": 1,
+      "display_xp": 0
+    },
+    "20": {
+      "current": 2,
+      "display_xp": 83
+    },
+    "21": {
+      "current": 1,
+      "display_xp": 0
+    },
+    "22": {
+      "current": 1,
+      "display_xp": 0
+    },
+    "23": {
+      "current": 1,
+      "display_xp": 0
+    },
+    "24": {
+      "current": 1,
+      "display_xp": 0
+    }
+  },
+  "limitations": [
+    "No rendered-window or exact attack/eat cadence assertion; actions deliberately spaced.",
+    "No native malformed/stale packet, overheal, full-bag or crash/interruption campaign in this run.",
+    "Pinned native build/source correspondence relies on preserved manifest/attestation; no independent client rebuild claimed."
+  ]
+}

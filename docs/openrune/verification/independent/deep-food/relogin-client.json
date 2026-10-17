@@ -1,0 +1,6 @@
+{
+  "binary_sha256": "cdcc96d5a0a67e15b3790fbeda4d94ef236db0cfc44c9132aa261f76122d9148",
+  "baseline_manifest_sha256": "90d2c9a52644b4e9c96a84f8f5e6cf181197bf895d71471236c10d5a420e65aa",
+  "build_attestation_sha256": "978022191dc0b2769b8958d6aed8c1060eb373a64de62cd483812f660d1fdb1b",
+  "scope": "Hash-verified pinned build and source manifest; actual native authentication/packet capture, no fabricated reconnect server."
+}

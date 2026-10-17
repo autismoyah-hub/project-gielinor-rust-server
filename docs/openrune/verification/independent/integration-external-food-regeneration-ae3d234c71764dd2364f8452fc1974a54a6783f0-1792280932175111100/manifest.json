@@ -1,0 +1,55 @@
+{
+  "tested_integration_sha": "ae3d234c71764dd2364f8452fc1974a54a6783f0",
+  "suite": "food-regeneration",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 7265062912,
+    "active_compilers": [
+      "\"cargo.exe\",\"5344\",\"RDP-Tcp#0\",\"2\",\"23,236 K\"",
+      "\"rustc.exe\",\"16168\",\"RDP-Tcp#0\",\"2\",\"938,188 K\""
+    ],
+    "cpu_percent": 15.23,
+    "disk_free": 47625433088
+  },
+  "source_tree": "fec4f3cb43458e2a1e1012d8d3e0e0dcfa8c8743",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\ae3d234c71764dd2364f8452fc1974a54a6783f0\\external-harness-3357257500\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-food-regeneration-ae3d234c71764dd2364f8452fc1974a54a6783f0-1792280932175111100\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\ae3d234c71764dd2364f8452fc1974a54a6783f0\\external-harness-3357257500\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 1,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-food-regeneration-ae3d234c71764dd2364f8452fc1974a54a6783f0-1792280932175111100\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative food-regeneration scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-food-regeneration-ae3d234c71764dd2364f8452fc1974a54a6783f0-1792280932175111100\\harness\\authoritative.rs": "7961297ef9b97dd67c07c09152d238799b7bed3b0e9bc61f3191591f7dd755ee"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\authoritative-8140b369613ab475.exe": "ea5551ccb008b7970bc303367a6b20309f93265c19961ffe957b938807e8b194",
+    "target\\debug\\deps\\authoritative-f5a42925a472fea9.exe": "3c401e77e52deb461cb2fde71803834adcc04f4a69d60b6ffc3ab2c4fa97156b",
+    "target\\debug\\deps\\gielinor_server-7abd10c65476b4d7.exe": "9dfcf8b90986c587bda2b39ed207bc6b34b57a13f78e03003843627dabd7d827"
+  }
+}

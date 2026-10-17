@@ -37,6 +37,13 @@ for manifest in OUT.glob('OR-MIG-0024-*-independent*/manifest.json'):
 for manifest in OUT.glob('integration-*/manifest.json'):
     value=json.loads(manifest.read_text(encoding='utf-8'))
     if value.get('status')!='PASS':continue
+    if value.get('suite')=='assembly-batch':
+        for level in ['V0','V1']:
+            add('OR-MIG-0040',value['tested_integration_sha'],level,'IN_PROGRESS','Independent public authoritative BatchRecipe/BatchJob transaction matrix PASS across1512 full-bag/selected-slot/direction/late-failure combinations, including stale material with untouched matching duplicate, all three refused returns, live level, positive-XP invalid rate, repeated captured slot, membership and replay. Actual World held-route/pair/modal regressions passed separately; configured runtime, native, persistence and full reference acceptance remain open.',[str(manifest.relative_to(ROOT)).replace('\\','/')],scope='assembly-batch-independent')
+        continue
+    if value.get('suite')=='food-regeneration':
+        add('OR-MIG-0024',value['tested_integration_sha'],'V1','IN_PROGRESS','Exact-SHA independent timer/food diagnosis PASS: actual queued cake commits HP5->9, followed by passive regeneration to10 without more food or XP. This supports, but does not fully prove, the native strict-equality oracle diagnosis. Earlier rejected same-clock hypothesis and failed test are retained.',[str(manifest.relative_to(ROOT)).replace('\\','/')],scope='food-regen-diagnosis')
+        continue
     if value.get('suite')=='energy-food':
         add('SHARED-FOOD-ENERGY',value['tested_integration_sha'],'V1','IN_PROGRESS','Independent food-energy authoritative queue matrix PASS: successful HP/stat/energy/remainder publication once; failed transaction energy exactly matches no-action controls. Integration scope only; associated new contract/native/persistence/reference coverage remains open.',
             [str(manifest.relative_to(ROOT)).replace('\\','/')],kind='integration',scope='independent-food-energy',affected=['OR-MIG-0024'])
@@ -56,6 +63,13 @@ for path in OUT.glob('native-*/independent-assessment.json'):
     add('OR-MIG-0006',result['tested_sha'],'V0','PASS','Current pinned integration build compiled, configured real cache-backed runtime and dispatched genuine native worn Options.',evidence,kind='integration',scope='native-worn-integration',affected=['OR-MIG-0006'])
     for level in ['V2','V3']:
         add('OR-MIG-0006',result['tested_sha'],level,'IN_PROGRESS',result['scope'],evidence,kind='integration',scope='native-worn-integration',affected=['OR-MIG-0006'])
+food=OUT/'deep-food/independent-assessment.json'
+if food.exists():
+    result=json.loads(food.read_text(encoding='utf-8'))
+    evidence=[str(food.relative_to(ROOT)).replace('\\','/')]
+    add('OR-MIG-0024',result['tested_sha'],'V0','PASS','Exact revision3 server compiled, real cache-backed startup and genuine native ordinary meat/cake dispatch reached production handlers.',evidence,scope='food-native-runtime')
+    for level in ['V2','V3']:
+        add('OR-MIG-0024',result['tested_sha'],level,'IN_PROGRESS',result['scope'],evidence,scope='food-native-partial')
 for path in OUT.glob('deep-chemistry-worn/*/independent-assessment.json'):
     result=json.loads(path.read_text(encoding='utf-8'))
     if result.get('status')!='PASS' or result.get('campaign_kind')!='historical':continue
@@ -79,4 +93,9 @@ for path in OUT.glob('OR-MIG-0023-*/manifest.json'):
         add('OR-MIG-0023',result['implementation_commit_sha'],'V1','IN_PROGRESS','Four exact-SHA world tests PASS including authoritative repeat opening, movement cancellation and stale selected-slot refusal. Attested binary was replayed without rebuilding during CPU contention. Native/lifecycle/reference acceptance remains open.',[str(path.relative_to(ROOT)).replace('\\','/')],scope='pack-authoritative-queue')
     for level in ['V0','V1']:
         add('OR-MIG-0023',result['implementation_commit_sha'],level,'IN_PROGRESS','Exact-SHA world atomicity/overflow helpers and server pack-definition bindings PASS (five test functions); full repeat-queue/native/lifecycle/reference acceptance remains open.',[str(path.relative_to(ROOT)).replace('\\','/')])
+for path in OUT.glob('OR-MIG-0040-*/manifest.json'):
+    result=json.loads(path.read_text(encoding='utf-8'))
+    if result.get('outcome')!='PARTIAL':continue
+    for level in ['V0','V1']:
+        add('OR-MIG-0040',result['implementation_commit_sha'],level,'IN_PROGRESS','Independently executed13 existing exact-SHA authoritative/helper tests PASS, including actual held batch routing, two processing clocks, pair/timed regression, live level/member revocation, cancellation and no repeated rewards. Whole runtime/native/lifecycle/reference acceptance remains open.',[str(path.relative_to(ROOT)).replace('\\','/')],scope='shared-assembly-regression')
 print('Per-level evidence events:',len(rows))

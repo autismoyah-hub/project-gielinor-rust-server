@@ -1,0 +1,51 @@
+{
+  "tested_integration_sha": "d63c0258dd6960bffc3ef43736f4140efb3b757a",
+  "suite": "assembly-batch",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "FAIL",
+  "resource": {
+    "available_ram": 8260759552,
+    "active_compilers": [],
+    "cpu_percent": 15.62,
+    "disk_free": 47238905856
+  },
+  "source_tree": "21c0ffe00b21472666e05bd1da600826d7daca0e",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\d63c0258dd6960bffc3ef43736f4140efb3b757a\\external-harness-9654931700\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-assembly-batch-d63c0258dd6960bffc3ef43736f4140efb3b757a\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\d63c0258dd6960bffc3ef43736f4140efb3b757a\\external-harness-9654931700\\Cargo.toml"
+      ],
+      "exit_code": 101,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-assembly-batch-d63c0258dd6960bffc3ef43736f4140efb3b757a\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative assembly-batch scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-assembly-batch-d63c0258dd6960bffc3ef43736f4140efb3b757a\\harness\\authoritative.rs": "40895628e3b986e8bfc17a46b5cd13c64aca0cefa211d32384d77ca645e882f7"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\authoritative-b5a3f555cf94e6b2.exe": "f7ed1b3a2e06ab89808ff7adfcdf9ffaff9e50bab7204cb42651b0f82e2e6ef2",
+    "target\\debug\\deps\\gielinor_world-379bc28e5667f47e.exe": "411a6ec9e124692932248168726f6c2f9c87abd8845f33399d81d8a7bc350ff7"
+  }
+}

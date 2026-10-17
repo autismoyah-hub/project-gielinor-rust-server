@@ -1,0 +1,16 @@
+{
+  "cache_files": 95,
+  "cache_manifest_sha256": "8ba60ce0ba0fdc1add7ef2511bc9b4683c3b2fe42a80997583c51d4fa5b82717",
+  "driver_manifest": {
+    "driver": "food-001",
+    "scenario": "food",
+    "baseline": "client-239.1-baseline-001-build-001",
+    "reason": "Owned integration scenario; pinned client library unchanged",
+    "files": {
+      "server_food.exe": "9B7E033BBE2FE8082254D56B97215E3011A42F2F8CEF3A3C317F9FE6894A4335",
+      "NativeFoodScenario.rs": "0BFFDF9B6BF697286D39537CA58209807478ADF41F6D575C2389B3B85B5E8D4F"
+    }
+  },
+  "driver_sha256": "9b7e033bbe2fe8082254d56b97215e3011a42f2f8cef3a3c317f9fe6894a4335",
+  "scope": "Owned copies; original resources read-only. Private cache, keys, credentials and account template are not published."
+}

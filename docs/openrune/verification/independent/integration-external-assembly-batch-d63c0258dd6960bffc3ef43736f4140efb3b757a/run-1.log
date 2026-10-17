@@ -1,0 +1,25 @@
+   Compiling gielinor-world v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\d63c0258dd6960bffc3ef43736f4140efb3b757a\crates\world)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\d63c0258dd6960bffc3ef43736f4140efb3b757a\external-harness-9654931700)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 19.12s
+     Running tests\authoritative.rs (C:\Projects\OSRSRSPS\agent7-verification\work\d63c0258dd6960bffc3ef43736f4140efb3b757a\target\debug\deps\authoritative-b5a3f555cf94e6b2.exe)
+
+running 1 test
+test independent_full_bag_selected_material_and_late_return_atomicity_matrix ... FAILED
+
+failures:
+
+---- independent_full_bag_selected_material_and_late_return_atomicity_matrix stdout ----
+
+thread 'independent_full_bag_selected_material_and_late_return_atomicity_matrix' (8796) panicked at tests\authoritative.rs:14:56:
+assertion `left == right` failed
+  left: [17, 18, 19, 0]
+ right: [17, 18, 19, 20]
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    independent_full_bag_selected_material_and_late_return_atomicity_matrix
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+error: test failed, to rerun pass `--test authoritative`

@@ -73,6 +73,15 @@ def prepare():
     driver=RES/DRIVER
     if not driver.exists():shutil.copyfile(pin/driver.name,driver)
     assert digest(driver)==manifest['files'][driver.name].lower()
+    if SCENARIO=='food':
+        baseline=SOURCE/'integration/client-builds/client-239.1-baseline-001-build-001'
+        probe=json.loads((baseline/'manifest.json').read_text(encoding='utf-8'))
+        for name,expected in probe['files'].items():assert digest(baseline/name)==expected.lower()
+        target=RES/'pg-live-session.exe'
+        if not target.exists():shutil.copyfile(baseline/'bin/live_session.exe',target)
+        assert digest(target)==probe['files']['bin/live_session.exe'].lower()
+        save(OUT/'relogin-client.json',{'binary_sha256':digest(target),'baseline_manifest_sha256':digest(baseline/'manifest.json'),
+          'build_attestation_sha256':digest(baseline/'build-attestation.json'),'scope':'Hash-verified pinned build and source manifest; actual native authentication/packet capture, no fabricated reconnect server.'})
     save(WORK/'private-resource-manifest.json',identity)
     save(OUT/'resources.json',{'cache_files':len(identity),'cache_manifest_sha256':digest(WORK/'private-resource-manifest.json'),
                               'driver_manifest':manifest,'driver_sha256':digest(driver),'scope':'Owned copies; original resources read-only. Private cache, keys, credentials and account template are not published.'})
@@ -102,6 +111,7 @@ def seed():
         db.execute('DELETE FROM inventory_objs WHERE inventories_id IN (SELECT id FROM inventories WHERE character_id=?)',(cid,))
         if FEATURE=='OR-MIG-0010':
             items=[(slot,[2436,2440,2442,269 if slot<12 else 111][slot%4] if slot<24 else 995 if slot==27 else 1931,1000 if slot==27 else 1) for slot in range(28)]
+        elif SCENARIO=='food':items=[(1,1891,1),(3,1891,1),(4,2289,1),(5,2289,1),(7,2142,1),(27,995,1000)]
         else:items=[(27,995,1000)] if SCENARIO=='chemistry-worn' else [(3,21163,1),(27,995,1000)]
         for slot,item,count in items:db.execute('INSERT INTO inventory_objs(inventories_id,slot,obj,count,vars) VALUES(?,?,?,?,0)',(inv,slot,item,count))
         if SCENARIO=='chemistry-worn':
@@ -109,6 +119,7 @@ def seed():
             worn=db.execute('SELECT id FROM inventories WHERE character_id=? AND inv_type=94',(cid,)).fetchone()[0]
             db.execute('INSERT INTO inventory_objs(inventories_id,slot,obj,count,vars) VALUES(?,2,21163,1,0)',(worn,))
         db.execute('UPDATE stats SET vis_level=99,base_level=99,fine_xp=130344311 WHERE character_id=? AND stat_id=15',(cid,))
+        if SCENARIO=='food':db.execute('UPDATE stats SET vis_level=2,base_level=10,fine_xp=11540 WHERE character_id=? AND stat_id=3',(cid,))
         varps=json.loads(db.execute('SELECT varps FROM characters WHERE id=?',(cid,)).fetchone()[0]);varps['80']=4
         db.execute('UPDATE characters SET x=3224,z=3218,level=0,world_id=NULL,xp_rate_in_hundreds=500,varps=? WHERE id=?',(json.dumps(varps),cid))
         db.execute('UPDATE accounts SET members=1 WHERE login_username=?',('integration239',))
@@ -143,8 +154,9 @@ def phase(mode):
     command=[str(binary),'--game-cache',str(RES/'cache/game'),'--js5-cache',str(RES/'cache/js5'),'--symbols',str(RES/'symbols'),
              '--rsa-exponent',str(RES/'keys/exponent.bin'),'--rsa-modulus',str(RES/'keys/modulus.bin'),'--argon2',str(RES/'argon2.dll'),
              '--state-name',STATE,'--bind','127.0.0.1:0','--ticks','700','--stop-file',str(stop)]
+    client_binary=RES/('pg-live-session.exe' if SCENARIO=='food' and mode=='verify' else DRIVER)
     manifest={'implementation_id':FEATURE,'implementation_sha':CONTRACT_SHA,'tested_sha':SHA,'campaign_kind':'historical' if SHA==CONTRACT_SHA else 'integration','server_sha256':digest(binary),
-              'client_sha256':digest(RES/DRIVER),'mode':mode,'started_utc':datetime.now(timezone.utc).isoformat(),
+              'client_sha256':digest(client_binary),'mode':mode,'started_utc':datetime.now(timezone.utc).isoformat(),
               'state_path':str(dbpath()),'database_sha256_before':digest(dbpath()),'launcher_sha256':digest(Path(__file__)),
               'server_arguments':command[1:],'status':'IN_PROGRESS'}
     save(dest/'manifest.json',manifest)
@@ -162,6 +174,9 @@ def phase(mode):
             assert address,'Exact-SHA server startup failed: '+(dest/'server.err').read_text(encoding='utf-8')[-2000:]
             print('LISTENING',address,flush=True)
             args=[str(RES/DRIVER),str(RES/'cache/js5'),address,'integration239',str(RES/'password'),str(RES/'keys/client.key'),mode]
+            if SCENARIO=='food':
+                if mode=='assemble':args[-1]=str(dest/'native-events.jsonl')
+                else:args=[str(client_binary),str(RES/'cache/js5'),str(RES/'keys/client.key'),address,'integration239',str(RES/'password'),str(WORK/'relogin-private.capture')]
             with (dest/'client.log').open('w',encoding='utf-8',newline='\n') as log:
                 client=subprocess.Popen(args,cwd=WORK,stdout=log,stderr=subprocess.STDOUT,creationflags=subprocess.CREATE_NO_WINDOW|subprocess.BELOW_NORMAL_PRIORITY_CLASS)
                 manifest['owned_client_pid']=client.pid;save(dest/'manifest.json',manifest)
@@ -194,11 +209,14 @@ def phase(mode):
     if manifest['status']=='PASS' and (not manifest['save_acknowledgement'] or not manifest['graceful_shutdown'] or manifest['server_exit']!=0 or manifest['forced_shutdown']):manifest.update(status='BLOCKED',reason='Client finished but durable save or graceful shutdown evidence missing')
     save(dest/'manifest.json',manifest);print('NATIVE_RESULT',json.dumps(manifest),flush=True)
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('action',choices=['prepare','build','seed','produce','relogin']);p.add_argument('--feature',choices=['combat','chemistry','chemistry-worn'],default='combat');p.add_argument('--integration-sha');p.add_argument('--run-id');a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('action',choices=['prepare','build','seed','produce','relogin']);p.add_argument('--feature',choices=['combat','chemistry','chemistry-worn','food'],default='combat');p.add_argument('--integration-sha');p.add_argument('--run-id');a=p.parse_args()
     SCENARIO=a.feature
     if a.feature in ['chemistry','chemistry-worn']:
         SHA='e7ac3608e61893d80b2de6a1a2e512b3ab785505';FEATURE='OR-MIG-0006';STATE='pg-chemistry-native-001';DRIVER='server_chemistryui.exe';PIN='chemistryui-005'
         CHECKOUT=ROOT.parent/'agent7-targets'/SHA;WORK=ROOT/'work/native-chemistry';OUT=ROOT/'docs/openrune/verification/independent/deep-chemistry'
+    if a.feature=='food':
+        SHA='ae3d234c71764dd2364f8452fc1974a54a6783f0';FEATURE='OR-MIG-0024';STATE='pg-food-native-001';DRIVER='server_food.exe';PIN='food-001'
+        CHECKOUT=ROOT.parent/'agent7-targets'/SHA;WORK=ROOT/'work/native-food';OUT=ROOT/'docs/openrune/verification/independent/deep-food'
     CONTRACT_SHA=SHA
     if a.feature=='chemistry-worn':
         STATE='pg-chemistry-worn-native-001';DRIVER='server_chemistryworn.exe';PIN='chemistryworn-004'

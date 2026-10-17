@@ -1,0 +1,24 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\ae3d234c71764dd2364f8452fc1974a54a6783f0\external-harness-8844650900)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.97s
+     Running tests\authoritative.rs (C:\Projects\OSRSRSPS\agent7-verification\work\ae3d234c71764dd2364f8452fc1974a54a6783f0\target\debug\deps\authoritative-f5a42925a472fea9.exe)
+
+running 1 test
+test food_commit_and_passive_regeneration_in_same_clock_have_distinct_valid_hp_observations ... FAILED
+
+failures:
+
+---- food_commit_and_passive_regeneration_in_same_clock_have_distinct_valid_hp_observations stdout ----
+
+thread 'food_commit_and_passive_regeneration_in_same_clock_have_distinct_valid_hp_observations' (3992) panicked at tests\authoritative.rs:14:5:
+assertion `left == right` failed
+  left: 9
+ right: 10
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    food_commit_and_passive_regeneration_in_same_clock_have_distinct_valid_hp_observations
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.16s
+
+error: test failed, to rerun pass `--test authoritative`

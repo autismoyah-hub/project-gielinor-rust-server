@@ -4,18 +4,18 @@ This is an ongoing verification campaign. No contract is yet fully accepted acro
 
 ## Intake
 
-Latest observed FORGE HEAD: `1efda0299062de44fd7196e6555c19b87f02d12b`.
-Exact queue SHA256: `17040ee9bd9695e52145e32fb1d26e9d9302b9f2b6b541d314c3d3bdcdeef187`.
-Published queue: 37 records / 35 stable implementation IDs. Published validator: PASS.
+Latest observed FORGE HEAD: `3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a`.
+Exact queue SHA256: `36bbdbd48b5dc0bf45ffabae3297571fc4fe5be6a9463f4b3ca01954264b6720`.
+Published queue: 44 records / 42 stable implementation IDs. Published validator: PASS.
 The copied queue is refreshed only from fetched immutable blobs after append-history checks. Current coverage and every contract revision are retained in [WORKLIST.json](WORKLIST.json). Synchronization observations are append-only in [SYNC_OBSERVATIONS.jsonl](SYNC_OBSERVATIONS.jsonl).
 
 ## Level coverage
 
-- V0: PASS 2, FAIL 0, BLOCKED 0, IN_PROGRESS 5, NOT_STARTED 28, NOT_APPLICABLE 0.
-- V1: PASS 0, FAIL 0, BLOCKED 0, IN_PROGRESS 7, NOT_STARTED 28, NOT_APPLICABLE 0.
-- V2: PASS 0, FAIL 0, BLOCKED 0, IN_PROGRESS 2, NOT_STARTED 33, NOT_APPLICABLE 0.
-- V3: PASS 0, FAIL 0, BLOCKED 0, IN_PROGRESS 2, NOT_STARTED 33, NOT_APPLICABLE 0.
-- V4: PASS 0, FAIL 0, BLOCKED 0, IN_PROGRESS 3, NOT_STARTED 32, NOT_APPLICABLE 0.
+- V0: PASS 3, FAIL 0, BLOCKED 0, IN_PROGRESS 5, NOT_STARTED 34, NOT_APPLICABLE 0.
+- V1: PASS 0, FAIL 0, BLOCKED 0, IN_PROGRESS 8, NOT_STARTED 34, NOT_APPLICABLE 0.
+- V2: PASS 0, FAIL 0, BLOCKED 0, IN_PROGRESS 3, NOT_STARTED 39, NOT_APPLICABLE 0.
+- V3: PASS 0, FAIL 0, BLOCKED 0, IN_PROGRESS 3, NOT_STARTED 39, NOT_APPLICABLE 0.
+- V4: PASS 0, FAIL 0, BLOCKED 0, IN_PROGRESS 3, NOT_STARTED 39, NOT_APPLICABLE 0.
 
 PASS applies only to the named level, target and scope. IN_PROGRESS retains passing subchecks while required acceptance cases remain open. The old coarse ledger is retained; [LEVEL_RESULTS.jsonl](LEVEL_RESULTS.jsonl) is authoritative for the new level-specific program.
 
@@ -26,15 +26,22 @@ PASS applies only to the named level, target and scope. IN_PROGRESS retains pass
 - Historical worn chemistry at `e7ac3608`: separate real native equipment Options→Stop, acknowledged save, process restart and native relogin. Worn amulet, charges, stop policy, coins and XP conserved. [Assessment](independent/deep-chemistry-worn/hist-worn-002/independent-assessment.json).
 - Reference comparison: seven independently hashed source/pinned Wiki records for super-combat, plus chemistry control source inspection. Documented dose, timing, boost and transaction adaptations remain distinct from literal donor behavior. [Comparison](independent/deep-combat/reference-comparison.json).
 - Food revisions 2 (`a560034a`) and 3 (`ae3d234c`): the four independently authored tests passed separately at both exact SHAs, with 319 synthetic fixtures per target through actual `World::submit`/`World::tick`; stale claims, duplicate/replay input, full bags, remainders, malformed inputs and overheal. Initial verifier assumptions and failed source/logs are preserved. [Test source](../../../verification/ordinary-food/tests/authoritative.rs).
+- Food revision3 native: meat confirmed by client; cake commit confirmed by server trace and real restarted native inventory capture (2,061 packets). The six-action driver timed out at an intermediate-HP equality check; four remaining bites are unverified. Passive-regeneration diagnosis and raw failure are retained. [Partial assessment](independent/deep-food/independent-assessment.json).
 - Item packs at `caefcf42`: atomic selected-slot/overflow helpers, server definition bindings and authoritative repeat/movement-cancellation/stale-slot scenarios passed. Native, persistence and reference acceptance remain open.
 - Dynamic food at `14461673`: independent action matrix passed across 1,584 base-level/HP fixtures plus live-base/stale replay and seven rollback cases. Independently hashed three protected sources and four pinned Wiki records; strawberry prose/table and watermelon donor/Wiki differences remain explicit. [Comparison](independent/reference-food-1446167370dece10751c4c332929af880259ee23/comparison.json).
+- Shared batch assembly at `d63c0258`: 13 independently executed existing tests and an independently authored 1,512-case full-bag/captured-slot/direction/late-failure matrix PASS. Pair/timed routing and cancellation regressions are retained; native, persistence and full reference acceptance remain open. [Independent test source](../../../verification/assembly-batch/tests/authoritative.rs).
 
 No rendered-window, original-executable differential or crash-atomicity acceptance is claimed. Native packet evidence uses the real pinned Rust client library/binaries and actual server transport, without desktop automation. Client binary/source correspondence relies on the preserved, hash-verified baseline/driver manifest; a fresh independent client rebuild has not been performed in this campaign.
 
 ## Integration regression
 
-- `4ef5f5c1ebc50b81e56de4f3e2421e2bba49de03`: PASS; potion 44, chemistry 12, combat_mixing 4, inventory 27, queues 9 test executions. [Manifest](independent/integration-4ef5f5c1ebc50b81e56de4f3e2421e2bba49de03/manifest.json).
-- `97b25c57d4c6dc0606adf91dd00e41ec43600a27`: PASS; energy-food 2 test executions. [Manifest](independent/integration-external-energy-food-97b25c57d4c6dc0606adf91dd00e41ec43600a27/manifest.json).
+- `4ef5f5c1ebc50b81e56de4f3e2421e2bba49de03`: raw attempt PASS; potion 44, chemistry 12, combat_mixing 4, inventory 27, queues 9 test executions passed.  [Manifest](independent/integration-4ef5f5c1ebc50b81e56de4f3e2421e2bba49de03/manifest.json).
+- `d63c0258dd6960bffc3ef43736f4140efb3b757a`: raw attempt FAIL; 0 test executions passed. Verifier assumed which unselected duplicate was captured; corrected selected-slot/no-fallback matrix passed. See PG-INFRA-005. [Manifest](independent/integration-external-assembly-batch-d63c0258dd6960bffc3ef43736f4140efb3b757a/manifest.json).
+- `d63c0258dd6960bffc3ef43736f4140efb3b757a`: raw attempt PASS; assembly-batch 1 test executions passed.  [Manifest](independent/integration-external-assembly-batch-d63c0258dd6960bffc3ef43736f4140efb3b757a-1792281175590139100/manifest.json).
+- `97b25c57d4c6dc0606adf91dd00e41ec43600a27`: raw attempt PASS; energy-food 2 test executions passed.  [Manifest](independent/integration-external-energy-food-97b25c57d4c6dc0606adf91dd00e41ec43600a27/manifest.json).
+- `ae3d234c71764dd2364f8452fc1974a54a6783f0`: raw attempt BLOCKED; 0 test executions passed. Measured-resource deferral; no substitute target: Measured resource guard blocked; no other process altered [Manifest](independent/integration-external-food-regeneration-ae3d234c71764dd2364f8452fc1974a54a6783f0/manifest.json).
+- `ae3d234c71764dd2364f8452fc1974a54a6783f0`: raw attempt FAIL; 0 test executions passed. Rejected same-clock diagnosis; refined later-clock reproducer passed. This failed hypothesis is retained, not attributed to gameplay. [Manifest](independent/integration-external-food-regeneration-ae3d234c71764dd2364f8452fc1974a54a6783f0-1792280887389358300/manifest.json).
+- `ae3d234c71764dd2364f8452fc1974a54a6783f0`: raw attempt PASS; food-regeneration 1 test executions passed.  [Manifest](independent/integration-external-food-regeneration-ae3d234c71764dd2364f8452fc1974a54a6783f0-1792280932175111100/manifest.json).
 - `8ad59b108e1ecd55185570c88d1be8be06b39756`: Native current-integration worn Options -> Stop, equipped-item/coins/XP conservation and actual restart/native relogin; complete V2/V3 acceptance remains open. [Assessment](independent/native-chemistry-worn-8ad59b108e1ecd55185570c88d1be8be06b39756/independent-assessment.json).
 
 An older integration PASS is not a PASS on a newer FORGE HEAD. Change-impact lists and the last executed integration scope are recorded separately per feature.
@@ -43,7 +50,7 @@ An older integration PASS is not a PASS on a newer FORGE HEAD. Change-impact lis
 
 - Confirmed critical/dependency-blocking gameplay findings: none in completed scoped tests.
 - Confirmed ordinary gameplay defects: none in completed scoped tests.
-- Verifier defects: initial super-combat filter, food trace/dirty-slot assumptions, and dynamic-food argument types/synthetic labels corrected; failed attempts retained. [Backlog](CORRECTION_BACKLOG.md).
+- Verifier defects: initial filter, food trace/dirty-slot assumptions and dynamic-food types/labels corrected. PG-INFRA-004 remains open: food native observation timeout; passive regeneration reproduced, conclusive session-level diagnosis and four remaining bites pending. [Backlog](CORRECTION_BACKLOG.md).
 - Resource deferrals used measured CPU/RAM; later builds used one job and private targets. No unrelated process was changed.
 - Optional third-party JSON Schema engine is unavailable; the actual published standard-library validator passes. This is not counted as a gameplay failure.
 - Protected source/cache, account templates, credentials, native executables and databases stay local. Published material contains synthetic tests, hashes, scoped state snapshots and logs.
@@ -51,7 +58,7 @@ An older integration PASS is not a PASS on a newer FORGE HEAD. Change-impact lis
 ## Active work and continuation
 
 - Lane B — OR-MIG-0006 at `e7ac3608e61893d80b2de6a1a2e512b3ab785505`: Complete native negative/cancelled held and worn dialogs, last-charge production/modifiers and interrupted production persistence; retain completed positive controls/restart evidence.
-- Lane C — OR-MIG-0006 at `1efda0299062de44fd7196e6555c19b87f02d12b`: Inspect shared changes since the last recorded native integration campaign; select affected current-build regression scopes without inheriting older PASS results.
+- Lane C — OR-MIG-0006 at `3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a`: Inspect shared changes since the last recorded native integration campaign; select affected current-build regression scopes without inheriting older PASS results.
 - Lane A — OR-MIG-0024 at `ae3d234c71764dd2364f8452fc1974a54a6783f0`: Expand runtime packet and genuine native ordinary/remainder food acceptance after completed revision-3 authoritative tests; item-pack native/lifecycle remains separate.
 
 [RESUME_QUEUE.json](RESUME_QUEUE.json) contains exact targets and all outstanding feature levels. Do not infer that work runs after the active session ends.
@@ -81,7 +88,7 @@ An older integration PASS is not a PASS on a newer FORGE HEAD. Change-impact lis
 - **OR-MIG-0021 r1** `c8b9aef260db` — Queued smithing live requirements and ordinary iron outcome safety (historical backfill); V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
 - **OR-MIG-0022 r1** `71fa140f48a1` — Ordinary Bastion and Battlemage potion drinking, eight doses; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
 - **OR-MIG-0023 r1** `caefcf424869` — Seventeen ordinary item-pack profiles, atomic opening and weak repeat queue (historical backfill); V0 IN_PROGRESS, V1 IN_PROGRESS, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0024 r3** `ae3d234c7176` — Ordinary selected-slot food transaction and potion-overheal integration safety; V0 IN_PROGRESS, V1 IN_PROGRESS, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0024 r3** `ae3d234c7176` — Ordinary selected-slot food transaction and potion-overheal integration safety; V0 PASS, V1 IN_PROGRESS, V2 IN_PROGRESS, V3 IN_PROGRESS, V4 NOT_STARTED.
 - **OR-MIG-0025 r1** `a560034a59e7` — Fifteen additional ordinary multipart food stages: chocolate cake, topped pizzas and pies; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
 - **OR-MIG-0026 r1** `5b47d7fe4270` — Ten missing ordinary food healing profiles; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
 - **OR-MIG-0027 r1** `f1f0032d5440` — Four ordinary water-source vessels with checked selected-slot filling (historical backfill); V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
@@ -93,3 +100,10 @@ An older integration PASS is not a PASS on a newer FORGE HEAD. Change-impact lis
 - **OR-MIG-0033 r1** `ae3d234c7176` — Seven skill-boost pie families, fourteen bites and dish returns; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
 - **OR-MIG-0034 r1** `97b25c57d4c6` — Summer pie and papaya energy restoration through shared food effects; V0 IN_PROGRESS, V1 IN_PROGRESS, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
 - **OR-MIG-0035 r1** `1446167370de` — Four live-base-HP food healing profiles with explicit rounding rules; V0 IN_PROGRESS, V1 IN_PROGRESS, V2 NOT_STARTED, V3 NOT_STARTED, V4 IN_PROGRESS.
+- **OR-MIG-0036 r1** `8065a96c23c1` — Manual chicken beef and shrimp cooking on a generation-validated ordinary fire; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0037 r1** `fbf10373608c` — Nine Wiki-pinned ordinary manual fire-fish cooking recipes; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0038 r1** `cb8975bc8fd6` — Ordinary stew both preparation orders manual fire cooking and retained-bowl consumption; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0039 r1** `f79a54671dfd` — Manual chocolate bar and dust cake topping with live level and XP; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0040 r1** `d63c0258dd69` — Shared captured multi-input assembly and four-ingredient cake batter with container returns; V0 IN_PROGRESS, V1 IN_PROGRESS, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0041 r1** `902e55c7dd61` — Manual ordinary range surfaces bread baking and asymmetric swordfish rules; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0042 r1** `052d24c0b0d8` — Manual ordinary range-only redberry meat apple pie and plain pizza baking; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.

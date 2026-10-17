@@ -55,7 +55,7 @@ def inspect():
 def run_batch(ids,independent=False,world_only=False):
     OUT.mkdir(parents=True,exist_ok=True)
     toolbin=Path('C:/Projects/OSRSRSPS/rust-client/work/rustup/toolchains/stable-x86_64-pc-windows-gnu/bin')
-    filters={'OR-MIG-0018':'potion','OR-MIG-0006':'chemistry','OR-MIG-0010':'combat_mixing','OR-MIG-0024':'food','OR-MIG-0023':'item_pack','OR-MIG-0035':'dynamic_food'}
+    filters={'OR-MIG-0018':'potion','OR-MIG-0006':'chemistry','OR-MIG-0010':'combat_mixing','OR-MIG-0024':'food','OR-MIG-0023':'item_pack','OR-MIG-0035':'dynamic_food','OR-MIG-0040':'assembly'}
     for ident in ids:
         if ident not in filters:raise ValueError('No reviewed suite mapping for '+ident+'; design a suite before claiming coverage')
         if independent and ident not in ['OR-MIG-0018','OR-MIG-0024','OR-MIG-0035']:raise ValueError('No reviewed external scenarios for this contract')

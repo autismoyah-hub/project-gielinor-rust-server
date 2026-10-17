@@ -1,12 +1,12 @@
 {
-  "observed_utc": "2026-10-17T23:09:19.312043+00:00",
-  "forge_head": "1efda0299062de44fd7196e6555c19b87f02d12b",
-  "queue_sha256": "17040ee9bd9695e52145e32fb1d26e9d9302b9f2b6b541d314c3d3bdcdeef187",
+  "observed_utc": "2026-10-17T23:54:41.955710+00:00",
+  "forge_head": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+  "queue_sha256": "36bbdbd48b5dc0bf45ffabae3297571fc4fe5be6a9463f4b3ca01954264b6720",
   "published_validator_sha256": "5e5a3a2aa9a8e83db555150e09332188486a6b13c9bb3be1925eac2357346354",
   "published_validator_status": "PASS",
   "json_schema_status": "UNAVAILABLE: jsonschema package; published validator PASS",
-  "records": 37,
-  "implementation_units": 35,
+  "records": 44,
+  "implementation_units": 42,
   "new_contracts": [],
   "updated_contracts": [],
   "new_since_initial_checkpoint": [
@@ -23,7 +23,14 @@
     "OR-MIG-0032",
     "OR-MIG-0033",
     "OR-MIG-0034",
-    "OR-MIG-0035"
+    "OR-MIG-0035",
+    "OR-MIG-0036",
+    "OR-MIG-0037",
+    "OR-MIG-0038",
+    "OR-MIG-0039",
+    "OR-MIG-0040",
+    "OR-MIG-0041",
+    "OR-MIG-0042"
   ],
   "items": [
     {
@@ -60,7 +67,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -88,9 +95,11 @@
           "crates/storage/src/accounts.rs",
           "crates/storage/src/chemistry.rs",
           "crates/storage/src/lib.rs",
+          "crates/world/src/assembly.rs",
           "crates/world/src/chemistry.rs",
           "crates/world/src/chemistry_modifier.rs",
           "crates/world/src/combat_mixing.rs",
+          "crates/world/src/cooking.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
@@ -101,9 +110,11 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/chemistry_actions.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
+          "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs",
           "crates/world/src/simulation/swamp_tar_actions.rs",
           "crates/world/src/simulation/unfinished_potion_actions.rs",
@@ -152,7 +163,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -179,9 +190,11 @@
           "crates/storage/src/accounts.rs",
           "crates/storage/src/chemistry.rs",
           "crates/storage/src/lib.rs",
+          "crates/world/src/assembly.rs",
           "crates/world/src/chemistry.rs",
           "crates/world/src/chemistry_modifier.rs",
           "crates/world/src/combat_mixing.rs",
+          "crates/world/src/cooking.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
@@ -192,9 +205,11 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/chemistry_actions.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
+          "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs",
           "crates/world/src/simulation/swamp_tar_actions.rs",
           "crates/world/src/simulation/unfinished_potion_actions.rs",
@@ -242,7 +257,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -269,9 +284,11 @@
           "crates/storage/src/accounts.rs",
           "crates/storage/src/chemistry.rs",
           "crates/storage/src/lib.rs",
+          "crates/world/src/assembly.rs",
           "crates/world/src/chemistry.rs",
           "crates/world/src/chemistry_modifier.rs",
           "crates/world/src/combat_mixing.rs",
+          "crates/world/src/cooking.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
@@ -282,9 +299,11 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/chemistry_actions.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
+          "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs",
           "crates/world/src/simulation/swamp_tar_actions.rs",
           "crates/world/src/simulation/unfinished_potion_actions.rs",
@@ -332,7 +351,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -358,9 +377,11 @@
           "crates/storage/src/accounts.rs",
           "crates/storage/src/chemistry.rs",
           "crates/storage/src/lib.rs",
+          "crates/world/src/assembly.rs",
           "crates/world/src/chemistry.rs",
           "crates/world/src/chemistry_modifier.rs",
           "crates/world/src/combat_mixing.rs",
+          "crates/world/src/cooking.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
@@ -371,9 +392,11 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/chemistry_actions.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
+          "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs"
         ]
       },
@@ -418,7 +441,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -438,7 +461,9 @@
           "crates/server/src/runtime/skill_multi.rs",
           "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
+          "crates/world/src/assembly.rs",
           "crates/world/src/combat_mixing.rs",
+          "crates/world/src/cooking.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
@@ -448,9 +473,11 @@
           "crates/world/src/potions.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
+          "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs"
         ]
       },
@@ -514,7 +541,7 @@
         ]
       },
       "current_integration": {
-        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -534,7 +561,9 @@
           "crates/server/src/runtime/skill_multi.rs",
           "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
+          "crates/world/src/assembly.rs",
           "crates/world/src/combat_mixing.rs",
+          "crates/world/src/cooking.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
@@ -544,9 +573,11 @@
           "crates/world/src/potions.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
+          "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs"
         ],
         "last_executed_scope": {
@@ -600,7 +631,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -620,7 +651,9 @@
           "crates/server/src/runtime/skill_multi.rs",
           "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
+          "crates/world/src/assembly.rs",
           "crates/world/src/combat_mixing.rs",
+          "crates/world/src/cooking.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
@@ -630,9 +663,11 @@
           "crates/world/src/potions.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
+          "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs"
         ]
       },
@@ -677,7 +712,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -697,7 +732,9 @@
           "crates/server/src/runtime/skill_multi.rs",
           "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
+          "crates/world/src/assembly.rs",
           "crates/world/src/combat_mixing.rs",
+          "crates/world/src/cooking.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
@@ -707,9 +744,11 @@
           "crates/world/src/potions.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
+          "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs"
         ]
       },
@@ -754,7 +793,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -774,7 +813,9 @@
           "crates/server/src/runtime/skill_multi.rs",
           "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
+          "crates/world/src/assembly.rs",
           "crates/world/src/combat_mixing.rs",
+          "crates/world/src/cooking.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
@@ -784,9 +825,11 @@
           "crates/world/src/potions.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
+          "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs"
         ]
       },
@@ -849,7 +892,7 @@
         ]
       },
       "current_integration": {
-        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -859,22 +902,28 @@
           "V4": "NOT_STARTED"
         },
         "changed_production_paths": [
+          "crates/server/src/application.rs",
           "crates/server/src/content.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/finished_potions.rs",
           "crates/server/src/runtime/potion_upgrades.rs",
           "crates/server/src/startup.rs",
+          "crates/world/src/assembly.rs",
+          "crates/world/src/cooking.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/lib.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs"
         ],
         "last_executed_scope": {
@@ -928,7 +977,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -938,22 +987,28 @@
           "V4": "NOT_STARTED"
         },
         "changed_production_paths": [
+          "crates/server/src/application.rs",
           "crates/server/src/content.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/finished_potions.rs",
           "crates/server/src/runtime/potion_upgrades.rs",
           "crates/server/src/startup.rs",
+          "crates/world/src/assembly.rs",
+          "crates/world/src/cooking.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/lib.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs"
         ]
       },
@@ -998,7 +1053,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1008,22 +1063,28 @@
           "V4": "NOT_STARTED"
         },
         "changed_production_paths": [
+          "crates/server/src/application.rs",
           "crates/server/src/content.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/finished_potions.rs",
           "crates/server/src/runtime/potion_upgrades.rs",
           "crates/server/src/startup.rs",
+          "crates/world/src/assembly.rs",
+          "crates/world/src/cooking.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/lib.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs"
         ]
       },
@@ -1068,7 +1129,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1078,20 +1139,26 @@
           "V4": "NOT_STARTED"
         },
         "changed_production_paths": [
+          "crates/server/src/application.rs",
           "crates/server/src/content.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/finished_potions.rs",
           "crates/server/src/startup.rs",
+          "crates/world/src/assembly.rs",
+          "crates/world/src/cooking.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/lib.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
-          "crates/world/src/simulation/held_use_actions.rs"
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs"
         ]
       },
       "lane": "A",
@@ -1135,7 +1202,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1145,19 +1212,25 @@
           "V4": "NOT_STARTED"
         },
         "changed_production_paths": [
+          "crates/server/src/application.rs",
           "crates/server/src/content.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/finished_potions.rs",
           "crates/server/src/startup.rs",
+          "crates/world/src/assembly.rs",
+          "crates/world/src/cooking.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/lib.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
-          "crates/world/src/simulation/held_use_actions.rs"
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs"
         ]
       },
       "lane": "A",
@@ -1201,7 +1274,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1211,17 +1284,23 @@
           "V4": "NOT_STARTED"
         },
         "changed_production_paths": [
+          "crates/server/src/application.rs",
           "crates/server/src/content.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/finished_potions.rs",
           "crates/server/src/startup.rs",
+          "crates/world/src/assembly.rs",
+          "crates/world/src/cooking.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/lib.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/simulation.rs",
-          "crates/world/src/simulation/held_use_actions.rs"
+          "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs"
         ]
       },
       "lane": "A",
@@ -1265,7 +1344,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1275,17 +1354,23 @@
           "V4": "NOT_STARTED"
         },
         "changed_production_paths": [
+          "crates/server/src/application.rs",
           "crates/server/src/content.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/finished_potions.rs",
           "crates/server/src/startup.rs",
+          "crates/world/src/assembly.rs",
+          "crates/world/src/cooking.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/lib.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/simulation.rs",
-          "crates/world/src/simulation/held_use_actions.rs"
+          "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs"
         ]
       },
       "lane": "A",
@@ -1329,7 +1414,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1339,15 +1424,21 @@
           "V4": "NOT_STARTED"
         },
         "changed_production_paths": [
+          "crates/server/src/application.rs",
           "crates/server/src/content.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
+          "crates/world/src/assembly.rs",
+          "crates/world/src/cooking.rs",
           "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/lib.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/simulation.rs",
-          "crates/world/src/simulation/held_use_actions.rs"
+          "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs"
         ]
       },
       "lane": "A",
@@ -1394,7 +1485,7 @@
         ]
       },
       "current_integration": {
-        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1404,15 +1495,21 @@
           "V4": "NOT_STARTED"
         },
         "changed_production_paths": [
+          "crates/server/src/application.rs",
           "crates/server/src/content.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
+          "crates/world/src/assembly.rs",
+          "crates/world/src/cooking.rs",
           "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/lib.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/simulation.rs",
-          "crates/world/src/simulation/held_use_actions.rs"
+          "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs"
         ],
         "last_executed_scope": {
           "tested_sha": "4ef5f5c1ebc50b81e56de4f3e2421e2bba49de03",
@@ -1465,7 +1562,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1475,15 +1572,21 @@
           "V4": "NOT_STARTED"
         },
         "changed_production_paths": [
+          "crates/server/src/application.rs",
           "crates/server/src/content.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
+          "crates/world/src/assembly.rs",
+          "crates/world/src/cooking.rs",
           "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/lib.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/simulation.rs",
-          "crates/world/src/simulation/held_use_actions.rs"
+          "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs"
         ],
         "last_executed_scope": {
           "tested_sha": "4ef5f5c1ebc50b81e56de4f3e2421e2bba49de03",
@@ -1537,7 +1640,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1547,15 +1650,21 @@
           "V4": "NOT_STARTED"
         },
         "changed_production_paths": [
+          "crates/server/src/application.rs",
           "crates/server/src/content.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
+          "crates/world/src/assembly.rs",
+          "crates/world/src/cooking.rs",
           "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/lib.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/simulation.rs",
-          "crates/world/src/simulation/held_use_actions.rs"
+          "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs"
         ],
         "last_executed_scope": {
           "tested_sha": "4ef5f5c1ebc50b81e56de4f3e2421e2bba49de03",
@@ -1609,7 +1718,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1643,6 +1752,7 @@
           "crates/world/src/chemistry.rs",
           "crates/world/src/chemistry_modifier.rs",
           "crates/world/src/combat_mixing.rs",
+          "crates/world/src/cooking.rs",
           "crates/world/src/dough.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
@@ -1658,6 +1768,7 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/chemistry_actions.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
+          "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/door_actions.rs",
           "crates/world/src/simulation/dough_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
@@ -1719,7 +1830,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1729,13 +1840,19 @@
           "V4": "NOT_STARTED"
         },
         "changed_production_paths": [
+          "crates/server/src/application.rs",
           "crates/server/src/content.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
+          "crates/world/src/assembly.rs",
+          "crates/world/src/cooking.rs",
           "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
-          "crates/world/src/simulation/held_use_actions.rs"
+          "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs"
         ],
         "last_executed_scope": {
           "tested_sha": "4ef5f5c1ebc50b81e56de4f3e2421e2bba49de03",
@@ -1797,7 +1914,7 @@
         ]
       },
       "current_integration": {
-        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1831,6 +1948,7 @@
           "crates/world/src/chemistry.rs",
           "crates/world/src/chemistry_modifier.rs",
           "crates/world/src/combat_mixing.rs",
+          "crates/world/src/cooking.rs",
           "crates/world/src/dough.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
@@ -1844,6 +1962,7 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/chemistry_actions.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
+          "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/door_actions.rs",
           "crates/world/src/simulation/dough_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
@@ -1880,26 +1999,32 @@
       "historical_verification": {
         "levels": {
           "V0": {
-            "status": "IN_PROGRESS",
-            "reason": "Exact-SHA production crate compiled; runtime cache/registration and packet decoder acceptance remain open.",
+            "status": "PASS",
+            "reason": "Exact revision3 server compiled, real cache-backed startup and genuine native ordinary meat/cake dispatch reached production handlers.",
             "evidence": [
-              "docs/openrune/verification/independent/OR-MIG-0024-ae3d234c7176-independent/manifest.json"
+              "docs/openrune/verification/independent/deep-food/independent-assessment.json"
             ]
           },
           "V1": {
             "status": "IN_PROGRESS",
-            "reason": "Four independent authoritative World action tests PASS across 319 fixtures: all selected slots, full bags, duplicate/stale input, overheal, remainders and malformed transactions. Runtime packet decode and complete food matrix remain open.",
+            "reason": "Exact-SHA independent timer/food diagnosis PASS: actual queued cake commits HP5->9, followed by passive regeneration to10 without more food or XP. This supports, but does not fully prove, the native strict-equality oracle diagnosis. Earlier rejected same-clock hypothesis and failed test are retained.",
             "evidence": [
-              "docs/openrune/verification/independent/OR-MIG-0024-ae3d234c7176-independent/manifest.json"
+              "docs/openrune/verification/independent/integration-external-food-regeneration-ae3d234c71764dd2364f8452fc1974a54a6783f0-1792280932175111100/manifest.json"
             ]
           },
           "V2": {
-            "status": "NOT_STARTED",
-            "reason": "Awaiting applicable independent campaign"
+            "status": "IN_PROGRESS",
+            "reason": "Native meat consumption confirmed by client, and cake stage selected-slot commit confirmed by server trace and restarted native inventory capture. Six-action driver timed out at its strict intermediate-HP equality check; remaining four bites are untested. Acknowledged save, actual restart/native authentication with independently decoded durable inventory and displayed stats PASS. Full V2/V3 acceptance remains open.",
+            "evidence": [
+              "docs/openrune/verification/independent/deep-food/independent-assessment.json"
+            ]
           },
           "V3": {
-            "status": "NOT_STARTED",
-            "reason": "Awaiting applicable independent campaign"
+            "status": "IN_PROGRESS",
+            "reason": "Native meat consumption confirmed by client, and cake stage selected-slot commit confirmed by server trace and restarted native inventory capture. Six-action driver timed out at its strict intermediate-HP equality check; remaining four bites are untested. Acknowledged save, actual restart/native authentication with independently decoded durable inventory and displayed stats PASS. Full V2/V3 acceptance remains open.",
+            "evidence": [
+              "docs/openrune/verification/independent/deep-food/independent-assessment.json"
+            ]
           },
           "V4": {
             "status": "NOT_STARTED",
@@ -1911,7 +2036,7 @@
         ]
       },
       "current_integration": {
-        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1921,11 +2046,19 @@
           "V4": "NOT_STARTED"
         },
         "changed_production_paths": [
+          "crates/server/src/application.rs",
           "crates/server/src/content.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
+          "crates/world/src/assembly.rs",
+          "crates/world/src/cooking.rs",
           "crates/world/src/food.rs",
-          "crates/world/src/simulation.rs"
+          "crates/world/src/held_use.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs"
         ],
         "last_executed_scope": {
           "tested_sha": "97b25c57d4c6dc0606adf91dd00e41ec43600a27",
@@ -1943,6 +2076,17 @@
         "Shared ordinary food adapter only; special/dynamic/stackable foods and energy/timed effects excluded.",
         "Configured skill-boost pie effects detailed in OR-MIG-0033; full food/content parity is not established.",
         "Sound,full area/activity/combat timing and independent native/lifecycle/reference acceptance remain incomplete."
+      ],
+      "verification_blockers": [
+        {
+          "level": "V2",
+          "case_status": "BLOCKED",
+          "scope": "Remaining four bites and full six-action native client verdict",
+          "reason": "Pinned food-001 driver times out after first cake action at a strict intermediate HP equality. Server commit and durable native state are verified; passive-regeneration collision is supported by an exact-SHA reproducer, but original production-session packet observation is insufficient for conclusive root cause.",
+          "target_sha": "ae3d234c71764dd2364f8452fc1974a54a6783f0",
+          "finding": "PG-INFRA-004",
+          "no_substituted_build": true
+        }
       ]
     },
     {
@@ -1979,7 +2123,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1989,13 +2133,19 @@
           "V4": "NOT_STARTED"
         },
         "changed_production_paths": [
+          "crates/server/src/application.rs",
           "crates/server/src/content.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
+          "crates/world/src/assembly.rs",
+          "crates/world/src/cooking.rs",
           "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
-          "crates/world/src/simulation/held_use_actions.rs"
+          "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs"
         ]
       },
       "lane": "A",
@@ -2041,7 +2191,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2051,13 +2201,19 @@
           "V4": "NOT_STARTED"
         },
         "changed_production_paths": [
+          "crates/server/src/application.rs",
           "crates/server/src/content.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
+          "crates/world/src/assembly.rs",
+          "crates/world/src/cooking.rs",
           "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
-          "crates/world/src/simulation/held_use_actions.rs"
+          "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs"
         ]
       },
       "lane": "A",
@@ -2102,7 +2258,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2136,6 +2292,7 @@
           "crates/world/src/chemistry.rs",
           "crates/world/src/chemistry_modifier.rs",
           "crates/world/src/combat_mixing.rs",
+          "crates/world/src/cooking.rs",
           "crates/world/src/dough.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
@@ -2149,12 +2306,14 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/chemistry_actions.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
+          "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/door_actions.rs",
           "crates/world/src/simulation/dough_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/herb_cleaning_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/milking_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs",
           "crates/world/src/simulation/swamp_tar_actions.rs",
@@ -2206,7 +2365,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2240,6 +2399,7 @@
           "crates/world/src/chemistry.rs",
           "crates/world/src/chemistry_modifier.rs",
           "crates/world/src/combat_mixing.rs",
+          "crates/world/src/cooking.rs",
           "crates/world/src/dough.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
@@ -2252,12 +2412,14 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/chemistry_actions.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
+          "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/door_actions.rs",
           "crates/world/src/simulation/dough_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/herb_cleaning_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs",
           "crates/world/src/simulation/swamp_tar_actions.rs",
           "crates/world/src/simulation/unfinished_potion_actions.rs",
@@ -2306,7 +2468,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2334,9 +2496,11 @@
           "crates/storage/src/accounts.rs",
           "crates/storage/src/chemistry.rs",
           "crates/storage/src/lib.rs",
+          "crates/world/src/assembly.rs",
           "crates/world/src/chemistry.rs",
           "crates/world/src/chemistry_modifier.rs",
           "crates/world/src/combat_mixing.rs",
+          "crates/world/src/cooking.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
@@ -2347,9 +2511,11 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/chemistry_actions.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
+          "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs",
           "crates/world/src/simulation/swamp_tar_actions.rs",
           "crates/world/src/simulation/unfinished_potion_actions.rs",
@@ -2398,7 +2564,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2408,13 +2574,19 @@
           "V4": "NOT_STARTED"
         },
         "changed_production_paths": [
+          "crates/server/src/application.rs",
           "crates/server/src/content.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
+          "crates/world/src/assembly.rs",
+          "crates/world/src/cooking.rs",
           "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
-          "crates/world/src/simulation/held_use_actions.rs"
+          "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs"
         ]
       },
       "lane": "A",
@@ -2459,7 +2631,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2469,11 +2641,19 @@
           "V4": "NOT_STARTED"
         },
         "changed_production_paths": [
+          "crates/server/src/application.rs",
           "crates/server/src/content.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
+          "crates/world/src/assembly.rs",
+          "crates/world/src/cooking.rs",
           "crates/world/src/food.rs",
-          "crates/world/src/simulation.rs"
+          "crates/world/src/held_use.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs"
         ]
       },
       "lane": "A",
@@ -2518,7 +2698,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2547,9 +2727,11 @@
           "crates/storage/src/accounts.rs",
           "crates/storage/src/chemistry.rs",
           "crates/storage/src/lib.rs",
+          "crates/world/src/assembly.rs",
           "crates/world/src/chemistry.rs",
           "crates/world/src/chemistry_modifier.rs",
           "crates/world/src/combat_mixing.rs",
+          "crates/world/src/cooking.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
@@ -2561,11 +2743,13 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/chemistry_actions.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
+          "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/dough_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/herb_cleaning_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs",
           "crates/world/src/simulation/swamp_tar_actions.rs",
           "crates/world/src/simulation/unfinished_potion_actions.rs",
@@ -2615,7 +2799,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2625,11 +2809,19 @@
           "V4": "NOT_STARTED"
         },
         "changed_production_paths": [
+          "crates/server/src/application.rs",
           "crates/server/src/content.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
+          "crates/world/src/assembly.rs",
+          "crates/world/src/cooking.rs",
           "crates/world/src/food.rs",
-          "crates/world/src/simulation.rs"
+          "crates/world/src/held_use.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs"
         ]
       },
       "lane": "A",
@@ -2680,7 +2872,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2690,11 +2882,19 @@
           "V4": "NOT_STARTED"
         },
         "changed_production_paths": [
+          "crates/server/src/application.rs",
           "crates/server/src/content.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
+          "crates/world/src/assembly.rs",
+          "crates/world/src/cooking.rs",
           "crates/world/src/food.rs",
-          "crates/world/src/simulation.rs"
+          "crates/world/src/held_use.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs"
         ]
       },
       "lane": "A",
@@ -2752,7 +2952,458 @@
         ]
       },
       "current_integration": {
-        "sha": "1efda0299062de44fd7196e6555c19b87f02d12b",
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/application.rs",
+          "crates/server/src/content.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/assembly.rs",
+          "crates/world/src/cooking.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs"
+        ]
+      },
+      "lane": "B",
+      "open_defects": [],
+      "reference_limitations": [
+        "Strawberry prose1+6% differs/ambiguous against explicit table atbase50;table/sourceceil6% chosen and V4 comparison requested.",
+        "Watermelon donorceil5% differs from Wiki floor5%+1 atbase20/40/60/80;Wiki table/prose chosen deliberately.",
+        "Bowl return supported by donor stage list;Wiki bowl page confirms healing but does not explicitly describe return.",
+        "Independent native/lifecycle/reference and full sound/activity/combat timing acceptance pending;creation/cutting/cooking and other special foods excluded."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0036",
+      "revision": 1,
+      "feature_name": "Manual chicken beef and shrimp cooking on a generation-validated ordinary fire",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "8065a96c23c16c7b7cfd90e402acd015e356d706"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/application.rs",
+          "crates/server/src/content.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/assembly.rs",
+          "crates/world/src/cooking.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "Manualbaselineonly;Make-X,repeats,otherfoods/surfaces,Lumbridgequestgate,Hosidiusbonuses,capes/gauntlets/outfits/activitymodifiers remainoutstanding.",
+        "PGcustomFoodCookedhooks/exactflavormessages/sounds not reproduced;no fullCooking/Firemaking parity ornative/lifecycleacceptance claimed.",
+        "Donortablelow50/high256 andPGcachelow64/high255/chickenbeefstop31 intentionally replaced bypinnedWiki low128/high512/ordinaryfirestop34.",
+        "WorldRNGseedstream doesnotclaimKotlinstandardRandom equivalence;V4 shouldcompareexplicitdraws/thresholdsanddocumentdifferences."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0037",
+      "revision": 1,
+      "feature_name": "Nine Wiki-pinned ordinary manual fire-fish cooking recipes",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "fbf10373608cb22b03c89ce9f6bfcb12491b994e"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/application.rs",
+          "crates/server/src/content.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/assembly.rs",
+          "crates/world/src/cooking.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "Manualordinaryfireonly;Make-X/autoquantity,ranges/questgates,color/campfires,cape/gauntlet/outfits/activitymodifiers,customPGhooks,soundsandindependentnative/lifecycleacceptanceremain.",
+        "Pike donorstop64 deliberatelyreplacedbyWiki54;donoruniformlow50/high256 deliberatelyreplacedbyspecificWiki curves.",
+        "LocalPGKronoswrapper is comparisonmaterial,notoriginalbaseline orupstreamKronosdata/licensingacceptance;noassets/expressionscopied.",
+        "Allninebindings/forcedoutcomeschecked;actualworldroutingtimingcoveredbysharedOR-MIG-0036,notnineindependentnativeclicks."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0038",
+      "revision": 1,
+      "feature_name": "Ordinary stew both preparation orders manual fire cooking and retained-bowl consumption",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "cb8975bc8fd6524e1e322f8da28a1e30244d81ee"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/application.rs",
+          "crates/server/src/content.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/assembly.rs",
+          "crates/world/src/cooking.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "WikiStewrecipefacilityexplicitlyrangewhileintro/instructions/chartpermitfire;chosenmanualfire1timingrequiresindependentV4comparisonagainstdefaultdonor4.",
+        "DonorStewEvents onlypotatofirst3pairs/noexplicitlevelortiming;Wiki eitherorder6pairs/boostable25/2ticks selecteddeliberately.",
+        "Bowlreturn followsFoodDataexplicitstage;WikiStewconfirms11HP butdoesnotexplicitlystateemptybowlreturninthisarticle.",
+        "Independentnative/lifecycle/referenceacceptancepending;MakeX/repeats/ranges/quests/modifiers/curry/spicystew/fullsound/activity/customPGhooksremainseparate."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0039",
+      "revision": 1,
+      "feature_name": "Manual chocolate bar and dust cake topping with live level and XP",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "f79a54671dfd48534d1a20e9bb1dc2aac2d4b85c"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/application.rs",
+          "crates/server/src/content.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/assembly.rs",
+          "crates/world/src/cooking.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "DonorCakeEvents onlybarandnoexplicitgate/XP;Wiki15336092 dust/current50/30XP/2ticks selectedintentionally.",
+        "Fouringredientuncookedcake,baking,quantity/MakeX,exactflavor/soundandindependentnative/lifecycle/referenceacceptancepending.",
+        "Existingmultipartconsumptioncontract0025 retained;thisunitdoesnotreclaimitsindependentacceptance."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0040",
+      "revision": 1,
+      "feature_name": "Shared captured multi-input assembly and four-ingredient cake batter with container returns",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "d63c0258dd6960bffc3ef43736f4140efb3b757a"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "IN_PROGRESS",
+            "reason": "Independently executed13 existing exact-SHA authoritative/helper tests PASS, including actual held batch routing, two processing clocks, pair/timed regression, live level/member revocation, cancellation and no repeated rewards. Whole runtime/native/lifecycle/reference acceptance remains open.",
+            "evidence": [
+              "docs/openrune/verification/independent/OR-MIG-0040-d63c0258dd69/manifest.json"
+            ]
+          },
+          "V1": {
+            "status": "IN_PROGRESS",
+            "reason": "Independently executed13 existing exact-SHA authoritative/helper tests PASS, including actual held batch routing, two processing clocks, pair/timed regression, live level/member revocation, cancellation and no repeated rewards. Whole runtime/native/lifecycle/reference acceptance remains open.",
+            "evidence": [
+              "docs/openrune/verification/independent/OR-MIG-0040-d63c0258dd69/manifest.json"
+            ]
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": [
+          "OR-MIG-0040-d63c0258dd69"
+        ]
+      },
+      "current_integration": {
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/cooking.rs",
+          "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs"
+        ]
+      },
+      "lane": "B",
+      "open_defects": [],
+      "reference_limitations": [
+        "Manualbatterpreparationonly;cakebakingrange/40/180XP/tinreturnonsuccessorburnremainsseparateandunregistered.",
+        "Batchadaptercurrentlyordinarysingle-countdistinctingredients/nonstackoutputs;notunqualifiedgeneralstackmaterialorbulkproductioncoverage.",
+        "Donorunchecked4debit/3credit/noexplicitlevel/timing intentionallyreplacedbyWiki40/2ticks/0XPandatomic/capturedslotpolicy.",
+        "IndependentV0-V4/native/lifecycle/referenceacceptance,quantity/MakeX/sounds/exactflavorremainqueued. Modal-openingcancellationnowalsoappliesexistingpairassemblyandmustberegressedindependently."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0041",
+      "revision": 1,
+      "feature_name": "Manual ordinary range surfaces bread baking and asymmetric swordfish rules",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "902e55c7dd619ab5af4dd5f8bba0284ed4f75dca"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/cooking.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "Existing sharedskills::success_rate roundingcanalreadygiveBreadchance1at37,whileforcedno-drawcutoff38;belowcutoffstilldraws. V4mustverifyprobabilityprecision,notassumestrictnonzeroburnchanceatalllowerlevels.",
+        "DonorBreadstop34/uniform50/256andfirebindingdeliberatelynotadopted;Wikiordinaryrange38/118492/rangeonlyselected. DonorSwordfishrange81/50/256 differsWiki80/30/310.",
+        "Metadataunitisolatessurface/asymmetric/newBreadlogicusingprerequisiteprofiles;doesnotclaimfreshnativeall14inputsorloadedsceneacceptance.",
+        "Item-on-standardrangeonly;Cook-op1/MakeX/autoquantity,otherhearths/questgates,cape/gauntlet/outfits/activity,sounds/exactflavor/customPGhooks,cakebaking andindependentnative/lifecycle/referenceacceptancepending."
+      ]
+    },
+    {
+      "implementation_id": "OR-MIG-0042",
+      "revision": 1,
+      "feature_name": "Manual ordinary range-only redberry meat apple pie and plain pizza baking",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "052d24c0b0d85989785f94ffe0910a6b39af1412"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2763,13 +3414,13 @@
         },
         "changed_production_paths": []
       },
-      "lane": "B",
+      "lane": "A",
       "open_defects": [],
       "reference_limitations": [
-        "Strawberry prose1+6% differs/ambiguous against explicit table atbase50;table/sourceceil6% chosen and V4 comparison requested.",
-        "Watermelon donorceil5% differs from Wiki floor5%+1 atbase20/40/60/80;Wiki table/prose chosen deliberately.",
-        "Bowl return supported by donor stage list;Wiki bowl page confirms healing but does not explicitly describe return.",
-        "Independent native/lifecycle/reference and full sound/activity/combat timing acceptance pending;creation/cutting/cooking and other special foods excluded."
+        "Donor3piesuniformstop50/uniform50/256andfireallfoods differsWiki45/54/63/specificcurves/rangeonly;selectedadaptationexplicit.",
+        "BurntpiecacheoffersEmpty Dish;thisbatchdoesnotaddthatfollow-uphandler orclaimitaccepted.",
+        "Manualrangeonly;BakePiespell,MakeX/repeat/Cook-op1/shortcuts,memberspies/cake-tinreturns,specialsurfaces/modifiers,sounds/exactflavor andindependentnative/lifecycle/referenceacceptancepending.",
+        "Existing sharedsuccess_rateprecision/cutoffobligationsretained;metadata/preflightandfocusedtestsarenotloadedscene/nativeacceptance."
       ]
     }
   ],
@@ -2784,7 +3435,7 @@
       "lane": "C",
       "feature": "OR-MIG-0006",
       "action": "Inspect shared changes since the last recorded native integration campaign; select affected current-build regression scopes without inheriting older PASS results",
-      "sha": "1efda0299062de44fd7196e6555c19b87f02d12b"
+      "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a"
     },
     {
       "lane": "A",
@@ -3770,26 +4421,32 @@
       "is_latest_revision": true,
       "levels": {
         "V0": {
-          "status": "IN_PROGRESS",
-          "reason": "Exact-SHA production crate compiled; runtime cache/registration and packet decoder acceptance remain open.",
+          "status": "PASS",
+          "reason": "Exact revision3 server compiled, real cache-backed startup and genuine native ordinary meat/cake dispatch reached production handlers.",
           "evidence": [
-            "docs/openrune/verification/independent/OR-MIG-0024-ae3d234c7176-independent/manifest.json"
+            "docs/openrune/verification/independent/deep-food/independent-assessment.json"
           ]
         },
         "V1": {
           "status": "IN_PROGRESS",
-          "reason": "Four independent authoritative World action tests PASS across 319 fixtures: all selected slots, full bags, duplicate/stale input, overheal, remainders and malformed transactions. Runtime packet decode and complete food matrix remain open.",
+          "reason": "Exact-SHA independent timer/food diagnosis PASS: actual queued cake commits HP5->9, followed by passive regeneration to10 without more food or XP. This supports, but does not fully prove, the native strict-equality oracle diagnosis. Earlier rejected same-clock hypothesis and failed test are retained.",
           "evidence": [
-            "docs/openrune/verification/independent/OR-MIG-0024-ae3d234c7176-independent/manifest.json"
+            "docs/openrune/verification/independent/integration-external-food-regeneration-ae3d234c71764dd2364f8452fc1974a54a6783f0-1792280932175111100/manifest.json"
           ]
         },
         "V2": {
-          "status": "NOT_STARTED",
-          "reason": "No complete level result at this exact contract revision"
+          "status": "IN_PROGRESS",
+          "reason": "Native meat consumption confirmed by client, and cake stage selected-slot commit confirmed by server trace and restarted native inventory capture. Six-action driver timed out at its strict intermediate-HP equality check; remaining four bites are untested. Acknowledged save, actual restart/native authentication with independently decoded durable inventory and displayed stats PASS. Full V2/V3 acceptance remains open.",
+          "evidence": [
+            "docs/openrune/verification/independent/deep-food/independent-assessment.json"
+          ]
         },
         "V3": {
-          "status": "NOT_STARTED",
-          "reason": "No complete level result at this exact contract revision"
+          "status": "IN_PROGRESS",
+          "reason": "Native meat consumption confirmed by client, and cake stage selected-slot commit confirmed by server trace and restarted native inventory capture. Six-action driver timed out at its strict intermediate-HP equality check; remaining four bites are untested. Acknowledged save, actual restart/native authentication with independently decoded durable inventory and displayed stats PASS. Full V2/V3 acceptance remains open.",
+          "evidence": [
+            "docs/openrune/verification/independent/deep-food/independent-assessment.json"
+          ]
         },
         "V4": {
           "status": "NOT_STARTED",
@@ -3893,6 +4550,208 @@
           "evidence": [
             "docs/openrune/verification/independent/reference-food-1446167370dece10751c4c332929af880259ee23/comparison.json"
           ]
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0036",
+      "revision": 1,
+      "implementation_sha": "8065a96c23c16c7b7cfd90e402acd015e356d706",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0037",
+      "revision": 1,
+      "implementation_sha": "fbf10373608cb22b03c89ce9f6bfcb12491b994e",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0038",
+      "revision": 1,
+      "implementation_sha": "cb8975bc8fd6524e1e322f8da28a1e30244d81ee",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0039",
+      "revision": 1,
+      "implementation_sha": "f79a54671dfd48534d1a20e9bb1dc2aac2d4b85c",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0040",
+      "revision": 1,
+      "implementation_sha": "d63c0258dd6960bffc3ef43736f4140efb3b757a",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "IN_PROGRESS",
+          "reason": "Independently executed13 existing exact-SHA authoritative/helper tests PASS, including actual held batch routing, two processing clocks, pair/timed regression, live level/member revocation, cancellation and no repeated rewards. Whole runtime/native/lifecycle/reference acceptance remains open.",
+          "evidence": [
+            "docs/openrune/verification/independent/OR-MIG-0040-d63c0258dd69/manifest.json"
+          ]
+        },
+        "V1": {
+          "status": "IN_PROGRESS",
+          "reason": "Independently executed13 existing exact-SHA authoritative/helper tests PASS, including actual held batch routing, two processing clocks, pair/timed regression, live level/member revocation, cancellation and no repeated rewards. Whole runtime/native/lifecycle/reference acceptance remains open.",
+          "evidence": [
+            "docs/openrune/verification/independent/OR-MIG-0040-d63c0258dd69/manifest.json"
+          ]
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0041",
+      "revision": 1,
+      "implementation_sha": "902e55c7dd619ab5af4dd5f8bba0284ed4f75dca",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0042",
+      "revision": 1,
+      "implementation_sha": "052d24c0b0d85989785f94ffe0910a6b39af1412",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
         }
       }
     }

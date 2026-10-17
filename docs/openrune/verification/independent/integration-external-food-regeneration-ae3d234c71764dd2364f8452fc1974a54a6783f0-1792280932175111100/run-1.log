@@ -1,0 +1,8 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\ae3d234c71764dd2364f8452fc1974a54a6783f0\external-harness-3357257500)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.09s
+     Running tests\authoritative.rs (C:\Projects\OSRSRSPS\agent7-verification\work\ae3d234c71764dd2364f8452fc1974a54a6783f0\target\debug\deps\authoritative-f5a42925a472fea9.exe)
+
+running 1 test
+test food_commit_and_subsequent_passive_regeneration_have_distinct_valid_hp_observations ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.75s

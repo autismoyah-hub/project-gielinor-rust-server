@@ -1,0 +1,1 @@
+{"observed_utc": "2026-10-17T23:52:56.510485+00:00", "decision": "PROCEED", "measurement": {"available_ram": 7431364608, "active_compilers": ["\"cargo.exe\",\"3860\",\"RDP-Tcp#0\",\"2\",\"23,172 K\"", "\"rustc.exe\",\"14176\",\"RDP-Tcp#0\",\"2\",\"922,244 K\""], "cpu_percent": 14.11, "disk_free": 47003652096}}

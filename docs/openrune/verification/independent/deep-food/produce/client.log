@@ -1,0 +1,21 @@
+Live native login accepted, player 1
+World background load: 4.842s
+Live world built: 6409 objects, 522622 triangles, 0 missing regions
+Food readiness: elapsed=10 stage=0 world=true scripts_busy=true
+Food readiness: elapsed=20 stage=0 world=true scripts_busy=false
+Food readiness: elapsed=30 stage=0 world=true scripts_busy=true
+Food readiness: elapsed=40 stage=0 world=true scripts_busy=true
+Food readiness: elapsed=50 stage=0 world=true scripts_busy=false
+Native pointer selected side tab 3 at [612, 186]
+Native interface operation 2: component=9764864, child=7, outbound=[47]
+Native interface operation 2: component=9764864, child=3, outbound=[47]
+Food readiness: elapsed=61 stage=1 world=true scripts_busy=false
+Food readiness: elapsed=71 stage=1 world=true scripts_busy=false
+Food readiness: elapsed=81 stage=1 world=true scripts_busy=false
+Food readiness: elapsed=91 stage=1 world=true scripts_busy=false
+Food readiness: elapsed=101 stage=1 world=true scripts_busy=false
+Food readiness: elapsed=112 stage=1 world=true scripts_busy=false
+Food readiness: elapsed=122 stage=1 world=true scripts_busy=false
+Food readiness: elapsed=132 stage=1 world=true scripts_busy=false
+Food readiness: elapsed=143 stage=1 world=true scripts_busy=false
+Error: "native food timeout; missing state changes are not inferred"

@@ -1,0 +1,20 @@
+   Compiling gielinor-world v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\d63c0258dd6960bffc3ef43736f4140efb3b757a\crates\world)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 59.52s
+     Running unittests src\lib.rs (C:\Projects\OSRSRSPS\agent7-verification\work\d63c0258dd6960bffc3ef43736f4140efb3b757a\target\debug\deps\gielinor_world-379bc28e5667f47e.exe)
+
+running 13 tests
+test assembly::tests::output_failure_keeps_both_inputs_and_modified_slots ... ok
+test assembly::tests::exact_slots_and_live_level_gate_atomic_exchange ... ok
+test assembly::tests::member_recipe_checks_entitlement_and_boosted_level_before_awarding ... ok
+test assembly::tests::failed_exchange_or_reward_policy_preserves_inventory_and_stats ... ok
+test assembly::tests::reward_and_inventory_commit_together_at_account_rate ... ok
+test assembly::batch_tests::batch_selected_duplicate_fullbag_returns_and_late_refusals_are_atomic ... ok
+test simulation::held_use_actions::assembly_tests::nonpositive_current_cooking_cannot_admit_assembly ... ok
+test simulation::held_use_actions::assembly_tests::unsupported_held_pair_interrupts_pending_assembly_without_reward ... ok
+test simulation::held_use_actions::assembly_tests::assembly_reward_is_once_only_and_cancelled_work_has_no_xp ... ok
+test simulation::held_use_actions::assembly_tests::member_assembly_rechecks_revocation_without_input_or_xp_loss ... ok
+test simulation::held_use_actions::assembly_tests::assembly_reverse_pair_rechecks_slots_level_and_cancellation ... ok
+test simulation::held_use_actions::assembly_tests::batch_assembly_actual_held_route_two_clocks_and_interrupts_preserve_pair_users ... ok
+test simulation::held_use_actions::assembly_tests::timed_assembly_uses_requested_processing_clock_and_live_requirements ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 427 filtered out; finished in 0.70s

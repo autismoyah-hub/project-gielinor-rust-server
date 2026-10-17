@@ -1,0 +1,67 @@
+{
+  "implementation_id": "OR-MIG-0040",
+  "implementation_commit_sha": "d63c0258dd6960bffc3ef43736f4140efb3b757a",
+  "source_tree": "21c0ffe00b21472666e05bd1da600826d7daca0e",
+  "queue_commit": "95c5ef9f2889b121a5063f153d61637f0289605a",
+  "independent_verification": true,
+  "timestamp_utc": "2026-10-17T23:50:10.812702+00:00",
+  "available_memory_bytes": 8161804288,
+  "active_compilers": [
+    "\"cargo.exe\",\"5344\",\"RDP-Tcp#0\",\"2\",\"23,236 K\"",
+    "\"rustc.exe\",\"16168\",\"RDP-Tcp#0\",\"2\",\"251,780 K\""
+  ],
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "--version"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.05,
+      "log": "docs\\openrune\\verification\\independent\\OR-MIG-0040-d63c0258dd69\\run-0.log",
+      "tests_passed": 0,
+      "zero_tests": false
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "-p",
+        "gielinor-world",
+        "--lib",
+        "assembly"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 60.41,
+      "log": "docs\\openrune\\verification\\independent\\OR-MIG-0040-d63c0258dd69\\run-1.log",
+      "tests_passed": 13,
+      "zero_tests": false
+    }
+  ],
+  "dependency_versions_present_at_target": [
+    {
+      "implementation_id": "OR-MIG-0032",
+      "revision": 1,
+      "sha": "fe04a83de2b6f7f3edefc92c7f7031290a5908b0",
+      "later_revisions_not_assumed_tested": false
+    }
+  ],
+  "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-gnu\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+  "resource_measurement": {
+    "available_ram": 8166834176,
+    "active_compilers": [
+      "\"cargo.exe\",\"5344\",\"RDP-Tcp#0\",\"2\",\"23,236 K\"",
+      "\"rustc.exe\",\"16168\",\"RDP-Tcp#0\",\"2\",\"240,192 K\""
+    ],
+    "cpu_percent": 13.39,
+    "disk_free": 47602036736
+  },
+  "outcome": "PARTIAL",
+  "test_binary_sha256": {
+    "target\\debug\\deps\\gielinor_world-379bc28e5667f47e.exe": "411a6ec9e124692932248168726f6c2f9c87abd8845f33399d81d8a7bc350ff7"
+  }
+}
