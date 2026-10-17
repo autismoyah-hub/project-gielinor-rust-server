@@ -1,0 +1,476 @@
+{
+  "scope": "Developed connected environment quality study; user quality agreement pending; no production integration",
+  "functional_baseline": "1153b4e7281435e83f60bff5131b4a3f0a8e0023",
+  "review_parent": "070b8e9f1144a4eb4e82fbac788d257dfe299c14",
+  "native_client_source": "ff9cef17fd1ce3ec2ebf8d1181fee31411999c4c",
+  "concepts": "A/B/C preserved unchanged; none approved",
+  "preferred_study_treatment": "dressed; not approval",
+  "private_gallery": "work/environment-quality-study/review-ready/gallery.html",
+  "rights": "Cache-derived media withheld locally. Published diagrams contain only original geometry and typography.",
+  "final_audit": {
+    "loaded": 960,
+    "reached": 802,
+    "water": 64,
+    "hazard_escapes": 0,
+    "issues": 0
+  },
+  "audit_log_sha256": "1af643ed4e697a7281e000e047dd3b4943a2207311e05c526aa057f38b77db9a",
+  "cache_asset_summaries": [
+    "ASSET 327 \"Broken cart wheel\" 1x1 walk=2 ops=[None, None, None, None, None]",
+    "ASSET 362 \"Barrel\" 1x1 walk=2 ops=[None, None, None, None, None]",
+    "ASSET 363 \"Barrel\" 1x1 walk=2 ops=[None, None, None, None, None]",
+    "ASSET 409 \"Altar\" 2x1 walk=2 ops=[Some(\"Pray\"), None, None, None, None]",
+    "ASSET 568 \"Dwarf statue\" 1x1 walk=2 ops=[None, None, None, None, None]",
+    "ASSET 610 \"Workbench\" 2x1 walk=2 ops=[None, None, None, None, None]",
+    "ASSET 672 \"Broken barrel\" 1x1 walk=2 ops=[None, None, None, None, None]",
+    "ASSET 718 \"Barrel\" 1x1 walk=2 ops=[None, None, None, None, None]",
+    "ASSET 909 \"Plaque\" 1x1 walk=2 ops=[Some(\"Read\"), None, None, None, None]",
+    "ASSET 1106 \"Bench\" 2x1 walk=2 ops=[None, None, None, None, None]",
+    "ASSET 1173 \"Small fern\" 1x1 walk=0 ops=[None, None, None, None, None]",
+    "ASSET 2030 \"Furnace\" 3x3 walk=2 ops=[None, Some(\"Smelt\"), None, None, None]",
+    "ASSET 2097 \"Anvil\" 1x1 walk=2 ops=[Some(\"Smith\"), None, None, None, None]",
+    "ASSET 2188 \"Bellows\" 1x1 walk=0 ops=[None, None, None, None, None]",
+    "ASSET 5569 \"Dry stone wall\" 1x1 walk=2 ops=[None, None, None, None, None]",
+    "ASSET 5574 \"Sack\" 1x1 walk=2 ops=[None, None, None, None, None]",
+    "ASSET 6084 \"Bank booth\" 1x1 walk=2 ops=[None, Some(\"Bank\"), Some(\"Collect\"), None, None]",
+    "ASSET 6132 \"null\" 1x1 walk=2 ops=[None, None, None, None, None]",
+    "ASSET 6143 \"null\" 1x1 walk=2 ops=[None, None, None, None, None]",
+    "ASSET 7017 \"Pillar\" 1x1 walk=2 ops=[None, None, None, None, None]",
+    "ASSET 9736 \"Range\" 1x2 walk=2 ops=[Some(\"Cook\"), None, None, None, None]",
+    "ASSET 11020 \"Brazier\" 1x1 walk=2 ops=[Some(\"Investigate\"), None, None, None, None]",
+    "ASSET 15936 \"Water Pump\" 1x1 walk=2 ops=[None, None, None, None, None]",
+    "ASSET 16474 \"Coal\" 1x1 walk=2 ops=[None, None, None, None, None]",
+    "ASSET 16475 \"Coal\" 1x1 walk=2 ops=[None, None, None, None, None]",
+    "ASSET 16811 \"Ceremonial Brazier\" 2x2 walk=2 ops=[None, None, None, None, None]",
+    "ASSET 18511 \"Water wheel\" 1x3 walk=2 ops=[None, None, None, None, None]",
+    "ASSET 18526 \"Furnace\" 2x3 walk=2 ops=[None, None, None, None, None]",
+    "ASSET 21442 \"Ore crate\" 1x1 walk=2 ops=[None, None, None, None, None]",
+    "ASSET 57692 \"Portal\" 1x1 walk=2 ops=[Some(\"Enter\"), None, None, None, None]",
+    "ASSET 57694 \"Chest\" 1x1 walk=2 ops=[Some(\"Search\"), Some(\"\"), Some(\"\"), Some(\"\"), Some(\"\")]"
+  ],
+  "final_treatments": {
+    "dressed": {
+      "scope": "Detached environmental quality study. No production integration or gameplay acceptance.",
+      "treatment": "dressed",
+      "object_assembly": "authored",
+      "config_sha256": "b063c7d369b87753077de88e984b55d2bef68cb9ecd177d3fc024b815dfe3ae0",
+      "scene_sha256": "9bdc03e29a5808e83466eed8b14eb3bf685e7cff978c3a191833ecae309d205c",
+      "views": [
+        {
+          "name": "overview",
+          "camera": [
+            56,
+            52,
+            2048,
+            7000,
+            "overview"
+          ],
+          "raw_sha256": "48c23658202cbcfd7b69f8e14c6c9f49b1ae061e654149bad6fbe5bfe6df6a1e",
+          "png_sha256": "8c1be1bd0b936b9b1ef88ac9c4f250ac352af56e5f4939faa7fe1d5870ad8fe1",
+          "visually_reviewed": true,
+          "camera_sidecar": "OFFLINE ONLY\npreset=overview\nobject_assembly=authored\ncanvas=1600x1200\nlocal_target=56,52\ntarget_height=-240\nyaw_units=2048\ndistance=7000\nelevation=10000\nfocal=2000\nscene=WORKSPACE\\work\\environment-quality-study\\review-ready\\dressed\\environment.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+        },
+        {
+          "name": "overview-reverse",
+          "camera": [
+            56,
+            52,
+            10240,
+            7000,
+            "overview"
+          ],
+          "raw_sha256": "3156bad689ee66687d08bc0d9a34b0b40130bc9aec93a5608951f7a593bf71ec",
+          "png_sha256": "f9a72e292a4586b4bdaf8aaca202ed44d0b21278b2c813c8994bbb6686643225",
+          "visually_reviewed": true,
+          "camera_sidecar": "OFFLINE ONLY\npreset=overview\nobject_assembly=authored\ncanvas=1600x1200\nlocal_target=56,52\ntarget_height=-240\nyaw_units=10240\ndistance=7000\nelevation=10000\nfocal=2000\nscene=WORKSPACE\\work\\environment-quality-study\\review-ready\\dressed\\environment.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+        },
+        {
+          "name": "plan",
+          "camera": [
+            56,
+            52,
+            0,
+            1,
+            "plan"
+          ],
+          "raw_sha256": "d14bc48ccb59a753ef67531b288f17d5b7557a95511c451441500bc4c5c7f665",
+          "png_sha256": "1e2c58ef1d28779f3984ddc5ac10ce5f06565c7c4225ac9836c249e9198641dc",
+          "visually_reviewed": true,
+          "camera_sidecar": "OFFLINE ONLY\npreset=plan\nobject_assembly=authored\ncanvas=1600x1400\nlocal_target=56,52\ntarget_height=-240\nyaw_units=0\ndistance=1\nelevation=12000\nfocal=2200\nscene=WORKSPACE\\work\\environment-quality-study\\review-ready\\dressed\\environment.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+        },
+        {
+          "name": "entrance",
+          "camera": [
+            48,
+            38,
+            0,
+            1700,
+            "detail"
+          ],
+          "raw_sha256": "de79b568cbd9e8d862cba1a198ca817c044c765628d246f614657e20f45d275c",
+          "png_sha256": "c5c0a3a740bca2551a8e829d4fe5cf2a6d8339c1507dc0e0242dd154cbc52b29",
+          "visually_reviewed": true,
+          "camera_sidecar": "OFFLINE ONLY\npreset=detail\nobject_assembly=authored\ncanvas=765x503\nlocal_target=48,38\ntarget_height=-240\nyaw_units=0\ndistance=1700\nelevation=1300\nfocal=760\nscene=WORKSPACE\\work\\environment-quality-study\\review-ready\\dressed\\environment.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+        },
+        {
+          "name": "sanctuary-arrival",
+          "camera": [
+            48,
+            45,
+            0,
+            1700,
+            "detail"
+          ],
+          "raw_sha256": "9996602d4a4d08142ad02737b73cf6aadbd28b76848076e13e815a714e90bb6e",
+          "png_sha256": "dd38b81d922388ba0ffef0f41889f39712e572398cb911a96b8cbb00e138cf56",
+          "visually_reviewed": true,
+          "camera_sidecar": "OFFLINE ONLY\npreset=detail\nobject_assembly=authored\ncanvas=765x503\nlocal_target=48,45\ntarget_height=-240\nyaw_units=0\ndistance=1700\nelevation=1300\nfocal=760\nscene=WORKSPACE\\work\\environment-quality-study\\review-ready\\dressed\\environment.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+        },
+        {
+          "name": "sanctuary-services",
+          "camera": [
+            46,
+            49,
+            12288,
+            1700,
+            "detail"
+          ],
+          "raw_sha256": "8788cd96a648d67bd7bbe6b1f8a3b399e7f5bf2ed36686e9aff8e9977eb8446f",
+          "png_sha256": "72a1d1036c486e587133ff450e62d28c1c6fb7fea7c5ec97e7a8c936d60d6795",
+          "visually_reviewed": true,
+          "camera_sidecar": "OFFLINE ONLY\npreset=detail\nobject_assembly=authored\ncanvas=765x503\nlocal_target=46,49\ntarget_height=-240\nyaw_units=12288\ndistance=1700\nelevation=1300\nfocal=760\nscene=WORKSPACE\\work\\environment-quality-study\\review-ready\\dressed\\environment.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+        },
+        {
+          "name": "sanctuary-return",
+          "camera": [
+            49,
+            51,
+            8192,
+            1700,
+            "detail"
+          ],
+          "raw_sha256": "d751d1e638bf7ce6e065409947ac5159be4ad88a3091fb9cca73832362b9402b",
+          "png_sha256": "dd78c14c14d7fcbf12e4af7f0ca19a8343461642077b1b1c1841623bbbfdf77b",
+          "visually_reviewed": true,
+          "camera_sidecar": "OFFLINE ONLY\npreset=detail\nobject_assembly=authored\ncanvas=765x503\nlocal_target=49,51\ntarget_height=-240\nyaw_units=8192\ndistance=1700\nelevation=1300\nfocal=760\nscene=WORKSPACE\\work\\environment-quality-study\\review-ready\\dressed\\environment.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+        },
+        {
+          "name": "workshop-arrival",
+          "camera": [
+            60,
+            47,
+            12288,
+            1700,
+            "detail"
+          ],
+          "raw_sha256": "de977be08dd127baaa2700d57aba7621c8a06e5377b40410ff64284d3da09d9a",
+          "png_sha256": "4e69846e115f278b6b9afaba82a388849af8e14d693e2ffc042b5bf000fa2ce7",
+          "visually_reviewed": true,
+          "camera_sidecar": "OFFLINE ONLY\npreset=detail\nobject_assembly=authored\ncanvas=765x503\nlocal_target=60,47\ntarget_height=-240\nyaw_units=12288\ndistance=1700\nelevation=1300\nfocal=760\nscene=WORKSPACE\\work\\environment-quality-study\\review-ready\\dressed\\environment.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+        },
+        {
+          "name": "workshop-bench",
+          "camera": [
+            62,
+            51,
+            0,
+            1700,
+            "detail"
+          ],
+          "raw_sha256": "7786c9def2dbe97d9f1a8c1be2f9d408d8f4c555ebc28d61edce0e1d9e57c4b7",
+          "png_sha256": "35f0093045da5e9567a998ad8de421b74518c4adbafe22e32c9ea0026f984b98",
+          "visually_reviewed": true,
+          "camera_sidecar": "OFFLINE ONLY\npreset=detail\nobject_assembly=authored\ncanvas=765x503\nlocal_target=62,51\ntarget_height=-240\nyaw_units=0\ndistance=1700\nelevation=1300\nfocal=760\nscene=WORKSPACE\\work\\environment-quality-study\\review-ready\\dressed\\environment.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+        },
+        {
+          "name": "workshop-water-link",
+          "camera": [
+            64,
+            53,
+            0,
+            1700,
+            "detail"
+          ],
+          "raw_sha256": "096e7a9b3dcd1319a4eda8e18e1245f26f916d461216974533b5085bf794f319",
+          "png_sha256": "d62cde5255c03d8050d5613d3aac7dd03ce410392f7fe1dc6cf25c09104355bf",
+          "visually_reviewed": true,
+          "camera_sidecar": "OFFLINE ONLY\npreset=detail\nobject_assembly=authored\ncanvas=765x503\nlocal_target=64,53\ntarget_height=-240\nyaw_units=0\ndistance=1700\nelevation=1300\nfocal=760\nscene=WORKSPACE\\work\\environment-quality-study\\review-ready\\dressed\\environment.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+        },
+        {
+          "name": "waterworks-wheel",
+          "camera": [
+            60,
+            60,
+            4096,
+            2400,
+            "detail"
+          ],
+          "raw_sha256": "1480a5e90ec360728c6a8e39b49a2927805b325f2a8eb39d094d2d21c143eb7a",
+          "png_sha256": "81b999b5f8c86c6c9f7ec38ac82aab6dd6bc48ba83ba1f9412c55afde1fa6462",
+          "visually_reviewed": true,
+          "camera_sidecar": "OFFLINE ONLY\npreset=detail\nobject_assembly=authored\ncanvas=765x503\nlocal_target=60,60\ntarget_height=-240\nyaw_units=4096\ndistance=2400\nelevation=1300\nfocal=760\nscene=WORKSPACE\\work\\environment-quality-study\\review-ready\\dressed\\environment.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+        },
+        {
+          "name": "waterworks-maintenance",
+          "camera": [
+            60,
+            60,
+            2048,
+            2200,
+            "detail"
+          ],
+          "raw_sha256": "29be65311cc3c94a50711bc7dc411ae16707c299d794d9bbe54e125f724fcf6e",
+          "png_sha256": "9b25ce30348ca81db39634b766f3a27cf6c488251291baa827e7736249b2041e",
+          "visually_reviewed": true,
+          "camera_sidecar": "OFFLINE ONLY\npreset=detail\nobject_assembly=authored\ncanvas=765x503\nlocal_target=60,60\ntarget_height=-240\nyaw_units=2048\ndistance=2200\nelevation=1300\nfocal=760\nscene=WORKSPACE\\work\\environment-quality-study\\review-ready\\dressed\\environment.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+        },
+        {
+          "name": "north-crossing",
+          "camera": [
+            67,
+            65,
+            8192,
+            1800,
+            "detail"
+          ],
+          "raw_sha256": "631d8003a778b14cd962fa4341aabe633f1ebc2613d31f785c36d5eab900a4d0",
+          "png_sha256": "2fd1c05fffe21c1c4c950bd5553e8c74ddb75891c0f9d0482c0106ad8172cb05",
+          "visually_reviewed": true,
+          "camera_sidecar": "OFFLINE ONLY\npreset=detail\nobject_assembly=authored\ncanvas=765x503\nlocal_target=67,65\ntarget_height=-240\nyaw_units=8192\ndistance=1800\nelevation=1300\nfocal=760\nscene=WORKSPACE\\work\\environment-quality-study\\review-ready\\dressed\\environment.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+        },
+        {
+          "name": "foundry-reveal",
+          "camera": [
+            64,
+            67,
+            0,
+            1700,
+            "detail"
+          ],
+          "raw_sha256": "a6cb5be65b7e9f452202b07b418e988aeb054d8383a1c2836bc6bc2c55fd689b",
+          "png_sha256": "be1ede0e66412a85a6717d2036172f679836decf014fb7c813e7dac95ca34e26",
+          "visually_reviewed": true,
+          "camera_sidecar": "OFFLINE ONLY\npreset=detail\nobject_assembly=authored\ncanvas=765x503\nlocal_target=64,67\ntarget_height=-240\nyaw_units=0\ndistance=1700\nelevation=1300\nfocal=760\nscene=WORKSPACE\\work\\environment-quality-study\\review-ready\\dressed\\environment.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+        },
+        {
+          "name": "quiet-return",
+          "camera": [
+            51,
+            59,
+            8192,
+            1700,
+            "detail"
+          ],
+          "raw_sha256": "8f22d17a188026e2e44e8f9717939e667cda8bee321b6c40efc31d06540e2ff2",
+          "png_sha256": "9eef4a14a33c0c9a6ca27e96f3240e9169a51f7aa592db130697619dc317a0cb",
+          "visually_reviewed": true,
+          "camera_sidecar": "OFFLINE ONLY\npreset=detail\nobject_assembly=authored\ncanvas=765x503\nlocal_target=51,59\ntarget_height=-240\nyaw_units=8192\ndistance=1700\nelevation=1300\nfocal=760\nscene=WORKSPACE\\work\\environment-quality-study\\review-ready\\dressed\\environment.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+        }
+      ],
+      "renderer_sha256": "d092d099e903fcee145515f0ebcf4c0dd2afdc1e8b02bde0ef40f9e1451e2243"
+    },
+    "austere": {
+      "scope": "Detached environmental quality study. No production integration or gameplay acceptance.",
+      "treatment": "austere",
+      "object_assembly": "authored",
+      "config_sha256": "b063c7d369b87753077de88e984b55d2bef68cb9ecd177d3fc024b815dfe3ae0",
+      "scene_sha256": "de583e5f1c504c5bec399cb4c8e13c328a6cadc1ed60f7d90151aa1919f1dbab",
+      "views": [
+        {
+          "name": "overview",
+          "camera": [
+            56,
+            52,
+            2048,
+            7000,
+            "overview"
+          ],
+          "raw_sha256": "33224e504d7f8b9247fc7075446a29660a68ed4c4307e0fcb1b53a24403f764b",
+          "png_sha256": "3d6982e0baa3652c02ea7bd3918b02eeab08994627161580144e32c2c7d6163f",
+          "visually_reviewed": true,
+          "camera_sidecar": "OFFLINE ONLY\npreset=overview\nobject_assembly=authored\ncanvas=1600x1200\nlocal_target=56,52\ntarget_height=-240\nyaw_units=2048\ndistance=7000\nelevation=10000\nfocal=2000\nscene=WORKSPACE\\work\\environment-quality-study\\review-ready\\austere\\environment.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+        },
+        {
+          "name": "entrance",
+          "camera": [
+            48,
+            38,
+            0,
+            1700,
+            "detail"
+          ],
+          "raw_sha256": "35029c70b679157f79b9b033ec741829d6895703e2847b31ec6be93d9f4e351c",
+          "png_sha256": "da970d671c89d787ee8c5bb7be6eb8168b8c8ab1f2443b9a392030dc82f0afa1",
+          "visually_reviewed": true,
+          "camera_sidecar": "OFFLINE ONLY\npreset=detail\nobject_assembly=authored\ncanvas=765x503\nlocal_target=48,38\ntarget_height=-240\nyaw_units=0\ndistance=1700\nelevation=1300\nfocal=760\nscene=WORKSPACE\\work\\environment-quality-study\\review-ready\\austere\\environment.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+        },
+        {
+          "name": "sanctuary-arrival",
+          "camera": [
+            48,
+            45,
+            0,
+            1700,
+            "detail"
+          ],
+          "raw_sha256": "4e8cd3db40444af86763fad8e9cdf2f0b915fd5d5fa28d6e32b257338abd0dd0",
+          "png_sha256": "dda6d8411fdccdfcbdabcc348d1259e0fd9ac234ce2357cce4674ca785294af3",
+          "visually_reviewed": true,
+          "camera_sidecar": "OFFLINE ONLY\npreset=detail\nobject_assembly=authored\ncanvas=765x503\nlocal_target=48,45\ntarget_height=-240\nyaw_units=0\ndistance=1700\nelevation=1300\nfocal=760\nscene=WORKSPACE\\work\\environment-quality-study\\review-ready\\austere\\environment.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+        },
+        {
+          "name": "workshop-bench",
+          "camera": [
+            62,
+            51,
+            0,
+            1700,
+            "detail"
+          ],
+          "raw_sha256": "fd4c18ecc3482563c6c2622bcc10acfa09dbe6caf2fcf8f4919478427c717905",
+          "png_sha256": "4d4bb5d9532cdbf63a62b2b5ca70f761444ba62f51df18227b159bb48c044e75",
+          "visually_reviewed": true,
+          "camera_sidecar": "OFFLINE ONLY\npreset=detail\nobject_assembly=authored\ncanvas=765x503\nlocal_target=62,51\ntarget_height=-240\nyaw_units=0\ndistance=1700\nelevation=1300\nfocal=760\nscene=WORKSPACE\\work\\environment-quality-study\\review-ready\\austere\\environment.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+        },
+        {
+          "name": "waterworks-wheel",
+          "camera": [
+            60,
+            60,
+            4096,
+            2400,
+            "detail"
+          ],
+          "raw_sha256": "747376f65510793edbe6ba7569710d3f98ab3cbb41945b6f2fa270e83f4cf1b0",
+          "png_sha256": "dac115d7829630c95031506f0600dc02d8693199cbd68ea1574443364fd89013",
+          "visually_reviewed": true,
+          "camera_sidecar": "OFFLINE ONLY\npreset=detail\nobject_assembly=authored\ncanvas=765x503\nlocal_target=60,60\ntarget_height=-240\nyaw_units=4096\ndistance=2400\nelevation=1300\nfocal=760\nscene=WORKSPACE\\work\\environment-quality-study\\review-ready\\austere\\environment.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+        }
+      ],
+      "renderer_sha256": "d092d099e903fcee145515f0ebcf4c0dd2afdc1e8b02bde0ef40f9e1451e2243"
+    },
+    "city": {
+      "scope": "Detached environmental quality study. No production integration or gameplay acceptance.",
+      "treatment": "city",
+      "object_assembly": "authored",
+      "config_sha256": "b063c7d369b87753077de88e984b55d2bef68cb9ecd177d3fc024b815dfe3ae0",
+      "scene_sha256": "4dd7dd7fc2cf1b2dc1b63b845b5697ab7532a18f76a8a2c3e5ff6d74ea81cf80",
+      "views": [
+        {
+          "name": "overview",
+          "camera": [
+            56,
+            52,
+            2048,
+            7000,
+            "overview"
+          ],
+          "raw_sha256": "7fcdb566f42e8d12282e78203f4231493065c8c242a5d0e42907eab60a74613e",
+          "png_sha256": "f3efb7d798fe7f76a9e213095386cca48ab3a77f9bd0c8db52d59a4b8013f82b",
+          "visually_reviewed": true,
+          "camera_sidecar": "OFFLINE ONLY\npreset=overview\nobject_assembly=authored\ncanvas=1600x1200\nlocal_target=56,52\ntarget_height=-240\nyaw_units=2048\ndistance=7000\nelevation=10000\nfocal=2000\nscene=WORKSPACE\\work\\environment-quality-study\\review-ready\\city\\environment.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+        },
+        {
+          "name": "entrance",
+          "camera": [
+            48,
+            38,
+            0,
+            1700,
+            "detail"
+          ],
+          "raw_sha256": "f1c9c260e5fedf900f26a75a17eb8e0f04e9720d918a1896cbb1c5f1b3d3a18e",
+          "png_sha256": "58a2efe7ba192d9d661b4689f0559832bddbefa7c8782be7e3d3b9d031e3dcee",
+          "visually_reviewed": true,
+          "camera_sidecar": "OFFLINE ONLY\npreset=detail\nobject_assembly=authored\ncanvas=765x503\nlocal_target=48,38\ntarget_height=-240\nyaw_units=0\ndistance=1700\nelevation=1300\nfocal=760\nscene=WORKSPACE\\work\\environment-quality-study\\review-ready\\city\\environment.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+        },
+        {
+          "name": "sanctuary-arrival",
+          "camera": [
+            48,
+            45,
+            0,
+            1700,
+            "detail"
+          ],
+          "raw_sha256": "50cd2ce36b3344b5a6185a8f133978ca410e07cca5578a7ad3d25729ab2e42b2",
+          "png_sha256": "c4e36947893eab413d5bae345af832ac57ec837741faa91daafbd7ddf89b5c49",
+          "visually_reviewed": true,
+          "camera_sidecar": "OFFLINE ONLY\npreset=detail\nobject_assembly=authored\ncanvas=765x503\nlocal_target=48,45\ntarget_height=-240\nyaw_units=0\ndistance=1700\nelevation=1300\nfocal=760\nscene=WORKSPACE\\work\\environment-quality-study\\review-ready\\city\\environment.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+        },
+        {
+          "name": "workshop-bench",
+          "camera": [
+            62,
+            51,
+            0,
+            1700,
+            "detail"
+          ],
+          "raw_sha256": "0f080dc6bcc9aa4b1ce23493995cf5039bb50f2f6947efea26efd9238dddd297",
+          "png_sha256": "3274efcda499926fefd4342ea6697cc19526bac4c08227aad60cb21e2e69c070",
+          "visually_reviewed": true,
+          "camera_sidecar": "OFFLINE ONLY\npreset=detail\nobject_assembly=authored\ncanvas=765x503\nlocal_target=62,51\ntarget_height=-240\nyaw_units=0\ndistance=1700\nelevation=1300\nfocal=760\nscene=WORKSPACE\\work\\environment-quality-study\\review-ready\\city\\environment.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+        },
+        {
+          "name": "waterworks-wheel",
+          "camera": [
+            60,
+            60,
+            4096,
+            2400,
+            "detail"
+          ],
+          "raw_sha256": "da3f68341abecbdf7c29915be3578544ceb2fbf59c51a30bf6e005de567f73bf",
+          "png_sha256": "abd89d3abaab8fbc4f6a0b7d91e0e29abf71d2e3cd44a3679b3504e36ba0d50a",
+          "visually_reviewed": true,
+          "camera_sidecar": "OFFLINE ONLY\npreset=detail\nobject_assembly=authored\ncanvas=765x503\nlocal_target=60,60\ntarget_height=-240\nyaw_units=4096\ndistance=2400\nelevation=1300\nfocal=760\nscene=WORKSPACE\\work\\environment-quality-study\\review-ready\\city\\environment.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+        }
+      ],
+      "renderer_sha256": "d092d099e903fcee145515f0ebcf4c0dd2afdc1e8b02bde0ef40f9e1451e2243"
+    }
+  },
+  "asset_board_count": 25,
+  "asset_board_index": "asset-comparisons/index.json",
+  "lighting_comparison": "three matched runtime/authored native views; earlier source geometry",
+  "camera_comparison": "four wheel views; earlier geometry",
+  "legacy_runtime_compatibility": {
+    "check": "Legacy default runtime renderer compatibility",
+    "raw_sha256": "178ee329c48e70264ea6325e7690f93470c8d4a02e1b1f76cf19e3ca3ba8e739",
+    "prior_manifest_match": true
+  },
+  "preserved_production_source_sha256": {
+    "crates/server/src/tower_map.rs": "1bbc48e1804d49903d9d1d599467599b3e755f9255ee6442e910036209f97a3c",
+    "crates/server/src/tower_scene.rs": "911eb9c1334cbee630fbd31998d0a95d7fd9f10c6fd80ad389ff3e30f45bd9bc",
+    "crates/world/src/tower_furnishings.rs": "4dea1f9883b09d09dfb68011bc942d8bea36412f7a74aceebda7e68f1f589031",
+    "crates/world/src/tower_layout.rs": "278dda7c548fead16046fefde2cd58dccc3836499ac1f4868b90b4a3dd74be27",
+    "crates/world/src/tower_scenery.rs": "e22f7c815afb38e2db3135c28584e7a8c46af2c49860f8ea06d553572c947811"
+  },
+  "failures_retained": [
+    "evidence/environment-study-iteration-1-render.log",
+    "evidence/environment-study-iteration-1-audit.log",
+    "evidence/environment-study-iteration-3-audit.log"
+  ],
+  "known_limits": [
+    "Absent actors, UI, live animation and personal state",
+    "Authored lighting does not reproduce live source/removal/runtime history",
+    "Orbit/look-at camera differs from native viewport controller",
+    "Visible sloping cache terrain seams at basin",
+    "Court space and work surface remain artistic review decisions",
+    "No arenas in this study; zero encounter cases tested"
+  ],
+  "source_sha256": {
+    "docs/tower/design-review/environment-quality/composition.json": "b063c7d369b87753077de88e984b55d2bef68cb9ecd177d3fc024b815dfe3ae0",
+    "tools/tower/offline/design/environment_study.py": "4775462ecdd5b59451edb2f37a68634b9943a22730f53ea670c5831176b3811a",
+    "tools/tower/offline/design/environment_diagram.py": "041318b31fd819a11bc2fd8602c18a531a53cbff79a145df5cef2cf149d1f052",
+    "tools/tower/offline/render/src/main.rs": "e1f6a464fd4fedfe08c9275e2e5bab1659a62a4d52f919493b963fa26e2d92b8",
+    "tools/tower/offline/export/src/bin/environment_assets.rs": "e712f412bacb6cb8a9f6895f1b00806727ca80c23ac341902bc4e9e04ac58bea",
+    "tools/tower/offline/export/src/bin/design_audit.rs": "9cd6b35d5b2f33970018e7e32e4785e871e839e001c1e6b0ed9d164b611cb968"
+  },
+  "public_diagram_sha256": {
+    "sequence-details.png": "7f58fd0f5d9c9189178c63f9a425a326372e6ab33396528092e3a0da38a5c7d3",
+    "sequence-plan.png": "7c6cb33aeab317f0cd9b8d5c4213b20bd78b028c4f3c2db1d1b13e7c04d7823a"
+  },
+  "lighting_and_camera_comparison_sources": "comparison-sources/index.json",
+  "matching_lighting_source_byte_identity_verified": true
+}

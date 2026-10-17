@@ -2,6 +2,12 @@
 
 This tool compiles isolated candidate JSON into native-library scene input and original geometric review diagrams. No server loads these configurations. It never opens accounts, changes cache files or installs a map. Review sources live in [the Floor One review](../../../../docs/tower/design-review/floor-one/CURRENT_REVIEW.md).
 
+## Current environmental quality sample
+
+A/B/C remain preserved unapproved concept studies. The next phase is the [Hearth and Headgate connected sequence](../../../../docs/tower/design-review/environment-quality/CURRENT_REVIEW.md), compiled by `environment_study.py` from an explicit composition JSON. It develops four connected spaces, not a fourth complete-floor proposal. `environment_diagram.py` draws original geometric plans from a passing real-cache audit. Exact reproduction commands, asset-board scene sources, rejected treatments, camera/assembly metadata and media-rights limitations are in that review.
+
+The new study defaults explicitly to `--assembly authored`, invoking the existing native static lighting path; `--assembly runtime` supports a same-geometry comparison. The renderer itself retains its original runtime default. `--views` can limit treatment comparisons to exact named cameras. The read-only `environment_assets` export binary searches up to twenty cache definition summaries per supplied name substring; it never exports models or textures.
+
 ## Reproduce
 
 Use a Tower workspace with sibling `rust-server` and `rust-client-reference` checkouts, Python with Pillow, verified private `resource-staging` inputs and the established isolated Rust toolchain. Baseline server source is `1153b4e7281435e83f60bff5131b4a3f0a8e0023`; native library source is `ff9cef17fd1ce3ec2ebf8d1181fee31411999c4c`. The review commit supplies tooling/configurations and their hashes. Build both standalone tools using the workspace's existing Cargo wrapper, or equivalent isolated Cargo configuration:

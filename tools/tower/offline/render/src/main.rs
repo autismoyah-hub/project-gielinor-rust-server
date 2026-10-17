@@ -12,13 +12,17 @@ use gielinor_client::{
 use std::{collections::HashMap, env, fs};
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let a: Vec<_> = env::args().collect();
-    if !(7..=9).contains(&a.len()) {
+    if !(7..=10).contains(&a.len()) {
         return Err(
-            "Usage: tower-scene-render JS5_CACHE SCENE OUTPUT_BMP LOCAL_X LOCAL_Z YAW [DISTANCE] [detail|overview|plan]"
+            "Usage: tower-scene-render JS5_CACHE SCENE OUTPUT_BMP LOCAL_X LOCAL_Z YAW [DISTANCE] [detail|overview|plan] [runtime|authored]"
                 .into(),
         );
     }
     let mut c = DiskCache::open(&a[1], 64 << 20)?;
+    let assembly = a.get(9).map(String::as_str).unwrap_or("runtime");
+    if !matches!(assembly, "runtime" | "authored") {
+        return Err("Unknown object assembly mode".into());
+    }
     let text = fs::read_to_string(&a[2])?;
     let mut s = Scene::empty_sized(10368 + 24, 64 + 24, 64, 64)?;
     let mut regions = HashMap::new();
@@ -60,10 +64,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             .skip(1)
             .map(str::parse::<u32>)
             .collect::<Result<Vec<_>, _>>()?;
+        let initial_index = (assembly == "authored").then_some(s.objects.len());
         s.objects.push(PlacedObject {
-            initial_index: None,
+            initial_index,
             rejected: false,
-            runtime: true,
+            runtime: assembly == "runtime",
             id: v[3],
             plane: v[2] as u8,
             x: (v[0] - 24) as u8,
@@ -108,7 +113,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     frame.draw(&camera, &mesh.triangles, &p, &textures);
     fs::write(&a[3], frame.raster()?.bmp()?)?;
     fs::write(format!("{}.camera.txt", a[3]), format!(
-        "OFFLINE ONLY\npreset={preset}\ncanvas={width}x{height}\nlocal_target={x},{z}\ntarget_height=-240\nyaw_units={}\ndistance={distance}\nelevation={elevation}\nfocal={focal}\nscene={}\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n", a[6], a[2]))?;
+        "OFFLINE ONLY\npreset={preset}\nobject_assembly={assembly}\ncanvas={width}x{height}\nlocal_target={x},{z}\ntarget_height=-240\nyaw_units={}\ndistance={distance}\nelevation={elevation}\nfocal={focal}\nscene={}\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n", a[6], a[2]))?;
     println!(
         "OFFLINE shell {} triangles; pose {x},{z} yaw {yaw}; actors/UI/runtime animations absent",
         mesh.triangles.len()

@@ -15,6 +15,8 @@ The exporter is compiled against the current authored server source. Its output 
 
 For three isolated complete-floor proposals, original layout diagrams, actual-cache feasibility checks and batch camera presets, see the [design workbench](design/README.md). The renderer now accepts optional `[DISTANCE] [detail|overview|plan]` after yaw and writes a `.camera.txt` sidecar. The default detail preset retains the existing 765×503 camera geometry; overview and plan provide larger whole-floor frames. These are composition cameras, not live-controller equivalence.
 
+An additional optional `[runtime|authored]` argument follows the camera preset. `runtime` remains the default and preserves the earlier frame output. `authored` assigns initial object identities and uses the unchanged native library's static scene lighting and terrain-shadow paths. This is a designed initial-scene study, not a reproduction of live source-object masking, removal or personal restoration history. The sidecar records the mode. See the [current connected environmental quality sample](../../../docs/tower/design-review/environment-quality/CURRENT_REVIEW.md).
+
 Each whitespace-delimited record uses original local Floor One coordinates:
 
 - `T destination-zone-x destination-zone-z destination-plane source-zone-x source-zone-z source-plane rotation` copies an authentic eight-tile cache chunk through the client's existing `Scene::add_chunk`.

@@ -1,0 +1,72 @@
+{
+  "lighting-runtime-sanctuary-arrival": {
+    "scene": "lighting.scene",
+    "scene_sha256": "4f210faecaf0c239f8df33889cbd86d8d33e15b09d76e7c9c8edcce32eff2b89",
+    "assembly": "runtime",
+    "raw_sha256": "a83c9554b356b336679a2499e40b0c4cf63aae8ff3a8acd0be401144df5519cc",
+    "camera_sidecar": "OFFLINE ONLY\npreset=detail\ncanvas=765x503\nlocal_target=48,45\ntarget_height=-240\nyaw_units=0\ndistance=1700\nelevation=1300\nfocal=760\nscene=WORKSPACE\\work\\environment-quality-study\\refined\\dressed\\environment.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+  },
+  "lighting-runtime-workshop-bench": {
+    "scene": "lighting.scene",
+    "scene_sha256": "4f210faecaf0c239f8df33889cbd86d8d33e15b09d76e7c9c8edcce32eff2b89",
+    "assembly": "runtime",
+    "raw_sha256": "dc1f8504b5f0840d3f11f3b8f19df2574cd3e0ee4f103cfffa406277ee2c35ec",
+    "camera_sidecar": "OFFLINE ONLY\npreset=detail\ncanvas=765x503\nlocal_target=62,51\ntarget_height=-240\nyaw_units=0\ndistance=1700\nelevation=1300\nfocal=760\nscene=WORKSPACE\\work\\environment-quality-study\\refined\\dressed\\environment.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+  },
+  "lighting-runtime-waterworks-maintenance": {
+    "scene": "lighting.scene",
+    "scene_sha256": "4f210faecaf0c239f8df33889cbd86d8d33e15b09d76e7c9c8edcce32eff2b89",
+    "assembly": "runtime",
+    "raw_sha256": "726591212da4bc88be4d67aeb8589a031008747a5a5a96223a24e17f4276ecb2",
+    "camera_sidecar": "OFFLINE ONLY\npreset=detail\ncanvas=765x503\nlocal_target=60,60\ntarget_height=-240\nyaw_units=2048\ndistance=2200\nelevation=1300\nfocal=760\nscene=WORKSPACE\\work\\environment-quality-study\\refined\\dressed\\environment.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+  },
+  "lighting-authored-sanctuary-arrival": {
+    "scene": "lighting.scene",
+    "scene_sha256": "4f210faecaf0c239f8df33889cbd86d8d33e15b09d76e7c9c8edcce32eff2b89",
+    "assembly": "authored",
+    "raw_sha256": "200ada620d7fd4c0a0e78dc6a4619a6ec98b8c9b398142a0324112af43100b19",
+    "camera_sidecar": "OFFLINE ONLY\npreset=detail\nobject_assembly=authored\ncanvas=765x503\nlocal_target=48,45\ntarget_height=-240\nyaw_units=0\ndistance=1700\nelevation=1300\nfocal=760\nscene=WORKSPACE\\work\\environment-quality-study\\lighting-authored\\environment.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+  },
+  "lighting-authored-workshop-bench": {
+    "scene": "lighting.scene",
+    "scene_sha256": "4f210faecaf0c239f8df33889cbd86d8d33e15b09d76e7c9c8edcce32eff2b89",
+    "assembly": "authored",
+    "raw_sha256": "3386db5e0d6ea97a55aef5668e28e8669b082f5e776c63cb57203f8943497cf6",
+    "camera_sidecar": "OFFLINE ONLY\npreset=detail\nobject_assembly=authored\ncanvas=765x503\nlocal_target=62,51\ntarget_height=-240\nyaw_units=0\ndistance=1700\nelevation=1300\nfocal=760\nscene=WORKSPACE\\work\\environment-quality-study\\lighting-authored\\environment.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+  },
+  "lighting-authored-waterworks-maintenance": {
+    "scene": "lighting.scene",
+    "scene_sha256": "4f210faecaf0c239f8df33889cbd86d8d33e15b09d76e7c9c8edcce32eff2b89",
+    "assembly": "authored",
+    "raw_sha256": "66318db2850e8cf61a6cb0993285b6fb6a3b94dee5b44828c32ccd17d82639bb",
+    "camera_sidecar": "OFFLINE ONLY\npreset=detail\nobject_assembly=authored\ncanvas=765x503\nlocal_target=60,60\ntarget_height=-240\nyaw_units=2048\ndistance=2200\nelevation=1300\nfocal=760\nscene=WORKSPACE\\work\\environment-quality-study\\lighting-authored\\environment.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+  },
+  "wheel-0": {
+    "scene": "wheel-camera.scene",
+    "scene_sha256": "afd50f8fa93729fa5fca2207a0ba51c0a1baff9ae99aa3cb30652a12ddf5d957",
+    "assembly": "runtime",
+    "raw_sha256": "ef8d46d3b62b88ec65fafbc4eaefefa06d3cfe9b80e998ab8c9d20e8dc06d885",
+    "camera_sidecar": "OFFLINE ONLY\npreset=detail\ncanvas=765x503\nlocal_target=60,64\ntarget_height=-240\nyaw_units=4096\ndistance=2400\nelevation=1300\nfocal=760\nscene=WORKSPACE\\work\\environment-quality-study\\iteration-2\\dressed\\environment.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+  },
+  "wheel-1": {
+    "scene": "wheel-camera.scene",
+    "scene_sha256": "afd50f8fa93729fa5fca2207a0ba51c0a1baff9ae99aa3cb30652a12ddf5d957",
+    "assembly": "runtime",
+    "raw_sha256": "0c2d7bde7b6312515f6348eec4f37f9881f300d329dde0aa26a88133f4e6ddd4",
+    "camera_sidecar": "OFFLINE ONLY\npreset=detail\ncanvas=765x503\nlocal_target=60,63\ntarget_height=-240\nyaw_units=2048\ndistance=2200\nelevation=1300\nfocal=760\nscene=WORKSPACE\\work\\environment-quality-study\\iteration-2\\dressed\\environment.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+  },
+  "wheel-2": {
+    "scene": "wheel-camera.scene",
+    "scene_sha256": "afd50f8fa93729fa5fca2207a0ba51c0a1baff9ae99aa3cb30652a12ddf5d957",
+    "assembly": "runtime",
+    "raw_sha256": "76e7b874e56fcb999b2fea758eb72f04e3880c943941a6d31a8c5fbb61e81704",
+    "camera_sidecar": "OFFLINE ONLY\npreset=detail\ncanvas=765x503\nlocal_target=60,63\ntarget_height=-240\nyaw_units=14336\ndistance=2200\nelevation=1300\nfocal=760\nscene=WORKSPACE\\work\\environment-quality-study\\iteration-2\\dressed\\environment.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+  },
+  "wheel-3": {
+    "scene": "wheel-camera.scene",
+    "scene_sha256": "afd50f8fa93729fa5fca2207a0ba51c0a1baff9ae99aa3cb30652a12ddf5d957",
+    "assembly": "runtime",
+    "raw_sha256": "ace88a265c96f5cad9c73bdafccd97dae9f7bc0cc6cbc348edfcd5c0dab0be65",
+    "camera_sidecar": "OFFLINE ONLY\npreset=detail\ncanvas=765x503\nlocal_target=75,63\ntarget_height=-240\nyaw_units=6144\ndistance=2200\nelevation=1300\nfocal=760\nscene=WORKSPACE\\work\\environment-quality-study\\iteration-2\\dressed\\environment.scene\nactors=false\nlive_animation=false\nui=false\nscene_lifecycle=false\n"
+  }
+}

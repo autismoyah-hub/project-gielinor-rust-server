@@ -1,0 +1,377 @@
+[
+  {
+    "name": "bank-treatment",
+    "scene": "bank-treatment.scene",
+    "scene_sha256": "d8449a1802d6870c3f2ad5c1d19d2f3439217fa6dff3d990c867f0c9035222be",
+    "camera": [
+      56.0,
+      52.0,
+      0,
+      2300.0,
+      "detail"
+    ],
+    "assembly": "runtime",
+    "raw_sha256": "6ffad959416244a44987c0ad9358f4f55e81c67655c5d9033ce841a48b3e66b6",
+    "png_sha256": "83546945aa4826053e979dafdf348e3337af7f836cc8433c400164f3a909cdbc"
+  },
+  {
+    "name": "floor-176-1196",
+    "scene": "floor-176-1196.scene",
+    "scene_sha256": "f35e500c1327bb9b704781161ee6cb1c5ddf59c628f03cfbfa08b7164992ca11",
+    "camera": [
+      56.0,
+      52.0,
+      0,
+      2000.0,
+      "detail"
+    ],
+    "assembly": "runtime",
+    "raw_sha256": "c02eb010ede3a917649d6fd94d5fa8afa4d09b8c9c51d776c0e3e2d4a2ceaa97",
+    "png_sha256": "81901ed19dd0571bc2312fbecfe7068634955eaba89321ef19dc07a7158defc7"
+  },
+  {
+    "name": "floor-178-1194",
+    "scene": "floor-178-1194.scene",
+    "scene_sha256": "7dbda8f2df3414e1da752617fced740b2ba439d77c775d186b0d238e00ec0496",
+    "camera": [
+      56.0,
+      52.0,
+      0,
+      2000.0,
+      "detail"
+    ],
+    "assembly": "runtime",
+    "raw_sha256": "ec3e81faaec3929e0b86420ef3896267f2574b4eada1639a948e844101c66f38",
+    "png_sha256": "ad9f028397579a471d7311a9a1bebffeefd82e8f39535f53e1bc37c6c04928d3"
+  },
+  {
+    "name": "floor-194-1178",
+    "scene": "floor-194-1178.scene",
+    "scene_sha256": "51d779e2b4723a56ae385c5e45f2f6e094269b595237dcc91e9b4a2dcbc343dc",
+    "camera": [
+      56.0,
+      52.0,
+      0,
+      2000.0,
+      "detail"
+    ],
+    "assembly": "runtime",
+    "raw_sha256": "cf3ea0f267a8d06b47b1368ed93a646413a1993ddc53f7699381ea6a58cb5371",
+    "png_sha256": "c0c3afaa363759325ea3d0fb627267026a604ea91e4ac6432b9fa29acba02c59"
+  },
+  {
+    "name": "floor-232-883",
+    "scene": "floor-232-883.scene",
+    "scene_sha256": "6754d0af06e31cb765e6dd8593b5c2c5705f794687fc166c0010714409c25a53",
+    "camera": [
+      56.0,
+      52.0,
+      0,
+      2000.0,
+      "detail"
+    ],
+    "assembly": "runtime",
+    "raw_sha256": "7e34ada69e89a2b951ae97124e54ce12ef17107bc42d3aa2ea81effe56da10c2",
+    "png_sha256": "26360764fa2f936851dce1f1049c387fc6bcaa37c58293b10ea1894896eb5a32"
+  },
+  {
+    "name": "floor-365-1272",
+    "scene": "floor-365-1272.scene",
+    "scene_sha256": "77b4135894ab8602e0d024081e0618c2f8eeffb424737835dc6ae274658cbd6b",
+    "camera": [
+      56.0,
+      52.0,
+      0,
+      2000.0,
+      "detail"
+    ],
+    "assembly": "runtime",
+    "raw_sha256": "43dc06b963b782d6fd03a2ce8bf5083457f78e6ea66a4874b3f7e552da48d60f",
+    "png_sha256": "5ca72e062d117dc4a8313099c71474576ae08cbfc5d881fc13fd07dd6b7663ff"
+  },
+  {
+    "name": "floor-483-589",
+    "scene": "floor-483-589.scene",
+    "scene_sha256": "4bb00aba7c32b0f74ba8de7c438f36a5fd9f1e7a7c6b62c1437d23d8fb2a5abb",
+    "camera": [
+      56.0,
+      52.0,
+      0,
+      2000.0,
+      "detail"
+    ],
+    "assembly": "runtime",
+    "raw_sha256": "f2e060393af31829a2428b5cea7ea7d905e595d296e5b2d32c008ffae6476416",
+    "png_sha256": "f74e64af1626e647fb2685ec96b84663f7afdb569845051047cca07d2df1dfb3"
+  },
+  {
+    "name": "forge-border",
+    "scene": "forge-border.scene",
+    "scene_sha256": "c48518f8097a47ee1899a86ca1c8e99eb27a39ac7d5e4d2200fd7f7c75e08c17",
+    "camera": [
+      56.0,
+      52.0,
+      0,
+      2000.0,
+      "detail"
+    ],
+    "assembly": "runtime",
+    "raw_sha256": "90c93fad425ef319baf36557085c9abb42d47c7173ca97f5f09ca9c6f438e387",
+    "png_sha256": "18a94f64b91b6c93616c50fb0574d99cbc538108055a31b92777817ea24aefb2"
+  },
+  {
+    "name": "forge-tile",
+    "scene": "forge-tile.scene",
+    "scene_sha256": "43b896f89b9d9e9db4f4f6b1cd1505698e680f0a0a6827a9a0df67bb1072e654",
+    "camera": [
+      56.0,
+      52.0,
+      0,
+      2000.0,
+      "detail"
+    ],
+    "assembly": "runtime",
+    "raw_sha256": "9016eb488f826a20b3f5699bbdfc6574b3eca652509a237c935df9f62995b5ef",
+    "png_sha256": "4f73c6ca2e9c81d84b850a24fb666744e15a93fc7f51c546e22821f3e0116917"
+  },
+  {
+    "name": "furnaces",
+    "scene": "furnaces.scene",
+    "scene_sha256": "e6a91293cfe582ddb99adc627b15b9d57242cb32ee34da38cbd864b81cb7511e",
+    "camera": [
+      56.0,
+      52.0,
+      0,
+      2300.0,
+      "detail"
+    ],
+    "assembly": "runtime",
+    "raw_sha256": "6446ea26250919143c03fbf78b0f2ad27f3ff1795f7065b3812ecb04480b6a6c",
+    "png_sha256": "eb8525431f05a922fac8fd09193851371eb3ba9c3b424dacbb9b677d483f2c52"
+  },
+  {
+    "name": "hearths",
+    "scene": "hearths.scene",
+    "scene_sha256": "06014f2888f7fdf8d682a50f208180c5a7eacb62108e902e724082c4bc7e8b0d",
+    "camera": [
+      56.0,
+      52.0,
+      0,
+      2300.0,
+      "detail"
+    ],
+    "assembly": "runtime",
+    "raw_sha256": "ebef107deaa57d91bcf103236eb187090389431cdf1e530101ed3f022f815d34",
+    "png_sha256": "d9a6da33b7e388049509f05334e56296ab874314110227f9dbaa3304a28c3fde"
+  },
+  {
+    "name": "masonry-city",
+    "scene": "masonry-city.scene",
+    "scene_sha256": "41ef54dece6acaaef8478db8ed672464eba31fe81bbcf4b6a11d95b9d2014f6d",
+    "camera": [
+      56.0,
+      52.0,
+      0,
+      2300.0,
+      "detail"
+    ],
+    "assembly": "runtime",
+    "raw_sha256": "363ca797bcb8a81feeed891046de6001aeb92efd9df51fe5b6a60e815d58cedf",
+    "png_sha256": "2c14ef066688431c779e85d29a996165a9ee5ea4b6ee11108ea2421e578b5ede"
+  },
+  {
+    "name": "masonry-interior",
+    "scene": "masonry-interior.scene",
+    "scene_sha256": "002099dbcb614eefe73cd1f0d73a297c1465eab21242846a9d6f80a635581c7f",
+    "camera": [
+      56.0,
+      52.0,
+      0,
+      2300.0,
+      "detail"
+    ],
+    "assembly": "runtime",
+    "raw_sha256": "9cb4fd95ffb2cd05eb5bd2406b05d3970da8474509727a2f4e73c68959d4773d",
+    "png_sha256": "b213740e901b2c1952f8f73855213c94d05c971c61c7e0fbce74ae7ce235ec82"
+  },
+  {
+    "name": "paving-base",
+    "scene": "paving-base.scene",
+    "scene_sha256": "26f24a4937c2cc94e93dac01d8f73fb6c4e39c9584b428e9ae12abd1533ad0fb",
+    "camera": [
+      56.0,
+      52.0,
+      0,
+      2300.0,
+      "detail"
+    ],
+    "assembly": "runtime",
+    "raw_sha256": "682c371042e2d0e5b881ca020fa5257ca2d387a097fda89dc52ace0516ba23dc",
+    "png_sha256": "b89afaf8bc1f26348a620b21ac205f690668cbb18214aa11a3ecbc22c4d8915a"
+  },
+  {
+    "name": "paving-inlay",
+    "scene": "paving-inlay.scene",
+    "scene_sha256": "3334c4705fc9d088ca1354848b1087d19513ff90fc0e08950acfdca0c57684c8",
+    "camera": [
+      56.0,
+      52.0,
+      0,
+      2300.0,
+      "detail"
+    ],
+    "assembly": "runtime",
+    "raw_sha256": "32efc395f0b00154263ccba813a9d7a44de8ee37ff90d4bade834496cd58d909",
+    "png_sha256": "4bb7ab44cca327d9e8e5a32673a34d2b6066afaec7e4383cb1cb4333b8223d89"
+  },
+  {
+    "name": "paving-moss",
+    "scene": "paving-moss.scene",
+    "scene_sha256": "e4c1109a80458dad50c82ba511c7c12bc4b76f5509022a32a52e4dc38cfdae21",
+    "camera": [
+      56.0,
+      52.0,
+      0,
+      2300.0,
+      "detail"
+    ],
+    "assembly": "runtime",
+    "raw_sha256": "6cff12ca132b8c949460799e40449e23fea5b4b3e2dc16e911c6ea55b62f30d7",
+    "png_sha256": "b67d8ef13eaa59b29a2d2d0579178790d122ecd70c189914b3b403ba04d314a9"
+  },
+  {
+    "name": "paving-worn",
+    "scene": "paving-worn.scene",
+    "scene_sha256": "94874cd166f48c81dbebc2941367d440513d46e25b934d0bf65101660b6c1706",
+    "camera": [
+      56.0,
+      52.0,
+      0,
+      2300.0,
+      "detail"
+    ],
+    "assembly": "runtime",
+    "raw_sha256": "cfdc9960d19fe096f58681a8991d1fbcfb9d59aa054135fbbe9f5954d296005b",
+    "png_sha256": "6b3008f87a2168bd8987f242c38105c7b38dac4bcf95ef50b92c317572acfce0"
+  },
+  {
+    "name": "piers",
+    "scene": "piers.scene",
+    "scene_sha256": "8f6c06d392a2820c1792b419b7cc7f2fa629c0b5cd1e0f7ecd1434256ee3ec3c",
+    "camera": [
+      56.0,
+      52.0,
+      0,
+      2300.0,
+      "detail"
+    ],
+    "assembly": "runtime",
+    "raw_sha256": "c6901b48f6670637774e8d44248018607ecca42f286f5bc694a1ca10a8dff250",
+    "png_sha256": "7d82004547686b931a1195b370c44b84df9fd2607d8d66b1223e551f15b0ad47"
+  },
+  {
+    "name": "repair-pump",
+    "scene": "repair-pump.scene",
+    "scene_sha256": "79bb9125ec7f7bbd927648ae0a6c7ba88e610e00a0d8cb926dba2272c18ca1bd",
+    "camera": [
+      56.0,
+      52.0,
+      0,
+      2300.0,
+      "detail"
+    ],
+    "assembly": "runtime",
+    "raw_sha256": "8c6c4107b430d49b7dd7c845edd5e321b0b77c03928de3d6dfc0c79d9c8ab29d",
+    "png_sha256": "9b05ee2fa2c50411374cbcc78e62f522235080123f58f59fb06c5f763f76e5bd"
+  },
+  {
+    "name": "rest-benches",
+    "scene": "rest-benches.scene",
+    "scene_sha256": "bc8d906f5d116d03c3eb1adafe063bc73d558ca0bf86c76d6b76877f04672772",
+    "camera": [
+      56.0,
+      52.0,
+      0,
+      2300.0,
+      "detail"
+    ],
+    "assembly": "runtime",
+    "raw_sha256": "c891bf156951cc0ab02d581d85eeb0b03166c6dc2eca4e415cab139f517aea73",
+    "png_sha256": "1931219c7718783716940ea98d8f894b12f14c304b457721f84005039fde6144"
+  },
+  {
+    "name": "slate",
+    "scene": "slate.scene",
+    "scene_sha256": "844d9aa802f1ab0288326a4d3a52f710846b30b5fca911fc46a4a515727f9dc5",
+    "camera": [
+      56.0,
+      52.0,
+      0,
+      2000.0,
+      "detail"
+    ],
+    "assembly": "runtime",
+    "raw_sha256": "ea55a16980038817ef5da54c6dcded255eee5cc7893b8fe6a6b8233db03c9142",
+    "png_sha256": "18b2bd7bbf3d4fd7811688902bb78530e0fe48c3c94078b3810b52710318fbd7"
+  },
+  {
+    "name": "small-fire",
+    "scene": "small-fire.scene",
+    "scene_sha256": "c1cc28a67584bbb1ee7706868997f037796baf03db653a228762a7db2e622995",
+    "camera": [
+      56.0,
+      52.0,
+      0,
+      2000.0,
+      "detail"
+    ],
+    "assembly": "runtime",
+    "raw_sha256": "22064578e5163f101b97ffc1ee8f9fc8747d6cfd622c4699f4a9ab2b56b94afb",
+    "png_sha256": "fde784fc4c5c32501eecd3674a6984c81d9b4bcb28894b21f539d1825a90771d"
+  },
+  {
+    "name": "support",
+    "scene": "support.scene",
+    "scene_sha256": "8c00cbcfd7492bebc829f845e68588dc31e83bfb33ca6f80df8fd9dbf80cf1ee",
+    "camera": [
+      56.0,
+      52.0,
+      0,
+      2300.0,
+      "detail"
+    ],
+    "assembly": "runtime",
+    "raw_sha256": "2dafd1ada2b5313382723528a4d63c9de75c8d9c78d1b9fe21e5163859cb8f1d",
+    "png_sha256": "76aa42fea3907f124c695a55757b0105b9d3a5f1d9f990d66e0c51a3d425a04c"
+  },
+  {
+    "name": "vessels",
+    "scene": "vessels.scene",
+    "scene_sha256": "5983c6c95c4a68e42a8194020b2284804d390adb75446f094ef84d44ed61f570",
+    "camera": [
+      56.0,
+      52.0,
+      0,
+      2300.0,
+      "detail"
+    ],
+    "assembly": "runtime",
+    "raw_sha256": "5e87cfacacaa1656b93f8f07328f625c87892c75a5be707774335e0bf253da61",
+    "png_sha256": "7017bb77304e197e1ce6301bde6bac150b6ba72b70d0f17247b9333cd3ff3cfa"
+  },
+  {
+    "name": "workbenches",
+    "scene": "workbenches.scene",
+    "scene_sha256": "05b2334e5630448685c86f5fc77f8abef60615347f5b5a018ecb37c06a857161",
+    "camera": [
+      56.0,
+      52.0,
+      0,
+      2300.0,
+      "detail"
+    ],
+    "assembly": "runtime",
+    "raw_sha256": "b6e05d660a4f34af2b276e3fe0797bad31f1e3cf6f8a52b14adfad172f1b25fa",
+    "png_sha256": "f00110fef041fa4d4a40a4b57f8d3c008d5454f250e59328ef50a60f7c4931a7"
+  }
+]

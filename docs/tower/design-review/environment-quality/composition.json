@@ -1,0 +1,2130 @@
+{
+  "title": "The Hearth and Headgate",
+  "status": "ENVIRONMENT QUALITY STUDY ONLY; user approval pending; A/B/C preserved as unapproved concept studies",
+  "baseline_commit": "1153b4e7281435e83f60bff5131b4a3f0a8e0023",
+  "review_parent": "070b8e9f1144a4eb4e82fbac788d257dfe299c14",
+  "materials": {
+    "paving": [
+      377,
+      545
+    ],
+    "slate": [
+      364,
+      1245
+    ],
+    "moss": [
+      212,
+      571
+    ],
+    "water": [
+      187,
+      566
+    ]
+  },
+  "treatments": {
+    "dressed": {
+      "masonry": 6132,
+      "parapet": 6143,
+      "workbench": 610,
+      "court-floor": "paving",
+      "work-floor": "slate"
+    },
+    "austere": {
+      "masonry": 6145,
+      "parapet": 6143,
+      "workbench": 2279,
+      "court-floor": "paving",
+      "work-floor": "paving"
+    },
+    "city": {
+      "masonry": 6098,
+      "parapet": 6143,
+      "workbench": 609,
+      "court-floor": "paving",
+      "work-floor": "paving"
+    }
+  },
+  "chunks": [
+    [
+      5,
+      4,
+      "paving",
+      0
+    ],
+    [
+      6,
+      4,
+      "paving",
+      0
+    ],
+    [
+      5,
+      5,
+      "court-floor",
+      0
+    ],
+    [
+      6,
+      5,
+      "court-floor",
+      0
+    ],
+    [
+      7,
+      5,
+      "work-floor",
+      0
+    ],
+    [
+      8,
+      5,
+      "work-floor",
+      0
+    ],
+    [
+      5,
+      6,
+      "court-floor",
+      0
+    ],
+    [
+      6,
+      6,
+      "court-floor",
+      0
+    ],
+    [
+      7,
+      6,
+      "paving",
+      0
+    ],
+    [
+      8,
+      6,
+      "paving",
+      0
+    ],
+    [
+      6,
+      7,
+      "paving",
+      0
+    ],
+    [
+      7,
+      7,
+      "paving",
+      0
+    ],
+    [
+      8,
+      7,
+      "water",
+      0
+    ],
+    [
+      7,
+      8,
+      "paving",
+      0
+    ],
+    [
+      8,
+      8,
+      "paving",
+      0
+    ]
+  ],
+  "objects": [
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 40,
+      "z": 42,
+      "shape": 0,
+      "rotation": 3
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 40,
+      "z": 43,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 40,
+      "z": 44,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 40,
+      "z": 45,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 40,
+      "z": 46,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 40,
+      "z": 47,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 40,
+      "z": 48,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 40,
+      "z": 49,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 40,
+      "z": 50,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 40,
+      "z": 51,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 40,
+      "z": 52,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 40,
+      "z": 53,
+      "shape": 2,
+      "rotation": 0
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 41,
+      "z": 42,
+      "shape": 0,
+      "rotation": 3
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 41,
+      "z": 53,
+      "shape": 0,
+      "rotation": 1
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 42,
+      "z": 42,
+      "shape": 0,
+      "rotation": 3
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 42,
+      "z": 53,
+      "shape": 0,
+      "rotation": 1
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 43,
+      "z": 40,
+      "shape": 2,
+      "rotation": 3
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 43,
+      "z": 41,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 43,
+      "z": 42,
+      "shape": 2,
+      "rotation": 3
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 43,
+      "z": 53,
+      "shape": 0,
+      "rotation": 1
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 43,
+      "z": 54,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 43,
+      "z": 55,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 43,
+      "z": 56,
+      "shape": 2,
+      "rotation": 0
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 44,
+      "z": 33,
+      "shape": 2,
+      "rotation": 3
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 44,
+      "z": 34,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 44,
+      "z": 35,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 44,
+      "z": 36,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 44,
+      "z": 37,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 44,
+      "z": 38,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 44,
+      "z": 39,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 44,
+      "z": 40,
+      "shape": 0,
+      "rotation": 3
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 44,
+      "z": 56,
+      "shape": 0,
+      "rotation": 1
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 45,
+      "z": 33,
+      "shape": 0,
+      "rotation": 3
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 45,
+      "z": 40,
+      "shape": 0,
+      "rotation": 3
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 45,
+      "z": 56,
+      "shape": 0,
+      "rotation": 1
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 46,
+      "z": 33,
+      "shape": 0,
+      "rotation": 3
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 46,
+      "z": 56,
+      "shape": 0,
+      "rotation": 1
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 47,
+      "z": 56,
+      "shape": 0,
+      "rotation": 1
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 48,
+      "z": 56,
+      "shape": 0,
+      "rotation": 1
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 49,
+      "z": 57,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 49,
+      "z": 58,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 49,
+      "z": 59,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 49,
+      "z": 62,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 49,
+      "z": 63,
+      "shape": 2,
+      "rotation": 0
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 50,
+      "z": 33,
+      "shape": 0,
+      "rotation": 3
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 50,
+      "z": 40,
+      "shape": 0,
+      "rotation": 3
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 50,
+      "z": 63,
+      "shape": 0,
+      "rotation": 1
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 51,
+      "z": 33,
+      "shape": 0,
+      "rotation": 3
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 51,
+      "z": 40,
+      "shape": 0,
+      "rotation": 3
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 51,
+      "z": 63,
+      "shape": 0,
+      "rotation": 1
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 52,
+      "z": 33,
+      "shape": 2,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 52,
+      "z": 34,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 52,
+      "z": 35,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 52,
+      "z": 36,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 52,
+      "z": 37,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 52,
+      "z": 38,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 52,
+      "z": 39,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 52,
+      "z": 40,
+      "shape": 0,
+      "rotation": 3
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 52,
+      "z": 42,
+      "shape": 0,
+      "rotation": 3
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 52,
+      "z": 53,
+      "shape": 0,
+      "rotation": 1
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 52,
+      "z": 54,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 52,
+      "z": 55,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 52,
+      "z": 56,
+      "shape": 2,
+      "rotation": 1
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 52,
+      "z": 63,
+      "shape": 0,
+      "rotation": 1
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 53,
+      "z": 42,
+      "shape": 0,
+      "rotation": 3
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 53,
+      "z": 53,
+      "shape": 0,
+      "rotation": 1
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 53,
+      "z": 63,
+      "shape": 0,
+      "rotation": 1
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 54,
+      "z": 42,
+      "shape": 0,
+      "rotation": 3
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 54,
+      "z": 53,
+      "shape": 0,
+      "rotation": 1
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 54,
+      "z": 63,
+      "shape": 0,
+      "rotation": 1
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 55,
+      "z": 42,
+      "shape": 2,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 55,
+      "z": 43,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 55,
+      "z": 44,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 55,
+      "z": 45,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 55,
+      "z": 50,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 55,
+      "z": 51,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 55,
+      "z": 52,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 55,
+      "z": 53,
+      "shape": 2,
+      "rotation": 1
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "parapet",
+      "x": 55,
+      "z": 60,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 55,
+      "z": 63,
+      "shape": 0,
+      "rotation": 1
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "parapet",
+      "x": 56,
+      "z": 42,
+      "shape": 2,
+      "rotation": 3
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "parapet",
+      "x": 56,
+      "z": 43,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "parapet",
+      "x": 56,
+      "z": 44,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "parapet",
+      "x": 56,
+      "z": 45,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 56,
+      "z": 54,
+      "shape": 0,
+      "rotation": 1
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "parapet",
+      "x": 57,
+      "z": 42,
+      "shape": 0,
+      "rotation": 3
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 57,
+      "z": 54,
+      "shape": 0,
+      "rotation": 1
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 57,
+      "z": 65,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 57,
+      "z": 66,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 57,
+      "z": 67,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 57,
+      "z": 68,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 57,
+      "z": 69,
+      "shape": 0,
+      "rotation": 0
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 57,
+      "z": 70,
+      "shape": 2,
+      "rotation": 0
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 58,
+      "z": 70,
+      "shape": 0,
+      "rotation": 1
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 59,
+      "z": 70,
+      "shape": 0,
+      "rotation": 1
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 60,
+      "z": 70,
+      "shape": 0,
+      "rotation": 1
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "parapet",
+      "x": 61,
+      "z": 42,
+      "shape": 0,
+      "rotation": 3
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 61,
+      "z": 70,
+      "shape": 0,
+      "rotation": 1
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "parapet",
+      "x": 62,
+      "z": 42,
+      "shape": 0,
+      "rotation": 3
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 62,
+      "z": 54,
+      "shape": 0,
+      "rotation": 1
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "parapet",
+      "x": 62,
+      "z": 56,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "parapet",
+      "x": 62,
+      "z": 57,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "parapet",
+      "x": 62,
+      "z": 58,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "parapet",
+      "x": 62,
+      "z": 59,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "parapet",
+      "x": 62,
+      "z": 60,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "parapet",
+      "x": 62,
+      "z": 61,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "parapet",
+      "x": 62,
+      "z": 62,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "parapet",
+      "x": 62,
+      "z": 63,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "parapet",
+      "x": 63,
+      "z": 42,
+      "shape": 0,
+      "rotation": 3
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 63,
+      "z": 54,
+      "shape": 0,
+      "rotation": 1
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "parapet",
+      "x": 64,
+      "z": 42,
+      "shape": 0,
+      "rotation": 3
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 64,
+      "z": 54,
+      "shape": 0,
+      "rotation": 1
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "parapet",
+      "x": 65,
+      "z": 42,
+      "shape": 0,
+      "rotation": 3
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 65,
+      "z": 54,
+      "shape": 0,
+      "rotation": 1
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "parapet",
+      "x": 66,
+      "z": 42,
+      "shape": 0,
+      "rotation": 3
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 66,
+      "z": 54,
+      "shape": 0,
+      "rotation": 1
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "parapet",
+      "x": 67,
+      "z": 42,
+      "shape": 0,
+      "rotation": 3
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 67,
+      "z": 54,
+      "shape": 0,
+      "rotation": 1
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 67,
+      "z": 70,
+      "shape": 0,
+      "rotation": 1
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "parapet",
+      "x": 68,
+      "z": 42,
+      "shape": 0,
+      "rotation": 3
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 68,
+      "z": 54,
+      "shape": 0,
+      "rotation": 1
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 68,
+      "z": 70,
+      "shape": 0,
+      "rotation": 1
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "parapet",
+      "x": 69,
+      "z": 42,
+      "shape": 0,
+      "rotation": 3
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 69,
+      "z": 54,
+      "shape": 0,
+      "rotation": 1
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 69,
+      "z": 70,
+      "shape": 0,
+      "rotation": 1
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 70,
+      "z": 42,
+      "shape": 2,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 70,
+      "z": 43,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 70,
+      "z": 44,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 70,
+      "z": 45,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 70,
+      "z": 46,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 70,
+      "z": 50,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 70,
+      "z": 51,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 70,
+      "z": 56,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 70,
+      "z": 57,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 70,
+      "z": 58,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 70,
+      "z": 59,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 70,
+      "z": 60,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 70,
+      "z": 61,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 70,
+      "z": 62,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 70,
+      "z": 63,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 70,
+      "z": 64,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 70,
+      "z": 65,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 70,
+      "z": 66,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 70,
+      "z": 67,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 70,
+      "z": 68,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 70,
+      "z": 69,
+      "shape": 0,
+      "rotation": 2
+    },
+    {
+      "label": "dressed boundary bay",
+      "asset": "masonry",
+      "x": 70,
+      "z": 70,
+      "shape": 0,
+      "rotation": 1
+    },
+    {
+      "label": "structural capped pier",
+      "asset": 7017,
+      "x": 44,
+      "z": 34,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "structural capped pier",
+      "asset": 7017,
+      "x": 52,
+      "z": 34,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "structural capped pier",
+      "asset": 7017,
+      "x": 44,
+      "z": 39,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "structural capped pier",
+      "asset": 7017,
+      "x": 52,
+      "z": 39,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "structural capped pier",
+      "asset": 7017,
+      "x": 43,
+      "z": 43,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "structural capped pier",
+      "asset": 7017,
+      "x": 52,
+      "z": 43,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "structural capped pier",
+      "asset": 7017,
+      "x": 43,
+      "z": 53,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "structural capped pier",
+      "asset": 7017,
+      "x": 52,
+      "z": 53,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "structural capped pier",
+      "asset": 7017,
+      "x": 43,
+      "z": 56,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "structural capped pier",
+      "asset": 7017,
+      "x": 52,
+      "z": 56,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "structural capped pier",
+      "asset": 7017,
+      "x": 55,
+      "z": 45,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "structural capped pier",
+      "asset": 7017,
+      "x": 55,
+      "z": 50,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "structural capped pier",
+      "asset": 7017,
+      "x": 58,
+      "z": 43,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "structural capped pier",
+      "asset": 7017,
+      "x": 63,
+      "z": 43,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "structural capped pier",
+      "asset": 7017,
+      "x": 68,
+      "z": 43,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "structural capped pier",
+      "asset": 7017,
+      "x": 57,
+      "z": 54,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "structural capped pier",
+      "asset": 7017,
+      "x": 62,
+      "z": 54,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "structural capped pier",
+      "asset": 7017,
+      "x": 69,
+      "z": 54,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "structural capped pier",
+      "asset": 7017,
+      "x": 62,
+      "z": 57,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "structural capped pier",
+      "asset": 7017,
+      "x": 62,
+      "z": 62,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "structural capped pier",
+      "asset": 7017,
+      "x": 61,
+      "z": 69,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "structural capped pier",
+      "asset": 7017,
+      "x": 67,
+      "z": 69,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "structural capped pier",
+      "asset": 7017,
+      "x": 70,
+      "z": 64,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "single communal hearth",
+      "asset": 16811,
+      "x": 48,
+      "z": 48,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "south welcome fire",
+      "asset": 11020,
+      "x": 45,
+      "z": 37,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "south welcome fire",
+      "asset": 11020,
+      "x": 51,
+      "z": 37,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "dwarven bank counter in west alcove",
+      "asset": 6084,
+      "x": 41,
+      "z": 48,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "rest bench west",
+      "asset": 1106,
+      "x": 41,
+      "z": 45,
+      "shape": 10,
+      "rotation": 3
+    },
+    {
+      "label": "rest bench north",
+      "asset": 1106,
+      "x": 50,
+      "z": 54,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "hearth seat west",
+      "asset": 1106,
+      "x": 45,
+      "z": 47,
+      "shape": 10,
+      "rotation": 3
+    },
+    {
+      "label": "hearth seat east",
+      "asset": 1106,
+      "x": 51,
+      "z": 47,
+      "shape": 10,
+      "rotation": 1
+    },
+    {
+      "label": "small prayer alcove",
+      "asset": 409,
+      "x": 46,
+      "z": 54,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "founder monument",
+      "asset": 568,
+      "x": 44,
+      "z": 54,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "provision chest",
+      "asset": 57694,
+      "x": 52,
+      "z": 44,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "ledger plaque on masonry",
+      "asset": 909,
+      "x": 55,
+      "z": 44,
+      "shape": 4,
+      "rotation": 2
+    },
+    {
+      "label": "return portal",
+      "asset": 57692,
+      "x": 48,
+      "z": 33,
+      "shape": 0,
+      "rotation": 3
+    },
+    {
+      "label": "bank document bench",
+      "asset": "workbench",
+      "x": 41,
+      "z": 51,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "repaired supply sacks",
+      "asset": 5574,
+      "x": 42,
+      "z": 52,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "coal supply tray",
+      "asset": 16474,
+      "x": 67,
+      "z": 50,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "ore delivery bin",
+      "asset": 21442,
+      "x": 68,
+      "z": 48,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "working smelter",
+      "asset": 2030,
+      "x": 65,
+      "z": 51,
+      "shape": 10,
+      "rotation": 1
+    },
+    {
+      "label": "bellows beside smelter",
+      "asset": 2188,
+      "x": 64,
+      "z": 50,
+      "shape": 4,
+      "rotation": 2
+    },
+    {
+      "label": "smithing anvil",
+      "asset": 2097,
+      "x": 62,
+      "z": 44,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "smithing anvil",
+      "asset": 2097,
+      "x": 65,
+      "z": 44,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "finishing bench",
+      "asset": "workbench",
+      "x": 58,
+      "z": 52,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "tool bench",
+      "asset": "workbench",
+      "x": 60,
+      "z": 52,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "repair barrel",
+      "asset": 362,
+      "x": 57,
+      "z": 51,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "fuel sacks",
+      "asset": 5574,
+      "x": 68,
+      "z": 52,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "hot metal cooling vessel",
+      "asset": 362,
+      "x": 68,
+      "z": 45,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "quay handpump",
+      "asset": 15936,
+      "x": 61,
+      "z": 58,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "waterwheel in real channel",
+      "asset": 18511,
+      "x": 64,
+      "z": 58,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "wheel service bench",
+      "asset": "workbench",
+      "x": 58,
+      "z": 62,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "spare wheel",
+      "asset": 327,
+      "x": 58,
+      "z": 64,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "wheel maintenance coal tray",
+      "asset": 16475,
+      "x": 59,
+      "z": 64,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "cooling barrels",
+      "asset": 362,
+      "x": 61,
+      "z": 59,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "cooling barrels",
+      "asset": 363,
+      "x": 60,
+      "z": 58,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "landing cargo bin",
+      "asset": 21442,
+      "x": 68,
+      "z": 65,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "landing canvas sack",
+      "asset": 5574,
+      "x": 69,
+      "z": 65,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "vessel awaiting repair",
+      "asset": 672,
+      "x": 58,
+      "z": 60,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "waterfront cooking range",
+      "asset": 9736,
+      "x": 68,
+      "z": 53,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "fish landing barrel",
+      "asset": 718,
+      "x": 69,
+      "z": 52,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "collapsed old masonry",
+      "asset": 5569,
+      "x": 50,
+      "z": 60,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "quiet branch bench",
+      "asset": 1106,
+      "x": 51,
+      "z": 62,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "damp mortar fern",
+      "asset": 1173,
+      "x": 50,
+      "z": 57,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "damp mortar fern",
+      "asset": 1173,
+      "x": 50,
+      "z": 58,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "damp mortar fern",
+      "asset": 1173,
+      "x": 54,
+      "z": 61,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "damp mortar fern",
+      "asset": 1173,
+      "x": 54,
+      "z": 62,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "damp mortar fern",
+      "asset": 1173,
+      "x": 53,
+      "z": 62,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "damp mortar fern",
+      "asset": 1173,
+      "x": 50,
+      "z": 61,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "distant foundry firebox",
+      "asset": 18526,
+      "x": 63,
+      "z": 69,
+      "shape": 10,
+      "rotation": 1
+    },
+    {
+      "label": "destination brazier",
+      "asset": 11020,
+      "x": 61,
+      "z": 66,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "label": "destination brazier",
+      "asset": 11020,
+      "x": 67,
+      "z": 66,
+      "shape": 10,
+      "rotation": 0
+    }
+  ],
+  "access_points": {
+    "entry": [
+      48,
+      35
+    ],
+    "recovery": [
+      47,
+      46
+    ],
+    "sanctuary": [
+      48,
+      51
+    ],
+    "bank": [
+      42,
+      48
+    ],
+    "altar": [
+      47,
+      53
+    ],
+    "workshop": [
+      61,
+      47
+    ],
+    "smith": [
+      62,
+      45
+    ],
+    "quay": [
+      60,
+      59
+    ],
+    "wheel-service": [
+      61,
+      61
+    ],
+    "return-walk": [
+      51,
+      61
+    ],
+    "foundry-threshold": [
+      64,
+      67
+    ]
+  },
+  "tour": [
+    [
+      48,
+      35
+    ],
+    [
+      48,
+      42
+    ],
+    [
+      47,
+      46
+    ],
+    [
+      52,
+      49
+    ],
+    [
+      58,
+      48
+    ],
+    [
+      61,
+      47
+    ],
+    [
+      61,
+      53
+    ],
+    [
+      60,
+      57
+    ],
+    [
+      60,
+      61
+    ],
+    [
+      64,
+      67
+    ],
+    [
+      60,
+      65
+    ],
+    [
+      56,
+      61
+    ],
+    [
+      51,
+      61
+    ],
+    [
+      51,
+      56
+    ],
+    [
+      48,
+      53
+    ],
+    [
+      47,
+      46
+    ]
+  ],
+  "fish_reserves": [
+    [
+      64,
+      57
+    ],
+    [
+      64,
+      61
+    ],
+    [
+      66,
+      63
+    ],
+    [
+      69,
+      63
+    ]
+  ],
+  "views": {
+    "overview": [
+      56,
+      52,
+      2048,
+      7000,
+      "overview"
+    ],
+    "overview-reverse": [
+      56,
+      52,
+      10240,
+      7000,
+      "overview"
+    ],
+    "plan": [
+      56,
+      52,
+      0,
+      1,
+      "plan"
+    ],
+    "entrance": [
+      48,
+      38,
+      0,
+      1700,
+      "detail"
+    ],
+    "sanctuary-arrival": [
+      48,
+      45,
+      0,
+      1700,
+      "detail"
+    ],
+    "sanctuary-services": [
+      46,
+      49,
+      12288,
+      1700,
+      "detail"
+    ],
+    "sanctuary-return": [
+      49,
+      51,
+      8192,
+      1700,
+      "detail"
+    ],
+    "workshop-arrival": [
+      60,
+      47,
+      12288,
+      1700,
+      "detail"
+    ],
+    "workshop-bench": [
+      62,
+      51,
+      0,
+      1700,
+      "detail"
+    ],
+    "workshop-water-link": [
+      64,
+      53,
+      0,
+      1700,
+      "detail"
+    ],
+    "waterworks-wheel": [
+      60,
+      60,
+      4096,
+      2400,
+      "detail"
+    ],
+    "waterworks-maintenance": [
+      60,
+      60,
+      2048,
+      2200,
+      "detail"
+    ],
+    "north-crossing": [
+      67,
+      65,
+      8192,
+      1800,
+      "detail"
+    ],
+    "foundry-reveal": [
+      64,
+      67,
+      0,
+      1700,
+      "detail"
+    ],
+    "quiet-return": [
+      51,
+      59,
+      8192,
+      1700,
+      "detail"
+    ]
+  }
+}
