@@ -11,3 +11,13 @@ Private evidence is retained locally; no cache assets or binary captures are pub
 
 - Final material/journal revision: native character legitimately on run two after first-clear payout. The ten-point native tour records frames 42 (pasture), 80 (southern court), 121 (poultry), 152 (waterworks), 189 (sanctuary), 232 (workshop), 273 (grove), 305 (foundry entrance), 338 (vent gallery) and 369 (return). Reviewed actual frames show distinct flat court materials, intact outer shell, cache-authored landmarks and readable current journal. They are not offline renders.
 - Crash/relogin native review retained 500 coins, beer, forged dagger and paid history; actual native durable frame 17 demonstrates the revised journal. Headless recovery and Warden files contain structured observations only. Final replay victory/payment frames remain pending.
+
+## Accepted final evidence
+
+- Native final replay Imp (readable four-tick timing): actual frames 457, 545, 686 in the private native-replay-final session. Phase two and authoritative victory are visible; no food was consumed.
+- Native final replay Warden with resilient snapshot I/O: actual frames 69, 324, 607 and 844 in native-robust show the telegraph progression, crossed lanes, final phase and victory. All three phases were accepted, ending at 10 HP with all 18 prepared food retained. Actual frame 886 records the 25-coin replay claim, 525 total coins and two beers.
+- Final post-restart native frame 35 in native-accepted-final shows all six journal rows complete, run two, two victories and first reward claimed. The genuine native window remains connected there; no desktop input or activation was injected.
+- Clean headless guardian files explicitly declare `mode: headless`, an empty `frame_sequences` list and observation sequences only. No headless image is presented as native evidence.
+- Forced read-only two-second snapshot-sharing fault passed with a 2.09-second ACK delay, normal axe/dagger swap and restoration, and continued real native rendering.
+
+All listed frames were reviewed from the real composited raster. Binary captures and complete raw session data remain private and are not included in Git publication.

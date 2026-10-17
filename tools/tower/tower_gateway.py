@@ -55,4 +55,4 @@ class Gateway:
         return self.act(f"item {food['slot']} {op}")
 
     def interface(self, widget, operation=1, timeout=55):
-        return self.act(f'interface {widget} {operation}')
+        return self.act(f'interface {widget} {operation}',timeout=timeout)

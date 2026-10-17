@@ -8,13 +8,13 @@ Keep the supported constructed-region publication and real cache assets, but rep
 
 ## Progression and services
 
-The plaque is the durable route guide and gives the current next step. Ordinary resource and skill actions remain useful: gather and prepare a small supply of food, forge a bronze weapon, and restore the mind altar. Replace repeated eleven-row bounty grinding with three service objectives, a vent traversal, the Imp, and the Warden. Validate objectives on successful existing world actions, never attempted clicks or inventory presence alone. Replenishable supplies and recovery tools are available through clearly described normal interactions, including after death or abandonment. Preserve legacy diary state explicitly rather than silently treating it as a fresh run.
+The plaque is the durable route guide and gives the current next step. Ordinary resource and skill actions remain useful: gather and prepare a small supply of food, forge a bronze weapon, and restore the sanctuary altar. Replace repeated eleven-row bounty grinding with three service objectives, a vent traversal, the Imp, and the Warden. Validate objectives on successful existing world actions, never attempted clicks or inventory presence alone. Replenishable supplies and recovery tools are available through clearly described normal interactions, including after death or abandonment. Preserve legacy diary state explicitly rather than silently treating it as a fresh run.
 
 ## Encounter teaching and escalation
 
-The vent gallery teaches a warning followed by a delayed eruption on named tiles. The safe route is visible in-world and warnings also appear in chat. Leaving the warned tiles avoids damage; there is no hidden random hit. The Ash Imp uses a short chase/vent cycle and exposes a recovery window after eruptions. Its defeat grants the durable foundry unlock to eligible participants. No unrelated player receives credit.
+The vent gallery teaches a warning followed by a delayed eruption on marked tiles. The safe route is visible in-world and warnings also appear in chat. Leaving the warned tiles avoids damage; there is no hidden random hit. The Ash Imp targets the player's tile, then scatters heat across three tiles. Safe adjacent positions and recovery between eruptions permit ordinary melee. Its defeat grants the durable foundry unlock to eligible participants. No unrelated player receives credit.
 
-The Ash Warden has three health phases: deliberate single-lane strikes, alternating crossed lanes, then a shorter repeating sequence with a clear recovery interval. Heat warnings precede damage and distinguish danger from safe lanes. Quench interactions interrupt a charged attack and expose the boss; they are positional normal object interactions, not test commands. Combat, hitpoints, food, movement and damage use existing engine authorities. Arena exit, defeat, logout, disconnect and ownership loss reset transient encounter state while preserving completed services and unlocks. Shared-world ownership is explicit; another player's presence cannot steal credit or leave an encounter permanently occupied.
+The Ash Warden has three health phases: deliberate single-lane strikes, alternating crossed lanes, then alternating diagonal vents with a faster cadence and clear recovery interval. Heat warnings precede damage and distinguish danger from safe lanes. Quench interactions interrupt a charged attack and expose the boss; they are positional normal object interactions, not test commands. Combat, hitpoints, food, movement and damage use existing engine authorities. Arena exit, defeat, logout, disconnect and ownership loss reset transient encounter state while preserving completed services and unlocks. Shared-world ownership is explicit; another player's presence cannot steal credit or leave an encounter permanently occupied.
 
 ## Resolution, rewards and replay
 
@@ -29,3 +29,5 @@ Victory restores the sanctuary and enables an explicit claim and exit. First-cle
 5. Durable completion, transaction/replay checks, full authentic success/failure/relogin runs and visual polish.
 
 Each checkpoint continues into the next. This document records the intended complete experience; unimplemented behavior must not be described as shipped.
+
+Implemented and accepted; see TOWER_ACCEPTANCE.md. All warning windows allow four server ticks; final Warden cadence accelerates independently of that readable reaction interval.

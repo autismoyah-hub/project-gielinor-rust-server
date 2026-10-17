@@ -16,6 +16,7 @@ def count(s, id):
 
 def chest():
     g.act('object 57694 10423 115 1')
+g.wait(lambda state:state.get('ready'),120)
 g.interface(35913795)
 s = g.wait(lambda s: s.get('ready') and 'Next: Claim reward' in s['journal'], 90)
 if a.full_pack:

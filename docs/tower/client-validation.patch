@@ -1,7 +1,7 @@
 From 4001176798235e2230d6c69445a0b86e24323c5b Mon Sep 17 00:00:00 2001
 From: Tower Agent 5 <agent5@tower.invalid>
 Date: Fri, 16 Oct 2026 14:37:35 -0700
-Subject: [PATCH 1/6] Add opt-in Tower normal-action validation adapter without
+Subject: [PATCH 1/7] Add opt-in Tower normal-action validation adapter without
  desktop input
 
 ---
@@ -250,7 +250,7 @@ index 354c9b3..969d2f1 100644
 From 88e5768f16a7008f972ad7b4bc015409012642c0 Mon Sep 17 00:00:00 2001
 From: Tower Agent 5 <agent5@tower.invalid>
 Date: Fri, 16 Oct 2026 15:30:51 -0700
-Subject: [PATCH 2/6] Extend Tower adapter with inventory actions and
+Subject: [PATCH 2/7] Extend Tower adapter with inventory actions and
  authoritative observations
 
 ---
@@ -547,7 +547,7 @@ index 1ce8533..ddcfcf7 100644
 From cf0bc84097aaf75ae49e2bb484dde248d1d17230 Mon Sep 17 00:00:00 2001
 From: Tower Agent 5 <agent5@tower.invalid>
 Date: Fri, 16 Oct 2026 16:10:34 -0700
-Subject: [PATCH 3/6] Guard visible inventory actions and improve Tower
+Subject: [PATCH 3/7] Guard visible inventory actions and improve Tower
  validation observations
 
 ---
@@ -694,7 +694,7 @@ index 969d2f1..e302bbb 100644
 From 2c5cb8f0920cbd9d7cc486aa630456e99f335c4f Mon Sep 17 00:00:00 2001
 From: Tower Agent 5 <agent5@tower.invalid>
 Date: Fri, 16 Oct 2026 16:43:10 -0700
-Subject: [PATCH 4/6] Report normal interface listener dispatch as a submitted
+Subject: [PATCH 4/7] Report normal interface listener dispatch as a submitted
  action
 
 ---
@@ -738,7 +738,7 @@ index 93a8686..73932ac 100644
 From aeb4066e1781b3ec0e651c89f23767d18e120d8c Mon Sep 17 00:00:00 2001
 From: Tower Agent 5 <agent5@tower.invalid>
 Date: Fri, 16 Oct 2026 17:13:12 -0700
-Subject: [PATCH 5/6] Wait for normal UI script readiness before automated
+Subject: [PATCH 5/7] Wait for normal UI script readiness before automated
  actions
 
 ---
@@ -776,7 +776,7 @@ index e302bbb..322b83f 100644
 From 65457900b34891d0e9e8b211995e26e202d6fb8a Mon Sep 17 00:00:00 2001
 From: Tower Agent 5 <agent5@tower.invalid>
 Date: Fri, 16 Oct 2026 17:26:37 -0700
-Subject: [PATCH 6/6] Defer dynamic action targets until normal UI readiness
+Subject: [PATCH 6/7] Defer dynamic action targets until normal UI readiness
 
 ---
  src/tower_adapter.rs | 5 +++++
@@ -798,3 +798,256 @@ index 73932ac..b0955a1 100644
          let number = |i: usize| words.get(i).and_then(|s| s.parse::<u16>().ok());
          let item_widget = |slot: u16| {
              client
+
+From a32b66deeeb30a2be159fbd379a9ffb07f423b72 Mon Sep 17 00:00:00 2001
+From: Tower Agent 5 <agent5@tower.invalid>
+Date: Fri, 16 Oct 2026 17:59:27 -0700
+Subject: [PATCH 7/7] Retry observation sharing violations without replaying
+ gameplay actions
+
+---
+ src/tower_adapter.rs | 150 ++++++++++++++++++++++++++++++-------------
+ 1 file changed, 105 insertions(+), 45 deletions(-)
+
+diff --git a/src/tower_adapter.rs b/src/tower_adapter.rs
+index b0955a1..548762d 100644
+--- a/src/tower_adapter.rs
++++ b/src/tower_adapter.rs
+@@ -1,7 +1,13 @@
+ //! Opt-in local validation adapter. Uses the same menu actions as the native UI;
+ //! never injects desktop input or changes server state directly.
+ use crate::{client_state::ClientState, context_menu::Action, raster::Raster, Result};
+-use std::path::PathBuf;
++use std::{io, path::PathBuf};
++fn transient_io(error: &io::Error) -> bool {
++    matches!(
++        error.kind(),
++        io::ErrorKind::PermissionDenied | io::ErrorKind::WouldBlock | io::ErrorKind::Interrupted
++    ) || (cfg!(windows) && matches!(error.raw_os_error(), Some(5 | 32 | 33)))
++}
+ fn quoted(value: &str) -> String {
+     let mut out = String::from("\"");
+     for c in value.chars() {
+@@ -22,7 +28,9 @@ fn quoted(value: &str) -> String {
+ pub struct Adapter {
+     directory: PathBuf,
+     sequence: u64,
+-    capture: bool,
++    capture: Option<u64>,
++    receipt_pending: Option<String>,
++    inspect: bool,
+     pub stop: bool,
+ }
+ impl Adapter {
+@@ -35,16 +43,26 @@ impl Adapter {
+         Ok(Some(Self {
+             directory,
+             sequence: 0,
+-            capture: false,
++            capture: None,
++            receipt_pending: None,
++            inspect: false,
+             stop: false,
+         }))
+     }
+     pub fn poll(&mut self, client: &mut ClientState, ready: bool) -> Result<()> {
++        // A sharing violation retries only observation output, never dispatch.
++        if self.receipt_pending.is_some() {
++            self.flush_receipt(client, ready)?;
++            if self.receipt_pending.is_some() {
++                return Ok(());
++            }
++        }
+         // A controller atomically replaces command.txt with: SEQUENCE VERB ARGS.
+         // Only one outstanding command is allowed; receipt.txt acknowledges it.
+         let text = match std::fs::read_to_string(self.directory.join("command.txt")) {
+             Ok(text) => text,
+             Err(error) if error.kind() == std::io::ErrorKind::NotFound => return Ok(()),
++            Err(error) if transient_io(&error) => return Ok(()),
+             Err(error) => return Err(error.into()),
+         };
+         let words: Vec<_> = text.split_whitespace().collect();
+@@ -56,9 +74,15 @@ impl Adapter {
+         }
+         // Resolve dynamic inventory widgets only after the same UI/script
+         // barrier that blocks normal native input has cleared.
+-        if !ready && !matches!(words.get(1), Some(&"observe" | &"capture" | &"stop")) {
++        if !ready
++            && !matches!(
++                words.get(1),
++                Some(&"observe" | &"capture" | &"inspect" | &"stop")
++            )
++        {
+             return Ok(());
+         }
++        self.inspect = words.get(1) == Some(&"inspect");
+         let number = |i: usize| words.get(i).and_then(|s| s.parse::<u16>().ok());
+         let item_widget = |slot: u16| {
+             client
+@@ -153,13 +177,18 @@ impl Adapter {
+                         operation: op as u8,
+                         sub: 0,
+                     }),
+-                Some("observe" | "capture" | "stop") if words.len() == 2 => None,
++                Some("observe" | "capture" | "inspect" | "stop") if words.len() == 2 => None,
+                 _ => {
+                     self.sequence = sequence;
+                     return self.receipt(client, ready, "invalid command");
+                 }
+             };
+-        if action.is_none() && !matches!(words.get(1), Some(&"observe" | &"capture" | &"stop")) {
++        if action.is_none()
++            && !matches!(
++                words.get(1),
++                Some(&"observe" | &"capture" | &"inspect" | &"stop")
++            )
++        {
+             self.sequence = sequence;
+             return self.receipt(client, ready, "invalid arguments or target not available");
+         }
+@@ -191,9 +220,11 @@ impl Adapter {
+             }
+             // Some cache buttons act entirely through their normal onOp listener
+             // and deliberately have no direct IF_BUTTON operation mask.
+-            let listener_dispatch = if let Action::Interface {id,..}=action {
+-                client.interfaces.listener(id,1409).is_some()
+-            } else { false };
++            let listener_dispatch = if let Action::Interface { id, .. } = action {
++                client.interfaces.listener(id, 1409).is_some()
++            } else {
++                false
++            };
+             let result = if let Action::Interface { id, operation, sub } = action {
+                 client.interface_operation(id, operation, sub)
+             } else {
+@@ -212,11 +243,30 @@ impl Adapter {
+             }
+         }
+         self.sequence = sequence;
+-        self.capture = words[1] == "capture";
++        if words[1] == "capture" {
++            self.capture = Some(sequence);
++        }
+         self.stop = words[1] == "stop";
+         self.receipt(client, ready, "accepted")
+     }
+-    fn receipt(&self, client: &ClientState, ready: bool, status: &str) -> Result<()> {
++    fn receipt(&mut self, client: &ClientState, ready: bool, status: &str) -> Result<()> {
++        self.receipt_pending = Some(status.into());
++        self.flush_receipt(client, ready)
++    }
++    fn flush_receipt(&mut self, client: &ClientState, ready: bool) -> Result<()> {
++        let Some(status) = self.receipt_pending.as_deref() else {
++            return Ok(());
++        };
++        match self.write_receipt(client, ready, status) {
++            Ok(()) => {
++                self.receipt_pending = None;
++                Ok(())
++            }
++            Err(error) if transient_io(&error) => Ok(()),
++            Err(error) => Err(error.into()),
++        }
++    }
++    fn write_receipt(&self, client: &ClientState, ready: bool, status: &str) -> io::Result<()> {
+         let npcs: Vec<_> = client
+             .npc_state
+             .npcs
+@@ -230,41 +280,47 @@ impl Adapter {
+             .take(12)
+             .map(|m| &m.text)
+             .collect();
+-        let widgets: Vec<_> = client
+-            .interfaces
+-            .widgets
+-            .iter()
+-            .filter(|(_, w)| !w.actions.is_empty() || !w.button_text.is_empty())
+-            .map(|(&id, w)| (id, &w.text, &w.actions, &w.button_text))
+-            .collect();
++        let widgets: Vec<_> = if self.inspect {
++            client
++                .interfaces
++                .widgets
++                .iter()
++                .filter(|(_, w)| !w.actions.is_empty() || !w.button_text.is_empty())
++                .map(|(&id, w)| (id, &w.text, &w.actions, &w.button_text))
++                .collect()
++        } else {
++            Vec::new()
++        };
+         let text = format!("sequence={}\nstatus={status}\nready={ready}\nposition={:?}\nserver_tick={}\nqueued_packets={}\nmap_flag={:?}\ninterfaces={:?}\nnpcs={npcs:?}\nmessages={messages:?}\n", self.sequence, client.data.position, client.server_tick, client.outbound.len(), client.map_flag, client.interfaces.children);
+         std::fs::write(self.directory.join("receipt.tmp"), text)?;
+         std::fs::rename(
+             self.directory.join("receipt.tmp"),
+             self.directory.join("receipt.txt"),
+         )?;
+-        std::fs::write(self.directory.join("widgets.txt"), format!("{widgets:#?}"))?;
+-        std::fs::write(
+-            self.directory.join("inventory.txt"),
+-            format!("{:?}", client.inventories.containers),
+-        )?;
+-        std::fs::write(
+-            self.directory.join("experience.txt"),
+-            format!("{:?}", client.data.experience),
+-        )?;
+-        let graphics: Vec<_> = client
+-            .world_spots
+-            .iter()
+-            .map(|effect| (effect.position, effect.animation.id, effect.animation.start))
+-            .collect();
+-        std::fs::write(self.directory.join("graphics.txt"), format!("{graphics:?}"))?;
+-        std::fs::write(
+-            self.directory.join("levels.txt"),
+-            format!(
+-                "base={:?}\ncurrent={:?}",
+-                client.data.base, client.data.boosted
+-            ),
+-        )?;
++        if self.inspect {
++            std::fs::write(self.directory.join("widgets.txt"), format!("{widgets:#?}"))?;
++            std::fs::write(
++                self.directory.join("inventory.txt"),
++                format!("{:?}", client.inventories.containers),
++            )?;
++            std::fs::write(
++                self.directory.join("experience.txt"),
++                format!("{:?}", client.data.experience),
++            )?;
++            let graphics: Vec<_> = client
++                .world_spots
++                .iter()
++                .map(|effect| (effect.position, effect.animation.id, effect.animation.start))
++                .collect();
++            std::fs::write(self.directory.join("graphics.txt"), format!("{graphics:?}"))?;
++            std::fs::write(
++                self.directory.join("levels.txt"),
++                format!(
++                    "base={:?}\ncurrent={:?}",
++                    client.data.base, client.data.boosted
++                ),
++            )?;
++        }
+         let items=client.inventories.containers.get(&93).into_iter().flatten().enumerate().map(|(slot,item)| {
+             let widget=client.interfaces.runtime.iter().filter(|(_,r)|r.logical_id>>16==149 && r.child_index==slot as i32 && r.item==item.id)
+                 .map(|(&id,_)|id).min();
+@@ -351,11 +407,15 @@ impl Adapter {
+         Ok(())
+     }
+     pub fn frame(&mut self, raster: &Raster) -> Result<()> {
+-        if std::mem::take(&mut self.capture) {
+-            std::fs::write(
+-                self.directory.join(format!("frame-{}.bmp", self.sequence)),
+-                raster.bmp()?,
+-            )?;
++        if let Some(sequence) = self.capture {
++            let path = self.directory.join(format!("frame-{sequence}.bmp"));
++            let pending = self.directory.join(format!("frame-{sequence}.bmp.tmp"));
++            let pixels = raster.bmp()?;
++            match std::fs::write(&pending, pixels).and_then(|_| std::fs::rename(&pending, &path)) {
++                Ok(()) => self.capture = None,
++                Err(error) if transient_io(&error) => {}
++                Err(error) => return Err(error.into()),
++            }
+         }
+         Ok(())
+     }

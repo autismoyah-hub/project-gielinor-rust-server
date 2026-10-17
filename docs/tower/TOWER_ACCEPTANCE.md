@@ -1,24 +1,32 @@
-# Comprehensive Floor One acceptance
+# Comprehensive Floor One acceptance — complete
 
-Status: in progress. Overall completion requires every authored-floor criterion below, not merely a successful intermediate checkpoint.
+The authored Cinderworks Floor One is complete and accepted on the isolated Tower branch. Gameplay engine source is `420729798ffc3b0d31c7aff7497d1841597c2104`; final validation uses the pinned native client plus local adapter `a32b66deeeb30a2be159fbd379a9ffb07f423b72`. This report and the added diagnostic controllers do not change that tested server implementation.
 
-| Criterion | Current evidence | State |
-|---|---|---|
-| Normal entry and services | Native normal onboarding and all services; fresh headless normal first-login registration, choices and all services | Passed |
-| Coherent layout and navigation | Final native tour: pasture, southern court, poultry yard, waterworks, sanctuary, workshop, grove, foundry entrance, vent gallery, sanctuary return; closed-shell collision tests | Passed; final evidence consolidation pending |
-| Prerequisite and inventory rules | Guardian rejection before services/XP, full-pack fishing stop, full-pack bones rejection, normal food/drop recovery, full-pack reward denial | Passed |
-| Demi-boss | Native and fresh headless Imp victory, phase escalation, real movement and ordinary combat | Passed |
-| Final boss | Native and fresh headless Warden victories with phases two and three, smoke/fire, real damage, food and coolant | Passed |
-| Defeat recovery | Fresh headless lethal vents to zero HP, delayed sanctuary rescue, same items/equipment/services and no unearned unlock; saved-zero-health unit recovery | Passed |
-| Transactional rewards | Native and headless first-clear 500 coins/beer, duplicate search pays nothing; proposed items withheld until account transaction ACK | Passed |
-| Crash durability | Committed native first reward and fresh Imp unlock both survive deliberately killing only the isolated server before logout | Passed |
-| Exit/return persistence | Exact inventory, equipment, XP and completed journal preserved; obsolete legacy cinder XP excluded | Passed |
-| Replay | Normal native plaque starts run two, retains paid history/victory count, resets services and bosses | Full second clear and 25-coin durable payment pending |
-| Final reusable automation | Public normal-action services, guardian, recovery, claim, tour and exit/return controllers; same native/headless client path | Clean final route invocation and latest-adapter relog pending |
-| Publication and integration | Own branch only; source-only client patch; modular engine deltas and private evidence index | Final publication pending |
+| Criterion | Confirmed result |
+|---|---|
+| Normal onboarding | Real appearance and experience choices; authored pre-run introduction, empty inventory and no implicit run before the plaque |
+| Layout and navigation | Real native movement through all ten review points; distinct workshop, moss, slate and ash courts, preserved river, closed exterior shell and no ground stair to the old upstairs stub |
+| Ordinary progression | Mining, smelting, dagger smithing/wielding, net fishing, item-on-range cooking, creature combat, bones pickup and item-on-altar offering; all three services credited by successful callbacks |
+| Rejection and capacity | Pre-service guardian denial with no combat XP; full-pack fishing/pickup handling and normal recovery; full-pack chest pays nothing until space is made |
+| Ash Imp | Native and clean headless victories, visible phase escalation and real movement/combat; final native replay and clean headless attempts used no food |
+| Ash Warden | Native and clean headless victories through all three phases, real smoke/fire, damage, food rules and routed coolant interruption |
+| Defeat and interruption | Actual lethal vents reach zero HP, then sanctuary recovery preserves items/equipment/services without an unlock; native failed attempt also recovered; disconnect releases transient court ownership |
+| Transactional rewards | Proposed inventory and paid marker use the existing account transaction, with gameplay/logout barrier until ACK; first clear is 500 coins/beer, replay is 25/beer; repeated searches add nothing |
+| Crash durability | Deliberately killed only the owned server before logout; committed native first reward and fresh Imp unlock survived real relogin |
+| Exit and return | Native replay and clean headless completion preserve exact inventory, equipment, XP and journal through normal portals |
+| Replay | Normal plaque begins run two, retains paid history, resets only objectives; second full clear pays 25 rather than 500 |
+| Final restart/relogin | Native has run two, two victories, 525 coins and two beers; clean headless has run one, one victory, 500 coins and one beer; duplicate searches still grant zero |
+| Native rendering | Genuine Windows Rust client and composited framebuffer captures, no desktop input or focus activation; completed six-step journal remains visibly open |
+| Gateway reliability | Forced two-second Windows snapshot-sharing violation delays ACK by 2.09 seconds; live client survives normal weapon swap and restore, with no gameplay redispatch; large diagnostics are opt-in |
+| Client patch reproducibility | All seven source patches apply from the pinned baseline in a separate index and reproduce the exact tested client tree `d623dddb94ba47d16c08d73fb37d6dc68526612a`; preserve CR bytes with `git am --keep-cr` |
+| Automated/headless evidence | Reusable normal-action controllers and structured assertions; headless observations are never described as native frames |
 
-Acceptance asserts server-delivered outcomes, never a command receipt alone. Native framebuffer captures and headless observations are distinct. Controllers only request native frame capture with `--native-frames`; headless capture sequences are observations and never claimed as rendered frames. No physical desktop input, window activation, save editing, injected items or developer gameplay shortcuts are used.
+The clean service route earns 93 smithing XP from its bar and dagger and no obsolete movement agility XP. Final world suite: **400 passed, two existing ignored**. Final server suite: **52 passed**. Server and optimized native/headless builds pass. Earlier storage validation passed eight tests with one existing ignored; persistence is additionally checked through actual account transactions, crash, restart and relogin. [VALIDATION_RESULTS.json](VALIDATION_RESULTS.json) contains safe aggregate outcomes; detailed session state and frames remain private.
 
-Three historical prototype differential expected files (tower-bones, tower-chest, tower-kit) were absent from preserved resources. They are not fabricated and are not reported as passing. Direction B gameplay is validated independently through lifecycle/persistence tests and authentic client scenarios. Existing generic combat-catalog loading reports its documented missing source; Tower guardians use explicit cache-validated configurations, and ordinary creature combat has been demonstrated. General engine parity beyond this authored floor is not implied.
+Failed diagnostics remain failed: the early Warden retreat, controller capacity/widget timing errors, a food-exhausted native replay Imp, and a native Warden session interrupted by a snapshot sharing violation are not counted as wins. Subsequent named attempts independently passed after their fixes. No save edits, injected items, developer gameplay shortcuts, physical input emulation or generated gameplay images were used.
 
-Earlier failed Warden retreats, local controller dispatch errors, full-pack pickup denials and the initial exit comparison that detected obsolete agility XP remain failed diagnostic attempts. They are never counted as successful scenarios. Final completion still requires the pending rows above and honest reporting of integration limits.
+## Integration boundary and existing limitations
+
+Agent 2's latest observed ref is `521e2e047071a7e7d481ab458829bb88a57b76e2`; it is not merged. Its V12 chemistry migration collides in version number with this branch's V12 Tower migration. Agent 2 must append/renumber the Tower migration and preserve both state projections during integration. Shared runtime/player/queue changes also require review; acceptance against that newer branch is not claimed. See [TOWER_INTEGRATION_CONTRACT.md](TOWER_INTEGRATION_CONTRACT.md).
+
+Three historical prototype differential expected files (tower-bones, tower-chest, tower-kit) were absent. They were not fabricated or reported as passing; Direction B intentionally redesigns that prototype and is accepted through its own policy, integration and authentic client scenarios. The generic combat-catalog loader retains its documented missing-source warning; configured Tower guardians and ordinary creature combat were demonstrated. Whole-client/server parity, other floors, per-party instances and cooperative boss credit are outside this Floor One acceptance. Private caches, binaries, keys, credentials, databases, raw sessions and captures are excluded from publication.

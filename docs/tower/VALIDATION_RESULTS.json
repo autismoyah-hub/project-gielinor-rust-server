@@ -1,0 +1,72 @@
+{
+  "status": "complete",
+  "scope": "Cinderworks Floor One on the isolated agent5/tower-development branch; upstream integration is a separate Agent 2 review",
+  "server_gameplay_commit": "420729798ffc3b0d31c7aff7497d1841597c2104",
+  "client_baseline": "95eed88159b06cebea24559a814a5111b54a59cd",
+  "client_validation_commit": "a32b66deeeb30a2be159fbd379a9ffb07f423b72",
+  "checks": {
+    "clean_services": "passed",
+    "lethal_recovery": "passed",
+    "headless_imp": "passed",
+    "headless_warden": "passed",
+    "headless_claim": "passed",
+    "headless_exit": "passed",
+    "native_services": "passed",
+    "native_imp": "passed",
+    "native_warden": "passed",
+    "native_claim": "passed",
+    "native_exit": "passed",
+    "crash_relogin": "passed",
+    "snapshot_lock": "passed",
+    "introduction": "passed",
+    "navigation": "passed",
+    "final_restart": "passed",
+    "client_patch_roundtrip": "passed"
+  },
+  "unit_tests": {
+    "world_passed": 400,
+    "world_existing_ignored": 2,
+    "server_passed": 52,
+    "storage_passed": 8,
+    "storage_existing_ignored": 1
+  },
+  "payouts": {
+    "first_clear": {
+      "coins": 500,
+      "beer": 1
+    },
+    "replay": {
+      "coins_added": 25,
+      "beer_added": 1
+    },
+    "native_after_two_clears": {
+      "coins": 525,
+      "beer": 2,
+      "victories": 2
+    },
+    "duplicate_search_grant": 0
+  },
+  "visual_evidence": {
+    "native_tour_views": 10,
+    "native_final_warden_phases": [
+      2,
+      3
+    ],
+    "native_final_warden_frames": [
+      69,
+      324,
+      607,
+      844
+    ],
+    "native_relogin_completion_frame": 35,
+    "headless_frames_claimed": false
+  },
+  "integration": {
+    "observed_agent2_ref": "521e2e047071a7e7d481ab458829bb88a57b76e2",
+    "merged": false,
+    "migration_collision": "Tower V12 versus upstream V12 chemistry; append/renumber during integration"
+  },
+  "protected_resources_published": false,
+  "remaining_authored_floor_one_work": [],
+  "client_patch_tree": "d623dddb94ba47d16c08d73fb37d6dc68526612a"
+}

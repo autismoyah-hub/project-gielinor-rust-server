@@ -49,3 +49,9 @@ Verification: all 62 Tower world tests pass, including three repeated failed cla
 - Local client validation patch: listener dispatch acknowledgements reflect cache onOp submission even without a direct button mask. Automation readiness now matches the native UI's existing script-busy input barrier. No production client protocol or authority is replaced.
 
 - `Runtime::configure_cinderworks` enables the authored journal after generic startup UI configuration, making configuration order explicit before admission. Every guardian telegraph now lasts four server ticks; final Warden cadence remains faster. This adjustment follows an actual native replay failure under frame stalls, not a fabricated success.
+
+## Accepted validation boundary
+
+The optional client patch now retries transient Windows observation-file sharing failures independently of action dispatch. Large debug dumps require `inspect`, ordinary observations stay lightweight, and native frame requests retain their own sequence until an atomic image write succeeds. A real read-only two-second file lock plus normal weapon swap/restore verifies continued native operation. These are local validation changes; production gameplay still uses the existing protocol and authoritative Rust engine.
+
+Agent 2's final observed chemistry/queue APIs and the V12 migration collision are recorded in TOWER_INTEGRATION_CONTRACT.md; no integration or parity claim is made for that newer ref.
