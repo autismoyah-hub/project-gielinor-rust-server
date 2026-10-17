@@ -885,6 +885,7 @@ pub struct World {
     pub foods: BTreeMap<i32, crate::food::Edible>,
     pub member_foods: std::collections::BTreeSet<i32>,
     pub food_boosts: BTreeMap<i32,Vec<crate::food::StatBoost>>,
+    pub food_energy: BTreeMap<i32,i32>,
     pub slot_preserving_foods: std::collections::BTreeSet<i32>,
     pub potions: BTreeMap<i32, crate::potions::Potion>,
     pub milking: Option<crate::milking::Config>,
@@ -991,6 +992,7 @@ impl Default for World {
             foods: BTreeMap::new(),
             member_foods: Default::default(),
             food_boosts: BTreeMap::new(),
+            food_energy: BTreeMap::new(),
             slot_preserving_foods: Default::default(),
             potions: BTreeMap::new(),
             item_packs: BTreeMap::new(),
@@ -2016,6 +2018,11 @@ impl World {
                 let selected = self.slot_preserving_foods.contains(&food.id);
                 let hp_before = p.data.stats.current(3) as u8;
                 let fine_xp_before = p.data.stats.fine_xp(3);
+                let energy_percent=self.food_energy.get(&food.id).copied().unwrap_or(0);
+                if !(0..=100).contains(&energy_percent){return Err(ActionError::InvalidItem);}
+                // Reuse fixed-point potion arithmetic; donor food restore never
+                // lowers a pre-existing value above the ordinary energy cap.
+                let energy_after=crate::potions::restored_energy(p.data.energy,energy_percent,10000).max(p.data.energy);
                 let eaten = crate::food::eat_slot_with_boosts(
                     food,slot,&mut p.data.inventory,&mut p.data.stats,
                     &self.object_types,3,self.eating_animation,
@@ -2023,6 +2030,7 @@ impl World {
                     |event| emitted.push(event),
                 ).map_err(|_| ActionError::InvalidStat)?;
                 if !eaten {return Err(ActionError::InvalidItem);}
+                if energy_after!=p.data.energy {p.data.energy=energy_after;emitted.push(crate::food::Event::Energy(energy_after));}
                 if eaten && selected {
                     self.events.push(WorldEvent::FoodTransition {
                         actor: id,
@@ -4246,6 +4254,13 @@ mod tests {
                 ..
             }
         )));
+    }
+    #[test]
+    fn energy_food_eat_events_restore_exact_percent_and_failed_effects_never_award(){
+        for (energy,expected) in [(0,Some(1000)),(9500,Some(10000)),(10000,None)]{
+            let (mut w,actor)=admitted();w.foods.insert(991,crate::food::Edible{id:991,heal:11,delay:1,replacement:Some(992),message:"Summer pie".into()});w.food_boosts.insert(991,vec![crate::food::StatBoost{skill:16,amount:5}]);w.food_energy.insert(991,10);w.member_foods.insert(991);let p=w.players.get_mut(actor.slot as usize).unwrap();p.member=true;p.data.energy=energy;p.data.stats.set_base(3,99);p.data.stats.set_current(3,50);p.data.stats.set_base(16,99);p.data.stats.set_current(16,99);p.data.inventory.restore_slot(1,Some(crate::inventory::Item{id:991,count:1,vars:0})).unwrap();w.drain_events();w.submit(actor,Action::EatItemSlot{slot:1,item:991}).unwrap();w.tick().unwrap();let updates:Vec<_>=w.drain_events().into_iter().filter_map(|e|if let WorldEvent::Food{event:crate::food::Event::Energy(n),..}=e{Some(n)}else{None}).collect();assert_eq!(updates,expected.into_iter().collect::<Vec<_>>());let p=w.data(actor).unwrap();assert_eq!((p.stats.current(3),p.stats.current(16)),(61,104));assert_eq!(p.inventory.get(1).unwrap().id,992);assert_eq!(p.stats.fine_xp(16),0);if let Some(expected)=expected{assert!((expected..=(expected+25).min(10000)).contains(&p.energy));}
+        }
+        for bad in 0..3{let (mut w,actor)=admitted();w.foods.insert(991,crate::food::Edible{id:991,heal:11,delay:1,replacement:Some(992),message:"Summer pie".into()});w.food_boosts.insert(991,vec![crate::food::StatBoost{skill:16,amount:if bad==1{-1}else{5}}]);w.food_energy.insert(991,if bad==2{101}else{10});w.member_foods.insert(991);let p=w.players.get_mut(actor.slot as usize).unwrap();p.member=bad!=0;p.data.energy=500;p.data.stats.set_base(3,99);p.data.stats.set_current(3,50);p.data.stats.set_base(16,99);p.data.stats.set_current(16,99);p.data.inventory.restore_slot(1,Some(crate::inventory::Item{id:991,count:1,vars:0})).unwrap();w.drain_events();w.submit(actor,Action::EatItemSlot{slot:1,item:991}).unwrap();w.tick().unwrap();let p=w.data(actor).unwrap();assert_eq!(p.inventory.get(1).unwrap().id,991);assert_eq!((p.stats.current(3),p.stats.current(16)),(50,99));assert!((500..=524).contains(&p.energy));assert!(!w.drain_events().iter().any(|e|matches!(e,WorldEvent::Food{event:crate::food::Event::Energy(_),..})));}
     }
     #[test]
     fn queued_food_secondary_boosts_follow_actual_eat_dispatch(){

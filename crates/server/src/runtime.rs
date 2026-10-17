@@ -451,6 +451,7 @@ impl<B: AccountBackend> Runtime<B> {
         self.world.foods = foods;
         self.world.slot_preserving_foods.clear();
         self.world.food_boosts.clear();
+        self.world.food_energy.clear();
         self.world.eating_animation = animation;
         Ok(())
     }
@@ -3815,6 +3816,13 @@ impl<B: AccountBackend> Runtime<B> {
                             }
                             gielinor_world::food::Event::Stat(update) if update.notify => {
                                 active.stats.invalidate(update.skill)
+                            }
+                            gielinor_world::food::Event::Energy(energy) => {
+                                if let Some(connection)=active.connection {
+                                    let payload=gielinor_protocol::game::run_energy(*energy).map_err(|e|io::Error::other(format!("{e:?}")))?;
+                                    self.transport.send(connection,64,&payload)?;
+                                }
+                                if let Some(run)=&mut active.run {run.1=*energy;}
                             }
                             gielinor_world::food::Event::Message(message) => {
                                 if let Some(connection) = active.connection {

@@ -252,7 +252,32 @@ mod additional_ordinary_food_tests {
 pub struct BoostFoodBindings {
     pub selected:std::collections::BTreeSet<i32>,
     pub boosts:BTreeMap<i32,Vec<gielinor_world::food::StatBoost>>,
+    pub energy:BTreeMap<i32,i32>,
 }
+/// Summer pie and papaya use shared food/stat preparation plus run energy.
+pub fn energy_foods(objects:&Symbols,stats:&Symbols,defs:&Definitions,foods:&mut BTreeMap<i32,Edible>)->Result<BoostFoodBindings,String>{
+    let mut next=foods.clone();apply_ordinary_food_profiles(objects,defs,&mut next,&[("summer_pie","Summer pie",11),("half_summer_pie","Half a summer pie",11),("papaya","Papaya fruit",8)])?;
+    let whole=objects["summer_pie"];let half=objects["half_summer_pie"];let papaya=objects["papaya"];let dish=*objects.get("piedish").ok_or("Missing energy-food dish")?;
+    let item=u32::try_from(dish).ok().and_then(|id|defs.items.get(&id)).ok_or("Missing energy-food dish definition")?;
+    if [whole,half,papaya].contains(&dish) || item.stackable || item.dummy==1 || item.cert.template!=0 || item.placeholder.template!=0 || item.transform.template!=0{return Err("Invalid energy-food dish".into());}
+    let agility=u8::try_from(*stats.get("agility").ok_or("Missing energy-food Agility symbol")?).map_err(|_|"Invalid energy-food Agility ID")?;if !defs.stats.contains_key(&(agility as u32)){return Err("Missing energy-food Agility definition".into());}
+    for id in [whole,half,papaya]{if !defs.items[&(id as u32)].members{return Err("Expected member energy-food definition".into());}}
+    next.get_mut(&whole).unwrap().replacement=Some(half);next.get_mut(&half).unwrap().replacement=Some(dish);for id in [whole,half]{next.get_mut(&id).unwrap().delay=1;}
+    let boosts=[(whole,vec![gielinor_world::food::StatBoost{skill:agility,amount:5}]),(half,vec![gielinor_world::food::StatBoost{skill:agility,amount:5}]),(papaya,Vec::new())].into();
+    *foods=next;Ok(BoostFoodBindings{selected:[whole,half,papaya].into(),boosts,energy:[(whole,10),(half,10),(papaya,5)].into()})
+}
+#[cfg(test)]
+mod energy_food_tests{
+    use super::*;
+    #[test]
+    fn energy_foods_bind_summer_halves_and_papaya_without_partial_metadata_publish(){
+        let mut objects=Symbols::new();let stats:Symbols=[("agility".into(),16)].into();let mut defs=Definitions{inventories:Default::default(),locations:Default::default(),npcs:Default::default(),items:Default::default(),varbits:Default::default(),varps:Default::default(),stats:Default::default()};defs.stats.insert(16,gielinor_cache::definitions::StatType::decode(&[0]).unwrap());
+        for (symbol,id,name) in [("summer_pie",7218,"Summer pie"),("half_summer_pie",7220,"Half a summer pie"),("papaya",5972,"Papaya fruit"),("piedish",2313,"Pie dish")]{objects.insert(symbol.into(),id);let mut item=gielinor_cache::definitions::ItemType::decode(&[16,0]).unwrap();item.name=name.into();if symbol!="piedish"{item.inventory_ops[0]=Some("Eat".into());}defs.items.insert(id as u32,item);}
+        let mut foods=BTreeMap::new();let binding=energy_foods(&objects,&stats,&defs,&mut foods).unwrap();assert_eq!(binding.selected.len(),3);assert_eq!(binding.energy,[(7218,10),(7220,10),(5972,5)].into());assert_eq!((foods[&7218].replacement,foods[&7220].replacement,foods[&5972].replacement),(Some(7220),Some(2313),None));assert_eq!((foods[&7218].delay,foods[&5972].heal,foods[&5972].delay),(1,8,3));assert_eq!(binding.boosts[&7218],vec![gielinor_world::food::StatBoost{skill:16,amount:5}]);
+        foods.clear();defs.stats.remove(&16);assert!(energy_foods(&objects,&stats,&defs,&mut foods).is_err());assert!(foods.is_empty());
+    }
+}
+
 /// Ordinary seven-family pie healing/stage/boost data, independently Wiki-pinned.
 pub fn boost_pie_foods(objects:&Symbols,stats:&Symbols,defs:&Definitions,foods:&mut BTreeMap<i32,Edible>)->Result<BoostFoodBindings,String>{
     let ordinary=|symbol:&str|->Result<i32,String>{let id=*objects.get(symbol).ok_or("Missing boost-pie object")?;let item=u32::try_from(id).ok().and_then(|id|defs.items.get(&id)).ok_or("Missing boost-pie definition")?;if item.stackable || item.dummy==1 || item.cert.template!=0 || item.placeholder.template!=0 || item.transform.template!=0{return Err("Invalid ordinary boost-pie object".into());}Ok(id)};
@@ -273,7 +298,7 @@ pub fn boost_pie_foods(objects:&Symbols,stats:&Symbols,defs:&Definitions,foods:&
             next.insert(id,Edible{id,heal,delay:1,replacement:Some(replacement),message:format!("You eat the {}.",name.to_lowercase())});boosts.insert(id,effects.clone());
         }
     }
-    *foods=next;Ok(BoostFoodBindings{selected,boosts})
+    *foods=next;Ok(BoostFoodBindings{selected,boosts,energy:BTreeMap::new()})
 }
 
 /// GR-24's bounded cake/plain-pizza correction. Other foods retain the reference

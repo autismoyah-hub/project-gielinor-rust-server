@@ -165,6 +165,7 @@ pub enum Event {
     Stat(Update),
     Message(String),
     Delay(i32),
+    Energy(i32),
 }
 /// Invoke from a protected inventory-op handler. The original consumes even at full HP,
 /// ignores transaction failure, and awards no XP. Events preserve the script's ordering.
