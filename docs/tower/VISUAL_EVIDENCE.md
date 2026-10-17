@@ -21,3 +21,13 @@ Private evidence is retained locally; no cache assets or binary captures are pub
 - Forced read-only two-second snapshot-sharing fault passed with a 2.09-second ACK delay, normal axe/dagger swap and restoration, and continued real native rendering.
 
 All listed frames were reviewed from the real composited raster. Binary captures and complete raw session data remain private and are not included in Git publication.
+
+## Visual production pass: genuine intermediate diagnostics
+
+Pinned pre-redesign server is 34bb31d; baseline native tour is `work/native-visual-before` frames 51/91/126/155/183/220/257/289/327/364. Source-only frame masks were verified against the real native scene inventory; there are zero remaining conveyor-frame objects after correction. Plaque and portal now have accepted shape-4 and shape-0 entries.
+
+`work/native-visual-production/frame-92.bmp` shows the distinct spiked fire-giant Warden without inherited conveyor frames. Fresh native Imp victory is documented by `evidence/native-visual12-final/imp-production-summary.json`: full HP and 19 food retained; genuine frames 71/170/266. Warden frames 297/528/892 in that same native directory show lane/cross/diagonal phases but belong to a failed food-exhausted attempt and are **presentation evidence only**. They are not counted as a win.
+
+Foreground masonry comparison: `work/native-visual12-final/frame-266.bmp` obscures the avatar; `work/native-readable12/frame-703.bmp` shows the normal avatar through lower southern masonry. Displayed Combat Options → Lunge is genuine native frame 684 in `work/native-readable12`; Strength XP was observed increasing from actual combat.
+
+The final production walkthrough uses `tools/tower/visual_walkthrough.py`: twelve spaces, each at yaw 0/4096/8192/12288. Its full current-source gallery, corrected Warden victory, full reward loop and lifecycle regression are still pending at this checkpoint. Images, raw scene CSV and account/session details remain private.

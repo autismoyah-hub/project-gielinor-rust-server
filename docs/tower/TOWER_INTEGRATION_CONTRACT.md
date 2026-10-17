@@ -19,3 +19,19 @@ Read-only upstream fetch observed Agent 2 `521e2e047071a7e7d481ab458829bb88a57b7
 Checkpoint requests intentionally reuse the existing account worker/save transaction; the actor stays reserved and observable until real logout. Integrators should preserve upstream account metadata and any additional saved content fields when combining `Character::save` and worker APIs. No global account-transfer crash guarantees or acceptance of unrelated engine parity are implied by the bounded Tower scenarios.
 
 The client mailbox is exported as raw Git bytes and verified against the exact tested tree. Its baseline contains CRLF blobs: apply with `git am --keep-cr`. The repository already stores files with `-text`; do not normalize the mailbox through a text-output pipeline.
+
+## Visual production pass additions
+
+Preserve the original authoritative Warden id 16295. Its visual is selected with the standard NPC_INFO transform block to 2075, plus standard name/level blocks on initial observer admission. Do not replace its combat metadata with a normal fire giant's statistics or XP multiplier. Cache footprints must match and required sequence durations must validate before admission. Retain the scoped defend/death animation selection for the transformed skeleton.
+
+Construction removes JS5-only conveyor frames that are absent from the paired server game-map baseline. Keep these exact normal zone-delete records through login, replay, rebuild and restart. Do not replace this fix with cache edits or a Tower-specific renderer. Apply collision clearing before authored walls. Preserve wall and decoration layers separately. The inside portal is now (10432,124); outside remains (3225,3218).
+
+No persistence schema changes are added by this visual pass. The previously documented Tower V12 / upstream chemistry V12 collision still requires deliberate integration reconciliation. No newer Agent 2 code has been merged.
+
+### Current readability and interaction refinement
+
+Foreground southern room edges use supported low stone wall 5154 through `prepare_palette`; exterior, back walls and plaque support remain full-height 2341. Movement stays blocked, while range policy follows the actual cache asset. Native comparison at the foundry threshold shows the avatar remains visible. No renderer or input-readiness bypass is used.
+
+Coolant uses stock rainwater barrel 30124 (`mistmyst_barrel_water`), whose genuine native cache has Search operation 1. Storage barrel 362 has no native Search action and is no longer a coolant fixture. Four coolant corners (10421,135), (10421,138), (10428,135), (10428,138) keep central cardinal/diagonal escapes clear. Obsolete lamps/stump inside hazard fields are removed or moved to perimeter recesses.
+
+The shield eligibility rule is preserved, but automatic melee retries no longer flood chat with identical shell-denial messages. Initial instructions and phase/coolant cues remain. The first visible warning explains heat; subsequent waves use the actual animated telegraphs. The displayed aggressive dagger style (Combat Options → Lunge) trains Strength through ordinary combat, with no injected levels or XP.

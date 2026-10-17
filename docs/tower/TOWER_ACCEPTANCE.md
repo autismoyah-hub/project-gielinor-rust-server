@@ -1,4 +1,10 @@
-# Comprehensive Floor One acceptance — complete
+# Floor One acceptance — functional baseline; visual acceptance pending
+
+Production redesign mandate (2026-10-16): the user rejected the current environmental and artistic quality. Earlier comprehensive completion declarations were premature. Gameplay evidence below remains a regression baseline; visual production acceptance and release-candidate acceptance are **not granted**. Final artistic acceptance belongs to the user.
+
+Pinned pre-redesign baseline: server `34bb31d1b5a48449b3c960951ec43f93b4f17fd9`; client validation `a32b66deeeb30a2be159fbd379a9ffb07f423b72`.
+
+## Historical functional acceptance record
 
 The authored Cinderworks Floor One is complete and accepted on the isolated Tower branch. Gameplay engine source is `420729798ffc3b0d31c7aff7497d1841597c2104`; final validation uses the pinned native client plus local adapter `a32b66deeeb30a2be159fbd379a9ffb07f423b72`. This report and the added diagnostic controllers do not change that tested server implementation.
 

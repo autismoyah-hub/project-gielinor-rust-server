@@ -1,7 +1,7 @@
 From 4001176798235e2230d6c69445a0b86e24323c5b Mon Sep 17 00:00:00 2001
 From: Tower Agent 5 <agent5@tower.invalid>
 Date: Fri, 16 Oct 2026 14:37:35 -0700
-Subject: [PATCH 1/7] Add opt-in Tower normal-action validation adapter without
+Subject: [PATCH 1/9] Add opt-in Tower normal-action validation adapter without
  desktop input
 
 ---
@@ -250,7 +250,7 @@ index 354c9b3..969d2f1 100644
 From 88e5768f16a7008f972ad7b4bc015409012642c0 Mon Sep 17 00:00:00 2001
 From: Tower Agent 5 <agent5@tower.invalid>
 Date: Fri, 16 Oct 2026 15:30:51 -0700
-Subject: [PATCH 2/7] Extend Tower adapter with inventory actions and
+Subject: [PATCH 2/9] Extend Tower adapter with inventory actions and
  authoritative observations
 
 ---
@@ -547,7 +547,7 @@ index 1ce8533..ddcfcf7 100644
 From cf0bc84097aaf75ae49e2bb484dde248d1d17230 Mon Sep 17 00:00:00 2001
 From: Tower Agent 5 <agent5@tower.invalid>
 Date: Fri, 16 Oct 2026 16:10:34 -0700
-Subject: [PATCH 3/7] Guard visible inventory actions and improve Tower
+Subject: [PATCH 3/9] Guard visible inventory actions and improve Tower
  validation observations
 
 ---
@@ -694,7 +694,7 @@ index 969d2f1..e302bbb 100644
 From 2c5cb8f0920cbd9d7cc486aa630456e99f335c4f Mon Sep 17 00:00:00 2001
 From: Tower Agent 5 <agent5@tower.invalid>
 Date: Fri, 16 Oct 2026 16:43:10 -0700
-Subject: [PATCH 4/7] Report normal interface listener dispatch as a submitted
+Subject: [PATCH 4/9] Report normal interface listener dispatch as a submitted
  action
 
 ---
@@ -738,7 +738,7 @@ index 93a8686..73932ac 100644
 From aeb4066e1781b3ec0e651c89f23767d18e120d8c Mon Sep 17 00:00:00 2001
 From: Tower Agent 5 <agent5@tower.invalid>
 Date: Fri, 16 Oct 2026 17:13:12 -0700
-Subject: [PATCH 5/7] Wait for normal UI script readiness before automated
+Subject: [PATCH 5/9] Wait for normal UI script readiness before automated
  actions
 
 ---
@@ -776,7 +776,7 @@ index e302bbb..322b83f 100644
 From 65457900b34891d0e9e8b211995e26e202d6fb8a Mon Sep 17 00:00:00 2001
 From: Tower Agent 5 <agent5@tower.invalid>
 Date: Fri, 16 Oct 2026 17:26:37 -0700
-Subject: [PATCH 6/7] Defer dynamic action targets until normal UI readiness
+Subject: [PATCH 6/9] Defer dynamic action targets until normal UI readiness
 
 ---
  src/tower_adapter.rs | 5 +++++
@@ -802,7 +802,7 @@ index 73932ac..b0955a1 100644
 From a32b66deeeb30a2be159fbd379a9ffb07f423b72 Mon Sep 17 00:00:00 2001
 From: Tower Agent 5 <agent5@tower.invalid>
 Date: Fri, 16 Oct 2026 17:59:27 -0700
-Subject: [PATCH 7/7] Retry observation sharing violations without replaying
+Subject: [PATCH 7/9] Retry observation sharing violations without replaying
  gameplay actions
 
 ---
@@ -1051,3 +1051,110 @@ index b0955a1..548762d 100644
          }
          Ok(())
      }
+
+From 2012745a02da321e7a1189f494c0a7ea81ed494a Mon Sep 17 00:00:00 2001
+From: Tower Agent 5 <agent5@tower.invalid>
+Date: Fri, 16 Oct 2026 20:00:11 -0700
+Subject: [PATCH 8/9] Add read-only native scene provenance for Tower visual
+ audits
+
+---
+ src/tower_adapter.rs | 20 ++++++++++++++++++++
+ src/viewport.rs      |  1 +
+ 2 files changed, 21 insertions(+)
+
+diff --git a/src/tower_adapter.rs b/src/tower_adapter.rs
+index 548762d..5886e74 100644
+--- a/src/tower_adapter.rs
++++ b/src/tower_adapter.rs
+@@ -31,6 +31,7 @@ pub struct Adapter {
+     capture: Option<u64>,
+     receipt_pending: Option<String>,
+     inspect: bool,
++    scene_reported: u64,
+     pub stop: bool,
+ }
+ impl Adapter {
+@@ -46,6 +47,7 @@ impl Adapter {
+             capture: None,
+             receipt_pending: None,
+             inspect: false,
++            scene_reported: 0,
+             stop: false,
+         }))
+     }
+@@ -406,6 +408,24 @@ impl Adapter {
+         )?;
+         Ok(())
+     }
++    /// Read-only scene provenance for environmental audits; never changes scene
++    /// objects, clipping, cache data or authoritative gameplay state.
++    pub fn inspect_scene(&mut self, connection: &crate::live_runtime::Connection) -> Result<()> {
++        if !self.inspect || self.scene_reported == self.sequence {return Ok(());}
++        if let Some((scene,_))=&connection.world {
++            let mut text=String::from("id,plane,x,z,shape,rotation,runtime,rejected\n");
++            for o in &scene.objects {
++                text.push_str(&format!("{},{},{},{},{},{},{},{}\n",o.id,o.plane,scene.base_x+o.x as i32,scene.base_y+o.y as i32,o.shape,o.rotation,o.runtime,o.rejected));
++            }
++            let path=self.directory.join("scene-objects.tmp");
++            match std::fs::write(&path,text).and_then(|_|std::fs::rename(&path,self.directory.join("scene-objects.csv"))) {
++                Ok(())=>self.scene_reported=self.sequence,
++                Err(error) if transient_io(&error)=>{},
++                Err(error)=>return Err(error.into()),
++            }
++        }
++        Ok(())
++    }
+     pub fn frame(&mut self, raster: &Raster) -> Result<()> {
+         if let Some(sequence) = self.capture {
+             let path = self.directory.join(format!("frame-{sequence}.bmp"));
+diff --git a/src/viewport.rs b/src/viewport.rs
+index 322b83f..0163535 100644
+--- a/src/viewport.rs
++++ b/src/viewport.rs
+@@ -463,6 +463,7 @@ mod windows {
+             if let Some(adapter) = tower_adapter.as_mut() {
+                 let ready = live.as_ref().is_some_and(|v| v.world.is_some() && !v.scripts_busy()) && client.interfaces.scripts.is_empty();
+                 adapter.poll(&mut client, ready)?;
++                if let Some(live)=live.as_ref() {adapter.inspect_scene(live)?;}
+                 if adapter.stop { break 'main; }
+             }
+             if let Some(live) = live.as_mut() {
+
+From 8276b5737f8e3beed17eba28eeb50e6ed051135d Mon Sep 17 00:00:00 2001
+From: Tower Agent 5 <agent5@tower.invalid>
+Date: Fri, 16 Oct 2026 20:47:40 -0700
+Subject: [PATCH 9/9] Expose normal chat UIDs for exact Tower acknowledgements
+
+---
+ src/tower_adapter.rs | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/src/tower_adapter.rs b/src/tower_adapter.rs
+index 5886e74..86d60ec 100644
+--- a/src/tower_adapter.rs
++++ b/src/tower_adapter.rs
+@@ -352,6 +352,14 @@ impl Adapter {
+             })
+             .collect::<Vec<_>>()
+             .join(",");
++        // Normal chat UIDs distinguish repeated server messages without
++        // mutating gameplay or guessing acknowledgement from a text cache.
++        let kinds: std::collections::BTreeSet<_> = client.game_messages.iter().map(|m|m.kind as i32).collect();
++        let mut events=Vec::new();
++        for kind in kinds {for line in 0..32 {if let Some(message)=client.chat.line(kind,line) {events.push(message);}}}
++        events.sort_unstable_by_key(|message|std::cmp::Reverse(message.uid));
++        events.truncate(32);
++        let message_events=events.into_iter().map(|m|format!("{{\"uid\":{},\"cycle\":{},\"text\":{}}}",m.uid,m.cycle,quoted(&m.text))).collect::<Vec<_>>().join(",");
+         let messages = messages
+             .iter()
+             .map(|s| quoted(s))
+@@ -400,7 +408,7 @@ impl Adapter {
+             .widgets
+             .get(&((259 << 16) | 1))
+             .map_or_else(|| quoted(""), |widget| quoted(&widget.text));
+-        let state=format!("{{\"sequence\":{},\"status\":{},\"ready\":{ready},\"position\":{:?},\"tick\":{},\"cycle\":{},\"hp\":{},\"base\":{:?},\"xp\":{:?},\"items\":[{items}],\"equipment\":[{equipment}],\"ground\":[{ground}],\"modals\":[{modals}],\"journal\":{journal},\"npcs\":[{npcs}],\"graphics\":[{graphics}],\"messages\":[{messages}]}}",self.sequence,quoted(status),client.data.position,client.server_tick,client.actor_cycle,client.data.boosted[3],client.data.base,client.data.experience);
++        let state=format!("{{\"sequence\":{},\"status\":{},\"ready\":{ready},\"position\":{:?},\"tick\":{},\"cycle\":{},\"hp\":{},\"base\":{:?},\"xp\":{:?},\"items\":[{items}],\"equipment\":[{equipment}],\"ground\":[{ground}],\"modals\":[{modals}],\"journal\":{journal},\"npcs\":[{npcs}],\"graphics\":[{graphics}],\"messages\":[{messages}],\"message_events\":[{message_events}]}}",self.sequence,quoted(status),client.data.position,client.server_tick,client.actor_cycle,client.data.boosted[3],client.data.base,client.data.experience);
+         std::fs::write(self.directory.join("state.tmp"), state)?;
+         std::fs::rename(
+             self.directory.join("state.tmp"),

@@ -12,3 +12,7 @@
 | Accepted gameplay implementation | 420729798ffc3b0d31c7aff7497d1841597c2104 | Final tested server gameplay source; later final-report commit adds metadata/controllers/client validation patch only |
 
 No external gameplay source is overlaid onto either clone. Direction B deliberately replaces prototype shell/progression; it is not claimed bit-identical to the historical Kotlin oracle. Integration into newer Agent 2 code is explicitly separate and must resolve the V12 migration number collision.
+
+## Visual production continuation baseline
+
+Server pre-redesign baseline: `34bb31d1b5a48449b3c960951ec43f93b4f17fd9`. Client pre-redesign baseline: `a32b66deeeb30a2be159fbd379a9ffb07f423b72`. Current isolated validation client: `8276b5737f8e3beed17eba28eeb50e6ed051135d`; nine raw-byte mail patches reproduce tree `740e2a56e84c30eb1ef79aa3e2c438c4066baf1b`. No client remote push. The previously observed Agent 2 ref remains unmerged. Visual production and release-candidate acceptance require further native review and user artistic acceptance.

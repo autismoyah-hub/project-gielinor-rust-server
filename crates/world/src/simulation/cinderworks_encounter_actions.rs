@@ -21,7 +21,9 @@ impl World {
         let config = self.cinderworks.as_ref()?;
         let player = self.player(actor).ok()?;
         let run = player.data.tower_run;
-        if run.id > 0 && !run.active() { return Some(run.guide()); }
+        if run.id > 0 && !run.active() {
+            return Some(run.guide());
+        }
         if !run.active() || run.services != 7 {
             return Some(
                 "Restore the workshop, kitchen and altar before challenging the foundry guardians.",
@@ -58,7 +60,7 @@ impl World {
                 && encounter.warning.is_some()
                 && self.clock.0 >= encounter.exposed_until
             {
-                return Some("The Warden's shell is closed. Evade the smoke, or search a coolant barrel to interrupt its charge.");
+                return Some(crate::tower_cinderworks::SHELL_HINT);
             }
         }
         None
@@ -88,7 +90,7 @@ impl World {
         });
         self.events.push(WorldEvent::GameMessage {actor,text:match boss {
             Boss::Imp=>"The Ash Imp wakes. Smoke marks where heat will erupt: step clear before it ignites.",
-            Boss::Warden=>"The Ash Warden wakes. Watch its smoke lanes. Search a coolant barrel during a charge to expose its shell.",
+            Boss::Warden=>"The Ash Warden wakes. Smoke closes its shell to attacks. Evade first; search a water barrel from safety to expose it.",
         }.into()});
     }
     fn reset_cinderworks_guardian(&mut self, target: NpcId) {
@@ -150,10 +152,10 @@ impl World {
                         Boss::Imp=>"The Ash Imp falls. The northern foundry is unlocked; your services and unlock are preserved if you leave.",
                         Boss::Warden=>"The Warden is quenched. The Cinderworks sanctuary is restored. Return to its chest to claim your reward.",
                     }.into();
-                        let actor=p.id;
-                        let inventory=p.data.inventory.clone();
-                        let run=p.data.tower_run;
-                        self.checkpoint_cinderworks(actor,inventory,run,message);
+                        let actor = p.id;
+                        let inventory = p.data.inventory.clone();
+                        let run = p.data.tower_run;
+                        self.checkpoint_cinderworks(actor, inventory, run, message);
                     }
                 }
                 continue;
@@ -161,6 +163,13 @@ impl World {
             let phase = encounter.boss.phase(npc.stats[3], npc.base_stats[3].max(1));
             if phase > encounter.phase {
                 encounter.phase = phase;
+                self.events.push(WorldEvent::NpcSpotAnimation {
+                    actor: encounter.npc,
+                    spot: config.strike_graphic,
+                    delay: 0,
+                    height: 0,
+                    slot: 0,
+                });
                 self.events.push(WorldEvent::GameMessage {actor:encounter.owner,text:match (encounter.boss,phase) {
                     (Boss::Imp,_)=>"The Imp scatters its heat across three tiles. Leave the smoking row.",
                     (Boss::Warden,2)=>"The Warden enters phase two. Crossed smoke lanes converge; move diagonally to safety.",
@@ -211,11 +220,13 @@ impl World {
                 // Keep the visual reaction window readable in the native client.
                 // The final phase accelerates recovery/cadence, not input latency.
                 encounter.warning = Some(self.clock.deadline(4));
-                self.events.push(WorldEvent::GameMessage {
-                    actor: encounter.owner,
-                    text: "Heat gathers beneath the smoking tiles. Move clear before the eruption!"
-                        .into(),
+                self.events.push(WorldEvent::NpcCombatAnimation {
+                    actor: encounter.npc,
+                    sequence: config.charge_animations[encounter.boss.index()],
                 });
+                if encounter.cycle == 1 {
+                    self.events.push(WorldEvent::GameMessage {actor:encounter.owner,text:"Heat gathers beneath the smoking tiles. Move clear before the eruption!".into()});
+                }
             }
             if encounter.warning.is_some() {
                 for &coords in &encounter.tiles {
@@ -265,6 +276,17 @@ impl World {
         encounter.exposed_until = self.clock.deadline(8);
         encounter.next = self.clock.deadline(10);
         encounter.quench_ready = self.clock.deadline(10);
+        self.events.push(WorldEvent::NpcCombatAnimation {
+            actor: encounter.npc,
+            sequence: config.quench_animation,
+        });
+        self.events.push(WorldEvent::NpcSpotAnimation {
+            actor: encounter.npc,
+            spot: config.warning_graphic,
+            delay: 0,
+            height: 32,
+            slot: 0,
+        });
         self.events.push(WorldEvent::GameMessage {actor,text:"Coolant quenches the charge! The smoke clears and the Warden's shell is exposed. Attack now.".into()});
         true
     }
@@ -308,6 +330,8 @@ pub(super) mod tests {
             strike_graphic: 78,
             work: None,
             death_animation: 836,
+            charge_animations: [169, 4666],
+            quench_animation: 4664,
         });
         let loc = Location::new(quench, 4, 10, 0).unwrap();
         world.locations.load(loc);

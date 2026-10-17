@@ -4183,6 +4183,9 @@ impl<B: AccountBackend> Runtime<B> {
                             })
                             .transpose()?;
                         let mut blocks = gielinor_protocol::combat_updates::NpcUpdates {
+                            name: None,
+                            transform: None,
+                            combat: None,
                             hitmarks: hits.as_deref(),
                             headbars: bars.as_deref(),
                             sequence: display.and_then(|d| d.sequence),
@@ -4190,6 +4193,10 @@ impl<B: AccountBackend> Runtime<B> {
                             face: n.face_changed.then_some(facing.as_slice()),
                         };
                         let current = blocks.encode();
+                        if self.world.cinderworks.as_ref().is_some_and(|c| n.type_id==c.warden && gielinor_world::tower_layout::contains(c.origin,n.movement.coords)) {
+                            blocks.name=Some("Ash Warden");blocks.combat=Some(7);
+                            blocks.transform=Some(gielinor_world::tower_cinderworks::WARDEN_VISUAL);
+                        }
                         blocks.face = (n.face_player.is_some() || n.face_changed)
                             .then_some(facing.as_slice());
                         Ok::<_, gielinor_protocol::buffer::DecodeError>((current, blocks.encode()))

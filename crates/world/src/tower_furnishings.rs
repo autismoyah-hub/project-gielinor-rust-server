@@ -1,4 +1,4 @@
-//! FloorOneScript.stampLooks, in source insertion order. Names resolve through loc symbols.
+//! Deliberately authored Cinderworks furnishings; no prototype room filler.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub struct Furnishing {
     pub x: u8,
@@ -68,16 +68,6 @@ pub const FURNISHINGS: &[Furnishing] = &[
     },
     Furnishing {
         x: 49,
-        z: 50,
-        symbol: "pottedfern",
-    },
-    Furnishing {
-        x: 62,
-        z: 50,
-        symbol: "pottedfern",
-    },
-    Furnishing {
-        x: 49,
         z: 62,
         symbol: "torch",
     },
@@ -127,11 +117,6 @@ pub const FURNISHINGS: &[Furnishing] = &[
         symbol: "deadtree1_stump",
     },
     Furnishing {
-        x: 42,
-        z: 66,
-        symbol: "flowerbed1",
-    },
-    Furnishing {
         x: 45,
         z: 71,
         symbol: "bush1",
@@ -175,11 +160,6 @@ pub const FURNISHINGS: &[Furnishing] = &[
         x: 45,
         z: 61,
         symbol: "copperrock1",
-    },
-    Furnishing {
-        x: 38,
-        z: 50,
-        symbol: "bones_dark_default01",
     },
     Furnishing {
         x: 66,
@@ -272,118 +252,83 @@ pub const FURNISHINGS: &[Furnishing] = &[
         symbol: "sacks",
     },
     Furnishing {
-        x: 50,
-        z: 33,
-        symbol: "bookcase",
+        x: 65,
+        z: 66,
+        symbol: "fire",
     },
     Furnishing {
-        x: 62,
-        z: 33,
-        symbol: "bookcase",
-    },
-    Furnishing {
-        x: 56,
-        z: 36,
-        symbol: "table",
-    },
-    Furnishing {
-        x: 55,
-        z: 36,
-        symbol: "chair",
-    },
-    Furnishing {
-        x: 57,
-        z: 36,
-        symbol: "stool",
-    },
-    Furnishing {
-        x: 50,
-        z: 38,
-        symbol: "candles",
-    },
-    Furnishing {
-        x: 62,
-        z: 38,
-        symbol: "candles",
-    },
-    Furnishing {
-        x: 61,
-        z: 42,
-        symbol: "barrel_staffs",
+        x: 78,
+        z: 66,
+        symbol: "fire",
     },
     Furnishing {
         x: 51,
-        z: 42,
-        symbol: "pottedfern",
-    },
-    Furnishing {
-        x: 50,
-        z: 66,
-        symbol: "brazier_tomb02_default01",
+        z: 34,
+        symbol: "bookcase",
     },
     Furnishing {
         x: 61,
-        z: 66,
-        symbol: "brazier_tomb02_default01",
+        z: 34,
+        symbol: "bookcase",
     },
     Furnishing {
-        x: 50,
-        z: 77,
-        symbol: "brazier_tomb02_default01",
+        x: 51,
+        z: 45,
+        symbol: "enakh_brazier_coal_lit",
     },
     Furnishing {
         x: 61,
-        z: 77,
-        symbol: "brazier_tomb02_default01",
+        z: 45,
+        symbol: "enakh_brazier_coal_lit",
+    },
+    Furnishing {
+        x: 51,
+        z: 35,
+        symbol: "sacks",
+    },
+    Furnishing {
+        x: 61,
+        z: 35,
+        symbol: "barrel",
+    },
+    Furnishing {
+        x: 65,
+        z: 76,
+        symbol: "fire",
+    },
+    Furnishing {
+        x: 78,
+        z: 76,
+        symbol: "fire",
     },
     Furnishing {
         x: 52,
-        z: 70,
-        symbol: "bones_dark_default01",
+        z: 49,
+        symbol: "enakh_brazier_coal_lit",
     },
     Furnishing {
         x: 60,
-        z: 70,
-        symbol: "bones_dark_default01",
+        z: 49,
+        symbol: "enakh_brazier_coal_lit",
     },
     Furnishing {
-        x: 53,
-        z: 77,
-        symbol: "torch",
+        x: 52,
+        z: 65,
+        symbol: "enakh_brazier_coal_lit",
     },
     Furnishing {
         x: 59,
-        z: 77,
-        symbol: "torch",
+        z: 65,
+        symbol: "enakh_brazier_coal_lit",
     },
     Furnishing {
-        x: 66,
-        z: 66,
-        symbol: "fire",
+        x: 51,
+        z: 78,
+        symbol: "enakh_brazier_coal_lit",
     },
     Furnishing {
-        x: 77,
-        z: 66,
-        symbol: "fire",
-    },
-    Furnishing {
-        x: 66,
-        z: 77,
-        symbol: "bones_dark_default01",
-    },
-    Furnishing {
-        x: 77,
-        z: 77,
-        symbol: "bones_dark_default01",
-    },
-    Furnishing {
-        x: 67,
-        z: 70,
-        symbol: "deadtree1_stump",
-    },
-    Furnishing {
-        x: 74,
-        z: 77,
-        symbol: "brazier_tomb02_default01",
+        x: 61,
+        z: 78,
+        symbol: "enakh_brazier_coal_lit",
     },
 ];

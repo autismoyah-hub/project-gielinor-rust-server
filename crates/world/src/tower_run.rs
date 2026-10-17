@@ -70,8 +70,8 @@ impl Run {
             else if self.services & 1 == 0 { "Mine copper and tin west.<br>Smelt, then forge a dagger." }
             else if self.services & 2 == 0 { "Net shrimp at the east bank.<br>Use raw shrimp on the range." }
             else if self.services & 4 == 0 { "Defeat a creature south.<br>Use its bones on the altar." }
-            else if !self.imp { "Wield your bronze dagger.<br>Enter the east vent gallery." }
-            else { "Enter the northern foundry.<br>Search barrels during smoke." };
+            else if !self.imp { "Dagger: Lunge trains Strength.<br>Enter the east vent gallery." }
+            else { "Evade the smoking tiles.<br>Search water from safety." };
         text.push_str(&format!("<br>{hint}<br><br>Victories: {}<br>First reward: {}", self.clears,
             if self.first_reward_paid {"claimed"} else {"unclaimed"}));
         text
@@ -163,7 +163,7 @@ impl Run {
         } else if !self.imp {
             "Follow the eastern path to the vent gallery. Defeat the Ash Imp to unlock the foundry."
         } else {
-            "Enter the northern foundry. Watch the heat warnings and quench the Ash Warden's charge."
+            "Enter the northern foundry. Evade smoking tiles first, then Search a water barrel from safety. Your dagger's Lunge style trains Strength."
         }
     }
 }

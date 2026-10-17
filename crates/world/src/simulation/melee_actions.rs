@@ -10,7 +10,14 @@ impl World {
         target: NpcId,
     ) -> Option<(Option<&'static str>, bool)> {
         let p = self.player(actor).ok()?;
-        if let Some(message)=self.cinderworks_denial(actor,target) { return Some((Some(message),false)); }
+        if let Some(message) = self.cinderworks_denial(actor, target) {
+            // The initial encounter instruction and visible charge explain the
+            // shell. Automatic melee retries must not rebuild chat every tick.
+            return Some((
+                (message != crate::tower_cinderworks::SHELL_HINT).then_some(message),
+                false,
+            ));
+        }
         if let Some(config) = &self.combat_stance {
             let weapon = p
                 .data
@@ -201,6 +208,13 @@ impl World {
         self.queue_hit(Target::Npc(target), hit, 1)
             .map_err(|_| ActionError::QueueFull)?;
         if let Some(sequence) = defend {
+            let sequence = if self.cinderworks_boss(target)
+                == Some(crate::cinderworks_encounter::Boss::Warden)
+            {
+                self.cinderworks.as_ref().unwrap().quench_animation
+            } else {
+                sequence
+            };
             self.events.push(WorldEvent::NpcCombatAnimation {
                 actor: target,
                 sequence,

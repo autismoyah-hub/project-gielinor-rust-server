@@ -52,7 +52,15 @@ class Gateway:
         op = next((n + 1 for n, label in enumerate(food['operations']) if label.lower() == 'eat'), None)
         if op is None:
             raise RuntimeError('No visible Eat operation on shrimp')
-        return self.act(f"item {food['slot']} {op}")
+        try:
+            return self.act(f"item {food['slot']} {op}")
+        except RuntimeError as error:
+            if 'inventory operation has no displayed action' not in str(error):
+                raise
+            self.interface(35913795)
+            fresh=self.wait(lambda state:state.get('ready') and any(i['id']==315 and i.get('widget') is not None and 'Eat' in i.get('operations',[]) for i in state['items']),15)
+            food=next(i for i in fresh['items'] if i['id']==315 and i.get('widget') is not None and 'Eat' in i.get('operations',[]))
+            return self.act(f"item {food['slot']} 2")
 
     def interface(self, widget, operation=1, timeout=55):
         return self.act(f'interface {widget} {operation}',timeout=timeout)

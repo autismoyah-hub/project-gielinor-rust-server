@@ -81,12 +81,33 @@ pub fn prepare(
         locations,
         definitions,
     )?;
-    let mut shell = gielinor_cache::tower_shell::prepare(
-        copied,
-        origin,
-        resolve("threshold_wall")?,
-        definitions,
-    )?;
+    let mut shell =
+        gielinor_cache::tower_shell::prepare_palette(copied, origin, [2341, 5154], definitions)?;
+    // The revision 239.1 JS5 map contains five conveyor-frame decorations
+    // which the paired server game-map intentionally omits. They still arrive
+    // in the native constructed scene. Register their exact cache baseline so
+    // normal zone deletes remove them, including on relog and region rebuild.
+    // Do not change the cache or suppress models in the client renderer.
+    for (&(x, z, level), source) in &tower_layout::template() {
+        if (source.x, source.z, source.level, source.rotation) != (242, 620, 0, 0) {
+            continue;
+        }
+        for (dx, id) in [(2, 9109), (3, 9110), (4, 9111), (5, 9112), (6, 9113)] {
+            if !definitions.locations.contains_key(&id) {
+                return Err(format!("Missing client-only conveyor definition {id}"));
+            }
+            let loc = StaticLocation {
+                id,
+                coords: origin
+                    .translate(x as i32 * 8 + dx, z as i32 * 8 + 7, level as i32)
+                    .map_err(|e| format!("{e:?}"))?,
+                shape: 10,
+                angle: 1,
+            };
+            shell.base.push(loc.clone());
+            shell.removed.push(loc);
+        }
+    }
     let mut put = |x, z, level, name| -> Result<(), String> {
         shell.stamp(
             origin
@@ -96,22 +117,13 @@ pub fn prepare(
             definitions,
         )
     };
-    // stampFloor through stampFloor2Stub, followed by the preferred stair
-    // landing. ensureHubWalkable has opened that upper-hub tile already.
+    // Authored working props only: no prototype staff crate, unused altar,
+    // vial crate, goats, goblin training room or unreachable upstairs scene.
     for (x, z, level, name) in [
         (53, 60, 0, "aide_bankbooth"),
-        (54, 51, 0, "plaque"),
         (55, 51, 0, "threshold_chest"),
-        (53, 52, 0, "mind_altar"),
         (60, 52, 0, "altar"),
-        (53, 58, 0, "threshold_vial_crate"),
-        (60, 60, 0, "threshold_portal"),
-        (53, 60, 1, "aide_bankbooth"),
-        (56, 52, 1, "plaque"),
-        (60, 60, 1, "threshold_portal"),
         (60, 52, 0, "altar"),
-        (56, 60, 1, "threshold_stair"),
-        (58, 43, 0, "crate_old"),
         (34, 70, 0, "tree"),
         (42, 70, 0, "tree"),
         (34, 76, 0, "tree"),
@@ -123,14 +135,29 @@ pub fn prepare(
         (34, 50, 0, "tut2_furnace"),
         (37, 50, 0, "anvil"),
         (67, 53, 0, "newbierange"),
-        (53, 71, 0, "barrel"),
-        (60, 71, 0, "barrel"),
     ] {
         put(x, z, level, name)?;
+    }
+    for (x, z) in gielinor_world::tower_cinderworks::COOLANT_TILES {
+        put(x, z, 0, "mistmyst_barrel_water")?;
     }
     for row in FURNISHINGS {
         put(row.x as i32, row.z as i32, 0, row.symbol)?;
     }
+    shell.stamp_shaped(
+        origin.translate(54, 51, 0).unwrap(),
+        resolve("plaque")?,
+        4,
+        1,
+        definitions,
+    )?;
+    shell.stamp_shaped(
+        origin.translate(64, 60, 0).unwrap(),
+        resolve("threshold_portal")?,
+        0,
+        0,
+        definitions,
+    )?;
     Ok(shell)
 }
 
@@ -144,11 +171,8 @@ pub fn npcs(
     use gielinor_world::npc::Mode;
     let mut result = Vec::new();
     for (x, z, level, name, passive) in [
-        (52, 60, 1, "threshold_banker", true),
         (52, 60, 0, "threshold_banker", true),
         (61, 58, 0, "threshold_tanner", true),
-        (50, 54, 0, "threshold_goat", false),
-        (61, 54, 0, "threshold_goat", false),
         (34, 34, 0, "cow", false),
         (42, 34, 0, "cow", false),
         (34, 42, 0, "cow", false),
@@ -161,10 +185,6 @@ pub fn npcs(
         (76, 34, 0, "chicken", false),
         (66, 44, 0, "chicken", false),
         (76, 44, 0, "chicken", false),
-        (51, 35, 0, "goblin", false),
-        (60, 35, 0, "goblin", false),
-        (51, 44, 0, "goblin", false),
-        (60, 44, 0, "goblin", false),
         (74, 52, 0, "0_48_48_newbiefishing", true),
         (76, 54, 0, "0_48_48_newbiefishing", true),
         (74, 58, 0, "0_48_48_newbiefishing", true),
@@ -172,10 +192,12 @@ pub fn npcs(
         (72, 72, 0, "ash_imp", true),
         (56, 72, 0, "ash_warden", true),
     ] {
-        let id = symbols
-            .get(name)
-            .and_then(|id| u16::try_from(*id).ok())
-            .ok_or_else(|| format!("Missing tower npc symbol {name}"))?;
+        let id = if name == "ash_warden" {
+            Some(gielinor_world::tower_cinderworks::WARDEN)
+        } else {
+            symbols.get(name).and_then(|id| u16::try_from(*id).ok())
+        }
+        .ok_or_else(|| format!("Missing tower npc symbol {name}"))?;
         let ty = definitions
             .npcs
             .get(&(id as u32))
@@ -298,21 +320,27 @@ mod tests {
             let mut ty = gielinor_cache::npcs::NpcType::decode(&[0]).unwrap();
             ty.stats = [11, 12, 13, 14, 15, 16];
             ty.default_mode = 1;
-            definitions.npcs.insert(index as u32, ty);
+            definitions.npcs.insert(index as u32, ty.clone());
+            if *name == "ash_warden" {
+                definitions
+                    .npcs
+                    .insert(gielinor_world::tower_cinderworks::WARDEN as u32, ty);
+            }
         }
         let origin = CoordGrid::new(10368, 64, 0).unwrap();
         let actors = npcs(origin, &definitions, &symbols).unwrap();
-        assert_eq!(actors.len(), 27);
+        assert_eq!(actors.len(), 20);
+        assert!(actors.iter().all(|n| n.spawn.level() == 0));
         assert!(actors.iter().all(|n| n.respawns));
-        assert_eq!(actors[0].spawn.level(), 1);
+        assert_eq!(actors[0].spawn.level(), 0);
         assert_eq!(actors[1].spawn.level(), 0);
         assert_eq!(actors[0].mode, gielinor_world::npc::Mode::None);
-        assert_eq!(actors[5].mode, gielinor_world::npc::Mode::Wander);
-        assert_eq!(actors[5].stats, [11, 12, 13, 14, 15, 16]);
-        assert_eq!(actors[25].stats, [1, 1, 1, 18, 15, 16]);
-        assert_eq!(actors[25].base_stats, actors[25].stats);
-        assert_eq!(actors[26].stats, [1, 1, 1, 42, 1, 80]);
-        assert_eq!(actors[26].base_stats, actors[26].stats);
-        assert_eq!(actors[26].spawn, origin.translate(56, 72, 0).unwrap());
+        assert_eq!(actors[2].mode, gielinor_world::npc::Mode::Wander);
+        assert_eq!(actors[2].stats, [11, 12, 13, 14, 15, 16]);
+        assert_eq!(actors[18].stats, [1, 1, 1, 18, 15, 16]);
+        assert_eq!(actors[18].base_stats, actors[18].stats);
+        assert_eq!(actors[19].stats, [1, 1, 1, 42, 1, 80]);
+        assert_eq!(actors[19].base_stats, actors[19].stats);
+        assert_eq!(actors[19].spawn, origin.translate(56, 72, 0).unwrap());
     }
 }

@@ -23,6 +23,23 @@ impl Shell {
         id: u32,
         definitions: &Definitions,
     ) -> Result<(), String> {
+        self.stamp_shaped(coords, id, 10, 0, definitions)
+    }
+    /// Place the cache-supported scene shape and replace only its own layer.
+    pub fn stamp_shaped(
+        &mut self,
+        coords: CoordGrid,
+        id: u32,
+        shape: u8,
+        angle: u8,
+        definitions: &Definitions,
+    ) -> Result<(), String> {
+        let layer = |shape: u8| match shape {
+            0..=3 => 0,
+            4..=8 => 1,
+            9..=21 => 2,
+            _ => 3,
+        };
         let ty = definitions
             .locations
             .get(&id)
@@ -31,7 +48,7 @@ impl Shell {
             .map
             .locations
             .iter()
-            .position(|loc| loc.coords == coords && (9..=21).contains(&loc.shape))
+            .position(|loc| loc.coords == coords && layer(loc.shape) == layer(shape))
         {
             let old = &self.map.locations[index];
             let old_type = definitions
@@ -48,28 +65,45 @@ impl Shell {
             )?;
             self.map.locations.remove(index);
         }
-        loc_collision::toggle(&mut self.map.collision, coords, 10, 0, ty.collision, true)?;
+        loc_collision::toggle(
+            &mut self.map.collision,
+            coords,
+            shape,
+            angle,
+            ty.collision,
+            true,
+        )?;
         self.map.locations.push(StaticLocation {
             id,
             coords,
-            shape: 10,
-            angle: 0,
+            shape,
+            angle,
         });
         Ok(())
     }
 }
 
 pub fn prepare(
-    mut map: Built,
+    map: Built,
     origin: CoordGrid,
     wall: u32,
     definitions: &Definitions,
 ) -> Result<Shell, String> {
+    prepare_palette(map, origin, [wall, wall], definitions)
+}
+pub fn prepare_palette(
+    mut map: Built,
+    origin: CoordGrid,
+    walls: [u32; 2],
+    definitions: &Definitions,
+) -> Result<Shell, String> {
     let base = map.locations.clone();
-    let wall_type = definitions
-        .locations
-        .get(&wall)
-        .ok_or("Missing tower room-wall definition")?;
+    if walls
+        .iter()
+        .any(|id| !definitions.locations.contains_key(id))
+    {
+        return Err("Missing Tower masonry palette definition".into());
+    }
     // Work on detached state: a failure never partially publishes world collision.
     let mut retained = Vec::new();
     let mut removed = Vec::new();
@@ -97,8 +131,11 @@ pub fn prepare(
     map.locations = retained;
     // LocRepository replaces an existing loc in the same tile/layer. In
     // particular corner wall orientations follow the script's insertion order.
+    tower_layout::prepare_collision(&mut map.collision, origin)?;
     let mut stamped = BTreeMap::new();
     for entry in tower_layout::shell() {
+        let wall = walls[entry.parapet() as usize];
+        let wall_type = &definitions.locations[&wall];
         let coords = origin
             .translate(entry.x as i32, entry.z as i32, 0)
             .map_err(|e| format!("{e:?}"))?;
@@ -117,7 +154,7 @@ pub fn prepare(
                 coords,
                 previous.shape,
                 previous.angle,
-                wall_type.collision,
+                definitions.locations[&previous.id].collision,
                 false,
             )?;
         }
@@ -131,7 +168,6 @@ pub fn prepare(
         )?;
     }
     map.locations.extend(stamped.into_values());
-    tower_layout::prepare_collision(&mut map.collision, origin)?;
     Ok(Shell { map, base, removed })
 }
 
@@ -140,6 +176,80 @@ mod tests {
     use super::*;
     use crate::locations::LocationType;
     use gielinor_world::collision::CollisionMap;
+    #[test]
+    fn parapets_block_walking_but_preserve_the_cache_range_policy() {
+        let origin = CoordGrid::new(10368, 64, 0).unwrap();
+        let definitions = Definitions {
+            inventories: Default::default(),
+            items: Default::default(),
+            npcs: Default::default(),
+            varps: Default::default(),
+            varbits: Default::default(),
+            stats: Default::default(),
+            locations: BTreeMap::from([
+                (1, LocationType::decode(&[0]).unwrap()),
+                (2, LocationType::decode(&[18, 0]).unwrap()),
+            ]),
+        };
+        let map = Built {
+            collision: CollisionMap::default(),
+            locations: vec![],
+            remapped: vec![],
+        };
+        let shell = prepare_palette(map, origin, [1, 2], &definitions).unwrap();
+        let front = origin.translate(54, 64, 0).unwrap();
+        let back = origin.translate(54, 78, 0).unwrap();
+        let front_flags = shell.map.collision.get(front.x(), front.z(), 0);
+        let back_flags = shell.map.collision.get(back.x(), back.z(), 0);
+        assert_ne!(front_flags & 32, 0);
+        assert_eq!(front_flags & (32 << 9), 0);
+        assert_ne!(back_flags & 32, 0);
+        assert_ne!(back_flags & (32 << 9), 0);
+        assert!(shell
+            .map
+            .locations
+            .iter()
+            .any(|l| l.coords == front && l.id == 2));
+    }
+    #[test]
+    fn wall_decoration_keeps_supporting_masonry_and_its_real_collision() {
+        let origin = CoordGrid::new(10368, 64, 0).unwrap();
+        let coords = origin.translate(54, 51, 0).unwrap();
+        let definitions = Definitions {
+            inventories: Default::default(),
+            items: Default::default(),
+            npcs: Default::default(),
+            varps: Default::default(),
+            varbits: Default::default(),
+            stats: Default::default(),
+            locations: BTreeMap::from([
+                (1, LocationType::decode(&[0]).unwrap()),
+                (2, LocationType::decode(&[0]).unwrap()),
+            ]),
+        };
+        let mut shell = Shell {
+            map: Built {
+                collision: CollisionMap::default(),
+                locations: vec![],
+                remapped: vec![],
+            },
+            base: vec![],
+            removed: vec![],
+        };
+        shell.stamp_shaped(coords, 1, 0, 3, &definitions).unwrap();
+        let before = shell.map.collision.get(coords.x(), coords.z(), 0);
+        shell.stamp_shaped(coords, 2, 4, 3, &definitions).unwrap();
+        assert_eq!(shell.map.locations.len(), 2);
+        assert_eq!(shell.map.collision.get(coords.x(), coords.z(), 0), before);
+        assert_ne!(before & 32, 0);
+        shell.stamp_shaped(coords, 1, 4, 2, &definitions).unwrap();
+        assert_eq!(shell.map.locations.len(), 2);
+        assert!(shell
+            .map
+            .locations
+            .iter()
+            .any(|l| l.shape == 0 && l.angle == 3));
+    }
     #[test]
     fn strips_copied_layers_and_preserves_deletions_and_doorways() {
         let origin = CoordGrid::new(10368, 64, 0).unwrap();
@@ -201,7 +311,7 @@ mod tests {
                 .map
                 .collision
                 .get(at(32, 40, 0).x(), at(32, 40, 0).z(), 0)
-                & 0x100,
+                & 0x80,
             0
         );
         assert_eq!(
@@ -218,7 +328,7 @@ mod tests {
             .iter()
             .filter(|l| l.coords == at(32, 32, 0))
             .collect::<Vec<_>>();
-        assert_eq!(corner.len(), 2);
-        assert_eq!(corner.iter().find(|l| l.shape == 0).unwrap().angle, 0);
+        assert_eq!(corner.len(), 1);
+        assert_eq!((corner[0].shape, corner[0].angle), (2, 3));
     }
 }

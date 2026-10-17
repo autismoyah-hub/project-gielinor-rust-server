@@ -55,3 +55,24 @@ Verification: all 62 Tower world tests pass, including three repeated failed cla
 The optional client patch now retries transient Windows observation-file sharing failures independently of action dispatch. Large debug dumps require `inspect`, ordinary observations stay lightweight, and native frame requests retain their own sequence until an atomic image write succeeds. A real read-only two-second file lock plus normal weapon swap/restore verifies continued native operation. These are local validation changes; production gameplay still uses the existing protocol and authoritative Rust engine.
 
 Agent 2's final observed chemistry/queue APIs and the V12 migration collision are recorded in TOWER_INTEGRATION_CONTRACT.md; no integration or parity claim is made for that newer ref.
+
+## Visual production reconstruction (2026-10-16, review in progress)
+
+- `tower_layout`: supported straight/corner masonry edges, clipped-corner sanctuary, processional hall, enclosed service wings, fortified foundry and vestibule. Inherited clipping clears before wall application; real river terrain remains. Unreachable upper template is removed.
+- `cache::tower_shell::stamp_shaped`: replace only the selected scene layer so wall decorations preserve supporting masonry and clipping. Plaque uses shape 4, portal shape 0.
+- `server::tower_map`: exact construction-time deletion baseline for JS5-only conveyor frames 9109–9113 at source zone (242,620), offsets (2..6,7). Paired game map omits these decorations. Native read-only scene inventory proved the discrepancy; no protected cache or renderer edits.
+- `combat_updates::NpcUpdates`: standard revision-239 initial name, combat-level and transform masks. Only the Tower Warden receives initial name `Ash Warden`, level 7 and visual transform 2075. Authoritative Warden remains 16295, preserving existing combat and XP metadata. Both cache footprints are two tiles.
+- Cache-validated fire-giant charge/defend/death animations replace the Warden presentation; scoped melee defend animation mapping retains ordinary damage rules. Phase changes emit a native NPC flare; coolant emits a flinch and NPC steam effect. Four-tick tile warnings, hazard damage, ownership and account transactions remain unchanged.
+- Coal braziers are ordinary placed cache assets with a harmless routed Investigate response; no progression or item grant.
+- Native validation adapter adds opt-in, read-only `inspect` scene inventory. It writes only on request and retries transient Windows output errors. No scene mutations, renderer bypass, desktop input or gameplay state injection.
+- Scenario controllers select the visible transformed Warden type (2075), update the portal route, and recover a rejected hidden inventory widget by reopening the normal inventory and reacquiring food. A rejected action sends no gameplay packet.
+
+### Current readability and interaction refinement
+
+Foreground southern room edges use supported low stone wall 5154 through `prepare_palette`; exterior, back walls and plaque support remain full-height 2341. Movement stays blocked, while range policy follows the actual cache asset. Native comparison at the foundry threshold shows the avatar remains visible. No renderer or input-readiness bypass is used.
+
+Coolant uses stock rainwater barrel 30124 (`mistmyst_barrel_water`), whose genuine native cache has Search operation 1. Storage barrel 362 has no native Search action and is no longer a coolant fixture. Four coolant corners (10421,135), (10421,138), (10428,135), (10428,138) keep central cardinal/diagonal escapes clear. Obsolete lamps/stump inside hazard fields are removed or moved to perimeter recesses.
+
+The shield eligibility rule is preserved, but automatic melee retries no longer flood chat with identical shell-denial messages. Initial instructions and phase/coolant cues remain. The first visible warning explains heat; subsequent waves use the actual animated telegraphs. The displayed aggressive dagger style (Combat Options → Lunge) trains Strength through ordinary combat, with no injected levels or XP.
+
+The validation adapter now exposes existing normal Chat UIDs/cycles in JSON. This is observation only; it fixes acknowledgement ambiguity from repeated text and prevents old win messages from counting toward a new encounter. Native input readiness and all parity behavior remain unchanged. The current nine-patch handoff includes this observer change and the read-only scene inventory.

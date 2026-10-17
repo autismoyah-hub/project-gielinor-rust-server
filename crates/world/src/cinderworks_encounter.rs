@@ -89,6 +89,81 @@ pub struct Encounter {
 mod tests {
     use super::*;
     #[test]
+    fn authored_arenas_have_a_legal_one_step_escape_in_every_phase() {
+        use std::collections::BTreeSet;
+        let origin = CoordGrid::new(10368, 64, 0).unwrap();
+        for boss in [Boss::Imp, Boss::Warden] {
+            let mut occupied = BTreeSet::new();
+            let (sx, sz, size) = if boss == Boss::Warden {
+                (56, 72, 2)
+            } else {
+                (72, 72, 1)
+            };
+            for x in sx..sx + size {
+                for z in sz..sz + size {
+                    occupied.insert((x, z));
+                }
+            }
+            if boss == Boss::Warden {
+                occupied.extend(crate::tower_cinderworks::COOLANT_TILES);
+            }
+            let (min, max) = boss.bounds();
+            for x in min[0]..=max[0] {
+                for z in min[1]..=max[1] {
+                    if occupied.contains(&(x, z)) {
+                        continue;
+                    }
+                    let at = origin.translate(x, z, 0).unwrap();
+                    for phase in 1..=3 {
+                        for cycle in 0..3 {
+                            let hot = boss.pattern(origin, phase, at, cycle);
+                            if !hot.contains(&at) {
+                                continue;
+                            }
+                            let safe = [
+                                (-1, -1),
+                                (-1, 0),
+                                (-1, 1),
+                                (0, -1),
+                                (0, 1),
+                                (1, -1),
+                                (1, 0),
+                                (1, 1),
+                            ]
+                            .into_iter()
+                            .any(|(dx, dz)| {
+                                let p = (x + dx, z + dz);
+                                (min[0]..=max[0]).contains(&p.0)
+                                    && (min[1]..=max[1]).contains(&p.1)
+                                    && !occupied.contains(&p)
+                                    && !(dx != 0
+                                        && dz != 0
+                                        && (occupied.contains(&(x + dx, z))
+                                            || occupied.contains(&(x, z + dz))))
+                                    && !hot.contains(&origin.translate(p.0, p.1, 0).unwrap())
+                            });
+                            assert!(
+                                safe,
+                                "Trapped {boss:?} actor at {x},{z}, phase {phase}, cycle {cycle}"
+                            );
+                        }
+                    }
+                }
+            }
+        }
+    }
+    #[test]
+    fn ornamental_furnishings_stay_outside_both_hazard_fields() {
+        let origin = CoordGrid::new(10368, 64, 0).unwrap();
+        for row in crate::tower_furnishings::FURNISHINGS {
+            let tile = origin.translate(row.x as i32, row.z as i32, 0).unwrap();
+            assert!(
+                !Boss::Imp.contains(origin, tile) && !Boss::Warden.contains(origin, tile),
+                "Blocking arena furnishing {row:?}"
+            );
+        }
+    }
+    #[test]
     fn every_phase_has_visible_danger_and_reachable_safe_neighbours() {
         let origin = CoordGrid::new(10368, 64, 0).unwrap();
         for boss in [Boss::Imp, Boss::Warden] {

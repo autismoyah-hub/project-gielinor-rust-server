@@ -12,7 +12,7 @@ def pack(s):
     return [(i['slot'], i['id'], i['count']) for i in s['items']]
 before = g.wait(lambda s: s.get('ready') and 'Done: Claim reward' in s['journal'], 90)
 g.act('close')
-g.act('object 57692 10428 124 1')
+g.act('object 57692 10432 124 1')
 away = g.wait(lambda s: s['ready'] and s['position'] == [0, 3224, 3218], 55)
 assert pack(before) == pack(away) and before['equipment'] == away['equipment'] and (before['xp'] == away['xp'])
 g.act('object 57692 3225 3218 1')

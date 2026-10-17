@@ -8,6 +8,13 @@ impl World {
         let p = self.players.get_mut(slot).unwrap();
         let actor = p.id;
         let inside = crate::tower_layout::contains(config.origin, p.movement.coords);
+        if loc.id==crate::tower_cinderworks::COAL_BRAZIER {
+            if !inside {return false;}
+            self.events.push(WorldEvent::GameMessage{actor,text:if loc.coords.z()>=config.origin.z()+64 {
+                "Banked coal feeds the foundry. Search a coolant barrel while the Warden charges to interrupt its heat."
+            } else {"Steady coal flames mark the sanctuary route. The plaque lists the work needed to restore the Cinderworks."}.into()});
+            return true;
+        }
         if loc.id == config.portal {
             // Only the authored return portal and the Tower portal are entrances.
             if !inside && loc.coords != config.outside { return false }
@@ -87,7 +94,7 @@ mod tests {
         world.collision.allocate(3224, 3216, 0);
         let config = Config { origin, outside:CoordGrid::new(3225,3218,0).unwrap(), plaque:1, portal:2, chest:3,
             tools:vec![10,11], scimitar:12, dagger:13, coins:100, beer:101,
-            imp:200,warden:201,quench:4,quench_tiles:vec![],warning_graphic:86,strike_graphic:78,work:None,death_animation:836 };
+            imp:200,warden:201,quench:4,quench_tiles:vec![],warning_graphic:86,strike_graphic:78,work:None,death_animation:836,charge_animations:[169,4666],quench_animation:4664 };
         let locations = [
             Location::new(origin.translate(55,56,0).unwrap(),1,10,0).unwrap(),
             Location::new(origin.translate(57,56,0).unwrap(),2,10,0).unwrap(),

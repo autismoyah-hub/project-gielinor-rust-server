@@ -31,3 +31,17 @@ Victory restores the sanctuary and enables an explicit claim and exit. First-cle
 Each checkpoint continues into the next. This document records the intended complete experience; unimplemented behavior must not be described as shipped.
 
 Implemented and accepted; see TOWER_ACCEPTANCE.md. All warning windows allow four server ticks; final Warden cadence accelerates independently of that readable reaction interval.
+
+## Visual reconstruction supersedes the open-court prototype
+
+The current production pass replaces the open nine-court composition with enclosed service rooms, a clipped-corner sanctuary, a processional hall and a tighter fortified foundry with vestibule. The vent gallery uses lighter slate, while the final foundry uses charcoal ash. Precise JS5-only conveyor-frame deletions prevent inherited industrial remnants from reappearing. Obsolete mind altar, vial/staff crates, goats, goblin training and upper stub scenery are removed.
+
+The Ash Imp retains its small red silhouette. The Warden receives a distinct spiked fire-giant body through a normal NPC transform, with compatible fire-giant movement, charge, defend and death sequences. Authoritative identity and combat/XP metadata remain unchanged. Coolant adds visible steam/flinch feedback, and phase changes flare at the boss. The inside portal is a real wall opening at (10432,124); the plaque is a supported wall decoration. User artistic acceptance remains pending.
+
+### Current readability and interaction refinement
+
+Foreground southern room edges use supported low stone wall 5154 through `prepare_palette`; exterior, back walls and plaque support remain full-height 2341. Movement stays blocked, while range policy follows the actual cache asset. Native comparison at the foundry threshold shows the avatar remains visible. No renderer or input-readiness bypass is used.
+
+Coolant uses stock rainwater barrel 30124 (`mistmyst_barrel_water`), whose genuine native cache has Search operation 1. Storage barrel 362 has no native Search action and is no longer a coolant fixture. Four coolant corners (10421,135), (10421,138), (10428,135), (10428,138) keep central cardinal/diagonal escapes clear. Obsolete lamps/stump inside hazard fields are removed or moved to perimeter recesses.
+
+The shield eligibility rule is preserved, but automatic melee retries no longer flood chat with identical shell-denial messages. Initial instructions and phase/coolant cues remain. The first visible warning explains heat; subsequent waves use the actual animated telegraphs. The displayed aggressive dagger style (Combat Options → Lunge) trains Strength through ordinary combat, with no injected levels or XP.

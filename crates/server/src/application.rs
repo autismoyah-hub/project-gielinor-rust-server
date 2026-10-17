@@ -394,7 +394,7 @@ pub fn run() -> io::Result<()> {
     )?;
     runtime.configure_tower_combat(
         [
-            names.short("npc", "ash_warden")?,
+            gielinor_world::tower_cinderworks::WARDEN,
             names.short("npc", "ash_imp")?,
         ],
         names.short("npc", "chicken")?,
@@ -429,12 +429,14 @@ pub fn run() -> io::Result<()> {
         coins:names.id("obj", "coins")? as i32,
         beer:names.id("obj", "beer")? as i32,
         imp:names.short("npc", "ash_imp")?,
-        warden:names.short("npc", "ash_warden")?,
-        quench:names.id("loc", "barrel")?,
-        quench_tiles:vec![tower_origin.translate(53,71,0).unwrap(),tower_origin.translate(60,71,0).unwrap()],
+        warden:gielinor_world::tower_cinderworks::WARDEN,
+        quench:names.id("loc", "mistmyst_barrel_water")?,
+        quench_tiles:gielinor_world::tower_cinderworks::COOLANT_TILES.into_iter().map(|(x,z)|tower_origin.translate(x,z,0).unwrap()).collect(),
         warning_graphic:names.short("spotanim", "smokepuff")?,
         strike_graphic:names.short("spotanim", "zamorak_flame")?,
         death_animation:names.short("seq", "human_death")?,
+        charge_animations:[names.short("seq","imp_attack")?,names.short("seq","giant_update_fire_attack")?],
+        quench_animation:names.short("seq","giant_update_fire_defend")?,
         work:Some(gielinor_world::tower_cinderworks::WorkConfig {
             fishing_spot:names.short("npc", "0_48_48_newbiefishing")?, net:names.id("obj", "net")? as i32,
             raw:names.id("obj", "raw_shrimp")? as i32,cooked:names.id("obj", "shrimp")? as i32,
@@ -443,7 +445,15 @@ pub fn run() -> io::Result<()> {
             cook_animation:names.short("seq", "human_cooking")?,queue:names.id("queue", "smithing_make")? as i32,
         }),
     };
-    let portal = gielinor_world::locations::Location::new(outside, config.portal, 10, 0).map_err(fail)?;
+    let visual=runtime.definitions.npcs.get(&(gielinor_world::tower_cinderworks::WARDEN_VISUAL as u32)).ok_or_else(||fail("Warden visual definition missing"))?;
+    if visual.size!=runtime.definitions.npcs[&(config.warden as u32)].size {return Err(fail("Warden visual and authoritative footprints differ"));}
+    let sequences=cache.sequences()?;
+    let death=names.short("seq","giant_update_fire_death")?;
+    for sequence in config.charge_animations.into_iter().chain([config.quench_animation,death]) {
+        if !sequences.get(&(sequence as u32)).is_some_and(|s|s.tick_duration()>0) {return Err(fail("Cinderworks presentation requires complete cache animations"));}
+    }
+    runtime.world.npc_death.as_mut().ok_or_else(||fail("NPC death configuration missing"))?.definitions.insert(config.warden,gielinor_world::npc_death::Definition {animation:death,animation_ticks:sequences[&(death as u32)].tick_duration(),sound:None});
+    let portal = gielinor_world::locations::Location::new(outside, config.portal, 0, 0).map_err(fail)?;
     if !runtime.world.npc_death.as_ref().is_some_and(|death| [config.imp,config.warden].iter().all(|id| death.definitions.get(id).is_some_and(|definition| definition.animation_ticks>0))) {
         return Err(fail("Cinderworks guardians require cache-resolved death animations before admission"));
     }

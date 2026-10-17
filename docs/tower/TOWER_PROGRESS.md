@@ -1,4 +1,20 @@
-# Cinderworks Floor One — complete
+# Cinderworks Floor One — functional acceptance; visual production pass required
+
+Production redesign mandate (2026-10-16): the user rejected the current environmental and artistic quality. Earlier comprehensive completion declarations were premature. Gameplay evidence below remains a regression baseline; visual production acceptance and release-candidate acceptance are **not granted**. Final artistic acceptance belongs to the user.
+
+Pinned pre-redesign baseline: server `34bb31d1b5a48449b3c960951ec43f93b4f17fd9`; client validation `a32b66deeeb30a2be159fbd379a9ffb07f423b72`.
+
+## Current production pass
+
+Architecture is reconstructed with real masonry edges and collision, a clipped-corner sanctuary, southern hall, enclosed service wings and fortified foundry. Exact JS5-only conveyor-frame masks remove the source scenery missing from the paired game map. Plaque and portal now use real supported scene shapes; the inside portal is integrated at (10432,124). Original obsolete staff/vial/mind-altar/goat/goblin/upper-stub content is removed.
+
+The Warden is visually transformed to a spiked fire giant with compatible cache sequences while retaining authoritative type 16295 and its original combat/XP metadata. Charge, phase and coolant cues use standard native animation/spot packets. Four visibly searchable rainwater barrels sit at (10421,135), (10421,138), (10428,135) and (10428,138), outside the central escape lanes. The controller excludes blocked diagonal corners and evades before seeking coolant; warnings and damage are unchanged. The Imp gallery uses lighter slate.
+
+Fresh native ordinary services and Imp victory pass on the refined layout; the Imp attempt retains full HP and all 19 food. Native Warden, full headless regression, cardinal-angle gallery and lifecycle rechecks are underway. Earlier diagnostic Warden failures remain failed. No artistic or release-candidate acceptance is claimed.
+
+Read-only native scene provenance is local client commit `8276b5737f8e3beed17eba28eeb50e6ed051135d`. The nine raw-byte patches reproduce exact tree `740e2a56e84c30eb1ef79aa3e2c438c4066baf1b` from the pinned baseline; apply with `git am --keep-cr`.
+
+## Historical functional acceptance record
 
 The standing comprehensive Floor One mandate is satisfied on the isolated `agent5/tower-development` branch. The native Rust window remains connected at the restored sanctuary with the completed six-step journal. [TOWER_ACCEPTANCE.md](TOWER_ACCEPTANCE.md) is the final acceptance report; [VALIDATION_RESULTS.json](VALIDATION_RESULTS.json) records safe aggregate outcomes.
 
@@ -11,3 +27,11 @@ Final world tests: 400 passed/two existing ignored. Server tests: 52 passed. Opt
 Gameplay implementation is tested at `420729798ffc3b0d31c7aff7497d1841597c2104`, based on server engine `6a1ea78022bd1c9cbc7e259bcb3595652e5eaae5`. Agent 2 ref `521e2e047071a7e7d481ab458829bb88a57b76e2` was fetched read-only and reviewed, not merged. Its V12 chemistry migration requires migration-order reconciliation with Tower V12 during Agent 2's eventual integration. This is a handoff constraint, not an unimplemented Floor One feature. Other agents' branches, workspaces and processes remain untouched.
 
 Final publication contains authored source, reusable scenario controllers, safe metadata and integration documentation only. Protected resources and complete private evidence remain local. Historical milestones and failed/repaired attempts are retained in CHECKPOINTS.md and the private evidence index.
+
+### Current readability and interaction refinement
+
+Foreground southern room edges use supported low stone wall 5154 through `prepare_palette`; exterior, back walls and plaque support remain full-height 2341. Movement stays blocked, while range policy follows the actual cache asset. Native comparison at the foundry threshold shows the avatar remains visible. No renderer or input-readiness bypass is used.
+
+Coolant uses stock rainwater barrel 30124 (`mistmyst_barrel_water`), whose genuine native cache has Search operation 1. Storage barrel 362 has no native Search action and is no longer a coolant fixture. Four coolant corners (10421,135), (10421,138), (10428,135), (10428,138) keep central cardinal/diagonal escapes clear. Obsolete lamps/stump inside hazard fields are removed or moved to perimeter recesses.
+
+The shield eligibility rule is preserved, but automatic melee retries no longer flood chat with identical shell-denial messages. Initial instructions and phase/coolant cues remain. The first visible warning explains heat; subsequent waves use the actual animated telegraphs. The displayed aggressive dagger style (Combat Options → Lunge) trains Strength through ordinary combat, with no injected levels or XP.

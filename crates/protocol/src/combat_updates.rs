@@ -10,11 +10,18 @@ pub struct NpcUpdates<'a> {
     pub sequence: Option<(u16, u8)>,
     pub spot_animations: Option<&'a [u8]>,
     pub face: Option<&'a [u8]>,
+    pub name: Option<&'a str>,
+    pub combat: Option<u32>,
+    pub transform: Option<u16>,
 }
 impl NpcUpdates<'_> {
     pub fn encode(&self) -> Vec<u8> {
         let mut mask = 0u32;
         let mut body = vec![];
+        if let Some(level) = self.combat {
+            mask |= 0x8000;
+            body.extend(level.to_le_bytes());
+        }
         if let Some(bytes) = self.hitmarks {
             mask |= 0x80000;
             body.extend(bytes);
@@ -31,6 +38,16 @@ impl NpcUpdates<'_> {
         if let Some(spots) = self.spot_animations {
             mask |= 0x40000;
             body.extend(spots);
+        }
+        if let Some(name) = self.name {
+            mask |= 0x4000;
+            body.extend(name.as_bytes());
+            body.push(0);
+        }
+        if let Some(id) = self.transform {
+            mask |= 1;
+            body.push((id as u8).wrapping_add(128));
+            body.push((id >> 8) as u8);
         }
         if let Some(face) = self.face {
             mask |= 8;
@@ -178,4 +195,34 @@ pub fn headbars(
         count.wrapping_add(128)
     };
     Ok(out)
+}
+
+#[cfg(test)]
+mod presentation_tests {
+    use super::*;
+    #[test]
+    fn standard_npc_name_and_combat_masks_preserve_revision_writer_order() {
+        let updates = NpcUpdates {
+            name: Some("Ash Warden"),
+            combat: Some(7),
+            sequence: Some((4666, 0)),
+            ..Default::default()
+        };
+        let bytes = updates.encode();
+        // Extension marker + sequence, then name/combat mask byte. Decoder order
+        // is combat LE, sequence BE + negated delay, then NUL-terminated name.
+        assert_eq!(&bytes[..2], &[0xc0, 0xc0]);
+        assert_eq!(&bytes[2..6], &7u32.to_le_bytes());
+        assert_eq!(&bytes[6..9], &[0x12, 0x3a, 0]);
+        assert_eq!(&bytes[9..], b"Ash Warden\0");
+        assert!(NpcUpdates::default().encode().is_empty());
+        assert_eq!(
+            NpcUpdates {
+                transform: Some(2075),
+                ..Default::default()
+            }
+            .encode(),
+            vec![1, 155, 8]
+        );
+    }
 }

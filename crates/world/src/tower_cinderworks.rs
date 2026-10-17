@@ -1,4 +1,11 @@
 //! Resolved Floor One content identities; all player operations use world actions.
+/// Preserve authored combat identity; the standard NPC transform selects its
+/// distinct native fire-giant body and skeleton without changing XP metadata.
+pub const WARDEN: u16 = 16295;
+pub const WARDEN_VISUAL: u16 = 2075;
+pub const COAL_BRAZIER: u32 = 11025;
+pub const COOLANT_TILES: [(i32, i32); 4] = [(53, 71), (53, 74), (60, 71), (60, 74)];
+pub const SHELL_HINT: &str = "The Warden's shell is closed. Evade the smoke, or search a coolant barrel to interrupt its charge.";
 use crate::{simulation::PlayerData, tower_run::Service, CoordGrid};
 #[derive(Clone, Debug)]
 pub struct Config {
@@ -20,6 +27,8 @@ pub struct Config {
     pub strike_graphic: u16,
     pub work: Option<WorkConfig>,
     pub death_animation: u16,
+    pub charge_animations: [u16; 2],
+    pub quench_animation: u16,
 }
 #[derive(Clone, Copy, Debug)]
 pub struct WorkConfig {
@@ -39,7 +48,15 @@ impl Config {
         id == self.dagger || id == self.scimitar
     }
     pub fn handles(&self, id: u32, operation: u8) -> bool {
-        operation == 1 && [self.plaque, self.portal, self.chest, self.quench].contains(&id)
+        operation == 1
+            && [
+                self.plaque,
+                self.portal,
+                self.chest,
+                self.quench,
+                COAL_BRAZIER,
+            ]
+            .contains(&id)
     }
     pub fn credit(
         &self,

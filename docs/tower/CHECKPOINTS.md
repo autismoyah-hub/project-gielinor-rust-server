@@ -40,3 +40,9 @@ The clean service controller now handles compressed inventory observations by co
 - Windows snapshot sharing violation reproduced and repaired without replaying actions; fault test passes. Native completed journal remains visible.
 - World 400 passed/two existing ignored; server 52 passed; source/binaries built successfully. Protected evidence stays private.
 - All authored-floor criteria complete. Agent 2 integration remains its separate handoff, with observed ref `521e2e047071a7e7d481ab458829bb88a57b76e2` and explicit V12 chemistry/Tower migration collision.
+
+## Visual production mandate — reconstruction checkpoint
+
+The user superseded the earlier production-complete declaration. Functional history is retained, visual production and release-candidate acceptance are pending. Pre-redesign server is 34bb31d and client a32b66d. Current validation client is 8276b5737f8e3beed17eba28eeb50e6ed051135d, supplied as nine raw-byte patches; exact tree 740e2a56e84c30eb1ef79aa3e2c438c4066baf1b verified independently.
+
+Architectural reconstruction, precise JS5-only frame masks, supported interactive model shapes, low foreground masonry, distinct native Warden body/animations and clearer feedback are implemented. Coolant is real Search-enabled rainwater stock asset 30124, moved to four corner stations with clear buffers. New tests prove a legal one-step escape from every walkable arena position in every phase and exclude ornamental props from active hazard fields. Intermediate Warden failures are recorded as failures; no timing, damage, reward or shield rule was reduced to force a pass. Current complete affected-library checks passed 399 world/two ignored, 52 server, 24 cache and 20 protocol before the two additional escape-property tests; those three targeted encounter tests also pass. Final full regression and artistic review remain required.

@@ -152,6 +152,7 @@ mod tests {
             strike_graphic: 78,
             work: Some(work),
             death_animation: 836,
+            charge_animations:[169,4666],quench_animation:4664,
         });
         let mut data = PlayerData::new(
             1,
