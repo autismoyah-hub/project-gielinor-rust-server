@@ -49,3 +49,9 @@ Throughput:19historical contracts plus5new gameplay/shared safety units;24queue 
 Sourcea560034a59e766d1faf400b61187fec861d13475 registers15additional chocolate-cake/topped-pizza/pie stages and preserves claimedIDs for all ordinary held Eat packets. OR-MIG-0024revision2 appends a link to revision1/0132d0737f7bcbab7f2387dc3151f238a055922d; earlier evidence/history is unchanged. OR-MIG-0025 explicitly follows Wiki healing where donor raw pizza values disagree. Focused3server12worldPASS;397hashes unchanged;16target cache definitionsPASS. All independent levels remain queued.
 
 Throughput:19historical contracts plus6new gameplay/shared units;25units/26append-only records. Inventory17partially contracted eligible source files/tables,656configuration records,2835not-yet-assessed. No complete eligible-module denominator or broad migration completion claim. Earlier content backfill, full source reconciliation and remaining gameplay obligations continue.
+
+## Checkpoint OR-MIG-0026
+
+Source5b47d7fe42703ade7b97e10636c53abb35bd6e0e registers ten missing ordinary food healing profiles through actual startup and existing selected-slot dispatch. Focused4server12worldPASS;397hashes unchanged;10target definitionsPASS. All ten donor rows and Wiki values checked,including Caviar5. Cosmetic Onion/Ugthanki messages are explicit remaining obligations. Independent V0-V4 queued.
+
+Throughput:19historical contracts plus7new gameplay/shared units;26units/27append-only records. Inventory remains17partially contracted eligible source files/tables,656configuration records,2835not-yet-assessed. Full remaining source/module reconciliation, prior-batch backfill and gameplay behavior remain incomplete.
