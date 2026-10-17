@@ -249,6 +249,28 @@ mod additional_ordinary_food_tests {
     }
 }
 
+pub struct HealingFoodBindings{pub selected:std::collections::BTreeSet<i32>,pub healing:BTreeMap<i32,gielinor_world::food::Healing>}
+/// Source/Wiki table rules are evaluated against live base HP at consumption.
+pub fn dynamic_foods(objects:&Symbols,defs:&Definitions,foods:&mut BTreeMap<i32,Edible>)->Result<HealingFoodBindings,String>{
+    let mut next=foods.clone();apply_ordinary_food_profiles(objects,defs,&mut next,&[("strawberry","Strawberry",0),("watermelon_slice","Watermelon slice",0),("sweetcorn_cooked","Cooked sweetcorn",0),("bowl_sweetcorn","Sweetcorn",0)])?;
+    let bowl=*objects.get("bowl_empty").ok_or("Missing dynamic-food bowl")?;let item=u32::try_from(bowl).ok().and_then(|id|defs.items.get(&id)).ok_or("Missing dynamic-food bowl definition")?;if item.name!="Bowl" || item.stackable || item.dummy==1 || item.cert.template!=0 || item.placeholder.template!=0 || item.transform.template!=0{return Err("Invalid dynamic-food bowl".into());}
+    let mut selected=std::collections::BTreeSet::new();let mut healing=BTreeMap::new();
+    for (symbol,percent,constant,round_up) in [("strawberry",6,0,true),("watermelon_slice",5,1,false),("sweetcorn_cooked",10,1,false),("bowl_sweetcorn",10,1,false)]{let id=objects[symbol];if id==bowl || !defs.items[&(id as u32)].members{return Err("Invalid member dynamic-food profile".into());}selected.insert(id);healing.insert(id,gielinor_world::food::Healing{percent,constant,round_up});}
+    next.get_mut(&objects["bowl_sweetcorn"]).unwrap().replacement=Some(bowl);next.get_mut(&objects["watermelon_slice"]).unwrap().message="You eat the slice of watermelon.".into();
+    *foods=next;Ok(HealingFoodBindings{selected,healing})
+}
+#[cfg(test)]
+mod dynamic_food_tests{
+    use super::*;
+    #[test]
+    fn dynamic_foods_bind_live_hp_rules_and_retained_bowl_without_partial_publish(){
+        let mut objects=Symbols::new();let mut defs=Definitions{inventories:Default::default(),locations:Default::default(),npcs:Default::default(),items:Default::default(),varbits:Default::default(),varps:Default::default(),stats:Default::default()};
+        for (symbol,id,name) in [("strawberry",5504,"Strawberry"),("watermelon_slice",5984,"Watermelon slice"),("sweetcorn_cooked",5988,"Cooked sweetcorn"),("bowl_sweetcorn",7088,"Sweetcorn"),("bowl_empty",1923,"Bowl")]{objects.insert(symbol.into(),id);let mut item=gielinor_cache::definitions::ItemType::decode(&[16,0]).unwrap();item.name=name.into();if symbol!="bowl_empty"{item.inventory_ops[0]=Some("Eat".into());}defs.items.insert(id as u32,item);}
+        let mut foods=BTreeMap::new();let binding=dynamic_foods(&objects,&defs,&mut foods).unwrap();assert_eq!(binding.selected.len(),4);assert_eq!(binding.healing[&5504].amount(50),Ok(3));assert_eq!(binding.healing[&5984].amount(20),Ok(2));assert_eq!(binding.healing[&7088].amount(99),Ok(10));assert_eq!(foods[&7088].replacement,Some(1923));assert_eq!(foods[&5984].message,"You eat the slice of watermelon.");
+        foods.clear();defs.items.get_mut(&1923).unwrap().cert.template=799;assert!(dynamic_foods(&objects,&defs,&mut foods).is_err());assert!(foods.is_empty());
+    }
+}
+
 pub struct BoostFoodBindings {
     pub selected:std::collections::BTreeSet<i32>,
     pub boosts:BTreeMap<i32,Vec<gielinor_world::food::StatBoost>>,

@@ -213,6 +213,18 @@ pub fn eat(
 /// separate progression engine. Definitions resolve skills before registration.
 #[derive(Clone,Copy,Debug,PartialEq,Eq)]
 pub struct StatBoost {pub skill:u8,pub amount:i32}
+/// Base-HP dependent ordinary healing, evaluated at the actual Eat action.
+#[derive(Clone,Copy,Debug,PartialEq,Eq)]
+pub struct Healing {pub percent:u8,pub constant:i32,pub round_up:bool}
+impl Healing {
+    pub fn amount(self,base:u8)->Result<i32,stat_ops::Error>{
+        if self.constant<0{return Err(stat_ops::Error::NegativeConstant);}
+        if self.percent>100{return Err(stat_ops::Error::InvalidPercent);}
+        let product=i32::from(base)*i32::from(self.percent);
+        Ok(((product+if self.round_up{99}else{0})/100).saturating_add(self.constant))
+    }
+}
+
 /// Selected nonstackable Wiki profile: consume the clicked slot and retain its
 /// remainder there. Inventory and healing are staged before any visible effect.
 /// `eat` remains the independently tested original-reference policy.
@@ -312,6 +324,13 @@ impl Transition {
 mod tests {
     use super::*;
     use crate::inventory::{Item, StackType};
+    #[test]
+    fn dynamic_food_healing_matches_explicit_wiki_table_boundaries(){
+        let strawberry=Healing{percent:6,constant:0,round_up:true};for (base,heal) in [(10,1),(16,1),(17,2),(33,2),(34,3),(50,3),(51,4),(66,4),(67,5),(83,5),(84,6),(99,6)]{assert_eq!(strawberry.amount(base),Ok(heal));}
+        let melon=Healing{percent:5,constant:1,round_up:false};for (base,heal) in [(10,1),(19,1),(20,2),(39,2),(40,3),(59,3),(60,4),(79,4),(80,5),(99,5)]{assert_eq!(melon.amount(base),Ok(heal));}
+        let corn=Healing{percent:10,constant:1,round_up:false};for (base,heal) in [(10,2),(19,2),(20,3),(99,10)]{assert_eq!(corn.amount(base),Ok(heal));}
+        assert_eq!(Healing{percent:101,..corn}.amount(99),Err(stat_ops::Error::InvalidPercent));assert_eq!(Healing{constant:-1,..corn}.amount(99),Err(stat_ops::Error::NegativeConstant));
+    }
     #[test]
     fn secondary_food_boosts_cap_and_rollback_with_selected_item_and_healing(){
         let food=Edible{id:1,heal:8,delay:1,replacement:Some(2),message:"Pie".into()};

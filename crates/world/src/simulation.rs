@@ -886,6 +886,7 @@ pub struct World {
     pub member_foods: std::collections::BTreeSet<i32>,
     pub food_boosts: BTreeMap<i32,Vec<crate::food::StatBoost>>,
     pub food_energy: BTreeMap<i32,i32>,
+    pub food_healing: BTreeMap<i32,crate::food::Healing>,
     pub slot_preserving_foods: std::collections::BTreeSet<i32>,
     pub potions: BTreeMap<i32, crate::potions::Potion>,
     pub milking: Option<crate::milking::Config>,
@@ -993,6 +994,7 @@ impl Default for World {
             member_foods: Default::default(),
             food_boosts: BTreeMap::new(),
             food_energy: BTreeMap::new(),
+            food_healing: BTreeMap::new(),
             slot_preserving_foods: Default::default(),
             potions: BTreeMap::new(),
             item_packs: BTreeMap::new(),
@@ -2014,6 +2016,9 @@ impl World {
                     return Err(ActionError::InvalidItem);
                 }
                 let food = &self.foods[&item.unwrap().id];
+                let adjusted=match self.food_healing.get(&food.id){Some(rule)=>Some(crate::food::Edible{heal:rule.amount(p.data.stats.base(3) as u8).map_err(|_|ActionError::InvalidStat)?,..food.clone()}),None=>None};
+                let food=adjusted.as_ref().unwrap_or(food);
+
                 let mut emitted = Vec::new();
                 let selected = self.slot_preserving_foods.contains(&food.id);
                 let hp_before = p.data.stats.current(3) as u8;
@@ -4254,6 +4259,10 @@ mod tests {
                 ..
             }
         )));
+    }
+    #[test]
+    fn dynamic_food_uses_live_base_hp_and_invalid_rule_preserves_item(){
+        for (base,current,expected,valid) in [(20,1,3,true),(99,98,99,true),(20,25,25,true),(20,1,1,false)]{let (mut w,actor)=admitted();w.foods.insert(991,crate::food::Edible{id:991,heal:0,delay:3,replacement:Some(992),message:"Melon".into()});w.food_healing.insert(991,crate::food::Healing{percent:if valid{5}else{101},constant:1,round_up:false});let p=w.players.get_mut(actor.slot as usize).unwrap();p.data.stats.set_base(3,base);p.data.stats.set_current(3,current);p.data.inventory.restore_slot(1,Some(crate::inventory::Item{id:991,count:1,vars:0})).unwrap();w.submit(actor,Action::EatItemSlot{slot:1,item:991}).unwrap();w.tick().unwrap();let p=w.data(actor).unwrap();assert_eq!(p.stats.current(3),expected);assert_eq!(p.stats.fine_xp(3),0);assert_eq!(p.inventory.get(1).unwrap().id,if valid{992}else{991});}
     }
     #[test]
     fn energy_food_eat_events_restore_exact_percent_and_failed_effects_never_award(){

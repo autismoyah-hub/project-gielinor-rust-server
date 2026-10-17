@@ -357,7 +357,10 @@ pub fn configure<B: AccountBackend>(
     let energy_foods=crate::content::energy_foods(n("obj"),n("stat"),&runtime.definitions,&mut foods).map_err(io::Error::other)?;
     boost_foods.selected.extend(energy_foods.selected);boost_foods.boosts.extend(energy_foods.boosts);boost_foods.energy.extend(energy_foods.energy);
     slot_preserving_foods.extend(boost_foods.selected);
+    let healing_foods=crate::content::dynamic_foods(n("obj"),&runtime.definitions,&mut foods).map_err(io::Error::other)?;
+    slot_preserving_foods.extend(healing_foods.selected);
     runtime.configure_foods(held, foods, names.short("seq", "human_eat")?)?;
+    runtime.world.food_healing=healing_foods.healing;
     runtime.world.food_boosts=boost_foods.boosts;
     runtime.world.food_energy=boost_foods.energy;
     runtime.world.slot_preserving_foods = slot_preserving_foods;
