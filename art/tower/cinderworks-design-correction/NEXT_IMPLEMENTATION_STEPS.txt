@@ -1,0 +1,52 @@
+IMPLEMENTATION AFTER DESIGN REVIEW — NOT AUTHORIZATION TO EXPAND NOW
+
+1. Review this master plan and the three representative scenes. Resolve the
+workshop transition, receiver silhouette, pressure-walk readability and amount of
+open combat floor. Do not populate the remaining floor while approval is pending.
+
+2. Turn the approved plan into a native graybox in a NEW opt-in content revision.
+The proposed envelope is64x54tiles with1792concept-level connected ground cells;
+it is not a rectangular floor fill. The existing constructed128tileallocation can
+contain its coordinates, but the current36chunktemplate and contains32..79 logic
+do not install it. Produce actual server terrain/collision data and matching native
+owned-terrain chunks. The current original-only A/P scene format is a review tool,
+not a server map. Do not claim the current decoration placement flag is sufficient.
+
+3. Parameterize and update the coordinate contracts together: functional objects,
+existing NPC spawns, Imp/Warden arena origins, coolant/vents, restoration landmarks,
+arrival/recovery, return portal and tower_scene emission bounds. Existing activity
+and reward rules remain unchanged. Preserve the exact arena sizes and relative
+geometry. Validate third-phase modulo3pattern translation explicitly. The proposed
+anchor table records every old/new coordinate and current native identity.
+Scene fragments have explicit local-to-master translations. They are not live
+coordinates or a whole-floor nav proof. Decompose the compound review shells into
+properly bounded runtime objects with real footprints and per-object identifiers.
+
+4. Select the functional artwork binding explicitly. Keep the existing functional
+body/ID and fit architecture, or bind original custom functional scenery to the
+existing operation/configuration. Never hide an old interactive target underneath
+unrelated decorative machinery. Current library objects have no gameplay menu ops.
+The small counter/altar/tablet in the study are visual envelopes, not implemented
+banking/offering/instruction replacements. Water is original static coloured
+terrain in these studies; animated/native water material integration remains work.
+
+5. Make a one-time, versioned coordinate migration for accounts saved inside the
+old floor. Quiesce affected interactions, move safely to the new hearth and retain
+inventory, bank, XP, kit/recovery flags, services, victories, pending reward and
+first-clear history. Do not reseed accounts, clear active runs, repay rewards or
+modify outside-world positions. Native exit/re-entry, defeat/recovery, save/relogin
+and interrupted migrations require independent acceptance.
+
+6. Resolve client dependencies before playability acceptance. The13live clipping
+sites need a captured update-order regression; the bank needs authoritative solid
+policy agreement. Interface/script work and10tickcatch-up saturation dominate the
+measured frame. Investigate there and in world submission/readback. Do not remove
+correct input, scripts, picking, tick timing or clipping just to raise benchmark FPS.
+The warning about an absent optional Kronos NPC combat catalog remains a separate
+startup dependency; this checkpoint did not accept full resource/combat/drop loops.
+
+7. Only after native graybox validation and user architectural approval, expand
+room by room. Validate real2tilegateways, low foreground walls, no overhead-pipe
+clipping, accessible stations, both arena escape guarantees and material continuity.
+Then refine remaining quarry, leak basin and alternative supply courts. Reuse the
+successful26assetfamilies rather than initiating NPC/animation research.

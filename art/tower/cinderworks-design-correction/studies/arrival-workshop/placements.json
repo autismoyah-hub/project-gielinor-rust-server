@@ -1,0 +1,146 @@
+[
+  {
+    "asset": "arch",
+    "x": 47,
+    "z": 55,
+    "quarter_turn": 3,
+    "object_id": 64703,
+    "purpose": "Oblique workshop entry, shared with the retaining gallery"
+  },
+  {
+    "asset": "pier",
+    "x": 47,
+    "z": 54,
+    "quarter_turn": 0,
+    "object_id": 64702,
+    "purpose": "Arch bearing, outside two-tile opening"
+  },
+  {
+    "asset": "pier",
+    "x": 47,
+    "z": 57,
+    "quarter_turn": 0,
+    "object_id": 64702,
+    "purpose": "Arch bearing"
+  },
+  {
+    "asset": "plate-mill",
+    "x": 40,
+    "z": 55,
+    "quarter_turn": 0,
+    "object_id": 64719,
+    "purpose": "Rail terminates at the feed rollers; working aisle to its west"
+  },
+  {
+    "asset": "rail-span",
+    "x": 40,
+    "z": 57,
+    "quarter_turn": 0,
+    "object_id": 64707,
+    "purpose": "Gauge-matched slate tram"
+  },
+  {
+    "asset": "rail-span",
+    "x": 40,
+    "z": 59,
+    "quarter_turn": 0,
+    "object_id": 64707,
+    "purpose": "Gauge-matched slate tram"
+  },
+  {
+    "asset": "ore-cart",
+    "x": 40,
+    "z": 59,
+    "quarter_turn": 0,
+    "object_id": 64708,
+    "purpose": "Loaded cart at upstream buffer"
+  },
+  {
+    "asset": "slate-headwall",
+    "x": 39,
+    "z": 62,
+    "quarter_turn": 0,
+    "object_id": 64709,
+    "purpose": "Working strata and braced buffer"
+  },
+  {
+    "asset": "workstation",
+    "x": 37,
+    "z": 53,
+    "quarter_turn": 0,
+    "object_id": 64720,
+    "purpose": "Bench faces the same safe maintenance aisle as the press"
+  },
+  {
+    "asset": "tool-rack",
+    "x": 36,
+    "z": 54,
+    "quarter_turn": 0,
+    "object_id": 64713,
+    "purpose": "Tools belong to the adjacent bench"
+  },
+  {
+    "asset": "stock-crate",
+    "x": 44,
+    "z": 50,
+    "quarter_turn": 0,
+    "object_id": 64712,
+    "purpose": "Metal stock under the roof edge"
+  },
+  {
+    "asset": "furnace-bank",
+    "x": 34,
+    "z": 49,
+    "quarter_turn": 0,
+    "object_id": 64704,
+    "purpose": "Proposed visual envelope at the existing functional furnace; hook remains separate, exact final alignment pending"
+  },
+  {
+    "asset": "arrival-inlay",
+    "x": 56,
+    "z": 56,
+    "quarter_turn": 0,
+    "object_id": 64724,
+    "purpose": "Arrival within the intimate landing"
+  },
+  {
+    "asset": "hearth-ring",
+    "x": 55,
+    "z": 58,
+    "quarter_turn": 0,
+    "object_id": 64725,
+    "purpose": "Hearth foundation, exact retained center"
+  },
+  {
+    "asset": "reward-surround",
+    "x": 55,
+    "z": 50,
+    "quarter_turn": 0,
+    "object_id": 64717,
+    "purpose": "Existing reward55,51 remains in the familiar landing"
+  },
+  {
+    "asset": "moss-fern",
+    "x": 61,
+    "z": 60,
+    "quarter_turn": 0,
+    "object_id": 64714,
+    "purpose": "Damp wall base / leak edge only"
+  },
+  {
+    "asset": "moss-fern",
+    "x": 60,
+    "z": 61,
+    "quarter_turn": 0,
+    "object_id": 64714,
+    "purpose": "Damp wall base / leak edge only"
+  },
+  {
+    "asset": "moss-fern",
+    "x": 44,
+    "z": 62,
+    "quarter_turn": 0,
+    "object_id": 64714,
+    "purpose": "Damp wall base / leak edge only"
+  }
+]

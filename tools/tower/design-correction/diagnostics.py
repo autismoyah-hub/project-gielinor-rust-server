@@ -1,0 +1,20 @@
+"""Classify the existing14sites without patching client/server cache parity."""
+from pathlib import Path
+import csv,json,hashlib
+T=Path(__file__).resolve().parent;S=T.parents[2];E=S.parent;R=E/'cinderworks-design-correction-private';OLD=E/'cinderworks-environment-private';P=S/'art/tower/cinderworks-design-correction'
+def main():
+ original=json.loads((S/'art/tower/cinderworks-environment/validation/native-scene-comparison.json').read_text(encoding='utf-8'))
+ bulk={(int(q['x']),int(q['z'])):int(q['flags'])for q in csv.DictReader((R/'final-native.collision.csv').open())}
+ definitions={int(q['id']):q for q in csv.DictReader((R/'final-native.definitions.csv').open())}
+ rows=[]
+ for x,z,server,live in original['collision_differences']:
+  fresh=bulk[x,z]
+  if fresh==server:
+   classification='live lifecycle difference';evidence='Fresh final-placement reconstruction through the unchanged native Scene::add_object_collision restores the server flag at this site. Live final object inventory is complete. Runtime replacement/deletion order and overlapping bit removal are leading hypotheses; exact event replay is still required.'
+  else:
+   assert(x,z)==(53,60);classification='definition/policy mismatch';evidence='Native bank18491 has solid=true and interact_type=0,blocks_projectiles=false after existing apply_solid decoding. Server final collision is0x40000100. It differs even without runtime zone replacement. Do not fix by adding unrelated blocking scenery.'
+  rows.append({'local':[x,z],'world':[10368+x,64+z,0],'server':server,'native_live':live,'native_fresh_final_objects':fresh,'classification':classification,'evidence':evidence,'owner_dependency':'Native client integration/parity for live lifecycle; FORGE + native cache policy agreement for bank definition.'})
+ report={'scope':'Investigates the14previously reported tiles, not a new full-map parity certification. Metadata only; cache pixels/archives remain private.','sites':rows,'lifecycle_sites':sum(q['classification']=='live lifecycle difference'for q in rows),'definition_sites':sum(q['classification']=='definition/policy mismatch'for q in rows),'bank_native_definition':definitions[18491],'diagnostic_limitation':'Prepared-scene metadata adapter installs object collision but does not install terrain FLOOR bits after manual chunk loading. The128water terrain flags omitted by that adapter are not new live defects. None of the14reported sites has the terrain FLOOR bit; the site comparisons above are exact, unmasked.','immediate_before_live_redesign':['Keep the redesigned studies out of live gameplay until navigation, target access, collision and performance pass independently.','Block client integration acceptance on a reproducible runtime-location replay for the13lifecycle sites, including shared footprints and wall-neighbour bits.','Agree the bank solid/break-route policy from authoritative reference behavior before changing either decoder.','Correct misleading timing aggregation and test warm gameplay separately from login/bootstrap; retain earlier raw evidence.'],'separate_client_task':['Profile the expensive interface/script interval independently from D3D11 rendering. Preserve actual menus, scripts, picking and actor behavior.','Profile world geometry/submission/readback and stable-buffer uploads after the CPU interval is understood. Do not infer full-client FPS from a13msGPU timestamp.','Build native update-order collision regression from captured events, then apply the smallest reference-backed parity fix. No parity/cache decoder rewrite is included in this design checkpoint.'],'inputs_sha256':{q.name:hashlib.sha256(q.read_bytes()).hexdigest()for q in [R/'final-native.collision.csv',R/'final-native.definitions.csv',OLD/'native-20261018-130034-gpu/scene-collision.csv']}}
+ assert report['lifecycle_sites']==13 and report['definition_sites']==1
+ (P/'collision-investigation.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8');print('COLLISION_CLASSIFICATION',13,'live-lifecycle sites;',1,'definition/policy site')
+if __name__=='__main__':main()

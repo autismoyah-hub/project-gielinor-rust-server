@@ -1,0 +1,16 @@
+OFFLINE ONLY
+original_art_only=true
+preset=player
+object_assembly=authored
+canvas=1200x900
+local_target=40,55
+target_height=-220
+yaw_units=15000
+distance_argument=1250
+elevation=1100
+focal=1000
+scene=C:\Projects\OSRSRSPS\Tower-Development\experiments\custom-model-pipeline\cinderworks-design-correction-server\art\tower\cinderworks-design-correction\studies\arrival-workshop\study.scene
+actors=false
+live_animation=false
+ui=false
+scene_lifecycle=false

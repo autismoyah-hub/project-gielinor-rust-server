@@ -1,0 +1,43 @@
+{
+  "scope": "Only timing instrumentation; same preserved prototype map, account and server binary. No design-correction scene loaded.",
+  "session": "native-profile-20261018-141101",
+  "frames": 128,
+  "post_ready_warmup_ms": 5000,
+  "first_start_ms": 32768.097,
+  "ready_observed_process_ms": 14500.887300004251,
+  "median_frame_period_ms": 308.2079999999987,
+  "p95_frame_period_ms": 414.4959999999992,
+  "stage_mean_ms": {
+    "network_ms": 5.6559765625,
+    "scripts_ms": 184.8844375,
+    "world_ms": 127.6910390625,
+    "ui_ms": 2.3854921875,
+    "present_ms": 3.1008046875
+  },
+  "timing_samples": 256,
+  "context_menu_mean_ms": 13.5376015625,
+  "remaining_interface_script_mean_ms": 165.94017578125,
+  "renderer": {
+    "frames": 240,
+    "triangles": 323187,
+    "draw_calls": 5,
+    "prepare_ms": 54.7372,
+    "render_ms": 22.8262,
+    "readback_ms": 22.7664,
+    "gpu_ms": 13.2987,
+    "buffer_bytes": 54295416,
+    "target_bytes": 58249216,
+    "texture_bytes": 13828096,
+    "uploads": 242,
+    "init_ms": 262.7827,
+    "adapter": "NVIDIA GeForce GTX 1660 Ti"
+  },
+  "persistent_state_preserved": true,
+  "failed_presentations": 0,
+  "observed_client_cycle_increments": {
+    "10": 255
+  },
+  "diagnosis": "Most time is in the interface/script interval, with repeated10tick catch-up steps. Menu construction is a smaller measured part. GPU execution is much shorter than the full frame. CPU world submission/readback also needs profiling. These observations identify a client task; they do not prove a particular safe algorithmic fix.",
+  "comparison_limit": "Instrumented sample on the same shared development PC is not a controlled A/B test against the earlier214ms sample. No performance improvement or regression attribution is claimed.",
+  "cpu_interval_sample_scope": "Bounded first256loggedframes after server_tick60; full-client trace is a separate128framepost-ready window on the same steady scene."
+}

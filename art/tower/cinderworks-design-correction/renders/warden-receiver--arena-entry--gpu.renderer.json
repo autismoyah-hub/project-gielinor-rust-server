@@ -1,0 +1,1 @@
+{"mode":"gpu","enhanced":true,"total_ms":411.601,"frames":20,"stats":{"frames":20,"triangles":31688,"draw_calls":3,"prepare_ms":0.8778,"render_ms":3.9547,"readback_ms":3.9074,"gpu_ms":0.5459,"buffer_bytes":5323584,"target_bytes":55657216,"texture_bytes":131072,"uploads":1,"init_ms":266.5048,"adapter":"NVIDIA GeForce GTX 1660 Ti"}}

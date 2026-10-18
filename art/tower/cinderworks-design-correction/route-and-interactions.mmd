@@ -1,0 +1,14 @@
+flowchart LR
+  Arrival[Arrival / recovery] --> Hearth[Hearth and tools]
+  Hearth --> Forge[Slate → smelt → forge]
+  Hearth --> Kitchen[Quay → fish → cook]
+  Hearth --> Altar[Stock court → bones → altar]
+  Forge --> Ready{All three services}
+  Kitchen --> Ready
+  Altar --> Ready
+  Ready --> Imp[Vent retort / Ash Imp]
+  Imp --> Warden[Pressure threshold / Ash Warden]
+  Warden --> Reward[Return to hearth reward]
+  Reward --> Exit[Existing portal / departure]
+  Forge -. optional .-> Grove[Leakwater / trees and overlook]
+  Kitchen -. optional .-> Stores[Provision court]

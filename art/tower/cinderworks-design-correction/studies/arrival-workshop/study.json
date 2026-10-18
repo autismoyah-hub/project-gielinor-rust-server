@@ -1,0 +1,11 @@
+{
+  "name": "arrival-workshop",
+  "structural_vertices": 6957,
+  "structural_triangles": 10768,
+  "reused_original_instances": 18,
+  "new_scene_object_id": 64800,
+  "new_scene_model_id": 1231000,
+  "scope": "Static native-rendered composition only. Compound study shell is not a runtime collision object. Per-object decomposition and terrain/server integration require approval and independent native validation.",
+  "new_behavior": false,
+  "npc_art": false
+}

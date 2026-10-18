@@ -1,0 +1,74 @@
+[
+  {
+    "asset": "pump",
+    "x": 68,
+    "z": 60,
+    "quarter_turn": 0,
+    "object_id": 64718,
+    "purpose": "Intake on the actual quay edge; supply route climbs to the pressure main"
+  },
+  {
+    "asset": "sluice",
+    "x": 74,
+    "z": 61,
+    "quarter_turn": 0,
+    "object_id": 64711,
+    "purpose": "Headgate frame at the receiving water channel"
+  },
+  {
+    "asset": "furnace-bank",
+    "x": 76,
+    "z": 69,
+    "quarter_turn": 1,
+    "object_id": 64704,
+    "purpose": "Retort sidewall, entirely outside Imp movement envelope"
+  },
+  {
+    "asset": "furnace-bank",
+    "x": 76,
+    "z": 73,
+    "quarter_turn": 1,
+    "object_id": 64704,
+    "purpose": "Second exhaust retort, one continuous plant wall"
+  },
+  {
+    "asset": "chimney-backdrop",
+    "x": 77,
+    "z": 77,
+    "quarter_turn": 0,
+    "object_id": 64723,
+    "purpose": "Retort flue carries exhaust above the gallery"
+  },
+  {
+    "asset": "arch",
+    "x": 71,
+    "z": 66,
+    "quarter_turn": 0,
+    "object_id": 64703,
+    "purpose": "Imp approach threshold at the quiet south edge"
+  },
+  {
+    "asset": "moss-fern",
+    "x": 68,
+    "z": 59,
+    "quarter_turn": 0,
+    "object_id": 64714,
+    "purpose": "Wet inlet edge only; the exhaust bay remains dry"
+  },
+  {
+    "asset": "moss-fern",
+    "x": 67,
+    "z": 60,
+    "quarter_turn": 0,
+    "object_id": 64714,
+    "purpose": "Wet inlet edge only; the exhaust bay remains dry"
+  },
+  {
+    "asset": "tool-rack",
+    "x": 64,
+    "z": 61,
+    "quarter_turn": 0,
+    "object_id": 64713,
+    "purpose": "Maintenance station beside supply saddle"
+  }
+]

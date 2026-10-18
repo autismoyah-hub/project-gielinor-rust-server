@@ -1,0 +1,11 @@
+{
+  "name": "pressure-walk",
+  "structural_vertices": 3888,
+  "structural_triangles": 5916,
+  "reused_original_instances": 9,
+  "new_scene_object_id": 64801,
+  "new_scene_model_id": 1231001,
+  "scope": "Static native-rendered composition only. Compound study shell is not a runtime collision object. Per-object decomposition and terrain/server integration require approval and independent native validation.",
+  "new_behavior": false,
+  "npc_art": false
+}

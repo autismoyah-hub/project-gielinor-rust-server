@@ -1,0 +1,133 @@
+{
+  "scope": "Placement proposal only; existing types, behavior and counts. No new NPC artwork, rigging, animation or AI. Actual footprints, roaming and clipping still require native tests.",
+  "fishing": [
+    {
+      "npc_id": 3317,
+      "current_local": [
+        72,
+        50,
+        0
+      ],
+      "proposed_local": [
+        69,
+        58,
+        0
+      ],
+      "existing_reach": 3
+    },
+    {
+      "npc_id": 3317,
+      "current_local": [
+        72,
+        52,
+        0
+      ],
+      "proposed_local": [
+        70,
+        60,
+        0
+      ],
+      "existing_reach": 3
+    },
+    {
+      "npc_id": 3317,
+      "current_local": [
+        72,
+        54,
+        0
+      ],
+      "proposed_local": [
+        70,
+        62,
+        0
+      ],
+      "existing_reach": 3
+    },
+    {
+      "npc_id": 3317,
+      "current_local": [
+        72,
+        56,
+        0
+      ],
+      "proposed_local": [
+        69,
+        65,
+        0
+      ],
+      "existing_reach": 3
+    }
+  ],
+  "cow_spawn_proposal": [
+    [
+      33,
+      33
+    ],
+    [
+      36,
+      32
+    ],
+    [
+      39,
+      34
+    ],
+    [
+      40,
+      37
+    ],
+    [
+      37,
+      39
+    ],
+    [
+      33,
+      38
+    ],
+    [
+      31,
+      35
+    ],
+    [
+      36,
+      36
+    ]
+  ],
+  "chicken_spawn_proposal": [
+    [
+      65,
+      34
+    ],
+    [
+      72,
+      34
+    ],
+    [
+      66,
+      41
+    ],
+    [
+      72,
+      42
+    ]
+  ],
+  "banker_proposed": [
+    48,
+    50,
+    0
+  ],
+  "tanner_proposed": [
+    57,
+    48,
+    0
+  ],
+  "Imp_proposed": [
+    68,
+    71,
+    0
+  ],
+  "Warden_proposed": [
+    81,
+    56,
+    0
+  ]
+}

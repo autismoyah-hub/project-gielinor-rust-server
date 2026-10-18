@@ -1,0 +1,83 @@
+{
+  "original_studies": [
+    {
+      "study": "arrival-workshop",
+      "saved_source_native_bytes_exact": true,
+      "independent_decode_exact": true,
+      "underlay_definition_ids_valid": true,
+      "protected_cache_geometry_or_terrain": false,
+      "model_sha256": "9e2bb03ebc2a1fa5f5945b3fc60ddf57d1404fd146ad5cec538dc5cca25feaf0",
+      "source_blend_sha256": "3f9100d4f156d32cf53c9be40711d27089314dd2f6b3712ee025734cdaa31e16",
+      "vertices": 6957,
+      "triangles": 10768
+    },
+    {
+      "study": "pressure-walk",
+      "saved_source_native_bytes_exact": true,
+      "independent_decode_exact": true,
+      "underlay_definition_ids_valid": true,
+      "protected_cache_geometry_or_terrain": false,
+      "model_sha256": "a2badbaec54666408e2fdb035a04d0abe17f02651050a6720f100d33b797972c",
+      "source_blend_sha256": "04e016c3fafa73a246789ca79cfe918ed47d2deccf8a550b24f1a65aeb0d01be",
+      "vertices": 3888,
+      "triangles": 5916
+    },
+    {
+      "study": "warden-receiver",
+      "saved_source_native_bytes_exact": true,
+      "independent_decode_exact": true,
+      "underlay_definition_ids_valid": true,
+      "protected_cache_geometry_or_terrain": false,
+      "model_sha256": "4f5e003617dd444dd84965b4c6431f4a601bfa94a1abf5777093269820758e12",
+      "source_blend_sha256": "85379225baf51a9504b85db5f15933e774a0fadec27e943bb2f7da54e4b28332",
+      "vertices": 9143,
+      "triangles": 14554
+    }
+  ],
+  "preserved_checkouts": {
+    "cinderworks-environment-server": {
+      "head": "75e8ce364013756754873cc037b18d6a85c8a266",
+      "unchanged_head": true,
+      "clean": true
+    },
+    "cinderworks-environment-client": {
+      "head": "29d665a9e41995632d942cea27e2f6782eca561d",
+      "unchanged_head": true,
+      "clean": true
+    },
+    "rust-server": {
+      "head": "f9e4433f2451235805f85fe379d351d095b7535b",
+      "unchanged_head": true,
+      "clean": true
+    },
+    "rust-client-reference": {
+      "head": "ff9cef17fd1ce3ec2ebf8d1181fee31411999c4c",
+      "unchanged_head": true,
+      "clean": true
+    }
+  },
+  "new_runtime_gameplay_map": false,
+  "new_npc_art_or_ai": false,
+  "full_floor_expansion": false,
+  "native_playability_accepted": false,
+  "checkpoint": "Three representative static native-rendered fragments and one proposed full-floor plan only",
+  "client_build_and_checks": {
+    "client-build.log": {
+      "successful": true,
+      "sha256": "9cc168723baa416c409a02d9a0010fa316aa4f25c832251c1d4207c116de9783"
+    },
+    "profile-build-final.log": {
+      "successful": true,
+      "sha256": "a72e461a6d59974c53ead3b334279747ce39dc1a94ea1b1eba9c1fe66f115b92"
+    },
+    "default-feature-check.log": {
+      "successful": true,
+      "sha256": "2339559e9b8701a9346cf1d080a1ffb8c1f4ae7728f7ffd187d2c11287afeea0"
+    },
+    "enhanced-feature-check.log": {
+      "successful": true,
+      "sha256": "72ff305097e1a6a2486dbe14a079c6331929321afee3b0c71d4387fdd5531b4d"
+    }
+  },
+  "python_sources_compile": 10
+}

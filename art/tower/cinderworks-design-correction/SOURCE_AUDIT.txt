@@ -1,0 +1,55 @@
+RECOVERED REQUIREMENTS AND DESIGN AUTHORITY
+
+Server source base:75e8ce364013756754873cc037b18d6a85c8a266
+Client source base:29d665a9e41995632d942cea27e2f6782eca561d
+The original prototype and its26assetfamilies, tests, collision snapshots and
+cache-world gallery remain preserved. New design work is on its own branch.
+
+The active Rust run has Forge/Kitchen/Altar service bits, then Imp, then Warden.
+The eleven-task historical Kotlin diary is not the active progression contract.
+The journal recommends mining copper+tin, smelting bronze and forging a dagger;
+the current forged_weapon hook also recognizes the configured bronze scimitar.
+Net fishing and cooking shrimp use the existing Cinderworks work queue. Fishing
+approach is Chebyshev<=3tiles, not an imaginary adjacent water tile. Altar service
+requires an actual successful bone offering; the Pray response alone is not credit.
+Fresh self-supplied preparation therefore needs a bone source, although both supply
+courts are not mandatory visits. Chicken/cow/death/drop hooks are existing systems,
+not new content added by the art plan.
+
+Run.begin cannot erase an active run or a pending reward. Defeat_Imp requires all
+three services; defeat_Warden requires Imp. The source stages reward inventory
+before committing the paid flag: first clear500coins+beer, replay25coins+beer.
+The reward stays at the familiar hearth and the existing portal remains departure.
+No reward amount, requirement, persistence or replay rule was changed.
+
+Imp is an8x8movement envelope, Warden13x11. The proposed Warden translation(+25,-16)
+sums to9 and preserves the modulo3phase pattern when translated within the same
+floor coordinate frame. A naive arbitrary relocation could shift that pattern.
+The future native test must retain telegraph timing, quench windows, ownership,
+coolant relative positions, player/NPC footprints and legal one-step escapes.
+New decorative trench/pressure geometry introduces no new damage system.
+
+Art direction is an industrial sanctuary, meaningful waterways/exploration and an
+increasingly imposing foundry. These were desired qualities, not an approved map.
+The A/B/C studies remain studies. The current native prototype is reusable technical
+work and an asset library. The revised master plan deliberately allows documented
+coordinate changes rather than preserving a rejected grid out of convenience.
+
+Full source paths inspected include:
+crates/world/src/tower_layout.rs
+crates/world/src/tower_run.rs
+crates/world/src/tower_arrival.rs
+crates/world/src/tower_cinderworks.rs
+crates/world/src/tower_scenery.rs
+crates/world/src/cinderworks_encounter.rs
+crates/world/src/simulation/cinderworks_actions.rs
+crates/world/src/simulation/cinderworks_work.rs
+crates/world/src/simulation/npc_actions.rs
+crates/world/src/simulation/tower_offering_actions.rs
+crates/world/src/simulation/npc_death_actions.rs
+crates/server/src/tower_map.rs
+crates/server/src/tower_scene.rs
+crates/server/src/characters.rs
+crates/server/src/npc_death_config.rs
+crates/cache/src/tower_shell.rs
+The preserved Kotlin FloorOneScript/Rules remain historical reference only.

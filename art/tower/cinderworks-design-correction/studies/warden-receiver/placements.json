@@ -1,0 +1,58 @@
+[
+  {
+    "asset": "arch",
+    "x": 55,
+    "z": 65,
+    "quarter_turn": 0,
+    "object_id": 64703,
+    "purpose": "Deliberate foundry threshold, two-tile opening"
+  },
+  {
+    "asset": "pier",
+    "x": 54,
+    "z": 65,
+    "quarter_turn": 0,
+    "object_id": 64702,
+    "purpose": "Threshold bearing"
+  },
+  {
+    "asset": "pier",
+    "x": 58,
+    "z": 65,
+    "quarter_turn": 0,
+    "object_id": 64702,
+    "purpose": "Threshold bearing"
+  },
+  {
+    "asset": "chimney-backdrop",
+    "x": 49,
+    "z": 78,
+    "quarter_turn": 0,
+    "object_id": 64723,
+    "purpose": "Western flue: silhouette visible from the landing"
+  },
+  {
+    "asset": "chimney-backdrop",
+    "x": 63,
+    "z": 78,
+    "quarter_turn": 0,
+    "object_id": 64723,
+    "purpose": "Eastern flue: matches the same receiver construction"
+  },
+  {
+    "asset": "furnace-bank",
+    "x": 50,
+    "z": 78,
+    "quarter_turn": 0,
+    "object_id": 64704,
+    "purpose": "Flanking foundry bank outside the arena"
+  },
+  {
+    "asset": "furnace-bank",
+    "x": 59,
+    "z": 78,
+    "quarter_turn": 0,
+    "object_id": 64704,
+    "purpose": "Flanking foundry bank outside the arena"
+  }
+]

@@ -1,0 +1,1963 @@
+{
+  "status": "DESIGN REVIEW CHECKPOINT ONLY; not a live map replacement",
+  "actual_prototype_extent": "Audited48x48tiles,local32..79; rejected room-grid composition.",
+  "proposed_envelope_local": [
+    28,
+    30,
+    91,
+    83
+  ],
+  "origin": [
+    10368,
+    64,
+    0
+  ],
+  "rooms": [
+    {
+      "id": "A",
+      "name": "Hearth Landing",
+      "polygon": [
+        [
+          47,
+          40
+        ],
+        [
+          51,
+          38
+        ],
+        [
+          57,
+          39
+        ],
+        [
+          61,
+          43
+        ],
+        [
+          60,
+          49
+        ],
+        [
+          56,
+          53
+        ],
+        [
+          50,
+          52
+        ],
+        [
+          46,
+          48
+        ],
+        [
+          46,
+          43
+        ]
+      ],
+      "label": [
+        53,
+        46
+      ],
+      "color": "#666a63",
+      "why": "Arrival, recovery, tools and orientation",
+      "first": "The close hearth court frames the western mill and a northeast glimpse of the receiver stacks across the collapsed drainage cut",
+      "activity": "Plaque, bank, altar and reward remain together; their proposed positions are explicit in the migration table",
+      "learn": "This was a workers' refuge between the wet and hot works",
+      "onward": "West to metalwork and the stock court; northeast to the quay; the foundry return makes a short completion loop",
+      "landmark": "Hearth and twin stacks",
+      "difference": "Small protected human-scale landing, not a central empty square"
+    },
+    {
+      "id": "B",
+      "name": "Hammer Gallery",
+      "polygon": [
+        [
+          29,
+          39
+        ],
+        [
+          35,
+          37
+        ],
+        [
+          42,
+          40
+        ],
+        [
+          46,
+          44
+        ],
+        [
+          45,
+          49
+        ],
+        [
+          40,
+          53
+        ],
+        [
+          33,
+          52
+        ],
+        [
+          29,
+          48
+        ]
+      ],
+      "label": [
+        36,
+        45
+      ],
+      "color": "#5d5b51",
+      "why": "Restore Forge and prepare metal",
+      "first": "A diagonal approach reveals the mill flywheel and its working aisle before the furnace mouth",
+      "activity": "Existing Forge service at proposed30,40 and anvil33,42; press/bench remain a non-interactive production display until binding review",
+      "learn": "Slate and ore arrived on a short tramway; the press and benches share a protected maintenance gallery",
+      "onward": "Follow the tram upstream into the cut, or return through the oblique arch to the hearth",
+      "landmark": "Mill flywheel, vented forge hood",
+      "difference": "Compressed stone-and-timber work bay, open to the excavation rather than boxed apart"
+    },
+    {
+      "id": "C",
+      "name": "The Slate Cut",
+      "polygon": [
+        [
+          30,
+          51
+        ],
+        [
+          35,
+          50
+        ],
+        [
+          42,
+          53
+        ],
+        [
+          44,
+          58
+        ],
+        [
+          40,
+          64
+        ],
+        [
+          34,
+          67
+        ],
+        [
+          29,
+          63
+        ],
+        [
+          28,
+          57
+        ]
+      ],
+      "label": [
+        35,
+        58
+      ],
+      "color": "#414b50",
+      "why": "Obtain copper/tin and explore extraction traces",
+      "first": "Broken strata and a braced working face rise behind the rail buffer",
+      "activity": "The same four copper/tin resource types, explicitly relocated along a broken seam; no new resource or mining rule",
+      "learn": "The facility grew around the rock seam; spoil and a failed retaining wall explain the dogleg",
+      "onward": "Rail leads back to the mill; drainage and a collapsed retaining arch lead into the moss basin",
+      "landmark": "Braced cut and rail buffer",
+      "difference": "Geological edges interrupt masonry rhythm; no mining-room rectangle"
+    },
+    {
+      "id": "D1",
+      "name": "Leakwater Basin",
+      "polygon": [
+        [
+          34,
+          67
+        ],
+        [
+          41,
+          64
+        ],
+        [
+          47,
+          67
+        ],
+        [
+          51,
+          72
+        ],
+        [
+          50,
+          79
+        ],
+        [
+          45,
+          82
+        ],
+        [
+          38,
+          80
+        ],
+        [
+          34,
+          75
+        ]
+      ],
+      "label": [
+        43,
+        75
+      ],
+      "color": "#3e5c4c",
+      "why": "Optional gathering/exploration and a cool relief from industry",
+      "first": "Drips beneath the failed return culvert, not vegetation spread uniformly over a green tile square",
+      "activity": "Existing four tree sites; optional side loop and maintenance overlook",
+      "learn": "A failed water return fed soil pockets and split the western retaining wall",
+      "onward": "A dry raised edge returns to the cut; an overlook foreshadows the foundry without bypassing combat unlocks",
+      "landmark": "Broken culvert and a tree rooted in the wall",
+      "difference": "Vegetation follows water and shade; dry ground remains slate/ash"
+    },
+    {
+      "id": "D2",
+      "name": "Headgate Quay",
+      "polygon": [
+        [
+          56,
+          56
+        ],
+        [
+          60,
+          53
+        ],
+        [
+          66,
+          55
+        ],
+        [
+          71,
+          59
+        ],
+        [
+          72,
+          65
+        ],
+        [
+          68,
+          69
+        ],
+        [
+          62,
+          68
+        ],
+        [
+          58,
+          64
+        ]
+      ],
+      "label": [
+        63,
+        62
+      ],
+      "color": "#446166",
+      "why": "Restore Kitchen, fish and learn coolant",
+      "first": "An inset working quay and pump intake; the channel continues into the plant perimeter",
+      "activity": "Four existing fishing NPCs using the unchanged3tileapproach; proposed range61,59 and training coolant62,60",
+      "learn": "Water drives and cools the works; the pump supply physically leads toward the furnaces",
+      "onward": "Dry walk north to the pressure gallery; return south to optional stores or west to the hearth",
+      "landmark": "Pump accumulator and sluice wheel",
+      "difference": "A working inlet with a shaped bank, not a rectangular swimming pool"
+    },
+    {
+      "id": "E",
+      "name": "Pressure Walk",
+      "polygon": [
+        [
+          59,
+          63
+        ],
+        [
+          62,
+          61
+        ],
+        [
+          66,
+          63
+        ],
+        [
+          65,
+          66
+        ],
+        [
+          67,
+          69
+        ],
+        [
+          64,
+          71
+        ],
+        [
+          60,
+          68
+        ]
+      ],
+      "label": [
+        62,
+        65
+      ],
+      "color": "#7a6650",
+      "why": "Read danger and approach the late encounters",
+      "first": "A kinked low gallery passes beneath an overhead coolant main; furnace light is framed ahead",
+      "activity": "Existing vent/coolant teaching and encounter approach; no new damage or gate rules",
+      "learn": "Cool return and hot exhaust are different systems, marked by material and direction",
+      "onward": "East to Imp then back along the manifold to the Warden threshold",
+      "landmark": "Raised pressure main, exhaust buttress",
+      "difference": "Narrow safe ledge beside a lowered non-walkable heat trench; no decorative obstacle in combat bounds"
+    },
+    {
+      "id": "F1",
+      "name": "Provision Yard",
+      "polygon": [
+        [
+          64,
+          32
+        ],
+        [
+          71,
+          31
+        ],
+        [
+          76,
+          35
+        ],
+        [
+          75,
+          42
+        ],
+        [
+          71,
+          46
+        ],
+        [
+          65,
+          44
+        ],
+        [
+          62,
+          39
+        ]
+      ],
+      "label": [
+        69,
+        38
+      ],
+      "color": "#6d634a",
+      "why": "Optional early food/combat and supply exploration",
+      "first": "A damaged loading wall and abandoned covered store",
+      "activity": "Existing chicken spawns retained; no new NPCs or drops",
+      "learn": "This was the workforce's provision court, not part of the molten process",
+      "onward": "Broken cart path joins the quay and landing",
+      "landmark": "Collapsed loading frame",
+      "difference": "Dry outdoor earth pockets, broken perimeter and inward-looking shelter"
+    },
+    {
+      "id": "F2",
+      "name": "Old Stock Court",
+      "polygon": [
+        [
+          31,
+          31
+        ],
+        [
+          38,
+          30
+        ],
+        [
+          43,
+          34
+        ],
+        [
+          42,
+          39
+        ],
+        [
+          38,
+          42
+        ],
+        [
+          32,
+          40
+        ],
+        [
+          29,
+          36
+        ]
+      ],
+      "label": [
+        36,
+        35
+      ],
+      "color": "#626250",
+      "why": "Bones/resources and optional early combat",
+      "first": "Low ruined enclosure beneath the workshop wall",
+      "activity": "Existing cattle/bone opportunities. A fresh self-supplied run needs bones for Altar; choose this court or the provision yard, without requiring both",
+      "learn": "Service yards were added around the earlier stone works",
+      "onward": "Short path reaches the forge and altar; no enforced tour through both courts",
+      "landmark": "Broken hoist foundation",
+      "difference": "Low sightlines and usable open ground instead of a decorated combat box"
+    },
+    {
+      "id": "F3",
+      "name": "Vent Retort",
+      "polygon": [
+        [
+          63,
+          66
+        ],
+        [
+          67,
+          64
+        ],
+        [
+          73,
+          65
+        ],
+        [
+          76,
+          69
+        ],
+        [
+          75,
+          76
+        ],
+        [
+          71,
+          80
+        ],
+        [
+          65,
+          78
+        ],
+        [
+          62,
+          73
+        ]
+      ],
+      "label": [
+        69,
+        72
+      ],
+      "color": "#735246",
+      "why": "Defeat the Imp after the three services",
+      "first": "A furnace sidewall and exhaust array surround an uncluttered dark floor",
+      "activity": "Imp at proposed68,71 with the same8x8arena and translated quiet vent anchors",
+      "learn": "The minor guardian occupies the exhaust system feeding the main foundry",
+      "onward": "Follow the manifold around the drainage cut to the receiver's south threshold",
+      "landmark": "Retort flue at the east edge",
+      "difference": "A compact attached plant bay, not a second isolated boss showroom"
+    },
+    {
+      "id": "G",
+      "name": "The Great Receiver",
+      "polygon": [
+        [
+          72,
+          50
+        ],
+        [
+          76,
+          47
+        ],
+        [
+          85,
+          47
+        ],
+        [
+          90,
+          51
+        ],
+        [
+          91,
+          58
+        ],
+        [
+          88,
+          64
+        ],
+        [
+          83,
+          66
+        ],
+        [
+          76,
+          65
+        ],
+        [
+          71,
+          60
+        ]
+      ],
+      "label": [
+        81,
+        56
+      ],
+      "color": "#60534c",
+      "why": "Face the Warden after the Imp",
+      "first": "The paired furnace stacks and a curved load-bearing rear receiver frame the arena across a low threshold",
+      "activity": "Warden at proposed81,56;13x11arena75..87/51..61 and four relative coolant positions preserved",
+      "learn": "Every rail, coolant line and flue belongs to the facility's central production heart",
+      "onward": "The short dry completion return reaches reward51,41 and portal60,50 without retracing the whole wet loop",
+      "landmark": "Twin flues, central receiver and cool barrel insets",
+      "difference": "Monumental outer silhouette wraps a clear gameplay rectangle; no intrusive arena dressing"
+    },
+    {
+      "id": "S",
+      "name": "Broken Approach",
+      "polygon": [
+        [
+          49,
+          31
+        ],
+        [
+          54,
+          30
+        ],
+        [
+          58,
+          34
+        ],
+        [
+          57,
+          38
+        ],
+        [
+          54,
+          41
+        ],
+        [
+          50,
+          40
+        ],
+        [
+          47,
+          36
+        ]
+      ],
+      "label": [
+        52,
+        35
+      ],
+      "color": "#655b4c",
+      "why": "Optional supply circuit and the repeat-arrival approach",
+      "first": "A broken retaining wall frames the sanctuary arch, with the foundry stacks beyond",
+      "activity": "Repeat-arrival56,49 remains accessible; early courts stay optional",
+      "learn": "The once-straight haul road has been diverted around a collapsed footing",
+      "onward": "Clear two-tile dry connections to both resource yards and the landing",
+      "landmark": "Missing span and split haul road",
+      "difference": "A repaired dogleg route; no long axial rectangle"
+    }
+  ],
+  "routes": {
+    "prepare-west": [
+      [
+        52,
+        46
+      ],
+      [
+        47,
+        46
+      ],
+      [
+        44,
+        45
+      ],
+      [
+        39,
+        44
+      ],
+      [
+        35,
+        43
+      ],
+      [
+        31,
+        41
+      ]
+    ],
+    "ore-and-leak": [
+      [
+        36,
+        48
+      ],
+      [
+        35,
+        52
+      ],
+      [
+        33,
+        56
+      ],
+      [
+        35,
+        61
+      ],
+      [
+        39,
+        65
+      ],
+      [
+        40,
+        69
+      ],
+      [
+        44,
+        74
+      ]
+    ],
+    "prepare-east": [
+      [
+        54,
+        46
+      ],
+      [
+        58,
+        49
+      ],
+      [
+        60,
+        54
+      ],
+      [
+        61,
+        59
+      ],
+      [
+        64,
+        62
+      ]
+    ],
+    "optional-supplies": [
+      [
+        52,
+        39
+      ],
+      [
+        48,
+        37
+      ],
+      [
+        44,
+        37
+      ],
+      [
+        39,
+        36
+      ],
+      [
+        36,
+        35
+      ]
+    ],
+    "optional-stores": [
+      [
+        57,
+        40
+      ],
+      [
+        61,
+        38
+      ],
+      [
+        65,
+        37
+      ],
+      [
+        70,
+        38
+      ]
+    ],
+    "wet-exploration-loop": [
+      [
+        43,
+        74
+      ],
+      [
+        48,
+        74
+      ],
+      [
+        53,
+        72
+      ],
+      [
+        57,
+        69
+      ],
+      [
+        61,
+        66
+      ],
+      [
+        64,
+        63
+      ]
+    ],
+    "imp-approach": [
+      [
+        64,
+        63
+      ],
+      [
+        64,
+        65
+      ],
+      [
+        66,
+        66
+      ],
+      [
+        68,
+        68
+      ],
+      [
+        68,
+        70
+      ]
+    ],
+    "warden-approach": [
+      [
+        68,
+        70
+      ],
+      [
+        72,
+        67
+      ],
+      [
+        74,
+        64
+      ],
+      [
+        72,
+        60
+      ],
+      [
+        72,
+        54
+      ],
+      [
+        76,
+        48
+      ],
+      [
+        80,
+        48
+      ],
+      [
+        81,
+        52
+      ]
+    ],
+    "departure-return": [
+      [
+        81,
+        49
+      ],
+      [
+        78,
+        45
+      ],
+      [
+        72,
+        44
+      ],
+      [
+        66,
+        45
+      ],
+      [
+        61,
+        48
+      ],
+      [
+        58,
+        49
+      ],
+      [
+        54,
+        48
+      ],
+      [
+        51,
+        42
+      ],
+      [
+        60,
+        50
+      ]
+    ]
+  },
+  "industrial_systems": {
+    "ore": [
+      [
+        34,
+        63
+      ],
+      [
+        34,
+        58
+      ],
+      [
+        35,
+        53
+      ],
+      [
+        37,
+        49
+      ],
+      [
+        37,
+        46
+      ]
+    ],
+    "coolant": [
+      [
+        67,
+        60
+      ],
+      [
+        65,
+        62
+      ],
+      [
+        63,
+        65
+      ],
+      [
+        66,
+        68
+      ],
+      [
+        68,
+        78
+      ],
+      [
+        74,
+        79
+      ],
+      [
+        79,
+        74
+      ],
+      [
+        82,
+        65
+      ],
+      [
+        81,
+        62
+      ]
+    ],
+    "leak": [
+      [
+        79,
+        64
+      ],
+      [
+        74,
+        67
+      ],
+      [
+        64,
+        74
+      ],
+      [
+        54,
+        78
+      ],
+      [
+        47,
+        77
+      ],
+      [
+        44,
+        73
+      ]
+    ]
+  },
+  "anchor_policy": "Explicit relocations permit a fundamentally different layout. Preserve mechanics and arena-relative dimensions; do not mistake current coordinates for engine limits. Implement only after review, with coordinate configuration, persistence relocation and native validation.",
+  "gameplay_order": "Forge/Kitchen/Altar in any order, then Imp, then Warden, then existing reward/exit. Illustrated exploration order is not a new quest gate.",
+  "elevations": "Keep interaction/combat plane0 and core floor nativeY-240. Quay water0; a proposed64unit maintenance rise remains outside encounter bounds. Overhead main minimum320units above lanes. Trench/central drainage cut nonwalkable. No new stacked-plane bridge.",
+  "anchors": [
+    {
+      "key": "arrival-first",
+      "current_local": [
+        56,
+        56,
+        0
+      ],
+      "proposed_local": [
+        52,
+        46,
+        0
+      ],
+      "current_world": [
+        10424,
+        120,
+        0
+      ],
+      "proposed_world": [
+        10420,
+        110,
+        0
+      ],
+      "current_native_definitions": [],
+      "existing_hook": "tower_arrival::State::arrival",
+      "proposed_identity_policy": "Retain logical hook; native ID/body binding remains an explicit integration decision, never a hidden duplicate target",
+      "status": "PROPOSED ONLY. No save/coordinate/source migration has run."
+    },
+    {
+      "key": "arrival-return",
+      "current_local": [
+        56,
+        49,
+        0
+      ],
+      "proposed_local": [
+        52,
+        39,
+        0
+      ],
+      "current_world": [
+        10424,
+        113,
+        0
+      ],
+      "proposed_world": [
+        10420,
+        103,
+        0
+      ],
+      "current_native_definitions": [],
+      "existing_hook": "tower_arrival::State::arrival",
+      "proposed_identity_policy": "Retain logical hook; native ID/body binding remains an explicit integration decision, never a hidden duplicate target",
+      "status": "PROPOSED ONLY. No save/coordinate/source migration has run."
+    },
+    {
+      "key": "bank",
+      "current_local": [
+        53,
+        60,
+        0
+      ],
+      "proposed_local": [
+        49,
+        50,
+        0
+      ],
+      "current_world": [
+        10421,
+        124,
+        0
+      ],
+      "proposed_world": [
+        10417,
+        114,
+        0
+      ],
+      "current_native_definitions": [
+        {
+          "object_id": 18491,
+          "shape": 10,
+          "quarter_turn": 0,
+          "definition_size": [
+            1,
+            1
+          ],
+          "rotated_footprint": [
+            1,
+            1
+          ],
+          "block_walk": 1,
+          "operations": "[None, Some(\"Bank\"), None, None, None]"
+        }
+      ],
+      "existing_hook": "tower_map::prepare / sanctuary Bank",
+      "proposed_identity_policy": "Retain logical hook; native ID/body binding remains an explicit integration decision, never a hidden duplicate target",
+      "status": "PROPOSED ONLY. No save/coordinate/source migration has run."
+    },
+    {
+      "key": "plaque",
+      "current_local": [
+        54,
+        51,
+        0
+      ],
+      "proposed_local": [
+        50,
+        41,
+        0
+      ],
+      "current_world": [
+        10422,
+        115,
+        0
+      ],
+      "proposed_world": [
+        10418,
+        105,
+        0
+      ],
+      "current_native_definitions": [
+        {
+          "object_id": 64700,
+          "shape": 0,
+          "quarter_turn": 3,
+          "definition_size": [
+            1,
+            1
+          ],
+          "rotated_footprint": [
+            1,
+            1
+          ],
+          "block_walk": 2,
+          "operations": "[None, None, None, None, None]"
+        },
+        {
+          "object_id": 909,
+          "shape": 4,
+          "quarter_turn": 1,
+          "definition_size": [
+            1,
+            1
+          ],
+          "rotated_footprint": [
+            1,
+            1
+          ],
+          "block_walk": 2,
+          "operations": "[Some(\"Read\"), None, None, None, None]"
+        }
+      ],
+      "existing_hook": "tower_run / cinderworks_actions",
+      "proposed_identity_policy": "Retain logical hook; native ID/body binding remains an explicit integration decision, never a hidden duplicate target",
+      "status": "PROPOSED ONLY. No save/coordinate/source migration has run."
+    },
+    {
+      "key": "reward",
+      "current_local": [
+        55,
+        51,
+        0
+      ],
+      "proposed_local": [
+        51,
+        41,
+        0
+      ],
+      "current_world": [
+        10423,
+        115,
+        0
+      ],
+      "proposed_world": [
+        10419,
+        105,
+        0
+      ],
+      "current_native_definitions": [
+        {
+          "object_id": 57694,
+          "shape": 10,
+          "quarter_turn": 0,
+          "definition_size": [
+            1,
+            1
+          ],
+          "rotated_footprint": [
+            1,
+            1
+          ],
+          "block_walk": 2,
+          "operations": "[Some(\"Search\"), Some(\"\"), Some(\"\"), Some(\"\"), Some(\"\")]"
+        }
+      ],
+      "existing_hook": "tower_run reward_pending / chest action",
+      "proposed_identity_policy": "Retain logical hook; native ID/body binding remains an explicit integration decision, never a hidden duplicate target",
+      "status": "PROPOSED ONLY. No save/coordinate/source migration has run."
+    },
+    {
+      "key": "altar",
+      "current_local": [
+        60,
+        52,
+        0
+      ],
+      "proposed_local": [
+        56,
+        42,
+        0
+      ],
+      "current_world": [
+        10428,
+        116,
+        0
+      ],
+      "proposed_world": [
+        10424,
+        106,
+        0
+      ],
+      "current_native_definitions": [
+        {
+          "object_id": 409,
+          "shape": 10,
+          "quarter_turn": 0,
+          "definition_size": [
+            2,
+            1
+          ],
+          "rotated_footprint": [
+            2,
+            1
+          ],
+          "block_walk": 2,
+          "operations": "[Some(\"Pray\"), None, None, None, None]"
+        }
+      ],
+      "existing_hook": "Service::Altar",
+      "proposed_identity_policy": "Retain logical hook; native ID/body binding remains an explicit integration decision, never a hidden duplicate target",
+      "status": "PROPOSED ONLY. No save/coordinate/source migration has run."
+    },
+    {
+      "key": "furnace",
+      "current_local": [
+        34,
+        50,
+        0
+      ],
+      "proposed_local": [
+        30,
+        40,
+        0
+      ],
+      "current_world": [
+        10402,
+        114,
+        0
+      ],
+      "proposed_world": [
+        10398,
+        104,
+        0
+      ],
+      "current_native_definitions": [
+        {
+          "object_id": 37947,
+          "shape": 10,
+          "quarter_turn": 0,
+          "definition_size": [
+            2,
+            3
+          ],
+          "rotated_footprint": [
+            2,
+            3
+          ],
+          "block_walk": 2,
+          "operations": "[Some(\"Use\"), None, None, None, None]"
+        }
+      ],
+      "existing_hook": "Service::Forge / smelting",
+      "proposed_identity_policy": "Retain logical hook; native ID/body binding remains an explicit integration decision, never a hidden duplicate target",
+      "status": "PROPOSED ONLY. No save/coordinate/source migration has run."
+    },
+    {
+      "key": "anvil",
+      "current_local": [
+        37,
+        50,
+        0
+      ],
+      "proposed_local": [
+        33,
+        42,
+        0
+      ],
+      "current_world": [
+        10405,
+        114,
+        0
+      ],
+      "proposed_world": [
+        10401,
+        106,
+        0
+      ],
+      "current_native_definitions": [
+        {
+          "object_id": 2097,
+          "shape": 10,
+          "quarter_turn": 0,
+          "definition_size": [
+            1,
+            1
+          ],
+          "rotated_footprint": [
+            1,
+            1
+          ],
+          "block_walk": 2,
+          "operations": "[Some(\"Smith\"), None, None, None, None]"
+        }
+      ],
+      "existing_hook": "Service::Forge / bronze dagger",
+      "proposed_identity_policy": "Retain logical hook; native ID/body binding remains an explicit integration decision, never a hidden duplicate target",
+      "status": "PROPOSED ONLY. No save/coordinate/source migration has run."
+    },
+    {
+      "key": "tin-south",
+      "current_local": [
+        34,
+        54,
+        0
+      ],
+      "proposed_local": [
+        31,
+        57,
+        0
+      ],
+      "current_world": [
+        10402,
+        118,
+        0
+      ],
+      "proposed_world": [
+        10399,
+        121,
+        0
+      ],
+      "current_native_definitions": [
+        {
+          "object_id": 11360,
+          "shape": 10,
+          "quarter_turn": 0,
+          "definition_size": [
+            1,
+            1
+          ],
+          "rotated_footprint": [
+            1,
+            1
+          ],
+          "block_walk": 2,
+          "operations": "[Some(\"Mine\"), None, Some(\"hidden\"), None, None]"
+        }
+      ],
+      "existing_hook": "existing mining",
+      "proposed_identity_policy": "Retain logical hook; native ID/body binding remains an explicit integration decision, never a hidden duplicate target",
+      "status": "PROPOSED ONLY. No save/coordinate/source migration has run."
+    },
+    {
+      "key": "tin-north",
+      "current_local": [
+        34,
+        58,
+        0
+      ],
+      "proposed_local": [
+        32,
+        62,
+        0
+      ],
+      "current_world": [
+        10402,
+        122,
+        0
+      ],
+      "proposed_world": [
+        10400,
+        126,
+        0
+      ],
+      "current_native_definitions": [
+        {
+          "object_id": 11360,
+          "shape": 10,
+          "quarter_turn": 0,
+          "definition_size": [
+            1,
+            1
+          ],
+          "rotated_footprint": [
+            1,
+            1
+          ],
+          "block_walk": 2,
+          "operations": "[Some(\"Mine\"), None, Some(\"hidden\"), None, None]"
+        }
+      ],
+      "existing_hook": "existing mining",
+      "proposed_identity_policy": "Retain logical hook; native ID/body binding remains an explicit integration decision, never a hidden duplicate target",
+      "status": "PROPOSED ONLY. No save/coordinate/source migration has run."
+    },
+    {
+      "key": "copper-south",
+      "current_local": [
+        44,
+        54,
+        0
+      ],
+      "proposed_local": [
+        38,
+        57,
+        0
+      ],
+      "current_world": [
+        10412,
+        118,
+        0
+      ],
+      "proposed_world": [
+        10406,
+        121,
+        0
+      ],
+      "current_native_definitions": [
+        {
+          "object_id": 10943,
+          "shape": 10,
+          "quarter_turn": 0,
+          "definition_size": [
+            1,
+            1
+          ],
+          "rotated_footprint": [
+            1,
+            1
+          ],
+          "block_walk": 2,
+          "operations": "[Some(\"Mine\"), None, Some(\"hidden\"), None, None]"
+        }
+      ],
+      "existing_hook": "existing mining",
+      "proposed_identity_policy": "Retain logical hook; native ID/body binding remains an explicit integration decision, never a hidden duplicate target",
+      "status": "PROPOSED ONLY. No save/coordinate/source migration has run."
+    },
+    {
+      "key": "copper-north",
+      "current_local": [
+        44,
+        58,
+        0
+      ],
+      "proposed_local": [
+        40,
+        61,
+        0
+      ],
+      "current_world": [
+        10412,
+        122,
+        0
+      ],
+      "proposed_world": [
+        10408,
+        125,
+        0
+      ],
+      "current_native_definitions": [
+        {
+          "object_id": 10943,
+          "shape": 10,
+          "quarter_turn": 0,
+          "definition_size": [
+            1,
+            1
+          ],
+          "rotated_footprint": [
+            1,
+            1
+          ],
+          "block_walk": 2,
+          "operations": "[Some(\"Mine\"), None, Some(\"hidden\"), None, None]"
+        }
+      ],
+      "existing_hook": "existing mining",
+      "proposed_identity_policy": "Retain logical hook; native ID/body binding remains an explicit integration decision, never a hidden duplicate target",
+      "status": "PROPOSED ONLY. No save/coordinate/source migration has run."
+    },
+    {
+      "key": "cooking-range",
+      "current_local": [
+        67,
+        53,
+        0
+      ],
+      "proposed_local": [
+        61,
+        59,
+        0
+      ],
+      "current_world": [
+        10435,
+        117,
+        0
+      ],
+      "proposed_world": [
+        10429,
+        123,
+        0
+      ],
+      "current_native_definitions": [
+        {
+          "object_id": 9736,
+          "shape": 10,
+          "quarter_turn": 0,
+          "definition_size": [
+            1,
+            2
+          ],
+          "rotated_footprint": [
+            1,
+            2
+          ],
+          "block_walk": 2,
+          "operations": "[Some(\"Cook\"), None, None, None, None]"
+        }
+      ],
+      "existing_hook": "Service::Kitchen",
+      "proposed_identity_policy": "Retain logical hook; native ID/body binding remains an explicit integration decision, never a hidden duplicate target",
+      "status": "PROPOSED ONLY. No save/coordinate/source migration has run."
+    },
+    {
+      "key": "coolant-lesson",
+      "current_local": [
+        69,
+        52,
+        0
+      ],
+      "proposed_local": [
+        62,
+        60,
+        0
+      ],
+      "current_world": [
+        10437,
+        116,
+        0
+      ],
+      "proposed_world": [
+        10430,
+        124,
+        0
+      ],
+      "current_native_definitions": [
+        {
+          "object_id": 30124,
+          "shape": 10,
+          "quarter_turn": 0,
+          "definition_size": [
+            1,
+            1
+          ],
+          "rotated_footprint": [
+            1,
+            1
+          ],
+          "block_walk": 2,
+          "operations": "[Some(\"Search\"), None, None, None, None]"
+        }
+      ],
+      "existing_hook": "TRAINING_COOLANT",
+      "proposed_identity_policy": "Retain logical hook; native ID/body binding remains an explicit integration decision, never a hidden duplicate target",
+      "status": "PROPOSED ONLY. No save/coordinate/source migration has run."
+    },
+    {
+      "key": "portal",
+      "current_local": [
+        64,
+        60,
+        0
+      ],
+      "proposed_local": [
+        60,
+        50,
+        0
+      ],
+      "current_world": [
+        10432,
+        124,
+        0
+      ],
+      "proposed_world": [
+        10428,
+        114,
+        0
+      ],
+      "current_native_definitions": [
+        {
+          "object_id": 57692,
+          "shape": 0,
+          "quarter_turn": 0,
+          "definition_size": [
+            1,
+            1
+          ],
+          "rotated_footprint": [
+            1,
+            1
+          ],
+          "block_walk": 2,
+          "operations": "[Some(\"Enter\"), None, None, None, None]"
+        }
+      ],
+      "existing_hook": "cinderworks exit/return",
+      "proposed_identity_policy": "Retain logical hook; native ID/body binding remains an explicit integration decision, never a hidden duplicate target",
+      "status": "PROPOSED ONLY. No save/coordinate/source migration has run."
+    },
+    {
+      "key": "imp-spawn",
+      "current_local": [
+        72,
+        72,
+        0
+      ],
+      "proposed_local": [
+        68,
+        71,
+        0
+      ],
+      "current_world": [
+        10440,
+        136,
+        0
+      ],
+      "proposed_world": [
+        10436,
+        135,
+        0
+      ],
+      "current_native_definitions": [],
+      "existing_hook": "Boss::Imp [68,68]\u2013[75,75]",
+      "proposed_identity_policy": "Retain logical hook; native ID/body binding remains an explicit integration decision, never a hidden duplicate target",
+      "status": "PROPOSED ONLY. No save/coordinate/source migration has run."
+    },
+    {
+      "key": "warden-spawn",
+      "current_local": [
+        56,
+        72,
+        0
+      ],
+      "proposed_local": [
+        81,
+        56,
+        0
+      ],
+      "current_world": [
+        10424,
+        136,
+        0
+      ],
+      "proposed_world": [
+        10449,
+        120,
+        0
+      ],
+      "current_native_definitions": [],
+      "existing_hook": "Boss::Warden [50,67]\u2013[62,77]",
+      "proposed_identity_policy": "Retain logical hook; native ID/body binding remains an explicit integration decision, never a hidden duplicate target",
+      "status": "PROPOSED ONLY. No save/coordinate/source migration has run."
+    },
+    {
+      "key": "coolant-0",
+      "current_local": [
+        53,
+        71,
+        0
+      ],
+      "proposed_local": [
+        78,
+        55,
+        0
+      ],
+      "current_world": [
+        10421,
+        135,
+        0
+      ],
+      "proposed_world": [
+        10446,
+        119,
+        0
+      ],
+      "current_native_definitions": [
+        {
+          "object_id": 30124,
+          "shape": 10,
+          "quarter_turn": 0,
+          "definition_size": [
+            1,
+            1
+          ],
+          "rotated_footprint": [
+            1,
+            1
+          ],
+          "block_walk": 2,
+          "operations": "[Some(\"Search\"), None, None, None, None]"
+        }
+      ],
+      "existing_hook": "COOLANT_TILES / Warden shell interruption",
+      "proposed_identity_policy": "Retain logical hook; native ID/body binding remains an explicit integration decision, never a hidden duplicate target",
+      "status": "PROPOSED ONLY. No save/coordinate/source migration has run."
+    },
+    {
+      "key": "coolant-1",
+      "current_local": [
+        53,
+        74,
+        0
+      ],
+      "proposed_local": [
+        78,
+        58,
+        0
+      ],
+      "current_world": [
+        10421,
+        138,
+        0
+      ],
+      "proposed_world": [
+        10446,
+        122,
+        0
+      ],
+      "current_native_definitions": [
+        {
+          "object_id": 30124,
+          "shape": 10,
+          "quarter_turn": 0,
+          "definition_size": [
+            1,
+            1
+          ],
+          "rotated_footprint": [
+            1,
+            1
+          ],
+          "block_walk": 2,
+          "operations": "[Some(\"Search\"), None, None, None, None]"
+        }
+      ],
+      "existing_hook": "COOLANT_TILES / Warden shell interruption",
+      "proposed_identity_policy": "Retain logical hook; native ID/body binding remains an explicit integration decision, never a hidden duplicate target",
+      "status": "PROPOSED ONLY. No save/coordinate/source migration has run."
+    },
+    {
+      "key": "coolant-2",
+      "current_local": [
+        60,
+        71,
+        0
+      ],
+      "proposed_local": [
+        85,
+        55,
+        0
+      ],
+      "current_world": [
+        10428,
+        135,
+        0
+      ],
+      "proposed_world": [
+        10453,
+        119,
+        0
+      ],
+      "current_native_definitions": [
+        {
+          "object_id": 30124,
+          "shape": 10,
+          "quarter_turn": 0,
+          "definition_size": [
+            1,
+            1
+          ],
+          "rotated_footprint": [
+            1,
+            1
+          ],
+          "block_walk": 2,
+          "operations": "[Some(\"Search\"), None, None, None, None]"
+        }
+      ],
+      "existing_hook": "COOLANT_TILES / Warden shell interruption",
+      "proposed_identity_policy": "Retain logical hook; native ID/body binding remains an explicit integration decision, never a hidden duplicate target",
+      "status": "PROPOSED ONLY. No save/coordinate/source migration has run."
+    },
+    {
+      "key": "coolant-3",
+      "current_local": [
+        60,
+        74,
+        0
+      ],
+      "proposed_local": [
+        85,
+        58,
+        0
+      ],
+      "current_world": [
+        10428,
+        138,
+        0
+      ],
+      "proposed_world": [
+        10453,
+        122,
+        0
+      ],
+      "current_native_definitions": [
+        {
+          "object_id": 30124,
+          "shape": 10,
+          "quarter_turn": 0,
+          "definition_size": [
+            1,
+            1
+          ],
+          "rotated_footprint": [
+            1,
+            1
+          ],
+          "block_walk": 2,
+          "operations": "[Some(\"Search\"), None, None, None, None]"
+        }
+      ],
+      "existing_hook": "COOLANT_TILES / Warden shell interruption",
+      "proposed_identity_policy": "Retain logical hook; native ID/body binding remains an explicit integration decision, never a hidden duplicate target",
+      "status": "PROPOSED ONLY. No save/coordinate/source migration has run."
+    },
+    {
+      "key": "tree-0",
+      "current_local": [
+        34,
+        70,
+        0
+      ],
+      "proposed_local": [
+        40,
+        71,
+        0
+      ],
+      "current_world": [
+        10402,
+        134,
+        0
+      ],
+      "proposed_world": [
+        10408,
+        135,
+        0
+      ],
+      "current_native_definitions": [
+        {
+          "object_id": 1276,
+          "shape": 10,
+          "quarter_turn": 0,
+          "definition_size": [
+            2,
+            2
+          ],
+          "rotated_footprint": [
+            2,
+            2
+          ],
+          "block_walk": 2,
+          "operations": "[Some(\"Chop down\"), None, None, None, None]"
+        }
+      ],
+      "existing_hook": "existing woodcutting; no new objective invented",
+      "proposed_identity_policy": "Retain logical hook; native ID/body binding remains an explicit integration decision, never a hidden duplicate target",
+      "status": "PROPOSED ONLY. No save/coordinate/source migration has run."
+    },
+    {
+      "key": "tree-1",
+      "current_local": [
+        42,
+        70,
+        0
+      ],
+      "proposed_local": [
+        48,
+        71,
+        0
+      ],
+      "current_world": [
+        10410,
+        134,
+        0
+      ],
+      "proposed_world": [
+        10416,
+        135,
+        0
+      ],
+      "current_native_definitions": [
+        {
+          "object_id": 1276,
+          "shape": 10,
+          "quarter_turn": 0,
+          "definition_size": [
+            2,
+            2
+          ],
+          "rotated_footprint": [
+            2,
+            2
+          ],
+          "block_walk": 2,
+          "operations": "[Some(\"Chop down\"), None, None, None, None]"
+        }
+      ],
+      "existing_hook": "existing woodcutting; no new objective invented",
+      "proposed_identity_policy": "Retain logical hook; native ID/body binding remains an explicit integration decision, never a hidden duplicate target",
+      "status": "PROPOSED ONLY. No save/coordinate/source migration has run."
+    },
+    {
+      "key": "tree-2",
+      "current_local": [
+        34,
+        76,
+        0
+      ],
+      "proposed_local": [
+        40,
+        77,
+        0
+      ],
+      "current_world": [
+        10402,
+        140,
+        0
+      ],
+      "proposed_world": [
+        10408,
+        141,
+        0
+      ],
+      "current_native_definitions": [
+        {
+          "object_id": 1276,
+          "shape": 10,
+          "quarter_turn": 0,
+          "definition_size": [
+            2,
+            2
+          ],
+          "rotated_footprint": [
+            2,
+            2
+          ],
+          "block_walk": 2,
+          "operations": "[Some(\"Chop down\"), None, None, None, None]"
+        }
+      ],
+      "existing_hook": "existing woodcutting; no new objective invented",
+      "proposed_identity_policy": "Retain logical hook; native ID/body binding remains an explicit integration decision, never a hidden duplicate target",
+      "status": "PROPOSED ONLY. No save/coordinate/source migration has run."
+    },
+    {
+      "key": "tree-3",
+      "current_local": [
+        42,
+        76,
+        0
+      ],
+      "proposed_local": [
+        48,
+        77,
+        0
+      ],
+      "current_world": [
+        10410,
+        140,
+        0
+      ],
+      "proposed_world": [
+        10416,
+        141,
+        0
+      ],
+      "current_native_definitions": [
+        {
+          "object_id": 1276,
+          "shape": 10,
+          "quarter_turn": 0,
+          "definition_size": [
+            2,
+            2
+          ],
+          "rotated_footprint": [
+            2,
+            2
+          ],
+          "block_walk": 2,
+          "operations": "[Some(\"Chop down\"), None, None, None, None]"
+        }
+      ],
+      "existing_hook": "existing woodcutting; no new objective invented",
+      "proposed_identity_policy": "Retain logical hook; native ID/body binding remains an explicit integration decision, never a hidden duplicate target",
+      "status": "PROPOSED ONLY. No save/coordinate/source migration has run."
+    }
+  ],
+  "scene_fragment_transforms": {
+    "arrival-workshop": {
+      "local_translation": [
+        -4,
+        -10
+      ],
+      "note": "Reused forge hood/workbench geometry represents the proposed visual envelope; exact functional target alignment remains an integration task."
+    },
+    "pressure-walk": {
+      "local_translation": [
+        -4,
+        -1
+      ],
+      "imp_bounds_proposed": [
+        64,
+        67,
+        71,
+        74
+      ]
+    },
+    "warden-receiver": {
+      "local_translation": [
+        25,
+        -16
+      ],
+      "warden_bounds_proposed": [
+        75,
+        51,
+        87,
+        61
+      ]
+    }
+  },
+  "warden_phase3_translation_note": "Translation(+25,-16) sums to9, preserving the existing modulo3diagonal phase relative to the arena. Future parameterization must retain that pattern equivalence, cooldowns and escape guarantees.",
+  "binding_policy": "Study envelopes are not hidden duplicate live targets. After approval either retain functional body/ID and fit architecture, or bind original custom functional artwork through the existing service configuration with explicit operations and collision; do not conceal a cache target inside decorative machinery.",
+  "source_changes_required_after_review": [
+    "tower_layout terrain/chunk template and contains bounds",
+    "tower_map spawn/functional placement coordinate configuration",
+    "tower_arrival first/recovery destinations and portal return destination",
+    "cinderworks_encounter arena translations; preserve sizes, phases and timing",
+    "tower_scenery restoration pairs/vents/coolant translations",
+    "tower_scene region/state emission bounds",
+    "safe account relocation for saved prototype coordinates, preserving run/inventory/bank/xp/reward state",
+    "server terrain/collision generation matching native authored terrain; existing opt-in placement flag alone cannot install this redesign"
+  ]
+}

@@ -1,0 +1,476 @@
+[
+  {
+    "study": "arrival-workshop",
+    "view": "transition",
+    "mode": "gpu",
+    "camera": [
+      49,
+      55,
+      4096,
+      1700,
+      "player"
+    ],
+    "native_renderer": {
+      "mode": "gpu",
+      "enhanced": true,
+      "total_ms": 493.037,
+      "frames": 20,
+      "stats": {
+        "frames": 20,
+        "triangles": 40730,
+        "draw_calls": 3,
+        "prepare_ms": 0.8,
+        "render_ms": 3.8582,
+        "readback_ms": 3.8224,
+        "gpu_ms": 0.4976,
+        "buffer_bytes": 6842640,
+        "target_bytes": 55657216,
+        "texture_bytes": 131072,
+        "uploads": 1,
+        "init_ms": 293.4526,
+        "adapter": "NVIDIA GeForce GTX 1660 Ti"
+      }
+    },
+    "offline_total_seconds": 0.8095018999883905,
+    "scope": "Original-only static native scene composition; not live client navigation, dynamic state or full-client FPS"
+  },
+  {
+    "study": "arrival-workshop",
+    "view": "transition",
+    "mode": "classic",
+    "camera": [
+      49,
+      55,
+      4096,
+      1700,
+      "player"
+    ],
+    "native_renderer": {
+      "mode": "classic",
+      "enhanced": false
+    },
+    "offline_total_seconds": 0.15182040000217967,
+    "scope": "Original-only static native scene composition; not live client navigation, dynamic state or full-client FPS"
+  },
+  {
+    "study": "arrival-workshop",
+    "view": "mill-aisle",
+    "mode": "gpu",
+    "camera": [
+      40,
+      55,
+      15000,
+      1250,
+      "player"
+    ],
+    "native_renderer": {
+      "mode": "gpu",
+      "enhanced": true,
+      "total_ms": 433.002,
+      "frames": 20,
+      "stats": {
+        "frames": 20,
+        "triangles": 40730,
+        "draw_calls": 3,
+        "prepare_ms": 0.7552,
+        "render_ms": 3.5791,
+        "readback_ms": 3.5598,
+        "gpu_ms": 0.5243,
+        "buffer_bytes": 6842640,
+        "target_bytes": 55657216,
+        "texture_bytes": 131072,
+        "uploads": 1,
+        "init_ms": 272.8604,
+        "adapter": "NVIDIA GeForce GTX 1660 Ti"
+      }
+    },
+    "offline_total_seconds": 0.5737784999946598,
+    "scope": "Original-only static native scene composition; not live client navigation, dynamic state or full-client FPS"
+  },
+  {
+    "study": "arrival-workshop",
+    "view": "landing-return",
+    "mode": "gpu",
+    "camera": [
+      56,
+      56,
+      12288,
+      1200,
+      "player"
+    ],
+    "native_renderer": {
+      "mode": "gpu",
+      "enhanced": true,
+      "total_ms": 419.459,
+      "frames": 20,
+      "stats": {
+        "frames": 20,
+        "triangles": 40730,
+        "draw_calls": 3,
+        "prepare_ms": 1.3347,
+        "render_ms": 5.1552,
+        "readback_ms": 5.111,
+        "gpu_ms": 0.5448,
+        "buffer_bytes": 6842640,
+        "target_bytes": 55657216,
+        "texture_bytes": 131072,
+        "uploads": 1,
+        "init_ms": 266.7977,
+        "adapter": "NVIDIA GeForce GTX 1660 Ti"
+      }
+    },
+    "offline_total_seconds": 0.5590859999938402,
+    "scope": "Original-only static native scene composition; not live client navigation, dynamic state or full-client FPS"
+  },
+  {
+    "study": "arrival-workshop",
+    "view": "overview",
+    "mode": "gpu",
+    "camera": [
+      48,
+      55,
+      15300,
+      3400,
+      "floor-iso"
+    ],
+    "native_renderer": {
+      "mode": "gpu",
+      "enhanced": true,
+      "total_ms": 582.357,
+      "frames": 20,
+      "stats": {
+        "frames": 20,
+        "triangles": 40730,
+        "draw_calls": 3,
+        "prepare_ms": 0.9104,
+        "render_ms": 13.6875,
+        "readback_ms": 13.6353,
+        "gpu_ms": 0.5527,
+        "buffer_bytes": 6842640,
+        "target_bytes": 120457216,
+        "texture_bytes": 131072,
+        "uploads": 1,
+        "init_ms": 267.7396,
+        "adapter": "NVIDIA GeForce GTX 1660 Ti"
+      }
+    },
+    "offline_total_seconds": 0.7587640999990981,
+    "scope": "Original-only static native scene composition; not live client navigation, dynamic state or full-client FPS"
+  },
+  {
+    "study": "pressure-walk",
+    "view": "pressure-threshold",
+    "mode": "gpu",
+    "camera": [
+      68,
+      65,
+      13500,
+      1500,
+      "player"
+    ],
+    "native_renderer": {
+      "mode": "gpu",
+      "enhanced": true,
+      "total_ms": 405.997,
+      "frames": 20,
+      "stats": {
+        "frames": 20,
+        "triangles": 26679,
+        "draw_calls": 3,
+        "prepare_ms": 0.6174,
+        "render_ms": 7.7434,
+        "readback_ms": 7.6874,
+        "gpu_ms": 0.4124,
+        "buffer_bytes": 4482072,
+        "target_bytes": 55657216,
+        "texture_bytes": 131072,
+        "uploads": 1,
+        "init_ms": 263.4422,
+        "adapter": "NVIDIA GeForce GTX 1660 Ti"
+      }
+    },
+    "offline_total_seconds": 0.542278000008082,
+    "scope": "Original-only static native scene composition; not live client navigation, dynamic state or full-client FPS"
+  },
+  {
+    "study": "pressure-walk",
+    "view": "pressure-threshold",
+    "mode": "classic",
+    "camera": [
+      68,
+      65,
+      13500,
+      1500,
+      "player"
+    ],
+    "native_renderer": {
+      "mode": "classic",
+      "enhanced": false
+    },
+    "offline_total_seconds": 0.15026740002213046,
+    "scope": "Original-only static native scene composition; not live client navigation, dynamic state or full-client FPS"
+  },
+  {
+    "study": "pressure-walk",
+    "view": "quay-and-intake",
+    "mode": "gpu",
+    "camera": [
+      70,
+      62,
+      14500,
+      1450,
+      "player"
+    ],
+    "native_renderer": {
+      "mode": "gpu",
+      "enhanced": true,
+      "total_ms": 414.863,
+      "frames": 20,
+      "stats": {
+        "frames": 20,
+        "triangles": 26679,
+        "draw_calls": 3,
+        "prepare_ms": 0.9673,
+        "render_ms": 4.448,
+        "readback_ms": 4.3938,
+        "gpu_ms": 0.3993,
+        "buffer_bytes": 4482072,
+        "target_bytes": 55657216,
+        "texture_bytes": 131072,
+        "uploads": 1,
+        "init_ms": 264.8188,
+        "adapter": "NVIDIA GeForce GTX 1660 Ti"
+      }
+    },
+    "offline_total_seconds": 0.5501942000119016,
+    "scope": "Original-only static native scene composition; not live client navigation, dynamic state or full-client FPS"
+  },
+  {
+    "study": "pressure-walk",
+    "view": "retort-sidewall",
+    "mode": "gpu",
+    "camera": [
+      73,
+      72,
+      2500,
+      1700,
+      "player"
+    ],
+    "native_renderer": {
+      "mode": "gpu",
+      "enhanced": true,
+      "total_ms": 415.015,
+      "frames": 20,
+      "stats": {
+        "frames": 20,
+        "triangles": 26679,
+        "draw_calls": 3,
+        "prepare_ms": 1.1238,
+        "render_ms": 5.9248,
+        "readback_ms": 5.829,
+        "gpu_ms": 0.4461,
+        "buffer_bytes": 4482072,
+        "target_bytes": 55657216,
+        "texture_bytes": 131072,
+        "uploads": 1,
+        "init_ms": 271.2757,
+        "adapter": "NVIDIA GeForce GTX 1660 Ti"
+      }
+    },
+    "offline_total_seconds": 0.5515628999855835,
+    "scope": "Original-only static native scene composition; not live client navigation, dynamic state or full-client FPS"
+  },
+  {
+    "study": "pressure-walk",
+    "view": "overview",
+    "mode": "gpu",
+    "camera": [
+      71,
+      68,
+      15300,
+      3300,
+      "floor-iso"
+    ],
+    "native_renderer": {
+      "mode": "gpu",
+      "enhanced": true,
+      "total_ms": 582.865,
+      "frames": 20,
+      "stats": {
+        "frames": 20,
+        "triangles": 26679,
+        "draw_calls": 3,
+        "prepare_ms": 0.4243,
+        "render_ms": 10.8192,
+        "readback_ms": 10.7856,
+        "gpu_ms": 0.4294,
+        "buffer_bytes": 4482072,
+        "target_bytes": 120457216,
+        "texture_bytes": 131072,
+        "uploads": 1,
+        "init_ms": 263.8457,
+        "adapter": "NVIDIA GeForce GTX 1660 Ti"
+      }
+    },
+    "offline_total_seconds": 0.7499906999873929,
+    "scope": "Original-only static native scene composition; not live client navigation, dynamic state or full-client FPS"
+  },
+  {
+    "study": "warden-receiver",
+    "view": "arena-entry",
+    "mode": "gpu",
+    "camera": [
+      56,
+      72,
+      0,
+      2050,
+      "player"
+    ],
+    "native_renderer": {
+      "mode": "gpu",
+      "enhanced": true,
+      "total_ms": 411.601,
+      "frames": 20,
+      "stats": {
+        "frames": 20,
+        "triangles": 31688,
+        "draw_calls": 3,
+        "prepare_ms": 0.8778,
+        "render_ms": 3.9547,
+        "readback_ms": 3.9074,
+        "gpu_ms": 0.5459,
+        "buffer_bytes": 5323584,
+        "target_bytes": 55657216,
+        "texture_bytes": 131072,
+        "uploads": 1,
+        "init_ms": 266.5048,
+        "adapter": "NVIDIA GeForce GTX 1660 Ti"
+      }
+    },
+    "offline_total_seconds": 0.5535710999974981,
+    "scope": "Original-only static native scene composition; not live client navigation, dynamic state or full-client FPS"
+  },
+  {
+    "study": "warden-receiver",
+    "view": "arena-entry",
+    "mode": "classic",
+    "camera": [
+      56,
+      72,
+      0,
+      2050,
+      "player"
+    ],
+    "native_renderer": {
+      "mode": "classic",
+      "enhanced": false
+    },
+    "offline_total_seconds": 0.13334180001402274,
+    "scope": "Original-only static native scene composition; not live client navigation, dynamic state or full-client FPS"
+  },
+  {
+    "study": "warden-receiver",
+    "view": "receiver-crown",
+    "mode": "gpu",
+    "camera": [
+      56,
+      77,
+      0,
+      1250,
+      "player"
+    ],
+    "native_renderer": {
+      "mode": "gpu",
+      "enhanced": true,
+      "total_ms": 430.798,
+      "frames": 20,
+      "stats": {
+        "frames": 20,
+        "triangles": 31688,
+        "draw_calls": 3,
+        "prepare_ms": 1.0246,
+        "render_ms": 6.9458,
+        "readback_ms": 6.8631,
+        "gpu_ms": 0.639,
+        "buffer_bytes": 5323584,
+        "target_bytes": 55657216,
+        "texture_bytes": 131072,
+        "uploads": 1,
+        "init_ms": 278.6904,
+        "adapter": "NVIDIA GeForce GTX 1660 Ti"
+      }
+    },
+    "offline_total_seconds": 0.5852372999943327,
+    "scope": "Original-only static native scene composition; not live client navigation, dynamic state or full-client FPS"
+  },
+  {
+    "study": "warden-receiver",
+    "view": "reverse-exit",
+    "mode": "gpu",
+    "camera": [
+      56,
+      71,
+      8192,
+      1500,
+      "player"
+    ],
+    "native_renderer": {
+      "mode": "gpu",
+      "enhanced": true,
+      "total_ms": 416.923,
+      "frames": 20,
+      "stats": {
+        "frames": 20,
+        "triangles": 31688,
+        "draw_calls": 3,
+        "prepare_ms": 0.8584,
+        "render_ms": 9.7935,
+        "readback_ms": 9.747,
+        "gpu_ms": 0.5343,
+        "buffer_bytes": 5323584,
+        "target_bytes": 55657216,
+        "texture_bytes": 131072,
+        "uploads": 1,
+        "init_ms": 274.8015,
+        "adapter": "NVIDIA GeForce GTX 1660 Ti"
+      }
+    },
+    "offline_total_seconds": 0.5646184000070207,
+    "scope": "Original-only static native scene composition; not live client navigation, dynamic state or full-client FPS"
+  },
+  {
+    "study": "warden-receiver",
+    "view": "overview",
+    "mode": "gpu",
+    "camera": [
+      56,
+      73,
+      15300,
+      3300,
+      "floor-iso"
+    ],
+    "native_renderer": {
+      "mode": "gpu",
+      "enhanced": true,
+      "total_ms": 598.46,
+      "frames": 20,
+      "stats": {
+        "frames": 20,
+        "triangles": 31688,
+        "draw_calls": 3,
+        "prepare_ms": 0.301,
+        "render_ms": 10.8939,
+        "readback_ms": 10.8758,
+        "gpu_ms": 0.5563,
+        "buffer_bytes": 5323584,
+        "target_bytes": 120457216,
+        "texture_bytes": 131072,
+        "uploads": 1,
+        "init_ms": 275.8093,
+        "adapter": "NVIDIA GeForce GTX 1660 Ti"
+      }
+    },
+    "offline_total_seconds": 0.7614631000033114,
+    "scope": "Original-only static native scene composition; not live client navigation, dynamic state or full-client FPS"
+  }
+]

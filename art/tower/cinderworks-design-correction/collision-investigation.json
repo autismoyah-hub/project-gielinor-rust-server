@@ -1,0 +1,272 @@
+{
+  "scope": "Investigates the14previously reported tiles, not a new full-map parity certification. Metadata only; cache pixels/archives remain private.",
+  "sites": [
+    {
+      "local": [
+        35,
+        61
+      ],
+      "world": [
+        10403,
+        125,
+        0
+      ],
+      "server": 256,
+      "native_live": 0,
+      "native_fresh_final_objects": 256,
+      "classification": "live lifecycle difference",
+      "evidence": "Fresh final-placement reconstruction through the unchanged native Scene::add_object_collision restores the server flag at this site. Live final object inventory is complete. Runtime replacement/deletion order and overlapping bit removal are leading hypotheses; exact event replay is still required.",
+      "owner_dependency": "Native client integration/parity for live lifecycle; FORGE + native cache policy agreement for bank definition."
+    },
+    {
+      "local": [
+        38,
+        61
+      ],
+      "world": [
+        10406,
+        125,
+        0
+      ],
+      "server": 131328,
+      "native_live": 131072,
+      "native_fresh_final_objects": 131328,
+      "classification": "live lifecycle difference",
+      "evidence": "Fresh final-placement reconstruction through the unchanged native Scene::add_object_collision restores the server flag at this site. Live final object inventory is complete. Runtime replacement/deletion order and overlapping bit removal are leading hypotheses; exact event replay is still required.",
+      "owner_dependency": "Native client integration/parity for live lifecycle; FORGE + native cache policy agreement for bank definition."
+    },
+    {
+      "local": [
+        52,
+        78
+      ],
+      "world": [
+        10420,
+        142,
+        0
+      ],
+      "server": 131328,
+      "native_live": 0,
+      "native_fresh_final_objects": 131328,
+      "classification": "live lifecycle difference",
+      "evidence": "Fresh final-placement reconstruction through the unchanged native Scene::add_object_collision restores the server flag at this site. Live final object inventory is complete. Runtime replacement/deletion order and overlapping bit removal are leading hypotheses; exact event replay is still required.",
+      "owner_dependency": "Native client integration/parity for live lifecycle; FORGE + native cache policy agreement for bank definition."
+    },
+    {
+      "local": [
+        53,
+        60
+      ],
+      "world": [
+        10421,
+        124,
+        0
+      ],
+      "server": 1073742080,
+      "native_live": 0,
+      "native_fresh_final_objects": 0,
+      "classification": "definition/policy mismatch",
+      "evidence": "Native bank18491 has solid=true and interact_type=0,blocks_projectiles=false after existing apply_solid decoding. Server final collision is0x40000100. It differs even without runtime zone replacement. Do not fix by adding unrelated blocking scenery.",
+      "owner_dependency": "Native client integration/parity for live lifecycle; FORGE + native cache policy agreement for bank definition."
+    },
+    {
+      "local": [
+        53,
+        78
+      ],
+      "world": [
+        10421,
+        142,
+        0
+      ],
+      "server": 131328,
+      "native_live": 0,
+      "native_fresh_final_objects": 131328,
+      "classification": "live lifecycle difference",
+      "evidence": "Fresh final-placement reconstruction through the unchanged native Scene::add_object_collision restores the server flag at this site. Live final object inventory is complete. Runtime replacement/deletion order and overlapping bit removal are leading hypotheses; exact event replay is still required.",
+      "owner_dependency": "Native client integration/parity for live lifecycle; FORGE + native cache policy agreement for bank definition."
+    },
+    {
+      "local": [
+        55,
+        78
+      ],
+      "world": [
+        10423,
+        142,
+        0
+      ],
+      "server": 131328,
+      "native_live": 131072,
+      "native_fresh_final_objects": 131328,
+      "classification": "live lifecycle difference",
+      "evidence": "Fresh final-placement reconstruction through the unchanged native Scene::add_object_collision restores the server flag at this site. Live final object inventory is complete. Runtime replacement/deletion order and overlapping bit removal are leading hypotheses; exact event replay is still required.",
+      "owner_dependency": "Native client integration/parity for live lifecycle; FORGE + native cache policy agreement for bank definition."
+    },
+    {
+      "local": [
+        57,
+        78
+      ],
+      "world": [
+        10425,
+        142,
+        0
+      ],
+      "server": 131328,
+      "native_live": 131072,
+      "native_fresh_final_objects": 131328,
+      "classification": "live lifecycle difference",
+      "evidence": "Fresh final-placement reconstruction through the unchanged native Scene::add_object_collision restores the server flag at this site. Live final object inventory is complete. Runtime replacement/deletion order and overlapping bit removal are leading hypotheses; exact event replay is still required.",
+      "owner_dependency": "Native client integration/parity for live lifecycle; FORGE + native cache policy agreement for bank definition."
+    },
+    {
+      "local": [
+        57,
+        79
+      ],
+      "world": [
+        10425,
+        143,
+        0
+      ],
+      "server": 132354,
+      "native_live": 132098,
+      "native_fresh_final_objects": 132354,
+      "classification": "live lifecycle difference",
+      "evidence": "Fresh final-placement reconstruction through the unchanged native Scene::add_object_collision restores the server flag at this site. Live final object inventory is complete. Runtime replacement/deletion order and overlapping bit removal are leading hypotheses; exact event replay is still required.",
+      "owner_dependency": "Native client integration/parity for live lifecycle; FORGE + native cache policy agreement for bank definition."
+    },
+    {
+      "local": [
+        62,
+        77
+      ],
+      "world": [
+        10430,
+        141,
+        0
+      ],
+      "server": 4104,
+      "native_live": 0,
+      "native_fresh_final_objects": 4104,
+      "classification": "live lifecycle difference",
+      "evidence": "Fresh final-placement reconstruction through the unchanged native Scene::add_object_collision restores the server flag at this site. Live final object inventory is complete. Runtime replacement/deletion order and overlapping bit removal are leading hypotheses; exact event replay is still required.",
+      "owner_dependency": "Native client integration/parity for live lifecycle; FORGE + native cache policy agreement for bank definition."
+    },
+    {
+      "local": [
+        62,
+        78
+      ],
+      "world": [
+        10430,
+        142,
+        0
+      ],
+      "server": 131328,
+      "native_live": 131072,
+      "native_fresh_final_objects": 131328,
+      "classification": "live lifecycle difference",
+      "evidence": "Fresh final-placement reconstruction through the unchanged native Scene::add_object_collision restores the server flag at this site. Live final object inventory is complete. Runtime replacement/deletion order and overlapping bit removal are leading hypotheses; exact event replay is still required.",
+      "owner_dependency": "Native client integration/parity for live lifecycle; FORGE + native cache policy agreement for bank definition."
+    },
+    {
+      "local": [
+        62,
+        79
+      ],
+      "world": [
+        10430,
+        143,
+        0
+      ],
+      "server": 132354,
+      "native_live": 132098,
+      "native_fresh_final_objects": 132354,
+      "classification": "live lifecycle difference",
+      "evidence": "Fresh final-placement reconstruction through the unchanged native Scene::add_object_collision restores the server flag at this site. Live final object inventory is complete. Runtime replacement/deletion order and overlapping bit removal are leading hypotheses; exact event replay is still required.",
+      "owner_dependency": "Native client integration/parity for live lifecycle; FORGE + native cache policy agreement for bank definition."
+    },
+    {
+      "local": [
+        63,
+        77
+      ],
+      "world": [
+        10431,
+        141,
+        0
+      ],
+      "server": 69768,
+      "native_live": 4104,
+      "native_fresh_final_objects": 69768,
+      "classification": "live lifecycle difference",
+      "evidence": "Fresh final-placement reconstruction through the unchanged native Scene::add_object_collision restores the server flag at this site. Live final object inventory is complete. Runtime replacement/deletion order and overlapping bit removal are leading hypotheses; exact event replay is still required.",
+      "owner_dependency": "Native client integration/parity for live lifecycle; FORGE + native cache policy agreement for bank definition."
+    },
+    {
+      "local": [
+        71,
+        76
+      ],
+      "world": [
+        10439,
+        140,
+        0
+      ],
+      "server": 131328,
+      "native_live": 0,
+      "native_fresh_final_objects": 131328,
+      "classification": "live lifecycle difference",
+      "evidence": "Fresh final-placement reconstruction through the unchanged native Scene::add_object_collision restores the server flag at this site. Live final object inventory is complete. Runtime replacement/deletion order and overlapping bit removal are leading hypotheses; exact event replay is still required.",
+      "owner_dependency": "Native client integration/parity for live lifecycle; FORGE + native cache policy agreement for bank definition."
+    },
+    {
+      "local": [
+        72,
+        76
+      ],
+      "world": [
+        10440,
+        140,
+        0
+      ],
+      "server": 131328,
+      "native_live": 0,
+      "native_fresh_final_objects": 131328,
+      "classification": "live lifecycle difference",
+      "evidence": "Fresh final-placement reconstruction through the unchanged native Scene::add_object_collision restores the server flag at this site. Live final object inventory is complete. Runtime replacement/deletion order and overlapping bit removal are leading hypotheses; exact event replay is still required.",
+      "owner_dependency": "Native client integration/parity for live lifecycle; FORGE + native cache policy agreement for bank definition."
+    }
+  ],
+  "lifecycle_sites": 13,
+  "definition_sites": 1,
+  "bank_native_definition": {
+    "id": "18491",
+    "size_x": "1",
+    "size_z": "1",
+    "interact_type": "0",
+    "blocks_projectiles": "false",
+    "obstructs_ground": "false",
+    "solid": "true",
+    "model_count": "1"
+  },
+  "diagnostic_limitation": "Prepared-scene metadata adapter installs object collision but does not install terrain FLOOR bits after manual chunk loading. The128water terrain flags omitted by that adapter are not new live defects. None of the14reported sites has the terrain FLOOR bit; the site comparisons above are exact, unmasked.",
+  "immediate_before_live_redesign": [
+    "Keep the redesigned studies out of live gameplay until navigation, target access, collision and performance pass independently.",
+    "Block client integration acceptance on a reproducible runtime-location replay for the13lifecycle sites, including shared footprints and wall-neighbour bits.",
+    "Agree the bank solid/break-route policy from authoritative reference behavior before changing either decoder.",
+    "Correct misleading timing aggregation and test warm gameplay separately from login/bootstrap; retain earlier raw evidence."
+  ],
+  "separate_client_task": [
+    "Profile the expensive interface/script interval independently from D3D11 rendering. Preserve actual menus, scripts, picking and actor behavior.",
+    "Profile world geometry/submission/readback and stable-buffer uploads after the CPU interval is understood. Do not infer full-client FPS from a13msGPU timestamp.",
+    "Build native update-order collision regression from captured events, then apply the smallest reference-backed parity fix. No parity/cache decoder rewrite is included in this design checkpoint."
+  ],
+  "inputs_sha256": {
+    "final-native.collision.csv": "186599932debbfa2fdd41189f5ffc6de7e7f9d7ed928b8d7b18a615a029bcd12",
+    "final-native.definitions.csv": "40b91d9f8e0502ad0081e778c2915819691a13dc56785a0bbec6d61993e60cef",
+    "scene-collision.csv": "e1ac6fea1971938ca7949edfb3f72e3c96ba17fefcf45ba2dc183163ef527ae4"
+  }
+}
