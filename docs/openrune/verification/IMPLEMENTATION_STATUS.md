@@ -3,9 +3,9 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0069: captured pair quantity production for eighteen existing stringing/battlestaff profiles; source [fb348dd](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/fb348dda184b36ec2d503bfe0f1d5393cf8ae151). Actual SkillMulti token/permission route and atomic per-step selected pairs. Shared regression PASS; independent V0–V4 queued.
+OR-MIG-0070: manual light-orb wiring and uncharged serpentine helm carving, source [c7ddebe](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/c7ddebe844820260252fb37df518f8c271f37243). Existing immediate/tool transactions reused; focused PASS2 server tests/427 unchanged hashes. Independent V0–V4 queued.
 
-69 units / 77 append-only records: 23 historical, 46 new shared/gameplay. Discovery3508=38partial eligible+4framework/infrastructure+658configuration+2808unassessed, not completion percentages. Broader Crafting/facilities/catalysts/stack production and content remain. PG-DEF-001 Close candidate b11260e pending independent retest. Continue eligible implementation.
+70 units / 78 append-only records: 23 historical and 47 new shared/gameplay. Discovery3508=38partial eligible+4framework/infrastructure+658configuration+2808unassessed, not completion percentages. Stack-material production, catalysts, facilities and broad content remain. PG-DEF-001 Close candidate b11260e pending independent retest. Continue eligible implementation.
 <!-- forge-current:end -->
 
 
@@ -357,3 +357,14 @@ Capture selected pair first, then available distinct ordinary count1 slot pairs 
 forge-pair-production-tests-attempt-001 PASS, 426 unchanged source hashes: test result: ok. 110 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.61s; test result: ok. 472 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 28.30s. Representative F2P stringing/member earth-staff full-bag batches capture selected19/17 then3/8,11/22; totals150/4218 fine XP at125% with separate per-award rounding. Invalid option/count/member/rate/credit and later stale/no-fallback,Close,member/rate/credit/level cancellation checks preserve state. Guard6,839MiB available,57.5%commit,82pages-in/s,1.1msdisk,43.7%CPU,Cargo-j2; other compiler presence informational. Private resources and all prior failures preserved. Working-tree regression is not pristine/native/independent acceptance.
 
 Queue69units/77append-onlyrecords:23historical46newshared/gameplay. Discovery inventory unchanged3508=38partial eligible+4framework/infrastructure+658configuration+2808unassessed, not completion percentages. Stack ratios/catalysts/facilities, other recipes, audio and broader content remain; PG-DEF-001 native Close candidate pending independent retest. Continue eligible implementation.
+
+
+## FORGE OR-MIG-0070 — manual crafting finishes
+
+Published source c7ddebe844820260252fb37df518f8c271f37243. Actual held registrations wire empty orb10980 + wire10981 -> light orb10973 (member Crafting87/104XP, immediate Wiki ticks0) and carve chisel1755 + visage12927 -> uncharged helm12929 (member Crafting52/120XP, manual nominal1). Existing immediate pair assembly and tool-preserving transaction engines unchanged. Six ordinary target definitions and five Wiki/source references pinned; no donor code/generated data/assets copied.
+
+Wiring zero ticks intentionally differs from generic donor Combining1. Helm stays uncharged with zero vars; Defence75 is not a crafting gate. Lamp repair/Firemaking/counters, access/acquisition, helm scales/charging/venom/degradation/equipping/combat and automatic production remain separate. Generic text remains; source helmet result dialogue/audio not reproduced.
+
+forge-crafting-finishes-tests-attempt-001 PASS2server/0world matched,427 source hashes unchanged,compile14.38s. Actual reversed held routes verify full bag/selected exchange/other raw retained, immediate1300fine/noFiremaking for wiring and queued1500fine/uncharged/noDefence gate/no replay for helm at125%. Wiring member/level/rate/bad-credit rollback and wrong output name binding checked. Guard6,827MiB available,58.2%commit,568pages-in/s,0.6msdisk,17.4%CPU,j2. Shared engines unchanged; independent/native/pristine/lifecycle/reference acceptance pending.
+
+Queue70units/78append-onlyrecords:23historical47newshared/gameplay. Discovery3508=38partial eligible+4framework/infrastructure+658configuration+2808unassessed, not completion percentages. Broader content remains; PG-DEF-001 Close candidate pending independent retest. Continue eligible implementation.
