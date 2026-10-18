@@ -788,6 +788,10 @@ pub fn configure<B: AccountBackend>(
     for (a,b) in [(29920,3239),(29920,3470),(3239,3470)] {
         runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,a,b,gielinor_world::held_use::Handler::ToolCraftingMixedChoices{recipes:recipes.clone(),materials:materials.clone(),cycle_ticks:3}).map_err(|e|io::Error::other(format!("Costume needle Splitbark registration: {e:?}")))?;
     }
+    let (recipes,materials)=crate::content::costume_needle_mixedhide(n("obj"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)?;
+    for (a,b,recipes,materials)in crate::content::costume_needle_mixedhide_registrations(&recipes,&materials) {
+        runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,a,b,gielinor_world::held_use::Handler::ToolCraftingMixedChoices{recipes:std::sync::Arc::new(recipes),materials:std::sync::Arc::new(materials),cycle_ticks:3}).map_err(|e|io::Error::other(format!("Costume needle mixed-hide registration: {e:?}")))?;
+    }
     for (recipes,costs) in crate::content::costume_needle_hueycoatl(n("obj"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
         runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,29920,30085,gielinor_world::held_use::Handler::ToolCraftingMaterialChoices{recipes:std::sync::Arc::new(recipes),input_counts:std::sync::Arc::new(costs),cycle_ticks:3}).map_err(|e|io::Error::other(format!("Costume needle Hueycoatl registration: {e:?}")))?;
     }

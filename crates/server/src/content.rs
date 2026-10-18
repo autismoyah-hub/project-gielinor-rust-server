@@ -1,4 +1,6 @@
 //! Resolve content's symbolic references against the same immutable type inputs as Kotlin.
+mod costume_needle_mixedhide;
+pub use costume_needle_mixedhide::{costume_needle_mixedhide,costume_needle_mixedhide_registrations};
 mod costume_needle_hueycoatl;
 pub use costume_needle_hueycoatl::costume_needle_hueycoatl;
 mod costume_needle_splitbark;
