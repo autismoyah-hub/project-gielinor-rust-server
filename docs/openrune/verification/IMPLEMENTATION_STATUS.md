@@ -3,9 +3,9 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0111 Guild deposit-box bulk actions; source [375f79d](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/375f79d28dfbbf8fa9f11073c354698870b0c296). Full shared003 and actual bins001 pass491; first compile failure retained. Independent V0–V4 queued.
+OR-MIG-0112 deposit-box selected/fixed item quantities and presets; source [a25ab35](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/a25ab350bce869d3e37b49e85ab3c2ccc4b2c162). Focused0012server6world493 and actual bins001 pass; independentV0–V4queued.
 
-111 units /121append-only records. Discovery3508={'not_yet_assessed': 2768, 'configuration': 660, 'framework_or_infrastructure': 18, 'eligible_gameplay_behavior': 62}, not completion percentages. Deposit quantities/settings/item-on-box/other boxes remain separate; existing corrections retained.
+112units/122append-only records. Discovery3508={'not_yet_assessed': 2768, 'configuration': 660, 'framework_or_infrastructure': 18, 'eligible_gameplay_behavior': 62}, not completion percentages. X input/examine/settings/worn icon/item-on-box/other boxes remain separate; existing corrections preserved.
 <!-- forge-current:end -->
 
 
@@ -775,3 +775,14 @@ Scoped inventory overlay149-to268 restoration runs on close and modal replacemen
 Shared001 compile FAIL retained (packed component conversion and structural Varbit test comparison); Shared002 test FAIL179pass/1fail retained and corrected fixture archived (actual packet bound replaces accepted reversed range); corrected Shared003 PASS180server/498world/one existing ignored (9.91s compile,56.17s server,27.49s world) and actual bins001 PASS17.53s; both preserve 491 unchanged rg-visible source hashes. Bounded transaction, selected-tab, empty-animation, World worn/inventory dispatch, UI roles, Guild profile and stale-kind/overlay restoration cases plus full shared regression. Developer working-tree evidence with unrelated changes preserved, not native/pristine/independent acceptance. Exact build logs and resource samples remain private work/forge-deposit-box-* artifacts; no process belonging to another agent changed.
 
 Individual item quantities/X/settings, worn-icon unequip/examine, looting bag, item-on-box, generic category deposit boxes and comprehensive native/layout/session/lifecycle/reference acceptance remain separate. Queue121records111units; discovery3508={'not_yet_assessed': 2768, 'configuration': 660, 'framework_or_infrastructure': 18, 'eligible_gameplay_behavior': 62}, not completion percentages. Ordinary existing correction issues and prior evidence remain open.
+
+
+## FORGE OR-MIG-0112 — Deposit-box item quantities and presets
+
+Source a25ab350bce869d3e37b49e85ab3c2ccc4b2c162 extends111 Guild modal192 with grid23 operations1selected/2one/3five/4ten/6all and exact preset children34/35/36/38 op1. Raw modes0/1/4/2 preserve source Ten/All swap. Mode4430 binds target867 bits28..31; unrelated low28bits preserved. Selected raw3 uses remembered1794 max1; unknown mode defaultsOne. No custom X prompt or requested-value write added.
+
+Expected clicked item is rechecked, then source top-to-bottom first matching id is deposited through existing Request::Deposit and shared Main-tab stage/restore wrapper. Item animation834 detects any actual source content change, including partial stack; bulk111 retains free-space rule. No XP, withdraw path, new bank engine or protected resource changes.
+
+Focused001 PASS2server/6world493 unchanged rg-visible hashes,1m22s compile/0.00s server/0.11s world; actual bins001 separately passes493. Vectors cover all selected/fixed mappings, accepted/refused presets, low-bit preservation, stale/restricted/invalid setting, duplicate ordering, actual World selected item and previous111 bulk. Developer working-tree evidence only. Guard j2 at6239MiB/56.9%commit/3.5%CPU/36361pages-in but0.3ms disk; no severe paging deferral or other-agent process change.
+
+Independent native/client menu/draw, same-save quantities/high-bit persistence, close/layout/reconnect, variable-item duplicate/partial-bank/reference acceptance remain queued. X prompt/examine/worn-icon/settings/item-on-box/other boxes/depth-drag remain separate. Queue122records112units; discovery3508={'not_yet_assessed': 2768, 'configuration': 660, 'framework_or_infrastructure': 18, 'eligible_gameplay_behavior': 62}, not completion percentages. Existing defects/evidence preserved.
