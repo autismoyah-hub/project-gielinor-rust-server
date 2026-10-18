@@ -140,7 +140,7 @@ def run(a):
     manifest=a.out/'scene.tsv';rows=['light\t64\t768']
     for p in placed:
         root=assets[p['asset']];rows.append('\t'.join(['owned',str(root/'asset.model'),*map(str,p['position']),str(p['quarter_turns']),str(root/p['action'])if p['action']else'-','0']))
-    manifest.write_text('\n'.join(rows)+'\n');views={'overview':'look -7600 -10300 8800 -300 -40 0 2900 2200 1800','reverse':'look 8000 -10800 -8300 -300 -40 0 2900 2200 1800','top-down':'look -300 -12000 1 -300 0 0 3100 2200 2200'}
+    manifest.write_text('\n'.join(rows)+'\n');views={'overview':'look -7600 -10300 8800 -300 -40 0 2900 2200 1800','reverse':'look 8000 -10800 -8300 -300 -40 0 2900 2200 1800','overview-detail':'look -7600 -10300 8800 -300 1100 0 3900 2200 1800','reverse-detail':'look 8000 -10800 -8300 -300 1100 0 3900 2200 1800','top-down':'look -300 -12000 1 -300 0 0 3100 2200 2200'}
     for name,area in AREAS.items():
         x,z=area['focus'];views[name+'-a']=f'player {x} -95 {z} 2250 1300 710';views[name+'-b']=f'player {x+170} -100 {z-90} 2050 14000 660'
     for name,camera in views.items():
@@ -151,4 +151,5 @@ if __name__=='__main__':
     p=argparse.ArgumentParser()
     for name in ['assets','out','native','cache','blender','bounds','identities']:p.add_argument('--'+name,type=Path,required=True)
     run(p.parse_args())
+
 

@@ -1,0 +1,61 @@
+import json,html,shutil,sys,hashlib
+from pathlib import Path
+from collections import deque
+import argparse;parser=argparse.ArgumentParser();parser.add_argument('--private',type=Path,required=True);parser.add_argument('--server',type=Path,required=True);args=parser.parse_args();Q=args.private;R=args.server;F=R/'tools/tower/floor-one-visual';sys.path.insert(0,str(F));from compose_floor import ground_recipe
+from layout import AREAS,ROUTES,BRIDGES
+out=R/'art/tower/advanced-mastery';load=lambda p:json.loads(p.read_text(encoding='utf-8'));esc=html.escape
+manifest=load(out/'manifest.json');floor=load(out/'floor/compatibility.json');floor['views']=[p.stem for p in(out/'floor').glob('*.png')];(out/'floor/compatibility.json').write_text(json.dumps(floor,indent=2))
+_,cells,walk=ground_recipe();xy=lambda x,z:f'{(x+3400)/8:.1f},{(z+3700)/8:.1f}';svg=['<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 970"><rect width="860" height="970" fill="#10191c"/>']
+for key,a in AREAS.items():svg.append('<polygon points="'+' '.join(xy(x,z)for x,z in a['polygon'])+'" fill="#394443" stroke="#88918a" stroke-width="2"/>')
+for (ix,iz),c in cells.items():
+ if c['water']:svg.append(f'<rect x="{(ix*128+3400)/8:.1f}" y="{(iz*128+3700)/8:.1f}" width="16" height="16" fill="#397f86"/>')
+def nearest(p):return min(walk,key=lambda k:(k[0]*128+64-p[0])**2+(k[1]*128+64-p[1])**2)
+def path(a,b):
+ queue=deque([a]);prev={a:None}
+ while queue:
+  p=queue.popleft()
+  if p==b:break
+  for n in[(p[0]+1,p[1]),(p[0]-1,p[1]),(p[0],p[1]+1),(p[0],p[1]-1)]:
+   if n in walk and n not in prev:prev[n]=p;queue.append(n)
+ seq=[];p=b
+ while p is not None:seq.append(p);p=prev[p]
+ return seq[::-1]
+route_proof=[]
+for i,route in enumerate(ROUTES):
+ points=[]
+ for aa,bb in zip(route['areas'],route['areas'][1:]):points+=path(nearest(AREAS[aa]['anchor']),nearest(AREAS[bb]['anchor']))
+ color=['#efbc69','#6bd5bb'][i];svg.append('<polyline points="'+' '.join(xy(x*128+64,z*128+64)for x,z in points)+'" fill="none" stroke="'+color+'" stroke-width="5" stroke-linejoin="round" opacity=".85"/>');route_proof.append(dict(name=route['name'],floor_cell_path=points,clearance_status='SCENERY_CLIPPING_UNTESTED'))
+for i,(key,a)in enumerate(AREAS.items(),1):
+ x,z=a['anchor'];px,py=map(float,xy(x,z).split(','));svg.append(f'<circle cx="{px}" cy="{py}" r="13" fill="#eddfbd"/><text x="{px}" y="{py+5}" text-anchor="middle" font-size="16" fill="#10191c">{i}</text><text x="{px+19}" y="{py-12}" font-family="sans-serif" font-size="16" fill="white">{esc(a["name"])}</text>')
+svg.append('<text x="28" y="940" fill="#efbc69" font-family="sans-serif" font-size="17">Gold: arrival → foundry · Green: exploration loop</text></svg>');(out/'floor/circulation.svg').write_text(''.join(svg),encoding='utf-8');(out/'floor/circulation-paths.json').write_text(json.dumps(route_proof,indent=2))
+stats=load(Q/'original-boss-review-v1-results.json');shutil.copy2(Q/'original-reproduction.json',out/'reproduction.json');shutil.copy2(Q/'regression-complete-native/results.json',out/'preservation.json');shutil.copy2(Q/'preservation-complete-extra.json',out/'preservation-extra.json');(out/'original-motion-diagnostics.json').write_text(json.dumps(stats,indent=2))
+first=[]
+for p in(Q/'exam-first-attempt').glob('*/results.json'):
+ for r in load(p)['results']:first.append(dict(case=p.parent.name,phase=r['phase'],npc_id=r['npc_id'],vertices=r['candidate_vertices'],faces=r['candidate_faces'],mean_five_view_iou=r['mean_five_view_iou'],status='COARSE_FIDELITY_UNAPPROVED',first_classic_motion='FAILED_GROUPS_DROPPED'if p.parent.name!='akkha'else'WEIGHTED_RETARGET_UNSUPPORTED'))
+(out/'frozen-examination-summary.json').write_text(json.dumps(first,indent=2));parts=['<header><p class="eyebrow">ASCENT · ORIGINAL ASSET WORKBENCH</p><h1>One working place.<br>Six new creatures.</h1><p class="lead">Cinderworks: a complete offline environmental study, backed by original Blender construction and native OSRS rendering.</p><p class="notice">Review study · artistic quality unapproved · gameplay integration untested. The current floor still needs richer paving, rock construction and scenery density. Creature contact defects remain visible.</p><nav><a href="#floor">Floor One</a><a href="#creatures">Six originals</a><a href="#evidence">Evaluation</a><a href="../../../docs/tower/asset-mastery/ATELIER_DELIVERY.md">ATELIER handoff</a></nav></header>']
+def pic(path,caption,cls=''):
+ return '<figure class="'+cls+'"><a href="'+path+'"><img loading="lazy" src="'+path+'" alt="'+esc(caption)+'"></a><figcaption>'+esc(caption)+'</figcaption></figure>'
+parts+=['<section id="floor"><h2>From the bell court to the last casting</h2><p>Arrival gives way to a sanctuary, a working court and a controlled watercourse. The ore loop returns through a damaged slag margin before the final foundry. Every visible model is original; no authentic cache mesh or texture fills the scene.</p>',pic('floor/overview-detail.png','Architectural overview · native camera, original terrain and assets'),'<div class="grid">',pic('floor/reverse-detail.png','Reverse overview'),pic('floor/top-down.png','Native top-down view'),pic('floor/circulation.svg','Annotated floor-only routes · separate authored diagram, not a native render'),'</div><p><a href="floor/compatibility.json">Asset IDs, placement, conservative collision proxies and intended anchors</a> · <a href="floor/circulation.json">955-cell connectivity assessment</a> · <a href="floor/scene.tsv">Reproducible relative native scene</a></p>']
+for key,a in AREAS.items():
+ notes={'arrival':'The stair/threshold silhouettes identify the entrance, but the outer rock boundary remains visibly cut away.','sanctuary':'Radial paving, the bell and benches define refuge. Floor slab regularity and peripheral detail need further art work.','workshop':'Stock, timber framing, repair apron, retorts and carts explain the production sequence. The open court remains sparse.','waterworks':'Raised gates and modeled crossings preserve a bank route; exact player clearance and water-edge clipping are untested.','quarry':'A new worked headwall and braces explain extraction. The flat rock treatment and broad brown floor still need geological refinement.','slag':'The damaged masonry and scavenger mark danger. Additional authored industrial waste and terrain transitions are needed.','foundry':'Supported vaults and cradled vessels frame the original creature. Arena scale is visual only; no encounter or collision is implemented.'}
+ parts+=['<h3>'+esc(a['name'])+'</h3><p>'+esc(a['story'])+'</p><div class="grid">',pic('floor/'+key+'-a.png','Player view A · '+a['name']),pic('floor/'+key+'-b.png','Player view B · '+a['name']),'</div><p class="muted">'+esc(notes[key])+'</p>']
+motion=Q/'floor-motion-v5-complete'
+if(motion/'results.json').exists()and len(load(motion/'results.json')['actions'])==7:
+ dst=out/'floor/motion';dst.mkdir(exist_ok=True);shutil.copy2(motion/'results.json',dst/'results.json');parts.append('<h3>All seven original actions in the final foundry</h3><p>Every native tick, including the death hold, is rendered through the same scene path. Identical image holds retain their original durations. Walking world travel is explicit; contact defects are retained.</p>')
+ for p in motion.glob('*.gif'):shutil.copy2(p,dst/p.name);parts.append('<details><summary>'+esc(p.stem)+'</summary>'+pic('floor/motion/'+p.name,p.stem+' · native environment motion')+'</details>')
+else:raise ValueError('Wait for all seven complete final floor actions before publishing gallery')
+parts.append('</section><section id="creatures"><h2>Six separately authored designs</h2><p>Each uses independent geometry, original choreography and native materials. Five static views and all seven supported action previews are supplied. Numerical agreement verifies conversion, not artistic quality.</p>')
+for r in stats:
+ key=r['asset'];recipe=load(out/'assets'/key/'recipe.json');parts+=['<article><h3>'+esc(r['name'])+'</h3><p>'+esc(recipe['design_rationale'])+'</p><p>'+str(r['vertices'])+' vertices · '+str(r['faces'])+' faces · model '+str(r['identity']['model_id'])+' · 429 native pose checks · <a href="assets/'+key+'/manifest.json">manifest</a></p><div class="grid">']
+ for view in ['front','side','rear','quarter','gameplay']:parts.append(pic('assets/'+key+'/'+view+'.png',view))
+ parts.append('</div>')
+ for action in r['actions']:parts.append('<details><summary>'+esc(action)+'</summary>'+pic('assets/'+key+'/'+action+'.gif',action)+'</details>')
+ c=r.get('walk_contact')or {};parts.append('<p class="muted">Walking contact remains under review. Mean stance drift: '+str(round(c.get('mean_stance_drift_native',0),2))+' native units; floating stance-foot observations: '+str(c.get('floating_stance_foot_samples','not applicable'))+'. Body-support and equipment checks use declared proxies. See the motion report for full results.</p></article>')
+parts+=['</section><section id="evidence"><h2>What the evidence establishes</h2><p>The immutable examination exposed a real failure: all 50 first-attempt classic role clips had stationary candidates because group labels were dropped. Later correction is a separate development retest. Akkha weighted reconstruction motion remains unsupported. Coarse silhouette scores do not establish faithful facial, material or equipment construction.</p><table><tr><th>Case / form</th><th>NPC</th><th>Mean five-view IoU</th><th>Outcome</th></tr>']
+for r in first:parts.append('<tr><td>'+esc(r['case']+' / '+r['phase'])+'</td><td>'+str(r['npc_id'])+'</td><td>'+f'{r["mean_five_view_iou"]:.3f}'+'</td><td>Fidelity under review</td></tr>')
+parts+=['</table><p>51 preserved static variants / 255 views; 26 classic sets / 468 matched timestamps; 43 unit tests. Six original bosses reproduce their models, 762 classic payload files and 30 views exactly. These checks establish preservation and conversion reliability.</p><p><a href="preservation.json">Catalogue preservation</a> · <a href="preservation-extra.json">Additional fixtures and previous original</a> · <a href="reproduction.json">Six-boss reproduction</a> · <a href="original-motion-diagnostics.json">Motion defects</a> · <a href="frozen-examination-summary.json">Frozen examination summary</a> · <a href="manifest.json">All 38 original assets</a> · <a href="../../../docs/tower/asset-mastery/CURRENT_STATUS.md">Status and limitations</a></p><p>Authentic source resources, reconstruction derivatives and matched source imagery are retained only in the private local review. Existing functional Cinderworks, the live map, earlier concepts and the original cache are preserved. Final artistic approval remains with the user.</p></section><footer>Original models and floor · source-backed offline study · no production integration</footer>']
+style=':root{color-scheme:dark}*{box-sizing:border-box}body{background:#11191c;color:#e6e1d5;font:17px/1.65 system-ui;margin:0}header,section,footer{max-width:1450px;margin:auto;padding:48px 32px}header{padding-top:75px}.eyebrow{letter-spacing:.2em;color:#d6ae6c;font-size:13px}h1{font:clamp(45px,6vw,82px)/1.1 Georgia;margin:20px 0}h2{font:39px Georgia;color:#e2c48f}h3{font:28px Georgia;margin-top:45px}.lead{max-width:850px;font-size:23px}.notice{background:#263035;border-left:3px solid #d6ae6c;padding:20px}nav{display:flex;gap:26px;flex-wrap:wrap}a{color:#e2c48f}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px}figure{margin:20px 0;background:#0e1519}img{display:block;width:100%;height:auto}figcaption{padding:12px;font-size:14px;color:#c0c6c5}.muted{color:#aeb8b8;font-size:14px}section{border-top:1px solid #354144}details{border:1px solid #354144;padding:12px;margin:10px 0}summary{cursor:pointer}details img{max-width:1000px}table{border-collapse:collapse;width:100%;font-size:14px}td,th{padding:12px;text-align:left;border-bottom:1px solid #354144}article{margin-bottom:75px}footer{color:#aeb8b8;font-size:14px}'
+(out/'index.html').write_text('<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ASCENT · Cinderworks and six original creatures</title><style>'+style+'</style>'+''.join(parts)+'</html>',encoding='utf-8');print('PUBLIC_ORIGINAL_REVIEW_COMPLETE')
+
+
+

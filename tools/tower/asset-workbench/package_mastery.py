@@ -13,6 +13,7 @@ def run(a):
         assert not any(v>=0 for v in(g.get('face_textures')or[])),key
         dst=a.out/'assets'/key;dst.mkdir(parents=True)
         for name in ['recipe.json','geometry.json','asset.model']:shutil.copy2(root/name,dst/name)
+        shutil.copytree(root/'object-package',dst/'object-package')
         actions=list(r.get('actions',{}))
         for action in actions:
             folder=dst/action;folder.mkdir()
@@ -30,8 +31,9 @@ def run(a):
     for index,p in enumerate(proof['placements']):
         if p['asset'].startswith('ground-'):continue
         lo,hi=bykey[p['asset']]['bounds'];q=p['quarter_turns']%4;points=[]
-        for x in [lo[0],hi[0]]:
-            for z in [lo[2],hi[2]]:
+        for original_x in [lo[0],hi[0]]:
+            for original_z in [lo[2],hi[2]]:
+                x,z=original_x,original_z
                 for turn in range(q):x,z=z,-x
                 points.append([x+p['position'][0],z+p['position'][2]])
         proof['anticipated_collision'].append(dict(placement=index,asset=p['asset'],conservative_xz_aabb=[[min(v[i]for v in points)for i in range(2)],[max(v[i]for v in points)for i in range(2)]],status='PROXY_ONLY',note='Whole asset bounds overestimate arches, raised sluices and articulated creatures. Requires authored future clipping; not a validated blocker.'))

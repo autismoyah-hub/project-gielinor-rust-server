@@ -9,7 +9,7 @@ def run(a):
         active=[r[:]for r in rows];active[actor][6]=str(a.actor/action);speed=0
         if action=='walk':
             gait=recipe['locomotion'];speed=-gait['stride']/(gait['stance_fraction']*spec['duration_ticks'])
-        active[actor][7]=str(speed);manifest=a.out/(action+'.tsv');manifest.write_text('\n'.join('\t'.join(r)for r in active)+'\n');ticks=list(range(spec['duration_ticks']+1));frames=[];durations=[];last=None
+        active[actor][7]=str(speed);manifest=a.out/(action+'.tsv');manifest.write_text('\n'.join('\t'.join(r)for r in active)+'\n');duration=sum(f['length']for f in json.loads((a.actor/action/'animation.json').read_text())['frames']);ticks=list(range(duration+1));frames=[];durations=[];last=None
         for tick in ticks:
             out=a.out/action/f'tick-{tick:04}';subprocess.run([str(a.native),str(a.cache),str(out),'scene',str(manifest),str(a.floor/'foundry-a.camera'),str(tick)],check=True);path=out/'scene.bmp';digest=hashlib.sha256(path.read_bytes()).hexdigest()
             if digest==last:durations[-1]+=20
@@ -21,3 +21,4 @@ if __name__=='__main__':
     p=argparse.ArgumentParser()
     for name in ['floor','actor','out','native','cache']:p.add_argument('--'+name,type=Path,required=True)
     a=p.parse_args();a.actor=a.actor.resolve();run(a)
+
