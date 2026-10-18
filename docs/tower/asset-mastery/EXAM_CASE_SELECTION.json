@@ -1,0 +1,406 @@
+{
+  "tooling_source_commit": "6329cfa4d4f191a6906a5573cef670c4f6110234",
+  "tooling_freeze_sha256": "547bd16859962aabfa13a3f31d914860aa6ef4f3ef6db2645da3fb103525f2ac",
+  "utc": "2026-10-18T02:58:29.812257+00:00",
+  "cases": [
+    {
+      "key": "fire-giant",
+      "label": "Fire Giant",
+      "variants": [
+        {
+          "npc_id": 2075,
+          "phase": "club_variant",
+          "models": [
+            17452,
+            17437
+          ],
+          "definition_idle_walk": [
+            4662,
+            -1,
+            -1,
+            4660,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "additional_sequences": {
+            "attack": 4666,
+            "hit": 4664,
+            "death": 4668
+          }
+        }
+      ]
+    },
+    {
+      "key": "bandos",
+      "label": "General Graardor",
+      "variants": [
+        {
+          "npc_id": 2215,
+          "phase": "standard_encounter",
+          "models": [
+            27660,
+            27665
+          ],
+          "definition_idle_walk": [
+            7017,
+            -1,
+            -1,
+            7016,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "additional_sequences": {
+            "attack": 7018,
+            "hit": 7019,
+            "death": 7020,
+            "ranged": 7021
+          }
+        }
+      ]
+    },
+    {
+      "key": "zamorak",
+      "label": "K'ril Tsutsaroth",
+      "variants": [
+        {
+          "npc_id": 3129,
+          "phase": "standard_encounter",
+          "models": [
+            27683,
+            27681,
+            27692,
+            27682,
+            27690
+          ],
+          "definition_idle_walk": [
+            6935,
+            -1,
+            -1,
+            4070,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "additional_sequences": {
+            "attack": 6948,
+            "hit": 6947,
+            "death": 6949,
+            "magic": 6950
+          }
+        }
+      ]
+    },
+    {
+      "key": "xarpus",
+      "label": "Xarpus",
+      "variants": [
+        {
+          "npc_id": 8338,
+          "phase": "absorb_form",
+          "models": [
+            35383
+          ],
+          "definition_idle_walk": [
+            8060,
+            -1,
+            -1,
+            8060,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "additional_sequences": {
+            "fly_up": 8061
+          }
+        },
+        {
+          "npc_id": 8340,
+          "phase": "active_form",
+          "models": [
+            35383
+          ],
+          "definition_idle_walk": [
+            8058,
+            -1,
+            -1,
+            8058,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "additional_sequences": {
+            "ranged": 8059,
+            "death_a": 8062
+          }
+        },
+        {
+          "npc_id": 8341,
+          "phase": "terminal_form",
+          "models": [
+            35382
+          ],
+          "definition_idle_walk": [
+            -1,
+            -1,
+            -1,
+            8063,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "additional_sequences": {
+            "death_b": 8063
+          }
+        }
+      ]
+    },
+    {
+      "key": "verzik",
+      "label": "Verzik Vitur",
+      "variants": [
+        {
+          "npc_id": 8370,
+          "phase": "phase_1",
+          "models": [
+            35179
+          ],
+          "definition_idle_walk": [
+            8107,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "additional_sequences": {
+            "transform": 8108,
+            "magic": 8109,
+            "hit": 8110,
+            "death": 8111
+          }
+        },
+        {
+          "npc_id": 8372,
+          "phase": "phase_2",
+          "models": [
+            35378
+          ],
+          "definition_idle_walk": [
+            8113,
+            -1,
+            -1,
+            8113,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "additional_sequences": {
+            "spawn": 8112,
+            "magic": 8114,
+            "melee": 8116,
+            "heal": 8117,
+            "death": 8118
+          }
+        },
+        {
+          "npc_id": 8374,
+          "phase": "phase_3",
+          "models": [
+            35381
+          ],
+          "definition_idle_walk": [
+            8120,
+            -1,
+            -1,
+            8121,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "additional_sequences": {
+            "spawn": 8119,
+            "melee": 8123,
+            "magic": 8124,
+            "ranged": 8125,
+            "powerblast": 8126,
+            "webspin": 8127,
+            "death_a": 8128
+          }
+        },
+        {
+          "npc_id": 8375,
+          "phase": "terminal_form",
+          "models": [
+            35379
+          ],
+          "definition_idle_walk": [
+            8129,
+            -1,
+            -1,
+            8129,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "additional_sequences": {
+            "death_b": 8129
+          }
+        }
+      ],
+      "equivalent_geometry_definitions": [
+        8371,
+        8373
+      ]
+    },
+    {
+      "key": "akkha",
+      "label": "Akkha",
+      "variants": [
+        {
+          "npc_id": 11789,
+          "phase": "spear_and_sword_states",
+          "models": [
+            46360,
+            46356,
+            46357
+          ],
+          "definition_idle_walk": [
+            9760,
+            -1,
+            -1,
+            9764,
+            9768,
+            9764,
+            9764,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "additional_sequences": {
+            "idle_sword": 9761,
+            "walk_sword": 9765,
+            "melee_spear": 9770,
+            "melee_sword": 9771,
+            "ranged_spear": 9772,
+            "ranged_sword": 9773,
+            "magic_spear": 9774,
+            "magic_sword": 9775,
+            "teleport_out_spear": 9784,
+            "teleport_in_spear": 9785,
+            "teleport_out_sword": 9786,
+            "teleport_in_sword": 9787,
+            "stomp_spear": 9788,
+            "stomp_sword": 9789,
+            "spawn_spear": 9790,
+            "spawn_sword": 9791,
+            "death_spear": 9792,
+            "death_sword": 9793
+          }
+        }
+      ],
+      "equivalent_geometry_definitions": [
+        11790,
+        11791,
+        11792,
+        11793,
+        11794,
+        11795,
+        11796
+      ]
+    }
+  ],
+  "animation_semantic_source": "https://raw.githubusercontent.com/runelite/runelite/master/runelite-api/src/main/java/net/runelite/api/gameval/AnimationID.java",
+  "animation_semantic_provenance": "Official RuneLite generated gameval symbols consulted after tooling freeze. Every selected sequence exists in the actual local 239.1 catalog; native playback remains the compatibility authority. Current upstream names are semantic leads, not a claim of local combat-script parity.",
+  "npc_catalog_sha256": "f2a34d14b8530fa83bddbe782f861f1ffd506bf17ae3d424af2e0f8143eac38d",
+  "sequence_catalog_sha256": "52f278103fd6b228eb6a952da91b8eb476db8c5174b8da91ee0214fa96dbea50",
+  "all_attempts_immutable": true,
+  "artistic_acceptance": false
+}
