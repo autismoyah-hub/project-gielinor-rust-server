@@ -2,6 +2,8 @@
 use gielinor_cache::{game::Definitions, symbols::Symbols};
 use gielinor_world::food::{self, Edible};
 use std::collections::BTreeMap;
+mod sinew_crafting;
+pub use sinew_crafting::sinew_crafting;
 mod immediate_tool_crafting;
 pub use immediate_tool_crafting::immediate_tool_crafting;
 mod fallible_gems;
