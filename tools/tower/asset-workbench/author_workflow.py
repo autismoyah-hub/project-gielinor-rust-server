@@ -12,7 +12,10 @@ def main():
     if a.out.is_relative_to(a.cache.resolve())or a.out.is_relative_to(HERE.parents[2]):raise ValueError('Calibration output must stay outside repository and original cache')
     if a.out.exists()and any(a.out.iterdir()):raise ValueError('Output is not empty; preserve previous runs and choose a new output directory')
     a.out.mkdir(parents=True,exist_ok=True)
-    r=json.loads(a.recipe.read_text());identity=IdentityAllocator(a.identities,json.loads(a.bounds.read_text())).allocate(a.asset_key,animated=bool(r.get('rig')))
+    r=json.loads(a.recipe.read_text());native_scale=r.get('native_render_scale',[128,128,128])
+    if len(native_scale)!=3 or any(not isinstance(s,int)or not 0<s<=65535 for s in native_scale):raise ValueError('Explicit native render scale requires three positive u16 values')
+    if native_scale!=[128,128,128]and not a.reference:raise ValueError('Nondefault raw-model scaling requires an explicit reference camera; owned standalone designs use native units')
+    identity=IdentityAllocator(a.identities,json.loads(a.bounds.read_text())).allocate(a.asset_key,animated=bool(r.get('rig')))
     if r.get('rig'):r.update(skeleton_base=identity['skeleton_base'],frame_group_base=identity['frame_group_base'])
     (a.out/'input-recipe.json').write_text(json.dumps(r,indent=2));recipe=a.out/'input-recipe.json'
     if a.blend and a.patch:run([a.blender,'-b',a.blend,'--python-exit-code','1','--python',HERE/'edit_blender.py','--',recipe,a.patch,a.out])
@@ -24,20 +27,21 @@ def main():
     g=json.loads((a.out/'geometry.json').read_text())
     meta=json.loads((a.reference/'metadata.json').read_text())if a.reference else dict(ambient=64,contrast=768,selector=None,definition_sha256=None)
     if a.reference:
-        camera=a.reference/'camera.txt';run([a.native,a.cache,a.out/'native','render',a.out/'asset.model',camera,meta['ambient'],meta['contrast']]);compare(a.reference,a.out/'native',a.out/'comparison')
+        camera=a.reference/'camera.txt';run([a.native,a.cache,a.out/'native','render',a.out/'asset.model',camera,meta['ambient'],meta['contrast'],*native_scale]);compare(a.reference,a.out/'native',a.out/'comparison')
     else:
         run([a.native,a.cache,a.out/'native','render-own',a.out/'asset.model',meta['ambient'],meta['contrast']]);camera=a.out/'native/camera.txt'
-    bounds=json.loads(a.bounds.read_text());object_package(a.out/'object-package',[g],dict(shape=10,size=[1,1],non_flat_shading=True),[identity['model_id']],identity['object_id'],bounds)
+    bounds=json.loads(a.bounds.read_text());object_package(a.out/'object-package',[g],dict(shape=10,size=[1,1],non_flat_shading=True,scale=native_scale),[identity['model_id']],identity['object_id'],bounds)
     results=[]
     if not a.skip_motion:
         for index,path in enumerate(sorted(a.out.glob('*/animation.json'))):
-            action=path.parent.name;data=json.loads(path.read_text());target=a.out/'motion'/action;run([a.native,a.cache,target,'play',a.out/'asset.model',camera,meta['ambient'],meta['contrast'],path.parent]);duration=sum(row['length']for row in data['frames']);expected_times=set(range(min(duration,256)+1))|{duration,duration//4,duration//2,duration*3//4};actual_times={int(p.stem.split('-')[1])for p in target.glob('pose-*.json')}
+            action=path.parent.name;data=json.loads(path.read_text());target=a.out/'motion'/action;run([a.native,a.cache,target,'play',a.out/'asset.model',camera,meta['ambient'],meta['contrast'],path.parent,*native_scale]);duration=sum(row['length']for row in data['frames']);expected_times=set(range(min(duration,256)+1))|{duration,duration//4,duration//2,duration*3//4};actual_times={int(p.stem.split('-')[1])for p in target.glob('pose-*.json')}
             if actual_times!=expected_times:raise AssertionError(f'Native timestamp coverage mismatch {action}')
             worst=0;checked=0
             for pose in target.glob('pose-*.json'):
                 tick=int(pose.stem.split('-')[1]);sample=tick%duration if data['policy'].get('loop_frames',-1)>0 else tick;_,frame=frame_at(data['frames'],sample);predicted,_=trace(g,frame);actual=json.loads(pose.read_text())['vertices'];
                 if len(predicted)!=len(actual):raise AssertionError('Native vertex count mismatch')
-                error=max(abs(x-y)for v,w in zip(predicted,actual)for x,y in zip(v,w));worst=max(worst,error);checked+=1
+                f32=lambda x:struct.unpack('<f',struct.pack('<f',x))[0]
+                error=max(abs(f32(v[i]*native_scale[i]/128)-f32(w[i]))for v,w in zip(predicted,actual)for i in range(3));worst=max(worst,error);checked+=1
             if worst:raise AssertionError(f'Authored joint compiler disagrees with native {action}: {worst}')
             results.append(dict(action=action,native_pose_samples=checked,max_coordinate_error_native=worst,sequence_id=identity['sequence_base']+index,skeleton_id=data['skeleton_id'],frame_group=data['frame_group']))
     summary=dict(asset_key=a.asset_key,identity=identity,geometry=geometry(g),motion=results,native_binary_sha256=hashlib.sha256(a.native.read_bytes()).hexdigest(),model_sha256=hashlib.sha256((a.out/'asset.model').read_bytes()).hexdigest(),artistic_acceptance=False,source_geometry_reused=False,reference_selector=meta['selector'],reference_definition_sha256=meta['definition_sha256'])

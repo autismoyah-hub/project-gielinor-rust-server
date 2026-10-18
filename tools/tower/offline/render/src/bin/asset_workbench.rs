@@ -231,6 +231,51 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let npcs = npc::Definition::load_all(&mut cache)?;
     let items = item::Definitions::load(&mut cache)?;
     let sequences = Sequence::load_all(&mut cache)?;
+    if a[3] == "catalog-npcs" {
+        let mut definitions: Vec<_> = npcs.values().collect();
+        definitions.sort_by_key(|d| d.id);
+        let mut rows = String::from("id\tname\tmodels\tanimations\ttransforms\tsize\tcombat\n");
+        for d in definitions {
+            rows.push_str(&format!(
+                "{}\t{:?}\t{:?}\t{:?}\t{:?}\t{}\t{}\n",
+                d.id, d.name, d.models, d.animations, d.transforms, d.size, d.combat
+            ));
+            if a[4..].iter().any(|id| id.parse::<u32>().ok() == Some(d.id)) {
+                fs::write(
+                    out.join(format!("npc-{}-definition.txt", d.id)),
+                    format!("{d:#?}"),
+                )?;
+            }
+        }
+        fs::write(out.join("npc-catalog.tsv"), rows)?;
+        return Ok(());
+    }
+    if a[3] == "catalog-sequences" {
+        let mut definitions: Vec<_> = sequences.iter().collect();
+        definitions.sort_by_key(|(id, _)| **id);
+        let mut rows =
+            String::from("id\tclassic_frame_count\tduration\tcached_animation\tcached_range\n");
+        for (id, d) in definitions {
+            rows.push_str(&format!(
+                "{id}\t{}\t{}\t{:?}\t{:?}\n",
+                d.frames.len(),
+                d.total_length,
+                d.cached_animation,
+                d.cached_range
+            ));
+            if a[4..]
+                .iter()
+                .any(|value| value.parse::<u32>().ok() == Some(*id))
+            {
+                fs::write(
+                    out.join(format!("sequence-{id}-definition.txt")),
+                    format!("{d:#?}"),
+                )?;
+            }
+        }
+        fs::write(out.join("sequence-catalog.tsv"), rows)?;
+        return Ok(());
+    }
     if a[3] == "beside" {
         // One shared coordinate system, camera, light and native submission.
         // Cache models remain read-only; this scene and its pixels are private.
@@ -299,7 +344,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut models = item_model::Models::default();
     let mut om = object_model::Models::default();
     let mut status = String::from("selector\tstatus\tdetail\n");
-    let selectors = if a[3] == "animate" { &a[4..5] } else { &a[4..] };
+    let explicit_animation = a[3] == "animate" || a[3] == "animate-complete";
+    let selectors = if explicit_animation {
+        &a[4..5]
+    } else {
+        &a[4..]
+    };
     for selector in selectors {
         let result = (|| -> Result<(), Box<dyn std::error::Error>> {
             let s: Vec<_> = selector.split(':').collect();
@@ -438,7 +488,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             native::views(&world, &light, &tex, cam, &dir)?;
             let actions: Vec<_> = if a[3] == "inspect-static" {
                 vec![]
-            } else if a[3] == "animate" {
+            } else if explicit_animation {
                 vec![("selected", a[5].parse::<i32>()?)]
             } else {
                 roles
@@ -481,6 +531,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                     sq.total_length
                 };
                 let mut times: BTreeSet<_> = (0..=duration.min(80)).step_by(4).collect();
+                if a[3] == "animate-complete" {
+                    times = (0..=duration).collect();
+                }
                 times.extend([0, duration / 4, duration / 2, duration * 3 / 4, duration]);
                 for tick in times {
                     let mut clock = Clock::default();
