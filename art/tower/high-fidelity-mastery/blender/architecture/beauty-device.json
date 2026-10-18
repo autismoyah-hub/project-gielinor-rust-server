@@ -1,0 +1,24 @@
+{
+  "engine": "Cycles",
+  "backend": "CUDA",
+  "devices": [
+    {
+      "name": "NVIDIA GeForce GTX 1660 Ti",
+      "type": "CUDA",
+      "selected": true
+    },
+    {
+      "name": "Intel Core i7-10750H CPU @ 2.60GHz",
+      "type": "CPU",
+      "selected": false
+    },
+    {
+      "name": "NVIDIA GeForce GTX 1660 Ti",
+      "type": "OPTIX",
+      "selected": false
+    }
+  ],
+  "samples": 32,
+  "source_scale": "Presentation normalized to 128 units/m",
+  "native_acceptance": false
+}

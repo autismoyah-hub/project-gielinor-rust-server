@@ -1,0 +1,9 @@
+light	64	768
+owned	ground/asset.model	0	0	0	0	-	0
+owned	../assets/architecture/asset.model	0	0	220	0	-	0
+owned	../assets/machine/asset.model	-155	0	-25	0	-	0
+owned	../assets/creature/asset.model	125	0	-80	0	-	0
+owned	support/wall-bay/asset.model	-265	0	265	0	-	0
+owned	support/wall-bay/asset.model	265	0	265	0	-	0
+owned	support/supply-barrel/asset.model	270	0	180	0	-	0
+owned	support/stock-rack/asset.model	-265	0	170	0	-	0

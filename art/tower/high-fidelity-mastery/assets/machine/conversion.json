@@ -1,0 +1,636 @@
+{
+  "components": [
+    {
+      "name": "stone_bed",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "oak_sleeper",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "oak_sleeper.001",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "cast_bed",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "bed_bolt",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "bed_bolt.001",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "bed_bolt.002",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "bed_bolt.003",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "pump_barrel",
+      "vertices": 32,
+      "triangles": 60,
+      "group": 0
+    },
+    {
+      "name": "flange",
+      "vertices": 64,
+      "triangles": 128,
+      "group": 0
+    },
+    {
+      "name": "flange_stud",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "flange_stud.001",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "flange_stud.002",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "flange_stud.003",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "flange_stud.004",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "flange_stud.005",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "flange.001",
+      "vertices": 64,
+      "triangles": 128,
+      "group": 0
+    },
+    {
+      "name": "flange_stud.006",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "flange_stud.007",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "flange_stud.008",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "flange_stud.009",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "flange_stud.010",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "flange_stud.011",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "piston_rod",
+      "vertices": 20,
+      "triangles": 36,
+      "group": 0
+    },
+    {
+      "name": "crosshead",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "slide_rail",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "slide_rail.001",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "connecting_rod",
+      "vertices": 16,
+      "triangles": 28,
+      "group": 0
+    },
+    {
+      "name": "crank_web",
+      "vertices": 20,
+      "triangles": 36,
+      "group": 0
+    },
+    {
+      "name": "crank_pin",
+      "vertices": 20,
+      "triangles": 36,
+      "group": 0
+    },
+    {
+      "name": "big_end",
+      "vertices": 48,
+      "triangles": 96,
+      "group": 0
+    },
+    {
+      "name": "pump_barrel.001",
+      "vertices": 32,
+      "triangles": 60,
+      "group": 0
+    },
+    {
+      "name": "flange.002",
+      "vertices": 64,
+      "triangles": 128,
+      "group": 0
+    },
+    {
+      "name": "flange_stud.012",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "flange_stud.013",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "flange_stud.014",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "flange_stud.015",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "flange_stud.016",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "flange_stud.017",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "flange.003",
+      "vertices": 64,
+      "triangles": 128,
+      "group": 0
+    },
+    {
+      "name": "flange_stud.018",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "flange_stud.019",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "flange_stud.020",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "flange_stud.021",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "flange_stud.022",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "flange_stud.023",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "piston_rod.001",
+      "vertices": 20,
+      "triangles": 36,
+      "group": 0
+    },
+    {
+      "name": "crosshead.001",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "slide_rail.002",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "slide_rail.003",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "connecting_rod.001",
+      "vertices": 16,
+      "triangles": 28,
+      "group": 0
+    },
+    {
+      "name": "crank_web.001",
+      "vertices": 20,
+      "triangles": 36,
+      "group": 0
+    },
+    {
+      "name": "crank_pin.001",
+      "vertices": 20,
+      "triangles": 36,
+      "group": 0
+    },
+    {
+      "name": "big_end.001",
+      "vertices": 48,
+      "triangles": 96,
+      "group": 0
+    },
+    {
+      "name": "bearing_pedestal",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "bearing_shell",
+      "vertices": 64,
+      "triangles": 128,
+      "group": 0
+    },
+    {
+      "name": "bearing_pedestal.001",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "bearing_shell.001",
+      "vertices": 64,
+      "triangles": 128,
+      "group": 0
+    },
+    {
+      "name": "crank_axle",
+      "vertices": 24,
+      "triangles": 44,
+      "group": 0
+    },
+    {
+      "name": "flywheel",
+      "vertices": 160,
+      "triangles": 320,
+      "group": 0
+    },
+    {
+      "name": "hub",
+      "vertices": 24,
+      "triangles": 44,
+      "group": 0
+    },
+    {
+      "name": "swept_spoke",
+      "vertices": 18,
+      "triangles": 32,
+      "group": 0
+    },
+    {
+      "name": "swept_spoke.001",
+      "vertices": 18,
+      "triangles": 32,
+      "group": 0
+    },
+    {
+      "name": "swept_spoke.002",
+      "vertices": 18,
+      "triangles": 32,
+      "group": 0
+    },
+    {
+      "name": "swept_spoke.003",
+      "vertices": 18,
+      "triangles": 32,
+      "group": 0
+    },
+    {
+      "name": "swept_spoke.004",
+      "vertices": 18,
+      "triangles": 32,
+      "group": 0
+    },
+    {
+      "name": "swept_spoke.005",
+      "vertices": 18,
+      "triangles": 32,
+      "group": 0
+    },
+    {
+      "name": "intake",
+      "vertices": 72,
+      "triangles": 140,
+      "group": 0
+    },
+    {
+      "name": "discharge",
+      "vertices": 72,
+      "triangles": 140,
+      "group": 0
+    },
+    {
+      "name": "pressure_vessel",
+      "vertices": 80,
+      "triangles": 137,
+      "group": 0
+    },
+    {
+      "name": "vessel_plug",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "dome_collar",
+      "vertices": 80,
+      "triangles": 160,
+      "group": 0
+    },
+    {
+      "name": "valve_stem",
+      "vertices": 16,
+      "triangles": 28,
+      "group": 0
+    },
+    {
+      "name": "handwheel",
+      "vertices": 80,
+      "triangles": 160,
+      "group": 0
+    },
+    {
+      "name": "valve_spoke",
+      "vertices": 10,
+      "triangles": 16,
+      "group": 0
+    },
+    {
+      "name": "valve_spoke.001",
+      "vertices": 10,
+      "triangles": 16,
+      "group": 0
+    },
+    {
+      "name": "valve_spoke.002",
+      "vertices": 10,
+      "triangles": 16,
+      "group": 0
+    },
+    {
+      "name": "valve_spoke.003",
+      "vertices": 10,
+      "triangles": 16,
+      "group": 0
+    },
+    {
+      "name": "makers_tablet",
+      "vertices": 56,
+      "triangles": 44,
+      "group": 0
+    },
+    {
+      "name": "tablet_cut",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "tablet_cut.001",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "tablet_cut.002",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "sleeper_strap",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "sleeper_strap.001",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "sleeper_strap.002",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "sleeper_strap.003",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "packing_gland",
+      "vertices": 64,
+      "triangles": 128,
+      "group": 0
+    },
+    {
+      "name": "gland_tie",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "gland_tie.001",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "packing_gland.001",
+      "vertices": 64,
+      "triangles": 128,
+      "group": 0
+    },
+    {
+      "name": "gland_tie.002",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "gland_tie.003",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "gauge_stem",
+      "vertices": 30,
+      "triangles": 54,
+      "group": 0
+    },
+    {
+      "name": "gauge_bezel",
+      "vertices": 80,
+      "triangles": 160,
+      "group": 0
+    },
+    {
+      "name": "gauge_face",
+      "vertices": 40,
+      "triangles": 64,
+      "group": 0
+    },
+    {
+      "name": "gauge_pointer",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "dial_tick",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "dial_tick.001",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "dial_tick.002",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "drain_tap",
+      "vertices": 24,
+      "triangles": 44,
+      "group": 0
+    },
+    {
+      "name": "tap_key",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "bearing_oiler",
+      "vertices": 16,
+      "triangles": 28,
+      "group": 0
+    },
+    {
+      "name": "bearing_oiler.001",
+      "vertices": 16,
+      "triangles": 28,
+      "group": 0
+    }
+  ],
+  "quantization_max_error": 0.5,
+  "collapsed_triangles": 97,
+  "uv_loops": 10900,
+  "material_conversion": "UV image albedo sampled at triangle centroid, otherwise diffuse color; RGB to 6/3/7-bit HSL. No PBR/normal/roughness transfer.",
+  "texture_image_samples": 0,
+  "vertices": 3026,
+  "triangles": 5599,
+  "budget": {
+    "soft_vertices": 12000,
+    "soft_triangles": 20000
+  },
+  "coordinates": "X right, Y down, Z depth; 128 units/tile",
+  "face_priority": 0,
+  "alpha": 0
+}

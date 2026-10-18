@@ -1,0 +1,32 @@
+{
+  "idle": {
+    "duration_ticks": 80,
+    "native_pose_samples": 81,
+    "max_coordinate_error": 0,
+    "gif_ms": 1600
+  },
+  "walk": {
+    "duration_ticks": 64,
+    "native_pose_samples": 65,
+    "max_coordinate_error": 0,
+    "gif_ms": 1280
+  },
+  "attack": {
+    "duration_ticks": 60,
+    "native_pose_samples": 61,
+    "max_coordinate_error": 0,
+    "gif_ms": 1200
+  },
+  "hit": {
+    "duration_ticks": 40,
+    "native_pose_samples": 41,
+    "max_coordinate_error": 0,
+    "gif_ms": 800
+  },
+  "death": {
+    "duration_ticks": 160,
+    "native_pose_samples": 161,
+    "max_coordinate_error": 0,
+    "gif_ms": 3200
+  }
+}

@@ -1,0 +1,444 @@
+{
+  "components": [
+    {
+      "name": "torso_neck_sculpt",
+      "vertices": 1210,
+      "triangles": 2416,
+      "group": 0
+    },
+    {
+      "name": "muscular_tail",
+      "vertices": 266,
+      "triangles": 492,
+      "group": 14
+    },
+    {
+      "name": "cranial_sculpt",
+      "vertices": 1012,
+      "triangles": 2020,
+      "group": 1
+    },
+    {
+      "name": "hinged_mandible",
+      "vertices": 142,
+      "triangles": 280,
+      "group": 15
+    },
+    {
+      "name": "orbital_socket",
+      "vertices": 86,
+      "triangles": 168,
+      "group": 1
+    },
+    {
+      "name": "amber_iris",
+      "vertices": 86,
+      "triangles": 148,
+      "group": 1
+    },
+    {
+      "name": "vertical_pupil",
+      "vertices": 42,
+      "triangles": 52,
+      "group": 1
+    },
+    {
+      "name": "upper_eyelid",
+      "vertices": 82,
+      "triangles": 138,
+      "group": 1
+    },
+    {
+      "name": "lower_eyelid",
+      "vertices": 62,
+      "triangles": 75,
+      "group": 1
+    },
+    {
+      "name": "zygomatic_ridge",
+      "vertices": 82,
+      "triangles": 160,
+      "group": 1
+    },
+    {
+      "name": "rooted_swept_horn",
+      "vertices": 182,
+      "triangles": 310,
+      "group": 1
+    },
+    {
+      "name": "horn_root",
+      "vertices": 48,
+      "triangles": 96,
+      "group": 1
+    },
+    {
+      "name": "nostril",
+      "vertices": 52,
+      "triangles": 92,
+      "group": 1
+    },
+    {
+      "name": "labial_seam",
+      "vertices": 18,
+      "triangles": 30,
+      "group": 15
+    },
+    {
+      "name": "orbital_socket.001",
+      "vertices": 86,
+      "triangles": 168,
+      "group": 1
+    },
+    {
+      "name": "amber_iris.001",
+      "vertices": 86,
+      "triangles": 148,
+      "group": 1
+    },
+    {
+      "name": "vertical_pupil.001",
+      "vertices": 42,
+      "triangles": 52,
+      "group": 1
+    },
+    {
+      "name": "upper_eyelid.001",
+      "vertices": 82,
+      "triangles": 138,
+      "group": 1
+    },
+    {
+      "name": "lower_eyelid.001",
+      "vertices": 62,
+      "triangles": 74,
+      "group": 1
+    },
+    {
+      "name": "zygomatic_ridge.001",
+      "vertices": 82,
+      "triangles": 160,
+      "group": 1
+    },
+    {
+      "name": "rooted_swept_horn.001",
+      "vertices": 182,
+      "triangles": 310,
+      "group": 1
+    },
+    {
+      "name": "horn_root.001",
+      "vertices": 48,
+      "triangles": 96,
+      "group": 1
+    },
+    {
+      "name": "nostril.001",
+      "vertices": 52,
+      "triangles": 92,
+      "group": 1
+    },
+    {
+      "name": "labial_seam.001",
+      "vertices": 18,
+      "triangles": 30,
+      "group": 15
+    },
+    {
+      "name": "leg_0_upper",
+      "vertices": 122,
+      "triangles": 240,
+      "group": 2
+    },
+    {
+      "name": "leg_0_shin",
+      "vertices": 102,
+      "triangles": 200,
+      "group": 3
+    },
+    {
+      "name": "leg_0_joint",
+      "vertices": 86,
+      "triangles": 168,
+      "group": 3
+    },
+    {
+      "name": "leg_0_palm",
+      "vertices": 102,
+      "triangles": 200,
+      "group": 4
+    },
+    {
+      "name": "leg_0_toe_-1",
+      "vertices": 82,
+      "triangles": 160,
+      "group": 4
+    },
+    {
+      "name": "leg_0_claw_-1",
+      "vertices": 18,
+      "triangles": 22,
+      "group": 4
+    },
+    {
+      "name": "leg_0_toe_0",
+      "vertices": 82,
+      "triangles": 159,
+      "group": 4
+    },
+    {
+      "name": "leg_0_claw_0",
+      "vertices": 18,
+      "triangles": 22,
+      "group": 4
+    },
+    {
+      "name": "leg_0_toe_1",
+      "vertices": 82,
+      "triangles": 160,
+      "group": 4
+    },
+    {
+      "name": "leg_0_claw_1",
+      "vertices": 18,
+      "triangles": 22,
+      "group": 4
+    },
+    {
+      "name": "leg_1_upper",
+      "vertices": 122,
+      "triangles": 240,
+      "group": 5
+    },
+    {
+      "name": "leg_1_shin",
+      "vertices": 102,
+      "triangles": 196,
+      "group": 6
+    },
+    {
+      "name": "leg_1_joint",
+      "vertices": 86,
+      "triangles": 168,
+      "group": 6
+    },
+    {
+      "name": "leg_1_palm",
+      "vertices": 102,
+      "triangles": 200,
+      "group": 7
+    },
+    {
+      "name": "leg_1_toe_-1",
+      "vertices": 82,
+      "triangles": 160,
+      "group": 7
+    },
+    {
+      "name": "leg_1_claw_-1",
+      "vertices": 18,
+      "triangles": 22,
+      "group": 7
+    },
+    {
+      "name": "leg_1_toe_0",
+      "vertices": 82,
+      "triangles": 159,
+      "group": 7
+    },
+    {
+      "name": "leg_1_claw_0",
+      "vertices": 18,
+      "triangles": 22,
+      "group": 7
+    },
+    {
+      "name": "leg_1_toe_1",
+      "vertices": 82,
+      "triangles": 160,
+      "group": 7
+    },
+    {
+      "name": "leg_1_claw_1",
+      "vertices": 18,
+      "triangles": 22,
+      "group": 7
+    },
+    {
+      "name": "leg_2_upper",
+      "vertices": 122,
+      "triangles": 240,
+      "group": 8
+    },
+    {
+      "name": "leg_2_shin",
+      "vertices": 102,
+      "triangles": 200,
+      "group": 9
+    },
+    {
+      "name": "leg_2_joint",
+      "vertices": 86,
+      "triangles": 168,
+      "group": 9
+    },
+    {
+      "name": "leg_2_palm",
+      "vertices": 102,
+      "triangles": 200,
+      "group": 10
+    },
+    {
+      "name": "leg_2_toe_-1",
+      "vertices": 82,
+      "triangles": 160,
+      "group": 10
+    },
+    {
+      "name": "leg_2_claw_-1",
+      "vertices": 18,
+      "triangles": 22,
+      "group": 10
+    },
+    {
+      "name": "leg_2_toe_0",
+      "vertices": 82,
+      "triangles": 159,
+      "group": 10
+    },
+    {
+      "name": "leg_2_claw_0",
+      "vertices": 18,
+      "triangles": 22,
+      "group": 10
+    },
+    {
+      "name": "leg_2_toe_1",
+      "vertices": 82,
+      "triangles": 160,
+      "group": 10
+    },
+    {
+      "name": "leg_2_claw_1",
+      "vertices": 18,
+      "triangles": 22,
+      "group": 10
+    },
+    {
+      "name": "leg_3_upper",
+      "vertices": 122,
+      "triangles": 240,
+      "group": 11
+    },
+    {
+      "name": "leg_3_shin",
+      "vertices": 102,
+      "triangles": 196,
+      "group": 12
+    },
+    {
+      "name": "leg_3_joint",
+      "vertices": 86,
+      "triangles": 168,
+      "group": 12
+    },
+    {
+      "name": "leg_3_palm",
+      "vertices": 102,
+      "triangles": 200,
+      "group": 13
+    },
+    {
+      "name": "leg_3_toe_-1",
+      "vertices": 82,
+      "triangles": 160,
+      "group": 13
+    },
+    {
+      "name": "leg_3_claw_-1",
+      "vertices": 18,
+      "triangles": 22,
+      "group": 13
+    },
+    {
+      "name": "leg_3_toe_0",
+      "vertices": 82,
+      "triangles": 159,
+      "group": 13
+    },
+    {
+      "name": "leg_3_claw_0",
+      "vertices": 18,
+      "triangles": 22,
+      "group": 13
+    },
+    {
+      "name": "leg_3_toe_1",
+      "vertices": 82,
+      "triangles": 160,
+      "group": 13
+    },
+    {
+      "name": "leg_3_claw_1",
+      "vertices": 18,
+      "triangles": 22,
+      "group": 13
+    },
+    {
+      "name": "central_dorsal_0",
+      "vertices": 20,
+      "triangles": 32,
+      "group": 0
+    },
+    {
+      "name": "central_dorsal_1",
+      "vertices": 20,
+      "triangles": 28,
+      "group": 0
+    },
+    {
+      "name": "central_dorsal_2",
+      "vertices": 20,
+      "triangles": 28,
+      "group": 0
+    },
+    {
+      "name": "central_dorsal_3",
+      "vertices": 20,
+      "triangles": 28,
+      "group": 0
+    },
+    {
+      "name": "central_dorsal_4",
+      "vertices": 20,
+      "triangles": 32,
+      "group": 0
+    },
+    {
+      "name": "central_dorsal_5",
+      "vertices": 20,
+      "triangles": 32,
+      "group": 0
+    },
+    {
+      "name": "central_dorsal_6",
+      "vertices": 20,
+      "triangles": 35,
+      "group": 0
+    }
+  ],
+  "quantization_max_error": 0.5,
+  "collapsed_triangles": 556,
+  "uv_loops": 31500,
+  "material_conversion": "UV image albedo sampled at triangle centroid, otherwise diffuse color; RGB to 6/3/7-bit HSL. No PBR/normal/roughness transfer.",
+  "texture_image_samples": 0,
+  "vertices": 7098,
+  "triangles": 13364,
+  "budget": {
+    "soft_vertices": 12000,
+    "soft_triangles": 20000
+  },
+  "coordinates": "X right, Y down, Z depth; 128 units/tile",
+  "face_priority": 0,
+  "alpha": 0
+}

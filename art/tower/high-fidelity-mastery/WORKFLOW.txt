@@ -1,0 +1,67 @@
+ASCENT HIGH-FIDELITY WORKFLOW
+Sources and original geometry are provided for reuse. Protected cache data is not.
+
+Dependencies: Blender 5.2.2 LTS, Python 3.13, Pillow, preserved workbench modules.
+The local path constants are in tools/tower/high-fidelity/review.py. Set BLENDER,
+NATIVE, CACHE and ROOT for your workstation. The manifest identifies the frozen
+native binary and shared tool source hashes. The renderer itself is unchanged.
+
+MODEL GENERATION AND NATIVE REVIEW
+  python tools/tower/high-fidelity/review.py creature final
+  python tools/tower/high-fidelity/review.py architecture revision1
+  python tools/tower/high-fidelity/review.py machine revision1
+The output directories preserve existing source.blend files. Use a fresh output
+version for a new art iteration rather than overwriting an accepted source.
+
+CREATURE METHOD
+Core torso/shoulder/neck volumes are fused and relaxed. Skull and muzzle are
+fused separately; the mandible is independent. Supported sweep cages define
+horns, limbs, toes and claws. Limb roots overlap inside the body; three classic
+groups per limb support motion. Separate plates are fitted to the torso with
+ray projection and local subdivision. World-space masks assign broad material
+regions. Editing a material mask in local coordinates caused a preserved failed
+iteration and should be avoided when components have nonidentity transforms.
+
+Native delivery simplification remains an editable modifier on dense surfaces.
+All source meshes retain UVs. Export evaluates modifiers into a copy and calls
+the preserved codec. Source precision is preserved; native quantization losses
+are recorded. Toggle delivery modifiers for a higher resolution source study.
+
+ANIMATION
+  blender -b OUT/runs/creature-final/source.blend --python-exit-code 1 --python tools/tower/high-fidelity/motion.py -- OUT/runs/creature-final
+  python tools/tower/high-fidelity/motion_review.py
+  python tools/tower/high-fidelity/diagnostics.py
+The rig is explicit; group names alone do not imply correct contact. Review the
+complete GIFs and native poses. Grounded global translation alone can balance a
+corpse on a toe: the death action was corrected by folding the limbs further.
+
+BLENDER PRESENTATION
+  python tools/tower/high-fidelity/present_all.py
+presentation.py supports beauty, clay, topology, front, side, rear and turn-N
+camera modes. It selects CUDA when present and records the selected device.
+Presentation normalizes scale, applies a three-point studio and uses Cycles
+soft shadows. These scenes and images are not native acceptance evidence.
+
+ENVIRONMENT
+  python tools/tower/high-fidelity/scene.py
+  python tools/tower/high-fidelity/present_all.py
+scene.tsv uses 128 units per tile. The published scene uses relative model paths:
+  asset_workbench.exe CACHE OUT scene art/tower/high-fidelity-mastery/scene/scene.tsv art/tower/high-fidelity-mastery/scene/overview.camera
+The Blender scene loads original sources; retained original support meshes are
+converted from their existing geometry, not from proprietary cache inputs.
+
+REVIEW AND PUBLICATION
+  python tools/tower/high-fidelity/publish.py
+  python tools/tower/high-fidelity/verify.py
+Publish.py allowlists original sources and review evidence. Preserve fixed native
+camera and lighting conditions for before/after comparison. Source generation
+scripts are authoritative for the selected final version; historical .blend
+files and native exports preserve earlier iterations that used earlier code.
+
+The optional native_delivery.py weld test is not the selected final model. It
+welds only within a component, preserving group boundaries. Adopting its altered
+vertex weighting would require recompiling and revalidating animations.
+
+Art approval is separate from conversion success. Keep the face expressive, the
+mechanism understandable, the masonry load path legible and the material palette
+coherent. Do not add details that disappear or corrupt in the native renderer.

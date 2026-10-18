@@ -1,0 +1,20 @@
+{
+  "walk": {
+    "native_frames": 64,
+    "max_ground_penetration": 0,
+    "frames_fully_airborne": 0,
+    "mean_stance_surface_height_error": 0.5454545454545454,
+    "max_stance_surface_height_error": 4.0,
+    "note": "Rigid group IK and native integer lattice; stance error is not a promise of final locomotion polish."
+  },
+  "death": {
+    "final_native_tick": 160,
+    "torso_clearance_from_lowest_point": 7.0,
+    "support_components": [
+      "leg_0_upper",
+      "cranial_sculpt"
+    ],
+    "max_ground_penetration": 0,
+    "note": "Final pose is held for 60 ticks; side contact uses the shoulder/cranial surface."
+  }
+}

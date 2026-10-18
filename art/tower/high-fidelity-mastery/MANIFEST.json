@@ -1,0 +1,1967 @@
+{
+  "client_date": "2026-10-17",
+  "assignment": "High-Fidelity Modeling and Rendering Mastery",
+  "attribution": "GPT-6.1 Sol as specified by user mandate; exact runtime ID unavailable",
+  "base_commit": "9492a2d59c4ef6f67f62ed0faa8b40b5cb531236",
+  "branch": "experiment/high-fidelity-mastery",
+  "native_renderer_sha256": "f6e6e12da1a80f7824c9d90a5254964fdc8d738298417c7dcd51e0793caea7cf",
+  "renderer_modified": false,
+  "codec_modified": false,
+  "live_game_modified": false,
+  "protected_content_in_package": false,
+  "blender": "5.2.2 LTS d13f752e3b9c",
+  "dependencies": "Python 3.13, Pillow; bundled Blender bpy/bmesh; existing workbench modules",
+  "assets": {
+    "architecture": {
+      "selection": "architecture-revision1",
+      "source_sha256": "72a075eb259937a4b648928579e41886fb16496faed0f9a27149b7f759db1dc7",
+      "model_sha256": "f8011b839aeca300b08e4b0ab51a27ca64087d7459c9f2e117451d683817a0c1",
+      "baseline_source_sha256": "8bb2e37a46201f145b34d43b836d658c62183618d72d70daf01c84e622507638",
+      "baseline_model_sha256": "a742dbaf00af673dbf9a105575ce8959a81f0a09d2cb19d86469083b84372bae",
+      "conversion": {
+        "components": [
+          {
+            "name": "threshold",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "plinth_-1",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "jamb_-1_0",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "reveal_-1_0",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "jamb_-1_1",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "reveal_-1_1",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "jamb_-1_2",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "reveal_-1_2",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "jamb_-1_3",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "reveal_-1_3",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "jamb_-1_4",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "reveal_-1_4",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "impost_-1",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "buttress_-1",
+            "vertices": 8,
+            "triangles": 12,
+            "group": 0
+          },
+          {
+            "name": "jamb_strap",
+            "vertices": 56,
+            "triangles": 80,
+            "group": 0
+          },
+          {
+            "name": "strap_pin",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "strap_pin.001",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "jamb_strap.001",
+            "vertices": 56,
+            "triangles": 80,
+            "group": 0
+          },
+          {
+            "name": "strap_pin.002",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "strap_pin.003",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "plinth_1",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "jamb_1_0",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "reveal_1_0",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "jamb_1_1",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "reveal_1_1",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "jamb_1_2",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "reveal_1_2",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "jamb_1_3",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "reveal_1_3",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "jamb_1_4",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "reveal_1_4",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "impost_1",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "buttress_1",
+            "vertices": 8,
+            "triangles": 12,
+            "group": 0
+          },
+          {
+            "name": "jamb_strap.002",
+            "vertices": 56,
+            "triangles": 80,
+            "group": 0
+          },
+          {
+            "name": "strap_pin.004",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "strap_pin.005",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "jamb_strap.003",
+            "vertices": 56,
+            "triangles": 80,
+            "group": 0
+          },
+          {
+            "name": "strap_pin.006",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "strap_pin.007",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "voussoir_00",
+            "vertices": 64,
+            "triangles": 124,
+            "group": 0
+          },
+          {
+            "name": "voussoir_01",
+            "vertices": 64,
+            "triangles": 124,
+            "group": 0
+          },
+          {
+            "name": "voussoir_02",
+            "vertices": 64,
+            "triangles": 124,
+            "group": 0
+          },
+          {
+            "name": "voussoir_03",
+            "vertices": 64,
+            "triangles": 124,
+            "group": 0
+          },
+          {
+            "name": "voussoir_04",
+            "vertices": 64,
+            "triangles": 124,
+            "group": 0
+          },
+          {
+            "name": "voussoir_05",
+            "vertices": 64,
+            "triangles": 124,
+            "group": 0
+          },
+          {
+            "name": "voussoir_06",
+            "vertices": 64,
+            "triangles": 124,
+            "group": 0
+          },
+          {
+            "name": "voussoir_07",
+            "vertices": 64,
+            "triangles": 124,
+            "group": 0
+          },
+          {
+            "name": "voussoir_08",
+            "vertices": 64,
+            "triangles": 124,
+            "group": 0
+          },
+          {
+            "name": "voussoir_09",
+            "vertices": 64,
+            "triangles": 124,
+            "group": 0
+          },
+          {
+            "name": "voussoir_10",
+            "vertices": 64,
+            "triangles": 124,
+            "group": 0
+          },
+          {
+            "name": "voussoir_11",
+            "vertices": 64,
+            "triangles": 124,
+            "group": 0
+          },
+          {
+            "name": "voussoir_12",
+            "vertices": 64,
+            "triangles": 124,
+            "group": 0
+          },
+          {
+            "name": "keystone_face",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "crossed_tongs",
+            "vertices": 10,
+            "triangles": 16,
+            "group": 0
+          },
+          {
+            "name": "crossed_tongs.001",
+            "vertices": 10,
+            "triangles": 16,
+            "group": 0
+          },
+          {
+            "name": "ember_seal",
+            "vertices": 26,
+            "triangles": 48,
+            "group": 0
+          },
+          {
+            "name": "gate_tie",
+            "vertices": 16,
+            "triangles": 28,
+            "group": 0
+          },
+          {
+            "name": "grate_bar",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "grate_bar.001",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "grate_bar.002",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "grate_bar.003",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "grate_bar.004",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "grate_bar.005",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "grate_bar.006",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "sconce_bracket",
+            "vertices": 18,
+            "triangles": 32,
+            "group": 0
+          },
+          {
+            "name": "lamp_body",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "lamp_amber",
+            "vertices": 56,
+            "triangles": 44,
+            "group": 0
+          },
+          {
+            "name": "lamp_louvre",
+            "vertices": 8,
+            "triangles": 12,
+            "group": 0
+          },
+          {
+            "name": "lamp_louvre.001",
+            "vertices": 8,
+            "triangles": 12,
+            "group": 0
+          },
+          {
+            "name": "lamp_louvre.002",
+            "vertices": 8,
+            "triangles": 12,
+            "group": 0
+          },
+          {
+            "name": "lamp_louvre.003",
+            "vertices": 8,
+            "triangles": 12,
+            "group": 0
+          },
+          {
+            "name": "sconce_bracket.001",
+            "vertices": 18,
+            "triangles": 32,
+            "group": 0
+          },
+          {
+            "name": "lamp_body.001",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "lamp_amber.001",
+            "vertices": 56,
+            "triangles": 44,
+            "group": 0
+          },
+          {
+            "name": "lamp_louvre.004",
+            "vertices": 8,
+            "triangles": 12,
+            "group": 0
+          },
+          {
+            "name": "lamp_louvre.005",
+            "vertices": 8,
+            "triangles": 12,
+            "group": 0
+          },
+          {
+            "name": "lamp_louvre.006",
+            "vertices": 8,
+            "triangles": 12,
+            "group": 0
+          },
+          {
+            "name": "lamp_louvre.007",
+            "vertices": 8,
+            "triangles": 12,
+            "group": 0
+          },
+          {
+            "name": "threshold_drain",
+            "vertices": 8,
+            "triangles": 12,
+            "group": 0
+          },
+          {
+            "name": "threshold_drain.001",
+            "vertices": 8,
+            "triangles": 12,
+            "group": 0
+          },
+          {
+            "name": "worn_tread",
+            "vertices": 56,
+            "triangles": 28,
+            "group": 0
+          },
+          {
+            "name": "springer_iron_seat",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "seat_rivet",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "seat_rivet.001",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "footing_return",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "springer_iron_seat.001",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "seat_rivet.002",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "seat_rivet.003",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "footing_return.001",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          }
+        ],
+        "quantization_max_error": 0.5,
+        "collapsed_triangles": 320,
+        "uv_loops": 13064,
+        "material_conversion": "UV image albedo sampled at triangle centroid, otherwise diffuse color; RGB to 6/3/7-bit HSL. No PBR/normal/roughness transfer.",
+        "texture_image_samples": 0,
+        "vertices": 3438,
+        "triangles": 6200,
+        "budget": {
+          "soft_vertices": 12000,
+          "soft_triangles": 20000
+        },
+        "coordinates": "X right, Y down, Z depth; 128 units/tile",
+        "face_priority": 0,
+        "alpha": 0
+      }
+    },
+    "machine": {
+      "selection": "machine-revision1",
+      "source_sha256": "3898980660f65beba88041175e1879d52f0456882f69c574c0139227d8e3e548",
+      "model_sha256": "bf96645425dee03b5517c44ff3a541d82d1a67b551becfbb5097ce7b1fb457d7",
+      "baseline_source_sha256": "311c4a42bf89619836c4d288012659ad7cbdf50994f7971946980d3b15f494e1",
+      "baseline_model_sha256": "58c535cb64cc91a2e5840768022b7cba9a0ac96c893c21be54c2567cb6b7b81d",
+      "conversion": {
+        "components": [
+          {
+            "name": "stone_bed",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "oak_sleeper",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "oak_sleeper.001",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "cast_bed",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "bed_bolt",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "bed_bolt.001",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "bed_bolt.002",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "bed_bolt.003",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "pump_barrel",
+            "vertices": 32,
+            "triangles": 60,
+            "group": 0
+          },
+          {
+            "name": "flange",
+            "vertices": 64,
+            "triangles": 128,
+            "group": 0
+          },
+          {
+            "name": "flange_stud",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "flange_stud.001",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "flange_stud.002",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "flange_stud.003",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "flange_stud.004",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "flange_stud.005",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "flange.001",
+            "vertices": 64,
+            "triangles": 128,
+            "group": 0
+          },
+          {
+            "name": "flange_stud.006",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "flange_stud.007",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "flange_stud.008",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "flange_stud.009",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "flange_stud.010",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "flange_stud.011",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "piston_rod",
+            "vertices": 20,
+            "triangles": 36,
+            "group": 0
+          },
+          {
+            "name": "crosshead",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "slide_rail",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "slide_rail.001",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "connecting_rod",
+            "vertices": 16,
+            "triangles": 28,
+            "group": 0
+          },
+          {
+            "name": "crank_web",
+            "vertices": 20,
+            "triangles": 36,
+            "group": 0
+          },
+          {
+            "name": "crank_pin",
+            "vertices": 20,
+            "triangles": 36,
+            "group": 0
+          },
+          {
+            "name": "big_end",
+            "vertices": 48,
+            "triangles": 96,
+            "group": 0
+          },
+          {
+            "name": "pump_barrel.001",
+            "vertices": 32,
+            "triangles": 60,
+            "group": 0
+          },
+          {
+            "name": "flange.002",
+            "vertices": 64,
+            "triangles": 128,
+            "group": 0
+          },
+          {
+            "name": "flange_stud.012",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "flange_stud.013",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "flange_stud.014",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "flange_stud.015",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "flange_stud.016",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "flange_stud.017",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "flange.003",
+            "vertices": 64,
+            "triangles": 128,
+            "group": 0
+          },
+          {
+            "name": "flange_stud.018",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "flange_stud.019",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "flange_stud.020",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "flange_stud.021",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "flange_stud.022",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "flange_stud.023",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "piston_rod.001",
+            "vertices": 20,
+            "triangles": 36,
+            "group": 0
+          },
+          {
+            "name": "crosshead.001",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "slide_rail.002",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "slide_rail.003",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "connecting_rod.001",
+            "vertices": 16,
+            "triangles": 28,
+            "group": 0
+          },
+          {
+            "name": "crank_web.001",
+            "vertices": 20,
+            "triangles": 36,
+            "group": 0
+          },
+          {
+            "name": "crank_pin.001",
+            "vertices": 20,
+            "triangles": 36,
+            "group": 0
+          },
+          {
+            "name": "big_end.001",
+            "vertices": 48,
+            "triangles": 96,
+            "group": 0
+          },
+          {
+            "name": "bearing_pedestal",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "bearing_shell",
+            "vertices": 64,
+            "triangles": 128,
+            "group": 0
+          },
+          {
+            "name": "bearing_pedestal.001",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "bearing_shell.001",
+            "vertices": 64,
+            "triangles": 128,
+            "group": 0
+          },
+          {
+            "name": "crank_axle",
+            "vertices": 24,
+            "triangles": 44,
+            "group": 0
+          },
+          {
+            "name": "flywheel",
+            "vertices": 160,
+            "triangles": 320,
+            "group": 0
+          },
+          {
+            "name": "hub",
+            "vertices": 24,
+            "triangles": 44,
+            "group": 0
+          },
+          {
+            "name": "swept_spoke",
+            "vertices": 18,
+            "triangles": 32,
+            "group": 0
+          },
+          {
+            "name": "swept_spoke.001",
+            "vertices": 18,
+            "triangles": 32,
+            "group": 0
+          },
+          {
+            "name": "swept_spoke.002",
+            "vertices": 18,
+            "triangles": 32,
+            "group": 0
+          },
+          {
+            "name": "swept_spoke.003",
+            "vertices": 18,
+            "triangles": 32,
+            "group": 0
+          },
+          {
+            "name": "swept_spoke.004",
+            "vertices": 18,
+            "triangles": 32,
+            "group": 0
+          },
+          {
+            "name": "swept_spoke.005",
+            "vertices": 18,
+            "triangles": 32,
+            "group": 0
+          },
+          {
+            "name": "intake",
+            "vertices": 72,
+            "triangles": 140,
+            "group": 0
+          },
+          {
+            "name": "discharge",
+            "vertices": 72,
+            "triangles": 140,
+            "group": 0
+          },
+          {
+            "name": "pressure_vessel",
+            "vertices": 80,
+            "triangles": 137,
+            "group": 0
+          },
+          {
+            "name": "vessel_plug",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "dome_collar",
+            "vertices": 80,
+            "triangles": 160,
+            "group": 0
+          },
+          {
+            "name": "valve_stem",
+            "vertices": 16,
+            "triangles": 28,
+            "group": 0
+          },
+          {
+            "name": "handwheel",
+            "vertices": 80,
+            "triangles": 160,
+            "group": 0
+          },
+          {
+            "name": "valve_spoke",
+            "vertices": 10,
+            "triangles": 16,
+            "group": 0
+          },
+          {
+            "name": "valve_spoke.001",
+            "vertices": 10,
+            "triangles": 16,
+            "group": 0
+          },
+          {
+            "name": "valve_spoke.002",
+            "vertices": 10,
+            "triangles": 16,
+            "group": 0
+          },
+          {
+            "name": "valve_spoke.003",
+            "vertices": 10,
+            "triangles": 16,
+            "group": 0
+          },
+          {
+            "name": "makers_tablet",
+            "vertices": 56,
+            "triangles": 44,
+            "group": 0
+          },
+          {
+            "name": "tablet_cut",
+            "vertices": 8,
+            "triangles": 12,
+            "group": 0
+          },
+          {
+            "name": "tablet_cut.001",
+            "vertices": 8,
+            "triangles": 12,
+            "group": 0
+          },
+          {
+            "name": "tablet_cut.002",
+            "vertices": 8,
+            "triangles": 12,
+            "group": 0
+          },
+          {
+            "name": "sleeper_strap",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "sleeper_strap.001",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "sleeper_strap.002",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "sleeper_strap.003",
+            "vertices": 56,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "packing_gland",
+            "vertices": 64,
+            "triangles": 128,
+            "group": 0
+          },
+          {
+            "name": "gland_tie",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "gland_tie.001",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "packing_gland.001",
+            "vertices": 64,
+            "triangles": 128,
+            "group": 0
+          },
+          {
+            "name": "gland_tie.002",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "gland_tie.003",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "gauge_stem",
+            "vertices": 30,
+            "triangles": 54,
+            "group": 0
+          },
+          {
+            "name": "gauge_bezel",
+            "vertices": 80,
+            "triangles": 160,
+            "group": 0
+          },
+          {
+            "name": "gauge_face",
+            "vertices": 40,
+            "triangles": 64,
+            "group": 0
+          },
+          {
+            "name": "gauge_pointer",
+            "vertices": 8,
+            "triangles": 12,
+            "group": 0
+          },
+          {
+            "name": "dial_tick",
+            "vertices": 8,
+            "triangles": 12,
+            "group": 0
+          },
+          {
+            "name": "dial_tick.001",
+            "vertices": 8,
+            "triangles": 12,
+            "group": 0
+          },
+          {
+            "name": "dial_tick.002",
+            "vertices": 8,
+            "triangles": 12,
+            "group": 0
+          },
+          {
+            "name": "drain_tap",
+            "vertices": 24,
+            "triangles": 44,
+            "group": 0
+          },
+          {
+            "name": "tap_key",
+            "vertices": 12,
+            "triangles": 20,
+            "group": 0
+          },
+          {
+            "name": "bearing_oiler",
+            "vertices": 16,
+            "triangles": 28,
+            "group": 0
+          },
+          {
+            "name": "bearing_oiler.001",
+            "vertices": 16,
+            "triangles": 28,
+            "group": 0
+          }
+        ],
+        "quantization_max_error": 0.5,
+        "collapsed_triangles": 97,
+        "uv_loops": 10900,
+        "material_conversion": "UV image albedo sampled at triangle centroid, otherwise diffuse color; RGB to 6/3/7-bit HSL. No PBR/normal/roughness transfer.",
+        "texture_image_samples": 0,
+        "vertices": 3026,
+        "triangles": 5599,
+        "budget": {
+          "soft_vertices": 12000,
+          "soft_triangles": 20000
+        },
+        "coordinates": "X right, Y down, Z depth; 128 units/tile",
+        "face_priority": 0,
+        "alpha": 0
+      }
+    },
+    "creature": {
+      "selection": "creature-final",
+      "source_sha256": "924998f32332536f13511a1a001872051f218c25a709822c471922bb76525f31",
+      "model_sha256": "8d4236e564a0cb2f50771298593646b18447f20e60053a50b1a1d44f37bb2dba",
+      "baseline_source_sha256": "9ae6de31500a8870b4a97e83fb9c909afaa82102138be3f608e81eaeaac21b41",
+      "baseline_model_sha256": "033f7c2bca22f6a55bf3fdf2daef8485265ce83662b8ae0dd0c2c1c7d38eaa7c",
+      "conversion": {
+        "components": [
+          {
+            "name": "torso_neck_sculpt",
+            "vertices": 759,
+            "triangles": 1514,
+            "group": 0
+          },
+          {
+            "name": "muscular_tail",
+            "vertices": 225,
+            "triangles": 434,
+            "group": 14
+          },
+          {
+            "name": "cranial_sculpt",
+            "vertices": 637,
+            "triangles": 1268,
+            "group": 1
+          },
+          {
+            "name": "hinged_mandible",
+            "vertices": 138,
+            "triangles": 270,
+            "group": 15
+          },
+          {
+            "name": "orbital_socket",
+            "vertices": 86,
+            "triangles": 168,
+            "group": 1
+          },
+          {
+            "name": "amber_iris",
+            "vertices": 86,
+            "triangles": 152,
+            "group": 1
+          },
+          {
+            "name": "vertical_pupil",
+            "vertices": 42,
+            "triangles": 52,
+            "group": 1
+          },
+          {
+            "name": "upper_eyelid",
+            "vertices": 146,
+            "triangles": 193,
+            "group": 1
+          },
+          {
+            "name": "lower_eyelid",
+            "vertices": 110,
+            "triangles": 122,
+            "group": 1
+          },
+          {
+            "name": "zygomatic_ridge",
+            "vertices": 146,
+            "triangles": 288,
+            "group": 1
+          },
+          {
+            "name": "rooted_swept_horn",
+            "vertices": 163,
+            "triangles": 304,
+            "group": 1
+          },
+          {
+            "name": "horn_root",
+            "vertices": 48,
+            "triangles": 96,
+            "group": 1
+          },
+          {
+            "name": "nostril",
+            "vertices": 52,
+            "triangles": 92,
+            "group": 1
+          },
+          {
+            "name": "labial_seam",
+            "vertices": 18,
+            "triangles": 30,
+            "group": 15
+          },
+          {
+            "name": "jaw_tooth",
+            "vertices": 18,
+            "triangles": 22,
+            "group": 15
+          },
+          {
+            "name": "jaw_tooth.001",
+            "vertices": 18,
+            "triangles": 24,
+            "group": 15
+          },
+          {
+            "name": "jaw_tooth.002",
+            "vertices": 18,
+            "triangles": 22,
+            "group": 15
+          },
+          {
+            "name": "nasal_shield_-1",
+            "vertices": 20,
+            "triangles": 31,
+            "group": 1
+          },
+          {
+            "name": "orbital_socket.001",
+            "vertices": 86,
+            "triangles": 168,
+            "group": 1
+          },
+          {
+            "name": "amber_iris.001",
+            "vertices": 86,
+            "triangles": 152,
+            "group": 1
+          },
+          {
+            "name": "vertical_pupil.001",
+            "vertices": 42,
+            "triangles": 52,
+            "group": 1
+          },
+          {
+            "name": "upper_eyelid.001",
+            "vertices": 146,
+            "triangles": 192,
+            "group": 1
+          },
+          {
+            "name": "lower_eyelid.001",
+            "vertices": 110,
+            "triangles": 120,
+            "group": 1
+          },
+          {
+            "name": "zygomatic_ridge.001",
+            "vertices": 146,
+            "triangles": 288,
+            "group": 1
+          },
+          {
+            "name": "rooted_swept_horn.001",
+            "vertices": 163,
+            "triangles": 302,
+            "group": 1
+          },
+          {
+            "name": "horn_root.001",
+            "vertices": 48,
+            "triangles": 96,
+            "group": 1
+          },
+          {
+            "name": "nostril.001",
+            "vertices": 52,
+            "triangles": 92,
+            "group": 1
+          },
+          {
+            "name": "labial_seam.001",
+            "vertices": 18,
+            "triangles": 30,
+            "group": 15
+          },
+          {
+            "name": "jaw_tooth.003",
+            "vertices": 18,
+            "triangles": 22,
+            "group": 15
+          },
+          {
+            "name": "jaw_tooth.004",
+            "vertices": 18,
+            "triangles": 24,
+            "group": 15
+          },
+          {
+            "name": "jaw_tooth.005",
+            "vertices": 18,
+            "triangles": 22,
+            "group": 15
+          },
+          {
+            "name": "nasal_shield_1",
+            "vertices": 20,
+            "triangles": 31,
+            "group": 1
+          },
+          {
+            "name": "leg_0_upper",
+            "vertices": 135,
+            "triangles": 266,
+            "group": 2
+          },
+          {
+            "name": "leg_0_shin",
+            "vertices": 182,
+            "triangles": 360,
+            "group": 3
+          },
+          {
+            "name": "leg_0_flexor",
+            "vertices": 52,
+            "triangles": 100,
+            "group": 3
+          },
+          {
+            "name": "leg_0_palm",
+            "vertices": 182,
+            "triangles": 353,
+            "group": 4
+          },
+          {
+            "name": "leg_0_toe_-1",
+            "vertices": 146,
+            "triangles": 272,
+            "group": 4
+          },
+          {
+            "name": "leg_0_claw_-1",
+            "vertices": 18,
+            "triangles": 22,
+            "group": 4
+          },
+          {
+            "name": "leg_0_toe_0",
+            "vertices": 146,
+            "triangles": 276,
+            "group": 4
+          },
+          {
+            "name": "leg_0_claw_0",
+            "vertices": 18,
+            "triangles": 22,
+            "group": 4
+          },
+          {
+            "name": "leg_0_toe_1",
+            "vertices": 146,
+            "triangles": 274,
+            "group": 4
+          },
+          {
+            "name": "leg_0_claw_1",
+            "vertices": 18,
+            "triangles": 22,
+            "group": 4
+          },
+          {
+            "name": "leg_0_elbow_shield",
+            "vertices": 24,
+            "triangles": 44,
+            "group": 3
+          },
+          {
+            "name": "leg_0_wrist_shield",
+            "vertices": 24,
+            "triangles": 44,
+            "group": 4
+          },
+          {
+            "name": "leg_1_upper",
+            "vertices": 135,
+            "triangles": 266,
+            "group": 5
+          },
+          {
+            "name": "leg_1_shin",
+            "vertices": 182,
+            "triangles": 356,
+            "group": 6
+          },
+          {
+            "name": "leg_1_flexor",
+            "vertices": 52,
+            "triangles": 100,
+            "group": 6
+          },
+          {
+            "name": "leg_1_palm",
+            "vertices": 182,
+            "triangles": 353,
+            "group": 7
+          },
+          {
+            "name": "leg_1_toe_-1",
+            "vertices": 146,
+            "triangles": 272,
+            "group": 7
+          },
+          {
+            "name": "leg_1_claw_-1",
+            "vertices": 18,
+            "triangles": 22,
+            "group": 7
+          },
+          {
+            "name": "leg_1_toe_0",
+            "vertices": 146,
+            "triangles": 276,
+            "group": 7
+          },
+          {
+            "name": "leg_1_claw_0",
+            "vertices": 18,
+            "triangles": 22,
+            "group": 7
+          },
+          {
+            "name": "leg_1_toe_1",
+            "vertices": 146,
+            "triangles": 274,
+            "group": 7
+          },
+          {
+            "name": "leg_1_claw_1",
+            "vertices": 18,
+            "triangles": 22,
+            "group": 7
+          },
+          {
+            "name": "leg_1_elbow_shield",
+            "vertices": 24,
+            "triangles": 44,
+            "group": 6
+          },
+          {
+            "name": "leg_1_wrist_shield",
+            "vertices": 24,
+            "triangles": 44,
+            "group": 7
+          },
+          {
+            "name": "leg_2_upper",
+            "vertices": 135,
+            "triangles": 266,
+            "group": 8
+          },
+          {
+            "name": "leg_2_shin",
+            "vertices": 182,
+            "triangles": 360,
+            "group": 9
+          },
+          {
+            "name": "leg_2_flexor",
+            "vertices": 52,
+            "triangles": 100,
+            "group": 9
+          },
+          {
+            "name": "leg_2_palm",
+            "vertices": 182,
+            "triangles": 353,
+            "group": 10
+          },
+          {
+            "name": "leg_2_toe_-1",
+            "vertices": 146,
+            "triangles": 272,
+            "group": 10
+          },
+          {
+            "name": "leg_2_claw_-1",
+            "vertices": 18,
+            "triangles": 22,
+            "group": 10
+          },
+          {
+            "name": "leg_2_toe_0",
+            "vertices": 146,
+            "triangles": 276,
+            "group": 10
+          },
+          {
+            "name": "leg_2_claw_0",
+            "vertices": 18,
+            "triangles": 22,
+            "group": 10
+          },
+          {
+            "name": "leg_2_toe_1",
+            "vertices": 146,
+            "triangles": 274,
+            "group": 10
+          },
+          {
+            "name": "leg_2_claw_1",
+            "vertices": 18,
+            "triangles": 22,
+            "group": 10
+          },
+          {
+            "name": "leg_2_elbow_shield",
+            "vertices": 24,
+            "triangles": 44,
+            "group": 9
+          },
+          {
+            "name": "leg_2_wrist_shield",
+            "vertices": 24,
+            "triangles": 44,
+            "group": 10
+          },
+          {
+            "name": "leg_3_upper",
+            "vertices": 135,
+            "triangles": 266,
+            "group": 11
+          },
+          {
+            "name": "leg_3_shin",
+            "vertices": 182,
+            "triangles": 356,
+            "group": 12
+          },
+          {
+            "name": "leg_3_flexor",
+            "vertices": 52,
+            "triangles": 100,
+            "group": 12
+          },
+          {
+            "name": "leg_3_palm",
+            "vertices": 182,
+            "triangles": 353,
+            "group": 13
+          },
+          {
+            "name": "leg_3_toe_-1",
+            "vertices": 146,
+            "triangles": 272,
+            "group": 13
+          },
+          {
+            "name": "leg_3_claw_-1",
+            "vertices": 18,
+            "triangles": 22,
+            "group": 13
+          },
+          {
+            "name": "leg_3_toe_0",
+            "vertices": 146,
+            "triangles": 276,
+            "group": 13
+          },
+          {
+            "name": "leg_3_claw_0",
+            "vertices": 18,
+            "triangles": 22,
+            "group": 13
+          },
+          {
+            "name": "leg_3_toe_1",
+            "vertices": 146,
+            "triangles": 274,
+            "group": 13
+          },
+          {
+            "name": "leg_3_claw_1",
+            "vertices": 18,
+            "triangles": 22,
+            "group": 13
+          },
+          {
+            "name": "leg_3_elbow_shield",
+            "vertices": 24,
+            "triangles": 44,
+            "group": 12
+          },
+          {
+            "name": "leg_3_wrist_shield",
+            "vertices": 24,
+            "triangles": 44,
+            "group": 13
+          },
+          {
+            "name": "central_dorsal_0",
+            "vertices": 74,
+            "triangles": 112,
+            "group": 0
+          },
+          {
+            "name": "lateral_scute_-1_0",
+            "vertices": 74,
+            "triangles": 119,
+            "group": 0
+          },
+          {
+            "name": "lateral_scute_1_0",
+            "vertices": 74,
+            "triangles": 121,
+            "group": 0
+          },
+          {
+            "name": "central_dorsal_1",
+            "vertices": 74,
+            "triangles": 112,
+            "group": 0
+          },
+          {
+            "name": "lateral_scute_-1_1",
+            "vertices": 74,
+            "triangles": 111,
+            "group": 0
+          },
+          {
+            "name": "lateral_scute_1_1",
+            "vertices": 74,
+            "triangles": 112,
+            "group": 0
+          },
+          {
+            "name": "central_dorsal_2",
+            "vertices": 74,
+            "triangles": 110,
+            "group": 0
+          },
+          {
+            "name": "lateral_scute_-1_2",
+            "vertices": 74,
+            "triangles": 110,
+            "group": 0
+          },
+          {
+            "name": "lateral_scute_1_2",
+            "vertices": 74,
+            "triangles": 107,
+            "group": 0
+          },
+          {
+            "name": "central_dorsal_3",
+            "vertices": 74,
+            "triangles": 104,
+            "group": 0
+          },
+          {
+            "name": "lateral_scute_-1_3",
+            "vertices": 74,
+            "triangles": 108,
+            "group": 0
+          },
+          {
+            "name": "lateral_scute_1_3",
+            "vertices": 74,
+            "triangles": 105,
+            "group": 0
+          },
+          {
+            "name": "central_dorsal_4",
+            "vertices": 74,
+            "triangles": 112,
+            "group": 0
+          },
+          {
+            "name": "lateral_scute_-1_4",
+            "vertices": 74,
+            "triangles": 110,
+            "group": 0
+          },
+          {
+            "name": "lateral_scute_1_4",
+            "vertices": 74,
+            "triangles": 112,
+            "group": 0
+          },
+          {
+            "name": "central_dorsal_5",
+            "vertices": 74,
+            "triangles": 112,
+            "group": 0
+          },
+          {
+            "name": "lateral_scute_-1_5",
+            "vertices": 74,
+            "triangles": 109,
+            "group": 0
+          },
+          {
+            "name": "lateral_scute_1_5",
+            "vertices": 74,
+            "triangles": 107,
+            "group": 0
+          },
+          {
+            "name": "central_dorsal_6",
+            "vertices": 74,
+            "triangles": 120,
+            "group": 0
+          },
+          {
+            "name": "lateral_scute_-1_6",
+            "vertices": 74,
+            "triangles": 117,
+            "group": 0
+          },
+          {
+            "name": "lateral_scute_1_6",
+            "vertices": 74,
+            "triangles": 115,
+            "group": 0
+          },
+          {
+            "name": "tail_scute_0",
+            "vertices": 20,
+            "triangles": 36,
+            "group": 14
+          },
+          {
+            "name": "tail_scute_1",
+            "vertices": 24,
+            "triangles": 44,
+            "group": 14
+          },
+          {
+            "name": "tail_scute_2",
+            "vertices": 24,
+            "triangles": 44,
+            "group": 14
+          }
+        ],
+        "quantization_max_error": 0.5,
+        "collapsed_triangles": 1612,
+        "uv_loops": 46470,
+        "material_conversion": "UV image albedo sampled at triangle centroid, otherwise diffuse color; RGB to 6/3/7-bit HSL. No PBR/normal/roughness transfer.",
+        "texture_image_samples": 0,
+        "vertices": 9687,
+        "triangles": 17354,
+        "budget": {
+          "soft_vertices": 12000,
+          "soft_triangles": 20000
+        },
+        "coordinates": "X right, Y down, Z depth; 128 units/tile",
+        "face_priority": 0,
+        "alpha": 0
+      }
+    }
+  },
+  "new_tool_hashes": {
+    "diagnostics.py": "df810179c87737f38089c47a5fc0d01536aeaa6dac20ee56e9c2046ce3bee8c6",
+    "ground.py": "daf3b0b7ee2c29773a3e5aa55622a840de84b80fc25bca77cd4bd1d467874abc",
+    "motion.py": "440fd98f844f0d97009ee34990d20dfabcfebdc95f10acd994f2fed8d240bf8d",
+    "motion_review.py": "09df5bf363fce7b534d615a79fd6a0e4c13f1ebf80b678c541a03a38e74a8a91",
+    "native_delivery.py": "f79be10393aea327b9378f1693f9970a74e3bf728831bf3fea9bd882f451f56b",
+    "presentation.py": "13b5568be9f17e4575e07e20b07274703016f9bc55ae095ddafee24d0c6847c9",
+    "present_all.py": "b5036fb4a0eac673ee4d721c87856be084f49faf142d5cd22617030c4e773297",
+    "publish.py": "49407b965a36dba409bcab38d4260c5060b848f0e20477c3f6edc974eb2ea837",
+    "reexport.py": "995eaad2599200190bf8396a669708d2ec010d7116ff5213b120789ae37a5c97",
+    "refine.py": "5300dc0748f4e75b258634ed0ac44508bc3a63960bac03f46b86e7c5cbf98e7b",
+    "review.py": "2bade964fd991903b13303b6bb571d652f4dda1a5dc88c121a0d6794724a8232",
+    "scene.py": "eb265498be8668352fea5cbdabe57e0b4522103e131616f74ca19f5beb014c4c",
+    "scene_blender.py": "0c089fb280f22868c3179abd202f924495f2c9910bbd4cb7438e9313c2218a22",
+    "verify.py": "50d1ea12ccf52f6824937ce6faf918aea8f826c3e2c1a1c758d80bcf22b0eaa8"
+  },
+  "shared_tool_hashes": {
+    "tools\\tower\\mesh-study\\mesh_tools.py": "84b1b7b1d5b320189ba44648ba9fa6e8e9356ef5bf3cd5ba89db9e41babadff9",
+    "tools\\tower\\mesh-study\\author.py": "dab04093f32af13da791eb66eeb5e83cde6ddfbf504c242112765c3dae56b77c",
+    "tools\\tower\\asset-workbench\\native_codec.py": "34590d7c8468bbcc2b8e37cf7d2db1a8e309f6767bbdfd0e5cb11c6e3ea34c12",
+    "tools\\tower\\asset-workbench\\author_blender.py": "f041ab77850b151bbb04f803ade557916f800901c3f2014419370c95d6de3434",
+    "tools\\tower\\asset-workbench\\kinematics.py": "0598b9cb5223ca9c056a4a65a41fbaf542793f85a46269af10ae45b6912f241f",
+    "tools\\tower\\asset-workbench\\motion_authoring.py": "a93794eec599ecde662a470617fce10096202ec307fa01b57b2c85213c572b10"
+  },
+  "motion": {
+    "idle": {
+      "duration_ticks": 80,
+      "native_pose_samples": 81,
+      "max_coordinate_error": 0,
+      "gif_ms": 1600
+    },
+    "walk": {
+      "duration_ticks": 64,
+      "native_pose_samples": 65,
+      "max_coordinate_error": 0,
+      "gif_ms": 1280
+    },
+    "attack": {
+      "duration_ticks": 60,
+      "native_pose_samples": 61,
+      "max_coordinate_error": 0,
+      "gif_ms": 1200
+    },
+    "hit": {
+      "duration_ticks": 40,
+      "native_pose_samples": 41,
+      "max_coordinate_error": 0,
+      "gif_ms": 800
+    },
+    "death": {
+      "duration_ticks": 160,
+      "native_pose_samples": 161,
+      "max_coordinate_error": 0,
+      "gif_ms": 3200
+    }
+  },
+  "diagnostics": {
+    "walk": {
+      "native_frames": 64,
+      "max_ground_penetration": 0,
+      "frames_fully_airborne": 0,
+      "mean_stance_surface_height_error": 0.5454545454545454,
+      "max_stance_surface_height_error": 4.0,
+      "note": "Rigid group IK and native integer lattice; stance error is not a promise of final locomotion polish."
+    },
+    "death": {
+      "final_native_tick": 160,
+      "torso_clearance_from_lowest_point": 7.0,
+      "support_components": [
+        "leg_0_upper",
+        "cranial_sculpt"
+      ],
+      "max_ground_penetration": 0,
+      "note": "Final pose is held for 60 ticks; side contact uses the shoulder/cranial surface."
+    }
+  },
+  "gpu": {
+    "engine": "Cycles",
+    "backend": "CUDA",
+    "devices": [
+      {
+        "name": "NVIDIA GeForce GTX 1660 Ti",
+        "type": "CUDA",
+        "selected": true
+      },
+      {
+        "name": "Intel Core i7-10750H CPU @ 2.60GHz",
+        "type": "CPU",
+        "selected": false
+      },
+      {
+        "name": "NVIDIA GeForce GTX 1660 Ti",
+        "type": "OPTIX",
+        "selected": false
+      }
+    ],
+    "samples": 32,
+    "source_scale": "Presentation normalized to 128 units/m",
+    "native_acceptance": false
+  }
+}

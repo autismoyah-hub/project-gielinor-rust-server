@@ -1,0 +1,11 @@
+{
+  "creature_source_reexport_exact": true,
+  "architecture_source_reexport_exact": true,
+  "machine_source_reexport_exact": true,
+  "local_links_complete": true,
+  "portable_scene_pixel_exact": true,
+  "native_pose_samples": 409,
+  "all_five_gif_durations_exact": true,
+  "renderer_sha256": "f6e6e12da1a80f7824c9d90a5254964fdc8d738298417c7dcd51e0793caea7cf",
+  "file_hashes_checked": 394
+}

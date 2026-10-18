@@ -1,0 +1,5010 @@
+{
+  "rig": [
+    {
+      "name": "body",
+      "parent": null,
+      "origin": [
+        0,
+        -61,
+        0
+      ],
+      "groups": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
+    },
+    {
+      "name": "head",
+      "parent": "body",
+      "origin": [
+        0,
+        -78,
+        -62
+      ],
+      "groups": [
+        1,
+        15
+      ]
+    },
+    {
+      "name": "jaw",
+      "parent": "head",
+      "origin": [
+        0,
+        -65,
+        -80
+      ],
+      "groups": [
+        15
+      ]
+    },
+    {
+      "name": "tail",
+      "parent": "body",
+      "origin": [
+        0,
+        -52,
+        57
+      ],
+      "groups": [
+        14
+      ]
+    },
+    {
+      "name": "leg_0_hip",
+      "parent": "body",
+      "origin": [
+        -27,
+        -67,
+        -34
+      ],
+      "groups": [
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "name": "leg_0_knee",
+      "parent": "leg_0_hip",
+      "origin": [
+        -43,
+        -38,
+        -26
+      ],
+      "groups": [
+        3,
+        4
+      ]
+    },
+    {
+      "name": "leg_0_ankle",
+      "parent": "leg_0_knee",
+      "origin": [
+        -40,
+        -10,
+        -47
+      ],
+      "groups": [
+        4
+      ]
+    },
+    {
+      "name": "leg_1_hip",
+      "parent": "body",
+      "origin": [
+        -27,
+        -60,
+        42
+      ],
+      "groups": [
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "name": "leg_1_knee",
+      "parent": "leg_1_hip",
+      "origin": [
+        -43,
+        -32,
+        46
+      ],
+      "groups": [
+        6,
+        7
+      ]
+    },
+    {
+      "name": "leg_1_ankle",
+      "parent": "leg_1_knee",
+      "origin": [
+        -40,
+        -10,
+        33
+      ],
+      "groups": [
+        7
+      ]
+    },
+    {
+      "name": "leg_2_hip",
+      "parent": "body",
+      "origin": [
+        27,
+        -67,
+        -34
+      ],
+      "groups": [
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "name": "leg_2_knee",
+      "parent": "leg_2_hip",
+      "origin": [
+        43,
+        -38,
+        -26
+      ],
+      "groups": [
+        9,
+        10
+      ]
+    },
+    {
+      "name": "leg_2_ankle",
+      "parent": "leg_2_knee",
+      "origin": [
+        40,
+        -10,
+        -47
+      ],
+      "groups": [
+        10
+      ]
+    },
+    {
+      "name": "leg_3_hip",
+      "parent": "body",
+      "origin": [
+        27,
+        -60,
+        42
+      ],
+      "groups": [
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "name": "leg_3_knee",
+      "parent": "leg_3_hip",
+      "origin": [
+        43,
+        -32,
+        46
+      ],
+      "groups": [
+        12,
+        13
+      ]
+    },
+    {
+      "name": "leg_3_ankle",
+      "parent": "leg_3_knee",
+      "origin": [
+        40,
+        -10,
+        33
+      ],
+      "groups": [
+        13
+      ]
+    }
+  ],
+  "actions": {
+    "idle": {
+      "duration_ticks": 80,
+      "cadence_ticks": 2,
+      "loop": true,
+      "keys": [
+        {
+          "tick": 0,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ],
+            "head": [
+              0,
+              0,
+              0
+            ],
+            "jaw": [
+              -2,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 4,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ],
+            "head": [
+              1,
+              1,
+              0
+            ],
+            "jaw": [
+              -3,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              1,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 8,
+          "channels": {
+            "body": [
+              0,
+              0,
+              1
+            ],
+            "head": [
+              1,
+              1,
+              0
+            ],
+            "jaw": [
+              -3,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              2,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 12,
+          "channels": {
+            "body": [
+              0,
+              0,
+              1
+            ],
+            "head": [
+              2,
+              2,
+              0
+            ],
+            "jaw": [
+              -4,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              3,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 16,
+          "channels": {
+            "body": [
+              0,
+              0,
+              1
+            ],
+            "head": [
+              2,
+              2,
+              0
+            ],
+            "jaw": [
+              -4,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              4,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 20,
+          "channels": {
+            "body": [
+              0,
+              0,
+              1
+            ],
+            "head": [
+              2,
+              2,
+              0
+            ],
+            "jaw": [
+              -4,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              4,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 24,
+          "channels": {
+            "body": [
+              0,
+              0,
+              1
+            ],
+            "head": [
+              2,
+              2,
+              0
+            ],
+            "jaw": [
+              -4,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              4,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 28,
+          "channels": {
+            "body": [
+              0,
+              0,
+              1
+            ],
+            "head": [
+              2,
+              2,
+              0
+            ],
+            "jaw": [
+              -4,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              3,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 32,
+          "channels": {
+            "body": [
+              0,
+              0,
+              1
+            ],
+            "head": [
+              1,
+              1,
+              0
+            ],
+            "jaw": [
+              -3,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              2,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 36,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ],
+            "head": [
+              1,
+              1,
+              0
+            ],
+            "jaw": [
+              -3,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              1,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 40,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ],
+            "head": [
+              0,
+              0,
+              0
+            ],
+            "jaw": [
+              -2,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 44,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ],
+            "head": [
+              -1,
+              -1,
+              0
+            ],
+            "jaw": [
+              -2,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              -1,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 48,
+          "channels": {
+            "body": [
+              0,
+              0,
+              -1
+            ],
+            "head": [
+              -1,
+              -1,
+              0
+            ],
+            "jaw": [
+              -2,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              -2,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 52,
+          "channels": {
+            "body": [
+              0,
+              0,
+              -1
+            ],
+            "head": [
+              -2,
+              -2,
+              0
+            ],
+            "jaw": [
+              -2,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              -3,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 56,
+          "channels": {
+            "body": [
+              0,
+              0,
+              -1
+            ],
+            "head": [
+              -2,
+              -2,
+              0
+            ],
+            "jaw": [
+              -2,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              -4,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 60,
+          "channels": {
+            "body": [
+              0,
+              0,
+              -1
+            ],
+            "head": [
+              -2,
+              -2,
+              0
+            ],
+            "jaw": [
+              -2,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              -4,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 64,
+          "channels": {
+            "body": [
+              0,
+              0,
+              -1
+            ],
+            "head": [
+              -2,
+              -2,
+              0
+            ],
+            "jaw": [
+              -2,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              -4,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 68,
+          "channels": {
+            "body": [
+              0,
+              0,
+              -1
+            ],
+            "head": [
+              -2,
+              -2,
+              0
+            ],
+            "jaw": [
+              -2,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              -3,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 72,
+          "channels": {
+            "body": [
+              0,
+              0,
+              -1
+            ],
+            "head": [
+              -1,
+              -1,
+              0
+            ],
+            "jaw": [
+              -2,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              -2,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 76,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ],
+            "head": [
+              -1,
+              -1,
+              0
+            ],
+            "jaw": [
+              -2,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              -1,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 80,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ],
+            "head": [
+              0,
+              0,
+              0
+            ],
+            "jaw": [
+              -2,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "grounded": true
+    },
+    "walk": {
+      "duration_ticks": 64,
+      "cadence_ticks": 2,
+      "loop": true,
+      "keys": [
+        {
+          "tick": 0,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ],
+            "head": [
+              0,
+              0,
+              0
+            ],
+            "jaw": [
+              -2,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 4,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ],
+            "head": [
+              1,
+              0,
+              0
+            ],
+            "jaw": [
+              -2,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              2,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "tick": 8,
+          "channels": {
+            "body": [
+              0,
+              1,
+              0
+            ],
+            "head": [
+              1,
+              0,
+              0
+            ],
+            "jaw": [
+              -2,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              4,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "tick": 12,
+          "channels": {
+            "body": [
+              0,
+              1,
+              0
+            ],
+            "head": [
+              2,
+              0,
+              0
+            ],
+            "jaw": [
+              -2,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              6,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            -2,
+            0
+          ]
+        },
+        {
+          "tick": 16,
+          "channels": {
+            "body": [
+              0,
+              1,
+              0
+            ],
+            "head": [
+              2,
+              0,
+              0
+            ],
+            "jaw": [
+              -2,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              6,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            -2,
+            0
+          ]
+        },
+        {
+          "tick": 20,
+          "channels": {
+            "body": [
+              0,
+              1,
+              0
+            ],
+            "head": [
+              2,
+              0,
+              0
+            ],
+            "jaw": [
+              -2,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              6,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            -2,
+            0
+          ]
+        },
+        {
+          "tick": 24,
+          "channels": {
+            "body": [
+              0,
+              1,
+              0
+            ],
+            "head": [
+              1,
+              0,
+              0
+            ],
+            "jaw": [
+              -2,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              4,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "tick": 28,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ],
+            "head": [
+              1,
+              0,
+              0
+            ],
+            "jaw": [
+              -2,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              2,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "tick": 32,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ],
+            "head": [
+              0,
+              0,
+              0
+            ],
+            "jaw": [
+              -2,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 36,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ],
+            "head": [
+              -1,
+              0,
+              0
+            ],
+            "jaw": [
+              -2,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              -2,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "tick": 40,
+          "channels": {
+            "body": [
+              0,
+              -1,
+              0
+            ],
+            "head": [
+              -1,
+              0,
+              0
+            ],
+            "jaw": [
+              -2,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              -4,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "tick": 44,
+          "channels": {
+            "body": [
+              0,
+              -1,
+              0
+            ],
+            "head": [
+              -2,
+              0,
+              0
+            ],
+            "jaw": [
+              -2,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              -6,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            -2,
+            0
+          ]
+        },
+        {
+          "tick": 48,
+          "channels": {
+            "body": [
+              0,
+              -1,
+              0
+            ],
+            "head": [
+              -2,
+              0,
+              0
+            ],
+            "jaw": [
+              -2,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              -6,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            -2,
+            0
+          ]
+        },
+        {
+          "tick": 52,
+          "channels": {
+            "body": [
+              0,
+              -1,
+              0
+            ],
+            "head": [
+              -2,
+              0,
+              0
+            ],
+            "jaw": [
+              -2,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              -6,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            -2,
+            0
+          ]
+        },
+        {
+          "tick": 56,
+          "channels": {
+            "body": [
+              0,
+              -1,
+              0
+            ],
+            "head": [
+              -1,
+              0,
+              0
+            ],
+            "jaw": [
+              -2,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              -4,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "tick": 60,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ],
+            "head": [
+              -1,
+              0,
+              0
+            ],
+            "jaw": [
+              -2,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              -2,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "tick": 64,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ],
+            "head": [
+              0,
+              0,
+              0
+            ],
+            "jaw": [
+              -2,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "grounded": false,
+      "gait": {
+        "kind": "quadruped",
+        "limbs": [
+          {
+            "name": "leg_0",
+            "hip": [
+              -27,
+              -67,
+              -34
+            ],
+            "knee": [
+              -43,
+              -38,
+              -26
+            ],
+            "tip": [
+              -40,
+              -10,
+              -47
+            ],
+            "components": [
+              "leg_0_palm",
+              "leg_0_toe_-1",
+              "leg_0_claw_-1",
+              "leg_0_toe_0",
+              "leg_0_claw_0",
+              "leg_0_toe_1",
+              "leg_0_claw_1",
+              "leg_0_wrist_shield"
+            ],
+            "phase_offset": 0,
+            "knee_axis": 0
+          },
+          {
+            "name": "leg_1",
+            "hip": [
+              -27,
+              -60,
+              42
+            ],
+            "knee": [
+              -43,
+              -32,
+              46
+            ],
+            "tip": [
+              -40,
+              -10,
+              33
+            ],
+            "components": [
+              "leg_1_palm",
+              "leg_1_toe_-1",
+              "leg_1_claw_-1",
+              "leg_1_toe_0",
+              "leg_1_claw_0",
+              "leg_1_toe_1",
+              "leg_1_claw_1",
+              "leg_1_wrist_shield"
+            ],
+            "phase_offset": 0.5,
+            "knee_axis": 0
+          },
+          {
+            "name": "leg_2",
+            "hip": [
+              27,
+              -67,
+              -34
+            ],
+            "knee": [
+              43,
+              -38,
+              -26
+            ],
+            "tip": [
+              40,
+              -10,
+              -47
+            ],
+            "components": [
+              "leg_2_palm",
+              "leg_2_toe_-1",
+              "leg_2_claw_-1",
+              "leg_2_toe_0",
+              "leg_2_claw_0",
+              "leg_2_toe_1",
+              "leg_2_claw_1",
+              "leg_2_wrist_shield"
+            ],
+            "phase_offset": 0.5,
+            "knee_axis": 0
+          },
+          {
+            "name": "leg_3",
+            "hip": [
+              27,
+              -60,
+              42
+            ],
+            "knee": [
+              43,
+              -32,
+              46
+            ],
+            "tip": [
+              40,
+              -10,
+              33
+            ],
+            "components": [
+              "leg_3_palm",
+              "leg_3_toe_-1",
+              "leg_3_claw_-1",
+              "leg_3_toe_0",
+              "leg_3_claw_0",
+              "leg_3_toe_1",
+              "leg_3_claw_1",
+              "leg_3_wrist_shield"
+            ],
+            "phase_offset": 0,
+            "knee_axis": 0
+          }
+        ],
+        "stride": 24,
+        "lift": 10,
+        "stance_fraction": 0.68,
+        "cycle_ticks": 64,
+        "support_surface_iterations": 2,
+        "crouch": 4
+      }
+    },
+    "attack": {
+      "duration_ticks": 60,
+      "cadence_ticks": 2,
+      "loop": false,
+      "keys": [
+        {
+          "tick": 0,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ],
+            "head": [
+              0,
+              0,
+              0
+            ],
+            "jaw": [
+              0,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              0,
+              0
+            ],
+            "leg_0_hip": [
+              0,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              0,
+              0,
+              0
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 4,
+          "channels": {
+            "body": [
+              -1,
+              0,
+              0
+            ],
+            "head": [
+              -2,
+              0,
+              0
+            ],
+            "jaw": [
+              -5,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              2,
+              0
+            ],
+            "leg_0_hip": [
+              -2,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              2,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              -2,
+              0,
+              0
+            ],
+            "leg_2_knee": [
+              2,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            -1,
+            2
+          ]
+        },
+        {
+          "tick": 8,
+          "channels": {
+            "body": [
+              -2,
+              0,
+              0
+            ],
+            "head": [
+              -4,
+              0,
+              0
+            ],
+            "jaw": [
+              -9,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              4,
+              0
+            ],
+            "leg_0_hip": [
+              -3,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              4,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              -3,
+              0,
+              0
+            ],
+            "leg_2_knee": [
+              4,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            -1,
+            4
+          ]
+        },
+        {
+          "tick": 12,
+          "channels": {
+            "body": [
+              -3,
+              0,
+              0
+            ],
+            "head": [
+              -7,
+              0,
+              0
+            ],
+            "jaw": [
+              -14,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              6,
+              0
+            ],
+            "leg_0_hip": [
+              -5,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              6,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              -5,
+              0,
+              0
+            ],
+            "leg_2_knee": [
+              6,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            -2,
+            6
+          ]
+        },
+        {
+          "tick": 16,
+          "channels": {
+            "body": [
+              -4,
+              0,
+              0
+            ],
+            "head": [
+              -9,
+              0,
+              0
+            ],
+            "jaw": [
+              -19,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              8,
+              0
+            ],
+            "leg_0_hip": [
+              -7,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              8,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              -7,
+              0,
+              0
+            ],
+            "leg_2_knee": [
+              8,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            -3,
+            8
+          ]
+        },
+        {
+          "tick": 20,
+          "channels": {
+            "body": [
+              -3,
+              0,
+              0
+            ],
+            "head": [
+              -7,
+              0,
+              0
+            ],
+            "jaw": [
+              -15,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              6,
+              0
+            ],
+            "leg_0_hip": [
+              -5,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              6,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              -5,
+              0,
+              0
+            ],
+            "leg_2_knee": [
+              6,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            -2,
+            6
+          ]
+        },
+        {
+          "tick": 24,
+          "channels": {
+            "body": [
+              -2,
+              0,
+              0
+            ],
+            "head": [
+              -3,
+              0,
+              0
+            ],
+            "jaw": [
+              -11,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              4,
+              0
+            ],
+            "leg_0_hip": [
+              -2,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              4,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              -2,
+              0,
+              0
+            ],
+            "leg_2_knee": [
+              4,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            -2,
+            2
+          ]
+        },
+        {
+          "tick": 28,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ],
+            "head": [
+              6,
+              0,
+              0
+            ],
+            "jaw": [
+              -10,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              2,
+              0
+            ],
+            "leg_0_hip": [
+              4,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              4,
+              0,
+              0
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            -1,
+            -9
+          ]
+        },
+        {
+          "tick": 32,
+          "channels": {
+            "body": [
+              3,
+              0,
+              0
+            ],
+            "head": [
+              14,
+              0,
+              0
+            ],
+            "jaw": [
+              -9,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              0,
+              0
+            ],
+            "leg_0_hip": [
+              11,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              -4,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              11,
+              0,
+              0
+            ],
+            "leg_2_knee": [
+              -4,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            -20
+          ]
+        },
+        {
+          "tick": 36,
+          "channels": {
+            "body": [
+              2,
+              0,
+              0
+            ],
+            "head": [
+              11,
+              0,
+              0
+            ],
+            "jaw": [
+              -7,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              0,
+              0
+            ],
+            "leg_0_hip": [
+              8,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              -4,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              8,
+              0,
+              0
+            ],
+            "leg_2_knee": [
+              -4,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            -16
+          ]
+        },
+        {
+          "tick": 40,
+          "channels": {
+            "body": [
+              1,
+              0,
+              0
+            ],
+            "head": [
+              4,
+              0,
+              0
+            ],
+            "jaw": [
+              -3,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              0,
+              0
+            ],
+            "leg_0_hip": [
+              4,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              -2,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              4,
+              0,
+              0
+            ],
+            "leg_2_knee": [
+              -2,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            -7
+          ]
+        },
+        {
+          "tick": 44,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ],
+            "head": [
+              -2,
+              0,
+              0
+            ],
+            "jaw": [
+              0,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              0,
+              0
+            ],
+            "leg_0_hip": [
+              0,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              0,
+              0,
+              0
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 48,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ],
+            "head": [
+              -2,
+              0,
+              0
+            ],
+            "jaw": [
+              0,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              0,
+              0
+            ],
+            "leg_0_hip": [
+              0,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              0,
+              0,
+              0
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 52,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ],
+            "head": [
+              -1,
+              0,
+              0
+            ],
+            "jaw": [
+              0,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              0,
+              0
+            ],
+            "leg_0_hip": [
+              0,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              0,
+              0,
+              0
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 56,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ],
+            "head": [
+              0,
+              0,
+              0
+            ],
+            "jaw": [
+              0,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              0,
+              0
+            ],
+            "leg_0_hip": [
+              0,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              0,
+              0,
+              0
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 60,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ],
+            "head": [
+              0,
+              0,
+              0
+            ],
+            "jaw": [
+              0,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              0,
+              0
+            ],
+            "leg_0_hip": [
+              0,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              0,
+              0,
+              0
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "grounded": true
+    },
+    "hit": {
+      "duration_ticks": 40,
+      "cadence_ticks": 2,
+      "loop": false,
+      "keys": [
+        {
+          "tick": 0,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ],
+            "head": [
+              0,
+              0,
+              0
+            ],
+            "jaw": [
+              0,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 4,
+          "channels": {
+            "body": [
+              2,
+              0,
+              -2
+            ],
+            "head": [
+              -3,
+              1,
+              0
+            ],
+            "jaw": [
+              -3,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              -3,
+              0
+            ]
+          },
+          "translation": [
+            1,
+            0,
+            4
+          ]
+        },
+        {
+          "tick": 8,
+          "channels": {
+            "body": [
+              4,
+              0,
+              -4
+            ],
+            "head": [
+              -6,
+              2,
+              0
+            ],
+            "jaw": [
+              -6,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              -5,
+              0
+            ]
+          },
+          "translation": [
+            2,
+            0,
+            7
+          ]
+        },
+        {
+          "tick": 12,
+          "channels": {
+            "body": [
+              5,
+              0,
+              -6
+            ],
+            "head": [
+              -7,
+              3,
+              0
+            ],
+            "jaw": [
+              -7,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              -6,
+              0
+            ]
+          },
+          "translation": [
+            3,
+            0,
+            9
+          ]
+        },
+        {
+          "tick": 16,
+          "channels": {
+            "body": [
+              5,
+              0,
+              -6
+            ],
+            "head": [
+              -8,
+              3,
+              0
+            ],
+            "jaw": [
+              -8,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              -7,
+              0
+            ]
+          },
+          "translation": [
+            3,
+            0,
+            10
+          ]
+        },
+        {
+          "tick": 20,
+          "channels": {
+            "body": [
+              4,
+              0,
+              -5
+            ],
+            "head": [
+              -7,
+              2,
+              0
+            ],
+            "jaw": [
+              -7,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              -6,
+              0
+            ]
+          },
+          "translation": [
+            2,
+            0,
+            8
+          ]
+        },
+        {
+          "tick": 24,
+          "channels": {
+            "body": [
+              3,
+              0,
+              -4
+            ],
+            "head": [
+              -5,
+              2,
+              0
+            ],
+            "jaw": [
+              -5,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              -5,
+              0
+            ]
+          },
+          "translation": [
+            2,
+            0,
+            7
+          ]
+        },
+        {
+          "tick": 28,
+          "channels": {
+            "body": [
+              3,
+              0,
+              -3
+            ],
+            "head": [
+              -4,
+              2,
+              0
+            ],
+            "jaw": [
+              -4,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              -4,
+              0
+            ]
+          },
+          "translation": [
+            2,
+            0,
+            5
+          ]
+        },
+        {
+          "tick": 32,
+          "channels": {
+            "body": [
+              2,
+              0,
+              -2
+            ],
+            "head": [
+              -3,
+              1,
+              0
+            ],
+            "jaw": [
+              -3,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              -2,
+              0
+            ]
+          },
+          "translation": [
+            1,
+            0,
+            3
+          ]
+        },
+        {
+          "tick": 36,
+          "channels": {
+            "body": [
+              1,
+              0,
+              -1
+            ],
+            "head": [
+              -1,
+              0,
+              0
+            ],
+            "jaw": [
+              -1,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              -1,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            2
+          ]
+        },
+        {
+          "tick": 40,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ],
+            "head": [
+              0,
+              0,
+              0
+            ],
+            "jaw": [
+              0,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "grounded": true
+    },
+    "death": {
+      "duration_ticks": 100,
+      "cadence_ticks": 2,
+      "loop": false,
+      "keys": [
+        {
+          "tick": 0,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ],
+            "head": [
+              0,
+              0,
+              0
+            ],
+            "jaw": [
+              0,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              0,
+              0
+            ],
+            "leg_0_hip": [
+              0,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_0_ankle": [
+              0,
+              0,
+              0
+            ],
+            "leg_1_hip": [
+              0,
+              0,
+              0
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_1_ankle": [
+              0,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              0,
+              0,
+              0
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_2_ankle": [
+              0,
+              0,
+              0
+            ],
+            "leg_3_hip": [
+              0,
+              0,
+              0
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_3_ankle": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 4,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ],
+            "head": [
+              1,
+              0,
+              0
+            ],
+            "jaw": [
+              -1,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              0,
+              0
+            ],
+            "leg_0_hip": [
+              -1,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              2,
+              0,
+              0
+            ],
+            "leg_0_ankle": [
+              -1,
+              0,
+              0
+            ],
+            "leg_1_hip": [
+              1,
+              0,
+              0
+            ],
+            "leg_1_knee": [
+              2,
+              0,
+              0
+            ],
+            "leg_1_ankle": [
+              -1,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              -1,
+              0,
+              0
+            ],
+            "leg_2_knee": [
+              2,
+              0,
+              0
+            ],
+            "leg_2_ankle": [
+              -1,
+              0,
+              0
+            ],
+            "leg_3_hip": [
+              1,
+              0,
+              0
+            ],
+            "leg_3_knee": [
+              2,
+              0,
+              0
+            ],
+            "leg_3_ankle": [
+              -1,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "tick": 8,
+          "channels": {
+            "body": [
+              1,
+              0,
+              0
+            ],
+            "head": [
+              2,
+              0,
+              0
+            ],
+            "jaw": [
+              -2,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              0,
+              0
+            ],
+            "leg_0_hip": [
+              -2,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              4,
+              0,
+              0
+            ],
+            "leg_0_ankle": [
+              -2,
+              0,
+              0
+            ],
+            "leg_1_hip": [
+              2,
+              0,
+              0
+            ],
+            "leg_1_knee": [
+              4,
+              0,
+              0
+            ],
+            "leg_1_ankle": [
+              -2,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              -2,
+              0,
+              0
+            ],
+            "leg_2_knee": [
+              4,
+              0,
+              0
+            ],
+            "leg_2_ankle": [
+              -2,
+              0,
+              0
+            ],
+            "leg_3_hip": [
+              2,
+              0,
+              0
+            ],
+            "leg_3_knee": [
+              4,
+              0,
+              0
+            ],
+            "leg_3_ankle": [
+              -2,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "tick": 12,
+          "channels": {
+            "body": [
+              1,
+              0,
+              0
+            ],
+            "head": [
+              3,
+              0,
+              0
+            ],
+            "jaw": [
+              -3,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              0,
+              0
+            ],
+            "leg_0_hip": [
+              -3,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              6,
+              0,
+              0
+            ],
+            "leg_0_ankle": [
+              -3,
+              0,
+              0
+            ],
+            "leg_1_hip": [
+              3,
+              0,
+              0
+            ],
+            "leg_1_knee": [
+              6,
+              0,
+              0
+            ],
+            "leg_1_ankle": [
+              -3,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              -3,
+              0,
+              0
+            ],
+            "leg_2_knee": [
+              6,
+              0,
+              0
+            ],
+            "leg_2_ankle": [
+              -3,
+              0,
+              0
+            ],
+            "leg_3_hip": [
+              3,
+              0,
+              0
+            ],
+            "leg_3_knee": [
+              6,
+              0,
+              0
+            ],
+            "leg_3_ankle": [
+              -3,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            2
+          ]
+        },
+        {
+          "tick": 16,
+          "channels": {
+            "body": [
+              2,
+              0,
+              0
+            ],
+            "head": [
+              4,
+              0,
+              0
+            ],
+            "jaw": [
+              -4,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              0,
+              0
+            ],
+            "leg_0_hip": [
+              -5,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              8,
+              0,
+              0
+            ],
+            "leg_0_ankle": [
+              -4,
+              0,
+              0
+            ],
+            "leg_1_hip": [
+              4,
+              0,
+              0
+            ],
+            "leg_1_knee": [
+              8,
+              0,
+              0
+            ],
+            "leg_1_ankle": [
+              -4,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              -5,
+              0,
+              0
+            ],
+            "leg_2_knee": [
+              8,
+              0,
+              0
+            ],
+            "leg_2_ankle": [
+              -4,
+              0,
+              0
+            ],
+            "leg_3_hip": [
+              4,
+              0,
+              0
+            ],
+            "leg_3_knee": [
+              8,
+              0,
+              0
+            ],
+            "leg_3_ankle": [
+              -4,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            2
+          ]
+        },
+        {
+          "tick": 20,
+          "channels": {
+            "body": [
+              2,
+              0,
+              0
+            ],
+            "head": [
+              5,
+              0,
+              0
+            ],
+            "jaw": [
+              -5,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              0,
+              0
+            ],
+            "leg_0_hip": [
+              -6,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              10,
+              0,
+              0
+            ],
+            "leg_0_ankle": [
+              -5,
+              0,
+              0
+            ],
+            "leg_1_hip": [
+              4,
+              0,
+              0
+            ],
+            "leg_1_knee": [
+              10,
+              0,
+              0
+            ],
+            "leg_1_ankle": [
+              -5,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              -6,
+              0,
+              0
+            ],
+            "leg_2_knee": [
+              10,
+              0,
+              0
+            ],
+            "leg_2_ankle": [
+              -5,
+              0,
+              0
+            ],
+            "leg_3_hip": [
+              4,
+              0,
+              0
+            ],
+            "leg_3_knee": [
+              10,
+              0,
+              0
+            ],
+            "leg_3_ankle": [
+              -5,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            3
+          ]
+        },
+        {
+          "tick": 24,
+          "channels": {
+            "body": [
+              3,
+              0,
+              0
+            ],
+            "head": [
+              6,
+              0,
+              0
+            ],
+            "jaw": [
+              -6,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              0,
+              0
+            ],
+            "leg_0_hip": [
+              -7,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              12,
+              0,
+              0
+            ],
+            "leg_0_ankle": [
+              -6,
+              0,
+              0
+            ],
+            "leg_1_hip": [
+              5,
+              0,
+              0
+            ],
+            "leg_1_knee": [
+              12,
+              0,
+              0
+            ],
+            "leg_1_ankle": [
+              -6,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              -7,
+              0,
+              0
+            ],
+            "leg_2_knee": [
+              12,
+              0,
+              0
+            ],
+            "leg_2_ankle": [
+              -6,
+              0,
+              0
+            ],
+            "leg_3_hip": [
+              5,
+              0,
+              0
+            ],
+            "leg_3_knee": [
+              12,
+              0,
+              0
+            ],
+            "leg_3_ankle": [
+              -6,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            4
+          ]
+        },
+        {
+          "tick": 28,
+          "channels": {
+            "body": [
+              3,
+              0,
+              0
+            ],
+            "head": [
+              7,
+              0,
+              0
+            ],
+            "jaw": [
+              -7,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              0,
+              0
+            ],
+            "leg_0_hip": [
+              -8,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              14,
+              0,
+              0
+            ],
+            "leg_0_ankle": [
+              -7,
+              0,
+              0
+            ],
+            "leg_1_hip": [
+              6,
+              0,
+              0
+            ],
+            "leg_1_knee": [
+              14,
+              0,
+              0
+            ],
+            "leg_1_ankle": [
+              -7,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              -8,
+              0,
+              0
+            ],
+            "leg_2_knee": [
+              14,
+              0,
+              0
+            ],
+            "leg_2_ankle": [
+              -7,
+              0,
+              0
+            ],
+            "leg_3_hip": [
+              6,
+              0,
+              0
+            ],
+            "leg_3_knee": [
+              14,
+              0,
+              0
+            ],
+            "leg_3_ankle": [
+              -7,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            4
+          ]
+        },
+        {
+          "tick": 32,
+          "channels": {
+            "body": [
+              4,
+              0,
+              2
+            ],
+            "head": [
+              8,
+              0,
+              0
+            ],
+            "jaw": [
+              -9,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              0,
+              0
+            ],
+            "leg_0_hip": [
+              -9,
+              0,
+              2
+            ],
+            "leg_0_knee": [
+              16,
+              0,
+              0
+            ],
+            "leg_0_ankle": [
+              -9,
+              0,
+              0
+            ],
+            "leg_1_hip": [
+              7,
+              0,
+              2
+            ],
+            "leg_1_knee": [
+              16,
+              0,
+              0
+            ],
+            "leg_1_ankle": [
+              -9,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              -9,
+              0,
+              2
+            ],
+            "leg_2_knee": [
+              16,
+              0,
+              0
+            ],
+            "leg_2_ankle": [
+              -9,
+              0,
+              0
+            ],
+            "leg_3_hip": [
+              7,
+              0,
+              2
+            ],
+            "leg_3_knee": [
+              16,
+              0,
+              0
+            ],
+            "leg_3_ankle": [
+              -9,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            5
+          ]
+        },
+        {
+          "tick": 36,
+          "channels": {
+            "body": [
+              4,
+              0,
+              7
+            ],
+            "head": [
+              9,
+              -1,
+              0
+            ],
+            "jaw": [
+              -10,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              1,
+              -1
+            ],
+            "leg_0_hip": [
+              -10,
+              0,
+              5
+            ],
+            "leg_0_knee": [
+              18,
+              0,
+              0
+            ],
+            "leg_0_ankle": [
+              -10,
+              0,
+              0
+            ],
+            "leg_1_hip": [
+              8,
+              0,
+              5
+            ],
+            "leg_1_knee": [
+              18,
+              0,
+              0
+            ],
+            "leg_1_ankle": [
+              -10,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              -10,
+              0,
+              5
+            ],
+            "leg_2_knee": [
+              18,
+              0,
+              0
+            ],
+            "leg_2_ankle": [
+              -10,
+              0,
+              0
+            ],
+            "leg_3_hip": [
+              8,
+              0,
+              5
+            ],
+            "leg_3_knee": [
+              18,
+              0,
+              0
+            ],
+            "leg_3_ankle": [
+              -10,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            6
+          ]
+        },
+        {
+          "tick": 40,
+          "channels": {
+            "body": [
+              4,
+              0,
+              12
+            ],
+            "head": [
+              10,
+              -1,
+              0
+            ],
+            "jaw": [
+              -11,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              2,
+              -1
+            ],
+            "leg_0_hip": [
+              -12,
+              0,
+              9
+            ],
+            "leg_0_knee": [
+              20,
+              0,
+              0
+            ],
+            "leg_0_ankle": [
+              -11,
+              0,
+              0
+            ],
+            "leg_1_hip": [
+              9,
+              0,
+              9
+            ],
+            "leg_1_knee": [
+              20,
+              0,
+              0
+            ],
+            "leg_1_ankle": [
+              -11,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              -12,
+              0,
+              9
+            ],
+            "leg_2_knee": [
+              20,
+              0,
+              0
+            ],
+            "leg_2_ankle": [
+              -11,
+              0,
+              0
+            ],
+            "leg_3_hip": [
+              9,
+              0,
+              9
+            ],
+            "leg_3_knee": [
+              20,
+              0,
+              0
+            ],
+            "leg_3_ankle": [
+              -11,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            6
+          ]
+        },
+        {
+          "tick": 44,
+          "channels": {
+            "body": [
+              5,
+              0,
+              17
+            ],
+            "head": [
+              11,
+              -1,
+              0
+            ],
+            "jaw": [
+              -12,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              3,
+              -2
+            ],
+            "leg_0_hip": [
+              -13,
+              0,
+              12
+            ],
+            "leg_0_knee": [
+              22,
+              0,
+              0
+            ],
+            "leg_0_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_1_hip": [
+              10,
+              0,
+              12
+            ],
+            "leg_1_knee": [
+              22,
+              0,
+              0
+            ],
+            "leg_1_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              -13,
+              0,
+              12
+            ],
+            "leg_2_knee": [
+              22,
+              0,
+              0
+            ],
+            "leg_2_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_3_hip": [
+              10,
+              0,
+              12
+            ],
+            "leg_3_knee": [
+              22,
+              0,
+              0
+            ],
+            "leg_3_ankle": [
+              -12,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            7
+          ]
+        },
+        {
+          "tick": 48,
+          "channels": {
+            "body": [
+              5,
+              0,
+              22
+            ],
+            "head": [
+              11,
+              -2,
+              0
+            ],
+            "jaw": [
+              -12,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              4,
+              -2
+            ],
+            "leg_0_hip": [
+              -13,
+              0,
+              16
+            ],
+            "leg_0_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_0_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_1_hip": [
+              10,
+              0,
+              16
+            ],
+            "leg_1_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_1_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              -13,
+              0,
+              16
+            ],
+            "leg_2_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_2_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_3_hip": [
+              10,
+              0,
+              16
+            ],
+            "leg_3_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_3_ankle": [
+              -12,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            7
+          ]
+        },
+        {
+          "tick": 52,
+          "channels": {
+            "body": [
+              5,
+              0,
+              26
+            ],
+            "head": [
+              11,
+              -2,
+              0
+            ],
+            "jaw": [
+              -12,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              5,
+              -2
+            ],
+            "leg_0_hip": [
+              -13,
+              0,
+              20
+            ],
+            "leg_0_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_0_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_1_hip": [
+              10,
+              0,
+              20
+            ],
+            "leg_1_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_1_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              -13,
+              0,
+              20
+            ],
+            "leg_2_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_2_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_3_hip": [
+              10,
+              0,
+              20
+            ],
+            "leg_3_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_3_ankle": [
+              -12,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            7
+          ]
+        },
+        {
+          "tick": 56,
+          "channels": {
+            "body": [
+              5,
+              0,
+              31
+            ],
+            "head": [
+              11,
+              -2,
+              0
+            ],
+            "jaw": [
+              -12,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              6,
+              -3
+            ],
+            "leg_0_hip": [
+              -13,
+              0,
+              23
+            ],
+            "leg_0_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_0_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_1_hip": [
+              10,
+              0,
+              23
+            ],
+            "leg_1_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_1_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              -13,
+              0,
+              23
+            ],
+            "leg_2_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_2_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_3_hip": [
+              10,
+              0,
+              23
+            ],
+            "leg_3_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_3_ankle": [
+              -12,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            7
+          ]
+        },
+        {
+          "tick": 60,
+          "channels": {
+            "body": [
+              5,
+              0,
+              36
+            ],
+            "head": [
+              11,
+              -3,
+              0
+            ],
+            "jaw": [
+              -12,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              7,
+              -3
+            ],
+            "leg_0_hip": [
+              -13,
+              0,
+              27
+            ],
+            "leg_0_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_0_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_1_hip": [
+              10,
+              0,
+              27
+            ],
+            "leg_1_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_1_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              -13,
+              0,
+              27
+            ],
+            "leg_2_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_2_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_3_hip": [
+              10,
+              0,
+              27
+            ],
+            "leg_3_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_3_ankle": [
+              -12,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            7
+          ]
+        },
+        {
+          "tick": 64,
+          "channels": {
+            "body": [
+              5,
+              0,
+              41
+            ],
+            "head": [
+              11,
+              -3,
+              0
+            ],
+            "jaw": [
+              -12,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              8,
+              -4
+            ],
+            "leg_0_hip": [
+              -13,
+              0,
+              30
+            ],
+            "leg_0_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_0_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_1_hip": [
+              10,
+              0,
+              30
+            ],
+            "leg_1_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_1_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              -13,
+              0,
+              30
+            ],
+            "leg_2_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_2_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_3_hip": [
+              10,
+              0,
+              30
+            ],
+            "leg_3_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_3_ankle": [
+              -12,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            7
+          ]
+        },
+        {
+          "tick": 68,
+          "channels": {
+            "body": [
+              5,
+              0,
+              46
+            ],
+            "head": [
+              11,
+              -3,
+              0
+            ],
+            "jaw": [
+              -12,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              9,
+              -4
+            ],
+            "leg_0_hip": [
+              -13,
+              0,
+              34
+            ],
+            "leg_0_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_0_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_1_hip": [
+              10,
+              0,
+              34
+            ],
+            "leg_1_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_1_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              -13,
+              0,
+              34
+            ],
+            "leg_2_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_2_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_3_hip": [
+              10,
+              0,
+              34
+            ],
+            "leg_3_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_3_ankle": [
+              -12,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            7
+          ]
+        },
+        {
+          "tick": 72,
+          "channels": {
+            "body": [
+              5,
+              0,
+              50
+            ],
+            "head": [
+              11,
+              -4,
+              0
+            ],
+            "jaw": [
+              -12,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              10,
+              -5
+            ],
+            "leg_0_hip": [
+              -13,
+              0,
+              37
+            ],
+            "leg_0_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_0_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_1_hip": [
+              10,
+              0,
+              37
+            ],
+            "leg_1_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_1_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              -13,
+              0,
+              37
+            ],
+            "leg_2_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_2_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_3_hip": [
+              10,
+              0,
+              37
+            ],
+            "leg_3_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_3_ankle": [
+              -12,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            7
+          ]
+        },
+        {
+          "tick": 76,
+          "channels": {
+            "body": [
+              5,
+              0,
+              54
+            ],
+            "head": [
+              11,
+              -4,
+              0
+            ],
+            "jaw": [
+              -11,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              11,
+              -5
+            ],
+            "leg_0_hip": [
+              -13,
+              0,
+              40
+            ],
+            "leg_0_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_0_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_1_hip": [
+              10,
+              0,
+              40
+            ],
+            "leg_1_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_1_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              -13,
+              0,
+              40
+            ],
+            "leg_2_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_2_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_3_hip": [
+              10,
+              0,
+              40
+            ],
+            "leg_3_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_3_ankle": [
+              -12,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            7
+          ]
+        },
+        {
+          "tick": 80,
+          "channels": {
+            "body": [
+              5,
+              0,
+              54
+            ],
+            "head": [
+              11,
+              -4,
+              0
+            ],
+            "jaw": [
+              -11,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              11,
+              -5
+            ],
+            "leg_0_hip": [
+              -13,
+              0,
+              40
+            ],
+            "leg_0_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_0_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_1_hip": [
+              10,
+              0,
+              40
+            ],
+            "leg_1_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_1_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              -13,
+              0,
+              40
+            ],
+            "leg_2_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_2_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_3_hip": [
+              10,
+              0,
+              40
+            ],
+            "leg_3_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_3_ankle": [
+              -12,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            7
+          ]
+        },
+        {
+          "tick": 84,
+          "channels": {
+            "body": [
+              5,
+              0,
+              54
+            ],
+            "head": [
+              11,
+              -4,
+              0
+            ],
+            "jaw": [
+              -11,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              11,
+              -5
+            ],
+            "leg_0_hip": [
+              -13,
+              0,
+              40
+            ],
+            "leg_0_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_0_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_1_hip": [
+              10,
+              0,
+              40
+            ],
+            "leg_1_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_1_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              -13,
+              0,
+              40
+            ],
+            "leg_2_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_2_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_3_hip": [
+              10,
+              0,
+              40
+            ],
+            "leg_3_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_3_ankle": [
+              -12,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            7
+          ]
+        },
+        {
+          "tick": 88,
+          "channels": {
+            "body": [
+              5,
+              0,
+              54
+            ],
+            "head": [
+              11,
+              -4,
+              0
+            ],
+            "jaw": [
+              -10,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              11,
+              -5
+            ],
+            "leg_0_hip": [
+              -13,
+              0,
+              40
+            ],
+            "leg_0_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_0_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_1_hip": [
+              10,
+              0,
+              40
+            ],
+            "leg_1_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_1_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              -13,
+              0,
+              40
+            ],
+            "leg_2_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_2_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_3_hip": [
+              10,
+              0,
+              40
+            ],
+            "leg_3_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_3_ankle": [
+              -12,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            7
+          ]
+        },
+        {
+          "tick": 92,
+          "channels": {
+            "body": [
+              5,
+              0,
+              54
+            ],
+            "head": [
+              11,
+              -4,
+              0
+            ],
+            "jaw": [
+              -10,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              11,
+              -5
+            ],
+            "leg_0_hip": [
+              -13,
+              0,
+              40
+            ],
+            "leg_0_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_0_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_1_hip": [
+              10,
+              0,
+              40
+            ],
+            "leg_1_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_1_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              -13,
+              0,
+              40
+            ],
+            "leg_2_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_2_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_3_hip": [
+              10,
+              0,
+              40
+            ],
+            "leg_3_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_3_ankle": [
+              -12,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            7
+          ]
+        },
+        {
+          "tick": 96,
+          "channels": {
+            "body": [
+              5,
+              0,
+              54
+            ],
+            "head": [
+              11,
+              -4,
+              0
+            ],
+            "jaw": [
+              -9,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              11,
+              -5
+            ],
+            "leg_0_hip": [
+              -13,
+              0,
+              40
+            ],
+            "leg_0_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_0_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_1_hip": [
+              10,
+              0,
+              40
+            ],
+            "leg_1_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_1_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              -13,
+              0,
+              40
+            ],
+            "leg_2_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_2_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_3_hip": [
+              10,
+              0,
+              40
+            ],
+            "leg_3_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_3_ankle": [
+              -12,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            7
+          ]
+        },
+        {
+          "tick": 100,
+          "channels": {
+            "body": [
+              5,
+              0,
+              54
+            ],
+            "head": [
+              11,
+              -4,
+              0
+            ],
+            "jaw": [
+              -9,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              11,
+              -5
+            ],
+            "leg_0_hip": [
+              -13,
+              0,
+              40
+            ],
+            "leg_0_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_0_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_1_hip": [
+              10,
+              0,
+              40
+            ],
+            "leg_1_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_1_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              -13,
+              0,
+              40
+            ],
+            "leg_2_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_2_ankle": [
+              -12,
+              0,
+              0
+            ],
+            "leg_3_hip": [
+              10,
+              0,
+              40
+            ],
+            "leg_3_knee": [
+              23,
+              0,
+              0
+            ],
+            "leg_3_ankle": [
+              -12,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            7
+          ]
+        }
+      ],
+      "grounded": true,
+      "terminal_pose_hold": 60
+    }
+  },
+  "skeleton_base": 64600,
+  "frame_group_base": 62400
+}
