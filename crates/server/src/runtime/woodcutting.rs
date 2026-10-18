@@ -1,6 +1,6 @@
 use super::*;
 impl<B: AccountBackend> Runtime<B> {
-    /// Wiki oak profile with bronze axe. Regular trees are opt-in while GR-10's
+    /// Registered timed tree profiles and verified axe rates. Regular trees are opt-in while GR-10's
     /// conflicting respawn evidence remains unresolved; the caller must bind a
     /// documented fixture policy rather than silently selecting a default.
     pub fn configure_woodcutting(
@@ -94,6 +94,9 @@ impl<B: AccountBackend> Runtime<B> {
         for (id,tree) in crate::content::magic_trees(names.group("obj"),names.group("loc"),names.group("stat"),&self.definitions).map_err(io::Error::other)? {
             if config.trees.insert(id,tree).is_some() {return Err(io::Error::other("Conflicting magic tree"));}
         }
+        for (id,tree) in crate::content::arctic_pine(names.group("obj"),names.group("loc"),names.group("stat"),&self.definitions).map_err(io::Error::other)? {
+            if config.trees.insert(id,tree).is_some(){return Err(io::Error::other("Conflicting Arctic pine tree"));}
+        }
         let regular_logs = names.id("obj", "logs")? as i32;
         for tool in crate::content::woodcutting_axes(
             names.group("obj"),
@@ -137,7 +140,7 @@ impl<B: AccountBackend> Runtime<B> {
                 .ok_or_else(|| io::Error::other("Missing gathering tree definition"))?;
             if !tree.ops[0]
                 .as_deref()
-                .is_some_and(|op| op.eq_ignore_ascii_case("Chop down"))
+                .is_some_and(|op| op.eq_ignore_ascii_case("Chop down") || op.eq_ignore_ascii_case("Cut down"))
                 || !self.definitions.locations.contains_key(&profile.stump)
             {
                 return Err(io::Error::other("Unattested tree operation or stump"));

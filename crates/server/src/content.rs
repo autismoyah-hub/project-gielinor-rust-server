@@ -8,6 +8,8 @@ mod light_sources;
 pub use light_sources::light_sources;
 mod prospector_outfit;
 pub use prospector_outfit::prospector_outfit;
+mod arctic_pine;
+pub use arctic_pine::arctic_pine;
 mod special_woodcutting_axes;
 pub use special_woodcutting_axes::special_woodcutting_axes;
 mod magic_trees;

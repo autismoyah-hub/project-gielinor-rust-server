@@ -37,7 +37,7 @@ const ROWS: [(&str, i32, &str, &str, u16, i32, bool); 3] = [
     ),
 ];
 // Log identity -> dragon/third-age and gilded/rune comparative endpoints.
-const RATES: [(i32, (i32, i32), (i32, i32)); 8] = [
+const RATES: [(i32, (i32, i32), (i32, i32)); 9] = [
     (1511, (240, 750), (224, 700)),
     (1521, (120, 375), (112, 350)),
     (1519, (60, 187), (56, 175)),
@@ -46,6 +46,8 @@ const RATES: [(i32, (i32, i32), (i32, i32)); 8] = [
     (6333, (60, 190), (55, 164)),
     (6332, (34, 94), (29, 88)),
     (1513, (7, 22), (7, 21)),
+    // Arctic pine: Wiki endpoints intentionally differ from target enum 65527.
+    (10810, (30, 93), (28, 87)),
 ];
 pub fn special_woodcutting_axes(
     objects: &Symbols,
@@ -413,6 +415,16 @@ mod tests {
                     }
                 }
             }
+        }
+    }
+    #[test]
+    fn arctic_pine_special_axe_maps_exist_before_startup_validation() {
+        let (d, o, s, n) = fixture();
+        for tool in special_woodcutting_axes(&o, &s, &n, &d).unwrap() {
+            assert_eq!(
+                tool.rates[&10810],
+                if tool.axe.members { (30, 93) } else { (28, 87) }
+            );
         }
     }
 }
