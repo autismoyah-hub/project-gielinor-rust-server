@@ -21,14 +21,14 @@ def export_asset(recipe):
             n=len(part['vertices'])if key=='vertex_skins'else len(part['faces']);g[key]+=part.get(key)or [0]*n
         components[spec['name']]=dict(vertices=list(range(offset,len(g['vertices']))),faces=list(range(firstface,len(g['faces']))),group=spec.get('group',0),role=spec.get('role',spec['name']),material=spec['material'],material_family=recipe['materials'][spec['material']].get('family'),parameters=spec.get('parameters',{}),geometry_sha256=hashlib.sha256(json.dumps(part,sort_keys=True).encode()).hexdigest())
         components[spec['name']]['geometry_validation']=json.loads(obj.get('geometry_validation_report','{}'))
-    if not recipe.get('rig'):g['vertex_skins']=None;g['face_skins']=None
+    if not(recipe.get('rig')or recipe.get('preserve_authored_groups')):g['vertex_skins']=None;g['face_skins']=None
     g['components']=components;return g
 def build(recipe,palette):
     bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
     for spec in recipe['components']:
         vs,fs=make(spec);validation={}
         if recipe.get('geometry_validation',{}).get('remove_zero_area_faces'):vs,fs,validation=clean_owned(vs,fs)
-        material=recipe['materials'][spec['material']];g=dict(vertices=vs,faces=fs,colors=semantic_colors(vs,fs,material,spec),render_types=[material.get('render_type',0)]*len(fs),priorities=[material.get('priority',0)]*len(fs),priority=0,alpha=[material.get('alpha',0)]*len(fs),face_skins=[spec.get('group',0)]*len(fs),vertex_skins=[spec.get('group',0)]*len(vs),face_flags=[0]*len(fs))
+        material=recipe['materials'][spec['material']];g=dict(vertices=vs,faces=fs,colors=semantic_colors(vs,fs,material,spec),render_types=[material.get('render_type',0)]*len(fs),priorities=[material.get('priority',0)]*len(fs),priority=0,alpha=[material.get('alpha',0)]*len(fs),face_skins=[spec.get('face_group',spec.get('group',0))]*len(fs),vertex_skins=[spec.get('group',0)]*len(vs),face_flags=[0]*len(fs))
         apply_texture(g,material,spec)
         obj=import_model(spec['name'],g,palette);obj['owned_component']=True;obj['role']=spec.get('role',spec['name']);obj['authoring_spec']=json.dumps(spec)
         obj['geometry_validation_report']=json.dumps(validation)
