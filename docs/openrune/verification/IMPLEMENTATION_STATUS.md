@@ -3,9 +3,9 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0103: primary Arctic pine Cut down; source [81f9b6a](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/81f9b6a7e64a02e6860f36dda7178eb4e72a9edf). Focused profile/special-map checks and actual binaries pass; independent V0–V4 queued. All target curves differ from explicit Wiki candidates; raw15/Wiki14 recovery also documented.
+OR-MIG-0104: base redwood Cut sections; source [e4b3499](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/e4b349972e05dafd255a58e2578bc2f621c60011). Focused section/isolation checks and binaries pass; three private targets compile. Independent V0–V4 queued. Guild+7/access/Forestry remain explicit gaps; source modifier returns0/TODO, not an implemented port.
 
-103 units / 112 append-only records. Discovery3508={'not_yet_assessed': 2783, 'configuration': 660, 'framework_or_infrastructure': 15, 'eligible_gameplay_behavior': 50}, not completion percentages. Native parity, regional/quest/log-processing and extra mechanics remain separate. Clay withheld under issue74; PG-DEF-001 Close candidate awaits independent retest.
+104 units / 113 append-only records. Discovery3508={'not_yet_assessed': 2780, 'configuration': 660, 'framework_or_infrastructure': 18, 'eligible_gameplay_behavior': 50}, not completion percentages. Native full-Guild/lifecycle/extras remain separate. Clay withheld under issue74; PG-DEF-001 Close candidate awaits independent retest.
 <!-- forge-current:end -->
 
 
@@ -687,3 +687,14 @@ Target enum65527 differs from Wiki across all ten axes. For example raw bronze6/
 Focused001PASS2server/0matchingworld469 unchanged hashes,55.37scompile/3.69stests; actual binaries001PASS469/3.35s. Reached boosted-current54/base1 at Attack0 gives500fine per log125%, retains runeaxe, crosses140active ticks with intermediate failed rolls and restores exactly14ticks later without replay. F2P/53/fullbag/bad credit/live membership loss refuse. The actual special-axe factory supplies all three Arctic maps before startup validation. Shared member/timer/transaction behavior was regressed by102; no engine field change here. No failure/OOM/resource deferral; developer working-tree evidence only.
 
 Snowy decoration33178, region travel/access, Fremennik splitting/shields/quest progression, pyres/Firemaking, Forestry/group extras, side drops, charged/special tools and acquisition remain separate. Runtime uses fixed Wiki curves and validates enum link, without dynamic payload ingestion. Queue:112records103units; independent V0–V4 queued. Discovery3508={'not_yet_assessed': 2783, 'configuration': 660, 'framework_or_infrastructure': 15, 'eligible_gameplay_behavior': 50}, not completion percentages.
+
+
+## FORGE OR-MIG-0104 — base redwood Cut sections
+
+Source e4b349972e05dafd255a58e2578bc2f621c60011 registers left/right live29668/29670 and depleted29669/29671, member/current Woodcutting90, logs19669/380baseXP,440active ticks and Wiki199 recovery versus raw200. Exact Cut operation, static1x2 footprints, aliases and all pinned params are validated. The existing timer/reward engine handles each section independently. Special-axe maps extend to ten species; all ten axe curves match Wiki and target enum65523. One log/four locations/full enum/two Wiki pages/five source references pinned.
+
+Focused001PASS2server/0matchingworld470 unchanged hashes,42.82s compile/12.13s execution; actual binaries001PASS470/2.36s. Synthetic plane1 and rotations0/1 each retain the other loaded section's exact revision, produce two logs/9,500fine125%, cross440 active ticks and restore exactly199 later. F2P/89/fullbag/bad credit/live membership loss refuse; runeaxe remains. Guard allowed j2 at6,573MiB/55.9%commit/8.2%CPU,16,003pages-in/s but0.3ms disk; no OOM/resource deferral or Redwood Rust failure. Developer working-tree evidence only.
+
+Preserved private integration targets woodcutting_actions002, kotlin_smithing_make001 and runtime_lifecycle001 compile PASS472 hashes, including three explicit ignored files. Initial woodcheck001 failed an old Rock initializer missing members/restore; failure and original bytes archived, only legacyfalse/None supplied. These are compile checks, not executed tests/native acceptance.
+
+Base cutting is the scope. Wiki Guild invisible+7/no Forestry group boost and rope/carved access are not implemented here. Source WoodcuttingModule binds WoodcuttingLevelBoosts, whose calculateBoost returns0 with Guild+7/group+10 TODOs; InvisibleLevels aggregates that zero. Those three supporting files are classified reviewed framework/stub with no implemented IDs. No guessed Guild bonus or travel is added. Full Guild probability, entry/rope/carved travel, complete24-section scene, Farming, extras/clue-nest restrictions/pets/outfits/charged tools/log processing remain separate. Queue:113records104units; independent V0–V4 queued. Discovery3508={'not_yet_assessed': 2780, 'configuration': 660, 'framework_or_infrastructure': 18, 'eligible_gameplay_behavior': 50}, not completion percentages.
