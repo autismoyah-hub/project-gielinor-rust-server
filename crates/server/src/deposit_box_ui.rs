@@ -57,6 +57,16 @@ impl Presentation {
             ],
         })
     }
+    pub fn worn_slot(self, component: Component) -> Option<usize> {
+        if component.interface() != self.interface {
+            return None;
+        }
+        component.child().checked_sub(9).and_then(|index| {
+            [0, 1, 2, 3, 4, 5, 7, 9, 10, 12, 13]
+                .get(index as usize)
+                .copied()
+        })
+    }
     pub fn bulk(self, component: Component, op: u8) -> Option<bool> {
         if op != 1 {
             None
@@ -91,6 +101,18 @@ mod tests {
         assert_eq!(p.bulk(p.deposit_inventory, 1), Some(false));
         assert_eq!(p.bulk(p.deposit_worn, 1), Some(true));
         assert_eq!(p.bulk(p.grid, 1), None);
+        for (child, slot) in (9..=19).zip([0, 1, 2, 3, 4, 5, 7, 9, 10, 12, 13]) {
+            assert_eq!(p.worn_slot(Component::new(192, child)), Some(slot));
+        }
+        for component in [
+            Component::new(192, 8),
+            Component::new(192, 20),
+            Component::new(149, 9),
+            p.grid,
+        ] {
+            assert_eq!(p.worn_slot(component), None);
+        }
+
         assert_eq!(
             p.presets.map(|(c, m)| (c.child(), m)),
             [(34, 0), (35, 1), (36, 4), (38, 2)]

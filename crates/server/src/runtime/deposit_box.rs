@@ -126,6 +126,24 @@ impl<B: AccountBackend> Runtime<B> {
                 end: -1,
                 mask: operation_mask(1).unwrap(),
             });
+        for (child, slot) in (9..=19).zip([0, 1, 2, 3, 4, 5, 7, 9, 10, 12, 13]) {
+            let component = Component::new(p.interface, child);
+            if names.id("component", &format!("bank_depositbox:slot{slot}"))? != component.0
+                || !self.components.contains_key(&component.0)
+            {
+                return Err(io::Error::other("Invalid deposit worn component"));
+            }
+            self.interface_hooks
+                .opens
+                .entry(p.interface)
+                .or_default()
+                .push(Hook::Events {
+                    component,
+                    start: -1,
+                    end: -1,
+                    mask: operation_mask(1).unwrap() | operation_mask(2).unwrap(),
+                });
+        }
         self.world.location_banks.insert(id, gate);
         self.world.deposit_box = Some(gielinor_world::deposit_box::Config {
             animation: p.animation,
@@ -153,6 +171,15 @@ impl<B: AccountBackend> Runtime<B> {
         let a = self.active.get(&actor)?;
         if !a.ui.modals.contains_interface(p.interface) {
             return None;
+        }
+        if [1, 2].contains(&button.op) {
+            if let Some(slot) = p.worn_slot(Component(button.component)) {
+                let item = self.world.data(actor).ok()?.equipment.get(slot)?.id;
+                if button.object != -1 && button.object != item {
+                    return None;
+                }
+                return Some(gielinor_world::simulation::Action::UnequipItemSlot { slot, item });
+            }
         }
         if button.component == p.grid.0 && [1, 2, 3, 4, 6].contains(&button.op) {
             return usize::try_from(button.slot)

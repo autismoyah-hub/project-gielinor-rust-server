@@ -159,6 +159,79 @@ mod tests {
         (w, actor)
     }
     #[test]
+    fn deposit_box_worn_item_action_unequips_to_bag_and_rechecks_identity_capacity_and_delay() {
+        for case in 0..4 {
+            let mut w = World::default();
+            let mut data = PlayerData::new(1, "Box worn".into(), CoordGrid::ZERO, Stats::default());
+            data.equipment
+                .restore_slot(
+                    3,
+                    Some(Item {
+                        id: 2,
+                        count: 1,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+            if case == 1 {
+                for slot in 0..28 {
+                    data.inventory
+                        .restore_slot(
+                            slot,
+                            Some(Item {
+                                id: 99,
+                                count: 1,
+                                vars: 0,
+                            }),
+                        )
+                        .unwrap();
+                }
+            }
+            w.queue_login(1, data).unwrap();
+            w.tick().unwrap();
+            w.tick().unwrap();
+            let actor = w.actors().next().unwrap();
+            w.set_modal_open(actor, true).unwrap();
+            w.drain_events();
+            if case == 3 {
+                w.delay_player(actor, 2).unwrap();
+            }
+            let before = w.data(actor).unwrap().clone();
+            w.submit(
+                actor,
+                Action::UnequipItemSlot {
+                    slot: 3,
+                    item: if case == 2 { 99 } else { 2 },
+                },
+            )
+            .unwrap();
+            w.tick().unwrap();
+            let events = w.drain_events();
+            let after = w.data(actor).unwrap();
+            assert_eq!(after.bank, before.bank);
+            assert_eq!(after.stats, before.stats);
+            if case == 0 {
+                assert!(after.equipment.get(3).is_none());
+                assert_eq!(after.inventory.get(0).unwrap().id, 2);
+                assert!(events.iter().any(|e| matches!(
+                    e,
+                    WorldEvent::EquipmentResult {
+                        unequipping: true,
+                        result: Ok(_),
+                        ..
+                    }
+                )));
+            } else {
+                assert_eq!(after.inventory, before.inventory);
+                assert_eq!(after.equipment.slots(), before.equipment.slots());
+                if case == 3 {
+                    assert!(after.equipment.modified().contains(&0));
+                }
+            }
+            assert!(!events.iter().any(|e| matches!(e, WorldEvent::Bank { .. })));
+        }
+    }
+    #[test]
     fn deposit_box_count_input_presets_custom_signed_boundaries_and_one_use() {
         use crate::deposit_box_items::CountPurpose;
         for (input, accepted, mode, requested) in [

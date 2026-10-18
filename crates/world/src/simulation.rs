@@ -500,6 +500,7 @@ pub enum Action {
     UnequipSlot {
         slot: usize,
     },
+    UnequipItemSlot {slot:usize,item:i32},
     MoveInventorySlot {
         from: usize,
         into: usize,
@@ -1929,8 +1930,11 @@ impl World {
                 }
                 self.events.push(WorldEvent::Bank { actor: id, result });
             }
-            Action::EquipSlot { slot } | Action::UnequipSlot { slot } => {
-                let unequipping = matches!(action, Action::UnequipSlot { .. });
+            Action::EquipSlot { slot } | Action::UnequipSlot { slot } | Action::UnequipItemSlot {slot,..} => {
+                let unequipping = matches!(action, Action::UnequipSlot { .. }|Action::UnequipItemSlot{..});
+                if let Action::UnequipItemSlot{item,..}=action {
+                    if !p.data.equipment.get(slot).is_some_and(|current|current.id==item){return Err(ActionError::InvalidItem);}
+                }
                 let p = self.players.get_mut(id.slot as usize).unwrap();
                 if !unequipping {
                     p.begin_held_action();
