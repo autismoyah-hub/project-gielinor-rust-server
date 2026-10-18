@@ -1,0 +1,50 @@
+{
+  "asset": "quarry-outcrop",
+  "name": "Fractured quarry outcrop",
+  "identity": {
+    "model_id": 1101576,
+    "object_id": 63476,
+    "npc_id": null,
+    "sequence_base": null,
+    "skeleton_base": null,
+    "frame_group_base": null
+  },
+  "asset_key": "mastery-floor-scenery:quarry-outcrop",
+  "model_sha256": "60faf4f310f16def8c04a8e32df6ac667b6b31a2e597b68e614d271997a19474",
+  "vertices": 80,
+  "faces": 144,
+  "bounds": [
+    [
+      -73,
+      -55,
+      -50
+    ],
+    [
+      71,
+      4,
+      45
+    ]
+  ],
+  "actions": [],
+  "original_geometry_and_choreography": true,
+  "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+  "generator": "tools/tower/asset-workbench/author_workflow.py",
+  "recipe": "assets/quarry-outcrop/recipe.json",
+  "technical_conversion": "VALIDATED",
+  "artistic_acceptance": false,
+  "gameplay_integration_tested": false,
+  "material_features": {
+    "native_face_hsl": true,
+    "textured_faces": 0,
+    "alpha_present": true,
+    "face_priorities_present": true,
+    "render_types": [
+      0
+    ],
+    "lighting": {
+      "ambient": 64,
+      "contrast": 768
+    }
+  },
+  "action_identity_map": {}
+}

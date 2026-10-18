@@ -1,0 +1,4829 @@
+{
+  "schema": 1,
+  "name": "Complete original Cinderworks terrain and cave shell / ground-02",
+  "unit": "native;128 units per tile",
+  "materials": {
+    "stone": {
+      "family": "stone",
+      "render_type": 0,
+      "hsl": 10282,
+      "shadow": 10272,
+      "end": 10288,
+      "edge": 10292
+    },
+    "edge": {
+      "hsl": 10262,
+      "render_type": 0
+    },
+    "stone_shadow": {
+      "hsl": 10258,
+      "render_type": 0
+    },
+    "iron": {
+      "hsl": 10299,
+      "render_type": 0
+    },
+    "iron_edge": {
+      "hsl": 10320,
+      "render_type": 0
+    },
+    "wood": {
+      "family": "wood",
+      "render_type": 0,
+      "hsl": 6934,
+      "shadow": 6924,
+      "end": 6940,
+      "edge": 6938
+    },
+    "wood_dark": {
+      "hsl": 8485,
+      "render_type": 0
+    },
+    "leather": {
+      "family": "leather",
+      "render_type": 0,
+      "hsl": 3741,
+      "shadow": 3730,
+      "end": 3747,
+      "edge": 3744
+    },
+    "skin": {
+      "hsl": 10782,
+      "render_type": 0
+    },
+    "skin_shadow": {
+      "hsl": 10772,
+      "render_type": 0
+    },
+    "cloth": {
+      "hsl": 916,
+      "render_type": 0
+    },
+    "armor": {
+      "hsl": 6955,
+      "render_type": 0
+    },
+    "armor_shadow": {
+      "hsl": 7075,
+      "render_type": 0
+    },
+    "gray_armor": {
+      "hsl": 5169,
+      "render_type": 0
+    },
+    "eye": {
+      "hsl": 127,
+      "render_type": 0
+    },
+    "brow": {
+      "hsl": 8598,
+      "render_type": 0
+    },
+    "metal": {
+      "family": "metal",
+      "render_type": 0,
+      "hsl": 33,
+      "shadow": 24,
+      "end": 41,
+      "edge": 45
+    },
+    "bronze": {
+      "family": "bronze",
+      "render_type": 0,
+      "hsl": 6687,
+      "shadow": 6678,
+      "end": 6695,
+      "edge": 6698
+    },
+    "organic": {
+      "family": "organic",
+      "render_type": 0,
+      "hsl": 6697,
+      "shadow": 6685,
+      "end": 6704,
+      "edge": 6701
+    },
+    "ceramic": {
+      "family": "ceramic",
+      "render_type": 0,
+      "hsl": 4773,
+      "shadow": 4763,
+      "end": 4781,
+      "edge": 4786
+    },
+    "bedrock": {
+      "hsl": 10267,
+      "render_type": 1
+    },
+    "floor_stone": {
+      "family": "stone",
+      "render_type": 1,
+      "hsl": 10282,
+      "shadow": 10272,
+      "end": 10288,
+      "edge": 10292
+    },
+    "water": {
+      "hsl": 32284,
+      "render_type": 1,
+      "alpha": 24,
+      "priority": 1
+    }
+  },
+  "components": [
+    {
+      "name": "floor_-10_20",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -1216,
+        92.0,
+        2624
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10286
+        }
+      ]
+    },
+    {
+      "name": "floor_-10_21",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -1216,
+        92.0,
+        2752
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10285
+        }
+      ]
+    },
+    {
+      "name": "floor_-9_-9",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -1088,
+        92.0,
+        -1088
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 6438
+        }
+      ]
+    },
+    {
+      "name": "floor_-9_-8",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -1088,
+        92.0,
+        -960
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 6438
+        }
+      ]
+    },
+    {
+      "name": "floor_-9_-7",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -1088,
+        92.0,
+        -832
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 6438
+        }
+      ]
+    },
+    {
+      "name": "floor_-9_-6",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -1088,
+        92.0,
+        -704
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 6438
+        }
+      ]
+    },
+    {
+      "name": "floor_-9_-5",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -1088,
+        92.0,
+        -576
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 6438
+        }
+      ]
+    },
+    {
+      "name": "floor_-9_-4",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -1088,
+        92.0,
+        -448
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 6438
+        }
+      ]
+    },
+    {
+      "name": "floor_-9_-3",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -1088,
+        92.0,
+        -320
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 6438
+        }
+      ]
+    },
+    {
+      "name": "floor_-9_-2",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -1088,
+        92.0,
+        -192
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 6438
+        }
+      ]
+    },
+    {
+      "name": "floor_-9_2",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -1088,
+        92.0,
+        320
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10274
+        }
+      ]
+    },
+    {
+      "name": "floor_-9_3",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -1088,
+        92.0,
+        448
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10272
+        }
+      ]
+    },
+    {
+      "name": "floor_-9_4",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -1088,
+        92.0,
+        576
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10274
+        }
+      ]
+    },
+    {
+      "name": "floor_-9_5",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -1088,
+        92.0,
+        704
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10275
+        }
+      ]
+    },
+    {
+      "name": "floor_-9_6",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -1088,
+        92.0,
+        832
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10274
+        }
+      ]
+    },
+    {
+      "name": "floor_-9_7",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -1088,
+        92.0,
+        960
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10272
+        }
+      ]
+    },
+    {
+      "name": "floor_-9_8",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -1088,
+        92.0,
+        1088
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10274
+        }
+      ]
+    },
+    {
+      "name": "floor_-9_9",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -1088,
+        92.0,
+        1216
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10275
+        }
+      ]
+    },
+    {
+      "name": "floor_-9_10",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -1088,
+        92.0,
+        1344
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10274
+        }
+      ]
+    },
+    {
+      "name": "floor_-9_11",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -1088,
+        92.0,
+        1472
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10272
+        }
+      ]
+    },
+    {
+      "name": "floor_-9_12",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -1088,
+        92.0,
+        1600
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10274
+        }
+      ]
+    },
+    {
+      "name": "floor_-9_15",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -1088,
+        92.0,
+        1984
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10283
+        }
+      ]
+    },
+    {
+      "name": "floor_-9_16",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -1088,
+        92.0,
+        2112
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10285
+        }
+      ]
+    },
+    {
+      "name": "floor_-9_17",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -1088,
+        92.0,
+        2240
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10286
+        }
+      ]
+    },
+    {
+      "name": "floor_-9_18",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -1088,
+        92.0,
+        2368
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10285
+        }
+      ]
+    },
+    {
+      "name": "floor_-9_19",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -1088,
+        92.0,
+        2496
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10283
+        }
+      ]
+    },
+    {
+      "name": "floor_-9_20",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -1088,
+        92.0,
+        2624
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10285
+        }
+      ]
+    },
+    {
+      "name": "floor_-9_21",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -1088,
+        92.0,
+        2752
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10286
+        }
+      ]
+    },
+    {
+      "name": "floor_-8_-8",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -960,
+        92.0,
+        -960
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10261
+        }
+      ]
+    },
+    {
+      "name": "floor_-8_-7",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -960,
+        92.0,
+        -832
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-8_-6",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -960,
+        92.0,
+        -704
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10264
+        }
+      ]
+    },
+    {
+      "name": "floor_-8_-5",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -960,
+        92.0,
+        -576
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-8_-4",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -960,
+        92.0,
+        -448
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 6438
+        }
+      ]
+    },
+    {
+      "name": "floor_-8_-3",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -960,
+        92.0,
+        -320
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-8_-2",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -960,
+        92.0,
+        -192
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10264
+        }
+      ]
+    },
+    {
+      "name": "floor_-8_-1",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -960,
+        92.0,
+        -64
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-8_0",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -960,
+        92.0,
+        64
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10261
+        }
+      ]
+    },
+    {
+      "name": "floor_-8_1",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -960,
+        92.0,
+        192
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-8_2",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -960,
+        92.0,
+        320
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10275
+        }
+      ]
+    },
+    {
+      "name": "floor_-8_3",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -960,
+        92.0,
+        448
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10274
+        }
+      ]
+    },
+    {
+      "name": "floor_-8_4",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -960,
+        92.0,
+        576
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10272
+        }
+      ]
+    },
+    {
+      "name": "floor_-8_5",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -960,
+        92.0,
+        704
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10274
+        }
+      ]
+    },
+    {
+      "name": "floor_-8_6",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -960,
+        92.0,
+        832
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10275
+        }
+      ]
+    },
+    {
+      "name": "floor_-8_7",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -960,
+        92.0,
+        960
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10274
+        }
+      ]
+    },
+    {
+      "name": "floor_-8_8",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -960,
+        92.0,
+        1088
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10272
+        }
+      ]
+    },
+    {
+      "name": "floor_-8_9",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -960,
+        92.0,
+        1216
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10274
+        }
+      ]
+    },
+    {
+      "name": "floor_-8_10",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -960,
+        92.0,
+        1344
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10275
+        }
+      ]
+    },
+    {
+      "name": "floor_-8_11",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -960,
+        92.0,
+        1472
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10274
+        }
+      ]
+    },
+    {
+      "name": "floor_-8_16",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -960,
+        92.0,
+        2112
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10283
+        }
+      ]
+    },
+    {
+      "name": "floor_-8_17",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -960,
+        92.0,
+        2240
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10285
+        }
+      ]
+    },
+    {
+      "name": "floor_-8_18",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -960,
+        92.0,
+        2368
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10286
+        }
+      ]
+    },
+    {
+      "name": "floor_-7_-9",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -832,
+        92.0,
+        -1088
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10264
+        }
+      ]
+    },
+    {
+      "name": "floor_-7_-8",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -832,
+        92.0,
+        -960
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-7_-7",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -832,
+        92.0,
+        -832
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10261
+        }
+      ]
+    },
+    {
+      "name": "floor_-7_-6",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -832,
+        92.0,
+        -704
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-7_-5",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -832,
+        92.0,
+        -576
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10264
+        }
+      ]
+    },
+    {
+      "name": "floor_-7_-4",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -832,
+        92.0,
+        -448
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-7_-3",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -832,
+        92.0,
+        -320
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10261
+        }
+      ]
+    },
+    {
+      "name": "floor_-7_-2",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -832,
+        92.0,
+        -192
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-7_-1",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -832,
+        92.0,
+        -64
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10264
+        }
+      ]
+    },
+    {
+      "name": "floor_-7_0",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -832,
+        92.0,
+        64
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-7_1",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -832,
+        92.0,
+        192
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10261
+        }
+      ]
+    },
+    {
+      "name": "floor_-7_2",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -832,
+        92.0,
+        320
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10274
+        }
+      ]
+    },
+    {
+      "name": "floor_-7_3",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -832,
+        92.0,
+        448
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10275
+        }
+      ]
+    },
+    {
+      "name": "floor_-7_4",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -832,
+        92.0,
+        576
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10274
+        }
+      ]
+    },
+    {
+      "name": "floor_-7_5",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -832,
+        92.0,
+        704
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10272
+        }
+      ]
+    },
+    {
+      "name": "floor_-7_6",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -832,
+        92.0,
+        832
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10274
+        }
+      ]
+    },
+    {
+      "name": "floor_-7_7",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -832,
+        92.0,
+        960
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10275
+        }
+      ]
+    },
+    {
+      "name": "floor_-7_8",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -832,
+        92.0,
+        1088
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10274
+        }
+      ]
+    },
+    {
+      "name": "floor_-7_9",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -832,
+        92.0,
+        1216
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10272
+        }
+      ]
+    },
+    {
+      "name": "floor_-7_10",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -832,
+        92.0,
+        1344
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10274
+        }
+      ]
+    },
+    {
+      "name": "floor_-7_11",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -832,
+        92.0,
+        1472
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10275
+        }
+      ]
+    },
+    {
+      "name": "floor_-6_-10",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -704,
+        92.0,
+        -1216
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10261
+        }
+      ]
+    },
+    {
+      "name": "floor_-6_-9",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -704,
+        92.0,
+        -1088
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-6_-8",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -704,
+        92.0,
+        -960
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10264
+        }
+      ]
+    },
+    {
+      "name": "floor_-6_-7",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -704,
+        92.0,
+        -832
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-6_-6",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -704,
+        92.0,
+        -704
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10261
+        }
+      ]
+    },
+    {
+      "name": "floor_-6_-5",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -704,
+        92.0,
+        -576
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-6_-4",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -704,
+        92.0,
+        -448
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10264
+        }
+      ]
+    },
+    {
+      "name": "floor_-6_-3",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -704,
+        92.0,
+        -320
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-6_-2",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -704,
+        92.0,
+        -192
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10261
+        }
+      ]
+    },
+    {
+      "name": "floor_-6_-1",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -704,
+        92.0,
+        -64
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-6_0",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -704,
+        92.0,
+        64
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10264
+        }
+      ]
+    },
+    {
+      "name": "floor_-6_1",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -704,
+        92.0,
+        192
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-6_2",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -704,
+        92.0,
+        320
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10261
+        }
+      ]
+    },
+    {
+      "name": "floor_-6_4",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -704,
+        92.0,
+        576
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10275
+        }
+      ]
+    },
+    {
+      "name": "floor_-6_5",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -704,
+        92.0,
+        704
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10274
+        }
+      ]
+    },
+    {
+      "name": "floor_-6_6",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -704,
+        92.0,
+        832
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10272
+        }
+      ]
+    },
+    {
+      "name": "floor_-6_7",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -704,
+        92.0,
+        960
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10274
+        }
+      ]
+    },
+    {
+      "name": "floor_-6_8",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -704,
+        92.0,
+        1088
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10275
+        }
+      ]
+    },
+    {
+      "name": "floor_-6_9",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -704,
+        92.0,
+        1216
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10274
+        }
+      ]
+    },
+    {
+      "name": "floor_-6_10",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -704,
+        92.0,
+        1344
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10272
+        }
+      ]
+    },
+    {
+      "name": "floor_-5_-11",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -576,
+        92.0,
+        -1344
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10264
+        }
+      ]
+    },
+    {
+      "name": "floor_-5_-10",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -576,
+        92.0,
+        -1216
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-5_-9",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -576,
+        92.0,
+        -1088
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10261
+        }
+      ]
+    },
+    {
+      "name": "floor_-5_-8",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -576,
+        92.0,
+        -960
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-5_-7",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -576,
+        92.0,
+        -832
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10264
+        }
+      ]
+    },
+    {
+      "name": "floor_-5_-6",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -576,
+        92.0,
+        -704
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-5_-5",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -576,
+        92.0,
+        -576
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10261
+        }
+      ]
+    },
+    {
+      "name": "floor_-5_-4",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -576,
+        92.0,
+        -448
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-5_-3",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -576,
+        92.0,
+        -320
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10264
+        }
+      ]
+    },
+    {
+      "name": "floor_-5_-2",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -576,
+        92.0,
+        -192
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-5_-1",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -576,
+        92.0,
+        -64
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10261
+        }
+      ]
+    },
+    {
+      "name": "floor_-5_0",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -576,
+        92.0,
+        64
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-5_1",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -576,
+        92.0,
+        192
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10264
+        }
+      ]
+    },
+    {
+      "name": "floor_-5_2",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -576,
+        92.0,
+        320
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-5_7",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -576,
+        92.0,
+        960
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10272
+        }
+      ]
+    },
+    {
+      "name": "floor_-5_8",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -576,
+        92.0,
+        1088
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10279
+        }
+      ]
+    },
+    {
+      "name": "floor_-5_9",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -576,
+        92.0,
+        1216
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10275
+        }
+      ]
+    },
+    {
+      "name": "floor_-4_-12",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -448,
+        92.0,
+        -1472
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10261
+        }
+      ]
+    },
+    {
+      "name": "floor_-4_-11",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -448,
+        92.0,
+        -1344
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-4_-10",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -448,
+        92.0,
+        -1216
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10264
+        }
+      ]
+    },
+    {
+      "name": "floor_-4_-9",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -448,
+        92.0,
+        -1088
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-4_-8",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -448,
+        92.0,
+        -960
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10261
+        }
+      ]
+    },
+    {
+      "name": "floor_-4_-7",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -448,
+        92.0,
+        -832
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-4_-6",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -448,
+        92.0,
+        -704
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10264
+        }
+      ]
+    },
+    {
+      "name": "floor_-4_-5",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -448,
+        92.0,
+        -576
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-4_-4",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -448,
+        92.0,
+        -448
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10261
+        }
+      ]
+    },
+    {
+      "name": "floor_-4_-3",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -448,
+        92.0,
+        -320
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-4_-2",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -448,
+        92.0,
+        -192
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10264
+        }
+      ]
+    },
+    {
+      "name": "floor_-4_-1",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -448,
+        92.0,
+        -64
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-4_0",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -448,
+        92.0,
+        64
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10261
+        }
+      ]
+    },
+    {
+      "name": "floor_-4_1",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -448,
+        92.0,
+        192
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-4_2",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -448,
+        92.0,
+        320
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10264
+        }
+      ]
+    },
+    {
+      "name": "floor_-4_6",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -448,
+        92.0,
+        832
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10280
+        }
+      ]
+    },
+    {
+      "name": "floor_-4_7",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -448,
+        92.0,
+        960
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10279
+        }
+      ]
+    },
+    {
+      "name": "floor_-4_8",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -448,
+        92.0,
+        1088
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10277
+        }
+      ]
+    },
+    {
+      "name": "floor_-4_9",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -448,
+        92.0,
+        1216
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10279
+        }
+      ]
+    },
+    {
+      "name": "floor_-4_10",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -448,
+        92.0,
+        1344
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10280
+        }
+      ]
+    },
+    {
+      "name": "floor_-3_-12",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -320,
+        92.0,
+        -1472
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-3_-11",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -320,
+        92.0,
+        -1344
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10261
+        }
+      ]
+    },
+    {
+      "name": "floor_-3_-10",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -320,
+        92.0,
+        -1216
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-3_-9",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -320,
+        92.0,
+        -1088
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10264
+        }
+      ]
+    },
+    {
+      "name": "floor_-3_-8",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -320,
+        92.0,
+        -960
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-3_-7",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -320,
+        92.0,
+        -832
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10261
+        }
+      ]
+    },
+    {
+      "name": "floor_-3_-6",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -320,
+        92.0,
+        -704
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-3_-5",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -320,
+        92.0,
+        -576
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10264
+        }
+      ]
+    },
+    {
+      "name": "floor_-3_-4",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -320,
+        92.0,
+        -448
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-3_-3",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -320,
+        92.0,
+        -320
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10261
+        }
+      ]
+    },
+    {
+      "name": "floor_-3_-2",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -320,
+        92.0,
+        -192
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-3_-1",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -320,
+        92.0,
+        -64
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10264
+        }
+      ]
+    },
+    {
+      "name": "floor_-3_0",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -320,
+        92.0,
+        64
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-3_1",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -320,
+        92.0,
+        192
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10261
+        }
+      ]
+    },
+    {
+      "name": "floor_-3_2",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -320,
+        92.0,
+        320
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-3_4",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -320,
+        92.0,
+        576
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10279
+        }
+      ]
+    },
+    {
+      "name": "floor_-3_5",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -320,
+        92.0,
+        704
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10277
+        }
+      ]
+    },
+    {
+      "name": "floor_-3_6",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -320,
+        92.0,
+        832
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10279
+        }
+      ]
+    },
+    {
+      "name": "floor_-3_7",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -320,
+        92.0,
+        960
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10280
+        }
+      ]
+    },
+    {
+      "name": "floor_-3_8",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -320,
+        92.0,
+        1088
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10279
+        }
+      ]
+    },
+    {
+      "name": "floor_-3_9",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -320,
+        92.0,
+        1216
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10277
+        }
+      ]
+    },
+    {
+      "name": "floor_-3_10",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -320,
+        92.0,
+        1344
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10279
+        }
+      ]
+    },
+    {
+      "name": "floor_-3_11",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -320,
+        92.0,
+        1472
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10280
+        }
+      ]
+    },
+    {
+      "name": "floor_-3_12",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -320,
+        92.0,
+        1600
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10279
+        }
+      ]
+    },
+    {
+      "name": "floor_-2_-12",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -192,
+        92.0,
+        -1472
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10264
+        }
+      ]
+    },
+    {
+      "name": "floor_-2_-11",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -192,
+        92.0,
+        -1344
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-2_-10",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -192,
+        92.0,
+        -1216
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10261
+        }
+      ]
+    },
+    {
+      "name": "floor_-2_-9",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -192,
+        92.0,
+        -1088
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-2_-8",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -192,
+        92.0,
+        -960
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10264
+        }
+      ]
+    },
+    {
+      "name": "floor_-2_-7",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -192,
+        92.0,
+        -832
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-2_-6",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -192,
+        92.0,
+        -704
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10261
+        }
+      ]
+    },
+    {
+      "name": "floor_-2_-5",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -192,
+        92.0,
+        -576
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-2_-4",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -192,
+        92.0,
+        -448
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10264
+        }
+      ]
+    },
+    {
+      "name": "floor_-2_-3",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -192,
+        92.0,
+        -320
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-2_-2",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -192,
+        92.0,
+        -192
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10261
+        }
+      ]
+    },
+    {
+      "name": "floor_-2_-1",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -192,
+        92.0,
+        -64
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-2_0",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -192,
+        92.0,
+        64
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10264
+        }
+      ]
+    },
+    {
+      "name": "floor_-2_1",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -192,
+        92.0,
+        192
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    },
+    {
+      "name": "floor_-2_2",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -192,
+        92.0,
+        320
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10261
+        }
+      ]
+    },
+    {
+      "name": "floor_-2_3",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -192,
+        92.0,
+        448
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10279
+        }
+      ]
+    },
+    {
+      "name": "floor_-2_4",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -192,
+        92.0,
+        576
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10280
+        }
+      ]
+    },
+    {
+      "name": "floor_-2_5",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -192,
+        92.0,
+        704
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10279
+        }
+      ]
+    },
+    {
+      "name": "floor_-2_6",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -192,
+        92.0,
+        832
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10277
+        }
+      ]
+    },
+    {
+      "name": "floor_-2_7",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -192,
+        92.0,
+        960
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10279
+        }
+      ]
+    },
+    {
+      "name": "floor_-2_8",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -192,
+        92.0,
+        1088
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10280
+        }
+      ]
+    },
+    {
+      "name": "floor_-2_9",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -192,
+        92.0,
+        1216
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10279
+        }
+      ]
+    },
+    {
+      "name": "floor_-2_10",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -192,
+        92.0,
+        1344
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10277
+        }
+      ]
+    },
+    {
+      "name": "floor_-2_11",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -192,
+        92.0,
+        1472
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": -1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10279
+        }
+      ]
+    },
+    {
+      "name": "floor_-2_12",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -192,
+        92.0,
+        1600
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 0,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10280
+        }
+      ]
+    },
+    {
+      "name": "floor_-2_13",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -192,
+        92.0,
+        1728
+      ],
+      "size": [
+        126,
+        184,
+        126
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10279
+        }
+      ]
+    },
+    {
+      "name": "floor_-1_-12",
+      "type": "box",
+      "material": "floor_stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -64,
+        92.0,
+        -1472
+      ],
+      "size": [
+        128,
+        184,
+        128
+      ],
+      "variation": 1,
+      "surface_bands": [
+        {
+          "axis": 1,
+          "min": -1,
+          "max": 1,
+          "hsl": 10263
+        }
+      ]
+    }
+  ],
+  "rig": [],
+  "actions": {},
+  "authoring_schema": 2,
+  "geometry_validation": {
+    "remove_zero_area_faces": true,
+    "preserve_vertex_order": true
+  },
+  "provenance": {
+    "kind": "original_tower_asset",
+    "source_mesh_or_animation_reuse": false,
+    "brief": "Connected original bedrock, regional floors, recessed water, quarry slope, radial bell court, casting dais and ore rails. Offline geometry only.",
+    "artistic_acceptance": false,
+    "live_integration": false
+  }
+}

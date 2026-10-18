@@ -1,0 +1,101 @@
+{
+  "asset": "siltcoil-matriarch",
+  "name": "Siltcoil Matriarch",
+  "identity": {
+    "model_id": 1101567,
+    "object_id": 63467,
+    "npc_id": 60040,
+    "sequence_base": 45160,
+    "skeleton_base": 32160,
+    "frame_group_base": 40160
+  },
+  "asset_key": "mastery-original-boss:siltcoil-matriarch",
+  "model_sha256": "226d1277ad4dc3875b5bc2dda091c6e609edf67df8b80e975216624cb7acf953",
+  "vertices": 742,
+  "faces": 1352,
+  "bounds": [
+    [
+      -74,
+      -80,
+      -215
+    ],
+    [
+      74,
+      0,
+      220
+    ]
+  ],
+  "actions": [
+    "idle",
+    "walk",
+    "attack",
+    "hit",
+    "death",
+    "sieve_breach",
+    "walk_entry"
+  ],
+  "original_geometry_and_choreography": true,
+  "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+  "generator": "tools/tower/asset-workbench/author_workflow.py",
+  "recipe": "assets/siltcoil-matriarch/recipe.json",
+  "technical_conversion": "VALIDATED",
+  "artistic_acceptance": false,
+  "gameplay_integration_tested": false,
+  "material_features": {
+    "native_face_hsl": true,
+    "textured_faces": 0,
+    "alpha_present": true,
+    "face_priorities_present": true,
+    "render_types": [
+      0
+    ],
+    "lighting": {
+      "ambient": 64,
+      "contrast": 768
+    }
+  },
+  "action_identity_map": {
+    "attack": {
+      "sequence_id": 45160,
+      "skeleton_id": 32162,
+      "frame_group": 40162,
+      "format": "native_classic"
+    },
+    "death": {
+      "sequence_id": 45161,
+      "skeleton_id": 32164,
+      "frame_group": 40164,
+      "format": "native_classic"
+    },
+    "hit": {
+      "sequence_id": 45162,
+      "skeleton_id": 32163,
+      "frame_group": 40163,
+      "format": "native_classic"
+    },
+    "idle": {
+      "sequence_id": 45163,
+      "skeleton_id": 32160,
+      "frame_group": 40160,
+      "format": "native_classic"
+    },
+    "sieve_breach": {
+      "sequence_id": 45164,
+      "skeleton_id": 32165,
+      "frame_group": 40165,
+      "format": "native_classic"
+    },
+    "walk": {
+      "sequence_id": 45165,
+      "skeleton_id": 32161,
+      "frame_group": 40161,
+      "format": "native_classic"
+    },
+    "walk_entry": {
+      "sequence_id": 45166,
+      "skeleton_id": 32166,
+      "frame_group": 40166,
+      "format": "native_classic"
+    }
+  }
+}

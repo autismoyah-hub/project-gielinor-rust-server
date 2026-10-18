@@ -1,0 +1,26 @@
+{
+  "object_id": 63476,
+  "model_ids": [
+    1101576
+  ],
+  "models": [
+    {
+      "id": 1101576,
+      "file": "model-1101576.model",
+      "sha256": "60faf4f310f16def8c04a8e32df6ac667b6b31a2e597b68e614d271997a19474"
+    }
+  ],
+  "factory": {
+    "shape": 10,
+    "size": [
+      1,
+      1
+    ],
+    "non_flat_shading": true,
+    "scale": [
+      128,
+      128,
+      128
+    ]
+  }
+}

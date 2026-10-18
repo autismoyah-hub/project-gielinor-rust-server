@@ -1,0 +1,5137 @@
+{
+  "schema": 1,
+  "name": "Complete original Cinderworks terrain and cave shell / ground-11",
+  "unit": "native;128 units per tile",
+  "materials": {
+    "stone": {
+      "family": "stone",
+      "render_type": 0,
+      "hsl": 10282,
+      "shadow": 10272,
+      "end": 10288,
+      "edge": 10292
+    },
+    "edge": {
+      "hsl": 10262,
+      "render_type": 0
+    },
+    "stone_shadow": {
+      "hsl": 10258,
+      "render_type": 0
+    },
+    "iron": {
+      "hsl": 10299,
+      "render_type": 0
+    },
+    "iron_edge": {
+      "hsl": 10320,
+      "render_type": 0
+    },
+    "wood": {
+      "family": "wood",
+      "render_type": 0,
+      "hsl": 6934,
+      "shadow": 6924,
+      "end": 6940,
+      "edge": 6938
+    },
+    "wood_dark": {
+      "hsl": 8485,
+      "render_type": 0
+    },
+    "leather": {
+      "family": "leather",
+      "render_type": 0,
+      "hsl": 3741,
+      "shadow": 3730,
+      "end": 3747,
+      "edge": 3744
+    },
+    "skin": {
+      "hsl": 10782,
+      "render_type": 0
+    },
+    "skin_shadow": {
+      "hsl": 10772,
+      "render_type": 0
+    },
+    "cloth": {
+      "hsl": 916,
+      "render_type": 0
+    },
+    "armor": {
+      "hsl": 6955,
+      "render_type": 0
+    },
+    "armor_shadow": {
+      "hsl": 7075,
+      "render_type": 0
+    },
+    "gray_armor": {
+      "hsl": 5169,
+      "render_type": 0
+    },
+    "eye": {
+      "hsl": 127,
+      "render_type": 0
+    },
+    "brow": {
+      "hsl": 8598,
+      "render_type": 0
+    },
+    "metal": {
+      "family": "metal",
+      "render_type": 0,
+      "hsl": 33,
+      "shadow": 24,
+      "end": 41,
+      "edge": 45
+    },
+    "bronze": {
+      "family": "bronze",
+      "render_type": 0,
+      "hsl": 6687,
+      "shadow": 6678,
+      "end": 6695,
+      "edge": 6698
+    },
+    "organic": {
+      "family": "organic",
+      "render_type": 0,
+      "hsl": 6697,
+      "shadow": 6685,
+      "end": 6704,
+      "edge": 6701
+    },
+    "ceramic": {
+      "family": "ceramic",
+      "render_type": 0,
+      "hsl": 4773,
+      "shadow": 4763,
+      "end": 4781,
+      "edge": 4786
+    },
+    "bedrock": {
+      "hsl": 10267,
+      "render_type": 1
+    },
+    "floor_stone": {
+      "family": "stone",
+      "render_type": 1,
+      "hsl": 10282,
+      "shadow": 10272,
+      "end": 10288,
+      "edge": 10292
+    },
+    "water": {
+      "hsl": 32284,
+      "render_type": 1,
+      "alpha": 24,
+      "priority": 1
+    }
+  },
+  "components": [
+    {
+      "name": "rock_wall_19_-18_0",
+      "type": "section_mesh",
+      "material": "stone",
+      "group": 0,
+      "role": "continuous_cave_boundary",
+      "sections": [
+        [
+          0,
+          23,
+          0,
+          65,
+          34
+        ],
+        [
+          0,
+          -92.0,
+          0,
+          65,
+          36
+        ],
+        [
+          0,
+          -184,
+          0,
+          65,
+          32
+        ]
+      ],
+      "sides": 4,
+      "profiles": [
+        [
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        [
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        [
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            1
+          ]
+        ]
+      ],
+      "hem": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          -5,
+          4,
+          8,
+          -2
+        ]
+      ],
+      "parent_socket": {
+        "origin": [
+          2560,
+          0,
+          -2240
+        ],
+        "basis": [
+          [
+            6.123233995736766e-17,
+            0,
+            -1.0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1.0,
+            0,
+            6.123233995736766e-17
+          ]
+        ]
+      },
+      "variation": -1
+    },
+    {
+      "name": "rock_wall_19_-17_0",
+      "type": "section_mesh",
+      "material": "stone",
+      "group": 0,
+      "role": "continuous_cave_boundary",
+      "sections": [
+        [
+          0,
+          23,
+          0,
+          65,
+          34
+        ],
+        [
+          0,
+          -99.0,
+          0,
+          65,
+          36
+        ],
+        [
+          0,
+          -198,
+          0,
+          65,
+          32
+        ]
+      ],
+      "sides": 4,
+      "profiles": [
+        [
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        [
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        [
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            1
+          ]
+        ]
+      ],
+      "hem": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          -5,
+          4,
+          8,
+          -2
+        ]
+      ],
+      "parent_socket": {
+        "origin": [
+          2560,
+          0,
+          -2112
+        ],
+        "basis": [
+          [
+            6.123233995736766e-17,
+            0,
+            -1.0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1.0,
+            0,
+            6.123233995736766e-17
+          ]
+        ]
+      },
+      "variation": -2
+    },
+    {
+      "name": "rock_wall_19_-16_0",
+      "type": "section_mesh",
+      "material": "stone",
+      "group": 0,
+      "role": "continuous_cave_boundary",
+      "sections": [
+        [
+          0,
+          23,
+          0,
+          65,
+          34
+        ],
+        [
+          0,
+          -85.0,
+          0,
+          65,
+          36
+        ],
+        [
+          0,
+          -170,
+          0,
+          65,
+          32
+        ]
+      ],
+      "sides": 4,
+      "profiles": [
+        [
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        [
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        [
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            1
+          ]
+        ]
+      ],
+      "hem": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          -5,
+          4,
+          8,
+          -2
+        ]
+      ],
+      "parent_socket": {
+        "origin": [
+          2560,
+          0,
+          -1984
+        ],
+        "basis": [
+          [
+            6.123233995736766e-17,
+            0,
+            -1.0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1.0,
+            0,
+            6.123233995736766e-17
+          ]
+        ]
+      },
+      "variation": 1
+    },
+    {
+      "name": "rock_wall_19_-16_2",
+      "type": "section_mesh",
+      "material": "stone",
+      "group": 0,
+      "role": "continuous_cave_boundary",
+      "sections": [
+        [
+          0,
+          23,
+          0,
+          65,
+          34
+        ],
+        [
+          0,
+          -85.0,
+          0,
+          65,
+          36
+        ],
+        [
+          0,
+          -170,
+          0,
+          65,
+          32
+        ]
+      ],
+      "sides": 4,
+      "profiles": [
+        [
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        [
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        [
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            1
+          ]
+        ]
+      ],
+      "hem": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          -5,
+          4,
+          8,
+          -2
+        ]
+      ],
+      "parent_socket": {
+        "origin": [
+          2496,
+          0,
+          -1920
+        ],
+        "basis": [
+          [
+            1.0,
+            0,
+            -0.0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0.0,
+            0,
+            1.0
+          ]
+        ]
+      },
+      "variation": 1
+    },
+    {
+      "name": "bell_inlay_0",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "radial_paving",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "inner": 190,
+      "outer": 340,
+      "start_angle": 0.008,
+      "end_angle": 0.38469908169872413,
+      "depth": 5,
+      "socket": {
+        "origin": [
+          -1720,
+          -3,
+          2480
+        ],
+        "basis": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            -1,
+            0
+          ]
+        ]
+      },
+      "variation": -1
+    },
+    {
+      "name": "bell_inlay_1",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "radial_paving",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "inner": 190,
+      "outer": 340,
+      "start_angle": 0.40069908169872415,
+      "end_angle": 0.7773981633974483,
+      "depth": 5,
+      "socket": {
+        "origin": [
+          -1720,
+          -3,
+          2480
+        ],
+        "basis": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            -1,
+            0
+          ]
+        ]
+      },
+      "variation": 0
+    },
+    {
+      "name": "bell_inlay_2",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "radial_paving",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "inner": 190,
+      "outer": 340,
+      "start_angle": 0.7933981633974483,
+      "end_angle": 1.1700972450961724,
+      "depth": 5,
+      "socket": {
+        "origin": [
+          -1720,
+          -3,
+          2480
+        ],
+        "basis": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            -1,
+            0
+          ]
+        ]
+      },
+      "variation": 1
+    },
+    {
+      "name": "bell_inlay_3",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "radial_paving",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "inner": 190,
+      "outer": 340,
+      "start_angle": 1.1860972450961724,
+      "end_angle": 1.5627963267948966,
+      "depth": 5,
+      "socket": {
+        "origin": [
+          -1720,
+          -3,
+          2480
+        ],
+        "basis": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            -1,
+            0
+          ]
+        ]
+      },
+      "variation": -1
+    },
+    {
+      "name": "bell_inlay_4",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "radial_paving",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "inner": 190,
+      "outer": 340,
+      "start_angle": 1.5787963267948966,
+      "end_angle": 1.9554954084936207,
+      "depth": 5,
+      "socket": {
+        "origin": [
+          -1720,
+          -3,
+          2480
+        ],
+        "basis": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            -1,
+            0
+          ]
+        ]
+      },
+      "variation": 0
+    },
+    {
+      "name": "bell_inlay_5",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "radial_paving",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "inner": 190,
+      "outer": 340,
+      "start_angle": 1.9714954084936207,
+      "end_angle": 2.348194490192345,
+      "depth": 5,
+      "socket": {
+        "origin": [
+          -1720,
+          -3,
+          2480
+        ],
+        "basis": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            -1,
+            0
+          ]
+        ]
+      },
+      "variation": 1
+    },
+    {
+      "name": "bell_inlay_6",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "radial_paving",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "inner": 190,
+      "outer": 340,
+      "start_angle": 2.364194490192345,
+      "end_angle": 2.740893571891069,
+      "depth": 5,
+      "socket": {
+        "origin": [
+          -1720,
+          -3,
+          2480
+        ],
+        "basis": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            -1,
+            0
+          ]
+        ]
+      },
+      "variation": -1
+    },
+    {
+      "name": "bell_inlay_7",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "radial_paving",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "inner": 190,
+      "outer": 340,
+      "start_angle": 2.756893571891069,
+      "end_angle": 3.133592653589793,
+      "depth": 5,
+      "socket": {
+        "origin": [
+          -1720,
+          -3,
+          2480
+        ],
+        "basis": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            -1,
+            0
+          ]
+        ]
+      },
+      "variation": 0
+    },
+    {
+      "name": "bell_inlay_8",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "radial_paving",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "inner": 190,
+      "outer": 340,
+      "start_angle": 3.149592653589793,
+      "end_angle": 3.5262917352885172,
+      "depth": 5,
+      "socket": {
+        "origin": [
+          -1720,
+          -3,
+          2480
+        ],
+        "basis": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            -1,
+            0
+          ]
+        ]
+      },
+      "variation": 1
+    },
+    {
+      "name": "bell_inlay_9",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "radial_paving",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "inner": 190,
+      "outer": 340,
+      "start_angle": 3.5422917352885173,
+      "end_angle": 3.9189908169872414,
+      "depth": 5,
+      "socket": {
+        "origin": [
+          -1720,
+          -3,
+          2480
+        ],
+        "basis": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            -1,
+            0
+          ]
+        ]
+      },
+      "variation": -1
+    },
+    {
+      "name": "bell_inlay_10",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "radial_paving",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "inner": 190,
+      "outer": 340,
+      "start_angle": 3.9349908169872414,
+      "end_angle": 4.311689898685965,
+      "depth": 5,
+      "socket": {
+        "origin": [
+          -1720,
+          -3,
+          2480
+        ],
+        "basis": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            -1,
+            0
+          ]
+        ]
+      },
+      "variation": 0
+    },
+    {
+      "name": "bell_inlay_11",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "radial_paving",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "inner": 190,
+      "outer": 340,
+      "start_angle": 4.327689898685965,
+      "end_angle": 4.70438898038469,
+      "depth": 5,
+      "socket": {
+        "origin": [
+          -1720,
+          -3,
+          2480
+        ],
+        "basis": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            -1,
+            0
+          ]
+        ]
+      },
+      "variation": 1
+    },
+    {
+      "name": "bell_inlay_12",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "radial_paving",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "inner": 190,
+      "outer": 340,
+      "start_angle": 4.72038898038469,
+      "end_angle": 5.097088062083414,
+      "depth": 5,
+      "socket": {
+        "origin": [
+          -1720,
+          -3,
+          2480
+        ],
+        "basis": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            -1,
+            0
+          ]
+        ]
+      },
+      "variation": -1
+    },
+    {
+      "name": "bell_inlay_13",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "radial_paving",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "inner": 190,
+      "outer": 340,
+      "start_angle": 5.113088062083414,
+      "end_angle": 5.489787143782138,
+      "depth": 5,
+      "socket": {
+        "origin": [
+          -1720,
+          -3,
+          2480
+        ],
+        "basis": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            -1,
+            0
+          ]
+        ]
+      },
+      "variation": 0
+    },
+    {
+      "name": "bell_inlay_14",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "radial_paving",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "inner": 190,
+      "outer": 340,
+      "start_angle": 5.505787143782138,
+      "end_angle": 5.882486225480862,
+      "depth": 5,
+      "socket": {
+        "origin": [
+          -1720,
+          -3,
+          2480
+        ],
+        "basis": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            -1,
+            0
+          ]
+        ]
+      },
+      "variation": 1
+    },
+    {
+      "name": "bell_inlay_15",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "radial_paving",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "inner": 190,
+      "outer": 340,
+      "start_angle": 5.898486225480862,
+      "end_angle": 6.275185307179586,
+      "depth": 5,
+      "socket": {
+        "origin": [
+          -1720,
+          -3,
+          2480
+        ],
+        "basis": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            -1,
+            0
+          ]
+        ]
+      },
+      "variation": -1
+    },
+    {
+      "name": "casting_dais",
+      "type": "loft",
+      "material": "stone",
+      "group": 0,
+      "role": "supported_dais",
+      "sections": [
+        [
+          1450,
+          0,
+          -2350,
+          350,
+          305
+        ],
+        [
+          1450,
+          -12,
+          -2350,
+          350,
+          305
+        ],
+        [
+          1450,
+          -24,
+          -2350,
+          330,
+          288
+        ]
+      ],
+      "sides": 16
+    },
+    {
+      "name": "casting_step_0",
+      "type": "box",
+      "material": "stone",
+      "group": 0,
+      "role": "casting_step_0",
+      "center": [
+        1450,
+        -3,
+        -1975
+      ],
+      "size": [
+        190,
+        6,
+        46
+      ]
+    },
+    {
+      "name": "casting_step_1",
+      "type": "box",
+      "material": "stone",
+      "group": 0,
+      "role": "casting_step_1",
+      "center": [
+        1450,
+        -9,
+        -2010
+      ],
+      "size": [
+        190,
+        18,
+        46
+      ]
+    },
+    {
+      "name": "casting_step_2",
+      "type": "box",
+      "material": "stone",
+      "group": 0,
+      "role": "casting_step_2",
+      "center": [
+        1450,
+        -15,
+        -2045
+      ],
+      "size": [
+        190,
+        30,
+        46
+      ]
+    },
+    {
+      "name": "rail_-1_0",
+      "type": "beam",
+      "material": "metal",
+      "group": 0,
+      "role": "transport_rail",
+      "start": [
+        -2230,
+        8,
+        -1050
+      ],
+      "end": [
+        -1910,
+        1,
+        -650
+      ],
+      "radii": [
+        3,
+        3
+      ],
+      "sides": 4
+    },
+    {
+      "name": "rail_-1_1",
+      "type": "beam",
+      "material": "metal",
+      "group": 0,
+      "role": "transport_rail",
+      "start": [
+        -1910,
+        1,
+        -650
+      ],
+      "end": [
+        -1780,
+        -2,
+        -100
+      ],
+      "radii": [
+        3,
+        3
+      ],
+      "sides": 4
+    },
+    {
+      "name": "rail_-1_2",
+      "type": "beam",
+      "material": "metal",
+      "group": 0,
+      "role": "transport_rail",
+      "start": [
+        -1780,
+        -2,
+        -100
+      ],
+      "end": [
+        -1570,
+        -4,
+        460
+      ],
+      "radii": [
+        3,
+        3
+      ],
+      "sides": 4
+    },
+    {
+      "name": "rail_1_0",
+      "type": "beam",
+      "material": "metal",
+      "group": 0,
+      "role": "transport_rail",
+      "start": [
+        -2170,
+        7,
+        -1050
+      ],
+      "end": [
+        -1850,
+        0,
+        -650
+      ],
+      "radii": [
+        3,
+        3
+      ],
+      "sides": 4
+    },
+    {
+      "name": "rail_1_1",
+      "type": "beam",
+      "material": "metal",
+      "group": 0,
+      "role": "transport_rail",
+      "start": [
+        -1850,
+        0,
+        -650
+      ],
+      "end": [
+        -1720,
+        -4,
+        -100
+      ],
+      "radii": [
+        3,
+        3
+      ],
+      "sides": 4
+    },
+    {
+      "name": "rail_1_2",
+      "type": "beam",
+      "material": "metal",
+      "group": 0,
+      "role": "transport_rail",
+      "start": [
+        -1720,
+        -4,
+        -100
+      ],
+      "end": [
+        -1510,
+        -4,
+        460
+      ],
+      "radii": [
+        3,
+        3
+      ],
+      "sides": 4
+    },
+    {
+      "name": "ore_headwall_0",
+      "type": "section_mesh",
+      "material": "bedrock",
+      "group": 0,
+      "role": "worked_ore_face",
+      "sections": [
+        [
+          -2600,
+          12,
+          -800,
+          160,
+          125
+        ],
+        [
+          -2624,
+          -105.75,
+          -788,
+          142,
+          112
+        ],
+        [
+          -2640,
+          -235,
+          -775,
+          115,
+          95
+        ]
+      ],
+      "sides": 8,
+      "material_zones": [
+        {
+          "center": [
+            -2505,
+            -122.2,
+            -750
+          ],
+          "radius": 110,
+          "hsl": 6682
+        },
+        {
+          "center": [
+            -2525,
+            -58.75,
+            -825
+          ],
+          "radius": 80,
+          "hsl": 26
+        }
+      ]
+    },
+    {
+      "name": "quarry_prop_0",
+      "type": "beam",
+      "material": "wood",
+      "group": 0,
+      "role": "rock_face_support",
+      "start": [
+        -2460,
+        12,
+        -720
+      ],
+      "end": [
+        -2490,
+        -175,
+        -740
+      ],
+      "radii": [
+        9,
+        10
+      ],
+      "sides": 4
+    },
+    {
+      "name": "ore_headwall_1",
+      "type": "section_mesh",
+      "material": "bedrock",
+      "group": 0,
+      "role": "worked_ore_face",
+      "sections": [
+        [
+          -2540,
+          12,
+          -1040,
+          160,
+          125
+        ],
+        [
+          -2564,
+          -121.5,
+          -1028,
+          142,
+          112
+        ],
+        [
+          -2580,
+          -270,
+          -1015,
+          115,
+          95
+        ]
+      ],
+      "sides": 8,
+      "material_zones": [
+        {
+          "center": [
+            -2445,
+            -140.4,
+            -990
+          ],
+          "radius": 110,
+          "hsl": 6682
+        },
+        {
+          "center": [
+            -2465,
+            -67.5,
+            -1065
+          ],
+          "radius": 80,
+          "hsl": 26
+        }
+      ]
+    },
+    {
+      "name": "quarry_prop_1",
+      "type": "beam",
+      "material": "wood",
+      "group": 0,
+      "role": "rock_face_support",
+      "start": [
+        -2400,
+        12,
+        -960
+      ],
+      "end": [
+        -2430,
+        -175,
+        -980
+      ],
+      "radii": [
+        9,
+        10
+      ],
+      "sides": 4
+    },
+    {
+      "name": "ore_headwall_2",
+      "type": "section_mesh",
+      "material": "bedrock",
+      "group": 0,
+      "role": "worked_ore_face",
+      "sections": [
+        [
+          -2400,
+          12,
+          -1280,
+          160,
+          125
+        ],
+        [
+          -2424,
+          -112.5,
+          -1268,
+          142,
+          112
+        ],
+        [
+          -2440,
+          -250,
+          -1255,
+          115,
+          95
+        ]
+      ],
+      "sides": 8,
+      "material_zones": [
+        {
+          "center": [
+            -2305,
+            -130.0,
+            -1230
+          ],
+          "radius": 110,
+          "hsl": 6682
+        },
+        {
+          "center": [
+            -2325,
+            -62.5,
+            -1305
+          ],
+          "radius": 80,
+          "hsl": 26
+        }
+      ]
+    },
+    {
+      "name": "quarry_prop_2",
+      "type": "beam",
+      "material": "wood",
+      "group": 0,
+      "role": "rock_face_support",
+      "start": [
+        -2260,
+        12,
+        -1200
+      ],
+      "end": [
+        -2290,
+        -175,
+        -1220
+      ],
+      "radii": [
+        9,
+        10
+      ],
+      "sides": 4
+    },
+    {
+      "name": "ore_headwall_3",
+      "type": "section_mesh",
+      "material": "bedrock",
+      "group": 0,
+      "role": "worked_ore_face",
+      "sections": [
+        [
+          -2150,
+          12,
+          -1460,
+          160,
+          125
+        ],
+        [
+          -2174,
+          -94.5,
+          -1448,
+          142,
+          112
+        ],
+        [
+          -2190,
+          -210,
+          -1435,
+          115,
+          95
+        ]
+      ],
+      "sides": 8,
+      "material_zones": [
+        {
+          "center": [
+            -2055,
+            -109.2,
+            -1410
+          ],
+          "radius": 110,
+          "hsl": 6682
+        },
+        {
+          "center": [
+            -2075,
+            -52.5,
+            -1485
+          ],
+          "radius": 80,
+          "hsl": 26
+        }
+      ]
+    },
+    {
+      "name": "quarry_prop_3",
+      "type": "beam",
+      "material": "wood",
+      "group": 0,
+      "role": "rock_face_support",
+      "start": [
+        -2010,
+        12,
+        -1380
+      ],
+      "end": [
+        -2040,
+        -175,
+        -1400
+      ],
+      "radii": [
+        9,
+        10
+      ],
+      "sides": 4
+    },
+    {
+      "name": "ore_headwall_4",
+      "type": "section_mesh",
+      "material": "bedrock",
+      "group": 0,
+      "role": "worked_ore_face",
+      "sections": [
+        [
+          -1870,
+          12,
+          -1510,
+          160,
+          125
+        ],
+        [
+          -1894,
+          -101.25,
+          -1498,
+          142,
+          112
+        ],
+        [
+          -1910,
+          -225,
+          -1485,
+          115,
+          95
+        ]
+      ],
+      "sides": 8,
+      "material_zones": [
+        {
+          "center": [
+            -1775,
+            -117.0,
+            -1460
+          ],
+          "radius": 110,
+          "hsl": 6682
+        },
+        {
+          "center": [
+            -1795,
+            -56.25,
+            -1535
+          ],
+          "radius": 80,
+          "hsl": 26
+        }
+      ]
+    },
+    {
+      "name": "quarry_prop_4",
+      "type": "beam",
+      "material": "wood",
+      "group": 0,
+      "role": "rock_face_support",
+      "start": [
+        -1730,
+        12,
+        -1430
+      ],
+      "end": [
+        -1760,
+        -175,
+        -1450
+      ],
+      "radii": [
+        9,
+        10
+      ],
+      "sides": 4
+    },
+    {
+      "name": "work_apron_0",
+      "type": "box",
+      "material": "wood",
+      "group": 0,
+      "role": "bench_working_apron",
+      "center": [
+        -1630,
+        -3,
+        1040
+      ],
+      "size": [
+        27,
+        6,
+        310
+      ],
+      "variation": -1
+    },
+    {
+      "name": "work_apron_1",
+      "type": "box",
+      "material": "wood",
+      "group": 0,
+      "role": "bench_working_apron",
+      "center": [
+        -1601,
+        -3,
+        1040
+      ],
+      "size": [
+        27,
+        6,
+        310
+      ],
+      "variation": 0
+    },
+    {
+      "name": "work_apron_2",
+      "type": "box",
+      "material": "wood",
+      "group": 0,
+      "role": "bench_working_apron",
+      "center": [
+        -1572,
+        -3,
+        1040
+      ],
+      "size": [
+        27,
+        6,
+        310
+      ],
+      "variation": 1
+    },
+    {
+      "name": "work_apron_3",
+      "type": "box",
+      "material": "wood",
+      "group": 0,
+      "role": "bench_working_apron",
+      "center": [
+        -1543,
+        -3,
+        1040
+      ],
+      "size": [
+        27,
+        6,
+        310
+      ],
+      "variation": -1
+    },
+    {
+      "name": "work_apron_4",
+      "type": "box",
+      "material": "wood",
+      "group": 0,
+      "role": "bench_working_apron",
+      "center": [
+        -1514,
+        -3,
+        1040
+      ],
+      "size": [
+        27,
+        6,
+        310
+      ],
+      "variation": 0
+    },
+    {
+      "name": "work_apron_5",
+      "type": "box",
+      "material": "wood",
+      "group": 0,
+      "role": "bench_working_apron",
+      "center": [
+        -1485,
+        -3,
+        1040
+      ],
+      "size": [
+        27,
+        6,
+        310
+      ],
+      "variation": 1
+    },
+    {
+      "name": "work_apron_6",
+      "type": "box",
+      "material": "wood",
+      "group": 0,
+      "role": "bench_working_apron",
+      "center": [
+        -1456,
+        -3,
+        1040
+      ],
+      "size": [
+        27,
+        6,
+        310
+      ],
+      "variation": -1
+    },
+    {
+      "name": "work_apron_7",
+      "type": "box",
+      "material": "wood",
+      "group": 0,
+      "role": "bench_working_apron",
+      "center": [
+        -1427,
+        -3,
+        1040
+      ],
+      "size": [
+        27,
+        6,
+        310
+      ],
+      "variation": 0
+    },
+    {
+      "name": "work_apron_8",
+      "type": "box",
+      "material": "wood",
+      "group": 0,
+      "role": "bench_working_apron",
+      "center": [
+        -1398,
+        -3,
+        1040
+      ],
+      "size": [
+        27,
+        6,
+        310
+      ],
+      "variation": 1
+    },
+    {
+      "name": "work_apron_9",
+      "type": "box",
+      "material": "wood",
+      "group": 0,
+      "role": "bench_working_apron",
+      "center": [
+        -1369,
+        -3,
+        1040
+      ],
+      "size": [
+        27,
+        6,
+        310
+      ],
+      "variation": -1
+    },
+    {
+      "name": "work_apron_10",
+      "type": "box",
+      "material": "wood",
+      "group": 0,
+      "role": "bench_working_apron",
+      "center": [
+        -1340,
+        -3,
+        1040
+      ],
+      "size": [
+        27,
+        6,
+        310
+      ],
+      "variation": 0
+    },
+    {
+      "name": "rail_sleeper_0",
+      "type": "box",
+      "material": "wood",
+      "group": 0,
+      "role": "quarry_track_joinery",
+      "center": [
+        -1850,
+        7,
+        -550
+      ],
+      "size": [
+        108,
+        8,
+        13
+      ]
+    },
+    {
+      "name": "rail_sleeper_1",
+      "type": "box",
+      "material": "wood",
+      "group": 0,
+      "role": "quarry_track_joinery",
+      "center": [
+        -1835,
+        7,
+        -488
+      ],
+      "size": [
+        108,
+        8,
+        13
+      ]
+    },
+    {
+      "name": "rail_sleeper_2",
+      "type": "box",
+      "material": "wood",
+      "group": 0,
+      "role": "quarry_track_joinery",
+      "center": [
+        -1820,
+        7,
+        -426
+      ],
+      "size": [
+        108,
+        8,
+        13
+      ]
+    },
+    {
+      "name": "rail_sleeper_3",
+      "type": "box",
+      "material": "wood",
+      "group": 0,
+      "role": "quarry_track_joinery",
+      "center": [
+        -1805,
+        7,
+        -364
+      ],
+      "size": [
+        108,
+        8,
+        13
+      ]
+    },
+    {
+      "name": "rail_sleeper_4",
+      "type": "box",
+      "material": "wood",
+      "group": 0,
+      "role": "quarry_track_joinery",
+      "center": [
+        -1790,
+        7,
+        -302
+      ],
+      "size": [
+        108,
+        8,
+        13
+      ]
+    },
+    {
+      "name": "rail_sleeper_5",
+      "type": "box",
+      "material": "wood",
+      "group": 0,
+      "role": "quarry_track_joinery",
+      "center": [
+        -1775,
+        7,
+        -240
+      ],
+      "size": [
+        108,
+        8,
+        13
+      ]
+    },
+    {
+      "name": "rail_sleeper_6",
+      "type": "box",
+      "material": "wood",
+      "group": 0,
+      "role": "quarry_track_joinery",
+      "center": [
+        -1760,
+        7,
+        -178
+      ],
+      "size": [
+        108,
+        8,
+        13
+      ]
+    },
+    {
+      "name": "rail_sleeper_7",
+      "type": "box",
+      "material": "wood",
+      "group": 0,
+      "role": "quarry_track_joinery",
+      "center": [
+        -1745,
+        7,
+        -116
+      ],
+      "size": [
+        108,
+        8,
+        13
+      ]
+    },
+    {
+      "name": "rail_sleeper_8",
+      "type": "box",
+      "material": "wood",
+      "group": 0,
+      "role": "quarry_track_joinery",
+      "center": [
+        -1730,
+        7,
+        -54
+      ],
+      "size": [
+        108,
+        8,
+        13
+      ]
+    },
+    {
+      "name": "refuge_pilaster_0",
+      "type": "section_mesh",
+      "material": "stone",
+      "group": 0,
+      "role": "sanctuary_structure",
+      "sections": [
+        [
+          -2200,
+          0,
+          2310,
+          28,
+          32
+        ],
+        [
+          -2200,
+          -185,
+          2310,
+          22,
+          26
+        ],
+        [
+          -2200,
+          -205,
+          2310,
+          32,
+          36
+        ]
+      ],
+      "sides": 8
+    },
+    {
+      "name": "refuge_pilaster_1",
+      "type": "section_mesh",
+      "material": "stone",
+      "group": 0,
+      "role": "sanctuary_structure",
+      "sections": [
+        [
+          -2050,
+          0,
+          2820,
+          28,
+          32
+        ],
+        [
+          -2050,
+          -185,
+          2820,
+          22,
+          26
+        ],
+        [
+          -2050,
+          -205,
+          2820,
+          32,
+          36
+        ]
+      ],
+      "sides": 8
+    },
+    {
+      "name": "refuge_pilaster_2",
+      "type": "section_mesh",
+      "material": "stone",
+      "group": 0,
+      "role": "sanctuary_structure",
+      "sections": [
+        [
+          -1340,
+          0,
+          2750,
+          28,
+          32
+        ],
+        [
+          -1340,
+          -185,
+          2750,
+          22,
+          26
+        ],
+        [
+          -1340,
+          -205,
+          2750,
+          32,
+          36
+        ]
+      ],
+      "sides": 8
+    },
+    {
+      "name": "refuge_pilaster_3",
+      "type": "section_mesh",
+      "material": "stone",
+      "group": 0,
+      "role": "sanctuary_structure",
+      "sections": [
+        [
+          -1160,
+          0,
+          2210,
+          28,
+          32
+        ],
+        [
+          -1160,
+          -185,
+          2210,
+          22,
+          26
+        ],
+        [
+          -1160,
+          -205,
+          2210,
+          32,
+          36
+        ]
+      ],
+      "sides": 8
+    },
+    {
+      "name": "refuge_pilaster_4",
+      "type": "section_mesh",
+      "material": "stone",
+      "group": 0,
+      "role": "sanctuary_structure",
+      "sections": [
+        [
+          -1690,
+          0,
+          1850,
+          28,
+          32
+        ],
+        [
+          -1690,
+          -185,
+          1850,
+          22,
+          26
+        ],
+        [
+          -1690,
+          -205,
+          1850,
+          32,
+          36
+        ]
+      ],
+      "sides": 8
+    },
+    {
+      "name": "timber_post_0_0",
+      "type": "beam",
+      "material": "wood",
+      "group": 0,
+      "role": "working_frame",
+      "start": [
+        -2030,
+        0,
+        815
+      ],
+      "end": [
+        -2030,
+        -238,
+        815
+      ],
+      "radii": [
+        12,
+        10
+      ],
+      "sides": 4
+    },
+    {
+      "name": "timber_brace_0_0",
+      "type": "beam",
+      "material": "wood",
+      "group": 0,
+      "role": "timber_brace_0_0",
+      "start": [
+        -2030,
+        -170,
+        815
+      ],
+      "end": [
+        -1956,
+        -238,
+        815
+      ],
+      "radii": [
+        5,
+        5
+      ],
+      "sides": 4
+    },
+    {
+      "name": "timber_post_0_1",
+      "type": "beam",
+      "material": "wood",
+      "group": 0,
+      "role": "working_frame",
+      "start": [
+        -1490,
+        0,
+        815
+      ],
+      "end": [
+        -1490,
+        -238,
+        815
+      ],
+      "radii": [
+        12,
+        10
+      ],
+      "sides": 4
+    },
+    {
+      "name": "timber_brace_0_1",
+      "type": "beam",
+      "material": "wood",
+      "group": 0,
+      "role": "timber_brace_0_1",
+      "start": [
+        -1490,
+        -170,
+        815
+      ],
+      "end": [
+        -1416,
+        -238,
+        815
+      ],
+      "radii": [
+        5,
+        5
+      ],
+      "sides": 4
+    },
+    {
+      "name": "timber_post_0_2",
+      "type": "beam",
+      "material": "wood",
+      "group": 0,
+      "role": "working_frame",
+      "start": [
+        -940,
+        0,
+        815
+      ],
+      "end": [
+        -940,
+        -238,
+        815
+      ],
+      "radii": [
+        12,
+        10
+      ],
+      "sides": 4
+    },
+    {
+      "name": "timber_brace_0_2",
+      "type": "beam",
+      "material": "wood",
+      "group": 0,
+      "role": "timber_brace_0_2",
+      "start": [
+        -940,
+        -170,
+        815
+      ],
+      "end": [
+        -866,
+        -238,
+        815
+      ],
+      "radii": [
+        5,
+        5
+      ],
+      "sides": 4
+    },
+    {
+      "name": "timber_crossbeam_0",
+      "type": "beam",
+      "material": "wood",
+      "group": 0,
+      "role": "timber_crossbeam_0",
+      "start": [
+        -2080,
+        -238,
+        815
+      ],
+      "end": [
+        -890,
+        -238,
+        815
+      ],
+      "radii": [
+        12,
+        12
+      ],
+      "sides": 4
+    },
+    {
+      "name": "timber_post_1_0",
+      "type": "beam",
+      "material": "wood",
+      "group": 0,
+      "role": "working_frame",
+      "start": [
+        -2030,
+        0,
+        1390
+      ],
+      "end": [
+        -2030,
+        -238,
+        1390
+      ],
+      "radii": [
+        12,
+        10
+      ],
+      "sides": 4
+    },
+    {
+      "name": "timber_brace_1_0",
+      "type": "beam",
+      "material": "wood",
+      "group": 0,
+      "role": "timber_brace_1_0",
+      "start": [
+        -2030,
+        -170,
+        1390
+      ],
+      "end": [
+        -1956,
+        -238,
+        1390
+      ],
+      "radii": [
+        5,
+        5
+      ],
+      "sides": 4
+    },
+    {
+      "name": "timber_post_1_1",
+      "type": "beam",
+      "material": "wood",
+      "group": 0,
+      "role": "working_frame",
+      "start": [
+        -1490,
+        0,
+        1390
+      ],
+      "end": [
+        -1490,
+        -238,
+        1390
+      ],
+      "radii": [
+        12,
+        10
+      ],
+      "sides": 4
+    },
+    {
+      "name": "timber_brace_1_1",
+      "type": "beam",
+      "material": "wood",
+      "group": 0,
+      "role": "timber_brace_1_1",
+      "start": [
+        -1490,
+        -170,
+        1390
+      ],
+      "end": [
+        -1416,
+        -238,
+        1390
+      ],
+      "radii": [
+        5,
+        5
+      ],
+      "sides": 4
+    },
+    {
+      "name": "timber_post_1_2",
+      "type": "beam",
+      "material": "wood",
+      "group": 0,
+      "role": "working_frame",
+      "start": [
+        -940,
+        0,
+        1390
+      ],
+      "end": [
+        -940,
+        -238,
+        1390
+      ],
+      "radii": [
+        12,
+        10
+      ],
+      "sides": 4
+    },
+    {
+      "name": "timber_brace_1_2",
+      "type": "beam",
+      "material": "wood",
+      "group": 0,
+      "role": "timber_brace_1_2",
+      "start": [
+        -940,
+        -170,
+        1390
+      ],
+      "end": [
+        -866,
+        -238,
+        1390
+      ],
+      "radii": [
+        5,
+        5
+      ],
+      "sides": 4
+    },
+    {
+      "name": "timber_crossbeam_1",
+      "type": "beam",
+      "material": "wood",
+      "group": 0,
+      "role": "timber_crossbeam_1",
+      "start": [
+        -2080,
+        -238,
+        1390
+      ],
+      "end": [
+        -890,
+        -238,
+        1390
+      ],
+      "radii": [
+        12,
+        12
+      ],
+      "sides": 4
+    },
+    {
+      "name": "foundry_vault_0_pier_-1_0",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "pier_-1_0",
+      "center": [
+        -204.0,
+        -17.333333333333332,
+        0
+      ],
+      "size": [
+        70.0,
+        32.666666666666664,
+        67
+      ],
+      "bevel": 3,
+      "wear": 0.09,
+      "seed": -1,
+      "variation": -2,
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1110,
+          0,
+          -2870
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_0_pier_-1_1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "pier_-1_1",
+      "center": [
+        -204.0,
+        -52.0,
+        0
+      ],
+      "size": [
+        70.0,
+        32.666666666666664,
+        67
+      ],
+      "bevel": 3,
+      "wear": 0,
+      "seed": 0,
+      "variation": 0,
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1110,
+          0,
+          -2870
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_0_pier_-1_2",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "pier_-1_2",
+      "center": [
+        -204.0,
+        -86.66666666666667,
+        0
+      ],
+      "size": [
+        70.0,
+        32.666666666666664,
+        67
+      ],
+      "bevel": 3,
+      "wear": 0,
+      "seed": 1,
+      "variation": 2,
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1110,
+          0,
+          -2870
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_0_impost_-1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "impost_-1",
+      "center": [
+        -204.0,
+        -104.0,
+        0
+      ],
+      "size": [
+        82.0,
+        13,
+        74
+      ],
+      "bevel": 2,
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1110,
+          0,
+          -2870
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_0_pier_1_0",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "pier_1_0",
+      "center": [
+        204.0,
+        -17.333333333333332,
+        0
+      ],
+      "size": [
+        70.0,
+        32.666666666666664,
+        67
+      ],
+      "bevel": 3,
+      "wear": 0.09,
+      "seed": 1,
+      "variation": -2,
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1110,
+          0,
+          -2870
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_0_pier_1_1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "pier_1_1",
+      "center": [
+        204.0,
+        -52.0,
+        0
+      ],
+      "size": [
+        70.0,
+        32.666666666666664,
+        67
+      ],
+      "bevel": 3,
+      "wear": 0,
+      "seed": 2,
+      "variation": 0,
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1110,
+          0,
+          -2870
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_0_pier_1_2",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "pier_1_2",
+      "center": [
+        204.0,
+        -86.66666666666667,
+        0
+      ],
+      "size": [
+        70.0,
+        32.666666666666664,
+        67
+      ],
+      "bevel": 3,
+      "wear": 0,
+      "seed": 3,
+      "variation": 2,
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1110,
+          0,
+          -2870
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_0_impost_1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "impost_1",
+      "center": [
+        204.0,
+        -104.0,
+        0
+      ],
+      "size": [
+        82.0,
+        13,
+        74
+      ],
+      "bevel": 2,
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1110,
+          0,
+          -2870
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_0_voussoir_0",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -104.0,
+        0
+      ],
+      "inner": 168.0,
+      "outer": 240.0,
+      "start_angle": 0.009,
+      "end_angle": 0.27659933214452664,
+      "depth": 62,
+      "variation": -2,
+      "parameters": {
+        "radial_joint": true
+      },
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1110,
+          0,
+          -2870
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_0_voussoir_1",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -104.0,
+        0
+      ],
+      "inner": 168.0,
+      "outer": 240.0,
+      "start_angle": 0.29459933214452666,
+      "end_angle": 0.5621986642890533,
+      "depth": 62,
+      "variation": 0,
+      "parameters": {
+        "radial_joint": true
+      },
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1110,
+          0,
+          -2870
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_0_voussoir_2",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -104.0,
+        0
+      ],
+      "inner": 168.0,
+      "outer": 240.0,
+      "start_angle": 0.5801986642890533,
+      "end_angle": 0.8477979964335799,
+      "depth": 62,
+      "variation": 1,
+      "parameters": {
+        "radial_joint": true
+      },
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1110,
+          0,
+          -2870
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_0_voussoir_3",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -104.0,
+        0
+      ],
+      "inner": 168.0,
+      "outer": 240.0,
+      "start_angle": 0.8657979964335799,
+      "end_angle": 1.1333973285781067,
+      "depth": 62,
+      "variation": -2,
+      "parameters": {
+        "radial_joint": true
+      },
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1110,
+          0,
+          -2870
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_0_voussoir_4",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -104.0,
+        0
+      ],
+      "inner": 168.0,
+      "outer": 240.0,
+      "start_angle": 1.1513973285781065,
+      "end_angle": 1.4189966607226334,
+      "depth": 62,
+      "variation": 0,
+      "parameters": {
+        "radial_joint": true
+      },
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1110,
+          0,
+          -2870
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_0_keystone",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -104.0,
+        0
+      ],
+      "inner": 165.0,
+      "outer": 247.0,
+      "start_angle": 1.4369966607226332,
+      "end_angle": 1.70459599286716,
+      "depth": 71,
+      "variation": 2,
+      "parameters": {
+        "radial_joint": true
+      },
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1110,
+          0,
+          -2870
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_0_voussoir_6",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -104.0,
+        0
+      ],
+      "inner": 168.0,
+      "outer": 240.0,
+      "start_angle": 1.7225959928671597,
+      "end_angle": 1.9901953250116866,
+      "depth": 62,
+      "variation": -2,
+      "parameters": {
+        "radial_joint": true
+      },
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1110,
+          0,
+          -2870
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_0_voussoir_7",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -104.0,
+        0
+      ],
+      "inner": 168.0,
+      "outer": 240.0,
+      "start_angle": 2.0081953250116866,
+      "end_angle": 2.2757946571562133,
+      "depth": 62,
+      "variation": 0,
+      "parameters": {
+        "radial_joint": true
+      },
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1110,
+          0,
+          -2870
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_0_voussoir_8",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -104.0,
+        0
+      ],
+      "inner": 168.0,
+      "outer": 240.0,
+      "start_angle": 2.293794657156213,
+      "end_angle": 2.56139398930074,
+      "depth": 62,
+      "variation": 1,
+      "parameters": {
+        "radial_joint": true
+      },
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1110,
+          0,
+          -2870
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_0_voussoir_9",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -104.0,
+        0
+      ],
+      "inner": 168.0,
+      "outer": 240.0,
+      "start_angle": 2.5793939893007396,
+      "end_angle": 2.8469933214452667,
+      "depth": 62,
+      "variation": -2,
+      "parameters": {
+        "radial_joint": true
+      },
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1110,
+          0,
+          -2870
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_0_voussoir_10",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -104.0,
+        0
+      ],
+      "inner": 168.0,
+      "outer": 240.0,
+      "start_angle": 2.8649933214452665,
+      "end_angle": 3.1325926535897928,
+      "depth": 62,
+      "variation": 0,
+      "parameters": {
+        "radial_joint": true
+      },
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1110,
+          0,
+          -2870
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_0_repair_tie",
+      "type": "box",
+      "material": "metal",
+      "group": 0,
+      "role": "repair_tie",
+      "center": [
+        -183.0,
+        -57.2,
+        -34.0
+      ],
+      "size": [
+        34,
+        8,
+        4
+      ],
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1110,
+          0,
+          -2870
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_0_tie_bolt_-194.0",
+      "type": "beam",
+      "material": "metal",
+      "group": 0,
+      "role": "tie_bolt_-194.0",
+      "start": [
+        -194.0,
+        -57.2,
+        -34.0
+      ],
+      "end": [
+        -194.0,
+        -57.2,
+        -38.0
+      ],
+      "radii": [
+        3,
+        3
+      ],
+      "sides": 6,
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1110,
+          0,
+          -2870
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_0_tie_bolt_-172.0",
+      "type": "beam",
+      "material": "metal",
+      "group": 0,
+      "role": "tie_bolt_-172.0",
+      "start": [
+        -172.0,
+        -57.2,
+        -34.0
+      ],
+      "end": [
+        -172.0,
+        -57.2,
+        -38.0
+      ],
+      "radii": [
+        3,
+        3
+      ],
+      "sides": 6,
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1110,
+          0,
+          -2870
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_1_pier_-1_0",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "pier_-1_0",
+      "center": [
+        -204.0,
+        -17.333333333333332,
+        0
+      ],
+      "size": [
+        70.0,
+        32.666666666666664,
+        67
+      ],
+      "bevel": 3,
+      "wear": 0.09,
+      "seed": -1,
+      "variation": -2,
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1640,
+          0,
+          -3000
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_1_pier_-1_1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "pier_-1_1",
+      "center": [
+        -204.0,
+        -52.0,
+        0
+      ],
+      "size": [
+        70.0,
+        32.666666666666664,
+        67
+      ],
+      "bevel": 3,
+      "wear": 0,
+      "seed": 0,
+      "variation": 0,
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1640,
+          0,
+          -3000
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_1_pier_-1_2",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "pier_-1_2",
+      "center": [
+        -204.0,
+        -86.66666666666667,
+        0
+      ],
+      "size": [
+        70.0,
+        32.666666666666664,
+        67
+      ],
+      "bevel": 3,
+      "wear": 0,
+      "seed": 1,
+      "variation": 2,
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1640,
+          0,
+          -3000
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_1_impost_-1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "impost_-1",
+      "center": [
+        -204.0,
+        -104.0,
+        0
+      ],
+      "size": [
+        82.0,
+        13,
+        74
+      ],
+      "bevel": 2,
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1640,
+          0,
+          -3000
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_1_pier_1_0",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "pier_1_0",
+      "center": [
+        204.0,
+        -17.333333333333332,
+        0
+      ],
+      "size": [
+        70.0,
+        32.666666666666664,
+        67
+      ],
+      "bevel": 3,
+      "wear": 0.09,
+      "seed": 1,
+      "variation": -2,
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1640,
+          0,
+          -3000
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_1_pier_1_1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "pier_1_1",
+      "center": [
+        204.0,
+        -52.0,
+        0
+      ],
+      "size": [
+        70.0,
+        32.666666666666664,
+        67
+      ],
+      "bevel": 3,
+      "wear": 0,
+      "seed": 2,
+      "variation": 0,
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1640,
+          0,
+          -3000
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_1_pier_1_2",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "pier_1_2",
+      "center": [
+        204.0,
+        -86.66666666666667,
+        0
+      ],
+      "size": [
+        70.0,
+        32.666666666666664,
+        67
+      ],
+      "bevel": 3,
+      "wear": 0,
+      "seed": 3,
+      "variation": 2,
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1640,
+          0,
+          -3000
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_1_impost_1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "impost_1",
+      "center": [
+        204.0,
+        -104.0,
+        0
+      ],
+      "size": [
+        82.0,
+        13,
+        74
+      ],
+      "bevel": 2,
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1640,
+          0,
+          -3000
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_1_voussoir_0",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -104.0,
+        0
+      ],
+      "inner": 168.0,
+      "outer": 240.0,
+      "start_angle": 0.009,
+      "end_angle": 0.27659933214452664,
+      "depth": 62,
+      "variation": -2,
+      "parameters": {
+        "radial_joint": true
+      },
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1640,
+          0,
+          -3000
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_1_voussoir_1",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -104.0,
+        0
+      ],
+      "inner": 168.0,
+      "outer": 240.0,
+      "start_angle": 0.29459933214452666,
+      "end_angle": 0.5621986642890533,
+      "depth": 62,
+      "variation": 0,
+      "parameters": {
+        "radial_joint": true
+      },
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1640,
+          0,
+          -3000
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_1_voussoir_2",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -104.0,
+        0
+      ],
+      "inner": 168.0,
+      "outer": 240.0,
+      "start_angle": 0.5801986642890533,
+      "end_angle": 0.8477979964335799,
+      "depth": 62,
+      "variation": 1,
+      "parameters": {
+        "radial_joint": true
+      },
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1640,
+          0,
+          -3000
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_1_voussoir_3",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -104.0,
+        0
+      ],
+      "inner": 168.0,
+      "outer": 240.0,
+      "start_angle": 0.8657979964335799,
+      "end_angle": 1.1333973285781067,
+      "depth": 62,
+      "variation": -2,
+      "parameters": {
+        "radial_joint": true
+      },
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1640,
+          0,
+          -3000
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_1_voussoir_4",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -104.0,
+        0
+      ],
+      "inner": 168.0,
+      "outer": 240.0,
+      "start_angle": 1.1513973285781065,
+      "end_angle": 1.4189966607226334,
+      "depth": 62,
+      "variation": 0,
+      "parameters": {
+        "radial_joint": true
+      },
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1640,
+          0,
+          -3000
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_1_keystone",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -104.0,
+        0
+      ],
+      "inner": 165.0,
+      "outer": 247.0,
+      "start_angle": 1.4369966607226332,
+      "end_angle": 1.70459599286716,
+      "depth": 71,
+      "variation": 2,
+      "parameters": {
+        "radial_joint": true
+      },
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1640,
+          0,
+          -3000
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_1_voussoir_6",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -104.0,
+        0
+      ],
+      "inner": 168.0,
+      "outer": 240.0,
+      "start_angle": 1.7225959928671597,
+      "end_angle": 1.9901953250116866,
+      "depth": 62,
+      "variation": -2,
+      "parameters": {
+        "radial_joint": true
+      },
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1640,
+          0,
+          -3000
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_1_voussoir_7",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -104.0,
+        0
+      ],
+      "inner": 168.0,
+      "outer": 240.0,
+      "start_angle": 2.0081953250116866,
+      "end_angle": 2.2757946571562133,
+      "depth": 62,
+      "variation": 0,
+      "parameters": {
+        "radial_joint": true
+      },
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1640,
+          0,
+          -3000
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_1_voussoir_8",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -104.0,
+        0
+      ],
+      "inner": 168.0,
+      "outer": 240.0,
+      "start_angle": 2.293794657156213,
+      "end_angle": 2.56139398930074,
+      "depth": 62,
+      "variation": 1,
+      "parameters": {
+        "radial_joint": true
+      },
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1640,
+          0,
+          -3000
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_1_voussoir_9",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -104.0,
+        0
+      ],
+      "inner": 168.0,
+      "outer": 240.0,
+      "start_angle": 2.5793939893007396,
+      "end_angle": 2.8469933214452667,
+      "depth": 62,
+      "variation": -2,
+      "parameters": {
+        "radial_joint": true
+      },
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1640,
+          0,
+          -3000
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_1_voussoir_10",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -104.0,
+        0
+      ],
+      "inner": 168.0,
+      "outer": 240.0,
+      "start_angle": 2.8649933214452665,
+      "end_angle": 3.1325926535897928,
+      "depth": 62,
+      "variation": 0,
+      "parameters": {
+        "radial_joint": true
+      },
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1640,
+          0,
+          -3000
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_1_repair_tie",
+      "type": "box",
+      "material": "metal",
+      "group": 0,
+      "role": "repair_tie",
+      "center": [
+        -183.0,
+        -57.2,
+        -34.0
+      ],
+      "size": [
+        34,
+        8,
+        4
+      ],
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1640,
+          0,
+          -3000
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_1_tie_bolt_-194.0",
+      "type": "beam",
+      "material": "metal",
+      "group": 0,
+      "role": "tie_bolt_-194.0",
+      "start": [
+        -194.0,
+        -57.2,
+        -34.0
+      ],
+      "end": [
+        -194.0,
+        -57.2,
+        -38.0
+      ],
+      "radii": [
+        3,
+        3
+      ],
+      "sides": 6,
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1640,
+          0,
+          -3000
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_1_tie_bolt_-172.0",
+      "type": "beam",
+      "material": "metal",
+      "group": 0,
+      "role": "tie_bolt_-172.0",
+      "start": [
+        -172.0,
+        -57.2,
+        -34.0
+      ],
+      "end": [
+        -172.0,
+        -57.2,
+        -38.0
+      ],
+      "radii": [
+        3,
+        3
+      ],
+      "sides": 6,
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          1640,
+          0,
+          -3000
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_2_pier_-1_0",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "pier_-1_0",
+      "center": [
+        -204.0,
+        -17.333333333333332,
+        0
+      ],
+      "size": [
+        70.0,
+        32.666666666666664,
+        67
+      ],
+      "bevel": 3,
+      "wear": 0.09,
+      "seed": -1,
+      "variation": -2,
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          2150,
+          0,
+          -2830
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_2_pier_-1_1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "pier_-1_1",
+      "center": [
+        -204.0,
+        -52.0,
+        0
+      ],
+      "size": [
+        70.0,
+        32.666666666666664,
+        67
+      ],
+      "bevel": 3,
+      "wear": 0,
+      "seed": 0,
+      "variation": 0,
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          2150,
+          0,
+          -2830
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_2_pier_-1_2",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "pier_-1_2",
+      "center": [
+        -204.0,
+        -86.66666666666667,
+        0
+      ],
+      "size": [
+        70.0,
+        32.666666666666664,
+        67
+      ],
+      "bevel": 3,
+      "wear": 0,
+      "seed": 1,
+      "variation": 2,
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          2150,
+          0,
+          -2830
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_2_impost_-1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "impost_-1",
+      "center": [
+        -204.0,
+        -104.0,
+        0
+      ],
+      "size": [
+        82.0,
+        13,
+        74
+      ],
+      "bevel": 2,
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          2150,
+          0,
+          -2830
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_2_pier_1_0",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "pier_1_0",
+      "center": [
+        204.0,
+        -17.333333333333332,
+        0
+      ],
+      "size": [
+        70.0,
+        32.666666666666664,
+        67
+      ],
+      "bevel": 3,
+      "wear": 0.09,
+      "seed": 1,
+      "variation": -2,
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          2150,
+          0,
+          -2830
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_2_pier_1_1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "pier_1_1",
+      "center": [
+        204.0,
+        -52.0,
+        0
+      ],
+      "size": [
+        70.0,
+        32.666666666666664,
+        67
+      ],
+      "bevel": 3,
+      "wear": 0,
+      "seed": 2,
+      "variation": 0,
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          2150,
+          0,
+          -2830
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_2_pier_1_2",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "pier_1_2",
+      "center": [
+        204.0,
+        -86.66666666666667,
+        0
+      ],
+      "size": [
+        70.0,
+        32.666666666666664,
+        67
+      ],
+      "bevel": 3,
+      "wear": 0,
+      "seed": 3,
+      "variation": 2,
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          2150,
+          0,
+          -2830
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_2_impost_1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "impost_1",
+      "center": [
+        204.0,
+        -104.0,
+        0
+      ],
+      "size": [
+        82.0,
+        13,
+        74
+      ],
+      "bevel": 2,
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          2150,
+          0,
+          -2830
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_2_voussoir_0",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -104.0,
+        0
+      ],
+      "inner": 168.0,
+      "outer": 240.0,
+      "start_angle": 0.009,
+      "end_angle": 0.27659933214452664,
+      "depth": 62,
+      "variation": -2,
+      "parameters": {
+        "radial_joint": true
+      },
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          2150,
+          0,
+          -2830
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_2_voussoir_1",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -104.0,
+        0
+      ],
+      "inner": 168.0,
+      "outer": 240.0,
+      "start_angle": 0.29459933214452666,
+      "end_angle": 0.5621986642890533,
+      "depth": 62,
+      "variation": 0,
+      "parameters": {
+        "radial_joint": true
+      },
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          2150,
+          0,
+          -2830
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_2_voussoir_2",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -104.0,
+        0
+      ],
+      "inner": 168.0,
+      "outer": 240.0,
+      "start_angle": 0.5801986642890533,
+      "end_angle": 0.8477979964335799,
+      "depth": 62,
+      "variation": 1,
+      "parameters": {
+        "radial_joint": true
+      },
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          2150,
+          0,
+          -2830
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_2_voussoir_3",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -104.0,
+        0
+      ],
+      "inner": 168.0,
+      "outer": 240.0,
+      "start_angle": 0.8657979964335799,
+      "end_angle": 1.1333973285781067,
+      "depth": 62,
+      "variation": -2,
+      "parameters": {
+        "radial_joint": true
+      },
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          2150,
+          0,
+          -2830
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_2_voussoir_4",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -104.0,
+        0
+      ],
+      "inner": 168.0,
+      "outer": 240.0,
+      "start_angle": 1.1513973285781065,
+      "end_angle": 1.4189966607226334,
+      "depth": 62,
+      "variation": 0,
+      "parameters": {
+        "radial_joint": true
+      },
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          2150,
+          0,
+          -2830
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_2_keystone",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -104.0,
+        0
+      ],
+      "inner": 165.0,
+      "outer": 247.0,
+      "start_angle": 1.4369966607226332,
+      "end_angle": 1.70459599286716,
+      "depth": 71,
+      "variation": 2,
+      "parameters": {
+        "radial_joint": true
+      },
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          2150,
+          0,
+          -2830
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_2_voussoir_6",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -104.0,
+        0
+      ],
+      "inner": 168.0,
+      "outer": 240.0,
+      "start_angle": 1.7225959928671597,
+      "end_angle": 1.9901953250116866,
+      "depth": 62,
+      "variation": -2,
+      "parameters": {
+        "radial_joint": true
+      },
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          2150,
+          0,
+          -2830
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_2_voussoir_7",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -104.0,
+        0
+      ],
+      "inner": 168.0,
+      "outer": 240.0,
+      "start_angle": 2.0081953250116866,
+      "end_angle": 2.2757946571562133,
+      "depth": 62,
+      "variation": 0,
+      "parameters": {
+        "radial_joint": true
+      },
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          2150,
+          0,
+          -2830
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_2_voussoir_8",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -104.0,
+        0
+      ],
+      "inner": 168.0,
+      "outer": 240.0,
+      "start_angle": 2.293794657156213,
+      "end_angle": 2.56139398930074,
+      "depth": 62,
+      "variation": 1,
+      "parameters": {
+        "radial_joint": true
+      },
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          2150,
+          0,
+          -2830
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_2_voussoir_9",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -104.0,
+        0
+      ],
+      "inner": 168.0,
+      "outer": 240.0,
+      "start_angle": 2.5793939893007396,
+      "end_angle": 2.8469933214452667,
+      "depth": 62,
+      "variation": -2,
+      "parameters": {
+        "radial_joint": true
+      },
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          2150,
+          0,
+          -2830
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_2_voussoir_10",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -104.0,
+        0
+      ],
+      "inner": 168.0,
+      "outer": 240.0,
+      "start_angle": 2.8649933214452665,
+      "end_angle": 3.1325926535897928,
+      "depth": 62,
+      "variation": 0,
+      "parameters": {
+        "radial_joint": true
+      },
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          2150,
+          0,
+          -2830
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_2_repair_tie",
+      "type": "box",
+      "material": "metal",
+      "group": 0,
+      "role": "repair_tie",
+      "center": [
+        -183.0,
+        -57.2,
+        -34.0
+      ],
+      "size": [
+        34,
+        8,
+        4
+      ],
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          2150,
+          0,
+          -2830
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_2_tie_bolt_-194.0",
+      "type": "beam",
+      "material": "metal",
+      "group": 0,
+      "role": "tie_bolt_-194.0",
+      "start": [
+        -194.0,
+        -57.2,
+        -34.0
+      ],
+      "end": [
+        -194.0,
+        -57.2,
+        -38.0
+      ],
+      "radii": [
+        3,
+        3
+      ],
+      "sides": 6,
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          2150,
+          0,
+          -2830
+        ]
+      }
+    },
+    {
+      "name": "foundry_vault_2_tie_bolt_-172.0",
+      "type": "beam",
+      "material": "metal",
+      "group": 0,
+      "role": "tie_bolt_-172.0",
+      "start": [
+        -172.0,
+        -57.2,
+        -34.0
+      ],
+      "end": [
+        -172.0,
+        -57.2,
+        -38.0
+      ],
+      "radii": [
+        3,
+        3
+      ],
+      "sides": 6,
+      "asset_transform": {
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "offset": [
+          2150,
+          0,
+          -2830
+        ]
+      }
+    },
+    {
+      "name": "cooling_return",
+      "type": "sweep",
+      "material": "metal",
+      "group": 0,
+      "role": "foundry_water_infrastructure",
+      "sections": [
+        [
+          820,
+          -62,
+          -2440,
+          12,
+          12
+        ],
+        [
+          780,
+          -62,
+          -2030,
+          12,
+          12
+        ],
+        [
+          690,
+          -62,
+          -1600,
+          12,
+          12
+        ],
+        [
+          590,
+          -62,
+          -1190,
+          12,
+          12
+        ],
+        [
+          490,
+          -62,
+          -1060,
+          10,
+          10
+        ]
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "sides": 8
+    },
+    {
+      "name": "pipe_cradle_0",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "pipe_cradle_0",
+      "center": [
+        810,
+        -26,
+        -2280
+      ],
+      "size": [
+        39,
+        52,
+        41
+      ],
+      "bevel": 3
+    },
+    {
+      "name": "pipe_cradle_1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "pipe_cradle_1",
+      "center": [
+        740,
+        -26,
+        -1800
+      ],
+      "size": [
+        39,
+        52,
+        41
+      ],
+      "bevel": 3
+    },
+    {
+      "name": "pipe_cradle_2",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "pipe_cradle_2",
+      "center": [
+        640,
+        -26,
+        -1420
+      ],
+      "size": [
+        39,
+        52,
+        41
+      ],
+      "bevel": 3
+    },
+    {
+      "name": "pipe_cradle_3",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "pipe_cradle_3",
+      "center": [
+        535,
+        -26,
+        -1120
+      ],
+      "size": [
+        39,
+        52,
+        41
+      ],
+      "bevel": 3
+    },
+    {
+      "name": "descent_step_0",
+      "type": "box",
+      "material": "stone",
+      "group": 0,
+      "role": "descent_step_0",
+      "center": [
+        -2860,
+        -24,
+        2830
+      ],
+      "size": [
+        180,
+        48,
+        56
+      ]
+    },
+    {
+      "name": "descent_step_1",
+      "type": "box",
+      "material": "stone",
+      "group": 0,
+      "role": "descent_step_1",
+      "center": [
+        -2860,
+        -20,
+        2781
+      ],
+      "size": [
+        180,
+        40,
+        56
+      ]
+    },
+    {
+      "name": "descent_step_2",
+      "type": "box",
+      "material": "stone",
+      "group": 0,
+      "role": "descent_step_2",
+      "center": [
+        -2860,
+        -16,
+        2732
+      ],
+      "size": [
+        180,
+        32,
+        56
+      ]
+    },
+    {
+      "name": "descent_step_3",
+      "type": "box",
+      "material": "stone",
+      "group": 0,
+      "role": "descent_step_3",
+      "center": [
+        -2860,
+        -12,
+        2683
+      ],
+      "size": [
+        180,
+        24,
+        56
+      ]
+    },
+    {
+      "name": "descent_step_4",
+      "type": "box",
+      "material": "stone",
+      "group": 0,
+      "role": "descent_step_4",
+      "center": [
+        -2860,
+        -8,
+        2634
+      ],
+      "size": [
+        180,
+        16,
+        56
+      ]
+    },
+    {
+      "name": "descent_step_5",
+      "type": "box",
+      "material": "stone",
+      "group": 0,
+      "role": "descent_step_5",
+      "center": [
+        -2860,
+        -4,
+        2585
+      ],
+      "size": [
+        180,
+        8,
+        56
+      ]
+    },
+    {
+      "name": "descent_landing",
+      "type": "box",
+      "material": "stone",
+      "group": 0,
+      "role": "descent_landing",
+      "center": [
+        -2860,
+        -24,
+        2860
+      ],
+      "size": [
+        310,
+        48,
+        180
+      ]
+    }
+  ],
+  "rig": [],
+  "actions": {},
+  "authoring_schema": 2,
+  "geometry_validation": {
+    "remove_zero_area_faces": true,
+    "preserve_vertex_order": true
+  },
+  "provenance": {
+    "kind": "original_tower_asset",
+    "source_mesh_or_animation_reuse": false,
+    "brief": "Connected original bedrock, regional floors, recessed water, quarry slope, radial bell court, casting dais and ore rails. Offline geometry only.",
+    "artistic_acceptance": false,
+    "live_integration": false
+  }
+}

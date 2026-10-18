@@ -1,0 +1,50 @@
+{
+  "asset": "ore-cart",
+  "name": "Ore tub on flanged wheels",
+  "identity": {
+    "model_id": 1101575,
+    "object_id": 63475,
+    "npc_id": null,
+    "sequence_base": null,
+    "skeleton_base": null,
+    "frame_group_base": null
+  },
+  "asset_key": "mastery-floor-scenery:ore-cart",
+  "model_sha256": "634ebc3de3091e4dd7f86efe32109d6fa68f5a2c6f177aef93d7f1cbafff0fac",
+  "vertices": 580,
+  "faces": 992,
+  "bounds": [
+    [
+      -72,
+      -96,
+      -49
+    ],
+    [
+      69,
+      1,
+      49
+    ]
+  ],
+  "actions": [],
+  "original_geometry_and_choreography": true,
+  "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+  "generator": "tools/tower/asset-workbench/author_workflow.py",
+  "recipe": "assets/ore-cart/recipe.json",
+  "technical_conversion": "VALIDATED",
+  "artistic_acceptance": false,
+  "gameplay_integration_tested": false,
+  "material_features": {
+    "native_face_hsl": true,
+    "textured_faces": 0,
+    "alpha_present": true,
+    "face_priorities_present": true,
+    "render_types": [
+      0
+    ],
+    "lighting": {
+      "ambient": 64,
+      "contrast": 768
+    }
+  },
+  "action_identity_map": {}
+}

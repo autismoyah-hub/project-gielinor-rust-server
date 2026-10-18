@@ -1,0 +1,60 @@
+{
+  "asset": "worker-figure",
+  "name": "Original apron-clad Cinderworks worker",
+  "identity": {
+    "model_id": 1101580,
+    "object_id": 63480,
+    "npc_id": 60043,
+    "sequence_base": 45184,
+    "skeleton_base": 32184,
+    "frame_group_base": 40184
+  },
+  "asset_key": "mastery-floor-scenery:worker-figure",
+  "model_sha256": "c1b86a31ccb2c14b437b0279766de55bd528ce3ea0074b5e0634c234442fb438",
+  "vertices": 518,
+  "faces": 906,
+  "bounds": [
+    [
+      -42,
+      -189,
+      -22
+    ],
+    [
+      42,
+      0,
+      16
+    ]
+  ],
+  "actions": [
+    "idle"
+  ],
+  "original_geometry_and_choreography": true,
+  "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+  "generator": "tools/tower/asset-workbench/author_workflow.py",
+  "recipe": "assets/worker-figure/recipe.json",
+  "technical_conversion": "VALIDATED",
+  "artistic_acceptance": false,
+  "gameplay_integration_tested": false,
+  "material_features": {
+    "native_face_hsl": true,
+    "textured_faces": 0,
+    "alpha_present": true,
+    "face_priorities_present": true,
+    "render_types": [
+      0,
+      1
+    ],
+    "lighting": {
+      "ambient": 64,
+      "contrast": 768
+    }
+  },
+  "action_identity_map": {
+    "idle": {
+      "sequence_id": 45184,
+      "skeleton_id": 32184,
+      "frame_group": 40184,
+      "format": "native_classic"
+    }
+  }
+}

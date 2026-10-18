@@ -1,0 +1,50 @@
+{
+  "asset": "ash-hook-cleaver",
+  "name": "Ash-hook cleaver",
+  "identity": {
+    "model_id": 1101537,
+    "object_id": 63437,
+    "npc_id": null,
+    "sequence_base": null,
+    "skeleton_base": null,
+    "frame_group_base": null
+  },
+  "asset_key": "mastery-original:ash-hook-cleaver",
+  "model_sha256": "943c7a721d154e31b793b77f33b5d30d95228dc1d3c79f5dd57da025b8ddbb62",
+  "vertices": 78,
+  "faces": 132,
+  "bounds": [
+    [
+      -15,
+      -128,
+      -4
+    ],
+    [
+      40,
+      1,
+      4
+    ]
+  ],
+  "actions": [],
+  "original_geometry_and_choreography": true,
+  "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+  "generator": "tools/tower/asset-workbench/author_workflow.py",
+  "recipe": "assets/ash-hook-cleaver/recipe.json",
+  "technical_conversion": "VALIDATED",
+  "artistic_acceptance": false,
+  "gameplay_integration_tested": false,
+  "material_features": {
+    "native_face_hsl": true,
+    "textured_faces": 0,
+    "alpha_present": true,
+    "face_priorities_present": true,
+    "render_types": [
+      0
+    ],
+    "lighting": {
+      "ambient": 64,
+      "contrast": 768
+    }
+  },
+  "action_identity_map": {}
+}

@@ -1,0 +1,50 @@
+{
+  "asset": "annealing-retort",
+  "name": "Twin-chamber annealing retort",
+  "identity": {
+    "model_id": 1101570,
+    "object_id": 63470,
+    "npc_id": null,
+    "sequence_base": null,
+    "skeleton_base": null,
+    "frame_group_base": null
+  },
+  "asset_key": "mastery-floor-scenery:annealing-retort",
+  "model_sha256": "da0535a27373e74021e3e7985e0150212d7ccaded66a7b86363afbbcc7fe20de",
+  "vertices": 828,
+  "faces": 1500,
+  "bounds": [
+    [
+      -107,
+      -278,
+      -66
+    ],
+    [
+      107,
+      -1,
+      64
+    ]
+  ],
+  "actions": [],
+  "original_geometry_and_choreography": true,
+  "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+  "generator": "tools/tower/asset-workbench/author_workflow.py",
+  "recipe": "assets/annealing-retort/recipe.json",
+  "technical_conversion": "VALIDATED",
+  "artistic_acceptance": false,
+  "gameplay_integration_tested": false,
+  "material_features": {
+    "native_face_hsl": true,
+    "textured_faces": 0,
+    "alpha_present": true,
+    "face_priorities_present": true,
+    "render_types": [
+      0
+    ],
+    "lighting": {
+      "ambient": 64,
+      "contrast": 768
+    }
+  },
+  "action_identity_map": {}
+}

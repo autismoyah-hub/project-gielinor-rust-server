@@ -1,0 +1,102 @@
+{
+  "asset": "basalt-hearthbearer",
+  "name": "Basalt Hearthbearer",
+  "identity": {
+    "model_id": 1101564,
+    "object_id": 63464,
+    "npc_id": 60037,
+    "sequence_base": 45136,
+    "skeleton_base": 32136,
+    "frame_group_base": 40136
+  },
+  "asset_key": "mastery-original-boss:basalt-hearthbearer",
+  "model_sha256": "e4075a6093dd60859da994234b17974fc7147914e4b0321151ebc17eebdeaf2f",
+  "vertices": 636,
+  "faces": 1112,
+  "bounds": [
+    [
+      -85,
+      -320,
+      -42
+    ],
+    [
+      85,
+      0,
+      65
+    ]
+  ],
+  "actions": [
+    "idle",
+    "walk",
+    "attack",
+    "hit",
+    "death",
+    "furnace_pulse",
+    "walk_entry"
+  ],
+  "original_geometry_and_choreography": true,
+  "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+  "generator": "tools/tower/asset-workbench/author_workflow.py",
+  "recipe": "assets/basalt-hearthbearer/recipe.json",
+  "technical_conversion": "VALIDATED",
+  "artistic_acceptance": false,
+  "gameplay_integration_tested": false,
+  "material_features": {
+    "native_face_hsl": true,
+    "textured_faces": 0,
+    "alpha_present": true,
+    "face_priorities_present": true,
+    "render_types": [
+      0,
+      1
+    ],
+    "lighting": {
+      "ambient": 64,
+      "contrast": 768
+    }
+  },
+  "action_identity_map": {
+    "attack": {
+      "sequence_id": 45136,
+      "skeleton_id": 32138,
+      "frame_group": 40138,
+      "format": "native_classic"
+    },
+    "death": {
+      "sequence_id": 45137,
+      "skeleton_id": 32140,
+      "frame_group": 40140,
+      "format": "native_classic"
+    },
+    "furnace_pulse": {
+      "sequence_id": 45138,
+      "skeleton_id": 32141,
+      "frame_group": 40141,
+      "format": "native_classic"
+    },
+    "hit": {
+      "sequence_id": 45139,
+      "skeleton_id": 32139,
+      "frame_group": 40139,
+      "format": "native_classic"
+    },
+    "idle": {
+      "sequence_id": 45140,
+      "skeleton_id": 32136,
+      "frame_group": 40136,
+      "format": "native_classic"
+    },
+    "walk": {
+      "sequence_id": 45141,
+      "skeleton_id": 32137,
+      "frame_group": 40137,
+      "format": "native_classic"
+    },
+    "walk_entry": {
+      "sequence_id": 45142,
+      "skeleton_id": 32142,
+      "frame_group": 40142,
+      "format": "native_classic"
+    }
+  }
+}

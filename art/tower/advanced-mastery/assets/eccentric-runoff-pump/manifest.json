@@ -1,0 +1,50 @@
+{
+  "asset": "eccentric-runoff-pump",
+  "name": "Eccentric runoff pump",
+  "identity": {
+    "model_id": 1101539,
+    "object_id": 63439,
+    "npc_id": null,
+    "sequence_base": null,
+    "skeleton_base": null,
+    "frame_group_base": null
+  },
+  "asset_key": "mastery-original:eccentric-runoff-pump",
+  "model_sha256": "f5dfd80fb277bdda3f6834320d1548a0a54d9b2e3f5367dd512a6b4487d36101",
+  "vertices": 486,
+  "faces": 936,
+  "bounds": [
+    [
+      -88,
+      -151,
+      -65
+    ],
+    [
+      88,
+      0,
+      65
+    ]
+  ],
+  "actions": [],
+  "original_geometry_and_choreography": true,
+  "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+  "generator": "tools/tower/asset-workbench/author_workflow.py",
+  "recipe": "assets/eccentric-runoff-pump/recipe.json",
+  "technical_conversion": "VALIDATED",
+  "artistic_acceptance": false,
+  "gameplay_integration_tested": false,
+  "material_features": {
+    "native_face_hsl": true,
+    "textured_faces": 0,
+    "alpha_present": true,
+    "face_priorities_present": true,
+    "render_types": [
+      0
+    ],
+    "lighting": {
+      "ambient": 64,
+      "contrast": 768
+    }
+  },
+  "action_identity_map": {}
+}

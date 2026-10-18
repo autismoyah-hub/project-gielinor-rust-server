@@ -1,0 +1,1057 @@
+{
+  "schema": 1,
+  "name": "Counterfort threshold",
+  "unit": "native;128 units per tile",
+  "materials": {
+    "stone": {
+      "family": "stone",
+      "render_type": 0,
+      "hsl": 10282,
+      "shadow": 10272,
+      "end": 10288,
+      "edge": 10292
+    },
+    "edge": {
+      "hsl": 10262,
+      "render_type": 0
+    },
+    "stone_shadow": {
+      "hsl": 10258,
+      "render_type": 0
+    },
+    "iron": {
+      "hsl": 10299,
+      "render_type": 0
+    },
+    "iron_edge": {
+      "hsl": 10320,
+      "render_type": 0
+    },
+    "wood": {
+      "family": "wood",
+      "render_type": 0,
+      "hsl": 8600,
+      "shadow": 8479,
+      "end": 8487,
+      "edge": 8605
+    },
+    "wood_dark": {
+      "hsl": 8485,
+      "render_type": 0
+    },
+    "leather": {
+      "family": "leather",
+      "render_type": 0,
+      "hsl": 3741,
+      "shadow": 3730,
+      "end": 3747,
+      "edge": 3744
+    },
+    "skin": {
+      "hsl": 10782,
+      "render_type": 0
+    },
+    "skin_shadow": {
+      "hsl": 10772,
+      "render_type": 0
+    },
+    "cloth": {
+      "hsl": 916,
+      "render_type": 0
+    },
+    "armor": {
+      "hsl": 6955,
+      "render_type": 0
+    },
+    "armor_shadow": {
+      "hsl": 7075,
+      "render_type": 0
+    },
+    "gray_armor": {
+      "hsl": 5169,
+      "render_type": 0
+    },
+    "eye": {
+      "hsl": 127,
+      "render_type": 0
+    },
+    "brow": {
+      "hsl": 8598,
+      "render_type": 0
+    },
+    "metal": {
+      "family": "metal",
+      "render_type": 0,
+      "hsl": 33,
+      "shadow": 24,
+      "end": 41,
+      "edge": 45
+    },
+    "bronze": {
+      "family": "bronze",
+      "render_type": 0,
+      "hsl": 6687,
+      "shadow": 6678,
+      "end": 6695,
+      "edge": 6698
+    },
+    "organic": {
+      "family": "organic",
+      "render_type": 0,
+      "hsl": 6697,
+      "shadow": 6685,
+      "end": 6704,
+      "edge": 6701
+    },
+    "ceramic": {
+      "family": "ceramic",
+      "render_type": 0,
+      "hsl": 4773,
+      "shadow": 4763,
+      "end": 4781,
+      "edge": 4786
+    }
+  },
+  "components": [
+    {
+      "name": "pier_-1_0",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "pier_-1_0",
+      "center": [
+        -103.19999999999999,
+        -23.0,
+        0
+      ],
+      "size": [
+        32,
+        44.0,
+        65
+      ],
+      "bevel": 3,
+      "wear": 0.09,
+      "seed": -1,
+      "variation": -2
+    },
+    {
+      "name": "pier_-1_1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "pier_-1_1",
+      "center": [
+        -103.19999999999999,
+        -69.0,
+        0
+      ],
+      "size": [
+        32,
+        44.0,
+        65
+      ],
+      "bevel": 3,
+      "wear": 0,
+      "seed": 0,
+      "variation": 0
+    },
+    {
+      "name": "pier_-1_2",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "pier_-1_2",
+      "center": [
+        -103.19999999999999,
+        -115.0,
+        0
+      ],
+      "size": [
+        32,
+        44.0,
+        65
+      ],
+      "bevel": 3,
+      "wear": 0,
+      "seed": 1,
+      "variation": 2
+    },
+    {
+      "name": "impost_-1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "impost_-1",
+      "center": [
+        -103.19999999999999,
+        -138.0,
+        0
+      ],
+      "size": [
+        41,
+        13,
+        72
+      ],
+      "bevel": 2
+    },
+    {
+      "name": "pier_1_0",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "pier_1_0",
+      "center": [
+        103.19999999999999,
+        -23.0,
+        0
+      ],
+      "size": [
+        32,
+        44.0,
+        65
+      ],
+      "bevel": 3,
+      "wear": 0.09,
+      "seed": 1,
+      "variation": -2
+    },
+    {
+      "name": "pier_1_1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "pier_1_1",
+      "center": [
+        103.19999999999999,
+        -69.0,
+        0
+      ],
+      "size": [
+        32,
+        44.0,
+        65
+      ],
+      "bevel": 3,
+      "wear": 0,
+      "seed": 2,
+      "variation": 0
+    },
+    {
+      "name": "pier_1_2",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "pier_1_2",
+      "center": [
+        103.19999999999999,
+        -115.0,
+        0
+      ],
+      "size": [
+        32,
+        44.0,
+        65
+      ],
+      "bevel": 3,
+      "wear": 0,
+      "seed": 3,
+      "variation": 2
+    },
+    {
+      "name": "impost_1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "impost_1",
+      "center": [
+        103.19999999999999,
+        -138.0,
+        0
+      ],
+      "size": [
+        41,
+        13,
+        72
+      ],
+      "bevel": 2
+    },
+    {
+      "name": "voussoir_0",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -138.0,
+        0
+      ],
+      "inner": 88.19999999999999,
+      "outer": 126.0,
+      "start_angle": 0.009,
+      "end_angle": 0.27659933214452664,
+      "depth": 60,
+      "variation": -2,
+      "parameters": {
+        "radial_joint": true
+      }
+    },
+    {
+      "name": "voussoir_1",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -138.0,
+        0
+      ],
+      "inner": 88.19999999999999,
+      "outer": 126.0,
+      "start_angle": 0.29459933214452666,
+      "end_angle": 0.5621986642890533,
+      "depth": 60,
+      "variation": 0,
+      "parameters": {
+        "radial_joint": true
+      }
+    },
+    {
+      "name": "voussoir_2",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -138.0,
+        0
+      ],
+      "inner": 88.19999999999999,
+      "outer": 126.0,
+      "start_angle": 0.5801986642890533,
+      "end_angle": 0.8477979964335799,
+      "depth": 60,
+      "variation": 1,
+      "parameters": {
+        "radial_joint": true
+      }
+    },
+    {
+      "name": "voussoir_3",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -138.0,
+        0
+      ],
+      "inner": 88.19999999999999,
+      "outer": 126.0,
+      "start_angle": 0.8657979964335799,
+      "end_angle": 1.1333973285781067,
+      "depth": 60,
+      "variation": -2,
+      "parameters": {
+        "radial_joint": true
+      }
+    },
+    {
+      "name": "voussoir_4",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -138.0,
+        0
+      ],
+      "inner": 88.19999999999999,
+      "outer": 126.0,
+      "start_angle": 1.1513973285781065,
+      "end_angle": 1.4189966607226334,
+      "depth": 60,
+      "variation": 0,
+      "parameters": {
+        "radial_joint": true
+      }
+    },
+    {
+      "name": "keystone",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -138.0,
+        0
+      ],
+      "inner": 85.19999999999999,
+      "outer": 133.0,
+      "start_angle": 1.4369966607226332,
+      "end_angle": 1.70459599286716,
+      "depth": 69,
+      "variation": 2,
+      "parameters": {
+        "radial_joint": true
+      }
+    },
+    {
+      "name": "voussoir_6",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -138.0,
+        0
+      ],
+      "inner": 88.19999999999999,
+      "outer": 126.0,
+      "start_angle": 1.7225959928671597,
+      "end_angle": 1.9901953250116866,
+      "depth": 60,
+      "variation": -2,
+      "parameters": {
+        "radial_joint": true
+      }
+    },
+    {
+      "name": "voussoir_7",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -138.0,
+        0
+      ],
+      "inner": 88.19999999999999,
+      "outer": 126.0,
+      "start_angle": 2.0081953250116866,
+      "end_angle": 2.2757946571562133,
+      "depth": 60,
+      "variation": 0,
+      "parameters": {
+        "radial_joint": true
+      }
+    },
+    {
+      "name": "voussoir_8",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -138.0,
+        0
+      ],
+      "inner": 88.19999999999999,
+      "outer": 126.0,
+      "start_angle": 2.293794657156213,
+      "end_angle": 2.56139398930074,
+      "depth": 60,
+      "variation": 1,
+      "parameters": {
+        "radial_joint": true
+      }
+    },
+    {
+      "name": "voussoir_9",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -138.0,
+        0
+      ],
+      "inner": 88.19999999999999,
+      "outer": 126.0,
+      "start_angle": 2.5793939893007396,
+      "end_angle": 2.8469933214452667,
+      "depth": 60,
+      "variation": -2,
+      "parameters": {
+        "radial_joint": true
+      }
+    },
+    {
+      "name": "voussoir_10",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -138.0,
+        0
+      ],
+      "inner": 88.19999999999999,
+      "outer": 126.0,
+      "start_angle": 2.8649933214452665,
+      "end_angle": 3.1325926535897928,
+      "depth": 60,
+      "variation": 0,
+      "parameters": {
+        "radial_joint": true
+      }
+    },
+    {
+      "name": "repair_tie",
+      "type": "box",
+      "material": "metal",
+      "group": 0,
+      "role": "repair_tie",
+      "center": [
+        -103.19999999999999,
+        -75.9,
+        -33.0
+      ],
+      "size": [
+        34,
+        8,
+        4
+      ]
+    },
+    {
+      "name": "tie_bolt_-114.19999999999999",
+      "type": "beam",
+      "material": "metal",
+      "group": 0,
+      "role": "tie_bolt_-114.19999999999999",
+      "start": [
+        -114.19999999999999,
+        -75.9,
+        -33.0
+      ],
+      "end": [
+        -114.19999999999999,
+        -75.9,
+        -37.0
+      ],
+      "radii": [
+        3,
+        3
+      ],
+      "sides": 6
+    },
+    {
+      "name": "tie_bolt_-92.19999999999999",
+      "type": "beam",
+      "material": "metal",
+      "group": 0,
+      "role": "tie_bolt_-92.19999999999999",
+      "start": [
+        -92.19999999999999,
+        -75.9,
+        -33.0
+      ],
+      "end": [
+        -92.19999999999999,
+        -75.9,
+        -37.0
+      ],
+      "radii": [
+        3,
+        3
+      ],
+      "sides": 6
+    },
+    {
+      "name": "worn_threshold",
+      "type": "section_mesh",
+      "material": "stone",
+      "group": 0,
+      "role": "threshold",
+      "sections": [
+        [
+          0,
+          0,
+          0,
+          126.0,
+          39.0
+        ],
+        [
+          0,
+          -10,
+          0,
+          126.0,
+          39.0
+        ]
+      ],
+      "sides": 8,
+      "profiles": [
+        [
+          [
+            -1,
+            -0.65
+          ],
+          [
+            -0.63,
+            -1
+          ],
+          [
+            0.63,
+            -1
+          ],
+          [
+            1,
+            -0.65
+          ],
+          [
+            1,
+            0.6
+          ],
+          [
+            0.6,
+            1
+          ],
+          [
+            -0.6,
+            1
+          ],
+          [
+            -1,
+            0.6
+          ]
+        ],
+        [
+          [
+            -1,
+            -0.65
+          ],
+          [
+            -0.63,
+            -1
+          ],
+          [
+            0.63,
+            -1
+          ],
+          [
+            1,
+            -0.65
+          ],
+          [
+            1,
+            0.6
+          ],
+          [
+            0.6,
+            1
+          ],
+          [
+            -0.6,
+            1
+          ],
+          [
+            -1,
+            0.6
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "buttress_-1",
+      "type": "section_mesh",
+      "material": "stone",
+      "group": 0,
+      "role": "buttress_-1",
+      "sections": [
+        [
+          -115.92,
+          0,
+          12.0,
+          26,
+          48.0
+        ],
+        [
+          -115.92,
+          -132.0,
+          7.199999999999999,
+          21,
+          33.0
+        ],
+        [
+          -115.92,
+          -184.79999999999998,
+          0,
+          14,
+          24.0
+        ]
+      ],
+      "sides": 8,
+      "profiles": [
+        [
+          [
+            -1,
+            -0.65
+          ],
+          [
+            -0.63,
+            -1
+          ],
+          [
+            0.63,
+            -1
+          ],
+          [
+            1,
+            -0.65
+          ],
+          [
+            1,
+            0.6
+          ],
+          [
+            0.6,
+            1
+          ],
+          [
+            -0.6,
+            1
+          ],
+          [
+            -1,
+            0.6
+          ]
+        ],
+        [
+          [
+            -1,
+            -0.65
+          ],
+          [
+            -0.63,
+            -1
+          ],
+          [
+            0.63,
+            -1
+          ],
+          [
+            1,
+            -0.65
+          ],
+          [
+            1,
+            0.6
+          ],
+          [
+            0.6,
+            1
+          ],
+          [
+            -0.6,
+            1
+          ],
+          [
+            -1,
+            0.6
+          ]
+        ],
+        [
+          [
+            -1,
+            -0.65
+          ],
+          [
+            -0.63,
+            -1
+          ],
+          [
+            0.63,
+            -1
+          ],
+          [
+            1,
+            -0.65
+          ],
+          [
+            1,
+            0.6
+          ],
+          [
+            0.6,
+            1
+          ],
+          [
+            -0.6,
+            1
+          ],
+          [
+            -1,
+            0.6
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "corbel_-1_0",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "corbel_-1_0",
+      "center": [
+        -115.92,
+        -171.6,
+        -26.4
+      ],
+      "size": [
+        34,
+        10,
+        42.0
+      ],
+      "bevel": 2
+    },
+    {
+      "name": "corbel_-1_1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "corbel_-1_1",
+      "center": [
+        -115.92,
+        -182.6,
+        -28.4
+      ],
+      "size": [
+        29,
+        10,
+        47.0
+      ],
+      "bevel": 2
+    },
+    {
+      "name": "corbel_-1_2",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "corbel_-1_2",
+      "center": [
+        -115.92,
+        -193.6,
+        -30.4
+      ],
+      "size": [
+        24,
+        10,
+        52.0
+      ],
+      "bevel": 2
+    },
+    {
+      "name": "buttress_1",
+      "type": "section_mesh",
+      "material": "stone",
+      "group": 0,
+      "role": "buttress_1",
+      "sections": [
+        [
+          115.92,
+          0,
+          12.0,
+          26,
+          48.0
+        ],
+        [
+          115.92,
+          -132.0,
+          7.199999999999999,
+          21,
+          33.0
+        ],
+        [
+          115.92,
+          -184.79999999999998,
+          0,
+          14,
+          24.0
+        ]
+      ],
+      "sides": 8,
+      "profiles": [
+        [
+          [
+            -1,
+            -0.65
+          ],
+          [
+            -0.63,
+            -1
+          ],
+          [
+            0.63,
+            -1
+          ],
+          [
+            1,
+            -0.65
+          ],
+          [
+            1,
+            0.6
+          ],
+          [
+            0.6,
+            1
+          ],
+          [
+            -0.6,
+            1
+          ],
+          [
+            -1,
+            0.6
+          ]
+        ],
+        [
+          [
+            -1,
+            -0.65
+          ],
+          [
+            -0.63,
+            -1
+          ],
+          [
+            0.63,
+            -1
+          ],
+          [
+            1,
+            -0.65
+          ],
+          [
+            1,
+            0.6
+          ],
+          [
+            0.6,
+            1
+          ],
+          [
+            -0.6,
+            1
+          ],
+          [
+            -1,
+            0.6
+          ]
+        ],
+        [
+          [
+            -1,
+            -0.65
+          ],
+          [
+            -0.63,
+            -1
+          ],
+          [
+            0.63,
+            -1
+          ],
+          [
+            1,
+            -0.65
+          ],
+          [
+            1,
+            0.6
+          ],
+          [
+            0.6,
+            1
+          ],
+          [
+            -0.6,
+            1
+          ],
+          [
+            -1,
+            0.6
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "corbel_1_0",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "corbel_1_0",
+      "center": [
+        115.92,
+        -171.6,
+        -26.4
+      ],
+      "size": [
+        34,
+        10,
+        42.0
+      ],
+      "bevel": 2
+    },
+    {
+      "name": "corbel_1_1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "corbel_1_1",
+      "center": [
+        115.92,
+        -182.6,
+        -28.4
+      ],
+      "size": [
+        29,
+        10,
+        47.0
+      ],
+      "bevel": 2
+    },
+    {
+      "name": "corbel_1_2",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "corbel_1_2",
+      "center": [
+        115.92,
+        -193.6,
+        -30.4
+      ],
+      "size": [
+        24,
+        10,
+        52.0
+      ],
+      "bevel": 2
+    }
+  ],
+  "rig": [],
+  "actions": {},
+  "authoring_schema": 2,
+  "geometry_validation": {
+    "remove_zero_area_faces": true,
+    "preserve_vertex_order": true
+  },
+  "provenance": {
+    "kind": "original_tower_asset",
+    "source_mesh_or_animation_reuse": false,
+    "brief": "A buttressed radial threshold with a worn sill, corbel transitions and repaired iron ties; independently authored modular construction.",
+    "artistic_acceptance": false,
+    "live_integration": false
+  }
+}

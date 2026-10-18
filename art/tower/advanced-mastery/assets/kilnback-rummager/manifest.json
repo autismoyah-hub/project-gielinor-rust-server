@@ -1,0 +1,95 @@
+{
+  "asset": "kilnback-rummager",
+  "name": "Kilnback rummager \u00b7 articulated revision",
+  "identity": {
+    "model_id": 1101527,
+    "object_id": 63427,
+    "npc_id": 60027,
+    "sequence_base": 45056,
+    "skeleton_base": 32056,
+    "frame_group_base": 40056
+  },
+  "asset_key": "production-original:kilnback-rummager",
+  "model_sha256": "19325d979e89a1a1df555eb3332bca5b37614efdb36a54366b8d04741b3d0a6e",
+  "vertices": 760,
+  "faces": 1264,
+  "bounds": [
+    [
+      -73,
+      -76,
+      -97
+    ],
+    [
+      73,
+      0,
+      76
+    ]
+  ],
+  "actions": [
+    "idle",
+    "walk",
+    "attack",
+    "hit",
+    "death",
+    "walk_entry"
+  ],
+  "original_geometry_and_choreography": true,
+  "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+  "generator": "tools/tower/asset-workbench/author_workflow.py",
+  "recipe": "assets/kilnback-rummager/recipe.json",
+  "technical_conversion": "VALIDATED",
+  "artistic_acceptance": false,
+  "gameplay_integration_tested": false,
+  "material_features": {
+    "native_face_hsl": true,
+    "textured_faces": 0,
+    "alpha_present": true,
+    "face_priorities_present": true,
+    "render_types": [
+      0,
+      1
+    ],
+    "lighting": {
+      "ambient": 64,
+      "contrast": 768
+    }
+  },
+  "action_identity_map": {
+    "attack": {
+      "sequence_id": 45056,
+      "skeleton_id": 32058,
+      "frame_group": 40058,
+      "format": "native_classic"
+    },
+    "death": {
+      "sequence_id": 45057,
+      "skeleton_id": 32060,
+      "frame_group": 40060,
+      "format": "native_classic"
+    },
+    "hit": {
+      "sequence_id": 45058,
+      "skeleton_id": 32059,
+      "frame_group": 40059,
+      "format": "native_classic"
+    },
+    "idle": {
+      "sequence_id": 45059,
+      "skeleton_id": 32056,
+      "frame_group": 40056,
+      "format": "native_classic"
+    },
+    "walk": {
+      "sequence_id": 45060,
+      "skeleton_id": 32057,
+      "frame_group": 40057,
+      "format": "native_classic"
+    },
+    "walk_entry": {
+      "sequence_id": 45061,
+      "skeleton_id": 32061,
+      "frame_group": 40061,
+      "format": "native_classic"
+    }
+  }
+}

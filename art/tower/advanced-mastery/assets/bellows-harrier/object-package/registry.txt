@@ -1,0 +1,3 @@
+TOWER_ASSET_PACKAGE 1
+model 1101566 model-1101566.model dc18c90d
+object 63466 object-63466.object 22386fc5

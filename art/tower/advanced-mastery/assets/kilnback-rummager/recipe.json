@@ -1,0 +1,3758 @@
+{
+  "schema": 1,
+  "name": "Kilnback rummager \u00b7 articulated revision",
+  "unit": "native;128 units per tile",
+  "materials": {
+    "stone": {
+      "family": "stone",
+      "render_type": 0,
+      "hsl": 10282,
+      "shadow": 10272,
+      "end": 10288,
+      "edge": 10292
+    },
+    "edge": {
+      "hsl": 10262,
+      "render_type": 0
+    },
+    "stone_shadow": {
+      "hsl": 10258,
+      "render_type": 0
+    },
+    "iron": {
+      "hsl": 10299,
+      "render_type": 0
+    },
+    "iron_edge": {
+      "hsl": 10320,
+      "render_type": 0
+    },
+    "wood": {
+      "family": "wood",
+      "render_type": 0,
+      "hsl": 8600,
+      "shadow": 8479,
+      "end": 8487,
+      "edge": 8605
+    },
+    "wood_dark": {
+      "hsl": 8485,
+      "render_type": 0
+    },
+    "leather": {
+      "family": "leather",
+      "render_type": 0,
+      "hsl": 3741,
+      "shadow": 3730,
+      "end": 3747,
+      "edge": 3744
+    },
+    "skin": {
+      "hsl": 10782,
+      "render_type": 0
+    },
+    "skin_shadow": {
+      "hsl": 10772,
+      "render_type": 0
+    },
+    "cloth": {
+      "hsl": 916,
+      "render_type": 0
+    },
+    "armor": {
+      "hsl": 6955,
+      "render_type": 0
+    },
+    "armor_shadow": {
+      "hsl": 7075,
+      "render_type": 0
+    },
+    "gray_armor": {
+      "hsl": 5169,
+      "render_type": 0
+    },
+    "eye": {
+      "hsl": 7106,
+      "render_type": 1
+    },
+    "brow": {
+      "hsl": 8598,
+      "render_type": 0
+    },
+    "metal": {
+      "family": "metal",
+      "render_type": 0,
+      "hsl": 33,
+      "shadow": 24,
+      "end": 41,
+      "edge": 45
+    },
+    "bronze": {
+      "family": "bronze",
+      "render_type": 0,
+      "hsl": 6687,
+      "shadow": 6678,
+      "end": 6695,
+      "edge": 6698
+    },
+    "organic": {
+      "family": "organic",
+      "render_type": 0,
+      "hsl": 10264,
+      "shadow": 10257,
+      "end": 10273,
+      "edge": 10269
+    },
+    "ceramic": {
+      "family": "ceramic",
+      "render_type": 0,
+      "hsl": 4773,
+      "shadow": 4763,
+      "end": 4781,
+      "edge": 4786
+    }
+  },
+  "components": [
+    {
+      "name": "abdomen",
+      "type": "sweep",
+      "material": "organic",
+      "group": 0,
+      "role": "torso",
+      "sections": [
+        [
+          0,
+          -33,
+          -19,
+          29,
+          20
+        ],
+        [
+          0,
+          -43,
+          12,
+          40,
+          29
+        ],
+        [
+          0,
+          -41,
+          39,
+          32,
+          24
+        ],
+        [
+          0,
+          -32,
+          60,
+          17,
+          16
+        ]
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "sides": 8
+    },
+    {
+      "name": "thorax",
+      "type": "sweep",
+      "material": "organic",
+      "group": 0,
+      "role": "neck",
+      "sections": [
+        [
+          0,
+          -34,
+          -44,
+          19,
+          15
+        ],
+        [
+          0,
+          -41,
+          -29,
+          26,
+          22
+        ],
+        [
+          0,
+          -38,
+          -12,
+          29,
+          23
+        ]
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "sides": 6
+    },
+    {
+      "name": "head",
+      "type": "sweep",
+      "material": "organic",
+      "group": 1,
+      "role": "head",
+      "sections": [
+        [
+          0,
+          -33,
+          -43,
+          17,
+          13
+        ],
+        [
+          0,
+          -31,
+          -63,
+          23,
+          16
+        ],
+        [
+          0,
+          -24,
+          -78,
+          17,
+          10
+        ]
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "sides": 6
+    },
+    {
+      "name": "shell_plate_0",
+      "type": "loft",
+      "material": "ceramic",
+      "group": 0,
+      "role": "carapace",
+      "sections": [
+        [
+          0,
+          -50,
+          -8,
+          34,
+          14.0
+        ],
+        [
+          0,
+          -63,
+          -8,
+          26.52,
+          12.6
+        ],
+        [
+          0,
+          -67,
+          -8,
+          13.600000000000001,
+          9.799999999999999
+        ]
+      ],
+      "sides": 8,
+      "variation": -1
+    },
+    {
+      "name": "vent_0_-6",
+      "type": "box",
+      "material": "organic",
+      "group": 0,
+      "role": "vent_0_-6",
+      "center": [
+        -6,
+        -68,
+        -8
+      ],
+      "size": [
+        3,
+        2,
+        8.96
+      ]
+    },
+    {
+      "name": "vent_0_6",
+      "type": "box",
+      "material": "organic",
+      "group": 0,
+      "role": "vent_0_6",
+      "center": [
+        6,
+        -68,
+        -8
+      ],
+      "size": [
+        3,
+        2,
+        8.96
+      ]
+    },
+    {
+      "name": "shell_plate_1",
+      "type": "loft",
+      "material": "ceramic",
+      "group": 0,
+      "role": "carapace",
+      "sections": [
+        [
+          0,
+          -57,
+          18,
+          39,
+          15.5
+        ],
+        [
+          0,
+          -70,
+          18,
+          30.42,
+          13.950000000000001
+        ],
+        [
+          0,
+          -74,
+          18,
+          15.600000000000001,
+          10.85
+        ]
+      ],
+      "sides": 8,
+      "variation": 0
+    },
+    {
+      "name": "vent_1_-6",
+      "type": "box",
+      "material": "organic",
+      "group": 0,
+      "role": "vent_1_-6",
+      "center": [
+        -6,
+        -75,
+        18
+      ],
+      "size": [
+        3,
+        2,
+        9.92
+      ]
+    },
+    {
+      "name": "vent_1_6",
+      "type": "box",
+      "material": "organic",
+      "group": 0,
+      "role": "vent_1_6",
+      "center": [
+        6,
+        -75,
+        18
+      ],
+      "size": [
+        3,
+        2,
+        9.92
+      ]
+    },
+    {
+      "name": "shell_plate_2",
+      "type": "loft",
+      "material": "ceramic",
+      "group": 0,
+      "role": "carapace",
+      "sections": [
+        [
+          0,
+          -47,
+          43,
+          28,
+          13.5
+        ],
+        [
+          0,
+          -60,
+          43,
+          21.84,
+          12.15
+        ],
+        [
+          0,
+          -64,
+          43,
+          11.200000000000001,
+          9.45
+        ]
+      ],
+      "sides": 8,
+      "variation": 1
+    },
+    {
+      "name": "vent_2_-6",
+      "type": "box",
+      "material": "organic",
+      "group": 0,
+      "role": "vent_2_-6",
+      "center": [
+        -6,
+        -65,
+        43
+      ],
+      "size": [
+        3,
+        2,
+        8.64
+      ]
+    },
+    {
+      "name": "vent_2_6",
+      "type": "box",
+      "material": "organic",
+      "group": 0,
+      "role": "vent_2_6",
+      "center": [
+        6,
+        -65,
+        43
+      ],
+      "size": [
+        3,
+        2,
+        8.64
+      ]
+    },
+    {
+      "name": "leg_0_coxa",
+      "type": "loft",
+      "material": "organic",
+      "group": 2,
+      "role": "leg",
+      "sections": [
+        [
+          -24,
+          -30,
+          -34,
+          9,
+          9
+        ],
+        [
+          -24,
+          -40,
+          -34,
+          7,
+          7
+        ]
+      ],
+      "sides": 6
+    },
+    {
+      "name": "leg_0_upper",
+      "type": "beam",
+      "material": "organic",
+      "group": 2,
+      "role": "leg_0_upper",
+      "start": [
+        -24,
+        -35,
+        -34
+      ],
+      "end": [
+        -49,
+        -23,
+        -43
+      ],
+      "radii": [
+        6,
+        4
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_0_shin",
+      "type": "beam",
+      "material": "organic",
+      "group": 3,
+      "role": "leg_0_shin",
+      "start": [
+        -49,
+        -23,
+        -43
+      ],
+      "end": [
+        -61,
+        -3,
+        -51
+      ],
+      "radii": [
+        4,
+        3
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_0_pad",
+      "type": "stone_block",
+      "material": "organic",
+      "group": 4,
+      "role": "foot",
+      "center": [
+        -61,
+        -2,
+        -54
+      ],
+      "size": [
+        9,
+        4,
+        15
+      ],
+      "bevel": 1
+    },
+    {
+      "name": "leg_0_claw_-1",
+      "type": "beam",
+      "material": "bronze",
+      "group": 4,
+      "role": "leg_0_claw_-1",
+      "start": [
+        -64,
+        -2,
+        -59
+      ],
+      "end": [
+        -65,
+        -1,
+        -64
+      ],
+      "radii": [
+        2,
+        1
+      ],
+      "sides": 4
+    },
+    {
+      "name": "leg_0_claw_1",
+      "type": "beam",
+      "material": "bronze",
+      "group": 4,
+      "role": "leg_0_claw_1",
+      "start": [
+        -58,
+        -2,
+        -59
+      ],
+      "end": [
+        -57,
+        -1,
+        -64
+      ],
+      "radii": [
+        2,
+        1
+      ],
+      "sides": 4
+    },
+    {
+      "name": "leg_1_coxa",
+      "type": "loft",
+      "material": "organic",
+      "group": 5,
+      "role": "leg",
+      "sections": [
+        [
+          -24,
+          -30,
+          -1,
+          9,
+          9
+        ],
+        [
+          -24,
+          -40,
+          -1,
+          7,
+          7
+        ]
+      ],
+      "sides": 6
+    },
+    {
+      "name": "leg_1_upper",
+      "type": "beam",
+      "material": "organic",
+      "group": 5,
+      "role": "leg_1_upper",
+      "start": [
+        -24,
+        -35,
+        -1
+      ],
+      "end": [
+        -56,
+        -23,
+        6
+      ],
+      "radii": [
+        6,
+        4
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_1_shin",
+      "type": "beam",
+      "material": "organic",
+      "group": 6,
+      "role": "leg_1_shin",
+      "start": [
+        -56,
+        -23,
+        6
+      ],
+      "end": [
+        -68,
+        -3,
+        12
+      ],
+      "radii": [
+        4,
+        3
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_1_pad",
+      "type": "stone_block",
+      "material": "organic",
+      "group": 7,
+      "role": "foot",
+      "center": [
+        -68,
+        -2,
+        9
+      ],
+      "size": [
+        9,
+        4,
+        15
+      ],
+      "bevel": 1
+    },
+    {
+      "name": "leg_1_claw_-1",
+      "type": "beam",
+      "material": "bronze",
+      "group": 7,
+      "role": "leg_1_claw_-1",
+      "start": [
+        -71,
+        -2,
+        4
+      ],
+      "end": [
+        -72,
+        -1,
+        -1
+      ],
+      "radii": [
+        2,
+        1
+      ],
+      "sides": 4
+    },
+    {
+      "name": "leg_1_claw_1",
+      "type": "beam",
+      "material": "bronze",
+      "group": 7,
+      "role": "leg_1_claw_1",
+      "start": [
+        -65,
+        -2,
+        4
+      ],
+      "end": [
+        -64,
+        -1,
+        -1
+      ],
+      "radii": [
+        2,
+        1
+      ],
+      "sides": 4
+    },
+    {
+      "name": "leg_2_coxa",
+      "type": "loft",
+      "material": "organic",
+      "group": 8,
+      "role": "leg",
+      "sections": [
+        [
+          -24,
+          -30,
+          32,
+          9,
+          9
+        ],
+        [
+          -24,
+          -40,
+          32,
+          7,
+          7
+        ]
+      ],
+      "sides": 6
+    },
+    {
+      "name": "leg_2_upper",
+      "type": "beam",
+      "material": "organic",
+      "group": 8,
+      "role": "leg_2_upper",
+      "start": [
+        -24,
+        -35,
+        32
+      ],
+      "end": [
+        -49,
+        -23,
+        39
+      ],
+      "radii": [
+        6,
+        4
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_2_shin",
+      "type": "beam",
+      "material": "organic",
+      "group": 9,
+      "role": "leg_2_shin",
+      "start": [
+        -49,
+        -23,
+        39
+      ],
+      "end": [
+        -61,
+        -3,
+        45
+      ],
+      "radii": [
+        4,
+        3
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_2_pad",
+      "type": "stone_block",
+      "material": "organic",
+      "group": 10,
+      "role": "foot",
+      "center": [
+        -61,
+        -2,
+        42
+      ],
+      "size": [
+        9,
+        4,
+        15
+      ],
+      "bevel": 1
+    },
+    {
+      "name": "leg_2_claw_-1",
+      "type": "beam",
+      "material": "bronze",
+      "group": 10,
+      "role": "leg_2_claw_-1",
+      "start": [
+        -64,
+        -2,
+        37
+      ],
+      "end": [
+        -65,
+        -1,
+        32
+      ],
+      "radii": [
+        2,
+        1
+      ],
+      "sides": 4
+    },
+    {
+      "name": "leg_2_claw_1",
+      "type": "beam",
+      "material": "bronze",
+      "group": 10,
+      "role": "leg_2_claw_1",
+      "start": [
+        -58,
+        -2,
+        37
+      ],
+      "end": [
+        -57,
+        -1,
+        32
+      ],
+      "radii": [
+        2,
+        1
+      ],
+      "sides": 4
+    },
+    {
+      "name": "eye_left",
+      "type": "beam",
+      "material": "eye",
+      "group": 1,
+      "role": "eye_left",
+      "start": [
+        -15,
+        -34,
+        -73
+      ],
+      "end": [
+        -17,
+        -35,
+        -77
+      ],
+      "radii": [
+        3,
+        3
+      ],
+      "sides": 5
+    },
+    {
+      "name": "mandible_left",
+      "type": "sweep",
+      "material": "bronze",
+      "group": 21,
+      "role": "mandible",
+      "sections": [
+        [
+          -14,
+          -22,
+          -73,
+          5,
+          4
+        ],
+        [
+          -25,
+          -16,
+          -88,
+          4,
+          3
+        ],
+        [
+          -15,
+          -15,
+          -96,
+          1,
+          1
+        ]
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "sides": 5
+    },
+    {
+      "name": "feeler_left",
+      "type": "sweep",
+      "material": "organic",
+      "group": 1,
+      "role": "feeler_left",
+      "sections": [
+        [
+          -11,
+          -42,
+          -67,
+          2,
+          2
+        ],
+        [
+          -23,
+          -53,
+          -79,
+          2,
+          2
+        ],
+        [
+          -32,
+          -52,
+          -92,
+          1,
+          1
+        ]
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "sides": 4
+    },
+    {
+      "name": "leg_3_coxa",
+      "type": "loft",
+      "material": "organic",
+      "group": 11,
+      "role": "leg",
+      "sections": [
+        [
+          24,
+          -30,
+          -34,
+          9,
+          9
+        ],
+        [
+          24,
+          -40,
+          -34,
+          7,
+          7
+        ]
+      ],
+      "sides": 6
+    },
+    {
+      "name": "leg_3_upper",
+      "type": "beam",
+      "material": "organic",
+      "group": 11,
+      "role": "leg_3_upper",
+      "start": [
+        24,
+        -35,
+        -34
+      ],
+      "end": [
+        49,
+        -23,
+        -43
+      ],
+      "radii": [
+        6,
+        4
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_3_shin",
+      "type": "beam",
+      "material": "organic",
+      "group": 12,
+      "role": "leg_3_shin",
+      "start": [
+        49,
+        -23,
+        -43
+      ],
+      "end": [
+        61,
+        -3,
+        -51
+      ],
+      "radii": [
+        4,
+        3
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_3_pad",
+      "type": "stone_block",
+      "material": "organic",
+      "group": 13,
+      "role": "foot",
+      "center": [
+        61,
+        -2,
+        -54
+      ],
+      "size": [
+        9,
+        4,
+        15
+      ],
+      "bevel": 1
+    },
+    {
+      "name": "leg_3_claw_-1",
+      "type": "beam",
+      "material": "bronze",
+      "group": 13,
+      "role": "leg_3_claw_-1",
+      "start": [
+        58,
+        -2,
+        -59
+      ],
+      "end": [
+        57,
+        -1,
+        -64
+      ],
+      "radii": [
+        2,
+        1
+      ],
+      "sides": 4
+    },
+    {
+      "name": "leg_3_claw_1",
+      "type": "beam",
+      "material": "bronze",
+      "group": 13,
+      "role": "leg_3_claw_1",
+      "start": [
+        64,
+        -2,
+        -59
+      ],
+      "end": [
+        65,
+        -1,
+        -64
+      ],
+      "radii": [
+        2,
+        1
+      ],
+      "sides": 4
+    },
+    {
+      "name": "leg_4_coxa",
+      "type": "loft",
+      "material": "organic",
+      "group": 14,
+      "role": "leg",
+      "sections": [
+        [
+          24,
+          -30,
+          -1,
+          9,
+          9
+        ],
+        [
+          24,
+          -40,
+          -1,
+          7,
+          7
+        ]
+      ],
+      "sides": 6
+    },
+    {
+      "name": "leg_4_upper",
+      "type": "beam",
+      "material": "organic",
+      "group": 14,
+      "role": "leg_4_upper",
+      "start": [
+        24,
+        -35,
+        -1
+      ],
+      "end": [
+        56,
+        -23,
+        6
+      ],
+      "radii": [
+        6,
+        4
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_4_shin",
+      "type": "beam",
+      "material": "organic",
+      "group": 15,
+      "role": "leg_4_shin",
+      "start": [
+        56,
+        -23,
+        6
+      ],
+      "end": [
+        68,
+        -3,
+        12
+      ],
+      "radii": [
+        4,
+        3
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_4_pad",
+      "type": "stone_block",
+      "material": "organic",
+      "group": 16,
+      "role": "foot",
+      "center": [
+        68,
+        -2,
+        9
+      ],
+      "size": [
+        9,
+        4,
+        15
+      ],
+      "bevel": 1
+    },
+    {
+      "name": "leg_4_claw_-1",
+      "type": "beam",
+      "material": "bronze",
+      "group": 16,
+      "role": "leg_4_claw_-1",
+      "start": [
+        65,
+        -2,
+        4
+      ],
+      "end": [
+        64,
+        -1,
+        -1
+      ],
+      "radii": [
+        2,
+        1
+      ],
+      "sides": 4
+    },
+    {
+      "name": "leg_4_claw_1",
+      "type": "beam",
+      "material": "bronze",
+      "group": 16,
+      "role": "leg_4_claw_1",
+      "start": [
+        71,
+        -2,
+        4
+      ],
+      "end": [
+        72,
+        -1,
+        -1
+      ],
+      "radii": [
+        2,
+        1
+      ],
+      "sides": 4
+    },
+    {
+      "name": "leg_5_coxa",
+      "type": "loft",
+      "material": "organic",
+      "group": 17,
+      "role": "leg",
+      "sections": [
+        [
+          24,
+          -30,
+          32,
+          9,
+          9
+        ],
+        [
+          24,
+          -40,
+          32,
+          7,
+          7
+        ]
+      ],
+      "sides": 6
+    },
+    {
+      "name": "leg_5_upper",
+      "type": "beam",
+      "material": "organic",
+      "group": 17,
+      "role": "leg_5_upper",
+      "start": [
+        24,
+        -35,
+        32
+      ],
+      "end": [
+        49,
+        -23,
+        39
+      ],
+      "radii": [
+        6,
+        4
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_5_shin",
+      "type": "beam",
+      "material": "organic",
+      "group": 18,
+      "role": "leg_5_shin",
+      "start": [
+        49,
+        -23,
+        39
+      ],
+      "end": [
+        61,
+        -3,
+        45
+      ],
+      "radii": [
+        4,
+        3
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_5_pad",
+      "type": "stone_block",
+      "material": "organic",
+      "group": 19,
+      "role": "foot",
+      "center": [
+        61,
+        -2,
+        42
+      ],
+      "size": [
+        9,
+        4,
+        15
+      ],
+      "bevel": 1
+    },
+    {
+      "name": "leg_5_claw_-1",
+      "type": "beam",
+      "material": "bronze",
+      "group": 19,
+      "role": "leg_5_claw_-1",
+      "start": [
+        58,
+        -2,
+        37
+      ],
+      "end": [
+        57,
+        -1,
+        32
+      ],
+      "radii": [
+        2,
+        1
+      ],
+      "sides": 4
+    },
+    {
+      "name": "leg_5_claw_1",
+      "type": "beam",
+      "material": "bronze",
+      "group": 19,
+      "role": "leg_5_claw_1",
+      "start": [
+        64,
+        -2,
+        37
+      ],
+      "end": [
+        65,
+        -1,
+        32
+      ],
+      "radii": [
+        2,
+        1
+      ],
+      "sides": 4
+    },
+    {
+      "name": "eye_right",
+      "type": "beam",
+      "material": "eye",
+      "group": 1,
+      "role": "eye_right",
+      "start": [
+        15,
+        -34,
+        -73
+      ],
+      "end": [
+        17,
+        -35,
+        -77
+      ],
+      "radii": [
+        3,
+        3
+      ],
+      "sides": 5
+    },
+    {
+      "name": "mandible_right",
+      "type": "sweep",
+      "material": "bronze",
+      "group": 22,
+      "role": "mandible",
+      "sections": [
+        [
+          14,
+          -22,
+          -73,
+          5,
+          4
+        ],
+        [
+          25,
+          -16,
+          -88,
+          4,
+          3
+        ],
+        [
+          15,
+          -15,
+          -96,
+          1,
+          1
+        ]
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "sides": 5
+    },
+    {
+      "name": "feeler_right",
+      "type": "sweep",
+      "material": "organic",
+      "group": 1,
+      "role": "feeler_right",
+      "sections": [
+        [
+          11,
+          -42,
+          -67,
+          2,
+          2
+        ],
+        [
+          23,
+          -53,
+          -79,
+          2,
+          2
+        ],
+        [
+          32,
+          -52,
+          -92,
+          1,
+          1
+        ]
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "sides": 4
+    },
+    {
+      "name": "tail",
+      "type": "sweep",
+      "material": "bronze",
+      "group": 20,
+      "role": "tail",
+      "sections": [
+        [
+          0,
+          -31,
+          55,
+          7,
+          6
+        ],
+        [
+          0,
+          -21,
+          68,
+          5,
+          4
+        ],
+        [
+          0,
+          -13,
+          75,
+          1,
+          1
+        ]
+      ],
+      "normal": [
+        1,
+        0,
+        0
+      ],
+      "sides": 6
+    }
+  ],
+  "rig": [
+    {
+      "name": "body",
+      "parent": null,
+      "origin": [
+        0,
+        -35,
+        0
+      ],
+      "groups": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ]
+    },
+    {
+      "name": "head",
+      "parent": "body",
+      "origin": [
+        0,
+        -35,
+        -43
+      ],
+      "groups": [
+        1,
+        21,
+        22
+      ]
+    },
+    {
+      "name": "leg_0_hip",
+      "parent": "body",
+      "origin": [
+        -24,
+        -35,
+        -34
+      ],
+      "groups": [
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "name": "leg_0_knee",
+      "parent": "leg_0_hip",
+      "origin": [
+        -49,
+        -23,
+        -43
+      ],
+      "groups": [
+        3,
+        4
+      ]
+    },
+    {
+      "name": "leg_0_ankle",
+      "parent": "leg_0_knee",
+      "origin": [
+        -61,
+        -3,
+        -51
+      ],
+      "groups": [
+        4
+      ]
+    },
+    {
+      "name": "leg_1_hip",
+      "parent": "body",
+      "origin": [
+        -24,
+        -35,
+        -1
+      ],
+      "groups": [
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "name": "leg_1_knee",
+      "parent": "leg_1_hip",
+      "origin": [
+        -56,
+        -23,
+        6
+      ],
+      "groups": [
+        6,
+        7
+      ]
+    },
+    {
+      "name": "leg_1_ankle",
+      "parent": "leg_1_knee",
+      "origin": [
+        -68,
+        -3,
+        12
+      ],
+      "groups": [
+        7
+      ]
+    },
+    {
+      "name": "leg_2_hip",
+      "parent": "body",
+      "origin": [
+        -24,
+        -35,
+        32
+      ],
+      "groups": [
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "name": "leg_2_knee",
+      "parent": "leg_2_hip",
+      "origin": [
+        -49,
+        -23,
+        39
+      ],
+      "groups": [
+        9,
+        10
+      ]
+    },
+    {
+      "name": "leg_2_ankle",
+      "parent": "leg_2_knee",
+      "origin": [
+        -61,
+        -3,
+        45
+      ],
+      "groups": [
+        10
+      ]
+    },
+    {
+      "name": "mandible_left",
+      "parent": "head",
+      "origin": [
+        -14,
+        -22,
+        -73
+      ],
+      "groups": [
+        21
+      ]
+    },
+    {
+      "name": "leg_3_hip",
+      "parent": "body",
+      "origin": [
+        24,
+        -35,
+        -34
+      ],
+      "groups": [
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "name": "leg_3_knee",
+      "parent": "leg_3_hip",
+      "origin": [
+        49,
+        -23,
+        -43
+      ],
+      "groups": [
+        12,
+        13
+      ]
+    },
+    {
+      "name": "leg_3_ankle",
+      "parent": "leg_3_knee",
+      "origin": [
+        61,
+        -3,
+        -51
+      ],
+      "groups": [
+        13
+      ]
+    },
+    {
+      "name": "leg_4_hip",
+      "parent": "body",
+      "origin": [
+        24,
+        -35,
+        -1
+      ],
+      "groups": [
+        14,
+        15,
+        16
+      ]
+    },
+    {
+      "name": "leg_4_knee",
+      "parent": "leg_4_hip",
+      "origin": [
+        56,
+        -23,
+        6
+      ],
+      "groups": [
+        15,
+        16
+      ]
+    },
+    {
+      "name": "leg_4_ankle",
+      "parent": "leg_4_knee",
+      "origin": [
+        68,
+        -3,
+        12
+      ],
+      "groups": [
+        16
+      ]
+    },
+    {
+      "name": "leg_5_hip",
+      "parent": "body",
+      "origin": [
+        24,
+        -35,
+        32
+      ],
+      "groups": [
+        17,
+        18,
+        19
+      ]
+    },
+    {
+      "name": "leg_5_knee",
+      "parent": "leg_5_hip",
+      "origin": [
+        49,
+        -23,
+        39
+      ],
+      "groups": [
+        18,
+        19
+      ]
+    },
+    {
+      "name": "leg_5_ankle",
+      "parent": "leg_5_knee",
+      "origin": [
+        61,
+        -3,
+        45
+      ],
+      "groups": [
+        19
+      ]
+    },
+    {
+      "name": "mandible_right",
+      "parent": "head",
+      "origin": [
+        14,
+        -22,
+        -73
+      ],
+      "groups": [
+        22
+      ]
+    },
+    {
+      "name": "tail",
+      "parent": "body",
+      "origin": [
+        0,
+        -31,
+        55
+      ],
+      "groups": [
+        20
+      ]
+    }
+  ],
+  "actions": {
+    "idle": {
+      "duration_ticks": 60,
+      "cadence_ticks": 3,
+      "loop": true,
+      "keys": [
+        {
+          "tick": 0,
+          "channels": {
+            "head": [
+              0,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 5,
+          "channels": {
+            "head": [
+              1,
+              0,
+              0
+            ],
+            "tail": [
+              1,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 10,
+          "channels": {
+            "head": [
+              2,
+              0,
+              0
+            ],
+            "tail": [
+              3,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 15,
+          "channels": {
+            "head": [
+              2,
+              0,
+              0
+            ],
+            "tail": [
+              3,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 20,
+          "channels": {
+            "head": [
+              2,
+              0,
+              0
+            ],
+            "tail": [
+              3,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 25,
+          "channels": {
+            "head": [
+              1,
+              0,
+              0
+            ],
+            "tail": [
+              1,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 30,
+          "channels": {
+            "head": [
+              0,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 35,
+          "channels": {
+            "head": [
+              -1,
+              0,
+              0
+            ],
+            "tail": [
+              -2,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 40,
+          "channels": {
+            "head": [
+              -2,
+              0,
+              0
+            ],
+            "tail": [
+              -3,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 45,
+          "channels": {
+            "head": [
+              -2,
+              0,
+              0
+            ],
+            "tail": [
+              -3,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 50,
+          "channels": {
+            "head": [
+              -2,
+              0,
+              0
+            ],
+            "tail": [
+              -3,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 55,
+          "channels": {
+            "head": [
+              -1,
+              0,
+              0
+            ],
+            "tail": [
+              -2,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 60,
+          "channels": {
+            "head": [
+              0,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "grounded": true,
+      "events": {}
+    },
+    "walk": {
+      "duration_ticks": 48,
+      "cadence_ticks": 3,
+      "loop": true,
+      "keys": [
+        {
+          "tick": 0,
+          "channels": {},
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 4,
+          "channels": {},
+          "translation": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "tick": 8,
+          "channels": {},
+          "translation": [
+            0,
+            -2,
+            0
+          ]
+        },
+        {
+          "tick": 12,
+          "channels": {},
+          "translation": [
+            0,
+            -2,
+            0
+          ]
+        },
+        {
+          "tick": 16,
+          "channels": {},
+          "translation": [
+            0,
+            -2,
+            0
+          ]
+        },
+        {
+          "tick": 20,
+          "channels": {},
+          "translation": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "tick": 24,
+          "channels": {},
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 28,
+          "channels": {},
+          "translation": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "tick": 32,
+          "channels": {},
+          "translation": [
+            0,
+            -2,
+            0
+          ]
+        },
+        {
+          "tick": 36,
+          "channels": {},
+          "translation": [
+            0,
+            -2,
+            0
+          ]
+        },
+        {
+          "tick": 40,
+          "channels": {},
+          "translation": [
+            0,
+            -2,
+            0
+          ]
+        },
+        {
+          "tick": 44,
+          "channels": {},
+          "translation": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "tick": 48,
+          "channels": {},
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "gait": {
+        "kind": "alternating_tripod",
+        "limbs": [
+          {
+            "name": "leg_0",
+            "hip": [
+              -24,
+              -35,
+              -34
+            ],
+            "knee": [
+              -49,
+              -23,
+              -43
+            ],
+            "tip": [
+              -61,
+              -3,
+              -51
+            ],
+            "components": [
+              "leg_0_pad"
+            ],
+            "phase_offset": 0,
+            "knee_axis": 2
+          },
+          {
+            "name": "leg_1",
+            "hip": [
+              -24,
+              -35,
+              -1
+            ],
+            "knee": [
+              -56,
+              -23,
+              6
+            ],
+            "tip": [
+              -68,
+              -3,
+              12
+            ],
+            "components": [
+              "leg_1_pad"
+            ],
+            "phase_offset": 0.5,
+            "knee_axis": 2
+          },
+          {
+            "name": "leg_2",
+            "hip": [
+              -24,
+              -35,
+              32
+            ],
+            "knee": [
+              -49,
+              -23,
+              39
+            ],
+            "tip": [
+              -61,
+              -3,
+              45
+            ],
+            "components": [
+              "leg_2_pad"
+            ],
+            "phase_offset": 0,
+            "knee_axis": 2
+          },
+          {
+            "name": "leg_3",
+            "hip": [
+              24,
+              -35,
+              -34
+            ],
+            "knee": [
+              49,
+              -23,
+              -43
+            ],
+            "tip": [
+              61,
+              -3,
+              -51
+            ],
+            "components": [
+              "leg_3_pad"
+            ],
+            "phase_offset": 0.5,
+            "knee_axis": 2
+          },
+          {
+            "name": "leg_4",
+            "hip": [
+              24,
+              -35,
+              -1
+            ],
+            "knee": [
+              56,
+              -23,
+              6
+            ],
+            "tip": [
+              68,
+              -3,
+              12
+            ],
+            "components": [
+              "leg_4_pad"
+            ],
+            "phase_offset": 0,
+            "knee_axis": 2
+          },
+          {
+            "name": "leg_5",
+            "hip": [
+              24,
+              -35,
+              32
+            ],
+            "knee": [
+              49,
+              -23,
+              39
+            ],
+            "tip": [
+              61,
+              -3,
+              45
+            ],
+            "components": [
+              "leg_5_pad"
+            ],
+            "phase_offset": 0.5,
+            "knee_axis": 2
+          }
+        ],
+        "stride": 30,
+        "lift": 10,
+        "stance_fraction": 0.62,
+        "crouch": 3,
+        "cycle_ticks": 48,
+        "support_surface_iterations": 2
+      },
+      "events": {}
+    },
+    "attack": {
+      "duration_ticks": 42,
+      "cadence_ticks": 3,
+      "loop": false,
+      "keys": [
+        {
+          "tick": 0,
+          "channels": {
+            "head": [
+              0,
+              0,
+              0
+            ],
+            "mandible_left": [
+              0,
+              0,
+              0
+            ],
+            "mandible_right": [
+              0,
+              0,
+              0
+            ],
+            "body": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 4,
+          "channels": {
+            "head": [
+              -2,
+              0,
+              0
+            ],
+            "mandible_left": [
+              0,
+              -4,
+              0
+            ],
+            "mandible_right": [
+              0,
+              4,
+              0
+            ],
+            "body": [
+              -1,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "tick": 7,
+          "channels": {
+            "head": [
+              -4,
+              0,
+              0
+            ],
+            "mandible_left": [
+              0,
+              -7,
+              0
+            ],
+            "mandible_right": [
+              0,
+              7,
+              0
+            ],
+            "body": [
+              -2,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            2
+          ]
+        },
+        {
+          "tick": 10,
+          "channels": {
+            "head": [
+              -4,
+              0,
+              0
+            ],
+            "mandible_left": [
+              0,
+              -10,
+              0
+            ],
+            "mandible_right": [
+              0,
+              10,
+              0
+            ],
+            "body": [
+              -3,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            3
+          ]
+        },
+        {
+          "tick": 14,
+          "channels": {
+            "head": [
+              1,
+              0,
+              0
+            ],
+            "mandible_left": [
+              0,
+              -10,
+              0
+            ],
+            "mandible_right": [
+              0,
+              10,
+              0
+            ],
+            "body": [
+              -3,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 18,
+          "channels": {
+            "head": [
+              11,
+              0,
+              0
+            ],
+            "mandible_left": [
+              0,
+              -3,
+              0
+            ],
+            "mandible_right": [
+              0,
+              3,
+              0
+            ],
+            "body": [
+              -2,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            -9
+          ]
+        },
+        {
+          "tick": 21,
+          "channels": {
+            "head": [
+              19,
+              0,
+              0
+            ],
+            "mandible_left": [
+              0,
+              5,
+              0
+            ],
+            "mandible_right": [
+              0,
+              -5,
+              0
+            ],
+            "body": [
+              -1,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            -16
+          ]
+        },
+        {
+          "tick": 24,
+          "channels": {
+            "head": [
+              11,
+              0,
+              0
+            ],
+            "mandible_left": [
+              0,
+              4,
+              0
+            ],
+            "mandible_right": [
+              0,
+              -4,
+              0
+            ],
+            "body": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            -11
+          ]
+        },
+        {
+          "tick": 28,
+          "channels": {
+            "head": [
+              3,
+              0,
+              0
+            ],
+            "mandible_left": [
+              0,
+              0,
+              0
+            ],
+            "mandible_right": [
+              0,
+              0,
+              0
+            ],
+            "body": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            -3
+          ]
+        },
+        {
+          "tick": 32,
+          "channels": {
+            "head": [
+              0,
+              0,
+              0
+            ],
+            "mandible_left": [
+              0,
+              0,
+              0
+            ],
+            "mandible_right": [
+              0,
+              0,
+              0
+            ],
+            "body": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 35,
+          "channels": {
+            "head": [
+              0,
+              0,
+              0
+            ],
+            "mandible_left": [
+              0,
+              0,
+              0
+            ],
+            "mandible_right": [
+              0,
+              0,
+              0
+            ],
+            "body": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 38,
+          "channels": {
+            "head": [
+              0,
+              0,
+              0
+            ],
+            "mandible_left": [
+              0,
+              0,
+              0
+            ],
+            "mandible_right": [
+              0,
+              0,
+              0
+            ],
+            "body": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 42,
+          "channels": {
+            "head": [
+              0,
+              0,
+              0
+            ],
+            "mandible_left": [
+              0,
+              0,
+              0
+            ],
+            "mandible_right": [
+              0,
+              0,
+              0
+            ],
+            "body": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "grounded": true,
+      "events": {
+        "anticipation": [
+          0,
+          12
+        ],
+        "execution": [
+          12,
+          22
+        ],
+        "recovery": [
+          22,
+          42
+        ]
+      }
+    },
+    "hit": {
+      "duration_ticks": 30,
+      "cadence_ticks": 3,
+      "loop": false,
+      "keys": [
+        {
+          "tick": 0,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 2,
+          "channels": {
+            "body": [
+              0,
+              0,
+              2
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "tick": 5,
+          "channels": {
+            "body": [
+              0,
+              0,
+              5
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            3
+          ]
+        },
+        {
+          "tick": 8,
+          "channels": {
+            "body": [
+              0,
+              0,
+              7
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            5
+          ]
+        },
+        {
+          "tick": 10,
+          "channels": {
+            "body": [
+              0,
+              0,
+              5
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            3
+          ]
+        },
+        {
+          "tick": 12,
+          "channels": {
+            "body": [
+              0,
+              0,
+              3
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            2
+          ]
+        },
+        {
+          "tick": 15,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 18,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 20,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 22,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 25,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 28,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 30,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "grounded": true,
+      "events": {}
+    },
+    "death": {
+      "duration_ticks": 84,
+      "cadence_ticks": 3,
+      "loop": false,
+      "keys": [
+        {
+          "tick": 0,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ],
+            "head": [
+              0,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 7,
+          "channels": {
+            "body": [
+              0,
+              0,
+              6
+            ],
+            "head": [
+              1,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              4
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              4
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              4
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              -4
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              -4
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              -4
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 14,
+          "channels": {
+            "body": [
+              0,
+              0,
+              13
+            ],
+            "head": [
+              3,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              8
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              8
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              8
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              -8
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              -8
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              -8
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 21,
+          "channels": {
+            "body": [
+              0,
+              0,
+              19
+            ],
+            "head": [
+              4,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              12
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              12
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              12
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              -12
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              -12
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              -12
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 28,
+          "channels": {
+            "body": [
+              0,
+              0,
+              26
+            ],
+            "head": [
+              6,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              16
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              16
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              16
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              -16
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              -16
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              -16
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 35,
+          "channels": {
+            "body": [
+              0,
+              0,
+              32
+            ],
+            "head": [
+              7,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              20
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              20
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              20
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              -20
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              -20
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              -20
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 42,
+          "channels": {
+            "body": [
+              0,
+              0,
+              39
+            ],
+            "head": [
+              9,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              24
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              24
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              24
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              -24
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              -24
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              -24
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 49,
+          "channels": {
+            "body": [
+              0,
+              0,
+              45
+            ],
+            "head": [
+              10,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              28
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              28
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              28
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              -28
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              -28
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              -28
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 56,
+          "channels": {
+            "body": [
+              0,
+              0,
+              52
+            ],
+            "head": [
+              11,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              31
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              31
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              31
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              -31
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              -31
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              -31
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 63,
+          "channels": {
+            "body": [
+              0,
+              0,
+              56
+            ],
+            "head": [
+              12,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              34
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              34
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              34
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              -34
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              -34
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              -34
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 70,
+          "channels": {
+            "body": [
+              0,
+              0,
+              56
+            ],
+            "head": [
+              12,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              34
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              34
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              34
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              -34
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              -34
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              -34
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 77,
+          "channels": {
+            "body": [
+              0,
+              0,
+              56
+            ],
+            "head": [
+              12,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              34
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              34
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              34
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              -34
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              -34
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              -34
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 84,
+          "channels": {
+            "body": [
+              0,
+              0,
+              56
+            ],
+            "head": [
+              12,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              34
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              34
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              34
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              -34
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              -34
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              -34
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "grounded": true,
+      "terminal_pose_hold": 90,
+      "events": {
+        "collapse": [
+          0,
+          61
+        ],
+        "final_state": [
+          61,
+          174
+        ]
+      }
+    },
+    "walk_entry": {
+      "duration_ticks": 8,
+      "cadence_ticks": 2,
+      "loop": false,
+      "keys": [],
+      "bridge_controls": {
+        "source": "idle",
+        "destination": "walk"
+      },
+      "interpolation": "LINEAR"
+    }
+  },
+  "locomotion": {
+    "kind": "alternating_tripod",
+    "limbs": [
+      {
+        "name": "leg_0",
+        "hip": [
+          -24,
+          -35,
+          -34
+        ],
+        "knee": [
+          -49,
+          -23,
+          -43
+        ],
+        "tip": [
+          -61,
+          -3,
+          -51
+        ],
+        "components": [
+          "leg_0_pad"
+        ],
+        "phase_offset": 0,
+        "knee_axis": 2
+      },
+      {
+        "name": "leg_1",
+        "hip": [
+          -24,
+          -35,
+          -1
+        ],
+        "knee": [
+          -56,
+          -23,
+          6
+        ],
+        "tip": [
+          -68,
+          -3,
+          12
+        ],
+        "components": [
+          "leg_1_pad"
+        ],
+        "phase_offset": 0.5,
+        "knee_axis": 2
+      },
+      {
+        "name": "leg_2",
+        "hip": [
+          -24,
+          -35,
+          32
+        ],
+        "knee": [
+          -49,
+          -23,
+          39
+        ],
+        "tip": [
+          -61,
+          -3,
+          45
+        ],
+        "components": [
+          "leg_2_pad"
+        ],
+        "phase_offset": 0,
+        "knee_axis": 2
+      },
+      {
+        "name": "leg_3",
+        "hip": [
+          24,
+          -35,
+          -34
+        ],
+        "knee": [
+          49,
+          -23,
+          -43
+        ],
+        "tip": [
+          61,
+          -3,
+          -51
+        ],
+        "components": [
+          "leg_3_pad"
+        ],
+        "phase_offset": 0.5,
+        "knee_axis": 2
+      },
+      {
+        "name": "leg_4",
+        "hip": [
+          24,
+          -35,
+          -1
+        ],
+        "knee": [
+          56,
+          -23,
+          6
+        ],
+        "tip": [
+          68,
+          -3,
+          12
+        ],
+        "components": [
+          "leg_4_pad"
+        ],
+        "phase_offset": 0,
+        "knee_axis": 2
+      },
+      {
+        "name": "leg_5",
+        "hip": [
+          24,
+          -35,
+          32
+        ],
+        "knee": [
+          49,
+          -23,
+          39
+        ],
+        "tip": [
+          61,
+          -3,
+          45
+        ],
+        "components": [
+          "leg_5_pad"
+        ],
+        "phase_offset": 0.5,
+        "knee_axis": 2
+      }
+    ],
+    "stride": 30,
+    "lift": 10,
+    "stance_fraction": 0.62,
+    "crouch": 3,
+    "cycle_ticks": 48,
+    "support_surface_iterations": 2
+  },
+  "authoring_schema": 2,
+  "geometry_validation": {
+    "remove_zero_area_faces": true,
+    "preserve_vertex_order": true
+  },
+  "provenance": {
+    "kind": "original_tower_asset",
+    "source_mesh_or_animation_reuse": false,
+    "brief": "A low six-legged foundry scavenger with overlapping ceramic plates, articulated feet, curved mouthparts and an actual neck transition. Alternating tripod support, readable jaw attack and a persistent collapsed corpse are authored through native classic controls.",
+    "artistic_acceptance": false,
+    "live_integration": false
+  },
+  "skeleton_base": 32056,
+  "frame_group_base": 40056
+}

@@ -1,0 +1,555 @@
+{
+  "schema": 1,
+  "name": "Lockkeeper braced buckler",
+  "unit": "native;128 units per tile",
+  "materials": {
+    "stone": {
+      "family": "stone",
+      "render_type": 0,
+      "hsl": 10282,
+      "shadow": 10272,
+      "end": 10288,
+      "edge": 10292
+    },
+    "edge": {
+      "hsl": 10262,
+      "render_type": 0
+    },
+    "stone_shadow": {
+      "hsl": 10258,
+      "render_type": 0
+    },
+    "iron": {
+      "hsl": 10299,
+      "render_type": 0
+    },
+    "iron_edge": {
+      "hsl": 10320,
+      "render_type": 0
+    },
+    "wood": {
+      "family": "wood",
+      "render_type": 0,
+      "hsl": 8600,
+      "shadow": 8479,
+      "end": 8487,
+      "edge": 8605
+    },
+    "wood_dark": {
+      "hsl": 8485,
+      "render_type": 0
+    },
+    "leather": {
+      "family": "leather",
+      "render_type": 0,
+      "hsl": 3741,
+      "shadow": 3730,
+      "end": 3747,
+      "edge": 3744
+    },
+    "skin": {
+      "hsl": 10782,
+      "render_type": 0
+    },
+    "skin_shadow": {
+      "hsl": 10772,
+      "render_type": 0
+    },
+    "cloth": {
+      "hsl": 916,
+      "render_type": 0
+    },
+    "armor": {
+      "hsl": 6955,
+      "render_type": 0
+    },
+    "armor_shadow": {
+      "hsl": 7075,
+      "render_type": 0
+    },
+    "gray_armor": {
+      "hsl": 5169,
+      "render_type": 0
+    },
+    "eye": {
+      "hsl": 127,
+      "render_type": 0
+    },
+    "brow": {
+      "hsl": 8598,
+      "render_type": 0
+    },
+    "metal": {
+      "family": "metal",
+      "render_type": 0,
+      "hsl": 33,
+      "shadow": 24,
+      "end": 41,
+      "edge": 45
+    },
+    "bronze": {
+      "family": "bronze",
+      "render_type": 0,
+      "hsl": 6687,
+      "shadow": 6678,
+      "end": 6695,
+      "edge": 6698
+    },
+    "organic": {
+      "family": "organic",
+      "render_type": 0,
+      "hsl": 6697,
+      "shadow": 6685,
+      "end": 6704,
+      "edge": 6701
+    },
+    "ceramic": {
+      "family": "ceramic",
+      "render_type": 0,
+      "hsl": 4773,
+      "shadow": 4763,
+      "end": 4781,
+      "edge": 4786
+    }
+  },
+  "components": [
+    {
+      "name": "board_0",
+      "type": "profile",
+      "material": "wood",
+      "group": 0,
+      "role": "shield_board",
+      "profile": [
+        [
+          -40.9,
+          -45.20481927710844
+        ],
+        [
+          -25.499999999999996,
+          -55.59518072289157
+        ],
+        [
+          -25.499999999999996,
+          32.52835341365463
+        ],
+        [
+          -36.52,
+          14.56
+        ],
+        [
+          -40.9,
+          -37.64819277108432
+        ]
+      ],
+      "depth": 7,
+      "variation": -2,
+      "socket": {
+        "origin": [
+          0,
+          0,
+          -1.0800000000000003
+        ]
+      }
+    },
+    {
+      "name": "board_1",
+      "type": "profile",
+      "material": "wood",
+      "group": 0,
+      "role": "shield_board",
+      "profile": [
+        [
+          -24.299999999999997,
+          -56.0
+        ],
+        [
+          -8.899999999999993,
+          -56.0
+        ],
+        [
+          -8.899999999999995,
+          51.19614457831325
+        ],
+        [
+          -16.6,
+          47.04
+        ],
+        [
+          -24.299999999999997,
+          34.48497991967872
+        ]
+      ],
+      "depth": 7,
+      "variation": 0,
+      "socket": {
+        "origin": [
+          0,
+          0,
+          -2.5200000000000005
+        ]
+      }
+    },
+    {
+      "name": "board_2",
+      "type": "profile",
+      "material": "wood",
+      "group": 0,
+      "role": "shield_board",
+      "profile": [
+        [
+          -7.699999999999996,
+          -56.0
+        ],
+        [
+          7.700000000000003,
+          -56.0
+        ],
+        [
+          7.700000000000003,
+          51.84385542168675
+        ],
+        [
+          0,
+          56.0
+        ],
+        [
+          -7.6999999999999975,
+          51.84385542168675
+        ]
+      ],
+      "depth": 7,
+      "variation": 2,
+      "socket": {
+        "origin": [
+          0,
+          0,
+          -3.0
+        ]
+      }
+    },
+    {
+      "name": "board_3",
+      "type": "profile",
+      "material": "wood",
+      "group": 0,
+      "role": "shield_board",
+      "profile": [
+        [
+          8.899999999999999,
+          -56.0
+        ],
+        [
+          24.3,
+          -56.0
+        ],
+        [
+          24.3,
+          34.484979919678715
+        ],
+        [
+          16.6,
+          47.04
+        ],
+        [
+          8.899999999999997,
+          51.19614457831325
+        ]
+      ],
+      "depth": 7,
+      "variation": -2,
+      "socket": {
+        "origin": [
+          0,
+          0,
+          -2.5200000000000005
+        ]
+      }
+    },
+    {
+      "name": "board_4",
+      "type": "profile",
+      "material": "wood",
+      "group": 0,
+      "role": "shield_board",
+      "profile": [
+        [
+          25.500000000000007,
+          -55.59518072289156
+        ],
+        [
+          40.900000000000006,
+          -45.204819277108435
+        ],
+        [
+          40.900000000000006,
+          -37.6481927710844
+        ],
+        [
+          36.52,
+          14.56
+        ],
+        [
+          25.500000000000007,
+          32.52835341365461
+        ]
+      ],
+      "depth": 7,
+      "variation": 0,
+      "socket": {
+        "origin": [
+          0,
+          0,
+          -1.0799999999999996
+        ]
+      }
+    },
+    {
+      "name": "back_batten_0",
+      "type": "box",
+      "material": "wood",
+      "group": 0,
+      "role": "back_batten_0",
+      "center": [
+        0,
+        -30.240000000000002,
+        7.5
+      ],
+      "size": [
+        68.89,
+        6,
+        5
+      ],
+      "grain_axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "back_batten_1",
+      "type": "box",
+      "material": "wood",
+      "group": 0,
+      "role": "back_batten_1",
+      "center": [
+        0,
+        11.200000000000001,
+        7.5
+      ],
+      "size": [
+        68.89,
+        6,
+        5
+      ],
+      "grain_axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "rivet_-24.9_-30.240000000000002",
+      "type": "beam",
+      "material": "metal",
+      "group": 0,
+      "role": "rivet_-24.9_-30.240000000000002",
+      "start": [
+        -24.9,
+        -30.240000000000002,
+        -7.5
+      ],
+      "end": [
+        -24.9,
+        -30.240000000000002,
+        -9.5
+      ],
+      "radii": [
+        2,
+        2
+      ],
+      "sides": 5
+    },
+    {
+      "name": "rivet_-24.9_11.200000000000001",
+      "type": "beam",
+      "material": "metal",
+      "group": 0,
+      "role": "rivet_-24.9_11.200000000000001",
+      "start": [
+        -24.9,
+        11.200000000000001,
+        -7.5
+      ],
+      "end": [
+        -24.9,
+        11.200000000000001,
+        -9.5
+      ],
+      "radii": [
+        2,
+        2
+      ],
+      "sides": 5
+    },
+    {
+      "name": "rivet_24.9_-30.240000000000002",
+      "type": "beam",
+      "material": "metal",
+      "group": 0,
+      "role": "rivet_24.9_-30.240000000000002",
+      "start": [
+        24.9,
+        -30.240000000000002,
+        -7.5
+      ],
+      "end": [
+        24.9,
+        -30.240000000000002,
+        -9.5
+      ],
+      "radii": [
+        2,
+        2
+      ],
+      "sides": 5
+    },
+    {
+      "name": "rivet_24.9_11.200000000000001",
+      "type": "beam",
+      "material": "metal",
+      "group": 0,
+      "role": "rivet_24.9_11.200000000000001",
+      "start": [
+        24.9,
+        11.200000000000001,
+        -7.5
+      ],
+      "end": [
+        24.9,
+        11.200000000000001,
+        -9.5
+      ],
+      "radii": [
+        2,
+        2
+      ],
+      "sides": 5
+    },
+    {
+      "name": "grip",
+      "type": "beam",
+      "material": "leather",
+      "group": 0,
+      "role": "grip",
+      "start": [
+        -9,
+        0,
+        12.5
+      ],
+      "end": [
+        9,
+        0,
+        12.5
+      ],
+      "radii": [
+        3,
+        3
+      ],
+      "sides": 6
+    },
+    {
+      "name": "brace_lame_0",
+      "type": "shell",
+      "material": "metal",
+      "group": 0,
+      "role": "lapped_armor",
+      "sections": [
+        [
+          0,
+          -26.0,
+          -6,
+          32.0,
+          8.0
+        ],
+        [
+          0,
+          -5.5,
+          -7,
+          30.08,
+          7.52
+        ]
+      ],
+      "thickness": 3,
+      "sides": 8,
+      "start_angle": 3.141592653589793,
+      "end_angle": 6.283185307179586,
+      "variation": 0
+    },
+    {
+      "name": "brace_lame_1",
+      "type": "shell",
+      "material": "metal",
+      "group": 0,
+      "role": "lapped_armor",
+      "sections": [
+        [
+          0,
+          -8.5,
+          -6,
+          29.759999999999998,
+          8.0
+        ],
+        [
+          0,
+          12.0,
+          -7,
+          27.974399999999996,
+          7.52
+        ]
+      ],
+      "thickness": 3,
+      "sides": 8,
+      "start_angle": 3.141592653589793,
+      "end_angle": 6.283185307179586,
+      "variation": 2
+    },
+    {
+      "name": "boss",
+      "type": "loft",
+      "material": "bronze",
+      "group": 0,
+      "role": "boss",
+      "sections": [
+        [
+          0,
+          4,
+          -10,
+          12,
+          5
+        ],
+        [
+          0,
+          -4,
+          -10,
+          14,
+          7
+        ]
+      ],
+      "sides": 8
+    }
+  ],
+  "rig": [],
+  "actions": {},
+  "authoring_schema": 2,
+  "geometry_validation": {
+    "remove_zero_area_faces": true,
+    "preserve_vertex_order": true
+  },
+  "provenance": {
+    "kind": "original_tower_asset",
+    "source_mesh_or_animation_reuse": false,
+    "brief": "Separate clipped boards, back joinery, lapped iron reinforcement and a small boss define an original lockkeeper shield.",
+    "artistic_acceptance": false,
+    "live_integration": false
+  }
+}

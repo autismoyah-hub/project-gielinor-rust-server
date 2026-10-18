@@ -1,0 +1,102 @@
+{
+  "asset": "crown-of-sluices",
+  "name": "Crown-of-Sluices",
+  "identity": {
+    "model_id": 1101568,
+    "object_id": 63468,
+    "npc_id": 60041,
+    "sequence_base": 45168,
+    "skeleton_base": 32168,
+    "frame_group_base": 40168
+  },
+  "asset_key": "mastery-original-boss:crown-of-sluices",
+  "model_sha256": "b0fd244fbb1c60415277721c123735670882f538156ebc7f05594d6835c57f7d",
+  "vertices": 850,
+  "faces": 1424,
+  "bounds": [
+    [
+      -168,
+      -237,
+      -223
+    ],
+    [
+      168,
+      0,
+      175
+    ]
+  ],
+  "actions": [
+    "idle",
+    "walk",
+    "attack",
+    "hit",
+    "death",
+    "sluice_roar",
+    "walk_entry"
+  ],
+  "original_geometry_and_choreography": true,
+  "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+  "generator": "tools/tower/asset-workbench/author_workflow.py",
+  "recipe": "assets/crown-of-sluices/recipe.json",
+  "technical_conversion": "VALIDATED",
+  "artistic_acceptance": false,
+  "gameplay_integration_tested": false,
+  "material_features": {
+    "native_face_hsl": true,
+    "textured_faces": 0,
+    "alpha_present": true,
+    "face_priorities_present": true,
+    "render_types": [
+      0,
+      1
+    ],
+    "lighting": {
+      "ambient": 64,
+      "contrast": 768
+    }
+  },
+  "action_identity_map": {
+    "attack": {
+      "sequence_id": 45168,
+      "skeleton_id": 32170,
+      "frame_group": 40170,
+      "format": "native_classic"
+    },
+    "death": {
+      "sequence_id": 45169,
+      "skeleton_id": 32172,
+      "frame_group": 40172,
+      "format": "native_classic"
+    },
+    "hit": {
+      "sequence_id": 45170,
+      "skeleton_id": 32171,
+      "frame_group": 40171,
+      "format": "native_classic"
+    },
+    "idle": {
+      "sequence_id": 45171,
+      "skeleton_id": 32168,
+      "frame_group": 40168,
+      "format": "native_classic"
+    },
+    "sluice_roar": {
+      "sequence_id": 45172,
+      "skeleton_id": 32173,
+      "frame_group": 40173,
+      "format": "native_classic"
+    },
+    "walk": {
+      "sequence_id": 45173,
+      "skeleton_id": 32169,
+      "frame_group": 40169,
+      "format": "native_classic"
+    },
+    "walk_entry": {
+      "sequence_id": 45174,
+      "skeleton_id": 32174,
+      "frame_group": 40174,
+      "format": "native_classic"
+    }
+  }
+}

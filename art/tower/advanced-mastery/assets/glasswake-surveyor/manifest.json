@@ -1,0 +1,102 @@
+{
+  "asset": "glasswake-surveyor",
+  "name": "Glasswake Surveyor",
+  "identity": {
+    "model_id": 1101569,
+    "object_id": 63469,
+    "npc_id": 60042,
+    "sequence_base": 45176,
+    "skeleton_base": 32176,
+    "frame_group_base": 40176
+  },
+  "asset_key": "mastery-original-boss:glasswake-surveyor",
+  "model_sha256": "611cd1e5138cc9517f9bc1343bec58e2e9689ea182931709709862db43b2f867",
+  "vertices": 674,
+  "faces": 1176,
+  "bounds": [
+    [
+      -46,
+      -229,
+      -26
+    ],
+    [
+      46,
+      0,
+      19
+    ]
+  ],
+  "actions": [
+    "idle",
+    "walk",
+    "attack",
+    "hit",
+    "death",
+    "sounding_sweep",
+    "walk_entry"
+  ],
+  "original_geometry_and_choreography": true,
+  "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+  "generator": "tools/tower/asset-workbench/author_workflow.py",
+  "recipe": "assets/glasswake-surveyor/recipe.json",
+  "technical_conversion": "VALIDATED",
+  "artistic_acceptance": false,
+  "gameplay_integration_tested": false,
+  "material_features": {
+    "native_face_hsl": true,
+    "textured_faces": 0,
+    "alpha_present": true,
+    "face_priorities_present": true,
+    "render_types": [
+      0,
+      1
+    ],
+    "lighting": {
+      "ambient": 64,
+      "contrast": 768
+    }
+  },
+  "action_identity_map": {
+    "attack": {
+      "sequence_id": 45176,
+      "skeleton_id": 32178,
+      "frame_group": 40178,
+      "format": "native_classic"
+    },
+    "death": {
+      "sequence_id": 45177,
+      "skeleton_id": 32180,
+      "frame_group": 40180,
+      "format": "native_classic"
+    },
+    "hit": {
+      "sequence_id": 45178,
+      "skeleton_id": 32179,
+      "frame_group": 40179,
+      "format": "native_classic"
+    },
+    "idle": {
+      "sequence_id": 45179,
+      "skeleton_id": 32176,
+      "frame_group": 40176,
+      "format": "native_classic"
+    },
+    "sounding_sweep": {
+      "sequence_id": 45180,
+      "skeleton_id": 32181,
+      "frame_group": 40181,
+      "format": "native_classic"
+    },
+    "walk": {
+      "sequence_id": 45181,
+      "skeleton_id": 32177,
+      "frame_group": 40177,
+      "format": "native_classic"
+    },
+    "walk_entry": {
+      "sequence_id": 45182,
+      "skeleton_id": 32182,
+      "frame_group": 40182,
+      "format": "native_classic"
+    }
+  }
+}

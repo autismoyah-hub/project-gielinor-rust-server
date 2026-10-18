@@ -1,0 +1,51 @@
+{
+  "asset": "ground-10",
+  "name": "Complete original Cinderworks terrain and cave shell / ground-10",
+  "identity": {
+    "model_id": 1101597,
+    "object_id": 63497,
+    "npc_id": null,
+    "sequence_base": null,
+    "skeleton_base": null,
+    "frame_group_base": null
+  },
+  "asset_key": "mastery-floor:ground-10",
+  "model_sha256": "354234e285a04af4fb26a54c11884e8bde1945f56dbaf4ac9e6177e176fefc17",
+  "vertices": 3816,
+  "faces": 6912,
+  "bounds": [
+    [
+      -36,
+      -203,
+      -3364
+    ],
+    [
+      2596,
+      23,
+      2084
+    ]
+  ],
+  "actions": [],
+  "original_geometry_and_choreography": true,
+  "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+  "generator": "tools/tower/asset-workbench/author_workflow.py",
+  "recipe": "assets/ground-10/recipe.json",
+  "technical_conversion": "VALIDATED",
+  "artistic_acceptance": false,
+  "gameplay_integration_tested": false,
+  "material_features": {
+    "native_face_hsl": true,
+    "textured_faces": 0,
+    "alpha_present": true,
+    "face_priorities_present": true,
+    "render_types": [
+      0,
+      1
+    ],
+    "lighting": {
+      "ambient": 64,
+      "contrast": 768
+    }
+  },
+  "action_identity_map": {}
+}

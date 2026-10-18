@@ -1,0 +1,50 @@
+{
+  "asset": "service-sluice",
+  "name": "Raised service sluice",
+  "identity": {
+    "model_id": 1101578,
+    "object_id": 63478,
+    "npc_id": null,
+    "sequence_base": null,
+    "skeleton_base": null,
+    "frame_group_base": null
+  },
+  "asset_key": "mastery-floor-scenery:service-sluice",
+  "model_sha256": "50c42abe860bff13acfc181566f8120a42519d6261a629904a0e87c9edba9533",
+  "vertices": 998,
+  "faces": 1832,
+  "bounds": [
+    [
+      -142,
+      -315,
+      -56
+    ],
+    [
+      181,
+      0,
+      60
+    ]
+  ],
+  "actions": [],
+  "original_geometry_and_choreography": true,
+  "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+  "generator": "tools/tower/asset-workbench/author_workflow.py",
+  "recipe": "assets/service-sluice/recipe.json",
+  "technical_conversion": "VALIDATED",
+  "artistic_acceptance": false,
+  "gameplay_integration_tested": false,
+  "material_features": {
+    "native_face_hsl": true,
+    "textured_faces": 0,
+    "alpha_present": true,
+    "face_priorities_present": true,
+    "render_types": [
+      0
+    ],
+    "lighting": {
+      "ambient": 64,
+      "contrast": 768
+    }
+  },
+  "action_identity_map": {}
+}

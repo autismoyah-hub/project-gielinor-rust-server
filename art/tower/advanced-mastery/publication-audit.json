@@ -1,0 +1,14 @@
+{
+  "original_assets": 38,
+  "verified_images": 258,
+  "original_models_match_private_owned_sources": true,
+  "no_private_reconstruction_model_hashes": true,
+  "no_absolute_workstation_paths": true,
+  "html_relative_links_exist": true,
+  "published_relative_floor_native_pixels_exact": true,
+  "cache_files": 50,
+  "cache_bytes": 453219756,
+  "cache_sha256_unchanged": true,
+  "artistic_acceptance": false,
+  "gameplay_integration_tested": false
+}

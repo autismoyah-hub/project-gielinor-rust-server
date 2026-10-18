@@ -1,0 +1,507 @@
+{
+  "schema": 1,
+  "name": "Eccentric runoff pump",
+  "unit": "native;128 units per tile",
+  "materials": {
+    "stone": {
+      "family": "stone",
+      "render_type": 0,
+      "hsl": 10282,
+      "shadow": 10272,
+      "end": 10288,
+      "edge": 10292
+    },
+    "edge": {
+      "hsl": 10262,
+      "render_type": 0
+    },
+    "stone_shadow": {
+      "hsl": 10258,
+      "render_type": 0
+    },
+    "iron": {
+      "hsl": 10299,
+      "render_type": 0
+    },
+    "iron_edge": {
+      "hsl": 10320,
+      "render_type": 0
+    },
+    "wood": {
+      "family": "wood",
+      "render_type": 0,
+      "hsl": 8600,
+      "shadow": 8479,
+      "end": 8487,
+      "edge": 8605
+    },
+    "wood_dark": {
+      "hsl": 8485,
+      "render_type": 0
+    },
+    "leather": {
+      "family": "leather",
+      "render_type": 0,
+      "hsl": 3741,
+      "shadow": 3730,
+      "end": 3747,
+      "edge": 3744
+    },
+    "skin": {
+      "hsl": 10782,
+      "render_type": 0
+    },
+    "skin_shadow": {
+      "hsl": 10772,
+      "render_type": 0
+    },
+    "cloth": {
+      "hsl": 916,
+      "render_type": 0
+    },
+    "armor": {
+      "hsl": 6955,
+      "render_type": 0
+    },
+    "armor_shadow": {
+      "hsl": 7075,
+      "render_type": 0
+    },
+    "gray_armor": {
+      "hsl": 5169,
+      "render_type": 0
+    },
+    "eye": {
+      "hsl": 127,
+      "render_type": 0
+    },
+    "brow": {
+      "hsl": 8598,
+      "render_type": 0
+    },
+    "metal": {
+      "family": "metal",
+      "render_type": 0,
+      "hsl": 33,
+      "shadow": 24,
+      "end": 41,
+      "edge": 45
+    },
+    "bronze": {
+      "family": "bronze",
+      "render_type": 0,
+      "hsl": 6687,
+      "shadow": 6678,
+      "end": 6695,
+      "edge": 6698
+    },
+    "organic": {
+      "family": "organic",
+      "render_type": 0,
+      "hsl": 6697,
+      "shadow": 6685,
+      "end": 6704,
+      "edge": 6701
+    },
+    "ceramic": {
+      "family": "ceramic",
+      "render_type": 0,
+      "hsl": 4773,
+      "shadow": 4763,
+      "end": 4781,
+      "edge": 4786
+    }
+  },
+  "components": [
+    {
+      "name": "cast_plinth",
+      "type": "section_mesh",
+      "material": "stone",
+      "group": 0,
+      "role": "cast_plinth",
+      "sections": [
+        [
+          0,
+          0,
+          0,
+          88,
+          65
+        ],
+        [
+          0,
+          -14,
+          0,
+          88,
+          65
+        ],
+        [
+          0,
+          -24,
+          0,
+          74,
+          53
+        ]
+      ],
+      "sides": 8,
+      "profiles": [
+        [
+          [
+            -1,
+            -0.65
+          ],
+          [
+            -0.63,
+            -1
+          ],
+          [
+            0.63,
+            -1
+          ],
+          [
+            1,
+            -0.65
+          ],
+          [
+            1,
+            0.6
+          ],
+          [
+            0.6,
+            1
+          ],
+          [
+            -0.6,
+            1
+          ],
+          [
+            -1,
+            0.6
+          ]
+        ],
+        [
+          [
+            -1,
+            -0.65
+          ],
+          [
+            -0.63,
+            -1
+          ],
+          [
+            0.63,
+            -1
+          ],
+          [
+            1,
+            -0.65
+          ],
+          [
+            1,
+            0.6
+          ],
+          [
+            0.6,
+            1
+          ],
+          [
+            -0.6,
+            1
+          ],
+          [
+            -1,
+            0.6
+          ]
+        ],
+        [
+          [
+            -1,
+            -0.65
+          ],
+          [
+            -0.63,
+            -1
+          ],
+          [
+            0.63,
+            -1
+          ],
+          [
+            1,
+            -0.65
+          ],
+          [
+            1,
+            0.6
+          ],
+          [
+            0.6,
+            1
+          ],
+          [
+            -0.6,
+            1
+          ],
+          [
+            -1,
+            0.6
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "pedestal_-1",
+      "type": "section_mesh",
+      "material": "metal",
+      "group": 0,
+      "role": "pedestal_-1",
+      "sections": [
+        [
+          -57,
+          -24,
+          0,
+          17,
+          30
+        ],
+        [
+          -57,
+          -95,
+          0,
+          12,
+          19
+        ],
+        [
+          -57,
+          -109,
+          0,
+          20,
+          20
+        ]
+      ],
+      "sides": 8
+    },
+    {
+      "name": "gear_-1",
+      "type": "gear",
+      "material": "bronze",
+      "group": 0,
+      "role": "cog",
+      "center": [
+        -38,
+        -108,
+        -29
+      ],
+      "radius": 34,
+      "root_radius": 28,
+      "teeth": 10,
+      "depth": 8,
+      "bore": 10
+    },
+    {
+      "name": "pedestal_1",
+      "type": "section_mesh",
+      "material": "metal",
+      "group": 0,
+      "role": "pedestal_1",
+      "sections": [
+        [
+          57,
+          -24,
+          0,
+          17,
+          30
+        ],
+        [
+          57,
+          -95,
+          0,
+          12,
+          19
+        ],
+        [
+          57,
+          -109,
+          0,
+          20,
+          20
+        ]
+      ],
+      "sides": 8
+    },
+    {
+      "name": "gear_1",
+      "type": "gear",
+      "material": "bronze",
+      "group": 0,
+      "role": "cog",
+      "center": [
+        38,
+        -108,
+        -29
+      ],
+      "radius": 26,
+      "root_radius": 21,
+      "teeth": 8,
+      "depth": 8,
+      "bore": 10
+    },
+    {
+      "name": "cross_shaft",
+      "type": "beam",
+      "material": "metal",
+      "group": 0,
+      "role": "cross_shaft",
+      "start": [
+        -78,
+        -108,
+        -29
+      ],
+      "end": [
+        78,
+        -108,
+        -29
+      ],
+      "radii": [
+        7,
+        7
+      ],
+      "sides": 8
+    },
+    {
+      "name": "riser",
+      "type": "sweep",
+      "material": "metal",
+      "group": 0,
+      "role": "riser",
+      "sections": [
+        [
+          30,
+          -26,
+          23,
+          12,
+          12
+        ],
+        [
+          30,
+          -119,
+          23,
+          12,
+          12
+        ],
+        [
+          17,
+          -141,
+          23,
+          11,
+          11
+        ],
+        [
+          -24,
+          -141,
+          23,
+          11,
+          11
+        ],
+        [
+          -43,
+          -120,
+          23,
+          9,
+          9
+        ]
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "sides": 8
+    },
+    {
+      "name": "riser_flange_-45",
+      "type": "loft",
+      "material": "bronze",
+      "group": 0,
+      "role": "riser_flange_-45",
+      "sections": [
+        [
+          30,
+          -49,
+          23,
+          17,
+          17
+        ],
+        [
+          30,
+          -41,
+          23,
+          17,
+          17
+        ]
+      ],
+      "sides": 8
+    },
+    {
+      "name": "riser_flange_-96",
+      "type": "loft",
+      "material": "bronze",
+      "group": 0,
+      "role": "riser_flange_-96",
+      "sections": [
+        [
+          30,
+          -100,
+          23,
+          17,
+          17
+        ],
+        [
+          30,
+          -92,
+          23,
+          17,
+          17
+        ]
+      ],
+      "sides": 8
+    },
+    {
+      "name": "repair_wrap",
+      "type": "shell",
+      "material": "bronze",
+      "group": 0,
+      "role": "repair_wrap",
+      "sections": [
+        [
+          30,
+          -70,
+          23,
+          14,
+          14
+        ],
+        [
+          30,
+          -56,
+          23,
+          14,
+          14
+        ]
+      ],
+      "thickness": 2,
+      "sides": 8
+    }
+  ],
+  "rig": [],
+  "actions": {},
+  "authoring_schema": 2,
+  "geometry_validation": {
+    "remove_zero_area_faces": true,
+    "preserve_vertex_order": true
+  },
+  "provenance": {
+    "kind": "original_tower_asset",
+    "source_mesh_or_animation_reuse": false,
+    "brief": "An exposed geared pump with unequal cog wheels, bearing pedestals, cast plinth, bent riser and a repaired coupling. No cache mesh reuse.",
+    "artistic_acceptance": false,
+    "live_integration": false
+  }
+}

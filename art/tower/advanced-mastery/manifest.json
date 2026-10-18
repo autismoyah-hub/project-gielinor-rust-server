@@ -1,0 +1,2278 @@
+{
+  "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+  "assets": [
+    {
+      "asset": "annealing-retort",
+      "name": "Twin-chamber annealing retort",
+      "identity": {
+        "model_id": 1101570,
+        "object_id": 63470,
+        "npc_id": null,
+        "sequence_base": null,
+        "skeleton_base": null,
+        "frame_group_base": null
+      },
+      "asset_key": "mastery-floor-scenery:annealing-retort",
+      "model_sha256": "da0535a27373e74021e3e7985e0150212d7ccaded66a7b86363afbbcc7fe20de",
+      "vertices": 828,
+      "faces": 1500,
+      "bounds": [
+        [
+          -107,
+          -278,
+          -66
+        ],
+        [
+          107,
+          -1,
+          64
+        ]
+      ],
+      "actions": [],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/annealing-retort/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          0
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {}
+    },
+    {
+      "asset": "arrival-bell",
+      "name": "Arrival bell and votive stand",
+      "identity": {
+        "model_id": 1101571,
+        "object_id": 63471,
+        "npc_id": null,
+        "sequence_base": null,
+        "skeleton_base": null,
+        "frame_group_base": null
+      },
+      "asset_key": "mastery-floor-scenery:arrival-bell",
+      "model_sha256": "e292d9dae62b2dc1deb5c8d306236aa4ecd7ed34ff30b38e0194bd7f439c014e",
+      "vertices": 262,
+      "faces": 492,
+      "bounds": [
+        [
+          -99,
+          -182,
+          -79
+        ],
+        [
+          99,
+          0,
+          79
+        ]
+      ],
+      "actions": [],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/arrival-bell/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          0
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {}
+    },
+    {
+      "asset": "ash-hook-cleaver",
+      "name": "Ash-hook cleaver",
+      "identity": {
+        "model_id": 1101537,
+        "object_id": 63437,
+        "npc_id": null,
+        "sequence_base": null,
+        "skeleton_base": null,
+        "frame_group_base": null
+      },
+      "asset_key": "mastery-original:ash-hook-cleaver",
+      "model_sha256": "943c7a721d154e31b793b77f33b5d30d95228dc1d3c79f5dd57da025b8ddbb62",
+      "vertices": 78,
+      "faces": 132,
+      "bounds": [
+        [
+          -15,
+          -128,
+          -4
+        ],
+        [
+          40,
+          1,
+          4
+        ]
+      ],
+      "actions": [],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/ash-hook-cleaver/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          0
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {}
+    },
+    {
+      "asset": "basalt-hearthbearer",
+      "name": "Basalt Hearthbearer",
+      "identity": {
+        "model_id": 1101564,
+        "object_id": 63464,
+        "npc_id": 60037,
+        "sequence_base": 45136,
+        "skeleton_base": 32136,
+        "frame_group_base": 40136
+      },
+      "asset_key": "mastery-original-boss:basalt-hearthbearer",
+      "model_sha256": "e4075a6093dd60859da994234b17974fc7147914e4b0321151ebc17eebdeaf2f",
+      "vertices": 636,
+      "faces": 1112,
+      "bounds": [
+        [
+          -85,
+          -320,
+          -42
+        ],
+        [
+          85,
+          0,
+          65
+        ]
+      ],
+      "actions": [
+        "idle",
+        "walk",
+        "attack",
+        "hit",
+        "death",
+        "furnace_pulse",
+        "walk_entry"
+      ],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/basalt-hearthbearer/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          0,
+          1
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {
+        "attack": {
+          "sequence_id": 45136,
+          "skeleton_id": 32138,
+          "frame_group": 40138,
+          "format": "native_classic"
+        },
+        "death": {
+          "sequence_id": 45137,
+          "skeleton_id": 32140,
+          "frame_group": 40140,
+          "format": "native_classic"
+        },
+        "furnace_pulse": {
+          "sequence_id": 45138,
+          "skeleton_id": 32141,
+          "frame_group": 40141,
+          "format": "native_classic"
+        },
+        "hit": {
+          "sequence_id": 45139,
+          "skeleton_id": 32139,
+          "frame_group": 40139,
+          "format": "native_classic"
+        },
+        "idle": {
+          "sequence_id": 45140,
+          "skeleton_id": 32136,
+          "frame_group": 40136,
+          "format": "native_classic"
+        },
+        "walk": {
+          "sequence_id": 45141,
+          "skeleton_id": 32137,
+          "frame_group": 40137,
+          "format": "native_classic"
+        },
+        "walk_entry": {
+          "sequence_id": 45142,
+          "skeleton_id": 32142,
+          "frame_group": 40142,
+          "format": "native_classic"
+        }
+      }
+    },
+    {
+      "asset": "bellows-harrier",
+      "name": "Bellows Harrier",
+      "identity": {
+        "model_id": 1101566,
+        "object_id": 63466,
+        "npc_id": 60039,
+        "sequence_base": 45152,
+        "skeleton_base": 32152,
+        "frame_group_base": 40152
+      },
+      "asset_key": "mastery-original-boss:bellows-harrier",
+      "model_sha256": "ebd1d6fc9b9fe78230616a8978005f5cad09111f8a92b6b6873625338ffcc408",
+      "vertices": 628,
+      "faces": 1080,
+      "bounds": [
+        [
+          -179,
+          -268,
+          -50
+        ],
+        [
+          179,
+          0,
+          23
+        ]
+      ],
+      "actions": [
+        "idle",
+        "walk",
+        "attack",
+        "hit",
+        "death",
+        "bellows_burst",
+        "walk_entry"
+      ],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/bellows-harrier/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          0,
+          1
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {
+        "attack": {
+          "sequence_id": 45152,
+          "skeleton_id": 32154,
+          "frame_group": 40154,
+          "format": "native_classic"
+        },
+        "bellows_burst": {
+          "sequence_id": 45153,
+          "skeleton_id": 32157,
+          "frame_group": 40157,
+          "format": "native_classic"
+        },
+        "death": {
+          "sequence_id": 45154,
+          "skeleton_id": 32156,
+          "frame_group": 40156,
+          "format": "native_classic"
+        },
+        "hit": {
+          "sequence_id": 45155,
+          "skeleton_id": 32155,
+          "frame_group": 40155,
+          "format": "native_classic"
+        },
+        "idle": {
+          "sequence_id": 45156,
+          "skeleton_id": 32152,
+          "frame_group": 40152,
+          "format": "native_classic"
+        },
+        "walk": {
+          "sequence_id": 45157,
+          "skeleton_id": 32153,
+          "frame_group": 40153,
+          "format": "native_classic"
+        },
+        "walk_entry": {
+          "sequence_id": 45158,
+          "skeleton_id": 32158,
+          "frame_group": 40158,
+          "format": "native_classic"
+        }
+      }
+    },
+    {
+      "asset": "broken-wall-bay",
+      "name": "Broken wall bay",
+      "identity": {
+        "model_id": 1101572,
+        "object_id": 63472,
+        "npc_id": null,
+        "sequence_base": null,
+        "skeleton_base": null,
+        "frame_group_base": null
+      },
+      "asset_key": "mastery-floor-scenery:broken-wall-bay",
+      "model_sha256": "7adae37b894575e8bcf0410b19e6f22ee147bf942416bfdf79e2ba62f15e99f8",
+      "vertices": 348,
+      "faces": 648,
+      "bounds": [
+        [
+          -140,
+          -164,
+          -30
+        ],
+        [
+          140,
+          0,
+          30
+        ]
+      ],
+      "actions": [],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/broken-wall-bay/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          0
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {}
+    },
+    {
+      "asset": "casting-crucible",
+      "name": "Cradled foundry crucible",
+      "identity": {
+        "model_id": 1101573,
+        "object_id": 63473,
+        "npc_id": null,
+        "sequence_base": null,
+        "skeleton_base": null,
+        "frame_group_base": null
+      },
+      "asset_key": "mastery-floor-scenery:casting-crucible",
+      "model_sha256": "2ad70940bf66e494636551c5888938edeb8224e012f628f7ac9d005eea12344a",
+      "vertices": 190,
+      "faces": 356,
+      "bounds": [
+        [
+          -114,
+          -121,
+          -95
+        ],
+        [
+          114,
+          0,
+          95
+        ]
+      ],
+      "actions": [],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/casting-crucible/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          0
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {}
+    },
+    {
+      "asset": "counterfort-threshold",
+      "name": "Counterfort threshold",
+      "identity": {
+        "model_id": 1101538,
+        "object_id": 63438,
+        "npc_id": null,
+        "sequence_base": null,
+        "skeleton_base": null,
+        "frame_group_base": null
+      },
+      "asset_key": "mastery-original:counterfort-threshold",
+      "model_sha256": "9e69080d93bc1144a9e5aadda801d2700bd9486630e09c774604133b7647306f",
+      "vertices": 638,
+      "faces": 1152,
+      "bounds": [
+        [
+          -127,
+          -226,
+          -52
+        ],
+        [
+          127,
+          0,
+          55
+        ]
+      ],
+      "actions": [],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/counterfort-threshold/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          0
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {}
+    },
+    {
+      "asset": "counterweight-warden",
+      "name": "Counterweight Warden",
+      "identity": {
+        "model_id": 1101565,
+        "object_id": 63465,
+        "npc_id": 60038,
+        "sequence_base": 45144,
+        "skeleton_base": 32144,
+        "frame_group_base": 40144
+      },
+      "asset_key": "mastery-original-boss:counterweight-warden",
+      "model_sha256": "29bfb6b035d14b3081c794741e0a8f3dcf331e7808c01fc1ae9a9d2345c7a5c5",
+      "vertices": 826,
+      "faces": 1494,
+      "bounds": [
+        [
+          -87,
+          -130,
+          -155
+        ],
+        [
+          87,
+          0,
+          135
+        ]
+      ],
+      "actions": [
+        "idle",
+        "walk",
+        "attack",
+        "hit",
+        "death",
+        "counterweight_drop",
+        "walk_entry"
+      ],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/counterweight-warden/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          0,
+          1
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {
+        "attack": {
+          "sequence_id": 45144,
+          "skeleton_id": 32146,
+          "frame_group": 40146,
+          "format": "native_classic"
+        },
+        "counterweight_drop": {
+          "sequence_id": 45145,
+          "skeleton_id": 32149,
+          "frame_group": 40149,
+          "format": "native_classic"
+        },
+        "death": {
+          "sequence_id": 45146,
+          "skeleton_id": 32148,
+          "frame_group": 40148,
+          "format": "native_classic"
+        },
+        "hit": {
+          "sequence_id": 45147,
+          "skeleton_id": 32147,
+          "frame_group": 40147,
+          "format": "native_classic"
+        },
+        "idle": {
+          "sequence_id": 45148,
+          "skeleton_id": 32144,
+          "frame_group": 40144,
+          "format": "native_classic"
+        },
+        "walk": {
+          "sequence_id": 45149,
+          "skeleton_id": 32145,
+          "frame_group": 40145,
+          "format": "native_classic"
+        },
+        "walk_entry": {
+          "sequence_id": 45150,
+          "skeleton_id": 32150,
+          "frame_group": 40150,
+          "format": "native_classic"
+        }
+      }
+    },
+    {
+      "asset": "crown-of-sluices",
+      "name": "Crown-of-Sluices",
+      "identity": {
+        "model_id": 1101568,
+        "object_id": 63468,
+        "npc_id": 60041,
+        "sequence_base": 45168,
+        "skeleton_base": 32168,
+        "frame_group_base": 40168
+      },
+      "asset_key": "mastery-original-boss:crown-of-sluices",
+      "model_sha256": "b0fd244fbb1c60415277721c123735670882f538156ebc7f05594d6835c57f7d",
+      "vertices": 850,
+      "faces": 1424,
+      "bounds": [
+        [
+          -168,
+          -237,
+          -223
+        ],
+        [
+          168,
+          0,
+          175
+        ]
+      ],
+      "actions": [
+        "idle",
+        "walk",
+        "attack",
+        "hit",
+        "death",
+        "sluice_roar",
+        "walk_entry"
+      ],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/crown-of-sluices/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          0,
+          1
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {
+        "attack": {
+          "sequence_id": 45168,
+          "skeleton_id": 32170,
+          "frame_group": 40170,
+          "format": "native_classic"
+        },
+        "death": {
+          "sequence_id": 45169,
+          "skeleton_id": 32172,
+          "frame_group": 40172,
+          "format": "native_classic"
+        },
+        "hit": {
+          "sequence_id": 45170,
+          "skeleton_id": 32171,
+          "frame_group": 40171,
+          "format": "native_classic"
+        },
+        "idle": {
+          "sequence_id": 45171,
+          "skeleton_id": 32168,
+          "frame_group": 40168,
+          "format": "native_classic"
+        },
+        "sluice_roar": {
+          "sequence_id": 45172,
+          "skeleton_id": 32173,
+          "frame_group": 40173,
+          "format": "native_classic"
+        },
+        "walk": {
+          "sequence_id": 45173,
+          "skeleton_id": 32169,
+          "frame_group": 40169,
+          "format": "native_classic"
+        },
+        "walk_entry": {
+          "sequence_id": 45174,
+          "skeleton_id": 32174,
+          "frame_group": 40174,
+          "format": "native_classic"
+        }
+      }
+    },
+    {
+      "asset": "eccentric-runoff-pump",
+      "name": "Eccentric runoff pump",
+      "identity": {
+        "model_id": 1101539,
+        "object_id": 63439,
+        "npc_id": null,
+        "sequence_base": null,
+        "skeleton_base": null,
+        "frame_group_base": null
+      },
+      "asset_key": "mastery-original:eccentric-runoff-pump",
+      "model_sha256": "f5dfd80fb277bdda3f6834320d1548a0a54d9b2e3f5367dd512a6b4487d36101",
+      "vertices": 486,
+      "faces": 936,
+      "bounds": [
+        [
+          -88,
+          -151,
+          -65
+        ],
+        [
+          88,
+          0,
+          65
+        ]
+      ],
+      "actions": [],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/eccentric-runoff-pump/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          0
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {}
+    },
+    {
+      "asset": "forge-bench",
+      "name": "Smithing bench with vise and stock",
+      "identity": {
+        "model_id": 1101574,
+        "object_id": 63474,
+        "npc_id": null,
+        "sequence_base": null,
+        "skeleton_base": null,
+        "frame_group_base": null
+      },
+      "asset_key": "mastery-floor-scenery:forge-bench",
+      "model_sha256": "f2d6b39e99be3f993c0eeadd9f328b5216109476e47933b54cfc964a68e0734d",
+      "vertices": 542,
+      "faces": 994,
+      "bounds": [
+        [
+          -92,
+          -121,
+          -62
+        ],
+        [
+          92,
+          0,
+          33
+        ]
+      ],
+      "actions": [],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/forge-bench/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          0
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {}
+    },
+    {
+      "asset": "glasswake-surveyor",
+      "name": "Glasswake Surveyor",
+      "identity": {
+        "model_id": 1101569,
+        "object_id": 63469,
+        "npc_id": 60042,
+        "sequence_base": 45176,
+        "skeleton_base": 32176,
+        "frame_group_base": 40176
+      },
+      "asset_key": "mastery-original-boss:glasswake-surveyor",
+      "model_sha256": "611cd1e5138cc9517f9bc1343bec58e2e9689ea182931709709862db43b2f867",
+      "vertices": 674,
+      "faces": 1176,
+      "bounds": [
+        [
+          -46,
+          -229,
+          -26
+        ],
+        [
+          46,
+          0,
+          19
+        ]
+      ],
+      "actions": [
+        "idle",
+        "walk",
+        "attack",
+        "hit",
+        "death",
+        "sounding_sweep",
+        "walk_entry"
+      ],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/glasswake-surveyor/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          0,
+          1
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {
+        "attack": {
+          "sequence_id": 45176,
+          "skeleton_id": 32178,
+          "frame_group": 40178,
+          "format": "native_classic"
+        },
+        "death": {
+          "sequence_id": 45177,
+          "skeleton_id": 32180,
+          "frame_group": 40180,
+          "format": "native_classic"
+        },
+        "hit": {
+          "sequence_id": 45178,
+          "skeleton_id": 32179,
+          "frame_group": 40179,
+          "format": "native_classic"
+        },
+        "idle": {
+          "sequence_id": 45179,
+          "skeleton_id": 32176,
+          "frame_group": 40176,
+          "format": "native_classic"
+        },
+        "sounding_sweep": {
+          "sequence_id": 45180,
+          "skeleton_id": 32181,
+          "frame_group": 40181,
+          "format": "native_classic"
+        },
+        "walk": {
+          "sequence_id": 45181,
+          "skeleton_id": 32177,
+          "frame_group": 40177,
+          "format": "native_classic"
+        },
+        "walk_entry": {
+          "sequence_id": 45182,
+          "skeleton_id": 32182,
+          "frame_group": 40182,
+          "format": "native_classic"
+        }
+      }
+    },
+    {
+      "asset": "ground-00",
+      "name": "Complete original Cinderworks terrain and cave shell / ground-00",
+      "identity": {
+        "model_id": 1101582,
+        "object_id": 63482,
+        "npc_id": null,
+        "sequence_base": null,
+        "skeleton_base": null,
+        "frame_group_base": null
+      },
+      "asset_key": "mastery-floor:ground-00",
+      "model_sha256": "1ab64b36c66dcf821537421292ba920145cace3c5572c8576b1c6562e623d2d0",
+      "vertices": 1440,
+      "faces": 2160,
+      "bounds": [
+        [
+          -3071,
+          0,
+          -1664
+        ],
+        [
+          -1792,
+          184,
+          3071
+        ]
+      ],
+      "actions": [],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/ground-00/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          1
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {}
+    },
+    {
+      "asset": "ground-01",
+      "name": "Complete original Cinderworks terrain and cave shell / ground-01",
+      "identity": {
+        "model_id": 1101583,
+        "object_id": 63483,
+        "npc_id": null,
+        "sequence_base": null,
+        "skeleton_base": null,
+        "frame_group_base": null
+      },
+      "asset_key": "mastery-floor:ground-01",
+      "model_sha256": "2dbdaaf75ce458cc984fe2203030fe4893becc307350879afef20a56a9332ed0",
+      "vertices": 1440,
+      "faces": 2160,
+      "bounds": [
+        [
+          -1919,
+          0,
+          -1664
+        ],
+        [
+          -1152,
+          184,
+          3199
+        ]
+      ],
+      "actions": [],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/ground-01/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          1
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {}
+    },
+    {
+      "asset": "ground-02",
+      "name": "Complete original Cinderworks terrain and cave shell / ground-02",
+      "identity": {
+        "model_id": 1101584,
+        "object_id": 63484,
+        "npc_id": null,
+        "sequence_base": null,
+        "skeleton_base": null,
+        "frame_group_base": null
+      },
+      "asset_key": "mastery-floor:ground-02",
+      "model_sha256": "b60b6c05ce2e021b8a9439ffd0110c97f0d6fac42c2d5d3294a7ab48abf80810",
+      "vertices": 1440,
+      "faces": 2160,
+      "bounds": [
+        [
+          -1279,
+          0,
+          -1536
+        ],
+        [
+          0,
+          184,
+          2815
+        ]
+      ],
+      "actions": [],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/ground-02/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          1
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {}
+    },
+    {
+      "asset": "ground-03",
+      "name": "Complete original Cinderworks terrain and cave shell / ground-03",
+      "identity": {
+        "model_id": 1101585,
+        "object_id": 63485,
+        "npc_id": null,
+        "sequence_base": null,
+        "skeleton_base": null,
+        "frame_group_base": null
+      },
+      "asset_key": "mastery-floor:ground-03",
+      "model_sha256": "46405d364f6e37210fe2268bf151845c607b79ee3627ff355af0a3d92d89cc0c",
+      "vertices": 1440,
+      "faces": 2160,
+      "bounds": [
+        [
+          -128,
+          -10,
+          -2687
+        ],
+        [
+          640,
+          184,
+          2047
+        ]
+      ],
+      "actions": [],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/ground-03/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          0,
+          1
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {}
+    },
+    {
+      "asset": "ground-04",
+      "name": "Complete original Cinderworks terrain and cave shell / ground-04",
+      "identity": {
+        "model_id": 1101586,
+        "object_id": 63486,
+        "npc_id": null,
+        "sequence_base": null,
+        "skeleton_base": null,
+        "frame_group_base": null
+      },
+      "asset_key": "mastery-floor:ground-04",
+      "model_sha256": "0027cc0a938b9cac1d6493f9b2ddd56eac9efdd9a420eb60bdcddd2a41d30369",
+      "vertices": 1440,
+      "faces": 2160,
+      "bounds": [
+        [
+          512,
+          -10,
+          -3199
+        ],
+        [
+          1279,
+          184,
+          2047
+        ]
+      ],
+      "actions": [],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/ground-04/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          0,
+          1
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {}
+    },
+    {
+      "asset": "ground-05",
+      "name": "Complete original Cinderworks terrain and cave shell / ground-05",
+      "identity": {
+        "model_id": 1101587,
+        "object_id": 63487,
+        "npc_id": null,
+        "sequence_base": null,
+        "skeleton_base": null,
+        "frame_group_base": null
+      },
+      "asset_key": "mastery-floor:ground-05",
+      "model_sha256": "8bdf18823336a7b2b1dc84986b8a5145b1e32025fc0a5f56c5d5d645be42b2de",
+      "vertices": 1440,
+      "faces": 2160,
+      "bounds": [
+        [
+          -3328,
+          0,
+          -3327
+        ],
+        [
+          2559,
+          184,
+          3200
+        ]
+      ],
+      "actions": [],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/ground-05/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          1
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {}
+    },
+    {
+      "asset": "ground-06",
+      "name": "Complete original Cinderworks terrain and cave shell / ground-06",
+      "identity": {
+        "model_id": 1101588,
+        "object_id": 63488,
+        "npc_id": null,
+        "sequence_base": null,
+        "skeleton_base": null,
+        "frame_group_base": null
+      },
+      "asset_key": "mastery-floor:ground-06",
+      "model_sha256": "7e0084bef816a5dcef040fb83310241b4aae30a2e02343614270c52b8beb9442",
+      "vertices": 1440,
+      "faces": 2160,
+      "bounds": [
+        [
+          -2816,
+          24,
+          -1920
+        ],
+        [
+          -768,
+          184,
+          3456
+        ]
+      ],
+      "actions": [],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/ground-06/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          1
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {}
+    },
+    {
+      "asset": "ground-07",
+      "name": "Complete original Cinderworks terrain and cave shell / ground-07",
+      "identity": {
+        "model_id": 1101589,
+        "object_id": 63489,
+        "npc_id": null,
+        "sequence_base": null,
+        "skeleton_base": null,
+        "frame_group_base": null
+      },
+      "asset_key": "mastery-floor:ground-07",
+      "model_sha256": "7c3630fa352e3500d26f528e098bf51e8fe411f05b889c3b45146d3a3e522b30",
+      "vertices": 1440,
+      "faces": 2160,
+      "bounds": [
+        [
+          -896,
+          24,
+          -3200
+        ],
+        [
+          640,
+          184,
+          2944
+        ]
+      ],
+      "actions": [],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/ground-07/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          1
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {}
+    },
+    {
+      "asset": "ground-08",
+      "name": "Complete original Cinderworks terrain and cave shell / ground-08",
+      "identity": {
+        "model_id": 1101595,
+        "object_id": 63495,
+        "npc_id": null,
+        "sequence_base": null,
+        "skeleton_base": null,
+        "frame_group_base": null
+      },
+      "asset_key": "mastery-floor:ground-08",
+      "model_sha256": "72b139d1a8aa54661511cecc32e31f534dd260e5bc4d1d0eadd80b3f2ac6987c",
+      "vertices": 1440,
+      "faces": 2160,
+      "bounds": [
+        [
+          512,
+          24,
+          -3584
+        ],
+        [
+          2688,
+          184,
+          2304
+        ]
+      ],
+      "actions": [],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/ground-08/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          1
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {}
+    },
+    {
+      "asset": "ground-09",
+      "name": "Complete original Cinderworks terrain and cave shell / ground-09",
+      "identity": {
+        "model_id": 1101596,
+        "object_id": 63496,
+        "npc_id": null,
+        "sequence_base": null,
+        "skeleton_base": null,
+        "frame_group_base": null
+      },
+      "asset_key": "mastery-floor:ground-09",
+      "model_sha256": "a2e3375e032180b2f951707d4e9386661e9bc63d420fdfabf04a938dce5f5214",
+      "vertices": 2646,
+      "faces": 4572,
+      "bounds": [
+        [
+          -3108,
+          -203,
+          -2304
+        ],
+        [
+          2816,
+          184,
+          3236
+        ]
+      ],
+      "actions": [],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/ground-09/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          0,
+          1
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {}
+    },
+    {
+      "asset": "ground-10",
+      "name": "Complete original Cinderworks terrain and cave shell / ground-10",
+      "identity": {
+        "model_id": 1101597,
+        "object_id": 63497,
+        "npc_id": null,
+        "sequence_base": null,
+        "skeleton_base": null,
+        "frame_group_base": null
+      },
+      "asset_key": "mastery-floor:ground-10",
+      "model_sha256": "354234e285a04af4fb26a54c11884e8bde1945f56dbaf4ac9e6177e176fefc17",
+      "vertices": 3816,
+      "faces": 6912,
+      "bounds": [
+        [
+          -36,
+          -203,
+          -3364
+        ],
+        [
+          2596,
+          23,
+          2084
+        ]
+      ],
+      "actions": [],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/ground-10/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          0,
+          1
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {}
+    },
+    {
+      "asset": "ground-11",
+      "name": "Complete original Cinderworks terrain and cave shell / ground-11",
+      "identity": {
+        "model_id": 1101598,
+        "object_id": 63498,
+        "npc_id": null,
+        "sequence_base": null,
+        "skeleton_base": null,
+        "frame_group_base": null
+      },
+      "asset_key": "mastery-floor:ground-11",
+      "model_sha256": "735324de6be903bfb793a663e04b6216207b12deaf265cabb85b03aae9f9aa5e",
+      "vertices": 2228,
+      "faces": 3828,
+      "bounds": [
+        [
+          -3015,
+          -349,
+          -3038
+        ],
+        [
+          2596,
+          23,
+          2950
+        ]
+      ],
+      "actions": [],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/ground-11/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          0,
+          1
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {}
+    },
+    {
+      "asset": "kilnback-rummager",
+      "name": "Kilnback rummager \u00b7 articulated revision",
+      "identity": {
+        "model_id": 1101527,
+        "object_id": 63427,
+        "npc_id": 60027,
+        "sequence_base": 45056,
+        "skeleton_base": 32056,
+        "frame_group_base": 40056
+      },
+      "asset_key": "production-original:kilnback-rummager",
+      "model_sha256": "19325d979e89a1a1df555eb3332bca5b37614efdb36a54366b8d04741b3d0a6e",
+      "vertices": 760,
+      "faces": 1264,
+      "bounds": [
+        [
+          -73,
+          -76,
+          -97
+        ],
+        [
+          73,
+          0,
+          76
+        ]
+      ],
+      "actions": [
+        "idle",
+        "walk",
+        "attack",
+        "hit",
+        "death",
+        "walk_entry"
+      ],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/kilnback-rummager/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          0,
+          1
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {
+        "attack": {
+          "sequence_id": 45056,
+          "skeleton_id": 32058,
+          "frame_group": 40058,
+          "format": "native_classic"
+        },
+        "death": {
+          "sequence_id": 45057,
+          "skeleton_id": 32060,
+          "frame_group": 40060,
+          "format": "native_classic"
+        },
+        "hit": {
+          "sequence_id": 45058,
+          "skeleton_id": 32059,
+          "frame_group": 40059,
+          "format": "native_classic"
+        },
+        "idle": {
+          "sequence_id": 45059,
+          "skeleton_id": 32056,
+          "frame_group": 40056,
+          "format": "native_classic"
+        },
+        "walk": {
+          "sequence_id": 45060,
+          "skeleton_id": 32057,
+          "frame_group": 40057,
+          "format": "native_classic"
+        },
+        "walk_entry": {
+          "sequence_id": 45061,
+          "skeleton_id": 32061,
+          "frame_group": 40061,
+          "format": "native_classic"
+        }
+      }
+    },
+    {
+      "asset": "lockkeeper-shield",
+      "name": "Lockkeeper braced buckler",
+      "identity": {
+        "model_id": 1101540,
+        "object_id": 63440,
+        "npc_id": null,
+        "sequence_base": null,
+        "skeleton_base": null,
+        "frame_group_base": null
+      },
+      "asset_key": "mastery-original:lockkeeper-shield",
+      "model_sha256": "6b4bbe631dcf3b86ff36bb6199382ff0ea29643b45745bfac6dc435effcffb09",
+      "vertices": 206,
+      "faces": 352,
+      "bounds": [
+        [
+          -41,
+          -56,
+          -17
+        ],
+        [
+          41,
+          56,
+          15
+        ]
+      ],
+      "actions": [],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/lockkeeper-shield/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          0
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {}
+    },
+    {
+      "asset": "ore-cart",
+      "name": "Ore tub on flanged wheels",
+      "identity": {
+        "model_id": 1101575,
+        "object_id": 63475,
+        "npc_id": null,
+        "sequence_base": null,
+        "skeleton_base": null,
+        "frame_group_base": null
+      },
+      "asset_key": "mastery-floor-scenery:ore-cart",
+      "model_sha256": "634ebc3de3091e4dd7f86efe32109d6fa68f5a2c6f177aef93d7f1cbafff0fac",
+      "vertices": 580,
+      "faces": 992,
+      "bounds": [
+        [
+          -72,
+          -96,
+          -49
+        ],
+        [
+          69,
+          1,
+          49
+        ]
+      ],
+      "actions": [],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/ore-cart/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          0
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {}
+    },
+    {
+      "asset": "quarry-outcrop",
+      "name": "Fractured quarry outcrop",
+      "identity": {
+        "model_id": 1101576,
+        "object_id": 63476,
+        "npc_id": null,
+        "sequence_base": null,
+        "skeleton_base": null,
+        "frame_group_base": null
+      },
+      "asset_key": "mastery-floor-scenery:quarry-outcrop",
+      "model_sha256": "60faf4f310f16def8c04a8e32df6ac667b6b31a2e597b68e614d271997a19474",
+      "vertices": 80,
+      "faces": 144,
+      "bounds": [
+        [
+          -73,
+          -55,
+          -50
+        ],
+        [
+          71,
+          4,
+          45
+        ]
+      ],
+      "actions": [],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/quarry-outcrop/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          0
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {}
+    },
+    {
+      "asset": "rest-bench",
+      "name": "Bellkeeper resting bench",
+      "identity": {
+        "model_id": 1101591,
+        "object_id": 63491,
+        "npc_id": null,
+        "sequence_base": null,
+        "skeleton_base": null,
+        "frame_group_base": null
+      },
+      "asset_key": "mastery-floor-scenery:rest-bench",
+      "model_sha256": "3b2d5b7f5e3e2150e1b54ab141e70670d2bfb5d0f31544447108f5a78cc7894d",
+      "vertices": 384,
+      "faces": 712,
+      "bounds": [
+        [
+          -74,
+          -78,
+          -24
+        ],
+        [
+          74,
+          0,
+          24
+        ]
+      ],
+      "actions": [],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/rest-bench/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          0
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {}
+    },
+    {
+      "asset": "service-lantern",
+      "name": "Crooked service lantern",
+      "identity": {
+        "model_id": 1101577,
+        "object_id": 63477,
+        "npc_id": null,
+        "sequence_base": null,
+        "skeleton_base": null,
+        "frame_group_base": null
+      },
+      "asset_key": "mastery-floor-scenery:service-lantern",
+      "model_sha256": "45f34982c2fc5668bd77ff1d26f8e6713eb817480be5f6ade14c265948d3ded3",
+      "vertices": 132,
+      "faces": 224,
+      "bounds": [
+        [
+          -18,
+          -182,
+          -18
+        ],
+        [
+          49,
+          0,
+          18
+        ]
+      ],
+      "actions": [],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/service-lantern/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          0
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {}
+    },
+    {
+      "asset": "service-sluice",
+      "name": "Raised service sluice",
+      "identity": {
+        "model_id": 1101578,
+        "object_id": 63478,
+        "npc_id": null,
+        "sequence_base": null,
+        "skeleton_base": null,
+        "frame_group_base": null
+      },
+      "asset_key": "mastery-floor-scenery:service-sluice",
+      "model_sha256": "50c42abe860bff13acfc181566f8120a42519d6261a629904a0e87c9edba9533",
+      "vertices": 998,
+      "faces": 1832,
+      "bounds": [
+        [
+          -142,
+          -315,
+          -56
+        ],
+        [
+          181,
+          0,
+          60
+        ]
+      ],
+      "actions": [],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/service-sluice/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          0
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {}
+    },
+    {
+      "asset": "siltcoil-matriarch",
+      "name": "Siltcoil Matriarch",
+      "identity": {
+        "model_id": 1101567,
+        "object_id": 63467,
+        "npc_id": 60040,
+        "sequence_base": 45160,
+        "skeleton_base": 32160,
+        "frame_group_base": 40160
+      },
+      "asset_key": "mastery-original-boss:siltcoil-matriarch",
+      "model_sha256": "226d1277ad4dc3875b5bc2dda091c6e609edf67df8b80e975216624cb7acf953",
+      "vertices": 742,
+      "faces": 1352,
+      "bounds": [
+        [
+          -74,
+          -80,
+          -215
+        ],
+        [
+          74,
+          0,
+          220
+        ]
+      ],
+      "actions": [
+        "idle",
+        "walk",
+        "attack",
+        "hit",
+        "death",
+        "sieve_breach",
+        "walk_entry"
+      ],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/siltcoil-matriarch/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          0
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {
+        "attack": {
+          "sequence_id": 45160,
+          "skeleton_id": 32162,
+          "frame_group": 40162,
+          "format": "native_classic"
+        },
+        "death": {
+          "sequence_id": 45161,
+          "skeleton_id": 32164,
+          "frame_group": 40164,
+          "format": "native_classic"
+        },
+        "hit": {
+          "sequence_id": 45162,
+          "skeleton_id": 32163,
+          "frame_group": 40163,
+          "format": "native_classic"
+        },
+        "idle": {
+          "sequence_id": 45163,
+          "skeleton_id": 32160,
+          "frame_group": 40160,
+          "format": "native_classic"
+        },
+        "sieve_breach": {
+          "sequence_id": 45164,
+          "skeleton_id": 32165,
+          "frame_group": 40165,
+          "format": "native_classic"
+        },
+        "walk": {
+          "sequence_id": 45165,
+          "skeleton_id": 32161,
+          "frame_group": 40161,
+          "format": "native_classic"
+        },
+        "walk_entry": {
+          "sequence_id": 45166,
+          "skeleton_id": 32166,
+          "frame_group": 40166,
+          "format": "native_classic"
+        }
+      }
+    },
+    {
+      "asset": "stock-rack",
+      "name": "Bar-stock service rack",
+      "identity": {
+        "model_id": 1101592,
+        "object_id": 63492,
+        "npc_id": null,
+        "sequence_base": null,
+        "skeleton_base": null,
+        "frame_group_base": null
+      },
+      "asset_key": "mastery-floor-scenery:stock-rack",
+      "model_sha256": "efda01fec195f06785c562ce17149a0fa40ff94103bba6862a39379f0e273ec3",
+      "vertices": 224,
+      "faces": 390,
+      "bounds": [
+        [
+          -78,
+          -162,
+          -28
+        ],
+        [
+          78,
+          0,
+          28
+        ]
+      ],
+      "actions": [],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/stock-rack/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          0
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {}
+    },
+    {
+      "asset": "supply-barrel",
+      "name": "Coopered workshop supply barrel",
+      "identity": {
+        "model_id": 1101593,
+        "object_id": 63493,
+        "npc_id": null,
+        "sequence_base": null,
+        "skeleton_base": null,
+        "frame_group_base": null
+      },
+      "asset_key": "mastery-floor-scenery:supply-barrel",
+      "model_sha256": "cedb39b6344def6d596d8ee36579b5f5a6cafecb31eea87ac79d7fec0c159fe3",
+      "vertices": 420,
+      "faces": 776,
+      "bounds": [
+        [
+          -34,
+          -88,
+          -37
+        ],
+        [
+          34,
+          0,
+          32
+        ]
+      ],
+      "actions": [],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/supply-barrel/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          0
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {}
+    },
+    {
+      "asset": "wall-bay",
+      "name": "Bonded industrial wall bay",
+      "identity": {
+        "model_id": 1101579,
+        "object_id": 63479,
+        "npc_id": null,
+        "sequence_base": null,
+        "skeleton_base": null,
+        "frame_group_base": null
+      },
+      "asset_key": "mastery-floor-scenery:wall-bay",
+      "model_sha256": "99f87ada5bf8b21379d495089b8a4b8fbacbff629110c08373dfec764fd95406",
+      "vertices": 412,
+      "faces": 768,
+      "bounds": [
+        [
+          -140,
+          -188,
+          -30
+        ],
+        [
+          140,
+          0,
+          30
+        ]
+      ],
+      "actions": [],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/wall-bay/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          0
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {}
+    },
+    {
+      "asset": "worker-figure",
+      "name": "Original apron-clad Cinderworks worker",
+      "identity": {
+        "model_id": 1101580,
+        "object_id": 63480,
+        "npc_id": 60043,
+        "sequence_base": 45184,
+        "skeleton_base": 32184,
+        "frame_group_base": 40184
+      },
+      "asset_key": "mastery-floor-scenery:worker-figure",
+      "model_sha256": "c1b86a31ccb2c14b437b0279766de55bd528ce3ea0074b5e0634c234442fb438",
+      "vertices": 518,
+      "faces": 906,
+      "bounds": [
+        [
+          -42,
+          -189,
+          -22
+        ],
+        [
+          42,
+          0,
+          16
+        ]
+      ],
+      "actions": [
+        "idle"
+      ],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/worker-figure/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          0,
+          1
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {
+        "idle": {
+          "sequence_id": 45184,
+          "skeleton_id": 32184,
+          "frame_group": 40184,
+          "format": "native_classic"
+        }
+      }
+    },
+    {
+      "asset": "worker-threshold",
+      "name": "Counterfort threshold",
+      "identity": {
+        "model_id": 1101594,
+        "object_id": 63494,
+        "npc_id": null,
+        "sequence_base": null,
+        "skeleton_base": null,
+        "frame_group_base": null
+      },
+      "asset_key": "mastery-floor-scenery:worker-threshold",
+      "model_sha256": "bd0c1d6d0bea58e4a6f705e7194204c75cc07818ab7d9a567e113aed3b456a29",
+      "vertices": 638,
+      "faces": 1152,
+      "bounds": [
+        [
+          -142,
+          -270,
+          -56
+        ],
+        [
+          142,
+          0,
+          60
+        ]
+      ],
+      "actions": [],
+      "original_geometry_and_choreography": true,
+      "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+      "generator": "tools/tower/asset-workbench/author_workflow.py",
+      "recipe": "assets/worker-threshold/recipe.json",
+      "technical_conversion": "VALIDATED",
+      "artistic_acceptance": false,
+      "gameplay_integration_tested": false,
+      "material_features": {
+        "native_face_hsl": true,
+        "textured_faces": 0,
+        "alpha_present": true,
+        "face_priorities_present": true,
+        "render_types": [
+          0
+        ],
+        "lighting": {
+          "ambient": 64,
+          "contrast": 768
+        }
+      },
+      "action_identity_map": {}
+    }
+  ],
+  "cache_resources_included": false,
+  "artistic_acceptance": false
+}

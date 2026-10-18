@@ -1,0 +1,2853 @@
+{
+  "schema": 1,
+  "name": "Counterweight Warden",
+  "unit": "native;128 units per tile",
+  "materials": {
+    "stone": {
+      "family": "stone",
+      "render_type": 0,
+      "hsl": 10282,
+      "shadow": 10272,
+      "end": 10288,
+      "edge": 10292
+    },
+    "edge": {
+      "hsl": 10262,
+      "render_type": 0
+    },
+    "stone_shadow": {
+      "hsl": 10258,
+      "render_type": 0
+    },
+    "iron": {
+      "hsl": 10299,
+      "render_type": 0
+    },
+    "iron_edge": {
+      "hsl": 10320,
+      "render_type": 0
+    },
+    "wood": {
+      "family": "wood",
+      "render_type": 0,
+      "hsl": 8600,
+      "shadow": 8479,
+      "end": 8487,
+      "edge": 8605
+    },
+    "wood_dark": {
+      "hsl": 8485,
+      "render_type": 0
+    },
+    "leather": {
+      "family": "leather",
+      "render_type": 0,
+      "hsl": 3741,
+      "shadow": 3730,
+      "end": 3747,
+      "edge": 3744
+    },
+    "skin": {
+      "hsl": 10782,
+      "render_type": 0
+    },
+    "skin_shadow": {
+      "hsl": 10772,
+      "render_type": 0
+    },
+    "cloth": {
+      "hsl": 916,
+      "render_type": 0
+    },
+    "armor": {
+      "hsl": 6955,
+      "render_type": 0
+    },
+    "armor_shadow": {
+      "hsl": 7075,
+      "render_type": 0
+    },
+    "gray_armor": {
+      "hsl": 5169,
+      "render_type": 0
+    },
+    "eye": {
+      "hsl": 8,
+      "render_type": 1
+    },
+    "brow": {
+      "hsl": 8598,
+      "render_type": 0
+    },
+    "metal": {
+      "family": "metal",
+      "render_type": 0,
+      "hsl": 33,
+      "shadow": 24,
+      "end": 41,
+      "edge": 45
+    },
+    "bronze": {
+      "family": "bronze",
+      "render_type": 0,
+      "hsl": 6687,
+      "shadow": 6678,
+      "end": 6695,
+      "edge": 6698
+    },
+    "organic": {
+      "family": "organic",
+      "render_type": 0,
+      "hsl": 10273,
+      "shadow": 10259,
+      "end": 10279,
+      "edge": 10276
+    },
+    "ceramic": {
+      "family": "ceramic",
+      "render_type": 0,
+      "hsl": 4773,
+      "shadow": 4763,
+      "end": 4781,
+      "edge": 4786
+    },
+    "keratin": {
+      "family": "organic",
+      "render_type": 0,
+      "hsl": 25,
+      "shadow": 16,
+      "end": 33,
+      "edge": 35,
+      "subtype": "keratin"
+    }
+  },
+  "components": [
+    {
+      "name": "torso",
+      "type": "sweep",
+      "material": "organic",
+      "group": 0,
+      "role": "torso",
+      "sections": [
+        [
+          0,
+          -45.44,
+          -82.25,
+          40.300000000000004,
+          28.400000000000002
+        ],
+        [
+          0,
+          -48.28,
+          -47.0,
+          68.2,
+          38.34
+        ],
+        [
+          0,
+          -53.96,
+          28.2,
+          66.65,
+          41.18
+        ],
+        [
+          0,
+          -61.06,
+          82.25,
+          49.6,
+          34.08
+        ]
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "sides": 8
+    },
+    {
+      "name": "neck",
+      "type": "sweep",
+      "material": "organic",
+      "group": 1,
+      "role": "neck",
+      "sections": [
+        [
+          0,
+          -56.800000000000004,
+          -58.75,
+          43.400000000000006,
+          31.24
+        ],
+        [
+          0,
+          -82.36,
+          -84.6,
+          38.75,
+          28.400000000000002
+        ],
+        [
+          0,
+          -92.3,
+          -101.05,
+          34.1,
+          25.56
+        ]
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "sides": 6
+    },
+    {
+      "name": "skull",
+      "type": "sweep",
+      "material": "organic",
+      "group": 1,
+      "role": "head",
+      "sections": [
+        [
+          0,
+          -96.56,
+          -86.95,
+          35.65,
+          28.400000000000002
+        ],
+        [
+          0,
+          -99.39999999999999,
+          -112.8,
+          41.85,
+          26.98
+        ],
+        [
+          0,
+          -92.3,
+          -124.55000000000001,
+          29.45,
+          19.880000000000003
+        ]
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "sides": 6
+    },
+    {
+      "name": "muzzle",
+      "type": "sweep",
+      "material": "organic",
+      "group": 1,
+      "role": "muzzle",
+      "sections": [
+        [
+          0,
+          -86.62,
+          -115.14999999999999,
+          31.0,
+          14.200000000000001
+        ],
+        [
+          0,
+          -82.36,
+          -150.4,
+          20.150000000000002,
+          11.36
+        ]
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "sides": 5
+    },
+    {
+      "name": "nose",
+      "type": "stone_block",
+      "material": "keratin",
+      "group": 1,
+      "role": "nose",
+      "center": [
+        0,
+        -82.36,
+        -152.75
+      ],
+      "size": [
+        35.65,
+        12.78,
+        5
+      ],
+      "bevel": 1
+    },
+    {
+      "name": "lower_jaw",
+      "type": "beam",
+      "material": "organic",
+      "group": 1,
+      "role": "lower_jaw",
+      "start": [
+        0,
+        -73.84,
+        -112.8
+      ],
+      "end": [
+        0,
+        -69.58,
+        -148.05
+      ],
+      "radii": [
+        18.599999999999998,
+        13.95
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_0_upper",
+      "type": "beam",
+      "material": "organic",
+      "group": 2,
+      "role": "leg_0_upper",
+      "start": [
+        -44.949999999999996,
+        -66.74,
+        -56.4
+      ],
+      "end": [
+        -52.7,
+        -34.08,
+        -65.8
+      ],
+      "radii": [
+        27.9,
+        13.95
+      ],
+      "sides": 6
+    },
+    {
+      "name": "leg_0_shin",
+      "type": "beam",
+      "material": "organic",
+      "group": 3,
+      "role": "leg_0_shin",
+      "start": [
+        -52.7,
+        -34.08,
+        -65.8
+      ],
+      "end": [
+        -54.25,
+        -7,
+        -56.4
+      ],
+      "radii": [
+        13.95,
+        8.525
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_0_paw",
+      "type": "stone_block",
+      "material": "organic",
+      "group": 4,
+      "role": "foot",
+      "center": [
+        -54.25,
+        -4,
+        -62.4
+      ],
+      "size": [
+        35.65,
+        8,
+        28.2
+      ],
+      "bevel": 2
+    },
+    {
+      "name": "leg_0_claw_-1",
+      "type": "beam",
+      "material": "keratin",
+      "group": 4,
+      "role": "leg_0_claw_-1",
+      "start": [
+        -62.0,
+        -2,
+        -72.85
+      ],
+      "end": [
+        -62.0,
+        -1,
+        -79.9
+      ],
+      "radii": [
+        2,
+        1
+      ],
+      "sides": 4
+    },
+    {
+      "name": "leg_0_claw_0",
+      "type": "beam",
+      "material": "keratin",
+      "group": 4,
+      "role": "leg_0_claw_0",
+      "start": [
+        -54.25,
+        -2,
+        -72.85
+      ],
+      "end": [
+        -54.25,
+        -1,
+        -79.9
+      ],
+      "radii": [
+        2,
+        1
+      ],
+      "sides": 4
+    },
+    {
+      "name": "leg_0_claw_1",
+      "type": "beam",
+      "material": "keratin",
+      "group": 4,
+      "role": "leg_0_claw_1",
+      "start": [
+        -46.5,
+        -2,
+        -72.85
+      ],
+      "end": [
+        -46.5,
+        -1,
+        -79.9
+      ],
+      "radii": [
+        2,
+        1
+      ],
+      "sides": 4
+    },
+    {
+      "name": "leg_1_upper",
+      "type": "beam",
+      "material": "organic",
+      "group": 5,
+      "role": "leg_1_upper",
+      "start": [
+        -44.949999999999996,
+        -66.74,
+        58.75
+      ],
+      "end": [
+        -52.7,
+        -34.08,
+        72.85
+      ],
+      "radii": [
+        27.9,
+        13.95
+      ],
+      "sides": 6
+    },
+    {
+      "name": "leg_1_shin",
+      "type": "beam",
+      "material": "organic",
+      "group": 6,
+      "role": "leg_1_shin",
+      "start": [
+        -52.7,
+        -34.08,
+        72.85
+      ],
+      "end": [
+        -54.25,
+        -7,
+        54.05
+      ],
+      "radii": [
+        13.95,
+        8.525
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_1_paw",
+      "type": "stone_block",
+      "material": "organic",
+      "group": 7,
+      "role": "foot",
+      "center": [
+        -54.25,
+        -4,
+        48.05
+      ],
+      "size": [
+        35.65,
+        8,
+        28.2
+      ],
+      "bevel": 2
+    },
+    {
+      "name": "leg_1_claw_-1",
+      "type": "beam",
+      "material": "keratin",
+      "group": 7,
+      "role": "leg_1_claw_-1",
+      "start": [
+        -62.0,
+        -2,
+        37.599999999999994
+      ],
+      "end": [
+        -62.0,
+        -1,
+        30.549999999999997
+      ],
+      "radii": [
+        2,
+        1
+      ],
+      "sides": 4
+    },
+    {
+      "name": "leg_1_claw_0",
+      "type": "beam",
+      "material": "keratin",
+      "group": 7,
+      "role": "leg_1_claw_0",
+      "start": [
+        -54.25,
+        -2,
+        37.599999999999994
+      ],
+      "end": [
+        -54.25,
+        -1,
+        30.549999999999997
+      ],
+      "radii": [
+        2,
+        1
+      ],
+      "sides": 4
+    },
+    {
+      "name": "leg_1_claw_1",
+      "type": "beam",
+      "material": "keratin",
+      "group": 7,
+      "role": "leg_1_claw_1",
+      "start": [
+        -46.5,
+        -2,
+        37.599999999999994
+      ],
+      "end": [
+        -46.5,
+        -1,
+        30.549999999999997
+      ],
+      "radii": [
+        2,
+        1
+      ],
+      "sides": 4
+    },
+    {
+      "name": "ear_-1",
+      "type": "profile",
+      "material": "metal",
+      "group": 1,
+      "role": "ear_-1",
+      "profile": [
+        [
+          -17.05,
+          -110.76
+        ],
+        [
+          -43.4,
+          -110.76
+        ],
+        [
+          -31.0,
+          -127.80000000000001
+        ]
+      ],
+      "depth": 5,
+      "socket": {
+        "origin": [
+          0,
+          0,
+          -98.7
+        ]
+      }
+    },
+    {
+      "name": "eye_-1",
+      "type": "beam",
+      "material": "eye",
+      "group": 1,
+      "role": "eye_-1",
+      "start": [
+        -34.1,
+        -100.82,
+        -119.85000000000001
+      ],
+      "end": [
+        -36.425,
+        -100.82,
+        -122.2
+      ],
+      "radii": [
+        2,
+        2
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_2_upper",
+      "type": "beam",
+      "material": "organic",
+      "group": 8,
+      "role": "leg_2_upper",
+      "start": [
+        44.949999999999996,
+        -66.74,
+        -56.4
+      ],
+      "end": [
+        52.7,
+        -34.08,
+        -65.8
+      ],
+      "radii": [
+        27.9,
+        13.95
+      ],
+      "sides": 6
+    },
+    {
+      "name": "leg_2_shin",
+      "type": "beam",
+      "material": "organic",
+      "group": 9,
+      "role": "leg_2_shin",
+      "start": [
+        52.7,
+        -34.08,
+        -65.8
+      ],
+      "end": [
+        54.25,
+        -7,
+        -56.4
+      ],
+      "radii": [
+        13.95,
+        8.525
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_2_paw",
+      "type": "stone_block",
+      "material": "organic",
+      "group": 10,
+      "role": "foot",
+      "center": [
+        54.25,
+        -4,
+        -62.4
+      ],
+      "size": [
+        35.65,
+        8,
+        28.2
+      ],
+      "bevel": 2
+    },
+    {
+      "name": "leg_2_claw_-1",
+      "type": "beam",
+      "material": "keratin",
+      "group": 10,
+      "role": "leg_2_claw_-1",
+      "start": [
+        46.5,
+        -2,
+        -72.85
+      ],
+      "end": [
+        46.5,
+        -1,
+        -79.9
+      ],
+      "radii": [
+        2,
+        1
+      ],
+      "sides": 4
+    },
+    {
+      "name": "leg_2_claw_0",
+      "type": "beam",
+      "material": "keratin",
+      "group": 10,
+      "role": "leg_2_claw_0",
+      "start": [
+        54.25,
+        -2,
+        -72.85
+      ],
+      "end": [
+        54.25,
+        -1,
+        -79.9
+      ],
+      "radii": [
+        2,
+        1
+      ],
+      "sides": 4
+    },
+    {
+      "name": "leg_2_claw_1",
+      "type": "beam",
+      "material": "keratin",
+      "group": 10,
+      "role": "leg_2_claw_1",
+      "start": [
+        62.0,
+        -2,
+        -72.85
+      ],
+      "end": [
+        62.0,
+        -1,
+        -79.9
+      ],
+      "radii": [
+        2,
+        1
+      ],
+      "sides": 4
+    },
+    {
+      "name": "leg_3_upper",
+      "type": "beam",
+      "material": "organic",
+      "group": 11,
+      "role": "leg_3_upper",
+      "start": [
+        44.949999999999996,
+        -66.74,
+        58.75
+      ],
+      "end": [
+        52.7,
+        -34.08,
+        72.85
+      ],
+      "radii": [
+        27.9,
+        13.95
+      ],
+      "sides": 6
+    },
+    {
+      "name": "leg_3_shin",
+      "type": "beam",
+      "material": "organic",
+      "group": 12,
+      "role": "leg_3_shin",
+      "start": [
+        52.7,
+        -34.08,
+        72.85
+      ],
+      "end": [
+        54.25,
+        -7,
+        54.05
+      ],
+      "radii": [
+        13.95,
+        8.525
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_3_paw",
+      "type": "stone_block",
+      "material": "organic",
+      "group": 13,
+      "role": "foot",
+      "center": [
+        54.25,
+        -4,
+        48.05
+      ],
+      "size": [
+        35.65,
+        8,
+        28.2
+      ],
+      "bevel": 2
+    },
+    {
+      "name": "leg_3_claw_-1",
+      "type": "beam",
+      "material": "keratin",
+      "group": 13,
+      "role": "leg_3_claw_-1",
+      "start": [
+        46.5,
+        -2,
+        37.599999999999994
+      ],
+      "end": [
+        46.5,
+        -1,
+        30.549999999999997
+      ],
+      "radii": [
+        2,
+        1
+      ],
+      "sides": 4
+    },
+    {
+      "name": "leg_3_claw_0",
+      "type": "beam",
+      "material": "keratin",
+      "group": 13,
+      "role": "leg_3_claw_0",
+      "start": [
+        54.25,
+        -2,
+        37.599999999999994
+      ],
+      "end": [
+        54.25,
+        -1,
+        30.549999999999997
+      ],
+      "radii": [
+        2,
+        1
+      ],
+      "sides": 4
+    },
+    {
+      "name": "leg_3_claw_1",
+      "type": "beam",
+      "material": "keratin",
+      "group": 13,
+      "role": "leg_3_claw_1",
+      "start": [
+        62.0,
+        -2,
+        37.599999999999994
+      ],
+      "end": [
+        62.0,
+        -1,
+        30.549999999999997
+      ],
+      "radii": [
+        2,
+        1
+      ],
+      "sides": 4
+    },
+    {
+      "name": "ear_1",
+      "type": "profile",
+      "material": "metal",
+      "group": 1,
+      "role": "ear_1",
+      "profile": [
+        [
+          17.05,
+          -110.76
+        ],
+        [
+          43.4,
+          -110.76
+        ],
+        [
+          31.0,
+          -127.80000000000001
+        ]
+      ],
+      "depth": 5,
+      "socket": {
+        "origin": [
+          0,
+          0,
+          -98.7
+        ]
+      }
+    },
+    {
+      "name": "eye_1",
+      "type": "beam",
+      "material": "eye",
+      "group": 1,
+      "role": "eye_1",
+      "start": [
+        34.1,
+        -100.82,
+        -119.85000000000001
+      ],
+      "end": [
+        36.425,
+        -100.82,
+        -122.2
+      ],
+      "radii": [
+        2,
+        2
+      ],
+      "sides": 5
+    },
+    {
+      "name": "tail",
+      "type": "sweep",
+      "material": "organic",
+      "group": 14,
+      "role": "tail",
+      "sections": [
+        [
+          0,
+          -56.800000000000004,
+          68.14999999999999,
+          15.5,
+          15.5
+        ],
+        [
+          0,
+          -44.02,
+          112.8,
+          18.599999999999998,
+          18.599999999999998
+        ],
+        [
+          0,
+          -21.3,
+          133.95,
+          2,
+          2
+        ]
+      ],
+      "normal": [
+        1,
+        0,
+        0
+      ],
+      "sides": 6
+    },
+    {
+      "name": "counterweight_-1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "counterweight_-1",
+      "center": [
+        -62,
+        -92,
+        10
+      ],
+      "size": [
+        30,
+        56,
+        79
+      ],
+      "bevel": 6,
+      "wear": 0.1,
+      "seed": 4
+    },
+    {
+      "name": "flank_cog_-1",
+      "type": "gear",
+      "material": "bronze",
+      "group": 0,
+      "role": "flank_cog_-1",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "radius": 25,
+      "root_radius": 20,
+      "teeth": 8,
+      "depth": 8,
+      "bore": 8,
+      "socket": {
+        "origin": [
+          -83,
+          -90,
+          10
+        ],
+        "basis": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            -1,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "name": "counterweight_1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "counterweight_1",
+      "center": [
+        62,
+        -92,
+        10
+      ],
+      "size": [
+        30,
+        56,
+        79
+      ],
+      "bevel": 6,
+      "wear": 0.1,
+      "seed": 6
+    },
+    {
+      "name": "flank_cog_1",
+      "type": "gear",
+      "material": "bronze",
+      "group": 0,
+      "role": "flank_cog_1",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "radius": 25,
+      "root_radius": 20,
+      "teeth": 8,
+      "depth": 8,
+      "bore": 8,
+      "socket": {
+        "origin": [
+          83,
+          -90,
+          10
+        ],
+        "basis": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            -1,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "name": "load_yoke",
+      "type": "sweep",
+      "material": "metal",
+      "group": 0,
+      "role": "load_yoke",
+      "sections": [
+        [
+          -75,
+          -88,
+          10,
+          7,
+          7
+        ],
+        [
+          -48,
+          -123,
+          10,
+          7,
+          7
+        ],
+        [
+          48,
+          -123,
+          10,
+          7,
+          7
+        ],
+        [
+          75,
+          -88,
+          10,
+          7,
+          7
+        ]
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "sides": 6
+    }
+  ],
+  "rig": [
+    {
+      "name": "body",
+      "parent": null,
+      "origin": [
+        0,
+        -56.800000000000004,
+        0
+      ],
+      "groups": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    },
+    {
+      "name": "head",
+      "parent": "body",
+      "origin": [
+        0,
+        -72.42,
+        -61.1
+      ],
+      "groups": [
+        1
+      ]
+    },
+    {
+      "name": "leg_0_hip",
+      "parent": "body",
+      "origin": [
+        -44.949999999999996,
+        -66.74,
+        -56.4
+      ],
+      "groups": [
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "name": "leg_0_knee",
+      "parent": "leg_0_hip",
+      "origin": [
+        -52.7,
+        -34.08,
+        -65.8
+      ],
+      "groups": [
+        3,
+        4
+      ]
+    },
+    {
+      "name": "leg_0_ankle",
+      "parent": "leg_0_knee",
+      "origin": [
+        -54.25,
+        -7,
+        -56.4
+      ],
+      "groups": [
+        4
+      ]
+    },
+    {
+      "name": "leg_1_hip",
+      "parent": "body",
+      "origin": [
+        -44.949999999999996,
+        -66.74,
+        58.75
+      ],
+      "groups": [
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "name": "leg_1_knee",
+      "parent": "leg_1_hip",
+      "origin": [
+        -52.7,
+        -34.08,
+        72.85
+      ],
+      "groups": [
+        6,
+        7
+      ]
+    },
+    {
+      "name": "leg_1_ankle",
+      "parent": "leg_1_knee",
+      "origin": [
+        -54.25,
+        -7,
+        54.05
+      ],
+      "groups": [
+        7
+      ]
+    },
+    {
+      "name": "leg_2_hip",
+      "parent": "body",
+      "origin": [
+        44.949999999999996,
+        -66.74,
+        -56.4
+      ],
+      "groups": [
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "name": "leg_2_knee",
+      "parent": "leg_2_hip",
+      "origin": [
+        52.7,
+        -34.08,
+        -65.8
+      ],
+      "groups": [
+        9,
+        10
+      ]
+    },
+    {
+      "name": "leg_2_ankle",
+      "parent": "leg_2_knee",
+      "origin": [
+        54.25,
+        -7,
+        -56.4
+      ],
+      "groups": [
+        10
+      ]
+    },
+    {
+      "name": "leg_3_hip",
+      "parent": "body",
+      "origin": [
+        44.949999999999996,
+        -66.74,
+        58.75
+      ],
+      "groups": [
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "name": "leg_3_knee",
+      "parent": "leg_3_hip",
+      "origin": [
+        52.7,
+        -34.08,
+        72.85
+      ],
+      "groups": [
+        12,
+        13
+      ]
+    },
+    {
+      "name": "leg_3_ankle",
+      "parent": "leg_3_knee",
+      "origin": [
+        54.25,
+        -7,
+        54.05
+      ],
+      "groups": [
+        13
+      ]
+    },
+    {
+      "name": "tail",
+      "parent": "body",
+      "origin": [
+        0,
+        -56.800000000000004,
+        68.14999999999999
+      ],
+      "groups": [
+        14
+      ]
+    }
+  ],
+  "actions": {
+    "idle": {
+      "duration_ticks": 60,
+      "cadence_ticks": 3,
+      "loop": true,
+      "keys": [
+        {
+          "tick": 0,
+          "channels": {
+            "head": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 5,
+          "channels": {
+            "head": [
+              1,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 10,
+          "channels": {
+            "head": [
+              2,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 15,
+          "channels": {
+            "head": [
+              2,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 20,
+          "channels": {
+            "head": [
+              2,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 25,
+          "channels": {
+            "head": [
+              1,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 30,
+          "channels": {
+            "head": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 35,
+          "channels": {
+            "head": [
+              -1,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 40,
+          "channels": {
+            "head": [
+              -2,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 45,
+          "channels": {
+            "head": [
+              -2,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 50,
+          "channels": {
+            "head": [
+              -2,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 55,
+          "channels": {
+            "head": [
+              -1,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 60,
+          "channels": {
+            "head": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "grounded": true
+    },
+    "walk": {
+      "duration_ticks": 48,
+      "cadence_ticks": 3,
+      "loop": true,
+      "keys": [
+        {
+          "tick": 0,
+          "channels": {},
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 4,
+          "channels": {},
+          "translation": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "tick": 8,
+          "channels": {},
+          "translation": [
+            0,
+            -2,
+            0
+          ]
+        },
+        {
+          "tick": 12,
+          "channels": {},
+          "translation": [
+            0,
+            -2,
+            0
+          ]
+        },
+        {
+          "tick": 16,
+          "channels": {},
+          "translation": [
+            0,
+            -2,
+            0
+          ]
+        },
+        {
+          "tick": 20,
+          "channels": {},
+          "translation": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "tick": 24,
+          "channels": {},
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 28,
+          "channels": {},
+          "translation": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "tick": 32,
+          "channels": {},
+          "translation": [
+            0,
+            -2,
+            0
+          ]
+        },
+        {
+          "tick": 36,
+          "channels": {},
+          "translation": [
+            0,
+            -2,
+            0
+          ]
+        },
+        {
+          "tick": 40,
+          "channels": {},
+          "translation": [
+            0,
+            -2,
+            0
+          ]
+        },
+        {
+          "tick": 44,
+          "channels": {},
+          "translation": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "tick": 48,
+          "channels": {},
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "gait": {
+        "kind": "quadruped",
+        "limbs": [
+          {
+            "name": "leg_0",
+            "hip": [
+              -44.949999999999996,
+              -66.74,
+              -56.4
+            ],
+            "knee": [
+              -52.7,
+              -34.08,
+              -65.8
+            ],
+            "tip": [
+              -54.25,
+              -7,
+              -56.4
+            ],
+            "components": [
+              "leg_0_paw"
+            ],
+            "phase_offset": 0,
+            "knee_axis": 0
+          },
+          {
+            "name": "leg_1",
+            "hip": [
+              -44.949999999999996,
+              -66.74,
+              58.75
+            ],
+            "knee": [
+              -52.7,
+              -34.08,
+              72.85
+            ],
+            "tip": [
+              -54.25,
+              -7,
+              54.05
+            ],
+            "components": [
+              "leg_1_paw"
+            ],
+            "phase_offset": 0.5,
+            "knee_axis": 0
+          },
+          {
+            "name": "leg_2",
+            "hip": [
+              44.949999999999996,
+              -66.74,
+              -56.4
+            ],
+            "knee": [
+              52.7,
+              -34.08,
+              -65.8
+            ],
+            "tip": [
+              54.25,
+              -7,
+              -56.4
+            ],
+            "components": [
+              "leg_2_paw"
+            ],
+            "phase_offset": 0.5,
+            "knee_axis": 0
+          },
+          {
+            "name": "leg_3",
+            "hip": [
+              44.949999999999996,
+              -66.74,
+              58.75
+            ],
+            "knee": [
+              52.7,
+              -34.08,
+              72.85
+            ],
+            "tip": [
+              54.25,
+              -7,
+              54.05
+            ],
+            "components": [
+              "leg_3_paw"
+            ],
+            "phase_offset": 0,
+            "knee_axis": 0
+          }
+        ],
+        "stride": 32,
+        "lift": 10,
+        "stance_fraction": 0.62,
+        "cycle_ticks": 48,
+        "support_surface_iterations": 2,
+        "support_polygon_mode": "sole_footprints",
+        "crouch": 4
+      }
+    },
+    "attack": {
+      "duration_ticks": 42,
+      "cadence_ticks": 3,
+      "loop": false,
+      "keys": [
+        {
+          "tick": 0,
+          "channels": {
+            "head": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 4,
+          "channels": {
+            "head": [
+              -2,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 7,
+          "channels": {
+            "head": [
+              -4,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 10,
+          "channels": {
+            "head": [
+              -4,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 14,
+          "channels": {
+            "head": [
+              1,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 18,
+          "channels": {
+            "head": [
+              11,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            -6
+          ]
+        },
+        {
+          "tick": 21,
+          "channels": {
+            "head": [
+              19,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            -11
+          ]
+        },
+        {
+          "tick": 24,
+          "channels": {
+            "head": [
+              11,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            -7
+          ]
+        },
+        {
+          "tick": 28,
+          "channels": {
+            "head": [
+              3,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            -2
+          ]
+        },
+        {
+          "tick": 32,
+          "channels": {
+            "head": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 35,
+          "channels": {
+            "head": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 38,
+          "channels": {
+            "head": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 42,
+          "channels": {
+            "head": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "grounded": true
+    },
+    "hit": {
+      "duration_ticks": 30,
+      "cadence_ticks": 3,
+      "loop": false,
+      "keys": [
+        {
+          "tick": 0,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 2,
+          "channels": {
+            "body": [
+              0,
+              0,
+              2
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "tick": 5,
+          "channels": {
+            "body": [
+              0,
+              0,
+              3
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            2
+          ]
+        },
+        {
+          "tick": 8,
+          "channels": {
+            "body": [
+              0,
+              0,
+              5
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            4
+          ]
+        },
+        {
+          "tick": 10,
+          "channels": {
+            "body": [
+              0,
+              0,
+              6
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            4
+          ]
+        },
+        {
+          "tick": 12,
+          "channels": {
+            "body": [
+              0,
+              0,
+              7
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            5
+          ]
+        },
+        {
+          "tick": 15,
+          "channels": {
+            "body": [
+              0,
+              0,
+              7
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            5
+          ]
+        },
+        {
+          "tick": 18,
+          "channels": {
+            "body": [
+              0,
+              0,
+              7
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            5
+          ]
+        },
+        {
+          "tick": 20,
+          "channels": {
+            "body": [
+              0,
+              0,
+              6
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            4
+          ]
+        },
+        {
+          "tick": 22,
+          "channels": {
+            "body": [
+              0,
+              0,
+              5
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            4
+          ]
+        },
+        {
+          "tick": 25,
+          "channels": {
+            "body": [
+              0,
+              0,
+              3
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            2
+          ]
+        },
+        {
+          "tick": 28,
+          "channels": {
+            "body": [
+              0,
+              0,
+              2
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "tick": 30,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "grounded": true
+    },
+    "death": {
+      "duration_ticks": 84,
+      "cadence_ticks": 3,
+      "loop": false,
+      "keys": [
+        {
+          "tick": 0,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ],
+            "head": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 7,
+          "channels": {
+            "body": [
+              0,
+              0,
+              6
+            ],
+            "head": [
+              1,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 14,
+          "channels": {
+            "body": [
+              0,
+              0,
+              13
+            ],
+            "head": [
+              3,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 21,
+          "channels": {
+            "body": [
+              0,
+              0,
+              19
+            ],
+            "head": [
+              4,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 28,
+          "channels": {
+            "body": [
+              0,
+              0,
+              26
+            ],
+            "head": [
+              6,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 35,
+          "channels": {
+            "body": [
+              0,
+              0,
+              32
+            ],
+            "head": [
+              7,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 42,
+          "channels": {
+            "body": [
+              0,
+              0,
+              39
+            ],
+            "head": [
+              9,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 49,
+          "channels": {
+            "body": [
+              0,
+              0,
+              45
+            ],
+            "head": [
+              10,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 56,
+          "channels": {
+            "body": [
+              0,
+              0,
+              52
+            ],
+            "head": [
+              11,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 63,
+          "channels": {
+            "body": [
+              0,
+              0,
+              56
+            ],
+            "head": [
+              12,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 70,
+          "channels": {
+            "body": [
+              0,
+              0,
+              56
+            ],
+            "head": [
+              12,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 77,
+          "channels": {
+            "body": [
+              0,
+              0,
+              56
+            ],
+            "head": [
+              12,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 84,
+          "channels": {
+            "body": [
+              0,
+              0,
+              56
+            ],
+            "head": [
+              12,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "grounded": true,
+      "terminal_pose_hold": 90
+    },
+    "counterweight_drop": {
+      "duration_ticks": 60,
+      "cadence_ticks": 3,
+      "loop": false,
+      "keys": [
+        {
+          "tick": 0,
+          "channels": {
+            "head": [
+              0,
+              0,
+              0
+            ],
+            "body": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 6,
+          "channels": {
+            "head": [
+              -5,
+              0,
+              0
+            ],
+            "body": [
+              -3,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 10,
+          "channels": {
+            "head": [
+              -8,
+              0,
+              0
+            ],
+            "body": [
+              -6,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 14,
+          "channels": {
+            "head": [
+              -12,
+              0,
+              0
+            ],
+            "body": [
+              -8,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 20,
+          "channels": {
+            "head": [
+              -13,
+              0,
+              0
+            ],
+            "body": [
+              -9,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 26,
+          "channels": {
+            "head": [
+              -6,
+              0,
+              0
+            ],
+            "body": [
+              -4,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            -6
+          ]
+        },
+        {
+          "tick": 30,
+          "channels": {
+            "head": [
+              8,
+              0,
+              0
+            ],
+            "body": [
+              6,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            -11
+          ]
+        },
+        {
+          "tick": 34,
+          "channels": {
+            "head": [
+              16,
+              0,
+              0
+            ],
+            "body": [
+              12,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            -7
+          ]
+        },
+        {
+          "tick": 40,
+          "channels": {
+            "head": [
+              4,
+              0,
+              0
+            ],
+            "body": [
+              3,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            -2
+          ]
+        },
+        {
+          "tick": 46,
+          "channels": {
+            "head": [
+              0,
+              0,
+              0
+            ],
+            "body": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 50,
+          "channels": {
+            "head": [
+              0,
+              0,
+              0
+            ],
+            "body": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 54,
+          "channels": {
+            "head": [
+              0,
+              0,
+              0
+            ],
+            "body": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 60,
+          "channels": {
+            "head": [
+              0,
+              0,
+              0
+            ],
+            "body": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "events": {
+        "anticipation": [
+          0,
+          22
+        ],
+        "execution": [
+          22,
+          34
+        ],
+        "recovery": [
+          34,
+          60
+        ]
+      },
+      "grounded": true
+    },
+    "walk_entry": {
+      "duration_ticks": 8,
+      "cadence_ticks": 2,
+      "loop": false,
+      "keys": [],
+      "bridge_controls": {
+        "source": "idle",
+        "destination": "walk"
+      }
+    }
+  },
+  "authoring_schema": 2,
+  "locomotion": {
+    "kind": "quadruped",
+    "limbs": [
+      {
+        "name": "leg_0",
+        "hip": [
+          -44.949999999999996,
+          -66.74,
+          -56.4
+        ],
+        "knee": [
+          -52.7,
+          -34.08,
+          -65.8
+        ],
+        "tip": [
+          -54.25,
+          -7,
+          -56.4
+        ],
+        "components": [
+          "leg_0_paw"
+        ],
+        "phase_offset": 0,
+        "knee_axis": 0
+      },
+      {
+        "name": "leg_1",
+        "hip": [
+          -44.949999999999996,
+          -66.74,
+          58.75
+        ],
+        "knee": [
+          -52.7,
+          -34.08,
+          72.85
+        ],
+        "tip": [
+          -54.25,
+          -7,
+          54.05
+        ],
+        "components": [
+          "leg_1_paw"
+        ],
+        "phase_offset": 0.5,
+        "knee_axis": 0
+      },
+      {
+        "name": "leg_2",
+        "hip": [
+          44.949999999999996,
+          -66.74,
+          -56.4
+        ],
+        "knee": [
+          52.7,
+          -34.08,
+          -65.8
+        ],
+        "tip": [
+          54.25,
+          -7,
+          -56.4
+        ],
+        "components": [
+          "leg_2_paw"
+        ],
+        "phase_offset": 0.5,
+        "knee_axis": 0
+      },
+      {
+        "name": "leg_3",
+        "hip": [
+          44.949999999999996,
+          -66.74,
+          58.75
+        ],
+        "knee": [
+          52.7,
+          -34.08,
+          72.85
+        ],
+        "tip": [
+          54.25,
+          -7,
+          54.05
+        ],
+        "components": [
+          "leg_3_paw"
+        ],
+        "phase_offset": 0,
+        "knee_axis": 0
+      }
+    ],
+    "stride": 32,
+    "lift": 10,
+    "stance_fraction": 0.62,
+    "cycle_ticks": 48,
+    "support_surface_iterations": 2,
+    "support_polygon_mode": "sole_footprints",
+    "crouch": 4
+  },
+  "geometry_validation": {
+    "remove_zero_area_faces": true,
+    "preserve_vertex_order": true
+  },
+  "provenance": {
+    "kind": "original_tower_asset",
+    "source_mesh_or_animation_reuse": false,
+    "brief": "Original stone-and-iron quadruped with geared side weights and an exposed load yoke.",
+    "artistic_acceptance": false,
+    "live_integration": false
+  },
+  "rig_validation": true,
+  "design_rationale": "Armor mass and forceful action are transferred to a four-legged industrial guardian. Its ox-like chassis, counterweights and head-driven drop differ from a two-armed armored boss; no source mesh, color-region recipe or motion is reused.",
+  "skeleton_base": 32144,
+  "frame_group_base": 40144
+}

@@ -1,0 +1,505 @@
+{
+  "schema": 1,
+  "name": "Arrival bell and votive stand",
+  "unit": "native;128 units per tile",
+  "materials": {
+    "stone": {
+      "family": "stone",
+      "render_type": 0,
+      "hsl": 10279,
+      "shadow": 10267,
+      "end": 10287,
+      "edge": 10283
+    },
+    "edge": {
+      "hsl": 10262,
+      "render_type": 0
+    },
+    "stone_shadow": {
+      "hsl": 10258,
+      "render_type": 0
+    },
+    "iron": {
+      "hsl": 10299,
+      "render_type": 0
+    },
+    "iron_edge": {
+      "hsl": 10320,
+      "render_type": 0
+    },
+    "wood": {
+      "family": "wood",
+      "render_type": 0,
+      "hsl": 6934,
+      "shadow": 6921,
+      "end": 6942,
+      "edge": 6939
+    },
+    "wood_dark": {
+      "hsl": 8485,
+      "render_type": 0
+    },
+    "leather": {
+      "family": "leather",
+      "render_type": 0,
+      "hsl": 3741,
+      "shadow": 3730,
+      "end": 3747,
+      "edge": 3744
+    },
+    "skin": {
+      "hsl": 10782,
+      "render_type": 0
+    },
+    "skin_shadow": {
+      "hsl": 10772,
+      "render_type": 0
+    },
+    "cloth": {
+      "hsl": 916,
+      "render_type": 0
+    },
+    "armor": {
+      "hsl": 6955,
+      "render_type": 0
+    },
+    "armor_shadow": {
+      "hsl": 7075,
+      "render_type": 0
+    },
+    "gray_armor": {
+      "hsl": 5169,
+      "render_type": 0
+    },
+    "eye": {
+      "hsl": 127,
+      "render_type": 0
+    },
+    "brow": {
+      "hsl": 8598,
+      "render_type": 0
+    },
+    "metal": {
+      "family": "metal",
+      "render_type": 0,
+      "hsl": 33,
+      "shadow": 24,
+      "end": 41,
+      "edge": 45
+    },
+    "bronze": {
+      "family": "bronze",
+      "render_type": 0,
+      "hsl": 6687,
+      "shadow": 6678,
+      "end": 6695,
+      "edge": 6698
+    },
+    "organic": {
+      "family": "organic",
+      "render_type": 0,
+      "hsl": 6697,
+      "shadow": 6685,
+      "end": 6704,
+      "edge": 6701
+    },
+    "ceramic": {
+      "family": "ceramic",
+      "render_type": 0,
+      "hsl": 4773,
+      "shadow": 4763,
+      "end": 4781,
+      "edge": 4786
+    }
+  },
+  "components": [
+    {
+      "name": "base",
+      "type": "section_mesh",
+      "material": "stone",
+      "group": 0,
+      "role": "base",
+      "sections": [
+        [
+          0,
+          0,
+          0,
+          99,
+          79
+        ],
+        [
+          0,
+          -16,
+          0,
+          99,
+          79
+        ],
+        [
+          0,
+          -26,
+          0,
+          83,
+          65
+        ]
+      ],
+      "sides": 8,
+      "profiles": [
+        [
+          [
+            -1,
+            -0.65
+          ],
+          [
+            -0.63,
+            -1
+          ],
+          [
+            0.63,
+            -1
+          ],
+          [
+            1,
+            -0.65
+          ],
+          [
+            1,
+            0.6
+          ],
+          [
+            0.6,
+            1
+          ],
+          [
+            -0.6,
+            1
+          ],
+          [
+            -1,
+            0.6
+          ]
+        ],
+        [
+          [
+            -1,
+            -0.65
+          ],
+          [
+            -0.63,
+            -1
+          ],
+          [
+            0.63,
+            -1
+          ],
+          [
+            1,
+            -0.65
+          ],
+          [
+            1,
+            0.6
+          ],
+          [
+            0.6,
+            1
+          ],
+          [
+            -0.6,
+            1
+          ],
+          [
+            -1,
+            0.6
+          ]
+        ],
+        [
+          [
+            -1,
+            -0.65
+          ],
+          [
+            -0.63,
+            -1
+          ],
+          [
+            0.63,
+            -1
+          ],
+          [
+            1,
+            -0.65
+          ],
+          [
+            1,
+            0.6
+          ],
+          [
+            0.6,
+            1
+          ],
+          [
+            -0.6,
+            1
+          ],
+          [
+            -1,
+            0.6
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "bell_post_-1",
+      "type": "section_mesh",
+      "material": "stone",
+      "group": 0,
+      "role": "bell_post_-1",
+      "sections": [
+        [
+          -62,
+          -24,
+          0,
+          17,
+          22
+        ],
+        [
+          -62,
+          -151,
+          0,
+          13,
+          18
+        ],
+        [
+          -62,
+          -165,
+          0,
+          18,
+          23
+        ]
+      ],
+      "sides": 8
+    },
+    {
+      "name": "bell_brace_-1",
+      "type": "beam",
+      "material": "metal",
+      "group": 0,
+      "role": "bell_brace_-1",
+      "start": [
+        -63,
+        -130,
+        0
+      ],
+      "end": [
+        -36,
+        -168,
+        0
+      ],
+      "radii": [
+        4,
+        4
+      ],
+      "sides": 4
+    },
+    {
+      "name": "bell_post_1",
+      "type": "section_mesh",
+      "material": "stone",
+      "group": 0,
+      "role": "bell_post_1",
+      "sections": [
+        [
+          62,
+          -24,
+          0,
+          17,
+          22
+        ],
+        [
+          62,
+          -151,
+          0,
+          13,
+          18
+        ],
+        [
+          62,
+          -165,
+          0,
+          18,
+          23
+        ]
+      ],
+      "sides": 8
+    },
+    {
+      "name": "bell_brace_1",
+      "type": "beam",
+      "material": "metal",
+      "group": 0,
+      "role": "bell_brace_1",
+      "start": [
+        63,
+        -130,
+        0
+      ],
+      "end": [
+        36,
+        -168,
+        0
+      ],
+      "radii": [
+        4,
+        4
+      ],
+      "sides": 4
+    },
+    {
+      "name": "crossbeam",
+      "type": "stone_block",
+      "material": "wood",
+      "group": 0,
+      "role": "board",
+      "center": [
+        0,
+        -173,
+        0
+      ],
+      "size": [
+        166,
+        17,
+        27
+      ],
+      "bevel": 1,
+      "variation": 0,
+      "grain_axis": [
+        1,
+        0,
+        0
+      ],
+      "parameters": {
+        "material_family": "wood",
+        "construction": "separate plank",
+        "grain_axis": 0
+      }
+    },
+    {
+      "name": "bell",
+      "type": "shell",
+      "material": "bronze",
+      "group": 0,
+      "role": "bell",
+      "sections": [
+        [
+          0,
+          -151,
+          0,
+          12,
+          12
+        ],
+        [
+          0,
+          -120,
+          0,
+          22,
+          22
+        ],
+        [
+          0,
+          -105,
+          0,
+          35,
+          35
+        ]
+      ],
+      "thickness": 4,
+      "sides": 10
+    },
+    {
+      "name": "clapper",
+      "type": "beam",
+      "material": "metal",
+      "group": 0,
+      "role": "clapper",
+      "start": [
+        0,
+        -148,
+        0
+      ],
+      "end": [
+        0,
+        -100,
+        0
+      ],
+      "radii": [
+        3,
+        5
+      ],
+      "sides": 6
+    },
+    {
+      "name": "offering_cup_-1",
+      "type": "shell",
+      "material": "ceramic",
+      "group": 0,
+      "role": "offering_cup_-1",
+      "sections": [
+        [
+          -40,
+          -30,
+          -43,
+          12,
+          12
+        ],
+        [
+          -40,
+          -44,
+          -43,
+          16,
+          16
+        ]
+      ],
+      "thickness": 3,
+      "sides": 8
+    },
+    {
+      "name": "offering_cup_1",
+      "type": "shell",
+      "material": "ceramic",
+      "group": 0,
+      "role": "offering_cup_1",
+      "sections": [
+        [
+          40,
+          -30,
+          -43,
+          12,
+          12
+        ],
+        [
+          40,
+          -44,
+          -43,
+          16,
+          16
+        ]
+      ],
+      "thickness": 3,
+      "sides": 8
+    }
+  ],
+  "rig": [],
+  "actions": {},
+  "authoring_schema": 2,
+  "geometry_validation": {
+    "remove_zero_area_faces": true,
+    "preserve_vertex_order": true
+  },
+  "provenance": {
+    "kind": "original_tower_asset",
+    "source_mesh_or_animation_reuse": false,
+    "brief": "An original practical sanctuary landmark: a warning/arrival bell, worn base and small offering cups. Structural bracing and a real hollow bell replace a decorative floating symbol.",
+    "artistic_acceptance": false,
+    "live_integration": false
+  }
+}

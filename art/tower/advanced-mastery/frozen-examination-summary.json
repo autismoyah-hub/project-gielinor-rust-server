@@ -1,0 +1,112 @@
+[
+  {
+    "case": "akkha",
+    "phase": "spear_and_sword_states",
+    "npc_id": 11789,
+    "vertices": 50,
+    "faces": 96,
+    "mean_five_view_iou": 0.7300511113753836,
+    "status": "COARSE_FIDELITY_UNAPPROVED",
+    "first_classic_motion": "WEIGHTED_RETARGET_UNSUPPORTED"
+  },
+  {
+    "case": "bandos",
+    "phase": "standard_encounter",
+    "npc_id": 2215,
+    "vertices": 1986,
+    "faces": 3746,
+    "mean_five_view_iou": 0.8516155950561517,
+    "status": "COARSE_FIDELITY_UNAPPROVED",
+    "first_classic_motion": "FAILED_GROUPS_DROPPED"
+  },
+  {
+    "case": "fire-giant",
+    "phase": "club_variant",
+    "npc_id": 2075,
+    "vertices": 1866,
+    "faces": 3500,
+    "mean_five_view_iou": 0.8306868798770379,
+    "status": "COARSE_FIDELITY_UNAPPROVED",
+    "first_classic_motion": "FAILED_GROUPS_DROPPED"
+  },
+  {
+    "case": "verzik",
+    "phase": "phase_1",
+    "npc_id": 8370,
+    "vertices": 5256,
+    "faces": 9616,
+    "mean_five_view_iou": 0.7844108608489113,
+    "status": "COARSE_FIDELITY_UNAPPROVED",
+    "first_classic_motion": "FAILED_GROUPS_DROPPED"
+  },
+  {
+    "case": "verzik",
+    "phase": "phase_2",
+    "npc_id": 8372,
+    "vertices": 6606,
+    "faces": 12250,
+    "mean_five_view_iou": 0.7569060942424446,
+    "status": "COARSE_FIDELITY_UNAPPROVED",
+    "first_classic_motion": "FAILED_GROUPS_DROPPED"
+  },
+  {
+    "case": "verzik",
+    "phase": "phase_3",
+    "npc_id": 8374,
+    "vertices": 6558,
+    "faces": 12144,
+    "mean_five_view_iou": 0.6598746944433707,
+    "status": "COARSE_FIDELITY_UNAPPROVED",
+    "first_classic_motion": "FAILED_GROUPS_DROPPED"
+  },
+  {
+    "case": "verzik",
+    "phase": "terminal_form",
+    "npc_id": 8375,
+    "vertices": 3138,
+    "faces": 5818,
+    "mean_five_view_iou": 0.9092804307740812,
+    "status": "COARSE_FIDELITY_UNAPPROVED",
+    "first_classic_motion": "FAILED_GROUPS_DROPPED"
+  },
+  {
+    "case": "xarpus",
+    "phase": "absorb_form",
+    "npc_id": 8338,
+    "vertices": 4282,
+    "faces": 8022,
+    "mean_five_view_iou": 0.8538313187517069,
+    "status": "COARSE_FIDELITY_UNAPPROVED",
+    "first_classic_motion": "FAILED_GROUPS_DROPPED"
+  },
+  {
+    "case": "xarpus",
+    "phase": "active_form",
+    "npc_id": 8340,
+    "vertices": 4282,
+    "faces": 8022,
+    "mean_five_view_iou": 0.8538313187517069,
+    "status": "COARSE_FIDELITY_UNAPPROVED",
+    "first_classic_motion": "FAILED_GROUPS_DROPPED"
+  },
+  {
+    "case": "xarpus",
+    "phase": "terminal_form",
+    "npc_id": 8341,
+    "vertices": 4296,
+    "faces": 8046,
+    "mean_five_view_iou": 0.8205749070061993,
+    "status": "COARSE_FIDELITY_UNAPPROVED",
+    "first_classic_motion": "FAILED_GROUPS_DROPPED"
+  },
+  {
+    "case": "zamorak",
+    "phase": "standard_encounter",
+    "npc_id": 3129,
+    "vertices": 3522,
+    "faces": 6562,
+    "mean_five_view_iou": 0.8236897350544933,
+    "status": "COARSE_FIDELITY_UNAPPROVED",
+    "first_classic_motion": "FAILED_GROUPS_DROPPED"
+  }
+]

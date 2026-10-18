@@ -1,0 +1,50 @@
+{
+  "asset": "worker-threshold",
+  "name": "Counterfort threshold",
+  "identity": {
+    "model_id": 1101594,
+    "object_id": 63494,
+    "npc_id": null,
+    "sequence_base": null,
+    "skeleton_base": null,
+    "frame_group_base": null
+  },
+  "asset_key": "mastery-floor-scenery:worker-threshold",
+  "model_sha256": "bd0c1d6d0bea58e4a6f705e7194204c75cc07818ab7d9a567e113aed3b456a29",
+  "vertices": 638,
+  "faces": 1152,
+  "bounds": [
+    [
+      -142,
+      -270,
+      -56
+    ],
+    [
+      142,
+      0,
+      60
+    ]
+  ],
+  "actions": [],
+  "original_geometry_and_choreography": true,
+  "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+  "generator": "tools/tower/asset-workbench/author_workflow.py",
+  "recipe": "assets/worker-threshold/recipe.json",
+  "technical_conversion": "VALIDATED",
+  "artistic_acceptance": false,
+  "gameplay_integration_tested": false,
+  "material_features": {
+    "native_face_hsl": true,
+    "textured_faces": 0,
+    "alpha_present": true,
+    "face_priorities_present": true,
+    "render_types": [
+      0
+    ],
+    "lighting": {
+      "ambient": 64,
+      "contrast": 768
+    }
+  },
+  "action_identity_map": {}
+}

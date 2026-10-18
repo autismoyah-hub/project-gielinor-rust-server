@@ -1,0 +1,102 @@
+{
+  "asset": "bellows-harrier",
+  "name": "Bellows Harrier",
+  "identity": {
+    "model_id": 1101566,
+    "object_id": 63466,
+    "npc_id": 60039,
+    "sequence_base": 45152,
+    "skeleton_base": 32152,
+    "frame_group_base": 40152
+  },
+  "asset_key": "mastery-original-boss:bellows-harrier",
+  "model_sha256": "ebd1d6fc9b9fe78230616a8978005f5cad09111f8a92b6b6873625338ffcc408",
+  "vertices": 628,
+  "faces": 1080,
+  "bounds": [
+    [
+      -179,
+      -268,
+      -50
+    ],
+    [
+      179,
+      0,
+      23
+    ]
+  ],
+  "actions": [
+    "idle",
+    "walk",
+    "attack",
+    "hit",
+    "death",
+    "bellows_burst",
+    "walk_entry"
+  ],
+  "original_geometry_and_choreography": true,
+  "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+  "generator": "tools/tower/asset-workbench/author_workflow.py",
+  "recipe": "assets/bellows-harrier/recipe.json",
+  "technical_conversion": "VALIDATED",
+  "artistic_acceptance": false,
+  "gameplay_integration_tested": false,
+  "material_features": {
+    "native_face_hsl": true,
+    "textured_faces": 0,
+    "alpha_present": true,
+    "face_priorities_present": true,
+    "render_types": [
+      0,
+      1
+    ],
+    "lighting": {
+      "ambient": 64,
+      "contrast": 768
+    }
+  },
+  "action_identity_map": {
+    "attack": {
+      "sequence_id": 45152,
+      "skeleton_id": 32154,
+      "frame_group": 40154,
+      "format": "native_classic"
+    },
+    "bellows_burst": {
+      "sequence_id": 45153,
+      "skeleton_id": 32157,
+      "frame_group": 40157,
+      "format": "native_classic"
+    },
+    "death": {
+      "sequence_id": 45154,
+      "skeleton_id": 32156,
+      "frame_group": 40156,
+      "format": "native_classic"
+    },
+    "hit": {
+      "sequence_id": 45155,
+      "skeleton_id": 32155,
+      "frame_group": 40155,
+      "format": "native_classic"
+    },
+    "idle": {
+      "sequence_id": 45156,
+      "skeleton_id": 32152,
+      "frame_group": 40152,
+      "format": "native_classic"
+    },
+    "walk": {
+      "sequence_id": 45157,
+      "skeleton_id": 32153,
+      "frame_group": 40153,
+      "format": "native_classic"
+    },
+    "walk_entry": {
+      "sequence_id": 45158,
+      "skeleton_id": 32158,
+      "frame_group": 40158,
+      "format": "native_classic"
+    }
+  }
+}

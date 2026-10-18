@@ -1,0 +1,3 @@
+TOWER_ASSET_PACKAGE 1
+model 1101573 model-1101573.model 64e55d30
+object 63473 object-63473.object a93e4630

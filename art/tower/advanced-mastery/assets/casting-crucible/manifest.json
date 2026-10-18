@@ -1,0 +1,50 @@
+{
+  "asset": "casting-crucible",
+  "name": "Cradled foundry crucible",
+  "identity": {
+    "model_id": 1101573,
+    "object_id": 63473,
+    "npc_id": null,
+    "sequence_base": null,
+    "skeleton_base": null,
+    "frame_group_base": null
+  },
+  "asset_key": "mastery-floor-scenery:casting-crucible",
+  "model_sha256": "2ad70940bf66e494636551c5888938edeb8224e012f628f7ac9d005eea12344a",
+  "vertices": 190,
+  "faces": 356,
+  "bounds": [
+    [
+      -114,
+      -121,
+      -95
+    ],
+    [
+      114,
+      0,
+      95
+    ]
+  ],
+  "actions": [],
+  "original_geometry_and_choreography": true,
+  "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+  "generator": "tools/tower/asset-workbench/author_workflow.py",
+  "recipe": "assets/casting-crucible/recipe.json",
+  "technical_conversion": "VALIDATED",
+  "artistic_acceptance": false,
+  "gameplay_integration_tested": false,
+  "material_features": {
+    "native_face_hsl": true,
+    "textured_faces": 0,
+    "alpha_present": true,
+    "face_priorities_present": true,
+    "render_types": [
+      0
+    ],
+    "lighting": {
+      "ambient": 64,
+      "contrast": 768
+    }
+  },
+  "action_identity_map": {}
+}

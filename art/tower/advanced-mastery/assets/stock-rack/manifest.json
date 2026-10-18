@@ -1,0 +1,50 @@
+{
+  "asset": "stock-rack",
+  "name": "Bar-stock service rack",
+  "identity": {
+    "model_id": 1101592,
+    "object_id": 63492,
+    "npc_id": null,
+    "sequence_base": null,
+    "skeleton_base": null,
+    "frame_group_base": null
+  },
+  "asset_key": "mastery-floor-scenery:stock-rack",
+  "model_sha256": "efda01fec195f06785c562ce17149a0fa40ff94103bba6862a39379f0e273ec3",
+  "vertices": 224,
+  "faces": 390,
+  "bounds": [
+    [
+      -78,
+      -162,
+      -28
+    ],
+    [
+      78,
+      0,
+      28
+    ]
+  ],
+  "actions": [],
+  "original_geometry_and_choreography": true,
+  "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+  "generator": "tools/tower/asset-workbench/author_workflow.py",
+  "recipe": "assets/stock-rack/recipe.json",
+  "technical_conversion": "VALIDATED",
+  "artistic_acceptance": false,
+  "gameplay_integration_tested": false,
+  "material_features": {
+    "native_face_hsl": true,
+    "textured_faces": 0,
+    "alpha_present": true,
+    "face_priorities_present": true,
+    "render_types": [
+      0
+    ],
+    "lighting": {
+      "ambient": 64,
+      "contrast": 768
+    }
+  },
+  "action_identity_map": {}
+}

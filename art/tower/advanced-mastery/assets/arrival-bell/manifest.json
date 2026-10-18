@@ -1,0 +1,50 @@
+{
+  "asset": "arrival-bell",
+  "name": "Arrival bell and votive stand",
+  "identity": {
+    "model_id": 1101571,
+    "object_id": 63471,
+    "npc_id": null,
+    "sequence_base": null,
+    "skeleton_base": null,
+    "frame_group_base": null
+  },
+  "asset_key": "mastery-floor-scenery:arrival-bell",
+  "model_sha256": "e292d9dae62b2dc1deb5c8d306236aa4ecd7ed34ff30b38e0194bd7f439c014e",
+  "vertices": 262,
+  "faces": 492,
+  "bounds": [
+    [
+      -99,
+      -182,
+      -79
+    ],
+    [
+      99,
+      0,
+      79
+    ]
+  ],
+  "actions": [],
+  "original_geometry_and_choreography": true,
+  "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+  "generator": "tools/tower/asset-workbench/author_workflow.py",
+  "recipe": "assets/arrival-bell/recipe.json",
+  "technical_conversion": "VALIDATED",
+  "artistic_acceptance": false,
+  "gameplay_integration_tested": false,
+  "material_features": {
+    "native_face_hsl": true,
+    "textured_faces": 0,
+    "alpha_present": true,
+    "face_priorities_present": true,
+    "render_types": [
+      0
+    ],
+    "lighting": {
+      "ambient": 64,
+      "contrast": 768
+    }
+  },
+  "action_identity_map": {}
+}

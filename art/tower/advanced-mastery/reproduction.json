@@ -1,0 +1,44 @@
+[
+  {
+    "asset": "basalt-hearthbearer",
+    "model_exact": true,
+    "classic_payload_files_exact": 127,
+    "native_views_exact": 5,
+    "reproduced_from_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58"
+  },
+  {
+    "asset": "bellows-harrier",
+    "model_exact": true,
+    "classic_payload_files_exact": 127,
+    "native_views_exact": 5,
+    "reproduced_from_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58"
+  },
+  {
+    "asset": "counterweight-warden",
+    "model_exact": true,
+    "classic_payload_files_exact": 127,
+    "native_views_exact": 5,
+    "reproduced_from_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58"
+  },
+  {
+    "asset": "crown-of-sluices",
+    "model_exact": true,
+    "classic_payload_files_exact": 127,
+    "native_views_exact": 5,
+    "reproduced_from_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58"
+  },
+  {
+    "asset": "glasswake-surveyor",
+    "model_exact": true,
+    "classic_payload_files_exact": 127,
+    "native_views_exact": 5,
+    "reproduced_from_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58"
+  },
+  {
+    "asset": "siltcoil-matriarch",
+    "model_exact": true,
+    "classic_payload_files_exact": 127,
+    "native_views_exact": 5,
+    "reproduced_from_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58"
+  }
+]

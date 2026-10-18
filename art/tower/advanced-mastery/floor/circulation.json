@@ -1,0 +1,60 @@
+{
+  "cell_size_native": 128,
+  "walkable_cells": 955,
+  "reachable_cells": 955,
+  "anchors": {
+    "arrival": [
+      -21,
+      20
+    ],
+    "sanctuary": [
+      -14,
+      18
+    ],
+    "workshop": [
+      -11,
+      7
+    ],
+    "waterworks": [
+      -1,
+      9
+    ],
+    "quarry": [
+      -15,
+      -5
+    ],
+    "slag": [
+      -3,
+      -5
+    ],
+    "foundry": [
+      9,
+      -17
+    ]
+  },
+  "all_areas_floor_connected": true,
+  "routes": [
+    {
+      "name": "Main descent to the foundry",
+      "areas": [
+        "arrival",
+        "sanctuary",
+        "workshop",
+        "waterworks",
+        "slag",
+        "foundry"
+      ]
+    },
+    {
+      "name": "Ore and exploration loop",
+      "areas": [
+        "workshop",
+        "quarry",
+        "slag",
+        "waterworks",
+        "workshop"
+      ]
+    }
+  ],
+  "limitations": "Offline floor connectivity only. Does not apply live clipping, exact scenery collision, NPC occupancy or gameplay pathfinding."
+}

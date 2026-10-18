@@ -1,0 +1,50 @@
+{
+  "asset": "supply-barrel",
+  "name": "Coopered workshop supply barrel",
+  "identity": {
+    "model_id": 1101593,
+    "object_id": 63493,
+    "npc_id": null,
+    "sequence_base": null,
+    "skeleton_base": null,
+    "frame_group_base": null
+  },
+  "asset_key": "mastery-floor-scenery:supply-barrel",
+  "model_sha256": "cedb39b6344def6d596d8ee36579b5f5a6cafecb31eea87ac79d7fec0c159fe3",
+  "vertices": 420,
+  "faces": 776,
+  "bounds": [
+    [
+      -34,
+      -88,
+      -37
+    ],
+    [
+      34,
+      0,
+      32
+    ]
+  ],
+  "actions": [],
+  "original_geometry_and_choreography": true,
+  "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+  "generator": "tools/tower/asset-workbench/author_workflow.py",
+  "recipe": "assets/supply-barrel/recipe.json",
+  "technical_conversion": "VALIDATED",
+  "artistic_acceptance": false,
+  "gameplay_integration_tested": false,
+  "material_features": {
+    "native_face_hsl": true,
+    "textured_faces": 0,
+    "alpha_present": true,
+    "face_priorities_present": true,
+    "render_types": [
+      0
+    ],
+    "lighting": {
+      "ambient": 64,
+      "contrast": 768
+    }
+  },
+  "action_identity_map": {}
+}

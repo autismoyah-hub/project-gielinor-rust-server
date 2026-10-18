@@ -1,0 +1,50 @@
+{
+  "asset": "rest-bench",
+  "name": "Bellkeeper resting bench",
+  "identity": {
+    "model_id": 1101591,
+    "object_id": 63491,
+    "npc_id": null,
+    "sequence_base": null,
+    "skeleton_base": null,
+    "frame_group_base": null
+  },
+  "asset_key": "mastery-floor-scenery:rest-bench",
+  "model_sha256": "3b2d5b7f5e3e2150e1b54ab141e70670d2bfb5d0f31544447108f5a78cc7894d",
+  "vertices": 384,
+  "faces": 712,
+  "bounds": [
+    [
+      -74,
+      -78,
+      -24
+    ],
+    [
+      74,
+      0,
+      24
+    ]
+  ],
+  "actions": [],
+  "original_geometry_and_choreography": true,
+  "source_commit": "f156d16217e1e3de73c34ed70ea88f0fff74ed58",
+  "generator": "tools/tower/asset-workbench/author_workflow.py",
+  "recipe": "assets/rest-bench/recipe.json",
+  "technical_conversion": "VALIDATED",
+  "artistic_acceptance": false,
+  "gameplay_integration_tested": false,
+  "material_features": {
+    "native_face_hsl": true,
+    "textured_faces": 0,
+    "alpha_present": true,
+    "face_priorities_present": true,
+    "render_types": [
+      0
+    ],
+    "lighting": {
+      "ambient": 64,
+      "contrast": 768
+    }
+  },
+  "action_identity_map": {}
+}

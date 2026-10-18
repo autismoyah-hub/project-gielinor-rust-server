@@ -1,0 +1,3 @@
+TOWER_ASSET_PACKAGE 1
+model 1101539 model-1101539.model f770d0e6
+object 63439 object-63439.object 0ef1b597
