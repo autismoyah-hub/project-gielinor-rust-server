@@ -788,6 +788,9 @@ pub fn configure<B: AccountBackend>(
     for (a,b) in [(29920,3239),(29920,3470),(3239,3470)] {
         runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,a,b,gielinor_world::held_use::Handler::ToolCraftingMixedChoices{recipes:recipes.clone(),materials:materials.clone(),cycle_ticks:3}).map_err(|e|io::Error::other(format!("Costume needle Splitbark registration: {e:?}")))?;
     }
+    for (recipes,costs) in crate::content::costume_needle_hueycoatl(n("obj"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
+        runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,29920,30085,gielinor_world::held_use::Handler::ToolCraftingMaterialChoices{recipes:std::sync::Arc::new(recipes),input_counts:std::sync::Arc::new(costs),cycle_ticks:3}).map_err(|e|io::Error::other(format!("Costume needle Hueycoatl registration: {e:?}")))?;
+    }
     for (recipes,costs) in crate::content::costume_needle_fabrics(n("obj"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
         let input=recipes[0].exchange.input;
         runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,29920,input,gielinor_world::held_use::Handler::ToolCraftingMaterialChoices{recipes:std::sync::Arc::new(recipes),input_counts:std::sync::Arc::new(costs),cycle_ticks:3}).map_err(|e|io::Error::other(format!("Costume needle fabric registration: {e:?}")))?;
