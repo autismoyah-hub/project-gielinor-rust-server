@@ -1,0 +1,26 @@
+warning: unused import: `Effect`
+ --> C:\Projects\OSRSRSPS\agent7-targets\7f91fdf4f2cffa0c44f9c9b1b52ae3494f5d414e\crates\world\src\simulation\skillcape_vendor_actions.rs:3:30
+  |
+3 |     dialogue::{Conversation, Effect, Pending},
+  |                              ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `gielinor-world` (lib) generated 1 warning (run `cargo fix --lib -p gielinor-world` to apply 1 suggestion)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\7f91fdf4f2cffa0c44f9c9b1b52ae3494f5d414e\external-harness-2637386600)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 18.76s
+     Running tests\life.rs (C:\Projects\OSRSRSPS\agent7-verification\work\7f91fdf4f2cffa0c44f9c9b1b52ae3494f5d414e\target\debug\deps\life-eaf306ef4e01bd5c.exe)
+
+running 1 test
+PG_GAUNTLET_LIFE surface=26185 late=false restoredHP=false hp=0 fineXPdelta=1500 cooked=true calls=0 violation=true
+PG_GAUNTLET_LIFE surface=26185 late=false restoredHP=true hp=10 fineXPdelta=1500 cooked=true calls=0 violation=true
+PG_GAUNTLET_LIFE surface=26185 late=true restoredHP=false hp=0 fineXPdelta=1500 cooked=true calls=0 violation=true
+PG_GAUNTLET_LIFE surface=26185 late=true restoredHP=true hp=10 fineXPdelta=1500 cooked=true calls=0 violation=true
+PG_GAUNTLET_LIFE surface=26181 late=false restoredHP=false hp=0 fineXPdelta=1500 cooked=true calls=0 violation=true
+PG_GAUNTLET_LIFE surface=26181 late=false restoredHP=true hp=10 fineXPdelta=1500 cooked=true calls=0 violation=true
+PG_GAUNTLET_LIFE surface=26181 late=true restoredHP=false hp=0 fineXPdelta=1500 cooked=true calls=0 violation=true
+PG_GAUNTLET_LIFE surface=26181 late=true restoredHP=true hp=10 fineXPdelta=1500 cooked=true calls=0 violation=true
+PG_GAUNTLET_LIFE_SUMMARY cases=8 violations=8;diagnostic observation completion is not acceptancePASS if violations>0
+test observe_death_pending_before_and_during_guaranteed_gauntlet_cooking ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.07s

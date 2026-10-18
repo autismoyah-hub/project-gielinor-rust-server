@@ -1,0 +1,51 @@
+{
+  "FreeBefore": 568352768,
+  "Targets": [
+    {
+      "Path": "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\\target\\debug\\incremental",
+      "DerivedCompilerCacheBytes": 393113624.0
+    },
+    {
+      "Path": "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\7d2133f23e00ad852df8726ead67493e83c901b4\\target\\debug\\incremental",
+      "DerivedCompilerCacheBytes": 1145861962.0
+    },
+    {
+      "Path": "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\a1658fd5c4d4a6869063a75859899d381742d271\\target\\debug\\incremental",
+      "DerivedCompilerCacheBytes": 221306562.0
+    }
+  ],
+  "PreservedExecutableHashes": {
+    "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\a1658fd5c4d4a6869063a75859899d381742d271\\target\\debug\\deps\\world-dc4d725c556822f2.exe": "D06A5A1529C703B4B2DB350734F97D5302DF4EB7CC8843427D9FCD3F7366BB71",
+    "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\\target\\debug\\deps\\life-e23c477f845bba03.exe": "F46F1F94C5A034553FA77CA480E01AC69E944AF8DB3F38B7F92ADD7A27F84D3A",
+    "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\\target\\debug\\deps\\dialogue-d36725e4c2c77784.exe": "0F3D4B5C20E65BC6817E215FE9B2051A2894115BC0243D753F96288F99A10E18",
+    "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\a1658fd5c4d4a6869063a75859899d381742d271\\target\\debug\\deps\\life-f1829936ae9c1de2.exe": "3D0F8416CB6C3B8398DB5EF5A72F6186CB3A2A8FBB1E97C7141B7EC59833932B",
+    "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\\target\\debug\\build\\num-traits-c061177cc3b6ca67\\build_script_build-c061177cc3b6ca67.exe": "2D8FACA6A8F455EE0034B974BAABC5DFC9DFD0C8B6C59BD3ECF64C45B1BAD03B",
+    "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\\target\\debug\\deps\\npc-4e5b8b9a15308639.exe": "D25FF835C27D137643BC93C3CFF421E684FF460C6BAE373BADDA1AE85000A72F",
+    "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\\target\\debug\\deps\\hood-78ae6fcf0bf766a8.exe": "103ED0AD68B30FD32BE23987C1C1C54AFDF18E9483231A29CB00736A233465D4",
+    "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\7d2133f23e00ad852df8726ead67493e83c901b4\\target\\debug\\deps\\death-390f03033d545b1c.exe": "92CE14D0E4A46952054F906479D12BEACEDA967572C94FE203922FB0EE048576",
+    "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\7d2133f23e00ad852df8726ead67493e83c901b4\\target\\debug\\deps\\buttons-7a79550b7dbedc8e.exe": "C15560783DD510DEB5C8D44DAF299F612D174340073FFBD63801278D22CD1163",
+    "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\7d2133f23e00ad852df8726ead67493e83c901b4\\target\\debug\\build\\num-traits-f0407a49ff9a6773\\build-script-build.exe": "A34BF5D09BDCEFCDD11605C1BED0D4D1F604D441CEA6C6ACF2F54A7E8A2440C1",
+    "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\7d2133f23e00ad852df8726ead67493e83c901b4\\target\\debug\\build\\num-traits-f0407a49ff9a6773\\build_script_build-f0407a49ff9a6773.exe": "A34BF5D09BDCEFCDD11605C1BED0D4D1F604D441CEA6C6ACF2F54A7E8A2440C1",
+    "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\\target\\debug\\deps\\tail-b85964ceb0cdc3a5.exe": "34E25C9EEC552F75837A3737AD7424100F7F1F22A2665298BBE16D507515E073",
+    "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\7d2133f23e00ad852df8726ead67493e83c901b4\\target\\debug\\deps\\bindings-b14984a0e250c4b7.exe": "DA9498417C7975B8A7CCE41F38A1162E980167F227D704A290313A56EA618487",
+    "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\a1658fd5c4d4a6869063a75859899d381742d271\\target\\debug\\deps\\selected-74ad2b79cb934629.exe": "5F4D4F86A3CBEB3542277916E3C64D9D7B40BDDBE56F95FBBDE16BC8AF114EB4",
+    "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\7d2133f23e00ad852df8726ead67493e83c901b4\\target\\debug\\deps\\pending-92e59b95adfc7c74.exe": "E151824F2B8D0A7836399FF346802E90CC4DCC4C05F4193095E82D65309C4D18",
+    "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\7d2133f23e00ad852df8726ead67493e83c901b4\\target\\debug\\build\\num-traits-72ceead1bb3b25a7\\build-script-build.exe": "BCC264AD6BEAD53A3B36A2BF7B5058378BA40694D40A073FE51D9A7CB0D7A55F",
+    "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\7d2133f23e00ad852df8726ead67493e83c901b4\\target\\debug\\gielinor-server.exe": "4EA291F8169BA26DACAFB9AD293EC5306080CD1399F1205544A605D7D6AEC849",
+    "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\7d2133f23e00ad852df8726ead67493e83c901b4\\target\\debug\\deps\\gielinor_server-7abd10c65476b4d7.exe": "4EA291F8169BA26DACAFB9AD293EC5306080CD1399F1205544A605D7D6AEC849",
+    "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\7d2133f23e00ad852df8726ead67493e83c901b4\\target\\debug\\deps\\entry-1ff478e75d69f2b4.exe": "F67F4993DF280498047A9C62B82C6DA2BE6698805B915A9AF1690E1B37F1404E",
+    "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\7d2133f23e00ad852df8726ead67493e83c901b4\\target\\debug\\deps\\ordinary-066f8bcacf9930ae.exe": "CE054856FD845C5268CE557DD43159EDBAAEAB903E9F6ADEFE29F3BBFEC1AC2B",
+    "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\\target\\debug\\deps\\facts-26716d6c63247d5e.exe": "08ED31201236A037491785DDBBB4B4A018C8C5D46CBF3069BECA2E2F9095B989",
+    "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\\target\\debug\\deps\\authority-0f2adb211ece296a.exe": "6F8D418A14BD62E7AC2B5E5DBA5281BC06100B9B461BCBFAB5478A5C64F6CA8C",
+    "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\\target\\debug\\deps\\owned-542a304984230faa.exe": "F43299578C42AE25800EB557FBD337770E96CDE21D6A58395972B819855E7DE4",
+    "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\7d2133f23e00ad852df8726ead67493e83c901b4\\target\\debug\\deps\\cape-d6d7bf94a13d0d63.exe": "24C71ACEDCF8AFB59E8BD42F4E677B22C1FDE56003806A0498315EB3F2C43DA9",
+    "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\\target\\debug\\deps\\purchase-34a52fc432f52b86.exe": "6D00F5BE7B08FA76C6911C1A2DE650EBED54F8F2B54CDFC36C1F297A04A0D78F",
+    "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\7d2133f23e00ad852df8726ead67493e83c901b4\\target\\debug\\deps\\expiry-7e982c4e13a8eff3.exe": "9E6866BD588C00CB8983693CD37B7AE3B023DCA34103CA9D1218F045D74CB807",
+    "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\a1658fd5c4d4a6869063a75859899d381742d271\\target\\debug\\deps\\tail-d67457e90b046636.exe": "770F0CFEFB95DF1626128DD4B81D8ABCB4C9A2C517E17F678EBB6364207E8035",
+    "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\7d2133f23e00ad852df8726ead67493e83c901b4\\target\\debug\\build\\num-traits-72ceead1bb3b25a7\\build_script_build-72ceead1bb3b25a7.exe": "BCC264AD6BEAD53A3B36A2BF7B5058378BA40694D40A073FE51D9A7CB0D7A55F",
+    "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\7d2133f23e00ad852df8726ead67493e83c901b4\\target\\debug\\deps\\observe-1ca2663161464b5c.exe": "DA77135CFBC56569735E2E0439FEE77821BE43032EF8BB88478D78DCC4F4B3E1",
+    "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\\target\\debug\\build\\num-traits-c061177cc3b6ca67\\build-script-build.exe": "2D8FACA6A8F455EE0034B974BAABC5DFC9DFD0C8B6C59BD3ECF64C45B1BAD03B"
+  },
+  "FreeAfter": 2292060160,
+  "Scope": "Only three exact owned Cargo incremental compiler caches from completed campaigns; no executable/dependency library/evidence/resource/database deleted"
+}

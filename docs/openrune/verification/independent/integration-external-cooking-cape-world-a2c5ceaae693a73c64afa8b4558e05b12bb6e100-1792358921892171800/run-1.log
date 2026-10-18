@@ -1,0 +1,32 @@
+warning: unused import: `Effect`
+ --> C:\Projects\OSRSRSPS\agent7-targets\a2c5ceaae693a73c64afa8b4558e05b12bb6e100\crates\world\src\simulation\skillcape_vendor_actions.rs:3:30
+  |
+3 |     dialogue::{Conversation, Effect, Pending},
+  |                              ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `gielinor-world` (lib) generated 1 warning (run `cargo fix --lib -p gielinor-world` to apply 1 suggestion)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\a2c5ceaae693a73c64afa8b4558e05b12bb6e100\external-harness-9861451500)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 7.57s
+     Running tests\cape.rs (C:\Projects\OSRSRSPS\agent7-verification\work\a2c5ceaae693a73c64afa8b4558e05b12bb6e100\target\debug\deps\cape-93eae17ce1bd4249.exe)
+
+running 2 tests
+
+thread 'live_equipment_member_refusal_and_atomic_guards' (12704) panicked at tests\cape.rs:397:17:
+assertion `left == right` failed: surface26185slot0mode0
+  left: Inventory { stack: Normal, placeholders: false, slots: [Some(Item { id: 2142, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 9 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 2132, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 995, count: 777, vars: 0 }), Some(Item { id: 2132, count: 1, vars: 0 })], modified: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27} }
+ right: Inventory { stack: Normal, placeholders: false, slots: [Some(Item { id: 2146, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 9 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 2132, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 995, count: 777, vars: 0 }), Some(Item { id: 2132, count: 1, vars: 0 })], modified: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27} }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test live_equipment_member_refusal_and_atomic_guards ... FAILED
+PG_COOK_CAPE108 bothcapes fire/range selected0/13/27 rates100/125/500 current1/50/99 fullbag sameexactXP/gear zeroRNG strictselected2tick completion PASS;controlled0chance recipe,not actualfoodcurve metadata
+test two_capes_fire_range_drained_levels_full_bag_and_fractional_rates ... ok
+
+failures:
+
+failures:
+    live_equipment_member_refusal_and_atomic_guards
+
+test result: FAILED. 1 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 8.24s
+
+error: test failed, to rerun pass `--test cape`

@@ -1,0 +1,77 @@
+warning: unnecessary `unsafe` block
+  --> C:\Projects\OSRSRSPS\agent7-targets\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\vendor\num-bigint-0.4.6\src\biguint\addition.rs:23:9
+   |
+23 |         unsafe { arch::_addcarry_u64(carry, a, b, out) }
+   |         ^^^^^^ unnecessary `unsafe` block
+   |
+   = note: `#[warn(unused_unsafe)]` (part of `#[warn(unused)]`) on by default
+
+warning: unnecessary `unsafe` block
+  --> C:\Projects\OSRSRSPS\agent7-targets\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\vendor\num-bigint-0.4.6\src\biguint\subtraction.rs:23:9
+   |
+23 |         unsafe { arch::_subborrow_u64(borrow, a, b, out) }
+   |         ^^^^^^ unnecessary `unsafe` block
+
+warning: `num-bigint` (lib) generated 2 warnings
+warning: unused import: `Effect`
+ --> C:\Projects\OSRSRSPS\agent7-targets\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\crates\world\src\simulation\skillcape_vendor_actions.rs:3:30
+  |
+3 |     dialogue::{Conversation, Effect, Pending},
+  |                              ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `gielinor-world` (lib) generated 1 warning (run `cargo fix --lib -p gielinor-world` to apply 1 suggestion)
+warning: unused macro definition: `prefix`
+  --> C:\Projects\OSRSRSPS\agent7-targets\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\vendor\libbz2-rs-sys-0.2.2\src\bzlib.rs:71:14
+   |
+71 | macro_rules! prefix {
+   |              ^^^^^^
+   |
+   = note: `#[warn(unused_macros)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `prefix`
+  --> C:\Projects\OSRSRSPS\agent7-targets\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\vendor\libbz2-rs-sys-0.2.2\src\bzlib.rs:88:16
+   |
+88 | pub(crate) use prefix;
+   |                ^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `libbz2_rs_sys_version`
+  --> C:\Projects\OSRSRSPS\agent7-targets\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\vendor\libbz2-rs-sys-0.2.2\src\lib.rs:83:16
+   |
+83 | pub(crate) use libbz2_rs_sys_version;
+   |                ^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated function `from_mut` is never used
+   --> C:\Projects\OSRSRSPS\agent7-targets\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\vendor\libbz2-rs-sys-0.2.2\src\bzlib.rs:253:30
+    |
+230 |     impl<S: StreamState> BzStream<S> {
+    |     -------------------------------- associated function in this implementation
+...
+253 |         pub(crate) unsafe fn from_mut(s: &mut bz_stream) -> &mut Self {
+    |                              ^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `libbz2-rs-sys` (lib) generated 4 warnings (run `cargo fix --lib -p libbz2-rs-sys` to apply 2 suggestions)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\external-harness-9154201400)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.75s
+     Running tests\spawns.rs (C:\Projects\OSRSRSPS\agent7-verification\work\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\target\debug\deps\spawns-ce178ae2f83934c4.exe)
+
+running 1 test
+
+thread 'actual_vendor_spawns_and_passable_native_admission_tiles' (14588) panicked at tests\spawns.rs:44:9:
+actual target vendor5810 absent around its guild
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test actual_vendor_spawns_and_passable_native_admission_tiles ... FAILED
+
+failures:
+
+failures:
+    actual_vendor_spawns_and_passable_native_admission_tiles
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.25s
+
+error: test failed, to rerun pass `--test spawns`

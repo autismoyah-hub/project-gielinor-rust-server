@@ -1,0 +1,30 @@
+   Compiling gielinor-world v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\a2c5ceaae693a73c64afa8b4558e05b12bb6e100\crates\world)
+warning: unused import: `Effect`
+ --> C:\Projects\OSRSRSPS\agent7-targets\a2c5ceaae693a73c64afa8b4558e05b12bb6e100\crates\world\src\simulation\skillcape_vendor_actions.rs:3:30
+  |
+3 |     dialogue::{Conversation, Effect, Pending},
+  |                              ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `gielinor-world` (lib) generated 1 warning (run `cargo fix --lib -p gielinor-world` to apply 1 suggestion)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\a2c5ceaae693a73c64afa8b4558e05b12bb6e100\external-harness-9607952600)
+error[E0599]: no method named `set_modal` found for struct `World` in the current scope
+   --> tests\cape.rs:366:27
+    |
+366 |                         w.set_modal(a, true).unwrap();
+    |                           ^^^^^^^^^
+    |
+help: there is a method `set_main_modal` with a similar name
+    |
+366 |                         w.set_main_modal(a, true).unwrap();
+    |                                +++++
+
+error[E0599]: no method named `remove` found for struct `Locations` in the current scope
+   --> tests\cape.rs:369:37
+    |
+369 |                         w.locations.remove(loc);
+    |                                     ^^^^^^ method not found in `Locations`
+
+For more information about this error, try `rustc --explain E0599`.
+error: could not compile `proving-ground-energy` (test "cape") due to 2 previous errors

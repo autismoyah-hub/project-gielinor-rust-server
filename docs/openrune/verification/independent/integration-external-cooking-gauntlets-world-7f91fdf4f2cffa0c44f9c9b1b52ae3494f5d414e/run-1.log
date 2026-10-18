@@ -1,0 +1,18 @@
+warning: unused import: `Effect`
+ --> C:\Projects\OSRSRSPS\agent7-targets\7f91fdf4f2cffa0c44f9c9b1b52ae3494f5d414e\crates\world\src\simulation\skillcape_vendor_actions.rs:3:30
+  |
+3 |     dialogue::{Conversation, Effect, Pending},
+  |                              ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `gielinor-world` (lib) generated 1 warning (run `cargo fix --lib -p gielinor-world` to apply 1 suggestion)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\7f91fdf4f2cffa0c44f9c9b1b52ae3494f5d414e\external-harness-3079438000)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 16.90s
+     Running tests\world.rs (C:\Projects\OSRSRSPS\agent7-verification\work\7f91fdf4f2cffa0c44f9c9b1b52ae3494f5d414e\target\debug\deps\world-90d420ed9007d98f.exe)
+
+running 1 test
+PG_GAUNTLET_WORLD162 fire-range three selectedslots liveequip/remove/member/count/vars/slot/catalog/profile/currentlevel,capeprecedence,invalidoriginal/bothoutputs andWalk/Close/logout/modal/stale controls preservewholeimages andRNG policy PASS
+test actual_world_live_tool_cape_precedence_and_late_atomicity ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 19.41s

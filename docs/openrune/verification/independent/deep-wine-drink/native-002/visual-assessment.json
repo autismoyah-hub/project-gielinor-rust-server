@@ -1,0 +1,24 @@
+{
+  "implementation_id": "OR-MIG-0137",
+  "tested_sha": "dfc2a1667c6c97e4d525a1aaea1ba7154d9aaad7",
+  "status": "PASS_SCOPED",
+  "scope": "Directly viewed both actual native software-rendered frames: Skills shows Attack0/99 and HP10/10, chat contains six wine messages. Inventory shows six empty jug icons at selected slots0/4/7/13/20/27 with the wine duplicate retained at1 in the full bag. Scene/minimap are partially drawn by pinned client; no full visual/audio engine parity. Actual renderer overlays native interfaces; no manual reconstruction or edited pixels.",
+  "frames": [
+    {
+      "private_file": "work\\native-wine-drink\\native-002\\wine-skills-attack0.bmp",
+      "sha256": "26e8767e8b16bc9e6e7bf00d6f8bfb57639f49bc72ca2c915a4bbc407aeff0f8",
+      "width": 765,
+      "signed_height": -503
+    },
+    {
+      "private_file": "work\\native-wine-drink\\native-002\\wine-inventory-jugs.bmp",
+      "sha256": "0e6ec14e153c96f1a95922c10887f7085f84c24022b8c0681095e65f71592793",
+      "width": 765,
+      "signed_height": -503
+    }
+  ],
+  "limitations": [
+    "Unrelated Skills cells and totallevel presentation are not independently accepted by this bounded visual check. All authoritative stats/fineXP require separate raw packet and SQL comparison.",
+    "Private rendered cache assets are not published."
+  ]
+}

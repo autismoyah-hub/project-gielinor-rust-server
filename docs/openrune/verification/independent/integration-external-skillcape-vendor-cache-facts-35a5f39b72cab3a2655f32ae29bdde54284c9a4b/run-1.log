@@ -1,0 +1,85 @@
+   Compiling autocfg v1.4.0 (C:\Projects\OSRSRSPS\agent7-targets\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\vendor\autocfg-1.4.0)
+   Compiling num-traits v0.2.19 (C:\Projects\OSRSRSPS\agent7-targets\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\vendor\num-traits-0.2.19)
+   Compiling num-integer v0.1.46 (C:\Projects\OSRSRSPS\agent7-targets\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\vendor\num-integer-0.1.46)
+   Compiling num-bigint v0.4.6 (C:\Projects\OSRSRSPS\agent7-targets\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\vendor\num-bigint-0.4.6)
+warning: unnecessary `unsafe` block
+  --> C:\Projects\OSRSRSPS\agent7-targets\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\vendor\num-bigint-0.4.6\src\biguint\addition.rs:23:9
+   |
+23 |         unsafe { arch::_addcarry_u64(carry, a, b, out) }
+   |         ^^^^^^ unnecessary `unsafe` block
+   |
+   = note: `#[warn(unused_unsafe)]` (part of `#[warn(unused)]`) on by default
+
+warning: unnecessary `unsafe` block
+  --> C:\Projects\OSRSRSPS\agent7-targets\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\vendor\num-bigint-0.4.6\src\biguint\subtraction.rs:23:9
+   |
+23 |         unsafe { arch::_subborrow_u64(borrow, a, b, out) }
+   |         ^^^^^^ unnecessary `unsafe` block
+
+warning: `num-bigint` (lib) generated 2 warnings
+   Compiling adler2 v2.0.1 (C:\Projects\OSRSRSPS\agent7-targets\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\vendor\adler2-2.0.1)
+   Compiling miniz_oxide v0.8.9 (C:\Projects\OSRSRSPS\agent7-targets\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\vendor\miniz_oxide-0.8.9)
+   Compiling gielinor-protocol v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\crates\protocol)
+   Compiling libbz2-rs-sys v0.2.2 (C:\Projects\OSRSRSPS\agent7-targets\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\vendor\libbz2-rs-sys-0.2.2)
+warning: unused macro definition: `prefix`
+  --> C:\Projects\OSRSRSPS\agent7-targets\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\vendor\libbz2-rs-sys-0.2.2\src\bzlib.rs:71:14
+   |
+71 | macro_rules! prefix {
+   |              ^^^^^^
+   |
+   = note: `#[warn(unused_macros)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `prefix`
+  --> C:\Projects\OSRSRSPS\agent7-targets\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\vendor\libbz2-rs-sys-0.2.2\src\bzlib.rs:88:16
+   |
+88 | pub(crate) use prefix;
+   |                ^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `libbz2_rs_sys_version`
+  --> C:\Projects\OSRSRSPS\agent7-targets\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\vendor\libbz2-rs-sys-0.2.2\src\lib.rs:83:16
+   |
+83 | pub(crate) use libbz2_rs_sys_version;
+   |                ^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated function `from_mut` is never used
+   --> C:\Projects\OSRSRSPS\agent7-targets\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\vendor\libbz2-rs-sys-0.2.2\src\bzlib.rs:253:30
+    |
+230 |     impl<S: StreamState> BzStream<S> {
+    |     -------------------------------- associated function in this implementation
+...
+253 |         pub(crate) unsafe fn from_mut(s: &mut bz_stream) -> &mut Self {
+    |                              ^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `libbz2-rs-sys` (lib) generated 4 warnings (run `cargo fix --lib -p libbz2-rs-sys` to apply 2 suggestions)
+warning: unused import: `Effect`
+ --> C:\Projects\OSRSRSPS\agent7-targets\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\crates\world\src\simulation\skillcape_vendor_actions.rs:3:30
+  |
+3 |     dialogue::{Conversation, Effect, Pending},
+  |                              ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `gielinor-world` (lib) generated 1 warning (run `cargo fix --lib -p gielinor-world` to apply 1 suggestion)
+   Compiling gielinor-cache v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\crates\cache)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\external-harness-3645283900)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1m 21s
+     Running tests\facts.rs (C:\Projects\OSRSRSPS\agent7-verification\work\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\target\debug\deps\facts-26716d6c63247d5e.exe)
+
+running 1 test
+PG_VENDOR_CACHE_ITEM id995 member=false stackable=true wear=[-1, -1, -1] ordinary
+PG_VENDOR_CACHE_ITEM id9780 member=true stackable=false wear=[1, -1, -1] ordinary
+PG_VENDOR_CACHE_ITEM id9781 member=true stackable=false wear=[1, -1, -1] ordinary
+PG_VENDOR_CACHE_ITEM id9782 member=true stackable=false wear=[0, 8, -1] ordinary
+PG_VENDOR_CACHE_ITEM id9801 member=true stackable=false wear=[1, -1, -1] ordinary
+PG_VENDOR_CACHE_ITEM id9802 member=true stackable=false wear=[1, -1, -1] ordinary
+PG_VENDOR_CACHE_ITEM id9803 member=true stackable=false wear=[0, 8, -1] ordinary
+PG_VENDOR_CACHE_NPC id5810 name="Master Crafter" size1 Talk-to static
+PG_VENDOR_CACHE_NPC id2658 name="Head chef" size1 Talk-to static
+PG_VENDOR_CACHE_FACTS7items2NPC2skills2params actualreleasedmask=007fffff;facts only,no serverfactory/startup/native acceptance PASS
+test seven_items_two_sellers_and_released_skill_mask_from_actual_cache ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.28s

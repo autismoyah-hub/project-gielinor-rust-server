@@ -30,7 +30,7 @@ for ident,folder,sha in [('OR-MIG-0010','deep-combat','5a260c1bd6efa5f8a221bed7c
         add(ident,sha,'V4','IN_PROGRESS','Independent protected-source and pinned-documentation subcomparisons PASS within recorded scope; complete feature comparison remains open. No executable donor parity is claimed.',refs)
 for manifest in OUT.glob('OR-MIG-0024-*-independent*/manifest.json'):
     value=json.loads(manifest.read_text(encoding='utf-8'))
-    if value.get('suite','').startswith(('imcando-held-','imcando-worn-','rune-altars-','rune-close-','daeyalt-','crafting-cape-','zealot-','skillcape-vendor-')):continue  # Scoped aggregate retains partial and resource-deferred attempts.
+    if value.get('suite','').startswith(('imcando-held-','imcando-worn-','rune-altars-','rune-close-','daeyalt-','crafting-cape-','zealot-','skillcape-vendor-','cooking-cape-','cooking-gauntlets-','wine-drink-','food-life-','prayer-life-')):continue  # Scoped aggregate retains partial and resource-deferred attempts.
     if value.get('suite')=='light-life':continue  # Exact-target finding below retains raw FAIL/BLOCKED attempts.
     if value.get('outcome')!='PARTIAL':continue
     sha=value['implementation_commit_sha'];evidence=[str(manifest.relative_to(ROOT)).replace('\\','/')]
@@ -38,7 +38,7 @@ for manifest in OUT.glob('OR-MIG-0024-*-independent*/manifest.json'):
     add('OR-MIG-0024',sha,'V1','IN_PROGRESS','Four independent authoritative World action tests PASS across 319 fixtures: all selected slots, full bags, duplicate/stale input, overheal, remainders and malformed transactions. Runtime packet decode and complete food matrix remain open.',evidence)
 for manifest in OUT.glob('integration-*/manifest.json'):
     value=json.loads(manifest.read_text(encoding='utf-8'))
-    if value.get('suite','').startswith(('imcando-held-','imcando-worn-','rune-altars-','rune-close-','daeyalt-','crafting-cape-','zealot-','skillcape-vendor-')):continue  # Recorded by immutable scoped aggregate below, not legacy filter format.
+    if value.get('suite','').startswith(('imcando-held-','imcando-worn-','rune-altars-','rune-close-','daeyalt-','crafting-cape-','zealot-','skillcape-vendor-','cooking-cape-','cooking-gauntlets-','wine-drink-','food-life-','prayer-life-')):continue  # Recorded by immutable scoped aggregate below, not legacy filter format.
     if value.get('suite') in ['member-tanning-world','member-tanning-guards']:
         continue  # Combined independent assessment includes retained partial attempt.
     if value.get('suite') in ['light-legacy-bindings','light-bindings','light-tool-regression']:
@@ -850,3 +850,50 @@ path=OUT/'skillcape-vendor-world-extension.json'
 if path.exists():
     result=json.loads(path.read_text(encoding='utf-8'))
     add('OR-MIG-0131',result['tested_sha'],'V1','IN_PROGRESS',result['scope']+' '+result['harness_history']+' '+'; '.join(result['remaining']),[path.relative_to(ROOT).as_posix()],scope='skillcape-vendor-owned-life-extension')
+
+path=OUT/'skillcape-vendor-v1-complete.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    add('OR-MIG-0131',result['tested_sha'],'V1','PASS',result['scope']+' '+'; '.join(result['qualifications']),[path.relative_to(ROOT).as_posix()],scope='skillcape-vendor-v1-obligations')
+
+path=OUT/'skillcape-vendor-native-population-blocker.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    for level in result['blocked_levels']:
+        add('OR-MIG-0131',result['tested_sha'],level,'BLOCKED',result['scope']+' '+result['specific_blocker']+' '+result['required_resolution'],[path.relative_to(ROOT).as_posix()],scope='skillcape-vendor-native-population-dependency')
+
+path=OUT/'cooking-cape-life-finding.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    add('OR-MIG-0132',result['tested_sha'],'V1','FAIL',result['scope']+' '+result['passing_scope']+' '+'; '.join(result['qualifications']),[path.relative_to(ROOT).as_posix()],scope='cooking-cape-life-acceptance')
+
+path=OUT/'cooking-gauntlets-life-finding.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    add('OR-MIG-0133',result['tested_sha'],'V1','FAIL',result['scope']+' '+str(result['passing_scope'])+' '+'; '.join(result['qualifications']),[path.relative_to(ROOT).as_posix()],scope='cooking-gauntlets-life-acceptance')
+
+for filename in ['original-food-life-finding.json','wine-drink-life-finding.json']:
+    path=OUT/filename
+    if path.exists():
+        result=json.loads(path.read_text(encoding="utf-8"))
+        add(result["implementation_id"],result["tested_sha"],"V1","FAIL",result["scope"]+" "+result["actionable_correction"],[path.relative_to(ROOT).as_posix()],scope="ordinary-food-life-boundary")
+
+path=OUT/'reference-wine-drink/comparison.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    add('OR-MIG-0137',result['tested_sha'],'V4','IN_PROGRESS',result['scope']+' '+'; '.join(result['adaptations']+result['limitations']),[path.relative_to(ROOT).as_posix()],scope='wine-drink-exact-reference-facts')
+path=OUT/'integration-external-wine-drink-bindings-dfc2a1667c6c97e4d525a1aaea1ba7154d9aaad7/manifest.json'
+if path.exists() and json.loads(path.read_text(encoding='utf-8'))['status']=='PASS':
+    add('OR-MIG-0137','dfc2a1667c6c97e4d525a1aaea1ba7154d9aaad7','V0','IN_PROGRESS','Actual two-item/two-stat cache-backed wine factory compiled and executed with37atomic malformed registration refusals. Actual server startup/binary/native route remain separate.',[path.relative_to(ROOT).as_posix()],scope='wine-drink-actual-bindings')
+
+path=OUT/'original-prayer-life-finding.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    add('OR-MIG-0051',result['tested_sha'],'V1','FAIL',result['scope']+' '+result['actionable_correction'],[path.relative_to(ROOT).as_posix()],scope='original-prayer-life-boundary')
+path=OUT/'deep-wine-drink/native-002/independent-assessment.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PASS_SCOPED'
+    visual=OUT/'deep-wine-drink/native-002/visual-assessment.json';assert json.loads(visual.read_text(encoding='utf-8'))['status']=='PASS_SCOPED'
+    add('OR-MIG-0137',result['tested_sha'],'V0','PASS','Exact137server binary compiled, actualcache-backed wine factory/twoitems/twostats/37refusals executed, actualruntime startup and six genuine native Drink menus reached registered selected wine/subtraction map.',[path.relative_to(ROOT).as_posix(),visual.relative_to(ROOT).as_posix()],scope='wine-drink-runtime-v0')
+    for level in ['V2','V3']:
+        add('OR-MIG-0137',result['tested_sha'],level,'IN_PROGRESS',result['scope']+' '+'; '.join(result['qualifications']),[path.relative_to(ROOT).as_posix(),visual.relative_to(ROOT).as_posix()],scope='wine-drink-native-persistence')

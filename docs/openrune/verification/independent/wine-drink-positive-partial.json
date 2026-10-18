@@ -1,0 +1,23 @@
+{
+  "implementation_id": "OR-MIG-0137",
+  "tested_sha": "dfc2a1667c6c97e4d525a1aaea1ba7154d9aaad7",
+  "level": "V1",
+  "status": "IN_PROGRESS",
+  "scope": "Independent normal wine public transaction and World dispatch controls, not complete V1 or contract acceptance.",
+  "checks": {
+    "kernel": 2454,
+    "world_positive": 1008,
+    "world_refusal": 48
+  },
+  "passing_scope": "All28 selected slots, full/sparse bags, same-slot1935jug, heal11 with cap/overheal, current Attack subtract2 floor0 including repeated5to3to1to0, wholeStats/fineXP/gear conservation, member/F2P dispatch, duplicate same-clock delay and stale jug refusal, invalid catalog/count/vars/secondary policies before state/events/RNG. No random draws.",
+  "remaining": [
+    "Actual death/zero-HP negative tests are next; no historical or newer target result inherited.",
+    "V0 startup/cache bindings, V2 genuine native display and interaction, V3 storage/restart/recovery, V4 source/Wiki comparison remain open."
+  ],
+  "evidence_sha256": {
+    "integration-external-wine-drink-kernel-dfc2a1667c6c97e4d525a1aaea1ba7154d9aaad7/manifest.json": "3cdb22286f2abec4d6e583065bfe8ed268d863e89bfd58425f438bed23a51c15",
+    "integration-external-wine-drink-kernel-dfc2a1667c6c97e4d525a1aaea1ba7154d9aaad7/run-1.log": "9b51879b42917d2b59b8a3cd052d7ad2211f5e1f552c8b6b1c16be1a6faca92f",
+    "integration-external-wine-drink-world-dfc2a1667c6c97e4d525a1aaea1ba7154d9aaad7/manifest.json": "059961b5c46a42266c5537cdb2fc50535aed3625cabc83feb6245c944c5e2031",
+    "integration-external-wine-drink-world-dfc2a1667c6c97e4d525a1aaea1ba7154d9aaad7/run-1.log": "d6db6ddbcf7abe7bf0b8d3107a6b74dfc00c3bac4430dea23f7d2bad65d9586e"
+  }
+}

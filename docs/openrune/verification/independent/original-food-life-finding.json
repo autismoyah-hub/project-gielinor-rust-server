@@ -1,0 +1,39 @@
+{
+  "implementation_id": "OR-MIG-0024",
+  "tested_sha": "ae3d234c71764dd2364f8452fc1974a54a6783f0",
+  "level": "V1",
+  "status": "FAIL",
+  "finding": "PG-DEF-003 extension: ordinary food consumption during unresolved death",
+  "priority": "P2 ordinary correction backlog; no FORGE stop or external issue",
+  "scope": "18 fresh independently executed publicWorld scenarios: member/F2P, selected slots0/13/27, direct zeroHP, actual lethal DeathRequested, actual death then visible HP10 restoration without respawn. Selected food is consumed after all three life states. No native dead-player reachability or storage claim. Diagnostic test PASS means observation completion only.",
+  "actionable_correction": "Apply common alive/death-pending guard at authoritative food consumption before RNG, inventory/stat transaction and food event publication. VisibleHP restoration alone must not clear unresolved death. Publish a separately pinned correction and rerun unchanged scenarios at that SHA; retain this historical FAIL.",
+  "qualifications": [
+    "Ordinary meat2142 only for original24; wine1993/jug1935 and currentAttack subtraction only for137. No potion/Herblore gameplay.",
+    "Actual lethal-hit cases assert DeathRequested and HP0 before food submission. These are independent tests at each recorded target; no moving HEAD substitution.",
+    "Existing successful native/durability campaigns retained; no replay or database reset. Other acceptance levels remain separate."
+  ],
+  "observations": [
+    "PG_ORIGINAL_FOOD_LIFE member=false slot=0 phase=0 submitted=true hp_before=0 hp_after=3 selectedRetained=false violation=true",
+    "PG_ORIGINAL_FOOD_LIFE member=false slot=0 phase=1 submitted=true hp_before=0 hp_after=3 selectedRetained=false violation=true",
+    "PG_ORIGINAL_FOOD_LIFE member=false slot=0 phase=2 submitted=true hp_before=10 hp_after=10 selectedRetained=false violation=true",
+    "PG_ORIGINAL_FOOD_LIFE member=false slot=13 phase=0 submitted=true hp_before=0 hp_after=3 selectedRetained=false violation=true",
+    "PG_ORIGINAL_FOOD_LIFE member=false slot=13 phase=1 submitted=true hp_before=0 hp_after=3 selectedRetained=false violation=true",
+    "PG_ORIGINAL_FOOD_LIFE member=false slot=13 phase=2 submitted=true hp_before=10 hp_after=10 selectedRetained=false violation=true",
+    "PG_ORIGINAL_FOOD_LIFE member=false slot=27 phase=0 submitted=true hp_before=0 hp_after=3 selectedRetained=false violation=true",
+    "PG_ORIGINAL_FOOD_LIFE member=false slot=27 phase=1 submitted=true hp_before=0 hp_after=3 selectedRetained=false violation=true",
+    "PG_ORIGINAL_FOOD_LIFE member=false slot=27 phase=2 submitted=true hp_before=10 hp_after=10 selectedRetained=false violation=true",
+    "PG_ORIGINAL_FOOD_LIFE member=true slot=0 phase=0 submitted=true hp_before=0 hp_after=3 selectedRetained=false violation=true",
+    "PG_ORIGINAL_FOOD_LIFE member=true slot=0 phase=1 submitted=true hp_before=0 hp_after=3 selectedRetained=false violation=true",
+    "PG_ORIGINAL_FOOD_LIFE member=true slot=0 phase=2 submitted=true hp_before=10 hp_after=10 selectedRetained=false violation=true",
+    "PG_ORIGINAL_FOOD_LIFE member=true slot=13 phase=0 submitted=true hp_before=0 hp_after=3 selectedRetained=false violation=true",
+    "PG_ORIGINAL_FOOD_LIFE member=true slot=13 phase=1 submitted=true hp_before=0 hp_after=3 selectedRetained=false violation=true",
+    "PG_ORIGINAL_FOOD_LIFE member=true slot=13 phase=2 submitted=true hp_before=10 hp_after=10 selectedRetained=false violation=true",
+    "PG_ORIGINAL_FOOD_LIFE member=true slot=27 phase=0 submitted=true hp_before=0 hp_after=3 selectedRetained=false violation=true",
+    "PG_ORIGINAL_FOOD_LIFE member=true slot=27 phase=1 submitted=true hp_before=0 hp_after=3 selectedRetained=false violation=true",
+    "PG_ORIGINAL_FOOD_LIFE member=true slot=27 phase=2 submitted=true hp_before=10 hp_after=10 selectedRetained=false violation=true"
+  ],
+  "evidence_sha256": {
+    "integration-external-food-life-original-ae3d234c71764dd2364f8452fc1974a54a6783f0-1792361183938727000/manifest.json": "3a31488a8a6d3a732ff5f4e95c5a4ccd13abc0d6df437469b417fb32bf14d043",
+    "integration-external-food-life-original-ae3d234c71764dd2364f8452fc1974a54a6783f0-1792361183938727000/run-1.log": "0fd9b3894176a1bf82bd17a2ce951e002e8829734babcb36bcdc0793cb181e68"
+  }
+}

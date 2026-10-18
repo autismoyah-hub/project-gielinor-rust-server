@@ -1,0 +1,18 @@
+{
+  "implementation_id": "OR-MIG-0131",
+  "tested_sha": "35a5f39b72cab3a2655f32ae29bdde54284c9a4b",
+  "status": "PASS_SCOPED",
+  "server_sha256": "dba09fb2b21c1750a3ce7d72faf131c65b7316da1ef6d13075f24ad23025d5e0",
+  "arguments": [
+    "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\\target\\debug\\gielinor-server.exe",
+    "--game-cache",
+    "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\native-combat\\resources\\cache\\game",
+    "--js5-cache",
+    "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\native-combat\\resources\\cache\\js5",
+    "--symbols",
+    "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\native-combat\\resources\\symbols",
+    "--check"
+  ],
+  "exit_code": 0,
+  "scope": "Exact pinned actual executable cache/content startup check. No listening socket or account database opened. Does not prove reachable vendor NPC/native/durable acceptance."
+}

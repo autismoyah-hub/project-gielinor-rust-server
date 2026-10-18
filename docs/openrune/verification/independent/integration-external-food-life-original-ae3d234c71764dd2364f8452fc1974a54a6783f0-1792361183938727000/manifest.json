@@ -1,0 +1,70 @@
+{
+  "tested_integration_sha": "ae3d234c71764dd2364f8452fc1974a54a6783f0",
+  "suite": "food-life-original",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 6987268096,
+    "active_compilers": [
+      "\"cargo.exe\",\"5768\",\"RDP-Tcp#0\",\"2\",\"47,296 K\"",
+      "\"rustc.exe\",\"7932\",\"RDP-Tcp#0\",\"2\",\"79,536 K\""
+    ],
+    "cpu_percent": 34.99,
+    "cpu_samples": [
+      30.859375,
+      41.37254901960784,
+      32.74161735700197
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Existing project memory/commit/paging checks and sampled CPU ceiling; owned Cargo remains j1/two CPUs/BelowNormal",
+    "capacity_policy_sha256": "dc3c6e372de5369ab77c4ebbd7cf21c426d0916581e11f2377480eba79adcdfd",
+    "memory_preflight_exit": 0,
+    "memory_preflight_stdout": "Capacity: 6,534 MiB available, commit 59.9%, pages-in/s 738, disk 1.0 ms.\nCargo concurrency: -j 2\n",
+    "memory_preflight_stderr": "",
+    "disk_free": 58422030336,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "fec4f3cb43458e2a1e1012d8d3e0e0dcfa8c8743",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\ae3d234c71764dd2364f8452fc1974a54a6783f0\\external-harness-2095842700\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-food-life-original-ae3d234c71764dd2364f8452fc1974a54a6783f0-1792361183938727000\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\ae3d234c71764dd2364f8452fc1974a54a6783f0\\external-harness-2095842700\\Cargo.toml",
+        "--",
+        "--nocapture"
+      ],
+      "exit_code": 0,
+      "tests_passed": 1,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-food-life-original-ae3d234c71764dd2364f8452fc1974a54a6783f0-1792361183938727000\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative food-life-original scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-food-life-original-ae3d234c71764dd2364f8452fc1974a54a6783f0-1792361183938727000\\harness\\life.rs": "09dd752123f5df52b6b64b2d38146888a5b6983e328491403375862f5cca5164"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\authoritative-8140b369613ab475.exe": "ea5551ccb008b7970bc303367a6b20309f93265c19961ffe957b938807e8b194",
+    "target\\debug\\deps\\authoritative-f5a42925a472fea9.exe": "3c401e77e52deb461cb2fde71803834adcc04f4a69d60b6ffc3ab2c4fa97156b",
+    "target\\debug\\deps\\gielinor_server-7abd10c65476b4d7.exe": "9dfcf8b90986c587bda2b39ed207bc6b34b57a13f78e03003843627dabd7d827",
+    "target\\debug\\deps\\life-4b5bfaca1fac3133.exe": "67c6fa1551aa2b73b4409622919fffa81daf663def35097275273820282a7a58"
+  }
+}

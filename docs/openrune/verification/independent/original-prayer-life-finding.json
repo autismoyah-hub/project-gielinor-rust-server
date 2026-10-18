@@ -1,0 +1,38 @@
+{
+  "implementation_id": "OR-MIG-0051",
+  "tested_sha": "f6b0f6ad54fe7813bb6607827eeb8da0e60137fa",
+  "level": "V1",
+  "status": "FAIL",
+  "finding": "PG-DEF-003 extension: original selected burial life guards",
+  "scope": "18fresh original51publicWorld cases: selected0/7/27 across six before/during zeroHP/actuallethalDeathRequested/visibleHP10restorewithoutrespawn boundaries consume526and award56finePrayerXP at125rate. Four-tick completion observation, initial delayed no-XP assertion for late cases, zeroRNG. No later robe result inherited.",
+  "actionable_correction": "Guard selected burial admission and completion against zeroHP/unresolveddeath before inventory/XP publication. VisibleHP restore alone is not respawn. Publish separately pinned correction and retain historical51FAIL. OrdinaryP2nonblocking backlog; no externalissue/FORGE stop.",
+  "qualifications": [
+    "PublicWorld fixture uses ordinary bone526/4.5XP/827animation, no Chaos region/necklace/robe. Actualnative dead-player reachability and storage remain unproven.",
+    "This diagnostic PASS records18acceptanceFAILobservations. Existing original51native positives/persistence remain immutable.",
+    "No Herblore/potion/chemistry scenario executed."
+  ],
+  "observations": [
+    "PG_ORIGINAL_PRAYER_LIFE slot=0 phase=0 hp=0 fineXPdelta=56 selectedRetained=false calls=0 violation=true",
+    "PG_ORIGINAL_PRAYER_LIFE slot=0 phase=1 hp=0 fineXPdelta=56 selectedRetained=false calls=0 violation=true",
+    "PG_ORIGINAL_PRAYER_LIFE slot=0 phase=2 hp=0 fineXPdelta=56 selectedRetained=false calls=0 violation=true",
+    "PG_ORIGINAL_PRAYER_LIFE slot=0 phase=3 hp=10 fineXPdelta=56 selectedRetained=false calls=0 violation=true",
+    "PG_ORIGINAL_PRAYER_LIFE slot=0 phase=4 hp=0 fineXPdelta=56 selectedRetained=false calls=0 violation=true",
+    "PG_ORIGINAL_PRAYER_LIFE slot=0 phase=5 hp=10 fineXPdelta=56 selectedRetained=false calls=0 violation=true",
+    "PG_ORIGINAL_PRAYER_LIFE slot=7 phase=0 hp=0 fineXPdelta=56 selectedRetained=false calls=0 violation=true",
+    "PG_ORIGINAL_PRAYER_LIFE slot=7 phase=1 hp=0 fineXPdelta=56 selectedRetained=false calls=0 violation=true",
+    "PG_ORIGINAL_PRAYER_LIFE slot=7 phase=2 hp=0 fineXPdelta=56 selectedRetained=false calls=0 violation=true",
+    "PG_ORIGINAL_PRAYER_LIFE slot=7 phase=3 hp=10 fineXPdelta=56 selectedRetained=false calls=0 violation=true",
+    "PG_ORIGINAL_PRAYER_LIFE slot=7 phase=4 hp=0 fineXPdelta=56 selectedRetained=false calls=0 violation=true",
+    "PG_ORIGINAL_PRAYER_LIFE slot=7 phase=5 hp=10 fineXPdelta=56 selectedRetained=false calls=0 violation=true",
+    "PG_ORIGINAL_PRAYER_LIFE slot=27 phase=0 hp=0 fineXPdelta=56 selectedRetained=false calls=0 violation=true",
+    "PG_ORIGINAL_PRAYER_LIFE slot=27 phase=1 hp=0 fineXPdelta=56 selectedRetained=false calls=0 violation=true",
+    "PG_ORIGINAL_PRAYER_LIFE slot=27 phase=2 hp=0 fineXPdelta=56 selectedRetained=false calls=0 violation=true",
+    "PG_ORIGINAL_PRAYER_LIFE slot=27 phase=3 hp=10 fineXPdelta=56 selectedRetained=false calls=0 violation=true",
+    "PG_ORIGINAL_PRAYER_LIFE slot=27 phase=4 hp=0 fineXPdelta=56 selectedRetained=false calls=0 violation=true",
+    "PG_ORIGINAL_PRAYER_LIFE slot=27 phase=5 hp=10 fineXPdelta=56 selectedRetained=false calls=0 violation=true"
+  ],
+  "evidence_sha256": {
+    "integration-external-prayer-life-original-f6b0f6ad54fe7813bb6607827eeb8da0e60137fa/manifest.json": "81404a2610519790f75821008adcb441d3fe99ff996562ea6dbe8157551dca7a",
+    "integration-external-prayer-life-original-f6b0f6ad54fe7813bb6607827eeb8da0e60137fa/run-1.log": "101bb27a68985d866dd0e0586e59ff9b4b6dba34be0407952adf14c7e4f8d18f"
+  }
+}

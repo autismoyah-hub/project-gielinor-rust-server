@@ -1,0 +1,11 @@
+Loaded 11 map squares, 586 NPCs, 24220 locations
+Listening on 127.0.0.1:60095 (revision 239.1; partial gameplay implementation)
+Player ready: ActorId { slot: 1, generation: 614 }
+Food transition: {"schema":1,"actor_slot":1,"actor_generation":614,"tick":212,"policy":"selected_slot","result":"committed","slot":0,"before":[1993,1,0],"after":[1935,1,0],"hp_before":4,"hp_after":10,"fine_xp_before":11540,"fine_xp_after":11540,"configured_delay":3,"attack_delay":null}
+Food transition: {"schema":1,"actor_slot":1,"actor_generation":614,"tick":220,"policy":"selected_slot","result":"committed","slot":4,"before":[1993,1,0],"after":[1935,1,0],"hp_before":10,"hp_after":10,"fine_xp_before":11540,"fine_xp_after":11540,"configured_delay":3,"attack_delay":null}
+Food transition: {"schema":1,"actor_slot":1,"actor_generation":614,"tick":231,"policy":"selected_slot","result":"committed","slot":7,"before":[1993,1,0],"after":[1935,1,0],"hp_before":10,"hp_after":10,"fine_xp_before":11540,"fine_xp_after":11540,"configured_delay":3,"attack_delay":null}
+Food transition: {"schema":1,"actor_slot":1,"actor_generation":614,"tick":244,"policy":"selected_slot","result":"committed","slot":13,"before":[1993,1,0],"after":[1935,1,0],"hp_before":10,"hp_after":10,"fine_xp_before":11540,"fine_xp_after":11540,"configured_delay":3,"attack_delay":null}
+Food transition: {"schema":1,"actor_slot":1,"actor_generation":614,"tick":256,"policy":"selected_slot","result":"committed","slot":20,"before":[1993,1,0],"after":[1935,1,0],"hp_before":10,"hp_after":10,"fine_xp_before":11540,"fine_xp_after":11540,"configured_delay":3,"attack_delay":null}
+Food transition: {"schema":1,"actor_slot":1,"actor_generation":614,"tick":267,"policy":"selected_slot","result":"committed","slot":27,"before":[1993,1,0],"after":[1935,1,0],"hp_before":10,"hp_after":10,"fine_xp_before":11540,"fine_xp_after":11540,"configured_delay":3,"attack_delay":null}
+Save acknowledgement: {"actor_slot":1,"actor_generation":614,"save_generation":614,"observed_tick":332,"save_completed":true}
+Shutdown completed; accounts drained.

@@ -1,0 +1,59 @@
+{
+  "implementation_id": "OR-MIG-0137",
+  "tested_sha": "dfc2a1667c6c97e4d525a1aaea1ba7154d9aaad7",
+  "status": "PASS_REFERENCE_FACTS",
+  "sources": [
+    {
+      "kind": "openrune",
+      "reference": "content/other/consumables/src/main/kotlin/org.rsmod.content.other.consumables/food/FoodEffectService.kt",
+      "sha256": "8e825addf9a68188175890404e26239c6ed6c8ae758c422e4507bd9c2dfcf587",
+      "availability": "protected_local_reference",
+      "revision": "Local archive; upstream commit unavailable; configured241"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/other/consumables/src/main/kotlin/org.rsmod.content.other.consumables/food/ConsumeFoodScript.kt",
+      "sha256": "5d2604be8d9f691a2788b11aeb752e6ea2fb8637ceec30c3ba512718ff104a2d",
+      "availability": "protected_local_reference",
+      "revision": "Local archive; upstream commit unavailable; configured241"
+    },
+    {
+      "kind": "openrune",
+      "reference": "or-cache/src/main/kotlin/dev/openrune/tables/consumables/food/FoodData.kt",
+      "sha256": "d13e1c07e15fbbda7b0f4854f7e0a8dd15b11a1ee1ce552f1168c5bd31e13f49",
+      "availability": "protected_local_reference",
+      "revision": "Local archive; upstream commit unavailable; configured241"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/other/consumables/src/main/kotlin/org.rsmod.content.other.consumables/ConsumableDelayState.kt",
+      "sha256": "282930b2ae9e746587761f15f2676c6e2fc34cac4d6f3ef16f49c2e400704915",
+      "availability": "protected_local_reference",
+      "revision": "Local archive; upstream commit unavailable; configured241"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Jug of wine",
+      "sha256": "9f2bdde9b636da56f42258521c55ded5ee98ddbe9c1a64d72994ce9167da6c85",
+      "availability": "protected_local_reference",
+      "revision": "15333576"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Jug",
+      "sha256": "d664aefc359aaa692e1e9f30715b58fba97bbd21dca1fb05c2cb65dce2ea9258",
+      "availability": "protected_local_reference",
+      "revision": "15237910"
+    }
+  ],
+  "scope": "Six exact protected reference hashes independently match. Donor normal wine row heals11 and single-stage list omits jug; effect uses positive Attack statSub2. Pinned Wiki normal wine confirms11HP, Attack loss2 and retained jug1935. Existing independent kernel and World tests cover cappedheal/overheal/current repeated Attack5to3to1to0 and selected retained jug.",
+  "adaptations": [
+    "Wiki jug retention deliberately differs from donor single-stage row. No claim that donor omitted jug is equivalent.",
+    "Generic food3tick protection/829animation retained; distinct source consume/combat clocks, sound/toboggan and healing follow-up messages remain unported. Attack-delay trace null is explicit, not actual combat parity."
+  ],
+  "limitations": [
+    "V4 remains IN_PROGRESS: genuine native rendered Attack/container and persistence are unexecuted at137. Source facts and World checks do not satisfy those obligations.",
+    "No executable241 reference or source random-stream/full consumable timing parity. Ordinary wine consumption only; no production, potion or Herblore scenario.",
+    "Independent exact137 V1 life finding remains FAIL regardless of positive reference facts."
+  ]
+}

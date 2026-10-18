@@ -1,0 +1,70 @@
+{
+  "tested_integration_sha": "7f91fdf4f2cffa0c44f9c9b1b52ae3494f5d414e",
+  "suite": "cooking-gauntlets-life",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 4788920320,
+    "active_compilers": [
+      "\"cargo.exe\",\"8420\",\"RDP-Tcp#0\",\"2\",\"19,816 K\"",
+      "\"rustc.exe\",\"9776\",\"RDP-Tcp#0\",\"2\",\"1,139,036 K\"",
+      "\"rustc.exe\",\"3276\",\"RDP-Tcp#0\",\"2\",\"930,604 K\""
+    ],
+    "cpu_percent": 53.12,
+    "cpu_samples": [
+      68.1640625,
+      43.75,
+      47.4609375
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Existing project memory/commit/paging checks and sampled CPU ceiling; owned Cargo remains j1/two CPUs/BelowNormal",
+    "capacity_policy_sha256": "dc3c6e372de5369ab77c4ebbd7cf21c426d0916581e11f2377480eba79adcdfd",
+    "memory_preflight_exit": 0,
+    "memory_preflight_stdout": "Capacity: 5,207 MiB available, commit 67.8%, pages-in/s 980, disk 0.8 ms.\nCargo concurrency: -j 2\n",
+    "memory_preflight_stderr": "",
+    "disk_free": 624914432,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "79f684b665c8cf17d54e6e4b92633e79621a95aa",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\7f91fdf4f2cffa0c44f9c9b1b52ae3494f5d414e\\external-harness-2637386600\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-cooking-gauntlets-life-7f91fdf4f2cffa0c44f9c9b1b52ae3494f5d414e\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\7f91fdf4f2cffa0c44f9c9b1b52ae3494f5d414e\\external-harness-2637386600\\Cargo.toml",
+        "--",
+        "--nocapture"
+      ],
+      "exit_code": 0,
+      "tests_passed": 1,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-cooking-gauntlets-life-7f91fdf4f2cffa0c44f9c9b1b52ae3494f5d414e\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative cooking-gauntlets-life scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-cooking-gauntlets-life-7f91fdf4f2cffa0c44f9c9b1b52ae3494f5d414e\\harness\\life.rs": "4e47ef067e46ddcce2b7e46cc1b57c77ce4e0edabf0d6950d854a0a685e8a756"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\curves-ff7ca0684bf61157.exe": "6f7e2f5cbf9dc8835ecc2439fe5348583dc41f66f42ae8381ffde593c30bf16d",
+    "target\\debug\\deps\\life-eaf306ef4e01bd5c.exe": "3f4f2a5c3abb0ba71a85b6e7de2f9a91e029101e8602aec4b69906a8994f9a48",
+    "target\\debug\\deps\\world-90d420ed9007d98f.exe": "dbd7110e6841462bb0d23ac3e8b484d0586ad266f911326c226be407f37e0709"
+  }
+}

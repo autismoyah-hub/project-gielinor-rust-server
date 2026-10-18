@@ -1,0 +1,18 @@
+warning: unused import: `Effect`
+ --> C:\Projects\OSRSRSPS\agent7-targets\a2c5ceaae693a73c64afa8b4558e05b12bb6e100\crates\world\src\simulation\skillcape_vendor_actions.rs:3:30
+  |
+3 |     dialogue::{Conversation, Effect, Pending},
+  |                              ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `gielinor-world` (lib) generated 1 warning (run `cargo fix --lib -p gielinor-world` to apply 1 suggestion)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\a2c5ceaae693a73c64afa8b4558e05b12bb6e100\external-harness-2048832300)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 9.04s
+     Running tests\guards.rs (C:\Projects\OSRSRSPS\agent7-verification\work\a2c5ceaae693a73c64afa8b4558e05b12bb6e100\target\debug\deps\guards-d3c1072f440fb7f4.exe)
+
+running 1 test
+PG_COOK_CAPE_GUARDS120 livecape equip/remove/member/wrongslot/count/vars/catalog versusnormalburn;lowlevel/stale/count/vars/bothoutputpolicies/rate/modal/location/Close refusebeforeRNG wholeimages PASS
+test live_equipment_member_refusal_and_atomic_guards ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 5.54s

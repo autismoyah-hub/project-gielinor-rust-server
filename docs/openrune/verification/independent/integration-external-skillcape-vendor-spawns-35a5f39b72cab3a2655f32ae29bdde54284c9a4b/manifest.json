@@ -1,0 +1,77 @@
+{
+  "tested_integration_sha": "35a5f39b72cab3a2655f32ae29bdde54284c9a4b",
+  "suite": "skillcape-vendor-spawns",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "FAIL",
+  "resource": {
+    "available_ram": 7125831680,
+    "active_compilers": [
+      "\"cargo.exe\",\"16216\",\"RDP-Tcp#0\",\"2\",\"47,460 K\"",
+      "\"rustc.exe\",\"15444\",\"RDP-Tcp#0\",\"2\",\"79,964 K\""
+    ],
+    "cpu_percent": 34.05,
+    "cpu_samples": [
+      40.8203125,
+      36.9140625,
+      24.4140625
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Existing project memory/commit/paging checks and sampled CPU ceiling; owned Cargo remains j1/two CPUs/BelowNormal",
+    "capacity_policy_sha256": "dc3c6e372de5369ab77c4ebbd7cf21c426d0916581e11f2377480eba79adcdfd",
+    "memory_preflight_exit": 0,
+    "memory_preflight_stdout": "Capacity: 6,721 MiB available, commit 58.5%, pages-in/s 725, disk 2.9 ms.\nCargo concurrency: -j 2\n",
+    "memory_preflight_stderr": "",
+    "disk_free": 1496711168,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "3ee6f42712d631db40e9a40f65e2358469d1bfb5",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\\external-harness-9154201400\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-skillcape-vendor-spawns-35a5f39b72cab3a2655f32ae29bdde54284c9a4b\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\\external-harness-9154201400\\Cargo.toml",
+        "--",
+        "--nocapture"
+      ],
+      "exit_code": 101,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-skillcape-vendor-spawns-35a5f39b72cab3a2655f32ae29bdde54284c9a4b\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative skillcape-vendor-spawns scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-skillcape-vendor-spawns-35a5f39b72cab3a2655f32ae29bdde54284c9a4b\\harness\\spawns.rs": "7723c718c16457cfdfcd2bbf2e01642c98cf7417adfe8b1605e6b2455870a939"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\authority-0f2adb211ece296a.exe": "6f8d418a14bd62e7ac2b5e5dba5281bc06100b9b461bcbfab5478a5c64f6ca8c",
+    "target\\debug\\deps\\dialogue-d36725e4c2c77784.exe": "0f3d4b5c20e65bc6817e215fe9b2051a2894115bc0243d753f96288f99a10e18",
+    "target\\debug\\deps\\facts-26716d6c63247d5e.exe": "08ed31201236a037491785ddbbb4b4a018c8c5d46cbf3069beca2e2f9095b989",
+    "target\\debug\\deps\\gielinor_server-7abd10c65476b4d7.exe": "dba09fb2b21c1750a3ce7d72faf131c65b7316da1ef6d13075f24ad23025d5e0",
+    "target\\debug\\deps\\hood-78ae6fcf0bf766a8.exe": "103ed0ad68b30fd32be23987c1c1c54afdf18e9483231a29cb00736a233465d4",
+    "target\\debug\\deps\\life-e23c477f845bba03.exe": "f46f1f94c5a034553fa77ca480e01ac69e944af8db3f38b7f92add7a27f84d3a",
+    "target\\debug\\deps\\npc-4e5b8b9a15308639.exe": "d25ff835c27d137643bc93c3cff421e684ff460c6bae373badda1ae85000a72f",
+    "target\\debug\\deps\\owned-542a304984230faa.exe": "f43299578c42ae25800eb557fbd337770e96cde21d6a58395972b819855e7de4",
+    "target\\debug\\deps\\purchase-34a52fc432f52b86.exe": "6d00f5be7b08fa76c6911c1a2de650ebed54f8f2b54cdfc36c1f297a04a0d78f",
+    "target\\debug\\deps\\spawns-ce178ae2f83934c4.exe": "d2970aa00f8c6aa36e446a8276513ab64e6d6800b5fa3eb7cda9aa70e0b7425d",
+    "target\\debug\\deps\\tail-b85964ceb0cdc3a5.exe": "34e25c9eec552f75837a3737ad7424100f7f1f22a2665298bbe16d507515e073"
+  }
+}

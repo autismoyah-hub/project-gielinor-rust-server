@@ -1,0 +1,27 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\ae3d234c71764dd2364f8452fc1974a54a6783f0\external-harness-2095842700)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.64s
+     Running tests\life.rs (C:\Projects\OSRSRSPS\agent7-verification\work\ae3d234c71764dd2364f8452fc1974a54a6783f0\target\debug\deps\life-4b5bfaca1fac3133.exe)
+
+running 1 test
+PG_ORIGINAL_FOOD_LIFE member=false slot=0 phase=0 submitted=true hp_before=0 hp_after=3 selectedRetained=false violation=true
+PG_ORIGINAL_FOOD_LIFE member=false slot=0 phase=1 submitted=true hp_before=0 hp_after=3 selectedRetained=false violation=true
+PG_ORIGINAL_FOOD_LIFE member=false slot=0 phase=2 submitted=true hp_before=10 hp_after=10 selectedRetained=false violation=true
+PG_ORIGINAL_FOOD_LIFE member=false slot=13 phase=0 submitted=true hp_before=0 hp_after=3 selectedRetained=false violation=true
+PG_ORIGINAL_FOOD_LIFE member=false slot=13 phase=1 submitted=true hp_before=0 hp_after=3 selectedRetained=false violation=true
+PG_ORIGINAL_FOOD_LIFE member=false slot=13 phase=2 submitted=true hp_before=10 hp_after=10 selectedRetained=false violation=true
+PG_ORIGINAL_FOOD_LIFE member=false slot=27 phase=0 submitted=true hp_before=0 hp_after=3 selectedRetained=false violation=true
+PG_ORIGINAL_FOOD_LIFE member=false slot=27 phase=1 submitted=true hp_before=0 hp_after=3 selectedRetained=false violation=true
+PG_ORIGINAL_FOOD_LIFE member=false slot=27 phase=2 submitted=true hp_before=10 hp_after=10 selectedRetained=false violation=true
+PG_ORIGINAL_FOOD_LIFE member=true slot=0 phase=0 submitted=true hp_before=0 hp_after=3 selectedRetained=false violation=true
+PG_ORIGINAL_FOOD_LIFE member=true slot=0 phase=1 submitted=true hp_before=0 hp_after=3 selectedRetained=false violation=true
+PG_ORIGINAL_FOOD_LIFE member=true slot=0 phase=2 submitted=true hp_before=10 hp_after=10 selectedRetained=false violation=true
+PG_ORIGINAL_FOOD_LIFE member=true slot=13 phase=0 submitted=true hp_before=0 hp_after=3 selectedRetained=false violation=true
+PG_ORIGINAL_FOOD_LIFE member=true slot=13 phase=1 submitted=true hp_before=0 hp_after=3 selectedRetained=false violation=true
+PG_ORIGINAL_FOOD_LIFE member=true slot=13 phase=2 submitted=true hp_before=10 hp_after=10 selectedRetained=false violation=true
+PG_ORIGINAL_FOOD_LIFE member=true slot=27 phase=0 submitted=true hp_before=0 hp_after=3 selectedRetained=false violation=true
+PG_ORIGINAL_FOOD_LIFE member=true slot=27 phase=1 submitted=true hp_before=0 hp_after=3 selectedRetained=false violation=true
+PG_ORIGINAL_FOOD_LIFE member=true slot=27 phase=2 submitted=true hp_before=10 hp_after=10 selectedRetained=false violation=true
+PG_ORIGINAL_FOOD_LIFE_SUMMARY cases=18 violations=18;diagnostic observation completion is not acceptancePASS if violations>0
+test observe_original_food_after_zero_hp_and_actual_unresolved_death ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.46s

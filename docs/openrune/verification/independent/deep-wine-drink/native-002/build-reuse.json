@@ -1,0 +1,4 @@
+{
+  "source": "deep-wine-drink/native-001/build.json",
+  "scope": "Identical exact137 compiled server reused, not a second compile. Fresh state only; native001 sent no Drink actions."
+}

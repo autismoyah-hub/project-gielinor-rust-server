@@ -1,0 +1,23 @@
+   Compiling gielinor-world v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\dfc2a1667c6c97e4d525a1aaea1ba7154d9aaad7\crates\world)
+warning: unused import: `Effect`
+ --> C:\Projects\OSRSRSPS\agent7-targets\dfc2a1667c6c97e4d525a1aaea1ba7154d9aaad7\crates\world\src\simulation\skillcape_vendor_actions.rs:3:30
+  |
+3 |     dialogue::{Conversation, Effect, Pending},
+  |                              ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `gielinor-world` (lib) generated 1 warning (run `cargo fix --lib -p gielinor-world` to apply 1 suggestion)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\dfc2a1667c6c97e4d525a1aaea1ba7154d9aaad7\external-harness-1945049300)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 57.10s
+     Running tests\wine.rs (C:\Projects\OSRSRSPS\agent7-verification\work\dfc2a1667c6c97e4d525a1aaea1ba7154d9aaad7\target\debug\deps\wine-cfbbdf7acb9ed87a.exe)
+
+running 3 tests
+PG_WINE_REPEAT36 sixinitialAttack levels sixdrinks HPcap doesnotstopcurrentstacking including5to3to1to0 and99to97to95to93 noXP/RNG PASS
+test repeated_subtraction_stacks_below_base_at_full_hp_and_floors_zero ... ok
+PG_WINE_REFUSAL66 invalidsecondary/shape/selectedcount-vars/catalog/bothsides/heal/boost/RNGpreflight refuses before events or any inventoryStats mutation PASS
+test invalid_secondary_or_selected_exchange_refuses_before_rng_events_or_publication ... ok
+PG_WINE_KERNEL2352 all28selectedslots full/sparse sevencurrentHP sixcurrentAttack heal11cap/overheal exact-2floor0 same-slotjug duplicate/varjug/wholeStatsXP retained zeroRNG PASS
+test all_selected_slots_full_sparse_hp_and_current_attack_boundaries ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s

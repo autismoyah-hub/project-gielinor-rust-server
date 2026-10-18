@@ -1,0 +1,6 @@
+{
+  "implementation_id": "OR-MIG-0137",
+  "tested_sha": "dfc2a1667c6c97e4d525a1aaea1ba7154d9aaad7",
+  "status": "HARNESS_FAILURE",
+  "scope": "Owned launcher omitted wine-drink scenario mapping and passed assemble. Native login/runtime startup succeeded, then observer refused unknown scenario before any Drink action. All seven wines unchanged. Actual account saved/graceful stop; no implementation defect. Preserve this attempt and database. New native-002 executes only previously unexecuted wine actions using identical target server/client identities."
+}

@@ -1,0 +1,68 @@
+{
+  "tested_integration_sha": "a2c5ceaae693a73c64afa8b4558e05b12bb6e100",
+  "suite": "cooking-cape-guards-tail",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 7367479296,
+    "active_compilers": [
+      "\"cargo.exe\",\"16216\",\"RDP-Tcp#0\",\"2\",\"42,612 K\"",
+      "\"rustc.exe\",\"9096\",\"RDP-Tcp#0\",\"2\",\"114,704 K\""
+    ],
+    "cpu_percent": 23.49,
+    "cpu_samples": [
+      31.0546875,
+      22.637795275590555,
+      16.764132553606238
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Existing project memory/commit/paging checks and sampled CPU ceiling; owned Cargo remains j1/two CPUs/BelowNormal",
+    "capacity_policy_sha256": "dc3c6e372de5369ab77c4ebbd7cf21c426d0916581e11f2377480eba79adcdfd",
+    "memory_preflight_exit": 0,
+    "memory_preflight_stdout": "Capacity: 7,008 MiB available, commit 59.2%, pages-in/s 691, disk 3.4 ms.\nCargo concurrency: -j 2\n",
+    "memory_preflight_stderr": "",
+    "disk_free": 1227096064,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "ebefb8152386b83469ecdcfd03a18a5d3f3b4ae4",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\a2c5ceaae693a73c64afa8b4558e05b12bb6e100\\external-harness-2048832300\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-cooking-cape-guards-tail-a2c5ceaae693a73c64afa8b4558e05b12bb6e100\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\a2c5ceaae693a73c64afa8b4558e05b12bb6e100\\external-harness-2048832300\\Cargo.toml",
+        "--",
+        "--nocapture"
+      ],
+      "exit_code": 0,
+      "tests_passed": 1,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-cooking-cape-guards-tail-a2c5ceaae693a73c64afa8b4558e05b12bb6e100\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative cooking-cape-guards-tail scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-cooking-cape-guards-tail-a2c5ceaae693a73c64afa8b4558e05b12bb6e100\\harness\\guards.rs": "fd0871977dd80b07f2e27d705d62cb568b4fd89fbd8e884d8139601396394099"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\cape-93eae17ce1bd4249.exe": "b6b04a4c23fa8a32a48f7837ba3db503a3141d41fdb4e9d1fcc0393774ec4216",
+    "target\\debug\\deps\\guards-d3c1072f440fb7f4.exe": "aba38fc7e2f460a3fbee123ff6b2e649916b0e5768f889a07dc31bcec1449dd9"
+  }
+}

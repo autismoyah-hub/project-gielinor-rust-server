@@ -958,6 +958,7 @@ fn main()->R<()> {
     if matches!(a[6].as_str(),"amethyst-interrupt"|"amethyst-crash"){amethyst_recovery(&mut c,&mut l,a[6]=="amethyst-crash")?;l.session.close();return Ok(());}
     if a[6]=="amethyst-batch"{amethyst_batch(&mut c,&mut l)?;l.session.close();return Ok(());}
     if matches!(a[6].as_str(),"rune-air-daeyalt"|"rune-water-daeyalt"|"rune-earth-daeyalt"|"rune-fire-daeyalt"|"rune-body-daeyalt"){daeyalt_other_altars(&mut c,&mut l,&a[6])?;l.session.close();return Ok(());}
+    if a[6]=="wine-drink"{wine_drink_native(&mut c,&mut l)?;l.session.close();return Ok(());}
     if a[6]=="crafting-cape-crash"{
         crafting_cape_boost(&mut c,&mut l,&a[6])?;assert_eq!(c.data.boosted[12],100);
         println!("PG_CRASH_READY unsaved native Crafting cape current100;only freshly owned disposable local game server;no save/logout requested");
@@ -992,4 +993,31 @@ fn main()->R<()> {
     if matches!(a[6].as_str(),"production-gem-interrupt"|"production-shell-interrupt"|"production-gem-crash"){production_partial(&mut c,&mut l,a[6]=="production-shell-interrupt",a[6]=="production-gem-crash")?;l.session.close();return Ok(());}
     match a[6].as_str(){"pouch"=>pouch(&mut c,&mut l)?,"glass-all"=>glass_all(&mut c,&mut l)?,"glass-interrupt"=>glass_interrupt(&mut c,&mut l)?,"glass-crash"=>glass_crash(&mut c,&mut l)?,"glass-remaining"=>glass_remaining(&mut c,&mut l)?,"glass-quantities"=>glass_quantities(&mut c,&mut l)?,"glass"=>glass(&mut c,&mut l)?,"shells"=>shells(&mut c,&mut l)?,"gem-effects"=>gem_effects(&mut c,&mut l)?,"gem-crash"=>gem_crash(&mut c,&mut l)?,"gems"=>gems(&mut c,&mut l)?,"prayer"=>prayer_burial(&mut c,&mut l)?,"chem-crash"=>chemistry_crash(&mut c,&mut l)?,"chem-interrupt"=>chemistry_interrupt(&mut c,&mut l)?,"food-negative"=>food_negative(&mut c,&mut l)?,"combat-interrupt"=>combat_interrupt(&mut c,&mut l)?,"chem-close"=>chemistry_close(&mut c,&mut l)?,"chem-negative"=>chemistry(&mut c,&mut l)?,"food"=>food(&mut c,&mut l)?,"verify"=>{ticks(&mut c,&mut l,6)?;let layout=c.interfaces.layout(c.canvas)?;assert!(!layout.widgets.iter().any(|(&id,p)|{let logical=c.interfaces.runtime.get(&id).map_or(id,|r|r.logical_id);logical>>16==270 && !p.hidden && p.clip[2]>p.clip[0] && p.clip[3]>p.clip[1]}),"quantity dialog must not persist across actual reconnect");println!("PG_NATIVE_RELOGIN_POSITION position={:?} tick={}",c.data.position,c.server_tick);println!("PG_NATIVE_NO_PENDING_SKILL_MULTI tick={}",c.server_tick);println!("PG_CASE_PASS native relogin observation");},_=>return Err("unknown independent scenario".into())}
     l.session.close();Ok(())
+}
+
+fn wine_drink_native(c:&mut ClientState,l:&mut Connection)->R<()> {
+    let image=|c:&ClientState,inv,size|(0..size).map(|s|{let i=c.inventories.item(inv,s);(i.id,i.count)}).collect::<Vec<_>>();
+    ready(c,l)?;assert!(c.data.members);assert_eq!(c.data.base[0],99);assert_eq!(c.data.base[3],10);
+    let xp=c.data.experience;let gear=image(c,94,14);let mut expected=image(c,93,28);
+    assert_eq!(expected,(0..28).map(|s|(if [0,1,4,7,13,20,27].contains(&s){1993}else{1931},1)).collect::<Vec<_>>());
+    // Observe a real passive regeneration first, then complete the six actions
+    // within the next regeneration interval. No stat or client mutation.
+    let prior=c.data.boosted[0];println!("PG_WINE_WAIT_REGEN tick={} attack={prior}",c.server_tick);
+    pump(c,l,150,|c,_|c.data.boosted[0]>prior)?;let start=c.server_tick;
+    assert_eq!(c.data.boosted[0],prior+1);println!("PG_WINE_REGEN_OBSERVED tick={} attack={}",start,c.data.boosted[0]);
+    tab(c,"Inventory")?;ticks(c,l,2)?;
+    for (index,slot) in [0i32,4,7,13,20,27].into_iter().enumerate(){
+        ready(c,l)?;let before_attack=c.data.boosted[0];let before_hp=c.data.boosted[3];assert_eq!(c.inventories.item(93,slot).id,1993);
+        let action=item_action(c,slot,false,"Drink")?;println!("PG_WINE_NATIVE_BEGIN index={index} slot={slot} tick={} hp={before_hp} attack={before_attack}",c.server_tick);
+        dispatch(c,action,"Drink")?;pump(c,l,30,|c,_|c.inventories.item(93,slot).id==1935)?;
+        expected[slot as usize]=(1935,1);assert_eq!(image(c,93,28),expected);assert_eq!(image(c,94,14),gear);assert_eq!(c.data.experience,xp);
+        assert_eq!(c.data.boosted[3],10);assert_eq!(c.data.boosted[0],(before_attack-2).max(0));
+        println!("PG_WINE_NATIVE_COMMIT index={index} slot={slot} tick={} hp={} attack={} bag={:?}",c.server_tick,c.data.boosted[3],c.data.boosted[0],expected);ticks(c,l,4)?;
+    }
+    assert!(c.server_tick-start<90,"passive Attack regeneration window crossed");assert_eq!(c.data.boosted[0],0);
+    tab(c,"Skills")?;ticks(c,l,2)?;native_cape_frame(c,l,"wine-skills-attack0")?;assert_eq!(c.data.boosted[0],0);
+    println!("PG_WINE_RENDERED_STATE attack={} attack_base={} hp={} tick={};renderer prints cape stat12 only as legacy helper metadata",c.data.boosted[0],c.data.base[0],c.data.boosted[3],c.server_tick);
+    tab(c,"Inventory")?;ticks(c,l,2)?;native_cape_frame(c,l,"wine-inventory-jugs")?;
+    assert_eq!(image(c,93,28),expected);assert_eq!(image(c,94,14),gear);assert_eq!(c.data.experience,xp);
+    println!("PG_CASE_PASS wine six genuine Drink menus selected1935 fullbag retainedduplicate noXP exact currentAttack-2floor0 heal11cap;native Skills and Inventory frames require independent visual assessment");Ok(())
 }

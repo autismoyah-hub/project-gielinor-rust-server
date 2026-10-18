@@ -1,0 +1,14 @@
+{
+  "Scope": "Only exact132and133Cargo incremental compiler caches after completed campaigns. No executable, dependency library, account database, evidence, resource or asset removed.",
+  "Targets": [
+    {
+      "Path": "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\a2c5ceaae693a73c64afa8b4558e05b12bb6e100\\target\\debug\\incremental",
+      "DerivedIncrementalBytes": 221046592.0
+    },
+    {
+      "Path": "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\7f91fdf4f2cffa0c44f9c9b1b52ae3494f5d414e\\target\\debug\\incremental",
+      "DerivedIncrementalBytes": 210139707.0
+    }
+  ],
+  "FreeAfter": 572096512
+}

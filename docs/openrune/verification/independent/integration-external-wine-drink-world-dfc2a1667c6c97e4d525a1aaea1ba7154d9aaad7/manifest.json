@@ -1,0 +1,69 @@
+{
+  "tested_integration_sha": "dfc2a1667c6c97e4d525a1aaea1ba7154d9aaad7",
+  "suite": "wine-drink-world",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 5999648768,
+    "active_compilers": [
+      "\"cargo.exe\",\"5768\",\"RDP-Tcp#0\",\"2\",\"47,168 K\"",
+      "\"cargo.exe\",\"5408\",\"RDP-Tcp#0\",\"2\",\"21,344 K\"",
+      "\"rustc.exe\",\"9780\",\"RDP-Tcp#0\",\"2\",\"106,024 K\""
+    ],
+    "cpu_percent": 27.68,
+    "cpu_samples": [
+      33.26885880077369,
+      21.34387351778656,
+      28.433268858800776
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Existing project memory/commit/paging checks and sampled CPU ceiling; owned Cargo remains j1/two CPUs/BelowNormal",
+    "capacity_policy_sha256": "dc3c6e372de5369ab77c4ebbd7cf21c426d0916581e11f2377480eba79adcdfd",
+    "memory_preflight_exit": 0,
+    "memory_preflight_stdout": "Capacity: 5,674 MiB available, commit 65.1%, pages-in/s 1,680, disk 2.0 ms.\nCargo concurrency: -j 2\n",
+    "memory_preflight_stderr": "",
+    "disk_free": 1589280768,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "740b81cadfa6a3a6a51292c1dd6461913951eae5",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\dfc2a1667c6c97e4d525a1aaea1ba7154d9aaad7\\external-harness-9081910100\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-wine-drink-world-dfc2a1667c6c97e4d525a1aaea1ba7154d9aaad7\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\dfc2a1667c6c97e4d525a1aaea1ba7154d9aaad7\\external-harness-9081910100\\Cargo.toml",
+        "--",
+        "--nocapture"
+      ],
+      "exit_code": 0,
+      "tests_passed": 2,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-wine-drink-world-dfc2a1667c6c97e4d525a1aaea1ba7154d9aaad7\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative wine-drink-world scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-wine-drink-world-dfc2a1667c6c97e4d525a1aaea1ba7154d9aaad7\\harness\\world.rs": "9534f4f4349b2ce700dc5424b57a105bb06d55d339482a29d3eef50a8c3f9175"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\wine-cfbbdf7acb9ed87a.exe": "e1bf7d2ec3a241c8983cdb86f750b91f289bb80e18263a13359828616005afa9",
+    "target\\debug\\deps\\world-cd3a7c53cacdfb13.exe": "07bfb76338faba6402035bc25b4574ab6deadd67f9ec6dcc73d91e2a7f7fa184"
+  }
+}

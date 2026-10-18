@@ -1,0 +1,39 @@
+{
+  "implementation_id": "OR-MIG-0137",
+  "tested_sha": "dfc2a1667c6c97e4d525a1aaea1ba7154d9aaad7",
+  "level": "V1",
+  "status": "FAIL",
+  "finding": "PG-DEF-003 extension: ordinary food consumption during unresolved death",
+  "priority": "P2 ordinary correction backlog; no FORGE stop or external issue",
+  "scope": "18 fresh independently executed publicWorld scenarios: member/F2P, selected slots0/13/27, direct zeroHP, actual lethal DeathRequested, actual death then visible HP10 restoration without respawn. Selected food is consumed after all three life states. No native dead-player reachability or storage claim. Diagnostic test PASS means observation completion only.",
+  "actionable_correction": "Apply common alive/death-pending guard at authoritative food consumption before RNG, inventory/stat transaction and food event publication. VisibleHP restoration alone must not clear unresolved death. Publish a separately pinned correction and rerun unchanged scenarios at that SHA; retain this historical FAIL.",
+  "qualifications": [
+    "Ordinary meat2142 only for original24; wine1993/jug1935 and currentAttack subtraction only for137. No potion/Herblore gameplay.",
+    "Actual lethal-hit cases assert DeathRequested and HP0 before food submission. These are independent tests at each recorded target; no moving HEAD substitution.",
+    "Existing successful native/durability campaigns retained; no replay or database reset. Other acceptance levels remain separate."
+  ],
+  "observations": [
+    "PG_WINE_DRINK_LIFE member=false slot=0 phase=0 submitted=true hp_before=0 hp_after=10 selectedRetained=false violation=true",
+    "PG_WINE_DRINK_LIFE member=false slot=0 phase=1 submitted=true hp_before=0 hp_after=10 selectedRetained=false violation=true",
+    "PG_WINE_DRINK_LIFE member=false slot=0 phase=2 submitted=true hp_before=10 hp_after=10 selectedRetained=false violation=true",
+    "PG_WINE_DRINK_LIFE member=false slot=13 phase=0 submitted=true hp_before=0 hp_after=10 selectedRetained=false violation=true",
+    "PG_WINE_DRINK_LIFE member=false slot=13 phase=1 submitted=true hp_before=0 hp_after=10 selectedRetained=false violation=true",
+    "PG_WINE_DRINK_LIFE member=false slot=13 phase=2 submitted=true hp_before=10 hp_after=10 selectedRetained=false violation=true",
+    "PG_WINE_DRINK_LIFE member=false slot=27 phase=0 submitted=true hp_before=0 hp_after=10 selectedRetained=false violation=true",
+    "PG_WINE_DRINK_LIFE member=false slot=27 phase=1 submitted=true hp_before=0 hp_after=10 selectedRetained=false violation=true",
+    "PG_WINE_DRINK_LIFE member=false slot=27 phase=2 submitted=true hp_before=10 hp_after=10 selectedRetained=false violation=true",
+    "PG_WINE_DRINK_LIFE member=true slot=0 phase=0 submitted=true hp_before=0 hp_after=10 selectedRetained=false violation=true",
+    "PG_WINE_DRINK_LIFE member=true slot=0 phase=1 submitted=true hp_before=0 hp_after=10 selectedRetained=false violation=true",
+    "PG_WINE_DRINK_LIFE member=true slot=0 phase=2 submitted=true hp_before=10 hp_after=10 selectedRetained=false violation=true",
+    "PG_WINE_DRINK_LIFE member=true slot=13 phase=0 submitted=true hp_before=0 hp_after=10 selectedRetained=false violation=true",
+    "PG_WINE_DRINK_LIFE member=true slot=13 phase=1 submitted=true hp_before=0 hp_after=10 selectedRetained=false violation=true",
+    "PG_WINE_DRINK_LIFE member=true slot=13 phase=2 submitted=true hp_before=10 hp_after=10 selectedRetained=false violation=true",
+    "PG_WINE_DRINK_LIFE member=true slot=27 phase=0 submitted=true hp_before=0 hp_after=10 selectedRetained=false violation=true",
+    "PG_WINE_DRINK_LIFE member=true slot=27 phase=1 submitted=true hp_before=0 hp_after=10 selectedRetained=false violation=true",
+    "PG_WINE_DRINK_LIFE member=true slot=27 phase=2 submitted=true hp_before=10 hp_after=10 selectedRetained=false violation=true"
+  ],
+  "evidence_sha256": {
+    "integration-external-wine-drink-life-dfc2a1667c6c97e4d525a1aaea1ba7154d9aaad7/manifest.json": "5c091b84d0028ad11bbe28b1f1d59f3cda756f87a3ea924e67e27c2fc5607b40",
+    "integration-external-wine-drink-life-dfc2a1667c6c97e4d525a1aaea1ba7154d9aaad7/run-1.log": "63348ce010a9a77607e2f054c6a8f7995ba0ca5953b842dbcc51c8d94d9c3400"
+  }
+}

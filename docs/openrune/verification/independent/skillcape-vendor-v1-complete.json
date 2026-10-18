@@ -1,0 +1,30 @@
+{
+  "implementation_id": "OR-MIG-0131",
+  "tested_sha": "35a5f39b72cab3a2655f32ae29bdde54284c9a4b",
+  "level": "V1",
+  "status": "PASS",
+  "check_groups": {
+    "earlier_purchase_space_and_public_dialogue_checks": 3758,
+    "owned_cape_and_hood_transaction_calls": 48,
+    "catalog_config_currency_refusals": 64,
+    "actual_queued_death_World_scenarios": 12,
+    "movement_NPC_generation_logout_World_scenarios": 6,
+    "current_item_authority_calls_over540fixtures": 1080,
+    "live_NPC_payment_authority_World_scenarios": 8
+  },
+  "scope": "AllapplicableV1 criteria covered by4976heterogeneousindependent checks/calls/scenarios at exact131SHA. Bothsellers andcurrentbase/member/releasedtrimmed-untrimmedselection,exact/overpayment/predebit2slots,atomiccape+hood credits;Craftingpaidspare/existinghoodrefusals versusCookingpaidspare/freeadditionalhood. PublicNPCdialogue andbothpayment/hoodackpoints withlatefailures,Close,stalechoice/replay,actualWalk/NPCgeneration/logout,zeroHP/actualqueueddeath/restoredHPwithoutrespawn allpreservewholeinventoryStatsgear andzeroRNG.540additionalcurrentitemfixtures exercise1080purchase/hoodcalls forheld/all14wornslots/threeidentities/count0-1-2/vars0-7;invalidpoliciesrejectbeforepreparingoutputs. EightliveNPCdead/delayed/moved/config-revoked paymentguards pass.",
+  "qualifications": [
+    "Counts combine transaction calls and publicWorld scenarios;1080item-authoritycalls use540fixtures,and48ownedchecks aretwooperations over24fixtures. They are not4976nativeactions.",
+    "Actual server startup/cache factory/native UI/V2and durableV3are separate;pure public Config transaction tests are combined with actualpublicWorlddialogue/tick checks,not substitutedfornative.",
+    "Original ownedtestsyntax compileFAIL ranzero cases and ispreserved. Original lifehelper unwrappedcorrectLoggingOut refusal after12death/2Craftingcontext positives;tailcorrectedonlyfailed+unexecutedcases. No successful immutable campaign replay.",
+    "Malformedcount/vars/catalog fixtures are trusted restored-state fault injection,not claims thatnormalnativeplayerscancreateinvalidmetadata.",
+    "Wiki/member/trim/extraCookinghood policy qualifications remain recorded;fullV4comparison is separate."
+  ],
+  "evidence_sha256": {
+    "skillcape-vendor-world-extension.json": "e8bb66a1de3ea0b8742ac239627326010e5f0b89c340553f8d7a947f1b953295",
+    "integration-external-skillcape-vendor-item-authority-35a5f39b72cab3a2655f32ae29bdde54284c9a4b/manifest.json": "9de1a238615a073f55cf86fd1273498be8ff4e37d49ed84e25ccd110a6dadc13",
+    "integration-external-skillcape-vendor-item-authority-35a5f39b72cab3a2655f32ae29bdde54284c9a4b/run-1.log": "00646fa0494f0654859ebf96fa8327fe02d11c1e71019d3bef19aaf7decd3dab",
+    "integration-external-skillcape-vendor-npc-authority-35a5f39b72cab3a2655f32ae29bdde54284c9a4b/manifest.json": "a4122b0f2a6f259beaf17a009a1136b195e685a31ad6266b9e98c65255c46315",
+    "integration-external-skillcape-vendor-npc-authority-35a5f39b72cab3a2655f32ae29bdde54284c9a4b/run-1.log": "c65a981be296e6ab40a6f49a1c98e8203d91a39c0b898295ea6939c51cbdd9e4"
+  }
+}

@@ -29,7 +29,9 @@
   "partial_contract_exclusions": {
     "OR-MIG-0024": "Ordinary food remains eligible; defer additional scenarios that drink potions to prepare overheal. Already completed native food/brew integration evidence remains historical.",
     "OR-MIG-0061": "Shared Close boundary is eligible for nonchemistry quantity/modal checks only. Defer held/worn chemistry and charge-state native/lifecycle retests including PG-DEF-001/#123 candidate b11260e0f4d1b3eaad0fefc18112c2e8bdf5843e; preserve original e7 failure and keep issue open until independently retested.",
-    "OR-MIG-0085": "Birdhouse manufacturing and held/worn tool cases remain eligible. Defer potion-outcome adapter gameplay regressions referenced by this shared change; ordinary compilation does not constitute chemistry gameplay testing."
+    "OR-MIG-0085": "Birdhouse manufacturing and held/worn tool cases remain eligible. Defer potion-outcome adapter gameplay regressions referenced by this shared change; ordinary compilation does not constitute chemistry gameplay testing.",
+    "OR-MIG-0138": "Defer Ixcoztic29952Herblore15drain; Kovac27014Smithing remains eligible.",
+    "OR-MIG-0141": "Defer Greenman1909Herbloreboost at both revisions. Other nine ordinary ale profiles remain eligible."
   },
   "native_features": [
     "combat",
@@ -43,8 +45,8 @@
     "chem-crash",
     "food-negative"
   ],
-  "next_eligible_contract": "OR-MIG-0131",
-  "next_action": "Exact1307d2133 applicableV0-V4 ACCEPTED:1788World/typedadapter/guild V1;actualnativebothcapeBoost/stat/visible100/repeat/F2PUIrefusal/save/restart/expiry/unsaved100rollback99;qualifiedreferencecomplete. BackendF2PmessagevariantBLOCKEDactualmenuabsent,notforced. Continue131at35a5f39:3888independentcasesPASSpartial;nextmalformedcurrentcapehood/wornslotandNPCauthorityguards,thenexactcache/native/durability.134a1658fdV1FAIL36lifeviolations PG-DEF-003backlog;16602transaction/25Worldcontrols retained,otherlevelsopen.126bd1294V0-V3PASS,V4specificnativeRCLboostrouteBLOCKED;125historicalFAILretained. FORGEc09e4b5queue147records136IDs validatorPASS,135/136readnotexecuted. Chemistry/potions remainuserdeferred;noFORGEstop/newissues/movingSHA.",
+  "next_eligible_contract": "OR-MIG-0137",
+  "next_action": "Continue pinned137native F2P/rapid duplicate/stale menu controls and unsaved recovery after completed native002sixDrink/rendered/save/restart campaign. V0PASS,V1FAIL18deathcases,V2/V3partial,V4facts sixhashespartial. Preserve native001launcherfailure and bothDBs. Original24V1FAIL18foodlife cases;original51V1FAIL18buriallife cases;vendor131V1PASS4976andnativepopulationBLOCKED;132/133/134lifeFAILretained;130historicalV0-V4ACCEPTED. FORGEe14b573159records147IDs validatorPASS,allnew143-147contracts read. Chemistry/Herblore/potions remainuserdeferred. Cleanup34909509324bytescompleted;all374EXE/DLLpaths retained. Publish source-only batch then immediately continue eligible tests.",
   "deferred_execution": "Chemistry interrupt-002 had already ended with a raw observer assertion failure when deferral arrived; owned graceful stop path recorded, no live chemistry run retained. Crash scenario build was resource-deferred and never executed. Do not launch new chemistry tests or silently classify unresolved assertions as implementation failures.",
   "resource_policy": "PG-INFRA-012 resolved: invoke existing project Assert-ServerMemoryCapacity (memory/commit/paging) and sampled CPU<=70%; explicit Cargo-j1/two owned CPUs/BelowNormal. The extra owned6GiBfloor was not a user/project requirement and must not cause another false stop."
 }

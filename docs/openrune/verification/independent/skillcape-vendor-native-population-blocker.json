@@ -1,0 +1,33 @@
+{
+  "implementation_id": "OR-MIG-0131",
+  "tested_sha": "35a5f39b72cab3a2655f32ae29bdde54284c9a4b",
+  "status": "BLOCKED",
+  "scope": "Exactserverbinarycompiled and actual--checkstartup/configurationPASS againstrealcache;7item/2NPC/stat/param/releasedmaskfactsPASS. Nativeguildselleracceptance cannotbegin withthisprovidedcachepopulation:bounded3x3Guildprobe foundno5810;completeinventoryofall2969mapgroups finds9NPCspawnfiles/607actorsandzero5810/2658. Inspectedapplication loads selectedcachemapNPCs plusstatic27towerpopulation; latterhasneithervendor. Startup registersvendorhandlersbutdoesnotaddthesemissingactors.",
+  "blocked_levels": [
+    "V0",
+    "V2",
+    "V3"
+  ],
+  "specific_blocker": "The exact131nativeenvironment hasdefinitions/handlersbut no suppliednativepopulation for MasterCrafter5810 orHeadchef2658. ActualTalk-to/confirmation/nativepurchase+hood andbefore/afterdurabilitycasescannotreachtheirNPC. NoNPCfixtureinvented,protectedcacheeditedornewerbuildsubstituted.",
+  "required_resolution": "Attest anexistingoriginal-pinpopulationinput/path thatactuallyprovidestheseNPCs, orpublishdependencycorrectionasaseparatelypinnedcontract/environmentrevision. Preservehistorical131blockedidentity andV1PASS;do not silentlyrunthecurrentHEAD.",
+  "classification": "Nativepopulationenvironment/dependencyblocker;not animplementationFAILfromahelpertest. AllmapNPCfilesreadsuccessfully. Boundedsourceinspectiondescribesadvertisedstartupandvendorregistration;doesnotclaimproofaboutuninspectedhypotheticalexternalfixtures.",
+  "next_action": "ContinueunrelatedeligibleCookingcape132atitsownpinnedSHA;keepordinaryFORGEimplementationrunning. Noexternalissueorstoprequested.",
+  "target_source_sha256": {
+    "crates/server/src/application.rs": "e2fd39a81852ece46bf106efdd70fddffe70f8fdd219923c131dca2a9423ee6d",
+    "crates/server/src/tower_map.rs": "88ba80aabd0c2baccc3143d1ef71604894dbfa10039f6ff15be2cd660e796499",
+    "crates/server/src/startup.rs": "3e8604014c895e7b039766b3db0807412d0f37197126075b1fc31e40097ef7c9",
+    "crates/server/src/content/skillcape_vendors.rs": "8a0555ab5177bebcfc068d39a69b2c2dce235b552b291f514a2c9a2d307c1e7f"
+  },
+  "evidence_sha256": {
+    "vendor-startup-35a5f39/manifest.json": "8a855a2794fa6e0c8fcffe7e0d52d45edcc0936e3e30f3b6bbdec9aa5a7d81c4",
+    "vendor-startup-35a5f39/stdout.log": "3785f77d004ef5c18f5adbc72aaca0692eab6d37137b4f192fe1e4b86641f2a8",
+    "vendor-startup-35a5f39/stderr.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "deep-skillcape-vendor-crafting/native-001/build.json": "9436c35b36b3567a58c99a7e91e213eb747d227ce0980f17c4fd5e536a0b542c",
+    "integration-external-skillcape-vendor-cache-facts-35a5f39b72cab3a2655f32ae29bdde54284c9a4b/manifest.json": "cc3cc7abcbd919751981d9aeee68767cbe7eebd09c0234cd2be5d6cc6b0aaed7",
+    "integration-external-skillcape-vendor-cache-facts-35a5f39b72cab3a2655f32ae29bdde54284c9a4b/run-1.log": "98c6b739444f397d6053e9eafe159170d57d0cb026ee6b0b0855e58346544b34",
+    "integration-external-skillcape-vendor-spawns-35a5f39b72cab3a2655f32ae29bdde54284c9a4b/manifest.json": "95b41b143c5a4d8ab93742ff4e5e48b7b6378b3e4a11a48176a802d4ffc2c372",
+    "integration-external-skillcape-vendor-spawns-35a5f39b72cab3a2655f32ae29bdde54284c9a4b/run-1.log": "b7d2437a660fdd14b1299e3d513b90a399c6a252d42c0e11e4ec4559bdd36b49",
+    "integration-external-skillcape-vendor-spawn-inventory-35a5f39b72cab3a2655f32ae29bdde54284c9a4b/manifest.json": "0861b279316a3d13f46d4737a26bc33c755e661959b0aec343a2169e8f432f6f",
+    "integration-external-skillcape-vendor-spawn-inventory-35a5f39b72cab3a2655f32ae29bdde54284c9a4b/run-1.log": "431c9530f9ee827ca1a3ee8342f8673e861685ec686c1e64e7b19f78c7933165"
+  }
+}
