@@ -58,6 +58,7 @@ pub fn amethyst_cutting(
     ] {
         check(symbol, id, name, true, true)?;
         out.push(Recipe {
+            skill: 12,
             exchange: grinding::Recipe {
                 tool: 1755,
                 input: 21347,

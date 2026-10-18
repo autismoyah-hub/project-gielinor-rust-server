@@ -2,6 +2,8 @@
 use gielinor_cache::{game::Definitions, symbols::Symbols};
 use gielinor_world::food::{self, Edible};
 use std::collections::BTreeMap;
+mod light_sources;
+pub use light_sources::light_sources;
 mod accursed_upgrade;
 pub use accursed_upgrade::accursed_upgrade;
 mod firelighter_coating;

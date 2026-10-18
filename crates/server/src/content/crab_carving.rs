@@ -68,6 +68,7 @@ pub fn crab_carving(
         check(out_symbol, output, name, true)?;
         check(broken_symbol, broken, broken_name, true)?;
         out.push(Recipe {
+            skill: 12,
             exchange: grinding::Recipe {
                 tool: 1755,
                 input: raw,

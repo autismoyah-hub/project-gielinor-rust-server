@@ -64,6 +64,7 @@ pub fn crafting_finishes(
             members: true,
         },
         serpentine_helm: tool_crafting::Recipe {
+            skill: 12,
             exchange: grinding::Recipe {
                 tool: 1755,
                 input: 12927,

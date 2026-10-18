@@ -63,6 +63,7 @@ pub fn glassblowing(
     ] {
         check(symbol, id, name, member)?;
         recipes.push(Recipe {
+            skill: 12,
             exchange: grinding::Recipe {
                 tool: 1785,
                 input: 1775,
@@ -76,7 +77,7 @@ pub fn glassblowing(
             name,
             action: "blow",
             output_count: 1,
-            failure:None,
+            failure: None,
         });
     }
     Ok(recipes)

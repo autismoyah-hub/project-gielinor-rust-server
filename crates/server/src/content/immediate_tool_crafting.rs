@@ -55,6 +55,7 @@ pub fn immediate_tool_crafting(
     }
     Ok(vec![
         Recipe {
+            skill: 12,
             exchange: grinding::Recipe {
                 tool: 946,
                 input: 771,
@@ -71,6 +72,7 @@ pub fn immediate_tool_crafting(
             failure: None,
         },
         Recipe {
+            skill: 12,
             exchange: grinding::Recipe {
                 tool: 1755,
                 input: 3211,

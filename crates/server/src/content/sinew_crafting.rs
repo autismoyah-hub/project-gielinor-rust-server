@@ -42,6 +42,7 @@ pub fn sinew_crafting(
         return Err("Missing/aliased knife-cutting sequence".into());
     }
     Ok(Recipe {
+        skill: 12,
         exchange: grinding::Recipe {
             tool: 946,
             input: 19665,

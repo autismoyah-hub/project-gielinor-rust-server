@@ -277,6 +277,7 @@ pub mod woodcutting;
 
 pub mod assembly;
 pub mod assembly_production;
+pub mod held_item_conversion;
 pub mod container_emptying;
 pub mod facility_crafting;
 pub mod gathering;

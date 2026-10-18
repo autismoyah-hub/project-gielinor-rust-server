@@ -512,6 +512,7 @@ pub enum Action {
         item: i32,
     },
     OpenItemPack { slot: usize, item: i32 },
+    ConvertHeldItem { slot: usize, item: i32 },
     EmptyContainer { slot: usize, item: i32 },
     OpenCoinPouch { slot: usize, item: i32, all: bool },
     DrinkSlot {
@@ -926,6 +927,7 @@ pub struct World {
     pub swamp_tar: Option<crate::swamp_tar::Config>,
     pub herb_cleaning: Option<crate::herb_cleaning::Config>,
     pub item_packs: BTreeMap<i32, crate::item_packs::Rule>,
+    /// Legacy field name; this single registry also owns ordinary light extinguishing.
     pub empty_containers: BTreeMap<i32,crate::container_emptying::Rule>,
     pub coin_pouches: BTreeMap<i32,crate::item_packs::PouchRule>,
     pub prayer: Option<crate::prayer::Config>,
@@ -1980,6 +1982,7 @@ impl World {
                     .map_err(|_| ActionError::InvalidItem)?;
             }
             Action::OpenItemPack { slot, item } => self.open_item_pack(id, slot, item)?,
+            Action::ConvertHeldItem { slot, item } => self.convert_held_item(id,slot,item)?,
             Action::EmptyContainer { slot, item } => self.empty_container(id,slot,item)?,
             Action::OpenCoinPouch { slot, item, all } => self.open_coin_pouch(id,slot,item,all)?,
             Action::CleanHerb { slot, item } => self.clean_herb(id, slot, item)?,

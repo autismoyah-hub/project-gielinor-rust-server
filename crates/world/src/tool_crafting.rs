@@ -9,6 +9,7 @@ use crate::{
 pub(crate) const QUEUE: i32 = -2391014;
 #[derive(Clone, Copy, Debug)]
 pub struct Recipe {
+    pub skill: u8,
     pub exchange: grinding::Recipe,
     pub level: u8,
     pub xp_tenths: u16,
@@ -57,7 +58,7 @@ impl Job {
         if r.exchange.members && !member {
             return Err(Error::Members);
         }
-        if (stats.current(12) as u8) < r.level {
+        if (stats.current(r.skill) as u8) < r.level {
             return Err(Error::Level);
         }
         let mut inventory = inv.clone();
@@ -77,7 +78,7 @@ impl Job {
             Some(
                 skills::advance(
                     &mut stats,
-                    12,
+                    r.skill,
                     r.xp_tenths as f64 / 10.0,
                     rate as f64 / 100.0,
                     99,
@@ -140,6 +141,7 @@ mod tests {
         stats.set_current(12, 27);
         let job = Job {
             recipe: Recipe {
+                skill: 12,
                 exchange: grinding::Recipe {
                     tool: 1755,
                     input: 1621,
@@ -331,7 +333,7 @@ impl Job {
         let failed = failed_job.prepare(inv, catalog, stats, rate, member)?;
         // Match source's clamped probability shape using the existing interpolation;
         // the host's authoritative uniform draw replaces source global Random.Default.
-        let level = (stats.current(12) as u8).clamp(1, 99) as i32;
+        let level = (stats.current(self.recipe.skill) as u8).clamp(1, 99) as i32;
         let threshold = (skills::success_rate(failure.low, failure.high, level, 99) * 256.0)
             .clamp(0.0, 256.0) as u32;
         if random.below(256) < threshold {
@@ -360,6 +362,7 @@ mod failure_tests {
     fn fixture() -> (Job, Inventory, Catalog, Stats) {
         let job = Job {
             recipe: Recipe {
+                skill: 12,
                 exchange: grinding::Recipe {
                     tool: 1755,
                     input: 1627,

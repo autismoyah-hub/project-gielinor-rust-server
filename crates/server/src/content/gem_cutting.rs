@@ -105,6 +105,7 @@ pub fn gem_cutting(
         )?;
         checked(output_name, output, name, members)?;
         out.push(Recipe {
+            skill: 12,
             exchange: grinding::Recipe {
                 tool: 1755,
                 input,
@@ -116,9 +117,9 @@ pub fn gem_cutting(
             xp_tenths,
             ticks: 1,
             name: output_name,
-            action:"cut",
+            action: "cut",
             output_count: 1,
-            failure:None,
+            failure: None,
         });
     }
     Ok(out)

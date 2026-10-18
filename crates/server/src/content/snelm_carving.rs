@@ -111,6 +111,7 @@ pub fn snelm_carving(
         check(input_symbol, input, input_name, true)?;
         check(output_symbol, output, name, true)?;
         recipes.push(Recipe {
+            skill: 12,
             exchange: grinding::Recipe {
                 tool: 1755,
                 input,
@@ -122,9 +123,9 @@ pub fn snelm_carving(
             xp_tenths: 325,
             ticks: 2,
             name,
-            action:"carve",
+            action: "carve",
             output_count: 1,
-            failure:None,
+            failure: None,
         });
     }
     Ok(recipes)

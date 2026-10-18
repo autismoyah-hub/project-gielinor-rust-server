@@ -108,6 +108,7 @@ pub fn fallible_gems(
             return Err(format!("Missing/aliased gem sequence {anim_symbol}"));
         }
         out.push(Recipe {
+            skill: 12,
             exchange: grinding::Recipe {
                 tool: 1755,
                 input,

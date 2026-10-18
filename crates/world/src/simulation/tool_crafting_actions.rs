@@ -6,7 +6,9 @@ impl World {
         actor: ActorId,
         job: Job,
     ) -> Result<(), ActionError> {
-        if job.recipe.ticks == 0 { return Err(ActionError::InvalidItem); }
+        if job.recipe.ticks == 0 {
+            return Err(ActionError::InvalidItem);
+        }
         let p = self.players.get_mut(actor.slot as usize).unwrap();
         if let Err(e) = job.prepare(
             &p.data.inventory,
@@ -15,7 +17,7 @@ impl World {
             p.data.xp_rate_hundreds,
             p.member,
         ) {
-            refusal(&mut self.events, actor, e);
+            refusal(&mut self.events, actor, e, job.recipe.skill);
             return Ok(());
         }
         p.queues.clear_weak();
@@ -41,15 +43,18 @@ impl World {
         Ok(())
     }
 }
-fn refusal(events: &mut Vec<WorldEvent>, actor: ActorId, error: Error) {
+fn refusal(events: &mut Vec<WorldEvent>, actor: ActorId, error: Error, skill: u8) {
+    let text = match (skill, error) {
+        (11, Error::Members) => "You need to be a member to light that item.",
+        (11, Error::Level) => "You need a higher Firemaking level to light that item.",
+        (11, _) => "You can't light that item right now.",
+        (_, Error::Members) => "You need to be a member to craft that item.",
+        (_, Error::Level) => "You need a higher Crafting level to craft that item.",
+        _ => "You can't craft that item right now.",
+    };
     events.push(WorldEvent::GameMessage {
         actor,
-        text: match error {
-            Error::Members => "You need to be a member to craft that item.",
-            Error::Level => "You need a higher Crafting level to craft that item.",
-            _ => "You can't craft that item right now.",
-        }
-        .into(),
+        text: text.into(),
     });
 }
 pub(super) fn complete(
@@ -88,7 +93,7 @@ pub(super) fn complete(
             true
         }
         Err(e) => {
-            refusal(events, p.id, e);
+            refusal(events, p.id, e, pending.job.recipe.skill);
             false
         }
     };
@@ -199,6 +204,7 @@ mod tests {
                 1755,
                 1617,
                 Handler::ToolCrafting(Recipe {
+                    skill: 12,
                     exchange: crate::grinding::Recipe {
                         tool: 1755,
                         input: 1617,
@@ -309,7 +315,12 @@ impl World {
             return Err(ActionError::InvalidItem);
         };
         if choice.recipes.iter().all(|r| r.exchange.members) && !p.member {
-            refusal(&mut self.events, actor, Error::Members);
+            refusal(
+                &mut self.events,
+                actor,
+                Error::Members,
+                choice.recipes[0].skill,
+            );
             return Ok(());
         }
         p.tool_crafting_request = Some(choice);
@@ -349,7 +360,9 @@ impl World {
             return Err(ActionError::InvalidItem);
         }
         let recipe = *request.recipes.get(index).ok_or(ActionError::InvalidItem)?;
-        if recipe.ticks == 0 { return Err(ActionError::InvalidItem); }
+        if recipe.ticks == 0 {
+            return Err(ActionError::InvalidItem);
+        }
         let job = Job {
             recipe,
             tool_slot: request.tool_slot,
@@ -362,7 +375,7 @@ impl World {
             p.data.xp_rate_hundreds,
             p.member,
         ) {
-            refusal(&mut self.events, actor, e);
+            refusal(&mut self.events, actor, e, job.recipe.skill);
             return Ok(());
         }
         let mut slots = vec![request.input_slot];
@@ -461,6 +474,7 @@ mod choice_tests {
         }
         let recipes = std::sync::Arc::new(vec![
             Recipe {
+                skill: 12,
                 exchange: crate::grinding::Recipe {
                     tool: 1785,
                     input: 1775,
@@ -477,6 +491,7 @@ mod choice_tests {
                 failure: None,
             },
             Recipe {
+                skill: 12,
                 exchange: crate::grinding::Recipe {
                     tool: 1785,
                     input: 1775,
@@ -717,6 +732,7 @@ mod prior_production_tests {
                 w.held_use_types.insert(id, Type { id, content: -1 });
             }
             let recipe = Recipe {
+                skill: 12,
                 exchange: crate::grinding::Recipe {
                     tool: 1755,
                     input,
@@ -856,6 +872,7 @@ mod fallible_world_tests {
                 w.held_use_types.insert(id, Type { id, content: -1 });
             }
             let recipe = Recipe {
+                skill: 12,
                 exchange: crate::grinding::Recipe {
                     tool: 1755,
                     input: 1625,
@@ -943,98 +960,411 @@ mod fallible_world_tests {
 
 // Immediate held recipes are single actions; they never enter a production queue.
 impl World {
-    pub(super) fn complete_tool_crafting_immediate(&mut self, actor: ActorId, job: Job) -> Result<(), ActionError> {
-        if job.recipe.ticks != 0 { return Err(ActionError::InvalidItem); }
+    pub(super) fn complete_tool_crafting_immediate(
+        &mut self,
+        actor: ActorId,
+        job: Job,
+    ) -> Result<(), ActionError> {
+        if job.recipe.ticks != 0 {
+            return Err(ActionError::InvalidItem);
+        }
         let p = self.player(actor)?;
-        if p.pending_logout || p.saving { return Err(ActionError::LoggingOut); }
-        if p.protection.access_protected(p.has_modal) { return Err(ActionError::Protected); }
+        if p.pending_logout || p.saving {
+            return Err(ActionError::LoggingOut);
+        }
+        if p.protection.access_protected(p.has_modal) {
+            return Err(ActionError::Protected);
+        }
         let mut random = self.random;
-        let result = job.resolve(&p.data.inventory, &self.object_types, &p.data.stats,
-            p.data.xp_rate_hundreds, p.member, &mut random);
+        let result = job.resolve(
+            &p.data.inventory,
+            &self.object_types,
+            &p.data.stats,
+            p.data.xp_rate_hundreds,
+            p.member,
+            &mut random,
+        );
         self.random = random;
         match result {
             Ok((prepared, success)) => {
                 let p = self.players.get_mut(actor.slot as usize).unwrap();
                 if let Some(sequence) = job.recipe.exchange.animation {
-                    self.events.push(WorldEvent::PlayerCombatAnimation { actor, sequence });
+                    self.events
+                        .push(WorldEvent::PlayerCombatAnimation { actor, sequence });
                 }
-                publish(p, job, prepared, success, self.tutorial_rules_completed_varp.is_some(), &mut self.events);
+                publish(
+                    p,
+                    job,
+                    prepared,
+                    success,
+                    self.tutorial_rules_completed_varp.is_some(),
+                    &mut self.events,
+                );
             }
-            Err(error) => refusal(&mut self.events, actor, error),
+            Err(error) => refusal(&mut self.events, actor, error, job.recipe.skill),
         }
         Ok(())
     }
 }
-fn publish(p: &mut Player, job: Job, prepared: crate::tool_crafting::Prepared, success: bool,
-    tutorial: bool, events: &mut Vec<WorldEvent>) {
+fn publish(
+    p: &mut Player,
+    job: Job,
+    prepared: crate::tool_crafting::Prepared,
+    success: bool,
+    tutorial: bool,
+    events: &mut Vec<WorldEvent>,
+) {
     p.data.inventory = prepared.inventory;
     p.data.stats = prepared.stats;
     if let Some(advancement) = prepared.advancement {
-        if tutorial && p.stat_events.advance(&crate::tutorial_rules::bindings(), 12, advancement).is_err() {
+        if tutorial
+            && p.stat_events
+                .advance(
+                    &crate::tutorial_rules::bindings(),
+                    job.recipe.skill,
+                    advancement,
+                )
+                .is_err()
+        {
             p.pending_logout = true;
-            events.push(WorldEvent::ActionRejected { actor: p.id, error: ActionError::QueueFull });
+            events.push(WorldEvent::ActionRejected {
+                actor: p.id,
+                error: ActionError::QueueFull,
+            });
         }
-        events.push(WorldEvent::SkillAdvanced { actor: p.id, skill: 12, advancement });
+        events.push(WorldEvent::SkillAdvanced {
+            actor: p.id,
+            skill: job.recipe.skill,
+            advancement,
+        });
     }
-    events.push(WorldEvent::GameMessage { actor: p.id, text: if success {
-        format!("You {} the {}.", job.recipe.action, job.recipe.name)
-    } else { job.recipe.failure.unwrap().message.into() } });
+    events.push(WorldEvent::GameMessage {
+        actor: p.id,
+        text: if success {
+            format!("You {} the {}.", job.recipe.action, job.recipe.name)
+        } else {
+            job.recipe.failure.unwrap().message.into()
+        },
+    });
 }
 
 #[cfg(test)]
 mod immediate_tests {
     use super::*;
-    use crate::{held_use::{Handler,Request,Scope,Type},inventory::Item,tool_crafting::{Recipe,Failure}};
-    fn fixture(limestone:bool) -> (World,ActorId,Request) {
-        let mut w=World::default();w.collision.allocate(3200,3200,0);
-        let mut stats=Stats::default();stats.set_base(3,10);stats.set_current(3,10);stats.set_base(12,31);stats.set_current(12,31);
-        let mut data=PlayerData::new(1,"Instant crafter".into(),CoordGrid::new(3200,3200,0).unwrap(),stats);
-        data.xp_rate_hundreds=if limestone{125}else{0};
-        let (tool,raw,out)=if limestone{(1755,3211,3420)}else{(946,771,772)};
-        for slot in 0..28 {data.inventory.restore_slot(slot,Some(Item{id:1511,count:1,vars:0})).unwrap();}
-        for (slot,id) in [(5,tool),(19,raw),(21,raw)] {data.inventory.restore_slot(slot,Some(Item{id,count:1,vars:0})).unwrap();}
-        w.queue_login(1,data).unwrap();w.tick().unwrap();let a=w.actors().next().unwrap();w.set_membership(a,true).unwrap();
-        for id in [tool,raw] {w.held_use_types.insert(id,Type{id,content:-1});}
-        w.held_use_handlers.register(Scope::Types,tool,raw,Handler::ToolCraftingImmediate(Recipe{
-            exchange:crate::grinding::Recipe{tool,input:raw,output:out,members:true,animation:None},level:if limestone{12}else{31},xp_tenths:if limestone{60}else{0},ticks:0,name:"product",action:"craft",
-            output_count: 1,
-            failure:if limestone{Some(Failure{output:968,xp_tenths:15,low:137,high:434,message:"Failed"})}else{None},
-        })).unwrap();
-        (w,a,Request{selected_slot:19,selected_id:raw,target_slot:5,target_id:tool})
+    use crate::{
+        held_use::{Handler, Request, Scope, Type},
+        inventory::Item,
+        tool_crafting::{Failure, Recipe},
+    };
+    fn fixture(limestone: bool) -> (World, ActorId, Request) {
+        let mut w = World::default();
+        w.collision.allocate(3200, 3200, 0);
+        let mut stats = Stats::default();
+        stats.set_base(3, 10);
+        stats.set_current(3, 10);
+        stats.set_base(12, 31);
+        stats.set_current(12, 31);
+        let mut data = PlayerData::new(
+            1,
+            "Instant crafter".into(),
+            CoordGrid::new(3200, 3200, 0).unwrap(),
+            stats,
+        );
+        data.xp_rate_hundreds = if limestone { 125 } else { 0 };
+        let (tool, raw, out) = if limestone {
+            (1755, 3211, 3420)
+        } else {
+            (946, 771, 772)
+        };
+        for slot in 0..28 {
+            data.inventory
+                .restore_slot(
+                    slot,
+                    Some(Item {
+                        id: 1511,
+                        count: 1,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+        }
+        for (slot, id) in [(5, tool), (19, raw), (21, raw)] {
+            data.inventory
+                .restore_slot(
+                    slot,
+                    Some(Item {
+                        id,
+                        count: 1,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+        }
+        w.queue_login(1, data).unwrap();
+        w.tick().unwrap();
+        let a = w.actors().next().unwrap();
+        w.set_membership(a, true).unwrap();
+        for id in [tool, raw] {
+            w.held_use_types.insert(id, Type { id, content: -1 });
+        }
+        w.held_use_handlers
+            .register(
+                Scope::Types,
+                tool,
+                raw,
+                Handler::ToolCraftingImmediate(Recipe {
+                    skill: 12,
+                    exchange: crate::grinding::Recipe {
+                        tool,
+                        input: raw,
+                        output: out,
+                        members: true,
+                        animation: None,
+                    },
+                    level: if limestone { 12 } else { 31 },
+                    xp_tenths: if limestone { 60 } else { 0 },
+                    ticks: 0,
+                    name: "product",
+                    action: "craft",
+                    output_count: 1,
+                    failure: if limestone {
+                        Some(Failure {
+                            output: 968,
+                            xp_tenths: 15,
+                            low: 137,
+                            high: 434,
+                            message: "Failed",
+                        })
+                    } else {
+                        None
+                    },
+                }),
+            )
+            .unwrap();
+        (
+            w,
+            a,
+            Request {
+                selected_slot: 19,
+                selected_id: raw,
+                target_slot: 5,
+                target_id: tool,
+            },
+        )
     }
     #[test]
     fn actual_immediate_held_use_is_single_selected_action_with_no_xp_or_delayed_replay() {
-        let(mut w,a,r)=fixture(false);let stats=w.data(a).unwrap().stats.clone();let seed=w.random.0;
-        w.prepare_held_use(a,r).unwrap();w.finish_held_use(a,r).unwrap();
-        let d=w.data(a).unwrap();assert_eq!(d.inventory.get(19).unwrap().id,772);assert_eq!(d.inventory.get(21).unwrap().id,771);assert_eq!(d.inventory.get(5).unwrap().id,946);assert_eq!(d.inventory.free_space(),0);assert_eq!(d.stats,stats);assert_eq!(w.random.0,seed);
+        let (mut w, a, r) = fixture(false);
+        let stats = w.data(a).unwrap().stats.clone();
+        let seed = w.random.0;
+        w.prepare_held_use(a, r).unwrap();
+        w.finish_held_use(a, r).unwrap();
+        let d = w.data(a).unwrap();
+        assert_eq!(d.inventory.get(19).unwrap().id, 772);
+        assert_eq!(d.inventory.get(21).unwrap().id, 771);
+        assert_eq!(d.inventory.get(5).unwrap().id, 946);
+        assert_eq!(d.inventory.free_space(), 0);
+        assert_eq!(d.stats, stats);
+        assert_eq!(w.random.0, seed);
         assert!(w.take_tool_crafting_request(a).unwrap().is_none());
-        assert!(!w.events.iter().any(|e|matches!(e,WorldEvent::SkillAdvanced{..})));
-        assert!(w.finish_held_use(a,r).is_err());
-        for _ in 0..5 {w.tick().unwrap();}
-        assert_eq!(w.data(a).unwrap().inventory.get(21).unwrap().id,771);assert_eq!(w.data(a).unwrap().stats,stats);
+        assert!(!w
+            .events
+            .iter()
+            .any(|e| matches!(e, WorldEvent::SkillAdvanced { .. })));
+        assert!(w.finish_held_use(a, r).is_err());
+        for _ in 0..5 {
+            w.tick().unwrap();
+        }
+        assert_eq!(w.data(a).unwrap().inventory.get(21).unwrap().id, 771);
+        assert_eq!(w.data(a).unwrap().stats, stats);
     }
     #[test]
     fn immediate_either_bad_output_or_member_level_tool_guard_refuses_without_rng_or_loss() {
         for case in 0..5 {
-            let(mut w,a,r)=fixture(true);
+            let (mut w, a, r) = fixture(true);
             match case {
-                0=>{w.object_types.dummy.insert(3420);},1=>{w.object_types.dummy.insert(968);},
-                2=>w.set_membership(a,false).unwrap(),3=>w.data_mut(a).unwrap().stats.set_current(12,11),
-                _=>{w.data_mut(a).unwrap().inventory.restore_slot(5,Some(Item{id:1755,count:1,vars:1})).unwrap();},
+                0 => {
+                    w.object_types.dummy.insert(3420);
+                }
+                1 => {
+                    w.object_types.dummy.insert(968);
+                }
+                2 => w.set_membership(a, false).unwrap(),
+                3 => w.data_mut(a).unwrap().stats.set_current(12, 11),
+                _ => {
+                    w.data_mut(a)
+                        .unwrap()
+                        .inventory
+                        .restore_slot(
+                            5,
+                            Some(Item {
+                                id: 1755,
+                                count: 1,
+                                vars: 1,
+                            }),
+                        )
+                        .unwrap();
+                }
             }
-            let before=(w.data(a).unwrap().inventory.clone(),w.data(a).unwrap().stats.clone(),w.random.0);
-            w.prepare_held_use(a,r).unwrap();let _=w.finish_held_use(a,r);
-            assert_eq!((w.data(a).unwrap().inventory.clone(),w.data(a).unwrap().stats.clone(),w.random.0),before,"case{case}");
+            let before = (
+                w.data(a).unwrap().inventory.clone(),
+                w.data(a).unwrap().stats.clone(),
+                w.random.0,
+            );
+            w.prepare_held_use(a, r).unwrap();
+            let _ = w.finish_held_use(a, r);
+            assert_eq!(
+                (
+                    w.data(a).unwrap().inventory.clone(),
+                    w.data(a).unwrap().stats.clone(),
+                    w.random.0
+                ),
+                before,
+                "case{case}"
+            );
         }
     }
     #[test]
     fn immediate_limestone_publishes_one_chosen_reward_before_a_world_tick() {
-        for success in [false,true] {
-            let(mut w,a,r)=fixture(true);w.data_mut(a).unwrap().stats.set_current(12,12);
-            let seed=(0..10000).find(|s| {let mut rng=SeededRandom(*s);(rng.below(256)<171)==success}).unwrap();
-            let mut expected=SeededRandom(seed);expected.below(256);w.random=SeededRandom(seed);
-            w.prepare_held_use(a,r).unwrap();w.finish_held_use(a,r).unwrap();
-            let d=w.data(a).unwrap();assert_eq!(d.inventory.get(19).unwrap().id,if success{3420}else{968});assert_eq!(d.stats.fine_xp(12),if success{75}else{18});assert_eq!(d.inventory.get(21).unwrap().id,3211);assert_eq!(d.inventory.get(5).unwrap().id,1755);assert_eq!(w.random.0,expected.0);
+        for success in [false, true] {
+            let (mut w, a, r) = fixture(true);
+            w.data_mut(a).unwrap().stats.set_current(12, 12);
+            let seed = (0..10000)
+                .find(|s| {
+                    let mut rng = SeededRandom(*s);
+                    (rng.below(256) < 171) == success
+                })
+                .unwrap();
+            let mut expected = SeededRandom(seed);
+            expected.below(256);
+            w.random = SeededRandom(seed);
+            w.prepare_held_use(a, r).unwrap();
+            w.finish_held_use(a, r).unwrap();
+            let d = w.data(a).unwrap();
+            assert_eq!(
+                d.inventory.get(19).unwrap().id,
+                if success { 3420 } else { 968 }
+            );
+            assert_eq!(d.stats.fine_xp(12), if success { 75 } else { 18 });
+            assert_eq!(d.inventory.get(21).unwrap().id, 3211);
+            assert_eq!(d.inventory.get(5).unwrap().id, 1755);
+            assert_eq!(w.random.0, expected.0);
         }
+    }
+}
+
+#[cfg(test)]
+mod tool_skill_tests {
+    use super::*;
+    use crate::{
+        held_use::{Handler, Request, Scope, Type},
+        inventory::Item,
+        tool_crafting::Recipe,
+    };
+    #[test]
+    fn tool_skill_routes_noncrafting_positive_award_and_failure_to_selected_stat() {
+        let r = Recipe {
+            skill: 9,
+            exchange: crate::grinding::Recipe {
+                tool: 100,
+                input: 101,
+                output: 102,
+                members: false,
+                animation: None,
+            },
+            level: 5,
+            xp_tenths: 15,
+            output_count: 1,
+            ticks: 0,
+            name: "fixture",
+            action: "make",
+            failure: None,
+        };
+        let mut w = World::default();
+        w.collision.allocate(3200, 3200, 0);
+        for id in [100, 101] {
+            w.held_use_types.insert(id, Type { id, content: -1 });
+        }
+        w.held_use_handlers
+            .register(Scope::Types, 100, 101, Handler::ToolCraftingImmediate(r))
+            .unwrap();
+        let mut stats = Stats::default();
+        stats.set_base(9, 5);
+        stats.set_current(9, 5);
+        stats.set_current(12, 0);
+        let mut data = PlayerData::new(
+            1,
+            "Tool fixture".into(),
+            CoordGrid::new(3200, 3200, 0).unwrap(),
+            stats,
+        );
+        data.xp_rate_hundreds = 125;
+        for (slot, id) in [(0, 100), (1, 101)] {
+            data.inventory
+                .restore_slot(
+                    slot,
+                    Some(Item {
+                        id,
+                        count: 1,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+        }
+        w.queue_login(1, data).unwrap();
+        w.tick().unwrap();
+        let a = w.actors().next().unwrap();
+        w.drain_events();
+        let req = Request {
+            selected_slot: 0,
+            selected_id: 100,
+            target_slot: 1,
+            target_id: 101,
+        };
+        w.prepare_held_use(a, req).unwrap();
+        w.finish_held_use(a, req).unwrap();
+        assert_eq!(w.data(a).unwrap().stats.fine_xp(9), 18);
+        assert_eq!(w.data(a).unwrap().stats.fine_xp(12), 0);
+        assert!(w
+            .drain_events()
+            .iter()
+            .any(|e| matches!(e, WorldEvent::SkillAdvanced { skill: 9, .. })));
+        let mut r = r;
+        r.failure = Some(crate::tool_crafting::Failure {
+            output: 103,
+            xp_tenths: 5,
+            low: 0,
+            high: 0,
+            message: "fixture",
+        });
+        let mut inv = w.data(a).unwrap().inventory.clone();
+        inv.restore_slot(
+            1,
+            Some(Item {
+                id: 101,
+                count: 1,
+                vars: 0,
+            }),
+        )
+        .unwrap();
+        let mut stats = w.data(a).unwrap().stats.clone();
+        stats.set_fine_xp(9, 0).unwrap();
+        struct Fail;
+        impl RandomSource for Fail {
+            fn below(&mut self, upper: u32) -> u32 {
+                assert_eq!(upper, 256);
+                255
+            }
+        }
+        let (prepared, success) = Job {
+            recipe: r,
+            tool_slot: 0,
+            input_slot: 1,
+        }
+        .resolve(&inv, &w.object_types, &stats, 125, false, &mut Fail)
+        .unwrap();
+        assert!(!success);
+        assert_eq!(prepared.stats.fine_xp(9), 6);
+        assert_eq!(prepared.stats.fine_xp(12), 0);
     }
 }
