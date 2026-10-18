@@ -3,9 +3,9 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0077: six fibre textile recipes in existing wheel/loom dispatch; source [41f67c1](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/41f67c1ffa08f3b0ae0964292c4a98245a470b47). Strict target definitions bridge eight absent aliases. Focused transaction tests and actual binary check PASS; independent V0–V4 queued.
+OR-MIG-0078:15 additional static ordinary facilities,19 total; source [c5a9a43](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/c5a9a435d5bc8bfce58ccaa2ce4eb28d5514e9e0). Exact bindings/operations/geometry; existing recipe engines unchanged. Focused and actual binary checks PASS; first compile failure preserved. Independent V0–V4 queued.
 
-77 units / 85 append-only records. Discovery3508=39partial eligible+4framework/infrastructure+658configuration+2807unassessed; not completion percentages. Broad content and ordinary other facilities/access/modifiers remain. PG-DEF-001 Close candidate pending independent retest.
+78 units / 86 append-only records. Discovery3508=39partial eligible+4framework/infrastructure+658configuration+2807unassessed; not completion percentages. Repair/build/access/diary modifiers and broad content remain. PG-DEF-001 Close candidate pending independent retest.
 <!-- forge-current:end -->
 
 
@@ -443,3 +443,12 @@ Source 41f67c1ffa08f3b0ae0964292c4a98245a470b47: three linen/hemp/cotton yarn re
 Yarn nominal3first/3repeat; bolt Wiki Make-all4first/3repeat explicitly overrides donor3/3. Existing full-credit grouped transactions, quantity/Close/selected slot capture reused. Focused textile test001 PASS1server/0world matches,436 unchanged source hashes, compile43.68s; actual server binaries check001 PASS,436 unchanged hashes. Six full-bag rewards plus low-level/nonmember/short group/invalid credit preserve originals, conflicting/missing/invalid type bindings refuse. Guard focused6,208MiB/59.9%commit/4pages-in/s/1.3msdisk/48.2%CPU; binary6,200MiB/60.0%commit/1,218pages-in/s/1.4msdisk/51.2%CPU; bothj2. Existing vendor/characters warnings retained. Working-tree evidence is not independent/native/pristine acceptance.
 
 Queue77units/85append-onlyrecords. Discovery3508=39partial eligible+4framework/infrastructure+658configuration+2807unassessed, not completion percentages. Other facilities, resource acquisition, quests/access, diary modifiers and broad source obligations remain. PG-DEF-001 Close candidate pending independent retest. Continue implementation.
+
+
+## FORGE OR-MIG-0078 — ordinary facility coverage
+
+Source c5a9a435d5bc8bfce58ccaa2ce4eb28d5514e9e0 extends actual shared facility configs to15 additional static types: wheels4309/8748/20365/21304/25824/55330/56964 Spin2,loom787 Weave2,pottery wheels4310/20375/39395/50732 Use1,ovens11601/4308/39396 Fire1. All4 original types remain, giving19 registered ordinary types. Strict alias/name/actual verb/width1,length1 or oven2/no-morph attestation; source crafting_locs membership plus4 Wiki pages/fifteen target definitions pinned. Existing recipes, selected groups, reach/revision,quantity UI,atomic credits/XP and staged cracking inherited unchanged. No asset/maps/vars or source resource writes.
+
+Initial test001 FAIL due symbol i32/location u32 mismatch, preserved unchanged; explicit safe constant-ID conversion fixed. Focused002 PASS,437 unchanged hashes: test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 121 filtered out; finished in 0.02s; test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 481 filtered out; finished in 0.00s. Actual World real/wrong operation admission,missing/conflicting/invalid geometry/morph/verb bindings checked; no native scene claim. Binary001 PASS,437 unchanged hashes. Finished `test` profile [unoptimized + debuginfo] target(s) in 30.18s; Finished `dev` profile [unoptimized + debuginfo] target(s) in 8.17s. Guard0026,065MiB/61.3%commit/0pages-in/s/0.6msdisk/44.6%CPU,j2. No shared engine change. Developer working-tree evidence only; independent V0–V4 queued.
+
+Repair/build families including40733/amenities,quest/area access,map preparation and Seers diary33% acceleration remain separate; Seers variant currently ordinary timing, not complete diary parity. Existing animation/native timing/Close limitations retained. Queue78units/86append-onlyrecords. Discovery3508=39partial eligible+4framework/infrastructure+658configuration+2807unassessed, not completion percentages. Continue eligible implementation.
