@@ -3,11 +3,11 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0056: seven deterministic manual gem cuts, source [5743cbe](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/5743cbe1c7499e2a7476c721d25dcba194666042). Exact chisel retained; selected raw/full-bag exchange and fractional Crafting XP atomic. Source shortened first cut1clock; no production menu/repeats. Zenyte50XP corrected before publication. Shared001PASS93server457world/1ignored plus corrected002PASS1server2world,413same hashes; independentV0-V4pending.
+OR-MIG-0057: nine legacy shell carvings, source [4c6b73c](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/4c6b73cfcd3b35ce52aa79efd9d2a99464939445). Unchanged56adapter: retained chisel, exact round/pointed raw output, memberCrafting15,32.5XP,2clockfirstmanualcarve. PASS1server0world414same hashes; broader production/native/lifecycle/reference acceptance pending.
 
-56units across60append-only records:23historical and33new units. Discovery3508:37partially contracted eligible files/tables,657configuration,2814unassessed; not a completion percentage. Broader Crafting/production UI/crushable gems and Thieving modifiers/stalls/master farmer, Prayer policy/cadence and other systems remain unfinished.
+57units across63append-only records:23historical and34newunits. Latest0055r2/0056r2correct feature-specific verification rationale only; original histories/sourceSHAs preserved. Discovery3508:37partialeligible,657configuration,2814unassessed; not a completion percentage.
 
-[PG-DEF-001/#123](https://github.com/autismoyah-hub/project-gielinor-rust-server/issues/123) remains an ordinary deferred native Close/chemistry mismatch, not accepted behavior; historical independent evidence preserved. Continue unrelated dependency-aware implementation.
+Continue eligible Crafting and other content. Quantity menus/repeats, other products, Thieving modifiers/stalls/master farmer and broad parity remain unfinished. [PG-DEF-001/#123](https://github.com/autismoyah-hub/project-gielinor-rust-server/issues/123) remains an ordinary deferred/unaccepted native Close/chemistry mismatch.
 <!-- forge-current:end -->
 
 
@@ -236,3 +236,12 @@ Prepared15ordinary definitions, actual member flags/symbols/targetanimationhuman
 forge-gem-cutting-tests-attempt-001 sharedPASS93server457world/1existing ignored,413unchanged source hashes,compile1m26s. That uncommitted run contained incorrect Zenyte200XP/initial2clock assumptions, caught by pinned policy review and superseded before sourcepublication. Preserve that run; it is not acceptance of those assumptions. Corrected002PASS1server2world/413samehashes,compile18.32s validates all7rewards/member gates at125percentfine625/843/1062/1343/1718/2093/625, real reverse held dispatch,1subsequentclock,fullbag/toolretention and late level/tool/modal/credit refusals. Existing inventory exchange/shared engine unchanged by final family-policy correction; full001regression plus focused002cover the final changes. Guard0016950MiB57.7percentcommit16paging5.2msdisk16.6percentCPU;0027349MiB55.3percentcommit6paging5.2msdisk17percentCPU,bothCargo-j2. NoCargoFAIL/resource deferral. Initial preflight blank symbol-line parser stopped before writes; corrected and retained as operational history. Working-tree developer evidence,notpristine/native/independentacceptance.
 
 PG-DEF-001/#123ordinarychemistryClosefinding remainsdeferred,unfixed/unaccepted; unrelated migration continues.
+
+
+## FORGE OR-MIG-0057 — nine legacy shell carvings
+
+Published source 4c6b73cfcd3b35ce52aa79efd9d2a99464939445. Nine chisel1755/shell pairs3345/3347/3349/3351/3353/3355/3357/3359/3361->helmets3327/3329/3331/3333/3335/3337/3339/3341/3343register through unchanged56manualCrafting engine. Exact symbols distinguish round/pointed despite duplicate raw display names. Member/currentCrafting15,32.5baseXP,one selected full-bag replacement/retained chisel,2subsequentclockmanualfirstcarve,animation1280. SourceCARVING3cycle/defaultshortensfirst yields2; Wiki agrees. No RNG/repeat/menu/acquisition/perfect-shell rewards/equipment/laterVampyreport implied. Missing sound/generic cut wording and independentV0-V4remain disclosed. Independent adaptation of pinnedWiki/target definitions, same4sourceSHArefs56; no donor code/generated rows/DSL/assets copied.
+
+forge-snelm-tests-attempt-001PASS1server0world/414same source hashes,compile11.85s. All9pairs/fullbag selected output/chisel retention,100/125/500percentfine325/406/1625,memberrefusal and late badtemplate registration refusal. Guard6597MiB59percentcommit0paging0msdisk15.5percentCPU,Cargo-j2. Shared engine unchanged,56shared001+corrected002historical; working-tree checks not pristine/native/independent acceptance. All private/native/prior failures preserved.
+
+Contract hygiene: appended0055r2and0056r2at their unchanged published sourceSHAs, replacing inherited pouch-specific V0-V4reason text with feature-specific verification obligations. Original published records retained; source/tests/status unchanged and no acceptance implied. Queue57units63append-onlyrecords (23historical34newunits). Discoverycountsunchanged37partialeligible657configuration2814unassessed of3508. OrdinaryPG-DEF-001/#123remainsdeferred/unfixed/unaccepted. Continue dependency-aware Crafting and other eligible modules.
