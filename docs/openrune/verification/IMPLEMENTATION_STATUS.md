@@ -3,13 +3,13 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0049: thirteen retained-bowl foods plus egg potato, source [8d8dff9](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/8d8dff9c3f5200568f2becf0c63509332d9bfed9). Affected libraries compiled; focused checkPASS1server/0world,404source hashes unchanged. All14healing/selected duplicate/cap/overheal/noXP/remainder rules and late rollback checked.
+OR-MIG-0050: six Dorgesh foods, source [78f603f](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/78f603fd516a3963f2e0a30d2ad47186aa6e1ddd). Affected libraries compiled; focusedPASS1server/0world,405source hashes unchanged. Wiki HP2/2/2/2/10/2and two Cooking+1effects are registered, explicitly differing from four donor healing values and omitted boosts.
 
-Thirteen foods return1923at the clicked slot even with full inventory. Egg potato leaves no container; empty bowl is not edible. Existing food helpers/transaction and member guards are reused. Preparation/knife/cooking/bait use remain separate. No shared engine changed since the full85server445world regression in0047.
+Existing ordinary/boost transactions and member/selected-slot gates reused; no shared engine change. Consumption is separate from shops/pickpocketing/Gourmet exchange/quest access. Prior full shared regression85server445world remains historical.
 
-There are49implementation units across53append-only records:23historical and26new gameplay/shared units, all pending independent verification. Discovery remains3,508records:30partially contracted eligible files/tables,656configuration and2,822unassessed; not a completion percentage.
+There are50implementation units across54append-only records:23historical and27new gameplay/shared units, all pending independent verification. Discovery remains3,508records:30partially contracted eligible files/tables,656configuration and2,822unassessed; not a completion percentage.
 
-Continue eligible FoodData/content and dependencies. Open obligations include Anglerfish PvP eligibility, delayed effects, quantities/Cook menus, modifiers/surfaces, cake tin returns, reconciliation and independent V0–V4. Historical/private evidence and unrelated changes preserved.
+Next foundational audit: delayed Prayer burial currently lacks retained selected-slot identity compared with donor PrayerBuryEvents. Resolve that dependency before burial/ashes expansion while preserving legacy/offering behavior. Other open obligations: Anglerfish PvP eligibility, delayed food effects, quantity/Cook menus, modifiers/surfaces, cake tin returns, reconciliation and independent V0–V4.
 <!-- forge-current:end -->
 
 
@@ -187,3 +187,8 @@ Published 3a57d318bd42b2a16070557c7ffcc93d3cf4d5b6. Fourteen ordinary manual Eat
 ## Implementation checkpoint OR-MIG-0049
 
 Published 8d8dff9c3f5200568f2becf0c63509332d9bfed9. Thirteen selected bowl returns plus egg potato; focusedPASS1server0world/404same hashes. Queue49units53records, independent pending. Continue eligible content without relabelling development evidence as acceptance.
+
+
+## Implementation checkpoint OR-MIG-0050
+
+Published 78f603fd516a3963f2e0a30d2ad47186aa6e1ddd. Six Dorgesh manual Eat profiles,4WikiHPcorrections and2Cooking boosts; focusedPASS1server0world/405same hashes. Queue50units54records, independent pending. Continue foundational Prayer selected-slot audit and eligible content.
