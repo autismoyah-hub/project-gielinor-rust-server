@@ -43,6 +43,7 @@ mod mining_actions;
 mod npc_actions;
 mod thieving_actions;
 mod tool_crafting_actions;
+mod counted_assembly_actions;
 mod assembly_production_actions;
 mod facility_crafting_actions;
 mod npc_combat_actions;
@@ -247,6 +248,7 @@ enum LocationAction {
 struct Player {
     dough_request: Option<crate::dough::Request>,
     tool_crafting_request:Option<crate::tool_crafting::Request>,
+    counted_assembly_request:Option<crate::counted_assembly::Request>,
     assembly_production_request:Option<crate::assembly_production::Request>,
     finished_potion_request: Option<crate::finished_potions::Request>,
     potion_upgrade_request: Option<crate::potion_upgrades::Request>,
@@ -336,6 +338,7 @@ impl Player {
         self.queues.remove_all(crate::dough::QUEUE);
         self.dough_request = None;
         self.tool_crafting_request=None;
+        self.counted_assembly_request=None;
         self.assembly_production_request=None;
         self.queues.remove_all(crate::assembly_production::QUEUE);
         self.queues.remove_all(crate::facility_crafting::QUEUE);
@@ -558,6 +561,7 @@ pub enum AdmissionError {
 }
 #[derive(Debug)]
 pub enum WorldEvent {
+    CountedAssemblyMade {actor: ActorId, first: i32, second: i32, output: i32, count: i32},
     ChemistryDialog {actor:ActorId,token:Option<u64>,remaining:u8,breaking:bool},
     LocationRestoration(crate::loc_timers::Restoration),
     ShopValue {
@@ -3019,6 +3023,7 @@ impl World {
                             member: false,
                             dough_request: None,
                             tool_crafting_request:None,
+                            counted_assembly_request:None,
                             assembly_production_request:None,
                             finished_potion_request: None,
                             potion_upgrade_request: None,

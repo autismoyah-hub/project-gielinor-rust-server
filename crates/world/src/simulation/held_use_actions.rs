@@ -149,6 +149,7 @@ impl World {
             }
         }
         match handler {
+            Some(Handler::CountedAssembly(recipe)) => self.request_counted_assembly(actor,recipe,request)?,
             Some(Handler::AssemblyProduction{recipe,cycle_ticks}) => self.request_assembly_production(actor,recipe,cycle_ticks,request)?,
             Some(Handler::AssemblyImmediate(recipe)) => {
                 let (first_slot,second_slot)=if request.selected_id==recipe.first {(request.selected_slot as usize,request.target_slot as usize)}else{(request.target_slot as usize,request.selected_slot as usize)};

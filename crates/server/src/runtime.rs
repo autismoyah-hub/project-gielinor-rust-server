@@ -25,6 +25,7 @@ mod npc_interaction;
 mod prayer;
 mod prayer_tab;
 mod shop;
+mod counted_assembly;
 mod skill_multi;
 mod dough;
 mod tool_crafting;
@@ -227,6 +228,7 @@ struct Active {
     prayer_notice: Option<crate::message_box::Active>,
     dialogue: Option<crate::dialogue::Active>,
     skill_multi: Option<crate::skill_multi::Active>,
+    counted_assembly: Option<(u64,gielinor_world::counted_assembly::Request)>,
     anvil_count: Option<crate::anvil::CountDialog>,
     pending_face: Option<(gielinor_world::CoordGrid, u8, u8)>,
     face_angle: Option<u16>,
@@ -2153,6 +2155,7 @@ impl<B: AccountBackend> Runtime<B> {
                             self.resume_prayer_pause(actor, pause)?;
                         }
                         Ok(crate::gameplay::Request::ResumeCount(count)) => {
+                            if self.resume_counted_assembly(actor,count)? {return Ok(());}
                             if self.resume_anvil_count(actor, count)? {
                                 return Ok(());
                             }
@@ -2847,6 +2850,7 @@ impl<B: AccountBackend> Runtime<B> {
                                                 self.open_combat_mixing(actor,choice)?;
                                             }
                                             if let Some(choice)=self.world.take_tool_crafting_request(actor).map_err(|e|io::Error::other(format!("{e:?}")))? {self.open_tool_crafting(actor,choice)?;}
+                                            if let Some(choice)=self.world.take_counted_assembly_request(actor).map_err(|e|io::Error::other(format!("{e:?}")))? {self.open_counted_assembly(actor,choice)?;}
                                             if let Some(choice)=self.world.take_assembly_production_request(actor).map_err(|e|io::Error::other(format!("{e:?}")))? {self.open_assembly_production(actor,choice)?;}
                                             if let Some(choice)=self.world.take_dough_request(actor).map_err(|e|io::Error::other(format!("{e:?}")))? {
                                                 self.open_dough(actor,choice)?;
@@ -3148,6 +3152,7 @@ impl<B: AccountBackend> Runtime<B> {
                             prayer_notice: None,
                             dialogue: None,
                             skill_multi: None,
+                            counted_assembly: None,
                             anvil_count: None,
                             sequence: None,
                             spot_animations: Vec::new(),

@@ -275,6 +275,7 @@ pub mod tower_combat;
 pub mod tower_tastes;
 pub mod woodcutting;
 
+pub mod counted_assembly;
 pub mod assembly;
 pub mod assembly_production;
 pub mod held_item_conversion;

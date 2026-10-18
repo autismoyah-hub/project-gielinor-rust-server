@@ -2,6 +2,12 @@ use super::*;
 impl World {
     /// Allocate a one-use protected continuation for skillmulti-style dialogs.
     /// The host validates the expected modal and pause-button permission first.
+    /// Numeric held-item amount input, using the existing one-use continuation.
+    pub fn start_number_dialog(&mut self, actor: ActorId) -> Result<u64, ActionError> {
+        let p = self.player(actor)?;
+        if p.protection.access_protected(p.has_modal) {return Err(ActionError::Protected);}
+        self.start_quantity_continuation(actor, true)
+    }
     pub fn start_quantity_dialog(&mut self, actor: ActorId) -> Result<u64, ActionError> {
         self.start_quantity_continuation(actor, false)
     }
