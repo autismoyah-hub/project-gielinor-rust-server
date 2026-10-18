@@ -11,6 +11,7 @@ impl World {
         let rock = config.rocks[&loc.id].clone();
         let skill = config.skill;
         let sound = config.full_sound;
+        let continue_stage = rock.restore.is_some() && config.rocks.contains_key(&rock.depleted);
         let p = self.players.get_mut(slot).unwrap();
         let actor = p.id;
         if config.validate().is_err() {
@@ -60,6 +61,8 @@ impl World {
         };
         let denial = if self.locations.revision(loc) != Some(revision) {
             Some(("stale_target", None))
+        } else if rock.members && !p.member {
+            Some(("members", Some("You need to be a member to mine this rock.".into())))
         } else if pick.is_none() {
             Some(("tool", Some("You need a pickaxe to mine this rock.".into())))
         } else if level < rock.level {
@@ -155,8 +158,9 @@ impl World {
                             return;
                         }
                         let revision = self.locations.revision(depleted).unwrap();
+                        let restored=Location::new(loc.coords,rock.restore.unwrap_or(loc.id),loc.shape,loc.angle).unwrap();
                         self.location_timers.replace(
-                            loc,
+                            restored,
                             depleted,
                             revision,
                             self.clock,
@@ -187,12 +191,18 @@ impl World {
                                 rock.product_name.to_lowercase()
                             ),
                         });
-                        p.location_interaction = None;
-                        p.movement.interacting = false;
-                        self.events.push(WorldEvent::PlayerCombatAnimation {
-                            actor,
-                            sequence: u16::MAX,
-                        });
+                        if continue_stage {
+                            p.location_revision=Some(revision);
+                            p.location_interaction=Some((depleted,LocationAction::Operation(1)));
+                            p.movement.interacting=true;
+                        } else {
+                            p.location_interaction = None;
+                            p.movement.interacting = false;
+                            self.events.push(WorldEvent::PlayerCombatAnimation {
+                                actor,
+                                sequence: u16::MAX,
+                            });
+                        }
                         self.events.push(WorldEvent::Mining { actor, trace });
                         return;
                     }

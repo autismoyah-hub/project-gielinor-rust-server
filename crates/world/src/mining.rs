@@ -8,6 +8,9 @@ pub struct Pickaxe {
 }
 #[derive(Clone, Debug)]
 pub struct Rock {
+    pub members: bool,
+    /// Staged resources restore this canonical full node and continue into live next stages.
+    pub restore: Option<u32>,
     pub level: i32,
     pub product: i32,
     pub product_name: String,
@@ -48,6 +51,34 @@ impl Config {
                 || r.rates.1 > 65535
             {
                 return Err("Invalid mining rock");
+            }
+        }
+        for (&start, rock) in &self.rocks {
+            if let Some(root) = rock.restore {
+                if root >= crate::locations::DELETED_ID || !self.rocks.contains_key(&root) {
+                    return Err("Invalid mining restoration root");
+                }
+                let mut seen = std::collections::BTreeSet::new();
+                let mut id = start;
+                loop {
+                    if !seen.insert(id) {
+                        return Err("Cyclic mining stages");
+                    }
+                    let node = &self.rocks[&id];
+                    if node.restore != Some(root)
+                        || node.members != rock.members
+                        || node.product != rock.product
+                    {
+                        return Err("Incompatible mining stage");
+                    }
+                    if !self.rocks.contains_key(&node.depleted) {
+                        break;
+                    }
+                    id = node.depleted;
+                }
+                if self.rocks[&root].restore != Some(root) {
+                    return Err("Invalid mining restoration root");
+                }
             }
         }
         Ok(())

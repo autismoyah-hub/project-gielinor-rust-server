@@ -202,6 +202,8 @@ pub fn ordinary_mining_rocks(
                 .insert(
                     id,
                     Rock {
+                        members: false,
+                        restore: None,
                         level: row.level,
                         product: row.item,
                         product_name: row.item_name.into(),
@@ -349,6 +351,8 @@ mod dispatch_tests {
                 rocks: [(
                     11364,
                     Rock {
+                        members: false,
+                        restore: None,
                         level: 15,
                         product: 440,
                         product_name: "Iron ore".into(),

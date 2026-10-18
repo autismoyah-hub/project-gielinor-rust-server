@@ -60,6 +60,8 @@ impl<B: AccountBackend> Runtime<B> {
             config.rocks.insert(
                 id,
                 Rock {
+                    members: false,
+                    restore: None,
                     level: 1,
                     product,
                     product_name: item.name.clone(),
@@ -92,6 +94,18 @@ impl<B: AccountBackend> Runtime<B> {
         {
             if config.rocks.insert(id, rock).is_some() {
                 return Err(io::Error::other("Conflicting ordinary mining rock"));
+            }
+        }
+        for (id, rock) in crate::content::limestone_mining(
+            names.group("obj"),
+            names.group("loc"),
+            names.group("stat"),
+            &self.definitions,
+        )
+        .map_err(io::Error::other)?
+        {
+            if config.rocks.insert(id, rock).is_some() {
+                return Err(io::Error::other("Conflicting limestone mining stage"));
             }
         }
         config.validate().map_err(io::Error::other)?;
