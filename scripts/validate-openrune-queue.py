@@ -49,11 +49,6 @@ def validate(records,root=None):
         require(isinstance(r['legacy_evidence'],list),prefix+': legacy evidence')
         for evidence in r['legacy_evidence']:
             require(set(evidence)=={'reference','scope','independent_verification'} and relative(evidence['reference']) and isinstance(evidence['scope'],str) and evidence['scope'].strip() and evidence['independent_verification'] is False,prefix+': legacy evidence must not impersonate independent verification')
-        if root:
-            def git(*args):return subprocess.check_output(['git','-c','safe.directory='+str(root),*args],cwd=root,text=True,encoding='utf-8')
-            git('cat-file','-e',sha+'^{commit}')
-            for path in r['rust_paths']:git('cat-file','-e',sha+':'+path)
-            for step in r['registration_dispatch']:require(step['symbol'] in git('show',sha+':'+step['path']),prefix+': dispatch symbol absent at implementation SHA: '+step['symbol'])
         latest[ident]=r
     visiting=set();done=set()
     def visit(ident):
@@ -64,7 +59,45 @@ def validate(records,root=None):
             if dep in latest:visit(dep)
         visiting.remove(ident);done.add(ident)
     for ident in latest:visit(ident)
+    if root:validate_git(records,root)
     return len(latest)
+
+def validate_git(records,root):
+    """Read each exact Git object once through one process, retaining every check."""
+    requests={}
+    def add(key,kind,label,symbol=None):
+        require(not any(c in key for c in ('\n','\r','\0')),label+': invalid Git object request')
+        item=requests.setdefault(key,{'kind':kind,'label':label,'symbols':[]})
+        if kind=='commit':item['kind']='commit'
+        if symbol is not None:item['symbols'].append((label,symbol))
+    for index,record in enumerate(records,1):
+        prefix=f'line{index}';sha=record['implementation_commit_sha']
+        add(sha+'^{commit}','commit',prefix)
+        for path in record['rust_paths']:add(sha+':'+path,'object',prefix)
+        for step in record['registration_dispatch']:
+            add(sha+':'+step['path'],'object',prefix,step['symbol'])
+    command=['git','-c','safe.directory='+str(root),'cat-file','--batch']
+    with subprocess.Popen(command,cwd=root,stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.PIPE) as process:
+        try:
+            for key,request in requests.items():
+                process.stdin.write(key.encode('utf-8')+b'\n');process.stdin.flush()
+                header=process.stdout.readline()
+                require(header and not header.endswith(b' missing\n'),request['label']+': missing Git object '+key)
+                parts=header.rstrip(b'\n').split(b' ')
+                require(len(parts)==3 and parts[2].isdigit(),request['label']+': invalid Git object response')
+                size=int(parts[2]);payload=process.stdout.read(size);terminator=process.stdout.read(1)
+                require(len(payload)==size and terminator==b'\n',request['label']+': truncated Git object '+key)
+                if request['kind']=='commit':require(parts[1]==b'commit',request['label']+': Git object is not a commit '+key)
+                if request['symbols']:
+                    require(parts[1]==b'blob',request['label']+': dispatch path is not a file '+key)
+                    source=payload.decode('utf-8')
+                    for label,symbol in request['symbols']:
+                        require(symbol in source,label+': dispatch symbol absent at implementation SHA: '+symbol)
+        finally:
+            process.stdin.close()
+        error=process.stderr.read().decode('utf-8',errors='replace')
+        require(process.wait()==0,'Git object validation failed: '+error.strip())
+
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('queue',type=Path);p.add_argument('--git',action='store_true');a=p.parse_args()
     records=[]
