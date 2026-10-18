@@ -1,0 +1,9 @@
+Loaded 11 map squares, 586 NPCs, 24220 locations
+Listening on 127.0.0.1:61186 (revision 239.1; partial gameplay implementation)
+Player ready: ActorId { slot: 1, generation: 614 }
+Assembly transition: {"actor_slot":1,"actor_generation":614,"first_slot":4,"second_slot":8,"first":10980,"second":10981,"output":10973,"count":1,"queued_at":106,"committed_at":106}
+Assembly transition: {"actor_slot":1,"actor_generation":614,"first_slot":5,"second_slot":9,"first":10980,"second":10981,"output":10973,"count":1,"queued_at":114,"committed_at":114}
+Assembly transition: {"actor_slot":1,"actor_generation":614,"first_slot":6,"second_slot":10,"first":10980,"second":10981,"output":10973,"count":1,"queued_at":125,"committed_at":125}
+Assembly transition: {"actor_slot":1,"actor_generation":614,"first_slot":7,"second_slot":11,"first":10980,"second":10981,"output":10973,"count":1,"queued_at":133,"committed_at":133}
+Save acknowledgement: {"actor_slot":1,"actor_generation":614,"save_generation":614,"observed_tick":197,"save_completed":true}
+Shutdown completed; accounts drained.

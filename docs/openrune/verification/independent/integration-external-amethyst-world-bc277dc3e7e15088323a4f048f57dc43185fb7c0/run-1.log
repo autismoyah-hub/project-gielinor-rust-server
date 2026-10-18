@@ -1,0 +1,10 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\bc277dc3e7e15088323a4f048f57dc43185fb7c0\external-harness-4682407400)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 7.67s
+     Running tests\world.rs (C:\Projects\OSRSRSPS\agent7-verification\work\bc277dc3e7e15088323a4f048f57dc43185fb7c0\target\debug\deps\world-ad652ea5023127bf.exe)
+
+running 2 tests
+test eight_late_stack_overflow_boundaries_preserve_remaining_raw ... ok
+test two_hundred_eighty_eight_actual_choice_batches has been running for over 60 seconds
+test two_hundred_eighty_eight_actual_choice_batches ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 78.35s

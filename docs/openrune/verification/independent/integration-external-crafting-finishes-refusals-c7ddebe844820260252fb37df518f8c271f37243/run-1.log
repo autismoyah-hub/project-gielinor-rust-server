@@ -1,0 +1,17 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\c7ddebe844820260252fb37df518f8c271f37243\external-harness-1627118600)
+warning: unused import: `Action`
+ --> tests\refusals.rs:2:161
+  |
+2 | ...Stats,npc::RandomSource,simulation::{World,PlayerData,ActorId,Action},held_use::{Handler,Scope,Type,Request},CoordGrid};
+  |                                                                  ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `proving-ground-energy` (test "refusals") generated 1 warning (run `cargo fix --test "refusals" -p proving-ground-energy` to apply 1 suggestion)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 6.40s
+     Running tests\refusals.rs (C:\Projects\OSRSRSPS\agent7-verification\work\c7ddebe844820260252fb37df518f8c271f37243\target\debug\deps\refusals-62bf9b308bc6d08c.exe)
+
+running 1 test
+test forty_four_initial_refusals_conserve_whole_state ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.86s

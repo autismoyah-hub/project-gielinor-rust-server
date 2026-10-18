@@ -1,0 +1,31 @@
+{
+  "implementation_id": "OR-MIG-0071",
+  "tested_sha": "bc277dc3e7e15088323a4f048f57dc43185fb7c0",
+  "campaign_kind": "historical",
+  "status": "PASS",
+  "products_in_raw_batches": 8,
+  "tip_counts": [
+    30,
+    30,
+    10,
+    16
+  ],
+  "fine_xp_award": 24000,
+  "scope": "Native four real counted choices/both held directions with actual count/level labels, nine genuine held/Make-one frame pairs including cancelled choice, first-free stack creation and merges from full28. Eight stale quantity/consumed-pair replays and genuine Close/stale reply preserve state. XP is60per raw, not per tip. Whole ordinary tips/retained15raws/two chisels/coins/Stats/energy and existing fractional XP survive acknowledged-save/process restart/independently decoded native reconnect.",
+  "limitations": [
+    "This is a native Make-one/normal persistence subcampaign. Built-in batch quantities/custom input/negative policy/partial/crash/effect-clock scopes remain separate.",
+    "No rendered/audio/original executable or latestFORGEHEAD acceptance."
+  ],
+  "evidence_sha256": {
+    "initial-state.json": "b4d94e4f08029fa2cfd733293c97004e54917c3606271c47314ed2936ead6df2",
+    "build.json": "907be54b7e5a7e9a9f3fc025febef70f39f1fca1f91af58cf0b2fe6c8e24481f",
+    "produce/client.log": "cbe9dc3c120a7ba16303ffbc751ddb84dd241965b0935bc21426a76af79bd6a6",
+    "produce/manifest.json": "9a1de024470f04073c8a7b9fed7257ebd2fb094494a124cda30124a4d2963423",
+    "produce/after.json": "bcb3cfd0547d650ab94e3e1f2ddf703ea034ada9ba2775dfcb7982cc74f3666e",
+    "relogin/client.log": "8bc350b07f69388b71c30edb36b98dbff5723faa83eac16439a65ed7f835e318",
+    "relogin/manifest.json": "1319bb8f2517ec691db383d98c58f2ef87d6bccbbe675ed93ccb2af66ee3d59c",
+    "relogin/after.json": "3d1ab0d765d5f40eaa364212605306b66019ca05ea6397895cf1c8a89fb57c56",
+    "frozen-observer/pg_observer.rs": "e24b551f2a6b8c0d3ffbe625c1dd291a0933688a4a09ef8030fa8b3c4e10bc3f",
+    "frozen-observer/build.json": "a1f9d9452a3cfc74b7440e96054572da8e91e140d0d7b44cdab52fe33f26e681"
+  }
+}

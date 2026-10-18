@@ -4,18 +4,18 @@ This is an ongoing verification campaign. 3 current contract(s) accepted across 
 
 ## Intake
 
-Latest observed FORGE HEAD: `e4b349972e05dafd255a58e2578bc2f621c60011`.
-Exact queue SHA256: `3f3a0d3af8d341c7e21614a024880561fc3aa43a39a3890ee96c61d933eaee9a`.
-Published queue: 112 records / 103 stable implementation IDs. Published validator: PASS.
+Latest observed FORGE HEAD: `64e580be16f23c67a78bc6676e331e95beee2a0d`.
+Exact queue SHA256: `349c17ecb718d5ab6b9ea27823a73e2c626c83ee68ae56a8cec8ddc8b9255fc3`.
+Published queue: 117 records / 107 stable implementation IDs. Published validator: PASS.
 The copied queue is refreshed only from fetched immutable blobs after append-history checks. Current coverage and every contract revision are retained in [WORKLIST.json](WORKLIST.json). Synchronization observations are append-only in [SYNC_OBSERVATIONS.jsonl](SYNC_OBSERVATIONS.jsonl).
 
 ## Level coverage
 
-- V0: PASS 13, FAIL 0, BLOCKED 0, IN_PROGRESS 6, NOT_STARTED 84, NOT_APPLICABLE 0.
-- V1: PASS 7, FAIL 3, BLOCKED 0, IN_PROGRESS 12, NOT_STARTED 81, NOT_APPLICABLE 0.
-- V2: PASS 5, FAIL 0, BLOCKED 4, IN_PROGRESS 5, NOT_STARTED 89, NOT_APPLICABLE 0.
-- V3: PASS 7, FAIL 2, BLOCKED 0, IN_PROGRESS 5, NOT_STARTED 89, NOT_APPLICABLE 0.
-- V4: PASS 6, FAIL 0, BLOCKED 0, IN_PROGRESS 12, NOT_STARTED 85, NOT_APPLICABLE 0.
+- V0: PASS 15, FAIL 0, BLOCKED 0, IN_PROGRESS 6, NOT_STARTED 86, NOT_APPLICABLE 0.
+- V1: PASS 8, FAIL 3, BLOCKED 0, IN_PROGRESS 11, NOT_STARTED 85, NOT_APPLICABLE 0.
+- V2: PASS 6, FAIL 0, BLOCKED 4, IN_PROGRESS 6, NOT_STARTED 91, NOT_APPLICABLE 0.
+- V3: PASS 8, FAIL 2, BLOCKED 0, IN_PROGRESS 6, NOT_STARTED 91, NOT_APPLICABLE 0.
+- V4: PASS 8, FAIL 0, BLOCKED 0, IN_PROGRESS 10, NOT_STARTED 89, NOT_APPLICABLE 0.
 
 User direction: chemistry, potion and Herblore tests are DEFERRED. Historical evidence and findings remain intact. Continue Prayer, food without new potion setup, cooking, assembly, smithing, packs, Crafting and other eligible work. General resume does not lift the chemistry deferral. See [USER_DEFERRALS.json](USER_DEFERRALS.json).
 
@@ -38,7 +38,16 @@ No rendered-window, original-executable differential or crash-atomicity acceptan
 ## Integration regression
 
 - `4ef5f5c1ebc50b81e56de4f3e2421e2bba49de03`: raw attempt PASS; potion 44, chemistry 12, combat_mixing 4, inventory 27, queues 9 test executions passed.  [Manifest](independent/integration-4ef5f5c1ebc50b81e56de4f3e2421e2bba49de03/manifest.json).
+- `bc277dc3e7e15088323a4f048f57dc43185fb7c0`: raw attempt BLOCKED; 0 test executions passed. Measured-resource deferral; no substitute target: Measured resource guard blocked; no other process altered [Manifest](independent/integration-external-amethyst-bindings-bc277dc3e7e15088323a4f048f57dc43185fb7c0/manifest.json).
+- `bc277dc3e7e15088323a4f048f57dc43185fb7c0`: raw attempt PASS; amethyst-bindings 1 test executions passed.  [Manifest](independent/integration-external-amethyst-bindings-bc277dc3e7e15088323a4f048f57dc43185fb7c0-1792323078564141500/manifest.json).
+- `bc277dc3e7e15088323a4f048f57dc43185fb7c0`: raw attempt PASS; amethyst-boosts 2 test executions passed.  [Manifest](independent/integration-external-amethyst-boosts-bc277dc3e7e15088323a4f048f57dc43185fb7c0/manifest.json).
 - `bc277dc3e7e15088323a4f048f57dc43185fb7c0`: raw attempt PASS; amethyst-counts 2 test executions passed.  [Manifest](independent/integration-external-amethyst-counts-bc277dc3e7e15088323a4f048f57dc43185fb7c0/manifest.json).
+- `bc277dc3e7e15088323a4f048f57dc43185fb7c0`: raw attempt PASS; amethyst-guards 2 test executions passed.  [Manifest](independent/integration-external-amethyst-guards-bc277dc3e7e15088323a4f048f57dc43185fb7c0/manifest.json).
+- `bc277dc3e7e15088323a4f048f57dc43185fb7c0`: raw attempt BLOCKED; 0 test executions passed. Measured-resource deferral; no substitute target: Measured resource guard blocked; no other process altered [Manifest](independent/integration-external-amethyst-legacy-bc277dc3e7e15088323a4f048f57dc43185fb7c0/manifest.json).
+- `bc277dc3e7e15088323a4f048f57dc43185fb7c0`: raw attempt PASS; amethyst-legacy 3 test executions passed.  [Manifest](independent/integration-external-amethyst-legacy-bc277dc3e7e15088323a4f048f57dc43185fb7c0-1792323726860095400/manifest.json).
+- `bc277dc3e7e15088323a4f048f57dc43185fb7c0`: raw attempt PASS; amethyst-life 1 test executions passed.  [Manifest](independent/integration-external-amethyst-life-bc277dc3e7e15088323a4f048f57dc43185fb7c0/manifest.json).
+- `bc277dc3e7e15088323a4f048f57dc43185fb7c0`: raw attempt PASS; amethyst-policy 2 test executions passed.  [Manifest](independent/integration-external-amethyst-policy-bc277dc3e7e15088323a4f048f57dc43185fb7c0/manifest.json).
+- `bc277dc3e7e15088323a4f048f57dc43185fb7c0`: raw attempt PASS; amethyst-world 2 test executions passed.  [Manifest](independent/integration-external-amethyst-world-bc277dc3e7e15088323a4f048f57dc43185fb7c0/manifest.json).
 - `d63c0258dd6960bffc3ef43736f4140efb3b757a`: raw attempt FAIL; 0 test executions passed. Verifier assumed which unselected duplicate was captured; corrected selected-slot/no-fallback matrix passed. See PG-INFRA-005. [Manifest](independent/integration-external-assembly-batch-d63c0258dd6960bffc3ef43736f4140efb3b757a/manifest.json).
 - `d63c0258dd6960bffc3ef43736f4140efb3b757a`: raw attempt PASS; assembly-batch 1 test executions passed.  [Manifest](independent/integration-external-assembly-batch-d63c0258dd6960bffc3ef43736f4140efb3b757a-1792281175590139100/manifest.json).
 - `e3ced82211ee438fd6a74a110d435e6746295a16`: raw attempt PASS; battlestaff-bindings 1 test executions passed.  [Manifest](independent/integration-external-battlestaff-bindings-e3ced82211ee438fd6a74a110d435e6746295a16/manifest.json).
@@ -61,7 +70,10 @@ No rendered-window, original-executable differential or crash-atomicity acceptan
 - `894646a79fa4ba7e3e8b46af6ec000dc6b796514`: raw attempt PASS; crab-lifecycle 1 test executions passed.  [Manifest](independent/integration-external-crab-lifecycle-894646a79fa4ba7e3e8b46af6ec000dc6b796514-1792310755713192800/manifest.json).
 - `894646a79fa4ba7e3e8b46af6ec000dc6b796514`: raw attempt FAIL; crab-matrix 1 test executions passed.  [Manifest](independent/integration-external-crab-matrix-894646a79fa4ba7e3e8b46af6ec000dc6b796514/manifest.json).
 - `894646a79fa4ba7e3e8b46af6ec000dc6b796514`: raw attempt PASS; crab-world 3 test executions passed.  [Manifest](independent/integration-external-crab-world-894646a79fa4ba7e3e8b46af6ec000dc6b796514/manifest.json).
+- `c7ddebe844820260252fb37df518f8c271f37243`: raw attempt FAIL; crafting-finishes-admission 1 test executions passed. Twenty pending-helm late changes PASS and remain immutable. Initial refusals stopped at verifier overreach: synthetic restore_slot count2 is a valid positive-count container representation; selected pair API debits one and conserves remaining wire, and OR70 contract does not require count==1 runtime guard. No normal native means of creating a nonstack ordinary count2 is claimed. Remove the unsupported count2 refusal assumptions for both ingredients/tool and rerun only the unfinished44initial refusal cases, preserving rawFAIL and avoiding completed20late replay. [Manifest](independent/integration-external-crafting-finishes-admission-c7ddebe844820260252fb37df518f8c271f37243/manifest.json).
+- `c7ddebe844820260252fb37df518f8c271f37243`: raw attempt PASS; crafting-finishes-bindings 1 test executions passed.  [Manifest](independent/integration-external-crafting-finishes-bindings-c7ddebe844820260252fb37df518f8c271f37243/manifest.json).
 - `c7ddebe844820260252fb37df518f8c271f37243`: raw attempt PASS; crafting-finishes-matrix 1 test executions passed.  [Manifest](independent/integration-external-crafting-finishes-matrix-c7ddebe844820260252fb37df518f8c271f37243/manifest.json).
+- `c7ddebe844820260252fb37df518f8c271f37243`: raw attempt PASS; crafting-finishes-refusals 1 test executions passed.  [Manifest](independent/integration-external-crafting-finishes-refusals-c7ddebe844820260252fb37df518f8c271f37243/manifest.json).
 - `c7ddebe844820260252fb37df518f8c271f37243`: raw attempt FAIL; 0 test executions passed. Verifier current-level parameter u8 mismatched Stats i8. No gameplay ran; parameter type corrected for a fresh same-SHA attempt. [Manifest](independent/integration-external-crafting-finishes-world-c7ddebe844820260252fb37df518f8c271f37243/manifest.json).
 - `c7ddebe844820260252fb37df518f8c271f37243`: raw attempt FAIL; crafting-finishes-world 4 test executions passed. Four wiring life failures are confirmed PG-DEF-004 and four helm life controls pass. Whole matrix also stopped at incorrect verifier Stats oracle: fineXP setter does not update base levels. Separate matrix-only retry independently computes standard XP thresholds; no completed life campaign replay. [Manifest](independent/integration-external-crafting-finishes-world-c7ddebe844820260252fb37df518f8c271f37243-1792321531070851300/manifest.json).
 - `536e45952cb605986af73f307226ee1ce0548abd`: raw attempt BLOCKED; 0 test executions passed. Measured-resource deferral; no substitute target: Measured resource guard blocked; no other process altered [Manifest](independent/integration-external-current-assembly-regression-536e45952cb605986af73f307226ee1ce0548abd/manifest.json).
@@ -125,7 +137,9 @@ An older integration PASS is not a PASS on a newer FORGE HEAD. Change-impact lis
 
 - Last-charge chemistry full-bag native production and stop-on-crumble with one pair remaining plus real restart PASS. Independent 22000-case chemistry modifier matrix PASS; complete V1-V4 obligations remain separate.
 - Confirmed critical/dependency-blocking gameplay findings: none in completed scoped tests.
-- OR69 at `fb348dda`: V1 PASS across4,872World cases,128shared controls and421actual-cache refusals. V0/V1/V3PASS. Native both directions for14stringing/4staff recipes, builtin1/5/10/All and X3, partial11saved, unsaved2rollback, pending-choice invalidation and fractional Earth batch survive actual restarts. Original stringing producer timeout remains separate; V2/V4open, no whole-contract acceptance.
+- OR69 at `fb348dda`: V1 PASS across4,872World cases,128shared controls and421actual-cache refusals. V0/V1/V3/V4PASS. Native both directions for14stringing/4staff recipes, builtin1/5/10/All and X3, partial11saved, unsaved2rollback, pending-choice invalidation and fractional Earth batch survive actual restarts. Original stringing producer timeout remains separate; V2multi-digit/presentation obligations remain open, no whole-contract acceptance.
+- OR70 at c7ddebe8: applicable levels fully disposed: V0/V2/V3/V4PASS, V1FAIL PG-DEF-004. Eight native products/44,800fineXP and actual reconnect plus separate unsaved wire rollback/native restart pass; ordinary wiring life defect remains local correction, not accepted.
+- OR71 at bc277dc3: V0/V1PASS across7,812resolver/560World cases plus policy,932legacy and69cache controls. Native four choices/both directions/8raw/24,000fineXP and actual reconnect pass; builtins/partial/crash/effects/audio/reference remain open.
 - PG-DEF-002: exact OR67 precise assembly can credit at zeroHP/queued death; V1/V3FAIL. PG-DEF-003: exact OR65 immediate tool paths fail eight life refusal cases; prior aggregate acceptance withdrawn append-only. Both ordinary P2 local corrections; native reachability/currentHEAD unproven.
 - Confirmed ordinary gameplay defect PG-DEF-001: genuine Close95 leaves chemistry policy dialog live at e7ac3608; stale Stop changes saved policy. V2 FAIL; ordinary P2, not implementation-blocking. GitHub issue123.
 - Verifier defects: initial filter, food trace/dirty-slot assumptions and dynamic-food types/labels corrected. PG-INFRA-004 no longer blocks execution: fresh observer captured HP2->3 regeneration before Eat, all six actions and real restart/relogin. Original unrecorded missed-equality sequence remains inferred. [Backlog](CORRECTION_BACKLOG.md).
@@ -211,9 +225,9 @@ An older integration PASS is not a PASS on a newer FORGE HEAD. Change-impact lis
 - **OR-MIG-0066 r1** `5582c276d165` â€” Manual knife conversion of an owned damaged monkey tail to sinew; V0 PASS, V1 PASS, V2 PASS, V3 PASS, V4 PASS.
 - **OR-MIG-0067 r1** `e3ced82211ee` â€” Precise two-ingredient assembly rewards and four manual elemental battlestaff attachments; V0 PASS, V1 FAIL, V2 PASS, V3 FAIL, V4 PASS.
 - **OR-MIG-0068 r1** `894646a79fa4` â€” Wiki-fallible crab helmet and claw carving with zero-XP broken outcomes; V0 PASS, V1 PASS, V2 BLOCKED, V3 PASS, V4 PASS.
-- **OR-MIG-0069 r1** `fb348dda184b` â€” Native quantity production for fourteen stringing and four elemental battlestaff recipes; V0 PASS, V1 PASS, V2 IN_PROGRESS, V3 PASS, V4 IN_PROGRESS.
-- **OR-MIG-0070 r1** `c7ddebe84482` â€” Manual light-orb wiring and uncharged serpentine helm carving; V0 NOT_STARTED, V1 FAIL, V2 NOT_STARTED, V3 NOT_STARTED, V4 IN_PROGRESS.
-- **OR-MIG-0071 r1** `bc277dc3e7e1` â€” Counted tool outputs and four amethyst cutting choices with overflow-safe batches; V0 NOT_STARTED, V1 IN_PROGRESS, V2 NOT_STARTED, V3 NOT_STARTED, V4 IN_PROGRESS.
+- **OR-MIG-0069 r1** `fb348dda184b` â€” Native quantity production for fourteen stringing and four elemental battlestaff recipes; V0 PASS, V1 PASS, V2 IN_PROGRESS, V3 PASS, V4 PASS.
+- **OR-MIG-0070 r1** `c7ddebe84482` â€” Manual light-orb wiring and uncharged serpentine helm carving; V0 PASS, V1 FAIL, V2 PASS, V3 PASS, V4 PASS.
+- **OR-MIG-0071 r1** `bc277dc3e7e1` â€” Counted tool outputs and four amethyst cutting choices with overflow-safe batches; V0 PASS, V1 PASS, V2 IN_PROGRESS, V3 IN_PROGRESS, V4 IN_PROGRESS.
 - **OR-MIG-0072 r1** `55e57b293e63` â€” Zero-XP clay softening with four water vessels and atomic empty-container returns; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
 - **OR-MIG-0073 r1** `3b32f6355fff` â€” Revision-pinned spinning-wheel quantity production for six classic recipes; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
 - **OR-MIG-0074 r1** `48f650a9430e` â€” Grouped-material loom quantity production and per-recipe facility timings; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
@@ -246,3 +260,7 @@ An older integration PASS is not a PASS on a newer FORGE HEAD. Change-impact lis
 - **OR-MIG-0101 r1** `9e1a1da7ab16` â€” Primary member magic tree through existing timed woodcutting and Wiki recovery policy; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
 - **OR-MIG-0102 r1** `42a45f4ade12` â€” Dragon, third-age and gilded woodcutting axes with live membership and eight species rate maps; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
 - **OR-MIG-0103 r1** `81f9b6a7e64a` â€” Primary member Arctic pine Cut down with explicit Wiki-versus-target curve reconciliation; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0104 r1** `e4b349972e05` â€” Base member redwood Cut sections with rectangular footprints and independent timed restoration; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0105 r2** `7ec9e2588843` â€” Standard paid cowhide tanning with nonpositive UI reply correction; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0106 r1** `7ec9e2588843` â€” Six standard member snake-hide and dragonhide tanning profiles; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0107 r1** `750b6a71c5d5` â€” Sbott member-only eight-recipe tanning price profile; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.

@@ -1,0 +1,9 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\bc277dc3e7e15088323a4f048f57dc43185fb7c0\external-harness-6923748000)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 6.78s
+     Running tests\boosts.rs (C:\Projects\OSRSRSPS\agent7-verification\work\bc277dc3e7e15088323a4f048f57dc43185fb7c0\target\debug\deps\boosts-6f9211a317634448.exe)
+
+running 2 tests
+test eight_initial_stack_overflows_never_consume_or_award ... ok
+test sixteen_boosted_current_level_cases_ignore_lower_base ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.15s

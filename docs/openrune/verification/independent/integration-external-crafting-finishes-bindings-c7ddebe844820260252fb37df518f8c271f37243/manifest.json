@@ -1,0 +1,62 @@
+{
+  "tested_integration_sha": "c7ddebe844820260252fb37df518f8c271f37243",
+  "suite": "crafting-finishes-bindings",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 7131160576,
+    "active_compilers": [],
+    "cpu_percent": 0.98,
+    "cpu_samples": [
+      0.5905511811023612,
+      0.78125,
+      1.5564202334630295
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained",
+    "disk_free": 16831533056,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "d3a68768b85a0a840b7bed7d8f4e25d7e1acc7b8",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\c7ddebe844820260252fb37df518f8c271f37243\\external-harness-9664238000\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-crafting-finishes-bindings-c7ddebe844820260252fb37df518f8c271f37243\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\c7ddebe844820260252fb37df518f8c271f37243\\external-harness-9664238000\\Cargo.toml",
+        "--",
+        "--nocapture"
+      ],
+      "exit_code": 0,
+      "tests_passed": 1,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-crafting-finishes-bindings-c7ddebe844820260252fb37df518f8c271f37243\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative crafting-finishes-bindings scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-crafting-finishes-bindings-c7ddebe844820260252fb37df518f8c271f37243\\harness\\bindings.rs": "22832bbcd979deb24cf62de2a40fab97fb1a3962bb326a21254060b1547137b9"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\bindings-eb0fe7f9fc31bb33.exe": "221616fa0b2f5a66b8a41422a2cdffcdc11aeb30a9cdca75076dfbf1051bf4ab",
+    "target\\debug\\deps\\finishes-8041543fa8f436b2.exe": "fcabba6a4948ac5b6ab18c7efbda1147d7bc4918797b656adc361831ec944310",
+    "target\\debug\\deps\\matrix-f436a619eef95def.exe": "41678d844635dcae37fbe4a4c2205fbdd3547cf3e4a7b676d118c5aea05c1856"
+  }
+}

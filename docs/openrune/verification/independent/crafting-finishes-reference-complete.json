@@ -1,0 +1,25 @@
+{
+  "implementation_id": "OR-MIG-0070",
+  "tested_sha": "c7ddebe844820260252fb37df518f8c271f37243",
+  "level": "V4",
+  "status": "PASS_APPLICABLE_REFERENCE_COMPARISON",
+  "scope": "Twelve exact protected-source/pinned-Wiki hashes and two recipe comparisons linked to actual cache factory,384Worldcases and native runtime wiring traces. Explicitly compare Wiki wiring0 versus donor genericCombining1, current Crafting87/104XP versus helm52/120XP/manual1, uncharged12929distinct from12931, and unrelated lamp-repair/wield requirements.",
+  "observations": [
+    "Four exact server wiring traces queue and commit in the same logical clock, matching the deliberate Wiki0adaptation; source generic section1is a declaration, not measured donor executable behavior.",
+    "Helm descriptor manual1and existing input-phase compensation are independently verified by384Worldcases; actual native four helm credits use no Make-X and retain chisels/ordinary uncharged zero-vars output. Precise native helm transport latency is not asserted equal to nominal1.",
+    "Source/Wiki material gates, ordinary output identities and independently calculated125percent1300/1500fineXP are checked against factories and World. Native500percent produces5200/6000fineXP per credit. Defence/currentFiremaking do not gate these Crafting actions in the independent World fixture.",
+    "Wiring104CraftingXP is distinct from lamp-repair500Crafting+500Firemaking; helm production does not charge scales or grant charged12931. Acquisition, charging/equipment/combat and repair are separate scope."
+  ],
+  "limitations": [
+    "No original Kotlin executable or native donor phase parity available; this is the strongest available source/docs-to-actual-target comparison, with explicit timing adaptation.",
+    "PG-DEF-004 actual wiring life refusal remains a V1failure. Reference comparison PASS does not accept overall behavior, persistence or currentFORGEHEAD.",
+    "No rendered/audio, charged equipment, combat or lamp-repair acceptance. Chemistry remains deferred."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/reference-crafting-finishes/comparison.json": "8c6a46c8cda5c0237db0c857025fc3d0429bb9442b5be8b240469ee36576cc05",
+    "docs/openrune/verification/independent/integration-external-crafting-finishes-bindings-c7ddebe844820260252fb37df518f8c271f37243/manifest.json": "10a73e03e50119cbd2dafea9d5d07430c4f0e8c102cdddf1b1ad0c2e58738f33",
+    "docs/openrune/verification/independent/integration-external-crafting-finishes-matrix-c7ddebe844820260252fb37df518f8c271f37243/manifest.json": "69e82c58583e025534f63ee29db8b202865ae9d19408ea13991839cbf0968353",
+    "docs/openrune/verification/independent/deep-crafting-finishes/native-001/produce/manifest.json": "4fdb52c80d6351ff0cca5a2e319cc73717a417220723e0239cf64297caa1c1d9",
+    "docs/openrune/verification/independent/deep-crafting-finishes/native-001/produce/server.log": "2baf3c0029c6cc3e229b047bdd50398a59057d8c1269e54be447e9a9c0c6c77d"
+  }
+}

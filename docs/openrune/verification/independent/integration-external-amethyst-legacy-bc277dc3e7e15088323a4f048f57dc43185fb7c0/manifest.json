@@ -1,0 +1,8 @@
+{
+  "tested_integration_sha": "bc277dc3e7e15088323a4f048f57dc43185fb7c0",
+  "suite": "amethyst-legacy",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "BLOCKED",
+  "reason": "Measured-resource deferral; no substitute target: Measured resource guard blocked; no other process altered"
+}

@@ -1,0 +1,27 @@
+{
+  "implementation_id": "OR-MIG-0071",
+  "tested_sha": "bc277dc3e7e15088323a4f048f57dc43185fb7c0",
+  "level": "V1",
+  "status": "PASS_APPLICABLE_V1",
+  "resolver_cases": 7812,
+  "world_cases": 560,
+  "unsupported_failure_no_rng_refusals": 4,
+  "synthetic_legacy_failure_controls": 8,
+  "legacy_count_one_world_controls": 932,
+  "metadata_refusals": 69,
+  "scope": "Applicable authoritative obligations complete at exact71:7776full28selected-slot/current/member/rate/stack-boundary resolver cases+36invalid resolver cases;288actual four-choice batch cases+8late overflow;112initial/112late guards;16before-first life;16boosted-current cases/8initial World overflows. Four unsupported multi-output failure policies refuse before RNG and eight synthetic count-one failure branches retain prior semantics.932old count-one gem/shell World controls and69actual-cache metadata refusals pass. Whole inventory/Stats, counts15/15/5/8per raw,60XPper raw, stack creation/merge/atomic overflow, exact selected capture/no fallback, current not base eligibility, nominal1/2compensation, policy/modal/move/Close/logout/death interruption and no unexpected RNG checked.",
+  "limits": [
+    "Synthetic failure branch controls are shared engine compatibility, not actual fallible amethyst content. Registered amethyst remains deterministic failureNone.",
+    "Trusted internal World requests are not native player UI tokens. Native/custom quantities, effects/audio/reference and partial/crash persistence remain separate; no full contract/currentHEAD acceptance."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/integration-external-amethyst-counts-bc277dc3e7e15088323a4f048f57dc43185fb7c0/manifest.json": "b7d86dbee7b6acdc4988a1746acb0edaa509342f5cc214baa347d9400c435d0e",
+    "docs/openrune/verification/independent/integration-external-amethyst-world-bc277dc3e7e15088323a4f048f57dc43185fb7c0/manifest.json": "41fcd28336b94a45dbff92d7ae9081bbf5450a814469dcace9964160dc20eff4",
+    "docs/openrune/verification/independent/integration-external-amethyst-guards-bc277dc3e7e15088323a4f048f57dc43185fb7c0/manifest.json": "c85362443716b28d225c7df885072962bc39b2ac208d08499d29df5744891415",
+    "docs/openrune/verification/independent/integration-external-amethyst-life-bc277dc3e7e15088323a4f048f57dc43185fb7c0/manifest.json": "9ac4a0cbaf429ad514fbab25e6133ed2536228a6d916a78beff144ca4a584dc9",
+    "docs/openrune/verification/independent/integration-external-amethyst-boosts-bc277dc3e7e15088323a4f048f57dc43185fb7c0/manifest.json": "3e5f6a87a04d07d004bdc76e385769f213b996dfbb17e1e020a94ff50737282e",
+    "docs/openrune/verification/independent/integration-external-amethyst-policy-bc277dc3e7e15088323a4f048f57dc43185fb7c0/manifest.json": "067bd22f96eef6875b1b35cd0324b6ca22db71f5468672de4efa63721aa78355",
+    "docs/openrune/verification/independent/integration-external-amethyst-legacy-bc277dc3e7e15088323a4f048f57dc43185fb7c0-1792323726860095400/manifest.json": "5893bc85f7c8eb195deb9199ff4ae5f8024063faf578a78bc6aca1f0dea5fcec",
+    "docs/openrune/verification/independent/integration-external-amethyst-bindings-bc277dc3e7e15088323a4f048f57dc43185fb7c0-1792323078564141500/manifest.json": "6542490056b05ede2c9de8b0052b73c43fa272450cf67d79c6e90c863c053642"
+  }
+}

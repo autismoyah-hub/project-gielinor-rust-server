@@ -1,0 +1,18 @@
+//! Independently loaded cache definitions; no synthetic positive metadata.
+use gielinor_cache::{game::{Definitions,GameCache},symbols};
+use gielinor_server::content::amethyst_cutting;
+use std::{collections::BTreeMap,path::Path};
+fn copy(d:&Definitions)->Definitions{Definitions{inventories:BTreeMap::new(),locations:BTreeMap::new(),npcs:BTreeMap::new(),items:d.items.clone(),varbits:BTreeMap::new(),varps:BTreeMap::new(),stats:d.stats.clone()}}
+#[test]
+fn actual_amethyst_bindings_and_sixty_nine_fail_closed_mutations(){
+ let dir=std::env::var("PG_SYMBOLS").unwrap();let objects=symbols::load(&[Path::new(&dir)],"obj",None).unwrap();let seq=symbols::load(&[Path::new(&dir)],"seq",None).unwrap();let stat=symbols::load(&[Path::new(&dir)],"stat",None).unwrap();
+ let cache=std::env::var("PG_GAME_CACHE").unwrap();let mut cache=GameCache::open(Path::new(&cache),0xff_ffff).unwrap();let items=cache.files(2,10,None).unwrap().unwrap();let stats=cache.files(2,200,None).unwrap().unwrap();
+ let ids=[("chisel",1755),("amethyst",21347),("xbows_bolt_tips_amethyst",21338),("amethyst_arrowheads",21350),("amethyst_javelin_head",21352),("amethyst_dart_tip",25853)];
+ let mut defs=Definitions{inventories:BTreeMap::new(),locations:BTreeMap::new(),npcs:BTreeMap::new(),items:BTreeMap::new(),varbits:BTreeMap::new(),varps:BTreeMap::new(),stats:BTreeMap::new()};
+ for (_,id) in ids{defs.items.insert(id as u32,gielinor_cache::definitions::ItemType::decode(&items[&(id as u32)]).unwrap());}defs.stats.insert(12,gielinor_cache::definitions::StatType::decode(&stats[&12]).unwrap());
+ let r=amethyst_cutting(&objects,&seq,&stat,&defs).unwrap();assert_eq!(r.len(),4);for (v,(output,count,level)) in r.iter().zip([(21338,15,83),(21350,15,85),(21352,5,87),(25853,8,89)]){assert_eq!((v.exchange.tool,v.exchange.input,v.exchange.output,v.exchange.members,v.level,v.xp_tenths,v.output_count,v.ticks,v.exchange.animation),(1755,21347,output,true,level,600,count,1,Some(6295)));assert!(v.failure.is_none());}
+ let mut refused=0;
+ for (symbol,id) in ids{for case in 0..10{let mut d=copy(&defs);let mut o=objects.clone();match case{0=>{d.items.remove(&(id as u32));},1=>d.items.get_mut(&(id as u32)).unwrap().name="Independent wrong name".into(),2=>{let v=d.items.get_mut(&(id as u32)).unwrap();v.members=!v.members;},3=>{let v=d.items.get_mut(&(id as u32)).unwrap();v.stackable=!v.stackable;},4=>d.items.get_mut(&(id as u32)).unwrap().dummy=1,5=>d.items.get_mut(&(id as u32)).unwrap().cert.template=799,6=>d.items.get_mut(&(id as u32)).unwrap().placeholder.template=14401,7=>d.items.get_mut(&(id as u32)).unwrap().transform.template=1,8=>{o.insert(symbol.into(),id+100000);},_=>{o.remove(symbol);}}assert!(amethyst_cutting(&o,&seq,&stat,&d).is_err(),"{symbol} case{case}");refused+=1;}}
+ for case in 0..9{let mut d=copy(&defs);let mut s=stat.clone();let mut q=seq.clone();match case{0=>{s.remove("crafting");},1=>{s.insert("crafting".into(),13);},2=>{d.stats.remove(&12);},3=>d.stats.get_mut(&12).unwrap().name="Wrong".into(),4=>d.stats.get_mut(&12).unwrap().unreleased=true,5=>d.stats.get_mut(&12).unwrap().min_level=0,6=>d.stats.get_mut(&12).unwrap().max_level=98,7=>{q.remove("human_amethystcutting");},8=>{q.insert("human_amethystcutting".into(),6296);},_=>unreachable!()}assert!(amethyst_cutting(&objects,&q,&s,&d).is_err(),"stat/effect case{case}");refused+=1;}
+ assert_eq!(refused,69);assert_eq!(amethyst_cutting(&objects,&seq,&stat,&defs).unwrap()[0].exchange.output,21338);println!("PG_AMETHYST_BINDINGS actual_items=6 actual_stat=12 exact_sequences=1 independently_refused=69");
+}

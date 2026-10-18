@@ -1,0 +1,63 @@
+{
+  "tested_integration_sha": "bc277dc3e7e15088323a4f048f57dc43185fb7c0",
+  "suite": "amethyst-bindings",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 7053324288,
+    "active_compilers": [],
+    "cpu_percent": 21.39,
+    "cpu_samples": [
+      8.039215686274515,
+      47.276264591439684,
+      8.858267716535428
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained",
+    "disk_free": 15016140800,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "ebcacbf21377063393cfce1e00d208144d81364b",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\bc277dc3e7e15088323a4f048f57dc43185fb7c0\\external-harness-2131583800\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-amethyst-bindings-bc277dc3e7e15088323a4f048f57dc43185fb7c0-1792323078564141500\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\bc277dc3e7e15088323a4f048f57dc43185fb7c0\\external-harness-2131583800\\Cargo.toml",
+        "--",
+        "--nocapture"
+      ],
+      "exit_code": 0,
+      "tests_passed": 1,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-amethyst-bindings-bc277dc3e7e15088323a4f048f57dc43185fb7c0-1792323078564141500\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative amethyst-bindings scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-amethyst-bindings-bc277dc3e7e15088323a4f048f57dc43185fb7c0-1792323078564141500\\harness\\bindings.rs": "4f0d004fc078a40dab5849b03230b94c091ebf561794a7e838cfe894820ff54e"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\atomic-b2d9a10afb397f89.exe": "106f8e41192fd047364d20b7a734814444231c1070aa396a0e92ac1a64749576",
+    "target\\debug\\deps\\bindings-f7b56a4a3503289c.exe": "5be97a4fbd3243c1337f265f45b193fc01db0d098058575a26b594a02898caf4",
+    "target\\debug\\deps\\guards-1f8ec35467a724f5.exe": "d845b63af4f18bc5ca8d86f42f3585d60749bf334c0c06abcb632023a4675259",
+    "target\\debug\\deps\\world-ad652ea5023127bf.exe": "9ab2d17afc3138bc04127fd689b3f2777f5984bf1e9bc26e85ea9a5e917ad0e5"
+  }
+}

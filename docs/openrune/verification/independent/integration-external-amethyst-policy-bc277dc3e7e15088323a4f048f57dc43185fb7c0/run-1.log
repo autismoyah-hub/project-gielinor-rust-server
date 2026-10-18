@@ -1,0 +1,9 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\bc277dc3e7e15088323a4f048f57dc43185fb7c0\external-harness-9218263500)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.11s
+     Running tests\policy.rs (C:\Projects\OSRSRSPS\agent7-verification\work\bc277dc3e7e15088323a4f048f57dc43185fb7c0\target\debug\deps\policy-3f65aa6aae6880d7.exe)
+
+running 2 tests
+test four_multi_output_failure_policies_refuse_before_rng ... ok
+test eight_synthetic_count_one_failure_branches_preserve_legacy_semantics ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s

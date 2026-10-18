@@ -1,0 +1,63 @@
+{
+  "tested_integration_sha": "c7ddebe844820260252fb37df518f8c271f37243",
+  "suite": "crafting-finishes-refusals",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 6510059520,
+    "active_compilers": [],
+    "cpu_percent": 13.02,
+    "cpu_samples": [
+      12.6953125,
+      14.0625,
+      12.3046875
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained",
+    "disk_free": 15333322752,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "d3a68768b85a0a840b7bed7d8f4e25d7e1acc7b8",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\c7ddebe844820260252fb37df518f8c271f37243\\external-harness-1627118600\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-crafting-finishes-refusals-c7ddebe844820260252fb37df518f8c271f37243\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\c7ddebe844820260252fb37df518f8c271f37243\\external-harness-1627118600\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 1,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-crafting-finishes-refusals-c7ddebe844820260252fb37df518f8c271f37243\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative crafting-finishes-refusals scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-crafting-finishes-refusals-c7ddebe844820260252fb37df518f8c271f37243\\harness\\refusals.rs": "92c0ef3de8fe7929ca727b7246013c43ea7f6d98f9d1bd2c1d0861f839c26f89"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\admission-b7a869331bd016d8.exe": "038dfbe24e5b659df4b333425108720629f7fb1e1dafced84050591d3f8fdfb3",
+    "target\\debug\\deps\\bindings-eb0fe7f9fc31bb33.exe": "221616fa0b2f5a66b8a41422a2cdffcdc11aeb30a9cdca75076dfbf1051bf4ab",
+    "target\\debug\\deps\\finishes-8041543fa8f436b2.exe": "fcabba6a4948ac5b6ab18c7efbda1147d7bc4918797b656adc361831ec944310",
+    "target\\debug\\deps\\gielinor_server-7abd10c65476b4d7.exe": "77b09a50e46da202809a0e8b7476e658e854586af5b0449a5080dcc49571d0ec",
+    "target\\debug\\deps\\matrix-f436a619eef95def.exe": "41678d844635dcae37fbe4a4c2205fbdd3547cf3e4a7b676d118c5aea05c1856",
+    "target\\debug\\deps\\refusals-62bf9b308bc6d08c.exe": "1c597b2551be1bdc645d37969cdc6f1ee37467f70c967940923130fe2ec1f09f"
+  }
+}

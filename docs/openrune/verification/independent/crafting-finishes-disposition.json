@@ -1,0 +1,45 @@
+{
+  "implementation_id": "OR-MIG-0070",
+  "revision": 1,
+  "tested_sha": "c7ddebe844820260252fb37df518f8c271f37243",
+  "campaign_kind": "historical",
+  "status": "FAILED_REQUIRES_CORRECTION",
+  "levels": {
+    "V0": {
+      "status": "PASS",
+      "reason": "Exact compile/startup/two native registrations, six actual items/Crafting and67factory refusals."
+    },
+    "V1": {
+      "status": "FAIL",
+      "reason": "384normal/member/current/rate/selected cases,44initial refusals and20pending-helm changes pass; four wire life refusals fail and four manual helm life controls pass. PG-DEF-004 ordinary P2."
+    },
+    "V2": {
+      "status": "PASS",
+      "reason": "Native four wire/four helm products/both directions,44800fineXP/uncharged output/retained chisels/remaining materials, Walk/stale/no115and real restarted native state."
+    },
+    "V3": {
+      "status": "PASS",
+      "reason": "Eight completed products/whole Stats/fractional existing XP/tools/coins/materials survive acknowledged save and actual native reconnect. Pending helm Walk cancellation plus separate observed unsaved wire credit/fineXP followed by owned abrupt stop restores complete prior SQL/native state with no replay. No feature-specific escrow, equipment or separate claim system is authored by these manual adapters."
+    },
+    "V4": {
+      "status": "PASS",
+      "reason": "Twelve pinned source/Wiki hashes and qualified target comparison distinguish wire Wiki0/donor generic1, helm1/rewards/uncharged12929, lamp-repair and wield requirements; no original executable timing parity."
+    }
+  },
+  "scope": "Applicable V0-V4 obligations have an explicit disposition at the exact historical SHA. Contract is FAILED, not accepted, because wiring life refusal fails. Preserve successful scopes while FORGE queues ordinary correction and unrelated verification continues.",
+  "limits": [
+    "Native dead-player reachability/currentFORGEHEAD unproven; PG-DEF-004 remains authoritative World evidence only.",
+    "Unacknowledged-state rollback is not an injection inside SQL commit; no rendered/audio/original executable parity.",
+    "Separate helm crash injection is not repeated: shared SQL character inventory/Stats recovery is demonstrated with wire, while helm normal persistence and interrupted/stale cancellation are independently tested."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/deep-crafting-finishes/native-001/independent-assessment.json": "3ff61a2e1dd666a7058a78243cf1fce0ad972b8b5b510b3e367445c522773e8c",
+    "docs/openrune/verification/independent/deep-crafting-finishes-crash/native-001/independent-assessment.json": "3c4b4f8c6aab04b08ae0be21d98d3b1f33b01aca5e093f4469922d4a1a35061c",
+    "docs/openrune/verification/independent/crafting-finishes-reference-complete.json": "2e3b1ce5b3238351e7f75d88f08fcb0b0983495837b098217698c535e57b9c82",
+    "docs/openrune/verification/independent/crafting-finishes-life-finding.json": "b1a4d04d15285b9c7a334f74572707ac9301ba2ca9129facae3de5aa3652eff7",
+    "docs/openrune/verification/independent/integration-external-crafting-finishes-matrix-c7ddebe844820260252fb37df518f8c271f37243/manifest.json": "69e82c58583e025534f63ee29db8b202865ae9d19408ea13991839cbf0968353",
+    "docs/openrune/verification/independent/integration-external-crafting-finishes-bindings-c7ddebe844820260252fb37df518f8c271f37243/manifest.json": "10a73e03e50119cbd2dafea9d5d07430c4f0e8c102cdddf1b1ad0c2e58738f33",
+    "docs/openrune/verification/independent/integration-external-crafting-finishes-refusals-c7ddebe844820260252fb37df518f8c271f37243/manifest.json": "b2cb96e4d0a6a068f339a54ae0734c281179f011e6e8f06b1eaab6252db30f7f",
+    "docs/openrune/verification/independent/integration-external-crafting-finishes-admission-c7ddebe844820260252fb37df518f8c271f37243/manifest.json": "f0e5b26d1c1eb0fb6eafbb6f7c043de8a2c20de68878dd14a1a18438345aba54"
+  }
+}

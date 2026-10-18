@@ -1,0 +1,19 @@
+{
+  "implementation_id": "OR-MIG-0070",
+  "tested_sha": "c7ddebe844820260252fb37df518f8c271f37243",
+  "status": "PASS",
+  "campaign_kind": "historical",
+  "observed_unsaved_output": 10973,
+  "observed_unsaved_fine_award": 5200,
+  "durable_outputs": 0,
+  "scope": "One native wiring10973credit/5200fineXP independently observed in raw18/46and one synchronous server trace, then only the owned disposable game server terminated with socket open and no save acknowledgement. SQL retains prior complete inventory/Stats; actual process restart and independently decoded native full inventory/Stats confirm complete rollback, no replay or material/XP duplication.",
+  "limitations": [
+    "This is unacknowledged-state rollback and recovery, not an injection during SQL transaction commit."
+  ],
+  "evidence_sha256": {
+    "produce/client.log": "2fe91c4e46116c2f2259c3f0c1983c049d3e88e5dc8d54cb2f641b42c6383252",
+    "produce/manifest.json": "8dddb3cefdcd82f6ec8373ed7c1a0d97a2b7360976f2cd2ad920f938dc6f9da3",
+    "relogin/client.log": "b291920fedf88cf7909f628b3196b39a499e042e5850062311802e2b33d0c4aa",
+    "relogin/manifest.json": "f210b7967dbaf3f604bd06b40279661e9b650a7764dffbe5281cd8e2c4c241e3"
+  }
+}

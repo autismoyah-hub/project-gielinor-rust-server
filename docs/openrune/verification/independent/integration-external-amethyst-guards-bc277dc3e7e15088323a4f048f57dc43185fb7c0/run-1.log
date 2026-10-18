@@ -1,0 +1,9 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\bc277dc3e7e15088323a4f048f57dc43185fb7c0\external-harness-9664826000)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 7.84s
+     Running tests\guards.rs (C:\Projects\OSRSRSPS\agent7-verification\work\bc277dc3e7e15088323a4f048f57dc43185fb7c0\target\debug\deps\guards-1f8ec35467a724f5.exe)
+
+running 2 tests
+test one_hundred_twelve_initial_refusals ... ok
+test one_hundred_twelve_late_changes_stop_after_one_whole_tip_credit ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 27.86s

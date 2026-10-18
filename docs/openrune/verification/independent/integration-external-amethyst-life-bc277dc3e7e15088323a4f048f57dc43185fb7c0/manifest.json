@@ -1,0 +1,68 @@
+{
+  "tested_integration_sha": "bc277dc3e7e15088323a4f048f57dc43185fb7c0",
+  "suite": "amethyst-life",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 6449115136,
+    "active_compilers": [
+      "\"cargo.exe\",\"7008\",\"RDP-Tcp#0\",\"2\",\"45,668 K\"",
+      "\"cargo.exe\",\"7792\",\"RDP-Tcp#0\",\"2\",\"22,272 K\"",
+      "\"rustc.exe\",\"10728\",\"RDP-Tcp#0\",\"2\",\"224,592 K\"",
+      "\"rustc.exe\",\"3448\",\"RDP-Tcp#0\",\"2\",\"105,608 K\""
+    ],
+    "cpu_percent": 30.88,
+    "cpu_samples": [
+      32.8125,
+      30.05893909626719,
+      29.76653696498055
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained",
+    "disk_free": 14134968320,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "ebcacbf21377063393cfce1e00d208144d81364b",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\bc277dc3e7e15088323a4f048f57dc43185fb7c0\\external-harness-2439020000\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-amethyst-life-bc277dc3e7e15088323a4f048f57dc43185fb7c0\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\bc277dc3e7e15088323a4f048f57dc43185fb7c0\\external-harness-2439020000\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 1,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-amethyst-life-bc277dc3e7e15088323a4f048f57dc43185fb7c0\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative amethyst-life scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-amethyst-life-bc277dc3e7e15088323a4f048f57dc43185fb7c0\\harness\\life.rs": "f362534b32819d10069667c1d62c4f28ecde7cd2aec7903ed5edfb8a94cc0ef7"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\atomic-b2d9a10afb397f89.exe": "106f8e41192fd047364d20b7a734814444231c1070aa396a0e92ac1a64749576",
+    "target\\debug\\deps\\bindings-f7b56a4a3503289c.exe": "5be97a4fbd3243c1337f265f45b193fc01db0d098058575a26b594a02898caf4",
+    "target\\debug\\deps\\gielinor_server-7abd10c65476b4d7.exe": "6afef31095077e6c2f504e414e4a1df0b85a79967aec165910b78d2137a6a9cf",
+    "target\\debug\\deps\\guards-1f8ec35467a724f5.exe": "d845b63af4f18bc5ca8d86f42f3585d60749bf334c0c06abcb632023a4675259",
+    "target\\debug\\deps\\life-73bfa88e0e57b4fe.exe": "d66376e734be1cd8368e2234f9852834519e040b2b3c2b47670660ed069a0c08",
+    "target\\debug\\deps\\world-ad652ea5023127bf.exe": "9ab2d17afc3138bc04127fd689b3f2777f5984bf1e9bc26e85ea9a5e917ad0e5"
+  }
+}

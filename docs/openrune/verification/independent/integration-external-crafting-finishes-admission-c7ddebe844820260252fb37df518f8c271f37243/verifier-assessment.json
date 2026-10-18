@@ -1,0 +1,3 @@
+{
+  "reason": "Twenty pending-helm late changes PASS and remain immutable. Initial refusals stopped at verifier overreach: synthetic restore_slot count2 is a valid positive-count container representation; selected pair API debits one and conserves remaining wire, and OR70 contract does not require count==1 runtime guard. No normal native means of creating a nonstack ordinary count2 is claimed. Remove the unsupported count2 refusal assumptions for both ingredients/tool and rerun only the unfinished44initial refusal cases, preserving rawFAIL and avoiding completed20late replay."
+}

@@ -1,0 +1,27 @@
+{
+  "implementation_id": "OR-MIG-0070",
+  "tested_sha": "c7ddebe844820260252fb37df518f8c271f37243",
+  "campaign_kind": "historical",
+  "status": "PASS",
+  "products": 8,
+  "fine_xp_award": 44800,
+  "scope": "Actual native four wiring and four manual helm products/both directions from full28; exact selected inputs and raw frame pairs, pending helm Walk cancellation, eight stale pair refusals, no quantity response/automatic repeat. Four server wiring traces are synchronous. Whole ordinary outputs/uncharged zero vars, retained chisels/two duplicate visages/coins/allStats/energy persist through acknowledged save, actual process restart and independently decoded native reconnect.",
+  "limitations": [
+    "Normal native/persistence scope only; PG-DEF-004 four authoritative wiring life failures remain unresolved.",
+    "No native death reachability, crash atomicity, rendered/audio or original executable parity.",
+    "No precise native helm logical-clock equivalence inferred from output observation; compensated World timing remains separately tested."
+  ],
+  "evidence_sha256": {
+    "initial-state.json": "3c0ee9b85f7a4dfcd2f9172ed6abf1277a843d889485e9f145b84cf1f1933a05",
+    "build.json": "e2075e9a2746918174d8201203891a1b4084622c1df1f66b0274626309d30000",
+    "produce/client.log": "8ad4e9bfe3c0103039b466099dea9365b00ee82c82b57e049e6cc05fd67f671f",
+    "produce/server.log": "2baf3c0029c6cc3e229b047bdd50398a59057d8c1269e54be447e9a9c0c6c77d",
+    "produce/manifest.json": "4fdb52c80d6351ff0cca5a2e319cc73717a417220723e0239cf64297caa1c1d9",
+    "produce/after.json": "10dd5b9c2cdd7bb380f06836088e1276fdcaa8ee1741a5cf30db39db28ad0ecb",
+    "relogin/client.log": "c7f10594fab05a0f42b50d8d1d810e1e6aba09b82897b3db82084739cbae8a0e",
+    "relogin/manifest.json": "3a843a0a26ecfcf6d84f08b095d58cd8a8f597cad0fc85d68cff563b9c7b5eb6",
+    "relogin/after.json": "e1b85257df3afc9664f961b2c99cdebcb9d5f57d0ff882886e19cf73ffd04a59",
+    "frozen-observer/pg_observer.rs": "b1263e57f325fe3520520b45eb7e1e6253824bbe58ee6289ac5ae951c7a13556",
+    "frozen-observer/build.json": "106e5aa83a7e32a91a1abea2a3292bc2001edc22dcd14b7a16429047c6c93825"
+  }
+}

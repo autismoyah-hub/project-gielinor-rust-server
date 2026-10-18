@@ -1,0 +1,48 @@
+{
+  "implementation_id": "OR-MIG-0069",
+  "tested_sha": "fb348dda184b36ec2d503bfe0f1d5393cf8ae151",
+  "level": "V4",
+  "status": "PASS_APPLICABLE_REFERENCE_COMPARISON",
+  "scope": "Applicable source/Wiki/target comparison completed with explicit differences rather than source-executable parity.39pinned reference hashes, four route-qualification hashes and18source rows are linked to independently executed exact-SHA World/cache/native evidence. PG-REF-002 overbroad Rabbit source inheritance is qualified here; original artifact remains immutable.",
+  "comparisons": [
+    {
+      "aspect": "Recipes and rewards",
+      "source_and_wiki": "Fourteen wool routes consume one ball plus ordinary selected raw for one strung output and4XP; Rabbit current37, others1; four member staff routes retain levels54/58/62/66 and100/112.5/125/137.5XP.",
+      "target_observation": "All18factory identities/421metadata refusals and4872Worldcases cover exact current/member/rate/whole-state policy. Native14profiles/both directions plus8staffcredits and13Earthbatch agree on products/fineXP.125% per-credit floors are50/1250/1406/1562/1718fine, calculated per step, while native500% Earth awards5625fine per credit and preserves final.6fraction."
+    },
+    {
+      "aspect": "Thirteen source AmuletStringing routes",
+      "source_and_wiki": "Source cycle2/default first-shortening supports nominal first1/repeat2; Wiki recipes describe nominal2.",
+      "target_observation": "All14original and14opposite native stringing server traces show actual queue-to-credit1. Gold native batches verify first1/repeat2; raw native submit-to-receive clocks1/2/4/5 include asynchronous transport and are not equal to nominal queue delay. Wiki nominal2 versus shortened first1 remains an explicit difference."
+    },
+    {
+      "aspect": "Rabbit route qualification PG-REF-002",
+      "source_and_wiki": "Rabbit belongs to source Combining1/COMBINE without a row override, unlike the other13rows. Wiki Rabbit recipe gives nominal2. Full source category dispatch/repeat executable behavior is unavailable.",
+      "target_observation": "Target Rabbit first1/repeat2 is a Wiki-backed quantity adaptation, not inherited AmuletStringing2 parity. Both native held directions and all World recipe cases pass at the exact target. The earlier blanket source2description is superseded only in this route scope."
+    },
+    {
+      "aspect": "Staff quantity versus manual cadence",
+      "source_and_wiki": "Source Battlestaves manual cycle2 has no first-shortening. Wiki explicitly describes Make-X first3then2 and manual2.",
+      "target_observation": "Eight actual native staff single-quantity credits show queue3. Thirteen Earth staff native sequence/spot/credit observations show first3/repeat2. World quantity1..28and retained manual API controls distinguish these routes, rather than inheriting older manual acceptance."
+    },
+    {
+      "aspect": "Safety adaptation",
+      "source_and_wiki": "Donor workers search materials and mutate in sequence; source behavior is reference, not the target transaction implementation.",
+      "target_observation": "Exact target captures selected slot pairs once, commits inventory/Stats atomically per credit, refuses stale captured slots without replacement fallback and cancels live-policy/life changes. Independent source-safe observations document this deliberate adaptation."
+    }
+  ],
+  "limitations": [
+    "Original executable/Kotlin timing, rendered/audio and identical source runtime phase parity are unavailable and not accepted. Source facts plus pinned Wiki and real target evidence are the strongest available comparison.",
+    "PG-REF-002 remains a requested FORGE contract-basis clarification; no gameplay code defect or stop requested. This qualified comparison does not rewrite original evidence.",
+    "V2multi-digit input and applicable presentation obligations remain separate; V4PASS does not accept the whole contract or a newer FORGE HEAD."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/reference-pair-production/comparison.json": "9114a2ab867d5b66d53f1572683a859b3a014444babf5ddbf83a3ce2b304a879",
+    "docs/openrune/verification/independent/pair-reference-routing-addendum.json": "c8e4095ba4ccb2e4486c1c9bff4d3f010ec25240438248e9c4f9f24ca7512ed2",
+    "docs/openrune/verification/independent/pair-stringing-native-timing.json": "ee17c05c2f1bce8fe7581a237eaacfcb5d27e1d366e873729eb28faa99529668",
+    "docs/openrune/verification/independent/pair-authoritative-complete.json": "bc3a6a8e257aeb0319d4472a701ce5df2ee8000e73b4f27fa8e1cf1b62ffef21",
+    "docs/openrune/verification/independent/deep-pair-staves/native-001/independent-assessment.json": "cb69872ea47d42544d31f4d2b7ebe00ee111bc57df4977a2fe92b2909398d6fd",
+    "docs/openrune/verification/independent/deep-pair-earth-batch/native-001/independent-assessment.json": "a2bf6add61cbbbb62060cd334077a74d3d60363e3166bf5cd11dbf0f91e0afcf",
+    "docs/openrune/verification/independent/deep-pair-stringing-reverse/native-001/independent-assessment.json": "348a6febcd1312b9407b2c95d6f8c9bf6b033f6d047b89f42e16c4cbedd6828d"
+  }
+}

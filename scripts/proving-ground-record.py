@@ -41,6 +41,11 @@ for manifest in OUT.glob('integration-*/manifest.json'):
         if all('test '+name+' ... FAILED' in text for name in ['wire_zero_hp_forward','wire_zero_hp_reverse','wire_queued_death_forward','wire_queued_death_reverse']):
             add('OR-MIG-0070',value['tested_integration_sha'],'V1','FAIL','PG-DEF-004: four isolated wiring life refusals fail across both directions/zeroHP/queued death with visibleHP restored. Selected empty orb and wire produce10973and1300fineXP at125%. Four separate manual-helm life refusals pass. Normal matrix initially failed verifier base-advancement oracle, not gameplay; raw wholeFAIL retained. Native reachability/currentHEAD/durability remain untested.',[manifest.relative_to(ROOT).as_posix(),'docs/openrune/verification/independent/crafting-finishes-life-finding.json'],scope='independent-finishes-life-failure')
         continue
+    if value.get('suite')=='crafting-finishes-admission':
+        log=manifest.parent/'run-1.log'
+        if 'test twenty_pending_helm_changes_cancel_selected_credit ... ok' in log.read_text():
+            add('OR-MIG-0070',value['tested_integration_sha'],'V1','FAIL','Twenty independent pending-helm late changes PASS across both directions: missing/variable selected raw or tool, live member/current/rate/credit refusal, modal pulse/Close/Walk preserve whole inventory/Stats. Separate initial refusal function failed an unsupported synthetic count2-refusal oracle; raw wholeFAIL retained. PG-DEF-004 wiring life failure remains unresolved; this passing subtest is not whole V1acceptance.',[manifest.relative_to(ROOT).as_posix()],scope='independent-finishes-late-subcheck')
+        continue
     if value.get('suite')=='crab-matrix' and value.get('status')=='FAIL':
         log=manifest.parent/'run-1.log';text=log.read_text()
         if 'test every_roll_across_current_levels_member_and_rates_has_exact_zero_xp_failure ... ok' in text:
@@ -49,6 +54,31 @@ for manifest in OUT.glob('integration-*/manifest.json'):
     if value.get('suite')=='pair-production-counts' and value.get('status')=='BLOCKED' and value.get('completed_case_subcheck')==728:
         add('OR-MIG-0069',value['tested_integration_sha'],'V1','IN_PROGRESS','Original count matrix hit300second bound without final result. Immutable per-profile progress establishes728complete full28count1-28cases for profiles0-12/both directions. Profiles13-17remain unaccepted; no whole-suite PASS. Preserve original wrapper timeout; rerun only remaining5profiles.',[manifest.relative_to(ROOT).as_posix()],scope='independent-pair-counts-completed-prefix')
     if value.get('status')!='PASS':continue
+    if value.get('suite') in ['amethyst-boosts','amethyst-policy']:
+        suite=value['suite'];reason=('Sixteen actual World current-at-required/base-one-below cases across4profiles/four rates plus8initial World i32MAXoverflow refusals PASS, retaining whole inventory/Stats/no RNG. Rate0does not award; existing resolver/late overflow evidence remains separate.' if suite=='amethyst-boosts' else 'Four unsupported multi-output failure policies refuse before RNG and eight synthetic legacy count-one success/failure branches preserve whole selected-slot/fineXP semantics. Actual amethyst recipes remain deterministic failureNone; no fallible amethyst gameplay or chemistry content claimed.')
+        add('OR-MIG-0071',value['tested_integration_sha'],'V1','IN_PROGRESS',reason+' Applicable whole V1requires the aggregate of all immutable campaigns.',[manifest.relative_to(ROOT).as_posix()],scope='independent-'+suite)
+        continue
+    if value.get('suite')=='amethyst-bindings':
+        add('OR-MIG-0071',value['tested_integration_sha'],'V0','IN_PROGRESS','Actual owned cache six item definitions/Crafting12/sequence6295symbol resolve four member raw21347/chisel1755recipes: counts15/15/5/8, levels83/85/87/89,60XPper raw, manualfirst1/cycle2and no failure.69missing/aliased/corrupt item/stat/sequence cases refuse. Exact server startup/native four-option dispatch remains open.',[manifest.relative_to(ROOT).as_posix()],scope='independent-amethyst-cache-bindings')
+        continue
+    if value.get('suite')=='amethyst-life':
+        add('OR-MIG-0071',value['tested_integration_sha'],'V1','IN_PROGRESS','Independent16before-first-credit life refusals PASS across4profiles/both directions/zeroHPandactual queued death with visibleHP restored without respawn. Full inventory/Stats/no RNG conserved after12ticks; separate late-death cases already complete, runtime native token/reachability remains separate.',[manifest.relative_to(ROOT).as_posix()],scope='independent-amethyst-before-credit-life')
+        continue
+    if value.get('suite')=='amethyst-legacy':
+        add('SHARED-TOOLS',value['tested_integration_sha'],'V1','PASS','Exact71new integration regression PASS:576legacy integer gem/shell choice batches,24F2Pcontrols,140initial refusals and192late changes retain full inventory/Stats/timing/captured order. Only descriptor output_count1/failureNone compatibility fields added to the historical independent fixture; original target63campaign is not rerun or overwritten and no historical acceptance is inherited. No chemistry gameplay execution.',[manifest.relative_to(ROOT).as_posix()],kind='integration',scope='independent-amethyst-count-one-regression',affected=['OR-MIG-0056','OR-MIG-0057','OR-MIG-0063','OR-MIG-0071'])
+        continue
+    if value.get('suite')=='amethyst-world':
+        add('OR-MIG-0071',value['tested_integration_sha'],'V1','IN_PROGRESS','Independent288actual World choice/batch cases plus8late overflow cases PASS at exact71. Four output profiles/both directions/no-stack versus existing stack/three rates/count1-2-4-5-10-28 verify selected17then3/9/26capture, full28count15/15/5/8tips per raw, per-raw60XP, independent whole inventory/Stats per tick, first1compensation/repeat2and no RNG/repeat. Near-i32MAXstack credits exactly two whole raw results then refuses remaining9/26without partial tips or extra XP. Native/runtime/lifecycle and remaining policy/life guards remain open.',[manifest.relative_to(ROOT).as_posix()],scope='independent-amethyst-world-batches')
+        continue
+    if value.get('suite')=='amethyst-guards':
+        add('OR-MIG-0071',value['tested_integration_sha'],'V1','IN_PROGRESS','Independent112initial and112late World guards PASS across4profiles/both directions. Invalid option/count/member/current/rate/stale or variable selected input/tool/credit/modal/logout refuse; after one complete tips+XPcredit, captured-slot stale replacement with duplicate fallback bait, tool/policy/credit/modal/Walk/Close/logout/zeroHP/actual queued death with visibleHP restored stop remaining work and preserve whole snapshot without RNG. Runtime player token ownership and native life reachability are separate; no whole V1or contract acceptance inferred.',[manifest.relative_to(ROOT).as_posix()],scope='independent-amethyst-world-guards')
+        continue
+    if value.get('suite')=='crafting-finishes-refusals':
+        add('OR-MIG-0070',value['tested_integration_sha'],'V1','FAIL','Independent44initial refusal cases PASS across wiring/helm/both directions: member/current/rate0andnegative/stale or variable input/tool/credit/modal/logout conserve full inventory/Stats with no RNG. Removed unsupported synthetic count2refusal expectation; no completed20late campaign replayed. Separate confirmed PG-DEF-004 wiring life failure remains unresolved, so V1remains FAIL.',[manifest.relative_to(ROOT).as_posix()],scope='independent-finishes-initial-refusals')
+        continue
+    if value.get('suite')=='crafting-finishes-bindings':
+        add('OR-MIG-0070',value['tested_integration_sha'],'V0','IN_PROGRESS','Actual owned cache six item definitions/Crafting12 attest both manual descriptors: member empty-orb10980/wire10981 to10973/current87/104XP and chisel1755/visage12927 to ordinary uncharged12929/current52/120XP/manual1/no failure or animation.67missing/aliased/corrupt item/stat cases refuse. Runtime startup/native dispatch remain open; no level PASS inferred from factory alone.',[manifest.relative_to(ROOT).as_posix()],scope='independent-finishes-bindings')
+        continue
     if value.get('suite')=='crafting-finishes-matrix':
         add('OR-MIG-0070',value['tested_integration_sha'],'V1','FAIL' if (OUT/'crafting-finishes-life-finding.json').exists() else 'IN_PROGRESS','Independent384World cases PASS across two manual profiles/four selected slots/both held directions/member/current below-at99/boosted base1/four rates. Full28whole-inventory and allStats, exact output identity/zero vars/duplicate retention, synchronous wiring versus one-tick compensated helm, independent base-level advancement and no repeat/RNG checked. Separate PG-DEF-004 life failure remains unresolved; this normal subcheck does not replace FAIL.',[manifest.relative_to(ROOT).as_posix()],scope='independent-finishes-matrix-subcheck')
         continue
@@ -517,4 +547,38 @@ path=OUT/'pair-durable-complete.json'
 if path.exists():
     result=json.loads(path.read_text());assert result['status']=='PASS_APPLICABLE_V3'
     add('OR-MIG-0069',result['tested_sha'],'V3','PASS',result['scope']+' Original producer timeout/mid-SQL/equipment/rendered/currentHEAD limitations remain explicit; no whole-contract acceptance inferred.',[path.relative_to(ROOT).as_posix()],scope='pair-durable-obligations-complete')
+path=OUT/'pair-reference-complete.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PASS_APPLICABLE_REFERENCE_COMPARISON'
+    add('OR-MIG-0069',result['tested_sha'],'V4','PASS',result['scope']+' Source13AmuletStringing2versusRabbitCombining1and Wiki-backed first1/repeat2adaptation explicit; staff manual2versusquantity3/2and per-credit fine rounding compared with native traces/effects. No original executable/rendered/audio/currentHEAD or whole-contract acceptance inferred.',[path.relative_to(ROOT).as_posix()],scope='pair-reference-obligations-complete')
+path=OUT/'crafting-finishes-reference-complete.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PASS_APPLICABLE_REFERENCE_COMPARISON'
+    add('OR-MIG-0070',result['tested_sha'],'V4','PASS',result['scope']+' Actual four native wiring traces are synchronous; manual helm descriptor/compensated World clocks and fineXP are compared without native donor timing parity. PG-DEF-004 V1failure remains separate; no whole-contract acceptance.',[path.relative_to(ROOT).as_posix()],scope='finishes-reference-obligations-complete')
+path=OUT/'deep-crafting-finishes/native-001/independent-assessment.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PASS'
+    binding=OUT/'integration-external-crafting-finishes-bindings-c7ddebe844820260252fb37df518f8c271f37243/manifest.json';assert json.loads(binding.read_text())['status']=='PASS'
+    ev=[path.relative_to(ROOT).as_posix(),binding.relative_to(ROOT).as_posix()]
+    add('OR-MIG-0070',result['tested_sha'],'V0','PASS','Exact70server compiles and actually starts against95immutable resource hashes; six actual cache item bindings/Crafting/two descriptors and67metadata refusals PASS. Genuine native wiring/manual-helm held routes reach both startup registrations in both directions.',ev,scope='finishes-runtime-obligations-complete')
+    add('OR-MIG-0070',result['tested_sha'],'V2','PASS','Applicable native manual routes complete:four wiring/four helm products in both directions, exact raw held frames/whole inventory/44800fineXP, uncharged12929zero vars, retained chisels/duplicate visages/coins, pending helm Walk cancellation/eight stale pair refusals and no quantity115or repeat. Actual restarted native state independently decoded. No rendered/audio/original executable or native death-reachability claim.',ev,scope='finishes-native-obligations-complete')
+    add('OR-MIG-0070',result['tested_sha'],'V3','IN_PROGRESS','Eight completed normal native products and44800fineXP persist through acknowledged-save/process restart/native reconnect with exact SQL inventory/Stats/remaining materials/coins/energy and fractional existing fineXP. Pending action Walk cancellation passes; separate owned unsaved-result recovery remains open. PG-DEF-004 V1failure prevents aggregate acceptance.',ev,scope='finishes-normal-durable-subcheck')
+path=OUT/'crafting-finishes-disposition.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='FAILED_REQUIRES_CORRECTION'
+    add('OR-MIG-0070',result['tested_sha'],'V3','PASS',result['levels']['V3']['reason']+' Exact historical storage scope only; V1FAILPG-DEF-004prevents aggregate acceptance.',[path.relative_to(ROOT).as_posix()],scope='finishes-durable-obligations-complete')
+    ledger=DOC/'VERIFICATION_RESULTS.jsonl';history=[json.loads(s) for s in ledger.read_text(encoding='utf-8').splitlines()];attempt='finishes-terminal-disposition-'+result['tested_sha']
+    if not any(r['attempt_id']==attempt for r in history):
+        row={'attempt_id':attempt,'implementation_id':'OR-MIG-0070','implementation_commit_sha':result['tested_sha'],'contract_revision':1,'campaign_kind':'historical','outcome':'FAILED','level':'V0PASS/V1FAIL/V2PASS/V3PASS/V4PASS','independent_verification':True,'tests_passed':0,'coverage':[k+' '+v['status']+': '+v['reason'] for k,v in result['levels'].items()],'reason':result['scope'],'evidence':[path.relative_to(ROOT).as_posix()],'issues':['PG-DEF-004 ordinary P2 local correction; no external issue or FORGE stop']}
+        with ledger.open('a',encoding='utf-8',newline='\n') as f:f.write(json.dumps(row)+'\n')
+path=OUT/'deep-amethyst/native-001/independent-assessment.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PASS'
+    ev=[path.relative_to(ROOT).as_posix()]
+    add('OR-MIG-0071',result['tested_sha'],'V0','PASS','Exact71server compiles shared counted exchange/all startup constructors and starts against95immutable resource hashes. Six actual cache bindings/Crafting/sequence6295symbol/four counted descriptors and69refusals pass; actual native four-option dispatch/count labels reaches every recipe in both directions. Count-one shared engine regressions separately pass.',ev,scope='amethyst-runtime-obligations-complete')
+    for level in ['V2','V3','V4']:add('OR-MIG-0071',result['tested_sha'],level,'IN_PROGRESS',result['scope']+' Native builtin batches/custom quantities/negative and partial/unsaved persistence/effect-clock/audio/reference scope remain separately unaccepted.',ev,scope='amethyst-native-four-choices-normal')
+path=OUT/'amethyst-authoritative-complete.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PASS_APPLICABLE_V1'
+    add('OR-MIG-0071',result['tested_sha'],'V1','PASS',result['scope']+' Native/runtime token and full contract acceptance remain separate.',[path.relative_to(ROOT).as_posix()],scope='amethyst-authoritative-obligations-complete')
 print('Per-level evidence events:',len(rows))
