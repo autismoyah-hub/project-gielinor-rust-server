@@ -373,6 +373,7 @@ pub fn configure<B: AccountBackend>(
     let dorgesh=crate::content::dorgesh_foods(n("obj"),n("stat"),&runtime.definitions,&mut foods).map_err(io::Error::other)?;
     slot_preserving_foods.extend(dorgesh.selected);
     boost_foods.boosts.extend(dorgesh.boosts);
+    slot_preserving_foods.extend(crate::content::mead_drinks(n("obj"),&runtime.definitions,&mut foods).map_err(io::Error::other)?);
     let flat_drinks=crate::content::flat_drinks(n("obj"),n("stat"),&runtime.definitions,&mut foods).map_err(io::Error::other)?;
     slot_preserving_foods.extend(flat_drinks.selected);
     boost_foods.boosts.extend(flat_drinks.boosts);
