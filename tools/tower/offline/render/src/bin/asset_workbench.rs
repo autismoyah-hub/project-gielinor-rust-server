@@ -97,7 +97,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         fs::write(out.join("decoded.json"), native::geometry(&m))?;
         return Ok(());
     }
-    if a[3] == "play" {
+    if a[3] == "play" || a[3] == "play-complete" {
         if a.len() < 9 {
             return Err("play MODEL CAMERA AMBIENT CONTRAST SEQUENCE_DIR".into());
         }
@@ -114,6 +114,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             return Err("Custom cached animation playback not supported".into());
         }
         let mut times: BTreeSet<_> = (0..=sequence.total_length.min(256)).collect();
+        if a[3] == "play-complete" {
+            times = (0..=sequence.total_length).collect();
+        }
         times.insert(sequence.total_length);
         times.extend([
             sequence.total_length / 4,
