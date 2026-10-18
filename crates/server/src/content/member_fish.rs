@@ -128,6 +128,30 @@ pub fn member_fish_cooking(
             13443,
             true,
         ),
+        (
+            ("raw_cave_eel", "cave_eel", "burnt_cave_eel"),
+            ("Raw cave eel", "Cave eel", "Burnt cave eel"),
+            38,
+            1150,
+            (4, 1),
+            (Some(74), 38, 332),
+            (Some(74), 38, 332),
+            5002,
+            true,
+        ),
+        (
+            ("raw_lava_eel", "lava_eel", "burnt_eel"),
+            ("Raw lava eel", "Lava eel", "Burnt eel"),
+            // The donor's burnt-eel metadata is required by the shared recipe
+            // shape but unreachable: cutoff equals the minimum Cooking level.
+            53,
+            300,
+            (4, 1),
+            (Some(53), 50, 256),
+            (Some(53), 50, 256),
+            3383,
+            true,
+        ),
     ] {
         let resolve = |n: &str| {
             objects
@@ -254,6 +278,12 @@ mod tests {
             ("raw_anglerfish", 13439, "Raw anglerfish", true, false),
             ("anglerfish", 13441, "Anglerfish", true, true),
             ("burnt_anglerfish", 13443, "Burnt anglerfish", true, false),
+            ("raw_cave_eel", 5001, "Raw cave eel", true, false),
+            ("cave_eel", 5003, "Cave eel", true, true),
+            ("burnt_cave_eel", 5002, "Burnt cave eel", true, false),
+            ("raw_lava_eel", 2148, "Raw lava eel", true, false),
+            ("lava_eel", 2149, "Lava eel", true, true),
+            ("burnt_eel", 3383, "Burnt eel", true, false),
         ] {
             objects.insert(symbol.into(), id);
             let mut d = gielinor_cache::definitions::ItemType::decode(&[0]).unwrap();
@@ -283,9 +313,9 @@ mod tests {
         };
         let mut config = empty.clone();
         member_fish_cooking(&objects, &locations, &defs, &mut config).unwrap();
-        assert_eq!(config.recipes.len(), 9);
-        assert_eq!(config.surfaces[&26181].recipes.len(), 9);
-        assert_eq!(config.member_inputs.len(), 9);
+        assert_eq!(config.recipes.len(), 11);
+        assert_eq!(config.surfaces[&26181].recipes.len(), 11);
+        assert_eq!(config.member_inputs.len(), 11);
         for (source, recipes) in [
             (26185, &config.recipes),
             (26181, &config.surfaces[&26181].recipes),
@@ -300,19 +330,24 @@ mod tests {
                 (389, 391, 393, 2703),
                 (11934, 11936, 11938, 2687),
                 (13439, 13441, 13443, 2875),
+                (5001, 5003, 5002, 1437),
+                (2148, 2149, 3383, 375),
             ] {
                 let recipe = &recipes[&raw];
                 assert_eq!((recipe.cooked, recipe.burnt), (cooked, burnt));
                 assert!(config.member_inputs.contains(&raw));
                 assert_eq!(
                     recipe.ticks,
-                    if source == 26181 && [7944, 395, 389].contains(&raw) {
+                    if source == 26181 && [7944, 395, 389, 5001, 2148].contains(&raw) {
                         1
                     } else {
                         4
                     }
                 );
                 for burned in [false, true] {
+                    if raw == 2148 && burned {
+                        continue;
+                    }
                     let mut inv = Inventory::new(2, StackType::Normal, false);
                     for slot in 0..2 {
                         inv.restore_slot(
@@ -375,6 +410,65 @@ mod tests {
                     assert_eq!(stats.fine_xp(7), 0);
                 }
             }
+        }
+        // Lava eels cannot burn: even at the minimum level there is no RNG
+        // call. A below-level request retains both inventory and fine XP.
+        struct NeverDraw;
+        impl RandomSource for NeverDraw {
+            fn below(&mut self, _: u32) -> u32 {
+                panic!("Guaranteed lava eel consumed RNG")
+            }
+        }
+        for source in [26185, 26181] {
+            let recipe = config.recipe(source, 2148).unwrap();
+            assert_eq!(recipe.stop_burn, Some(recipe.level));
+            let mut inv = Inventory::new(1, StackType::Normal, false);
+            inv.restore_slot(
+                0,
+                Some(Item {
+                    id: 2148,
+                    count: 1,
+                    vars: 0,
+                }),
+            )
+            .unwrap();
+            let mut stats = Stats::default();
+            stats.set_current(7, 52);
+            let before = (inv.clone(), stats.clone());
+            assert!(matches!(
+                recipe.complete(
+                    0,
+                    &mut inv,
+                    &Catalog::default(),
+                    &mut stats,
+                    7,
+                    99,
+                    100,
+                    &mut NeverDraw
+                ),
+                Err(gielinor_world::cooking::Error::Level)
+            ));
+            assert_eq!((inv.clone(), stats.clone()), before);
+            stats.set_current(7, 53);
+            assert!(
+                !recipe
+                    .complete(
+                        0,
+                        &mut inv,
+                        &Catalog::default(),
+                        &mut stats,
+                        7,
+                        99,
+                        100,
+                        &mut NeverDraw
+                    )
+                    .unwrap()
+                    .burned
+            );
+            assert_eq!(inv.get(0).unwrap().id, 2149);
+            assert_eq!(stats.fine_xp(7), 300);
+            let cave = config.recipe(source, 5001).unwrap();
+            assert_eq!((cave.stop_burn, cave.low, cave.high), (Some(74), 38, 332));
         }
         let cod_fire = config.recipe(26185, 341).unwrap();
         let cod_range = config.recipe(26181, 341).unwrap();
