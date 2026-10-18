@@ -304,3 +304,4 @@ pub mod potion_upgrades;
 pub mod combat_mixing;
 pub mod thieving;
 pub mod tool_crafting;
+pub mod tool_crafting_counts;

@@ -99,6 +99,7 @@ pub(crate) struct Pending {
     pub origin: CoordGrid,
     pub last_movement: i32,
     pub batch: Option<Batch>,
+    pub input_count:u16,
 }
 #[cfg(test)]
 mod tests {
@@ -208,6 +209,7 @@ pub struct Request {
     pub origin: CoordGrid,
     pub last_movement: i32,
     pub cycle_ticks: u8,
+    pub input_count:u16,
 }
 impl Request {
     pub fn bind(
@@ -218,10 +220,15 @@ impl Request {
         origin: CoordGrid,
         last_movement: i32,
     ) -> Option<Self> {
+        Self::bind_counted(recipes,cycle_ticks,request,inventory,origin,last_movement,1)
+    }
+    pub fn bind_counted(recipes:std::sync::Arc<Vec<Recipe>>,cycle_ticks:u8,request:crate::held_use::Request,inventory:&Inventory,origin:CoordGrid,last_movement:i32,input_count:u16)->Option<Self>{
         let first = *recipes.first()?;
         if inventory.stack != StackType::Normal
             || inventory.placeholders
             || cycle_ticks == 0
+            || input_count==0
+            || (input_count>1&&recipes.iter().any(|r|r.failure.is_some()))
             || recipes.len() > 18
             || recipes.iter().any(|r| {
                 r.exchange.tool != first.exchange.tool
@@ -262,7 +269,7 @@ impl Request {
                 .is_none_or(|i| i.id != first.exchange.tool || i.count != 1 || i.vars != 0)
             || inventory
                 .get(input_slot)
-                .is_none_or(|i| i.id != first.exchange.input || i.count != 1 || i.vars != 0)
+                .is_none_or(|i| i.id != first.exchange.input || (if input_count==1{i.count!=1}else{i.count<i32::from(input_count)}) || i.vars != 0)
         {
             return None;
         }
@@ -273,6 +280,7 @@ impl Request {
             origin,
             last_movement,
             cycle_ticks,
+            input_count,
         })
     }
     pub fn available(&self, inventory: &Inventory) -> usize {
@@ -280,6 +288,7 @@ impl Request {
             return 0;
         };
         let id = recipe.exchange.input;
+        if self.input_count>1{return inventory.get(self.input_slot).filter(|i|i.id==id&&i.vars==0&&i.count>0).map_or(0,|i|(i.count as usize/self.input_count as usize).min(28));}
         inventory
             .slots()
             .iter()

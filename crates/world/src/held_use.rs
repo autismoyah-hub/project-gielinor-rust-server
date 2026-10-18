@@ -40,6 +40,7 @@ pub enum Handler {
     ToolCrafting(crate::tool_crafting::Recipe),
     ToolCraftingImmediate(crate::tool_crafting::Recipe),
     ToolCraftingChoices{recipes:std::sync::Arc<Vec<crate::tool_crafting::Recipe>>,cycle_ticks:u8},
+    ToolCraftingCountedChoices{recipes:std::sync::Arc<Vec<crate::tool_crafting::Recipe>>,cycle_ticks:u8,input_count:u16},
     TutorialDough(crate::tutorial_dough::Config),
     TutorialFire(crate::tutorial_fire::Config),
 }

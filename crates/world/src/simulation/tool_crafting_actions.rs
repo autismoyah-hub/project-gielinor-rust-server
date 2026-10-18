@@ -26,6 +26,7 @@ impl World {
             origin: p.movement.coords,
             last_movement: p.movement.last_movement,
             batch: None,
+            input_count:1,
         };
         // Input precedes queue processing, so compensate for this clock's decrement.
         p.queues
@@ -80,14 +81,15 @@ pub(super) fn complete(
     {
         return;
     }
-    let committed = match pending.job.resolve(
+    let result=if pending.input_count==1{pending.job.resolve(
         &p.data.inventory,
         items,
         &p.data.stats,
         p.data.xp_rate_hundreds,
         p.member,
         random,
-    ) {
+    )}else{crate::tool_crafting_counts::prepare(pending.job,pending.input_count,&p.data.inventory,items,&p.data.stats,p.data.xp_rate_hundreds,p.member).map(|prepared|(prepared,true))};
+    let committed = match result {
         Ok((prepared, success)) => {
             publish(p, pending.job, prepared, success, tutorial, events);
             true
@@ -111,6 +113,7 @@ pub(super) fn complete(
             let next = Pending {
                 job,
                 batch: Some(batch),
+                input_count:pending.input_count,
                 origin: pending.origin,
                 last_movement: pending.last_movement,
             };
@@ -303,14 +306,18 @@ impl World {
         cycle_ticks: u8,
         request: crate::held_use::Request,
     ) -> Result<(), ActionError> {
+        self.request_tool_crafting_counted(actor,recipes,cycle_ticks,request,1)
+    }
+    pub(super) fn request_tool_crafting_counted(&mut self,actor:ActorId,recipes:std::sync::Arc<Vec<crate::tool_crafting::Recipe>>,cycle_ticks:u8,request:crate::held_use::Request,input_count:u16)->Result<(),ActionError>{
         let p = self.players.get_mut(actor.slot as usize).unwrap();
-        let Some(choice) = crate::tool_crafting::Request::bind(
+        let Some(choice) = crate::tool_crafting::Request::bind_counted(
             recipes,
             cycle_ticks,
             request,
             &p.data.inventory,
             p.movement.coords,
             p.movement.last_movement,
+            input_count,
         ) else {
             return Err(ActionError::InvalidItem);
         };
@@ -368,13 +375,8 @@ impl World {
             tool_slot: request.tool_slot,
             input_slot: request.input_slot,
         };
-        if let Err(e) = job.prepare(
-            &p.data.inventory,
-            &self.object_types,
-            &p.data.stats,
-            p.data.xp_rate_hundreds,
-            p.member,
-        ) {
+        if let Err(e) = crate::tool_crafting_counts::prepare(job,request.input_count,
+            &p.data.inventory,&self.object_types,&p.data.stats,p.data.xp_rate_hundreds,p.member) {
             refusal(&mut self.events, actor, e, job.recipe.skill);
             return Ok(());
         }
@@ -388,12 +390,14 @@ impl World {
                 slots.push(slot);
             }
         }
+        if request.input_count>1{slots=vec![request.input_slot;request.available(&p.data.inventory).min(count as usize)];}
         slots.truncate(count as usize);
         let p = self.players.get_mut(actor.slot as usize).unwrap();
         p.begin_held_action();
         p.queues.clear_weak();
         let pending = Pending {
             job,
+            input_count:request.input_count,
             origin: request.origin,
             last_movement: request.last_movement,
             batch: Some(crate::tool_crafting::Batch {
