@@ -1,0 +1,20 @@
+{
+  "implementation_id": "OR-MIG-0130",
+  "tested_sha": "7d2133f23e00ad852df8726ead67493e83c901b4",
+  "status": "PASS_SCOPED",
+  "cases": 4,
+  "scope": "Both cape variants with and without repeated Boost before expiry. Public World uses existing regeneration timer config; original login timer expires in PlayerMain99, observedclock100 after Late. Repeating at90does not extend expiry. A new actual Boost request after expiry works, then decays on next scheduled PlayerMain199/observed200. WholebaggearStats/fineXP retained and zero RNG.",
+  "harness_correction": "Original four-case test had zero completed cases:wrongly compared the post-Late observation clock99 to PlayerMain expiry99. One fresh diagnostic actor traced the actual phase/event boundary and confirmed expiry at observed100. Corrected four scenarios rerun at identical SHA; raw failure and diagnostic retained. No implementation change.",
+  "limitations": [
+    "Configured public timer fixtures, not native startup timer ID binding or rendered/native expiry.",
+    "Native both variants/membership/drained/persistence/reference requirements remain separate."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/integration-external-crafting-cape-expiry-7d2133f23e00ad852df8726ead67493e83c901b4/manifest.json": "19c29492bccf26cfb689fb1744b5eee4fea6729b91967a629e3ec9658a44f7ee",
+    "docs/openrune/verification/independent/integration-external-crafting-cape-expiry-7d2133f23e00ad852df8726ead67493e83c901b4/run-1.log": "19d1e03817e50058380c2bc9133f835ee5c6d414679928f9252a5c08ec6e9576",
+    "docs/openrune/verification/independent/integration-external-crafting-cape-expiry-observe-7d2133f23e00ad852df8726ead67493e83c901b4/manifest.json": "d01e61a2e6f9ae45c4b99ddd24a5c4cac9e6c0754153e68ff13e9cfd44dc8705",
+    "docs/openrune/verification/independent/integration-external-crafting-cape-expiry-observe-7d2133f23e00ad852df8726ead67493e83c901b4/run-1.log": "8ed512ea89f950ffda5e76e57b7f71e9908d6df581a7ca20dd6fb9fcc165a0b9",
+    "docs/openrune/verification/independent/integration-external-crafting-cape-expiry-7d2133f23e00ad852df8726ead67493e83c901b4-1792352289366632300/manifest.json": "ab53a329183d61f02c063c0b138718abdb3793f6378965bbfa46c1cc8da2c0c2",
+    "docs/openrune/verification/independent/integration-external-crafting-cape-expiry-7d2133f23e00ad852df8726ead67493e83c901b4-1792352289366632300/run-1.log": "dca0926b761b74acb821190f92bb7056257c324c9b06bd5b08288874681cae9f"
+  }
+}

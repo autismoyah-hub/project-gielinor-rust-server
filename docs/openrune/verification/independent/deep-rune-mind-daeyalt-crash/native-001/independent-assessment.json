@@ -1,0 +1,29 @@
+{
+  "implementation_id": "OR-MIG-0126",
+  "tested_sha": "bd1294ab9e0ff850155b024364dc3a3a98a37bed",
+  "status": "PASS_SCOPED",
+  "feature": "rune-mind-daeyalt-crash",
+  "persisted_outcome": "NO_COMMIT",
+  "scope": "Actual native first56runes with21ordinary retained, then abrupt termination of only the fresh owned server before save acknowledgement; restart restores the prior complete account. Exact whole bag/gear/Stats/fineXP and position independently checked against SQL and decoded native reconnect after process restart.",
+  "limitations": [
+    "Inside-altar disposable fixture does not establish essence acquisition or altar entry.",
+    "No during-SQL-commit injection, original executable/render/audio parity or native125rate claim. Character comparison covers position/plane/energy; runtime login varps and logout timestamps legitimately change.",
+    "Native transport disconnect may race one server tick; only the observed atomic result is claimed. No visible Logout-button observation or proof of cancellation before completion."
+  ],
+  "evidence_sha256": {
+    "initial-state.json": "e6a135fc2284fad98d61ffa74a3690603a9dd4f3992750c87d355fee63b91812",
+    "build.json": "ae08bd2e5e8423918d5c2c92370eb08339df9d69f5456ea5a682b9322f16e704",
+    "frozen-observer/build.json": "b315495a6a74266539f5d85bf3e1d5f1e1a968961a6f06dd444695b5a57cf39c",
+    "frozen-observer/pg_observer.rs": "d60a63e06ef5b763c9bf4784cec638d46f4719b063e42454fca70765afc7bc25",
+    "produce/manifest.json": "b938d811081d3918b6095e0947eebd7029253626d964e591b9a6ffc7e2894f87",
+    "produce/before.json": "e6a135fc2284fad98d61ffa74a3690603a9dd4f3992750c87d355fee63b91812",
+    "produce/after.json": "066dd1ab6a4390f9ba7e38566ed44c2c331c9b7c291d0f184cb9a7a0192fbd32",
+    "produce/client.log": "c05cff0e4dd1a6f811739775ccb9e47261b1e430486f848cc042dc33e5f5e641",
+    "produce/server.log": "ae57eb927cbcc80a24e1816523a310b48efee969f441ac2356667bf2788873d0",
+    "relogin/manifest.json": "11916d1137660b00e7bf3abdb34b523f78443dda0a7af43462bc8379fb245f26",
+    "relogin/before.json": "066dd1ab6a4390f9ba7e38566ed44c2c331c9b7c291d0f184cb9a7a0192fbd32",
+    "relogin/after.json": "ad70e51068a190292aa8472c2f6c9084300455471f19d34eec1533c906ca912b",
+    "relogin/client.log": "77d7fc0494a1cd8cb490d059d99906fb9cd92f3de088696aed52fefd43e15715",
+    "relogin/server.log": "9391cb1fe7888189b28c67c14d4ce49adb5c67a0c61cb739a5624340a7dd97b8"
+  }
+}

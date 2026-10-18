@@ -1,0 +1,29 @@
+{
+  "implementation_id": "OR-MIG-0126",
+  "tested_sha": "bd1294ab9e0ff850155b024364dc3a3a98a37bed",
+  "status": "PASS_SCOPED",
+  "feature": "rune-mind-daeyalt-close-after-reach",
+  "persisted_outcome": "NO_COMMIT",
+  "scope": "Actual reached sequence791 with original bag/XP intact followed by genuine native Walk or Close cancels the pending transaction. Exact whole bag/gear/Stats/fineXP and position independently checked against SQL and decoded native reconnect after process restart.",
+  "limitations": [
+    "Inside-altar disposable fixture does not establish essence acquisition or altar entry.",
+    "No during-SQL-commit injection, original executable/render/audio parity or native125rate claim. Character comparison covers position/plane/energy; runtime login varps and logout timestamps legitimately change.",
+    "Close uses existing native Action::Close without an open dialog; no visible Close-button or keyboard observation."
+  ],
+  "evidence_sha256": {
+    "initial-state.json": "e6a135fc2284fad98d61ffa74a3690603a9dd4f3992750c87d355fee63b91812",
+    "build.json": "ae08bd2e5e8423918d5c2c92370eb08339df9d69f5456ea5a682b9322f16e704",
+    "frozen-observer/build.json": "b315495a6a74266539f5d85bf3e1d5f1e1a968961a6f06dd444695b5a57cf39c",
+    "frozen-observer/pg_observer.rs": "d60a63e06ef5b763c9bf4784cec638d46f4719b063e42454fca70765afc7bc25",
+    "produce/manifest.json": "155701c79a1393f07b401b9e5057a49da8e2d29f32f6ff5237561024cf4ed90e",
+    "produce/before.json": "e6a135fc2284fad98d61ffa74a3690603a9dd4f3992750c87d355fee63b91812",
+    "produce/after.json": "163a011712107d63af1da9f6a22bcb25ca4f5b3de9ef650989e2b36d52087884",
+    "produce/client.log": "10c350b12d835e9b4bbf2bbd1394370dd2e2adf2b47d0751bcb32939c390c786",
+    "produce/server.log": "c6abe9a8c7327d048ec218a7ac4c6824fbed5be61c8977ff9e0fbdbf8708cf16",
+    "relogin/manifest.json": "4537508b39bff9b43cc6bf68267dcdf9f1d08dfe1b1ad34c00ca93ff3d352a82",
+    "relogin/before.json": "163a011712107d63af1da9f6a22bcb25ca4f5b3de9ef650989e2b36d52087884",
+    "relogin/after.json": "9e57ea5b0a641e8eeda202ccf419ba81e7a068efa25b6a6fa06988c2d75d4b47",
+    "relogin/client.log": "c441633c47019adc49f1e07c1c6b3c060c3fac9a568a2d78ab0b240b8ee902a3",
+    "relogin/server.log": "b59bfbd4cb2476d66742898a6bde323161e9ad6431ab8bee1f7f634191161079"
+  }
+}

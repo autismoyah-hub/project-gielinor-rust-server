@@ -1,0 +1,41 @@
+{
+  "implementation_id": "OR-MIG-0126",
+  "tested_sha": "bd1294ab9e0ff850155b024364dc3a3a98a37bed",
+  "status": "PASS",
+  "level": "V1",
+  "cases": 2238,
+  "case_groups": {
+    "world_positive_priority_member_loss": 336,
+    "guards_legacy": 126,
+    "kernel_invalid_configuration": 138,
+    "live_guard_equipment_life": 396,
+    "ordinary_regression_at_exact126": 972,
+    "unchanged_stock_correction": 36,
+    "late_context_catalog_uncaptured_delay": 162,
+    "yield_levelup_capacity_zero_stock": 66,
+    "membership_transition_ladders_three_requests_each": 6
+  },
+  "scope": "All six altars: full28special essence, mixed priority and separate ordinary second action; exact1.5 aggregatefineXP at1/1.25/5personal rates without extra rune yield; F2P no ordinary fallback and live membership transitions; legacy API refusal; captured material/metadata/slot/vars/count changes; live location/config/movement/modal/life/guard changes; ordinary regression; existing output metadata/duplicate/zero/capacity strict credit, invalid rate/catalog/configuration and no RNG. Whole physical bag/gear/Stats retained on refusal.",
+  "preserved_harness_correction": "Original boundaries suite passed48yield/actual-levelup cases and first2capacity controls, then failed the incorrect QA assertion that restore_slot rejects count0. Public restore permits zero. Distinct tail runs only remaining10capacity cases and6actual zero-stock World/kernel refusals; no completed48/2case replay. Original raw FAIL remains unchanged.",
+  "limitations": [
+    "Public API restored-state fixtures establish V1 only; acquisition/native gameplay/boost activation/persistence/reference levels require separate evidence.",
+    "Constructed current104 tests the bounded current-level predicate, not a real boost activation.",
+    "Six membership transition ladders execute18explicit requests; counted as6ladders, not18additional independent cases."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/daeyalt-world-partial.json": "28586583651e989574fd6e11b8e43122ae238f6d71688df290c102877c1e0fe2",
+    "docs/openrune/verification/independent/daeyalt-guards-partial.json": "9abfbe26ba5a1f2e4583e04a021a43499800de1de1b90cf1b86e1f2c1ba12962",
+    "docs/openrune/verification/independent/daeyalt-kernel-partial.json": "b423824b9eec57d42e500a670945a5fb3a745c908f9fb1ecac62b35e1d213307",
+    "docs/openrune/verification/independent/daeyalt-live-and-regression-partial.json": "d3072a01850f58f0b2db86c8076085c455ef132ec1230b2d1fe1cd035490859e",
+    "docs/openrune/verification/independent/rune-altars-stock-correction-126.json": "023cb0f4df1a0ff0d37423157d3bc98f94335427e4854bfbb322bb39bab353cb",
+    "docs/openrune/verification/independent/integration-external-daeyalt-context-bd1294ab9e0ff850155b024364dc3a3a98a37bed/manifest.json": "e76a8d93a06bc5fbf698eb1b200def04b74b44c8207e47dfc2316b9b20213d06",
+    "docs/openrune/verification/independent/integration-external-daeyalt-context-bd1294ab9e0ff850155b024364dc3a3a98a37bed/run-1.log": "c21c0a42a7e43e6f70b25db8bda23be830dce1513bdbee87d877d0f083fb742d",
+    "docs/openrune/verification/independent/integration-external-daeyalt-boundaries-tail-bd1294ab9e0ff850155b024364dc3a3a98a37bed/manifest.json": "a2db6467923a4b6bd59b4b97eb426c958042cde54b5ec0d549ba7078ab8157d9",
+    "docs/openrune/verification/independent/integration-external-daeyalt-boundaries-tail-bd1294ab9e0ff850155b024364dc3a3a98a37bed/run-1.log": "2c51ebdb4cc97d47733d4407c0d70ee2d0c7eb4534eab38fbe307e85e7a8316f",
+    "docs/openrune/verification/independent/integration-external-daeyalt-member-transition-bd1294ab9e0ff850155b024364dc3a3a98a37bed/manifest.json": "0b1c24c586bbfb5a3a44380bd8eda227752be8197c9ce8af19f151b2acda1f44",
+    "docs/openrune/verification/independent/integration-external-daeyalt-member-transition-bd1294ab9e0ff850155b024364dc3a3a98a37bed/run-1.log": "3fca6804cc8301b833cedb7776c77a3145aa375d3122969158d356846ad91b3b",
+    "docs/openrune/verification/independent/integration-external-daeyalt-boundaries-bd1294ab9e0ff850155b024364dc3a3a98a37bed/manifest.json": "1abb9b3fbc29c450cc154127de69f927a0f1dc76b8f2725593318875a694b661",
+    "docs/openrune/verification/independent/integration-external-daeyalt-boundaries-bd1294ab9e0ff850155b024364dc3a3a98a37bed/run-1.log": "b963cdd548051d80a8234ff0f19af9ef07bda7bd1c7fbcb87431d8ee9c1ee25d",
+    "docs/openrune/verification/independent/integration-external-daeyalt-boundaries-bd1294ab9e0ff850155b024364dc3a3a98a37bed/harness/boundaries.rs": "7c112e867bfd8f740b818accc439befc88736f9cb0b1391897105d5818f9664a"
+  }
+}

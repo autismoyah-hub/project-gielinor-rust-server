@@ -1,0 +1,29 @@
+{
+  "implementation_id": "OR-MIG-0126",
+  "tested_sha": "bd1294ab9e0ff850155b024364dc3a3a98a37bed",
+  "status": "PASS_SCOPED",
+  "feature": "rune-mind-daeyalt-logout-after-reach",
+  "persisted_outcome": "ONE_ATOMIC_BATCH_AT_DISCONNECT_BOUNDARY",
+  "scope": "Native transport disconnect after observed reached sequence791; whole persisted outcome classified without assuming race timing. Exact whole bag/gear/Stats/fineXP and position independently checked against SQL and decoded native reconnect after process restart.",
+  "limitations": [
+    "Inside-altar disposable fixture does not establish essence acquisition or altar entry.",
+    "No during-SQL-commit injection, original executable/render/audio parity or native125rate claim. Character comparison covers position/plane/energy; runtime login varps and logout timestamps legitimately change.",
+    "Native transport disconnect may race one server tick; only the observed atomic result is claimed. No visible Logout-button observation or proof of cancellation before completion."
+  ],
+  "evidence_sha256": {
+    "initial-state.json": "e6a135fc2284fad98d61ffa74a3690603a9dd4f3992750c87d355fee63b91812",
+    "build.json": "ae08bd2e5e8423918d5c2c92370eb08339df9d69f5456ea5a682b9322f16e704",
+    "frozen-observer/build.json": "b315495a6a74266539f5d85bf3e1d5f1e1a968961a6f06dd444695b5a57cf39c",
+    "frozen-observer/pg_observer.rs": "d60a63e06ef5b763c9bf4784cec638d46f4719b063e42454fca70765afc7bc25",
+    "produce/manifest.json": "7018ebdcaede5cbfa3ccc74db717ca56aca021c4d49af515d0d92fe6a600de7a",
+    "produce/before.json": "e6a135fc2284fad98d61ffa74a3690603a9dd4f3992750c87d355fee63b91812",
+    "produce/after.json": "96b8a6f0228d3cad962bf158bd3e43b650d0fb12ddadfa335e79e0285c423d07",
+    "produce/client.log": "674a004a4eb1f505674bd55662981e95fd27d28400f926ab274e16c805bfe9e0",
+    "produce/server.log": "70997f42c6eec9ad21d86cf2ab622a465a2bbef7299c8cf2bfde426cc073f610",
+    "relogin/manifest.json": "4eaa8053b8f1b1aab60276ad4bc319dc0d877bb83efb452290b9dd3f4a1b8429",
+    "relogin/before.json": "96b8a6f0228d3cad962bf158bd3e43b650d0fb12ddadfa335e79e0285c423d07",
+    "relogin/after.json": "3ea1fe409113e3ec17de44acd1a65d4b9c039889f178dbe034ae809d15bb90e2",
+    "relogin/client.log": "57fa9ebddffea643f66e70785cf8d79e57716d9b54fbc30c7c3bc6e52d17e7e1",
+    "relogin/server.log": "8b1de44488259c4551222792f7c010ec894a7bc084f37f1460e15e7489ef7f83"
+  }
+}

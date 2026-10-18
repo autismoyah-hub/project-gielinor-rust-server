@@ -1,0 +1,18 @@
+{
+  "implementation_id": "OR-MIG-0126",
+  "tested_sha": "bd1294ab9e0ff850155b024364dc3a3a98a37bed",
+  "status": "PASS",
+  "level": "V0",
+  "scope": "Fresh exact126 target-cache bindings establish member24704 ordinary nonstackable unblocked essence and all six real Craft-rune Op1 altar definitions/placements/effects, with359 malformed binding refusals. Exact pristine server compiles and starts; actual native member Daeyalt then ordinary second-click transactions and actual nonmember refusals reach registered dispatch. Public liveMember preflight/completion and legacy API authority refusals pass. All972ordinary Rune/Pure/mixed regression cases execute freshly at126; no125PASS inheritance.",
+  "limitations": [
+    "Original native125rate expectation failed because actual pinned login policy forces500; independently assessed actual500native progress and blocked125variant are retained separately.",
+    "V0does not establish all native/effect/persistence/reference obligations or essence acquisition."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/daeyalt-bindings-partial.json": "098b8bb9c69606b23045cda4d01c707f86a3641ac557cc6963a21f419fd43eed",
+    "docs/openrune/verification/independent/daeyalt-world-v1-complete.json": "a1c7eee0775c86c4812d09279aecaf8d1b4b797133f6581dc43a4afa8e40db68",
+    "docs/openrune/verification/independent/deep-rune-mind-daeyalt/native-001/build.json": "ae08bd2e5e8423918d5c2c92370eb08339df9d69f5456ea5a682b9322f16e704",
+    "docs/openrune/verification/independent/deep-rune-mind-daeyalt/native-001/independent-assessment.json": "8ba59bcbb5b5e8375ea010252474ec6426404e32c3c394ddf895ce53c579935a",
+    "docs/openrune/verification/independent/deep-rune-mind-daeyalt-f2p/native-001/independent-assessment.json": "b5ab68570197654f26d140d995d285f9a199b328224f6c15f9646d2f54281c56"
+  }
+}

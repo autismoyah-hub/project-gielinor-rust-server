@@ -1,0 +1,28 @@
+{
+  "implementation_id": "OR-MIG-0125",
+  "tested_sha": "a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d",
+  "status": "HARNESS_EXPECTATION_FAILURE",
+  "raw_status": "FAIL",
+  "scope": "Actual scene Craft-rune73 then nativeActionClose95 are logged before any local791barrier.224Mindrunes/7700fineXP commit and acknowledgedSQLsave; raw driver asserts old28essence and exits101. No second planned action sent. Do not call this a gameplay defect or cancellation PASS.",
+  "diagnosis": "PinnedWorld.close_dialogs clears existingweakqueues butdoesnotclear pendinglocation_interaction. request_location stores interaction and beginsreachedprocessing onlaterWorldphase.24new pairedWorldcontrols all6/memberF2P reproduce allowedcredit whenCloseprecedesreachedcallback and cancellationwhenClosefollowsactiveweakcreation. Nativeprobedidnotestablishactiveweak beforeClose;791receivedonlyafterCloseoutboundsend. This is consistent with pre-reachordering,not proof of server receive timing.",
+  "next_test": "Newfresh native close-after-reach variant waits for actual localplayer791whileoriginal28essence/XPintact before invokingClose. A missedoneclockwindow mustbequalified as harnessprecondition failure. No original campaign reset/reseed.",
+  "limitations": [
+    "ClientActionCloseprogrammaticentrypoint,no visibleClosebutton/keyboardbinding or actualdialogwasobserved.",
+    "Only acknowledgedSQLsave observed here; no native reconnect for this failedprobe. No currentHEAD/sourceexecutable comparison or externalissue."
+  ],
+  "target_source_hashes": {
+    "crates/world/src/simulation.rs": "69ec2ae432ccf3f47f82792c3f707a78ffa61ae189d7d4f1386a0142d77d472f",
+    "crates/world/src/simulation/door_actions.rs": "dfb69004ff11ccbe98d5bcee0111181794d95e56adf285efc53439d1d3dd62b1",
+    "crates/server/src/runtime/autocast_picker.rs": "3f2311986629b08fdb4ee56986acf15e9a520931bd0ccefb828c6cff50d39865"
+  },
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/deep-rune-mind-close/native-001/initial-state.json": "2b1b25eb38697f2a601c5821512a408b80169532b6fdfa965a82070932a3e6fc",
+    "docs/openrune/verification/independent/deep-rune-mind-close/native-001/build.json": "d85486ac0da8af5ef1a10c98c3fb773991220e7ecf74ff0743631cc4e47376f8",
+    "docs/openrune/verification/independent/deep-rune-mind-close/native-001/produce/client.log": "191bcbcfa247712664be6fd435c6fc2a61a13c51697ef8388f38a500b4d103c4",
+    "docs/openrune/verification/independent/deep-rune-mind-close/native-001/produce/manifest.json": "f27709d03e9061b6ad13bca21486c58a114b68a51243f50585808a2acf4c697e",
+    "docs/openrune/verification/independent/deep-rune-mind-close/native-001/produce/before.json": "2b1b25eb38697f2a601c5821512a408b80169532b6fdfa965a82070932a3e6fc",
+    "docs/openrune/verification/independent/deep-rune-mind-close/native-001/produce/after.json": "9ac80afb8313442a1776514bc3a7479d06602b7df47fd13efa25da890ce800b4",
+    "docs/openrune/verification/independent/deep-rune-mind-close/native-001/frozen-observer/pg_observer.rs": "75f3fb25c789caa9fbfb64d7359f302f87041f0b0998baf8255d65c8cddf754e",
+    "docs/openrune/verification/independent/integration-external-rune-close-ordering-a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d/manifest.json": "2376b59b459b48151645322a49ad358f566625e4b5f68cda467f7f5432338e0b"
+  }
+}

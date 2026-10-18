@@ -1,0 +1,18 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\7d2133f23e00ad852df8726ead67493e83c901b4\external-harness-7072159800)
+warning: unused imports: `Template` and `WorldEvent`
+ --> tests\expiry.rs:2:67
+  |
+2 | use gielinor_world::{simulation::{World,PlayerData,ActorId,Action,WorldEvent},worn_stat_boost::Rule,inventory::{Item,Template},stats:...
+  |                                                                   ^^^^^^^^^^                                         ^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `proving-ground-energy` (test "expiry") generated 1 warning (run `cargo fix --test "expiry" -p proving-ground-energy` to apply 1 suggestion)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 9.93s
+     Running tests\expiry.rs (C:\Projects\OSRSRSPS\agent7-verification\work\7d2133f23e00ad852df8726ead67493e83c901b4\target\debug\deps\expiry-7e982c4e13a8eff3.exe)
+
+running 1 test
+PG_CAPE_EXPIRY4 bothcapes PlayerMain99/observedclock100 expiry,repeatat90doesnotextend;actualreactivationandnextPlayerMain199/observed200expiry;zeroXPitemsRNG PASS
+test both_capes_use_shared_login_timer_and_reactivation_does_not_refresh_decay ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 12.73s

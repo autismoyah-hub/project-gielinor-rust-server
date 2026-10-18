@@ -1,0 +1,53 @@
+{
+  "implementation_id": "OR-MIG-0126",
+  "tested_sha": "bd1294ab9e0ff850155b024364dc3a3a98a37bed",
+  "status": "PASS_SCOPED",
+  "effective_native_rate": 500,
+  "rate125_native_variant": {
+    "status": "BLOCKED",
+    "evidence": "rate125-blocker.json",
+    "reason": "Pinned unconditional FloorOne login rewrites125to500;no native125acceptance or server/policy substitution."
+  },
+  "raw_first_status": "FAIL",
+  "first_failure_scope": "Controllerexpected125andtimedout;independent raw73/22/18/46andSQLestablish only actual500first batch. Printed125wasintendedfixturemetadata,not observed effective rate.",
+  "actions": 3,
+  "runes": 224,
+  "fine_xp_awards": [
+    2887,
+    5775
+  ],
+  "inventory_change_ticks": [
+    [
+      77
+    ],
+    [
+      84
+    ]
+  ],
+  "scope": "At exact126SHA,actualnativeMindCraft-rune sends:7Daeyaltfirst->56runes/+2887fineXP retaining21ordinary. Acknowledgedfirstsave and privateSQLsnapshot preserved. Actual sameaccount/database processrestart loads56runes/exactfraction;continuationconsumesonlyremaining21ordinary->168more/+5775fineXP,thirdemptydeliveredclickaddsnone. No seed/first-actionreplay. Final acknowledgedsave/restartednative raw22/46preserve224runes/130352973fineXP(.3),wholegear/allStats.791/186effects independently observed inboth producingphases.",
+  "limitations": [
+    "Native125ratevariantremainsBLOCKED;only World/API125coverage exists.500isexplicitnewscopeunder same pinnedserver,not a replacement acceptance.",
+    "FirstrawFAILretained;whole originaldriver completion isnotclaimed. Same-account tail uses a separately frozen observer and preserves the private precontinuationSQLite snapshot.",
+    "Insidealtar acquiredinventoryfixture,nopouch/acquisition/shard/bank/ruinsaccess proof. Other5specialessencealtars/F2Prefusals/nativeinterruptions/crash/originalexecutable/audio/renderparity remain open."
+  ],
+  "evidence_sha256": {
+    "initial-state.json": "5cf5976b9abdca83a7e934900572f12bfce2129c2b46a0ad7862578c2ece741c",
+    "build.json": "ae08bd2e5e8423918d5c2c92370eb08339df9d69f5456ea5a682b9322f16e704",
+    "produce/client.log": "b6dac63d884f23a9c5ce08af2976c8c97dadda2bb9f88c235a5fd4fd330392d9",
+    "produce/manifest.json": "0699e961be048a6ea31eaa19d2a3ec1a987749097d660f964e6a53cd3cc91ddd",
+    "produce/after.json": "028eee11dda417a93f1280a8fc32883e91d021944fe232fff0ad9ec62f9ddd55",
+    "rate125-blocker.json": "15f2ab52a00166e11af44159a1f113cad3a62e1f80466e904c098a331cc4e060",
+    "frozen-observer/pg_observer.rs": "9939cc2f1f2e70930765f020edc9900e5eeb3581811f7a8c09c86a22f0d02d68",
+    "frozen-observer/build.json": "28e395ed0dc170872b9106a28726de725e8564a034aa08a1900e587b3b86b9d3",
+    "continuation-001/continuation-source.json": "740aa9ef4199d47d3d0e14e1fe4bac34a53e2b2a573f9babd45667ccb57be474",
+    "continuation-001/initial-state.json": "028eee11dda417a93f1280a8fc32883e91d021944fe232fff0ad9ec62f9ddd55",
+    "continuation-001/produce/client.log": "ca27e134d615c3ba1c9d4bd6273bf206815838f46d925b6f2fef30dd0f897bd8",
+    "continuation-001/produce/manifest.json": "1aaf0ee93c4a81a522964ac95c04b8ce2965a45e24af952ac7bcc038c90627be",
+    "continuation-001/produce/after.json": "0dfbaf16f1fd4ca8d9b74989c06bd1548cdbbf45625222e73744a8812eebf1fc",
+    "continuation-001/relogin/client.log": "1505a4ddda6c3d5951f9fc32e77f50f03d37b85cd354023a1523230666607a28",
+    "continuation-001/relogin/manifest.json": "7670fb4c90fb0141dc5439b3bf3bdc65ffdfeb30d1ebe312a6f3dddef7cce4b5",
+    "continuation-001/relogin/after.json": "fa4a2122c8bf821de5f95889273c0e42327f8ae6caf6f09a8bc5838fdd0c6aff",
+    "continuation-001/frozen-observer/pg_observer.rs": "7f18f6b722ff5e9a1709a2b0d023747e33511352c624985437a757a949600cef",
+    "continuation-001/frozen-observer/build.json": "afc2fc3be7c1bb6fa8c76a98149a8b35ebb57a4daef19b63d485474f6addc2ce"
+  }
+}

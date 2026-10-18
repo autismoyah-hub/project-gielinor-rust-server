@@ -1,0 +1,30 @@
+{
+  "implementation_id": "OR-MIG-0130",
+  "tested_sha": "7d2133f23e00ad852df8726ead67493e83c901b4",
+  "status": "PASS",
+  "level": "V1",
+  "cases": 164,
+  "groups": {
+    "both_cape_level_member_rate_combinations_three_requests_each": 96,
+    "late_context_shape_rule_guards": 48,
+    "public_shared_timer_expiry_reactivation": 4,
+    "actual_pending_runecraft_admission_controls": 12,
+    "actual_queued_death_original_or_restored_visibleHP": 4
+  },
+  "scope": "Both Crafting cape variants through public World action: base99/current0-1-50-98-99-100-104-120; member/F2P and rates1/1.25/5; repeated drained+1 capped100 without lowering higher levels. WholebaggearStats/fineXP unchanged except permitted currentCrafting. Late member/base/claimedslot/currentidentity/count/vars/catalog/dummy/stack/templates/modal/delay/HP/pendinglogout and invalid registered rule refusals. Actual queued death refuses even after visibleHP is restored. Shared timer expiry and non-extension on repeat; valid action cancels actual pendingRuneCraft only after admission, refused action preserves completion. Zero RNG throughout.",
+  "qualification": [
+    "Delay guard tested while delay remains active; no permanent cancellation claimed.",
+    "All publicAPI fixtures; native menus/equip/expiry/persistence/reference remain separate levels.",
+    "Crafting12 has no ChangeStat tutorial binding at this SHA, so notification queue-capacity refusal is not an applicable reachable boundary for these actual cape rules. No private trigger queue injection or future-rule acceptance claimed.",
+    "Four expiry cases retain first raw QA clock-convention failure and corrected exact-SHA rerun via the linked assessment."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/integration-external-crafting-cape-world-7d2133f23e00ad852df8726ead67493e83c901b4/manifest.json": "67245c259b37b04cbf98d6e1f9e9ff41810b83767b616fb9a12be0b98dc9904f",
+    "docs/openrune/verification/independent/integration-external-crafting-cape-world-7d2133f23e00ad852df8726ead67493e83c901b4/run-1.log": "1ca895454e7b388f424b49674b5be96bedd1b407f85f5c2569c839b8ede06671",
+    "docs/openrune/verification/independent/integration-external-crafting-cape-interrupt-7d2133f23e00ad852df8726ead67493e83c901b4/manifest.json": "e632768e419260b9fc33a01973d3140d4b01be7bd4fc7f3b205909de5259693c",
+    "docs/openrune/verification/independent/integration-external-crafting-cape-interrupt-7d2133f23e00ad852df8726ead67493e83c901b4/run-1.log": "86b807522fe3e10e8f06ff756a0d3466e6263659847a9812c823baaf69315319",
+    "docs/openrune/verification/independent/integration-external-crafting-cape-death-7d2133f23e00ad852df8726ead67493e83c901b4/manifest.json": "e0871a6f194ee6ded0f8991a2bb1c187253967c920384247614fbd3427487b8e",
+    "docs/openrune/verification/independent/integration-external-crafting-cape-death-7d2133f23e00ad852df8726ead67493e83c901b4/run-1.log": "1d37011c57e19b206ad9d58a8bf04cdd27060d2c5496e555b7e28abffffc584f",
+    "docs/openrune/verification/independent/crafting-cape-expiry-partial.json": "0126e385b6029303b6a7df29d4d9b9a5e8c0a8267fa7dd9123610f1e08d07fec"
+  }
+}

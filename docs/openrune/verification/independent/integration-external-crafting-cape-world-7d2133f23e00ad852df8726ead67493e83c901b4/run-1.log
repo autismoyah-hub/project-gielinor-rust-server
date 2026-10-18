@@ -1,0 +1,12 @@
+   Compiling gielinor-world v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\7d2133f23e00ad852df8726ead67493e83c901b4\crates\world)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\7d2133f23e00ad852df8726ead67493e83c901b4\external-harness-5137658400)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 59.26s
+     Running tests\cape.rs (C:\Projects\OSRSRSPS\agent7-verification\work\7d2133f23e00ad852df8726ead67493e83c901b4\target\debug\deps\cape-d6d7bf94a13d0d63.exe)
+
+running 2 tests
+PG_CAPE_WORLD48 late member/base/claimedslot/identity/countvars/catalog/modal/delay/HP/config/logout refusal;wholephysicalbaggearStats PASS
+test forty_eight_live_changes_between_submit_and_dispatch_fail_closed ... ok
+PG_CAPE_WORLD96 both variants eight current values liveMember/F2P three rates;three explicit requests each;wholebaggearStats noXP noRNG PASS
+test all_drained_and_overboosted_values_both_capes_live_member_and_personal_rates ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 14.64s

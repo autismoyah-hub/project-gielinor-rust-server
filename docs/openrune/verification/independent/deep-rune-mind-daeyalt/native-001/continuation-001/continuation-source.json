@@ -1,0 +1,19 @@
+{
+  "implementation_id": "OR-MIG-0126",
+  "tested_sha": "bd1294ab9e0ff850155b024364dc3a3a98a37bed",
+  "original_phase": "docs/openrune/verification/independent/deep-rune-mind-daeyalt/native-001/produce",
+  "scope": "Actual same disposable account/database after the first acknowledged native batch. No seed or completed-action replay. Preserve private SQLite snapshot before continuing only21remaining ordinary essence at effective500rate.",
+  "rate125_variant": "BLOCKED: pinned FloorOne login policy unconditionally replaces125with500. Original observer expected125and timed out after successful actual500first batch. No newer server or policy patch substituted.",
+  "private_snapshot": {
+    "path": "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\native-rune-mind-daeyalt\\native-001\\continuation-001\\before-continuation.sqlite",
+    "sha256": "f2e7e82f60f01bd2f00036f3815164a6bba84df54ef932c496f3c43bb0cd79e2"
+  },
+  "original_database_sha256_before_continuation": "c6d9f34bb2e727405e14c60f65ec43a4306a27f21957992e8b417e9335b0669e",
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/deep-rune-mind-daeyalt/native-001/produce/manifest.json": "0699e961be048a6ea31eaa19d2a3ec1a987749097d660f964e6a53cd3cc91ddd",
+    "docs/openrune/verification/independent/deep-rune-mind-daeyalt/native-001/produce/after.json": "028eee11dda417a93f1280a8fc32883e91d021944fe232fff0ad9ec62f9ddd55",
+    "docs/openrune/verification/independent/deep-rune-mind-daeyalt/native-001/produce/client.log": "b6dac63d884f23a9c5ce08af2976c8c97dadda2bb9f88c235a5fd4fd330392d9",
+    "docs/openrune/verification/independent/deep-rune-mind-daeyalt/native-001/build.json": "ae08bd2e5e8423918d5c2c92370eb08339df9d69f5456ea5a682b9322f16e704",
+    "docs/openrune/verification/independent/deep-rune-mind-daeyalt/native-001/frozen-observer/build.json": "28e395ed0dc170872b9106a28726de725e8564a034aa08a1900e587b3b86b9d3"
+  }
+}

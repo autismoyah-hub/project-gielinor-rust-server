@@ -6,7 +6,19 @@ BASE=ROOT.parent/'rust-server/integration/client-baselines/client-239.1-baseline
 OUT=ROOT/'docs/openrune/verification/independent/client-observer-build';OUT.mkdir(parents=True,exist_ok=True)
 def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def save(p,o):p.write_text(json.dumps(o,indent=2)+'\n',encoding='utf-8',newline='\n')
-p=argparse.ArgumentParser();p.add_argument('action',choices=['prepare','build','effects','spots','locations']);a=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('action',choices=['prepare','build','effects','spots','locations','walk']);a=p.parse_args()
+if a.action=='walk':
+    history=OUT/('overlay-history-'+str(time.time_ns()));history.mkdir()
+    shutil.copyfile(OUT/'source-manifest.json',history/'source-manifest.json')
+    private=WORK/'source-history'/history.name;private.mkdir(parents=True)
+    runtime=SOURCE/'src/live_runtime.rs';shutil.copyfile(runtime,private/'live_runtime.rs')
+    text=runtime.read_text(encoding='utf-8');assert text.count('27|47|73|95|115')==1
+    runtime.write_text(text.replace('27|47|73|95|115','27|47|73|95|114|115'),encoding='utf-8',newline='\n')
+    m=json.loads((OUT/'source-manifest.json').read_text(encoding='utf-8'))
+    m['previous_observation_manifest']=(history/'source-manifest.json').relative_to(ROOT).as_posix()
+    m['owned_overlays']['src/live_runtime.rs']+='; log genuine Walk opcode114 at existing send boundary without changing action, payload or gameplay'
+    m['instrumented_runtime_sha256']=digest(runtime);save(OUT/'source-manifest.json',m)
+    print('READ_ONLY_WALK_SEND_OBSERVATION_PREPARED; build required',flush=True);raise SystemExit(0)
 if a.action=='locations':
     # The genuine scene-menu campaign exposed a missing transport observation.
     # Add only location sends to the existing read-only transport log.

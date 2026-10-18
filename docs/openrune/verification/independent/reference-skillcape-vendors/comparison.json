@@ -1,0 +1,102 @@
+{
+  "implementation_id": "OR-MIG-0131",
+  "tested_sha": "35a5f39b72cab3a2655f32ae29bdde54284c9a4b",
+  "status": "PASS_REFERENCE_FACTS",
+  "sources": [
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/npcs/CraftingGuildMasterCrafter.kt",
+      "sha256": "f70a93c9e3026caea05e181f754f7fbd4170dc61fac97694d0d642d575975990",
+      "availability": "protected_local_reference",
+      "revision": "Local archive;upstream commit unavailable;configured241"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingGuildRequirements.kt",
+      "sha256": "02347c4b64021c68416a985e4c5649d4f64ea0ae153644bdad5ade64c78780d5",
+      "availability": "protected_local_reference",
+      "revision": "Local archive;upstream commit unavailable;configured241"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/util/CraftingConstants.kt",
+      "sha256": "393d05fa5a5645b2dd712fcfb8f8814845376846a7594dafe16909422fe2008f",
+      "availability": "protected_local_reference",
+      "revision": "Local archive;upstream commit unavailable;configured241"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/cooking/src/main/kotlin/org/rsmod/content/skills/cooking/CookingGuildHeadChef.kt",
+      "sha256": "84d9a040e83b1a4319c46c75a5ef3386096f136b05c783854872c64f8e330080",
+      "availability": "protected_local_reference",
+      "revision": "Local archive;upstream commit unavailable;configured241"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/cooking/src/main/kotlin/org/rsmod/content/skills/cooking/CookingGuildRequirements.kt",
+      "sha256": "39ec0100b37442b0cbd44cee9a4b020fce0ab8ceb87791a9131d9c55ffa2ad17",
+      "availability": "protected_local_reference",
+      "revision": "Local archive;upstream commit unavailable;configured241"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Crafting cape",
+      "sha256": "028213832f24caa2f774ce2c6b1cf2f8c65715132cc870875b472a5805758713",
+      "availability": "protected_local_reference",
+      "revision": "15232507"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Cooking cape",
+      "sha256": "4e1cd1bb1e63425b7b43604e3664c1fa9a97ce1f1164c5932bb5731f36cbf6a5",
+      "availability": "protected_local_reference",
+      "revision": "15327004"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Crafting hood",
+      "sha256": "8015944f09ef2692cbbb5a45cf2d8a7f3b95de1ec66161ff35d98d91bc9b9f53",
+      "availability": "protected_local_reference",
+      "revision": "15185284"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Cooking hood",
+      "sha256": "58d2147eb72754824c3c35e59b28807773585f8f3b712ada3cd4f5a49e4c2d1a",
+      "availability": "protected_local_reference",
+      "revision": "15185283"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Master Crafter",
+      "sha256": "4cbd604c910ed5649f04f1dbb59e4d932078cb9c86bd6c0926cea3464c0858fb",
+      "availability": "protected_local_reference",
+      "revision": "15318686"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Head chef",
+      "sha256": "e743dcedb9bcdec425ce31a28fb1119edd9d2f7f0c08cd990c76254de9bdb68e",
+      "availability": "protected_local_reference",
+      "revision": "15318610"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Cape of Accomplishment",
+      "sha256": "f7ce09c7e07bfe8dc57dbf5d53807ebb4113b894ed5e96b75f841327f06041b7",
+      "availability": "protected_local_reference",
+      "revision": "15327887"
+    }
+  ],
+  "scope": "Independent read-only comparison of all five donor files and seven exact Wiki snapshots; hashes match. Both donor sellers price99000 and require two pre-debit free slots; grants cape+hood. Crafting commits on quote acceptance before player acknowledgement, Cooking after player Sure page. Crafting prevents sparecape and duplicatehood; Cooking permits paid spare and does not check existinghood. Ownership helpers search held/worn, not bank. Both donor purchase methods grant untrimmed only; Wiki MasterCrafter/HeadChef expressly selects trimmed stock with multiple99s. Wiki specifies member acquisition, base99 rather than temporaryboost, and free losthood replacement.",
+  "adaptations": [
+    "Target member acquisition policy is supported by pinnedWiki; five inspected donor files contain no explicit membership predicate. External/global donor access gates remain unverified. Correct contract observed_in_source wording, which currently says both seller methods require member/base99.",
+    "Wiki-first trimmed new purchase is an intentional change from untrimmed donor additions. Global existingcape autotrim remains outside target scope.",
+    "Target staged atomic complete cape+hood transaction replaces donor sequential credit/refund; original source lore/dialogue/emotes are omitted, shared engine supplies original concise text."
+  ],
+  "unresolved": [
+    "Wiki losthood wording does not establish policy when Cookinghood already owned; donor permits another. Qualify source-preserving choice rather than claiming Wiki parity.",
+    "Actual target cache masks/NPC identities/native choices, transaction/persistence/lifecycle and fullV4 acceptance remain unexecuted."
+  ],
+  "finding": "PG-REF-003;ordinary provenance clarification;no implementation stop or critical dependency blocker"
+}

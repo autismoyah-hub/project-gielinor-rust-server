@@ -1,0 +1,78 @@
+{
+  "tested_integration_sha": "bd1294ab9e0ff850155b024364dc3a3a98a37bed",
+  "suite": "daeyalt-boundaries",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "FAIL",
+  "resource": {
+    "available_ram": 7173369856,
+    "active_compilers": [
+      "\"cargo.exe\",\"8824\",\"RDP-Tcp#0\",\"2\",\"47,132 K\"",
+      "\"cargo.exe\",\"13668\",\"RDP-Tcp#0\",\"2\",\"21,428 K\"",
+      "\"rustc.exe\",\"7340\",\"RDP-Tcp#0\",\"2\",\"68,336 K\""
+    ],
+    "cpu_percent": 27.8,
+    "cpu_samples": [
+      30.859375,
+      26.274509803921564,
+      26.26459143968871
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Existing project memory/commit/paging checks and sampled CPU ceiling; owned Cargo remains j1/two CPUs/BelowNormal",
+    "capacity_policy_sha256": "dc3c6e372de5369ab77c4ebbd7cf21c426d0916581e11f2377480eba79adcdfd",
+    "memory_preflight_exit": 0,
+    "memory_preflight_stdout": "Capacity: 6,827 MiB available, commit 59.6%, pages-in/s 0, disk 3.8 ms.\nCargo concurrency: -j 2\n",
+    "memory_preflight_stderr": "",
+    "disk_free": 5697802240,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "3f4d1a6325b180b32b3836dcf23ed6612e1b6c85",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\bd1294ab9e0ff850155b024364dc3a3a98a37bed\\external-harness-5674984500\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-daeyalt-boundaries-bd1294ab9e0ff850155b024364dc3a3a98a37bed\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\bd1294ab9e0ff850155b024364dc3a3a98a37bed\\external-harness-5674984500\\Cargo.toml",
+        "--",
+        "--nocapture"
+      ],
+      "exit_code": 101,
+      "tests_passed": 1,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-daeyalt-boundaries-bd1294ab9e0ff850155b024364dc3a3a98a37bed\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative daeyalt-boundaries scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-daeyalt-boundaries-bd1294ab9e0ff850155b024364dc3a3a98a37bed\\harness\\boundaries.rs": "7c112e867bfd8f740b818accc439befc88736f9cb0b1391897105d5818f9664a"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\bindings-f25099d2c29e5b42.exe": "49e5853806ca1df25e48636b7389abaab515bdd6a8f50eb54e9ab49f114a2791",
+    "target\\debug\\deps\\boundaries-5b14c1183eb0dd4e.exe": "cb47aa5faf452ea4429bf293cb7340a3d036fc793984723b0aaf156234bbf78b",
+    "target\\debug\\deps\\config-478a88a95696cd64.exe": "2781da1d197216d8bb7c1d2babb09126d95f74ce600dd62ed1626339f1af0320",
+    "target\\debug\\deps\\context-35b6987fe00a9f07.exe": "af1e7fe38eaf038868294c3fefcc14ed29ed1bb709b842c3b728a8cd4a88d0d5",
+    "target\\debug\\deps\\daeyalt-fb7b1f75c3cda59a.exe": "25eca3afd3c7744a4283079de4fa67e9a00a7e2fa7e8e49c83eb74f766968db9",
+    "target\\debug\\deps\\gielinor_server-7abd10c65476b4d7.exe": "369d1e5423c9fc2710db6a30e7ba721110ec30b0cbe2ed39b95acaa56ec527d0",
+    "target\\debug\\deps\\guards-1656c33e2b010a6c.exe": "32b0ebb03e9b7688fb2bdf2f636bae607604e37d7e49f96433c1f2ec1bcb7c64",
+    "target\\debug\\deps\\kernel-600793913b1c374a.exe": "634a53e0d7bc8a20066a53ad926bec3193091200e51d31f06e3e3a354fdcfc1d",
+    "target\\debug\\deps\\live-d444ea2211fdb9bb.exe": "df5da679c0c0459a14baac82de435372a1bcaf472b513da5bec0ae01161bab00",
+    "target\\debug\\deps\\ordinary-e22ee422930b883c.exe": "22dd7555246de193c5b16a68890effa8f94a9c4d662399d505f3f99660418510",
+    "target\\debug\\deps\\stock-3863a700fb727f5b.exe": "0b48564311614efe2d7fbe972d00c0fa5f6dcaaa82c9adfb584c3e2fb98f79bf"
+  }
+}

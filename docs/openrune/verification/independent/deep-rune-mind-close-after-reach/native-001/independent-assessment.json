@@ -1,0 +1,31 @@
+{
+  "implementation_id": "OR-MIG-0125",
+  "tested_sha": "a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d",
+  "status": "PASS_SCOPED",
+  "feature": "rune-mind-close-after-reach",
+  "output": 558,
+  "runes": 224,
+  "fine_xp_award": 7700,
+  "inventory_change_ticks": [
+    74
+  ],
+  "scope": "Actual rendered native altar Craft-rune action; wait for real local-player sequence791 while original28essence/wholeXP remain intact, then native Close95. Independent73/95/73 transport order and whole raw22/18/46 show no cancelled credit across six received clocks; fresh second altar action alone commits224Mindrunes/7700fineXP. Whole gear/Stats/fractionalXP and output survive acknowledged save/actual process restart/independently decoded native reconnect.",
+  "limitations": [
+    "Inside-altar disposable fixture does not establish acquisition/entry/access.",
+    "Other native interruption/late-context scopes remain separate; no during-SQL-commit injection or original executable/audio/render parity. Historical PG-DEF-007 remains.",
+    "Close uses the existing native client Action::Close entry point without an open dialog; no visible Close-button/keyboard-binding observation is claimed. Sequence791 is the actual reached-callback/queued-weak barrier; initial pre-reach probe remains a separate failed QA expectation."
+  ],
+  "evidence_sha256": {
+    "initial-state.json": "2b1b25eb38697f2a601c5821512a408b80169532b6fdfa965a82070932a3e6fc",
+    "build.json": "d85486ac0da8af5ef1a10c98c3fb773991220e7ecf74ff0743631cc4e47376f8",
+    "produce/client.log": "b30bb3e94eaf71cd48108608503683ce4a2e3d930e17bb08ad9724b8a385d7f3",
+    "produce/manifest.json": "14785b5037acdc7485d25aafbe1c89d4d60cd6abf4d3c0fb3ca57ce913246eb4",
+    "produce/after.json": "a0f8225d854062eaf9455d4f17f09ffa197c4f374859550c7f076649e793f27e",
+    "relogin/client.log": "0d1bfdc479ceed56f4369c5441d03885c01318b0451b216cbd68b944063a5a16",
+    "relogin/manifest.json": "d0637cd6017f7f1419e3c277794a0f1452812966e0b8cea957dfa950aac932a4",
+    "relogin/after.json": "6a23af8ec133c0267c108c998a72df90a9a498be89971ef61c0e9a3a87696ab4",
+    "frozen-observer/pg_observer.rs": "7f18f6b722ff5e9a1709a2b0d023747e33511352c624985437a757a949600cef",
+    "frozen-observer/build.json": "afc2fc3be7c1bb6fa8c76a98149a8b35ebb57a4daef19b63d485474f6addc2ce"
+  },
+  "observed_location_wire_sends": 2
+}

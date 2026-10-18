@@ -1,0 +1,18 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\7d2133f23e00ad852df8726ead67493e83c901b4\external-harness-4744757900)
+warning: unused import: `Template`
+ --> tests\death.rs:2:118
+  |
+2 | use gielinor_world::{simulation::{World,PlayerData,ActorId,Action,WorldEvent},worn_stat_boost::Rule,inventory::{Item,Template},stats:...
+  |                                                                                                                      ^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `proving-ground-energy` (test "death") generated 1 warning (run `cargo fix --test "death" -p proving-ground-energy` to apply 1 suggestion)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 11.74s
+     Running tests\death.rs (C:\Projects\OSRSRSPS\agent7-verification\work\7d2133f23e00ad852df8726ead67493e83c901b4\target\debug\deps\death-390f03033d545b1c.exe)
+
+running 1 test
+PG_CAPE_DEATH4 bothvariants actualDeathRequested then originalzeroHP/restored10HP norespawn Boostrefused wholeStatsbaggear noXPnoRNG PASS
+test queued_authoritative_death_blocks_cape_even_after_visible_hp_restore ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.43s

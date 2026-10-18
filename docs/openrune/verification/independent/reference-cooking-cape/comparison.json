@@ -1,0 +1,31 @@
+{
+  "implementation_id": "OR-MIG-0132",
+  "tested_sha": "a2c5ceaae693a73c64afa8b4558e05b12bb6e100",
+  "status": "PASS_REFERENCE_FACTS",
+  "sources": [
+    {
+      "kind": "openrune",
+      "reference": "content/skills/cooking/src/main/kotlin/org/rsmod/content/skills/cooking/CookingEvents.kt",
+      "sha256": "344c1c7acc7f7adc4fa9c593926f8c1e2722ed92b7169c6883889b5fceb1ba8c",
+      "availability": "protected_local_reference",
+      "revision": "Local archive; upstream commit unavailable; configured241"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Cooking cape",
+      "sha256": "4e1cd1bb1e63425b7b43604e3664c1fa9a97ce1f1164c5932bb5731f36cbf6a5",
+      "availability": "protected_local_reference",
+      "revision": "15327004"
+    }
+  ],
+  "scope": "Exact protected CookingEvents source and pinnedCookingcape Wiki hashes independently match. Donor hasCookingCape checks either worn cape then immediately returns notburned before normal chance, inside cooking action/queue requirement checks. PinnedWiki says equippedcape prevents burning except rawoomlie, which cannot cook successfully.",
+  "adaptations": [
+    "Explicit rawoomlie exclusion followsWiki; donor unconditionalcape short-circuit contains no rawoomlie exception. Target does not register its recipe, so exclusion guard is not implementedoomlie cooking.",
+    "Existing target complete transaction staging before noRNG success is a conservative adaptation from donor sequential input deletion and output credit.",
+    "Target liveMember permission is consistent with the pinnedWiki member-only item flag, a qualified policy inference. Inspected donor hasCookingCape body has no explicit member predicate; uninspected global donor membership gates remain unresolved."
+  ],
+  "limitations": [
+    "Reference facts only. No actual132targetcache/World/native/binary/persistence/fullV4acceptance.",
+    "No source generatedCookingFoodsRow metadata parity, gauntlets/specialsurfaces/quests/Maxcape/automaticboost claim."
+  ]
+}

@@ -1,0 +1,22 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\bd1294ab9e0ff850155b024364dc3a3a98a37bed\external-harness-1830558800)
+warning: unused import: `WorldEvent`
+ --> tests\context.rs:2:67
+  |
+2 | use gielinor_world::{simulation::{World,PlayerData,ActorId,Action,WorldEvent},runecrafting::{Config,Recipe},locations::Location,loc_c...
+  |                                                                   ^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `proving-ground-energy` (test "context") generated 1 warning (run `cargo fix --test "context" -p proving-ground-energy` to apply 1 suggestion)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 7.19s
+     Running tests\context.rs (C:\Projects\OSRSRSPS\agent7-verification\work\bd1294ab9e0ff850155b024364dc3a3a98a37bed\target\debug\deps\context-35b6987fe00a9f07.exe)
+
+running 3 tests
+PG_DAEYALT_CONTEXT12 uncapturedadditionalPureorDaeyalt remains nextclick PASS
+test twelve_new_uncaptured_essences_are_preserved ... ok
+PG_DAEYALT_CONTEXT6 delayparks thenresumes once noRNG exactreward PASS
+test six_live_delay_parks_then_completes_once_without_cancellation ... ok
+PG_DAEYALT_CONTEXT144 latecaptured/config/revision/close/move/logout/modal/catalog/templates/inventoryshape refusals;physicalwholeimages exclude legitimate save dirtyflagclear PASS
+test one_hundred_forty_four_late_world_context_and_catalog_refusals ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 13.04s

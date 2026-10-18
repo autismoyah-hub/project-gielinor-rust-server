@@ -506,14 +506,117 @@ fn food(c:&mut ClientState,l:&mut Connection)->R<()> {
     }
     println!("PG_CASE_PASS food six actual selected-slot native actions; HP correctness requires received-packet/server-trace assessment, not a relaxed HP oracle");Ok(())
 }
-fn rune_altar(c:&mut ClientState,l:&mut Connection,kind:&str)->R<()>{let f2p=kind.ends_with("-f2p");assert_eq!(c.data.members,!f2p);let crash=kind=="rune-mind-crash";let close=kind=="rune-mind-close";let key=kind.trim_start_matches("rune-").trim_end_matches("-f2p").trim_end_matches("-crash").trim_end_matches("-close");let(id,output,interval,xp_tenths,tile)=match key{"air"=>(34760u16,556,11,50,[2843u16,4833]),"mind"=>(34761,558,14,55,[2785,4840]),"water"=>(34762,555,19,60,[2715,4835]),"earth"=>(34763,557,26,65,[2657,4840]),"fire"=>(34764,554,35,70,[2584,4837]),"body"=>(34765,559,46,75,[2522,4839]),_=>return Err("unknown ordinary altar".into())};tab(c,"Inventory")?;ticks(c,l,3)?;let initial=(0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>();assert_eq!(initial,(0..28).map(|s|(if s%2==0{1436}else{7936},1)).collect::<Vec<_>>());let gear=(0..14).map(|s|{let i=c.inventories.item(94,s);(i.id,i.count)}).collect::<Vec<_>>();let xp=c.data.experience;assert_eq!(c.data.base[20],99);assert_eq!(c.data.boosted[20],99);assert_eq!(xp[20],13034431);let fine=130344311+28*xp_tenths*5;let produced=28*(99/interval+1);let mut expected=vec![(-1,0);28];expected[0]=(output,produced);
+fn rune_altar(c:&mut ClientState,l:&mut Connection,kind:&str)->R<()>{let f2p=kind.ends_with("-f2p");assert_eq!(c.data.members,!f2p);let crash=kind=="rune-mind-crash";let after_reach=kind=="rune-mind-close-after-reach";let close=kind=="rune-mind-close" || after_reach;let key=kind.trim_start_matches("rune-").trim_end_matches("-f2p").trim_end_matches("-crash").trim_end_matches("-close").trim_end_matches("-close-after-reach");let(id,output,interval,xp_tenths,tile)=match key{"air"=>(34760u16,556,11,50,[2843u16,4833]),"mind"=>(34761,558,14,55,[2785,4840]),"water"=>(34762,555,19,60,[2715,4835]),"earth"=>(34763,557,26,65,[2657,4840]),"fire"=>(34764,554,35,70,[2584,4837]),"body"=>(34765,559,46,75,[2522,4839]),_=>return Err("unknown ordinary altar".into())};tab(c,"Inventory")?;ticks(c,l,3)?;let initial=(0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>();assert_eq!(initial,(0..28).map(|s|(if s%2==0{1436}else{7936},1)).collect::<Vec<_>>());let gear=(0..14).map(|s|{let i=c.inventories.item(94,s);(i.id,i.count)}).collect::<Vec<_>>();let xp=c.data.experience;assert_eq!(c.data.base[20],99);assert_eq!(c.data.boosted[20],99);assert_eq!(xp[20],13034431);let fine=130344311+28*xp_tenths*5;let produced=28*(99/interval+1);let mut expected=vec![(-1,0);28];expected[0]=(output,produced);
 println!("PG_RUNE_ACCOUNT kind={kind} member={} world_flags={} altar={id} tile={tile:?} rate=500",c.data.members,c.data.world_flags);
 for action in 0..2{ready(c,l)?;for _ in 0..4{c.tick_actor_sequences()?;if let Some((target,plane))=c.camera_focus(){if let Some((scene,_))=&l.world{c.camera.tick_follow(scene,target,plane,c.preferences.camera_follow_height);}}}let size=c.canvas;let _frame=l.paint(c,size[0] as usize,size[1] as usize)?;let(point,tag)=l.pick_where(|tag|tag>>32==u64::from(id)+1).ok_or("actual mapped altar has no visible native scene pick")?;let entry=l.menu_entries(c,point)?.into_iter().find(|e|e.option=="Craft-rune" && matches!(e.action,Action::Object{id:obj,tile:t,operation:1,..}if obj==id && t==tile)).ok_or("actual native Craft-rune scene menu absent")?;println!("PG_RUNE_MENU action={action} label={:?} target={:?} point={point:?} tag={tag} native_action={:?}",entry.option,entry.target,entry.action);let _packet=sent_packet(c,entry.action,"ordinary actual scene Craft-rune menu")?;
-if close && action==0{dispatch(c,Action::Close,"native Close after actual altar menu before first network poll")?;ticks(c,l,6)?;assert_eq!((0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>(),initial);assert_eq!((0..14).map(|s|{let i=c.inventories.item(94,s);(i.id,i.count)}).collect::<Vec<_>>(),gear);assert_eq!(c.data.experience,xp);println!("PG_RUNE_CANCELLED genuine scene Craft-rune/native Close before first flush sixclock no inventory gear XP change tick={}",c.server_tick);continue;}
+if close && action==0{if after_reach{pump(c,l,15,|c,_|c.player_state.as_ref().and_then(|s|s.players[s.local as usize].as_ref()).is_some_and(|p|p.sequence.id==791))?;assert_eq!((0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>(),initial,"missed oneclock cancellation window before native Close;no refusal verdict");assert_eq!(c.data.experience,xp);println!("PG_RUNE_PENDING_SEQUENCE local791 observed original28essence andXP intact tick={}",c.server_tick);}dispatch(c,Action::Close,"native Close after actual altar menu before first network poll")?;ticks(c,l,6)?;assert_eq!((0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>(),initial);assert_eq!((0..14).map(|s|{let i=c.inventories.item(94,s);(i.id,i.count)}).collect::<Vec<_>>(),gear);assert_eq!(c.data.experience,xp);println!("PG_RUNE_CANCELLED native Close sixclock no inventory gear XP change after_reach={after_reach} tick={}",c.server_tick);continue;}
 
 if action==0 || close{pump(c,l,30,|c,_|c.inventories.total(93,output)==produced && c.data.experience[20]==fine/10)?;}else{ticks(c,l,5)?;}ticks(c,l,3)?;assert_eq!((0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>(),expected);assert_eq!((0..14).map(|s|{let i=c.inventories.item(94,s);(i.id,i.count)}).collect::<Vec<_>>(),gear);let mut expected_xp=xp;expected_xp[20]=fine/10;assert_eq!(c.data.experience,expected_xp);println!("PG_RUNE_RESULT action={action} altar={id} output={output} count={produced} fine={fine} tick={}",c.server_tick);
 if crash{println!("PG_CRASH_READY one complete unsaved ordinary Rune altar batch observed;only owned disposable local game server;no logout/save requested");let start=Instant::now();loop{match l.poll(c){Err(e)=>{println!("PG_EXPECTED_CRASH_DISCONNECT {e}");return Ok(());},Ok(())=>{if l.logged_out().is_some(){println!("PG_EXPECTED_CRASH_DISCONNECT native transport closed");return Ok(());}}}if start.elapsed()>Duration::from_secs(30){return Err("owned Rune recovery termination absent".into());}std::thread::sleep(Duration::from_millis(10));}}}
 if close{println!("PG_CASE_PASS native Rune Close cancelled before first award then fresh actual altar click succeeds wholebag gear Stats");}else{println!("PG_CASE_PASS native ordinary altar {kind} actual rendered scene menu28mixedessence onebatch noemptyrepeat wholebag gear Stats");}Ok(())}
+fn daeyalt_other_altars(c:&mut ClientState,l:&mut Connection,kind:&str)->R<()> {
+    let (id,output,interval,award,x,z)=match kind {
+        "rune-air-daeyalt"=>(34760,556,11,50,2843,4833),"rune-water-daeyalt"=>(34762,555,19,60,2715,4835),
+        "rune-earth-daeyalt"=>(34763,557,26,65,2657,4840),"rune-fire-daeyalt"=>(34764,554,35,70,2584,4837),"rune-body-daeyalt"=>(34765,559,46,75,2522,4839),_=>return Err("unsupported special-essence altar".into())};
+    assert!(c.data.members);tab(c,"Inventory")?;ticks(c,l,3)?;
+    let image=|c:&ClientState,inv,size|(0..size).map(|s|{let i=c.inventories.item(inv,s);(i.id,i.count)}).collect::<Vec<_>>();
+    let initial=(0..28).map(|s|(if s<7{24704}else if s%2==0{1436}else{7936},1)).collect::<Vec<_>>();assert_eq!(image(c,93,28),initial);
+    let xp=c.data.experience;let gear=image(c,94,14);assert_eq!(c.data.base[20],99);assert_eq!(c.data.boosted[20],99);assert_eq!(xp[20],13034431);
+    let per=99/interval+1;let fine1=130344311+7*award*150*500/10000;let fine2=fine1+21*award*5;
+    let mut first=initial.clone();for slot in 0..7{first[slot]=(-1,0);}first[0]=(output,7*per);let mut final_bag=vec![(-1,0);28];final_bag[0]=(output,28*per);
+    println!("PG_DAE_ALTAR_ACCOUNT kind={kind} member={} expected_effective_rate500 altar={id} output={output} initial_position={:?}",c.data.members,c.data.position);
+    for action in 0..3 {
+        ready(c,l)?;for _ in 0..4{c.tick_actor_sequences()?;if let Some((target,plane))=c.camera_focus(){if let Some((scene,_))=&l.world{c.camera.tick_follow(scene,target,plane,c.preferences.camera_follow_height);}}}
+        let size=c.canvas;let _frame=l.paint(c,size[0]as usize,size[1]as usize)?;let(point,tag)=l.pick_where(|tag|tag>>32==id as u64+1).ok_or("actual special-essence altar scene pick absent")?;
+        let entry=l.menu_entries(c,point)?.into_iter().find(|e|e.option=="Craft-rune" && matches!(e.action,Action::Object{id:actual,tile,operation:1,..}if actual==id && tile==[x,z])).ok_or("actual special-essence Craft-rune scene menu absent")?;
+        println!("PG_DAE_ALTAR_MENU action={action} label={:?} point={point:?} tag={tag} native_action={:?}",entry.option,entry.action);sent_packet(c,entry.action,"native all-altars Daeyalt actual Craft-rune menu")?;
+        let expected=if action==0{&first}else{&final_bag};let fine=if action==0{fine1}else{fine2};
+        if action<2{pump(c,l,30,|c,_|image(c,93,28)==*expected && c.data.experience[20]==fine/10)?;}else{ticks(c,l,5)?;}
+        ticks(c,l,3)?;assert_eq!(image(c,93,28),*expected);assert_eq!(image(c,94,14),gear);let mut expected_xp=xp;expected_xp[20]=fine/10;assert_eq!(c.data.experience,expected_xp);
+        println!("PG_DAE_ALTAR_RESULT action={action} output={output} count={} expectedFine={fine} tick={}",if action==0{7*per}else{28*per},c.server_tick);
+    }
+    println!("PG_CASE_PASS native special-essence altar kind={kind} first7only retain21ordinary secondexplicitclick emptythird exactbaggearXP");Ok(())
+}
+fn crafting_cape_boost(c:&mut ClientState,l:&mut Connection,kind:&str)->R<()> {
+    let f2p=kind.ends_with("-f2p");let drained=kind.ends_with("-drained");let expiry=kind.ends_with("-expiry");
+    let cape=if kind.ends_with("-trimmed"){9781}else{9780};assert_eq!(c.data.members,!f2p);
+    tab(c,"Worn Equipment")?;ticks(c,l,3)?;
+    let image=|c:&ClientState,inv,size|(0..size).map(|s|{let i=c.inventories.item(inv,s);(i.id,i.count)}).collect::<Vec<_>>();
+    let bag=image(c,93,28);let gear=image(c,94,14);let xp=c.data.experience;let initial=c.data.boosted[12];assert_eq!(gear[1],(cape,1));assert_eq!(c.data.base[12],99);assert_eq!(xp[12],13034431);
+    if drained{assert!(initial>=50 && initial<99,"actual observed drained fixture no longer drained");}else{assert_eq!(initial,99);}
+    println!("PG_CAPE_ACCOUNT kind={kind} actual_member={} cape={cape} initial_current={initial} tick={}",c.data.members,c.server_tick);
+    for press in 0..2 {
+        ready(c,l)?;let id=(387u32<<16)|16;let layout=c.interfaces.layout(c.canvas)?;
+        let p=layout.widgets.get(&id).filter(|p|!p.hidden && p.clip[2]>p.clip[0] && p.clip[3]>p.clip[1]).ok_or("native worn cape placement absent")?;
+        let point=[(p.clip[0]+p.clip[2])/2,(p.clip[1]+p.clip[3])/2];let menus=c.interface_menu(point)?;
+        for entry in &menus{println!("PG_CAPE_MENU press={press} option={:?} action={:?}",entry.option,entry.action);}
+        let action=menus.into_iter().find(|e|e.option=="Boost").map(|e|e.action).ok_or("actual native cape Boost menu absent")?;
+        let before=c.data.boosted[12];let messages=c.game_messages.len();let packet=sent_packet(c,action,"native actual worn Crafting cape Boost menu")?;
+        assert_eq!(packet.0,47);assert_eq!(packet.1.len(),9);assert_eq!(u32::from_be_bytes(packet.1[..4].try_into().unwrap()),id);assert_eq!(packet.1[8],2);
+        let expected=if f2p{before}else if before<100{before+1}else{before};
+        if f2p{pump(c,l,20,|c,_|c.game_messages.iter().skip(messages).any(|m|m.text=="You need membership to use this cape's Boost option."))?;}else if expected!=before{pump(c,l,20,|c,_|c.data.boosted[12]==expected)?;}
+        ticks(c,l,2)?;assert_eq!(c.data.boosted[12],expected);assert_eq!(c.data.experience,xp);assert_eq!(image(c,93,28),bag);assert_eq!(image(c,94,14),gear);
+        println!("PG_CAPE_RESULT press={press} before={before} after={} base={} noXPitemsgear tick={}",c.data.boosted[12],c.data.base[12],c.server_tick);
+    }
+    if expiry{let start=c.server_tick;pump(c,l,90,|c,_|c.data.boosted[12]==99)?;assert!(c.server_tick-start<=105);assert_eq!(c.data.experience,xp);assert_eq!(image(c,93,28),bag);assert_eq!(image(c,94,14),gear);println!("PG_CAPE_NATIVE_EXPIRY current99 elapsed_received_clocks={} tick={}",c.server_tick-start,c.server_tick);}
+    println!("PG_CASE_PASS native Crafting cape kind={kind} genuineBoost2requests actualcurrent wholebaggearXP retained");Ok(())
+}
+fn daeyalt_cases(c:&mut ClientState,l:&mut Connection,kind:&str)->R<()> {
+    let f2p=kind.ends_with("-f2p");let close=kind.ends_with("-close-after-reach");let walk=kind.ends_with("-move-after-reach");let logout=kind.ends_with("-logout-after-reach");let crash=kind.ends_with("-crash");
+    assert!(f2p || close || walk || logout || crash);assert_eq!(c.data.members,!f2p);tab(c,"Inventory")?;ticks(c,l,3)?;
+    let image=|c:&ClientState,inv,size|(0..size).map(|s|{let v=c.inventories.item(inv,s);(v.id,v.count)}).collect::<Vec<_>>();
+    let initial=(0..28).map(|s|(if s<7{24704}else if s%2==0{1436}else{7936},1)).collect::<Vec<_>>();assert_eq!(image(c,93,28),initial);
+    let gear=image(c,94,14);let xp=c.data.experience;assert_eq!(xp[20],13034431);assert_eq!(c.data.base[20],99);assert_eq!(c.data.boosted[20],99);
+    println!("PG_DAEYALT_CASE_ACCOUNT kind={kind} member={} world_flags={} expected_effective_rate=500 position={:?}",c.data.members,c.data.world_flags,c.data.position);
+    for action in 0..if f2p{2}else{1} {
+        ready(c,l)?;for _ in 0..4{c.tick_actor_sequences()?;if let Some((target,plane))=c.camera_focus(){if let Some((scene,_))=&l.world{c.camera.tick_follow(scene,target,plane,c.preferences.camera_follow_height);}}}
+        let size=c.canvas;let _frame=l.paint(c,size[0]as usize,size[1]as usize)?;let(point,tag)=l.pick_where(|tag|tag>>32==34762).ok_or("actual Mind protected-case scene pick absent")?;
+        let entry=l.menu_entries(c,point)?.into_iter().find(|e|e.option=="Craft-rune" && matches!(e.action,Action::Object{id:34761,tile:[2785,4840],operation:1,..})).ok_or("actual Mind protected-case Craft-rune menu absent")?;
+        let messages=c.game_messages.len();println!("PG_DAEYALT_CASE_MENU action={action} label={:?} point={point:?} tag={tag} native_action={:?}",entry.option,entry.action);sent_packet(c,entry.action,"native protected Daeyalt actual Craft-rune menu")?;
+        if f2p {
+            pump(c,l,30,|c,_|c.game_messages.iter().skip(messages).any(|m|m.text=="You need to be a member to bind that essence."))?;
+            let observed=c.game_messages.iter().skip(messages).find(|m|m.text=="You need to be a member to bind that essence.").unwrap().text.clone();ticks(c,l,3)?;
+            assert_eq!(image(c,93,28),initial);assert_eq!(image(c,94,14),gear);assert_eq!(c.data.experience,xp);println!("PG_DAEYALT_CASE_MESSAGE action={action} observed={observed:?} no_ordinary_fallback=true tick={}",c.server_tick);continue;
+        }
+        if close || walk || logout {
+            pump(c,l,15,|c,_|c.player_state.as_ref().and_then(|s|s.players[s.local as usize].as_ref()).is_some_and(|p|p.sequence.id==791))?;
+            assert_eq!(image(c,93,28),initial,"missed reached oneclock window; no interruption verdict");assert_eq!(c.data.experience,xp);
+            println!("PG_DAEYALT_CASE_PENDING actual791 original28essence andXP intact kind={kind} tick={}",c.server_tick);
+            if logout{println!("PG_DAEYALT_CASE_DISCONNECT real socket closes with reached work pending;SQL decides atomic race outcome");return Ok(());}
+            let destination=[u16::try_from(c.data.position[1]-1)?,u16::try_from(c.data.position[2])?];
+            if walk{sent_packet(c,Action::Walk(destination),"native Walk after real Daeyalt reached barrier")?;}else{sent_packet(c,Action::Close,"native Close after real Daeyalt reached barrier")?;}
+            ticks(c,l,6)?;assert_eq!(image(c,93,28),initial);assert_eq!(image(c,94,14),gear);assert_eq!(c.data.experience,xp);
+            if walk{assert_eq!([c.data.position[1],c.data.position[2]],[i32::from(destination[0]),i32::from(destination[1])]);}
+            println!("PG_DAEYALT_CASE_CANCELLED kind={kind} actual_position={:?} original28essence allXPgear retained tick={}",c.data.position,c.server_tick);continue;
+        }
+        let mut expected=initial.clone();for s in 0..7{expected[s]=(-1,0);}expected[0]=(558,56);
+        pump(c,l,30,|c,_|c.inventories.total(93,558)==56 && c.data.experience[20]==13034719)?;ticks(c,l,2)?;
+        assert_eq!(image(c,93,28),expected);assert_eq!(image(c,94,14),gear);let mut expected_xp=xp;expected_xp[20]=13034719;assert_eq!(c.data.experience,expected_xp);
+        println!("PG_DAEYALT_CASE_UNSAVED first56runes retain21ordinary displayXP13034719 expectedFine130347198 tick={}",c.server_tick);
+        println!("PG_CRASH_READY unsaved native Daeyalt priority batch;only owned disposable local server;no logout/save requested");let start=Instant::now();loop{match l.poll(c){Err(e)=>{println!("PG_EXPECTED_CRASH_DISCONNECT {e}");return Ok(());},Ok(())=>{if l.logged_out().is_some(){println!("PG_EXPECTED_CRASH_DISCONNECT native transport closed");return Ok(());}}}if start.elapsed()>Duration::from_secs(30){return Err("owned Daeyalt recovery termination absent".into());}std::thread::sleep(Duration::from_millis(10));}
+    }
+    println!("PG_CASE_PASS native protected Daeyalt case kind={kind} whole28bag gear Stats retained");Ok(())
+}
+fn daeyalt_tail(c:&mut ClientState,l:&mut Connection)->R<()> {
+    assert!(c.data.members);tab(c,"Inventory")?;ticks(c,l,3)?;
+    let image=|c:&ClientState,inv,size|(0..size).map(|s|{let v=c.inventories.item(inv,s);(v.id,v.count)}).collect::<Vec<_>>();
+    let mut initial=vec![(-1,0);28];initial[0]=(558,56);for s in 7..28{initial[s]=(if s%2==0{1436}else{7936},1);}
+    assert_eq!(image(c,93,28),initial);let gear=image(c,94,14);let xp=c.data.experience;assert_eq!(xp[20],13034719);assert_eq!(c.data.base[20],99);assert_eq!(c.data.boosted[20],99);
+    println!("PG_DAEYALT_RESUME_INITIAL original56runes21ordinary received member={} world_flags={} effective_rate=500 display_xp={} tick={}",c.data.members,c.data.world_flags,xp[20],c.server_tick);
+    let mut expected=vec![(-1,0);28];expected[0]=(558,224);
+    for action in 1..=2 {
+        ready(c,l)?;for _ in 0..4{c.tick_actor_sequences()?;if let Some((target,plane))=c.camera_focus(){if let Some((scene,_))=&l.world{c.camera.tick_follow(scene,target,plane,c.preferences.camera_follow_height);}}}
+        let size=c.canvas;let _frame=l.paint(c,size[0]as usize,size[1]as usize)?;
+        let(point,tag)=l.pick_where(|tag|tag>>32==34762).ok_or("actual Mind altar resume pick absent")?;
+        let entry=l.menu_entries(c,point)?.into_iter().find(|e|e.option=="Craft-rune" && matches!(e.action,Action::Object{id:34761,tile:[2785,4840],operation:1,..})).ok_or("actual Mind resume Craft-rune menu absent")?;
+        println!("PG_DAEYALT_MENU action={action} label={:?} point={point:?} tag={tag} native_action={:?}",entry.option,entry.action);
+        sent_packet(c,entry.action,"native Daeyalt same-account remaining ordinary Craft-rune menu")?;
+        if action==1{pump(c,l,30,|c,_|c.inventories.total(93,558)==224 && c.data.experience[20]==13035297)?;}else{ticks(c,l,5)?;}
+        ticks(c,l,3)?;assert_eq!(image(c,93,28),expected);assert_eq!(image(c,94,14),gear);let mut expected_xp=xp;expected_xp[20]=13035297;assert_eq!(c.data.experience,expected_xp);
+        println!("PG_DAEYALT_RESULT action={action} output=558 count=224 fine=130352973 tick={}",c.server_tick);
+    }
+    println!("PG_CASE_PASS native same-account Daeyalt continuation retained first56runes then21ordinary secondcraft emptythird effective500rate5775fineXP wholebag gear Stats");Ok(())
+}
 fn daeyalt_mind(c:&mut ClientState,l:&mut Connection)->R<()> {
     assert!(c.data.members);tab(c,"Inventory")?;ticks(c,l,3)?;
     let image=|c:&ClientState,inv,size|(0..size).map(|s|{let v=c.inventories.item(inv,s);(v.id,v.count)}).collect::<Vec<_>>();
@@ -809,6 +912,11 @@ fn main()->R<()> {
     if matches!(a[6].as_str(),"crab-interrupt"|"crab-crash"){crab_partial(&mut c,&mut l,a[6]=="crab-crash")?;l.session.close();return Ok(());}
     if matches!(a[6].as_str(),"amethyst-interrupt"|"amethyst-crash"){amethyst_recovery(&mut c,&mut l,a[6]=="amethyst-crash")?;l.session.close();return Ok(());}
     if a[6]=="amethyst-batch"{amethyst_batch(&mut c,&mut l)?;l.session.close();return Ok(());}
+    if matches!(a[6].as_str(),"rune-air-daeyalt"|"rune-water-daeyalt"|"rune-earth-daeyalt"|"rune-fire-daeyalt"|"rune-body-daeyalt"){daeyalt_other_altars(&mut c,&mut l,&a[6])?;l.session.close();return Ok(());}
+    if a[6].starts_with("crafting-cape-"){crafting_cape_boost(&mut c,&mut l,&a[6])?;l.session.close();return Ok(());}
+    if matches!(a[6].as_str(),"rune-mind-daeyalt-f2p"|"rune-mind-daeyalt-close-after-reach"|"rune-mind-daeyalt-move-after-reach"|"rune-mind-daeyalt-logout-after-reach"|"rune-mind-daeyalt-crash"){daeyalt_cases(&mut c,&mut l,&a[6])?;l.session.close();return Ok(());}
+    if a[6]=="rune-mind-ordinary-f2p"{rune_altar(&mut c,&mut l,"rune-mind-f2p")?;l.session.close();return Ok(());}
+    if a[6]=="rune-mind-daeyalt-tail"{daeyalt_tail(&mut c,&mut l)?;l.session.close();return Ok(());}
     if a[6]=="rune-mind-daeyalt"{daeyalt_mind(&mut c,&mut l)?;l.session.close();return Ok(());}
     if a[6].starts_with("rune-"){rune_altar(&mut c,&mut l,&a[6])?;l.session.close();return Ok(());}
     if a[6]=="imcando-worn-dispatch"{imcando_worn_dispatch(&mut c,&mut l)?;l.session.close();return Ok(());}
@@ -830,6 +938,6 @@ fn main()->R<()> {
     if matches!(a[6].as_str(),"production-gem-batch"|"production-shell-batch"){production_batch(&mut c,&mut l,a[6]=="production-shell-batch")?;l.session.close();return Ok(());}
     if matches!(a[6].as_str(),"production-gem-x"|"production-gem-x-focus"){production_x_boundary(&mut c,&mut l,a[6]=="production-gem-x-focus")?;l.session.close();return Ok(());}
     if matches!(a[6].as_str(),"production-gem-interrupt"|"production-shell-interrupt"|"production-gem-crash"){production_partial(&mut c,&mut l,a[6]=="production-shell-interrupt",a[6]=="production-gem-crash")?;l.session.close();return Ok(());}
-    match a[6].as_str(){"pouch"=>pouch(&mut c,&mut l)?,"glass-all"=>glass_all(&mut c,&mut l)?,"glass-interrupt"=>glass_interrupt(&mut c,&mut l)?,"glass-crash"=>glass_crash(&mut c,&mut l)?,"glass-remaining"=>glass_remaining(&mut c,&mut l)?,"glass-quantities"=>glass_quantities(&mut c,&mut l)?,"glass"=>glass(&mut c,&mut l)?,"shells"=>shells(&mut c,&mut l)?,"gem-effects"=>gem_effects(&mut c,&mut l)?,"gem-crash"=>gem_crash(&mut c,&mut l)?,"gems"=>gems(&mut c,&mut l)?,"prayer"=>prayer_burial(&mut c,&mut l)?,"chem-crash"=>chemistry_crash(&mut c,&mut l)?,"chem-interrupt"=>chemistry_interrupt(&mut c,&mut l)?,"food-negative"=>food_negative(&mut c,&mut l)?,"combat-interrupt"=>combat_interrupt(&mut c,&mut l)?,"chem-close"=>chemistry_close(&mut c,&mut l)?,"chem-negative"=>chemistry(&mut c,&mut l)?,"food"=>food(&mut c,&mut l)?,"verify"=>{ticks(&mut c,&mut l,6)?;let layout=c.interfaces.layout(c.canvas)?;assert!(!layout.widgets.iter().any(|(&id,p)|{let logical=c.interfaces.runtime.get(&id).map_or(id,|r|r.logical_id);logical>>16==270 && !p.hidden && p.clip[2]>p.clip[0] && p.clip[3]>p.clip[1]}),"quantity dialog must not persist across actual reconnect");println!("PG_NATIVE_NO_PENDING_SKILL_MULTI tick={}",c.server_tick);println!("PG_CASE_PASS native relogin observation");},_=>return Err("unknown independent scenario".into())}
+    match a[6].as_str(){"pouch"=>pouch(&mut c,&mut l)?,"glass-all"=>glass_all(&mut c,&mut l)?,"glass-interrupt"=>glass_interrupt(&mut c,&mut l)?,"glass-crash"=>glass_crash(&mut c,&mut l)?,"glass-remaining"=>glass_remaining(&mut c,&mut l)?,"glass-quantities"=>glass_quantities(&mut c,&mut l)?,"glass"=>glass(&mut c,&mut l)?,"shells"=>shells(&mut c,&mut l)?,"gem-effects"=>gem_effects(&mut c,&mut l)?,"gem-crash"=>gem_crash(&mut c,&mut l)?,"gems"=>gems(&mut c,&mut l)?,"prayer"=>prayer_burial(&mut c,&mut l)?,"chem-crash"=>chemistry_crash(&mut c,&mut l)?,"chem-interrupt"=>chemistry_interrupt(&mut c,&mut l)?,"food-negative"=>food_negative(&mut c,&mut l)?,"combat-interrupt"=>combat_interrupt(&mut c,&mut l)?,"chem-close"=>chemistry_close(&mut c,&mut l)?,"chem-negative"=>chemistry(&mut c,&mut l)?,"food"=>food(&mut c,&mut l)?,"verify"=>{ticks(&mut c,&mut l,6)?;let layout=c.interfaces.layout(c.canvas)?;assert!(!layout.widgets.iter().any(|(&id,p)|{let logical=c.interfaces.runtime.get(&id).map_or(id,|r|r.logical_id);logical>>16==270 && !p.hidden && p.clip[2]>p.clip[0] && p.clip[3]>p.clip[1]}),"quantity dialog must not persist across actual reconnect");println!("PG_NATIVE_RELOGIN_POSITION position={:?} tick={}",c.data.position,c.server_tick);println!("PG_NATIVE_NO_PENDING_SKILL_MULTI tick={}",c.server_tick);println!("PG_CASE_PASS native relogin observation");},_=>return Err("unknown independent scenario".into())}
     l.session.close();Ok(())
 }

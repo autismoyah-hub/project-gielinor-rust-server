@@ -1,0 +1,29 @@
+{
+  "implementation_id": "OR-MIG-0126",
+  "tested_sha": "bd1294ab9e0ff850155b024364dc3a3a98a37bed",
+  "status": "PASS_SCOPED",
+  "feature": "rune-mind-daeyalt-f2p",
+  "persisted_outcome": "NO_COMMIT",
+  "scope": "Two actual native Craft-rune menu actions refuse nonmember Daeyalt without falling back to21ordinary essence. Exact whole bag/gear/Stats/fineXP and position independently checked against SQL and decoded native reconnect after process restart.",
+  "limitations": [
+    "Inside-altar disposable fixture does not establish essence acquisition or altar entry.",
+    "No during-SQL-commit injection, original executable/render/audio parity or native125rate claim. Character comparison covers position/plane/energy; runtime login varps and logout timestamps legitimately change.",
+    "Native disconnect completion may race one server tick; only the observed atomic result is claimed."
+  ],
+  "evidence_sha256": {
+    "initial-state.json": "9e9b93e702bf0260f4597fe1474ed98fe6a8f54f3500a7f1c2b8840a3188c74c",
+    "build.json": "ae08bd2e5e8423918d5c2c92370eb08339df9d69f5456ea5a682b9322f16e704",
+    "frozen-observer/build.json": "b315495a6a74266539f5d85bf3e1d5f1e1a968961a6f06dd444695b5a57cf39c",
+    "frozen-observer/pg_observer.rs": "d60a63e06ef5b763c9bf4784cec638d46f4719b063e42454fca70765afc7bc25",
+    "produce/manifest.json": "c9e5403cc59f26b5324c2ff7665f419f8d71e7e260887e57acb40ee2b325ea44",
+    "produce/before.json": "9e9b93e702bf0260f4597fe1474ed98fe6a8f54f3500a7f1c2b8840a3188c74c",
+    "produce/after.json": "be50443cc7c12264b23996e5623bca69f6cb40b3cced47be25189536cf11d743",
+    "produce/client.log": "2f329a75cfa2e95816486a07f427c7cf5216c680dd551ddd5de2adfe65fc7e36",
+    "produce/server.log": "c19c898da3d62ff8cc80291166a6cef010ac021414226a3368d678b69c4fa2e5",
+    "relogin/manifest.json": "e096c9cfd90c762dde8f2f50fbae8d0364b8361c10c77777def4404e6384b41c",
+    "relogin/before.json": "be50443cc7c12264b23996e5623bca69f6cb40b3cced47be25189536cf11d743",
+    "relogin/after.json": "7510fb63bb322d54f4e983a8652766493113fa89a22f35442f6986140686c381",
+    "relogin/client.log": "4ea34baf269baf43f0e12624d7f48f0793426cd2e1a12beb2f29bb53032e9e97",
+    "relogin/server.log": "ea92a952b647a5ee763674667d78fc06878d43c518055f812518fe010bbf6448"
+  }
+}

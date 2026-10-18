@@ -1,0 +1,30 @@
+{
+  "implementation_id": "OR-MIG-0126",
+  "tested_sha": "bd1294ab9e0ff850155b024364dc3a3a98a37bed",
+  "status": "PASS_SCOPED",
+  "feature": "rune-mind-ordinary-f2p",
+  "output": 558,
+  "runes": 224,
+  "fine_xp_award": 7700,
+  "inventory_change_ticks": [
+    90
+  ],
+  "scope": "Two actual rendered native altar Craft-rune menus generate matching native location actions; one complete28 mixed essence transaction, exact runes/wholeStats/fractionalXP/gear and no additional credit after empty repeat. Actual791/186-height100 decoded effects. Acknowledged save, server process restart and independently decoded same-account native reconnect preserve whole inventory/Stats. Both genuine location sends independently logged at native transport boundary and decoded to exact altar/coordinates/Op1; second empty click delivery and no repeated credit attested. Fresh ordinary mixed Rune/Pure F2P regression at exact126; no125native inheritance.",
+  "limitations": [
+    "Inside-altar disposable fixture does not establish acquisition/entry/ruins/talisman/tiara access.",
+    "No original executable/audio/render parity, unsaved crash, native interruption/negative completion or other altar acceptance. Historical125 stock failure is separate; exact126 stock correction independently assessed."
+  ],
+  "evidence_sha256": {
+    "initial-state.json": "85ef1d5688d0414a3d370756ddb50fc5e3976a271f59a12516b3590eefaa654c",
+    "build.json": "ae08bd2e5e8423918d5c2c92370eb08339df9d69f5456ea5a682b9322f16e704",
+    "produce/client.log": "ac80159dfa51f0f699b27382fb36d924d72ad8c2adc86344f31b833444965235",
+    "produce/manifest.json": "389fe9b19a1c64b39ff659be907734d57be7c91debcf69c0671fa5a87072cb27",
+    "produce/after.json": "1bf9f481a13ffb48de7e2286b97b1c208d2e6532cf7fec25f5dc189667b38dac",
+    "relogin/client.log": "f912fc96b049be050fd4f25d11629f63ff3f0cac95a29fdfa7121768e36b075d",
+    "relogin/manifest.json": "6bb3ffe4d7ae6b6ac774d626dda78a781e37e7da87615a33d277fd2899e2020b",
+    "relogin/after.json": "080e874fa0755b4bc644611ea534b0b779b9eca2a90f1afbaf5825e642fd9456",
+    "frozen-observer/pg_observer.rs": "d60a63e06ef5b763c9bf4784cec638d46f4719b063e42454fca70765afc7bc25",
+    "frozen-observer/build.json": "b315495a6a74266539f5d85bf3e1d5f1e1a968961a6f06dd444695b5a57cf39c"
+  },
+  "observed_location_wire_sends": 2
+}

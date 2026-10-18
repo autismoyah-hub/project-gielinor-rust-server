@@ -1,0 +1,23 @@
+{
+  "implementation_id": "OR-MIG-0126",
+  "tested_sha": "bd1294ab9e0ff850155b024364dc3a3a98a37bed",
+  "scenario": "nativeDaeyaltpersonalrate125",
+  "status": "BLOCKED",
+  "reason": "Pinned actual startup installs FloorOne progression policy; its login unconditionally rewrites effective xp_rate_hundreds to500. Seeded125isnot an attainable persistent native login fixture under this exact server. Do not patchpolicy/substitute newerSHA/silentlycount actual500as125nativeacceptance. World125-rate checks remain separate.",
+  "raw_attempt_status": "FAIL",
+  "observer_failure": "Observer printed intendedrate125 and waitedfor72.1XP;actualfirst7Daeyalt->56runes succeeds at500rate and awards2887fineXP,leaving21ordinary. TimeoutisQAfixture/policy mismatch,not a Rune implementation defect. Printed125isnot an observed effective-rate field.",
+  "preserved_progress": "First56runes/2887fineXP have acknowledgedSQLsave. PrivateSQLite snapshot and same-account continuationprepared; consumeonly21remaining ordinary next,no first-action replay/reseed. Any500-rate positiveacceptancewillhaveexplicit distinctscope;125nativevariantremainsBLOCKED.",
+  "target_source_hashes": {
+    "crates/world/src/floor_progression.rs": "4d67a9ae171e2971fc8f92ddc19fe979615add4ed45cef2d42f262cecd2e884c",
+    "crates/server/src/startup.rs": "6fbd25f13f8601ad6c888c6f23f79cbd554f7a4d8a2852180431d668fbaef2de",
+    "crates/server/src/runtime.rs": "84d398d27b0fcd8112872a6c5fc37a2c8e615f83b8ef4059674abeb2704b7651"
+  },
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/deep-rune-mind-daeyalt/native-001/initial-state.json": "5cf5976b9abdca83a7e934900572f12bfce2129c2b46a0ad7862578c2ece741c",
+    "docs/openrune/verification/independent/deep-rune-mind-daeyalt/native-001/build.json": "ae08bd2e5e8423918d5c2c92370eb08339df9d69f5456ea5a682b9322f16e704",
+    "docs/openrune/verification/independent/deep-rune-mind-daeyalt/native-001/produce/manifest.json": "0699e961be048a6ea31eaa19d2a3ec1a987749097d660f964e6a53cd3cc91ddd",
+    "docs/openrune/verification/independent/deep-rune-mind-daeyalt/native-001/produce/client.log": "b6dac63d884f23a9c5ce08af2976c8c97dadda2bb9f88c235a5fd4fd330392d9",
+    "docs/openrune/verification/independent/deep-rune-mind-daeyalt/native-001/produce/after.json": "028eee11dda417a93f1280a8fc32883e91d021944fe232fff0ad9ec62f9ddd55",
+    "docs/openrune/verification/independent/deep-rune-mind-daeyalt/native-001/continuation-001/continuation-source.json": "740aa9ef4199d47d3d0e14e1fe4bac34a53e2b2a573f9babd45667ccb57be474"
+  }
+}

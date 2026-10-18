@@ -1,0 +1,73 @@
+{
+  "implementation_id": "OR-MIG-0133",
+  "tested_sha": "7f91fdf4f2cffa0c44f9c9b1b52ae3494f5d414e",
+  "status": "PASS_REFERENCE_FACTS",
+  "sources": [
+    {
+      "kind": "openrune",
+      "reference": "content/skills/cooking/src/main/kotlin/org/rsmod/content/skills/cooking/CookingEvents.kt",
+      "sha256": "344c1c7acc7f7adc4fa9c593926f8c1e2722ed92b7169c6883889b5fceb1ba8c",
+      "availability": "protected_local_reference",
+      "revision": "Local archive; upstream commit unavailable; configured241"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Cooking gauntlets",
+      "sha256": "24a3b643b849789f1e8ccf297a9fb33dbf0be1443967f1de92c7c93903718ba4",
+      "availability": "protected_local_reference",
+      "revision": "15342609"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Cooking/Burn level",
+      "sha256": "e2999e9439b4ca7131462a4269810427e3a457e8627d3a9f23cde5f696f95ca0",
+      "availability": "protected_local_reference",
+      "revision": "15322823"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Lobster",
+      "sha256": "a29d4c6ed0cb2ce47560b16168cd19ca467cb92419ab8f083d9678fd6d7c3aa4",
+      "availability": "protected_local_reference",
+      "revision": "15183358"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Swordfish",
+      "sha256": "5df5c7c7477923c0a9c2cd1c60f207500c4183db408e72aca9c694d0b7c98e64",
+      "availability": "protected_local_reference",
+      "revision": "15183520"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Monkfish",
+      "sha256": "332441a8f19b98403b74ae863631b89405cc6c89bb1ae5c4cf44fe56a81f30bf",
+      "availability": "protected_local_reference",
+      "revision": "15183439"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Shark",
+      "sha256": "6e3b2c65a11b0524182cf54a128b222b9e3bd175231def9ae5236f857a73e935",
+      "availability": "protected_local_reference",
+      "revision": "15183388"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Anglerfish",
+      "sha256": "3f23a4681e628a05814bf9ae97ae19c4a0e7b0e116f84de695ee7ac791e6b768",
+      "availability": "protected_local_reference",
+      "revision": "15339549"
+    }
+  ],
+  "scope": "One protected donor and seven pinnedWiki snapshots independently matched/read. Donor supportsGauntlet and worn check subtract generic6fromstopBurn; Cookingcape short-circuit takes precedence. Wiki names five fish plusKyatt, actual wornmember gloves, Cape superiority; default gauntlet guarantees64/80/86/94/97. Food snapshots give full gauntlet curves:lobster55/368req40,swordfish30/310req45(range or gauntlets),monkfish24/290req62,shark15/270req80,anglerfish12/260req84.",
+  "adaptations": [
+    "Target five full Wiki curves replace donor generic-minus6, preserving explicit source difference. No generated241food rows are available or assumed identical.",
+    "Bounded ordinary fire/range surfaces only; special Hosidius/diary modifiers and Kyatt recipe omitted. Acquisition/quest completion and permission to equip gauntlets remain separate from modifier tests.",
+    "Live member/exact hands9/count1/vars0/item775 metadata are conservative target authority; rawtargetbindings and actualqueue/nativeoutcomes still require execution."
+  ],
+  "limitations": [
+    "Cooking/Burn level snapshot itself flags incomplete data and statrandom updates; pinned fact agreement is not current live-game statistical or executable parity.",
+    "No actual133cache/World/native/binary/persistence/fullV4acceptance. No new cooking or chemistry gameplay executed by reference inspection."
+  ]
+}
