@@ -18,6 +18,8 @@ reconstruction without pretending it has an independently authored rig. A
 separate face_group property represents alpha-control ownership independently
 from vertex ownership. Existing original rigged recipes and default static
 exports retain their previous behavior.
+When a source has no face-alpha groups, preserve_face_groups=false retains
+vertex ownership without inventing face-alpha membership on the reconstruction.
 
 The initial correction proof uses the same Fire Giant 2075 candidate: bind
 vertices and all five native images remain identical, while all 48 native

@@ -22,6 +22,7 @@ def export_asset(recipe):
         components[spec['name']]=dict(vertices=list(range(offset,len(g['vertices']))),faces=list(range(firstface,len(g['faces']))),group=spec.get('group',0),role=spec.get('role',spec['name']),material=spec['material'],material_family=recipe['materials'][spec['material']].get('family'),parameters=spec.get('parameters',{}),geometry_sha256=hashlib.sha256(json.dumps(part,sort_keys=True).encode()).hexdigest())
         components[spec['name']]['geometry_validation']=json.loads(obj.get('geometry_validation_report','{}'))
     if not(recipe.get('rig')or recipe.get('preserve_authored_groups')):g['vertex_skins']=None;g['face_skins']=None
+    elif recipe.get('preserve_face_groups')is False:g['face_skins']=None
     g['components']=components;return g
 def build(recipe,palette):
     bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
