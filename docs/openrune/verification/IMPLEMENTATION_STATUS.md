@@ -3,9 +3,9 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0087: four plain gold furnace recipes with retained moulds; source [b916671](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/b916671f63450c81c9de70d79eaf81279310ed61). Full shared/binary PASS; independent V0–V4 queued. Dedicated UI/sound and first2 versus Wiki3 remain explicit obligations.
+OR-MIG-0088: sixteen ordinary silver furnace products; source [d2f0a18](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/d2f0a18c213e43247cbf6c47bb10a42a96639d94). Focused/binary PASS; independent V0–V4 queued. Dedicated UI/sound/quest-specific rows and source2first versusWiki3 remain obligations.
 
-87 units / 96 append-only records. Discovery3508={'not_yet_assessed': 2797, 'configuration': 659, 'framework_or_infrastructure': 8, 'eligible_gameplay_behavior': 44}, not completion percentages. PG-DEF-001 Close candidate pending independent retest.
+88 units / 97 append-only records. Discovery3508={'not_yet_assessed': 2796, 'configuration': 659, 'framework_or_infrastructure': 9, 'eligible_gameplay_behavior': 44}, not completion percentages. PG-DEF-001 Close candidate pending independent retest.
 <!-- forge-current:end -->
 
 
@@ -541,3 +541,12 @@ Source b916671f63450c81c9de70d79eaf81279310ed61: one2357 gold bar -> ring1635/Cr
 Gold003 full shared PASS136server486world/1existingignored449unchanged hashes, compile22.77s/server4.04s/world37.02s. Actual binaries001 PASS449hashes,13.69s. Four fullbag rewards/member/F2P/mould/type/credit checks; actual reached bar quantity commits2/5, retained mould, or onlyfirst/187fine after late mould loss with second raw retained; NoDraw. Initial001 static-borrow compile failure and002 fixture i8/catalog errors preserved. Working-tree developer evidence, not pristine/native acceptance. Guard0036,678MiB/57.6%commit/1page-in/s/2.6msdisk/6.3%CPU,j2.
 
 Wiki product creation fields say3ticks; source first2/repeat3 retained pending native/reference reconciliation. Existing generic quantity UI replaces inspected dedicated gold interface/last-type varbit; sound, category-wide furnaces, gemmed/silver recipes and acquisition remain. Independent V0–V4 queued. Queue96records87units. Discovery3508={'not_yet_assessed': 2797, 'configuration': 659, 'framework_or_infrastructure': 8, 'eligible_gameplay_behavior': 44}, not completion percentages.
+
+
+## FORGE OR-MIG-0088 — sixteen ordinary silver products
+
+Source d2f0a18c213e43247cbf6c47bb10a42a96639d94: unstrung symbol16/50XP/F2P,sickle18/50/member,10unfinished bolts21/50perbar/member,tiara23/52.5/F2P;12member opal/jade/topaz rings/necklaces/bracelets/unstrung amulets per pinned creations. One2355bar plus optional one1609/1611/1613gem and retained respective mould.28ordinary target types,16Wiki creations,11source refs pinned. Existing2030/4304 config now adds silver alongside gold/glass; selected silverbar <=16choices under18limit. Secondary gem route accepted intentionally by existing mixed facility.
+
+Silver001 focused PASS1server/0world matches450unchanged hashes,compile20.39s/test0.01s; actual binaries001 PASS450/2.61s.16recipe fullbag/material/count/precise reward/member/mould/variablegem/missingtool/credit-refusal matrix. No shared engine change;87full shared regression protects dependency. Developer working-tree evidence, not actual native/composed silver or pristine independent acceptance.
+
+Source first2/repeat3 versus all16Wiki3 remains explicit. Generic quantity substitutes donor dedicated silver UI/last-type; sound/category-wide furnaces absent. Quest-specific unholy emblem/conductor/demonic sigil/Ivandis rod withheld, enchanting/blessing/stringing/feathering/acquisition separate. Queue97records88units; independentV0–V4 queued. Discovery3508={'not_yet_assessed': 2796, 'configuration': 659, 'framework_or_infrastructure': 9, 'eligible_gameplay_behavior': 44}, not completion percentages.
