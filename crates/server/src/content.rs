@@ -6,6 +6,8 @@ mod birdhouses;
 pub use birdhouses::birdhouses;
 mod light_sources;
 pub use light_sources::light_sources;
+mod toxic_upgrades;
+pub use toxic_upgrades::toxic_upgrades;
 mod accursed_upgrade;
 pub use accursed_upgrade::accursed_upgrade;
 mod firelighter_coating;

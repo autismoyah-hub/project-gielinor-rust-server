@@ -790,6 +790,9 @@ pub fn configure<B: AccountBackend>(
         runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.exchange.tool,recipe.exchange.input,gielinor_world::held_use::Handler::ToolCraftingImmediate(recipe)).map_err(|e|io::Error::other(format!("Light source registration: {e:?}")))?;
         if runtime.world.empty_containers.insert(recipe.exchange.output,light.extinguish).is_some(){return Err(io::Error::other("Conflicting held conversion"));}
     }
+    for recipe in crate::content::toxic_upgrades(n("obj"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
+        runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.recipe.first,recipe.recipe.second,gielinor_world::held_use::Handler::AssemblyPrecise(recipe)).map_err(|e|io::Error::other(format!("Toxic weapon upgrade registration: {e:?}")))?;
+    }
     let accursed=crate::content::accursed_upgrade(n("obj"),n("stat"),&runtime.definitions).map_err(io::Error::other)?;
     runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,accursed.recipe.first,accursed.recipe.second,gielinor_world::held_use::Handler::AssemblyPrecise(accursed)).map_err(|e|io::Error::other(format!("Accursed sceptre upgrade registration: {e:?}")))?;
     for recipe in crate::content::firelighter_coating(n("obj"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
