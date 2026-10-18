@@ -8,19 +8,41 @@ use crate::{
     skills,
 };
 pub const TIMER: u16 = u16::MAX; // Private host timer key; never a target-cache identifier.
+pub const ZAMORAK_TIMER: u16 = u16::MAX - 1;
 pub const INTERVAL: i32 = 20;
 pub const LIMIT: i32 = 60_000;
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub struct Config {
+    pub minimum_level: u8,
+    pub no_fail: u8,
+    pub low: i32,
+    pub high: i32,
+    pub members: bool,
+    pub timer: u16,
+    pub rolls: Rolls,
     pub grapes: i32,
     pub water: i32,
     pub unfermented: i32,
-    pub zamorak_unfermented: i32,
+    pub other_unfermented: i32,
     pub wine: i32,
     pub bad: i32,
     pub placeholder: i32,
     pub animation: u16,
     pub spot: u16,
+}
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Rolls {
+    FifteenBatches,
+    PerJug,
+}
+pub fn for_recipe(
+    configs: [Option<Config>; 2],
+    recipe: crate::assembly::PreciseRecipe,
+) -> Option<Config> {
+    configs.into_iter().flatten().find(|w| w.matches(recipe))
+}
+pub fn for_timer(configs: [Option<Config>; 2], timer: u16) -> Option<Config> {
+    configs.into_iter().flatten().find(|w| w.timer == timer)
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Error {
@@ -56,9 +78,9 @@ impl Config {
                 second: self.water,
                 output: self.unfermented,
                 skill: 7,
-                level: 35,
+                level: self.minimum_level,
                 base_xp: 0,
-                members: false,
+                members: self.members,
             },
             xp_tenths: 0,
             ticks: 3,
@@ -70,15 +92,39 @@ impl Config {
     }
     pub fn matches(self, r: crate::assembly::PreciseRecipe) -> bool {
         let v = r.recipe;
-        (v.first, v.second, v.output, v.skill, v.level, r.xp_tenths)
-            == (self.grapes, self.water, self.unfermented, 7, 35, 0)
+        (
+            v.first,
+            v.second,
+            v.output,
+            v.skill,
+            v.level,
+            v.members,
+            r.xp_tenths,
+        ) == (
+            self.grapes,
+            self.water,
+            self.unfermented,
+            7,
+            self.minimum_level,
+            self.members,
+            0,
+        )
     }
     fn validate(self, items: &Catalog) -> Result<(), Error> {
+        if !(1..=99).contains(&self.minimum_level)
+            || !(self.minimum_level..=99).contains(&self.no_fail)
+            || !(-65535..=65535).contains(&self.low)
+            || self.high < self.low
+            || self.high > 65535
+            || ![TIMER, ZAMORAK_TIMER].contains(&self.timer)
+        {
+            return Err(Error::Policy);
+        }
         let ids = [
             self.grapes,
             self.water,
             self.unfermented,
-            self.zamorak_unfermented,
+            self.other_unfermented,
             self.wine,
             self.bad,
         ];
@@ -120,7 +166,7 @@ impl Config {
             .enumerate()
             .filter_map(|(s, i)| i.map(|i| (s, i)))
         {
-            if [self.unfermented, self.zamorak_unfermented].contains(&i.id) {
+            if [self.unfermented, self.other_unfermented].contains(&i.id) {
                 if i.count != 1 || i.vars != 0 {
                     return Err(Error::Input);
                 }
@@ -139,7 +185,7 @@ impl Config {
         {
             if [
                 self.unfermented,
-                self.zamorak_unfermented,
+                self.other_unfermented,
                 self.wine,
                 self.bad,
             ]
@@ -148,7 +194,7 @@ impl Config {
                 if i.count <= 0 || i.vars != 0 || !seen.insert(i.id) {
                     return Err(Error::Input);
                 }
-                if [self.unfermented, self.zamorak_unfermented].contains(&i.id) {
+                if [self.unfermented, self.other_unfermented].contains(&i.id) {
                     total = total.checked_add(i.count).ok_or(Error::Limit)?;
                 }
                 if i.id == self.unfermented {
@@ -405,7 +451,7 @@ impl Config {
             return Ok(None);
         }
         let level = data.stats.current(7) as u8;
-        let guaranteed = level >= 68;
+        let guaranteed = level >= self.no_fail;
         if data.xp_rate_hundreds <= 0 {
             return Err(Error::Xp);
         }
@@ -434,16 +480,25 @@ impl Config {
         for (g, b) in endpoints {
             self.bank_image(data, bank_config, stock, g, b, items)?;
         }
-        let chance = skills::success_rate(48, 352, i32::from(level), 99) * 256.0;
+        let chance = skills::success_rate(self.low, self.high, i32::from(level), 99) * 256.0;
         let mut results = vec![false; slots.len()];
         let mut cursor = 0i32;
         let mut successes = 0i32;
-        let batch = count / 15;
         let mut weights = Vec::new();
-        if batch > 0 {
-            weights.extend(std::iter::repeat_n(batch, 15));
+        if guaranteed {
+            weights.push(count);
+        } else {
+            match self.rolls {
+                Rolls::PerJug => weights.extend(std::iter::repeat_n(1, count as usize)),
+                Rolls::FifteenBatches => {
+                    let batch = count / 15;
+                    if batch > 0 {
+                        weights.extend(std::iter::repeat_n(batch, 15));
+                    }
+                    weights.extend(std::iter::repeat_n(1, (count % 15) as usize));
+                }
+            }
         }
-        weights.extend(std::iter::repeat_n(1, (count % 15) as usize));
         for weight in weights {
             let good = guaranteed || f64::from(random.below(256)) < chance;
             if good {
@@ -499,13 +554,69 @@ pub(crate) mod tests {
             grapes: 1987,
             water: 1937,
             unfermented: 1995,
-            zamorak_unfermented: 20752,
+            other_unfermented: 20752,
             wine: 1993,
             bad: 1991,
             placeholder: 19146,
             animation: 7529,
             spot: 47,
+            minimum_level: 35,
+            no_fail: 68,
+            low: 48,
+            high: 352,
+            members: false,
+            timer: TIMER,
+            rolls: Rolls::FifteenBatches,
         }
+    }
+    pub(crate) fn zam_config() -> Config {
+        Config {
+            grapes: 20749,
+            unfermented: 20752,
+            other_unfermented: 1995,
+            wine: 245,
+            placeholder: 20753,
+            minimum_level: 65,
+            no_fail: 98,
+            low: -125,
+            high: 260,
+            members: true,
+            timer: ZAMORAK_TIMER,
+            rolls: Rolls::PerJug,
+            ..config()
+        }
+    }
+    pub(crate) fn zam_player(
+        pack: usize,
+        bank: i32,
+        level: i8,
+    ) -> (PlayerData, bank_actions::Config) {
+        let (mut p, c) = player(0, bank, level);
+        if bank > 0 {
+            p.bank
+                .restore_slot(
+                    0,
+                    Some(Item {
+                        id: 20752,
+                        count: bank,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+        }
+        for s in 0..pack {
+            p.inventory
+                .restore_slot(
+                    s,
+                    Some(Item {
+                        id: 20752,
+                        count: 1,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+        }
+        (p, c)
     }
     pub(crate) fn catalog() -> Catalog {
         let mut c = Catalog::default();
@@ -520,6 +631,20 @@ pub(crate) mod tests {
             19146,
             crate::inventory::Template {
                 link: 1995,
+                template: 14401,
+            },
+        );
+        c.placeholders.insert(
+            20752,
+            crate::inventory::Template {
+                link: 20753,
+                template: 0,
+            },
+        );
+        c.placeholders.insert(
+            20753,
+            crate::inventory::Template {
+                link: 20752,
                 template: 14401,
             },
         );
@@ -799,5 +924,133 @@ pub(crate) mod tests {
             Err(Error::Policy)
         );
         assert_eq!(b.tabs[9].get(&p.variables).unwrap(), 1);
+    }
+
+    #[test]
+    fn zamorak_wine_negative_curve_current_levels_and98_guarantee_keep_member_recipe_separate() {
+        let c = zam_config();
+        assert!(c.recipe().recipe.members);
+        assert_eq!(c.recipe().recipe.level, 65);
+        for level in [65, 75, 97, 98] {
+            for draw in [0, 255] {
+                let (mut p, b) = zam_player(2, 3, level);
+                let before = p.stats.fine_xp(7);
+                let mut rng = Fixed { draw, calls: 0 };
+                let out = c
+                    .ferment(&mut p, &catalog(), Some(&b), &mut rng)
+                    .unwrap()
+                    .unwrap();
+                let good = level == 98 || draw == 0;
+                assert_eq!(
+                    (out.successes, out.failures),
+                    (if good { 5 } else { 0 }, if good { 0 } else { 5 })
+                );
+                assert_eq!(rng.calls, if level == 98 { 0 } else { 5 });
+                assert_eq!(p.stats.fine_xp(7) - before, if good { 10000 } else { 0 });
+                assert_eq!(count(&p.inventory, if good { 245 } else { 1991 }), 2);
+                assert_eq!(count(&p.bank, if good { 245 } else { 1991 }), 3);
+            }
+        }
+        let (mut p, b) = zam_player(1, 0, 65);
+        p.stats.set_current(7, 64);
+        let mut rng = Fixed { draw: 0, calls: 0 };
+        assert_eq!(
+            c.ferment(&mut p, &catalog(), Some(&b), &mut rng)
+                .unwrap()
+                .unwrap()
+                .successes,
+            1
+        );
+        assert_eq!(rng.calls, 1);
+    }
+    #[test]
+    fn zamorak_wine_observed_per_jug_rolls_and_guaranteed_large_stock_do_not_change_plain_batches()
+    {
+        let (mut p, b) = zam_player(3, 28, 65);
+        let mut rng = Fixed { draw: 0, calls: 0 };
+        assert_eq!(
+            zam_config()
+                .ferment(&mut p, &catalog(), Some(&b), &mut rng)
+                .unwrap()
+                .unwrap()
+                .successes,
+            31
+        );
+        assert_eq!(rng.calls, 31);
+        let (mut p, b) = zam_player(0, 60000, 98);
+        let before = p.stats.fine_xp(7);
+        let mut rng = Fixed {
+            draw: 255,
+            calls: 0,
+        };
+        assert_eq!(
+            zam_config()
+                .ferment(&mut p, &catalog(), Some(&b), &mut rng)
+                .unwrap()
+                .unwrap()
+                .successes,
+            60000
+        );
+        assert_eq!(rng.calls, 0);
+        assert_eq!(p.stats.fine_xp(7) - before, 120_000_000);
+        assert_eq!(count(&p.bank, 245), 60000);
+    }
+    #[test]
+    fn zamorak_wine_preserves_other_kind_and_refuses_invalid_curve_or_mixed_capacity_before_draw() {
+        let (mut p, b) = zam_player(2, 3, 75);
+        p.inventory
+            .restore_slot(
+                2,
+                Some(Item {
+                    id: 1995,
+                    count: 1,
+                    vars: 0,
+                }),
+            )
+            .unwrap();
+        for (s, id, n) in [(1, 1995, 11), (2, 1993, 7), (3, 1991, 5)] {
+            p.bank
+                .restore_slot(
+                    s,
+                    Some(Item {
+                        id,
+                        count: n,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+        }
+        b.tabs[9].set(&mut p.variables, 4).unwrap();
+        let mut rng = Fixed {
+            draw: 255,
+            calls: 0,
+        };
+        let out = zam_config()
+            .ferment(&mut p, &catalog(), Some(&b), &mut rng)
+            .unwrap()
+            .unwrap();
+        assert_eq!((out.successes, out.failures, rng.calls), (0, 5, 5));
+        assert_eq!(count(&p.bank, 1995), 11);
+        assert_eq!(count(&p.bank, 1993), 7);
+        assert_eq!(count(&p.bank, 1991), 8);
+        assert_eq!(count(&p.inventory, 1995), 1);
+        for mode in 0..3 {
+            let (mut p, b) = zam_player(0, 10, 97);
+            let mut c = zam_config();
+            match mode {
+                0 => c.low = -65536,
+                1 => c.no_fail = 64,
+                _ => {
+                    b.capacity.set(&mut p.variables, 1).unwrap();
+                }
+            }
+            let before = p.clone();
+            let mut rng = Fixed { draw: 0, calls: 0 };
+            assert!(c.ferment(&mut p, &catalog(), Some(&b), &mut rng).is_err());
+            assert_eq!(rng.calls, 0);
+            assert_eq!(p.bank, before.bank);
+            assert_eq!(p.inventory, before.inventory);
+            assert_eq!(p.stats, before.stats);
+        }
     }
 }

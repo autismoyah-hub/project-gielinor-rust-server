@@ -4,9 +4,11 @@ impl World {
         &mut self,
         slot: usize,
         timers: &mut crate::player_timers::Timers,
+        timer: u16,
         random: &mut impl RandomSource,
     ) -> bool {
-        let Some(config) = self.wine else {
+        let Some(config) = crate::wine::for_timer([self.wine, self.zamorak_wine], timer) else {
+            timers.remove(timer);
             return true;
         };
         let Some(p) = self.players.get_mut(slot) else {
@@ -22,7 +24,7 @@ impl World {
             random,
         ) {
             Ok(result) => {
-                timers.remove(crate::wine::TIMER);
+                timers.remove(config.timer);
                 if let Some(result) = result {
                     if let Some(advancement) = result.advancement {
                         if self.tutorial_rules_completed_varp.is_some()
@@ -260,5 +262,196 @@ mod tests {
                 assert_eq!(w.data(a).unwrap().stats.fine_xp(7) - baseline, 2000);
             }
         }
+    }
+
+    fn zam_fixture(
+        level: i8,
+        member: bool,
+    ) -> (World, ActorId, Option<crate::assembly_production::Request>) {
+        let (mut w, a, _) = fixture();
+        let config = wine::tests::zam_config();
+        w.zamorak_wine = Some(config);
+        w.set_membership(a, member).unwrap();
+        let stats = &mut w.data_mut(a).unwrap().stats;
+        stats.set_base(7, level);
+        stats.set_current(7, level);
+        stats
+            .set_xp(7, crate::skills::xp_from_level(level as u8).unwrap())
+            .unwrap();
+        for s in [0, 2, 4] {
+            w.data_mut(a)
+                .unwrap()
+                .inventory
+                .restore_slot(
+                    s,
+                    Some(Item {
+                        id: 20749,
+                        count: 1,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+        }
+        w.held_use_types.insert(
+            20749,
+            Type {
+                id: 20749,
+                content: 0,
+            },
+        );
+        w.held_use_handlers
+            .register(
+                Scope::Types,
+                20749,
+                1937,
+                Handler::AssemblyProduction {
+                    recipe: config.recipe(),
+                    cycle_ticks: 2,
+                },
+            )
+            .unwrap();
+        let held = Held {
+            selected_slot: 1,
+            selected_id: 1937,
+            target_slot: 0,
+            target_id: 20749,
+        };
+        w.prepare_held_use(a, held).unwrap();
+        w.finish_held_use(a, held).unwrap();
+        let req = w.take_assembly_production_request(a).unwrap();
+        (w, a, req)
+    }
+    #[test]
+    fn zamorak_wine_actual_pair_selects_second_family_and_only_resets_its_timer() {
+        let (mut w, a, req) = zam_fixture(98, true);
+        let req = req.unwrap();
+        assert_eq!(req.wine, Some(wine::tests::zam_config()));
+        let baseline = w.data(a).unwrap().stats.fine_xp(7);
+        let start = w.clock.0;
+        w.start_assembly_production(a, req, 0, 2).unwrap();
+        let mut clocks = Vec::new();
+        for _ in 0..12 {
+            w.tick_with_random(&mut NoDraw).unwrap();
+            for e in w.drain_events() {
+                if let WorldEvent::AssemblyMade { trace, .. } = e {
+                    clocks.push(trace.committed_at);
+                }
+            }
+        }
+        assert_eq!(clocks, vec![start + 3, start + 5]);
+        assert_eq!(count(&w, a, 20752), 2);
+        assert_eq!(w.data(a).unwrap().stats.fine_xp(7), baseline);
+        let p = w.players.get(a.slot as usize).unwrap();
+        assert!(p.soft_timers.get(wine::TIMER).is_none());
+        assert_eq!(
+            p.soft_timers.get(wine::ZAMORAK_TIMER).unwrap().expiry,
+            clocks[1] + 20
+        );
+        w.set_modal_open(a, true).unwrap();
+        for _ in 0..25 {
+            w.tick_with_random(&mut NoDraw).unwrap();
+        }
+        assert_eq!(count(&w, a, 245), 2);
+        assert_eq!(count(&w, a, 1995), 0);
+        assert_eq!(w.data(a).unwrap().stats.fine_xp(7) - baseline, 4000);
+    }
+    #[test]
+    fn zamorak_wine_live_membership_and_level_guard_mixing_without_blocking_finished_jug_timer() {
+        let (w, _, req) = zam_fixture(98, false);
+        assert!(req.is_none());
+        drop(w);
+        let (mut w, a, req) = zam_fixture(64, true);
+        let before = w.data(a).unwrap().clone();
+        w.start_assembly_production(a, req.unwrap(), 0, 1).unwrap();
+        for _ in 0..8 {
+            w.tick_with_random(&mut NoDraw).unwrap();
+        }
+        assert_eq!(w.data(a).unwrap().inventory, before.inventory);
+        assert_eq!(w.data(a).unwrap().stats, before.stats);
+        let (mut w, a, req) = zam_fixture(98, true);
+        let baseline = w.data(a).unwrap().stats.fine_xp(7);
+        w.start_assembly_production(a, req.unwrap(), 0, 3).unwrap();
+        for _ in 0..8 {
+            w.tick_with_random(&mut NoDraw).unwrap();
+            if count(&w, a, 20752) == 1 {
+                break;
+            }
+        }
+        w.set_membership(a, false).unwrap();
+        for _ in 0..30 {
+            w.tick_with_random(&mut NoDraw).unwrap();
+        }
+        assert_eq!(count(&w, a, 20749), 2);
+        assert_eq!(count(&w, a, 245), 1);
+        assert_eq!(w.data(a).unwrap().stats.fine_xp(7) - baseline, 2000);
+    }
+    #[test]
+    fn both_wine_login_timers_recover_and_normal_reset_does_not_postpone_zamorak() {
+        let mut w = World::default();
+        w.wine = Some(wine::tests::config());
+        w.zamorak_wine = Some(wine::tests::zam_config());
+        w.object_types = wine::tests::catalog();
+        let (mut p, b) = wine::tests::player(2, 0, 98);
+        p.inventory
+            .restore_slot(
+                1,
+                Some(Item {
+                    id: 20752,
+                    count: 1,
+                    vars: 0,
+                }),
+            )
+            .unwrap();
+        w.banking = Some(b);
+        w.queue_login(1, p).unwrap();
+        w.tick_with_random(&mut NoDraw).unwrap();
+        let a = w.actors().next().unwrap();
+        let baseline = w.data(a).unwrap().stats.fine_xp(7);
+        let original = w
+            .players
+            .get(a.slot as usize)
+            .unwrap()
+            .soft_timers
+            .get(wine::ZAMORAK_TIMER)
+            .unwrap()
+            .expiry;
+        for _ in 0..5 {
+            w.tick_with_random(&mut NoDraw).unwrap();
+        }
+        let now = w.clock.0;
+        w.players
+            .get_mut(a.slot as usize)
+            .unwrap()
+            .soft_timers
+            .schedule(wine::TIMER, now, wine::INTERVAL)
+            .unwrap();
+        assert_eq!(
+            w.players
+                .get(a.slot as usize)
+                .unwrap()
+                .soft_timers
+                .get(wine::ZAMORAK_TIMER)
+                .unwrap()
+                .expiry,
+            original
+        );
+        for _ in 0..25 {
+            w.tick_with_random(&mut NoDraw).unwrap();
+            if count(&w, a, 245) == 1 {
+                assert_eq!(count(&w, a, 1995), 1);
+                break;
+            }
+        }
+        assert_eq!(count(&w, a, 245), 1);
+        for _ in 0..10 {
+            w.tick_with_random(&mut NoDraw).unwrap();
+        }
+        assert_eq!(count(&w, a, 1993), 1);
+        assert_eq!(w.data(a).unwrap().stats.fine_xp(7) - baseline, 4000);
+        let p = w.players.get(a.slot as usize).unwrap();
+        assert!(
+            p.soft_timers.get(wine::TIMER).is_none()
+                && p.soft_timers.get(wine::ZAMORAK_TIMER).is_none()
+        );
     }
 }

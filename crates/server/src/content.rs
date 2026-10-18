@@ -6,7 +6,7 @@ pub use cooking_cape_no_burn::cooking_cape_no_burn;
 mod cooking_gauntlets;
 pub use cooking_gauntlets::cooking_gauntlets;
 mod plain_wine;
-pub use plain_wine::plain_wine;
+pub use plain_wine::{plain_wine,zamorak_wine};
 mod crafting_cape_boost;
 pub use crafting_cape_boost::crafting_cape_boost;
 mod guild_passages;

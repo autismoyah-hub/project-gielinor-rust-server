@@ -7,7 +7,10 @@ impl World {
         timer: u16,
         random: &mut impl RandomSource,
     ) -> bool {
-        if timer==crate::wine::TIMER && self.wine.is_some(){return self.process_wine_ferment(slot,timers,random);}
+        if [crate::wine::TIMER,crate::wine::ZAMORAK_TIMER].contains(&timer){
+            if crate::wine::for_timer([self.wine,self.zamorak_wine],timer).is_some(){return self.process_wine_ferment(slot,timers,timer,random);}
+            timers.remove(timer);return true;
+        }
         if self
             .tower_restore
             .as_ref()

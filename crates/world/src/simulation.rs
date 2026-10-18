@@ -957,6 +957,7 @@ pub struct World {
     pub coin_pouches: BTreeMap<i32,crate::item_packs::PouchRule>,
     pub prayer: Option<crate::prayer::Config>,
     pub wine: Option<crate::wine::Config>,
+    pub zamorak_wine: Option<crate::wine::Config>,
     pub prayer_preservation: Option<crate::prayer_preservation::Rule>,
     pub prayer_member_bones: std::collections::BTreeSet<i32>,
     pub prayer_ashes: BTreeMap<i32,u16>,
@@ -1083,6 +1084,7 @@ impl Default for World {
             combat_mixing: None,
             prayer: None,
             wine: None,
+            zamorak_wine: None,
             prayer_preservation: None,
             prayer_member_bones: Default::default(),
             prayer_ashes: BTreeMap::new(),
@@ -2611,7 +2613,7 @@ impl World {
                                                 }
                                                 Deferred::Runecrafting(pending)=>{let revision=self.locations.revision(pending.location);runecrafting_actions::complete(p,pending,self.runecrafting.as_ref(),&self.object_types,revision,self.tutorial_rules_completed_varp.is_some(),random,&mut self.events);}
                                                 Deferred::FacilityCrafting(pending) => {let revision=self.locations.revision(pending.request.location);facility_crafting_actions::complete(p,queues,pending,&self.object_types,revision,self.tutorial_rules_completed_varp.is_some(),&mut self.events,random);}
-                                                Deferred::AssemblyProduction(pending) => {assembly_production_actions::complete(p,queues,pending,&self.object_types,self.wine,self.clock.0,&mut self.events);}
+                                                Deferred::AssemblyProduction(pending) => {assembly_production_actions::complete(p,queues,pending,&self.object_types,[self.wine,self.zamorak_wine],self.clock.0,&mut self.events);}
                                                 Deferred::Assembly(pending) => {
                                                     held_use_actions::complete_assembly_reward_with_tools(p,pending.job,&self.object_types,pending.queued_at,self.clock.0,pending.xp_tenths,pending.required_tools,&mut self.events);
                                                 }
@@ -3037,9 +3039,9 @@ impl World {
                         if let Some(config) = &self.regeneration {
                             config.login(&mut soft_timers, protection.current_clock);
                         }
-                        if let Some(config) = self.wine {
+                        for config in [self.wine,self.zamorak_wine].into_iter().flatten() {
                             if config.pending(&data) && protection.current_clock.checked_add(crate::wine::INTERVAL).is_some() {
-                                soft_timers.schedule(crate::wine::TIMER,protection.current_clock,crate::wine::INTERVAL).expect("positive wine interval");
+                                soft_timers.schedule(config.timer,protection.current_clock,crate::wine::INTERVAL).expect("positive wine interval");
                             }
                         }
                         if let Some(config) = &self.music {

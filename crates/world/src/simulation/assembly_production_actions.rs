@@ -18,7 +18,7 @@ impl World {
             p.movement.last_movement,
         )
         .ok_or(ActionError::InvalidItem)?;
-        request.wine = self.wine.filter(|w| w.matches(recipe));
+        request.wine = crate::wine::for_recipe([self.wine, self.zamorak_wine], recipe);
         if let Some(wine) = request.wine {
             if let Err(error) = wine.mixing_allowed(&p.data, &self.object_types, self.clock.0) {
                 self.events.push(WorldEvent::LocationMessage {
@@ -91,7 +91,7 @@ impl World {
         let jobs = request
             .jobs(&p.data.inventory, count as usize)
             .ok_or(ActionError::InvalidItem)?;
-        if request.wine != self.wine.filter(|w| w.matches(request.recipe)) {
+        if request.wine != crate::wine::for_recipe([self.wine, self.zamorak_wine], request.recipe) {
             return Err(ActionError::InvalidItem);
         }
         if let Some(wine) = request.wine {
@@ -190,7 +190,7 @@ pub(super) fn complete(
     queues: &mut crate::queues::Scheduler<Deferred>,
     mut pending: Pending,
     items: &crate::inventory::Catalog,
-    wine: Option<crate::wine::Config>,
+    wines: [Option<crate::wine::Config>; 2],
     clock: i32,
     events: &mut Vec<WorldEvent>,
 ) {
@@ -210,7 +210,7 @@ pub(super) fn complete(
     let Some(&job) = pending.jobs.get(pending.index) else {
         return;
     };
-    if pending.request.wine != wine.filter(|w| w.matches(pending.request.recipe)) {
+    if pending.request.wine != crate::wine::for_recipe(wines, pending.request.recipe) {
         return;
     }
     if let Some(config) = pending.request.wine {
@@ -235,9 +235,9 @@ pub(super) fn complete(
     if outcome != crate::assembly::Outcome::Made || p.pending_logout {
         return;
     }
-    if pending.request.wine.is_some() {
+    if let Some(config) = pending.request.wine {
         p.soft_timers
-            .schedule(crate::wine::TIMER, clock, crate::wine::INTERVAL)
+            .schedule(config.timer, clock, crate::wine::INTERVAL)
             .expect("validated wine deadline and positive interval");
     }
     pending.index += 1;
