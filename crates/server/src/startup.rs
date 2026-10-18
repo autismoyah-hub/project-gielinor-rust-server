@@ -365,6 +365,9 @@ pub fn configure<B: AccountBackend>(
     slot_preserving_foods.extend(random_foods.selected);
     slot_preserving_foods.extend(crate::content::meal_foods(n("obj"),&runtime.definitions,&mut foods).map_err(io::Error::other)?);
     slot_preserving_foods.extend(crate::content::bowl_foods(n("obj"),&runtime.definitions,&mut foods).map_err(io::Error::other)?);
+    let dorgesh=crate::content::dorgesh_foods(n("obj"),n("stat"),&runtime.definitions,&mut foods).map_err(io::Error::other)?;
+    slot_preserving_foods.extend(dorgesh.selected);
+    boost_foods.boosts.extend(dorgesh.boosts);
     runtime.configure_foods(held, foods, names.short("seq", "human_eat")?)?;
     runtime.world.food_healing=healing_foods.healing;
     runtime.world.food_random_healing=random_foods.healing;
