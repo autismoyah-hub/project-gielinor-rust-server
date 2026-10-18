@@ -3,9 +3,9 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0071: counted stack tool outputs and four amethyst native choices, source [bc277dc](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/bc277dc3e7e15088323a4f048f57dc43185fb7c0). Full-credit overflow rollback and per-raw XP; existing count-one/fallible/immediate users retained. Shared regression PASS; independent V0–V4 queued.
+OR-MIG-0072: four zero-XP soft-clay vessels and atomic container returns, source [55e57b2](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/55e57b293e632aadc7356c4cc709bdbeec2bbf90). Shared batch skill-aware refusals; PASS116server472world/1ignored429 unchanged hashes. Independent V0–V4 queued.
 
-71 units / 79 append-only records: 23 historical,48 new shared/gameplay. Discovery3508=38partial eligible+4framework/infrastructure+658configuration+2808unassessed, not completion percentages. Material ratios/catalysts/facilities and broad content remain. PG-DEF-001 Close candidate b11260e pending independent retest. Continue eligible implementation.
+72 units / 80 append-only records: 23 historical,49 new shared/gameplay. Discovery3508=38partial eligible+4framework/infrastructure+658configuration+2808unassessed, not completion percentages. Cup/drained0 eligibility, catalysts/facilities and broad content remain. PG-DEF-001 Close candidate b11260e pending independent retest. Continue eligible implementation.
 <!-- forge-current:end -->
 
 
@@ -379,3 +379,14 @@ Existing grinding complete() delegates count1 to checked complete_count; tool Re
 forge-amethyst-tests-attempt-001 PASS, 428 unchanged source hashes: test result: ok. 114 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.00s; test result: ok. 472 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 20.94s. Four full-bag counts/per-raw XP/no RNG/initial overflow rollback checked. Actual four-choice dart batch merges3raw->24tips/2250fine; near-max stack commits one raw then rejects next whole credit at i32::MAX, preserves later raw and750fine. Existing grinding/gems/shells/glass/fallible/zero-XP/immediate profiles regressed. Guard7,638MiB available,54.4%commit,3394pages-in/s,1.3msdisk,21.7%CPU,j2; paging alone did not meet sustained joint severity threshold. Strict edit guard matched two XP structs after constructor count fields; resumed only remaining edits without duplicating fields. No Cargo failure from that guard; private historical failures/evidence preserved. Not independent/native/pristine acceptance.
 
 Queue71units/79append-onlyrecords:23historical48newshared/gameplay. Discovery3508=38partial eligible+4framework/infrastructure+658configuration+2808unassessed, not completion percentages. Broad content remains; PG-DEF-001 Close candidate pending independent retest. Continue eligible implementation.
+
+
+## FORGE OR-MIG-0072 — zero-XP ordinary clay softening
+
+Published source 55e57b293e632aadc7356c4cc709bdbeec2bbf90. Four actual AssemblyBatch held registrations mix clay434 with bucket1929/jug1937/bowl1921/vial227 water -> soft clay1761 plus correct empty1925/1935/1923/229. Existing multi-material selected transaction stages both debits/credits before publication, including full bag. Wiki no-XP recipes override donor1XP; Stats stay unchanged and rate0 works/no advancement event. Nominal2 ticks source/Wiki. Ten ordinary target definitions and ten Wiki/source references pinned. No donor code/generated data/assets copied.
+
+Source bucket/jug/bowl overlap Wiki; vial is an explicit Wiki addition and source cup remains unverified/unported. Source current Crafting1 admission retained; drained0 eligibility is not independently established by Wiki no-skill fields. Shared batch admission/completion now use actual recipe skill for refusals instead of hardcoded Cooking; old Cooking wording remains. Automatic mixing, Humidify/runes, clay mining/bracelet, pottery/Construction and cup remain separate.
+
+forge-soft-clay-tests-attempt-001 PASS116server472world/1ignored429 unchanged source hashes,compile33.75s. Actual reverse held routes for all vessels check two full-bag outputs/empty return/no XP/no event/other clay at rate0. Bad second credit, stale water and live level0 preserve both materials/Stats; invalid final return definition rejects catalog. Shared legacy users regressed. Guard7,346MiB available,55.9%commit,0pages-in/s,1.6msdisk,24.7%CPU,Cargo-j2. Private/historical evidence preserved; not independent/native/pristine acceptance.
+
+Queue72units/80append-onlyrecords:23historical49newshared/gameplay. Discovery3508=38partial eligible+4framework/infrastructure+658configuration+2808unassessed, not completion percentages. PG-DEF-001 Close candidate pending independent retest; no new PG findings in the latest issue search. Continue eligible content.
