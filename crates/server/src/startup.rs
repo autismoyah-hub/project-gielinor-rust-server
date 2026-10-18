@@ -390,6 +390,7 @@ pub fn configure<B: AccountBackend>(
     boost_foods.boosts.extend(flat_drinks.boosts);
     let wine_drink=crate::content::wine_drink(n("obj"),n("stat"),&runtime.definitions,&mut foods).map_err(io::Error::other)?;
     slot_preserving_foods.insert(wine_drink.0);
+    slot_preserving_foods.extend(crate::content::giant_crab_food(n("obj"),&runtime.definitions,&mut foods).map_err(io::Error::other)?);
     runtime.configure_foods(held, foods, names.short("seq", "human_eat")?)?;
     runtime.world.food_subtractions.insert(wine_drink.0,vec![wine_drink.1]);
     runtime.world.food_subtractions.extend(flat_drinks.subtractions);

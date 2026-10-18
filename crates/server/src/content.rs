@@ -1,4 +1,6 @@
 //! Resolve content's symbolic references against the same immutable type inputs as Kotlin.
+mod giant_crab_food;
+pub use giant_crab_food::giant_crab_food;
 mod native_consumables;
 pub use native_consumables::native_consumables;
 mod standard_tea;
