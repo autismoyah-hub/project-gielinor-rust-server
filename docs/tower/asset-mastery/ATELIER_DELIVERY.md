@@ -108,6 +108,7 @@ Retain tool/input hashes, source revision and failed iterations at every step.
 
 ```text
 python tools/tower/asset-workbench/adaptive_reconstruction.py PRIVATE/reference/geometry.json PRIVATE/new-static-proposal --metadata PRIVATE/reference/metadata.json
+python tools/tower/asset-workbench/review_static_mastery.py --private PRIVATE/workbench-mastery --server SERVER_CHECKOUT
 python tools/tower/asset-workbench/build_private_mastery_review.py --private PRIVATE/workbench-mastery
 python tools/tower/asset-workbench/build_mastery_review.py --private PRIVATE/workbench-mastery --server SERVER_CHECKOUT
 ```
