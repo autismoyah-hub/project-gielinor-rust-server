@@ -1,4 +1,6 @@
 //! Resolve content's symbolic references against the same immutable type inputs as Kotlin.
+mod berries_cream_food;
+pub use berries_cream_food::berries_cream_food;
 mod hunter_roast_food;
 pub use hunter_roast_food::hunter_roast_food;
 mod gnome_ingredients;
