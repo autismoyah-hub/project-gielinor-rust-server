@@ -3,9 +3,9 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0068: Wiki-fallible crab helmet/claw carving, source [894646a](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/894646a79fa4ba7e3e8b46af6ec000dc6b796514). Actual native choice registration, staged success/broken credits and zero-XP failure. Focused PASS2 server tests/424 hashes unchanged; independent V0–V4 queued.
+OR-MIG-0069: captured pair quantity production for eighteen existing stringing/battlestaff profiles; source [fb348dd](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/fb348dda184b36ec2d503bfe0f1d5393cf8ae151). Actual SkillMulti token/permission route and atomic per-step selected pairs. Shared regression PASS; independent V0–V4 queued.
 
-68 units / 76 append-only records: 23 historical and 45 new shared/gameplay. Discovery3508=38partial eligible+4framework/infrastructure+658configuration+2808unassessed, not completion percentages. Automatic pair production, wider Crafting/facilities/quest acquisition and other content remain. PG-DEF-001 Close candidate b11260e pending independent retest. Continue eligible implementation.
+69 units / 77 append-only records: 23 historical, 46 new shared/gameplay. Discovery3508=38partial eligible+4framework/infrastructure+658configuration+2808unassessed, not completion percentages. Broader Crafting/facilities/catalysts/stack production and content remain. PG-DEF-001 Close candidate b11260e pending independent retest. Continue eligible implementation.
 <!-- forge-current:end -->
 
 
@@ -346,3 +346,14 @@ Fresh shell/claw Wiki pages tie partial Freeing Pirate Pete to Mogre Camp access
 forge-crab-carving-tests-attempt-002 PASS2server/0world matched,424 unchanged source hashes,compile31.92s. Both profiles exact roll boundaries and zero-XP/no-advancement broken outcomes, invalid broken credit before RNG; actual held-choice success/break batch yields helmet+broken shell,406 fine XP at125%,one skill event,retained chisel/full bag. Attempt001 new-test compile failure (Catalog lacks clone) preserved, corrected via fresh definitions catalog. Guard7,092MiB available,56.7%commit,989pages-in/s,1.0msdisk,56.8%CPU,j2; paging did not meet the sustained-severity condition. Shared engine unchanged; no independent/native acceptance claimed.
 
 Queue68units/76append-onlyrecords:23historical45newshared/gameplay. Inventory unchanged:3508=38partial eligible+4framework/infrastructure+658configuration+2808unassessed; not completion percentages. PG-DEF-001 Close candidate pending independent retest. Continue eligible implementation.
+
+
+## FORGE OR-MIG-0069 — captured pair quantity production
+
+Published source fb348dda184b36ec2d503bfe0f1d5393cf8ae151. Eighteen existing recipes now use actual native SkillMulti quantity choices: eleven amulet stringing, three ordinary symbol/emblem/rabbit-foot stringing and four elemental battlestaff attachments. Recipe catalogs/levels/member/rewards remain unchanged; original manual APIs remain. Shared captured-pair scheduler reuses complete_assembly_reward, existing selected two-input exchange and precise XP publication, rather than creating another inventory engine. Existing modal permissions, one-use quantity tokens and Close flow gate resumption.
+
+Capture selected pair first, then available distinct ordinary count1 slot pairs once, capped by actual materials/request1–28. Each step rechecks actor origin/live policy/exact slots and commits inventory+Stats together. Late invalid material stops without substitution or losing earlier rewards. Stringing nominal source first1/repeat2; Wiki pages list2 ticks and exact input/first-action interpretation remains independent. Staff Make-X first3/repeat2 follows explicit Wiki notes; manual2 API remains. Transition traces record actual enqueue/commit clocks.
+
+forge-pair-production-tests-attempt-001 PASS, 426 unchanged source hashes: test result: ok. 110 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.61s; test result: ok. 472 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 28.30s. Representative F2P stringing/member earth-staff full-bag batches capture selected19/17 then3/8,11/22; totals150/4218 fine XP at125% with separate per-award rounding. Invalid option/count/member/rate/credit and later stale/no-fallback,Close,member/rate/credit/level cancellation checks preserve state. Guard6,839MiB available,57.5%commit,82pages-in/s,1.1msdisk,43.7%CPU,Cargo-j2; other compiler presence informational. Private resources and all prior failures preserved. Working-tree regression is not pristine/native/independent acceptance.
+
+Queue69units/77append-onlyrecords:23historical46newshared/gameplay. Discovery inventory unchanged3508=38partial eligible+4framework/infrastructure+658configuration+2808unassessed, not completion percentages. Stack ratios/catalysts/facilities, other recipes, audio and broader content remain; PG-DEF-001 native Close candidate pending independent retest. Continue eligible implementation.
