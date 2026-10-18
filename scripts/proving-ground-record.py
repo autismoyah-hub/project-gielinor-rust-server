@@ -30,7 +30,7 @@ for ident,folder,sha in [('OR-MIG-0010','deep-combat','5a260c1bd6efa5f8a221bed7c
         add(ident,sha,'V4','IN_PROGRESS','Independent protected-source and pinned-documentation subcomparisons PASS within recorded scope; complete feature comparison remains open. No executable donor parity is claimed.',refs)
 for manifest in OUT.glob('OR-MIG-0024-*-independent*/manifest.json'):
     value=json.loads(manifest.read_text(encoding='utf-8'))
-    if value.get('suite','').startswith('imcando-held-'):continue  # Scoped aggregate retains partial and resource-deferred attempts.
+    if value.get('suite','').startswith(('imcando-held-','imcando-worn-')):continue  # Scoped aggregate retains partial and resource-deferred attempts.
     if value.get('suite')=='light-life':continue  # Exact-target finding below retains raw FAIL/BLOCKED attempts.
     if value.get('outcome')!='PARTIAL':continue
     sha=value['implementation_commit_sha'];evidence=[str(manifest.relative_to(ROOT)).replace('\\','/')]
@@ -38,6 +38,7 @@ for manifest in OUT.glob('OR-MIG-0024-*-independent*/manifest.json'):
     add('OR-MIG-0024',sha,'V1','IN_PROGRESS','Four independent authoritative World action tests PASS across 319 fixtures: all selected slots, full bags, duplicate/stale input, overheal, remainders and malformed transactions. Runtime packet decode and complete food matrix remain open.',evidence)
 for manifest in OUT.glob('integration-*/manifest.json'):
     value=json.loads(manifest.read_text(encoding='utf-8'))
+    if value.get('suite','').startswith(('imcando-held-','imcando-worn-')):continue  # Recorded by immutable scoped aggregate below, not legacy filter format.
     if value.get('suite') in ['member-tanning-world','member-tanning-guards']:
         continue  # Combined independent assessment includes retained partial attempt.
     if value.get('suite') in ['light-legacy-bindings','light-bindings','light-tool-regression']:
@@ -643,4 +644,24 @@ for folder,ident in [('reference-imcando-held','OR-MIG-0108'),('reference-imcand
     if path.exists():
         result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PASS_REFERENCE_FACTS'
         add(ident,result['tested_sha'],'V4','IN_PROGRESS',result['scope']+' Native/cache/World/lifecycle and complete reference acceptance remain separate.',[path.relative_to(ROOT).as_posix()],scope='independent-'+folder+'-facts')
+path=OUT/'imcando-held-authoritative-complete.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PASS_APPLICABLE_V1'
+    add('OR-MIG-0108',result['tested_sha'],'V1','PASS',result['scope'],[path.relative_to(ROOT).as_posix()],scope='imcando-held-authoritative-obligations-complete')
+path=OUT/'imcando-worn-authoritative-partial.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    for level in ['V0','V1']:add('OR-MIG-0109',result['tested_sha'],level,'IN_PROGRESS',result['scope']+' Remaining: '+'; '.join(result['remaining']),[path.relative_to(ROOT).as_posix()],scope='imcando-worn-independent-partial')
+path=OUT/'imcando-worn-authoritative-complete.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PASS_APPLICABLE_V1'
+    add('OR-MIG-0109',result['tested_sha'],'V1','PASS',result['scope'],[path.relative_to(ROOT).as_posix()],scope='imcando-worn-applicable-authoritative-complete')
+path=OUT/'imcando-held-disposition.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='ACCEPTED_HISTORICAL'
+    for level,value in result['levels'].items():add('OR-MIG-0108',result['tested_sha'],level,value['status'],value['reason'],[path.relative_to(ROOT).as_posix()],scope='imcando-held-applicable-obligations-complete')
+    coarse_path=DOC/'VERIFICATION_RESULTS.jsonl';attempt='imcando-held-applicable-obligations-complete-'+result['tested_sha']
+    if not any(json.loads(s)['attempt_id']==attempt for s in coarse_path.read_text(encoding='utf-8').splitlines()):
+        row={'attempt_id':attempt,'implementation_id':'OR-MIG-0108','implementation_commit_sha':result['tested_sha'],'contract_revision':1,'campaign_kind':'historical','outcome':'VERIFIED','level':'V0PASS/V1PASS/V2PASS/V3PASS/V4PASS','independent_verification':True,'tests_passed':0,'coverage':[k+' '+v['status']+': '+v['reason'] for k,v in result['levels'].items()],'reason':result['scope'],'evidence':[path.relative_to(ROOT).as_posix()],'issues':[]}
+        with coarse_path.open('a',encoding='utf-8',newline='\n') as f:f.write(json.dumps(row)+'\n')
 print('Per-level evidence events:',len(rows))

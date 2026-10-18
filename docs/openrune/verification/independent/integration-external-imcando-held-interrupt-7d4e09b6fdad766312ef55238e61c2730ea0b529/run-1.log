@@ -1,0 +1,18 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\7d4e09b6fdad766312ef55238e61c2730ea0b529\external-harness-8594491300)
+warning: unused imports: `Hit`, `Style`, and `Target`
+ --> tests\interrupt.rs:2:142
+  |
+2 | ...layerData,ActorId,Action,WorldEvent},stats::Stats,hits::{Hit,Target,Style},CoordGrid};
+  |                                                             ^^^ ^^^^^^ ^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `proving-ground-energy` (test "interrupt") generated 1 warning (run `cargo fix --test "interrupt" -p proving-ground-energy` to apply 1 suggestion)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.68s
+     Running tests\interrupt.rs (C:\Projects\OSRSRSPS\agent7-verification\work\7d4e09b6fdad766312ef55238e61c2730ea0b529\target\debug\deps\interrupt-386e0364f8baaffd.exe)
+
+running 1 test
+PG_IMCANDO_HELD weak_work_cancelled=4;10tick synthetic queue is interruption control,not gem cadence acceptance
+test four_held_swaps_cancel_preexisting_weak_crafting_without_credit ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.68s

@@ -1,0 +1,20 @@
+{
+  "implementation_id": "OR-MIG-0108",
+  "tested_sha": "7d4e09b6fdad766312ef55238e61c2730ea0b529",
+  "status": "PASS_SCOPED",
+  "refusals": 5,
+  "malformed_disconnects": 1,
+  "raw_campaign_status": "FAIL",
+  "reason": "QA observer expected connection continuity after out-of-range operation0. Pinned decoder explicitly rejects values outside1..10; actual owned native connection closes, whole raw inventory remains unchanged and acknowledged disposable SQL save conserves inventory/gear/Stats/fractions/membership/energy. Five earlier wrong/closed component, wrong explicit form and slot28/65535 refusals passed independently; no implementation defect alleged. Remaining in-range wrong operations/broken/UseCancel/followup move to a fresh run,successful prefix not repeated.",
+  "target_decoder_sha256": "071842d5de7b6a1ca0ab36e9042cb037b6b28d96722cf0ef63a737e78143f3ed",
+  "evidence_sha256": {
+    "initial-state.json": "c1d9bdd5a80a1a5f5fba1fa0fc20735f91456bd24ec152e8316210881e01e5d6",
+    "build.json": "b3d5ce39df8cafa47980febc439c0c202a4a4e3037a8f51b3122c8d251b45c00",
+    "resources.json": "61e85968c52181a771d4cb472e68948552db3fdb33006dd2a062dc8ffad9206d",
+    "produce/client.log": "baac9b7eb12811676b46aeb157a7b486f54be0bf6c1929924bb0777ac7875f7e",
+    "produce/manifest.json": "307bb6141d0ae18f60b8d8abd4d71a7f8d8b440a1bee4f07446ee6d6db7f014b",
+    "produce/after.json": "0e9d294461e300901aed5905474d49410d10f1db0c7ad7c0923e5f98fec86439",
+    "frozen-observer/pg_observer.rs": "90f6a5168493d4fd4781975e73773203bacced4ada9996b35cdaea9926537aff",
+    "frozen-observer/build.json": "6171b766e4c7428afc1a3ca8a3a13e3c2089f2edcceba27b559dd62467e71091"
+  }
+}

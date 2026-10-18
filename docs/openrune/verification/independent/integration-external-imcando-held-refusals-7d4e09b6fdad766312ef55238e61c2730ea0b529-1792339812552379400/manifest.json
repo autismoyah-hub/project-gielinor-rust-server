@@ -1,0 +1,65 @@
+{
+  "tested_integration_sha": "7d4e09b6fdad766312ef55238e61c2730ea0b529",
+  "suite": "imcando-held-refusals",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 5585379328,
+    "active_compilers": [],
+    "cpu_percent": 28.91,
+    "cpu_samples": [
+      43.9453125,
+      23.6328125,
+      19.140625
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Existing project memory/commit/paging checks and sampled CPU ceiling; owned Cargo remains j1/two CPUs/BelowNormal",
+    "capacity_policy_sha256": "dc3c6e372de5369ab77c4ebbd7cf21c426d0916581e11f2377480eba79adcdfd",
+    "memory_preflight_exit": 0,
+    "memory_preflight_stdout": "Capacity: 5,246 MiB available, commit 60.0%, pages-in/s 1,016, disk 0.3 ms.\nCargo concurrency: -j 2\n",
+    "memory_preflight_stderr": "",
+    "disk_free": 14801649664,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "2a91110e86af768dbc8ed2cced41a10b9aee3a88",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\7d4e09b6fdad766312ef55238e61c2730ea0b529\\external-harness-0981131900\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-imcando-held-refusals-7d4e09b6fdad766312ef55238e61c2730ea0b529-1792339812552379400\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\7d4e09b6fdad766312ef55238e61c2730ea0b529\\external-harness-0981131900\\Cargo.toml",
+        "--",
+        "--nocapture"
+      ],
+      "exit_code": 0,
+      "tests_passed": 1,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-imcando-held-refusals-7d4e09b6fdad766312ef55238e61c2730ea0b529-1792339812552379400\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative imcando-held-refusals scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-imcando-held-refusals-7d4e09b6fdad766312ef55238e61c2730ea0b529-1792339812552379400\\harness\\refusals.rs": "f78748aae673c3789e47d483594160d4ac01d0dd12f82dc800815810d15b9c18"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\refusals-616390cffeb88c1f.exe": "33fc9cbfe0a4433135c0fcae4c476493a48ac3ee2fadcbd0c669ab2062c10d1c",
+    "target\\debug\\deps\\world-939eb82907915179.exe": "4ce8237b3199e35f4300cb68d93f81cbfab089634ba9ba165777ce2de6176140"
+  }
+}

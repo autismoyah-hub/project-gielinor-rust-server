@@ -1,0 +1,23 @@
+{
+  "implementation_id": "OR-MIG-0108",
+  "tested_sha": "7d4e09b6fdad766312ef55238e61c2730ea0b529",
+  "status": "PASS_APPLICABLE_V1",
+  "scope": "Applicable authoritative held-only Swap requirements complete.224actual registered World positive/stale cases cover28clicked slots/both forms/memberandF2P/fullandsparsebags, exact selected consumption/earliest-gap credit/retained matching duplicate/gear/Stats/noXP/noautomatic replay. Original rawFAIL contains11completed refusal prefix before QA mutable-after-logout error; distinct corrected53tailPASS completes64refusals (stale explicit claim/missing-wrong-count-variable input/bad output/input metadata/modal/delay/logout/zeroHP/actualqueueddeath restoredHP/placeholders/missinghandler), whole images and clean modified flags conserved. Four new genuine scheduled weak-crafting interruption controls cancel remaining inputs/XP after either-form Swap;10tick synthetic queue is interruption control,not gem cadence. Actual two cache form definitions/Swap thirdop/button4/wear3and5 plus26malformedbindingrefusalsPASS. Native startup/member/F2P/UI/persistence/reference acceptance remains separate.",
+  "cases": {
+    "positive_stale": 224,
+    "refusal": 64,
+    "weak_interruption": 4,
+    "actual_cache_refusal": 26
+  },
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/integration-external-imcando-held-world-7d4e09b6fdad766312ef55238e61c2730ea0b529/manifest.json": "89d5af0d5aa96c3dcd2a5b2c4991310b0619585ce496d84dc970ee9f8e8580c2",
+    "docs/openrune/verification/independent/integration-external-imcando-held-world-7d4e09b6fdad766312ef55238e61c2730ea0b529/run-1.log": "d9b498aae0c15daa3c65166bbf972476f640d5e4327c5837da2c30c7ec4a9a6d",
+    "docs/openrune/verification/independent/integration-external-imcando-held-world-7d4e09b6fdad766312ef55238e61c2730ea0b529/harness/world.rs": "ff4af5e8905314b2f509d06aa11ad481cce579e2c7bd79a8469968c567035dde",
+    "docs/openrune/verification/independent/integration-external-imcando-held-refusals-7d4e09b6fdad766312ef55238e61c2730ea0b529-1792339812552379400/manifest.json": "c8681fe646ceef02919834b835c32d149a953f210acdef94b3130c143bcee44e",
+    "docs/openrune/verification/independent/integration-external-imcando-held-refusals-7d4e09b6fdad766312ef55238e61c2730ea0b529-1792339812552379400/run-1.log": "385c33c9078e8760d706f27ad964793ff64b6e6b7086b57483599ddec03e7ce1",
+    "docs/openrune/verification/independent/integration-external-imcando-held-interrupt-7d4e09b6fdad766312ef55238e61c2730ea0b529/manifest.json": "4b55df29179fe377782f41539e5b2d071f24772a12c04ba4ebeec6a3f88be007",
+    "docs/openrune/verification/independent/integration-external-imcando-held-interrupt-7d4e09b6fdad766312ef55238e61c2730ea0b529/run-1.log": "62706e2f41caac1a2ac8fb8356f902c0661155b9f5f1f0ac3ee9b88120058794",
+    "docs/openrune/verification/independent/integration-external-imcando-held-bindings-7d4e09b6fdad766312ef55238e61c2730ea0b529/manifest.json": "25911d65b5e3a09549cf0cec04ddaff23d633d6b6dca74a1100643fde1c9f79e",
+    "docs/openrune/verification/independent/integration-external-imcando-held-bindings-7d4e09b6fdad766312ef55238e61c2730ea0b529/harness/bindings.rs": "181874167521da337d51177ff3b7f7284483203b41262a501ce55bf62d7c1401"
+  }
+}

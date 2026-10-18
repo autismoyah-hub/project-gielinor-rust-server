@@ -1,0 +1,12 @@
+{
+  "finding_id": "PG-INFRA-012",
+  "status": "RESOLVED_OWNED_HEURISTIC_BLOCKER",
+  "scope": "The QA launcher added a sixGiB available-memory floor beyond user instructions and the actual project resource policy. It caused repeated deferrals and an unnecessary prior session endpoint despite safe capacity. Replaced only that heuristic with direct Assert-ServerMemoryCapacity from the existing read-only project script, retaining sampled CPU<=70percent, owned affinityfirsttwoCPUs, BelowNormal and explicit Cargo-j1. Published memory guard rejects<1GiB/commit>=95percent/sustained high paging+severe disk latency/deteriorating low memory. No other process, resource limit, protected source, server implementation or exact test identity altered.",
+  "observed_result": "Exact108remaining53Worldrefusal cases PASS under project memory preflight with<6GiBavailable, commit60percent/no paging distress and bounded j1; old failed/deferred attempts retained.",
+  "capacity_policy_sha256": "dc3c6e372de5369ab77c4ebbd7cf21c426d0916581e11f2377480eba79adcdfd",
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/integration-external-imcando-held-refusals-7d4e09b6fdad766312ef55238e61c2730ea0b529-1792339812552379400/manifest.json": "c8681fe646ceef02919834b835c32d149a953f210acdef94b3130c143bcee44e",
+    "docs/openrune/verification/independent/integration-external-imcando-held-refusals-7d4e09b6fdad766312ef55238e61c2730ea0b529-1792339812552379400/run-1.log": "385c33c9078e8760d706f27ad964793ff64b6e6b7086b57483599ddec03e7ce1",
+    "docs/openrune/verification/independent/integration-external-imcando-held-refusals-7d4e09b6fdad766312ef55238e61c2730ea0b529-1792339812552379400/resource-observations.jsonl": "d6afa87f81bab07ccb01d8874febf4f445e0d2f4477a1e829b03684f1f7cc97f"
+  }
+}

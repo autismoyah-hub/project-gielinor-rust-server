@@ -1,0 +1,12 @@
+{
+  "implementation_id": "OR-MIG-0109",
+  "tested_sha": "8bc76c7c464daf1d4abdef4dd7f4172c270abda5",
+  "status": "PASS_APPLICABLE_V1",
+  "scope": "612independent registered World controls plus38actualcache binding refusals satisfy applicable authoritative worn-only Swap requirements:388whole bag/member/F2P/occupied/freehand/life/metadata/realorderedcallbacks/syntheticbaselevel/weakinterruption controls preserved,then224new all28firstgap/existingoutputduplicates/retainedinputduplicate/stale replay casesPASS. Newly removed exact-slot output equips for member/freehand; existing opposite-form duplicates remain untouched, F2P/occupiedtarget preserves outputheld and old target. Complete whole bag/gear/Stats/fractions/noXP/noautomaticreplay; fullbagrefuses evenfreehand. Original QA failures retained. No native/startup/persistence/reference/currentHEADacceptance inherited.",
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/imcando-worn-authoritative-partial.json": "73ed9c09b1f87cee596a9cdf28c9b7d42cb2b6da70f3502a09bd35eeeefa1db5",
+    "docs/openrune/verification/independent/integration-external-imcando-worn-duplicates-8bc76c7c464daf1d4abdef4dd7f4172c270abda5/manifest.json": "96333b6e8d00ce56087983b395fd2b953f6b3e26488709583680a125c43e7179",
+    "docs/openrune/verification/independent/integration-external-imcando-worn-duplicates-8bc76c7c464daf1d4abdef4dd7f4172c270abda5/run-1.log": "a902b8473832d9b24d09afce8917faf99106b8add729072136aed008a1ad95b2",
+    "docs/openrune/verification/independent/integration-external-imcando-worn-duplicates-8bc76c7c464daf1d4abdef4dd7f4172c270abda5/harness/duplicates.rs": "45ae51c33ab6ac33f46ecb936cd457759aaab1e8fb2e1a8a0bb0e2a74c1a0ef6"
+  }
+}

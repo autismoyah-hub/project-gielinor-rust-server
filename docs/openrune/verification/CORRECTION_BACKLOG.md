@@ -189,3 +189,7 @@ PG-DEF-005 revision2 follow-up: exact7ec9e2588843b6fc82a8e5ba38349707bb4aa0a2 in
 ## PG-DEF-003 follow-up — immediate lighting still accepts dead actors
 
 Independent exact OR-MIG-0084 `ad739676dd01f5be809cdfe5ecf4f1e6ea77238a`: all 72 separately named World held cases fail across nine light profiles, both directions, zero HP/actual queued death with restored visible HP, and fresh/already prepared input. Selected unlit item converts at zero XP. Recheck effective actor life before immediate tool resolve/publication and invalidate contexts crossing death. Normal native/menu/messages/save/recovery results remain positive; V1 and interrupted-input V3 cannot pass. Evidence: `independent/light-life-pg-def-003-addendum.json`. Ordinary P2 correction; no native dead-player reachability or moving-HEAD claim, no new external issue or FORGE stop.
+
+## PG-INFRA-012 — resolved owned capacity heuristic
+
+The QA launcher imposed an additional six GiB floor absent from the actual project policy, causing unnecessary repeated deferrals and a prior session endpoint. It now invokes the existing project memory/commit/paging checks directly, retains CPU <=70%, two owned CPUs, BelowNormal and explicit Cargo -j1. The exact108 remaining53World refusal cases pass with measured capacity below the former floor. Historical deferrals preserved; this is a QA harness correction, not a FORGE defect or relaxed project guard. Evidence: `independent/resource-policy-correction.json`.

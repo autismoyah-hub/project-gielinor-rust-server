@@ -1,0 +1,49 @@
+{
+  "implementation_id": "OR-MIG-0108",
+  "tested_sha": "7d4e09b6fdad766312ef55238e61c2730ea0b529",
+  "status": "ACCEPTED_HISTORICAL",
+  "levels": {
+    "V0": {
+      "status": "PASS",
+      "reason": "Exact production server binary built and actual startup authenticated through the real target cache. Both ordinary member forms/Swap third operation/primary wear3and5 and26malformed binding refusals pass. Real149:0/button4 dispatch reaches authoritative selected-slot conversion. No storage migration/new shared engine; ordinary inherited transactions independently exercised."
+    },
+    "V1": {
+      "status": "PASS",
+      "reason": "Applicable authoritative held-only Swap requirements complete.224actual registered World positive/stale cases cover28clicked slots/both forms/memberandF2P/fullandsparsebags, exact selected consumption/earliest-gap credit/retained matching duplicate/gear/Stats/noXP/noautomatic replay. Original rawFAIL contains11completed refusal prefix before QA mutable-after-logout error; distinct corrected53tailPASS completes64refusals (stale explicit claim/missing-wrong-count-variable input/bad output/input metadata/modal/delay/logout/zeroHP/actualqueueddeath restoredHP/placeholders/missinghandler), whole images and clean modified flags conserved. Four new genuine scheduled weak-crafting interruption controls cancel remaining inputs/XP after either-form Swap;10tick synthetic queue is interruption control,not gem cadence. Actual two cache form definitions/Swap thirdop/button4/wear3and5 plus26malformedbindingrefusalsPASS. Native startup/member/F2P/UI/persistence/reference acceptance remains separate."
+    },
+    "V2": {
+      "status": "PASS",
+      "reason": "Member and nonmember real native account flags/menu Swap observed separately:12successful Swaps/12stale refusals, exact whole container transitions/gear/Stats/noXP/quantity. Five retained native refusals plus a defensive malformed0disconnect and four fresh in-range wrong-operation/broken refusals cover wrong and closed components, false item, invalid slots/permissions/broken hammer, UseCancel with no target packet, legitimate follow-up still succeeds. Pinned Rust client/cache behavior established; original OSRS F2P world-effective-cache parity not claimed."
+    },
+    "V3": {
+      "status": "PASS",
+      "reason": "Two independent acknowledged normal saves and real process restarts/native reconnects preserve exact hammer locations/otheritems/gear/Stats/fractions/membership/energy without replay. Separate unsaved native conversion followed by termination of its owned local server restores prior complete SQL account and actual native restart; no partial duplication. This is unacknowledged-state recovery,not injection during a SQL commit. Immediate operation has no production continuation to persist."
+    },
+    "V4": {
+      "status": "PASS",
+      "reason": "Independent protected source held3callbacks exchange the two forms without explicit entitlement/skill/quest/XP/message/delay; worn4helper is separately excluded. Two exact Wiki revisions support identities/Swap/member-onlyequipping/F2Phammer functionality but do not attest F2PSwapUI. Actual target definitions/runtime/native account outcomes independently resolve target behavior. Stricter exact selected count1/vars0/full-credit policy and earliest-free-slot insertion versus source inventory-wide replacement explicitly retained. Strongest feasible source/documentation comparison complete for held-only scope; no original executable/render/audio or whole-hammer parity claimed."
+    }
+  },
+  "scope": "All applicable V0-V4 obligations satisfied for held-only main/offhand Swap at this exactSHA. No movingHEAD/worn109/acquisition/repair/shared-tooluse acceptance inherited. Original failed QA refusal oracle and resource deferrals remain immutable; successful campaigns not reexecuted.",
+  "limitations": [
+    "Original donor executable/render/audio comparison unavailable; source and pinned documentation hierarchy disclosed.",
+    "F2P verdict describes real decoded nonmember account on the pinned Rust client/cache with literal world_flags recorded,not original OSRS world-effective-cache equivalence.",
+    "No in-progress SQL commit interruption claim."
+  ],
+  "target_source_sha256": {
+    "crates/server/src/content/imcando_held_swaps.rs": "b0ab46b19d87cec2fa8054650fb0ef3c6fbee77ff5d75b69b676ff4697e7e284",
+    "crates/server/src/startup.rs": "3e10ffe4e5fa2e4ddc03056ee349f55748ab9cdea5fde2a7b88cc856b3c01b6d",
+    "crates/server/src/runtime.rs": "db7fa699400a8d079941c94b41ebf3785102011758ad186001913ecee50eefba",
+    "crates/world/src/held_item_conversion.rs": "bc07cd6479d7012121cdf0e3198a097c2138517d47a4aca262ee0ed3d9e71638",
+    "crates/world/src/simulation/container_emptying_actions.rs": "96eb5297a68c823b0889322950ad21957ff0d41f7e05feb4845a633e15140d9c"
+  },
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/imcando-held-authoritative-complete.json": "42b1f559efc2e87b1fe2253b262c31aa681e8ffb75c754d0de4408f1493df5fa",
+    "docs/openrune/verification/independent/reference-imcando-held/comparison.json": "523e776ad1267e826fd557dc360b751748e082bcd58e6fb9a93f86893784a22e",
+    "docs/openrune/verification/independent/deep-imcando-held/native-001/independent-assessment.json": "cafab6bbaf9f02e31d51a199f73699d9ed01b6d082660d03fe0fdbe4fd89a408",
+    "docs/openrune/verification/independent/deep-imcando-f2p/native-001/independent-assessment.json": "68d0957979f2a3a0b2e2db6953eb306a902efbead6dace2b98910dcf90444744",
+    "docs/openrune/verification/independent/deep-imcando-crash/native-001/independent-assessment.json": "508adbfab4ab53f9706a966926127c02bb18d81a18c78b42bc4008e5094a35c1",
+    "docs/openrune/verification/independent/deep-imcando-inputs/native-001/independent-assessment.json": "0ed6be1006d55a3b181b43e0ea7e4e9b04aa2c919f6a4f39144fee50b1034cd6",
+    "docs/openrune/verification/independent/deep-imcando-inputs/native-002/independent-assessment.json": "58dc0f60c4a0c22dcb47be923aad273f974dcbdf79094683a9f8818b33a739bd"
+  }
+}

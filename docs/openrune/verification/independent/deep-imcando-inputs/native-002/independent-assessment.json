@@ -1,0 +1,21 @@
+{
+  "implementation_id": "OR-MIG-0108",
+  "tested_sha": "7d4e09b6fdad766312ef55238e61c2730ea0b529",
+  "status": "PASS",
+  "scope": "Four remaining exact native negative frames: in-range wrong content operation6/1/10 and broken25633. Five completed earlier refusals and malformed0disconnect are independently recorded separately. Controller confirms whole bag/gear/XP after each; independent raw22/18 reconstruction confirms zero changes before final genuine menu Swap. Actual Use selection and Cancel emit no held-target27; final genuine149:0/current17/current25644/button4 produces one and only one whole inventory change. SQL acknowledged save retains exact gear/Stats/fractions/energy; no chemistry actions.",
+  "limitations": [
+    "Negative protocol frames are explicit test inputs on the owned local native connection, not user menu actions.",
+    "Closed-bank component acceptance does not imply closing the permanently attached normal inventory149; no nonexistent inventory-close flow claimed.",
+    "Separate immutable normal member/nonmember and unsaved recovery campaigns establish restart behavior."
+  ],
+  "evidence_sha256": {
+    "initial-state.json": "c1d9bdd5a80a1a5f5fba1fa0fc20735f91456bd24ec152e8316210881e01e5d6",
+    "resources.json": "7d436d6d51a6bbb09b4dae26465b72805da8b1860b8350d0e33e02bc172b8054",
+    "build.json": "95d6d53ad2e6aef64fdc69054898f391ffc685933b08cdb7d6b8bbd53d42d829",
+    "produce/client.log": "fa728880704a6dbc4510a64794f4937f4bb27d4b6ba4a3a6e7eb76ed4f406fef",
+    "produce/manifest.json": "8459fd8051eb2e59f4baf1d54189a1fbce20c056456aef30288031ae87afed3c",
+    "produce/after.json": "6566338d467ff644d6f0cb57bc6234cfaacb3d4d9cc1e2b475721481e0027574",
+    "frozen-observer/pg_observer.rs": "be15417767024ac83b1ff53beb86b3ca654f6ce116535c20aec5bd778eac9b55",
+    "frozen-observer/build.json": "200321929f567b59f628277cf5448a67cbd77968d23ed94da422216f36120292"
+  }
+}

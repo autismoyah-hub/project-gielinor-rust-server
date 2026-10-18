@@ -36,12 +36,14 @@ def guard():
     for _ in range(3):
         a=cpu_sample();time.sleep(1);b=cpu_sample();samples.append(100*(1-(b[0]-a[0])/max(1,b[1]-a[1])))
     cpu=sum(samples)/len(samples)
-    report={'available_ram':m.avail,'active_compilers':active,'cpu_percent':round(cpu,2),'cpu_samples':samples,'cpu_ceiling':70,'policy':'Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained','disk_free':shutil.disk_usage(ROOT).free}
+    policy=SOURCE/'scripts/resources.ps1'
+    memory=subprocess.run(['powershell','-NoProfile','-NonInteractive','-Command',". '"+policy.as_posix()+"'; Assert-ServerMemoryCapacity"],capture_output=True,text=True)
+    report={'available_ram':m.avail,'active_compilers':active,'cpu_percent':round(cpu,2),'cpu_samples':samples,'cpu_ceiling':70,'policy':'Existing project memory/commit/paging checks and sampled CPU ceiling; owned Cargo remains j1/two CPUs/BelowNormal','capacity_policy_sha256':digest(policy),'memory_preflight_exit':memory.returncode,'memory_preflight_stdout':memory.stdout,'memory_preflight_stderr':memory.stderr,'disk_free':shutil.disk_usage(ROOT).free}
     print('RESOURCE',json.dumps(report),flush=True)
     # Other agents' activity is measured, not an automatic blanket deferral.
-    # Match the actual project's sampled 70% ceiling instead of inventing a
-    # 30% limit that repeatedly deferred eligible native runs. Retain RAM headroom.
-    permitted=cpu<=70 and m.avail>=6*1024**3
+    # Use the project's actual memory policy, including commit and paging distress.
+    # The old additional 6 GiB floor was an owned heuristic, not a user requirement.
+    permitted=cpu<=70 and memory.returncode==0
     OUT.mkdir(parents=True,exist_ok=True)
     with (OUT/'resource-observations.jsonl').open('a',encoding='utf-8',newline='\n') as f:
         f.write(json.dumps({'observed_utc':datetime.now(timezone.utc).isoformat(),'decision':'PROCEED' if permitted else 'DEFER','measurement':report})+'\n')
@@ -141,6 +143,10 @@ def seed():
             if SCENARIO in ['production-gem-batch','production-shell-batch','production-gem-x','production-gem-x-focus','production-gem-interrupt','production-shell-interrupt','production-gem-crash','immediate-staff','immediate-limestone','immediate-certainty','immediate-crash','fallible-gems','fallible-gem-interrupt','sinew','sinew-crash','battlestaves','battlestaff-crash','crab-carving','crab-interrupt','crab-crash','crab-quantities','pair-stringing','pair-staves','pair-stringing-reverse','pair-counts','pair-ten','pair-x','pair-earth-batch','pair-pending','pair-interrupt','pair-crash','crafting-finishes','crafting-finishes-crash','amethyst','amethyst-batch','amethyst-interrupt','amethyst-crash']:
                 mapping={0:1755,1:1755,27:995,**{slot:(1623 if SCENARIO.startswith('production-gem') else 3345) for slot in range(4,27)}}
             items=[(slot,mapping.get(slot,1931),1000 if slot==27 else 1) for slot in range(28)]
+        elif FEATURE=='OR-MIG-0109':
+            mapping={3:25633,4:25644,9:29775,17:25644,26:29775,27:995}
+            gaps=[] if SCENARIO=='imcando-worn-full' else [0,1] if SCENARIO=='imcando-worn-f2p' else [0]
+            items=[(slot,mapping.get(slot,1931),1000 if slot==27 else 1)for slot in range(28)if slot not in gaps]
         elif FEATURE=='OR-MIG-0108':
             mapping={3:25633,4:25644,9:29775,17:25644,26:29775,27:995}
             items=[(slot,mapping.get(slot,1931),1000 if slot==27 else 1) for slot in range(28)]
@@ -201,10 +207,12 @@ def seed():
         elif SCENARIO in ['food','food-observer']:items=[(1,1891,1),(3,1891,1),(4,2289,1),(5,2289,1),(7,2142,1),(27,995,1000)]
         else:items=[(27,995,1000)] if SCENARIO=='chemistry-worn' else [(3,21163,1),(27,995,1000)]
         for slot,item,count in items:db.execute('INSERT INTO inventory_objs(inventories_id,slot,obj,count,vars) VALUES(?,?,?,?,0)',(inv,slot,item,count))
-        if FEATURE=='OR-MIG-0108':
+        if FEATURE in ['OR-MIG-0108','OR-MIG-0109']:
             db.execute('INSERT OR IGNORE INTO inventories(character_id,inv_type) VALUES(?,94)',(cid,))
             worn=db.execute('SELECT id FROM inventories WHERE character_id=? AND inv_type=94',(cid,)).fetchone()[0]
             for slot,item in [(0,1155),(4,1129)]:db.execute('INSERT INTO inventory_objs(inventories_id,slot,obj,count,vars) VALUES(?,?,?,1,0)',(worn,slot,item))
+        if FEATURE=='OR-MIG-0109':
+            for slot,item in [(3,25644),(5,29775)]:db.execute('INSERT INTO inventory_objs(inventories_id,slot,obj,count,vars) VALUES(?,?,?,1,0)',(worn,slot,item))
         if SCENARIO in ['chemistry-worn','chemistry-last','chem-negative','chem-close','chem-interrupt','chem-crash']:
             db.execute('INSERT OR IGNORE INTO inventories(character_id,inv_type) VALUES(?,94)',(cid,))
             worn=db.execute('SELECT id FROM inventories WHERE character_id=? AND inv_type=94',(cid,)).fetchone()[0]
@@ -216,7 +224,7 @@ def seed():
         db.execute('UPDATE characters SET x=3224,z=3218,level=0,world_id=NULL,xp_rate_in_hundreds=500,varps=? WHERE id=?',(json.dumps(varps),cid))
         if FEATURE=='OR-MIG-0054':db.execute('UPDATE characters SET x=3209,z=3222,level=2 WHERE id=?',(cid,))
         db.execute('UPDATE accounts SET members=1 WHERE login_username=?',('integration239',))
-        if FEATURE=='OR-MIG-0108' and SCENARIO=='imcando-f2p':db.execute('UPDATE accounts SET members=0 WHERE login_username=?',('integration239',))
+        if (FEATURE=='OR-MIG-0108' and SCENARIO=='imcando-f2p') or (FEATURE=='OR-MIG-0109' and SCENARIO=='imcando-worn-f2p'):db.execute('UPDATE accounts SET members=0 WHERE login_username=?',('integration239',))
         if FEATURE in ['OR-MIG-0056','OR-MIG-0057','OR-MIG-0062','OR-MIG-0063','OR-MIG-0065','OR-MIG-0066','OR-MIG-0067','OR-MIG-0069','OR-MIG-0070','OR-MIG-0071']:
             db.execute('UPDATE stats SET vis_level=99,base_level=99,fine_xp=130344311 WHERE character_id=? AND stat_id=12',(cid,))
             db.execute('UPDATE characters SET xp_rate_in_hundreds=500 WHERE id=?',(cid,))
@@ -247,7 +255,7 @@ def snapshot():
            'migrations':[r[0] for r in db.execute('SELECT version FROM _rust_migrations ORDER BY version')],
            'integrity_check':db.execute('PRAGMA integrity_check').fetchone()[0],
            'xp_rate_hundreds':db.execute('SELECT xp_rate_in_hundreds FROM characters WHERE id=?',(cid,)).fetchone()[0]}
-    if FEATURE=='OR-MIG-0108':state['account_membership']=bool(db.execute('SELECT members FROM accounts LIMIT 1').fetchone()[0])
+    if FEATURE in ['OR-MIG-0108','OR-MIG-0109']:state['account_membership']=bool(db.execute('SELECT members FROM accounts LIMIT 1').fetchone()[0])
     if db.execute("SELECT COUNT(*) FROM sqlite_master WHERE name='chemistry_state'").fetchone()[0]:
         state['chemistry_state']=db.execute('SELECT remaining,stop_on_crumble FROM chemistry_state WHERE character_id=?',(cid,)).fetchall()
     db.close();return state
@@ -259,7 +267,7 @@ def phase(mode):
     assert build_manifest.get('tested_sha',build_manifest['implementation_sha'])==SHA and build_manifest['binary_sha256']==digest(binary),'Build identity changed'
     name='produce' if mode=='assemble' else 'relogin'
     if mode=='verify' and RELOGIN_ATTEMPT:name=RELOGIN_ATTEMPT
-    fault=SCENARIO in ['imcando-crash','light-crash','chem-crash','gem-crash','glass-crash','production-gem-crash','immediate-crash','sinew-crash','battlestaff-crash','crab-crash','pair-crash','crafting-finishes-crash','amethyst-crash'] and mode=='assemble'
+    fault=SCENARIO in ['imcando-worn-crash','imcando-crash','light-crash','chem-crash','gem-crash','glass-crash','production-gem-crash','immediate-crash','sinew-crash','battlestaff-crash','crab-crash','pair-crash','crafting-finishes-crash','amethyst-crash'] and mode=='assemble'
     dest=OUT/name;dest.mkdir(parents=True,exist_ok=False)
     shutil.copyfile(Path(__file__),dest/'launcher.txt')
     before=snapshot();save(dest/'before.json',before)
@@ -289,7 +297,7 @@ def phase(mode):
             print('LISTENING',address,flush=True)
             args=[str(RES/DRIVER),str(RES/'cache/js5'),address,'integration239',str(RES/'password'),str(RES/'keys/client.key'),mode]
             if SCENARIO in ['chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','food-observer','prayer','gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells','production-gem-batch','production-shell-batch','production-gem-x','production-gem-x-focus','production-gem-interrupt','production-shell-interrupt','production-gem-crash','immediate-staff','immediate-limestone','immediate-certainty','immediate-crash','fallible-gems','fallible-gem-interrupt','sinew','sinew-crash','battlestaves','battlestaff-crash','crab-carving','crab-interrupt','crab-crash','crab-quantities','pair-stringing','pair-staves','pair-stringing-reverse','pair-counts','pair-ten','pair-x','pair-earth-batch','pair-pending','pair-interrupt','pair-crash','crafting-finishes','crafting-finishes-crash','amethyst','amethyst-batch','amethyst-interrupt','amethyst-crash']:args[-1]=(SCENARIO if SCENARIO in ['chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','prayer','gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells','production-gem-batch','production-shell-batch','production-gem-x','production-gem-x-focus','production-gem-interrupt','production-shell-interrupt','production-gem-crash','immediate-staff','immediate-limestone','immediate-certainty','immediate-crash','fallible-gems','fallible-gem-interrupt','sinew','sinew-crash','battlestaves','battlestaff-crash','crab-carving','crab-interrupt','crab-crash','crab-quantities','pair-stringing','pair-staves','pair-stringing-reverse','pair-counts','pair-ten','pair-x','pair-earth-batch','pair-pending','pair-interrupt','pair-crash','crafting-finishes','crafting-finishes-crash','amethyst','amethyst-batch','amethyst-interrupt','amethyst-crash'] else 'food') if mode=='assemble' else 'verify'
-            if SCENARIO in ['imcando-held','imcando-f2p','imcando-crash','light-feedback','light-sources','light-crash']:args[-1]=SCENARIO if mode=='assemble' else 'verify'
+            if SCENARIO in ['imcando-worn','imcando-worn-f2p','imcando-worn-crash','imcando-worn-full','imcando-held','imcando-f2p','imcando-crash','imcando-inputs','light-feedback','light-sources','light-crash']:args[-1]=SCENARIO if mode=='assemble' else 'verify'
             if SCENARIO=='food':
                 if mode=='assemble':args[-1]=str(dest/'native-events.jsonl')
                 else:args=[str(client_binary),str(RES/'cache/js5'),str(RES/'keys/client.key'),address,'integration239',str(RES/'password'),str(WORK/'relogin-private.capture')]
@@ -313,6 +321,7 @@ def phase(mode):
                                 if SCENARIO=='pair-crash':manifest['fault_scope']='Terminate only this owned disposable RSPS server after an observed unsaved pair-production prefix; no normal logout/save requested'
                                 if SCENARIO=='crab-crash':manifest['fault_scope']='Terminate only this freshly launched owned disposable RSPS server after an observed unsaved crab-carving prefix; no normal logout/save requested, including valid zero-XP broken results'
                                 if SCENARIO=='immediate-crash':manifest['fault_scope']='Terminate only this freshly launched owned server after one unsaved native immediate limestone credit and fineXP; no normal logout/save requested'
+                                if SCENARIO=='imcando-worn-crash':manifest['fault_scope']='Terminate only this freshly owned disposable local game server after one observed unsaved worn hammer conversion;no save/logout requested'
                                 if SCENARIO=='imcando-crash':manifest['fault_scope']='Terminate only the freshly owned disposable RSPS server after one received unsaved held hammer Swap; prior whole account state must restore; no save/logout requested'
                                 if SCENARIO=='light-crash':manifest['fault_scope']='Terminate only this freshly launched owned disposable RSPS server after one observed unsaved native candle lighting; no logout/save requested; prior account image must restore'
                                 save(dest/'manifest.json',manifest)
@@ -350,7 +359,7 @@ def phase(mode):
     elif manifest['status']=='PASS' and (not manifest['save_acknowledgement'] or not manifest['graceful_shutdown'] or manifest['server_exit']!=0 or manifest['forced_shutdown']):manifest.update(status='BLOCKED',reason='Client finished but durable save or graceful shutdown evidence missing')
     save(dest/'manifest.json',manifest);print('NATIVE_RESULT',json.dumps(manifest),flush=True)
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('action',choices=['prepare','build','seed','produce','relogin']);p.add_argument('--feature',choices=['imcando-held','imcando-f2p','imcando-crash','light-feedback','light-crash','light-sources','combat','chemistry','chemistry-worn','chemistry-last','chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','food','food-observer','prayer','gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells','production-gem-batch','production-shell-batch','production-gem-x','production-gem-x-focus','production-gem-interrupt','production-shell-interrupt','production-gem-crash','immediate-staff','immediate-limestone','immediate-certainty','immediate-crash','fallible-gems','fallible-gem-interrupt','sinew','sinew-crash','battlestaves','battlestaff-crash','crab-carving','crab-interrupt','crab-crash','crab-quantities','pair-stringing','pair-staves','pair-stringing-reverse','pair-counts','pair-ten','pair-x','pair-earth-batch','pair-pending','pair-interrupt','pair-crash','crafting-finishes','crafting-finishes-crash','amethyst','amethyst-batch','amethyst-interrupt','amethyst-crash'],default='combat');p.add_argument('--integration-sha');p.add_argument('--run-id');p.add_argument('--relogin-attempt');a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('action',choices=['prepare','build','seed','produce','relogin']);p.add_argument('--feature',choices=['imcando-worn','imcando-worn-f2p','imcando-worn-crash','imcando-worn-full','imcando-held','imcando-f2p','imcando-crash','imcando-inputs','light-feedback','light-crash','light-sources','combat','chemistry','chemistry-worn','chemistry-last','chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','food','food-observer','prayer','gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells','production-gem-batch','production-shell-batch','production-gem-x','production-gem-x-focus','production-gem-interrupt','production-shell-interrupt','production-gem-crash','immediate-staff','immediate-limestone','immediate-certainty','immediate-crash','fallible-gems','fallible-gem-interrupt','sinew','sinew-crash','battlestaves','battlestaff-crash','crab-carving','crab-interrupt','crab-crash','crab-quantities','pair-stringing','pair-staves','pair-stringing-reverse','pair-counts','pair-ten','pair-x','pair-earth-batch','pair-pending','pair-interrupt','pair-crash','crafting-finishes','crafting-finishes-crash','amethyst','amethyst-batch','amethyst-interrupt','amethyst-crash'],default='combat');p.add_argument('--integration-sha');p.add_argument('--run-id');p.add_argument('--relogin-attempt');a=p.parse_args()
     SCENARIO=a.feature
     policy=ROOT/'docs/openrune/verification/USER_DEFERRALS.json'
     if policy.exists():
@@ -392,8 +401,10 @@ if __name__=='__main__':
         SHA='bc277dc3e7e15088323a4f048f57dc43185fb7c0';FEATURE='OR-MIG-0071';CHECKOUT=ROOT.parent/'agent7-targets'/SHA
     if a.feature in ['light-feedback','light-sources','light-crash']:
         SHA='ad739676dd01f5be809cdfe5ecf4f1e6ea77238a';FEATURE='OR-MIG-0084';CHECKOUT=ROOT.parent/'agent7-targets'/SHA
-    if a.feature in ['imcando-held','imcando-f2p','imcando-crash']:
+    if a.feature in ['imcando-held','imcando-f2p','imcando-crash','imcando-inputs']:
         SHA='7d4e09b6fdad766312ef55238e61c2730ea0b529';FEATURE='OR-MIG-0108';CHECKOUT=ROOT.parent/'agent7-targets'/SHA
+    if a.feature in ['imcando-worn','imcando-worn-f2p','imcando-worn-crash','imcando-worn-full']:
+        SHA='8bc76c7c464daf1d4abdef4dd7f4172c270abda5';FEATURE='OR-MIG-0109';CHECKOUT=ROOT.parent/'agent7-targets'/SHA
     CONTRACT_SHA=SHA
     if a.feature=='chemistry-worn':
         STATE='pg-chemistry-worn-native-001';DRIVER='server_chemistryworn.exe';PIN='chemistryworn-004'
@@ -401,7 +412,7 @@ if __name__=='__main__':
     if a.feature=='chemistry-last':
         STATE='pg-chemistry-last-native-001';DRIVER='server_chemistry.exe';PIN='chemistry-001'
         WORK=ROOT/'work/native-chemistry-last';OUT=ROOT/'docs/openrune/verification/independent/deep-chemistry-last'
-    if a.feature in ['imcando-held','imcando-f2p','imcando-crash','light-feedback','light-crash','light-sources','chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','food-observer','prayer','gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells','production-gem-batch','production-shell-batch','production-gem-x','production-gem-x-focus','production-gem-interrupt','production-shell-interrupt','production-gem-crash','immediate-staff','immediate-limestone','immediate-certainty','immediate-crash','fallible-gems','fallible-gem-interrupt','sinew','sinew-crash','battlestaves','battlestaff-crash','crab-carving','crab-interrupt','crab-crash','crab-quantities','pair-stringing','pair-staves','pair-stringing-reverse','pair-counts','pair-ten','pair-x','pair-earth-batch','pair-pending','pair-interrupt','pair-crash','crafting-finishes','crafting-finishes-crash','amethyst','amethyst-batch','amethyst-interrupt','amethyst-crash']:
+    if a.feature in ['imcando-worn','imcando-worn-f2p','imcando-worn-crash','imcando-worn-full','imcando-held','imcando-f2p','imcando-crash','imcando-inputs','light-feedback','light-crash','light-sources','chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','food-observer','prayer','gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells','production-gem-batch','production-shell-batch','production-gem-x','production-gem-x-focus','production-gem-interrupt','production-shell-interrupt','production-gem-crash','immediate-staff','immediate-limestone','immediate-certainty','immediate-crash','fallible-gems','fallible-gem-interrupt','sinew','sinew-crash','battlestaves','battlestaff-crash','crab-carving','crab-interrupt','crab-crash','crab-quantities','pair-stringing','pair-staves','pair-stringing-reverse','pair-counts','pair-ten','pair-x','pair-earth-batch','pair-pending','pair-interrupt','pair-crash','crafting-finishes','crafting-finishes-crash','amethyst','amethyst-batch','amethyst-interrupt','amethyst-crash']:
         observer_build=json.loads((ROOT/'docs/openrune/verification/independent/client-observer-build/build.json').read_text(encoding='utf-8'));assert observer_build['status']=='PASS'
         STATE='pg-'+a.feature+'-001';DRIVER='pg_observer-'+observer_build['binaries']['pg_observer.exe'][:12]+'.exe';PIN='pg-observer'
         WORK=ROOT/'work'/('native-'+a.feature);OUT=ROOT/'docs/openrune/verification/independent'/('deep-'+a.feature)

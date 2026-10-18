@@ -1,0 +1,18 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\8bc76c7c464daf1d4abdef4dd7f4172c270abda5\external-harness-1945437400)
+warning: unused import: `Event`
+ --> tests\duplicates.rs:2:43
+  |
+2 | use gielinor_world::{equipment::{WearType,Event},inventory::Item,simulation::{World,PlayerData,ActorId,Action,WorldEvent},stats::Stat...
+  |                                           ^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `proving-ground-energy` (test "duplicates") generated 1 warning (run `cargo fix --test "duplicates" -p proving-ground-energy` to apply 1 suggestion)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.47s
+     Running tests\duplicates.rs (C:\Projects\OSRSRSPS\agent7-verification\work\8bc76c7c464daf1d4abdef4dd7f4172c270abda5\target\debug\deps\duplicates-bd7e246042a3d457.exe)
+
+running 1 test
+PG_WORN all_first_gap_duplicate_output_and_stale=224
+test two_hundred_twenty_four_all_first_gaps_output_duplicates_and_stale ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 17.41s

@@ -1,0 +1,34 @@
+{
+  "implementation_id": "OR-MIG-0109",
+  "tested_sha": "8bc76c7c464daf1d4abdef4dd7f4172c270abda5",
+  "status": "PARTIAL",
+  "scope": "388 independent registered World controls PASS:224bothforms/member-F2P/fulland0..27gap/occupiedtarget whole-image controls;144atomiclife/metadata/context refusals;8ordered actual Wearpos removal-before-equip callbacks;8synthetic base/current requirement controls;4genuine scheduled weak-gem interruption controls. Actual two target cache forms/param453Swap/secondarywear-none/button2 plus38malformedbindingrefusalsPASS. Earlier refusal fixture failed because logout retained preexisting modified flags; clear before logout then exact-SHA rerunPASS. Initial binding compileFAIL was QA Param::Int spelling,corrected Integer thenPASS. Both raw failures retained.",
+  "remaining": [
+    "Existing output-form duplicates with earlier bag positions and all first-gap positions; no V1PASS yet.",
+    "V0actualserverbinary/startup/dispatcher and native worn component/current nullable item cases.",
+    "Native fullbag/occupiedtarget/member-F2P/bothforms/refusals/menu/feedback and durable save/reconnect/crash.",
+    "Complete independent reference comparison; no inherited108orcurrentHEADacceptance."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/integration-external-imcando-worn-world-8bc76c7c464daf1d4abdef4dd7f4172c270abda5/manifest.json": "7416ebb5853a94f0f83c4c6fe4140431c2f6b7669929bad4ea6a3431bafd71d8",
+    "docs/openrune/verification/independent/integration-external-imcando-worn-world-8bc76c7c464daf1d4abdef4dd7f4172c270abda5/run-0.log": "efad7366daf32f928833f518f8fa48a1420ada3d6b791f865e332fb40be38791",
+    "docs/openrune/verification/independent/integration-external-imcando-worn-world-8bc76c7c464daf1d4abdef4dd7f4172c270abda5/run-1.log": "af6dfa631c69c5ae0830a8d9f8f17e0cfe4dfd8cc859fdcf54e3b791ce9768eb",
+    "docs/openrune/verification/independent/integration-external-imcando-worn-world-8bc76c7c464daf1d4abdef4dd7f4172c270abda5/harness/world.rs": "c8da3f3c606376aaffea3ff2ccef73a5f4d2e327af5904107c1a59e92a86341f",
+    "docs/openrune/verification/independent/integration-external-imcando-worn-refusals-8bc76c7c464daf1d4abdef4dd7f4172c270abda5-1792341454910991000/manifest.json": "577a6987550f68a4f4283eba04c86cb750ae48eafd7e58c763c81dc9b010b0ba",
+    "docs/openrune/verification/independent/integration-external-imcando-worn-refusals-8bc76c7c464daf1d4abdef4dd7f4172c270abda5-1792341454910991000/run-0.log": "efad7366daf32f928833f518f8fa48a1420ada3d6b791f865e332fb40be38791",
+    "docs/openrune/verification/independent/integration-external-imcando-worn-refusals-8bc76c7c464daf1d4abdef4dd7f4172c270abda5-1792341454910991000/run-1.log": "03ef8b140fe2994a4bb8197bef259bcc46d105e32ea7b60db67a6defbed52389",
+    "docs/openrune/verification/independent/integration-external-imcando-worn-refusals-8bc76c7c464daf1d4abdef4dd7f4172c270abda5-1792341454910991000/harness/refusals.rs": "99bcd3bc3d439a64155cbc7ec7821a2a7f40623894b0e6baef513af6db7891d8",
+    "docs/openrune/verification/independent/integration-external-imcando-worn-bindings-8bc76c7c464daf1d4abdef4dd7f4172c270abda5-1792341718391957100/manifest.json": "396f8a28c00ebb3065f8a3000c8ab6d32b0454bcee7ecac9f8679d82a9787ad3",
+    "docs/openrune/verification/independent/integration-external-imcando-worn-bindings-8bc76c7c464daf1d4abdef4dd7f4172c270abda5-1792341718391957100/run-0.log": "f6012ea69237cdd4e458639fba362320ac39a8828c472110270b5c92ced1422a",
+    "docs/openrune/verification/independent/integration-external-imcando-worn-bindings-8bc76c7c464daf1d4abdef4dd7f4172c270abda5-1792341718391957100/run-1.log": "cc29521e5b02a178a7020239d99885cfdcd66758add569c4690ece02cf542d17",
+    "docs/openrune/verification/independent/integration-external-imcando-worn-bindings-8bc76c7c464daf1d4abdef4dd7f4172c270abda5-1792341718391957100/harness/bindings.rs": "5b50e1845302e7bce87b826b300e348c8ee3deaa04294a69aad220c09f5b9a41",
+    "docs/openrune/verification/independent/integration-external-imcando-worn-listeners-8bc76c7c464daf1d4abdef4dd7f4172c270abda5/manifest.json": "4f99158af598798a81fe3ecedebe12e2b420746fcecdad8488aa722245fc5a20",
+    "docs/openrune/verification/independent/integration-external-imcando-worn-listeners-8bc76c7c464daf1d4abdef4dd7f4172c270abda5/run-0.log": "efad7366daf32f928833f518f8fa48a1420ada3d6b791f865e332fb40be38791",
+    "docs/openrune/verification/independent/integration-external-imcando-worn-listeners-8bc76c7c464daf1d4abdef4dd7f4172c270abda5/run-1.log": "23834a96b7d312b7d8640723a29aad9ceaf027fa5ec8e6ef32259f58ca2a6e9f",
+    "docs/openrune/verification/independent/integration-external-imcando-worn-listeners-8bc76c7c464daf1d4abdef4dd7f4172c270abda5/harness/listeners.rs": "df767ac59e0065b59d4a81115dd07de8dfc81296f1b8231b938d8d45432d54a3",
+    "docs/openrune/verification/independent/integration-external-imcando-worn-interrupt-8bc76c7c464daf1d4abdef4dd7f4172c270abda5/manifest.json": "260a40e0b2a4fabf78575b3f121b5f4ae417e60ae5234ce5c2a558cbccf6ce4d",
+    "docs/openrune/verification/independent/integration-external-imcando-worn-interrupt-8bc76c7c464daf1d4abdef4dd7f4172c270abda5/run-0.log": "efad7366daf32f928833f518f8fa48a1420ada3d6b791f865e332fb40be38791",
+    "docs/openrune/verification/independent/integration-external-imcando-worn-interrupt-8bc76c7c464daf1d4abdef4dd7f4172c270abda5/run-1.log": "74c01cc5091048c172ec134d06ce6f81f6321a4e3ff186b2d9d3add2211135e5",
+    "docs/openrune/verification/independent/integration-external-imcando-worn-interrupt-8bc76c7c464daf1d4abdef4dd7f4172c270abda5/harness/interrupt.rs": "1444cadecead7330f8237ee3b6270a928ad7e50d07dab2e6ef8f590fa5aa1f13"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "tested_integration_sha": "8bc76c7c464daf1d4abdef4dd7f4172c270abda5",
+  "suite": "imcando-worn-world",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 5494439936,
+    "active_compilers": [
+      "\"cargo.exe\",\"14088\",\"RDP-Tcp#0\",\"2\",\"58,828 K\"",
+      "\"rustc.exe\",\"15632\",\"RDP-Tcp#0\",\"2\",\"81,488 K\""
+    ],
+    "cpu_percent": 25.53,
+    "cpu_samples": [
+      29.6875,
+      25.68627450980392,
+      21.206225680933855
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Existing project memory/commit/paging checks and sampled CPU ceiling; owned Cargo remains j1/two CPUs/BelowNormal",
+    "capacity_policy_sha256": "dc3c6e372de5369ab77c4ebbd7cf21c426d0916581e11f2377480eba79adcdfd",
+    "memory_preflight_exit": 0,
+    "memory_preflight_stdout": "Capacity: 5,141 MiB available, commit 61.8%, pages-in/s 0, disk 0.0 ms.\nCargo concurrency: -j 2\n",
+    "memory_preflight_stderr": "",
+    "disk_free": 13008097280,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "f3c9a1ddaf4cd2d66d8949ae2d9f7082e51b2d86",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\8bc76c7c464daf1d4abdef4dd7f4172c270abda5\\external-harness-2511780400\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-imcando-worn-world-8bc76c7c464daf1d4abdef4dd7f4172c270abda5\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\8bc76c7c464daf1d4abdef4dd7f4172c270abda5\\external-harness-2511780400\\Cargo.toml",
+        "--",
+        "--nocapture"
+      ],
+      "exit_code": 0,
+      "tests_passed": 1,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-imcando-worn-world-8bc76c7c464daf1d4abdef4dd7f4172c270abda5\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative imcando-worn-world scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-imcando-worn-world-8bc76c7c464daf1d4abdef4dd7f4172c270abda5\\harness\\world.rs": "c8da3f3c606376aaffea3ff2ccef73a5f4d2e327af5904107c1a59e92a86341f"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\world-9cc3ad47909987f4.exe": "943e4cb6194714fcb85722c2d7e31a20ff5e00d7381101a01b5aed96be15ff4a"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "implementation_id": "OR-MIG-0108",
+  "tested_sha": "7d4e09b6fdad766312ef55238e61c2730ea0b529",
+  "status": "PASS",
+  "feature": "imcando-held",
+  "account_membership": true,
+  "observed_world_flags": 0,
+  "actions": 6,
+  "stale_refusals": 6,
+  "scope": "Six authentic native held Swap menus/twoforms/two roundtrips and final converted locations, each exact149:0/button4/currentitem/slot raw47. Independent raw22/18decode verifies every whole inventory transition and no stale fallback. Broken item offers noSwap; full28retains duplicate forms/coins/gear/wholeStats with zeroXP/quantity/Use traffic. Acknowledged save and actual process restart/raw22/46 native reconnect preserve exact final hammer locations, worngear and fractionalStats with no replay. Real decoded native account membership flag matches disposable SQL account; world_flags recorded literally.",
+  "limitations": [
+    "This verifies the pinned Rust client/cache/account mode, not original OSRS F2P world-effective-cache parity. No local member flag/cache mutation performed.",
+    "No worn109/acquisition/repair/render/audio/original executable or movingHEAD acceptance.",
+    "Separate fresh unsaved recovery remains required for fullV3."
+  ],
+  "evidence_sha256": {
+    "initial-state.json": "c1d9bdd5a80a1a5f5fba1fa0fc20735f91456bd24ec152e8316210881e01e5d6",
+    "build.json": "0a4de34f3f5f8f5049fdf15b5c3c5f463cb986b0d3107dac5ebffad5deab2e47",
+    "produce/client.log": "5871a3a92e85b11c869563649aca44422b6fc116a4f9f503e40c754751aee60c",
+    "produce/manifest.json": "9e3bd7ea0f82204f8b1130c4e3ed8545dfad6ea192ea6a7608b9b4f0ce184052",
+    "produce/after.json": "93d1bc1a08285f9636f36479ccbb63ef1440a4b34077932cd3b49664144d525f",
+    "relogin/client.log": "984f9588af09337fe87d99081fb49d254caf90241c76d22c2a964fac881049b1",
+    "relogin/manifest.json": "36c7817b0c0d6550b9b4b87d46f9ccbdc684774e94b64cd1e1d5c87ef3796462",
+    "relogin/after.json": "b7a25eaaf18e68e946f2206c1c8ea3b6af87358990c5cc1389d0c7fd70c341d1",
+    "frozen-observer/pg_observer.rs": "3679806f43f061cea026e08365184bf8b994e819d1d644299fc434e28b33f41a",
+    "frozen-observer/build.json": "490d9fbb9c7742d0776544c400a359fd805428b2f9763ac7ad13477a6ad30073"
+  }
+}

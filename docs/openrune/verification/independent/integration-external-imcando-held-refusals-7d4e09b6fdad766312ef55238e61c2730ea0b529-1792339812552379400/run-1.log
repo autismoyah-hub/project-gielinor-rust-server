@@ -1,0 +1,9 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\7d4e09b6fdad766312ef55238e61c2730ea0b529\external-harness-0981131900)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.08s
+     Running tests\refusals.rs (C:\Projects\OSRSRSPS\agent7-verification\work\7d4e09b6fdad766312ef55238e61c2730ea0b529\target\debug\deps\refusals-616390cffeb88c1f.exe)
+
+running 1 test
+PG_IMCANDO_HELD atomic_refusals=53
+test fifty_three_remaining_life_metadata_context_refusals ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.29s
