@@ -6,6 +6,7 @@ from primitives import make
 from blender_io import import_model,export_model
 from kinematics import compile_joints
 from native_codec import model,classic
+from semantic_materials import colors as semantic_colors
 def export_asset(recipe):
     fields=['render_types','priorities','alpha','face_skins','vertex_skins','face_flags'];g=dict(vertices=[],faces=[],colors=[],priority=0,texture_types=[],texture_triangles=[],face_textures=None,texture_coords=None,metadata=None);g.update({k:[]for k in fields});components={}
     for spec in recipe['components']:
@@ -14,13 +15,13 @@ def export_asset(recipe):
         part=export_model(obj);offset=len(g['vertices']);firstface=len(g['faces']);g['vertices']+=part['vertices'];g['faces'] += [[x+offset for x in f]for f in part['faces']];g['colors']+=part['colors']
         for key in fields:
             n=len(part['vertices'])if key=='vertex_skins'else len(part['faces']);g[key]+=part.get(key)or [0]*n
-        components[spec['name']]=dict(vertices=list(range(offset,len(g['vertices']))),faces=list(range(firstface,len(g['faces']))),group=spec.get('group',0),role=spec.get('role',spec['name']),parameters=spec.get('parameters',{}),geometry_sha256=hashlib.sha256(json.dumps(part,sort_keys=True).encode()).hexdigest())
+        components[spec['name']]=dict(vertices=list(range(offset,len(g['vertices']))),faces=list(range(firstface,len(g['faces']))),group=spec.get('group',0),role=spec.get('role',spec['name']),material=spec['material'],material_family=recipe['materials'][spec['material']].get('family'),parameters=spec.get('parameters',{}),geometry_sha256=hashlib.sha256(json.dumps(part,sort_keys=True).encode()).hexdigest())
     if not recipe.get('rig'):g['vertex_skins']=None;g['face_skins']=None
     g['components']=components;return g
 def build(recipe,palette):
     bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
     for spec in recipe['components']:
-        vs,fs=make(spec);material=recipe['materials'][spec['material']];g=dict(vertices=vs,faces=fs,colors=[material['hsl']]*len(fs),render_types=[material.get('render_type',0)]*len(fs),priorities=[material.get('priority',0)]*len(fs),priority=0,alpha=[material.get('alpha',0)]*len(fs),face_skins=[spec.get('group',0)]*len(fs),vertex_skins=[spec.get('group',0)]*len(vs),face_flags=[0]*len(fs))
+        vs,fs=make(spec);material=recipe['materials'][spec['material']];g=dict(vertices=vs,faces=fs,colors=semantic_colors(vs,fs,material,spec),render_types=[material.get('render_type',0)]*len(fs),priorities=[material.get('priority',0)]*len(fs),priority=0,alpha=[material.get('alpha',0)]*len(fs),face_skins=[spec.get('group',0)]*len(fs),vertex_skins=[spec.get('group',0)]*len(vs),face_flags=[0]*len(fs))
         obj=import_model(spec['name'],g,palette);obj['owned_component']=True;obj['role']=spec.get('role',spec['name']);obj['authoring_spec']=json.dumps(spec)
         bm=bmesh.new();bm.from_mesh(obj.data);bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces));bm.to_mesh(obj.data);bm.free()
 def actions(recipe,g,out,reopen=False):
@@ -47,6 +48,24 @@ def actions(recipe,g,out,reopen=False):
                 for bag in strip.channelbags:
                     for curve in bag.fcurves:
                         for point in curve.keyframe_points:point.interpolation=spec.get('interpolation','LINEAR')
+        if spec.get('gait')and not reopen:
+            from motion_authoring import gait_controls
+            guide=[];duration=spec['duration_ticks'];step=spec.get('cadence_ticks',3)
+            for tick in range(0,duration,step):
+                bpy.context.scene.frame_set(tick+1);guide.append((tick,{j['name']:list(control[j['name']])for j in rig},list(map(round,control['root_translation']))))
+            baked=[];diagnostics=[]
+            for tick,channels,translation in guide:
+                channels,translation,targets=gait_controls(g,rig,channels,translation,spec,tick);baked.append((tick,channels,translation));diagnostics.append(dict(tick=tick,targets=targets))
+            if spec.get('loop'):baked.append((duration,baked[0][1],baked[0][2]))
+            for layer in action.layers:
+                for strip in layer.strips:
+                    for bag in strip.channelbags:
+                        for curve in bag.fcurves:curve.keyframe_points.clear()
+            for tick,channels,translation in baked:
+                for joint in rig:
+                    control[joint['name']]=list(map(float,channels.get(joint['name'],[0]*3)));control.keyframe_insert(data_path=f'["{joint["name"]}"]',frame=tick+1,group=joint['name'])
+                control['root_translation']=list(map(float,translation));control.keyframe_insert(data_path='["root_translation"]',frame=tick+1)
+            action['contact_guide']=json.dumps(spec['gait']);(out/(name+'-contact-solve.json')).write_text(json.dumps(diagnostics,indent=2))
         frames=[];duration=spec['duration_ticks'];step=spec.get('cadence_ticks',3);samples=list(range(0,duration,step))
         for i,tick in enumerate(samples):
             bpy.context.scene.frame_set(tick+1);channels={j['name']:list(control[j['name']])for j in rig};translation=list(map(round,control['root_translation']));frame,posed,origins=compile_joints(g,rig,channels,translation)
@@ -63,6 +82,8 @@ def actions(recipe,g,out,reopen=False):
             labels=sorted(set(g['vertex_skins']));index=len(frames[0]['types'])
             for row in frames:row['types'] += [0,3];row['labels'] += [[],labels];row['transforms'] += [[index,[0,0,0]],[index+1,[128,128,128]]]
             last=copy.deepcopy(frames[-1]);last['index']=len(frames);last['length']=spec.get('terminal_hold',1);last['transforms'][-1][1]=[0,0,0];frames.append(last)
+        elif spec.get('terminal_pose_hold'):
+            last=copy.deepcopy(frames[-1]);last['index']=len(frames);last['length']=spec['terminal_pose_hold'];frames.append(last)
         data=dict(skeleton_id=recipe.get('skeleton_base',64500)+ai,frame_group=recipe.get('frame_group_base',62000)+ai,frames=frames,policy=dict(loop_frames=len(frames)if spec.get('loop')else -1,priority=spec.get('priority',5),max_loops=99,interleave=spec.get('interleave',[])))
         classic(data,out/name);(out/name/'animation.json').write_text(json.dumps(data));action['native_policy']=json.dumps(data['policy']);action['duration_ticks']=duration;action['native_rig']=json.dumps(rig)
 def main():

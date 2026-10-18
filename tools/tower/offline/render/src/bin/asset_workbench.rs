@@ -1,6 +1,8 @@
 //! Batch read-only reference inspection and native rendering for asset authoring.
 #[path = "support/workbench_native.rs"]
 mod native;
+#[path = "support/workbench_scene.rs"]
+mod scene;
 use gielinor_client::{
     animation::{Frame, Sequence, Skeleton},
     animation_runtime::{Animations, Clock},
@@ -24,6 +26,53 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         out.join("palette.json"),
         format!("{:?}", gielinor_client::floor::palette(0.8)?),
     )?;
+    if a[3] == "scene" {
+        if a.len() < 6 {
+            return Err("scene MANIFEST CAMERA [TICK]".into());
+        }
+        scene::run(
+            &mut cache,
+            &tex,
+            out,
+            Path::new(&a[4]),
+            Path::new(&a[5]),
+            a.get(6).map(|s| s.parse()).transpose()?.unwrap_or(0),
+        )?;
+        return Ok(());
+    }
+    if a[3] == "texture-stats" {
+        let palette = gielinor_client::floor::palette(0.8)?;
+        for arg in &a[4..] {
+            let id: u16 = arg.parse()?;
+            let t = tex.get(&id).ok_or("Missing texture")?;
+            let mut mean = [0f64; 3];
+            for &rgb in &t.pixels {
+                for (i, shift) in [16, 8, 0].iter().enumerate() {
+                    mean[i] += ((rgb >> shift) & 255) as f64;
+                }
+            }
+            for v in &mut mean {
+                *v /= t.pixels.len() as f64;
+            }
+            let best = palette
+                .iter()
+                .enumerate()
+                .min_by(|(_, a), (_, b)| {
+                    let cost = |rgb: u32| {
+                        [16, 8, 0]
+                            .iter()
+                            .enumerate()
+                            .map(|(i, s)| (((rgb >> s) & 255) as f64 - mean[i]).powi(2))
+                            .sum::<f64>()
+                    };
+                    cost(**a).total_cmp(&cost(**b))
+                })
+                .ok_or("Empty palette")?
+                .0;
+            fs::write(out.join(format!("texture-{id}.json")),format!("{{\"texture_id\":{id},\"sampled_native_pixels\":{},\"mean_rgb\":{:?},\"nearest_unlit_native_palette_code\":{best},\"basis\":\"aggregate color proxy only; does not reproduce source texture or grain\"}}",t.pixels.len(),mean))?;
+        }
+        return Ok(());
+    }
     if a[3] == "package" {
         let mut package = DiskCache::open_package_only(&a[4], 64 << 20)?;
         let id: u32 = a[5].parse()?;
@@ -98,6 +147,48 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 false,
             )?;
         }
+        return Ok(());
+    }
+    if a[3] == "mask" {
+        if a.len() < 7 {
+            return Err("mask MODEL CAMERA FACE_SELECTION [SCALE_X SCALE_Y SCALE_Z]".into());
+        }
+        let mut m = Model::decode(&fs::read(&a[4])?)?;
+        let selected: BTreeSet<usize> = fs::read_to_string(&a[6])?
+            .split_whitespace()
+            .map(str::parse)
+            .collect::<Result<_, _>>()?;
+        if selected.iter().any(|&i| i >= m.faces.len()) {
+            return Err("Component mask face index out of range".into());
+        }
+        let original = m.light(64, 768, [-30, -50, -30])?;
+        let light: Vec<_> = original
+            .iter()
+            .enumerate()
+            .map(|(i, l)| {
+                if l[2] == -2 {
+                    [0, 0, -2]
+                } else {
+                    [if selected.contains(&i) { 127 } else { 0 }, 0, -1]
+                }
+            })
+            .collect();
+        m.face_textures = None;
+        m.texture_coords = None;
+        if a.len() >= 10 {
+            m.scale([a[7].parse()?, a[8].parse()?, a[9].parse()?]);
+        }
+        let cam: Vec<f32> = fs::read_to_string(&a[5])?
+            .split_whitespace()
+            .map(str::parse)
+            .collect::<Result<_, _>>()?;
+        native::views(
+            &m,
+            &light,
+            &tex,
+            cam.try_into().map_err(|_| "Mask camera length")?,
+            out,
+        )?;
         return Ok(());
     }
     if a[3] == "render-own" {

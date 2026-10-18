@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "selection_baseline": "1c8b9b7169c2092475d713695007a29ae5e30e61",
+  "selection_method": "Local symbol identity only; no meshes, imagery or animation inspected before declaration",
+  "protocol": "Freeze authoring tool revision before target inspection. Explicit archetype and target low-dimensional descriptors are available; not blind class prediction. Check mesh-payload overlap with all previous training/development corpora. Preserve contaminated and unsupported cases rather than silently replacing them. All generated results remain unapproved until user judgment. Never retune and overwrite this version.",
+  "records": [
+    {
+      "selector": "object:375",
+      "archetype": "chest",
+      "reason": "Closed chest; symbol chestclosed"
+    },
+    {
+      "selector": "object:1106",
+      "archetype": "bench",
+      "reason": "Bench; unseen furniture construction"
+    },
+    {
+      "selector": "object:3304",
+      "archetype": "masonry_pier",
+      "reason": "Underground-pass portcullis support; unseen structural type"
+    },
+    {
+      "selector": "item:1267",
+      "archetype": "pickaxe",
+      "reason": "Iron pickaxe; unseen bent metal tool"
+    },
+    {
+      "selector": "item:1335",
+      "archetype": "hammer",
+      "reason": "Iron warhammer; unseen tool/weapon construction"
+    },
+    {
+      "selector": "npc:2838",
+      "archetype": "bear",
+      "reason": "Brown bear; distinct quadruped proportions"
+    },
+    {
+      "selector": "npc:5007",
+      "archetype": "imp",
+      "reason": "Imp; unseen small humanoid creature"
+    }
+  ]
+}

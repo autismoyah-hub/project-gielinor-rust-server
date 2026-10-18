@@ -76,11 +76,27 @@ pub fn render(
             850.,
         )?
     };
-    camera.far = 5250;
-    let mut frame = Frame::new(
+    render_camera(
+        m,
+        light,
+        textures,
+        camera,
         if gameplay { 765 } else { 700 },
         if gameplay { 503 } else { 650 },
-    )?;
+        path,
+    )
+}
+pub fn render_camera(
+    m: &Model,
+    light: &[[i32; 3]],
+    textures: &HashMap<u16, texture::Texture>,
+    mut camera: Camera,
+    width: usize,
+    height: usize,
+    path: &Path,
+) -> Result<(), Box<dyn std::error::Error>> {
+    camera.far = 5250;
+    let mut frame = Frame::new(width, height)?;
     let mut triangles = Vec::new();
     let drawn = gielinor_client::model_draw::vertices(&m.vertices, 0, [0, 0, 0])?;
     for (i, face) in m.faces.iter().enumerate() {

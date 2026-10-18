@@ -13,9 +13,9 @@ def run(args):subprocess.run([str(x)for x in args],check=True)
 def identity(args):
     return dict(native_binary_sha256=hashlib.sha256(args.native.read_bytes()).hexdigest(),catalog_sha256=hashlib.sha256(args.catalog.read_bytes()).hexdigest(),inputs='read-only original cache; protected derivative output',production_integration=False)
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--native',type=Path,required=True);p.add_argument('--cache',type=Path,required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--blender',type=Path);p.add_argument('--catalog',type=Path,default=HERE/'reference_catalog.json');p.add_argument('--split',choices=['training','held_out'],default='training');p.add_argument('command',choices=['inspect','analyze','roundtrip']);a=p.parse_args();a.native=a.native.resolve();a.out=a.out.resolve();a.cache=a.cache.resolve();a.catalog=a.catalog.resolve()
+    p=argparse.ArgumentParser();p.add_argument('--native',type=Path,required=True);p.add_argument('--cache',type=Path,required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--blender',type=Path);p.add_argument('--reference-root',type=Path);p.add_argument('--catalog',type=Path,default=HERE/'reference_catalog.json');p.add_argument('--split',choices=['training','held_out'],default='training');p.add_argument('command',choices=['inspect','analyze','roundtrip']);a=p.parse_args();a.native=a.native.resolve();a.out=a.out.resolve();a.cache=a.cache.resolve();a.catalog=a.catalog.resolve()
     if a.out.is_relative_to(a.cache)or a.out.is_relative_to(HERE.parents[2]):raise ValueError('Reference outputs must remain outside source repository and original cache')
-    a.out.mkdir(parents=True,exist_ok=True);records=[r for r in json.loads(a.catalog.read_text())['records']if r['split']==a.split];reference=a.out/a.split/'reference';analysis=a.out/a.split/'analysis'
+    a.out.mkdir(parents=True,exist_ok=True);records=[r for r in json.loads(a.catalog.read_text())['records']if r['split']==a.split];reference=a.reference_root.resolve()if a.reference_root else a.out/a.split/'reference';analysis=a.out/a.split/'analysis'
     if a.command=='inspect':run([a.native,a.cache,reference,'inspect',*[r['selector']for r in records]])
     if a.command in ['inspect','analyze']:library(reference,analysis)
     if a.command=='roundtrip':

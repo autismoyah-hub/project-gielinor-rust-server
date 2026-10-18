@@ -81,6 +81,12 @@ def library(root,out):
         surface=p.parent/'submitted-surface.json'
         if surface.exists():
             submitted=json.loads(surface.read_text());report['submitted_surface']=geometry(surface_geometry(g,submitted['face_indices']));report['submitted_surface']['world_bounds']=submitted['world_bounds'];report['submitted_surface']['basis']=submitted['basis']
+            def nondegenerate(i):
+                a,b,c=[g['vertices'][v]for v in g['faces'][i]];u=[b[k]-a[k]for k in range(3)];v=[c[k]-a[k]for k in range(3)];return sum(x*x for x in [u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0]])>1e-12
+            opaque=[i for i in submitted['face_indices']if (not g.get('alpha')or g['alpha'][i]<128)and nondegenerate(i)]
+            if opaque:
+                core=surface_geometry(g,opaque);report['high_opacity_surface']=geometry(core);local=report['high_opacity_surface']['exact_decoded']['bounds'];scale=meta['render_scale'];report['high_opacity_surface']['world_bounds']=[[local[r][i]*scale[i]/128 for i in range(3)]for r in range(2)];report['high_opacity_surface']['basis']='Nondegenerate submitted faces with native alpha <128; configurable construction descriptor, not a universal visibility rule'
+        if (root/'texture-statistics.json').exists():report['texture_statistics']=json.loads((root/'texture-statistics.json').read_text())
         (out/(p.parent.name+'.json')).write_text(json.dumps(report,indent=2));catalog.append(dict(selector=meta['selector'],name=meta['name'],model_ids=meta['model_ids'],definition_sha256=meta['definition_sha256'],source_payload_hashes=[v['payload_sha256']for v in meta['sources']],vertices=len(g['vertices']),faces=len(g['faces']),textures=report['exact_decoded']['texture_faces'],sequences=meta['sequences'],bounds=report['exact_decoded']['bounds'],report=p.parent.name+'.json'))
     (out/'catalog.json').write_text(json.dumps(catalog,indent=2));print('REFERENCE_ANALYSIS_COMPLETE',len(catalog))
 def compare(ref,candidate,out):

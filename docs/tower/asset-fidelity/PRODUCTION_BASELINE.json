@@ -1,0 +1,212 @@
+{
+  "baseline_source": "1c8b9b7169c2092475d713695007a29ae5e30e61",
+  "native_client_source": "23a94f75707f0503a9efe610fe99bfce5089b575",
+  "preservation": {
+    "unique_asset_variants": 44,
+    "unique_native_views": 220,
+    "unique_action_sets": 26,
+    "unique_matching_timestamps": 468,
+    "pixels_coordinates_alpha_exact": true,
+    "cohorts": [
+      {
+        "cohort": "base",
+        "static_variants": 33,
+        "all_native_views_exact": true,
+        "actions": [
+          {
+            "asset": "npc-1173",
+            "source_sequence": 5386,
+            "matching_samples": 25,
+            "coordinates_alpha_exact": true
+          },
+          {
+            "asset": "npc-1173",
+            "source_sequence": 5385,
+            "matching_samples": 12,
+            "coordinates_alpha_exact": true
+          },
+          {
+            "asset": "npc-26",
+            "source_sequence": 5565,
+            "matching_samples": 25,
+            "coordinates_alpha_exact": true
+          },
+          {
+            "asset": "npc-26",
+            "source_sequence": 5566,
+            "matching_samples": 13,
+            "coordinates_alpha_exact": true
+          },
+          {
+            "asset": "npc-2790",
+            "source_sequence": 5852,
+            "matching_samples": 17,
+            "coordinates_alpha_exact": true
+          },
+          {
+            "asset": "npc-2790",
+            "source_sequence": 5848,
+            "matching_samples": 13,
+            "coordinates_alpha_exact": true
+          },
+          {
+            "asset": "npc-2854",
+            "source_sequence": 2704,
+            "matching_samples": 24,
+            "coordinates_alpha_exact": true
+          },
+          {
+            "asset": "npc-2854",
+            "source_sequence": 2703,
+            "matching_samples": 10,
+            "coordinates_alpha_exact": true
+          },
+          {
+            "asset": "npc-3019",
+            "source_sequence": 6247,
+            "matching_samples": 25,
+            "coordinates_alpha_exact": true
+          },
+          {
+            "asset": "npc-3019",
+            "source_sequence": 6248,
+            "matching_samples": 9,
+            "coordinates_alpha_exact": true
+          },
+          {
+            "asset": "npc-3106",
+            "source_sequence": 808,
+            "matching_samples": 25,
+            "coordinates_alpha_exact": true
+          },
+          {
+            "asset": "npc-3106",
+            "source_sequence": 819,
+            "matching_samples": 13,
+            "coordinates_alpha_exact": true
+          },
+          {
+            "asset": "npc-655",
+            "source_sequence": 6181,
+            "matching_samples": 20,
+            "coordinates_alpha_exact": true
+          },
+          {
+            "asset": "npc-655",
+            "source_sequence": 6180,
+            "matching_samples": 13,
+            "coordinates_alpha_exact": true
+          },
+          {
+            "asset": "npc-70",
+            "source_sequence": 5483,
+            "matching_samples": 23,
+            "coordinates_alpha_exact": true
+          },
+          {
+            "asset": "npc-70",
+            "source_sequence": 5481,
+            "matching_samples": 13,
+            "coordinates_alpha_exact": true
+          },
+          {
+            "asset": "object-11010",
+            "source_sequence": 3106,
+            "matching_samples": 20,
+            "coordinates_alpha_exact": true
+          },
+          {
+            "asset": "object-13560",
+            "source_sequence": 3720,
+            "matching_samples": 25,
+            "coordinates_alpha_exact": true
+          },
+          {
+            "asset": "object-5589",
+            "source_sequence": 1729,
+            "matching_samples": 10,
+            "coordinates_alpha_exact": true
+          }
+        ]
+      },
+      {
+        "cohort": "worn",
+        "static_variants": 2,
+        "all_native_views_exact": true,
+        "actions": []
+      },
+      {
+        "cohort": "combat",
+        "static_variants": 1,
+        "all_native_views_exact": true,
+        "actions": [
+          {
+            "asset": "npc-655",
+            "source_sequence": 6181,
+            "matching_samples": 20,
+            "coordinates_alpha_exact": true
+          },
+          {
+            "asset": "npc-655",
+            "source_sequence": 6182,
+            "matching_samples": 25,
+            "coordinates_alpha_exact": true
+          },
+          {
+            "asset": "npc-655",
+            "source_sequence": 6183,
+            "matching_samples": 25,
+            "coordinates_alpha_exact": true
+          },
+          {
+            "asset": "npc-655",
+            "source_sequence": 6185,
+            "matching_samples": 13,
+            "coordinates_alpha_exact": true
+          },
+          {
+            "asset": "npc-655",
+            "source_sequence": 6180,
+            "matching_samples": 13,
+            "coordinates_alpha_exact": true
+          }
+        ]
+      },
+      {
+        "cohort": "old-heldout",
+        "static_variants": 9,
+        "all_native_views_exact": true,
+        "actions": [
+          {
+            "asset": "npc-106",
+            "source_sequence": 6580,
+            "matching_samples": 25,
+            "coordinates_alpha_exact": true
+          },
+          {
+            "asset": "npc-106",
+            "source_sequence": 6556,
+            "matching_samples": 9,
+            "coordinates_alpha_exact": true
+          },
+          {
+            "asset": "npc-2834",
+            "source_sequence": 4914,
+            "matching_samples": 22,
+            "coordinates_alpha_exact": true
+          },
+          {
+            "asset": "npc-2834",
+            "source_sequence": 4913,
+            "matching_samples": 14,
+            "coordinates_alpha_exact": true
+          }
+        ]
+      }
+    ]
+  },
+  "boundary_tests": 23,
+  "stage": "Construction/material/contact tools implemented and exercised; final frozen evaluation and showcase review in progress",
+  "live_map_changed": false,
+  "artistic_acceptance": false
+}

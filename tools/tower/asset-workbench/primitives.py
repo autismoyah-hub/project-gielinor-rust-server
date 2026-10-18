@@ -47,7 +47,13 @@ def socket(vertices,spec):
     return [[round(origin[a]+sum(row[i]*basis[i][a]for i in range(3)))for a in range(3)]for row in vertices]
 def make(spec):
     kind=spec['type']
-    if kind=='loft':v,f=loft(spec['sections'],spec.get('sides',6),spec.get('outline'))
+    if kind in ['sweep','stave','voussoir','stone_block']:
+        from shape_families import sweep,stave,voussoir,chamfer_block
+        if kind=='sweep':v,f=sweep(spec['sections'],spec.get('sides',6),spec.get('normal',[0,0,1]))
+        elif kind=='stave':v,f=stave(spec['sections'],spec['start_angle'],spec['end_angle'],spec.get('thickness',4))
+        elif kind=='voussoir':v,f=voussoir(spec['center'],spec['inner'],spec['outer'],spec['start_angle'],spec['end_angle'],spec['depth'])
+        else:v,f=chamfer_block(spec['center'],spec['size'],spec.get('bevel',3),spec.get('wear',0),spec.get('seed',0))
+    elif kind=='loft':v,f=loft(spec['sections'],spec.get('sides',6),spec.get('outline'))
     elif kind=='annulus':
         n=spec.get('sides',12);rx,ry=spec['radii'];width=spec['rim_width'];depth=spec['depth'];cx,cy,cz=spec['center'];v=[];f=[]
         if min(rx,ry)<=width or depth<=0:raise ValueError('annulus dimensions')
@@ -59,4 +65,9 @@ def make(spec):
     elif kind=='beam':v,f=beam(spec['start'],spec['end'],spec['radii'],spec.get('sides',6))
     elif kind=='profile':v,f=profile(spec['profile'],spec['depth'])
     else:raise ValueError('unknown primitive '+kind)
-    return socket(socket(v,spec.get('socket',{})),spec.get('parent_socket',{})),f
+    v=socket(socket(v,spec.get('socket',{})),spec.get('parent_socket',{}))
+    if spec.get('asset_transform'):
+        transform=spec['asset_transform'];scale=transform['scale'];offset=transform['offset']
+        if min(scale)<=0:raise ValueError('Owned asset scale must preserve winding')
+        v=[[round(row[i]*scale[i]+offset[i])for i in range(3)]for row in v]
+    return v,f
