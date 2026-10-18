@@ -40,6 +40,7 @@ mod unfinished_potion_actions;
 mod herb_cleaning_actions;
 mod mining_actions;
 mod npc_actions;
+mod thieving_actions;
 mod npc_combat_actions;
 mod npc_death_actions;
 mod npc_search;
@@ -179,6 +180,7 @@ enum Deferred {
     Milking(crate::milking::Job),
     WaterFilling(crate::water_sources::Job),
     Cooking(crate::cooking::Job),
+    Pickpocket(thieving_actions::Job),
     Grinding(crate::grinding::Pending),
     SwampTar(crate::swamp_tar::Pending),
     Dough(crate::dough::Pending),
@@ -270,6 +272,7 @@ struct Player {
     logout_blocked_until: i32,
     protection: crate::protected::State,
     food_delay: bool,
+    pickpocket_stun_until:i32,
     tutorial_fire: Option<crate::tutorial_fire::Pending>,
     main_modal: Option<u16>,
     location_interaction: Option<(crate::locations::Location, LocationAction)>,
@@ -311,7 +314,9 @@ impl Player {
         }
         Ok(())
     }
+    fn pickpocket_stunned(&self)->bool {self.pickpocket_stun_until>self.protection.processed_clock}
     fn begin_held_action(&mut self) {
+        self.queues.remove_all(crate::thieving::QUEUE);
         self.queues.remove_all(crate::assembly::QUEUE);
         self.queues.remove_all(crate::milking::QUEUE);
         self.queues.remove_all(crate::water_sources::QUEUE);
@@ -941,6 +946,7 @@ pub struct World {
     pub npc_bindings: BTreeMap<u16, crate::npc_bind::Binding>,
     pub combat_state: Option<crate::combat_state::Config>,
     pub npc_combat: BTreeMap<u16, crate::npc_combat::Definition>,
+    pub pickpocket:Option<crate::thieving::Config>,
     pub npc_handlers: BTreeMap<(u16, u8), crate::npc_interaction::Handler>,
     location_timers: crate::loc_timers::Timers,
     players: EntityList<Player>,
@@ -1056,6 +1062,7 @@ impl Default for World {
             combat_state: None,
             npc_combat: BTreeMap::new(),
             npc_handlers: Default::default(),
+            pickpocket:None,
             location_timers: Default::default(),
             players: EntityList::players(),
             generation: 0,
@@ -1376,7 +1383,7 @@ impl World {
     /// Network movement must reject these states before running ifClose callbacks.
     pub fn movement_input_allowed(&self, id: ActorId) -> Result<bool, ActionError> {
         let player = self.player(id)?;
-        Ok(!player.protection.delayed() && !player.movement.rooted)
+        Ok(!player.protection.delayed() && !player.movement.rooted && !player.pickpocket_stunned())
     }
     pub fn count_dialog_token(&self, id: ActorId) -> Result<Option<u64>, ActionError> {
         Ok(self.player(id)?.bank_count.map(|pending| pending.0))
@@ -1386,6 +1393,7 @@ impl World {
         let p = self.players.get_mut(id.slot as usize).unwrap();
         p.has_modal = open;
         if open {
+            p.queues.remove_all(crate::thieving::QUEUE);
             if matches!(p.prayer,Some(crate::prayer::State::Bury{slot:Some(_),..})) {
                 p.prayer=None;p.protection.suspended=false;
             }
@@ -2102,7 +2110,7 @@ impl World {
                 if p.protection.delayed() {
                     return Err(ActionError::Delayed);
                 }
-                if p.movement.rooted {
+                if p.movement.rooted || p.pickpocket_stunned() {
                     return Err(ActionError::Rooted);
                 }
                 if destination.level() != p.movement.coords.level() {
@@ -2490,6 +2498,13 @@ impl World {
                                                 Deferred::Grinding(job) => {
                                                     grinding_actions::complete(p, queues, job, &self.object_types, self.clock.0, &mut self.events);
                                                 }
+                                                Deferred::Pickpocket(job) => {
+                                                    if let Some(config)=&self.pickpocket {
+                                                        let target=job.target;
+                                                        let caught=thieving_actions::complete(p,queues,job,config,&self.object_types,self.npcs.get(target.slot as usize),self.player_hit_queues,self.clock.0,self.tutorial_rules_completed_varp.is_some(),&mut self.events,random);
+                                                        if caught {if let Some(n)=self.npcs.get_mut(target.slot as usize).filter(|n|n.id==target) {n.npc.face_player=Some(p.id);n.npc.face_changed=true;}}
+                                                    }
+                                                }
                                                 Deferred::Cooking(job) => {
                                                     if let Some(config)=&self.cooking {cooking_actions::complete(p,job,config,&self.object_types,self.locations.revision(job.target),self.clock.0,self.tutorial_rules_completed_varp.is_some(),&mut self.events,random);}
                                                 }
@@ -2835,7 +2850,7 @@ impl World {
                             self.process_player_retaliation(actor);
                             let interacted = self.process_npc_interaction(slot, true, random);
                             let p = self.players.get_mut(slot).unwrap();
-                            if !interacted {
+                            if !interacted && !p.pickpocket_stunned() {
                                 p.movement.process(&mut self.collision, self.clock.0);
                             }
                             p.data.coords = p.movement.coords;
@@ -3012,6 +3027,7 @@ impl World {
                             logout_blocked_until: 0,
                             protection,
                             food_delay: false,
+                            pickpocket_stun_until:i32::MIN,
                             tutorial_fire: None,
                             main_modal: None,
                             location_interaction: None,

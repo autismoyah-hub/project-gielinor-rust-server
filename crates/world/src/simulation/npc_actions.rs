@@ -16,7 +16,8 @@ impl World {
         let Some(npc) = self.npc(target) else {
             return false;
         };
-        !p.protection.delayed()
+        !(op==3 && self.pickpocket.as_ref().is_some_and(|c|c.targets.contains_key(&npc.type_id)) && (p.movement.rooted||p.pickpocket_stunned()))
+            && !p.protection.delayed()
             && !npc.delayed
             && self
                 .npc_options
@@ -263,6 +264,7 @@ impl World {
             return true;
         }
         if touches || bank_approach {
+            if pending.handler==Some(Handler::Pickpocket) {self.clear_npc_route(slot);self.start_pickpocket(slot,pending.target);return true;}
             if pending.handler == Some(Handler::TowerTanner) {
                 self.clear_npc_route(slot);
                 if let Err(error) =
@@ -356,6 +358,7 @@ impl World {
             p.movement.abort();
             let event = match pending.handler {
                 Some(Handler::Bank) => Event::Bank,
+                Some(Handler::Pickpocket) => unreachable!("Pickpocket handled above"),
                 Some(Handler::TowerTanner) => unreachable!("Tanning handled above"),
                 Some(Handler::Combat) => unreachable!("Combat handled above"),
                 Some(Handler::Person) => unreachable!("Dialogue handled above"),

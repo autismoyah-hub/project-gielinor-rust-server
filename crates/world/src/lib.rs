@@ -291,3 +291,4 @@ pub mod chemistry;
 pub mod chemistry_modifier;
 pub mod potion_upgrades;
 pub mod combat_mixing;
+pub mod thieving;

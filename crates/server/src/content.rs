@@ -2,6 +2,8 @@
 use gielinor_cache::{game::Definitions, symbols::Symbols};
 use gielinor_world::food::{self, Edible};
 use std::collections::BTreeMap;
+mod citizen_thieving;
+pub use citizen_thieving::citizen_pickpockets;
 mod coin_pouch;
 pub use coin_pouch::coin_pouches;
 mod dorgesh_food;

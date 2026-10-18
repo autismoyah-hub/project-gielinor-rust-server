@@ -3,6 +3,7 @@ use crate::simulation::NpcId;
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Handler {
     Bank,
+    Pickpocket,
     TowerTanner,
     Combat,
     Person,

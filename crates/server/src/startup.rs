@@ -382,6 +382,10 @@ pub fn configure<B: AccountBackend>(
     runtime.world.item_packs =
         crate::content::item_packs(n("obj"), &runtime.definitions).map_err(io::Error::other)?;
     runtime.world.coin_pouches=crate::content::coin_pouches(n("obj"),n("param"),&runtime.definitions).map_err(io::Error::other)?;
+    let pickpocket=crate::content::citizen_pickpockets(n("npc"),n("seq"),n("spotanim"),n("synth"),n("stat"),&runtime.definitions).map_err(io::Error::other)?;
+    for &id in pickpocket.targets.keys() {if runtime.world.npc_handlers.contains_key(&(id,3)){return Err(io::Error::other("Conflicting pickpocket operation"));}}
+    for &id in pickpocket.targets.keys() {runtime.world.npc_handlers.insert((id,3),gielinor_world::npc_interaction::Handler::Pickpocket);}
+    runtime.world.pickpocket=Some(pickpocket);
     runtime.world.doors =
         crate::doors::resolve(n("content"), n("param"), &parameters, &runtime.definitions)
             .map_err(io::Error::other)?;
