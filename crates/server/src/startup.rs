@@ -825,6 +825,11 @@ pub fn configure<B: AccountBackend>(
     for recipe in crate::content::birdhouses(n("obj"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
         runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.recipe.first,recipe.recipe.second,gielinor_world::held_use::Handler::AssemblyProduction{recipe,cycle_ticks:3}).map_err(|e|io::Error::other(format!("Birdhouse registration: {e:?}")))?;
     }
+    let vendors=crate::content::skillcape_vendors(n("obj"),n("npc"),n("stat"),n("param"),&runtime.definitions).map_err(io::Error::other)?;
+    for &id in vendors.keys(){
+        if runtime.world.npc_handlers.get(&(id,1)).is_some_and(|h|*h!=gielinor_world::npc_interaction::Handler::Person){return Err(io::Error::other("Conflicting skillcape vendor operation"));}
+    }
+    for (&id,&config) in &vendors{runtime.world.npc_handlers.insert((id,1),gielinor_world::npc_interaction::Handler::SkillcapeVendor(config));}
     runtime.world.worn_stat_boosts=crate::content::crafting_cape_boost(n("obj"),n("stat"),n("param"),&runtime.definitions).map_err(io::Error::other)?;
     runtime.world.worn_item_swaps=crate::content::imcando_worn_swaps(n("obj"),&runtime.definitions).map_err(io::Error::other)?;
     for (item,rule) in crate::content::imcando_held_swaps(n("obj"),&runtime.definitions).map_err(io::Error::other)? {

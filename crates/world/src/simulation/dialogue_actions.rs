@@ -243,7 +243,7 @@ impl World {
             },
         )
     }
-    fn show_dialogue(&mut self, actor: ActorId, mut pending: Pending) -> Result<(), ActionError> {
+    pub(super) fn show_dialogue(&mut self, actor: ActorId, mut pending: Pending) -> Result<(), ActionError> {
         let Some(page) = pending.conversation.pages.front().cloned() else {
             return Ok(());
         };
@@ -346,6 +346,7 @@ impl World {
         match pending.conversation.pages.front() {
             Some(Page::Choice(_) | Page::TitledChoice { .. }) => {
                 let conversation = match pending.conversation.after {
+                    Effect::SkillcapeVendor {ctx,stage} => self.skillcape_vendor_choice(actor,pending.npc,ctx,stage,choice)?,
                     Effect::LectureTutor {
                         config,
                         stage: crate::tutorial_lecture_tutor::Stage::RecapChoice,
@@ -407,6 +408,7 @@ impl World {
         }
         if pending.conversation.pages.is_empty() {
             match pending.conversation.after {
+                Effect::SkillcapeVendor {ctx,stage} => {pending.conversation=self.finish_skillcape_vendor(actor,pending.npc,ctx,stage)?;},
                 Effect::LectureTutor { config, stage } => {
                     let (step, open_tab) = crate::tutorial_lecture_tutor::finish(config, stage);
                     self.events.push(WorldEvent::Dialogue {

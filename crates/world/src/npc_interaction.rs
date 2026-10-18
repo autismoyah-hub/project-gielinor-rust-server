@@ -2,6 +2,7 @@
 use crate::simulation::NpcId;
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Handler {
+    SkillcapeVendor(crate::skillcape_vendor::Config),
     Bank,
     Pickpocket,
     Tanning,

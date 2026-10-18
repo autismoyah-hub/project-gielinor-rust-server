@@ -36,6 +36,7 @@ pub enum Page {
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Effect {
+    SkillcapeVendor {ctx:crate::skillcape_vendor::Context,stage:crate::skillcape_vendor::Stage},
     LectureTutor {
         config: crate::tutorial_lecture_tutor::Config,
         stage: crate::tutorial_lecture_tutor::Stage,

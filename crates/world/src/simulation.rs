@@ -31,6 +31,7 @@ mod deposit_box_actions;
 mod bank_access_actions;
 mod worn_item_swap_actions;
 mod worn_stat_boost_actions;
+mod skillcape_vendor_actions;
 mod container_emptying_actions;
 mod item_pack_actions;
 mod milking_actions;

@@ -344,6 +344,11 @@ impl World {
                 }
                 return true;
             }
+            if let Some(Handler::SkillcapeVendor(config))=pending.handler {
+                self.clear_npc_route(slot);
+                if let Err(error)=self.start_skillcape_vendor(actor,pending.target,config){self.events.push(WorldEvent::ActionRejected{actor,error});}
+                return true;
+            }
             if pending.handler == Some(Handler::Person) {
                 self.clear_npc_route(slot);
                 if let Err(error) = self.start_person(actor, pending.target) {
@@ -362,6 +367,7 @@ impl World {
                 Some(Handler::Pickpocket) => unreachable!("Pickpocket handled above"),
                 Some(Handler::TowerTanner) => unreachable!("Tanning handled above"),
                 Some(Handler::Combat) => unreachable!("Combat handled above"),
+                Some(Handler::SkillcapeVendor(_)) => unreachable!("Vendor dialogue handled above"),
                 Some(Handler::Person) => unreachable!("Dialogue handled above"),
                 Some(Handler::TutorialFishing) => unreachable!("Fishing handled above"),
                 Some(
