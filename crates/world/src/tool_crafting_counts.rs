@@ -52,7 +52,7 @@ pub fn prepare_with_slots(
             )
         })
         .collect::<Vec<_>>();
-    prepare_plan(job, &parts, inv, items, stats, rate, member)
+    prepare_plan(job, &parts, inv, items, stats, rate, member, None)
 }
 pub fn prepare_materials(
     job: Job,
@@ -74,7 +74,7 @@ pub fn prepare_materials(
         .iter()
         .map(|&(id, slot)| (id, slot, 1))
         .collect::<Vec<_>>();
-    prepare_plan(job, &parts, inv, items, stats, rate, member)
+    prepare_plan(job, &parts, inv, items, stats, rate, member, None)
 }
 /// Stacked material counts and ordinary singles share the same staged transaction.
 pub fn prepare_material_counts(
@@ -85,6 +85,40 @@ pub fn prepare_material_counts(
     stats: &Stats,
     rate: i32,
     member: bool,
+) -> Result<Prepared, Error> {
+    prepare_material_counts_inner(job, materials, inv, items, stats, rate, member, None)
+}
+pub fn prepare_material_counts_worn(
+    job: Job,
+    materials: &[(i32, usize, u16)],
+    inv: &Inventory,
+    worn: &Inventory,
+    slot: usize,
+    items: &Catalog,
+    stats: &Stats,
+    rate: i32,
+    member: bool,
+) -> Result<Prepared, Error> {
+    prepare_material_counts_inner(
+        job,
+        materials,
+        inv,
+        items,
+        stats,
+        rate,
+        member,
+        Some((worn, slot)),
+    )
+}
+fn prepare_material_counts_inner(
+    job: Job,
+    materials: &[(i32, usize, u16)],
+    inv: &Inventory,
+    items: &Catalog,
+    stats: &Stats,
+    rate: i32,
+    member: bool,
+    worn: Option<(&Inventory, usize)>,
 ) -> Result<Prepared, Error> {
     if materials.len() < 2
         || materials.iter().any(|&(id, _, n)| {
@@ -103,7 +137,7 @@ pub fn prepare_material_counts(
         .iter()
         .map(|&(id, slot, n)| (id, slot, i32::from(n)))
         .collect::<Vec<_>>();
-    prepare_plan(job, &parts, inv, items, stats, rate, member)
+    prepare_plan(job, &parts, inv, items, stats, rate, member, worn)
 }
 fn prepare_plan(
     job: Job,
@@ -113,6 +147,7 @@ fn prepare_plan(
     stats: &Stats,
     rate: i32,
     member: bool,
+    worn: Option<(&Inventory, usize)>,
 ) -> Result<Prepared, Error> {
     let r = job.recipe;
     let e = r.exchange;
@@ -144,9 +179,16 @@ fn prepare_plan(
     if (stats.current(r.skill) as u8) < r.level {
         return Err(Error::Level);
     }
-    if !inv
-        .get(job.tool_slot)
-        .is_some_and(|i| i.id == e.tool && i.count == 1 && i.vars == 0)
+    let retained_tool = match worn {
+        Some((gear, slot)) => {
+            if gear.stack != StackType::Normal || gear.placeholders {
+                return Err(Error::Policy);
+            }
+            gear.get(slot)
+        }
+        None => inv.get(job.tool_slot),
+    };
+    if !retained_tool.is_some_and(|i| i.id == e.tool && i.count == 1 && i.vars == 0)
         || parts.first().map(|&(id, slot, _)| (id, slot)) != Some((e.input, job.input_slot))
         || parts
             .iter()
@@ -155,7 +197,7 @@ fn prepare_plan(
             .len()
             != parts.len()
         || parts.iter().any(|&(id, slot, count)| {
-            slot == job.tool_slot
+            (worn.is_none() && slot == job.tool_slot)
                 || !inv.get(slot).is_some_and(|i| {
                     i.id == id
                         && i.vars == 0

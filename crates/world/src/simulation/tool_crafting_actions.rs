@@ -26,6 +26,7 @@ impl World {
             origin: p.movement.coords,
             last_movement: p.movement.last_movement,
             batch: None,
+            worn_tool_slot:None,
             input_count:1,
         };
         // Input precedes queue processing, so compensate for this clock's decrement.
@@ -86,7 +87,7 @@ pub(super) fn complete(
         let counts=batch.expected_counts.as_ref()?.get(batch.index..end)?;
         Some(ids.get(batch.index..end)?.iter().copied().zip(batch.slots.get(batch.index..end)?.iter().copied()).zip(counts.iter().copied()).map(|((id,slot),n)|(id,slot,n)).collect::<Vec<_>>())
     }));
-    let result=if pending.batch.as_ref().is_some_and(|batch|batch.expected_ids.is_some()){mixed_parts.ok_or(Error::Policy).and_then(|parts|crate::tool_crafting_counts::prepare_material_counts(pending.job,&parts,&p.data.inventory,items,&p.data.stats,p.data.xp_rate_hundreds,p.member).map(|prepared|(prepared,true)))}else if pending.input_count==1{pending.job.resolve(
+    let result=if pending.batch.as_ref().is_some_and(|batch|batch.expected_ids.is_some()){mixed_parts.ok_or(Error::Policy).and_then(|parts|(if let Some(slot)=pending.worn_tool_slot{crate::tool_crafting_counts::prepare_material_counts_worn(pending.job,&parts,&p.data.inventory,&p.data.equipment,slot,items,&p.data.stats,p.data.xp_rate_hundreds,p.member)}else{crate::tool_crafting_counts::prepare_material_counts(pending.job,&parts,&p.data.inventory,items,&p.data.stats,p.data.xp_rate_hundreds,p.member)}).map(|prepared|(prepared,true)))}else if pending.input_count==1{pending.job.resolve(
         &p.data.inventory,
         items,
         &p.data.stats,
@@ -121,6 +122,7 @@ pub(super) fn complete(
             let next = Pending {
                 job,
                 batch: Some(batch),
+                worn_tool_slot:pending.worn_tool_slot,
                 input_count:pending.input_count,
                 origin: pending.origin,
                 last_movement: pending.last_movement,
@@ -347,13 +349,18 @@ impl World {
         if choice.recipes.iter().all(|r|r.exchange.members)&&!p.member{refusal(&mut self.events,actor,Error::Members,choice.recipes[0].skill);return Ok(());}
         p.tool_crafting_request=Some(choice);Ok(())
     }
-    pub(super) fn request_tool_crafting_equivalent_mixed(&mut self,actor:ActorId,recipes:std::sync::Arc<Vec<crate::tool_crafting::Recipe>>,cycle_ticks:u8,request:crate::held_use::Request,specs:crate::tool_crafting_materials::Specifications,tools:std::sync::Arc<Vec<i32>>)->Result<(),ActionError>{
-        if tools.is_empty()||tools.len()>18||tools.iter().copied().collect::<std::collections::BTreeSet<_>>().len()!=tools.len()||tools.iter().any(|&id|!self.object_types.ordinary_nonstackable(id))||recipes.iter().any(|r|r.exchange.tool!=tools[0]){return Err(ActionError::InvalidItem);}
+    pub(super) fn request_tool_crafting_equivalent_mixed(&mut self,actor:ActorId,recipes:std::sync::Arc<Vec<crate::tool_crafting::Recipe>>,cycle_ticks:u8,request:crate::held_use::Request,specs:crate::tool_crafting_materials::Specifications,tools:std::sync::Arc<Vec<i32>>,worn_tools:std::sync::Arc<Vec<(i32,usize)>>)->Result<(),ActionError>{
+        if tools.is_empty()||tools.len()>18||tools.iter().copied().collect::<std::collections::BTreeSet<_>>().len()!=tools.len()||tools.iter().any(|&id|!self.object_types.ordinary_nonstackable(id))||recipes.iter().any(|r|r.exchange.tool!=tools[0])||worn_tools.iter().any(|&(id,slot)|!tools.contains(&id)||slot>=15)||worn_tools.iter().copied().collect::<std::collections::BTreeSet<_>>().len()!=worn_tools.len(){return Err(ActionError::InvalidItem);}
         let p=self.player(actor)?;
-        // An explicitly clicked equivalent wins; otherwise pin the first server-priority held tool.
-        let selected=[request.selected_id,request.target_id].into_iter().find(|id|tools.contains(id)).or_else(||tools.iter().copied().find(|id|p.data.inventory.slots().iter().flatten().any(|i|i.id==*id&&i.count==1&&i.vars==0))).ok_or(ActionError::InvalidItem)?;
+        let held=[request.selected_id,request.target_id].into_iter().find(|id|tools.contains(id)).or_else(||tools.iter().copied().find(|id|p.data.inventory.slots().iter().flatten().any(|i|i.id==*id&&i.count==1&&i.vars==0)));
+        let(selected,worn_slot)=if let Some(id)=held{(id,None)}else{let(id,slot)=worn_tools.iter().copied().find(|&(id,slot)|p.data.equipment.get(slot).is_some_and(|i|i.id==id&&i.count==1&&i.vars==0)).ok_or(ActionError::InvalidItem)?;(id,Some(slot))};
         let recipes=std::sync::Arc::new(recipes.iter().map(|r|{let mut r=*r;r.exchange.tool=selected;r}).collect());
-        self.request_tool_crafting_mixed(actor,recipes,cycle_ticks,request,specs)
+        if let Some(slot)=worn_slot{
+            let p=self.players.get_mut(actor.slot as usize).unwrap();
+            let choice=crate::tool_crafting_materials::bind_worn(recipes,cycle_ticks,request,&p.data.inventory,&self.object_types,&p.data.equipment,slot,p.movement.coords,p.movement.last_movement,specs).ok_or(ActionError::InvalidItem)?;
+            if choice.recipes.iter().all(|r|r.exchange.members)&&!p.member{refusal(&mut self.events,actor,Error::Members,choice.recipes[0].skill);return Ok(());}
+            p.tool_crafting_request=Some(choice);Ok(())
+        }else{self.request_tool_crafting_mixed(actor,recipes,cycle_ticks,request,specs)}
     }
     pub(super) fn request_tool_crafting_mixed(&mut self,actor:ActorId,recipes:std::sync::Arc<Vec<crate::tool_crafting::Recipe>>,cycle_ticks:u8,request:crate::held_use::Request,specs:crate::tool_crafting_materials::Specifications)->Result<(),ActionError>{
         let p=self.players.get_mut(actor.slot as usize).unwrap();
@@ -408,7 +415,7 @@ impl World {
             let capture=crate::tool_crafting_materials::capture(&request,index,&p.data.inventory,count as usize).ok_or(ActionError::InvalidItem)?;
             job.input_slot=*capture.slots.first().ok_or(ActionError::InvalidItem)?;
             let parts=capture.ids.iter().copied().zip(capture.slots.iter().copied()).zip(capture.counts.iter().copied()).take(capture.stride).map(|((id,slot),n)|(id,slot,n)).collect::<Vec<_>>();
-            if let Err(e)=crate::tool_crafting_counts::prepare_material_counts(job,&parts,&p.data.inventory,&self.object_types,&p.data.stats,p.data.xp_rate_hundreds,p.member){refusal(&mut self.events,actor,e,job.recipe.skill);return Ok(());}
+            if let Err(e)=(if let Some(slot)=request.worn_tool_slot{crate::tool_crafting_counts::prepare_material_counts_worn(job,&parts,&p.data.inventory,&p.data.equipment,slot,&self.object_types,&p.data.stats,p.data.xp_rate_hundreds,p.member)}else{crate::tool_crafting_counts::prepare_material_counts(job,&parts,&p.data.inventory,&self.object_types,&p.data.stats,p.data.xp_rate_hundreds,p.member)}){refusal(&mut self.events,actor,e,job.recipe.skill);return Ok(());}
             (capture.slots,capture.stride,Some(capture.ids),Some(capture.counts))
         }else{
         let mut slots = vec![request.input_slot];
@@ -434,6 +441,7 @@ impl World {
         let pending = Pending {
             job,
             input_count,
+            worn_tool_slot:request.worn_tool_slot,
             origin: request.origin,
             last_movement: request.last_movement,
             batch: Some(crate::tool_crafting::Batch {

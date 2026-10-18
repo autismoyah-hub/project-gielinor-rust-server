@@ -23,6 +23,45 @@ pub fn bind(
     movement: i32,
     specs: Specifications,
 ) -> Option<Request> {
+    bind_inner(
+        recipes, cycle, held, inv, items, origin, movement, specs, None,
+    )
+}
+pub(crate) fn bind_worn(
+    recipes: Arc<Vec<Recipe>>,
+    cycle: u8,
+    held: held_use::Request,
+    inv: &Inventory,
+    items: &Catalog,
+    worn: &Inventory,
+    worn_slot: usize,
+    origin: CoordGrid,
+    movement: i32,
+    specs: Specifications,
+) -> Option<Request> {
+    bind_inner(
+        recipes,
+        cycle,
+        held,
+        inv,
+        items,
+        origin,
+        movement,
+        specs,
+        Some((worn, worn_slot)),
+    )
+}
+fn bind_inner(
+    recipes: Arc<Vec<Recipe>>,
+    cycle: u8,
+    held: held_use::Request,
+    inv: &Inventory,
+    items: &Catalog,
+    origin: CoordGrid,
+    movement: i32,
+    specs: Specifications,
+    worn: Option<(&Inventory, usize)>,
+) -> Option<Request> {
     let first = *recipes.first()?;
     let stacks = specs
         .iter()
@@ -69,6 +108,9 @@ pub fn bind(
             return None;
         }
         if id == first.exchange.tool {
+            if worn.is_some() {
+                return None;
+            }
             if chosen_tool.replace(slot).is_some() {
                 return None;
             }
@@ -85,11 +127,6 @@ pub fn bind(
     {
         return None;
     }
-    let tool = chosen_tool.or_else(|| {
-        inv.slots().iter().position(|i| {
-            i.is_some_and(|i| i.id == first.exchange.tool && i.count == 1 && i.vars == 0)
-        })
-    })?;
     let primary = selected
         .iter()
         .find(|v| v.0 == first.exchange.input)
@@ -99,13 +136,25 @@ pub fn bind(
                 i.is_some_and(|i| i.id == first.exchange.input && i.count == 1 && i.vars == 0)
             })
         })?;
-    let canonical = held_use::Request {
-        selected_slot: i32::try_from(tool).ok()?,
-        selected_id: first.exchange.tool,
-        target_slot: i32::try_from(primary).ok()?,
-        target_id: first.exchange.input,
+    let mut request = if let Some((gear, slot)) = worn {
+        if !items.ordinary_nonstackable(first.exchange.tool) {
+            return None;
+        }
+        Request::bind_worn(recipes, cycle, inv, gear, slot, primary, origin, movement)?
+    } else {
+        let tool = chosen_tool.or_else(|| {
+            inv.slots().iter().position(|i| {
+                i.is_some_and(|i| i.id == first.exchange.tool && i.count == 1 && i.vars == 0)
+            })
+        })?;
+        let canonical = held_use::Request {
+            selected_slot: i32::try_from(tool).ok()?,
+            selected_id: first.exchange.tool,
+            target_slot: i32::try_from(primary).ok()?,
+            target_id: first.exchange.input,
+        };
+        Request::bind(recipes, cycle, canonical, inv, origin, movement)?
     };
-    let mut request = Request::bind(recipes, cycle, canonical, inv, origin, movement)?;
     request.material_specs = Some(specs);
     request.material_stacks = Arc::new(stacks);
     request.selected_materials = selected;
@@ -181,7 +230,11 @@ pub fn capture(request: &Request, index: usize, inv: &Inventory, count: usize) -
             }
         })
         .sum();
-    let mut used = BTreeSet::from([request.tool_slot]);
+    let mut used = if request.worn_tool_slot.is_some() {
+        BTreeSet::new()
+    } else {
+        BTreeSet::from([request.tool_slot])
+    };
     let mut slots = Vec::new();
     let mut ids = Vec::new();
     let mut counts = Vec::new();

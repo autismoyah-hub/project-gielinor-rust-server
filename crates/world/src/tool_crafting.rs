@@ -96,6 +96,7 @@ impl Job {
 #[derive(Clone, Debug)]
 pub(crate) struct Pending {
     pub job: Job,
+    pub worn_tool_slot:Option<usize>,
     pub origin: CoordGrid,
     pub last_movement: i32,
     pub batch: Option<Batch>,
@@ -203,6 +204,7 @@ mod tests {
 /// Immutable registry-owned choices and captured slots, never client recipe data.
 #[derive(Clone, Debug)]
 pub struct Request {
+    pub worn_tool_slot:Option<usize>,
     pub recipes: std::sync::Arc<Vec<Recipe>>,
     pub tool_slot: usize,
     pub input_slot: usize,
@@ -228,30 +230,7 @@ impl Request {
     }
     pub fn bind_counted(recipes:std::sync::Arc<Vec<Recipe>>,cycle_ticks:u8,request:crate::held_use::Request,inventory:&Inventory,origin:CoordGrid,last_movement:i32,input_count:u16)->Option<Self>{
         let first = *recipes.first()?;
-        if inventory.stack != StackType::Normal
-            || inventory.placeholders
-            || cycle_ticks == 0
-            || input_count==0
-            || (input_count>1&&recipes.iter().any(|r|r.failure.is_some()))
-            || recipes.len() > 18
-            || recipes.iter().any(|r| {
-                r.exchange.tool != first.exchange.tool
-                    || r.exchange.input != first.exchange.input
-                    || r.ticks == 0
-                    || r.level == 0
-                    || r.level > 99
-                    || r.output_count == 0
-                    || r.xp_tenths == 0
-            })
-            || recipes
-                .iter()
-                .map(|r| r.exchange.output)
-                .collect::<std::collections::BTreeSet<_>>()
-                .len()
-                != recipes.len()
-        {
-            return None;
-        }
+        if inventory.stack!=StackType::Normal||inventory.placeholders||!Self::choices_valid(&recipes,cycle_ticks,input_count){return None;}
         let (tool_slot, input_slot) = if request.selected_id == first.exchange.tool
             && request.target_id == first.exchange.input
         {
@@ -278,6 +257,7 @@ impl Request {
             return None;
         }
         Some(Self {
+            worn_tool_slot:None,
             recipes,
             tool_slot,
             input_slot,
@@ -290,6 +270,35 @@ impl Request {
             selected_materials:Vec::new(),
             material_stacks:Default::default(),
         })
+    }
+    pub(crate) fn choices_valid(recipes:&[Recipe],cycle_ticks:u8,input_count:u16)->bool{
+        let Some(first)=recipes.first()else{return false;};
+        !(            cycle_ticks == 0
+            || input_count==0
+            || (input_count>1&&recipes.iter().any(|r|r.failure.is_some()))
+            || recipes.len() > 18
+            || recipes.iter().any(|r| {
+                r.exchange.tool != first.exchange.tool
+                    || r.exchange.input != first.exchange.input
+                    || r.ticks == 0
+                    || r.level == 0
+                    || r.level > 99
+                    || r.output_count == 0
+                    || r.xp_tenths == 0
+            })
+            || recipes
+                .iter()
+                .map(|r| r.exchange.output)
+                .collect::<std::collections::BTreeSet<_>>()
+                .len()
+                != recipes.len())
+    }
+    pub(crate) fn bind_worn(recipes:std::sync::Arc<Vec<Recipe>>,cycle_ticks:u8,inv:&Inventory,worn:&Inventory,worn_slot:usize,input_slot:usize,origin:CoordGrid,last_movement:i32)->Option<Self>{
+        let first=*recipes.first()?;
+        if inv.stack!=StackType::Normal||inv.placeholders||worn.stack!=StackType::Normal||worn.placeholders||!Self::choices_valid(&recipes,cycle_ticks,1)
+            ||!worn.get(worn_slot).is_some_and(|i|i.id==first.exchange.tool&&i.count==1&&i.vars==0)
+            ||!inv.get(input_slot).is_some_and(|i|i.id==first.exchange.input&&i.count==1&&i.vars==0){return None;}
+        Some(Self{recipes,tool_slot:usize::MAX,worn_tool_slot:Some(worn_slot),input_slot,origin,last_movement,cycle_ticks,input_count:1,input_counts:None,material_specs:None,selected_materials:Vec::new(),material_stacks:Default::default()})
     }
     pub fn bind_materials(recipes:std::sync::Arc<Vec<Recipe>>,cycle_ticks:u8,request:crate::held_use::Request,inventory:&Inventory,origin:CoordGrid,last_movement:i32,input_counts:std::sync::Arc<Vec<u16>>)->Option<Self>{
         if recipes.len()!=input_counts.len()||recipes.iter().zip(input_counts.iter()).any(|(r,&n)|n==0||(n>1&&r.failure.is_some())){return None;}

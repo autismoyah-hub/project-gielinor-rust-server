@@ -167,6 +167,8 @@ pub fn shield_crafting(
             || d.cert.template != 0
             || d.placeholder.template != 0
             || d.transform.template != 0
+            || (id == 25644 && d.wear != [3, -1, -1])
+            || (id == 29775 && d.wear != [5, -1, -1])
             || (ROWS.iter().any(|v| v.3 == id) && d.inventory_ops[1].as_deref() != Some("Wield"))
         {
             return Err(format!("Invalid shield material/output {id}"));
@@ -220,6 +222,7 @@ pub fn shield_crafting_registrations(profiles: &[Shield]) -> Vec<(i32, i32, Hand
                     materials: std::sync::Arc::new(vec![p.materials.clone()]),
                     cycle_ticks: 5,
                     tools: std::sync::Arc::new(vec![2347, 25644, 29775]),
+                    worn_tools: std::sync::Arc::new(vec![(25644, 3), (29775, 5)]),
                 },
             ));
         }
@@ -252,6 +255,12 @@ mod tests {
             item.name = name.into();
             item.members = members;
             item.stackable = stackable;
+            if id == 25644 {
+                item.wear = [3, -1, -1];
+            }
+            if id == 29775 {
+                item.wear = [5, -1, -1];
+            }
             if ROWS.iter().any(|v| v.3 == id) {
                 item.inventory_ops[1] = Some("Wield".into());
             }
@@ -603,5 +612,171 @@ mod tests {
         }
         assert_eq!(w.data(a).unwrap().inventory, before);
         assert_eq!(w.data(a).unwrap().stats.fine_xp(12), 0);
+    }
+    #[test]
+    fn shield_crafting_worn_imcando_both_hands_all_material_pairs_fullbag_distinct_slot_spaces() {
+        for (tool, wear) in [(25644, 3), (29775, 5)] {
+            for (i, j) in [(1, 2), (1, 3), (2, 3)] {
+                for reverse in [false, true] {
+                    let (mut w, a, r, materials) = fixture(0);
+                    let data = w.data_mut(a).unwrap();
+                    data.inventory
+                        .restore_slot(
+                            4,
+                            Some(Item {
+                                id: materials[0].0,
+                                count: 1,
+                                vars: 0,
+                            }),
+                        )
+                        .unwrap();
+                    data.equipment
+                        .restore_slot(
+                            wear,
+                            Some(Item {
+                                id: tool,
+                                count: 1,
+                                vars: 0,
+                            }),
+                        )
+                        .unwrap();
+                    let gear = data.equipment.clone();
+                    w.finish_held_use(a, held(&materials, i, j, reverse))
+                        .unwrap();
+                    let req = w.take_tool_crafting_request(a).unwrap().unwrap();
+                    assert_eq!(req.worn_tool_slot, Some(wear));
+                    assert_eq!(req.tool_slot, usize::MAX);
+                    assert_eq!(req.recipes[0].exchange.tool, tool);
+                    w.start_tool_crafting_choice(a, req, 0, 2).unwrap();
+                    for _ in 0..12 {
+                        w.tick().unwrap();
+                    }
+                    let data = w.data(a).unwrap();
+                    assert_eq!(data.equipment, gear);
+                    assert_eq!(
+                        data.inventory
+                            .slots()
+                            .iter()
+                            .flatten()
+                            .filter(|v| v.id == r.exchange.output)
+                            .count(),
+                        2
+                    );
+                    assert_eq!(
+                        data.inventory
+                            .slots()
+                            .iter()
+                            .flatten()
+                            .filter(|v| v.id == materials[0].0)
+                            .count(),
+                        14
+                    );
+                    assert_eq!(data.inventory.get(23).unwrap().count, 1);
+                    assert_eq!(data.inventory.free_space(), 4);
+                    assert_eq!(data.stats.fine_xp(12), 1750);
+                    if i == 2 && j == 3 {
+                        assert!(data.inventory.get(3).is_none());
+                    }
+                }
+            }
+        }
+    }
+    #[test]
+    fn shield_crafting_worn_tool_late_removal_variables_wrong_hand_and_membership_never_substitute()
+    {
+        for case in 0..4 {
+            let (mut w, a, r, materials) = fixture(0);
+            let data = w.data_mut(a).unwrap();
+            data.inventory
+                .restore_slot(
+                    4,
+                    Some(Item {
+                        id: materials[0].0,
+                        count: 1,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+            data.equipment
+                .restore_slot(
+                    3,
+                    Some(Item {
+                        id: 25644,
+                        count: 1,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+            w.finish_held_use(a, held(&materials, 2, 3, false)).unwrap();
+            let req = w.take_tool_crafting_request(a).unwrap().unwrap();
+            w.start_tool_crafting_choice(a, req, 0, 2).unwrap();
+            for _ in 0..6 {
+                w.tick().unwrap();
+            }
+            let data = w.data_mut(a).unwrap();
+            match case {
+                0 => {
+                    data.equipment.restore_slot(3, None).unwrap();
+                }
+                1 => {
+                    data.equipment
+                        .restore_slot(
+                            3,
+                            Some(Item {
+                                id: 25644,
+                                count: 1,
+                                vars: 9,
+                            }),
+                        )
+                        .unwrap();
+                }
+                2 => {
+                    data.equipment.restore_slot(3, None).unwrap();
+                    data.equipment
+                        .restore_slot(
+                            5,
+                            Some(Item {
+                                id: 25644,
+                                count: 1,
+                                vars: 0,
+                            }),
+                        )
+                        .unwrap();
+                }
+                _ => {}
+            }
+            data.inventory
+                .restore_slot(
+                    10,
+                    Some(Item {
+                        id: 2347,
+                        count: 1,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+            let inv = data.inventory.clone();
+            let gear = data.equipment.clone();
+            let xp = data.stats.fine_xp(12);
+            if case == 3 {
+                w.set_membership(a, false).unwrap();
+            }
+            for _ in 0..8 {
+                w.tick().unwrap();
+            }
+            let data = w.data(a).unwrap();
+            assert_eq!(data.inventory, inv);
+            assert_eq!(data.equipment, gear);
+            assert_eq!(data.stats.fine_xp(12), xp);
+            assert_eq!(
+                data.inventory
+                    .slots()
+                    .iter()
+                    .flatten()
+                    .filter(|v| v.id == r.exchange.output)
+                    .count(),
+                1
+            );
+        }
     }
 }
