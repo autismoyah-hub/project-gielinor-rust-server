@@ -1,0 +1,9 @@
+{
+  "name": "plate-mill",
+  "vertices": 2304,
+  "triangles": 4155,
+  "seconds": 0.3515452000137884,
+  "source": "Preserved improved authoring functions and original environment kit",
+  "native_units_per_tile": 128,
+  "static_only": true
+}

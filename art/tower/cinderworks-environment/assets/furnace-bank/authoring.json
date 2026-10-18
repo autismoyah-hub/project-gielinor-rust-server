@@ -1,0 +1,9 @@
+{
+  "name": "furnace-bank",
+  "vertices": 1374,
+  "triangles": 2554,
+  "seconds": 0.28434179999749176,
+  "source": "Preserved improved authoring functions and original environment kit",
+  "native_units_per_tile": 128,
+  "static_only": true
+}

@@ -1,0 +1,968 @@
+[
+  {
+    "key": "arrival-first",
+    "local": [
+      56,
+      56,
+      0
+    ],
+    "world": [
+      10424,
+      120,
+      0
+    ],
+    "existing_hook": "tower_arrival::State::arrival",
+    "status": "implemented",
+    "orientation": "Existing policy/spawn coordinate; no authored behavior",
+    "interaction_position": [
+      10424,
+      120,
+      0
+    ],
+    "object_definitions": [],
+    "animation_anchor": null,
+    "validation": "Source and reachable approach. Live hook tested only for plaque, bank, altar, reward denial and portal."
+  },
+  {
+    "key": "arrival-return",
+    "local": [
+      56,
+      49,
+      0
+    ],
+    "world": [
+      10424,
+      113,
+      0
+    ],
+    "existing_hook": "tower_arrival::State::arrival",
+    "status": "implemented",
+    "orientation": "Existing policy/spawn coordinate; no authored behavior",
+    "interaction_position": [
+      10424,
+      114,
+      0
+    ],
+    "object_definitions": [],
+    "animation_anchor": null,
+    "validation": "Source and reachable approach. Live hook tested only for plaque, bank, altar, reward denial and portal.",
+    "note": "Recovery-pad repeat-arrival policy uses local56,49. The current Tower portal return separately uses local56,56, verified live."
+  },
+  {
+    "key": "bank",
+    "local": [
+      53,
+      60,
+      0
+    ],
+    "world": [
+      10421,
+      124,
+      0
+    ],
+    "existing_hook": "tower_map::prepare / sanctuary Bank",
+    "status": "implemented",
+    "orientation": "Per-object quarter_turn",
+    "interaction_position": [
+      10422,
+      124,
+      0
+    ],
+    "object_definitions": [
+      {
+        "object_id": 18491,
+        "shape": 10,
+        "quarter_turn": 0,
+        "definition_size": [
+          1,
+          1
+        ],
+        "rotated_footprint": [
+          1,
+          1
+        ],
+        "block_walk": 1,
+        "operations": "[None, Some(\"Bank\"), None, None, None]"
+      }
+    ],
+    "animation_anchor": null,
+    "validation": "Source and reachable approach. Live hook tested only for plaque, bank, altar, reward denial and portal."
+  },
+  {
+    "key": "plaque",
+    "local": [
+      54,
+      51,
+      0
+    ],
+    "world": [
+      10422,
+      115,
+      0
+    ],
+    "existing_hook": "tower_run / cinderworks_actions",
+    "status": "implemented",
+    "orientation": "Per-object quarter_turn",
+    "interaction_position": [
+      10422,
+      116,
+      0
+    ],
+    "object_definitions": [
+      {
+        "object_id": 64700,
+        "shape": 0,
+        "quarter_turn": 3,
+        "definition_size": [
+          1,
+          1
+        ],
+        "rotated_footprint": [
+          1,
+          1
+        ],
+        "block_walk": 2,
+        "operations": "[None, None, None, None, None]"
+      },
+      {
+        "object_id": 909,
+        "shape": 4,
+        "quarter_turn": 1,
+        "definition_size": [
+          1,
+          1
+        ],
+        "rotated_footprint": [
+          1,
+          1
+        ],
+        "block_walk": 2,
+        "operations": "[Some(\"Read\"), None, None, None, None]"
+      }
+    ],
+    "animation_anchor": null,
+    "validation": "Source and reachable approach. Live hook tested only for plaque, bank, altar, reward denial and portal."
+  },
+  {
+    "key": "reward",
+    "local": [
+      55,
+      51,
+      0
+    ],
+    "world": [
+      10423,
+      115,
+      0
+    ],
+    "existing_hook": "tower_run reward_pending / chest action",
+    "status": "implemented",
+    "orientation": "Per-object quarter_turn",
+    "interaction_position": [
+      10423,
+      116,
+      0
+    ],
+    "object_definitions": [
+      {
+        "object_id": 57694,
+        "shape": 10,
+        "quarter_turn": 0,
+        "definition_size": [
+          1,
+          1
+        ],
+        "rotated_footprint": [
+          1,
+          1
+        ],
+        "block_walk": 2,
+        "operations": "[Some(\"Search\"), Some(\"\"), Some(\"\"), Some(\"\"), Some(\"\")]"
+      }
+    ],
+    "animation_anchor": null,
+    "validation": "Source and reachable approach. Live hook tested only for plaque, bank, altar, reward denial and portal."
+  },
+  {
+    "key": "altar",
+    "local": [
+      60,
+      52,
+      0
+    ],
+    "world": [
+      10428,
+      116,
+      0
+    ],
+    "existing_hook": "Service::Altar",
+    "status": "implemented",
+    "orientation": "Per-object quarter_turn",
+    "interaction_position": [
+      10427,
+      116,
+      0
+    ],
+    "object_definitions": [
+      {
+        "object_id": 409,
+        "shape": 10,
+        "quarter_turn": 0,
+        "definition_size": [
+          2,
+          1
+        ],
+        "rotated_footprint": [
+          2,
+          1
+        ],
+        "block_walk": 2,
+        "operations": "[Some(\"Pray\"), None, None, None, None]"
+      }
+    ],
+    "animation_anchor": null,
+    "validation": "Source and reachable approach. Live hook tested only for plaque, bank, altar, reward denial and portal."
+  },
+  {
+    "key": "furnace",
+    "local": [
+      34,
+      50,
+      0
+    ],
+    "world": [
+      10402,
+      114,
+      0
+    ],
+    "existing_hook": "Service::Forge / smelting",
+    "status": "implemented",
+    "orientation": "Per-object quarter_turn",
+    "interaction_position": [
+      10403,
+      117,
+      0
+    ],
+    "object_definitions": [
+      {
+        "object_id": 37947,
+        "shape": 10,
+        "quarter_turn": 0,
+        "definition_size": [
+          2,
+          3
+        ],
+        "rotated_footprint": [
+          2,
+          3
+        ],
+        "block_walk": 2,
+        "operations": "[Some(\"Use\"), None, None, None, None]"
+      }
+    ],
+    "animation_anchor": null,
+    "validation": "Source and reachable approach. Live hook tested only for plaque, bank, altar, reward denial and portal."
+  },
+  {
+    "key": "anvil",
+    "local": [
+      37,
+      50,
+      0
+    ],
+    "world": [
+      10405,
+      114,
+      0
+    ],
+    "existing_hook": "Service::Forge / bronze dagger",
+    "status": "implemented",
+    "orientation": "Per-object quarter_turn",
+    "interaction_position": [
+      10405,
+      113,
+      0
+    ],
+    "object_definitions": [
+      {
+        "object_id": 2097,
+        "shape": 10,
+        "quarter_turn": 0,
+        "definition_size": [
+          1,
+          1
+        ],
+        "rotated_footprint": [
+          1,
+          1
+        ],
+        "block_walk": 2,
+        "operations": "[Some(\"Smith\"), None, None, None, None]"
+      }
+    ],
+    "animation_anchor": null,
+    "validation": "Source and reachable approach. Live hook tested only for plaque, bank, altar, reward denial and portal."
+  },
+  {
+    "key": "tin-south",
+    "local": [
+      34,
+      54,
+      0
+    ],
+    "world": [
+      10402,
+      118,
+      0
+    ],
+    "existing_hook": "existing mining",
+    "status": "implemented",
+    "orientation": "Per-object quarter_turn",
+    "interaction_position": [
+      10402,
+      119,
+      0
+    ],
+    "object_definitions": [
+      {
+        "object_id": 11360,
+        "shape": 10,
+        "quarter_turn": 0,
+        "definition_size": [
+          1,
+          1
+        ],
+        "rotated_footprint": [
+          1,
+          1
+        ],
+        "block_walk": 2,
+        "operations": "[Some(\"Mine\"), None, Some(\"hidden\"), None, None]"
+      }
+    ],
+    "animation_anchor": null,
+    "validation": "Source and reachable approach. Live hook tested only for plaque, bank, altar, reward denial and portal."
+  },
+  {
+    "key": "tin-north",
+    "local": [
+      34,
+      58,
+      0
+    ],
+    "world": [
+      10402,
+      122,
+      0
+    ],
+    "existing_hook": "existing mining",
+    "status": "implemented",
+    "orientation": "Per-object quarter_turn",
+    "interaction_position": [
+      10403,
+      122,
+      0
+    ],
+    "object_definitions": [
+      {
+        "object_id": 11360,
+        "shape": 10,
+        "quarter_turn": 0,
+        "definition_size": [
+          1,
+          1
+        ],
+        "rotated_footprint": [
+          1,
+          1
+        ],
+        "block_walk": 2,
+        "operations": "[Some(\"Mine\"), None, Some(\"hidden\"), None, None]"
+      }
+    ],
+    "animation_anchor": null,
+    "validation": "Source and reachable approach. Live hook tested only for plaque, bank, altar, reward denial and portal."
+  },
+  {
+    "key": "copper-south",
+    "local": [
+      44,
+      54,
+      0
+    ],
+    "world": [
+      10412,
+      118,
+      0
+    ],
+    "existing_hook": "existing mining",
+    "status": "implemented",
+    "orientation": "Per-object quarter_turn",
+    "interaction_position": [
+      10413,
+      118,
+      0
+    ],
+    "object_definitions": [
+      {
+        "object_id": 10943,
+        "shape": 10,
+        "quarter_turn": 0,
+        "definition_size": [
+          1,
+          1
+        ],
+        "rotated_footprint": [
+          1,
+          1
+        ],
+        "block_walk": 2,
+        "operations": "[Some(\"Mine\"), None, Some(\"hidden\"), None, None]"
+      }
+    ],
+    "animation_anchor": null,
+    "validation": "Source and reachable approach. Live hook tested only for plaque, bank, altar, reward denial and portal."
+  },
+  {
+    "key": "copper-north",
+    "local": [
+      44,
+      58,
+      0
+    ],
+    "world": [
+      10412,
+      122,
+      0
+    ],
+    "existing_hook": "existing mining",
+    "status": "implemented",
+    "orientation": "Per-object quarter_turn",
+    "interaction_position": [
+      10412,
+      121,
+      0
+    ],
+    "object_definitions": [
+      {
+        "object_id": 10943,
+        "shape": 10,
+        "quarter_turn": 0,
+        "definition_size": [
+          1,
+          1
+        ],
+        "rotated_footprint": [
+          1,
+          1
+        ],
+        "block_walk": 2,
+        "operations": "[Some(\"Mine\"), None, Some(\"hidden\"), None, None]"
+      }
+    ],
+    "animation_anchor": null,
+    "validation": "Source and reachable approach. Live hook tested only for plaque, bank, altar, reward denial and portal."
+  },
+  {
+    "key": "cooking-range",
+    "local": [
+      67,
+      53,
+      0
+    ],
+    "world": [
+      10435,
+      117,
+      0
+    ],
+    "existing_hook": "Service::Kitchen",
+    "status": "implemented",
+    "orientation": "Per-object quarter_turn",
+    "interaction_position": [
+      10435,
+      119,
+      0
+    ],
+    "object_definitions": [
+      {
+        "object_id": 9736,
+        "shape": 10,
+        "quarter_turn": 0,
+        "definition_size": [
+          1,
+          2
+        ],
+        "rotated_footprint": [
+          1,
+          2
+        ],
+        "block_walk": 2,
+        "operations": "[Some(\"Cook\"), None, None, None, None]"
+      }
+    ],
+    "animation_anchor": null,
+    "validation": "Source and reachable approach. Live hook tested only for plaque, bank, altar, reward denial and portal."
+  },
+  {
+    "key": "coolant-lesson",
+    "local": [
+      69,
+      52,
+      0
+    ],
+    "world": [
+      10437,
+      116,
+      0
+    ],
+    "existing_hook": "TRAINING_COOLANT",
+    "status": "implemented",
+    "orientation": "Per-object quarter_turn",
+    "interaction_position": [
+      10436,
+      116,
+      0
+    ],
+    "object_definitions": [
+      {
+        "object_id": 30124,
+        "shape": 10,
+        "quarter_turn": 0,
+        "definition_size": [
+          1,
+          1
+        ],
+        "rotated_footprint": [
+          1,
+          1
+        ],
+        "block_walk": 2,
+        "operations": "[Some(\"Search\"), None, None, None, None]"
+      }
+    ],
+    "animation_anchor": null,
+    "validation": "Source and reachable approach. Live hook tested only for plaque, bank, altar, reward denial and portal."
+  },
+  {
+    "key": "portal",
+    "local": [
+      64,
+      60,
+      0
+    ],
+    "world": [
+      10432,
+      124,
+      0
+    ],
+    "existing_hook": "cinderworks exit/return",
+    "status": "implemented",
+    "orientation": "Per-object quarter_turn",
+    "interaction_position": [
+      10431,
+      124,
+      0
+    ],
+    "object_definitions": [
+      {
+        "object_id": 57692,
+        "shape": 0,
+        "quarter_turn": 0,
+        "definition_size": [
+          1,
+          1
+        ],
+        "rotated_footprint": [
+          1,
+          1
+        ],
+        "block_walk": 2,
+        "operations": "[Some(\"Enter\"), None, None, None, None]"
+      }
+    ],
+    "animation_anchor": null,
+    "validation": "Source and reachable approach. Live hook tested only for plaque, bank, altar, reward denial and portal."
+  },
+  {
+    "key": "imp-spawn",
+    "local": [
+      72,
+      72,
+      0
+    ],
+    "world": [
+      10440,
+      136,
+      0
+    ],
+    "existing_hook": "Boss::Imp [68,68]\u2013[75,75]",
+    "status": "implemented",
+    "orientation": "Existing policy/spawn coordinate; no authored behavior",
+    "interaction_position": [
+      10440,
+      135,
+      0
+    ],
+    "object_definitions": [],
+    "animation_anchor": null,
+    "validation": "Source and reachable approach. Live hook tested only for plaque, bank, altar, reward denial and portal.",
+    "npc_id": 16300,
+    "encounter_bounds_local": [
+      68,
+      68,
+      75,
+      75
+    ]
+  },
+  {
+    "key": "warden-spawn",
+    "local": [
+      56,
+      72,
+      0
+    ],
+    "world": [
+      10424,
+      136,
+      0
+    ],
+    "existing_hook": "Boss::Warden [50,67]\u2013[62,77]",
+    "status": "implemented",
+    "orientation": "Existing policy/spawn coordinate; no authored behavior",
+    "interaction_position": [
+      10424,
+      135,
+      0
+    ],
+    "object_definitions": [],
+    "animation_anchor": null,
+    "validation": "Source and reachable approach. Live hook tested only for plaque, bank, altar, reward denial and portal.",
+    "npc_id": 16295,
+    "encounter_bounds_local": [
+      50,
+      67,
+      62,
+      77
+    ]
+  },
+  {
+    "key": "coolant-0",
+    "local": [
+      53,
+      71,
+      0
+    ],
+    "world": [
+      10421,
+      135,
+      0
+    ],
+    "existing_hook": "COOLANT_TILES / Warden shell interruption",
+    "status": "implemented",
+    "orientation": "Per-object quarter_turn",
+    "interaction_position": [
+      10422,
+      135,
+      0
+    ],
+    "object_definitions": [
+      {
+        "object_id": 30124,
+        "shape": 10,
+        "quarter_turn": 0,
+        "definition_size": [
+          1,
+          1
+        ],
+        "rotated_footprint": [
+          1,
+          1
+        ],
+        "block_walk": 2,
+        "operations": "[Some(\"Search\"), None, None, None, None]"
+      }
+    ],
+    "animation_anchor": null,
+    "validation": "Source and reachable approach. Live hook tested only for plaque, bank, altar, reward denial and portal."
+  },
+  {
+    "key": "coolant-1",
+    "local": [
+      53,
+      74,
+      0
+    ],
+    "world": [
+      10421,
+      138,
+      0
+    ],
+    "existing_hook": "COOLANT_TILES / Warden shell interruption",
+    "status": "implemented",
+    "orientation": "Per-object quarter_turn",
+    "interaction_position": [
+      10421,
+      137,
+      0
+    ],
+    "object_definitions": [
+      {
+        "object_id": 30124,
+        "shape": 10,
+        "quarter_turn": 0,
+        "definition_size": [
+          1,
+          1
+        ],
+        "rotated_footprint": [
+          1,
+          1
+        ],
+        "block_walk": 2,
+        "operations": "[Some(\"Search\"), None, None, None, None]"
+      }
+    ],
+    "animation_anchor": null,
+    "validation": "Source and reachable approach. Live hook tested only for plaque, bank, altar, reward denial and portal."
+  },
+  {
+    "key": "coolant-2",
+    "local": [
+      60,
+      71,
+      0
+    ],
+    "world": [
+      10428,
+      135,
+      0
+    ],
+    "existing_hook": "COOLANT_TILES / Warden shell interruption",
+    "status": "implemented",
+    "orientation": "Per-object quarter_turn",
+    "interaction_position": [
+      10427,
+      135,
+      0
+    ],
+    "object_definitions": [
+      {
+        "object_id": 30124,
+        "shape": 10,
+        "quarter_turn": 0,
+        "definition_size": [
+          1,
+          1
+        ],
+        "rotated_footprint": [
+          1,
+          1
+        ],
+        "block_walk": 2,
+        "operations": "[Some(\"Search\"), None, None, None, None]"
+      }
+    ],
+    "animation_anchor": null,
+    "validation": "Source and reachable approach. Live hook tested only for plaque, bank, altar, reward denial and portal."
+  },
+  {
+    "key": "coolant-3",
+    "local": [
+      60,
+      74,
+      0
+    ],
+    "world": [
+      10428,
+      138,
+      0
+    ],
+    "existing_hook": "COOLANT_TILES / Warden shell interruption",
+    "status": "implemented",
+    "orientation": "Per-object quarter_turn",
+    "interaction_position": [
+      10428,
+      137,
+      0
+    ],
+    "object_definitions": [
+      {
+        "object_id": 30124,
+        "shape": 10,
+        "quarter_turn": 0,
+        "definition_size": [
+          1,
+          1
+        ],
+        "rotated_footprint": [
+          1,
+          1
+        ],
+        "block_walk": 2,
+        "operations": "[Some(\"Search\"), None, None, None, None]"
+      }
+    ],
+    "animation_anchor": null,
+    "validation": "Source and reachable approach. Live hook tested only for plaque, bank, altar, reward denial and portal."
+  },
+  {
+    "key": "tree-0",
+    "local": [
+      34,
+      70,
+      0
+    ],
+    "world": [
+      10402,
+      134,
+      0
+    ],
+    "existing_hook": "existing woodcutting; no new objective invented",
+    "status": "existing",
+    "orientation": "Per-object quarter_turn",
+    "interaction_position": [
+      10404,
+      134,
+      0
+    ],
+    "object_definitions": [
+      {
+        "object_id": 1276,
+        "shape": 10,
+        "quarter_turn": 0,
+        "definition_size": [
+          2,
+          2
+        ],
+        "rotated_footprint": [
+          2,
+          2
+        ],
+        "block_walk": 2,
+        "operations": "[Some(\"Chop down\"), None, None, None, None]"
+      }
+    ],
+    "animation_anchor": null,
+    "validation": "Source and reachable approach. Live hook tested only for plaque, bank, altar, reward denial and portal."
+  },
+  {
+    "key": "tree-1",
+    "local": [
+      42,
+      70,
+      0
+    ],
+    "world": [
+      10410,
+      134,
+      0
+    ],
+    "existing_hook": "existing woodcutting; no new objective invented",
+    "status": "existing",
+    "orientation": "Per-object quarter_turn",
+    "interaction_position": [
+      10411,
+      133,
+      0
+    ],
+    "object_definitions": [
+      {
+        "object_id": 1276,
+        "shape": 10,
+        "quarter_turn": 0,
+        "definition_size": [
+          2,
+          2
+        ],
+        "rotated_footprint": [
+          2,
+          2
+        ],
+        "block_walk": 2,
+        "operations": "[Some(\"Chop down\"), None, None, None, None]"
+      }
+    ],
+    "animation_anchor": null,
+    "validation": "Source and reachable approach. Live hook tested only for plaque, bank, altar, reward denial and portal."
+  },
+  {
+    "key": "tree-2",
+    "local": [
+      34,
+      76,
+      0
+    ],
+    "world": [
+      10402,
+      140,
+      0
+    ],
+    "existing_hook": "existing woodcutting; no new objective invented",
+    "status": "existing",
+    "orientation": "Per-object quarter_turn",
+    "interaction_position": [
+      10403,
+      139,
+      0
+    ],
+    "object_definitions": [
+      {
+        "object_id": 1276,
+        "shape": 10,
+        "quarter_turn": 0,
+        "definition_size": [
+          2,
+          2
+        ],
+        "rotated_footprint": [
+          2,
+          2
+        ],
+        "block_walk": 2,
+        "operations": "[Some(\"Chop down\"), None, None, None, None]"
+      }
+    ],
+    "animation_anchor": null,
+    "validation": "Source and reachable approach. Live hook tested only for plaque, bank, altar, reward denial and portal."
+  },
+  {
+    "key": "tree-3",
+    "local": [
+      42,
+      76,
+      0
+    ],
+    "world": [
+      10410,
+      140,
+      0
+    ],
+    "existing_hook": "existing woodcutting; no new objective invented",
+    "status": "existing",
+    "orientation": "Per-object quarter_turn",
+    "interaction_position": [
+      10411,
+      139,
+      0
+    ],
+    "object_definitions": [
+      {
+        "object_id": 1276,
+        "shape": 10,
+        "quarter_turn": 0,
+        "definition_size": [
+          2,
+          2
+        ],
+        "rotated_footprint": [
+          2,
+          2
+        ],
+        "block_walk": 2,
+        "operations": "[Some(\"Chop down\"), None, None, None, None]"
+      }
+    ],
+    "animation_anchor": null,
+    "validation": "Source and reachable approach. Live hook tested only for plaque, bank, altar, reward denial and portal."
+  }
+]

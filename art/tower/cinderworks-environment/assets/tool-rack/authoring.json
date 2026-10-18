@@ -1,0 +1,9 @@
+{
+  "name": "tool-rack",
+  "vertices": 556,
+  "triangles": 860,
+  "seconds": 0.08324559999164194,
+  "source": "Preserved improved authoring functions and original environment kit",
+  "native_units_per_tile": 128,
+  "static_only": true
+}

@@ -20,3 +20,11 @@ path = "examples/custom_asset_account.rs"
 [[example]]
 name = "custom_asset_collision"
 path = "examples/custom_asset_collision.rs"
+
+[[example]]
+name = "cinderworks_environment_audit"
+path = "examples/cinderworks_environment_audit.rs"
+
+[[example]]
+name = "cinderworks_environment_account"
+path = "examples/cinderworks_environment_account.rs"

@@ -1,0 +1,9 @@
+{
+  "name": "arch-foot",
+  "vertices": 56,
+  "triangles": 108,
+  "seconds": 0.033142700005555525,
+  "source": "Preserved improved authoring functions and original environment kit",
+  "native_units_per_tile": 128,
+  "static_only": true
+}

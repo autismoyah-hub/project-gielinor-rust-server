@@ -1,0 +1,9 @@
+{
+  "name": "pump",
+  "vertices": 2600,
+  "triangles": 4817,
+  "seconds": 0.396293700003298,
+  "source": "Preserved improved authoring functions and original environment kit",
+  "native_units_per_tile": 128,
+  "static_only": true
+}

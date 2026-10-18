@@ -1,0 +1,9 @@
+{
+  "name": "workstation",
+  "vertices": 2456,
+  "triangles": 4576,
+  "seconds": 0.4422838999889791,
+  "source": "Preserved improved authoring functions and original environment kit",
+  "native_units_per_tile": 128,
+  "static_only": true
+}

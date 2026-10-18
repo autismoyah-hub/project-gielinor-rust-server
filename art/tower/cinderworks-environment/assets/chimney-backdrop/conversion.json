@@ -1,0 +1,120 @@
+{
+  "components": [
+    {
+      "name": "retort buttress footing",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "bonded flue masonry",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "bonded flue masonry.001",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "bonded flue masonry.002",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "chimney iron bond",
+      "vertices": 56,
+      "triangles": 44,
+      "group": 0
+    },
+    {
+      "name": "bonded flue masonry.003",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "bonded flue masonry.004",
+      "vertices": 56,
+      "triangles": 92,
+      "group": 0
+    },
+    {
+      "name": "bonded flue masonry.005",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "chimney iron bond.001",
+      "vertices": 56,
+      "triangles": 60,
+      "group": 0
+    },
+    {
+      "name": "bonded flue masonry.006",
+      "vertices": 56,
+      "triangles": 92,
+      "group": 0
+    },
+    {
+      "name": "bonded flue masonry.007",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "chimney iron bond.002",
+      "vertices": 56,
+      "triangles": 92,
+      "group": 0
+    },
+    {
+      "name": "bonded flue masonry.008",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "flue cornice",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "sooted terminal",
+      "vertices": 56,
+      "triangles": 92,
+      "group": 0
+    },
+    {
+      "name": "backstay brace",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "backstay brace.001",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    }
+  ],
+  "quantization_max_error": 0.5,
+  "collapsed_triangles": 176,
+  "uv_loops": 3240,
+  "material_conversion": "UV image albedo sampled at triangle centroid, otherwise diffuse color; RGB to 6/3/7-bit HSL. No PBR/normal/roughness transfer.",
+  "texture_image_samples": 0,
+  "vertices": 856,
+  "triangles": 1468,
+  "budget": {
+    "soft_vertices": 12000,
+    "soft_triangles": 20000
+  },
+  "coordinates": "X right, Y down, Z depth; 128 units/tile",
+  "face_priority": 0,
+  "alpha": 0
+}

@@ -1,0 +1,9 @@
+{
+  "name": "hearth-ring",
+  "vertices": 256,
+  "triangles": 448,
+  "seconds": 0.035747300018556416,
+  "source": "Preserved improved authoring functions and original environment kit",
+  "native_units_per_tile": 128,
+  "static_only": true
+}

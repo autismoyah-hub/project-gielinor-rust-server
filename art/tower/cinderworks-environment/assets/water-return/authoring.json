@@ -1,0 +1,9 @@
+{
+  "name": "water-return",
+  "vertices": 544,
+  "triangles": 992,
+  "seconds": 0.06921919999876991,
+  "source": "Preserved improved authoring functions and original environment kit",
+  "native_units_per_tile": 128,
+  "static_only": true
+}

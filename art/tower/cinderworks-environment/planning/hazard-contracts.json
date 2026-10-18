@@ -1,0 +1,276 @@
+{
+  "coordinate_order": "world X,Z,plane; local relative to10368,64,0",
+  "imp_arena": [
+    68,
+    68,
+    75,
+    75
+  ],
+  "warden_arena": [
+    50,
+    67,
+    62,
+    77
+  ],
+  "vents": [
+    {
+      "key": "vent-0",
+      "local": [
+        67,
+        70,
+        0
+      ],
+      "world": [
+        10435,
+        134,
+        0
+      ],
+      "status": "Existing source hazard anchor; behavior unchanged; no new hazard damage or animation"
+    },
+    {
+      "key": "vent-1",
+      "local": [
+        67,
+        74,
+        0
+      ],
+      "world": [
+        10435,
+        138,
+        0
+      ],
+      "status": "Existing source hazard anchor; behavior unchanged; no new hazard damage or animation"
+    },
+    {
+      "key": "vent-2",
+      "local": [
+        76,
+        70,
+        0
+      ],
+      "world": [
+        10444,
+        134,
+        0
+      ],
+      "status": "Existing source hazard anchor; behavior unchanged; no new hazard damage or animation"
+    },
+    {
+      "key": "vent-3",
+      "local": [
+        76,
+        74,
+        0
+      ],
+      "world": [
+        10444,
+        138,
+        0
+      ],
+      "status": "Existing source hazard anchor; behavior unchanged; no new hazard damage or animation"
+    }
+  ],
+  "coolant": [
+    {
+      "key": "coolant-lesson",
+      "local": [
+        69,
+        52,
+        0
+      ],
+      "world": [
+        10437,
+        116,
+        0
+      ],
+      "existing_hook": "TRAINING_COOLANT",
+      "status": "implemented",
+      "orientation": "Per-object quarter_turn",
+      "interaction_position": [
+        10436,
+        116,
+        0
+      ],
+      "object_definitions": [
+        {
+          "object_id": 30124,
+          "shape": 10,
+          "quarter_turn": 0,
+          "definition_size": [
+            1,
+            1
+          ],
+          "rotated_footprint": [
+            1,
+            1
+          ],
+          "block_walk": 2,
+          "operations": "[Some(\"Search\"), None, None, None, None]"
+        }
+      ],
+      "animation_anchor": null,
+      "validation": "Source and reachable approach. Live hook tested only for plaque, bank, altar, reward denial and portal."
+    },
+    {
+      "key": "coolant-0",
+      "local": [
+        53,
+        71,
+        0
+      ],
+      "world": [
+        10421,
+        135,
+        0
+      ],
+      "existing_hook": "COOLANT_TILES / Warden shell interruption",
+      "status": "implemented",
+      "orientation": "Per-object quarter_turn",
+      "interaction_position": [
+        10422,
+        135,
+        0
+      ],
+      "object_definitions": [
+        {
+          "object_id": 30124,
+          "shape": 10,
+          "quarter_turn": 0,
+          "definition_size": [
+            1,
+            1
+          ],
+          "rotated_footprint": [
+            1,
+            1
+          ],
+          "block_walk": 2,
+          "operations": "[Some(\"Search\"), None, None, None, None]"
+        }
+      ],
+      "animation_anchor": null,
+      "validation": "Source and reachable approach. Live hook tested only for plaque, bank, altar, reward denial and portal."
+    },
+    {
+      "key": "coolant-1",
+      "local": [
+        53,
+        74,
+        0
+      ],
+      "world": [
+        10421,
+        138,
+        0
+      ],
+      "existing_hook": "COOLANT_TILES / Warden shell interruption",
+      "status": "implemented",
+      "orientation": "Per-object quarter_turn",
+      "interaction_position": [
+        10421,
+        137,
+        0
+      ],
+      "object_definitions": [
+        {
+          "object_id": 30124,
+          "shape": 10,
+          "quarter_turn": 0,
+          "definition_size": [
+            1,
+            1
+          ],
+          "rotated_footprint": [
+            1,
+            1
+          ],
+          "block_walk": 2,
+          "operations": "[Some(\"Search\"), None, None, None, None]"
+        }
+      ],
+      "animation_anchor": null,
+      "validation": "Source and reachable approach. Live hook tested only for plaque, bank, altar, reward denial and portal."
+    },
+    {
+      "key": "coolant-2",
+      "local": [
+        60,
+        71,
+        0
+      ],
+      "world": [
+        10428,
+        135,
+        0
+      ],
+      "existing_hook": "COOLANT_TILES / Warden shell interruption",
+      "status": "implemented",
+      "orientation": "Per-object quarter_turn",
+      "interaction_position": [
+        10427,
+        135,
+        0
+      ],
+      "object_definitions": [
+        {
+          "object_id": 30124,
+          "shape": 10,
+          "quarter_turn": 0,
+          "definition_size": [
+            1,
+            1
+          ],
+          "rotated_footprint": [
+            1,
+            1
+          ],
+          "block_walk": 2,
+          "operations": "[Some(\"Search\"), None, None, None, None]"
+        }
+      ],
+      "animation_anchor": null,
+      "validation": "Source and reachable approach. Live hook tested only for plaque, bank, altar, reward denial and portal."
+    },
+    {
+      "key": "coolant-3",
+      "local": [
+        60,
+        74,
+        0
+      ],
+      "world": [
+        10428,
+        138,
+        0
+      ],
+      "existing_hook": "COOLANT_TILES / Warden shell interruption",
+      "status": "implemented",
+      "orientation": "Per-object quarter_turn",
+      "interaction_position": [
+        10428,
+        137,
+        0
+      ],
+      "object_definitions": [
+        {
+          "object_id": 30124,
+          "shape": 10,
+          "quarter_turn": 0,
+          "definition_size": [
+            1,
+            1
+          ],
+          "rotated_footprint": [
+            1,
+            1
+          ],
+          "block_walk": 2,
+          "operations": "[Some(\"Search\"), None, None, None, None]"
+        }
+      ],
+      "animation_anchor": null,
+      "validation": "Source and reachable approach. Live hook tested only for plaque, bank, altar, reward denial and portal."
+    }
+  ],
+  "new_decorative_controls": "No operations added to original machinery. Mesh ports and utility-connection contracts describe assembly alignment only."
+}

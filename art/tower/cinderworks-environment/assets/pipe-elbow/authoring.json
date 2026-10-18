@@ -1,0 +1,9 @@
+{
+  "name": "pipe-elbow",
+  "vertices": 508,
+  "triangles": 948,
+  "seconds": 0.07791389999329112,
+  "source": "Preserved improved authoring functions and original environment kit",
+  "native_units_per_tile": 128,
+  "static_only": true
+}

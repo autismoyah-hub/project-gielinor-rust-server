@@ -1,0 +1,504 @@
+{
+  "components": [
+    {
+      "name": "threshold",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "plinth_-1",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "jamb_-1_0",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "reveal_-1_0",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "jamb_-1_1",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "reveal_-1_1",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "jamb_-1_2",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "reveal_-1_2",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "jamb_-1_3",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "reveal_-1_3",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "jamb_-1_4",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "reveal_-1_4",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "impost_-1",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "buttress_-1",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "jamb_strap",
+      "vertices": 56,
+      "triangles": 92,
+      "group": 0
+    },
+    {
+      "name": "strap_pin",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "strap_pin.001",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "jamb_strap.001",
+      "vertices": 56,
+      "triangles": 92,
+      "group": 0
+    },
+    {
+      "name": "strap_pin.002",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "strap_pin.003",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "plinth_1",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "jamb_1_0",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "reveal_1_0",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "jamb_1_1",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "reveal_1_1",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "jamb_1_2",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "reveal_1_2",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "jamb_1_3",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "reveal_1_3",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "jamb_1_4",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "reveal_1_4",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "impost_1",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "buttress_1",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "jamb_strap.002",
+      "vertices": 56,
+      "triangles": 92,
+      "group": 0
+    },
+    {
+      "name": "strap_pin.004",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "strap_pin.005",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "jamb_strap.003",
+      "vertices": 56,
+      "triangles": 92,
+      "group": 0
+    },
+    {
+      "name": "strap_pin.006",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "strap_pin.007",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "voussoir_00",
+      "vertices": 64,
+      "triangles": 124,
+      "group": 0
+    },
+    {
+      "name": "voussoir_01",
+      "vertices": 64,
+      "triangles": 124,
+      "group": 0
+    },
+    {
+      "name": "voussoir_02",
+      "vertices": 64,
+      "triangles": 124,
+      "group": 0
+    },
+    {
+      "name": "voussoir_03",
+      "vertices": 64,
+      "triangles": 124,
+      "group": 0
+    },
+    {
+      "name": "voussoir_04",
+      "vertices": 64,
+      "triangles": 124,
+      "group": 0
+    },
+    {
+      "name": "voussoir_05",
+      "vertices": 64,
+      "triangles": 124,
+      "group": 0
+    },
+    {
+      "name": "voussoir_06",
+      "vertices": 64,
+      "triangles": 124,
+      "group": 0
+    },
+    {
+      "name": "voussoir_07",
+      "vertices": 64,
+      "triangles": 124,
+      "group": 0
+    },
+    {
+      "name": "voussoir_08",
+      "vertices": 64,
+      "triangles": 124,
+      "group": 0
+    },
+    {
+      "name": "voussoir_09",
+      "vertices": 64,
+      "triangles": 124,
+      "group": 0
+    },
+    {
+      "name": "voussoir_10",
+      "vertices": 64,
+      "triangles": 124,
+      "group": 0
+    },
+    {
+      "name": "voussoir_11",
+      "vertices": 64,
+      "triangles": 124,
+      "group": 0
+    },
+    {
+      "name": "voussoir_12",
+      "vertices": 64,
+      "triangles": 124,
+      "group": 0
+    },
+    {
+      "name": "keystone_face",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "crossed_tongs",
+      "vertices": 10,
+      "triangles": 16,
+      "group": 0
+    },
+    {
+      "name": "crossed_tongs.001",
+      "vertices": 10,
+      "triangles": 16,
+      "group": 0
+    },
+    {
+      "name": "ember_seal",
+      "vertices": 26,
+      "triangles": 48,
+      "group": 0
+    },
+    {
+      "name": "gate_tie",
+      "vertices": 16,
+      "triangles": 28,
+      "group": 0
+    },
+    {
+      "name": "grate_bar",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "grate_bar.001",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "grate_bar.002",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "grate_bar.003",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "grate_bar.004",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "grate_bar.005",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "grate_bar.006",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "sconce_bracket",
+      "vertices": 18,
+      "triangles": 32,
+      "group": 0
+    },
+    {
+      "name": "lamp_body",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "lamp_amber",
+      "vertices": 56,
+      "triangles": 52,
+      "group": 0
+    },
+    {
+      "name": "lamp_louvre",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "lamp_louvre.001",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "lamp_louvre.002",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "lamp_louvre.003",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "sconce_bracket.001",
+      "vertices": 18,
+      "triangles": 32,
+      "group": 0
+    },
+    {
+      "name": "lamp_body.001",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "lamp_amber.001",
+      "vertices": 56,
+      "triangles": 52,
+      "group": 0
+    },
+    {
+      "name": "lamp_louvre.004",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "lamp_louvre.005",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "lamp_louvre.006",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "lamp_louvre.007",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "threshold_drain",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "threshold_drain.001",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "worn_tread",
+      "vertices": 56,
+      "triangles": 76,
+      "group": 0
+    }
+  ],
+  "quantization_max_error": 0.5,
+  "collapsed_triangles": 208,
+  "uv_loops": 7912,
+  "material_conversion": "UV image albedo sampled at triangle centroid, otherwise diffuse color; RGB to 6/3/7-bit HSL. No PBR/normal/roughness transfer.",
+  "texture_image_samples": 0,
+  "vertices": 3166,
+  "triangles": 5800,
+  "budget": {
+    "soft_vertices": 12000,
+    "soft_triangles": 20000
+  },
+  "coordinates": "X right, Y down, Z depth; 128 units/tile",
+  "face_priority": 0,
+  "alpha": 0
+}

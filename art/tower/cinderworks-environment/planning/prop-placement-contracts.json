@@ -1,0 +1,2732 @@
+[
+  {
+    "key": "existing-pier-51-53",
+    "asset": "pier",
+    "object_id": 64702,
+    "x": 51,
+    "z": 53,
+    "world": [
+      10419,
+      117,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": 7016,
+    "room": "architecture",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Same established support tile and ordinary collision footprint."
+  },
+  {
+    "key": "existing-pier-60-53",
+    "asset": "pier",
+    "object_id": 64702,
+    "x": 60,
+    "z": 53,
+    "world": [
+      10428,
+      117,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": 7016,
+    "room": "architecture",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Same established support tile and ordinary collision footprint."
+  },
+  {
+    "key": "existing-pier-51-59",
+    "asset": "pier",
+    "object_id": 64702,
+    "x": 51,
+    "z": 59,
+    "world": [
+      10419,
+      123,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": 7016,
+    "room": "architecture",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Same established support tile and ordinary collision footprint."
+  },
+  {
+    "key": "existing-pier-60-59",
+    "asset": "pier",
+    "object_id": 64702,
+    "x": 60,
+    "z": 59,
+    "world": [
+      10428,
+      123,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": 7016,
+    "room": "architecture",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Same established support tile and ordinary collision footprint."
+  },
+  {
+    "key": "existing-pier-62-62",
+    "asset": "pier",
+    "object_id": 64702,
+    "x": 62,
+    "z": 62,
+    "world": [
+      10430,
+      126,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": 7017,
+    "room": "architecture",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Same established support tile and ordinary collision footprint."
+  },
+  {
+    "key": "existing-pier-52-35",
+    "asset": "pier",
+    "object_id": 64702,
+    "x": 52,
+    "z": 35,
+    "world": [
+      10420,
+      99,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": 7016,
+    "room": "architecture",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Same established support tile and ordinary collision footprint."
+  },
+  {
+    "key": "existing-pier-59-35",
+    "asset": "pier",
+    "object_id": 64702,
+    "x": 59,
+    "z": 35,
+    "world": [
+      10427,
+      99,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": 7016,
+    "room": "architecture",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Same established support tile and ordinary collision footprint."
+  },
+  {
+    "key": "existing-pier-52-41",
+    "asset": "pier",
+    "object_id": 64702,
+    "x": 52,
+    "z": 41,
+    "world": [
+      10420,
+      105,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": 7016,
+    "room": "architecture",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Same established support tile and ordinary collision footprint."
+  },
+  {
+    "key": "existing-pier-59-41",
+    "asset": "pier",
+    "object_id": 64702,
+    "x": 59,
+    "z": 41,
+    "world": [
+      10427,
+      105,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": 7016,
+    "room": "architecture",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Same established support tile and ordinary collision footprint."
+  },
+  {
+    "key": "existing-pier-52-47",
+    "asset": "pier",
+    "object_id": 64702,
+    "x": 52,
+    "z": 47,
+    "world": [
+      10420,
+      111,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": 7016,
+    "room": "architecture",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Same established support tile and ordinary collision footprint."
+  },
+  {
+    "key": "existing-pier-59-47",
+    "asset": "pier",
+    "object_id": 64702,
+    "x": 59,
+    "z": 47,
+    "world": [
+      10427,
+      111,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": 7016,
+    "room": "architecture",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Same established support tile and ordinary collision footprint."
+  },
+  {
+    "key": "existing-pier-70-57",
+    "asset": "pier",
+    "object_id": 64702,
+    "x": 70,
+    "z": 57,
+    "world": [
+      10438,
+      121,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": 7017,
+    "room": "architecture",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Same established support tile and ordinary collision footprint."
+  },
+  {
+    "key": "existing-pier-70-61",
+    "asset": "pier",
+    "object_id": 64702,
+    "x": 70,
+    "z": 61,
+    "world": [
+      10438,
+      125,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": 7017,
+    "room": "architecture",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Same established support tile and ordinary collision footprint."
+  },
+  {
+    "key": "existing-pier-67-68",
+    "asset": "pier",
+    "object_id": 64702,
+    "x": 67,
+    "z": 68,
+    "world": [
+      10435,
+      132,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": 7017,
+    "room": "architecture",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Same established support tile and ordinary collision footprint."
+  },
+  {
+    "key": "existing-pier-76-68",
+    "asset": "pier",
+    "object_id": 64702,
+    "x": 76,
+    "z": 68,
+    "world": [
+      10444,
+      132,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": 7017,
+    "room": "architecture",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Same established support tile and ordinary collision footprint."
+  },
+  {
+    "key": "existing-pier-67-76",
+    "asset": "pier",
+    "object_id": 64702,
+    "x": 67,
+    "z": 76,
+    "world": [
+      10435,
+      140,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": 7017,
+    "room": "architecture",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Same established support tile and ordinary collision footprint."
+  },
+  {
+    "key": "existing-pier-76-76",
+    "asset": "pier",
+    "object_id": 64702,
+    "x": 76,
+    "z": 76,
+    "world": [
+      10444,
+      140,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": 7017,
+    "room": "architecture",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Same established support tile and ordinary collision footprint."
+  },
+  {
+    "key": "existing-pier-54-78",
+    "asset": "pier",
+    "object_id": 64702,
+    "x": 54,
+    "z": 78,
+    "world": [
+      10422,
+      142,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": 7016,
+    "room": "architecture",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Same established support tile and ordinary collision footprint."
+  },
+  {
+    "key": "existing-pier-59-78",
+    "asset": "pier",
+    "object_id": 64702,
+    "x": 59,
+    "z": 78,
+    "world": [
+      10427,
+      142,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": 7016,
+    "room": "architecture",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Same established support tile and ordinary collision footprint."
+  },
+  {
+    "key": "sanctuary-south",
+    "asset": "arch",
+    "object_id": 64703,
+    "x": 55,
+    "z": 48,
+    "world": [
+      10423,
+      112,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "A",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "sanctuary-south-foot-0",
+    "asset": "arch-foot",
+    "object_id": 64722,
+    "x": 54,
+    "z": 48,
+    "world": [
+      10422,
+      112,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "A",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Real support footprint beneath matching visible arch pier; two complete walking tiles remain open."
+  },
+  {
+    "key": "sanctuary-south-foot-1",
+    "asset": "arch-foot",
+    "object_id": 64722,
+    "x": 57,
+    "z": 48,
+    "world": [
+      10425,
+      112,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "A",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Real support footprint beneath matching visible arch pier; two complete walking tiles remain open."
+  },
+  {
+    "key": "workshop-threshold",
+    "asset": "arch",
+    "object_id": 64703,
+    "x": 47,
+    "z": 55,
+    "world": [
+      10415,
+      119,
+      0
+    ],
+    "shape": 10,
+    "angle": 3,
+    "expected": null,
+    "room": "A",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "workshop-threshold-foot-0",
+    "asset": "arch-foot",
+    "object_id": 64722,
+    "x": 48,
+    "z": 54,
+    "world": [
+      10416,
+      118,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "A",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Real support footprint beneath matching visible arch pier; two complete walking tiles remain open."
+  },
+  {
+    "key": "workshop-threshold-foot-1",
+    "asset": "arch-foot",
+    "object_id": 64722,
+    "x": 48,
+    "z": 57,
+    "world": [
+      10416,
+      121,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "A",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Real support footprint beneath matching visible arch pier; two complete walking tiles remain open."
+  },
+  {
+    "key": "waterworks-threshold",
+    "asset": "arch",
+    "object_id": 64703,
+    "x": 63,
+    "z": 55,
+    "world": [
+      10431,
+      119,
+      0
+    ],
+    "shape": 10,
+    "angle": 3,
+    "expected": null,
+    "room": "A",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "waterworks-threshold-foot-0",
+    "asset": "arch-foot",
+    "object_id": 64722,
+    "x": 64,
+    "z": 54,
+    "world": [
+      10432,
+      118,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "A",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Real support footprint beneath matching visible arch pier; two complete walking tiles remain open."
+  },
+  {
+    "key": "waterworks-threshold-foot-1",
+    "asset": "arch-foot",
+    "object_id": 64722,
+    "x": 64,
+    "z": 57,
+    "world": [
+      10432,
+      121,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "A",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Real support footprint beneath matching visible arch pier; two complete walking tiles remain open."
+  },
+  {
+    "key": "sanctuary-north",
+    "asset": "arch",
+    "object_id": 64703,
+    "x": 55,
+    "z": 64,
+    "world": [
+      10423,
+      128,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "A",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "sanctuary-north-foot-0",
+    "asset": "arch-foot",
+    "object_id": 64722,
+    "x": 54,
+    "z": 64,
+    "world": [
+      10422,
+      128,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "A",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Real support footprint beneath matching visible arch pier; two complete walking tiles remain open."
+  },
+  {
+    "key": "sanctuary-north-foot-1",
+    "asset": "arch-foot",
+    "object_id": 64722,
+    "x": 57,
+    "z": 64,
+    "world": [
+      10425,
+      128,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "A",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Real support footprint beneath matching visible arch pier; two complete walking tiles remain open."
+  },
+  {
+    "key": "sanctuary-bond-54-54",
+    "asset": "paving-bond",
+    "object_id": 64716,
+    "x": 54,
+    "z": 54,
+    "world": [
+      10422,
+      118,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "A",
+    "collision_footprint": [
+      2,
+      2
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "sanctuary-bond-56-54",
+    "asset": "paving-bond",
+    "object_id": 64716,
+    "x": 56,
+    "z": 54,
+    "world": [
+      10424,
+      118,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "A",
+    "collision_footprint": [
+      2,
+      2
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "sanctuary-bond-54-56",
+    "asset": "paving-bond",
+    "object_id": 64716,
+    "x": 54,
+    "z": 56,
+    "world": [
+      10422,
+      120,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "A",
+    "collision_footprint": [
+      2,
+      2
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "sanctuary-bond-56-56",
+    "asset": "paving-bond",
+    "object_id": 64716,
+    "x": 56,
+    "z": 56,
+    "world": [
+      10424,
+      120,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "A",
+    "collision_footprint": [
+      2,
+      2
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "mill-feed-line",
+    "asset": "plate-mill",
+    "object_id": 64719,
+    "x": 40,
+    "z": 55,
+    "world": [
+      10408,
+      119,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "B",
+    "collision_footprint": [
+      2,
+      2
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "riveting-bench",
+    "asset": "workstation",
+    "object_id": 64720,
+    "x": 37,
+    "z": 54,
+    "world": [
+      10405,
+      118,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "B",
+    "collision_footprint": [
+      2,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "bench-tool-rack",
+    "asset": "tool-rack",
+    "object_id": 64713,
+    "x": 36,
+    "z": 55,
+    "world": [
+      10404,
+      119,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "B",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "auxiliary-forge-bank",
+    "asset": "furnace-bank",
+    "object_id": 64704,
+    "x": 39,
+    "z": 49,
+    "world": [
+      10407,
+      113,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "B",
+    "collision_footprint": [
+      3,
+      2
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "workshop-stock-45-50",
+    "asset": "stock-crate",
+    "object_id": 64712,
+    "x": 45,
+    "z": 50,
+    "world": [
+      10413,
+      114,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "B",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "workshop-stock-39-53",
+    "asset": "stock-crate",
+    "object_id": 64712,
+    "x": 39,
+    "z": 53,
+    "world": [
+      10407,
+      117,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "B",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "workshop-stock-46-53",
+    "asset": "stock-crate",
+    "object_id": 64712,
+    "x": 46,
+    "z": 53,
+    "world": [
+      10414,
+      117,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "B",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "processional-bond-34",
+    "asset": "paving-bond",
+    "object_id": 64716,
+    "x": 55,
+    "z": 34,
+    "world": [
+      10423,
+      98,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "S",
+    "collision_footprint": [
+      2,
+      2
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "processional-bond-36",
+    "asset": "paving-bond",
+    "object_id": 64716,
+    "x": 55,
+    "z": 36,
+    "world": [
+      10423,
+      100,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "S",
+    "collision_footprint": [
+      2,
+      2
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "processional-bond-38",
+    "asset": "paving-bond",
+    "object_id": 64716,
+    "x": 55,
+    "z": 38,
+    "world": [
+      10423,
+      102,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "S",
+    "collision_footprint": [
+      2,
+      2
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "processional-bond-40",
+    "asset": "paving-bond",
+    "object_id": 64716,
+    "x": 55,
+    "z": 40,
+    "world": [
+      10423,
+      104,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "S",
+    "collision_footprint": [
+      2,
+      2
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "processional-bond-42",
+    "asset": "paving-bond",
+    "object_id": 64716,
+    "x": 55,
+    "z": 42,
+    "world": [
+      10423,
+      106,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "S",
+    "collision_footprint": [
+      2,
+      2
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "processional-bond-44",
+    "asset": "paving-bond",
+    "object_id": 64716,
+    "x": 55,
+    "z": 44,
+    "world": [
+      10423,
+      108,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "S",
+    "collision_footprint": [
+      2,
+      2
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "processional-bond-46",
+    "asset": "paving-bond",
+    "object_id": 64716,
+    "x": 55,
+    "z": 46,
+    "world": [
+      10423,
+      110,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "S",
+    "collision_footprint": [
+      2,
+      2
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "worked-slate-face",
+    "asset": "slate-headwall",
+    "object_id": 64709,
+    "x": 39,
+    "z": 62,
+    "world": [
+      10407,
+      126,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "C",
+    "collision_footprint": [
+      3,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "ore-track-south",
+    "asset": "rail-span",
+    "object_id": 64707,
+    "x": 40,
+    "z": 57,
+    "world": [
+      10408,
+      121,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "C",
+    "collision_footprint": [
+      2,
+      2
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "ore-track-north",
+    "asset": "rail-span",
+    "object_id": 64707,
+    "x": 40,
+    "z": 59,
+    "world": [
+      10408,
+      123,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "C",
+    "collision_footprint": [
+      2,
+      2
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "loaded-slate-cart",
+    "asset": "ore-cart",
+    "object_id": 64708,
+    "x": 40,
+    "z": 59,
+    "world": [
+      10408,
+      123,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "C",
+    "collision_footprint": [
+      2,
+      2
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "grove-maintenance-arch",
+    "asset": "arch",
+    "object_id": 64703,
+    "x": 39,
+    "z": 64,
+    "world": [
+      10407,
+      128,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "D1",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "grove-maintenance-arch-foot-0",
+    "asset": "arch-foot",
+    "object_id": 64722,
+    "x": 38,
+    "z": 64,
+    "world": [
+      10406,
+      128,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "D1",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Real support footprint beneath matching visible arch pier; two complete walking tiles remain open."
+  },
+  {
+    "key": "grove-maintenance-arch-foot-1",
+    "asset": "arch-foot",
+    "object_id": 64722,
+    "x": 41,
+    "z": 64,
+    "world": [
+      10409,
+      128,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "D1",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Real support footprint beneath matching visible arch pier; two complete walking tiles remain open."
+  },
+  {
+    "key": "reclaimed-growth-36-69",
+    "asset": "moss-fern",
+    "object_id": 64714,
+    "x": 36,
+    "z": 69,
+    "world": [
+      10404,
+      133,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "D1",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "reclaimed-growth-39-70",
+    "asset": "moss-fern",
+    "object_id": 64714,
+    "x": 39,
+    "z": 70,
+    "world": [
+      10407,
+      134,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "D1",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "reclaimed-growth-45-69",
+    "asset": "moss-fern",
+    "object_id": 64714,
+    "x": 45,
+    "z": 69,
+    "world": [
+      10413,
+      133,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "D1",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "reclaimed-growth-40-75",
+    "asset": "moss-fern",
+    "object_id": 64714,
+    "x": 40,
+    "z": 75,
+    "world": [
+      10408,
+      139,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "D1",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "reclaimed-growth-35-74",
+    "asset": "moss-fern",
+    "object_id": 64714,
+    "x": 35,
+    "z": 74,
+    "world": [
+      10403,
+      138,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "D1",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "reclaimed-growth-45-76",
+    "asset": "moss-fern",
+    "object_id": 64714,
+    "x": 45,
+    "z": 76,
+    "world": [
+      10413,
+      140,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "D1",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "reclaimed-growth-34-65",
+    "asset": "moss-fern",
+    "object_id": 64714,
+    "x": 34,
+    "z": 65,
+    "world": [
+      10402,
+      129,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "D1",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "reclaimed-growth-44-67",
+    "asset": "moss-fern",
+    "object_id": 64714,
+    "x": 44,
+    "z": 67,
+    "world": [
+      10412,
+      131,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "D1",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "grove-fallen-stone-36-67",
+    "asset": "ash-rubble",
+    "object_id": 64715,
+    "x": 36,
+    "z": 67,
+    "world": [
+      10404,
+      131,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "D1",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "grove-fallen-stone-44-73",
+    "asset": "ash-rubble",
+    "object_id": 64715,
+    "x": 44,
+    "z": 73,
+    "world": [
+      10412,
+      137,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "D1",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "grove-fallen-stone-40-77",
+    "asset": "ash-rubble",
+    "object_id": 64715,
+    "x": 40,
+    "z": 77,
+    "world": [
+      10408,
+      141,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "D1",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "headgate-pump",
+    "asset": "pump",
+    "object_id": 64718,
+    "x": 68,
+    "z": 61,
+    "world": [
+      10436,
+      125,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "D2",
+    "collision_footprint": [
+      2,
+      2
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "pump-return-to-channel",
+    "asset": "water-return",
+    "object_id": 64721,
+    "x": 70,
+    "z": 62,
+    "world": [
+      10438,
+      126,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "D2",
+    "collision_footprint": [
+      4,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Exact local pump port (119,-18,73) meets return port(-265,-82,73); bends around preserved pillar(70,61). Ground-height offset must be verified on native terrain."
+  },
+  {
+    "key": "abandoned-headgate",
+    "asset": "sluice",
+    "object_id": 64711,
+    "x": 74,
+    "z": 62,
+    "world": [
+      10442,
+      126,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "D2",
+    "collision_footprint": [
+      2,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "range-preparation-tools",
+    "asset": "tool-rack",
+    "object_id": 64713,
+    "x": 66,
+    "z": 54,
+    "world": [
+      10434,
+      118,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "D2",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "kitchen-stock",
+    "asset": "stock-crate",
+    "object_id": 64712,
+    "x": 66,
+    "z": 55,
+    "world": [
+      10434,
+      119,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "D2",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "foundry-threshold",
+    "asset": "arch",
+    "object_id": 64703,
+    "x": 55,
+    "z": 66,
+    "world": [
+      10423,
+      130,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "E",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "foundry-threshold-foot-0",
+    "asset": "arch-foot",
+    "object_id": 64722,
+    "x": 54,
+    "z": 66,
+    "world": [
+      10422,
+      130,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "E",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Real support footprint beneath matching visible arch pier; two complete walking tiles remain open."
+  },
+  {
+    "key": "foundry-threshold-foot-1",
+    "asset": "arch-foot",
+    "object_id": 64722,
+    "x": 57,
+    "z": 66,
+    "world": [
+      10425,
+      130,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "E",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Real support footprint beneath matching visible arch pier; two complete walking tiles remain open."
+  },
+  {
+    "key": "imp-threshold",
+    "asset": "arch",
+    "object_id": 64703,
+    "x": 71,
+    "z": 67,
+    "world": [
+      10439,
+      131,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "F3",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "imp-threshold-foot-0",
+    "asset": "arch-foot",
+    "object_id": 64722,
+    "x": 70,
+    "z": 67,
+    "world": [
+      10438,
+      131,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "F3",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Real support footprint beneath matching visible arch pier; two complete walking tiles remain open."
+  },
+  {
+    "key": "imp-threshold-foot-1",
+    "asset": "arch-foot",
+    "object_id": 64722,
+    "x": 73,
+    "z": 67,
+    "world": [
+      10441,
+      131,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "F3",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Real support footprint beneath matching visible arch pier; two complete walking tiles remain open."
+  },
+  {
+    "key": "vent-gallery-ash-66-69",
+    "asset": "ash-rubble",
+    "object_id": 64715,
+    "x": 66,
+    "z": 69,
+    "world": [
+      10434,
+      133,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "F3",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "vent-gallery-ash-77-69",
+    "asset": "ash-rubble",
+    "object_id": 64715,
+    "x": 77,
+    "z": 69,
+    "world": [
+      10445,
+      133,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "F3",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "vent-gallery-ash-66-73",
+    "asset": "ash-rubble",
+    "object_id": 64715,
+    "x": 66,
+    "z": 73,
+    "world": [
+      10434,
+      137,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "F3",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "vent-gallery-ash-77-73",
+    "asset": "ash-rubble",
+    "object_id": 64715,
+    "x": 77,
+    "z": 73,
+    "world": [
+      10445,
+      137,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "F3",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "supply-yard-rubble-37-35",
+    "asset": "ash-rubble",
+    "object_id": 64715,
+    "x": 37,
+    "z": 35,
+    "world": [
+      10405,
+      99,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "F2",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "supply-yard-rubble-44-43",
+    "asset": "ash-rubble",
+    "object_id": 64715,
+    "x": 44,
+    "z": 43,
+    "world": [
+      10412,
+      107,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "F2",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "supply-yard-rubble-34-44",
+    "asset": "ash-rubble",
+    "object_id": 64715,
+    "x": 34,
+    "z": 44,
+    "world": [
+      10402,
+      108,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "F2",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "supply-yard-rubble-67-38",
+    "asset": "ash-rubble",
+    "object_id": 64715,
+    "x": 67,
+    "z": 38,
+    "world": [
+      10435,
+      102,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "F1",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "supply-yard-rubble-76-42",
+    "asset": "ash-rubble",
+    "object_id": 64715,
+    "x": 76,
+    "z": 42,
+    "world": [
+      10444,
+      106,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "F1",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "supply-yard-rubble-74-46",
+    "asset": "ash-rubble",
+    "object_id": 64715,
+    "x": 74,
+    "z": 46,
+    "world": [
+      10442,
+      110,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "F1",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "provision-stock-33-40",
+    "asset": "stock-crate",
+    "object_id": 64712,
+    "x": 33,
+    "z": 40,
+    "world": [
+      10401,
+      104,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "F2",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "provision-stock-46-43",
+    "asset": "stock-crate",
+    "object_id": 64712,
+    "x": 46,
+    "z": 43,
+    "world": [
+      10414,
+      107,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "F2",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "provision-stock-65-40",
+    "asset": "stock-crate",
+    "object_id": 64712,
+    "x": 65,
+    "z": 40,
+    "world": [
+      10433,
+      104,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "F1",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "provision-stock-77-38",
+    "asset": "stock-crate",
+    "object_id": 64712,
+    "x": 77,
+    "z": 38,
+    "world": [
+      10445,
+      102,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "F1",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "western-foundry-stack",
+    "asset": "chimney-backdrop",
+    "object_id": 64723,
+    "x": 49,
+    "z": 78,
+    "world": [
+      10417,
+      142,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "G",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "eastern-foundry-stack",
+    "asset": "chimney-backdrop",
+    "object_id": 64723,
+    "x": 63,
+    "z": 78,
+    "world": [
+      10431,
+      142,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "G",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "completion-chest-frame",
+    "asset": "reward-surround",
+    "object_id": 64717,
+    "x": 55,
+    "z": 50,
+    "world": [
+      10423,
+      114,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "H1",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Native model depth offset128 aligns around the existing chest at(55,51); chest ID and action unchanged."
+  },
+  {
+    "key": "departure-frame",
+    "asset": "arch",
+    "object_id": 64703,
+    "x": 63,
+    "z": 59,
+    "world": [
+      10431,
+      123,
+      0
+    ],
+    "shape": 10,
+    "angle": 3,
+    "expected": null,
+    "room": "H2",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "departure-frame-foot-0",
+    "asset": "arch-foot",
+    "object_id": 64722,
+    "x": 64,
+    "z": 58,
+    "world": [
+      10432,
+      122,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "H2",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Real support footprint beneath matching visible arch pier; two complete walking tiles remain open."
+  },
+  {
+    "key": "departure-frame-foot-1",
+    "asset": "arch-foot",
+    "object_id": 64722,
+    "x": 64,
+    "z": 61,
+    "world": [
+      10432,
+      125,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "H2",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": "Real support footprint beneath matching visible arch pier; two complete walking tiles remain open."
+  },
+  {
+    "key": "sanctuary-edge-growth-51-54",
+    "asset": "moss-fern",
+    "object_id": 64714,
+    "x": 51,
+    "z": 54,
+    "world": [
+      10419,
+      118,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "A",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "sanctuary-edge-growth-60-54",
+    "asset": "moss-fern",
+    "object_id": 64714,
+    "x": 60,
+    "z": 54,
+    "world": [
+      10428,
+      118,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "A",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "sanctuary-edge-growth-51-61",
+    "asset": "moss-fern",
+    "object_id": 64714,
+    "x": 51,
+    "z": 61,
+    "world": [
+      10419,
+      125,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "A",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "sanctuary-edge-growth-60-61",
+    "asset": "moss-fern",
+    "object_id": 64714,
+    "x": 60,
+    "z": 61,
+    "world": [
+      10428,
+      125,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "A",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "first-arrival-inlay",
+    "asset": "arrival-inlay",
+    "object_id": 64724,
+    "x": 56,
+    "z": 56,
+    "world": [
+      10424,
+      120,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "A",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "recovery-arrival-inlay",
+    "asset": "arrival-inlay",
+    "object_id": 64724,
+    "x": 56,
+    "z": 49,
+    "world": [
+      10424,
+      113,
+      0
+    ],
+    "shape": 10,
+    "angle": 0,
+    "expected": null,
+    "room": "A",
+    "collision_footprint": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  },
+  {
+    "key": "central-hearth-surround",
+    "asset": "hearth-ring",
+    "object_id": 64725,
+    "x": 55,
+    "z": 58,
+    "world": [
+      10423,
+      122,
+      0
+    ],
+    "shape": 22,
+    "angle": 0,
+    "expected": null,
+    "room": "A",
+    "collision_footprint": [
+      2,
+      2
+    ],
+    "blocking": false,
+    "interaction_position": null,
+    "animation_anchor": null,
+    "existing_gameplay_hook": null,
+    "status": "Original decorative scenery; current gameplay anchors preserved",
+    "note": ""
+  }
+]

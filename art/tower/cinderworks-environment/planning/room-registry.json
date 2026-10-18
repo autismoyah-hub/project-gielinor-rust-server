@@ -1,0 +1,284 @@
+[
+  {
+    "id": "A",
+    "name": "Hearth Sanctuary",
+    "bounds": [
+      49,
+      49,
+      63,
+      63
+    ],
+    "center": [
+      56,
+      56
+    ],
+    "status": "Existing arrival and recovery/service court",
+    "function": "Safe staging, plaque, altar, bank and visible three-service choices",
+    "kit": [
+      "cut-corner masonry",
+      "supported doorframes",
+      "hearth",
+      "service alcoves"
+    ]
+  },
+  {
+    "id": "B",
+    "name": "Hammer Court",
+    "bounds": [
+      33,
+      49,
+      47,
+      55
+    ],
+    "center": [
+      40,
+      52
+    ],
+    "status": "Existing forge wing; southern workshop composition proposed",
+    "function": "Smelting, smithing and coherent rail-to-mill production",
+    "kit": [
+      "plate mill",
+      "anvil bench",
+      "stock bins",
+      "flue",
+      "aligned drive machinery"
+    ]
+  },
+  {
+    "id": "C",
+    "name": "Slate Extraction",
+    "bounds": [
+      33,
+      56,
+      47,
+      63
+    ],
+    "center": [
+      40,
+      59
+    ],
+    "status": "Existing ore wing; geological presentation proposed",
+    "function": "Copper and tin collection, optional industrial extraction display",
+    "kit": [
+      "cut slate wall",
+      "braced rock face",
+      "ore cart",
+      "rails",
+      "processing chute"
+    ]
+  },
+  {
+    "id": "D1",
+    "name": "Reclaimed Grove",
+    "bounds": [
+      33,
+      65,
+      47,
+      78
+    ],
+    "center": [
+      40,
+      71
+    ],
+    "status": "Existing four-tree resource court",
+    "function": "Surviving vegetation and mossy maintenance loop",
+    "kit": [
+      "damp masonry",
+      "root pockets",
+      "broken pipe",
+      "weathered supports"
+    ]
+  },
+  {
+    "id": "D2",
+    "name": "Headgate Waterworks",
+    "bounds": [
+      65,
+      49,
+      78,
+      63
+    ],
+    "center": [
+      69,
+      56
+    ],
+    "status": "Existing quay, blocked water, fishing and range",
+    "function": "Fishing, cooking and coolant lesson; water feeds industrial return",
+    "kit": [
+      "pump",
+      "pipe network",
+      "sluice frame",
+      "quay rails",
+      "cooking shelter"
+    ]
+  },
+  {
+    "id": "E",
+    "name": "Furnace Threshold",
+    "bounds": [
+      50,
+      64,
+      62,
+      66
+    ],
+    "center": [
+      56,
+      65
+    ],
+    "status": "Existing approach to preserved Warden bounds; architectural emphasis proposed",
+    "function": "Safe observation apron and deliberate furnace threshold",
+    "kit": [
+      "paired piers",
+      "pressure manifold",
+      "heat markers",
+      "ventilation frame"
+    ]
+  },
+  {
+    "id": "F1",
+    "name": "Ash Provision Court",
+    "bounds": [
+      65,
+      33,
+      78,
+      47
+    ],
+    "center": [
+      71,
+      40
+    ],
+    "status": "Existing resource combat yard",
+    "function": "Early combat supplies and bone collection",
+    "kit": [
+      "ruined stock shed",
+      "ash deposits",
+      "feeding infrastructure"
+    ]
+  },
+  {
+    "id": "F2",
+    "name": "Western Bone Court",
+    "bounds": [
+      33,
+      33,
+      47,
+      47
+    ],
+    "center": [
+      40,
+      40
+    ],
+    "status": "Existing resource combat yard",
+    "function": "Optional resource combat and route variation",
+    "kit": [
+      "low rubble boundary",
+      "stock bays",
+      "damaged hoist"
+    ]
+  },
+  {
+    "id": "F3",
+    "name": "Imp Vent Gallery",
+    "bounds": [
+      65,
+      65,
+      78,
+      78
+    ],
+    "center": [
+      72,
+      72
+    ],
+    "status": "Existing Imp arena and maintenance perimeter",
+    "function": "Imp encounter after all three services; arena [68,68]\u2013[75,75] unchanged",
+    "kit": [
+      "boiler banks",
+      "vent collars",
+      "ash collection",
+      "maintenance rails"
+    ]
+  },
+  {
+    "id": "G",
+    "name": "Ash Warden Foundry",
+    "bounds": [
+      50,
+      67,
+      62,
+      77
+    ],
+    "center": [
+      56,
+      72
+    ],
+    "status": "Existing exact combat bounds; monumental backdrop proposed",
+    "function": "Three-phase Warden arena, four existing coolant barrels and open movement",
+    "kit": [
+      "three furnace mouths",
+      "segmented arches",
+      "buttresses",
+      "quench headers"
+    ]
+  },
+  {
+    "id": "H1",
+    "name": "Reward Alcove",
+    "bounds": [
+      53,
+      50,
+      58,
+      53
+    ],
+    "center": [
+      55,
+      51
+    ],
+    "status": "Existing sanctuary reward site; overlaps A intentionally",
+    "function": "Existing first/replay reward collection, no rule changes",
+    "kit": [
+      "original chest surround",
+      "completion masonry"
+    ]
+  },
+  {
+    "id": "H2",
+    "name": "Departure Threshold",
+    "bounds": [
+      63,
+      58,
+      66,
+      62
+    ],
+    "center": [
+      64,
+      60
+    ],
+    "status": "Existing portal site; overlaps D2 threshold intentionally",
+    "function": "Existing exit and return; no new departure behavior",
+    "kit": [
+      "framed departure arch",
+      "wayfinding floor bonds"
+    ]
+  },
+  {
+    "id": "S",
+    "name": "Processional Service Hall",
+    "bounds": [
+      51,
+      33,
+      61,
+      47
+    ],
+    "center": [
+      56,
+      40
+    ],
+    "status": "Existing southern corridor",
+    "function": "Optional orientation and connections to both supply courts",
+    "kit": [
+      "load-bearing arcades",
+      "low foreground edges",
+      "utility conduit"
+    ]
+  }
+]

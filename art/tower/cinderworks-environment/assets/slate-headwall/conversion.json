@@ -1,0 +1,168 @@
+{
+  "components": [
+    {
+      "name": "bedded slate headwall",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "visible geological bedding",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "visible geological bedding.001",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "visible geological bedding.002",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "bedded slate headwall.001",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "visible geological bedding.003",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "visible geological bedding.004",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "visible geological bedding.005",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "bedded slate headwall.002",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "visible geological bedding.006",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "visible geological bedding.007",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "visible geological bedding.008",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "bedded slate headwall.003",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "visible geological bedding.009",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "visible geological bedding.010",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "visible geological bedding.011",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "bedded slate headwall.004",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "visible geological bedding.012",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "visible geological bedding.013",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "visible geological bedding.014",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "rock support post",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "headwall knee",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "rock support post.001",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "headwall knee.001",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "headwall lintel",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    }
+  ],
+  "quantization_max_error": 0.4267730712890625,
+  "collapsed_triangles": 0,
+  "uv_loops": 0,
+  "material_conversion": "UV image albedo sampled at triangle centroid, otherwise diffuse color; RGB to 6/3/7-bit HSL. No PBR/normal/roughness transfer.",
+  "texture_image_samples": 0,
+  "vertices": 200,
+  "triangles": 300,
+  "budget": {
+    "soft_vertices": 12000,
+    "soft_triangles": 20000
+  },
+  "coordinates": "X right, Y down, Z depth; 128 units/tile",
+  "face_priority": 0,
+  "alpha": 0
+}

@@ -1,0 +1,258 @@
+{
+  "components": [
+    {
+      "name": "moss bed",
+      "vertices": 23,
+      "triangles": 42,
+      "group": 0
+    },
+    {
+      "name": "fern stem",
+      "vertices": 15,
+      "triangles": 25,
+      "group": 0
+    },
+    {
+      "name": "folded fern frond",
+      "vertices": 4,
+      "triangles": 4,
+      "group": 0
+    },
+    {
+      "name": "folded fern frond.001",
+      "vertices": 4,
+      "triangles": 4,
+      "group": 0
+    },
+    {
+      "name": "folded fern frond.002",
+      "vertices": 4,
+      "triangles": 4,
+      "group": 0
+    },
+    {
+      "name": "folded fern frond.003",
+      "vertices": 4,
+      "triangles": 4,
+      "group": 0
+    },
+    {
+      "name": "folded fern frond.004",
+      "vertices": 4,
+      "triangles": 4,
+      "group": 0
+    },
+    {
+      "name": "folded fern frond.005",
+      "vertices": 4,
+      "triangles": 4,
+      "group": 0
+    },
+    {
+      "name": "moss bed.001",
+      "vertices": 23,
+      "triangles": 42,
+      "group": 0
+    },
+    {
+      "name": "fern stem.001",
+      "vertices": 15,
+      "triangles": 22,
+      "group": 0
+    },
+    {
+      "name": "folded fern frond.006",
+      "vertices": 4,
+      "triangles": 4,
+      "group": 0
+    },
+    {
+      "name": "folded fern frond.007",
+      "vertices": 4,
+      "triangles": 4,
+      "group": 0
+    },
+    {
+      "name": "folded fern frond.008",
+      "vertices": 4,
+      "triangles": 4,
+      "group": 0
+    },
+    {
+      "name": "folded fern frond.009",
+      "vertices": 4,
+      "triangles": 4,
+      "group": 0
+    },
+    {
+      "name": "folded fern frond.010",
+      "vertices": 4,
+      "triangles": 4,
+      "group": 0
+    },
+    {
+      "name": "folded fern frond.011",
+      "vertices": 4,
+      "triangles": 4,
+      "group": 0
+    },
+    {
+      "name": "moss bed.002",
+      "vertices": 23,
+      "triangles": 42,
+      "group": 0
+    },
+    {
+      "name": "fern stem.002",
+      "vertices": 15,
+      "triangles": 22,
+      "group": 0
+    },
+    {
+      "name": "folded fern frond.012",
+      "vertices": 4,
+      "triangles": 4,
+      "group": 0
+    },
+    {
+      "name": "folded fern frond.013",
+      "vertices": 4,
+      "triangles": 4,
+      "group": 0
+    },
+    {
+      "name": "folded fern frond.014",
+      "vertices": 4,
+      "triangles": 4,
+      "group": 0
+    },
+    {
+      "name": "folded fern frond.015",
+      "vertices": 4,
+      "triangles": 4,
+      "group": 0
+    },
+    {
+      "name": "folded fern frond.016",
+      "vertices": 4,
+      "triangles": 4,
+      "group": 0
+    },
+    {
+      "name": "folded fern frond.017",
+      "vertices": 4,
+      "triangles": 4,
+      "group": 0
+    },
+    {
+      "name": "moss bed.003",
+      "vertices": 23,
+      "triangles": 42,
+      "group": 0
+    },
+    {
+      "name": "fern stem.003",
+      "vertices": 15,
+      "triangles": 24,
+      "group": 0
+    },
+    {
+      "name": "folded fern frond.018",
+      "vertices": 4,
+      "triangles": 4,
+      "group": 0
+    },
+    {
+      "name": "folded fern frond.019",
+      "vertices": 4,
+      "triangles": 4,
+      "group": 0
+    },
+    {
+      "name": "folded fern frond.020",
+      "vertices": 4,
+      "triangles": 4,
+      "group": 0
+    },
+    {
+      "name": "folded fern frond.021",
+      "vertices": 4,
+      "triangles": 4,
+      "group": 0
+    },
+    {
+      "name": "folded fern frond.022",
+      "vertices": 4,
+      "triangles": 4,
+      "group": 0
+    },
+    {
+      "name": "folded fern frond.023",
+      "vertices": 4,
+      "triangles": 4,
+      "group": 0
+    },
+    {
+      "name": "moss bed.004",
+      "vertices": 23,
+      "triangles": 42,
+      "group": 0
+    },
+    {
+      "name": "fern stem.004",
+      "vertices": 15,
+      "triangles": 24,
+      "group": 0
+    },
+    {
+      "name": "folded fern frond.024",
+      "vertices": 4,
+      "triangles": 4,
+      "group": 0
+    },
+    {
+      "name": "folded fern frond.025",
+      "vertices": 4,
+      "triangles": 4,
+      "group": 0
+    },
+    {
+      "name": "folded fern frond.026",
+      "vertices": 4,
+      "triangles": 4,
+      "group": 0
+    },
+    {
+      "name": "folded fern frond.027",
+      "vertices": 4,
+      "triangles": 4,
+      "group": 0
+    },
+    {
+      "name": "folded fern frond.028",
+      "vertices": 4,
+      "triangles": 4,
+      "group": 0
+    },
+    {
+      "name": "folded fern frond.029",
+      "vertices": 4,
+      "triangles": 4,
+      "group": 0
+    }
+  ],
+  "quantization_max_error": 0.4954090118408203,
+  "collapsed_triangles": 13,
+  "uv_loops": 490,
+  "material_conversion": "UV image albedo sampled at triangle centroid, otherwise diffuse color; RGB to 6/3/7-bit HSL. No PBR/normal/roughness transfer.",
+  "texture_image_samples": 0,
+  "vertices": 310,
+  "triangles": 447,
+  "budget": {
+    "soft_vertices": 12000,
+    "soft_triangles": 20000
+  },
+  "coordinates": "X right, Y down, Z depth; 128 units/tile",
+  "face_priority": 0,
+  "alpha": 0
+}

@@ -1,0 +1,72 @@
+{
+  "components": [
+    {
+      "name": "continuous mortar backing",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "bonded ashlar 0-0",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "bonded ashlar 0-1",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "bonded ashlar 0-2",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "bonded ashlar 1-0",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "bonded ashlar 1-1",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "bonded ashlar 1-2",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "bonded ashlar 1-3",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "overhanging weathered coping",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    }
+  ],
+  "quantization_max_error": 0.5,
+  "collapsed_triangles": 0,
+  "uv_loops": 408,
+  "material_conversion": "UV image albedo sampled at triangle centroid, otherwise diffuse color; RGB to 6/3/7-bit HSL. No PBR/normal/roughness transfer.",
+  "texture_image_samples": 0,
+  "vertices": 120,
+  "triangles": 204,
+  "budget": {
+    "soft_vertices": 12000,
+    "soft_triangles": 20000
+  },
+  "coordinates": "X right, Y down, Z depth; 128 units/tile",
+  "face_priority": 0,
+  "alpha": 0
+}

@@ -1,0 +1,1060 @@
+{
+  "created_utc": "2026-10-18T19:23:26.051751+00:00",
+  "origin": [
+    10368,
+    64,
+    0
+  ],
+  "local_extent": [
+    32,
+    32,
+    79,
+    79
+  ],
+  "dimensions_tiles": [
+    48,
+    48
+  ],
+  "coordinate_policy": "No gameplay coordinate migration. Current source anchors, first/return arrival, portals, encounter bounds, service state and persistence retained. Recommended A\u2013H areas reconcile to existing wings; D and F have multiple subareas; reward/departure remain attached to the sanctuary.",
+  "rooms": [
+    {
+      "id": "A",
+      "name": "Hearth Sanctuary",
+      "bounds": [
+        49,
+        49,
+        63,
+        63
+      ],
+      "center": [
+        56,
+        56
+      ],
+      "status": "Existing arrival and recovery/service court",
+      "function": "Safe staging, plaque, altar, bank and visible three-service choices",
+      "kit": [
+        "cut-corner masonry",
+        "supported doorframes",
+        "hearth",
+        "service alcoves"
+      ]
+    },
+    {
+      "id": "B",
+      "name": "Hammer Court",
+      "bounds": [
+        33,
+        49,
+        47,
+        55
+      ],
+      "center": [
+        40,
+        52
+      ],
+      "status": "Existing forge wing; southern workshop composition proposed",
+      "function": "Smelting, smithing and coherent rail-to-mill production",
+      "kit": [
+        "plate mill",
+        "anvil bench",
+        "stock bins",
+        "flue",
+        "aligned drive machinery"
+      ]
+    },
+    {
+      "id": "C",
+      "name": "Slate Extraction",
+      "bounds": [
+        33,
+        56,
+        47,
+        63
+      ],
+      "center": [
+        40,
+        59
+      ],
+      "status": "Existing ore wing; geological presentation proposed",
+      "function": "Copper and tin collection, optional industrial extraction display",
+      "kit": [
+        "cut slate wall",
+        "braced rock face",
+        "ore cart",
+        "rails",
+        "processing chute"
+      ]
+    },
+    {
+      "id": "D1",
+      "name": "Reclaimed Grove",
+      "bounds": [
+        33,
+        65,
+        47,
+        78
+      ],
+      "center": [
+        40,
+        71
+      ],
+      "status": "Existing four-tree resource court",
+      "function": "Surviving vegetation and mossy maintenance loop",
+      "kit": [
+        "damp masonry",
+        "root pockets",
+        "broken pipe",
+        "weathered supports"
+      ]
+    },
+    {
+      "id": "D2",
+      "name": "Headgate Waterworks",
+      "bounds": [
+        65,
+        49,
+        78,
+        63
+      ],
+      "center": [
+        69,
+        56
+      ],
+      "status": "Existing quay, blocked water, fishing and range",
+      "function": "Fishing, cooking and coolant lesson; water feeds industrial return",
+      "kit": [
+        "pump",
+        "pipe network",
+        "sluice frame",
+        "quay rails",
+        "cooking shelter"
+      ]
+    },
+    {
+      "id": "E",
+      "name": "Furnace Threshold",
+      "bounds": [
+        50,
+        64,
+        62,
+        66
+      ],
+      "center": [
+        56,
+        65
+      ],
+      "status": "Existing approach to preserved Warden bounds; architectural emphasis proposed",
+      "function": "Safe observation apron and deliberate furnace threshold",
+      "kit": [
+        "paired piers",
+        "pressure manifold",
+        "heat markers",
+        "ventilation frame"
+      ]
+    },
+    {
+      "id": "F1",
+      "name": "Ash Provision Court",
+      "bounds": [
+        65,
+        33,
+        78,
+        47
+      ],
+      "center": [
+        71,
+        40
+      ],
+      "status": "Existing resource combat yard",
+      "function": "Early combat supplies and bone collection",
+      "kit": [
+        "ruined stock shed",
+        "ash deposits",
+        "feeding infrastructure"
+      ]
+    },
+    {
+      "id": "F2",
+      "name": "Western Bone Court",
+      "bounds": [
+        33,
+        33,
+        47,
+        47
+      ],
+      "center": [
+        40,
+        40
+      ],
+      "status": "Existing resource combat yard",
+      "function": "Optional resource combat and route variation",
+      "kit": [
+        "low rubble boundary",
+        "stock bays",
+        "damaged hoist"
+      ]
+    },
+    {
+      "id": "F3",
+      "name": "Imp Vent Gallery",
+      "bounds": [
+        65,
+        65,
+        78,
+        78
+      ],
+      "center": [
+        72,
+        72
+      ],
+      "status": "Existing Imp arena and maintenance perimeter",
+      "function": "Imp encounter after all three services; arena [68,68]\u2013[75,75] unchanged",
+      "kit": [
+        "boiler banks",
+        "vent collars",
+        "ash collection",
+        "maintenance rails"
+      ]
+    },
+    {
+      "id": "G",
+      "name": "Ash Warden Foundry",
+      "bounds": [
+        50,
+        67,
+        62,
+        77
+      ],
+      "center": [
+        56,
+        72
+      ],
+      "status": "Existing exact combat bounds; monumental backdrop proposed",
+      "function": "Three-phase Warden arena, four existing coolant barrels and open movement",
+      "kit": [
+        "three furnace mouths",
+        "segmented arches",
+        "buttresses",
+        "quench headers"
+      ]
+    },
+    {
+      "id": "H1",
+      "name": "Reward Alcove",
+      "bounds": [
+        53,
+        50,
+        58,
+        53
+      ],
+      "center": [
+        55,
+        51
+      ],
+      "status": "Existing sanctuary reward site; overlaps A intentionally",
+      "function": "Existing first/replay reward collection, no rule changes",
+      "kit": [
+        "original chest surround",
+        "completion masonry"
+      ]
+    },
+    {
+      "id": "H2",
+      "name": "Departure Threshold",
+      "bounds": [
+        63,
+        58,
+        66,
+        62
+      ],
+      "center": [
+        64,
+        60
+      ],
+      "status": "Existing portal site; overlaps D2 threshold intentionally",
+      "function": "Existing exit and return; no new departure behavior",
+      "kit": [
+        "framed departure arch",
+        "wayfinding floor bonds"
+      ]
+    },
+    {
+      "id": "S",
+      "name": "Processional Service Hall",
+      "bounds": [
+        51,
+        33,
+        61,
+        47
+      ],
+      "center": [
+        56,
+        40
+      ],
+      "status": "Existing southern corridor",
+      "function": "Optional orientation and connections to both supply courts",
+      "kit": [
+        "load-bearing arcades",
+        "low foreground edges",
+        "utility conduit"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "a": "A",
+      "b": "B",
+      "threshold": [
+        48,
+        55
+      ]
+    },
+    {
+      "a": "B",
+      "b": "C",
+      "threshold": [
+        40,
+        56
+      ]
+    },
+    {
+      "a": "C",
+      "b": "D1",
+      "threshold": [
+        40,
+        64
+      ]
+    },
+    {
+      "a": "A",
+      "b": "D2",
+      "threshold": [
+        64,
+        55
+      ]
+    },
+    {
+      "a": "A",
+      "b": "E",
+      "threshold": [
+        56,
+        64
+      ]
+    },
+    {
+      "a": "E",
+      "b": "G",
+      "threshold": [
+        56,
+        67
+      ]
+    },
+    {
+      "a": "D2",
+      "b": "F3",
+      "threshold": [
+        70,
+        64
+      ]
+    },
+    {
+      "a": "G",
+      "b": "F3",
+      "threshold": [
+        64,
+        72
+      ]
+    },
+    {
+      "a": "D1",
+      "b": "G",
+      "threshold": [
+        48,
+        72
+      ]
+    },
+    {
+      "a": "A",
+      "b": "H1",
+      "threshold": [
+        55,
+        52
+      ]
+    },
+    {
+      "a": "A",
+      "b": "H2",
+      "threshold": [
+        63,
+        60
+      ]
+    },
+    {
+      "a": "A",
+      "b": "S",
+      "threshold": [
+        56,
+        48
+      ]
+    },
+    {
+      "a": "S",
+      "b": "F1",
+      "threshold": [
+        62,
+        40
+      ]
+    },
+    {
+      "a": "S",
+      "b": "F2",
+      "threshold": [
+        50,
+        40
+      ]
+    },
+    {
+      "a": "B",
+      "b": "F2",
+      "threshold": [
+        40,
+        48
+      ]
+    },
+    {
+      "a": "D2",
+      "b": "F1",
+      "threshold": [
+        70,
+        48
+      ]
+    }
+  ],
+  "interaction_anchors": [
+    {
+      "key": "arrival-first",
+      "local": [
+        56,
+        56,
+        0
+      ],
+      "world": [
+        10424,
+        120,
+        0
+      ],
+      "existing_hook": "tower_arrival::State::arrival",
+      "status": "implemented",
+      "orientation": "preserve actual source",
+      "interaction_position": "nearest reachable adjacent tile; verified in cache-backed audit"
+    },
+    {
+      "key": "arrival-return",
+      "local": [
+        56,
+        49,
+        0
+      ],
+      "world": [
+        10424,
+        113,
+        0
+      ],
+      "existing_hook": "tower_arrival::State::arrival",
+      "status": "implemented",
+      "orientation": "preserve actual source",
+      "interaction_position": "nearest reachable adjacent tile; verified in cache-backed audit"
+    },
+    {
+      "key": "bank",
+      "local": [
+        53,
+        60,
+        0
+      ],
+      "world": [
+        10421,
+        124,
+        0
+      ],
+      "existing_hook": "tower_map::prepare / sanctuary Bank",
+      "status": "implemented",
+      "orientation": "preserve actual source",
+      "interaction_position": "nearest reachable adjacent tile; verified in cache-backed audit"
+    },
+    {
+      "key": "plaque",
+      "local": [
+        54,
+        51,
+        0
+      ],
+      "world": [
+        10422,
+        115,
+        0
+      ],
+      "existing_hook": "tower_run / cinderworks_actions",
+      "status": "implemented",
+      "orientation": "preserve actual source",
+      "interaction_position": "nearest reachable adjacent tile; verified in cache-backed audit"
+    },
+    {
+      "key": "reward",
+      "local": [
+        55,
+        51,
+        0
+      ],
+      "world": [
+        10423,
+        115,
+        0
+      ],
+      "existing_hook": "tower_run reward_pending / chest action",
+      "status": "implemented",
+      "orientation": "preserve actual source",
+      "interaction_position": "nearest reachable adjacent tile; verified in cache-backed audit"
+    },
+    {
+      "key": "altar",
+      "local": [
+        60,
+        52,
+        0
+      ],
+      "world": [
+        10428,
+        116,
+        0
+      ],
+      "existing_hook": "Service::Altar",
+      "status": "implemented",
+      "orientation": "preserve actual source",
+      "interaction_position": "nearest reachable adjacent tile; verified in cache-backed audit"
+    },
+    {
+      "key": "furnace",
+      "local": [
+        34,
+        50,
+        0
+      ],
+      "world": [
+        10402,
+        114,
+        0
+      ],
+      "existing_hook": "Service::Forge / smelting",
+      "status": "implemented",
+      "orientation": "preserve actual source",
+      "interaction_position": "nearest reachable adjacent tile; verified in cache-backed audit"
+    },
+    {
+      "key": "anvil",
+      "local": [
+        37,
+        50,
+        0
+      ],
+      "world": [
+        10405,
+        114,
+        0
+      ],
+      "existing_hook": "Service::Forge / bronze dagger",
+      "status": "implemented",
+      "orientation": "preserve actual source",
+      "interaction_position": "nearest reachable adjacent tile; verified in cache-backed audit"
+    },
+    {
+      "key": "tin-south",
+      "local": [
+        34,
+        54,
+        0
+      ],
+      "world": [
+        10402,
+        118,
+        0
+      ],
+      "existing_hook": "existing mining",
+      "status": "implemented",
+      "orientation": "preserve actual source",
+      "interaction_position": "nearest reachable adjacent tile; verified in cache-backed audit"
+    },
+    {
+      "key": "tin-north",
+      "local": [
+        34,
+        58,
+        0
+      ],
+      "world": [
+        10402,
+        122,
+        0
+      ],
+      "existing_hook": "existing mining",
+      "status": "implemented",
+      "orientation": "preserve actual source",
+      "interaction_position": "nearest reachable adjacent tile; verified in cache-backed audit"
+    },
+    {
+      "key": "copper-south",
+      "local": [
+        44,
+        54,
+        0
+      ],
+      "world": [
+        10412,
+        118,
+        0
+      ],
+      "existing_hook": "existing mining",
+      "status": "implemented",
+      "orientation": "preserve actual source",
+      "interaction_position": "nearest reachable adjacent tile; verified in cache-backed audit"
+    },
+    {
+      "key": "copper-north",
+      "local": [
+        44,
+        58,
+        0
+      ],
+      "world": [
+        10412,
+        122,
+        0
+      ],
+      "existing_hook": "existing mining",
+      "status": "implemented",
+      "orientation": "preserve actual source",
+      "interaction_position": "nearest reachable adjacent tile; verified in cache-backed audit"
+    },
+    {
+      "key": "cooking-range",
+      "local": [
+        67,
+        53,
+        0
+      ],
+      "world": [
+        10435,
+        117,
+        0
+      ],
+      "existing_hook": "Service::Kitchen",
+      "status": "implemented",
+      "orientation": "preserve actual source",
+      "interaction_position": "nearest reachable adjacent tile; verified in cache-backed audit"
+    },
+    {
+      "key": "coolant-lesson",
+      "local": [
+        69,
+        52,
+        0
+      ],
+      "world": [
+        10437,
+        116,
+        0
+      ],
+      "existing_hook": "TRAINING_COOLANT",
+      "status": "implemented",
+      "orientation": "preserve actual source",
+      "interaction_position": "nearest reachable adjacent tile; verified in cache-backed audit"
+    },
+    {
+      "key": "portal",
+      "local": [
+        64,
+        60,
+        0
+      ],
+      "world": [
+        10432,
+        124,
+        0
+      ],
+      "existing_hook": "cinderworks exit/return",
+      "status": "implemented",
+      "orientation": "preserve actual source",
+      "interaction_position": "nearest reachable adjacent tile; verified in cache-backed audit"
+    },
+    {
+      "key": "imp-spawn",
+      "local": [
+        72,
+        72,
+        0
+      ],
+      "world": [
+        10440,
+        136,
+        0
+      ],
+      "existing_hook": "Boss::Imp [68,68]\u2013[75,75]",
+      "status": "implemented",
+      "orientation": "preserve actual source",
+      "interaction_position": "nearest reachable adjacent tile; verified in cache-backed audit"
+    },
+    {
+      "key": "warden-spawn",
+      "local": [
+        56,
+        72,
+        0
+      ],
+      "world": [
+        10424,
+        136,
+        0
+      ],
+      "existing_hook": "Boss::Warden [50,67]\u2013[62,77]",
+      "status": "implemented",
+      "orientation": "preserve actual source",
+      "interaction_position": "nearest reachable adjacent tile; verified in cache-backed audit"
+    },
+    {
+      "key": "coolant-0",
+      "local": [
+        53,
+        71,
+        0
+      ],
+      "world": [
+        10421,
+        135,
+        0
+      ],
+      "existing_hook": "COOLANT_TILES / Warden shell interruption",
+      "status": "implemented",
+      "orientation": "preserve actual source",
+      "interaction_position": "nearest reachable adjacent tile; verified in cache-backed audit"
+    },
+    {
+      "key": "coolant-1",
+      "local": [
+        53,
+        74,
+        0
+      ],
+      "world": [
+        10421,
+        138,
+        0
+      ],
+      "existing_hook": "COOLANT_TILES / Warden shell interruption",
+      "status": "implemented",
+      "orientation": "preserve actual source",
+      "interaction_position": "nearest reachable adjacent tile; verified in cache-backed audit"
+    },
+    {
+      "key": "coolant-2",
+      "local": [
+        60,
+        71,
+        0
+      ],
+      "world": [
+        10428,
+        135,
+        0
+      ],
+      "existing_hook": "COOLANT_TILES / Warden shell interruption",
+      "status": "implemented",
+      "orientation": "preserve actual source",
+      "interaction_position": "nearest reachable adjacent tile; verified in cache-backed audit"
+    },
+    {
+      "key": "coolant-3",
+      "local": [
+        60,
+        74,
+        0
+      ],
+      "world": [
+        10428,
+        138,
+        0
+      ],
+      "existing_hook": "COOLANT_TILES / Warden shell interruption",
+      "status": "implemented",
+      "orientation": "preserve actual source",
+      "interaction_position": "nearest reachable adjacent tile; verified in cache-backed audit"
+    },
+    {
+      "key": "tree-0",
+      "local": [
+        34,
+        70,
+        0
+      ],
+      "world": [
+        10402,
+        134,
+        0
+      ],
+      "existing_hook": "existing woodcutting; no new objective invented",
+      "status": "existing",
+      "orientation": "preserve actual source",
+      "interaction_position": "nearest reachable adjacent tile; verified in cache-backed audit"
+    },
+    {
+      "key": "tree-1",
+      "local": [
+        42,
+        70,
+        0
+      ],
+      "world": [
+        10410,
+        134,
+        0
+      ],
+      "existing_hook": "existing woodcutting; no new objective invented",
+      "status": "existing",
+      "orientation": "preserve actual source",
+      "interaction_position": "nearest reachable adjacent tile; verified in cache-backed audit"
+    },
+    {
+      "key": "tree-2",
+      "local": [
+        34,
+        76,
+        0
+      ],
+      "world": [
+        10402,
+        140,
+        0
+      ],
+      "existing_hook": "existing woodcutting; no new objective invented",
+      "status": "existing",
+      "orientation": "preserve actual source",
+      "interaction_position": "nearest reachable adjacent tile; verified in cache-backed audit"
+    },
+    {
+      "key": "tree-3",
+      "local": [
+        42,
+        76,
+        0
+      ],
+      "world": [
+        10410,
+        140,
+        0
+      ],
+      "existing_hook": "existing woodcutting; no new objective invented",
+      "status": "existing",
+      "orientation": "preserve actual source",
+      "interaction_position": "nearest reachable adjacent tile; verified in cache-backed audit"
+    }
+  ],
+  "mandatory": [
+    "Forge a bronze dagger in the western workshop",
+    "Cook shrimp at the eastern range",
+    "Offer bones at the sanctuary altar",
+    "Defeat Imp after all services",
+    "Quench/defeat Warden after Imp",
+    "Collect existing reward; use existing portal"
+  ],
+  "optional": [
+    "Slate extraction dressing and processing inspection",
+    "Grove exploration and woodcutting",
+    "Both southern resource combat yards",
+    "Maintenance loops around Imp and Warden",
+    "Additional fishing/cooking supplies"
+  ],
+  "traversal": [
+    "A",
+    "B",
+    "C",
+    "D1",
+    "A",
+    "D2",
+    "F1",
+    "S",
+    "F2",
+    "A",
+    "F3",
+    "G",
+    "H1",
+    "H2"
+  ],
+  "traversal_note": "One review route covering all areas, not a new enforced objective order. The three preparation services remain available in any order.",
+  "collision_plan": [
+    "Use authoritative server shell and real cache clipping as baseline.",
+    "Keep every arena movement/hazard tile and every required interaction approach free of new blockers.",
+    "Stamp custom collision through ordinary LocationType footprints, with compound supports only where needed.",
+    "Validate reachability against actual prepared collision after placement, not just a drawn plan.",
+    "Keep foreground walls low and preserve all existing thresholds.",
+    "Water retains existing blocked terrain and real crossings; no painted walkable water."
+  ],
+  "prop_plan": {
+    "A": {
+      "families": [
+        "cut-corner masonry",
+        "supported doorframes",
+        "hearth",
+        "service alcoves"
+      ],
+      "policy": "Group by physical production flow, keep clear route through center, preserve all functional anchors"
+    },
+    "B": {
+      "families": [
+        "plate mill",
+        "anvil bench",
+        "stock bins",
+        "flue",
+        "aligned drive machinery"
+      ],
+      "policy": "Group by physical production flow, keep clear route through center, preserve all functional anchors"
+    },
+    "C": {
+      "families": [
+        "cut slate wall",
+        "braced rock face",
+        "ore cart",
+        "rails",
+        "processing chute"
+      ],
+      "policy": "Group by physical production flow, keep clear route through center, preserve all functional anchors"
+    },
+    "D1": {
+      "families": [
+        "damp masonry",
+        "root pockets",
+        "broken pipe",
+        "weathered supports"
+      ],
+      "policy": "Group by physical production flow, keep clear route through center, preserve all functional anchors"
+    },
+    "D2": {
+      "families": [
+        "pump",
+        "pipe network",
+        "sluice frame",
+        "quay rails",
+        "cooking shelter"
+      ],
+      "policy": "Group by physical production flow, keep clear route through center, preserve all functional anchors"
+    },
+    "E": {
+      "families": [
+        "paired piers",
+        "pressure manifold",
+        "heat markers",
+        "ventilation frame"
+      ],
+      "policy": "Group by physical production flow, keep clear route through center, preserve all functional anchors"
+    },
+    "F1": {
+      "families": [
+        "ruined stock shed",
+        "ash deposits",
+        "feeding infrastructure"
+      ],
+      "policy": "Group by physical production flow, keep clear route through center, preserve all functional anchors"
+    },
+    "F2": {
+      "families": [
+        "low rubble boundary",
+        "stock bays",
+        "damaged hoist"
+      ],
+      "policy": "Group by physical production flow, keep clear route through center, preserve all functional anchors"
+    },
+    "F3": {
+      "families": [
+        "boiler banks",
+        "vent collars",
+        "ash collection",
+        "maintenance rails"
+      ],
+      "policy": "Group by physical production flow, keep clear route through center, preserve all functional anchors"
+    },
+    "G": {
+      "families": [
+        "three furnace mouths",
+        "segmented arches",
+        "buttresses",
+        "quench headers"
+      ],
+      "policy": "Group by physical production flow, keep clear route through center, preserve all functional anchors"
+    },
+    "H1": {
+      "families": [
+        "original chest surround",
+        "completion masonry"
+      ],
+      "policy": "Group by physical production flow, keep clear route through center, preserve all functional anchors"
+    },
+    "H2": {
+      "families": [
+        "framed departure arch",
+        "wayfinding floor bonds"
+      ],
+      "policy": "Group by physical production flow, keep clear route through center, preserve all functional anchors"
+    },
+    "S": {
+      "families": [
+        "load-bearing arcades",
+        "low foreground edges",
+        "utility conduit"
+      ],
+      "policy": "Group by physical production flow, keep clear route through center, preserve all functional anchors"
+    }
+  },
+  "asset_dependencies": {
+    "reuse_original": [
+      "improved anvil",
+      "plate mill",
+      "clamping workstation",
+      "mechanical pump",
+      "segmented archway"
+    ],
+    "new_original": [
+      "modular bonded wall",
+      "piers and capitals",
+      "doorframe and gate shell",
+      "drain and flanged pipe kit",
+      "furnace bank",
+      "slate headwall",
+      "ore cart and rails",
+      "waterworks railing",
+      "reward chest surround",
+      "service signs",
+      "rubble and moss variants"
+    ],
+    "protected_runtime_only": [
+      "existing cache terrain",
+      "existing functional objects and authorized NPC placeholders"
+    ]
+  },
+  "new_proposals": [
+    "Industrial production flow from slate working face through rail stock to mill and furnace.",
+    "Connected original flues and water supply/return infrastructure.",
+    "Distinct room silhouettes and coherent architectural kit layered around fixed gameplay positions."
+  ],
+  "source_recovery": {
+    "current_rule_source": "tower_run.rs (three services plus guardians/reward)",
+    "historical_reference": "FloorOneRules.kt eleven-row diary; historical, not substituted for current Rust lifecycle",
+    "source_files": {
+      "crates/world/src/tower_layout.rs": "278dda7c548fead16046fefde2cd58dccc3836499ac1f4868b90b4a3dd74be27",
+      "crates/world/src/tower_run.rs": "866731f081e8f9ec5ca391cfa87a38412a21283295f7975c4e46e39abb57ca14",
+      "crates/world/src/tower_arrival.rs": "7911d0560c18b6ec83d176ae4afecc145dd285b52d1fc83f7452036bc695959e",
+      "crates/world/src/tower_scenery.rs": "e22f7c815afb38e2db3135c28584e7a8c46af2c49860f8ea06d553572c947811",
+      "crates/world/src/tower_cinderworks.rs": "4421517b21466ed66446faa03c4233852c62969d35f19e2079d25f78cc1e3422",
+      "crates/world/src/cinderworks_encounter.rs": "f0d294ee59a6f385f0a95384e222d8af952b5dcff55b5f4a2e1cb90abcb7cc95",
+      "crates/server/src/tower_map.rs": "71b8811622e953ae0c33078448c0fae956a4c1b8d599540f7f10f6101c75251f",
+      "crates/cache/src/tower_shell.rs": "b5b34ad57e7141d9632dcf3b2c9c78e5891bb7c6e66a9ab9953e3728f67a472f"
+    }
+  }
+}

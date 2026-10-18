@@ -1,0 +1,9 @@
+{
+  "name": "slate-headwall",
+  "vertices": 200,
+  "triangles": 300,
+  "seconds": 0.05074370000511408,
+  "source": "Preserved improved authoring functions and original environment kit",
+  "native_units_per_tile": 128,
+  "static_only": true
+}

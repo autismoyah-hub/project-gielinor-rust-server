@@ -1,0 +1,26 @@
+[
+  {
+    "stage": "05-furnace-ash",
+    "reachable_tiles": 1944,
+    "review_route_steps": 276,
+    "all_rooms_and_anchor_approaches_reachable": true,
+    "all_protected_original_placements_unchanged": true,
+    "combat_cardinal_edges_exact": true
+  },
+  {
+    "stage": "06-boss-reward",
+    "reachable_tiles": 1940,
+    "review_route_steps": 276,
+    "all_rooms_and_anchor_approaches_reachable": true,
+    "all_protected_original_placements_unchanged": true,
+    "combat_cardinal_edges_exact": true
+  },
+  {
+    "stage": "07-whole-floor-refinement",
+    "reachable_tiles": 1940,
+    "review_route_steps": 276,
+    "all_rooms_and_anchor_approaches_reachable": true,
+    "all_protected_original_placements_unchanged": true,
+    "combat_cardinal_edges_exact": true
+  }
+]

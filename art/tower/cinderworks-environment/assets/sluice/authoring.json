@@ -1,0 +1,9 @@
+{
+  "name": "sluice",
+  "vertices": 812,
+  "triangles": 1216,
+  "seconds": 0.1320494000101462,
+  "source": "Preserved improved authoring functions and original environment kit",
+  "native_units_per_tile": 128,
+  "static_only": true
+}

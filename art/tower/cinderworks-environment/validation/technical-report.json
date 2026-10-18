@@ -1,0 +1,241 @@
+{
+  "status": "Integrated environment review candidate; not artistically approved or production ready",
+  "source_bases": {
+    "server": "6771dee2cdec2abca702b4504449f63ef76eadbc",
+    "client": "3049aa30268bc2c73da65536671dfcbb6ab429b6"
+  },
+  "floor_tiles": [
+    48,
+    48
+  ],
+  "rooms": 13,
+  "reachable_tiles": 1940,
+  "anchor_approaches": 25,
+  "new_asset_families": 26,
+  "new_placement_contracts": 105,
+  "actual_native_object_count": 671,
+  "missing_native_objects": [],
+  "original_object_instances": 541,
+  "original_triangles_instanced_estimate": 286542,
+  "floor_scene_renderer": {
+    "mode": "gpu",
+    "enhanced": true,
+    "total_ms": 641.524,
+    "frames": 20,
+    "stats": {
+      "frames": 20,
+      "triangles": 321263,
+      "draw_calls": 5,
+      "prepare_ms": 2.4555,
+      "render_ms": 3.665,
+      "readback_ms": 3.4014,
+      "gpu_ms": 0.8407,
+      "buffer_bytes": 53972184,
+      "target_bytes": 30629836,
+      "texture_bytes": 13828096,
+      "uploads": 2,
+      "init_ms": 314.4587,
+      "adapter": "NVIDIA GeForce GTX 1660 Ti"
+    }
+  },
+  "native_traversal": {
+    "visited_named_areas": 12,
+    "successful_segments": 55,
+    "failed_segments": 0,
+    "actual_ordinary_client_walking": true,
+    "all_review_rooms_traversed": true
+  },
+  "existing_live_hooks": [
+    {
+      "hook": "Existing plaque begins run1 and supplies normal tools",
+      "position": [
+        0,
+        10422,
+        115
+      ],
+      "ordinary_native_action": true,
+      "outcome": "journal run1; at least six tool slots visible"
+    },
+    {
+      "hook": "Existing bank booth operation2",
+      "outcome": "Native bank interface12 opened",
+      "position": [
+        0,
+        10421,
+        123
+      ]
+    },
+    {
+      "hook": "Existing Pray operation",
+      "outcome": "Fresh Prayer response observed",
+      "position": [
+        0,
+        10427,
+        116
+      ]
+    },
+    {
+      "hook": "Existing reward chest before victory",
+      "outcome": "Fresh response; inventory unchanged, no reward granted",
+      "position": [
+        0,
+        10424,
+        115
+      ],
+      "messages": [
+        "Restore services in any order: forge a dagger west, cook shrimp at the river, and offer bones at the altar. Search the waterworks barrel to learn coolant."
+      ]
+    },
+    {
+      "hook": "Existing portal exit and return",
+      "outside": [
+        0,
+        3224,
+        3218
+      ],
+      "return": [
+        0,
+        10424,
+        120
+      ],
+      "inventory_and_journal_preserved": true
+    }
+  ],
+  "combat_eight_direction_cases_identical": 1656,
+  "custom_solid_footprints_verified": 55,
+  "native_server_collision_differences": 14,
+  "asset_reproducibility": {
+    "count": 26,
+    "all_saved_source_exports_exact": true,
+    "all_native_decodes_exact": true,
+    "all_fresh_oriented_surfaces_and_materials_exact": true,
+    "all_fresh_native_bytes_exact": false,
+    "fresh_byte_differences": [
+      "furnace-bank",
+      "ore-cart",
+      "moss-fern",
+      "workstation"
+    ],
+    "note": "Fresh oriented surface/material equality is checked separately from byte equality; any Blender tessellation ordering difference is exposed rather than hidden."
+  },
+  "live_mode_measurements": [
+    {
+      "mode": "classic",
+      "session": "native-20261018-133457-classic",
+      "frames": 256,
+      "frame_period_ms": {
+        "median": 255.57399999999961,
+        "p95": 361.9269999999997
+      },
+      "frame_work_mean_ms": 265.30473828125,
+      "failed_frames": 0,
+      "persistence_checks": {
+        "position": true,
+        "items": true,
+        "equipment": true,
+        "xp": true,
+        "journal": true
+      },
+      "capture_sequence": 9,
+      "scope": "Same sanctuary tile, camera 2000/0, 1280x900, same real account/database. Owned isolated server normally drained/restarted between modes after direct reconnect admission failed. Rolling trace after warmup; not a multi-room FPS guarantee.",
+      "stage_mean_ms": {
+        "network_ms": 16.986738281250002,
+        "scripts_ms": 136.83406640625,
+        "world_ms": 105.93255078125,
+        "ui_ms": 2.37854296875,
+        "present_ms": 3.17283984375
+      },
+      "adapter": "CPU Classic rasterizer"
+    },
+    {
+      "mode": "lite",
+      "session": "native-20261018-133626-lite",
+      "frames": 256,
+      "frame_period_ms": {
+        "median": 214.34400000000096,
+        "p95": 281.3689999999988
+      },
+      "frame_work_mean_ms": 211.0391796875,
+      "failed_frames": 0,
+      "persistence_checks": {
+        "position": true,
+        "items": true,
+        "equipment": true,
+        "xp": true,
+        "journal": true
+      },
+      "capture_sequence": 16,
+      "scope": "Same sanctuary tile, camera 2000/0, 1280x900, same real account/database. Owned isolated server normally drained/restarted between modes after direct reconnect admission failed. Rolling trace after warmup; not a multi-room FPS guarantee.",
+      "renderer": {
+        "frames": 240,
+        "triangles": 323187,
+        "draw_calls": 5,
+        "prepare_ms": 3.2496,
+        "render_ms": 20.4245,
+        "readback_ms": 20.3077,
+        "gpu_ms": 12.9039,
+        "buffer_bytes": 54295416,
+        "target_bytes": 28408576,
+        "texture_bytes": 3457024,
+        "uploads": 242,
+        "init_ms": 195.9186,
+        "adapter": "Intel(R) UHD Graphics"
+      },
+      "stage_mean_ms": {
+        "network_ms": 20.64290234375,
+        "scripts_ms": 118.8609375,
+        "world_ms": 66.89803515625,
+        "ui_ms": 2.07891796875,
+        "present_ms": 2.55838671875
+      },
+      "adapter": "Intel(R) UHD Graphics"
+    },
+    {
+      "mode": "gpu",
+      "session": "native-20261018-133739-gpu",
+      "frames": 256,
+      "frame_period_ms": {
+        "median": 214.05599999999686,
+        "p95": 311.72000000000116
+      },
+      "frame_work_mean_ms": 214.8443828125,
+      "failed_frames": 0,
+      "persistence_checks": {
+        "position": true,
+        "items": true,
+        "equipment": true,
+        "xp": true,
+        "journal": true
+      },
+      "capture_sequence": 16,
+      "scope": "Same sanctuary tile, camera 2000/0, 1280x900, same real account/database. Owned isolated server normally drained/restarted between modes after direct reconnect admission failed. Rolling trace after warmup; not a multi-room FPS guarantee.",
+      "renderer": {
+        "frames": 240,
+        "triangles": 323187,
+        "draw_calls": 5,
+        "prepare_ms": 3.251,
+        "render_ms": 18.9845,
+        "readback_ms": 18.9549,
+        "gpu_ms": 13.2114,
+        "buffer_bytes": 54295416,
+        "target_bytes": 58249216,
+        "texture_bytes": 13828096,
+        "uploads": 242,
+        "init_ms": 344.7404,
+        "adapter": "NVIDIA GeForce GTX 1660 Ti"
+      },
+      "stage_mean_ms": {
+        "network_ms": 26.3661875,
+        "scripts_ms": 114.7213125,
+        "world_ms": 68.7118828125,
+        "ui_ms": 2.2546171875,
+        "present_ms": 2.7903828125
+      },
+      "adapter": "NVIDIA GeForce GTX 1660 Ti"
+    }
+  ],
+  "performance_limit": "No smooth-play target met. These are full-client frame periods, not the much shorter GPU kernel times or initialization-inclusive offline averages. Test modes ran sequentially on one consumer PC, not a controlled multi-device benchmark. CPU/client profiling and visibility work remain.",
+  "original_blend_bytes": 2875020,
+  "native_conversion_losses": "Integer vertices, per-face 6/3/7-bit HSL colors; no PBR roughness/normal maps, no skin labels, no authored animation; non-flat normals supported by existing renderer. Original author colors are quantized.",
+  "renderer_handoff": "Core unchanged: src/enhanced.rs and src/enhanced/d3d11.rs. Windows D3D11 GPU/Lite, smooth normals, shadowmap, SSAO and edge AA. GDI readback/presentation remains. No PBR, dynamic furnace lights, new water reflection or volumetrics."
+}

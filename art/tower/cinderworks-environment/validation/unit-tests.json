@@ -1,0 +1,11 @@
+{
+  "command": "cargo test --offline -p gielinor-server --lib cinderworks_environment::tests",
+  "passed": 2,
+  "failed": 0,
+  "tests": [
+    "refuses_duplicates_and_unowned_namespaces",
+    "exact_encounter_extents_are_reserved"
+  ],
+  "private_log_sha256": "c11baa64ecc6387ec308658d0bbf3fe2e2e362b4c5dbf02710ddb826db0c6850",
+  "python_compileall": "All15 environment-production Python tools compiled without errors"
+}

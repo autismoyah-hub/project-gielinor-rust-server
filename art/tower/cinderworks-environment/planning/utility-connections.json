@@ -1,0 +1,40 @@
+{
+  "ore_flow": [
+    "worked-slate-face",
+    "loaded-slate-cart",
+    "ore-track-north",
+    "ore-track-south",
+    "mill-feed-line"
+  ],
+  "rail_gauge_units": 96,
+  "mill_and_rail_world_centre_x": 10409,
+  "water_connection": {
+    "pump_anchor": [
+      68,
+      61
+    ],
+    "pump_port_author": [
+      119,
+      -18,
+      73
+    ],
+    "return_anchor": [
+      70,
+      62
+    ],
+    "return_port_author": [
+      -265,
+      -82,
+      73
+    ],
+    "endpoint_local_fine_xz": [
+      8951,
+      7918
+    ],
+    "native_pump_ground": -240,
+    "native_return_ground": 0,
+    "return_model_y_offset": -240,
+    "expected_matching_port_native_y": -313,
+    "height_status": "Matched using actual native height-grid samples; final render and native scene inspection remain required."
+  }
+}

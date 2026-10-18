@@ -1,0 +1,306 @@
+{
+  "components": [
+    {
+      "name": "furnace footing",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "firebrick jamb",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "firebrick jamb.001",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "firebrick jamb.002",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "firebrick jamb.003",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "firebrick jamb.004",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "firebrick jamb.005",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "furnace footing.001",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "firebrick jamb.006",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "firebrick jamb.007",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "firebrick jamb.008",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "firebrick jamb.009",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "firebrick jamb.010",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "firebrick jamb.011",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "rear firebox wall",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "deep hearth",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "radial furnace voussoir",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "radial furnace voussoir.001",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "radial furnace voussoir.002",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "radial furnace voussoir.003",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "radial furnace voussoir.004",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "radial furnace voussoir.005",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "radial furnace voussoir.006",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "radial furnace voussoir.007",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "radial furnace voussoir.008",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "hearth grate",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "hearth grate.001",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "hearth grate.002",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "hearth grate.003",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "hearth grate.004",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "banked coal",
+      "vertices": 26,
+      "triangles": 48,
+      "group": 0
+    },
+    {
+      "name": "banked coal.001",
+      "vertices": 26,
+      "triangles": 48,
+      "group": 0
+    },
+    {
+      "name": "banked coal.002",
+      "vertices": 26,
+      "triangles": 48,
+      "group": 0
+    },
+    {
+      "name": "banked coal.003",
+      "vertices": 26,
+      "triangles": 48,
+      "group": 0
+    },
+    {
+      "name": "banked coal.004",
+      "vertices": 26,
+      "triangles": 48,
+      "group": 0
+    },
+    {
+      "name": "banked coal.005",
+      "vertices": 26,
+      "triangles": 48,
+      "group": 0
+    },
+    {
+      "name": "banked coal.006",
+      "vertices": 26,
+      "triangles": 48,
+      "group": 0
+    },
+    {
+      "name": "riveted extraction hood",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "upper flue",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "hood knee brace",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "hood knee brace.001",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "hood rivet",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "hood rivet.001",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "hood rivet.002",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "hood rivet.003",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "hood rivet.004",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "hood rivet.005",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "hood rivet.006",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    }
+  ],
+  "quantization_max_error": 0.5,
+  "collapsed_triangles": 0,
+  "uv_loops": 4456,
+  "material_conversion": "UV image albedo sampled at triangle centroid, otherwise diffuse color; RGB to 6/3/7-bit HSL. No PBR/normal/roughness transfer.",
+  "texture_image_samples": 0,
+  "vertices": 1374,
+  "triangles": 2554,
+  "budget": {
+    "soft_vertices": 12000,
+    "soft_triangles": 20000
+  },
+  "coordinates": "X right, Y down, Z depth; 128 units/tile",
+  "face_priority": 0,
+  "alpha": 0
+}

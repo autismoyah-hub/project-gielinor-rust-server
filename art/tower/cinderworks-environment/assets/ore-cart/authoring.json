@@ -1,0 +1,9 @@
+{
+  "name": "ore-cart",
+  "vertices": 1332,
+  "triangles": 2012,
+  "seconds": 0.21817320000263862,
+  "source": "Preserved improved authoring functions and original environment kit",
+  "native_units_per_tile": 128,
+  "static_only": true
+}

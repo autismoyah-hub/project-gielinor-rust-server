@@ -1,0 +1,9 @@
+{
+  "name": "paving-bond",
+  "vertices": 280,
+  "triangles": 420,
+  "seconds": 0.11474920000182465,
+  "source": "Preserved improved authoring functions and original environment kit",
+  "native_units_per_tile": 128,
+  "static_only": true
+}

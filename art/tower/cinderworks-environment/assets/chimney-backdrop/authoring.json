@@ -1,0 +1,9 @@
+{
+  "name": "chimney-backdrop",
+  "vertices": 856,
+  "triangles": 1468,
+  "seconds": 0.10533200000645593,
+  "source": "Preserved improved authoring functions and original environment kit",
+  "native_units_per_tile": 128,
+  "static_only": true
+}

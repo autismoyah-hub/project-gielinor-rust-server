@@ -1,0 +1,9 @@
+{
+  "name": "ash-rubble",
+  "vertices": 98,
+  "triangles": 168,
+  "seconds": 0.04840869997860864,
+  "source": "Preserved improved authoring functions and original environment kit",
+  "native_units_per_tile": 128,
+  "static_only": true
+}

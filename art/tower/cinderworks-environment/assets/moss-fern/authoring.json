@@ -1,0 +1,9 @@
+{
+  "name": "moss-fern",
+  "vertices": 310,
+  "triangles": 447,
+  "seconds": 0.07779139999183826,
+  "source": "Preserved improved authoring functions and original environment kit",
+  "native_units_per_tile": 128,
+  "static_only": true
+}

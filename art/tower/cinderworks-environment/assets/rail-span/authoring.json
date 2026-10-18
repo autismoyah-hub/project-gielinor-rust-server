@@ -1,0 +1,9 @@
+{
+  "name": "rail-span",
+  "vertices": 576,
+  "triangles": 628,
+  "seconds": 0.06553589997929521,
+  "source": "Preserved improved authoring functions and original environment kit",
+  "native_units_per_tile": 128,
+  "static_only": true
+}

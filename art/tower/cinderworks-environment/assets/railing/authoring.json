@@ -1,0 +1,9 @@
+{
+  "name": "railing",
+  "vertices": 352,
+  "triangles": 528,
+  "seconds": 0.05835430001025088,
+  "source": "Preserved improved authoring functions and original environment kit",
+  "native_units_per_tile": 128,
+  "static_only": true
+}

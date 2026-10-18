@@ -81,7 +81,12 @@ pub fn prepare(
         locations,
         definitions,
     )?;
-    let palette = gielinor_world::tower_scenery::MASONRY;
+    let environment = std::env::var_os("TOWER_CINDERWORKS_ENVIRONMENT");
+    let palette = if environment.is_some() {
+        [64700, 64701]
+    } else {
+        gielinor_world::tower_scenery::MASONRY
+    };
     for id in palette {
         let ty = definitions
             .locations
@@ -235,7 +240,7 @@ pub fn prepare(
         0,
         definitions,
     )?;
-    if std::env::var_os("TOWER_ASSET_PACKAGE").is_some() {
+    if std::env::var_os("TOWER_ASSET_PACKAGE").is_some() && environment.is_none() {
         // Experimental compound collision: open visual object plus ordinary
         // single-tile ground-location clipping underneath each stone column.
         for (x,z,angle) in [(54,40,0),(60,38,1)] {
@@ -245,6 +250,11 @@ pub fn prepare(
             }
         }
         shell.stamp_shaped(origin.translate(52,40,0).unwrap(),7016,10,0,definitions)?;
+    }
+    if let Some(path) = environment {
+        crate::cinderworks_environment::apply(
+            &mut shell, origin, definitions, std::path::Path::new(&path),
+        )?;
     }
     Ok(shell)
 }

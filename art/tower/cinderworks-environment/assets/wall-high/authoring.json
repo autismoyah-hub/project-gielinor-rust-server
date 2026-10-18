@@ -1,0 +1,9 @@
+{
+  "name": "wall-high",
+  "vertices": 312,
+  "triangles": 440,
+  "seconds": 0.1049193000071682,
+  "source": "Preserved improved authoring functions and original environment kit",
+  "native_units_per_tile": 128,
+  "static_only": true
+}

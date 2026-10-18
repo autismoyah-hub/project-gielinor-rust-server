@@ -1,0 +1,14 @@
+{
+  "count": 26,
+  "all_saved_source_exports_exact": true,
+  "all_native_decodes_exact": true,
+  "all_fresh_oriented_surfaces_and_materials_exact": true,
+  "all_fresh_native_bytes_exact": false,
+  "fresh_byte_differences": [
+    "furnace-bank",
+    "ore-cart",
+    "moss-fern",
+    "workstation"
+  ],
+  "note": "Fresh oriented surface/material equality is checked separately from byte equality; any Blender tessellation ordering difference is exposed rather than hidden."
+}

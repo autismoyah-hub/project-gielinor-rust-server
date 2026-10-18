@@ -1,0 +1,761 @@
+{
+  "expected_server_objects": 671,
+  "native_live_objects": 671,
+  "missing_expected_objects": [],
+  "compared_collision_tiles": 2304,
+  "collision_differences": [
+    [
+      35,
+      61,
+      256,
+      0
+    ],
+    [
+      38,
+      61,
+      131328,
+      131072
+    ],
+    [
+      52,
+      78,
+      131328,
+      0
+    ],
+    [
+      53,
+      60,
+      1073742080,
+      0
+    ],
+    [
+      53,
+      78,
+      131328,
+      0
+    ],
+    [
+      55,
+      78,
+      131328,
+      131072
+    ],
+    [
+      57,
+      78,
+      131328,
+      131072
+    ],
+    [
+      57,
+      79,
+      132354,
+      132098
+    ],
+    [
+      62,
+      77,
+      4104,
+      0
+    ],
+    [
+      62,
+      78,
+      131328,
+      131072
+    ],
+    [
+      62,
+      79,
+      132354,
+      132098
+    ],
+    [
+      63,
+      77,
+      69768,
+      4104
+    ],
+    [
+      71,
+      76,
+      131328,
+      0
+    ],
+    [
+      72,
+      76,
+      131328,
+      0
+    ]
+  ],
+  "scene_inspection_sequence": 578,
+  "scope": "Exact live-client versus prepared-server flags on2304floor tiles. Difference cause and whether present in a live baseline are unproven. Custom solid footprint checks and protected arena movement equality are separate tests.",
+  "affected_source_objects": [
+    {
+      "local": [
+        35,
+        61
+      ],
+      "world": [
+        10403,
+        125,
+        0
+      ],
+      "server_flags": 256,
+      "client_flags": 0,
+      "xor": 256,
+      "nearby_objects": [
+        {
+          "local": [
+            35,
+            62
+          ],
+          "id": 380,
+          "shape": 10,
+          "angle": 0
+        },
+        {
+          "local": [
+            35,
+            61
+          ],
+          "id": 11360,
+          "shape": 10,
+          "angle": 0
+        }
+      ]
+    },
+    {
+      "local": [
+        38,
+        61
+      ],
+      "world": [
+        10406,
+        125,
+        0
+      ],
+      "server_flags": 131328,
+      "client_flags": 131072,
+      "xor": 256,
+      "nearby_objects": [
+        {
+          "local": [
+            38,
+            61
+          ],
+          "id": 568,
+          "shape": 10,
+          "angle": 0
+        },
+        {
+          "local": [
+            39,
+            62
+          ],
+          "id": 64709,
+          "shape": 10,
+          "angle": 0
+        }
+      ]
+    },
+    {
+      "local": [
+        52,
+        78
+      ],
+      "world": [
+        10420,
+        142,
+        0
+      ],
+      "server_flags": 131328,
+      "client_flags": 0,
+      "xor": 131328,
+      "nearby_objects": [
+        {
+          "local": [
+            51,
+            79
+          ],
+          "id": 64700,
+          "shape": 0,
+          "angle": 1
+        },
+        {
+          "local": [
+            52,
+            79
+          ],
+          "id": 64700,
+          "shape": 0,
+          "angle": 1
+        },
+        {
+          "local": [
+            53,
+            79
+          ],
+          "id": 64700,
+          "shape": 0,
+          "angle": 1
+        },
+        {
+          "local": [
+            51,
+            78
+          ],
+          "id": 18526,
+          "shape": 10,
+          "angle": 1
+        }
+      ]
+    },
+    {
+      "local": [
+        53,
+        60
+      ],
+      "world": [
+        10421,
+        124,
+        0
+      ],
+      "server_flags": 1073742080,
+      "client_flags": 0,
+      "xor": 1073742080,
+      "nearby_objects": [
+        {
+          "local": [
+            53,
+            60
+          ],
+          "id": 18491,
+          "shape": 10,
+          "angle": 0
+        }
+      ]
+    },
+    {
+      "local": [
+        53,
+        78
+      ],
+      "world": [
+        10421,
+        142,
+        0
+      ],
+      "server_flags": 131328,
+      "client_flags": 0,
+      "xor": 131328,
+      "nearby_objects": [
+        {
+          "local": [
+            52,
+            79
+          ],
+          "id": 64700,
+          "shape": 0,
+          "angle": 1
+        },
+        {
+          "local": [
+            53,
+            79
+          ],
+          "id": 64700,
+          "shape": 0,
+          "angle": 1
+        },
+        {
+          "local": [
+            54,
+            78
+          ],
+          "id": 64700,
+          "shape": 0,
+          "angle": 3
+        },
+        {
+          "local": [
+            54,
+            79
+          ],
+          "id": 64700,
+          "shape": 0,
+          "angle": 1
+        },
+        {
+          "local": [
+            54,
+            78
+          ],
+          "id": 64702,
+          "shape": 10,
+          "angle": 0
+        }
+      ]
+    },
+    {
+      "local": [
+        55,
+        78
+      ],
+      "world": [
+        10423,
+        142,
+        0
+      ],
+      "server_flags": 131328,
+      "client_flags": 131072,
+      "xor": 256,
+      "nearby_objects": [
+        {
+          "local": [
+            54,
+            78
+          ],
+          "id": 64700,
+          "shape": 0,
+          "angle": 3
+        },
+        {
+          "local": [
+            54,
+            79
+          ],
+          "id": 64700,
+          "shape": 0,
+          "angle": 1
+        },
+        {
+          "local": [
+            55,
+            79
+          ],
+          "id": 64700,
+          "shape": 0,
+          "angle": 1
+        },
+        {
+          "local": [
+            56,
+            79
+          ],
+          "id": 64700,
+          "shape": 0,
+          "angle": 1
+        },
+        {
+          "local": [
+            55,
+            78
+          ],
+          "id": 18526,
+          "shape": 10,
+          "angle": 1
+        },
+        {
+          "local": [
+            54,
+            78
+          ],
+          "id": 64702,
+          "shape": 10,
+          "angle": 0
+        }
+      ]
+    },
+    {
+      "local": [
+        57,
+        78
+      ],
+      "world": [
+        10425,
+        142,
+        0
+      ],
+      "server_flags": 131328,
+      "client_flags": 131072,
+      "xor": 256,
+      "nearby_objects": [
+        {
+          "local": [
+            56,
+            79
+          ],
+          "id": 64700,
+          "shape": 0,
+          "angle": 1
+        },
+        {
+          "local": [
+            57,
+            79
+          ],
+          "id": 64700,
+          "shape": 0,
+          "angle": 1
+        },
+        {
+          "local": [
+            58,
+            78
+          ],
+          "id": 64700,
+          "shape": 0,
+          "angle": 3
+        },
+        {
+          "local": [
+            58,
+            79
+          ],
+          "id": 64700,
+          "shape": 0,
+          "angle": 1
+        }
+      ]
+    },
+    {
+      "local": [
+        57,
+        79
+      ],
+      "world": [
+        10425,
+        143,
+        0
+      ],
+      "server_flags": 132354,
+      "client_flags": 132098,
+      "xor": 256,
+      "nearby_objects": [
+        {
+          "local": [
+            56,
+            79
+          ],
+          "id": 64700,
+          "shape": 0,
+          "angle": 1
+        },
+        {
+          "local": [
+            57,
+            79
+          ],
+          "id": 64700,
+          "shape": 0,
+          "angle": 1
+        },
+        {
+          "local": [
+            58,
+            78
+          ],
+          "id": 64700,
+          "shape": 0,
+          "angle": 3
+        },
+        {
+          "local": [
+            58,
+            79
+          ],
+          "id": 64700,
+          "shape": 0,
+          "angle": 1
+        }
+      ]
+    },
+    {
+      "local": [
+        62,
+        77
+      ],
+      "world": [
+        10430,
+        141,
+        0
+      ],
+      "server_flags": 4104,
+      "client_flags": 0,
+      "xor": 4104,
+      "nearby_objects": [
+        {
+          "local": [
+            63,
+            76
+          ],
+          "id": 64700,
+          "shape": 0,
+          "angle": 0
+        },
+        {
+          "local": [
+            63,
+            77
+          ],
+          "id": 64700,
+          "shape": 0,
+          "angle": 0
+        },
+        {
+          "local": [
+            63,
+            78
+          ],
+          "id": 64723,
+          "shape": 10,
+          "angle": 0
+        }
+      ]
+    },
+    {
+      "local": [
+        62,
+        78
+      ],
+      "world": [
+        10430,
+        142,
+        0
+      ],
+      "server_flags": 131328,
+      "client_flags": 131072,
+      "xor": 256,
+      "nearby_objects": [
+        {
+          "local": [
+            61,
+            79
+          ],
+          "id": 64700,
+          "shape": 0,
+          "angle": 1
+        },
+        {
+          "local": [
+            62,
+            79
+          ],
+          "id": 64700,
+          "shape": 0,
+          "angle": 1
+        },
+        {
+          "local": [
+            63,
+            77
+          ],
+          "id": 64700,
+          "shape": 0,
+          "angle": 0
+        },
+        {
+          "local": [
+            63,
+            79
+          ],
+          "id": 64700,
+          "shape": 0,
+          "angle": 1
+        },
+        {
+          "local": [
+            63,
+            78
+          ],
+          "id": 64723,
+          "shape": 10,
+          "angle": 0
+        }
+      ]
+    },
+    {
+      "local": [
+        62,
+        79
+      ],
+      "world": [
+        10430,
+        143,
+        0
+      ],
+      "server_flags": 132354,
+      "client_flags": 132098,
+      "xor": 256,
+      "nearby_objects": [
+        {
+          "local": [
+            61,
+            79
+          ],
+          "id": 64700,
+          "shape": 0,
+          "angle": 1
+        },
+        {
+          "local": [
+            62,
+            79
+          ],
+          "id": 64700,
+          "shape": 0,
+          "angle": 1
+        },
+        {
+          "local": [
+            63,
+            79
+          ],
+          "id": 64700,
+          "shape": 0,
+          "angle": 1
+        },
+        {
+          "local": [
+            63,
+            78
+          ],
+          "id": 64723,
+          "shape": 10,
+          "angle": 0
+        }
+      ]
+    },
+    {
+      "local": [
+        63,
+        77
+      ],
+      "world": [
+        10431,
+        141,
+        0
+      ],
+      "server_flags": 69768,
+      "client_flags": 4104,
+      "xor": 65664,
+      "nearby_objects": [
+        {
+          "local": [
+            63,
+            76
+          ],
+          "id": 64700,
+          "shape": 0,
+          "angle": 0
+        },
+        {
+          "local": [
+            63,
+            77
+          ],
+          "id": 64700,
+          "shape": 0,
+          "angle": 0
+        },
+        {
+          "local": [
+            64,
+            76
+          ],
+          "id": 64700,
+          "shape": 0,
+          "angle": 0
+        },
+        {
+          "local": [
+            64,
+            77
+          ],
+          "id": 64700,
+          "shape": 0,
+          "angle": 0
+        },
+        {
+          "local": [
+            64,
+            78
+          ],
+          "id": 64700,
+          "shape": 0,
+          "angle": 0
+        },
+        {
+          "local": [
+            63,
+            78
+          ],
+          "id": 64723,
+          "shape": 10,
+          "angle": 0
+        }
+      ]
+    },
+    {
+      "local": [
+        71,
+        76
+      ],
+      "world": [
+        10439,
+        140,
+        0
+      ],
+      "server_flags": 131328,
+      "client_flags": 0,
+      "xor": 131328,
+      "nearby_objects": [
+        {
+          "local": [
+            70,
+            76
+          ],
+          "id": 64700,
+          "shape": 0,
+          "angle": 3
+        },
+        {
+          "local": [
+            71,
+            76
+          ],
+          "id": 18526,
+          "shape": 10,
+          "angle": 1
+        }
+      ]
+    },
+    {
+      "local": [
+        72,
+        76
+      ],
+      "world": [
+        10440,
+        140,
+        0
+      ],
+      "server_flags": 131328,
+      "client_flags": 0,
+      "xor": 131328,
+      "nearby_objects": [
+        {
+          "local": [
+            71,
+            76
+          ],
+          "id": 18526,
+          "shape": 10,
+          "angle": 1
+        }
+      ]
+    }
+  ]
+}

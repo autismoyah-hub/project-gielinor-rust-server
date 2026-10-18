@@ -1,0 +1,582 @@
+{
+  "wall-high": {
+    "object_id": 64700,
+    "model_id": 1220000,
+    "size": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "source": "assets/wall-high",
+    "vertices": 312,
+    "triangles": 440,
+    "model_sha256": "f45345aed05f40976627398743ae21254fa8af6cf65f58173693eafd89d97af7",
+    "shapes": [
+      0,
+      2
+    ],
+    "rotation_convention": "quarter turns, existing native placement transform",
+    "animation_anchor": null,
+    "gameplay_hook": null,
+    "interaction": "Decorative original scenery; existing functional objects remain separate",
+    "instances": 302,
+    "material_colors": 8
+  },
+  "wall-low": {
+    "object_id": 64701,
+    "model_id": 1220001,
+    "size": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "source": "assets/wall-low",
+    "vertices": 120,
+    "triangles": 204,
+    "model_sha256": "e4b9b3abae841d9a06056b058a92d7cba27e40019d8662394d049780287d7882",
+    "shapes": [
+      0,
+      2
+    ],
+    "rotation_convention": "quarter turns, existing native placement transform",
+    "animation_anchor": null,
+    "gameplay_hook": null,
+    "interaction": "Decorative original scenery; existing functional objects remain separate",
+    "instances": 134,
+    "material_colors": 6
+  },
+  "pier": {
+    "object_id": 64702,
+    "model_id": 1220002,
+    "size": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "source": "assets/pier",
+    "vertices": 728,
+    "triangles": 1308,
+    "model_sha256": "c208fc0ea256c0a55502160115fe0e2a73d9d75336b5eb1058e5cdfff0a21faa",
+    "shapes": [
+      10
+    ],
+    "rotation_convention": "quarter turns, existing native placement transform",
+    "animation_anchor": null,
+    "gameplay_hook": null,
+    "interaction": "Decorative original scenery; existing functional objects remain separate",
+    "instances": 19,
+    "material_colors": 3
+  },
+  "arch": {
+    "object_id": 64703,
+    "model_id": 1220003,
+    "size": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "source": "assets/arch",
+    "vertices": 3166,
+    "triangles": 5800,
+    "model_sha256": "4e72484f5d406beb83d94d42d4ec5348e37723b8cdece9eb9c1827f832d86fb5",
+    "shapes": [
+      10
+    ],
+    "rotation_convention": "quarter turns, existing native placement transform",
+    "animation_anchor": null,
+    "gameplay_hook": null,
+    "interaction": "Decorative original scenery; existing functional objects remain separate",
+    "instances": 8,
+    "material_colors": 11
+  },
+  "furnace-bank": {
+    "object_id": 64704,
+    "model_id": 1220004,
+    "size": [
+      3,
+      2
+    ],
+    "blocking": true,
+    "source": "assets/furnace-bank",
+    "vertices": 1374,
+    "triangles": 2554,
+    "model_sha256": "f610364f9a6bd7adc8f57e125ca27ca64b123ebbdd898090a887aca9400d61e3",
+    "shapes": [
+      10
+    ],
+    "rotation_convention": "quarter turns, existing native placement transform",
+    "animation_anchor": null,
+    "gameplay_hook": null,
+    "interaction": "Decorative original scenery; existing functional objects remain separate",
+    "instances": 1,
+    "material_colors": 6
+  },
+  "water-main": {
+    "object_id": 64705,
+    "model_id": 1220005,
+    "size": [
+      1,
+      2
+    ],
+    "blocking": true,
+    "source": "assets/water-main",
+    "vertices": 472,
+    "triangles": 876,
+    "model_sha256": "c4d666ad0fce54b05e11acfc889a00fd2459340e25744cc57cec5adcff4f0000",
+    "shapes": [
+      10
+    ],
+    "rotation_convention": "quarter turns, existing native placement transform",
+    "animation_anchor": null,
+    "gameplay_hook": null,
+    "interaction": "Decorative original scenery; existing functional objects remain separate",
+    "instances": 0,
+    "material_colors": 4
+  },
+  "pipe-elbow": {
+    "object_id": 64706,
+    "model_id": 1220006,
+    "size": [
+      2,
+      2
+    ],
+    "blocking": true,
+    "source": "assets/pipe-elbow",
+    "vertices": 508,
+    "triangles": 948,
+    "model_sha256": "178ddb21ad9842a34f4e94d5d031b828f540155ba428ac9fa3cfd3ac92bc507b",
+    "shapes": [
+      10
+    ],
+    "rotation_convention": "quarter turns, existing native placement transform",
+    "animation_anchor": null,
+    "gameplay_hook": null,
+    "interaction": "Decorative original scenery; existing functional objects remain separate",
+    "instances": 0,
+    "material_colors": 4
+  },
+  "rail-span": {
+    "object_id": 64707,
+    "model_id": 1220007,
+    "size": [
+      2,
+      2
+    ],
+    "blocking": false,
+    "source": "assets/rail-span",
+    "vertices": 576,
+    "triangles": 628,
+    "model_sha256": "af0e000d82fc33bdfe0b5fc619acfd3cb46620cb116ca66e37406132dece481b",
+    "shapes": [
+      10,
+      22
+    ],
+    "rotation_convention": "quarter turns, existing native placement transform",
+    "animation_anchor": null,
+    "gameplay_hook": null,
+    "interaction": "Decorative original scenery; existing functional objects remain separate",
+    "instances": 2,
+    "material_colors": 4
+  },
+  "ore-cart": {
+    "object_id": 64708,
+    "model_id": 1220008,
+    "size": [
+      2,
+      2
+    ],
+    "blocking": true,
+    "source": "assets/ore-cart",
+    "vertices": 1332,
+    "triangles": 2012,
+    "model_sha256": "82737f4fc13b42a1cd6312b183235433800017fe0de87fd6d34e8506ddcd99ce",
+    "shapes": [
+      10
+    ],
+    "rotation_convention": "quarter turns, existing native placement transform",
+    "animation_anchor": null,
+    "gameplay_hook": null,
+    "interaction": "Decorative original scenery; existing functional objects remain separate",
+    "instances": 1,
+    "material_colors": 4
+  },
+  "slate-headwall": {
+    "object_id": 64709,
+    "model_id": 1220009,
+    "size": [
+      3,
+      1
+    ],
+    "blocking": true,
+    "source": "assets/slate-headwall",
+    "vertices": 200,
+    "triangles": 300,
+    "model_sha256": "05a5dba8fffa4a48d2580441604db0df2c62efaa08c729896544b59444662083",
+    "shapes": [
+      10
+    ],
+    "rotation_convention": "quarter turns, existing native placement transform",
+    "animation_anchor": null,
+    "gameplay_hook": null,
+    "interaction": "Decorative original scenery; existing functional objects remain separate",
+    "instances": 1,
+    "material_colors": 3
+  },
+  "railing": {
+    "object_id": 64710,
+    "model_id": 1220010,
+    "size": [
+      2,
+      1
+    ],
+    "blocking": true,
+    "source": "assets/railing",
+    "vertices": 352,
+    "triangles": 528,
+    "model_sha256": "c7c26f68808480e3b1474232f480482462b87c00432ff8d47da48574ba27d7eb",
+    "shapes": [
+      10
+    ],
+    "rotation_convention": "quarter turns, existing native placement transform",
+    "animation_anchor": null,
+    "gameplay_hook": null,
+    "interaction": "Decorative original scenery; existing functional objects remain separate",
+    "instances": 0,
+    "material_colors": 2
+  },
+  "sluice": {
+    "object_id": 64711,
+    "model_id": 1220011,
+    "size": [
+      2,
+      1
+    ],
+    "blocking": true,
+    "source": "assets/sluice",
+    "vertices": 812,
+    "triangles": 1216,
+    "model_sha256": "f57c4c2f053acdd9dde7b7c0edc6a881a85aedc18840aa109b8014822b956308",
+    "shapes": [
+      10
+    ],
+    "rotation_convention": "quarter turns, existing native placement transform",
+    "animation_anchor": null,
+    "gameplay_hook": null,
+    "interaction": "Decorative original scenery; existing functional objects remain separate",
+    "instances": 1,
+    "material_colors": 5
+  },
+  "stock-crate": {
+    "object_id": 64712,
+    "model_id": 1220012,
+    "size": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "source": "assets/stock-crate",
+    "vertices": 1008,
+    "triangles": 1496,
+    "model_sha256": "675435e0fb545971c8be02aaa9e996ea7ad944dbc1b19dbfa013f77e66184ebd",
+    "shapes": [
+      10
+    ],
+    "rotation_convention": "quarter turns, existing native placement transform",
+    "animation_anchor": null,
+    "gameplay_hook": null,
+    "interaction": "Decorative original scenery; existing functional objects remain separate",
+    "instances": 8,
+    "material_colors": 3
+  },
+  "tool-rack": {
+    "object_id": 64713,
+    "model_id": 1220013,
+    "size": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "source": "assets/tool-rack",
+    "vertices": 556,
+    "triangles": 860,
+    "model_sha256": "bea8574e55f33b56c6d1e2379f62606ad68a1ccbec107f299fb41a327479ae34",
+    "shapes": [
+      10
+    ],
+    "rotation_convention": "quarter turns, existing native placement transform",
+    "animation_anchor": null,
+    "gameplay_hook": null,
+    "interaction": "Decorative original scenery; existing functional objects remain separate",
+    "instances": 2,
+    "material_colors": 3
+  },
+  "moss-fern": {
+    "object_id": 64714,
+    "model_id": 1220014,
+    "size": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "source": "assets/moss-fern",
+    "vertices": 310,
+    "triangles": 447,
+    "model_sha256": "7ce6e4976f78ecde759da2713c7382cfc81aa50f2958108fb18c6f11f2f48173",
+    "shapes": [
+      10,
+      22
+    ],
+    "rotation_convention": "quarter turns, existing native placement transform",
+    "animation_anchor": null,
+    "gameplay_hook": null,
+    "interaction": "Decorative original scenery; existing functional objects remain separate",
+    "instances": 12,
+    "material_colors": 2
+  },
+  "ash-rubble": {
+    "object_id": 64715,
+    "model_id": 1220015,
+    "size": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "source": "assets/ash-rubble",
+    "vertices": 98,
+    "triangles": 168,
+    "model_sha256": "f84342a122ae0b92c31c357efebc92037c5de43e522f420ddc94451905e09dfe",
+    "shapes": [
+      10,
+      22
+    ],
+    "rotation_convention": "quarter turns, existing native placement transform",
+    "animation_anchor": null,
+    "gameplay_hook": null,
+    "interaction": "Decorative original scenery; existing functional objects remain separate",
+    "instances": 13,
+    "material_colors": 2
+  },
+  "paving-bond": {
+    "object_id": 64716,
+    "model_id": 1220016,
+    "size": [
+      2,
+      2
+    ],
+    "blocking": false,
+    "source": "assets/paving-bond",
+    "vertices": 280,
+    "triangles": 420,
+    "model_sha256": "b00e276ad9b563c807804fb361987b49cfb4964a9cabdc2cc75071e2e9439243",
+    "shapes": [
+      10,
+      22
+    ],
+    "rotation_convention": "quarter turns, existing native placement transform",
+    "animation_anchor": null,
+    "gameplay_hook": null,
+    "interaction": "Decorative original scenery; existing functional objects remain separate",
+    "instances": 11,
+    "material_colors": 6
+  },
+  "reward-surround": {
+    "object_id": 64717,
+    "model_id": 1220017,
+    "size": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "source": "assets/reward-surround",
+    "vertices": 664,
+    "triangles": 1284,
+    "model_sha256": "b61d3411e5c4fda43942ba7f87e8cddfc3079df4254551937def6feb649df465",
+    "shapes": [
+      10
+    ],
+    "rotation_convention": "quarter turns, existing native placement transform",
+    "animation_anchor": null,
+    "gameplay_hook": null,
+    "interaction": "Decorative original scenery; existing functional objects remain separate",
+    "instances": 1,
+    "material_colors": 3
+  },
+  "pump": {
+    "object_id": 64718,
+    "model_id": 1220018,
+    "size": [
+      2,
+      2
+    ],
+    "blocking": true,
+    "source": "assets/pump",
+    "vertices": 2600,
+    "triangles": 4817,
+    "model_sha256": "4f6f96de1e25b7c9f430b7468cea03ed816c434adbebd085157cf1c85fcb328a",
+    "shapes": [
+      10
+    ],
+    "rotation_convention": "quarter turns, existing native placement transform",
+    "animation_anchor": null,
+    "gameplay_hook": null,
+    "interaction": "Decorative original scenery; existing functional objects remain separate",
+    "instances": 1,
+    "material_colors": 7
+  },
+  "plate-mill": {
+    "object_id": 64719,
+    "model_id": 1220019,
+    "size": [
+      2,
+      2
+    ],
+    "blocking": true,
+    "source": "assets/plate-mill",
+    "vertices": 2304,
+    "triangles": 4155,
+    "model_sha256": "1f7122146791385143b0a931451dc8e272cddec790debc4bc021bcb7be3eca3e",
+    "shapes": [
+      10
+    ],
+    "rotation_convention": "quarter turns, existing native placement transform",
+    "animation_anchor": null,
+    "gameplay_hook": null,
+    "interaction": "Decorative original scenery; existing functional objects remain separate",
+    "instances": 1,
+    "material_colors": 8
+  },
+  "workstation": {
+    "object_id": 64720,
+    "model_id": 1220020,
+    "size": [
+      2,
+      1
+    ],
+    "blocking": true,
+    "source": "assets/workstation",
+    "vertices": 2456,
+    "triangles": 4576,
+    "model_sha256": "e6c8f49c8f93990b65250f6c99301b2ab1d337b092c9946b2a6497bfa56d20d4",
+    "shapes": [
+      10
+    ],
+    "rotation_convention": "quarter turns, existing native placement transform",
+    "animation_anchor": null,
+    "gameplay_hook": null,
+    "interaction": "Decorative original scenery; existing functional objects remain separate",
+    "instances": 1,
+    "material_colors": 7
+  },
+  "water-return": {
+    "object_id": 64721,
+    "model_id": 1220021,
+    "size": [
+      4,
+      1
+    ],
+    "blocking": true,
+    "source": "assets/water-return",
+    "vertices": 544,
+    "triangles": 992,
+    "model_sha256": "b4430a3c7839d08e0847bb509615f48758df419be02516f2fb0f678b76bdb9d9",
+    "shapes": [
+      10
+    ],
+    "rotation_convention": "quarter turns, existing native placement transform",
+    "animation_anchor": null,
+    "gameplay_hook": null,
+    "interaction": "Decorative original scenery; existing functional objects remain separate",
+    "instances": 1,
+    "material_colors": 3
+  },
+  "arch-foot": {
+    "object_id": 64722,
+    "model_id": 1220022,
+    "size": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "source": "assets/arch-foot",
+    "vertices": 56,
+    "triangles": 108,
+    "model_sha256": "ced4cb548cd0451c77ba12834e718077463c387340830eaa781d9f97afd398aa",
+    "shapes": [
+      10
+    ],
+    "rotation_convention": "quarter turns, existing native placement transform",
+    "animation_anchor": null,
+    "gameplay_hook": null,
+    "interaction": "Decorative original scenery; existing functional objects remain separate",
+    "instances": 16,
+    "material_colors": 1
+  },
+  "chimney-backdrop": {
+    "object_id": 64723,
+    "model_id": 1220023,
+    "size": [
+      1,
+      1
+    ],
+    "blocking": true,
+    "source": "assets/chimney-backdrop",
+    "vertices": 856,
+    "triangles": 1468,
+    "model_sha256": "6c0a200f4a988222063b6d478ac7ba1afaee233f164bf57e73974c9cfb4ba1b4",
+    "shapes": [
+      10
+    ],
+    "rotation_convention": "quarter turns, existing native placement transform",
+    "animation_anchor": null,
+    "gameplay_hook": null,
+    "interaction": "Decorative original scenery; existing functional objects remain separate",
+    "instances": 2,
+    "material_colors": 4
+  },
+  "arrival-inlay": {
+    "object_id": 64724,
+    "model_id": 1220024,
+    "size": [
+      1,
+      1
+    ],
+    "blocking": false,
+    "source": "assets/arrival-inlay",
+    "vertices": 272,
+    "triangles": 472,
+    "model_sha256": "45195257d58785b3c2f2c2b47ccaa52a39f7c717bd9e1faa147cd5a70b2a53ff",
+    "shapes": [
+      10,
+      22
+    ],
+    "rotation_convention": "quarter turns, existing native placement transform",
+    "animation_anchor": null,
+    "gameplay_hook": null,
+    "interaction": "Decorative original scenery; existing functional objects remain separate",
+    "instances": 2,
+    "material_colors": 4
+  },
+  "hearth-ring": {
+    "object_id": 64725,
+    "model_id": 1220025,
+    "size": [
+      2,
+      2
+    ],
+    "blocking": false,
+    "source": "assets/hearth-ring",
+    "vertices": 256,
+    "triangles": 448,
+    "model_sha256": "8debdef87bc3cc5a1968741c6e3d2eccc47e9d6eb9313cfba8c924c924195d3c",
+    "shapes": [
+      10,
+      22
+    ],
+    "rotation_convention": "quarter turns, existing native placement transform",
+    "animation_anchor": null,
+    "gameplay_hook": null,
+    "interaction": "Decorative original scenery; existing functional objects remain separate",
+    "instances": 1,
+    "material_colors": 3
+  }
+}

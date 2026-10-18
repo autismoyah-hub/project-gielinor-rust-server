@@ -1,0 +1,35 @@
+{
+  "protected_workspaces": {
+    "rust-server": {
+      "head": "f9e4433f2451235805f85fe379d351d095b7535b",
+      "same_head": true,
+      "clean": true
+    },
+    "rust-client-reference": {
+      "head": "ff9cef17fd1ce3ec2ebf8d1181fee31411999c4c",
+      "same_head": true,
+      "clean": true
+    },
+    "enhanced-client": {
+      "head": "3049aa30268bc2c73da65536671dfcbb6ab429b6",
+      "same_head": true,
+      "clean": true
+    },
+    "ashhorn-reference-server": {
+      "head": "6771dee2cdec2abca702b4504449f63ef76eadbc",
+      "same_head": true,
+      "clean": true
+    }
+  },
+  "unchanged_gameplay_source_hashes": {
+    "crates/world/src/tower_layout.rs": true,
+    "crates/world/src/tower_run.rs": true,
+    "crates/world/src/tower_arrival.rs": true,
+    "crates/world/src/tower_scenery.rs": true,
+    "crates/world/src/tower_cinderworks.rs": true,
+    "crates/world/src/cinderworks_encounter.rs": true,
+    "crates/cache/src/tower_shell.rs": true
+  },
+  "intentional_server_changes": "Opt-in environment module and tower_map integration, no gameplay coordinate or rule changes",
+  "protected_cache": "Read-only inputs; no original cache files packaged or written. No new start/end whole-cache digest audit was performed."
+}

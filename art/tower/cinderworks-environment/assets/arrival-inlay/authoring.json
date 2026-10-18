@@ -1,0 +1,9 @@
+{
+  "name": "arrival-inlay",
+  "vertices": 272,
+  "triangles": 472,
+  "seconds": 0.04083169999648817,
+  "source": "Preserved improved authoring functions and original environment kit",
+  "native_units_per_tile": 128,
+  "static_only": true
+}

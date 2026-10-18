@@ -1,0 +1,9 @@
+{
+  "name": "wall-low",
+  "vertices": 120,
+  "triangles": 204,
+  "seconds": 0.038870699994731694,
+  "source": "Preserved improved authoring functions and original environment kit",
+  "native_units_per_tile": 128,
+  "static_only": true
+}

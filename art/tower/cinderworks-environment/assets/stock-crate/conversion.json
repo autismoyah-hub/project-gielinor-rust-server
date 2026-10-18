@@ -1,0 +1,126 @@
+{
+  "components": [
+    {
+      "name": "crate base",
+      "vertices": 56,
+      "triangles": 76,
+      "group": 0
+    },
+    {
+      "name": "crate board",
+      "vertices": 56,
+      "triangles": 92,
+      "group": 0
+    },
+    {
+      "name": "crate board.001",
+      "vertices": 56,
+      "triangles": 44,
+      "group": 0
+    },
+    {
+      "name": "crate board.002",
+      "vertices": 56,
+      "triangles": 92,
+      "group": 0
+    },
+    {
+      "name": "crate board.003",
+      "vertices": 56,
+      "triangles": 92,
+      "group": 0
+    },
+    {
+      "name": "crate board.004",
+      "vertices": 56,
+      "triangles": 44,
+      "group": 0
+    },
+    {
+      "name": "crate board.005",
+      "vertices": 56,
+      "triangles": 92,
+      "group": 0
+    },
+    {
+      "name": "crate end",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "crate end.001",
+      "vertices": 56,
+      "triangles": 76,
+      "group": 0
+    },
+    {
+      "name": "crate end.002",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "crate end.003",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "crate end.004",
+      "vertices": 56,
+      "triangles": 76,
+      "group": 0
+    },
+    {
+      "name": "crate end.005",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "iron crate strap",
+      "vertices": 56,
+      "triangles": 28,
+      "group": 0
+    },
+    {
+      "name": "iron crate strap.001",
+      "vertices": 56,
+      "triangles": 28,
+      "group": 0
+    },
+    {
+      "name": "stored plate",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "stored plate.001",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "stored plate.002",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    }
+  ],
+  "quantization_max_error": 0.5,
+  "collapsed_triangles": 448,
+  "uv_loops": 3888,
+  "material_conversion": "UV image albedo sampled at triangle centroid, otherwise diffuse color; RGB to 6/3/7-bit HSL. No PBR/normal/roughness transfer.",
+  "texture_image_samples": 0,
+  "vertices": 1008,
+  "triangles": 1496,
+  "budget": {
+    "soft_vertices": 12000,
+    "soft_triangles": 20000
+  },
+  "coordinates": "X right, Y down, Z depth; 128 units/tile",
+  "face_priority": 0,
+  "alpha": 0
+}

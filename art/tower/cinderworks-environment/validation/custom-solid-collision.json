@@ -1,0 +1,497 @@
+[
+  {
+    "key": "existing-pier-51-53",
+    "asset": "pier",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "existing-pier-60-53",
+    "asset": "pier",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "existing-pier-51-59",
+    "asset": "pier",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "existing-pier-60-59",
+    "asset": "pier",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "existing-pier-62-62",
+    "asset": "pier",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "existing-pier-52-35",
+    "asset": "pier",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "existing-pier-59-35",
+    "asset": "pier",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "existing-pier-52-41",
+    "asset": "pier",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "existing-pier-59-41",
+    "asset": "pier",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "existing-pier-52-47",
+    "asset": "pier",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "existing-pier-59-47",
+    "asset": "pier",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "existing-pier-70-57",
+    "asset": "pier",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "existing-pier-70-61",
+    "asset": "pier",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "existing-pier-67-68",
+    "asset": "pier",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "existing-pier-76-68",
+    "asset": "pier",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "existing-pier-67-76",
+    "asset": "pier",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "existing-pier-76-76",
+    "asset": "pier",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "existing-pier-54-78",
+    "asset": "pier",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "existing-pier-59-78",
+    "asset": "pier",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "sanctuary-south-foot-0",
+    "asset": "arch-foot",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "sanctuary-south-foot-1",
+    "asset": "arch-foot",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "workshop-threshold-foot-0",
+    "asset": "arch-foot",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "workshop-threshold-foot-1",
+    "asset": "arch-foot",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "waterworks-threshold-foot-0",
+    "asset": "arch-foot",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "waterworks-threshold-foot-1",
+    "asset": "arch-foot",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "sanctuary-north-foot-0",
+    "asset": "arch-foot",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "sanctuary-north-foot-1",
+    "asset": "arch-foot",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "mill-feed-line",
+    "asset": "plate-mill",
+    "footprint": [
+      2,
+      2
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "riveting-bench",
+    "asset": "workstation",
+    "footprint": [
+      2,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "bench-tool-rack",
+    "asset": "tool-rack",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "auxiliary-forge-bank",
+    "asset": "furnace-bank",
+    "footprint": [
+      3,
+      2
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "workshop-stock-45-50",
+    "asset": "stock-crate",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "workshop-stock-39-53",
+    "asset": "stock-crate",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "workshop-stock-46-53",
+    "asset": "stock-crate",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "worked-slate-face",
+    "asset": "slate-headwall",
+    "footprint": [
+      3,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "loaded-slate-cart",
+    "asset": "ore-cart",
+    "footprint": [
+      2,
+      2
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "grove-maintenance-arch-foot-0",
+    "asset": "arch-foot",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "grove-maintenance-arch-foot-1",
+    "asset": "arch-foot",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "headgate-pump",
+    "asset": "pump",
+    "footprint": [
+      2,
+      2
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "pump-return-to-channel",
+    "asset": "water-return",
+    "footprint": [
+      4,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "abandoned-headgate",
+    "asset": "sluice",
+    "footprint": [
+      2,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "range-preparation-tools",
+    "asset": "tool-rack",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "kitchen-stock",
+    "asset": "stock-crate",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "foundry-threshold-foot-0",
+    "asset": "arch-foot",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "foundry-threshold-foot-1",
+    "asset": "arch-foot",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "imp-threshold-foot-0",
+    "asset": "arch-foot",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "imp-threshold-foot-1",
+    "asset": "arch-foot",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "provision-stock-33-40",
+    "asset": "stock-crate",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "provision-stock-46-43",
+    "asset": "stock-crate",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "provision-stock-65-40",
+    "asset": "stock-crate",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "provision-stock-77-38",
+    "asset": "stock-crate",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "western-foundry-stack",
+    "asset": "chimney-backdrop",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "eastern-foundry-stack",
+    "asset": "chimney-backdrop",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "departure-frame-foot-0",
+    "asset": "arch-foot",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  },
+  {
+    "key": "departure-frame-foot-1",
+    "asset": "arch-foot",
+    "footprint": [
+      1,
+      1
+    ],
+    "missing_blocking_tiles": []
+  }
+]

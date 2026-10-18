@@ -1,0 +1,60 @@
+{
+  "components": [
+    {
+      "name": "spalled masonry",
+      "vertices": 14,
+      "triangles": 24,
+      "group": 0
+    },
+    {
+      "name": "spalled masonry.001",
+      "vertices": 14,
+      "triangles": 24,
+      "group": 0
+    },
+    {
+      "name": "spalled masonry.002",
+      "vertices": 14,
+      "triangles": 24,
+      "group": 0
+    },
+    {
+      "name": "spalled masonry.003",
+      "vertices": 14,
+      "triangles": 24,
+      "group": 0
+    },
+    {
+      "name": "spalled masonry.004",
+      "vertices": 14,
+      "triangles": 24,
+      "group": 0
+    },
+    {
+      "name": "spalled masonry.005",
+      "vertices": 14,
+      "triangles": 24,
+      "group": 0
+    },
+    {
+      "name": "spalled masonry.006",
+      "vertices": 14,
+      "triangles": 24,
+      "group": 0
+    }
+  ],
+  "quantization_max_error": 0.5,
+  "collapsed_triangles": 0,
+  "uv_loops": 420,
+  "material_conversion": "UV image albedo sampled at triangle centroid, otherwise diffuse color; RGB to 6/3/7-bit HSL. No PBR/normal/roughness transfer.",
+  "texture_image_samples": 0,
+  "vertices": 98,
+  "triangles": 168,
+  "budget": {
+    "soft_vertices": 12000,
+    "soft_triangles": 20000
+  },
+  "coordinates": "X right, Y down, Z depth; 128 units/tile",
+  "face_priority": 0,
+  "alpha": 0
+}

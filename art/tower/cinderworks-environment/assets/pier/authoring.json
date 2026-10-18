@@ -1,0 +1,9 @@
+{
+  "name": "pier",
+  "vertices": 728,
+  "triangles": 1308,
+  "seconds": 0.08391600000322796,
+  "source": "Preserved improved authoring functions and original environment kit",
+  "native_units_per_tile": 128,
+  "static_only": true
+}

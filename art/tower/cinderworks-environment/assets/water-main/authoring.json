@@ -1,0 +1,9 @@
+{
+  "name": "water-main",
+  "vertices": 472,
+  "triangles": 876,
+  "seconds": 0.09678409999469295,
+  "source": "Preserved improved authoring functions and original environment kit",
+  "native_units_per_tile": 128,
+  "static_only": true
+}

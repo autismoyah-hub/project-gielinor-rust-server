@@ -1,0 +1,9 @@
+{
+  "name": "reward-surround",
+  "vertices": 664,
+  "triangles": 1284,
+  "seconds": 0.1402321000059601,
+  "source": "Preserved improved authoring functions and original environment kit",
+  "native_units_per_tile": 128,
+  "static_only": true
+}

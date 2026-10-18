@@ -1,0 +1,132 @@
+{
+  "components": [
+    {
+      "name": "headgate pier",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "headgate pier.001",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "headgate bridge",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "lifted gate slat",
+      "vertices": 56,
+      "triangles": 44,
+      "group": 0
+    },
+    {
+      "name": "lifted gate slat.001",
+      "vertices": 56,
+      "triangles": 92,
+      "group": 0
+    },
+    {
+      "name": "lifted gate slat.002",
+      "vertices": 56,
+      "triangles": 44,
+      "group": 0
+    },
+    {
+      "name": "lifted gate slat.003",
+      "vertices": 56,
+      "triangles": 92,
+      "group": 0
+    },
+    {
+      "name": "lifted gate slat.004",
+      "vertices": 56,
+      "triangles": 44,
+      "group": 0
+    },
+    {
+      "name": "lifted gate slat.005",
+      "vertices": 56,
+      "triangles": 92,
+      "group": 0
+    },
+    {
+      "name": "lifted gate slat.006",
+      "vertices": 56,
+      "triangles": 44,
+      "group": 0
+    },
+    {
+      "name": "gate iron binding",
+      "vertices": 56,
+      "triangles": 76,
+      "group": 0
+    },
+    {
+      "name": "gate iron binding.001",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "gate screw",
+      "vertices": 20,
+      "triangles": 36,
+      "group": 0
+    },
+    {
+      "name": "headgate control wheel",
+      "vertices": 80,
+      "triangles": 160,
+      "group": 0
+    },
+    {
+      "name": "wheel spoke",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "wheel spoke.001",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "wheel spoke.002",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "wheel spoke.003",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "wheel spoke.004",
+      "vertices": 8,
+      "triangles": 12,
+      "group": 0
+    }
+  ],
+  "quantization_max_error": 0.5,
+  "collapsed_triangles": 336,
+  "uv_loops": 2592,
+  "material_conversion": "UV image albedo sampled at triangle centroid, otherwise diffuse color; RGB to 6/3/7-bit HSL. No PBR/normal/roughness transfer.",
+  "texture_image_samples": 0,
+  "vertices": 812,
+  "triangles": 1216,
+  "budget": {
+    "soft_vertices": 12000,
+    "soft_triangles": 20000
+  },
+  "coordinates": "X right, Y down, Z depth; 128 units/tile",
+  "face_priority": 0,
+  "alpha": 0
+}

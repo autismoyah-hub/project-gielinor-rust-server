@@ -1,0 +1,162 @@
+{
+  "components": [
+    {
+      "name": "continuous pump to water return",
+      "vertices": 72,
+      "triangles": 140,
+      "group": 0
+    },
+    {
+      "name": "return flange",
+      "vertices": 48,
+      "triangles": 96,
+      "group": 0
+    },
+    {
+      "name": "return flange stud",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "return flange stud.001",
+      "vertices": 12,
+      "triangles": 19,
+      "group": 0
+    },
+    {
+      "name": "return flange stud.002",
+      "vertices": 12,
+      "triangles": 19,
+      "group": 0
+    },
+    {
+      "name": "return flange stud.003",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "return flange stud.004",
+      "vertices": 12,
+      "triangles": 19,
+      "group": 0
+    },
+    {
+      "name": "return flange stud.005",
+      "vertices": 12,
+      "triangles": 19,
+      "group": 0
+    },
+    {
+      "name": "return flange.001",
+      "vertices": 48,
+      "triangles": 96,
+      "group": 0
+    },
+    {
+      "name": "return flange stud.006",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "return flange stud.007",
+      "vertices": 12,
+      "triangles": 19,
+      "group": 0
+    },
+    {
+      "name": "return flange stud.008",
+      "vertices": 12,
+      "triangles": 19,
+      "group": 0
+    },
+    {
+      "name": "return flange stud.009",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "return flange stud.010",
+      "vertices": 12,
+      "triangles": 19,
+      "group": 0
+    },
+    {
+      "name": "return flange stud.011",
+      "vertices": 12,
+      "triangles": 19,
+      "group": 0
+    },
+    {
+      "name": "return flange.002",
+      "vertices": 48,
+      "triangles": 96,
+      "group": 0
+    },
+    {
+      "name": "return flange stud.012",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "return flange stud.013",
+      "vertices": 12,
+      "triangles": 19,
+      "group": 0
+    },
+    {
+      "name": "return flange stud.014",
+      "vertices": 12,
+      "triangles": 19,
+      "group": 0
+    },
+    {
+      "name": "return flange stud.015",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "return flange stud.016",
+      "vertices": 12,
+      "triangles": 19,
+      "group": 0
+    },
+    {
+      "name": "return flange stud.017",
+      "vertices": 12,
+      "triangles": 19,
+      "group": 0
+    },
+    {
+      "name": "return pipe support",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "return pipe support.001",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    }
+  ],
+  "quantization_max_error": 0.5,
+  "collapsed_triangles": 12,
+  "uv_loops": 432,
+  "material_conversion": "UV image albedo sampled at triangle centroid, otherwise diffuse color; RGB to 6/3/7-bit HSL. No PBR/normal/roughness transfer.",
+  "texture_image_samples": 0,
+  "vertices": 544,
+  "triangles": 992,
+  "budget": {
+    "soft_vertices": 12000,
+    "soft_triangles": 20000
+  },
+  "coordinates": "X right, Y down, Z depth; 128 units/tile",
+  "face_priority": 0,
+  "alpha": 0
+}

@@ -1,0 +1,9 @@
+{
+  "name": "stock-crate",
+  "vertices": 1008,
+  "triangles": 1496,
+  "seconds": 0.15744519999134354,
+  "source": "Preserved improved authoring functions and original environment kit",
+  "native_units_per_tile": 128,
+  "static_only": true
+}

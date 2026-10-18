@@ -1,0 +1,26 @@
+{
+  "reuse_original": [
+    "improved anvil",
+    "plate mill",
+    "clamping workstation",
+    "mechanical pump",
+    "segmented archway"
+  ],
+  "new_original": [
+    "modular bonded wall",
+    "piers and capitals",
+    "doorframe and gate shell",
+    "drain and flanged pipe kit",
+    "furnace bank",
+    "slate headwall",
+    "ore cart and rails",
+    "waterworks railing",
+    "reward chest surround",
+    "service signs",
+    "rubble and moss variants"
+  ],
+  "protected_runtime_only": [
+    "existing cache terrain",
+    "existing functional objects and authorized NPC placeholders"
+  ]
+}

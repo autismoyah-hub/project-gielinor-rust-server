@@ -1,0 +1,9 @@
+Environment: Grove and lower ash courts still have sparse storytelling; the inherited rectangular circulation and broad material bands remain visible. Preserved functional cache furnaces are visually inconsistent with the new original machinery. Tall chimney/arch occlusion needs wider camera review. No claim of artistic approval.
+
+Gameplay: Existing service/Imp/Warden/reward/persistence rules remain. Five existing hooks and navigation tested; complete skilling/boss/reward, defeat, reconnect grace and crash lifecycle were not accepted as a full loop. Decorative controls have no new behavior.
+
+NPC artwork: Existing authorized placeholders remain. No new models, rigs, animation, AI or combat rotations were created.
+
+Renderer/performance: Enhanced GPU is this environment launcher/review default. Classic and Intel Lite actually load. Full-client pacing is poor at1280x900; do not equate low GPU time with high client FPS. Core renderer/ORACLE parity untouched.
+
+Server/client integration: 14 native/server collision tile differences are disclosed with exact flags. Their cause and baseline status are not proven. All55 custom solid footprints and1656 arena movement cases passed; this does not erase those differences. Direct reconnect hit duplicate-account admission; mode tests used ordinary owned-server drain/restart. Optional external Kronos NPC combat catalog was absent (0 IDs/1file failure).

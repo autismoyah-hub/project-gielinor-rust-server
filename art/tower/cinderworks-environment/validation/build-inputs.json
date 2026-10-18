@@ -1,0 +1,12 @@
+{
+  "generated_java_case_table": {
+    "path": "client/src/data/java-char-case.bin",
+    "bytes": 16702,
+    "sha256": "b8d2d188ac11616e32ea77cef3b95d0c8ba8bb241b5e4bf9e3cf61a11c82cae6",
+    "input": "Unchanged ignored generated input from preserved enhanced-client; not packaged as a newly authored asset"
+  },
+  "blender_version": "5.2.2 LTS",
+  "blender_build_hash": "d13f752e3b9c",
+  "python_version": "3.13",
+  "decoder_sha256": "f6e6e12da1a80f7824c9d90a5254964fdc8d738298417c7dcd51e0793caea7cf"
+}
