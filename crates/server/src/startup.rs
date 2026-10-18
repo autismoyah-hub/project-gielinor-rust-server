@@ -373,6 +373,9 @@ pub fn configure<B: AccountBackend>(
     let dorgesh=crate::content::dorgesh_foods(n("obj"),n("stat"),&runtime.definitions,&mut foods).map_err(io::Error::other)?;
     slot_preserving_foods.extend(dorgesh.selected);
     boost_foods.boosts.extend(dorgesh.boosts);
+    let jangerberries=crate::content::jangerberries(n("obj"),n("stat"),&runtime.definitions,&mut foods).map_err(io::Error::other)?;
+    slot_preserving_foods.insert(jangerberries.item);
+    boost_foods.boosts.insert(jangerberries.item,jangerberries.boosts);
     let mut formula_foods=crate::content::normal_ales(n("obj"),n("stat"),&runtime.definitions,&mut foods).map_err(io::Error::other)?;
     formula_foods.extend(crate::content::sgg_blizzard(n("obj"),n("stat"),&runtime.definitions,&mut foods).map_err(io::Error::other)?);
     formula_foods.extend(crate::content::other_gnome_cocktails(n("obj"),n("stat"),&runtime.definitions,&mut foods).map_err(io::Error::other)?);
@@ -388,6 +391,8 @@ pub fn configure<B: AccountBackend>(
     runtime.configure_foods(held, foods, names.short("seq", "human_eat")?)?;
     runtime.world.food_subtractions.insert(wine_drink.0,vec![wine_drink.1]);
     runtime.world.food_subtractions.extend(flat_drinks.subtractions);
+    runtime.world.food_subtractions.insert(jangerberries.item,jangerberries.subtractions);
+    runtime.world.food_stat_healing.insert(jangerberries.item,jangerberries.healing);
     runtime.world.food_formulas=formula_foods;
     runtime.world.food_healing=healing_foods.healing;
     runtime.world.food_random_healing=random_foods.healing;

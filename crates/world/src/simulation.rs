@@ -935,6 +935,7 @@ pub struct World {
     pub member_foods: std::collections::BTreeSet<i32>,
     pub food_boosts: BTreeMap<i32,Vec<crate::food::StatBoost>>,
     pub food_subtractions: BTreeMap<i32,Vec<crate::food::StatSubtraction>>,
+    pub food_stat_healing: BTreeMap<i32,Vec<crate::food::StatHealing>>,
     pub food_formulas: BTreeMap<i32,crate::food::StatEffects>,
     pub food_energy: BTreeMap<i32,i32>,
     pub food_healing: BTreeMap<i32,crate::food::Healing>,
@@ -1065,6 +1066,7 @@ impl Default for World {
             member_foods: Default::default(),
             food_boosts: BTreeMap::new(),
             food_subtractions: BTreeMap::new(),
+            food_stat_healing: BTreeMap::new(),
             food_formulas: BTreeMap::new(),
             food_energy: BTreeMap::new(),
             food_healing: BTreeMap::new(),
@@ -2143,7 +2145,11 @@ impl World {
                 let mut subtractions=self.food_subtractions.get(&food.id).cloned().unwrap_or_default();
                 if let Some(rule)=self.food_formulas.get(&food.id){let(b,s)=rule.resolve(&p.data.stats,3).map_err(|_|ActionError::InvalidStat)?;boosts.extend(b);subtractions.extend(s);}
                 let boosts=boosts.as_slice();let subtractions=subtractions.as_slice();
-                let eaten = if !subtractions.is_empty() {
+                let restores=self.food_stat_healing.get(&food.id).map(Vec::as_slice).unwrap_or(&[]);
+                let eaten = if !restores.is_empty() {
+                    crate::food::eat_slot_with_stat_healing(food,slot,&mut p.data.inventory,&mut p.data.stats,
+                        &self.object_types,3,self.eating_animation,boosts,subtractions,restores,self.food_random_healing.get(&food.id).copied(),random,|event|emitted.push(event))
+                } else if !subtractions.is_empty() {
                     crate::food::eat_slot_with_secondary_effects(food,slot,&mut p.data.inventory,&mut p.data.stats,
                         &self.object_types,3,self.eating_animation,boosts,subtractions,self.food_random_healing.get(&food.id).copied(),random,|event|emitted.push(event))
                 } else if let Some(&healing)=self.food_random_healing.get(&food.id) {
@@ -4420,6 +4426,15 @@ mod tests {
 
 
 
+
+    #[test]
+    fn queued_jangerberries_share_member_selected_hp_boost_prayer_heal_and_defence_transaction(){
+        let(mut w,actor)=admitted();w.foods.insert(247,crate::food::Edible{id:247,heal:2,delay:3,replacement:None,message:"Berries".into()});w.food_boosts.insert(247,vec![crate::food::StatBoost{skill:0,amount:2},crate::food::StatBoost{skill:2,amount:1}]);w.food_subtractions.insert(247,vec![crate::food::StatSubtraction{skill:1,amount:1}]);w.food_stat_healing.insert(247,vec![crate::food::StatHealing{skill:5,amount:1}]);w.member_foods.insert(247);w.slot_preserving_foods.insert(247);let p=w.players.get_mut(actor.slot as usize).unwrap();for skill in[0,1,2,3,5]{p.data.stats.set_base(skill,99);p.data.stats.set_current(skill,99);}p.data.stats.set_current(3,50);p.data.stats.set_current(5,10);for slot in[0,2]{p.data.inventory.restore_slot(slot,Some(crate::inventory::Item{id:247,count:1,vars:0})).unwrap();}let before=p.data.stats.clone();w.submit(actor,Action::EatItemSlot{slot:2,item:247}).unwrap();w.tick().unwrap();assert_eq!(w.data(actor).unwrap().stats,before);assert_eq!(w.data(actor).unwrap().inventory.get(2).unwrap().id,247);w.players.get_mut(actor.slot as usize).unwrap().member=true;w.submit(actor,Action::EatItemSlot{slot:2,item:247}).unwrap();w.tick().unwrap();let p=w.data(actor).unwrap();assert!(p.inventory.get(2).is_none());assert_eq!(p.inventory.get(0).unwrap().id,247);assert_eq!((p.stats.current(0),p.stats.current(1),p.stats.current(2),p.stats.current(3),p.stats.current(5)),(101,98,100,52,11));for skill in[0,1,2,3,5]{assert_eq!(p.stats.fine_xp(skill),0);}assert!(w.drain_events().iter().any(|e|matches!(e,WorldEvent::Food{event:crate::food::Event::Stat(u),..}if u.skill==5&&u.old==10&&u.level==11)));
+    }
+    #[test]
+    fn queued_late_invalid_food_stat_healing_cannot_publish_earlier_hp_or_fixed_effects(){
+        let(mut w,actor)=admitted();w.foods.insert(247,crate::food::Edible{id:247,heal:2,delay:3,replacement:None,message:"Berries".into()});w.food_boosts.insert(247,vec![crate::food::StatBoost{skill:0,amount:2}]);w.food_subtractions.insert(247,vec![crate::food::StatSubtraction{skill:1,amount:1}]);w.food_stat_healing.insert(247,vec![crate::food::StatHealing{skill:5,amount:1},crate::food::StatHealing{skill:24,amount:1}]);let p=w.players.get_mut(actor.slot as usize).unwrap();p.member=true;p.data.stats.set_base(3,99);p.data.stats.set_current(3,50);p.data.stats.set_current(5,0);p.data.inventory.restore_slot(2,Some(crate::inventory::Item{id:247,count:1,vars:0})).unwrap();let before=(p.data.inventory.slots().to_vec(),p.data.stats.clone());w.submit(actor,Action::EatItemSlot{slot:2,item:247}).unwrap();w.tick().unwrap();let p=w.data(actor).unwrap();assert_eq!(p.inventory.slots(),before.0.as_slice());assert_eq!(p.stats,before.1);assert!(!w.drain_events().iter().any(|e|matches!(e,WorldEvent::Food{..}|WorldEvent::FoodTransition{..})));
+    }
     #[test]
     fn queued_ale_formulas_use_live_base_boost_and_current_drain_without_boost_stacking(){
         let(mut w,actor)=admitted();w.foods.insert(1917,crate::food::Edible{id:1917,heal:1,delay:3,replacement:Some(1919),message:"Ale".into()});w.food_formulas.insert(1917,crate::food::StatEffects{boosts:vec![crate::food::StatFormula{skill:2,percent:2,constant:1}],subtractions:vec![crate::food::StatFormula{skill:0,percent:6,constant:1}]});let p=w.players.get_mut(actor.slot as usize).unwrap();for slot in[0,2]{p.data.inventory.restore_slot(slot,Some(crate::inventory::Item{id:1917,count:1,vars:0})).unwrap();}p.data.stats.set_base(3,99);p.data.stats.set_current(3,50);w.submit(actor,Action::EatItemSlot{slot:2,item:1917}).unwrap();let p=w.players.get_mut(actor.slot as usize).unwrap();for skill in[0,2]{p.data.stats.set_base(skill,99);p.data.stats.set_current(skill,99);}w.tick().unwrap();let p=w.data(actor).unwrap();assert_eq!((p.stats.current(0),p.stats.current(2),p.stats.current(3)),(93,101,51));assert_eq!(p.inventory.get(2).unwrap().id,1919);

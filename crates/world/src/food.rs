@@ -216,6 +216,9 @@ pub struct StatBoost {pub skill:u8,pub amount:i32}
 /// Repeated flat subtraction (alcohol), distinct from a base-capped Drain.
 #[derive(Clone,Copy,Debug,PartialEq,Eq)]
 pub struct StatSubtraction {pub skill:u8,pub amount:i32}
+/// Positive capped non-HP healing; preserves an existing level above base.
+#[derive(Clone,Copy,Debug,PartialEq,Eq)]
+pub struct StatHealing {pub skill:u8,pub amount:i32}
 /// Boosts use live base levels; drains use live current levels at consumption.
 #[derive(Clone,Copy,Debug,PartialEq,Eq)]
 pub struct StatFormula {pub skill:u8,pub percent:u8,pub constant:u8}
@@ -269,7 +272,7 @@ pub fn eat_slot_with_boosts(
     food:&Edible,slot:usize,inventory:&mut Inventory,stats:&mut Stats,
     items:&Catalog,hitpoints:u8,animation:u16,boosts:&[StatBoost],emit:impl FnMut(Event),
 )->Result<bool,stat_ops::Error>{
-    eat_slot_transaction(food,slot,inventory,stats,items,hitpoints,animation,boosts,&[],false,||Ok(food.heal),emit)
+    eat_slot_transaction(food,slot,inventory,stats,items,hitpoints,animation,boosts,&[],&[],false,||Ok(food.heal),emit)
 }
 /// Inclusive healing range; resolved only after the selected item, remainder
 /// and secondary-effect policy have been validated in the transaction.
@@ -295,7 +298,7 @@ pub fn eat_slot_with_random_healing(
     emit: impl FnMut(Event),
 ) -> Result<bool, stat_ops::Error> {
     eat_slot_transaction(food, slot, inventory, stats, items, hitpoints, animation,
-        boosts, &[], true, || healing.roll(random), emit)
+        boosts, &[], &[], true, || healing.roll(random), emit)
 }
 
 
@@ -307,16 +310,30 @@ pub fn eat_slot_with_secondary_effects(
     subtractions:&[StatSubtraction],healing:Option<RandomHealing>,
     random:&mut impl crate::npc::RandomSource,emit:impl FnMut(Event),
 )->Result<bool,stat_ops::Error>{
-    eat_slot_transaction(food,slot,inventory,stats,items,hitpoints,animation,boosts,subtractions,
+    eat_slot_transaction(food,slot,inventory,stats,items,hitpoints,animation,boosts,subtractions,&[],
+        healing.is_some(),||match healing{Some(h)=>h.roll(random),None=>Ok(food.heal)},emit)
+}
+
+/// Capped stat healing joins the same staged HP/boost/subtraction transaction.
+/// Old food APIs retain their behavior and delegate with no healing metadata.
+pub fn eat_slot_with_stat_healing(
+    food:&Edible,slot:usize,inventory:&mut Inventory,stats:&mut Stats,
+    items:&Catalog,hitpoints:u8,animation:u16,boosts:&[StatBoost],
+    subtractions:&[StatSubtraction],restores:&[StatHealing],healing:Option<RandomHealing>,
+    random:&mut impl crate::npc::RandomSource,emit:impl FnMut(Event),
+)->Result<bool,stat_ops::Error>{
+    eat_slot_transaction(food,slot,inventory,stats,items,hitpoints,animation,boosts,subtractions,restores,
         healing.is_some(),||match healing{Some(h)=>h.roll(random),None=>Ok(food.heal)},emit)
 }
 
 fn eat_slot_transaction(
     food:&Edible,slot:usize,inventory:&mut Inventory,stats:&mut Stats,
     items:&Catalog,hitpoints:u8,animation:u16,boosts:&[StatBoost],
-    subtractions:&[StatSubtraction],allow_stack_remainder:bool,resolve_heal:impl FnOnce()->Result<i32,stat_ops::Error>,mut emit:impl FnMut(Event),
+    subtractions:&[StatSubtraction],restores:&[StatHealing],allow_stack_remainder:bool,resolve_heal:impl FnOnce()->Result<i32,stat_ops::Error>,mut emit:impl FnMut(Event),
 )->Result<bool,stat_ops::Error>{
-    if !subtractions.is_empty() {
+    if restores.iter().any(|s|s.amount<0){return Err(stat_ops::Error::NegativeConstant);}
+    if restores.iter().any(|s|s.skill>=24 || s.skill==hitpoints || s.amount>255){return Err(stat_ops::Error::InvalidPercent);}
+    if !subtractions.is_empty() || !restores.is_empty() {
         if inventory.stack!=crate::inventory::StackType::Normal || inventory.placeholders {return Ok(false);}
         if subtractions.iter().any(|s|s.amount<0){return Err(stat_ops::Error::NegativeConstant);}
         if subtractions.iter().any(|s|s.skill>=24 || s.skill==hitpoints || s.amount>255){return Err(stat_ops::Error::InvalidPercent);}
@@ -364,6 +381,9 @@ fn eat_slot_transaction(
     let update = if gain>0 {Some(next_stats.apply(hitpoints,Operation::Add,gain,0,true)?)} else {None};
     let mut secondary=Vec::new();
     for boost in boosts {secondary.push(next_stats.apply(boost.skill,Operation::Boost,boost.amount,0,false)?);}
+    for restore in restores {
+        if restore.amount>0 && (next_stats.current(restore.skill)as u8)<(next_stats.base(restore.skill)as u8){secondary.push(next_stats.apply(restore.skill,Operation::Heal,restore.amount,0,false)?);}
+    }
     for subtraction in subtractions {secondary.push(next_stats.apply(subtraction.skill,Operation::Subtract,subtraction.amount,0,false)?);}
     *inventory = next_inventory;
     *stats = next_stats;
@@ -670,5 +690,10 @@ mod random_healing_tests {
         let policy=StatEffects{boosts:vec![StatFormula{skill:2,percent:2,constant:1}],subtractions:vec![StatFormula{skill:0,percent:6,constant:1}]};let mut stats=Stats::default();stats.set_base(0,99);stats.set_base(2,99);stats.set_current(2,110);
         for(current,want)in[(0,1),(10,1),(16,1),(17,2),(50,4),(99,6),(100,7),(255,16)]{stats.set_current(0,current as u8 as i8);let(b,s)=policy.resolve(&stats,3).unwrap();assert_eq!(b[0].amount,2);assert_eq!(s[0].amount,want);}
         stats.set_base(0,1);stats.set_current(0,99);assert_eq!(policy.resolve(&stats,3).unwrap().1[0].amount,6);
+    }
+
+    #[test]
+    fn capped_food_stat_healing_policy_and_inventory_refuse_before_rng_or_any_effect(){
+        let f=Edible{id:247,heal:2,delay:3,replacement:None,message:"Berries".into()};for mode in 0..9{let mut inv=Inventory::new(1,if mode==6{StackType::Always}else{StackType::Normal},mode==7);inv.restore_slot(0,Some(Item{id:247,count:1,vars:if mode==4{1}else{0}})).unwrap();let mut stats=Stats::default();stats.set_base(3,99);stats.set_current(3,50);stats.set_base(5,99);stats.set_current(5,0);let mut catalog=Catalog::default();if mode==5{catalog.dummy.insert(247);}if mode==8{catalog.stackable.insert(247);}let bad=match mode{0=>StatHealing{skill:5,amount:-1},1=>StatHealing{skill:24,amount:1},2=>StatHealing{skill:3,amount:1},3=>StatHealing{skill:5,amount:256},_=>StatHealing{skill:5,amount:1}};let before=(inv.clone(),stats.clone());let result=eat_slot_with_stat_healing(&f,0,&mut inv,&mut stats,&catalog,3,829,&[StatBoost{skill:0,amount:2}],&[StatSubtraction{skill:1,amount:1}],&[StatHealing{skill:5,amount:1},bad],Some(RandomHealing{minimum:1,maximum:3}),&mut NoFoodDraw,|_|panic!("effect on rejected food healing"));assert!(!matches!(result,Ok(true)));assert_eq!((inv,stats),before);}
     }
 }
