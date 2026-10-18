@@ -782,3 +782,8 @@ path=OUT/'reference-cooking-gauntlets/comparison.json'
 if path.exists():
     result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PASS_REFERENCE_FACTS'
     add('OR-MIG-0133',result['tested_sha'],'V4','IN_PROGRESS',result['scope']+' '+'; '.join(result['limitations']),[path.relative_to(ROOT).as_posix()],scope='cooking-gauntlets-reference-facts')
+
+path=OUT/'crafting-cape-v1-acceptance-correction.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='IN_PROGRESS'
+    add('OR-MIG-0130',result['tested_sha'],'V1','IN_PROGRESS',result['scope'],[path.relative_to(ROOT).as_posix()],scope='crafting-cape-v1-acceptance-correction')

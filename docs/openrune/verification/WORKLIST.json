@@ -24741,10 +24741,10 @@
             ]
           },
           "V1": {
-            "status": "PASS",
-            "reason": "Both Crafting cape variants through public World action: base99/current0-1-50-98-99-100-104-120; member/F2P and rates1/1.25/5; repeated drained+1 capped100 without lowering higher levels. WholebaggearStats/fineXP unchanged except permitted currentCrafting. Late member/base/claimedslot/currentidentity/count/vars/catalog/dummy/stack/templates/modal/delay/HP/pendinglogout and invalid registered rule refusals. Actual queued death refuses even after visibleHP is restored. Shared timer expiry and non-extension on repeat; valid action cancels actual pendingRuneCraft only after admission, refused action preserves completion. Zero RNG throughout. Delay guard tested while delay remains active; no permanent cancellation claimed.; All publicAPI fixtures; native menus/equip/expiry/persistence/reference remain separate levels.; Crafting12 has no ChangeStat tutorial binding at this SHA, so notification queue-capacity refusal is not an applicable reachable boundary for these actual cape rules. No private trigger queue injection or future-rule acceptance claimed.; Four expiry cases retain first raw QA clock-convention failure and corrected exact-SHA rerun via the linked assessment.",
+            "status": "IN_PROGRESS",
+            "reason": "Withdraw previously published V1PASS:164authoritativeWorld cases remain passing, but full contract V1 additionally requires synthetic runtime button claims/remove/teleport separation and F2P guild entry independent from member Boost. Those were omitted from the aggregate acceptance mapping; no claim of completeV1 until independently tested.",
             "evidence": [
-              "docs/openrune/verification/independent/crafting-cape-world-v1-complete.json"
+              "docs/openrune/verification/independent/crafting-cape-v1-acceptance-correction.json"
             ]
           },
           "V2": {
@@ -29409,10 +29409,10 @@
           ]
         },
         "V1": {
-          "status": "PASS",
-          "reason": "Both Crafting cape variants through public World action: base99/current0-1-50-98-99-100-104-120; member/F2P and rates1/1.25/5; repeated drained+1 capped100 without lowering higher levels. WholebaggearStats/fineXP unchanged except permitted currentCrafting. Late member/base/claimedslot/currentidentity/count/vars/catalog/dummy/stack/templates/modal/delay/HP/pendinglogout and invalid registered rule refusals. Actual queued death refuses even after visibleHP is restored. Shared timer expiry and non-extension on repeat; valid action cancels actual pendingRuneCraft only after admission, refused action preserves completion. Zero RNG throughout. Delay guard tested while delay remains active; no permanent cancellation claimed.; All publicAPI fixtures; native menus/equip/expiry/persistence/reference remain separate levels.; Crafting12 has no ChangeStat tutorial binding at this SHA, so notification queue-capacity refusal is not an applicable reachable boundary for these actual cape rules. No private trigger queue injection or future-rule acceptance claimed.; Four expiry cases retain first raw QA clock-convention failure and corrected exact-SHA rerun via the linked assessment.",
+          "status": "IN_PROGRESS",
+          "reason": "Withdraw previously published V1PASS:164authoritativeWorld cases remain passing, but full contract V1 additionally requires synthetic runtime button claims/remove/teleport separation and F2P guild entry independent from member Boost. Those were omitted from the aggregate acceptance mapping; no claim of completeV1 until independently tested.",
           "evidence": [
-            "docs/openrune/verification/independent/crafting-cape-world-v1-complete.json"
+            "docs/openrune/verification/independent/crafting-cape-v1-acceptance-correction.json"
           ]
         },
         "V2": {
@@ -29572,7 +29572,7 @@
       "food-negative"
     ],
     "next_eligible_contract": "OR-MIG-0126",
-    "next_action": "Exact126bd1294 V0/V1PASS:2238World/APIcases+359bindingrefusals. Preserve successful actual500MindDaeyalt/sameaccountordinarycontinuation and native125rateBLOCKED (pinnedFloorOneforces500). Six new126native produce/restart campaigns all independently PASS: F2P2Daeyaltrefusals,no fallback; reachedClose;reachedMove1tile;TCPdisconnectoneatomicbatch atboundary(no cancellation timing claim);unsavedownedservertermination restoresprior28essence;ordinaryF2PRune/Pure224runes. Next5fresh prepared unexecuted126nativeAir/Water/Earth/Fire/Body Daeyaltpriority/secondordinary/emptythird. Then5prepared130nativeBoost/trimmed/F2P/drained/expiry at7d2133; exactserverbuilt, V1PASS164Worldcases+55cachebindingrefusals. Queue144records133IDs at2d9fb40 validated/read;13112referencehashes/PG-REF-003provenanceclarification,132twohashes/133eighthashes facts only. Chemistrydeferred;preserve125V1FAIL,108accepted,109terminal. Publish completed evidence then continue execution;no newissues/FORGE stop/movingHEADsubstitution.",
+    "next_action": "Exact126bd1294 V0/V1PASS:2238World/APIcases+359bindingrefusals. Preserve successful actual500MindDaeyalt/sameaccountordinarycontinuation and native125rateBLOCKED (pinnedFloorOneforces500). Six new126native produce/restart campaigns all independently PASS: F2P2Daeyaltrefusals,no fallback; reachedClose;reachedMove1tile;TCPdisconnectoneatomicbatch atboundary(no cancellation timing claim);unsavedownedservertermination restoresprior28essence;ordinaryF2PRune/Pure224runes. Next5fresh prepared unexecuted126nativeAir/Water/Earth/Fire/Body Daeyaltpriority/secondordinary/emptythird. Then5prepared130nativeBoost/trimmed/F2P/drained/expiry at7d2133; exactserverbuilt, 164Worldcases+55cachebindingrefusals PASSscopes;V1IN_PROGRESSpendingbuttonclaims/F2Pentryseparation. Queue144records133IDs at2d9fb40 validated/read;13112referencehashes/PG-REF-003provenanceclarification,132twohashes/133eighthashes facts only. Chemistrydeferred;preserve125V1FAIL,108accepted,109terminal. Publish completed evidence then continue execution;no newissues/FORGE stop/movingHEADsubstitution.",
     "deferred_execution": "Chemistry interrupt-002 had already ended with a raw observer assertion failure when deferral arrived; owned graceful stop path recorded, no live chemistry run retained. Crash scenario build was resource-deferred and never executed. Do not launch new chemistry tests or silently classify unresolved assertions as implementation failures.",
     "resource_policy": "PG-INFRA-012 resolved: invoke existing project Assert-ServerMemoryCapacity (memory/commit/paging) and sampled CPU<=70%; explicit Cargo-j1/two owned CPUs/BelowNormal. The extra owned6GiBfloor was not a user/project requirement and must not cause another false stop."
   }

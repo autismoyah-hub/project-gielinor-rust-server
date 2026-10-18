@@ -1,0 +1,15 @@
+{
+  "implementation_id": "OR-MIG-0130",
+  "tested_sha": "7d2133f23e00ad852df8726ead67493e83c901b4",
+  "status": "IN_PROGRESS",
+  "level": "V1",
+  "scope": "Withdraw previously published V1PASS:164authoritativeWorld cases remain passing, but full contract V1 additionally requires synthetic runtime button claims/remove/teleport separation and F2P guild entry independent from member Boost. Those were omitted from the aggregate acceptance mapping; no claim of completeV1 until independently tested.",
+  "preserved_evidence": "Publisheda5be310164case report remains unchanged; correction is an append-only acceptance event, not replay or deletion of successful campaigns.",
+  "remaining": [
+    "Pinned runtime button-claim boundary and Remove/Teleport separation.",
+    "F2Pguild entry permission separate from member capeBoost use."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/crafting-cape-world-v1-complete.json": "c688f8b5a350e495e3de6f95c590296c3bb434b1667115da0665bc507162d6c8"
+  }
+}
