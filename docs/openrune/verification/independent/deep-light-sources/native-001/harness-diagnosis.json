@@ -1,0 +1,10 @@
+{
+  "status": "HARNESS_DISPATCH_FAILURE_NO_LIGHT_ACTION",
+  "tested_sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
+  "reason": "Launcher passed generic assemble instead of registered light-sources scenario. Native client explicitly rejected unknown independent scenario; zero lighting/Extinguish actions ran. Owned server saved and stopped gracefully. Preserve this run/DB; correct only scenario argument and execute fresh native-002 at same pinned SHA.",
+  "evidence_sha256": {
+    "produce/client.log": "f5c071a8a896f517b68fa0f8c06e0c8dadb1b617c3f7fe64e5e1fd35d5cf3205",
+    "produce/manifest.json": "c3d6a63c104b6025d87731d299063dc4bc8b405f3eed977e5c163ccc7252d312",
+    "produce/launcher.txt": "356b308ddf1559351e6a5c4127c20a16433df172a56eb89065301058b34b4e7d"
+  }
+}

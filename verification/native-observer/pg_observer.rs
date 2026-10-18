@@ -506,6 +506,29 @@ fn food(c:&mut ClientState,l:&mut Connection)->R<()> {
     }
     println!("PG_CASE_PASS food six actual selected-slot native actions; HP correctness requires received-packet/server-trace assessment, not a relaxed HP oracle");Ok(())
 }
+fn light_feedback(c:&mut ClientState,l:&mut Connection)->R<()> {
+ tab(c,"Inventory")?;ticks(c,l,3)?;let xp=c.data.experience;let mut expected=(0..28).map(|s|{let v=c.inventories.item(93,s);(v.id,v.count)}).collect::<Vec<_>>();
+ for (i,(raw,lit,name))in[(36,33,"candle"),(38,32,"black candle"),(596,594,"torch"),(4529,4531,"candle lantern"),(4532,4534,"black candle lantern"),(4522,4524,"oil lamp"),(4537,4539,"oil lantern"),(4548,4550,"bullseye lantern"),(5014,5013,"mining helmet")].into_iter().enumerate(){ready(c,l)?;let slot=4+2*i as i32;assert_eq!(c.inventories.item(93,slot).id,raw);let start=c.game_messages.len();let message=format!("You light the {name}.");if i%2==0{use_slots(c,0,slot)?;}else{use_slots(c,slot,0)?;}pump(c,l,30,|c,_|c.inventories.item(93,slot).id==lit && c.game_messages.iter().skip(start).any(|m|m.text==message))?;expected[slot as usize]=(lit,1);ticks(c,l,2)?;assert_eq!((0..28).map(|s|{let v=c.inventories.item(93,s);(v.id,v.count)}).collect::<Vec<_>>(),expected);assert_eq!(c.data.experience,xp);println!("PG_LIGHT_FEEDBACK row={i} slot={slot} raw={raw} lit={lit} message={message:?}");}
+ println!("PG_CASE_PASS nine exact native lighting messages full inventory noXP");Ok(())
+}
+fn light_recovery(c:&mut ClientState,l:&mut Connection)->R<()> {
+    tab(c,"Inventory")?;ticks(c,l,3)?;let xp=c.data.experience;let before=(0..28).map(|s|{let v=c.inventories.item(93,s);(v.id,v.count)}).collect::<Vec<_>>();let n=c.outbound.len();
+    let(id,point)=widget_point(c,0)?;let a=c.interface_menu(point)?.into_iter().find(|e|matches!(e.action,Action::SelectSpell(w)if w==id)).ok_or("native tinderbox Use menu absent")?.action;dispatch(c,a,"native Tinderbox Use before cancellation")?;ticks(c,l,2)?;dispatch(c,Action::Cancel,"native Cancel selected tinderbox before target")?;ticks(c,l,5)?;assert!(!c.outbound.iter().skip(n).any(|p|p.opcode==27));assert_eq!(c.data.experience,xp);assert_eq!((0..28).map(|s|{let v=c.inventories.item(93,s);(v.id,v.count)}).collect::<Vec<_>>(),before);println!("PG_LIGHT_CANCELLED real native selected Use/Cancel zero target packet zero mutation");
+    use_slots(c,0,4)?;pump(c,l,30,|c,_|c.inventories.item(93,4).id==33)?;assert_eq!(c.data.experience,xp);let mut expected=before;expected[4]=(33,1);assert_eq!((0..28).map(|s|{let v=c.inventories.item(93,s);(v.id,v.count)}).collect::<Vec<_>>(),expected);
+    println!("PG_CRASH_READY native unsaved candle lit only selected slot4;owned disposable local game server;no save/logout requested");let start=Instant::now();loop{match l.poll(c){Err(e)=>{println!("PG_EXPECTED_CRASH_DISCONNECT {e}");return Ok(());},Ok(())=>{if l.logged_out().is_some(){println!("PG_EXPECTED_CRASH_DISCONNECT native transport closed");return Ok(());}}}if start.elapsed()>Duration::from_secs(30){return Err("owned light recovery termination absent".into());}std::thread::sleep(Duration::from_millis(10));}
+}
+fn light_sources(c:&mut ClientState,l:&mut Connection)->R<()> {
+    let xp=c.data.experience;assert_eq!(c.data.base[11],99);tab(c,"Inventory")?;ticks(c,l,3)?;
+    let rows=[(36,33),(38,32),(596,594),(4529,4531),(4532,4534),(4522,4524),(4537,4539),(4548,4550),(5014,5013)];
+    for (i,(raw,lit)) in rows.into_iter().enumerate(){for j in 0..2{ready(c,l)?;let slot=4+2*i as i32+j;assert_eq!(c.inventories.item(93,slot).id,raw);let n=c.outbound.len();if j==0{use_slots(c,0,slot)?;}else{use_slots(c,slot,0)?;}
+    let p=c.outbound.iter().skip(n).find(|p|p.opcode==27).ok_or("native light held frame absent")?;let stale=(p.opcode,p.payload.clone());pump(c,l,30,|c,_|c.inventories.item(93,slot).id==lit)?;ticks(c,l,2)?;
+    let expected=(0..28).map(|s|{let v=c.inventories.item(93,s);(v.id,v.count)}).collect::<Vec<_>>();replay(c,l,&stale,"stale selected unlit source after lighting")?;ticks(c,l,3)?;assert_eq!((0..28).map(|s|{let v=c.inventories.item(93,s);(v.id,v.count)}).collect::<Vec<_>>(),expected);assert_eq!(c.data.experience,xp);
+    println!("PG_LIGHT_LIT row={i} direction={j} slot={slot} raw={raw} lit={lit} tick={}",c.server_tick);
+    if j==0{let message_start=c.game_messages.len();let a=item_action(c,slot,false,"Extinguish")?;let stale=sent_packet(c,a,"native actual per-item Extinguish menu")?;pump(c,l,30,|c,_|c.inventories.item(93,slot).id==raw)?;ticks(c,l,2)?;assert!(c.game_messages.len()>message_start,"native extinguish acknowledgement absent");for m in c.game_messages.iter().skip(message_start){println!("PG_LIGHT_MESSAGE row={i} text={:?}",m.text);}let expected=(0..28).map(|s|{let v=c.inventories.item(93,s);(v.id,v.count)}).collect::<Vec<_>>();replay(c,l,&stale,"stale extinguish explicit item after unlighting")?;ticks(c,l,3)?;assert_eq!((0..28).map(|s|{let v=c.inventories.item(93,s);(v.id,v.count)}).collect::<Vec<_>>(),expected);println!("PG_LIGHT_UNLIT row={i} slot={slot} raw={raw} lit={lit} tick={}",c.server_tick);}
+    assert_eq!(c.data.experience,xp);assert_eq!(c.inventories.item(93,0).id,590);assert_eq!(c.inventories.item(93,1).id,590);assert_eq!(c.inventories.item(93,27).count,1000);assert_eq!((0..28).filter(|&s|c.inventories.item(93,s).id>=0).count(),28);
+    assert!(!c.outbound.iter().skip(n).any(|p|p.opcode==115),"instant lighting must not open a quantity flow");}}
+    ticks(c,l,5)?;assert_eq!(c.data.experience,xp);println!("PG_CASE_PASS native nine light sources both held directions18lighting9extinguish; full28 retained tinderboxes coins noXP noquantity stale refusal");Ok(())
+}
 fn immediate_tools(c:&mut ClientState,l:&mut Connection,kind:&str)->R<()> {
     let staff=kind=="immediate-staff";let certainty=kind=="immediate-certainty";let crash=kind=="immediate-crash";
     let (tool,raw)=if staff{(946,771)}else{(1755,3211)};let xp=c.data.experience;
@@ -614,6 +637,13 @@ fn fallible_partial(c:&mut ClientState,l:&mut Connection)->R<()> {
     assert_eq!(c.data.experience[12],fine/10);assert!(made>0 && made<23);assert_eq!(c.inventories.item(93,0).id,1755);assert_eq!(c.inventories.item(93,1).id,1755);assert_eq!(c.inventories.item(93,27).count,1000);
     println!("PG_FALLIBLE_INTERRUPT_READY tick={} made={made} good={good} crushed={bad} fine_observed={fine}; real socket disconnect during captured All; SQL may retain additional already-admitted credits before disconnect processed",c.server_tick);Ok(())
 }
+fn amethyst_recovery(c:&mut ClientState,l:&mut Connection,crash:bool)->R<()> {
+    ready(c,l)?;tab(c,"Inventory")?;ticks(c,l,3)?;let initial=(0..28).map(|s|{let v=c.inventories.item(93,s);(v.id,v.count)}).collect::<Vec<_>>();assert_eq!(c.data.experience[12],13034431);use_slots(c,0,26)?;let _make=glass_quantity(c,l,0,"All",23)?;
+    pump(c,l,60,|c,_|{let tips=c.inventories.total(93,21338);let raw=tips/15;tips>0 && tips%15==0 && c.inventories.total(93,21347)==23-raw && c.data.experience[12]==(130344311+3000*raw)/10})?;
+    let observed=c.inventories.total(93,21338)/15;assert!(observed>0 && observed<23,"entire batch completed before a partial native prefix was observed");let mut expected=initial;expected[26]=(21338,15*observed);for s in 4..observed+3{expected[s as usize]=(-1,0);}assert_eq!((0..28).map(|s|{let v=c.inventories.item(93,s);(v.id,v.count)}).collect::<Vec<_>>(),expected);println!("PG_AMETHYST_PREFIX observed_raws={observed} tips={} remaining_raws={} display_xp={} tick={}",15*observed,23-observed,c.data.experience[12],c.server_tick);
+    if !crash{println!("PG_DISCONNECT_PARTIAL amethyst captured All23still has raw ingredients;actual native session closes");return Ok(());}
+    println!("PG_CRASH_READY native counted amethyst unsaved prefix;owned disposable local game server only;no logout/save requested");let start=Instant::now();loop{match l.poll(c){Err(e)=>{println!("PG_EXPECTED_CRASH_DISCONNECT {e}");return Ok(());},Ok(())=>{if l.logged_out().is_some(){println!("PG_EXPECTED_CRASH_DISCONNECT native transport closed");return Ok(());}}}if start.elapsed()>Duration::from_secs(30){return Err("owned counted-amethyst recovery-test termination absent".into());}std::thread::sleep(Duration::from_millis(10));}
+}
 fn amethyst_batch(c:&mut ClientState,l:&mut Connection)->R<()> {
     ready(c,l)?;tab(c,"Inventory")?;ticks(c,l,3)?;let initial_xp=c.data.experience;let mut fine=130344311;assert_eq!(initial_xp[12],fine/10);let mut expected=(0..28).map(|s|{let v=c.inventories.item(93,s);(v.id,v.count)}).collect::<Vec<_>>();
     for (i,(slot,choice,label,count)) in [(26,0,"1",1),(25,1,"5",5),(24,2,"10",10),(23,3,"All",7)].into_iter().enumerate(){ready(c,l)?;let (output,per_raw)=[(21338,15),(21350,15),(21352,5),(25853,8)][choice];let mut captured=vec![slot as usize];for s in 0..28{if s!=slot as usize && expected[s].0==21347{captured.push(s);}}captured.truncate(count as usize);assert_eq!(captured.len(),count as usize);let n=c.outbound.len();if i%2==0{use_slots(c,0,slot)?;}else{use_slots(c,slot,0)?;}let p=c.outbound.iter().skip(n).find(|p|p.opcode==27).ok_or("native amethyst batch held frame absent")?;let held=(p.opcode,p.payload.clone());let make=glass_quantity(c,l,choice as u32,label,count)?;
@@ -718,7 +748,11 @@ fn main()->R<()> {
     if a[6]=="pair-stringing"{pair_stringing(&mut c,&mut l,false)?;l.session.close();return Ok(());}
     if a[6]=="crab-quantities"{crab_quantities(&mut c,&mut l)?;l.session.close();return Ok(());}
     if matches!(a[6].as_str(),"crab-interrupt"|"crab-crash"){crab_partial(&mut c,&mut l,a[6]=="crab-crash")?;l.session.close();return Ok(());}
+    if matches!(a[6].as_str(),"amethyst-interrupt"|"amethyst-crash"){amethyst_recovery(&mut c,&mut l,a[6]=="amethyst-crash")?;l.session.close();return Ok(());}
     if a[6]=="amethyst-batch"{amethyst_batch(&mut c,&mut l)?;l.session.close();return Ok(());}
+    if a[6]=="light-feedback"{light_feedback(&mut c,&mut l)?;l.session.close();return Ok(());}
+    if a[6]=="light-crash"{light_recovery(&mut c,&mut l)?;l.session.close();return Ok(());}
+    if a[6]=="light-sources"{light_sources(&mut c,&mut l)?;l.session.close();return Ok(());}
     if a[6]=="amethyst"{amethyst(&mut c,&mut l)?;l.session.close();return Ok(());}
     if a[6]=="crafting-finishes-crash"{crafting_finishes_crash(&mut c,&mut l)?;l.session.close();return Ok(());}
     if a[6]=="crafting-finishes"{crafting_finishes(&mut c,&mut l)?;l.session.close();return Ok(());}

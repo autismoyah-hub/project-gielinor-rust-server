@@ -1,0 +1,86 @@
+{
+  "implementation_id": "OR-MIG-0084",
+  "tested_sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
+  "status": "PASS",
+  "scope": "Independent decoder reconstructs every received inventory93full22/partial18packet: exactly27complete selected-slot lighting/extinguish transitions in intended order; stale replays introduce no other state changes. Nine genuine IF_BUTTON47frames contain inventory149:0/exact lit ID/clicked slot and target buttons2,2,6,3,3,3,3,3,4. Whole inventory conserved at every received change, not only final SQL. Receive clocks are asynchronous observations, not original/rendered latency.",
+  "credit_receive_ticks": [
+    99,
+    106,
+    114,
+    123,
+    130,
+    139,
+    149,
+    158,
+    166,
+    174,
+    183,
+    191,
+    199,
+    207,
+    215,
+    224,
+    231,
+    240,
+    249,
+    257,
+    267,
+    276,
+    284,
+    293,
+    303,
+    311,
+    320
+  ],
+  "buttons": [
+    [
+      4,
+      33,
+      2
+    ],
+    [
+      6,
+      32,
+      2
+    ],
+    [
+      8,
+      594,
+      6
+    ],
+    [
+      10,
+      4531,
+      3
+    ],
+    [
+      12,
+      4534,
+      3
+    ],
+    [
+      14,
+      4524,
+      3
+    ],
+    [
+      16,
+      4539,
+      3
+    ],
+    [
+      18,
+      4550,
+      3
+    ],
+    [
+      20,
+      5013,
+      4
+    ]
+  ],
+  "evidence_sha256": {
+    "produce/client.log": "041aea5947bd3715f53f6b22a6b5610b1e67c3a94b3686d0ac935d089ab3a45b",
+    "initial-state.json": "6319b222cf28193efd051a8dcb5b1bddea4401fedd7a28cde0abf3fdec078833"
+  }
+}

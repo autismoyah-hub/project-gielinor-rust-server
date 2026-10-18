@@ -1,0 +1,8 @@
+{
+  "status": "HARNESS_PRECONDITION_REFUSED_NO_GAME_PROCESS",
+  "reason": "Build resource guard refused before build identity publication; launcher was incorrectly invoked afterward and stopped on missing build.json before launching server/client. Preserve partial phase and disposable DB. Phase preflight now validates the required build before creating a phase; fresh native-002 must build successfully before producing. No lighting action or gameplay result in this run.",
+  "evidence_sha256": {
+    "produce/launcher.txt": "da73bbfd7d08e8658c90e2b6fd1c2a87296c9e8580483f51b25c8b6a5cb7d943",
+    "resource-observations.jsonl": "ec7fa3a2aa033ddf3f99f8814d0abdc32b29a1a0cd9738a005264858cb66e36b"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "tested_integration_sha": "7ec9e2588843b6fc82a8e5ba38349707bb4aa0a2",
+  "suite": "tanning-world",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "FAIL",
+  "resource": {
+    "available_ram": 6769115136,
+    "active_compilers": [
+      "\"cargo.exe\",\"14488\",\"RDP-Tcp#0\",\"2\",\"22,556 K\"",
+      "\"rustc.exe\",\"9968\",\"RDP-Tcp#0\",\"2\",\"219,868 K\""
+    ],
+    "cpu_percent": 13.1,
+    "cpu_samples": [
+      13.502935420743645,
+      12.815533980582527,
+      12.984496124031008
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained",
+    "disk_free": 13017812992,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "cb4c073b9e5f20b73fbe560eced782afd021da5b",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\7ec9e2588843b6fc82a8e5ba38349707bb4aa0a2\\external-harness-5058083200\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-tanning-world-7ec9e2588843b6fc82a8e5ba38349707bb4aa0a2\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\7ec9e2588843b6fc82a8e5ba38349707bb4aa0a2\\external-harness-5058083200\\Cargo.toml",
+        "--",
+        "--nocapture"
+      ],
+      "exit_code": 101,
+      "tests_passed": 1,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-tanning-world-7ec9e2588843b6fc82a8e5ba38349707bb4aa0a2\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative tanning-world scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-tanning-world-7ec9e2588843b6fc82a8e5ba38349707bb4aa0a2\\harness\\world.rs": "8a20c9248544167e5b75abc92006e99ae296892a9a6c48f6638f14ba2d4b3298"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\world-a2b99b1f3be964ec.exe": "4e6e457b31f0abd4f3f58a834a7e0efe63fac0fd51b8190121a0df91dbbb4378"
+  }
+}

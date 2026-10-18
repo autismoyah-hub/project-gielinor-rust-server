@@ -1,0 +1,59 @@
+{
+  "tested_integration_sha": "7ec9e2588843b6fc82a8e5ba38349707bb4aa0a2",
+  "suite": "member-tanning-guards",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 6495309824,
+    "active_compilers": [],
+    "cpu_percent": 17.09,
+    "cpu_samples": [
+      14.591439688715957,
+      16.5692007797271,
+      20.1171875
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained",
+    "disk_free": 12558516224,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "cb4c073b9e5f20b73fbe560eced782afd021da5b",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\7ec9e2588843b6fc82a8e5ba38349707bb4aa0a2\\external-harness-6707257500\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-member-tanning-guards-7ec9e2588843b6fc82a8e5ba38349707bb4aa0a2\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\7ec9e2588843b6fc82a8e5ba38349707bb4aa0a2\\external-harness-6707257500\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 1,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-member-tanning-guards-7ec9e2588843b6fc82a8e5ba38349707bb4aa0a2\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative member-tanning-guards scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-member-tanning-guards-7ec9e2588843b6fc82a8e5ba38349707bb4aa0a2\\harness\\guards.rs": "9b5fed61fb022de6e2e4c1e6256a21f4205b117ad8c9ceaeb58e7e62e5d47eb0"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\guards-d06bf5805218e19d.exe": "50f72c96e8db33b16dd108350fa6fca253d8e93ad6154ce4e78b3074ca798fc5",
+    "target\\debug\\deps\\world-a2b99b1f3be964ec.exe": "ed22ee1334329edf1f3d2290bf3e8d2b354bc22d620a774af20f75889593585d"
+  }
+}

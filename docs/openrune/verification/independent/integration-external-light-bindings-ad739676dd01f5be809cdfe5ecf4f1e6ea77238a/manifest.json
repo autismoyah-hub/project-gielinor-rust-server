@@ -1,0 +1,61 @@
+{
+  "tested_integration_sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
+  "suite": "light-bindings",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "FAIL",
+  "resource": {
+    "available_ram": 6701252608,
+    "active_compilers": [],
+    "cpu_percent": 2.28,
+    "cpu_samples": [
+      2.352941176470591,
+      4.280155642023342,
+      0.1953125
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained",
+    "disk_free": 11601285120,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "a4ca92195b3ea784fd02e20c3454bd6a3eab5171",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\\external-harness-1486366900\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-light-bindings-ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\\external-harness-1486366900\\Cargo.toml"
+      ],
+      "exit_code": 101,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-light-bindings-ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative light-bindings scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-light-bindings-ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\\harness\\bindings.rs": "6a8d9831f234eff74fc391a31fffad8a21938d20218ac6af5409ec3d01419186"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\bindings-68bd89f84687943d.exe": "234cadba9ca5991331b11d41817d5f3dc23cdca78f1492e479a55d1dc63c9d7d",
+    "target\\debug\\deps\\conversions-dcb05aa31295430f.exe": "ac834c0bd69da47c763f1b04c308b7dff8ec6043128145a054755d57bc07761f",
+    "target\\debug\\deps\\gielinor_server-7abd10c65476b4d7.exe": "cef43b235b5f91bdeb4f624a95f821ae0788e0e70275efb5a2a849a0a7991266",
+    "target\\debug\\deps\\routing-12c524584fd1bea6.exe": "a05cfc4c918d362ffba629ee1de03015c1bd314cb8daaaf43b9eb374e41b4481"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "implementation_id": "OR-MIG-0084",
+  "tested_sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
+  "status": "PASS",
+  "actions": {
+    "lighting": 18,
+    "extinguish": 9,
+    "stale_refusal": 27
+  },
+  "fine_xp_award": 0,
+  "scope": "Native real Tinderbox-on-item in both held directions for all nine profiles and each actual Extinguish menu. Whole full28 inventory, duplicated retained tinderboxes/coins, no XP/no quantity flow, nine extinguish acknowledgements,18stale held and9stale extinguish refusals. Exact nine lit/nine unlit ordinary forms and every Stats/fraction survive acknowledged-save/process restart/raw22/46 native reconnect; no pending quantity/replay.",
+  "limitations": [
+    "Normal saved state only; separate unsaved recovery/cancelled input must be assessed independently.",
+    "Native received clocks do not establish render/audio or donor executable parity.",
+    "Synthetic World negative/actual cache binding/reference acceptance remain separate."
+  ],
+  "evidence_sha256": {
+    "initial-state.json": "6319b222cf28193efd051a8dcb5b1bddea4401fedd7a28cde0abf3fdec078833",
+    "build.json": "9769cb59253be6d61ad0b9dc07d8ce69cd26fb0d8d9073f97aab1ebcb8b47e3b",
+    "produce/client.log": "041aea5947bd3715f53f6b22a6b5610b1e67c3a94b3686d0ac935d089ab3a45b",
+    "produce/manifest.json": "261e3a45c8c85ba317009f0019758ffaf54e2012f7c447b94bac903e06b92b05",
+    "produce/after.json": "a95bb7d06020be428b7c51c512fbf2c310fd9105baa78ec31ab08d771cba02b4",
+    "relogin/client.log": "45a6d093d51d2a86d93a83dedd820d60b4672268d87a3893d4618681baca518b",
+    "relogin/manifest.json": "6d11747b28bc4306a015ba638baecdd3c953e46083d038683d3e354be123b68e",
+    "relogin/after.json": "9f368ed43927ba67c44ec6d2cee38437510368c4961b45307f756f4cea1bd2db",
+    "frozen-observer/pg_observer.rs": "5465264c2561971a7689907c1b0dcdda49bc168e3e8cab7e29f7a59764b6bb0e",
+    "frozen-observer/build.json": "444109cb83e2cf8c253c5191301b8705999ae91a87a1ef150a261a78732d0069"
+  }
+}

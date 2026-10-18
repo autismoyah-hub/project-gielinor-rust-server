@@ -30,12 +30,31 @@ for ident,folder,sha in [('OR-MIG-0010','deep-combat','5a260c1bd6efa5f8a221bed7c
         add(ident,sha,'V4','IN_PROGRESS','Independent protected-source and pinned-documentation subcomparisons PASS within recorded scope; complete feature comparison remains open. No executable donor parity is claimed.',refs)
 for manifest in OUT.glob('OR-MIG-0024-*-independent*/manifest.json'):
     value=json.loads(manifest.read_text(encoding='utf-8'))
+    if value.get('suite')=='light-life':continue  # Exact-target finding below retains raw FAIL/BLOCKED attempts.
     if value.get('outcome')!='PARTIAL':continue
     sha=value['implementation_commit_sha'];evidence=[str(manifest.relative_to(ROOT)).replace('\\','/')]
     add('OR-MIG-0024',sha,'V0','IN_PROGRESS','Exact-SHA production crate compiled; runtime cache/registration and packet decoder acceptance remain open.',evidence)
     add('OR-MIG-0024',sha,'V1','IN_PROGRESS','Four independent authoritative World action tests PASS across 319 fixtures: all selected slots, full bags, duplicate/stale input, overheal, remainders and malformed transactions. Runtime packet decode and complete food matrix remain open.',evidence)
 for manifest in OUT.glob('integration-*/manifest.json'):
     value=json.loads(manifest.read_text(encoding='utf-8'))
+    if value.get('suite') in ['member-tanning-world','member-tanning-guards']:
+        continue  # Combined independent assessment includes retained partial attempt.
+    if value.get('suite') in ['light-legacy-bindings','light-bindings','light-tool-regression']:
+        if value.get('status')=='PASS':
+            suite=value['suite']
+            level='V0' if suite=='light-bindings' else 'V1'
+            reason=('Actual nineteen cache item definitions/Firemaking11 produce nine light/extinguish descriptors with correct target-specific menu mapping, zero XP/ticks/animation/failure.215 independently mutated missing/aliased/malformed item/stat/op cases fail closed. Actual native startup and dispatch acceptance remain separate.' if suite=='light-bindings' else 'Exact84 shared tool regression:576 gem/shell batches,24F2P controls,140initial refusals and192late changes preserve original Crafting12, whole inventory/Stats/XP/captured order/timing. Only explicit skill12 added to independent historical fixture. No historical63/71 acceptance inherited and no chemistry gameplay executed.')
+            if suite=='light-legacy-bindings':reason='Actual37legacy cache-backed Crafting tool descriptors retain skill12 with Firemaking0, full28 selected-slot output and durable tools, correctly scaled per-step125percent XP; separate light metadata prefix and World932case regression remain distinct. No chemistry gameplay or earlier contract acceptance inherited.'
+            add('OR-MIG-0084',value['tested_integration_sha'],level,'IN_PROGRESS',reason,[manifest.relative_to(ROOT).as_posix()],scope='independent-'+suite)
+        continue
+    if value.get('suite')=='tanning-world':
+        sha=value['tested_integration_sha'];log=manifest.parent/'run-1.log';text=log.read_text()
+        finding=OUT/('tanning-life-finding.json' if sha=='2da0bff39acf97f0d974d8748b7ee186514b95f7' else 'tanning-life-r2-addendum.json')
+        if finding.exists() and text.count('PG_TANNING_LIFE ')==16 and text.count('inventory_unchanged=false')==16:
+            ev=[manifest.relative_to(ROOT).as_posix(),finding.relative_to(ROOT).as_posix()]
+            add('OR-MIG-0105',sha,'V0','IN_PROGRESS','Exact-SHA World crate compiles; synthetic reached Trade3 dispatch and public World request/quantity-token flow work for Ellis3231/Guild5809. Actual-cache/startup/native runtime registration remains untested.',ev,scope='independent-tanning-world-dispatch')
+            add('OR-MIG-0105',sha,'V1','FAIL','PG-DEF-005:16separate both-NPC/soft-hard/zeroHP-or-queued-death/initial-or-pending World quantity-flow refusals FAIL. Five hides convert and5/15GPspend, XPunchanged.160ordinary fullbag/minrequest-held-affordable/F2P/currentCrafting0/zeroXP/World-token-once cases PASS. Whole rawFAILretained. No private Request construction; actual Runtime/native death reachability, UI raw0clamp,106member profiles and persistence remain untested.',ev,scope='independent-tanning-life-failure')
+        continue
     if value.get('suite')=='crafting-finishes-world':
         log=manifest.parent/'run-1.log';text=log.read_text()
         if all('test '+name+' ... FAILED' in text for name in ['wire_zero_hp_forward','wire_zero_hp_reverse','wire_queued_death_forward','wire_queued_death_reverse']):
@@ -581,4 +600,37 @@ path=OUT/'amethyst-authoritative-complete.json'
 if path.exists():
     result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PASS_APPLICABLE_V1'
     add('OR-MIG-0071',result['tested_sha'],'V1','PASS',result['scope']+' Native/runtime token and full contract acceptance remain separate.',[path.relative_to(ROOT).as_posix()],scope='amethyst-authoritative-obligations-complete')
+path=OUT/'amethyst-durable-complete.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PASS_APPLICABLE_V3'
+    add('OR-MIG-0071',result['tested_sha'],'V3','PASS',result['scope']+' '+result['account_scope']+' Native custom input/audio/reference and whole-contract acceptance remain separate.',[path.relative_to(ROOT).as_posix()],scope='amethyst-durable-obligations-complete')
+path=OUT/'member-tanning-world-assessment.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PASS_SCOPED_WORLD_CASES'
+    add('OR-MIG-0106',result['tested_sha'],'V1','IN_PROGRESS',result['scope'],[path.relative_to(ROOT).as_posix()],scope='member-tanning-scoped-world-assessment')
+path=OUT/'amethyst-remaining-obligations.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    for level in ['V2','V4']:add('OR-MIG-0071',result['tested_sha'],level,result[level],result[level+'_reason'],[path.relative_to(ROOT).as_posix()],scope='amethyst-remaining-obligations')
+path=OUT/'deep-light-sources/native-002/independent-assessment.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PASS'
+    for level,status in [('V2','PASS'),('V3','IN_PROGRESS')]:
+        add('OR-MIG-0084',result['tested_sha'],level,status,result['scope']+' Separate Use/Cancel/unsaved recovery, actual cache bindings and full acceptance remain unaccepted; no donor executable/render/audio parity.',[path.relative_to(ROOT).as_posix()],scope='light-native-normal-obligations')
+path=OUT/'reference-lights/comparison.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PASS_REFERENCE_FACTS'
+    add('OR-MIG-0084',result['tested_sha'],'V4','IN_PROGRESS',result['scope']+' Reference-fact subcheck only; target-specific native/cache/feedback/lifecycle acceptance remains separate.',[path.relative_to(ROOT).as_posix()],scope='light-reference-facts')
+path=OUT/'light-life-pg-def-003-addendum.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='CONFIRMED_AUTHORITATIVE_BOUNDARY_FAILURE'
+    for level in ['V1','V3']:add('OR-MIG-0084',result['tested_sha'],level,'FAIL',result['scope']+' Effective-life refusal is required before fresh/pending held completion; native dead-packet reachability/currentHEAD untested.',[path.relative_to(ROOT).as_posix()],scope='light-life-pg-def-003-required-failure')
+path=OUT/'light-sources-disposition.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='FAILED'
+    for level,value in result['levels'].items():add('OR-MIG-0084',result['tested_sha'],level,value['status'],value['reason'],[path.relative_to(ROOT).as_posix()],scope='light-terminal-disposition')
+    coarse_path=DOC/'VERIFICATION_RESULTS.jsonl';attempt='light-terminal-disposition-'+result['tested_sha']
+    if not any(json.loads(s)['attempt_id']==attempt for s in coarse_path.read_text(encoding='utf-8').splitlines()):
+        row={'attempt_id':attempt,'implementation_id':'OR-MIG-0084','implementation_commit_sha':result['tested_sha'],'contract_revision':1,'campaign_kind':'historical','outcome':'FAILED','level':'V0PASS/V1FAIL/V2PASS/V3FAIL/V4PASS','independent_verification':True,'tests_passed':0,'coverage':[k+' '+v['status']+': '+v['reason'] for k,v in result['levels'].items()],'reason':result['scope'],'evidence':[path.relative_to(ROOT).as_posix()],'issues':['PG-DEF-003 ordinary P2 local correction addendum; no new issue or FORGE stop']}
+        with coarse_path.open('a',encoding='utf-8',newline='\n') as f:f.write(json.dumps(row)+'\n')
 print('Per-level evidence events:',len(rows))

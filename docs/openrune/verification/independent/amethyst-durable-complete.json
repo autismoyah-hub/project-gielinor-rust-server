@@ -1,0 +1,21 @@
+{
+  "implementation_id": "OR-MIG-0071",
+  "tested_sha": "bc277dc3e7e15088323a4f048f57dc43185fb7c0",
+  "level": "V3",
+  "status": "PASS_APPLICABLE_V3",
+  "scope": "Applicable counted-output durability complete:8native Make-one raw credits and23native1/5/10/All raw credits persist as exact merged tip stacks/XP through acknowledged saves and actual native reconnects. Separate partial All23observed1rawcredit, saved2whole credits/30tips/6000fineXPwith21raws retained; restarted native has no pending production/dialog or replay. Separate owned unsaved run received prefix1then2rawcredits, no save acknowledgement, complete prior23raws/zero-new-XP restored in actual SQL/native restart. Whole chisels/coins/allStats/energy, zero-vars types and existing fineXP.1fraction retained across normal/partial/recovery states.",
+  "account_scope": "Three distinct producing disposable accounts preserve33rawcredits/312tips/99000fineXP in total; separate recovery account preserves0new credit. These are separate immutable state identities, not one character.",
+  "limits": [
+    "Native asynchronous prefix is not an exact server commit count at physical disconnect.",
+    "Unsaved rollback is not fault injection inside SQL commit.",
+    "No separate claim/escrow/equipment state is authored by the counted tool-output change; broad worn-gear serialization is outside this adapter.",
+    "Native input dependency/effects/audio/reference/currentHEAD and whole-contract acceptance remain separate."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/deep-amethyst/native-001/independent-assessment.json": "04eb09cf3c147ec691b506053da28a8cce6bac395f4532ea25e9df046d7e47a0",
+    "docs/openrune/verification/independent/deep-amethyst-batch/native-001/independent-assessment.json": "0c16ac31b2c04097f2067c3cd19710f383f89ef12a318a6667eb401247e2341a",
+    "docs/openrune/verification/independent/deep-amethyst-interrupt/native-001/independent-assessment.json": "41f803683916d3e07199ef8051413434abf6d7967b73fa2c9d6e041fb65d1d42",
+    "docs/openrune/verification/independent/deep-amethyst-crash/native-001/independent-assessment.json": "d495166ac365ed6db24a89b1dfd4e3249c36590347e198978e48322b67bf1b67",
+    "docs/openrune/verification/independent/amethyst-authoritative-complete.json": "20ecbc222239c61431290ea7edcb588d0df322d8232d48e8a42f268e19d3d6a5"
+  }
+}

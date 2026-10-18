@@ -1,0 +1,25 @@
+{
+  "finding_id": "PG-DEF-005",
+  "implementation_id": "OR-MIG-0105",
+  "contract_revision": 2,
+  "tested_sha": "7ec9e2588843b6fc82a8e5ba38349707bb4aa0a2",
+  "status": "CONFIRMED_AUTHORITATIVE_WORLD_FLOW",
+  "severity": "P2",
+  "implementation_blocking": false,
+  "github_issue": null,
+  "failed_cases": 16,
+  "passing_normal_cases": 160,
+  "scope": "Separate execution at105revision2reproduces all16initial/pending Ellis/Guild soft/hard zeroHP/queued-death refusals:5hides converted and5/15GPspent, XPunchanged.160normal controls pass. Revision1evidence remains immutable; no corrected UI/native/clamp acceptance inferred.",
+  "source_sha256": "7b0059a1306461ab7b62d3489e10a2709756ae97f3adeb9414cf155509ab4ffb",
+  "parent_finding": "docs/openrune/verification/independent/tanning-life-finding.json",
+  "limits": [
+    "This is cowhide at105r2only; six member recipes in106share this SHA but are untested here.",
+    "Actual server Runtime/native dead-player reachability, pre-clamp raw0/negative branch, currentHEAD and persistence remain untested.",
+    "Ordinary correction, no FORGE stop; no duplication or other-player access alleged."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/integration-external-tanning-world-7ec9e2588843b6fc82a8e5ba38349707bb4aa0a2/manifest.json": "e86a99675a404690abfbe202c66ff75a52bd7db6dd8fd53603955f9d0dbeee75",
+    "docs/openrune/verification/independent/integration-external-tanning-world-7ec9e2588843b6fc82a8e5ba38349707bb4aa0a2/run-1.log": "35d96cf17753834cd2d219ab4ffc665958d0750ff7ef902adf84392a050af823",
+    "docs/openrune/verification/independent/integration-external-tanning-world-7ec9e2588843b6fc82a8e5ba38349707bb4aa0a2/harness/world.rs": "8a20c9248544167e5b75abc92006e99ae296892a9a6c48f6638f14ba2d4b3298"
+  }
+}

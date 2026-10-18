@@ -1,0 +1,31 @@
+{
+  "implementation_id": "OR-MIG-0071",
+  "tested_sha": "bc277dc3e7e15088323a4f048f57dc43185fb7c0",
+  "campaign_kind": "historical",
+  "status": "PASS",
+  "products_in_raw_batches": 23,
+  "tip_counts": [
+    15,
+    75,
+    50,
+    56
+  ],
+  "fine_xp_award": 69000,
+  "scope": "Native real builtin1/5/10/All7choices process23raws with exact selected-first/ascending captures, whole stack15/75/50/56and69000fineXP; retained chisels/coins/allStats/energy and ordinary zero-vars outputs survive acknowledged save/process restart/raw native reconnect. Four stale quantity/consumed-input replays leave state unchanged.",
+  "limitations": [
+    "Builtin native batches/normal persistence only; custom input/negative policy/partial/crash/effect-clock scopes remain separate.",
+    "No rendered/audio/original executable or latestFORGEHEAD acceptance."
+  ],
+  "evidence_sha256": {
+    "initial-state.json": "b4d94e4f08029fa2cfd733293c97004e54917c3606271c47314ed2936ead6df2",
+    "build.json": "b953c1bdc7cdd5e6772bca05fde88c88e2e6a22aabade89ca3b3b6f48c79ff6b",
+    "produce/client.log": "e61749f847cd54043119b75a3bbe18a08bec4951272a9774a74fc2b4f8784829",
+    "produce/manifest.json": "6379114b589d600ef2daf0a9144fb4a5246aa0483ad95f0b0307a7047f5b3453",
+    "produce/after.json": "4422b840562000ed910e62978a39bce5ac859d03b5aa6476e27437bbaf1043da",
+    "relogin/client.log": "921f34d7e118d5ebf67aba1b454cb672b06531c88c841ab834cd13307aa26f25",
+    "relogin/manifest.json": "0f621ebfdd58b772929a606f4d5ff5a7be38574a35b0b1cee2e07f65560a89a2",
+    "relogin/after.json": "ce8c78f8c2b7db42a3ed7c2cc1de00444f4ce8b1eb0b7017512e05a9d264c64f",
+    "frozen-observer/pg_observer.rs": "788556da2d72ca0e206ca2a2e76c60b22fc9b3a07b451489817de515f5c14701",
+    "frozen-observer/build.json": "8582771b290633586ccde841c0a1811e15f7fca2d333bebc32710101c22170d3"
+  }
+}

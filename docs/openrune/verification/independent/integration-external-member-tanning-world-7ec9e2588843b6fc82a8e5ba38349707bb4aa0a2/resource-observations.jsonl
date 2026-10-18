@@ -1,0 +1,1 @@
+{"observed_utc": "2026-10-18T12:41:04.364504+00:00", "decision": "PROCEED", "measurement": {"available_ram": 6668566528, "active_compilers": [], "cpu_percent": 20.64, "cpu_samples": [17.96875, 23.6328125, 20.3125], "cpu_ceiling": 70, "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained", "disk_free": 12567248896}}

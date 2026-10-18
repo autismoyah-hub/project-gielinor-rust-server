@@ -1,0 +1,35 @@
+{
+  "finding_id": "PG-DEF-005",
+  "implementation_id": "OR-MIG-0105",
+  "contract_revision": 1,
+  "tested_sha": "2da0bff39acf97f0d974d8748b7ee186514b95f7",
+  "severity": "P2",
+  "status": "CONFIRMED_AUTHORITATIVE_WORLD_FLOW",
+  "implementation_blocking": false,
+  "github_issue": null,
+  "failed_cases": 16,
+  "passing_normal_cases": 160,
+  "expected": "Paid game services refuse actor zeroHP or authoritative queued death without respawn, before a fresh request or completion of a previously opened quantity dialog; preserve whole inventory/Stats.",
+  "actual": "Both Ellis3231/Guild5809 and soft/hard cowhide, zeroHP or queued DeathRequested then visibleHP10, before fresh request or with pending quantity token: legitimate World request/token-resume/complete flow converts5hides to5leathers and spends5soft/15hardGP. Coins100 become95/85, Stats andXP remain unchanged. All16separately named refusal tests fail.",
+  "reproduction": [
+    "Synthetic owned World with neighboring live Trade NPC, valid operation3 and reached World NPC event;27ordinary cowhides/100coins/full28, Crafting current0 and HP10; obtain request through tanning_request, never construct private request fields.",
+    "For pending cases start_quantity_dialog before life change; for initial cases obtain a fresh tanning_request and quantity token after the change.",
+    "Set visibleHP0, or queue actual typeless20damage, tick and assert DeathRequested, then restore only visibleHP10 without respawn.",
+    "Snapshot inventory/Stats. If public resume_quantity_dialog accepts its real World token, call complete_tanning choice0/1,count5; advance4ticks and compare whole state."
+  ],
+  "source_path": "crates/world/src/simulation/tanning_actions.rs",
+  "source_sha256": "7b0059a1306461ab7b62d3489e10a2709756ae97f3adeb9414cf155509ab4ffb",
+  "source_diagnosis": "tanning_reached checks logout/saving/protection and live NPC/reach/type/op; combined public World request and quantity flow demonstrably omits an effective actor health/dead-state refusal. The observed service exchanges after both zeroHP and actual queued death.",
+  "correction": "Reject authoritative zeroHP/dead actors before tanning request and final exchange; invalidate pending service continuation appropriately. A current-HP-only check is insufficient for queued-death cases whose visibleHP was restored. Preserve normal fee/min-count/atomic whole-inventory and zero-XP behavior; publish a new implementation SHA for independent retest.",
+  "limits": [
+    "World-level quantity flow and reached NPC dispatch only. Actual server SkillMulti/component guards/native dead-player reachability are untested; no forged private Request was used.",
+    "No inference to revision2, other tanners/member profiles, currentFORGEHEAD or persistence before their own pinned execution.",
+    "Ordinary isolated life-state defect, no duplication/other-player access or implementation-blocking failure alleged; no FORGE stop or external issue.",
+    "Published r2nonpositive raw UI clamp correction is a separate issue; this test does not execute that private Runtime branch."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/integration-external-tanning-world-2da0bff39acf97f0d974d8748b7ee186514b95f7/manifest.json": "879bd70a87e238c73a91e27aed2e1c5269c228d60df01e82b0467276bfedf200",
+    "docs/openrune/verification/independent/integration-external-tanning-world-2da0bff39acf97f0d974d8748b7ee186514b95f7/run-1.log": "c19f477163ab589629bbbf1876d9f1b7054b365a5eab34e27c15e4a6fb960308",
+    "docs/openrune/verification/independent/integration-external-tanning-world-2da0bff39acf97f0d974d8748b7ee186514b95f7/harness/world.rs": "8a20c9248544167e5b75abc92006e99ae296892a9a6c48f6638f14ba2d4b3298"
+  }
+}

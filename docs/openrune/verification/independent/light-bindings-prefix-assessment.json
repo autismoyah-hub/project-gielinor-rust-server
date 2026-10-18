@@ -1,0 +1,11 @@
+{
+  "implementation_id": "OR-MIG-0084",
+  "tested_sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
+  "status": "PASS_SCOPED_PREFIX",
+  "scope": "Original light binding test reached and passed all nine actual nineteen-item factory profiles and215 independent malformed-binding refusals before its separate legacy profile-count assertion. Raw FAIL preserved: verifier expected four crab profiles; pinned factory returns two, total37rather than39. No light metadata implementation defect inferred. Corrected legacy-only tail runs separately; passing215prefix is not rerun or overwritten. Native exact84startup independently passed.",
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/integration-external-light-bindings-ad739676dd01f5be809cdfe5ecf4f1e6ea77238a/manifest.json": "f2bfca8fc9ac662ffee4773341b40ebf7063eb673d7e44bc3b35e63166d5cb5b",
+    "docs/openrune/verification/independent/integration-external-light-bindings-ad739676dd01f5be809cdfe5ecf4f1e6ea77238a/run-1.log": "91fcc44e13a5b2ad663c4a4ed790fe031e2851a686d53c92adf97477963040ca",
+    "docs/openrune/verification/independent/integration-external-light-bindings-ad739676dd01f5be809cdfe5ecf4f1e6ea77238a/harness/bindings.rs": "6a8d9831f234eff74fc391a31fffad8a21938d20218ac6af5409ec3d01419186"
+  }
+}

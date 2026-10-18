@@ -1,0 +1,21 @@
+{
+  "implementation_id": "OR-MIG-0071",
+  "tested_sha": "bc277dc3e7e15088323a4f048f57dc43185fb7c0",
+  "status": "PARTIAL_WITH_SHARED_NATIVE_INPUT_DEPENDENCY",
+  "completed_levels": [
+    "V0",
+    "V1",
+    "V3"
+  ],
+  "V2": "BLOCKED",
+  "V2_reason": "Native builtins1/5/10/All and four choices/both directions, cancellation/stale/partial/recovery completed. Custom multi-digit quantity remains dependent on PG-INFRA-009: pinned shared client native keyboard/script dispatch previously submitted unintended underlying production continuation while typing10 at exact63. No exact71X10failure alleged, no successful immutable campaign rerun. Requires correct ordinary focused-input dispatch or separately attested compatible client correction before final71custom-input acceptance. No moving server HEAD substitution.",
+  "V4": "IN_PROGRESS",
+  "V4_reason": "Pinned source/Wiki counts, levels, XP and instant-first/repeat2 timing declarations compared; native6295sequence records observed. Source calls synth.chisel; available owned187-line synth aliases contain no chisel identity. Current observer does not drive ordinary actor animation frame/audio clocks or expose sound IDs, so absent sound logs cannot establish target silence or parity. Need independent239.1sound binding/reference plus fresh native effect/audio observation at this same server SHA. Original donor executable unavailable; no invented ID or protected resource mutation. Counted exchange and durable states remain accepted within their own scopes.",
+  "sound_alias_sha256": "b474a82da781508f2d1ccdd46c168320631086cfdfc06077e80394c019af3d4b",
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/reference-amethyst/comparison.json": "9cf85915cb41cd3ac4b5a8fd9ad024d0d1f69e8b84144e47e75f56c54c16abb9",
+    "docs/openrune/verification/independent/amethyst-authoritative-complete.json": "20ecbc222239c61431290ea7edcb588d0df322d8232d48e8a42f268e19d3d6a5",
+    "docs/openrune/verification/independent/amethyst-durable-complete.json": "df9a045b316629d220cbcaa696fd0541e7888cb8ea44244f702f16628b4e83b6",
+    "docs/openrune/verification/independent/deep-production-gem-x-focus/x10-focus-001/independent-blocker.json": "465b9f51d463870b73024c00dce763373c5bdab9d73480c012fa2f2e2ca4a449"
+  }
+}

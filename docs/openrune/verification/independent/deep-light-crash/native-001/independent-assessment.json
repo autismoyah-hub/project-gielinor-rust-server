@@ -1,0 +1,25 @@
+{
+  "implementation_id": "OR-MIG-0084",
+  "tested_sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
+  "status": "PASS",
+  "observed_unsaved_output": 33,
+  "fine_xp_award": 0,
+  "durable_outputs": 0,
+  "scope": "Genuine native Tinderbox Use selection/Cancel before target sent no held27frame and preserved whole inventory/Stats. Then one actual selected candle36to33 raw18credit was received; only the freshly owned disposable server terminated with its socket open, no logout/save acknowledgement. SQL restored prior full28raw inventory/Stats/tools/coins/energy; actual restart/native raw22/46 matched all items/Stats, no pending/replay/automatic toggle.",
+  "limitations": [
+    "Unacknowledged rollback does not inject during a SQL commit.",
+    "Separate completed normal run preserves nine lit/nine unlit states; no immutable successful account reexecuted."
+  ],
+  "evidence_sha256": {
+    "initial-state.json": "6319b222cf28193efd051a8dcb5b1bddea4401fedd7a28cde0abf3fdec078833",
+    "build.json": "776618b6daa5ca7cf79395dadc6b644f91a578ecbcf1a5df526a09e3f6247c8e",
+    "produce/client.log": "974bea9405a8139fa2e98db464688491a90383786dc985d033f67b1482f49b8d",
+    "produce/manifest.json": "a2ce1bdfe0a127bd156a01c460816d2783b7a8b338ae55888ed0f20aa4ce0783",
+    "produce/after.json": "14f94768fcaf7b73c820bdfd4242c76d848d909f857624ba37c17e47461a4d74",
+    "relogin/client.log": "2a25e98c62fa62c02f22a290bf9ea3c5507391a5cdc791448d459902e5d97131",
+    "relogin/manifest.json": "25bf0ce0bfeb080d91f3fc3deaf8521ed485e4afa0fb32843ed760aafc5afef7",
+    "relogin/after.json": "a38d07a144558e19dd0ddf8c641ef856305deefffb5e558ff9ddae2ce1811b48",
+    "frozen-observer/pg_observer.rs": "083b3ad6de26440864edacb47ed118cbd52cd3fff0f689e997a51bfd95daeb6e",
+    "frozen-observer/build.json": "a30dfc70c9b22d270e94ede77368494d4d711d727abeaef52c67830281432602"
+  }
+}

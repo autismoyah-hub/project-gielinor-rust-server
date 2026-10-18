@@ -1,0 +1,8 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\7ec9e2588843b6fc82a8e5ba38349707bb4aa0a2\external-harness-6707257500)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.79s
+     Running tests\guards.rs (C:\Projects\OSRSRSPS\agent7-verification\work\7ec9e2588843b6fc82a8e5ba38349707bb4aa0a2\target\debug\deps\guards-d06bf5805218e19d.exe)
+
+running 1 test
+test one_hundred_forty_four_atomic_refusals ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 6.46s

@@ -1,0 +1,8 @@
+{
+  "tested_integration_sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
+  "suite": "light-life",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "BLOCKED",
+  "reason": "Measured-resource deferral; no substitute target: Measured resource guard blocked; no other process altered"
+}

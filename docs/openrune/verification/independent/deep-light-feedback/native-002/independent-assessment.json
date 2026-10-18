@@ -1,0 +1,30 @@
+{
+  "implementation_id": "OR-MIG-0084",
+  "tested_sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
+  "status": "PASS",
+  "scope": "Nine separate genuine native lighting actions explicitly wait for and assert each received target-specific success message. Real cache/native menus alternate held order; full28 inventory has exactly nine selected lit forms with other matching raw items/tinderboxes/coins/wholeStats unchanged. Acknowledged-save whole SQL state verifies zero XP and ordinary types. This is additional feedback coverage on a fresh account; completed normal/recovery DBs were not replayed.",
+  "lighting_messages": [
+    "You light the candle.",
+    "You light the black candle.",
+    "You light the torch.",
+    "You light the candle lantern.",
+    "You light the black candle lantern.",
+    "You light the oil lamp.",
+    "You light the oil lantern.",
+    "You light the bullseye lantern.",
+    "You light the mining helmet."
+  ],
+  "limitations": [
+    "Normal and recovery native reconnects are independently complete on separate accounts; this additional message account is not a new persistence campaign.",
+    "Source unlit display names can differ from target adapter short names; no original executable/render/audio parity inferred."
+  ],
+  "evidence_sha256": {
+    "initial-state.json": "6319b222cf28193efd051a8dcb5b1bddea4401fedd7a28cde0abf3fdec078833",
+    "build.json": "75d39d37beee15708b9a7e65c1391516807569a8c940fd50b1894233f3074d88",
+    "produce/client.log": "e0b95153d740e9a37f4f901eda0d94e446904b92837f8cb24108288295618bba",
+    "produce/manifest.json": "0a19643679f1744502a13f3f0f7a93e1fc9a303eb281bad867531201cfcc88a0",
+    "produce/after.json": "bde4e2bf8adb5ba7477a010970bbb64f504ac916384db2e0105e8a88f022ed1d",
+    "frozen-observer/pg_observer.rs": "854e8a224b9a8fb032aa2e69bd48859456113f3237a9cd13fac16737e0c03f27",
+    "frozen-observer/build.json": "47592883f2b7f68137029101bcba9c7a667ec5730c909dddc5a21895a6d1aeee"
+  }
+}

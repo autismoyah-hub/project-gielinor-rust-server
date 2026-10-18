@@ -1,0 +1,21 @@
+{
+  "finding_id": "PG-DEF-003",
+  "implementation_id": "OR-MIG-0084",
+  "tested_sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
+  "source_tree": "a4ca92195b3ea784fd02e20c3454bd6a3eab5171",
+  "status": "CONFIRMED_AUTHORITATIVE_BOUNDARY_FAILURE",
+  "severity": "P2 ordinary correction",
+  "scope": "Independent72separately named registered World immediate-lighting cases fail:9profiles/both held directions/zeroHP or actual queued DeathRequested with visibleHP restored/beforefresh held request or already prepared held context. Every case converts selected unlit slot17to its lit counterpart at0XP, keeping Stats unchanged. Existing alive native27normal+9feedback and398normal/refusal/conversion controls remain independently positive. This extends the already recorded generic immediate-tool actor-life defect PG-DEF-003 to exact84; no new finding ID/duplicate issue, no FORGE stop.",
+  "reproduction": "Use normal Firemaking/member/full28 fixture and public ToolCraftingImmediate held registration. Optionally prepare held context first. Apply HP0 or real queued20damage hit/tick DeathRequested/restoreHP10withoutrespawn. Prepare/finish held context and tick4: exact selected17converts tolit; duplicate26/tinderboxes/Stats remain.",
+  "correction": "Recheck effective actor life before Job.resolve/publication in complete_tool_crafting_immediate, including death_queued when visibleHP restored. Reject/invalidate held contexts crossing death; preserve unsignedHP/access/logout/atomic-credit semantics. Publish correction SHA and rerun72cases plus earlier immediate recipes. Preserve this historical failure.",
+  "limits": [
+    "Native dead-player packet reachability and moving FORGE HEAD untested.",
+    "No XP duplication, other-player access, external issue or implementation-blocking severity alleged.",
+    "Normal save/recovery/UseCancelPASS does not override pending held context crossing death."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/integration-external-light-life-ad739676dd01f5be809cdfe5ecf4f1e6ea77238a-1792328935706075800/manifest.json": "eb9ebc3a4159a8e0a7d31c9939602ed9ec55aa5cc9fe22aed4ae8490912b0313",
+    "docs/openrune/verification/independent/integration-external-light-life-ad739676dd01f5be809cdfe5ecf4f1e6ea77238a-1792328935706075800/run-1.log": "db7a436f0129430db8dadec3b0fa3a67341ad907e0dda2848d77977a4c178664",
+    "docs/openrune/verification/independent/integration-external-light-life-ad739676dd01f5be809cdfe5ecf4f1e6ea77238a-1792328935706075800/harness/life.rs": "7c3b1efced09b7ce56e53e74436a48361ffe4d79934f87b146c618d3a4c76687"
+  }
+}

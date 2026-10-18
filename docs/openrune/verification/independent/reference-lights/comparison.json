@@ -1,0 +1,199 @@
+{
+  "implementation_id": "OR-MIG-0084",
+  "tested_sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
+  "status": "PASS_REFERENCE_FACTS",
+  "sources": [
+    {
+      "kind": "openrune",
+      "reference": "content/skills/firemaking/src/main/kotlin/org/rsmod/content/skills/firemaking/LightSourceEvents.kt",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "sha256": "f7d3caa0a6149633e6285d6d0d08b4cdddc530bf626769d103475a8c70ada5c9"
+    },
+    {
+      "kind": "openrune",
+      "reference": "or-cache/src/main/kotlin/dev/openrune/tables/skills/Firemaking.kt",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "sha256": "015a2bd0cd9ed41df907b0bed1f9194b12b65022adecbb07b913136df9598b7f"
+    },
+    {
+      "kind": "openrune",
+      "reference": "api/inv-plugin/src/main/kotlin/org/rsmod/api/inv/HeldOpScript.kt",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "sha256": "8bebd23fb39d9f24e11705cbb679952dc44da8d18bfd0cfff0056afd444d979a"
+    },
+    {
+      "kind": "project_gielinor",
+      "reference": "api/inv-plugin/src/main/kotlin/org/rsmod/api/inv/HeldOpScript.kt",
+      "revision": "Local original Kotlin reference",
+      "sha256": "7d10c514ee1c4a829dfd680a16ac9085d99b0e686d48f8384295d39aa6bfca09"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Candle",
+      "revision": "15281484",
+      "sha256": "669b512d76bf2251f7789e94b689a77f6ba185d10f8531ca3320d11b4f46d343"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Black candle",
+      "revision": "15183898",
+      "sha256": "0c87c6fd55b65553242b41abfe08a086f0322fb52d08189b43725933656d395a"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Torch",
+      "revision": "15183759",
+      "sha256": "f6bf53a2b6ad43b161bc1547f0ee61e508821f9509144a7f166f74aa0235caf6"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Candle lantern",
+      "revision": "15184430",
+      "sha256": "adf39cf72b259bae6ccaeec67e0a68e9bde27694f97c3fce7577d30a2d6bf552"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Oil lamp",
+      "revision": "15318141",
+      "sha256": "c75ce712b2dd022f80914de89f2b7e19c6bcd84460fc613d0d801dc4c62dc98e"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Oil lantern",
+      "revision": "15183669",
+      "sha256": "edea402ec6d66905619e897dc188de71a3fe9f5993ced7b02dfb5d4c91eed23f"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Bullseye lantern",
+      "revision": "15183768",
+      "sha256": "f823fa290eb30daf3683fa1d82626fa17c6c95373e5892109002e717665fee9c"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Mining helmet",
+      "revision": "15326051",
+      "sha256": "9e448ceb536fc59f953ce3114c5e09b3cc5ebb6a769af622234fac648c50aec6"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Tinderbox",
+      "revision": "15318995",
+      "sha256": "aa6cf7fc38876edf00609f92079295dd6523d3107883aa9126f3f4d0a32c0ee5"
+    }
+  ],
+  "profiles": [
+    {
+      "title": "Candle",
+      "unlit": 36,
+      "lit": 33,
+      "firemaking_level": 1
+    },
+    {
+      "title": "Black candle",
+      "unlit": 38,
+      "lit": 32,
+      "firemaking_level": 1
+    },
+    {
+      "title": "Torch",
+      "unlit": 596,
+      "lit": 594,
+      "firemaking_level": 1
+    },
+    {
+      "title": "Candle lantern",
+      "unlit": 4529,
+      "lit": 4531,
+      "firemaking_level": 4
+    },
+    {
+      "title": "Candle lantern",
+      "unlit": 4532,
+      "lit": 4534,
+      "firemaking_level": 4
+    },
+    {
+      "title": "Oil lamp",
+      "unlit": 4522,
+      "lit": 4524,
+      "firemaking_level": 12
+    },
+    {
+      "title": "Oil lantern",
+      "unlit": 4537,
+      "lit": 4539,
+      "firemaking_level": 26
+    },
+    {
+      "title": "Bullseye lantern",
+      "unlit": 4548,
+      "lit": 4550,
+      "firemaking_level": 49
+    },
+    {
+      "title": "Mining helmet",
+      "unlit": 5014,
+      "lit": 5013,
+      "firemaking_level": 65
+    }
+  ],
+  "held_mappings": [
+    {
+      "kind": "openrune",
+      "buttons": [
+        [
+          "2",
+          "1"
+        ],
+        [
+          "3",
+          "2"
+        ],
+        [
+          "4",
+          "3"
+        ],
+        [
+          "6",
+          "4"
+        ],
+        [
+          "7",
+          "5"
+        ]
+      ]
+    },
+    {
+      "kind": "project_gielinor",
+      "buttons": [
+        [
+          "2",
+          "1"
+        ],
+        [
+          "3",
+          "2"
+        ],
+        [
+          "4",
+          "3"
+        ],
+        [
+          "6",
+          "4"
+        ],
+        [
+          "7",
+          "5"
+        ]
+      ]
+    }
+  ],
+  "scope": "Thirteen exact source/original-Kotlin/Wiki hashes independently match. Nine completed owned light types and current Firemaking levels1/1/1/4/4/12/26/49/65 agree; Tinderbox590 retained. Source is immediate inventory replacement with no queue, animation or XP calls; its generic held2 extinguish differs from actual target item-specific operations. Target selected-slot atomic/member/ordinary-item guards are deliberate stronger policy. Oil filling, candle/frame acquisition, worn and ambient effects excluded; Wiki acquisition/filling recipe ticks do not prove lighting latency. Native raw clocks/container/message and lifecycle acceptance remain separate.",
+  "limitations": [
+    "No donor executable or rendered/native frame or audio parity claimed.",
+    "Wiki Firemaking info omits XP field on most pages; no-XP behavior independently established from source and World/native state, not inferred from that omission.",
+    "Donor lighting success uses unlit display name while target names can be shorter; feedback comparison must preserve wording differences."
+  ]
+}

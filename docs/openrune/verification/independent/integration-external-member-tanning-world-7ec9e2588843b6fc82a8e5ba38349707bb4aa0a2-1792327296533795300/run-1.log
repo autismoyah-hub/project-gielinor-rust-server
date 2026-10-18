@@ -1,0 +1,8 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\7ec9e2588843b6fc82a8e5ba38349707bb4aa0a2\external-harness-0236434500)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.69s
+     Running tests\world.rs (C:\Projects\OSRSRSPS\agent7-verification\work\7ec9e2588843b6fc82a8e5ba38349707bb4aa0a2\target\debug\deps\world-a2b99b1f3be964ec.exe)
+
+running 1 test
+test member_six_profile_paid_bounds_and_free_filter ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 19.61s

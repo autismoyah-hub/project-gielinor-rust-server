@@ -43,7 +43,7 @@
     "chem-crash",
     "food-negative"
   ],
-  "next_eligible_contract": "OR-MIG-0071",
-  "next_action": "OR70exactc7ddebe terminal FAILED:V0/V2/V3/V4PASS,V1FAILPG-DEF-004; preserve all normal and crash state. OR71exactbc277dc3 V0/V1PASS;7812resolver+560World+4unsupportedfailure/8syntheticfailure+932legacycontrols+69cache refusals pass. Native four choices/both directions8raw/24000fineXP and same-save restart independently PASS. amethyst-batch/native-001is prepared/built/seeded/frozen, no produce phase yet; after source-only checkpoint run produce once then actualrelogin and independent assessment of1/5/10/All7counts23raw/69000fineXP. Remaining native custom/negative/partial/crash/effect/audio/reference scopes unaccepted. Intake tanning105r1/r2/106/107 inspected separately, no independent acceptance. Keep chemistry deferred and continue queue.",
+  "next_eligible_contract": "OR-MIG-0108",
+  "next_action": "OR84exactad739676terminalFAILED:V0/V2/V4PASS,V1/V3FAILPG-DEF-00372life cases. Preserve native normal/recovery/feedback runs and all evidence; no FORGE stop. OR71V0/V1/V3PASS, V2sharedcustominputBLOCKED/V4audioIN_PROGRESS. OR105r1/r2PG-DEF-00516life failures each; OR106732scopedWorldcasesPASS. Next eligible108held Imcando Swap exact7d4e09b6fdad766312ef55238e61c2730ea0b529: independent World allslot/full/sparse/duplicates/member/F2P/stale/metadata/life/delay tests first, then actualcache/native/lifecycle/reference. No108campaign prepared yet. Keep chemistry deferred.",
   "deferred_execution": "Chemistry interrupt-002 had already ended with a raw observer assertion failure when deferral arrived; owned graceful stop path recorded, no live chemistry run retained. Crash scenario build was resource-deferred and never executed. Do not launch new chemistry tests or silently classify unresolved assertions as implementation failures."
 }

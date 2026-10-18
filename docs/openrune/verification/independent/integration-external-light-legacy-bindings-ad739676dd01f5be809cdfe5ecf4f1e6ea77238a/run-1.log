@@ -1,0 +1,66 @@
+warning: unnecessary `unsafe` block
+  --> C:\Projects\OSRSRSPS\agent7-targets\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\vendor\num-bigint-0.4.6\src\biguint\addition.rs:23:9
+   |
+23 |         unsafe { arch::_addcarry_u64(carry, a, b, out) }
+   |         ^^^^^^ unnecessary `unsafe` block
+   |
+   = note: `#[warn(unused_unsafe)]` (part of `#[warn(unused)]`) on by default
+
+warning: unnecessary `unsafe` block
+  --> C:\Projects\OSRSRSPS\agent7-targets\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\vendor\num-bigint-0.4.6\src\biguint\subtraction.rs:23:9
+   |
+23 |         unsafe { arch::_subborrow_u64(borrow, a, b, out) }
+   |         ^^^^^^ unnecessary `unsafe` block
+
+warning: `num-bigint` (lib) generated 2 warnings
+warning: unused macro definition: `prefix`
+  --> C:\Projects\OSRSRSPS\agent7-targets\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\vendor\libbz2-rs-sys-0.2.2\src\bzlib.rs:71:14
+   |
+71 | macro_rules! prefix {
+   |              ^^^^^^
+   |
+   = note: `#[warn(unused_macros)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `prefix`
+  --> C:\Projects\OSRSRSPS\agent7-targets\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\vendor\libbz2-rs-sys-0.2.2\src\bzlib.rs:88:16
+   |
+88 | pub(crate) use prefix;
+   |                ^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `libbz2_rs_sys_version`
+  --> C:\Projects\OSRSRSPS\agent7-targets\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\vendor\libbz2-rs-sys-0.2.2\src\lib.rs:83:16
+   |
+83 | pub(crate) use libbz2_rs_sys_version;
+   |                ^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated function `from_mut` is never used
+   --> C:\Projects\OSRSRSPS\agent7-targets\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\vendor\libbz2-rs-sys-0.2.2\src\bzlib.rs:253:30
+    |
+230 |     impl<S: StreamState> BzStream<S> {
+    |     -------------------------------- associated function in this implementation
+...
+253 |         pub(crate) unsafe fn from_mut(s: &mut bz_stream) -> &mut Self {
+    |                              ^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `libbz2-rs-sys` (lib) generated 4 warnings (run `cargo fix --lib -p libbz2-rs-sys` to apply 2 suggestions)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\external-harness-5905091200)
+warning: unused import: `gielinor_server::content::light_sources`
+ --> tests\bindings.rs:3:5
+  |
+3 | use gielinor_server::content::light_sources;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `proving-ground-energy` (test "bindings") generated 1 warning (run `cargo fix --test "bindings" -p proving-ground-energy` to apply 1 suggestion)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 6.33s
+     Running tests\bindings.rs (C:\Projects\OSRSRSPS\agent7-verification\work\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\target\debug\deps\bindings-68bd89f84687943d.exe)
+
+running 1 test
+test all_thirty_seven_legacy_crafting_tool_profiles ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.13s

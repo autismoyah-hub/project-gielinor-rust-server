@@ -1,0 +1,29 @@
+{
+  "implementation_id": "OR-MIG-0071",
+  "tested_sha": "bc277dc3e7e15088323a4f048f57dc43185fb7c0",
+  "campaign_kind": "historical",
+  "feature": "amethyst-crash",
+  "status": "PASS",
+  "native_observed_prefix": 1,
+  "native_max_received_prefix": 2,
+  "durable_raw_credits": 0,
+  "durable_tips": 0,
+  "remaining_raws": 23,
+  "fine_xp_award": 0,
+  "scope": "Observed unsaved native whole-tip prefix, owned server abrupt stop/no save acknowledgement, complete prior SQL/real native restart rollback without replay. Every received raw inventory packet is a complete valid selected-first/ascending captured prefix with whole15-tip credits; XP values are per-raw and whole SQL Stats/coins/chisels/energy survive.",
+  "limits": [
+    "No exact server commit count at physical disconnect is inferred from asynchronous client observations.",
+    "Unsaved recovery is not an injection inside SQL commit; no rendered/audio/original executable or currentHEAD acceptance."
+  ],
+  "evidence_sha256": {
+    "initial-state.json": "b4d94e4f08029fa2cfd733293c97004e54917c3606271c47314ed2936ead6df2",
+    "produce/client.log": "ece6162ed67eb8e8b8a4ec1dad2dcefa4cae1e6dbfc6c19b76a7bccce52e01c3",
+    "produce/manifest.json": "9f93e423468e567c8dd157fbef10f1ff20fc01b7b5014a8e93aa9a585556c331",
+    "produce/after.json": "a5620156f1734f397065b0f934153260e7196fa69e028a81b38e3e5368cbea3a",
+    "relogin/client.log": "6e29951d3937092a17e285800f380a94993cd278a508c526d114e153ba829af5",
+    "relogin/manifest.json": "14ce195e6a5a1722e26051536b6448a9b8f3193dfbc45241d044bbb645eee281",
+    "relogin/after.json": "37293dc1931ae4d95f11e782f1ce11a395f97ff88f5f23db922f4e7f3de9fa93",
+    "frozen-observer/pg_observer.rs": "7fa43a53d7e804e579290286e29a3989a8e292401d8a7b56049f3bd0e632ae02",
+    "frozen-observer/build.json": "879052876f796a7ab0b066419eaa1ce0bba22509d11bf4feddcf0fdfed2e88e0"
+  }
+}

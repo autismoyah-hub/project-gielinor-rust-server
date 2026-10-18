@@ -1,0 +1,12 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\external-harness-4128761300)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.23s
+     Running tests\legacy.rs (C:\Projects\OSRSRSPS\agent7-verification\work\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\target\debug\deps\legacy-579dd61288fae8fd.exe)
+
+running 3 tests
+test f2p_gems_remain_available_to_nonmembers_in_quantity_route ... ok
+test all_sixteen_both_directions_three_rates_quantities_selected_order_and_exact_cadence has been running for over 60 seconds
+test invalid_admission_and_late_failure_cancel_captured_work_without_fallback has been running for over 60 seconds
+test invalid_admission_and_late_failure_cancel_captured_work_without_fallback ... ok
+test all_sixteen_both_directions_three_rates_quantities_selected_order_and_exact_cadence ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 130.45s

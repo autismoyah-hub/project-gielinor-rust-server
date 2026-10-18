@@ -1,0 +1,29 @@
+{
+  "implementation_id": "OR-MIG-0071",
+  "tested_sha": "bc277dc3e7e15088323a4f048f57dc43185fb7c0",
+  "campaign_kind": "historical",
+  "feature": "amethyst-interrupt",
+  "status": "PASS",
+  "native_observed_prefix": 1,
+  "native_max_received_prefix": 1,
+  "durable_raw_credits": 2,
+  "durable_tips": 30,
+  "remaining_raws": 21,
+  "fine_xp_award": 6000,
+  "scope": "Observed native partial All23prefix and acknowledged partial save; actual completed durable prefix is independently reconstructed, remaining raw preserved and no production/dialog replay after process restart/native reconnect. Durable prefix need not equal earlier asynchronous observation. Every received raw inventory packet is a complete valid selected-first/ascending captured prefix with whole15-tip credits; XP values are per-raw and whole SQL Stats/coins/chisels/energy survive.",
+  "limits": [
+    "No exact server commit count at physical disconnect is inferred from asynchronous client observations.",
+    "Unsaved recovery is not an injection inside SQL commit; no rendered/audio/original executable or currentHEAD acceptance."
+  ],
+  "evidence_sha256": {
+    "initial-state.json": "b4d94e4f08029fa2cfd733293c97004e54917c3606271c47314ed2936ead6df2",
+    "produce/client.log": "08600a1a9e99f2fd846cd4c9feca42548140c3c64e5368e04ceb9a433a550584",
+    "produce/manifest.json": "6c8c1033198c265572ad670262f007583f9b2a10e513346b0cbaaca0795280f3",
+    "produce/after.json": "dc462f7bbba91c5dca73246c70283a9f2a8bd79b61a26fc003afaa11570be7aa",
+    "relogin/client.log": "4ffead3915eb41550508fb6cb038947724bfb7c1400bf95504137cf22d3baf4f",
+    "relogin/manifest.json": "b560fcf9169ac1c93fcb6e3f7bd44740632a59eb5c41dbd2bd8175d650a6dba0",
+    "relogin/after.json": "1cccbbf70f4b6ccd5c7b1b46d254abf6d3a46baf73dfb6bb13dc271fba8646f7",
+    "frozen-observer/pg_observer.rs": "7fa43a53d7e804e579290286e29a3989a8e292401d8a7b56049f3bd0e632ae02",
+    "frozen-observer/build.json": "879052876f796a7ab0b066419eaa1ce0bba22509d11bf4feddcf0fdfed2e88e0"
+  }
+}

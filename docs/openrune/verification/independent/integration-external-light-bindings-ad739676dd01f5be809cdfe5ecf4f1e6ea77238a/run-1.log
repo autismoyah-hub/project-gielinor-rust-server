@@ -1,0 +1,84 @@
+   Compiling autocfg v1.4.0 (C:\Projects\OSRSRSPS\agent7-targets\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\vendor\autocfg-1.4.0)
+   Compiling num-traits v0.2.19 (C:\Projects\OSRSRSPS\agent7-targets\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\vendor\num-traits-0.2.19)
+   Compiling num-integer v0.1.46 (C:\Projects\OSRSRSPS\agent7-targets\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\vendor\num-integer-0.1.46)
+   Compiling num-bigint v0.4.6 (C:\Projects\OSRSRSPS\agent7-targets\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\vendor\num-bigint-0.4.6)
+warning: unnecessary `unsafe` block
+  --> C:\Projects\OSRSRSPS\agent7-targets\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\vendor\num-bigint-0.4.6\src\biguint\addition.rs:23:9
+   |
+23 |         unsafe { arch::_addcarry_u64(carry, a, b, out) }
+   |         ^^^^^^ unnecessary `unsafe` block
+   |
+   = note: `#[warn(unused_unsafe)]` (part of `#[warn(unused)]`) on by default
+
+warning: unnecessary `unsafe` block
+  --> C:\Projects\OSRSRSPS\agent7-targets\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\vendor\num-bigint-0.4.6\src\biguint\subtraction.rs:23:9
+   |
+23 |         unsafe { arch::_subborrow_u64(borrow, a, b, out) }
+   |         ^^^^^^ unnecessary `unsafe` block
+
+warning: `num-bigint` (lib) generated 2 warnings
+   Compiling adler2 v2.0.1 (C:\Projects\OSRSRSPS\agent7-targets\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\vendor\adler2-2.0.1)
+   Compiling miniz_oxide v0.8.9 (C:\Projects\OSRSRSPS\agent7-targets\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\vendor\miniz_oxide-0.8.9)
+   Compiling gielinor-protocol v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\crates\protocol)
+   Compiling libbz2-rs-sys v0.2.2 (C:\Projects\OSRSRSPS\agent7-targets\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\vendor\libbz2-rs-sys-0.2.2)
+warning: unused macro definition: `prefix`
+  --> C:\Projects\OSRSRSPS\agent7-targets\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\vendor\libbz2-rs-sys-0.2.2\src\bzlib.rs:71:14
+   |
+71 | macro_rules! prefix {
+   |              ^^^^^^
+   |
+   = note: `#[warn(unused_macros)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `prefix`
+  --> C:\Projects\OSRSRSPS\agent7-targets\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\vendor\libbz2-rs-sys-0.2.2\src\bzlib.rs:88:16
+   |
+88 | pub(crate) use prefix;
+   |                ^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `libbz2_rs_sys_version`
+  --> C:\Projects\OSRSRSPS\agent7-targets\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\vendor\libbz2-rs-sys-0.2.2\src\lib.rs:83:16
+   |
+83 | pub(crate) use libbz2_rs_sys_version;
+   |                ^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated function `from_mut` is never used
+   --> C:\Projects\OSRSRSPS\agent7-targets\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\vendor\libbz2-rs-sys-0.2.2\src\bzlib.rs:253:30
+    |
+230 |     impl<S: StreamState> BzStream<S> {
+    |     -------------------------------- associated function in this implementation
+...
+253 |         pub(crate) unsafe fn from_mut(s: &mut bz_stream) -> &mut Self {
+    |                              ^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `libbz2-rs-sys` (lib) generated 4 warnings (run `cargo fix --lib -p libbz2-rs-sys` to apply 2 suggestions)
+   Compiling gielinor-cache v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\crates\cache)
+   Compiling gielinor-storage v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\crates\storage)
+   Compiling gielinor-server v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\crates\server)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\external-harness-1486366900)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1m 07s
+     Running tests\bindings.rs (C:\Projects\OSRSRSPS\agent7-verification\work\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\target\debug\deps\bindings-68bd89f84687943d.exe)
+
+running 1 test
+test actual_nineteen_items_nine_profiles_and_fail_closed_metadata ... FAILED
+
+failures:
+
+---- actual_nineteen_items_nine_profiles_and_fail_closed_metadata stdout ----
+
+thread 'actual_nineteen_items_nine_profiles_and_fail_closed_metadata' (2492) panicked at tests\bindings.rs:17:1:
+assertion `left == right` failed
+  left: [7, 9, 8, 3, 2, 2, 4, 1, 1]
+ right: [7, 9, 8, 3, 2, 4, 4, 1, 1]
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    actual_nineteen_items_nine_profiles_and_fail_closed_metadata
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.52s
+
+error: test failed, to rerun pass `--test bindings`

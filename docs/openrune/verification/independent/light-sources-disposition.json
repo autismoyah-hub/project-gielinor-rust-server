@@ -1,0 +1,42 @@
+{
+  "implementation_id": "OR-MIG-0084",
+  "revision": 1,
+  "tested_sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
+  "status": "FAILED",
+  "scope": "All applicable V0\u2013V4 obligations have a recorded terminal disposition for inventory light toggles at exact84. V1/interrupted-inputV3FAILPG-DEF-003;V0/V2/V4PASS. Historical target is not accepted. Preserve successful native normal/recovery/feedback states and continue unrelated contracts without FORGE stop or newer-SHA substitution.",
+  "levels": {
+    "V0": {
+      "status": "PASS",
+      "reason": "Exact84server compiled/all constructors and actual startup against95immutable resources. Nine actual19item/Firemaking11factory descriptors plus215metadata refusals complete in retained successful prefix; separate37legacy Crafting factory/resolver controls PASS. Native real held/menu actions reached registrations."
+    },
+    "V1": {
+      "status": "FAIL",
+      "reason": "PG-DEF-003 exact84addendum:72named zeroHP/realqueueddeath both-direction/fresh-or-pending held cases still light selected item. Existing398light/convert/skill9controls,932legacy World and37actual Crafting profiles PASS; positives cannot override actor-life defect."
+    },
+    "V2": {
+      "status": "PASS",
+      "reason": "Native nine profiles bothdirections18lighting/9actualExtinguish/27stale refusals; independent raw22/18decode every27whole transition and nine exact149:0/button2,2,6,3,3,3,3,3,4/selected litIDs. Separate nine lighting success texts and nine Extinguish texts observed; full28tools/duplicates/coins/Stats unchanged, zeroXP/noquantity. Genuine Use/Cancel sends no target27and changes nothing. Native dead-player reachability remains separately untested."
+    },
+    "V3": {
+      "status": "FAIL",
+      "reason": "Normal nine lit/nine unlit whole saved state and actual native reconnect PASS. Separate unsaved raw18candle credit/noack/ownedtermination restores prior whole inventory/Stats on SQL and actual native reconnect; UseCancelPASS. But36already-prepared held contexts across zeroHP/queueddeath still convert, violating interrupted-input refusal. No mid-SQLfault claim."
+    },
+    "V4": {
+      "status": "PASS",
+      "reason": "Strongest available comparison:13exactsource/originalKotlin/Wikihashes/nine completed profiles/Firemaking levels and actual target cache ops agree. Source genericheld2/button3 differs target2,2,6,3,3,3,3,3,4 verified in native wire. Source immediate/noqueue/noanimation/noXP matches independent sameWorldclock and unchangedStats; receive clocks not latency parity. Exact target lighting short names and common Extinguish text observed; source unlit display-name wording differs explicitly. Target selected-slot/metadata/credit/member guards are stronger policy; original global membership behavior unverified. No original executable/render/audio parity claimed; fuel/acquisition/worn/ambient effects excluded."
+    }
+  },
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/integration-external-light-source-world-ad739676dd01f5be809cdfe5ecf4f1e6ea77238a/manifest.json": "c8b6275b098e6c082ae7bc01d661d7ea1f29a1f775a411cfebf881085d6ea71b",
+    "docs/openrune/verification/independent/integration-external-light-conversion-world-ad739676dd01f5be809cdfe5ecf4f1e6ea77238a/manifest.json": "21c231aa78a681ba703dec5035164bae388ecc4f285a188b1e503a8b04d7efaa",
+    "docs/openrune/verification/independent/integration-external-light-tool-regression-ad739676dd01f5be809cdfe5ecf4f1e6ea77238a/manifest.json": "c1a674a07a9d3304d4edb1a1c5e77dea566a111c89b235d3b3e9a565f9fdfe94",
+    "docs/openrune/verification/independent/integration-external-light-legacy-bindings-ad739676dd01f5be809cdfe5ecf4f1e6ea77238a/manifest.json": "1b6c8098bd299563b97364404d273716ad2914dba55fb1584a99659b00363d69",
+    "docs/openrune/verification/independent/light-bindings-prefix-assessment.json": "8968d9fe9b55ac009be8675492643e1648eaaf3d9d565420b0771dc8907ed9c5",
+    "docs/openrune/verification/independent/deep-light-sources/native-002/independent-assessment.json": "a12ea0fb2f303514e04c9db15a69daac5b379d9888f3b64ebea22940e31d089c",
+    "docs/openrune/verification/independent/deep-light-sources/native-002/packet-assessment.json": "6fdbaa51eef0af4b7659b58165a1e440a878f530b046aacd81a12bb7e77bbf74",
+    "docs/openrune/verification/independent/deep-light-crash/native-001/independent-assessment.json": "44006dde94f97c76639189145d9685258ff4368fc2ca8be9483b6ec99c912ac7",
+    "docs/openrune/verification/independent/deep-light-feedback/native-002/independent-assessment.json": "2d9df9eafc04df5e24fd7cc69b907372ab8078fa53c354f0cdd9f354c6037daa",
+    "docs/openrune/verification/independent/reference-lights/comparison.json": "d356f4f1e21600e96ae86985c0cc564a2c896b5e9f00cc36d637cce785b43a28",
+    "docs/openrune/verification/independent/light-life-pg-def-003-addendum.json": "f707b69fd9ba2728e0d529c80fd62090ea716aa748b29caff674b56b40616eaf"
+  }
+}

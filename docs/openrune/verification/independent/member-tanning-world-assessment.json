@@ -1,0 +1,22 @@
+{
+  "implementation_id": "OR-MIG-0106",
+  "tested_sha": "7ec9e2588843b6fc82a8e5ba38349707bb4aa0a2",
+  "status": "PASS_SCOPED_WORLD_CASES",
+  "scope": "576 independent reached-NPC/World quantity-token cases cover six member hide recipes/both standard tanners/F2P-filtered choices/requests -1,0,1,5,28,MAX/fees0,exact,5fee-1,MAX/full27 hides and fee slot. Exact whole inventory/Stats, one-use token/no repeats verified. Twelve separately successful live-membership-loss cases retained from original partial attempt;144 malformed selected input/currency/output metadata/config/live-member refusal cases preserve whole inventory/Stats/clean modified flags and no success message. Initial F2P test incorrectly expected Ok for absent recipe index: actual InvalidItem correctly refuses; original FAIL retained and only failed matrix rerun. No implementation defect inferred from that QA oracle error. Synthetic World registrations do not establish actual cache/startup/RuntimeSkillMulti/native/persistence/reference acceptance; actor-life coverage remains open for106, separate PG-DEF-005 targets105r1/r2 only. Chemistry remains deferred.",
+  "cases": {
+    "matrix": 576,
+    "live_membership_loss": 12,
+    "atomic_refusal": 144
+  },
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/integration-external-member-tanning-guards-7ec9e2588843b6fc82a8e5ba38349707bb4aa0a2/manifest.json": "323cd361cc20e6f6414f6dc8765357791cc33d2cc714af9861f4e03589c64ef2",
+    "docs/openrune/verification/independent/integration-external-member-tanning-guards-7ec9e2588843b6fc82a8e5ba38349707bb4aa0a2/run-1.log": "e2be7d628b292c0b04d7a02e5443a7a30d39395ffefa3f7ce0d58c5e1bf5c2c3",
+    "docs/openrune/verification/independent/integration-external-member-tanning-guards-7ec9e2588843b6fc82a8e5ba38349707bb4aa0a2/harness/guards.rs": "9b5fed61fb022de6e2e4c1e6256a21f4205b117ad8c9ceaeb58e7e62e5d47eb0",
+    "docs/openrune/verification/independent/integration-external-member-tanning-world-7ec9e2588843b6fc82a8e5ba38349707bb4aa0a2/manifest.json": "4f3e2a60d8491b17c05f4d7346b9de3237828b1a736dea9e5c3705c4c75d0ea3",
+    "docs/openrune/verification/independent/integration-external-member-tanning-world-7ec9e2588843b6fc82a8e5ba38349707bb4aa0a2/run-1.log": "e1e9ddb6a05d0edad82e61e93d0d1af3cb82f3f9f2997a0d888cf5413cefd808",
+    "docs/openrune/verification/independent/integration-external-member-tanning-world-7ec9e2588843b6fc82a8e5ba38349707bb4aa0a2/harness/world.rs": "f190f848f57adc396060e679f3d4bd5008cd8fc8937b8bf7ac0939a55e442917",
+    "docs/openrune/verification/independent/integration-external-member-tanning-world-7ec9e2588843b6fc82a8e5ba38349707bb4aa0a2-1792327296533795300/manifest.json": "682df1457a67483723e2cdecd5df68b70b67e00bf2790a0e6e852364eb2277cf",
+    "docs/openrune/verification/independent/integration-external-member-tanning-world-7ec9e2588843b6fc82a8e5ba38349707bb4aa0a2-1792327296533795300/run-1.log": "9bb7cde0e8dd9bdab2473b651692b2e69124a6828e0d4a1fbce57922a3b4a781",
+    "docs/openrune/verification/independent/integration-external-member-tanning-world-7ec9e2588843b6fc82a8e5ba38349707bb4aa0a2-1792327296533795300/harness/world.rs": "cf0d4ac42fd38d1cc032ed6620185e45be38e3355927c2957bced5f3f9826e18"
+  }
+}

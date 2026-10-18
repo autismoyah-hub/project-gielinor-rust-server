@@ -1,0 +1,65 @@
+{
+  "tested_integration_sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
+  "suite": "light-tool-regression",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 6506590208,
+    "active_compilers": [
+      "\"cargo.exe\",\"15420\",\"RDP-Tcp#0\",\"2\",\"45,468 K\"",
+      "\"rustc.exe\",\"12060\",\"RDP-Tcp#0\",\"2\",\"114,792 K\""
+    ],
+    "cpu_percent": 17.38,
+    "cpu_samples": [
+      18.1640625,
+      17.1875,
+      16.796875
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained",
+    "disk_free": 11481137152,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "a4ca92195b3ea784fd02e20c3454bd6a3eab5171",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\\external-harness-4128761300\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-light-tool-regression-ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\\external-harness-4128761300\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 3,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-light-tool-regression-ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative light-tool-regression scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-light-tool-regression-ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\\harness\\legacy.rs": "560bd0d335f8294cf666123877a246861326fdb56e5647009dfceea78c550659"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\bindings-68bd89f84687943d.exe": "231a8b53782211212aca3e910a447d55159d9211679bc404f6ebb7a384bf0e2c",
+    "target\\debug\\deps\\conversions-dcb05aa31295430f.exe": "ac834c0bd69da47c763f1b04c308b7dff8ec6043128145a054755d57bc07761f",
+    "target\\debug\\deps\\gielinor_server-7abd10c65476b4d7.exe": "cef43b235b5f91bdeb4f624a95f821ae0788e0e70275efb5a2a849a0a7991266",
+    "target\\debug\\deps\\legacy-579dd61288fae8fd.exe": "1ebd20e20ec529e22efd49230716eede96a5a83b278a57ea9b5175d044af54ec",
+    "target\\debug\\deps\\routing-12c524584fd1bea6.exe": "a05cfc4c918d362ffba629ee1de03015c1bd314cb8daaaf43b9eb374e41b4481"
+  }
+}
