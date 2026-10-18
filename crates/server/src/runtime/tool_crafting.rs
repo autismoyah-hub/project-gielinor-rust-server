@@ -28,7 +28,7 @@ impl<B: AccountBackend> Runtime<B> {
                 .iter()
                 .map(|r| OptionItem {
                     object: r.exchange.output,
-                    label: format!("{} (level {})", r.name, r.level),
+                    label: if r.output_count == 1 { format!("{} (level {})",r.name,r.level) } else { format!("{} x{} (level {})",r.name,r.output_count,r.level) },
                 })
                 .collect(),
             verb: 22,

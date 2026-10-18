@@ -76,6 +76,7 @@ pub fn crafting_finishes(
             ticks: 1,
             name: "serpentine helm",
             action: "carve",
+            output_count: 1,
             failure: None,
         },
     })

@@ -777,6 +777,8 @@ pub fn configure<B: AccountBackend>(
     let finishes=crate::content::crafting_finishes(n("obj"),n("stat"),&runtime.definitions).map_err(io::Error::other)?;
     runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,10980,10981,gielinor_world::held_use::Handler::AssemblyImmediate(finishes.light_orb)).map_err(|e|io::Error::other(format!("Light orb wiring registration: {e:?}")))?;
     runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,1755,12927,gielinor_world::held_use::Handler::ToolCrafting(finishes.serpentine_helm)).map_err(|e|io::Error::other(format!("Serpentine helm carving registration: {e:?}")))?;
+    let amethyst=crate::content::amethyst_cutting(n("obj"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)?;
+    runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,1755,21347,gielinor_world::held_use::Handler::ToolCraftingChoices{recipes:std::sync::Arc::new(amethyst),cycle_ticks:2}).map_err(|e|io::Error::other(format!("Amethyst cutting registration: {e:?}")))?;
     let glass=crate::content::glassblowing(n("obj"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)?;
     runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,1785,1775,gielinor_world::held_use::Handler::ToolCraftingChoices{recipes:std::sync::Arc::new(glass),cycle_ticks:3}).map_err(|e|io::Error::other(format!("Glassblowing registration: {e:?}")))?;
     runtime.configure_smelting_names(names)?;

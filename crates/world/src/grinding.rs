@@ -28,7 +28,15 @@ impl Job {
     /// Revalidate both exact slots before an atomic one-for-one replacement.
     /// The tool is retained, and a full inventory does not itself forbid grinding.
     pub fn complete(&self, inv: &mut Inventory, catalog: &Catalog, member: bool) -> Outcome {
+        self.complete_count(inv, catalog, member, 1)
+    }
+    /// One selected raw may create a checked stack count; legacy grinding
+    /// continues to call this with one output. Both debit and full credit stage.
+    pub fn complete_count(&self, inv:&mut Inventory, catalog:&Catalog, member:bool, output_count:u16)->Outcome {
         let r = self.recipe;
+        if output_count == 0 || (output_count > 1 && !catalog.stackable.contains(&r.output)) {
+            return Outcome::InvalidRecipe;
+        }
         if r.tool == r.input || r.output == r.input || r.output == r.tool {
             return Outcome::InvalidRecipe;
         }
@@ -51,7 +59,7 @@ impl Job {
         if next.delete(catalog, debit).is_err() {
             return Outcome::Capacity;
         }
-        let mut credit = Insert::new(r.output, 1);
+        let mut credit = Insert::new(r.output, i32::from(output_count));
         if !catalog.stackable.contains(&r.output) { credit.strict_slot = Some(self.input_slot); }
         if next.insert(catalog, credit).is_err() {
             return Outcome::Capacity;

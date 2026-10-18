@@ -67,6 +67,7 @@ pub fn immediate_tool_crafting(
             ticks: 0,
             name: "Dramen staff",
             action: "carve",
+            output_count: 1,
             failure: None,
         },
         Recipe {
@@ -84,6 +85,7 @@ pub fn immediate_tool_crafting(
             action: "cut",
             // Source curve reaches certainty at level 40, consistent with the Wiki.
             // Wiki failure XP (1.5) overrides the donor's omitted/default-zero reward.
+            output_count: 1,
             failure: Some(Failure {
                 output: 968,
                 xp_tenths: 15,

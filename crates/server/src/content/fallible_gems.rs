@@ -120,6 +120,7 @@ pub fn fallible_gems(
             ticks: 1,
             name,
             action: "cut",
+            output_count: 1,
             failure: Some(Failure {
                 output: 1633,
                 xp_tenths: fail_xp,

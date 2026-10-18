@@ -75,6 +75,7 @@ pub fn glassblowing(
             ticks: 2,
             name,
             action: "blow",
+            output_count: 1,
             failure:None,
         });
     }

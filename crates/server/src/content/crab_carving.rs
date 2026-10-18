@@ -80,6 +80,7 @@ pub fn crab_carving(
             ticks: 3,
             name,
             action: "carve",
+            output_count: 1,
             failure: Some(Failure {
                 output: broken,
                 xp_tenths: 0,

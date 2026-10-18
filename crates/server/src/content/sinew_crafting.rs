@@ -54,6 +54,7 @@ pub fn sinew_crafting(
         ticks: 1,
         name: "sinew",
         action: "cut",
+        output_count: 1,
         failure: None,
     })
 }

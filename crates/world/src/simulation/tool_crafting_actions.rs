@@ -211,6 +211,7 @@ mod tests {
                     ticks: 1,
                     name: "diamond",
                     action: "cut",
+                    output_count: 1,
                     failure: None,
                 }),
             )
@@ -472,6 +473,7 @@ mod choice_tests {
                 ticks: 2,
                 name: "Beer glass",
                 action: "blow",
+                output_count: 1,
                 failure: None,
             },
             Recipe {
@@ -487,6 +489,7 @@ mod choice_tests {
                 ticks: 2,
                 name: "Vial",
                 action: "blow",
+                output_count: 1,
                 failure: None,
             },
         ]);
@@ -726,6 +729,7 @@ mod prior_production_tests {
                 ticks: first,
                 name: "product",
                 action,
+                output_count: 1,
                 failure: None,
             };
             w.held_use_handlers
@@ -864,6 +868,7 @@ mod fallible_world_tests {
                 ticks: 1,
                 name: "Opal",
                 action: "cut",
+                output_count: 1,
                 failure: Some(Failure {
                     output: 1633,
                     xp_tenths: 38,
@@ -992,6 +997,7 @@ mod immediate_tests {
         for id in [tool,raw] {w.held_use_types.insert(id,Type{id,content:-1});}
         w.held_use_handlers.register(Scope::Types,tool,raw,Handler::ToolCraftingImmediate(Recipe{
             exchange:crate::grinding::Recipe{tool,input:raw,output:out,members:true,animation:None},level:if limestone{12}else{31},xp_tenths:if limestone{60}else{0},ticks:0,name:"product",action:"craft",
+            output_count: 1,
             failure:if limestone{Some(Failure{output:968,xp_tenths:15,low:137,high:434,message:"Failed"})}else{None},
         })).unwrap();
         (w,a,Request{selected_slot:19,selected_id:raw,target_slot:5,target_id:tool})

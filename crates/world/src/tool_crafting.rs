@@ -12,6 +12,7 @@ pub struct Recipe {
     pub exchange: grinding::Recipe,
     pub level: u8,
     pub xp_tenths: u16,
+    pub output_count: u16,
     pub ticks: u8,
     pub name: &'static str,
     pub action: &'static str,
@@ -65,7 +66,7 @@ impl Job {
             tool_slot: self.tool_slot,
             input_slot: self.input_slot,
         }
-        .complete(&mut inventory, catalog, member);
+        .complete_count(&mut inventory, catalog, member, r.output_count);
         if outcome != grinding::Outcome::Made {
             return Err(Error::Exchange(outcome));
         }
@@ -151,6 +152,7 @@ mod tests {
                 ticks: 2,
                 name: "emerald",
                 action: "cut",
+                output_count: 1,
                 failure: None,
             },
             tool_slot: 1,
@@ -224,6 +226,8 @@ impl Request {
                     || r.exchange.input != first.exchange.input
                     || r.ticks == 0
                     || r.level == 0
+                    || r.level > 99
+                    || r.output_count == 0
                     || r.xp_tenths == 0
             })
             || recipes
@@ -313,7 +317,11 @@ impl Job {
         let Some(failure) = self.recipe.failure else {
             return Ok((success, true));
         };
-        if failure.low < 0 || failure.high > u16::MAX as i32 || failure.low > failure.high {
+        if failure.low < 0
+            || failure.high > u16::MAX as i32
+            || failure.low > failure.high
+            || self.recipe.output_count != 1
+        {
             return Err(Error::Policy);
         }
         let mut failed_job = *self;
@@ -364,6 +372,7 @@ mod failure_tests {
                 ticks: 1,
                 name: "Jade",
                 action: "cut",
+                output_count: 1,
                 failure: Some(Failure {
                     output: 1633,
                     xp_tenths: 50,

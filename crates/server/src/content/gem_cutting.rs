@@ -117,6 +117,7 @@ pub fn gem_cutting(
             ticks: 1,
             name: output_name,
             action:"cut",
+            output_count: 1,
             failure:None,
         });
     }
