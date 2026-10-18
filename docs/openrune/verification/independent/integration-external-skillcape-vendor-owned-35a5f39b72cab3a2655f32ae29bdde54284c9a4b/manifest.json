@@ -1,0 +1,67 @@
+{
+  "tested_integration_sha": "35a5f39b72cab3a2655f32ae29bdde54284c9a4b",
+  "suite": "skillcape-vendor-owned",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 7459209216,
+    "active_compilers": [],
+    "cpu_percent": 13.07,
+    "cpu_samples": [
+      14.2578125,
+      12.890625,
+      12.055335968379444
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Existing project memory/commit/paging checks and sampled CPU ceiling; owned Cargo remains j1/two CPUs/BelowNormal",
+    "capacity_policy_sha256": "dc3c6e372de5369ab77c4ebbd7cf21c426d0916581e11f2377480eba79adcdfd",
+    "memory_preflight_exit": 0,
+    "memory_preflight_stdout": "Capacity: 6,950 MiB available, commit 59.3%, pages-in/s 0, disk 1.0 ms.\nCargo concurrency: -j 2\n",
+    "memory_preflight_stderr": "",
+    "disk_free": 1425780736,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "3ee6f42712d631db40e9a40f65e2358469d1bfb5",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\\external-harness-0542218900\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-skillcape-vendor-owned-35a5f39b72cab3a2655f32ae29bdde54284c9a4b\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\\external-harness-0542218900\\Cargo.toml",
+        "--",
+        "--nocapture"
+      ],
+      "exit_code": 0,
+      "tests_passed": 2,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-skillcape-vendor-owned-35a5f39b72cab3a2655f32ae29bdde54284c9a4b\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative skillcape-vendor-owned scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-skillcape-vendor-owned-35a5f39b72cab3a2655f32ae29bdde54284c9a4b\\harness\\owned.rs": "50c825cd9791bea1a2230048b707bdb8a6e084c68f05095ecdb01d33473c12f2"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\dialogue-d36725e4c2c77784.exe": "0f3d4b5c20e65bc6817e215fe9b2051a2894115bc0243d753f96288f99a10e18",
+    "target\\debug\\deps\\hood-78ae6fcf0bf766a8.exe": "103ed0ad68b30fd32be23987c1c1c54afdf18e9483231a29cb00736a233465d4",
+    "target\\debug\\deps\\owned-542a304984230faa.exe": "f43299578c42ae25800eb557fbd337770e96cde21d6a58395972b819855e7de4",
+    "target\\debug\\deps\\purchase-34a52fc432f52b86.exe": "6d00f5be7b08fa76c6911c1a2de650ebed54f8f2b54cdfc36c1f297a04a0d78f"
+  }
+}

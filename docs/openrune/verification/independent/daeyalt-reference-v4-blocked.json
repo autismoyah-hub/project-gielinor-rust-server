@@ -1,0 +1,22 @@
+{
+  "implementation_id": "OR-MIG-0126",
+  "tested_sha": "bd1294ab9e0ff850155b024364dc3a3a98a37bed",
+  "status": "BLOCKED",
+  "level": "V4",
+  "scope": "Fourprotectedsource/14pinnedWiki facts compared; actualall6/XPquartertruncation/nativeF2PRune-Pure/use-vs-acquisition distinction independently backed. Required nativeboostpolicy remains unfulfilled:current104World fixtures do not activate genuine nativeRunecraftingboost.",
+  "specific_blocker": "No validated non-deferred nativeRunecraftingboost activation route at exact126. World lacksBoostWornItem andRuntimeequipment adapter lacksboost_action. Registered pieboosts coverFarming/Fishing/Herblore/Crafting/Fletching/Slayer/Ranged,energyfoodAgility,DorgeshCooking;registeredordinaryStew is healing/bowlreplacement rather thanspicystew. Those inspected non-deferred routes do not activateRunecrafting20. Potion tests remain user-deferred. This is a bounded unavailable-route/acceptance-dependency finding,not proofabout every uninspected or hypotheticalroute.",
+  "required_resolution": "Provide/attest eligible existing nativeRunecraftingboost at this exactSHA,or clarify bounded contractboostcriterion. Laterimplemented boost requires its own SHA/integrationcampaign;never silentlysubstitute for126.130CraftingcapeBoost affectsCrafting12,notRunecrafting20. Continueothercontracts.",
+  "source_sha256": {
+    "crates/server/src/startup.rs": "6fbd25f13f8601ad6c888c6f23f79cbd554f7a4d8a2852180431d668fbaef2de",
+    "crates/server/src/content.rs": "e80e0cb46d6ae2bdec0d637425849f1854c1c7b27905940587ef4aaadc5808de",
+    "crates/server/src/content/dorgesh_food.rs": "57b9ff1e7171627e10b026be7e271486d5d6b9379b4ece41e3fae448d9420c10",
+    "crates/world/src/simulation.rs": "69ec2ae432ccf3f47f82792c3f707a78ffa61ae189d7d4f1386a0142d77d472f",
+    "crates/server/src/runtime/equipment_buttons.rs": "092c3b0fbf0a9646976882109f4916a1ffa59828d06fdc936e62546091f8d8c1"
+  },
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/reference-daeyalt/comparison.json": "db2ba1c9edf634d92dd80f2bbfbd6503ad4678b5f5b1ea3679188842f25fc791",
+    "docs/openrune/verification/independent/daeyalt-native-v2-complete.json": "991c87b3f7ef62a2cdab7448c0da37ffe3ad6db7dfb95ac9873928fc3ea5a998",
+    "docs/openrune/verification/independent/daeyalt-world-v1-complete.json": "a1c7eee0775c86c4812d09279aecaf8d1b4b797133f6581dc43a4afa8e40db68",
+    "docs/openrune/verification/independent/deep-rune-mind-daeyalt/native-001/rate125-blocker.json": "15f2ab52a00166e11af44159a1f113cad3a62e1f80466e904c098a331cc4e060"
+  }
+}

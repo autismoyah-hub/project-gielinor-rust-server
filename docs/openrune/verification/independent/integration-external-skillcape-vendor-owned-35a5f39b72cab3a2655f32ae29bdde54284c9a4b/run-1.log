@@ -1,0 +1,20 @@
+warning: unused import: `Effect`
+ --> C:\Projects\OSRSRSPS\agent7-targets\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\crates\world\src\simulation\skillcape_vendor_actions.rs:3:30
+  |
+3 |     dialogue::{Conversation, Effect, Pending},
+  |                              ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `gielinor-world` (lib) generated 1 warning (run `cargo fix --lib -p gielinor-world` to apply 1 suggestion)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\external-harness-0542218900)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.48s
+     Running tests\owned.rs (C:\Projects\OSRSRSPS\agent7-verification\work\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\target\debug\deps\owned-542a304984230faa.exe)
+
+running 2 tests
+PG_VENDOR_GUARD64 bothvendors fourtypes xfivebadcatalog plus12config/bag/coinfaults refusePolicy noPartialPlan PASS
+test invalid_catalog_config_and_currency_never_prepare_partial_outputs ... ok
+PG_VENDOR_OWNED48 bothcapes held/worn/hoodnone-held-worn Craftrefusespaidspare/existinghood Cookpaidspare/freeadditionalhood preservesoldcape coinsStats PASS
+test already_owned_crafting_and_cooking_policies_differ_without_mutating_old_capes ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s

@@ -398,4 +398,4 @@ warning: associated function `from_mut` is never used
 
 warning: `libbz2-rs-sys` (lib) generated 4 warnings (run `cargo fix --lib -p libbz2-rs-sys` to apply 2 suggestions)
    Compiling gielinor-client v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source)
-    Finished `dev` profile [unoptimized] target(s) in 6.87s
+    Finished `dev` profile [unoptimized] target(s) in 7.76s

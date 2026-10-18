@@ -1,0 +1,20 @@
+{
+  "affected_implementations": [
+    "OR-MIG-0125",
+    "OR-MIG-0126"
+  ],
+  "tested_sha": "7d2133f23e00ad852df8726ead67493e83c901b4",
+  "campaign_kind": "integration",
+  "status": "PASS_SCOPED",
+  "cases": 972,
+  "scope": "New independent ordinary Rune/Pure/mixed baseline at newer pinned7d2133afterRaiments/memberaltar andcape/guild changes. Allsixordinaryaltars/F2P-member/current-required99-104/count1-7-28/rates1-1.25-5;wholebaggearStats/fineXP,oneclock791/186,noRNG andemptyrepeat. Reuse owned previously successful scenario logic with only newly requiredRecipe.members/pure_only andConfig.outfit fields set explicitly for ordinary unmodified profiles. No historical replay or result inheritance;fresh972fixtures execute at this separate sourceSHA.",
+  "limitations": [
+    "Scoped authoritative integration regression only. No full125/126V1guard/Daeyalt/newRaiments/memberaltar/currentHEAD/native/persistence acceptance at this SHA.",
+    "Current104 is a constructed predicate, not real boost activation. Configured ordinaryprofiles do not prove actual current startup registration."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/integration-external-rune-altars-current-regression-7d2133f23e00ad852df8726ead67493e83c901b4/manifest.json": "7708289ef1a6b899a54816894b237edcedb64d2c6192073628db49d50247d66b",
+    "docs/openrune/verification/independent/integration-external-rune-altars-current-regression-7d2133f23e00ad852df8726ead67493e83c901b4/run-1.log": "d4524c15424bee4fb43d473b6e4acf7dab0fd313bca8cb072e7939f6a1f26945",
+    "docs/openrune/verification/independent/integration-external-rune-altars-current-regression-7d2133f23e00ad852df8726ead67493e83c901b4/harness/ordinary.rs": "7fdcb6d44ad08dde292abfd618a5b77b28365baf191aba8fc94278b88c484d19"
+  }
+}

@@ -1,0 +1,5 @@
+Loaded 8 map squares, 157 NPCs, 13686 locations
+Listening on 127.0.0.1:63102 (revision 239.1; partial gameplay implementation)
+Player ready: ActorId { slot: 1, generation: 185 }
+Save acknowledgement: {"actor_slot":1,"actor_generation":185,"save_generation":185,"observed_tick":120,"save_completed":true}
+Shutdown completed; accounts drained.

@@ -1,0 +1,7 @@
+{
+  "target_file": "crates/server/src/runtime/equipment_buttons.rs",
+  "target_source_sha256": "d424030593198de7a12d6bbf1608e0d23836fb6673dd12335fb008dd74ae127e",
+  "bridge_library_sha256": "fd4c851c89699fc3405f16e19ac04b9ecd16af44aa141d64c47029251cd1e5eb",
+  "dependency_manifest": "[package]\nname=\"pg-cape-boundary\"\nversion=\"0.1.0\"\nedition=\"2021\"\n[dependencies]\ngielinor-world={path=\"C:/Projects/OSRSRSPS/agent7-targets/7d2133f23e00ad852df8726ead67493e83c901b4/crates/world\"}\ngielinor-protocol={path=\"C:/Projects/OSRSRSPS/agent7-targets/7d2133f23e00ad852df8726ead67493e83c901b4/crates/protocol\"}\n",
+  "scope": "Small owned visibility bridge includes the exact unmodified pinned pure adapter in a normal dependency crate. Its cfg(test) developer tests are not compiled or run; only independently authored integration test calls execute. Component has already been mapped by Runtime: upstream open-interface/component authority is a separate V0/V2 obligation. Typed Button fields only; no sockets or constructed wire payloads."
+}

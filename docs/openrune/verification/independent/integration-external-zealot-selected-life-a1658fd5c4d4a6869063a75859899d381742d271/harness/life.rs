@@ -1,0 +1,16 @@
+//! Public authoritative World action/tick checks at the recorded implementation.
+use gielinor_world::{simulation::{World,PlayerData,ActorId,Action,WorldEvent},prayer::{Config,Event},prayer_preservation::Rule,inventory::Item,stats::Stats,npc::RandomSource,CoordGrid};
+struct Draw{n:u32,calls:usize}impl RandomSource for Draw{fn below(&mut self,n:u32)->u32{assert_eq!(n,80);self.calls+=1;self.n}}
+fn setup(worn:bool,confirm:bool)->(World,ActorId){let mut w=World::default();w.collision.allocate(3216,3216,0);w.prayer=Some(Config{skill:5,animation:827,bones:[(526,4.5)].into(),necklace:None,restore:Default::default(),worn_xp_percent:Default::default(),chaos:if confirm{Some([3220,3220,3220,3220])}else{None}});w.prayer_preservation=Some(Rule{pieces:[(25438,0),(25434,4),(25436,7),(25440,10)],excluded:[25766,25769,25772,25775,25778].into()});let mut stats=Stats::default();stats.set_base(3,10);stats.set_current(3,10);let mut p=PlayerData::new(1,"World burial observer".into(),CoordGrid::new(3220,3220,0).unwrap(),stats);p.xp_rate_hundreds=125;for s in 0..28{p.inventory.restore_slot(s,Some(Item{id:526,count:1,vars:0})).unwrap();}if worn{p.equipment.restore_slot(0,Some(Item{id:25438,count:1,vars:0})).unwrap();}w.queue_login(1,p).unwrap();w.tick_with_random(&mut Draw{n:0,calls:0}).unwrap();let a=w.actors().next().unwrap();w.set_membership(a,true).unwrap();w.drain_events();(w,a)}
+fn tick(w:&mut World,r:&mut Draw){w.tick_with_random(r).unwrap();}
+#[test]fn observe_authoritative_death_and_late_life_boundaries(){
+ use gielinor_world::hits::{Target,Hit,Style};let mut cases=0;let mut violations=0;
+ for slot in [0,7,27]{for phase in 0..6{for draw in [75,79]{let(mut w,a)=setup(true,false);let mut r=Draw{n:draw,calls:0};
+ let predead=phase==0||phase==2||phase==3;
+ if predead{if phase==0{w.data_mut(a).unwrap().stats.set_current(3,0);}else{w.queue_hit(Target::Player(a),Hit{display:None,source:None,style:Style::Typeless,damage:20},1).unwrap();tick(&mut w,&mut r);assert!(w.drain_events().iter().any(|e|matches!(e,WorldEvent::DeathRequested(_))));if phase==3{w.data_mut(a).unwrap().stats.set_current(3,10);}}}
+ let before=w.data(a).unwrap().clone();w.submit(a,Action::BuryItemSlot{slot,item:526}).unwrap();tick(&mut w,&mut r);
+ if !predead{assert_eq!(w.data(a).unwrap().stats.fine_xp(5),before.stats.fine_xp(5));if phase==1{w.data_mut(a).unwrap().stats.set_current(3,0);}else{w.queue_hit(Target::Player(a),Hit{display:None,source:None,style:Style::Typeless,damage:20},1).unwrap();tick(&mut w,&mut r);assert!(w.drain_events().iter().any(|e|matches!(e,WorldEvent::DeathRequested(_))));if phase==5{w.data_mut(a).unwrap().stats.set_current(3,10);}}}
+ for _ in 0..4{tick(&mut w,&mut r);}let p=w.data(a).unwrap();let delta=p.stats.fine_xp(5)-before.stats.fine_xp(5);let keep=p.inventory.get(slot).is_some();let bad=delta!=0||p.inventory!=before.inventory||r.calls!=0;violations+=usize::from(bad);cases+=1;
+ println!("PG_ZEALOT_LIFE slot={slot} phase={phase} draw={draw} hp={} fineXPdelta={delta} selectedRetained={keep} calls={} violation={bad}",p.stats.current(3),r.calls);
+ }}}assert_eq!(cases,36);println!("PG_ZEALOT_LIFE_SUMMARY cases={cases} violations={violations};diagnostic observations only,any violation is acceptance FAIL");
+}

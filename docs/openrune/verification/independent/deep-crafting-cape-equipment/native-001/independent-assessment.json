@@ -1,0 +1,16 @@
+{
+  "implementation_id": "OR-MIG-0130",
+  "tested_sha": "7d2133f23e00ad852df8726ead67493e83c901b4",
+  "status": "HARNESS_FAILURE",
+  "scope": "Launcher omitted crafting-cape prefix from native scenario-label routing, passing generic assemble to a frozen observer that contains the correct cape functions. Actual login succeeds, no menu/action/wire TX occurs, then unknown independent scenario. Exact full inventory/gear/Stats/fineXP unchanged; owned graceful save/stop succeeds. No implementation defect.",
+  "next_action": "Fix only launcher label routing; add public client_scenario manifest field. Fresh native-002 at same implementation SHA/identical controller and initial gameplay fixture; retain failed001 account and logs. Other five prepared cape scenarios unexecuted and need no reseed.",
+  "evidence_sha256": {
+    "produce/launcher.txt": "fc4d1542918a0e150b930758fe30cba35a1f142c0c4c71d4948ddb7e3d54c1a8",
+    "produce/manifest.json": "737ff22c2353a1c7d5c2db9681d884b29ad073d50d416a7eac3cfe54e5e57509",
+    "produce/client.log": "df9fbef1bd1ad2b90f1b12bb2f89e9724efd716ffa3a5b9096ae0b500d845ac3",
+    "produce/after.json": "75564e51bc7a901d2d2b4234871f257b34ac2724e55f95054c9447cd7a2aa136",
+    "initial-state.json": "63ff8e4ff53eeb4f8ff19eac28d3bf190d806180d53894a7945ff93db87319e3",
+    "frozen-observer/pg_observer.rs": "99f236c6ec1e2543b1803f35938ab0844d1ce074ce4e9e5e4779cf508fcfe838",
+    "frozen-observer/build.json": "acc461216bcf5472ef2d9580d5f0ca052ac33535a62adc9a51612a2981d01373"
+  }
+}

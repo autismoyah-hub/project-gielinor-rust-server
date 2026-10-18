@@ -1,0 +1,395 @@
+{
+  "implementation_id": "OR-MIG-0134",
+  "tested_sha": "a1658fd5c4d4a6869063a75859899d381742d271",
+  "status": "FAIL",
+  "finding": "PG-DEF-003 extension: selected burial life guards",
+  "priority": "P2 ordinary correction backlog; no implementation stop or external issue",
+  "scope": "36 independent publicWorld diagnostics confirm ordinary selected burial awards56fineXP at125rate and draws robe RNG while zeroHP or authoritativeDeathRequested remains unresolved. Draw75 consumes selected bone,draw79 preserves it; both award normalXP. Three selectedslots0/7/27 and six boundaries: initialzeroHP,latezeroHP,actualdeathbeforeadmission,actualdeathbeforeadmissionthenvisibleHPrestore,actualdeathafteradmission,actualdeathafteradmissionthenvisibleHPrestore. Actualdeath variants assert WorldEvent::DeathRequested from a queued lethalHit, with no respawn. Diagnostic Rust test PASS means all observations completed; every scenario is acceptanceFAIL.",
+  "reproduction": [
+    "Create member actor HP10 with ordinary526 in all28slots and ordinary25438 worn0;rate125.",
+    "Queue authoritative lethalHit20 and tick;assertDeathRequested. OptionallyrestorevisibleHP10withoutrespawn.",
+    "Submit BuryItemSlot with exactselectedbone526, tick through admission/completion using existing World RNG returning75or79.",
+    "Observe finePrayerXP+56 and onebelow80draw. At75selectedboneconsumed;79retained. Expectedlife guard refuses beforeXP/item/RNG while dead/deathpending."
+  ],
+  "actionable_correction": "At the original target or a separately contracted correction, apply existing common alive/death-pending checks consistently at selected burial admission, confirmation resume/animation and completion before RNG/transaction publication. Do not change legacy reference/altar behavior implicitly. Re-run all36historical scenarios against the new exact correction SHA plus live controls; retain originalFAIL.",
+  "passing_scope": {
+    "transaction_cases": 16602,
+    "world_normal_cases": 21,
+    "world_confirmation_cases": 4,
+    "notes": "Original mixedWorld run completed first7normalcases before the slot0lateHPfailure. Tail executes only14remainingnormalcases at slots7/27. Fourconfirmation cases passed in the original separate Rust test. No completed immutable gameplay replay."
+  },
+  "remaining": "V0runtime/cache/native and V2/V3durability remain open; positive subchecks do not acceptV1. OriginalrawFAIL and exactpristinesource retained.",
+  "observations": [
+    {
+      "slot": "0",
+      "phase": "0",
+      "draw": "75",
+      "hp": "0",
+      "fine_delta": "56",
+      "retained": "false",
+      "calls": "1",
+      "violation": "true"
+    },
+    {
+      "slot": "0",
+      "phase": "0",
+      "draw": "79",
+      "hp": "0",
+      "fine_delta": "56",
+      "retained": "true",
+      "calls": "1",
+      "violation": "true"
+    },
+    {
+      "slot": "0",
+      "phase": "1",
+      "draw": "75",
+      "hp": "0",
+      "fine_delta": "56",
+      "retained": "false",
+      "calls": "1",
+      "violation": "true"
+    },
+    {
+      "slot": "0",
+      "phase": "1",
+      "draw": "79",
+      "hp": "0",
+      "fine_delta": "56",
+      "retained": "true",
+      "calls": "1",
+      "violation": "true"
+    },
+    {
+      "slot": "0",
+      "phase": "2",
+      "draw": "75",
+      "hp": "0",
+      "fine_delta": "56",
+      "retained": "false",
+      "calls": "1",
+      "violation": "true"
+    },
+    {
+      "slot": "0",
+      "phase": "2",
+      "draw": "79",
+      "hp": "0",
+      "fine_delta": "56",
+      "retained": "true",
+      "calls": "1",
+      "violation": "true"
+    },
+    {
+      "slot": "0",
+      "phase": "3",
+      "draw": "75",
+      "hp": "10",
+      "fine_delta": "56",
+      "retained": "false",
+      "calls": "1",
+      "violation": "true"
+    },
+    {
+      "slot": "0",
+      "phase": "3",
+      "draw": "79",
+      "hp": "10",
+      "fine_delta": "56",
+      "retained": "true",
+      "calls": "1",
+      "violation": "true"
+    },
+    {
+      "slot": "0",
+      "phase": "4",
+      "draw": "75",
+      "hp": "0",
+      "fine_delta": "56",
+      "retained": "false",
+      "calls": "1",
+      "violation": "true"
+    },
+    {
+      "slot": "0",
+      "phase": "4",
+      "draw": "79",
+      "hp": "0",
+      "fine_delta": "56",
+      "retained": "true",
+      "calls": "1",
+      "violation": "true"
+    },
+    {
+      "slot": "0",
+      "phase": "5",
+      "draw": "75",
+      "hp": "10",
+      "fine_delta": "56",
+      "retained": "false",
+      "calls": "1",
+      "violation": "true"
+    },
+    {
+      "slot": "0",
+      "phase": "5",
+      "draw": "79",
+      "hp": "10",
+      "fine_delta": "56",
+      "retained": "true",
+      "calls": "1",
+      "violation": "true"
+    },
+    {
+      "slot": "7",
+      "phase": "0",
+      "draw": "75",
+      "hp": "0",
+      "fine_delta": "56",
+      "retained": "false",
+      "calls": "1",
+      "violation": "true"
+    },
+    {
+      "slot": "7",
+      "phase": "0",
+      "draw": "79",
+      "hp": "0",
+      "fine_delta": "56",
+      "retained": "true",
+      "calls": "1",
+      "violation": "true"
+    },
+    {
+      "slot": "7",
+      "phase": "1",
+      "draw": "75",
+      "hp": "0",
+      "fine_delta": "56",
+      "retained": "false",
+      "calls": "1",
+      "violation": "true"
+    },
+    {
+      "slot": "7",
+      "phase": "1",
+      "draw": "79",
+      "hp": "0",
+      "fine_delta": "56",
+      "retained": "true",
+      "calls": "1",
+      "violation": "true"
+    },
+    {
+      "slot": "7",
+      "phase": "2",
+      "draw": "75",
+      "hp": "0",
+      "fine_delta": "56",
+      "retained": "false",
+      "calls": "1",
+      "violation": "true"
+    },
+    {
+      "slot": "7",
+      "phase": "2",
+      "draw": "79",
+      "hp": "0",
+      "fine_delta": "56",
+      "retained": "true",
+      "calls": "1",
+      "violation": "true"
+    },
+    {
+      "slot": "7",
+      "phase": "3",
+      "draw": "75",
+      "hp": "10",
+      "fine_delta": "56",
+      "retained": "false",
+      "calls": "1",
+      "violation": "true"
+    },
+    {
+      "slot": "7",
+      "phase": "3",
+      "draw": "79",
+      "hp": "10",
+      "fine_delta": "56",
+      "retained": "true",
+      "calls": "1",
+      "violation": "true"
+    },
+    {
+      "slot": "7",
+      "phase": "4",
+      "draw": "75",
+      "hp": "0",
+      "fine_delta": "56",
+      "retained": "false",
+      "calls": "1",
+      "violation": "true"
+    },
+    {
+      "slot": "7",
+      "phase": "4",
+      "draw": "79",
+      "hp": "0",
+      "fine_delta": "56",
+      "retained": "true",
+      "calls": "1",
+      "violation": "true"
+    },
+    {
+      "slot": "7",
+      "phase": "5",
+      "draw": "75",
+      "hp": "10",
+      "fine_delta": "56",
+      "retained": "false",
+      "calls": "1",
+      "violation": "true"
+    },
+    {
+      "slot": "7",
+      "phase": "5",
+      "draw": "79",
+      "hp": "10",
+      "fine_delta": "56",
+      "retained": "true",
+      "calls": "1",
+      "violation": "true"
+    },
+    {
+      "slot": "27",
+      "phase": "0",
+      "draw": "75",
+      "hp": "0",
+      "fine_delta": "56",
+      "retained": "false",
+      "calls": "1",
+      "violation": "true"
+    },
+    {
+      "slot": "27",
+      "phase": "0",
+      "draw": "79",
+      "hp": "0",
+      "fine_delta": "56",
+      "retained": "true",
+      "calls": "1",
+      "violation": "true"
+    },
+    {
+      "slot": "27",
+      "phase": "1",
+      "draw": "75",
+      "hp": "0",
+      "fine_delta": "56",
+      "retained": "false",
+      "calls": "1",
+      "violation": "true"
+    },
+    {
+      "slot": "27",
+      "phase": "1",
+      "draw": "79",
+      "hp": "0",
+      "fine_delta": "56",
+      "retained": "true",
+      "calls": "1",
+      "violation": "true"
+    },
+    {
+      "slot": "27",
+      "phase": "2",
+      "draw": "75",
+      "hp": "0",
+      "fine_delta": "56",
+      "retained": "false",
+      "calls": "1",
+      "violation": "true"
+    },
+    {
+      "slot": "27",
+      "phase": "2",
+      "draw": "79",
+      "hp": "0",
+      "fine_delta": "56",
+      "retained": "true",
+      "calls": "1",
+      "violation": "true"
+    },
+    {
+      "slot": "27",
+      "phase": "3",
+      "draw": "75",
+      "hp": "10",
+      "fine_delta": "56",
+      "retained": "false",
+      "calls": "1",
+      "violation": "true"
+    },
+    {
+      "slot": "27",
+      "phase": "3",
+      "draw": "79",
+      "hp": "10",
+      "fine_delta": "56",
+      "retained": "true",
+      "calls": "1",
+      "violation": "true"
+    },
+    {
+      "slot": "27",
+      "phase": "4",
+      "draw": "75",
+      "hp": "0",
+      "fine_delta": "56",
+      "retained": "false",
+      "calls": "1",
+      "violation": "true"
+    },
+    {
+      "slot": "27",
+      "phase": "4",
+      "draw": "79",
+      "hp": "0",
+      "fine_delta": "56",
+      "retained": "true",
+      "calls": "1",
+      "violation": "true"
+    },
+    {
+      "slot": "27",
+      "phase": "5",
+      "draw": "75",
+      "hp": "10",
+      "fine_delta": "56",
+      "retained": "false",
+      "calls": "1",
+      "violation": "true"
+    },
+    {
+      "slot": "27",
+      "phase": "5",
+      "draw": "79",
+      "hp": "10",
+      "fine_delta": "56",
+      "retained": "true",
+      "calls": "1",
+      "violation": "true"
+    }
+  ],
+  "evidence_sha256": {
+    "integration-external-zealot-selected-matrix-a1658fd5c4d4a6869063a75859899d381742d271/manifest.json": "ccb93612f70a915f342b3c68990f81756923071300680395e5ece3ab086431a3",
+    "integration-external-zealot-selected-matrix-a1658fd5c4d4a6869063a75859899d381742d271/run-1.log": "fc751324385dd6365b2d1a3945dd3268ab72d83c3c79a06ac1c473892e4ce70f",
+    "integration-external-zealot-selected-world-a1658fd5c4d4a6869063a75859899d381742d271/manifest.json": "37d89c0506d1195dd7284d3dbfd1834f3a7240bb3f9c7f707371e20437d69a37",
+    "integration-external-zealot-selected-world-a1658fd5c4d4a6869063a75859899d381742d271/run-1.log": "0d63371f2ad3edd7de0ece2dc772b3944336a1983728f52d927c756760404f72",
+    "integration-external-zealot-selected-world-tail-a1658fd5c4d4a6869063a75859899d381742d271/manifest.json": "9789c95e190d7a153863e03e878fc394765136eb72f5bf44acec845cd408ad0c",
+    "integration-external-zealot-selected-world-tail-a1658fd5c4d4a6869063a75859899d381742d271/run-1.log": "b1edb105a0c718410eba08f6cbb92188d005aa22318c261c232b599cc34eaee1",
+    "integration-external-zealot-selected-life-a1658fd5c4d4a6869063a75859899d381742d271/manifest.json": "ca39692c8bdf4f2e0bff2cb3609b439281be14c792312ae177e40bf256f96f56",
+    "integration-external-zealot-selected-life-a1658fd5c4d4a6869063a75859899d381742d271/run-1.log": "aef00fe4b22f80bcd8a9038f86472b34a6c38274792f07149b3ff95cd5040cd1",
+    "reference-zealot-burial/comparison.json": "76cbcf093daeef1390a68f0958670ae0009a69f6105b2a13565c8d4f08d9bd49"
+  }
+}

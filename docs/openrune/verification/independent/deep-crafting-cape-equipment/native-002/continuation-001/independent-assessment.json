@@ -1,0 +1,51 @@
+{
+  "implementation_id": "OR-MIG-0130",
+  "tested_sha": "7d2133f23e00ad852df8726ead67493e83c901b4",
+  "status": "PASS_SCOPED",
+  "scope": "Actual same-account continuation closes the earlier scene-only observation gap without reseeding or replaying Remove/Wear. Two genuine native equipmentBoost actions and Skills tab opens render the existing native viewport interface overlay; privately inspected pixels show100/99 afterBoost and afterrepeat. Complete bag/gear/allbase/fineXP preserved across acknowledgedsave, realserverrestart/native reconnect and ordinaryexpiry to99. Privatebefore-continuation SQLite backup preserved and hashchecked.",
+  "frames": [
+    {
+      "private_name": "cape-skills-overlay100.bmp",
+      "sha256": "54034406e182e1c362748ced0a4089d5fe48e3d9320adaa289ffeb169354f3dc",
+      "received_clock": 220,
+      "width": 765,
+      "height": 503,
+      "inspection": "Viewed local BMP pixels directly: right-hand Skills panel Crafting current100 abovebase99; actual native fonts/icons/widgets. Both captures show100/99 and are intentionally identical for repeat-no-stack."
+    },
+    {
+      "private_name": "cape-skills-overlay-repeat100.bmp",
+      "sha256": "54034406e182e1c362748ced0a4089d5fe48e3d9320adaa289ffeb169354f3dc",
+      "received_clock": 245,
+      "width": 765,
+      "height": 503,
+      "inspection": "Viewed local BMP pixels directly: right-hand Skills panel Crafting current100 abovebase99; actual native fonts/icons/widgets. Both captures show100/99 and are intentionally identical for repeat-no-stack."
+    }
+  ],
+  "boost_send_clocks": [
+    201,
+    237
+  ],
+  "limitations": [
+    "Original equipment frames remain scene-only and do not become rendered evidence retroactively.",
+    "Actual existing interface renderer draws246widgets; unrelated pending minimap child-player/overlap visibility remains, so no claim of full scene/minimap/audio parity.",
+    "Private cache/assets/BMPs/database are not published; source-safe frame hashes and inspection notes only."
+  ],
+  "evidence_sha256": {
+    "continuation-source.json": "68323d05f9137bea642875566ee7888902ae60ae557ea80879e2848d9af45e8a",
+    "initial-state.json": "a4c2d9526c71734daf2a75e16654bdf1c1aad2a966741755c770e03e165026c5",
+    "build.json": "b9d6d176d978b213fc58308908ef00722959b0dfe9c2a10f926a0128e487d0fb",
+    "frozen-observer/build.json": "89c2f0013fbc7d0d40179dfa71c4e9c5f663221c6fd13d618acdea0ff0c55057",
+    "frozen-observer/source-manifest.json": "b48c54a1e0bb3651b085d02bd6ae3c5fd59d1e94342f080256d5c360f3a1cef1",
+    "frozen-observer/pg_observer.rs": "6ee30e39c69091b525b374e20afae790c7d9abcf5900ae422c484475505afb30",
+    "produce/manifest.json": "9a766ed332b6d7691c9df7c8db954a9c31b1b541ad0e1cbb42867887256c831b",
+    "produce/before.json": "a4c2d9526c71734daf2a75e16654bdf1c1aad2a966741755c770e03e165026c5",
+    "produce/after.json": "35baa45a1ac46296518902709841c3d07de96440d3e5bf4a170363d25b7fb8a4",
+    "produce/client.log": "90cd2e47099f3d856184030c4aaf544a12f35cc6b7e262942f7bbd15d1402808",
+    "produce/server.log": "96e6ea2b3d7e70bb8fbb177f62b739afa229ade784c5b306d0c158fef25c94e4",
+    "relogin/manifest.json": "125fa2ae4da694a1e2852241b71e63136a921770ac47c3f68eb612b795710092",
+    "relogin/before.json": "35baa45a1ac46296518902709841c3d07de96440d3e5bf4a170363d25b7fb8a4",
+    "relogin/after.json": "e4b722b518b387173b88e7d407d7e531e88df71111e3af58e0bb27ba18991dfc",
+    "relogin/client.log": "832133e09da9d6adccd1f3f5203336152af18dc1a2e25e0d3ac73e966fa90b65",
+    "relogin/server.log": "11639836b015f5df223c2c1bc15332b363d33241844784e42698cef23d14a9b0"
+  }
+}

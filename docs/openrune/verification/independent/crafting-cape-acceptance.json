@@ -1,0 +1,50 @@
+{
+  "implementation_id": "OR-MIG-0130",
+  "revision": 1,
+  "tested_sha": "7d2133f23e00ad852df8726ead67493e83c901b4",
+  "campaign_kind": "historical",
+  "independent_verification": true,
+  "status": "ACCEPTED",
+  "acceptance_scope": "AllapplicableV0-V4 requirements for Craftingcape9780/9781wornBoost only, at exact7d2133. ActualindependentWorld/cache/runtime/nativevisible100/repeat/F2PUIrefusal/save/restart/unsavedrecovery/source-Wikicomparison complete. This historicalacceptance does notinheritmovingFORGEHEADorfullcape/guildfeatureacceptance.",
+  "acceptance_history": "Earlier164caseV1acceptance was explicitlywithdrawn810d4f1;new1612typedbutton+12actualguildpermissioncasesclosedthemissingclasses. Originalfailedexpectations/compilerfailures/scene-onlyimages retained. NoFORGEhistoricaldevelopmenttest counted asnewindependentverification.",
+  "exclusions_and_blockers": [
+    "Teleport/passiveon-equip/emote/acquisition/trim/Maxcape andfull129r2guildwardrobes remainunported/separate.",
+    "OptionalnativeF2Pbackendrefusal-message scenario isBLOCKEDatthispin becauseactualclientdoesnotofferBoost. RequiredF2Prefusal isactuallyobservedasUIguardwithwholeunchangedstate;no constructedpacketornewerbuildwas substituted.",
+    "Privateframes showSkills100/99;nofullscene/audio/minimapordonnorexecutableparity. Source/Wikidrained/repeated/timer/member-policy differences remainqualified inV4.",
+    "Recoverybeforeacknowledgement,notduringSQLitecommit. Nofinishedimmutablecampaignwasreseeded;partialUIgapcontinuedonlyafterpreservedbackup."
+  ],
+  "levels": {
+    "V0": {
+      "status": "PASS",
+      "reason": "Exact pristine server binary built and actual cache-backed startup completed. Genuine native9780/9781Remove/Wear/Boost reaches actual mapped387:16nativeop2 and received stat46current100, proving startup/runtime/equipment/action/notification reachability. Independent actual two cape/stat/451Boost452Teleport/wear1base99facts and55malformedbinding refusals;1612typed mapped-button calls,12guild-entry/Boost permission scenarios and972ordinaryRune sharedWorld regressions PASS. No FORGE developer tests counted.",
+      "evidence": "crafting-cape-runtime-v0-complete.json"
+    },
+    "V1": {
+      "status": "PASS",
+      "reason": "Complete requiredV1 after explicit acceptance correction:164priorWorld/timer/queueddeath cases remain valid.1612independent typed calls exercise the unmodified pinned mapped-component adapter, including bothcapesself-or-1object/canonical-1inventoryclaim/actualwearslot1/op2,allRemove1/Teleport3controls andunregisteredcurrentitems.12actualWorld OpLoc guildentry/Boost scenarios prove bothcapemember/F2P/current39-40-99 permissions independent:qualifyingF2Pcape enters butBoost refuses;memberdrained39Boost40permits a freshentry. WholebaggearStats/fineXP conservation and zeroRNG retained.",
+      "evidence": "crafting-cape-v1-resolved.json"
+    },
+    "V2": {
+      "status": "PASS",
+      "reason": "Every required native criterion has actual native evidence at exact130SHA: both worn cape variants exposeBoost; real current387:16menu selection sendsIF_BUTTONX47op2;receivedstat46andprivateactualSkillsUI showCrafting100/99;repeat remains100,noXP/item/gear changes;normalexpiry andfreshBoost observed. F2Pnative login withworn9780 offersRemove/Examine only andnoBoost; no perk action sent andwholebag/gear/allStatsunchanged. RealRemove/Wear bothvariants andno passiveequip boost separatelyobserved.",
+      "evidence": "crafting-cape-native-v2-complete.json"
+    },
+    "V3": {
+      "status": "PASS",
+      "reason": "Applicable immediatewornBoost lifecycle requirements completed. Multiple actual acknowledgedsave/gracefulprocessrestart/native reconnect campaigns preserve wholebag/gear/allbase/fineXP andthe exactsavedcurrentlevel; subsequent changes onlyexistingnormalstatregeneration. Actualnative normalexpiry99/freshBoost100 anddrainedrecoveryobserved. Same-accountequipment/UIcontinuation retains privatebeforestatebackup andavoidscompletedRemoveWearreplay. Separatefreshunsavednative100case terminatesonlyitsnewownedserver beforeSaveack;actualSQLandserverrestart/native reconnect restoreprior99/wholeStatsfineXPbaggear withoutpendingreplay. PublicWorld actualpendingRuneproduction cancellation onlyaftervalidBoost,refusedBoostpreservespendingwork;late member/gear/base/modal/logout/life andactualqueueddeath guards pass atsameSHA.",
+      "evidence": "crafting-cape-lifecycle-v3-complete.json"
+    },
+    "V4": {
+      "status": "PASS",
+      "reason": "Qualified reference comparison completed: two exact donor/two pinnedWiki hashes independently rechecked. Actual two cape definitions/aliases/runtimecomponent/nativeop2 and receivedstat behavior compared to source wornOp2Boost/base99/constant1percent0; noXP/items/RNG, repeated100nochange, higherboost unchanged and drained+1 behaviors match inspected shared donor arithmetic. Native current99->100, normal99expiry/freshBoost and actualdrained51->52->53 corroborate World classes. Live member-use is separate from both-cape F2Pguildentry; actual native F2Pmenu omitsBoost, while Worldbackendrefusal has separate evidence.",
+      "evidence": "crafting-cape-reference-v4-complete.json"
+    }
+  },
+  "evidence_sha256": {
+    "crafting-cape-runtime-v0-complete.json": "6ddfdca3b962cbcaf56b82ceb3dd88371c20b61f8a9f9f9ddf62aa7d80f40638",
+    "crafting-cape-v1-resolved.json": "f5f0ab45bc18a79e02d018bce21eb9dc82d6d6e65a6b959b83ef80f4cba43c4e",
+    "crafting-cape-native-v2-complete.json": "4a5f5f9a00a9432a9555f45d1ab48cb8f98497a45f5416fb7b57a8f886978994",
+    "crafting-cape-lifecycle-v3-complete.json": "de0e605d4f28a4553c1db1a2c7cdb5a4d226f0aab96c76f355ecd0351bfc1033",
+    "crafting-cape-reference-v4-complete.json": "46bf2a1287b73f2b51b30046352f117af965f3d3665893443af230b46e2c3ba1"
+  }
+}

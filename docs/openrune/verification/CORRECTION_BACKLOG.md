@@ -208,3 +208,12 @@ PG-DEF-007 correction subcheck: byte-identical independent stock harness now pas
 ## PG-REF-003 - qualify guild vendor membership provenance
 
 OR-MIG-0131 at `35a5f39b72cab3a2655f32ae29bdde54284c9a4b`: all five donor hashes and seven pinned Wiki snapshots independently matched. The inspected seller methods require base99, coins and space, but contain no explicit membership predicate. Contract `behavior_basis.observed_in_source` currently attributes member checks to both methods. Describe membership as Wiki-supported target policy and leave uninspected donor global gates unresolved. Native F2P acquisition refusal remains a separate test. Evidence: [independent comparison](independent/reference-skillcape-vendors/comparison.json). Ordinary documentation correction; no FORGE stop, new issue or implementation defect claimed.
+
+
+## OR126 native boost acceptance dependency
+
+At exact `bd1294ab9e0ff850155b024364dc3a3a98a37bed`, V0-V3 now pass within recorded scope. V4 remains BLOCKED on the contract native boost-policy criterion: no validated non-deferred native Runecrafting boost activation route is available. The pinned World lacks worn Boost action/adapter; inspected registered non-deferred food boosts do not affect Runecrafting20. Current104 fixtures are headless, and potion testing stays user-deferred. Attest an eligible original-pin route or clarify the bounded criterion; do not substitute a later build or unrelated Crafting12 boost. Evidence: [specific blocker](independent/daeyalt-reference-v4-blocked.json). Verification dependency only; no implementation defect, new issue or FORGE stop requested.
+
+## PG-DEF-003 extension — selected burial after death
+
+Exact OR-MIG-0134 `a1658fd5c4d4a6869063a75859899d381742d271`: 36 independent World scenarios award Prayer XP and draw robe RNG while HP is zero or an actual lethal-hit `DeathRequested` remains unresolved. At rate125, draw75 consumes the selected bone and draw79 preserves it; both award56fineXP. Slots0/7/27 and death before/after admission, including visible HP restoration without respawn, all reproduce. Add the existing alive/death-pending guards at selected burial admission, confirmation resume and completion before transaction/RNG; verify a separately pinned correction. Preserve original failure and all16,602transaction/25World positive controls. Ordinary P2 backlog correction; no FORGE stop or external issue. [Actionable evidence](independent/zealot-selected-life-finding.json).

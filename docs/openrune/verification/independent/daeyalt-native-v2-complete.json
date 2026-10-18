@@ -1,0 +1,86 @@
+{
+  "implementation_id": "OR-MIG-0126",
+  "tested_sha": "bd1294ab9e0ff850155b024364dc3a3a98a37bed",
+  "status": "PASS",
+  "level": "V2",
+  "profiles": [
+    {
+      "altar": "mind",
+      "runes": 224,
+      "fine_xp_awards": [
+        2887,
+        5775
+      ],
+      "evidence": "docs/openrune/verification/independent/deep-rune-mind-daeyalt/native-001/independent-assessment.json"
+    },
+    {
+      "altar": "air",
+      "runes": 280,
+      "fine_xp_awards": [
+        2625,
+        5250
+      ],
+      "evidence": "docs/openrune/verification/independent/deep-rune-air-daeyalt/native-001/independent-assessment.json"
+    },
+    {
+      "altar": "water",
+      "runes": 168,
+      "fine_xp_awards": [
+        3150,
+        6300
+      ],
+      "evidence": "docs/openrune/verification/independent/deep-rune-water-daeyalt/native-001/independent-assessment.json"
+    },
+    {
+      "altar": "earth",
+      "runes": 112,
+      "fine_xp_awards": [
+        3412,
+        6825
+      ],
+      "evidence": "docs/openrune/verification/independent/deep-rune-earth-daeyalt/native-001/independent-assessment.json"
+    },
+    {
+      "altar": "fire",
+      "runes": 84,
+      "fine_xp_awards": [
+        3675,
+        7350
+      ],
+      "evidence": "docs/openrune/verification/independent/deep-rune-fire-daeyalt/native-001/independent-assessment.json"
+    },
+    {
+      "altar": "body",
+      "runes": 84,
+      "fine_xp_awards": [
+        3937,
+        7875
+      ],
+      "evidence": "docs/openrune/verification/independent/deep-rune-body-daeyalt/native-001/independent-assessment.json"
+    }
+  ],
+  "essence": {
+    "special": 42,
+    "ordinary": 126
+  },
+  "runes": 952,
+  "fine_xp_award": 59061,
+  "scope": "All6actualrendered native Craft-rune altar routes at exact126:7Daeyalt first,remaining21ordinary only on separate explicitsecond action,deliveredemptythird no furthercredit. Exactly one receivedclock actual791sequence-to-credit with186spot/height100 for each producing batch. Independent raw73/22/18/46,wholeStats/gear,rune yield andper-action aggregatefineXP;normaldurability/reconnect all6. ActualF2P2Daeyalt refusals with28essence/noordinaryfallback and separatefreshF2P Rune/Pure28->224Mindrunes/7700fineXP.",
+  "qualifications": [
+    "Effective500native only; original125rate variant remainsBLOCKED by pinnedlogin policy. World125rates separately verified.",
+    "Mind originalrawFAIL expected125but observed500;firstactual500batch independently decoded andsaved,then sameaccount continuation completesremaining21ordinary without reseed/replay. Frozenobservers/history retained.",
+    "No essence acquisition/ruins-entry/pouch/nativeboost activation or original executable/audio/render parity claim."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/deep-rune-mind-daeyalt/native-001/independent-assessment.json": "8ba59bcbb5b5e8375ea010252474ec6426404e32c3c394ddf895ce53c579935a",
+    "docs/openrune/verification/independent/deep-rune-air-daeyalt/native-001/independent-assessment.json": "d29e9c1ad0f20c64306cd08c32efe11cd30c8b45ee1b1ba3950a7e9abae834e0",
+    "docs/openrune/verification/independent/deep-rune-water-daeyalt/native-001/independent-assessment.json": "c963fea31735e6087a3736cab8834ac549cd3541cca8c16a0852aa402c4cc2b9",
+    "docs/openrune/verification/independent/deep-rune-earth-daeyalt/native-001/independent-assessment.json": "659d64316edd4fba1d06bfedecab5c5de5f7f34bb27f537e20303be1c84003fb",
+    "docs/openrune/verification/independent/deep-rune-fire-daeyalt/native-001/independent-assessment.json": "e89de70823de2a9a4ca8263bc33a523a3b9bec03a3ab1bfff9a2f2a23057dbc1",
+    "docs/openrune/verification/independent/deep-rune-body-daeyalt/native-001/independent-assessment.json": "417678fc220fe455f0e88aa2994001a2fdcf0466f9555da773f97715cb4ca830",
+    "docs/openrune/verification/independent/deep-rune-mind-daeyalt/native-001/produce/client.log": "b6dac63d884f23a9c5ce08af2976c8c97dadda2bb9f88c235a5fd4fd330392d9",
+    "docs/openrune/verification/independent/deep-rune-mind-daeyalt/native-001/continuation-001/produce/client.log": "ca27e134d615c3ba1c9d4bd6273bf206815838f46d925b6f2fef30dd0f897bd8",
+    "docs/openrune/verification/independent/deep-rune-mind-daeyalt-f2p/native-001/independent-assessment.json": "b5ab68570197654f26d140d995d285f9a199b328224f6c15f9646d2f54281c56",
+    "docs/openrune/verification/independent/deep-rune-mind-ordinary-f2p/native-001/independent-assessment.json": "d2d98b32e644f5129c5450de11f52fd13d6c55392e2f9ef04567f0f3ead3315d"
+  }
+}

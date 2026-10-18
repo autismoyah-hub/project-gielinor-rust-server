@@ -1,0 +1,81 @@
+{
+  "implementation_id": "OR-MIG-0130",
+  "tested_sha": "7d2133f23e00ad852df8726ead67493e83c901b4",
+  "status": "PASS_SCOPED",
+  "feature": "crafting-cape-drained",
+  "actual_cape": 9780,
+  "native_results": [
+    [
+      0,
+      51,
+      52,
+      99,
+      152
+    ],
+    [
+      1,
+      52,
+      53,
+      99,
+      157
+    ]
+  ],
+  "produce_crafting_stat_samples": [
+    [
+      0,
+      50,
+      13034431
+    ],
+    [
+      88,
+      51,
+      13034431
+    ],
+    [
+      149,
+      52,
+      13034431
+    ],
+    [
+      154,
+      53,
+      13034431
+    ]
+  ],
+  "relogin_crafting_stat_samples": [
+    [
+      0,
+      53,
+      13034431
+    ],
+    [
+      91,
+      54,
+      13034431
+    ]
+  ],
+  "saved_current": 53,
+  "restarted_saved_current": 54,
+  "scope": "Two actual native equipment Boost menu actions at current387:16 generate genuine operation2/interface47 sends. Independent decoded46 confirms current-level behavior and noXP;whole native93/94andSQL bag/gear/base/fineXP retained. Acknowledged save and actual server restart;first native reconnect stat exactly matches durable current,subsequent changes onlynormalone-step regeneration toward99,withoutanotherBoost action.",
+  "limitations": [
+    "Restored worn-cape fixture does not prove acquisition/nativeWear or passive-on-equip behavior. Separate equipment control case supplies real Wear/Remove and private Skills softwareframes.",
+    "UI layout/menu and received current-stat values observed;no full rendered Skills-panel claim for this basic case.",
+    "Membership message is awaited by the frozen observer predicate;rawmessage bytes are not logged independently. No original executable/audio/render parity."
+  ],
+  "evidence_sha256": {
+    "initial-state.json": "a116b474eca4714d1aa564c76639bd96fc96829aa0fbb32a6b5ea8caaa62f1b2",
+    "build.json": "b9d6d176d978b213fc58308908ef00722959b0dfe9c2a10f926a0128e487d0fb",
+    "frozen-observer/build.json": "3730074e444c0f02300cfac21ba40cce24ef341b2c78e3edbb782fd9abf8d486",
+    "frozen-observer/pg_observer.rs": "e959bd57b203e6203923dbb543bf238ee258caadf2f9d2bca6e66f2fa9084634",
+    "produce/manifest.json": "3a8ba763faae1390ef883222616eeb7ead2403b7707da7a3131b1d4784603132",
+    "produce/before.json": "a116b474eca4714d1aa564c76639bd96fc96829aa0fbb32a6b5ea8caaa62f1b2",
+    "produce/after.json": "7dfa62ea36a7d02e799fa035cff61fd082aa165f8cca441d7ce511a93828a07e",
+    "produce/client.log": "5435a9a3e8261769f92d803f880d54c3cb765eb798e4bea0731b8f11fb24f897",
+    "produce/server.log": "31e714801ccb35694d57634f49ec8e41f67f612b2cd95e719bd661516bd1a75c",
+    "relogin/manifest.json": "283f5f0b8963459eef3f8d934bc247cd2fad55fb4fdd74760b5c29b5e716e20b",
+    "relogin/before.json": "7dfa62ea36a7d02e799fa035cff61fd082aa165f8cca441d7ce511a93828a07e",
+    "relogin/after.json": "b60ad75af7b363d7ddffea0a242378e9b3063cabe6a1a85b0e824567ea0285bc",
+    "relogin/client.log": "3255facc8073a2855948effa5fa50a76f0c5b2dc42939588afd231ab8e5063a4",
+    "relogin/server.log": "2b20a483972ed1131a8a95240ff2667531777aec7179831e31bea36a2812540e"
+  }
+}

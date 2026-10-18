@@ -1,0 +1,30 @@
+{
+  "implementation_id": "OR-MIG-0131",
+  "tested_sha": "35a5f39b72cab3a2655f32ae29bdde54284c9a4b",
+  "status": "PASS_SCOPED",
+  "level": "V1",
+  "case_groups": {
+    "purchase_transaction_matrix": 3360,
+    "predebit_space_money_refusals": 336,
+    "publicWorld_purchase_dialogues": 2,
+    "publicWorld_late_payment_guards": 20,
+    "publicWorld_hood_dialogue_boundaries": 40
+  },
+  "scope": "3758independentcases at the original131SHA. Allcoin-slot/payment/member/base/releasedstat patterns, exact99000debit+cape+hood, firsttwofreepredebit slots and unrelatedvars conservation. Actual publicNPC dialogue/quote/payment ordering:Craftingpaysonaccept,CookingonlyafterplayerContinue;stalechoicecannotchargeagain.20latepaymentguards.40two-ackhoodcases bothNPCs/bothcapes/held-worn/currentcape-member-Close-space guard withfreehood/noXPgear/noReplay.",
+  "harness_history": "Original matrix failed to compile because ownedtesthadunclosedbrace/invalidconditional syntax;zero scenarios ran. Corrected ownedtest reran against identical35a5f39SHA and passed3696cases. Originalfailure retained;not animplementationdefect.",
+  "remaining": [
+    "V1 remainsIN_PROGRESS: already-owned Crafting refusal versus Cooking paidspare/freeadditionalhood, allmalformedcatalog/config/count/vars/duplicatecoin stocks, actualqueueddeath/movement/NPCgeneration/interruption contexts and broader actioncases remain.",
+    "No131actualcache/serverstartup/nativeV0/V2or durableV3acceptance;referencefacts are separate.",
+    "These are normal dependency/publicWorld tests;noFORGEdeveloper test body counted andno networknegative payloads."
+  ],
+  "evidence_sha256": {
+    "integration-external-skillcape-vendor-matrix-35a5f39b72cab3a2655f32ae29bdde54284c9a4b-1792356820724412900/manifest.json": "86a84bd1e9b40ea9ac8c334a786c5945755c01d5a9742c343bf4a49e84d009e7",
+    "integration-external-skillcape-vendor-matrix-35a5f39b72cab3a2655f32ae29bdde54284c9a4b-1792356820724412900/run-1.log": "4495978213f939f675e50e11c43d6fb553ebe2d3699c107047fd5b8267e178c0",
+    "integration-external-skillcape-vendor-world-35a5f39b72cab3a2655f32ae29bdde54284c9a4b/manifest.json": "9fca253510ccf27ac6b8621ef37ab9f9bfdb8f56726371015f10dbbc13e08bc2",
+    "integration-external-skillcape-vendor-world-35a5f39b72cab3a2655f32ae29bdde54284c9a4b/run-1.log": "67dcfbc7bbf6e8e3730103f904e0ec953974713967f372df5d25b3caab23aebd",
+    "integration-external-skillcape-vendor-hood-35a5f39b72cab3a2655f32ae29bdde54284c9a4b/manifest.json": "cf92ef7266f8b8f83e464ae3a9e5280a7f46451764c1c3e85b826bc0fb65ca2b",
+    "integration-external-skillcape-vendor-hood-35a5f39b72cab3a2655f32ae29bdde54284c9a4b/run-1.log": "09e87c077de79ed9c033ee053e45017679dafa70ddfbf940a12bfd6a25d6bf4e",
+    "integration-external-skillcape-vendor-matrix-35a5f39b72cab3a2655f32ae29bdde54284c9a4b/manifest.json": "98ed5e3f27ed0b2562d2407c432b0a8ff64a5b2cb6fc45c5aaff31006826e79a",
+    "integration-external-skillcape-vendor-matrix-35a5f39b72cab3a2655f32ae29bdde54284c9a4b/run-1.log": "744753c1142ca37807fad899c9a9dc3fe3656f23d0bde9396ad6e6672a2eaecb"
+  }
+}

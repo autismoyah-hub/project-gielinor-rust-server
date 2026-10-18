@@ -1,0 +1,28 @@
+{
+  "implementation_id": "OR-MIG-0130",
+  "tested_sha": "7d2133f23e00ad852df8726ead67493e83c901b4",
+  "level": "V3",
+  "status": "PASS",
+  "scope": "Applicable immediatewornBoost lifecycle requirements completed. Multiple actual acknowledgedsave/gracefulprocessrestart/native reconnect campaigns preserve wholebag/gear/allbase/fineXP andthe exactsavedcurrentlevel; subsequent changes onlyexistingnormalstatregeneration. Actualnative normalexpiry99/freshBoost100 anddrainedrecoveryobserved. Same-accountequipment/UIcontinuation retains privatebeforestatebackup andavoidscompletedRemoveWearreplay. Separatefreshunsavednative100case terminatesonlyitsnewownedserver beforeSaveack;actualSQLandserverrestart/native reconnect restoreprior99/wholeStatsfineXPbaggear withoutpendingreplay. PublicWorld actualpendingRuneproduction cancellation onlyaftervalidBoost,refusedBoostpreservespendingwork;late member/gear/base/modal/logout/life andactualqueueddeath guards pass atsameSHA.",
+  "qualifications": [
+    "Live member/lategear/modal/pendingRuneinterruption combinations are authoritativepublicWorld tests;not allrepeatedthroughnativeUI. Nativepersistence/restarts/recovery areactual, notin-memoryclones.",
+    "Recovery is before save acknowledgement,not fault injectionduringSQLitecommit. No new persistenttimer/statefield exists;normalsharedregenerationphase remains authoritative.",
+    "F2Pbackend-message variant remains blockedbytheactualclientmenu; nativeF2PUIrefusal is separatelyobserved. No laterbuild substituted."
+  ],
+  "evidence_sha256": {
+    "deep-crafting-cape-boost/native-001/independent-assessment.json": "ae268554c0ce53a71232fa94b5279da8ff014bbbb1d1463d9276b8bc6d92dc90",
+    "deep-crafting-cape-trimmed/native-001/independent-assessment.json": "5a0a3a429f74cabcc8bae195bf03bd346efc7e20411af5743965cfb463b177a1",
+    "deep-crafting-cape-drained/native-001/independent-assessment.json": "a776111bf25d20d2e8693f4ae518ecebf203e5d961823e7e74f283e4455e2392",
+    "deep-crafting-cape-expiry/native-001/independent-assessment.json": "4505c95db6569bbda55f8ae4df6fc980669f5211627339a717e8b5a7709b21cf",
+    "deep-crafting-cape-crash/native-001/independent-assessment.json": "17d57aab391540530893e2bb3dc900dd812d29f74713718fa7424507005c83ec",
+    "deep-crafting-cape-equipment/native-002/independent-assessment.json": "db388ba4df05eb5c27ed98e69fab83bc71a0e9efacb94063cfafe6c1725ef078",
+    "deep-crafting-cape-equipment/native-002/continuation-001/independent-assessment.json": "1afdd54383478cb0be3cd989b2e92a89056f8318eafa380aa00d6aac8e08f197",
+    "crafting-cape-v1-resolved.json": "f5f0ab45bc18a79e02d018bce21eb9dc82d6d6e65a6b959b83ef80f4cba43c4e",
+    "integration-external-crafting-cape-interrupt-7d2133f23e00ad852df8726ead67493e83c901b4/manifest.json": "e632768e419260b9fc33a01973d3140d4b01be7bd4fc7f3b205909de5259693c",
+    "integration-external-crafting-cape-interrupt-7d2133f23e00ad852df8726ead67493e83c901b4/run-1.log": "86b807522fe3e10e8f06ff756a0d3466e6263659847a9812c823baaf69315319",
+    "integration-external-crafting-cape-world-7d2133f23e00ad852df8726ead67493e83c901b4/manifest.json": "67245c259b37b04cbf98d6e1f9e9ff41810b83767b616fb9a12be0b98dc9904f",
+    "integration-external-crafting-cape-world-7d2133f23e00ad852df8726ead67493e83c901b4/run-1.log": "1ca895454e7b388f424b49674b5be96bedd1b407f85f5c2569c839b8ede06671",
+    "integration-external-crafting-cape-death-7d2133f23e00ad852df8726ead67493e83c901b4/manifest.json": "e0871a6f194ee6ded0f8991a2bb1c187253967c920384247614fbd3427487b8e",
+    "integration-external-crafting-cape-death-7d2133f23e00ad852df8726ead67493e83c901b4/run-1.log": "1d37011c57e19b206ad9d58a8bf04cdd27060d2c5496e555b7e28abffffc584f"
+  }
+}

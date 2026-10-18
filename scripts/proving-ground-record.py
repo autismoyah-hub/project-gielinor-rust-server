@@ -30,7 +30,7 @@ for ident,folder,sha in [('OR-MIG-0010','deep-combat','5a260c1bd6efa5f8a221bed7c
         add(ident,sha,'V4','IN_PROGRESS','Independent protected-source and pinned-documentation subcomparisons PASS within recorded scope; complete feature comparison remains open. No executable donor parity is claimed.',refs)
 for manifest in OUT.glob('OR-MIG-0024-*-independent*/manifest.json'):
     value=json.loads(manifest.read_text(encoding='utf-8'))
-    if value.get('suite','').startswith(('imcando-held-','imcando-worn-','rune-altars-','rune-close-','daeyalt-','crafting-cape-')):continue  # Scoped aggregate retains partial and resource-deferred attempts.
+    if value.get('suite','').startswith(('imcando-held-','imcando-worn-','rune-altars-','rune-close-','daeyalt-','crafting-cape-','zealot-','skillcape-vendor-')):continue  # Scoped aggregate retains partial and resource-deferred attempts.
     if value.get('suite')=='light-life':continue  # Exact-target finding below retains raw FAIL/BLOCKED attempts.
     if value.get('outcome')!='PARTIAL':continue
     sha=value['implementation_commit_sha'];evidence=[str(manifest.relative_to(ROOT)).replace('\\','/')]
@@ -38,7 +38,7 @@ for manifest in OUT.glob('OR-MIG-0024-*-independent*/manifest.json'):
     add('OR-MIG-0024',sha,'V1','IN_PROGRESS','Four independent authoritative World action tests PASS across 319 fixtures: all selected slots, full bags, duplicate/stale input, overheal, remainders and malformed transactions. Runtime packet decode and complete food matrix remain open.',evidence)
 for manifest in OUT.glob('integration-*/manifest.json'):
     value=json.loads(manifest.read_text(encoding='utf-8'))
-    if value.get('suite','').startswith(('imcando-held-','imcando-worn-','rune-altars-','rune-close-','daeyalt-','crafting-cape-')):continue  # Recorded by immutable scoped aggregate below, not legacy filter format.
+    if value.get('suite','').startswith(('imcando-held-','imcando-worn-','rune-altars-','rune-close-','daeyalt-','crafting-cape-','zealot-','skillcape-vendor-')):continue  # Recorded by immutable scoped aggregate below, not legacy filter format.
     if value.get('suite') in ['member-tanning-world','member-tanning-guards']:
         continue  # Combined independent assessment includes retained partial attempt.
     if value.get('suite') in ['light-legacy-bindings','light-bindings','light-tool-regression']:
@@ -787,3 +787,66 @@ path=OUT/'crafting-cape-v1-acceptance-correction.json'
 if path.exists():
     result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='IN_PROGRESS'
     add('OR-MIG-0130',result['tested_sha'],'V1','IN_PROGRESS',result['scope'],[path.relative_to(ROOT).as_posix()],scope='crafting-cape-v1-acceptance-correction')
+
+path=OUT/'crafting-cape-v1-resolved.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PASS' and result['level']=='V1'
+    add('OR-MIG-0130',result['tested_sha'],'V1','PASS',result['scope']+' '+result['acceptance_history']+' '+'; '.join(result['qualifications']),[path.relative_to(ROOT).as_posix()],scope='crafting-cape-v1-obligations-resolved')
+
+path=OUT/'zealot-selected-life-finding.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    add('OR-MIG-0134',result['tested_sha'],'V1','FAIL',result['scope']+' Positive16602transaction/25World controls retained; no completed V0/V2/V3/V4 claim.',[path.relative_to(ROOT).as_posix()],scope='zealot-selected-life-acceptance')
+path=OUT/'crafting-cape-runtime-v0-complete.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    add('OR-MIG-0130',result['tested_sha'],'V0','PASS',result['scope']+' '+'; '.join(result['qualifications']),[path.relative_to(ROOT).as_posix()],scope='crafting-cape-runtime-v0-complete')
+path=OUT/'reference-zealot-burial/comparison.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    add('OR-MIG-0134',result['tested_sha'],'V4','IN_PROGRESS',result['scope']+' '+'; '.join(result['limitations']),[path.relative_to(ROOT).as_posix()],scope='zealot-selected-reference-facts')
+for feature,run in [('crafting-cape-boost','native-001'),('crafting-cape-trimmed','native-001'),('crafting-cape-drained','native-001'),('crafting-cape-expiry','native-001'),('crafting-cape-equipment','native-002'),('crafting-cape-f2p','native-001')]:
+    path=OUT/('deep-'+feature)/run/'independent-assessment.json'
+    if not path.exists():continue
+    result=json.loads(path.read_text(encoding='utf-8'))
+    add('OR-MIG-0130',result['tested_sha'],'V2','IN_PROGRESS',result['scope']+' Status '+result['status']+'; complete native/rendered obligations remain separate.',[path.relative_to(ROOT).as_posix()],scope=feature+'-'+run)
+    if result['status']=='PASS_SCOPED':
+        add('OR-MIG-0130',result['tested_sha'],'V3','IN_PROGRESS',result['scope']+' Acknowledged persistence/restart scope only; interruption/crash obligations remain separate.',[path.relative_to(ROOT).as_posix()],scope=feature+'-'+run)
+
+path=OUT/'rune-ordinary-integration-130.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PASS_SCOPED'
+    for ident in result['affected_implementations']:
+        add(ident,result['tested_sha'],'V1','IN_PROGRESS',result['scope']+' '+'; '.join(result['limitations']),[path.relative_to(ROOT).as_posix()],kind='integration',scope='rune-ordinary-newer-integration',affected=result['affected_implementations'])
+
+for filename,level,status in [('daeyalt-native-v2-complete.json','V2','PASS'),('daeyalt-lifecycle-v3-complete.json','V3','PASS'),('daeyalt-reference-v4-blocked.json','V4','BLOCKED')]:
+    path=OUT/filename
+    if path.exists():
+        result=json.loads(path.read_text(encoding='utf-8'));assert result['status']==status and result['level']==level
+        detail=' '.join(result['qualifications']) if status=='PASS' else result['specific_blocker']+' '+result['required_resolution']
+        add('OR-MIG-0126',result['tested_sha'],level,status,result['scope']+' '+detail,[path.relative_to(ROOT).as_posix()],scope='daeyalt-'+level.lower()+'-obligations')
+
+path=OUT/'crafting-cape-reference-v4-complete.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    add('OR-MIG-0130',result['tested_sha'],'V4','PASS',result['scope']+' '+result['acceptance_scope']+' '+'; '.join(result['qualified_differences']),[path.relative_to(ROOT).as_posix()],scope='crafting-cape-qualified-reference-v4')
+
+path=OUT/'skillcape-vendor-world-partial.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    add('OR-MIG-0131',result['tested_sha'],'V1','IN_PROGRESS',result['scope']+' '+'; '.join(result['remaining']),[path.relative_to(ROOT).as_posix()],scope='skillcape-vendor-independent-transactions-dialogue')
+
+path=OUT/'crafting-cape-native-v2-complete.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    add('OR-MIG-0130',result['tested_sha'],'V2','PASS',result['scope']+' '+'; '.join(result['qualifications']),[path.relative_to(ROOT).as_posix()],scope='crafting-cape-native-v2-obligations')
+
+path=OUT/'crafting-cape-lifecycle-v3-complete.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    add('OR-MIG-0130',result['tested_sha'],'V3','PASS',result['scope']+' '+'; '.join(result['qualifications']),[path.relative_to(ROOT).as_posix()],scope='crafting-cape-lifecycle-v3-obligations')
+
+path=OUT/'skillcape-vendor-world-extension.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    add('OR-MIG-0131',result['tested_sha'],'V1','IN_PROGRESS',result['scope']+' '+result['harness_history']+' '+'; '.join(result['remaining']),[path.relative_to(ROOT).as_posix()],scope='skillcape-vendor-owned-life-extension')

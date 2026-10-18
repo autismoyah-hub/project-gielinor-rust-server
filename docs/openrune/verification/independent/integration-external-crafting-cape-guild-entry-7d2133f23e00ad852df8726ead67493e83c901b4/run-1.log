@@ -1,0 +1,18 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\7d2133f23e00ad852df8726ead67493e83c901b4\external-harness-1556668100)
+warning: unused import: `Template`
+ --> tests\entry.rs:2:118
+  |
+2 | use gielinor_world::{simulation::{World,PlayerData,ActorId,Action,WorldEvent},worn_stat_boost::Rule,inventory::{Item,Template},stats:...
+  |                                                                                                                      ^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `proving-ground-energy` (test "entry") generated 1 warning (run `cargo fix --test "entry" -p proving-ground-energy` to apply 1 suggestion)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 7.12s
+     Running tests\entry.rs (C:\Projects\OSRSRSPS\agent7-verification\work\7d2133f23e00ad852df8726ead67493e83c901b4\target\debug\deps\entry-1ff478e75d69f2b4.exe)
+
+running 1 test
+PG_CAPE_GUILD12 bothcapes member/F2P current39/40/99 actualOpLocentryindependentofmemberBoost;memberdrained39Boost40thenfreshentry;allXPbaggear noRNG PASS
+test twelve_actual_guild_entry_and_member_boost_permissions_are_separate ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.96s

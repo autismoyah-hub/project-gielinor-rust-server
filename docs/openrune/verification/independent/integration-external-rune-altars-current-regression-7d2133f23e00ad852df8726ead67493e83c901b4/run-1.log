@@ -1,0 +1,10 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\7d2133f23e00ad852df8726ead67493e83c901b4\external-harness-7060861800)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 6.57s
+     Running tests\ordinary.rs (C:\Projects\OSRSRSPS\agent7-verification\work\7d2133f23e00ad852df8726ead67493e83c901b4\target\debug\deps\ordinary-066f8bcacf9930ae.exe)
+
+running 1 test
+test nine_hundred_seventy_two_registered_altar_material_membership_rate_and_level_controls has been running for over 60 seconds
+PG_RUNE_CURRENT_REGRESSION independent whole-state action cases=972;all6/RunePureMixed/F2Pmember/count1-7-28/currentmin-99-104/rate1-1.25-5;oneclock/noRNG/emptyrepeat;104isconstructedpredicate,noboostactivationclaim
+test nine_hundred_seventy_two_registered_altar_material_membership_rate_and_level_controls ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 115.37s

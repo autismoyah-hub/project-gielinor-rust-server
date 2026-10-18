@@ -306,6 +306,30 @@ def prepare_daeyalt_continuation(source):
         'original_database_sha256_before_continuation':digest(dbpath()),
         'evidence_sha256':{(source/n).relative_to(ROOT).as_posix():digest(source/n) for n in ['produce/manifest.json','produce/after.json','produce/client.log','build.json','frozen-observer/build.json']}})
     print('PREPARED_SAME_ACCOUNT_CONTINUATION no reseed; first56runes/2887fineXP saved;21ordinary remain',flush=True)
+def prepare_cape_observation(source):
+    """Continue only the missing UI observation on the completed actual account."""
+    prior=json.loads((source/'relogin/manifest.json').read_text(encoding='utf-8'))
+    saved=json.loads((source/'relogin/after.json').read_text(encoding='utf-8'))
+    current=json.loads(json.dumps(snapshot()))
+    assert prior['status']=='PASS' and prior['tested_sha']==SHA and prior['save_acknowledgement'] and prior['graceful_shutdown'] and prior['server_exit']==0
+    assert current==saved,'Completed equipment account changed before continuation'
+    assert current['stats'][12] in [[12,99,99,130344311],[12,100,99,130344311]]
+    assert [93,0,9781,1,0] in current['inventory'] and [94,1,9780,1,0] in current['inventory']
+    original=sqlite3.connect(dbpath().as_uri()+'?mode=ro',uri=True)
+    assert original.execute('SELECT members FROM accounts LIMIT 1').fetchone()[0]==1
+    backup=WORK/'before-native-observation.sqlite';assert not backup.exists()
+    target=sqlite3.connect(backup);original.backup(target);target.close();original.close()
+    for name in ['build.json','build.log']:shutil.copyfile(source/name,OUT/name)
+    save(OUT/'initial-state.json',current)
+    frozen=OUT/'frozen-observer';frozen.mkdir(exist_ok=False)
+    for name in ['build.json','source-manifest.json']:shutil.copyfile(ROOT/'docs/openrune/verification/independent/client-observer-build'/name,frozen/name)
+    shutil.copyfile(ROOT/'verification/native-observer/pg_observer.rs',frozen/'pg_observer.rs')
+    save(OUT/'continuation-source.json',{'implementation_id':FEATURE,'tested_sha':SHA,
+        'scope':'Same completed equipment account, no reseed or Remove/Wear replay. New Boost/repeat and existing native UI renderer supply missing Skills overlay observation.',
+        'private_snapshot':{'path':str(backup),'sha256':digest(backup)},'original_database_sha256_before_continuation':digest(dbpath()),
+        'evidence_sha256':{(source/n).relative_to(ROOT).as_posix():digest(source/n) for n in ['produce/manifest.json','relogin/manifest.json','relogin/after.json','build.json','frozen-observer/build.json']}})
+    print('PREPARED_SAME_ACCOUNT_CAPE_UI_OBSERVATION no reseed or Remove/Wear replay',flush=True)
+
 def phase(mode):
     guard()
     # Validate the required build before creating a phase or touching its state.
@@ -314,7 +338,7 @@ def phase(mode):
     assert build_manifest.get('tested_sha',build_manifest['implementation_sha'])==SHA and build_manifest['binary_sha256']==digest(binary),'Build identity changed'
     name='produce' if mode=='assemble' else 'relogin'
     if mode=='verify' and RELOGIN_ATTEMPT:name=RELOGIN_ATTEMPT
-    fault=SCENARIO in ['rune-mind-daeyalt-crash','rune-mind-crash','imcando-worn-crash','imcando-crash','light-crash','chem-crash','gem-crash','glass-crash','production-gem-crash','immediate-crash','sinew-crash','battlestaff-crash','crab-crash','pair-crash','crafting-finishes-crash','amethyst-crash'] and mode=='assemble'
+    fault=SCENARIO in ['crafting-cape-crash','rune-mind-daeyalt-crash','rune-mind-crash','imcando-worn-crash','imcando-crash','light-crash','chem-crash','gem-crash','glass-crash','production-gem-crash','immediate-crash','sinew-crash','battlestaff-crash','crab-crash','pair-crash','crafting-finishes-crash','amethyst-crash'] and mode=='assemble'
     dest=OUT/name;dest.mkdir(parents=True,exist_ok=False)
     shutil.copyfile(Path(__file__),dest/'launcher.txt')
     before=snapshot();save(dest/'before.json',before)
@@ -348,11 +372,12 @@ def phase(mode):
             print('LISTENING',address,flush=True)
             args=[str(RES/DRIVER),str(RES/'cache/js5'),address,'integration239',str(RES/'password'),str(RES/'keys/client.key'),mode]
             if SCENARIO in ['chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','food-observer','prayer','gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells','production-gem-batch','production-shell-batch','production-gem-x','production-gem-x-focus','production-gem-interrupt','production-shell-interrupt','production-gem-crash','immediate-staff','immediate-limestone','immediate-certainty','immediate-crash','fallible-gems','fallible-gem-interrupt','sinew','sinew-crash','battlestaves','battlestaff-crash','crab-carving','crab-interrupt','crab-crash','crab-quantities','pair-stringing','pair-staves','pair-stringing-reverse','pair-counts','pair-ten','pair-x','pair-earth-batch','pair-pending','pair-interrupt','pair-crash','crafting-finishes','crafting-finishes-crash','amethyst','amethyst-batch','amethyst-interrupt','amethyst-crash']:args[-1]=(SCENARIO if SCENARIO in ['chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','prayer','gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells','production-gem-batch','production-shell-batch','production-gem-x','production-gem-x-focus','production-gem-interrupt','production-shell-interrupt','production-gem-crash','immediate-staff','immediate-limestone','immediate-certainty','immediate-crash','fallible-gems','fallible-gem-interrupt','sinew','sinew-crash','battlestaves','battlestaff-crash','crab-carving','crab-interrupt','crab-crash','crab-quantities','pair-stringing','pair-staves','pair-stringing-reverse','pair-counts','pair-ten','pair-x','pair-earth-batch','pair-pending','pair-interrupt','pair-crash','crafting-finishes','crafting-finishes-crash','amethyst','amethyst-batch','amethyst-interrupt','amethyst-crash'] else 'food') if mode=='assemble' else 'verify'
-            if SCENARIO.startswith('rune-'):args[-1]=SCENARIO if mode=='assemble' else 'verify'
+            if SCENARIO.startswith(('rune-','crafting-cape-')):args[-1]=SCENARIO if mode=='assemble' else 'verify'
             if SCENARIO in ['imcando-worn-dispatch','imcando-worn','imcando-worn-f2p','imcando-worn-crash','imcando-worn-full','imcando-held','imcando-f2p','imcando-crash','imcando-inputs','light-feedback','light-sources','light-crash']:args[-1]=SCENARIO if mode=='assemble' else 'verify'
             if SCENARIO=='food':
                 if mode=='assemble':args[-1]=str(dest/'native-events.jsonl')
                 else:args=[str(client_binary),str(RES/'cache/js5'),str(RES/'keys/client.key'),address,'integration239',str(RES/'password'),str(WORK/'relogin-private.capture')]
+            manifest['client_scenario']=args[-1]
             with (dest/'client.log').open('w',encoding='utf-8',newline='\n') as log:
                 client=subprocess.Popen(args,cwd=WORK,stdout=log,stderr=subprocess.STDOUT,creationflags=subprocess.CREATE_NO_WINDOW|subprocess.BELOW_NORMAL_PRIORITY_CLASS)
                 manifest['owned_client_pid']=client.pid;save(dest/'manifest.json',manifest)
@@ -376,6 +401,7 @@ def phase(mode):
                                 if SCENARIO=='imcando-worn-crash':manifest['fault_scope']='Terminate only this freshly owned disposable local game server after one observed unsaved worn hammer conversion;no save/logout requested'
                                 if SCENARIO=='imcando-crash':manifest['fault_scope']='Terminate only the freshly owned disposable RSPS server after one received unsaved held hammer Swap; prior whole account state must restore; no save/logout requested'
                                 if SCENARIO=='rune-mind-daeyalt-crash':manifest['fault_scope']='Terminate only the server launched for this fresh disposable Daeyalt account after56runes/first7specialessence observed unsaved;preserve21ordinary;prior full account must restore;no logout/save requested'
+                                if SCENARIO=='crafting-cape-crash':manifest['fault_scope']='Terminate only the freshly launched owned disposable game server after receivedCrafting100andrepeat100;no save/logout requested;prior99andwholefineXPbaggear must recover'
                                 if SCENARIO=='rune-mind-crash':manifest['fault_scope']='Terminate only the server process launched for this fresh disposable Rune altar account after224Mindrunes/7700fineXP observed unsaved; prior whole state must restore; no logout/save requested'
                                 if SCENARIO=='light-crash':manifest['fault_scope']='Terminate only this freshly launched owned disposable RSPS server after one observed unsaved native candle lighting; no logout/save requested; prior account image must restore'
                                 save(dest/'manifest.json',manifest)
@@ -413,7 +439,7 @@ def phase(mode):
     elif manifest['status']=='PASS' and (not manifest['save_acknowledgement'] or not manifest['graceful_shutdown'] or manifest['server_exit']!=0 or manifest['forced_shutdown']):manifest.update(status='BLOCKED',reason='Client finished but durable save or graceful shutdown evidence missing')
     save(dest/'manifest.json',manifest);print('NATIVE_RESULT',json.dumps(manifest),flush=True)
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('action',choices=['prepare','build','seed','produce','relogin']);p.add_argument('--feature',choices=['rune-air-daeyalt','rune-water-daeyalt','rune-earth-daeyalt','rune-fire-daeyalt','rune-body-daeyalt','crafting-cape-boost','crafting-cape-trimmed','crafting-cape-f2p','crafting-cape-drained','crafting-cape-expiry','rune-mind-daeyalt-f2p','rune-mind-daeyalt-close-after-reach','rune-mind-daeyalt-move-after-reach','rune-mind-daeyalt-logout-after-reach','rune-mind-daeyalt-crash','rune-mind-ordinary-f2p','rune-mind-close-after-reach','rune-mind-close','rune-mind-daeyalt','rune-mind-crash','rune-air','rune-mind','rune-water','rune-earth','rune-fire','rune-body','rune-mind-f2p','imcando-worn-dispatch','imcando-worn','imcando-worn-f2p','imcando-worn-crash','imcando-worn-full','imcando-held','imcando-f2p','imcando-crash','imcando-inputs','light-feedback','light-crash','light-sources','combat','chemistry','chemistry-worn','chemistry-last','chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','food','food-observer','prayer','gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells','production-gem-batch','production-shell-batch','production-gem-x','production-gem-x-focus','production-gem-interrupt','production-shell-interrupt','production-gem-crash','immediate-staff','immediate-limestone','immediate-certainty','immediate-crash','fallible-gems','fallible-gem-interrupt','sinew','sinew-crash','battlestaves','battlestaff-crash','crab-carving','crab-interrupt','crab-crash','crab-quantities','pair-stringing','pair-staves','pair-stringing-reverse','pair-counts','pair-ten','pair-x','pair-earth-batch','pair-pending','pair-interrupt','pair-crash','crafting-finishes','crafting-finishes-crash','amethyst','amethyst-batch','amethyst-interrupt','amethyst-crash'],default='combat');p.add_argument('--integration-sha');p.add_argument('--run-id');p.add_argument('--relogin-attempt');p.add_argument('--continuation-attempt');a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('action',choices=['prepare','build','seed','produce','relogin']);p.add_argument('--feature',choices=['crafting-cape-crash','crafting-cape-equipment','rune-air-daeyalt','rune-water-daeyalt','rune-earth-daeyalt','rune-fire-daeyalt','rune-body-daeyalt','crafting-cape-boost','crafting-cape-trimmed','crafting-cape-f2p','crafting-cape-drained','crafting-cape-expiry','rune-mind-daeyalt-f2p','rune-mind-daeyalt-close-after-reach','rune-mind-daeyalt-move-after-reach','rune-mind-daeyalt-logout-after-reach','rune-mind-daeyalt-crash','rune-mind-ordinary-f2p','rune-mind-close-after-reach','rune-mind-close','rune-mind-daeyalt','rune-mind-crash','rune-air','rune-mind','rune-water','rune-earth','rune-fire','rune-body','rune-mind-f2p','imcando-worn-dispatch','imcando-worn','imcando-worn-f2p','imcando-worn-crash','imcando-worn-full','imcando-held','imcando-f2p','imcando-crash','imcando-inputs','light-feedback','light-crash','light-sources','combat','chemistry','chemistry-worn','chemistry-last','chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','food','food-observer','prayer','gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells','production-gem-batch','production-shell-batch','production-gem-x','production-gem-x-focus','production-gem-interrupt','production-shell-interrupt','production-gem-crash','immediate-staff','immediate-limestone','immediate-certainty','immediate-crash','fallible-gems','fallible-gem-interrupt','sinew','sinew-crash','battlestaves','battlestaff-crash','crab-carving','crab-interrupt','crab-crash','crab-quantities','pair-stringing','pair-staves','pair-stringing-reverse','pair-counts','pair-ten','pair-x','pair-earth-batch','pair-pending','pair-interrupt','pair-crash','crafting-finishes','crafting-finishes-crash','amethyst','amethyst-batch','amethyst-interrupt','amethyst-crash'],default='combat');p.add_argument('--integration-sha');p.add_argument('--run-id');p.add_argument('--relogin-attempt');p.add_argument('--continuation-attempt');a=p.parse_args()
     SCENARIO=a.feature
     policy=ROOT/'docs/openrune/verification/USER_DEFERRALS.json'
     if policy.exists():
@@ -487,8 +513,8 @@ if __name__=='__main__':
         STATE='pg-'+SCENARIO+'-'+SHA[:8]+'-'+a.run_id
         WORK=WORK/a.run_id;OUT=OUT/a.run_id
     if a.continuation_attempt:
-        assert a.feature=='rune-mind-daeyalt' and a.run_id and a.action in ['prepare','produce','relogin'] and re.fullmatch('continuation-[0-9]{3}',a.continuation_attempt),'Only an explicit original126partial account continuation; no seed/build'
-        CONTINUATION_SOURCE=OUT;OUT=OUT/a.continuation_attempt;WORK=WORK/a.continuation_attempt;SCENARIO='rune-mind-daeyalt-tail'
+        assert ((a.feature=='rune-mind-daeyalt' and a.run_id) or (a.feature=='crafting-cape-equipment' and a.run_id=='native-002')) and a.action in ['prepare','produce','relogin'] and re.fullmatch('continuation-[0-9]{3}',a.continuation_attempt),'Only an explicit original partial-observation account continuation; no seed/build'
+        CONTINUATION_SOURCE=OUT;OUT=OUT/a.continuation_attempt;WORK=WORK/a.continuation_attempt;SCENARIO='rune-mind-daeyalt-tail' if a.feature=='rune-mind-daeyalt' else 'crafting-cape-frame-tail'
     if PIN=='pg-observer' and a.action in ['produce','relogin']:
         frozen=json.loads((OUT/'resources.json').read_text(encoding='utf-8'))['driver_manifest']['files']
         DRIVER,=frozen;assert digest(RES/DRIVER)==frozen[DRIVER]
@@ -499,7 +525,9 @@ if __name__=='__main__':
         RELOGIN_ATTEMPT=a.relogin_attempt
     if a.action=='prepare':
         prepare()
-        if CONTINUATION_SOURCE:prepare_daeyalt_continuation(CONTINUATION_SOURCE)
+        if CONTINUATION_SOURCE:
+            if a.feature=='crafting-cape-equipment':prepare_cape_observation(CONTINUATION_SOURCE)
+            else:prepare_daeyalt_continuation(CONTINUATION_SOURCE)
     elif a.action=='build':build()
     elif a.action=='seed':seed()
     else:phase('assemble' if a.action=='produce' else 'verify')

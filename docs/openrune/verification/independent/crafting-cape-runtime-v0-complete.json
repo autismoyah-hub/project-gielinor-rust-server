@@ -1,0 +1,27 @@
+{
+  "implementation_id": "OR-MIG-0130",
+  "tested_sha": "7d2133f23e00ad852df8726ead67493e83c901b4",
+  "level": "V0",
+  "status": "PASS",
+  "scope": "Exact pristine server binary built and actual cache-backed startup completed. Genuine native9780/9781Remove/Wear/Boost reaches actual mapped387:16nativeop2 and received stat46current100, proving startup/runtime/equipment/action/notification reachability. Independent actual two cape/stat/451Boost452Teleport/wear1base99facts and55malformedbinding refusals;1612typed mapped-button calls,12guild-entry/Boost permission scenarios and972ordinaryRune sharedWorld regressions PASS. No FORGE developer tests counted.",
+  "qualifications": [
+    "V0 actual reachability does not accept native rendered Skills/F2P-message requirements or lifecycle/reference levels.",
+    "Synthetic adapter tests assume upstream component mapping; genuine native positive actions separately establish that mapping. No constructed network negative payloads.",
+    "Shared UI/stat/guild paths covered within this cape contract; full129r2all49wardrobe or latestHEAD integration is separate."
+  ],
+  "evidence_sha256": {
+    "integration-external-crafting-cape-bindings-7d2133f23e00ad852df8726ead67493e83c901b4/manifest.json": "575bb3832d3e47459b34f7ca787aeaa90915ffa0f44188e10ddf167acbaeec3d",
+    "integration-external-crafting-cape-bindings-7d2133f23e00ad852df8726ead67493e83c901b4/run-1.log": "6c9edbefdbf591045916b8e3ae44dbb5f75ed402e3933522e683936d4986759a",
+    "integration-external-crafting-cape-buttons-7d2133f23e00ad852df8726ead67493e83c901b4/manifest.json": "a5368b528f567c3f98f400c85d357d825f0d73dcf3b8dc43bb47587428c8d558",
+    "integration-external-crafting-cape-buttons-7d2133f23e00ad852df8726ead67493e83c901b4/run-1.log": "c564ab58e8095980298c9f73c74ec8af0ddc50e2bce571460131dbbf90ab8ef1",
+    "integration-external-crafting-cape-guild-entry-7d2133f23e00ad852df8726ead67493e83c901b4/manifest.json": "bb0f3432a9087e7be69894717470aef9a5665fa968ceee5eb9dc9076959fd545",
+    "integration-external-crafting-cape-guild-entry-7d2133f23e00ad852df8726ead67493e83c901b4/run-1.log": "5ee9109e7a4bd00674211db2dd0291143fca1382200166d1ce5f16663e55f9fe",
+    "integration-external-rune-altars-current-regression-7d2133f23e00ad852df8726ead67493e83c901b4/manifest.json": "7708289ef1a6b899a54816894b237edcedb64d2c6192073628db49d50247d66b",
+    "integration-external-rune-altars-current-regression-7d2133f23e00ad852df8726ead67493e83c901b4/run-1.log": "d4524c15424bee4fb43d473b6e4acf7dab0fd313bca8cb072e7939f6a1f26945",
+    "deep-crafting-cape-equipment/native-002/build.json": "b9d6d176d978b213fc58308908ef00722959b0dfe9c2a10f926a0128e487d0fb",
+    "deep-crafting-cape-equipment/native-002/produce/manifest.json": "ba70e60b666f850f884c3c280f3e9b188b5117d391bec9dad7ba284c8e0d2624",
+    "deep-crafting-cape-equipment/native-002/produce/client.log": "81a7198fcf1562a67a2c9c1cd1670fd13bdd669f3e1288e55f32e12f70cd4ed6",
+    "deep-crafting-cape-equipment/native-002/produce/server.log": "29fc3773d067138f23a30b27dc7b15f6ef9ab7a4c6fcbcc00cd4b9cd0bd769cd",
+    "deep-crafting-cape-equipment/native-002/independent-assessment.json": "db388ba4df05eb5c27ed98e69fab83bc71a0e9efacb94063cfafe6c1725ef078"
+  }
+}

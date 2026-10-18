@@ -1,0 +1,25 @@
+warning: unnecessary `unsafe` block
+  --> C:\Projects\OSRSRSPS\agent7-targets\7d2133f23e00ad852df8726ead67493e83c901b4\vendor\num-bigint-0.4.6\src\biguint\addition.rs:23:9
+   |
+23 |         unsafe { arch::_addcarry_u64(carry, a, b, out) }
+   |         ^^^^^^ unnecessary `unsafe` block
+   |
+   = note: `#[warn(unused_unsafe)]` (part of `#[warn(unused)]`) on by default
+
+warning: unnecessary `unsafe` block
+  --> C:\Projects\OSRSRSPS\agent7-targets\7d2133f23e00ad852df8726ead67493e83c901b4\vendor\num-bigint-0.4.6\src\biguint\subtraction.rs:23:9
+   |
+23 |         unsafe { arch::_subborrow_u64(borrow, a, b, out) }
+   |         ^^^^^^ unnecessary `unsafe` block
+
+warning: `num-bigint` (lib) generated 2 warnings
+   Compiling pg-cape-boundary v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\7d2133f23e00ad852df8726ead67493e83c901b4\external-harness-3740842100\boundary-bridge)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\7d2133f23e00ad852df8726ead67493e83c901b4\external-harness-3740842100)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.20s
+     Running tests\buttons.rs (C:\Projects\OSRSRSPS\agent7-verification\work\7d2133f23e00ad852df8726ead67493e83c901b4\target\debug\deps\buttons-7a79550b7dbedc8e.exe)
+
+running 1 test
+PG_CAPE_BUTTONS1612 pinned mapped-component adapter actualtypedButtons:bothcapes,currentexplicit-or-1object,canonical-1inventoryslot,actualwearslot1,op2only;Remove1Teleport3neverBoost;12unregisteredcurrentitemcontrols PASS
+test mapped_cape_component_claims_do_not_alias_remove_or_teleport ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s

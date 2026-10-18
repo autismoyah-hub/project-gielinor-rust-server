@@ -1,0 +1,49 @@
+{
+  "implementation_id": "OR-MIG-0130",
+  "tested_sha": "7d2133f23e00ad852df8726ead67493e83c901b4",
+  "status": "PASS_SCOPED",
+  "scope": "Fresh disposable account actual nativeBoost99->100andrepeated100 observed inreceived46atconstantXP. Existing owned fault path terminates only this freshly launched localserver beforeSaveack;serverexitnonzero,nogracefuldrain. ActualSQLiteaftertermination andrealserverrestart/native reconnect restoreoriginal99/wholeStatsfineXPbaggear. ReconnectsendsnoBoostandnopendingproduction;no unsavedperk/XP/item replay. No successful immutable account reused or reseeded.",
+  "produced_stat_samples": [
+    [
+      0,
+      99,
+      13034431
+    ],
+    [
+      97,
+      100,
+      13034431
+    ]
+  ],
+  "recovered_stat_samples": [
+    [
+      0,
+      99,
+      13034431
+    ]
+  ],
+  "boost_send_clocks": [
+    97,
+    102
+  ],
+  "limitations": [
+    "Termination is before save acknowledgement;not during SQLitecommit failure injection.",
+    "This verifies immediatecapeBoost recovery; pendingRuneproduction interruption and liveMember guards are separately exercised inpublicWorld scenarios atsameSHA."
+  ],
+  "evidence_sha256": {
+    "initial-state.json": "63ff8e4ff53eeb4f8ff19eac28d3bf190d806180d53894a7945ff93db87319e3",
+    "build.json": "b9d6d176d978b213fc58308908ef00722959b0dfe9c2a10f926a0128e487d0fb",
+    "frozen-observer/build.json": "45a497f43e27d4ea185217616258735043decbc04956cb592da4027fa715bc84",
+    "frozen-observer/pg_observer.rs": "33093291c12b1afa9ec760e65bbaf75de7910608ceea2c6077bae04c564f0e2f",
+    "produce/manifest.json": "5e25cc59ec1e1fcf82cebd2f8dc1421a5e1f4a7b71830cfca192e4ad2dd2d15d",
+    "produce/before.json": "63ff8e4ff53eeb4f8ff19eac28d3bf190d806180d53894a7945ff93db87319e3",
+    "produce/after.json": "3e85e8ec811d36a94f3c9303cbea32b99295db02d8a13606a8b1de33d91ae310",
+    "produce/client.log": "543b779125f6d40b3ea0445e839093c990948f404771edf29caa27fd6dc06918",
+    "produce/server.log": "c5a4a5fec57d04c0c312d0c400160da05955b80522667b317a117a14dd10fdf3",
+    "relogin/manifest.json": "d41811d1e2d83d23f9eb359417de480b826f7becc574e9d49ac232961e6bc36c",
+    "relogin/before.json": "3e85e8ec811d36a94f3c9303cbea32b99295db02d8a13606a8b1de33d91ae310",
+    "relogin/after.json": "efc53768ffc2f0966207ab4921b86ccbfe20119f79c13e70dac1f424b1736d1f",
+    "relogin/client.log": "cf4eeb09d006dc4b335dfdf9d167a7b5b93aac888d84983675bb8b774db94c5e",
+    "relogin/server.log": "bdbc739fa1744a872a50e3ea012dbfa9641c1764915f9cd3fda4a1d33c5d128a"
+  }
+}

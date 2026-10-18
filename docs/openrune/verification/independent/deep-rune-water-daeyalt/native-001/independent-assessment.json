@@ -1,0 +1,35 @@
+{
+  "implementation_id": "OR-MIG-0126",
+  "tested_sha": "bd1294ab9e0ff850155b024364dc3a3a98a37bed",
+  "status": "PASS_SCOPED",
+  "feature": "rune-water-daeyalt",
+  "runes": 168,
+  "fine_xp_awards": [
+    3150,
+    6300
+  ],
+  "inventory_change_ticks": [
+    64,
+    70
+  ],
+  "scope": "Three actual rendered native Craft-rune menus and independently decoded real location sends: first7Daeyalt only, retains21ordinary; separate second action converts remainingordinary; delivered emptythird grants nothing. Exactly two complete native bag transitions, wholeStats/gear, correct Rune yield and one aggregate1.5XP award for specialessence only. Each actual791sequence precedes credit by one receivedclock; two186spots height100. Exact acknowledged save, process restart and independently decoded sameaccount reconnect retain full quantity and fineXP.",
+  "limitations": [
+    "Actual effective500native only;125variant remains separately blocked by pinned login policy.",
+    "Wire stats expose wholeXP only; first expectedfine is checked through independently verified World behavior, summed separate fineawards are checked in durableSQL. No claim of intermediate SQL fineXP snapshot for this account.",
+    "No essence acquisition/altar entry/native boost activation/original executable or audio/render parity."
+  ],
+  "evidence_sha256": {
+    "initial-state.json": "0076309b6e977c1f7d1ccf288dd1126afe8de837f867c1013262833155fefb14",
+    "build.json": "ae08bd2e5e8423918d5c2c92370eb08339df9d69f5456ea5a682b9322f16e704",
+    "frozen-observer/build.json": "b64eeb992d16b286e6a5215c3a67b1135be486fa69dbed7568e42538057e5a00",
+    "frozen-observer/pg_observer.rs": "8de97dd3e0ed64787227413040de40e5eeb3683eee70cbd42949a237f3620974",
+    "produce/manifest.json": "6df506bb593c5fc62ace7b6ec832d111ef9fdadab7004c88dfed72c15b55d5a2",
+    "produce/after.json": "80cdfc84e3d1e11f0e801947daf61aadcaf9a74858f978afdc20a479139b7972",
+    "produce/client.log": "07d7e240bc6b1377c4a55e6af5fcacbc68d7cdaeb0909f5abe731cbd031fd5f6",
+    "produce/server.log": "7f2d6e7815b4b4763362e40beb6d55b6d4ee5bd64da6fdef4d01427809fbd17c",
+    "relogin/manifest.json": "f917e889a255eb13bca5457ae3ee2b77587d97825ddd21b7a56b38f86d0a2dce",
+    "relogin/after.json": "8740ab88ead47ad50973c0d1b0039abe39102b118cdcb4f20b6f695f4ceba32a",
+    "relogin/client.log": "a1b366b1263e855e3eab5bf52f94add3a9b9edb13a53242d58f95ed55ac23056",
+    "relogin/server.log": "bdba3d85b3bec798b8dc106106b42984bc6b9ad8cc04ea6521643de0a65e589e"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "implementation_id": "OR-MIG-0130",
+  "tested_sha": "7d2133f23e00ad852df8726ead67493e83c901b4",
+  "status": "PASS",
+  "level": "V1",
+  "case_groups": {
+    "previously_passing_World_and_timer_and_death_cases": 164,
+    "typed_mapped_button_adapter_calls": 1612,
+    "actual_World_guild_entry_Boost_permission_scenarios": 12
+  },
+  "scope": "Complete requiredV1 after explicit acceptance correction:164priorWorld/timer/queueddeath cases remain valid.1612independent typed calls exercise the unmodified pinned mapped-component adapter, including bothcapesself-or-1object/canonical-1inventoryclaim/actualwearslot1/op2,allRemove1/Teleport3controls andunregisteredcurrentitems.12actualWorld OpLoc guildentry/Boost scenarios prove bothcapemember/F2P/current39-40-99 permissions independent:qualifyingF2Pcape enters butBoost refuses;memberdrained39Boost40permits a freshentry. WholebaggearStats/fineXP conservation and zeroRNG retained.",
+  "acceptance_history": "Premature164caseV1PASS publisheda5be310 was withdrawn in810d4f1 because two required acceptance classes were omitted. Both missing classes now independently execute at identical7d2133SHA; this new append-only result restoresV1PASS with complete coverage. No prior successful game campaign replay or deletion.",
+  "qualifications": [
+    "Pure button adapter is tested only after real-component mapping precondition. Existing upstream open-interface/component authority and native menus are separateV0/V2requirements; no fullRuntime network negative test claimed.",
+    "Bridge includes exactunmodifiedtargetcode in a normal dependencycrate; its cfg(test) developer tests are neither compiled nor run. Only independently authored integration tests count. TypedButtonvalues only,no constructednetworkpayloads.",
+    "Guild tests establish boundedCraftingcape/entry separation, not full129r2all49wardrobe/native/concurrency/persistence acceptance.",
+    "Native fivecape campaigns are prepared but unexecuted; no fullcontract acceptance."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/crafting-cape-world-v1-complete.json": "c688f8b5a350e495e3de6f95c590296c3bb434b1667115da0665bc507162d6c8",
+    "docs/openrune/verification/independent/crafting-cape-v1-acceptance-correction.json": "c79433911ac23e7efd26813c9033b16f9ac1bd8bf70553a256c383b0dfdebdfb",
+    "docs/openrune/verification/independent/integration-external-crafting-cape-buttons-7d2133f23e00ad852df8726ead67493e83c901b4/manifest.json": "a5368b528f567c3f98f400c85d357d825f0d73dcf3b8dc43bb47587428c8d558",
+    "docs/openrune/verification/independent/integration-external-crafting-cape-buttons-7d2133f23e00ad852df8726ead67493e83c901b4/run-1.log": "c564ab58e8095980298c9f73c74ec8af0ddc50e2bce571460131dbbf90ab8ef1",
+    "docs/openrune/verification/independent/integration-external-crafting-cape-guild-entry-7d2133f23e00ad852df8726ead67493e83c901b4/manifest.json": "bb0f3432a9087e7be69894717470aef9a5665fa968ceee5eb9dc9076959fd545",
+    "docs/openrune/verification/independent/integration-external-crafting-cape-guild-entry-7d2133f23e00ad852df8726ead67493e83c901b4/run-1.log": "5ee9109e7a4bd00674211db2dd0291143fca1382200166d1ce5f16663e55f9fe",
+    "docs/openrune/verification/independent/integration-external-crafting-cape-buttons-7d2133f23e00ad852df8726ead67493e83c901b4/bridge.json": "4abaae5b5602f7d9b23cc49a6bd08d527de6b11a4a0efe33c57b1caa588351f1",
+    "docs/openrune/verification/independent/integration-external-crafting-cape-buttons-7d2133f23e00ad852df8726ead67493e83c901b4/bridge-lib.rs": "fd4c851c89699fc3405f16e19ac04b9ecd16af44aa141d64c47029251cd1e5eb"
+  }
+}

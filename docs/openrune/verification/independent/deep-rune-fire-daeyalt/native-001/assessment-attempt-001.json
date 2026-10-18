@@ -1,0 +1,5 @@
+{
+  "status": "HARNESS_EXPECTATION_FAILURE",
+  "tested_sha": "bd1294ab9e0ff850155b024364dc3a3a98a37bed",
+  "reason": "Assessor compared opcode83 pre-apply PG_RX counter131 against actual third-wire-send127+5. Opcode83 itself increments the counter: actual PG_APPLIED132 supplies exactlyfive post-send receivedclocks. Nativeproduce/relogin both alreadyPASS, wholeSQL/Stats and two producing transitions correct. Correct only read-only assessor clock convention and rerun it against the same immutable evidence; no gameplay/account/reseed replay."
+}

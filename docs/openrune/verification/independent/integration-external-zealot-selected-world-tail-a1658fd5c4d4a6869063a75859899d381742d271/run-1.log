@@ -1,0 +1,18 @@
+warning: unused import: `Effect`
+ --> C:\Projects\OSRSRSPS\agent7-targets\a1658fd5c4d4a6869063a75859899d381742d271\crates\world\src\simulation\skillcape_vendor_actions.rs:3:30
+  |
+3 |     dialogue::{Conversation, Effect, Pending},
+  |                              ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `gielinor-world` (lib) generated 1 warning (run `cargo fix --lib -p gielinor-world` to apply 1 suggestion)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\a1658fd5c4d4a6869063a75859899d381742d271\external-harness-3809669100)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 12.25s
+     Running tests\tail.rs (C:\Projects\OSRSRSPS\agent7-verification\work\a1658fd5c4d4a6869063a75859899d381742d271\target\debug\deps\tail-d67457e90b046636.exe)
+
+running 1 test
+PG_ZEALOT_WORLD 14 selected admission noinitialXP/liveequip/remove/member/malformed/stalebone/zeroHP completion and noReplay PASS
+test admission_completion_live_robes_member_and_duplicate_controls ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 3.06s

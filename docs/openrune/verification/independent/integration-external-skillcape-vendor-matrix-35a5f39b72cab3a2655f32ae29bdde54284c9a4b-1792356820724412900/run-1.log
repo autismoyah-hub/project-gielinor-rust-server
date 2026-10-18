@@ -1,0 +1,20 @@
+warning: unused import: `Effect`
+ --> C:\Projects\OSRSRSPS\agent7-targets\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\crates\world\src\simulation\skillcape_vendor_actions.rs:3:30
+  |
+3 |     dialogue::{Conversation, Effect, Pending},
+  |                              ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `gielinor-world` (lib) generated 1 warning (run `cargo fix --lib -p gielinor-world` to apply 1 suggestion)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\external-harness-8859408700)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 9.75s
+     Running tests\purchase.rs (C:\Projects\OSRSRSPS\agent7-verification\work\35a5f39b72cab3a2655f32ae29bdde54284c9a4b\target\debug\deps\purchase-34a52fc432f52b86.exe)
+
+running 2 tests
+PG_VENDOR_SPACE 336 underfunded/full/onefree evenexactpayment predebitrefusal noPartialPlan PASS
+test exact_coins_do_not_create_predebit_space_and_no_room_means_no_partial_plan ... ok
+PG_VENDOR_MATRIX 3360 bothvendors all28coinslots threepayments fivebase/current/releasedstatpatterns member/F2P base98/99 exactdebit twooutputs unrelatedvars preserved PASS
+test exact_payment_predebit_space_and_trim_uses_only_released_base_levels ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.60s

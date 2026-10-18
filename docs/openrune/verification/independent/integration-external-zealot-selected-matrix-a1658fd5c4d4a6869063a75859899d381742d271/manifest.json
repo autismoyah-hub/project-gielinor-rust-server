@@ -1,0 +1,67 @@
+{
+  "tested_integration_sha": "a1658fd5c4d4a6869063a75859899d381742d271",
+  "suite": "zealot-selected-matrix",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 7585603584,
+    "active_compilers": [
+      "\"cargo.exe\",\"4904\",\"RDP-Tcp#0\",\"2\",\"45,316 K\"",
+      "\"rustc.exe\",\"10640\",\"RDP-Tcp#0\",\"2\",\"79,820 K\""
+    ],
+    "cpu_percent": 17.91,
+    "cpu_samples": [
+      21.91780821917808,
+      18.518518518518523,
+      13.28125
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Existing project memory/commit/paging checks and sampled CPU ceiling; owned Cargo remains j1/two CPUs/BelowNormal",
+    "capacity_policy_sha256": "dc3c6e372de5369ab77c4ebbd7cf21c426d0916581e11f2377480eba79adcdfd",
+    "memory_preflight_exit": 0,
+    "memory_preflight_stdout": "Capacity: 7,082 MiB available, commit 58.9%, pages-in/s 0, disk 0.0 ms.\nCargo concurrency: -j 2\n",
+    "memory_preflight_stderr": "",
+    "disk_free": 2905804800,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "f030ffcc3f87003fd66478b23041deb6886a28ea",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\a1658fd5c4d4a6869063a75859899d381742d271\\external-harness-0319463200\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-zealot-selected-matrix-a1658fd5c4d4a6869063a75859899d381742d271\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\a1658fd5c4d4a6869063a75859899d381742d271\\external-harness-0319463200\\Cargo.toml",
+        "--",
+        "--nocapture"
+      ],
+      "exit_code": 0,
+      "tests_passed": 3,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-zealot-selected-matrix-a1658fd5c4d4a6869063a75859899d381742d271\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative zealot-selected-matrix scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-zealot-selected-matrix-a1658fd5c4d4a6869063a75859899d381742d271\\harness\\selected.rs": "d85762b70f74f8362d63bb7f5c5cedb0fc054162f7d4ad79057e9a0f17b3538f"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\selected-74ad2b79cb934629.exe": "5f4d4f86a3cbeb3542277916e3c64d9d7b40bddbe56f95fbbde16bc8af114eb4"
+  }
+}

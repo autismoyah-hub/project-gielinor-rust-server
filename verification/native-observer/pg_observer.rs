@@ -537,6 +537,51 @@ fn daeyalt_other_altars(c:&mut ClientState,l:&mut Connection,kind:&str)->R<()> {
     }
     println!("PG_CASE_PASS native special-essence altar kind={kind} first7only retain21ordinary secondexplicitclick emptythird exactbaggearXP");Ok(())
 }
+fn native_cape_menu(c:&mut ClientState,label:&str)->R<Action>{
+    let id=(387u32<<16)|16;let layout=c.interfaces.layout(c.canvas)?;let p=layout.widgets.get(&id).filter(|p|!p.hidden && p.clip[2]>p.clip[0] && p.clip[3]>p.clip[1]).ok_or("native cape component not visible")?;
+    let point=[(p.clip[0]+p.clip[2])/2,(p.clip[1]+p.clip[3])/2];let menus=c.interface_menu(point)?;
+    for entry in &menus{println!("PG_CAPE_EQUIPMENT_MENU wanted={label:?} option={:?} action={:?}",entry.option,entry.action);}
+    menus.into_iter().find(|e|e.option==label).map(|e|e.action).ok_or_else(||format!("native cape option absent:{label}").into())
+}
+fn native_cape_frame(c:&mut ClientState,l:&mut Connection,name:&str)->R<()>{
+    use std::io::Write;use sha2::Digest;
+    let size=c.canvas;let mut frame=l.paint(c,size[0]as usize,size[1]as usize)?;
+    let layout=c.interfaces.layout(c.canvas)?;let mut renderer=gielinor_client::interface_render::Renderer::load(&mut c.scripts.source.cache,c.preferences.device.brightness)?;
+    renderer.minimap=l.minimap_view(c);renderer.world_drawn=l.world.is_some();renderer.player=c.player_state.as_ref().and_then(|state|state.players[state.local as usize].as_ref()).and_then(|player|player.appearance.as_ref()).map(|a|a.appearance.clone());
+    let report=renderer.draw_with_variables(&mut c.scripts.source.cache,&c.items,&c.interfaces,&layout,&mut frame,Some(&c.scripts.variables))?;
+    assert!(report.drawn>0,"native interface overlay drew no widgets");println!("PG_CAPE_UI_RENDER name={name} widgets={} report={report:?};actual existing viewport interface renderer",layout.widgets.len());let bytes=frame.bmp()?;
+    let path=format!("{name}.bmp");let mut file=std::fs::OpenOptions::new().write(true).create_new(true).open(&path)?;file.write_all(&bytes)?;
+    println!("PG_CAPE_NATIVE_FRAME name={name} width={} height={} sha256={:x} actual_current={} tick={};private native rendering,not published assets",frame.width(),frame.height(),sha2::Sha256::digest(&bytes),c.data.boosted[12],c.server_tick);Ok(())
+}
+fn crafting_cape_frame_tail(c:&mut ClientState,l:&mut Connection)->R<()> {
+    assert!(c.data.members);assert_eq!(c.data.base[12],99);assert_eq!(c.data.experience[12],13034431);assert!(matches!(c.data.boosted[12],99|100));
+    let image=|c:&ClientState,inv,size|(0..size).map(|s|{let i=c.inventories.item(inv,s);(i.id,i.count)}).collect::<Vec<_>>();let bag=image(c,93,28);let gear=image(c,94,14);let xp=c.data.experience;assert_eq!(gear[1],(9780,1));assert_eq!(bag[0],(9781,1));
+    println!("PG_CAPE_UI_TAIL_INITIAL actualcurrent={} preservedsameaccount baggearXP tick={}",c.data.boosted[12],c.server_tick);
+    if c.data.boosted[12]==100{pump(c,l,90,|c,_|c.data.boosted[12]==99)?;}
+    tab(c,"Worn Equipment")?;ticks(c,l,2)?;let action=native_cape_menu(c,"Boost")?;sent_packet(c,action,"sameaccount native fresh cape Boost for UI observation")?;pump(c,l,25,|c,_|c.data.boosted[12]==100)?;
+    tab(c,"Skills")?;ticks(c,l,2)?;native_cape_frame(c,l,"cape-skills-overlay100")?;assert_eq!(c.data.boosted[12],100);
+    tab(c,"Worn Equipment")?;ticks(c,l,2)?;let action=native_cape_menu(c,"Boost")?;sent_packet(c,action,"sameaccount native cape repeat100 no stacking")?;ticks(c,l,4)?;assert_eq!(c.data.boosted[12],100);
+    tab(c,"Skills")?;ticks(c,l,2)?;native_cape_frame(c,l,"cape-skills-overlay-repeat100")?;assert_eq!(image(c,93,28),bag);assert_eq!(image(c,94,14),gear);assert_eq!(c.data.experience,xp);
+    println!("PG_CASE_PASS sameaccount native cape UI observation actualBoost100/repeat100 two genuine UIoverlays wholebaggearXP retained;no earlier RemoveWear replay");Ok(())
+}
+fn crafting_cape_equipment(c:&mut ClientState,l:&mut Connection)->R<()> {
+    assert!(c.data.members);tab(c,"Worn Equipment")?;ticks(c,l,3)?;
+    let image=|c:&ClientState,inv,size|(0..size).map(|s|{let i=c.inventories.item(inv,s);(i.id,i.count)}).collect::<Vec<_>>();
+    let initial_bag=image(c,93,28);let initial_gear=image(c,94,14);let xp=c.data.experience;assert_eq!(initial_bag[0],(9781,1));assert_eq!(initial_gear[1],(9780,1));assert_eq!(c.data.boosted[12],99);assert_eq!(c.data.base[12],99);
+    native_cape_frame(c,l,"cape-worn-before")?;
+    let mut bag=initial_bag.clone();let mut gear=initial_gear.clone();
+    let action=native_cape_menu(c,"Remove")?;sent_packet(c,action,"native actual cape Remove before trimmed Wear")?;bag[1]=(9780,1);gear[1]=(-1,0);pump(c,l,25,|c,_|image(c,93,28)==bag && image(c,94,14)==gear)?;assert_eq!(c.data.boosted[12],99);assert_eq!(c.data.experience,xp);
+    tab(c,"Inventory")?;ticks(c,l,2)?;let action=item_action(c,0,false,"Wear")?;sent_packet(c,action,"native actual trimmed Crafting cape Wear selectedslot0")?;bag[0]=(-1,0);gear[1]=(9781,1);pump(c,l,25,|c,_|image(c,93,28)==bag && image(c,94,14)==gear)?;assert_eq!(c.data.boosted[12],99);assert_eq!(c.data.experience,xp);println!("PG_CAPE_EQUIPMENT trimmedWear actual no passive current boost tick={}",c.server_tick);
+    tab(c,"Worn Equipment")?;ticks(c,l,2)?;let action=native_cape_menu(c,"Boost")?;let packet=sent_packet(c,action,"native actually equipped trimmed cape Boost")?;assert_eq!(packet.0,47);assert_eq!(packet.1[8],2);pump(c,l,25,|c,_|c.data.boosted[12]==100)?;assert_eq!(image(c,93,28),bag);assert_eq!(image(c,94,14),gear);assert_eq!(c.data.experience,xp);
+    tab(c,"Skills")?;ticks(c,l,2)?;native_cape_frame(c,l,"cape-trimmed-skills100")?;
+    tab(c,"Worn Equipment")?;ticks(c,l,2)?;let action=native_cape_menu(c,"Remove")?;sent_packet(c,action,"native actual trimmed cape Remove")?;bag[0]=(9781,1);gear[1]=(-1,0);pump(c,l,25,|c,_|image(c,93,28)==bag && image(c,94,14)==gear)?;
+    tab(c,"Inventory")?;ticks(c,l,2)?;let action=item_action(c,1,false,"Wear")?;sent_packet(c,action,"native actual untrimmed Crafting cape Wear selectedslot1")?;bag[1]=(-1,0);gear[1]=(9780,1);pump(c,l,25,|c,_|image(c,93,28)==bag && image(c,94,14)==gear)?;assert_eq!(bag,initial_bag);assert_eq!(gear,initial_gear);assert_eq!(c.data.experience,xp);
+    // Wait for real normal expiry, then obtain a fresh full save window.
+    let start=c.server_tick;pump(c,l,90,|c,_|c.data.boosted[12]==99)?;println!("PG_CAPE_EQUIPMENT_EXPIRED actual99 elapsed_received_clocks={} tick={}",c.server_tick-start,c.server_tick);assert_eq!(image(c,93,28),bag);assert_eq!(image(c,94,14),gear);assert_eq!(c.data.experience,xp);
+    tab(c,"Worn Equipment")?;ticks(c,l,2)?;let action=native_cape_menu(c,"Boost")?;let packet=sent_packet(c,action,"native actually equipped untrimmed cape fresh Boost after expiry")?;assert_eq!(packet.0,47);assert_eq!(packet.1[8],2);pump(c,l,25,|c,_|c.data.boosted[12]==100)?;
+    tab(c,"Skills")?;ticks(c,l,2)?;native_cape_frame(c,l,"cape-untrimmed-skills100")?;assert_eq!(c.data.experience,xp);assert_eq!(image(c,93,28),initial_bag);assert_eq!(image(c,94,14),initial_gear);assert_eq!(c.data.boosted[12],100);
+    println!("PG_CASE_PASS native cape actual Remove/Wear bothvariants first99unchanged then Boost100/normalexpiry/freshBoost100;actual Skills softwareframes wholebaggearXP retained");Ok(())
+}
 fn crafting_cape_boost(c:&mut ClientState,l:&mut Connection,kind:&str)->R<()> {
     let f2p=kind.ends_with("-f2p");let drained=kind.ends_with("-drained");let expiry=kind.ends_with("-expiry");
     let cape=if kind.ends_with("-trimmed"){9781}else{9780};assert_eq!(c.data.members,!f2p);
@@ -913,6 +958,13 @@ fn main()->R<()> {
     if matches!(a[6].as_str(),"amethyst-interrupt"|"amethyst-crash"){amethyst_recovery(&mut c,&mut l,a[6]=="amethyst-crash")?;l.session.close();return Ok(());}
     if a[6]=="amethyst-batch"{amethyst_batch(&mut c,&mut l)?;l.session.close();return Ok(());}
     if matches!(a[6].as_str(),"rune-air-daeyalt"|"rune-water-daeyalt"|"rune-earth-daeyalt"|"rune-fire-daeyalt"|"rune-body-daeyalt"){daeyalt_other_altars(&mut c,&mut l,&a[6])?;l.session.close();return Ok(());}
+    if a[6]=="crafting-cape-crash"{
+        crafting_cape_boost(&mut c,&mut l,&a[6])?;assert_eq!(c.data.boosted[12],100);
+        println!("PG_CRASH_READY unsaved native Crafting cape current100;only freshly owned disposable local game server;no save/logout requested");
+        let start=Instant::now();loop{match l.poll(&mut c){Err(e)=>{println!("PG_EXPECTED_CRASH_DISCONNECT {e}");return Ok(());},Ok(())=>{if l.logged_out().is_some(){println!("PG_EXPECTED_CRASH_DISCONNECT native transport closed");return Ok(());}}}if start.elapsed()>Duration::from_secs(30){return Err("owned cape recovery termination absent".into());}std::thread::sleep(Duration::from_millis(10));}
+    }
+    if a[6]=="crafting-cape-frame-tail"{crafting_cape_frame_tail(&mut c,&mut l)?;l.session.close();return Ok(());}
+    if a[6]=="crafting-cape-equipment"{crafting_cape_equipment(&mut c,&mut l)?;l.session.close();return Ok(());}
     if a[6].starts_with("crafting-cape-"){crafting_cape_boost(&mut c,&mut l,&a[6])?;l.session.close();return Ok(());}
     if matches!(a[6].as_str(),"rune-mind-daeyalt-f2p"|"rune-mind-daeyalt-close-after-reach"|"rune-mind-daeyalt-move-after-reach"|"rune-mind-daeyalt-logout-after-reach"|"rune-mind-daeyalt-crash"){daeyalt_cases(&mut c,&mut l,&a[6])?;l.session.close();return Ok(());}
     if a[6]=="rune-mind-ordinary-f2p"{rune_altar(&mut c,&mut l,"rune-mind-f2p")?;l.session.close();return Ok(());}

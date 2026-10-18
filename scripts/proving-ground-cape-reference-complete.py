@@ -1,0 +1,21 @@
+"""Compare pinned native/World observations to the protected source and Wiki."""
+import hashlib,json,sqlite3
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'docs/openrune/verification/independent'
+prior=json.loads((OUT/'reference-crafting-cape/comparison.json').read_text(encoding='utf-8'));donor=ROOT.parent/'source-reference/OpenRune-Server-main/OpenRune-Server-main'
+db=sqlite3.connect((ROOT.parent/'osrs-wiki-dump/data/osrs-wiki.sqlite').as_uri()+'?mode=ro',uri=True)
+for s in prior['sources']:
+ if s['kind']=='openrune':raw=(donor/s['reference']).read_bytes()
+ else:raw=db.execute('SELECT wikitext FROM pages WHERE title=? COLLATE BINARY AND revision_id=?',(s['reference'],s['revision'])).fetchone()[0].encode('utf-8')
+ assert hashlib.sha256(raw).hexdigest()==s['sha256']
+db.close()
+helpers=['api/player/src/main/kotlin/org/rsmod/api/player/stat/PlayerStatExtensions.kt','api/player/src/main/kotlin/org/rsmod/api/player/protect/ProtectedAccess.kt']
+names=['reference-crafting-cape/comparison.json','crafting-cape-v1-resolved.json','crafting-cape-runtime-v0-complete.json']+['deep-'+f+'/native-001/independent-assessment.json'for f in ['crafting-cape-boost','crafting-cape-trimmed','crafting-cape-drained','crafting-cape-expiry','crafting-cape-f2p']]+['deep-crafting-cape-equipment/native-002/independent-assessment.json']
+for n in names:
+ r=json.loads((OUT/n).read_text(encoding='utf-8'));assert r['tested_sha']==prior['tested_sha']
+r={'implementation_id':'OR-MIG-0130','tested_sha':prior['tested_sha'],'level':'V4','status':'PASS','scope':'Qualified reference comparison completed: two exact donor/two pinnedWiki hashes independently rechecked. Actual two cape definitions/aliases/runtimecomponent/nativeop2 and receivedstat behavior compared to source wornOp2Boost/base99/constant1percent0; noXP/items/RNG, repeated100nochange, higherboost unchanged and drained+1 behaviors match inspected shared donor arithmetic. Native current99->100, normal99expiry/freshBoost and actualdrained51->52->53 corroborate World classes. Live member-use is separate from both-cape F2Pguildentry; actual native F2Pmenu omitsBoost, while Worldbackendrefusal has separate evidence.',
+ 'source_helper_hashes':{n:hashlib.sha256((donor/n).read_bytes()).hexdigest()for n in helpers},
+ 'qualified_differences':['Shared donor statBoost computes min(base+boost,current+boost)-current and only applies positive increments. Thus drained current50adds1 rather than restoring99; native observed51then52then53 includes ordinary regeneration. Wiki wording +1up-to100 agrees with boundedincrement but its cannot-reactivate-until99 phrase does not explicitly resolve every drained-state repeat. Target matches the inspected donor helper; do not claim an independently observed original OSRS drained-state result.','Wiki also mentions passive equip boost; original source CraftingCapeScript has no corresponding equip hook. This contract ports wornBoost only. Actual native Wear leaves99unchanged; passive-on-equip behavior remains a separate unported obligation, not claimed parity.','Wiki up-to60second/reversion rule is represented by the existing global stat-regeneration phase, not a new per-click cooldown. Actual native expiry and publicWorld timer tests confirm target behavior; original executable timing/audio/fullframe parity is unavailable.','Member-use policy follows Wiki members-only cape plus target live authority. Inspected CapeScript has no explicit membership check; uninspected donor global gates remain unresolved. Actual F2Pmenu blocksnativeBoost; its backendmessage cannot be reached using this native menu.','Teleport/emote/acquisition/trim/Maxcape and full129r2wardrobe behavior are outside this contract and remain explicitly unported/separate.'],
+ 'acceptance_scope':'V4PASS is a source/Wiki/actual-target comparison with recorded adaptations and limits, not byte-identical donor execution or full OSRS feature parity. Native renderedSkills obligation and otherV2/V3acceptance remain separate.',
+ 'evidence_sha256':{n:hashlib.sha256((OUT/n).read_bytes()).hexdigest()for n in names}}
+p=OUT/'crafting-cape-reference-v4-complete.json';assert not p.exists();p.write_text(json.dumps(r,indent=2)+'\n',encoding='utf-8',newline='\n');print('V4 PASS qualified source/Wiki/actual-target comparison')

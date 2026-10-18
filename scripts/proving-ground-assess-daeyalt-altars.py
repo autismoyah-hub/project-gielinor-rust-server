@@ -78,7 +78,8 @@ sequences=[int(t)for t in re.findall(r'PG_SEQUENCE tick=(\d+) sequence=791 delay
 assert len(sequences)==2 and [tick-seq for (tick,image),seq in zip(bag_states[1:],sequences)]==[1,1]
 assert log.count('decoded_slot_id_height_delay=[(0, 186, 100, 0)]')==2
 assert bag_states[1][0]>sends[0] and bag_states[2][0]>sends[1] and sends[2]>=bag_states[2][0]
-assert max(int(t)for t in re.findall(r'PG_RX tick=(\d+) opcode=83',log))>=sends[2]+5
+# Opcode83 increments the receive clock when applied; PG_RX is the pre-apply value.
+assert max(int(t)for t in re.findall(r'PG_APPLIED tick=(\d+) opcode=83',log))>=sends[2]+5
 for inv in [93,94]:assert [[inv,s,item,n,0]for s,(item,n)in enumerate(invs[inv])if item>=0]==[v for v in expected if v[0]==inv]
 for skill,current,base_level,fine in stats:assert observed[skill]==(current,fine//10)
 invs,observed,transitions,xp=decode(relog)

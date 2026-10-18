@@ -1,0 +1,17 @@
+{
+  "implementation_id": "OR-MIG-0130",
+  "tested_sha": "7d2133f23e00ad852df8726ead67493e83c901b4",
+  "scope": "Same completed equipment account, no reseed or Remove/Wear replay. New Boost/repeat and existing native UI renderer supply missing Skills overlay observation.",
+  "private_snapshot": {
+    "path": "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\native-crafting-cape-equipment\\native-002\\continuation-001\\before-native-observation.sqlite",
+    "sha256": "8e40eb8ba27a411fad83c60698f3dbce8352f5966425258b046a996dd5cec6d9"
+  },
+  "original_database_sha256_before_continuation": "b680eecb8d83036a27ee62ad01c1677d896027a2b546e8a0381d73833761f8c1",
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/deep-crafting-cape-equipment/native-002/produce/manifest.json": "ba70e60b666f850f884c3c280f3e9b188b5117d391bec9dad7ba284c8e0d2624",
+    "docs/openrune/verification/independent/deep-crafting-cape-equipment/native-002/relogin/manifest.json": "35bf3ac53a47636adfd9177e98cf0e78172a2be9e2c91044e403f5a8c0dc5763",
+    "docs/openrune/verification/independent/deep-crafting-cape-equipment/native-002/relogin/after.json": "a4c2d9526c71734daf2a75e16654bdf1c1aad2a966741755c770e03e165026c5",
+    "docs/openrune/verification/independent/deep-crafting-cape-equipment/native-002/build.json": "b9d6d176d978b213fc58308908ef00722959b0dfe9c2a10f926a0128e487d0fb",
+    "docs/openrune/verification/independent/deep-crafting-cape-equipment/native-002/frozen-observer/build.json": "acc461216bcf5472ef2d9580d5f0ca052ac33535a62adc9a51612a2981d01373"
+  }
+}

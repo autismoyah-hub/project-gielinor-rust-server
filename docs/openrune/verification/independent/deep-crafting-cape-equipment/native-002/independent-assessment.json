@@ -1,0 +1,92 @@
+{
+  "implementation_id": "OR-MIG-0130",
+  "tested_sha": "7d2133f23e00ad852df8726ead67493e83c901b4",
+  "status": "PASS_SCOPED",
+  "native_actions": [
+    [
+      126,
+      25362448,
+      65535,
+      65535,
+      1
+    ],
+    [
+      132,
+      9764864,
+      0,
+      9781,
+      3
+    ],
+    [
+      146,
+      25362448,
+      65535,
+      65535,
+      2
+    ],
+    [
+      173,
+      25362448,
+      65535,
+      65535,
+      1
+    ],
+    [
+      185,
+      9764864,
+      1,
+      9780,
+      3
+    ],
+    [
+      193,
+      25362448,
+      65535,
+      65535,
+      2
+    ]
+  ],
+  "crafting_stat_samples": [
+    [
+      0,
+      99,
+      13034431
+    ],
+    [
+      157,
+      100,
+      13034431
+    ],
+    [
+      188,
+      99,
+      13034431
+    ],
+    [
+      194,
+      100,
+      13034431
+    ]
+  ],
+  "scope": "Six genuine native inventory/equipment actions: Remove normal, Wear trimmed, Boost trimmed, Remove trimmed, Wear normal, Boost normal. Received Crafting99/100/99/100 with constantXP plus whole SQL bag/gear/base/fineXP conservation across acknowledged save and real server restart. Frozen native observer also checks received intermediate inventory/gear changes and no passive boost on Wear. No successful action replay.",
+  "limitations": [
+    "Three private BMPs are identical scene-only c129cb92a4c7cababfb78189c0597b7c97d0973417271fa5181b6a7f40bc9b0e. Inspected pixels do not display Skills/equipment overlay; rendered Skills100 obligation remains open for a same-account observation continuation.",
+    "Normal expiry follows existing shared regeneration phase rather than a new activation-relative timer. No unsaved crash or donor executable parity claim."
+  ],
+  "evidence_sha256": {
+    "initial-state.json": "63ff8e4ff53eeb4f8ff19eac28d3bf190d806180d53894a7945ff93db87319e3",
+    "build.json": "b9d6d176d978b213fc58308908ef00722959b0dfe9c2a10f926a0128e487d0fb",
+    "frozen-observer/build.json": "acc461216bcf5472ef2d9580d5f0ca052ac33535a62adc9a51612a2981d01373",
+    "frozen-observer/pg_observer.rs": "99f236c6ec1e2543b1803f35938ab0844d1ce074ce4e9e5e4779cf508fcfe838",
+    "produce/manifest.json": "ba70e60b666f850f884c3c280f3e9b188b5117d391bec9dad7ba284c8e0d2624",
+    "produce/before.json": "63ff8e4ff53eeb4f8ff19eac28d3bf190d806180d53894a7945ff93db87319e3",
+    "produce/after.json": "b6b63ed48e9f3131e2d423f91d8a4c38f990eafcf7feb2722ed3af7989bae133",
+    "produce/client.log": "81a7198fcf1562a67a2c9c1cd1670fd13bdd669f3e1288e55f32e12f70cd4ed6",
+    "produce/server.log": "29fc3773d067138f23a30b27dc7b15f6ef9ab7a4c6fcbcc00cd4b9cd0bd769cd",
+    "relogin/manifest.json": "35bf3ac53a47636adfd9177e98cf0e78172a2be9e2c91044e403f5a8c0dc5763",
+    "relogin/before.json": "b6b63ed48e9f3131e2d423f91d8a4c38f990eafcf7feb2722ed3af7989bae133",
+    "relogin/after.json": "a4c2d9526c71734daf2a75e16654bdf1c1aad2a966741755c770e03e165026c5",
+    "relogin/client.log": "98677390e4dc5ffb5ce3ebac4a057658ccb3f7c2362dc68ec12d35d5d507e998",
+    "relogin/server.log": "47fd3dc0499701a6bdedad12ab929c762b8001c973c751b1d80025435816999d"
+  }
+}

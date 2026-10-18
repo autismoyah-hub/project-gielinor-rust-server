@@ -1,0 +1,21 @@
+{
+  "implementation_id": "OR-MIG-0131",
+  "tested_sha": "35a5f39b72cab3a2655f32ae29bdde54284c9a4b",
+  "status": "PASS_SCOPED",
+  "level": "V1",
+  "scope": "130additional independent checks:48ownedcape/hood transactions demonstrate Craftingspare/existinghoodrefusals versusCookingpaidspare/freeadditionalhood;64catalog/config/coinfaultrefusals;12actualqueuedlethalDeathRequestedbeforetalk/atquote/atpayment zeroHP/restoredHPwithoutrespawn;6actualmovement/NPCgeneration/logout price-quote invalidations. Combinedwith3758earliercases=3888completed independent scenarios/transaction checks;fullV1remainsIN_PROGRESS.",
+  "harness_history": "Original life suite completed12deathguards and first2Craftingmovement/NPCreplacement cases. Its Craftinglogout attempt correctly returnedLoggingOut at publicsubmit; ownedreplyhelper incorrectlyunwrappedthatrefusal. OriginalrawFAIL preserved. Tailcorrects expectation andrerunsonlythatfailedscenario plus3unexecutedCookingcases;no12deathor2completedCraftingcases replayed.",
+  "remaining": [
+    "Malformed currentlyownedcape/hood count/vars/wrongwearslot profiles and broader NPC/range/config authority boundaries stillopen forV1.",
+    "V0cache/runtime, nativeV2, durableV3andfullreferencecomparison remainopen. Existingprotectedreferencefactcheck isnotexecutableorfullacceptance."
+  ],
+  "evidence_sha256": {
+    "skillcape-vendor-world-partial.json": "98169569a62ebd698581e71988dec8d98ca8d1e45c6a3ca986d551dbb63863fd",
+    "integration-external-skillcape-vendor-owned-35a5f39b72cab3a2655f32ae29bdde54284c9a4b/manifest.json": "a7ac544681254c7638f600804a9227bcbb61ce62926532b5f822d29dbc823008",
+    "integration-external-skillcape-vendor-owned-35a5f39b72cab3a2655f32ae29bdde54284c9a4b/run-1.log": "7fc0a9cab5ba7429cf03b69ab39ecd254e9a3ce6059b922e54c3504c63b0d1db",
+    "integration-external-skillcape-vendor-life-35a5f39b72cab3a2655f32ae29bdde54284c9a4b/manifest.json": "5bbe759b60957a57eca92003a2a494b6d2240aeb9dd5459bab504f7d478711a7",
+    "integration-external-skillcape-vendor-life-35a5f39b72cab3a2655f32ae29bdde54284c9a4b/run-1.log": "d328e26135af6bd93b45dd198200026c540c801665bd53d0936e2627f35ee474",
+    "integration-external-skillcape-vendor-life-tail-35a5f39b72cab3a2655f32ae29bdde54284c9a4b/manifest.json": "4c050829531006887060c34d10d75b74e733de0b145da5c75f52c733a32587b0",
+    "integration-external-skillcape-vendor-life-tail-35a5f39b72cab3a2655f32ae29bdde54284c9a4b/run-1.log": "f7ccb85449a7aaf9993b54a8a613100d7ecf0311bd1216d731ec8989eca5fbf9"
+  }
+}

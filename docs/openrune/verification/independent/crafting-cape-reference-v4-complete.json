@@ -1,0 +1,30 @@
+{
+  "implementation_id": "OR-MIG-0130",
+  "tested_sha": "7d2133f23e00ad852df8726ead67493e83c901b4",
+  "level": "V4",
+  "status": "PASS",
+  "scope": "Qualified reference comparison completed: two exact donor/two pinnedWiki hashes independently rechecked. Actual two cape definitions/aliases/runtimecomponent/nativeop2 and receivedstat behavior compared to source wornOp2Boost/base99/constant1percent0; noXP/items/RNG, repeated100nochange, higherboost unchanged and drained+1 behaviors match inspected shared donor arithmetic. Native current99->100, normal99expiry/freshBoost and actualdrained51->52->53 corroborate World classes. Live member-use is separate from both-cape F2Pguildentry; actual native F2Pmenu omitsBoost, while Worldbackendrefusal has separate evidence.",
+  "source_helper_hashes": {
+    "api/player/src/main/kotlin/org/rsmod/api/player/stat/PlayerStatExtensions.kt": "f75608c691d3c78ad120ed7fbd3b0ecac23fabfa7c831e8da04d72cb8fcadf6a",
+    "api/player/src/main/kotlin/org/rsmod/api/player/protect/ProtectedAccess.kt": "7b1611b7e2e7ab4de6296f086c75be5c2c232386c7282cd0c5a3ecc1b3c8c6aa"
+  },
+  "qualified_differences": [
+    "Shared donor statBoost computes min(base+boost,current+boost)-current and only applies positive increments. Thus drained current50adds1 rather than restoring99; native observed51then52then53 includes ordinary regeneration. Wiki wording +1up-to100 agrees with boundedincrement but its cannot-reactivate-until99 phrase does not explicitly resolve every drained-state repeat. Target matches the inspected donor helper; do not claim an independently observed original OSRS drained-state result.",
+    "Wiki also mentions passive equip boost; original source CraftingCapeScript has no corresponding equip hook. This contract ports wornBoost only. Actual native Wear leaves99unchanged; passive-on-equip behavior remains a separate unported obligation, not claimed parity.",
+    "Wiki up-to60second/reversion rule is represented by the existing global stat-regeneration phase, not a new per-click cooldown. Actual native expiry and publicWorld timer tests confirm target behavior; original executable timing/audio/fullframe parity is unavailable.",
+    "Member-use policy follows Wiki members-only cape plus target live authority. Inspected CapeScript has no explicit membership check; uninspected donor global gates remain unresolved. Actual F2Pmenu blocksnativeBoost; its backendmessage cannot be reached using this native menu.",
+    "Teleport/emote/acquisition/trim/Maxcape and full129r2wardrobe behavior are outside this contract and remain explicitly unported/separate."
+  ],
+  "acceptance_scope": "V4PASS is a source/Wiki/actual-target comparison with recorded adaptations and limits, not byte-identical donor execution or full OSRS feature parity. Native renderedSkills obligation and otherV2/V3acceptance remain separate.",
+  "evidence_sha256": {
+    "reference-crafting-cape/comparison.json": "f73bc9fe69f5feb5f0e5e4d0434c77d270f621cdd59a6c6f802f77c4c79ec89d",
+    "crafting-cape-v1-resolved.json": "f5f0ab45bc18a79e02d018bce21eb9dc82d6d6e65a6b959b83ef80f4cba43c4e",
+    "crafting-cape-runtime-v0-complete.json": "6ddfdca3b962cbcaf56b82ceb3dd88371c20b61f8a9f9f9ddf62aa7d80f40638",
+    "deep-crafting-cape-boost/native-001/independent-assessment.json": "ae268554c0ce53a71232fa94b5279da8ff014bbbb1d1463d9276b8bc6d92dc90",
+    "deep-crafting-cape-trimmed/native-001/independent-assessment.json": "5a0a3a429f74cabcc8bae195bf03bd346efc7e20411af5743965cfb463b177a1",
+    "deep-crafting-cape-drained/native-001/independent-assessment.json": "a776111bf25d20d2e8693f4ae518ecebf203e5d961823e7e74f283e4455e2392",
+    "deep-crafting-cape-expiry/native-001/independent-assessment.json": "4505c95db6569bbda55f8ae4df6fc980669f5211627339a717e8b5a7709b21cf",
+    "deep-crafting-cape-f2p/native-001/independent-assessment.json": "87cf6ab5d1df4f27d51379e019cf7391081be8a9dfeb9e6572ae7a076e777915",
+    "deep-crafting-cape-equipment/native-002/independent-assessment.json": "db388ba4df05eb5c27ed98e69fab83bc71a0e9efacb94063cfafe6c1725ef078"
+  }
+}

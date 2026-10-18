@@ -1,0 +1,28 @@
+{
+  "implementation_id": "OR-MIG-0130",
+  "tested_sha": "7d2133f23e00ad852df8726ead67493e83c901b4",
+  "status": "PASS",
+  "level": "V2",
+  "scope": "Every required native criterion has actual native evidence at exact130SHA: both worn cape variants exposeBoost; real current387:16menu selection sendsIF_BUTTONX47op2;receivedstat46andprivateactualSkillsUI showCrafting100/99;repeat remains100,noXP/item/gear changes;normalexpiry andfreshBoost observed. F2Pnative login withworn9780 offersRemove/Examine only andnoBoost; no perk action sent andwholebag/gear/allStatsunchanged. RealRemove/Wear bothvariants andno passiveequip boost separatelyobserved.",
+  "criterion_evidence": {
+    "actual_menu_component_operation": "Memberboost/trimmedandactualequipment six-actioncases; no constructednetworkpacket.",
+    "received_and_visible100": "Same-accountUIcontinuation:two inspectedprivate765x503nativeUIframes, receivedcurrent100/base99andconstantXP;actualexistingviewportinterface renderer.",
+    "repeat_controls": "Two nativeBoosts ineachbasicmembercase andUIrepeat100identicalframe;normalexpiry capturedseparately.",
+    "F2P_refusal": "ActualnativeF2Pclient omitsBoost/Teleport fromwornmemberscape;onlyRemove/Examine. Nativeclientpreventsrequest,items/Statsunchanged. This satisfiesrequiredF2Prefusal without fabricating an operation."
+  },
+  "qualifications": [
+    "Original F2P observer expected a backend refusal message and rawFAILED because the native menu is absent. That exact backend-message variant remainsBLOCKED in its assessment; the contract requiresF2Prefusal, not a backendmessage specifically. Do not erase rawfailure or claim that unreachable message was observed.",
+    "Original equipment scene-only frames remain insufficient; the distinct same-accountcontinuation provides the actual renderedSkills evidence.",
+    "No full scene/audio/minimap parity. Remaining passiveequip/Teleport/emote/acquisition/trim/Maxcape capabilities remainunported outside this contract.",
+    "No historical FORGE developer test counted as native evidence; everycampaign retains itsfrozenobserver/exactserverSHA."
+  ],
+  "evidence_sha256": {
+    "deep-crafting-cape-boost/native-001/independent-assessment.json": "ae268554c0ce53a71232fa94b5279da8ff014bbbb1d1463d9276b8bc6d92dc90",
+    "deep-crafting-cape-trimmed/native-001/independent-assessment.json": "5a0a3a429f74cabcc8bae195bf03bd346efc7e20411af5743965cfb463b177a1",
+    "deep-crafting-cape-drained/native-001/independent-assessment.json": "a776111bf25d20d2e8693f4ae518ecebf203e5d961823e7e74f283e4455e2392",
+    "deep-crafting-cape-expiry/native-001/independent-assessment.json": "4505c95db6569bbda55f8ae4df6fc980669f5211627339a717e8b5a7709b21cf",
+    "deep-crafting-cape-f2p/native-001/independent-assessment.json": "87cf6ab5d1df4f27d51379e019cf7391081be8a9dfeb9e6572ae7a076e777915",
+    "deep-crafting-cape-equipment/native-002/independent-assessment.json": "db388ba4df05eb5c27ed98e69fab83bc71a0e9efacb94063cfafe6c1725ef078",
+    "deep-crafting-cape-equipment/native-002/continuation-001/independent-assessment.json": "1afdd54383478cb0be3cd989b2e92a89056f8318eafa380aa00d6aac8e08f197"
+  }
+}

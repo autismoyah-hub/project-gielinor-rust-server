@@ -1,0 +1,21 @@
+{
+  "implementation_id": "OR-MIG-0126",
+  "tested_sha": "bd1294ab9e0ff850155b024364dc3a3a98a37bed",
+  "status": "PASS",
+  "level": "V3",
+  "scope": "Actualacknowledgedsave/processrestart/native reconnect preserve complete Rune/Special/Pure quantities,gear,allStats/fineXP across six memberaltar campaigns and freshF2Pordinary/refusal campaigns. Mindpartialfirstbatch saved with21ordinaryretained;actualsameaccountrestart completesonlyremainingordinary,emptythird cannot replay. ReachednativeClose and actualone-tileWalk cancelbeforecredit andsurviverestart. TCPdisconnectat reachedboundary persistsone completeatomicbatch withno partialdebit/replay. Ownedserverterminatedafterobservedunsaved56runes/noSaveack;realrestart restoresprior28essence/wholeStats/fineXP/gear. PublicWorld late member/capturedmaterial/newstock/config/modal/delay/locations and strictfullcredit guards tested independently for allsix.",
+  "qualifications": [
+    "Native TCPdisconnect outcome isatomicity evidence,not proofthat disconnect canceled beforecompletion or a visibleLogout-button test.",
+    "Crash case is before save acknowledgement,not duringSQLitecommit injection.",
+    "Modal/live membership/catalog/capturedslot changes are publicWorld scenarios;not all repeatedthroughnativeUI.",
+    "Exactnative125ratevariant separatelyblocked;no newer server or account reseed."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/daeyalt-native-v2-complete.json": "991c87b3f7ef62a2cdab7448c0da37ffe3ad6db7dfb95ac9873928fc3ea5a998",
+    "docs/openrune/verification/independent/daeyalt-world-v1-complete.json": "a1c7eee0775c86c4812d09279aecaf8d1b4b797133f6581dc43a4afa8e40db68",
+    "docs/openrune/verification/independent/deep-rune-mind-daeyalt-close-after-reach/native-001/independent-assessment.json": "faa73167f8ba743403eec7921473e5547df326eb426a9eab0486f66a0fe5044a",
+    "docs/openrune/verification/independent/deep-rune-mind-daeyalt-move-after-reach/native-001/independent-assessment.json": "c5361748e681e60765ecca38f7e6675c6bfd8f3f88618cdca95fd08567de0bc7",
+    "docs/openrune/verification/independent/deep-rune-mind-daeyalt-logout-after-reach/native-001/independent-assessment.json": "72c2c40e2f5df7d07b095c110024d10aa0c45f12fad82f6ddf55cbf85b193ed0",
+    "docs/openrune/verification/independent/deep-rune-mind-daeyalt-crash/native-001/independent-assessment.json": "866ba2d8c46a79f6512e0e8a8feaf500b833483c559fb752b1f086e11cc06041"
+  }
+}

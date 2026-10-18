@@ -1,0 +1,18 @@
+{
+  "implementation_id": "OR-MIG-0130",
+  "tested_sha": "7d2133f23e00ad852df8726ead67493e83c901b4",
+  "status": "BLOCKED",
+  "raw_observer_status": "FAIL",
+  "classification": "Harness expected a native menu that this actual F2P client does not offer; not an implementation defect.",
+  "scope": "Actual F2P login and worn9780 observed; exact native menu has Examine and Remove only, no Boost/Teleport. No Boost operation sent; whole bag/gear/allStats/fineXP unchanged and acknowledged save. Native backend-refusal-message scenario cannot execute through this menu at this pin. World F2P refusal and typed button adapter checks are separate evidence.",
+  "next_action": "Keep exact blocked identity; continue eligible member native/other contracts. Do not construct network payloads to force the absent menu.",
+  "evidence_sha256": {
+    "initial-state.json": "63ff8e4ff53eeb4f8ff19eac28d3bf190d806180d53894a7945ff93db87319e3",
+    "frozen-observer/pg_observer.rs": "e959bd57b203e6203923dbb543bf238ee258caadf2f9d2bca6e66f2fa9084634",
+    "produce/manifest.json": "891ab2d2927e988b021a9790c8c20ccc9f73af8a6e5d3a77b86117ac7abbb092",
+    "produce/before.json": "63ff8e4ff53eeb4f8ff19eac28d3bf190d806180d53894a7945ff93db87319e3",
+    "produce/after.json": "82e79aa56e69e187573854450b278cef96babfbec6b237e13fe029d7d4063186",
+    "produce/client.log": "2e4b2c980017c7da3aa571367f225bb1cf9253ac67a12909db18a4b7f0a467d2",
+    "produce/server.log": "95b04c5ef243d9adbbc70297c8e64bde29b15203b04f4e519631e57005c92988"
+  }
+}

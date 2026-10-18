@@ -1,0 +1,23 @@
+   Compiling gielinor-world v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\a1658fd5c4d4a6869063a75859899d381742d271\crates\world)
+warning: unused import: `Effect`
+ --> C:\Projects\OSRSRSPS\agent7-targets\a1658fd5c4d4a6869063a75859899d381742d271\crates\world\src\simulation\skillcape_vendor_actions.rs:3:30
+  |
+3 |     dialogue::{Conversation, Effect, Pending},
+  |                              ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `gielinor-world` (lib) generated 1 warning (run `cargo fix --lib -p gielinor-world` to apply 1 suggestion)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\a1658fd5c4d4a6869063a75859899d381742d271\external-harness-0319463200)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1m 07s
+     Running tests\selected.rs (C:\Projects\OSRSRSPS\agent7-verification\work\a1658fd5c4d4a6869063a75859899d381742d271\target\debug\deps\selected-74ad2b79cb934629.exe)
+
+running 3 tests
+PG_ZEALOT_REFUSAL 42 selectedmissing/changed/count/vars/catalog/bag/XP/restore atomicallyrefuse beforeRNG PASS
+test atomic_failure_precedes_draw_and_does_not_substitute_another_bone ... ok
+PG_ZEALOT_ASH 1200 excludedash selected transactions sameXP noRandom PASS
+test excluded_ashes_all_slots_and_draws_never_use_robe_random ... ok
+PG_ZEALOT_MATRIX 15360 authoritative selected transactions; all16subsets x80draws x3slots x2rates x2membership; fullbag exactselected consumption/saving sameXPandrestore noRNGwhenzero PASS
+test all_subsets_intervals_selected_slots_rates_and_membership ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.21s

@@ -1,0 +1,67 @@
+{
+  "implementation_id": "OR-MIG-0134",
+  "tested_sha": "a1658fd5c4d4a6869063a75859899d381742d271",
+  "status": "PASS_REFERENCE_FACTS",
+  "sources": [
+    {
+      "kind": "openrune",
+      "reference": "content/skills/prayer/src/main/kotlin/org/rsmod/content/skills/prayer/PrayerBuryEvents.kt",
+      "sha256": "c02f069d6958c517c680d582a35b94c4df521cfcc7919a017ffacda99ff21c86",
+      "availability": "protected_local_reference",
+      "revision": "Local archive; upstream commit unavailable; configured241"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/prayer/src/main/kotlin/org/rsmod/content/skills/prayer/items/ZealotRobes.kt",
+      "sha256": "b8647ea4cbdec7fd7c175063f41e95e1b1b9d1c52809524463fca1e580d51ff8",
+      "availability": "protected_local_reference",
+      "revision": "Local archive; upstream commit unavailable; configured241"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Zealot's robes",
+      "sha256": "30b5ee954865d3963e89aedb2301e48cae8f740c8814e5930b72c7e3ad3cc9f1",
+      "availability": "protected_local_reference",
+      "revision": "15270852"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Zealot's helm",
+      "sha256": "1964a3102f113038919d94ede067b1ca531594a41254d920df1bf612a2ffa478",
+      "availability": "protected_local_reference",
+      "revision": "15270836"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Zealot's robe top",
+      "sha256": "30f08afe4d73aa8f6e0cfd44514aa052a7a77a18f4c82d4669d743765175933a",
+      "availability": "protected_local_reference",
+      "revision": "15270835"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Zealot's robe bottom",
+      "sha256": "da47c7cfe8b68b038de24cb43cce710326aecbb7bd626efd0e77b5962e601e9e",
+      "availability": "protected_local_reference",
+      "revision": "15341979"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Zealot's boots",
+      "sha256": "72116e720f13d039f5da4646d57a67fa7110ee407b4875854de327b24ae159fb",
+      "availability": "protected_local_reference",
+      "revision": "15270833"
+    }
+  ],
+  "scope": "Seven exact hashes independently match. Protected donor reads current hat/torso/legs/feet, sums 0.0125 each capped0.05, consumes with a random double below1-saveChance. Selected burial checks its original slot and excludes five named demonic ashes; both saved and consumed outcomes publish the same row XP/completion event. Pinned Wiki confirms1.25percent per piece/max5percent, ordinary burial and demonic ash exclusion. Four individual snapshots confirm25438/head,25434/body,25436/legs,25440/feet and members-only ordinary nonstackable equipment.",
+  "adaptations": [
+    "Uniform80 outcomes preserve exact probability and upper save interval, without claiming Kotlin random-stream identity. Zero eligible chance avoids a donor random call.",
+    "Target stricter count1/vars0/catalog/current-member authority and staging-before-RNG are explicit independent adaptations. Inspected donor robe-helper body does not explicitly check membership/count/vars; possible global donor gates were not inspected.",
+    "Normal saved-bone XP is supported directly by donor action; Wiki describes repeat resource saving and increased aggregate XP rather than a special per-action multiplier."
+  ],
+  "limitations": [
+    "Reference facts only; no134target compile/cache/World/native/persistence acceptance yet.",
+    "Donor generated prayer metadata and executable241 runtime are unavailable; target239.1 numerical bone/XP/restore/animation profiles need separate verification.",
+    "Other robe consumers, acquisitions, equipment restrictions, altar synergy and storage/death remain outside selected burial contract."
+  ]
+}
