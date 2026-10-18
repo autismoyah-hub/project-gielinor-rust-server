@@ -1,0 +1,14 @@
+{
+  "implementation_id": "OR-MIG-0062",
+  "tested_sha": "5ce50aede9164cdee8e4008257d0298ea77289e7",
+  "campaign_kind": "historical",
+  "status": "PASS",
+  "native_observed_products": 1,
+  "durably_saved_products": 1,
+  "fine_xp_award": 875,
+  "scope": "Actual native All23 Beer batch disconnected with work remaining; exact committed captured prefix and875fineXP per output saved. Real server restart and native inventory/Stats show remaining raws retained and no queued replay.",
+  "limitations": [
+    "Native X remains separately blocked by PG-INFRA-009.",
+    "No original executable, rendered or audio comparison inferred."
+  ]
+}

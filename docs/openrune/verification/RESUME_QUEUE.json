@@ -1,6 +1,6 @@
 {
-  "observed_forge_head": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
-  "queue_sha256": "21176d54424334d6765537ee2bbc7dd0d54c8961415497b1e35f18453e549582",
+  "observed_forge_head": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
+  "queue_sha256": "272455b5daaa8753fe4bb8c1d23757664a69f5df337af6a4e1495a2da1aadacb",
   "lanes": [
     {
       "lane": "B",
@@ -108,7 +108,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -139,9 +139,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
@@ -166,6 +170,7 @@
           "crates/world/src/chemistry_modifier.rs",
           "crates/world/src/combat_mixing.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
@@ -181,6 +186,8 @@
           "crates/world/src/simulation/chemistry_actions.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
@@ -234,7 +241,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -265,9 +272,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
@@ -291,6 +302,7 @@
           "crates/world/src/chemistry_modifier.rs",
           "crates/world/src/combat_mixing.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
@@ -306,6 +318,8 @@
           "crates/world/src/simulation/chemistry_actions.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
@@ -358,7 +372,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -389,9 +403,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
@@ -415,6 +433,7 @@
           "crates/world/src/chemistry_modifier.rs",
           "crates/world/src/combat_mixing.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
@@ -430,6 +449,8 @@
           "crates/world/src/simulation/chemistry_actions.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
@@ -482,7 +503,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -513,9 +534,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
@@ -538,6 +563,7 @@
           "crates/world/src/chemistry_modifier.rs",
           "crates/world/src/combat_mixing.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
@@ -553,6 +579,8 @@
           "crates/world/src/simulation/chemistry_actions.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
@@ -602,7 +630,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -632,9 +660,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
@@ -650,6 +682,7 @@
           "crates/world/src/assembly_production.rs",
           "crates/world/src/combat_mixing.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
@@ -664,6 +697,8 @@
           "crates/world/src/simulation/assembly_production_actions.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
@@ -713,7 +748,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -732,8 +767,12 @@
           "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/skill_multi.rs",
           "crates/server/src/runtime/tool_crafting.rs",
@@ -741,12 +780,16 @@
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/tool_crafting_actions.rs",
           "crates/world/src/tool_crafting.rs"
         ],
@@ -794,7 +837,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -824,9 +867,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
@@ -842,6 +889,7 @@
           "crates/world/src/assembly_production.rs",
           "crates/world/src/combat_mixing.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
@@ -856,6 +904,8 @@
           "crates/world/src/simulation/assembly_production_actions.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
@@ -905,7 +955,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -935,9 +985,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
@@ -953,6 +1007,7 @@
           "crates/world/src/assembly_production.rs",
           "crates/world/src/combat_mixing.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
@@ -967,6 +1022,8 @@
           "crates/world/src/simulation/assembly_production_actions.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
@@ -1016,7 +1073,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1046,9 +1103,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
@@ -1064,6 +1125,7 @@
           "crates/world/src/assembly_production.rs",
           "crates/world/src/combat_mixing.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
@@ -1078,6 +1140,8 @@
           "crates/world/src/simulation/assembly_production_actions.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
@@ -1145,7 +1209,7 @@
         ]
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1175,9 +1239,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
@@ -1191,6 +1259,7 @@
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
@@ -1204,6 +1273,8 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
@@ -1262,7 +1333,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1292,9 +1363,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
@@ -1308,6 +1383,7 @@
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
@@ -1321,6 +1397,8 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
@@ -1370,7 +1448,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1400,9 +1478,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
@@ -1416,6 +1498,7 @@
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
@@ -1429,6 +1512,8 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
@@ -1478,7 +1563,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1508,9 +1593,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
@@ -1523,6 +1612,7 @@
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
@@ -1535,6 +1625,8 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
@@ -1583,7 +1675,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1613,9 +1705,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
@@ -1628,6 +1724,7 @@
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
@@ -1640,6 +1737,8 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/item_pack_actions.rs",
@@ -1687,7 +1786,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1717,9 +1816,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
@@ -1732,6 +1835,7 @@
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
@@ -1744,6 +1848,8 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
@@ -1790,7 +1896,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1820,9 +1926,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
@@ -1835,6 +1945,7 @@
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
@@ -1847,6 +1958,8 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
@@ -1893,7 +2006,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1923,9 +2036,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
@@ -1937,6 +2054,7 @@
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
@@ -1948,6 +2066,8 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
@@ -1997,7 +2117,7 @@
         ]
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2027,9 +2147,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
@@ -2041,6 +2165,7 @@
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
@@ -2052,6 +2177,8 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
@@ -2107,7 +2234,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2137,9 +2264,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
@@ -2151,6 +2282,7 @@
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
@@ -2162,6 +2294,8 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
@@ -2217,7 +2351,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2247,9 +2381,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
@@ -2261,6 +2399,7 @@
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
@@ -2272,6 +2411,8 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
@@ -2327,7 +2468,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2358,9 +2499,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
@@ -2388,6 +2533,7 @@
           "crates/world/src/combat_mixing.rs",
           "crates/world/src/cooking.rs",
           "crates/world/src/dough.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
@@ -2408,6 +2554,7 @@
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/door_actions.rs",
           "crates/world/src/simulation/dough_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
@@ -2466,7 +2613,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2496,9 +2643,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -2509,6 +2660,7 @@
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
@@ -2519,6 +2671,8 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
@@ -2583,7 +2737,7 @@
         ]
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2614,9 +2768,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
@@ -2644,6 +2802,7 @@
           "crates/world/src/combat_mixing.rs",
           "crates/world/src/cooking.rs",
           "crates/world/src/dough.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
@@ -2663,6 +2822,7 @@
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/door_actions.rs",
           "crates/world/src/simulation/dough_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
@@ -2738,7 +2898,7 @@
         ]
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2768,9 +2928,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -2781,6 +2945,7 @@
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
@@ -2791,6 +2956,8 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
@@ -2846,7 +3013,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2876,9 +3043,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -2889,6 +3060,7 @@
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
@@ -2899,6 +3071,8 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
@@ -2945,7 +3119,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2975,9 +3149,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -2988,6 +3166,7 @@
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
@@ -2998,6 +3177,8 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
@@ -3044,7 +3225,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3075,9 +3256,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
@@ -3105,6 +3290,7 @@
           "crates/world/src/combat_mixing.rs",
           "crates/world/src/cooking.rs",
           "crates/world/src/dough.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
@@ -3124,6 +3310,7 @@
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/door_actions.rs",
           "crates/world/src/simulation/dough_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
@@ -3180,7 +3367,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3211,9 +3398,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
@@ -3241,6 +3432,7 @@
           "crates/world/src/combat_mixing.rs",
           "crates/world/src/cooking.rs",
           "crates/world/src/dough.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
@@ -3259,6 +3451,7 @@
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/door_actions.rs",
           "crates/world/src/simulation/dough_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
@@ -3313,7 +3506,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3344,9 +3537,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
@@ -3371,6 +3568,7 @@
           "crates/world/src/chemistry_modifier.rs",
           "crates/world/src/combat_mixing.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
@@ -3386,6 +3584,8 @@
           "crates/world/src/simulation/chemistry_actions.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
@@ -3439,7 +3639,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3469,9 +3669,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -3482,6 +3686,7 @@
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
@@ -3492,6 +3697,8 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
@@ -3538,7 +3745,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3568,9 +3775,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -3581,6 +3792,7 @@
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
@@ -3591,6 +3803,8 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
@@ -3637,7 +3851,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3668,9 +3882,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
@@ -3696,6 +3914,7 @@
           "crates/world/src/chemistry_modifier.rs",
           "crates/world/src/combat_mixing.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
@@ -3712,7 +3931,9 @@
           "crates/world/src/simulation/chemistry_actions.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
           "crates/world/src/simulation/dough_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
@@ -3767,7 +3988,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3797,9 +4018,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -3810,6 +4035,7 @@
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
@@ -3820,6 +4046,8 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
@@ -3872,7 +4100,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3902,9 +4130,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -3915,6 +4147,7 @@
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
@@ -3925,6 +4158,8 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
@@ -3983,7 +4218,7 @@
         ]
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4013,9 +4248,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -4026,6 +4265,7 @@
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
@@ -4036,6 +4276,8 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
@@ -4082,7 +4324,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4112,9 +4354,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -4125,6 +4371,7 @@
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
@@ -4135,6 +4382,8 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
@@ -4181,7 +4430,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4210,9 +4459,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -4223,6 +4476,7 @@
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
@@ -4233,8 +4487,11 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/item_pack_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
           "crates/world/src/simulation/thieving_actions.rs",
@@ -4278,7 +4535,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4308,9 +4565,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -4321,6 +4582,7 @@
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
@@ -4331,6 +4593,8 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
@@ -4377,7 +4641,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4407,9 +4671,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -4420,6 +4688,7 @@
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
@@ -4430,6 +4699,8 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
@@ -4484,7 +4755,7 @@
         ]
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4513,9 +4784,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -4526,6 +4801,7 @@
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
@@ -4536,6 +4812,8 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
@@ -4582,7 +4860,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4611,9 +4889,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -4624,6 +4906,7 @@
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
@@ -4634,8 +4917,11 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/item_pack_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
           "crates/world/src/simulation/thieving_actions.rs",
@@ -4679,7 +4965,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4708,9 +4994,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -4721,6 +5011,7 @@
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
@@ -4731,8 +5022,11 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/item_pack_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
           "crates/world/src/simulation/thieving_actions.rs",
@@ -4776,7 +5070,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4805,9 +5099,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -4818,6 +5116,7 @@
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
@@ -4828,8 +5127,11 @@
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/item_pack_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
           "crates/world/src/simulation/thieving_actions.rs",
@@ -4873,7 +5175,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4902,9 +5204,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -4914,6 +5220,7 @@
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
@@ -4923,8 +5230,11 @@
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/item_pack_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
           "crates/world/src/simulation/thieving_actions.rs",
@@ -4968,7 +5278,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4996,9 +5306,13 @@
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -5008,6 +5322,7 @@
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
@@ -5017,8 +5332,11 @@
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/item_pack_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
           "crates/world/src/simulation/thieving_actions.rs",
@@ -5062,7 +5380,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5089,9 +5407,13 @@
           "crates/server/src/content/immediate_tool_crafting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/random_food.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -5101,6 +5423,7 @@
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
@@ -5110,8 +5433,11 @@
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/item_pack_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
           "crates/world/src/simulation/thieving_actions.rs",
@@ -5155,7 +5481,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5182,8 +5508,12 @@
           "crates/server/src/content/immediate_tool_crafting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -5193,6 +5523,7 @@
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
@@ -5201,8 +5532,11 @@
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/item_pack_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
           "crates/world/src/simulation/thieving_actions.rs",
@@ -5246,7 +5580,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5272,8 +5606,12 @@
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -5283,6 +5621,7 @@
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
@@ -5291,8 +5630,11 @@
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/item_pack_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
           "crates/world/src/simulation/thieving_actions.rs",
@@ -5336,7 +5678,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5361,8 +5703,12 @@
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -5372,6 +5718,7 @@
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
@@ -5380,8 +5727,11 @@
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/item_pack_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
           "crates/world/src/simulation/thieving_actions.rs",
@@ -5425,7 +5775,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5449,8 +5799,12 @@
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -5460,6 +5814,7 @@
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
@@ -5468,8 +5823,11 @@
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/item_pack_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
           "crates/world/src/simulation/thieving_actions.rs",
@@ -5528,7 +5886,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5552,8 +5910,12 @@
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -5563,6 +5925,7 @@
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
@@ -5570,8 +5933,11 @@
           "crates/world/src/npc_interaction.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/item_pack_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
           "crates/world/src/simulation/thieving_actions.rs",
@@ -5615,7 +5981,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5639,8 +6005,12 @@
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -5650,6 +6020,7 @@
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
@@ -5657,8 +6028,11 @@
           "crates/world/src/npc_interaction.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/item_pack_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/thieving_actions.rs",
           "crates/world/src/simulation/tool_crafting_actions.rs",
@@ -5700,7 +6074,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5724,8 +6098,12 @@
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/skill_multi.rs",
@@ -5734,6 +6112,7 @@
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
@@ -5741,8 +6120,11 @@
           "crates/world/src/npc_interaction.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/item_pack_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/thieving_actions.rs",
           "crates/world/src/simulation/tool_crafting_actions.rs",
@@ -5762,9 +6144,9 @@
         "levels": {
           "V0": {
             "status": "IN_PROGRESS",
-            "reason": "Independent actual-cache citizen pouch/3coin binding and11invalid metadata refusals PASS; existing no_bank resolver blocks actual bank transaction with a successful coin-deposit control. Decoded nearby banker cache observations guide a future native deposit run; no native bank acceptance inferred.",
+            "reason": "Genuine native selected Open-one/op3 and Open-all/op2 exchange3pouches for9coins; duplicate stack2retained, stale selected slot replay refuses, all Stats unchanged. Acknowledged save, actual restart and independently decoded full native inventory/Stats preserve exact resulting state without replay. Later bank harness immediate-packet assertion failed before deposit submission; bank acceptance remains open as PG-INFRA-010. Aggregate applicable-level acceptance remains separate.",
             "evidence": [
-              "docs/openrune/verification/independent/integration-external-pouch-bindings-7fc1306bb5c01540038ce5ff175b577294ade432/manifest.json"
+              "docs/openrune/verification/independent/deep-pouch/pouch-001/independent-assessment.json"
             ]
           },
           "V1": {
@@ -5775,12 +6157,18 @@
             ]
           },
           "V2": {
-            "status": "NOT_STARTED",
-            "reason": "Awaiting applicable independent campaign"
+            "status": "BLOCKED",
+            "reason": "Fresh corrected post-send observer proves actual native bank positive control still blocked: native Deposit-All menu offered for1009coins, but no interface47deposit frame actually submitted during60second poll. Script processing idle and server clocks continue; currency stays in inventory and bank remains empty. Specific no_bank route was never reached; authoritative cache/bank API tests are separate. Opening and stale-slot subchecks still pass. Native bank menu callback/permission/content dispatch needs a focused diagnostic of action identity, widget content/listener and received operation mask. Exact cause and client versus server ownership remain unproven; no implementation defect claimed.",
+            "evidence": [
+              "docs/openrune/verification/independent/deep-pouch/pouch-002/independent-blocker.json"
+            ]
           },
           "V3": {
-            "status": "NOT_STARTED",
-            "reason": "Awaiting applicable independent campaign"
+            "status": "IN_PROGRESS",
+            "reason": "Genuine native selected Open-one/op3 and Open-all/op2 exchange3pouches for9coins; duplicate stack2retained, stale selected slot replay refuses, all Stats unchanged. Acknowledged save, actual restart and independently decoded full native inventory/Stats preserve exact resulting state without replay. Later bank harness immediate-packet assertion failed before deposit submission; bank acceptance remains open as PG-INFRA-010. Aggregate applicable-level acceptance remains separate.",
+            "evidence": [
+              "docs/openrune/verification/independent/deep-pouch/pouch-001/independent-assessment.json"
+            ]
           },
           "V4": {
             "status": "IN_PROGRESS",
@@ -5793,7 +6181,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5816,8 +6204,12 @@
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/skill_multi.rs",
@@ -5826,13 +6218,17 @@
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/npc_interaction.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/thieving_actions.rs",
           "crates/world/src/simulation/tool_crafting_actions.rs",
@@ -5874,7 +6270,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5896,8 +6292,12 @@
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/skill_multi.rs",
@@ -5906,12 +6306,16 @@
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/tool_crafting_actions.rs",
           "crates/world/src/tool_crafting.rs"
         ]
@@ -5965,7 +6369,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5987,8 +6391,12 @@
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/skill_multi.rs",
@@ -5997,12 +6405,16 @@
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/tool_crafting_actions.rs",
           "crates/world/src/tool_crafting.rs"
         ]
@@ -6056,7 +6468,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -6078,8 +6490,12 @@
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/skill_multi.rs",
@@ -6088,12 +6504,16 @@
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/tool_crafting_actions.rs",
           "crates/world/src/tool_crafting.rs"
         ]
@@ -6132,7 +6552,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -6152,8 +6572,12 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/skill_multi.rs",
@@ -6162,12 +6586,16 @@
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/tool_crafting_actions.rs",
           "crates/world/src/tool_crafting.rs"
         ]
@@ -6206,7 +6634,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -6226,8 +6654,12 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/skill_multi.rs",
@@ -6236,12 +6668,16 @@
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/tool_crafting_actions.rs",
           "crates/world/src/tool_crafting.rs"
         ]
@@ -6280,7 +6716,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -6299,8 +6735,12 @@
           "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/skill_multi.rs",
@@ -6309,12 +6749,16 @@
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/tool_crafting_actions.rs",
           "crates/world/src/tool_crafting.rs"
         ]
@@ -6353,7 +6797,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -6372,8 +6816,12 @@
           "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/skill_multi.rs",
           "crates/server/src/runtime/tool_crafting.rs",
@@ -6381,12 +6829,16 @@
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/tool_crafting_actions.rs",
           "crates/world/src/tool_crafting.rs"
         ],
@@ -6418,24 +6870,29 @@
             ]
           },
           "V1": {
-            "status": "IN_PROGRESS",
-            "reason": "Independent actual-cache10definition/8profile member-skill distinction and109corrupt object/stat/sequence refusals PASS. Configured native startup/dispatch acceptance remains independently recorded.",
+            "status": "PASS",
+            "reason": "Applicable authoritative requirements satisfied:1344eight-profile/both-direction/count1-28/three-rate full-bag cases verify capped captured order, exact fineXP and2then3cadence;72invalid admission and96late member/level/tool/slot/modal/movement/Close/logout cases verify atomic stop/no fallback. Additional112admission refusals and actual-cache109metadata refusals passed. Native custom-quantity remains a separate V2blocker.",
             "evidence": [
+              "docs/openrune/verification/independent/integration-external-glass-matrix-5ce50aede9164cdee8e4008257d0298ea77289e7-1792292760698579200/manifest.json",
+              "docs/openrune/verification/independent/integration-external-glass-admission-5ce50aede9164cdee8e4008257d0298ea77289e7-1792294219033587500/manifest.json",
               "docs/openrune/verification/independent/integration-external-glass-bindings-5ce50aede9164cdee8e4008257d0298ea77289e7/manifest.json"
             ]
           },
           "V2": {
-            "status": "IN_PROGRESS",
-            "reason": "PG-INFRA-009: Xscenario BLOCKED by observed native keyboard/script extraResume270:17/count1before intended270:18/count3. Server matches earlier actual frame; no server defect established. Native8choices/labels/1/5/10/Alland normal recovery passed in separate preserved scopes. Continue other applicable scenarios; do not promote entire V2.",
+            "status": "BLOCKED",
+            "reason": "All native8choice/label/built-in1/5/10/All and Close subchecks passed, but required offered X selection cannot be accepted: PG-INFRA-009 proves an extra keyboard/script Resume consumes the dialog before intended choice. Precise client focus/callback correction required; server defect not established. Other completed obligations remain preserved.",
             "evidence": [
               "docs/openrune/verification/independent/deep-glass-remaining/remaining-002/independent-blocker.json"
             ]
           },
           "V3": {
-            "status": "IN_PROGRESS",
-            "reason": "Genuine native All selects exact available23and transport-submits component270:19/count23. Full28bag remains full; selected26then captured4through25become23emptyFishbowls6667, both pipes/coins/junk retained. First884animation-to-credit2received clocks then22three-clock intervals independently observed. Stale actual response does not repeat. Acknowledged save, actual restart and independently decoded native full inventory/Stats confirm23outputs/exact48875fineXP without replay. Xblocked separately; in-flight captured-batch lifecycle remains open.",
+            "status": "PASS",
+            "reason": "Applicable persistence requirements satisfied by real acknowledged saves and process restarts: all8outputs and23-item All batch retain exact inventory/fineXP. Disconnect during captured All preserves one committed product/875fineXP plus22raws and cancels remaining work. Separate unacknowledged owned-server termination restores prior whole state. Actual restart packets independently decoded in every campaign; no replay/material loss. No mid-SQL-commit injection claimed.",
             "evidence": [
-              "docs/openrune/verification/independent/deep-glass-all/all-001/independent-assessment.json"
+              "docs/openrune/verification/independent/deep-glass/choices-001/independent-assessment.json",
+              "docs/openrune/verification/independent/deep-glass-all/all-001/independent-assessment.json",
+              "docs/openrune/verification/independent/deep-glass-interrupt/interrupt-001/independent-assessment.json",
+              "docs/openrune/verification/independent/deep-glass-crash/crash-001/independent-assessment.json"
             ]
           },
           "V4": {
@@ -6449,7 +6906,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -6468,8 +6925,12 @@
           "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/skill_multi.rs",
           "crates/server/src/runtime/tool_crafting.rs",
@@ -6477,12 +6938,16 @@
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/tool_crafting_actions.rs",
           "crates/world/src/tool_crafting.rs"
         ]
@@ -6502,8 +6967,11 @@
             "reason": "Awaiting applicable independent campaign"
           },
           "V1": {
-            "status": "NOT_STARTED",
-            "reason": "Awaiting applicable independent campaign"
+            "status": "IN_PROGRESS",
+            "reason": "Independent576sixteen-profile/both-direction/three-rate/quantity cases and24nonmember F2P gem controls PASS.140invalid admission and192late captured-slot/policy/credit/lifecycle cases verify no fallback/replay, legitimate F2P continuation after membership change and exact first1/repeat2gem versus first2/repeat3shell clocks. Public World routes used; actual startup bindings/native/persistence/reference acceptance remains separate from historical manual56/57.",
+            "evidence": [
+              "docs/openrune/verification/independent/integration-external-production-gems-143dab04f28c3daed844da0af33d6af5edcd962d/manifest.json"
+            ]
           },
           "V2": {
             "status": "NOT_STARTED",
@@ -6521,7 +6989,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -6540,8 +7008,12 @@
           "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/skill_multi.rs",
           "crates/server/src/runtime/tool_crafting.rs",
@@ -6549,12 +7021,16 @@
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/tool_crafting_actions.rs",
           "crates/world/src/tool_crafting.rs"
         ]
@@ -6596,7 +7072,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -6615,8 +7091,12 @@
           "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/skill_multi.rs",
           "crates/server/src/runtime/tool_crafting.rs",
@@ -6624,12 +7104,16 @@
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/tool_crafting_actions.rs",
           "crates/world/src/tool_crafting.rs"
         ]
@@ -6668,7 +7152,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -6687,8 +7171,12 @@
           "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/skill_multi.rs",
           "crates/server/src/runtime/tool_crafting.rs",
@@ -6696,12 +7184,16 @@
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/tool_crafting_actions.rs",
           "crates/world/src/tool_crafting.rs"
         ]
@@ -6740,7 +7232,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -6759,8 +7251,12 @@
           "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/skill_multi.rs",
           "crates/server/src/runtime/tool_crafting.rs",
@@ -6768,12 +7264,16 @@
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/tool_crafting_actions.rs",
           "crates/world/src/tool_crafting.rs"
         ]
@@ -6812,7 +7312,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -6830,20 +7330,29 @@
           "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/skill_multi.rs",
           "crates/server/src/runtime/tool_crafting.rs",
           "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
+          "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/tool_crafting_actions.rs",
           "crates/world/src/tool_crafting.rs"
         ]
@@ -6882,7 +7391,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -6900,20 +7409,29 @@
           "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/skill_multi.rs",
           "crates/server/src/runtime/tool_crafting.rs",
           "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
+          "crates/world/src/assembly.rs",
           "crates/world/src/assembly_production.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/assembly_production_actions.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/tool_crafting_actions.rs",
           "crates/world/src/tool_crafting.rs"
         ]
@@ -6952,7 +7470,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -6970,11 +7488,26 @@
           "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
           "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
+          "crates/world/src/assembly.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/tool_crafting_actions.rs",
           "crates/world/src/tool_crafting.rs"
         ]
@@ -7013,7 +7546,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -7031,11 +7564,26 @@
           "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sinew_crafting.rs",
           "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
           "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
+          "crates/world/src/assembly.rs",
+          "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/tool_crafting_actions.rs",
           "crates/world/src/tool_crafting.rs"
         ]
@@ -7047,6 +7595,76 @@
       "implementation_availability": {
         "status": "AVAILABLE",
         "sha": "bc277dc3e7e15088323a4f048f57dc43185fb7c0"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "IN_PROGRESS",
+            "reason": "Independent7776full-bag/all-selected-slot/member/level/rate/count-boundary resolver cases and36invalid counted-credit/input/tool cases PASS. Exact15/15/5/8stack outputs and XP once per raw verified; overflow leaves inventory/Stats unchanged. Registered shared batch/runtime/native/persistence/reference acceptance remains separate.",
+            "evidence": [
+              "docs/openrune/verification/independent/integration-external-amethyst-counts-bc277dc3e7e15088323a4f048f57dc43185fb7c0/manifest.json"
+            ]
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "IN_PROGRESS",
+            "reason": "All12pinned source/Wiki hashes verified. Four exact member/stackable outputs,15/15/5/8counts,83/85/87/89requirements and60XP per raw match pinned Wiki creation recipes and donor declarations. Source2cycle/default shortened first yields1then2; Wiki lists2cycle. Quantity counts raw batches, not individual ammunition tips. Original executable unavailable; native/reference comparison remains separate.",
+            "evidence": [
+              "docs/openrune/verification/independent/reference-amethyst/comparison.json"
+            ]
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/content/pottery_shaping.rs",
+          "crates/server/src/content/soft_clay_mixing.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/assembly.rs",
+          "crates/world/src/facility_crafting.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs"
+        ]
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0072",
+      "revision": 1,
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "55e57b293e632aadc7356c4cc709bdbeec2bbf90"
       },
       "historical_verification": {
         "levels": {
@@ -7074,7 +7692,180 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "c4a96dadc9aede7e83de6e4e5fee5cbe56c41f9d",
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/content/pottery_shaping.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/assembly.rs",
+          "crates/world/src/facility_crafting.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs"
+        ]
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0073",
+      "revision": 1,
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "3b32f6355fffdc677323dee53ab3e0812114454f"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/content/pottery_shaping.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/facility_crafting.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/door_actions.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs",
+          "crates/world/src/simulation/location_use_actions.rs"
+        ]
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0074",
+      "revision": 1,
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "48f650a9430e6cfb3ec1c082ee223b60bd1b0be8"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/content/pottery_shaping.rs",
+          "crates/server/src/content/spinning_wheel.rs",
+          "crates/server/src/content/weaving_loom.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/facility_crafting.rs",
+          "crates/world/src/simulation/facility_crafting_actions.rs"
+        ]
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0075",
+      "revision": 1,
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "7b3ab965bd95a6cce51adf9b7b2b3ab791a58866"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "33f2faee19d15f65069f5744fca2d7fd402fcf9e",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -7149,8 +7940,8 @@
       "chem-crash",
       "food-negative"
     ],
-    "next_eligible_contract": "OR-MIG-0062",
-    "next_action": "Manual gem OR56 and shell OR57 applicable V0-V4 accepted at exact historical SHAs; preserve states. Execute new shared glass choices/batches OR62 at5ce50aede9164cdee8e4008257d0298ea77289e7, then pending coin-pouch OR54 scenarios. Chemistry and chemistry-specific Close correction retests remain deferred.",
+    "next_eligible_contract": "OR-MIG-0063",
+    "next_action": "Preserve accepted manual OR56/57 and all immutable states. Glass OR62 V1/V3 completed; offered native X blocked by PG-INFRA-009. Pouch OR54 native opening/restart subchecks passed; bank positive control blocked by PG-INFRA-010. Amethyst OR71 counted-credit matrix and pinned references passed within scope. Continue shared gem/shell production OR63 at143dab04f28c3daed844da0af33d6af5edcd962d, then other eligible shared-engine/runtime/native obligations. Chemistry and chemistry-specific Close correction retests remain deferred.",
     "deferred_execution": "Chemistry interrupt-002 had already ended with a raw observer assertion failure when deferral arrived; owned graceful stop path recorded, no live chemistry run retained. Crash scenario build was resource-deferred and never executed. Do not launch new chemistry tests or silently classify unresolved assertions as implementation failures."
   },
   "deferred_native_work": {
@@ -7168,20 +7959,16 @@
     ]
   },
   "next_native_work": {
-    "implementation_id": "OR-MIG-0062",
-    "target_sha": "5ce50aede9164cdee8e4008257d0298ea77289e7",
-    "feature": "glass-interrupt",
-    "fresh_run_id": "interrupt-001",
+    "implementation_id": "OR-MIG-0063",
+    "target_sha": "143dab04f28c3daed844da0af33d6af5edcd962d",
+    "feature": "production-gems",
     "actions_in_order": [
-      "prepare/build only if absent",
-      "seed only if new database absent",
-      "produce once",
-      "relogin same state",
-      "independent assessment",
-      "then fresh glass-crash/crash-001",
-      "then native coin-pouch operations/deposit refusal at7fc1306b"
+      "inspect existing exact-SHA matrix manifests before launching",
+      "poll current owned campaign if running; never repeat PASS",
+      "complete actual-cache startup bindings and fresh native single-choice quantity scenarios",
+      "save/relogin/interrupted captured-batch and reference acceptance"
     ],
-    "reason": "Eight choices,1/5/10and All23 plus normal recovery completed. Do not repeat their immutable produce phases. Xblocked byPG-INFRA-009; continue independent batch lifecycle obligations."
+    "reason": "OR71counted-credit7776+36cases and12pinned references passed within scope. Preserve all immutable manual56/57and glass/pouch results. New16-profile quantity upgrade needs independent acceptance; no inheritance to newer SHAs."
   },
   "blocked_scenarios": [
     {
@@ -7191,6 +7978,14 @@
       "finding": "PG-INFRA-009",
       "reason": "Observed extra native keyboard/script continuation consumes dialog before intended choice. Requires correct focused-input dispatch or pinned client correction; no server defect established.",
       "evidence": "docs/openrune/verification/independent/deep-glass-remaining/remaining-002/independent-blocker.json"
+    },
+    {
+      "implementation_id": "OR-MIG-0054",
+      "target_sha": "7fc1306bb5c01540038ce5ff175b577294ade432",
+      "scenario": "native no_bank positive control",
+      "finding": "PG-INFRA-010",
+      "reason": "Actual Deposit-All menu offered but no normal interface47deposit submitted during60seconds; bank restriction not reached. Exact dispatch/content/mask cause unproven. Preserve opening/restart subchecks and continue other eligible work.",
+      "evidence": "docs/openrune/verification/independent/deep-pouch/pouch-002/independent-blocker.json"
     }
   ]
 }

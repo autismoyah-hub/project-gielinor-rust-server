@@ -1,0 +1,12 @@
+{
+  "implementation_id": "OR-MIG-0054",
+  "tested_sha": "7fc1306bb5c01540038ce5ff175b577294ade432",
+  "campaign_kind": "historical",
+  "status": "PASS_SUBCHECKS",
+  "raw_produce_status": "FAIL",
+  "scope": "Genuine native selected Open-one/op3 and Open-all/op2 exchange3pouches for9coins; duplicate stack2retained, stale selected slot replay refuses, all Stats unchanged. Acknowledged save, actual restart and independently decoded full native inventory/Stats preserve exact resulting state without replay. Later bank harness immediate-packet assertion failed before deposit submission; bank acceptance remains open as PG-INFRA-010.",
+  "limitations": [
+    "NPC Bank operation cache-resolved; no rendered hit-test claim.",
+    "No acquisition/cap/diary/outfit/death/trade or original executable acceptance inferred."
+  ]
+}

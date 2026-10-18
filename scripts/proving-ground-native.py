@@ -131,6 +131,11 @@ def seed():
             mapping={0:1755,1:1755,27:995}
             for index,item in enumerate([1623,1621,1619,1617,1631,6571,19496]):mapping[4+3*index]=mapping[5+3*index]=item
             items=[(slot,mapping.get(slot,1931),1000 if slot==27 else 1) for slot in range(28)]
+        elif FEATURE=='OR-MIG-0063':
+            mapping={0:1755,1:1755,27:995}
+            for index,item in enumerate([1623,1621,1619,1617,1631,6571,19496,*range(3345,3362,2)]):mapping[4+index]=item
+            mapping.update({20:1623,21:1623,22:1623,23:3345,24:3345,25:3345})
+            items=[(slot,mapping.get(slot,1931),1000 if slot==27 else 1) for slot in range(28)]
         elif FEATURE=='OR-MIG-0062':
             items=[(slot,1785 if slot in [0,1] else 1775 if 4<=slot<=26 else 995 if slot==27 else 1931,1000 if slot==27 else 1) for slot in range(28)]
         elif FEATURE=='OR-MIG-0054':
@@ -158,7 +163,7 @@ def seed():
         db.execute('UPDATE characters SET x=3224,z=3218,level=0,world_id=NULL,xp_rate_in_hundreds=500,varps=? WHERE id=?',(json.dumps(varps),cid))
         if FEATURE=='OR-MIG-0054':db.execute('UPDATE characters SET x=3209,z=3222,level=2 WHERE id=?',(cid,))
         db.execute('UPDATE accounts SET members=1 WHERE login_username=?',('integration239',))
-        if FEATURE in ['OR-MIG-0056','OR-MIG-0057','OR-MIG-0062']:
+        if FEATURE in ['OR-MIG-0056','OR-MIG-0057','OR-MIG-0062','OR-MIG-0063']:
             db.execute('UPDATE stats SET vis_level=99,base_level=99,fine_xp=130344311 WHERE character_id=? AND stat_id=12',(cid,))
             db.execute('UPDATE characters SET xp_rate_in_hundreds=500 WHERE id=?',(cid,))
     if FEATURE=='OR-MIG-0006':
@@ -215,7 +220,7 @@ def phase(mode):
             assert address,'Exact-SHA server startup failed: '+(dest/'server.err').read_text(encoding='utf-8')[-2000:]
             print('LISTENING',address,flush=True)
             args=[str(RES/DRIVER),str(RES/'cache/js5'),address,'integration239',str(RES/'password'),str(RES/'keys/client.key'),mode]
-            if SCENARIO in ['chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','food-observer','prayer','gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch']:args[-1]=(SCENARIO if SCENARIO in ['chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','prayer','gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch'] else 'food') if mode=='assemble' else 'verify'
+            if SCENARIO in ['chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','food-observer','prayer','gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells']:args[-1]=(SCENARIO if SCENARIO in ['chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','prayer','gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells'] else 'food') if mode=='assemble' else 'verify'
             if SCENARIO=='food':
                 if mode=='assemble':args[-1]=str(dest/'native-events.jsonl')
                 else:args=[str(client_binary),str(RES/'cache/js5'),str(RES/'keys/client.key'),address,'integration239',str(RES/'password'),str(WORK/'relogin-private.capture')]
@@ -266,7 +271,7 @@ def phase(mode):
     elif manifest['status']=='PASS' and (not manifest['save_acknowledgement'] or not manifest['graceful_shutdown'] or manifest['server_exit']!=0 or manifest['forced_shutdown']):manifest.update(status='BLOCKED',reason='Client finished but durable save or graceful shutdown evidence missing')
     save(dest/'manifest.json',manifest);print('NATIVE_RESULT',json.dumps(manifest),flush=True)
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('action',choices=['prepare','build','seed','produce','relogin']);p.add_argument('--feature',choices=['combat','chemistry','chemistry-worn','chemistry-last','chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','food','food-observer','prayer','gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch'],default='combat');p.add_argument('--integration-sha');p.add_argument('--run-id');a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('action',choices=['prepare','build','seed','produce','relogin']);p.add_argument('--feature',choices=['combat','chemistry','chemistry-worn','chemistry-last','chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','food','food-observer','prayer','gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells'],default='combat');p.add_argument('--integration-sha');p.add_argument('--run-id');a=p.parse_args()
     SCENARIO=a.feature
     policy=ROOT/'docs/openrune/verification/USER_DEFERRALS.json'
     if policy.exists():
@@ -280,14 +285,16 @@ if __name__=='__main__':
         CHECKOUT=ROOT.parent/'agent7-targets'/SHA;WORK=ROOT/'work/native-food';OUT=ROOT/'docs/openrune/verification/independent/deep-food'
     if a.feature=='prayer':
         SHA='f6b0f6ad54fe7813bb6607827eeb8da0e60137fa';FEATURE='OR-MIG-0051';CHECKOUT=ROOT.parent/'agent7-targets'/SHA
-    if a.feature in ['gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch']:
+    if a.feature in ['gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells']:
         SHA='5743cbe1c7499e2a7476c721d25dcba194666042';FEATURE='OR-MIG-0056';CHECKOUT=ROOT.parent/'agent7-targets'/SHA
     if a.feature=='shells':
         SHA='4c6b73cfcd3b35ce52aa79efd9d2a99464939445';FEATURE='OR-MIG-0057';CHECKOUT=ROOT.parent/'agent7-targets'/SHA
-    if a.feature in ['glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch']:
+    if a.feature in ['glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells']:
         SHA='5ce50aede9164cdee8e4008257d0298ea77289e7';FEATURE='OR-MIG-0062';CHECKOUT=ROOT.parent/'agent7-targets'/SHA
     if a.feature=='pouch':
         SHA='7fc1306bb5c01540038ce5ff175b577294ade432';FEATURE='OR-MIG-0054';CHECKOUT=ROOT.parent/'agent7-targets'/SHA
+    if a.feature in ['production-gems','production-shells']:
+        SHA='143dab04f28c3daed844da0af33d6af5edcd962d';FEATURE='OR-MIG-0063';CHECKOUT=ROOT.parent/'agent7-targets'/SHA
     CONTRACT_SHA=SHA
     if a.feature=='chemistry-worn':
         STATE='pg-chemistry-worn-native-001';DRIVER='server_chemistryworn.exe';PIN='chemistryworn-004'
@@ -295,7 +302,7 @@ if __name__=='__main__':
     if a.feature=='chemistry-last':
         STATE='pg-chemistry-last-native-001';DRIVER='server_chemistry.exe';PIN='chemistry-001'
         WORK=ROOT/'work/native-chemistry-last';OUT=ROOT/'docs/openrune/verification/independent/deep-chemistry-last'
-    if a.feature in ['chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','food-observer','prayer','gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch']:
+    if a.feature in ['chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','food-observer','prayer','gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells']:
         observer_build=json.loads((ROOT/'docs/openrune/verification/independent/client-observer-build/build.json').read_text(encoding='utf-8'));assert observer_build['status']=='PASS'
         STATE='pg-'+a.feature+'-001';DRIVER='pg_observer-'+observer_build['binaries']['pg_observer.exe'][:12]+'.exe';PIN='pg-observer'
         WORK=ROOT/'work'/('native-'+a.feature);OUT=ROOT/'docs/openrune/verification/independent'/('deep-'+a.feature)

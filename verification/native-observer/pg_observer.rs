@@ -244,6 +244,25 @@ fn glass_make_action(c:&mut ClientState,l:&mut Connection,index:u32)->R<Action> 
         if start.elapsed()>Duration::from_secs(30){return Err(format!("native glass choice{index} unavailable").into());}std::thread::sleep(Duration::from_millis(20));
     }
 }
+fn production_profiles(c:&mut ClientState,l:&mut Connection,shells:bool)->R<()> {
+    let gems=[(1623,1607,20,2500),(1621,1605,27,3375),(1619,1603,34,4250),(1617,1601,43,5375),(1631,1615,55,6875),(6571,6573,67,8375),(19496,19493,89,2500)];
+    let xp=c.data.experience;let mut fine=130344311;let mut expected=(0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>();tab(c,"Inventory")?;ticks(c,l,3)?;
+    let start=if shells{7}else{0};let end=if shells{16}else{7};let first_slot=4+start;
+    use_slots(c,0,first_slot)?;let action=glass_make_action(c,l,0)?;let cancelled=sent_packet(c,action,"native single-choice Make before genuine Close")?;dispatch(c,Action::Close,"native production Close before first award")?;ticks(c,l,6)?;
+    replay(c,l,&cancelled,"stale single-choice response after genuine Close")?;ticks(c,l,4)?;assert_eq!(c.data.experience,xp);assert_eq!((0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>(),expected);
+    println!("PG_CASE_PASS native production Make/Close and stale continuation refused before award");
+    for index in start..end {
+        ready(c,l)?;let(raw,output,level,award)=if index<7{gems[index as usize]}else{(3345+2*(index-7),3327+2*(index-7),15,1625)};let slot=4+index;assert_eq!(c.inventories.item(93,slot).id,raw);
+        if index%2==0{use_slots(c,0,slot)?;}else{use_slots(c,slot,0)?;}
+        let action=glass_make_action(c,l,0)?;let label=plain_ui(&c.interfaces.widgets.get(&((270<<16)|15)).ok_or("single product widget absent")?.data_text);
+        let name=&c.items.items.get(&(output as u32)).ok_or("native output definition absent")?.name;assert!(label.to_ascii_lowercase().contains(&name.to_ascii_lowercase()) && label.contains(&format!("level {level}")),"output{output} label={label:?} expected={name:?}");
+        let packet=sent_packet(c,action,"native registered single-choice Make-one")?;assert_eq!((packet.0,packet.1.len()),(115,6));assert_eq!(&packet.1[4..],&[0,1]);fine+=award;
+        pump(c,l,30,|c,_|c.inventories.item(93,slot).id==output && c.data.experience[12]==fine/10)?;expected[slot as usize]=(output,1);assert_eq!((0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>(),expected);
+        replay(c,l,&packet,"stale completed single-choice production response")?;ticks(c,l,3)?;assert_eq!(c.data.experience[12],fine/10);for i in 0..25{if i!=12{assert_eq!(c.data.experience[i],xp[i]);}}
+        println!("PG_PRODUCTION_COMMITTED index={index} slot={slot} raw={raw} output={output} fine_award={award} display_xp={} label={label:?}",c.data.experience[12]);
+    }
+    println!("PG_CASE_PASS registered native single-choice profiles shells={shells}; complete full-bag selected outputs/labels/fineXP and stale refusal; actual restart assessment separate");Ok(())
+}
 fn bank_deposit_action(c:&mut ClientState,l:&mut Connection,slot:i32)->R<Action> {
     let start=Instant::now();loop{
         pump(c,l,30,|_,_|true)?;let layout=c.interfaces.layout(c.canvas)?;
@@ -273,11 +292,15 @@ fn pouch(c:&mut ClientState,l:&mut Connection)->R<()> {
         }
     }
     dispatch(c,bank.ok_or("native cache-resolved Banker tutor Bank operation absent")?,"native cache-resolved Banker tutor Bank")?;
-    let action=bank_deposit_action(c,l,27)?;let packet=sent_packet(c,action,"native bankable Coins Deposit-All control")?;pump(c,l,60,|c,_|c.inventories.item(93,27).id==-1 && c.inventories.total(95,995)==1009)?;
+    let action=bank_deposit_action(c,l,27)?;let sent=gielinor_client::live_runtime::PG_SENT_PACKETS.lock().unwrap().len();dispatch(c,action,"native bankable Coins Deposit-All control")?;
+    pump(c,l,60,|c,_|c.inventories.item(93,27).id==-1 && c.inventories.total(95,995)==1009)?;
+    let packet={let sent_packets=gielinor_client::live_runtime::PG_SENT_PACKETS.lock().unwrap();let frames=sent_packets.iter().skip(sent).filter(|(_,op,b)|*op==47 && b.len()==9 && b[4..6]==27u16.to_be_bytes() && b[6..8]==995u16.to_be_bytes()).collect::<Vec<_>>();assert_eq!(frames.len(),1,"one actually submitted native bank deposit expected");(frames[0].1,frames[0].2.clone())};
     let before=(0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>();let mut denied=packet.clone();assert_eq!((denied.0,denied.1.len()),(47,9));denied.1[4..6].copy_from_slice(&5u16.to_be_bytes());denied.1[6..8].copy_from_slice(&22521u16.to_be_bytes());
     replay(c,l,&denied,"actual native bank transfer retargeted to restricted pouch slot5and matching22521claim")?;ticks(c,l,6)?;
     assert_eq!((0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>(),before);assert_eq!(c.inventories.total(95,995),1009);
     assert_eq!(c.inventories.item(93,5).count,2);assert_eq!(c.inventories.total(95,22521),0);assert_eq!(c.data.experience,xp);
+    let refusal=c.game_messages.iter().find(|m|m.text=="A magical force prevents you from banking this item!").ok_or("specific no_bank refusal message absent; unchanged inventory alone cannot prove restriction route")?;
+    println!("PG_POUCH_BANK_REFUSAL text={:?}",refusal.text);
     println!("PG_CASE_PASS native no_bank Coinpouch deposit refusal via retargeted actual native bank-transfer frame, with1009coin positive deposit control; NPCoperation cache-resolved, no rendered hit-test claim");Ok(())
 }
 fn plain_ui(text:&str)->String {
@@ -438,6 +461,7 @@ fn food(c:&mut ClientState,l:&mut Connection)->R<()> {
 fn main()->R<()> {
     let a:Vec<_>=std::env::args().collect();assert_eq!(a.len(),7);
     let mut c=ClientState::load(DiskCache::open(&a[1],64<<20)?)?;let mut l=Connection::connect(&mut c,&a[2],&a[3],&a[4],&a[5])?;ready(&mut c,&mut l)?;
+    if matches!(a[6].as_str(),"production-gems"|"production-shells"){production_profiles(&mut c,&mut l,a[6]=="production-shells")?;l.session.close();return Ok(());}
     match a[6].as_str(){"pouch"=>pouch(&mut c,&mut l)?,"glass-all"=>glass_all(&mut c,&mut l)?,"glass-interrupt"=>glass_interrupt(&mut c,&mut l)?,"glass-crash"=>glass_crash(&mut c,&mut l)?,"glass-remaining"=>glass_remaining(&mut c,&mut l)?,"glass-quantities"=>glass_quantities(&mut c,&mut l)?,"glass"=>glass(&mut c,&mut l)?,"shells"=>shells(&mut c,&mut l)?,"gem-effects"=>gem_effects(&mut c,&mut l)?,"gem-crash"=>gem_crash(&mut c,&mut l)?,"gems"=>gems(&mut c,&mut l)?,"prayer"=>prayer_burial(&mut c,&mut l)?,"chem-crash"=>chemistry_crash(&mut c,&mut l)?,"chem-interrupt"=>chemistry_interrupt(&mut c,&mut l)?,"food-negative"=>food_negative(&mut c,&mut l)?,"combat-interrupt"=>combat_interrupt(&mut c,&mut l)?,"chem-close"=>chemistry_close(&mut c,&mut l)?,"chem-negative"=>chemistry(&mut c,&mut l)?,"food"=>food(&mut c,&mut l)?,"verify"=>{ticks(&mut c,&mut l,6)?;println!("PG_CASE_PASS native relogin observation");},_=>return Err("unknown independent scenario".into())}
     l.session.close();Ok(())
 }

@@ -1,0 +1,13 @@
+   Compiling gielinor-world v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\143dab04f28c3daed844da0af33d6af5edcd962d\crates\world)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\143dab04f28c3daed844da0af33d6af5edcd962d\external-harness-4308526600)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 30.75s
+     Running tests\authoritative.rs (C:\Projects\OSRSRSPS\agent7-verification\work\143dab04f28c3daed844da0af33d6af5edcd962d\target\debug\deps\authoritative-ac3d9cebb5616c2e.exe)
+
+running 3 tests
+test f2p_gems_remain_available_to_nonmembers_in_quantity_route ... ok
+test all_sixteen_both_directions_three_rates_quantities_selected_order_and_exact_cadence has been running for over 60 seconds
+test invalid_admission_and_late_failure_cancel_captured_work_without_fallback has been running for over 60 seconds
+test invalid_admission_and_late_failure_cancel_captured_work_without_fallback ... ok
+test all_sixteen_both_directions_three_rates_quantities_selected_order_and_exact_cadence ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 103.99s

@@ -1,0 +1,16 @@
+{
+  "implementation_id": "OR-MIG-0054",
+  "tested_sha": "7fc1306bb5c01540038ce5ff175b577294ade432",
+  "client_sha256": "70cea3bb316c6a2def0912e361c343ccd4c38b38af182dbed1727f6f24b61106",
+  "campaign_kind": "historical",
+  "status": "BLOCKED",
+  "finding": "PG-INFRA-010",
+  "scope": "Fresh corrected post-send observer proves actual native bank positive control still blocked: native Deposit-All menu offered for1009coins, but no interface47deposit frame actually submitted during60second poll. Script processing idle and server clocks continue; currency stays in inventory and bank remains empty. Specific no_bank route was never reached; authoritative cache/bank API tests are separate. Opening and stale-slot subchecks still pass.",
+  "blocker": "Native bank menu callback/permission/content dispatch needs a focused diagnostic of action identity, widget content/listener and received operation mask. Exact cause and client versus server ownership remain unproven; no implementation defect claimed.",
+  "next_action": "Preserve this failed state and pouch-001 opening/restart evidence. Continue amethyst/shared production at own pinned SHAs; future bank-only diagnostic must use a new disposable run and unchanged7fc1306bserver.",
+  "evidence_sha256": {
+    "produce/client.log": "3a9789bcf42f89909dce5f834c07a15709d83517439e0290c540795696beb6de",
+    "produce/manifest.json": "e5d84317b12f87acfc9e43247d5d4f1c152c040458dc4b237ff7f27e1f3ca7fd",
+    "produce/after.json": "be794b786b8ea572b188073d4e71088587fa44aa187a2c30abbf2c24f18c71a7"
+  }
+}

@@ -37,6 +37,12 @@ for manifest in OUT.glob('OR-MIG-0024-*-independent*/manifest.json'):
 for manifest in OUT.glob('integration-*/manifest.json'):
     value=json.loads(manifest.read_text(encoding='utf-8'))
     if value.get('status')!='PASS':continue
+    if value.get('suite')=='production-gems':
+        add('OR-MIG-0063',value['tested_integration_sha'],'V1','IN_PROGRESS','Independent576sixteen-profile/both-direction/three-rate/quantity cases and24nonmember F2P gem controls PASS.140invalid admission and192late captured-slot/policy/credit/lifecycle cases verify no fallback/replay, legitimate F2P continuation after membership change and exact first1/repeat2gem versus first2/repeat3shell clocks. Public World routes used; actual startup bindings/native/persistence/reference acceptance remains separate from historical manual56/57.',[manifest.relative_to(ROOT).as_posix()],scope='independent-production-gems')
+        continue
+    if value.get('suite')=='amethyst-counts':
+        add('OR-MIG-0071',value['tested_integration_sha'],'V1','IN_PROGRESS','Independent7776full-bag/all-selected-slot/member/level/rate/count-boundary resolver cases and36invalid counted-credit/input/tool cases PASS. Exact15/15/5/8stack outputs and XP once per raw verified; overflow leaves inventory/Stats unchanged. Registered shared batch/runtime/native/persistence/reference acceptance remains separate.',[manifest.relative_to(ROOT).as_posix()],scope='independent-amethyst-counts')
+        continue
     if value.get('suite')=='fallible-gem-matrix':
         add('OR-MIG-0064',value['tested_integration_sha'],'V1','IN_PROGRESS','Independent465408controlled-byte/profile/level1-99/boost100-120/member/100-125-500rate cases PASS against an integer endpoint/rounding oracle, including exact selected full-bag output/XP and one draw only after both states prepare.48invalid either-credit/input/tool/member/level/rate/probability cases refuse without a draw or publication. These are public resolver checks, not registered runtime/World batch/native or original RNG-stream acceptance.',[manifest.relative_to(ROOT).as_posix()],scope='independent-fallible-gem-matrix')
         continue
@@ -185,7 +191,7 @@ path=OUT/'shell-acceptance.json'
 if path.exists():
     result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='ACCEPTED'
     for level,value in result['levels'].items():add('OR-MIG-0057',result['tested_sha'],level,value['status'],value['reason'],[str(path.relative_to(ROOT)).replace('\\','/')],scope='shell-manual-subset-acceptance-r1')
-for folder,ident in [('reference-glass','OR-MIG-0062'),('reference-pouches','OR-MIG-0054')]:
+for folder,ident in [('reference-glass','OR-MIG-0062'),('reference-pouches','OR-MIG-0054'),('reference-amethyst','OR-MIG-0071')]:
     path=OUT/folder/'comparison.json'
     if path.exists():
         result=json.loads(path.read_text(encoding='utf-8'));assert result['source_documentation_subcheck']=='PASS'
@@ -208,6 +214,33 @@ path=OUT/'deep-glass-remaining/remaining-002/independent-blocker.json'
 if path.exists():
     result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='BLOCKED'
     add('OR-MIG-0062',result['tested_sha'],'V2','IN_PROGRESS','PG-INFRA-009: Xscenario BLOCKED by observed native keyboard/script extraResume270:17/count1before intended270:18/count3. Server matches earlier actual frame; no server defect established. Native8choices/labels/1/5/10/Alland normal recovery passed in separate preserved scopes. Continue other applicable scenarios; do not promote entire V2.',[path.relative_to(ROOT).as_posix()],scope='native-glass-x-blocker')
+for mode in ['interrupt','crash']:
+    path=OUT/('deep-glass-'+mode)/(mode+'-001')/'independent-assessment.json'
+    if path.exists():
+        result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PASS'
+        add('OR-MIG-0062',result['tested_sha'],'V3','IN_PROGRESS',result['scope']+' Whole contract acceptance remains separate; native X remains blocked.',[path.relative_to(ROOT).as_posix()],scope='native-glass-'+mode+'-recovery')
+for path in (OUT/'deep-pouch').glob('pouch-*/independent-assessment.json'):
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status'] in ['PASS','PASS_SUBCHECKS']
+    for level in ['V0','V2','V3']:add('OR-MIG-0054',result['tested_sha'],level,'IN_PROGRESS',result['scope']+' Aggregate applicable-level acceptance remains separate.',[path.relative_to(ROOT).as_posix()],scope='native-pouch-'+path.parent.name+'-subchecks')
+for kind in ['gems','shells']:
+    path=OUT/('deep-production-'+kind)/'profiles-001/independent-assessment.json'
+    if path.exists():
+        result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PASS'
+        for level in ['V0','V2','V3']:add('OR-MIG-0063',result['tested_sha'],level,'IN_PROGRESS',result['scope']+' Other applicable native batch/quantity/interruption/reference obligations remain separate.',[path.relative_to(ROOT).as_posix()],scope='native-production-'+kind+'-single-choice-recovery')
+glass_sha='5ce50aede9164cdee8e4008257d0298ea77289e7'
+path=OUT/'deep-pouch/pouch-002/independent-blocker.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='BLOCKED'
+    add('OR-MIG-0054',result['tested_sha'],'V2','BLOCKED',result['scope']+' '+result['blocker'],[path.relative_to(ROOT).as_posix()],scope='native-pouch-bank-positive-control-blocked')
+glass_authoritative=[OUT/('integration-external-'+suite+'-'+glass_sha+suffix)/'manifest.json' for suite,suffix in [('glass-matrix','-1792292760698579200'),('glass-admission','-1792294219033587500'),('glass-bindings','')]]
+if all(p.exists() and json.loads(p.read_text(encoding='utf-8')).get('status')=='PASS' for p in glass_authoritative):
+    add('OR-MIG-0062',glass_sha,'V1','PASS','Applicable authoritative requirements satisfied:1344eight-profile/both-direction/count1-28/three-rate full-bag cases verify capped captured order, exact fineXP and2then3cadence;72invalid admission and96late member/level/tool/slot/modal/movement/Close/logout cases verify atomic stop/no fallback. Additional112admission refusals and actual-cache109metadata refusals passed. Native custom-quantity remains a separate V2blocker.',[p.relative_to(ROOT).as_posix() for p in glass_authoritative],scope='glass-authoritative-obligations-complete')
+glass_durable=[OUT/folder/run/'independent-assessment.json' for folder,run in [('deep-glass','choices-001'),('deep-glass-all','all-001'),('deep-glass-interrupt','interrupt-001'),('deep-glass-crash','crash-001')]]
+if all(p.exists() and json.loads(p.read_text(encoding='utf-8')).get('status')=='PASS' for p in glass_durable):
+    add('OR-MIG-0062',glass_sha,'V3','PASS','Applicable persistence requirements satisfied by real acknowledged saves and process restarts: all8outputs and23-item All batch retain exact inventory/fineXP. Disconnect during captured All preserves one committed product/875fineXP plus22raws and cancels remaining work. Separate unacknowledged owned-server termination restores prior whole state. Actual restart packets independently decoded in every campaign; no replay/material loss. No mid-SQL-commit injection claimed.',[p.relative_to(ROOT).as_posix() for p in glass_durable],scope='glass-durable-obligations-complete')
+path=OUT/'deep-glass-remaining/remaining-002/independent-blocker.json'
+if path.exists():
+    add('OR-MIG-0062',glass_sha,'V2','BLOCKED','All native8choice/label/built-in1/5/10/All and Close subchecks passed, but required offered X selection cannot be accepted: PG-INFRA-009 proves an extra keyboard/script Resume consumes the dialog before intended choice. Precise client focus/callback correction required; server defect not established. Other completed obligations remain preserved.',[path.relative_to(ROOT).as_posix()],scope='glass-native-x-required-obligation-blocked')
 coarse=DOC/'VERIFICATION_RESULTS.jsonl';prior=[json.loads(s) for s in coarse.read_text(encoding='utf-8').splitlines()];known={r['attempt_id'] for r in prior}
 for name in ['gem-acceptance.json','shell-acceptance.json']:
     path=OUT/name

@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "exit_code": 0,
+  "resource": {
+    "available_ram": 6839070720,
+    "active_compilers": [
+      "\"cargo.exe\",\"15804\",\"RDP-Tcp#0\",\"2\",\"23,340 K\"",
+      "\"rustc.exe\",\"15616\",\"RDP-Tcp#0\",\"2\",\"936,236 K\""
+    ],
+    "cpu_percent": 13.89,
+    "cpu_samples": [
+      13.255360623781677,
+      14.785992217898835,
+      13.636363636363635
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained",
+    "disk_free": 33680322560,
+    "owned_affinity_mask": 3
+  },
+  "command": [
+    "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+    "build",
+    "--offline",
+    "--locked",
+    "-j",
+    "1",
+    "--example",
+    "pg_observer"
+  ],
+  "observation_manifest_sha256": "96a6a9d3b3c7080a4d12fe5b81ef31cf25cfabab9e461c78f8cbe75ddeaf9ecf",
+  "observer_sources": {
+    "pg_observer.rs": "af48defe5166745829d3a8bd0a669d8eb8708e9e400c5c0d864746abc7cef49a"
+  },
+  "binaries": {
+    "pg_observer-22bdf8b963b2c52a.exe": "ba67ee03633c6d7e5531f64a1969d4b87d43d3a9463820c18ed912e8ea8e7d53",
+    "pg_observer.exe": "ba67ee03633c6d7e5531f64a1969d4b87d43d3a9463820c18ed912e8ea8e7d53"
+  },
+  "scope": "Fresh independent native-client build; pinned core source plus recorded read-only observation overlay and owned scenario controllers."
+}

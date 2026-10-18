@@ -1,0 +1,13 @@
+{
+  "cache_files": 95,
+  "cache_manifest_sha256": "8ba60ce0ba0fdc1add7ef2511bc9b4683c3b2fe42a80997583c51d4fa5b82717",
+  "driver_manifest": {
+    "origin": "independently rebuilt pinned native client with observation-only overlay",
+    "build_evidence": "docs/openrune/verification/independent/client-observer-build/build.json",
+    "files": {
+      "pg_observer-956721741cd9.exe": "956721741cd997499f12257f794e00879d75b1f05123a30c86747a899cf1b4aa"
+    }
+  },
+  "driver_sha256": "956721741cd997499f12257f794e00879d75b1f05123a30c86747a899cf1b4aa",
+  "scope": "Owned copies; original resources read-only. Private cache, keys, credentials and account template are not published."
+}

@@ -1,0 +1,10 @@
+   Compiling gielinor-world v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\bc277dc3e7e15088323a4f048f57dc43185fb7c0\crates\world)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\bc277dc3e7e15088323a4f048f57dc43185fb7c0\external-harness-4440249100)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 49.58s
+     Running tests\atomic.rs (C:\Projects\OSRSRSPS\agent7-verification\work\bc277dc3e7e15088323a4f048f57dc43185fb7c0\target\debug\deps\atomic-b2d9a10afb397f89.exe)
+
+running 2 tests
+test invalid_count_credit_tool_and_selected_state_refuse_atomically ... ok
+test full_bag_every_selected_slot_checked_stack_credit_and_once_per_raw_xp ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.25s

@@ -1,0 +1,129 @@
+{
+  "implementation_id": "OR-MIG-0071",
+  "tested_sha": "bc277dc3e7e15088323a4f048f57dc43185fb7c0",
+  "campaign_kind": "historical",
+  "status": "IN_PROGRESS",
+  "source_documentation_subcheck": "PASS",
+  "sources": [
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/scripts/HeldCraftingScript.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "c39f8b323e8fa79f933224b9ca0c8cf07a5df005628906e79645e3e6a5399318"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingSection.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "26e5be7a84fbe82f5c4897d29cb3261c63cd475111f17df517e2e0ac5e0d8afb"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingWorker.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "5790b247e5441b54e05c0ca7b4b5a9dff5c7aa61181ebccb36d0d8057db56e53"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/util/CraftingConstants.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "393d05fa5a5645b2dd712fcfb8f8814845376846a7594dafe16909422fe2008f"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/pack/src/main/kotlin/org/rsmod/content/skills/crafting/pack/Crafting.kt",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "sha256": "5b3d4124ce83b2c6e93590b2d833e7dc0a37ce87e3a7dc2f327241ab165ef3e0"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingProduct.kt",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "sha256": "e0ee16a23f6fa20bf82ebae4103213c1a13337c596b2d2f7b7715edbe3073576"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/utils/src/main/kotlin/org/rsmod/content/skills/MathSkillUtiils.kt",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "sha256": "874ef859e35b30891ce90d077262e1637e9115e5c285ffb790970f899f32770b"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Amethyst",
+      "revision": "15285124",
+      "sha256": "e7a6ff7dcd9f20bcf176b3b2801752eac8943970365439d260bc8c010195ed9c"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Amethyst bolt tips",
+      "revision": "15188376",
+      "sha256": "513428b9da8454348fe1c64a2e668926a496d303d1a3032615859f61e2a84be6"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Amethyst arrowtips",
+      "revision": "15188379",
+      "sha256": "38d4ec0c4d605afb43356db1ae67130a83b2d54ed7cae478c3f8fe0cd1ce1cfb"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Amethyst javelin tips",
+      "revision": "15188383",
+      "sha256": "1ab40a2f30caae6548130381a0415b47cfe0176addb851e0658f66ec7532ab81"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Amethyst dart tip",
+      "revision": "15190255",
+      "sha256": "dfa0ba56dc85e69ec5d74bf566ea0fd25c08b7b632b10091bb7fda8a5c54ab4a"
+    }
+  ],
+  "profiles": [
+    {
+      "output": 21338,
+      "count_per_raw": 15,
+      "level": 83,
+      "base_xp_per_raw": 60,
+      "fine_xp_at_125": 750,
+      "wiki_cycle_ticks": 2,
+      "source_first_ticks": 1,
+      "source_repeat_ticks": 2
+    },
+    {
+      "output": 21350,
+      "count_per_raw": 15,
+      "level": 85,
+      "base_xp_per_raw": 60,
+      "fine_xp_at_125": 750,
+      "wiki_cycle_ticks": 2,
+      "source_first_ticks": 1,
+      "source_repeat_ticks": 2
+    },
+    {
+      "output": 21352,
+      "count_per_raw": 5,
+      "level": 87,
+      "base_xp_per_raw": 60,
+      "fine_xp_at_125": 750,
+      "wiki_cycle_ticks": 2,
+      "source_first_ticks": 1,
+      "source_repeat_ticks": 2
+    },
+    {
+      "output": 25853,
+      "count_per_raw": 8,
+      "level": 89,
+      "base_xp_per_raw": 60,
+      "fine_xp_at_125": 750,
+      "wiki_cycle_ticks": 2,
+      "source_first_ticks": 1,
+      "source_repeat_ticks": 2
+    }
+  ],
+  "scope": "All12pinned source/Wiki hashes verified. Four exact member/stackable outputs,15/15/5/8counts,83/85/87/89requirements and60XP per raw match pinned Wiki creation recipes and donor declarations. Source2cycle/default shortened first yields1then2; Wiki lists2cycle. Quantity counts raw batches, not individual ammunition tips.",
+  "limitations": [
+    "Source facts inspected; original Kotlin executable unavailable and not run.",
+    "Runtime/native first-clock timing, effects/audio, counted transport, overflow and persistence acceptance remain separate.",
+    "Acquisition/mining and downstream ammunition attachment/use are excluded."
+  ]
+}
