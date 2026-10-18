@@ -151,5 +151,3 @@ if __name__=='__main__':
     p=argparse.ArgumentParser()
     for name in ['assets','out','native','cache','blender','bounds','identities']:p.add_argument('--'+name,type=Path,required=True)
     run(p.parse_args())
-
-

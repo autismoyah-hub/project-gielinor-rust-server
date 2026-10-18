@@ -21,4 +21,3 @@ if __name__=='__main__':
     p=argparse.ArgumentParser()
     for name in ['floor','actor','out','native','cache']:p.add_argument('--'+name,type=Path,required=True)
     a=p.parse_args();a.actor=a.actor.resolve();run(a)
-

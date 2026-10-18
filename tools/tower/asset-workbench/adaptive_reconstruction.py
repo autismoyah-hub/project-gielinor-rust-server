@@ -22,3 +22,13 @@ def recipe(g,name):
     r['provenance']['method']='Post-examination private coarse sections, optional dominant-bone static partition and aggregate spatial face-color observations; no source topology or weighted frames copied'
     r['development_limitations']=['Target-derived static study, not original art or an unseen success.','Dominant source bone labels are geometric partitions, not inferred anatomy.','Weighted animation retargeting remains unsupported.','Brushes improve coarse native color placement; fine surface construction may remain wrong.']
     return r,regions,descriptors
+
+if __name__=='__main__':
+    import argparse,json
+    from pathlib import Path
+    p=argparse.ArgumentParser();p.add_argument('geometry',type=Path);p.add_argument('out',type=Path);p.add_argument('--metadata',type=Path);a=p.parse_args()
+    if a.out.exists()or a.out.resolve().is_relative_to(Path(__file__).resolve().parents[3]):raise ValueError('Choose a fresh private directory outside the source checkout')
+    r,regions,d=recipe(json.loads(a.geometry.read_text(encoding='utf-8')),'Private post-examination static descriptor development')
+    if a.metadata:r['native_render_scale']=json.loads(a.metadata.read_text(encoding='utf-8'))['render_scale']
+    a.out.mkdir(parents=True)
+    for name,value in [('recipe',r),('regions',regions),('observations',d)]:(a.out/(name+'.json')).write_text(json.dumps(value,indent=2),encoding='utf-8')
