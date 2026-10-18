@@ -1,5 +1,5 @@
 use super::*;
-use crate::facility_crafting::{Config, Error, Pending, Request, QUEUE};
+use crate::facility_crafting::{Error, Pending, Request, QUEUE};
 use crate::locations::Location;
 impl World {
     pub(super) fn request_facility_crafting(
@@ -8,17 +8,14 @@ impl World {
         location: Location,
         selected: Option<(usize, i32)>,
     ) {
-        let Some(config) = &self.facility_crafting else {
+        let Some(config) = self.facility_crafting.get(&location.id) else {
             return;
         };
         let Some(revision) = self.locations.revision(location) else {
             return;
         };
         let p = self.players.get(slot).unwrap();
-        if p.location_revision != Some(revision)
-            || config.ticks == 0
-            || !config.locations.contains_key(&location.id)
-        {
+        if p.location_revision != Some(revision) || !config.locations.contains_key(&location.id) {
             return;
         }
         if let Some((selected, input)) = selected {
@@ -35,19 +32,22 @@ impl World {
             .iter()
             .copied()
             .filter(|r| {
-                selected.is_none_or(|(_, input)| input == r.input)
+                r.input_count > 0
+                    && selected.is_none_or(|(_, input)| input == r.input)
                     && p.data
                         .inventory
                         .slots()
                         .iter()
                         .flatten()
-                        .any(|i| i.id == r.input && i.count == 1 && i.vars == 0)
+                        .filter(|i| i.id == r.input && i.count == 1 && i.vars == 0)
+                        .count()
+                        >= usize::from(r.input_count)
             })
             .collect();
         if recipes.is_empty() {
             self.events.push(WorldEvent::GameMessage {
                 actor: p.id,
-                text: "You don't have anything suitable to spin at this spinning wheel.".into(),
+                text: config.empty_message.into(),
             });
             return;
         }
@@ -58,7 +58,7 @@ impl World {
             origin: p.movement.coords,
             last_movement: p.movement.last_movement,
             selected,
-            ticks: config.ticks,
+            action: config.action,
             animation: config.animation,
             location_animation: config.location_animation,
         };
@@ -83,13 +83,13 @@ impl World {
         }
         let config = self
             .facility_crafting
-            .as_ref()
+            .get(&request.location.id)
             .ok_or(ActionError::InvalidLocation)?;
         if !(1..=28).contains(&count)
-            || request.ticks == 0
-            || request.ticks != config.ticks
             || self.locations.revision(request.location) != Some(request.revision)
             || !config.locations.contains_key(&request.location.id)
+            || request.animation != config.animation
+            || request.action != config.action
             || p.movement.coords != request.origin
             || p.movement.last_movement != request.last_movement
         {
@@ -99,19 +99,19 @@ impl World {
         if !config.recipes.contains(&recipe) {
             return Err(ActionError::InvalidItem);
         }
-        let slots = request
-            .slots(recipe, &p.data.inventory, count as usize)
+        let groups = request
+            .groups(recipe, &p.data.inventory, count as usize)
             .ok_or(ActionError::InvalidItem)?;
-        if let Err(error) = crate::facility_crafting::prepare(
+        if let Err(error) = crate::facility_crafting::prepare_group(
             recipe,
-            slots[0],
+            &groups[0],
             &p.data.inventory,
             &self.object_types,
             &p.data.stats,
             p.data.xp_rate_hundreds,
             p.member,
         ) {
-            refusal(actor, error, &mut self.events);
+            refusal(actor, error, request.action, &mut self.events);
             return Ok(());
         }
         let p = self.players.get_mut(actor.slot as usize).unwrap();
@@ -120,7 +120,7 @@ impl World {
         let pending = Pending {
             request,
             recipe,
-            slots: std::sync::Arc::new(slots),
+            groups: std::sync::Arc::new(groups),
             index: 0,
         };
         enqueue(&mut p.queues, &pending)?;
@@ -128,26 +128,28 @@ impl World {
         Ok(())
     }
 }
-fn refusal(actor: ActorId, error: Error, events: &mut Vec<WorldEvent>) {
-    events.push(WorldEvent::GameMessage {
-        actor,
-        text: match error {
-            Error::Members => "You need to be a member to spin that item.",
-            Error::Level => "You need a higher Crafting level to spin that item.",
-            _ => "You can't spin that item right now.",
-        }
-        .into(),
-    });
+fn refusal(actor: ActorId, error: Error, action: &str, events: &mut Vec<WorldEvent>) {
+    let text = match error {
+        Error::Members => format!("You need to be a member to {action} that item."),
+        Error::Level => format!("You need a higher Crafting level to {action} that item."),
+        _ => format!("You can't {action} that item right now."),
+    };
+    events.push(WorldEvent::GameMessage { actor, text });
 }
 fn enqueue(
     queues: &mut crate::queues::Scheduler<Deferred>,
     pending: &Pending,
 ) -> Result<(), ActionError> {
+    let ticks = if pending.index == 0 {
+        pending.recipe.first_ticks
+    } else {
+        pending.recipe.cycle_ticks
+    };
     queues
         .add(
             QUEUE,
             crate::queues::Category::Weak,
-            i32::from(pending.request.ticks) + 1,
+            i32::from(ticks) + 1,
             Deferred::FacilityCrafting(pending.clone()),
         )
         .map_err(|_| ActionError::QueueFull)
@@ -187,12 +189,12 @@ pub(super) fn complete(
     {
         return;
     }
-    let Some(&slot) = pending.slots.get(pending.index) else {
+    let Some(slots) = pending.groups.get(pending.index) else {
         return;
     };
-    match crate::facility_crafting::prepare(
+    match crate::facility_crafting::prepare_group(
         pending.recipe,
-        slot,
+        slots,
         &p.data.inventory,
         catalog,
         &p.data.stats,
@@ -200,7 +202,7 @@ pub(super) fn complete(
         p.member,
     ) {
         Err(error) => {
-            refusal(p.id, error, events);
+            refusal(p.id, error, pending.request.action, events);
             return;
         }
         Ok((inventory, stats, advanced)) => {
@@ -226,12 +228,15 @@ pub(super) fn complete(
             }
             events.push(WorldEvent::GameMessage {
                 actor: p.id,
-                text: format!("You spin the {}.", pending.recipe.label),
+                text: format!(
+                    "You {} the {}.",
+                    pending.request.action, pending.recipe.label
+                ),
             });
         }
     }
     pending.index += 1;
-    if !p.pending_logout && pending.index < pending.slots.len() {
+    if !p.pending_logout && pending.index < pending.groups.len() {
         if let Err(error) = enqueue(queues, &pending) {
             events.push(WorldEvent::ActionRejected { actor: p.id, error });
         } else {
@@ -242,7 +247,11 @@ pub(super) fn complete(
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::{facility_crafting::Recipe, inventory::Item, loc_collision::LocCollision};
+    use crate::{
+        facility_crafting::{Config, Recipe},
+        inventory::Item,
+        loc_collision::LocCollision,
+    };
     struct NoDraw;
     impl RandomSource for NoDraw {
         fn below(&mut self, _: u32) -> u32 {
@@ -268,30 +277,40 @@ mod tests {
         w.locations.load(loc);
         crate::loc_collision::toggle(&mut w.collision, loc.coords, loc.shape, loc.angle, ty, true)
             .unwrap();
-        w.facility_crafting = Some(Config {
-            locations: [(14889, 2)].into(),
-            recipes: std::sync::Arc::new(vec![
-                Recipe {
-                    input: 1737,
-                    output: 1759,
-                    level: 1,
-                    xp_tenths: 25,
-                    members: false,
-                    label: "ball of wool",
-                },
-                Recipe {
-                    input: 1779,
-                    output: 1777,
-                    level: 10,
-                    xp_tenths: 150,
-                    members: true,
-                    label: "bow string",
-                },
-            ]),
-            ticks: 3,
-            animation: 894,
-            location_animation: Some(466),
-        });
+        w.facility_crafting.insert(
+            14889,
+            Config {
+                locations: [(14889, 2)].into(),
+                recipes: std::sync::Arc::new(vec![
+                    Recipe {
+                        input: 1737,
+                        input_count: 1,
+                        first_ticks: 3,
+                        cycle_ticks: 3,
+                        output: 1759,
+                        level: 1,
+                        xp_tenths: 25,
+                        members: false,
+                        label: "ball of wool",
+                    },
+                    Recipe {
+                        input: 1779,
+                        input_count: 1,
+                        first_ticks: 3,
+                        cycle_ticks: 3,
+                        output: 1777,
+                        level: 10,
+                        xp_tenths: 150,
+                        members: true,
+                        label: "bow string",
+                    },
+                ]),
+                action: "spin",
+                empty_message: "No suitable materials.",
+                animation: 894,
+                location_animation: Some(466),
+            },
+        );
         let mut stats = Stats::default();
         stats.set_base(3, 10);
         stats.set_current(3, 10);
@@ -517,6 +536,209 @@ mod tests {
             );
             for _ in 0..12 {
                 w.tick_with_random(&mut NoDraw).unwrap();
+            }
+            assert_eq!(
+                (
+                    w.data(a).unwrap().inventory.clone(),
+                    w.data(a).unwrap().stats.clone()
+                ),
+                before,
+                "case{case}"
+            );
+        }
+    }
+}
+#[cfg(test)]
+mod grouped_tests {
+    use super::*;
+    use crate::{
+        facility_crafting::{Config, Recipe},
+        inventory::Item,
+        loc_collision::LocCollision,
+    };
+    fn fixture(basket: bool) -> (World, ActorId, Location, Request) {
+        let mut w = World::default();
+        for x in (3192..3224).step_by(8) {
+            for z in (3192..3224).step_by(8) {
+                w.collision.allocate(x, z, 0);
+            }
+        }
+        let loc = Location::new(CoordGrid::new(3201, 3200, 0).unwrap(), 8717, 10, 0).unwrap();
+        let ty = LocCollision {
+            width: 1,
+            length: 1,
+            block_walk: 2,
+            block_range: true,
+            break_route_finding: false,
+        };
+        w.location_types.insert(8717, ty);
+        w.locations.load(loc);
+        crate::loc_collision::toggle(&mut w.collision, loc.coords, loc.shape, loc.angle, ty, true)
+            .unwrap();
+        let recipe = Recipe {
+            input: if basket { 5933 } else { 1759 },
+            input_count: if basket { 6 } else { 4 },
+            output: if basket { 5376 } else { 3224 },
+            level: if basket { 36 } else { 10 },
+            xp_tenths: if basket { 560 } else { 120 },
+            members: true,
+            first_ticks: 4,
+            cycle_ticks: 3,
+            label: if basket { "basket" } else { "strip of cloth" },
+        };
+        w.facility_crafting.insert(
+            8717,
+            Config {
+                locations: [(8717, 2)].into(),
+                recipes: std::sync::Arc::new(vec![recipe]),
+                action: "weave",
+                empty_message: "No suitable materials.",
+                animation: 2270,
+                location_animation: None,
+            },
+        );
+        let mut stats = Stats::default();
+        stats.set_base(3, 10);
+        stats.set_current(3, 10);
+        stats.set_base(12, 36);
+        stats.set_current(12, 36);
+        let mut data = PlayerData::new(
+            1,
+            "Weaver".into(),
+            CoordGrid::new(3200, 3200, 0).unwrap(),
+            stats,
+        );
+        data.xp_rate_hundreds = 125;
+        for slot in 0..28 {
+            data.inventory
+                .restore_slot(
+                    slot,
+                    Some(Item {
+                        id: if slot < 12 { recipe.input } else { 1511 },
+                        count: 1,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+        }
+        w.held_use_types.insert(
+            recipe.input,
+            crate::held_use::Type {
+                id: recipe.input,
+                content: -1,
+            },
+        );
+        w.queue_login(1, data).unwrap();
+        w.tick().unwrap();
+        let a = w.actors().next().unwrap();
+        w.set_membership(a, true).unwrap();
+        w.drain_events();
+        w.submit(
+            a,
+            Action::UseLocation {
+                coords: loc.coords,
+                id: 8717,
+                slot: 11,
+                object: recipe.input,
+                control: false,
+            },
+        )
+        .unwrap();
+        w.tick().unwrap();
+        let req = w
+            .drain_events()
+            .into_iter()
+            .find_map(|e| {
+                if let WorldEvent::FacilityCraftingRequested { request, .. } = e {
+                    Some(request)
+                } else {
+                    None
+                }
+            })
+            .unwrap();
+        assert_eq!(req.selected, Some((11, recipe.input)));
+        assert_eq!(
+            req.available(&w.data(a).unwrap().inventory),
+            if basket { 2 } else { 3 }
+        );
+        (w, a, loc, req)
+    }
+    #[test]
+    fn loom_actual_material_route_captures_whole_groups_and_uses_first_four_then_three() {
+        for basket in [false, true] {
+            let (mut w, a, _, req) = fixture(basket);
+            let start = w.clock.0;
+            let groups = req
+                .groups(req.recipes[0], &w.data(a).unwrap().inventory, 28)
+                .unwrap();
+            assert_eq!(groups[0][0], 11);
+            assert_eq!(groups[0].len(), if basket { 6 } else { 4 });
+            w.start_facility_crafting(a, req, 0, 28).unwrap();
+            let mut commits = Vec::new();
+            let mut old = 0;
+            for _ in 0..13 {
+                w.tick().unwrap();
+                let fine = w.data(a).unwrap().stats.fine_xp(12);
+                if fine != old {
+                    commits.push(w.clock.0 - 1);
+                    old = fine;
+                }
+            }
+            assert_eq!(
+                commits,
+                if basket {
+                    vec![start + 4, start + 7]
+                } else {
+                    vec![start + 4, start + 7, start + 10]
+                }
+            );
+            assert_eq!(old, if basket { 1400 } else { 450 });
+            assert_eq!(
+                w.data(a).unwrap().inventory.free_space(),
+                if basket { 10 } else { 9 }
+            );
+        }
+    }
+    #[test]
+    fn loom_missing_part_of_later_group_or_failed_credit_never_takes_partial_materials() {
+        for case in 0..4 {
+            let (mut w, a, loc, req) = fixture(false);
+            w.start_facility_crafting(a, req, 0, 3).unwrap();
+            for _ in 0..5 {
+                w.tick().unwrap();
+            }
+            assert_eq!(w.data(a).unwrap().stats.fine_xp(12), 150);
+            match case {
+                0 => {
+                    let inv = &mut w.data_mut(a).unwrap().inventory;
+                    inv.restore_slot(4, None).unwrap();
+                    inv.restore_slot(
+                        27,
+                        Some(Item {
+                            id: 1759,
+                            count: 1,
+                            vars: 0,
+                        }),
+                    )
+                    .unwrap();
+                }
+                1 => {
+                    w.object_types.dummy.insert(3224);
+                }
+                2 => {
+                    w.locations.delete(loc);
+                    w.locations.add(loc).unwrap();
+                }
+                _ => {
+                    w.close_dialogs(a).unwrap();
+                }
+            }
+            let before = (
+                w.data(a).unwrap().inventory.clone(),
+                w.data(a).unwrap().stats.clone(),
+            );
+            for _ in 0..13 {
+                w.tick().unwrap();
             }
             assert_eq!(
                 (

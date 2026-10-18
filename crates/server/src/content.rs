@@ -2,6 +2,8 @@
 use gielinor_cache::{game::Definitions, symbols::Symbols};
 use gielinor_world::food::{self, Edible};
 use std::collections::BTreeMap;
+mod weaving_loom;
+pub use weaving_loom::weaving_loom;
 mod spinning_wheel;
 pub use spinning_wheel::spinning_wheel;
 mod soft_clay_mixing;

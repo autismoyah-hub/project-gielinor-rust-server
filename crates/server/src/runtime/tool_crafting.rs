@@ -123,7 +123,7 @@ impl<B: AccountBackend> Runtime<B> {
             return Ok(());
         }
         let dialog = Dialog {
-            title: "What would you like to spin?".into(),
+            title: format!("What would you like to {}?", request.action),
             options: request
                 .recipes
                 .iter()

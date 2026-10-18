@@ -70,6 +70,9 @@ pub fn spinning_wheel(
         recipes: std::sync::Arc::new(vec![
             Recipe {
                 input: 1737,
+                input_count: 1,
+                first_ticks: 3,
+                cycle_ticks: 3,
                 output: 1759,
                 level: 1,
                 xp_tenths: 25,
@@ -78,6 +81,9 @@ pub fn spinning_wheel(
             },
             Recipe {
                 input: 1779,
+                input_count: 1,
+                first_ticks: 3,
+                cycle_ticks: 3,
                 output: 1777,
                 level: 10,
                 xp_tenths: 150,
@@ -86,6 +92,9 @@ pub fn spinning_wheel(
             },
             Recipe {
                 input: 9436,
+                input_count: 1,
+                first_ticks: 3,
+                cycle_ticks: 3,
                 output: 9438,
                 level: 10,
                 xp_tenths: 150,
@@ -94,6 +103,9 @@ pub fn spinning_wheel(
             },
             Recipe {
                 input: 6043,
+                input_count: 1,
+                first_ticks: 3,
+                cycle_ticks: 3,
                 output: 9438,
                 level: 10,
                 xp_tenths: 150,
@@ -102,6 +114,9 @@ pub fn spinning_wheel(
             },
             Recipe {
                 input: 6051,
+                input_count: 1,
+                first_ticks: 3,
+                cycle_ticks: 3,
                 output: 6038,
                 level: 19,
                 xp_tenths: 300,
@@ -110,6 +125,9 @@ pub fn spinning_wheel(
             },
             Recipe {
                 input: 10814,
+                input_count: 1,
+                first_ticks: 3,
+                cycle_ticks: 3,
                 output: 954,
                 level: 30,
                 xp_tenths: 250,
@@ -117,7 +135,8 @@ pub fn spinning_wheel(
                 label: "rope",
             },
         ]),
-        ticks: 3,
+        action: "spin",
+        empty_message: "You don't have anything suitable to spin at this spinning wheel.",
         animation: 894,
         location_animation: Some(466),
     })
