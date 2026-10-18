@@ -774,6 +774,10 @@ pub fn configure<B: AccountBackend>(
     for recipe in crate::content::crab_carving(n("obj"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
         runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.exchange.tool,recipe.exchange.input,gielinor_world::held_use::Handler::ToolCraftingChoices{recipes:std::sync::Arc::new(vec![recipe]),cycle_ticks:3}).map_err(|e|io::Error::other(format!("Crab carving registration: {e:?}")))?;
     }
+    for (recipes,cycle_ticks) in crate::content::costume_needle_leather(n("obj"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
+        let input=recipes[0].exchange.input;
+        runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,29920,input,gielinor_world::held_use::Handler::ToolCraftingChoices{recipes:std::sync::Arc::new(recipes),cycle_ticks}).map_err(|e|io::Error::other(format!("Costume needle leather registration: {e:?}")))?;
+    }
     let pheasant=crate::content::pheasant_costume(n("obj"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)?;
     runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,29920,28624,gielinor_world::held_use::Handler::ToolCraftingCountedChoices{recipes:std::sync::Arc::new(pheasant),cycle_ticks:3,input_count:15}).map_err(|e|io::Error::other(format!("Pheasant costume registration: {e:?}")))?;
     let finishes=crate::content::crafting_finishes(n("obj"),n("stat"),&runtime.definitions).map_err(io::Error::other)?;
