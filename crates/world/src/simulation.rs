@@ -2538,16 +2538,7 @@ impl World {
                                                     self.events.push(WorldEvent::LocationMessage{actor:p.id,message:crate::assembly::outcome_message(outcome)});
                                                 }
                                                 Deferred::Assembly(pending) => {
-                                                    let job = pending.job;
-                                                    let (outcome, advancement) = job.complete_awarding(&mut p.data.inventory, &self.object_types, &mut p.data.stats, p.data.xp_rate_hundreds, p.member);
-                                                    if let Some(advancement) = advancement {
-                                                        self.events.push(WorldEvent::SkillAdvanced { actor: p.id, skill: job.recipe.skill, advancement });
-                                                    }
-                                                    if outcome == crate::assembly::Outcome::Made {
-                                                        self.events.push(WorldEvent::AssemblyMade { actor: p.id, trace: crate::assembly::Transition { job, queued_at: pending.queued_at, committed_at: self.clock.0 } });
-                                                    }
-                                                    let message=crate::assembly::outcome_message(outcome);
-                                                    self.events.push(WorldEvent::LocationMessage {actor:p.id,message});
+                                                    held_use_actions::complete_assembly(p,pending.job,&self.object_types,pending.queued_at,self.clock.0,&mut self.events);
                                                 }
                                                 Deferred::Smithing(job) => {
                                                     if let Some(config) = self.smithing {

@@ -28,6 +28,7 @@ pub struct Preparation {
 pub enum Handler {
     AssemblyBatch(std::sync::Arc<crate::assembly::BatchRecipe>),
     Assembly(crate::assembly::Recipe),
+    AssemblyImmediate(crate::assembly::Recipe),
     AssemblyTimed {
         recipe: crate::assembly::Recipe,
         ticks: u8,

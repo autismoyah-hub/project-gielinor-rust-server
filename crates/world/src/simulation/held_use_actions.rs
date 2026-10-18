@@ -149,6 +149,12 @@ impl World {
             }
         }
         match handler {
+            Some(Handler::AssemblyImmediate(recipe)) => {
+                let (first_slot,second_slot)=if request.selected_id==recipe.first {(request.selected_slot as usize,request.target_slot as usize)}else{(request.target_slot as usize,request.selected_slot as usize)};
+                let job=crate::assembly::Job{recipe,first_slot,second_slot};
+                let p=self.players.get_mut(actor.slot as usize).unwrap();
+                complete_assembly(p,job,&self.object_types,self.clock.0,self.clock.0,&mut self.events);
+            }
             Some(Handler::AssemblyBatch(recipe)) => {
                 let p=self.players.get_mut(actor.slot as usize).unwrap();
                 if recipe.members && !p.member {self.events.push(WorldEvent::LocationMessage{actor,message:"You need to be a member to make that item."});return Ok(());}
@@ -179,7 +185,7 @@ impl World {
                 if i32::from(p.data.stats.current(recipe.skill)) < i32::from(recipe.level) {
                     self.events.push(WorldEvent::LocationMessage {
                         actor,
-                        message: "You need a higher Cooking level to make that.",
+                        message: crate::assembly::level_message(recipe.skill),
                     });
                     return Ok(());
                 }
@@ -789,4 +795,12 @@ mod assembly_tests {
         }
     }
 
+}
+
+/// Shared result publication for immediate and delayed selected-pair assembly.
+pub(super) fn complete_assembly(p:&mut Player,job:crate::assembly::Job,items:&crate::inventory::Catalog,queued_at:i32,clock:i32,events:&mut Vec<WorldEvent>){
+    let (outcome,advancement)=job.complete_awarding(&mut p.data.inventory,items,&mut p.data.stats,p.data.xp_rate_hundreds,p.member);
+    if let Some(advancement)=advancement {events.push(WorldEvent::SkillAdvanced{actor:p.id,skill:job.recipe.skill,advancement});}
+    if outcome==crate::assembly::Outcome::Made {events.push(WorldEvent::AssemblyMade{actor:p.id,trace:crate::assembly::Transition{job,queued_at,committed_at:clock}});}
+    events.push(WorldEvent::LocationMessage{actor:p.id,message:crate::assembly::outcome_message_for_skill(outcome,job.recipe.skill)});
 }

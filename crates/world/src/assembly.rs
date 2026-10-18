@@ -480,6 +480,9 @@ impl BatchTransition {
     }
 }
 
+/// Admission and completion use the recipe's actual skill without changing legacy Cooking text.
+pub fn level_message(skill:u8)->&'static str {match skill {7=>"You need a higher Cooking level to make that.",12=>"You need a higher Crafting level to make that.",13=>"You need a higher Smithing level to make that.",_=>"You need a higher skill level to make that."}}
+pub fn outcome_message_for_skill(outcome:Outcome,skill:u8)->&'static str {if outcome==Outcome::Level {level_message(skill)}else{outcome_message(outcome)}}
 pub fn outcome_message(outcome: Outcome) -> &'static str {
     match outcome {
         Outcome::Made => "You combine the ingredients.",

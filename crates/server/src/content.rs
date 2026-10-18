@@ -2,6 +2,8 @@
 use gielinor_cache::{game::Definitions, symbols::Symbols};
 use gielinor_world::food::{self, Edible};
 use std::collections::BTreeMap;
+mod godsword_assembly;
+pub use godsword_assembly::godsword_attachments;
 mod amulet_stringing;
 pub use amulet_stringing::amulet_stringing;
 mod snelm_carving;
