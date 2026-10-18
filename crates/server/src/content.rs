@@ -8,6 +8,8 @@ mod light_sources;
 pub use light_sources::light_sources;
 mod prospector_outfit;
 pub use prospector_outfit::prospector_outfit;
+mod imcando_worn_swaps;
+pub use imcando_worn_swaps::imcando_worn_swaps;
 mod imcando_held_swaps;
 pub use imcando_held_swaps::imcando_held_swaps;
 mod sbott_tanning;

@@ -241,6 +241,7 @@ pub mod tutorial_steps;
 pub mod tutorial_survival;
 mod tutorial_survival_text;
 pub mod tutorial_woodcutting;
+pub mod worn_item_swap;
 pub mod wearpos;
 
 pub mod anvil;

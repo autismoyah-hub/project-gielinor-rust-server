@@ -26,6 +26,7 @@ mod melee_actions;
 mod movement_actions;
 pub use movement_actions::MovementInput;
 mod elemental_spell_actions;
+mod worn_item_swap_actions;
 mod container_emptying_actions;
 mod item_pack_actions;
 mod milking_actions;
@@ -516,6 +517,7 @@ pub enum Action {
         item: i32,
     },
     OpenItemPack { slot: usize, item: i32 },
+    SwapWornItem { slot: usize, item: i32 },
     ConvertHeldItem { slot: usize, item: i32 },
     EmptyContainer { slot: usize, item: i32 },
     OpenCoinPouch { slot: usize, item: i32, all: bool },
@@ -935,6 +937,7 @@ pub struct World {
     pub herb_cleaning: Option<crate::herb_cleaning::Config>,
     pub item_packs: BTreeMap<i32, crate::item_packs::Rule>,
     /// Legacy field name; this single registry also owns ordinary light extinguishing.
+    pub worn_item_swaps: BTreeMap<i32,crate::worn_item_swap::Rule>,
     pub empty_containers: BTreeMap<i32,crate::container_emptying::Rule>,
     pub coin_pouches: BTreeMap<i32,crate::item_packs::PouchRule>,
     pub prayer: Option<crate::prayer::Config>,
@@ -1043,6 +1046,7 @@ impl Default for World {
             slot_preserving_foods: Default::default(),
             potions: BTreeMap::new(),
             item_packs: BTreeMap::new(),
+            worn_item_swaps: BTreeMap::new(),
             empty_containers: BTreeMap::new(),
             coin_pouches: BTreeMap::new(),
             milking: None,
@@ -1991,6 +1995,7 @@ impl World {
                     .map_err(|_| ActionError::InvalidItem)?;
             }
             Action::OpenItemPack { slot, item } => self.open_item_pack(id, slot, item)?,
+            Action::SwapWornItem { slot, item } => self.swap_worn_item(id,slot,item)?,
             Action::ConvertHeldItem { slot, item } => self.convert_held_item(id,slot,item)?,
             Action::EmptyContainer { slot, item } => self.empty_container(id,slot,item)?,
             Action::OpenCoinPouch { slot, item, all } => self.open_coin_pouch(id,slot,item,all)?,

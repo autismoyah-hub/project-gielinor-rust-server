@@ -17,6 +17,7 @@ mod anvil;
 mod autocast_picker;
 mod dialogue;
 mod drop_dialog;
+mod equipment_buttons;
 mod chemistry_dialog;
 mod location_target;
 mod mining;
@@ -2532,6 +2533,7 @@ impl<B: AccountBackend> Runtime<B> {
                                     } else if button.op == 2 {
                                         self.worn_components.get(&button.component).and_then(|&slot| {
                                             let item=self.world.data(actor).ok()?.equipment.get(slot)?;
+                                            if equipment_buttons::worn_item_claim_matches(&button,item.id) && self.world.worn_item_swaps.get(&item.id).is_some_and(|r|r.from_slot==slot && r.button_operation==button.op) {return Some(Action::SwapWornItem{slot,item:item.id});}
                                             (slot==2 && chemistry_dialog::worn_item_claim_matches(&button,item.id) && self.world.finished_potions.as_ref().is_some_and(|c|c.chemistry.values().any(|b|b.amulet==item.id))).then_some(Action::ChemistryItem{slot,item:item.id,operation:4,worn:true})
                                         })
                                     } else if button.op == 1 {

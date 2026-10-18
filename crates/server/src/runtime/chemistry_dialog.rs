@@ -32,9 +32,7 @@ impl<B:AccountBackend> Runtime<B>{
 
 // Static worn buttons use nullable child/object fields; the mapped component and
 // current equipment remain authoritative. Explicit stale item claims still fail.
-pub(super) fn worn_item_claim_matches(button:&gielinor_protocol::buttons::Button,item:i32)->bool {
-    button.slot == -1 && (button.object == -1 || button.object == item)
-}
+pub(super) use super::equipment_buttons::worn_item_claim_matches;
 #[cfg(test)]
 mod tests {
     use super::*;
