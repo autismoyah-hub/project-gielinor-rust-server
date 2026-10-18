@@ -46,6 +46,8 @@ pub fn accursed_upgrade(
         }
     }
     Ok(PreciseRecipe {
+        required_tools: &[],
+        tool_animation: None,
         recipe: Recipe {
             first: 27673,
             second: 22552,

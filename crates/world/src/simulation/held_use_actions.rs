@@ -180,10 +180,10 @@ impl World {
                 self.start_grinding(actor,recipe,tool_slot,input_slot)?;
             }
             Some(Handler::Assembly(recipe)) | Some(Handler::AssemblyTimed{recipe,..}) | Some(Handler::AssemblyPrecise(crate::assembly::PreciseRecipe{recipe,..})) => {
-                let (ticks,xp_tenths,animation,spot)=match handler {
-                    Some(Handler::AssemblyPrecise(r))=>(r.ticks,Some(r.xp_tenths),r.animation,r.spot),
-                    Some(Handler::AssemblyTimed{ticks,..})=>(ticks,None,None,None),
-                    _=>(2,None,None,None),
+                let (ticks,xp_tenths,animation,spot,required_tools)=match handler {
+                    Some(Handler::AssemblyPrecise(r))=>{let p=self.player(actor)?;(r.ticks,Some(r.xp_tenths),r.animation_for(&p.data.inventory,&p.data.equipment,&self.object_types),r.spot,r.required_tools)},
+                    Some(Handler::AssemblyTimed{ticks,..})=>(ticks,None,None,None,&[][..]),
+                    _=>(2,None,None,None,&[][..]),
                 };
                 if ticks==0 {return Err(ActionError::InvalidItem);}
 
@@ -198,6 +198,9 @@ impl World {
                         message: crate::assembly::level_message(recipe.skill),
                     });
                     return Ok(());
+                }
+                if !crate::assembly::tools_available(required_tools,&p.data.inventory,&p.data.equipment,&self.object_types) {
+                    self.events.push(WorldEvent::LocationMessage{actor,message:crate::assembly::outcome_message(crate::assembly::Outcome::Tools)});return Ok(());
                 }
                 let (first_slot, second_slot) = if request.selected_id == recipe.first {
                     (request.selected_slot as usize, request.target_slot as usize)
@@ -216,6 +219,7 @@ impl World {
                             job: crate::assembly::Job { recipe, first_slot, second_slot },
                             queued_at: self.clock.0,
                             xp_tenths,
+                            required_tools,
                         }),
                     )
                     .map_err(|_| ActionError::QueueFull)?;
@@ -815,10 +819,13 @@ pub(super) fn complete_assembly(p:&mut Player,job:crate::assembly::Job,items:&cr
     complete_assembly_reward(p,job,items,queued_at,clock,None,events);
 }
 pub(super) fn complete_assembly_reward(p:&mut Player,job:crate::assembly::Job,items:&crate::inventory::Catalog,queued_at:i32,clock:i32,xp_tenths:Option<u16>,events:&mut Vec<WorldEvent>)->crate::assembly::Outcome{
-    let (outcome,advancement)=match xp_tenths {
+    complete_assembly_reward_with_tools(p,job,items,queued_at,clock,xp_tenths,&[],events)
+}
+pub(super) fn complete_assembly_reward_with_tools(p:&mut Player,job:crate::assembly::Job,items:&crate::inventory::Catalog,queued_at:i32,clock:i32,xp_tenths:Option<u16>,required_tools:&[crate::assembly::ToolRequirement],events:&mut Vec<WorldEvent>)->crate::assembly::Outcome{
+    let (outcome,advancement)=if !crate::assembly::tools_available(required_tools,&p.data.inventory,&p.data.equipment,items){(crate::assembly::Outcome::Tools,None)}else{match xp_tenths {
         Some(xp)=>job.complete_awarding_tenths(&mut p.data.inventory,items,&mut p.data.stats,p.data.xp_rate_hundreds,p.member,xp),
         None=>job.complete_awarding(&mut p.data.inventory,items,&mut p.data.stats,p.data.xp_rate_hundreds,p.member),
-    };
+    }};
     if let Some(advancement)=advancement {events.push(WorldEvent::SkillAdvanced{actor:p.id,skill:job.recipe.skill,advancement});}
     if outcome==crate::assembly::Outcome::Made {events.push(WorldEvent::AssemblyMade{actor:p.id,trace:crate::assembly::Transition{job,queued_at,committed_at:clock}});}
     events.push(WorldEvent::LocationMessage{actor:p.id,message:crate::assembly::outcome_message_for_skill(outcome,job.recipe.skill)});

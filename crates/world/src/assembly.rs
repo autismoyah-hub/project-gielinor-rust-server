@@ -31,6 +31,7 @@ pub enum Outcome {
     Capacity,
     InvalidReward,
     Members,
+    Tools,
 }
 impl Job {
     /// Commit inventory and skill advancement together. Failed credit, stale
@@ -328,6 +329,7 @@ pub(crate) struct Pending {
     pub job: Job,
     pub queued_at: i32,
     pub xp_tenths: Option<u16>,
+    pub required_tools: &'static [ToolRequirement],
 }
 /// Registry-owned manual assembly metadata. `xp_tenths` is authoritative;
 /// `recipe.base_xp` belongs only to the unchanged legacy integer-XP API.
@@ -338,6 +340,8 @@ pub struct PreciseRecipe {
     pub ticks: u8,
     pub animation: Option<u16>,
     pub spot: Option<u16>,
+    pub required_tools: &'static [ToolRequirement],
+    pub tool_animation: Option<(ToolRequirement, u16)>,
 }
 #[derive(Clone, Copy, Debug)]
 pub struct Transition {
@@ -590,6 +594,7 @@ pub fn outcome_message_for_skill(outcome: Outcome, skill: u8) -> &'static str {
 pub fn outcome_message(outcome: Outcome) -> &'static str {
     match outcome {
         Outcome::Made => "You combine the ingredients.",
+        Outcome::Tools => "You don't have all the required tools.",
         Outcome::Level => "You need a higher Cooking level to make that.",
         Outcome::Stale => "You no longer have those ingredients in the selected slots.",
         Outcome::Capacity => "You don't have enough inventory space to make that.",
@@ -689,5 +694,49 @@ mod batch_tests {
                 assert_eq!((inv, stats), before);
             }
         }
+    }
+}
+
+/// Durable alternatives can be carried or explicitly allowed in worn slots.
+#[derive(Clone, Copy, Debug)]
+pub struct ToolRequirement {
+    pub inventory: &'static [i32],
+    pub worn: &'static [i32],
+}
+impl ToolRequirement {
+    pub fn available(self, inv: &Inventory, worn: &Inventory, cat: &Catalog) -> bool {
+        let ordinary = |id| {
+            id >= 0
+                && !cat.stackable.contains(&id)
+                && !cat.dummy.contains(&id)
+                && !cat.notes.get(&id).is_some_and(|t| t.template != 0)
+                && !cat.placeholders.get(&id).is_some_and(|t| t.template != 0)
+                && !cat.transforms.get(&id).is_some_and(|t| t.template != 0)
+        };
+        let holds = |items: &Inventory, id| {
+            ordinary(id)
+                && items
+                    .slots()
+                    .iter()
+                    .flatten()
+                    .any(|i| i.id == id && i.count == 1 && i.vars == 0)
+        };
+        self.inventory.iter().any(|&id| holds(inv, id))
+            || self.worn.iter().any(|&id| holds(worn, id))
+    }
+}
+pub fn tools_available(
+    tools: &[ToolRequirement],
+    inv: &Inventory,
+    worn: &Inventory,
+    cat: &Catalog,
+) -> bool {
+    tools.iter().all(|tool| tool.available(inv, worn, cat))
+}
+impl PreciseRecipe {
+    pub fn animation_for(self, inv: &Inventory, worn: &Inventory, cat: &Catalog) -> Option<u16> {
+        self.tool_animation
+            .and_then(|(tool, sequence)| tool.available(inv, worn, cat).then_some(sequence))
+            .or(self.animation)
     }
 }

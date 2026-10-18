@@ -107,6 +107,8 @@ pub fn battlestaff_assembly(
             return Err(format!("Missing/aliased battlestaff spot {spot_symbol}"));
         }
         out.push(PreciseRecipe {
+            required_tools: &[],
+            tool_animation: None,
             recipe: Recipe {
                 first: 1391,
                 second: orb,

@@ -751,13 +751,13 @@ pub fn configure<B: AccountBackend>(
         runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.exchange.tool,recipe.exchange.input,gielinor_world::held_use::Handler::ToolCraftingChoices{recipes:std::sync::Arc::new(vec![recipe]),cycle_ticks:3}).map_err(|e|io::Error::other(format!("Shell carving registration: {e:?}")))?;
     }
     for recipe in crate::content::amulet_stringing(n("obj"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
-        runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.first,recipe.second,gielinor_world::held_use::Handler::AssemblyProduction{recipe:gielinor_world::assembly::PreciseRecipe{recipe,xp_tenths:40,ticks:1,animation:None,spot:None},cycle_ticks:2}).map_err(|e|io::Error::other(format!("Amulet stringing registration: {e:?}")))?;
+        runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.first,recipe.second,gielinor_world::held_use::Handler::AssemblyProduction{recipe:gielinor_world::assembly::PreciseRecipe{required_tools:&[],tool_animation:None,recipe,xp_tenths:40,ticks:1,animation:None,spot:None},cycle_ticks:2}).map_err(|e|io::Error::other(format!("Amulet stringing registration: {e:?}")))?;
     }
     for recipe in crate::content::godsword_attachments(n("obj"),&runtime.definitions).map_err(io::Error::other)? {
         runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.first,recipe.second,gielinor_world::held_use::Handler::AssemblyImmediate(recipe)).map_err(|e|io::Error::other(format!("Godsword attachment registration: {e:?}")))?;
     }
     for recipe in crate::content::ordinary_stringing(n("obj"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
-        runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.first,recipe.second,gielinor_world::held_use::Handler::AssemblyProduction{recipe:gielinor_world::assembly::PreciseRecipe{recipe,xp_tenths:40,ticks:1,animation:None,spot:None},cycle_ticks:2}).map_err(|e|io::Error::other(format!("Ordinary stringing registration: {e:?}")))?;
+        runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.first,recipe.second,gielinor_world::held_use::Handler::AssemblyProduction{recipe:gielinor_world::assembly::PreciseRecipe{required_tools:&[],tool_animation:None,recipe,xp_tenths:40,ticks:1,animation:None,spot:None},cycle_ticks:2}).map_err(|e|io::Error::other(format!("Ordinary stringing registration: {e:?}")))?;
     }
     for recipe in crate::content::fallible_gems(n("obj"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
         runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.exchange.tool,recipe.exchange.input,gielinor_world::held_use::Handler::ToolCraftingChoices{recipes:std::sync::Arc::new(vec![recipe]),cycle_ticks:2}).map_err(|e|io::Error::other(format!("Semiprecious gem registration: {e:?}")))?;
@@ -781,6 +781,9 @@ pub fn configure<B: AccountBackend>(
     runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,1755,21347,gielinor_world::held_use::Handler::ToolCraftingChoices{recipes:std::sync::Arc::new(amethyst),cycle_ticks:2}).map_err(|e|io::Error::other(format!("Amethyst cutting registration: {e:?}")))?;
     for recipe in crate::content::soft_clay_mixing(n("obj"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
         runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.inputs[0],recipe.inputs[1],gielinor_world::held_use::Handler::AssemblyBatch(std::sync::Arc::new(recipe))).map_err(|e|io::Error::other(format!("Soft clay mixing registration: {e:?}")))?;
+    }
+    for recipe in crate::content::birdhouses(n("obj"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
+        runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.recipe.first,recipe.recipe.second,gielinor_world::held_use::Handler::AssemblyProduction{recipe,cycle_ticks:3}).map_err(|e|io::Error::other(format!("Birdhouse registration: {e:?}")))?;
     }
     for light in crate::content::light_sources(n("obj"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
         let recipe=light.light;

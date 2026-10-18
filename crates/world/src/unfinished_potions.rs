@@ -87,7 +87,7 @@ impl Job {
         match job.complete_awarding(inv, catalog, stats, 500, member).0 {
             assembly::Outcome::Made => Outcome::Made,
             assembly::Outcome::Level => Outcome::Level,
-            assembly::Outcome::Stale => Outcome::Stale,
+            assembly::Outcome::Stale | assembly::Outcome::Tools => Outcome::Stale,
             assembly::Outcome::Capacity => Outcome::Capacity,
             assembly::Outcome::Members => Outcome::Members,
             assembly::Outcome::InvalidReward => unreachable!("unfinished potions grant no XP"),

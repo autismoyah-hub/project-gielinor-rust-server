@@ -2,6 +2,8 @@
 use gielinor_cache::{game::Definitions, symbols::Symbols};
 use gielinor_world::food::{self, Edible};
 use std::collections::BTreeMap;
+mod birdhouses;
+pub use birdhouses::birdhouses;
 mod light_sources;
 pub use light_sources::light_sources;
 mod accursed_upgrade;

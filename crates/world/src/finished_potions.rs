@@ -149,7 +149,7 @@ impl Job {
         {
             assembly::Outcome::Made => (),
             assembly::Outcome::Capacity => return Outcome::Capacity,
-            assembly::Outcome::Stale => return Outcome::Stale,
+            assembly::Outcome::Stale | assembly::Outcome::Tools => return Outcome::Stale,
             assembly::Outcome::Level => return Outcome::Level,
             assembly::Outcome::Members => return Outcome::Members,
             assembly::Outcome::InvalidReward => return Outcome::InvalidReward,

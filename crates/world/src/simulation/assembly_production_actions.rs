@@ -25,6 +25,18 @@ impl World {
             });
             return Ok(());
         }
+        if !crate::assembly::tools_available(
+            recipe.required_tools,
+            &p.data.inventory,
+            &p.data.equipment,
+            &self.object_types,
+        ) {
+            self.events.push(WorldEvent::LocationMessage {
+                actor,
+                message: crate::assembly::outcome_message(crate::assembly::Outcome::Tools),
+            });
+            return Ok(());
+        }
         self.players
             .get_mut(actor.slot as usize)
             .unwrap()
@@ -70,6 +82,18 @@ impl World {
             .jobs(&p.data.inventory, count as usize)
             .ok_or(ActionError::InvalidItem)?;
         let first = *jobs.first().ok_or(ActionError::InvalidItem)?;
+        if !crate::assembly::tools_available(
+            request.recipe.required_tools,
+            &p.data.inventory,
+            &p.data.equipment,
+            &self.object_types,
+        ) {
+            self.events.push(WorldEvent::LocationMessage {
+                actor,
+                message: crate::assembly::outcome_message(crate::assembly::Outcome::Tools),
+            });
+            return Ok(());
+        }
         let mut inventory = p.data.inventory.clone();
         let mut stats = p.data.stats.clone();
         let (outcome, _) = first.complete_awarding_tenths(
@@ -101,7 +125,12 @@ impl World {
             &pending,
             i32::from(pending.request.recipe.ticks),
         )?;
-        animate(actor, pending.request.recipe, &mut self.events);
+        animate(
+            p,
+            pending.request.recipe,
+            &self.object_types,
+            &mut self.events,
+        );
         Ok(())
     }
 }
@@ -119,8 +148,14 @@ fn enqueue(
         )
         .map_err(|_| ActionError::QueueFull)
 }
-fn animate(actor: ActorId, recipe: crate::assembly::PreciseRecipe, events: &mut Vec<WorldEvent>) {
-    if let Some(sequence) = recipe.animation {
+fn animate(
+    p: &Player,
+    recipe: crate::assembly::PreciseRecipe,
+    items: &crate::inventory::Catalog,
+    events: &mut Vec<WorldEvent>,
+) {
+    let actor = p.id;
+    if let Some(sequence) = recipe.animation_for(&p.data.inventory, &p.data.equipment, items) {
         events.push(WorldEvent::PlayerCombatAnimation { actor, sequence });
     }
     if let Some(spot) = recipe.spot {
@@ -157,13 +192,14 @@ pub(super) fn complete(
     let Some(&job) = pending.jobs.get(pending.index) else {
         return;
     };
-    let outcome = super::held_use_actions::complete_assembly_reward(
+    let outcome = super::held_use_actions::complete_assembly_reward_with_tools(
         p,
         job,
         items,
         pending.queued_at,
         clock,
         Some(pending.request.recipe.xp_tenths),
+        pending.request.recipe.required_tools,
         events,
     );
     if outcome != crate::assembly::Outcome::Made || p.pending_logout {
@@ -178,7 +214,7 @@ pub(super) fn complete(
                 error: ActionError::QueueFull,
             });
         } else {
-            animate(p.id, pending.request.recipe, events);
+            animate(p, pending.request.recipe, items, events);
         }
     }
 }
@@ -249,6 +285,8 @@ mod tests {
             w.held_use_types.insert(id, Type { id, content: -1 });
         }
         let recipe = PreciseRecipe {
+            required_tools: &[],
+            tool_animation: None,
             recipe: Recipe {
                 first,
                 second,

@@ -2563,7 +2563,7 @@ impl World {
                                                 Deferred::FacilityCrafting(pending) => {let revision=self.locations.revision(pending.request.location);facility_crafting_actions::complete(p,queues,pending,&self.object_types,revision,self.tutorial_rules_completed_varp.is_some(),&mut self.events,random);}
                                                 Deferred::AssemblyProduction(pending) => {assembly_production_actions::complete(p,queues,pending,&self.object_types,self.clock.0,&mut self.events);}
                                                 Deferred::Assembly(pending) => {
-                                                    held_use_actions::complete_assembly_reward(p,pending.job,&self.object_types,pending.queued_at,self.clock.0,pending.xp_tenths,&mut self.events);
+                                                    held_use_actions::complete_assembly_reward_with_tools(p,pending.job,&self.object_types,pending.queued_at,self.clock.0,pending.xp_tenths,pending.required_tools,&mut self.events);
                                                 }
                                                 Deferred::Smithing(job) => {
                                                     if let Some(config) = self.smithing {
