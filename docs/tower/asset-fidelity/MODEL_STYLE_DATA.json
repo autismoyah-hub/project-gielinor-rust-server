@@ -1,0 +1,332 @@
+{
+  "armor": {
+    "samples": 2,
+    "records": [
+      {
+        "selector": "item:1115:worn",
+        "vertices": 162,
+        "faces": 272,
+        "width_height": 1.2413793103448276,
+        "depth_height": 0.6379310344827587,
+        "median_triangle_area": 41.892720131306824
+      },
+      {
+        "selector": "item:1141:worn",
+        "vertices": 64,
+        "faces": 88,
+        "width_height": 0.75,
+        "depth_height": 0.875,
+        "median_triangle_area": 14.142135623730951
+      }
+    ],
+    "interpretation": "Descriptions of this sample; not universal hard limits or artistic acceptance thresholds"
+  },
+  "shield": {
+    "samples": 2,
+    "records": [
+      {
+        "selector": "item:1175",
+        "vertices": 20,
+        "faces": 36,
+        "width_height": 3.7,
+        "depth_height": 5.3,
+        "median_triangle_area": 193.76274151652584
+      },
+      {
+        "selector": "item:1191",
+        "vertices": 32,
+        "faces": 60,
+        "width_height": 3.4545454545454546,
+        "depth_height": 4.454545454545454,
+        "median_triangle_area": 103.31505214633539
+      }
+    ],
+    "interpretation": "Descriptions of this sample; not universal hard limits or artistic acceptance thresholds"
+  },
+  "weapon": {
+    "samples": 2,
+    "records": [
+      {
+        "selector": "item:1277",
+        "vertices": 29,
+        "faces": 42,
+        "width_height": 2.6,
+        "depth_height": 15.6,
+        "median_triangle_area": 12.5
+      },
+      {
+        "selector": "item:1279",
+        "vertices": 29,
+        "faces": 42,
+        "width_height": 2.6,
+        "depth_height": 15.6,
+        "median_triangle_area": 12.5
+      }
+    ],
+    "interpretation": "Descriptions of this sample; not universal hard limits or artistic acceptance thresholds"
+  },
+  "creature": {
+    "samples": 4,
+    "records": [
+      {
+        "selector": "npc:1173",
+        "vertices": 203,
+        "faces": 410,
+        "width_height": 0.6771653543307087,
+        "depth_height": 0.937007874015748,
+        "median_triangle_area": 28.231188426986208
+      },
+      {
+        "selector": "npc:2790",
+        "vertices": 475,
+        "faces": 946,
+        "width_height": 0.5333333333333333,
+        "depth_height": 1.6533333333333333,
+        "median_triangle_area": 45.8530260724415
+      },
+      {
+        "selector": "npc:2854",
+        "vertices": 72,
+        "faces": 141,
+        "width_height": 1.3846153846153846,
+        "depth_height": 4.923076923076923,
+        "median_triangle_area": 6.164414002968976
+      },
+      {
+        "selector": "npc:3019",
+        "vertices": 154,
+        "faces": 299,
+        "width_height": 0.5858585858585859,
+        "depth_height": 0.494949494949495,
+        "median_triangle_area": 10.5
+      }
+    ],
+    "interpretation": "Descriptions of this sample; not universal hard limits or artistic acceptance thresholds"
+  },
+  "humanoid": {
+    "samples": 4,
+    "records": [
+      {
+        "selector": "npc:26",
+        "vertices": 442,
+        "faces": 888,
+        "width_height": 0.6428571428571429,
+        "depth_height": 0.20535714285714285,
+        "median_triangle_area": 28.605069480775605
+      },
+      {
+        "selector": "npc:3106",
+        "vertices": 292,
+        "faces": 536,
+        "width_height": 0.3465346534653465,
+        "depth_height": 0.16336633663366337,
+        "median_triangle_area": 35.174564673923115
+      },
+      {
+        "selector": "npc:655",
+        "vertices": 936,
+        "faces": 1910,
+        "width_height": 1.2088607594936709,
+        "depth_height": 0.6012658227848101,
+        "median_triangle_area": 16.1245154965971
+      },
+      {
+        "selector": "npc:70",
+        "vertices": 450,
+        "faces": 840,
+        "width_height": 0.6434782608695652,
+        "depth_height": 0.27391304347826084,
+        "median_triangle_area": 31.052375110448477
+      }
+    ],
+    "interpretation": "Descriptions of this sample; not universal hard limits or artistic acceptance thresholds"
+  },
+  "environment_detail": {
+    "samples": 2,
+    "records": [
+      {
+        "selector": "object:11020",
+        "vertices": 629,
+        "faces": 992,
+        "width_height": 0.453125,
+        "depth_height": 0.453125,
+        "median_triangle_area": 42.14558102577303
+      },
+      {
+        "selector": "object:325",
+        "vertices": 24,
+        "faces": 18,
+        "width_height": 11.75,
+        "depth_height": 10.5,
+        "median_triangle_area": 61.18823416311342
+      }
+    ],
+    "interpretation": "Descriptions of this sample; not universal hard limits or artistic acceptance thresholds"
+  },
+  "architecture": {
+    "samples": 6,
+    "records": [
+      {
+        "selector": "object:1868",
+        "vertices": 194,
+        "faces": 260,
+        "width_height": 0.7236842105263158,
+        "depth_height": 0.19736842105263158,
+        "median_triangle_area": 400.0
+      },
+      {
+        "selector": "object:2106",
+        "vertices": 234,
+        "faces": 54,
+        "width_height": 0.2231638418079096,
+        "depth_height": 0.3615819209039548,
+        "median_triangle_area": 336.0
+      },
+      {
+        "selector": "object:6010",
+        "vertices": 38,
+        "faces": 30,
+        "width_height": 0.32,
+        "depth_height": 0.32,
+        "median_triangle_area": 2048.0
+      },
+      {
+        "selector": "object:6098",
+        "vertices": 90,
+        "faces": 114,
+        "width_height": 0.55,
+        "depth_height": 0.5333333333333333,
+        "median_triangle_area": 320.0
+      },
+      {
+        "selector": "object:6143",
+        "vertices": 69,
+        "faces": 105,
+        "width_height": 0.3055555555555556,
+        "depth_height": 0.8888888888888888,
+        "median_triangle_area": 97.32420048477151
+      },
+      {
+        "selector": "object:7016",
+        "vertices": 112,
+        "faces": 214,
+        "width_height": 0.5333333333333333,
+        "depth_height": 0.5333333333333333,
+        "median_triangle_area": 379.09893167879017
+      }
+    ],
+    "interpretation": "Descriptions of this sample; not universal hard limits or artistic acceptance thresholds"
+  },
+  "animated_object": {
+    "samples": 3,
+    "records": [
+      {
+        "selector": "object:5589",
+        "vertices": 152,
+        "faces": 348,
+        "width_height": 0.9748110831234257,
+        "depth_height": 0.31738035264483627,
+        "median_triangle_area": 605.0
+      },
+      {
+        "selector": "object:11010",
+        "vertices": 836,
+        "faces": 1320,
+        "width_height": 0.6335078534031413,
+        "depth_height": 0.680628272251309,
+        "median_triangle_area": 104.31802337084422
+      },
+      {
+        "selector": "object:13560",
+        "vertices": 315,
+        "faces": 470,
+        "width_height": 0.5628140703517588,
+        "depth_height": 1.2964824120603016,
+        "median_triangle_area": 46.03531253288067
+      }
+    ],
+    "interpretation": "Descriptions of this sample; not universal hard limits or artistic acceptance thresholds"
+  },
+  "geology": {
+    "samples": 2,
+    "records": [
+      {
+        "selector": "object:6000",
+        "vertices": 27,
+        "faces": 34,
+        "width_height": 0.5333333333333333,
+        "depth_height": 0.5333333333333333,
+        "median_triangle_area": 1186.2141459281288
+      },
+      {
+        "selector": "object:6147",
+        "vertices": 42,
+        "faces": 76,
+        "width_height": 0.35555555555555557,
+        "depth_height": 0.35555555555555557,
+        "median_triangle_area": 3561.2582046237535
+      }
+    ],
+    "interpretation": "Descriptions of this sample; not universal hard limits or artistic acceptance thresholds"
+  },
+  "furniture": {
+    "samples": 4,
+    "records": [
+      {
+        "selector": "object:6062",
+        "vertices": 98,
+        "faces": 133,
+        "width_height": 0.30303030303030304,
+        "depth_height": 1.0606060606060606,
+        "median_triangle_area": 49.5
+      },
+      {
+        "selector": "object:6155",
+        "vertices": 66,
+        "faces": 68,
+        "width_height": 0.2914285714285714,
+        "depth_height": 0.72,
+        "median_triangle_area": 650.0
+      },
+      {
+        "selector": "object:6195",
+        "vertices": 71,
+        "faces": 129,
+        "width_height": 0.6851851851851852,
+        "depth_height": 0.6111111111111112,
+        "median_triangle_area": 160.0
+      },
+      {
+        "selector": "object:6196",
+        "vertices": 32,
+        "faces": 50,
+        "width_height": 1.5324675324675325,
+        "depth_height": 1.5324675324675325,
+        "median_triangle_area": 490.0
+      }
+    ],
+    "interpretation": "Descriptions of this sample; not universal hard limits or artistic acceptance thresholds"
+  },
+  "industrial": {
+    "samples": 2,
+    "records": [
+      {
+        "selector": "object:6150",
+        "vertices": 45,
+        "faces": 72,
+        "width_height": 1.921875,
+        "depth_height": 0.5,
+        "median_triangle_area": 143.10835055998655
+      },
+      {
+        "selector": "object:6189",
+        "vertices": 136,
+        "faces": 158,
+        "width_height": 1.4666666666666666,
+        "depth_height": 1.5333333333333334,
+        "median_triangle_area": 328.125
+      }
+    ],
+    "interpretation": "Descriptions of this sample; not universal hard limits or artistic acceptance thresholds"
+  }
+}

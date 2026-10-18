@@ -1,0 +1,1020 @@
+[
+  {
+    "selector": "item:1115:worn",
+    "name": "Iron platebody",
+    "model_ids": [
+      306,
+      164
+    ],
+    "definition_sha256": "33f673e766ca5d896a5e9944b04d920d3ff58fe0bfe80c2d7abc415eca102da4",
+    "source_payload_hashes": [
+      "42e3f676a836a4553702d2999a1d27c99f68276dc5a22f874b74cd785d9b855b",
+      "36cc7ba922ac29e27e2f864d0a26a9435f20f171d48c01ecdef87723ff34f45c"
+    ],
+    "vertices": 162,
+    "faces": 272,
+    "textures": 0,
+    "sequences": {},
+    "bounds": [
+      [
+        -36.0,
+        -168.0,
+        -18.0
+      ],
+      [
+        36.0,
+        -110.0,
+        19.0
+      ]
+    ],
+    "report": "item-1115-worn.json"
+  },
+  {
+    "selector": "item:1141:worn",
+    "name": "Steel med helm",
+    "model_ids": [
+      219
+    ],
+    "definition_sha256": "0acff2ceebd95174017802a10e8fb2f852112ef718ed1f2f8633d9b259b3e5ba",
+    "source_payload_hashes": [
+      "48914917040246751e0d4dec910ad71833fed3e463531d2a6064b36cf42ddcd2"
+    ],
+    "vertices": 64,
+    "faces": 88,
+    "textures": 0,
+    "sequences": {},
+    "bounds": [
+      [
+        -12.0,
+        -196.0,
+        -21.0
+      ],
+      [
+        12.0,
+        -164.0,
+        7.0
+      ]
+    ],
+    "report": "item-1141-worn.json"
+  },
+  {
+    "selector": "item:1175",
+    "name": "Iron sq shield",
+    "model_ids": [
+      2720
+    ],
+    "definition_sha256": "88de08f8c29b3eb0301120d79e375b70b2691729ff211c6d7e6998a2ce61d91e",
+    "source_payload_hashes": [
+      "3f8bc0d4fde92e4b3ddf83234e5e7fad6a590d1978e29e5d939a75c2dfb56915"
+    ],
+    "vertices": 20,
+    "faces": 36,
+    "textures": 0,
+    "sequences": {},
+    "bounds": [
+      [
+        -38.0,
+        -19.0,
+        -61.0
+      ],
+      [
+        36.0,
+        1.0,
+        45.0
+      ]
+    ],
+    "report": "item-1175.json"
+  },
+  {
+    "selector": "item:1191",
+    "name": "Iron kiteshield",
+    "model_ids": [
+      2339
+    ],
+    "definition_sha256": "acc7b4a71abf2f5c39c15cd11b736d2e5931f1d4ca8a904a69567d3d6b8d955c",
+    "source_payload_hashes": [
+      "4c106b113511484743106efbcf3e024420e027a3da16e67dd88fe885e525c6c3"
+    ],
+    "vertices": 32,
+    "faces": 60,
+    "textures": 0,
+    "sequences": {},
+    "bounds": [
+      [
+        -40.0,
+        -15.0,
+        -57.0
+      ],
+      [
+        36.0,
+        7.0,
+        41.0
+      ]
+    ],
+    "report": "item-1191.json"
+  },
+  {
+    "selector": "item:1277",
+    "name": "Bronze sword",
+    "model_ids": [
+      2604
+    ],
+    "definition_sha256": "57234e7e853b4b611c9cb815b495c5a54e35ee2ecc51e8ac338f908a22370564",
+    "source_payload_hashes": [
+      "980319bf6f88328302bdd4303eac1cc84abe084d34f02c3832b2c40c61415c03"
+    ],
+    "vertices": 29,
+    "faces": 42,
+    "textures": 0,
+    "sequences": {},
+    "bounds": [
+      [
+        -5.0,
+        -5.0,
+        -45.0
+      ],
+      [
+        8.0,
+        0.0,
+        33.0
+      ]
+    ],
+    "report": "item-1277.json"
+  },
+  {
+    "selector": "item:1279",
+    "name": "Iron sword",
+    "model_ids": [
+      2604
+    ],
+    "definition_sha256": "07665cb59802b346df988170bccac74f0fa3b4d51f3caa5c2fa6400f45397297",
+    "source_payload_hashes": [
+      "980319bf6f88328302bdd4303eac1cc84abe084d34f02c3832b2c40c61415c03"
+    ],
+    "vertices": 29,
+    "faces": 42,
+    "textures": 0,
+    "sequences": {},
+    "bounds": [
+      [
+        -5.0,
+        -5.0,
+        -45.0
+      ],
+      [
+        8.0,
+        0.0,
+        33.0
+      ]
+    ],
+    "report": "item-1279.json"
+  },
+  {
+    "selector": "npc:1173",
+    "name": "Chicken",
+    "model_ids": [
+      23905
+    ],
+    "definition_sha256": "373958886ff95f46a2a6e3a54cdee6a184d9ffd8e1fbc71db58e1373de1ac190",
+    "source_payload_hashes": [
+      "3cedca1135841e584667497c6446dfbacabc74805851ada0a4c2cebeaeadf358"
+    ],
+    "vertices": 203,
+    "faces": 410,
+    "textures": 0,
+    "sequences": {
+      "idle": 5386,
+      "walk": 5385
+    },
+    "bounds": [
+      [
+        -42.0,
+        -127.0,
+        -63.0
+      ],
+      [
+        44.0,
+        0.0,
+        56.0
+      ]
+    ],
+    "report": "npc-1173.json"
+  },
+  {
+    "selector": "npc:26",
+    "name": "Zombie",
+    "model_ids": [
+      21104,
+      21057,
+      21037,
+      21086,
+      21113,
+      21073,
+      21140
+    ],
+    "definition_sha256": "93090da0a18a28c7cc0fa5bc7b3db2b68bf52b5cbdc2b8273ab3051f554062e9",
+    "source_payload_hashes": [
+      "e70b87af81be9a909c881d4f28f10d505ee3803bb78e6c6729c71681d986338a",
+      "e2828d1f4ce15d6b77c3cc9167f1c7ca28ea6ee6788e1ae66395a006e4fc59e9",
+      "abd5c727ba761303d9ca12c54e7454e70d80251a16ee35d6e8e3cc8bb40644f8",
+      "f6f520e294e77e5f620d1c96a8f05c1125c7b8b5d744f9e6a1f79606c5b1095f",
+      "146ab83c9f61e116b78a527ac44ddb5801feb6cd1cad7ca9b54d3c5e6ea5a3ae",
+      "e56282ba047b9a8ea7e1d5695cdacb746f0b3f2bc2b1cc474d0028390f25d4f1",
+      "fe22f8089a9ea246ae663a5bcf2a8bba7c845ec0ada5016b5de58a081347e428"
+    ],
+    "vertices": 442,
+    "faces": 888,
+    "textures": 0,
+    "sequences": {
+      "idle": 5565,
+      "walk": 5566
+    },
+    "bounds": [
+      [
+        -72.0,
+        -224.0,
+        -31.0
+      ],
+      [
+        72.0,
+        0.0,
+        15.0
+      ]
+    ],
+    "report": "npc-26.json"
+  },
+  {
+    "selector": "npc:2790",
+    "name": "Cow",
+    "model_ids": [
+      23889
+    ],
+    "definition_sha256": "37b689f8f8912265fda03ac2af39f06dfc87418a48fc1ce55fa23cfc2fb5809a",
+    "source_payload_hashes": [
+      "8f5b5ae8e53fd5738c403271e0e344da7494a020591e10a8de375286a5c10eb2"
+    ],
+    "vertices": 475,
+    "faces": 946,
+    "textures": 0,
+    "sequences": {
+      "idle": 5852,
+      "walk": 5848
+    },
+    "bounds": [
+      [
+        -40.0,
+        -150.0,
+        -125.0
+      ],
+      [
+        40.0,
+        0.0,
+        123.0
+      ]
+    ],
+    "report": "npc-2790.json"
+  },
+  {
+    "selector": "npc:2854",
+    "name": "Rat",
+    "model_ids": [
+      9610
+    ],
+    "definition_sha256": "1667bd385bd8b18b94760cdbe48c185262e00c619eab3ab74d66024c753fc98a",
+    "source_payload_hashes": [
+      "3d39fabdb4d836992a90cc330e813151e3bb829d74011bb451f636b0f96e2b23"
+    ],
+    "vertices": 72,
+    "faces": 141,
+    "textures": 0,
+    "sequences": {
+      "idle": 2704,
+      "walk": 2703
+    },
+    "bounds": [
+      [
+        -9.0,
+        -12.0,
+        -28.0
+      ],
+      [
+        9.0,
+        1.0,
+        36.0
+      ]
+    ],
+    "report": "npc-2854.json"
+  },
+  {
+    "selector": "npc:3019",
+    "name": "Spider",
+    "model_ids": [
+      24613
+    ],
+    "definition_sha256": "166adf87c662374dc6501bcd05dd1c45b51bba7c57583aaacb432ce2ae193e2d",
+    "source_payload_hashes": [
+      "9227570d850ce383f2a3e0322d826bf270bddcca113e0e80eb572d5b7fc78599"
+    ],
+    "vertices": 154,
+    "faces": 299,
+    "textures": 0,
+    "sequences": {
+      "idle": 6247,
+      "walk": 6248
+    },
+    "bounds": [
+      [
+        -29.0,
+        -96.0,
+        -18.0
+      ],
+      [
+        29.0,
+        3.0,
+        31.0
+      ]
+    ],
+    "report": "npc-3019.json"
+  },
+  {
+    "selector": "npc:3106",
+    "name": "Man",
+    "model_ids": [
+      215,
+      246,
+      28515,
+      326,
+      26632,
+      177,
+      12138,
+      181
+    ],
+    "definition_sha256": "5ded579ddde6ab994490fc63ea2590346cd65d6f3741bb977e480677f63c76aa",
+    "source_payload_hashes": [
+      "da48b524be716eee90a6aa62ab5351811d49856054eb94800a0b3ff8b2778214",
+      "0142f11fe723d1841570f638af021dea7833c585d183b96d8dd13b194381cb12",
+      "d4c82ce90419a4daead878dc9c62bba8b46e6158f36281ea1cfc4103ff8487c1",
+      "80c16bc27fff0ed0f64d38dbd5dedb9fcf47589dc47bdce697603e93ecfbe66a",
+      "bc07205f38846d77fd060a1a4a7402a8a4feb97375d3bcf843402a9e73f868f8",
+      "43d891cf64b9cb7ae62e41cb6344fbfc7ae6f74aa479e2189297ba58d25e959c",
+      "046774abdb1e2572823400325c111bb537f9fbcd08ddd93444b538974369d05f",
+      "4cc8b2579b1a718cdc247a44ec62b8896d9c90a8179ad60a1fea316eac80641a"
+    ],
+    "vertices": 292,
+    "faces": 536,
+    "textures": 0,
+    "sequences": {
+      "idle": 808,
+      "walk": 819
+    },
+    "bounds": [
+      [
+        -35.0,
+        -196.0,
+        -20.0
+      ],
+      [
+        35.0,
+        6.0,
+        13.0
+      ]
+    ],
+    "report": "npc-3106.json"
+  },
+  {
+    "selector": "npc:655",
+    "name": "Goblin",
+    "model_ids": [
+      24433,
+      24443,
+      24450,
+      24464,
+      24476,
+      24484,
+      24502,
+      24506
+    ],
+    "definition_sha256": "407032aa79a75b3e09b7d91858949fef3738e772d864631937cd4672489f7c5a",
+    "source_payload_hashes": [
+      "655996c77ec56445e0617be29291d9a22003840aa321c978a7f5522ce4d94df3",
+      "732265721f00a038a39e054d7b085600910a8bd434ec16cbb3d72a766e7e9355",
+      "81856625f4c420c3b3151b57d245bad9665cf619074fa22dc134c6d3eeef8ae2",
+      "99cdf541a66341f66215024fddfac4fdc86f468652d8c6250d3c0d4dd95c25c5",
+      "540f3e468c838200f6e5c848d57509bbbb8a677427cd1a2320847e18b66f51b3",
+      "a952e59b6c6caeeec004f76d15d0328180446fe7e7661b11b4c1deea6e43d739",
+      "e67cc47423bcecf9d4baaacee81995b4477fccf1a5b56fdc6dd035aef0e1b304",
+      "5e19a3332b626aa7d26c2d57dc42e5ad9ad50fd4b067c05bc564e9c1f486ff55"
+    ],
+    "vertices": 936,
+    "faces": 1910,
+    "textures": 0,
+    "sequences": {
+      "idle": 6181,
+      "walk": 6180
+    },
+    "bounds": [
+      [
+        -81.0,
+        -158.0,
+        -68.0
+      ],
+      [
+        110.0,
+        0.0,
+        27.0
+      ]
+    ],
+    "report": "npc-655.json"
+  },
+  {
+    "selector": "npc:70",
+    "name": "Skeleton",
+    "model_ids": [
+      21175,
+      21160,
+      21157,
+      21182,
+      21201,
+      21187
+    ],
+    "definition_sha256": "705fd9b0d5a9b8a7a858277d6afe162697f74edfbb7ef2bf2387bf67577ddaa4",
+    "source_payload_hashes": [
+      "6191679297b9f556468c10de7a1905e90748333837cdcd308c7253248e025a8c",
+      "1bac106ebf18943e6bf880b9b4ec99796ac225464cfa7c5940f14249d1723170",
+      "f6dc262ce1d8a4b15d073e36d6ecd6a31ef9c34c4fed540336ced1096e6dff68",
+      "fe5f160e5f777992b363e01bfc113bcd104d6b3ad6ae5dee169a7c5586aa1ed3",
+      "4c5c31ce06db24398e374efeb20e59cbfa60c3b0507d7c38b6e6f944ab281ab8",
+      "f69de812636f92a57b3e41261cb05999a577d78afd1c00b06337c4c6c36989e7"
+    ],
+    "vertices": 450,
+    "faces": 840,
+    "textures": 0,
+    "sequences": {
+      "idle": 5483,
+      "walk": 5481
+    },
+    "bounds": [
+      [
+        -69.0,
+        -230.0,
+        -24.0
+      ],
+      [
+        79.0,
+        0.0,
+        39.0
+      ]
+    ],
+    "report": "npc-70.json"
+  },
+  {
+    "selector": "object:11010",
+    "name": "Furnace",
+    "model_ids": [
+      10996,
+      11000,
+      10997,
+      10999
+    ],
+    "definition_sha256": "3a4fd24f05b278adbd4979d5982945a6018b7552c046ca04e6481ab9831110a5",
+    "source_payload_hashes": [
+      "470b3d30052e6088f7ace50968fb8f9bd51bdfb81a2e8132361304a1d224a87b",
+      "c3d47eaece58b2ebd7a0d9fc060128dcb5779b845df0d5d363c9df8446464d17",
+      "d76275137ac89cac05499412b24df5fd9c3390b065b85a68ca7af64eb2540816",
+      "b7b54b8e97e831d88fe40a01e9bda42690a3d49f40cc4e162c01997f1ca4fa06"
+    ],
+    "vertices": 836,
+    "faces": 1320,
+    "textures": 0,
+    "sequences": {
+      "object": 3106
+    },
+    "bounds": [
+      [
+        -123.0,
+        -382.0,
+        -132.0
+      ],
+      [
+        119.0,
+        0.0,
+        128.0
+      ]
+    ],
+    "report": "object-11010.json"
+  },
+  {
+    "selector": "object:11020",
+    "name": "Brazier",
+    "model_ids": [
+      10991,
+      10994,
+      10995
+    ],
+    "definition_sha256": "41d82e54e85288fc0803a5c4981deecae55bc4e3d3dca08538ce6731303f87af",
+    "source_payload_hashes": [
+      "1f0859795208e59663104d1469b9874046957f36a575f6c7548da927c8da0698",
+      "9a5cda841ea966a8a904e645d0e68c5282e83d7fe2c4ec3937227c1d1993fc44",
+      "3099924be366e729f8b547ae8ba0e8b0f6df077eb97ea57a7a8b61b2d968b440"
+    ],
+    "vertices": 629,
+    "faces": 992,
+    "textures": 0,
+    "sequences": {},
+    "bounds": [
+      [
+        -44.0,
+        -192.0,
+        -43.0
+      ],
+      [
+        43.0,
+        0.0,
+        44.0
+      ]
+    ],
+    "report": "object-11020.json"
+  },
+  {
+    "selector": "object:13560",
+    "name": "Pump and drain",
+    "model_ids": [
+      13219,
+      13218
+    ],
+    "definition_sha256": "b7b8316bcc9d4f5de12ab452b9d3d7ad5e2229599bfff531af4294d9217abadb",
+    "source_payload_hashes": [
+      "9a410b3a469e9e00569071278754aea59e7c774b6a74d82ce402e5b83171bb34",
+      "fa5d859307508895f8bad17be7b49c298dbfc68fbf1feed8f15b503395e96344"
+    ],
+    "vertices": 315,
+    "faces": 470,
+    "textures": 0,
+    "sequences": {
+      "object": 3720
+    },
+    "bounds": [
+      [
+        -48.0,
+        -199.0,
+        -130.0
+      ],
+      [
+        64.0,
+        0.0,
+        128.0
+      ]
+    ],
+    "report": "object-13560.json"
+  },
+  {
+    "selector": "object:1868",
+    "name": "null",
+    "model_ids": [
+      1486
+    ],
+    "definition_sha256": "89fd491177e96131c83385730bf7533898fa1f034e20fb58c8ba96c38f86c10d",
+    "source_payload_hashes": [
+      "bfadd2f3f325508de90b99f9a8ab178e32a4d500962d8fa8a963299e2cbdbb6d"
+    ],
+    "vertices": 194,
+    "faces": 260,
+    "textures": 92,
+    "sequences": {},
+    "bounds": [
+      [
+        -110.0,
+        -304.0,
+        -30.0
+      ],
+      [
+        110.0,
+        0.0,
+        30.0
+      ]
+    ],
+    "report": "object-1868.json"
+  },
+  {
+    "selector": "object:2106",
+    "name": "Archway",
+    "model_ids": [
+      5118
+    ],
+    "definition_sha256": "050d1f05ad6de169b801fc9a1a264df51aca8df909cbb92160870de090dc8ca4",
+    "source_payload_hashes": [
+      "e67bdbbc97b5dc86d2da194a1c45b12665e12ef1edc3243bbd3b96f28119b29a"
+    ],
+    "vertices": 234,
+    "faces": 54,
+    "textures": 0,
+    "sequences": {},
+    "bounds": [
+      [
+        -128.0,
+        -354.0,
+        -64.0
+      ],
+      [
+        -49.0,
+        0.0,
+        64.0
+      ]
+    ],
+    "report": "object-2106.json"
+  },
+  {
+    "selector": "object:325",
+    "name": "null",
+    "model_ids": [
+      1139
+    ],
+    "definition_sha256": "f5cd17c1f1240ea93e5e6b043df670bb34a751c82dcc0c28f6bb2cf4ac783615",
+    "source_payload_hashes": [
+      "b07dd126d65654b5c3c8274ff3452fcf95ccecb3bdcb5a0862484f8b46640d7f"
+    ],
+    "vertices": 24,
+    "faces": 18,
+    "textures": 0,
+    "sequences": {},
+    "bounds": [
+      [
+        -48.0,
+        -8.0,
+        -48.0
+      ],
+      [
+        46.0,
+        0.0,
+        36.0
+      ]
+    ],
+    "report": "object-325.json"
+  },
+  {
+    "selector": "object:5589",
+    "name": "Water wheel",
+    "model_ids": [
+      5516
+    ],
+    "definition_sha256": "9a8d09a0500e514b9c614aa14a59f324a2c4872eba6b18a94941ed68863ed594",
+    "source_payload_hashes": [
+      "5053e98cc0a00ffff88af9aad871e9475783260ca80ace6160109c58f8f3165b"
+    ],
+    "vertices": 152,
+    "faces": 348,
+    "textures": 0,
+    "sequences": {
+      "object": 1729
+    },
+    "bounds": [
+      [
+        -194.0,
+        -407.0,
+        -63.0
+      ],
+      [
+        193.0,
+        -10.0,
+        63.0
+      ]
+    ],
+    "report": "object-5589.json"
+  },
+  {
+    "selector": "object:6000",
+    "name": "null",
+    "model_ids": [
+      5855
+    ],
+    "definition_sha256": "578f4b0db2fef37c2653971edcdd54f69ed8f964ef4fb0fd069c5ee8d5e98ac7",
+    "source_payload_hashes": [
+      "fb98ba07dd35496def1930bc384cbd8cab03a677a993232f39997f0635c42444"
+    ],
+    "vertices": 27,
+    "faces": 34,
+    "textures": 0,
+    "sequences": {},
+    "bounds": [
+      [
+        -64.0,
+        -240.0,
+        -64.0
+      ],
+      [
+        64.0,
+        0.0,
+        64.0
+      ]
+    ],
+    "report": "object-6000.json"
+  },
+  {
+    "selector": "object:6010",
+    "name": "null",
+    "model_ids": [
+      5874
+    ],
+    "definition_sha256": "c29e7b47292b64d5e9a94747c5bd2ddb9ec4dccd9a4f88bf1f029677a912dd46",
+    "source_payload_hashes": [
+      "086732cb8b6b6a297b986f5a523794913c22a0c305e3d00baa04c32467f15188"
+    ],
+    "vertices": 38,
+    "faces": 30,
+    "textures": 0,
+    "sequences": {},
+    "bounds": [
+      [
+        -64.0,
+        -240.0,
+        -64.0
+      ],
+      [
+        64.0,
+        160.0,
+        64.0
+      ]
+    ],
+    "report": "object-6010.json"
+  },
+  {
+    "selector": "object:6062",
+    "name": "null",
+    "model_ids": [
+      5968
+    ],
+    "definition_sha256": "02925039e74104242148c88422bd53d084a143e296a7d595d8f55405e290cb34",
+    "source_payload_hashes": [
+      "175a0606b8a913f575ac6c41be66d7b6967bca8074712d7aaa0186dfdbdd1b3a"
+    ],
+    "vertices": 98,
+    "faces": 133,
+    "textures": 0,
+    "sequences": {},
+    "bounds": [
+      [
+        -64.0,
+        -159.0,
+        -53.0
+      ],
+      [
+        -34.0,
+        -60.0,
+        52.0
+      ]
+    ],
+    "report": "object-6062.json"
+  },
+  {
+    "selector": "object:6098",
+    "name": "null",
+    "model_ids": [
+      5884
+    ],
+    "definition_sha256": "aefacf28863f9c0fbafcddbe2dff5bc5eabb6313d4da169e0b5f97d07ee8de42",
+    "source_payload_hashes": [
+      "c62b6e0a3e96aa136565e62d133c9d02226c101ed2537d33f3f3c5b39f955e7a"
+    ],
+    "vertices": 90,
+    "faces": 114,
+    "textures": 0,
+    "sequences": {},
+    "bounds": [
+      [
+        -68.0,
+        -239.0,
+        -64.0
+      ],
+      [
+        64.0,
+        1.0,
+        64.0
+      ]
+    ],
+    "report": "object-6098.json"
+  },
+  {
+    "selector": "object:6143",
+    "name": "null",
+    "model_ids": [
+      5895
+    ],
+    "definition_sha256": "5b198fe1cf017cfc4e30e6d692505ded5cc9381d5bf0c8b37715102ff96c6560",
+    "source_payload_hashes": [
+      "9411249ea61ab9580906a3a448ee36fc3a505058b8a0b966ac47d69ec34f5174"
+    ],
+    "vertices": 69,
+    "faces": 105,
+    "textures": 0,
+    "sequences": {},
+    "bounds": [
+      [
+        -64.0,
+        -144.0,
+        -64.0
+      ],
+      [
+        -20.0,
+        0.0,
+        64.0
+      ]
+    ],
+    "report": "object-6143.json"
+  },
+  {
+    "selector": "object:6147",
+    "name": "Column",
+    "model_ids": [
+      727
+    ],
+    "definition_sha256": "335e06c68a5019205b2eb3fda14e6aa8ba3a060c2cca996569937014007cdfb6",
+    "source_payload_hashes": [
+      "fa854d61e19ab0497a22a6c76bff16f173b601a64195779fc37b769474731f9a"
+    ],
+    "vertices": 42,
+    "faces": 76,
+    "textures": 0,
+    "sequences": {},
+    "bounds": [
+      [
+        -128.0,
+        -720.0,
+        -128.0
+      ],
+      [
+        128.0,
+        0.0,
+        128.0
+      ]
+    ],
+    "report": "object-6147.json"
+  },
+  {
+    "selector": "object:6150",
+    "name": "Anvil",
+    "model_ids": [
+      5918
+    ],
+    "definition_sha256": "448b1ea4b499ee08a20edccccf69d9f3a048a67cf121ae5a27e5e82b623a9e42",
+    "source_payload_hashes": [
+      "e11703131cb49c42f838e9598460bf69254ee5286625d20e7bce9e734933a16b"
+    ],
+    "vertices": 45,
+    "faces": 72,
+    "textures": 0,
+    "sequences": {},
+    "bounds": [
+      [
+        -60.0,
+        -64.0,
+        -16.0
+      ],
+      [
+        63.0,
+        0.0,
+        16.0
+      ]
+    ],
+    "report": "object-6150.json"
+  },
+  {
+    "selector": "object:6155",
+    "name": "Shelves",
+    "model_ids": [
+      2133
+    ],
+    "definition_sha256": "b2c5762333cf2917817a4dd513c77f13177726046fb3ee903746d136ee9e6f65",
+    "source_payload_hashes": [
+      "c5bd65bfcf2390575f5cb2303ac4d2931b51faac68cd8b706f23af81b355364c"
+    ],
+    "vertices": 66,
+    "faces": 68,
+    "textures": 0,
+    "sequences": {},
+    "bounds": [
+      [
+        -61.0,
+        -175.0,
+        -63.0
+      ],
+      [
+        -10.0,
+        0.0,
+        63.0
+      ]
+    ],
+    "report": "object-6155.json"
+  },
+  {
+    "selector": "object:6189",
+    "name": "Furnace",
+    "model_ids": [
+      1192
+    ],
+    "definition_sha256": "a99291d46ee973d601a7f71a48f8914f8954cbea61f708be27c1e0109b8c202a",
+    "source_payload_hashes": [
+      "6784054c56811ecc8910328b3898a7ba6b5fbe34cc2dd8f4f62323f1bb35fdea"
+    ],
+    "vertices": 136,
+    "faces": 158,
+    "textures": 0,
+    "sequences": {},
+    "bounds": [
+      [
+        -110.0,
+        -150.0,
+        -120.0
+      ],
+      [
+        110.0,
+        0.0,
+        110.0
+      ]
+    ],
+    "report": "object-6189.json"
+  },
+  {
+    "selector": "object:6195",
+    "name": "Chair",
+    "model_ids": [
+      5934
+    ],
+    "definition_sha256": "66cfaddf21400d2e6b1871833fa49de80c5ae46e94e8ebd2ee03816446a74d46",
+    "source_payload_hashes": [
+      "0127b271e8090c6fd2898720519f36aa6896c4b4dd15e99467a0e191871e4406"
+    ],
+    "vertices": 71,
+    "faces": 129,
+    "textures": 0,
+    "sequences": {},
+    "bounds": [
+      [
+        -37.0,
+        -108.0,
+        -37.0
+      ],
+      [
+        37.0,
+        0.0,
+        29.0
+      ]
+    ],
+    "report": "object-6195.json"
+  },
+  {
+    "selector": "object:6196",
+    "name": "Table",
+    "model_ids": [
+      5952
+    ],
+    "definition_sha256": "29e2fe63d1edf0993d80a759f976015c06a1594c9faf4bd1182a4f22bc9830ff",
+    "source_payload_hashes": [
+      "ff7fea5aca4efb7660cc45efc6cd135999b7e159e5361d972164726a9f4781d5"
+    ],
+    "vertices": 32,
+    "faces": 50,
+    "textures": 0,
+    "sequences": {},
+    "bounds": [
+      [
+        -59.0,
+        -77.0,
+        -59.0
+      ],
+      [
+        59.0,
+        0.0,
+        59.0
+      ]
+    ],
+    "report": "object-6196.json"
+  },
+  {
+    "selector": "object:7016",
+    "name": "Pillar",
+    "model_ids": [
+      7097
+    ],
+    "definition_sha256": "398a02d3fdb46c6cdc11e0fdf8d11e103ab6461e118de0692ea7f8032c093df9",
+    "source_payload_hashes": [
+      "e5dfa2b392ef0dfa5c8ea78d670927ab62309b719fab349b65db9beea7f514d2"
+    ],
+    "vertices": 112,
+    "faces": 214,
+    "textures": 0,
+    "sequences": {},
+    "bounds": [
+      [
+        -64.0,
+        -239.0,
+        -64.0
+      ],
+      [
+        64.0,
+        1.0,
+        64.0
+      ]
+    ],
+    "report": "object-7016.json"
+  }
+]

@@ -1,0 +1,135 @@
+[
+  {
+    "asset": "npc-1173",
+    "action": "idle-5386",
+    "source_sequence": 5386,
+    "native_timestamps": 25,
+    "all_exact": true
+  },
+  {
+    "asset": "npc-1173",
+    "action": "walk-5385",
+    "source_sequence": 5385,
+    "native_timestamps": 12,
+    "all_exact": true
+  },
+  {
+    "asset": "npc-26",
+    "action": "idle-5565",
+    "source_sequence": 5565,
+    "native_timestamps": 25,
+    "all_exact": true
+  },
+  {
+    "asset": "npc-26",
+    "action": "walk-5566",
+    "source_sequence": 5566,
+    "native_timestamps": 13,
+    "all_exact": true
+  },
+  {
+    "asset": "npc-2790",
+    "action": "idle-5852",
+    "source_sequence": 5852,
+    "native_timestamps": 17,
+    "all_exact": true
+  },
+  {
+    "asset": "npc-2790",
+    "action": "walk-5848",
+    "source_sequence": 5848,
+    "native_timestamps": 13,
+    "all_exact": true
+  },
+  {
+    "asset": "npc-2854",
+    "action": "idle-2704",
+    "source_sequence": 2704,
+    "native_timestamps": 24,
+    "all_exact": true
+  },
+  {
+    "asset": "npc-2854",
+    "action": "walk-2703",
+    "source_sequence": 2703,
+    "native_timestamps": 10,
+    "all_exact": true
+  },
+  {
+    "asset": "npc-3019",
+    "action": "idle-6247",
+    "source_sequence": 6247,
+    "native_timestamps": 25,
+    "all_exact": true
+  },
+  {
+    "asset": "npc-3019",
+    "action": "walk-6248",
+    "source_sequence": 6248,
+    "native_timestamps": 9,
+    "all_exact": true
+  },
+  {
+    "asset": "npc-3106",
+    "action": "idle-808",
+    "source_sequence": 808,
+    "native_timestamps": 25,
+    "all_exact": true
+  },
+  {
+    "asset": "npc-3106",
+    "action": "walk-819",
+    "source_sequence": 819,
+    "native_timestamps": 13,
+    "all_exact": true
+  },
+  {
+    "asset": "npc-655",
+    "action": "idle-6181",
+    "source_sequence": 6181,
+    "native_timestamps": 20,
+    "all_exact": true
+  },
+  {
+    "asset": "npc-655",
+    "action": "walk-6180",
+    "source_sequence": 6180,
+    "native_timestamps": 13,
+    "all_exact": true
+  },
+  {
+    "asset": "npc-70",
+    "action": "idle-5483",
+    "source_sequence": 5483,
+    "native_timestamps": 23,
+    "all_exact": true
+  },
+  {
+    "asset": "npc-70",
+    "action": "walk-5481",
+    "source_sequence": 5481,
+    "native_timestamps": 13,
+    "all_exact": true
+  },
+  {
+    "asset": "object-11010",
+    "action": "object-3106",
+    "source_sequence": 3106,
+    "native_timestamps": 20,
+    "all_exact": true
+  },
+  {
+    "asset": "object-13560",
+    "action": "object-3720",
+    "source_sequence": 3720,
+    "native_timestamps": 25,
+    "all_exact": true
+  },
+  {
+    "asset": "object-5589",
+    "action": "object-1729",
+    "source_sequence": 1729,
+    "native_timestamps": 10,
+    "all_exact": true
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "reference_count": 33,
+  "unique_component_model_sets": 32,
+  "native_static_views": 165,
+  "pixel_exact_assets": 33,
+  "classic_action_sets": 19,
+  "native_motion_samples": 335,
+  "all_motion_exact": true,
+  "tracer_pose_samples": 335,
+  "all_tracer_exact": true,
+  "raw_model_definition_transform_cases": [
+    "object:2106",
+    "object:6155",
+    "object:6189"
+  ],
+  "held_out_declared": 9,
+  "held_out_evaluation": "not run at this checkpoint; excluded from training descriptors",
+  "source_client_commit": "23a94f75707f0503a9efe610fe99bfce5089b575",
+  "source_server_base_commit": "75e611a4a97c7141c837de46102766711e9cdf22",
+  "native_binary_sha256": "bbf0be16b30cbe91484ad74c69a44e6c6acaeb3f2bc46649493c5252de2370ee",
+  "native_library_renderer_changed": false,
+  "artistic_acceptance": false
+}

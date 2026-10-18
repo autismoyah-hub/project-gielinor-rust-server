@@ -1,0 +1,259 @@
+{
+  "schema": 1,
+  "revision": "239.1",
+  "source": "Paired local immutable JS5 cache and symbols; original payloads stay local",
+  "records": [
+    {
+      "selector": "item:1115:worn",
+      "split": "training",
+      "family": "armor",
+      "selection_basis": "Native decoded definition and local revision-239.1 symbols; IDs recorded before authoring toolkit tuning"
+    },
+    {
+      "selector": "item:1141:worn",
+      "split": "training",
+      "family": "armor",
+      "selection_basis": "Native decoded definition and local revision-239.1 symbols; IDs recorded before authoring toolkit tuning"
+    },
+    {
+      "selector": "item:1175",
+      "split": "training",
+      "family": "shield",
+      "selection_basis": "Native decoded definition and local revision-239.1 symbols; IDs recorded before authoring toolkit tuning"
+    },
+    {
+      "selector": "item:1191",
+      "split": "training",
+      "family": "shield",
+      "selection_basis": "Native decoded definition and local revision-239.1 symbols; IDs recorded before authoring toolkit tuning"
+    },
+    {
+      "selector": "item:1277",
+      "split": "training",
+      "family": "weapon",
+      "selection_basis": "Native decoded definition and local revision-239.1 symbols; IDs recorded before authoring toolkit tuning"
+    },
+    {
+      "selector": "item:1279",
+      "split": "training",
+      "family": "weapon",
+      "selection_basis": "Native decoded definition and local revision-239.1 symbols; IDs recorded before authoring toolkit tuning"
+    },
+    {
+      "selector": "npc:1173",
+      "split": "training",
+      "family": "creature",
+      "selection_basis": "Native decoded definition and local revision-239.1 symbols; IDs recorded before authoring toolkit tuning"
+    },
+    {
+      "selector": "npc:26",
+      "split": "training",
+      "family": "humanoid",
+      "selection_basis": "Native decoded definition and local revision-239.1 symbols; IDs recorded before authoring toolkit tuning"
+    },
+    {
+      "selector": "npc:2790",
+      "split": "training",
+      "family": "creature",
+      "selection_basis": "Native decoded definition and local revision-239.1 symbols; IDs recorded before authoring toolkit tuning"
+    },
+    {
+      "selector": "npc:2854",
+      "split": "training",
+      "family": "creature",
+      "selection_basis": "Native decoded definition and local revision-239.1 symbols; IDs recorded before authoring toolkit tuning"
+    },
+    {
+      "selector": "npc:3019",
+      "split": "training",
+      "family": "creature",
+      "selection_basis": "Native decoded definition and local revision-239.1 symbols; IDs recorded before authoring toolkit tuning"
+    },
+    {
+      "selector": "npc:3106",
+      "split": "training",
+      "family": "humanoid",
+      "selection_basis": "Native decoded definition and local revision-239.1 symbols; IDs recorded before authoring toolkit tuning"
+    },
+    {
+      "selector": "npc:655",
+      "split": "training",
+      "family": "humanoid",
+      "selection_basis": "Native decoded definition and local revision-239.1 symbols; IDs recorded before authoring toolkit tuning"
+    },
+    {
+      "selector": "npc:70",
+      "split": "training",
+      "family": "humanoid",
+      "selection_basis": "Native decoded definition and local revision-239.1 symbols; IDs recorded before authoring toolkit tuning"
+    },
+    {
+      "selector": "object:11020",
+      "split": "training",
+      "family": "environment_detail",
+      "selection_basis": "Native decoded definition and local revision-239.1 symbols; IDs recorded before authoring toolkit tuning"
+    },
+    {
+      "selector": "object:1868",
+      "split": "training",
+      "family": "architecture",
+      "selection_basis": "Native decoded definition and local revision-239.1 symbols; IDs recorded before authoring toolkit tuning"
+    },
+    {
+      "selector": "object:2106",
+      "split": "training",
+      "family": "architecture",
+      "selection_basis": "Native decoded definition and local revision-239.1 symbols; IDs recorded before authoring toolkit tuning"
+    },
+    {
+      "selector": "object:325",
+      "split": "training",
+      "family": "environment_detail",
+      "selection_basis": "Native decoded definition and local revision-239.1 symbols; IDs recorded before authoring toolkit tuning"
+    },
+    {
+      "selector": "object:5589",
+      "split": "training",
+      "family": "animated_object",
+      "selection_basis": "Native decoded definition and local revision-239.1 symbols; IDs recorded before authoring toolkit tuning"
+    },
+    {
+      "selector": "object:6000",
+      "split": "training",
+      "family": "geology",
+      "selection_basis": "Native decoded definition and local revision-239.1 symbols; IDs recorded before authoring toolkit tuning"
+    },
+    {
+      "selector": "object:6010",
+      "split": "training",
+      "family": "architecture",
+      "selection_basis": "Native decoded definition and local revision-239.1 symbols; IDs recorded before authoring toolkit tuning"
+    },
+    {
+      "selector": "object:6062",
+      "split": "training",
+      "family": "furniture",
+      "selection_basis": "Native decoded definition and local revision-239.1 symbols; IDs recorded before authoring toolkit tuning"
+    },
+    {
+      "selector": "object:6098",
+      "split": "training",
+      "family": "architecture",
+      "selection_basis": "Native decoded definition and local revision-239.1 symbols; IDs recorded before authoring toolkit tuning"
+    },
+    {
+      "selector": "object:6143",
+      "split": "training",
+      "family": "architecture",
+      "selection_basis": "Native decoded definition and local revision-239.1 symbols; IDs recorded before authoring toolkit tuning"
+    },
+    {
+      "selector": "object:6147",
+      "split": "training",
+      "family": "geology",
+      "selection_basis": "Native decoded definition and local revision-239.1 symbols; IDs recorded before authoring toolkit tuning"
+    },
+    {
+      "selector": "object:6150",
+      "split": "training",
+      "family": "industrial",
+      "selection_basis": "Native decoded definition and local revision-239.1 symbols; IDs recorded before authoring toolkit tuning"
+    },
+    {
+      "selector": "object:6155",
+      "split": "training",
+      "family": "furniture",
+      "selection_basis": "Native decoded definition and local revision-239.1 symbols; IDs recorded before authoring toolkit tuning"
+    },
+    {
+      "selector": "object:6189",
+      "split": "training",
+      "family": "industrial",
+      "selection_basis": "Native decoded definition and local revision-239.1 symbols; IDs recorded before authoring toolkit tuning"
+    },
+    {
+      "selector": "object:6195",
+      "split": "training",
+      "family": "furniture",
+      "selection_basis": "Native decoded definition and local revision-239.1 symbols; IDs recorded before authoring toolkit tuning"
+    },
+    {
+      "selector": "object:6196",
+      "split": "training",
+      "family": "furniture",
+      "selection_basis": "Native decoded definition and local revision-239.1 symbols; IDs recorded before authoring toolkit tuning"
+    },
+    {
+      "selector": "object:7016",
+      "split": "training",
+      "family": "architecture",
+      "selection_basis": "Native decoded definition and local revision-239.1 symbols; IDs recorded before authoring toolkit tuning"
+    },
+    {
+      "selector": "object:11010",
+      "split": "training",
+      "family": "animated_object",
+      "selection_basis": "Native discover command: animated machinery with actual sequence ID"
+    },
+    {
+      "selector": "object:13560",
+      "split": "training",
+      "family": "animated_object",
+      "selection_basis": "Native discover command: animated machinery with actual sequence ID"
+    },
+    {
+      "selector": "object:362",
+      "split": "held_out",
+      "family": "industrial",
+      "selection_basis": "Predeclared before authoring utilities are tuned; not included in training aggregates; test raw-model overlap before accepting split"
+    },
+    {
+      "selector": "object:366",
+      "split": "held_out",
+      "family": "industrial",
+      "selection_basis": "Predeclared before authoring utilities are tuned; not included in training aggregates; test raw-model overlap before accepting split"
+    },
+    {
+      "selector": "object:2097",
+      "split": "held_out",
+      "family": "industrial",
+      "selection_basis": "Predeclared before authoring utilities are tuned; not included in training aggregates; test raw-model overlap before accepting split"
+    },
+    {
+      "selector": "object:436",
+      "split": "held_out",
+      "family": "architecture",
+      "selection_basis": "Predeclared before authoring utilities are tuned; not included in training aggregates; test raw-model overlap before accepting split"
+    },
+    {
+      "selector": "item:1323",
+      "split": "held_out",
+      "family": "weapon",
+      "selection_basis": "Predeclared before authoring utilities are tuned; not included in training aggregates; test raw-model overlap before accepting split"
+    },
+    {
+      "selector": "item:1171",
+      "split": "held_out",
+      "family": "shield",
+      "selection_basis": "Predeclared before authoring utilities are tuned; not included in training aggregates; test raw-model overlap before accepting split"
+    },
+    {
+      "selector": "item:1163:worn",
+      "split": "held_out",
+      "family": "armor",
+      "selection_basis": "Predeclared before authoring utilities are tuned; not included in training aggregates; test raw-model overlap before accepting split"
+    },
+    {
+      "selector": "npc:106",
+      "split": "held_out",
+      "family": "creature",
+      "selection_basis": "Predeclared before authoring utilities are tuned; not included in training aggregates; test raw-model overlap before accepting split"
+    },
+    {
+      "selector": "npc:2834",
+      "split": "held_out",
+      "family": "creature",
+      "selection_basis": "Predeclared before authoring utilities are tuned; not included in training aggregates; test raw-model overlap before accepting split"
+    }
+  ]
+}

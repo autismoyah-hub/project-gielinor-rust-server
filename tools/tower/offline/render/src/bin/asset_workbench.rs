@@ -1,0 +1,351 @@
+//! Batch read-only reference inspection and native rendering for asset authoring.
+#[path = "support/workbench_native.rs"]
+mod native;
+use gielinor_client::{
+    animation::{Frame, Sequence, Skeleton},
+    animation_runtime::{Animations, Clock},
+    disk_cache::DiskCache,
+    item, item_model,
+    model::Model,
+    npc, npc_model, object, object_model,
+};
+use sha2::{Digest, Sha256};
+use std::{collections::BTreeSet, env, fs, path::Path};
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let a: Vec<_> = env::args().collect();
+    if a.len() < 5 {
+        return Err("asset_workbench CACHE OUTPUT inspect SELECTOR... | render MODEL CAMERA_FILE AMBIENT CONTRAST | animate SELECTOR SEQUENCE".into());
+    }
+    let out = Path::new(&a[2]);
+    fs::create_dir_all(out)?;
+    let mut cache = DiskCache::open_legacy_reference(&a[1], 64 << 20)?;
+    let tex = native::textures(&mut cache)?;
+    fs::write(
+        out.join("palette.json"),
+        format!("{:?}", gielinor_client::floor::palette(0.8)?),
+    )?;
+    if a[3] == "package" {
+        let mut package = DiskCache::open_package_only(&a[4], 64 << 20)?;
+        let id: u32 = a[5].parse()?;
+        let shape: u8 = a[6].parse()?;
+        let defs = object::Definition::load_all(&mut package)?;
+        let d = defs.get(&id).ok_or("Custom definition missing")?;
+        let m = object_model::Models::default()
+            .object(&mut package, d, shape, 0)?
+            .ok_or("Custom package model unavailable")?;
+        let cam: Vec<f32> = fs::read_to_string(&a[7])?
+            .split_whitespace()
+            .map(str::parse)
+            .collect::<Result<_, _>>()?;
+        let light = m.light(a[8].parse()?, a[9].parse()?, [-30, -50, -30])?;
+        native::views(
+            &m,
+            &light,
+            &tex,
+            cam.try_into().map_err(|_| "Camera length")?,
+            out,
+        )?;
+        fs::write(out.join("decoded.json"), native::geometry(&m))?;
+        return Ok(());
+    }
+    if a[3] == "play" {
+        if a.len() < 9 {
+            return Err("play MODEL CAMERA AMBIENT CONTRAST SEQUENCE_DIR".into());
+        }
+        let m = Model::decode(&fs::read(&a[4])?)?;
+        let cam: Vec<f32> = fs::read_to_string(&a[5])?
+            .split_whitespace()
+            .map(str::parse)
+            .collect::<Result<_, _>>()?;
+        let cam: [f32; 4] = cam.try_into().map_err(|_| "Camera length")?;
+        let light = m.light(a[6].parse()?, a[7].parse()?, [-30, -50, -30])?;
+        let dir = Path::new(&a[8]);
+        let sequence = Sequence::decode(45000, &fs::read(dir.join("sequence.bin"))?)?;
+        if sequence.cached_animation.is_some() {
+            return Err("Custom cached animation playback not supported".into());
+        }
+        let mut times: BTreeSet<_> = (0..=sequence.total_length.min(256)).collect();
+        times.insert(sequence.total_length);
+        times.extend([
+            sequence.total_length / 4,
+            sequence.total_length / 2,
+            sequence.total_length * 3 / 4,
+        ]);
+        for tick in times {
+            let mut clock = Clock::default();
+            clock.advance(&sequence, tick)?;
+            let bytes = fs::read(dir.join(format!("frame-{}.bin", clock.frame)))?;
+            let sid = u16::from_be_bytes(bytes.get(..2).ok_or("Truncated frame")?.try_into()?);
+            let skeleton =
+                Skeleton::decode(sid, &fs::read(dir.join(format!("skeleton-{sid}.bin")))?)?;
+            let frame = Frame::decode(&bytes, &skeleton)?;
+            let mut posed = m.clone();
+            posed.animate_classic(&skeleton, &frame, false)?;
+            if a.len() >= 12 {
+                posed.scale([a[9].parse()?, a[10].parse()?, a[11].parse()?]);
+            }
+            fs::write(
+                out.join(format!("pose-{tick:04}.json")),
+                native::geometry(&posed),
+            )?;
+            native::render(
+                &posed,
+                &light,
+                &tex,
+                cam,
+                0.65,
+                &out.join(format!("pose-{tick:04}.bmp")),
+                false,
+            )?;
+        }
+        return Ok(());
+    }
+    if a[3] == "render" {
+        let m = Model::decode(&fs::read(&a[4])?)?;
+        let cam: Vec<f32> = fs::read_to_string(&a[5])?
+            .split_whitespace()
+            .map(str::parse)
+            .collect::<Result<_, _>>()?;
+        if cam.len() != 4 {
+            return Err("Camera contract requires four numbers".into());
+        }
+        let light = m.light(a[6].parse()?, a[7].parse()?, [-30, -50, -30])?;
+        let mut world = m.clone();
+        if a.len() >= 11 {
+            world.scale([a[8].parse()?, a[9].parse()?, a[10].parse()?]);
+        }
+        native::views(&world, &light, &tex, cam.try_into().unwrap(), out)?;
+        fs::write(out.join("decoded.json"), native::geometry(&m))?;
+        return Ok(());
+    }
+    let objects = object::Definition::load_all(&mut cache)?;
+    let npcs = npc::Definition::load_all(&mut cache)?;
+    let items = item::Definitions::load(&mut cache)?;
+    let sequences = Sequence::load_all(&mut cache)?;
+    fs::write(out.join("original-id-bounds.json"),format!("{{\"model_max\":{},\"object_max\":{},\"npc_max\":{},\"item_max\":{},\"sequence_max\":{},\"frame_group_max\":{},\"skeleton_max\":{}}}",cache.reference(7)?.groups.iter().map(|g|g.id).max().unwrap_or(0),objects.keys().max().unwrap(),npcs.keys().max().unwrap(),items.items.keys().max().unwrap(),sequences.keys().max().unwrap(),cache.reference(0)?.groups.iter().map(|g|g.id).max().unwrap_or(0),cache.reference(1)?.groups.iter().map(|g|g.id).max().unwrap_or(0)))?;
+    if a[3] == "discover" {
+        let mut rows: Vec<_> = objects.values().filter(|d| d.animation.is_some()).collect();
+        rows.sort_by_key(|d| d.id);
+        fs::write(
+            out.join("animated-objects.tsv"),
+            rows.iter()
+                .map(|d| format!("{}\t{}\t{:?}\t{:?}\n", d.id, d.name, d.models, d.animation))
+                .collect::<String>(),
+        )?;
+        return Ok(());
+    }
+    let mut models = item_model::Models::default();
+    let mut om = object_model::Models::default();
+    let mut status = String::from("selector\tstatus\tdetail\n");
+    let selectors = if a[3] == "animate" { &a[4..5] } else { &a[4..] };
+    for selector in selectors {
+        let result = (|| -> Result<(), Box<dyn std::error::Error>> {
+            let s: Vec<_> = selector.split(':').collect();
+            if s.len() < 2 {
+                return Err("selector kind:id[:variant]".into());
+            }
+            let id: u32 = s[1].parse()?;
+            let dir = out.join(selector.replace(':', "-"));
+            fs::create_dir_all(&dir)?;
+            let (m, name, ids, ambient, contrast, scaling, roles, definition, archive_group) =
+                match s[0] {
+                    "object" => {
+                        let d = objects.get(&id).ok_or("Unknown object")?;
+                        let shape = if let Some(shape) = s.get(2) {
+                            shape.parse()?
+                        } else if d.model_ids(10).is_empty() {
+                            *d.model_shapes
+                                .as_ref()
+                                .and_then(|x| x.first())
+                                .ok_or("Object has no shape")?
+                        } else {
+                            10
+                        };
+                        let m = (*om
+                            .object(&mut cache, d, shape, 0)?
+                            .ok_or("Object unavailable")?)
+                        .clone();
+                        fs::write(dir.join("factory.json"),format!("{{\"shape\":{shape},\"scale\":{:?},\"offset\":{:?},\"size\":{:?},\"rotated\":{},\"non_flat_shading\":{},\"recolor\":{},\"retexture\":{}}}",d.scale,d.offset,d.size,d.rotated,d.non_flat_shading,format!("{:?}",d.recolor).replace('(',"[").replace(')',"]"),format!("{:?}",d.retexture).replace('(',"[").replace(')',"]")))?;
+                        (
+                            m,
+                            d.name.clone(),
+                            d.model_ids(shape),
+                            64 + d.ambient as i32,
+                            768 + d.contrast,
+                            [128; 3],
+                            d.animation
+                                .map(|v| vec![("object", v as i32)])
+                                .unwrap_or_default(),
+                            format!("{d:#?}"),
+                            6,
+                        )
+                    }
+                    "npc" => {
+                        let d = npcs.get(&id).ok_or("Unknown NPC")?;
+                        (
+                            npc_model::mesh(&mut cache, &mut models, d, false, None)?
+                                .ok_or("NPC unavailable")?,
+                            d.name.clone(),
+                            d.models.clone(),
+                            64 + d.ambient as i32,
+                            850 + d.contrast,
+                            [d.scale[0] as i32, d.scale[1] as i32, d.scale[0] as i32],
+                            vec![("idle", d.animations[0]), ("walk", d.animations[3])],
+                            format!("{d:#?}"),
+                            9,
+                        )
+                    }
+                    "item" => {
+                        let d = items.items.get(&id).ok_or("Unknown item")?;
+                        let worn = s.get(2) == Some(&"worn");
+                        let m = if worn {
+                            models
+                                .wearable(&mut cache, d, 0, false, None)?
+                                .ok_or("No male worn model")?
+                        } else {
+                            models.inventory(&mut cache, &items, id, 1, None)?
+                        };
+                        let ids = if worn {
+                            d.wear_models[0]
+                                .iter()
+                                .filter(|&&x| x >= 0)
+                                .map(|&x| x as u32)
+                                .collect()
+                        } else {
+                            vec![d.model as u32]
+                        };
+                        (
+                            m,
+                            d.name.clone(),
+                            ids,
+                            64 + d.ambient as i32,
+                            768 + d.contrast,
+                            [128; 3],
+                            Vec::new(),
+                            format!("{d:#?}"),
+                            10,
+                        )
+                    }
+                    _ => return Err("Unknown selector kind".into()),
+                };
+            fs::write(dir.join("geometry.json"), native::geometry(&m))?;
+            fs::write(dir.join("definition.txt"), definition)?;
+            let light = m.light(ambient, contrast, [-30, -50, -30])?;
+            let mut world = m.clone();
+            world.scale(scaling);
+            let cam = native::camera(&world);
+            fs::write(
+                dir.join("camera.txt"),
+                cam.iter()
+                    .map(|v| v.to_string())
+                    .collect::<Vec<_>>()
+                    .join(" "),
+            )?;
+            let b = native::bounds(&world);
+            let mut sources = Vec::new();
+            for &mid in &ids {
+                let bytes = cache.file(7, mid, 0, [0; 4])?;
+                fs::write(
+                    dir.join(format!("raw-model-{mid}.json")),
+                    native::geometry(&Model::decode(&bytes)?),
+                )?;
+                let raw = cache.raw_group(7, mid)?;
+                fs::write(dir.join(format!("raw-model-{mid}.model")), &bytes)?;
+                sources.push(format!("{{\"model_id\":{mid},\"payload_sha256\":\"{:x}\",\"raw_group_sha256\":\"{:x}\"}}",Sha256::digest(&bytes),Sha256::digest(&raw)));
+            }
+            let def = cache.file(2, archive_group, id, [0; 4])?;
+            let rolejson = roles
+                .iter()
+                .filter(|(_, v)| *v >= 0)
+                .map(|(name, v)| format!("{name:?}:{v}"))
+                .collect::<Vec<_>>()
+                .join(",");
+            fs::write(dir.join("metadata.json"),format!("{{\"schema\":1,\"selector\":{selector:?},\"name\":{name:?},\"revision\":\"239.1\",\"model_ids\":{ids:?},\"definition_sha256\":\"{:x}\",\"sources\":[{}],\"world_bounds\":{b:?},\"render_scale\":{scaling:?},\"ambient\":{ambient},\"contrast\":{contrast},\"camera\":{cam:?},\"sequences\":{{{rolejson}}},\"coordinate_contract\":\"native X,Y down,Z;128 units/tile;bind pose\"}}",Sha256::digest(&def),sources.join(",")))?;
+            native::views(&world, &light, &tex, cam, &dir)?;
+            let actions: Vec<_> = if a[3] == "animate" {
+                vec![("selected", a[5].parse::<i32>()?)]
+            } else {
+                roles
+            };
+            let mut animations = Animations::load(&mut cache)?;
+            for (role, seqid) in actions.into_iter().filter(|(_, v)| *v >= 0) {
+                let sq = sequences.get(&(seqid as u32)).ok_or("Sequence missing")?;
+                let action = dir.join(format!("{role}-{seqid}"));
+                fs::create_dir_all(&action)?;
+                let mut skeletons = BTreeSet::new();
+                let mut frames = Vec::new();
+                if let Some(cached) = sq.cached_animation {
+                    let bytes = cache.file(22, cached >> 16, cached & 65535, [0; 4])?;
+                    let sid = u16::from_be_bytes(bytes[1..3].try_into()?);
+                    let sk = Skeleton::decode(sid, &cache.file(1, sid as u32, 0, [0; 4])?)?;
+                    gielinor_client::cached_animation::CachedAnimation::decode(&bytes, &sk)?;
+                    skeletons.insert(sid);
+                } else {
+                    for (i, &fid) in sq.frames.iter().enumerate() {
+                        let bytes = cache.file(0, fid >> 16, fid & 65535, [0; 4])?;
+                        let sid = u16::from_be_bytes(bytes[..2].try_into()?);
+                        let skbytes = cache.file(1, sid as u32, 0, [0; 4])?;
+                        let sk = Skeleton::decode(sid, &skbytes)?;
+                        let frame = Frame::decode(&bytes, &sk)?;
+                        skeletons.insert(sid);
+                        fs::write(action.join(format!("frame-{i}.bin")), bytes)?;
+                        fs::write(action.join(format!("skeleton-{sid}.bin")), skbytes)?;
+                        frames.push(format!("{{\"index\":{i},\"length\":{},\"source_frame\":{fid},\"skeleton\":{sid},\"types\":{:?},\"labels\":{:?},\"transforms\":[{}]}}",sq.lengths[i],sk.transform_types,sk.labels,frame.transforms.iter().map(|t|format!("[{},{}]",t.label,format!("{:?}",t.values))).collect::<Vec<_>>().join(",")));
+                    }
+                }
+                fs::write(action.join("sequence.txt"), format!("{sq:#?}"))?;
+                fs::write(
+                    action.join("sequence.bin"),
+                    cache.file(2, 12, seqid as u32, [0; 4])?,
+                )?;
+                fs::write(action.join("animation.json"),format!("{{\"source_sequence\":{seqid},\"cached_animation\":{},\"skeleton_ids\":{:?},\"frames\":[{}]}}",sq.cached_animation.map(|x|x.to_string()).unwrap_or("null".into()),skeletons.into_iter().collect::<Vec<_>>(),frames.join(",")))?;
+                let duration = if sq.cached_animation.is_some() {
+                    (sq.cached_range[1] - sq.cached_range[0]) as u32
+                } else {
+                    sq.total_length
+                };
+                let mut times: BTreeSet<_> = (0..=duration.min(80)).step_by(4).collect();
+                times.extend([0, duration / 4, duration / 2, duration * 3 / 4, duration]);
+                for tick in times {
+                    let mut clock = Clock::default();
+                    clock.advance(sq, tick)?;
+                    let mut posed = m.clone();
+                    animations.apply(&mut cache, &mut posed, seqid as u32, &clock)?;
+                    posed.scale(scaling);
+                    fs::write(
+                        action.join(format!("pose-{tick:04}.json")),
+                        native::geometry(&posed),
+                    )?;
+                    native::render(
+                        &posed,
+                        &light,
+                        &tex,
+                        cam,
+                        0.65,
+                        &action.join(format!("pose-{tick:04}.bmp")),
+                        false,
+                    )?;
+                }
+            }
+            Ok(())
+        })();
+        match result {
+            Ok(()) => {
+                status.push_str(&format!(
+                    "{selector}\tPASS\tinspected; protected local outputs\n"
+                ));
+                println!("INSPECT_PASS {selector}");
+            }
+            Err(e) => {
+                status.push_str(&format!("{selector}\tFAIL\t{e}\n"));
+                println!("INSPECT_FAIL {selector}: {e}");
+            }
+        }
+    }
+    let failed = status.lines().filter(|l| l.contains("\tFAIL\t")).count();
+    fs::write(out.join("batch-status.tsv"), status)?;
+    if failed > 0 {
+        return Err(format!("{failed} reference inspections failed; see batch-status.tsv").into());
+    }
+    Ok(())
+}
