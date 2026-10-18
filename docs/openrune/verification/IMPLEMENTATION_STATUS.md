@@ -3,9 +3,9 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0081: mixed sand+soda glass production and atomic returned bucket on two material-only furnaces; source [14b6bf6](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/14b6bf6005c6f048be7e975e53eca107bee9d345). Existing Smithing operation and facility profiles preserved. Shared regression/binary PASS; byproduct/Wiki timing obligations explicit. Independent V0–V4 queued.
+OR-MIG-0082: five instant firelighter coatings through existing selected-pair assembly; source [b8d71f6](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/b8d71f69fb1998f47ba34a96fb5fd79463a1aa44). ZeroXP/requirement,stack conservation,both held orders. Focused/binary PASS;independent V0–V4 queued.
 
-81 units / 89 append-only records. Discovery3508={'not_yet_assessed': 2803, 'configuration': 658, 'framework_or_infrastructure': 6, 'eligible_gameplay_behavior': 41}; not completion percentages. Other furnaces/special methods/access and broad content remain; PG-DEF-001 Close candidate pending independent retest.
+82 units / 90 append-only records. Discovery3508={'not_yet_assessed': 2801, 'configuration': 659, 'framework_or_infrastructure': 6, 'eligible_gameplay_behavior': 42};not completion percentages. Ignition/campfires/Phoenix/storage/acquisition and broad content remain;PG-DEF-001 Close candidate pending independent retest.
 <!-- forge-current:end -->
 
 
@@ -483,3 +483,12 @@ Source explicit returned bucket preserved; inspected Wiki recipe lists main glas
 Shared glass001 PASS,442 unchanged source hashes: test result: ok. 125 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.86s; test result: ok. 483 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 25.44s. Binaries001 PASS,442 unchanged hashes.     Finished `test` profile [unoptimized + debuginfo] target(s) in 1m 44s;     Finished `dev` profile [unoptimized + debuginfo] target(s) in 11.49s. Factoryfullbag both outputs/250fine/member/short/duplicate/badbucketcredit rollback; actual reached sand and soda routes,normal Smithing operation presence,late captured secondary or returned-bucket credit failure leaveone glass+bucket/250fine/oneevent and untouched spare secondary,NoDraw. Existing shared facilities/users regressed. Guardtest7,329MiB/54.9%commit/1,321pages-in/s/3.5msdisk/24.5%CPU;binary7,453MiB/54.5%commit/0pages-in/s/2.9msdisk/21.2%CPU,bothj2. Developer working-tree evidence,not pristine/native/independent acceptance.
 
 Queue81units/89append-onlyrecords. Discovery3508={'not_yet_assessed': 2803, 'configuration': 658, 'framework_or_infrastructure': 6, 'eligible_gameplay_behavior': 41},not completion percentages. Continue eligible content.
+
+
+## FORGE OR-MIG-0082 — firelighter coatings
+
+Source b8d71f69fb1998f47ba34a96fb5fd79463a1aa44: five actual immediate type-pair registrations regular Logs1511 + Red7329/Green7330/Blue7331/Purple10326/White10327 lighter ->Red7404/Green7405/Blue7406/Purple10329/White10328 logs. Member,one log/one selected lighter unit,instant0ticks/no XP/no skill requirement/no RNG/no auto-repeat. Existing zero-reward level0 pair adapter and atomic selected inventory transaction reused,without engine changes. CurrentFiremaking0/rate0 and fineXP preserved. Five colours/eleven target types and Wiki pages/two source files pinned; source sequential type-search mutations intentionally replaced by selected all-credit staging. Generic assembly feedback retained. Burning50XP,coloured fire/campfire/Phoenix/storage/acquisition are separate,not silently claimed.
+
+Focused001 PASS,443 unchanged hashes: test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 125 filtered out; finished in 0.40s; test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 484 filtered out; finished in 0.00s. Actual server binaries001 PASS,443 unchanged hashes.     Finished `test` profile [unoptimized + debuginfo] target(s) in 14.09s;     Finished `dev` profile [unoptimized + debuginfo] target(s) in 3.14s. Allfive full bags/selected lighter stack/count,noXP/member/badcredit/stale no-fallback checks;actual registered held-use bothorders each colour yields one product andone stack decrement with untouched other log andno skill event/repeat after4ticks. Guardtest7,086MiB/56.1%commit/0pages-in/s/4.0msdisk/13.6%CPU;binary6,968MiB/56.4%commit/16pages-in/s/3.5msdisk/18.3%CPU,bothj2. Developer working-tree evidence,not pristine/native/independent acceptance.
+
+Queue82units/90append-onlyrecords. Discovery3508={'not_yet_assessed': 2801, 'configuration': 659, 'framework_or_infrastructure': 6, 'eligible_gameplay_behavior': 42},not completion percentages. One new eligible script and one pack configuration classified;table ignition/light/fire/campfire obligations retained. Continue eligible content.
