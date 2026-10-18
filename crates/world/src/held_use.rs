@@ -35,6 +35,7 @@ pub enum Handler {
     },
     Grinding(crate::grinding::Recipe),
     ToolCrafting(crate::tool_crafting::Recipe),
+    ToolCraftingImmediate(crate::tool_crafting::Recipe),
     ToolCraftingChoices{recipes:std::sync::Arc<Vec<crate::tool_crafting::Recipe>>,cycle_ticks:u8},
     TutorialDough(crate::tutorial_dough::Config),
     TutorialFire(crate::tutorial_fire::Config),

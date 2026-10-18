@@ -164,6 +164,10 @@ impl World {
                 p.queues.add(crate::assembly::QUEUE,crate::queues::Category::Weak,i32::from(recipe.ticks)+1,Deferred::AssemblyBatch(crate::assembly::BatchPending{job,queued_at:self.clock.0})).map_err(|_|ActionError::QueueFull)?;
             }
             Some(Handler::ToolCraftingChoices{recipes,cycle_ticks}) => self.request_tool_crafting(actor,recipes,cycle_ticks,request)?,
+            Some(Handler::ToolCraftingImmediate(recipe)) => {
+                let (tool_slot,input_slot)=if request.selected_id==recipe.exchange.tool {(request.selected_slot as usize,request.target_slot as usize)}else{(request.target_slot as usize,request.selected_slot as usize)};
+                self.complete_tool_crafting_immediate(actor,crate::tool_crafting::Job{recipe,tool_slot,input_slot})?;
+            }
             Some(Handler::ToolCrafting(recipe)) => {
                 let (tool_slot,input_slot)=if request.selected_id==recipe.exchange.tool {(request.selected_slot as usize,request.target_slot as usize)}else{(request.target_slot as usize,request.selected_slot as usize)};
                 self.start_tool_crafting(actor,crate::tool_crafting::Job{recipe,tool_slot,input_slot})?;

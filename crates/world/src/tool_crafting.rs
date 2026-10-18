@@ -33,7 +33,7 @@ pub enum Error {
 pub struct Prepared {
     pub inventory: Inventory,
     pub stats: Stats,
-    pub advancement: Advancement,
+    pub advancement: Option<Advancement>,
 }
 impl Job {
     pub fn prepare(
@@ -47,9 +47,7 @@ impl Job {
         let r = self.recipe;
         if r.level == 0
             || r.level > 99
-            || r.xp_tenths == 0
-            || r.ticks == 0
-            || rate <= 0
+            || (r.xp_tenths > 0 && rate <= 0)
             || inv.stack != StackType::Normal
             || inv.placeholders
         {
@@ -72,14 +70,20 @@ impl Job {
             return Err(Error::Exchange(outcome));
         }
         let mut stats = stats.clone();
-        let advancement = skills::advance(
-            &mut stats,
-            12,
-            r.xp_tenths as f64 / 10.0,
-            rate as f64 / 100.0,
-            99,
-        )
-        .map_err(|_| Error::Policy)?;
+        let advancement = if r.xp_tenths == 0 {
+            None
+        } else {
+            Some(
+                skills::advance(
+                    &mut stats,
+                    12,
+                    r.xp_tenths as f64 / 10.0,
+                    rate as f64 / 100.0,
+                    99,
+                )
+                .map_err(|_| Error::Policy)?,
+            )
+        };
         Ok(Prepared {
             inventory,
             stats,
@@ -309,11 +313,7 @@ impl Job {
         let Some(failure) = self.recipe.failure else {
             return Ok((success, true));
         };
-        if failure.low < 0
-            || failure.high > 255
-            || failure.low > failure.high
-            || failure.xp_tenths == 0
-        {
+        if failure.low < 0 || failure.high > u16::MAX as i32 || failure.low > failure.high {
             return Err(Error::Policy);
         }
         let mut failed_job = *self;
@@ -393,6 +393,23 @@ mod failure_tests {
         (job, inv, Catalog::default(), stats)
     }
     #[test]
+    fn zero_xp_failure_preserves_stats_without_fabricating_advancement() {
+        let (mut job, inv, cat, stats) = fixture();
+        job.recipe.failure.as_mut().unwrap().xp_tenths = 0;
+        let mut rng = Draw {
+            value: 255,
+            calls: 0,
+        };
+        let (prepared, success) = job
+            .resolve(&inv, &cat, &stats, 125, true, &mut rng)
+            .unwrap();
+        assert!(!success);
+        assert_eq!(rng.calls, 1);
+        assert_eq!(prepared.inventory.get(1).unwrap().id, 1633);
+        assert_eq!(prepared.stats, stats);
+        assert!(prepared.advancement.is_none());
+    }
+    #[test]
     fn roll_boundary_selects_exact_staged_reward_and_deterministic_profiles_draw_nothing() {
         for (value, success, id, fine) in [(118, true, 1611, 250), (119, false, 1633, 62)] {
             let (job, inv, cat, stats) = fixture();
@@ -447,7 +464,7 @@ mod failure_tests {
                 4 => member = false,
                 5 => stats.set_current(12, 12),
                 6 => job.recipe.failure.as_mut().unwrap().low = 246,
-                _ => job.recipe.failure.as_mut().unwrap().xp_tenths = 0,
+                _ => job.recipe.failure.as_mut().unwrap().high = 65536,
             };
             let before = (inv.clone(), stats.clone());
             let mut r = Draw { value: 0, calls: 0 };
