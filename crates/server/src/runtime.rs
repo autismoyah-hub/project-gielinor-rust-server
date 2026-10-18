@@ -19,6 +19,7 @@ mod dialogue;
 mod drop_dialog;
 mod bank_capacity;
 mod deposit_box;
+mod deposit_box_count;
 mod location_bank;
 mod equipment_buttons;
 mod chemistry_dialog;
@@ -235,6 +236,7 @@ struct Active {
     skill_multi: Option<crate::skill_multi::Active>,
     counted_assembly: Option<(u64,gielinor_world::counted_assembly::Request)>,
     anvil_count: Option<crate::anvil::CountDialog>,
+    deposit_count: Option<deposit_box_count::CountDialog>,
     pending_face: Option<(gielinor_world::CoordGrid, u8, u8)>,
     face_angle: Option<u16>,
     face_changed: bool,
@@ -1122,6 +1124,14 @@ impl<B: AccountBackend> Runtime<B> {
                 if let Some(hook_connection)=active.connection {self.transport.send(hook_connection,packet.opcode,&packet.payload)?;}
             }
         }
+        if active.deposit_count.is_some_and(|dialog| closed.iter().any(|(_,interface)|*interface==dialog.interface)) {
+            let dialog=active.deposit_count.take().unwrap();
+            if self.world.quantity_dialog_token(actor).map_err(|e|io::Error::other(format!("{e:?}")))?==Some(dialog.token){
+                self.world.cancel_quantity_dialog(actor).map_err(|e|io::Error::other(format!("{e:?}")))?;
+                active.ui.input_dialog_open=false;
+                if let Some(connection)=active.connection {self.transport.send(connection,117,&[])?;}
+            }
+        }
         if active.anvil_count.is_some_and(|dialog| {
             closed
                 .iter()
@@ -1347,6 +1357,14 @@ impl<B: AccountBackend> Runtime<B> {
         for (_,interface) in &closed {
             for packet in self.interface_hooks.closed(*interface,&mut active.ui).map_err(io::Error::other)? {
                 if let Some(hook_connection)=active.connection {self.transport.send(hook_connection,packet.opcode,&packet.payload)?;}
+            }
+        }
+        if active.deposit_count.is_some_and(|dialog| closed.iter().any(|(_,interface)|*interface==dialog.interface)) {
+            let dialog=active.deposit_count.take().unwrap();
+            if self.world.quantity_dialog_token(actor).map_err(|e|io::Error::other(format!("{e:?}")))?==Some(dialog.token){
+                self.world.cancel_quantity_dialog(actor).map_err(|e|io::Error::other(format!("{e:?}")))?;
+                active.ui.input_dialog_open=false;
+                if let Some(connection)=active.connection {self.transport.send(connection,117,&[])?;}
             }
         }
         if active.anvil_count.is_some_and(|dialog| {
@@ -2145,6 +2163,7 @@ impl<B: AccountBackend> Runtime<B> {
                             self.resume_prayer_pause(actor, pause)?;
                         }
                         Ok(crate::gameplay::Request::ResumeCount(count)) => {
+                            if self.resume_deposit_count(actor,count)? {return Ok(());}
                             if self.resume_counted_assembly(actor,count)? {return Ok(());}
                             if self.resume_anvil_count(actor, count)? {
                                 return Ok(());
@@ -2576,6 +2595,7 @@ impl<B: AccountBackend> Runtime<B> {
                                                 reason: format!("{error:?}"),
                                             });
                                         }
+                                        if self.deposit_box_count_button(actor, &button)? {return Ok(());}
                                         if let Some(action) = self.deposit_box_button(actor, &button) {
                                             if let Err(error) = self.world.submit(actor, action) {
                                                 self.events.push(Event::PacketRejected { connection, actor, opcode: packet.opcode, reason: format!("{error:?}") });
@@ -3150,6 +3170,7 @@ impl<B: AccountBackend> Runtime<B> {
                             skill_multi: None,
                             counted_assembly: None,
                             anvil_count: None,
+                            deposit_count: None,
                             sequence: None,
                             spot_animations: Vec::new(),
                             pending_face: None,

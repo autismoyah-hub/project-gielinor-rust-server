@@ -11,6 +11,7 @@ pub struct Presentation {
     pub deposit_worn: Component,
     pub animation: u16,
     pub presets: [(Component, i32); 4],
+    pub quantity_x: Component,
 }
 impl Presentation {
     pub fn resolve(
@@ -47,6 +48,7 @@ impl Presentation {
             deposit_inventory: Component(12582941),
             deposit_worn: Component(12582942),
             animation: 834,
+            quantity_x: Component(12582949),
             presets: [
                 (Component(12582946), 0),
                 (Component(12582947), 1),

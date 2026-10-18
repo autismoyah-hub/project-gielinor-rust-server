@@ -58,6 +58,11 @@ impl<B: AccountBackend> Runtime<B> {
                 return Err(io::Error::other("Invalid deposit quantity component"));
             }
         }
+        if names.id("component", "bank_depositbox:x")? != p.quantity_x.0
+            || !self.components.contains_key(&p.quantity_x.0)
+        {
+            return Err(io::Error::other("Invalid deposit X component"));
+        }
         let (id, gate) = crate::content::guild_deposit_box(
             names.group("loc"),
             names.group("stat"),
@@ -83,7 +88,7 @@ impl<B: AccountBackend> Runtime<B> {
                     component: p.grid,
                     start: 0,
                     end: 27,
-                    mask: [1, 2, 3, 4, 6]
+                    mask: [1, 2, 3, 4, 5, 6]
                         .into_iter()
                         .map(|op| operation_mask(op).unwrap())
                         .fold(0, |a, b| a | b),
@@ -111,6 +116,16 @@ impl<B: AccountBackend> Runtime<B> {
                 end: -1,
                 mask: operation_mask(1).unwrap(),
             }));
+        self.interface_hooks
+            .opens
+            .entry(p.interface)
+            .or_default()
+            .push(Hook::Events {
+                component: p.quantity_x,
+                start: -1,
+                end: -1,
+                mask: operation_mask(1).unwrap(),
+            });
         self.world.location_banks.insert(id, gate);
         self.world.deposit_box = Some(gielinor_world::deposit_box::Config {
             animation: p.animation,

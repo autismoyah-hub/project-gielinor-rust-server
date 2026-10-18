@@ -6,6 +6,11 @@ use crate::{
     simulation::PlayerData,
     variables::Varp,
 };
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum CountPurpose {
+    Mode,
+    Item { slot: usize, expected: i32 },
+}
 #[derive(Clone, Copy, Debug)]
 pub struct Quantities {
     pub mode: Binding,
@@ -44,6 +49,38 @@ impl Quantities {
             .into_iter()
             .collect())
     }
+    pub fn input(
+        self,
+        data: &mut PlayerData,
+        amount: i32,
+    ) -> Result<Vec<Event>, bank_actions::Error> {
+        if amount <= 0 {
+            return Ok(vec![]);
+        }
+        let mut staged = data.clone();
+        let mut events = Vec::new();
+        let mode = match amount {
+            1 => 0,
+            5 => 1,
+            10 => 4,
+            _ => {
+                events.extend(
+                    staged
+                        .variables
+                        .set(self.requested, amount, true)
+                        .map(Event::Variable),
+                );
+                3
+            }
+        };
+        events.extend(
+            self.mode
+                .set(&mut staged.variables, mode)?
+                .map(Event::Variable),
+        );
+        *data = staged;
+        Ok(events)
+    }
     pub fn deposit(
         self,
         bank: &bank_actions::Config,
@@ -61,6 +98,25 @@ impl Quantities {
             return Ok((vec![], false));
         }
         let count = self.amount(data, operation)?;
+        self.deposit_amount(bank, data, items, clicked, expected, count)
+    }
+    pub fn deposit_amount(
+        self,
+        bank: &bank_actions::Config,
+        data: &mut PlayerData,
+        items: &Catalog,
+        clicked: usize,
+        expected: i32,
+        count: i32,
+    ) -> Result<(Vec<Event>, bool), bank_actions::Error> {
+        if count <= 0
+            || !data
+                .inventory
+                .get(clicked)
+                .is_some_and(|i| i.id == expected && i.count > 0)
+        {
+            return Ok((vec![], false));
+        }
         // Source DEPOSIT_TOP_TO_BOTTOM=true selects first matching id, not the clicked duplicate.
         let slot = data
             .inventory
