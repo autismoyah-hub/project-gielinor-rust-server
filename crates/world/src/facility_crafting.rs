@@ -21,6 +21,7 @@ pub struct Recipe {
     pub members: bool,
     pub first_ticks: u8,
     pub cycle_ticks: u8,
+    pub failure: Option<Failure>,
     pub label: &'static str,
 }
 #[derive(Clone, Debug)]
@@ -170,4 +171,61 @@ pub fn prepare_group(
         assembly::prepare_reward_value(stats, 12, f64::from(recipe.xp_tenths) / 10.0, rate)
             .map_err(Error::Exchange)?;
     Ok((next, next_stats, advanced))
+}
+
+/// An explicit alternate transaction. None output means the raw is destroyed;
+/// zero reward must preserve Stats and emit no fabricated advancement.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct Failure {
+    pub low: i32,
+    pub high: i32,
+    pub output: Option<(i32, u8)>,
+    pub xp_tenths: u16,
+    pub message: &'static str,
+}
+pub type Prepared = (Inventory, Stats, Option<Advancement>);
+pub fn resolve_group(
+    recipe: Recipe,
+    slots: &[usize],
+    inventory: &Inventory,
+    catalog: &Catalog,
+    stats: &Stats,
+    rate: i32,
+    member: bool,
+    random: &mut impl crate::npc::RandomSource,
+) -> Result<(Prepared, bool), Error> {
+    let success = prepare_group(recipe, slots, inventory, catalog, stats, rate, member)?;
+    let Some(failure) = recipe.failure else {
+        return Ok((success, true));
+    };
+    if failure.low < 0 || failure.low > failure.high || failure.high > u16::MAX as i32 {
+        return Err(Error::Policy);
+    }
+    let outputs = match failure.output {
+        None => Vec::new(),
+        Some((id, count)) => {
+            if id < 0 || !(1..=28).contains(&count) {
+                return Err(Error::Policy);
+            }
+            vec![id; usize::from(count)]
+        }
+    };
+    let inputs: Vec<_> = slots
+        .iter()
+        .copied()
+        .map(|slot| (recipe.input, slot))
+        .collect();
+    let failed_inventory = assembly::exchange_slots(inventory, catalog, &inputs, &outputs, true)
+        .map_err(Error::Exchange)?;
+    let (failed_stats, failed_advanced) =
+        assembly::prepare_reward_value(stats, 12, f64::from(failure.xp_tenths) / 10.0, rate)
+            .map_err(Error::Exchange)?;
+    let level = (stats.current(12) as u8).clamp(1, 99) as i32;
+    let threshold = (crate::skills::success_rate(failure.low, failure.high, level, 99) * 256.0)
+        .clamp(0.0, 256.0) as u32;
+    if random.below(256) < threshold {
+        Ok((success, true))
+    } else {
+        Ok(((failed_inventory, failed_stats, failed_advanced), false))
+    }
 }

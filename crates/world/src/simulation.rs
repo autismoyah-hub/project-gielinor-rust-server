@@ -2552,7 +2552,7 @@ impl World {
                                                     if outcome==crate::assembly::Outcome::Made {self.events.push(WorldEvent::AssemblyBatchMade{actor:p.id,trace:crate::assembly::BatchTransition{job,queued_at:pending.queued_at,committed_at:self.clock.0}});}
                                                     self.events.push(WorldEvent::LocationMessage{actor:p.id,message:crate::assembly::outcome_message_for_skill(outcome,skill)});
                                                 }
-                                                Deferred::FacilityCrafting(pending) => {let revision=self.locations.revision(pending.request.location);facility_crafting_actions::complete(p,queues,pending,&self.object_types,revision,self.tutorial_rules_completed_varp.is_some(),&mut self.events);}
+                                                Deferred::FacilityCrafting(pending) => {let revision=self.locations.revision(pending.request.location);facility_crafting_actions::complete(p,queues,pending,&self.object_types,revision,self.tutorial_rules_completed_varp.is_some(),&mut self.events,random);}
                                                 Deferred::AssemblyProduction(pending) => {assembly_production_actions::complete(p,queues,pending,&self.object_types,self.clock.0,&mut self.events);}
                                                 Deferred::Assembly(pending) => {
                                                     held_use_actions::complete_assembly_reward(p,pending.job,&self.object_types,pending.queued_at,self.clock.0,pending.xp_tenths,&mut self.events);

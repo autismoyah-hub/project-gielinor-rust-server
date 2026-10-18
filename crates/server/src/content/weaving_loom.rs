@@ -67,6 +67,7 @@ pub fn weaving_loom(
                 members: true,
                 first_ticks: 4,
                 cycle_ticks: 3,
+                failure: None,
                 label: "strip of cloth",
             },
             Recipe {
@@ -79,6 +80,7 @@ pub fn weaving_loom(
                 members: true,
                 first_ticks: 4,
                 cycle_ticks: 3,
+                failure: None,
                 label: "empty sack",
             },
             Recipe {
@@ -91,6 +93,7 @@ pub fn weaving_loom(
                 members: true,
                 first_ticks: 3,
                 cycle_ticks: 3,
+                failure: None,
                 label: "drift net",
             },
             Recipe {
@@ -103,6 +106,7 @@ pub fn weaving_loom(
                 members: true,
                 first_ticks: 4,
                 cycle_ticks: 3,
+                failure: None,
                 label: "basket",
             },
         ]),

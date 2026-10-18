@@ -174,6 +174,7 @@ pub(super) fn complete(
     revision: Option<u64>,
     tutorial: bool,
     events: &mut Vec<WorldEvent>,
+    random: &mut impl RandomSource,
 ) {
     if revision != Some(pending.request.revision)
         || p.pending_logout
@@ -192,7 +193,7 @@ pub(super) fn complete(
     let Some(slots) = pending.groups.get(pending.index) else {
         return;
     };
-    match crate::facility_crafting::prepare_group(
+    match crate::facility_crafting::resolve_group(
         pending.recipe,
         slots,
         &p.data.inventory,
@@ -200,12 +201,13 @@ pub(super) fn complete(
         &p.data.stats,
         p.data.xp_rate_hundreds,
         p.member,
+        random,
     ) {
         Err(error) => {
             refusal(p.id, error, pending.request.action, events);
             return;
         }
-        Ok((inventory, stats, advanced)) => {
+        Ok(((inventory, stats, advanced), success)) => {
             p.data.inventory = inventory;
             p.data.stats = stats;
             if let Some(advancement) = advanced {
@@ -228,10 +230,14 @@ pub(super) fn complete(
             }
             events.push(WorldEvent::GameMessage {
                 actor: p.id,
-                text: format!(
-                    "You {} the {}.",
-                    pending.request.action, pending.recipe.label
-                ),
+                text: if success {
+                    format!(
+                        "You {} the {}.",
+                        pending.request.action, pending.recipe.label
+                    )
+                } else {
+                    pending.recipe.failure.unwrap().message.into()
+                },
             });
         }
     }
@@ -292,6 +298,7 @@ mod tests {
                         level: 1,
                         xp_tenths: 25,
                         members: false,
+                        failure: None,
                         label: "ball of wool",
                     },
                     Recipe {
@@ -304,6 +311,7 @@ mod tests {
                         level: 10,
                         xp_tenths: 150,
                         members: true,
+                        failure: None,
                         label: "bow string",
                     },
                 ]),
@@ -587,6 +595,7 @@ mod grouped_tests {
             members: true,
             first_ticks: 4,
             cycle_ticks: 3,
+            failure: None,
             label: if basket { "basket" } else { "strip of cloth" },
         };
         w.facility_crafting.insert(
@@ -801,6 +810,7 @@ mod pottery_tests {
                     members: false,
                     first_ticks: 2,
                     cycle_ticks: 3,
+                    failure: None,
                     label: "Unfired pot",
                 },
                 Recipe {
@@ -813,6 +823,7 @@ mod pottery_tests {
                     members: true,
                     first_ticks: 2,
                     cycle_ticks: 3,
+                    failure: None,
                     label: "Unfired cup",
                 },
             ];
@@ -935,6 +946,238 @@ mod pottery_tests {
                     assert_eq!(d.inventory.get(3).unwrap().id, 1761);
                 }
             }
+        }
+    }
+}
+#[cfg(test)]
+mod firing_tests {
+    use super::*;
+    use crate::{
+        facility_crafting::{Config, Failure, Recipe},
+        inventory::Item,
+        loc_collision::LocCollision,
+    };
+    struct Draw {
+        values: Vec<u32>,
+        calls: usize,
+    }
+    impl RandomSource for Draw {
+        fn below(&mut self, n: u32) -> u32 {
+            if n != 256 {
+                return 0;
+            }
+            let value = self.values[self.calls];
+            self.calls += 1;
+            value
+        }
+    }
+    fn fixture() -> (World, ActorId, Request) {
+        let mut w = World::default();
+        for x in (3192..3224).step_by(8) {
+            for z in (3192..3224).step_by(8) {
+                w.collision.allocate(x, z, 0);
+            }
+        }
+        let loc = Location::new(CoordGrid::new(3201, 3200, 0).unwrap(), 14888, 10, 0).unwrap();
+        let ty = LocCollision {
+            width: 1,
+            length: 2,
+            block_walk: 2,
+            block_range: true,
+            break_route_finding: false,
+        };
+        w.location_types.insert(14888, ty);
+        w.locations.load(loc);
+        crate::loc_collision::toggle(&mut w.collision, loc.coords, loc.shape, loc.angle, ty, true)
+            .unwrap();
+        let recipe = Recipe {
+            input: 1787,
+            input_count: 1,
+            output: 1931,
+            output_count: 1,
+            level: 1,
+            xp_tenths: 63,
+            members: false,
+            first_ticks: 6,
+            cycle_ticks: 7,
+            failure: Some(Failure {
+                low: 180,
+                high: 800,
+                output: None,
+                xp_tenths: 0,
+                message: "Cracked",
+            }),
+            label: "Pot",
+        };
+        w.facility_crafting.insert(
+            14888,
+            Config {
+                locations: [(14888, 1)].into(),
+                recipes: std::sync::Arc::new(vec![recipe]),
+                action: "fire",
+                empty_message: "No unfired pottery.",
+                animation: 1317,
+                location_animation: None,
+            },
+        );
+        let mut stats = Stats::default();
+        stats.set_base(3, 10);
+        stats.set_current(3, 10);
+        let mut data = PlayerData::new(
+            1,
+            "Pottery firer".into(),
+            CoordGrid::new(3200, 3200, 0).unwrap(),
+            stats,
+        );
+        data.xp_rate_hundreds = 125;
+        for slot in 0..28 {
+            data.inventory
+                .restore_slot(
+                    slot,
+                    Some(Item {
+                        id: 1511,
+                        count: 1,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+        }
+        for slot in [19, 3, 11] {
+            data.inventory
+                .restore_slot(
+                    slot,
+                    Some(Item {
+                        id: 1787,
+                        count: 1,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+        }
+        w.held_use_types.insert(
+            1787,
+            crate::held_use::Type {
+                id: 1787,
+                content: -1,
+            },
+        );
+        w.queue_login(1, data).unwrap();
+        w.tick().unwrap();
+        let a = w.actors().next().unwrap();
+        w.drain_events();
+        w.submit(
+            a,
+            Action::UseLocation {
+                coords: loc.coords,
+                id: 14888,
+                slot: 19,
+                object: 1787,
+                control: false,
+            },
+        )
+        .unwrap();
+        w.tick().unwrap();
+        let req = w
+            .drain_events()
+            .into_iter()
+            .find_map(|e| {
+                if let WorldEvent::FacilityCraftingRequested { request, .. } = e {
+                    Some(request)
+                } else {
+                    None
+                }
+            })
+            .unwrap();
+        assert!(w.has_location_handler(14888, 1));
+        assert_eq!(req.available(&w.data(a).unwrap().inventory), 3);
+        (w, a, req)
+    }
+    #[test]
+    fn firing_actual_reached_oven_batch_success_crack_success_awards_only_successful_raw() {
+        let (mut w, a, req) = fixture();
+        w.start_facility_crafting(a, req, 0, 3).unwrap();
+        let mut random = Draw {
+            values: vec![0, 255, 0],
+            calls: 0,
+        };
+        for _ in 0..25 {
+            w.tick_with_random(&mut random).unwrap();
+        }
+        assert_eq!(random.calls, 3);
+        let d = w.data(a).unwrap();
+        assert_eq!(d.stats.fine_xp(12), 156);
+        assert_eq!(
+            d.inventory
+                .slots()
+                .iter()
+                .flatten()
+                .filter(|i| i.id == 1931)
+                .count(),
+            2
+        );
+        assert!(!d.inventory.slots().iter().flatten().any(|i| i.id == 1787));
+        assert_eq!(d.inventory.free_space(), 1);
+        let events = w.drain_events();
+        assert_eq!(
+            events
+                .iter()
+                .filter(|e| matches!(e, WorldEvent::SkillAdvanced { skill: 12, .. }))
+                .count(),
+            2
+        );
+        assert_eq!(
+            events
+                .iter()
+                .filter(|e| matches!(e,WorldEvent::GameMessage{text,..}if text=="Cracked"))
+                .count(),
+            1
+        );
+    }
+    #[test]
+    fn firing_later_invalid_credit_or_raw_refuses_before_another_draw() {
+        for stale in [false, true] {
+            let (mut w, a, req) = fixture();
+            w.start_facility_crafting(a, req, 0, 3).unwrap();
+            let mut random = Draw {
+                values: vec![0],
+                calls: 0,
+            };
+            for _ in 0..7 {
+                w.tick_with_random(&mut random).unwrap();
+            }
+            assert_eq!(random.calls, 1);
+            assert_eq!(w.data(a).unwrap().stats.fine_xp(12), 78);
+            if stale {
+                w.data_mut(a)
+                    .unwrap()
+                    .inventory
+                    .restore_slot(
+                        3,
+                        Some(Item {
+                            id: 1787,
+                            count: 1,
+                            vars: 7,
+                        }),
+                    )
+                    .unwrap();
+            } else {
+                w.object_types.dummy.insert(1931);
+            }
+            let before = (
+                w.data(a).unwrap().inventory.clone(),
+                w.data(a).unwrap().stats.clone(),
+            );
+            for _ in 0..25 {
+                w.tick_with_random(&mut random).unwrap();
+            }
+            assert_eq!(random.calls, 1);
+            assert_eq!(
+                (
+                    w.data(a).unwrap().inventory.clone(),
+                    w.data(a).unwrap().stats.clone()
+                ),
+                before
+            );
         }
     }
 }

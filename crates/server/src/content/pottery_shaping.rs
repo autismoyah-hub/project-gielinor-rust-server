@@ -89,6 +89,7 @@ pub fn pottery_shaping(
             members,
             first_ticks: 2,
             cycle_ticks: 3,
+            failure: None,
             label: name,
         });
     }

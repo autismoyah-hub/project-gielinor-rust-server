@@ -78,6 +78,7 @@ pub fn spinning_wheel(
                 level: 1,
                 xp_tenths: 25,
                 members: false,
+                failure: None,
                 label: "ball of wool",
             },
             Recipe {
@@ -90,6 +91,7 @@ pub fn spinning_wheel(
                 level: 10,
                 xp_tenths: 150,
                 members: true,
+                failure: None,
                 label: "bow string",
             },
             Recipe {
@@ -102,6 +104,7 @@ pub fn spinning_wheel(
                 level: 10,
                 xp_tenths: 150,
                 members: true,
+                failure: None,
                 label: "crossbow string (sinew)",
             },
             Recipe {
@@ -114,6 +117,7 @@ pub fn spinning_wheel(
                 level: 10,
                 xp_tenths: 150,
                 members: true,
+                failure: None,
                 label: "crossbow string (oak roots)",
             },
             Recipe {
@@ -126,6 +130,7 @@ pub fn spinning_wheel(
                 level: 19,
                 xp_tenths: 300,
                 members: true,
+                failure: None,
                 label: "magic string",
             },
             Recipe {
@@ -138,6 +143,7 @@ pub fn spinning_wheel(
                 level: 30,
                 xp_tenths: 250,
                 members: true,
+                failure: None,
                 label: "rope",
             },
         ]),
