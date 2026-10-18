@@ -3,11 +3,9 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0065: immediate Dramen staff and fallible limestone crafting; source [4f4aacb](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/4f4aacb2929e8ad775d091527e2d80070100ee69). Shared optional advancement preserves zero-XP Stats; immediate actions never enter production queues. Both limestone outcomes stage before one draw. Bounded shared regression PASS; independent V0–V4 acceptance pending.
+OR-MIG-0066: manual damaged-tail sinew crafting, source [5582c27](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/5582c276d1657a0142151936e5a9fec022d7c938). Actual selected held-use registration, current Crafting 10 / 15 XP / member. Focused PASS 1 server test, 422 unchanged source hashes; shared engine unchanged since unit65 full regression. Independent V0–V4 acceptance pending.
 
-65 units across 73 append-only records: 23 historical and 42 new shared/gameplay units. Discovery inventory: 3508 = 38 partial eligible + 4 framework/infrastructure + 658 configuration + 2808 unassessed. These are discovery categories, not completion percentages. Broader Crafting, facilities, quest/acquisition and other gameplay obligations remain unfinished.
-
-[PG-DEF-001/#123](https://github.com/autismoyah-hub/project-gielinor-rust-server/issues/123) remains correction_pending_retest at b11260e; historical native failure is preserved. Continue eligible implementation.
+66 units / 74 append-only records, 23 historical and 43 new shared/gameplay units. Discovery: 3508 = 38 partial eligible + 4 framework/infrastructure + 658 configuration + 2808 unassessed, not a completion percentage. Automatic sinew production, wider Crafting/facilities/quest acquisition and other content remain. PG-DEF-001 native Close candidate b11260e remains pending independent retest. Continue eligible implementation.
 <!-- forge-current:end -->
 
 
@@ -317,3 +315,12 @@ Shared Prepared advancement is optional: zero XP preserves Stats and emits no Sk
 Bounded working-tree validation forge-immediate-tools-tests-attempt-001 PASS, 421 source hashes unchanged: test result: ok. 106 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.19s; test result: ok. 468 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 33.93s. Resource guard measured 7,505 MiB available, 54.2% commit, 0 pages-in/s, 0.0 ms disk, 10.3% CPU; Cargo -j 2. Tests cover actual immediate dispatch, full bag/selected input, zero XP/no advancement, no delayed replay, invalid either output/member/level/tool before RNG, configured zero-XP failure and limestone success/failure/certainty boundaries. Private resources and historical failures remain preserved. Native, lifecycle, pristine-SHA and reference acceptance belong to PROVING GROUND.
 
 Wiki partial Lost City notes describe quest context and branch acquisition; this adapter does not invent a gate for an already-owned branch or claim quest, equipment, fairy-ring or transport parity. Wider Crafting, crab gates/failure and source framework obligations remain. Inventory remains 3508 = 38 partial eligible + 4 framework/infrastructure + 658 configuration + 2808 unassessed. Queue: 65 units / 73 append-only records, 23 historical and 42 new shared/gameplay units. PG-DEF-001 Close candidate remains pending independent retest. Continue eligible implementation.
+
+
+## FORGE OR-MIG-0066 — manual damaged-tail sinew crafting
+
+Published source 5582c276d1657a0142151936e5a9fec022d7c938. Actual held-use type pair knife 946 / damaged monkey tail 19665 uses existing ToolCrafting: member current Crafting 10, one sinew 9436, 15 XP (187 fine at 125%), nominal first delay 1 and sequence 10937. Target internal alias damaged_ballista_rope is checked against display name Damaged monkey tail. Three ordinary exact definitions and pinned Wiki Sinew 15303474/Damaged monkey tail 15187541 plus source hashes recorded. No donor code/generated data/assets copied.
+
+Focused forge-sinew-crafting-tests-attempt-001 PASS: one server test; zero world tests matched; 422 source hashes unchanged; compile 11.92s. Actual reversed held dispatch verifies full-bag selected replacement, retained exact knife/other tail, member fine XP versus nonmember refusal and invalid transformed output binding. Shared engine remains the unit65 fully regressed source. Guard 6,667 MiB available, 58.7% commit, no paging, 5.2 ms disk, 24.4% CPU, Cargo -j 2; other compiler presence informational. No new native acceptance claimed.
+
+This unit is manual only. Automatic Make-all and its Wiki timing note (0, then 3, then 4 ticks), Cooking beef/impaler meat, tail acquisition and bow-string spinning remain separate. Queue 66 units / 74 append-only records, 23 historical and 43 new shared/gameplay units; discovery counts unchanged (3508 = 38 partial eligible + 4 framework/infrastructure + 658 configuration + 2808 unassessed). PG-DEF-001 Close candidate still awaits independent retest. Continue eligible content.
