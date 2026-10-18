@@ -7,8 +7,13 @@ from motion_authoring import solve_limb,forward,ancestors,matrix,matmul,inverse_
 from contact_diagnostics import hull,inside
 from kinematics import frame_at
 from construction import clipped
+from mesh_validation import clean_owned
 
 class ProductionContracts(unittest.TestCase):
+    def test_owned_cleanup_preserves_vertex_identity_for_classic_groups(self):
+        vs=[[0,0,0],[8,0,0],[0,8,0],[4,0,0]];out,faces,report=clean_owned(vs,[[0,1,2],[0,1,3]]);self.assertIs(out,vs);self.assertEqual(faces,[[0,1,2]]);self.assertEqual(report['removed_zero_area_faces'],1)
+    def test_entirely_collapsed_owned_component_is_rejected(self):
+        with self.assertRaises(ValueError):clean_owned([[0,0,0],[1,0,0],[2,0,0]],[[0,1,2]])
     def test_closed_separate_stave_is_a_manifold_shell(self):
         v,f=stave([[0,28,28],[-40,35,35],[-80,28,28]],.02,.6,4);edges=Counter(tuple(sorted((face[i],face[(i+1)%3])))for face in f for i in range(3));self.assertTrue(all(n==2 for n in edges.values()));self.assertEqual(len(v)-len(edges)+len(f),2)
     def test_curved_sweep_rejects_zero_tangent_and_negative_radius(self):

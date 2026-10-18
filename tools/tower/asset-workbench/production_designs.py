@@ -7,6 +7,7 @@ from templates import part
 from semantic_materials import material
 
 def provenance(r,brief):
+    r['geometry_validation']=dict(remove_zero_area_faces=True,preserve_vertex_order=True)
     r['provenance']=dict(kind='original_tower_asset',source_mesh_or_animation_reuse=False,brief=brief,artistic_acceptance=False,live_integration=False);return r
 
 def arcade():
