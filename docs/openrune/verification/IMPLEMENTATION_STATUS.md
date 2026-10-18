@@ -3,9 +3,9 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0076: five pottery firing profiles with staged success/destruction/noXP, source [56c6772](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/56c6772faec0fa20ae0aa301c8d31cb3c517b2a9). Wiki min1/180–800 overrides donor differences; cup/13vs14 uncertainty explicit. Shared regression PASS; independent V0–V4 queued.
+OR-MIG-0077: six fibre textile recipes in existing wheel/loom dispatch; source [41f67c1](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/41f67c1ffa08f3b0ae0964292c4a98245a470b47). Strict target definitions bridge eight absent aliases. Focused transaction tests and actual binary check PASS; independent V0–V4 queued.
 
-76 units / 84 append-only records:23historical53newshared/gameplay. Discovery3508=39partial eligible+4framework/infrastructure+658configuration+2807unassessed, not completion percentages. Potlidunlock/otherovens/menus/boosts and broad content remain. PG-DEF-001 Close candidate b11260e pending independent retest. Continue eligible implementation.
+77 units / 85 append-only records. Discovery3508=39partial eligible+4framework/infrastructure+658configuration+2807unassessed; not completion percentages. Broad content and ordinary other facilities/access/modifiers remain. PG-DEF-001 Close candidate pending independent retest.
 <!-- forge-current:end -->
 
 
@@ -434,3 +434,12 @@ Wiki product charts180/800/min1 override donor180/789/higher pie/bowl/plant leve
 forge-pottery-firing-tests-attempt-001 PASS, 435 unchanged source hashes: test result: ok. 120 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.45s; test result: ok. 480 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 34.22s. Five min1factory rewards/roll boundaries/destruction/unchangedStats/no event; invalid success/alternate credit before RNG. Actual reached oven success/crack/success gives2pots/156fine/2events/3draws; later invalid credit/raw stopsafter1draw without new loss. Existing deterministic NoDraw spinning/weaving/shaping and prior users regressed. Guard6,954MiB available,56.8%commit,390pages-in/s,0.9msdisk,59.0%CPU,j2. Private/native/prior failure evidence preserved; not independent/native/pristine acceptance.
 
 Queue76units/84append-onlyrecords:23historical53newshared/gameplay. Discovery3508=39partial eligible+4framework/infrastructure+658configuration+2807unassessed, not completion percentages. PG-DEF-001 Close candidate pending independent retest; broad source obligations remain. Continue eligible implementation.
+
+
+## FORGE OR-MIG-0077 — fibre textiles
+
+Source 41f67c1ffa08f3b0ae0964292c4a98245a470b47: three linen/hemp/cotton yarn recipes and three two-yarn bolt recipes now append to actual reached wheel14889 Spin2 and loom8717 Weave2/material dispatch before config cloning. Current Crafting12/39/73; yarn XP16/60/105 and bolts20/75/132, all members. Fine XP125%200/750/1312 and250/937/1650 per product. No new engine or RNG. Nine exact ordinary item definitions and nine Wiki pages/eight source files pinned privately; eight aliases absent in the older symbol snapshot. Strict direct-ID definition checks permit absent newer aliases and reject conflicting aliases; flax still requires its alias. Definitions/catalog/held-use paths load all types independently of symbols. No symbol or cache writes.
+
+Yarn nominal3first/3repeat; bolt Wiki Make-all4first/3repeat explicitly overrides donor3/3. Existing full-credit grouped transactions, quantity/Close/selected slot capture reused. Focused textile test001 PASS1server/0world matches,436 unchanged source hashes, compile43.68s; actual server binaries check001 PASS,436 unchanged hashes. Six full-bag rewards plus low-level/nonmember/short group/invalid credit preserve originals, conflicting/missing/invalid type bindings refuse. Guard focused6,208MiB/59.9%commit/4pages-in/s/1.3msdisk/48.2%CPU; binary6,200MiB/60.0%commit/1,218pages-in/s/1.4msdisk/51.2%CPU; bothj2. Existing vendor/characters warnings retained. Working-tree evidence is not independent/native/pristine acceptance.
+
+Queue77units/85append-onlyrecords. Discovery3508=39partial eligible+4framework/infrastructure+658configuration+2807unassessed, not completion percentages. Other facilities, resource acquisition, quests/access, diary modifiers and broad source obligations remain. PG-DEF-001 Close candidate pending independent retest. Continue implementation.
