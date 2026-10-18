@@ -100,6 +100,21 @@ FORGE published candidate `b11260e0f4d1b3eaad0fefc18112c2e8bdf5843e` as OR-MIG-0
 
 Ordinary P3, nonblocking metadata correction at queue HEAD `0c8c7f2b389d77f9f04517869c2003573d94b1d1`: OR-MIG-0061 V2 reason says native Close129/staleResume134, while the same contract's normal/negative behavior, exact candidate decoder and original independently captured239.1 reproduction use Close95(empty)/ResumePause115. Correct that acceptance-reason prose to95/115; do not change packet implementation to match the typo. No gameplay defect or FORGE stop inferred. Chemistry retesting remains user-deferred.
 
+## PG-INFRA-008 — glass observer and additional admission scope corrections
+
+- Target remains `5ce50aede9164cdee8e4008257d0298ea77289e7`. Initial independent glass matrix failed to compile because `close_dialogs` returns bool and its mutation match arm expected unit; wrapper corrected. Fresh1344positive/72negative/96late scenarios PASS. Original source/logs retained.
+- First native eight-choice campaign and actual restart PASS. Resume115component uses InverseMiddle order, not big-endian; independent decoder corrected against exact target protocol and immutable captured bytes. No successful database was reset or native scenario replayed to fix the assessor.
+- `quantities-001` lookup missed selected1text containing colour markup. `quantities-002` then required a matching operation before actual pointer handling. Both ended before Make and preserved inventory/Stats; raw FAIL verdicts, frozen drivers, acknowledged shutdown and databases are retained. Later lookup normalizes markup and binds exact observed logical quantity controls7/8/9/11/12; child14is decorative keyboard-hint text and must not be confused with a quantity button. Actual emitted Resume115count remains the acceptance oracle.
+- Additional admission test initially mutated already-attested host `Catalog.notes` for output1919and assumed live refusal. Generic insertion accepts that noted-ID map and commits the exact output/XP; contract ordinary metadata rejection applies at startup. This is preserved as an unsupported trusted-host-mutation observation, not a player-reachable defect or a claim of live catalogue revalidation. The unexecuted analogous input-placeholder mutation was removed too. Corrected112legitimate selected-item/count/actor/policy cases PASS; invalid startup metadata is assigned to the separately authored, still-pending glass-bindings suite.
+- Native eight-choice, Close and restart evidence does not finish quantity labels/1/5/10/All/X, captured batch interruption or all V1–V4 obligations. No chemistry-specific Close retest or issue123closure is implied.
+
+## PG-INFRA-009 — native X keyboard sends an unintended product continuation
+
+- Exact server `5ce50aede9164cdee8e4008257d0298ea77289e7`, client `4a6cee5ecad91dd5b0f15fa655ab12cbe4638d5302afee45ad14bfa788d36f17`; owned `deep-glass-remaining/remaining-002`. P2 native-test dependency; no server defect established, no FORGE stop requested.
+- Actual read-only transport trace: keyboard/script-generated Resume115at tick154component270:17/count1occurs before intended manual270:18/count3at tick157. Server saves one selected Emptyoil lamp4525and1250fineXP, matching the first frame. The consumed continuation cannot then make three Vials229. Separate digit/Enter frames did not resolve it.
+- Native X remains BLOCKED pending correct focused-input dispatch or a pinned native-client correction. Do not suppress outbound packets, directly overwrite local quantity state, substitute newer server code, or declare an X PASS from a headless count API. Exact callback/focus cause remains unproven; original-client reproduction is not claimed.
+- Preserve earlier uninstrumented remaining-001wrong-three-oil state separately. Preserve quantities-003raw FAIL-at-Xand passing1/5/10subchecks plus actual saved-state/native recovery. Continue fresh All-only and captured-batch interruption tests immediately.
+
 ## PG-INFRA-006 — resolved observer and capacity assumptions
 
 - Retain negative-001: removing an actual Continue packet from outbound left the native Continue latch active, preventing real Cancel. Corrected observer dispatches real Cancel before replay and never strips generated packets. Fresh negative-002 and genuine Close case are separate immutable runs.

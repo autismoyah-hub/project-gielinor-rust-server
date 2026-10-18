@@ -1,0 +1,7 @@
+{
+  "implementation_id": "OR-MIG-0062",
+  "tested_sha": "5ce50aede9164cdee8e4008257d0298ea77289e7",
+  "classification": "VERIFIER_MENU_ASSUMPTION",
+  "status": "HARNESS_CORRECTED_FRESH_RERUN",
+  "reason": "Selected1highlighted control was located, but the observer required a matching Interface operation before driving its native pointer click. No Make or gameplay mutation occurred. Next fresh run records menu entries and uses actual pointer/on-click handling, with optional matching menu action and strict actual Resume115count proof. This is not an implementation defect."
+}

@@ -1,0 +1,87 @@
+{
+  "implementation_id": "OR-MIG-0062",
+  "tested_sha": "5ce50aede9164cdee8e4008257d0298ea77289e7",
+  "campaign_kind": "historical",
+  "status": "PASS",
+  "native_choices": 8,
+  "fine_xp_award": 15825,
+  "effects": [
+    {
+      "slot": 4,
+      "output": 1919,
+      "animation": 884,
+      "animation_delay": 0,
+      "animation_tick": 110,
+      "credit_tick": 112,
+      "received_clock_delta": 2
+    },
+    {
+      "slot": 5,
+      "output": 4527,
+      "animation": 884,
+      "animation_delay": 0,
+      "animation_tick": 125,
+      "credit_tick": 127,
+      "received_clock_delta": 2
+    },
+    {
+      "slot": 6,
+      "output": 4525,
+      "animation": 884,
+      "animation_delay": 0,
+      "animation_tick": 141,
+      "credit_tick": 143,
+      "received_clock_delta": 2
+    },
+    {
+      "slot": 7,
+      "output": 229,
+      "animation": 884,
+      "animation_delay": 0,
+      "animation_tick": 157,
+      "credit_tick": 159,
+      "received_clock_delta": 2
+    },
+    {
+      "slot": 8,
+      "output": 6667,
+      "animation": 884,
+      "animation_delay": 0,
+      "animation_tick": 173,
+      "credit_tick": 175,
+      "received_clock_delta": 2
+    },
+    {
+      "slot": 9,
+      "output": 567,
+      "animation": 884,
+      "animation_delay": 0,
+      "animation_tick": 188,
+      "credit_tick": 190,
+      "received_clock_delta": 2
+    },
+    {
+      "slot": 10,
+      "output": 4542,
+      "animation": 884,
+      "animation_delay": 0,
+      "animation_tick": 203,
+      "credit_tick": 205,
+      "received_clock_delta": 2
+    },
+    {
+      "slot": 11,
+      "output": 10980,
+      "animation": 884,
+      "animation_delay": 0,
+      "animation_tick": 219,
+      "credit_tick": 221,
+      "received_clock_delta": 2
+    }
+  ],
+  "scope": "Actual native pipe/glass use in both directions, each of8real Resume115choice components with count1, correct distinct output and fineXP, full28bag and retained duplicate pipes/raws. Native pre-completion Walk cancels, genuine emptyClose95then stale actual Resume refuses without inventory/XP changes, fresh controls remain valid and8completed-dialog response replays do not repeat. Decoded884animation precedes each raw selected inventory18credit by2received server clocks. Acknowledged save/actual restart/native full inventory and Stats confirm all8outputs and exact15825fineXP without replay.",
+  "limitations": [
+    "This first native run logged header text, not dynamic choice data_text/hover labels. Exact labels and1/5/10/All/Xcontrols plus repeated batch cadence require the next fresh quantity campaign.",
+    "No compiled original Kotlin, rendered/audio, in-flight batch logout or process-crash acceptance inferred. Chemistry-specific PG123candidate atb11260e remains user-deferred; this is nonchemistry Close evidence at5ce50ae only."
+  ]
+}

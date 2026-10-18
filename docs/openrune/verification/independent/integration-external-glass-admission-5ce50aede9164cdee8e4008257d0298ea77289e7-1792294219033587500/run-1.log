@@ -1,0 +1,17 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\5ce50aede9164cdee8e4008257d0298ea77289e7\external-harness-2559175500)
+warning: unused import: `Action`
+ --> tests\admission.rs:2:164
+  |
+2 | ...s Held},inventory::Item,simulation::{World,PlayerData,ActorId,Action},stats::Stats,CoordGrid};
+  |                                                                  ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `proving-ground-energy` (test "admission") generated 1 warning (run `cargo fix --test "admission" -p proving-ground-energy` to apply 1 suggestion)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 10.07s
+     Running tests\admission.rs (C:\Projects\OSRSRSPS\agent7-verification\work\5ce50aede9164cdee8e4008257d0298ea77289e7\target\debug\deps\admission-2795492d977091e6.exe)
+
+running 1 test
+test fourteen_additional_captured_admission_failures_for_each_glass_profile ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 18.98s

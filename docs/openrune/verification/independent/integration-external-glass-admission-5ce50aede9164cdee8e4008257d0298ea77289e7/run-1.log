@@ -1,0 +1,33 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\5ce50aede9164cdee8e4008257d0298ea77289e7\external-harness-5697962700)
+warning: unused import: `Action`
+ --> tests\admission.rs:2:164
+  |
+2 | ...s Held},inventory::Item,simulation::{World,PlayerData,ActorId,Action},stats::Stats,CoordGrid};
+  |                                                                  ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `proving-ground-energy` (test "admission") generated 1 warning (run `cargo fix --test "admission" -p proving-ground-energy` to apply 1 suggestion)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.72s
+     Running tests\admission.rs (C:\Projects\OSRSRSPS\agent7-verification\work\5ce50aede9164cdee8e4008257d0298ea77289e7\target\debug\deps\admission-2795492d977091e6.exe)
+
+running 1 test
+test sixteen_additional_captured_admission_failures_for_each_glass_profile ... FAILED
+
+failures:
+
+---- sixteen_additional_captured_admission_failures_for_each_glass_profile stdout ----
+
+thread 'sixteen_additional_captured_admission_failures_for_each_glass_profile' (11136) panicked at tests\admission.rs:40:42:
+assertion `left == right` failed: index0 mode6
+  left: Inventory { stack: Normal, placeholders: false, slots: [Some(Item { id: 1785, count: 1, vars: 0 }), Some(Item { id: 1785, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1775, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1775, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1919, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1775, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 })], modified: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27} }
+ right: Inventory { stack: Normal, placeholders: false, slots: [Some(Item { id: 1785, count: 1, vars: 0 }), Some(Item { id: 1785, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1775, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1775, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1775, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 }), Some(Item { id: 1775, count: 1, vars: 0 }), Some(Item { id: 1931, count: 1, vars: 0 })], modified: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27} }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    sixteen_additional_captured_admission_failures_for_each_glass_profile
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.77s
+
+error: test failed, to rerun pass `--test admission`

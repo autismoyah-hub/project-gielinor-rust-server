@@ -1,0 +1,6 @@
+{
+  "tested_sha": "5ce50aede9164cdee8e4008257d0298ea77289e7",
+  "classification": "OUT_OF_CONTRACT_TRUSTED_CATALOG_MUTATION",
+  "status": "CORRECTED_SCOPE_RERUN",
+  "reason": "The test changed the already-attested host Catalog.notes metadata for output1919 and expected runtime refusal. Generic Inventory insertion legitimately accepts a noted-ID mapping; exact-ID output and XP committed. Contract requires ordinary metadata rejection at startup, not hot mutation/revalidation of trusted registry maps. Retain this observation; do not classify as a player-reachable production defect or silently claim dynamic metadata guards. The unexecuted analogous input-placeholder mutation is also removed from this admission suite. Startup invalid-definition template refusal belongs to the separately authored glass-bindings suite, which is pending execution;112legitimate captured-slot/metadata/count/actor admission cases remain in the corrected fresh scope."
+}

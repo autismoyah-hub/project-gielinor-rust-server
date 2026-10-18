@@ -235,14 +235,135 @@ fn glass_make_action(c:&mut ClientState,l:&mut Connection,index:u32)->R<Action> 
         if !l.scripts_busy() && c.interfaces.scripts.is_empty(){
             if let Some(p)=layout.widgets.get(&logical).filter(|p|!p.hidden && p.clip[2]>p.clip[0] && p.clip[3]>p.clip[1]) {
                 let point=[(p.clip[0]+p.clip[2])/2,(p.clip[1]+p.clip[3])/2];
-                if let Some(a)=c.interface_menu(point)?.into_iter().find(|e|match e.action{Action::Continue(id)|Action::Button{id,..}|Action::Interface{id,..}=>c.interfaces.runtime.get(&id).map_or(id,|r|r.logical_id)==logical,_=>false}).map(|e|e.action){
-                    for (&id,w) in &c.interfaces.widgets {if id>>16==270 && !w.text.is_empty(){println!("PG_GLASS_WIDGET id={id} text={:?}",w.text);}}
+                if let Some(a)=c.interface_menu(point)?.into_iter().find(|e|match e.action{Action::Continue(id)|Action::Button{id,..}|Action::Interface{id,..}=>c.interfaces.runtime.get(&id).map_or(id,|r|r.logical_id)==logical,_=>false}).map(|e|{println!("PG_GLASS_MENU index={index} option={:?} target={:?}",e.option,e.target);e.action}){
+                    for (&id,w) in &c.interfaces.widgets {let logical=c.interfaces.runtime.get(&id).map_or(id,|r|r.logical_id);if logical>>16==270 && (!w.text.is_empty() || !w.data_text.is_empty()){println!("PG_GLASS_WIDGET id={id} logical={logical} text={:?} data={:?}",w.text,w.data_text);}}
                     println!("PG_GLASS_OPTION_READY index={index} logical={logical} tick={}",c.server_tick);return Ok(a);
                 }
             }
         }
         if start.elapsed()>Duration::from_secs(30){return Err(format!("native glass choice{index} unavailable").into());}std::thread::sleep(Duration::from_millis(20));
     }
+}
+fn bank_deposit_action(c:&mut ClientState,l:&mut Connection,slot:i32)->R<Action> {
+    let start=Instant::now();loop{
+        pump(c,l,30,|_,_|true)?;let layout=c.interfaces.layout(c.canvas)?;
+        if !l.scripts_busy() && c.interfaces.scripts.is_empty(){
+            let ids=c.interfaces.runtime.iter().filter_map(|(&id,r)|(r.logical_id>>16==15 && r.child_index==slot).then_some(id)).collect::<Vec<_>>();
+            for id in ids {
+                let Some(p)=layout.widgets.get(&id).filter(|p|!p.hidden && p.clip[2]>p.clip[0] && p.clip[3]>p.clip[1])else{continue;};
+                let point=[(p.clip[0]+p.clip[2])/2,(p.clip[1]+p.clip[3])/2];
+                if let Some(e)=c.interface_menu(point)?.into_iter().find(|e|e.option.eq_ignore_ascii_case("Deposit-All")){println!("PG_BANK_MENU slot={slot} option={:?} target={:?}",e.option,e.target);return Ok(e.action);}
+            }
+        }
+        if start.elapsed()>Duration::from_secs(90){return Err("native bank sidebar Deposit-All unavailable".into());}std::thread::sleep(Duration::from_millis(20));
+    }
+}
+fn pouch(c:&mut ClientState,l:&mut Connection)->R<()> {
+    let xp=c.data.experience;tab(c,"Inventory")?;ticks(c,l,3)?;
+    assert_eq!(c.inventories.item(93,4).count,3);assert_eq!(c.inventories.item(93,5).count,2);
+    let a=item_action(c,4,false,"Open")?;dispatch(c,a,"native selected pouch Open-one")?;pump(c,l,30,|c,_|c.inventories.item(93,4).count==2 && c.inventories.item(93,27).count==1003)?;
+    let a=item_action(c,4,false,"Open-all")?;let packet=sent_packet(c,a,"native selected pouch Open-all")?;pump(c,l,30,|c,_|c.inventories.item(93,4).id==-1 && c.inventories.item(93,27).count==1009)?;
+    replay(c,l,&packet,"stale selected pouch slot4with duplicate slot5intact")?;ticks(c,l,5)?;assert_eq!(c.inventories.item(93,5).count,2);assert_eq!(c.inventories.item(93,27).count,1009);assert_eq!(c.data.experience,xp);
+    println!("PG_CASE_PASS native pouch Open-one/Open-all selected full bag;3pouches->9coins; duplicate and XP retained; stale slot replay refused");
+    let mut bank=None;
+    for (&index,npc) in &c.npc_state.npcs {
+        if npc.id!=3227{continue;}let def=c.npcs.get(&(npc.id as u32)).ok_or("native banker definition absent")?;
+        for i in 0..5 {if npc.appearance.operations&(1<<i)==0{continue;}
+            if gielinor_client::entity_ops::label(&def.operations,i,None,&c.scripts.variables,&mut c.scripts.source)?.is_some_and(|s|s.eq_ignore_ascii_case("Bank")){bank=Some(Action::Npc{index,operation:(i+1) as u8,sub:0});}
+        }
+    }
+    dispatch(c,bank.ok_or("native cache-resolved Banker tutor Bank operation absent")?,"native cache-resolved Banker tutor Bank")?;
+    let action=bank_deposit_action(c,l,27)?;let packet=sent_packet(c,action,"native bankable Coins Deposit-All control")?;pump(c,l,60,|c,_|c.inventories.item(93,27).id==-1 && c.inventories.total(95,995)==1009)?;
+    let before=(0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>();let mut denied=packet.clone();assert_eq!((denied.0,denied.1.len()),(47,9));denied.1[4..6].copy_from_slice(&5u16.to_be_bytes());denied.1[6..8].copy_from_slice(&22521u16.to_be_bytes());
+    replay(c,l,&denied,"actual native bank transfer retargeted to restricted pouch slot5and matching22521claim")?;ticks(c,l,6)?;
+    assert_eq!((0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>(),before);assert_eq!(c.inventories.total(95,995),1009);
+    assert_eq!(c.inventories.item(93,5).count,2);assert_eq!(c.inventories.total(95,22521),0);assert_eq!(c.data.experience,xp);
+    println!("PG_CASE_PASS native no_bank Coinpouch deposit refusal via retargeted actual native bank-transfer frame, with1009coin positive deposit control; NPCoperation cache-resolved, no rendered hit-test claim");Ok(())
+}
+fn plain_ui(text:&str)->String {
+    let mut result=String::new();let mut tag=false;
+    for ch in text.chars(){if ch=='<'{tag=true;}else if ch=='>'{tag=false;}else if !tag{result.push(ch);}}
+    result
+}
+fn glass_quantity(c:&mut ClientState,l:&mut Connection,index:u32,label:&str,n:i32)->R<(u16,Vec<u8>)> {
+    let action=glass_make_action(c,l,index)?;let layout=c.interfaces.layout(c.canvas)?;
+    let child=match label{"1"=>7,"5"=>8,"10"=>9,"X"=>11,"All"=>12,_=>return Err("unknown quantity control".into())};
+    let control=(270<<16)|child; // Observed native quantity controls; child14 is keyboard-hint text.
+    let (&id,_)=c.interfaces.widgets.iter().find(|(id,w)|plain_ui(&w.text).trim()==label && c.interfaces.runtime.get(*id).map_or(**id,|r|r.logical_id)==control && layout.widgets.get(*id).is_some_and(|p|!p.hidden && p.clip[2]>p.clip[0] && p.clip[3]>p.clip[1])).ok_or_else(||format!("native quantity control{label} absent"))?;
+    let p=&layout.widgets[&id];let point=[(p.clip[0]+p.clip[2])/2,(p.clip[1]+p.clip[3])/2];
+    let menu=c.interface_menu(point)?;
+    for entry in &menu{println!("PG_GLASS_QUANTITY_MENU label={label} option={:?} target={:?}",entry.option,entry.target);}
+    let select=menu.into_iter().find(|e|matches!(e.action,Action::Interface{id,..} if c.interfaces.runtime.get(&id).map_or(id,|r|r.logical_id)==control)).map(|e|e.action);
+    c.input.pointer=point;c.input.button(0,true);c.input.button(0,false);c.tick_interfaces(false)?;c.input.begin_cycle();
+    if let Some(select)=select{dispatch(c,select,&format!("native glass quantity{label}"))?;}else{println!("PG_GLASS_QUANTITY_CLICK label={label} native_pointer={point:?}; no matching operation, actual click listener/default selection must produce requested count");}
+    pump(c,l,30,|c,l|!l.scripts_busy() && c.interfaces.scripts.is_empty())?;
+    if label=="X" {
+        for character in n.to_string().encode_utf16(){c.input.character(character);c.tick_interfaces(false)?;c.input.begin_cycle();ticks(c,l,1)?;}
+        c.input.key(84,true);c.tick_interfaces(false)?;c.input.key(84,false);c.input.begin_cycle();
+        println!("PG_GLASS_TYPED_X count={n} native_key84=true distinct_character_and_enter_frames=true");pump(c,l,30,|c,l|!l.scripts_busy() && c.interfaces.scripts.is_empty())?;
+    }
+    let p=sent_packet(c,action,&format!("native glass quantity{label} Make"))?;
+    assert_eq!(p.0,115);assert_eq!(p.1.len(),6);assert_eq!(u16::from_be_bytes([p.1[4],p.1[5]]) as i32,n,"native requested count differs from actual control");Ok(p)
+}
+fn glass_quantities(c:&mut ClientState,l:&mut Connection)->R<()> {
+    let xp=c.data.experience;let mut fine=130344311i32;tab(c,"Inventory")?;ticks(c,l,3)?;
+    for (index,(label,count,output,award)) in [("1",1,1919,875),("5",5,4527,950),("10",10,4525,1250),("X",3,229,1750),("All",4,6667,2125)].into_iter().enumerate(){
+        ready(c,l)?;let raws=(0..28).filter(|&s|c.inventories.item(93,s).id==1775).collect::<Vec<_>>();let slot=if index%2==0{raws[0]}else{*raws.last().ok_or("glass raw absent")?};
+        if index%2==0{use_slots(c,0,slot)?;}else{use_slots(c,slot,0)?;}
+        let p=glass_quantity(c,l,index as u32,label,count)?;fine+=count*award;
+        pump(c,l,90,|c,_|c.inventories.total(93,output)==count && c.data.experience[12]==fine/10)?;ticks(c,l,4)?;
+        assert_eq!(c.inventories.item(93,0).id,1785);assert_eq!(c.inventories.item(93,1).id,1785);assert_eq!(c.inventories.item(93,27).count,1000);
+        assert_eq!((0..28).filter(|&s|c.inventories.item(93,s).id>=0).count(),28);let committed=c.data.experience;
+        replay(c,l,&p,"stale glass batch response after completed dialog")?;ticks(c,l,4)?;assert_eq!(c.data.experience,committed);
+        for i in 0..25{if i!=12{assert_eq!(c.data.experience[i],xp[i]);}}
+        println!("PG_GLASS_BATCH_COMMITTED label={label} count={count} selected_slot={slot} output={output} fine_award={} display_xp={}",count*award,c.data.experience[12]);
+    }
+    assert_eq!(c.inventories.total(93,1775),0);println!("PG_CASE_PASS native glass quantities1/5/10/X3/All4 consumed23raws; retained pipes;31875fineXP; exact actualResume115counts; stale batches refused");Ok(())
+}
+fn glass_all(c:&mut ClientState,l:&mut Connection)->R<()> {
+    let xp=c.data.experience;tab(c,"Inventory")?;ticks(c,l,3)?;use_slots(c,26,0)?;let packet=glass_quantity(c,l,4,"All",23)?;
+    pump(c,l,110,|c,_|c.inventories.total(93,6667)==23 && c.data.experience[12]==(130344311+48875)/10)?;ticks(c,l,5)?;
+    let committed=c.data.experience;replay(c,l,&packet,"stale completed native All23 glass batch")?;ticks(c,l,6)?;assert_eq!(c.data.experience,committed);
+    assert_eq!(c.inventories.total(93,1775),0);assert_eq!(c.inventories.item(93,0).id,1785);assert_eq!(c.inventories.item(93,1).id,1785);assert_eq!(c.inventories.item(93,27).count,1000);
+    for i in 0..25{if i!=12{assert_eq!(c.data.experience[i],xp[i]);}}
+    println!("PG_CASE_PASS native All23 emptyFishbowls; exact generated/transmitted count23; selected26first, full28 retained pipes and48875fineXP; stale batch refused. Xblocked separately, not retried here");Ok(())
+}
+fn glass_partial_start(c:&mut ClientState,l:&mut Connection)->R<i32> {
+    let xp=c.data.experience;tab(c,"Inventory")?;ticks(c,l,3)?;use_slots(c,26,0)?;let _=glass_make_action(c,l,0)?;
+    for component in [(269<<16)|15,(270<<16)|99] {
+        let packet=gielinor_client::interface_action::resume(component,1);println!("PG_NEGATIVE_GLASS_RESUME component={component} opcode={} payload={:02x?}",packet.opcode,packet.payload);l.session.send(packet.opcode,&packet.payload)?;
+    }
+    ticks(c,l,5)?;assert_eq!(c.data.experience,xp);assert_eq!(c.inventories.total(93,1775),23);assert_eq!(c.inventories.total(93,1919),0);
+    dispatch(c,Action::Close,"native Close after foreign/index refusal")?;ticks(c,l,3)?;ready(c,l)?;
+    use_slots(c,26,0)?;let _=glass_quantity(c,l,0,"All",23)?;
+    pump(c,l,30,|c,_|{let made=c.inventories.total(93,1919);made>0 && c.inventories.total(93,1775)==23-made && c.data.experience[12]==(130344311+875*made)/10})?;
+    let made=c.inventories.total(93,1919);assert!(made>0 && made<23);assert_eq!(c.inventories.item(93,0).id,1785);assert_eq!(c.inventories.item(93,1).id,1785);
+    println!("PG_GLASS_PARTIAL observed_products={made} remaining_raw={} display_xp={} tick={}; SQL/trace owns any already-admitted race",23-made,c.data.experience[12],c.server_tick);Ok(made)
+}
+fn glass_interrupt(c:&mut ClientState,l:&mut Connection)->R<()> {
+    let made=glass_partial_start(c,l)?;
+    println!("PG_DISCONNECT_PARTIAL glass outputs={made}; actual socket closes immediately with captured All work remaining");Ok(())
+}
+fn glass_crash(c:&mut ClientState,l:&mut Connection)->R<()> {
+    let made=glass_partial_start(c,l)?;println!("PG_CRASH_READY glass unsaved All products={made}; real socket remains open; no normal logout/save requested");
+    let start=Instant::now();loop{
+        match l.poll(c){Err(e)=>{println!("PG_EXPECTED_CRASH_DISCONNECT {e}");return Ok(());},Ok(())=>{if l.logged_out().is_some(){println!("PG_EXPECTED_CRASH_DISCONNECT native transport closed");return Ok(());}}}
+        if start.elapsed()>Duration::from_secs(30){return Err("owned glass crash injection did not arrive".into());}std::thread::sleep(Duration::from_millis(10));
+    }
+}
+fn glass_remaining(c:&mut ClientState,l:&mut Connection)->R<()> {
+    let xp=c.data.experience;let mut fine=130344311i32;tab(c,"Inventory")?;ticks(c,l,3)?;
+    for (index,label,count,slot,output,award) in [(3,"X",3,26,229,1750),(4,"All",20,17,6667,2125)] {
+        ready(c,l)?;
+        if label=="X"{use_slots(c,slot,0)?;}else{use_slots(c,0,slot)?;}
+        let packet=glass_quantity(c,l,index,label,count)?;fine+=count*award;
+        pump(c,l,100,|c,_|c.inventories.total(93,output)==count && c.data.experience[12]==fine/10)?;ticks(c,l,4)?;
+        let committed=c.data.experience;replay(c,l,&packet,"stale completed native remaining glass batch")?;ticks(c,l,4)?;assert_eq!(c.data.experience,committed);
+        assert_eq!(c.inventories.item(93,0).id,1785);assert_eq!(c.inventories.item(93,1).id,1785);assert_eq!(c.inventories.item(93,27).count,1000);assert_eq!((0..28).filter(|&s|c.inventories.item(93,s).id>=0).count(),28);
+        for i in 0..25{if i!=12{assert_eq!(c.data.experience[i],xp[i]);}}
+        println!("PG_GLASS_REMAINING_COMMITTED label={label} count={count} selected_slot={slot} output={output} fine_award={} display_xp={}",count*award,c.data.experience[12]);
+    }
+    assert_eq!(c.inventories.total(93,1775),0);println!("PG_CASE_PASS remaining native glassX3/All20; genuine typed amount and server-derived All;23outputs/47750fineXP;1/5/10campaign retained separately");Ok(())
 }
 fn glass(c:&mut ClientState,l:&mut Connection)->R<()> {
     let xp=c.data.experience;let initial=(0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>();tab(c,"Inventory")?;ticks(c,l,3)?;
@@ -317,6 +438,6 @@ fn food(c:&mut ClientState,l:&mut Connection)->R<()> {
 fn main()->R<()> {
     let a:Vec<_>=std::env::args().collect();assert_eq!(a.len(),7);
     let mut c=ClientState::load(DiskCache::open(&a[1],64<<20)?)?;let mut l=Connection::connect(&mut c,&a[2],&a[3],&a[4],&a[5])?;ready(&mut c,&mut l)?;
-    match a[6].as_str(){"glass"=>glass(&mut c,&mut l)?,"shells"=>shells(&mut c,&mut l)?,"gem-effects"=>gem_effects(&mut c,&mut l)?,"gem-crash"=>gem_crash(&mut c,&mut l)?,"gems"=>gems(&mut c,&mut l)?,"prayer"=>prayer_burial(&mut c,&mut l)?,"chem-crash"=>chemistry_crash(&mut c,&mut l)?,"chem-interrupt"=>chemistry_interrupt(&mut c,&mut l)?,"food-negative"=>food_negative(&mut c,&mut l)?,"combat-interrupt"=>combat_interrupt(&mut c,&mut l)?,"chem-close"=>chemistry_close(&mut c,&mut l)?,"chem-negative"=>chemistry(&mut c,&mut l)?,"food"=>food(&mut c,&mut l)?,"verify"=>{ticks(&mut c,&mut l,6)?;println!("PG_CASE_PASS native relogin observation");},_=>return Err("unknown independent scenario".into())}
+    match a[6].as_str(){"pouch"=>pouch(&mut c,&mut l)?,"glass-all"=>glass_all(&mut c,&mut l)?,"glass-interrupt"=>glass_interrupt(&mut c,&mut l)?,"glass-crash"=>glass_crash(&mut c,&mut l)?,"glass-remaining"=>glass_remaining(&mut c,&mut l)?,"glass-quantities"=>glass_quantities(&mut c,&mut l)?,"glass"=>glass(&mut c,&mut l)?,"shells"=>shells(&mut c,&mut l)?,"gem-effects"=>gem_effects(&mut c,&mut l)?,"gem-crash"=>gem_crash(&mut c,&mut l)?,"gems"=>gems(&mut c,&mut l)?,"prayer"=>prayer_burial(&mut c,&mut l)?,"chem-crash"=>chemistry_crash(&mut c,&mut l)?,"chem-interrupt"=>chemistry_interrupt(&mut c,&mut l)?,"food-negative"=>food_negative(&mut c,&mut l)?,"combat-interrupt"=>combat_interrupt(&mut c,&mut l)?,"chem-close"=>chemistry_close(&mut c,&mut l)?,"chem-negative"=>chemistry(&mut c,&mut l)?,"food"=>food(&mut c,&mut l)?,"verify"=>{ticks(&mut c,&mut l,6)?;println!("PG_CASE_PASS native relogin observation");},_=>return Err("unknown independent scenario".into())}
     l.session.close();Ok(())
 }

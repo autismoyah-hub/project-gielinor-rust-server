@@ -1,0 +1,64 @@
+{
+  "implementation_id": "OR-MIG-0062",
+  "tested_sha": "5ce50aede9164cdee8e4008257d0298ea77289e7",
+  "campaign_kind": "historical",
+  "status": "PASS_SUBCHECKS",
+  "raw_produce_status": "FAIL",
+  "completed_native_controls": [
+    1,
+    5,
+    10
+  ],
+  "completed_products": 16,
+  "fine_xp_award": 18125,
+  "native_option_labels": {
+    "0": "Beer glass (level 1)",
+    "6": "Lantern lens (level 49)",
+    "7": "Empty light orb (level 87)",
+    "3": "Vial (level 33)",
+    "2": "Empty oil lamp (level 12)",
+    "5": "Unpowered orb (level 46)",
+    "1": "Empty candle lantern (level 4)",
+    "4": "Empty fishbowl (level 42)"
+  },
+  "batch_cadence": [
+    {
+      "count": 1,
+      "first_received_clocks": 2,
+      "repeat_received_clocks": [],
+      "selected_first_slot": 4
+    },
+    {
+      "count": 5,
+      "first_received_clocks": 2,
+      "repeat_received_clocks": [
+        3,
+        3,
+        3,
+        3
+      ],
+      "selected_first_slot": 26
+    },
+    {
+      "count": 10,
+      "first_received_clocks": 2,
+      "repeat_received_clocks": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "selected_first_slot": 9
+    }
+  ],
+  "scope": "Genuine native1/5/10controls emit actualResume115counts1/5/10and commit exact selected-first full-bag outputs with retained pipes/coins/unrelated slots. All8real dynamic option labels/levels independently decoded from native widget data_text. First credit is2received clocks after884animation, then every3received clocks. Acknowledged save and actual restart/native relogin preserve all16products/18125fineXP and seven remaining raw glass, with no replay.",
+  "failure_preserved": "Raw producer FAIL at X remains unchanged. Native menu offered Other quantity, which the verifier filtered out, so X was not correctly invoked. Generated count1Make was caught before the next transport poll; saved state contains only the16completed products. X and All are assigned to a fresh remaining-controls campaign; completed1/5/10state is not reset or replayed.",
+  "limitations": [
+    "No X/All acceptance or interrupted in-flight batch lifecycle is inferred here. No original-executable/rendered/audio claim."
+  ]
+}

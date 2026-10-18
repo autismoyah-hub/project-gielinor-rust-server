@@ -1,0 +1,7 @@
+{
+  "implementation_id": "OR-MIG-0062",
+  "tested_sha": "5ce50aede9164cdee8e4008257d0298ea77289e7",
+  "classification": "VERIFIER_LABEL_LOOKUP_ERROR",
+  "status": "HARNESS_CORRECTED_FRESH_RERUN",
+  "reason": "Native selected1control exists with colour markup; observer incorrectly required literal unstyled1. No Make submitted or gameplay inventory/Stats changed. Corrected only test label normalization; preserve original logs/DB and use quantities-002fresh state. Actual eight option data_text labels were captured in this attempt; full quantity acceptance is not inferred."
+}

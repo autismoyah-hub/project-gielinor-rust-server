@@ -1,0 +1,40 @@
+{
+  "finding_id": "PG-INFRA-009",
+  "implementation_id": "OR-MIG-0062",
+  "tested_sha": "5ce50aede9164cdee8e4008257d0298ea77289e7",
+  "campaign_kind": "historical",
+  "status": "BLOCKED",
+  "severity": "P2 native-test dependency",
+  "owner": "Native client/harness keyboard routing; server defect not established",
+  "client_sha256": "4a6cee5ecad91dd5b0f15fa655ab12cbe4638d5302afee45ad14bfa788d36f17",
+  "server_sha256": "e3221744c22ba9e21fa130840c8deecd978ee67b16dcb28f457292ec9998bf5c",
+  "baseline_manifest_sha256": "0b57972892416b9c875c82a54541c1d998a2a77845bff4aea12d4a04a1a0b256",
+  "transport_submitted_frames": [
+    {
+      "tick": 154,
+      "component": 17694737,
+      "interface": 270,
+      "child": 17,
+      "count": 1
+    },
+    {
+      "tick": 157,
+      "component": 17694738,
+      "interface": 270,
+      "child": 18,
+      "count": 3
+    }
+  ],
+  "expected": "Typing3into X must update requested count without submitting another product. Explicit component270:18/count3must make3Vials229and5250fineXP.",
+  "actual": "Native keyboard/client-script processing transport-submits270:17/count1before explicit270:18/count3. First continuation makes one Emptyoil lamp4525at selected26with1250fineXP; later intended continuation cannot reuse the consumed dialog. Server saved exactly the output/XP corresponding to the earlier actual frame.",
+  "scope": "Read-only post-send observation captured an action absent from manual dispatch logs. Digit and Enter were already separated into distinct native input frames; this alone does not resolve the collision. Core baseline gameplay/UI libraries remain unchanged except observation-only overlays.",
+  "next": "Keep X blocked pending correct focused-input/native-client dispatch or an explicitly pinned client correction. Continue native All, batch interruption/recovery and unrelated contracts; do not substitute a newer server SHA, suppress generated packets or mutate client quantity state to force PASS.",
+  "evidence_sha256": {
+    "produce/client.log": "7b4c90ffa1cdef217bf8989506a2d33a307ce7c82ac517c592201bd6402f8446",
+    "produce/after.json": "1e3101ad070acb872e8fb926335ec0040025e9b8c9206be804ce26cb4c0caaef"
+  },
+  "limitations": [
+    "This establishes a native client/harness dependency and correct server correspondence to observed frames; it does not prove the same behavior in the original Java/Kotlin reference client or diagnose the exact keyboard focus callback.",
+    "Earlier remaining-001has no post-send trace and must not be retroactively assigned these exact frames."
+  ]
+}

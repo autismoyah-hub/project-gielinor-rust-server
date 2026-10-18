@@ -1,0 +1,10 @@
+   Compiling gielinor-world v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\0c489b46b552ad012e630810c1218dbaeb437a51\crates\world)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\0c489b46b552ad012e630810c1218dbaeb437a51\external-harness-9717753600)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 41.45s
+     Running tests\outcomes.rs (C:\Projects\OSRSRSPS\agent7-verification\work\0c489b46b552ad012e630810c1218dbaeb437a51\target\debug\deps\outcomes-eca7ab3a53ff205f.exe)
+
+running 2 tests
+test invalid_either_outcome_and_live_policy_never_draw_or_publish ... ok
+test every_byte_roll_99_levels_two_boosts_membership_three_rates_matches_integer_oracle ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 31.26s

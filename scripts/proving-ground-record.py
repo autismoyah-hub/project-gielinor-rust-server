@@ -37,6 +37,16 @@ for manifest in OUT.glob('OR-MIG-0024-*-independent*/manifest.json'):
 for manifest in OUT.glob('integration-*/manifest.json'):
     value=json.loads(manifest.read_text(encoding='utf-8'))
     if value.get('status')!='PASS':continue
+    if value.get('suite')=='fallible-gem-matrix':
+        add('OR-MIG-0064',value['tested_integration_sha'],'V1','IN_PROGRESS','Independent465408controlled-byte/profile/level1-99/boost100-120/member/100-125-500rate cases PASS against an integer endpoint/rounding oracle, including exact selected full-bag output/XP and one draw only after both states prepare.48invalid either-credit/input/tool/member/level/rate/probability cases refuse without a draw or publication. These are public resolver checks, not registered runtime/World batch/native or original RNG-stream acceptance.',[manifest.relative_to(ROOT).as_posix()],scope='independent-fallible-gem-matrix')
+        continue
+    if value.get('suite') in ['glass-admission','glass-bindings','pouch-bindings']:
+        suite=value['suite'];ident='OR-MIG-0054' if suite=='pouch-bindings' else 'OR-MIG-0062'
+        reason={'glass-admission':'Independent112targeted captured-admission refusals PASS across8profiles: missing/wrong/count input/tool, inventory policy, modal/logout, same slot/origin, invalid cycle/index. Completed1344-case campaign was not replayed. Earlier trusted-host Catalog mutation oracle failure remains explicitly out of supported scope; startup metadata refusal is separate.',
+                'glass-bindings':'Independent actual-cache10definition/8profile member-skill distinction and109corrupt object/stat/sequence refusals PASS. Configured native startup/dispatch acceptance remains independently recorded.',
+                'pouch-bindings':'Independent actual-cache citizen pouch/3coin binding and11invalid metadata refusals PASS; existing no_bank resolver blocks actual bank transaction with a successful coin-deposit control. Decoded nearby banker cache observations guide a future native deposit run; no native bank acceptance inferred.'}[suite]
+        add(ident,value['tested_integration_sha'],'V0' if suite=='pouch-bindings' else 'V1','IN_PROGRESS',reason,[manifest.relative_to(ROOT).as_posix()],scope='independent-'+suite)
+        continue
     if value.get('suite') in ['glass-matrix','pouch-matrix']:
         suite=value['suite'];ident='OR-MIG-0062' if suite=='glass-matrix' else 'OR-MIG-0054'
         reason=('Independent eight-choice actual held-route matrix PASS across1344both-direction/requested-count1through28/three-rate scenarios,72invalid admission cases and96late captured-slot/credit/member/level/tool/modal/movement/logout/Close cases. Exact first selected input then captured order, first2/subsequent3action clocks, per-step fineXP and capped count verified.' if suite=='glass-matrix' else 'Independent selected-stack pouch one/all/overflow/member/full-bag transaction matrix and actual World negative/replay/no-XP controls PASS. Configured runtime/native no_bank and lifecycle/reference remain separate.')
@@ -180,6 +190,24 @@ for folder,ident in [('reference-glass','OR-MIG-0062'),('reference-pouches','OR-
     if path.exists():
         result=json.loads(path.read_text(encoding='utf-8'));assert result['source_documentation_subcheck']=='PASS'
         add(ident,result['tested_sha'],'V4','IN_PROGRESS',result['scope']+' Original executable unavailable; native/reference comparison remains separate.',[str(path.relative_to(ROOT)).replace('\\','/')],scope=folder+'-audit')
+path=OUT/'deep-glass/choices-001/independent-assessment.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PASS';evidence=[path.relative_to(ROOT).as_posix()]
+    add('OR-MIG-0062',result['tested_sha'],'V0','PASS','Exact5ce50server compiled and actual cache-backed startup/held registry/SkillMulti permission-resume path dispatched all8glass outputs through genuine native controls. Strict nativeClose and fresh valid controls exercised.',evidence,scope='native-glass-runtime')
+    for level in ['V2','V3']:add('OR-MIG-0062',result['tested_sha'],level,'IN_PROGRESS',result['scope']+' Native labels/quantity controls/repeat cadence and interrupted captured-batch logout remain open.',evidence,scope='native-glass-eight-choices-recovery')
+    add('SHARED-CLOSE',result['tested_sha'],'V2','IN_PROGRESS','Nonchemistry integration subcheck at5ce50ae: genuine native95emptyClose followed by stale actual glassResume115 does not award; fresh controls work. This does not test historicalb11260eor deferred held/worn chemistry, does not closePG123and does not complete all shared dialog obligations.',evidence,kind='integration',scope='native-glass-close',affected=['OR-MIG-0061'])
+path=OUT/'deep-glass-quantities/quantities-003/independent-subchecks.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PASS_SUBCHECKS' and result['raw_produce_status']=='FAIL'
+    for level in ['V2','V3']:add('OR-MIG-0062',result['tested_sha'],level,'IN_PROGRESS',result['scope']+' Raw producer FAIL atX remains preserved; X/All and in-flight captured-batch logout stay open.',[path.relative_to(ROOT).as_posix()],scope='native-glass-1-5-10-saved-subchecks')
+path=OUT/'deep-glass-all/all-001/independent-assessment.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PASS'
+    for level in ['V2','V3']:add('OR-MIG-0062',result['tested_sha'],level,'IN_PROGRESS',result['scope']+' Xblocked separately; in-flight captured-batch lifecycle remains open.',[path.relative_to(ROOT).as_posix()],scope='native-glass-all23-recovery')
+path=OUT/'deep-glass-remaining/remaining-002/independent-blocker.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='BLOCKED'
+    add('OR-MIG-0062',result['tested_sha'],'V2','IN_PROGRESS','PG-INFRA-009: Xscenario BLOCKED by observed native keyboard/script extraResume270:17/count1before intended270:18/count3. Server matches earlier actual frame; no server defect established. Native8choices/labels/1/5/10/Alland normal recovery passed in separate preserved scopes. Continue other applicable scenarios; do not promote entire V2.',[path.relative_to(ROOT).as_posix()],scope='native-glass-x-blocker')
 coarse=DOC/'VERIFICATION_RESULTS.jsonl';prior=[json.loads(s) for s in coarse.read_text(encoding='utf-8').splitlines()];known={r['attempt_id'] for r in prior}
 for name in ['gem-acceptance.json','shell-acceptance.json']:
     path=OUT/name

@@ -1,0 +1,39 @@
+{
+  "implementation_id": "OR-MIG-0062",
+  "tested_sha": "5ce50aede9164cdee8e4008257d0298ea77289e7",
+  "campaign_kind": "historical",
+  "status": "PASS",
+  "native_count": 23,
+  "fine_xp_award": 48875,
+  "selected_first_slot": 26,
+  "first_received_clocks": 2,
+  "repeat_received_clocks": [
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3
+  ],
+  "scope": "Genuine native All selects exact available23and transport-submits component270:19/count23. Full28bag remains full; selected26then captured4through25become23emptyFishbowls6667, both pipes/coins/junk retained. First884animation-to-credit2received clocks then22three-clock intervals independently observed. Stale actual response does not repeat. Acknowledged save, actual restart and independently decoded native full inventory/Stats confirm23outputs/exact48875fineXP without replay.",
+  "limitations": [
+    "Native X remains blocked byPG-INFRA-009; this run deliberately avoids keyboard custom quantity.",
+    "In-flight batch logout/crash recovery and original-executable/rendered/audio parity are separate."
+  ]
+}

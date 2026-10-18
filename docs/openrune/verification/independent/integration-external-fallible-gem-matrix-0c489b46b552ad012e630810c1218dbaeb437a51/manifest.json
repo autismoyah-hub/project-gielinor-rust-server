@@ -1,0 +1,60 @@
+{
+  "tested_integration_sha": "0c489b46b552ad012e630810c1218dbaeb437a51",
+  "suite": "fallible-gem-matrix",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 7770750976,
+    "active_compilers": [
+      "\"cargo.exe\",\"9772\",\"RDP-Tcp#0\",\"2\",\"24,572 K\""
+    ],
+    "cpu_percent": 34.18,
+    "cpu_samples": [
+      36.328125,
+      33.59375,
+      32.6171875
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained",
+    "disk_free": 35380555776,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "cb2994fc4bead96c32ae4ec568148d5a6a0fee66",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\0c489b46b552ad012e630810c1218dbaeb437a51\\external-harness-9717753600\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-fallible-gem-matrix-0c489b46b552ad012e630810c1218dbaeb437a51\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\0c489b46b552ad012e630810c1218dbaeb437a51\\external-harness-9717753600\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 2,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-fallible-gem-matrix-0c489b46b552ad012e630810c1218dbaeb437a51\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative fallible-gem-matrix scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-fallible-gem-matrix-0c489b46b552ad012e630810c1218dbaeb437a51\\harness\\outcomes.rs": "84bcc91f4f115f68b3b6bf7941f7864209f86a5c5b3a7b3ebd6d119b6105dc17"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\outcomes-eca7ab3a53ff205f.exe": "292508709de8d60c0f56ee70aa9b8c65faaaa00bcf56827efd846960256142c0"
+  }
+}
