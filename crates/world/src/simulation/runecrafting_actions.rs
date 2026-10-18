@@ -35,7 +35,7 @@ impl World {
                 return;
             }
         };
-        if let Err(e) = config.prepare_member(
+        if let Err(e) = config.prepare_outcomes(
             recipe,
             &materials,
             &p.data.inventory,
@@ -94,6 +94,7 @@ pub(super) fn complete(
     items: &crate::inventory::Catalog,
     revision: Option<u64>,
     tutorial: bool,
+    random: &mut impl RandomSource,
     events: &mut Vec<WorldEvent>,
 ) {
     if revision != Some(pending.revision)
@@ -115,7 +116,7 @@ pub(super) fn complete(
     else {
         return;
     };
-    match config.prepare_member(
+    match config.resolve(
         pending.recipe,
         &pending.materials,
         &p.data.inventory,
@@ -124,6 +125,7 @@ pub(super) fn complete(
         &p.data.stats,
         p.data.xp_rate_hundreds,
         p.member,
+        random,
     ) {
         Err(e) => refusal(events, p.id, e),
         Ok(prepared) => {
@@ -205,6 +207,7 @@ mod tests {
             altars: [(id, recipe)].into(),
             blocked_held: [26879].into(),
             blocked_worn: [26850].into(),
+            outfit: Default::default(),
             animation: 791,
             spot: 186,
         });
@@ -589,5 +592,154 @@ mod tests {
                 assert_eq!(w.data(a).unwrap().stats.fine_xp(20), xp);
             }
         }
+    }
+    fn outfit(w: &mut World, a: ActorId, pieces: usize, color: usize) {
+        let config = w.runecrafting.as_mut().unwrap();
+        config.blocked_worn.clear();
+        for (group, (ids, slot)) in [
+            ([26850, 26858, 26864, 26870], 0),
+            ([26852, 26860, 26866, 26872], 4),
+            ([26854, 26862, 26868, 26874], 7),
+            ([26856; 4], 10),
+        ]
+        .into_iter()
+        .enumerate()
+        {
+            for id in ids {
+                config.outfit.insert(
+                    id,
+                    crate::runecrafting::OutfitBinding {
+                        group: group as u8,
+                        slot,
+                    },
+                );
+            }
+        }
+        for (group, (ids, slot)) in [
+            ([26850, 26858, 26864, 26870], 0),
+            ([26852, 26860, 26866, 26872], 4),
+            ([26854, 26862, 26868, 26874], 7),
+            ([26856; 4], 10),
+        ]
+        .into_iter()
+        .enumerate()
+        {
+            if group < pieces {
+                w.data_mut(a)
+                    .unwrap()
+                    .equipment
+                    .restore_slot(
+                        slot,
+                        Some(Item {
+                            id: ids[color],
+                            count: 1,
+                            vars: 0,
+                        }),
+                    )
+                    .unwrap();
+            }
+        }
+    }
+    struct OutfitDraw {
+        value: u32,
+        calls: usize,
+    }
+    impl RandomSource for OutfitDraw {
+        fn below(&mut self, bound: u32) -> u32 {
+            assert_eq!(bound, 10);
+            self.calls += 1;
+            self.value
+        }
+    }
+    #[test]
+    fn rune_raiments_actual_six_altar_dispatch_full_outfit_both_rounding_branches_and_four_colors()
+    {
+        for index in 0..6 {
+            for value in [0, 9] {
+                let (mut w, a, loc, r) = fixture(index, 2, true);
+                outfit(&mut w, a, 4, index % 4);
+                let xp = w.data(a).unwrap().stats.fine_xp(20);
+                let gear = w.data(a).unwrap().equipment.clone();
+                start(&mut w, a, loc); // preflight uses NoDraw
+                let mut rng = OutfitDraw { value, calls: 0 };
+                w.tick_with_random(&mut rng).unwrap();
+                let data = w.data(a).unwrap();
+                assert_eq!(
+                    data.inventory.get(0).unwrap().count,
+                    if value == 0 { 92 } else { 86 }
+                );
+                assert_eq!(
+                    data.stats.fine_xp(20) - xp,
+                    28 * i32::from(r.xp_tenths) * 125 / 100
+                );
+                assert_eq!(data.equipment, gear);
+                assert_eq!(rng.calls, 1);
+                w.tick_with_random(&mut NoDraw).unwrap();
+            }
+        }
+        for color in 0..4 {
+            let (mut w, a, loc, _) = fixture(0, 0, true);
+            outfit(&mut w, a, 1, color);
+            start(&mut w, a, loc);
+            let mut rng = OutfitDraw { value: 0, calls: 0 };
+            w.tick_with_random(&mut rng).unwrap();
+            assert_eq!(w.data(a).unwrap().inventory.get(0).unwrap().count, 62);
+            assert_eq!(rng.calls, 1);
+        }
+    }
+    #[test]
+    fn rune_raiments_live_gear_member_credit_and_reward_failures_do_not_draw_or_consume() {
+        for case in 0..4 {
+            let (mut w, a, loc, _) = fixture(0, 0, true);
+            outfit(&mut w, a, 4, 1);
+            // Leave a slot for a late credit-capacity fault, while preserving captured essence.
+            w.data_mut(a)
+                .unwrap()
+                .inventory
+                .restore_slot(27, None)
+                .unwrap();
+            start(&mut w, a, loc);
+            match case {
+                0 => w.players.get_mut(a.slot as usize).unwrap().member = false,
+                1 => {
+                    let d = w.data_mut(a).unwrap();
+                    let mut i = d.equipment.get(0).unwrap();
+                    i.vars = 1;
+                    d.equipment.restore_slot(0, Some(i)).unwrap();
+                }
+                2 => {
+                    w.data_mut(a)
+                        .unwrap()
+                        .inventory
+                        .restore_slot(
+                            27,
+                            Some(Item {
+                                id: 556,
+                                count: i32::MAX - 84,
+                                vars: 0,
+                            }),
+                        )
+                        .unwrap();
+                }
+                3 => w.data_mut(a).unwrap().xp_rate_hundreds = 0,
+                _ => unreachable!(),
+            }
+            let before = w.data(a).unwrap().clone();
+            w.tick_with_random(&mut NoDraw).unwrap();
+            assert_eq!(w.data(a).unwrap().inventory, before.inventory);
+            assert_eq!(w.data(a).unwrap().equipment, before.equipment);
+            assert_eq!(w.data(a).unwrap().stats, before.stats);
+        }
+        // Gear is read live; a removed optional outfit yields ordinary runes, with no RNG.
+        let (mut w, a, loc, _) = fixture(0, 0, true);
+        outfit(&mut w, a, 1, 0);
+        start(&mut w, a, loc);
+        w.data_mut(a)
+            .unwrap()
+            .equipment
+            .restore_slot(0, None)
+            .unwrap();
+        w.tick_with_random(&mut NoDraw).unwrap();
+        assert_eq!(w.data(a).unwrap().inventory.get(0).unwrap().count, 56);
     }
 }

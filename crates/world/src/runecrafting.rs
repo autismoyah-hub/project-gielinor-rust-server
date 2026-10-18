@@ -21,11 +21,17 @@ pub struct Recipe {
     pub interval: u8,
     pub name: &'static str,
 }
+#[derive(Clone, Copy, Debug)]
+pub struct OutfitBinding {
+    pub group: u8,
+    pub slot: usize,
+}
 #[derive(Clone, Debug)]
 pub struct Config {
     pub altars: BTreeMap<u32, Recipe>,
     pub blocked_held: BTreeSet<i32>,
     pub blocked_worn: BTreeSet<i32>,
+    pub outfit: BTreeMap<i32, OutfitBinding>,
     pub animation: u16,
     pub spot: u16,
 }
@@ -42,6 +48,40 @@ pub struct Prepared {
     pub inventory: Inventory,
     pub stats: Stats,
     pub advancement: Option<crate::skills::Advancement>,
+}
+// Both complete transaction images are prepared before any random draw.
+pub struct Plan {
+    low: Prepared,
+    high: Option<Prepared>,
+    threshold: u32,
+}
+impl Plan {
+    pub fn resolve(self, random: &mut impl crate::npc::RandomSource) -> Prepared {
+        match self.high {
+            Some(high) if random.below(10) < self.threshold => high,
+            _ => self.low,
+        }
+    }
+}
+struct PreparedBase {
+    debited: Inventory,
+    stats: Stats,
+    advancement: Option<crate::skills::Advancement>,
+    output: i32,
+    produced: i32,
+}
+impl PreparedBase {
+    fn credit(&self, items: &Catalog, count: i32) -> Result<Prepared, Error> {
+        let mut inventory = self.debited.clone();
+        inventory
+            .insert(items, Insert::new(self.output, count))
+            .map_err(|_| Error::Capacity)?;
+        Ok(Prepared {
+            inventory,
+            stats: self.stats.clone(),
+            advancement: self.advancement,
+        })
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Error {
@@ -108,6 +148,105 @@ impl Config {
         rate: i32,
         member: bool,
     ) -> Result<Prepared, Error> {
+        let (base, multiplier) =
+            self.prepare_base(recipe, parts, inventory, worn, items, stats, rate, member)?;
+        // Callers without RNG must not silently discard a worn outfit bonus.
+        if multiplier != 0 {
+            return Err(Error::Unsupported);
+        }
+        base.credit(items, base.produced)
+    }
+    pub fn prepare_outcomes(
+        &self,
+        recipe: Recipe,
+        parts: &[(i32, usize)],
+        inventory: &Inventory,
+        worn: &Inventory,
+        items: &Catalog,
+        stats: &Stats,
+        rate: i32,
+        member: bool,
+    ) -> Result<Plan, Error> {
+        let (base, multiplier) =
+            self.prepare_base(recipe, parts, inventory, worn, items, stats, rate, member)?;
+        // Wiki total runes per action: mixed Rune/Pure share this one rounding decision.
+        let count = base.produced + base.produced / 10 * multiplier;
+        let low = base.credit(items, count)?;
+        let threshold = (base.produced % 10) as u32;
+        let high = if multiplier > 0 && threshold > 0 {
+            Some(base.credit(items, count + multiplier)?)
+        } else {
+            None
+        };
+        Ok(Plan {
+            low,
+            high,
+            threshold,
+        })
+    }
+    pub fn resolve(
+        &self,
+        recipe: Recipe,
+        parts: &[(i32, usize)],
+        inventory: &Inventory,
+        worn: &Inventory,
+        items: &Catalog,
+        stats: &Stats,
+        rate: i32,
+        member: bool,
+        random: &mut impl crate::npc::RandomSource,
+    ) -> Result<Prepared, Error> {
+        Ok(self
+            .prepare_outcomes(recipe, parts, inventory, worn, items, stats, rate, member)?
+            .resolve(random))
+    }
+    fn outfit_multiplier(
+        &self,
+        worn: &Inventory,
+        items: &Catalog,
+        member: bool,
+    ) -> Result<i32, Error> {
+        let mut groups = 0u8;
+        for (slot, item) in worn
+            .slots()
+            .iter()
+            .enumerate()
+            .filter_map(|(s, i)| i.map(|i| (s, i)))
+        {
+            let Some(binding) = self.outfit.get(&item.id) else {
+                continue;
+            };
+            if !member {
+                return Err(Error::Members);
+            }
+            if binding.group >= 4
+                || binding.slot >= 15
+                || binding.slot != slot
+                || item.count != 1
+                || item.vars != 0
+                || !items.ordinary_nonstackable(item.id)
+                || groups & (1 << binding.group) != 0
+            {
+                return Err(Error::Policy);
+            }
+            groups |= 1 << binding.group;
+        }
+        Ok(match groups.count_ones() {
+            4 => 6,
+            n => n as i32,
+        })
+    }
+    fn prepare_base(
+        &self,
+        recipe: Recipe,
+        parts: &[(i32, usize)],
+        inventory: &Inventory,
+        worn: &Inventory,
+        items: &Catalog,
+        stats: &Stats,
+        rate: i32,
+        member: bool,
+    ) -> Result<(PreparedBase, i32), Error> {
         if !self.altars.values().any(|&v| v == recipe)
             || recipe.level == 0
             || recipe.level > 99
@@ -174,6 +313,7 @@ impl Config {
         {
             return Err(Error::Unsupported);
         }
+        let multiplier = self.outfit_multiplier(worn, items, member)?;
         let level = stats.current(20) as u8;
         if level < recipe.level {
             return Err(Error::Level);
@@ -198,17 +338,20 @@ impl Config {
             debit.strict_slot = Some(slot);
             next.delete(items, debit).map_err(|_| Error::Stale)?;
         }
-        next.insert(items, Insert::new(recipe.output, produced))
-            .map_err(|_| Error::Capacity)?;
         let xp = parts.len() as f64 * f64::from(recipe.xp_tenths) / 10.0
             * if daeyalt { 1.5 } else { 1.0 };
         let (stats, advancement) =
             assembly::prepare_reward_value(stats, 20, xp, rate).map_err(|_| Error::Reward)?;
-        Ok(Prepared {
-            inventory: next,
-            stats,
-            advancement,
-        })
+        Ok((
+            PreparedBase {
+                debited: next,
+                stats,
+                advancement,
+                output: recipe.output,
+                produced,
+            },
+            multiplier,
+        ))
     }
 }
 #[cfg(test)]
@@ -227,6 +370,7 @@ mod tests {
             altars: [(34760, recipe)].into(),
             blocked_held: [26879].into(),
             blocked_worn: [26850].into(),
+            outfit: BTreeMap::new(),
             animation: 791,
             spot: 186,
         };
@@ -487,6 +631,211 @@ mod tests {
                 assert!(matches!(result, Err(Error::Policy)), "case{case}");
             }
             assert_eq!((inv, stats), before);
+        }
+    }
+    fn raiments(c: &mut Config, worn: &mut Inventory, pieces: usize) {
+        c.blocked_worn.clear();
+        for (group, (id, slot)) in [(26858, 0), (26866, 4), (26874, 7), (26856, 10)]
+            .into_iter()
+            .enumerate()
+        {
+            c.outfit.insert(
+                id,
+                OutfitBinding {
+                    group: group as u8,
+                    slot,
+                },
+            );
+            if group < pieces {
+                worn.restore_slot(
+                    slot,
+                    Some(Item {
+                        id,
+                        count: 1,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+            }
+        }
+    }
+    struct Draw {
+        value: u32,
+        calls: usize,
+    }
+    impl crate::npc::RandomSource for Draw {
+        fn below(&mut self, bound: u32) -> u32 {
+            assert_eq!(bound, 10);
+            self.calls += 1;
+            self.value
+        }
+    }
+    struct NoDraw;
+    impl crate::npc::RandomSource for NoDraw {
+        fn below(&mut self, _: u32) -> u32 {
+            panic!("Invalid or deterministic rune batch must not draw");
+        }
+    }
+    #[test]
+    fn rune_raiments_whole_mixed_batch_single_roll_all_piece_counts_exact_tens_and_daeyalt_xp() {
+        for pieces in 0..=4 {
+            for value in [0, 5, 6, 9] {
+                let (mut c, r, inv, mut worn, items, stats) = fixture();
+                raiments(&mut c, &mut worn, pieces);
+                let before = (inv.clone(), worn.clone(), stats.clone());
+                let mut rng = Draw { value, calls: 0 };
+                let parts = c.capture(&inv).unwrap();
+                let p = c
+                    .resolve(r, &parts, &inv, &worn, &items, &stats, 125, true, &mut rng)
+                    .unwrap();
+                let k = if pieces == 4 { 6 } else { pieces as i32 };
+                assert_eq!(
+                    p.inventory.get(0).unwrap().count,
+                    56 + 5 * k + if value < 6 { k } else { 0 }
+                );
+                assert_eq!(rng.calls, usize::from(pieces > 0));
+                assert_eq!(p.stats.fine_xp(20) - stats.fine_xp(20), 1750);
+                assert_eq!((inv.clone(), worn.clone(), stats.clone()), before);
+                if pieces > 0 {
+                    assert!(matches!(
+                        c.prepare_member(r, &parts, &inv, &worn, &items, &stats, 125, true),
+                        Err(Error::Unsupported)
+                    ));
+                }
+            }
+        }
+        let (mut c, r, mut inv, mut worn, items, mut stats) = fixture();
+        raiments(&mut c, &mut worn, 4);
+        stats.set_base(20, 99);
+        stats.set_current(20, 99);
+        stats
+            .set_xp(20, crate::skills::xp_from_level(99).unwrap())
+            .unwrap();
+        let parts = c.capture(&inv).unwrap();
+        let p = c
+            .resolve(
+                r,
+                &parts,
+                &inv,
+                &worn,
+                &items,
+                &stats,
+                100,
+                true,
+                &mut NoDraw,
+            )
+            .unwrap();
+        assert_eq!(p.inventory.get(0).unwrap().count, 448);
+        stats.set_base(20, 10);
+        stats.set_current(20, 11);
+        stats
+            .set_xp(20, crate::skills::xp_from_level(10).unwrap())
+            .unwrap();
+        for slot in 0..7 {
+            inv.restore_slot(
+                slot,
+                Some(Item {
+                    id: DAEYALT_ESSENCE,
+                    count: 1,
+                    vars: 0,
+                }),
+            )
+            .unwrap();
+        }
+        let parts = c.capture(&inv).unwrap();
+        let mut rng = Draw { value: 0, calls: 0 };
+        let p = c
+            .resolve(r, &parts, &inv, &worn, &items, &stats, 125, true, &mut rng)
+            .unwrap();
+        assert_eq!(p.inventory.get(0).unwrap().count, 26);
+        assert_eq!(p.stats.fine_xp(20) - stats.fine_xp(20), 656);
+        assert_eq!(
+            p.inventory
+                .slots()
+                .iter()
+                .flatten()
+                .filter(|i| [RUNE_ESSENCE, PURE_ESSENCE].contains(&i.id))
+                .count(),
+            21
+        );
+        assert_eq!(rng.calls, 1);
+    }
+    #[test]
+    fn rune_raiments_all_credit_outcomes_and_live_gear_validate_before_rng_without_mutation() {
+        for case in 0..9 {
+            let (mut c, r, mut inv, mut worn, mut items, stats) = fixture();
+            raiments(&mut c, &mut worn, 4);
+            let mut member = true;
+            let mut rate = 125;
+            match case {
+                0 => member = false,
+                1 => {
+                    let mut i = worn.get(0).unwrap();
+                    i.vars = 9;
+                    worn.restore_slot(0, Some(i)).unwrap();
+                }
+                2 => {
+                    let i = worn.get(0);
+                    worn.restore_slot(0, None).unwrap();
+                    worn.restore_slot(1, i).unwrap();
+                }
+                3 => {
+                    let mut i = worn.get(10).unwrap();
+                    i.count = 2;
+                    worn.restore_slot(10, Some(i)).unwrap();
+                }
+                4 => {
+                    items.stackable.insert(26858);
+                }
+                5 => rate = 0,
+                6 => {
+                    // Low credit fits exactly, possible high credit cannot: refuse before drawing.
+                    inv.restore_slot(
+                        27,
+                        Some(Item {
+                            id: 556,
+                            count: i32::MAX - 84,
+                            vars: 0,
+                        }),
+                    )
+                    .unwrap();
+                }
+                7 => {
+                    // Malformed config cannot shift by an out-of-range bit count.
+                    c.outfit.get_mut(&26858).unwrap().group = 8;
+                }
+                8 => {
+                    c.outfit.insert(26850, OutfitBinding { group: 0, slot: 1 });
+                    worn.restore_slot(
+                        1,
+                        Some(Item {
+                            id: 26850,
+                            count: 1,
+                            vars: 0,
+                        }),
+                    )
+                    .unwrap();
+                }
+                _ => unreachable!(),
+            }
+            let before = (inv.clone(), worn.clone(), stats.clone());
+            let parts = c.capture(&inv).unwrap();
+            assert!(
+                c.resolve(
+                    r,
+                    &parts,
+                    &inv,
+                    &worn,
+                    &items,
+                    &stats,
+                    rate,
+                    member,
+                    &mut NoDraw
+                )
+                .is_err(),
+                "case{case}"
+            );
+            assert_eq!((inv, worn, stats), before);
         }
     }
 }

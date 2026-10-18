@@ -1,6 +1,6 @@
 //! Ordinary six-rune altar profiles use independent target and Wiki facts.
 use super::{Definitions, Symbols};
-use gielinor_world::runecrafting::{Config, Recipe};
+use gielinor_world::runecrafting::{Config, OutfitBinding, Recipe};
 const ROWS: [(&str, u32, &str, i32, &str, u8, u16, u8); 6] = [
     ("air_altar", 34760, "airrune", 556, "Air rune", 1, 50, 11),
     ("mind_altar", 34761, "mindrune", 558, "Mind rune", 2, 55, 14),
@@ -52,20 +52,7 @@ const HELD_GUARDS: [(&str, i32); 5] = [
     ("scar_extract_mangled", 28597),
     ("scar_extract_scarred", 28599),
 ];
-const WORN_GUARDS: [(&str, i32); 27] = [
-    ("hat_of_the_eye", 26850),
-    ("hat_of_the_eye_red", 26858),
-    ("hat_of_the_eye_green", 26864),
-    ("hat_of_the_eye_blue", 26870),
-    ("robe_top_of_the_eye", 26852),
-    ("robe_top_of_the_eye_red", 26860),
-    ("robe_top_of_the_eye_green", 26866),
-    ("robe_top_of_the_eye_blue", 26872),
-    ("robe_bottom_of_the_eye", 26854),
-    ("robe_bottom_of_the_eye_red", 26862),
-    ("robe_bottom_of_the_eye_green", 26868),
-    ("robe_bottom_of_the_eye_blue", 26874),
-    ("boots_of_the_eye", 26856),
+const WORN_GUARDS: [(&str, i32); 14] = [
     ("abyssal_lantern", 26822),
     ("abyssal_lantern_normal", 26824),
     ("abyssal_lantern_normal_blue", 26826),
@@ -80,6 +67,84 @@ const WORN_GUARDS: [(&str, i32); 27] = [
     ("abyssal_lantern_blisterwood", 26844),
     ("abyssal_lantern_magic", 26846),
     ("abyssal_lantern_redwood", 26848),
+];
+const OUTFIT: [(&str, i32, &str, u8, usize, i8); 13] = [
+    ("hat_of_the_eye", 26850, "Hat of the eye", 0, 0, 8),
+    ("hat_of_the_eye_red", 26858, "Hat of the eye (red)", 0, 0, 8),
+    (
+        "hat_of_the_eye_green",
+        26864,
+        "Hat of the eye (green)",
+        0,
+        0,
+        8,
+    ),
+    (
+        "hat_of_the_eye_blue",
+        26870,
+        "Hat of the eye (blue)",
+        0,
+        0,
+        8,
+    ),
+    ("robe_top_of_the_eye", 26852, "Robe top of the eye", 1, 4, 6),
+    (
+        "robe_top_of_the_eye_red",
+        26860,
+        "Robe top of the eye (red)",
+        1,
+        4,
+        6,
+    ),
+    (
+        "robe_top_of_the_eye_green",
+        26866,
+        "Robe top of the eye (green)",
+        1,
+        4,
+        6,
+    ),
+    (
+        "robe_top_of_the_eye_blue",
+        26872,
+        "Robe top of the eye (blue)",
+        1,
+        4,
+        6,
+    ),
+    (
+        "robe_bottom_of_the_eye",
+        26854,
+        "Robe bottoms of the eye",
+        2,
+        7,
+        -1,
+    ),
+    (
+        "robe_bottom_of_the_eye_red",
+        26862,
+        "Robe bottoms of the eye (red)",
+        2,
+        7,
+        -1,
+    ),
+    (
+        "robe_bottom_of_the_eye_green",
+        26868,
+        "Robe bottoms of the eye (green)",
+        2,
+        7,
+        -1,
+    ),
+    (
+        "robe_bottom_of_the_eye_blue",
+        26874,
+        "Robe bottoms of the eye (blue)",
+        2,
+        7,
+        -1,
+    ),
+    ("boots_of_the_eye", 26856, "Boots of the eye", 3, 10, -1),
 ];
 pub fn ordinary_rune_altars(
     objects: &Symbols,
@@ -177,8 +242,30 @@ pub fn ordinary_rune_altars(
             return Err(format!("Invalid unsupported Rune modifier {id}"));
         }
     }
+    let mut outfit = std::collections::BTreeMap::new();
+    for &(symbol, id, name, group, slot, secondary) in &OUTFIT {
+        let d = defs
+            .items
+            .get(&(id as u32))
+            .ok_or("Missing Raiments item")?;
+        if objects.get(symbol) != Some(&id)
+            || d.name != name
+            || !d.members
+            || d.stackable
+            || d.wear != [slot as i8, secondary, -1]
+            || d.inventory_ops[1].as_deref() != Some("Wear")
+            || d.dummy == 1
+            || d.cert.template != 0
+            || d.placeholder.template != 0
+            || d.transform.template != 0
+        {
+            return Err(format!("Invalid Raiments item {id}"));
+        }
+        outfit.insert(id, OutfitBinding { group, slot });
+    }
     Ok(Config {
         altars,
+        outfit,
         blocked_held: HELD_GUARDS.iter().map(|v| v.1).collect(),
         blocked_worn: WORN_GUARDS.iter().map(|v| v.1).collect(),
         animation: 791,
@@ -226,6 +313,15 @@ mod tests {
             );
             objects.insert(symbol.into(), id);
         }
+        for &(symbol, id, name, _, slot, secondary) in &OUTFIT {
+            let mut item = gielinor_cache::definitions::ItemType::decode(b"\0").unwrap();
+            item.name = name.into();
+            item.members = true;
+            item.wear = [slot as i8, secondary, -1];
+            item.inventory_ops[1] = Some("Wear".into());
+            d.items.insert(id as u32, item);
+            objects.insert(symbol.into(), id);
+        }
         for &(symbol, id, ..) in &ROWS {
             let mut raw = b"\x02Altar\0\x0e\x03\x0f\x03\x1eCraft-rune\0\0".to_vec();
             let ty = gielinor_cache::locations::LocationType::decode(&raw).unwrap();
@@ -245,11 +341,16 @@ mod tests {
         assert_eq!(c.altars[&34763].level, 9);
         assert_eq!(c.blocked_held.len(), 5);
         assert!(!c.blocked_held.contains(&24704));
-        assert_eq!(c.blocked_worn.len(), 27);
+        assert_eq!(c.blocked_worn.len(), 14);
+        assert_eq!(c.outfit.len(), 13);
+        assert_eq!(c.outfit[&26874].slot, 7);
         assert_eq!(
             c.altars.values().map(|v| v.xp_tenths).collect::<Vec<_>>(),
             vec![50, 55, 60, 65, 70, 75]
         );
+        d.items.get_mut(&26856).unwrap().wear[0] = 3;
+        assert!(ordinary_rune_altars(&objects, &locations, &seq, &spots, &stats, &d).is_err());
+        d.items.get_mut(&26856).unwrap().wear[0] = 10;
         d.items.get_mut(&559).unwrap().dummy = 1;
         assert!(ordinary_rune_altars(&objects, &locations, &seq, &spots, &stats, &d).is_err());
     }
