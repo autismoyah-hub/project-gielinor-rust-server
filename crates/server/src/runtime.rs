@@ -446,13 +446,13 @@ impl<B: AccountBackend> Runtime<B> {
                     .definitions
                     .items
                     .get(&(id as u32))
-                    .is_none_or(|ty| ty.inventory_ops[0].is_none())
+                    .is_none_or(|ty| crate::food_operations::button_operation(ty).is_none())
                 || food
                     .replacement
                     .is_some_and(|id| !self.definitions.items.contains_key(&(id as u32)))
             {
                 return Err(io::Error::other(
-                    "Invalid food definition or missing held op 1",
+                    "Invalid food definition or missing supported consume operation",
                 ));
             }
             gielinor_protocol::chat::game(0, None, &food.message)
@@ -2491,20 +2491,9 @@ impl<B: AccountBackend> Runtime<B> {
                                                         item: button.object,
                                                     });
                                                 }
-                                                if button.op == 2
-                                                    && (self
-                                                        .world
-                                                        .foods
-                                                        .contains_key(&item.id)
-                                                        || self
-                                                            .world
-                                                            .foods
-                                                            .contains_key(&button.object))
-                                                {
-                                                    return Some(Action::EatItemSlot {
-                                                        slot,
-                                                        item: button.object,
-                                                    });
+                                                if let Some(action) = crate::food_operations::held_action(&button,slot,item.id,
+                                                    &self.world.foods,&self.definitions,self.world.consumable_rules.is_some()) {
+                                                    return Some(action);
                                                 }
                                                 if button.op == 7
                                                     && self.world.dropping.as_ref().is_some_and(
@@ -2533,7 +2522,7 @@ impl<B: AccountBackend> Runtime<B> {
                                                 }
                                             }
                                             match button.op {
-                                                2 if !self.world.foods.is_empty() => {
+                                                2 if !self.world.foods.is_empty() && self.world.consumable_rules.is_none() => {
                                                     Some(Action::EatSlot { slot })
                                                 }
                                                 3 if self.equipment_message_params.is_some() => {

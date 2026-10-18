@@ -6,8 +6,9 @@ use gielinor_world::{
 };
 use std::collections::BTreeMap;
 // Binding facts independently checked in native239 symbols and raw definitions.
-// Toads' legs has Eat at option4, outside the existing first-option food route.
+// Toads' legs uses its independently attested fourth Eat option; routing is cache-derived.
 const SPECIAL: &[(&str, i32, &str, i32, i32, bool)] = &[
+    ("toads_legs", 2152, "Toad's legs", 3, 2, true),
     ("king_worm", 2162, "King worm", 3, 2, true),
     ("toad_crunchies", 2217, "Toad crunchies", 3, 2, true),
     (
@@ -231,7 +232,7 @@ pub fn native_consumables(
             || def.cert.template != 0
             || def.placeholder.template != 0
             || def.transform.template != 0
-            || !matches!(def.inventory_ops[0].as_deref(), Some("Eat" | "Drink"))
+            || crate::food_operations::button_operation(def).is_none()
         {
             return Err(format!("Invalid native food clock definition {id}"));
         }
@@ -281,7 +282,7 @@ pub fn native_consumables(
             || def.name != name
             || !def.members
             || def.stackable
-            || def.inventory_ops[0].as_deref() != Some("Eat")
+            || def.inventory_ops[if id == 2152 { 3 } else { 0 }].as_deref() != Some("Eat")
             || policy.consume_delay != consume
         {
             return Err(format!(
@@ -318,7 +319,7 @@ mod tests {
             let mut def = gielinor_cache::definitions::ItemType::decode(&[0]).unwrap();
             def.name = name.into();
             def.members = true;
-            def.inventory_ops[0] = Some("Eat".into());
+            def.inventory_ops[if id == 2152 { 3 } else { 0 }] = Some("Eat".into());
             defs.items.insert(id as u32, def);
             foods.insert(
                 id,
@@ -364,7 +365,8 @@ mod tests {
     fn native_consumable_policies_classify_only_registered_target_bindings_and_member_flags() {
         let (s, d, mut f, p) = fixture();
         let rules = native_consumables(&s, &d, &f, &p).unwrap();
-        assert_eq!(rules.foods.len(), 50);
+        assert_eq!(rules.foods.len(), 51);
+        assert_eq!(rules.foods[&2152].kind, Kind::ComboFood);
         assert_eq!(rules.potions.len(), 1);
         assert_eq!(
             rules.foods[&2162],
@@ -396,6 +398,7 @@ mod tests {
             }
         );
         f.remove(&2162);
+        f.remove(&2152);
         let rules = native_consumables(&s, &d, &f, &p).unwrap();
         assert!(!rules.foods.contains_key(&2162));
         assert!(!rules.foods.contains_key(&2152));

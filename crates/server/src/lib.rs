@@ -12,6 +12,7 @@ pub mod characters;
 pub mod combat_display;
 pub mod combat_tab;
 pub mod constructed;
+mod food_operations;
 pub mod content;
 #[cfg(windows)]
 pub mod deposit_box_ui;
