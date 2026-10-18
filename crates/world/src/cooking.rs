@@ -29,6 +29,7 @@ pub struct Surface {
 }
 #[derive(Clone, Debug)]
 pub struct Config {
+    pub gauntlets: Option<Gauntlets>,
     pub no_burn_cape: Option<NoBurnCape>,
     pub member_inputs: std::collections::BTreeSet<i32>,
     pub surfaces: BTreeMap<u32, Surface>,
@@ -63,6 +64,60 @@ impl NoBurnCape {
             })
     }
 }
+
+/// Explicit recipe curves for one actual worn tool on a bounded set of cooking surfaces.
+#[derive(Clone, Debug)]
+pub struct Gauntlets {
+    pub item: i32,
+    pub surfaces: std::collections::BTreeSet<u32>,
+    pub profiles: BTreeMap<i32, GauntletProfile>,
+}
+#[derive(Clone, Copy, Debug)]
+pub struct GauntletProfile {
+    pub cooked: i32,
+    pub burnt: i32,
+    pub level: u8,
+    pub stop_burn: u8,
+    pub low: i32,
+    pub high: i32,
+}
+impl Gauntlets {
+    pub fn apply(
+        &self,
+        recipe: Recipe,
+        surface: u32,
+        member: bool,
+        worn: &Inventory,
+        items: &Catalog,
+    ) -> Option<Recipe> {
+        if !member || !self.surfaces.contains(&surface) || self.item < 0
+            || worn.stack != crate::inventory::StackType::Normal || worn.placeholders
+            || worn.get(9).is_none_or(|i|i.id!=self.item || i.count!=1 || i.vars!=0 || !items.ordinary_nonstackable(i.id))
+            // Never conceal invalid fields by replacing their values with a modifier.
+            || recipe.low<0 || recipe.high<recipe.low || recipe.high>65535
+            || recipe.stop_burn.is_some_and(|stop|stop<recipe.level)
+        {
+            return None;
+        }
+        let p = self.profiles.get(&recipe.raw)?;
+        if (recipe.cooked, recipe.burnt, recipe.level) != (p.cooked, p.burnt, p.level)
+            || p.level == 0
+            || p.stop_burn < p.level
+            || p.low < 0
+            || p.high < p.low
+            || p.high > 65535
+        {
+            return None;
+        }
+        Some(Recipe {
+            low: p.low,
+            high: p.high,
+            stop_burn: Some(p.stop_burn),
+            ..recipe
+        })
+    }
+}
+
 impl Config {
     pub fn recipe(&self, source: u32, input: i32) -> Option<&Recipe> {
         if source == self.fire {
@@ -404,6 +459,115 @@ mod tests {
                 worn.restore_slot(1, Some(Item { id, count, vars }))
                     .unwrap();
                 assert!(!perk.applies(10, true, &worn, &items));
+            }
+        }
+    }
+
+    #[test]
+    fn cooking_gauntlets_five_curves_below_and_at_threshold_keep_full_bag_transaction_and_rng_rules(
+    ) {
+        for (raw, cooked, burnt, level, stop, low, high) in [
+            (377, 379, 381, 40, 64, 55, 368),
+            (371, 373, 375, 45, 80, 30, 310),
+            (7944, 7946, 7948, 62, 86, 24, 290),
+            (383, 385, 387, 80, 94, 15, 270),
+            (13439, 13441, 13443, 84, 97, 12, 260),
+        ] {
+            let mut gear = Inventory::new(14, crate::inventory::StackType::Normal, false);
+            gear.restore_slot(
+                9,
+                Some(Item {
+                    id: 775,
+                    count: 1,
+                    vars: 0,
+                }),
+            )
+            .unwrap();
+            let items = Catalog::default();
+            let rule = Gauntlets {
+                item: 775,
+                surfaces: [1, 2].into(),
+                profiles: [(
+                    raw,
+                    GauntletProfile {
+                        cooked,
+                        burnt,
+                        level,
+                        stop_burn: stop,
+                        low,
+                        high,
+                    },
+                )]
+                .into(),
+            };
+            let base = Recipe {
+                raw,
+                cooked,
+                burnt,
+                level,
+                stop_burn: None,
+                low: 0,
+                high: 1,
+                xp: 120,
+                fine_xp_override: None,
+                ticks: 4,
+            };
+            let modified = rule.apply(base, 1, true, &gear, &items).unwrap();
+            assert_eq!(
+                (modified.low, modified.high, modified.stop_burn),
+                (low, high, Some(stop))
+            );
+            assert_eq!(
+                (
+                    modified.raw,
+                    modified.cooked,
+                    modified.burnt,
+                    modified.level,
+                    modified.xp,
+                    modified.ticks
+                ),
+                (raw, cooked, burnt, level, 120, 4)
+            );
+            assert!(rule.apply(base, 3, true, &gear, &items).is_none());
+            assert!(rule.apply(base, 1, false, &gear, &items).is_none());
+            for (cur, draw, burn, calls) in [
+                (stop - 1, 255, true, 1),
+                (stop - 1, 0, false, 1),
+                (stop, 255, false, 0),
+            ] {
+                let mut inv = Inventory::new(28, crate::inventory::StackType::Normal, false);
+                for slot in 0..28 {
+                    inv.restore_slot(
+                        slot,
+                        Some(Item {
+                            id: if slot == 1 { raw } else { 100 },
+                            count: 1,
+                            vars: 0,
+                        }),
+                    )
+                    .unwrap();
+                }
+                let mut stats = Stats::default();
+                stats.set_current(7, i8::try_from(cur).unwrap());
+                let mut rng = Fixed { draw, calls: 0 };
+                let out = modified
+                    .complete(1, &mut inv, &items, &mut stats, 7, 99, 100, &mut rng)
+                    .unwrap();
+                assert_eq!(out.burned, burn, "raw {raw} level {cur}");
+                assert_eq!(rng.calls, calls);
+                assert_eq!(inv.get(1).unwrap().id, if burn { burnt } else { cooked });
+                assert_eq!(stats.fine_xp(7), if burn { 0 } else { 1200 });
+                assert_eq!(inv.free_space(), 0);
+            }
+            for mode in 0..4 {
+                let mut bad = base;
+                match mode {
+                    0 => bad.low = -1,
+                    1 => bad.high = 65536,
+                    2 => bad.stop_burn = Some(level - 1),
+                    _ => bad.cooked += 1,
+                }
+                assert!(rule.apply(bad, 1, true, &gear, &items).is_none());
             }
         }
     }

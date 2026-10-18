@@ -3,6 +3,8 @@ mod skillcape_vendors;
 pub use skillcape_vendors::skillcape_vendors;
 mod cooking_cape_no_burn;
 pub use cooking_cape_no_burn::cooking_cape_no_burn;
+mod cooking_gauntlets;
+pub use cooking_gauntlets::cooking_gauntlets;
 mod crafting_cape_boost;
 pub use crafting_cape_boost::crafting_cape_boost;
 mod guild_passages;
@@ -3540,7 +3542,7 @@ pub fn manual_fire_cooking(obj:&Symbols,loc:&Symbols,seq:&Symbols,defs:&Definiti
   if defs.items[&(cooked as u32)].inventory_ops[0].as_deref()!=Some("Eat"){return Err("Cooked food lacks Eat".into());}
   recipes.insert(raw,Recipe{fine_xp_override:None,raw,cooked,burnt,level:1,stop_burn: Some(34),low:128,high:512,xp:30,ticks});
  }
- Ok(Config{no_burn_cape: None, member_inputs:Default::default(),fire,animation,skill,max_level:stat.max_level,recipes,tutorial:None,surfaces:Default::default()})
+ Ok(Config{gauntlets: None, no_burn_cape: None, member_inputs:Default::default(),fire,animation,skill,max_level:stat.max_level,recipes,tutorial:None,surfaces:Default::default()})
 }
 #[cfg(test)]
 mod cooking_binding_tests{
@@ -3836,7 +3838,7 @@ mod fire_fish_binding_tests {
             defs.items.insert(id as u32, d);
         }
         let empty = Config {
-            no_burn_cape: None, member_inputs:Default::default(),
+            gauntlets: None, no_burn_cape: None, member_inputs:Default::default(),
             surfaces:Default::default(),
             fire: 26185,
             animation: 897,
@@ -4635,7 +4637,7 @@ mod standard_range_tests {
             stats: Default::default(),
         };
         let mut config = Config {
-            no_burn_cape: None, member_inputs:Default::default(),
+            gauntlets: None, no_burn_cape: None, member_inputs:Default::default(),
             fire: 26185,
             animation: 897,
             skill: 7,
@@ -4910,7 +4912,7 @@ mod ordinary_baking_tests {
             defs.items.insert(id as u32, d);
         }
         let empty = Config {
-            no_burn_cape: None, member_inputs:Default::default(),
+            gauntlets: None, no_burn_cape: None, member_inputs:Default::default(),
             fire: 26185,
             animation: 897,
             skill: 7,
@@ -5242,7 +5244,7 @@ mod member_pie_baking_tests {
             skill: 7,
             max_level: 99,
             tutorial: None,
-            no_burn_cape: None, member_inputs: Default::default(),
+            gauntlets: None, no_burn_cape: None, member_inputs: Default::default(),
             recipes: BTreeMap::new(),
             surfaces: [(
                 26181,

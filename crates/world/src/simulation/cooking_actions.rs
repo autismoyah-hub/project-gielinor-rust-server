@@ -102,6 +102,15 @@ pub(super) fn complete(
     };
     // Evaluate current equipment at completion, never capture a cape in the queued job.
     let mut effective = *recipe;
+    if c.skill == 7 {
+        if let Some(modified) = c
+            .gauntlets
+            .as_ref()
+            .and_then(|g| g.apply(effective, job.target.id, p.member, &p.data.equipment, items))
+        {
+            effective = modified;
+        }
+    }
     if c.skill == 7
         && recipe.stop_burn.is_none_or(|stop| stop >= recipe.level)
         && c.no_burn_cape
@@ -180,6 +189,7 @@ mod tests {
         crate::loc_collision::toggle(&mut w.collision, loc.coords, loc.shape, loc.angle, ty, true)
             .unwrap();
         w.cooking = Some(crate::cooking::Config {
+            gauntlets: None,
             no_burn_cape: None,
             member_inputs: Default::default(),
             surfaces: Default::default(),
@@ -700,6 +710,133 @@ mod tests {
             assert_eq!(traces.len(), 1);
             assert_eq!(traces[0].committed_at - traces[0].job.queued_at, 1);
             assert_eq!(traces[0].outcome.burned, !safe);
+        }
+    }
+
+    #[test]
+    fn cooking_gauntlets_live_location_queue_and_cape_precedence_use_current_hands() {
+        struct Worst {
+            calls: u32,
+        }
+        impl RandomSource for Worst {
+            fn below(&mut self, n: u32) -> u32 {
+                self.calls += 1;
+                n - 1
+            }
+        }
+        for mode in 0..10 {
+            let (mut w, actor, loc) = fixture();
+            let c = w.cooking.as_mut().unwrap();
+            c.gauntlets = Some(crate::cooking::Gauntlets {
+                item: 775,
+                surfaces: [loc.id].into(),
+                profiles: [(
+                    10,
+                    crate::cooking::GauntletProfile {
+                        cooked: 20,
+                        burnt: 30,
+                        level: 40,
+                        stop_burn: 64,
+                        low: 55,
+                        high: 368,
+                    },
+                )]
+                .into(),
+            });
+            let recipe = c.recipes.get_mut(&10).unwrap();
+            recipe.level = 40;
+            recipe.low = 38;
+            recipe.high = 332;
+            recipe.stop_burn = Some(74);
+            w.players.get_mut(actor.slot as usize).unwrap().member = mode != 3;
+            w.data_mut(actor).unwrap().stats.set_current(7, 64);
+            let gloves = Item {
+                id: 775,
+                count: 1,
+                vars: if mode == 6 { 1 } else { 0 },
+            };
+            if mode == 2 {
+                w.data_mut(actor)
+                    .unwrap()
+                    .inventory
+                    .restore_slot(0, Some(gloves))
+                    .unwrap();
+            } else if mode != 5 {
+                w.data_mut(actor)
+                    .unwrap()
+                    .equipment
+                    .restore_slot(if mode == 1 { 0 } else { 9 }, Some(gloves))
+                    .unwrap();
+            }
+            if mode == 8 {
+                w.cooking.as_mut().unwrap().no_burn_cape = Some(crate::cooking::NoBurnCape {
+                    capes: [9801, 9802],
+                    excluded_raw: 2337,
+                });
+                w.data_mut(actor)
+                    .unwrap()
+                    .equipment
+                    .restore_slot(
+                        1,
+                        Some(Item {
+                            id: 9801,
+                            count: 1,
+                            vars: 0,
+                        }),
+                    )
+                    .unwrap();
+                w.cooking
+                    .as_mut()
+                    .unwrap()
+                    .gauntlets
+                    .as_mut()
+                    .unwrap()
+                    .profiles
+                    .clear();
+            }
+            w.submit(actor, action(loc)).unwrap();
+            w.tick().unwrap();
+            if mode == 4 {
+                w.data_mut(actor)
+                    .unwrap()
+                    .equipment
+                    .restore_slot(9, None)
+                    .unwrap();
+            }
+            if mode == 5 {
+                w.data_mut(actor)
+                    .unwrap()
+                    .equipment
+                    .restore_slot(9, Some(gloves))
+                    .unwrap();
+            }
+            if mode == 7 {
+                w.object_types.dummy.insert(775);
+            }
+            if mode == 9 {
+                w.data_mut(actor).unwrap().stats.set_current(7, 39);
+            }
+            let gear = w.data(actor).unwrap().equipment.clone();
+            let inv = w.data(actor).unwrap().inventory.clone();
+            let mut rng = Worst { calls: 0 };
+            w.tick_with_random(&mut rng).unwrap();
+            let d = w.data(actor).unwrap();
+            assert_eq!(d.equipment, gear);
+            if mode == 9 {
+                assert_eq!(d.inventory, inv);
+                assert_eq!(d.stats.fine_xp(7), 0);
+                assert_eq!(rng.calls, 0);
+                continue;
+            }
+            let safe = matches!(mode, 0 | 5 | 8);
+            assert_eq!(
+                d.inventory.get(1).unwrap().id,
+                if safe { 20 } else { 30 },
+                "mode {mode}"
+            );
+            assert_eq!(d.stats.fine_xp(7), if safe { 300 } else { 0 });
+            assert_eq!(rng.calls, if safe { 0 } else { 1 });
+            assert_eq!(d.inventory.get(0), inv.get(0));
         }
     }
 }
