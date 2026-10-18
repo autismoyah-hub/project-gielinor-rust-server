@@ -59,6 +59,7 @@ pub(super) fn complete(
 
     tutorial: bool,
     events: &mut Vec<WorldEvent>,
+    random: &mut impl RandomSource,
 ) {
     if p.pending_logout
         || p.saving
@@ -73,14 +74,15 @@ pub(super) fn complete(
     {
         return;
     }
-    let committed = match pending.job.prepare(
+    let committed = match pending.job.resolve(
         &p.data.inventory,
         items,
         &p.data.stats,
         p.data.xp_rate_hundreds,
         p.member,
+        random,
     ) {
-        Ok(prepared) => {
+        Ok((prepared, success)) => {
             p.data.inventory = prepared.inventory;
             p.data.stats = prepared.stats;
             if tutorial
@@ -101,10 +103,14 @@ pub(super) fn complete(
             });
             events.push(WorldEvent::GameMessage {
                 actor: p.id,
-                text: format!(
-                    "You {} the {}.",
-                    pending.job.recipe.action, pending.job.recipe.name
-                ),
+                text: if success {
+                    format!(
+                        "You {} the {}.",
+                        pending.job.recipe.action, pending.job.recipe.name
+                    )
+                } else {
+                    pending.job.recipe.failure.unwrap().message.into()
+                },
             });
             true
         }
@@ -232,6 +238,7 @@ mod tests {
                     ticks: 1,
                     name: "diamond",
                     action: "cut",
+                    failure: None,
                 }),
             )
             .unwrap();
@@ -491,6 +498,7 @@ mod choice_tests {
                 ticks: 2,
                 name: "Beer glass",
                 action: "blow",
+                failure: None,
             },
             Recipe {
                 exchange: crate::grinding::Recipe {
@@ -505,6 +513,7 @@ mod choice_tests {
                 ticks: 2,
                 name: "Vial",
                 action: "blow",
+                failure: None,
             },
         ]);
         w.held_use_handlers
@@ -660,11 +669,295 @@ mod choice_tests {
     }
 }
 
-#[cfg(test)]mod prior_production_tests{
- use super::*;use crate::{inventory::Item,held_use::{Handler,Request as Held,Scope,Type},tool_crafting::Recipe};
- #[test]fn legacy_tool_production_single_option_preserves_gem_f2p_and_shell_member_cadences(){
-  for(input,output,level,xp,first,cycle,member,action,expected,total)in[(1621,1605,27,675,1,2,false,"cut",vec![1,3,5],2529),(3345,3327,15,325,2,3,true,"carve",vec![2,5,8],1218)]{
-   let mut w=World::default();w.collision.allocate(3200,3200,0);let mut stats=Stats::default();stats.set_base(3,10);stats.set_current(3,10);stats.set_base(12,level);stats.set_current(12,level);let mut data=PlayerData::new(1,"Tool production".into(),CoordGrid::new(3200,3200,0).unwrap(),stats);data.xp_rate_hundreds=125;for slot in 0..28{data.inventory.restore_slot(slot,Some(Item{id:1511,count:1,vars:0})).unwrap();}for(slot,id)in[(5,1755),(21,input),(3,input),(11,input)]{data.inventory.restore_slot(slot,Some(Item{id,count:1,vars:0})).unwrap();}w.queue_login(1,data).unwrap();w.tick().unwrap();let a=w.actors().next().unwrap();w.set_membership(a,member).unwrap();for id in [1755,input]{w.held_use_types.insert(id,Type{id,content:-1});}let recipe=Recipe{exchange:crate::grinding::Recipe{tool:1755,input,output,members:member,animation:None},level:level as u8,xp_tenths:xp,ticks:first,name:"product",action};w.held_use_handlers.register(Scope::Types,1755,input,Handler::ToolCraftingChoices{recipes:std::sync::Arc::new(vec![recipe]),cycle_ticks:cycle}).unwrap();let request=Held{selected_slot:21,selected_id:input,target_slot:5,target_id:1755};w.prepare_held_use(a,request).unwrap();w.finish_held_use(a,request).unwrap();let choices=w.take_tool_crafting_request(a).unwrap().unwrap();assert_eq!(choices.recipes.len(),1);assert_eq!(choices.available(&w.data(a).unwrap().inventory),3);let start=w.clock.0;w.start_tool_crafting_choice(a,choices,0,3).unwrap();let mut commits=Vec::new();let mut previous=0;for _ in 0..12{w.tick().unwrap();let count=w.data(a).unwrap().inventory.slots().iter().flatten().filter(|v|v.id==output).count();if count!=previous{commits.push(w.clock.0-1-start);if count==1{assert_eq!(w.data(a).unwrap().inventory.get(21).unwrap().id,output);assert_eq!(w.data(a).unwrap().inventory.get(3).unwrap().id,input);}}previous=count;}assert_eq!(commits,expected);assert_eq!(previous,3);assert_eq!(w.data(a).unwrap().stats.fine_xp(12),total);assert_eq!(w.data(a).unwrap().inventory.get(5).unwrap().id,1755);assert_eq!(w.data(a).unwrap().inventory.free_space(),0);
-  }
- }
+#[cfg(test)]
+mod prior_production_tests {
+    use super::*;
+    use crate::{
+        held_use::{Handler, Request as Held, Scope, Type},
+        inventory::Item,
+        tool_crafting::Recipe,
+    };
+    #[test]
+    fn legacy_tool_production_single_option_preserves_gem_f2p_and_shell_member_cadences() {
+        for (input, output, level, xp, first, cycle, member, action, expected, total) in [
+            (1621, 1605, 27, 675, 1, 2, false, "cut", vec![1, 3, 5], 2529),
+            (
+                3345,
+                3327,
+                15,
+                325,
+                2,
+                3,
+                true,
+                "carve",
+                vec![2, 5, 8],
+                1218,
+            ),
+        ] {
+            let mut w = World::default();
+            w.collision.allocate(3200, 3200, 0);
+            let mut stats = Stats::default();
+            stats.set_base(3, 10);
+            stats.set_current(3, 10);
+            stats.set_base(12, level);
+            stats.set_current(12, level);
+            let mut data = PlayerData::new(
+                1,
+                "Tool production".into(),
+                CoordGrid::new(3200, 3200, 0).unwrap(),
+                stats,
+            );
+            data.xp_rate_hundreds = 125;
+            for slot in 0..28 {
+                data.inventory
+                    .restore_slot(
+                        slot,
+                        Some(Item {
+                            id: 1511,
+                            count: 1,
+                            vars: 0,
+                        }),
+                    )
+                    .unwrap();
+            }
+            for (slot, id) in [(5, 1755), (21, input), (3, input), (11, input)] {
+                data.inventory
+                    .restore_slot(
+                        slot,
+                        Some(Item {
+                            id,
+                            count: 1,
+                            vars: 0,
+                        }),
+                    )
+                    .unwrap();
+            }
+            w.queue_login(1, data).unwrap();
+            w.tick().unwrap();
+            let a = w.actors().next().unwrap();
+            w.set_membership(a, member).unwrap();
+            for id in [1755, input] {
+                w.held_use_types.insert(id, Type { id, content: -1 });
+            }
+            let recipe = Recipe {
+                exchange: crate::grinding::Recipe {
+                    tool: 1755,
+                    input,
+                    output,
+                    members: member,
+                    animation: None,
+                },
+                level: level as u8,
+                xp_tenths: xp,
+                ticks: first,
+                name: "product",
+                action,
+                failure: None,
+            };
+            w.held_use_handlers
+                .register(
+                    Scope::Types,
+                    1755,
+                    input,
+                    Handler::ToolCraftingChoices {
+                        recipes: std::sync::Arc::new(vec![recipe]),
+                        cycle_ticks: cycle,
+                    },
+                )
+                .unwrap();
+            let request = Held {
+                selected_slot: 21,
+                selected_id: input,
+                target_slot: 5,
+                target_id: 1755,
+            };
+            w.prepare_held_use(a, request).unwrap();
+            w.finish_held_use(a, request).unwrap();
+            let choices = w.take_tool_crafting_request(a).unwrap().unwrap();
+            assert_eq!(choices.recipes.len(), 1);
+            assert_eq!(choices.available(&w.data(a).unwrap().inventory), 3);
+            let start = w.clock.0;
+            w.start_tool_crafting_choice(a, choices, 0, 3).unwrap();
+            let mut commits = Vec::new();
+            let mut previous = 0;
+            for _ in 0..12 {
+                w.tick().unwrap();
+                let count = w
+                    .data(a)
+                    .unwrap()
+                    .inventory
+                    .slots()
+                    .iter()
+                    .flatten()
+                    .filter(|v| v.id == output)
+                    .count();
+                if count != previous {
+                    commits.push(w.clock.0 - 1 - start);
+                    if count == 1 {
+                        assert_eq!(w.data(a).unwrap().inventory.get(21).unwrap().id, output);
+                        assert_eq!(w.data(a).unwrap().inventory.get(3).unwrap().id, input);
+                    }
+                }
+                previous = count;
+            }
+            assert_eq!(commits, expected);
+            assert_eq!(previous, 3);
+            assert_eq!(w.data(a).unwrap().stats.fine_xp(12), total);
+            assert_eq!(w.data(a).unwrap().inventory.get(5).unwrap().id, 1755);
+            assert_eq!(w.data(a).unwrap().inventory.free_space(), 0);
+        }
+    }
+}
+
+#[cfg(test)]
+mod fallible_world_tests {
+    use super::*;
+    use crate::{
+        held_use::{Handler, Request as Held, Scope, Type},
+        inventory::Item,
+        tool_crafting::{Failure, Recipe},
+    };
+    struct Draw {
+        calls: usize,
+    }
+    impl RandomSource for Draw {
+        fn below(&mut self, n: u32) -> u32 {
+            if n == 256 {
+                let value = [0, 255, 0][self.calls];
+                self.calls += 1;
+                value
+            } else {
+                0
+            }
+        }
+    }
+    #[test]
+    fn semiprecious_actual_choice_batch_mixes_cut_crush_and_stops_stale_without_a_draw() {
+        for stale in [false, true] {
+            let mut w = World::default();
+            w.collision.allocate(3200, 3200, 0);
+            let mut stats = Stats::default();
+            stats.set_base(3, 10);
+            stats.set_current(3, 10);
+            let mut data = PlayerData::new(
+                1,
+                "Gem cutter".into(),
+                CoordGrid::new(3200, 3200, 0).unwrap(),
+                stats,
+            );
+            data.xp_rate_hundreds = 125;
+            for slot in 0..28 {
+                data.inventory
+                    .restore_slot(
+                        slot,
+                        Some(Item {
+                            id: 1511,
+                            count: 1,
+                            vars: 0,
+                        }),
+                    )
+                    .unwrap();
+            }
+            for (slot, id) in [(0, 1755), (17, 1625), (3, 1625), (8, 1625)] {
+                data.inventory
+                    .restore_slot(
+                        slot,
+                        Some(Item {
+                            id,
+                            count: 1,
+                            vars: 0,
+                        }),
+                    )
+                    .unwrap();
+            }
+            w.queue_login(1, data).unwrap();
+            w.tick().unwrap();
+            let a = w.actors().next().unwrap();
+            w.set_membership(a, true).unwrap();
+            for id in [1755, 1625] {
+                w.held_use_types.insert(id, Type { id, content: -1 });
+            }
+            let recipe = Recipe {
+                exchange: crate::grinding::Recipe {
+                    tool: 1755,
+                    input: 1625,
+                    output: 1609,
+                    members: true,
+                    animation: Some(890),
+                },
+                level: 1,
+                xp_tenths: 150,
+                ticks: 1,
+                name: "Opal",
+                action: "cut",
+                failure: Some(Failure {
+                    output: 1633,
+                    xp_tenths: 38,
+                    low: 128,
+                    high: 250,
+                    message: "Crushed",
+                }),
+            };
+            w.held_use_handlers
+                .register(
+                    Scope::Types,
+                    1755,
+                    1625,
+                    Handler::ToolCraftingChoices {
+                        recipes: std::sync::Arc::new(vec![recipe]),
+                        cycle_ticks: 2,
+                    },
+                )
+                .unwrap();
+            let held = Held {
+                selected_slot: 17,
+                selected_id: 1625,
+                target_slot: 0,
+                target_id: 1755,
+            };
+            w.prepare_held_use(a, held).unwrap();
+            w.finish_held_use(a, held).unwrap();
+            let req = w.take_tool_crafting_request(a).unwrap().unwrap();
+            w.start_tool_crafting_choice(a, req, 0, 3).unwrap();
+            let mut random = Draw { calls: 0 };
+            w.tick_with_random(&mut random).unwrap();
+            assert_eq!(random.calls, 0);
+            w.tick_with_random(&mut random).unwrap();
+            assert_eq!(random.calls, 1);
+            assert_eq!(w.data(a).unwrap().inventory.get(17).unwrap().id, 1609);
+            if stale {
+                w.data_mut(a)
+                    .unwrap()
+                    .inventory
+                    .restore_slot(
+                        3,
+                        Some(Item {
+                            id: 1625,
+                            count: 1,
+                            vars: 7,
+                        }),
+                    )
+                    .unwrap();
+            }
+            let before = (
+                w.data(a).unwrap().inventory.clone(),
+                w.data(a).unwrap().stats.clone(),
+            );
+            for _ in 0..10 {
+                w.tick_with_random(&mut random).unwrap();
+            }
+            let d = w.data(a).unwrap();
+            if stale {
+                assert_eq!(random.calls, 1);
+                assert_eq!((d.inventory.clone(), d.stats.clone()), before);
+            } else {
+                assert_eq!(random.calls, 3);
+                assert_eq!(d.inventory.get(3).unwrap().id, 1633);
+                assert_eq!(d.inventory.get(8).unwrap().id, 1609);
+                assert_eq!(d.stats.fine_xp(12), 421);
+                assert_eq!(d.inventory.free_space(), 0);
+            }
+            assert_eq!(d.inventory.get(0).unwrap().id, 1755);
+        }
+    }
 }

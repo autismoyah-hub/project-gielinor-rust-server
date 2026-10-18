@@ -123,6 +123,7 @@ pub fn snelm_carving(
             ticks: 2,
             name,
             action:"carve",
+            failure:None,
         });
     }
     Ok(recipes)

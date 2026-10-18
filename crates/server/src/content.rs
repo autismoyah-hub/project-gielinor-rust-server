@@ -2,6 +2,8 @@
 use gielinor_cache::{game::Definitions, symbols::Symbols};
 use gielinor_world::food::{self, Edible};
 use std::collections::BTreeMap;
+mod fallible_gems;
+pub use fallible_gems::fallible_gems;
 mod glassblowing;
 pub use glassblowing::glassblowing;
 mod ordinary_stringing;

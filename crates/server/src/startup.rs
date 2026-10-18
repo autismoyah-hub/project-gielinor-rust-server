@@ -759,6 +759,9 @@ pub fn configure<B: AccountBackend>(
     for recipe in crate::content::ordinary_stringing(n("obj"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
         runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.first,recipe.second,gielinor_world::held_use::Handler::AssemblyTimed{recipe,ticks:1}).map_err(|e|io::Error::other(format!("Ordinary stringing registration: {e:?}")))?;
     }
+    for recipe in crate::content::fallible_gems(n("obj"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
+        runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.exchange.tool,recipe.exchange.input,gielinor_world::held_use::Handler::ToolCraftingChoices{recipes:std::sync::Arc::new(vec![recipe]),cycle_ticks:2}).map_err(|e|io::Error::other(format!("Semiprecious gem registration: {e:?}")))?;
+    }
     let glass=crate::content::glassblowing(n("obj"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)?;
     runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,1785,1775,gielinor_world::held_use::Handler::ToolCraftingChoices{recipes:std::sync::Arc::new(glass),cycle_ticks:3}).map_err(|e|io::Error::other(format!("Glassblowing registration: {e:?}")))?;
     runtime.configure_smelting_names(names)?;

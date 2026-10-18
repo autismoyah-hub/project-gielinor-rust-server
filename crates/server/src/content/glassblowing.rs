@@ -75,6 +75,7 @@ pub fn glassblowing(
             ticks: 2,
             name,
             action: "blow",
+            failure:None,
         });
     }
     Ok(recipes)

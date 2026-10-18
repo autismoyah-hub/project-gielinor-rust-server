@@ -2504,7 +2504,7 @@ impl World {
                                                 Deferred::Grinding(job) => {
                                                     grinding_actions::complete(p, queues, job, &self.object_types, self.clock.0, &mut self.events);
                                                 }
-                                                Deferred::ToolCrafting(pending) => {tool_crafting_actions::complete(p,queues,pending,&self.object_types,self.tutorial_rules_completed_varp.is_some(),&mut self.events);}
+                                                Deferred::ToolCrafting(pending) => {tool_crafting_actions::complete(p,queues,pending,&self.object_types,self.tutorial_rules_completed_varp.is_some(),&mut self.events,random);}
                                                 Deferred::Pickpocket(job) => {
                                                     if let Some(config)=&self.pickpocket {
                                                         let target=job.target;

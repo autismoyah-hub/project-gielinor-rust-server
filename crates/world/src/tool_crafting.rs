@@ -15,6 +15,7 @@ pub struct Recipe {
     pub ticks: u8,
     pub name: &'static str,
     pub action: &'static str,
+    pub failure: Option<Failure>,
 }
 #[derive(Clone, Copy, Debug)]
 pub struct Job {
@@ -146,6 +147,7 @@ mod tests {
                 ticks: 2,
                 name: "emerald",
                 action: "cut",
+                failure: None,
             },
             tool_slot: 1,
             input_slot: 20,
@@ -282,4 +284,180 @@ pub(crate) struct Batch {
     pub slots: std::sync::Arc<Vec<usize>>,
     pub index: usize,
     pub cycle_ticks: u8,
+}
+
+/// Both possible resource/reward states are prepared before the only random draw.
+#[derive(Clone, Copy, Debug)]
+pub struct Failure {
+    pub output: i32,
+    pub xp_tenths: u16,
+    pub low: i32,
+    pub high: i32,
+    pub message: &'static str,
+}
+impl Job {
+    pub fn resolve(
+        &self,
+        inv: &Inventory,
+        catalog: &Catalog,
+        stats: &Stats,
+        rate: i32,
+        member: bool,
+        random: &mut impl crate::npc::RandomSource,
+    ) -> Result<(Prepared, bool), Error> {
+        let success = self.prepare(inv, catalog, stats, rate, member)?;
+        let Some(failure) = self.recipe.failure else {
+            return Ok((success, true));
+        };
+        if failure.low < 0
+            || failure.high > 255
+            || failure.low > failure.high
+            || failure.xp_tenths == 0
+        {
+            return Err(Error::Policy);
+        }
+        let mut failed_job = *self;
+        failed_job.recipe.exchange.output = failure.output;
+        failed_job.recipe.xp_tenths = failure.xp_tenths;
+        failed_job.recipe.failure = None;
+        let failed = failed_job.prepare(inv, catalog, stats, rate, member)?;
+        // Match source's clamped probability shape using the existing interpolation;
+        // the host's authoritative uniform draw replaces source global Random.Default.
+        let level = (stats.current(12) as u8).clamp(1, 99) as i32;
+        let threshold = (skills::success_rate(failure.low, failure.high, level, 99) * 256.0)
+            .clamp(0.0, 256.0) as u32;
+        if random.below(256) < threshold {
+            Ok((success, true))
+        } else {
+            Ok((failed, false))
+        }
+    }
+}
+
+#[cfg(test)]
+mod failure_tests {
+    use super::*;
+    use crate::inventory::Item;
+    struct Draw {
+        value: u32,
+        calls: usize,
+    }
+    impl crate::npc::RandomSource for Draw {
+        fn below(&mut self, n: u32) -> u32 {
+            assert_eq!(n, 256);
+            self.calls += 1;
+            self.value
+        }
+    }
+    fn fixture() -> (Job, Inventory, Catalog, Stats) {
+        let job = Job {
+            recipe: Recipe {
+                exchange: grinding::Recipe {
+                    tool: 1755,
+                    input: 1627,
+                    output: 1611,
+                    members: true,
+                    animation: Some(891),
+                },
+                level: 13,
+                xp_tenths: 200,
+                ticks: 1,
+                name: "Jade",
+                action: "cut",
+                failure: Some(Failure {
+                    output: 1633,
+                    xp_tenths: 50,
+                    low: 100,
+                    high: 245,
+                    message: "Crushed",
+                }),
+            },
+            tool_slot: 0,
+            input_slot: 1,
+        };
+        let mut inv = Inventory::new(2, StackType::Normal, false);
+        for (slot, id) in [(0, 1755), (1, 1627)] {
+            inv.restore_slot(
+                slot,
+                Some(Item {
+                    id,
+                    count: 1,
+                    vars: 0,
+                }),
+            )
+            .unwrap();
+        }
+        let mut stats = Stats::default();
+        stats.set_base(12, 13);
+        stats.set_current(12, 13);
+        (job, inv, Catalog::default(), stats)
+    }
+    #[test]
+    fn roll_boundary_selects_exact_staged_reward_and_deterministic_profiles_draw_nothing() {
+        for (value, success, id, fine) in [(118, true, 1611, 250), (119, false, 1633, 62)] {
+            let (job, inv, cat, stats) = fixture();
+            let mut r = Draw { value, calls: 0 };
+            let (p, result) = job.resolve(&inv, &cat, &stats, 125, true, &mut r).unwrap();
+            assert_eq!(result, success);
+            assert_eq!(r.calls, 1);
+            assert_eq!(p.inventory.get(1).unwrap().id, id);
+            assert_eq!(p.inventory.get(0), inv.get(0));
+            assert_eq!(p.stats.fine_xp(12), fine);
+            assert_eq!(inv.get(1).unwrap().id, 1627);
+            assert_eq!(stats.fine_xp(12), 0);
+        }
+        let (mut job, inv, cat, stats) = fixture();
+        job.recipe.failure = None;
+        let mut r = Draw {
+            value: 255,
+            calls: 0,
+        };
+        assert!(
+            job.resolve(&inv, &cat, &stats, 125, true, &mut r)
+                .unwrap()
+                .1
+        );
+        assert_eq!(r.calls, 0);
+    }
+    #[test]
+    fn either_invalid_outcome_or_live_policy_refuses_before_rng_and_never_mutates() {
+        for case in 0..8 {
+            let (mut job, mut inv, mut cat, mut stats) = fixture();
+            let mut rate = 125;
+            let mut member = true;
+            match case {
+                0 => {
+                    cat.dummy.insert(1633);
+                }
+                1 => {
+                    cat.dummy.insert(1611);
+                }
+                2 => {
+                    inv.restore_slot(
+                        1,
+                        Some(Item {
+                            id: 1627,
+                            count: 1,
+                            vars: 9,
+                        }),
+                    )
+                    .unwrap();
+                }
+                3 => rate = 0,
+                4 => member = false,
+                5 => stats.set_current(12, 12),
+                6 => job.recipe.failure.as_mut().unwrap().low = 246,
+                _ => job.recipe.failure.as_mut().unwrap().xp_tenths = 0,
+            };
+            let before = (inv.clone(), stats.clone());
+            let mut r = Draw { value: 0, calls: 0 };
+            assert!(
+                job.resolve(&inv, &cat, &stats, rate, member, &mut r)
+                    .is_err(),
+                "case{case}"
+            );
+            assert_eq!(r.calls, 0, "case{case}");
+            assert_eq!((inv, stats), before, "case{case}");
+        }
+    }
 }
