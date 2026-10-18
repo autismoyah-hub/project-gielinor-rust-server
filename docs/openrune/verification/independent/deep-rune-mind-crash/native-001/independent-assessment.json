@@ -1,0 +1,22 @@
+{
+  "implementation_id": "OR-MIG-0125",
+  "tested_sha": "a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d",
+  "status": "PASS",
+  "scope": "One genuine rendered native Mind altar Craft-rune menu converts28mixed essence into224runes and7700fineXP with791/186effects; exact location73 send and whole raw22/18/46 independently decoded. Only this freshly owned disposable local server is terminated before save/logout. SQL prior28essence/worn gear/Stats/fractions/membership/energy restored; actual restarted native raw22/46 matches exactly with no pending credit or duplication.",
+  "limitations": [
+    "Unacknowledged rollback does not inject during a SQL commit.",
+    "Separate completed member/nonmember normal campaigns are not rerun."
+  ],
+  "evidence_sha256": {
+    "initial-state.json": "2b1b25eb38697f2a601c5821512a408b80169532b6fdfa965a82070932a3e6fc",
+    "build.json": "d85486ac0da8af5ef1a10c98c3fb773991220e7ecf74ff0743631cc4e47376f8",
+    "produce/client.log": "ac571d52550389878827c30b0268caf148b7cba936daaf3ee24c5f7eff1c6e87",
+    "produce/manifest.json": "cdb3a74cb8acd373dfef42114ff786dedad254a0ee1bfd92706bc9b3d9ae1c07",
+    "produce/after.json": "ad58193d41bde5037af3e3c498191c12346d0f5fc1e4735e70a332c6de04a539",
+    "relogin/client.log": "6edb0dde550f943bcde004fafb15d7977af6d67691f2bab70449452ffea4e81a",
+    "relogin/manifest.json": "531a2d9dc1b9f2d44c3bd5cacc13899f9091ff31e37b2d5003a52143894ab97f",
+    "relogin/after.json": "9071ba2e24b1aa945288caebede9a3d03465c4ae1131346f821593caee057918",
+    "frozen-observer/pg_observer.rs": "f86914bf034cc8d8ce2e2e6756dbd86b08c7b3b0328d8eea85b4aff0cfe95f95",
+    "frozen-observer/build.json": "6080c35bf92e8eb9b812b9bbcbf95ef1e5b2673dcdeb9d4d750553423ef13b83"
+  }
+}

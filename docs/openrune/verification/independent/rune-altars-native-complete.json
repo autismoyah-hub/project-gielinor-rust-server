@@ -1,0 +1,95 @@
+{
+  "implementation_id": "OR-MIG-0125",
+  "tested_sha": "a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d",
+  "status": "PASS_APPLICABLE_V2",
+  "campaigns": [
+    {
+      "feature": "rune-air",
+      "run": "native-001",
+      "output": 556,
+      "runes": 280,
+      "fine_xp_award": 7000,
+      "sequence_client_tick": 65,
+      "reward_client_tick": 66,
+      "observed_location_wire_sends": 0
+    },
+    {
+      "feature": "rune-mind",
+      "run": "native-002",
+      "output": 558,
+      "runes": 224,
+      "fine_xp_award": 7700,
+      "sequence_client_tick": 165,
+      "reward_client_tick": 166,
+      "observed_location_wire_sends": 0
+    },
+    {
+      "feature": "rune-water",
+      "run": "native-001",
+      "output": 555,
+      "runes": 168,
+      "fine_xp_award": 8400,
+      "sequence_client_tick": 82,
+      "reward_client_tick": 83,
+      "observed_location_wire_sends": 2
+    },
+    {
+      "feature": "rune-earth",
+      "run": "native-001",
+      "output": 557,
+      "runes": 112,
+      "fine_xp_award": 9100,
+      "sequence_client_tick": 92,
+      "reward_client_tick": 93,
+      "observed_location_wire_sends": 2
+    },
+    {
+      "feature": "rune-fire",
+      "run": "native-001",
+      "output": 554,
+      "runes": 84,
+      "fine_xp_award": 9800,
+      "sequence_client_tick": 113,
+      "reward_client_tick": 114,
+      "observed_location_wire_sends": 2
+    },
+    {
+      "feature": "rune-body",
+      "run": "native-001",
+      "output": 559,
+      "runes": 84,
+      "fine_xp_award": 10500,
+      "sequence_client_tick": 97,
+      "reward_client_tick": 98,
+      "observed_location_wire_sends": 2
+    },
+    {
+      "feature": "rune-mind-f2p",
+      "run": "native-001",
+      "output": 558,
+      "runes": 224,
+      "fine_xp_award": 7700,
+      "sequence_client_tick": 139,
+      "reward_client_tick": 140,
+      "observed_location_wire_sends": 0
+    }
+  ],
+  "scope": "Seven fresh native accounts cover all6actual mapped ordinary altar Craft-rune1menus/member plus actualF2PMind flag,196mixed essence ->1176runes/60200fineXP. Independent whole raw22/18/46+SQL/save/restarted native reconnect confirm every output/gear/wholeStats/fraction and no empty-repeat credit. Each actual791/186height100 effect precedes observed inventory credit by exactly1received83clock;World972matrix independently corroborates one authoritative queueclock/all6worldtypes/inputkinds/rates.",
+  "limitations": [
+    "All6nativeinteriorfixtures bypass unported ruins/portals/talisman/tiara entry. Acquisition/equip/native boost activation and original executable/audio/render parity are not claimed.",
+    "Older frozen Mind/member-F2P/Air log generated73and serverreward/effects,but not73sendboundary; their secondemptyclick delivery is not independently attested. Water/Earth/Fire/Body each logboth genuine location sends and no repeatedcredit. Preserve these exact historical observation identities.",
+    "Only Mind has a nativeF2P account. All6F2P+member ordinary policy is independently tested in World/cache; no claimof full native F2Pcrossproduct.",
+    "V1stockdefect PG-DEF-007 and V3native interruption/late-context obligations remain separate; accepted V2does not imply whole-contract acceptance."
+  ],
+  "evidence_sha256": {
+    "deep-rune-air/native-001/independent-assessment.json": "9c90b2af0e80264e34b76de8ef049d42f8a7d2558ec2ffaaaa0314101bd3921f",
+    "deep-rune-mind/native-002/independent-assessment.json": "8d6a469daa52528f3352f7dc504d6dd6884b379b61d085bdb977f4d72507d293",
+    "deep-rune-water/native-001/independent-assessment.json": "a675371a5b3b9ae527659b819743324edd85a6278be083261d3100f43ef5caab",
+    "deep-rune-earth/native-001/independent-assessment.json": "fecd459dc7e9b3b86cba2b8e92a4d1d75b603ee7b9e003f588e9f9801d0cbd26",
+    "deep-rune-fire/native-001/independent-assessment.json": "a31f721345e251e81a5df94797d3a4dc8677ad68f5d746acbb583330476ede63",
+    "deep-rune-body/native-001/independent-assessment.json": "41426f5bc420c821dbd99caddcd12746744be269f13485c60097556706ef0a2d",
+    "deep-rune-mind-f2p/native-001/independent-assessment.json": "19de14afcfb85ec14e5a2e7c728b6d657ee4b08ab8cb3848969d2d8877374f0a",
+    "integration-external-rune-altars-bindings-a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d/manifest.json": "89f4bdb3ecf81fc6df65784520f4a90cd25cd32a8baa8c9991a40ee804e3002b",
+    "rune-altars-runtime-v0.json": "b272ed90f93a4177f41b18dc1697788dde5ad0414c025cec98c77cc3808ea3e6"
+  }
+}

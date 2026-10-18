@@ -1,0 +1,11 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\bd1294ab9e0ff850155b024364dc3a3a98a37bed\external-harness-2609941100)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.88s
+     Running tests\live.rs (C:\Projects\OSRSRSPS\agent7-verification\work\bd1294ab9e0ff850155b024364dc3a3a98a37bed\target\debug\deps\live-d444ea2211fdb9bb.exe)
+
+running 2 tests
+PG_DAEYALT_LIVE_GUARDS12 initial/delayedpending authoritativeDeathRequested restoredHP withoutrespawn PASS
+test twelve_authoritative_queued_death_with_restored_visible_hp_refusals ... ok
+PG_DAEYALT_LIVE_GUARDS384 all5held27actual-worn-slot modifiers initial/late sixaltars no debitXPfallback PASS
+test three_hundred_eighty_four_live_modifier_refusals ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 25.71s

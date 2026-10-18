@@ -1,0 +1,22 @@
+{
+  "implementation_id": "OR-MIG-0125",
+  "tested_sha": "a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d",
+  "status": "PASS_APPLICABLE_V4",
+  "scope": "Qualified independent comparison:4protectedsource/13pinnedWiki hashes,actual239.1items/stat/6altars/791/186 and all6native scene actions/whole reward clocks attest the candidate policy. Source3clock versus Wiki/candidate1; sourcebaselevel versus current pre-action visible level;sourcebaseProduced*rune.xp versus Wiki/candidateXPperessence are explicitly different. Direct Worldthreshold/actualXPlevelup/104Earth5 tests and native1received-clock/everywhole reward compare candidate behavior without claiming source execution equivalence.",
+  "qualified_policy": [
+    "Pure essence acceptedF2P under pinned official2006update/generalitem behavior; five productWikiRecipeYes versusBodyNo flags retained as contradictory rowmetadata,not silently rewritten. ActualF2PMind and all6F2PWorld/config candidate policies attested; no originalOSRSeffectivecache/runtimeclaim.",
+    "Source241generatedDBrows unavailable. Sourceformula comparison cannot assume unavailable donor recipe XP values or infer original runtime output. Target239.1facts independently bound.",
+    "SourcepreCraft hardcoded sound2710 has no attested targetalias and is deliberately omitted. Numeric791/186height100effects observed; no invented soundID or audio parity.",
+    "Visible104and drained states are constructed predicate fixtures,not real boost activation. Source3/current/per-produced policy differences are explicit Wiki-first adaptations accepted for comparison,not erased differences.",
+    "Unsupportedspecialessences/modifiers and entry/acquisition/pouches/diaries/otheraltars remain separate; sourcefourfiles remainPARTIAL."
+  ],
+  "limitations": [
+    "V4qualifiedsource/Wiki/target comparison only,no originalexecutable/donorasset/fullfile-completeness acceptance. HistoricalV1 PG-DEF-007 remainsFAIL."
+  ],
+  "evidence_sha256": {
+    "reference-rune-altars/comparison.json": "bba9fbbf064a9e77abc0a7e7b2dfeebcb16ac956e1a41cb99a2cfe6d372c5532",
+    "rune-altars-native-complete.json": "f1099e01c5db54df76dcfd4b22f917e7003d866b22b0454a4ec2610b5dc2b759",
+    "rune-altars-runtime-v0.json": "b272ed90f93a4177f41b18dc1697788dde5ad0414c025cec98c77cc3808ea3e6",
+    "rune-altars-additional-world.json": "57b27f459f671cde16fdc87503bfda2317dde8c0bbce97954d2cf9f56938a745"
+  }
+}

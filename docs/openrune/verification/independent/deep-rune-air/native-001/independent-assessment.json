@@ -1,0 +1,31 @@
+{
+  "implementation_id": "OR-MIG-0125",
+  "tested_sha": "a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d",
+  "status": "PASS_SCOPED",
+  "feature": "rune-air",
+  "output": 556,
+  "runes": 280,
+  "fine_xp_award": 7000,
+  "inventory_change_ticks": [
+    66
+  ],
+  "scope": "Two actual rendered native altar Craft-rune menus generate matching native location actions; one complete28 mixed essence transaction, exact runes/wholeStats/fractionalXP/gear and no additional credit after empty repeat. Actual791/186-height100 decoded effects. Acknowledged save, server process restart and independently decoded same-account native reconnect preserve whole inventory/Stats.",
+  "limitations": [
+    "Current transport logger records27/47/95/115 only, not73. First altar delivery established by genuine server reward/effects; generated second action and subsequent no-credit observation do not independently attest its wire delivery or server refusal.",
+    "Inside-altar disposable fixture does not establish acquisition/entry/ruins/talisman/tiara access.",
+    "No original executable/audio/render parity, unsaved crash, native interruption/negative completion or other altar acceptance. Historical stock defect PG-DEF-007 remains."
+  ],
+  "evidence_sha256": {
+    "initial-state.json": "e9559d0d140b892014f60aed37b4aa3c06bc0735ae3f89a5a83571ecf3ec2531",
+    "build.json": "d85486ac0da8af5ef1a10c98c3fb773991220e7ecf74ff0743631cc4e47376f8",
+    "produce/client.log": "4eef3f6e5c3715f4c14bde6d55821bc3d64e1875a5ca931a339923657c750b79",
+    "produce/manifest.json": "9cf61f5ecdb3e8bf9fe4505e1c93219f380e586e108ae7431f85966442c09bf0",
+    "produce/after.json": "c15a70d5e8bf3d1949dc5528dc6d0845baca48870cf4754fafd9774cd20238e1",
+    "relogin/client.log": "d027c1f1ec0d4a6f5df18bbfaf04ef71537886e637513c3eaaf4b4cbffc7b8dd",
+    "relogin/manifest.json": "8f4bc6fe61214b6b4841979207bb1d6fca6e6a5f926b0e2f257e2ad98ae240c0",
+    "relogin/after.json": "f5dcdea9e7d40c52315caa2f7be481f0ca04f27eb528b911e40664445c17a4bd",
+    "frozen-observer/pg_observer.rs": "b6796e30c24d1e42f062f915f642d875a2f51b0da3a09e29a625b1f3c4982c94",
+    "frozen-observer/build.json": "b354fba58b7e18a18adfa00f495c44a2e6089f57bb235eb51bce14f870a38359"
+  },
+  "observed_location_wire_sends": 0
+}

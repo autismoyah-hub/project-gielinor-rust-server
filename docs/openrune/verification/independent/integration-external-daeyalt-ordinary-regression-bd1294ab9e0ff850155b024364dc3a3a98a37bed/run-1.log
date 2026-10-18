@@ -1,0 +1,9 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\bd1294ab9e0ff850155b024364dc3a3a98a37bed\external-harness-4255727200)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.84s
+     Running tests\ordinary.rs (C:\Projects\OSRSRSPS\agent7-verification\work\bd1294ab9e0ff850155b024364dc3a3a98a37bed\target\debug\deps\ordinary-e22ee422930b883c.exe)
+
+running 1 test
+PG_DAEYALT_ORDINARY_REGRESSION independent whole-state action cases=972;all6/RunePureMixed/F2Pmember/count1-7-28/currentmin-99-104/rate1-1.25-5;oneclock/noRNG/emptyrepeat;104isconstructedpredicate,noboostactivationclaim
+test nine_hundred_seventy_two_registered_altar_material_membership_rate_and_level_controls ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 59.70s

@@ -1,0 +1,46 @@
+{
+  "implementation_id": "OR-MIG-0130",
+  "tested_sha": "7d2133f23e00ad852df8726ead67493e83c901b4",
+  "status": "PASS_REFERENCE_FACTS",
+  "sources": [
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/items/CraftingCapeScript.kt",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "sha256": "79753afdde96943a3d3b8fbd3ab605b3544e47358d3828c4cf3657f5deb5c11f"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/util/CraftingConstants.kt",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "sha256": "393d05fa5a5645b2dd712fcfb8f8814845376846a7594dafe16909422fe2008f"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Crafting cape",
+      "revision": "15232507",
+      "sha256": "028213832f24caa2f774ce2c6b1cf2f8c65715132cc870875b472a5805758713"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Cape of Accomplishment",
+      "revision": "15327887",
+      "sha256": "f7ce09c7e07bfe8dc57dbf5d53807ebb4113b894ed5e96b75f841327f06041b7"
+    }
+  ],
+  "target_source_hashes": {
+    "crates/world/src/worn_stat_boost.rs": "97fadf0ba6574ca5ee733f1c06d4dbcdfbad3bcf4634891edd38a286deb97d98",
+    "crates/world/src/simulation/worn_stat_boost_actions.rs": "994f35904eddcd277ede76fcaf0ee8ce5c6a95128039eadcaced313000ffac0b",
+    "crates/server/src/runtime/equipment_buttons.rs": "d424030593198de7a12d6bbf1608e0d23836fb6673dd12335fb008dd74ae127e"
+  },
+  "scope": "Two exact protected donor and two pinnedWiki hashes match read-only. Direct CraftingCapeScript registers onOpWorn2Boost on twoConstants capes,requiresbaseCrafting>=99,calls sharedstatBoost constant1percent0. Held3/Worn3Teleport and itsqueue/effects are separate unported operations. PinnedWiki equipmentBoost+1upto100/standardup-to60seconddecay and reactivationuntil99 rule retained.",
+  "candidate_comparison": [
+    "TargetactualpinnedRule.prepare stages sharedStats.applyBoost1percent0;actoractionchecks live member/life/modal/protection/save and sharedstat-trigger admission before publication. This is source inspection,not an independent execution PASS.",
+    "Targetnormalbase99/current99->100 anddrained+1/repeat until100/cannotlowerhigherboost follow candidate sharedhelper. Wiki reactivation/drained-state semantics need qualified comparison; no original runtime assumption.",
+    "Firstcustomlabel451candidateBoost maps nativebutton2,component387:16/currentcape. This remains a candidate mapping until genuine native menu/send/stat observation; old109param453/native4defect doesnotprove130eitherway.",
+    "Adjacent129r2F2Pguildentry exception is separate frommembercapeBoost use. SourceCraftingcapeWikiF2Pentry statement needs independent allwardrobe/runtime comparison at129r2exactSHA; no revision1inheritance."
+  ],
+  "limitations": [
+    "No actual130targetcache/native/World/binary/persistence/decay acceptance yet. No passive-on-equip/Teleport/emote/acquisition/Maxcape perks or donor executable parity. No FORGE tests counted as independent."
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "implementation_id": "OR-MIG-0126",
+  "tested_sha": "bd1294ab9e0ff850155b024364dc3a3a98a37bed",
+  "status": "PASS_SCOPED",
+  "scope": "Actual239.1 cache41item definitions including member/nonstackable Daeyalt24704,all six static3x3 Craft-rune altar recipes/stat20/791/186 and guard5held27worn exact.359 separate malformedbinding refusals preserve factory failclosed policy, including ten special-essence definition/name/member/shape/alias faults.",
+  "limitations": [
+    "Public content factory/cache only, not complete server runtime/native/acquisition/reference acceptance."
+  ],
+  "evidence_sha256": {
+    "integration-external-daeyalt-bindings-bd1294ab9e0ff850155b024364dc3a3a98a37bed/manifest.json": "4e0700b445e81cdef9982f3592efd3af6d403bef19ac4a1ff4f26e8589c28409",
+    "integration-external-daeyalt-bindings-bd1294ab9e0ff850155b024364dc3a3a98a37bed/run-1.log": "b09dab2441b7dbf3b6076d582cd8fa2b5f56fcd4f8ddd8069b840b50e080f672",
+    "integration-external-daeyalt-bindings-bd1294ab9e0ff850155b024364dc3a3a98a37bed/harness/bindings.rs": "c35551ec25ec8c3af761f31cc5a366e0111c21897900dc7cd10a294d9b194bee"
+  }
+}

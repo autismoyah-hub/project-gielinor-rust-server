@@ -1,0 +1,12 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\bd1294ab9e0ff850155b024364dc3a3a98a37bed\external-harness-7051655600)
+error[E0432]: unresolved imports `gielinor_world::combat::Target`, `gielinor_world::combat::Hit`, `gielinor_world::combat::Style`
+  --> tests\live.rs:12:110
+   |
+12 | ...e_hp_refusals(){use gielinor_world::combat::{Target,Hit,Style};for row in 0..6{for late in[false,true]{let(mut w,a,l,parts)=fixtu...
+   |                                                 ^^^^^^ ^^^ ^^^^^ no `Style` in `combat`
+   |                                                 |      |
+   |                                                 |      no `Hit` in `combat`
+   |                                                 no `Target` in `combat`
+
+For more information about this error, try `rustc --explain E0432`.
+error: could not compile `proving-ground-energy` (test "live") due to 1 previous error

@@ -1,0 +1,30 @@
+{
+  "implementation_id": "OR-MIG-0126",
+  "tested_sha": "bd1294ab9e0ff850155b024364dc3a3a98a37bed",
+  "status": "PASS_SCOPED",
+  "cases": 138,
+  "scope": "114 public prepare_member cases reject empty/duplicate/oversized/foreign/mixed/out-of-bounds captured materials,unregistered/invalid candidate recipe,current105/negative,placeholder inventory,output/input catalog faults and negative rate. Separate24cases register each invalid recipe before invocation and reject zero interval/XP/level orlevel100,so refusal is not solely absent recipe identity. All6 recipes independently exercised.",
+  "preserved_attempts": {
+    "integration-external-daeyalt-kernel-bd1294ab9e0ff850155b024364dc3a3a98a37bed": "FAIL",
+    "integration-external-daeyalt-kernel-bd1294ab9e0ff850155b024364dc3a3a98a37bed-1792347181450902500": "BLOCKED",
+    "integration-external-daeyalt-kernel-bd1294ab9e0ff850155b024364dc3a3a98a37bed-1792347225829833900": "BLOCKED",
+    "integration-external-daeyalt-kernel-bd1294ab9e0ff850155b024364dc3a3a98a37bed-1792347328037466000": "PASS",
+    "integration-external-daeyalt-kernel-config-bd1294ab9e0ff850155b024364dc3a3a98a37bed": "PASS"
+  },
+  "harness_correction": "First attempt did not compile:Catalog has Default but no Clone. Move the fresh owned fixture Catalog with mem::take. No test body ran before correction. Two capacity preflights then deferred at92.17/74.63CPU above70; retryguardPASS64.32,testPASS. No production source or resource policy changed.",
+  "limitations": [
+    "Public API restored-state fixtures only; no native acquisition/boost activation/persistence or complete126V1 acceptance. Other live-context/modifier/shape boundaries remain separate."
+  ],
+  "evidence_sha256": {
+    "integration-external-daeyalt-kernel-bd1294ab9e0ff850155b024364dc3a3a98a37bed/manifest.json": "d632ee46d727b41b4edd17e7758cff46459e1e38fc5be790f47c04ddb8ead8b8",
+    "integration-external-daeyalt-kernel-bd1294ab9e0ff850155b024364dc3a3a98a37bed-1792347181450902500/manifest.json": "d463e6d6a54b731063fe61c52cddf65527c8cd05571487f937a58096f8123f3b",
+    "integration-external-daeyalt-kernel-bd1294ab9e0ff850155b024364dc3a3a98a37bed-1792347225829833900/manifest.json": "d463e6d6a54b731063fe61c52cddf65527c8cd05571487f937a58096f8123f3b",
+    "integration-external-daeyalt-kernel-bd1294ab9e0ff850155b024364dc3a3a98a37bed-1792347328037466000/manifest.json": "dc006c60af138470746e3a22e14d4b4b85bdb13ac70812794a0371cac6d07fcb",
+    "integration-external-daeyalt-kernel-config-bd1294ab9e0ff850155b024364dc3a3a98a37bed/manifest.json": "a89b60f501e691eaefde6c4d01fadd6e4651ebfff7870fe2a230a30623dc053e",
+    "integration-external-daeyalt-kernel-bd1294ab9e0ff850155b024364dc3a3a98a37bed/run-1.log": "a4cb737e38a38b4e4ca6f6013b2a4d78f47215cdd1d0bd6c0d0a01f6246b0d4e",
+    "integration-external-daeyalt-kernel-bd1294ab9e0ff850155b024364dc3a3a98a37bed-1792347328037466000/run-1.log": "13833dd35dd04ce7c274d07929506a69ff23a19821307a5af7192f33216f4093",
+    "integration-external-daeyalt-kernel-bd1294ab9e0ff850155b024364dc3a3a98a37bed-1792347328037466000/harness/kernel.rs": "f9f3992c798cfc8f1590b99e20b28753124d907002e9c3825cce5603e4433d39",
+    "integration-external-daeyalt-kernel-config-bd1294ab9e0ff850155b024364dc3a3a98a37bed/run-1.log": "b7c24f0648e79df118f33a4cfd6b19c5b0285449cf9f73172a69a1d44ffa7bdd",
+    "integration-external-daeyalt-kernel-config-bd1294ab9e0ff850155b024364dc3a3a98a37bed/harness/config.rs": "f55a5a139b799a920a6912ccc6353041d35d5d7275f320feb76149abf6681b99"
+  }
+}

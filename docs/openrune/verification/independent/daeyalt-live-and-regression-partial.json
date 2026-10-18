@@ -1,0 +1,21 @@
+{
+  "implementation_id": "OR-MIG-0126",
+  "tested_sha": "bd1294ab9e0ff850155b024364dc3a3a98a37bed",
+  "status": "PASS_SCOPED",
+  "cases": 1368,
+  "scope": "396 live special-essence refusal cases:all five held and27 worn modifiers at their actual primary slots,initial and late completion across six altars;12actualDeathRequested cases with restored visibleHP and no respawn,including delayed pending work. No debit/reward/substitution/RNG; whole bag/gear/Stats preserved.972fresh ordinary Rune/Pure/mixed cases at this exact126SHA cover all6/F2P-member/current-required99-104/count1-7-28/rate1-1.25-5/first-free output/no repeat. This is distinct from historical125campaign.",
+  "harness_correction": "First live-guard attempt did not compile due incorrect combat-module imports; corrected to existing hits module, then ran whole396cases since no test had executed. Raw FAIL and corrected source/log retained.",
+  "limitations": [
+    "Constructed membership/worn/visible level/death fixtures are not native acquisition/equip/boost proof. Remaining special-essence live context/transaction/native/persistence/reference obligations remain open."
+  ],
+  "evidence_sha256": {
+    "integration-external-daeyalt-live-guards-bd1294ab9e0ff850155b024364dc3a3a98a37bed/manifest.json": "59d6f194ceecf70b3ce2abe521aac42c990a7e6f32fbffc106d5dfed9d967554",
+    "integration-external-daeyalt-live-guards-bd1294ab9e0ff850155b024364dc3a3a98a37bed-1792347625395427100/manifest.json": "a355279d7f1ea634f5c83aebe6ffee6629ac9053c667cb18efbd9424527e7981",
+    "integration-external-daeyalt-ordinary-regression-bd1294ab9e0ff850155b024364dc3a3a98a37bed/manifest.json": "fc6d60c3a69ccd48da742a67afe17209a5c8181744818a50d5cefd85c0269439",
+    "integration-external-daeyalt-live-guards-bd1294ab9e0ff850155b024364dc3a3a98a37bed/run-1.log": "e5971350bea99714ff8623f03f05cda2fc8f37d12a23d543c4234111a0241475",
+    "integration-external-daeyalt-live-guards-bd1294ab9e0ff850155b024364dc3a3a98a37bed-1792347625395427100/run-1.log": "64d986396029be6deee967a58fcb8eff826a85d9559789a370b50f4b413926ca",
+    "integration-external-daeyalt-ordinary-regression-bd1294ab9e0ff850155b024364dc3a3a98a37bed/run-1.log": "3c0676701e7da11339cf7bac675bcc98115c8f022770093f7c0c2071bd6cd228",
+    "integration-external-daeyalt-live-guards-bd1294ab9e0ff850155b024364dc3a3a98a37bed-1792347625395427100/harness/live.rs": "507682b640c884dde9b35deb78dc0c418c76ccc64b0ab24d26709bd50e14b6d0",
+    "integration-external-daeyalt-ordinary-regression-bd1294ab9e0ff850155b024364dc3a3a98a37bed/harness/ordinary.rs": "4141ed39536942dd1e7b25aae42c4cfa11dc68f5b61f3a17cff2a374a524f2f3"
+  }
+}

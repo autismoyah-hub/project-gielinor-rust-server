@@ -696,5 +696,36 @@ if path.exists():
     add('OR-MIG-0126',result['tested_sha'],'V1','IN_PROGRESS',result['scope']+' Remaining: '+'; '.join(result['remaining']),[path.relative_to(ROOT).as_posix()],scope='daeyalt-independent-world-partial')
 for path in sorted(OUT.glob('deep-rune-*/*/independent-assessment.json')):
     result=json.loads(path.read_text(encoding='utf-8'))
-    if result['status']!='PASS_SCOPED':continue
-    for level in ['V2','V3']:add('OR-MIG-0125',result['tested_sha'],level,'IN_PROGRESS',result['scope']+' Remaining: '+'; '.join(result['limitations']),[path.relative_to(ROOT).as_posix()],scope='rune-native-'+result['feature']+'-'+path.parent.name)
+    if result['status']!='PASS_SCOPED' or result['implementation_id']!='OR-MIG-0125':continue
+    for level in (['V3'] if (OUT/'rune-altars-native-complete.json').exists() else ['V2','V3']):add('OR-MIG-0125',result['tested_sha'],level,'IN_PROGRESS',result['scope']+' Remaining: '+'; '.join(result['limitations']),[path.relative_to(ROOT).as_posix()],scope='rune-native-'+result['feature']+'-'+path.parent.name)
+
+for filename,level,scope in [('daeyalt-guards-partial.json','V1','daeyalt-initial-late-guards'),('daeyalt-bindings-partial.json','V0','daeyalt-cache-bindings'),('reference-daeyalt/comparison.json','V4','daeyalt-reference-facts')]:
+    path=OUT/filename
+    if path.exists():
+        result=json.loads(path.read_text(encoding='utf-8'))
+        add('OR-MIG-0126',result['tested_sha'],level,'IN_PROGRESS',result['scope']+' Scoped evidence only; complete applicable obligations remain open.',[path.relative_to(ROOT).as_posix()],scope=scope)
+
+path=OUT/'rune-altars-runtime-v0.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PASS_APPLICABLE_V0'
+    add('OR-MIG-0125',result['tested_sha'],'V0','PASS',result['scope'],[path.relative_to(ROOT).as_posix()],scope='rune-altars-runtime-v0-complete')
+
+path=OUT/'daeyalt-kernel-partial.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    add('OR-MIG-0126',result['tested_sha'],'V1','IN_PROGRESS',result['scope']+' '+result['limitations'][0],[path.relative_to(ROOT).as_posix()],scope='daeyalt-kernel-partial')
+
+path=OUT/'daeyalt-live-and-regression-partial.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    add('OR-MIG-0126',result['tested_sha'],'V1','IN_PROGRESS',result['scope']+' '+result['limitations'][0],[path.relative_to(ROOT).as_posix()],scope='daeyalt-live-and-ordinary-regression')
+path=OUT/'deep-rune-mind-crash/native-001/independent-assessment.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PASS'
+    add('OR-MIG-0125',result['tested_sha'],'V3','IN_PROGRESS',result['scope']+' Normal saved/restarted altars assessed separately; remaining native interruption/late-context/stock scopes remain open. No during-SQL-commit injection.',[path.relative_to(ROOT).as_posix()],scope='rune-unsaved-recovery')
+
+for filename,level,scope in [('rune-altars-native-complete.json','V2','rune-altars-native-complete'),('rune-altars-reference-complete.json','V4','rune-altars-reference-complete')]:
+    path=OUT/filename
+    if path.exists():
+        result=json.loads(path.read_text(encoding='utf-8'))
+        add('OR-MIG-0125',result['tested_sha'],level,'PASS',result['scope']+' '+'; '.join(result['limitations']),[path.relative_to(ROOT).as_posix()],scope=scope)
