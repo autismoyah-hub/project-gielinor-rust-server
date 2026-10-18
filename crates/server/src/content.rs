@@ -3461,7 +3461,7 @@ pub fn additional_fire_fish(
         (
             "raw_sardine",
             "sardine",
-            "burntfish1",
+            "burntfish5",
             "Raw sardine",
             "Sardine",
             "Burnt fish",
@@ -3475,7 +3475,7 @@ pub fn additional_fire_fish(
         (
             "raw_herring",
             "herring",
-            "burntfish2",
+            "burntfish3",
             "Raw herring",
             "Herring",
             "Burnt fish",
@@ -3489,7 +3489,7 @@ pub fn additional_fire_fish(
         (
             "raw_trout",
             "trout",
-            "burntfish3",
+            "burntfish2",
             "Raw trout",
             "Trout",
             "Burnt fish",
@@ -3503,7 +3503,7 @@ pub fn additional_fire_fish(
         (
             "raw_pike",
             "pike",
-            "burntfish3",
+            "burntfish2",
             "Raw pike",
             "Pike",
             "Burnt fish",
@@ -3517,7 +3517,7 @@ pub fn additional_fire_fish(
         (
             "raw_salmon",
             "salmon",
-            "burntfish3",
+            "burntfish2",
             "Raw salmon",
             "Salmon",
             "Burnt fish",
@@ -3670,6 +3670,7 @@ mod fire_fish_binding_tests {
             ("raw_tuna", 359, "Raw tuna", false),
             ("tuna", 361, "Tuna", true),
             ("burntfish4", 367, "Burnt fish", false),
+            ("burntfish5", 369, "Burnt fish", false),
             ("raw_lobster", 377, "Raw lobster", false),
             ("lobster", 379, "Lobster", true),
             ("burnt_lobster", 381, "Burnt lobster", false),
@@ -3698,10 +3699,27 @@ mod fire_fish_binding_tests {
         let mut c = empty.clone();
         additional_fire_fish(&obj, &defs, &mut c).unwrap();
         assert_eq!(c.recipes.len(), 9);
+        // The five variants share a display name. These exact Wiki IDs must not
+        // be inferred from the donor's ordinal alias or from the chosen recipe.
+        for (raw,burnt) in [(321,323),(327,369),(345,357),(335,343),(349,343),(331,343),(359,367),(377,381),(371,375)] {
+            assert_eq!(c.recipes[&raw].burnt,burnt);
+        }
+
         assert_eq!(
             (c.recipes[&349].stop_burn, c.recipes[&371].stop_burn),
             (Some(54), Some(86))
         );
+
+        // The real startup range adapter must inherit the corrected variants.
+        // Other prerequisite metadata is isolated here; earlier contracts attest it.
+        let mut range_config=c.clone();let mut range_objects=obj.clone();
+        for(symbol,raw)in[("raw_chicken",2138),("raw_beef",2132),("raw_shrimp",317),("uncooked_stew",2001)]{
+            range_objects.insert(symbol.into(),raw);let mut r=c.recipes[&321];r.raw=raw;r.cooked=10000+raw;r.burnt=20000+raw;range_config.recipes.insert(raw,r);
+        }
+        for(symbol,id,name)in[("bread_dough",2307,"Bread dough"),("bread",2309,"Bread"),("burnt_bread",2311,"Burnt bread")]{range_objects.insert(symbol.into(),id);let mut d=gielinor_cache::definitions::ItemType::decode(&[0]).unwrap();d.name=name.into();if id==2309{d.inventory_ops[0]=Some("Eat".into());}defs.items.insert(id as u32,d);}
+        let mut range=gielinor_cache::locations::LocationType::decode(&[0]).unwrap();range.name="Range".into();range.collision.length=2;range.ops[0]=Some("Cook".into());defs.locations.insert(26181,range);
+        standard_cooking_range(&range_objects,&Symbols::from([("range".into(),26181),("newbierange".into(),9736)]),&Symbols::from([("human_cooking".into(),896)]),&defs,&mut range_config).unwrap();
+        for(raw,burnt)in[(321,323),(327,369),(345,357),(335,343),(349,343),(331,343),(359,367),(377,381),(371,375)]{assert_eq!(range_config.recipe(26181,raw).unwrap().burnt,burnt);assert_eq!(range_config.recipe(26185,raw).unwrap().burnt,burnt);}
         for recipe in c.recipes.values() {
             for burned in [false, true] {
                 let mut inv = Inventory::new(2, StackType::Normal, false);
