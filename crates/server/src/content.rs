@@ -8,6 +8,8 @@ mod light_sources;
 pub use light_sources::light_sources;
 mod prospector_outfit;
 pub use prospector_outfit::prospector_outfit;
+mod sbott_tanning;
+pub use sbott_tanning::sbott_tanning;
 mod member_tanning;
 mod standard_tanners;
 pub use standard_tanners::standard_tanners;

@@ -5,12 +5,23 @@ impl<B: AccountBackend> Runtime<B> {
         if !self.connections.is_empty() {
             return Err(io::Error::other("Configure tanning before admission"));
         }
-        let profiles = crate::content::standard_tanners(
+        let mut profiles = crate::content::standard_tanners(
             names.group("obj"),
             names.group("npc"),
             &self.definitions,
         )
         .map_err(io::Error::other)?;
+        let (kind, recipes) = crate::content::sbott_tanning(
+            names.group("npc"),
+            &self.definitions,
+            profiles
+                .get(&3231)
+                .ok_or_else(|| io::Error::other("Missing validated standard tanning dependency"))?,
+        )
+        .map_err(io::Error::other)?;
+        if profiles.insert(kind, recipes).is_some() {
+            return Err(io::Error::other("Conflicting Sbott profile"));
+        }
         for &kind in profiles.keys() {
             if self.world.npc_handlers.contains_key(&(kind, 3))
                 || self.world.tanning.contains_key(&kind)
@@ -39,6 +50,10 @@ impl<B: AccountBackend> Runtime<B> {
                 return Ok(());
             }
         };
+        // Member-only NPC services can have no eligible choices in F2P.
+        if request.recipes().next().is_none() {
+            return Ok(());
+        }
         let presentation = self
             .smelting
             .as_ref()
