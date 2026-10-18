@@ -2,6 +2,8 @@
 use gielinor_cache::{game::Definitions, symbols::Symbols};
 use gielinor_world::food::{self, Edible};
 use std::collections::BTreeMap;
+mod basic_meat;
+pub use basic_meat::{basic_meat_cooking, rabbit_food};
 mod member_fish;
 pub use member_fish::member_fish_cooking;
 /// Resolve both stat requirement pairs from enriched cache parameters. Level

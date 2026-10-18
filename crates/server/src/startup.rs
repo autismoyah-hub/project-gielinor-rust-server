@@ -360,6 +360,7 @@ pub fn configure<B: AccountBackend>(
     slot_preserving_foods.extend(boost_foods.selected);
     let healing_foods=crate::content::dynamic_foods(n("obj"),&runtime.definitions,&mut foods).map_err(io::Error::other)?;
     slot_preserving_foods.extend(healing_foods.selected);
+    slot_preserving_foods.insert(crate::content::rabbit_food(n("obj"),&runtime.definitions,&mut foods).map_err(io::Error::other)?);
     runtime.configure_foods(held, foods, names.short("seq", "human_eat")?)?;
     runtime.world.food_healing=healing_foods.healing;
     runtime.world.food_boosts=boost_foods.boosts;
@@ -713,6 +714,7 @@ pub fn configure<B: AccountBackend>(
     crate::content::ordinary_range_baking(n("obj"),n("loc"),&runtime.definitions,&mut cooking).map_err(io::Error::other)?;
     crate::content::member_pie_baking(n("obj"),n("loc"),&runtime.definitions,&mut cooking).map_err(io::Error::other)?;
     crate::content::member_fish_cooking(n("obj"),n("loc"),&runtime.definitions,&mut cooking).map_err(io::Error::other)?;
+    crate::content::basic_meat_cooking(n("obj"),n("loc"),&runtime.definitions,&mut cooking).map_err(io::Error::other)?;
     let mut cooking_member_inputs=std::collections::BTreeSet::new();
     for &raw in cooking.recipes.keys().chain(cooking.surfaces.values().flat_map(|surface|surface.recipes.keys())) {
         if runtime.definitions.items.get(&(raw as u32)).ok_or_else(||io::Error::other("Missing cooking input membership definition"))?.members {cooking_member_inputs.insert(raw);}
