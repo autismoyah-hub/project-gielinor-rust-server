@@ -5,6 +5,7 @@ roles. Geometry, local face orientation and component variation choose a native
 face color. Original imports never pass through this module.
 """
 import math
+from spatial_materials import paint
 
 PALETTES={
  'wood':dict(hsl=8600,shadow=8479,end=8487,edge=8605),
@@ -25,7 +26,7 @@ def library():return {k:material(k)for k in PALETTES}
 def shift_lightness(hsl,amount):return (int(hsl)&65408)|max(2,min(126,(int(hsl)&127)+int(amount)))
 
 def colors(vertices,faces,mat,spec):
-    if not mat.get('family'):return [mat['hsl']]*len(faces)
+    if not mat.get('family'):return paint(vertices,faces,[mat['hsl']]*len(faces),spec.get('material_zones'))
     base=shift_lightness(mat['hsl'],spec.get('variation',0));axis=spec.get('grain_axis',[0,1,0]);length=math.sqrt(sum(x*x for x in axis))
     if length==0:raise ValueError('Grain axis must have a direction')
     axis=[x/length for x in axis];result=[];middle_y=(min(v[1]for v in vertices)+max(v[1]for v in vertices))/2
@@ -40,4 +41,4 @@ def colors(vertices,faces,mat,spec):
             center=sum(vertices[i][band.get('axis',1)]for i in f)/3
             if band['min']<=center<=band['max']:h=band['hsl']
         result.append(h)
-    return result
+    return paint(vertices,faces,result,spec.get('material_zones'))
