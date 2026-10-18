@@ -49,13 +49,14 @@ def diagnose(root,out,contact_override=None):
                     if active:
                         key=(limb['name'],math.floor(raw));window_anchors.setdefault(key,point);anchor=window_anchors[key];slip=math.dist([point[0],point[2]],[anchor[0],anchor[2]]);slips.append(slip);active_heights.append(lowest)
                         if lowest<-tolerance:foot_floating+=1
+                        elif contacts.get('support_polygon_mode')=='sole_footprints':supports += [[vs[i][0],vs[i][2]-speed*tick]for i in ids if vs[i][1]>=lowest-tolerance]
                         else:supports.append([point[0],point[2]])
                     contact_rows.append(dict(tick=tick,limb=limb['name'],stance=active,world_x=point[0],world_y=point[1],world_z=point[2],lowest_surface_y=lowest,stance_drift_native=slip))
                 if active_heights and max(active_heights)<-tolerance:unsupported+=1
                 if body_ids:
                     bc=center(vs,body_ids);bc[2]-=speed*tick;support_checked+=1
                     if not inside([bc[0],bc[2]],hull(supports)):outside_support+=1
-            a['contact']=dict(phase_source='Actual exported native frame and clock boundary rules',assumed_forward_travel_native_per_tick=-speed,stance_samples=len(slips),mean_stance_drift_native=sum(slips)/len(slips)if slips else None,max_stance_drift_native=max(slips,default=0),max_penetration_native=max(penetrations,default=0),floating_stance_foot_samples=foot_floating,fully_unsupported_frames=unsupported,body_projection_outside_support_frames=outside_support,support_frames_checked=support_checked,quantization_review_tolerance_native=tolerance)
+            a['contact']=dict(phase_source='Actual exported native frame and clock boundary rules',support_polygon_mode=contacts.get('support_polygon_mode','legacy_foot_centroids'),assumed_forward_travel_native_per_tick=-speed,stance_samples=len(slips),mean_stance_drift_native=sum(slips)/len(slips)if slips else None,max_stance_drift_native=max(slips,default=0),max_penetration_native=max(penetrations,default=0),floating_stance_foot_samples=foot_floating,fully_unsupported_frames=unsupported,body_projection_outside_support_frames=outside_support,support_frames_checked=support_checked,quantization_review_tolerance_native=tolerance)
             with (out/(action+'-contacts.csv')).open('w',newline='')as f:w=csv.DictWriter(f,fieldnames=list(contact_rows[0]));w.writeheader();w.writerows(contact_rows)
         # Rigid component edge-length changes expose collapse/shearing without
         # pretending a bounding-box overlap proves triangle intersection.

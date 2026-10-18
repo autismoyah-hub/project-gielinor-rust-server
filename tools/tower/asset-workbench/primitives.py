@@ -47,7 +47,12 @@ def socket(vertices,spec):
     return [[round(origin[a]+sum(row[i]*basis[i][a]for i in range(3)))for a in range(3)]for row in vertices]
 def make(spec):
     kind=spec['type']
-    if kind in ['sweep','stave','voussoir','stone_block']:
+    if kind in ['section_mesh','shell','gear']:
+        from advanced_geometry import sections,shell,gear
+        if kind=='section_mesh':v,f=sections(spec['sections'],spec.get('profiles'),spec.get('sides',8),spec.get('hem'))
+        elif kind=='shell':v,f=shell(spec['sections'],spec.get('thickness',3),spec.get('sides',8),spec.get('start_angle',0),spec.get('end_angle',math.tau))
+        else:v,f=gear(spec['center'],spec['radius'],spec['root_radius'],spec['teeth'],spec['depth'],spec.get('bore',0))
+    elif kind in ['sweep','stave','voussoir','stone_block']:
         from shape_families import sweep,stave,voussoir,chamfer_block
         if kind=='sweep':v,f=sweep(spec['sections'],spec.get('sides',6),spec.get('normal',[0,0,1]))
         elif kind=='stave':v,f=stave(spec['sections'],spec['start_angle'],spec['end_angle'],spec.get('thickness',4))
@@ -65,6 +70,9 @@ def make(spec):
     elif kind=='beam':v,f=beam(spec['start'],spec['end'],spec['radii'],spec.get('sides',6))
     elif kind=='profile':v,f=profile(spec['profile'],spec['depth'])
     else:raise ValueError('unknown primitive '+kind)
+    if spec.get('deformation_cage'):
+        from advanced_geometry import cage
+        v=cage(v,spec['deformation_cage'])
     v=socket(socket(v,spec.get('socket',{})),spec.get('parent_socket',{}))
     if spec.get('asset_transform'):
         transform=spec['asset_transform'];scale=transform['scale'];offset=transform['offset']

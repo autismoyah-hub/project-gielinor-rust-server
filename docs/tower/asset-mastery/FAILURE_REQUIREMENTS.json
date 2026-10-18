@@ -1,0 +1,62 @@
+{
+  "baseline": "56aa24113a9ccdbd6288e643be061077fc24758b",
+  "requirements": [
+    {
+      "category": "wood",
+      "requirement": "Separate construction, correct grain direction and native texture mapping; do not retain per-face mapping noise."
+    },
+    {
+      "category": "anvil",
+      "requirement": "Resolve horn/waist topology and local helper bounds; coarse ring fitting can regress."
+    },
+    {
+      "category": "curved weapon",
+      "requirement": "Separate blade curvature from hilt/guard and verify all views."
+    },
+    {
+      "category": "shield/armor",
+      "requirement": "Fitted overlapping shells, attachment planes and material divisions; overlap is insufficient."
+    },
+    {
+      "category": "stone",
+      "requirement": "Arches, buttresses, corners, transitions, wear and repairs need authored proportion."
+    },
+    {
+      "category": "goblin/humanoid",
+      "requirement": "Facial character, ears, armor, hands and equipment differ; new generic rig is not faithful goblin art."
+    },
+    {
+      "category": "wolf/cow",
+      "requirement": "Species-specific head/neck/haunch/feet and distinct gait; generic anatomy is rejected."
+    },
+    {
+      "category": "bat",
+      "requirement": "Skin/helper envelope, wing membrane and source animation representation remain limitations."
+    },
+    {
+      "category": "full helmet",
+      "requirement": "Old frozen unsupported category remains unchanged; fitted shells alone are not an accepted helmet."
+    },
+    {
+      "category": "bench",
+      "requirement": "Frozen missing backrest/seat failure retained; later correction is development."
+    },
+    {
+      "category": "pick/hammer",
+      "requirement": "Head/haft silhouette, wood and metal placement need separate controls."
+    },
+    {
+      "category": "bear/imp",
+      "requirement": "Palette and anatomy failures retained; generic humanoid is unsuitable for imp."
+    },
+    {
+      "category": "motion",
+      "requirement": "Residual drift, support, recovery, secondary ownership, clipping and source weighted/blend limitations stay explicit."
+    },
+    {
+      "category": "original environment",
+      "requirement": "Previous uniform paving and sparse vignette do not establish full-floor environmental art quality."
+    }
+  ],
+  "artistic_acceptance": false
+}

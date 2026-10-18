@@ -71,6 +71,11 @@ def solve_limb(rig,channels,limb,target,translation):
 
 def gait_controls(g,rig,channels,translation,spec,tick):
     gait=spec['gait'];duration=spec['duration_ticks'];translation=list(translation);translation[1]+=gait.get('crouch',3);channels=copy.deepcopy(channels);targets=[];active=[]
+    if gait.get('support_weight_transfer'):
+        if gait.get('kind')!='biped'or len(gait['limbs'])!=2:raise ValueError('Authored biped weight transfer needs two declared feet')
+        phase=(tick/duration)%1;overlap=gait.get('stance_fraction',.6)-.5
+        if not 0<overlap<.5:raise ValueError('Biped transfer needs a positive double-support interval')
+        local=phase%.5;blend=min(1,local/overlap);blend=blend*blend*(3-2*blend);right,left=[l['tip'][0]for l in gait['limbs']];source,target=(left,right)if phase<.5 else(right,left);translation[0]+=round((source+(target-source)*blend)*gait['support_weight_transfer'])
     for limb in gait['limbs']:
         phase=(tick/duration+limb.get('phase_offset',0))%1;stance=gait.get('stance_fraction',.6);stride=gait['stride'];target=list(limb['tip'])
         if phase<stance:target[2]+=stride*(phase/stance-.5);lift=0;active+=limb['components']

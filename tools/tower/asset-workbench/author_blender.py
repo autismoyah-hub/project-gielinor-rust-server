@@ -8,6 +8,7 @@ from kinematics import compile_joints
 from native_codec import model,classic
 from semantic_materials import colors as semantic_colors
 from mesh_validation import clean_owned,degenerate_faces
+from owned_textures import merge as merge_textures,apply as apply_texture
 def export_asset(recipe):
     fields=['render_types','priorities','alpha','face_skins','vertex_skins','face_flags'];g=dict(vertices=[],faces=[],colors=[],priority=0,texture_types=[],texture_triangles=[],face_textures=None,texture_coords=None,metadata=None);g.update({k:[]for k in fields});components={}
     for spec in recipe['components']:
@@ -15,6 +16,7 @@ def export_asset(recipe):
         if not obj.get('owned_component'):raise ValueError('Reference-import mesh is not an owned authoring component: '+obj.name)
         part=export_model(obj);offset=len(g['vertices']);firstface=len(g['faces']);g['vertices']+=part['vertices'];g['faces'] += [[x+offset for x in f]for f in part['faces']];g['colors']+=part['colors']
         if recipe.get('geometry_validation',{}).get('remove_zero_area_faces')and degenerate_faces(part['vertices'],part['faces']):raise ValueError('Edited owned mesh contains zero-area faces; clean or rebuild the mesh before export: '+spec['name'])
+        merge_textures(g,part,offset,firstface)
         for key in fields:
             n=len(part['vertices'])if key=='vertex_skins'else len(part['faces']);g[key]+=part.get(key)or [0]*n
         components[spec['name']]=dict(vertices=list(range(offset,len(g['vertices']))),faces=list(range(firstface,len(g['faces']))),group=spec.get('group',0),role=spec.get('role',spec['name']),material=spec['material'],material_family=recipe['materials'][spec['material']].get('family'),parameters=spec.get('parameters',{}),geometry_sha256=hashlib.sha256(json.dumps(part,sort_keys=True).encode()).hexdigest())
@@ -27,6 +29,7 @@ def build(recipe,palette):
         vs,fs=make(spec);validation={}
         if recipe.get('geometry_validation',{}).get('remove_zero_area_faces'):vs,fs,validation=clean_owned(vs,fs)
         material=recipe['materials'][spec['material']];g=dict(vertices=vs,faces=fs,colors=semantic_colors(vs,fs,material,spec),render_types=[material.get('render_type',0)]*len(fs),priorities=[material.get('priority',0)]*len(fs),priority=0,alpha=[material.get('alpha',0)]*len(fs),face_skins=[spec.get('group',0)]*len(fs),vertex_skins=[spec.get('group',0)]*len(vs),face_flags=[0]*len(fs))
+        apply_texture(g,material,spec)
         obj=import_model(spec['name'],g,palette);obj['owned_component']=True;obj['role']=spec.get('role',spec['name']);obj['authoring_spec']=json.dumps(spec)
         obj['geometry_validation_report']=json.dumps(validation)
         bm=bmesh.new();bm.from_mesh(obj.data);bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces));bm.to_mesh(obj.data);bm.free()
@@ -107,6 +110,9 @@ def actions(recipe,g,out,reopen=False):
         authored_actions.add(name)
 def main():
     p=argparse.ArgumentParser();p.add_argument('recipe',type=Path);p.add_argument('output',type=Path);p.add_argument('--palette',type=Path);p.add_argument('--reopen',action='store_true');p.add_argument('--replace-actions',action='store_true');a=p.parse_args(sys.argv[sys.argv.index('--')+1:]);recipe=json.loads(a.recipe.read_text());a.output=a.output.resolve();a.output.mkdir(parents=True,exist_ok=True);palette=json.loads(a.palette.read_text())if a.palette else None
+    if recipe.get('rig_validation'):
+        from rig_contracts import validate
+        validate(recipe)
     if not a.reopen:build(recipe,palette)
     g=export_asset(recipe);(a.output/'geometry.json').write_text(json.dumps(g));(a.output/'asset.model').write_bytes(model(g));(a.output/'recipe.json').write_text(json.dumps(recipe,indent=2));actions(recipe,g,a.output,a.reopen and not a.replace_actions);bpy.ops.wm.save_as_mainfile(filepath=str(a.output/'asset.blend'));print('OWNED_COMPONENT_AUTHORING_PASS',recipe['name'],len(g['vertices']),len(g['faces']))
 if __name__=='__main__':main()
