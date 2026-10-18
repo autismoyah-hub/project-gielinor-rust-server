@@ -2,6 +2,8 @@
 use gielinor_cache::{game::Definitions, symbols::Symbols};
 use gielinor_world::food::{self, Edible};
 use std::collections::BTreeMap;
+mod meal_food;
+pub use meal_food::meal_foods;
 mod random_food;
 pub use random_food::random_foods;
 mod basic_meat;

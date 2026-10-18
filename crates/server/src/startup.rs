@@ -363,6 +363,7 @@ pub fn configure<B: AccountBackend>(
     slot_preserving_foods.insert(crate::content::rabbit_food(n("obj"),&runtime.definitions,&mut foods).map_err(io::Error::other)?);
     let random_foods=crate::content::random_foods(n("obj"),&runtime.definitions,&mut foods).map_err(io::Error::other)?;
     slot_preserving_foods.extend(random_foods.selected);
+    slot_preserving_foods.extend(crate::content::meal_foods(n("obj"),&runtime.definitions,&mut foods).map_err(io::Error::other)?);
     runtime.configure_foods(held, foods, names.short("seq", "human_eat")?)?;
     runtime.world.food_healing=healing_foods.healing;
     runtime.world.food_random_healing=random_foods.healing;
