@@ -1,0 +1,142 @@
+{
+  "implementation_id": "OR-MIG-0056",
+  "tested_sha": "5743cbe1c7499e2a7476c721d25dcba194666042",
+  "campaign_kind": "historical",
+  "status": "PASS",
+  "native_cuts": 14,
+  "fine_xp_award": 66500,
+  "native_effect_observations": [
+    {
+      "slot": 4,
+      "cut": 1607,
+      "animation_sequence": 8833,
+      "animation_delay": 0,
+      "animation_tick": 117,
+      "credit_tick": 118,
+      "received_clock_delta": 1
+    },
+    {
+      "slot": 7,
+      "cut": 1605,
+      "animation_sequence": 8833,
+      "animation_delay": 0,
+      "animation_tick": 135,
+      "credit_tick": 136,
+      "received_clock_delta": 1
+    },
+    {
+      "slot": 10,
+      "cut": 1603,
+      "animation_sequence": 8833,
+      "animation_delay": 0,
+      "animation_tick": 147,
+      "credit_tick": 148,
+      "received_clock_delta": 1
+    },
+    {
+      "slot": 13,
+      "cut": 1601,
+      "animation_sequence": 8833,
+      "animation_delay": 0,
+      "animation_tick": 164,
+      "credit_tick": 165,
+      "received_clock_delta": 1
+    },
+    {
+      "slot": 16,
+      "cut": 1615,
+      "animation_sequence": 8833,
+      "animation_delay": 0,
+      "animation_tick": 183,
+      "credit_tick": 184,
+      "received_clock_delta": 1
+    },
+    {
+      "slot": 19,
+      "cut": 6573,
+      "animation_sequence": 8833,
+      "animation_delay": 0,
+      "animation_tick": 195,
+      "credit_tick": 196,
+      "received_clock_delta": 1
+    },
+    {
+      "slot": 22,
+      "cut": 19493,
+      "animation_sequence": 8833,
+      "animation_delay": 0,
+      "animation_tick": 212,
+      "credit_tick": 213,
+      "received_clock_delta": 1
+    },
+    {
+      "slot": 5,
+      "cut": 1607,
+      "animation_sequence": 8833,
+      "animation_delay": 0,
+      "animation_tick": 228,
+      "credit_tick": 229,
+      "received_clock_delta": 1
+    },
+    {
+      "slot": 8,
+      "cut": 1605,
+      "animation_sequence": 8833,
+      "animation_delay": 0,
+      "animation_tick": 238,
+      "credit_tick": 239,
+      "received_clock_delta": 1
+    },
+    {
+      "slot": 11,
+      "cut": 1603,
+      "animation_sequence": 8833,
+      "animation_delay": 0,
+      "animation_tick": 248,
+      "credit_tick": 249,
+      "received_clock_delta": 1
+    },
+    {
+      "slot": 14,
+      "cut": 1601,
+      "animation_sequence": 8833,
+      "animation_delay": 0,
+      "animation_tick": 258,
+      "credit_tick": 259,
+      "received_clock_delta": 1
+    },
+    {
+      "slot": 17,
+      "cut": 1615,
+      "animation_sequence": 8833,
+      "animation_delay": 0,
+      "animation_tick": 268,
+      "credit_tick": 269,
+      "received_clock_delta": 1
+    },
+    {
+      "slot": 20,
+      "cut": 6573,
+      "animation_sequence": 8833,
+      "animation_delay": 0,
+      "animation_tick": 276,
+      "credit_tick": 277,
+      "received_clock_delta": 1
+    },
+    {
+      "slot": 23,
+      "cut": 19493,
+      "animation_sequence": 8833,
+      "animation_delay": 0,
+      "animation_tick": 286,
+      "credit_tick": 287,
+      "received_clock_delta": 1
+    }
+  ],
+  "scope": "Every gem profile cut in both genuine native selected directions. Actual decoded local-player animation8833(delay0) precedes corresponding raw selected inventory18 credit by exactly one received SERVER_TICK boundary; all14 exact selected outputs, retained chisels/full bag and66500fineXP match authoritative saved state. First-phase stale-pair and movement cancellation checks remain strict.",
+  "limitations": [
+    "This observes actual native interpreted effects and packet cadence, not a rendered-window/audio comparison. Missing chisel sound remains explicitly omitted by contract.",
+    "Received counter may lag absolute authoritative world clock; only relative ordered frame boundaries are compared.",
+    "Separate acknowledged restart and bounded crash evidence own V3."
+  ]
+}

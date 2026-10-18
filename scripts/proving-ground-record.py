@@ -37,6 +37,12 @@ for manifest in OUT.glob('OR-MIG-0024-*-independent*/manifest.json'):
 for manifest in OUT.glob('integration-*/manifest.json'):
     value=json.loads(manifest.read_text(encoding='utf-8'))
     if value.get('status')!='PASS':continue
+    if value.get('suite')=='gem-bindings':
+        add('OR-MIG-0056',value['tested_integration_sha'],'V0','IN_PROGRESS','Independent actual-cache15item/seven-profile binding and159corrupt object/symbol/stat/effect refusals PASS; native/runtime aggregate acceptance is recorded separately.',[str(manifest.relative_to(ROOT)).replace('\\','/')],scope='independent-gem-bindings')
+        continue
+    if value.get('suite')=='gem-matrix':
+        add('OR-MIG-0056',value['tested_integration_sha'],'V1','IN_PROGRESS','Independent seven-profile matrix PASS across3528 all-selected-slot/current-level/member/rate fixtures and126 invalid captured-input/tool/policy/credit cases. Full-bag exact selected replacement, retained duplicate chisels/raws and fractional fineXP verified; native route, pending-action interruptions and lifecycle/reference remain separate.',[str(manifest.relative_to(ROOT)).replace('\\','/')],scope='independent-gem-matrix')
+        continue
     if value.get('suite')=='prayer-cache':
         add('OR-MIG-0051',value['tested_integration_sha'],'V0','IN_PROGRESS','Independent read-only target-cache definition and effective Prayer reward preflight PASS for representative bones; exact source and source-cache decoder identities retained. Full native dispatch/registration and remaining profile acceptance remain separate.',[str(manifest.relative_to(ROOT)).replace('\\','/')],scope='prayer-loaded-policy')
         continue
@@ -143,4 +149,9 @@ for path in OUT.glob('OR-MIG-0056-*/manifest.json'):
     result=json.loads(path.read_text(encoding='utf-8'))
     if result.get('outcome')!='PARTIAL':continue
     for level in ['V0','V1']:add('OR-MIG-0056',result['implementation_commit_sha'],level,'IN_PROGRESS','Independent exact-SHA execution of two gem-specific authoritative action tests and one seven-profile binding/XP/member test PASS. Deferred grinding suites were not run; native/cache/lifecycle/reference and expanded independent oracle acceptance remain open.',[str(path.relative_to(ROOT)).replace('\\','/')],scope='gem-specific-regression')
+path=OUT/'gem-acceptance.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='ACCEPTED'
+    for level,value in result['levels'].items():
+        add('OR-MIG-0056',result['tested_sha'],level,value['status'],value['reason'],[str(path.relative_to(ROOT)).replace('\\','/')],scope='gem-manual-subset-acceptance-r2')
 print('Per-level evidence events:',len(rows))

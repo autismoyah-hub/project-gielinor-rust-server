@@ -1,0 +1,42 @@
+{
+  "implementation_id": "OR-MIG-0056",
+  "revision": 2,
+  "tested_sha": "5743cbe1c7499e2a7476c721d25dcba194666042",
+  "campaign_kind": "historical",
+  "status": "ACCEPTED",
+  "acceptance_scope": "Seven deterministic manual gem cuts with retained chisel and fractional Crafting XP",
+  "levels": {
+    "V0": {
+      "status": "PASS",
+      "reason": "PASS: exact5743server compiled and launched with real target cache/actual held registry; independent15loaded definitions, seven profiles, Crafting stat and sequence8833 bindings validated.159independent corrupt/missing definition/symbol/stat/effect cases rejected whole catalog."
+    },
+    "V1": {
+      "status": "PASS",
+      "reason": "PASS: independently authored3528selected-slot/profile/current-level/member/100-125-500rate fixtures,126invalid transaction cases and196actual World held-route cases (both directions, late invalidation, membership, modal, held-action, movement, logout and death) verify full-bag exact-slot conservation, fractional XP and failed-credit rollback. Existing gem-specific regressions also passed."
+    },
+    "V2": {
+      "status": "PASS",
+      "reason": "PASS for published manual subset:14actual native cuts cover each gem in both Use directions; independently decoded raw Use27/selected inventory18/animation8833 establish exact selected items, retained chisels and one subsequent received action-clock credit. Native movement cancellation and seven stale-pair replays with duplicate tool/raw retained passed. No sound/rendered/quantity/repeat functionality implied."
+    },
+    "V3": {
+      "status": "PASS",
+      "reason": "PASS for applicable bounded lifecycle: all seven saved outputs and33250fineXP survived acknowledged save, actual server restart/native relogin with independently decoded full inventory/Stats. Native cancellation preserves inputs; no repeat after logout/reconnect. Separate owned abrupt crash after unsaved Sapphire completion restored complete prior bag/fineXP together, with no debit/tool loss or automatic replay, then saved/reconnected normally. No mid-SQL-commit crash guarantee claimed."
+    },
+    "V4": {
+      "status": "PASS",
+      "reason": "PASS for supported comparison scope:12hash-pinned source/Wiki references plus explicit7page ID/member/reward/timing checks. Native8833and first-cycle1clock match source shortened max(1,2-1); pinned Wiki2tick recipe/repeat cadence remains a documented adaptation. Missing chisel sound, menus/repeats/modifiers/crushable stones/acquisition explicitly excluded, not accepted. Original Kotlin executable unavailable; source-derived comparisons are labelled."
+    }
+  },
+  "evidence": {
+    "docs/openrune/verification/independent/deep-gems/cuts-5x001/independent-assessment.json": "3354460c3b191d71f07c7ce22d719b701a7e92aefbd93d606c11b25c41987294",
+    "docs/openrune/verification/independent/deep-gem-effects/effects-001/independent-assessment.json": "f529008a39ba4dfbd05136189417265cdcdf019d673929f6c098922ffecef562",
+    "docs/openrune/verification/independent/deep-gem-effects/effects-001/direction-assessment.json": "e44d5738c0a5a5ea7f46a875209562bd53581b488661adf546497eee082c9241",
+    "docs/openrune/verification/independent/deep-gem-crash/crash-001/independent-assessment.json": "7d60d38102fd4804b2e4c99436959642e140f2ae61b8ad2faa5d6055249ee150",
+    "docs/openrune/verification/independent/reference-gems/timing-addendum.json": "4fde5d39fb1bd31ad2557f18278ec3d338c532d72f71f20017565d1d4ccba3b9",
+    "docs/openrune/verification/independent/reference-gems/comparison.json": "b3985e66fd9ad5e31505a7dc7d332bef029fb704fc04fdda7c65c0acee4d8cf0",
+    "docs/openrune/verification/independent/integration-external-gem-matrix-5743cbe1c7499e2a7476c721d25dcba194666042-1792291204898164400/manifest.json": "3e90863c2cdc91a9d89f8d5cbd2bb09edd1e44256c51f6307eaa1fef91320327",
+    "docs/openrune/verification/independent/integration-external-gem-bindings-5743cbe1c7499e2a7476c721d25dcba194666042-1792291745481069800/manifest.json": "63b7a5df2a7564b8b01c0f9f33fd7171695e65f4581b45f0750eadca650ff53d"
+  },
+  "native_rate_boundary": "Native125percent scenario remains BLOCKED by exact-SHA FloorOne login forcing500percent. Native500percent acceptance and independently executed authoritative100/125/500cases are kept distinct. Raw failed125oracle attempt retained unchanged.",
+  "exclusions": "Only the published deterministic seven-gem manual subset is accepted. This is not full Crafting, current FORGE HEAD, future revisions, rendered/audio or original-executable parity."
+}

@@ -132,7 +132,7 @@ if deferred:
     resume['user_deferrals']=policy
     resume['remaining_deep_scenarios']=[x for x in resume['remaining_deep_scenarios'] if x['implementation_id'] not in deferred]
     resume['deferred_native_work']=resume.pop('next_native_work',None)
-    resume['next_native_work']={'implementation_id':'OR-MIG-0051','target_sha':latest['OR-MIG-0051']['implementation_commit_sha'],'feature':'prayer','fresh_run_id':'burial-001','actions_in_order':['finish current build','seed once','produce','relogin','independent assessment'],'reason':'User deferred chemistry-related tests; pursue unrelated selected burial.'}
+    resume['next_native_work']={'implementation_id':'OR-MIG-0057','target_sha':latest['OR-MIG-0057']['implementation_commit_sha'],'feature':'shell-carving','actions_in_order':['review exact contract and existing route','author independent shell-specific scenarios','prepare fresh disposable native run','produce','relogin','independent assessment'],'reason':'User deferred chemistry. Prayer selected/restart and gem native/effects/crash batches completed; retain all immutable successful states and remaining obligations.'}
     resume.pop('native_food_observation_blocker',None)
 save(DOC/'RESUME_QUEUE.json',resume)
 save(DOC/'independent'/('intake-'+head+'.json'),{k:value for k,value in state.items() if k!='items'})

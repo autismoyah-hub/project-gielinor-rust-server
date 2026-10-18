@@ -1,0 +1,66 @@
+{
+  "tested_integration_sha": "5743cbe1c7499e2a7476c721d25dcba194666042",
+  "suite": "gem-bindings",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 7849619456,
+    "active_compilers": [
+      "\"cargo.exe\",\"7992\",\"RDP-Tcp#0\",\"2\",\"23,788 K\""
+    ],
+    "cpu_percent": 61.72,
+    "cpu_samples": [
+      80.078125,
+      54.4921875,
+      50.5859375
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained",
+    "disk_free": 41550782464,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "576c9a7c7a8ada7432c308cd4b16bd70d9874e2d",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\5743cbe1c7499e2a7476c721d25dcba194666042\\external-harness-9572160200\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-gem-bindings-5743cbe1c7499e2a7476c721d25dcba194666042-1792291745481069800\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\5743cbe1c7499e2a7476c721d25dcba194666042\\external-harness-9572160200\\Cargo.toml",
+        "--",
+        "--nocapture"
+      ],
+      "exit_code": 0,
+      "tests_passed": 1,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-gem-bindings-5743cbe1c7499e2a7476c721d25dcba194666042-1792291745481069800\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative gem-bindings scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-gem-bindings-5743cbe1c7499e2a7476c721d25dcba194666042-1792291745481069800\\harness\\bindings.rs": "47d47c25bc8d6e075c9aee2053ec3c25a115abf6096e943cf4d980e478f4027e"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\authoritative-13c2b4e3ee02c3ae.exe": "8a5d9b78b57ed9fdf4a3c418daa177cc4e9bc75e9cfd6861d65e1f2d80ae7c5e",
+    "target\\debug\\deps\\bindings-c241029ede55fe52.exe": "5f4504fc4db13d2eaf7e012ed7afc3755c483a154f64291e4f41a0581a503034",
+    "target\\debug\\deps\\gielinor_server-7abd10c65476b4d7.exe": "e091116699c77a3934f3a4777287d8625c4d5ffd2fe39506f29217d4a69025df",
+    "target\\debug\\deps\\gielinor_server-894795c80ff17bc3.exe": "3010938c0dd35733fb0ce1dcbfab2332aad7b683b6420ff46478b5025e0c57c0",
+    "target\\debug\\deps\\gielinor_world-379bc28e5667f47e.exe": "2ba568a3a7b06c9625c827276ec52bc03038e0ddf97b3ad6848d1c2e42f62f04"
+  }
+}

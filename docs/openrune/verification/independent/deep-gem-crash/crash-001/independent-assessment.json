@@ -1,0 +1,10 @@
+{
+  "implementation_id": "OR-MIG-0056",
+  "tested_sha": "5743cbe1c7499e2a7476c721d25dcba194666042",
+  "campaign_kind": "historical",
+  "status": "PASS",
+  "scope": "Actual native selected Sapphire cut observed in raw inventory18, then only the owned server was abruptly terminated before any logout/save acknowledgement. Same database passed integrity, actual server restart and native relogin: complete initial28-slot bag, both chisels, selected raw and all exact fine Stats restored together; no partial debit, duplicate cut/XP or automatic replay after6 observed clocks. Subsequent acknowledged logout/save succeeded.",
+  "limitations": [
+    "This is the unacknowledged in-memory completion crash window, not a kill inside an SQLite commit or a guarantee of retaining unacknowledged progress. Acknowledged output durability is independently tested by cuts-5x001."
+  ]
+}

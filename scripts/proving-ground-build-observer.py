@@ -6,7 +6,29 @@ BASE=ROOT.parent/'rust-server/integration/client-baselines/client-239.1-baseline
 OUT=ROOT/'docs/openrune/verification/independent/client-observer-build';OUT.mkdir(parents=True,exist_ok=True)
 def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def save(p,o):p.write_text(json.dumps(o,indent=2)+'\n',encoding='utf-8',newline='\n')
-p=argparse.ArgumentParser();p.add_argument('action',choices=['prepare','build']);a=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('action',choices=['prepare','build','effects']);a=p.parse_args()
+if a.action=='effects':
+    # Required observational data for native effect/first-cycle acceptance.
+    # Preserve all earlier source identities and frozen binaries.
+    history=OUT/('overlay-history-'+str(time.time_ns()));history.mkdir()
+    shutil.copyfile(OUT/'source-manifest.json',history/'source-manifest.json')
+    private=WORK/'source-history'/history.name;private.mkdir(parents=True)
+    for name in ['live_runtime.rs','client_state.rs']:shutil.copyfile(SOURCE/'src'/name,private/name)
+    runtime=SOURCE/'src/live_runtime.rs';text=runtime.read_text(encoding='utf-8');assert text.count('15|22|46|83')==2
+    runtime.write_text(text.replace('15|22|46|83','18|22|46|83'),encoding='utf-8',newline='\n')
+    state=SOURCE/'src/client_state.rs';text=state.read_text(encoding='utf-8');needle='                let player = state.players[state.local as usize].as_ref().unwrap();';assert text.count(needle)==1 and 'PG_SEQUENCE' not in text
+    text=text.replace(needle,needle+'''
+                for update in &player.blocks {
+                    if let crate::player_update::Update::Actor(crate::actor_update::Block::Sequence { id, delay }) = update {
+                        println!("PG_SEQUENCE tick={} sequence={} delay={}",self.server_tick,id,delay);
+                    }
+                }
+''');state.write_text(text,encoding='utf-8',newline='\n')
+    m=json.loads((OUT/'source-manifest.json').read_text(encoding='utf-8'));m['previous_observation_manifest']=str((history/'source-manifest.json').relative_to(ROOT)).replace('\\','/')
+    m['owned_overlays']['src/live_runtime.rs']='Observation only: raw18/22/46/83 and native post-apply inventory/HP/clock state, including partial inventory18'
+    m['owned_overlays']['src/client_state.rs']='Observation only: log actual decoded local-player Sequence block ID/delay with received server-tick counter; no state or packet mutation'
+    m['instrumented_runtime_sha256']=digest(runtime);m['instrumented_client_state_sha256']=digest(state);save(OUT/'source-manifest.json',m)
+    print('OBSERVATION_EXTENSION_PREPARED; build required',flush=True);raise SystemExit(0)
 if a.action=='prepare':
     assert not SOURCE.exists(),'Never overwrite prepared observer source'
     manifest=json.loads((BASE/'manifest.json').read_text(encoding='utf-8'));hashes={}
@@ -47,6 +69,7 @@ else:
     cmd=[str(capacity.TOOL/'cargo.exe'),'build','--offline','--locked','-j','1',*examples];print('BUILD',cmd,flush=True)
     with (OUT/'build.log').open('w',encoding='utf-8',newline='\n') as f:rc=subprocess.run(cmd,cwd=SOURCE,env=env,stdout=f,stderr=subprocess.STDOUT,timeout=600,creationflags=subprocess.BELOW_NORMAL_PRIORITY_CLASS).returncode
     save(OUT/'build.json',{'status':'PASS' if rc==0 else 'BLOCKED','exit_code':rc,'resource':resource,'command':cmd,
+      'observation_manifest_sha256':digest(OUT/'source-manifest.json'),
       'observer_sources':{p.name:digest(p) for p in (ROOT/'verification/native-observer').glob('*.rs')},
       'binaries':{p.name:digest(p) for p in (WORK/'target/debug/examples').glob('*.exe')},'scope':'Fresh independent native-client build; pinned core source plus recorded read-only observation overlay and owned scenario controllers.'})
     print('BUILD_EXIT',rc,flush=True);raise SystemExit(rc)

@@ -1,0 +1,135 @@
+{
+  "implementation_id": "OR-MIG-0056",
+  "tested_sha": "5743cbe1c7499e2a7476c721d25dcba194666042",
+  "campaign_kind": "historical",
+  "status": "PASS",
+  "scope": "All14 successful native Use27 packets independently decoded: each of seven profiles appears once chisel-to-raw and once raw-to-chisel, with exact actual selected/target slot and item IDs. Initial cancelled request excluded from14 successful credits.",
+  "packets": [
+    {
+      "selected_slot": 0,
+      "selected_item": 1755,
+      "target_slot": 4,
+      "target_item": 1623,
+      "raw_slot": 4,
+      "reverse": false,
+      "tick": 113
+    },
+    {
+      "selected_slot": 7,
+      "selected_item": 1621,
+      "target_slot": 0,
+      "target_item": 1755,
+      "raw_slot": 7,
+      "reverse": true,
+      "tick": 128
+    },
+    {
+      "selected_slot": 0,
+      "selected_item": 1755,
+      "target_slot": 10,
+      "target_item": 1619,
+      "raw_slot": 10,
+      "reverse": false,
+      "tick": 145
+    },
+    {
+      "selected_slot": 13,
+      "selected_item": 1617,
+      "target_slot": 0,
+      "target_item": 1755,
+      "raw_slot": 13,
+      "reverse": true,
+      "tick": 159
+    },
+    {
+      "selected_slot": 0,
+      "selected_item": 1755,
+      "target_slot": 16,
+      "target_item": 1631,
+      "raw_slot": 16,
+      "reverse": false,
+      "tick": 177
+    },
+    {
+      "selected_slot": 19,
+      "selected_item": 6571,
+      "target_slot": 0,
+      "target_item": 1755,
+      "raw_slot": 19,
+      "reverse": true,
+      "tick": 192
+    },
+    {
+      "selected_slot": 0,
+      "selected_item": 1755,
+      "target_slot": 22,
+      "target_item": 19496,
+      "raw_slot": 22,
+      "reverse": false,
+      "tick": 207
+    },
+    {
+      "selected_slot": 5,
+      "selected_item": 1623,
+      "target_slot": 0,
+      "target_item": 1755,
+      "raw_slot": 5,
+      "reverse": true,
+      "tick": 223
+    },
+    {
+      "selected_slot": 0,
+      "selected_item": 1755,
+      "target_slot": 8,
+      "target_item": 1621,
+      "raw_slot": 8,
+      "reverse": false,
+      "tick": 234
+    },
+    {
+      "selected_slot": 11,
+      "selected_item": 1619,
+      "target_slot": 0,
+      "target_item": 1755,
+      "raw_slot": 11,
+      "reverse": true,
+      "tick": 244
+    },
+    {
+      "selected_slot": 0,
+      "selected_item": 1755,
+      "target_slot": 14,
+      "target_item": 1617,
+      "raw_slot": 14,
+      "reverse": false,
+      "tick": 254
+    },
+    {
+      "selected_slot": 17,
+      "selected_item": 1631,
+      "target_slot": 0,
+      "target_item": 1755,
+      "raw_slot": 17,
+      "reverse": true,
+      "tick": 264
+    },
+    {
+      "selected_slot": 0,
+      "selected_item": 1755,
+      "target_slot": 20,
+      "target_item": 6571,
+      "raw_slot": 20,
+      "reverse": false,
+      "tick": 274
+    },
+    {
+      "selected_slot": 23,
+      "selected_item": 19496,
+      "target_slot": 0,
+      "target_item": 1755,
+      "raw_slot": 23,
+      "reverse": true,
+      "tick": 282
+    }
+  ]
+}

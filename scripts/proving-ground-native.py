@@ -151,7 +151,7 @@ def seed():
         db.execute('UPDATE accounts SET members=1 WHERE login_username=?',('integration239',))
         if FEATURE=='OR-MIG-0056':
             db.execute('UPDATE stats SET vis_level=99,base_level=99,fine_xp=130344311 WHERE character_id=? AND stat_id=12',(cid,))
-            db.execute('UPDATE characters SET xp_rate_in_hundreds=125 WHERE id=?',(cid,))
+            db.execute('UPDATE characters SET xp_rate_in_hundreds=500 WHERE id=?',(cid,))
     if FEATURE=='OR-MIG-0006':
         # Apply the recorded target's real migrations to this fresh clone only.
         for version in range(9,13):
@@ -167,13 +167,14 @@ def snapshot():
            'stats':db.execute('SELECT stat_id,vis_level,base_level,fine_xp FROM stats WHERE character_id=? ORDER BY stat_id',(cid,)).fetchall(),
            'character':db.execute('SELECT x,z,level,run_energy,varps,last_logout,world_id FROM characters WHERE id=?',(cid,)).fetchone(),
            'migrations':[r[0] for r in db.execute('SELECT version FROM _rust_migrations ORDER BY version')],
-           'integrity_check':db.execute('PRAGMA integrity_check').fetchone()[0]}
+           'integrity_check':db.execute('PRAGMA integrity_check').fetchone()[0],
+           'xp_rate_hundreds':db.execute('SELECT xp_rate_in_hundreds FROM characters WHERE id=?',(cid,)).fetchone()[0]}
     if db.execute("SELECT COUNT(*) FROM sqlite_master WHERE name='chemistry_state'").fetchone()[0]:
         state['chemistry_state']=db.execute('SELECT remaining,stop_on_crumble FROM chemistry_state WHERE character_id=?',(cid,)).fetchall()
     db.close();return state
 def phase(mode):
     guard();name='produce' if mode=='assemble' else 'relogin'
-    fault=SCENARIO=='chem-crash' and mode=='assemble'
+    fault=SCENARIO in ['chem-crash','gem-crash'] and mode=='assemble'
     dest=OUT/name;dest.mkdir(parents=True,exist_ok=False)
     shutil.copyfile(Path(__file__),dest/'launcher.txt')
     before=snapshot();save(dest/'before.json',before)
@@ -205,7 +206,7 @@ def phase(mode):
             assert address,'Exact-SHA server startup failed: '+(dest/'server.err').read_text(encoding='utf-8')[-2000:]
             print('LISTENING',address,flush=True)
             args=[str(RES/DRIVER),str(RES/'cache/js5'),address,'integration239',str(RES/'password'),str(RES/'keys/client.key'),mode]
-            if SCENARIO in ['chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','food-observer','prayer','gems']:args[-1]=(SCENARIO if SCENARIO in ['chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','prayer','gems'] else 'food') if mode=='assemble' else 'verify'
+            if SCENARIO in ['chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','food-observer','prayer','gems','gem-effects','gem-crash']:args[-1]=(SCENARIO if SCENARIO in ['chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','prayer','gems','gem-effects','gem-crash'] else 'food') if mode=='assemble' else 'verify'
             if SCENARIO=='food':
                 if mode=='assemble':args[-1]=str(dest/'native-events.jsonl')
                 else:args=[str(client_binary),str(RES/'cache/js5'),str(RES/'keys/client.key'),address,'integration239',str(RES/'password'),str(WORK/'relogin-private.capture')]
@@ -220,7 +221,7 @@ def phase(mode):
                             if not manifest['intentional_crash_injected'] and 'PG_CRASH_READY' in (dest/'client.log').read_text(encoding='utf-8'):
                                 assert server.poll() is None,'Owned server ended before requested fault injection'
                                 server.kill();server.wait();manifest['intentional_crash_injected']=True
-                                manifest['fault_scope']='Terminate only this freshly launched owned server after native All result with ingredients remaining; no normal logout/save requested'
+                                manifest['fault_scope']=('Terminate only this freshly launched owned server after one unsaved native selected gem result; no normal logout/save requested' if SCENARIO=='gem-crash' else 'Terminate only this freshly launched owned server after native All result with ingredients remaining; no normal logout/save requested')
                                 save(dest/'manifest.json',manifest)
                             time.sleep(.02)
                         rc=client.wait(timeout=1)
@@ -245,7 +246,8 @@ def phase(mode):
     after=snapshot();save(dest/'after.json',after)
     manifest['database_sha256_after']=digest(dbpath())
     serverlog=(dest/'server.log').read_text(encoding='utf-8')
-    manifest['save_acknowledgement']='Save acknowledgement:' in serverlog
+    acknowledgements=[json.loads(line.split('Save acknowledgement: ',1)[1]) for line in serverlog.splitlines() if line.startswith('Save acknowledgement: ')]
+    manifest['save_acknowledgement']=any(a.get('save_completed') is True for a in acknowledgements)
     manifest['graceful_shutdown']='Shutdown completed; accounts drained.' in serverlog
     resources=json.loads((WORK/'private-resource-manifest.json').read_text(encoding='utf-8'))
     manifest['resource_hashes_unchanged']=all(digest(RES/path)==expected for path,expected in resources.items())
@@ -255,7 +257,7 @@ def phase(mode):
     elif manifest['status']=='PASS' and (not manifest['save_acknowledgement'] or not manifest['graceful_shutdown'] or manifest['server_exit']!=0 or manifest['forced_shutdown']):manifest.update(status='BLOCKED',reason='Client finished but durable save or graceful shutdown evidence missing')
     save(dest/'manifest.json',manifest);print('NATIVE_RESULT',json.dumps(manifest),flush=True)
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('action',choices=['prepare','build','seed','produce','relogin']);p.add_argument('--feature',choices=['combat','chemistry','chemistry-worn','chemistry-last','chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','food','food-observer','prayer','gems'],default='combat');p.add_argument('--integration-sha');p.add_argument('--run-id');a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('action',choices=['prepare','build','seed','produce','relogin']);p.add_argument('--feature',choices=['combat','chemistry','chemistry-worn','chemistry-last','chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','food','food-observer','prayer','gems','gem-effects','gem-crash'],default='combat');p.add_argument('--integration-sha');p.add_argument('--run-id');a=p.parse_args()
     SCENARIO=a.feature
     policy=ROOT/'docs/openrune/verification/USER_DEFERRALS.json'
     if policy.exists():
@@ -269,7 +271,7 @@ if __name__=='__main__':
         CHECKOUT=ROOT.parent/'agent7-targets'/SHA;WORK=ROOT/'work/native-food';OUT=ROOT/'docs/openrune/verification/independent/deep-food'
     if a.feature=='prayer':
         SHA='f6b0f6ad54fe7813bb6607827eeb8da0e60137fa';FEATURE='OR-MIG-0051';CHECKOUT=ROOT.parent/'agent7-targets'/SHA
-    if a.feature=='gems':
+    if a.feature in ['gems','gem-effects','gem-crash']:
         SHA='5743cbe1c7499e2a7476c721d25dcba194666042';FEATURE='OR-MIG-0056';CHECKOUT=ROOT.parent/'agent7-targets'/SHA
     CONTRACT_SHA=SHA
     if a.feature=='chemistry-worn':
@@ -278,7 +280,7 @@ if __name__=='__main__':
     if a.feature=='chemistry-last':
         STATE='pg-chemistry-last-native-001';DRIVER='server_chemistry.exe';PIN='chemistry-001'
         WORK=ROOT/'work/native-chemistry-last';OUT=ROOT/'docs/openrune/verification/independent/deep-chemistry-last'
-    if a.feature in ['chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','food-observer','prayer','gems']:
+    if a.feature in ['chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','food-observer','prayer','gems','gem-effects','gem-crash']:
         observer_build=json.loads((ROOT/'docs/openrune/verification/independent/client-observer-build/build.json').read_text(encoding='utf-8'));assert observer_build['status']=='PASS'
         STATE='pg-'+a.feature+'-001';DRIVER='pg_observer-'+observer_build['binaries']['pg_observer.exe'][:12]+'.exe';PIN='pg-observer'
         WORK=ROOT/'work'/('native-'+a.feature);OUT=ROOT/'docs/openrune/verification/independent'/('deep-'+a.feature)

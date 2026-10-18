@@ -1,0 +1,76 @@
+{
+  "implementation_id": "OR-MIG-0056",
+  "tested_sha": "5743cbe1c7499e2a7476c721d25dcba194666042",
+  "campaign_kind": "historical",
+  "status": "PASS",
+  "profiles": [
+    {
+      "name": "Sapphire",
+      "revision": 15318123,
+      "sha256": "80f9bb7dc7ef06c13cf03a2396c0a42cf0cfe8ad3eb8abcfebfbd89ab4a4114a",
+      "cut_id": 1607,
+      "members": false,
+      "wiki_recipe_ticks": 2,
+      "native_manual_first_cycle_received_clocks": 1
+    },
+    {
+      "name": "Emerald",
+      "revision": 15315112,
+      "sha256": "ab6a7e4ba9a0f83dcebe97d018b487b828b72b8f0f6341c1ad40ca2aeb8cbc0e",
+      "cut_id": 1605,
+      "members": false,
+      "wiki_recipe_ticks": 2,
+      "native_manual_first_cycle_received_clocks": 1
+    },
+    {
+      "name": "Ruby",
+      "revision": 15315114,
+      "sha256": "4b79d537bb5d90e2037a6a2986eb5652e53bd031223adba31cc8b9e4797d9a30",
+      "cut_id": 1603,
+      "members": false,
+      "wiki_recipe_ticks": 2,
+      "native_manual_first_cycle_received_clocks": 1
+    },
+    {
+      "name": "Diamond",
+      "revision": 15315113,
+      "sha256": "7c14a108a3bd094c036c80bc6c913913a17edcba3c513dc08c9698b0b7cb7f1c",
+      "cut_id": 1601,
+      "members": false,
+      "wiki_recipe_ticks": 2,
+      "native_manual_first_cycle_received_clocks": 1
+    },
+    {
+      "name": "Dragonstone",
+      "revision": 15350180,
+      "sha256": "cc5d7466dcc7fb1c65c1bb0bba4b2e7938ebf159ce72a9747b1bdc56ec0b0bb4",
+      "cut_id": 1615,
+      "members": true,
+      "wiki_recipe_ticks": 2,
+      "native_manual_first_cycle_received_clocks": 1
+    },
+    {
+      "name": "Onyx",
+      "revision": 15316071,
+      "sha256": "750d4f65b2acc4f4dd160b4d6155d984d1567f5b85d707f6c8a7e473dbb0f5fb",
+      "cut_id": 6573,
+      "members": true,
+      "wiki_recipe_ticks": 2,
+      "native_manual_first_cycle_received_clocks": 1
+    },
+    {
+      "name": "Zenyte",
+      "revision": 15218238,
+      "sha256": "a56b357b97bc8f94f980d3af91453a062ded5d49fbde40703535777a786d9be1",
+      "cut_id": 19493,
+      "members": true,
+      "wiki_recipe_ticks": 2,
+      "native_manual_first_cycle_received_clocks": 1
+    }
+  ],
+  "scope": "All seven pinned Wiki pages independently rechecked for cut IDs, membership and recipe2ticks. Actual native manual first completion1received clock agrees with source shortened first cycle max(1,2-1). This is an explicit manual-first-cycle adaptation; literal Wiki2tick/repeat production cadence is not claimed.",
+  "acceptance_boundary": [
+    "No compiled Kotlin executable available; comparisons are hash-pinned source-derived, as allowed by contract.",
+    "Decoded native animation8833/effect timing observed separately, without a rendered/audio claim. Missing chisel sound alias, quantity menus, repeats, crushable stones, tool modifiers and acquisition are explicit excluded/omitted scope, not silently accepted functionality."
+  ]
+}

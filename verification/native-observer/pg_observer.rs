@@ -200,7 +200,7 @@ fn gems(c:&mut ClientState,l:&mut Connection)->R<()> {
     assert_eq!(c.data.experience,xp);assert_eq!((0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>(),initial);
     println!("PG_CASE_PASS native gem pending action cancelled by immediate Walk without consumption or XP");
     let mut fine=130344311i32;
-    for (index,(raw,cut,award)) in [(1623,1607,625),(1621,1605,843),(1619,1603,1062),(1617,1601,1343),(1631,1615,1718),(6571,6573,2093),(19496,19493,625)].into_iter().enumerate(){
+    for (index,(raw,cut,award)) in [(1623,1607,2500),(1621,1605,3375),(1619,1603,4250),(1617,1601,5375),(1631,1615,6875),(6571,6573,8375),(19496,19493,2500)].into_iter().enumerate(){
         ready(c,l)?;let slot=4+3*index as i32;assert_eq!(c.inventories.item(93,slot).id,raw);let n=c.outbound.len();
         if index%2==0{use_slots(c,0,slot)?;}else{use_slots(c,slot,0)?;}
         let p=c.outbound.iter().skip(n).find(|p|p.opcode==27).ok_or("gem native pair packet absent")?;let stale=(p.opcode,p.payload.clone());
@@ -211,7 +211,31 @@ fn gems(c:&mut ClientState,l:&mut Connection)->R<()> {
         for i in 0..25{if i!=12{assert_eq!(c.data.experience[i],xp[i]);}}
         println!("PG_GEM_COMMITTED index={index} slot={slot} raw={raw} cut={cut} fine_award={award} display_xp={} direction_reverse={}",c.data.experience[12],index%2==1);
     }
-    println!("PG_CASE_PASS seven native gem cuts, both directions, full28 selected duplicates, retained chisels,125percent fractional XP and stale-pair refusal");Ok(())
+    println!("PG_CASE_PASS seven native gem cuts, both directions, full28 selected duplicates, retained chisels,effective500percent fractional XP and stale-pair refusal; native125percent is blocked by pinned login policy");Ok(())
+}
+fn gem_effects(c:&mut ClientState,l:&mut Connection)->R<()> {
+    // New scope: independently observed decoded animation/partial packets and
+    // every profile in the opposite selected direction on a fresh full bag.
+    gems(c,l)?;let mut fine=130377561i32;
+    for (index,(raw,cut,award)) in [(1623,1607,2500),(1621,1605,3375),(1619,1603,4250),(1617,1601,5375),(1631,1615,6875),(6571,6573,8375),(19496,19493,2500)].into_iter().enumerate(){
+        ready(c,l)?;let slot=5+3*index as i32;assert_eq!(c.inventories.item(93,slot).id,raw);
+        println!("PG_GEM_EFFECT_BEGIN index={index} slot={slot} raw={raw} cut={cut} tick={}",c.server_tick);
+        if index%2==0{use_slots(c,slot,0)?;}else{use_slots(c,0,slot)?;}
+        fine+=award;pump(c,l,30,|c,_|c.inventories.item(93,slot).id==cut && c.data.experience[12]==fine/10)?;ticks(c,l,3)?;
+        assert_eq!(c.inventories.item(93,slot-1).id,cut);assert_eq!(c.inventories.item(93,0).id,1755);assert_eq!(c.inventories.item(93,1).id,1755);assert_eq!(c.inventories.item(93,27).count,1000);
+        assert_eq!((0..28).filter(|&s|c.inventories.item(93,s).id>=0).count(),28);
+        println!("PG_GEM_SECOND_COMMITTED index={index} slot={slot} cut={cut} fine_award={award} display_xp={} direction_reverse={}",c.data.experience[12],index%2==0);
+    }
+    println!("PG_CASE_PASS fourteen native gem cuts; every profile in both directions; actual decoded sequence/effect and first-cycle packet cadence require independent assessment");Ok(())
+}
+fn gem_crash(c:&mut ClientState,l:&mut Connection)->R<()> {
+    tab(c,"Inventory")?;ticks(c,l,3)?;use_slots(c,0,4)?;
+    pump(c,l,30,|c,_|c.inventories.item(93,4).id==1607 && c.data.experience[12]==13034681)?;
+    println!("PG_CRASH_READY gem unsaved selected Sapphire result observed; real socket remains open; no normal logout/save acknowledgement requested");
+    let start=Instant::now();loop {
+        match l.poll(c){Err(e)=>{println!("PG_EXPECTED_CRASH_DISCONNECT {e}");return Ok(());},Ok(())=>{if l.logged_out().is_some(){println!("PG_EXPECTED_CRASH_DISCONNECT native transport closed");return Ok(());}}}
+        if start.elapsed()>Duration::from_secs(30){return Err("owned gem crash injection did not arrive".into());}std::thread::sleep(Duration::from_millis(10));
+    }
 }
 fn food(c:&mut ClientState,l:&mut Connection)->R<()> {
     let xp=c.data.experience;assert_eq!(c.data.base[3],10);println!("PG_INITIAL food tick={} current_hp={} display_xp={}; initial HP2 and any pre-action regeneration must be checked in received packets",c.server_tick,c.data.boosted[3],c.data.experience[3]);tab(c,"Inventory")?;ticks(c,l,2)?;
@@ -230,6 +254,6 @@ fn food(c:&mut ClientState,l:&mut Connection)->R<()> {
 fn main()->R<()> {
     let a:Vec<_>=std::env::args().collect();assert_eq!(a.len(),7);
     let mut c=ClientState::load(DiskCache::open(&a[1],64<<20)?)?;let mut l=Connection::connect(&mut c,&a[2],&a[3],&a[4],&a[5])?;ready(&mut c,&mut l)?;
-    match a[6].as_str(){"gems"=>gems(&mut c,&mut l)?,"prayer"=>prayer_burial(&mut c,&mut l)?,"chem-crash"=>chemistry_crash(&mut c,&mut l)?,"chem-interrupt"=>chemistry_interrupt(&mut c,&mut l)?,"food-negative"=>food_negative(&mut c,&mut l)?,"combat-interrupt"=>combat_interrupt(&mut c,&mut l)?,"chem-close"=>chemistry_close(&mut c,&mut l)?,"chem-negative"=>chemistry(&mut c,&mut l)?,"food"=>food(&mut c,&mut l)?,"verify"=>{ticks(&mut c,&mut l,6)?;println!("PG_CASE_PASS native relogin observation");},_=>return Err("unknown independent scenario".into())}
+    match a[6].as_str(){"gem-effects"=>gem_effects(&mut c,&mut l)?,"gem-crash"=>gem_crash(&mut c,&mut l)?,"gems"=>gems(&mut c,&mut l)?,"prayer"=>prayer_burial(&mut c,&mut l)?,"chem-crash"=>chemistry_crash(&mut c,&mut l)?,"chem-interrupt"=>chemistry_interrupt(&mut c,&mut l)?,"food-negative"=>food_negative(&mut c,&mut l)?,"combat-interrupt"=>combat_interrupt(&mut c,&mut l)?,"chem-close"=>chemistry_close(&mut c,&mut l)?,"chem-negative"=>chemistry(&mut c,&mut l)?,"food"=>food(&mut c,&mut l)?,"verify"=>{ticks(&mut c,&mut l,6)?;println!("PG_CASE_PASS native relogin observation");},_=>return Err("unknown independent scenario".into())}
     l.session.close();Ok(())
 }

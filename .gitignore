@@ -1199,6 +1199,7 @@
 !/scripts/proving-ground-finalize.py
 !/scripts/proving-ground-*.py
 !/docs/openrune/verification/WORKLIST.json
+!/docs/openrune/verification/USER_DEFERRALS.json
 !/docs/openrune/verification/RESUME_QUEUE.json
 !/docs/openrune/verification/LEVEL_RESULTS.jsonl
 !/docs/openrune/verification/SYNC_OBSERVATIONS.jsonl

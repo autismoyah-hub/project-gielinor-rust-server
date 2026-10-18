@@ -1,0 +1,226 @@
+{
+  "implementation_id": "OR-MIG-0056",
+  "revision": 2,
+  "tested_sha": "5743cbe1c7499e2a7476c721d25dcba194666042",
+  "campaign_kind": "historical",
+  "level": "V4",
+  "status": "IN_PROGRESS",
+  "source_documentation_subcheck": "PASS",
+  "sources": [
+    {
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/scripts/HeldCraftingScript.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "c39f8b323e8fa79f933224b9ca0c8cf07a5df005628906e79645e3e6a5399318",
+      "kind": "openrune",
+      "method": "independently inspected source or pinned local Wiki snapshot"
+    },
+    {
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingSection.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "26e5be7a84fbe82f5c4897d29cb3261c63cd475111f17df517e2e0ac5e0d8afb",
+      "kind": "openrune",
+      "method": "independently inspected source or pinned local Wiki snapshot"
+    },
+    {
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingWorker.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "5790b247e5441b54e05c0ca7b4b5a9dff5c7aa61181ebccb36d0d8057db56e53",
+      "kind": "openrune",
+      "method": "independently inspected source or pinned local Wiki snapshot"
+    },
+    {
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/util/CraftingConstants.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "393d05fa5a5645b2dd712fcfb8f8814845376846a7594dafe16909422fe2008f",
+      "kind": "openrune",
+      "method": "independently inspected source or pinned local Wiki snapshot"
+    },
+    {
+      "reference": "Crafting",
+      "revision": "15343460",
+      "sha256": "bcbfa8f775e6323cced8080fdc41c6888ff3552c15af74c5083d1a77b1bf0fa0",
+      "kind": "wiki",
+      "method": "independently inspected source or pinned local Wiki snapshot"
+    },
+    {
+      "reference": "Sapphire",
+      "revision": "15318123",
+      "sha256": "80f9bb7dc7ef06c13cf03a2396c0a42cf0cfe8ad3eb8abcfebfbd89ab4a4114a",
+      "kind": "wiki",
+      "method": "independently inspected source or pinned local Wiki snapshot"
+    },
+    {
+      "reference": "Emerald",
+      "revision": "15315112",
+      "sha256": "ab6a7e4ba9a0f83dcebe97d018b487b828b72b8f0f6341c1ad40ca2aeb8cbc0e",
+      "kind": "wiki",
+      "method": "independently inspected source or pinned local Wiki snapshot"
+    },
+    {
+      "reference": "Ruby",
+      "revision": "15315114",
+      "sha256": "4b79d537bb5d90e2037a6a2986eb5652e53bd031223adba31cc8b9e4797d9a30",
+      "kind": "wiki",
+      "method": "independently inspected source or pinned local Wiki snapshot"
+    },
+    {
+      "reference": "Diamond",
+      "revision": "15315113",
+      "sha256": "7c14a108a3bd094c036c80bc6c913913a17edcba3c513dc08c9698b0b7cb7f1c",
+      "kind": "wiki",
+      "method": "independently inspected source or pinned local Wiki snapshot"
+    },
+    {
+      "reference": "Dragonstone",
+      "revision": "15350180",
+      "sha256": "cc5d7466dcc7fb1c65c1bb0bba4b2e7938ebf159ce72a9747b1bdc56ec0b0bb4",
+      "kind": "wiki",
+      "method": "independently inspected source or pinned local Wiki snapshot"
+    },
+    {
+      "reference": "Onyx",
+      "revision": "15316071",
+      "sha256": "750d4f65b2acc4f4dd160b4d6155d984d1567f5b85d707f6c8a7e473dbb0f5fb",
+      "kind": "wiki",
+      "method": "independently inspected source or pinned local Wiki snapshot"
+    },
+    {
+      "reference": "Zenyte",
+      "revision": "15218238",
+      "sha256": "a56b357b97bc8f94f980d3af91453a062ded5d49fbde40703535777a786d9be1",
+      "kind": "wiki",
+      "method": "independently inspected source or pinned local Wiki snapshot"
+    }
+  ],
+  "rust_sha256": {
+    "crates/world/src/tool_crafting.rs": "00a8f7aee1958df2c027056232d326c360d91b96964ee30398bd43be5ec1b58c",
+    "crates/world/src/simulation/tool_crafting_actions.rs": "6fe2be2fb1de08d66a2608cb7a1a1bb1a03b425433a2c8da21107373573794ca",
+    "crates/world/src/lib.rs": "079a5e247afa041239cbc0cc71bbf885d081debd73da6201e931a01849f01f8d",
+    "crates/world/src/held_use.rs": "34dbd1ced8e4e3a2071222f5809ba153a4c1c8c1384f277ee4678126e872b1f8",
+    "crates/world/src/simulation.rs": "34a7f754c2134dd8d08a385ac6beb9bfd8260ab4a6f80eaf6bf6a57808170a78",
+    "crates/world/src/simulation/held_use_actions.rs": "069f9fcfe8f07f1d51903f63b6dc1dc57c109c5d95cb185752848c2bb4899f86",
+    "crates/server/src/content/gem_cutting.rs": "88d0106df8eeccc4a42cbcc53dc86ebdf1c4f59e2f14d7d1c7009c724411b15c",
+    "crates/server/src/content.rs": "b285761642e52e633427e2209c1f77d99a423df9ac6df21b25f15daf97e4de42",
+    "crates/server/src/startup.rs": "2213b19cc8b477b3742af24de06b65fecd519683340c82f2fb08f03dbbcd9190"
+  },
+  "profiles": [
+    {
+      "name": "Sapphire",
+      "raw": 1623,
+      "cut": 1607,
+      "current_level": 20,
+      "base_xp": 50,
+      "members": false,
+      "fine_awards_by_rate": {
+        "100": 500,
+        "125": 625,
+        "500": 2500
+      }
+    },
+    {
+      "name": "Emerald",
+      "raw": 1621,
+      "cut": 1605,
+      "current_level": 27,
+      "base_xp": 67.5,
+      "members": false,
+      "fine_awards_by_rate": {
+        "100": 675,
+        "125": 843,
+        "500": 3375
+      }
+    },
+    {
+      "name": "Ruby",
+      "raw": 1619,
+      "cut": 1603,
+      "current_level": 34,
+      "base_xp": 85,
+      "members": false,
+      "fine_awards_by_rate": {
+        "100": 850,
+        "125": 1062,
+        "500": 4250
+      }
+    },
+    {
+      "name": "Diamond",
+      "raw": 1617,
+      "cut": 1601,
+      "current_level": 43,
+      "base_xp": 107.5,
+      "members": false,
+      "fine_awards_by_rate": {
+        "100": 1075,
+        "125": 1343,
+        "500": 5375
+      }
+    },
+    {
+      "name": "Dragonstone",
+      "raw": 1631,
+      "cut": 1615,
+      "current_level": 55,
+      "base_xp": 137.5,
+      "members": true,
+      "fine_awards_by_rate": {
+        "100": 1375,
+        "125": 1718,
+        "500": 6875
+      }
+    },
+    {
+      "name": "Onyx",
+      "raw": 6571,
+      "cut": 6573,
+      "current_level": 67,
+      "base_xp": 167.5,
+      "members": true,
+      "fine_awards_by_rate": {
+        "100": 1675,
+        "125": 2093,
+        "500": 8375
+      }
+    },
+    {
+      "name": "Zenyte",
+      "raw": 19496,
+      "cut": 19493,
+      "current_level": 89,
+      "base_xp": 50,
+      "members": true,
+      "fine_awards_by_rate": {
+        "100": 500,
+        "125": 625,
+        "500": 2500
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "behavior": "Seven exact rewards/requirements",
+      "finding": "Independently inspected pinned creation recipes support20/27/34/43/55/67/89and50/67.5/85/107.5/137.5/167.5/50XP. Zenyte cutting50is distinct from manufacturing uncut Zenyte. Target manual profile constants are independently checked by selected-slot/rate matrix; this audit does not copy generated donor product rows."
+    },
+    {
+      "behavior": "Shortened first cycle and scope",
+      "finding": "Inspected GEMS section uses2cycles and defaults shortened-first; worker computes initial maximum(1,2-1)=1. Manual one-pair local action is therefore a supported initial-cycle adaptation. Donor framework also supplies quantity UI, repeats and other sections that this contract explicitly excludes. Do not infer full Crafting or repeat cadence from this subset."
+    },
+    {
+      "behavior": "Retained chisel and transactional selection",
+      "finding": "Source checks tools separately from consumed materials and compensates failed output insertion by returning inputs. Rust binds exact clicked chisel/raw slots and stages inventory/Stats, retaining tool and untouched duplicates and refusing late invalid credit. This is intentionally stronger selected-slot/atomic policy, not an original-executable failure-atomicity observation."
+    },
+    {
+      "behavior": "Deterministic eligibility and presentation",
+      "finding": "Sapphire-or-rarer ordinary cuts use deterministic profile outcomes; semiprecious crush/other tool bonuses remain separate. Source binds human_cutting and chisel sound aliases. Target239.1 animation8833is resolved; chisel synth alias is absent and sound is explicitly omitted. Native visual/audio and precise action-clock observations remain separate obligations."
+    },
+    {
+      "behavior": "Native effective XP policy",
+      "finding": "Pinned runtime FloorOne login forces500percent even if SQLite seeded125. Native125percent is blocked by that policy; no production code or newer build is substituted. Independent authoritative100/125/500content fixtures remain separate from the actual500percent native campaign."
+    }
+  ],
+  "reference_execution": "No compiled original Kotlin executable was available or run; donor statements are explicitly source-derived.",
+  "limitations": [
+    "V4 remains partial for precise native animation/click timing, missing sound presentation, and original executable differential where available.",
+    "No full framework/product-table/quantity/modifier/acquisition parity inferred; protected source expressions/assets are not published."
+  ]
+}

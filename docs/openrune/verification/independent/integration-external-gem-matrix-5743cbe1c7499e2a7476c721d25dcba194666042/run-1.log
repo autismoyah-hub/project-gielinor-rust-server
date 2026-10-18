@@ -1,0 +1,10 @@
+   Compiling gielinor-world v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\5743cbe1c7499e2a7476c721d25dcba194666042\crates\world)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\5743cbe1c7499e2a7476c721d25dcba194666042\external-harness-1783585500)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 51.02s
+     Running tests\authoritative.rs (C:\Projects\OSRSRSPS\agent7-verification\work\5743cbe1c7499e2a7476c721d25dcba194666042\target\debug\deps\authoritative-13c2b4e3ee02c3ae.exe)
+
+running 2 tests
+test invalid_gem_job_never_returns_a_committable_reward_or_replaces_duplicate_inputs ... ok
+test all_seven_gems_all_selected_slots_live_level_membership_and_three_rates ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.22s
