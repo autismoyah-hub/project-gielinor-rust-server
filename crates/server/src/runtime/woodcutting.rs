@@ -97,6 +97,9 @@ impl<B: AccountBackend> Runtime<B> {
         for (id,tree) in crate::content::arctic_pine(names.group("obj"),names.group("loc"),names.group("stat"),&self.definitions).map_err(io::Error::other)? {
             if config.trees.insert(id,tree).is_some(){return Err(io::Error::other("Conflicting Arctic pine tree"));}
         }
+        for (id,tree) in crate::content::redwood_sections(names.group("obj"),names.group("loc"),names.group("stat"),&self.definitions).map_err(io::Error::other)? {
+            if config.trees.insert(id,tree).is_some(){return Err(io::Error::other("Conflicting redwood section"));}
+        }
         let regular_logs = names.id("obj", "logs")? as i32;
         for tool in crate::content::woodcutting_axes(
             names.group("obj"),
@@ -140,7 +143,11 @@ impl<B: AccountBackend> Runtime<B> {
                 .ok_or_else(|| io::Error::other("Missing gathering tree definition"))?;
             if !tree.ops[0]
                 .as_deref()
-                .is_some_and(|op| op.eq_ignore_ascii_case("Chop down") || op.eq_ignore_ascii_case("Cut down"))
+                .is_some_and(|op| {
+                    op.eq_ignore_ascii_case("Chop down")
+                        || op.eq_ignore_ascii_case("Cut down")
+                        || op.eq_ignore_ascii_case("Cut")
+                })
                 || !self.definitions.locations.contains_key(&profile.stump)
             {
                 return Err(io::Error::other("Unattested tree operation or stump"));
