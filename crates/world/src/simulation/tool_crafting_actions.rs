@@ -88,7 +88,10 @@ pub(super) fn complete(
         p.data.xp_rate_hundreds,
         p.member,
         random,
-    )}else{crate::tool_crafting_counts::prepare(pending.job,pending.input_count,&p.data.inventory,items,&p.data.stats,p.data.xp_rate_hundreds,p.member).map(|prepared|(prepared,true))};
+    )}else{
+        let slots=pending.batch.as_ref().and_then(|batch|batch.slots.get(batch.index..batch.index.saturating_add(batch.input_stride))).unwrap_or(std::slice::from_ref(&pending.job.input_slot));
+        crate::tool_crafting_counts::prepare_with_slots(pending.job,pending.input_count,slots,&p.data.inventory,items,&p.data.stats,p.data.xp_rate_hundreds,p.member).map(|prepared|(prepared,true))
+    };
     let committed = match result {
         Ok((prepared, success)) => {
             publish(p, pending.job, prepared, success, tutorial, events);
@@ -103,7 +106,7 @@ pub(super) fn complete(
         return;
     }
     if let Some(mut batch) = pending.batch {
-        batch.index += 1;
+        batch.index += batch.input_stride;
         if let Some(&input_slot) = batch.slots.get(batch.index) {
             let job = Job {
                 input_slot,
@@ -333,6 +336,12 @@ impl World {
         p.tool_crafting_request = Some(choice);
         Ok(())
     }
+    pub(super) fn request_tool_crafting_materials(&mut self,actor:ActorId,recipes:std::sync::Arc<Vec<crate::tool_crafting::Recipe>>,cycle_ticks:u8,request:crate::held_use::Request,input_counts:std::sync::Arc<Vec<u16>>)->Result<(),ActionError>{
+        let p=self.players.get_mut(actor.slot as usize).unwrap();
+        let choice=crate::tool_crafting::Request::bind_materials(recipes,cycle_ticks,request,&p.data.inventory,p.movement.coords,p.movement.last_movement,input_counts).ok_or(ActionError::InvalidItem)?;
+        if choice.recipes.iter().all(|r|r.exchange.members)&&!p.member{refusal(&mut self.events,actor,Error::Members,choice.recipes[0].skill);return Ok(());}
+        p.tool_crafting_request=Some(choice);Ok(())
+    }
     pub fn take_tool_crafting_request(
         &mut self,
         actor: ActorId,
@@ -375,11 +384,7 @@ impl World {
             tool_slot: request.tool_slot,
             input_slot: request.input_slot,
         };
-        if let Err(e) = crate::tool_crafting_counts::prepare(job,request.input_count,
-            &p.data.inventory,&self.object_types,&p.data.stats,p.data.xp_rate_hundreds,p.member) {
-            refusal(&mut self.events, actor, e, job.recipe.skill);
-            return Ok(());
-        }
+        let input_count=request.input_count_for(index).ok_or(ActionError::InvalidItem)?;
         let mut slots = vec![request.input_slot];
         for (slot, item) in p.data.inventory.slots().iter().enumerate() {
             if slot != request.input_slot
@@ -390,17 +395,21 @@ impl World {
                 slots.push(slot);
             }
         }
-        if request.input_count>1{slots=vec![request.input_slot;request.available(&p.data.inventory).min(count as usize)];}
-        slots.truncate(count as usize);
+        let input_stride=if input_count>1&&!self.object_types.stackable.contains(&recipe.exchange.input){usize::from(input_count)}else{1};
+        if input_count>1&&input_stride==1{slots=vec![request.input_slot;request.available_for(index,&p.data.inventory).min(count as usize)];}
+        let jobs=(slots.len()/input_stride).min(count as usize);slots.truncate(jobs*input_stride);
+        let first_slots=slots.get(..input_stride).ok_or(ActionError::InvalidItem)?;
+        if let Err(e)=crate::tool_crafting_counts::prepare_with_slots(job,input_count,first_slots,&p.data.inventory,&self.object_types,&p.data.stats,p.data.xp_rate_hundreds,p.member){refusal(&mut self.events,actor,e,job.recipe.skill);return Ok(());}
         let p = self.players.get_mut(actor.slot as usize).unwrap();
         p.begin_held_action();
         p.queues.clear_weak();
         let pending = Pending {
             job,
-            input_count:request.input_count,
+            input_count,
             origin: request.origin,
             last_movement: request.last_movement,
             batch: Some(crate::tool_crafting::Batch {
+                input_stride,
                 slots: std::sync::Arc::new(slots),
                 index: 0,
                 cycle_ticks: request.cycle_ticks,

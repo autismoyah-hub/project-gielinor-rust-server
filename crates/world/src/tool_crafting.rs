@@ -210,6 +210,7 @@ pub struct Request {
     pub last_movement: i32,
     pub cycle_ticks: u8,
     pub input_count:u16,
+    pub input_counts:Option<std::sync::Arc<Vec<u16>>>,
 }
 impl Request {
     pub fn bind(
@@ -269,7 +270,7 @@ impl Request {
                 .is_none_or(|i| i.id != first.exchange.tool || i.count != 1 || i.vars != 0)
             || inventory
                 .get(input_slot)
-                .is_none_or(|i| i.id != first.exchange.input || (if input_count==1{i.count!=1}else{i.count<i32::from(input_count)}) || i.vars != 0)
+                .is_none_or(|i| i.id != first.exchange.input || (if input_count==1{i.count!=1}else{i.count!=1&&i.count<i32::from(input_count)}) || i.vars != 0)
         {
             return None;
         }
@@ -281,25 +282,31 @@ impl Request {
             last_movement,
             cycle_ticks,
             input_count,
+            input_counts:None,
         })
     }
-    pub fn available(&self, inventory: &Inventory) -> usize {
-        let Some(recipe) = self.recipes.first() else {
-            return 0;
-        };
-        let id = recipe.exchange.input;
-        if self.input_count>1{return inventory.get(self.input_slot).filter(|i|i.id==id&&i.vars==0&&i.count>0).map_or(0,|i|(i.count as usize/self.input_count as usize).min(28));}
-        inventory
-            .slots()
-            .iter()
-            .flatten()
-            .filter(|i| i.id == id && i.count == 1 && i.vars == 0)
-            .count()
-            .min(28)
+    pub fn bind_materials(recipes:std::sync::Arc<Vec<Recipe>>,cycle_ticks:u8,request:crate::held_use::Request,inventory:&Inventory,origin:CoordGrid,last_movement:i32,input_counts:std::sync::Arc<Vec<u16>>)->Option<Self>{
+        if recipes.len()!=input_counts.len()||recipes.iter().zip(input_counts.iter()).any(|(r,&n)|n==0||(n>1&&r.failure.is_some())){return None;}
+        let mut bound=Self::bind_counted(recipes,cycle_ticks,request,inventory,origin,last_movement,1)?;
+        bound.input_counts=Some(input_counts);Some(bound)
     }
+    pub fn input_count_for(&self,index:usize)->Option<u16>{
+        self.recipes.get(index)?;self.input_counts.as_ref().map_or(Some(self.input_count),|counts|counts.get(index).copied())
+    }
+    pub fn available_for(&self,index:usize,inventory:&Inventory)->usize{
+        let Some(recipe)=self.recipes.get(index)else{return 0;};let Some(cost)=self.input_count_for(index).filter(|&n|n>0)else{return 0;};let id=recipe.exchange.input;
+        if cost>1 {
+            let Some(selected)=inventory.get(self.input_slot).filter(|i|i.id==id&&i.vars==0&&i.count>0)else{return 0;};
+            if selected.count>1{return(selected.count as usize/cost as usize).min(28);}
+        }
+        (inventory.slots().iter().flatten().filter(|i|i.id==id&&i.count==1&&i.vars==0).count()/cost as usize).min(28)
+    }
+    pub fn available(&self,inventory:&Inventory)->usize{(0..self.recipes.len()).map(|index|self.available_for(index,inventory)).max().unwrap_or(0)}
 }
+
 #[derive(Clone, Debug)]
 pub(crate) struct Batch {
+    pub input_stride:usize,
     pub slots: std::sync::Arc<Vec<usize>>,
     pub index: usize,
     pub cycle_ticks: u8,

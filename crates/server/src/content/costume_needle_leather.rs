@@ -129,7 +129,7 @@ pub fn costume_needle_leather(
     Ok(groups)
 }
 #[cfg(test)]
-mod tests {
+pub(crate) mod tests {
     use super::*;
     use gielinor_world::{
         held_use::{Handler, Request, Scope, Type},
@@ -138,7 +138,7 @@ mod tests {
         stats::Stats,
         CoordGrid,
     };
-    fn profile() -> (Definitions, Symbols, Symbols, Symbols) {
+    pub(crate) fn profile() -> (Definitions, Symbols, Symbols, Symbols) {
         let mut d = Definitions {
             inventories: Default::default(),
             locations: Default::default(),

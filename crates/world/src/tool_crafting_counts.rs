@@ -14,11 +14,33 @@ pub fn prepare(
     rate: i32,
     member: bool,
 ) -> Result<Prepared, Error> {
+    prepare_with_slots(
+        job,
+        input_count,
+        &[job.input_slot],
+        inv,
+        items,
+        stats,
+        rate,
+        member,
+    )
+}
+pub fn prepare_with_slots(
+    job: Job,
+    input_count: u16,
+    slots: &[usize],
+    inv: &Inventory,
+    items: &Catalog,
+    stats: &Stats,
+    rate: i32,
+    member: bool,
+) -> Result<Prepared, Error> {
     if input_count == 1 {
         return job.prepare(inv, items, stats, rate, member);
     }
     let r = job.recipe;
     let e = r.exchange;
+    let stack = items.stackable.contains(&e.input);
     if (r.output_count > 1 && !items.stackable.contains(&e.output))
         || input_count == 0
         || r.failure.is_some()
@@ -31,7 +53,7 @@ pub fn prepare(
         || e.tool == e.input
         || e.output == e.input
         || e.output == e.tool
-        || !items.stackable.contains(&e.input)
+        || (!stack && !items.ordinary_nonstackable(e.input))
     {
         return Err(Error::Policy);
     }
@@ -41,22 +63,40 @@ pub fn prepare(
     if (stats.current(r.skill) as u8) < r.level {
         return Err(Error::Level);
     }
-    if job.tool_slot == job.input_slot
-        || !inv
-            .get(job.tool_slot)
-            .is_some_and(|i| i.id == e.tool && i.count == 1 && i.vars == 0)
-        || !inv
-            .get(job.input_slot)
-            .is_some_and(|i| i.id == e.input && i.count >= i32::from(input_count) && i.vars == 0)
+    if !inv
+        .get(job.tool_slot)
+        .is_some_and(|i| i.id == e.tool && i.count == 1 && i.vars == 0)
+        || slots.first() != Some(&job.input_slot)
+        || slots.len() != if stack { 1 } else { usize::from(input_count) }
+        || slots
+            .iter()
+            .copied()
+            .collect::<std::collections::BTreeSet<_>>()
+            .len()
+            != slots.len()
+        || slots.iter().any(|&slot| {
+            slot == job.tool_slot
+                || !inv.get(slot).is_some_and(|i| {
+                    i.id == e.input
+                        && i.vars == 0
+                        && if stack {
+                            i.count >= i32::from(input_count)
+                        } else {
+                            i.count == 1
+                        }
+                })
+        })
     {
         return Err(Error::Exchange(crate::grinding::Outcome::Stale));
     }
     let mut inventory = inv.clone();
-    let mut debit = Delete::new(e.input, i32::from(input_count));
-    debit.strict_slot = Some(job.input_slot);
-    inventory
-        .delete(items, debit)
-        .map_err(|_| Error::Exchange(crate::grinding::Outcome::Capacity))?;
+    for &slot in slots {
+        let mut debit = Delete::new(e.input, if stack { i32::from(input_count) } else { 1 });
+        debit.strict_slot = Some(slot);
+        inventory
+            .delete(items, debit)
+            .map_err(|_| Error::Exchange(crate::grinding::Outcome::Capacity))?;
+    }
     inventory
         .insert(items, Insert::new(e.output, i32::from(r.output_count)))
         .map_err(|_| Error::Exchange(crate::grinding::Outcome::Capacity))?;
@@ -185,6 +225,124 @@ mod tests {
                 assert!(result.is_err());
             }
             assert_eq!((inv, stats), old);
+        }
+    }
+}
+
+#[cfg(test)]
+mod discrete_tests {
+    use super::*;
+    use crate::{grinding, inventory::Item, tool_crafting::Recipe};
+    #[test]
+    fn discrete_materials_stage_all_slots_and_reject_duplicates_stale_credit_and_reward() {
+        let recipe = Recipe {
+            skill: 12,
+            exchange: grinding::Recipe {
+                tool: 29920,
+                input: 1745,
+                output: 1135,
+                members: true,
+                animation: None,
+            },
+            level: 63,
+            xp_tenths: 1860,
+            output_count: 1,
+            ticks: 2,
+            name: "Green d'hide body",
+            action: "make",
+            failure: None,
+        };
+        let job = Job {
+            recipe,
+            tool_slot: 0,
+            input_slot: 1,
+        };
+        for case in 0..7 {
+            let mut inventory = Inventory::new(5, StackType::Normal, false);
+            let mut items = Catalog::default();
+            let mut stats = Stats::default();
+            stats.set_current(12, 63);
+            inventory
+                .restore_slot(
+                    0,
+                    Some(Item {
+                        id: 29920,
+                        count: 1,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+            for slot in 1..5 {
+                inventory
+                    .restore_slot(
+                        slot,
+                        Some(Item {
+                            id: 1745,
+                            count: 1,
+                            vars: 0,
+                        }),
+                    )
+                    .unwrap();
+            }
+            let mut slots = vec![1, 2, 3];
+            match case {
+                1 => slots[1] = 1,
+                2 => {
+                    inventory
+                        .restore_slot(
+                            2,
+                            Some(Item {
+                                id: 1745,
+                                count: 1,
+                                vars: 1,
+                            }),
+                        )
+                        .unwrap();
+                }
+                3 => {
+                    items.dummy.insert(1135);
+                }
+                4 => slots[1] = 0,
+                _ => {}
+            }
+            let before = (inventory.clone(), stats.clone());
+            let result = prepare_with_slots(
+                job,
+                3,
+                &slots,
+                &inventory,
+                &items,
+                &stats,
+                if case == 5 { 0 } else { 100 },
+                case != 6,
+            );
+            if case == 0 {
+                let p = result.unwrap();
+                assert_eq!(p.stats.fine_xp(12), 1860);
+                assert_eq!(p.inventory.get(0), inventory.get(0));
+                assert_eq!(p.inventory.get(4), inventory.get(4));
+                assert_eq!(
+                    p.inventory
+                        .slots()
+                        .iter()
+                        .flatten()
+                        .filter(|i| i.id == 1135)
+                        .count(),
+                    1
+                );
+                assert_eq!(
+                    p.inventory
+                        .slots()
+                        .iter()
+                        .flatten()
+                        .filter(|i| i.id == 1745)
+                        .count(),
+                    1
+                );
+            } else {
+                assert!(result.is_err());
+            }
+            assert_eq!((inventory, stats), before);
         }
     }
 }

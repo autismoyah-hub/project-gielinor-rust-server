@@ -776,7 +776,12 @@ pub fn configure<B: AccountBackend>(
     }
     for (recipes,cycle_ticks) in crate::content::costume_needle_leather(n("obj"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
         let input=recipes[0].exchange.input;
+        if [1745,2505,2507,2509].contains(&input){continue;} // Expanded immutable1/2/3-hide choices below.
         runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,29920,input,gielinor_world::held_use::Handler::ToolCraftingChoices{recipes:std::sync::Arc::new(recipes),cycle_ticks}).map_err(|e|io::Error::other(format!("Costume needle leather registration: {e:?}")))?;
+    }
+    for group in crate::content::costume_needle_dragonhide(n("obj"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
+        let input=group.recipes[0].exchange.input;
+        runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,29920,input,gielinor_world::held_use::Handler::ToolCraftingMaterialChoices{recipes:std::sync::Arc::new(group.recipes),input_counts:std::sync::Arc::new(group.costs),cycle_ticks:group.cycle_ticks}).map_err(|e|io::Error::other(format!("Costume needle dragonhide registration: {e:?}")))?;
     }
     let pheasant=crate::content::pheasant_costume(n("obj"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)?;
     runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,29920,28624,gielinor_world::held_use::Handler::ToolCraftingCountedChoices{recipes:std::sync::Arc::new(pheasant),cycle_ticks:3,input_count:15}).map_err(|e|io::Error::other(format!("Pheasant costume registration: {e:?}")))?;

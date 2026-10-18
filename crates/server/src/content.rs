@@ -2,6 +2,8 @@
 use gielinor_cache::{game::Definitions, symbols::Symbols};
 use gielinor_world::food::{self, Edible};
 use std::collections::BTreeMap;
+mod costume_needle_dragonhide;
+pub use costume_needle_dragonhide::costume_needle_dragonhide;
 mod costume_needle_leather;
 pub use costume_needle_leather::costume_needle_leather;
 mod pheasant_costume;
