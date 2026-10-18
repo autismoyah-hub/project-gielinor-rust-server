@@ -745,10 +745,10 @@ pub fn configure<B: AccountBackend>(
             .map_err(|e|io::Error::other(format!("Grinding registration: {e:?}")))?;
     }
     for recipe in crate::content::gem_cutting(n("obj"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
-        runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.exchange.tool,recipe.exchange.input,gielinor_world::held_use::Handler::ToolCrafting(recipe)).map_err(|e|io::Error::other(format!("Gem cutting registration: {e:?}")))?;
+        runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.exchange.tool,recipe.exchange.input,gielinor_world::held_use::Handler::ToolCraftingChoices{recipes:std::sync::Arc::new(vec![recipe]),cycle_ticks:2}).map_err(|e|io::Error::other(format!("Gem cutting registration: {e:?}")))?;
     }
     for recipe in crate::content::snelm_carving(n("obj"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
-        runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.exchange.tool,recipe.exchange.input,gielinor_world::held_use::Handler::ToolCrafting(recipe)).map_err(|e|io::Error::other(format!("Shell carving registration: {e:?}")))?;
+        runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.exchange.tool,recipe.exchange.input,gielinor_world::held_use::Handler::ToolCraftingChoices{recipes:std::sync::Arc::new(vec![recipe]),cycle_ticks:3}).map_err(|e|io::Error::other(format!("Shell carving registration: {e:?}")))?;
     }
     for recipe in crate::content::amulet_stringing(n("obj"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
         runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.first,recipe.second,gielinor_world::held_use::Handler::AssemblyTimed{recipe,ticks:1}).map_err(|e|io::Error::other(format!("Amulet stringing registration: {e:?}")))?;

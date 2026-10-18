@@ -659,3 +659,12 @@ mod choice_tests {
         }
     }
 }
+
+#[cfg(test)]mod prior_production_tests{
+ use super::*;use crate::{inventory::Item,held_use::{Handler,Request as Held,Scope,Type},tool_crafting::Recipe};
+ #[test]fn legacy_tool_production_single_option_preserves_gem_f2p_and_shell_member_cadences(){
+  for(input,output,level,xp,first,cycle,member,action,expected,total)in[(1621,1605,27,675,1,2,false,"cut",vec![1,3,5],2529),(3345,3327,15,325,2,3,true,"carve",vec![2,5,8],1218)]{
+   let mut w=World::default();w.collision.allocate(3200,3200,0);let mut stats=Stats::default();stats.set_base(3,10);stats.set_current(3,10);stats.set_base(12,level);stats.set_current(12,level);let mut data=PlayerData::new(1,"Tool production".into(),CoordGrid::new(3200,3200,0).unwrap(),stats);data.xp_rate_hundreds=125;for slot in 0..28{data.inventory.restore_slot(slot,Some(Item{id:1511,count:1,vars:0})).unwrap();}for(slot,id)in[(5,1755),(21,input),(3,input),(11,input)]{data.inventory.restore_slot(slot,Some(Item{id,count:1,vars:0})).unwrap();}w.queue_login(1,data).unwrap();w.tick().unwrap();let a=w.actors().next().unwrap();w.set_membership(a,member).unwrap();for id in [1755,input]{w.held_use_types.insert(id,Type{id,content:-1});}let recipe=Recipe{exchange:crate::grinding::Recipe{tool:1755,input,output,members:member,animation:None},level:level as u8,xp_tenths:xp,ticks:first,name:"product",action};w.held_use_handlers.register(Scope::Types,1755,input,Handler::ToolCraftingChoices{recipes:std::sync::Arc::new(vec![recipe]),cycle_ticks:cycle}).unwrap();let request=Held{selected_slot:21,selected_id:input,target_slot:5,target_id:1755};w.prepare_held_use(a,request).unwrap();w.finish_held_use(a,request).unwrap();let choices=w.take_tool_crafting_request(a).unwrap().unwrap();assert_eq!(choices.recipes.len(),1);assert_eq!(choices.available(&w.data(a).unwrap().inventory),3);let start=w.clock.0;w.start_tool_crafting_choice(a,choices,0,3).unwrap();let mut commits=Vec::new();let mut previous=0;for _ in 0..12{w.tick().unwrap();let count=w.data(a).unwrap().inventory.slots().iter().flatten().filter(|v|v.id==output).count();if count!=previous{commits.push(w.clock.0-1-start);if count==1{assert_eq!(w.data(a).unwrap().inventory.get(21).unwrap().id,output);assert_eq!(w.data(a).unwrap().inventory.get(3).unwrap().id,input);}}previous=count;}assert_eq!(commits,expected);assert_eq!(previous,3);assert_eq!(w.data(a).unwrap().stats.fine_xp(12),total);assert_eq!(w.data(a).unwrap().inventory.get(5).unwrap().id,1755);assert_eq!(w.data(a).unwrap().inventory.free_space(),0);
+  }
+ }
+}
