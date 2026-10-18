@@ -26,6 +26,7 @@ mod melee_actions;
 mod movement_actions;
 pub use movement_actions::MovementInput;
 mod elemental_spell_actions;
+mod container_emptying_actions;
 mod item_pack_actions;
 mod milking_actions;
 mod water_source_actions;
@@ -511,6 +512,7 @@ pub enum Action {
         item: i32,
     },
     OpenItemPack { slot: usize, item: i32 },
+    EmptyContainer { slot: usize, item: i32 },
     OpenCoinPouch { slot: usize, item: i32, all: bool },
     DrinkSlot {
         slot: usize,
@@ -924,6 +926,7 @@ pub struct World {
     pub swamp_tar: Option<crate::swamp_tar::Config>,
     pub herb_cleaning: Option<crate::herb_cleaning::Config>,
     pub item_packs: BTreeMap<i32, crate::item_packs::Rule>,
+    pub empty_containers: BTreeMap<i32,crate::container_emptying::Rule>,
     pub coin_pouches: BTreeMap<i32,crate::item_packs::PouchRule>,
     pub prayer: Option<crate::prayer::Config>,
     pub prayer_member_bones: std::collections::BTreeSet<i32>,
@@ -1029,6 +1032,7 @@ impl Default for World {
             slot_preserving_foods: Default::default(),
             potions: BTreeMap::new(),
             item_packs: BTreeMap::new(),
+            empty_containers: BTreeMap::new(),
             coin_pouches: BTreeMap::new(),
             milking: None,
             water_sources: None,
@@ -1976,6 +1980,7 @@ impl World {
                     .map_err(|_| ActionError::InvalidItem)?;
             }
             Action::OpenItemPack { slot, item } => self.open_item_pack(id, slot, item)?,
+            Action::EmptyContainer { slot, item } => self.empty_container(id,slot,item)?,
             Action::OpenCoinPouch { slot, item, all } => self.open_coin_pouch(id,slot,item,all)?,
             Action::CleanHerb { slot, item } => self.clean_herb(id, slot, item)?,
             Action::DrinkSlot {
