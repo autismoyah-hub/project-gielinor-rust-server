@@ -788,18 +788,20 @@ pub fn configure<B: AccountBackend>(
     let textiles=crate::content::fibre_textiles(n("obj"),&runtime.definitions).map_err(io::Error::other)?;
     let mut spinning=crate::content::spinning_wheel(n("obj"),n("loc"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)?;
     std::sync::Arc::make_mut(&mut spinning.recipes).extend(textiles.spinning);
-    spinning.locations.extend(variants.spinning);
+    spinning.locations.extend(variants.spinning.into_iter().map(|(id,op)|(id,Some(op))));
     for &id in spinning.locations.keys(){runtime.world.facility_crafting.insert(id,spinning.clone());}
     let mut weaving=crate::content::weaving_loom(n("obj"),n("loc"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)?;
     std::sync::Arc::make_mut(&mut weaving.recipes).extend(textiles.weaving);
-    weaving.locations.extend(variants.weaving);
+    weaving.locations.extend(variants.weaving.into_iter().map(|(id,op)|(id,Some(op))));
     for &id in weaving.locations.keys(){if runtime.world.facility_crafting.insert(id,weaving.clone()).is_some(){return Err(io::Error::other("Conflicting weaving facility"));}}
     let mut shaping=crate::content::pottery_shaping(n("obj"),n("loc"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)?;
-    shaping.locations.extend(variants.shaping);
+    shaping.locations.extend(variants.shaping.into_iter().map(|(id,op)|(id,Some(op))));
     for &id in shaping.locations.keys(){if runtime.world.facility_crafting.insert(id,shaping.clone()).is_some(){return Err(io::Error::other("Conflicting pottery shaping facility"));}}
     let mut firing=crate::content::pottery_firing(n("obj"),n("loc"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)?;
-    firing.locations.extend(variants.firing);
+    firing.locations.extend(variants.firing.into_iter().map(|(id,op)|(id,Some(op))));
     for &id in firing.locations.keys(){if runtime.world.facility_crafting.insert(id,firing.clone()).is_some(){return Err(io::Error::other("Conflicting pottery firing facility"));}}
+    let sand_pits=crate::content::sand_pits(n("obj"),n("loc"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)?;
+    for &id in sand_pits.locations.keys(){if runtime.world.facility_crafting.insert(id,sand_pits.clone()).is_some(){return Err(io::Error::other("Conflicting sand pit facility"));}}
     let glass=crate::content::glassblowing(n("obj"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)?;
     runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,1785,1775,gielinor_world::held_use::Handler::ToolCraftingChoices{recipes:std::sync::Arc::new(glass),cycle_ticks:3}).map_err(|e|io::Error::other(format!("Glassblowing registration: {e:?}")))?;
     runtime.configure_smelting_names(names)?;

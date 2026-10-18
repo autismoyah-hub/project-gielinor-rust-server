@@ -94,7 +94,7 @@ pub fn pottery_shaping(
         });
     }
     Ok(Config {
-        locations: [(14887, 1)].into(),
+        locations: [(14887, Some(1))].into(),
         recipes: std::sync::Arc::new(recipes),
         action: "shape",
         empty_message: "You don't have any suitable clay to shape.",

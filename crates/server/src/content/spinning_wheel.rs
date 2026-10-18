@@ -66,7 +66,7 @@ pub fn spinning_wheel(
         }
     }
     Ok(Config {
-        locations: [(14889, 2)].into(),
+        locations: [(14889, Some(2))].into(),
         recipes: std::sync::Arc::new(vec![
             Recipe {
                 input: 1737,
@@ -217,7 +217,7 @@ mod tests {
         let stat = [("crafting".into(), 12)].into();
         let config = spinning_wheel(&objects, &locations, &seq, &stat, &defs).unwrap();
         assert_eq!(config.recipes.len(), 6);
-        assert_eq!(config.locations[&14889], 2);
+        assert_eq!(config.locations[&14889], Some(2));
         let cat = defs.inventory_catalog();
         for (recipe, fine) in config
             .recipes

@@ -15,7 +15,8 @@ impl World {
             return;
         };
         let p = self.players.get(slot).unwrap();
-        if p.location_revision != Some(revision) || !config.locations.contains_key(&location.id) {
+        if p.location_revision != Some(revision) || !config.locations.contains_key(&location.id)
+            || (config.locations.get(&location.id)==Some(&None) && selected.is_none()) {
             return;
         }
         if let Some((selected, input)) = selected {
@@ -88,6 +89,7 @@ impl World {
         if !(1..=28).contains(&count)
             || self.locations.revision(request.location) != Some(request.revision)
             || !config.locations.contains_key(&request.location.id)
+            || (config.locations.get(&request.location.id)==Some(&None) && request.selected.is_none())
             || request.animation != config.animation
             || request.action != config.action
             || p.movement.coords != request.origin
@@ -286,7 +288,7 @@ mod tests {
         w.facility_crafting.insert(
             14889,
             Config {
-                locations: [(14889, 2)].into(),
+                locations: [(14889, Some(2))].into(),
                 recipes: std::sync::Arc::new(vec![
                     Recipe {
                         input: 1737,
@@ -601,7 +603,7 @@ mod grouped_tests {
         w.facility_crafting.insert(
             8717,
             Config {
-                locations: [(8717, 2)].into(),
+                locations: [(8717, Some(2))].into(),
                 recipes: std::sync::Arc::new(vec![recipe]),
                 action: "weave",
                 empty_message: "No suitable materials.",
@@ -830,7 +832,7 @@ mod pottery_tests {
             w.facility_crafting.insert(
                 14887,
                 Config {
-                    locations: [(14887, 1)].into(),
+                    locations: [(14887, Some(1))].into(),
                     recipes: std::sync::Arc::new(recipes),
                     action: "shape",
                     empty_message: "No clay.",
@@ -1012,7 +1014,7 @@ mod firing_tests {
         w.facility_crafting.insert(
             14888,
             Config {
-                locations: [(14888, 1)].into(),
+                locations: [(14888, Some(1))].into(),
                 recipes: std::sync::Arc::new(vec![recipe]),
                 action: "fire",
                 empty_message: "No unfired pottery.",
@@ -1179,5 +1181,36 @@ mod firing_tests {
                 before
             );
         }
+    }
+}
+
+#[cfg(test)]
+mod sand_pit_tests {
+    use super::*;
+    use crate::{facility_crafting::{Config,Recipe},inventory::Item,loc_collision::LocCollision};
+    struct NoDraw;
+    impl RandomSource for NoDraw{fn below(&mut self,_:u32)->u32{panic!("Sand filling must not draw RNG")}}
+    #[test]
+    fn sand_pit_material_only_reached_queue_preserves_zero_reward_and_late_captured_slot() {
+        let mut w=World::default();for x in(3192..3224).step_by(8){for z in(3192..3224).step_by(8){w.collision.allocate(x,z,0);}}
+        let loc=Location::new(CoordGrid::new(3201,3200,0).unwrap(),14890,10,0).unwrap();
+        let ty=LocCollision{width:2,length:2,block_walk:2,block_range:true,break_route_finding:false};
+        w.location_types.insert(14890,ty);w.locations.load(loc);crate::loc_collision::toggle(&mut w.collision,loc.coords,loc.shape,loc.angle,ty,true).unwrap();
+        let recipe=Recipe{input:1925,input_count:1,output:1783,output_count:1,level:1,xp_tenths:0,members:true,first_ticks:2,cycle_ticks:3,failure:None,label:"bucket of sand"};
+        w.facility_crafting.insert(14890,Config{locations:[(14890,None)].into(),recipes:std::sync::Arc::new(vec![recipe]),action:"fill",empty_message:"No empty buckets.",animation:895,location_animation:None});
+        for operation in 0..=5{assert!(!w.has_location_handler(14890,operation));}
+        let mut data=PlayerData::new(1,"Sand gatherer".into(),CoordGrid::new(3200,3200,0).unwrap(),Stats::default());data.xp_rate_hundreds=0;
+        for slot in 0..28{data.inventory.restore_slot(slot,Some(Item{id:if [19,3,11].contains(&slot){1925}else{1511},count:1,vars:0})).unwrap();}
+        w.held_use_types.insert(1925,crate::held_use::Type{id:1925,content:-1});w.queue_login(1,data).unwrap();w.tick().unwrap();let a=w.actors().next().unwrap();w.set_membership(a,true).unwrap();w.drain_events();
+        let stats=w.data(a).unwrap().stats.clone();
+        w.submit(a,Action::UseLocation{coords:loc.coords,id:loc.id,slot:19,object:1925,control:false}).unwrap();w.tick().unwrap();
+        let request=w.drain_events().into_iter().find_map(|e|if let WorldEvent::FacilityCraftingRequested{request,..}=e{Some(request)}else{None}).expect("Reached material use must request protected quantity");
+        assert_eq!(request.selected,Some((19,1925)));let mut no_selection=request.clone();no_selection.selected=None;assert!(w.start_facility_crafting(a,no_selection,0,3).is_err());
+        w.start_facility_crafting(a,request,0,3).unwrap();let start=w.clock.0;let mut commits=Vec::new();let mut count=0;
+        for _ in 0..12 {w.tick_with_random(&mut NoDraw).unwrap();let now=w.data(a).unwrap().inventory.slots().iter().flatten().filter(|i|i.id==1783).count();
+            if now!=count{commits.push(w.clock.0-1);count=now;if count==1{assert_eq!(w.data(a).unwrap().inventory.get(19).unwrap().id,1783);w.players.get_mut(a.slot as usize).unwrap().data.inventory.restore_slot(3,Some(Item{id:1511,count:1,vars:0})).unwrap();}}
+        }
+        assert_eq!(commits,vec![start+2]);assert_eq!(w.data(a).unwrap().inventory.get(11).unwrap().id,1925);assert_eq!(w.data(a).unwrap().stats,stats);
+        assert!(!w.drain_events().iter().any(|e|matches!(e,WorldEvent::SkillAdvanced{..})));
     }
 }

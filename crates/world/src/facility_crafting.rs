@@ -26,7 +26,8 @@ pub struct Recipe {
 }
 #[derive(Clone, Debug)]
 pub struct Config {
-    pub locations: BTreeMap<u32, u8>,
+    /// None is material-use-only; it never admits a fabricated normal operation.
+    pub locations: BTreeMap<u32, Option<u8>>,
     pub recipes: Arc<Vec<Recipe>>,
     pub action: &'static str,
     pub empty_message: &'static str,
@@ -148,8 +149,7 @@ pub fn prepare_group(
         || recipe.input == recipe.output
         || recipe.input < 0
         || recipe.output < 0
-        || recipe.xp_tenths == 0
-        || rate <= 0
+        || (recipe.xp_tenths > 0 && rate <= 0)
     {
         return Err(Error::Policy);
     }

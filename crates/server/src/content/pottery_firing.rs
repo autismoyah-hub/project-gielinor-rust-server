@@ -129,7 +129,7 @@ pub fn pottery_firing(
         });
     }
     Ok(Config {
-        locations: [(14888, 1)].into(),
+        locations: [(14888, Some(1))].into(),
         recipes: std::sync::Arc::new(recipes),
         action: "fire",
         empty_message: "You don't have any suitable unfired pottery.",

@@ -55,7 +55,7 @@ pub fn weaving_loom(
         }
     }
     Ok(Config {
-        locations: [(8717, 2)].into(),
+        locations: [(8717, Some(2))].into(),
         recipes: std::sync::Arc::new(vec![
             Recipe {
                 input: 1759,

@@ -4,7 +4,7 @@ use crate::{doors, loc_reach::Target, locations::Location, reach::Rectangle};
 impl World {
     /// Shared admission check for network sessions and headless actors.
     pub fn has_location_handler(&self, id: u32, operation: u8) -> bool {
-        if self.facility_crafting.get(&id).is_some_and(|c|c.locations.get(&id)==Some(&operation)){return true;}
+        if self.facility_crafting.get(&id).is_some_and(|c|c.locations.get(&id)==Some(&Some(operation))){return true;}
         if self
             .furnaces
             .get(&id)
@@ -397,7 +397,7 @@ impl World {
             }
             return;
         }
-        if self.facility_crafting.get(&loc.id).is_some_and(|c|c.locations.get(&loc.id)==Some(&operation)) {
+        if self.facility_crafting.get(&loc.id).is_some_and(|c|c.locations.get(&loc.id)==Some(&Some(operation))) {
             self.request_facility_crafting(slot,loc,None);return;
         }
         if let Some(&handler) = self.location_handlers.get(&(loc.id, operation)) {

@@ -2,6 +2,8 @@
 use gielinor_cache::{game::Definitions, symbols::Symbols};
 use gielinor_world::food::{self, Edible};
 use std::collections::BTreeMap;
+mod sand_pits;
+pub use sand_pits::sand_pits;
 mod sand_containers;
 pub use sand_containers::sand_containers;
 mod facility_locations;

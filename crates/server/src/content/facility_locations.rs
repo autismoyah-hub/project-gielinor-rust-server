@@ -120,7 +120,7 @@ mod tests {
         let mut world = World::default();
         for locations in [v.spinning, v.weaving, v.shaping, v.firing] {
             let config = Config {
-                locations,
+                locations: locations.into_iter().map(|(id,op)|(id,Some(op))).collect(),
                 recipes: std::sync::Arc::new(vec![]),
                 action: "test",
                 empty_message: "test",
@@ -128,6 +128,7 @@ mod tests {
                 location_animation: None,
             };
             for (&id, &operation) in &config.locations {
+                let operation=operation.unwrap();
                 world.facility_crafting.insert(id, config.clone());
                 assert!(world.has_location_handler(id, operation));
                 for wrong in [0, 3 - operation, 3, 4, 5] {
