@@ -3,9 +3,9 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0108 held Imcando hammer Swap; source [7d4e09b](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/7d4e09b6fdad766312ef55238e61c2730ea0b529). Focused2server and actual binaries pass477; independentV0–V4queued. Worn swapping is separate; native F2P Swap remains unverified.
+OR-MIG-0109 staged worn Imcando swapping; source [8bc76c7](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/8bc76c7c464daf1d4abdef4dd7f4172c270abda5). Corrected bounded worn3server/8world and actual binaries pass481. Original shared fixture failure preserved; no full-suite/native acceptance claim.
 
-108 units /118append-only records. Discovery3508={'not_yet_assessed': 2776, 'configuration': 660, 'framework_or_infrastructure': 18, 'eligible_gameplay_behavior': 54}, not completion percentages. Yak curing withheld for unattested quest stage; bow stringing absent from donor. Existing clay/PG-DEF retest dependencies remain open.
+109 units /119append-only records. Discovery3508={'not_yet_assessed': 2776, 'configuration': 660, 'framework_or_infrastructure': 18, 'eligible_gameplay_behavior': 54}, not completion percentages. Native worn/F2P/gear/lifecycle/reference remains queued. Yak quest-stage dependency and existing clay/PG-DEF retests remain open.
 <!-- forge-current:end -->
 
 
@@ -742,3 +742,14 @@ Focused001 PASS2server/0matchingworld477 unchanged hashes,26.58s compile/0.24s e
 Source worn4 swapping, slot collisions/full-bag/conditional re-equip and refresh remain the next separate behavior. Acquisition/repair/shards and other hammer uses are not claimed. Existing birdhouse/mould tool support is reused, not reimplemented or newly accepted. Native/lifecycle/reference V0-V4 queued. Queue118records108units; discovery3508={'not_yet_assessed': 2776, 'configuration': 660, 'framework_or_infrastructure': 18, 'eligible_gameplay_behavior': 54}, not completion percentages.
 
 Dependency inspection: Wiki Thakkrad15351159/cured yak-hide15184002 require partial Fremennik Isles progress for curing. The inspected source Thakkrad handler lacks that gate; no target unlock stage was attested, so no ungated yak service was registered. The donor skill snapshot has no bow-stringing module, so no bow-stringing OpenRune port is claimed. These investigations create no implementation IDs or false completed modules.
+
+
+## FORGE OR-MIG-0109 — staged worn Imcando swapping
+
+Source 8bc76c7c464daf1d4abdef4dd7f4172c270abda5 registers both worn4 hammer modes with exact param453 Swap and hand3/5/no-secondary validation. Actual mapped static worn raw2/current-item/event routing uses the existing nullable-field predicate moved to a generic helper; chemistry retains its original predicate/tests by re-export. New typed SwapWornItem action stages existing equipment::unequip, exact newly removed held conversion and optional equipment::equip. No parallel gear engine. All fallible operations finish before publication; existing worn_changed hooks observe intermediate removal before final equip.
+
+Temporary bag space is required, even if the other hand is free. Occupied target remains untouched and converted hammer stays held. Members with a free target re-equip; F2P converts to bag without a new equip to honor the Wiki requirement. Source callback attempts invEquip without an explicit member condition; effective original global F2P equip behavior/native parity remains unresolved. Stronger atomic credit/newly-removed-slot handling is an explicit adaptation. No XP, RNG or added delay.
+
+Shared001 retained FAIL:176server pass/491world pass/one new world assertion fail/one existing ignored,481 unchanged hashes,1m31s compile/35.20s server/20.22s world. Fixture invoked before processed_clock>0, so expected category variable transmissions were absent. Original fixture/hash manifest archived; only one extra logged-in tick inside cfg(test), all non-test bytes unchanged. Corrected bounded worn-focused002 PASS3server/8world481,24.95s compile/0.09s server/0.89s world. All28 direction/member/space/target/vars/credit/stale/delay cases and removal-category0 before equip17 pass. Actual binaries001 PASS481/18.01s. No final full-suite PASS is claimed. Decoded native-Close/worn chemistry/birdhouse cases pass but do not close independent PG-DEF-001 issue123.
+
+Shared guard j2:6643MiB/55.7%commit/2.5%CPU/2345pages-in/s with0.3ms disk; focused6334MiB/56.8%commit/17.6%CPU/2pages-in/s/1.1ms; bins6528MiB/55.8%commit/14.6%CPU/726pages-in/s/1.7ms. No resource deferral/OOM or other-agent process changes. New source preparation stopped on a wrong module anchor and an immutable old-evidence path; both were corrected without replacing prior artifacts. Native UI/event/appearance/combat/prayer/persistence/reference and F2P acceptance remain queued, acquisition/repair/other uses separate. Queue119records109units; discovery3508={'not_yet_assessed': 2776, 'configuration': 660, 'framework_or_infrastructure': 18, 'eligible_gameplay_behavior': 54}, not completion percentages.
