@@ -27,6 +27,7 @@ mod prayer_tab;
 mod shop;
 mod skill_multi;
 mod dough;
+mod tool_crafting;
 mod finished_potions;
 mod potion_upgrades;
 mod combat_mixing;
@@ -2842,6 +2843,7 @@ impl<B: AccountBackend> Runtime<B> {
                                             if let Some(choice)=self.world.take_combat_mixing_request(actor).map_err(|e|io::Error::other(format!("{e:?}")))? {
                                                 self.open_combat_mixing(actor,choice)?;
                                             }
+                                            if let Some(choice)=self.world.take_tool_crafting_request(actor).map_err(|e|io::Error::other(format!("{e:?}")))? {self.open_tool_crafting(actor,choice)?;}
                                             if let Some(choice)=self.world.take_dough_request(actor).map_err(|e|io::Error::other(format!("{e:?}")))? {
                                                 self.open_dough(actor,choice)?;
                                             }

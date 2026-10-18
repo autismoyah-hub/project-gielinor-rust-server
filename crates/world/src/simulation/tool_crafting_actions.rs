@@ -22,6 +22,7 @@ impl World {
             job,
             origin: p.movement.coords,
             last_movement: p.movement.last_movement,
+            batch: None,
         };
         // Input precedes queue processing, so compensate for this clock's decrement.
         p.queues
@@ -52,8 +53,10 @@ fn refusal(events: &mut Vec<WorldEvent>, actor: ActorId, error: Error) {
 }
 pub(super) fn complete(
     p: &mut Player,
+    queues: &mut crate::queues::Scheduler<Deferred>,
     pending: Pending,
     items: &crate::inventory::Catalog,
+
     tutorial: bool,
     events: &mut Vec<WorldEvent>,
 ) {
@@ -70,7 +73,7 @@ pub(super) fn complete(
     {
         return;
     }
-    match pending.job.prepare(
+    let committed = match pending.job.prepare(
         &p.data.inventory,
         items,
         &p.data.stats,
@@ -98,10 +101,55 @@ pub(super) fn complete(
             });
             events.push(WorldEvent::GameMessage {
                 actor: p.id,
-                text: format!("You cut the {}.", pending.job.recipe.name),
+                text: format!(
+                    "You {} the {}.",
+                    pending.job.recipe.action, pending.job.recipe.name
+                ),
             });
+            true
         }
-        Err(e) => refusal(events, p.id, e),
+        Err(e) => {
+            refusal(events, p.id, e);
+            false
+        }
+    };
+    if !committed || p.pending_logout {
+        return;
+    }
+    if let Some(mut batch) = pending.batch {
+        batch.index += 1;
+        if let Some(&input_slot) = batch.slots.get(batch.index) {
+            let job = Job {
+                input_slot,
+                ..pending.job
+            };
+            let delay = i32::from(batch.cycle_ticks) + 1;
+            let next = Pending {
+                job,
+                batch: Some(batch),
+                origin: pending.origin,
+                last_movement: pending.last_movement,
+            };
+            if queues
+                .add(
+                    QUEUE,
+                    crate::queues::Category::Weak,
+                    delay,
+                    Deferred::ToolCrafting(next),
+                )
+                .is_err()
+            {
+                events.push(WorldEvent::ActionRejected {
+                    actor: p.id,
+                    error: ActionError::QueueFull,
+                });
+            } else if let Some(sequence) = job.recipe.exchange.animation {
+                events.push(WorldEvent::PlayerCombatAnimation {
+                    actor: p.id,
+                    sequence,
+                });
+            }
+        }
     }
 }
 
@@ -183,6 +231,7 @@ mod tests {
                     xp_tenths: 1075,
                     ticks: 1,
                     name: "diamond",
+                    action: "cut",
                 }),
             )
             .unwrap();
@@ -255,6 +304,358 @@ mod tests {
                 "case{case}"
             );
             assert_eq!(w.data(a).unwrap().stats.fine_xp(12), 0, "case{case}");
+        }
+    }
+}
+
+impl World {
+    pub(super) fn request_tool_crafting(
+        &mut self,
+        actor: ActorId,
+        recipes: std::sync::Arc<Vec<crate::tool_crafting::Recipe>>,
+        cycle_ticks: u8,
+        request: crate::held_use::Request,
+    ) -> Result<(), ActionError> {
+        let p = self.players.get_mut(actor.slot as usize).unwrap();
+        let Some(choice) = crate::tool_crafting::Request::bind(
+            recipes,
+            cycle_ticks,
+            request,
+            &p.data.inventory,
+            p.movement.coords,
+            p.movement.last_movement,
+        ) else {
+            return Err(ActionError::InvalidItem);
+        };
+        if choice.recipes.iter().all(|r| r.exchange.members) && !p.member {
+            refusal(&mut self.events, actor, Error::Members);
+            return Ok(());
+        }
+        p.tool_crafting_request = Some(choice);
+        Ok(())
+    }
+    pub fn take_tool_crafting_request(
+        &mut self,
+        actor: ActorId,
+    ) -> Result<Option<crate::tool_crafting::Request>, ActionError> {
+        self.player(actor)?;
+        Ok(self
+            .players
+            .get_mut(actor.slot as usize)
+            .unwrap()
+            .tool_crafting_request
+            .take())
+    }
+    pub fn start_tool_crafting_choice(
+        &mut self,
+        actor: ActorId,
+        request: crate::tool_crafting::Request,
+        index: usize,
+        count: i32,
+    ) -> Result<(), ActionError> {
+        let p = self.player(actor)?;
+        if p.pending_logout || p.saving {
+            return Err(ActionError::LoggingOut);
+        }
+        if p.protection.access_protected(p.has_modal) {
+            return Err(ActionError::Protected);
+        }
+        if !(1..=28).contains(&count)
+            || p.movement.coords != request.origin
+            || p.movement.last_movement != request.last_movement
+            || request.cycle_ticks == 0
+        {
+            return Err(ActionError::InvalidItem);
+        }
+        let recipe = *request.recipes.get(index).ok_or(ActionError::InvalidItem)?;
+        let job = Job {
+            recipe,
+            tool_slot: request.tool_slot,
+            input_slot: request.input_slot,
+        };
+        if let Err(e) = job.prepare(
+            &p.data.inventory,
+            &self.object_types,
+            &p.data.stats,
+            p.data.xp_rate_hundreds,
+            p.member,
+        ) {
+            refusal(&mut self.events, actor, e);
+            return Ok(());
+        }
+        let mut slots = vec![request.input_slot];
+        for (slot, item) in p.data.inventory.slots().iter().enumerate() {
+            if slot != request.input_slot
+                && slot != request.tool_slot
+                && item
+                    .is_some_and(|i| i.id == recipe.exchange.input && i.count == 1 && i.vars == 0)
+            {
+                slots.push(slot);
+            }
+        }
+        slots.truncate(count as usize);
+        let p = self.players.get_mut(actor.slot as usize).unwrap();
+        p.begin_held_action();
+        p.queues.clear_weak();
+        let pending = Pending {
+            job,
+            origin: request.origin,
+            last_movement: request.last_movement,
+            batch: Some(crate::tool_crafting::Batch {
+                slots: std::sync::Arc::new(slots),
+                index: 0,
+                cycle_ticks: request.cycle_ticks,
+            }),
+        };
+        p.queues
+            .add(
+                QUEUE,
+                crate::queues::Category::Weak,
+                i32::from(recipe.ticks) + 1,
+                Deferred::ToolCrafting(pending),
+            )
+            .map_err(|_| ActionError::QueueFull)?;
+        if let Some(sequence) = recipe.exchange.animation {
+            self.events
+                .push(WorldEvent::PlayerCombatAnimation { actor, sequence });
+        }
+        Ok(())
+    }
+}
+
+#[cfg(test)]
+mod choice_tests {
+    use super::*;
+    use crate::{
+        held_use::{Handler, Request as Held, Scope, Type},
+        inventory::Item,
+        tool_crafting::{Recipe, Request},
+    };
+    fn fixture() -> (World, ActorId, Request) {
+        let mut w = World::default();
+        w.collision.allocate(3200, 3200, 0);
+        let mut stats = Stats::default();
+        stats.set_base(3, 10);
+        stats.set_current(3, 10);
+        stats.set_base(12, 33);
+        stats.set_current(12, 33);
+        let mut data = PlayerData::new(
+            1,
+            "Glass maker".into(),
+            CoordGrid::new(3200, 3200, 0).unwrap(),
+            stats,
+        );
+        data.xp_rate_hundreds = 125;
+        for slot in 0..28 {
+            data.inventory
+                .restore_slot(
+                    slot,
+                    Some(Item {
+                        id: 1511,
+                        count: 1,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+        }
+        for (slot, id) in [(0, 1785), (17, 1775), (3, 1775), (8, 1775)] {
+            data.inventory
+                .restore_slot(
+                    slot,
+                    Some(Item {
+                        id,
+                        count: 1,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+        }
+        w.queue_login(1, data).unwrap();
+        w.tick().unwrap();
+        let a = w.actors().next().unwrap();
+        w.set_membership(a, true).unwrap();
+        for id in [1785, 1775] {
+            w.held_use_types.insert(id, Type { id, content: -1 });
+        }
+        let recipes = std::sync::Arc::new(vec![
+            Recipe {
+                exchange: crate::grinding::Recipe {
+                    tool: 1785,
+                    input: 1775,
+                    output: 1919,
+                    members: true,
+                    animation: Some(884),
+                },
+                level: 1,
+                xp_tenths: 175,
+                ticks: 2,
+                name: "Beer glass",
+                action: "blow",
+            },
+            Recipe {
+                exchange: crate::grinding::Recipe {
+                    tool: 1785,
+                    input: 1775,
+                    output: 229,
+                    members: true,
+                    animation: Some(884),
+                },
+                level: 33,
+                xp_tenths: 350,
+                ticks: 2,
+                name: "Vial",
+                action: "blow",
+            },
+        ]);
+        w.held_use_handlers
+            .register(
+                Scope::Types,
+                1785,
+                1775,
+                Handler::ToolCraftingChoices {
+                    recipes,
+                    cycle_ticks: 3,
+                },
+            )
+            .unwrap();
+        let held = Held {
+            selected_slot: 17,
+            selected_id: 1775,
+            target_slot: 0,
+            target_id: 1785,
+        };
+        w.prepare_held_use(a, held).unwrap();
+        w.finish_held_use(a, held).unwrap();
+        let req = w.take_tool_crafting_request(a).unwrap().unwrap();
+        assert_eq!(req.available(&w.data(a).unwrap().inventory), 3);
+        assert_eq!(req.input_slot, 17);
+        (w, a, req)
+    }
+    fn count(w: &World, a: ActorId, id: i32) -> usize {
+        w.data(a)
+            .unwrap()
+            .inventory
+            .slots()
+            .iter()
+            .flatten()
+            .filter(|v| v.id == id)
+            .count()
+    }
+    #[test]
+    fn glass_choices_capture_selected_input_and_batch_at_two_then_three_clock_intervals() {
+        let (mut w, a, req) = fixture();
+        let start = w.clock.0;
+        w.start_tool_crafting_choice(a, req, 0, 28).unwrap();
+        let mut commits = Vec::new();
+        let mut old = 0;
+        for _ in 0..13 {
+            w.tick().unwrap();
+            let now = count(&w, a, 1919);
+            if now != old {
+                assert_eq!(now, old + 1);
+                commits.push(w.clock.0 - 1);
+                if now == 1 {
+                    assert_eq!(w.data(a).unwrap().inventory.get(17).unwrap().id, 1919);
+                    assert_eq!(w.data(a).unwrap().inventory.get(3).unwrap().id, 1775);
+                }
+            }
+            old = now;
+        }
+        assert_eq!(commits, vec![start + 2, start + 5, start + 8]);
+        assert_eq!(old, 3);
+        assert_eq!(w.data(a).unwrap().stats.fine_xp(12), 654);
+        assert_eq!(w.data(a).unwrap().inventory.get(0).unwrap().id, 1785);
+        assert_eq!(count(&w, a, 1775), 0);
+        assert_eq!(w.data(a).unwrap().inventory.free_space(), 0);
+    }
+    #[test]
+    fn glass_choice_invalid_indices_counts_and_live_eligibility_preserve_materials() {
+        for case in 0..5 {
+            let (mut w, a, req) = fixture();
+            let before = w.data(a).unwrap().inventory.clone();
+            match case {
+                0 => assert!(w.start_tool_crafting_choice(a, req, 2, 1).is_err()),
+                1 => assert!(w.start_tool_crafting_choice(a, req, 0, 0).is_err()),
+                2 => assert!(w.start_tool_crafting_choice(a, req, 0, 29).is_err()),
+                3 => {
+                    w.set_membership(a, false).unwrap();
+                    w.start_tool_crafting_choice(a, req, 0, 1).unwrap();
+                }
+                _ => {
+                    w.data_mut(a).unwrap().stats.set_current(12, 32);
+                    w.start_tool_crafting_choice(a, req, 1, 1).unwrap();
+                }
+            }
+            for _ in 0..5 {
+                w.tick().unwrap();
+            }
+            assert_eq!(w.data(a).unwrap().inventory, before, "case{case}");
+            assert_eq!(w.data(a).unwrap().stats.fine_xp(12), 0, "case{case}");
+        }
+    }
+    #[test]
+    fn glass_batch_later_stale_slot_membership_tool_and_close_stop_without_new_loss() {
+        for case in 0..4 {
+            let (mut w, a, req) = fixture();
+            w.start_tool_crafting_choice(a, req, 0, 3).unwrap();
+            for _ in 0..3 {
+                w.tick().unwrap();
+            }
+            assert_eq!(count(&w, a, 1919), 1);
+            match case {
+                0 => {
+                    w.data_mut(a)
+                        .unwrap()
+                        .inventory
+                        .restore_slot(3, None)
+                        .unwrap();
+                    w.data_mut(a)
+                        .unwrap()
+                        .inventory
+                        .restore_slot(
+                            5,
+                            Some(Item {
+                                id: 1775,
+                                count: 1,
+                                vars: 0,
+                            }),
+                        )
+                        .unwrap();
+                }
+                1 => w.set_membership(a, false).unwrap(),
+                2 => w
+                    .data_mut(a)
+                    .unwrap()
+                    .inventory
+                    .restore_slot(
+                        0,
+                        Some(Item {
+                            id: 1785,
+                            count: 1,
+                            vars: 9,
+                        }),
+                    )
+                    .unwrap(),
+                _ => {
+                    w.close_dialogs(a).unwrap();
+                }
+            }
+            let before = (
+                w.data(a).unwrap().inventory.clone(),
+                w.data(a).unwrap().stats.clone(),
+            );
+            for _ in 0..10 {
+                w.tick().unwrap();
+            }
+            assert_eq!(count(&w, a, 1919), 1, "case{case}");
+            assert_eq!(
+                (
+                    w.data(a).unwrap().inventory.clone(),
+                    w.data(a).unwrap().stats.clone()
+                ),
+                before,
+                "case{case}"
+            );
         }
     }
 }

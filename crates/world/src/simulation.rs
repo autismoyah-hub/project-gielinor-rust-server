@@ -241,6 +241,7 @@ enum LocationAction {
 }
 struct Player {
     dough_request: Option<crate::dough::Request>,
+    tool_crafting_request:Option<crate::tool_crafting::Request>,
     finished_potion_request: Option<crate::finished_potions::Request>,
     potion_upgrade_request: Option<crate::potion_upgrades::Request>,
     combat_mixing_request: Option<crate::combat_mixing::Request>,
@@ -328,6 +329,7 @@ impl Player {
         self.queues.remove_all(crate::swamp_tar::QUEUE);
         self.queues.remove_all(crate::dough::QUEUE);
         self.dough_request = None;
+        self.tool_crafting_request=None;
         self.finished_potion_request = None;
         self.queues.remove_all(crate::finished_potions::QUEUE);
         self.potion_upgrade_request = None;
@@ -2502,7 +2504,7 @@ impl World {
                                                 Deferred::Grinding(job) => {
                                                     grinding_actions::complete(p, queues, job, &self.object_types, self.clock.0, &mut self.events);
                                                 }
-                                                Deferred::ToolCrafting(pending) => {tool_crafting_actions::complete(p,pending,&self.object_types,self.tutorial_rules_completed_varp.is_some(),&mut self.events);}
+                                                Deferred::ToolCrafting(pending) => {tool_crafting_actions::complete(p,queues,pending,&self.object_types,self.tutorial_rules_completed_varp.is_some(),&mut self.events);}
                                                 Deferred::Pickpocket(job) => {
                                                     if let Some(config)=&self.pickpocket {
                                                         let target=job.target;
@@ -2991,6 +2993,7 @@ impl World {
                         let player = Player {
                             member: false,
                             dough_request: None,
+                            tool_crafting_request:None,
                             finished_potion_request: None,
                             potion_upgrade_request: None,
                             combat_mixing_request: None,

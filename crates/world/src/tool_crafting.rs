@@ -14,6 +14,7 @@ pub struct Recipe {
     pub xp_tenths: u16,
     pub ticks: u8,
     pub name: &'static str,
+    pub action: &'static str,
 }
 #[derive(Clone, Copy, Debug)]
 pub struct Job {
@@ -85,11 +86,12 @@ impl Job {
         })
     }
 }
-#[derive(Clone, Copy, Debug)]
+#[derive(Clone, Debug)]
 pub(crate) struct Pending {
     pub job: Job,
     pub origin: CoordGrid,
     pub last_movement: i32,
+    pub batch: Option<Batch>,
 }
 #[cfg(test)]
 mod tests {
@@ -143,6 +145,7 @@ mod tests {
                 xp_tenths: 675,
                 ticks: 2,
                 name: "emerald",
+                action: "cut",
             },
             tool_slot: 1,
             input_slot: 20,
@@ -184,4 +187,99 @@ mod tests {
             Err(Error::Exchange(_))
         ));
     }
+}
+
+/// Immutable registry-owned choices and captured slots, never client recipe data.
+#[derive(Clone, Debug)]
+pub struct Request {
+    pub recipes: std::sync::Arc<Vec<Recipe>>,
+    pub tool_slot: usize,
+    pub input_slot: usize,
+    pub origin: CoordGrid,
+    pub last_movement: i32,
+    pub cycle_ticks: u8,
+}
+impl Request {
+    pub fn bind(
+        recipes: std::sync::Arc<Vec<Recipe>>,
+        cycle_ticks: u8,
+        request: crate::held_use::Request,
+        inventory: &Inventory,
+        origin: CoordGrid,
+        last_movement: i32,
+    ) -> Option<Self> {
+        let first = *recipes.first()?;
+        if inventory.stack != StackType::Normal
+            || inventory.placeholders
+            || cycle_ticks == 0
+            || recipes.len() > 18
+            || recipes.iter().any(|r| {
+                r.exchange.tool != first.exchange.tool
+                    || r.exchange.input != first.exchange.input
+                    || r.ticks == 0
+                    || r.level == 0
+                    || r.xp_tenths == 0
+            })
+            || recipes
+                .iter()
+                .map(|r| r.exchange.output)
+                .collect::<std::collections::BTreeSet<_>>()
+                .len()
+                != recipes.len()
+        {
+            return None;
+        }
+        let (tool_slot, input_slot) = if request.selected_id == first.exchange.tool
+            && request.target_id == first.exchange.input
+        {
+            (request.selected_slot, request.target_slot)
+        } else if request.target_id == first.exchange.tool
+            && request.selected_id == first.exchange.input
+        {
+            (request.target_slot, request.selected_slot)
+        } else {
+            return None;
+        };
+        let (tool_slot, input_slot) = (
+            usize::try_from(tool_slot).ok()?,
+            usize::try_from(input_slot).ok()?,
+        );
+        if tool_slot == input_slot
+            || inventory
+                .get(tool_slot)
+                .is_none_or(|i| i.id != first.exchange.tool || i.count != 1 || i.vars != 0)
+            || inventory
+                .get(input_slot)
+                .is_none_or(|i| i.id != first.exchange.input || i.count != 1 || i.vars != 0)
+        {
+            return None;
+        }
+        Some(Self {
+            recipes,
+            tool_slot,
+            input_slot,
+            origin,
+            last_movement,
+            cycle_ticks,
+        })
+    }
+    pub fn available(&self, inventory: &Inventory) -> usize {
+        let Some(recipe) = self.recipes.first() else {
+            return 0;
+        };
+        let id = recipe.exchange.input;
+        inventory
+            .slots()
+            .iter()
+            .flatten()
+            .filter(|i| i.id == id && i.count == 1 && i.vars == 0)
+            .count()
+            .min(28)
+    }
+}
+#[derive(Clone, Debug)]
+pub(crate) struct Batch {
+    pub slots: std::sync::Arc<Vec<usize>>,
+    pub index: usize,
+    pub cycle_ticks: u8,
 }

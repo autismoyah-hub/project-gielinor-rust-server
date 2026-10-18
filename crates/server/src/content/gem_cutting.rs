@@ -116,6 +116,7 @@ pub fn gem_cutting(
             xp_tenths,
             ticks: 1,
             name: output_name,
+            action:"cut",
         });
     }
     Ok(out)

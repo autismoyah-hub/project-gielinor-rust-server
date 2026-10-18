@@ -45,6 +45,7 @@ impl<B: AccountBackend> Runtime<B> {
             .skill_multi = Some(SkillDialog {
             smelting: false,
             dough: None,
+            tool_crafting:None,
             finished_potion: None,
             potion_upgrade: None,
             combat_mixing: None,
@@ -136,6 +137,9 @@ impl<B: AccountBackend> Runtime<B> {
         let selection = dialog
             .dialog
             .select(dialog.presentation, component, pause.subcomponent);
+        if let (Some(request),Some(selection))=(dialog.tool_crafting,selection) {
+            if let Err(error)=self.world.start_tool_crafting_choice(actor,request,selection.index,selection.count) {self.events.push(Event::World(gielinor_world::simulation::WorldEvent::ActionRejected{actor,error}));}
+        }
         if let (Some(request),Some(selection))=(dialog.dough,selection) {
             if let Err(error)=self.world.start_dough(actor,request,selection.index,selection.count) {
                 self.events.push(Event::World(gielinor_world::simulation::WorldEvent::ActionRejected{actor,error}));

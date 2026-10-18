@@ -122,6 +122,7 @@ pub fn snelm_carving(
             xp_tenths: 325,
             ticks: 2,
             name,
+            action:"carve",
         });
     }
     Ok(recipes)
