@@ -7,6 +7,7 @@ impl World {
         timer: u16,
         random: &mut impl RandomSource,
     ) -> bool {
+        if timer==crate::wine::TIMER && self.wine.is_some(){return self.process_wine_ferment(slot,timers,random);}
         if self
             .tower_restore
             .as_ref()

@@ -740,7 +740,7 @@ impl Banking {
             .get(&item.id)
             .filter(|t| t.template != 0)
             .map_or(item.id, |t| t.link);
-        if bank.get(range.end).is_some_and(|obj| obj.id == unnoted) {
+        if priority.is_none() && bank.get(range.end).is_some_and(|obj| obj.id == unnoted) {
             self.tabs.sizes[tab] += 1;
         }
         Ok(result)
@@ -1116,5 +1116,21 @@ mod tests {
                 .collect::<Vec<_>>(),
             [1, 3, 4]
         );
+    }
+}
+
+#[cfg(test)]
+mod existing_stack_tab_tests {
+    use super::*;
+    use crate::inventory::{Item,StackType,Template};
+    #[test]
+    fn deposit_merging_at_next_tab_start_keeps_both_tab_spans_for_stack_and_placeholder(){
+        for placeholder in [false,true]{
+            let mut catalog=Catalog::default();catalog.placeholders.insert(1993,Template{link:19145,template:0});catalog.placeholders.insert(19145,Template{link:1993,template:14401});
+            let mut bank=Inventory::new(4,StackType::Always,true);bank.restore_slot(0,Some(Item{id:995,count:1,vars:0})).unwrap();bank.restore_slot(1,Some(Item{id:if placeholder{19145}else{1993},count:if placeholder{1}else{10},vars:0})).unwrap();
+            let mut held=Inventory::new(1,StackType::Normal,false);held.restore_slot(0,Some(Item{id:1993,count:1,vars:0})).unwrap();
+            let mut sizes=[0;10];sizes[0]=1;sizes[1]=1;let mut banking=Banking{tabs:Tabs::restore(sizes,4).unwrap(),selected:0,capacity:4,withdraw_notes:false,always_placehold:false};let tabs=banking.tabs.clone();
+            assert_eq!(banking.deposit(&mut held,&mut bank,&catalog,0,1,false).unwrap().completed,1);assert_eq!(banking.tabs,tabs);assert_eq!(banking.selected,0);assert_eq!(bank.get(0).unwrap().id,995);assert_eq!(bank.get(1),Some(Item{id:1993,count:if placeholder{1}else{11},vars:0}));assert!(bank.get(2).is_none());assert!(held.get(0).is_none());
+        }
     }
 }

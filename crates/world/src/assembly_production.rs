@@ -8,6 +8,7 @@ use crate::{
 pub(crate) const QUEUE: i32 = -2391015;
 #[derive(Clone, Debug)]
 pub struct Request {
+    pub(crate) wine: Option<crate::wine::Config>,
     pub recipe: PreciseRecipe,
     pub first_slot: usize,
     pub second_slot: usize,
@@ -58,6 +59,7 @@ impl Request {
             return None;
         }
         Some(Self {
+            wine: None,
             recipe,
             first_slot,
             second_slot,

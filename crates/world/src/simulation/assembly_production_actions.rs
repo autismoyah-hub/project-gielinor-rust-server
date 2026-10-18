@@ -9,7 +9,7 @@ impl World {
         held: crate::held_use::Request,
     ) -> Result<(), ActionError> {
         let p = self.player(actor)?;
-        let request = Request::bind(
+        let mut request = Request::bind(
             recipe,
             cycle_ticks,
             held,
@@ -18,6 +18,16 @@ impl World {
             p.movement.last_movement,
         )
         .ok_or(ActionError::InvalidItem)?;
+        request.wine = self.wine.filter(|w| w.matches(recipe));
+        if let Some(wine) = request.wine {
+            if let Err(error) = wine.mixing_allowed(&p.data, &self.object_types, self.clock.0) {
+                self.events.push(WorldEvent::LocationMessage {
+                    actor,
+                    message: error.message(),
+                });
+                return Ok(());
+            }
+        }
         if recipe.recipe.members && !p.member {
             self.events.push(WorldEvent::LocationMessage {
                 actor,
@@ -81,6 +91,13 @@ impl World {
         let jobs = request
             .jobs(&p.data.inventory, count as usize)
             .ok_or(ActionError::InvalidItem)?;
+        if request.wine != self.wine.filter(|w| w.matches(request.recipe)) {
+            return Err(ActionError::InvalidItem);
+        }
+        if let Some(wine) = request.wine {
+            wine.mixing_allowed(&p.data, &self.object_types, self.clock.0)
+                .map_err(|_| ActionError::InvalidItem)?;
+        }
         let first = *jobs.first().ok_or(ActionError::InvalidItem)?;
         if !crate::assembly::tools_available(
             request.recipe.required_tools,
@@ -173,6 +190,7 @@ pub(super) fn complete(
     queues: &mut crate::queues::Scheduler<Deferred>,
     mut pending: Pending,
     items: &crate::inventory::Catalog,
+    wine: Option<crate::wine::Config>,
     clock: i32,
     events: &mut Vec<WorldEvent>,
 ) {
@@ -192,6 +210,18 @@ pub(super) fn complete(
     let Some(&job) = pending.jobs.get(pending.index) else {
         return;
     };
+    if pending.request.wine != wine.filter(|w| w.matches(pending.request.recipe)) {
+        return;
+    }
+    if let Some(config) = pending.request.wine {
+        if let Err(error) = config.mixing_allowed(&p.data, items, clock) {
+            events.push(WorldEvent::LocationMessage {
+                actor: p.id,
+                message: error.message(),
+            });
+            return;
+        }
+    }
     let outcome = super::held_use_actions::complete_assembly_reward_with_tools(
         p,
         job,
@@ -204,6 +234,11 @@ pub(super) fn complete(
     );
     if outcome != crate::assembly::Outcome::Made || p.pending_logout {
         return;
+    }
+    if pending.request.wine.is_some() {
+        p.soft_timers
+            .schedule(crate::wine::TIMER, clock, crate::wine::INTERVAL)
+            .expect("validated wine deadline and positive interval");
     }
     pending.index += 1;
     pending.queued_at = clock;

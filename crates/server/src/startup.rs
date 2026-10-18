@@ -748,6 +748,10 @@ pub fn configure<B: AccountBackend>(
     cooking.member_inputs=cooking_member_inputs;
     cooking.tutorial=runtime.world.tutorial_shrimp.map(|c|c.progression);
     runtime.world.cooking=Some(cooking);
+    let wine=crate::content::plain_wine(n("obj"),n("seq"),n("spotanim"),n("timer"),&runtime.definitions).map_err(io::Error::other)?;
+    if runtime.world.banking.is_none(){return Err(io::Error::other("Configure shared banking before wine"));}
+    runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,wine.grapes,wine.water,gielinor_world::held_use::Handler::AssemblyProduction{recipe:wine.recipe(),cycle_ticks:2}).map_err(|e|io::Error::other(format!("Wine registration: {e:?}")))?;
+    runtime.world.wine=Some(wine);
     runtime.world.water_sources = Some(crate::content::water_sources(n("obj"), n("loc"), &runtime.definitions).map_err(io::Error::other)?);
     for recipe in crate::content::grinding(n("obj"),n("seq"),&runtime.definitions).map_err(io::Error::other)?.into_iter().chain([crate::content::nihil_grinding(n("obj"),n("seq"),&runtime.definitions).map_err(io::Error::other)?]) {
         runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.tool,recipe.input,gielinor_world::held_use::Handler::Grinding(recipe))
