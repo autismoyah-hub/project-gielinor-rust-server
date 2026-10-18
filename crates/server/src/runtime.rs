@@ -2113,6 +2113,9 @@ impl<B: AccountBackend> Runtime<B> {
                                 });
                             }
                         }
+                        // Native Close has no component ID. Cancel all current modal
+                        // continuations through ifClose before any later Resume packet.
+                        Ok(crate::gameplay::Request::Close) => self.close_dialogs_and_modals(actor)?,
                         Ok(crate::gameplay::Request::KeepAlive) => (),
                         Ok(crate::gameplay::Request::WindowStatus(status)) => {
                             self.world
