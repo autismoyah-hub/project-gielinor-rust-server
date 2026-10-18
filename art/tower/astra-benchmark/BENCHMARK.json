@@ -1,0 +1,2618 @@
+{
+  "title": "ASCENT \u2014 controlled artistic benchmark",
+  "date": "2026-10-17",
+  "revision": "239.1",
+  "base_server_commit": "28db23a3498bfc54fa285765508a27b2cc07cf00",
+  "native_client_source_commit": "23a94f75707f0503a9efe610fe99bfce5089b575",
+  "native_binary_sha256": "f6e6e12da1a80f7824c9d90a5254964fdc8d738298417c7dcd51e0793caea7cf",
+  "blender": "5.2.2 LTS / d13f752e3b9c",
+  "python": "3.13.7 (tags/v3.13.7:bcee1c3, Aug 14 2025, 14:15:11) [MSC v.1944 64 bit (AMD64)]",
+  "model_configuration": {
+    "requested_label": "Astra",
+    "actual_model_id": "Not exposed to this agent; cannot independently verify",
+    "thinking_level": "Not exposed to this agent; cannot independently verify",
+    "interpretation": "Do not attribute a model-specific gain without the client run configuration"
+  },
+  "tool_source_sha256": {
+    "adaptive_reconstruction.py": "047d9a0562c841398b1772e1aa392d923af18b7293adcefeb1d523af40db9a2f",
+    "advanced_examination.py": "d729c2994cbc72af1247a17e244dfbbcf0f6cd0560e0b2e817d61688757e8cbf",
+    "advanced_geometry.py": "0767291bef6ed9d1bd1d8f590593445c254fe506c433b33593ee43ac24b28087",
+    "advanced_motion.py": "a5897277eb5eb19999930b6a84a5fd50a9fc3946d64ac73a70475db608703e9c",
+    "alpha_trace.py": "5faca48b6877d2f07d63b880b4baf7f5e18d856ed66edf207027204ae5104b95",
+    "analyze.py": "15687ef5fda8537b96910492c703726c9ec94f8ab630265f1c2dc9114382c7cd",
+    "author_blender.py": "f041ab77850b151bbb04f803ade557916f800901c3f2014419370c95d6de3434",
+    "author_workflow.py": "5bcb2cd961857d5062ab67c7ae073089089ead49627e6634ce8b2ae29ce94f29",
+    "bench.py": "e6fdda00c0bc90f59ad042ac8c0bd22abcbc2dfaa951c7223804645f58fed229",
+    "blender_actions.py": "cf83bc9c480ab788c2a707d39f2276a980e4e72d19a97328188e689d8df335e7",
+    "blender_io.py": "9609b1540eef948ecc0f7b7cf722ff49361184356e7081dcea88c2f58d2141b9",
+    "build_mastery_review.py": "2d2ff11aa0dcd8d13569ce420a102e444857d32f3f6b3d0a05c78db698f4e6de",
+    "build_private_mastery_review.py": "dfd22e5c2905d480afa1afaa9577140ffef7a13214f300304e0123afa00da048",
+    "build_production_review.py": "44d687bf41c700a5a29bb751409cc77abb3f6eb39ca3af36a4262abd2bdb946c",
+    "build_review.py": "9274dec1e4244308bad10f830881a8d3782d703c620173cf1ea4723611f4e477",
+    "component_feedback.py": "937026f917554a0d965026bd53923a0b8a24ddf885ab41e1dc75cfab8f1e5250",
+    "component_review.py": "b48aa6686ab2019136e5544353b27a8f089afcc0eb1d96cc6b2f1a8a7fc362f1",
+    "construction.py": "02ecca37ce9f82ae555c54e8cd08f15c6a2cee4517bd128355504700eb67cc35",
+    "contact_diagnostics.py": "c951ffb13a6779936c90e8f510aa9883c909c6133564d0cb7fe60f730c506d8e",
+    "creature_families.py": "8c29a03dfbaa3ae6a7b6321be09b271b03d511b697b84b26aa4697e9141d33c4",
+    "development_retest.py": "1c2f8c7b3e058b81022a489d0ebbaff2e02f6cd49fba388edbab065bd1ddf637",
+    "diagnose.py": "b05250c77c6e3103faadb3c844b483fa40930f77f2eaf632cb80a813a6660b52",
+    "edit_blender.py": "58d37562e0c8de9e636b2fac4e37495a20aecd07deb55c2ccacf87ec74d2d82b",
+    "evaluate.py": "714518e869acfd172e0f26b87701d034d2b57132692a5eade7b6e5edde1bea92",
+    "fit_semantic.py": "0e1507298daf5164b9d97616a2bbc4fa8fce4ce6b3e5badb59fedc7f69c8e693",
+    "guided_refinement.py": "574122f6da06fb8003143f7b8953d827d6a05463df43c96e4cbd9f4e07b2fb1f",
+    "humanoid_families.py": "90fed99bbe30295e0eb43744b11c60aa29ce35cedbfcce2a986eb00030b2a995",
+    "instantiate.py": "16d58befef9bf59add28500a0ba8dcc3e130557f30c6cf4489214aff3fa908f4",
+    "iterate.py": "c09a68e8bd4bbba063d22476f1de3f9f43269ee9bbffa018ef111cd41ba7fc31",
+    "kinematics.py": "0598b9cb5223ca9c056a4a65a41fbaf542793f85a46269af10ae45b6912f241f",
+    "mastery_construction.py": "2af7f484228ad048b34216e537c54015543e4284714f474cb216da1f0cf87277",
+    "mastery_creatures.py": "0a554b32d9371ddc69f86591de4519a0689cd2544e71e6dcb017468fcacaf943",
+    "mesh_validation.py": "77f13f9f488aeeb6a0c1d1b16e9751201cabb6d0a3d819c03a1c6b12a4e0fc8d",
+    "motion.py": "2f98dbc9ef90214b463c907d9e8222d41fa438085660f58c4c59883244098846",
+    "motion_authoring.py": "a93794eec599ecde662a470617fce10096202ec307fa01b57b2c85213c572b10",
+    "motion_review.py": "2d4c042be0e3d23a7de39665fe83c38e9b625789a5ef4c92a37c82f094319f46",
+    "native_codec.py": "34590d7c8468bbcc2b8e37cf7d2db1a8e309f6767bbdfd0e5cb11c6e3ea34c12",
+    "original_boss_designs.py": "d47077b8dc4bf872efc84f32e180dc2c121ac72f8200507c6232aafee826ac63",
+    "original_designs.py": "4d335650e82d8c523705d1361f3609721f36d7cb3b59da3b2bfc386c5c50eb71",
+    "owned_motion_review.py": "d69275464944c7d15aad813deae172744fadbdfe738b4c05223e7a60158242d3",
+    "owned_textures.py": "b61a08377dad332589ae60d9a527debc904b97fdf5596db500e17cb78de9a88c",
+    "package_mastery.py": "48b98dfc7c9d2c75525ea6884e91ea88032545874e67c7e0fb58a507e94ee778",
+    "primitives.py": "833038525bdd1b588d92a1755de96bc2f6c2aa6cb26e5179ba6c7281a9a6a011",
+    "production_designs.py": "4dba733e6c8b788d0bea719428973b0a748e6dfe320f4c20e8cf3aa98d5c1a97",
+    "production_evaluate.py": "8ef458b363a70cf062c650be11f3b3e55ec5427319124db543bc7d1e9c277d1a",
+    "reconstruction_regions.py": "c6af4e949b891ce2160e8d6781a998ad712b38117fa56ef68f0ed4d298e74c93",
+    "refine.py": "f302793fa10ed77d0c848808cdd5b2f74075b9f353063372db928b4fb295b730",
+    "registry.py": "8086c3b5a4297de95d4cc8d258d098a1fb2faccd906c559a9d62f87563360d0c",
+    "review_static_mastery.py": "6bb0bb80d662aa876212d8ac1cae7714c86d034aa97fa78faef4b23293c26f61",
+    "rig_contracts.py": "fe0b73d2a48f893f206fe43a477784495d5b5711749eb2e8c68e89ceebe4db41",
+    "section_reconstruction.py": "0b7903c1f0024e75de67bc1fe5a480eb62ed377de5ab1396f84a0f0627eef22c",
+    "semantic_materials.py": "c5e63da2fef3354e5da5d8222dfd59c60ff4f0e2502f6e3e85c1452643bcaead",
+    "shape_families.py": "8dc05d5fdde656c9815d3fb17b48454520d06a628bcd5f76bf81257932d2857d",
+    "showcase.py": "7fa82862e7cd0c5aa7447ae8b9fc6de9c45c14d724a7e4f0a3f448adb43bec2d",
+    "spatial_materials.py": "81d06aa07812cbde134190a836d5d45d8927ba4e20a32bb4554d1a5d7a4a620c",
+    "templates.py": "009a7fa3176b6d56c1c4883c4bdde42852f3509bf69676da64016ac3d9beb186",
+    "test_advanced.py": "224be74800741cba7e1a48a2430d00c5d320ca273095f3b66c63047b00562464",
+    "test_mastery_reconstruction.py": "4f070df0856fb79889cc79a99667ac4e7208d4f206be62824e2199ac7d718581",
+    "test_production.py": "856a83dc93d40dd844dd9e4f27c789d3f803484c9b1809c11f43bd9f8b9219de",
+    "test_spatial_materials.py": "a363e209bfb5fa64ffd1e578021f51238157063f3f46fbbc33821b9a1140e3a2",
+    "test_workbench.py": "5f998be66a629864bd9d9c7527b7e22bbd0321ebfaab06617dc37b76ae80dd4d",
+    "verify_motion.py": "9f930b5349662c7050a38797e0fd4221548e0398a5b5eda3ce2f086083561bc3"
+  },
+  "benchmark_source_sha256": {
+    "designs.py": "7a383d77ecb1f4c174cdc59f7149b9b9847f17f02e5be9e7f3d337d11a2a21c4",
+    "publish.py": "73cbe9396d299bff88ee11191bb0d4af3776c0b2d0f3cf14d0a8215d21856b04",
+    "vignette.py": "3610200a95dfec491312dd908229a6c97a840d96d33c7f55ef5b9a4601d8f1d9"
+  },
+  "reference": {
+    "schema": 1,
+    "selector": "object:2097",
+    "name": "Anvil",
+    "revision": "239.1",
+    "model_ids": [
+      1251
+    ],
+    "definition_sha256": "91d6c990ea0650b7cf60f196166932b5c81372578d342aa36caf002c757632c5",
+    "sources": [
+      {
+        "model_id": 1251,
+        "payload_sha256": "b067e38ccf76813103b423327a674796f2fd39a08356ba34b65ed2b4df1c6b59",
+        "raw_group_sha256": "286a96b45832b13f6c496dd620d9b0a892cd9fbca4f2242e43fc54b52f0c007d"
+      }
+    ],
+    "world_bounds": [
+      [
+        -59.0,
+        -93.0,
+        -59.0
+      ],
+      [
+        59.0,
+        0.0,
+        59.0
+      ]
+    ],
+    "render_scale": [
+      128,
+      128,
+      128
+    ],
+    "ambient": 64,
+    "contrast": 768,
+    "camera": [
+      0.0,
+      -46.5,
+      0.0,
+      409.6
+    ],
+    "sequences": {},
+    "coordinate_contract": "native X,Y down,Z;128 units/tile;bind pose"
+  },
+  "assets": {
+    "A-anvil": {
+      "classification": "independent faithful reconstruction",
+      "identity": {
+        "model_id": 1101501,
+        "object_id": 63401,
+        "npc_id": null,
+        "sequence_base": null,
+        "skeleton_base": null,
+        "frame_group_base": null
+      },
+      "geometry": {
+        "vertices": 66,
+        "faces": 112,
+        "bounds": [
+          [
+            -56,
+            -64,
+            -24
+          ],
+          [
+            56,
+            0,
+            24
+          ]
+        ],
+        "colors": {
+          "28": 112
+        },
+        "render_types": {
+          "0": 112
+        },
+        "texture_faces": 0,
+        "texture_types": {},
+        "alpha_present": true,
+        "priorities_present": true,
+        "face_depth_present": true,
+        "skin_labels": {}
+      },
+      "model_sha256": "5fcd3b5ec1c3fc0eb9cc8955114a19b95f4c0633a3197fcf0bfa645e9b818cb6",
+      "blend_sha256": "72cfcb399d752b7c200d9839a8a6208e330693f0be7370fd89a173836c21b640",
+      "actions": {},
+      "native_motion_validation": [],
+      "refinement": "Independent reconstruction. Widened and offset the foot, lifted and blunted the horn, shortened the striking block and heel, and matched the restrained iron value. Remaining differences are bevels, smooth-normal shading and the waist transition. No cache mesh was imported."
+    },
+    "B-riveter": {
+      "classification": "original inspired asset",
+      "identity": {
+        "model_id": 1101502,
+        "object_id": 63402,
+        "npc_id": null,
+        "sequence_base": null,
+        "skeleton_base": null,
+        "frame_group_base": null
+      },
+      "geometry": {
+        "vertices": 320,
+        "faces": 552,
+        "bounds": [
+          [
+            -54,
+            -119,
+            -43
+          ],
+          [
+            72,
+            0,
+            43
+          ]
+        ],
+        "colors": {
+          "6430": 52,
+          "28": 284,
+          "39": 196,
+          "5658": 20
+        },
+        "render_types": {
+          "1": 72,
+          "0": 480
+        },
+        "texture_faces": 0,
+        "texture_types": {},
+        "alpha_present": true,
+        "priorities_present": true,
+        "face_depth_present": true,
+        "skin_labels": {}
+      },
+      "model_sha256": "42359ac6a154d9b9f60caeaafaee84fdb619223d86ff1a409162dedde83f597f",
+      "blend_sha256": "79a5cb20a0210961a0a36b34cff032e7f331cdeabea625b2f8cc6f071403861e",
+      "actions": {},
+      "native_motion_validation": [],
+      "refinement": "Original split-die riveting station. The open die slot, long bending horn, forged clamps and low timber bolster define its construction. Refinement reduced the timber saturation and added a seated rivet and hammer to explain use."
+    },
+    "C-stamp": {
+      "classification": "original industrial prop",
+      "identity": {
+        "model_id": 1101503,
+        "object_id": 63403,
+        "npc_id": null,
+        "sequence_base": null,
+        "skeleton_base": null,
+        "frame_group_base": null
+      },
+      "geometry": {
+        "vertices": 712,
+        "faces": 1288,
+        "bounds": [
+          [
+            -79,
+            -217,
+            -56
+          ],
+          [
+            78,
+            0,
+            56
+          ]
+        ],
+        "colors": {
+          "10278": 60,
+          "28": 660,
+          "39": 444,
+          "6430": 20,
+          "5658": 60,
+          "6698": 8,
+          "6678": 10,
+          "6687": 16,
+          "6695": 10
+        },
+        "render_types": {
+          "1": 140,
+          "0": 1148
+        },
+        "texture_faces": 0,
+        "texture_types": {},
+        "alpha_present": true,
+        "priorities_present": true,
+        "face_depth_present": true,
+        "skin_labels": {}
+      },
+      "model_sha256": "be47dd4ced345325c78b69087c1a286ebd6b286f90b065ec587eb9e6d1100d95",
+      "blend_sha256": "626a47d4b7f325a0f1261fcd606b81520aea23de8815e38558463fd6eb9cd0de",
+      "actions": {},
+      "native_motion_validation": [],
+      "refinement": "Original counterweighted screw press. Refinement connected the lever to the spindle, modeled a real helical thread and added guide springs and a billet. The first pass left the transmission unclear; the final load path reads through the open throat."
+    },
+    "D-sootsnout": {
+      "classification": "original creature",
+      "identity": {
+        "model_id": 1101504,
+        "object_id": 63404,
+        "npc_id": 60021,
+        "sequence_base": 45008,
+        "skeleton_base": 32008,
+        "frame_group_base": 40008
+      },
+      "geometry": {
+        "vertices": 604,
+        "faces": 944,
+        "bounds": [
+          [
+            -50,
+            -100,
+            -111
+          ],
+          [
+            50,
+            0,
+            106
+          ]
+        ],
+        "colors": {
+          "10278": 544,
+          "10301": 192,
+          "5653": 52,
+          "10293": 16,
+          "8": 116,
+          "5050": 24
+        },
+        "render_types": {
+          "1": 944
+        },
+        "texture_faces": 0,
+        "texture_types": {},
+        "alpha_present": true,
+        "priorities_present": true,
+        "face_depth_present": true,
+        "skin_labels": {
+          "0": {
+            "vertices": 50,
+            "bounds": [
+              [
+                -46,
+                -100,
+                -57
+              ],
+              [
+                46,
+                -18,
+                74
+              ]
+            ],
+            "centroid": [
+              -0.02,
+              -59.12,
+              -0.44
+            ]
+          },
+          "1": {
+            "vertices": 182,
+            "bounds": [
+              [
+                -36,
+                -94,
+                -111
+              ],
+              [
+                36,
+                -40,
+                -34
+              ]
+            ],
+            "centroid": [
+              0.01098901098901099,
+              -69.98901098901099,
+              -76.96703296703296
+            ]
+          },
+          "2": {
+            "vertices": 12,
+            "bounds": [
+              [
+                -50,
+                -62,
+                -61
+              ],
+              [
+                -7,
+                -25,
+                -25
+              ]
+            ],
+            "centroid": [
+              -30.916666666666668,
+              -41.916666666666664,
+              -46.5
+            ]
+          },
+          "3": {
+            "vertices": 10,
+            "bounds": [
+              [
+                -42,
+                -31,
+                -60
+              ],
+              [
+                -23,
+                -5,
+                -37
+              ]
+            ],
+            "centroid": [
+              -33.9,
+              -17.7,
+              -46.7
+            ]
+          },
+          "4": {
+            "vertices": 56,
+            "bounds": [
+              [
+                -48,
+                -8,
+                -62
+              ],
+              [
+                -20,
+                0,
+                -37
+              ]
+            ],
+            "centroid": [
+              -34.142857142857146,
+              -2.9285714285714284,
+              -53.160714285714285
+            ]
+          },
+          "5": {
+            "vertices": 12,
+            "bounds": [
+              [
+                -46,
+                -63,
+                31
+              ],
+              [
+                -11,
+                -25,
+                63
+              ]
+            ],
+            "centroid": [
+              -30.833333333333332,
+              -41.916666666666664,
+              50.5
+            ]
+          },
+          "6": {
+            "vertices": 10,
+            "bounds": [
+              [
+                -41,
+                -33,
+                37
+              ],
+              [
+                -25,
+                -4,
+                63
+              ]
+            ],
+            "centroid": [
+              -34.0,
+              -17.8,
+              48.7
+            ]
+          },
+          "7": {
+            "vertices": 56,
+            "bounds": [
+              [
+                -46,
+                -8,
+                23
+              ],
+              [
+                -23,
+                0,
+                46
+              ]
+            ],
+            "centroid": [
+              -34.285714285714285,
+              -2.9285714285714284,
+              31.428571428571427
+            ]
+          },
+          "8": {
+            "vertices": 12,
+            "bounds": [
+              [
+                7,
+                -62,
+                -61
+              ],
+              [
+                50,
+                -25,
+                -25
+              ]
+            ],
+            "centroid": [
+              30.916666666666668,
+              -41.916666666666664,
+              -46.5
+            ]
+          },
+          "9": {
+            "vertices": 10,
+            "bounds": [
+              [
+                25,
+                -32,
+                -60
+              ],
+              [
+                44,
+                -5,
+                -37
+              ]
+            ],
+            "centroid": [
+              33.8,
+              -17.7,
+              -46.7
+            ]
+          },
+          "10": {
+            "vertices": 56,
+            "bounds": [
+              [
+                20,
+                -8,
+                -62
+              ],
+              [
+                48,
+                0,
+                -37
+              ]
+            ],
+            "centroid": [
+              34.142857142857146,
+              -2.9285714285714284,
+              -53.160714285714285
+            ]
+          },
+          "11": {
+            "vertices": 12,
+            "bounds": [
+              [
+                11,
+                -63,
+                31
+              ],
+              [
+                46,
+                -25,
+                63
+              ]
+            ],
+            "centroid": [
+              30.833333333333332,
+              -41.916666666666664,
+              50.5
+            ]
+          },
+          "12": {
+            "vertices": 10,
+            "bounds": [
+              [
+                26,
+                -33,
+                37
+              ],
+              [
+                42,
+                -4,
+                63
+              ]
+            ],
+            "centroid": [
+              33.8,
+              -17.7,
+              48.7
+            ]
+          },
+          "13": {
+            "vertices": 56,
+            "bounds": [
+              [
+                23,
+                -8,
+                23
+              ],
+              [
+                46,
+                0,
+                46
+              ]
+            ],
+            "centroid": [
+              34.285714285714285,
+              -2.9285714285714284,
+              31.428571428571427
+            ]
+          },
+          "14": {
+            "vertices": 18,
+            "bounds": [
+              [
+                -15,
+                -49,
+                51
+              ],
+              [
+                16,
+                -14,
+                106
+              ]
+            ],
+            "centroid": [
+              6.0,
+              -27.0,
+              82.0
+            ]
+          },
+          "15": {
+            "vertices": 42,
+            "bounds": [
+              [
+                -23,
+                -50,
+                -101
+              ],
+              [
+                23,
+                -32,
+                -71
+              ]
+            ],
+            "centroid": [
+              -0.023809523809523808,
+              -44.30952380952381,
+              -89.04761904761905
+            ]
+          }
+        }
+      },
+      "model_sha256": "bc0e71fc35e9f5ab12894ced93f42281fd0a05e225ae2b1153f41a231c5649b5",
+      "blend_sha256": "f4c1511fb42d41601e36864eff5bafa03d8d817c18fbdd925c653db234545634",
+      "actions": {
+        "attack": {
+          "skeleton": 32010,
+          "frame_group": 40010,
+          "ticks": 42
+        },
+        "death": {
+          "skeleton": 32012,
+          "frame_group": 40012,
+          "ticks": 144
+        },
+        "hit": {
+          "skeleton": 32011,
+          "frame_group": 40011,
+          "ticks": 30
+        },
+        "idle": {
+          "skeleton": 32008,
+          "frame_group": 40008,
+          "ticks": 60
+        },
+        "walk": {
+          "skeleton": 32009,
+          "frame_group": 40009,
+          "ticks": 48
+        }
+      },
+      "native_motion_validation": [
+        {
+          "action": "attack",
+          "native_pose_samples": 43,
+          "max_coordinate_error_native": 0,
+          "sequence_id": 45008,
+          "skeleton_id": 32010,
+          "frame_group": 40010
+        },
+        {
+          "action": "death",
+          "native_pose_samples": 145,
+          "max_coordinate_error_native": 0,
+          "sequence_id": 45009,
+          "skeleton_id": 32012,
+          "frame_group": 40012
+        },
+        {
+          "action": "hit",
+          "native_pose_samples": 31,
+          "max_coordinate_error_native": 0,
+          "sequence_id": 45010,
+          "skeleton_id": 32011,
+          "frame_group": 40011
+        },
+        {
+          "action": "idle",
+          "native_pose_samples": 61,
+          "max_coordinate_error_native": 0,
+          "sequence_id": 45011,
+          "skeleton_id": 32008,
+          "frame_group": 40008
+        },
+        {
+          "action": "walk",
+          "native_pose_samples": 49,
+          "max_coordinate_error_native": 0,
+          "sequence_id": 45012,
+          "skeleton_id": 32009,
+          "frame_group": 40009
+        }
+      ],
+      "refinement": "Original Sootsnout ash burrower. Broadened the forepaws, thickened the forelegs, replaced peg-like ears with swept wedges and subdued the dorsal plates. Attack coils back with an open jaw before striking and recovering. Death folds the legs before the roll and holds the corpse."
+    }
+  },
+  "fidelity": {
+    "v1": {
+      "front": {
+        "iou": 0.7822096269351154,
+        "reference_bounds": [
+          239,
+          283,
+          458,
+          425
+        ],
+        "candidate_bounds": [
+          236,
+          284,
+          459,
+          417
+        ],
+        "width_delta_px": 4,
+        "height_delta_px": -9,
+        "profile_bands": [
+          {
+            "reference_height_fraction": 0.15,
+            "row": 304,
+            "reference_span": [
+              239,
+              458
+            ],
+            "candidate_span": [
+              237,
+              452
+            ],
+            "delta_width_px": -4
+          },
+          {
+            "reference_height_fraction": 0.3,
+            "row": 325,
+            "reference_span": [
+              239,
+              428
+            ],
+            "candidate_span": [
+              236,
+              427
+            ],
+            "delta_width_px": 2
+          },
+          {
+            "reference_height_fraction": 0.5,
+            "row": 354,
+            "reference_span": [
+              313,
+              371
+            ],
+            "candidate_span": [
+              298,
+              401
+            ],
+            "delta_width_px": 45
+          },
+          {
+            "reference_height_fraction": 0.7,
+            "row": 382,
+            "reference_span": [
+              282,
+              402
+            ],
+            "candidate_span": [
+              268,
+              431
+            ],
+            "delta_width_px": 43
+          },
+          {
+            "reference_height_fraction": 0.9,
+            "row": 410,
+            "reference_span": [
+              280,
+              403
+            ],
+            "candidate_span": [
+              265,
+              434
+            ],
+            "delta_width_px": 46
+          }
+        ],
+        "alignment": "raw matched camera; not fitted or rescaled to improve overlap",
+        "changed_pixels": 22618,
+        "mean_rgb_absolute_error": 0.8903838827838828
+      },
+      "side": {
+        "iou": 0.7313528077141237,
+        "reference_bounds": [
+          303,
+          258,
+          397,
+          428
+        ],
+        "candidate_bounds": [
+          316,
+          258,
+          384,
+          446
+        ],
+        "width_delta_px": -26,
+        "height_delta_px": 18,
+        "profile_bands": [
+          {
+            "reference_height_fraction": 0.15,
+            "row": 283,
+            "reference_span": [
+              319,
+              380
+            ],
+            "candidate_span": [
+              318,
+              381
+            ],
+            "delta_width_px": 2
+          },
+          {
+            "reference_height_fraction": 0.3,
+            "row": 309,
+            "reference_span": [
+              317,
+              382
+            ],
+            "candidate_span": [
+              316,
+              383
+            ],
+            "delta_width_px": 2
+          },
+          {
+            "reference_height_fraction": 0.5,
+            "row": 342,
+            "reference_span": [
+              317,
+              382
+            ],
+            "candidate_span": [
+              317,
+              382
+            ],
+            "delta_width_px": 0
+          },
+          {
+            "reference_height_fraction": 0.7,
+            "row": 376,
+            "reference_span": [
+              305,
+              394
+            ],
+            "candidate_span": [
+              321,
+              378
+            ],
+            "delta_width_px": -32
+          },
+          {
+            "reference_height_fraction": 0.9,
+            "row": 410,
+            "reference_span": [
+              303,
+              396
+            ],
+            "candidate_span": [
+              319,
+              380
+            ],
+            "delta_width_px": -32
+          }
+        ],
+        "alignment": "raw matched camera; not fitted or rescaled to improve overlap",
+        "changed_pixels": 13794,
+        "mean_rgb_absolute_error": 0.6385465201465201
+      },
+      "rear": {
+        "iou": 0.782709884901828,
+        "reference_bounds": [
+          242,
+          283,
+          461,
+          425
+        ],
+        "candidate_bounds": [
+          241,
+          284,
+          464,
+          417
+        ],
+        "width_delta_px": 4,
+        "height_delta_px": -9,
+        "profile_bands": [
+          {
+            "reference_height_fraction": 0.15,
+            "row": 304,
+            "reference_span": [
+              242,
+              460
+            ],
+            "candidate_span": [
+              248,
+              462
+            ],
+            "delta_width_px": -4
+          },
+          {
+            "reference_height_fraction": 0.3,
+            "row": 325,
+            "reference_span": [
+              271,
+              460
+            ],
+            "candidate_span": [
+              272,
+              463
+            ],
+            "delta_width_px": 2
+          },
+          {
+            "reference_height_fraction": 0.5,
+            "row": 354,
+            "reference_span": [
+              328,
+              386
+            ],
+            "candidate_span": [
+              298,
+              401
+            ],
+            "delta_width_px": 45
+          },
+          {
+            "reference_height_fraction": 0.7,
+            "row": 382,
+            "reference_span": [
+              297,
+              417
+            ],
+            "candidate_span": [
+              268,
+              431
+            ],
+            "delta_width_px": 43
+          },
+          {
+            "reference_height_fraction": 0.9,
+            "row": 410,
+            "reference_span": [
+              296,
+              419
+            ],
+            "candidate_span": [
+              265,
+              434
+            ],
+            "delta_width_px": 46
+          }
+        ],
+        "alignment": "raw matched camera; not fitted or rescaled to improve overlap",
+        "changed_pixels": 21966,
+        "mean_rgb_absolute_error": 0.7330798534798535
+      },
+      "quarter": {
+        "iou": 0.7982891204441006,
+        "reference_bounds": [
+          250,
+          264,
+          448,
+          437
+        ],
+        "candidate_bounds": [
+          251,
+          266,
+          444,
+          441
+        ],
+        "width_delta_px": -5,
+        "height_delta_px": 2,
+        "profile_bands": [
+          {
+            "reference_height_fraction": 0.15,
+            "row": 290,
+            "reference_span": [
+              250,
+              386
+            ],
+            "candidate_span": [
+              251,
+              381
+            ],
+            "delta_width_px": -6
+          },
+          {
+            "reference_height_fraction": 0.3,
+            "row": 316,
+            "reference_span": [
+              251,
+              431
+            ],
+            "candidate_span": [
+              280,
+              419
+            ],
+            "delta_width_px": -41
+          },
+          {
+            "reference_height_fraction": 0.5,
+            "row": 350,
+            "reference_span": [
+              314,
+              393
+            ],
+            "candidate_span": [
+              300,
+              405
+            ],
+            "delta_width_px": 26
+          },
+          {
+            "reference_height_fraction": 0.7,
+            "row": 384,
+            "reference_span": [
+              271,
+              417
+            ],
+            "candidate_span": [
+              269,
+              407
+            ],
+            "delta_width_px": -8
+          },
+          {
+            "reference_height_fraction": 0.9,
+            "row": 419,
+            "reference_span": [
+              319,
+              390
+            ],
+            "candidate_span": [
+              345,
+              429
+            ],
+            "delta_width_px": 13
+          }
+        ],
+        "alignment": "raw matched camera; not fitted or rescaled to improve overlap",
+        "changed_pixels": 21023,
+        "mean_rgb_absolute_error": 0.7898373626373626
+      },
+      "gameplay": {
+        "iou": 0.7469135802469136,
+        "reference_bounds": [
+          373,
+          246,
+          391,
+          260
+        ],
+        "candidate_bounds": [
+          373,
+          246,
+          390,
+          259
+        ],
+        "width_delta_px": -1,
+        "height_delta_px": -1,
+        "profile_bands": [
+          {
+            "reference_height_fraction": 0.15,
+            "row": 248,
+            "reference_span": [
+              373,
+              383
+            ],
+            "candidate_span": [
+              373,
+              383
+            ],
+            "delta_width_px": 0
+          },
+          {
+            "reference_height_fraction": 0.3,
+            "row": 250,
+            "reference_span": [
+              373,
+              387
+            ],
+            "candidate_span": [
+              373,
+              386
+            ],
+            "delta_width_px": -1
+          },
+          {
+            "reference_height_fraction": 0.5,
+            "row": 252,
+            "reference_span": [
+              376,
+              391
+            ],
+            "candidate_span": [
+              375,
+              389
+            ],
+            "delta_width_px": -1
+          },
+          {
+            "reference_height_fraction": 0.7,
+            "row": 255,
+            "reference_span": [
+              375,
+              386
+            ],
+            "candidate_span": [
+              374,
+              389
+            ],
+            "delta_width_px": 4
+          },
+          {
+            "reference_height_fraction": 0.9,
+            "row": 258,
+            "reference_span": [
+              378,
+              385
+            ],
+            "candidate_span": [
+              384,
+              388
+            ],
+            "delta_width_px": -3
+          }
+        ],
+        "alignment": "raw matched camera; not fitted or rescaled to improve overlap",
+        "changed_pixels": 160,
+        "mean_rgb_absolute_error": 0.0097220597980743
+      }
+    },
+    "v2": {
+      "front": {
+        "iou": 0.7885904550499445,
+        "reference_bounds": [
+          239,
+          283,
+          458,
+          425
+        ],
+        "candidate_bounds": [
+          239,
+          284,
+          457,
+          425
+        ],
+        "width_delta_px": -1,
+        "height_delta_px": -1,
+        "profile_bands": [
+          {
+            "reference_height_fraction": 0.15,
+            "row": 304,
+            "reference_span": [
+              239,
+              458
+            ],
+            "candidate_span": [
+              243,
+              409
+            ],
+            "delta_width_px": -53
+          },
+          {
+            "reference_height_fraction": 0.3,
+            "row": 325,
+            "reference_span": [
+              239,
+              428
+            ],
+            "candidate_span": [
+              239,
+              456
+            ],
+            "delta_width_px": 28
+          },
+          {
+            "reference_height_fraction": 0.5,
+            "row": 354,
+            "reference_span": [
+              313,
+              371
+            ],
+            "candidate_span": [
+              241,
+              404
+            ],
+            "delta_width_px": 105
+          },
+          {
+            "reference_height_fraction": 0.7,
+            "row": 382,
+            "reference_span": [
+              282,
+              402
+            ],
+            "candidate_span": [
+              304,
+              395
+            ],
+            "delta_width_px": -29
+          },
+          {
+            "reference_height_fraction": 0.9,
+            "row": 410,
+            "reference_span": [
+              280,
+              403
+            ],
+            "candidate_span": [
+              302,
+              398
+            ],
+            "delta_width_px": -27
+          }
+        ],
+        "alignment": "raw matched camera; not fitted or rescaled to improve overlap",
+        "changed_pixels": 20796,
+        "mean_rgb_absolute_error": 0.5783802197802198
+      },
+      "side": {
+        "iou": 0.9303362001563722,
+        "reference_bounds": [
+          303,
+          258,
+          397,
+          428
+        ],
+        "candidate_bounds": [
+          304,
+          259,
+          396,
+          425
+        ],
+        "width_delta_px": -2,
+        "height_delta_px": -4,
+        "profile_bands": [
+          {
+            "reference_height_fraction": 0.15,
+            "row": 283,
+            "reference_span": [
+              319,
+              380
+            ],
+            "candidate_span": [
+              320,
+              379
+            ],
+            "delta_width_px": -2
+          },
+          {
+            "reference_height_fraction": 0.3,
+            "row": 309,
+            "reference_span": [
+              317,
+              382
+            ],
+            "candidate_span": [
+              319,
+              380
+            ],
+            "delta_width_px": -4
+          },
+          {
+            "reference_height_fraction": 0.5,
+            "row": 342,
+            "reference_span": [
+              317,
+              382
+            ],
+            "candidate_span": [
+              318,
+              382
+            ],
+            "delta_width_px": -1
+          },
+          {
+            "reference_height_fraction": 0.7,
+            "row": 376,
+            "reference_span": [
+              305,
+              394
+            ],
+            "candidate_span": [
+              306,
+              393
+            ],
+            "delta_width_px": -2
+          },
+          {
+            "reference_height_fraction": 0.9,
+            "row": 410,
+            "reference_span": [
+              303,
+              396
+            ],
+            "candidate_span": [
+              304,
+              396
+            ],
+            "delta_width_px": -1
+          }
+        ],
+        "alignment": "raw matched camera; not fitted or rescaled to improve overlap",
+        "changed_pixels": 11173,
+        "mean_rgb_absolute_error": 0.27103589743589745
+      },
+      "rear": {
+        "iou": 0.7891579648966897,
+        "reference_bounds": [
+          242,
+          283,
+          461,
+          425
+        ],
+        "candidate_bounds": [
+          243,
+          284,
+          461,
+          425
+        ],
+        "width_delta_px": -1,
+        "height_delta_px": -1,
+        "profile_bands": [
+          {
+            "reference_height_fraction": 0.15,
+            "row": 304,
+            "reference_span": [
+              242,
+              460
+            ],
+            "candidate_span": [
+              290,
+              456
+            ],
+            "delta_width_px": -52
+          },
+          {
+            "reference_height_fraction": 0.3,
+            "row": 325,
+            "reference_span": [
+              271,
+              460
+            ],
+            "candidate_span": [
+              243,
+              460
+            ],
+            "delta_width_px": 28
+          },
+          {
+            "reference_height_fraction": 0.5,
+            "row": 354,
+            "reference_span": [
+              328,
+              386
+            ],
+            "candidate_span": [
+              295,
+              458
+            ],
+            "delta_width_px": 105
+          },
+          {
+            "reference_height_fraction": 0.7,
+            "row": 382,
+            "reference_span": [
+              297,
+              417
+            ],
+            "candidate_span": [
+              304,
+              395
+            ],
+            "delta_width_px": -29
+          },
+          {
+            "reference_height_fraction": 0.9,
+            "row": 410,
+            "reference_span": [
+              296,
+              419
+            ],
+            "candidate_span": [
+              302,
+              398
+            ],
+            "delta_width_px": -27
+          }
+        ],
+        "alignment": "raw matched camera; not fitted or rescaled to improve overlap",
+        "changed_pixels": 20643,
+        "mean_rgb_absolute_error": 0.4975538461538462
+      },
+      "quarter": {
+        "iou": 0.8124416215206426,
+        "reference_bounds": [
+          250,
+          264,
+          448,
+          437
+        ],
+        "candidate_bounds": [
+          249,
+          266,
+          445,
+          435
+        ],
+        "width_delta_px": -2,
+        "height_delta_px": -4,
+        "profile_bands": [
+          {
+            "reference_height_fraction": 0.15,
+            "row": 290,
+            "reference_span": [
+              250,
+              386
+            ],
+            "candidate_span": [
+              250,
+              377
+            ],
+            "delta_width_px": -9
+          },
+          {
+            "reference_height_fraction": 0.3,
+            "row": 316,
+            "reference_span": [
+              251,
+              431
+            ],
+            "candidate_span": [
+              250,
+              411
+            ],
+            "delta_width_px": -19
+          },
+          {
+            "reference_height_fraction": 0.5,
+            "row": 350,
+            "reference_span": [
+              314,
+              393
+            ],
+            "candidate_span": [
+              311,
+              443
+            ],
+            "delta_width_px": 53
+          },
+          {
+            "reference_height_fraction": 0.7,
+            "row": 384,
+            "reference_span": [
+              271,
+              417
+            ],
+            "candidate_span": [
+              289,
+              412
+            ],
+            "delta_width_px": -23
+          },
+          {
+            "reference_height_fraction": 0.9,
+            "row": 419,
+            "reference_span": [
+              319,
+              390
+            ],
+            "candidate_span": [
+              319,
+              382
+            ],
+            "delta_width_px": -8
+          }
+        ],
+        "alignment": "raw matched camera; not fitted or rescaled to improve overlap",
+        "changed_pixels": 19414,
+        "mean_rgb_absolute_error": 0.515981684981685
+      },
+      "gameplay": {
+        "iou": 0.7972972972972973,
+        "reference_bounds": [
+          373,
+          246,
+          391,
+          260
+        ],
+        "candidate_bounds": [
+          373,
+          246,
+          390,
+          259
+        ],
+        "width_delta_px": -1,
+        "height_delta_px": -1,
+        "profile_bands": [
+          {
+            "reference_height_fraction": 0.15,
+            "row": 248,
+            "reference_span": [
+              373,
+              383
+            ],
+            "candidate_span": [
+              373,
+              382
+            ],
+            "delta_width_px": -1
+          },
+          {
+            "reference_height_fraction": 0.3,
+            "row": 250,
+            "reference_span": [
+              373,
+              387
+            ],
+            "candidate_span": [
+              373,
+              387
+            ],
+            "delta_width_px": 0
+          },
+          {
+            "reference_height_fraction": 0.5,
+            "row": 252,
+            "reference_span": [
+              376,
+              391
+            ],
+            "candidate_span": [
+              373,
+              388
+            ],
+            "delta_width_px": 0
+          },
+          {
+            "reference_height_fraction": 0.7,
+            "row": 255,
+            "reference_span": [
+              375,
+              386
+            ],
+            "candidate_span": [
+              377,
+              386
+            ],
+            "delta_width_px": -2
+          },
+          {
+            "reference_height_fraction": 0.9,
+            "row": 258,
+            "reference_span": [
+              378,
+              385
+            ],
+            "candidate_span": [
+              380,
+              384
+            ],
+            "delta_width_px": -3
+          }
+        ],
+        "alignment": "raw matched camera; not fitted or rescaled to improve overlap",
+        "changed_pixels": 142,
+        "mean_rgb_absolute_error": 0.005181113753210584
+      }
+    },
+    "v3": {
+      "front": {
+        "iou": 0.9297688536072846,
+        "reference_bounds": [
+          239,
+          283,
+          458,
+          425
+        ],
+        "candidate_bounds": [
+          239,
+          284,
+          458,
+          425
+        ],
+        "width_delta_px": 0,
+        "height_delta_px": -1,
+        "profile_bands": [
+          {
+            "reference_height_fraction": 0.15,
+            "row": 304,
+            "reference_span": [
+              239,
+              458
+            ],
+            "candidate_span": [
+              243,
+              458
+            ],
+            "delta_width_px": -4
+          },
+          {
+            "reference_height_fraction": 0.3,
+            "row": 325,
+            "reference_span": [
+              239,
+              428
+            ],
+            "candidate_span": [
+              239,
+              408
+            ],
+            "delta_width_px": -20
+          },
+          {
+            "reference_height_fraction": 0.5,
+            "row": 354,
+            "reference_span": [
+              313,
+              371
+            ],
+            "candidate_span": [
+              286,
+              399
+            ],
+            "delta_width_px": 55
+          },
+          {
+            "reference_height_fraction": 0.7,
+            "row": 382,
+            "reference_span": [
+              282,
+              402
+            ],
+            "candidate_span": [
+              282,
+              402
+            ],
+            "delta_width_px": 0
+          },
+          {
+            "reference_height_fraction": 0.9,
+            "row": 410,
+            "reference_span": [
+              280,
+              403
+            ],
+            "candidate_span": [
+              280,
+              403
+            ],
+            "delta_width_px": 0
+          }
+        ],
+        "alignment": "raw matched camera; not fitted or rescaled to improve overlap",
+        "changed_pixels": 18790,
+        "mean_rgb_absolute_error": 0.38174212454212453
+      },
+      "side": {
+        "iou": 0.9751027689443884,
+        "reference_bounds": [
+          303,
+          258,
+          397,
+          428
+        ],
+        "candidate_bounds": [
+          303,
+          259,
+          397,
+          428
+        ],
+        "width_delta_px": 0,
+        "height_delta_px": -1,
+        "profile_bands": [
+          {
+            "reference_height_fraction": 0.15,
+            "row": 283,
+            "reference_span": [
+              319,
+              380
+            ],
+            "candidate_span": [
+              320,
+              379
+            ],
+            "delta_width_px": -2
+          },
+          {
+            "reference_height_fraction": 0.3,
+            "row": 309,
+            "reference_span": [
+              317,
+              382
+            ],
+            "candidate_span": [
+              319,
+              380
+            ],
+            "delta_width_px": -4
+          },
+          {
+            "reference_height_fraction": 0.5,
+            "row": 342,
+            "reference_span": [
+              317,
+              382
+            ],
+            "candidate_span": [
+              317,
+              382
+            ],
+            "delta_width_px": 0
+          },
+          {
+            "reference_height_fraction": 0.7,
+            "row": 376,
+            "reference_span": [
+              305,
+              394
+            ],
+            "candidate_span": [
+              305,
+              394
+            ],
+            "delta_width_px": 0
+          },
+          {
+            "reference_height_fraction": 0.9,
+            "row": 410,
+            "reference_span": [
+              303,
+              396
+            ],
+            "candidate_span": [
+              303,
+              396
+            ],
+            "delta_width_px": 0
+          }
+        ],
+        "alignment": "raw matched camera; not fitted or rescaled to improve overlap",
+        "changed_pixels": 10100,
+        "mean_rgb_absolute_error": 0.1973201465201465
+      },
+      "rear": {
+        "iou": 0.9305639923368066,
+        "reference_bounds": [
+          242,
+          283,
+          461,
+          425
+        ],
+        "candidate_bounds": [
+          242,
+          284,
+          461,
+          425
+        ],
+        "width_delta_px": 0,
+        "height_delta_px": -1,
+        "profile_bands": [
+          {
+            "reference_height_fraction": 0.15,
+            "row": 304,
+            "reference_span": [
+              242,
+              460
+            ],
+            "candidate_span": [
+              242,
+              456
+            ],
+            "delta_width_px": -4
+          },
+          {
+            "reference_height_fraction": 0.3,
+            "row": 325,
+            "reference_span": [
+              271,
+              460
+            ],
+            "candidate_span": [
+              288,
+              460
+            ],
+            "delta_width_px": -17
+          },
+          {
+            "reference_height_fraction": 0.5,
+            "row": 354,
+            "reference_span": [
+              328,
+              386
+            ],
+            "candidate_span": [
+              300,
+              413
+            ],
+            "delta_width_px": 55
+          },
+          {
+            "reference_height_fraction": 0.7,
+            "row": 382,
+            "reference_span": [
+              297,
+              417
+            ],
+            "candidate_span": [
+              297,
+              417
+            ],
+            "delta_width_px": 0
+          },
+          {
+            "reference_height_fraction": 0.9,
+            "row": 410,
+            "reference_span": [
+              296,
+              419
+            ],
+            "candidate_span": [
+              296,
+              419
+            ],
+            "delta_width_px": 0
+          }
+        ],
+        "alignment": "raw matched camera; not fitted or rescaled to improve overlap",
+        "changed_pixels": 16109,
+        "mean_rgb_absolute_error": 0.3355150183150183
+      },
+      "quarter": {
+        "iou": 0.9309041573795911,
+        "reference_bounds": [
+          250,
+          264,
+          448,
+          437
+        ],
+        "candidate_bounds": [
+          249,
+          266,
+          446,
+          437
+        ],
+        "width_delta_px": -1,
+        "height_delta_px": -2,
+        "profile_bands": [
+          {
+            "reference_height_fraction": 0.15,
+            "row": 290,
+            "reference_span": [
+              250,
+              386
+            ],
+            "candidate_span": [
+              250,
+              377
+            ],
+            "delta_width_px": -9
+          },
+          {
+            "reference_height_fraction": 0.3,
+            "row": 316,
+            "reference_span": [
+              251,
+              431
+            ],
+            "candidate_span": [
+              250,
+              419
+            ],
+            "delta_width_px": -11
+          },
+          {
+            "reference_height_fraction": 0.5,
+            "row": 350,
+            "reference_span": [
+              314,
+              393
+            ],
+            "candidate_span": [
+              299,
+              393
+            ],
+            "delta_width_px": 15
+          },
+          {
+            "reference_height_fraction": 0.7,
+            "row": 384,
+            "reference_span": [
+              271,
+              417
+            ],
+            "candidate_span": [
+              271,
+              417
+            ],
+            "delta_width_px": 0
+          },
+          {
+            "reference_height_fraction": 0.9,
+            "row": 419,
+            "reference_span": [
+              319,
+              390
+            ],
+            "candidate_span": [
+              319,
+              390
+            ],
+            "delta_width_px": 0
+          }
+        ],
+        "alignment": "raw matched camera; not fitted or rescaled to improve overlap",
+        "changed_pixels": 17474,
+        "mean_rgb_absolute_error": 0.36325347985347983
+      },
+      "gameplay": {
+        "iou": 0.9178082191780822,
+        "reference_bounds": [
+          373,
+          246,
+          391,
+          260
+        ],
+        "candidate_bounds": [
+          373,
+          246,
+          390,
+          260
+        ],
+        "width_delta_px": -1,
+        "height_delta_px": 0,
+        "profile_bands": [
+          {
+            "reference_height_fraction": 0.15,
+            "row": 248,
+            "reference_span": [
+              373,
+              383
+            ],
+            "candidate_span": [
+              373,
+              382
+            ],
+            "delta_width_px": -1
+          },
+          {
+            "reference_height_fraction": 0.3,
+            "row": 250,
+            "reference_span": [
+              373,
+              387
+            ],
+            "candidate_span": [
+              373,
+              387
+            ],
+            "delta_width_px": 0
+          },
+          {
+            "reference_height_fraction": 0.5,
+            "row": 252,
+            "reference_span": [
+              376,
+              391
+            ],
+            "candidate_span": [
+              376,
+              390
+            ],
+            "delta_width_px": -1
+          },
+          {
+            "reference_height_fraction": 0.7,
+            "row": 255,
+            "reference_span": [
+              375,
+              386
+            ],
+            "candidate_span": [
+              375,
+              386
+            ],
+            "delta_width_px": 0
+          },
+          {
+            "reference_height_fraction": 0.9,
+            "row": 258,
+            "reference_span": [
+              378,
+              385
+            ],
+            "candidate_span": [
+              378,
+              385
+            ],
+            "delta_width_px": 0
+          }
+        ],
+        "alignment": "raw matched camera; not fitted or rescaled to improve overlap",
+        "changed_pixels": 123,
+        "mean_rgb_absolute_error": 0.003381887325285758
+      }
+    }
+  },
+  "motion": [
+    {
+      "action": "idle",
+      "ticks": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "duration_ms": 1220,
+      "common_crop": [
+        226,
+        251,
+        455,
+        439
+      ],
+      "native_tick_ms": 20
+    },
+    {
+      "action": "walk",
+      "ticks": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "duration_ms": 980,
+      "common_crop": [
+        228,
+        252,
+        456,
+        447
+      ],
+      "native_tick_ms": 20
+    },
+    {
+      "action": "attack",
+      "ticks": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42
+      ],
+      "duration_ms": 860,
+      "common_crop": [
+        220,
+        238,
+        457,
+        444
+      ],
+      "native_tick_ms": 20
+    },
+    {
+      "action": "hit",
+      "ticks": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30
+      ],
+      "duration_ms": 620,
+      "common_crop": [
+        229,
+        243,
+        461,
+        439
+      ],
+      "native_tick_ms": 20
+    },
+    {
+      "action": "death",
+      "ticks": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144
+      ],
+      "duration_ms": 2900,
+      "common_crop": [
+        229,
+        212,
+        476,
+        440
+      ],
+      "native_tick_ms": 20
+    }
+  ],
+  "contact_diagnostics": {
+    "actions": {
+      "idle": {
+        "native_samples": 61,
+        "largest_pose_displacement_tick": 16,
+        "largest_pose_rms_native": 2.600623969956553,
+        "end_to_start_rms_native": 0.0,
+        "end_bounds": [
+          [
+            -50.0,
+            -100.0,
+            -111.0
+          ],
+          [
+            50.0,
+            0.0,
+            106.0
+          ]
+        ],
+        "declared_events": {},
+        "rigid_component_edge_error_native": {
+          "max": 1.754778407065075,
+          "mean": 0.042712404813936386,
+          "interpretation": "Integer rotation truncation is expected; this measures edge preservation, not biological plausibility"
+        }
+      },
+      "walk": {
+        "native_samples": 49,
+        "largest_pose_displacement_tick": 31,
+        "largest_pose_rms_native": 18.449366901681145,
+        "end_to_start_rms_native": 0.0,
+        "end_bounds": [
+          [
+            -50.0,
+            -97.0,
+            -111.0
+          ],
+          [
+            50.0,
+            0.0,
+            106.0
+          ]
+        ],
+        "declared_events": {},
+        "contact": {
+          "phase_source": "Actual exported native frame and clock boundary rules",
+          "support_polygon_mode": "sole_footprints",
+          "assumed_forward_travel_native_per_tick": -1.1363636363636365,
+          "stance_samples": 138,
+          "mean_stance_drift_native": 2.227456156178231,
+          "max_stance_drift_native": 5.365393587343565,
+          "max_penetration_native": 0,
+          "floating_stance_foot_samples": 0,
+          "fully_unsupported_frames": 0,
+          "body_projection_outside_support_frames": 0,
+          "support_frames_checked": 0,
+          "quantization_review_tolerance_native": 3
+        },
+        "rigid_component_edge_error_native": {
+          "max": 3.109204492526728,
+          "mean": 0.2349760929156327,
+          "interpretation": "Integer rotation truncation is expected; this measures edge preservation, not biological plausibility"
+        }
+      },
+      "attack": {
+        "native_samples": 43,
+        "largest_pose_displacement_tick": 25,
+        "largest_pose_rms_native": 27.529935542848214,
+        "end_to_start_rms_native": 0.3838632482766271,
+        "end_bounds": [
+          [
+            -50.0,
+            -100.0,
+            -111.0
+          ],
+          [
+            50.0,
+            0.0,
+            106.0
+          ]
+        ],
+        "declared_events": {
+          "anticipation": [
+            0,
+            14
+          ],
+          "execution": [
+            14,
+            25
+          ],
+          "recovery": [
+            25,
+            42
+          ]
+        },
+        "rigid_component_edge_error_native": {
+          "max": 2.1383637521556036,
+          "mean": 0.13822477454115517,
+          "interpretation": "Integer rotation truncation is expected; this measures edge preservation, not biological plausibility"
+        },
+        "attack_facing": {
+          "expected_forward_axis": "-Z",
+          "maximum_forward_excursion_native": 19.25,
+          "end_head_recovery_error_native": 0.0,
+          "marker": "leg_0_upper centroid proxy; no impact inference"
+        }
+      },
+      "hit": {
+        "native_samples": 31,
+        "largest_pose_displacement_tick": 16,
+        "largest_pose_rms_native": 13.464018765751305,
+        "end_to_start_rms_native": 3.6859317295945386,
+        "end_bounds": [
+          [
+            -51.0,
+            -103.0,
+            -110.0
+          ],
+          [
+            50.0,
+            0.0,
+            107.0
+          ]
+        ],
+        "declared_events": {},
+        "rigid_component_edge_error_native": {
+          "max": 1.7727210559635935,
+          "mean": 0.19102292680258018,
+          "interpretation": "Integer rotation truncation is expected; this measures edge preservation, not biological plausibility"
+        }
+      },
+      "death": {
+        "native_samples": 145,
+        "largest_pose_displacement_tick": 61,
+        "largest_pose_rms_native": 69.33718840106107,
+        "end_to_start_rms_native": 69.33718840106107,
+        "end_bounds": [
+          [
+            -55.0,
+            -116.0,
+            -110.0
+          ],
+          [
+            51.0,
+            0.0,
+            83.0
+          ]
+        ],
+        "declared_events": {},
+        "rigid_component_edge_error_native": {
+          "max": 2.7658935333936947,
+          "mean": 0.4067366747461998,
+          "interpretation": "Integer rotation truncation is expected; this measures edge preservation, not biological plausibility"
+        },
+        "terminal_state": {
+          "persistent_corpse": true,
+          "native_hold_ticks": 60,
+          "end_ground_penetration_native": 0,
+          "noncollapsed_final_pose": true
+        }
+      }
+    },
+    "transitions": [
+      {
+        "before": "idle",
+        "after": "walk",
+        "raw_vertex_rms_native": 9.915036410415624
+      },
+      {
+        "before": "walk",
+        "after": "attack",
+        "raw_vertex_rms_native": 9.915036410415624
+      },
+      {
+        "before": "attack",
+        "after": "idle",
+        "raw_vertex_rms_native": 0.3838632482766271
+      },
+      {
+        "before": "hit",
+        "after": "idle",
+        "raw_vertex_rms_native": 3.6859317295945386
+      }
+    ],
+    "limitations": "Contact and support are explicit geometric proxies. No inferred mass, physical collision, automatic artistic approval or time warp. World travel is stated, not fitted to minimize slip.",
+    "artistic_acceptance": false
+  },
+  "protected_reference_geometry_published": false,
+  "live_gameplay_modified": false,
+  "artistic_approval": false,
+  "limitations": [
+    "Silhouette overlap measures registration, not complete artistic fidelity. Bevel and shading differences remain.",
+    "Original assets use sparse face colors and native directional lighting, no textures or emitted light.",
+    "Creature paws and material transitions remain angular. Walk contact shows small quantized drift, not verified physical locomotion.",
+    "No gameplay integration, pathfinding, NPC combat, roof or occlusion work."
+  ]
+}

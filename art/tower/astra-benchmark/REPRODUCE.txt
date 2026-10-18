@@ -1,0 +1,9 @@
+Use tools/tower/asset-workbench/author_workflow.py with each assets/*/recipe.json, a fresh output directory, the recorded native binary, authorized revision-239.1 cache, Blender 5.2.2 and a separate identity ledger. Seed the ledger with the identity/asset-key pairs in BENCHMARK.json for byte-identical IDs. Keep outputs outside the cache and source checkout. A uses the authentic object:2097 camera and light 64/768; its camera.txt is included. B/C/D use render-own. Saved .blend and independently authored geometry are included. Native classic action payloads are under assets/D-sootsnout/<action>.
+
+Generate inputs with tools/tower/astra-benchmark/designs.py OUTPUT --refined. Invoke author_workflow per recipe; do not import original cache geometry. The unrefined generator supplies the first pass. Exact saved recipe JSON is the reproduction authority.
+
+Render the portable scene: asset_workbench.exe CACHE FRESH_OUTPUT scene scene/scene.tsv scene/overview.camera. Repeat for the player and creature-close cameras. Supporting scenery comes from the existing 28db23a original delivery, not extra benchmark categories.
+
+The frozen native renderer SHA256 is in BENCHMARK.json. It was not rebuilt or modified for this benchmark. Existing Blender generation, model conversion, classic action compilation and comparison utilities were reused unchanged. The benchmark branch is experiment/astra-art-benchmark.
+
+Model configuration: Astra was requested; actual model ID and thinking effort are not exposed to this agent. Consult the client run configuration before treating this as a model-to-model comparison.

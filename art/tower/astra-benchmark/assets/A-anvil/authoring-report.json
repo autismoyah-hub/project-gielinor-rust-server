@@ -1,0 +1,334 @@
+{
+  "asset_key": "astra-benchmark:A-anvil",
+  "identity": {
+    "model_id": 1101501,
+    "object_id": 63401,
+    "npc_id": null,
+    "sequence_base": null,
+    "skeleton_base": null,
+    "frame_group_base": null
+  },
+  "geometry": {
+    "exact_decoded": {
+      "vertices": 66,
+      "faces": 112,
+      "bounds": [
+        [
+          -56,
+          -64,
+          -24
+        ],
+        [
+          56,
+          0,
+          24
+        ]
+      ],
+      "colors": {
+        "28": 112
+      },
+      "render_types": {
+        "0": 112
+      },
+      "texture_faces": 0,
+      "texture_types": {},
+      "alpha_present": true,
+      "priorities_present": true,
+      "face_depth_present": true,
+      "skin_labels": {}
+    },
+    "calculated": {
+      "extent_native": [
+        112,
+        64,
+        48
+      ],
+      "extent_tiles": [
+        0.875,
+        0.5,
+        0.375
+      ],
+      "width_height": 1.75,
+      "depth_height": 0.75,
+      "index_components": [
+        18,
+        16,
+        12,
+        12,
+        8
+      ],
+      "coordinate_weld_components": [
+        18,
+        16,
+        12,
+        12,
+        8
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "zero_area_triangles": 0,
+      "triangle_area_quantiles": [
+        6.0,
+        40.311288741492746,
+        61.20661728930949,
+        161.55494421403512,
+        292.9573347776089,
+        576.0,
+        1536.0
+      ],
+      "dihedral_degrees_quantiles": [
+        0.0,
+        0.0,
+        0.0,
+        55.00797980144134,
+        90.0,
+        90.0,
+        104.71965971749324
+      ],
+      "surface_area_native_squared": 26536.189559990064,
+      "surface_centroid": [
+        -9.309604187479481,
+        -34.793530611860334,
+        0.004172828999076478
+      ],
+      "exact_mirror_coverage": {
+        "origin": 0.0,
+        "bounds_center": 0.0
+      },
+      "face_palette_entropy_bits": -0.0,
+      "area_weighted_palette": {
+        "28": 26536.18955999006
+      },
+      "untextured_palette": {
+        "28": 112
+      },
+      "untextured_area_palette": {
+        "28": 26536.189559990064
+      },
+      "height_profile": [
+        {
+          "height_fraction": 0.0,
+          "width": 80,
+          "depth": 28,
+          "method": "triangle-plane axis-aligned envelope; not semantic rings"
+        },
+        {
+          "height_fraction": 0.03125,
+          "width": 87.0,
+          "depth": 29.6,
+          "method": "triangle-plane axis-aligned envelope; not semantic rings"
+        },
+        {
+          "height_fraction": 0.0625,
+          "width": 111.0,
+          "depth": 31.2,
+          "method": "triangle-plane axis-aligned envelope; not semantic rings"
+        },
+        {
+          "height_fraction": 0.09375,
+          "width": 111.5,
+          "depth": 32.5,
+          "method": "triangle-plane axis-aligned envelope; not semantic rings"
+        },
+        {
+          "height_fraction": 0.125,
+          "width": 112.0,
+          "depth": 34,
+          "method": "triangle-plane axis-aligned envelope; not semantic rings"
+        },
+        {
+          "height_fraction": 0.15625,
+          "width": 112.0,
+          "depth": 34.0,
+          "method": "triangle-plane axis-aligned envelope; not semantic rings"
+        },
+        {
+          "height_fraction": 0.1875,
+          "width": 101.33333333333334,
+          "depth": 34.0,
+          "method": "triangle-plane axis-aligned envelope; not semantic rings"
+        },
+        {
+          "height_fraction": 0.21875,
+          "width": 92.75,
+          "depth": 34.0,
+          "method": "triangle-plane axis-aligned envelope; not semantic rings"
+        },
+        {
+          "height_fraction": 0.25,
+          "width": 86.25,
+          "depth": 34.0,
+          "method": "triangle-plane axis-aligned envelope; not semantic rings"
+        },
+        {
+          "height_fraction": 0.28125,
+          "width": 84.0,
+          "depth": 34.0,
+          "method": "triangle-plane axis-aligned envelope; not semantic rings"
+        },
+        {
+          "height_fraction": 0.3125,
+          "width": 84.0,
+          "depth": 34.0,
+          "method": "triangle-plane axis-aligned envelope; not semantic rings"
+        },
+        {
+          "height_fraction": 0.34375,
+          "width": 84.0,
+          "depth": 34.0,
+          "method": "triangle-plane axis-aligned envelope; not semantic rings"
+        },
+        {
+          "height_fraction": 0.375,
+          "width": 84,
+          "depth": 34,
+          "method": "triangle-plane axis-aligned envelope; not semantic rings"
+        },
+        {
+          "height_fraction": 0.40625,
+          "width": 56.06666666666666,
+          "depth": 25.066666666666666,
+          "method": "triangle-plane axis-aligned envelope; not semantic rings"
+        },
+        {
+          "height_fraction": 0.4375,
+          "width": 32.266666666666666,
+          "depth": 26.133333333333333,
+          "method": "triangle-plane axis-aligned envelope; not semantic rings"
+        },
+        {
+          "height_fraction": 0.46875,
+          "width": 34.4,
+          "depth": 27.2,
+          "method": "triangle-plane axis-aligned envelope; not semantic rings"
+        },
+        {
+          "height_fraction": 0.5,
+          "width": 36.53333333333333,
+          "depth": 28.266666666666666,
+          "method": "triangle-plane axis-aligned envelope; not semantic rings"
+        },
+        {
+          "height_fraction": 0.53125,
+          "width": 38.666666666666664,
+          "depth": 29.333333333333332,
+          "method": "triangle-plane axis-aligned envelope; not semantic rings"
+        },
+        {
+          "height_fraction": 0.5625,
+          "width": 40.8,
+          "depth": 30.4,
+          "method": "triangle-plane axis-aligned envelope; not semantic rings"
+        },
+        {
+          "height_fraction": 0.59375,
+          "width": 42.93333333333334,
+          "depth": 31.46666666666667,
+          "method": "triangle-plane axis-aligned envelope; not semantic rings"
+        },
+        {
+          "height_fraction": 0.625,
+          "width": 46.85714285714286,
+          "depth": 34.285714285714285,
+          "method": "triangle-plane axis-aligned envelope; not semantic rings"
+        },
+        {
+          "height_fraction": 0.65625,
+          "width": 52.57142857142857,
+          "depth": 38.85714285714286,
+          "method": "triangle-plane axis-aligned envelope; not semantic rings"
+        },
+        {
+          "height_fraction": 0.6875,
+          "width": 58.28571428571429,
+          "depth": 43.42857142857143,
+          "method": "triangle-plane axis-aligned envelope; not semantic rings"
+        },
+        {
+          "height_fraction": 0.71875,
+          "width": 64,
+          "depth": 48,
+          "method": "triangle-plane axis-aligned envelope; not semantic rings"
+        },
+        {
+          "height_fraction": 0.75,
+          "width": 64.0,
+          "depth": 48.0,
+          "method": "triangle-plane axis-aligned envelope; not semantic rings"
+        },
+        {
+          "height_fraction": 0.78125,
+          "width": 64.0,
+          "depth": 48.0,
+          "method": "triangle-plane axis-aligned envelope; not semantic rings"
+        },
+        {
+          "height_fraction": 0.8125,
+          "width": 64.0,
+          "depth": 48.0,
+          "method": "triangle-plane axis-aligned envelope; not semantic rings"
+        },
+        {
+          "height_fraction": 0.84375,
+          "width": 64.0,
+          "depth": 48.0,
+          "method": "triangle-plane axis-aligned envelope; not semantic rings"
+        },
+        {
+          "height_fraction": 0.875,
+          "width": 64.0,
+          "depth": 48.0,
+          "method": "triangle-plane axis-aligned envelope; not semantic rings"
+        },
+        {
+          "height_fraction": 0.90625,
+          "width": 64.0,
+          "depth": 48.0,
+          "method": "triangle-plane axis-aligned envelope; not semantic rings"
+        },
+        {
+          "height_fraction": 0.9375,
+          "width": 64.0,
+          "depth": 48.0,
+          "method": "triangle-plane axis-aligned envelope; not semantic rings"
+        },
+        {
+          "height_fraction": 0.96875,
+          "width": 64.0,
+          "depth": 48.0,
+          "method": "triangle-plane axis-aligned envelope; not semantic rings"
+        },
+        {
+          "height_fraction": 1.0,
+          "width": 64,
+          "depth": 48,
+          "method": "triangle-plane axis-aligned envelope; not semantic rings"
+        }
+      ],
+      "lightness_face_quantiles": [
+        28,
+        28,
+        28,
+        28,
+        28,
+        28,
+        28
+      ]
+    },
+    "not_inferred": [
+      "semantic components",
+      "anatomical joints",
+      "material names",
+      "deliberate versus accidental simplification",
+      "artist intention",
+      "physical mass"
+    ]
+  },
+  "motion": [],
+  "native_binary_sha256": "f6e6e12da1a80f7824c9d90a5254964fdc8d738298417c7dcd51e0793caea7cf",
+  "model_sha256": "5fcd3b5ec1c3fc0eb9cc8955114a19b95f4c0633a3197fcf0bfa645e9b818cb6",
+  "artistic_acceptance": false,
+  "source_geometry_reused": false,
+  "reference_selector": "object:2097",
+  "reference_definition_sha256": "91d6c990ea0650b7cf60f196166932b5c81372578d342aa36caf002c757632c5"
+}

@@ -1,0 +1,13 @@
+light	64	768
+owned	floor.model	0	0	0	0	-	0
+owned	../assets/B-riveter/asset.model	-180	0	-100	0	-	0
+owned	../assets/C-stamp/asset.model	-210	0	140	0	-	0
+owned	../assets/D-sootsnout/asset.model	95	0	-65	0	../assets/D-sootsnout/idle	0
+owned	wall-bay.model	-280	0	280	0	-	0
+owned	wall-bay.model	280	0	280	0	-	0
+owned	worker-threshold.model	0	0	280	0	-	0
+owned	wall-bay.model	-415	0	75	1	-	0
+owned	supply-barrel.model	320	0	195	0	-	0
+owned	supply-barrel.model	345	0	110	0	-	0
+owned	service-lantern.model	-350	0	230	0	-	0
+owned	stock-rack.model	230	0	245	0	-	0
