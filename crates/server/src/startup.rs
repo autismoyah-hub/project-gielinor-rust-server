@@ -785,6 +785,9 @@ pub fn configure<B: AccountBackend>(
     for recipe in crate::content::birdhouses(n("obj"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
         runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.recipe.first,recipe.recipe.second,gielinor_world::held_use::Handler::AssemblyProduction{recipe,cycle_ticks:3}).map_err(|e|io::Error::other(format!("Birdhouse registration: {e:?}")))?;
     }
+    for (item,rule) in crate::content::imcando_held_swaps(n("obj"),&runtime.definitions).map_err(io::Error::other)? {
+        if runtime.world.empty_containers.insert(item,rule).is_some(){return Err(io::Error::other("Conflicting Imcando held Swap handler"));}
+    }
     for light in crate::content::light_sources(n("obj"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
         let recipe=light.light;
         runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.exchange.tool,recipe.exchange.input,gielinor_world::held_use::Handler::ToolCraftingImmediate(recipe)).map_err(|e|io::Error::other(format!("Light source registration: {e:?}")))?;
