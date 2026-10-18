@@ -17,6 +17,7 @@ mod anvil;
 mod autocast_picker;
 mod dialogue;
 mod drop_dialog;
+mod location_bank;
 mod equipment_buttons;
 mod chemistry_dialog;
 mod location_target;
@@ -3703,6 +3704,10 @@ impl<B: AccountBackend> Runtime<B> {
                     self.drop_event(actor, &event)?;
                     self.events
                         .push(Event::World(WorldEvent::Drop { actor, event }));
+                }
+                WorldEvent::LocationBankRequested {actor,request} => {
+                    self.open_location_bank(actor,request)?;
+                    self.events.push(Event::World(WorldEvent::LocationBankRequested{actor,request}));
                 }
                 WorldEvent::NpcInteraction { actor, event } => {
                     self.npc_event(actor, event)?;

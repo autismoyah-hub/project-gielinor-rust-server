@@ -4,6 +4,7 @@ use crate::{doors, loc_reach::Target, locations::Location, reach::Rectangle};
 impl World {
     /// Shared admission check for network sessions and headless actors.
     pub fn has_location_handler(&self, id: u32, operation: u8) -> bool {
+        if operation==1 && self.location_banks.contains_key(&id){return true;}
         if self.facility_crafting.get(&id).is_some_and(|c|c.locations.get(&id)==Some(&Some(operation))){return true;}
         if self
             .furnaces
@@ -41,7 +42,7 @@ impl World {
                 .is_some_and(|c| c.cows.get(&id) == Some(&operation))
             || self.location_handlers.contains_key(&(id, operation))
     }
-    fn door_target(&self, loc: Location) -> Result<Target, ActionError> {
+    pub(super) fn door_target(&self, loc: Location) -> Result<Target, ActionError> {
         let ty = self
             .location_types
             .get(&loc.id)
@@ -268,10 +269,10 @@ impl World {
         // its additional protected cycle when the actor moved last tick.
         if reached
             && p.movement.last_movement == self.clock.0 - 1
-            && self
+            && (self
                 .location_handlers
                 .get(&(loc.id, operation))
-                .is_some_and(|h| h.arrival_delay())
+                .is_some_and(|h| h.arrival_delay()) || operation==1 && self.location_banks.contains_key(&loc.id))
         {
             let p = self.players.get_mut(slot).unwrap();
             p.movement.abort();
@@ -317,6 +318,7 @@ impl World {
             self.process_location_use(slot, loc, inv_slot, object);
             return;
         }
+        if operation==1 && self.location_banks.contains_key(&loc.id){self.request_location_bank(slot,loc);return;}
         if self
             .milking
             .as_ref()

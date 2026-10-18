@@ -8,6 +8,8 @@ mod light_sources;
 pub use light_sources::light_sources;
 mod prospector_outfit;
 pub use prospector_outfit::prospector_outfit;
+mod crafting_guild_bank;
+pub use crafting_guild_bank::crafting_guild_bank;
 mod imcando_worn_swaps;
 pub use imcando_worn_swaps::imcando_worn_swaps;
 mod imcando_held_swaps;

@@ -26,6 +26,7 @@ mod melee_actions;
 mod movement_actions;
 pub use movement_actions::MovementInput;
 mod elemental_spell_actions;
+mod bank_access_actions;
 mod worn_item_swap_actions;
 mod container_emptying_actions;
 mod item_pack_actions;
@@ -594,6 +595,7 @@ pub enum WorldEvent {
         actor: ActorId,
         marks: crate::tower_diary::Marks,
     },
+    LocationBankRequested {actor:ActorId,request:crate::bank_access::Request},
     TutorialBank {
         actor: ActorId,
         booth: crate::tutorial_bank::Booth,
@@ -962,6 +964,7 @@ pub struct World {
     pub location_types: BTreeMap<u32, crate::loc_collision::LocCollision>,
     pub location_approach: BTreeMap<u32, u8>,
     pub doors: crate::doors::Catalog,
+    pub location_banks: BTreeMap<u32,crate::bank_access::Gate>,
     pub location_handlers: BTreeMap<(u32, u8), crate::location_content::Handler>,
     pub npc_options: crate::npc_options::Catalog,
     pub attack_profiles: crate::attack_profile::Catalog,
@@ -1082,6 +1085,7 @@ impl Default for World {
             location_types: BTreeMap::new(),
             location_approach: BTreeMap::new(),
             doors: Default::default(),
+            location_banks: BTreeMap::new(),
             location_handlers: Default::default(),
             npc_options: Default::default(),
             attack_profiles: Default::default(),
