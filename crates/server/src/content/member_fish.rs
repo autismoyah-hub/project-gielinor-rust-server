@@ -300,7 +300,7 @@ mod tests {
             skill: 7,
             max_level: 99,
             tutorial: None,
-            member_inputs: Default::default(),
+            no_burn_cape: None, member_inputs: Default::default(),
             recipes: BTreeMap::new(),
             surfaces: [(
                 26181,

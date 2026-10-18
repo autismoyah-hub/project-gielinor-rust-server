@@ -100,7 +100,16 @@ pub(super) fn complete(
     let Some(recipe) = c.recipe(job.target.id, job.raw) else {
         return;
     };
-    if let Ok(outcome) = recipe.complete(
+    // Evaluate current equipment at completion, never capture a cape in the queued job.
+    let mut effective = *recipe;
+    if c.skill == 7
+        && recipe.stop_burn.is_none_or(|stop| stop >= recipe.level)
+        && c.no_burn_cape
+            .is_some_and(|perk| perk.applies(job.raw, p.member, &p.data.equipment, items))
+    {
+        effective.stop_burn = Some(effective.level);
+    }
+    if let Ok(outcome) = effective.complete(
         job.slot,
         &mut p.data.inventory,
         items,
@@ -171,6 +180,7 @@ mod tests {
         crate::loc_collision::toggle(&mut w.collision, loc.coords, loc.shape, loc.angle, ty, true)
             .unwrap();
         w.cooking = Some(crate::cooking::Config {
+            no_burn_cape: None,
             member_inputs: Default::default(),
             surfaces: Default::default(),
             fire: 1,
@@ -554,6 +564,142 @@ mod tests {
             assert_eq!(w.data(actor).unwrap().stats.fine_xp(7), expected);
             assert_eq!(w.data(actor).unwrap().inventory.get(0).unwrap().id, 10);
             assert_eq!(w.data(actor).unwrap().inventory.get(1).unwrap().id, 20);
+        }
+    }
+
+    #[test]
+    fn cooking_cape_live_queue_equipment_no_draw_and_late_failures_preserve_transaction() {
+        struct Worst {
+            calls: u32,
+        }
+        impl RandomSource for Worst {
+            fn below(&mut self, upper: u32) -> u32 {
+                self.calls += 1;
+                upper - 1
+            }
+        }
+        for mode in 0..13 {
+            let (mut w, actor, loc) = fixture();
+            w.cooking.as_mut().unwrap().no_burn_cape = Some(crate::cooking::NoBurnCape {
+                capes: [9801, 9802],
+                excluded_raw: 2337,
+            });
+            let recipe = w.cooking.as_mut().unwrap().recipes.get_mut(&10).unwrap();
+            recipe.low = 0;
+            recipe.high = 0;
+            recipe.stop_burn = None;
+            let cape = Item {
+                id: if mode == 1 { 9802 } else { 9801 },
+                count: if mode == 5 { 2 } else { 1 },
+                vars: if mode == 4 { 1 } else { 0 },
+            };
+            w.players.get_mut(actor.slot as usize).unwrap().member = mode != 6;
+            w.data_mut(actor).unwrap().stats.set_current(7, 1);
+            for s in 2..28 {
+                w.data_mut(actor)
+                    .unwrap()
+                    .inventory
+                    .restore_slot(
+                        s,
+                        Some(Item {
+                            id: 100,
+                            count: 1,
+                            vars: 0,
+                        }),
+                    )
+                    .unwrap();
+            }
+            if mode == 2 {
+                w.data_mut(actor)
+                    .unwrap()
+                    .inventory
+                    .restore_slot(0, Some(cape))
+                    .unwrap();
+            } else if mode != 8 {
+                w.data_mut(actor)
+                    .unwrap()
+                    .equipment
+                    .restore_slot(if mode == 3 { 0 } else { 1 }, Some(cape))
+                    .unwrap();
+            }
+            w.submit(actor, action(loc)).unwrap();
+            w.tick().unwrap();
+            if mode == 7 {
+                w.data_mut(actor)
+                    .unwrap()
+                    .equipment
+                    .restore_slot(1, None)
+                    .unwrap();
+            }
+            if mode == 8 {
+                w.data_mut(actor)
+                    .unwrap()
+                    .equipment
+                    .restore_slot(1, Some(cape))
+                    .unwrap();
+            }
+            if mode == 9 {
+                w.object_types.dummy.insert(9801);
+            }
+            if mode == 10 {
+                w.data_mut(actor).unwrap().stats.set_current(7, 0);
+            }
+            if mode == 11 {
+                w.object_types.dummy.insert(30);
+            }
+            if mode == 12 {
+                w.cooking
+                    .as_mut()
+                    .unwrap()
+                    .recipes
+                    .get_mut(&10)
+                    .unwrap()
+                    .stop_burn = Some(0);
+            }
+            let gear = w.data(actor).unwrap().equipment.clone();
+            let inv = w.data(actor).unwrap().inventory.clone();
+            let xp = w.data(actor).unwrap().stats.fine_xp(7);
+            let mut rng = Worst { calls: 0 };
+            w.tick_with_random(&mut rng).unwrap();
+            let data = w.data(actor).unwrap();
+            assert_eq!(data.equipment, gear);
+            if mode >= 10 {
+                assert_eq!(data.inventory, inv);
+                assert_eq!(data.stats.fine_xp(7), xp);
+                assert_eq!(rng.calls, 0);
+                continue;
+            }
+            let safe = matches!(mode, 0 | 1 | 8);
+            assert_eq!(
+                data.inventory.get(1).unwrap().id,
+                if safe { 20 } else { 30 },
+                "mode {mode}"
+            );
+            assert_eq!(
+                data.stats.fine_xp(7),
+                if safe { 300 } else { 0 },
+                "mode {mode}"
+            );
+            assert_eq!(rng.calls, if safe { 0 } else { 1 }, "mode {mode}");
+            for s in 0..28 {
+                if s != 1 {
+                    assert_eq!(data.inventory.get(s), inv.get(s));
+                }
+            }
+            let traces = w
+                .drain_events()
+                .into_iter()
+                .filter_map(|e| {
+                    if let WorldEvent::CookingMade { trace, .. } = e {
+                        Some(trace)
+                    } else {
+                        None
+                    }
+                })
+                .collect::<Vec<_>>();
+            assert_eq!(traces.len(), 1);
+            assert_eq!(traces[0].committed_at - traces[0].job.queued_at, 1);
+            assert_eq!(traces[0].outcome.burned, !safe);
         }
     }
 }

@@ -29,6 +29,7 @@ pub struct Surface {
 }
 #[derive(Clone, Debug)]
 pub struct Config {
+    pub no_burn_cape: Option<NoBurnCape>,
     pub member_inputs: std::collections::BTreeSet<i32>,
     pub surfaces: BTreeMap<u32, Surface>,
     pub fire: u32,
@@ -37,6 +38,30 @@ pub struct Config {
     pub max_level: u8,
     pub recipes: BTreeMap<i32, Recipe>,
     pub tutorial: Option<crate::tutorial_progression::Config>,
+}
+/// Live equipment policy; absent configuration preserves all existing recipes.
+#[derive(Clone, Copy, Debug)]
+pub struct NoBurnCape {
+    pub capes: [i32; 2],
+    pub excluded_raw: i32,
+}
+impl NoBurnCape {
+    pub fn applies(self, raw: i32, member: bool, worn: &Inventory, items: &Catalog) -> bool {
+        member
+            && raw != self.excluded_raw
+            && self.excluded_raw >= 0
+            && self.capes[0] >= 0
+            && self.capes[1] >= 0
+            && self.capes[0] != self.capes[1]
+            && worn.stack == crate::inventory::StackType::Normal
+            && !worn.placeholders
+            && worn.get(1).is_some_and(|i| {
+                self.capes.contains(&i.id)
+                    && i.count == 1
+                    && i.vars == 0
+                    && items.ordinary_nonstackable(i.id)
+            })
+    }
 }
 impl Config {
     pub fn recipe(&self, source: u32, input: i32) -> Option<&Recipe> {
@@ -352,5 +377,34 @@ mod tests {
         );
         assert_eq!((inv, stats), before);
         assert_eq!(random.calls, 0);
+    }
+
+    #[test]
+    fn cooking_cape_perk_rechecks_worn_slot_shapes_membership_and_raw_oomlie_exception() {
+        let perk = NoBurnCape {
+            capes: [9801, 9802],
+            excluded_raw: 2337,
+        };
+        for id in [9801, 9802] {
+            let mut worn = Inventory::new(14, crate::inventory::StackType::Normal, false);
+            worn.restore_slot(
+                1,
+                Some(Item {
+                    id,
+                    count: 1,
+                    vars: 0,
+                }),
+            )
+            .unwrap();
+            let items = Catalog::default();
+            assert!(perk.applies(10, true, &worn, &items));
+            assert!(!perk.applies(2337, true, &worn, &items));
+            assert!(!perk.applies(10, false, &worn, &items));
+            for (count, vars) in [(2, 0), (1, 1)] {
+                worn.restore_slot(1, Some(Item { id, count, vars }))
+                    .unwrap();
+                assert!(!perk.applies(10, true, &worn, &items));
+            }
+        }
     }
 }

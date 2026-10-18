@@ -742,6 +742,7 @@ pub fn configure<B: AccountBackend>(
     for &raw in cooking.recipes.keys().chain(cooking.surfaces.values().flat_map(|surface|surface.recipes.keys())) {
         if runtime.definitions.items.get(&(raw as u32)).ok_or_else(||io::Error::other("Missing cooking input membership definition"))?.members {cooking_member_inputs.insert(raw);}
     }
+    cooking.no_burn_cape=Some(crate::content::cooking_cape_no_burn(n("obj"),&runtime.definitions).map_err(io::Error::other)?);
     cooking.member_inputs=cooking_member_inputs;
     cooking.tutorial=runtime.world.tutorial_shrimp.map(|c|c.progression);
     runtime.world.cooking=Some(cooking);

@@ -192,7 +192,7 @@ mod tests {
         }
         let locations = Symbols::from([("range".into(), 26181)]);
         let empty = Config {
-            member_inputs: Default::default(),
+            no_burn_cape: None, member_inputs: Default::default(),
             surfaces: BTreeMap::from([(
                 26181,
                 Surface {
