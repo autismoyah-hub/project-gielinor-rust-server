@@ -18,6 +18,7 @@ impl<B: AccountBackend> Runtime<B> {
             axes: [(
                 axe,
                 Axe {
+                    members: false,
                     level: 1,
                     animation: names.short("seq", "human_woodcutting_bronze_axe")?,
                 },
@@ -118,6 +119,13 @@ impl<B: AccountBackend> Runtime<B> {
                     return Err(io::Error::other("Unattested ordinary axe tree rates"));
                 };
                 tree.rates.insert(tool.id, rates);
+            }
+        }
+        for tool in crate::content::special_woodcutting_axes(names.group("obj"),names.group("seq"),names.group("stat"),&self.definitions).map_err(io::Error::other)? {
+            if config.axes.insert(tool.id,tool.axe).is_some(){return Err(io::Error::other("Conflicting special woodcutting axe"));}
+            for tree in config.trees.values_mut(){
+                let rates=*tool.rates.get(&tree.product).ok_or_else(||io::Error::other("Unattested special axe tree rates"))?;
+                tree.rates.insert(tool.id,rates);
             }
         }
         config.validate().map_err(io::Error::other)?;

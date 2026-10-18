@@ -56,7 +56,7 @@ pub fn woodcutting_axes(
         }
         result.push(WoodcuttingTool {
             id,
-            axe: Axe { level, animation },
+            axe: Axe { members: false, level, animation },
             regular_rates,
             oak_rates,
         });
@@ -153,6 +153,7 @@ mod dispatch_tests {
                 (
                     1351,
                     Axe {
+                        members: false,
                         level: 1,
                         animation: 879,
                     },
@@ -160,6 +161,7 @@ mod dispatch_tests {
                 (
                     1349,
                     Axe {
+                        members: false,
                         level: 1,
                         animation: 877,
                     },
@@ -167,6 +169,7 @@ mod dispatch_tests {
                 (
                     1359,
                     Axe {
+                        members: false,
                         level: 41,
                         animation: 867,
                     },

@@ -8,6 +8,8 @@ mod light_sources;
 pub use light_sources::light_sources;
 mod prospector_outfit;
 pub use prospector_outfit::prospector_outfit;
+mod special_woodcutting_axes;
+pub use special_woodcutting_axes::special_woodcutting_axes;
 mod magic_trees;
 pub use magic_trees::magic_trees;
 mod member_timed_trees;

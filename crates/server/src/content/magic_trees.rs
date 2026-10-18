@@ -165,6 +165,7 @@ mod tests {
                 axes: [(
                     1349,
                     Axe {
+                        members: false,
                         level: 1,
                         animation: 877,
                     },

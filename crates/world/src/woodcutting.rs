@@ -3,6 +3,7 @@ use crate::{inventory::Inventory, locations::Location};
 use std::collections::BTreeMap;
 #[derive(Clone, Copy, Debug)]
 pub struct Axe {
+    pub members: bool,
     pub level: i32,
     pub animation: u16,
 }
@@ -71,16 +72,28 @@ impl Config {
         level: i32,
         tree: &Tree,
     ) -> Option<(i32, Axe)> {
+        self.axe_for_tree_for_member(inv, worn, level, tree, false)
+    }
+    pub fn axe_for_tree_for_member(
+        &self,
+        inv: &Inventory,
+        worn: &Inventory,
+        level: i32,
+        tree: &Tree,
+        member: bool,
+    ) -> Option<(i32, Axe)> {
         crate::gathering::best_tool_by(inv, worn, level, |id| {
-            let axe = self.axes.get(&id)?;
+            let axe = self.axes.get(&id).filter(|a| !a.members || member)?;
             let &(low, high) = tree.rates.get(&id)?;
             Some((axe.level, (low + high) / 2))
         })
         .map(|id| (id, self.axes[&id]))
     }
     pub fn axe(&self, inv: &Inventory, worn: &Inventory, level: i32) -> Option<(i32, Axe)> {
-        crate::gathering::best_tool(inv, worn, level, |id| self.axes.get(&id).map(|a| a.level))
-            .map(|id| (id, self.axes[&id]))
+        crate::gathering::best_tool(inv, worn, level, |id| {
+            self.axes.get(&id).filter(|a| !a.members).map(|a| a.level)
+        })
+        .map(|id| (id, self.axes[&id]))
     }
 }
 /// Per-location state, advanced once in ControllerMain, never once per player.
@@ -174,6 +187,7 @@ mod tests {
                 (
                     1,
                     Axe {
+                        members: false,
                         level: 1,
                         animation: 1,
                     },
@@ -181,6 +195,7 @@ mod tests {
                 (
                     2,
                     Axe {
+                        members: false,
                         level: 1,
                         animation: 2,
                     },
@@ -188,6 +203,7 @@ mod tests {
                 (
                     3,
                     Axe {
+                        members: false,
                         level: 6,
                         animation: 3,
                     },
@@ -269,6 +285,7 @@ mod ranked_tool_tests {
                 (
                     1351,
                     Axe {
+                        members: false,
                         level: 1,
                         animation: 879,
                     },
@@ -276,6 +293,7 @@ mod ranked_tool_tests {
                 (
                     1349,
                     Axe {
+                        members: false,
                         level: 1,
                         animation: 877,
                     },
@@ -283,6 +301,7 @@ mod ranked_tool_tests {
                 (
                     1353,
                     Axe {
+                        members: false,
                         level: 6,
                         animation: 875,
                     },

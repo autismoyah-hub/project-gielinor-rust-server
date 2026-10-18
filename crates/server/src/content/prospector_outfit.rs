@@ -381,6 +381,7 @@ mod dispatch_tests {
             axes: [(
                 1351,
                 Axe {
+                    members: false,
                     level: 1,
                     animation: 879,
                 },
