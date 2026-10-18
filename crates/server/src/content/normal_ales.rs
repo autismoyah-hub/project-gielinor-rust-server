@@ -247,7 +247,7 @@ mod tests {
             let mut state = Stats::default();
             for skill in [0, 1, 2, 6] {
                 state.set_base(skill, level);
-                state.set_current(skill, 100);
+                state.set_current(skill, if skill == 6 { 100 } else { level });
             }
             let (b, s) = rules[&1907].resolve(&state, 3).unwrap();
             assert_eq!(b[0].amount, boost);

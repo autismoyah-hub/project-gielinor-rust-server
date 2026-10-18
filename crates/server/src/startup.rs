@@ -373,8 +373,9 @@ pub fn configure<B: AccountBackend>(
     let dorgesh=crate::content::dorgesh_foods(n("obj"),n("stat"),&runtime.definitions,&mut foods).map_err(io::Error::other)?;
     slot_preserving_foods.extend(dorgesh.selected);
     boost_foods.boosts.extend(dorgesh.boosts);
-    let normal_ales=crate::content::normal_ales(n("obj"),n("stat"),&runtime.definitions,&mut foods).map_err(io::Error::other)?;
-    slot_preserving_foods.extend(normal_ales.keys().copied());
+    let mut formula_foods=crate::content::normal_ales(n("obj"),n("stat"),&runtime.definitions,&mut foods).map_err(io::Error::other)?;
+    formula_foods.extend(crate::content::sgg_blizzard(n("obj"),n("stat"),&runtime.definitions,&mut foods).map_err(io::Error::other)?);
+    slot_preserving_foods.extend(formula_foods.keys().copied());
     slot_preserving_foods.extend(crate::content::fruit_cocktails(n("obj"),&runtime.definitions,&mut foods).map_err(io::Error::other)?);
     slot_preserving_foods.extend(crate::content::mead_drinks(n("obj"),&runtime.definitions,&mut foods).map_err(io::Error::other)?);
     let flat_drinks=crate::content::flat_drinks(n("obj"),n("stat"),&runtime.definitions,&mut foods).map_err(io::Error::other)?;
@@ -385,7 +386,7 @@ pub fn configure<B: AccountBackend>(
     runtime.configure_foods(held, foods, names.short("seq", "human_eat")?)?;
     runtime.world.food_subtractions.insert(wine_drink.0,vec![wine_drink.1]);
     runtime.world.food_subtractions.extend(flat_drinks.subtractions);
-    runtime.world.food_formulas=normal_ales;
+    runtime.world.food_formulas=formula_foods;
     runtime.world.food_healing=healing_foods.healing;
     runtime.world.food_random_healing=random_foods.healing;
     runtime.world.food_boosts=boost_foods.boosts;

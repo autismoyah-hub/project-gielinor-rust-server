@@ -4421,9 +4421,9 @@ mod tests {
 
 
     #[test]
-    fn queued_ale_formulas_use_live_base_on_execution_then_stack_current_drain_without_boost_stacking(){
+    fn queued_ale_formulas_use_live_base_boost_and_current_drain_without_boost_stacking(){
         let(mut w,actor)=admitted();w.foods.insert(1917,crate::food::Edible{id:1917,heal:1,delay:3,replacement:Some(1919),message:"Ale".into()});w.food_formulas.insert(1917,crate::food::StatEffects{boosts:vec![crate::food::StatFormula{skill:2,percent:2,constant:1}],subtractions:vec![crate::food::StatFormula{skill:0,percent:6,constant:1}]});let p=w.players.get_mut(actor.slot as usize).unwrap();for slot in[0,2]{p.data.inventory.restore_slot(slot,Some(crate::inventory::Item{id:1917,count:1,vars:0})).unwrap();}p.data.stats.set_base(3,99);p.data.stats.set_current(3,50);w.submit(actor,Action::EatItemSlot{slot:2,item:1917}).unwrap();let p=w.players.get_mut(actor.slot as usize).unwrap();for skill in[0,2]{p.data.stats.set_base(skill,99);p.data.stats.set_current(skill,99);}w.tick().unwrap();let p=w.data(actor).unwrap();assert_eq!((p.stats.current(0),p.stats.current(2),p.stats.current(3)),(93,101,51));assert_eq!(p.inventory.get(2).unwrap().id,1919);
-        for _ in 0..4{w.tick().unwrap();}w.players.get_mut(actor.slot as usize).unwrap().data.stats.set_current(0,10);w.submit(actor,Action::EatItemSlot{slot:0,item:1917}).unwrap();w.tick().unwrap();let p=w.data(actor).unwrap();assert_eq!((p.stats.current(0),p.stats.current(2),p.stats.current(3)),(4,101,52));assert_eq!(p.inventory.get(0).unwrap().id,1919);for skill in[0,2,3]{assert_eq!(p.stats.fine_xp(skill),0);}
+        for _ in 0..4{w.tick().unwrap();}w.players.get_mut(actor.slot as usize).unwrap().data.stats.set_current(0,10);w.submit(actor,Action::EatItemSlot{slot:0,item:1917}).unwrap();w.tick().unwrap();let p=w.data(actor).unwrap();assert_eq!((p.stats.current(0),p.stats.current(2),p.stats.current(3)),(9,101,52));assert_eq!(p.inventory.get(0).unwrap().id,1919);for skill in[0,2,3]{assert_eq!(p.stats.fine_xp(skill),0);}
     }
     #[test]
     fn queued_ale_invalid_formula_and_live_member_gate_cannot_partially_consume_or_apply_fixed_effects(){

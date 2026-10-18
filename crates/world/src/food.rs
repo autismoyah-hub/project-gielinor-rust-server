@@ -216,13 +216,15 @@ pub struct StatBoost {pub skill:u8,pub amount:i32}
 /// Repeated flat subtraction (alcohol), distinct from a base-capped Drain.
 #[derive(Clone,Copy,Debug,PartialEq,Eq)]
 pub struct StatSubtraction {pub skill:u8,pub amount:i32}
-/// Resolved from the live base level at authoritative consumption, not menu time.
+/// Boosts use live base levels; drains use live current levels at consumption.
 #[derive(Clone,Copy,Debug,PartialEq,Eq)]
 pub struct StatFormula {pub skill:u8,pub percent:u8,pub constant:u8}
 impl StatFormula {
-    pub fn amount(self,stats:&Stats,hitpoints:u8)->Result<i32,stat_ops::Error>{
+    pub fn amount(self,stats:&Stats,hitpoints:u8)->Result<i32,stat_ops::Error>{self.amount_at(stats.base(self.skill)as u8,hitpoints)}
+    pub fn subtraction_amount(self,stats:&Stats,hitpoints:u8)->Result<i32,stat_ops::Error>{self.amount_at(stats.current(self.skill)as u8,hitpoints)}
+    fn amount_at(self,level:u8,hitpoints:u8)->Result<i32,stat_ops::Error>{
         if self.skill>=24 || self.skill==hitpoints || self.percent>100{return Err(stat_ops::Error::InvalidPercent);}
-        let amount=i32::from(stats.base(self.skill)as u8)*i32::from(self.percent)/100+i32::from(self.constant);
+        let amount=i32::from(level)*i32::from(self.percent)/100+i32::from(self.constant);
         if amount>255{return Err(stat_ops::Error::InvalidPercent);}Ok(amount)
     }
 }
@@ -231,7 +233,7 @@ pub struct StatEffects {pub boosts:Vec<StatFormula>,pub subtractions:Vec<StatFor
 impl StatEffects {
     pub fn resolve(&self,stats:&Stats,hitpoints:u8)->Result<(Vec<StatBoost>,Vec<StatSubtraction>),stat_ops::Error>{
         let boosts=self.boosts.iter().map(|f|Ok(StatBoost{skill:f.skill,amount:f.amount(stats,hitpoints)?})).collect::<Result<Vec<_>,stat_ops::Error>>()?;
-        let subtractions=self.subtractions.iter().map(|f|Ok(StatSubtraction{skill:f.skill,amount:f.amount(stats,hitpoints)?})).collect::<Result<Vec<_>,stat_ops::Error>>()?;
+        let subtractions=self.subtractions.iter().map(|f|Ok(StatSubtraction{skill:f.skill,amount:f.subtraction_amount(stats,hitpoints)?})).collect::<Result<Vec<_>,stat_ops::Error>>()?;
         Ok((boosts,subtractions))
     }
 }
@@ -661,5 +663,12 @@ mod random_healing_tests {
     fn food_stat_formulas_floor_live_base_percentages_and_reject_invalid_policy(){
         for(base,want)in[(1,1),(16,1),(17,2),(50,4),(99,6)]{let mut stats=Stats::default();stats.set_base(0,base);stats.set_current(0,1);assert_eq!(StatFormula{skill:0,percent:6,constant:1}.amount(&stats,3),Ok(want));stats.set_current(0,110);assert_eq!(StatFormula{skill:0,percent:6,constant:1}.amount(&stats,3),Ok(want));}
         let mut stats=Stats::default();stats.set_base(0,99);for formula in[StatFormula{skill:24,percent:0,constant:1},StatFormula{skill:3,percent:0,constant:1},StatFormula{skill:0,percent:101,constant:1},StatFormula{skill:0,percent:100,constant:255}]{assert!(formula.amount(&stats,3).is_err());let policy=StatEffects{boosts:vec![StatFormula{skill:2,percent:2,constant:1}],subtractions:vec![formula]};let before=stats.clone();assert!(policy.resolve(&stats,3).is_err());assert_eq!(stats,before);}
+    }
+
+    #[test]
+    fn food_percentage_drains_use_current_level_while_boosts_keep_static_base(){
+        let policy=StatEffects{boosts:vec![StatFormula{skill:2,percent:2,constant:1}],subtractions:vec![StatFormula{skill:0,percent:6,constant:1}]};let mut stats=Stats::default();stats.set_base(0,99);stats.set_base(2,99);stats.set_current(2,110);
+        for(current,want)in[(0,1),(10,1),(16,1),(17,2),(50,4),(99,6),(100,7),(255,16)]{stats.set_current(0,current as u8 as i8);let(b,s)=policy.resolve(&stats,3).unwrap();assert_eq!(b[0].amount,2);assert_eq!(s[0].amount,want);}
+        stats.set_base(0,1);stats.set_current(0,99);assert_eq!(policy.resolve(&stats,3).unwrap().1[0].amount,6);
     }
 }
