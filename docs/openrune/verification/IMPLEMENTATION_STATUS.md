@@ -3,9 +3,9 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0100: member teak/mahogany primary and Isle of Souls timed trees; source [7715e4b](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/7715e4b6d3b5a9b8dca79451126dbce7c2df1a09). Shared, final four-ID focused and binary checks pass; independent V0–V4 queued. Wiki15/14 recovery intentionally differs cache16/15; seven axe curves agree.
+OR-MIG-0101: primary member magic tree; source [9e1a1da](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/9e1a1da7ab16eeed6d59600fa4afbe082b116209). Focused long-lifetime and actual binary checks pass; independent V0–V4 queued. Lifetime 390 agrees with source/cache and Wiki; Wiki recovery 199 intentionally differs from raw 200.
 
-100 units / 109 append-only records. Discovery3508={'not_yet_assessed': 2783, 'configuration': 660, 'framework_or_infrastructure': 15, 'eligible_gameplay_behavior': 50}, not completion percentages. Native/lifecycle/region/Forestry/side-drop acceptance remains separate. Clay withheld under issue74; PG-DEF-001 Close candidate awaits independent retest.
+101 units / 110 append-only records. Discovery 3508={'not_yet_assessed': 2783, 'configuration': 660, 'framework_or_infrastructure': 15, 'eligible_gameplay_behavior': 50}, not completion percentages. Native/lifecycle and excluded regional/activity/equipment behavior remain separate. Clay withheld under issue 74; PG-DEF-001 Close candidate awaits independent retest.
 <!-- forge-current:end -->
 
 
@@ -658,3 +658,12 @@ Source 7715e4b6d3b5a9b8dca79451126dbce7c2df1a09 registers four member timed tree
 Shared001PASS161server488world/1existingignore466 unchanged hashes,1m33compile/server25.73s/world33.32s, two-primary engine regression. Final002focusedPASS2server/0matchingworld466/47.22s expands actual reached matrix to all four IDs; bins001PASS466/8.87s. Current boosted/base1 accepts, each log1062/1562fine125%, durable ironaxe, active50/100 and exact15/14 restoration. F2P/low/fullbag/bad credit/live membership or level loss refuse without later reward; initial eligibility denials draw no RNG. Evidence-key JSON/string-versus-int assertion failure retained and corrected before final build; no gameplay value change, Rust failure/OOM/resource deferral. Primary-only evidence001 retained beside final002; private fixture pre-edit bytes archived. Developer working-tree evidence only.
 
 Wiki Teak15326083/Mahogany15311056 respawn15/14 intentionally overrides source-cache16/15, consistent with prior timed-tree policy; native/controller equivalence unaccepted. No Prifddinas shards, Farming/Miscellania approval/no-log, region quest/travel/access, Forestry/group extras, side drops, special axes/outfits or acquisition claim. Queue109records100units; independent V0–V4 queued. Discovery3508={'not_yet_assessed': 2783, 'configuration': 660, 'framework_or_infrastructure': 15, 'eligible_gameplay_behavior': 50}, not completion percentages.
+
+
+## FORGE OR-MIG-0101 — primary member magic tree
+
+Source 9e1a1da7ab16eeed6d59600fa4afbe082b116209 registers primary Magic tree 10834 and stump 9713 through actual startup and the existing member-aware timed woodcutting engine. Current Woodcutting 75, member, Magic logs 1513, 250 base XP and 390 active ticks. Exact aliases, member ordinary logs, static 2x2 footprints, operations and seven live parameters are validated. All seven ordinary-axe curves match the Wiki and pinned enum 65524. Two Wiki pages, two source references, the log, live/stump and full rate enum are attested privately.
+
+Focused 001 passes one server test and zero matching world tests, with 467 unchanged source hashes: 28.88 seconds compilation and 2.69 seconds execution. Actual binaries 001 pass with 467 hashes in 2.32 seconds. A reached fixture forces one early success, intermediate failures, and a late success after the active lifetime; it retains two logs and 6,250 fine XP at 125%, measures exactly 199 ticks of restoration, and observes no replay. F2P, current 74, full bag, bad credit and live membership loss are covered; the axe remains. No larger inventory or dropped rewards are used to force depletion. Shared engine regression is unit 100; this unit changes data and registration only. Developer working-tree evidence, not independent/native acceptance.
+
+Wiki revision 15264023 recovery 199 intentionally overrides source-cache 200; lifetime 390 agrees and a wrong 400 is rejected. Runtime validates the enum link and uses seven explicit verified curves, rather than ingesting or hashing the payload. Farming, regional access, Forestry/group events, side drops, special axes/outfits, acquisition, ambient presentation and other log uses remain separate. Queue: 110 records, 101 units; independent V0–V4 queued. Discovery 3508={'not_yet_assessed': 2783, 'configuration': 660, 'framework_or_infrastructure': 15, 'eligible_gameplay_behavior': 50}, not completion percentages.
