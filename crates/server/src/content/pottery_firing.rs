@@ -110,6 +110,8 @@ pub fn pottery_firing(
         check(out_symbol, output, name, members)?;
         recipes.push(Recipe {
             input: raw,
+            secondary: None,
+            byproduct: None,
             input_count: 1,
             output,
             output_count: 1,

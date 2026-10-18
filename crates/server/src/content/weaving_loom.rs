@@ -59,6 +59,8 @@ pub fn weaving_loom(
         recipes: std::sync::Arc::new(vec![
             Recipe {
                 input: 1759,
+                secondary: None,
+                byproduct: None,
                 input_count: 4,
                 output_count: 1,
                 output: 3224,
@@ -72,6 +74,8 @@ pub fn weaving_loom(
             },
             Recipe {
                 input: 5931,
+                secondary: None,
+                byproduct: None,
                 input_count: 4,
                 output_count: 1,
                 output: 5418,
@@ -85,6 +89,8 @@ pub fn weaving_loom(
             },
             Recipe {
                 input: 5931,
+                secondary: None,
+                byproduct: None,
                 input_count: 2,
                 output_count: 1,
                 output: 21652,
@@ -98,6 +104,8 @@ pub fn weaving_loom(
             },
             Recipe {
                 input: 5933,
+                secondary: None,
+                byproduct: None,
                 input_count: 6,
                 output_count: 1,
                 output: 5376,

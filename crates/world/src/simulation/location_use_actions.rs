@@ -28,7 +28,7 @@ impl World {
             }
             return;
         }
-        if self.facility_crafting.get(&loc.id).is_some_and(|c|c.locations.contains_key(&loc.id)&&c.recipes.iter().any(|r|r.input==object)) {
+        if self.facility_crafting.get(&loc.id).is_some_and(|c|c.locations.contains_key(&loc.id)&&c.recipes.iter().any(|r|r.accepts_input(object))) {
             self.request_facility_crafting(slot,loc,Some((inv_slot as usize,object)));return;
         }
         if self.water_sources.as_ref().is_some_and(|c| c.output(loc.id, object).is_some()) {
