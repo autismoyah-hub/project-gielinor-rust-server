@@ -2,6 +2,8 @@
 use gielinor_cache::{game::Definitions, symbols::Symbols};
 use gielinor_world::food::{self, Edible};
 use std::collections::BTreeMap;
+mod fibre_textiles;
+pub use fibre_textiles::fibre_textiles;
 mod pottery_firing;
 pub use pottery_firing::pottery_firing;
 mod pottery_shaping;

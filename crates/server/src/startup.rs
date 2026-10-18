@@ -782,9 +782,12 @@ pub fn configure<B: AccountBackend>(
     for recipe in crate::content::soft_clay_mixing(n("obj"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
         runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.inputs[0],recipe.inputs[1],gielinor_world::held_use::Handler::AssemblyBatch(std::sync::Arc::new(recipe))).map_err(|e|io::Error::other(format!("Soft clay mixing registration: {e:?}")))?;
     }
-    let spinning=crate::content::spinning_wheel(n("obj"),n("loc"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)?;
+    let textiles=crate::content::fibre_textiles(n("obj"),&runtime.definitions).map_err(io::Error::other)?;
+    let mut spinning=crate::content::spinning_wheel(n("obj"),n("loc"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)?;
+    std::sync::Arc::make_mut(&mut spinning.recipes).extend(textiles.spinning);
     for &id in spinning.locations.keys(){runtime.world.facility_crafting.insert(id,spinning.clone());}
-    let weaving=crate::content::weaving_loom(n("obj"),n("loc"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)?;
+    let mut weaving=crate::content::weaving_loom(n("obj"),n("loc"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)?;
+    std::sync::Arc::make_mut(&mut weaving.recipes).extend(textiles.weaving);
     for &id in weaving.locations.keys(){if runtime.world.facility_crafting.insert(id,weaving.clone()).is_some(){return Err(io::Error::other("Conflicting weaving facility"));}}
     let shaping=crate::content::pottery_shaping(n("obj"),n("loc"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)?;
     for &id in shaping.locations.keys(){if runtime.world.facility_crafting.insert(id,shaping.clone()).is_some(){return Err(io::Error::other("Conflicting pottery shaping facility"));}}
