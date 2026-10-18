@@ -3,13 +3,13 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0047: shared random food healing and eight profiles, source [3f49323](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/3f49323fa71adb9ab53df7b789f18ffbf737712c). Full affected regression passed85server/445world,1existing ignored,402source hashes unchanged. Inclusive healing, selected transactions, live membership and stackable skewer returns are registered through actual queued Eat dispatch.
+OR-MIG-0048: fourteen ordinary manual foods, source [3a57d31](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/3a57d318bd42b2a16070557c7ffcc93d3cf4d5b6). Affected libraries compiled and focused fourteen-profile checks passed1server/0world,403source hashes unchanged. HP amounts, selected slots, ordinary cap/overheal/noXP and late definition refusal checked. No shared engine changed; preceding full regression85server/445world remains historical.
 
-Thin/lean/fat snails, two spiders, frog spawn, slimy eel and cave eel now use their pinned random ranges. All return policies and no-loss/no-RNG failures are explicit. Existing food APIs are retained. Ordinary cooking subset remains27fire/40range profiles; cave consumption is now implemented separately from0046production.
+The batch includes mystery meat, baguette, frog legs, carp, fishcake, chompy, Choc-ice, pumpkin/Easter egg, oomlie/jubbly, baked/butter potatoes and chocolate. Manual Eat is registered; acquisition/quest/holiday/cooking and automatic desert heat are explicitly separate. Existing cooking subset remains27fire/40range, and random8food consumption is published in0047.
 
-There are47implementation units across51append-only records:23historical and24new gameplay/shared units, all pending independent verification. Discovery remains3,508records:30partially contracted eligible files/tables,656configuration and2,822unassessed; this is not a completion percentage.
+There are48implementation units across52append-only records:23historical and25new gameplay/shared units, all pending independent verification. Discovery remains3,508records:30partially contracted eligible files/tables,656configuration and2,822unassessed; this is not a completion percentage.
 
-Remaining work includes further FoodData/content batches, Anglerfish PvP eligibility, delayed effects, quantities/Cook menus, modifiers/special surfaces, cake tin returns, inventory reconciliation and independent V0–V4. All historical/private evidence and unrelated changes are preserved.
+Continue remaining FoodData/content and shared dependencies. Open obligations include Anglerfish PvP eligibility, delayed effects, quantities/Cook menus, modifiers/surfaces, cake tin returns, inventory reconciliation and independent V0–V4. Historical/private evidence and unrelated changes are preserved.
 <!-- forge-current:end -->
 
 
@@ -177,3 +177,8 @@ Published 138d95d184e6eecbee7da474410b6d9cb12fe8eb. Production-only eel adapter 
 ## Implementation checkpoint OR-MIG-0047
 
 Published 3f49323fa71adb9ab53df7b789f18ffbf737712c. Shared staged random healing and8actual Eat profiles; full85server/445world regressionPASS/1existing ignored/402unchanged hashes. Queue47units51records, all independent verification pending. Continue eligible FoodData and shared dependencies.
+
+
+## Implementation checkpoint OR-MIG-0048
+
+Published 3a57d318bd42b2a16070557c7ffcc93d3cf4d5b6. Fourteen ordinary manual Eat profiles; focused compile/transactionPASS1server0world/403same hashes. Queue48units52records. Independent acceptance and remaining acquisition/quest/automatic effects remain pending; continue implementation.
