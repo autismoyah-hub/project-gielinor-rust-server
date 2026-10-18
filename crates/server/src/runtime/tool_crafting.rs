@@ -28,7 +28,11 @@ impl<B: AccountBackend> Runtime<B> {
                 .iter()
                 .map(|r| OptionItem {
                     object: r.exchange.output,
-                    label: if r.output_count == 1 { format!("{} (level {})",r.name,r.level) } else { format!("{} x{} (level {})",r.name,r.output_count,r.level) },
+                    label: if r.output_count == 1 {
+                        format!("{} (level {})", r.name, r.level)
+                    } else {
+                        format!("{} x{} (level {})", r.name, r.output_count, r.level)
+                    },
                 })
                 .collect(),
             verb: 22,
@@ -93,6 +97,53 @@ impl<B: AccountBackend> Runtime<B> {
             .as_mut()
             .unwrap()
             .assembly_production = Some(request);
+        Ok(())
+    }
+}
+
+impl<B: AccountBackend> Runtime<B> {
+    pub(super) fn open_facility_crafting(
+        &mut self,
+        actor: ActorId,
+        request: gielinor_world::facility_crafting::Request,
+    ) -> io::Result<()> {
+        let presentation = self
+            .smelting
+            .as_ref()
+            .ok_or_else(|| io::Error::other("Shared facility crafting dialog is not configured"))?
+            .presentation;
+        let available = request.available(
+            &self
+                .world
+                .data(actor)
+                .map_err(|e| io::Error::other(format!("{e:?}")))?
+                .inventory,
+        );
+        if available == 0 {
+            return Ok(());
+        }
+        let dialog = Dialog {
+            title: "What would you like to spin?".into(),
+            options: request
+                .recipes
+                .iter()
+                .map(|r| OptionItem {
+                    object: r.output,
+                    label: format!("{} (level {})", r.label, r.level),
+                })
+                .collect(),
+            verb: 22,
+            max_count: available as i32,
+            selected_count: 1,
+        };
+        self.open_skill_multi(actor, presentation, dialog)?;
+        self.active
+            .get_mut(&actor)
+            .unwrap()
+            .skill_multi
+            .as_mut()
+            .unwrap()
+            .facility_crafting = Some(request);
         Ok(())
     }
 }

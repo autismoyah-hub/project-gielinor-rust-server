@@ -3605,6 +3605,10 @@ impl<B: AccountBackend> Runtime<B> {
                         next,
                     }));
                 }
+                WorldEvent::FacilityCraftingRequested { actor,request } => {
+                    self.open_facility_crafting(actor,request.clone())?;
+                    self.events.push(Event::World(WorldEvent::FacilityCraftingRequested{actor,request}));
+                }
                 WorldEvent::SmeltingRequested { actor } => {
                     self.open_smelting(actor)?;
                     self.events

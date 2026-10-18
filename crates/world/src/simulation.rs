@@ -43,6 +43,7 @@ mod npc_actions;
 mod thieving_actions;
 mod tool_crafting_actions;
 mod assembly_production_actions;
+mod facility_crafting_actions;
 mod npc_combat_actions;
 mod npc_death_actions;
 mod npc_search;
@@ -185,6 +186,7 @@ enum Deferred {
     Pickpocket(thieving_actions::Job),
     ToolCrafting(crate::tool_crafting::Pending),
     AssemblyProduction(crate::assembly_production::Pending),
+    FacilityCrafting(crate::facility_crafting::Pending),
     Grinding(crate::grinding::Pending),
     SwampTar(crate::swamp_tar::Pending),
     Dough(crate::dough::Pending),
@@ -335,6 +337,7 @@ impl Player {
         self.tool_crafting_request=None;
         self.assembly_production_request=None;
         self.queues.remove_all(crate::assembly_production::QUEUE);
+        self.queues.remove_all(crate::facility_crafting::QUEUE);
         self.finished_potion_request = None;
         self.queues.remove_all(crate::finished_potions::QUEUE);
         self.potion_upgrade_request = None;
@@ -597,6 +600,7 @@ pub enum WorldEvent {
     SmeltingRequested {
         actor: ActorId,
     },
+    FacilityCraftingRequested { actor:ActorId, request:crate::facility_crafting::Request },
     SmithingProductMade {
         actor: ActorId,
         product: i32,
@@ -957,6 +961,7 @@ pub struct World {
     pub combat_state: Option<crate::combat_state::Config>,
     pub npc_combat: BTreeMap<u16, crate::npc_combat::Definition>,
     pub pickpocket:Option<crate::thieving::Config>,
+    pub facility_crafting:Option<crate::facility_crafting::Config>,
     pub npc_handlers: BTreeMap<(u16, u8), crate::npc_interaction::Handler>,
     location_timers: crate::loc_timers::Timers,
     players: EntityList<Player>,
@@ -1073,6 +1078,7 @@ impl Default for World {
             npc_combat: BTreeMap::new(),
             npc_handlers: Default::default(),
             pickpocket:None,
+            facility_crafting:None,
             location_timers: Default::default(),
             players: EntityList::players(),
             generation: 0,
@@ -1406,6 +1412,7 @@ impl World {
             p.queues.remove_all(crate::thieving::QUEUE);
             p.queues.remove_all(crate::tool_crafting::QUEUE);
             p.queues.remove_all(crate::assembly_production::QUEUE);
+            p.queues.remove_all(crate::facility_crafting::QUEUE);
             if matches!(p.prayer,Some(crate::prayer::State::Bury{slot:Some(_),..})) {
                 p.prayer=None;p.protection.suspended=false;
             }
@@ -2545,6 +2552,7 @@ impl World {
                                                     if outcome==crate::assembly::Outcome::Made {self.events.push(WorldEvent::AssemblyBatchMade{actor:p.id,trace:crate::assembly::BatchTransition{job,queued_at:pending.queued_at,committed_at:self.clock.0}});}
                                                     self.events.push(WorldEvent::LocationMessage{actor:p.id,message:crate::assembly::outcome_message_for_skill(outcome,skill)});
                                                 }
+                                                Deferred::FacilityCrafting(pending) => {let revision=self.locations.revision(pending.request.location);facility_crafting_actions::complete(p,queues,pending,&self.object_types,revision,self.tutorial_rules_completed_varp.is_some(),&mut self.events);}
                                                 Deferred::AssemblyProduction(pending) => {assembly_production_actions::complete(p,queues,pending,&self.object_types,self.clock.0,&mut self.events);}
                                                 Deferred::Assembly(pending) => {
                                                     held_use_actions::complete_assembly_reward(p,pending.job,&self.object_types,pending.queued_at,self.clock.0,pending.xp_tenths,&mut self.events);

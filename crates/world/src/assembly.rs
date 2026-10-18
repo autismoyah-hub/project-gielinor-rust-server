@@ -365,7 +365,7 @@ impl Transition {
 // Both pair and multi-material assembly share this inventory transaction and XP
 // preparation. Existing pair behavior is retained; ordinary multi-material jobs
 // additionally require each captured slot to contain a single unmodified item.
-fn exchange_slots(
+pub(crate) fn exchange_slots(
     inv: &Inventory,
     catalog: &Catalog,
     inputs: &[(i32, usize)],
@@ -401,7 +401,7 @@ fn prepare_reward(
 ) -> Result<(Stats, Option<crate::skills::Advancement>), Outcome> {
     prepare_reward_value(stats, skill, f64::from(base_xp), rate)
 }
-fn prepare_reward_value(
+pub(crate) fn prepare_reward_value(
     stats: &Stats,
     skill: u8,
     base_xp: f64,

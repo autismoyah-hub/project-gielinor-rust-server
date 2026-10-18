@@ -47,6 +47,7 @@ impl<B: AccountBackend> Runtime<B> {
             dough: None,
             tool_crafting:None,
             assembly_production:None,
+            facility_crafting:None,
             finished_potion: None,
             potion_upgrade: None,
             combat_mixing: None,
@@ -138,6 +139,9 @@ impl<B: AccountBackend> Runtime<B> {
         let selection = dialog
             .dialog
             .select(dialog.presentation, component, pause.subcomponent);
+        if let (Some(request),Some(selection))=(dialog.facility_crafting,selection) {
+            if let Err(error)=self.world.start_facility_crafting(actor,request,selection.index,selection.count) {self.events.push(Event::World(gielinor_world::simulation::WorldEvent::ActionRejected{actor,error}));}
+        }
         if let (Some(request),Some(selection))=(dialog.assembly_production,selection) {
             if let Err(error)=self.world.start_assembly_production(actor,request,selection.index,selection.count) {self.events.push(Event::World(gielinor_world::simulation::WorldEvent::ActionRejected{actor,error}));}
         }

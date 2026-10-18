@@ -782,6 +782,7 @@ pub fn configure<B: AccountBackend>(
     for recipe in crate::content::soft_clay_mixing(n("obj"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
         runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.inputs[0],recipe.inputs[1],gielinor_world::held_use::Handler::AssemblyBatch(std::sync::Arc::new(recipe))).map_err(|e|io::Error::other(format!("Soft clay mixing registration: {e:?}")))?;
     }
+    runtime.world.facility_crafting=Some(crate::content::spinning_wheel(n("obj"),n("loc"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)?);
     let glass=crate::content::glassblowing(n("obj"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)?;
     runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,1785,1775,gielinor_world::held_use::Handler::ToolCraftingChoices{recipes:std::sync::Arc::new(glass),cycle_ticks:3}).map_err(|e|io::Error::other(format!("Glassblowing registration: {e:?}")))?;
     runtime.configure_smelting_names(names)?;
