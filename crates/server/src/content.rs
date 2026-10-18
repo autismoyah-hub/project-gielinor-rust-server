@@ -1,4 +1,6 @@
 //! Resolve content's symbolic references against the same immutable type inputs as Kotlin.
+mod normal_ales;
+pub use normal_ales::normal_ales;
 mod fruit_cocktails;
 pub use fruit_cocktails::fruit_cocktails;
 mod mead_drinks;

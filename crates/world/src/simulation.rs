@@ -935,6 +935,7 @@ pub struct World {
     pub member_foods: std::collections::BTreeSet<i32>,
     pub food_boosts: BTreeMap<i32,Vec<crate::food::StatBoost>>,
     pub food_subtractions: BTreeMap<i32,Vec<crate::food::StatSubtraction>>,
+    pub food_formulas: BTreeMap<i32,crate::food::StatEffects>,
     pub food_energy: BTreeMap<i32,i32>,
     pub food_healing: BTreeMap<i32,crate::food::Healing>,
     pub food_random_healing: BTreeMap<i32,crate::food::RandomHealing>,
@@ -1064,6 +1065,7 @@ impl Default for World {
             member_foods: Default::default(),
             food_boosts: BTreeMap::new(),
             food_subtractions: BTreeMap::new(),
+            food_formulas: BTreeMap::new(),
             food_energy: BTreeMap::new(),
             food_healing: BTreeMap::new(),
             food_random_healing: BTreeMap::new(),
@@ -2137,8 +2139,10 @@ impl World {
                 // Reuse fixed-point potion arithmetic; donor food restore never
                 // lowers a pre-existing value above the ordinary energy cap.
                 let energy_after=crate::potions::restored_energy(p.data.energy,energy_percent,10000).max(p.data.energy);
-                let boosts=self.food_boosts.get(&food.id).map(Vec::as_slice).unwrap_or(&[]);
-                let subtractions=self.food_subtractions.get(&food.id).map(Vec::as_slice).unwrap_or(&[]);
+                let mut boosts=self.food_boosts.get(&food.id).cloned().unwrap_or_default();
+                let mut subtractions=self.food_subtractions.get(&food.id).cloned().unwrap_or_default();
+                if let Some(rule)=self.food_formulas.get(&food.id){let(b,s)=rule.resolve(&p.data.stats,3).map_err(|_|ActionError::InvalidStat)?;boosts.extend(b);subtractions.extend(s);}
+                let boosts=boosts.as_slice();let subtractions=subtractions.as_slice();
                 let eaten = if !subtractions.is_empty() {
                     crate::food::eat_slot_with_secondary_effects(food,slot,&mut p.data.inventory,&mut p.data.stats,
                         &self.object_types,3,self.eating_animation,boosts,subtractions,self.food_random_healing.get(&food.id).copied(),random,|event|emitted.push(event))
@@ -4415,6 +4419,16 @@ mod tests {
     }
 
 
+
+    #[test]
+    fn queued_ale_formulas_use_live_base_on_execution_then_stack_current_drain_without_boost_stacking(){
+        let(mut w,actor)=admitted();w.foods.insert(1917,crate::food::Edible{id:1917,heal:1,delay:3,replacement:Some(1919),message:"Ale".into()});w.food_formulas.insert(1917,crate::food::StatEffects{boosts:vec![crate::food::StatFormula{skill:2,percent:2,constant:1}],subtractions:vec![crate::food::StatFormula{skill:0,percent:6,constant:1}]});let p=w.players.get_mut(actor.slot as usize).unwrap();for slot in[0,2]{p.data.inventory.restore_slot(slot,Some(crate::inventory::Item{id:1917,count:1,vars:0})).unwrap();}p.data.stats.set_base(3,99);p.data.stats.set_current(3,50);w.submit(actor,Action::EatItemSlot{slot:2,item:1917}).unwrap();let p=w.players.get_mut(actor.slot as usize).unwrap();for skill in[0,2]{p.data.stats.set_base(skill,99);p.data.stats.set_current(skill,99);}w.tick().unwrap();let p=w.data(actor).unwrap();assert_eq!((p.stats.current(0),p.stats.current(2),p.stats.current(3)),(93,101,51));assert_eq!(p.inventory.get(2).unwrap().id,1919);
+        for _ in 0..4{w.tick().unwrap();}w.players.get_mut(actor.slot as usize).unwrap().data.stats.set_current(0,10);w.submit(actor,Action::EatItemSlot{slot:0,item:1917}).unwrap();w.tick().unwrap();let p=w.data(actor).unwrap();assert_eq!((p.stats.current(0),p.stats.current(2),p.stats.current(3)),(4,101,52));assert_eq!(p.inventory.get(0).unwrap().id,1919);for skill in[0,2,3]{assert_eq!(p.stats.fine_xp(skill),0);}
+    }
+    #[test]
+    fn queued_ale_invalid_formula_and_live_member_gate_cannot_partially_consume_or_apply_fixed_effects(){
+        for mode in 0..3{let(mut w,actor)=admitted();w.foods.insert(5755,crate::food::Edible{id:5755,heal:1,delay:3,replacement:Some(1919),message:"Ale".into()});w.food_formulas.insert(5755,crate::food::StatEffects{boosts:vec![crate::food::StatFormula{skill:7,percent:5,constant:1}],subtractions:vec![crate::food::StatFormula{skill:if mode==0{24}else{0},percent:if mode==1{101}else{5},constant:2}]});w.food_boosts.insert(5755,vec![crate::food::StatBoost{skill:18,amount:2}]);w.member_foods.insert(5755);let p=w.players.get_mut(actor.slot as usize).unwrap();p.member=mode!=2;p.data.stats.set_base(3,99);p.data.stats.set_current(3,50);p.data.inventory.restore_slot(2,Some(crate::inventory::Item{id:5755,count:1,vars:0})).unwrap();let before=(p.data.inventory.slots().to_vec(),p.data.stats.clone());w.submit(actor,Action::EatItemSlot{slot:2,item:5755}).unwrap();w.tick().unwrap();let p=w.data(actor).unwrap();assert_eq!(p.inventory.slots(),before.0.as_slice());assert_eq!(p.stats,before.1);assert!(!w.drain_events().iter().any(|e|matches!(e,WorldEvent::Food{..}|WorldEvent::FoodTransition{..})));}
+    }
     #[test]
     fn queued_wine_drink_uses_shared_delay_and_selected_jug_flat_attack_drain(){
         let(mut w,actor)=admitted();w.foods.insert(1993,crate::food::Edible{id:1993,heal:11,delay:3,replacement:Some(1935),message:"You drink the wine.".into()});w.food_subtractions.insert(1993,vec![crate::food::StatSubtraction{skill:0,amount:2}]);w.slot_preserving_foods.insert(1993);
