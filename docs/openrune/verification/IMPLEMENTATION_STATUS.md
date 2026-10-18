@@ -3,9 +3,9 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0072: four zero-XP soft-clay vessels and atomic container returns, source [55e57b2](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/55e57b293e632aadc7356c4cc709bdbeec2bbf90). Shared batch skill-aware refusals; PASS116server472world/1ignored429 unchanged hashes. Independent V0–V4 queued.
+OR-MIG-0073: reached/revision-pinned spinning wheel14889Spin2, six classic native quantity recipes; source [3b32f63](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/3b32f6355fffdc677323dee53ab3e0812114454f). Shared atomic unary inventory/XP and existing quantity UI reused; shared regression PASS. Independent V0–V4 queued.
 
-72 units / 80 append-only records: 23 historical,49 new shared/gameplay. Discovery3508=38partial eligible+4framework/infrastructure+658configuration+2808unassessed, not completion percentages. Cup/drained0 eligibility, catalysts/facilities and broad content remain. PG-DEF-001 Close candidate b11260e pending independent retest. Continue eligible implementation.
+73 units / 81 append-only records:23historical50newshared/gameplay. Discovery3508=39partial eligible+4framework/infrastructure+658configuration+2807unassessed, not completion percentages. Other wheels/yarns/facilities/boosts and broad content remain. PG-DEF-001 Close candidate b11260e pending independent retest. Continue eligible implementation.
 <!-- forge-current:end -->
 
 
@@ -390,3 +390,14 @@ Source bucket/jug/bowl overlap Wiki; vial is an explicit Wiki addition and sourc
 forge-soft-clay-tests-attempt-001 PASS116server472world/1ignored429 unchanged source hashes,compile33.75s. Actual reverse held routes for all vessels check two full-bag outputs/empty return/no XP/no event/other clay at rate0. Bad second credit, stale water and live level0 preserve both materials/Stats; invalid final return definition rejects catalog. Shared legacy users regressed. Guard7,346MiB available,55.9%commit,0pages-in/s,1.6msdisk,24.7%CPU,Cargo-j2. Private/historical evidence preserved; not independent/native/pristine acceptance.
 
 Queue72units/80append-onlyrecords:23historical49newshared/gameplay. Discovery3508=38partial eligible+4framework/infrastructure+658configuration+2808unassessed, not completion percentages. PG-DEF-001 Close candidate pending independent retest; no new PG findings in the latest issue search. Continue eligible content.
+
+
+## FORGE OR-MIG-0073 — reached spinning-wheel quantity production
+
+Published source 3b32f6355fffdc677323dee53ab3e0812114454f. New facility adapter shares existing selected exchange_slots and precise prepare_reward_value; no duplicate inventory/XP engine. Actual14889Spin2 routing/reach and material-on-wheel path issue a native SkillMulti request with owned suitable materials, exact location layer revision, actor origin and optional selected raw. Quantity capture is selected-first then remaining matching slots once; completion rechecks revision/live state every step. Removing/re-adding identical wheel invalidates pending work.
+
+Six classic recipes: wool1737->1759 Craft1/2.5XP F2P; flax1779->1777 Craft10/15XP; sinew9436 or oak6043->9438 Craft10/15XP; magic roots6051->6038 Craft19/30XP; hair10814->rope954 Craft30/25XP. Last five member production, although rope item is F2P. Fine XP at125%31/187/187/187/375/312. Source/Wiki nominal3 first/repeat without shortening. Target14889 op2/1x1/no morph, eleven ordinary items and target894player/466wheel animations pinned; donor90 alias and sound absent, explicit compatibility adaptation/audio omission. Other wheel types, source linen/hemp/cotton yarns, facilities/diaries/boosts and product-on-wheel dialogue remain obligations.
+
+forge-spinning-tests-attempt-001 PASS, 432 unchanged source hashes: test result: ok. 117 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.26s; test result: ok. 475 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 41.98s. Six factory credits/fractions, actual reached op/material menus, selected full-bag batches at3-clock intervals, no RNG, invalid counts/live policies, initial/late same-type target revision, stale-slot no fallback and Close/modal/member/rate/credit/level cancellation checked. Guard7,466MiB available,54.5%commit,21172pages-in/s,0.4msdisk,22.4%CPU,j2; paging alone did not meet joint sustained disk-latency severity gate. Server executable check forge-spinning-bins-check-attempt-001 also PASS432 hashes unchanged,17.65s; guard6464MiB/59.7%commit/3813pages-in/s/2.2msdisk/14.9%CPU,j2. New non-test unused Config import warning is recorded; no build failure. Private source/cache/native/prior failures preserved. Working-tree regression is not independent/native/pristine acceptance.
+
+Inventory newly classifies FacilityCraftingScript as partial eligible behavior:3508=39partial eligible+4framework/infrastructure+658configuration+2807unassessed. Queue73units/81append-onlyrecords:23historical50newshared/gameplay. No whole-file/system completeness claim. PG-DEF-001 Close candidate pending independent retest; master-farmer weighted loot and bonecrusher-necklace basePrayer70/confirmation/charge-transfer safeguards inspected but unimplemented. Continue eligible content.
