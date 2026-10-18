@@ -1,39 +1,34 @@
-# Calibration results
+# Development calibration
 
-Work was tested from source checkpoint 2a6e44ebf5e3c671a889dd04d05f1ea815a15d3b
-against unchanged client 23a94f75707f0503a9efe610fe99bfce5089b575. The earlier
-reference platform checkpoint dc5e2ca9829fb4dddd192bde05ffdcfffc989a47 is preserved.
+The previous pillar, waterwheel, industrial anvil, goblin combat and cow studies
+are preserved, including failures. This cycle targets the exposed construction
+weaknesses. Exact revision 239.1 reference model IDs/payload/definition hashes
+and five-view aggregate results are in PRODUCTION_RESULTS.json. All are unapproved.
 
-Technical preservation passes for 35 training variants / 175 native views plus
-nine held-out variants / 45 views: **44 variants / 220 views total**. Twenty-six
-classic action sets match across 468 unique native timestamps, including pixels,
-coordinates and alpha; independent tracing agrees. Adding submitted-surface
-analysis leaves all 165 base training native views byte-identical. Fourteen
-meaningful boundary/ownership/IK/identity tests pass.
-
-Independent static calibration, mean IoU over five unchanged native cameras:
-
-| Case | Initial | Revised | Interpretation |
+| Development reference | Prior selected mean IoU | Revised mean IoU | Interpretation |
 |---|---:|---:|---|
-| object:7016 | 0.789 | 0.870 | Independent geometry; artistic acceptance false |
-| object:6150 | 0.729 | 0.768 | Independent geometry; artistic acceptance false |
-| object:5589 | 0.546 | 0.703 | Independent geometry; artistic acceptance false |
+| item 1323 scimitar | .331 | .549 | Curved blade improves; fittings remain poor |
+| object 2097 anvil | .752 | .769 | Horn/waist construction modestly improves |
+| object 362 barrel | .893 | .905 | Better volume and separate staves; grain mismatch |
+| object 366 crate | .928 | .885 | More joinery, measurable silhouette regression |
+| item 1171 shield | .739 | .711 | New board/back structure, overlap regression |
+| NPC 106 wolf | .638 | .622 | New anatomy still inadequate; regression |
+| NPC 2834 giant bat | unsupported; first new .143 | .411 | Wing family supported, not convincing art |
+| NPC 655 goblin | .672 | .634 | Revised face/armor/grip remains a negative result |
 
-The pillar's collar/profile problem and waterwheel rim thickness improve; the
-spiral shaft, joinery and material placement remain different. Worn weapon/shield
-studies use their own native coordinate frames with matching A/B tests. Generic
-cow anatomy is inadequate despite successful native export and five-action playback.
+The bat's .143 failure fitted a full envelope including helper/shadow geometry.
+Alpha/zero-area filtering was insufficient because an opaque helper triangle
+still reached ground. Explicit private anatomical skin bounds fixed gross
+scale; the old failure remains preserved. This is a known-asset development
+annotation, not automatic unseen asset understanding. Arch object 1868 exercises
+radial masonry and remains an unapproved study.
 
-Four bounded goblin edits increase mean static IoU from 0.620 to 0.672. Thirteen
-owned components change while 26 untouched component hashes remain exact per
-local-edit report. A subsequent fresh-output loop smoke run passes. All retained
-edits remain unapproved. The humanoid compiler matches 505 native poses; walk
-proxy-arc error improves from 22.44 to 19.82 native units, while independent combat
-choreography and visible anatomy remain inadequate.
+Internal material/edge/component results are intentionally separate from IoU.
+Scimitar blade region .633 but fittings .189, anvil horn .577 and barrel wood
+.605 identify remaining contour and surface failures. Goblin gait controls and
+contact tools improve authoring reach; they do not establish authentic humanoid
+choreography. The original native source corpus still passes exact preservation.
 
-Failures are preserved: aliased vertex-band pillar, thin-rim wheel, oversized
-held-out anvil, ineffective orientation-only anvil correction, generic cow and
-straight scimitar. A Blender Python exception once left older outputs available
-because the default exit code was zero. That run is excluded; strict
-`--python-exit-code 1`, fresh output directories and coverage checks now prevent
-that path from reporting success. Tests certify the supported pipeline, not art.
+These are selective improvements with real regressions. They justify further
+controlled authoring and review, not mass production. All five native angles,
+A/B/C and earlier retained versions remain in the protected local review.

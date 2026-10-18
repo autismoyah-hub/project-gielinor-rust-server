@@ -1,0 +1,701 @@
+{
+  "authoring_source_commit": "ba9ed6c77555fc4085d33c8182dccf93330c1301",
+  "baseline_commit": "1c8b9b7169c2092475d713695007a29ae5e30e61",
+  "native_client_commit": "23a94f75707f0503a9efe610fe99bfce5089b575",
+  "original_regression": {
+    "native_binary_sha256": "3d010d71489c894686ace95a6cfcd46d10e19fe0c55c15a801677d09995f1392",
+    "unique_assets": 44,
+    "unique_native_views": 220,
+    "unique_action_sets": 26,
+    "unique_matching_timestamps": 468,
+    "all_pixels_coordinates_alpha_exact": true
+  },
+  "new_static_preservation": {
+    "unique_assets": 7,
+    "native_views": 35,
+    "all_exact": true
+  },
+  "unit_tests": 26,
+  "original_validation": {
+    "assets": [
+      {
+        "asset": "counterweight-hoist",
+        "vertices": 1035,
+        "faces": 1874,
+        "zero_area_faces": 0,
+        "registered_views_exact": 5,
+        "vertex_order_preserved": true,
+        "model_sha256": "b268abf09e25787bbd41bf14507131ea2ccff9955e451de5cd5135bc1f520ff5",
+        "identity": {
+          "model_id": 1101526,
+          "object_id": 63426,
+          "npc_id": null,
+          "sequence_base": null,
+          "skeleton_base": null,
+          "frame_group_base": null
+        },
+        "native_pose_samples": 0
+      },
+      {
+        "asset": "kilnback-rummager",
+        "vertices": 760,
+        "faces": 1264,
+        "zero_area_faces": 0,
+        "registered_views_exact": 5,
+        "vertex_order_preserved": true,
+        "model_sha256": "19325d979e89a1a1df555eb3332bca5b37614efdb36a54366b8d04741b3d0a6e",
+        "identity": {
+          "model_id": 1101527,
+          "object_id": 63427,
+          "npc_id": 60027,
+          "sequence_base": 45056,
+          "skeleton_base": 32056,
+          "frame_group_base": 40056
+        },
+        "native_pose_samples": 368
+      },
+      {
+        "asset": "showcase-terrain",
+        "vertices": 2160,
+        "faces": 4020,
+        "zero_area_faces": 0,
+        "registered_views_exact": 5,
+        "vertex_order_preserved": true,
+        "model_sha256": "c9f64c0ca8c9991e61eb47397ef2ab91a0a773d7227d758d99fd21e4eea71a2f",
+        "identity": {
+          "model_id": 1101528,
+          "object_id": 63428,
+          "npc_id": null,
+          "sequence_base": null,
+          "skeleton_base": null,
+          "frame_group_base": null
+        },
+        "native_pose_samples": 0
+      },
+      {
+        "asset": "sluice-keeper-arcade",
+        "vertices": 544,
+        "faces": 980,
+        "zero_area_faces": 0,
+        "registered_views_exact": 5,
+        "vertex_order_preserved": true,
+        "model_sha256": "16d43efb409c52ba557b43217a62cf7ee3ad4b671b2e472db8c001b81d579ad6",
+        "identity": {
+          "model_id": 1101525,
+          "object_id": 63425,
+          "npc_id": null,
+          "sequence_base": null,
+          "skeleton_base": null,
+          "frame_group_base": null
+        },
+        "native_pose_samples": 0
+      }
+    ],
+    "bridge": [
+      {
+        "tick": 0,
+        "target": "idle",
+        "max_coordinate_error": 0,
+        "pixels_exact": true
+      },
+      {
+        "tick": 8,
+        "target": "walk",
+        "max_coordinate_error": 0,
+        "pixels_exact": true
+      }
+    ],
+    "classic_payloads_unchanged": 105,
+    "walk_contact": {
+      "phase_source": "Actual exported native frame and clock boundary rules",
+      "assumed_forward_travel_native_per_tick": -1.0080645161290323,
+      "stance_samples": 189,
+      "mean_stance_drift_native": 2.5985520215344042,
+      "max_stance_drift_native": 7.671998299982366,
+      "max_penetration_native": 0,
+      "floating_stance_foot_samples": 0,
+      "fully_unsupported_frames": 0,
+      "body_projection_outside_support_frames": 0,
+      "support_frames_checked": 49,
+      "quantization_review_tolerance_native": 3
+    }
+  },
+  "development": [
+    {
+      "selector": "object:362",
+      "reference_model_ids": [
+        1460
+      ],
+      "definition_sha256": "0b4173e3dcf036497701fd853a0ba46077da42bfa338cff8db783ebaa87c16ad",
+      "source_hashes": [
+        {
+          "model_id": 1460,
+          "payload_sha256": "bc4ca072432c704e22258be289c9b82cf550ba17c184ba5dd966a1bc9607d113",
+          "raw_group_sha256": "c53ef1b8784949e728a73ab2557189ce7b7b6378ecbd91a04554b69a27f6aaa6"
+        }
+      ],
+      "mean_five_view_iou": 0.904689151237641,
+      "status": "UNAPPROVED",
+      "finding": "Coopered staves and bands; native wood texture remains richer than owned broad color bands."
+    },
+    {
+      "selector": "object:366",
+      "reference_model_ids": [
+        2143
+      ],
+      "definition_sha256": "d701d475d24410e603f77c5a680f739dfbe74c1ca7bd107c47e46a0307fc2b11",
+      "source_hashes": [
+        {
+          "model_id": 2143,
+          "payload_sha256": "0c7b87405c1bc09b4973c18dee0c870f0be41a71fc11caeb4b840dd452e54005",
+          "raw_group_sha256": "9787e67677c464c8c45534d2a5e5b3cd204c52dbb245d9859e2c5ce7f7c082de"
+        }
+      ],
+      "mean_five_view_iou": 0.8854430092958989,
+      "status": "UNAPPROVED",
+      "finding": "Planks, battens and fasteners improve construction, but silhouette overlap regresses."
+    },
+    {
+      "selector": "object:2097",
+      "reference_model_ids": [
+        1251
+      ],
+      "definition_sha256": "91d6c990ea0650b7cf60f196166932b5c81372578d342aa36caf002c757632c5",
+      "source_hashes": [
+        {
+          "model_id": 1251,
+          "payload_sha256": "b067e38ccf76813103b423327a674796f2fd39a08356ba34b65ed2b4df1c6b59",
+          "raw_group_sha256": "286a96b45832b13f6c496dd620d9b0a892cd9fbca4f2242e43fc54b52f0c007d"
+        }
+      ],
+      "mean_five_view_iou": 0.7691158440007388,
+      "status": "UNAPPROVED",
+      "finding": "Component horn and waist; horn contour remains imperfect."
+    },
+    {
+      "selector": "item:1323",
+      "reference_model_ids": [
+        2373
+      ],
+      "definition_sha256": "7695ddb8c9a1d32b280ef36db29c5771d893265b8c6cfd59f967f93e4e439b86",
+      "source_hashes": [
+        {
+          "model_id": 2373,
+          "payload_sha256": "175986819641714d7a73ba1668ab3e0ee80d5e6c11122f4b17dba6f8590ba6d1",
+          "raw_group_sha256": "35134c4add3e287b36b1a9c86315c4df3b782001ed70530299ebe1896dcb5e0a"
+        }
+      ],
+      "mean_five_view_iou": 0.5493483786837035,
+      "status": "UNAPPROVED",
+      "finding": "Curved diamond-section blade improves overlap; fittings remain weak."
+    },
+    {
+      "selector": "item:1171",
+      "reference_model_ids": [
+        2601
+      ],
+      "definition_sha256": "d1e36f975cdbfc3b2c57a4f1ac6d4eaf3eacb75f21a607bcae7be5d4d29e8ed0",
+      "source_hashes": [
+        {
+          "model_id": 2601,
+          "payload_sha256": "4c4ff37aa8c09b9edea0ba47faa91ee3cbf1b5103562b9fa038b1eb600ffb2a1",
+          "raw_group_sha256": "4fb58f7eeae7da4be780b084374f716994cb2e47d7ce9fa6e15ffec1e35fbfd3"
+        }
+      ],
+      "mean_five_view_iou": 0.7109590879145145,
+      "status": "UNAPPROVED",
+      "finding": "Clipped boards, back battens and grip; overlap regresses."
+    },
+    {
+      "selector": "npc:106",
+      "reference_model_ids": [
+        26266
+      ],
+      "definition_sha256": "07fbc33f594d99111686b7b43ebf0bd22f03d565f875c72c5866eea39fabed61",
+      "source_hashes": [
+        {
+          "model_id": 26266,
+          "payload_sha256": "9165beec2ee9d6a0fa786c44928a9043b0781a55cfc62774fef2f7a1864d734c",
+          "raw_group_sha256": "ed3753625f9def3ceba523ec92093d3149377d221f35f818fa74dbeda63c69bc"
+        }
+      ],
+      "mean_five_view_iou": 0.6221607595419231,
+      "status": "UNAPPROVED",
+      "finding": "Distinct head/neck/feet, still visibly inadequate morphology."
+    },
+    {
+      "selector": "npc:2834",
+      "reference_model_ids": [
+        18898
+      ],
+      "definition_sha256": "299a1ee0e5ac8c02b657c54b4eabad36404556498a09f6839465563f8b360ae1",
+      "source_hashes": [
+        {
+          "model_id": 18898,
+          "payload_sha256": "bed4c3f6cc18fe3f6000903643bdd3d739e8d8a29f8b041b71514e8aa9a4793d",
+          "raw_group_sha256": "3f4c2d5a0df463179eff360b528255113a0d4140d037dc5c1ec0c3a46005c3d8"
+        }
+      ],
+      "mean_five_view_iou": 0.4108430651629176,
+      "status": "UNAPPROVED",
+      "finding": "New wing family. Explicit anatomy bounds exclude curated shadow/helper faces; automatic opaque-surface filtering was insufficient."
+    },
+    {
+      "selector": "object:1868",
+      "reference_model_ids": [
+        1486
+      ],
+      "definition_sha256": "89fd491177e96131c83385730bf7533898fa1f034e20fb58c8ba96c38f86c10d",
+      "source_hashes": [
+        {
+          "model_id": 1486,
+          "payload_sha256": "bfadd2f3f325508de90b99f9a8ab178e32a4d500962d8fa8a963299e2cbdbb6d",
+          "raw_group_sha256": "831473e435108c499f24cb18e72af2246652c22dad2b3fbe908b2ec75084b57c"
+        }
+      ],
+      "mean_five_view_iou": 0.7375791521698283,
+      "status": "UNAPPROVED",
+      "finding": "Radial masonry construction; modular art study."
+    },
+    {
+      "selector": "npc:655",
+      "reference_model_ids": [
+        24433,
+        24443,
+        24450,
+        24464,
+        24476,
+        24484,
+        24502,
+        24506
+      ],
+      "definition_sha256": "407032aa79a75b3e09b7d91858949fef3738e772d864631937cd4672489f7c5a",
+      "source_hashes": [
+        {
+          "model_id": 24433,
+          "payload_sha256": "655996c77ec56445e0617be29291d9a22003840aa321c978a7f5522ce4d94df3",
+          "raw_group_sha256": "71d458fb7bd2e46e1d0d3c7e3d3f35d10ed45df92a2adaddb09a07bedc3ab478"
+        },
+        {
+          "model_id": 24443,
+          "payload_sha256": "732265721f00a038a39e054d7b085600910a8bd434ec16cbb3d72a766e7e9355",
+          "raw_group_sha256": "30848ffd50bee080bdccab8022a657e60c2f57c03467ba41a6805c9db66741e1"
+        },
+        {
+          "model_id": 24450,
+          "payload_sha256": "81856625f4c420c3b3151b57d245bad9665cf619074fa22dc134c6d3eeef8ae2",
+          "raw_group_sha256": "5761be4822fbc393db0c39e8aa5a2bde9b5485530c4911be7110bca6c2f0ea9a"
+        },
+        {
+          "model_id": 24464,
+          "payload_sha256": "99cdf541a66341f66215024fddfac4fdc86f468652d8c6250d3c0d4dd95c25c5",
+          "raw_group_sha256": "c073259069994c4efc8cec0d786fd481baceb445765efaee2a276fb3d04cf83f"
+        },
+        {
+          "model_id": 24476,
+          "payload_sha256": "540f3e468c838200f6e5c848d57509bbbb8a677427cd1a2320847e18b66f51b3",
+          "raw_group_sha256": "4b03c4f8da37f110dd62ab591382939b0290573d6ce793a9bc4ab3fa35e75714"
+        },
+        {
+          "model_id": 24484,
+          "payload_sha256": "a952e59b6c6caeeec004f76d15d0328180446fe7e7661b11b4c1deea6e43d739",
+          "raw_group_sha256": "91dab66c684679706918b350552ecc2d7d2962727e3ccb9f6730123e10dbab5c"
+        },
+        {
+          "model_id": 24502,
+          "payload_sha256": "e67cc47423bcecf9d4baaacee81995b4477fccf1a5b56fdc6dd035aef0e1b304",
+          "raw_group_sha256": "7f96d62beb303cadc9f0ef35a76d74140f203f4109b83882eb626329dae02439"
+        },
+        {
+          "model_id": 24506,
+          "payload_sha256": "5e19a3332b626aa7d26c2d57dc42e5ad9ad50fd4b067c05bc564e9c1f486ff55",
+          "raw_group_sha256": "0dc43b8882ed6d5de49d532eec09386c1962616072a963a8b28928ecc3fe6627"
+        }
+      ],
+      "mean_five_view_iou": 0.6336350024382804,
+      "status": "UNAPPROVED",
+      "finding": "Negative result: revised anatomy/equipment regresses overlap; unapproved."
+    }
+  ],
+  "component_metrics": {
+    "item-1323": {
+      "regions": {
+        "blade": {
+          "mean_five_view_iou": 0.6328690758881012
+        },
+        "fittings": {
+          "mean_five_view_iou": 0.18861870101047812
+        }
+      },
+      "whole_views": {
+        "front": {
+          "mean_rgb_error_in_foreground_union": 39.85636421930106,
+          "internal_structure": {
+            "reference_edge_pixels": 172,
+            "candidate_edge_pixels": 454,
+            "two_pixel_tolerance_precision": 0.34140969162995594,
+            "two_pixel_tolerance_recall": 0.6976744186046512,
+            "interpretation": "Image edge agreement is affected by texture, shading and geometry; not a topology or artistic score"
+          }
+        },
+        "side": {
+          "mean_rgb_error_in_foreground_union": 35.17248677248677,
+          "internal_structure": {
+            "reference_edge_pixels": 185,
+            "candidate_edge_pixels": 140,
+            "two_pixel_tolerance_precision": 0.55,
+            "two_pixel_tolerance_recall": 0.35135135135135137,
+            "interpretation": "Image edge agreement is affected by texture, shading and geometry; not a topology or artistic score"
+          }
+        },
+        "rear": {
+          "mean_rgb_error_in_foreground_union": 42.514031705227076,
+          "internal_structure": {
+            "reference_edge_pixels": 217,
+            "candidate_edge_pixels": 381,
+            "two_pixel_tolerance_precision": 0.4251968503937008,
+            "two_pixel_tolerance_recall": 0.6682027649769585,
+            "interpretation": "Image edge agreement is affected by texture, shading and geometry; not a topology or artistic score"
+          }
+        },
+        "quarter": {
+          "mean_rgb_error_in_foreground_union": 34.25763453695414,
+          "internal_structure": {
+            "reference_edge_pixels": 219,
+            "candidate_edge_pixels": 329,
+            "two_pixel_tolerance_precision": 0.2978723404255319,
+            "two_pixel_tolerance_recall": 0.6164383561643836,
+            "interpretation": "Image edge agreement is affected by texture, shading and geometry; not a topology or artistic score"
+          }
+        },
+        "gameplay": {
+          "mean_rgb_error_in_foreground_union": 40.875,
+          "internal_structure": {
+            "reference_edge_pixels": 0,
+            "candidate_edge_pixels": 0,
+            "two_pixel_tolerance_precision": 0,
+            "two_pixel_tolerance_recall": 0,
+            "interpretation": "Image edge agreement is affected by texture, shading and geometry; not a topology or artistic score"
+          }
+        }
+      }
+    },
+    "object-362": {
+      "regions": {
+        "wood_body": {
+          "mean_five_view_iou": 0.605140820482114
+        }
+      },
+      "whole_views": {
+        "front": {
+          "mean_rgb_error_in_foreground_union": 21.456735353870396,
+          "internal_structure": {
+            "reference_edge_pixels": 6252,
+            "candidate_edge_pixels": 1191,
+            "two_pixel_tolerance_precision": 0.5205709487825357,
+            "two_pixel_tolerance_recall": 0.22376839411388355,
+            "interpretation": "Image edge agreement is affected by texture, shading and geometry; not a topology or artistic score"
+          }
+        },
+        "side": {
+          "mean_rgb_error_in_foreground_union": 18.68047281323877,
+          "internal_structure": {
+            "reference_edge_pixels": 5554,
+            "candidate_edge_pixels": 1415,
+            "two_pixel_tolerance_precision": 0.5420494699646643,
+            "two_pixel_tolerance_recall": 0.31094706517824994,
+            "interpretation": "Image edge agreement is affected by texture, shading and geometry; not a topology or artistic score"
+          }
+        },
+        "rear": {
+          "mean_rgb_error_in_foreground_union": 18.257666707501325,
+          "internal_structure": {
+            "reference_edge_pixels": 5583,
+            "candidate_edge_pixels": 1262,
+            "two_pixel_tolerance_precision": 0.48019017432646594,
+            "two_pixel_tolerance_recall": 0.20974386530539138,
+            "interpretation": "Image edge agreement is affected by texture, shading and geometry; not a topology or artistic score"
+          }
+        },
+        "quarter": {
+          "mean_rgb_error_in_foreground_union": 21.043950519282927,
+          "internal_structure": {
+            "reference_edge_pixels": 6343,
+            "candidate_edge_pixels": 1348,
+            "two_pixel_tolerance_precision": 0.5229970326409495,
+            "two_pixel_tolerance_recall": 0.22891376320353146,
+            "interpretation": "Image edge agreement is affected by texture, shading and geometry; not a topology or artistic score"
+          }
+        },
+        "gameplay": {
+          "mean_rgb_error_in_foreground_union": 27.49537037037037,
+          "internal_structure": {
+            "reference_edge_pixels": 17,
+            "candidate_edge_pixels": 18,
+            "two_pixel_tolerance_precision": 1.0,
+            "two_pixel_tolerance_recall": 1.0,
+            "interpretation": "Image edge agreement is affected by texture, shading and geometry; not a topology or artistic score"
+          }
+        }
+      }
+    },
+    "object-2097": {
+      "regions": {
+        "horn": {
+          "mean_five_view_iou": 0.5774947360773146
+        }
+      },
+      "whole_views": {
+        "front": {
+          "mean_rgb_error_in_foreground_union": 19.648586266589728,
+          "internal_structure": {
+            "reference_edge_pixels": 302,
+            "candidate_edge_pixels": 1057,
+            "two_pixel_tolerance_precision": 0.13245033112582782,
+            "two_pixel_tolerance_recall": 0.423841059602649,
+            "interpretation": "Image edge agreement is affected by texture, shading and geometry; not a topology or artistic score"
+          }
+        },
+        "side": {
+          "mean_rgb_error_in_foreground_union": 25.106091676718936,
+          "internal_structure": {
+            "reference_edge_pixels": 348,
+            "candidate_edge_pixels": 786,
+            "two_pixel_tolerance_precision": 0.20865139949109415,
+            "two_pixel_tolerance_recall": 0.4454022988505747,
+            "interpretation": "Image edge agreement is affected by texture, shading and geometry; not a topology or artistic score"
+          }
+        },
+        "rear": {
+          "mean_rgb_error_in_foreground_union": 19.41522781280477,
+          "internal_structure": {
+            "reference_edge_pixels": 265,
+            "candidate_edge_pixels": 961,
+            "two_pixel_tolerance_precision": 0.11966701352757544,
+            "two_pixel_tolerance_recall": 0.24150943396226415,
+            "interpretation": "Image edge agreement is affected by texture, shading and geometry; not a topology or artistic score"
+          }
+        },
+        "quarter": {
+          "mean_rgb_error_in_foreground_union": 20.02181428922739,
+          "internal_structure": {
+            "reference_edge_pixels": 448,
+            "candidate_edge_pixels": 1137,
+            "two_pixel_tolerance_precision": 0.23306948109058928,
+            "two_pixel_tolerance_recall": 0.49776785714285715,
+            "interpretation": "Image edge agreement is affected by texture, shading and geometry; not a topology or artistic score"
+          }
+        },
+        "gameplay": {
+          "mean_rgb_error_in_foreground_union": 26.259047619047617,
+          "internal_structure": {
+            "reference_edge_pixels": 13,
+            "candidate_edge_pixels": 21,
+            "two_pixel_tolerance_precision": 0.9047619047619048,
+            "two_pixel_tolerance_recall": 1.0,
+            "interpretation": "Image edge agreement is affected by texture, shading and geometry; not a topology or artistic score"
+          }
+        }
+      }
+    }
+  },
+  "held_out": [
+    {
+      "selector": "object:375",
+      "archetype": "chest",
+      "authoring_source_commit": "13acb2bdae6c25310d5434e502d69154fb03b6e8",
+      "native_binary_sha256": "3d010d71489c894686ace95a6cfcd46d10e19fe0c55c15a801677d09995f1392",
+      "reference_model_ids": [
+        1249
+      ],
+      "definition_sha256": "09cfb806836015f0914d733313d29abbabd601f6e2900b8c403c8cc58d96fe11",
+      "source_payload_hashes": [
+        "5367700837c6efd0b6735c3259d4104652ac5717acae3121964c8d6d0d1ae640"
+      ],
+      "split_valid": true,
+      "mean_five_view_iou": 0.9039341790357694,
+      "status": "UNAPPROVED"
+    },
+    {
+      "selector": "object:1106",
+      "archetype": "bench",
+      "authoring_source_commit": "13acb2bdae6c25310d5434e502d69154fb03b6e8",
+      "native_binary_sha256": "3d010d71489c894686ace95a6cfcd46d10e19fe0c55c15a801677d09995f1392",
+      "reference_model_ids": [
+        1496
+      ],
+      "definition_sha256": "194dfc2e6fa20556a2f8b49963bec9163079fea6b3358711fad0b1acb8766447",
+      "source_payload_hashes": [
+        "de73a7339c0e0b72b4146893592e6c38f0ea343684a865ecbbcffd7141aacf7b"
+      ],
+      "split_valid": true,
+      "mean_five_view_iou": 0.47508974042878827,
+      "status": "UNAPPROVED"
+    },
+    {
+      "selector": "object:3304",
+      "archetype": "masonry_pier",
+      "authoring_source_commit": "13acb2bdae6c25310d5434e502d69154fb03b6e8",
+      "native_binary_sha256": "3d010d71489c894686ace95a6cfcd46d10e19fe0c55c15a801677d09995f1392",
+      "reference_model_ids": [
+        758
+      ],
+      "definition_sha256": "0ada853cdf358bd773299340442b6e31befdafc930d72a8017c53654a58fe2ca",
+      "source_payload_hashes": [
+        "74884662ed931c673aac8ed827b707255c02c7ecd9f163a8891ae44bd26e1ef0"
+      ],
+      "split_valid": true,
+      "mean_five_view_iou": 0.8266540516500485,
+      "status": "UNAPPROVED"
+    },
+    {
+      "selector": "item:1267",
+      "archetype": "pickaxe",
+      "authoring_source_commit": "13acb2bdae6c25310d5434e502d69154fb03b6e8",
+      "native_binary_sha256": "3d010d71489c894686ace95a6cfcd46d10e19fe0c55c15a801677d09995f1392",
+      "reference_model_ids": [
+        2529
+      ],
+      "definition_sha256": "177127948cee73025fb6d24112237dfb09684aac9ea2f8ed98ee94c5f65fa294",
+      "source_payload_hashes": [
+        "bda40e3a47d986cae2c4ef3d86063e868ecaad3b0c05e2963722cd39cad10466"
+      ],
+      "split_valid": true,
+      "mean_five_view_iou": 0.3911950054229951,
+      "status": "UNAPPROVED"
+    },
+    {
+      "selector": "item:1335",
+      "archetype": "hammer",
+      "authoring_source_commit": "13acb2bdae6c25310d5434e502d69154fb03b6e8",
+      "native_binary_sha256": "3d010d71489c894686ace95a6cfcd46d10e19fe0c55c15a801677d09995f1392",
+      "reference_model_ids": [
+        2731
+      ],
+      "definition_sha256": "474f6f4a8fbbf11cbb220a77282ce1ea29c4936756c74d69ad8aca8552423145",
+      "source_payload_hashes": [
+        "4fe05d2a57e6218f1548815af41b5fd80974b0700547efa70743b05a8846bdd6"
+      ],
+      "split_valid": true,
+      "mean_five_view_iou": 0.4170107125327105,
+      "status": "UNAPPROVED"
+    },
+    {
+      "selector": "npc:2838",
+      "archetype": "bear",
+      "authoring_source_commit": "13acb2bdae6c25310d5434e502d69154fb03b6e8",
+      "native_binary_sha256": "3d010d71489c894686ace95a6cfcd46d10e19fe0c55c15a801677d09995f1392",
+      "reference_model_ids": [
+        18884,
+        18886
+      ],
+      "definition_sha256": "c574a65837c021bf8b73db35f28ddb57848afaee620596789664e54ac3d6a122",
+      "source_payload_hashes": [
+        "45e8746828fe31913832c0b7c4bc252e293ffe8f7e0bbebd20b78b1d22236506",
+        "0df0c7d1d2c7e5d08ae86aabc44e836e550339adcf1c98ac7817fcb26cce108f"
+      ],
+      "split_valid": true,
+      "mean_five_view_iou": 0.640570923350947,
+      "status": "UNAPPROVED"
+    },
+    {
+      "selector": "npc:5007",
+      "archetype": "imp",
+      "authoring_source_commit": "13acb2bdae6c25310d5434e502d69154fb03b6e8",
+      "native_binary_sha256": "3d010d71489c894686ace95a6cfcd46d10e19fe0c55c15a801677d09995f1392",
+      "reference_model_ids": [
+        19982
+      ],
+      "definition_sha256": "920262fd3fb1f2e6f6281a8c70ca10928089ab0d886b700d2560a6ae1c327344",
+      "source_payload_hashes": [
+        "4f3797d464107d5ef0449d888ae8b3e933893c426b8e19fadf393f0d2766c9d4"
+      ],
+      "split_valid": true,
+      "mean_five_view_iou": 0.3476503866511965,
+      "status": "UNAPPROVED"
+    }
+  ],
+  "held_out_freeze": {
+    "source_commit": "13acb2bdae6c25310d5434e502d69154fb03b6e8",
+    "native_client_commit": "23a94f75707f0503a9efe610fe99bfce5089b575",
+    "selection_sha256": "4b5add8ac1e2333426f11c23e4018464fc589feface01294bac6e73d98c4c043",
+    "source_hashes": {
+      "analyze.py": "15687ef5fda8537b96910492c703726c9ec94f8ab630265f1c2dc9114382c7cd",
+      "author_blender.py": "51aafb8e19e7d66e990dff5bccb3dc3fc80f5bb3ee5719c9073fcebf96978130",
+      "author_workflow.py": "92e12fc4551d6d448fc14b43446022222fb612f64a01259f3070bb0689d60bea",
+      "bench.py": "e6fdda00c0bc90f59ad042ac8c0bd22abcbc2dfaa951c7223804645f58fed229",
+      "blender_actions.py": "cf83bc9c480ab788c2a707d39f2276a980e4e72d19a97328188e689d8df335e7",
+      "blender_io.py": "9609b1540eef948ecc0f7b7cf722ff49361184356e7081dcea88c2f58d2141b9",
+      "build_review.py": "9274dec1e4244308bad10f830881a8d3782d703c620173cf1ea4723611f4e477",
+      "component_review.py": "b48aa6686ab2019136e5544353b27a8f089afcc0eb1d96cc6b2f1a8a7fc362f1",
+      "construction.py": "1ce0bcdde1fbf191b09d3645c3fc492b8a3317f243dcd46ce491748cd5e0779d",
+      "contact_diagnostics.py": "9dd7eca054ec231e76db1c57d126b0f1a8676a5b91f0d8d81abf80ef6cd6ee68",
+      "creature_families.py": "16c2bfb53ef0341b833dcca707b9dece718fb16d956d60fbfbdd9ee481c7e3b0",
+      "diagnose.py": "b05250c77c6e3103faadb3c844b483fa40930f77f2eaf632cb80a813a6660b52",
+      "edit_blender.py": "58d37562e0c8de9e636b2fac4e37495a20aecd07deb55c2ccacf87ec74d2d82b",
+      "evaluate.py": "714518e869acfd172e0f26b87701d034d2b57132692a5eade7b6e5edde1bea92",
+      "fit_semantic.py": "d96f5dfecbe487e93c19049322c1e445d371e25d43e883c659e9a75852717aae",
+      "humanoid_families.py": "90fed99bbe30295e0eb43744b11c60aa29ce35cedbfcce2a986eb00030b2a995",
+      "instantiate.py": "16d58befef9bf59add28500a0ba8dcc3e130557f30c6cf4489214aff3fa908f4",
+      "iterate.py": "c09a68e8bd4bbba063d22476f1de3f9f43269ee9bbffa018ef111cd41ba7fc31",
+      "kinematics.py": "0598b9cb5223ca9c056a4a65a41fbaf542793f85a46269af10ae45b6912f241f",
+      "motion.py": "2f98dbc9ef90214b463c907d9e8222d41fa438085660f58c4c59883244098846",
+      "motion_authoring.py": "4d3f4cc28893940bc99977e117b6ec9ec0ae03b4cbc5c70d7c9b53d3c923d37c",
+      "motion_review.py": "2d4c042be0e3d23a7de39665fe83c38e9b625789a5ef4c92a37c82f094319f46",
+      "native_codec.py": "34590d7c8468bbcc2b8e37cf7d2db1a8e309f6767bbdfd0e5cb11c6e3ea34c12",
+      "original_designs.py": "4d335650e82d8c523705d1361f3609721f36d7cb3b59da3b2bfc386c5c50eb71",
+      "primitives.py": "3afd05b900c174a15f0b617c41cf3ae225c26c02be7f066c73f6192dd48ef616",
+      "production_designs.py": "4e0edbc042f78284c006f9751652468d23de9676fe9b3a10fe48a9297caa3227",
+      "refine.py": "f302793fa10ed77d0c848808cdd5b2f74075b9f353063372db928b4fb295b730",
+      "registry.py": "e19e26b72d9a7929788790af31c4517200c45fc8b7669ff84bfb9829d0faa61a",
+      "semantic_materials.py": "7b8d1ea888492075a32baedd794c23cd5ff6dbea6b04768e04ba3b57560c5f59",
+      "shape_families.py": "8dc05d5fdde656c9815d3fb17b48454520d06a628bcd5f76bf81257932d2857d",
+      "showcase.py": "7fa82862e7cd0c5aa7447ae8b9fc6de9c45c14d724a7e4f0a3f448adb43bec2d",
+      "templates.py": "009a7fa3176b6d56c1c4883c4bdde42852f3509bf69676da64016ac3d9beb186",
+      "test_production.py": "8e5a77a705163467a0cc3fba369c9e6467aab0550f6bff4603bdabda4df4dff6",
+      "test_workbench.py": "c5aeb23ec57513da54f61fdf2edeea1ce62ff0b10fcd8304b04e535c42d93bce",
+      "verify_motion.py": "9f930b5349662c7050a38797e0fd4221548e0398a5b5eda3ce2f086083561bc3"
+    },
+    "native_binary_sha256": "3d010d71489c894686ace95a6cfcd46d10e19fe0c55c15a801677d09995f1392",
+    "protocol": "Freeze authoring tool revision before target inspection. Explicit archetype and target low-dimensional descriptors are available; not blind class prediction. Check mesh-payload overlap with all previous training/development corpora. Preserve contaminated and unsupported cases rather than silently replacing them. All generated results remain unapproved until user judgment. Never retune and overwrite this version.",
+    "records": [
+      {
+        "selector": "object:375",
+        "archetype": "chest",
+        "reason": "Closed chest; symbol chestclosed"
+      },
+      {
+        "selector": "object:1106",
+        "archetype": "bench",
+        "reason": "Bench; unseen furniture construction"
+      },
+      {
+        "selector": "object:3304",
+        "archetype": "masonry_pier",
+        "reason": "Underground-pass portcullis support; unseen structural type"
+      },
+      {
+        "selector": "item:1267",
+        "archetype": "pickaxe",
+        "reason": "Iron pickaxe; unseen bent metal tool"
+      },
+      {
+        "selector": "item:1335",
+        "archetype": "hammer",
+        "reason": "Iron warhammer; unseen tool/weapon construction"
+      },
+      {
+        "selector": "npc:2838",
+        "archetype": "bear",
+        "reason": "Brown bear; distinct quadruped proportions"
+      },
+      {
+        "selector": "npc:5007",
+        "archetype": "imp",
+        "reason": "Imp; unseen small humanoid creature"
+      }
+    ]
+  },
+  "artistic_acceptance": false,
+  "live_map_changed": false
+}

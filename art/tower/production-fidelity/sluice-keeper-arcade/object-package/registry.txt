@@ -1,0 +1,3 @@
+TOWER_ASSET_PACKAGE 1
+model 1101525 model-1101525.model dd39cd1e
+object 63425 object-63425.object 140053b2

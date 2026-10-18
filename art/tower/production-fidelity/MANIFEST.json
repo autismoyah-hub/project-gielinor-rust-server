@@ -1,0 +1,853 @@
+{
+  "authoring_source_commit": "ba9ed6c77555fc4085d33c8182dccf93330c1301",
+  "native_binary_sha256": "3d010d71489c894686ace95a6cfcd46d10e19fe0c55c15a801677d09995f1392",
+  "provenance": "Original Tower geometry, recipes and motion; no original cache mesh/frame/texture/image copied. ID reservations are for isolated experiments, not deployment.",
+  "artistic_acceptance": false,
+  "files": [
+    {
+      "file": "counterweight-hoist/asset.model",
+      "sha256": "b268abf09e25787bbd41bf14507131ea2ccff9955e451de5cd5135bc1f520ff5",
+      "bytes": 21699
+    },
+    {
+      "file": "counterweight-hoist/authoring-report.json",
+      "sha256": "cf938f99cface2eb5780f1ddec1a7f5dbc349aa6ed8516257bf0ef3236a93cb0",
+      "bytes": 11815
+    },
+    {
+      "file": "counterweight-hoist/front.png",
+      "sha256": "7b68457c0aceff50cf6c5765ced1b44ae57973554f1f57db1cb12bf7509cb6ac",
+      "bytes": 14321
+    },
+    {
+      "file": "counterweight-hoist/gameplay.png",
+      "sha256": "7b7079d5554d6e7ecb99fdfc6d4bd207691a1d73182a25a17b0059daf070e94d",
+      "bytes": 3683
+    },
+    {
+      "file": "counterweight-hoist/geometry.json",
+      "sha256": "963c3d3527a75480b9973c5a50946f9ebb93e2ac44f196a26ad8ee3374d68fa9",
+      "bytes": 110337
+    },
+    {
+      "file": "counterweight-hoist/quarter.png",
+      "sha256": "13bdc12bce9c1e7499a8d02bca81ff3a290f92383f027dae066a15c94a175fcc",
+      "bytes": 23068
+    },
+    {
+      "file": "counterweight-hoist/rear.png",
+      "sha256": "87e062e496f44cc745f32c36dffe8db0992202d21b199439830595b3baf07a1b",
+      "bytes": 15168
+    },
+    {
+      "file": "counterweight-hoist/recipe.json",
+      "sha256": "36ea8f8a61da9fd11b6e5b5fc8a7befd7df92adbd39b4d061c1613a39d343500",
+      "bytes": 29033
+    },
+    {
+      "file": "counterweight-hoist/side.png",
+      "sha256": "16a51229e2f252ba6da6099f96dabc9aae7fa516d1adae5b5f0091925728e88d",
+      "bytes": 15804
+    },
+    {
+      "file": "counterweight-hoist/object-package/catalog.json",
+      "sha256": "d9ef6beb1327240e8ee66f152f9759472c7b938ae7badf22925109992c7641c2",
+      "bytes": 354
+    },
+    {
+      "file": "counterweight-hoist/object-package/model-1101526.model",
+      "sha256": "b268abf09e25787bbd41bf14507131ea2ccff9955e451de5cd5135bc1f520ff5",
+      "bytes": 21699
+    },
+    {
+      "file": "counterweight-hoist/object-package/object-63426.object",
+      "sha256": "d6daea797c175269b681439f112dce9f1336c13dfd081283e5f6dbb52037f785",
+      "bytes": 60
+    },
+    {
+      "file": "counterweight-hoist/object-package/registry.txt",
+      "sha256": "100fdeca58020b21326da9fc4911925fc651554a88322a673d44b7eb35fad8af",
+      "bytes": 110
+    },
+    {
+      "file": "kilnback-rummager/asset.model",
+      "sha256": "19325d979e89a1a1df555eb3332bca5b37614efdb36a54366b8d04741b3d0a6e",
+      "bytes": 17056
+    },
+    {
+      "file": "kilnback-rummager/attack.gif",
+      "sha256": "37f0689d33fb2428e072c024177e7ffe2b8b8cc47ef03c7a5e0bda255cfe4d51",
+      "bytes": 300095
+    },
+    {
+      "file": "kilnback-rummager/authoring-report.json",
+      "sha256": "ad11b38c60515e4dd483a8ea62a23839cc737a8726ffcd8fa5c511c8eafe4429",
+      "bytes": 22692
+    },
+    {
+      "file": "kilnback-rummager/death.gif",
+      "sha256": "8bccc1194093c1a3be31b54afb6bcc8d03783ca86f5d0eab35d66a10aa2e062a",
+      "bytes": 730500
+    },
+    {
+      "file": "kilnback-rummager/front.png",
+      "sha256": "46c0c665e8d86f9eab99a4f2b3ba93a9c0e338f61c17a67fde3ba7ceb6eab06c",
+      "bytes": 16904
+    },
+    {
+      "file": "kilnback-rummager/gameplay.png",
+      "sha256": "22f27fd8cf0e1d16f994dae7368babb6ae2e16fbda1ff7bc4e61ffce00c47d08",
+      "bytes": 3364
+    },
+    {
+      "file": "kilnback-rummager/geometry.json",
+      "sha256": "790108eb2c5fb5349a490b382617c59257be18e504a6b7f420f5f7c2740d5950",
+      "bytes": 93048
+    },
+    {
+      "file": "kilnback-rummager/hit.gif",
+      "sha256": "2cc6d9b3b7a2026601dfb06c71815e62e71208f6967065f834153e02bfc7b76f",
+      "bytes": 238704
+    },
+    {
+      "file": "kilnback-rummager/idle.gif",
+      "sha256": "867079ed0d77cde4457c718868611f8f107edd689f78efe1d9c02a607cf8ed9a",
+      "bytes": 429615
+    },
+    {
+      "file": "kilnback-rummager/quarter.png",
+      "sha256": "3e90534c72d461ca66bc3714d277fa8a7a90347a677ce655f1241e29b33a181d",
+      "bytes": 17261
+    },
+    {
+      "file": "kilnback-rummager/rear.png",
+      "sha256": "1c5e9809272237febd364b53aa944486cea27eb1a24fb4bce0d4255abe613d24",
+      "bytes": 14912
+    },
+    {
+      "file": "kilnback-rummager/recipe.json",
+      "sha256": "9d8010a57edc5fca57d601e6316ca6e6d977c4e5a5abf156986229ea64c0a5aa",
+      "bytes": 65340
+    },
+    {
+      "file": "kilnback-rummager/side.png",
+      "sha256": "7447dffef4616016ac2acaba108e530c428cd6c2de36427c534ca649c1869b3f",
+      "bytes": 15182
+    },
+    {
+      "file": "kilnback-rummager/walk.gif",
+      "sha256": "04a5385876ea17a310d58d294e2c8cad8bdf601f5b335b5e0a26dec214bf1c5f",
+      "bytes": 334296
+    },
+    {
+      "file": "kilnback-rummager/walk_entry.gif",
+      "sha256": "9b5d853d877a0efa6eea3aaaae396d3f9c728c772b49a5ced41686c2f1ab0a9f",
+      "bytes": 97161
+    },
+    {
+      "file": "kilnback-rummager/attack/animation.json",
+      "sha256": "0b2387819494d60d5524b630dea3e18269648cd905b4186f9ae2962b115f0709",
+      "bytes": 24449
+    },
+    {
+      "file": "kilnback-rummager/attack/frame-0.bin",
+      "sha256": "3c0c992cbf75b731c3240cc70f3843ef38b4e03d7a523cf32f79cf4299e79510",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/attack/frame-1.bin",
+      "sha256": "1a0ca1d4dc8a2d7eff42ce42126ba685ead9ad76307db03c9c38bdd930401046",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/attack/frame-10.bin",
+      "sha256": "b375b268935b070eaef04b8d5ea965d9f4427df0755f7f1f349d044b5e9921ab",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/attack/frame-11.bin",
+      "sha256": "3c0c992cbf75b731c3240cc70f3843ef38b4e03d7a523cf32f79cf4299e79510",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/attack/frame-12.bin",
+      "sha256": "3c0c992cbf75b731c3240cc70f3843ef38b4e03d7a523cf32f79cf4299e79510",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/attack/frame-13.bin",
+      "sha256": "3c0c992cbf75b731c3240cc70f3843ef38b4e03d7a523cf32f79cf4299e79510",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/attack/frame-2.bin",
+      "sha256": "86b42e8174e261e683589f0b6f66c0f29e3321370c35678dbbe78d7203638365",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/attack/frame-3.bin",
+      "sha256": "0eb6985c7ac2631f671b7487165325d959bddb0a731052eb393b75fa653be2d6",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/attack/frame-4.bin",
+      "sha256": "b9d5f1ceafacf437e53054cbbe9821ec92748e1664d9b1b16019308c6102658a",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/attack/frame-5.bin",
+      "sha256": "df8aa3c2fde302eecb849c07be0e445314c30f5d84fcc77bc51c2d109f8c2a4f",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/attack/frame-6.bin",
+      "sha256": "86638c0df3c2abf15ff09eecaa4e8eef7afe07e3137dfb2e690c013eb71278ad",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/attack/frame-7.bin",
+      "sha256": "bbb22d2f3b591df8ed33d0bd78466f2a61a2dfbaba7e09beb96b86f795ca8868",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/attack/frame-8.bin",
+      "sha256": "05e66d94658544b51fd153ca88955091bdf8889585e5c25b1be7ae23c1e098d9",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/attack/frame-9.bin",
+      "sha256": "c20824078e40a794dc63f6fa925fe7b9e3aa13a29072f70e95c9de3e02c4e674",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/attack/sequence.bin",
+      "sha256": "eb4a5a7bbc95190b0e78f2d2c59a6f6a5e482116003540abd37a7366c8920895",
+      "bytes": 98
+    },
+    {
+      "file": "kilnback-rummager/attack/skeleton-32058.bin",
+      "sha256": "6f11a61a0e80c259efdedefcf918022d1fdb7f9776935bf737f36e1f14e0e28b",
+      "bytes": 250
+    },
+    {
+      "file": "kilnback-rummager/death/animation.json",
+      "sha256": "70191e097e846e621ff328ace4c396a35b10fd790a6a1375366f52d0c5c9e680",
+      "bytes": 50662
+    },
+    {
+      "file": "kilnback-rummager/death/frame-0.bin",
+      "sha256": "fcb700f719db1cd94e6b5dc65ff1f3822e98f78a7af168f2f8a64833c92a5a01",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/death/frame-1.bin",
+      "sha256": "076cd3ff65ee8de522c99d2afcbb776a2c9bf00121721a823ed1b42acd72d317",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/death/frame-10.bin",
+      "sha256": "580c5a0c7472b0feefe07fe7b1a81fedcb2fe245ae8fd772f4b2b677bbb9cd10",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/death/frame-11.bin",
+      "sha256": "cfb7feb870eb54336ed5bfe422518c9856f1068bf7aa7c26b2261ed56970cf83",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/death/frame-12.bin",
+      "sha256": "02033737b8336ef36ab2ee8640d3d22e0d6667a3689c062dc61e37b1b5a94df0",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/death/frame-13.bin",
+      "sha256": "571ee16006d73e4fbb9138b10e600d296ec793f5019314cb25cc587e8f522938",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/death/frame-14.bin",
+      "sha256": "9053e9b3e2d5d9ecb4c3358c9a48f330ea6d77d6a44e9c0f4ac5008629862db7",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/death/frame-15.bin",
+      "sha256": "36f023a8571ff183286af6a55548ee6ea68df7c154896a38e2223e220973c607",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/death/frame-16.bin",
+      "sha256": "f422d42c59c0f469f43803dd18779e2fa0aed35abfb95568c9bf5065f2e72093",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/death/frame-17.bin",
+      "sha256": "db951f7dcf7b53a8adc3805380fe8012e589f3e0e4085cbde63b35220ce6f958",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/death/frame-18.bin",
+      "sha256": "8c6774f9b6effb6031c863d571a3e6146f5237b93aa978027d8ee8d6cb25b3fc",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/death/frame-19.bin",
+      "sha256": "40cd29c10444b6786bd417fb534d79c17f9a65a6e924f1f0816c239cd67eff01",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/death/frame-2.bin",
+      "sha256": "0f3ebafc6c8beb5593c77d0386bd55f0d7b7b821552df83bd0622e1620fc8fff",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/death/frame-20.bin",
+      "sha256": "af44bcc7d74e87170b3798af2d49cb6fbb23701fbe7e807ad15e2e892f049379",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/death/frame-21.bin",
+      "sha256": "58c92d0e9a5190f25bb362efeba7bdf42704160c4b3759f746c02f7d264421d7",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/death/frame-22.bin",
+      "sha256": "58c92d0e9a5190f25bb362efeba7bdf42704160c4b3759f746c02f7d264421d7",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/death/frame-23.bin",
+      "sha256": "58c92d0e9a5190f25bb362efeba7bdf42704160c4b3759f746c02f7d264421d7",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/death/frame-24.bin",
+      "sha256": "58c92d0e9a5190f25bb362efeba7bdf42704160c4b3759f746c02f7d264421d7",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/death/frame-25.bin",
+      "sha256": "58c92d0e9a5190f25bb362efeba7bdf42704160c4b3759f746c02f7d264421d7",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/death/frame-26.bin",
+      "sha256": "58c92d0e9a5190f25bb362efeba7bdf42704160c4b3759f746c02f7d264421d7",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/death/frame-27.bin",
+      "sha256": "58c92d0e9a5190f25bb362efeba7bdf42704160c4b3759f746c02f7d264421d7",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/death/frame-28.bin",
+      "sha256": "58c92d0e9a5190f25bb362efeba7bdf42704160c4b3759f746c02f7d264421d7",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/death/frame-3.bin",
+      "sha256": "8b79030e51c117436037cb0c7d12af3963105b59dda75c1af9576fe8be058bf8",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/death/frame-4.bin",
+      "sha256": "9cb805bf277944cf2f16cd2551e754c845f2c4f279795491711a29563a119cea",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/death/frame-5.bin",
+      "sha256": "8b4eb87bd6d02ea0969656de096443b336392bed583b3e2503dc4446c1bd2768",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/death/frame-6.bin",
+      "sha256": "15f7220ab421e078229f7b55f26ec9edd691945d5f8766bf94a894e81ab885f2",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/death/frame-7.bin",
+      "sha256": "7205e9f82ca1b642ae33dbfa6235916d025cab41fb7ddc421997e051f18f244e",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/death/frame-8.bin",
+      "sha256": "976909ef29677a7d2ec4c5a34037d655d4acecf077960c08fe165140e4b053c1",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/death/frame-9.bin",
+      "sha256": "3df05c5dd0e5a9921ac6d3ccc112b3af41a5ab0f4c98a3051c180ee356564ebe",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/death/sequence.bin",
+      "sha256": "69bb85e0902002a3725b394f34800d9a9f7b43cd7a068e86ed4c4e0c1c1e27b8",
+      "bytes": 188
+    },
+    {
+      "file": "kilnback-rummager/death/skeleton-32060.bin",
+      "sha256": "6f11a61a0e80c259efdedefcf918022d1fdb7f9776935bf737f36e1f14e0e28b",
+      "bytes": 250
+    },
+    {
+      "file": "kilnback-rummager/hit/animation.json",
+      "sha256": "1fc201751c61a4b666c5752b21ca33e07b61b7181912b3338402aaa2ed12f266",
+      "bytes": 17469
+    },
+    {
+      "file": "kilnback-rummager/hit/frame-0.bin",
+      "sha256": "942a70888f0df7a2f83581cb5f91fb302057859b376b1ebede44bd5caa77d264",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/hit/frame-1.bin",
+      "sha256": "2ce9f85adf512f16c99d4a06a23989a6690b7d434523c050072f2fe4bbd53741",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/hit/frame-2.bin",
+      "sha256": "3583d31dec7c09cfca56e0ff7df336666a182e9ff502f2b9473c7ed29f34cc0d",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/hit/frame-3.bin",
+      "sha256": "3583d31dec7c09cfca56e0ff7df336666a182e9ff502f2b9473c7ed29f34cc0d",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/hit/frame-4.bin",
+      "sha256": "2ce9f85adf512f16c99d4a06a23989a6690b7d434523c050072f2fe4bbd53741",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/hit/frame-5.bin",
+      "sha256": "942a70888f0df7a2f83581cb5f91fb302057859b376b1ebede44bd5caa77d264",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/hit/frame-6.bin",
+      "sha256": "942a70888f0df7a2f83581cb5f91fb302057859b376b1ebede44bd5caa77d264",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/hit/frame-7.bin",
+      "sha256": "942a70888f0df7a2f83581cb5f91fb302057859b376b1ebede44bd5caa77d264",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/hit/frame-8.bin",
+      "sha256": "942a70888f0df7a2f83581cb5f91fb302057859b376b1ebede44bd5caa77d264",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/hit/frame-9.bin",
+      "sha256": "942a70888f0df7a2f83581cb5f91fb302057859b376b1ebede44bd5caa77d264",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/hit/sequence.bin",
+      "sha256": "b9a3bd0f05e61da8194a97bd991685f33f148194260b4cd7c61bf7f169d192f8",
+      "bytes": 74
+    },
+    {
+      "file": "kilnback-rummager/hit/skeleton-32059.bin",
+      "sha256": "6f11a61a0e80c259efdedefcf918022d1fdb7f9776935bf737f36e1f14e0e28b",
+      "bytes": 250
+    },
+    {
+      "file": "kilnback-rummager/idle/animation.json",
+      "sha256": "7fe02a2f948cac6dac4b40724dbac04134dcf593f407fd804f1bb6e1afdce3d5",
+      "bytes": 34825
+    },
+    {
+      "file": "kilnback-rummager/idle/frame-0.bin",
+      "sha256": "a257206e2739e11ac154c9f86de30669d4ae8e3c380a86aff6e2380a841e9b72",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/idle/frame-1.bin",
+      "sha256": "59479625bbed30ff703d7cc8679e936ac55f1cbe2813a66ac87469ed212ae2b0",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/idle/frame-10.bin",
+      "sha256": "a257206e2739e11ac154c9f86de30669d4ae8e3c380a86aff6e2380a841e9b72",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/idle/frame-11.bin",
+      "sha256": "51221a3f7fb6d082d8d74595454b479e102df82febed78c248d653e8a94b3118",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/idle/frame-12.bin",
+      "sha256": "0961e78d955d29dfffc1352bcfa4fa77f5028787db71cb8c500b5cd5b869d65d",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/idle/frame-13.bin",
+      "sha256": "9811abaea1a88e4abbbd732c0ca9c60b307671a2bb09aaa1acf518b7df274a47",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/idle/frame-14.bin",
+      "sha256": "9811abaea1a88e4abbbd732c0ca9c60b307671a2bb09aaa1acf518b7df274a47",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/idle/frame-15.bin",
+      "sha256": "9811abaea1a88e4abbbd732c0ca9c60b307671a2bb09aaa1acf518b7df274a47",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/idle/frame-16.bin",
+      "sha256": "9811abaea1a88e4abbbd732c0ca9c60b307671a2bb09aaa1acf518b7df274a47",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/idle/frame-17.bin",
+      "sha256": "9811abaea1a88e4abbbd732c0ca9c60b307671a2bb09aaa1acf518b7df274a47",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/idle/frame-18.bin",
+      "sha256": "0961e78d955d29dfffc1352bcfa4fa77f5028787db71cb8c500b5cd5b869d65d",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/idle/frame-19.bin",
+      "sha256": "51221a3f7fb6d082d8d74595454b479e102df82febed78c248d653e8a94b3118",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/idle/frame-2.bin",
+      "sha256": "59479625bbed30ff703d7cc8679e936ac55f1cbe2813a66ac87469ed212ae2b0",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/idle/frame-3.bin",
+      "sha256": "6ec3d3f57efca4482e9bbc8b621764cf1e3d1487fa28e739e8a6dff1fc3bbc8f",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/idle/frame-4.bin",
+      "sha256": "6ec3d3f57efca4482e9bbc8b621764cf1e3d1487fa28e739e8a6dff1fc3bbc8f",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/idle/frame-5.bin",
+      "sha256": "6ec3d3f57efca4482e9bbc8b621764cf1e3d1487fa28e739e8a6dff1fc3bbc8f",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/idle/frame-6.bin",
+      "sha256": "6ec3d3f57efca4482e9bbc8b621764cf1e3d1487fa28e739e8a6dff1fc3bbc8f",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/idle/frame-7.bin",
+      "sha256": "6ec3d3f57efca4482e9bbc8b621764cf1e3d1487fa28e739e8a6dff1fc3bbc8f",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/idle/frame-8.bin",
+      "sha256": "59479625bbed30ff703d7cc8679e936ac55f1cbe2813a66ac87469ed212ae2b0",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/idle/frame-9.bin",
+      "sha256": "59479625bbed30ff703d7cc8679e936ac55f1cbe2813a66ac87469ed212ae2b0",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/idle/sequence.bin",
+      "sha256": "df5c6b2703c72fb1ccd167d37fbca2914a332477a0ed0c84bb929053190416f2",
+      "bytes": 137
+    },
+    {
+      "file": "kilnback-rummager/idle/skeleton-32056.bin",
+      "sha256": "6f11a61a0e80c259efdedefcf918022d1fdb7f9776935bf737f36e1f14e0e28b",
+      "bytes": 250
+    },
+    {
+      "file": "kilnback-rummager/object-package/catalog.json",
+      "sha256": "a445f6f9d3cb9bf4213faea2650340162b38419ffcf8f4266595141a5917763e",
+      "bytes": 354
+    },
+    {
+      "file": "kilnback-rummager/object-package/model-1101527.model",
+      "sha256": "19325d979e89a1a1df555eb3332bca5b37614efdb36a54366b8d04741b3d0a6e",
+      "bytes": 17056
+    },
+    {
+      "file": "kilnback-rummager/object-package/object-63427.object",
+      "sha256": "64710788ccc36d629f6c50dc493062de6f9991613a548f96fafaafc9c47e46c1",
+      "bytes": 60
+    },
+    {
+      "file": "kilnback-rummager/object-package/registry.txt",
+      "sha256": "176669b6f541b08a2b2ec6288cedf1bfa50489838f21b5d5572a6530c2f466a0",
+      "bytes": 110
+    },
+    {
+      "file": "kilnback-rummager/walk/animation.json",
+      "sha256": "cca35c21186c2f191659a3a32d1603c1f007a12c6b0067cce251fe067bb1f7ca",
+      "bytes": 28464
+    },
+    {
+      "file": "kilnback-rummager/walk/frame-0.bin",
+      "sha256": "6d66b171870ab9071df9a0047555fcd25ca222dfd482fe38956b8a2337738bad",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/walk/frame-1.bin",
+      "sha256": "40e3f2bf45335472a61327239871b5ea8070566cd30ec2543f15ffd92e17a4e6",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/walk/frame-10.bin",
+      "sha256": "d834e30d567400041594e7617d21a1a98cf7c77223c24a164f7d160c01e0a0fe",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/walk/frame-11.bin",
+      "sha256": "d692bebcb8378c4d1d06a53d2b28d6fdcb8063e8d2b0cf857b8c228a83a3b300",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/walk/frame-12.bin",
+      "sha256": "53d978077c230c7796324cf501ca68fecc48bd5c802d03d73cca547e06db4172",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/walk/frame-13.bin",
+      "sha256": "b927e58ab131406daf8d85e3fff343b1a6cca1c43e755871d120a145fdb968ca",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/walk/frame-14.bin",
+      "sha256": "cb7004b2b8808a647199b7a10d583300630d532a44203f6304a472d9a4e5bc4e",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/walk/frame-15.bin",
+      "sha256": "383204219059e226cc13af90d245a40cc78c619dfe29b516b8bdeadadc233036",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/walk/frame-2.bin",
+      "sha256": "579aacce09fb5b57694920532b4acd68b90e61f5383ad2f4c4c5b0da20a497b8",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/walk/frame-3.bin",
+      "sha256": "e78f08bb2133fac2373c29bf3ca9de7ed45f9c477eee0795d526c70af89eb658",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/walk/frame-4.bin",
+      "sha256": "54ea1f0e8d3c3bcd38470044cfff7a5705a8e00999324e843a02ea7ac6717664",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/walk/frame-5.bin",
+      "sha256": "4d1dc37a8a5c47f726647840289991be83bc8db61afdad24f637d7d93949aca6",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/walk/frame-6.bin",
+      "sha256": "afa8b93d41d34d920082cf50031672b62caa4aba9dabd8895a0a3063e3881084",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/walk/frame-7.bin",
+      "sha256": "7006ac9fa91424152b93200248ab7795d2a7d839aed43df71fbbf414c70bfd33",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/walk/frame-8.bin",
+      "sha256": "51916446b573a0521fc2be89376f19f6f837f1e8ab5455f7a275f4f00fe3ec01",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/walk/frame-9.bin",
+      "sha256": "103b254bb91a80ac71f97691b290dfa0ce9265391f4e98c1916eab1b96668b07",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/walk/sequence.bin",
+      "sha256": "d2a548bf0b6f2a849bf71706ae7fa39eae1f229676e34241a31db84c9bc05ad6",
+      "bytes": 113
+    },
+    {
+      "file": "kilnback-rummager/walk/skeleton-32057.bin",
+      "sha256": "6f11a61a0e80c259efdedefcf918022d1fdb7f9776935bf737f36e1f14e0e28b",
+      "bytes": 250
+    },
+    {
+      "file": "kilnback-rummager/walk_entry/animation.json",
+      "sha256": "a055acef084f1c5337f83d59a6e199031cdc83a95c31d329a2e29f01f5eae34f",
+      "bytes": 7166
+    },
+    {
+      "file": "kilnback-rummager/walk_entry/frame-0.bin",
+      "sha256": "612efe989f554fb25e6ef4f6f3665a450872cacac31b34c125df8f75b1c1af0c",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/walk_entry/frame-1.bin",
+      "sha256": "0990b6472794c70faa54973b8bc5c0555ddbdd8847ca988ea8d07f672e182419",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/walk_entry/frame-2.bin",
+      "sha256": "34d19f70ed3cdd6bbab476d18f608caee48165a42d72b9a46dbb55870e9f13b2",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/walk_entry/frame-3.bin",
+      "sha256": "89d7352b514996ad85576360564a4a19bf430ea3bced86909a5018fff90a3375",
+      "bytes": 195
+    },
+    {
+      "file": "kilnback-rummager/walk_entry/sequence.bin",
+      "sha256": "ea504eca2262264e961e854cb1cde4497d8d770905cea1ff304b5464a44c954c",
+      "bytes": 38
+    },
+    {
+      "file": "kilnback-rummager/walk_entry/skeleton-32061.bin",
+      "sha256": "6f11a61a0e80c259efdedefcf918022d1fdb7f9776935bf737f36e1f14e0e28b",
+      "bytes": 250
+    },
+    {
+      "file": "showcase-terrain/asset.model",
+      "sha256": "c9f64c0ca8c9991e61eb47397ef2ab91a0a773d7227d758d99fd21e4eea71a2f",
+      "bytes": 46841
+    },
+    {
+      "file": "showcase-terrain/authoring-report.json",
+      "sha256": "f152b9b8254e91bdece2f423f75280b8fe71f08fe454cae071f7dfd12e968043",
+      "bytes": 12537
+    },
+    {
+      "file": "showcase-terrain/front.png",
+      "sha256": "a0dcd44c27e812ea154c9caa338d5c097c1d1585b35c213a7a0332ce6c272eee",
+      "bytes": 11467
+    },
+    {
+      "file": "showcase-terrain/gameplay.png",
+      "sha256": "e22a193a0d3a49ab7f0f2c07a3db6a9fa0e738a606c77213ef4c5f963bc07ff3",
+      "bytes": 17524
+    },
+    {
+      "file": "showcase-terrain/geometry.json",
+      "sha256": "4178c0308dc23f56ee62be9aa542c6569f5915afff0e2a27b12b2a7205672e75",
+      "bytes": 246085
+    },
+    {
+      "file": "showcase-terrain/quarter.png",
+      "sha256": "3b9c2f2c3b0a48b0b96d6267c997cba4607e77d7ba33fb025b6e9c3036a5ef11",
+      "bytes": 16279
+    },
+    {
+      "file": "showcase-terrain/rear.png",
+      "sha256": "71b3d55dc5ebddde0c50a363fd277177e9a340708c36e93b0cf47815fde37184",
+      "bytes": 11090
+    },
+    {
+      "file": "showcase-terrain/recipe.json",
+      "sha256": "2c07d028044b6d47f65397ae8ebbc3230112c3a29c991deaaa902689f1474fd5",
+      "bytes": 28625
+    },
+    {
+      "file": "showcase-terrain/side.png",
+      "sha256": "aca4ecc16fa2d122912747bcf63bdf60c07d715d65686f0cbd293d9ac46e40f6",
+      "bytes": 10120
+    },
+    {
+      "file": "showcase-terrain/object-package/catalog.json",
+      "sha256": "07a3d0378fecacc6d4bef217133994eccd69929d2b452c32e33d9bd861e92691",
+      "bytes": 354
+    },
+    {
+      "file": "showcase-terrain/object-package/model-1101528.model",
+      "sha256": "c9f64c0ca8c9991e61eb47397ef2ab91a0a773d7227d758d99fd21e4eea71a2f",
+      "bytes": 46841
+    },
+    {
+      "file": "showcase-terrain/object-package/object-63428.object",
+      "sha256": "6ec08d1fd6a6b5e4660e2c3292f275d59561802c77029652460409027df311b2",
+      "bytes": 60
+    },
+    {
+      "file": "showcase-terrain/object-package/registry.txt",
+      "sha256": "d8d30c690e8f7c7e6826d56aa8d57cdcaf1bd44c116f35983de6433a17f94b33",
+      "bytes": 110
+    },
+    {
+      "file": "sluice-keeper-arcade/asset.model",
+      "sha256": "16d43efb409c52ba557b43217a62cf7ee3ad4b671b2e472db8c001b81d579ad6",
+      "bytes": 11448
+    },
+    {
+      "file": "sluice-keeper-arcade/authoring-report.json",
+      "sha256": "6b30bd7a21da66fff9ddef5f17a7cede2d71d5621c3792d0cd5a5338c3efff44",
+      "bytes": 11731
+    },
+    {
+      "file": "sluice-keeper-arcade/front.png",
+      "sha256": "b25acbd42eef60406e10de2d3426a5bb78fcecfa343b8c7c11101ef668f23970",
+      "bytes": 20789
+    },
+    {
+      "file": "sluice-keeper-arcade/gameplay.png",
+      "sha256": "a476a7df70d33c6f3871ea450511eac7da9845f323734b1816f91b202fdff7aa",
+      "bytes": 4561
+    },
+    {
+      "file": "sluice-keeper-arcade/geometry.json",
+      "sha256": "b42a8ad64d8d28b35786c8eacc5caf0bbb8a2524ee40c058480b0ab3b1f7aa07",
+      "bytes": 60791
+    },
+    {
+      "file": "sluice-keeper-arcade/quarter.png",
+      "sha256": "0f7105171f92dc61752630d2deb8659415f9f3f5fdf62efe814c1a622957160d",
+      "bytes": 25119
+    },
+    {
+      "file": "sluice-keeper-arcade/rear.png",
+      "sha256": "6be9ddc3c981a45a2e103d53607457271d98c6124151157a36040d04b60ff29e",
+      "bytes": 19764
+    },
+    {
+      "file": "sluice-keeper-arcade/recipe.json",
+      "sha256": "2c5908d06a70ca497789c35df03a1de6bdcaa4619e703912ecd07b832743b882",
+      "bytes": 13582
+    },
+    {
+      "file": "sluice-keeper-arcade/side.png",
+      "sha256": "6c3a6371558cce626bdde859ce922c73394a024c3b1704fe7a134626132f1f03",
+      "bytes": 8557
+    },
+    {
+      "file": "sluice-keeper-arcade/object-package/catalog.json",
+      "sha256": "cb32f4da294c2a17d37d206c85d6697b33a4705c7d1a7afb0f2f77e89a6fe08f",
+      "bytes": 354
+    },
+    {
+      "file": "sluice-keeper-arcade/object-package/model-1101525.model",
+      "sha256": "16d43efb409c52ba557b43217a62cf7ee3ad4b671b2e472db8c001b81d579ad6",
+      "bytes": 11448
+    },
+    {
+      "file": "sluice-keeper-arcade/object-package/object-63425.object",
+      "sha256": "8b220adb6fe1d8ac0b2b24233c16767e7328d6e5e5c7c034bd9fcabd50b6f31a",
+      "bytes": 60
+    },
+    {
+      "file": "sluice-keeper-arcade/object-package/registry.txt",
+      "sha256": "52386b5eb642d256226e1cbe3778688b7ee8be9162b33734087fcb380b7d040b",
+      "bytes": 110
+    }
+  ]
+}

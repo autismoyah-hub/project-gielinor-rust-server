@@ -1,0 +1,1654 @@
+{
+  "schema": 1,
+  "name": "Counterweight sluice hoist",
+  "unit": "native;128 units per tile",
+  "materials": {
+    "stone": {
+      "family": "stone",
+      "render_type": 0,
+      "hsl": 10282,
+      "shadow": 10272,
+      "end": 10288,
+      "edge": 10292
+    },
+    "edge": {
+      "hsl": 10262,
+      "render_type": 0
+    },
+    "stone_shadow": {
+      "hsl": 10258,
+      "render_type": 0
+    },
+    "iron": {
+      "hsl": 10299,
+      "render_type": 0
+    },
+    "iron_edge": {
+      "hsl": 10320,
+      "render_type": 0
+    },
+    "wood": {
+      "family": "wood",
+      "render_type": 0,
+      "hsl": 6934,
+      "shadow": 6924,
+      "end": 6940,
+      "edge": 6938
+    },
+    "wood_dark": {
+      "hsl": 8485,
+      "render_type": 0
+    },
+    "leather": {
+      "family": "leather",
+      "render_type": 0,
+      "hsl": 3741,
+      "shadow": 3730,
+      "end": 3747,
+      "edge": 3744
+    },
+    "skin": {
+      "hsl": 10782,
+      "render_type": 0
+    },
+    "skin_shadow": {
+      "hsl": 10772,
+      "render_type": 0
+    },
+    "cloth": {
+      "hsl": 916,
+      "render_type": 0
+    },
+    "armor": {
+      "hsl": 6955,
+      "render_type": 0
+    },
+    "armor_shadow": {
+      "hsl": 7075,
+      "render_type": 0
+    },
+    "gray_armor": {
+      "hsl": 5169,
+      "render_type": 0
+    },
+    "eye": {
+      "hsl": 127,
+      "render_type": 0
+    },
+    "brow": {
+      "hsl": 8598,
+      "render_type": 0
+    },
+    "metal": {
+      "family": "metal",
+      "render_type": 0,
+      "hsl": 33,
+      "shadow": 24,
+      "end": 41,
+      "edge": 45
+    },
+    "bronze": {
+      "family": "bronze",
+      "render_type": 0,
+      "hsl": 6687,
+      "shadow": 6678,
+      "end": 6695,
+      "edge": 6698
+    },
+    "organic": {
+      "family": "organic",
+      "render_type": 0,
+      "hsl": 6697,
+      "shadow": 6685,
+      "end": 6704,
+      "edge": 6701
+    },
+    "ceramic": {
+      "family": "ceramic",
+      "render_type": 0,
+      "hsl": 4773,
+      "shadow": 4763,
+      "end": 4781,
+      "edge": 4786
+    }
+  },
+  "components": [
+    {
+      "name": "foundation",
+      "type": "stone_block",
+      "material": "wood",
+      "group": 0,
+      "role": "board",
+      "center": [
+        0,
+        -6,
+        0
+      ],
+      "size": [
+        164,
+        12,
+        96
+      ],
+      "bevel": 1,
+      "variation": 0,
+      "grain_axis": [
+        1,
+        0,
+        0
+      ],
+      "parameters": {
+        "material_family": "wood",
+        "construction": "separate plank",
+        "grain_axis": 0
+      }
+    },
+    {
+      "name": "standard_-1",
+      "type": "stone_block",
+      "material": "wood",
+      "group": 0,
+      "role": "board",
+      "center": [
+        -63,
+        -79,
+        0
+      ],
+      "size": [
+        15,
+        146,
+        21
+      ],
+      "bevel": 1,
+      "variation": 0,
+      "grain_axis": [
+        0,
+        1,
+        0
+      ],
+      "parameters": {
+        "material_family": "wood",
+        "construction": "separate plank",
+        "grain_axis": 1
+      }
+    },
+    {
+      "name": "foot_-1",
+      "type": "stone_block",
+      "material": "wood",
+      "group": 0,
+      "role": "board",
+      "center": [
+        -63,
+        -12,
+        0
+      ],
+      "size": [
+        28,
+        12,
+        103
+      ],
+      "bevel": 1,
+      "variation": 0,
+      "grain_axis": [
+        0,
+        0,
+        1
+      ],
+      "parameters": {
+        "material_family": "wood",
+        "construction": "separate plank",
+        "grain_axis": 2
+      }
+    },
+    {
+      "name": "brace_-1",
+      "type": "beam",
+      "material": "wood",
+      "group": 0,
+      "role": "brace_-1",
+      "start": [
+        -63,
+        -22,
+        -40
+      ],
+      "end": [
+        -63,
+        -104,
+        0
+      ],
+      "radii": [
+        5,
+        5
+      ],
+      "sides": 4,
+      "grain_axis": [
+        0,
+        -82,
+        40
+      ]
+    },
+    {
+      "name": "bearing_-1",
+      "type": "stone_block",
+      "material": "metal",
+      "group": 0,
+      "role": "bearing_-1",
+      "center": [
+        -63,
+        -113,
+        0
+      ],
+      "size": [
+        24,
+        24,
+        25
+      ],
+      "bevel": 3
+    },
+    {
+      "name": "standard_1",
+      "type": "stone_block",
+      "material": "wood",
+      "group": 0,
+      "role": "board",
+      "center": [
+        63,
+        -79,
+        0
+      ],
+      "size": [
+        15,
+        146,
+        21
+      ],
+      "bevel": 1,
+      "variation": 0,
+      "grain_axis": [
+        0,
+        1,
+        0
+      ],
+      "parameters": {
+        "material_family": "wood",
+        "construction": "separate plank",
+        "grain_axis": 1
+      }
+    },
+    {
+      "name": "foot_1",
+      "type": "stone_block",
+      "material": "wood",
+      "group": 0,
+      "role": "board",
+      "center": [
+        63,
+        -12,
+        0
+      ],
+      "size": [
+        28,
+        12,
+        103
+      ],
+      "bevel": 1,
+      "variation": 0,
+      "grain_axis": [
+        0,
+        0,
+        1
+      ],
+      "parameters": {
+        "material_family": "wood",
+        "construction": "separate plank",
+        "grain_axis": 2
+      }
+    },
+    {
+      "name": "brace_1",
+      "type": "beam",
+      "material": "wood",
+      "group": 0,
+      "role": "brace_1",
+      "start": [
+        63,
+        -22,
+        -40
+      ],
+      "end": [
+        63,
+        -104,
+        0
+      ],
+      "radii": [
+        5,
+        5
+      ],
+      "sides": 4,
+      "grain_axis": [
+        0,
+        -82,
+        40
+      ]
+    },
+    {
+      "name": "bearing_1",
+      "type": "stone_block",
+      "material": "metal",
+      "group": 0,
+      "role": "bearing_1",
+      "center": [
+        63,
+        -113,
+        0
+      ],
+      "size": [
+        24,
+        24,
+        25
+      ],
+      "bevel": 3
+    },
+    {
+      "name": "drum_stave_0",
+      "type": "stave",
+      "material": "wood",
+      "group": 0,
+      "role": "stave",
+      "sections": [
+        [
+          0,
+          18.72,
+          18.72
+        ],
+        [
+          -18.72,
+          22.080000000000002,
+          22.080000000000002
+        ],
+        [
+          -52.0,
+          24.0,
+          24.0
+        ],
+        [
+          -85.28,
+          22.080000000000002,
+          22.080000000000002
+        ],
+        [
+          -104,
+          18.72,
+          18.72
+        ]
+      ],
+      "start_angle": 0.014,
+      "end_angle": 0.6143185307179586,
+      "thickness": 4,
+      "variation": -2,
+      "parameters": {
+        "construction": "individual bowed stave",
+        "gap_angle": 0.028
+      },
+      "parent_socket": {
+        "origin": [
+          52,
+          -113,
+          0
+        ],
+        "basis": [
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            -1
+          ]
+        ]
+      },
+      "grain_axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "drum_stave_1",
+      "type": "stave",
+      "material": "wood",
+      "group": 0,
+      "role": "stave",
+      "sections": [
+        [
+          0,
+          18.72,
+          18.72
+        ],
+        [
+          -18.72,
+          22.080000000000002,
+          22.080000000000002
+        ],
+        [
+          -52.0,
+          24.0,
+          24.0
+        ],
+        [
+          -85.28,
+          22.080000000000002,
+          22.080000000000002
+        ],
+        [
+          -104,
+          18.72,
+          18.72
+        ]
+      ],
+      "start_angle": 0.6423185307179586,
+      "end_angle": 1.2426370614359172,
+      "thickness": 4,
+      "variation": 0,
+      "parameters": {
+        "construction": "individual bowed stave",
+        "gap_angle": 0.028
+      },
+      "parent_socket": {
+        "origin": [
+          52,
+          -113,
+          0
+        ],
+        "basis": [
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            -1
+          ]
+        ]
+      },
+      "grain_axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "drum_stave_2",
+      "type": "stave",
+      "material": "wood",
+      "group": 0,
+      "role": "stave",
+      "sections": [
+        [
+          0,
+          18.72,
+          18.72
+        ],
+        [
+          -18.72,
+          22.080000000000002,
+          22.080000000000002
+        ],
+        [
+          -52.0,
+          24.0,
+          24.0
+        ],
+        [
+          -85.28,
+          22.080000000000002,
+          22.080000000000002
+        ],
+        [
+          -104,
+          18.72,
+          18.72
+        ]
+      ],
+      "start_angle": 1.2706370614359173,
+      "end_angle": 1.8709555921538759,
+      "thickness": 4,
+      "variation": 2,
+      "parameters": {
+        "construction": "individual bowed stave",
+        "gap_angle": 0.028
+      },
+      "parent_socket": {
+        "origin": [
+          52,
+          -113,
+          0
+        ],
+        "basis": [
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            -1
+          ]
+        ]
+      },
+      "grain_axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "drum_stave_3",
+      "type": "stave",
+      "material": "wood",
+      "group": 0,
+      "role": "stave",
+      "sections": [
+        [
+          0,
+          18.72,
+          18.72
+        ],
+        [
+          -18.72,
+          22.080000000000002,
+          22.080000000000002
+        ],
+        [
+          -52.0,
+          24.0,
+          24.0
+        ],
+        [
+          -85.28,
+          22.080000000000002,
+          22.080000000000002
+        ],
+        [
+          -104,
+          18.72,
+          18.72
+        ]
+      ],
+      "start_angle": 1.8989555921538759,
+      "end_angle": 2.4992741228718347,
+      "thickness": 4,
+      "variation": 0,
+      "parameters": {
+        "construction": "individual bowed stave",
+        "gap_angle": 0.028
+      },
+      "parent_socket": {
+        "origin": [
+          52,
+          -113,
+          0
+        ],
+        "basis": [
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            -1
+          ]
+        ]
+      },
+      "grain_axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "drum_stave_4",
+      "type": "stave",
+      "material": "wood",
+      "group": 0,
+      "role": "stave",
+      "sections": [
+        [
+          0,
+          18.72,
+          18.72
+        ],
+        [
+          -18.72,
+          22.080000000000002,
+          22.080000000000002
+        ],
+        [
+          -52.0,
+          24.0,
+          24.0
+        ],
+        [
+          -85.28,
+          22.080000000000002,
+          22.080000000000002
+        ],
+        [
+          -104,
+          18.72,
+          18.72
+        ]
+      ],
+      "start_angle": 2.5272741228718343,
+      "end_angle": 3.1275926535897933,
+      "thickness": 4,
+      "variation": -2,
+      "parameters": {
+        "construction": "individual bowed stave",
+        "gap_angle": 0.028
+      },
+      "parent_socket": {
+        "origin": [
+          52,
+          -113,
+          0
+        ],
+        "basis": [
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            -1
+          ]
+        ]
+      },
+      "grain_axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "drum_stave_5",
+      "type": "stave",
+      "material": "wood",
+      "group": 0,
+      "role": "stave",
+      "sections": [
+        [
+          0,
+          18.72,
+          18.72
+        ],
+        [
+          -18.72,
+          22.080000000000002,
+          22.080000000000002
+        ],
+        [
+          -52.0,
+          24.0,
+          24.0
+        ],
+        [
+          -85.28,
+          22.080000000000002,
+          22.080000000000002
+        ],
+        [
+          -104,
+          18.72,
+          18.72
+        ]
+      ],
+      "start_angle": 3.155592653589793,
+      "end_angle": 3.755911184307752,
+      "thickness": 4,
+      "variation": 0,
+      "parameters": {
+        "construction": "individual bowed stave",
+        "gap_angle": 0.028
+      },
+      "parent_socket": {
+        "origin": [
+          52,
+          -113,
+          0
+        ],
+        "basis": [
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            -1
+          ]
+        ]
+      },
+      "grain_axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "drum_stave_6",
+      "type": "stave",
+      "material": "wood",
+      "group": 0,
+      "role": "stave",
+      "sections": [
+        [
+          0,
+          18.72,
+          18.72
+        ],
+        [
+          -18.72,
+          22.080000000000002,
+          22.080000000000002
+        ],
+        [
+          -52.0,
+          24.0,
+          24.0
+        ],
+        [
+          -85.28,
+          22.080000000000002,
+          22.080000000000002
+        ],
+        [
+          -104,
+          18.72,
+          18.72
+        ]
+      ],
+      "start_angle": 3.7839111843077515,
+      "end_angle": 4.38422971502571,
+      "thickness": 4,
+      "variation": 2,
+      "parameters": {
+        "construction": "individual bowed stave",
+        "gap_angle": 0.028
+      },
+      "parent_socket": {
+        "origin": [
+          52,
+          -113,
+          0
+        ],
+        "basis": [
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            -1
+          ]
+        ]
+      },
+      "grain_axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "drum_stave_7",
+      "type": "stave",
+      "material": "wood",
+      "group": 0,
+      "role": "stave",
+      "sections": [
+        [
+          0,
+          18.72,
+          18.72
+        ],
+        [
+          -18.72,
+          22.080000000000002,
+          22.080000000000002
+        ],
+        [
+          -52.0,
+          24.0,
+          24.0
+        ],
+        [
+          -85.28,
+          22.080000000000002,
+          22.080000000000002
+        ],
+        [
+          -104,
+          18.72,
+          18.72
+        ]
+      ],
+      "start_angle": 4.412229715025711,
+      "end_angle": 5.012548245743669,
+      "thickness": 4,
+      "variation": 0,
+      "parameters": {
+        "construction": "individual bowed stave",
+        "gap_angle": 0.028
+      },
+      "parent_socket": {
+        "origin": [
+          52,
+          -113,
+          0
+        ],
+        "basis": [
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            -1
+          ]
+        ]
+      },
+      "grain_axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "drum_stave_8",
+      "type": "stave",
+      "material": "wood",
+      "group": 0,
+      "role": "stave",
+      "sections": [
+        [
+          0,
+          18.72,
+          18.72
+        ],
+        [
+          -18.72,
+          22.080000000000002,
+          22.080000000000002
+        ],
+        [
+          -52.0,
+          24.0,
+          24.0
+        ],
+        [
+          -85.28,
+          22.080000000000002,
+          22.080000000000002
+        ],
+        [
+          -104,
+          18.72,
+          18.72
+        ]
+      ],
+      "start_angle": 5.040548245743669,
+      "end_angle": 5.640866776461627,
+      "thickness": 4,
+      "variation": -2,
+      "parameters": {
+        "construction": "individual bowed stave",
+        "gap_angle": 0.028
+      },
+      "parent_socket": {
+        "origin": [
+          52,
+          -113,
+          0
+        ],
+        "basis": [
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            -1
+          ]
+        ]
+      },
+      "grain_axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "drum_stave_9",
+      "type": "stave",
+      "material": "wood",
+      "group": 0,
+      "role": "stave",
+      "sections": [
+        [
+          0,
+          18.72,
+          18.72
+        ],
+        [
+          -18.72,
+          22.080000000000002,
+          22.080000000000002
+        ],
+        [
+          -52.0,
+          24.0,
+          24.0
+        ],
+        [
+          -85.28,
+          22.080000000000002,
+          22.080000000000002
+        ],
+        [
+          -104,
+          18.72,
+          18.72
+        ]
+      ],
+      "start_angle": 5.668866776461628,
+      "end_angle": 6.269185307179586,
+      "thickness": 4,
+      "variation": 0,
+      "parameters": {
+        "construction": "individual bowed stave",
+        "gap_angle": 0.028
+      },
+      "parent_socket": {
+        "origin": [
+          52,
+          -113,
+          0
+        ],
+        "basis": [
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            -1
+          ]
+        ]
+      },
+      "grain_axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "drum_hoop_0",
+      "type": "annulus",
+      "material": "metal",
+      "group": 0,
+      "role": "hoop_0",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "radii": [
+        21.248,
+        21.248
+      ],
+      "rim_width": 3,
+      "depth": 6,
+      "sides": 10,
+      "socket": {
+        "origin": [
+          0,
+          -16.64,
+          0
+        ],
+        "basis": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            -1,
+            0
+          ]
+        ]
+      },
+      "parent_socket": {
+        "origin": [
+          52,
+          -113,
+          0
+        ],
+        "basis": [
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            -1
+          ]
+        ]
+      },
+      "grain_axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "drum_hoop_1",
+      "type": "annulus",
+      "material": "metal",
+      "group": 0,
+      "role": "hoop_1",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "radii": [
+        16.64,
+        16.64
+      ],
+      "rim_width": 3,
+      "depth": 6,
+      "sides": 10,
+      "socket": {
+        "origin": [
+          0,
+          -83.2,
+          0
+        ],
+        "basis": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            -1,
+            0
+          ]
+        ]
+      },
+      "parent_socket": {
+        "origin": [
+          52,
+          -113,
+          0
+        ],
+        "basis": [
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            -1
+          ]
+        ]
+      },
+      "grain_axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "drum_flange_-1",
+      "type": "annulus",
+      "material": "metal",
+      "group": 0,
+      "role": "drum_flange_-1",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "radii": [
+        29,
+        29
+      ],
+      "rim_width": 5,
+      "depth": 5,
+      "sides": 12,
+      "socket": {
+        "origin": [
+          -53,
+          -113,
+          0
+        ],
+        "basis": [
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "name": "drum_flange_1",
+      "type": "annulus",
+      "material": "metal",
+      "group": 0,
+      "role": "drum_flange_1",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "radii": [
+        29,
+        29
+      ],
+      "rim_width": 5,
+      "depth": 5,
+      "sides": 12,
+      "socket": {
+        "origin": [
+          53,
+          -113,
+          0
+        ],
+        "basis": [
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "name": "axle",
+      "type": "beam",
+      "material": "metal",
+      "group": 0,
+      "role": "axle",
+      "start": [
+        -78,
+        -113,
+        0
+      ],
+      "end": [
+        80,
+        -113,
+        0
+      ],
+      "radii": [
+        6,
+        6
+      ],
+      "sides": 8
+    },
+    {
+      "name": "crank",
+      "type": "sweep",
+      "material": "metal",
+      "group": 0,
+      "role": "crank",
+      "sections": [
+        [
+          78,
+          -113,
+          0,
+          4,
+          4
+        ],
+        [
+          82,
+          -113,
+          0,
+          4,
+          4
+        ],
+        [
+          82,
+          -113,
+          28,
+          4,
+          4
+        ],
+        [
+          96,
+          -113,
+          28,
+          4,
+          4
+        ]
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "sides": 4
+    },
+    {
+      "name": "crank_grip",
+      "type": "beam",
+      "material": "wood",
+      "group": 0,
+      "role": "crank_grip",
+      "start": [
+        88,
+        -113,
+        28
+      ],
+      "end": [
+        102,
+        -113,
+        28
+      ],
+      "radii": [
+        5,
+        5
+      ],
+      "sides": 6,
+      "grain_axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "counterweight_rope",
+      "type": "sweep",
+      "material": "leather",
+      "group": 0,
+      "role": "counterweight_rope",
+      "sections": [
+        [
+          -25,
+          -133,
+          -5,
+          2,
+          2
+        ],
+        [
+          -25,
+          -130,
+          -24,
+          2,
+          2
+        ],
+        [
+          -25,
+          -35,
+          -24,
+          2,
+          2
+        ]
+      ],
+      "normal": [
+        1,
+        0,
+        0
+      ],
+      "sides": 5
+    },
+    {
+      "name": "counterweight",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "counterweight",
+      "center": [
+        -25,
+        -22,
+        -24
+      ],
+      "size": [
+        25,
+        28,
+        25
+      ],
+      "bevel": 3
+    },
+    {
+      "name": "pawl",
+      "type": "beam",
+      "material": "metal",
+      "group": 0,
+      "role": "pawl",
+      "start": [
+        -65,
+        -130,
+        11
+      ],
+      "end": [
+        -65,
+        -115,
+        28
+      ],
+      "radii": [
+        3,
+        2
+      ],
+      "sides": 4
+    },
+    {
+      "name": "ratchet_tooth_0",
+      "type": "stone_block",
+      "material": "metal",
+      "group": 0,
+      "role": "ratchet_tooth_0",
+      "center": [
+        -56,
+        -113.0,
+        30.0
+      ],
+      "size": [
+        6,
+        6,
+        6
+      ],
+      "bevel": 1
+    },
+    {
+      "name": "ratchet_tooth_1",
+      "type": "stone_block",
+      "material": "metal",
+      "group": 0,
+      "role": "ratchet_tooth_1",
+      "center": [
+        -56,
+        -95.3664424312258,
+        24.270509831248425
+      ],
+      "size": [
+        6,
+        6,
+        6
+      ],
+      "bevel": 1
+    },
+    {
+      "name": "ratchet_tooth_2",
+      "type": "stone_block",
+      "material": "metal",
+      "group": 0,
+      "role": "ratchet_tooth_2",
+      "center": [
+        -56,
+        -84.46830451114539,
+        9.270509831248424
+      ],
+      "size": [
+        6,
+        6,
+        6
+      ],
+      "bevel": 1
+    },
+    {
+      "name": "ratchet_tooth_3",
+      "type": "stone_block",
+      "material": "metal",
+      "group": 0,
+      "role": "ratchet_tooth_3",
+      "center": [
+        -56,
+        -84.46830451114539,
+        -9.27050983124842
+      ],
+      "size": [
+        6,
+        6,
+        6
+      ],
+      "bevel": 1
+    },
+    {
+      "name": "ratchet_tooth_4",
+      "type": "stone_block",
+      "material": "metal",
+      "group": 0,
+      "role": "ratchet_tooth_4",
+      "center": [
+        -56,
+        -95.3664424312258,
+        -24.27050983124842
+      ],
+      "size": [
+        6,
+        6,
+        6
+      ],
+      "bevel": 1
+    },
+    {
+      "name": "ratchet_tooth_5",
+      "type": "stone_block",
+      "material": "metal",
+      "group": 0,
+      "role": "ratchet_tooth_5",
+      "center": [
+        -56,
+        -113.0,
+        -30.0
+      ],
+      "size": [
+        6,
+        6,
+        6
+      ],
+      "bevel": 1
+    },
+    {
+      "name": "ratchet_tooth_6",
+      "type": "stone_block",
+      "material": "metal",
+      "group": 0,
+      "role": "ratchet_tooth_6",
+      "center": [
+        -56,
+        -130.6335575687742,
+        -24.270509831248425
+      ],
+      "size": [
+        6,
+        6,
+        6
+      ],
+      "bevel": 1
+    },
+    {
+      "name": "ratchet_tooth_7",
+      "type": "stone_block",
+      "material": "metal",
+      "group": 0,
+      "role": "ratchet_tooth_7",
+      "center": [
+        -56,
+        -141.5316954888546,
+        -9.270509831248427
+      ],
+      "size": [
+        6,
+        6,
+        6
+      ],
+      "bevel": 1
+    },
+    {
+      "name": "ratchet_tooth_8",
+      "type": "stone_block",
+      "material": "metal",
+      "group": 0,
+      "role": "ratchet_tooth_8",
+      "center": [
+        -56,
+        -141.5316954888546,
+        9.270509831248416
+      ],
+      "size": [
+        6,
+        6,
+        6
+      ],
+      "bevel": 1
+    },
+    {
+      "name": "ratchet_tooth_9",
+      "type": "stone_block",
+      "material": "metal",
+      "group": 0,
+      "role": "ratchet_tooth_9",
+      "center": [
+        -56,
+        -130.6335575687742,
+        24.27050983124842
+      ],
+      "size": [
+        6,
+        6,
+        6
+      ],
+      "bevel": 1
+    }
+  ],
+  "rig": [],
+  "actions": {},
+  "authoring_schema": 2,
+  "geometry_validation": {
+    "remove_zero_area_faces": true,
+    "preserve_vertex_order": true
+  },
+  "provenance": {
+    "kind": "original_tower_asset",
+    "source_mesh_or_animation_reuse": false,
+    "brief": "A coopered timber drum in a braced trestle frame, with bearing blocks, ratchet/pawl, an accessible crank and a guided stone counterweight. End grain, separate boards, iron and cable retain distinct native palettes.",
+    "artistic_acceptance": false,
+    "live_integration": false
+  }
+}

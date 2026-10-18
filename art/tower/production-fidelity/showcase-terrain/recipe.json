@@ -1,0 +1,1623 @@
+{
+  "schema": 1,
+  "name": "Cinderworks paving, runoff and plank crossing",
+  "unit": "native;128 units per tile",
+  "materials": {
+    "stone": {
+      "family": "stone",
+      "render_type": 0,
+      "hsl": 10274,
+      "shadow": 10267,
+      "end": 10280,
+      "edge": 10278
+    },
+    "edge": {
+      "hsl": 10262,
+      "render_type": 0
+    },
+    "stone_shadow": {
+      "hsl": 10258,
+      "render_type": 0
+    },
+    "iron": {
+      "hsl": 10299,
+      "render_type": 0
+    },
+    "iron_edge": {
+      "hsl": 10320,
+      "render_type": 0
+    },
+    "wood": {
+      "family": "wood",
+      "render_type": 0,
+      "hsl": 6934,
+      "shadow": 6924,
+      "end": 6940,
+      "edge": 6938
+    },
+    "wood_dark": {
+      "hsl": 8485,
+      "render_type": 0
+    },
+    "leather": {
+      "family": "leather",
+      "render_type": 0,
+      "hsl": 3741,
+      "shadow": 3730,
+      "end": 3747,
+      "edge": 3744
+    },
+    "skin": {
+      "hsl": 10782,
+      "render_type": 0
+    },
+    "skin_shadow": {
+      "hsl": 10772,
+      "render_type": 0
+    },
+    "cloth": {
+      "hsl": 916,
+      "render_type": 0
+    },
+    "armor": {
+      "hsl": 6955,
+      "render_type": 0
+    },
+    "armor_shadow": {
+      "hsl": 7075,
+      "render_type": 0
+    },
+    "gray_armor": {
+      "hsl": 5169,
+      "render_type": 0
+    },
+    "eye": {
+      "hsl": 127,
+      "render_type": 0
+    },
+    "brow": {
+      "hsl": 8598,
+      "render_type": 0
+    },
+    "metal": {
+      "family": "metal",
+      "render_type": 0,
+      "hsl": 33,
+      "shadow": 24,
+      "end": 41,
+      "edge": 45
+    },
+    "bronze": {
+      "family": "bronze",
+      "render_type": 0,
+      "hsl": 6687,
+      "shadow": 6678,
+      "end": 6695,
+      "edge": 6698
+    },
+    "organic": {
+      "family": "organic",
+      "render_type": 0,
+      "hsl": 6697,
+      "shadow": 6685,
+      "end": 6704,
+      "edge": 6701
+    },
+    "ceramic": {
+      "family": "ceramic",
+      "render_type": 0,
+      "hsl": 4773,
+      "shadow": 4763,
+      "end": 4781,
+      "edge": 4786
+    },
+    "water": {
+      "hsl": 32286,
+      "render_type": 1
+    }
+  },
+  "components": [
+    {
+      "name": "paving_-4_-3",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -448,
+        7,
+        -320
+      ],
+      "size": [
+        125,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": 1,
+      "wear": 0,
+      "seed": -31
+    },
+    {
+      "name": "paving_-4_-2",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -448,
+        7,
+        -192
+      ],
+      "size": [
+        125,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": -2,
+      "wear": 0,
+      "seed": -30
+    },
+    {
+      "name": "paving_-4_-1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -448,
+        7,
+        -64
+      ],
+      "size": [
+        125,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": 0,
+      "wear": 0,
+      "seed": -29
+    },
+    {
+      "name": "paving_-4_0",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -448,
+        7,
+        64
+      ],
+      "size": [
+        125,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": 1,
+      "wear": 0,
+      "seed": -28
+    },
+    {
+      "name": "paving_-4_1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -448,
+        7,
+        192
+      ],
+      "size": [
+        125,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": -2,
+      "wear": 0.08,
+      "seed": -27
+    },
+    {
+      "name": "paving_-4_2",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -448,
+        7,
+        320
+      ],
+      "size": [
+        125,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": 0,
+      "wear": 0,
+      "seed": -26
+    },
+    {
+      "name": "paving_-3_-3",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -320,
+        7,
+        -320
+      ],
+      "size": [
+        125,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": -2,
+      "wear": 0.08,
+      "seed": -24
+    },
+    {
+      "name": "paving_-3_-2",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -320,
+        7,
+        -192
+      ],
+      "size": [
+        125,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": 0,
+      "wear": 0,
+      "seed": -23
+    },
+    {
+      "name": "paving_-3_-1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -320,
+        7,
+        -64
+      ],
+      "size": [
+        125,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": 1,
+      "wear": 0,
+      "seed": -22
+    },
+    {
+      "name": "paving_-3_0",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -320,
+        7,
+        64
+      ],
+      "size": [
+        125,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": -2,
+      "wear": 0,
+      "seed": -21
+    },
+    {
+      "name": "paving_-3_1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -320,
+        7,
+        192
+      ],
+      "size": [
+        125,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": 0,
+      "wear": 0,
+      "seed": -20
+    },
+    {
+      "name": "paving_-3_2",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -320,
+        7,
+        320
+      ],
+      "size": [
+        125,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": 1,
+      "wear": 0.08,
+      "seed": -19
+    },
+    {
+      "name": "paving_-2_-3",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -192,
+        7,
+        -320
+      ],
+      "size": [
+        125,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": 0,
+      "wear": 0,
+      "seed": -17
+    },
+    {
+      "name": "paving_-2_-2",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -192,
+        7,
+        -192
+      ],
+      "size": [
+        125,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": 1,
+      "wear": 0.08,
+      "seed": -16
+    },
+    {
+      "name": "paving_-2_-1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -192,
+        7,
+        -64
+      ],
+      "size": [
+        125,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": -2,
+      "wear": 0,
+      "seed": -15
+    },
+    {
+      "name": "paving_-2_0",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -192,
+        7,
+        64
+      ],
+      "size": [
+        125,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": 0,
+      "wear": 0,
+      "seed": -14
+    },
+    {
+      "name": "paving_-2_1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -192,
+        7,
+        192
+      ],
+      "size": [
+        125,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": 1,
+      "wear": 0,
+      "seed": -13
+    },
+    {
+      "name": "paving_-2_2",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        -192,
+        7,
+        320
+      ],
+      "size": [
+        125,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": -2,
+      "wear": 0,
+      "seed": -12
+    },
+    {
+      "name": "paving_1_-3",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        192,
+        7,
+        -320
+      ],
+      "size": [
+        125,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": 0,
+      "wear": 0,
+      "seed": 4
+    },
+    {
+      "name": "paving_1_-2",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        192,
+        7,
+        -192
+      ],
+      "size": [
+        125,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": 1,
+      "wear": 0,
+      "seed": 5
+    },
+    {
+      "name": "paving_1_-1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        192,
+        7,
+        -64
+      ],
+      "size": [
+        125,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": -2,
+      "wear": 0,
+      "seed": 6
+    },
+    {
+      "name": "paving_1_0",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        192,
+        7,
+        64
+      ],
+      "size": [
+        125,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": 0,
+      "wear": 0,
+      "seed": 7
+    },
+    {
+      "name": "paving_1_1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        192,
+        7,
+        192
+      ],
+      "size": [
+        125,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": 1,
+      "wear": 0.08,
+      "seed": 8
+    },
+    {
+      "name": "paving_1_2",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        192,
+        7,
+        320
+      ],
+      "size": [
+        125,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": -2,
+      "wear": 0,
+      "seed": 9
+    },
+    {
+      "name": "paving_2_-3",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        320,
+        7,
+        -320
+      ],
+      "size": [
+        125,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": 1,
+      "wear": 0.08,
+      "seed": 11
+    },
+    {
+      "name": "paving_2_-2",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        320,
+        7,
+        -192
+      ],
+      "size": [
+        125,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": -2,
+      "wear": 0,
+      "seed": 12
+    },
+    {
+      "name": "paving_2_-1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        320,
+        7,
+        -64
+      ],
+      "size": [
+        125,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": 0,
+      "wear": 0,
+      "seed": 13
+    },
+    {
+      "name": "paving_2_0",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        320,
+        7,
+        64
+      ],
+      "size": [
+        125,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": 1,
+      "wear": 0,
+      "seed": 14
+    },
+    {
+      "name": "paving_2_1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        320,
+        7,
+        192
+      ],
+      "size": [
+        125,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": -2,
+      "wear": 0,
+      "seed": 15
+    },
+    {
+      "name": "paving_2_2",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        320,
+        7,
+        320
+      ],
+      "size": [
+        125,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": 0,
+      "wear": 0.08,
+      "seed": 16
+    },
+    {
+      "name": "paving_3_-3",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        448,
+        7,
+        -320
+      ],
+      "size": [
+        125,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": -2,
+      "wear": 0,
+      "seed": 18
+    },
+    {
+      "name": "paving_3_-2",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        448,
+        7,
+        -192
+      ],
+      "size": [
+        125,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": 0,
+      "wear": 0.08,
+      "seed": 19
+    },
+    {
+      "name": "paving_3_-1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        448,
+        7,
+        -64
+      ],
+      "size": [
+        125,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": 1,
+      "wear": 0,
+      "seed": 20
+    },
+    {
+      "name": "paving_3_0",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        448,
+        7,
+        64
+      ],
+      "size": [
+        125,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": -2,
+      "wear": 0,
+      "seed": 21
+    },
+    {
+      "name": "paving_3_1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        448,
+        7,
+        192
+      ],
+      "size": [
+        125,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": 0,
+      "wear": 0,
+      "seed": 22
+    },
+    {
+      "name": "paving_3_2",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "terrain",
+      "center": [
+        448,
+        7,
+        320
+      ],
+      "size": [
+        125,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": 1,
+      "wear": 0,
+      "seed": 23
+    },
+    {
+      "name": "infill_-1_-3",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "infill_-1_-3",
+      "center": [
+        -107,
+        7,
+        -320
+      ],
+      "size": [
+        42,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": -1
+    },
+    {
+      "name": "infill_-1_-2",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "infill_-1_-2",
+      "center": [
+        -107,
+        7,
+        -192
+      ],
+      "size": [
+        42,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": -1
+    },
+    {
+      "name": "infill_-1_-1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "infill_-1_-1",
+      "center": [
+        -107,
+        7,
+        -64
+      ],
+      "size": [
+        42,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": -1
+    },
+    {
+      "name": "infill_-1_0",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "infill_-1_0",
+      "center": [
+        -107,
+        7,
+        64
+      ],
+      "size": [
+        42,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": -1
+    },
+    {
+      "name": "infill_-1_1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "infill_-1_1",
+      "center": [
+        -107,
+        7,
+        192
+      ],
+      "size": [
+        42,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": -1
+    },
+    {
+      "name": "infill_-1_2",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "infill_-1_2",
+      "center": [
+        -107,
+        7,
+        320
+      ],
+      "size": [
+        42,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": -1
+    },
+    {
+      "name": "infill_1_-3",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "infill_1_-3",
+      "center": [
+        107,
+        7,
+        -320
+      ],
+      "size": [
+        42,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": -1
+    },
+    {
+      "name": "infill_1_-2",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "infill_1_-2",
+      "center": [
+        107,
+        7,
+        -192
+      ],
+      "size": [
+        42,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": -1
+    },
+    {
+      "name": "infill_1_-1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "infill_1_-1",
+      "center": [
+        107,
+        7,
+        -64
+      ],
+      "size": [
+        42,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": -1
+    },
+    {
+      "name": "infill_1_0",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "infill_1_0",
+      "center": [
+        107,
+        7,
+        64
+      ],
+      "size": [
+        42,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": -1
+    },
+    {
+      "name": "infill_1_1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "infill_1_1",
+      "center": [
+        107,
+        7,
+        192
+      ],
+      "size": [
+        42,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": -1
+    },
+    {
+      "name": "infill_1_2",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "infill_1_2",
+      "center": [
+        107,
+        7,
+        320
+      ],
+      "size": [
+        42,
+        14,
+        125
+      ],
+      "bevel": 2,
+      "variation": -1
+    },
+    {
+      "name": "water_-3",
+      "type": "box",
+      "material": "water",
+      "group": 0,
+      "role": "water_-3",
+      "center": [
+        0,
+        14,
+        -320
+      ],
+      "size": [
+        126,
+        3,
+        128
+      ]
+    },
+    {
+      "name": "channel_curb_-1_-3",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "channel_curb_-1_-3",
+      "center": [
+        -75,
+        -5,
+        -320
+      ],
+      "size": [
+        18,
+        18,
+        123
+      ],
+      "bevel": 2,
+      "variation": -1
+    },
+    {
+      "name": "channel_curb_1_-3",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "channel_curb_1_-3",
+      "center": [
+        75,
+        -5,
+        -320
+      ],
+      "size": [
+        18,
+        18,
+        123
+      ],
+      "bevel": 2,
+      "variation": -1
+    },
+    {
+      "name": "water_-2",
+      "type": "box",
+      "material": "water",
+      "group": 0,
+      "role": "water_-2",
+      "center": [
+        0,
+        14,
+        -192
+      ],
+      "size": [
+        126,
+        3,
+        128
+      ]
+    },
+    {
+      "name": "channel_curb_-1_-2",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "channel_curb_-1_-2",
+      "center": [
+        -75,
+        -5,
+        -192
+      ],
+      "size": [
+        18,
+        18,
+        123
+      ],
+      "bevel": 2,
+      "variation": -1
+    },
+    {
+      "name": "channel_curb_1_-2",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "channel_curb_1_-2",
+      "center": [
+        75,
+        -5,
+        -192
+      ],
+      "size": [
+        18,
+        18,
+        123
+      ],
+      "bevel": 2,
+      "variation": -1
+    },
+    {
+      "name": "water_-1",
+      "type": "box",
+      "material": "water",
+      "group": 0,
+      "role": "water_-1",
+      "center": [
+        0,
+        14,
+        -64
+      ],
+      "size": [
+        126,
+        3,
+        128
+      ]
+    },
+    {
+      "name": "channel_curb_-1_-1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "channel_curb_-1_-1",
+      "center": [
+        -75,
+        -5,
+        -64
+      ],
+      "size": [
+        18,
+        18,
+        123
+      ],
+      "bevel": 2,
+      "variation": -1
+    },
+    {
+      "name": "channel_curb_1_-1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "channel_curb_1_-1",
+      "center": [
+        75,
+        -5,
+        -64
+      ],
+      "size": [
+        18,
+        18,
+        123
+      ],
+      "bevel": 2,
+      "variation": -1
+    },
+    {
+      "name": "water_0",
+      "type": "box",
+      "material": "water",
+      "group": 0,
+      "role": "water_0",
+      "center": [
+        0,
+        14,
+        64
+      ],
+      "size": [
+        126,
+        3,
+        128
+      ]
+    },
+    {
+      "name": "channel_curb_-1_0",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "channel_curb_-1_0",
+      "center": [
+        -75,
+        -5,
+        64
+      ],
+      "size": [
+        18,
+        18,
+        123
+      ],
+      "bevel": 2,
+      "variation": -1
+    },
+    {
+      "name": "channel_curb_1_0",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "channel_curb_1_0",
+      "center": [
+        75,
+        -5,
+        64
+      ],
+      "size": [
+        18,
+        18,
+        123
+      ],
+      "bevel": 2,
+      "variation": -1
+    },
+    {
+      "name": "water_1",
+      "type": "box",
+      "material": "water",
+      "group": 0,
+      "role": "water_1",
+      "center": [
+        0,
+        14,
+        192
+      ],
+      "size": [
+        126,
+        3,
+        128
+      ]
+    },
+    {
+      "name": "channel_curb_-1_1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "channel_curb_-1_1",
+      "center": [
+        -75,
+        -5,
+        192
+      ],
+      "size": [
+        18,
+        18,
+        123
+      ],
+      "bevel": 2,
+      "variation": -1
+    },
+    {
+      "name": "channel_curb_1_1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "channel_curb_1_1",
+      "center": [
+        75,
+        -5,
+        192
+      ],
+      "size": [
+        18,
+        18,
+        123
+      ],
+      "bevel": 2,
+      "variation": -1
+    },
+    {
+      "name": "water_2",
+      "type": "box",
+      "material": "water",
+      "group": 0,
+      "role": "water_2",
+      "center": [
+        0,
+        14,
+        320
+      ],
+      "size": [
+        126,
+        3,
+        128
+      ]
+    },
+    {
+      "name": "channel_curb_-1_2",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "channel_curb_-1_2",
+      "center": [
+        -75,
+        -5,
+        320
+      ],
+      "size": [
+        18,
+        18,
+        123
+      ],
+      "bevel": 2,
+      "variation": -1
+    },
+    {
+      "name": "channel_curb_1_2",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "channel_curb_1_2",
+      "center": [
+        75,
+        -5,
+        320
+      ],
+      "size": [
+        18,
+        18,
+        123
+      ],
+      "bevel": 2,
+      "variation": -1
+    },
+    {
+      "name": "bridge_0",
+      "type": "stone_block",
+      "material": "wood",
+      "group": 0,
+      "role": "board",
+      "center": [
+        0,
+        -13,
+        -120
+      ],
+      "size": [
+        260,
+        10,
+        15
+      ],
+      "bevel": 1,
+      "variation": -1,
+      "grain_axis": [
+        1,
+        0,
+        0
+      ],
+      "parameters": {
+        "material_family": "wood",
+        "construction": "separate plank",
+        "grain_axis": 0
+      }
+    },
+    {
+      "name": "bridge_1",
+      "type": "stone_block",
+      "material": "wood",
+      "group": 0,
+      "role": "board",
+      "center": [
+        0,
+        -13,
+        -103
+      ],
+      "size": [
+        260,
+        10,
+        15
+      ],
+      "bevel": 1,
+      "variation": 0,
+      "grain_axis": [
+        1,
+        0,
+        0
+      ],
+      "parameters": {
+        "material_family": "wood",
+        "construction": "separate plank",
+        "grain_axis": 0
+      }
+    },
+    {
+      "name": "bridge_2",
+      "type": "stone_block",
+      "material": "wood",
+      "group": 0,
+      "role": "board",
+      "center": [
+        0,
+        -13,
+        -86
+      ],
+      "size": [
+        260,
+        10,
+        15
+      ],
+      "bevel": 1,
+      "variation": 1,
+      "grain_axis": [
+        1,
+        0,
+        0
+      ],
+      "parameters": {
+        "material_family": "wood",
+        "construction": "separate plank",
+        "grain_axis": 0
+      }
+    },
+    {
+      "name": "bridge_3",
+      "type": "stone_block",
+      "material": "wood",
+      "group": 0,
+      "role": "board",
+      "center": [
+        0,
+        -13,
+        -69
+      ],
+      "size": [
+        260,
+        10,
+        15
+      ],
+      "bevel": 1,
+      "variation": -1,
+      "grain_axis": [
+        1,
+        0,
+        0
+      ],
+      "parameters": {
+        "material_family": "wood",
+        "construction": "separate plank",
+        "grain_axis": 0
+      }
+    },
+    {
+      "name": "bridge_4",
+      "type": "stone_block",
+      "material": "wood",
+      "group": 0,
+      "role": "board",
+      "center": [
+        0,
+        -13,
+        -52
+      ],
+      "size": [
+        260,
+        10,
+        15
+      ],
+      "bevel": 1,
+      "variation": 0,
+      "grain_axis": [
+        1,
+        0,
+        0
+      ],
+      "parameters": {
+        "material_family": "wood",
+        "construction": "separate plank",
+        "grain_axis": 0
+      }
+    },
+    {
+      "name": "bridge_5",
+      "type": "stone_block",
+      "material": "wood",
+      "group": 0,
+      "role": "board",
+      "center": [
+        0,
+        -13,
+        -35
+      ],
+      "size": [
+        260,
+        10,
+        15
+      ],
+      "bevel": 1,
+      "variation": 1,
+      "grain_axis": [
+        1,
+        0,
+        0
+      ],
+      "parameters": {
+        "material_family": "wood",
+        "construction": "separate plank",
+        "grain_axis": 0
+      }
+    }
+  ],
+  "rig": [],
+  "actions": {},
+  "authoring_schema": 2,
+  "geometry_validation": {
+    "remove_zero_area_faces": true,
+    "preserve_vertex_order": true
+  },
+  "provenance": {
+    "kind": "original_tower_asset",
+    "source_mesh_or_animation_reuse": false,
+    "brief": "An isolated eight-by-six-tile floor vignette: divided paving, a recessed runoff channel and a short timber crossing. No production map tiles are replaced.",
+    "artistic_acceptance": false,
+    "live_integration": false
+  }
+}

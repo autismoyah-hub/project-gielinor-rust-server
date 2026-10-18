@@ -1,0 +1,689 @@
+{
+  "schema": 1,
+  "name": "Sluice keeper arcade",
+  "unit": "native;128 units per tile",
+  "materials": {
+    "stone": {
+      "family": "stone",
+      "render_type": 0,
+      "hsl": 10286,
+      "shadow": 10274,
+      "end": 10294,
+      "edge": 10291
+    },
+    "edge": {
+      "hsl": 10262,
+      "render_type": 0
+    },
+    "stone_shadow": {
+      "hsl": 10258,
+      "render_type": 0
+    },
+    "iron": {
+      "hsl": 10299,
+      "render_type": 0
+    },
+    "iron_edge": {
+      "hsl": 10320,
+      "render_type": 0
+    },
+    "wood": {
+      "family": "wood",
+      "render_type": 0,
+      "hsl": 8600,
+      "shadow": 8479,
+      "end": 8487,
+      "edge": 8605
+    },
+    "wood_dark": {
+      "hsl": 8485,
+      "render_type": 0
+    },
+    "leather": {
+      "family": "leather",
+      "render_type": 0,
+      "hsl": 3741,
+      "shadow": 3730,
+      "end": 3747,
+      "edge": 3744
+    },
+    "skin": {
+      "hsl": 10782,
+      "render_type": 0
+    },
+    "skin_shadow": {
+      "hsl": 10772,
+      "render_type": 0
+    },
+    "cloth": {
+      "hsl": 916,
+      "render_type": 0
+    },
+    "armor": {
+      "hsl": 6955,
+      "render_type": 0
+    },
+    "armor_shadow": {
+      "hsl": 7075,
+      "render_type": 0
+    },
+    "gray_armor": {
+      "hsl": 5169,
+      "render_type": 0
+    },
+    "eye": {
+      "hsl": 127,
+      "render_type": 0
+    },
+    "brow": {
+      "hsl": 8598,
+      "render_type": 0
+    },
+    "metal": {
+      "family": "metal",
+      "render_type": 0,
+      "hsl": 33,
+      "shadow": 24,
+      "end": 41,
+      "edge": 45
+    },
+    "bronze": {
+      "family": "bronze",
+      "render_type": 0,
+      "hsl": 6687,
+      "shadow": 6678,
+      "end": 6695,
+      "edge": 6698
+    },
+    "organic": {
+      "family": "organic",
+      "render_type": 0,
+      "hsl": 6697,
+      "shadow": 6685,
+      "end": 6704,
+      "edge": 6701
+    },
+    "ceramic": {
+      "family": "ceramic",
+      "render_type": 0,
+      "hsl": 4773,
+      "shadow": 4763,
+      "end": 4781,
+      "edge": 4786
+    }
+  },
+  "components": [
+    {
+      "name": "pier_-1_0",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "pier_-1_0",
+      "center": [
+        -103.19999999999999,
+        -19.333333333333332,
+        0
+      ],
+      "size": [
+        32,
+        36.666666666666664,
+        75
+      ],
+      "bevel": 3,
+      "wear": 0.09,
+      "seed": -1,
+      "variation": -2
+    },
+    {
+      "name": "pier_-1_1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "pier_-1_1",
+      "center": [
+        -103.19999999999999,
+        -58.0,
+        0
+      ],
+      "size": [
+        32,
+        36.666666666666664,
+        75
+      ],
+      "bevel": 3,
+      "wear": 0,
+      "seed": 0,
+      "variation": 0
+    },
+    {
+      "name": "pier_-1_2",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "pier_-1_2",
+      "center": [
+        -103.19999999999999,
+        -96.66666666666667,
+        0
+      ],
+      "size": [
+        32,
+        36.666666666666664,
+        75
+      ],
+      "bevel": 3,
+      "wear": 0,
+      "seed": 1,
+      "variation": 2
+    },
+    {
+      "name": "impost_-1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "impost_-1",
+      "center": [
+        -103.19999999999999,
+        -116.0,
+        0
+      ],
+      "size": [
+        41,
+        13,
+        82
+      ],
+      "bevel": 2
+    },
+    {
+      "name": "pier_1_0",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "pier_1_0",
+      "center": [
+        103.19999999999999,
+        -19.333333333333332,
+        0
+      ],
+      "size": [
+        32,
+        36.666666666666664,
+        75
+      ],
+      "bevel": 3,
+      "wear": 0.09,
+      "seed": 1,
+      "variation": -2
+    },
+    {
+      "name": "pier_1_1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "pier_1_1",
+      "center": [
+        103.19999999999999,
+        -58.0,
+        0
+      ],
+      "size": [
+        32,
+        36.666666666666664,
+        75
+      ],
+      "bevel": 3,
+      "wear": 0,
+      "seed": 2,
+      "variation": 0
+    },
+    {
+      "name": "pier_1_2",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "pier_1_2",
+      "center": [
+        103.19999999999999,
+        -96.66666666666667,
+        0
+      ],
+      "size": [
+        32,
+        36.666666666666664,
+        75
+      ],
+      "bevel": 3,
+      "wear": 0,
+      "seed": 3,
+      "variation": 2
+    },
+    {
+      "name": "impost_1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "impost_1",
+      "center": [
+        103.19999999999999,
+        -116.0,
+        0
+      ],
+      "size": [
+        41,
+        13,
+        82
+      ],
+      "bevel": 2
+    },
+    {
+      "name": "voussoir_0",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -116.0,
+        0
+      ],
+      "inner": 88.19999999999999,
+      "outer": 126.0,
+      "start_angle": 0.009,
+      "end_angle": 0.3400658503988659,
+      "depth": 70,
+      "variation": -2,
+      "parameters": {
+        "radial_joint": true
+      }
+    },
+    {
+      "name": "voussoir_1",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -116.0,
+        0
+      ],
+      "inner": 88.19999999999999,
+      "outer": 126.0,
+      "start_angle": 0.3580658503988659,
+      "end_angle": 0.6891317007977318,
+      "depth": 70,
+      "variation": 0,
+      "parameters": {
+        "radial_joint": true
+      }
+    },
+    {
+      "name": "voussoir_2",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -116.0,
+        0
+      ],
+      "inner": 88.19999999999999,
+      "outer": 126.0,
+      "start_angle": 0.7071317007977318,
+      "end_angle": 1.0381975511965977,
+      "depth": 70,
+      "variation": 1,
+      "parameters": {
+        "radial_joint": true
+      }
+    },
+    {
+      "name": "voussoir_3",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -116.0,
+        0
+      ],
+      "inner": 88.19999999999999,
+      "outer": 126.0,
+      "start_angle": 1.0561975511965975,
+      "end_angle": 1.3872634015954637,
+      "depth": 70,
+      "variation": -2,
+      "parameters": {
+        "radial_joint": true
+      }
+    },
+    {
+      "name": "keystone",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -116.0,
+        0
+      ],
+      "inner": 85.19999999999999,
+      "outer": 133.0,
+      "start_angle": 1.4052634015954635,
+      "end_angle": 1.7363292519943296,
+      "depth": 79,
+      "variation": 2,
+      "parameters": {
+        "radial_joint": true
+      }
+    },
+    {
+      "name": "voussoir_5",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -116.0,
+        0
+      ],
+      "inner": 88.19999999999999,
+      "outer": 126.0,
+      "start_angle": 1.7543292519943294,
+      "end_angle": 2.0853951023931954,
+      "depth": 70,
+      "variation": 1,
+      "parameters": {
+        "radial_joint": true
+      }
+    },
+    {
+      "name": "voussoir_6",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -116.0,
+        0
+      ],
+      "inner": 88.19999999999999,
+      "outer": 126.0,
+      "start_angle": 2.103395102393195,
+      "end_angle": 2.4344609527920613,
+      "depth": 70,
+      "variation": -2,
+      "parameters": {
+        "radial_joint": true
+      }
+    },
+    {
+      "name": "voussoir_7",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -116.0,
+        0
+      ],
+      "inner": 88.19999999999999,
+      "outer": 126.0,
+      "start_angle": 2.452460952792061,
+      "end_angle": 2.7835268031909273,
+      "depth": 70,
+      "variation": 0,
+      "parameters": {
+        "radial_joint": true
+      }
+    },
+    {
+      "name": "voussoir_8",
+      "type": "voussoir",
+      "material": "stone",
+      "group": 0,
+      "role": "arch_wedge",
+      "center": [
+        0,
+        -116.0,
+        0
+      ],
+      "inner": 88.19999999999999,
+      "outer": 126.0,
+      "start_angle": 2.801526803190927,
+      "end_angle": 3.132592653589793,
+      "depth": 70,
+      "variation": 1,
+      "parameters": {
+        "radial_joint": true
+      }
+    },
+    {
+      "name": "repair_tie",
+      "type": "box",
+      "material": "metal",
+      "group": 0,
+      "role": "repair_tie",
+      "center": [
+        -103.19999999999999,
+        -63.800000000000004,
+        -38.0
+      ],
+      "size": [
+        34,
+        8,
+        4
+      ]
+    },
+    {
+      "name": "tie_bolt_-114.19999999999999",
+      "type": "beam",
+      "material": "metal",
+      "group": 0,
+      "role": "tie_bolt_-114.19999999999999",
+      "start": [
+        -114.19999999999999,
+        -63.800000000000004,
+        -38.0
+      ],
+      "end": [
+        -114.19999999999999,
+        -63.800000000000004,
+        -42.0
+      ],
+      "radii": [
+        3,
+        3
+      ],
+      "sides": 6
+    },
+    {
+      "name": "tie_bolt_-92.19999999999999",
+      "type": "beam",
+      "material": "metal",
+      "group": 0,
+      "role": "tie_bolt_-92.19999999999999",
+      "start": [
+        -92.19999999999999,
+        -63.800000000000004,
+        -38.0
+      ],
+      "end": [
+        -92.19999999999999,
+        -63.800000000000004,
+        -42.0
+      ],
+      "radii": [
+        3,
+        3
+      ],
+      "sides": 6
+    },
+    {
+      "name": "foundation_-1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "foundation_-1",
+      "center": [
+        -107,
+        -8,
+        0
+      ],
+      "size": [
+        60,
+        16,
+        90
+      ],
+      "bevel": 4,
+      "wear": 0.08,
+      "seed": 1
+    },
+    {
+      "name": "guide_rail_-1",
+      "type": "box",
+      "material": "metal",
+      "group": 0,
+      "role": "guide_rail_-1",
+      "center": [
+        -77,
+        -68,
+        12
+      ],
+      "size": [
+        7,
+        128,
+        9
+      ]
+    },
+    {
+      "name": "guide_shoe_-1",
+      "type": "stone_block",
+      "material": "metal",
+      "group": 0,
+      "role": "guide_shoe_-1",
+      "center": [
+        -77,
+        -12,
+        12
+      ],
+      "size": [
+        18,
+        18,
+        20
+      ],
+      "bevel": 2
+    },
+    {
+      "name": "foundation_1",
+      "type": "stone_block",
+      "material": "stone",
+      "group": 0,
+      "role": "foundation_1",
+      "center": [
+        107,
+        -8,
+        0
+      ],
+      "size": [
+        60,
+        16,
+        90
+      ],
+      "bevel": 4,
+      "wear": 0.08,
+      "seed": 3
+    },
+    {
+      "name": "guide_rail_1",
+      "type": "box",
+      "material": "metal",
+      "group": 0,
+      "role": "guide_rail_1",
+      "center": [
+        77,
+        -68,
+        12
+      ],
+      "size": [
+        7,
+        128,
+        9
+      ]
+    },
+    {
+      "name": "guide_shoe_1",
+      "type": "stone_block",
+      "material": "metal",
+      "group": 0,
+      "role": "guide_shoe_1",
+      "center": [
+        77,
+        -12,
+        12
+      ],
+      "size": [
+        18,
+        18,
+        20
+      ],
+      "bevel": 2
+    },
+    {
+      "name": "lintel_cable_eye",
+      "type": "annulus",
+      "material": "bronze",
+      "group": 0,
+      "role": "lintel_cable_eye",
+      "center": [
+        0,
+        -219,
+        -39
+      ],
+      "radii": [
+        11,
+        13
+      ],
+      "rim_width": 4,
+      "depth": 5,
+      "sides": 8
+    },
+    {
+      "name": "repair_splice",
+      "type": "box",
+      "material": "metal",
+      "group": 0,
+      "role": "repair_splice",
+      "center": [
+        108,
+        -53,
+        -39
+      ],
+      "size": [
+        45,
+        7,
+        5
+      ]
+    }
+  ],
+  "rig": [],
+  "actions": {},
+  "authoring_schema": 2,
+  "geometry_validation": {
+    "remove_zero_area_faces": true,
+    "preserve_vertex_order": true
+  },
+  "provenance": {
+    "kind": "original_tower_asset",
+    "source_mesh_or_animation_reuse": false,
+    "brief": "A bonded-stone sluice opening with radial voussoirs, a projecting keystone, iron gate guides and a repaired west impost. Course joints and one restrained spalled corner make construction readable.",
+    "artistic_acceptance": false,
+    "live_integration": false
+  }
+}
