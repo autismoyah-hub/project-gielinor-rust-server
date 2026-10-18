@@ -3,13 +3,13 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0050: six Dorgesh foods, source [78f603f](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/78f603fd516a3963f2e0a30d2ad47186aa6e1ddd). Affected libraries compiled; focusedPASS1server/0world,405source hashes unchanged. Wiki HP2/2/2/2/10/2and two Cooking+1effects are registered, explicitly differing from four donor healing values and omitted boosts.
+OR-MIG-0051: selected and atomic network Prayer burial, source [f6b0f6a](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/f6b0f6ad54fe7813bb6607827eeb8da0e60137fa). Shared regression passed 88 server and 446 world tests, one existing ignored test, with 406 source hashes unchanged. Three new selected-action cases and all 11 unchanged Prayer/reference/offering cases also passed. The initial invalid-XP caller failure and fix are preserved.
 
-Existing ordinary/boost transactions and member/selected-slot gates reused; no shared engine change. Consumption is separate from shops/pickpocketing/Gourmet exchange/quest access. Prior full shared regression85server445world remains historical.
+Actual held Bury retains the claimed item and clicked slot through confirmation and delay, rechecks membership, and stages inventory/Stats together. Original reference APIs and chapel/offering behavior remain available. Timing, above-base necklace restoration, ash/Zealot/Catacombs hooks and native/persistence acceptance remain open.
 
-There are50implementation units across54append-only records:23historical and27new gameplay/shared units, all pending independent verification. Discovery remains3,508records:30partially contracted eligible files/tables,656configuration and2,822unassessed; not a completion percentage.
+There are 51 implementation units across 55 append-only records: 23 historical and 28 new gameplay/shared units, all pending independent verification. Discovery remains 3,508 records: 31 partially contracted eligible files/tables, 656 configuration and 2,821 unassessed. This is not a completion percentage.
 
-Next foundational audit: delayed Prayer burial currently lacks retained selected-slot identity compared with donor PrayerBuryEvents. Resolve that dependency before burial/ashes expansion while preserving legacy/offering behavior. Other open obligations: Anglerfish PvP eligibility, delayed food effects, quantity/Cook menus, modifiers/surfaces, cake tin returns, reconciliation and independent V0–V4.
+Next: extend eligible Prayer/burial/ash content on the corrected selected transaction. Other open work includes Anglerfish PvP eligibility, delayed food effects, quantity/Cook menus, modifiers/surfaces, cake tin returns, inventory reconciliation and independent V0–V4. Historical/private evidence and unrelated source changes are preserved.
 <!-- forge-current:end -->
 
 
@@ -192,3 +192,8 @@ Published 8d8dff9c3f5200568f2becf0c63509332d9bfed9. Thirteen selected bowl retur
 ## Implementation checkpoint OR-MIG-0050
 
 Published 78f603fd516a3963f2e0a30d2ad47186aa6e1ddd. Six Dorgesh manual Eat profiles,4WikiHPcorrections and2Cooking boosts; focusedPASS1server0world/405same hashes. Queue50units54records, independent pending. Continue foundational Prayer selected-slot audit and eligible content.
+
+
+## Implementation checkpoint OR-MIG-0051
+
+Published f6b0f6ad54fe7813bb6607827eeb8da0e60137fa. Selected atomic actual network burial; final88server/446world and3new+11original integration checksPASS/406unchanged hashes. Initial caller-policy failure preserved. Queue51units55records, inventory31eligible/2821unassessed. All independent acceptance pending; continue eligible Prayer content.
