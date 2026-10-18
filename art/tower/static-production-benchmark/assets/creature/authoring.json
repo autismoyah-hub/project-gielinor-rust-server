@@ -1,0 +1,8 @@
+{
+  "kind": "creature",
+  "version": "final2",
+  "seconds": 1.1079375743865967,
+  "static": true,
+  "prior_mesh_imports": false,
+  "protected_geometry_imports": false
+}

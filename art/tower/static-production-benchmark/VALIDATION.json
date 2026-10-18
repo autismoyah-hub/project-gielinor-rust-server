@@ -1,0 +1,12 @@
+{
+  "anvil_source_reexport_exact_static": true,
+  "workstation_source_reexport_exact_static": true,
+  "machine_source_reexport_exact_static": true,
+  "creature_source_reexport_exact_static": true,
+  "no_rig_or_animation_payloads": true,
+  "local_links_complete": true,
+  "portable_scene_pixel_exact": true,
+  "matched_anvil_overlays_exact": true,
+  "renderer_sha256": "f6e6e12da1a80f7824c9d90a5254964fdc8d738298417c7dcd51e0793caea7cf",
+  "file_hashes_checked": 220
+}

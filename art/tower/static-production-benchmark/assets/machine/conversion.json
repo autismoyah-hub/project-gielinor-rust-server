@@ -1,0 +1,384 @@
+{
+  "components": [
+    {
+      "name": "mill_plinth",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "frame_foot",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "cast_frame_post",
+      "vertices": 16,
+      "triangles": 28,
+      "group": 0
+    },
+    {
+      "name": "cast_frame_post.001",
+      "vertices": 16,
+      "triangles": 28,
+      "group": 0
+    },
+    {
+      "name": "crosshead",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "journal_block",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "journal_bushing",
+      "vertices": 64,
+      "triangles": 128,
+      "group": 0
+    },
+    {
+      "name": "journal_block.001",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "journal_bushing.001",
+      "vertices": 64,
+      "triangles": 128,
+      "group": 0
+    },
+    {
+      "name": "pressure_spindle",
+      "vertices": 20,
+      "triangles": 36,
+      "group": 0
+    },
+    {
+      "name": "adjustment_bar",
+      "vertices": 16,
+      "triangles": 28,
+      "group": 0
+    },
+    {
+      "name": "spindle_thread",
+      "vertices": 140,
+      "triangles": 276,
+      "group": 0
+    },
+    {
+      "name": "frame_bolt",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "base_bolt",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "frame_bolt.001",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "base_bolt.001",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "frame_foot.001",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "cast_frame_post.002",
+      "vertices": 16,
+      "triangles": 28,
+      "group": 0
+    },
+    {
+      "name": "cast_frame_post.003",
+      "vertices": 16,
+      "triangles": 28,
+      "group": 0
+    },
+    {
+      "name": "crosshead.001",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "journal_block.002",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "journal_bushing.002",
+      "vertices": 64,
+      "triangles": 128,
+      "group": 0
+    },
+    {
+      "name": "journal_block.003",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "journal_bushing.003",
+      "vertices": 64,
+      "triangles": 128,
+      "group": 0
+    },
+    {
+      "name": "pressure_spindle.001",
+      "vertices": 20,
+      "triangles": 36,
+      "group": 0
+    },
+    {
+      "name": "adjustment_bar.001",
+      "vertices": 16,
+      "triangles": 28,
+      "group": 0
+    },
+    {
+      "name": "spindle_thread.001",
+      "vertices": 140,
+      "triangles": 276,
+      "group": 0
+    },
+    {
+      "name": "frame_bolt.002",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "base_bolt.002",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "frame_bolt.003",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "base_bolt.003",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "polished_work_roll",
+      "vertices": 48,
+      "triangles": 92,
+      "group": 0
+    },
+    {
+      "name": "roll_axle",
+      "vertices": 24,
+      "triangles": 44,
+      "group": 0
+    },
+    {
+      "name": "meshing_drive_gear",
+      "vertices": 96,
+      "triangles": 186,
+      "group": 0
+    },
+    {
+      "name": "polished_work_roll.001",
+      "vertices": 48,
+      "triangles": 92,
+      "group": 0
+    },
+    {
+      "name": "roll_axle.001",
+      "vertices": 24,
+      "triangles": 44,
+      "group": 0
+    },
+    {
+      "name": "meshing_drive_gear.001",
+      "vertices": 96,
+      "triangles": 185,
+      "group": 0
+    },
+    {
+      "name": "operator_flywheel",
+      "vertices": 128,
+      "triangles": 256,
+      "group": 0
+    },
+    {
+      "name": "flywheel_spoke",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "flywheel_spoke.001",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "flywheel_spoke.002",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "flywheel_spoke.003",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "flywheel_spoke.004",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "flywheel_hub",
+      "vertices": 24,
+      "triangles": 44,
+      "group": 0
+    },
+    {
+      "name": "turning_handle",
+      "vertices": 20,
+      "triangles": 36,
+      "group": 0
+    },
+    {
+      "name": "feed_sheet",
+      "vertices": 56,
+      "triangles": 12,
+      "group": 0
+    },
+    {
+      "name": "feed_support",
+      "vertices": 16,
+      "triangles": 28,
+      "group": 0
+    },
+    {
+      "name": "feed_tray_leg",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "feed_tray_leg.001",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "feed_support.001",
+      "vertices": 16,
+      "triangles": 28,
+      "group": 0
+    },
+    {
+      "name": "feed_tray_leg.002",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "feed_tray_leg.003",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "oiler",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "oiler.001",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "mill_makers_plate",
+      "vertices": 56,
+      "triangles": 44,
+      "group": 0
+    },
+    {
+      "name": "guide_wear_strip",
+      "vertices": 56,
+      "triangles": 92,
+      "group": 0
+    },
+    {
+      "name": "guide_wear_strip.001",
+      "vertices": 56,
+      "triangles": 92,
+      "group": 0
+    },
+    {
+      "name": "guide_wear_strip.002",
+      "vertices": 56,
+      "triangles": 92,
+      "group": 0
+    },
+    {
+      "name": "guide_wear_strip.003",
+      "vertices": 56,
+      "triangles": 92,
+      "group": 0
+    },
+    {
+      "name": "axle_locknut",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    },
+    {
+      "name": "axle_locknut.001",
+      "vertices": 12,
+      "triangles": 20,
+      "group": 0
+    }
+  ],
+  "quantization_max_error": 0.5,
+  "collapsed_triangles": 229,
+  "uv_loops": 8312,
+  "material_conversion": "UV image albedo sampled at triangle centroid, otherwise diffuse color; RGB to 6/3/7-bit HSL. No PBR/normal/roughness transfer.",
+  "texture_image_samples": 0,
+  "vertices": 2304,
+  "triangles": 4155,
+  "budget": {
+    "soft_vertices": 12000,
+    "soft_triangles": 20000
+  },
+  "coordinates": "X right, Y down, Z depth; 128 units/tile",
+  "face_priority": 0,
+  "alpha": 0
+}

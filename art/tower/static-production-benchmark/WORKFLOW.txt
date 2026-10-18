@@ -1,0 +1,66 @@
+STATIC ART PRODUCTION WORKFLOW
+
+Preserved baseline: 0f84faa. No completed Astra model or Cindermaw geometry is an
+input to the four new authoring functions. Generic Sol cage, union, mesh and
+rendering utilities are reused. New models contain no rig or animation payload.
+
+Dependencies: Blender 5.2.2 LTS, Python 3.13, Pillow, existing native workbench.
+Set the local constants in tools/tower/static-benchmark/run.py: ROOT, BLENDER,
+NATIVE, CACHE, REFERENCE. CACHE is a privately held authorized revision239.1
+JS5 resource and is not distributed. The frozen renderer hash is in MANIFEST.
+
+Generate/review the preserved selected versions:
+  python tools/tower/static-benchmark/run.py final2 anvil workstation creature
+  python tools/tower/static-benchmark/run.py final machine
+Initial design review:
+  python tools/tower/static-benchmark/run.py first
+  python tools/tower/static-benchmark/run.py refined
+The selected generation source corresponds to the final revisions. Historic
+.blend and model files preserve earlier authoring code states. Choose a fresh
+version name to preserve prior outputs during a new art iteration.
+
+ANVIL
+The author function reads no cache or prior geometry. Reference_compare.py reads
+only rendered reference BMPs and authored PNGs, with one fixed camera and light.
+  python tools/tower/static-benchmark/reference_compare.py
+The public package includes rendered reference evidence and identity metadata,
+never the original mesh, source textures, decoded arrays or round-trip files.
+
+ORIGINAL MODEL METHODS
+designs.py includes reusable loft, gear and shell construction. It imports the
+preserved Sol cage/union utilities for supported contours and continuous organic
+mass. Carapace relief is sculpted directly; material regions are assigned to the
+same shell rather than overlapping surface strips. Components are static and
+exported without skeletal labels. Mechanical threads, jaw faces, bearings and
+feed clearances are deliberate functional details, not arbitrary complexity.
+
+NATIVE REVIEW
+run.py produces front/side/rear/quarter and gameplay views. Keep camera and light
+constant across an iteration. Identify major primary form errors first, then
+secondary component relationships and finally the useful tertiary details.
+Inspect the exported model rather than assuming the Blender result survives.
+
+BLENDER
+  python tools/tower/static-benchmark/present.py
+studio.py selects CUDA when available and records the device. It supports beauty,
+clay, topology, orthographic views and native-match. Native-match converts the
+native look camera to Blender coordinates and focal pixels to sensor/lens values.
+All images are labeled; source precision and physical lighting still differ.
+
+SCENE
+  python tools/tower/static-benchmark/scene.py
+  blender -b --factory-startup --python-exit-code 1 --python tools/tower/static-benchmark/scene_studio.py -- OUT
+  blender -b OUT/scene/showcase.blend --python-exit-code 1 --python tools/tower/static-benchmark/studio.py -- OUT/presentation/scene beauty
+The six native views include reverse overview and machine detail. Architecture
+and supporting scenery are retained original Sol assets, identified by relative
+paths in the portable manifest. Four benchmark models are new independent work.
+
+Portable native replay:
+  asset_workbench.exe CACHE OUT scene art/tower/static-production-benchmark/scene/scene.tsv art/tower/static-production-benchmark/scene/overview.camera
+
+PUBLICATION
+  python tools/tower/static-benchmark/publish.py
+  python tools/tower/static-benchmark/verify.py
+The allowlist preserves original editable sources, native models, render evidence,
+reports and tools. Keep cache models and textures private. Compare visual quality
+first; technical conversion and silhouette metrics are supporting evidence.

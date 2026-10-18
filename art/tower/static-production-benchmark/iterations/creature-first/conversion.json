@@ -1,0 +1,384 @@
+{
+  "components": [
+    {
+      "name": "continuous_cephalothorax",
+      "vertices": 414,
+      "triangles": 822,
+      "group": 0
+    },
+    {
+      "name": "dorsal_shield",
+      "vertices": 133,
+      "triangles": 262,
+      "group": 0
+    },
+    {
+      "name": "abdominal_tergite",
+      "vertices": 92,
+      "triangles": 180,
+      "group": 0
+    },
+    {
+      "name": "abdominal_tergite.001",
+      "vertices": 92,
+      "triangles": 180,
+      "group": 0
+    },
+    {
+      "name": "abdominal_tergite.002",
+      "vertices": 92,
+      "triangles": 180,
+      "group": 0
+    },
+    {
+      "name": "abdominal_tergite.003",
+      "vertices": 92,
+      "triangles": 180,
+      "group": 0
+    },
+    {
+      "name": "tail_segment",
+      "vertices": 92,
+      "triangles": 180,
+      "group": 0
+    },
+    {
+      "name": "tail_segment.001",
+      "vertices": 92,
+      "triangles": 180,
+      "group": 0
+    },
+    {
+      "name": "tail_segment.002",
+      "vertices": 92,
+      "triangles": 180,
+      "group": 0
+    },
+    {
+      "name": "tail_segment.003",
+      "vertices": 92,
+      "triangles": 180,
+      "group": 0
+    },
+    {
+      "name": "tail_segment.004",
+      "vertices": 92,
+      "triangles": 180,
+      "group": 0
+    },
+    {
+      "name": "venom_telson",
+      "vertices": 112,
+      "triangles": 220,
+      "group": 0
+    },
+    {
+      "name": "coxa",
+      "vertices": 77,
+      "triangles": 150,
+      "group": 0
+    },
+    {
+      "name": "flexible_leg_joint",
+      "vertices": 52,
+      "triangles": 100,
+      "group": 0
+    },
+    {
+      "name": "tibia",
+      "vertices": 62,
+      "triangles": 119,
+      "group": 0
+    },
+    {
+      "name": "tarsal_claw",
+      "vertices": 18,
+      "triangles": 22,
+      "group": 0
+    },
+    {
+      "name": "coxa.001",
+      "vertices": 77,
+      "triangles": 150,
+      "group": 0
+    },
+    {
+      "name": "flexible_leg_joint.001",
+      "vertices": 52,
+      "triangles": 100,
+      "group": 0
+    },
+    {
+      "name": "tibia.001",
+      "vertices": 62,
+      "triangles": 118,
+      "group": 0
+    },
+    {
+      "name": "tarsal_claw.001",
+      "vertices": 18,
+      "triangles": 22,
+      "group": 0
+    },
+    {
+      "name": "coxa.002",
+      "vertices": 77,
+      "triangles": 150,
+      "group": 0
+    },
+    {
+      "name": "flexible_leg_joint.002",
+      "vertices": 52,
+      "triangles": 100,
+      "group": 0
+    },
+    {
+      "name": "tibia.002",
+      "vertices": 62,
+      "triangles": 118,
+      "group": 0
+    },
+    {
+      "name": "tarsal_claw.002",
+      "vertices": 18,
+      "triangles": 22,
+      "group": 0
+    },
+    {
+      "name": "coxa.003",
+      "vertices": 77,
+      "triangles": 150,
+      "group": 0
+    },
+    {
+      "name": "flexible_leg_joint.003",
+      "vertices": 52,
+      "triangles": 100,
+      "group": 0
+    },
+    {
+      "name": "tibia.003",
+      "vertices": 62,
+      "triangles": 120,
+      "group": 0
+    },
+    {
+      "name": "tarsal_claw.003",
+      "vertices": 18,
+      "triangles": 22,
+      "group": 0
+    },
+    {
+      "name": "pedipalp_arm",
+      "vertices": 92,
+      "triangles": 180,
+      "group": 0
+    },
+    {
+      "name": "pincer_palm",
+      "vertices": 92,
+      "triangles": 180,
+      "group": 0
+    },
+    {
+      "name": "fixed_chela",
+      "vertices": 94,
+      "triangles": 178,
+      "group": 0
+    },
+    {
+      "name": "movable_chela",
+      "vertices": 94,
+      "triangles": 178,
+      "group": 0
+    },
+    {
+      "name": "mandible",
+      "vertices": 62,
+      "triangles": 116,
+      "group": 0
+    },
+    {
+      "name": "orbital_socket",
+      "vertices": 37,
+      "triangles": 70,
+      "group": 0
+    },
+    {
+      "name": "amber_eye",
+      "vertices": 52,
+      "triangles": 92,
+      "group": 0
+    },
+    {
+      "name": "orbital_brow",
+      "vertices": 62,
+      "triangles": 113,
+      "group": 0
+    },
+    {
+      "name": "coxa.004",
+      "vertices": 77,
+      "triangles": 150,
+      "group": 0
+    },
+    {
+      "name": "flexible_leg_joint.004",
+      "vertices": 52,
+      "triangles": 100,
+      "group": 0
+    },
+    {
+      "name": "tibia.004",
+      "vertices": 62,
+      "triangles": 120,
+      "group": 0
+    },
+    {
+      "name": "tarsal_claw.004",
+      "vertices": 18,
+      "triangles": 22,
+      "group": 0
+    },
+    {
+      "name": "coxa.005",
+      "vertices": 77,
+      "triangles": 150,
+      "group": 0
+    },
+    {
+      "name": "flexible_leg_joint.005",
+      "vertices": 52,
+      "triangles": 100,
+      "group": 0
+    },
+    {
+      "name": "tibia.005",
+      "vertices": 62,
+      "triangles": 120,
+      "group": 0
+    },
+    {
+      "name": "tarsal_claw.005",
+      "vertices": 18,
+      "triangles": 22,
+      "group": 0
+    },
+    {
+      "name": "coxa.006",
+      "vertices": 77,
+      "triangles": 150,
+      "group": 0
+    },
+    {
+      "name": "flexible_leg_joint.006",
+      "vertices": 52,
+      "triangles": 100,
+      "group": 0
+    },
+    {
+      "name": "tibia.006",
+      "vertices": 62,
+      "triangles": 117,
+      "group": 0
+    },
+    {
+      "name": "tarsal_claw.006",
+      "vertices": 18,
+      "triangles": 22,
+      "group": 0
+    },
+    {
+      "name": "coxa.007",
+      "vertices": 77,
+      "triangles": 150,
+      "group": 0
+    },
+    {
+      "name": "flexible_leg_joint.007",
+      "vertices": 52,
+      "triangles": 100,
+      "group": 0
+    },
+    {
+      "name": "tibia.007",
+      "vertices": 62,
+      "triangles": 120,
+      "group": 0
+    },
+    {
+      "name": "tarsal_claw.007",
+      "vertices": 18,
+      "triangles": 22,
+      "group": 0
+    },
+    {
+      "name": "pedipalp_arm.001",
+      "vertices": 92,
+      "triangles": 180,
+      "group": 0
+    },
+    {
+      "name": "pincer_palm.001",
+      "vertices": 92,
+      "triangles": 180,
+      "group": 0
+    },
+    {
+      "name": "fixed_chela.001",
+      "vertices": 94,
+      "triangles": 180,
+      "group": 0
+    },
+    {
+      "name": "movable_chela.001",
+      "vertices": 94,
+      "triangles": 178,
+      "group": 0
+    },
+    {
+      "name": "mandible.001",
+      "vertices": 62,
+      "triangles": 118,
+      "group": 0
+    },
+    {
+      "name": "orbital_socket.001",
+      "vertices": 37,
+      "triangles": 70,
+      "group": 0
+    },
+    {
+      "name": "amber_eye.001",
+      "vertices": 52,
+      "triangles": 92,
+      "group": 0
+    },
+    {
+      "name": "orbital_brow.001",
+      "vertices": 62,
+      "triangles": 115,
+      "group": 0
+    },
+    {
+      "name": "recessed_stoma",
+      "vertices": 52,
+      "triangles": 100,
+      "group": 0
+    }
+  ],
+  "quantization_max_error": 0.5,
+  "collapsed_triangles": 146,
+  "uv_loops": 24386,
+  "material_conversion": "UV image albedo sampled at triangle centroid, otherwise diffuse color; RGB to 6/3/7-bit HSL. No PBR/normal/roughness transfer.",
+  "texture_image_samples": 0,
+  "vertices": 4381,
+  "triangles": 8372,
+  "budget": {
+    "soft_vertices": 12000,
+    "soft_triangles": 20000
+  },
+  "coordinates": "X right, Y down, Z depth; 128 units/tile",
+  "face_priority": 0,
+  "alpha": 0
+}
