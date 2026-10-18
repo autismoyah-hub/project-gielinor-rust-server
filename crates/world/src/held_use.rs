@@ -30,6 +30,7 @@ pub enum Handler {
     Assembly(crate::assembly::Recipe),
     AssemblyImmediate(crate::assembly::Recipe),
     AssemblyPrecise(crate::assembly::PreciseRecipe),
+    AssemblyProduction { recipe:crate::assembly::PreciseRecipe, cycle_ticks:u8 },
     AssemblyTimed {
         recipe: crate::assembly::Recipe,
         ticks: u8,

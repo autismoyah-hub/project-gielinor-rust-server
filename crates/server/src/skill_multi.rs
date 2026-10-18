@@ -41,6 +41,7 @@ pub(crate) struct Active {
     pub smelting: bool,
     pub dough: Option<gielinor_world::dough::Request>,
     pub tool_crafting:Option<gielinor_world::tool_crafting::Request>,
+    pub assembly_production:Option<gielinor_world::assembly_production::Request>,
     pub finished_potion: Option<gielinor_world::finished_potions::Request>,
     pub potion_upgrade: Option<gielinor_world::potion_upgrades::Request>,
     pub combat_mixing: Option<gielinor_world::combat_mixing::Request>,

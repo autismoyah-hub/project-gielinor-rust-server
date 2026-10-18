@@ -42,6 +42,7 @@ mod mining_actions;
 mod npc_actions;
 mod thieving_actions;
 mod tool_crafting_actions;
+mod assembly_production_actions;
 mod npc_combat_actions;
 mod npc_death_actions;
 mod npc_search;
@@ -183,6 +184,7 @@ enum Deferred {
     Cooking(crate::cooking::Job),
     Pickpocket(thieving_actions::Job),
     ToolCrafting(crate::tool_crafting::Pending),
+    AssemblyProduction(crate::assembly_production::Pending),
     Grinding(crate::grinding::Pending),
     SwampTar(crate::swamp_tar::Pending),
     Dough(crate::dough::Pending),
@@ -242,6 +244,7 @@ enum LocationAction {
 struct Player {
     dough_request: Option<crate::dough::Request>,
     tool_crafting_request:Option<crate::tool_crafting::Request>,
+    assembly_production_request:Option<crate::assembly_production::Request>,
     finished_potion_request: Option<crate::finished_potions::Request>,
     potion_upgrade_request: Option<crate::potion_upgrades::Request>,
     combat_mixing_request: Option<crate::combat_mixing::Request>,
@@ -330,6 +333,8 @@ impl Player {
         self.queues.remove_all(crate::dough::QUEUE);
         self.dough_request = None;
         self.tool_crafting_request=None;
+        self.assembly_production_request=None;
+        self.queues.remove_all(crate::assembly_production::QUEUE);
         self.finished_potion_request = None;
         self.queues.remove_all(crate::finished_potions::QUEUE);
         self.potion_upgrade_request = None;
@@ -1400,6 +1405,7 @@ impl World {
         if open {
             p.queues.remove_all(crate::thieving::QUEUE);
             p.queues.remove_all(crate::tool_crafting::QUEUE);
+            p.queues.remove_all(crate::assembly_production::QUEUE);
             if matches!(p.prayer,Some(crate::prayer::State::Bury{slot:Some(_),..})) {
                 p.prayer=None;p.protection.suspended=false;
             }
@@ -2539,6 +2545,7 @@ impl World {
                                                     if outcome==crate::assembly::Outcome::Made {self.events.push(WorldEvent::AssemblyBatchMade{actor:p.id,trace:crate::assembly::BatchTransition{job,queued_at:pending.queued_at,committed_at:self.clock.0}});}
                                                     self.events.push(WorldEvent::LocationMessage{actor:p.id,message:crate::assembly::outcome_message(outcome)});
                                                 }
+                                                Deferred::AssemblyProduction(pending) => {assembly_production_actions::complete(p,queues,pending,&self.object_types,self.clock.0,&mut self.events);}
                                                 Deferred::Assembly(pending) => {
                                                     held_use_actions::complete_assembly_reward(p,pending.job,&self.object_types,pending.queued_at,self.clock.0,pending.xp_tenths,&mut self.events);
                                                 }
@@ -2994,6 +3001,7 @@ impl World {
                             member: false,
                             dough_request: None,
                             tool_crafting_request:None,
+                            assembly_production_request:None,
                             finished_potion_request: None,
                             potion_upgrade_request: None,
                             combat_mixing_request: None,

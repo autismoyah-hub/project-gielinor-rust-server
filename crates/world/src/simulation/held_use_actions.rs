@@ -149,6 +149,7 @@ impl World {
             }
         }
         match handler {
+            Some(Handler::AssemblyProduction{recipe,cycle_ticks}) => self.request_assembly_production(actor,recipe,cycle_ticks,request)?,
             Some(Handler::AssemblyImmediate(recipe)) => {
                 let (first_slot,second_slot)=if request.selected_id==recipe.first {(request.selected_slot as usize,request.target_slot as usize)}else{(request.target_slot as usize,request.selected_slot as usize)};
                 let job=crate::assembly::Job{recipe,first_slot,second_slot};
@@ -813,7 +814,7 @@ mod assembly_tests {
 pub(super) fn complete_assembly(p:&mut Player,job:crate::assembly::Job,items:&crate::inventory::Catalog,queued_at:i32,clock:i32,events:&mut Vec<WorldEvent>){
     complete_assembly_reward(p,job,items,queued_at,clock,None,events);
 }
-pub(super) fn complete_assembly_reward(p:&mut Player,job:crate::assembly::Job,items:&crate::inventory::Catalog,queued_at:i32,clock:i32,xp_tenths:Option<u16>,events:&mut Vec<WorldEvent>){
+pub(super) fn complete_assembly_reward(p:&mut Player,job:crate::assembly::Job,items:&crate::inventory::Catalog,queued_at:i32,clock:i32,xp_tenths:Option<u16>,events:&mut Vec<WorldEvent>)->crate::assembly::Outcome{
     let (outcome,advancement)=match xp_tenths {
         Some(xp)=>job.complete_awarding_tenths(&mut p.data.inventory,items,&mut p.data.stats,p.data.xp_rate_hundreds,p.member,xp),
         None=>job.complete_awarding(&mut p.data.inventory,items,&mut p.data.stats,p.data.xp_rate_hundreds,p.member),
@@ -821,4 +822,5 @@ pub(super) fn complete_assembly_reward(p:&mut Player,job:crate::assembly::Job,it
     if let Some(advancement)=advancement {events.push(WorldEvent::SkillAdvanced{actor:p.id,skill:job.recipe.skill,advancement});}
     if outcome==crate::assembly::Outcome::Made {events.push(WorldEvent::AssemblyMade{actor:p.id,trace:crate::assembly::Transition{job,queued_at,committed_at:clock}});}
     events.push(WorldEvent::LocationMessage{actor:p.id,message:crate::assembly::outcome_message_for_skill(outcome,job.recipe.skill)});
+    outcome
 }

@@ -276,6 +276,7 @@ pub mod tower_tastes;
 pub mod woodcutting;
 
 pub mod assembly;
+pub mod assembly_production;
 pub mod gathering;
 pub mod item_packs;
 pub mod mining;

@@ -751,13 +751,13 @@ pub fn configure<B: AccountBackend>(
         runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.exchange.tool,recipe.exchange.input,gielinor_world::held_use::Handler::ToolCraftingChoices{recipes:std::sync::Arc::new(vec![recipe]),cycle_ticks:3}).map_err(|e|io::Error::other(format!("Shell carving registration: {e:?}")))?;
     }
     for recipe in crate::content::amulet_stringing(n("obj"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
-        runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.first,recipe.second,gielinor_world::held_use::Handler::AssemblyTimed{recipe,ticks:1}).map_err(|e|io::Error::other(format!("Amulet stringing registration: {e:?}")))?;
+        runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.first,recipe.second,gielinor_world::held_use::Handler::AssemblyProduction{recipe:gielinor_world::assembly::PreciseRecipe{recipe,xp_tenths:40,ticks:1,animation:None,spot:None},cycle_ticks:2}).map_err(|e|io::Error::other(format!("Amulet stringing registration: {e:?}")))?;
     }
     for recipe in crate::content::godsword_attachments(n("obj"),&runtime.definitions).map_err(io::Error::other)? {
         runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.first,recipe.second,gielinor_world::held_use::Handler::AssemblyImmediate(recipe)).map_err(|e|io::Error::other(format!("Godsword attachment registration: {e:?}")))?;
     }
     for recipe in crate::content::ordinary_stringing(n("obj"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
-        runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.first,recipe.second,gielinor_world::held_use::Handler::AssemblyTimed{recipe,ticks:1}).map_err(|e|io::Error::other(format!("Ordinary stringing registration: {e:?}")))?;
+        runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.first,recipe.second,gielinor_world::held_use::Handler::AssemblyProduction{recipe:gielinor_world::assembly::PreciseRecipe{recipe,xp_tenths:40,ticks:1,animation:None,spot:None},cycle_ticks:2}).map_err(|e|io::Error::other(format!("Ordinary stringing registration: {e:?}")))?;
     }
     for recipe in crate::content::fallible_gems(n("obj"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
         runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.exchange.tool,recipe.exchange.input,gielinor_world::held_use::Handler::ToolCraftingChoices{recipes:std::sync::Arc::new(vec![recipe]),cycle_ticks:2}).map_err(|e|io::Error::other(format!("Semiprecious gem registration: {e:?}")))?;
@@ -767,8 +767,9 @@ pub fn configure<B: AccountBackend>(
     }
     let sinew=crate::content::sinew_crafting(n("obj"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)?;
     runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,sinew.exchange.tool,sinew.exchange.input,gielinor_world::held_use::Handler::ToolCrafting(sinew)).map_err(|e|io::Error::other(format!("Manual sinew crafting registration: {e:?}")))?;
-    for recipe in crate::content::battlestaff_assembly(n("obj"),n("seq"),n("spotanim"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
-        runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.recipe.first,recipe.recipe.second,gielinor_world::held_use::Handler::AssemblyPrecise(recipe)).map_err(|e|io::Error::other(format!("Elemental battlestaff registration: {e:?}")))?;
+    for mut recipe in crate::content::battlestaff_assembly(n("obj"),n("seq"),n("spotanim"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
+        recipe.ticks=3; // Wiki Make-X: first3, then2; manual API remains2.
+        runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.recipe.first,recipe.recipe.second,gielinor_world::held_use::Handler::AssemblyProduction{recipe,cycle_ticks:2}).map_err(|e|io::Error::other(format!("Elemental battlestaff registration: {e:?}")))?;
     }
     for recipe in crate::content::crab_carving(n("obj"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
         runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.exchange.tool,recipe.exchange.input,gielinor_world::held_use::Handler::ToolCraftingChoices{recipes:std::sync::Arc::new(vec![recipe]),cycle_ticks:3}).map_err(|e|io::Error::other(format!("Crab carving registration: {e:?}")))?;

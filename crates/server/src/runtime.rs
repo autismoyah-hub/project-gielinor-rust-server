@@ -2844,6 +2844,7 @@ impl<B: AccountBackend> Runtime<B> {
                                                 self.open_combat_mixing(actor,choice)?;
                                             }
                                             if let Some(choice)=self.world.take_tool_crafting_request(actor).map_err(|e|io::Error::other(format!("{e:?}")))? {self.open_tool_crafting(actor,choice)?;}
+                                            if let Some(choice)=self.world.take_assembly_production_request(actor).map_err(|e|io::Error::other(format!("{e:?}")))? {self.open_assembly_production(actor,choice)?;}
                                             if let Some(choice)=self.world.take_dough_request(actor).map_err(|e|io::Error::other(format!("{e:?}")))? {
                                                 self.open_dough(actor,choice)?;
                                             }
