@@ -6,19 +6,42 @@ use crate::{
 };
 #[derive(Clone, Copy, Debug)]
 pub enum Handler {
+    Pickable(crate::pickables::Rule),
     VialCrate { origin: CoordGrid, item: i32 },
     PrayerAltar { origin: CoordGrid, prayer: u8 },
 }
 impl Handler {
     pub fn arrival_delay(self) -> bool {
-        matches!(self, Self::PrayerAltar { .. })
+        matches!(self, Self::PrayerAltar { .. } | Self::Pickable(_))
+    }
+    pub fn perform(
+        self,
+        player: &mut PlayerData,
+        catalog: &Catalog,
+        member: bool,
+    ) -> Result<crate::pickables::Outcome, Error> {
+        match self {
+            Self::Pickable(rule) => rule.perform(player, catalog, member),
+            _ => self.apply(player, catalog).map(|m| {
+                m.map_or(
+                    crate::pickables::Outcome::Ignored,
+                    crate::pickables::Outcome::Message,
+                )
+            }),
+        }
     }
     pub fn apply(
         self,
         player: &mut PlayerData,
         catalog: &Catalog,
     ) -> Result<Option<&'static str>, Error> {
+        if let Self::Pickable(rule) = self {
+            return rule
+                .perform(player, catalog, true)
+                .map(crate::pickables::Outcome::message);
+        }
         let origin = match self {
+            Self::Pickable(_) => unreachable!("handled above"),
             Self::VialCrate { origin, .. } | Self::PrayerAltar { origin, .. } => origin,
         };
         // TowerMap.contains: the same cached types elsewhere do not run floor hooks.
@@ -29,6 +52,7 @@ impl Handler {
             return Ok(None);
         }
         match self {
+            Self::Pickable(_) => unreachable!("handled above"),
             Self::VialCrate { item, .. } => {
                 let count = player.inventory.free_space().min(5) as i32;
                 if count == 0 {

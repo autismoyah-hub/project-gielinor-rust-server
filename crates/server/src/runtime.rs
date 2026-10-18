@@ -3349,24 +3349,17 @@ impl<B: AccountBackend> Runtime<B> {
                             slot,
                         }));
                 }
-                WorldEvent::PlayerCombatAnimation { actor, sequence } => {
-                    if let Some(active) = self.active.get_mut(&actor) {
-                        active.sequence = Some((sequence, 0));
-                    }
-                    self.events
-                        .push(Event::World(WorldEvent::PlayerCombatAnimation {
-                            actor,
-                            sequence,
-                        }));
+                event @ (WorldEvent::PlayerCombatAnimation {actor,sequence}|WorldEvent::PlayerAnimation{actor,sequence}) => {
+                    if let Some(active)=self.active.get_mut(&actor){active.sequence=Some((sequence,0));}
+                    self.events.push(Event::World(event));
                 }
-                WorldEvent::CombatSound { actor, sound } => {
+                event @ (WorldEvent::CombatSound {actor,sound}|WorldEvent::PlayerSound{actor,sound}) => {
                     if let Some(connection) = self.active.get(&actor).and_then(|a| a.connection) {
                         let packet = gielinor_protocol::game::synth_sound(sound, 1, 0);
                         self.transport
                             .send(connection, packet.opcode, &packet.payload)?;
                     }
-                    self.events
-                        .push(Event::World(WorldEvent::CombatSound { actor, sound }));
+                    self.events.push(Event::World(event));
                 }
                 WorldEvent::NpcDelayedAnimation {
                     actor,

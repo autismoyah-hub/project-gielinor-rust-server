@@ -208,6 +208,7 @@ pub mod dialogue_text;
 pub mod disconnect;
 pub mod floor_progression;
 pub mod hero_points;
+pub mod pickables;
 pub mod location_content;
 pub mod login_resets;
 pub mod music;

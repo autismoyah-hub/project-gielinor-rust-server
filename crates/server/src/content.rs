@@ -1,4 +1,6 @@
 //! Resolve content's symbolic references against the same immutable type inputs as Kotlin.
+mod perpetual_pickables;
+pub use perpetual_pickables::perpetual_pickables;
 mod berries_cream_food;
 pub use berries_cream_food::berries_cream_food;
 mod hunter_roast_food;

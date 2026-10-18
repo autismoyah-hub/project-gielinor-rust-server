@@ -193,6 +193,9 @@ pub fn configure<B: AccountBackend>(
             prayer: stat("prayer")?,
         },
     );
+    let pickables=crate::content::perpetual_pickables(n("obj"),n("loc"),n("seq"),n("synth"),&runtime.definitions).map_err(io::Error::other)?;
+    if pickables.keys().any(|&(id,op)|runtime.world.has_location_handler(id,op)){return Err(io::Error::other("Conflicting pickable location handlers"));}
+    runtime.world.location_handlers.extend(pickables);
     runtime.world.multiway_area = Some(names.short("area", "multiway")?);
     runtime.combat_display = Some(crate::combat_display::resolve(
         names,

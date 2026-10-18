@@ -695,6 +695,9 @@ pub enum WorldEvent {
         actor: ActorId,
         sound: u16,
     },
+    PlayerAnimation {actor:ActorId,sequence:u16},
+    PlayerSound {actor:ActorId,sound:u16},
+    PickableCollected {actor:ActorId,location:crate::locations::Location,item:i32},
     PlayerCombatAnimation {
         actor: ActorId,
         sequence: u16,
