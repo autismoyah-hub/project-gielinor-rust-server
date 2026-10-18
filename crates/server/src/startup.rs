@@ -373,7 +373,10 @@ pub fn configure<B: AccountBackend>(
     let dorgesh=crate::content::dorgesh_foods(n("obj"),n("stat"),&runtime.definitions,&mut foods).map_err(io::Error::other)?;
     slot_preserving_foods.extend(dorgesh.selected);
     boost_foods.boosts.extend(dorgesh.boosts);
+    let wine_drink=crate::content::wine_drink(n("obj"),n("stat"),&runtime.definitions,&mut foods).map_err(io::Error::other)?;
+    slot_preserving_foods.insert(wine_drink.0);
     runtime.configure_foods(held, foods, names.short("seq", "human_eat")?)?;
+    runtime.world.food_subtractions.insert(wine_drink.0,vec![wine_drink.1]);
     runtime.world.food_healing=healing_foods.healing;
     runtime.world.food_random_healing=random_foods.healing;
     runtime.world.food_boosts=boost_foods.boosts;

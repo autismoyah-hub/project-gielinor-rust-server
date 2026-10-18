@@ -213,6 +213,9 @@ pub fn eat(
 /// separate progression engine. Definitions resolve skills before registration.
 #[derive(Clone,Copy,Debug,PartialEq,Eq)]
 pub struct StatBoost {pub skill:u8,pub amount:i32}
+/// Repeated flat subtraction (alcohol), distinct from a base-capped Drain.
+#[derive(Clone,Copy,Debug,PartialEq,Eq)]
+pub struct StatSubtraction {pub skill:u8,pub amount:i32}
 /// Base-HP dependent ordinary healing, evaluated at the actual Eat action.
 #[derive(Clone,Copy,Debug,PartialEq,Eq)]
 pub struct Healing {pub percent:u8,pub constant:i32,pub round_up:bool}
@@ -245,7 +248,7 @@ pub fn eat_slot_with_boosts(
     food:&Edible,slot:usize,inventory:&mut Inventory,stats:&mut Stats,
     items:&Catalog,hitpoints:u8,animation:u16,boosts:&[StatBoost],emit:impl FnMut(Event),
 )->Result<bool,stat_ops::Error>{
-    eat_slot_transaction(food,slot,inventory,stats,items,hitpoints,animation,boosts,false,||Ok(food.heal),emit)
+    eat_slot_transaction(food,slot,inventory,stats,items,hitpoints,animation,boosts,&[],false,||Ok(food.heal),emit)
 }
 /// Inclusive healing range; resolved only after the selected item, remainder
 /// and secondary-effect policy have been validated in the transaction.
@@ -271,15 +274,33 @@ pub fn eat_slot_with_random_healing(
     emit: impl FnMut(Event),
 ) -> Result<bool, stat_ops::Error> {
     eat_slot_transaction(food, slot, inventory, stats, items, hitpoints, animation,
-        boosts, true, || healing.roll(random), emit)
+        boosts, &[], true, || healing.roll(random), emit)
 }
 
+
+/// Shared staged food transaction with positive boosts and stacking flat drains.
+/// Invalid subtraction policy is rejected before resolving random healing.
+pub fn eat_slot_with_secondary_effects(
+    food:&Edible,slot:usize,inventory:&mut Inventory,stats:&mut Stats,
+    items:&Catalog,hitpoints:u8,animation:u16,boosts:&[StatBoost],
+    subtractions:&[StatSubtraction],healing:Option<RandomHealing>,
+    random:&mut impl crate::npc::RandomSource,emit:impl FnMut(Event),
+)->Result<bool,stat_ops::Error>{
+    eat_slot_transaction(food,slot,inventory,stats,items,hitpoints,animation,boosts,subtractions,
+        healing.is_some(),||match healing{Some(h)=>h.roll(random),None=>Ok(food.heal)},emit)
+}
 
 fn eat_slot_transaction(
     food:&Edible,slot:usize,inventory:&mut Inventory,stats:&mut Stats,
     items:&Catalog,hitpoints:u8,animation:u16,boosts:&[StatBoost],
-    allow_stack_remainder:bool,resolve_heal:impl FnOnce()->Result<i32,stat_ops::Error>,mut emit:impl FnMut(Event),
+    subtractions:&[StatSubtraction],allow_stack_remainder:bool,resolve_heal:impl FnOnce()->Result<i32,stat_ops::Error>,mut emit:impl FnMut(Event),
 )->Result<bool,stat_ops::Error>{
+    if !subtractions.is_empty() {
+        if inventory.stack!=crate::inventory::StackType::Normal || inventory.placeholders {return Ok(false);}
+        if subtractions.iter().any(|s|s.amount<0){return Err(stat_ops::Error::NegativeConstant);}
+        if subtractions.iter().any(|s|s.skill>=24 || s.skill==hitpoints || s.amount>255){return Err(stat_ops::Error::InvalidPercent);}
+        if inventory.get(slot).is_some_and(|i|i.vars!=0){return Ok(false);}
+    }
     let ordinary=|id| id>=0
         && !items.dummy.contains(&id)
         && !items.notes.get(&id).is_some_and(|v|v.template!=0)
@@ -322,6 +343,7 @@ fn eat_slot_transaction(
     let update = if gain>0 {Some(next_stats.apply(hitpoints,Operation::Add,gain,0,true)?)} else {None};
     let mut secondary=Vec::new();
     for boost in boosts {secondary.push(next_stats.apply(boost.skill,Operation::Boost,boost.amount,0,false)?);}
+    for subtraction in subtractions {secondary.push(next_stats.apply(subtraction.skill,Operation::Subtract,subtraction.amount,0,false)?);}
     *inventory = next_inventory;
     *stats = next_stats;
     emit(Event::Animation(animation));
@@ -594,5 +616,25 @@ mod random_healing_tests {
             let before=(inv.clone(),stats.clone());let mut events=Vec::new();let result=eat_slot_with_random_healing(&food,1,&mut inv,&mut stats,&catalog,3,829,&boosts,rule,&mut draw,|e|events.push(e));
             assert!(result!=Ok(true));assert_eq!(draw.calls,0);assert_eq!((inv,stats),before);assert!(events.is_empty());
         }
+    }
+
+    struct NoFoodDraw;
+    impl crate::npc::RandomSource for NoFoodDraw {fn below(&mut self,_:u32)->u32{panic!("fixed wine or invalid policy drew RNG")}}
+    #[test]
+    fn wine_secondary_subtraction_stacks_floors_and_keeps_selected_remainder_with_healing(){
+        let f=Edible{id:1993,heal:11,delay:3,replacement:Some(1935),message:"Wine".into()};
+        for hp in [1,98,99,115]{for attack in [0,1,2,5,99,105]{let mut inv=Inventory::new(2,StackType::Normal,false);for slot in 0..2{inv.restore_slot(slot,Some(Item{id:1993,count:1,vars:0})).unwrap();}let mut stats=Stats::default();stats.set_base(3,99);stats.set_current(3,hp);stats.set_base(0,99);stats.set_current(0,attack);stats.set_fine_xp(0,12345).unwrap();let mut events=Vec::new();
+            for slot in [1,0]{assert!(eat_slot_with_secondary_effects(&f,slot,&mut inv,&mut stats,&Catalog::default(),3,829,&[],&[StatSubtraction{skill:0,amount:2}],None,&mut NoFoodDraw,|e|events.push(e)).unwrap());assert_eq!(inv.get(slot),Some(Item{id:1935,count:1,vars:0}));}
+            assert_eq!(stats.current(0),(attack-4).max(0));assert_eq!(stats.current(3),if hp>99{hp}else{(hp+22).min(99)});assert_eq!(stats.fine_xp(0),12345);assert_eq!(stats.fine_xp(3),0);assert_eq!(events.iter().filter(|e|matches!(e,Event::Stat(u)if u.skill==0)).count(),2);
+        }}
+    }
+    #[test]
+    fn wine_subtraction_policy_and_malformed_exchange_refuse_before_rng_or_publication(){
+        let f=Edible{id:1993,heal:11,delay:3,replacement:Some(1935),message:"Wine".into()};
+        for mode in 0..9{let mut inv=Inventory::new(1,if mode==7{StackType::Always}else{StackType::Normal},mode==8);inv.restore_slot(0,Some(Item{id:1993,count:1,vars:if mode==5{1}else{0}})).unwrap();let mut stats=Stats::default();stats.set_current(0,50);stats.set_current(3,1);let mut catalog=Catalog::default();let effect=match mode{0=>StatSubtraction{skill:0,amount:-1},1=>StatSubtraction{skill:0,amount:256},2=>StatSubtraction{skill:24,amount:2},3=>StatSubtraction{skill:3,amount:2},_=>StatSubtraction{skill:0,amount:2}};if mode==4{catalog.stackable.insert(1935);}if mode==6{catalog.dummy.insert(1935);}
+            let before=(inv.clone(),stats.clone());let mut events=Vec::new();let result=eat_slot_with_secondary_effects(&f,0,&mut inv,&mut stats,&catalog,3,829,&[],&[effect],None,&mut NoFoodDraw,|e|events.push(e));assert!(!matches!(result,Ok(true)));assert_eq!((inv,stats),before);assert!(events.is_empty());
+        }
+        // Invalid secondary policy is rejected before even random-healing rolls.
+        let mut inv=Inventory::new(1,StackType::Normal,false);inv.restore_slot(0,Some(Item{id:1993,count:1,vars:0})).unwrap();let before=inv.clone();let mut stats=Stats::default();assert!(eat_slot_with_secondary_effects(&f,0,&mut inv,&mut stats,&Catalog::default(),3,829,&[],&[StatSubtraction{skill:0,amount:-1}],Some(RandomHealing{minimum:1,maximum:3}),&mut NoFoodDraw,|_|panic!("event on refusal")).is_err());assert_eq!(inv,before);
     }
 }

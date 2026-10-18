@@ -1,4 +1,6 @@
 //! Resolve content's symbolic references against the same immutable type inputs as Kotlin.
+mod wine_drink;
+pub use wine_drink::wine_drink;
 mod skillcape_vendors;
 pub use skillcape_vendors::skillcape_vendors;
 mod cooking_cape_no_burn;
