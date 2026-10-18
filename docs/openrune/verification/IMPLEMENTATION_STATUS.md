@@ -3,9 +3,9 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0084+nondestructive79r2: nine inventory light pairs,explicit toolskill/target Extinguish ops/shared held conversion;source [ad73967](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/ad739676dd01f5be809cdfe5ecf4f1e6ea77238a). Legacy sand/action/module retained,unsignedlife correction. Shared/binary PASS;independent V0–V4 queued.
+OR-MIG-0085:nine birdhouse quantity recipes withlive carried/worn tools andImcando animation;source [922d4c1](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/922d4c115cddbb171ec94d276becb702d74567bd). Existing pair/XP/queue engines reused;shared/binary PASS,first compilefailure preserved. Independent V0–V4 queued.
 
-84 units / 93 append-only records. Discovery3508={'not_yet_assessed': 2800, 'configuration': 659, 'framework_or_infrastructure': 6, 'eligible_gameplay_behavior': 43};not completion percentages. Ambient/fuel/worn/acquisition andbroad content remain;PG-DEF-001 Close candidate pending independent retest.
+85 units / 94 append-only records. Discovery3508={'not_yet_assessed': 2799, 'configuration': 659, 'framework_or_infrastructure': 7, 'eligible_gameplay_behavior': 43};not completion percentages. Trap/quest/acquisition andbroad content remain;PG-DEF-001 Close candidate pending independent retest.
 <!-- forge-current:end -->
 
 
@@ -512,3 +512,14 @@ Extinguish uses actual target buttons2/2/6/3/3/3/3/3/4 fromcacheindices0/0/3/1/1
 Shared001 PASS,446 unchanged hashes: test result: ok. 131 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 4.76s; test result: ok. 485 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 85.56s. Actual binaries001 PASS,446 unchanged hashes.     Finished `test` profile [unoptimized + debuginfo] target(s) in 3m 03s;     Finished `dev` profile [unoptimized + debuginfo] target(s) in 20.18s. Nine fullbag/correctFiremaking/notCrafting/tool retention/noXP/NoDraw/member/level/badcredit/correctops;actual both held orders+ConvertHeldItem roundtrip/one success message. All legacy tool/sand users regressed. Guardtest6,297MiB/59.6%commit/0pages-in/s/0.0msdisk/52.3%CPU;binary6,451MiB/59.2%commit/0pages-in/s/3.9msdisk/47.4%CPU,bothj2. Long successful test duration preserved,not a resource deferral/failure. Developer working-tree evidence,not pristine/native independent acceptance.
 
 Ambient darkness/gas/cave/traps,fuel filling/consumption,worn operations,torch-on-fire/range andacquisition remain separate. Source immediate timing retained;Wiki1/2tick acquisition/filling recipes not misapplied. Native feedback/lifecycle/reference queued. Queue84units/93append-onlyrecords(79r2+84added). Discovery3508={'not_yet_assessed': 2800, 'configuration': 659, 'framework_or_infrastructure': 6, 'eligible_gameplay_behavior': 43},not completion percentages. Continue eligible content.
+
+
+## FORGE OR-MIG-0085 — birdhouse quantity and durable tools
+
+Source 922d4c115cddbb171ec94d276becb702d74567bd: nine log+clockwork8792 pairs create21512/21515/21518/21521/22192/22195/22198/22201/22204 houses,currentCrafting5/15/25/35/45/50/60/75/90,member,XP15/20/25/30/35/40/45/50/55. Fine125%187/250/312/375/437/500/562/625/687 per product. One log,not two;Hunter placement level isnot manufacture gate. Actual registered pairs use existing protected quantity/captured pair/atomic precise reward engine,first2then3 matching source/Wiki.
+
+Live inventoryChisel1755 andHammer2347/carriedImcando25644/offhand29775 orworn eitherImcando required andretained. Static reusable requirements checkedbeforemenu/start/commit. Regular7057/Imcando8916 animation chosen fromcurrent validtool ownership.23exact targettypes/23Wiki pages/two sequences/nine sourcefiles pinned. Oldprecise descriptors/tool-free API useempty metadata;pending single/quantity carriesrequirements. New Tools refusal before mutation;two potion matches defensivelymap toStale,not additionalpotion gate.
+
+Initial001 compileFAIL(two exhaustivepotion matches),preserved;corrected002 PASS,447 unchanged hashes: test result: ok. 133 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 8.63s; test result: ok. 485 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 71.98s. Actual binaries001 PASS,447 unchanged hashes.     Finished `test` profile [unoptimized + debuginfo] target(s) in 2m 11s;     Finished `dev` profile [unoptimized + debuginfo] target(s) in 14.92s. Nine fullbag/fine rewards/allfive hammer inventory/worn modes/chisel/tool retention/animation;actual normal/teak/redwood bothorders,basic/worn-offhand quantity2/5/8 orlatechisel stopafteroneproduct,early toolrefusal,no material substitution/loss. Legacy pair/quantity/potions regressed. Guard0026,347MiB/59.3%commit/38pages-in/s/2.5msdisk/38.8%CPU;binary7,092MiB/56.5%commit/90pages-in/s/1.1msdisk/13.7%CPU,bothj2. Working-tree developer evidence,not pristine/native/independent acceptance.
+
+Manufacture only;placing,seeds,trapping/retrieval/returnedclockwork,Hunter progression,quest access/acquisition,other tool variants/full donor menu grouping remain separate. Queue85units/94append-onlyrecords. Discovery3508={'not_yet_assessed': 2799, 'configuration': 659, 'framework_or_infrastructure': 7, 'eligible_gameplay_behavior': 43},not completion percentages. Continue eligible migration.
