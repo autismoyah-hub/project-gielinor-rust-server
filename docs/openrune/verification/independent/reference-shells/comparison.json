@@ -1,0 +1,227 @@
+{
+  "implementation_id": "OR-MIG-0057",
+  "tested_sha": "4c6b73cfcd3b35ce52aa79efd9d2a99464939445",
+  "campaign_kind": "historical",
+  "status": "IN_PROGRESS",
+  "source_documentation_subcheck": "PASS",
+  "sources": [
+    {
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/scripts/HeldCraftingScript.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "c39f8b323e8fa79f933224b9ca0c8cf07a5df005628906e79645e3e6a5399318",
+      "kind": "openrune"
+    },
+    {
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingSection.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "26e5be7a84fbe82f5c4897d29cb3261c63cd475111f17df517e2e0ac5e0d8afb",
+      "kind": "openrune"
+    },
+    {
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingWorker.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "5790b247e5441b54e05c0ca7b4b5a9dff5c7aa61181ebccb36d0d8057db56e53",
+      "kind": "openrune"
+    },
+    {
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/util/CraftingConstants.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "393d05fa5a5645b2dd712fcfb8f8814845376846a7594dafe16909422fe2008f",
+      "kind": "openrune"
+    },
+    {
+      "reference": "Snelm",
+      "revision": "15293771",
+      "sha256": "5bdc8cc97a31153cfe260bed28f22a6577d9cbadcab66957a2da32621de07cd3",
+      "kind": "wiki"
+    },
+    {
+      "reference": "Myre snelm",
+      "revision": "15188707",
+      "sha256": "128bf931ba6d0f70e95bbfc544ba4672b1084c62fae6ace11753c121e43564c5",
+      "kind": "wiki"
+    },
+    {
+      "reference": "Blood'n'tar snelm",
+      "revision": "15188371",
+      "sha256": "dd10c498ba1122413bae1638bfdd84b6fce6f428c8418a5649ac2d42c9394239",
+      "kind": "wiki"
+    },
+    {
+      "reference": "Ochre snelm",
+      "revision": "15188711",
+      "sha256": "5d723014d65255afce52b1535ecbe92b20671525da864b52595f072618ce07a4",
+      "kind": "wiki"
+    },
+    {
+      "reference": "Bruise blue snelm",
+      "revision": "15188709",
+      "sha256": "240691238b57b5d4326eb58d5328177faffab87ad4ae0aa5fe8ea6807fd3c345",
+      "kind": "wiki"
+    },
+    {
+      "reference": "Broken bark snelm",
+      "revision": "15182921",
+      "sha256": "6e2870c38c4b4c3c737bfc4f14a84826913904f4d00a17c8fe1e03a79db23cf0",
+      "kind": "wiki"
+    },
+    {
+      "reference": "Pointed myre snelm",
+      "revision": "15188706",
+      "sha256": "aa9f88ff8644bfb55ca4f610ce645b1a1f32210ecb3cc1161833b56b958e5697",
+      "kind": "wiki"
+    },
+    {
+      "reference": "Pointed blood'n'tar snelm",
+      "revision": "15188372",
+      "sha256": "1707e29ce2a390e874c0365505b1038f47dcf08e51e96fb1d434479421ab3b10",
+      "kind": "wiki"
+    },
+    {
+      "reference": "Pointed ochre snelm",
+      "revision": "15188710",
+      "sha256": "2ae32d6e2b99addcffc073f0d995367baed4e6148b89313ed2fa4e2f8aae05d4",
+      "kind": "wiki"
+    },
+    {
+      "reference": "Pointed bruise blue snelm",
+      "revision": "15237917",
+      "sha256": "70307e8e653654bc786bec9cf060b84ea374e966417f10360f2e8b265c5cd775",
+      "kind": "wiki"
+    }
+  ],
+  "profiles": [
+    {
+      "name": "Myre snelm",
+      "raw_id": 3345,
+      "output_id": 3327,
+      "member": true,
+      "level": 15,
+      "base_xp": 32.5,
+      "wiki_recipe_ticks": 2,
+      "fine_awards": {
+        "100": 325,
+        "125": 406,
+        "500": 1625
+      }
+    },
+    {
+      "name": "Blood'n'tar snelm",
+      "raw_id": 3347,
+      "output_id": 3329,
+      "member": true,
+      "level": 15,
+      "base_xp": 32.5,
+      "wiki_recipe_ticks": 2,
+      "fine_awards": {
+        "100": 325,
+        "125": 406,
+        "500": 1625
+      }
+    },
+    {
+      "name": "Ochre snelm",
+      "raw_id": 3349,
+      "output_id": 3331,
+      "member": true,
+      "level": 15,
+      "base_xp": 32.5,
+      "wiki_recipe_ticks": 2,
+      "fine_awards": {
+        "100": 325,
+        "125": 406,
+        "500": 1625
+      }
+    },
+    {
+      "name": "Bruise blue snelm",
+      "raw_id": 3351,
+      "output_id": 3333,
+      "member": true,
+      "level": 15,
+      "base_xp": 32.5,
+      "wiki_recipe_ticks": 2,
+      "fine_awards": {
+        "100": 325,
+        "125": 406,
+        "500": 1625
+      }
+    },
+    {
+      "name": "Broken bark snelm",
+      "raw_id": 3353,
+      "output_id": 3335,
+      "member": true,
+      "level": 15,
+      "base_xp": 32.5,
+      "wiki_recipe_ticks": 2,
+      "fine_awards": {
+        "100": 325,
+        "125": 406,
+        "500": 1625
+      }
+    },
+    {
+      "name": "Pointed myre snelm",
+      "raw_id": 3355,
+      "output_id": 3337,
+      "member": true,
+      "level": 15,
+      "base_xp": 32.5,
+      "wiki_recipe_ticks": 2,
+      "fine_awards": {
+        "100": 325,
+        "125": 406,
+        "500": 1625
+      }
+    },
+    {
+      "name": "Pointed blood'n'tar snelm",
+      "raw_id": 3357,
+      "output_id": 3339,
+      "member": true,
+      "level": 15,
+      "base_xp": 32.5,
+      "wiki_recipe_ticks": 2,
+      "fine_awards": {
+        "100": 325,
+        "125": 406,
+        "500": 1625
+      }
+    },
+    {
+      "name": "Pointed ochre snelm",
+      "raw_id": 3359,
+      "output_id": 3341,
+      "member": true,
+      "level": 15,
+      "base_xp": 32.5,
+      "wiki_recipe_ticks": 2,
+      "fine_awards": {
+        "100": 325,
+        "125": 406,
+        "500": 1625
+      }
+    },
+    {
+      "name": "Pointed bruise blue snelm",
+      "raw_id": 3361,
+      "output_id": 3343,
+      "member": true,
+      "level": 15,
+      "base_xp": 32.5,
+      "wiki_recipe_ticks": 2,
+      "fine_awards": {
+        "100": 325,
+        "125": 406,
+        "500": 1625
+      }
+    }
+  ],
+  "scope": "Four protected source files and10exact-title/revision pinned Wiki pages hash-verified. Nine ordinary round/pointed/bark output IDs, Crafting15/member/32.5XP and2tick recipes independently checked. Source CARVING3cycles/default first-cycle shortening gives2, agreeing with Wiki. Raw names round/pointed can coincide; IDs remain distinct and require independent selected/native routing checks.",
+  "reference_execution": "No compiled original Kotlin executable available; source statements are explicitly source-derived. Generated donor product rows were not copied or executed.",
+  "remaining": [
+    "Actual native animation1280 and2clock packet cadence, selected round/pointed directions and durable recovery remain separate.",
+    "Missing chisel sound, generic cut/carve wording, menus/repeats, later Vampyre/perfect-shell/acquisition/equipment exclusions remain explicit."
+  ]
+}

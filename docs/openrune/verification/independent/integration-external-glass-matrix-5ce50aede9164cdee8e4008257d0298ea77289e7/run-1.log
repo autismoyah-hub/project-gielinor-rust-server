@@ -1,0 +1,20 @@
+   Compiling gielinor-world v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\5ce50aede9164cdee8e4008257d0298ea77289e7\crates\world)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\5ce50aede9164cdee8e4008257d0298ea77289e7\external-harness-7630255500)
+error[E0308]: `match` arms have incompatible types
+  --> tests\authoritative.rs:65:49
+   |
+57 | / ...   match mode{
+58 | | ...       0=>{w.data_mut(a).unwrap().inventory.restore_slot(3,Some(Item{id:1931,count:1,vars:0})).unwrap();w.data_mut(a).unwrap()....
+59 | | ...       1=>{w.data_mut(a).unwrap().inventory.restore_slot(3,Some(Item{id:1775,count:1,vars:1})).unwrap();},
+60 | | ...       2=>{w.data_mut(a).unwrap().inventory.restore_slot(0,Some(Item{id:1785,count:1,vars:1})).unwrap();},
+...  |
+65 | | ...       9=>w.request_logout(a).unwrap(),10=>w.close_dialogs(a).unwrap(),
+   | |              ----------------------------     ^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected `()`, found `bool`
+   | |              |
+   | |              this and all prior arms are found to be of type `()`
+66 | | ...       _=>w.submit(a,Action::EatItemSlot{slot:2,item:1931}).unwrap(),
+67 | | ...   }
+   | |_______- `match` arms have incompatible types
+
+For more information about this error, try `rustc --explain E0308`.
+error: could not compile `proving-ground-energy` (test "authoritative") due to 1 previous error

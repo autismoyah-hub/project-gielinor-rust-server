@@ -2,7 +2,7 @@
 import argparse,hashlib,importlib.util,json,os,re,shutil,subprocess,time
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-p=argparse.ArgumentParser();p.add_argument('sha');p.add_argument('--suite',choices=['energy-food','food-regeneration','assembly-batch','chemistry-matrix','prayer-cache','gem-matrix','gem-bindings'],required=True);a=p.parse_args();assert re.fullmatch('[0-9a-f]{40}',a.sha)
+p=argparse.ArgumentParser();p.add_argument('sha');p.add_argument('--suite',choices=['energy-food','food-regeneration','assembly-batch','chemistry-matrix','prayer-cache','gem-matrix','gem-bindings','shell-matrix','shell-bindings','pouch-matrix','glass-matrix'],required=True);a=p.parse_args();assert re.fullmatch('[0-9a-f]{40}',a.sha)
 policy=ROOT/'docs/openrune/verification/USER_DEFERRALS.json'
 if policy.exists() and json.loads(policy.read_text(encoding='utf-8'))['status']=='ACTIVE_UNTIL_USER_RESUMES':assert a.suite!='chemistry-matrix','User deferred chemistry tests; select eligible unrelated suite'
 out=ROOT/'docs/openrune/verification/independent'/('integration-external-'+a.suite+'-'+a.sha)
@@ -23,17 +23,18 @@ for name in ['target','tmp','cargo-home','external-harness']:(work/name).mkdir(p
 harness=work/('external-harness-'+str(time.time_ns())[-10:]);shutil.copytree(ROOT/'verification'/a.suite/'tests',harness/'tests',dirs_exist_ok=True);shutil.copytree(harness/'tests',out/'harness')
 (harness/'Cargo.toml').write_text('[package]\nname="proving-ground-energy"\nversion="0.1.0"\nedition="2021"\n[workspace]\n[dependencies]\ngielinor-world={path='+json.dumps((checkout/'crates/world').as_posix())+'}\n',encoding='utf-8')
 env=os.environ.copy();env.update(CARGO_HOME=str(work/'cargo-home'),CARGO_TARGET_DIR=str(work/'target'),TMP=str(work/'tmp'),TEMP=str(work/'tmp'),PATH=str(capacity.TOOL)+os.pathsep+env['PATH'])
-if a.suite in ['prayer-cache','gem-bindings']:
+if a.suite in ['prayer-cache','gem-bindings','shell-bindings']:
     with (harness/'Cargo.toml').open('a',encoding='utf-8') as f:f.write('gielinor-cache={path='+json.dumps((checkout/'crates/cache').as_posix())+'}\n')
     env.update(PG_GAME_CACHE=str(ROOT/'work/native-combat/resources/cache/game'),PG_SYMBOLS=str(ROOT/'work/native-combat/resources/symbols'))
-    if a.suite=='gem-bindings':
+    if a.suite in ['gem-bindings','shell-bindings']:
         with (harness/'Cargo.toml').open('a',encoding='utf-8') as f:f.write('gielinor-server={path='+json.dumps((checkout/'crates/server').as_posix())+'}\n')
 report['runs']=[]
 for i,args in enumerate([['generate-lockfile','--offline'],['test','--offline','--locked','-j','1']]):
     cmd=[str(capacity.TOOL/'cargo.exe'),*args,'--manifest-path',str(harness/'Cargo.toml')];log=out/f'run-{i}.log'
-    if a.suite in ['prayer-cache','gem-bindings'] and args[0]=='test':cmd+=['--','--nocapture']
+    if a.suite in ['prayer-cache','gem-bindings','shell-bindings'] and args[0]=='test':cmd+=['--','--nocapture']
     print('INDEPENDENT_INTEGRATION',a.sha,args,flush=True)
-    with log.open('w',encoding='utf-8',newline='\n') as f:rc=subprocess.run(cmd,cwd=checkout,env=env,stdout=f,stderr=subprocess.STDOUT,timeout=300,creationflags=subprocess.BELOW_NORMAL_PRIORITY_CLASS).returncode
+    # The4480World-instance pouch matrix exceeds the smaller suites' budget.
+    with log.open('w',encoding='utf-8',newline='\n') as f:rc=subprocess.run(cmd,cwd=checkout,env=env,stdout=f,stderr=subprocess.STDOUT,timeout=600 if a.suite=='pouch-matrix' else 300,creationflags=subprocess.BELOW_NORMAL_PRIORITY_CLASS).returncode
     text=log.read_text(encoding='utf-8');count=sum(map(int,re.findall(r'test result: (?:ok|FAILED)\. (\d+) passed;',text)))
     report['runs'].append({'command':cmd,'exit_code':rc,'tests_passed':count,'log':str(log.relative_to(ROOT))})
     if rc:break

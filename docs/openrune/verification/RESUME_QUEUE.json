@@ -1,6 +1,6 @@
 {
-  "observed_forge_head": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
-  "queue_sha256": "82ef436bb38fb8e25ec9a66661d678e42bc7e7e812870a4808a8116959a2a68a",
+  "observed_forge_head": "fd68ed517fcc9afa65736024f4e635142cb22c14",
+  "queue_sha256": "6cd601b54f3cbbd2aae11574e81be9b4c304cdc7d0580791fe165bfd3393ff8b",
   "lanes": [
     {
       "lane": "B",
@@ -108,7 +108,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -128,6 +128,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -144,6 +145,7 @@
           "crates/server/src/runtime/potion_upgrades.rs",
           "crates/server/src/runtime/skill_multi.rs",
           "crates/server/src/runtime/swamp_tar.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
           "crates/server/src/runtime/unfinished_potions.rs",
           "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
@@ -223,7 +225,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -243,6 +245,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -259,6 +262,7 @@
           "crates/server/src/runtime/potion_upgrades.rs",
           "crates/server/src/runtime/skill_multi.rs",
           "crates/server/src/runtime/swamp_tar.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
           "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/storage/migrations/V12__chemistry_state.sql",
@@ -336,7 +340,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -356,6 +360,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -372,6 +377,7 @@
           "crates/server/src/runtime/potion_upgrades.rs",
           "crates/server/src/runtime/skill_multi.rs",
           "crates/server/src/runtime/swamp_tar.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
           "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/storage/migrations/V12__chemistry_state.sql",
@@ -449,7 +455,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -469,6 +475,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -484,6 +491,7 @@
           "crates/server/src/runtime/finished_potions.rs",
           "crates/server/src/runtime/potion_upgrades.rs",
           "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
           "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/storage/migrations/V12__chemistry_state.sql",
@@ -558,7 +566,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -577,6 +585,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -591,6 +600,7 @@
           "crates/server/src/runtime/finished_potions.rs",
           "crates/server/src/runtime/potion_upgrades.rs",
           "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
           "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
@@ -658,7 +668,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -667,7 +677,22 @@
           "V3": "NOT_STARTED",
           "V4": "NOT_STARTED"
         },
-        "changed_production_paths": [],
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
+          "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/tool_crafting.rs"
+        ],
         "last_executed_scope": {
           "tested_sha": "8ad59b108e1ecd55185570c88d1be8be06b39756",
           "level": "V3",
@@ -712,7 +737,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -731,6 +756,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -745,6 +771,7 @@
           "crates/server/src/runtime/finished_potions.rs",
           "crates/server/src/runtime/potion_upgrades.rs",
           "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
           "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
@@ -812,7 +839,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -831,6 +858,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -845,6 +873,7 @@
           "crates/server/src/runtime/finished_potions.rs",
           "crates/server/src/runtime/potion_upgrades.rs",
           "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
           "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
@@ -912,7 +941,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -931,6 +960,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -945,6 +975,7 @@
           "crates/server/src/runtime/finished_potions.rs",
           "crates/server/src/runtime/potion_upgrades.rs",
           "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
           "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
@@ -1030,7 +1061,7 @@
         ]
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1049,6 +1080,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -1061,6 +1093,9 @@
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/finished_potions.rs",
           "crates/server/src/runtime/potion_upgrades.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/cooking.rs",
@@ -1134,7 +1169,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1153,6 +1188,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -1165,6 +1201,9 @@
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/finished_potions.rs",
           "crates/server/src/runtime/potion_upgrades.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/cooking.rs",
@@ -1229,7 +1268,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1248,6 +1287,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -1260,6 +1300,9 @@
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/finished_potions.rs",
           "crates/server/src/runtime/potion_upgrades.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/cooking.rs",
@@ -1324,7 +1367,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1343,6 +1386,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -1354,6 +1398,9 @@
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/finished_potions.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/cooking.rs",
@@ -1416,7 +1463,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1435,6 +1482,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -1446,6 +1494,9 @@
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/finished_potions.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/cooking.rs",
@@ -1507,7 +1558,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1526,6 +1577,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -1537,6 +1589,9 @@
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/finished_potions.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/cooking.rs",
@@ -1596,7 +1651,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1615,6 +1670,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -1626,6 +1682,9 @@
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/finished_potions.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/cooking.rs",
@@ -1685,7 +1744,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1704,6 +1763,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -1714,6 +1774,9 @@
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/cooking.rs",
@@ -1775,7 +1838,7 @@
         ]
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1794,6 +1857,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -1804,6 +1868,9 @@
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/cooking.rs",
@@ -1871,7 +1938,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1890,6 +1957,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -1900,6 +1968,9 @@
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/cooking.rs",
@@ -1967,7 +2038,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1986,6 +2057,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -1996,6 +2068,9 @@
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/cooking.rs",
@@ -2063,7 +2138,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2083,6 +2158,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -2101,6 +2177,7 @@
           "crates/server/src/runtime/potion_upgrades.rs",
           "crates/server/src/runtime/skill_multi.rs",
           "crates/server/src/runtime/swamp_tar.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
           "crates/server/src/runtime/unfinished_potions.rs",
           "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
@@ -2191,7 +2268,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2210,6 +2287,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -2219,6 +2297,9 @@
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/cooking.rs",
@@ -2294,7 +2375,7 @@
         ]
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2314,6 +2395,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -2332,6 +2414,7 @@
           "crates/server/src/runtime/potion_upgrades.rs",
           "crates/server/src/runtime/skill_multi.rs",
           "crates/server/src/runtime/swamp_tar.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
           "crates/server/src/runtime/unfinished_potions.rs",
           "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
@@ -2438,7 +2521,7 @@
         ]
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2457,6 +2540,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -2466,6 +2550,9 @@
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/cooking.rs",
@@ -2532,7 +2619,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2551,6 +2638,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -2560,6 +2648,9 @@
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/cooking.rs",
@@ -2617,7 +2708,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2636,6 +2727,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -2645,6 +2737,9 @@
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/cooking.rs",
@@ -2702,7 +2797,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2722,6 +2817,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -2740,6 +2836,7 @@
           "crates/server/src/runtime/potion_upgrades.rs",
           "crates/server/src/runtime/skill_multi.rs",
           "crates/server/src/runtime/swamp_tar.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
           "crates/server/src/runtime/unfinished_potions.rs",
           "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
@@ -2827,7 +2924,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2847,6 +2944,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -2865,6 +2963,7 @@
           "crates/server/src/runtime/potion_upgrades.rs",
           "crates/server/src/runtime/skill_multi.rs",
           "crates/server/src/runtime/swamp_tar.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
           "crates/server/src/runtime/unfinished_potions.rs",
           "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
@@ -2949,7 +3048,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2969,6 +3068,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -2985,6 +3085,7 @@
           "crates/server/src/runtime/potion_upgrades.rs",
           "crates/server/src/runtime/skill_multi.rs",
           "crates/server/src/runtime/swamp_tar.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
           "crates/server/src/runtime/unfinished_potions.rs",
           "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
@@ -3064,7 +3165,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3083,6 +3184,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -3092,6 +3194,9 @@
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/cooking.rs",
@@ -3149,7 +3254,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3168,6 +3273,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -3177,6 +3283,9 @@
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/cooking.rs",
@@ -3234,7 +3343,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3254,6 +3363,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -3271,6 +3381,7 @@
           "crates/server/src/runtime/potion_upgrades.rs",
           "crates/server/src/runtime/skill_multi.rs",
           "crates/server/src/runtime/swamp_tar.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
           "crates/server/src/runtime/unfinished_potions.rs",
           "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
@@ -3353,7 +3464,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3372,6 +3483,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -3381,6 +3493,9 @@
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/cooking.rs",
@@ -3444,7 +3559,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3463,6 +3578,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -3472,6 +3588,9 @@
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/cooking.rs",
@@ -3541,7 +3660,7 @@
         ]
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3560,6 +3679,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -3569,6 +3689,9 @@
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/cooking.rs",
@@ -3626,7 +3749,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3645,6 +3768,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -3654,6 +3778,9 @@
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/cooking.rs",
@@ -3711,7 +3838,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3729,6 +3856,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -3738,6 +3866,9 @@
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/cooking.rs",
@@ -3794,7 +3925,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3813,6 +3944,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -3822,6 +3954,9 @@
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/cooking.rs",
@@ -3879,7 +4014,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3898,6 +4033,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -3907,6 +4043,9 @@
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/cooking.rs",
@@ -3972,7 +4111,7 @@
         ]
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3990,6 +4129,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -3999,6 +4139,9 @@
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/cooking.rs",
@@ -4056,7 +4199,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4074,6 +4217,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -4083,6 +4227,9 @@
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/cooking.rs",
@@ -4139,7 +4286,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4157,6 +4304,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -4166,6 +4314,9 @@
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/cooking.rs",
@@ -4222,7 +4373,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4240,6 +4391,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -4249,6 +4401,9 @@
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/cooking.rs",
@@ -4305,7 +4460,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4323,6 +4478,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -4332,6 +4488,9 @@
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/food.rs",
@@ -4386,7 +4545,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4403,6 +4562,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
@@ -4412,6 +4572,9 @@
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/food.rs",
@@ -4466,7 +4629,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4483,6 +4646,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -4491,6 +4655,9 @@
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/food.rs",
@@ -4545,7 +4712,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4562,6 +4729,7 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -4569,6 +4737,9 @@
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/held_use.rs",
@@ -4622,7 +4793,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4639,12 +4810,16 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/ordinary_stringing.rs",
           "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/held_use.rs",
@@ -4698,7 +4873,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4714,12 +4889,16 @@
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/ordinary_stringing.rs",
           "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/held_use.rs",
@@ -4773,7 +4952,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4788,12 +4967,16 @@
           "crates/server/src/content/citizen_thieving.rs",
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/ordinary_stringing.rs",
           "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/held_use.rs",
@@ -4862,7 +5045,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4877,12 +5060,16 @@
           "crates/server/src/content/citizen_thieving.rs",
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/ordinary_stringing.rs",
           "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/held_use.rs",
@@ -4935,7 +5122,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4950,12 +5137,16 @@
           "crates/server/src/content/citizen_thieving.rs",
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/ordinary_stringing.rs",
           "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/held_use.rs",
@@ -5006,7 +5197,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5021,11 +5212,15 @@
           "crates/server/src/content/citizen_thieving.rs",
           "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/ordinary_stringing.rs",
           "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/held_use.rs",
@@ -5057,8 +5252,11 @@
             "reason": "Awaiting applicable independent campaign"
           },
           "V1": {
-            "status": "NOT_STARTED",
-            "reason": "Awaiting applicable independent campaign"
+            "status": "IN_PROGRESS",
+            "reason": "Independent selected-stack pouch one/all/overflow/member/full-bag transaction matrix and actual World negative/replay/no-XP controls PASS. Configured runtime/native no_bank and lifecycle/reference remain separate. Complete native, configured definitions and lifecycle/reference acceptance remain open.",
+            "evidence": [
+              "docs/openrune/verification/independent/integration-external-pouch-matrix-7fc1306bb5c01540038ce5ff175b577294ade432/manifest.json"
+            ]
           },
           "V2": {
             "status": "NOT_STARTED",
@@ -5069,14 +5267,17 @@
             "reason": "Awaiting applicable independent campaign"
           },
           "V4": {
-            "status": "NOT_STARTED",
-            "reason": "Awaiting applicable independent campaign"
+            "status": "IN_PROGRESS",
+            "reason": "Five exact source/Wiki hashes verified. Source binds first held operation to all and second to one, with citizen pouch3coins; pinned Wiki supports22521, Open-all/Open and not bankable. This is opening semantics, not independent NPC acquisition/Thieving/cap acceptance. Original executable unavailable; native/reference comparison remains separate.",
+            "evidence": [
+              "docs/openrune/verification/independent/reference-pouches/comparison.json"
+            ]
           }
         },
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5090,11 +5291,15 @@
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/citizen_thieving.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/ordinary_stringing.rs",
           "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/held_use.rs",
@@ -5143,7 +5348,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5156,11 +5361,15 @@
           "crates/server/src/content.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/ordinary_stringing.rs",
           "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/held_use.rs",
@@ -5220,7 +5429,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5232,16 +5441,23 @@
         "changed_production_paths": [
           "crates/server/src/content.rs",
           "crates/server/src/content/amulet_stringing.rs",
+          "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/ordinary_stringing.rs",
           "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/simulation.rs",
-          "crates/world/src/simulation/held_use_actions.rs"
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/tool_crafting.rs"
         ]
       }
     },
@@ -5255,30 +5471,45 @@
       "historical_verification": {
         "levels": {
           "V0": {
-            "status": "NOT_STARTED",
-            "reason": "Awaiting applicable independent campaign"
+            "status": "PASS",
+            "reason": "PASS: exact4c6b73server compiled, actual target cache/startup/held registry dispatched all9profiles. Independently decoded19actual ordinary item definitions, Crafting12and animation1280;199missing/corrupt metadata/symbol/stat/effect cases reject the whole catalog.",
+            "evidence": [
+              "docs/openrune/verification/independent/shell-acceptance.json"
+            ]
           },
           "V1": {
-            "status": "NOT_STARTED",
-            "reason": "Awaiting applicable independent campaign"
+            "status": "PASS",
+            "reason": "PASS: independent4536profile/selected-slot/current-level/member/100-125-500rate fixtures,162invalid transactions and252actual held-route/late-interruption cases. Round/pointed IDs, full-bag exact selected replacement, retained duplicate chisels/raws, fineXP325/406/1625, invalid credit rollback and two-clock action timing verified.",
+            "evidence": [
+              "docs/openrune/verification/independent/shell-acceptance.json"
+            ]
           },
           "V2": {
-            "status": "NOT_STARTED",
-            "reason": "Awaiting applicable independent campaign"
+            "status": "PASS",
+            "reason": "PASS for manual subset:18genuine native Use27 packets independently decoded to cover each of9profiles in both directions. Raw selected inventory18credits/decoded local animation1280establish two received server-clock boundaries per successful carve, correct round/pointed/bark output and cumulative29250fineXP. Native immediate Walk cancellation and9actual stale pair replays preserve duplicates and chisels.",
+            "evidence": [
+              "docs/openrune/verification/independent/shell-acceptance.json"
+            ]
           },
           "V3": {
-            "status": "NOT_STARTED",
-            "reason": "Awaiting applicable independent campaign"
+            "status": "PASS",
+            "reason": "PASS for applicable manual lifecycle: all18helmets, retained tools/full bag and exact29250fineXP survive acknowledged save, actual server restart and independently decoded native inventory/Stats. Native pre-completion movement cancellation and authoritative pending logout/modal/held-action interruption checks preserve remaining inputs; reconnect does not replay. No process-crash or mid-SQL fault claim for this campaign.",
+            "evidence": [
+              "docs/openrune/verification/independent/shell-acceptance.json"
+            ]
           },
           "V4": {
-            "status": "NOT_STARTED",
-            "reason": "Awaiting applicable independent campaign"
+            "status": "PASS",
+            "reason": "PASS for supported comparison:14hash-pinned references, including9exact-title/revision helmet Wiki recipes supporting output IDs/member/Crafting15/32.5XP/two ticks. Source CARVING3/default shortened first2matches independently measured native1280/two-clock first action. Missing chisel synth, generic cut-versus-carve wording and excluded menus/repeats/later Vampyre/perfect-shell/acquisition/equipment remain explicit; original Kotlin unavailable and source-derived evidence labelled.",
+            "evidence": [
+              "docs/openrune/verification/independent/shell-acceptance.json"
+            ]
           }
         },
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5290,15 +5521,23 @@
         "changed_production_paths": [
           "crates/server/src/content.rs",
           "crates/server/src/content/amulet_stringing.rs",
+          "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/simulation.rs",
-          "crates/world/src/simulation/held_use_actions.rs"
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/tool_crafting.rs"
         ]
       }
     },
@@ -5335,7 +5574,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5346,10 +5585,21 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/runtime.rs",
-          "crates/server/src/startup.rs"
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/tool_crafting.rs"
         ]
       }
     },
@@ -5386,7 +5636,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5397,10 +5647,21 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/ordinary_stringing.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/gameplay.rs",
           "crates/server/src/runtime.rs",
-          "crates/server/src/startup.rs"
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/tool_crafting.rs"
         ]
       }
     },
@@ -5437,7 +5698,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5447,8 +5708,21 @@
           "V4": "NOT_STARTED"
         },
         "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/gameplay.rs",
-          "crates/server/src/runtime.rs"
+          "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/tool_crafting.rs"
         ]
       }
     },
@@ -5485,7 +5759,121 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "0c8c7f2b389d77f9f04517869c2003573d94b1d1",
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
+          "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/runtime/skill_multi.rs",
+          "crates/server/src/runtime/tool_crafting.rs",
+          "crates/server/src/skill_multi.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/tool_crafting.rs"
+        ]
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0062",
+      "revision": 1,
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "5ce50aede9164cdee8e4008257d0298ea77289e7"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "IN_PROGRESS",
+            "reason": "Independent eight-choice actual held-route matrix PASS across1344both-direction/requested-count1through28/three-rate scenarios,72invalid admission cases and96late captured-slot/credit/member/level/tool/modal/movement/logout/Close cases. Exact first selected input then captured order, first2/subsequent3action clocks, per-step fineXP and capped count verified. Complete native, configured definitions and lifecycle/reference acceptance remain open.",
+            "evidence": [
+              "docs/openrune/verification/independent/integration-external-glass-matrix-5ce50aede9164cdee8e4008257d0298ea77289e7-1792292760698579200/manifest.json"
+            ]
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "IN_PROGRESS",
+            "reason": "All12pinned source/Wiki references hash-verified. Eight selected creation recipes independently checked for exact ordinary/empty output ID, requirement, fineXP, member skill recipe, pipe and3ticks. Beer glass/Vial itemF2Pflags do not make the glassblowing skill recipeF2P. Fishbowl empty6667is distinguished from filled6668/6669. Source GLASSBLOWING/default shortened first gives2then3, distinct from literal Wiki3recipe cadence. Original executable unavailable; native/reference comparison remains separate.",
+            "evidence": [
+              "docs/openrune/verification/independent/reference-glass/comparison.json"
+            ]
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/startup.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs"
+        ]
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0063",
+      "revision": 1,
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "143dab04f28c3daed844da0af33d6af5edcd962d"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "fd68ed517fcc9afa65736024f4e635142cb22c14",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5560,8 +5948,8 @@
       "chem-crash",
       "food-negative"
     ],
-    "next_eligible_contract": "OR-MIG-0056",
-    "next_action": "Finish current gem definition and acceptance checks at5743cbe1c7499e2a7476c721d25dcba194666042, then continue unrelated shell carving OR-MIG-0057. Prayer selected burial/restart passed; remaining Prayer Chaos/member/modifier/interruption cases stay open. Never reseed successful campaign databases.",
+    "next_eligible_contract": "OR-MIG-0062",
+    "next_action": "Manual gem OR56 and shell OR57 applicable V0-V4 accepted at exact historical SHAs; preserve states. Execute new shared glass choices/batches OR62 at5ce50aede9164cdee8e4008257d0298ea77289e7, then pending coin-pouch OR54 scenarios. Chemistry and chemistry-specific Close correction retests remain deferred.",
     "deferred_execution": "Chemistry interrupt-002 had already ended with a raw observer assertion failure when deferral arrived; owned graceful stop path recorded, no live chemistry run retained. Crash scenario build was resource-deferred and never executed. Do not launch new chemistry tests or silently classify unresolved assertions as implementation failures."
   },
   "deferred_native_work": {
@@ -5579,17 +5967,16 @@
     ]
   },
   "next_native_work": {
-    "implementation_id": "OR-MIG-0057",
-    "target_sha": "4c6b73cfcd3b35ce52aa79efd9d2a99464939445",
-    "feature": "shell-carving",
+    "implementation_id": "OR-MIG-0062",
+    "target_sha": "5ce50aede9164cdee8e4008257d0298ea77289e7",
+    "feature": "glassblowing",
     "actions_in_order": [
-      "review exact contract and existing route",
-      "author independent shell-specific scenarios",
+      "complete independent authoritative scenarios",
       "prepare fresh disposable native run",
       "produce",
       "relogin",
       "independent assessment"
     ],
-    "reason": "User deferred chemistry. Prayer selected/restart and gem native/effects/crash batches completed; retain all immutable successful states and remaining obligations."
+    "reason": "User deferred chemistry. Preserve accepted historical manual gem/shell states. New shared glass choice/batch changes require their own exact-SHA tests; no acceptance inheritance."
   }
 }

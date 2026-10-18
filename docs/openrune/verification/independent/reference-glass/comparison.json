@@ -1,0 +1,225 @@
+{
+  "implementation_id": "OR-MIG-0062",
+  "tested_sha": "5ce50aede9164cdee8e4008257d0298ea77289e7",
+  "campaign_kind": "historical",
+  "status": "IN_PROGRESS",
+  "source_documentation_subcheck": "PASS",
+  "sources": [
+    {
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/scripts/HeldCraftingScript.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "c39f8b323e8fa79f933224b9ca0c8cf07a5df005628906e79645e3e6a5399318",
+      "kind": "openrune"
+    },
+    {
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingSection.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "26e5be7a84fbe82f5c4897d29cb3261c63cd475111f17df517e2e0ac5e0d8afb",
+      "kind": "openrune"
+    },
+    {
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingWorker.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "5790b247e5441b54e05c0ca7b4b5a9dff5c7aa61181ebccb36d0d8057db56e53",
+      "kind": "openrune"
+    },
+    {
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/util/CraftingConstants.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "393d05fa5a5645b2dd712fcfb8f8814845376846a7594dafe16909422fe2008f",
+      "kind": "openrune"
+    },
+    {
+      "reference": "Beer glass",
+      "revision": "15320123",
+      "sha256": "278072c384a8f836e0094c3a147c3ed043eae27726c4b05e6eb2fd4e090b7e2b",
+      "kind": "wiki"
+    },
+    {
+      "reference": "Empty candle lantern",
+      "revision": "15188816",
+      "sha256": "0835f10412a2a69827aa2090bb085b076ea5f0a64e39995f253ccb32d6ebd21c",
+      "kind": "wiki"
+    },
+    {
+      "reference": "Empty oil lamp",
+      "revision": "15185200",
+      "sha256": "34f2ed1da2be3225ed81f7709d2c3d9ce6605c8c75856d5172091e265b763750",
+      "kind": "wiki"
+    },
+    {
+      "reference": "Vial",
+      "revision": "15183725",
+      "sha256": "4c0f0c6ab62a87f58fb8299af266ae727693803267bf5d1d58028cb9cec5e2af",
+      "kind": "wiki"
+    },
+    {
+      "reference": "Fishbowl",
+      "revision": "15286250",
+      "sha256": "7d44453aaea2f4daf4c4e3ab200efac12cd43582f24bf897fb709d94fc0ad8f1",
+      "kind": "wiki"
+    },
+    {
+      "reference": "Unpowered orb",
+      "revision": "15218232",
+      "sha256": "fe00eb3e08e2b22ba977938b514dd087880a865f7318577117831b37ae8197ad",
+      "kind": "wiki"
+    },
+    {
+      "reference": "Lantern lens",
+      "revision": "15183962",
+      "sha256": "02aac535e84072648ac4f363e9fa076acf4305fe6fb4367d18598ff890f00c22",
+      "kind": "wiki"
+    },
+    {
+      "reference": "Empty light orb",
+      "revision": "15185205",
+      "sha256": "fef0d83b39f2c1bfc880c311e30f633418c9aef078f5012cd8f8a9a16bdf41ea",
+      "kind": "wiki"
+    }
+  ],
+  "profiles": [
+    {
+      "title": "Beer glass",
+      "output": 1919,
+      "name": "Beer glass",
+      "level": 1,
+      "base_fine_xp": 175,
+      "item_members": false,
+      "skill_recipe_members": true,
+      "wiki_ticks": 3,
+      "source_first_cycle_ticks": 2,
+      "source_repeat_ticks": 3,
+      "fine_awards": {
+        "100": 175,
+        "125": 218,
+        "500": 875
+      }
+    },
+    {
+      "title": "Empty candle lantern",
+      "output": 4527,
+      "name": "Empty candle lantern",
+      "level": 4,
+      "base_fine_xp": 190,
+      "item_members": true,
+      "skill_recipe_members": true,
+      "wiki_ticks": 3,
+      "source_first_cycle_ticks": 2,
+      "source_repeat_ticks": 3,
+      "fine_awards": {
+        "100": 190,
+        "125": 237,
+        "500": 950
+      }
+    },
+    {
+      "title": "Empty oil lamp",
+      "output": 4525,
+      "name": "Empty oil lamp",
+      "level": 12,
+      "base_fine_xp": 250,
+      "item_members": true,
+      "skill_recipe_members": true,
+      "wiki_ticks": 3,
+      "source_first_cycle_ticks": 2,
+      "source_repeat_ticks": 3,
+      "fine_awards": {
+        "100": 250,
+        "125": 312,
+        "500": 1250
+      }
+    },
+    {
+      "title": "Vial",
+      "output": 229,
+      "name": "Vial",
+      "level": 33,
+      "base_fine_xp": 350,
+      "item_members": false,
+      "skill_recipe_members": true,
+      "wiki_ticks": 3,
+      "source_first_cycle_ticks": 2,
+      "source_repeat_ticks": 3,
+      "fine_awards": {
+        "100": 350,
+        "125": 437,
+        "500": 1750
+      }
+    },
+    {
+      "title": "Fishbowl",
+      "output": 6667,
+      "name": "Empty fishbowl",
+      "level": 42,
+      "base_fine_xp": 425,
+      "item_members": true,
+      "skill_recipe_members": true,
+      "wiki_ticks": 3,
+      "source_first_cycle_ticks": 2,
+      "source_repeat_ticks": 3,
+      "fine_awards": {
+        "100": 425,
+        "125": 531,
+        "500": 2125
+      }
+    },
+    {
+      "title": "Unpowered orb",
+      "output": 567,
+      "name": "Unpowered orb",
+      "level": 46,
+      "base_fine_xp": 525,
+      "item_members": true,
+      "skill_recipe_members": true,
+      "wiki_ticks": 3,
+      "source_first_cycle_ticks": 2,
+      "source_repeat_ticks": 3,
+      "fine_awards": {
+        "100": 525,
+        "125": 656,
+        "500": 2625
+      }
+    },
+    {
+      "title": "Lantern lens",
+      "output": 4542,
+      "name": "Lantern lens",
+      "level": 49,
+      "base_fine_xp": 550,
+      "item_members": true,
+      "skill_recipe_members": true,
+      "wiki_ticks": 3,
+      "source_first_cycle_ticks": 2,
+      "source_repeat_ticks": 3,
+      "fine_awards": {
+        "100": 550,
+        "125": 687,
+        "500": 2750
+      }
+    },
+    {
+      "title": "Empty light orb",
+      "output": 10980,
+      "name": "Empty light orb",
+      "level": 87,
+      "base_fine_xp": 700,
+      "item_members": true,
+      "skill_recipe_members": true,
+      "wiki_ticks": 3,
+      "source_first_cycle_ticks": 2,
+      "source_repeat_ticks": 3,
+      "fine_awards": {
+        "100": 700,
+        "125": 875,
+        "500": 3500
+      }
+    }
+  ],
+  "scope": "All12pinned source/Wiki references hash-verified. Eight selected creation recipes independently checked for exact ordinary/empty output ID, requirement, fineXP, member skill recipe, pipe and3ticks. Beer glass/Vial itemF2Pflags do not make the glassblowing skill recipeF2P. Fishbowl empty6667is distinguished from filled6668/6669. Source GLASSBLOWING/default shortened first gives2then3, distinct from literal Wiki3recipe cadence.",
+  "comparisons": [
+    "Selected captured raw slot first, then bounded ordinary raw slots, retains pipe. Per-step Rust inventory/Stats staging is a stronger atomic adaptation; source-framework product data/generated rows not copied or claimed executed.",
+    "Actual target native option labels, Make/quantity controls, permission tokens, genuineClose and interruption cadence remain independent execution obligations. Missing sound and material acquisition/manufacture/fuel/charging/wiring are excluded."
+  ],
+  "reference_execution": "Original compiled Kotlin executable unavailable. Source-derived framework observations and pinned documentation are labelled; no whole framework or literal3tick-first parity claimed."
+}

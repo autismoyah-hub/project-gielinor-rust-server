@@ -1,0 +1,288 @@
+{
+  "implementation_id": "OR-MIG-0057",
+  "tested_sha": "4c6b73cfcd3b35ce52aa79efd9d2a99464939445",
+  "campaign_kind": "historical",
+  "status": "PASS",
+  "native_profiles": 9,
+  "native_cuts": 18,
+  "fine_xp_award": 29250,
+  "wire_directions": [
+    {
+      "slot": 4,
+      "raw_id": 3345,
+      "reverse": false,
+      "tick": 88
+    },
+    {
+      "slot": 6,
+      "raw_id": 3347,
+      "reverse": true,
+      "tick": 99
+    },
+    {
+      "slot": 8,
+      "raw_id": 3349,
+      "reverse": false,
+      "tick": 111
+    },
+    {
+      "slot": 10,
+      "raw_id": 3351,
+      "reverse": true,
+      "tick": 122
+    },
+    {
+      "slot": 12,
+      "raw_id": 3353,
+      "reverse": false,
+      "tick": 133
+    },
+    {
+      "slot": 14,
+      "raw_id": 3355,
+      "reverse": true,
+      "tick": 144
+    },
+    {
+      "slot": 16,
+      "raw_id": 3357,
+      "reverse": false,
+      "tick": 156
+    },
+    {
+      "slot": 18,
+      "raw_id": 3359,
+      "reverse": true,
+      "tick": 170
+    },
+    {
+      "slot": 20,
+      "raw_id": 3361,
+      "reverse": false,
+      "tick": 184
+    },
+    {
+      "slot": 5,
+      "raw_id": 3345,
+      "reverse": true,
+      "tick": 197
+    },
+    {
+      "slot": 7,
+      "raw_id": 3347,
+      "reverse": false,
+      "tick": 205
+    },
+    {
+      "slot": 9,
+      "raw_id": 3349,
+      "reverse": true,
+      "tick": 214
+    },
+    {
+      "slot": 11,
+      "raw_id": 3351,
+      "reverse": false,
+      "tick": 222
+    },
+    {
+      "slot": 13,
+      "raw_id": 3353,
+      "reverse": true,
+      "tick": 229
+    },
+    {
+      "slot": 15,
+      "raw_id": 3355,
+      "reverse": false,
+      "tick": 236
+    },
+    {
+      "slot": 17,
+      "raw_id": 3357,
+      "reverse": true,
+      "tick": 243
+    },
+    {
+      "slot": 19,
+      "raw_id": 3359,
+      "reverse": false,
+      "tick": 250
+    },
+    {
+      "slot": 21,
+      "raw_id": 3361,
+      "reverse": true,
+      "tick": 257
+    }
+  ],
+  "effect_observations": [
+    {
+      "slot": 4,
+      "output": 3327,
+      "animation": 1280,
+      "animation_delay": 0,
+      "animation_tick": 90,
+      "credit_tick": 92,
+      "received_clock_delta": 2
+    },
+    {
+      "slot": 6,
+      "output": 3329,
+      "animation": 1280,
+      "animation_delay": 0,
+      "animation_tick": 101,
+      "credit_tick": 103,
+      "received_clock_delta": 2
+    },
+    {
+      "slot": 8,
+      "output": 3331,
+      "animation": 1280,
+      "animation_delay": 0,
+      "animation_tick": 113,
+      "credit_tick": 115,
+      "received_clock_delta": 2
+    },
+    {
+      "slot": 10,
+      "output": 3333,
+      "animation": 1280,
+      "animation_delay": 0,
+      "animation_tick": 124,
+      "credit_tick": 126,
+      "received_clock_delta": 2
+    },
+    {
+      "slot": 12,
+      "output": 3335,
+      "animation": 1280,
+      "animation_delay": 0,
+      "animation_tick": 135,
+      "credit_tick": 137,
+      "received_clock_delta": 2
+    },
+    {
+      "slot": 14,
+      "output": 3337,
+      "animation": 1280,
+      "animation_delay": 0,
+      "animation_tick": 147,
+      "credit_tick": 149,
+      "received_clock_delta": 2
+    },
+    {
+      "slot": 16,
+      "output": 3339,
+      "animation": 1280,
+      "animation_delay": 0,
+      "animation_tick": 159,
+      "credit_tick": 161,
+      "received_clock_delta": 2
+    },
+    {
+      "slot": 18,
+      "output": 3341,
+      "animation": 1280,
+      "animation_delay": 0,
+      "animation_tick": 174,
+      "credit_tick": 176,
+      "received_clock_delta": 2
+    },
+    {
+      "slot": 20,
+      "output": 3343,
+      "animation": 1280,
+      "animation_delay": 0,
+      "animation_tick": 188,
+      "credit_tick": 190,
+      "received_clock_delta": 2
+    },
+    {
+      "slot": 5,
+      "output": 3327,
+      "animation": 1280,
+      "animation_delay": 0,
+      "animation_tick": 200,
+      "credit_tick": 202,
+      "received_clock_delta": 2
+    },
+    {
+      "slot": 7,
+      "output": 3329,
+      "animation": 1280,
+      "animation_delay": 0,
+      "animation_tick": 208,
+      "credit_tick": 210,
+      "received_clock_delta": 2
+    },
+    {
+      "slot": 9,
+      "output": 3331,
+      "animation": 1280,
+      "animation_delay": 0,
+      "animation_tick": 217,
+      "credit_tick": 219,
+      "received_clock_delta": 2
+    },
+    {
+      "slot": 11,
+      "output": 3333,
+      "animation": 1280,
+      "animation_delay": 0,
+      "animation_tick": 224,
+      "credit_tick": 226,
+      "received_clock_delta": 2
+    },
+    {
+      "slot": 13,
+      "output": 3335,
+      "animation": 1280,
+      "animation_delay": 0,
+      "animation_tick": 231,
+      "credit_tick": 233,
+      "received_clock_delta": 2
+    },
+    {
+      "slot": 15,
+      "output": 3337,
+      "animation": 1280,
+      "animation_delay": 0,
+      "animation_tick": 238,
+      "credit_tick": 240,
+      "received_clock_delta": 2
+    },
+    {
+      "slot": 17,
+      "output": 3339,
+      "animation": 1280,
+      "animation_delay": 0,
+      "animation_tick": 245,
+      "credit_tick": 247,
+      "received_clock_delta": 2
+    },
+    {
+      "slot": 19,
+      "output": 3341,
+      "animation": 1280,
+      "animation_delay": 0,
+      "animation_tick": 252,
+      "credit_tick": 254,
+      "received_clock_delta": 2
+    },
+    {
+      "slot": 21,
+      "output": 3343,
+      "animation": 1280,
+      "animation_delay": 0,
+      "animation_tick": 259,
+      "credit_tick": 261,
+      "received_clock_delta": 2
+    }
+  ],
+  "scope": "All nine exact round/pointed/bark shell IDs carved in both actual native Use27 directions. Each decoded animation1280(delay0) precedes its raw selected inventory18 credit by two received server-clock boundaries. Full28bag, both chisels and unrelated slots conserved, nine actual stale-pair replays refuse substitution, native pre-completion movement cancels without award. All18helmets and29250fineXP survive acknowledged save, actual restart and independently decoded native full inventory/Stats, with no reconnect replay.",
+  "limitations": [
+    "Decoded native effects/relative ordered clocks are observed; no rendered/audio or absolute World/client tick equality claim.",
+    "No process-crash scenario is included in this assessment; menus/repeats/sound/acquisition/equipment and source executable parity remain excluded or separate."
+  ]
+}

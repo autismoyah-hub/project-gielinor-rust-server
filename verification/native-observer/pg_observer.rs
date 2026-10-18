@@ -228,6 +228,69 @@ fn gem_effects(c:&mut ClientState,l:&mut Connection)->R<()> {
     }
     println!("PG_CASE_PASS fourteen native gem cuts; every profile in both directions; actual decoded sequence/effect and first-cycle packet cadence require independent assessment");Ok(())
 }
+fn glass_make_action(c:&mut ClientState,l:&mut Connection,index:u32)->R<Action> {
+    let start=Instant::now();let logical=(270<<16)|(15+index);
+    loop {
+        pump(c,l,30,|_,_|true)?;let layout=c.interfaces.layout(c.canvas)?;
+        if !l.scripts_busy() && c.interfaces.scripts.is_empty(){
+            if let Some(p)=layout.widgets.get(&logical).filter(|p|!p.hidden && p.clip[2]>p.clip[0] && p.clip[3]>p.clip[1]) {
+                let point=[(p.clip[0]+p.clip[2])/2,(p.clip[1]+p.clip[3])/2];
+                if let Some(a)=c.interface_menu(point)?.into_iter().find(|e|match e.action{Action::Continue(id)|Action::Button{id,..}|Action::Interface{id,..}=>c.interfaces.runtime.get(&id).map_or(id,|r|r.logical_id)==logical,_=>false}).map(|e|e.action){
+                    for (&id,w) in &c.interfaces.widgets {if id>>16==270 && !w.text.is_empty(){println!("PG_GLASS_WIDGET id={id} text={:?}",w.text);}}
+                    println!("PG_GLASS_OPTION_READY index={index} logical={logical} tick={}",c.server_tick);return Ok(a);
+                }
+            }
+        }
+        if start.elapsed()>Duration::from_secs(30){return Err(format!("native glass choice{index} unavailable").into());}std::thread::sleep(Duration::from_millis(20));
+    }
+}
+fn glass(c:&mut ClientState,l:&mut Connection)->R<()> {
+    let xp=c.data.experience;let initial=(0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>();tab(c,"Inventory")?;ticks(c,l,3)?;
+    use_slots(c,0,4)?;let a=glass_make_action(c,l,0)?;let stale=sent_packet(c,a,"native glass Make before cancellation")?;
+    let point=[u16::try_from(c.data.position[1]+1)?,u16::try_from(c.data.position[2])?];dispatch(c,Action::Walk(point),"native glass pending Walk cancellation")?;ticks(c,l,7)?;
+    assert_eq!(c.data.experience,xp);assert_eq!((0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>(),initial);
+    use_slots(c,4,0)?;let _=glass_make_action(c,l,0)?;dispatch(c,Action::Close,"genuine native glass Close")?;ticks(c,l,3)?;
+    replay(c,l,&stale,"stale glass Make after genuine native Close")?;ticks(c,l,5)?;
+    assert_eq!(c.data.experience,xp);assert_eq!((0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>(),initial);
+    println!("PG_CASE_PASS native glass queued movement and genuine Close/stale continuation preserve complete inventory and XP");
+    let mut fine=130344311i32;
+    for (index,(output,award)) in [(1919,875),(4527,950),(4525,1250),(229,1750),(6667,2125),(567,2625),(4542,2750),(10980,3500)].into_iter().enumerate(){
+        ready(c,l)?;let slot=4+index as i32;
+        if index%2==0{use_slots(c,0,slot)?;}else{use_slots(c,slot,0)?;}
+        let a=glass_make_action(c,l,index as u32)?;let p=sent_packet(c,a,"native glass chosen one product")?;fine+=award;
+        pump(c,l,30,|c,_|c.inventories.item(93,slot).id==output && c.data.experience[12]==fine/10)?;ticks(c,l,2)?;let committed=c.data.experience;
+        replay(c,l,&p,"stale glass quantity response after completed dialog")?;ticks(c,l,3)?;assert_eq!(c.data.experience,committed);
+        assert_eq!(c.inventories.item(93,0).id,1785);assert_eq!(c.inventories.item(93,1).id,1785);assert_eq!(c.inventories.item(93,26).id,1775);assert_eq!(c.inventories.item(93,27).count,1000);
+        for i in 0..25{if i!=12{assert_eq!(c.data.experience[i],xp[i]);}}
+        println!("PG_GLASS_COMMITTED index={index} slot={slot} output={output} fine_award={award} display_xp={}",c.data.experience[12]);
+    }
+    println!("PG_CASE_PASS eight native glass choices; both use directions; full28 exact selected outputs/retained pipes;15825fineXP; stale response refusal; batch quantity controls remain separate");Ok(())
+}
+fn shells(c:&mut ClientState,l:&mut Connection)->R<()> {
+    let xp=c.data.experience;let initial=(0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>();
+    assert_eq!(c.data.base[12],99);tab(c,"Inventory")?;ticks(c,l,3)?;
+    use_slots(c,0,4)?;let point=[u16::try_from(c.data.position[1]+1)?,u16::try_from(c.data.position[2])?];dispatch(c,Action::Walk(point),"native shell cancellation before completion")?;ticks(c,l,7)?;
+    assert_eq!(c.data.experience,xp);assert_eq!((0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>(),initial);
+    println!("PG_CASE_PASS native shell pending cancellation without consumption or XP");
+    let mut fine=130344311i32;
+    for second in 0..2 {for index in 0..9 {
+        ready(c,l)?;let raw=3345+2*index;let cut=3327+2*index;let slot=4+2*index+second;let reverse=(index+second)%2==1;
+        assert_eq!(c.inventories.item(93,slot).id,raw);let n=c.outbound.len();
+        if reverse{use_slots(c,slot,0)?;}else{use_slots(c,0,slot)?;}
+        let p=c.outbound.iter().skip(n).find(|p|p.opcode==27).ok_or("shell native pair packet absent")?;let stale=(p.opcode,p.payload.clone());
+        fine+=1625;pump(c,l,30,|c,_|c.inventories.item(93,slot).id==cut && c.data.experience[12]==fine/10)?;ticks(c,l,2)?;
+        assert_eq!(c.inventories.item(93,0).id,1755);assert_eq!(c.inventories.item(93,1).id,1755);assert_eq!(c.inventories.item(93,27).count,1000);
+        assert_eq!((0..28).filter(|&s|c.inventories.item(93,s).id>=0).count(),28);
+        if second==0 {
+            assert_eq!(c.inventories.item(93,slot+1).id,raw);let committed=c.data.experience;
+            replay(c,l,&stale,"stale shell pair with matching raw and chisel duplicates retained")?;ticks(c,l,4)?;
+            assert_eq!(c.data.experience,committed);assert_eq!(c.inventories.item(93,slot+1).id,raw);
+        }
+        for i in 0..25{if i!=12{assert_eq!(c.data.experience[i],xp[i]);}}
+        println!("PG_SHELL_COMMITTED index={index} slot={slot} raw={raw} cut={cut} fine_award=1625 display_xp={} direction_reverse={reverse}",c.data.experience[12]);
+    }}
+    println!("PG_CASE_PASS eighteen native shell carvings; nine exact round pointed bark pairs both directions; full28 retained chisels; exact cumulative fineXP; stale selected-pair refusal");Ok(())
+}
 fn gem_crash(c:&mut ClientState,l:&mut Connection)->R<()> {
     tab(c,"Inventory")?;ticks(c,l,3)?;use_slots(c,0,4)?;
     pump(c,l,30,|c,_|c.inventories.item(93,4).id==1607 && c.data.experience[12]==13034681)?;
@@ -254,6 +317,6 @@ fn food(c:&mut ClientState,l:&mut Connection)->R<()> {
 fn main()->R<()> {
     let a:Vec<_>=std::env::args().collect();assert_eq!(a.len(),7);
     let mut c=ClientState::load(DiskCache::open(&a[1],64<<20)?)?;let mut l=Connection::connect(&mut c,&a[2],&a[3],&a[4],&a[5])?;ready(&mut c,&mut l)?;
-    match a[6].as_str(){"gem-effects"=>gem_effects(&mut c,&mut l)?,"gem-crash"=>gem_crash(&mut c,&mut l)?,"gems"=>gems(&mut c,&mut l)?,"prayer"=>prayer_burial(&mut c,&mut l)?,"chem-crash"=>chemistry_crash(&mut c,&mut l)?,"chem-interrupt"=>chemistry_interrupt(&mut c,&mut l)?,"food-negative"=>food_negative(&mut c,&mut l)?,"combat-interrupt"=>combat_interrupt(&mut c,&mut l)?,"chem-close"=>chemistry_close(&mut c,&mut l)?,"chem-negative"=>chemistry(&mut c,&mut l)?,"food"=>food(&mut c,&mut l)?,"verify"=>{ticks(&mut c,&mut l,6)?;println!("PG_CASE_PASS native relogin observation");},_=>return Err("unknown independent scenario".into())}
+    match a[6].as_str(){"glass"=>glass(&mut c,&mut l)?,"shells"=>shells(&mut c,&mut l)?,"gem-effects"=>gem_effects(&mut c,&mut l)?,"gem-crash"=>gem_crash(&mut c,&mut l)?,"gems"=>gems(&mut c,&mut l)?,"prayer"=>prayer_burial(&mut c,&mut l)?,"chem-crash"=>chemistry_crash(&mut c,&mut l)?,"chem-interrupt"=>chemistry_interrupt(&mut c,&mut l)?,"food-negative"=>food_negative(&mut c,&mut l)?,"combat-interrupt"=>combat_interrupt(&mut c,&mut l)?,"chem-close"=>chemistry_close(&mut c,&mut l)?,"chem-negative"=>chemistry(&mut c,&mut l)?,"food"=>food(&mut c,&mut l)?,"verify"=>{ticks(&mut c,&mut l,6)?;println!("PG_CASE_PASS native relogin observation");},_=>return Err("unknown independent scenario".into())}
     l.session.close();Ok(())
 }

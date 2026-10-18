@@ -1,0 +1,61 @@
+{
+  "tested_integration_sha": "7fc1306bb5c01540038ce5ff175b577294ade432",
+  "suite": "pouch-matrix",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 7560110080,
+    "active_compilers": [
+      "\"cargo.exe\",\"6664\",\"RDP-Tcp#0\",\"2\",\"22,328 K\"",
+      "\"rustc.exe\",\"10212\",\"RDP-Tcp#0\",\"2\",\"195,632 K\""
+    ],
+    "cpu_percent": 41.15,
+    "cpu_samples": [
+      69.3359375,
+      20.703125,
+      33.3984375
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained",
+    "disk_free": 38180700160,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "64dd1bc4de7986e3ee9662e2a1740acdf15297ed",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\7fc1306bb5c01540038ce5ff175b577294ade432\\external-harness-1724870400\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-pouch-matrix-7fc1306bb5c01540038ce5ff175b577294ade432\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\7fc1306bb5c01540038ce5ff175b577294ade432\\external-harness-1724870400\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 3,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-pouch-matrix-7fc1306bb5c01540038ce5ff175b577294ade432\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative pouch-matrix scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-pouch-matrix-7fc1306bb5c01540038ce5ff175b577294ade432\\harness\\authoritative.rs": "0c699ba9bab7bcf6853cd5eb5bce2ed8bfb9c6617481f229b8a310650a749cd9"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\authoritative-95406b2de43851b8.exe": "e68c39c5f2e971cc4527a3ef509c5632b9bfcf848d15ec48b194dcbd3b192b2c"
+  }
+}

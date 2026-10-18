@@ -1,0 +1,11 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\5ce50aede9164cdee8e4008257d0298ea77289e7\external-harness-4371978600)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.51s
+     Running tests\authoritative.rs (C:\Projects\OSRSRSPS\agent7-verification\work\5ce50aede9164cdee8e4008257d0298ea77289e7\target\debug\deps\authoritative-894228e98ac7221b.exe)
+
+running 3 tests
+test invalid_selection_count_and_live_admission_never_award ... ok
+test late_captured_slot_and_lifecycle_failures_keep_completed_outputs_no_fallback_or_future_loss ... ok
+test eight_choices_both_directions_every_count_three_rates_exact_captured_order_and_2_then_3_clocks has been running for over 60 seconds
+test eight_choices_both_directions_every_count_three_rates_exact_captured_order_and_2_then_3_clocks ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 188.35s

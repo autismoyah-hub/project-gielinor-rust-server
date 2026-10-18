@@ -1,0 +1,46 @@
+{
+  "implementation_id": "OR-MIG-0054",
+  "tested_sha": "7fc1306bb5c01540038ce5ff175b577294ade432",
+  "campaign_kind": "historical",
+  "status": "IN_PROGRESS",
+  "source_documentation_subcheck": "PASS",
+  "sources": [
+    {
+      "reference": "content/skills/thieving/src/main/kotlin/org/rsmod/content/skills/thieving/ThievingScript.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "66c5d10529fb1e5c41c8d3ef9b5e401f7cb76ea0ac860948fd5c69c48c4a3ad5",
+      "kind": "openrune"
+    },
+    {
+      "reference": "content/skills/thieving/src/main/kotlin/org/rsmod/content/skills/thieving/ThievingTables.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "be94f18729af46354c1e86780bc513666c4cd0e38eb758a1c7ee80ba134d09ed",
+      "kind": "openrune"
+    },
+    {
+      "reference": "Coin pouch",
+      "revision": "15315198",
+      "sha256": "358c76fa33543243691445c3be053fe89330db2a17732c6ba60077f7cf176bdf",
+      "kind": "wiki"
+    },
+    {
+      "reference": "Man",
+      "revision": "15337969",
+      "sha256": "c4dd3f16f717ae4d331f4bb06eefccdd41fa877dc74a6cb785eb7caddcc3a637",
+      "kind": "wiki"
+    },
+    {
+      "reference": "Woman",
+      "revision": "15337968",
+      "sha256": "1b9a4cb0d4fa576ceb23c0dadf12f23cd74a28019a5d4e740ffeddce530d6937",
+      "kind": "wiki"
+    }
+  ],
+  "scope": "Five exact source/Wiki hashes verified. Source binds first held operation to all and second to one, with citizen pouch3coins; pinned Wiki supports22521, Open-all/Open and not bankable. This is opening semantics, not independent NPC acquisition/Thieving/cap acceptance.",
+  "comparisons": [
+    "Source all uses inventory type-total count/deletion, while Rust intentionally restricts one server-derived selected stack and preserves malformed duplicate stacks. Checked multiplication, output credit failure and whole-inventory staging are stronger atomic adaptations; do not infer donor failure atomicity.",
+    "Target native item operation ordinals2/3reflect its revision239.1 action encoding, while donor held1/held2name the conceptual first/second options. No client-supplied quantity is trusted.",
+    "Existing no_bank resolver and actual native deposit refusal, message/presentation observations and real durable restart remain separate. No RNG/XP/repeated queue is expected from opening."
+  ],
+  "reference_execution": "Original Kotlin executable unavailable; statements are source-derived. No source expression/generated tables/assets are published."
+}

@@ -92,6 +92,14 @@ Fresh negative-003 PASS at ae3d234c71764dd2364f8452fc1974a54a6783f0: full28cake 
 - Issue: https://github.com/autismoyah-hub/project-gielinor-rust-server/issues/123. User explicitly approved publication after automatic review initially rejected external disclosure. Current HEAD replay is not claimed.
 - Status: OPEN correction; V2 historical FAIL. No FORGE stop requested.
 
+### PG-DEF-001 correction intake while chemistry is deferred
+
+FORGE published candidate `b11260e0f4d1b3eaad0fefc18112c2e8bdf5843e` as OR-MIG-0061 and OR-MIG-0006 revision2. Published decoder/composed tests are historical FORGE evidence. The user's chemistry deferral includes the held/worn policy and charge-state retest; no independent native retest or issue closure is claimed. Nonchemistry Close/quantity cases remain eligible separately. Original `e7ac3608` FAIL and its disposable state are immutable.
+
+### PG-META-001 — inconsistent packet numbers in Close acceptance prose
+
+Ordinary P3, nonblocking metadata correction at queue HEAD `0c8c7f2b389d77f9f04517869c2003573d94b1d1`: OR-MIG-0061 V2 reason says native Close129/staleResume134, while the same contract's normal/negative behavior, exact candidate decoder and original independently captured239.1 reproduction use Close95(empty)/ResumePause115. Correct that acceptance-reason prose to95/115; do not change packet implementation to match the typo. No gameplay defect or FORGE stop inferred. Chemistry retesting remains user-deferred.
+
 ## PG-INFRA-006 — resolved observer and capacity assumptions
 
 - Retain negative-001: removing an actual Continue packet from outbound left the native Continue latch active, preventing real Cancel. Corrected observer dispatches real Cancel before replay and never strips generated packets. Fresh negative-002 and genuine Close case are separate immutable runs.

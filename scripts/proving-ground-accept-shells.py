@@ -1,0 +1,21 @@
+"""Close only the exact published nine-shell manual subset after evidence checks."""
+import hashlib,json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1];DOC=ROOT/'docs/openrune/verification';OUT=DOC/'independent';SHA='4c6b73cfcd3b35ce52aa79efd9d2a99464939445';read=lambda p:json.loads(p.read_text(encoding='utf-8'))
+contracts=[json.loads(s) for s in (DOC/'IMPLEMENTATION_QUEUE.jsonl').read_text(encoding='utf-8').splitlines()];contract=next(r for r in reversed(contracts) if r['implementation_id']=='OR-MIG-0057');assert contract['implementation_commit_sha']==SHA and contract['revision']==1
+native=OUT/'deep-shells/shells-001/independent-assessment.json';ref=OUT/'reference-shells/comparison.json';n=read(native);r=read(ref)
+assert n['tested_sha']==r['tested_sha']==SHA and n['status']=='PASS' and n['native_profiles']==9 and n['native_cuts']==18 and n['fine_xp_award']==29250
+assert r['source_documentation_subcheck']=='PASS' and len(r['sources'])==14 and len(r['profiles'])==9
+assert len(n['effect_observations'])==18 and all(x['animation']==1280 and x['received_clock_delta']==2 for x in n['effect_observations'])
+paths=[native,ref]
+for suite,count in [('shell-matrix',3),('shell-bindings',1)]:
+    found=[p for p in OUT.glob('integration-external-'+suite+'-'+SHA+'*/manifest.json') if read(p)['status']=='PASS' and read(p)['runs'][-1]['tests_passed']==count];assert found
+    p=max(found,key=lambda p:p.stat().st_mtime_ns);assert read(p)['tested_integration_sha']==SHA;paths.append(p)
+reasons={
+'V0':'PASS: exact4c6b73server compiled, actual target cache/startup/held registry dispatched all9profiles. Independently decoded19actual ordinary item definitions, Crafting12and animation1280;199missing/corrupt metadata/symbol/stat/effect cases reject the whole catalog.',
+'V1':'PASS: independent4536profile/selected-slot/current-level/member/100-125-500rate fixtures,162invalid transactions and252actual held-route/late-interruption cases. Round/pointed IDs, full-bag exact selected replacement, retained duplicate chisels/raws, fineXP325/406/1625, invalid credit rollback and two-clock action timing verified.',
+'V2':'PASS for manual subset:18genuine native Use27 packets independently decoded to cover each of9profiles in both directions. Raw selected inventory18credits/decoded local animation1280establish two received server-clock boundaries per successful carve, correct round/pointed/bark output and cumulative29250fineXP. Native immediate Walk cancellation and9actual stale pair replays preserve duplicates and chisels.',
+'V3':'PASS for applicable manual lifecycle: all18helmets, retained tools/full bag and exact29250fineXP survive acknowledged save, actual server restart and independently decoded native inventory/Stats. Native pre-completion movement cancellation and authoritative pending logout/modal/held-action interruption checks preserve remaining inputs; reconnect does not replay. No process-crash or mid-SQL fault claim for this campaign.',
+'V4':'PASS for supported comparison:14hash-pinned references, including9exact-title/revision helmet Wiki recipes supporting output IDs/member/Crafting15/32.5XP/two ticks. Source CARVING3/default shortened first2matches independently measured native1280/two-clock first action. Missing chisel synth, generic cut-versus-carve wording and excluded menus/repeats/later Vampyre/perfect-shell/acquisition/equipment remain explicit; original Kotlin unavailable and source-derived evidence labelled.'}
+report={'implementation_id':'OR-MIG-0057','revision':1,'tested_sha':SHA,'campaign_kind':'historical','status':'ACCEPTED','acceptance_scope':contract['feature_name'],'levels':{k:{'status':'PASS','reason':v} for k,v in reasons.items()},'evidence':{p.relative_to(ROOT).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in paths},'exclusions':'Accepts only this historical nine-shell manual subset. No current FORGE HEAD/new batch engine, rendered/audio or original executable parity is implied. Native effective500percent and authoritative100/125/500rates are distinct.'}
+(OUT/'shell-acceptance.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n');print(json.dumps({'implementation_id':'OR-MIG-0057','tested_sha':SHA,'levels':{k:'PASS' for k in reasons},'status':'ACCEPTED'}))

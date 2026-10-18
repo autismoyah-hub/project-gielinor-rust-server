@@ -1,0 +1,61 @@
+{
+  "tested_integration_sha": "5ce50aede9164cdee8e4008257d0298ea77289e7",
+  "suite": "glass-matrix",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 7748390912,
+    "active_compilers": [
+      "\"cargo.exe\",\"6060\",\"RDP-Tcp#0\",\"2\",\"22,964 K\"",
+      "\"rustc.exe\",\"13888\",\"RDP-Tcp#0\",\"2\",\"251,800 K\""
+    ],
+    "cpu_percent": 24.74,
+    "cpu_samples": [
+      21.2890625,
+      34.375,
+      18.5546875
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained",
+    "disk_free": 38959620096,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "ba6fb684147b9d3a0af6a543fecf232efb4f3460",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\5ce50aede9164cdee8e4008257d0298ea77289e7\\external-harness-4371978600\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-glass-matrix-5ce50aede9164cdee8e4008257d0298ea77289e7-1792292760698579200\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\5ce50aede9164cdee8e4008257d0298ea77289e7\\external-harness-4371978600\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 3,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-glass-matrix-5ce50aede9164cdee8e4008257d0298ea77289e7-1792292760698579200\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative glass-matrix scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-glass-matrix-5ce50aede9164cdee8e4008257d0298ea77289e7-1792292760698579200\\harness\\authoritative.rs": "87b872b3f0a3c79df705d6d89279aed6d90c9e4173094a70d5356bff131b94f8"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\authoritative-894228e98ac7221b.exe": "d673b0a21bd0dce5b18560a6a750b2bc9d74f1d2585da2285968bae2f27601f3"
+  }
+}

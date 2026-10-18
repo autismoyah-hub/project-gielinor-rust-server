@@ -1,21 +1,21 @@
 # PROVING GROUND — current verification status
 
-This is an ongoing verification campaign. No contract is yet fully accepted across all applicable V0–V4 levels. Historical results and current integration checks are separate.
+This is an ongoing verification campaign. 2 current contract(s) accepted across applicable V0–V4 levels at their exact implementation SHAs. Historical results and current integration checks are separate.
 
 ## Intake
 
-Latest observed FORGE HEAD: `0c8c7f2b389d77f9f04517869c2003573d94b1d1`.
-Exact queue SHA256: `82ef436bb38fb8e25ec9a66661d678e42bc7e7e812870a4808a8116959a2a68a`.
-Published queue: 69 records / 61 stable implementation IDs. Published validator: PASS.
+Latest observed FORGE HEAD: `fd68ed517fcc9afa65736024f4e635142cb22c14`.
+Exact queue SHA256: `6cd601b54f3cbbd2aae11574e81be9b4c304cdc7d0580791fe165bfd3393ff8b`.
+Published queue: 71 records / 63 stable implementation IDs. Published validator: PASS.
 The copied queue is refreshed only from fetched immutable blobs after append-history checks. Current coverage and every contract revision are retained in [WORKLIST.json](WORKLIST.json). Synchronization observations are append-only in [SYNC_OBSERVATIONS.jsonl](SYNC_OBSERVATIONS.jsonl).
 
 ## Level coverage
 
-- V0: PASS 4, FAIL 0, BLOCKED 0, IN_PROGRESS 5, NOT_STARTED 52, NOT_APPLICABLE 0.
-- V1: PASS 1, FAIL 0, BLOCKED 0, IN_PROGRESS 8, NOT_STARTED 52, NOT_APPLICABLE 0.
-- V2: PASS 1, FAIL 0, BLOCKED 0, IN_PROGRESS 3, NOT_STARTED 57, NOT_APPLICABLE 0.
-- V3: PASS 1, FAIL 0, BLOCKED 0, IN_PROGRESS 3, NOT_STARTED 57, NOT_APPLICABLE 0.
-- V4: PASS 1, FAIL 0, BLOCKED 0, IN_PROGRESS 4, NOT_STARTED 56, NOT_APPLICABLE 0.
+- V0: PASS 5, FAIL 0, BLOCKED 0, IN_PROGRESS 5, NOT_STARTED 53, NOT_APPLICABLE 0.
+- V1: PASS 2, FAIL 0, BLOCKED 0, IN_PROGRESS 10, NOT_STARTED 51, NOT_APPLICABLE 0.
+- V2: PASS 2, FAIL 0, BLOCKED 0, IN_PROGRESS 3, NOT_STARTED 58, NOT_APPLICABLE 0.
+- V3: PASS 2, FAIL 0, BLOCKED 0, IN_PROGRESS 3, NOT_STARTED 58, NOT_APPLICABLE 0.
+- V4: PASS 2, FAIL 0, BLOCKED 0, IN_PROGRESS 6, NOT_STARTED 55, NOT_APPLICABLE 0.
 
 User direction: chemistry, potion and Herblore tests are DEFERRED. Historical evidence and findings remain intact. Continue Prayer, food without new potion setup, cooking, assembly, smithing, packs, Crafting and other eligible work. General resume does not lift the chemistry deferral. See [USER_DEFERRALS.json](USER_DEFERRALS.json).
 
@@ -51,9 +51,14 @@ No rendered-window, original-executable differential or crash-atomicity acceptan
 - `5743cbe1c7499e2a7476c721d25dcba194666042`: raw attempt PASS; gem-matrix 2 test executions passed.  [Manifest](independent/integration-external-gem-matrix-5743cbe1c7499e2a7476c721d25dcba194666042/manifest.json).
 - `5743cbe1c7499e2a7476c721d25dcba194666042`: raw attempt PASS; gem-matrix 3 test executions passed.  [Manifest](independent/integration-external-gem-matrix-5743cbe1c7499e2a7476c721d25dcba194666042-1792290804246057200/manifest.json).
 - `5743cbe1c7499e2a7476c721d25dcba194666042`: raw attempt PASS; gem-matrix 3 test executions passed.  [Manifest](independent/integration-external-gem-matrix-5743cbe1c7499e2a7476c721d25dcba194666042-1792291204898164400/manifest.json).
+- `5ce50aede9164cdee8e4008257d0298ea77289e7`: raw attempt FAIL; 0 test executions passed. Independent test match arm used World.close_dialogs bool return where other mutation arms returned unit. No scenario executed and no implementation failure inferred. Corrected only the test wrapper to discard this bool; fresh exact-SHA attempt retains the same functional assertions. [Manifest](independent/integration-external-glass-matrix-5ce50aede9164cdee8e4008257d0298ea77289e7/manifest.json).
+- `5ce50aede9164cdee8e4008257d0298ea77289e7`: raw attempt PASS; glass-matrix 3 test executions passed.  [Manifest](independent/integration-external-glass-matrix-5ce50aede9164cdee8e4008257d0298ea77289e7-1792292760698579200/manifest.json).
+- `7fc1306bb5c01540038ce5ff175b577294ade432`: raw attempt PASS; pouch-matrix 3 test executions passed.  [Manifest](independent/integration-external-pouch-matrix-7fc1306bb5c01540038ce5ff175b577294ade432/manifest.json).
 - `f6b0f6ad54fe7813bb6607827eeb8da0e60137fa`: raw attempt FAIL; 0 test executions passed.  [Manifest](independent/integration-external-prayer-cache-f6b0f6ad54fe7813bb6607827eeb8da0e60137fa/manifest.json).
 - `f6b0f6ad54fe7813bb6607827eeb8da0e60137fa`: raw attempt FAIL; 0 test executions passed.  [Manifest](independent/integration-external-prayer-cache-f6b0f6ad54fe7813bb6607827eeb8da0e60137fa-1792289661562542800/manifest.json).
 - `f6b0f6ad54fe7813bb6607827eeb8da0e60137fa`: raw attempt PASS; prayer-cache 1 test executions passed.  [Manifest](independent/integration-external-prayer-cache-f6b0f6ad54fe7813bb6607827eeb8da0e60137fa-1792289742179352000/manifest.json).
+- `4c6b73cfcd3b35ce52aa79efd9d2a99464939445`: raw attempt PASS; shell-bindings 1 test executions passed.  [Manifest](independent/integration-external-shell-bindings-4c6b73cfcd3b35ce52aa79efd9d2a99464939445/manifest.json).
+- `4c6b73cfcd3b35ce52aa79efd9d2a99464939445`: raw attempt PASS; shell-matrix 3 test executions passed.  [Manifest](independent/integration-external-shell-matrix-4c6b73cfcd3b35ce52aa79efd9d2a99464939445/manifest.json).
 - `8ad59b108e1ecd55185570c88d1be8be06b39756`: Native current-integration worn Options -> Stop, equipped-item/coins/XP conservation and actual restart/native relogin; complete V2/V3 acceptance remains open. [Assessment](independent/native-chemistry-worn-8ad59b108e1ecd55185570c88d1be8be06b39756/independent-assessment.json).
 
 An older integration PASS is not a PASS on a newer FORGE HEAD. Change-impact lists and the last executed integration scope are recorded separately per feature.
@@ -131,11 +136,13 @@ An older integration PASS is not a PASS on a newer FORGE HEAD. Change-impact lis
 - **OR-MIG-0051 r1** `f6b0f6ad54fe` — Selected-slot and atomic actual network Prayer burial; V0 PASS, V1 IN_PROGRESS, V2 IN_PROGRESS, V3 IN_PROGRESS, V4 IN_PROGRESS.
 - **OR-MIG-0052 r1** `8389805afedc` — Five demonic ash Scatter profiles through selected Prayer transactions; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
 - **OR-MIG-0053 r1** `0d9a03c8b97c` — Seven absent ordinary Bury reward profiles with configured-policy preservation; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0054 r1** `7fc1306bb5c0` — Citizen coin pouch Open and Open-all through atomic checked pack quantities; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0054 r1** `7fc1306bb5c0` — Citizen coin pouch Open and Open-all through atomic checked pack quantities; V0 NOT_STARTED, V1 IN_PROGRESS, V2 NOT_STARTED, V3 NOT_STARTED, V4 IN_PROGRESS.
 - **OR-MIG-0055 r2** `d19f37d0c02b` — Man/Woman base pickpocketing through NPC routing, atomic pouch XP and timed movement stun; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
 - **OR-MIG-0056 r2** `5743cbe1c749` — Seven deterministic manual gem cuts with retained chisel and fractional Crafting XP; V0 PASS, V1 PASS, V2 PASS, V3 PASS, V4 PASS.
-- **OR-MIG-0057 r1** `4c6b73cfcd3b` — Nine legacy round, pointed and bark shell helmet carvings on shared Crafting adapter; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0057 r1** `4c6b73cfcd3b` — Nine legacy round, pointed and bark shell helmet carvings on shared Crafting adapter; V0 PASS, V1 PASS, V2 PASS, V3 PASS, V4 PASS.
 - **OR-MIG-0058 r2** `845897221900` — Eleven manual amulet stringing pairs at level-one Crafting and four XP; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
 - **OR-MIG-0059 r1** `845897221900` — Five immediate completed Godsword blade/hilt attachments with shared atomic assembly publication; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
 - **OR-MIG-0060 r1** `4fca31436d4f` — Ordinary holy/unholy precursor and rabbit-foot stringing with distinct crafting/equipment gates; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
 - **OR-MIG-0061 r1** `b11260e0f4d1` — Native revision239.1 CloseModal boundary through existing ifClose and continuation cancellation; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0062 r1** `5ce50aede916` — Reusable native tool-crafting choices and captured batches for eight glassblowing products; V0 NOT_STARTED, V1 IN_PROGRESS, V2 NOT_STARTED, V3 NOT_STARTED, V4 IN_PROGRESS.
+- **OR-MIG-0063 r1** `143dab04f28c` — Native quantity production for seven deterministic gems and nine legacy shell carvings; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.

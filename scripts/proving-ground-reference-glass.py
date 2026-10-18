@@ -1,0 +1,22 @@
+"""Compare the exact ordinary glass recipe variant, not filled/charged products."""
+import hashlib,json,re,sqlite3
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1];DOC=ROOT/'docs/openrune/verification';SHA='5ce50aede9164cdee8e4008257d0298ea77289e7'
+q=[json.loads(s) for s in (DOC/'IMPLEMENTATION_QUEUE.jsonl').read_text(encoding='utf-8').splitlines()];c=next(r for r in reversed(q) if r['implementation_id']=='OR-MIG-0062');assert c['implementation_commit_sha']==SHA
+db=sqlite3.connect((ROOT.parent/'osrs-wiki-dump/data/osrs-wiki.sqlite').as_uri()+'?mode=ro',uri=True);archive=ROOT.parent/'source-reference/OpenRune-Server-main/OpenRune-Server-main';texts={};sources=[]
+for ref in c['source_references']:
+    if ref['kind']=='openrune':data=(archive/ref['reference']).read_bytes()
+    else:
+        rev,text=db.execute('SELECT revision_id,wikitext FROM pages WHERE title=? COLLATE BINARY AND revision_id=?',(ref['reference'],int(ref['revision']))).fetchone();assert str(rev)==str(ref['revision']);data=text.encode()
+    assert hashlib.sha256(data).hexdigest()==ref['sha256'];texts[ref['reference']]=data.decode();sources.append({'reference':ref['reference'],'revision':ref['revision'],'sha256':ref['sha256'],'kind':ref['kind']})
+db.close();profiles=[]
+for title,name,output,level,fine,item_member in [('Beer glass','Beer glass',1919,1,175,False),('Empty candle lantern','Empty candle lantern',4527,4,190,True),('Empty oil lamp','Empty oil lamp',4525,12,250,True),('Vial','Vial',229,33,350,False),('Fishbowl','Empty fishbowl',6667,42,425,True),('Unpowered orb','Unpowered orb',567,46,525,True),('Lantern lens','Lantern lens',4542,49,550,True),('Empty light orb','Empty light orb',10980,87,700,True)]:
+    text=texts[title];assert re.search(r'\|id'+('1' if title=='Fishbowl' else '')+r'\s*=\s*'+str(output)+r'\s*(?:\n|\|)',text)
+    begin=text.index('|skill1 = Crafting');end=text.index('\n}}',begin);recipe=text[begin:end]
+    for key,value in [('skill1lvl',level),('skill1exp',format(fine/10,'g')),('members','Yes'),('ticks',3),('tools','Glassblowing pipe'),('output1',name)]:
+        assert re.search(r'\|'+key+r'\s*=\s*'+re.escape(str(value))+r'\s*(?:\n|\||$)',recipe),(title,key)
+    profiles.append({'title':title,'output':output,'name':name,'level':level,'base_fine_xp':fine,'item_members':item_member,'skill_recipe_members':True,'wiki_ticks':3,'source_first_cycle_ticks':2,'source_repeat_ticks':3,'fine_awards':{str(rate):fine*rate//100 for rate in [100,125,500]}})
+section=texts[next(k for k in texts if k.endswith('CraftingSection.kt'))];worker=texts[next(k for k in texts if k.endswith('CraftingWorker.kt'))]
+assert re.search(r'GLASSBLOWING\([\s\S]*?ticks = 3,',section) and 'shortensFirstCraft: Boolean = true' in section and 'firstCycleTicks = maxOf(1, cycleTicks - 1)' in worker
+report={'implementation_id':'OR-MIG-0062','tested_sha':SHA,'campaign_kind':'historical','status':'IN_PROGRESS','source_documentation_subcheck':'PASS','sources':sources,'profiles':profiles,'scope':'All12pinned source/Wiki references hash-verified. Eight selected creation recipes independently checked for exact ordinary/empty output ID, requirement, fineXP, member skill recipe, pipe and3ticks. Beer glass/Vial itemF2Pflags do not make the glassblowing skill recipeF2P. Fishbowl empty6667is distinguished from filled6668/6669. Source GLASSBLOWING/default shortened first gives2then3, distinct from literal Wiki3recipe cadence.','comparisons':['Selected captured raw slot first, then bounded ordinary raw slots, retains pipe. Per-step Rust inventory/Stats staging is a stronger atomic adaptation; source-framework product data/generated rows not copied or claimed executed.','Actual target native option labels, Make/quantity controls, permission tokens, genuineClose and interruption cadence remain independent execution obligations. Missing sound and material acquisition/manufacture/fuel/charging/wiring are excluded.'],'reference_execution':'Original compiled Kotlin executable unavailable. Source-derived framework observations and pinned documentation are labelled; no whole framework or literal3tick-first parity claimed.'}
+out=DOC/'independent/reference-glass';out.mkdir(exist_ok=True);assert not (out/'comparison.json').exists();(out/'comparison.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n');print(json.dumps({'sources':len(sources),'profiles':len(profiles),'subcheck':'PASS','tested_sha':SHA}))

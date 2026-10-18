@@ -1,0 +1,6 @@
+{
+  "classification": "VERIFIER_COMPILE_ERROR",
+  "tested_sha": "5ce50aede9164cdee8e4008257d0298ea77289e7",
+  "reason": "Independent test match arm used World.close_dialogs bool return where other mutation arms returned unit. No scenario executed and no implementation failure inferred. Corrected only the test wrapper to discard this bool; fresh exact-SHA attempt retains the same functional assertions.",
+  "status": "HARNESS_CORRECTED_RERUN_PENDING"
+}

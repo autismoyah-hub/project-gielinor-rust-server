@@ -4,8 +4,9 @@ from pathlib import Path
 import json
 ROOT=Path(__file__).resolve().parents[1];DOC=ROOT/'docs/openrune/verification'
 state=json.loads((DOC/'WORKLIST.json').read_text(encoding='utf-8'))
+accepted=sum(all(v['status'] in ['PASS','NOT_APPLICABLE'] for v in x['historical_verification']['levels'].values()) for x in state['items'])
 lines=['# PROVING GROUND — current verification status','',
-       'This is an ongoing verification campaign. No contract is yet fully accepted across all applicable V0–V4 levels. Historical results and current integration checks are separate.','',
+       f'This is an ongoing verification campaign. {accepted} current contract(s) accepted across applicable V0–V4 levels at their exact implementation SHAs. Historical results and current integration checks are separate.','',
        '## Intake','',f"Latest observed FORGE HEAD: `{state['forge_head']}`.",f"Exact queue SHA256: `{state['queue_sha256']}`.",
        f"Published queue: {state['records']} records / {state['implementation_units']} stable implementation IDs. Published validator: {state['published_validator_status']}.",
        'The copied queue is refreshed only from fetched immutable blobs after append-history checks. Current coverage and every contract revision are retained in [WORKLIST.json](WORKLIST.json). Synchronization observations are append-only in [SYNC_OBSERVATIONS.jsonl](SYNC_OBSERVATIONS.jsonl).','',
@@ -33,6 +34,8 @@ for path in sorted((DOC/'independent').glob('integration-*/manifest.json')):
     if 'status' not in m:continue
     detail=', '.join(r.get('filter',m.get('suite','scenario'))+' '+str(r['tests_passed']) for r in m.get('runs',[]) if r.get('tests_passed',0)) or '0'
     note=m.get('reason','')
+    verifier=path.parent/'verifier-assessment.json'
+    if verifier.exists():note=json.loads(verifier.read_text(encoding='utf-8')).get('reason',note)
     if m['status']=='FAIL' and m.get('suite')=='food-regeneration':note='Rejected same-clock diagnosis; refined later-clock reproducer passed. This failed hypothesis is retained, not attributed to gameplay.'
     if m['status']=='FAIL' and m.get('suite')=='assembly-batch':note='Verifier assumed which unselected duplicate was captured; corrected selected-slot/no-fallback matrix passed. See PG-INFRA-005.'
     lines.append(f"- `{m['tested_integration_sha']}`: raw attempt {m['status']}; "+detail+' test executions passed. '+note+' [Manifest]('+str(path.relative_to(DOC)).replace('\\','/')+').')

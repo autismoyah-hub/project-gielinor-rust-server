@@ -37,6 +37,15 @@ for manifest in OUT.glob('OR-MIG-0024-*-independent*/manifest.json'):
 for manifest in OUT.glob('integration-*/manifest.json'):
     value=json.loads(manifest.read_text(encoding='utf-8'))
     if value.get('status')!='PASS':continue
+    if value.get('suite') in ['glass-matrix','pouch-matrix']:
+        suite=value['suite'];ident='OR-MIG-0062' if suite=='glass-matrix' else 'OR-MIG-0054'
+        reason=('Independent eight-choice actual held-route matrix PASS across1344both-direction/requested-count1through28/three-rate scenarios,72invalid admission cases and96late captured-slot/credit/member/level/tool/modal/movement/logout/Close cases. Exact first selected input then captured order, first2/subsequent3action clocks, per-step fineXP and capped count verified.' if suite=='glass-matrix' else 'Independent selected-stack pouch one/all/overflow/member/full-bag transaction matrix and actual World negative/replay/no-XP controls PASS. Configured runtime/native no_bank and lifecycle/reference remain separate.')
+        add(ident,value['tested_integration_sha'],'V1','IN_PROGRESS',reason+' Complete native, configured definitions and lifecycle/reference acceptance remain open.',[str(manifest.relative_to(ROOT)).replace('\\','/')],scope='independent-'+suite)
+        continue
+    if value.get('suite') in ['shell-matrix','shell-bindings']:
+        suite=value['suite'];reason=('Independent nine-shell matrix PASS across4536all-selected-slot/member/current-level/100-125-500rate fixtures,162invalid transactions and252actual held-route cases with two-clock first action, late guards, cancellation and no replay.' if suite=='shell-matrix' else 'Independent actual-cache19ordinary shell/chisel/output definitions and nine exact stat/animation/profile bindings PASS;199corrupt object/symbol/stat/effect cases reject the entire catalog.')
+        add('OR-MIG-0057',value['tested_integration_sha'],'V1' if suite=='shell-matrix' else 'V0','IN_PROGRESS',reason+' Complete native/lifecycle/reference aggregate acceptance remains separate.',[str(manifest.relative_to(ROOT)).replace('\\','/')],scope='independent-'+suite)
+        continue
     if value.get('suite')=='gem-bindings':
         add('OR-MIG-0056',value['tested_integration_sha'],'V0','IN_PROGRESS','Independent actual-cache15item/seven-profile binding and159corrupt object/symbol/stat/effect refusals PASS; native/runtime aggregate acceptance is recorded separately.',[str(manifest.relative_to(ROOT)).replace('\\','/')],scope='independent-gem-bindings')
         continue
@@ -154,4 +163,30 @@ if path.exists():
     result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='ACCEPTED'
     for level,value in result['levels'].items():
         add('OR-MIG-0056',result['tested_sha'],level,value['status'],value['reason'],[str(path.relative_to(ROOT)).replace('\\','/')],scope='gem-manual-subset-acceptance-r2')
+path=OUT/'deep-shells/shells-001/independent-assessment.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PASS'
+    for level in ['V0','V2','V3']:add('OR-MIG-0057',result['tested_sha'],level,'IN_PROGRESS',result['scope']+' Aggregate published-level acceptance remains separate.',[str(path.relative_to(ROOT)).replace('\\','/')],scope='shell-native-directions-recovery')
+path=OUT/'reference-shells/comparison.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['source_documentation_subcheck']=='PASS'
+    add('OR-MIG-0057',result['tested_sha'],'V4','IN_PROGRESS',result['scope']+' Native effect/cadence comparison remains separate.',[str(path.relative_to(ROOT)).replace('\\','/')],scope='shell-source-reference')
+path=OUT/'shell-acceptance.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='ACCEPTED'
+    for level,value in result['levels'].items():add('OR-MIG-0057',result['tested_sha'],level,value['status'],value['reason'],[str(path.relative_to(ROOT)).replace('\\','/')],scope='shell-manual-subset-acceptance-r1')
+for folder,ident in [('reference-glass','OR-MIG-0062'),('reference-pouches','OR-MIG-0054')]:
+    path=OUT/folder/'comparison.json'
+    if path.exists():
+        result=json.loads(path.read_text(encoding='utf-8'));assert result['source_documentation_subcheck']=='PASS'
+        add(ident,result['tested_sha'],'V4','IN_PROGRESS',result['scope']+' Original executable unavailable; native/reference comparison remains separate.',[str(path.relative_to(ROOT)).replace('\\','/')],scope=folder+'-audit')
+coarse=DOC/'VERIFICATION_RESULTS.jsonl';prior=[json.loads(s) for s in coarse.read_text(encoding='utf-8').splitlines()];known={r['attempt_id'] for r in prior}
+for name in ['gem-acceptance.json','shell-acceptance.json']:
+    path=OUT/name
+    if not path.exists():continue
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='ACCEPTED' and all(v['status']=='PASS' for v in result['levels'].values())
+    attempt='accepted-manual-'+result['implementation_id']+'-'+result['tested_sha']+'-r'+str(result['revision'])
+    if attempt in known:continue
+    row={'attempt_id':attempt,'implementation_id':result['implementation_id'],'implementation_commit_sha':result['tested_sha'],'contract_revision':result['revision'],'campaign_kind':'historical','outcome':'VERIFIED','level':'V0-V4 applicable manual subset','independent_verification':True,'tests_passed':0,'coverage':[k+' PASS: '+v['reason'] for k,v in result['levels'].items()],'reason':result['acceptance_scope']+'; aggregate acceptance only, no duplicate test-execution count. '+result['exclusions'],'evidence':[path.relative_to(ROOT).as_posix()],'issues':[]}
+    with coarse.open('a',encoding='utf-8',newline='\n') as f:f.write(json.dumps(row)+'\n')
 print('Per-level evidence events:',len(rows))

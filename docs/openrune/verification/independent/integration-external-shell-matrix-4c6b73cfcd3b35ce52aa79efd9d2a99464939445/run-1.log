@@ -1,0 +1,11 @@
+   Compiling gielinor-world v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\4c6b73cfcd3b35ce52aa79efd9d2a99464939445\crates\world)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\4c6b73cfcd3b35ce52aa79efd9d2a99464939445\external-harness-2820228900)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 21.23s
+     Running tests\authoritative.rs (C:\Projects\OSRSRSPS\agent7-verification\work\4c6b73cfcd3b35ce52aa79efd9d2a99464939445\target\debug\deps\authoritative-ce82578a3bd47009.exe)
+
+running 3 tests
+test invalid_shell_job_never_returns_a_committable_reward_or_replaces_duplicate_inputs ... ok
+test all_nine_shells_all_selected_slots_live_level_membership_and_three_rates ... ok
+test all_nine_actual_world_held_routes_both_directions_recheck_late_state_and_cancel ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 12.24s

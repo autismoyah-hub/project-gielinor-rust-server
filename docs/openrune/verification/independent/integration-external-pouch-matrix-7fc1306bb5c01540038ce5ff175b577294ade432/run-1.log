@@ -1,0 +1,12 @@
+   Compiling gielinor-world v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\7fc1306bb5c01540038ce5ff175b577294ade432\crates\world)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\7fc1306bb5c01540038ce5ff175b577294ade432\external-harness-1724870400)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 30.90s
+     Running tests\authoritative.rs (C:\Projects\OSRSRSPS\agent7-verification\work\7fc1306bb5c01540038ce5ff175b577294ade432\target\debug\deps\authoritative-95406b2de43851b8.exe)
+
+running 3 tests
+test checked_count_refusals_leave_whole_selected_inventory_unchanged ... ok
+test actual_world_invalid_metadata_modal_claims_duplicate_and_zero_xp_controls ... ok
+test selected_stack_full_bag_one_all_overflow_and_membership_4480_cases has been running for over 60 seconds
+test selected_stack_full_bag_one_all_overflow_and_membership_4480_cases ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 315.08s
