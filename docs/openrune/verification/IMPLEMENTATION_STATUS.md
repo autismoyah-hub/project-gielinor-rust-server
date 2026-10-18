@@ -3,13 +3,13 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0051: selected and atomic network Prayer burial, source [f6b0f6a](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/f6b0f6ad54fe7813bb6607827eeb8da0e60137fa). Shared regression passed 88 server and 446 world tests, one existing ignored test, with 406 source hashes unchanged. Three new selected-action cases and all 11 unchanged Prayer/reference/offering cases also passed. The initial invalid-XP caller failure and fix are preserved.
+OR-MIG-0052: five demonic ash Scatter profiles, source [8389805](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/8389805afedc05d132747e0a5dd4a3631360ada3). Shared regression passed 89 server and 446 world tests, one existing ignored test, with 406 source hashes unchanged. Five selected Prayer/ash cases and all 11 original Prayer/offering cases also passed.
 
-Actual held Bury retains the claimed item and clicked slot through confirmation and delay, rechecks membership, and stages inventory/Stats together. Original reference APIs and chapel/offering behavior remain available. Timing, above-base necklace restoration, ash/Zealot/Catacombs hooks and native/persistence acceptance remain open.
+Fiendish/Vile are F2P; Malicious/Abyssal/Infernal require membership. Base XP is 10/25/65/85/110. Selected ashes use2295/Scatter, no Chaos bone prompt or direct bone restoration, and cannot enter World altar offering. Existing selected Prayer transaction and normal packed bone policy are reused.
 
-There are 51 implementation units across 55 append-only records: 23 historical and 28 new gameplay/shared units, all pending independent verification. Discovery remains 3,508 records: 31 partially contracted eligible files/tables, 656 configuration and 2,821 unassessed. This is not a completion percentage.
+There are 52 implementation units across 56 append-only records: 23 historical and 29 new gameplay/shared units, all pending independent verification. Discovery remains 3,508 records: 32 partially contracted eligible files/tables, 656 configuration and 2,820 unassessed. This is not a completion percentage.
 
-Next: extend eligible Prayer/burial/ash content on the corrected selected transaction. Other open work includes Anglerfish PvP eligibility, delayed food effects, quantity/Cook menus, modifiers/surfaces, cake tin returns, inventory reconciliation and independent V0–V4. Historical/private evidence and unrelated source changes are preserved.
+Continue eligible Prayer/content inventory without duplicating existing packed bone implementations. Cadence, native/persistent/reference acceptance, drops/spells/sanctifier, bone restoration above base and other content remain open. Anglerfish PvP eligibility, delayed food, quantity menus, modifiers/surfaces and cake tin returns remain separate. Historical/private evidence and unrelated changes preserved.
 <!-- forge-current:end -->
 
 
@@ -197,3 +197,8 @@ Published 78f603fd516a3963f2e0a30d2ad47186aa6e1ddd. Six Dorgesh manual Eat profi
 ## Implementation checkpoint OR-MIG-0051
 
 Published f6b0f6ad54fe7813bb6607827eeb8da0e60137fa. Selected atomic actual network burial; final88server/446world and3new+11original integration checksPASS/406unchanged hashes. Initial caller-policy failure preserved. Queue51units55records, inventory31eligible/2821unassessed. All independent acceptance pending; continue eligible Prayer content.
+
+
+## Implementation checkpoint OR-MIG-0052
+
+Published 8389805afedc05d132747e0a5dd4a3631360ada3. Five registered demonic ash Scatter profiles;89server/446world and5selected+11original checksPASS/406same hashes. Queue52units56records; inventory32eligible/2820unassessed. All independent acceptance pending; continue remaining eligible implementation.
