@@ -3,9 +3,9 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0066: manual damaged-tail sinew crafting, source [5582c27](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/5582c276d1657a0142151936e5a9fec022d7c938). Actual selected held-use registration, current Crafting 10 / 15 XP / member. Focused PASS 1 server test, 422 unchanged source hashes; shared engine unchanged since unit65 full regression. Independent V0–V4 acceptance pending.
+OR-MIG-0067: precise assembly rewards and four manual elemental battlestaff attachments; source [e3ced82](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/e3ced82211ee438fd6a74a110d435e6746295a16). Fractional XP retained through existing atomic pair exchange. Shared regression PASS; independent V0–V4 queued.
 
-66 units / 74 append-only records, 23 historical and 43 new shared/gameplay units. Discovery: 3508 = 38 partial eligible + 4 framework/infrastructure + 658 configuration + 2808 unassessed, not a completion percentage. Automatic sinew production, wider Crafting/facilities/quest acquisition and other content remain. PG-DEF-001 native Close candidate b11260e remains pending independent retest. Continue eligible implementation.
+67 units / 75 append-only records (23 historical, 44 new shared/gameplay). Discovery 3508 = 38 partial eligible + 4 framework/infrastructure + 658 configuration + 2808 unassessed; not completion percentages. Automatic pair production, wider Crafting/facilities/quest acquisition and other content remain. PG-DEF-001 Close candidate b11260e pending independent retest. Continue eligible implementation.
 <!-- forge-current:end -->
 
 
@@ -324,3 +324,14 @@ Published source 5582c276d1657a0142151936e5a9fec022d7c938. Actual held-use type 
 Focused forge-sinew-crafting-tests-attempt-001 PASS: one server test; zero world tests matched; 422 source hashes unchanged; compile 11.92s. Actual reversed held dispatch verifies full-bag selected replacement, retained exact knife/other tail, member fine XP versus nonmember refusal and invalid transformed output binding. Shared engine remains the unit65 fully regressed source. Guard 6,667 MiB available, 58.7% commit, no paging, 5.2 ms disk, 24.4% CPU, Cargo -j 2; other compiler presence informational. No new native acceptance claimed.
 
 This unit is manual only. Automatic Make-all and its Wiki timing note (0, then 3, then 4 ticks), Cooking beef/impaler meat, tail acquisition and bow-string spinning remain separate. Queue 66 units / 74 append-only records, 23 historical and 43 new shared/gameplay units; discovery counts unchanged (3508 = 38 partial eligible + 4 framework/infrastructure + 658 configuration + 2808 unassessed). PG-DEF-001 Close candidate still awaits independent retest. Continue eligible content.
+
+
+## FORGE OR-MIG-0067 — precise assembly and manual elemental battlestaves
+
+Published source e3ced82211ee438fd6a74a110d435e6746295a16. Four actual AssemblyPrecise held-use pairs consume owned battlestaff 1391 plus powered water/earth/fire/air orbs 571/575/569/573 to make 1395/1399/1393/1397 at current Crafting 54/58/62/66. Member-only, XP 100/112.5/125/137.5. At 125% these award 1250/1406/1562/1718 fine XP. Shared complete_awarding_tenths delegates to the same selected two-input exchange and staged reward/publication as legacy integer-XP assembly; no duplicate transaction engine or multiplier trick. Existing integer and immediate APIs remain unchanged.
+
+Manual nominal two-tick action, first not shortened, exact animation 7531 and elemental spots 1370/1371/1372/306 are registered. Nine ordinary target definitions and four Wiki/source hashes pinned. Missing target attach_orb sound is omitted. Automatic Make-X and its Wiki first3/remainder2 timing, enchanting/acquisition, wield/combat and other staff types remain separate. One pair per held action, other pairs untouched.
+
+forge-battlestaff-tests-attempt-002 PASS, 423 unchanged source hashes: test result: ok. 108 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.18s; test result: ok. 469 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 29.52s. Actual reversed held dispatches cover all four full-bag exchanges, correct fractional XP, animation/spot events, no early XP and no repeat. Shared precise reward tests cover invalid output/rate/member/current level without loss. Guard 7,058 MiB available, 56.0% commit, 32 pages-in/s, 3.1 ms disk, 32.6% CPU, Cargo -j 2; compiler presence informational. Initial attempt001 failed to compile a new test that treated World.tick as an event return; corrected to drain_events, with original FAIL preserved. Historical failures/private resources preserved. This is working-tree developer regression, not independent/native/pristine acceptance.
+
+Queue: 67 units / 75 append-only records (23 historical, 44 new shared/gameplay); discovery unchanged at 3508 = 38 partial eligible + 4 framework/infrastructure + 658 configuration + 2808 unassessed. Whole Crafting and broad content obligations remain; PG-DEF-001 Close candidate pending independent retest. Continue eligible implementation.
