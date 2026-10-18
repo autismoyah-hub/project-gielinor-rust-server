@@ -4,6 +4,7 @@ use crate::{doors, loc_reach::Target, locations::Location, reach::Rectangle};
 impl World {
     /// Shared admission check for network sessions and headless actors.
     pub fn has_location_handler(&self, id: u32, operation: u8) -> bool {
+        if operation==1&&self.guild_passages.contains_key(&id){return true;}
         if operation==1&&self.runecrafting.as_ref().is_some_and(|c|c.altars.contains_key(&id)){return true;}
         if operation==1 && self.location_banks.contains_key(&id){return true;}
         if self.facility_crafting.get(&id).is_some_and(|c|c.locations.get(&id)==Some(&Some(operation))){return true;}
@@ -319,6 +320,7 @@ impl World {
             self.process_location_use(slot, loc, inv_slot, object);
             return;
         }
+        if operation==1 && self.guild_passages.contains_key(&loc.id){self.process_guild_passage(slot,loc);return;}
         if operation==1 && self.location_banks.contains_key(&loc.id){self.request_location_bank(slot,loc);return;}
         if self
             .milking

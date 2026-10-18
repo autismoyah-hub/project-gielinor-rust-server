@@ -389,6 +389,12 @@ pub fn configure<B: AccountBackend>(
     runtime.world.doors =
         crate::doors::resolve(n("content"), n("param"), &parameters, &runtime.definitions)
             .map_err(io::Error::other)?;
+    let passages=crate::content::guild_passages(n("obj"),n("loc"),n("stat"),n("content"),&runtime.definitions).map_err(io::Error::other)?;
+    for &id in passages.keys(){
+        // A special guild handler supersedes only a possible generic-door binding.
+        if runtime.world.has_location_handler(id,1)&&!runtime.world.doors.contains_key(&id){return Err(io::Error::other("Conflicting guild passage operation"));}
+    }
+    runtime.world.guild_passages=passages;
     runtime.world.pickup_effects = Some(gielinor_world::ground_transfer::PickupEffects {
         sound: names.short("synth", "pick2")?,
         animation: names.short("seq", "human_pickuptable")?,

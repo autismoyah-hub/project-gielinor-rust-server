@@ -15,6 +15,7 @@ mod autocast_actions;
 mod combat_actions;
 mod dialogue_actions;
 mod door_actions;
+mod guild_passage_actions;
 mod drop_action;
 mod chemistry_actions;
 mod ground_actions;
@@ -971,6 +972,7 @@ pub struct World {
     pub location_types: BTreeMap<u32, crate::loc_collision::LocCollision>,
     pub location_approach: BTreeMap<u32, u8>,
     pub doors: crate::doors::Catalog,
+    pub guild_passages: BTreeMap<u32, crate::guild_passages::Gate>,
     pub deposit_box: Option<crate::deposit_box::Config>,
     pub location_banks: BTreeMap<u32,crate::bank_access::Gate>,
     pub runecrafting:Option<crate::runecrafting::Config>,
@@ -1094,6 +1096,7 @@ impl Default for World {
             location_types: BTreeMap::new(),
             location_approach: BTreeMap::new(),
             doors: Default::default(),
+            guild_passages: Default::default(),
             deposit_box: None,
             location_banks: BTreeMap::new(),
             location_handlers: Default::default(),

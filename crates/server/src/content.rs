@@ -1,4 +1,6 @@
 //! Resolve content's symbolic references against the same immutable type inputs as Kotlin.
+mod guild_passages;
+pub use guild_passages::guild_passages;
 mod ordinary_rune_altars;
 pub use ordinary_rune_altars::ordinary_rune_altars;
 mod shield_crafting;
