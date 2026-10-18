@@ -744,6 +744,9 @@ pub fn configure<B: AccountBackend>(
         runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.tool,recipe.input,gielinor_world::held_use::Handler::Grinding(recipe))
             .map_err(|e|io::Error::other(format!("Grinding registration: {e:?}")))?;
     }
+    for recipe in crate::content::gem_cutting(n("obj"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
+        runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.exchange.tool,recipe.exchange.input,gielinor_world::held_use::Handler::ToolCrafting(recipe)).map_err(|e|io::Error::other(format!("Gem cutting registration: {e:?}")))?;
+    }
     runtime.configure_smelting_names(names)?;
     runtime.configure_dough_names(names)?;
     runtime.configure_herb_cleaning_names(names)?;

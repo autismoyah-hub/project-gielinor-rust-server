@@ -41,6 +41,7 @@ mod herb_cleaning_actions;
 mod mining_actions;
 mod npc_actions;
 mod thieving_actions;
+mod tool_crafting_actions;
 mod npc_combat_actions;
 mod npc_death_actions;
 mod npc_search;
@@ -181,6 +182,7 @@ enum Deferred {
     WaterFilling(crate::water_sources::Job),
     Cooking(crate::cooking::Job),
     Pickpocket(thieving_actions::Job),
+    ToolCrafting(crate::tool_crafting::Pending),
     Grinding(crate::grinding::Pending),
     SwampTar(crate::swamp_tar::Pending),
     Dough(crate::dough::Pending),
@@ -317,6 +319,7 @@ impl Player {
     fn pickpocket_stunned(&self)->bool {self.pickpocket_stun_until>self.protection.processed_clock}
     fn begin_held_action(&mut self) {
         self.queues.remove_all(crate::thieving::QUEUE);
+        self.queues.remove_all(crate::tool_crafting::QUEUE);
         self.queues.remove_all(crate::assembly::QUEUE);
         self.queues.remove_all(crate::milking::QUEUE);
         self.queues.remove_all(crate::water_sources::QUEUE);
@@ -1394,6 +1397,7 @@ impl World {
         p.has_modal = open;
         if open {
             p.queues.remove_all(crate::thieving::QUEUE);
+            p.queues.remove_all(crate::tool_crafting::QUEUE);
             if matches!(p.prayer,Some(crate::prayer::State::Bury{slot:Some(_),..})) {
                 p.prayer=None;p.protection.suspended=false;
             }
@@ -2498,6 +2502,7 @@ impl World {
                                                 Deferred::Grinding(job) => {
                                                     grinding_actions::complete(p, queues, job, &self.object_types, self.clock.0, &mut self.events);
                                                 }
+                                                Deferred::ToolCrafting(pending) => {tool_crafting_actions::complete(p,pending,&self.object_types,self.tutorial_rules_completed_varp.is_some(),&mut self.events);}
                                                 Deferred::Pickpocket(job) => {
                                                     if let Some(config)=&self.pickpocket {
                                                         let target=job.target;

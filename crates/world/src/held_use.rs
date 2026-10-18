@@ -33,6 +33,7 @@ pub enum Handler {
         ticks: u8,
     },
     Grinding(crate::grinding::Recipe),
+    ToolCrafting(crate::tool_crafting::Recipe),
     TutorialDough(crate::tutorial_dough::Config),
     TutorialFire(crate::tutorial_fire::Config),
 }
