@@ -13,6 +13,8 @@ use crate::{
 use std::collections::{BTreeMap, HashMap, HashSet, VecDeque};
 mod autocast_actions;
 mod combat_actions;
+#[cfg(test)]
+mod consumable_tests;
 mod dialogue_actions;
 mod door_actions;
 mod guild_passage_actions;
@@ -280,6 +282,7 @@ struct Player {
     id: ActorId,
     combat_decimal: i32,
     action_delay: i32,
+    consumables: crate::consumable_clocks::State,
     data: PlayerData,
     movement: Movement,
     active_speed: Speed,
@@ -932,6 +935,7 @@ pub struct World {
     pub banking: Option<crate::bank_actions::Config>,
     pub wear_types: crate::equipment::WearCatalog,
     pub foods: BTreeMap<i32, crate::food::Edible>,
+    pub consumable_rules: Option<crate::consumable_clocks::Rules>,
     pub member_foods: std::collections::BTreeSet<i32>,
     pub food_boosts: BTreeMap<i32,Vec<crate::food::StatBoost>>,
     pub food_subtractions: BTreeMap<i32,Vec<crate::food::StatSubtraction>>,
@@ -1063,6 +1067,7 @@ impl Default for World {
             banking: None,
             wear_types: crate::equipment::WearCatalog::default(),
             foods: BTreeMap::new(),
+            consumable_rules: None,
             member_foods: Default::default(),
             food_boosts: BTreeMap::new(),
             food_subtractions: BTreeMap::new(),
@@ -2068,6 +2073,15 @@ impl World {
                     return Err(error);
                 }
                 let potion = &self.potions[&expected];
+                let native = self.consumable_rules.is_some();
+                let plan = if let Some(rules) = &self.consumable_rules {
+                    let policy = *rules.potions.get(&expected).ok_or(ActionError::InvalidItem)?;
+                    if policy.kind != crate::consumable_clocks::Kind::Potion
+                        || policy.consume_delay != crate::potions::DRINK_DELAY || policy.combat_delay != 0
+                        || (policy.members && !p.member) { return Err(ActionError::InvalidItem); }
+                    if empty { None } else { Some(p.consumables.plan(self.clock.0,policy,p.action_delay)
+                        .map_err(|e| if e == crate::consumable_clocks::Error::Delayed {ActionError::Delayed} else {ActionError::InvalidItem})?) }
+                } else { None };
                 let mut emitted = Vec::new();
                 let consumed=crate::potions::consume_slot(
                     potion,
@@ -2082,6 +2096,7 @@ impl World {
                 )
                 .map_err(|_| ActionError::InvalidStat)?;
                 if !consumed {return Err(ActionError::InvalidItem);}
+                if let Some(plan) = plan { p.consumables=plan.state; p.action_delay=plan.action_delay; }
                 for event in emitted {
                     if let crate::potions::Event::Stat(update) = &event {
                         p.record_stat_update(
@@ -2090,9 +2105,11 @@ impl World {
                         )?;
                     }
                     if let crate::potions::Event::Delay(cycles) = event {
-                        p.protection.delay(cycles);
-                        p.protection.suspended = true;
-                        p.food_delay = true;
+                        if !native {
+                            p.protection.delay(cycles);
+                            p.protection.suspended = true;
+                            p.food_delay = true;
+                        }
                     }
                     self.events.push(WorldEvent::Potion { actor: id, event });
                 }
@@ -2131,6 +2148,13 @@ impl World {
                 let food = &self.foods[&item.unwrap().id];
                 let adjusted=match self.food_healing.get(&food.id){Some(rule)=>Some(crate::food::Edible{heal:rule.amount(p.data.stats.base(3) as u8).map_err(|_|ActionError::InvalidStat)?,..food.clone()}),None=>None};
                 let food=adjusted.as_ref().unwrap_or(food);
+                let plan = if let Some(rules) = &self.consumable_rules {
+                    let policy = *rules.foods.get(&food.id).ok_or(ActionError::InvalidItem)?;
+                    if policy.kind == crate::consumable_clocks::Kind::Potion || policy.consume_delay != food.delay
+                        || (policy.members && !p.member) { return Err(ActionError::InvalidItem); }
+                    Some(p.consumables.plan(self.clock.0,policy,p.action_delay)
+                        .map_err(|e| if e == crate::consumable_clocks::Error::Delayed {ActionError::Delayed} else {ActionError::InvalidItem})?)
+                } else { None };
 
                 let mut emitted = Vec::new();
                 let selected = self.slot_preserving_foods.contains(&food.id);
@@ -2160,8 +2184,9 @@ impl World {
                         &self.object_types,3,self.eating_animation,boosts,|event|emitted.push(event))
                 }.map_err(|_| ActionError::InvalidStat)?;
                 if !eaten {return Err(ActionError::InvalidItem);}
+                if let Some(plan) = plan { p.consumables=plan.state; p.action_delay=plan.action_delay; }
                 if energy_after!=p.data.energy {p.data.energy=energy_after;emitted.push(crate::food::Event::Energy(energy_after));}
-                if eaten && selected {
+                if eaten && (selected || plan.is_some()) {
                     self.events.push(WorldEvent::FoodTransition {
                         actor: id,
                         trace: crate::food::Transition {
@@ -2174,6 +2199,7 @@ impl World {
                             fine_xp_before,
                             fine_xp_after: p.data.stats.fine_xp(3),
                             configured_delay: food.delay,
+                            attack_delay: plan.map(|_| p.consumables.remaining_attack_delay(self.clock.0,p.action_delay)),
                         },
                     });
                 }
@@ -2185,9 +2211,11 @@ impl World {
                         )?;
                     }
                     if let crate::food::Event::Delay(cycles) = event {
-                        p.protection.delay(cycles);
-                        p.protection.suspended = true;
-                        p.food_delay = true;
+                        if plan.is_none() {
+                            p.protection.delay(cycles);
+                            p.protection.suspended = true;
+                            p.food_delay = true;
+                        }
                     }
                     self.events.push(WorldEvent::Food { actor: id, event });
                 }
@@ -2684,6 +2712,7 @@ impl World {
                                                 Deferred::PlayerDeath => {
                                                     if !p.death_queued {
                                                         p.death_queued = true;
+                                                        p.consumables = Default::default();
                                                         self.events.push(
                                                             WorldEvent::DeathRequested(
                                                                 crate::hits::Target::Player(p.id),
@@ -2902,6 +2931,7 @@ impl World {
                                 self.events.push(WorldEvent::Hit { target, impact });
                                 if impact.death && !p.death_queued {
                                     p.death_queued = true;
+                                                        p.consumables = Default::default();
                                     self.events.push(WorldEvent::DeathRequested(target));
                                 }
                             }
@@ -3110,6 +3140,7 @@ impl World {
                             retaliate_npcs: Default::default(),
                             combat_decimal: 0,
                             action_delay: 0,
+                            consumables: Default::default(),
                             id,
                             data,
                             movement,

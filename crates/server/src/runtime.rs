@@ -461,6 +461,7 @@ impl<B: AccountBackend> Runtime<B> {
         self.held_component = Some(component);
         self.world.member_foods=foods.keys().filter(|id|self.definitions.items.get(&(**id as u32)).is_some_and(|item|item.members)).copied().collect();
         self.world.foods = foods;
+        self.world.consumable_rules = None;
         self.world.slot_preserving_foods.clear();
         self.world.food_boosts.clear();
         self.world.food_subtractions.clear();
@@ -490,6 +491,7 @@ impl<B: AccountBackend> Runtime<B> {
             }
         }
         self.world.potions = potions;
+        self.world.consumable_rules = None;
         Ok(())
     }
     pub fn configure_equipment(

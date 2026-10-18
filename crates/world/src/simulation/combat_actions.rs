@@ -88,7 +88,8 @@ impl World {
         Ok((attack, selected.spell))
     }
     pub fn is_attack_delayed(&self, actor: ActorId) -> Result<bool, ActionError> {
-        Ok(self.player(actor)?.action_delay > self.clock.0)
+        let p = self.player(actor)?;
+        Ok(if self.consumable_rules.is_some() { p.consumables.effective_attack_delay(p.action_delay) } else { p.action_delay } > self.clock.0)
     }
     pub fn set_next_attack_delay(
         &mut self,
@@ -96,10 +97,12 @@ impl World {
         cycles: i32,
     ) -> Result<(), ActionError> {
         self.player(actor)?;
-        self.players
-            .get_mut(actor.slot as usize)
-            .unwrap()
-            .action_delay = self.clock.0.wrapping_add(cycles);
+        let next = if self.consumable_rules.is_some() {
+            if cycles < 0 { return Err(ActionError::InvalidItem); }
+            self.clock.0.checked_add(cycles).ok_or(ActionError::InvalidItem)?
+        } else { self.clock.0.wrapping_add(cycles) };
+        let p = self.players.get_mut(actor.slot as usize).unwrap();
+        p.action_delay = if self.consumable_rules.is_some() { p.consumables.effective_attack_delay(next) } else { next };
         Ok(())
     }
     /// Trusted content only: damage comes from the combat roll, never a client

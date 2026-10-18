@@ -407,6 +407,7 @@ pub struct Transition {
     pub fine_xp_before: i32,
     pub fine_xp_after: i32,
     pub configured_delay: i32,
+    pub attack_delay: Option<i32>,
 }
 impl Transition {
     pub fn json(&self, actor: crate::simulation::ActorId) -> String {
@@ -415,10 +416,11 @@ impl Transition {
             concat!("{{\"schema\":1,\"actor_slot\":{},\"actor_generation\":{},\"tick\":{},",
                 "\"policy\":\"selected_slot\",\"result\":\"committed\",\"slot\":{},",
                 "\"before\":{},\"after\":{},\"hp_before\":{},\"hp_after\":{},",
-                "\"fine_xp_before\":{},\"fine_xp_after\":{},\"configured_delay\":{},\"attack_delay\":null}}"),
+                "\"fine_xp_before\":{},\"fine_xp_after\":{},\"configured_delay\":{},\"attack_delay\":{}}}"),
             actor.slot, actor.generation, self.tick, self.slot, item(self.before),
             self.after.map(item).unwrap_or_else(|| "null".into()), self.hp_before,
-            self.hp_after, self.fine_xp_before, self.fine_xp_after, self.configured_delay
+            self.hp_after, self.fine_xp_before, self.fine_xp_after, self.configured_delay,
+            self.attack_delay.map(|n| n.to_string()).unwrap_or_else(|| "null".into())
         )
     }
 }

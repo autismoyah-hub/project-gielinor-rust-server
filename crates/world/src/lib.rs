@@ -28,6 +28,7 @@ pub mod engine_queues;
 pub mod entities;
 pub mod equipment;
 pub mod facing;
+pub mod consumable_clocks;
 pub mod food;
 pub mod gameframe;
 pub mod ground;
