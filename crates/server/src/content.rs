@@ -1,4 +1,6 @@
 //! Resolve content's symbolic references against the same immutable type inputs as Kotlin.
+mod cooked_karambwan;
+pub use cooked_karambwan::cooked_karambwan;
 mod gnome_food;
 pub use gnome_food::gnome_food;
 mod giant_crab_food;
