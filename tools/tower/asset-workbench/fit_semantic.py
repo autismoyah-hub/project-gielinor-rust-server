@@ -48,7 +48,12 @@ def build(kind,report):
         base=mat['hsl'];h,s,l=base>>10,(base>>7)&7,base&127
         def distance(code):
             hh,ss,ll=code>>10,(code>>7)&7,code&127;dh=min(abs(h-hh),64-abs(h-hh));return dh*(.25 if s<2 else 1)+abs(s-ss)*4+abs(l-ll)*.18
-        target=min(codes,key=distance)
+        candidates=codes
+        if mat['family']=='wood':
+            warm=[c for c in codes if ((c>>7)&7)>=2 and min(abs((c>>10)-8),64-abs((c>>10)-8))<=12]
+            if warm:candidates=warm
+        if mat['family']=='organic'and mat.get('subtype')!='keratin':target=max(codes,key=lambda c:float(palette[str(c)]))
+        else:target=min(candidates,key=distance)
         if mat['family']=='bronze':target=max((c for c in codes if ((c>>7)&7)>=3),key=lambda c:c&127,default=target)
         if mat['family']=='wood'and report.get('texture_statistics'):target=report['texture_statistics'][0]['nearest_unlit_native_palette_code']
         old=mat['hsl'];mat['hsl']=target

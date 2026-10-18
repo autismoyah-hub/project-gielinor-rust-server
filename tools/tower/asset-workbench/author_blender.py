@@ -29,6 +29,7 @@ def actions(recipe,g,out,reopen=False):
     control=bpy.data.objects.get('Native action controls')or bpy.data.objects.new('Native action controls',None)
     if control.name not in bpy.context.collection.objects:bpy.context.collection.objects.link(control)
     control.animation_data_create();rig=recipe['rig']
+    authored_actions=set()
     for ai,(name,spec)in enumerate(recipe.get('actions',{}).items()):
         if not reopen and bpy.data.actions.get(name):
             old=bpy.data.actions[name]
@@ -39,7 +40,18 @@ def actions(recipe,g,out,reopen=False):
         action.use_fake_user=True;control.animation_data.action=action
         for joint in rig:control[joint['name']]=[0.,0.,0.]
         control['root_translation']=[0.,0.,0.]
-        for key in ([]if reopen else spec['keys']):
+        authored_keys=spec.get('keys',[])
+        if spec.get('bridge_controls')and not reopen:
+            authored_keys=[]
+            for endpoint,frame_tick in [('source',0),('destination',spec['duration_ticks']-spec.get('cadence_ticks',2))]:
+                source=spec['bridge_controls'][endpoint];source_action=bpy.data.actions.get(source)
+                if source_action is None or source not in authored_actions:raise ValueError('Bridge source action must be authored first: '+source)
+                control.animation_data.action=source_action;bpy.context.scene.frame_set(1);channels={j['name']:list(control[j['name']])for j in rig};translation=list(map(round,control['root_translation']))
+                if recipe['actions'][source].get('grounded'):
+                    _,posed,_=compile_joints(g,rig,channels,translation);translation[1]-=max(v[1]for v in posed)
+                authored_keys.append(dict(tick=frame_tick,channels=channels,translation=translation))
+            control.animation_data.action=action
+        for key in ([]if reopen else authored_keys):
             for joint in rig:
                 control[joint['name']]=list(map(float,key.get('channels',{}).get(joint['name'],[0]*3)));control.keyframe_insert(data_path=f'["{joint["name"]}"]',frame=key['tick']+1,group=joint['name'])
             control['root_translation']=list(map(float,key.get('translation',[0]*3)));control.keyframe_insert(data_path='["root_translation"]',frame=key['tick']+1)
@@ -86,6 +98,7 @@ def actions(recipe,g,out,reopen=False):
             last=copy.deepcopy(frames[-1]);last['index']=len(frames);last['length']=spec['terminal_pose_hold'];frames.append(last)
         data=dict(skeleton_id=recipe.get('skeleton_base',64500)+ai,frame_group=recipe.get('frame_group_base',62000)+ai,frames=frames,policy=dict(loop_frames=len(frames)if spec.get('loop')else -1,priority=spec.get('priority',5),max_loops=99,interleave=spec.get('interleave',[])))
         classic(data,out/name);(out/name/'animation.json').write_text(json.dumps(data));action['native_policy']=json.dumps(data['policy']);action['duration_ticks']=duration;action['native_rig']=json.dumps(rig)
+        authored_actions.add(name)
 def main():
     p=argparse.ArgumentParser();p.add_argument('recipe',type=Path);p.add_argument('output',type=Path);p.add_argument('--palette',type=Path);p.add_argument('--reopen',action='store_true');p.add_argument('--replace-actions',action='store_true');a=p.parse_args(sys.argv[sys.argv.index('--')+1:]);recipe=json.loads(a.recipe.read_text());a.output=a.output.resolve();a.output.mkdir(parents=True,exist_ok=True);palette=json.loads(a.palette.read_text())if a.palette else None
     if not a.reopen:build(recipe,palette)

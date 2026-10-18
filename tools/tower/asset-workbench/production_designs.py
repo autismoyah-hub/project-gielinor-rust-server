@@ -52,7 +52,7 @@ def kilnback():
         c += [part('eye_'+label,'beam','eye',1,start=[side*15,-34,-73],end=[side*17,-35,-77],radii=[3,3],sides=5),part('mandible_'+label,'sweep','bronze',group,role='mandible',sections=[[side*14,-22,-73,5,4],[side*25,-16,-88,4,3],[side*15,-15,-96,1,1]],normal=[0,1,0],sides=5),part('feeler_'+label,'sweep','organic',1,sections=[[side*11,-42,-67,2,2],[side*23,-53,-79,2,2],[side*32,-52,-92,1,1]],normal=[0,1,0],sides=4)]
         rig.append(dict(name='mandible_'+label,parent='head',origin=mouth,groups=[group]))
     c.append(part('tail','sweep','bronze',20,sections=[[0,-31,55,7,6],[0,-21,68,5,4],[0,-13,75,1,1]],normal=[1,0,0],sides=6));rig.append(dict(name='tail',parent='body',origin=[0,-31,55],groups=[20]))
-    gait=dict(kind='alternating_tripod',limbs=legs,stride=30,lift=10,stance_fraction=.62,crouch=3,cycle_ticks=48);actions=basic_actions('body','head',gait)
+    gait=dict(kind='alternating_tripod',limbs=legs,stride=30,lift=10,stance_fraction=.62,crouch=3,cycle_ticks=48,support_surface_iterations=2);actions=basic_actions('body','head',gait)
     for name,spec in actions.items():
         if name in ['idle','attack','hit']:spec['grounded']=True
         spec['events']={'attack':dict(anticipation=[0,12],execution=[12,22],recovery=[22,42]),'death':dict(collapse=[0,61],final_state=[61,174])}.get(name,{})
@@ -66,6 +66,7 @@ def kilnback():
                 pulse=max(0,1-abs(t-.25)/.25);key['channels']['body']=[0,0,round(pulse*7)];key['translation'][2]=round(pulse*5)
             if name=='death':
                 for limb in legs:key['channels'][limb['name']+'_knee']=[0,0,round((-1 if limb['tip'][0]>0 else 1)*min(t/.72,1)*34)]
+    actions['walk_entry']=dict(duration_ticks=8,cadence_ticks=2,loop=False,keys=[],bridge_controls=dict(source='idle',destination='walk'),interpolation='LINEAR')
     r=asset('Kilnback rummager · articulated revision',c,rig=rig,actions=actions,locomotion=gait);r['materials']['organic'].update(hsl=10264,shadow=10257,end=10273,edge=10269);r['materials']['eye']=dict(hsl=7106,render_type=1)
     return provenance(r,'A low six-legged foundry scavenger with overlapping ceramic plates, articulated feet, curved mouthparts and an actual neck transition. Alternating tripod support, readable jaw attack and a persistent collapsed corpse are authored through native classic controls.')
 

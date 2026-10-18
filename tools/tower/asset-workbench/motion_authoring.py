@@ -78,6 +78,15 @@ def gait_controls(g,rig,channels,translation,spec,tick):
             u=(phase-stance)/(1-stance);target[2]+=stride*(.5-(u*u*(3-2*u)));lift=gait['lift']*math.sin(math.pi*u)
         target[1]-=lift;target=list(map(round,target));channels,error=solve_limb(rig,channels,limb,target,translation);targets.append(dict(limb=limb['name'],target=target,endpoint_error_native=error,stance=phase<stance))
     frame,posed,origins=compile_joints(g,rig,channels,translation)
+    # Optional support-surface correction measures the actual authored pad mesh,
+    # not just the abstract ankle point. It is opt-in to preserve earlier recipes.
+    for _ in range(gait.get('support_surface_iterations',0)):
+        for limb,record in zip(gait['limbs'],targets):
+            if not record['stance']:continue
+            ids=[v for name in limb['components']for v in g['components'][name]['vertices']];height=max(posed[v][1]for v in ids)
+            if abs(height)<=1:continue
+            record['target'][1]-=height;channels,error=solve_limb(rig,channels,limb,record['target'],translation);record['endpoint_error_native']=error
+            frame,posed,origins=compile_joints(g,rig,channels,translation)
     if active:
         ids=[v for name in active for v in g['components'][name]['vertices']];translation[1]-=max(posed[v][1]for v in ids)
     return channels,translation,targets

@@ -93,12 +93,17 @@ def anvil(width=122,height=64,depth=38):
     c=[part('pedestal','loft','metal',sections=[[0,0,0,width*.4,depth*.48],[0,-height*.14,0,width*.4,depth*.48],[0,-height*.3,0,width*.2,depth*.3],[0,-height*.63,0,width*.25,depth*.4],[0,-height*.78,0,width*.34,depth*.47]],sides=4,outline=[[-1,-1],[1,-1],[1,1],[-1,1]]),part('face','stone_block','metal',center=[-width*.09,-height*.88,0],size=[width*.62,height*.25,depth],bevel=2),part('horn','sweep','metal',sections=[[width*.2,-height*.85,0,depth*.42,depth*.34],[width*.35,-height*.85,0,depth*.29,depth*.22],[width*.51,-height*.87,0,1,1]],normal=[0,1,0],sides=6),part('heel','stone_block','metal',center=[-width*.45,-height*.86,0],size=[width*.13,height*.27,depth*.86],bevel=2)]
     return asset('Forged component anvil',c)
 
-def bench(width=150,height=70,depth=65):
-    c=[plank('seat_'+str(i),[0,-height,(i-1)*depth*.27],[width,7,depth*.26],axis=0,variation=i-1)for i in range(3)]
+def bench(width=150,height=70,depth=65,backrest=True,seat_height_ratio=.64):
+    seat=height*seat_height_ratio if backrest else height
+    c=[plank('seat_'+str(i),[0,-seat,(i-1)*depth*.27],[width,7,depth*.26],axis=0,variation=i-1)for i in range(3)]
     for x in [-width*.34,width*.34]:
-        c.append(plank('trestle_'+str(x),[x,-height*.5,0],[12,height,depth*.8]))
+        c.append(plank('trestle_'+str(x),[x,-seat*.5,0],[12,seat,depth*.8]))
         c.append(plank('foot_'+str(x),[x,-5,0],[20,9,depth*.9],axis=2))
-    c.append(plank('stretcher',[0,-height*.35,0],[width*.7,9,9],axis=0));return asset('Trestle bench',c)
+    c.append(plank('stretcher',[0,-seat*.35,0],[width*.7,9,9],axis=0))
+    if backrest:
+        for side in [-1,1]:c.append(plank('back_post_'+str(side),[side*width*.4,-(height+seat)/2,depth*.38],[8,height-seat+10,8]))
+        for i in range(2):c.append(plank('back_rail_'+str(i),[0,-height+5+i*(height-seat)*.5,depth*.38],[width,7,7],axis=0))
+    return asset('Joined bench with authored backrest',c)
 
 def chest(width=110,height=85,depth=70):
     r=crate(width,height*.65,depth);r['name']='Banded coopered chest';c=r['components'];cy=-height*.65;radius=depth/2

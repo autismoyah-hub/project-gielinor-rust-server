@@ -57,4 +57,8 @@ class Contracts(unittest.TestCase):
         with owned_temporary()as tmp:
             allocator=IdentityAllocator(Path(tmp)/'ids.json',{});allocator.allocate('prop',False)
             with self.assertRaises(ValueError):allocator.allocate('prop',True)
+    def test_reused_identity_is_rechecked_against_source_bounds(self):
+        with owned_temporary()as tmp:
+            path=Path(tmp)/'ids.json';allocator=IdentityAllocator(path,dict(model_max=61605,object_max=62200));allocator.allocate('prop',False);data=json.loads(path.read_text());data['assets']['prop']['model_id']=42;path.write_text(json.dumps(data))
+            with self.assertRaises(ValueError):IdentityAllocator(path,dict(model_max=61605,object_max=62200)).allocate('prop',False)
 if __name__=='__main__':unittest.main()

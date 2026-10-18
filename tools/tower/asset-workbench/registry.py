@@ -9,6 +9,8 @@ class IdentityAllocator:
         if key in self.data['assets']:
             row=self.data['assets'][key]
             require(not animated or row.get('npc_id')is not None,'Static identity cannot silently become animated; allocate an explicit new variant key')
+            for field,source in [('model_id','model_max'),('object_id','object_max'),('npc_id','npc_max'),('sequence_base','sequence_max'),('skeleton_base','skeleton_max'),('frame_group_base','frame_group_max')]:
+                if source in self.bounds and row.get(field)is not None:require(row[field]>self.bounds[source],'Reused identity collides with original '+field)
             return row
         n=len(self.data['assets']);actors=sum(old.get('npc_id')is not None for old in self.data['assets'].values());row=dict(model_id=1101500+n,object_id=63400+n,npc_id=60020+actors if animated else None,sequence_base=45000+actors*8 if animated else None,skeleton_base=32000+actors*8 if animated else None,frame_group_base=40000+actors*8 if animated else None)
         require(row['object_id']<=64999,'custom object namespace exhausted; do not wrap IDs')
