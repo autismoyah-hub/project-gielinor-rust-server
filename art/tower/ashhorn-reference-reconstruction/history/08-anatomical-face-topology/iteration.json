@@ -1,0 +1,12 @@
+{
+  "phase": 8,
+  "label": "08-anatomical-face-topology",
+  "started_utc": "2026-10-18T18:54:35.456397+00:00",
+  "finished_utc": "2026-10-18T18:54:45.771306+00:00",
+  "blender_seconds": 6.459556199988583,
+  "native_seconds": 3.8552688999916427,
+  "vertices": 3605,
+  "triangles": 6663,
+  "native_model_sha256": "220dee510b6d7fbeb263ee19fe34bf2001576c9034240248d3a17e70b37f4ca3",
+  "constraint_sha256": "8239eb52359087fbfb38998e68aa27e105b2c427c7fe0f6d375b222d53b61c59"
+}

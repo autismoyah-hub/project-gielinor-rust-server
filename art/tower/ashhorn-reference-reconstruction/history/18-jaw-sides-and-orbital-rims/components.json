@@ -1,0 +1,320 @@
+[
+  {
+    "name": "continuous_anatomy",
+    "semantic": "skin_ribcage_waist_pelvis",
+    "vertices": 1852,
+    "faces": 3700
+  },
+  {
+    "name": "fore_paw_1",
+    "semantic": "fore_paw_1",
+    "vertices": 36,
+    "faces": 68
+  },
+  {
+    "name": "fore_toe_1_-1",
+    "semantic": "fore_toe_1_-1",
+    "vertices": 36,
+    "faces": 68
+  },
+  {
+    "name": "fore_claw_1_-1",
+    "semantic": "fore_claw_1_-1",
+    "vertices": 20,
+    "faces": 36
+  },
+  {
+    "name": "fore_toe_1_0",
+    "semantic": "fore_toe_1_0",
+    "vertices": 36,
+    "faces": 68
+  },
+  {
+    "name": "fore_claw_1_0",
+    "semantic": "fore_claw_1_0",
+    "vertices": 20,
+    "faces": 36
+  },
+  {
+    "name": "fore_toe_1_1",
+    "semantic": "fore_toe_1_1",
+    "vertices": 36,
+    "faces": 68
+  },
+  {
+    "name": "fore_claw_1_1",
+    "semantic": "fore_claw_1_1",
+    "vertices": 20,
+    "faces": 36
+  },
+  {
+    "name": "hind_paw_1",
+    "semantic": "hind_paw_1",
+    "vertices": 36,
+    "faces": 68
+  },
+  {
+    "name": "hind_toe_1_-1",
+    "semantic": "hind_toe_1_-1",
+    "vertices": 36,
+    "faces": 68
+  },
+  {
+    "name": "hind_claw_1_-1",
+    "semantic": "hind_claw_1_-1",
+    "vertices": 20,
+    "faces": 36
+  },
+  {
+    "name": "hind_toe_1_0",
+    "semantic": "hind_toe_1_0",
+    "vertices": 36,
+    "faces": 68
+  },
+  {
+    "name": "hind_claw_1_0",
+    "semantic": "hind_claw_1_0",
+    "vertices": 20,
+    "faces": 36
+  },
+  {
+    "name": "hind_toe_1_1",
+    "semantic": "hind_toe_1_1",
+    "vertices": 36,
+    "faces": 68
+  },
+  {
+    "name": "hind_claw_1_1",
+    "semantic": "hind_claw_1_1",
+    "vertices": 20,
+    "faces": 36
+  },
+  {
+    "name": "fore_paw_-1",
+    "semantic": "fore_paw_-1",
+    "vertices": 36,
+    "faces": 68
+  },
+  {
+    "name": "fore_toe_-1_-1",
+    "semantic": "fore_toe_-1_-1",
+    "vertices": 36,
+    "faces": 68
+  },
+  {
+    "name": "fore_claw_-1_-1",
+    "semantic": "fore_claw_-1_-1",
+    "vertices": 20,
+    "faces": 36
+  },
+  {
+    "name": "fore_toe_-1_0",
+    "semantic": "fore_toe_-1_0",
+    "vertices": 36,
+    "faces": 68
+  },
+  {
+    "name": "fore_claw_-1_0",
+    "semantic": "fore_claw_-1_0",
+    "vertices": 20,
+    "faces": 36
+  },
+  {
+    "name": "fore_toe_-1_1",
+    "semantic": "fore_toe_-1_1",
+    "vertices": 36,
+    "faces": 68
+  },
+  {
+    "name": "fore_claw_-1_1",
+    "semantic": "fore_claw_-1_1",
+    "vertices": 20,
+    "faces": 36
+  },
+  {
+    "name": "hind_paw_-1",
+    "semantic": "hind_paw_-1",
+    "vertices": 36,
+    "faces": 68
+  },
+  {
+    "name": "hind_toe_-1_-1",
+    "semantic": "hind_toe_-1_-1",
+    "vertices": 36,
+    "faces": 68
+  },
+  {
+    "name": "hind_claw_-1_-1",
+    "semantic": "hind_claw_-1_-1",
+    "vertices": 20,
+    "faces": 36
+  },
+  {
+    "name": "hind_toe_-1_0",
+    "semantic": "hind_toe_-1_0",
+    "vertices": 36,
+    "faces": 68
+  },
+  {
+    "name": "hind_claw_-1_0",
+    "semantic": "hind_claw_-1_0",
+    "vertices": 20,
+    "faces": 36
+  },
+  {
+    "name": "hind_toe_-1_1",
+    "semantic": "hind_toe_-1_1",
+    "vertices": 36,
+    "faces": 68
+  },
+  {
+    "name": "hind_claw_-1_1",
+    "semantic": "hind_claw_-1_1",
+    "vertices": 20,
+    "faces": 36
+  },
+  {
+    "name": "folded_ear_-1",
+    "semantic": "folded_ear_-1",
+    "vertices": 6,
+    "faces": 8
+  },
+  {
+    "name": "folded_ear_1",
+    "semantic": "folded_ear_1",
+    "vertices": 6,
+    "faces": 8
+  },
+  {
+    "name": "long_swept_horn",
+    "semantic": "long_swept_horn",
+    "vertices": 156,
+    "faces": 308
+  },
+  {
+    "name": "broken_horn",
+    "semantic": "broken_horn",
+    "vertices": 33,
+    "faces": 62
+  },
+  {
+    "name": "jagged_fracture",
+    "semantic": "jagged_fracture",
+    "vertices": 12,
+    "faces": 11
+  },
+  {
+    "name": "eye_iris_graph_n",
+    "semantic": "eye_iris_graph_n",
+    "vertices": 86,
+    "faces": 168
+  },
+  {
+    "name": "eye_pupil_graph_n",
+    "semantic": "eye_pupil_graph_n",
+    "vertices": 42,
+    "faces": 80
+  },
+  {
+    "name": "nostril_graph_n",
+    "semantic": "nostril_graph_n",
+    "vertices": 4,
+    "faces": 2
+  },
+  {
+    "name": "eye_iris_graph_p",
+    "semantic": "eye_iris_graph_p",
+    "vertices": 86,
+    "faces": 168
+  },
+  {
+    "name": "eye_pupil_graph_p",
+    "semantic": "eye_pupil_graph_p",
+    "vertices": 42,
+    "faces": 80
+  },
+  {
+    "name": "nostril_graph_p",
+    "semantic": "nostril_graph_p",
+    "vertices": 4,
+    "faces": 2
+  },
+  {
+    "name": "reference_locked_cranial_topology",
+    "semantic": "Measured forehead, integrated orbital cups, nasal bridge, muzzle, zygomatic and mandibular planes",
+    "vertices": 52,
+    "faces": 100
+  },
+  {
+    "name": "angular_mandible",
+    "semantic": "angular_mandible",
+    "vertices": 32,
+    "faces": 60
+  },
+  {
+    "name": "mouth_seam",
+    "semantic": "mouth_seam",
+    "vertices": 16,
+    "faces": 28
+  },
+  {
+    "name": "sweeping_tail",
+    "semantic": "sweeping_tail",
+    "vertices": 204,
+    "faces": 404
+  },
+  {
+    "name": "dorsal_shingle_0",
+    "semantic": "dorsal_shingle_0",
+    "vertices": 98,
+    "faces": 192
+  },
+  {
+    "name": "dorsal_shingle_1",
+    "semantic": "dorsal_shingle_1",
+    "vertices": 98,
+    "faces": 192
+  },
+  {
+    "name": "dorsal_shingle_2",
+    "semantic": "dorsal_shingle_2",
+    "vertices": 98,
+    "faces": 192
+  },
+  {
+    "name": "dorsal_shingle_3",
+    "semantic": "dorsal_shingle_3",
+    "vertices": 98,
+    "faces": 192
+  },
+  {
+    "name": "dorsal_shingle_4",
+    "semantic": "dorsal_shingle_4",
+    "vertices": 98,
+    "faces": 192
+  },
+  {
+    "name": "shoulder_shingle_upper_-1",
+    "semantic": "shoulder_shingle_upper_-1",
+    "vertices": 98,
+    "faces": 192
+  },
+  {
+    "name": "shoulder_shingle_lower_-1",
+    "semantic": "shoulder_shingle_lower_-1",
+    "vertices": 98,
+    "faces": 192
+  },
+  {
+    "name": "shoulder_shingle_upper_1",
+    "semantic": "shoulder_shingle_upper_1",
+    "vertices": 98,
+    "faces": 192
+  },
+  {
+    "name": "shoulder_shingle_lower_1",
+    "semantic": "shoulder_shingle_lower_1",
+    "vertices": 98,
+    "faces": 192
+  }
+]

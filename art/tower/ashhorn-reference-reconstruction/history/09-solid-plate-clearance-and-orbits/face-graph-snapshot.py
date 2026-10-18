@@ -1,0 +1,56 @@
+"""Explicit anatomical facial topology authored from the existing illustration.
+
+Named cranial, brow, orbital, nasal, cheek and mandibular planes replace the
+generic longitudinal head cage. No imported mesh or image billboard.
+"""
+import json
+import bpy
+from mathutils import Vector
+from mesh_tools import ellipsoid
+import surface as s
+def create(mats):
+    s.remove('^cranial_planes$|^angular_mandible$|^mouth_seam$|^orbital_recess_|^eye_iris_|^eye_pupil_|^nostril_')
+    skin=mats['hide'].copy();skin['native_flat']=True
+    v=[];names={};faces=[];material_indices=[]
+    def point(name,p):names[name]=len(v);v.append(tuple(p))
+    def face(seq,mat=0):faces.append(tuple(names[x]for x in seq));material_indices.append(mat)
+    for name,p in {'crown':(0,-96,144),'forehead':(0,-116,135),'bridge_top':(0,-128,127),'bridge_low':(0,-141,118),'nose_tip':(0,-147,111),'mouth':(0,-145,104),'occiput':(0,-82,130),'throat':(0,-88,110)}.items():point(name,p)
+    control={'temple':(22,-99,136),'brow_outer':(21,-116,132),'brow_inner':(7,-126,128),'orbit_outer_low':(22,-117,126),'orbit_lower':(17,-122,123),'orbit_inner_low':(8,-126,122),'cheek':(24,-113,119),'cheek_low':(18,-119,110),'jaw_corner':(18,-103,107),'nasal_edge':(8,-140,118),'nose_corner':(12,-146,112),'muzzle_corner':(14,-141,106),'mouth_end':(10,-145,104),'neck_side':(17,-84,120)}
+    for side in [-1,1]:
+        tag='p'if side>0 else'n'
+        for name,(x,y,z)in control.items():point(name+tag,(side*x,y,z))
+        def q(*seq,mat=0):
+            resolved=[x if x in names else x+tag for x in seq]
+            face(resolved if side>0 else list(reversed(resolved)),mat)
+        q('crown','forehead','brow_inner','brow_outer','temple')
+        q('crown','temple','neck_side','occiput')
+        q('forehead','bridge_top','brow_inner')
+        q('bridge_top','brow_inner','orbit_inner_low','nasal_edge','bridge_low')
+        q('brow_outer','temple','cheek','orbit_outer_low')
+        q('orbit_outer_low','cheek','orbit_lower')
+        q('orbit_inner_low','orbit_lower','cheek','cheek_low','muzzle_corner','nasal_edge')
+        q('temple','neck_side','jaw_corner','cheek_low','cheek')
+        q('cheek_low','jaw_corner','muzzle_corner')
+        q('nasal_edge','muzzle_corner','nose_corner')
+        q('bridge_low','nasal_edge','nose_corner','nose_tip')
+        q('nose_tip','nose_corner','muzzle_corner','mouth_end','mouth')
+        q('mouth','mouth_end','muzzle_corner','jaw_corner','throat')
+        q('occiput','neck_side','jaw_corner','throat')
+        # A closed five-sided orbital cup. Its rim is part of the head topology.
+        ring=['brow_inner','brow_outer','orbit_outer_low','orbit_lower','orbit_inner_low'];center=Vector((side*14,-121.8,126))
+        inner=[]
+        for i,name in enumerate(ring):
+            p=Vector(v[names[name+tag]]);p=center+(p-center)*.76+Vector((0,2,-.3));name2=f'cup_{tag}_{i}';point(name2,p);inner.append(name2)
+        center_name='cup_center_'+tag;point(center_name,center+Vector((0,4,-.5)))
+        for i in range(5):
+            rr=[ring[i]+tag,ring[(i+1)%5]+tag,inner[(i+1)%5],inner[i]];face(rr if side>0 else list(reversed(rr)),1);face([inner[i],inner[(i+1)%5],center_name]if side>0 else[center_name,inner[(i+1)%5],inner[i]],1)
+        ellipsoid('eye_iris_graph_'+tag,[side*14.1,-122.2,126],[2.7,2.0,2.3],mats['eye'],segments=12,rings=8)
+        ellipsoid('eye_pupil_graph_'+tag,[side*14.1,-124,126.1],[.65,.65,1.2],mats['dark'],segments=8,rings=6)
+        s.mesh('nostril_graph_'+tag,[(side*8,-145.6,116),(side*5,-146.7,115),(side*4,-146.8,112)],[(0,1,2)]if side>0 else[(2,1,0)],mats['dark'])
+    o=s.mesh('reference_locked_cranial_topology',v,faces,skin);o.data.materials.append(mats['dark'])
+    for p,mi in zip(o.data.polygons,material_indices):p.material_index=mi
+    o['semantic_component']='Measured forehead, integrated orbital cups, nasal bridge, muzzle, zygomatic and mandibular planes';o['named_control_vertices']=json.dumps(names)
+    jaw=mats['ventral'].copy();jaw['native_flat']=True
+    s.loft('angular_mandible',[[-142,7.5,98,103],[-129,13,100,107],[-111,17,105,112],[-97,12,109,116]],jaw,section='cranium')
+    s.loft('mouth_seam',[[-144,8.5,103,104],[-132,12,105.5,107]],mats['dark'],section='cranium')
+    return {'control_names':names,'vertices':len(v),'polygons':len(faces),'method':'Explicit independently authored facial surface graph and closed orbital cups'}

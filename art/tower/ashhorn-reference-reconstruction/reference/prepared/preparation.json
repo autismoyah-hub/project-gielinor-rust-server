@@ -1,0 +1,103 @@
+{
+  "canonical_sha256": "641deae27cb342fba8e5e15f5e51d795a866cb5dff8b637c7d1012afdf17f105",
+  "highest_available_original_resolution": [
+    1536,
+    1024
+  ],
+  "operation": "Exact pixel crops; robust quadratic background estimate, silhouette connected-component extraction and alpha removal of disconnected labels/dividers. No RGB repainting, stretching, generative repair or upscaling.",
+  "accuracy": "Silhouette masks are estimates requiring visual inspection, not exact ground truth. Antialiased edges and contact shadows carry uncertainty.",
+  "panels": {
+    "front": {
+      "original_panel": [
+        0,
+        0,
+        584,
+        512
+      ],
+      "modeling_crop": [
+        78,
+        7,
+        470,
+        501
+      ],
+      "size": [
+        392,
+        494
+      ],
+      "ground_y_panel_pixels": 493,
+      "silhouette_pixels": 109697,
+      "background_fit_samples": 18785,
+      "mask_threshold_rgb_distance": 23,
+      "rgb_pixels_unchanged": true
+    },
+    "left": {
+      "original_panel": [
+        584,
+        0,
+        1536,
+        512
+      ],
+      "modeling_crop": [
+        30,
+        17,
+        941,
+        502
+      ],
+      "size": [
+        911,
+        485
+      ],
+      "ground_y_panel_pixels": 490,
+      "silhouette_pixels": 172120,
+      "background_fit_samples": 31873,
+      "mask_threshold_rgb_distance": 23,
+      "rgb_pixels_unchanged": true
+    },
+    "rear": {
+      "original_panel": [
+        0,
+        512,
+        584,
+        1024
+      ],
+      "modeling_crop": [
+        78,
+        7,
+        474,
+        482
+      ],
+      "size": [
+        396,
+        475
+      ],
+      "ground_y_panel_pixels": 470,
+      "silhouette_pixels": 107913,
+      "background_fit_samples": 16963,
+      "mask_threshold_rgb_distance": 23,
+      "rgb_pixels_unchanged": true
+    },
+    "quarter": {
+      "original_panel": [
+        584,
+        512,
+        1536,
+        1024
+      ],
+      "modeling_crop": [
+        125,
+        12,
+        943,
+        491
+      ],
+      "size": [
+        818,
+        479
+      ],
+      "ground_y_panel_pixels": 475,
+      "silhouette_pixels": 172615,
+      "background_fit_samples": 28712,
+      "mask_threshold_rgb_distance": 23,
+      "rgb_pixels_unchanged": true
+    }
+  }
+}

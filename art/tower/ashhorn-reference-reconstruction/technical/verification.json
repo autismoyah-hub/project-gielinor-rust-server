@@ -1,0 +1,418 @@
+{
+  "finished_utc": "2026-10-18T19:15:16.102250+00:00",
+  "selected": "18-jaw-sides-and-orbital-rims",
+  "model_sha256": "a27cb6dfb44d3e458eff41b21511be1eec88e1ecf1592b1576ae9033dd02a602",
+  "blend_sha256": "9f144002cda4dfbd4c6e822729af7434e50a6cefec866ed96784e9c175df6f94",
+  "preserved_baseline_files": 23,
+  "all_baseline_hashes_unchanged": true,
+  "other_workspaces_unchanged": {
+    "concept-ab-server": {
+      "head": "56af70ef03668fd6f429e0c3dd958bcdef7e8b40",
+      "status": ""
+    },
+    "constrained-server": {
+      "head": "8b85f19ce2d70988b0724f1d03e241c29a45daf6",
+      "status": ""
+    },
+    "enhanced-client": {
+      "head": "3049aa30268bc2c73da65536671dfcbb6ab429b6",
+      "status": ""
+    },
+    "rust-client-reference": {
+      "head": "23a94f75707f0503a9efe610fe99bfce5089b575",
+      "status": "M src/asset_package.rs\n M src/disk_cache.rs\n M src/scene.rs"
+    },
+    "rust-server": {
+      "head": "28db23a3498bfc54fa285765508a27b2cc07cf00",
+      "status": "M crates/cache/src/game.rs\n M crates/server/src/application.rs\n M crates/server/src/lib.rs\n M tools/tower/offline/render/src/bin/support/workbench_native.rs\n?? crates/server/src/mock_map.rs\n?? tools/tower/floor-one-visual/LIVE_MAP.md\n?? tools/tower/floor-one-visual/Start-LiveMap.ps1\n?? tools/tower/floor-one-visual/build_live_map.py\n?? tools/tower/offline/render/src/bin/floor_mock_client.rs\n?? tools/tower/offline/render/src/bin/stage_live_cache.rs"
+    }
+  },
+  "native_workbench_sha256": "f6e6e12da1a80f7824c9d90a5254964fdc8d738298417c7dcd51e0793caea7cf",
+  "camera_adapter_sha256": "d145298c77789bacd2b0290ef46b560da347a6c4cf07c92871d57c7f483c87d8",
+  "saved_source_reexport_byte_exact": true,
+  "fresh_generation_byte_exact": true,
+  "native_decode_exact": {
+    "vertices": true,
+    "faces": true,
+    "colors": true,
+    "render_types": true
+  },
+  "fresh_native_pixel_exact": {
+    "front": true,
+    "side": true,
+    "rear": true,
+    "quarter": true,
+    "above": true,
+    "gameplay": true,
+    "reference/front": true,
+    "reference/left": true,
+    "reference/rear": true,
+    "reference/quarter": true
+  },
+  "static_only_no_armature_or_actions": true,
+  "no_vertex_or_face_skins": true,
+  "source_image_texture_samples": 0,
+  "semantic_component_counts": {
+    "toes": 12,
+    "claws": 12,
+    "dorsal_plates": 5,
+    "shoulder_plates": 4
+  },
+  "topology": {
+    "vertices": 4331,
+    "triangles": 8037,
+    "degenerate_triangles": 0,
+    "boundary_edges": 443,
+    "nonmanifold_index_edges": 0,
+    "unique_positions": 4076,
+    "bounds": [
+      [
+        -72.0,
+        -149.0,
+        0.0
+      ],
+      [
+        75.0,
+        204.0,
+        176.0
+      ]
+    ]
+  },
+  "conversion": {
+    "components": [
+      {
+        "name": "continuous_anatomy",
+        "vertices": 1852,
+        "triangles": 3687,
+        "group": 0
+      },
+      {
+        "name": "fore_paw_1",
+        "vertices": 36,
+        "triangles": 68,
+        "group": 0
+      },
+      {
+        "name": "fore_toe_1_-1",
+        "vertices": 36,
+        "triangles": 68,
+        "group": 0
+      },
+      {
+        "name": "fore_claw_1_-1",
+        "vertices": 20,
+        "triangles": 30,
+        "group": 0
+      },
+      {
+        "name": "fore_toe_1_0",
+        "vertices": 36,
+        "triangles": 68,
+        "group": 0
+      },
+      {
+        "name": "fore_claw_1_0",
+        "vertices": 20,
+        "triangles": 32,
+        "group": 0
+      },
+      {
+        "name": "fore_toe_1_1",
+        "vertices": 36,
+        "triangles": 68,
+        "group": 0
+      },
+      {
+        "name": "fore_claw_1_1",
+        "vertices": 20,
+        "triangles": 30,
+        "group": 0
+      },
+      {
+        "name": "hind_paw_1",
+        "vertices": 36,
+        "triangles": 68,
+        "group": 0
+      },
+      {
+        "name": "hind_toe_1_-1",
+        "vertices": 36,
+        "triangles": 68,
+        "group": 0
+      },
+      {
+        "name": "hind_claw_1_-1",
+        "vertices": 20,
+        "triangles": 30,
+        "group": 0
+      },
+      {
+        "name": "hind_toe_1_0",
+        "vertices": 36,
+        "triangles": 68,
+        "group": 0
+      },
+      {
+        "name": "hind_claw_1_0",
+        "vertices": 20,
+        "triangles": 30,
+        "group": 0
+      },
+      {
+        "name": "hind_toe_1_1",
+        "vertices": 36,
+        "triangles": 68,
+        "group": 0
+      },
+      {
+        "name": "hind_claw_1_1",
+        "vertices": 20,
+        "triangles": 30,
+        "group": 0
+      },
+      {
+        "name": "fore_paw_-1",
+        "vertices": 36,
+        "triangles": 68,
+        "group": 0
+      },
+      {
+        "name": "fore_toe_-1_-1",
+        "vertices": 36,
+        "triangles": 68,
+        "group": 0
+      },
+      {
+        "name": "fore_claw_-1_-1",
+        "vertices": 20,
+        "triangles": 30,
+        "group": 0
+      },
+      {
+        "name": "fore_toe_-1_0",
+        "vertices": 36,
+        "triangles": 68,
+        "group": 0
+      },
+      {
+        "name": "fore_claw_-1_0",
+        "vertices": 20,
+        "triangles": 32,
+        "group": 0
+      },
+      {
+        "name": "fore_toe_-1_1",
+        "vertices": 36,
+        "triangles": 68,
+        "group": 0
+      },
+      {
+        "name": "fore_claw_-1_1",
+        "vertices": 20,
+        "triangles": 30,
+        "group": 0
+      },
+      {
+        "name": "hind_paw_-1",
+        "vertices": 36,
+        "triangles": 68,
+        "group": 0
+      },
+      {
+        "name": "hind_toe_-1_-1",
+        "vertices": 36,
+        "triangles": 68,
+        "group": 0
+      },
+      {
+        "name": "hind_claw_-1_-1",
+        "vertices": 20,
+        "triangles": 30,
+        "group": 0
+      },
+      {
+        "name": "hind_toe_-1_0",
+        "vertices": 36,
+        "triangles": 68,
+        "group": 0
+      },
+      {
+        "name": "hind_claw_-1_0",
+        "vertices": 20,
+        "triangles": 30,
+        "group": 0
+      },
+      {
+        "name": "hind_toe_-1_1",
+        "vertices": 36,
+        "triangles": 68,
+        "group": 0
+      },
+      {
+        "name": "hind_claw_-1_1",
+        "vertices": 20,
+        "triangles": 30,
+        "group": 0
+      },
+      {
+        "name": "folded_ear_-1",
+        "vertices": 6,
+        "triangles": 8,
+        "group": 0
+      },
+      {
+        "name": "folded_ear_1",
+        "vertices": 6,
+        "triangles": 8,
+        "group": 0
+      },
+      {
+        "name": "long_swept_horn",
+        "vertices": 156,
+        "triangles": 284,
+        "group": 0
+      },
+      {
+        "name": "broken_horn",
+        "vertices": 33,
+        "triangles": 62,
+        "group": 0
+      },
+      {
+        "name": "jagged_fracture",
+        "vertices": 12,
+        "triangles": 11,
+        "group": 0
+      },
+      {
+        "name": "eye_iris_graph_n",
+        "vertices": 86,
+        "triangles": 104,
+        "group": 0
+      },
+      {
+        "name": "eye_pupil_graph_n",
+        "vertices": 42,
+        "triangles": 18,
+        "group": 0
+      },
+      {
+        "name": "nostril_graph_n",
+        "vertices": 4,
+        "triangles": 2,
+        "group": 0
+      },
+      {
+        "name": "eye_iris_graph_p",
+        "vertices": 86,
+        "triangles": 104,
+        "group": 0
+      },
+      {
+        "name": "eye_pupil_graph_p",
+        "vertices": 42,
+        "triangles": 18,
+        "group": 0
+      },
+      {
+        "name": "nostril_graph_p",
+        "vertices": 4,
+        "triangles": 2,
+        "group": 0
+      },
+      {
+        "name": "reference_locked_cranial_topology",
+        "vertices": 52,
+        "triangles": 100,
+        "group": 0
+      },
+      {
+        "name": "angular_mandible",
+        "vertices": 32,
+        "triangles": 60,
+        "group": 0
+      },
+      {
+        "name": "mouth_seam",
+        "vertices": 16,
+        "triangles": 28,
+        "group": 0
+      },
+      {
+        "name": "sweeping_tail",
+        "vertices": 204,
+        "triangles": 394,
+        "group": 0
+      },
+      {
+        "name": "dorsal_shingle_0",
+        "vertices": 98,
+        "triangles": 192,
+        "group": 0
+      },
+      {
+        "name": "dorsal_shingle_1",
+        "vertices": 98,
+        "triangles": 191,
+        "group": 0
+      },
+      {
+        "name": "dorsal_shingle_2",
+        "vertices": 98,
+        "triangles": 192,
+        "group": 0
+      },
+      {
+        "name": "dorsal_shingle_3",
+        "vertices": 98,
+        "triangles": 192,
+        "group": 0
+      },
+      {
+        "name": "dorsal_shingle_4",
+        "vertices": 98,
+        "triangles": 190,
+        "group": 0
+      },
+      {
+        "name": "shoulder_shingle_upper_-1",
+        "vertices": 98,
+        "triangles": 182,
+        "group": 0
+      },
+      {
+        "name": "shoulder_shingle_lower_-1",
+        "vertices": 98,
+        "triangles": 190,
+        "group": 0
+      },
+      {
+        "name": "shoulder_shingle_upper_1",
+        "vertices": 98,
+        "triangles": 182,
+        "group": 0
+      },
+      {
+        "name": "shoulder_shingle_lower_1",
+        "vertices": 98,
+        "triangles": 184,
+        "group": 0
+      }
+    ],
+    "quantization_max_error": 0.5,
+    "collapsed_triangles": 400,
+    "uv_loops": 0,
+    "material_conversion": "UV image albedo sampled at triangle centroid, otherwise diffuse color; RGB to 6/3/7-bit HSL. No PBR/normal/roughness transfer.",
+    "texture_image_samples": 0,
+    "vertices": 4331,
+    "triangles": 8037,
+    "budget": {
+      "soft_vertices": 12000,
+      "soft_triangles": 20000
+    },
+    "coordinates": "X right, Y down, Z depth; 128 units/tile",
+    "face_priority": 0,
+    "alpha": 0
+  },
+  "interpretation": "Technical reproduction and codec integrity pass. Separate shells and quantized seams are reported, not asserted watertight. These checks do not establish artistic fidelity or approval."
+}

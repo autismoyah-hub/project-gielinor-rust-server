@@ -1,0 +1,31 @@
+{
+  "status": "Original static reconstruction study, ready for review; artistic fidelity not approved and no production integration.",
+  "selected": "18-jaw-sides-and-orbital-rims",
+  "preserved_candidates": 18,
+  "canonical_reference": "reference/original/turnaround-v2.png",
+  "improvements": [
+    "Broader reference-derived forequarter and paw envelope; the old numeric width is superseded.",
+    "Explicit cranial topology, oblique brow, closed orbital cups, nasal and cheek planes, a deeper lower jaw.",
+    "Backward-swept banded long horn on the illustrated side, fractured short horn, folded asymmetric ears.",
+    "Continuous anatomical torso/limbs, narrower sternum, differentiated forearms and bent knee/hock chains.",
+    "Five real dorsal shells and four shoulder shells with dense interior clearance and narrow worn rims.",
+    "Raised curved tail, underside color, twelve separate toes and twelve exposed curved claws."
+  ],
+  "remaining_gaps": [
+    "The face remains an angular approximation: forehead, cheek transition, socket shape and eye expression still fall short of the illustration.",
+    "Shoulder shields and dorsal shingles remain too regular and lack the reference's authored wear and local plane hierarchy.",
+    "Chest/limb color boundaries remain coarse; the full boundary-cut trial was rejected because native quantization introduced thin-triangle artifacts.",
+    "The reference's thigh/calf silhouette, paw weight and fine muscle planes are not fully reproduced.",
+    "A single coherent static stance cannot exactly match all four inconsistent drawings. Tail, rear legs and quarter-view perspective remain approximate.",
+    "Native export has 443 boundary edges and 400 collapsed source triangles, largely fine details/seams. No watertight or production-ready claim is made."
+  ],
+  "rejected_trials": {
+    "04": "Unrestricted projection mixed nearby tan, claw and plate colors into the hide.",
+    "06-08": "Sparse shell controls allowed shoulder surfaces to disappear into the body.",
+    "08": "Palette assignment erased the orbital cup's dark material; fixed in09.",
+    "14": "Global boundary cuts created sliver triangles and visible native shading artifacts; retained as a rejected experiment.",
+    "15": "Fresh-build triangle order varied after Blender tessellation;16 canonicalizes oriented face order without changing the surface."
+  },
+  "rendering": "Unchanged native renderer, ambient72/contrast850, light[-30,-50,-30], common cameras; no enhanced render, photo billboard or source image texture.",
+  "scope": "No animation, gameplay, NPC definition, live map, cache mutation or production content changes."
+}

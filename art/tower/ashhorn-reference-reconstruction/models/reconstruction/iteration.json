@@ -1,0 +1,12 @@
+{
+  "phase": 18,
+  "label": "18-jaw-sides-and-orbital-rims",
+  "started_utc": "2026-10-18T19:14:42.301066+00:00",
+  "finished_utc": "2026-10-18T19:14:52.294259+00:00",
+  "blender_seconds": 6.364414199983003,
+  "native_seconds": 3.628588600025978,
+  "vertices": 4331,
+  "triangles": 8037,
+  "native_model_sha256": "a27cb6dfb44d3e458eff41b21511be1eec88e1ecf1592b1576ae9033dd02a602",
+  "constraint_sha256": "8239eb52359087fbfb38998e68aa27e105b2c427c7fe0f6d375b222d53b61c59"
+}

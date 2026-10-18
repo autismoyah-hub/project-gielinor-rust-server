@@ -1,0 +1,12 @@
+{
+  "phase": 12,
+  "label": "12-faceted-rimmed-plates-and-hide-values",
+  "started_utc": "2026-10-18T19:02:46.928809+00:00",
+  "finished_utc": "2026-10-18T19:02:56.845257+00:00",
+  "blender_seconds": 6.381196900008945,
+  "native_seconds": 3.535184100008337,
+  "vertices": 4327,
+  "triangles": 8012,
+  "native_model_sha256": "61c49540c38b1fd13d9e7ca94611293f2d4ed8d059068f4f5b92dc29fbf8de48",
+  "constraint_sha256": "8239eb52359087fbfb38998e68aa27e105b2c427c7fe0f6d375b222d53b61c59"
+}

@@ -1,0 +1,12 @@
+{
+  "phase": 13,
+  "label": "13-sternum-and-digitigrade-chains",
+  "started_utc": "2026-10-18T19:03:47.969401+00:00",
+  "finished_utc": "2026-10-18T19:03:57.709808+00:00",
+  "blender_seconds": 6.17378219999955,
+  "native_seconds": 3.5665328000031877,
+  "vertices": 4327,
+  "triangles": 8029,
+  "native_model_sha256": "e0ca3505fe24d6da7c1a123b245aa51e8b24960b338d9f5215b03c4aa68b53a4",
+  "constraint_sha256": "8239eb52359087fbfb38998e68aa27e105b2c427c7fe0f6d375b222d53b61c59"
+}

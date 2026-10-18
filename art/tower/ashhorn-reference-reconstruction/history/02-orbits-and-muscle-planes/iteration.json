@@ -1,0 +1,12 @@
+{
+  "phase": 2,
+  "label": "02-orbits-and-muscle-planes",
+  "started_utc": "2026-10-18T18:41:24.261311+00:00",
+  "finished_utc": "2026-10-18T18:41:31.550551+00:00",
+  "blender_seconds": 3.6345988000102807,
+  "native_seconds": 3.654493599984562,
+  "vertices": 3962,
+  "triangles": 7373,
+  "native_model_sha256": "1a49b5bcc6e2479858d5845eff2a3ba8f975a839c932db2530f9f5c96097fdcc",
+  "constraint_sha256": "8239eb52359087fbfb38998e68aa27e105b2c427c7fe0f6d375b222d53b61c59"
+}

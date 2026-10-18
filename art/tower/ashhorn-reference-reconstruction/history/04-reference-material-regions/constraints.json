@@ -1,0 +1,2348 @@
+{
+  "coordinate_contract": "Native authoring units128/tile; X viewer-right in front (anatomical left), Y rearward, Z up; ground0; origin under torso. Drawn laterality overrides superseded numeric specification.",
+  "landmarks": {
+    "nose": [
+      0,
+      -141.76390382010126,
+      111.5148765072125
+    ],
+    "eye_pos": [
+      10.571809740862708,
+      -117.75979704077571,
+      125.12834222544717
+    ],
+    "eye_neg": [
+      -10.571809740862708,
+      -117.75979704077571,
+      125.12834222544717
+    ],
+    "jaw_pos": [
+      11.395376165468907,
+      -101.15679505957362,
+      103.19097416098316
+    ],
+    "jaw_neg": [
+      -11.395376165468907,
+      -101.15679505957362,
+      103.19097416098316
+    ],
+    "ear_pos": [
+      18.748074333509045,
+      -91.64833742839642,
+      133.96879792354179
+    ],
+    "ear_neg": [
+      -18.748074333509045,
+      -91.64833742839642,
+      133.96879792354179
+    ],
+    "horn_root_pos": [
+      4.38469935341474,
+      -99.35704883029881,
+      141.7305410040137
+    ],
+    "horn_tip_pos": [
+      29.9446787213876,
+      -43.37338189560291,
+      176.0
+    ],
+    "horn_root_neg": [
+      -19.07884266942945,
+      -105.55881295214118,
+      138.5601230898323
+    ],
+    "horn_break_neg": [
+      -22.25456690853898,
+      -123.41441647671259,
+      147.78842798387046
+    ],
+    "shoulder_pos": [
+      43.82054981057733,
+      -39.34664893696111,
+      99.29057011267454
+    ],
+    "shoulder_neg": [
+      -38.18368807486496,
+      -43.85123654399897,
+      100.85954198079375
+    ],
+    "chest_bottom": [
+      0.0,
+      -63.131914892347766,
+      54.08525599864964
+    ],
+    "chest_pos": [
+      34,
+      -52,
+      76
+    ],
+    "chest_neg": [
+      -34,
+      -52,
+      76
+    ],
+    "withers": [
+      0.0,
+      -46.60864641953726,
+      135.6239439688932
+    ],
+    "spine_mid": [
+      0.0,
+      0.9755323151154547,
+      105.2464429757685
+    ],
+    "spine_lumbar": [
+      0.0,
+      42.91139343024841,
+      92.0
+    ],
+    "hip_pos": [
+      40.496590761217234,
+      72.06683230218977,
+      86.20990768302092
+    ],
+    "hip_neg": [
+      -35.959221057378066,
+      67.53093997588236,
+      90.67766473019412
+    ],
+    "elbow_pos": [
+      50.679874562163675,
+      -36.086852279812334,
+      63.38063155401526
+    ],
+    "elbow_neg": [
+      -43.04042310403082,
+      -67.49440000931439,
+      62.60611336965379
+    ],
+    "wrist_pos": [
+      56.02831292472745,
+      -51.35875775880687,
+      19.350847016838568
+    ],
+    "wrist_neg": [
+      -50.21689521342529,
+      -93.75040239406285,
+      20.11524000558126
+    ],
+    "forepaw_pos": [
+      55.49922303648334,
+      -58.59752612791188,
+      5.0
+    ],
+    "forepaw_neg": [
+      -52.353122121061936,
+      -100.75775706076195,
+      5.0
+    ],
+    "knee_pos": [
+      44.69953796855621,
+      60.066832302189766,
+      59.25190076688578
+    ],
+    "knee_neg": [
+      -40.755425430908744,
+      46.241061924292055,
+      52.91231033868609
+    ],
+    "hock_pos": [
+      31.315073044524794,
+      103.78326642692362,
+      41.8409638754984
+    ],
+    "hock_neg": [
+      -29.233474269720993,
+      69.30733327591531,
+      36.94633461455447
+    ],
+    "hindpaw_pos": [
+      30.189444626450943,
+      107.51444513388236,
+      5.0
+    ],
+    "hindpaw_neg": [
+      -27.12663360000451,
+      50.1992106988198,
+      5.0
+    ],
+    "tail_root": [
+      0.0,
+      102.686595036675,
+      89.62773123381527
+    ],
+    "tail_mid": [
+      -3.5379628091171735,
+      158.08405089572315,
+      63.09392583337795
+    ],
+    "tail_tip": [
+      -28.813008168113615,
+      202.85913638732032,
+      115.7683085451865
+    ],
+    "shoulder_plate_top_pos": [
+      44.481034400043406,
+      -48.432610021397984,
+      134.2240223196718
+    ],
+    "shoulder_plate_edge_pos": [
+      64.11940181259702,
+      -27.278026883831032,
+      97.12499288498229
+    ],
+    "shoulder_plate_top_neg": [
+      -38.22406626235108,
+      -46.01572034133662,
+      122.27673515020493
+    ],
+    "shoulder_plate_edge_neg": [
+      -57.778289328235864,
+      -35.024794034968714,
+      96.80346960687022
+    ],
+    "armor_0_ridge": [
+      0.0,
+      -41.98208160789449,
+      149.93141801797813
+    ],
+    "armor_0_pos": [
+      43,
+      -38,
+      135
+    ],
+    "armor_0_neg": [
+      -43,
+      -38,
+      135
+    ],
+    "armor_1_ridge": [
+      0.0,
+      -13.070352391175867,
+      136.2402888440663
+    ],
+    "armor_1_pos": [
+      39,
+      -11,
+      128
+    ],
+    "armor_1_neg": [
+      -39,
+      -11,
+      128
+    ],
+    "armor_2_ridge": [
+      0.0,
+      11.495088757482868,
+      120.29299362693008
+    ],
+    "armor_2_pos": [
+      33,
+      16,
+      118
+    ],
+    "armor_2_neg": [
+      -33,
+      16,
+      118
+    ],
+    "armor_3_ridge": [
+      0.0,
+      36.49263733086928,
+      108.48434784481105
+    ],
+    "armor_3_pos": [
+      29,
+      40,
+      111
+    ],
+    "armor_3_neg": [
+      -29,
+      40,
+      111
+    ],
+    "armor_4_ridge": [
+      0.0,
+      61.476558505688395,
+      102.04495124494701
+    ],
+    "armor_4_pos": [
+      27,
+      64,
+      109
+    ],
+    "armor_4_neg": [
+      -27,
+      64,
+      109
+    ],
+    "knee_contour_pos": [
+      44.69953796855621,
+      76.94299746462745,
+      59.25190076688578
+    ],
+    "knee_contour_neg": [
+      -40.755425430908744,
+      46.241061924292055,
+      52.91231033868609
+    ]
+  },
+  "initial_anatomical_estimates": {
+    "nose": [
+      0,
+      -140,
+      112
+    ],
+    "eye_pos": [
+      22,
+      -118,
+      128
+    ],
+    "eye_neg": [
+      -22,
+      -118,
+      128
+    ],
+    "jaw_pos": [
+      23,
+      -107,
+      102
+    ],
+    "jaw_neg": [
+      -23,
+      -107,
+      102
+    ],
+    "ear_pos": [
+      27,
+      -91,
+      138
+    ],
+    "ear_neg": [
+      -27,
+      -91,
+      138
+    ],
+    "horn_root_pos": [
+      18,
+      -103,
+      139
+    ],
+    "horn_tip_pos": [
+      33,
+      -38,
+      176
+    ],
+    "horn_root_neg": [
+      -22,
+      -105,
+      137
+    ],
+    "horn_break_neg": [
+      -28,
+      -98,
+      151
+    ],
+    "shoulder_pos": [
+      42,
+      -45,
+      111
+    ],
+    "shoulder_neg": [
+      -42,
+      -45,
+      111
+    ],
+    "chest_bottom": [
+      0,
+      -42,
+      52
+    ],
+    "chest_pos": [
+      34,
+      -52,
+      76
+    ],
+    "chest_neg": [
+      -34,
+      -52,
+      76
+    ],
+    "withers": [
+      0,
+      -44,
+      137
+    ],
+    "spine_mid": [
+      0,
+      1,
+      123
+    ],
+    "spine_lumbar": [
+      0,
+      31,
+      116
+    ],
+    "hip_pos": [
+      32,
+      64,
+      101
+    ],
+    "hip_neg": [
+      -32,
+      64,
+      101
+    ],
+    "elbow_pos": [
+      47,
+      -34,
+      65
+    ],
+    "elbow_neg": [
+      -47,
+      -60,
+      65
+    ],
+    "wrist_pos": [
+      53,
+      -58,
+      19
+    ],
+    "wrist_neg": [
+      -49,
+      -86,
+      19
+    ],
+    "forepaw_pos": [
+      54,
+      -63,
+      5
+    ],
+    "forepaw_neg": [
+      -50,
+      -91,
+      5
+    ],
+    "knee_pos": [
+      43,
+      50,
+      64
+    ],
+    "knee_neg": [
+      -41,
+      36,
+      65
+    ],
+    "hock_pos": [
+      43,
+      111,
+      31
+    ],
+    "hock_neg": [
+      -41,
+      72,
+      29
+    ],
+    "hindpaw_pos": [
+      44,
+      97,
+      5
+    ],
+    "hindpaw_neg": [
+      -40,
+      45,
+      5
+    ],
+    "tail_root": [
+      0,
+      79,
+      85
+    ],
+    "tail_mid": [
+      0,
+      143,
+      52
+    ],
+    "tail_tip": [
+      -30,
+      190,
+      107
+    ],
+    "shoulder_plate_top_pos": [
+      43,
+      -49,
+      140
+    ],
+    "shoulder_plate_edge_pos": [
+      64,
+      -35,
+      95
+    ],
+    "shoulder_plate_top_neg": [
+      -43,
+      -49,
+      140
+    ],
+    "shoulder_plate_edge_neg": [
+      -64,
+      -35,
+      95
+    ],
+    "armor_0_ridge": [
+      0,
+      -44,
+      145
+    ],
+    "armor_0_pos": [
+      43,
+      -38,
+      135
+    ],
+    "armor_0_neg": [
+      -43,
+      -38,
+      135
+    ],
+    "armor_1_ridge": [
+      0,
+      -17,
+      138
+    ],
+    "armor_1_pos": [
+      39,
+      -11,
+      128
+    ],
+    "armor_1_neg": [
+      -39,
+      -11,
+      128
+    ],
+    "armor_2_ridge": [
+      0,
+      10,
+      128
+    ],
+    "armor_2_pos": [
+      33,
+      16,
+      118
+    ],
+    "armor_2_neg": [
+      -33,
+      16,
+      118
+    ],
+    "armor_3_ridge": [
+      0,
+      34,
+      121
+    ],
+    "armor_3_pos": [
+      29,
+      40,
+      111
+    ],
+    "armor_3_neg": [
+      -29,
+      40,
+      111
+    ],
+    "armor_4_ridge": [
+      0,
+      58,
+      119
+    ],
+    "armor_4_pos": [
+      27,
+      64,
+      109
+    ],
+    "armor_4_neg": [
+      -27,
+      64,
+      109
+    ]
+  },
+  "observations_2d": {
+    "front": {
+      "nose": [
+        271,
+        174,
+        7
+      ],
+      "eye_neg": [
+        240,
+        140,
+        5
+      ],
+      "eye_pos": [
+        300,
+        140,
+        5
+      ],
+      "jaw_neg": [
+        241,
+        204,
+        8
+      ],
+      "jaw_pos": [
+        303,
+        204,
+        8
+      ],
+      "ear_neg": [
+        220,
+        123,
+        10
+      ],
+      "ear_pos": [
+        324,
+        119,
+        10
+      ],
+      "horn_root_pos": [
+        284,
+        111,
+        13
+      ],
+      "horn_tip_pos": [
+        345,
+        16,
+        3
+      ],
+      "horn_root_neg": [
+        221,
+        107,
+        10
+      ],
+      "horn_break_neg": [
+        218,
+        73,
+        5
+      ],
+      "shoulder_neg": [
+        166,
+        221,
+        13
+      ],
+      "shoulder_pos": [
+        383,
+        221,
+        13
+      ],
+      "chest_bottom": [
+        273,
+        354,
+        8
+      ],
+      "elbow_neg": [
+        153,
+        326,
+        12
+      ],
+      "elbow_pos": [
+        400,
+        326,
+        12
+      ],
+      "wrist_neg": [
+        133,
+        439,
+        8
+      ],
+      "wrist_pos": [
+        418,
+        439,
+        8
+      ],
+      "forepaw_neg": [
+        132,
+        481,
+        5
+      ],
+      "forepaw_pos": [
+        415,
+        481,
+        5
+      ],
+      "hindpaw_neg": [
+        208,
+        468,
+        15
+      ],
+      "hindpaw_pos": [
+        334,
+        468,
+        15
+      ],
+      "shoulder_plate_top_neg": [
+        166,
+        164,
+        12
+      ],
+      "shoulder_plate_edge_neg": [
+        114,
+        232,
+        10
+      ],
+      "shoulder_plate_top_pos": [
+        383,
+        164,
+        12
+      ],
+      "shoulder_plate_edge_pos": [
+        433,
+        232,
+        10
+      ]
+    },
+    "left": {
+      "nose": [
+        42,
+        202,
+        6
+      ],
+      "eye_pos": [
+        111,
+        174,
+        5
+      ],
+      "jaw_pos": [
+        173,
+        235,
+        8
+      ],
+      "ear_pos": [
+        178,
+        147,
+        9
+      ],
+      "horn_root_pos": [
+        158,
+        119,
+        10
+      ],
+      "horn_tip_pos": [
+        314,
+        31,
+        3
+      ],
+      "horn_break_neg": [
+        87,
+        143,
+        9
+      ],
+      "withers": [
+        297,
+        145,
+        10
+      ],
+      "spine_mid": [
+        421,
+        227,
+        15
+      ],
+      "spine_lumbar": [
+        530,
+        264,
+        14
+      ],
+      "hip_pos": [
+        625,
+        278,
+        14
+      ],
+      "shoulder_pos": [
+        326,
+        238,
+        14
+      ],
+      "chest_bottom": [
+        253,
+        344,
+        10
+      ],
+      "elbow_pos": [
+        336,
+        326,
+        10
+      ],
+      "elbow_neg": [
+        235,
+        331,
+        17
+      ],
+      "wrist_pos": [
+        295,
+        450,
+        8
+      ],
+      "wrist_neg": [
+        167,
+        450,
+        14
+      ],
+      "forepaw_pos": [
+        274,
+        480,
+        6
+      ],
+      "forepaw_neg": [
+        150,
+        477,
+        10
+      ],
+      "hock_pos": [
+        704,
+        394,
+        10
+      ],
+      "hock_neg": [
+        586,
+        411,
+        14
+      ],
+      "hindpaw_pos": [
+        711,
+        478,
+        6
+      ],
+      "hindpaw_neg": [
+        530,
+        478,
+        10
+      ],
+      "tail_root": [
+        686,
+        284,
+        15
+      ],
+      "tail_mid": [
+        820,
+        323,
+        16
+      ],
+      "tail_tip": [
+        915,
+        203,
+        7
+      ],
+      "shoulder_plate_top_pos": [
+        300,
+        119,
+        9
+      ],
+      "shoulder_plate_edge_pos": [
+        364,
+        235,
+        10
+      ],
+      "armor_0_ridge": [
+        310,
+        111,
+        12
+      ],
+      "armor_1_ridge": [
+        385,
+        138,
+        14
+      ],
+      "armor_2_ridge": [
+        449,
+        186,
+        14
+      ],
+      "armor_3_ridge": [
+        514,
+        222,
+        14
+      ],
+      "armor_4_ridge": [
+        577,
+        226,
+        14
+      ],
+      "knee_contour_pos": [
+        640,
+        343,
+        13
+      ],
+      "knee_contour_neg": [
+        523,
+        367,
+        18
+      ]
+    },
+    "rear": {
+      "horn_tip_pos": [
+        201,
+        16,
+        6
+      ],
+      "horn_break_neg": [
+        351,
+        48,
+        9
+      ],
+      "hip_neg": [
+        371,
+        249,
+        18
+      ],
+      "hip_pos": [
+        171,
+        249,
+        18
+      ],
+      "hock_pos": [
+        194,
+        379,
+        15
+      ],
+      "hock_neg": [
+        352,
+        379,
+        15
+      ],
+      "hindpaw_pos": [
+        201,
+        459,
+        8
+      ],
+      "hindpaw_neg": [
+        351,
+        459,
+        8
+      ],
+      "forepaw_pos": [
+        119,
+        430,
+        14
+      ],
+      "forepaw_neg": [
+        449,
+        430,
+        14
+      ],
+      "tail_root": [
+        273,
+        233,
+        20
+      ],
+      "tail_mid": [
+        284,
+        374,
+        20
+      ],
+      "tail_tip": [
+        358,
+        288,
+        25
+      ],
+      "armor_0_ridge": [
+        275,
+        74,
+        10
+      ],
+      "armor_1_ridge": [
+        275,
+        118,
+        10
+      ],
+      "armor_2_ridge": [
+        275,
+        159,
+        10
+      ],
+      "armor_3_ridge": [
+        275,
+        192,
+        10
+      ],
+      "armor_4_ridge": [
+        275,
+        222,
+        10
+      ]
+    },
+    "quarter": {
+      "nose": [
+        140,
+        221,
+        12
+      ],
+      "eye_pos": [
+        192,
+        165,
+        8
+      ],
+      "horn_tip_pos": [
+        360,
+        15,
+        10
+      ],
+      "horn_break_neg": [
+        181,
+        112,
+        10
+      ],
+      "forepaw_pos": [
+        350,
+        438,
+        14
+      ],
+      "forepaw_neg": [
+        199,
+        417,
+        20
+      ],
+      "hindpaw_pos": [
+        782,
+        459,
+        15
+      ],
+      "hindpaw_neg": [
+        606,
+        424,
+        18
+      ],
+      "tail_tip": [
+        923,
+        180,
+        16
+      ]
+    }
+  },
+  "uncertainty": "Hand-estimated, not automatic ground truth. Two bounded camera/landmark adjustment cycles with body/ground priors. Pixel uncertainty per observation; positions of hidden far limbs, tail and plate boundaries are especially uncertain.",
+  "camera_assumptions": "Uniform perspective cameras fitted to named framework estimates and then frozen before mesh construction; no independent image stretching. Orthographic working cameras remain available. Each reference illustration may contain incompatible pose/expression/artistic perspective.",
+  "cameras": {
+    "front": {
+      "parameters": [
+        -1.7196996963587565,
+        -1.8945119588964199,
+        1166.2175083226768,
+        3000.0,
+        -28.214787668935514,
+        12.900770945768816
+      ],
+      "eye_author": [
+        -34.99808894590325,
+        -1165.6922451867333,
+        45.424408748325455
+      ],
+      "target_author": [
+        0.0,
+        0.0,
+        84.0
+      ],
+      "basis_author": [
+        [
+          0.9995496010545247,
+          -0.030009915557038393,
+          0.0
+        ],
+        [
+          -0.0009921111981445047,
+          -0.033044556570719356,
+          0.9994533871053793
+        ],
+        [
+          0.029993511750228435,
+          0.9990032343537752,
+          0.033059446510565714
+        ]
+      ],
+      "focal": 3000.0,
+      "offset_pixels": [
+        -28.214787668935514,
+        12.900770945768816
+      ],
+      "viewport": [
+        584,
+        512
+      ],
+      "mean_landmark_error_pixels": 5.85330980355926,
+      "median_landmark_error_pixels": 4.022263636737174,
+      "landmark_residuals": {
+        "nose": {
+          "observed": [
+            271,
+            174
+          ],
+          "projected": [
+            276.223026919096,
+            174.80750489562854
+          ],
+          "error_pixels": 5.285080354551448,
+          "uncertainty_pixels": 7
+        },
+        "eye_neg": {
+          "observed": [
+            240,
+            140
+          ],
+          "projected": [
+            243.69556759906357,
+            140.33871293737312
+          ],
+          "error_pixels": 3.7110573066435353,
+          "uncertainty_pixels": 5
+        },
+        "eye_pos": {
+          "observed": [
+            300,
+            140
+          ],
+          "projected": [
+            304.03970369862077,
+            140.47617821915966
+          ],
+          "error_pixels": 4.067671529149372,
+          "uncertainty_pixels": 5
+        },
+        "jaw_neg": {
+          "observed": [
+            241,
+            204
+          ],
+          "projected": [
+            240.27541198111828,
+            205.4884087156223
+          ],
+          "error_pixels": 1.655411822431928,
+          "uncertainty_pixels": 8
+        },
+        "jaw_pos": {
+          "observed": [
+            303,
+            204
+          ],
+          "projected": [
+            304.3540555658517,
+            205.59262929308363
+          ],
+          "error_pixels": 2.090438839239748,
+          "uncertainty_pixels": 8
+        },
+        "ear_neg": {
+          "observed": [
+            220,
+            123
+          ],
+          "projected": [
+            219.22152731247922,
+            121.21639015545517
+          ],
+          "error_pixels": 1.9460944999596093,
+          "uncertainty_pixels": 10
+        },
+        "ear_pos": {
+          "observed": [
+            324,
+            119
+          ],
+          "projected": [
+            323.6174287912101,
+            121.47410684662367
+          ],
+          "error_pixels": 2.5035106187721836,
+          "uncertainty_pixels": 10
+        },
+        "horn_root_pos": {
+          "observed": [
+            284,
+            111
+          ],
+          "projected": [
+            284.4401222236228,
+            97.87689065481851
+          ],
+          "error_pixels": 13.130487670201607,
+          "uncertainty_pixels": 13
+        },
+        "horn_tip_pos": {
+          "observed": [
+            345,
+            16
+          ],
+          "projected": [
+            346.890662885315,
+            20.502972823327923
+          ],
+          "error_pixels": 4.883786481157578,
+          "uncertainty_pixels": 3
+        },
+        "horn_root_neg": {
+          "observed": [
+            221,
+            107
+          ],
+          "projected": [
+            218.88983847298206,
+            105.0510867873823
+          ],
+          "error_pixels": 2.8724631208115627,
+          "uncertainty_pixels": 10
+        },
+        "horn_break_neg": {
+          "observed": [
+            218,
+            73
+          ],
+          "projected": [
+            210.55805183696827,
+            74.10610972905613
+          ],
+          "error_pixels": 7.523700631601704,
+          "uncertainty_pixels": 5
+        },
+        "shoulder_neg": {
+          "observed": [
+            166,
+            221
+          ],
+          "projected": [
+            165.29478565656018,
+            219.8907704715386
+          ],
+          "error_pixels": 1.3144266495335464,
+          "uncertainty_pixels": 13
+        },
+        "shoulder_pos": {
+          "observed": [
+            383,
+            221
+          ],
+          "projected": [
+            383.2722535003899,
+            224.96752563226704
+          ],
+          "error_pixels": 3.9768557443249746,
+          "uncertainty_pixels": 13
+        },
+        "chest_bottom": {
+          "observed": [
+            273,
+            354
+          ],
+          "projected": [
+            268.9391512470805,
+            344.55989036700475
+          ],
+          "error_pixels": 10.276485901175445,
+          "uncertainty_pixels": 8
+        },
+        "elbow_neg": {
+          "observed": [
+            153,
+            326
+          ],
+          "projected": [
+            151.71737238172977,
+            321.13873345850845
+          ],
+          "error_pixels": 5.027628267341841,
+          "uncertainty_pixels": 12
+        },
+        "elbow_pos": {
+          "observed": [
+            400,
+            326
+          ],
+          "projected": [
+            400.94866085307524,
+            320.5051363874383
+          ],
+          "error_pixels": 5.576153112568908,
+          "uncertainty_pixels": 12
+        },
+        "wrist_neg": {
+          "observed": [
+            133,
+            439
+          ],
+          "projected": [
+            130.88960678483346,
+            439.1603142706574
+          ],
+          "error_pixels": 2.116473526410708,
+          "uncertainty_pixels": 8
+        },
+        "wrist_pos": {
+          "observed": [
+            418,
+            439
+          ],
+          "projected": [
+            418.6004267201588,
+            438.3190736982185
+          ],
+          "error_pixels": 0.9078396745783108,
+          "uncertainty_pixels": 8
+        },
+        "forepaw_neg": {
+          "observed": [
+            132,
+            481
+          ],
+          "projected": [
+            124.50536670004436,
+            482.3873241441577
+          ],
+          "error_pixels": 7.621954905519106,
+          "uncertainty_pixels": 5
+        },
+        "forepaw_pos": {
+          "observed": [
+            415,
+            481
+          ],
+          "projected": [
+            418.8357683920241,
+            477.7079727673934
+          ],
+          "error_pixels": 5.054756419203042,
+          "uncertainty_pixels": 5
+        },
+        "hindpaw_neg": {
+          "observed": [
+            208,
+            468
+          ],
+          "projected": [
+            193.03361166035734,
+            468.11821845888
+          ],
+          "error_pixels": 14.966855232045635,
+          "uncertainty_pixels": 15
+        },
+        "hindpaw_pos": {
+          "observed": [
+            334,
+            468
+          ],
+          "projected": [
+            327.3172050865502,
+            463.4843735687999
+          ],
+          "error_pixels": 8.065397071526201,
+          "uncertainty_pixels": 15
+        },
+        "shoulder_plate_top_neg": {
+          "observed": [
+            166,
+            164
+          ],
+          "projected": [
+            165.232730074451,
+            162.35086636347444
+          ],
+          "error_pixels": 1.818885617561471,
+          "uncertainty_pixels": 12
+        },
+        "shoulder_plate_edge_neg": {
+          "observed": [
+            114,
+            232
+          ],
+          "projected": [
+            113.32511742385907,
+            231.72125354496026
+          ],
+          "error_pixels": 0.7301822223088149,
+          "uncertainty_pixels": 10
+        },
+        "shoulder_plate_top_pos": {
+          "observed": [
+            383,
+            164
+          ],
+          "projected": [
+            386.6096545917091,
+            130.45815474420002
+          ],
+          "error_pixels": 33.735515253742285,
+          "uncertainty_pixels": 12
+        },
+        "shoulder_plate_edge_pos": {
+          "observed": [
+            433,
+            232
+          ],
+          "projected": [
+            434.30531397106984,
+            232.23860348573228
+          ],
+          "error_pixels": 1.3269424201802056,
+          "uncertainty_pixels": 10
+        }
+      },
+      "native_camera": "look -34.99808894590325 -45.424408748325455 -1165.6922451867333 0.0 -84.0 0.0 3000.0 584 512 -28.214787668935514 12.900770945768816"
+    },
+    "left": {
+      "parameters": [
+        83.8105350379901,
+        -3.5171916096480746,
+        1155.14429837039,
+        3000.0,
+        -57.39657408265322,
+        23.798076217430506
+      ],
+      "eye_author": [
+        1148.4107371488612,
+        -124.54368253279618,
+        13.000443807105441
+      ],
+      "target_author": [
+        0.0,
+        0.0,
+        84.0
+      ],
+      "basis_author": [
+        [
+          0.1078165582503373,
+          0.9941708051270925,
+          -0.0
+        ],
+        [
+          0.06099041771392602,
+          -0.006614333161116389,
+          0.998116435865032
+        ],
+        [
+          -0.992298220654523,
+          0.10761347884806129,
+          0.06134802732024417
+        ]
+      ],
+      "focal": 3000.0,
+      "offset_pixels": [
+        -57.39657408265322,
+        23.798076217430506
+      ],
+      "viewport": [
+        952,
+        512
+      ],
+      "mean_landmark_error_pixels": 7.6452931592269096,
+      "median_landmark_error_pixels": 7.056710807637242,
+      "landmark_residuals": {
+        "nose": {
+          "observed": [
+            42,
+            202
+          ],
+          "projected": [
+            48.93329546005367,
+            205.30479484206887
+          ],
+          "error_pixels": 7.680641567249826,
+          "uncertainty_pixels": 6
+        },
+        "eye_pos": {
+          "observed": [
+            111,
+            174
+          ],
+          "projected": [
+            112.62526129790803,
+            167.69689204863658
+          ],
+          "error_pixels": 6.50927370242014,
+          "uncertainty_pixels": 5
+        },
+        "jaw_pos": {
+          "observed": [
+            173,
+            235
+          ],
+          "projected": [
+            156.33690418147324,
+            225.62547810395833
+          ],
+          "error_pixels": 19.119111460441058,
+          "uncertainty_pixels": 8
+        },
+        "ear_pos": {
+          "observed": [
+            178,
+            147
+          ],
+          "projected": [
+            182.47592377934,
+            142.97523850108922
+          ],
+          "error_pixels": 6.0193520250585,
+          "uncertainty_pixels": 9
+        },
+        "horn_root_pos": {
+          "observed": [
+            158,
+            119
+          ],
+          "projected": [
+            161.22033641686835,
+            126.51152323182112
+          ],
+          "error_pixels": 8.172731972847073,
+          "uncertainty_pixels": 10
+        },
+        "horn_tip_pos": {
+          "observed": [
+            314,
+            31
+          ],
+          "projected": [
+            312.5627787199853,
+            30.087677512226236
+          ],
+          "error_pixels": 1.702332907930982,
+          "uncertainty_pixels": 3
+        },
+        "horn_break_neg": {
+          "observed": [
+            87,
+            143
+          ],
+          "projected": [
+            97.85935707974721,
+            117.93876694875271
+          ],
+          "error_pixels": 27.31283651022693,
+          "uncertainty_pixels": 9
+        },
+        "withers": {
+          "observed": [
+            297,
+            145
+          ],
+          "projected": [
+            298.29722603703783,
+            145.21713870992627
+          ],
+          "error_pixels": 1.3152735877061177,
+          "uncertainty_pixels": 10
+        },
+        "spine_mid": {
+          "observed": [
+            421,
+            227
+          ],
+          "projected": [
+            421.1143911220674,
+            224.9105945857413
+          ],
+          "error_pixels": 2.0925344235977037,
+          "uncertainty_pixels": 15
+        },
+        "spine_lumbar": {
+          "observed": [
+            530,
+            264
+          ],
+          "projected": [
+            528.7033485333368,
+            259.9231180430306
+          ],
+          "error_pixels": 4.278115416519553,
+          "uncertainty_pixels": 14
+        },
+        "hip_pos": {
+          "observed": [
+            625,
+            278
+          ],
+          "projected": [
+            621.2991258238692,
+            268.6011121124467
+          ],
+          "error_pixels": 10.101265425200365,
+          "uncertainty_pixels": 14
+        },
+        "shoulder_pos": {
+          "observed": [
+            326,
+            238
+          ],
+          "projected": [
+            325.6957720219891,
+            230.64746398980736
+          ],
+          "error_pixels": 7.358827382388043,
+          "uncertainty_pixels": 14
+        },
+        "chest_bottom": {
+          "observed": [
+            253,
+            344
+          ],
+          "projected": [
+            254.6855038536383,
+            356.68746450946355
+          ],
+          "error_pixels": 12.798932725798927,
+          "uncertainty_pixels": 10
+        },
+        "elbow_pos": {
+          "observed": [
+            336,
+            326
+          ],
+          "projected": [
+            335.80259627074713,
+            326.7653197866894
+          ],
+          "error_pixels": 0.7903686533645394,
+          "uncertainty_pixels": 10
+        },
+        "elbow_neg": {
+          "observed": [
+            235,
+            331
+          ],
+          "projected": [
+            237.96389467125474,
+            339.0504183518276
+          ],
+          "error_pixels": 8.578689134228776,
+          "uncertainty_pixels": 17
+        },
+        "wrist_pos": {
+          "observed": [
+            295,
+            450
+          ],
+          "projected": [
+            294.95250221772847,
+            446.7141367477029
+          ],
+          "error_pixels": 3.286206529133103,
+          "uncertainty_pixels": 8
+        },
+        "wrist_neg": {
+          "observed": [
+            167,
+            450
+          ],
+          "projected": [
+            170.6419033751465,
+            446.2665495272973
+          ],
+          "error_pixels": 5.215564459004191,
+          "uncertainty_pixels": 14
+        },
+        "forepaw_pos": {
+          "observed": [
+            274,
+            480
+          ],
+          "projected": [
+            274.87999216497485,
+            486.2283530751081
+          ],
+          "error_pixels": 6.290212098063587,
+          "uncertainty_pixels": 6
+        },
+        "forepaw_neg": {
+          "observed": [
+            150,
+            477
+          ],
+          "projected": [
+            152.64420448925534,
+            484.3360300997965
+          ],
+          "error_pixels": 7.798022506130551,
+          "uncertainty_pixels": 10
+        },
+        "hock_pos": {
+          "observed": [
+            704,
+            394
+          ],
+          "projected": [
+            700.287072860056,
+            387.8038866918856
+          ],
+          "error_pixels": 7.223409726266724,
+          "uncertainty_pixels": 10
+        },
+        "hock_neg": {
+          "observed": [
+            586,
+            411
+          ],
+          "projected": [
+            584.2375822863286,
+            403.7536827024251
+          ],
+          "error_pixels": 7.45756197256152,
+          "uncertainty_pixels": 14
+        },
+        "hindpaw_pos": {
+          "observed": [
+            711,
+            478
+          ],
+          "projected": [
+            709.9627617646709,
+            485.3929104810369
+          ],
+          "error_pixels": 7.4653190512833305,
+          "uncertainty_pixels": 6
+        },
+        "hindpaw_neg": {
+          "observed": [
+            530,
+            478
+          ],
+          "projected": [
+            537.5652450443149,
+            484.4854495093972
+          ],
+          "error_pixels": 9.964636868419824,
+          "uncertainty_pixels": 10
+        },
+        "tail_root": {
+          "observed": [
+            686,
+            284
+          ],
+          "projected": [
+            680.654276059413,
+            267.1228552237834
+          ],
+          "error_pixels": 17.703524514806105,
+          "uncertainty_pixels": 15
+        },
+        "tail_mid": {
+          "observed": [
+            820,
+            323
+          ],
+          "projected": [
+            818.3633689060435,
+            336.22023176809006
+          ],
+          "error_pixels": 13.32115195242974,
+          "uncertainty_pixels": 16
+        },
+        "tail_tip": {
+          "observed": [
+            915,
+            203
+          ],
+          "projected": [
+            911.0503126815933,
+            208.84783186398525
+          ],
+          "error_pixels": 7.056710807637242,
+          "uncertainty_pixels": 7
+        },
+        "shoulder_plate_top_pos": {
+          "observed": [
+            300,
+            119
+          ],
+          "projected": [
+            301.5403659303047,
+            136.2515534051025
+          ],
+          "error_pixels": 17.3201853941679,
+          "uncertainty_pixels": 9
+        },
+        "shoulder_plate_edge_pos": {
+          "observed": [
+            364,
+            235
+          ],
+          "projected": [
+            363.0708015916328,
+            232.55037128571084
+          ],
+          "error_pixels": 2.619940938262179,
+          "uncertainty_pixels": 10
+        },
+        "armor_0_ridge": {
+          "observed": [
+            310,
+            111
+          ],
+          "projected": [
+            310.3681675101388,
+            108.42360689236031
+          ],
+          "error_pixels": 2.6025658033208474,
+          "uncertainty_pixels": 12
+        },
+        "armor_1_ridge": {
+          "observed": [
+            385,
+            138
+          ],
+          "projected": [
+            384.97239142803426,
+            144.6225190928668
+          ],
+          "error_pixels": 6.622576641204798,
+          "uncertainty_pixels": 14
+        },
+        "armor_2_ridge": {
+          "observed": [
+            449,
+            186
+          ],
+          "projected": [
+            448.13875288768764,
+            186.37375653346447
+          ],
+          "error_pixels": 0.9388506456160909,
+          "uncertainty_pixels": 14
+        },
+        "armor_3_ridge": {
+          "observed": [
+            514,
+            222
+          ],
+          "projected": [
+            512.2086114752456,
+            217.36818420084603
+          ],
+          "error_pixels": 4.966164560696132,
+          "uncertainty_pixels": 14
+        },
+        "armor_4_ridge": {
+          "observed": [
+            577,
+            226
+          ],
+          "projected": [
+            575.9830092296232,
+            234.46684793290035
+          ],
+          "error_pixels": 8.527706851545172,
+          "uncertainty_pixels": 14
+        },
+        "knee_contour_pos": {
+          "observed": [
+            640,
+            343
+          ],
+          "projected": [
+            636.4607012384566,
+            340.0380058088409
+          ],
+          "error_pixels": 4.615197212679271,
+          "uncertainty_pixels": 13
+        },
+        "knee_contour_neg": {
+          "observed": [
+            523,
+            367
+          ],
+          "projected": [
+            522.4746830597772,
+            364.2909983393652
+          ],
+          "error_pixels": 2.759465144734937,
+          "uncertainty_pixels": 18
+        }
+      },
+      "native_camera": "look 1148.4107371488612 -13.000443807105441 -124.54368253279618 0.0 -84.0 0.0 3000.0 952 512 -57.39657408265322 23.798076217430506"
+    },
+    "rear": {
+      "parameters": [
+        181.20058914374326,
+        6.0506273812930065,
+        1206.9090263989895,
+        3000.0,
+        -12.016750669147418,
+        -13.262309464874248
+      ],
+      "eye_author": [
+        -25.288002908553253,
+        1206.6440713450895,
+        211.92957387320746
+      ],
+      "target_author": [
+        0.0,
+        0.0,
+        84.0
+      ],
+      "basis_author": [
+        [
+          -0.9997804680815999,
+          -0.020952700125215027,
+          0.0
+        ],
+        [
+          0.0022085653753081288,
+          -0.10538405606526643,
+          0.9944291442663052
+        ],
+        [
+          0.020835975655586085,
+          -0.9942108353285514,
+          -0.10540719630928538
+        ]
+      ],
+      "focal": 3000.0,
+      "offset_pixels": [
+        -12.016750669147418,
+        -13.262309464874248
+      ],
+      "viewport": [
+        584,
+        512
+      ],
+      "mean_landmark_error_pixels": 19.225795049090184,
+      "median_landmark_error_pixels": 8.871361865581074,
+      "landmark_residuals": {
+        "horn_tip_pos": {
+          "observed": [
+            201,
+            16
+          ],
+          "projected": [
+            210.18552307402348,
+            11.617184711651873
+          ],
+          "error_pixels": 10.177568668164112,
+          "uncertainty_pixels": 6
+        },
+        "horn_break_neg": {
+          "observed": [
+            351,
+            48
+          ],
+          "projected": [
+            336.0377251853972,
+            70.32384676929482
+          ],
+          "error_pixels": 26.87422189025482,
+          "uncertainty_pixels": 9
+        },
+        "hip_neg": {
+          "observed": [
+            371,
+            249
+          ],
+          "projected": [
+            370.4654660324068,
+            244.19341321135823
+          ],
+          "error_pixels": 4.8362178527498605,
+          "uncertainty_pixels": 18
+        },
+        "hip_pos": {
+          "observed": [
+            171,
+            249
+          ],
+          "projected": [
+            169.71752194144523,
+            256.6730479653957
+          ],
+          "error_pixels": 7.779486811476556,
+          "uncertainty_pixels": 18
+        },
+        "hock_pos": {
+          "observed": [
+            194,
+            379
+          ],
+          "projected": [
+            189.94233389987704,
+            384.7048827468906
+          ],
+          "error_pixels": 7.000738627877548,
+          "uncertainty_pixels": 15
+        },
+        "hock_neg": {
+          "observed": [
+            352,
+            379
+          ],
+          "projected": [
+            352.4952759275446,
+            384.1334547890382
+          ],
+          "error_pixels": 5.157291567819702,
+          "uncertainty_pixels": 15
+        },
+        "hindpaw_pos": {
+          "observed": [
+            201,
+            459
+          ],
+          "projected": [
+            192.77019302537914,
+            484.2562917867882
+          ],
+          "error_pixels": 26.563320531494245,
+          "uncertainty_pixels": 8
+        },
+        "hindpaw_neg": {
+          "observed": [
+            351,
+            459
+          ],
+          "projected": [
+            346.73957456515427,
+            457.6117539489592
+          ],
+          "error_pixels": 4.480898568826443,
+          "uncertainty_pixels": 8
+        },
+        "forepaw_pos": {
+          "observed": [
+            119,
+            430
+          ],
+          "projected": [
+            152.95323734355003,
+            411.91531834110594
+          ],
+          "error_pixels": 38.46918294961539,
+          "uncertainty_pixels": 14
+        },
+        "forepaw_neg": {
+          "observed": [
+            449,
+            430
+          ],
+          "projected": [
+            403.6382922701678,
+            397.2867298493221
+          ],
+          "error_pixels": 55.92711839633747,
+          "uncertainty_pixels": 14
+        },
+        "tail_root": {
+          "observed": [
+            273,
+            233
+          ],
+          "projected": [
+            274.17337341023483,
+            256.8471983182069
+          ],
+          "error_pixels": 23.876048098203682,
+          "uncertainty_pixels": 20
+        },
+        "tail_mid": {
+          "observed": [
+            284,
+            374
+          ],
+          "projected": [
+            280.6205771928375,
+            348.88502332878033
+          ],
+          "error_pixels": 25.341321033156063,
+          "uncertainty_pixels": 20
+        },
+        "tail_tip": {
+          "observed": [
+            358,
+            288
+          ],
+          "projected": [
+            353.06463908239016,
+            212.5317073525226
+          ],
+          "error_pixels": 75.62949809771557,
+          "uncertainty_pixels": 25
+        },
+        "armor_0_ridge": {
+          "observed": [
+            275,
+            74
+          ],
+          "projected": [
+            282.0969852453522,
+            74.55836258696169
+          ],
+          "error_pixels": 7.118916234320024,
+          "uncertainty_pixels": 10
+        },
+        "armor_1_ridge": {
+          "observed": [
+            275,
+            118
+          ],
+          "projected": [
+            280.6560347190422,
+            111.73091980071695
+          ],
+          "error_pixels": 8.443464649541319,
+          "uncertainty_pixels": 10
+        },
+        "armor_2_ridge": {
+          "observed": [
+            275,
+            159
+          ],
+          "projected": [
+            279.38032065795346,
+            155.42391654917833
+          ],
+          "error_pixels": 5.654695563311474,
+          "uncertainty_pixels": 10
+        },
+        "armor_3_ridge": {
+          "observed": [
+            275,
+            192
+          ],
+          "projected": [
+            278.03071083235574,
+            190.38307557735763
+          ],
+          "error_pixels": 3.4350622611381834,
+          "uncertainty_pixels": 10
+        },
+        "armor_4_ridge": {
+          "observed": [
+            275,
+            222
+          ],
+          "projected": [
+            276.6248795839369,
+            212.8438006899799
+          ],
+          "error_pixels": 9.299259081620828,
+          "uncertainty_pixels": 10
+        }
+      },
+      "native_camera": "look -25.288002908553253 -211.92957387320746 1206.6440713450895 0.0 -84.0 0.0 3000.0 584 512 -12.016750669147418 -13.262309464874248"
+    },
+    "quarter": {
+      "parameters": [
+        80.0,
+        0.7339947187226866,
+        1189.6973275161047,
+        2882.5994226786793,
+        1.4646182887834283,
+        3.016517614087402
+      ],
+      "eye_author": [
+        1171.623151875764,
+        -206.58877289838884,
+        99.24159955796254
+      ],
+      "target_author": [
+        0.0,
+        0.0,
+        84.0
+      ],
+      "basis_author": [
+        [
+          0.1736481776669304,
+          0.984807753012208,
+          -0.0
+        ],
+        [
+          -0.012615657291695408,
+          0.002224480759897382,
+          0.999917945071718
+        ],
+        [
+          -0.9847269446826632,
+          0.17363392897816565,
+          -0.012810274140417962
+        ]
+      ],
+      "focal": 2882.5994226786793,
+      "offset_pixels": [
+        1.4646182887834283,
+        3.016517614087402
+      ],
+      "viewport": [
+        952,
+        512
+      ],
+      "mean_landmark_error_pixels": 22.987041291804964,
+      "median_landmark_error_pixels": 27.89530005982582,
+      "landmark_residuals": {
+        "nose": {
+          "observed": [
+            140,
+            221
+          ],
+          "projected": [
+            131.9711682326398,
+            191.71141801280203
+          ],
+          "error_pixels": 30.369115468998928,
+          "uncertainty_pixels": 12
+        },
+        "eye_pos": {
+          "observed": [
+            192,
+            165
+          ],
+          "projected": [
+            193.45009885369655,
+            157.66451026804833
+          ],
+          "error_pixels": 7.4774458401957276,
+          "uncertainty_pixels": 8
+        },
+        "horn_tip_pos": {
+          "observed": [
+            360,
+            15
+          ],
+          "projected": [
+            383.5606895009,
+            29.934579862516983
+          ],
+          "error_pixels": 27.89530005982582,
+          "uncertainty_pixels": 10
+        },
+        "horn_break_neg": {
+          "observed": [
+            181,
+            112
+          ],
+          "projected": [
+            173.55507645490536,
+            104.4263781876783
+          ],
+          "error_pixels": 10.620105175956574,
+          "uncertainty_pixels": 10
+        },
+        "forepaw_pos": {
+          "observed": [
+            350,
+            438
+          ],
+          "projected": [
+            354.40174911303785,
+            463.3722907860581
+          ],
+          "error_pixels": 25.751282200822903,
+          "uncertainty_pixels": 14
+        },
+        "forepaw_neg": {
+          "observed": [
+            199,
+            417
+          ],
+          "projected": [
+            222.5488544781244,
+            443.893046799565
+          ],
+          "error_pixels": 35.7461118640262,
+          "uncertainty_pixels": 20
+        },
+        "hindpaw_pos": {
+          "observed": [
+            782,
+            459
+          ],
+          "projected": [
+            748.9841188543596,
+            452.37591292537434
+          ],
+          "error_pixels": 33.673831641131585,
+          "uncertainty_pixels": 15
+        },
+        "hindpaw_neg": {
+          "observed": [
+            606,
+            424
+          ],
+          "projected": [
+            582.605407244275,
+            443.64522689778886
+          ],
+          "error_pixels": 30.549008332052694,
+          "uncertainty_pixels": 18
+        },
+        "tail_tip": {
+          "observed": [
+            923,
+            180
+          ],
+          "projected": [
+            925.5590270053514,
+            184.06234220275365
+          ],
+          "error_pixels": 4.801171043234245,
+          "uncertainty_pixels": 16
+        }
+      },
+      "native_camera": "look 1171.623151875764 -99.24159955796254 -206.58877289838884 0.0 -84.0 0.0 2882.5994226786793 952 512 1.4646182887834283 3.016517614087402"
+    }
+  },
+  "framework": {
+    "ribcage_center": [
+      0,
+      -22,
+      98
+    ],
+    "ribcage_radii": [
+      46,
+      67,
+      39
+    ],
+    "pelvis_center": [
+      0,
+      61,
+      88
+    ],
+    "pelvis_radii": [
+      34,
+      31,
+      26
+    ],
+    "neck_axis": [
+      [
+        0,
+        -54,
+        103
+      ],
+      [
+        0,
+        -102,
+        121
+      ]
+    ],
+    "forelimbs": [
+      [
+        "shoulder_pos",
+        "elbow_pos",
+        "wrist_pos",
+        "forepaw_pos"
+      ],
+      [
+        "shoulder_neg",
+        "elbow_neg",
+        "wrist_neg",
+        "forepaw_neg"
+      ]
+    ],
+    "hindlimbs": [
+      [
+        "hip_pos",
+        "knee_pos",
+        "hock_pos",
+        "hindpaw_pos"
+      ],
+      [
+        "hip_neg",
+        "knee_neg",
+        "hock_neg",
+        "hindpaw_neg"
+      ]
+    ],
+    "tail_centerline": [
+      "tail_root",
+      "tail_mid",
+      "tail_tip"
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "phase": 10,
+  "label": "10-oblique-brow-and-nasal-planes",
+  "started_utc": "2026-10-18T19:00:52.810939+00:00",
+  "finished_utc": "2026-10-18T19:01:02.418107+00:00",
+  "blender_seconds": 6.162901800009422,
+  "native_seconds": 3.4442300999944564,
+  "vertices": 3895,
+  "triangles": 7180,
+  "native_model_sha256": "ad493818d33193edff6515c3fba250fa6405fffbffbf526d5cd890b953455b22",
+  "constraint_sha256": "8239eb52359087fbfb38998e68aa27e105b2c427c7fe0f6d375b222d53b61c59"
+}

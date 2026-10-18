@@ -1,0 +1,12 @@
+{
+  "phase": 17,
+  "label": "17-facial-proportion-calibration",
+  "started_utc": "2026-10-18T19:13:34.822459+00:00",
+  "finished_utc": "2026-10-18T19:13:45.005511+00:00",
+  "blender_seconds": 6.476360000000568,
+  "native_seconds": 3.7066302000021096,
+  "vertices": 4331,
+  "triangles": 8037,
+  "native_model_sha256": "7c69746ccc0cbb98cd921bf08aadb5487a4251c77d42819e83c4cdc3e6bf41df",
+  "constraint_sha256": "8239eb52359087fbfb38998e68aa27e105b2c427c7fe0f6d375b222d53b61c59"
+}

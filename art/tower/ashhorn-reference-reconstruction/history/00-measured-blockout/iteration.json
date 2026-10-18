@@ -1,0 +1,9 @@
+{
+  "phase": 0,
+  "label": "00-measured-blockout",
+  "triangles": 3496,
+  "vertices": 1965,
+  "finished_utc": "2026-10-18T18:36:50.107096+00:00",
+  "recovered_after_reference_adapter_camera_copy_error": true,
+  "native_model_sha256": "be7e67997fd9f0da8aab1f73c98be08c1d8145af869d75c0138a224f43ff6c5a"
+}

@@ -1,0 +1,14 @@
+{
+  "painted_faces": 5890,
+  "retained_semantic_faces": 1673,
+  "no_visible_reference": 2626,
+  "source_views": {
+    "semantic fallback": 2626,
+    "front": 1030,
+    "rear": 1030,
+    "left": 1012,
+    "quarter": 192
+  },
+  "method": "Visibility-aware material-class/chromaticity guidance, source tonal variation compressed; no direct texture/billboard, no renderer lighting cancellation",
+  "native_palette_entries": 12
+}

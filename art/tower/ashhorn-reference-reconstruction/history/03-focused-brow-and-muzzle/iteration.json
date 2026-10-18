@@ -1,0 +1,12 @@
+{
+  "phase": 3,
+  "label": "03-focused-brow-and-muzzle",
+  "started_utc": "2026-10-18T18:43:43.093601+00:00",
+  "finished_utc": "2026-10-18T18:43:50.490497+00:00",
+  "blender_seconds": 3.76656419999199,
+  "native_seconds": 3.630273299990222,
+  "vertices": 4024,
+  "triangles": 7443,
+  "native_model_sha256": "6113dd368fdeb3d92df26255934731bbe58e66e6dd985255f6e3607bca008d4b",
+  "constraint_sha256": "8239eb52359087fbfb38998e68aa27e105b2c427c7fe0f6d375b222d53b61c59"
+}

@@ -1,0 +1,2339 @@
+{
+  "name": "Ashhorn concept-guided stage 5",
+  "concept_stage": 5,
+  "frozen_spec_sha256": "ce0cb460a95c8b5a62c1a561f40bf21e4571befd9b1cd55ef2b03dc3937518f8",
+  "materials": {
+    "hide": 21535,
+    "ventral": 5289,
+    "plate": 4378,
+    "plate_edge": 4523,
+    "horn": 7363,
+    "claw": 7374,
+    "dark": 21517,
+    "eye": 4926
+  },
+  "operations": [
+    {
+      "op": "loft",
+      "name": "mass_ribcage_lumbar_pelvis",
+      "stations": [
+        [
+          -75,
+          19,
+          79,
+          120
+        ],
+        [
+          -61,
+          30,
+          59,
+          130
+        ],
+        [
+          -46,
+          36,
+          49,
+          132
+        ],
+        [
+          -26,
+          33,
+          52,
+          127
+        ],
+        [
+          -2,
+          26,
+          60,
+          118
+        ],
+        [
+          22,
+          21,
+          66,
+          111
+        ],
+        [
+          43,
+          23,
+          65,
+          110
+        ],
+        [
+          63,
+          28,
+          61,
+          112
+        ],
+        [
+          79,
+          19,
+          71,
+          103
+        ],
+        [
+          85,
+          7,
+          81,
+          92
+        ]
+      ],
+      "material": "hide"
+    },
+    {
+      "op": "loft",
+      "name": "mass_throat_scapular_neck",
+      "stations": [
+        [
+          -101,
+          17,
+          91,
+          121
+        ],
+        [
+          -86,
+          22,
+          77,
+          125
+        ],
+        [
+          -72,
+          26,
+          66,
+          130
+        ],
+        [
+          -53,
+          31,
+          62,
+          132
+        ]
+      ],
+      "material": "hide"
+    },
+    {
+      "op": "limb",
+      "name": "mass_fore_-1",
+      "points": [
+        [
+          -23,
+          -49,
+          107
+        ],
+        [
+          -31,
+          -48,
+          84
+        ],
+        [
+          -33,
+          -31,
+          55
+        ],
+        [
+          -34,
+          -41,
+          27
+        ],
+        [
+          -34,
+          -45,
+          12
+        ]
+      ],
+      "radii": [
+        [
+          19,
+          20
+        ],
+        [
+          17,
+          16
+        ],
+        [
+          11,
+          12
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          7,
+          9
+        ]
+      ],
+      "material": "hide"
+    },
+    {
+      "op": "limb",
+      "name": "mass_hind_-1",
+      "points": [
+        [
+          -23,
+          58,
+          88
+        ],
+        [
+          -31,
+          47,
+          69
+        ],
+        [
+          -33,
+          40,
+          54
+        ],
+        [
+          -32,
+          65,
+          40
+        ],
+        [
+          -31,
+          86,
+          27
+        ],
+        [
+          -31,
+          70,
+          10
+        ]
+      ],
+      "radii": [
+        [
+          17,
+          19
+        ],
+        [
+          16,
+          16
+        ],
+        [
+          11,
+          11
+        ],
+        [
+          7,
+          9
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          6,
+          8
+        ]
+      ],
+      "material": "hide"
+    },
+    {
+      "op": "limb",
+      "name": "mass_fore_1",
+      "points": [
+        [
+          23,
+          -49,
+          107
+        ],
+        [
+          31,
+          -48,
+          84
+        ],
+        [
+          33,
+          -31,
+          55
+        ],
+        [
+          34,
+          -41,
+          27
+        ],
+        [
+          34,
+          -45,
+          12
+        ]
+      ],
+      "radii": [
+        [
+          19,
+          20
+        ],
+        [
+          17,
+          16
+        ],
+        [
+          11,
+          12
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          7,
+          9
+        ]
+      ],
+      "material": "hide"
+    },
+    {
+      "op": "limb",
+      "name": "mass_hind_1",
+      "points": [
+        [
+          23,
+          58,
+          88
+        ],
+        [
+          31,
+          47,
+          69
+        ],
+        [
+          33,
+          40,
+          54
+        ],
+        [
+          32,
+          65,
+          40
+        ],
+        [
+          31,
+          86,
+          27
+        ],
+        [
+          31,
+          70,
+          10
+        ]
+      ],
+      "radii": [
+        [
+          17,
+          19
+        ],
+        [
+          16,
+          16
+        ],
+        [
+          11,
+          11
+        ],
+        [
+          7,
+          9
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          6,
+          8
+        ]
+      ],
+      "material": "hide"
+    },
+    {
+      "op": "fuse",
+      "target": "^mass_",
+      "name": "integrated_anatomy",
+      "voxel": 1.4,
+      "triangles": 1450,
+      "material": "hide"
+    },
+    {
+      "op": "relax",
+      "target": "^integrated",
+      "center": [
+        0,
+        -68,
+        104
+      ],
+      "radius": [
+        39,
+        38,
+        34
+      ],
+      "iterations": 2,
+      "strength": 0.16
+    },
+    {
+      "op": "loft",
+      "name": "cranial_keel_and_zygomatic_planes",
+      "stations": [
+        [
+          -140,
+          12,
+          101,
+          114
+        ],
+        [
+          -131,
+          15,
+          100,
+          118
+        ],
+        [
+          -121,
+          16,
+          99,
+          123
+        ],
+        [
+          -112,
+          21,
+          96,
+          128
+        ],
+        [
+          -103,
+          22,
+          97,
+          132
+        ],
+        [
+          -91,
+          21,
+          101,
+          130
+        ],
+        [
+          -78,
+          17,
+          102,
+          123
+        ]
+      ],
+      "material": "hide",
+      "section": "cranium"
+    },
+    {
+      "op": "loft",
+      "name": "mouth_negative_space",
+      "stations": [
+        [
+          -138,
+          10,
+          99,
+          103
+        ],
+        [
+          -120,
+          14,
+          97,
+          102
+        ],
+        [
+          -102,
+          15,
+          97,
+          103
+        ]
+      ],
+      "material": "dark",
+      "section": "cranium"
+    },
+    {
+      "op": "shell",
+      "name": "swept_ear_-1",
+      "outline": [
+        [
+          -88,
+          124
+        ],
+        [
+          -68,
+          144
+        ],
+        [
+          -64,
+          132
+        ],
+        [
+          -78,
+          119
+        ]
+      ],
+      "depth": 4,
+      "offset": [
+        -24,
+        0,
+        0
+      ],
+      "axis": "X",
+      "material": "hide"
+    },
+    {
+      "op": "shell",
+      "name": "ear_recess_-1",
+      "outline": [
+        [
+          -81,
+          127
+        ],
+        [
+          -68,
+          139
+        ],
+        [
+          -68,
+          132
+        ]
+      ],
+      "depth": 1,
+      "offset": [
+        -26.3,
+        0,
+        0
+      ],
+      "axis": "X",
+      "material": "dark"
+    },
+    {
+      "op": "patch",
+      "target": "^cranial_",
+      "name": "orbital_recess_-1",
+      "side": -1,
+      "outline": [
+        [
+          -122,
+          118
+        ],
+        [
+          -111,
+          125
+        ],
+        [
+          -101,
+          121
+        ],
+        [
+          -109,
+          113
+        ]
+      ],
+      "material": "dark",
+      "offset": 0.8
+    },
+    {
+      "op": "patch",
+      "target": "^cranial_",
+      "name": "amber_eye_-1",
+      "side": -1,
+      "outline": [
+        [
+          -117,
+          118
+        ],
+        [
+          -110,
+          121
+        ],
+        [
+          -106,
+          119
+        ],
+        [
+          -110,
+          116
+        ]
+      ],
+      "material": "eye",
+      "offset": 1.6
+    },
+    {
+      "op": "patch",
+      "target": "^cranial_",
+      "name": "sculpted_brow_plane_-1",
+      "side": -1,
+      "outline": [
+        [
+          -124,
+          120
+        ],
+        [
+          -111,
+          127
+        ],
+        [
+          -99,
+          126
+        ],
+        [
+          -105,
+          122
+        ],
+        [
+          -115,
+          124
+        ]
+      ],
+      "material": "hide",
+      "offset": 2.7
+    },
+    {
+      "op": "patch",
+      "target": "^cranial_",
+      "name": "zygomatic_ridge_-1",
+      "side": -1,
+      "outline": [
+        [
+          -117,
+          109
+        ],
+        [
+          -104,
+          116
+        ],
+        [
+          -94,
+          113
+        ],
+        [
+          -101,
+          105
+        ],
+        [
+          -110,
+          101
+        ]
+      ],
+      "material": "hide",
+      "offset": 1.6
+    },
+    {
+      "op": "shell",
+      "name": "swept_ear_1",
+      "outline": [
+        [
+          -88,
+          124
+        ],
+        [
+          -68,
+          144
+        ],
+        [
+          -64,
+          132
+        ],
+        [
+          -78,
+          119
+        ]
+      ],
+      "depth": 4,
+      "offset": [
+        24,
+        0,
+        0
+      ],
+      "axis": "X",
+      "material": "hide"
+    },
+    {
+      "op": "shell",
+      "name": "ear_recess_1",
+      "outline": [
+        [
+          -81,
+          127
+        ],
+        [
+          -68,
+          139
+        ],
+        [
+          -68,
+          132
+        ]
+      ],
+      "depth": 1,
+      "offset": [
+        26.3,
+        0,
+        0
+      ],
+      "axis": "X",
+      "material": "dark"
+    },
+    {
+      "op": "patch",
+      "target": "^cranial_",
+      "name": "orbital_recess_1",
+      "side": 1,
+      "outline": [
+        [
+          -122,
+          118
+        ],
+        [
+          -111,
+          125
+        ],
+        [
+          -101,
+          121
+        ],
+        [
+          -109,
+          113
+        ]
+      ],
+      "material": "dark",
+      "offset": 0.8
+    },
+    {
+      "op": "patch",
+      "target": "^cranial_",
+      "name": "amber_eye_1",
+      "side": 1,
+      "outline": [
+        [
+          -117,
+          118
+        ],
+        [
+          -110,
+          121
+        ],
+        [
+          -106,
+          119
+        ],
+        [
+          -110,
+          116
+        ]
+      ],
+      "material": "eye",
+      "offset": 1.6
+    },
+    {
+      "op": "patch",
+      "target": "^cranial_",
+      "name": "sculpted_brow_plane_1",
+      "side": 1,
+      "outline": [
+        [
+          -124,
+          120
+        ],
+        [
+          -111,
+          127
+        ],
+        [
+          -99,
+          126
+        ],
+        [
+          -105,
+          122
+        ],
+        [
+          -115,
+          124
+        ]
+      ],
+      "material": "hide",
+      "offset": 2.7
+    },
+    {
+      "op": "patch",
+      "target": "^cranial_",
+      "name": "zygomatic_ridge_1",
+      "side": 1,
+      "outline": [
+        [
+          -117,
+          109
+        ],
+        [
+          -104,
+          116
+        ],
+        [
+          -94,
+          113
+        ],
+        [
+          -101,
+          105
+        ],
+        [
+          -110,
+          101
+        ]
+      ],
+      "material": "hide",
+      "offset": 1.6
+    },
+    {
+      "op": "tube",
+      "name": "left_swept_horn",
+      "points": [
+        [
+          -19,
+          -91,
+          125
+        ],
+        [
+          -22,
+          -90,
+          134
+        ],
+        [
+          -24,
+          -88,
+          140
+        ],
+        [
+          -28,
+          -82,
+          150
+        ],
+        [
+          -30,
+          -74,
+          160
+        ],
+        [
+          -31,
+          -64,
+          170
+        ],
+        [
+          -30,
+          -54,
+          176
+        ]
+      ],
+      "radii": [
+        10,
+        9,
+        8,
+        6.5,
+        4.5,
+        2.5,
+        0.4
+      ],
+      "material": "horn",
+      "sides": 10
+    },
+    {
+      "op": "tube",
+      "name": "right_fractured_horn",
+      "points": [
+        [
+          19,
+          -91,
+          125
+        ],
+        [
+          22,
+          -88,
+          136
+        ],
+        [
+          25,
+          -83,
+          146
+        ],
+        [
+          25,
+          -82,
+          150
+        ]
+      ],
+      "radii": [
+        10,
+        9,
+        8,
+        7
+      ],
+      "material": "horn",
+      "sides": 9
+    },
+    {
+      "op": "band",
+      "target": "^left_swept_horn$",
+      "axis": 2,
+      "range": [
+        130,
+        137
+      ],
+      "material": "dark"
+    },
+    {
+      "op": "band",
+      "target": "^left_swept_horn$",
+      "axis": 2,
+      "range": [
+        146,
+        153
+      ],
+      "material": "dark"
+    },
+    {
+      "op": "band",
+      "target": "^left_swept_horn$",
+      "axis": 2,
+      "range": [
+        162,
+        167
+      ],
+      "material": "dark"
+    },
+    {
+      "op": "band",
+      "target": "^right_fractured_horn$",
+      "axis": 2,
+      "range": [
+        146,
+        152
+      ],
+      "material": "dark"
+    },
+    {
+      "op": "tube",
+      "name": "tapered_tail",
+      "points": [
+        [
+          0,
+          76,
+          83
+        ],
+        [
+          2,
+          103,
+          76
+        ],
+        [
+          9,
+          138,
+          62
+        ],
+        [
+          22,
+          169,
+          65
+        ],
+        [
+          26,
+          190,
+          81
+        ]
+      ],
+      "radii": [
+        9,
+        7,
+        5,
+        3,
+        1
+      ],
+      "material": "hide",
+      "sides": 8
+    },
+    {
+      "op": "loft",
+      "name": "fore_metapodial_-1",
+      "stations": [
+        [
+          -61,
+          8.399999999999999,
+          1,
+          11,
+          -34
+        ],
+        [
+          -51,
+          12,
+          0,
+          16,
+          -34
+        ],
+        [
+          -39,
+          7.199999999999999,
+          3,
+          16,
+          -34
+        ]
+      ],
+      "material": "hide",
+      "section": "cranium"
+    },
+    {
+      "op": "loft",
+      "name": "fore_toe_-1_-1",
+      "stations": [
+        [
+          -70,
+          2.7,
+          1,
+          6,
+          -41
+        ],
+        [
+          -63,
+          3.7,
+          0,
+          10,
+          -41
+        ],
+        [
+          -53,
+          3.4,
+          2,
+          12,
+          -41
+        ]
+      ],
+      "material": "hide",
+      "section": "cranium"
+    },
+    {
+      "op": "tube",
+      "name": "fore_claw_-1_-1",
+      "points": [
+        [
+          -41,
+          -67,
+          6
+        ],
+        [
+          -41,
+          -72,
+          5
+        ],
+        [
+          -41,
+          -76,
+          1
+        ]
+      ],
+      "radii": [
+        3,
+        2.3,
+        0.4
+      ],
+      "material": "claw",
+      "sides": 6
+    },
+    {
+      "op": "loft",
+      "name": "fore_toe_-1_0",
+      "stations": [
+        [
+          -70,
+          2.7,
+          1,
+          6,
+          -34
+        ],
+        [
+          -63,
+          3.7,
+          0,
+          10,
+          -34
+        ],
+        [
+          -53,
+          3.4,
+          2,
+          12,
+          -34
+        ]
+      ],
+      "material": "hide",
+      "section": "cranium"
+    },
+    {
+      "op": "tube",
+      "name": "fore_claw_-1_0",
+      "points": [
+        [
+          -34,
+          -67,
+          6
+        ],
+        [
+          -34,
+          -72,
+          5
+        ],
+        [
+          -34,
+          -76,
+          1
+        ]
+      ],
+      "radii": [
+        3,
+        2.3,
+        0.4
+      ],
+      "material": "claw",
+      "sides": 6
+    },
+    {
+      "op": "loft",
+      "name": "fore_toe_-1_1",
+      "stations": [
+        [
+          -70,
+          2.7,
+          1,
+          6,
+          -27
+        ],
+        [
+          -63,
+          3.7,
+          0,
+          10,
+          -27
+        ],
+        [
+          -53,
+          3.4,
+          2,
+          12,
+          -27
+        ]
+      ],
+      "material": "hide",
+      "section": "cranium"
+    },
+    {
+      "op": "tube",
+      "name": "fore_claw_-1_1",
+      "points": [
+        [
+          -27,
+          -67,
+          6
+        ],
+        [
+          -27,
+          -72,
+          5
+        ],
+        [
+          -27,
+          -76,
+          1
+        ]
+      ],
+      "radii": [
+        3,
+        2.3,
+        0.4
+      ],
+      "material": "claw",
+      "sides": 6
+    },
+    {
+      "op": "loft",
+      "name": "hind_metapodial_-1",
+      "stations": [
+        [
+          55,
+          7.0,
+          1,
+          11,
+          -31
+        ],
+        [
+          65,
+          10,
+          0,
+          16,
+          -31
+        ],
+        [
+          77,
+          6.0,
+          3,
+          16,
+          -31
+        ]
+      ],
+      "material": "hide",
+      "section": "cranium"
+    },
+    {
+      "op": "loft",
+      "name": "hind_toe_-1_-1",
+      "stations": [
+        [
+          46,
+          2.7,
+          1,
+          6,
+          -38
+        ],
+        [
+          53,
+          3.7,
+          0,
+          10,
+          -38
+        ],
+        [
+          63,
+          3.4,
+          2,
+          12,
+          -38
+        ]
+      ],
+      "material": "hide",
+      "section": "cranium"
+    },
+    {
+      "op": "tube",
+      "name": "hind_claw_-1_-1",
+      "points": [
+        [
+          -38,
+          49,
+          6
+        ],
+        [
+          -38,
+          44,
+          5
+        ],
+        [
+          -38,
+          40,
+          1
+        ]
+      ],
+      "radii": [
+        3,
+        2.3,
+        0.4
+      ],
+      "material": "claw",
+      "sides": 6
+    },
+    {
+      "op": "loft",
+      "name": "hind_toe_-1_0",
+      "stations": [
+        [
+          46,
+          2.7,
+          1,
+          6,
+          -31
+        ],
+        [
+          53,
+          3.7,
+          0,
+          10,
+          -31
+        ],
+        [
+          63,
+          3.4,
+          2,
+          12,
+          -31
+        ]
+      ],
+      "material": "hide",
+      "section": "cranium"
+    },
+    {
+      "op": "tube",
+      "name": "hind_claw_-1_0",
+      "points": [
+        [
+          -31,
+          49,
+          6
+        ],
+        [
+          -31,
+          44,
+          5
+        ],
+        [
+          -31,
+          40,
+          1
+        ]
+      ],
+      "radii": [
+        3,
+        2.3,
+        0.4
+      ],
+      "material": "claw",
+      "sides": 6
+    },
+    {
+      "op": "loft",
+      "name": "hind_toe_-1_1",
+      "stations": [
+        [
+          46,
+          2.7,
+          1,
+          6,
+          -24
+        ],
+        [
+          53,
+          3.7,
+          0,
+          10,
+          -24
+        ],
+        [
+          63,
+          3.4,
+          2,
+          12,
+          -24
+        ]
+      ],
+      "material": "hide",
+      "section": "cranium"
+    },
+    {
+      "op": "tube",
+      "name": "hind_claw_-1_1",
+      "points": [
+        [
+          -24,
+          49,
+          6
+        ],
+        [
+          -24,
+          44,
+          5
+        ],
+        [
+          -24,
+          40,
+          1
+        ]
+      ],
+      "radii": [
+        3,
+        2.3,
+        0.4
+      ],
+      "material": "claw",
+      "sides": 6
+    },
+    {
+      "op": "loft",
+      "name": "fore_metapodial_1",
+      "stations": [
+        [
+          -61,
+          8.399999999999999,
+          1,
+          11,
+          34
+        ],
+        [
+          -51,
+          12,
+          0,
+          16,
+          34
+        ],
+        [
+          -39,
+          7.199999999999999,
+          3,
+          16,
+          34
+        ]
+      ],
+      "material": "hide",
+      "section": "cranium"
+    },
+    {
+      "op": "loft",
+      "name": "fore_toe_1_-1",
+      "stations": [
+        [
+          -70,
+          2.7,
+          1,
+          6,
+          27
+        ],
+        [
+          -63,
+          3.7,
+          0,
+          10,
+          27
+        ],
+        [
+          -53,
+          3.4,
+          2,
+          12,
+          27
+        ]
+      ],
+      "material": "hide",
+      "section": "cranium"
+    },
+    {
+      "op": "tube",
+      "name": "fore_claw_1_-1",
+      "points": [
+        [
+          27,
+          -67,
+          6
+        ],
+        [
+          27,
+          -72,
+          5
+        ],
+        [
+          27,
+          -76,
+          1
+        ]
+      ],
+      "radii": [
+        3,
+        2.3,
+        0.4
+      ],
+      "material": "claw",
+      "sides": 6
+    },
+    {
+      "op": "loft",
+      "name": "fore_toe_1_0",
+      "stations": [
+        [
+          -70,
+          2.7,
+          1,
+          6,
+          34
+        ],
+        [
+          -63,
+          3.7,
+          0,
+          10,
+          34
+        ],
+        [
+          -53,
+          3.4,
+          2,
+          12,
+          34
+        ]
+      ],
+      "material": "hide",
+      "section": "cranium"
+    },
+    {
+      "op": "tube",
+      "name": "fore_claw_1_0",
+      "points": [
+        [
+          34,
+          -67,
+          6
+        ],
+        [
+          34,
+          -72,
+          5
+        ],
+        [
+          34,
+          -76,
+          1
+        ]
+      ],
+      "radii": [
+        3,
+        2.3,
+        0.4
+      ],
+      "material": "claw",
+      "sides": 6
+    },
+    {
+      "op": "loft",
+      "name": "fore_toe_1_1",
+      "stations": [
+        [
+          -70,
+          2.7,
+          1,
+          6,
+          41
+        ],
+        [
+          -63,
+          3.7,
+          0,
+          10,
+          41
+        ],
+        [
+          -53,
+          3.4,
+          2,
+          12,
+          41
+        ]
+      ],
+      "material": "hide",
+      "section": "cranium"
+    },
+    {
+      "op": "tube",
+      "name": "fore_claw_1_1",
+      "points": [
+        [
+          41,
+          -67,
+          6
+        ],
+        [
+          41,
+          -72,
+          5
+        ],
+        [
+          41,
+          -76,
+          1
+        ]
+      ],
+      "radii": [
+        3,
+        2.3,
+        0.4
+      ],
+      "material": "claw",
+      "sides": 6
+    },
+    {
+      "op": "loft",
+      "name": "hind_metapodial_1",
+      "stations": [
+        [
+          55,
+          7.0,
+          1,
+          11,
+          31
+        ],
+        [
+          65,
+          10,
+          0,
+          16,
+          31
+        ],
+        [
+          77,
+          6.0,
+          3,
+          16,
+          31
+        ]
+      ],
+      "material": "hide",
+      "section": "cranium"
+    },
+    {
+      "op": "loft",
+      "name": "hind_toe_1_-1",
+      "stations": [
+        [
+          46,
+          2.7,
+          1,
+          6,
+          24
+        ],
+        [
+          53,
+          3.7,
+          0,
+          10,
+          24
+        ],
+        [
+          63,
+          3.4,
+          2,
+          12,
+          24
+        ]
+      ],
+      "material": "hide",
+      "section": "cranium"
+    },
+    {
+      "op": "tube",
+      "name": "hind_claw_1_-1",
+      "points": [
+        [
+          24,
+          49,
+          6
+        ],
+        [
+          24,
+          44,
+          5
+        ],
+        [
+          24,
+          40,
+          1
+        ]
+      ],
+      "radii": [
+        3,
+        2.3,
+        0.4
+      ],
+      "material": "claw",
+      "sides": 6
+    },
+    {
+      "op": "loft",
+      "name": "hind_toe_1_0",
+      "stations": [
+        [
+          46,
+          2.7,
+          1,
+          6,
+          31
+        ],
+        [
+          53,
+          3.7,
+          0,
+          10,
+          31
+        ],
+        [
+          63,
+          3.4,
+          2,
+          12,
+          31
+        ]
+      ],
+      "material": "hide",
+      "section": "cranium"
+    },
+    {
+      "op": "tube",
+      "name": "hind_claw_1_0",
+      "points": [
+        [
+          31,
+          49,
+          6
+        ],
+        [
+          31,
+          44,
+          5
+        ],
+        [
+          31,
+          40,
+          1
+        ]
+      ],
+      "radii": [
+        3,
+        2.3,
+        0.4
+      ],
+      "material": "claw",
+      "sides": 6
+    },
+    {
+      "op": "loft",
+      "name": "hind_toe_1_1",
+      "stations": [
+        [
+          46,
+          2.7,
+          1,
+          6,
+          38
+        ],
+        [
+          53,
+          3.7,
+          0,
+          10,
+          38
+        ],
+        [
+          63,
+          3.4,
+          2,
+          12,
+          38
+        ]
+      ],
+      "material": "hide",
+      "section": "cranium"
+    },
+    {
+      "op": "tube",
+      "name": "hind_claw_1_1",
+      "points": [
+        [
+          38,
+          49,
+          6
+        ],
+        [
+          38,
+          44,
+          5
+        ],
+        [
+          38,
+          40,
+          1
+        ]
+      ],
+      "radii": [
+        3,
+        2.3,
+        0.4
+      ],
+      "material": "claw",
+      "sides": 6
+    },
+    {
+      "op": "shading",
+      "target": "dorsal_|shoulder_|brow_plane|zygomatic_",
+      "flat": true
+    },
+    {
+      "op": "sculpt",
+      "target": "^integrated",
+      "center": [
+        0,
+        23,
+        89
+      ],
+      "radius": [
+        35,
+        34,
+        32
+      ],
+      "scale": [
+        0.96,
+        1,
+        1
+      ]
+    },
+    {
+      "op": "sculpt",
+      "target": "^cranial_",
+      "center": [
+        0,
+        -131,
+        111
+      ],
+      "radius": [
+        20,
+        25,
+        18
+      ],
+      "scale": [
+        1.04,
+        1,
+        0.96
+      ]
+    },
+    {
+      "op": "sculpt",
+      "target": "^integrated",
+      "center": [
+        -30,
+        -42,
+        83
+      ],
+      "radius": [
+        17,
+        22,
+        31
+      ],
+      "scale": [
+        1.045,
+        1.02,
+        1
+      ]
+    },
+    {
+      "op": "sculpt",
+      "target": "^integrated",
+      "center": [
+        -29,
+        49,
+        70
+      ],
+      "radius": [
+        18,
+        25,
+        27
+      ],
+      "scale": [
+        1.035,
+        1,
+        1
+      ]
+    },
+    {
+      "op": "sculpt",
+      "target": "^integrated",
+      "center": [
+        30,
+        -42,
+        83
+      ],
+      "radius": [
+        17,
+        22,
+        31
+      ],
+      "scale": [
+        1.045,
+        1.02,
+        1
+      ]
+    },
+    {
+      "op": "sculpt",
+      "target": "^integrated",
+      "center": [
+        29,
+        49,
+        70
+      ],
+      "radius": [
+        18,
+        25,
+        27
+      ],
+      "scale": [
+        1.035,
+        1,
+        1
+      ]
+    },
+    {
+      "op": "box_region",
+      "target": "^integrated",
+      "bounds": [
+        [
+          -25,
+          25
+        ],
+        [
+          -90,
+          75
+        ],
+        [
+          49,
+          96
+        ]
+      ],
+      "material": "ventral"
+    },
+    {
+      "op": "shell",
+      "name": "nostril_-1",
+      "outline": [
+        [
+          -8,
+          111
+        ],
+        [
+          -4,
+          112
+        ],
+        [
+          -3,
+          107
+        ]
+      ],
+      "depth": 1.5,
+      "offset": [
+        0,
+        -141,
+        0
+      ],
+      "axis": "Y",
+      "material": "dark"
+    },
+    {
+      "op": "shell",
+      "name": "nostril_1",
+      "outline": [
+        [
+          8,
+          111
+        ],
+        [
+          4,
+          112
+        ],
+        [
+          3,
+          107
+        ]
+      ],
+      "depth": 1.5,
+      "offset": [
+        0,
+        -141,
+        0
+      ],
+      "axis": "Y",
+      "material": "dark"
+    },
+    {
+      "op": "component_scale",
+      "target": "^amber_eye_",
+      "scale": [
+        1,
+        0.75,
+        0.75
+      ]
+    },
+    {
+      "op": "component_scale",
+      "target": "^orbital_recess_",
+      "scale": [
+        1,
+        1,
+        0.85
+      ]
+    },
+    {
+      "op": "loft",
+      "name": "volumetric_dorsal_shield_0",
+      "stations": [
+        [
+          -62,
+          17.4,
+          125,
+          133
+        ],
+        [
+          -53,
+          29,
+          123,
+          138
+        ],
+        [
+          -39,
+          21.75,
+          121,
+          134
+        ],
+        [
+          -33,
+          3.48,
+          125,
+          128
+        ]
+      ],
+      "material": "plate",
+      "section": "cranium"
+    },
+    {
+      "op": "loft",
+      "name": "volumetric_dorsal_shield_1",
+      "stations": [
+        [
+          -37,
+          15.6,
+          119,
+          127
+        ],
+        [
+          -28,
+          26,
+          117,
+          132
+        ],
+        [
+          -14,
+          19.5,
+          115,
+          128
+        ],
+        [
+          -8,
+          3.12,
+          119,
+          122
+        ]
+      ],
+      "material": "plate",
+      "section": "cranium"
+    },
+    {
+      "op": "loft",
+      "name": "volumetric_dorsal_shield_2",
+      "stations": [
+        [
+          -11,
+          12.6,
+          109,
+          117
+        ],
+        [
+          -2,
+          21,
+          107,
+          122
+        ],
+        [
+          12,
+          15.75,
+          105,
+          118
+        ],
+        [
+          18,
+          2.52,
+          109,
+          112
+        ]
+      ],
+      "material": "plate",
+      "section": "cranium"
+    },
+    {
+      "op": "loft",
+      "name": "volumetric_dorsal_shield_3",
+      "stations": [
+        [
+          14,
+          11.4,
+          104,
+          112
+        ],
+        [
+          23,
+          19,
+          102,
+          117
+        ],
+        [
+          37,
+          14.25,
+          100,
+          113
+        ],
+        [
+          43,
+          2.28,
+          104,
+          107
+        ]
+      ],
+      "material": "plate",
+      "section": "cranium"
+    },
+    {
+      "op": "loft",
+      "name": "volumetric_dorsal_shield_4",
+      "stations": [
+        [
+          41,
+          13.2,
+          104,
+          112
+        ],
+        [
+          50,
+          22,
+          102,
+          117
+        ],
+        [
+          64,
+          16.5,
+          100,
+          113
+        ],
+        [
+          70,
+          2.6399999999999997,
+          104,
+          107
+        ]
+      ],
+      "material": "plate",
+      "section": "cranium"
+    },
+    {
+      "op": "loft",
+      "name": "cap_upper_-1",
+      "stations": [
+        [
+          -65,
+          2.25,
+          109,
+          118,
+          -28
+        ],
+        [
+          -52,
+          3.75,
+          105,
+          128,
+          -35
+        ],
+        [
+          -39,
+          3.75,
+          100,
+          124,
+          -39
+        ],
+        [
+          -23,
+          2.25,
+          103,
+          110,
+          -35
+        ]
+      ],
+      "material": "plate",
+      "section": "cranium"
+    },
+    {
+      "op": "loft",
+      "name": "cap_lower_-1",
+      "stations": [
+        [
+          -53,
+          2.25,
+          91,
+          105,
+          -35
+        ],
+        [
+          -41,
+          4.5,
+          86,
+          110,
+          -43
+        ],
+        [
+          -29,
+          3.75,
+          83,
+          103,
+          -42
+        ],
+        [
+          -22,
+          1.5,
+          92,
+          98,
+          -36
+        ]
+      ],
+      "material": "plate",
+      "section": "cranium"
+    },
+    {
+      "op": "loft",
+      "name": "cap_upper_1",
+      "stations": [
+        [
+          -65,
+          2.25,
+          109,
+          118,
+          28
+        ],
+        [
+          -52,
+          3.75,
+          105,
+          128,
+          35
+        ],
+        [
+          -39,
+          3.75,
+          100,
+          124,
+          39
+        ],
+        [
+          -23,
+          2.25,
+          103,
+          110,
+          35
+        ]
+      ],
+      "material": "plate",
+      "section": "cranium"
+    },
+    {
+      "op": "loft",
+      "name": "cap_lower_1",
+      "stations": [
+        [
+          -53,
+          2.25,
+          91,
+          105,
+          35
+        ],
+        [
+          -41,
+          4.5,
+          86,
+          110,
+          43
+        ],
+        [
+          -29,
+          3.75,
+          83,
+          103,
+          42
+        ],
+        [
+          -22,
+          1.5,
+          92,
+          98,
+          36
+        ]
+      ],
+      "material": "plate",
+      "section": "cranium"
+    },
+    {
+      "op": "shading",
+      "target": "volumetric_dorsal|shield_front|cap_",
+      "flat": true
+    },
+    {
+      "op": "loft",
+      "name": "faceted_tapered_mandible",
+      "stations": [
+        [
+          -140,
+          10,
+          97,
+          103
+        ],
+        [
+          -130,
+          12,
+          92,
+          100
+        ],
+        [
+          -117,
+          15,
+          88,
+          97
+        ],
+        [
+          -105,
+          17,
+          86,
+          96
+        ],
+        [
+          -92,
+          13,
+          96,
+          107
+        ]
+      ],
+      "material": "ventral",
+      "section": "cranium"
+    },
+    {
+      "op": "normal_regions",
+      "target": "^volumetric_dorsal",
+      "regions": [
+        {
+          "axis": 1,
+          "range": [
+            -1,
+            -0.45
+          ],
+          "material": "plate_edge"
+        }
+      ]
+    },
+    {
+      "op": "band",
+      "target": "^cap_lower",
+      "axis": 2,
+      "range": [
+        83,
+        89
+      ],
+      "material": "plate_edge"
+    },
+    {
+      "op": "component_scale",
+      "target": "^nostril_",
+      "scale": [
+        0.7,
+        1,
+        0.7
+      ]
+    }
+  ]
+}

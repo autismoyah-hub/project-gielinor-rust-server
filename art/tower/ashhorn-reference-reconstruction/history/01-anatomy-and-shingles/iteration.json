@@ -1,0 +1,12 @@
+{
+  "phase": 1,
+  "label": "01-anatomy-and-shingles",
+  "started_utc": "2026-10-18T18:38:46.874736+00:00",
+  "finished_utc": "2026-10-18T18:38:54.298196+00:00",
+  "blender_seconds": 3.541018099989742,
+  "native_seconds": 3.8819623999879695,
+  "vertices": 3799,
+  "triangles": 7122,
+  "native_model_sha256": "a1edd9b2144f253f08ae073273dfaca598357dc284cfd83113b5e7130c0fc0aa",
+  "constraint_sha256": "8239eb52359087fbfb38998e68aa27e105b2c427c7fe0f6d375b222d53b61c59"
+}

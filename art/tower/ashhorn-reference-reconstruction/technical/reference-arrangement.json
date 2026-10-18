@@ -1,0 +1,118 @@
+[
+  {
+    "view": "front",
+    "camera_position": [
+      -34.99808883666992,
+      -1165.6922607421875,
+      45.424407958984375
+    ],
+    "camera_rotation_euler": [
+      1.6038620471954346,
+      1.4398482406363655e-09,
+      -0.03001442365348339
+    ],
+    "lens_mm": 184.93150329589844,
+    "shift": [
+      0.048312991857528687,
+      0.022090360522270203
+    ],
+    "reference_position": [
+      21.205656051635742,
+      259.1353759765625,
+      98.72795104980469
+    ],
+    "reference_width_native": 277.76116943359375,
+    "image_size": [
+      584,
+      512
+    ],
+    "projection_assumption": "Estimated uniform perspective; image itself was never stretched"
+  },
+  {
+    "view": "left",
+    "camera_position": [
+      1148.4107666015625,
+      -124.54368591308594,
+      13.000443458557129
+    ],
+    "camera_rotation_euler": [
+      1.6321830749511719,
+      -4.595041858124205e-08,
+      1.4627699851989746
+    ],
+    "lens_mm": 113.44538116455078,
+    "shift": [
+      0.06029051914811134,
+      0.024997979402542114
+    ],
+    "reference_position": [
+      -254.38821411132812,
+      54.863590240478516,
+      111.17250061035156
+    ],
+    "reference_width_native": 449.76422119140625,
+    "image_size": [
+      952,
+      512
+    ],
+    "projection_assumption": "Estimated uniform perspective; image itself was never stretched"
+  },
+  {
+    "view": "rear",
+    "camera_position": [
+      -25.288002014160156,
+      1206.64404296875,
+      211.92958068847656
+    ],
+    "camera_rotation_euler": [
+      1.465193271636963,
+      -5.1308234105817974e-08,
+      -3.120638370513916
+    ],
+    "lens_mm": 184.93150329589844,
+    "shift": [
+      0.020576627925038338,
+      -0.02270943485200405
+    ],
+    "reference_position": [
+      -0.49864882230758667,
+      -257.931884765625,
+      50.11566925048828
+    ],
+    "reference_width_native": 286.87445068359375,
+    "image_size": [
+      584,
+      512
+    ],
+    "projection_assumption": "Estimated uniform perspective; image itself was never stretched"
+  },
+  {
+    "view": "quarter",
+    "camera_position": [
+      1171.6231689453125,
+      -206.58877563476562,
+      99.2416000366211
+    ],
+    "camera_rotation_euler": [
+      1.557985782623291,
+      -5.607437003618543e-08,
+      1.3962633609771729
+    ],
+    "lens_mm": 109.005859375,
+    "shift": [
+      -0.00153846456669271,
+      0.003168610855937004
+    ],
+    "reference_position": [
+      -256.17608642578125,
+      44.42277908325195,
+      82.18634796142578
+    ],
+    "reference_width_native": 478.8056335449219,
+    "image_size": [
+      952,
+      512
+    ],
+    "projection_assumption": "Estimated uniform perspective; image itself was never stretched"
+  }
+]

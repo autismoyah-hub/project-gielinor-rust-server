@@ -1,0 +1,86 @@
+[
+  {
+    "rank": 1,
+    "component": "Overall silhouette",
+    "finding": "The old frozen numeric width constrained the forequarters and paws to about100 native units, while the sheet suggests about140 at a common height. The body and stance read too narrow. New target is the existing drawing, not the old specification.",
+    "status": "Diagnosed before new geometry"
+  },
+  {
+    "rank": 2,
+    "component": "Skull and face",
+    "finding": "The previous station-loft skull lacks the broad temple/zygomatic structure, lowered nasal bridge and integrated brow hierarchy. Eye and cheek overlay planes do not create convincing underlying facial anatomy.",
+    "status": "Diagnosed before new geometry"
+  },
+  {
+    "rank": 3,
+    "component": "Muzzle",
+    "finding": "The mesh projects a long generic wedge with a shallow underside. The drawing has a blunt faceted nose, broader plane changes and a higher, stronger mandibular corner.",
+    "status": "Diagnosed before new geometry"
+  },
+  {
+    "rank": 4,
+    "component": "Eye sockets and brows",
+    "finding": "Small flat amber patches sit on a generic side surface. The reference has deep dark sockets under a heavy oblique brow with a distinct focused expression. Geometry must establish the orbit before color.",
+    "status": "Diagnosed before new geometry"
+  },
+  {
+    "rank": 5,
+    "component": "Shoulder and forelimbs",
+    "finding": "The drawing has substantially thicker deltoid/triceps masses and wrists, shorter-looking lower forelegs and a wider grounded stance. The mesh has thin elongated stick-like distal segments.",
+    "status": "Diagnosed before new geometry"
+  },
+  {
+    "rank": 6,
+    "component": "Neck and chest",
+    "finding": "The mesh throat/chest is a rounded undifferentiated mass and the underside mask a broad tan region. The drawing separates an angular throat, deep narrow sternum and scapular/chest volumes.",
+    "status": "Diagnosed before new geometry"
+  },
+  {
+    "rank": 7,
+    "component": "Torso, spine, waist and pelvis",
+    "finding": "The old body remains a generic smooth quadruped profile; lateral volume and lumbar curvature do not reproduce the drawing. The sheet varies between views; a coherent measured ribcage/waist/pelvis framework is needed.",
+    "status": "Diagnosed before new geometry"
+  },
+  {
+    "rank": 8,
+    "component": "Hindlimbs",
+    "finding": "The reference has strong forward knee, tight angular hock and distinct thigh-to-calf transitions. The previous body union softens those features and the posed near/far foot locations differ from the side drawing.",
+    "status": "Diagnosed before new geometry"
+  },
+  {
+    "rank": 9,
+    "component": "Paws, toes and claws",
+    "finding": "Counts are correct in the previous mesh but paws are too small and uniform. The art shows broad weight-bearing toe lobes, distinct knuckles and thick curved claws; the mesh reads as narrow pads with pale spikes.",
+    "status": "Diagnosed before new geometry"
+  },
+  {
+    "rank": 10,
+    "component": "Ears and horns",
+    "finding": "The previous long horn rises too vertically and its numeric laterality conflicts with the sheet. The accepted image shows a more backward-swept long horn, visible bands, broad chipped stump and taller sharply folded ears. The new coordinate convention will honor drawn laterality.",
+    "status": "Diagnosed before new geometry"
+  },
+  {
+    "rank": 11,
+    "component": "Armor layers",
+    "finding": "The previous interior-sampled shields avoid major intersections but lack the broad layered wrap, strongly shaped shoulder caps and coherent peaked rear shingle silhouette. They remain plain generic plates.",
+    "status": "Diagnosed before new geometry"
+  },
+  {
+    "rank": 12,
+    "component": "Tail",
+    "finding": "The old frozen low tip was deliberately used instead of the concept arc. The new canonical sheet shows a longer raised curl; rear and side arcs still conflict and require a recorded spatial interpretation.",
+    "status": "Diagnosed before new geometry"
+  },
+  {
+    "rank": 13,
+    "component": "Low-poly faceting",
+    "finding": "The mesh has broad profile planes and arbitrary fusion triangles rather than designed cheek, scapular, muscle and armor planes. Add form-driven topology before surface microdetail.",
+    "status": "Diagnosed before new geometry"
+  },
+  {
+    "rank": 14,
+    "component": "Materials and color distribution",
+    "finding": "Eight broad face colors omit the reference hide-plane variation, warm anatomical underside and deliberate rusty plate margins. Painted highlights must not be mistaken for geometry; native color refinement comes after shape.",
+    "status": "Diagnosed before new geometry"
+  }
+]

@@ -1,0 +1,81 @@
+{
+  "selected": "18-jaw-sides-and-orbital-rims",
+  "method": "Frozen v1 perspective cameras, original illustration masks and native actor pixels; no independent candidate alignment or image stretching.",
+  "limitations": [
+    "Illustration poses and perspective are inconsistent; rear and three-quarter alignment remain approximate.",
+    "Estimated reference masks include manual contact-plane cleanup. IoU and contour distance measure projected outline, not artistic fidelity.",
+    "Calibrated side camera has a low elevation and does not reproduce every painted top surface. Standard elevated cameras are also provided."
+  ],
+  "models": {
+    "previous": {
+      "model_sha256": "645f831ddb9ab2d76cd42fa84ed58c898d9072f50555815b428f6e36ea267170",
+      "triangles": 3621,
+      "views": {
+        "front": {
+          "silhouette_iou": 0.630599241732781,
+          "contour": {
+            "mean_pixels": 23.909823556792038,
+            "p95_pixels": 56.515484603779164
+          }
+        },
+        "left": {
+          "silhouette_iou": 0.591965251651031,
+          "contour": {
+            "mean_pixels": 19.70947939201265,
+            "p95_pixels": 72.96437018457587
+          }
+        },
+        "rear": {
+          "silhouette_iou": 0.5354254485932783,
+          "contour": {
+            "mean_pixels": 24.633269704566086,
+            "p95_pixels": 70.21395872616783
+          }
+        },
+        "quarter": {
+          "silhouette_iou": 0.49270203105831034,
+          "contour": {
+            "mean_pixels": 28.130288804127172,
+            "p95_pixels": 92.47348902700627
+          }
+        }
+      },
+      "clay_geometry_and_shading_flags_identical": true
+    },
+    "reconstruction": {
+      "model_sha256": "a27cb6dfb44d3e458eff41b21511be1eec88e1ecf1592b1576ae9033dd02a602",
+      "triangles": 8037,
+      "views": {
+        "front": {
+          "silhouette_iou": 0.7899275746886024,
+          "contour": {
+            "mean_pixels": 12.186166240010804,
+            "p95_pixels": 34.352561053115934
+          }
+        },
+        "left": {
+          "silhouette_iou": 0.7919212598425197,
+          "contour": {
+            "mean_pixels": 9.239325233762445,
+            "p95_pixels": 22.80350850198276
+          }
+        },
+        "rear": {
+          "silhouette_iou": 0.6894123145603842,
+          "contour": {
+            "mean_pixels": 15.308884288899423,
+            "p95_pixels": 34.428183338899
+          }
+        },
+        "quarter": {
+          "silhouette_iou": 0.6608902691511387,
+          "contour": {
+            "mean_pixels": 15.56213126719972,
+            "p95_pixels": 36.124783736376884
+          }
+        }
+      },
+      "clay_geometry_and_shading_flags_identical": true
+    }
+  }
+}

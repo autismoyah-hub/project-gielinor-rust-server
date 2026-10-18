@@ -1,0 +1,12 @@
+{
+  "phase": 4,
+  "label": "04-reference-material-regions",
+  "started_utc": "2026-10-18T18:45:42.621898+00:00",
+  "finished_utc": "2026-10-18T18:45:53.138651+00:00",
+  "blender_seconds": 6.77256860001944,
+  "native_seconds": 3.744115499983309,
+  "vertices": 4024,
+  "triangles": 7466,
+  "native_model_sha256": "3684e94035f7d2a07aa017ce9121df9e362392bab458e09560dff2c573b67c14",
+  "constraint_sha256": "8239eb52359087fbfb38998e68aa27e105b2c427c7fe0f6d375b222d53b61c59"
+}
