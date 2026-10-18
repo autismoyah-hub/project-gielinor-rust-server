@@ -36,6 +36,11 @@ for manifest in OUT.glob('OR-MIG-0024-*-independent*/manifest.json'):
     add('OR-MIG-0024',sha,'V1','IN_PROGRESS','Four independent authoritative World action tests PASS across 319 fixtures: all selected slots, full bags, duplicate/stale input, overheal, remainders and malformed transactions. Runtime packet decode and complete food matrix remain open.',evidence)
 for manifest in OUT.glob('integration-*/manifest.json'):
     value=json.loads(manifest.read_text(encoding='utf-8'))
+    if value.get('suite')=='crafting-finishes-world':
+        log=manifest.parent/'run-1.log';text=log.read_text()
+        if all('test '+name+' ... FAILED' in text for name in ['wire_zero_hp_forward','wire_zero_hp_reverse','wire_queued_death_forward','wire_queued_death_reverse']):
+            add('OR-MIG-0070',value['tested_integration_sha'],'V1','FAIL','PG-DEF-004: four isolated wiring life refusals fail across both directions/zeroHP/queued death with visibleHP restored. Selected empty orb and wire produce10973and1300fineXP at125%. Four separate manual-helm life refusals pass. Normal matrix initially failed verifier base-advancement oracle, not gameplay; raw wholeFAIL retained. Native reachability/currentHEAD/durability remain untested.',[manifest.relative_to(ROOT).as_posix(),'docs/openrune/verification/independent/crafting-finishes-life-finding.json'],scope='independent-finishes-life-failure')
+        continue
     if value.get('suite')=='crab-matrix' and value.get('status')=='FAIL':
         log=manifest.parent/'run-1.log';text=log.read_text()
         if 'test every_roll_across_current_levels_member_and_rates_has_exact_zero_xp_failure ... ok' in text:
@@ -44,6 +49,12 @@ for manifest in OUT.glob('integration-*/manifest.json'):
     if value.get('suite')=='pair-production-counts' and value.get('status')=='BLOCKED' and value.get('completed_case_subcheck')==728:
         add('OR-MIG-0069',value['tested_integration_sha'],'V1','IN_PROGRESS','Original count matrix hit300second bound without final result. Immutable per-profile progress establishes728complete full28count1-28cases for profiles0-12/both directions. Profiles13-17remain unaccepted; no whole-suite PASS. Preserve original wrapper timeout; rerun only remaining5profiles.',[manifest.relative_to(ROOT).as_posix()],scope='independent-pair-counts-completed-prefix')
     if value.get('status')!='PASS':continue
+    if value.get('suite')=='crafting-finishes-matrix':
+        add('OR-MIG-0070',value['tested_integration_sha'],'V1','FAIL' if (OUT/'crafting-finishes-life-finding.json').exists() else 'IN_PROGRESS','Independent384World cases PASS across two manual profiles/four selected slots/both held directions/member/current below-at99/boosted base1/four rates. Full28whole-inventory and allStats, exact output identity/zero vars/duplicate retention, synchronous wiring versus one-tick compensated helm, independent base-level advancement and no repeat/RNG checked. Separate PG-DEF-004 life failure remains unresolved; this normal subcheck does not replace FAIL.',[manifest.relative_to(ROOT).as_posix()],scope='independent-finishes-matrix-subcheck')
+        continue
+    if value.get('suite') in ['pair-production-regression','current-assembly-regression'] and value['tested_integration_sha']!='fb348dda184b36ec2d503bfe0f1d5393cf8ae151':
+        add('SHARED-ASSEMBLY',value['tested_integration_sha'],'V1','PASS','Independent current integration regression:16integer/precise controls,96legacy normal/timed/immediate held routes and16boosted-current-level precise transactions PASS at this exact integration SHA. Synthetic public gameplay controls only; no historical contract acceptance, chemistry content execution, native or lifecycle acceptance inferred.',[manifest.relative_to(ROOT).as_posix()],kind='integration',scope='independent-current-pair-regression',affected=['OR-MIG-0065','OR-MIG-0067','OR-MIG-0069'])
+        continue
     if value.get('suite')=='pair-production-counts-tail':
         add('OR-MIG-0069',value['tested_integration_sha'],'V1','IN_PROGRESS','Independent280remaining full28count cases for profiles13-17/both directions PASS. This only completes the tail; original728completed prefix retained without replay. Combined1008case scope requires both immutable evidence identities, and no whole PASS is assigned to the timed-out original wrapper.',[manifest.relative_to(ROOT).as_posix()],scope='independent-pair-counts-remaining-tail')
         continue
@@ -479,9 +490,31 @@ path=OUT/'pair-stringing-native-timing.json'
 if path.exists():
     result=json.loads(path.read_text());assert result['status']=='PASS_SCOPED_TIMING_OBSERVATIONS'
     for level in ['V2','V3','V4']:add('OR-MIG-0069',result['tested_sha'],level,'IN_PROGRESS','Native14stringing credits/2800fineXP are independently observed in raw18/46and saved SQL; fourteen exact server traces first1. Client submission-to-receive clocks are1/2/4/5and include asynchronous transport/runtime latency, not asserted equal to nominal1. Producer rawFAIL/124after all14credits and stale frames is retained; final driver assertion not reached. Whole14product save acknowledged; real reconnect remains resource-deferred and unaccepted until separately assessed.',[path.relative_to(ROOT).as_posix(),'docs/openrune/verification/independent/deep-pair-stringing/native-002/produce/manifest.json'],scope='native-pair-stringing-completed-credit-subcheck')
-for feature,run in [('pair-stringing','native-002'),('pair-stringing-reverse','native-001'),('pair-staves','native-001'),('pair-counts','native-001'),('pair-ten','native-001'),('pair-interrupt','native-001'),('pair-crash','native-001')]:
+for feature,run in [('pair-stringing','native-002'),('pair-stringing-reverse','native-001'),('pair-staves','native-001'),('pair-counts','native-001'),('pair-ten','native-001'),('pair-x','native-001'),('pair-earth-batch','native-001'),('pair-pending','native-001'),('pair-interrupt','native-001'),('pair-crash','native-001')]:
     path=OUT/('deep-'+feature)/run/'independent-assessment.json'
     if not path.exists():continue
     result=json.loads(path.read_text());assert result['status']=='PASS'
-    for level in (['V3'] if feature in ['pair-interrupt','pair-crash'] else ['V0','V2','V3','V4']):add('OR-MIG-0069',result['tested_sha'],level,'IN_PROGRESS',result['scope']+' Applicable whole-level/whole-contract obligations remain separate; no inherited PASS or chemistry execution.',[path.relative_to(ROOT).as_posix()],scope='native-'+feature+'-independent')
+    for level in (['V3'] if feature in ['pair-interrupt','pair-crash','pair-pending'] else ['V2','V3','V4']):
+        if level=='V3' and (OUT/'pair-durable-complete.json').exists():continue
+        add('OR-MIG-0069',result['tested_sha'],level,'IN_PROGRESS',result['scope']+' Applicable whole-level/whole-contract obligations remain separate; no inherited PASS or chemistry execution.',[path.relative_to(ROOT).as_posix()],scope='native-'+feature+'-independent')
+pair_native=[OUT/'deep-pair-stringing/native-002/independent-assessment.json',OUT/'deep-pair-staves/native-001/independent-assessment.json']
+if all(p.exists() and json.loads(p.read_text()).get('status')=='PASS' for p in pair_native):
+    binding=OUT/'integration-external-pair-production-bindings-fb348dda184b36ec2d503bfe0f1d5393cf8ae151/manifest.json';assert json.loads(binding.read_text())['status']=='PASS'
+    add('OR-MIG-0069','fb348dda184b36ec2d503bfe0f1d5393cf8ae151','V0','PASS','Applicable startup obligations complete: exact69server build/actual startup against95hash-attested resources,38unique actual item definitions/Crafting12/sequence7531/four spots/all18factory descriptors and421metadata refusals. Real registered quantity dispatch reaches all14stringing and4staff recipes; normal two-account native reconnect independently decoded. Shared old APIs/legacy timing/boost controls128cases pass separately. Original producer timeout retained; it does not replace observed18runtime registrations with a whole-driver PASS.',[p.relative_to(ROOT).as_posix() for p in pair_native]+[binding.relative_to(ROOT).as_posix()],scope='pair-runtime-obligations-complete')
+path=OUT/'reference-crafting-finishes/comparison.json'
+if path.exists():
+    result=json.loads(path.read_text());assert result['source_documentation_subcheck']=='PASS'
+    add('OR-MIG-0070',result['tested_sha'],'V4','IN_PROGRESS',result['scope']+' Exact World/cache/startup/native/lifecycle and donor full category dispatch remain untested; excludes helmet charging and chemistry.',[path.relative_to(ROOT).as_posix()],scope='independent-crafting-finishes-reference-facts')
+path=OUT/'reference-lead-smelting/comparison.json'
+if path.exists():
+    result=json.loads(path.read_text());assert result['source_documentation_subcheck']=='PASS_WITH_EXPLICIT_TIMING_AND_RATE_LIMITATIONS'
+    add('OR-MIG-0096',result['tested_sha'],'V4','IN_PROGRESS',result['scope']+' This verifies only reference/target declaration facts. Native first/repeat/single clocks, current rate integration, World/cache/startup and persistence remain unaccepted; excludes other furnaces/modifiers.',[path.relative_to(ROOT).as_posix()],scope='independent-lead-smelting-reference-facts')
+path=OUT/'pair-reference-routing-addendum.json'
+if path.exists():
+    result=json.loads(path.read_text());assert result['status']=='REFERENCE_QUALIFICATION_REQUIRED'
+    add('OR-MIG-0069',result['tested_sha'],'V4','IN_PROGRESS','PG-REF-002: four pinned source hashes/eighteen source rows verify13AmuletStringing2routes plus Rabbit Combining1/COMBINE with no tick override. Source default first shortening/phase compensation explicitly checked. Target Rabbit1/2is Wiki-supported and World-tested; overbroad source2inheritance needs qualification. No game defect/FORGE stop alleged. Keep final V4comparison partial; original39reference artifact remains immutable.',[path.relative_to(ROOT).as_posix()],scope='independent-pair-reference-routing-qualification')
+path=OUT/'pair-durable-complete.json'
+if path.exists():
+    result=json.loads(path.read_text());assert result['status']=='PASS_APPLICABLE_V3'
+    add('OR-MIG-0069',result['tested_sha'],'V3','PASS',result['scope']+' Original producer timeout/mid-SQL/equipment/rendered/currentHEAD limitations remain explicit; no whole-contract acceptance inferred.',[path.relative_to(ROOT).as_posix()],scope='pair-durable-obligations-complete')
 print('Per-level evidence events:',len(rows))

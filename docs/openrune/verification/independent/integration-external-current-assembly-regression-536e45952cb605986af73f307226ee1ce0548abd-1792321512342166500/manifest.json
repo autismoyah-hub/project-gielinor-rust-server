@@ -1,0 +1,58 @@
+{
+  "tested_integration_sha": "536e45952cb605986af73f307226ee1ce0548abd",
+  "suite": "current-assembly-regression",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 6821351424,
+    "active_compilers": [],
+    "cpu_percent": 30.86,
+    "cpu_samples": [
+      29.1015625,
+      23.2421875,
+      40.234375
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained",
+    "disk_free": 17071747072,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "d264a099633aa9685939f66e155d2561555e8f71",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\536e45952cb605986af73f307226ee1ce0548abd\\external-harness-6265553800\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-current-assembly-regression-536e45952cb605986af73f307226ee1ce0548abd-1792321512342166500\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\536e45952cb605986af73f307226ee1ce0548abd\\external-harness-6265553800\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 3,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-current-assembly-regression-536e45952cb605986af73f307226ee1ce0548abd-1792321512342166500\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative current-assembly-regression scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-current-assembly-regression-536e45952cb605986af73f307226ee1ce0548abd-1792321512342166500\\harness\\legacy.rs": "11e25bd600d93bc09f45cfb31e4314594eaa03760d5071f9fc80b97c275b6637"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\legacy-6cb8a9f6598e8998.exe": "af08001d90cb42816aca6b51f09f56b64a725a097ac66760821380c4596aac62"
+  }
+}

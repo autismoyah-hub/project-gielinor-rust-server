@@ -1,0 +1,8 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\c7ddebe844820260252fb37df518f8c271f37243\external-harness-7105857900)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.81s
+     Running tests\matrix.rs (C:\Projects\OSRSRSPS\agent7-verification\work\c7ddebe844820260252fb37df518f8c271f37243\target\debug\deps\matrix-f436a619eef95def.exe)
+
+running 1 test
+test selected_current_member_rate_and_timing_matrix ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 14.52s

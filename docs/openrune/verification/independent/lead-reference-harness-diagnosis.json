@@ -1,0 +1,7 @@
+{
+  "tested_sha": "7bacd9305d84df87a5ebdef95449f1dbc783d8bc",
+  "status": "CORRECTED_PARSER_RETRY",
+  "reason": "Recipe extraction excludes its terminal newline. Normal-furnace selection incorrectly required a newline after output1subtxt, which is the last field. Corrected to newline-or-end boundary; pinned revision/title/hash and all behavioral assertions unchanged.",
+  "initial_attempt": "Assertion len(normal)==1failed before any comparison artifact was created; no gameplay or implementation defect inferred.",
+  "scope": "Read-only five-reference check, no disposable game state or completed gameplay campaign repeated."
+}

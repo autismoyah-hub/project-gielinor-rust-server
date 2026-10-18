@@ -1,0 +1,24 @@
+{
+  "implementation_id": "OR-MIG-0069",
+  "tested_sha": "fb348dda184b36ec2d503bfe0f1d5393cf8ae151",
+  "status": "PASS",
+  "feature": "pair-crash",
+  "initial_native_marker": {
+    "products": 1,
+    "fine_at_marker": 130344511,
+    "display_xp_from_raw46": 13034451,
+    "remaining_pairs": 12,
+    "whole_inventory_from_raw_packets_matches": true
+  },
+  "maximum_native_products_in_all_raw_packets": 2,
+  "whole_inventory_packets_checked": 3,
+  "authoritative_unsaved_or_saved_commits": 2,
+  "durable_products": 0,
+  "scope": "Independent raw22/18whole inventory and raw46Crafting witness at the native interruption marker. Every observed inventory packet is a valid captured selected-first/ascending prefix with first-free outputs, both input counts and1000coins conserved. Server trace clocks/pairs independently checked. Native first observation, later server commits and actual durable state remain distinct.",
+  "evidence_sha256": {
+    "produce/client.log": "4059b1b80cbf73c155096c308c87e359fc6f1d5527de1c92a2c3ad283e400c7b",
+    "produce/server.log": "f8e36fd21785f6d7b4f17eb61f0dd79ab9b9ffed4a62d81cb30cc773e333df22",
+    "produce/after.json": "2186ccf19c34d249c7fbbb18b413360c16001a2a53980a478c4039e09a07041b",
+    "produce/manifest.json": "1da4655622105f79eec02d26679ff403e3cdbd0850619f980c87edc1eb3b9f69"
+  }
+}

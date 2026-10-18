@@ -1,0 +1,60 @@
+{
+  "implementation_id": "OR-MIG-0069",
+  "tested_sha": "fb348dda184b36ec2d503bfe0f1d5393cf8ae151",
+  "campaign_kind": "historical",
+  "status": "PASS",
+  "feature": "pair-crash",
+  "recipe": {
+    "first": 1759,
+    "second": 1673,
+    "output": 1692,
+    "fine_per_credit": 200,
+    "first_delay": 1,
+    "repeat_delay": 2
+  },
+  "requested_counts": [
+    13
+  ],
+  "observed_partial_products": 1,
+  "durable_products": 0,
+  "fine_xp_award": 0,
+  "actions": [],
+  "traces": [
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 12,
+      "second_slot": 25,
+      "first": 1759,
+      "second": 1673,
+      "output": 1692,
+      "count": 1,
+      "queued_at": 172,
+      "committed_at": 173
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 0,
+      "second_slot": 13,
+      "first": 1759,
+      "second": 1673,
+      "output": 1692,
+      "count": 1,
+      "queued_at": 173,
+      "committed_at": 175
+    }
+  ],
+  "scope": "Genuine captured two-input native production with independent complete inventory/Stats/energy, selected-first/ascending pairs, first-free outputs, fineXP and real restarted raw22/46state. Owned unacknowledged termination restores prior whole state; no mid-SQL fault claimed.",
+  "limitations": [
+    "Single declared recipe batch scope; other profile/timing/member/modifier cases remain separately identified.",
+    "No custom input, rendered/audio or original executable parity claim."
+  ],
+  "evidence_sha256": {
+    "produce/client.log": "4059b1b80cbf73c155096c308c87e359fc6f1d5527de1c92a2c3ad283e400c7b",
+    "produce/server.log": "f8e36fd21785f6d7b4f17eb61f0dd79ab9b9ffed4a62d81cb30cc773e333df22",
+    "produce/manifest.json": "1da4655622105f79eec02d26679ff403e3cdbd0850619f980c87edc1eb3b9f69",
+    "relogin/client.log": "7f919aa8b3bcc55fbf6b0bd6b6365a23207484e148641a0b542c116abb79fd7f",
+    "relogin/manifest.json": "edb20eed9e171924fa934c100f33b5caf257e38fb5d205153d5f04e7e4c9adb3"
+  }
+}

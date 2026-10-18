@@ -1,0 +1,403 @@
+{
+  "implementation_id": "OR-MIG-0069",
+  "tested_sha": "fb348dda184b36ec2d503bfe0f1d5393cf8ae151",
+  "campaign_kind": "historical",
+  "status": "PASS",
+  "feature": "pair-earth-batch",
+  "recipe": {
+    "first": 1391,
+    "second": 575,
+    "output": 1399,
+    "fine_per_credit": 5625,
+    "first_delay": 3,
+    "repeat_delay": 2
+  },
+  "requested_counts": [
+    13
+  ],
+  "observed_partial_products": null,
+  "durable_products": 13,
+  "fine_xp_award": 73125,
+  "actions": [
+    {
+      "batch": 0,
+      "step": 0,
+      "first_slot": 12,
+      "second_slot": 25,
+      "output_slot": 12
+    },
+    {
+      "batch": 0,
+      "step": 1,
+      "first_slot": 0,
+      "second_slot": 13,
+      "output_slot": 0
+    },
+    {
+      "batch": 0,
+      "step": 2,
+      "first_slot": 1,
+      "second_slot": 14,
+      "output_slot": 1
+    },
+    {
+      "batch": 0,
+      "step": 3,
+      "first_slot": 2,
+      "second_slot": 15,
+      "output_slot": 2
+    },
+    {
+      "batch": 0,
+      "step": 4,
+      "first_slot": 3,
+      "second_slot": 16,
+      "output_slot": 3
+    },
+    {
+      "batch": 0,
+      "step": 5,
+      "first_slot": 4,
+      "second_slot": 17,
+      "output_slot": 4
+    },
+    {
+      "batch": 0,
+      "step": 6,
+      "first_slot": 5,
+      "second_slot": 18,
+      "output_slot": 5
+    },
+    {
+      "batch": 0,
+      "step": 7,
+      "first_slot": 6,
+      "second_slot": 19,
+      "output_slot": 6
+    },
+    {
+      "batch": 0,
+      "step": 8,
+      "first_slot": 7,
+      "second_slot": 20,
+      "output_slot": 7
+    },
+    {
+      "batch": 0,
+      "step": 9,
+      "first_slot": 8,
+      "second_slot": 21,
+      "output_slot": 8
+    },
+    {
+      "batch": 0,
+      "step": 10,
+      "first_slot": 9,
+      "second_slot": 22,
+      "output_slot": 9
+    },
+    {
+      "batch": 0,
+      "step": 11,
+      "first_slot": 10,
+      "second_slot": 23,
+      "output_slot": 10
+    },
+    {
+      "batch": 0,
+      "step": 12,
+      "first_slot": 11,
+      "second_slot": 24,
+      "output_slot": 11
+    }
+  ],
+  "native_effects": [
+    {
+      "step": 0,
+      "slot": 12,
+      "output": 1399,
+      "sequence": 7531,
+      "spot": 1371,
+      "first_sequence_tick": 142,
+      "credit_tick": 145
+    },
+    {
+      "step": 1,
+      "slot": 0,
+      "output": 1399,
+      "sequence": 7531,
+      "spot": 1371,
+      "first_sequence_tick": 142,
+      "credit_tick": 147
+    },
+    {
+      "step": 2,
+      "slot": 1,
+      "output": 1399,
+      "sequence": 7531,
+      "spot": 1371,
+      "first_sequence_tick": 142,
+      "credit_tick": 149
+    },
+    {
+      "step": 3,
+      "slot": 2,
+      "output": 1399,
+      "sequence": 7531,
+      "spot": 1371,
+      "first_sequence_tick": 142,
+      "credit_tick": 151
+    },
+    {
+      "step": 4,
+      "slot": 3,
+      "output": 1399,
+      "sequence": 7531,
+      "spot": 1371,
+      "first_sequence_tick": 142,
+      "credit_tick": 153
+    },
+    {
+      "step": 5,
+      "slot": 4,
+      "output": 1399,
+      "sequence": 7531,
+      "spot": 1371,
+      "first_sequence_tick": 142,
+      "credit_tick": 155
+    },
+    {
+      "step": 6,
+      "slot": 5,
+      "output": 1399,
+      "sequence": 7531,
+      "spot": 1371,
+      "first_sequence_tick": 142,
+      "credit_tick": 157
+    },
+    {
+      "step": 7,
+      "slot": 6,
+      "output": 1399,
+      "sequence": 7531,
+      "spot": 1371,
+      "first_sequence_tick": 142,
+      "credit_tick": 159
+    },
+    {
+      "step": 8,
+      "slot": 7,
+      "output": 1399,
+      "sequence": 7531,
+      "spot": 1371,
+      "first_sequence_tick": 142,
+      "credit_tick": 161
+    },
+    {
+      "step": 9,
+      "slot": 8,
+      "output": 1399,
+      "sequence": 7531,
+      "spot": 1371,
+      "first_sequence_tick": 142,
+      "credit_tick": 163
+    },
+    {
+      "step": 10,
+      "slot": 9,
+      "output": 1399,
+      "sequence": 7531,
+      "spot": 1371,
+      "first_sequence_tick": 142,
+      "credit_tick": 165
+    },
+    {
+      "step": 11,
+      "slot": 10,
+      "output": 1399,
+      "sequence": 7531,
+      "spot": 1371,
+      "first_sequence_tick": 142,
+      "credit_tick": 167
+    },
+    {
+      "step": 12,
+      "slot": 11,
+      "output": 1399,
+      "sequence": 7531,
+      "spot": 1371,
+      "first_sequence_tick": 142,
+      "credit_tick": 169
+    }
+  ],
+  "traces": [
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 12,
+      "second_slot": 25,
+      "first": 1391,
+      "second": 575,
+      "output": 1399,
+      "count": 1,
+      "queued_at": 152,
+      "committed_at": 155
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 0,
+      "second_slot": 13,
+      "first": 1391,
+      "second": 575,
+      "output": 1399,
+      "count": 1,
+      "queued_at": 155,
+      "committed_at": 157
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 1,
+      "second_slot": 14,
+      "first": 1391,
+      "second": 575,
+      "output": 1399,
+      "count": 1,
+      "queued_at": 157,
+      "committed_at": 159
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 2,
+      "second_slot": 15,
+      "first": 1391,
+      "second": 575,
+      "output": 1399,
+      "count": 1,
+      "queued_at": 159,
+      "committed_at": 161
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 3,
+      "second_slot": 16,
+      "first": 1391,
+      "second": 575,
+      "output": 1399,
+      "count": 1,
+      "queued_at": 161,
+      "committed_at": 163
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 4,
+      "second_slot": 17,
+      "first": 1391,
+      "second": 575,
+      "output": 1399,
+      "count": 1,
+      "queued_at": 163,
+      "committed_at": 165
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 5,
+      "second_slot": 18,
+      "first": 1391,
+      "second": 575,
+      "output": 1399,
+      "count": 1,
+      "queued_at": 165,
+      "committed_at": 167
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 6,
+      "second_slot": 19,
+      "first": 1391,
+      "second": 575,
+      "output": 1399,
+      "count": 1,
+      "queued_at": 167,
+      "committed_at": 169
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 7,
+      "second_slot": 20,
+      "first": 1391,
+      "second": 575,
+      "output": 1399,
+      "count": 1,
+      "queued_at": 169,
+      "committed_at": 171
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 8,
+      "second_slot": 21,
+      "first": 1391,
+      "second": 575,
+      "output": 1399,
+      "count": 1,
+      "queued_at": 171,
+      "committed_at": 173
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 9,
+      "second_slot": 22,
+      "first": 1391,
+      "second": 575,
+      "output": 1399,
+      "count": 1,
+      "queued_at": 173,
+      "committed_at": 175
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 10,
+      "second_slot": 23,
+      "first": 1391,
+      "second": 575,
+      "output": 1399,
+      "count": 1,
+      "queued_at": 175,
+      "committed_at": 177
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 11,
+      "second_slot": 24,
+      "first": 1391,
+      "second": 575,
+      "output": 1399,
+      "count": 1,
+      "queued_at": 177,
+      "committed_at": 179
+    }
+  ],
+  "scope": "Genuine captured two-input native production with independent complete inventory/Stats/energy, selected-first/ascending pairs, first-free outputs, fineXP and real restarted raw22/46state. Builtin quantities, profile-specific first/repeat2server clocks and stale completed quantity/held refusal pass.",
+  "limitations": [
+    "Single declared recipe batch scope; other profile/timing/member/modifier cases remain separately identified.",
+    "No custom input, rendered/audio or original executable parity claim."
+  ],
+  "evidence_sha256": {
+    "produce/client.log": "162eaf442501fe62ccacde39d8d09747d519154ea356951a78443688779b46c8",
+    "produce/server.log": "c0e51771cb5ce37f9d4b3491dd003e6d7dfa097e40432fb1a843de5791080b8e",
+    "produce/manifest.json": "25729a92ecadbee0b8af2407420115a9ed4fe03b3d4bdfadfac0634707642a32",
+    "relogin/client.log": "f00081dc45fc4c25582608ca2221a7c89f67b3d747484c1367d657b2e401b494",
+    "relogin/manifest.json": "3878500250609d155f04c394d50b01ba1d3eecde2934193a3275799f2c658449"
+  }
+}

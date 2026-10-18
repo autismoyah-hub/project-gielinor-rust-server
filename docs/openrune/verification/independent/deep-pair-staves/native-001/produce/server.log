@@ -1,0 +1,13 @@
+Loaded 11 map squares, 586 NPCs, 24220 locations
+Listening on 127.0.0.1:51169 (revision 239.1; partial gameplay implementation)
+Player ready: ActorId { slot: 1, generation: 614 }
+Assembly transition: {"actor_slot":1,"actor_generation":614,"first_slot":4,"second_slot":6,"first":1391,"second":571,"output":1395,"count":1,"queued_at":146,"committed_at":149}
+Assembly transition: {"actor_slot":1,"actor_generation":614,"first_slot":5,"second_slot":7,"first":1391,"second":571,"output":1395,"count":1,"queued_at":171,"committed_at":174}
+Assembly transition: {"actor_slot":1,"actor_generation":614,"first_slot":8,"second_slot":10,"first":1391,"second":575,"output":1399,"count":1,"queued_at":189,"committed_at":192}
+Assembly transition: {"actor_slot":1,"actor_generation":614,"first_slot":9,"second_slot":11,"first":1391,"second":575,"output":1399,"count":1,"queued_at":208,"committed_at":211}
+Assembly transition: {"actor_slot":1,"actor_generation":614,"first_slot":12,"second_slot":14,"first":1391,"second":569,"output":1393,"count":1,"queued_at":226,"committed_at":229}
+Assembly transition: {"actor_slot":1,"actor_generation":614,"first_slot":13,"second_slot":15,"first":1391,"second":569,"output":1393,"count":1,"queued_at":248,"committed_at":251}
+Assembly transition: {"actor_slot":1,"actor_generation":614,"first_slot":16,"second_slot":18,"first":1391,"second":573,"output":1397,"count":1,"queued_at":266,"committed_at":269}
+Assembly transition: {"actor_slot":1,"actor_generation":614,"first_slot":17,"second_slot":19,"first":1391,"second":573,"output":1397,"count":1,"queued_at":287,"committed_at":290}
+Save acknowledgement: {"actor_slot":1,"actor_generation":614,"save_generation":614,"observed_tick":314,"save_completed":true}
+Shutdown completed; accounts drained.

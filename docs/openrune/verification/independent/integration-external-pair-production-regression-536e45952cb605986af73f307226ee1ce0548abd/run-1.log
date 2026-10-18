@@ -1,0 +1,10 @@
+   Compiling gielinor-world v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\536e45952cb605986af73f307226ee1ce0548abd\crates\world)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\536e45952cb605986af73f307226ee1ce0548abd\external-harness-9237765100)
+error[E0063]: missing fields `required_tools` and `tool_animation` in initializer of `PreciseRecipe`
+  --> tests\legacy.rs:13:538
+   |
+13 | ...=(inv.clone(),stats.clone());let r=PreciseRecipe{recipe:Recipe{first:1391,second:orb,output:out,skill:12,level:level as u8,base_x...
+   |                                       ^^^^^^^^^^^^^ missing `required_tools` and `tool_animation`
+
+For more information about this error, try `rustc --explain E0063`.
+error: could not compile `proving-ground-energy` (test "legacy") due to 1 previous error

@@ -1,0 +1,66 @@
+{
+  "implementation_id": "OR-MIG-0096",
+  "tested_sha": "7bacd9305d84df87a5ebdef95449f1dbc783d8bc",
+  "campaign_kind": "historical",
+  "status": "IN_PROGRESS",
+  "source_documentation_subcheck": "PASS_WITH_EXPLICIT_TIMING_AND_RATE_LIMITATIONS",
+  "sources": [
+    {
+      "kind": "openrune",
+      "reference": "or-cache/src/main/kotlin/dev/openrune/tables/skills/Smithing.kt",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "sha256": "8ae9187191965b6c8384bc3019ffc2a7058526031b7fa6d34686927f0491a144"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/smithing/src/main/kotlin/org/rsmod/content/skills/smithing/smelting/SmeltingScript.kt",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "sha256": "13b6dd208704723eb134ef19440e60a34a5c075f23bb4d8138108350907a011c"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/smithing/src/main/kotlin/org/rsmod/content/skills/smithing/smelting/SmithingSmeltXp.kt",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "sha256": "4cc9312f09c4ab27d4e2f7dc4fd23a2b09874874c6860f1e68c196d04e19993d"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Lead bar",
+      "revision": "15226137",
+      "sha256": "2b2073321b869f30d483f6cdcd9968cf2dee3fc3ffb2ca5613ea06ed8c3dff21"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Lead ore",
+      "revision": "15226123",
+      "sha256": "fecfdcf2f3cd77e3a9af2fb48eeb14c50ccbde42f155e1a9c9c806ac48989ebf"
+    }
+  ],
+  "pinned_rust_sha256": {
+    "crates/server/src/content/lead_smelting.rs": "3f29c7dd5c317425f18c617380cda18044319af68bccd6ad60fa33d25c0273bc",
+    "crates/server/src/runtime/smelting.rs": "b2a08f3bb11f4f6267e54d44b177762c9c7d543adfa6222f5674a88a903de564"
+  },
+  "facts": {
+    "input": 31716,
+    "input_count": 2,
+    "output": 32889,
+    "current_smithing": 25,
+    "member": true,
+    "source_base_xp": 15,
+    "wiki_and_target_base_xp": 15.5,
+    "fine_at_100": 155,
+    "fine_at_125": 193,
+    "wiki_make_x_first": 4,
+    "wiki_repeat": 5,
+    "wiki_single": 6,
+    "target_runtime_rate": 1.0,
+    "target_repeat_queue_constant": 6
+  },
+  "scope": "Five pinned source/Wiki hashes independently match. Source two ores/Smithing25/integer15XP and exact Wiki normal-furnace15.5XP adaptation verified; output32889/ore31716and per-step155/193fine awards independently calculated. Wiki explicitly distinguishes Make-X4then5from single6. Exact target content retains two ores/member25/15.5XP/repeat queue6; actual runtime initializes rate1.0.",
+  "limitations": [
+    "No source or queue constant is treated as observed elapsed timing. Initial/repeat/single native clocks remain untested; declared implementation lacks a dedicated single6path.",
+    "Runtime1.0does not establish intended server-wide5xrate integration; this known integration limit remains explicit.",
+    "No World/cache/startup/native/persistence acceptance executed by this reference campaign.",
+    "Normal furnace only; Blast Furnace/Superheat, equipment modifiers, acquisition and shipbuilding excluded. Chemistry remains deferred."
+  ]
+}

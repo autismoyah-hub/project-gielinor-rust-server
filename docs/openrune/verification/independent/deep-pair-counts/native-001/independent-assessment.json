@@ -1,0 +1,278 @@
+{
+  "implementation_id": "OR-MIG-0069",
+  "tested_sha": "fb348dda184b36ec2d503bfe0f1d5393cf8ae151",
+  "campaign_kind": "historical",
+  "status": "PASS",
+  "feature": "pair-counts",
+  "requested_counts": [
+    1,
+    5,
+    7
+  ],
+  "observed_partial_products": null,
+  "durable_products": 13,
+  "fine_xp_award": 2600,
+  "actions": [
+    {
+      "batch": 0,
+      "step": 0,
+      "wool": 12,
+      "raw": 25,
+      "output_slot": 12
+    },
+    {
+      "batch": 1,
+      "step": 0,
+      "wool": 11,
+      "raw": 24,
+      "output_slot": 11
+    },
+    {
+      "batch": 1,
+      "step": 1,
+      "wool": 0,
+      "raw": 13,
+      "output_slot": 0
+    },
+    {
+      "batch": 1,
+      "step": 2,
+      "wool": 1,
+      "raw": 14,
+      "output_slot": 1
+    },
+    {
+      "batch": 1,
+      "step": 3,
+      "wool": 2,
+      "raw": 15,
+      "output_slot": 2
+    },
+    {
+      "batch": 1,
+      "step": 4,
+      "wool": 3,
+      "raw": 16,
+      "output_slot": 3
+    },
+    {
+      "batch": 2,
+      "step": 0,
+      "wool": 10,
+      "raw": 23,
+      "output_slot": 10
+    },
+    {
+      "batch": 2,
+      "step": 1,
+      "wool": 4,
+      "raw": 17,
+      "output_slot": 4
+    },
+    {
+      "batch": 2,
+      "step": 2,
+      "wool": 5,
+      "raw": 18,
+      "output_slot": 5
+    },
+    {
+      "batch": 2,
+      "step": 3,
+      "wool": 6,
+      "raw": 19,
+      "output_slot": 6
+    },
+    {
+      "batch": 2,
+      "step": 4,
+      "wool": 7,
+      "raw": 20,
+      "output_slot": 7
+    },
+    {
+      "batch": 2,
+      "step": 5,
+      "wool": 8,
+      "raw": 21,
+      "output_slot": 8
+    },
+    {
+      "batch": 2,
+      "step": 6,
+      "wool": 9,
+      "raw": 22,
+      "output_slot": 9
+    }
+  ],
+  "traces": [
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 12,
+      "second_slot": 25,
+      "first": 1759,
+      "second": 1673,
+      "output": 1692,
+      "count": 1,
+      "queued_at": 149,
+      "committed_at": 150
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 11,
+      "second_slot": 24,
+      "first": 1759,
+      "second": 1673,
+      "output": 1692,
+      "count": 1,
+      "queued_at": 169,
+      "committed_at": 170
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 0,
+      "second_slot": 13,
+      "first": 1759,
+      "second": 1673,
+      "output": 1692,
+      "count": 1,
+      "queued_at": 170,
+      "committed_at": 172
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 1,
+      "second_slot": 14,
+      "first": 1759,
+      "second": 1673,
+      "output": 1692,
+      "count": 1,
+      "queued_at": 172,
+      "committed_at": 174
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 2,
+      "second_slot": 15,
+      "first": 1759,
+      "second": 1673,
+      "output": 1692,
+      "count": 1,
+      "queued_at": 174,
+      "committed_at": 176
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 3,
+      "second_slot": 16,
+      "first": 1759,
+      "second": 1673,
+      "output": 1692,
+      "count": 1,
+      "queued_at": 176,
+      "committed_at": 178
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 10,
+      "second_slot": 23,
+      "first": 1759,
+      "second": 1673,
+      "output": 1692,
+      "count": 1,
+      "queued_at": 197,
+      "committed_at": 198
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 4,
+      "second_slot": 17,
+      "first": 1759,
+      "second": 1673,
+      "output": 1692,
+      "count": 1,
+      "queued_at": 198,
+      "committed_at": 200
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 5,
+      "second_slot": 18,
+      "first": 1759,
+      "second": 1673,
+      "output": 1692,
+      "count": 1,
+      "queued_at": 200,
+      "committed_at": 202
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 6,
+      "second_slot": 19,
+      "first": 1759,
+      "second": 1673,
+      "output": 1692,
+      "count": 1,
+      "queued_at": 202,
+      "committed_at": 204
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 7,
+      "second_slot": 20,
+      "first": 1759,
+      "second": 1673,
+      "output": 1692,
+      "count": 1,
+      "queued_at": 204,
+      "committed_at": 206
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 8,
+      "second_slot": 21,
+      "first": 1759,
+      "second": 1673,
+      "output": 1692,
+      "count": 1,
+      "queued_at": 206,
+      "committed_at": 208
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 9,
+      "second_slot": 22,
+      "first": 1759,
+      "second": 1673,
+      "output": 1692,
+      "count": 1,
+      "queued_at": 208,
+      "committed_at": 210
+    }
+  ],
+  "scope": "Genuine captured two-input native production with independent complete inventory/Stats/energy, selected-first/ascending pairs, first-free outputs, fineXP and real restarted raw22/46state. Builtin quantities, first1/repeat2server clocks and stale completed quantity/held refusal pass.",
+  "limitations": [
+    "Gold stringing batch scope; other profile/timing/member/modifier cases remain separately identified.",
+    "No custom input, rendered/audio or original executable parity claim."
+  ],
+  "evidence_sha256": {
+    "produce/client.log": "d30f3111040c28af26cac735263e301b4b6f884a5312e04bbbf6b224d1f96447",
+    "produce/server.log": "df3fb534b4cede93fd2ac071c8b047cc5b98d0d4fca6080551841bfd24af88e3",
+    "produce/manifest.json": "6ea4c45fc5ef77033db4bbe5e7d55450f36ac264d327adcb30ab189e3f6638e5",
+    "relogin/client.log": "6209eee0f72dc7d069a33f25f29880a982d67bbd1db365774c911eebf2666ef0",
+    "relogin/manifest.json": "b102c4e30040c255eddfa8400fece599d7de1166262f79658f502498d536b05f"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "implementation_id": "OR-MIG-0069",
+  "tested_sha": "fb348dda184b36ec2d503bfe0f1d5393cf8ae151",
+  "campaign_kind": "historical",
+  "status": "PASS",
+  "feature": "pair-pending",
+  "recipe": {
+    "first": 1759,
+    "second": 1673,
+    "output": 1692,
+    "fine_per_credit": 200,
+    "first_delay": 1,
+    "repeat_delay": 2
+  },
+  "requested_counts": [],
+  "observed_partial_products": null,
+  "durable_products": 0,
+  "fine_xp_award": 0,
+  "actions": [],
+  "native_effects": [],
+  "traces": [],
+  "scope": "Genuine native quantity dialog opened without a Make reply; one held packet/no115/no product or XP. Full inventory/Stats/energy preserved through acknowledged save and real process/native restart. Raw22/46independently decoded and no visible270dialog after reconnect. This is pending-choice invalidation, not completed production.",
+  "limitations": [
+    "Single declared recipe batch scope; other profile/timing/member/modifier cases remain separately identified.",
+    "No custom input, rendered/audio or original executable parity claim."
+  ],
+  "evidence_sha256": {
+    "produce/client.log": "ffe6b2428f4d8b5968373178a94afdf08df691a75b3717907c236a4f5245bb94",
+    "produce/server.log": "1b156c22adad8298288b55492ed77d846759f518490cdd7e8efbc54a118876a9",
+    "produce/manifest.json": "43d38e5313a985f3072493d985fae6b25456d9058b0d533628cbb7730db66977",
+    "relogin/client.log": "7c10d7804155bee6e49d49f75dd0b8f20b611e841f0f26100ec4f997fe275bcd",
+    "relogin/manifest.json": "b5481cd681be43cc0ba23a0310693914e792239a99af8c1620b7fb110afa5312"
+  }
+}

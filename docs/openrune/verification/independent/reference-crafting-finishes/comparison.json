@@ -1,0 +1,115 @@
+{
+  "implementation_id": "OR-MIG-0070",
+  "tested_sha": "c7ddebe844820260252fb37df518f8c271f37243",
+  "campaign_kind": "historical",
+  "status": "IN_PROGRESS",
+  "source_documentation_subcheck": "PASS",
+  "sources": [
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/scripts/HeldCraftingScript.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "c39f8b323e8fa79f933224b9ca0c8cf07a5df005628906e79645e3e6a5399318"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingSection.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "26e5be7a84fbe82f5c4897d29cb3261c63cd475111f17df517e2e0ac5e0d8afb"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingWorker.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "5790b247e5441b54e05c0ca7b4b5a9dff5c7aa61181ebccb36d0d8057db56e53"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/util/CraftingConstants.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "393d05fa5a5645b2dd712fcfb8f8814845376846a7594dafe16909422fe2008f"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/pack/src/main/kotlin/org/rsmod/content/skills/crafting/pack/Crafting.kt",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "sha256": "5b3d4124ce83b2c6e93590b2d833e7dc0a37ce87e3a7dc2f327241ab165ef3e0"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingProduct.kt",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "sha256": "e0ee16a23f6fa20bf82ebae4103213c1a13337c596b2d2f7b7715edbe3073576"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/utils/src/main/kotlin/org/rsmod/content/skills/MathSkillUtiils.kt",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "sha256": "874ef859e35b30891ce90d077262e1637e9115e5c285ffb790970f899f32770b"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Light orb",
+      "revision": "15185204",
+      "sha256": "730f848d89205c1b4d662aa6663ba3f941dac98b9ece00d6195853a62cb3bbce"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Empty light orb",
+      "revision": "15185205",
+      "sha256": "fef0d83b39f2c1bfc880c311e30f633418c9aef078f5012cd8f8a9a16bdf41ea"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Cave goblin wire",
+      "revision": "15184478",
+      "sha256": "a95e6c1b07473c8a1e6acb36fc96155e52ae4d20db4ee2dc206bc301f95e7a47"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Serpentine helm",
+      "revision": "15262696",
+      "sha256": "5e698c8f2ce0d290465a3a20a4b2c8b5b9175ef454c5ec9a7890c48b04116df4"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Serpentine visage",
+      "revision": "15186556",
+      "sha256": "3522102c903c304120d17cfbdc3e73c26e351a9d7a8f55b1f4f53516e50e4779"
+    }
+  ],
+  "profiles": [
+    {
+      "input": [
+        10980,
+        10981
+      ],
+      "output": 10973,
+      "members": true,
+      "current_crafting": 87,
+      "xp_tenths": 1040,
+      "fine_at_125": 1300,
+      "wiki_ticks": 0
+    },
+    {
+      "tool": 1755,
+      "input": [
+        12927
+      ],
+      "output": 12929,
+      "excluded_charged_output": 12931,
+      "members": true,
+      "current_crafting": 52,
+      "xp_tenths": 1200,
+      "fine_at_125": 1500,
+      "wiki_ticks": 1
+    }
+  ],
+  "scope": "All12exact source/Wiki hashes independently match. Source rows and pinned Recipe facts agree on ordinary owned-material wiring87/104XP and chisel helmet52/120XP, material/output identities and uncharged helm12929distinct from charged12931. Wiki wiring0intentionally differs from generic donor Combining1; helmet Recipe1is explicit. Independent125percent awards1300/1500fineXP calculated.",
+  "limitations": [
+    "Reference facts only: World/cache/startup/native/lifecycle acceptance unexecuted at exact70.",
+    "Hash attestation plus generic Combining1does not itself prove full donor category dispatch or original executable timing; actual route and native clocks remain separate.",
+    "Light-orb item page includes unrelated lamp-repair500Crafting/500Firemaking actions; those are excluded from the owned-material104Crafting route.",
+    "Helmet charging/scales, combat/equipment/acquisition, rendered/audio and original executable parity are excluded. Chemistry stays deferred."
+  ]
+}

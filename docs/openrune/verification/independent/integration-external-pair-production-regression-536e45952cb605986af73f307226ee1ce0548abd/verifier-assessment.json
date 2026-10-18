@@ -1,0 +1,3 @@
+{
+  "reason": "Historical fixture cannot compile against newer PreciseRecipe required_tools/tool_animation fields. No gameplay ran. Separate current-assembly-regression fixture sets empty tool slice/None; historical source and rawFAIL retained."
+}

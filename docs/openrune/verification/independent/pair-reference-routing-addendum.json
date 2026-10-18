@@ -1,0 +1,253 @@
+{
+  "implementation_id": "OR-MIG-0069",
+  "tested_sha": "fb348dda184b36ec2d503bfe0f1d5393cf8ae151",
+  "campaign_kind": "historical",
+  "status": "REFERENCE_QUALIFICATION_REQUIRED",
+  "finding_id": "PG-REF-002",
+  "implementation_blocking": false,
+  "sources": [
+    {
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingSection.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "26e5be7a84fbe82f5c4897d29cb3261c63cd475111f17df517e2e0ac5e0d8afb"
+    },
+    {
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingWorker.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "5790b247e5441b54e05c0ca7b4b5a9dff5c7aa61181ebccb36d0d8057db56e53"
+    },
+    {
+      "reference": "content/skills/crafting/pack/src/main/kotlin/org/rsmod/content/skills/crafting/pack/Crafting.kt",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "sha256": "5b3d4124ce83b2c6e93590b2d833e7dc0a37ce87e3a7dc2f327241ab165ef3e0"
+    },
+    {
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingProduct.kt",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "sha256": "e0ee16a23f6fa20bf82ebae4103213c1a13337c596b2d2f7b7715edbe3073576"
+    }
+  ],
+  "source_rows": [
+    {
+      "source_row": "string_gold_amulet",
+      "source_section": "AmuletStringing",
+      "inputs": [
+        "ball_of_wool",
+        "unstrung_gold_amulet"
+      ],
+      "output": "strung_gold_amulet",
+      "crafting_level": 1,
+      "xp_tenths": 40,
+      "row_tick_override": false
+    },
+    {
+      "source_row": "string_sapphire_amulet",
+      "source_section": "AmuletStringing",
+      "inputs": [
+        "ball_of_wool",
+        "unstrung_sapphire_amulet"
+      ],
+      "output": "strung_sapphire_amulet",
+      "crafting_level": 1,
+      "xp_tenths": 40,
+      "row_tick_override": false
+    },
+    {
+      "source_row": "string_emerald_amulet",
+      "source_section": "AmuletStringing",
+      "inputs": [
+        "ball_of_wool",
+        "unstrung_emerald_amulet"
+      ],
+      "output": "strung_emerald_amulet",
+      "crafting_level": 1,
+      "xp_tenths": 40,
+      "row_tick_override": false
+    },
+    {
+      "source_row": "string_ruby_amulet",
+      "source_section": "AmuletStringing",
+      "inputs": [
+        "ball_of_wool",
+        "unstrung_ruby_amulet"
+      ],
+      "output": "strung_ruby_amulet",
+      "crafting_level": 1,
+      "xp_tenths": 40,
+      "row_tick_override": false
+    },
+    {
+      "source_row": "string_diamond_amulet",
+      "source_section": "AmuletStringing",
+      "inputs": [
+        "ball_of_wool",
+        "unstrung_diamond_amulet"
+      ],
+      "output": "strung_diamond_amulet",
+      "crafting_level": 1,
+      "xp_tenths": 40,
+      "row_tick_override": false
+    },
+    {
+      "source_row": "string_dragonstone_amulet",
+      "source_section": "AmuletStringing",
+      "inputs": [
+        "ball_of_wool",
+        "unstrung_dragonstone_amulet"
+      ],
+      "output": "strung_dragonstone_amulet",
+      "crafting_level": 1,
+      "xp_tenths": 40,
+      "row_tick_override": false
+    },
+    {
+      "source_row": "string_onyx_amulet",
+      "source_section": "AmuletStringing",
+      "inputs": [
+        "ball_of_wool",
+        "unstrung_onyx_amulet"
+      ],
+      "output": "strung_onyx_amulet",
+      "crafting_level": 1,
+      "xp_tenths": 40,
+      "row_tick_override": false
+    },
+    {
+      "source_row": "string_zenyte_amulet",
+      "source_section": "AmuletStringing",
+      "inputs": [
+        "ball_of_wool",
+        "unstrung_zenyte_amulet"
+      ],
+      "output": "zenyte_amulet",
+      "crafting_level": 1,
+      "xp_tenths": 40,
+      "row_tick_override": false
+    },
+    {
+      "source_row": "string_opal_amulet",
+      "source_section": "AmuletStringing",
+      "inputs": [
+        "ball_of_wool",
+        "unstrung_opal_amulet"
+      ],
+      "output": "strung_opal_amulet",
+      "crafting_level": 1,
+      "xp_tenths": 40,
+      "row_tick_override": false
+    },
+    {
+      "source_row": "string_jade_amulet",
+      "source_section": "AmuletStringing",
+      "inputs": [
+        "ball_of_wool",
+        "unstrung_jade_amulet"
+      ],
+      "output": "strung_jade_amulet",
+      "crafting_level": 1,
+      "xp_tenths": 40,
+      "row_tick_override": false
+    },
+    {
+      "source_row": "string_topaz_amulet",
+      "source_section": "AmuletStringing",
+      "inputs": [
+        "ball_of_wool",
+        "unstrung_topaz_amulet"
+      ],
+      "output": "strung_topaz_amulet",
+      "crafting_level": 1,
+      "xp_tenths": 40,
+      "row_tick_override": false
+    },
+    {
+      "source_row": "string_symbol",
+      "source_section": "AmuletStringing",
+      "inputs": [
+        "ball_of_wool",
+        "nostringstar"
+      ],
+      "output": "stringstar",
+      "crafting_level": 1,
+      "xp_tenths": 40,
+      "row_tick_override": false
+    },
+    {
+      "source_row": "string_emblem",
+      "source_section": "AmuletStringing",
+      "inputs": [
+        "ball_of_wool",
+        "nostringsnake"
+      ],
+      "output": "stringsnake",
+      "crafting_level": 1,
+      "xp_tenths": 40,
+      "row_tick_override": false
+    },
+    {
+      "source_row": "strung_rabbit_foot",
+      "source_section": "Combining",
+      "inputs": [
+        "hunting_rabbit_foot",
+        "ball_of_wool"
+      ],
+      "output": "hunting_strung_rabbit_foot",
+      "crafting_level": 37,
+      "xp_tenths": 40,
+      "row_tick_override": false
+    },
+    {
+      "source_row": "water_battlestaff",
+      "source_section": "Battlestaves",
+      "inputs": [
+        "battlestaff",
+        "water_orb"
+      ],
+      "output": "water_battlestaff",
+      "crafting_level": 54,
+      "xp_tenths": 1000,
+      "row_tick_override": false
+    },
+    {
+      "source_row": "earth_battlestaff",
+      "source_section": "Battlestaves",
+      "inputs": [
+        "battlestaff",
+        "earth_orb"
+      ],
+      "output": "earth_battlestaff",
+      "crafting_level": 58,
+      "xp_tenths": 1125,
+      "row_tick_override": false
+    },
+    {
+      "source_row": "fire_battlestaff",
+      "source_section": "Battlestaves",
+      "inputs": [
+        "battlestaff",
+        "fire_orb"
+      ],
+      "output": "fire_battlestaff",
+      "crafting_level": 62,
+      "xp_tenths": 1250,
+      "row_tick_override": false
+    },
+    {
+      "source_row": "air_battlestaff",
+      "source_section": "Battlestaves",
+      "inputs": [
+        "battlestaff",
+        "air_orb"
+      ],
+      "output": "air_battlestaff",
+      "crafting_level": 66,
+      "xp_tenths": 1375,
+      "row_tick_override": false
+    }
+  ],
+  "facts": "Thirteen wool rows are in source AmuletStringing2/default-shortened-first. Rabbit-foot row is instead Combining1/COMBINE, with no row tick override; source product defaults to its section ticks. All18source material pairs/current levels/fineXP rows independently extracted and matched. Source worker explicitly uses max(1,cycleTicks-1) when first-shortened, plus phase compensation.",
+  "difference": "Target quantity policy first1/repeat2for rabbit foot is supported by pinned Wiki2and independently passes World; it must not be described as inherited source AmuletStringing2. Source Combines full dispatch/repeat executable behavior is not inferred from the section constant alone.",
+  "correction": "Clarify OR69reference basis:13AmuletStringing routes versus Rabbit Combining1and explicit Wiki-backed target quantity/timing adaptation. Preserve expected target1/2, exact historical fbSHA and all completed evidence. No game-code defect or FORGE stop alleged; ordinary reference correction only.",
+  "acceptance_limit": "Keep V4partial until final source/Wiki/native comparison explicitly qualifies this difference. Original39reference artifact remains immutable and superseded only within this newly inspected source-route scope; no whole source parity claim.",
+  "prior_evidence": "docs/openrune/verification/independent/reference-pair-production/comparison.json"
+}

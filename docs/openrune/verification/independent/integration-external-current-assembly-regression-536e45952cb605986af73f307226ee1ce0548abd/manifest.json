@@ -1,0 +1,8 @@
+{
+  "tested_integration_sha": "536e45952cb605986af73f307226ee1ce0548abd",
+  "suite": "current-assembly-regression",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "BLOCKED",
+  "reason": "Measured-resource deferral; no substitute target: Measured resource guard blocked; no other process altered"
+}

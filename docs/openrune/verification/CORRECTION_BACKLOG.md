@@ -169,3 +169,11 @@ For each confirmed defect, record a stable finding ID, feature ID, full tested S
 ## PG-DEF-003 - immediate tool crafting ignores authoritative life
 
 OR-MIG-0065 r1 at `4f4aacb2929e8ad775d091527e2d80070100ee69`: eight separate World refusal cases fail across both recipes, directions, zero HP and queued death with visible HP restored. Selected raw is replaced immediately; limestone awards 300 fine XP at rate500. Four alive controls pass. Native reachability/current HEAD remain untested. Apply shared life checks before immediate admission/credit and publish correction SHA; ordinary P2, no FORGE stop. Aggregate acceptance is withdrawn append-only; prior successful evidence remains intact. See [finding](independent/immediate-life-finding.json) and [withdrawal](independent/immediate-acceptance-withdrawal.json).
+
+## PG-REF-002 - qualify Rabbit-foot source routing in OR69
+
+At exact `fb348dda184b36ec2d503bfe0f1d5393cf8ae151`, thirteen wool rows belong to donor AmuletStringing2, while Rabbit-foot belongs to Combining1/COMBINE with no per-row tick override. Target first1/repeat2 is supported by its pinned Wiki2 and independent World checks, but must not be described as inherited donor AmuletStringing2 for every row. Clarify the reference basis and explicit adaptation; no gameplay defect, code change or FORGE stop alleged. V4 remains partial pending the qualified final comparison. Preserve the original39reference artifact and all completed tests. See [source-route addendum](independent/pair-reference-routing-addendum.json).
+
+## PG-DEF-004 - immediate pair wiring ignores authoritative life
+
+OR-MIG-0070 at `c7ddebe844820260252fb37df518f8c271f37243`: four separately named both-direction zeroHP/queued-death refusals fail. Empty orb10980 and wire10981 synchronously become10973 with1300fineXP at125%; four helm life controls pass. Refuse synchronous assembly admission/credit using authoritative life state and preserve the whole pair/Stats. P2 local correction, no FORGE stop or external issue. Native reachability, current HEAD and durability are untested. The separate corrected384case normal matrix passes without replacing this failure. See [finding](independent/crafting-finishes-life-finding.json).

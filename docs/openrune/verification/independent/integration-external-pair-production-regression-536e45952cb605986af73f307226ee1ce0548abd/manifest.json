@@ -1,0 +1,56 @@
+{
+  "tested_integration_sha": "536e45952cb605986af73f307226ee1ce0548abd",
+  "suite": "pair-production-regression",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "FAIL",
+  "resource": {
+    "available_ram": 6505394176,
+    "active_compilers": [],
+    "cpu_percent": 19.84,
+    "cpu_samples": [
+      12.941176470588234,
+      19.103313840155945,
+      27.485380116959067
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained",
+    "disk_free": 17522647040,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "d264a099633aa9685939f66e155d2561555e8f71",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\536e45952cb605986af73f307226ee1ce0548abd\\external-harness-9237765100\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-pair-production-regression-536e45952cb605986af73f307226ee1ce0548abd\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\536e45952cb605986af73f307226ee1ce0548abd\\external-harness-9237765100\\Cargo.toml"
+      ],
+      "exit_code": 101,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-pair-production-regression-536e45952cb605986af73f307226ee1ce0548abd\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative pair-production-regression scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-pair-production-regression-536e45952cb605986af73f307226ee1ce0548abd\\harness\\legacy.rs": "6fc21fbbf0df09055d91455e6b790fd4e89e4967a961ff3eb0dd96d90b1b93d3"
+  },
+  "test_binary_sha256": {}
+}

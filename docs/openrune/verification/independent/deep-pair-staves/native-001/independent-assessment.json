@@ -1,0 +1,275 @@
+{
+  "implementation_id": "OR-MIG-0069",
+  "tested_sha": "fb348dda184b36ec2d503bfe0f1d5393cf8ae151",
+  "campaign_kind": "historical",
+  "status": "PASS",
+  "crash": false,
+  "actions": [
+    {
+      "staff_slot": 4,
+      "orb_slot": 6,
+      "orb": 571,
+      "output": 1395,
+      "output_slot": 4,
+      "fine_award": 5000,
+      "spot": 1370,
+      "direction": 0,
+      "fine_total": 130349311
+    },
+    {
+      "staff_slot": 5,
+      "orb_slot": 7,
+      "orb": 571,
+      "output": 1395,
+      "output_slot": 5,
+      "fine_award": 5000,
+      "spot": 1370,
+      "direction": 1,
+      "fine_total": 130354311
+    },
+    {
+      "staff_slot": 8,
+      "orb_slot": 10,
+      "orb": 575,
+      "output": 1399,
+      "output_slot": 6,
+      "fine_award": 5625,
+      "spot": 1371,
+      "direction": 0,
+      "fine_total": 130359936
+    },
+    {
+      "staff_slot": 9,
+      "orb_slot": 11,
+      "orb": 575,
+      "output": 1399,
+      "output_slot": 7,
+      "fine_award": 5625,
+      "spot": 1371,
+      "direction": 1,
+      "fine_total": 130365561
+    },
+    {
+      "staff_slot": 12,
+      "orb_slot": 14,
+      "orb": 569,
+      "output": 1393,
+      "output_slot": 8,
+      "fine_award": 6250,
+      "spot": 1372,
+      "direction": 0,
+      "fine_total": 130371811
+    },
+    {
+      "staff_slot": 13,
+      "orb_slot": 15,
+      "orb": 569,
+      "output": 1393,
+      "output_slot": 9,
+      "fine_award": 6250,
+      "spot": 1372,
+      "direction": 1,
+      "fine_total": 130378061
+    },
+    {
+      "staff_slot": 16,
+      "orb_slot": 18,
+      "orb": 573,
+      "output": 1397,
+      "output_slot": 10,
+      "fine_award": 6875,
+      "spot": 306,
+      "direction": 0,
+      "fine_total": 130384936
+    },
+    {
+      "staff_slot": 17,
+      "orb_slot": 19,
+      "orb": 573,
+      "output": 1397,
+      "output_slot": 11,
+      "fine_award": 6875,
+      "spot": 306,
+      "direction": 1,
+      "fine_total": 130391811
+    }
+  ],
+  "durable_outputs": 8,
+  "observed_fine_award": 47500,
+  "effects": [
+    {
+      "output": 1395,
+      "slot": 4,
+      "sequence_tick": 137,
+      "credit_tick": 140,
+      "sequence": 7531,
+      "spot": 1370
+    },
+    {
+      "output": 1395,
+      "slot": 5,
+      "sequence_tick": 162,
+      "credit_tick": 165,
+      "sequence": 7531,
+      "spot": 1370
+    },
+    {
+      "output": 1399,
+      "slot": 6,
+      "sequence_tick": 180,
+      "credit_tick": 183,
+      "sequence": 7531,
+      "spot": 1371
+    },
+    {
+      "output": 1399,
+      "slot": 7,
+      "sequence_tick": 199,
+      "credit_tick": 202,
+      "sequence": 7531,
+      "spot": 1371
+    },
+    {
+      "output": 1393,
+      "slot": 8,
+      "sequence_tick": 217,
+      "credit_tick": 220,
+      "sequence": 7531,
+      "spot": 1372
+    },
+    {
+      "output": 1393,
+      "slot": 9,
+      "sequence_tick": 239,
+      "credit_tick": 242,
+      "sequence": 7531,
+      "spot": 1372
+    },
+    {
+      "output": 1397,
+      "slot": 10,
+      "sequence_tick": 257,
+      "credit_tick": 260,
+      "sequence": 7531,
+      "spot": 306
+    },
+    {
+      "output": 1397,
+      "slot": 11,
+      "sequence_tick": 278,
+      "credit_tick": 281,
+      "sequence": 7531,
+      "spot": 306
+    }
+  ],
+  "scope": "Eight native OR69staff production credits across4profiles/both directions/default Make-one and All capped1; exact selected two-input/first-free inventory and47500fineXP, duplicate staff/coins retained. Genuine Close/stale quantity and held refusal, decoded7531/four spots with first3receive clocks, exact3clock server traces. Whole inventory/Stats/energy survive acknowledged save and actual restarted native reconnect; raw22/46independently decoded.",
+  "traces": [
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 4,
+      "second_slot": 6,
+      "first": 1391,
+      "second": 571,
+      "output": 1395,
+      "count": 1,
+      "queued_at": 146,
+      "committed_at": 149
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 5,
+      "second_slot": 7,
+      "first": 1391,
+      "second": 571,
+      "output": 1395,
+      "count": 1,
+      "queued_at": 171,
+      "committed_at": 174
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 8,
+      "second_slot": 10,
+      "first": 1391,
+      "second": 575,
+      "output": 1399,
+      "count": 1,
+      "queued_at": 189,
+      "committed_at": 192
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 9,
+      "second_slot": 11,
+      "first": 1391,
+      "second": 575,
+      "output": 1399,
+      "count": 1,
+      "queued_at": 208,
+      "committed_at": 211
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 12,
+      "second_slot": 14,
+      "first": 1391,
+      "second": 569,
+      "output": 1393,
+      "count": 1,
+      "queued_at": 226,
+      "committed_at": 229
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 13,
+      "second_slot": 15,
+      "first": 1391,
+      "second": 569,
+      "output": 1393,
+      "count": 1,
+      "queued_at": 248,
+      "committed_at": 251
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 16,
+      "second_slot": 18,
+      "first": 1391,
+      "second": 573,
+      "output": 1397,
+      "count": 1,
+      "queued_at": 266,
+      "committed_at": 269
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 17,
+      "second_slot": 19,
+      "first": 1391,
+      "second": 573,
+      "output": 1397,
+      "count": 1,
+      "queued_at": 287,
+      "committed_at": 290
+    }
+  ],
+  "limitations": [
+    "Native rate500; modifier/current-level/boost/refusal and legacy API cases are separate public-API campaigns.",
+    "Decoded effects/three receive clocks do not establish rendered frames or audio.",
+    "Multi-item repeat/builtin5/10/custom input and partial/crash production remain separate."
+  ],
+  "evidence_sha256": {
+    "produce/client.log": "ccccf33c38fb9e2f53f420177be2a72224942d510df5d0cec630674e062f5399",
+    "produce/manifest.json": "d9388628e1eb2726285f53182a51d7592d40632ac4ed162aa0b56794d6837017",
+    "relogin/client.log": "dd37b0850dca06db1a2dc89d5f4394f7f2d683c704fcb64573d3c90ffbc9f07c",
+    "relogin/manifest.json": "a9fe53c9ff8b8911e209cc43ee8e5f157ab24dd1d62598c25f9fe85698e5e68c"
+  }
+}

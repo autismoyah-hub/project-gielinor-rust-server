@@ -1,0 +1,31 @@
+{
+  "finding_id": "PG-DEF-004",
+  "implementation_id": "OR-MIG-0070",
+  "tested_sha": "c7ddebe844820260252fb37df518f8c271f37243",
+  "severity": "P2",
+  "status": "CONFIRMED_AUTHORITATIVE",
+  "implementation_blocking": false,
+  "github_issue": null,
+  "expected": "ZeroHP or queued DeathRequested without respawn must refuse new held-item crafting and preserve inventory/Stats.",
+  "actual": "Both directions of empty orb10980 + wire10981 synchronously make ordinary10973 and add1300fineCraftingXP at125%, even with zeroHP or after actual queued death then visibleHP restored10. Four independent named tests fail. Four manual helm life controls pass; no broad tool-path failure inferred.",
+  "reproduction": [
+    "World with member actor, Crafting99/base1, full28; empty orbs0/1, selected wire17 and duplicate4,1000coins27; all items ordinary count1/vars0.",
+    "SetHP0, or queue typeless20damage toHP10, tick and assert DeathRequested, then restore only visibleHP10 without respawn.",
+    "Snapshot whole inventory/Stats; actual prepare_held_use/finish_held_use in either direction; advance8ticks with NoDraw.",
+    "Observe output10973slot0, selected17empty, retained duplicate inputs/coins,1300fineXP; compare unchanged-state expectation."
+  ],
+  "source_path": "crates/world/src/simulation/held_use_actions.rs",
+  "source_sha256": "e9f57cbb2ef063647a7416ac9d6c57bd16b40a622eb355c1077e08c46c961fd6",
+  "source_diagnosis": "AssemblyImmediate dispatch lines153-157 calls complete_assembly directly. Shared complete_assembly_reward lines817 onward stages exchange/reward without authoritative life guard; separate queued ToolCrafting refuses in four tested helm cases.",
+  "correction": "Check authoritative alive/death state before synchronous immediate assembly admission/credit; preserve selected pair/Stats on refusal and existing alive behavior. Publish a correction SHA and request a pinned retest. Continue unrelated implementation.",
+  "limits": [
+    "Synthetic authoritative World reproduction; native dead-player packet reachability not established.",
+    "No currentHEAD or persistence acceptance/failure inferred.",
+    "Separate path from PG-DEF-003 immediate tool helper; exact OR65 and OR70 identities retained."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/integration-external-crafting-finishes-world-c7ddebe844820260252fb37df518f8c271f37243-1792321531070851300/manifest.json": "ada56e476b882255e7234ea49bba18542aa028a9404d84b4ba450f0ebf2fb7be",
+    "docs/openrune/verification/independent/integration-external-crafting-finishes-world-c7ddebe844820260252fb37df518f8c271f37243-1792321531070851300/run-1.log": "e47d3b62ed176d84d533181b8241b53d0d20f74b000340e93daf298660655725",
+    "docs/openrune/verification/independent/integration-external-crafting-finishes-world-c7ddebe844820260252fb37df518f8c271f37243-1792321531070851300/harness/finishes.rs": "6f10b6d6ca7aa2551ff83f4453001b70e3c1231612d0b8e6d02cc2f2ab09476b"
+  }
+}

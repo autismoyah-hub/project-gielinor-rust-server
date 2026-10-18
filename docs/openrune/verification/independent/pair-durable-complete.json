@@ -1,0 +1,69 @@
+{
+  "implementation_id": "OR-MIG-0069",
+  "tested_sha": "fb348dda184b36ec2d503bfe0f1d5393cf8ae151",
+  "revision": 1,
+  "status": "PASS_APPLICABLE_V3",
+  "cases": [
+    {
+      "feature": "pair-stringing",
+      "run": "native-002",
+      "assessment": "docs/openrune/verification/independent/deep-pair-stringing/native-002/independent-assessment.json",
+      "scope": "Native14ordinary stringing profiles alternate both held directions, real All-capped1 quantity dispatch and selected two-input/first-free output transactions from full28. Genuine Close/stale quantity and held refusal,2800fineXP/all unrelated XP retained. Exact complete SQL state survives acknowledged-save/process restart and independently decoded native reconnect. All14server traces show first1clock, explicitly shorter than Wiki nominal2."
+    },
+    {
+      "feature": "pair-staves",
+      "run": "native-001",
+      "assessment": "docs/openrune/verification/independent/deep-pair-staves/native-001/independent-assessment.json",
+      "scope": "Eight native OR69staff production credits across4profiles/both directions/default Make-one and All capped1; exact selected two-input/first-free inventory and47500fineXP, duplicate staff/coins retained. Genuine Close/stale quantity and held refusal, decoded7531/four spots with first3receive clocks, exact3clock server traces. Whole inventory/Stats/energy survive acknowledged save and actual restarted native reconnect; raw22/46independently decoded."
+    },
+    {
+      "feature": "pair-counts",
+      "run": "native-001",
+      "assessment": "docs/openrune/verification/independent/deep-pair-counts/native-001/independent-assessment.json",
+      "scope": "Genuine captured two-input native production with independent complete inventory/Stats/energy, selected-first/ascending pairs, first-free outputs, fineXP and real restarted raw22/46state. Builtin quantities, first1/repeat2server clocks and stale completed quantity/held refusal pass."
+    },
+    {
+      "feature": "pair-interrupt",
+      "run": "native-001",
+      "assessment": "docs/openrune/verification/independent/deep-pair-interrupt/native-001/independent-assessment.json",
+      "scope": "Genuine captured two-input native production with independent complete inventory/Stats/energy, selected-first/ascending pairs, first-free outputs, fineXP and real restarted raw22/46state. Consistent acknowledged partial prefix persists without queue replay."
+    },
+    {
+      "feature": "pair-crash",
+      "run": "native-001",
+      "assessment": "docs/openrune/verification/independent/deep-pair-crash/native-001/independent-assessment.json",
+      "scope": "Genuine captured two-input native production with independent complete inventory/Stats/energy, selected-first/ascending pairs, first-free outputs, fineXP and real restarted raw22/46state. Owned unacknowledged termination restores prior whole state; no mid-SQL fault claimed."
+    },
+    {
+      "feature": "pair-earth-batch",
+      "run": "native-001",
+      "assessment": "docs/openrune/verification/independent/deep-pair-earth-batch/native-001/independent-assessment.json",
+      "scope": "Genuine captured two-input native production with independent complete inventory/Stats/energy, selected-first/ascending pairs, first-free outputs, fineXP and real restarted raw22/46state. Builtin quantities, profile-specific first/repeat2server clocks and stale completed quantity/held refusal pass."
+    },
+    {
+      "feature": "pair-pending",
+      "run": "native-001",
+      "assessment": "docs/openrune/verification/independent/deep-pair-pending/native-001/independent-assessment.json",
+      "scope": "Genuine native quantity dialog opened without a Make reply; one held packet/no115/no product or XP. Full inventory/Stats/energy preserved through acknowledged save and real process/native restart. Raw22/46independently decoded and no visible270dialog after reconnect. This is pending-choice invalidation, not completed production."
+    }
+  ],
+  "scope": "Applicable durability satisfied at exact69: fourteen stringing products/2800fineXP, eight staff products/47500fineXP and thirteen gold batch products/2600fineXP survive acknowledged save/graceful process restart/real independently decoded native reconnect. Partial captured-All observes6, commits/saves11with2pairs retained and never resumes after reconnect. Owned unsaved termination observes2native/server products but restores all13original pairs and prior whole inventory/Stats/energy with no save acknowledgement. Thirteen Earth staves generate73125fineXP and exact130417436(.6)persists; native first3/repeat2independently decoded. Pending real quantity dialog sends no115, preserves full inputs/XP/currency and is absent on actual restarted native layout. World4872cases separately cover live/death/stale/cancellation; genuine native repeated held/quantity frames cannot duplicate credit.",
+  "limitations": [
+    "Original14stringing producer rawFAIL/124retained after all14credits; independent raw/trace/SQL/actual reconnect scope passes, not whole-driver completion.",
+    "Crash witness is unacknowledged dirty-state recovery, not forced mid-SQL transaction failure.",
+    "No separate escrow/unclaimed-reward state or equipment feature is authored by this adapter. Carried staff is a consumed material; no broad worn-equipment serialization or rendered/audio parity accepted.",
+    "Native quantity10, custom input and opposite per-profile stringing directions remain V2obligations; source Rabbit qualification remains V4partial. Current FORGE integration is separate."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/deep-pair-stringing/native-002/independent-assessment.json": "e5197499d5e2f2ec968e52f7d9e40500b6f0f680e21734ba57ecad7272006bb9",
+    "docs/openrune/verification/independent/deep-pair-staves/native-001/independent-assessment.json": "cb69872ea47d42544d31f4d2b7ebe00ee111bc57df4977a2fe92b2909398d6fd",
+    "docs/openrune/verification/independent/deep-pair-counts/native-001/independent-assessment.json": "c3911ec7d08eba680b2cfbd26f1436962502a6a8207c34a8d380c5e040b79223",
+    "docs/openrune/verification/independent/deep-pair-interrupt/native-001/independent-assessment.json": "3912487ddb328e564e21ae1501dffc65b1eb511cebef62963eddd679f654f365",
+    "docs/openrune/verification/independent/deep-pair-crash/native-001/independent-assessment.json": "051490f3039310cb171dcbe8f3d746673fedbf9ee702ec26a74237616d5828c2",
+    "docs/openrune/verification/independent/deep-pair-earth-batch/native-001/independent-assessment.json": "a2bf6add61cbbbb62060cd334077a74d3d60363e3166bf5cd11dbf0f91e0afcf",
+    "docs/openrune/verification/independent/deep-pair-pending/native-001/independent-assessment.json": "97e652103371db6c39e3efd46b02a70734356f87236a5af74307f1990d02922f",
+    "docs/openrune/verification/independent/deep-pair-interrupt/native-001/native-prefix-witness.json": "e9560e851e3605784098494e180cd011efa17f1b8a383eec18c782f5c740c071",
+    "docs/openrune/verification/independent/deep-pair-crash/native-001/native-prefix-witness.json": "0528304efefb58af9ad022ff01150b9ea8825f8cf655b306be06c87c1a15f3eb",
+    "docs/openrune/verification/independent/pair-authoritative-complete.json": "bc3a6a8e257aeb0319d4472a701ce5df2ee8000e73b4f27fa8e1cf1b62ffef21"
+  }
+}

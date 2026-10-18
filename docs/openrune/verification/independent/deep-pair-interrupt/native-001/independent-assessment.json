@@ -1,0 +1,246 @@
+{
+  "implementation_id": "OR-MIG-0069",
+  "tested_sha": "fb348dda184b36ec2d503bfe0f1d5393cf8ae151",
+  "campaign_kind": "historical",
+  "status": "PASS",
+  "feature": "pair-interrupt",
+  "recipe": {
+    "first": 1759,
+    "second": 1673,
+    "output": 1692,
+    "fine_per_credit": 200,
+    "first_delay": 1,
+    "repeat_delay": 2
+  },
+  "requested_counts": [
+    13
+  ],
+  "observed_partial_products": 6,
+  "durable_products": 11,
+  "fine_xp_award": 2200,
+  "actions": [
+    {
+      "batch": 0,
+      "step": 0,
+      "first_slot": 12,
+      "second_slot": 25,
+      "output_slot": 12
+    },
+    {
+      "batch": 0,
+      "step": 1,
+      "first_slot": 0,
+      "second_slot": 13,
+      "output_slot": 0
+    },
+    {
+      "batch": 0,
+      "step": 2,
+      "first_slot": 1,
+      "second_slot": 14,
+      "output_slot": 1
+    },
+    {
+      "batch": 0,
+      "step": 3,
+      "first_slot": 2,
+      "second_slot": 15,
+      "output_slot": 2
+    },
+    {
+      "batch": 0,
+      "step": 4,
+      "first_slot": 3,
+      "second_slot": 16,
+      "output_slot": 3
+    },
+    {
+      "batch": 0,
+      "step": 5,
+      "first_slot": 4,
+      "second_slot": 17,
+      "output_slot": 4
+    },
+    {
+      "batch": 0,
+      "step": 6,
+      "first_slot": 5,
+      "second_slot": 18,
+      "output_slot": 5
+    },
+    {
+      "batch": 0,
+      "step": 7,
+      "first_slot": 6,
+      "second_slot": 19,
+      "output_slot": 6
+    },
+    {
+      "batch": 0,
+      "step": 8,
+      "first_slot": 7,
+      "second_slot": 20,
+      "output_slot": 7
+    },
+    {
+      "batch": 0,
+      "step": 9,
+      "first_slot": 8,
+      "second_slot": 21,
+      "output_slot": 8
+    },
+    {
+      "batch": 0,
+      "step": 10,
+      "first_slot": 9,
+      "second_slot": 22,
+      "output_slot": 9
+    }
+  ],
+  "traces": [
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 12,
+      "second_slot": 25,
+      "first": 1759,
+      "second": 1673,
+      "output": 1692,
+      "count": 1,
+      "queued_at": 134,
+      "committed_at": 135
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 0,
+      "second_slot": 13,
+      "first": 1759,
+      "second": 1673,
+      "output": 1692,
+      "count": 1,
+      "queued_at": 135,
+      "committed_at": 137
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 1,
+      "second_slot": 14,
+      "first": 1759,
+      "second": 1673,
+      "output": 1692,
+      "count": 1,
+      "queued_at": 137,
+      "committed_at": 139
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 2,
+      "second_slot": 15,
+      "first": 1759,
+      "second": 1673,
+      "output": 1692,
+      "count": 1,
+      "queued_at": 139,
+      "committed_at": 141
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 3,
+      "second_slot": 16,
+      "first": 1759,
+      "second": 1673,
+      "output": 1692,
+      "count": 1,
+      "queued_at": 141,
+      "committed_at": 143
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 4,
+      "second_slot": 17,
+      "first": 1759,
+      "second": 1673,
+      "output": 1692,
+      "count": 1,
+      "queued_at": 143,
+      "committed_at": 145
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 5,
+      "second_slot": 18,
+      "first": 1759,
+      "second": 1673,
+      "output": 1692,
+      "count": 1,
+      "queued_at": 145,
+      "committed_at": 147
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 6,
+      "second_slot": 19,
+      "first": 1759,
+      "second": 1673,
+      "output": 1692,
+      "count": 1,
+      "queued_at": 147,
+      "committed_at": 149
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 7,
+      "second_slot": 20,
+      "first": 1759,
+      "second": 1673,
+      "output": 1692,
+      "count": 1,
+      "queued_at": 149,
+      "committed_at": 151
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 8,
+      "second_slot": 21,
+      "first": 1759,
+      "second": 1673,
+      "output": 1692,
+      "count": 1,
+      "queued_at": 151,
+      "committed_at": 153
+    },
+    {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "first_slot": 9,
+      "second_slot": 22,
+      "first": 1759,
+      "second": 1673,
+      "output": 1692,
+      "count": 1,
+      "queued_at": 153,
+      "committed_at": 155
+    }
+  ],
+  "scope": "Genuine captured two-input native production with independent complete inventory/Stats/energy, selected-first/ascending pairs, first-free outputs, fineXP and real restarted raw22/46state. Consistent acknowledged partial prefix persists without queue replay.",
+  "limitations": [
+    "Single declared recipe batch scope; other profile/timing/member/modifier cases remain separately identified.",
+    "No custom input, rendered/audio or original executable parity claim."
+  ],
+  "evidence_sha256": {
+    "produce/client.log": "607441a139c4aac3ac0e9995009d977b6e9b149fe693fc43762401d747de7ffb",
+    "produce/server.log": "aaff61cb692dee5abd1ad41daaa89ea2965876d8e845ba87e256f4a9fd241c3b",
+    "produce/manifest.json": "3ec788e568da6540b24a4e6dd9371a89a5190ef6863916de395461694bbd8961",
+    "relogin/client.log": "25a8980ec321c86a49e59c57173bb7630ef95c0174f8e9fd8624d4101b96af81",
+    "relogin/manifest.json": "4b10c006882df11fbe89777c97f0197f3d59b053a7eadead8d0144a7d1c7e46c"
+  }
+}
