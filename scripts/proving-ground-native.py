@@ -31,16 +31,27 @@ def guard():
         idle=ctypes.c_ulonglong();kernel=ctypes.c_ulonglong();user=ctypes.c_ulonglong()
         assert ctypes.windll.kernel32.GetSystemTimes(ctypes.byref(idle),ctypes.byref(kernel),ctypes.byref(user))
         return idle.value,kernel.value+user.value
-    a=cpu_sample();time.sleep(.5);b=cpu_sample();cpu=100*(1-(b[0]-a[0])/max(1,b[1]-a[1]))
-    report={'available_ram':m.avail,'active_compilers':active,'cpu_percent':round(cpu,2),'disk_free':shutil.disk_usage(ROOT).free}
+    samples=[]
+    for _ in range(3):
+        a=cpu_sample();time.sleep(1);b=cpu_sample();samples.append(100*(1-(b[0]-a[0])/max(1,b[1]-a[1])))
+    cpu=sum(samples)/len(samples)
+    report={'available_ram':m.avail,'active_compilers':active,'cpu_percent':round(cpu,2),'cpu_samples':samples,'cpu_ceiling':70,'policy':'Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained','disk_free':shutil.disk_usage(ROOT).free}
     print('RESOURCE',json.dumps(report),flush=True)
     # Other agents' activity is measured, not an automatic blanket deferral.
-    # One owned build job is permitted only with spare CPU and >=6 GiB RAM.
-    permitted=cpu<30 and m.avail>=6*1024**3
+    # Match the actual project's sampled 70% ceiling instead of inventing a
+    # 30% limit that repeatedly deferred eligible native runs. Retain RAM headroom.
+    permitted=cpu<=70 and m.avail>=6*1024**3
     OUT.mkdir(parents=True,exist_ok=True)
     with (OUT/'resource-observations.jsonl').open('a',encoding='utf-8',newline='\n') as f:
         f.write(json.dumps({'observed_utc':datetime.now(timezone.utc).isoformat(),'decision':'PROCEED' if permitted else 'DEFER','measurement':report})+'\n')
     assert permitted,'Measured resource guard blocked; no other process altered'
+    # Restrict only this owned launcher and its future children, as the project
+    # resource scripts do. No other agent's affinity or priority is changed.
+    api=ctypes.windll.kernel32;api.GetProcessAffinityMask.argtypes=[ctypes.c_void_p,ctypes.POINTER(ctypes.c_size_t),ctypes.POINTER(ctypes.c_size_t)]
+    own=ctypes.c_size_t();system=ctypes.c_size_t();assert api.GetProcessAffinityMask(ctypes.c_void_p(-1),ctypes.byref(own),ctypes.byref(system))
+    bits=[1<<i for i in range(ctypes.sizeof(ctypes.c_size_t)*8) if own.value&(1<<i)]
+    mask=sum(bits[:2]);api.SetProcessAffinityMask.argtypes=[ctypes.c_void_p,ctypes.c_size_t];assert mask and api.SetProcessAffinityMask(ctypes.c_void_p(-1),mask)
+    report['owned_affinity_mask']=mask
     return report
 def environment():
     env=os.environ.copy();w=ROOT/'work'/SHA
@@ -67,11 +78,18 @@ def prepare():
     for source,target in [(SOURCE/'work/integration/test-account.password',RES/'password'),(SOURCE/'work/native/argon2.dll',RES/'argon2.dll')]:
         if not target.exists():shutil.copyfile(source,target)
         assert digest(source)==digest(target)
-    pin=SOURCE/'integration/scenario-drivers'/PIN
-    manifest=json.loads((pin/'manifest.json').read_text())
-    for name,expected in manifest['files'].items():assert digest(pin/name)==expected.lower()
+    if PIN=='pg-observer':
+        build=json.loads((ROOT/'docs/openrune/verification/independent/client-observer-build/build.json').read_text(encoding='utf-8'));assert build['status']=='PASS'
+        pin=ROOT/'work/independent-native-observer/target/debug/examples';expected=build['binaries']['pg_observer.exe'];assert digest(pin/'pg_observer.exe')==expected
+        manifest={'origin':'independently rebuilt pinned native client with observation-only overlay','build_evidence':'docs/openrune/verification/independent/client-observer-build/build.json','files':{DRIVER:expected}}
+        origin=pin/'pg_observer.exe'
+    else:
+        pin=SOURCE/'integration/scenario-drivers'/PIN
+        manifest=json.loads((pin/'manifest.json').read_text())
+        for name,expected in manifest['files'].items():assert digest(pin/name)==expected.lower()
+        origin=pin/DRIVER
     driver=RES/DRIVER
-    if not driver.exists():shutil.copyfile(pin/driver.name,driver)
+    if not driver.exists():shutil.copyfile(origin,driver)
     assert digest(driver)==manifest['files'][driver.name].lower()
     if SCENARIO=='food':
         baseline=SOURCE/'integration/client-builds/client-239.1-baseline-001-build-001'
@@ -111,15 +129,17 @@ def seed():
         db.execute('DELETE FROM inventory_objs WHERE inventories_id IN (SELECT id FROM inventories WHERE character_id=?)',(cid,))
         if FEATURE=='OR-MIG-0010':
             items=[(slot,[2436,2440,2442,269 if slot<12 else 111][slot%4] if slot<24 else 995 if slot==27 else 1931,1000 if slot==27 else 1) for slot in range(28)]
-        elif SCENARIO=='food':items=[(1,1891,1),(3,1891,1),(4,2289,1),(5,2289,1),(7,2142,1),(27,995,1000)]
+        elif SCENARIO=='chemistry-last':items=[(slot,93 if slot%2==0 else 235,1) for slot in range(28)]
+        elif SCENARIO=='food-negative':items=[(slot,{1:1891,3:1891,4:2289,5:2289,7:2142,9:6685,27:995}.get(slot,1931),1000 if slot==27 else 1) for slot in range(28)]
+        elif SCENARIO in ['food','food-observer']:items=[(1,1891,1),(3,1891,1),(4,2289,1),(5,2289,1),(7,2142,1),(27,995,1000)]
         else:items=[(27,995,1000)] if SCENARIO=='chemistry-worn' else [(3,21163,1),(27,995,1000)]
         for slot,item,count in items:db.execute('INSERT INTO inventory_objs(inventories_id,slot,obj,count,vars) VALUES(?,?,?,?,0)',(inv,slot,item,count))
-        if SCENARIO=='chemistry-worn':
+        if SCENARIO in ['chemistry-worn','chemistry-last','chem-negative','chem-close']:
             db.execute('INSERT OR IGNORE INTO inventories(character_id,inv_type) VALUES(?,94)',(cid,))
             worn=db.execute('SELECT id FROM inventories WHERE character_id=? AND inv_type=94',(cid,)).fetchone()[0]
             db.execute('INSERT INTO inventory_objs(inventories_id,slot,obj,count,vars) VALUES(?,2,21163,1,0)',(worn,))
         db.execute('UPDATE stats SET vis_level=99,base_level=99,fine_xp=130344311 WHERE character_id=? AND stat_id=15',(cid,))
-        if SCENARIO=='food':db.execute('UPDATE stats SET vis_level=2,base_level=10,fine_xp=11540 WHERE character_id=? AND stat_id=3',(cid,))
+        if SCENARIO in ['food','food-observer','food-negative']:db.execute('UPDATE stats SET vis_level=?,base_level=10,fine_xp=11540 WHERE character_id=? AND stat_id=3',(10 if SCENARIO=='food-negative' else 2,cid))
         varps=json.loads(db.execute('SELECT varps FROM characters WHERE id=?',(cid,)).fetchone()[0]);varps['80']=4
         db.execute('UPDATE characters SET x=3224,z=3218,level=0,world_id=NULL,xp_rate_in_hundreds=500,varps=? WHERE id=?',(json.dumps(varps),cid))
         db.execute('UPDATE accounts SET members=1 WHERE login_username=?',('integration239',))
@@ -129,7 +149,7 @@ def seed():
             migration,=list((CHECKOUT/'crates/storage/migrations').glob(f'V{version}__*.sql'))
             db.executescript(migration.read_text(encoding='utf-8'))
             db.execute('INSERT INTO _rust_migrations(version) VALUES(?)',(version,));db.commit()
-        db.execute('INSERT INTO chemistry_state(character_id,remaining,stop_on_crumble) VALUES(?,2,0)',(cid,));db.commit()
+        db.execute('INSERT INTO chemistry_state(character_id,remaining,stop_on_crumble) VALUES(?,?,?)',(cid,1 if SCENARIO=='chemistry-last' else 2,1 if SCENARIO=='chemistry-last' else 0));db.commit()
     db.close();save(OUT/'initial-state.json',snapshot())
 def snapshot():
     db=sqlite3.connect(dbpath().as_uri()+'?mode=ro',uri=True)
@@ -145,6 +165,7 @@ def snapshot():
 def phase(mode):
     guard();name='produce' if mode=='assemble' else 'relogin'
     dest=OUT/name;dest.mkdir(parents=True,exist_ok=False)
+    shutil.copyfile(Path(__file__),dest/'launcher.txt')
     before=snapshot();save(dest/'before.json',before)
     binary=ROOT/'work'/SHA/'target/debug/gielinor-server.exe'
     build_manifest=json.loads((OUT/'build.json').read_text(encoding='utf-8'))
@@ -174,6 +195,7 @@ def phase(mode):
             assert address,'Exact-SHA server startup failed: '+(dest/'server.err').read_text(encoding='utf-8')[-2000:]
             print('LISTENING',address,flush=True)
             args=[str(RES/DRIVER),str(RES/'cache/js5'),address,'integration239',str(RES/'password'),str(RES/'keys/client.key'),mode]
+            if SCENARIO in ['chem-negative','chem-close','combat-interrupt','food-negative','food-observer']:args[-1]=(SCENARIO if SCENARIO in ['chem-negative','chem-close','combat-interrupt','food-negative'] else 'food') if mode=='assemble' else 'verify'
             if SCENARIO=='food':
                 if mode=='assemble':args[-1]=str(dest/'native-events.jsonl')
                 else:args=[str(client_binary),str(RES/'cache/js5'),str(RES/'keys/client.key'),address,'integration239',str(RES/'password'),str(WORK/'relogin-private.capture')]
@@ -209,18 +231,25 @@ def phase(mode):
     if manifest['status']=='PASS' and (not manifest['save_acknowledgement'] or not manifest['graceful_shutdown'] or manifest['server_exit']!=0 or manifest['forced_shutdown']):manifest.update(status='BLOCKED',reason='Client finished but durable save or graceful shutdown evidence missing')
     save(dest/'manifest.json',manifest);print('NATIVE_RESULT',json.dumps(manifest),flush=True)
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('action',choices=['prepare','build','seed','produce','relogin']);p.add_argument('--feature',choices=['combat','chemistry','chemistry-worn','food'],default='combat');p.add_argument('--integration-sha');p.add_argument('--run-id');a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('action',choices=['prepare','build','seed','produce','relogin']);p.add_argument('--feature',choices=['combat','chemistry','chemistry-worn','chemistry-last','chem-negative','chem-close','combat-interrupt','food-negative','food','food-observer'],default='combat');p.add_argument('--integration-sha');p.add_argument('--run-id');a=p.parse_args()
     SCENARIO=a.feature
-    if a.feature in ['chemistry','chemistry-worn']:
+    if a.feature in ['chemistry','chemistry-worn','chemistry-last','chem-negative','chem-close']:
         SHA='e7ac3608e61893d80b2de6a1a2e512b3ab785505';FEATURE='OR-MIG-0006';STATE='pg-chemistry-native-001';DRIVER='server_chemistryui.exe';PIN='chemistryui-005'
         CHECKOUT=ROOT.parent/'agent7-targets'/SHA;WORK=ROOT/'work/native-chemistry';OUT=ROOT/'docs/openrune/verification/independent/deep-chemistry'
-    if a.feature=='food':
+    if a.feature in ['food','food-observer','food-negative']:
         SHA='ae3d234c71764dd2364f8452fc1974a54a6783f0';FEATURE='OR-MIG-0024';STATE='pg-food-native-001';DRIVER='server_food.exe';PIN='food-001'
         CHECKOUT=ROOT.parent/'agent7-targets'/SHA;WORK=ROOT/'work/native-food';OUT=ROOT/'docs/openrune/verification/independent/deep-food'
     CONTRACT_SHA=SHA
     if a.feature=='chemistry-worn':
         STATE='pg-chemistry-worn-native-001';DRIVER='server_chemistryworn.exe';PIN='chemistryworn-004'
         WORK=ROOT/'work/native-chemistry-worn';OUT=ROOT/'docs/openrune/verification/independent/deep-chemistry-worn'
+    if a.feature=='chemistry-last':
+        STATE='pg-chemistry-last-native-001';DRIVER='server_chemistry.exe';PIN='chemistry-001'
+        WORK=ROOT/'work/native-chemistry-last';OUT=ROOT/'docs/openrune/verification/independent/deep-chemistry-last'
+    if a.feature in ['chem-negative','chem-close','combat-interrupt','food-negative','food-observer']:
+        observer_build=json.loads((ROOT/'docs/openrune/verification/independent/client-observer-build/build.json').read_text(encoding='utf-8'));assert observer_build['status']=='PASS'
+        STATE='pg-'+a.feature+'-001';DRIVER='pg_observer-'+observer_build['binaries']['pg_observer.exe'][:12]+'.exe';PIN='pg-observer'
+        WORK=ROOT/'work'/('native-'+a.feature);OUT=ROOT/'docs/openrune/verification/independent'/('deep-'+a.feature)
     if a.integration_sha:
         assert re.fullmatch('[0-9a-f]{40}',a.integration_sha)
         assert (ROOT/'docs/openrune/verification/independent'/('queue-'+a.integration_sha+'.jsonl')).exists(),'Integration checkpoint must have a fetched queue snapshot'
@@ -231,6 +260,9 @@ if __name__=='__main__':
         assert re.fullmatch('[a-z0-9-]{1,24}',a.run_id)
         STATE='pg-'+SCENARIO+'-'+SHA[:8]+'-'+a.run_id
         WORK=WORK/a.run_id;OUT=OUT/a.run_id
+    if PIN=='pg-observer' and a.action in ['produce','relogin']:
+        frozen=json.loads((OUT/'resources.json').read_text(encoding='utf-8'))['driver_manifest']['files']
+        DRIVER,=frozen;assert digest(RES/DRIVER)==frozen[DRIVER]
     if a.action=='prepare':prepare()
     elif a.action=='build':build()
     elif a.action=='seed':seed()

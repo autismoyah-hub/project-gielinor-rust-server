@@ -1,0 +1,28 @@
+{
+  "status": "BLOCKED",
+  "exit_code": 101,
+  "resource": {
+    "available_ram": 7989301248,
+    "active_compilers": [
+      "\"cargo.exe\",\"6596\",\"RDP-Tcp#0\",\"2\",\"39,160 K\"",
+      "\"rustc.exe\",\"16100\",\"RDP-Tcp#0\",\"2\",\"109,804 K\""
+    ],
+    "cpu_percent": 17.58,
+    "disk_free": 46396907520
+  },
+  "command": [
+    "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+    "build",
+    "--offline",
+    "--locked",
+    "-j",
+    "1",
+    "--example",
+    "pg_observer"
+  ],
+  "observer_sources": {
+    "pg_observer.rs": "d04835b97d3a80dccbdb97a97005cf2bad0e21d7381b1ad78d5ca188cf330606"
+  },
+  "binaries": {},
+  "scope": "Fresh independent native-client build; pinned core source plus recorded read-only observation overlay and owned scenario controllers."
+}

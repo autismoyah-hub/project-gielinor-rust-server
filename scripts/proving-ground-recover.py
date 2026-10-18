@@ -57,7 +57,7 @@ for ident,r in latest.items():
                   'implementation_availability':{'status':'AVAILABLE','sha':r['implementation_commit_sha']},
                   'historical_verification':{'levels':levels,'evidence_attempts':[h['attempt_id'] for h in previous]},
                   'current_integration':integration,
-                  'lane':'B' if previous else 'A','open_defects':[],'reference_limitations':r['known_limitations']})
+                  'lane':'B' if previous else 'A','open_defects':(['PG-DEF-001 / GitHub123: historical native Close cancellation FAIL; ordinary P2, nonblocking'] if ident=='OR-MIG-0006' and any(e.get('implementation_id')==ident and e.get('status')=='FAIL' for e in events) else []),'reference_limitations':r['known_limitations']})
 state={'observed_utc':datetime.now(timezone.utc).isoformat(),'forge_head':head,'queue_sha256':hashlib.sha256(q).hexdigest(),
        'published_validator_sha256':hashlib.sha256((PRIVATE/'validate-openrune-queue.py').read_bytes()).hexdigest(),
        'published_validator_status':'PASS','json_schema_status':schema_status,'records':len(rows),'implementation_units':len(latest),

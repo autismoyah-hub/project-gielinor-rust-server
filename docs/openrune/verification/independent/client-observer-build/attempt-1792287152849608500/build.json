@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "exit_code": 0,
+  "resource": {
+    "available_ram": 7946424320,
+    "active_compilers": [],
+    "cpu_percent": 17.44,
+    "cpu_samples": [
+      11.787819253438114,
+      15.581854043392507,
+      24.951267056530213
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained",
+    "disk_free": 45984616448,
+    "owned_affinity_mask": 3
+  },
+  "command": [
+    "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+    "build",
+    "--offline",
+    "--locked",
+    "-j",
+    "1",
+    "--example",
+    "pg_observer"
+  ],
+  "observer_sources": {
+    "pg_observer.rs": "bb96c4159e1904a4d269e67cdfef7b27d9c07f31205f3c729cfe6f4e2e346b1a"
+  },
+  "binaries": {
+    "pg_observer-22bdf8b963b2c52a.exe": "647f46fd68f88c8de1bcf94f1915252bec4a6236292cfe2f7c679a0554649db9",
+    "pg_observer.exe": "647f46fd68f88c8de1bcf94f1915252bec4a6236292cfe2f7c679a0554649db9"
+  },
+  "scope": "Fresh independent native-client build; pinned core source plus recorded read-only observation overlay and owned scenario controllers."
+}

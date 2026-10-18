@@ -1,6 +1,6 @@
 {
-  "observed_forge_head": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
-  "queue_sha256": "36bbdbd48b5dc0bf45ffabae3297571fc4fe5be6a9463f4b3ca01954264b6720",
+  "observed_forge_head": "6e469bc1dacab463190917e8189f8add83c08d8f",
+  "queue_sha256": "b33764a1aa21d43cbc4d1ba84ca16ca1df4130206448063780354cfa367a7983",
   "lanes": [
     {
       "lane": "B",
@@ -12,7 +12,7 @@
       "lane": "C",
       "feature": "OR-MIG-0006",
       "action": "Inspect shared changes since the last recorded native integration campaign; select affected current-build regression scopes without inheriting older PASS results",
-      "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a"
+      "sha": "6e469bc1dacab463190917e8189f8add83c08d8f"
     },
     {
       "lane": "A",
@@ -128,7 +128,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -141,7 +141,14 @@
           "crates/server/src/application.rs",
           "crates/server/src/characters.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
           "crates/server/src/potions.rs",
+          "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/chemistry_dialog.rs",
           "crates/server/src/runtime/combat_mixing.rs",
@@ -168,6 +175,7 @@
           "crates/world/src/lib.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/chemistry_actions.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
@@ -177,10 +185,12 @@
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
           "crates/world/src/simulation/swamp_tar_actions.rs",
           "crates/world/src/simulation/unfinished_potion_actions.rs",
           "crates/world/src/swamp_tar.rs",
-          "crates/world/src/unfinished_potions.rs"
+          "crates/world/src/unfinished_potions.rs",
+          "crates/world/tests/openrune_burial.rs"
         ]
       }
     },
@@ -217,7 +227,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -230,7 +240,14 @@
           "crates/server/src/application.rs",
           "crates/server/src/characters.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
           "crates/server/src/potions.rs",
+          "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/chemistry_dialog.rs",
           "crates/server/src/runtime/combat_mixing.rs",
@@ -256,6 +273,7 @@
           "crates/world/src/lib.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/chemistry_actions.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
@@ -265,9 +283,11 @@
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
           "crates/world/src/simulation/swamp_tar_actions.rs",
           "crates/world/src/simulation/unfinished_potion_actions.rs",
-          "crates/world/src/swamp_tar.rs"
+          "crates/world/src/swamp_tar.rs",
+          "crates/world/tests/openrune_burial.rs"
         ]
       }
     },
@@ -304,7 +324,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -317,7 +337,14 @@
           "crates/server/src/application.rs",
           "crates/server/src/characters.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
           "crates/server/src/potions.rs",
+          "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/chemistry_dialog.rs",
           "crates/server/src/runtime/combat_mixing.rs",
@@ -343,6 +370,7 @@
           "crates/world/src/lib.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/chemistry_actions.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
@@ -352,9 +380,11 @@
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
           "crates/world/src/simulation/swamp_tar_actions.rs",
           "crates/world/src/simulation/unfinished_potion_actions.rs",
-          "crates/world/src/swamp_tar.rs"
+          "crates/world/src/swamp_tar.rs",
+          "crates/world/tests/openrune_burial.rs"
         ]
       }
     },
@@ -391,7 +421,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -404,7 +434,14 @@
           "crates/server/src/application.rs",
           "crates/server/src/characters.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
           "crates/server/src/potions.rs",
+          "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/chemistry_dialog.rs",
           "crates/server/src/runtime/combat_mixing.rs",
@@ -429,6 +466,7 @@
           "crates/world/src/lib.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/chemistry_actions.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
@@ -437,7 +475,9 @@
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
-          "crates/world/src/simulation/potion_upgrade_actions.rs"
+          "crates/world/src/simulation/potion_upgrade_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
         ]
       }
     },
@@ -474,7 +514,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -486,7 +526,14 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
           "crates/server/src/potions.rs",
+          "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/combat_mixing.rs",
           "crates/server/src/runtime/finished_potions.rs",
@@ -504,6 +551,7 @@
           "crates/world/src/lib.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
@@ -511,7 +559,9 @@
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
-          "crates/world/src/simulation/potion_upgrade_actions.rs"
+          "crates/world/src/simulation/potion_upgrade_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
         ]
       }
     },
@@ -533,32 +583,30 @@
           },
           "V1": {
             "status": "IN_PROGRESS",
-            "reason": "Historical headless checks and native positive transitions passed; complete independently specified authoritative negative/modifier matrix remains open.",
+            "reason": "Independent 22000-combination public completion matrix and12 invalid-policy cases PASS: both input directions, five charge counts, both crumble policies, goggles coexistence, all random thresholds, full inventory and exact XP/level/slot atomicity. Native and complete action-route obligations remain separate.",
             "evidence": [
-              "docs/openrune/verification/independent/deep-chemistry/independent-assessment.json"
+              "docs/openrune/verification/independent/integration-external-chemistry-matrix-e7ac3608e61893d80b2de6a1a2e512b3ab785505-1792282956704102000/manifest.json"
             ]
           },
           "V2": {
-            "status": "IN_PROGRESS",
-            "reason": "Exact historical SHA now has separate genuine native held controls/break and worn Options -> Stop campaigns, each with acknowledged save, actual restart and native relogin. Equipped item, charges, stop policy, coins and XP subchecks PASS; negative/cancelled dialogs, production/modifier and interrupted-transaction acceptance remain open.",
+            "status": "FAIL",
+            "reason": "PG-DEF-001 / GitHub123: genuine native Close95 leaves server dialog live; stale Stop115 changes saved policy0->1. Ordinary P2, not implementation-blocking. Prior passing item-only probe is not gameplay acceptance.",
             "evidence": [
-              "docs/openrune/verification/independent/deep-chemistry-worn/hist-worn-002/independent-assessment.json",
-              "docs/openrune/verification/independent/deep-chemistry/independent-assessment.json"
+              "docs/openrune/verification/independent/deep-chem-close/close-001/independent-assessment.json"
             ]
           },
           "V3": {
             "status": "IN_PROGRESS",
-            "reason": "Exact historical SHA now has separate genuine native held controls/break and worn Options -> Stop campaigns, each with acknowledged save, actual restart and native relogin. Equipped item, charges, stop policy, coins and XP subchecks PASS; negative/cancelled dialogs, production/modifier and interrupted-transaction acceptance remain open.",
+            "reason": "Native All quantity production from full28 bag: last charge gives exactly one extra dose without extra XP, removes ordinary neck amulet, resets next-amulet charges5 and interrupts queue with ingredients remaining. Acknowledged save, real restart and native relogin preserve partial production, stop policy and fineXP; no production replay. Scoped subchecks only; complete level acceptance remains open.",
             "evidence": [
-              "docs/openrune/verification/independent/deep-chemistry-worn/hist-worn-002/independent-assessment.json",
-              "docs/openrune/verification/independent/deep-chemistry/independent-assessment.json"
+              "docs/openrune/verification/independent/deep-chemistry-last/last-001/independent-assessment.json"
             ]
           },
           "V4": {
             "status": "IN_PROGRESS",
-            "reason": "Independent protected-source and pinned-documentation subcomparisons PASS within recorded scope; complete feature comparison remains open. No executable donor parity is claimed.",
+            "reason": "Independent supported source and pinned-documentation audit PASS, with explicit RNG-order, initial-delay, cache-operation and reset-representation adaptations. Original executable unavailable. Native cancellation mismatch PG-DEF-001 prevents a full behavioral parity claim.",
             "evidence": [
-              "docs/openrune/verification/independent/deep-chemistry/independent-assessment.json"
+              "docs/openrune/verification/independent/reference-chemistry/comparison.json"
             ]
           }
         },
@@ -567,7 +615,7 @@
         ]
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -579,7 +627,14 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
           "crates/server/src/potions.rs",
+          "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/combat_mixing.rs",
           "crates/server/src/runtime/finished_potions.rs",
@@ -597,6 +652,7 @@
           "crates/world/src/lib.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
@@ -604,7 +660,9 @@
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
-          "crates/world/src/simulation/potion_upgrade_actions.rs"
+          "crates/world/src/simulation/potion_upgrade_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
         ],
         "last_executed_scope": {
           "tested_sha": "8ad59b108e1ecd55185570c88d1be8be06b39756",
@@ -650,7 +708,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -662,7 +720,14 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
           "crates/server/src/potions.rs",
+          "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/combat_mixing.rs",
           "crates/server/src/runtime/finished_potions.rs",
@@ -680,6 +745,7 @@
           "crates/world/src/lib.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
@@ -687,7 +753,9 @@
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
-          "crates/world/src/simulation/potion_upgrade_actions.rs"
+          "crates/world/src/simulation/potion_upgrade_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
         ]
       }
     },
@@ -724,7 +792,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -736,7 +804,14 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
           "crates/server/src/potions.rs",
+          "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/combat_mixing.rs",
           "crates/server/src/runtime/finished_potions.rs",
@@ -754,6 +829,7 @@
           "crates/world/src/lib.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
@@ -761,7 +837,9 @@
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
-          "crates/world/src/simulation/potion_upgrade_actions.rs"
+          "crates/world/src/simulation/potion_upgrade_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
         ]
       }
     },
@@ -798,7 +876,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -810,7 +888,14 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
           "crates/server/src/potions.rs",
+          "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/combat_mixing.rs",
           "crates/server/src/runtime/finished_potions.rs",
@@ -828,6 +913,7 @@
           "crates/world/src/lib.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
           "crates/world/src/simulation/cooking_actions.rs",
@@ -835,7 +921,9 @@
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
-          "crates/world/src/simulation/potion_upgrade_actions.rs"
+          "crates/world/src/simulation/potion_upgrade_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
         ]
       }
     },
@@ -864,16 +952,16 @@
           },
           "V2": {
             "status": "IN_PROGRESS",
-            "reason": "Genuine programmatic native menu/action/packet and authoritative-state subchecks PASS. Native stale/interruption/modifier cases and any applicable rendered acceptance remain open.",
+            "reason": "Actual native Make followed by Walk114 before first completion cancels with no consumption/XP. Reopened real All115(count28), one completed four-input product/7500fineXP, then actual socket disconnect with five available groups remaining. Acknowledged save, actual restart/native relogin preserve one output and remaining ingredients with no automatic queue replay. Scoped subchecks only; complete level acceptance remains open.",
             "evidence": [
-              "docs/openrune/verification/independent/deep-combat/independent-assessment.json"
+              "docs/openrune/verification/independent/deep-combat-interrupt/interrupt-001/independent-assessment.json"
             ]
           },
           "V3": {
             "status": "IN_PROGRESS",
-            "reason": "Actual acknowledged-save, process restart, native relogin and durable inventory/XP/state checks PASS; interrupted/partial production and any applicable crash-recovery scenarios remain open.",
+            "reason": "Actual native Make followed by Walk114 before first completion cancels with no consumption/XP. Reopened real All115(count28), one completed four-input product/7500fineXP, then actual socket disconnect with five available groups remaining. Acknowledged save, actual restart/native relogin preserve one output and remaining ingredients with no automatic queue replay. Scoped subchecks only; complete level acceptance remains open.",
             "evidence": [
-              "docs/openrune/verification/independent/deep-combat/independent-assessment.json"
+              "docs/openrune/verification/independent/deep-combat-interrupt/interrupt-001/independent-assessment.json"
             ]
           },
           "V4": {
@@ -890,7 +978,7 @@
         ]
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -902,7 +990,14 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
           "crates/server/src/potions.rs",
+          "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/finished_potions.rs",
           "crates/server/src/runtime/potion_upgrades.rs",
@@ -916,13 +1011,16 @@
           "crates/world/src/lib.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
-          "crates/world/src/simulation/potion_upgrade_actions.rs"
+          "crates/world/src/simulation/potion_upgrade_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
         ],
         "last_executed_scope": {
           "tested_sha": "4ef5f5c1ebc50b81e56de4f3e2421e2bba49de03",
@@ -968,7 +1066,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -980,7 +1078,14 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
           "crates/server/src/potions.rs",
+          "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/finished_potions.rs",
           "crates/server/src/runtime/potion_upgrades.rs",
@@ -994,13 +1099,16 @@
           "crates/world/src/lib.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
-          "crates/world/src/simulation/potion_upgrade_actions.rs"
+          "crates/world/src/simulation/potion_upgrade_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
         ]
       }
     },
@@ -1037,7 +1145,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1049,7 +1157,14 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
           "crates/server/src/potions.rs",
+          "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/finished_potions.rs",
           "crates/server/src/runtime/potion_upgrades.rs",
@@ -1063,13 +1178,16 @@
           "crates/world/src/lib.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
-          "crates/world/src/simulation/potion_upgrade_actions.rs"
+          "crates/world/src/simulation/potion_upgrade_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
         ]
       }
     },
@@ -1106,7 +1224,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1118,7 +1236,14 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
           "crates/server/src/potions.rs",
+          "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/finished_potions.rs",
           "crates/server/src/startup.rs",
@@ -1130,12 +1255,15 @@
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/potions.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
-          "crates/world/src/simulation/location_use_actions.rs"
+          "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
         ]
       }
     },
@@ -1172,7 +1300,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1184,7 +1312,14 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
           "crates/server/src/potions.rs",
+          "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/finished_potions.rs",
           "crates/server/src/startup.rs",
@@ -1196,11 +1331,14 @@
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/potions.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
-          "crates/world/src/simulation/location_use_actions.rs"
+          "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
         ]
       }
     },
@@ -1237,7 +1375,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1249,7 +1387,14 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
           "crates/server/src/potions.rs",
+          "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/finished_potions.rs",
           "crates/server/src/startup.rs",
@@ -1260,10 +1405,13 @@
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/potions.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
-          "crates/world/src/simulation/location_use_actions.rs"
+          "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
         ]
       }
     },
@@ -1300,7 +1448,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1312,7 +1460,14 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
           "crates/server/src/potions.rs",
+          "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/finished_potions.rs",
           "crates/server/src/startup.rs",
@@ -1323,10 +1478,13 @@
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/potions.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
-          "crates/world/src/simulation/location_use_actions.rs"
+          "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
         ]
       }
     },
@@ -1363,7 +1521,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1375,7 +1533,14 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
           "crates/server/src/potions.rs",
+          "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
@@ -1384,10 +1549,13 @@
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/potions.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
-          "crates/world/src/simulation/location_use_actions.rs"
+          "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
         ]
       }
     },
@@ -1427,7 +1595,7 @@
         ]
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1439,7 +1607,14 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
           "crates/server/src/potions.rs",
+          "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
@@ -1448,10 +1623,13 @@
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/potions.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
-          "crates/world/src/simulation/location_use_actions.rs"
+          "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
         ],
         "last_executed_scope": {
           "tested_sha": "4ef5f5c1ebc50b81e56de4f3e2421e2bba49de03",
@@ -1497,7 +1675,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1509,7 +1687,14 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
           "crates/server/src/potions.rs",
+          "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
@@ -1518,10 +1703,13 @@
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/potions.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
-          "crates/world/src/simulation/location_use_actions.rs"
+          "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
         ],
         "last_executed_scope": {
           "tested_sha": "4ef5f5c1ebc50b81e56de4f3e2421e2bba49de03",
@@ -1567,7 +1755,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1579,7 +1767,14 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
           "crates/server/src/potions.rs",
+          "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
@@ -1588,10 +1783,13 @@
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/potions.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
-          "crates/world/src/simulation/location_use_actions.rs"
+          "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
         ],
         "last_executed_scope": {
           "tested_sha": "4ef5f5c1ebc50b81e56de4f3e2421e2bba49de03",
@@ -1637,7 +1835,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1650,7 +1848,14 @@
           "crates/server/src/application.rs",
           "crates/server/src/characters.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
           "crates/server/src/potions.rs",
+          "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/chemistry_dialog.rs",
           "crates/server/src/runtime/combat_mixing.rs",
@@ -1683,6 +1888,7 @@
           "crates/world/src/milking.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/reach.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/chemistry_actions.rs",
@@ -1698,13 +1904,15 @@
           "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/milking_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
           "crates/world/src/simulation/swamp_tar_actions.rs",
           "crates/world/src/simulation/unfinished_potion_actions.rs",
           "crates/world/src/simulation/water_source_actions.rs",
           "crates/world/src/swamp_tar.rs",
           "crates/world/src/unfinished_potions.rs",
           "crates/world/src/water_sources.rs",
-          "crates/world/tests/kotlin_packed_reach.rs"
+          "crates/world/tests/kotlin_packed_reach.rs",
+          "crates/world/tests/openrune_burial.rs"
         ]
       }
     },
@@ -1741,7 +1949,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1753,6 +1961,13 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
+          "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
@@ -1760,10 +1975,13 @@
           "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
-          "crates/world/src/simulation/location_use_actions.rs"
+          "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
         ],
         "last_executed_scope": {
           "tested_sha": "4ef5f5c1ebc50b81e56de4f3e2421e2bba49de03",
@@ -1818,7 +2036,7 @@
         ]
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1831,7 +2049,14 @@
           "crates/server/src/application.rs",
           "crates/server/src/characters.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
           "crates/server/src/potions.rs",
+          "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/chemistry_dialog.rs",
           "crates/server/src/runtime/combat_mixing.rs",
@@ -1862,6 +2087,7 @@
           "crates/world/src/lib.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/reach.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/chemistry_actions.rs",
@@ -1876,13 +2102,15 @@
           "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/milking_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
           "crates/world/src/simulation/swamp_tar_actions.rs",
           "crates/world/src/simulation/unfinished_potion_actions.rs",
           "crates/world/src/simulation/water_source_actions.rs",
           "crates/world/src/swamp_tar.rs",
           "crates/world/src/unfinished_potions.rs",
           "crates/world/src/water_sources.rs",
-          "crates/world/tests/kotlin_packed_reach.rs"
+          "crates/world/tests/kotlin_packed_reach.rs",
+          "crates/world/tests/openrune_burial.rs"
         ]
       }
     },
@@ -1911,16 +2139,16 @@
           },
           "V2": {
             "status": "IN_PROGRESS",
-            "reason": "Native meat consumption confirmed by client, and cake stage selected-slot commit confirmed by server trace and restarted native inventory capture. Six-action driver timed out at its strict intermediate-HP equality check; remaining four bites are untested. Acknowledged save, actual restart/native authentication with independently decoded durable inventory and displayed stats PASS. Full V2/V3 acceptance remains open.",
+            "reason": "All six genuine native meat/cake/pizza actions, including four formerly unexecuted bites, selected duplicates, remainder progression, HP cap and no XP; acknowledged save, real restart and independently decoded native relogin durable state PASS. Scoped subchecks only; complete level acceptance remains open.",
             "evidence": [
-              "docs/openrune/verification/independent/deep-food/independent-assessment.json"
+              "docs/openrune/verification/independent/deep-food-observer/observer-001/independent-assessment.json"
             ]
           },
           "V3": {
             "status": "IN_PROGRESS",
-            "reason": "Native meat consumption confirmed by client, and cake stage selected-slot commit confirmed by server trace and restarted native inventory capture. Six-action driver timed out at its strict intermediate-HP equality check; remaining four bites are untested. Acknowledged save, actual restart/native authentication with independently decoded durable inventory and displayed stats PASS. Full V2/V3 acceptance remains open.",
+            "reason": "All six genuine native meat/cake/pizza actions, including four formerly unexecuted bites, selected duplicates, remainder progression, HP cap and no XP; acknowledged save, real restart and independently decoded native relogin durable state PASS. Scoped subchecks only; complete level acceptance remains open.",
             "evidence": [
-              "docs/openrune/verification/independent/deep-food/independent-assessment.json"
+              "docs/openrune/verification/independent/deep-food-observer/observer-001/independent-assessment.json"
             ]
           },
           "V4": {
@@ -1933,7 +2161,7 @@
         ]
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1945,6 +2173,13 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
+          "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
@@ -1952,10 +2187,13 @@
           "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
-          "crates/world/src/simulation/location_use_actions.rs"
+          "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
         ],
         "last_executed_scope": {
           "tested_sha": "97b25c57d4c6dc0606adf91dd00e41ec43600a27",
@@ -2001,7 +2239,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2013,6 +2251,13 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
+          "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
@@ -2020,10 +2265,13 @@
           "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
-          "crates/world/src/simulation/location_use_actions.rs"
+          "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
         ]
       }
     },
@@ -2060,7 +2308,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2072,6 +2320,13 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
+          "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
@@ -2079,10 +2334,13 @@
           "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
-          "crates/world/src/simulation/location_use_actions.rs"
+          "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
         ]
       }
     },
@@ -2119,7 +2377,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2132,7 +2390,14 @@
           "crates/server/src/application.rs",
           "crates/server/src/characters.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
           "crates/server/src/potions.rs",
+          "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/chemistry_dialog.rs",
           "crates/server/src/runtime/combat_mixing.rs",
@@ -2163,6 +2428,7 @@
           "crates/world/src/lib.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/reach.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/chemistry_actions.rs",
@@ -2177,11 +2443,13 @@
           "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/milking_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
           "crates/world/src/simulation/swamp_tar_actions.rs",
           "crates/world/src/simulation/unfinished_potion_actions.rs",
           "crates/world/src/swamp_tar.rs",
           "crates/world/src/unfinished_potions.rs",
-          "crates/world/tests/kotlin_packed_reach.rs"
+          "crates/world/tests/kotlin_packed_reach.rs",
+          "crates/world/tests/openrune_burial.rs"
         ]
       }
     },
@@ -2218,7 +2486,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2231,7 +2499,14 @@
           "crates/server/src/application.rs",
           "crates/server/src/characters.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
           "crates/server/src/potions.rs",
+          "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/chemistry_dialog.rs",
           "crates/server/src/runtime/combat_mixing.rs",
@@ -2262,6 +2537,7 @@
           "crates/world/src/lib.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/chemistry_actions.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
@@ -2274,10 +2550,12 @@
           "crates/world/src/simulation/herb_cleaning_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
           "crates/world/src/simulation/swamp_tar_actions.rs",
           "crates/world/src/simulation/unfinished_potion_actions.rs",
           "crates/world/src/swamp_tar.rs",
-          "crates/world/src/unfinished_potions.rs"
+          "crates/world/src/unfinished_potions.rs",
+          "crates/world/tests/openrune_burial.rs"
         ]
       }
     },
@@ -2314,7 +2592,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2327,7 +2605,14 @@
           "crates/server/src/application.rs",
           "crates/server/src/characters.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
           "crates/server/src/potions.rs",
+          "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/chemistry_dialog.rs",
           "crates/server/src/runtime/combat_mixing.rs",
@@ -2354,6 +2639,7 @@
           "crates/world/src/lib.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/chemistry_actions.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
@@ -2363,10 +2649,12 @@
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
           "crates/world/src/simulation/swamp_tar_actions.rs",
           "crates/world/src/simulation/unfinished_potion_actions.rs",
           "crates/world/src/swamp_tar.rs",
-          "crates/world/src/unfinished_potions.rs"
+          "crates/world/src/unfinished_potions.rs",
+          "crates/world/tests/openrune_burial.rs"
         ]
       }
     },
@@ -2403,7 +2691,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2415,6 +2703,13 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
+          "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
@@ -2422,10 +2717,13 @@
           "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
-          "crates/world/src/simulation/location_use_actions.rs"
+          "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
         ]
       }
     },
@@ -2462,7 +2760,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2474,6 +2772,13 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
+          "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
@@ -2481,10 +2786,13 @@
           "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
-          "crates/world/src/simulation/location_use_actions.rs"
+          "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
         ]
       }
     },
@@ -2521,7 +2829,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2534,7 +2842,14 @@
           "crates/server/src/application.rs",
           "crates/server/src/characters.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
           "crates/server/src/potions.rs",
+          "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/runtime/chemistry_dialog.rs",
           "crates/server/src/runtime/combat_mixing.rs",
@@ -2563,6 +2878,7 @@
           "crates/world/src/lib.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/chemistry_actions.rs",
           "crates/world/src/simulation/combat_mixing_actions.rs",
@@ -2574,10 +2890,12 @@
           "crates/world/src/simulation/herb_cleaning_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
           "crates/world/src/simulation/swamp_tar_actions.rs",
           "crates/world/src/simulation/unfinished_potion_actions.rs",
           "crates/world/src/swamp_tar.rs",
-          "crates/world/src/unfinished_potions.rs"
+          "crates/world/src/unfinished_potions.rs",
+          "crates/world/tests/openrune_burial.rs"
         ]
       }
     },
@@ -2614,7 +2932,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2626,6 +2944,13 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
+          "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
@@ -2633,10 +2958,13 @@
           "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
-          "crates/world/src/simulation/location_use_actions.rs"
+          "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
         ]
       }
     },
@@ -2679,7 +3007,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2691,6 +3019,13 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
+          "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
@@ -2698,10 +3033,13 @@
           "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
-          "crates/world/src/simulation/location_use_actions.rs"
+          "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
         ]
       }
     },
@@ -2750,7 +3088,7 @@
         ]
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2762,15 +3100,27 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
+          "crates/server/src/prayer.rs",
+          "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
-          "crates/world/src/simulation/location_use_actions.rs"
+          "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
         ]
       }
     },
@@ -2807,7 +3157,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2819,23 +3169,35 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
+          "crates/server/src/prayer.rs",
+          "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
-          "crates/world/src/simulation/location_use_actions.rs"
+          "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
         ]
       }
     },
     {
       "implementation_id": "OR-MIG-0037",
-      "revision": 1,
+      "revision": 2,
       "implementation_availability": {
         "status": "AVAILABLE",
-        "sha": "fbf10373608cb22b03c89ce9f6bfcb12491b994e"
+        "sha": "864d439132b33395773116d57347f9caefdfcf1c"
       },
       "historical_verification": {
         "levels": {
@@ -2863,7 +3225,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2873,16 +3235,23 @@
           "V4": "NOT_STARTED"
         },
         "changed_production_paths": [
-          "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
+          "crates/server/src/prayer.rs",
+          "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
-          "crates/world/src/assembly.rs",
           "crates/world/src/cooking.rs",
-          "crates/world/src/held_use.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
-          "crates/world/src/simulation/held_use_actions.rs",
-          "crates/world/src/simulation/location_use_actions.rs"
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
         ]
       }
     },
@@ -2919,7 +3288,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2931,14 +3300,26 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
+          "crates/server/src/prayer.rs",
+          "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
-          "crates/world/src/simulation/location_use_actions.rs"
+          "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
         ]
       }
     },
@@ -2975,7 +3356,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2987,14 +3368,26 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
+          "crates/server/src/prayer.rs",
+          "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/assembly.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
-          "crates/world/src/simulation/location_use_actions.rs"
+          "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
         ]
       }
     },
@@ -3039,7 +3432,7 @@
         ]
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3050,19 +3443,32 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
+          "crates/server/src/prayer.rs",
+          "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/cooking.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/prayer.rs",
+          "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
-          "crates/world/src/simulation/location_use_actions.rs"
+          "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
         ]
       }
     },
     {
       "implementation_id": "OR-MIG-0041",
-      "revision": 1,
+      "revision": 2,
       "implementation_availability": {
         "status": "AVAILABLE",
-        "sha": "902e55c7dd619ab5af4dd5f8bba0284ed4f75dca"
+        "sha": "864d439132b33395773116d57347f9caefdfcf1c"
       },
       "historical_verification": {
         "levels": {
@@ -3090,7 +3496,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3101,8 +3507,22 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
+          "crates/server/src/prayer.rs",
+          "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
-          "crates/world/src/cooking.rs"
+          "crates/world/src/cooking.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/prayer.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
         ]
       }
     },
@@ -3139,7 +3559,633 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "3fd6dac2d3d524ffa030e7ee0dcd9bcc710f860a",
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
+          "crates/server/src/prayer.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/cooking.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/prayer.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
+        ]
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0043",
+      "revision": 1,
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "8805474ede2cbbb80e9167c300b3bbbefe845c83"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
+          "crates/server/src/prayer.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/cooking.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/prayer.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
+        ]
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0044",
+      "revision": 1,
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "30509633a6d1e0b96eb9530275040b46e43fabe4"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/content/basic_meat.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
+          "crates/server/src/prayer.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/prayer.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
+        ]
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0045",
+      "revision": 1,
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "461424d9c7f1ab00ffdbc264f583088b77d978ef"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/member_fish.rs",
+          "crates/server/src/content/random_food.rs",
+          "crates/server/src/prayer.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/prayer.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
+        ]
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0046",
+      "revision": 1,
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "138d95d184e6eecbee7da474410b6d9cb12fe8eb"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/random_food.rs",
+          "crates/server/src/prayer.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/food.rs",
+          "crates/world/src/prayer.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
+        ]
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0047",
+      "revision": 1,
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "3f49323fa71adb9ab53df7b789f18ffbf737712c"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/meal_food.rs",
+          "crates/server/src/prayer.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/prayer.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
+        ]
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0048",
+      "revision": 1,
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "3a57d318bd42b2a16070557c7ffcc93d3cf4d5b6"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/prayer.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/prayer.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
+        ]
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0049",
+      "revision": 1,
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "8d8dff9c3f5200568f2becf0c63509332d9bfed9"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/prayer.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/prayer.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
+        ]
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0050",
+      "revision": 1,
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "78f603fd516a3963f2e0a30d2ad47186aa6e1ddd"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/prayer.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/prayer.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
+        ]
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0051",
+      "revision": 1,
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "f6b0f6ad54fe7813bb6607827eeb8da0e60137fa"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/prayer.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/tests/openrune_burial.rs"
+        ]
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0052",
+      "revision": 1,
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "8389805afedc05d132747e0a5dd4a3631360ada3"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/prayer.rs",
+          "crates/server/src/startup.rs"
+        ]
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0053",
+      "revision": 1,
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "0d9a03c8b97cf1ac7a2bca9e51f92564a2c4198e"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",

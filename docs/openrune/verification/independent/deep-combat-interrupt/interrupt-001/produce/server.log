@@ -1,0 +1,6 @@
+Loaded 11 map squares, 586 NPCs, 24220 locations
+Listening on 127.0.0.1:61739 (revision 239.1; partial gameplay implementation)
+Player ready: ActorId { slot: 1, generation: 614 }
+Combat mixing transition: {"actor_slot":1,"actor_generation":614,"slots":[0, 1, 2, 3],"inputs":[2436, 2440, 2442, 269],"output":12695,"secondary_saved":false,"queued_at":134,"committed_at":136,"index":0,"base_fine_xp":1500,"rate_hundreds":500,"fine_before":130344311,"fine_after":130351811}
+Save acknowledgement: {"actor_slot":1,"actor_generation":614,"save_generation":614,"observed_tick":155,"save_completed":true}
+Shutdown completed; accounts drained.

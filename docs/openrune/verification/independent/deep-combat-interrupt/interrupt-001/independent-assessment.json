@@ -1,0 +1,16 @@
+{
+  "implementation_id": "OR-MIG-0010",
+  "tested_sha": "5a260c1bd6efa5f8a221bed7c96e6ac72fd428bc",
+  "campaign_kind": "historical",
+  "status": "PASS",
+  "scope": "Actual native Make followed by Walk114 before first completion cancels with no consumption/XP. Reopened real All115(count28), one completed four-input product/7500fineXP, then actual socket disconnect with five available groups remaining. Acknowledged save, actual restart/native relogin preserve one output and remaining ingredients with no automatic queue replay.",
+  "movement_cancel": "PASS",
+  "partial_disconnect_save_restart": "PASS",
+  "completed_products": 1,
+  "fine_xp_award": 7500,
+  "limitations": [
+    "Acknowledged normal disconnect/restart is not deliberate process-crash atomicity.",
+    "Native goggles, quest/level/member refusals, other stale selected claims and full reference acceptance remain separate.",
+    "Native post-apply inventory is observed; raw partial18 bytes were not recorded by this observer build."
+  ]
+}

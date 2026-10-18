@@ -1,0 +1,39 @@
+{
+  "implementation_id": "OR-MIG-0024",
+  "revision": 3,
+  "tested_sha": "ae3d234c71764dd2364f8452fc1974a54a6783f0",
+  "campaign_kind": "historical",
+  "status": "PASS",
+  "native_actions": 6,
+  "received_hp_updates": [
+    {
+      "observed_tick": 0,
+      "current": 2,
+      "display_xp": 1154
+    },
+    {
+      "observed_tick": 92,
+      "current": 3,
+      "display_xp": 1154
+    },
+    {
+      "observed_tick": 116,
+      "current": 6,
+      "display_xp": 1154
+    },
+    {
+      "observed_tick": 125,
+      "current": 10,
+      "display_xp": 1154
+    }
+  ],
+  "scope": "All six genuine native meat/cake/pizza actions, including four formerly unexecuted bites, selected duplicates, remainder progression, HP cap and no XP; acknowledged save, real restart and independently decoded native relogin durable state PASS.",
+  "observation_blocker": "PG-INFRA-004 resolved for continued testing: instrumented actual received HP2->3 before first Eat proves passive regeneration is independently observable; meat then3->6 and cake6->10. Inventory acknowledgements identify consumption independently of HP equality. The old campaign exact missed-observation sequence remains inferred because its driver did not capture packets.",
+  "limitations": [
+    "Fresh run has a different regeneration phase from the retained failed driver; no fabricated reconstruction of its unrecorded packets.",
+    "This observer records raw full inventory22 and HP46, but omitted raw partial inventory18. Partial transitions are actual native post-apply observations plus authoritative SQL/trace; restarted full inventory22 is independently decoded.",
+    "No native full-bag, malformed/stale Eat, pre-existing overheal, interruption or crash-recovery verdict in this run.",
+    "Client packet clock can lag authoritative commit trace while VM/script backlog drains; correlate ordered updates/actions and exact trace identity, not equality of these two clock fields.",
+    "Scoped PASS does not certify all V2/V3 obligations."
+  ]
+}

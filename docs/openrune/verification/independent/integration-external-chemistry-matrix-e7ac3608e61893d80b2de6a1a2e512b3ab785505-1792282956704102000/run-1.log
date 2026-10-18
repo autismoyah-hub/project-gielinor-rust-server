@@ -1,0 +1,9 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\e7ac3608e61893d80b2de6a1a2e512b3ab785505\external-harness-0783735700)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 15.04s
+     Running tests\authoritative.rs (C:\Projects\OSRSRSPS\agent7-verification\work\e7ac3608e61893d80b2de6a1a2e512b3ab785505\target\debug\deps\authoritative-2874cfac41e2c481.exe)
+
+running 2 tests
+test all_validation_failures_preserve_inventory_equipment_stats_charges_and_rng ... ok
+test exhaustive_ordinary_chemistry_probability_goggles_last_charge_and_conservation ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 7.61s

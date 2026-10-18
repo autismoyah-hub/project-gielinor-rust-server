@@ -1,0 +1,64 @@
+{
+  "tested_integration_sha": "e7ac3608e61893d80b2de6a1a2e512b3ab785505",
+  "suite": "chemistry-matrix",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "FAIL",
+  "resource": {
+    "available_ram": 7893147648,
+    "active_compilers": [
+      "\"cargo.exe\",\"16292\",\"RDP-Tcp#0\",\"2\",\"22,988 K\"",
+      "\"rustc.exe\",\"15708\",\"RDP-Tcp#0\",\"2\",\"261,896 K\""
+    ],
+    "cpu_percent": 19.15,
+    "cpu_samples": [
+      18.039215686274513,
+      13.035019455252916,
+      26.3671875
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained",
+    "disk_free": 46325391360,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "ead3789f18a2af39acd63cc3e2f872e80eff1eee",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\e7ac3608e61893d80b2de6a1a2e512b3ab785505\\external-harness-3299534200\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-chemistry-matrix-e7ac3608e61893d80b2de6a1a2e512b3ab785505\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\e7ac3608e61893d80b2de6a1a2e512b3ab785505\\external-harness-3299534200\\Cargo.toml"
+      ],
+      "exit_code": 101,
+      "tests_passed": 1,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-chemistry-matrix-e7ac3608e61893d80b2de6a1a2e512b3ab785505\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative chemistry-matrix scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-chemistry-matrix-e7ac3608e61893d80b2de6a1a2e512b3ab785505\\harness\\authoritative.rs": "4e3e2d401ea69d8b13e25e2aae394c69a695326877c1ee940bcc0eb06914f333"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\authoritative-2874cfac41e2c481.exe": "8d2341ddfef527ae49e66699e738938ed618f66d0880171eedfb90165ce8ec2f",
+    "target\\debug\\deps\\gielinor_server-7abd10c65476b4d7.exe": "ce949d7b86f3cf02e34049c31cf41393319067c3a606fb953c9086096c446e61",
+    "target\\debug\\deps\\gielinor_server-894795c80ff17bc3.exe": "bcbf2e3f3ca2aa9889e8671b161936d1b9c1408439f8eeb3772fbbf48f9676b4",
+    "target\\debug\\deps\\gielinor_world-379bc28e5667f47e.exe": "bde441638e4e56f64febfc3b2cf1dcabf1609652b46fd3c5db594e8ce24b225d"
+  }
+}

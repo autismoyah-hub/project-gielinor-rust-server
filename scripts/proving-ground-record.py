@@ -37,6 +37,9 @@ for manifest in OUT.glob('OR-MIG-0024-*-independent*/manifest.json'):
 for manifest in OUT.glob('integration-*/manifest.json'):
     value=json.loads(manifest.read_text(encoding='utf-8'))
     if value.get('status')!='PASS':continue
+    if value.get('suite')=='chemistry-matrix':
+        add('OR-MIG-0006',value['tested_integration_sha'],'V1','IN_PROGRESS','Independent 22000-combination public completion matrix and12 invalid-policy cases PASS: both input directions, five charge counts, both crumble policies, goggles coexistence, all random thresholds, full inventory and exact XP/level/slot atomicity. Native and complete action-route obligations remain separate.',[str(manifest.relative_to(ROOT)).replace('\\','/')],scope='chemistry-independent-matrix')
+        continue
     if value.get('suite')=='assembly-batch':
         for level in ['V0','V1']:
             add('OR-MIG-0040',value['tested_integration_sha'],level,'IN_PROGRESS','Independent public authoritative BatchRecipe/BatchJob transaction matrix PASS across1512 full-bag/selected-slot/direction/late-failure combinations, including stale material with untouched matching duplicate, all three refused returns, live level, positive-XP invalid rate, repeated captured slot, membership and replay. Actual World held-route/pair/modal regressions passed separately; configured runtime, native, persistence and full reference acceptance remain open.',[str(manifest.relative_to(ROOT)).replace('\\','/')],scope='assembly-batch-independent')
@@ -98,4 +101,19 @@ for path in OUT.glob('OR-MIG-0040-*/manifest.json'):
     if result.get('outcome')!='PARTIAL':continue
     for level in ['V0','V1']:
         add('OR-MIG-0040',result['implementation_commit_sha'],level,'IN_PROGRESS','Independently executed13 existing exact-SHA authoritative/helper tests PASS, including actual held batch routing, two processing clocks, pair/timed regression, live level/member revocation, cancellation and no repeated rewards. Whole runtime/native/lifecycle/reference acceptance remains open.',[str(path.relative_to(ROOT)).replace('\\','/')],scope='shared-assembly-regression')
+for pattern,ident,scope in [('deep-chemistry-last/*/independent-assessment.json','OR-MIG-0006','native-last-charge'),('deep-food-observer/*/independent-assessment.json','OR-MIG-0024','native-food-observer'),('deep-combat-interrupt/*/independent-assessment.json','OR-MIG-0010','native-combat-interrupted')]:
+    for path in OUT.glob(pattern):
+        result=json.loads(path.read_text(encoding='utf-8'))
+        if result.get('status')!='PASS':continue
+        for level in ['V2','V3']:
+            add(ident,result['tested_sha'],level,'IN_PROGRESS',result['scope']+' Scoped subchecks only; complete level acceptance remains open.',[str(path.relative_to(ROOT)).replace('\\','/')],scope=scope)
+path=OUT/'reference-chemistry/comparison.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    add('OR-MIG-0006','e7ac3608e61893d80b2de6a1a2e512b3ab785505','V4','IN_PROGRESS','Independent supported source and pinned-documentation audit PASS, with explicit RNG-order, initial-delay, cache-operation and reset-representation adaptations. Original executable unavailable. Native cancellation mismatch PG-DEF-001 prevents a full behavioral parity claim.',[str(path.relative_to(ROOT)).replace('\\','/')],scope='chemistry-reference-audit')
+path=OUT/'deep-chem-close/close-001/independent-assessment.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    assert result['status']=='FAIL'
+    add('OR-MIG-0006',result['tested_sha'],'V2','FAIL','PG-DEF-001 / GitHub123: genuine native Close95 leaves server dialog live; stale Stop115 changes saved policy0->1. Ordinary P2, not implementation-blocking. Prior passing item-only probe is not gameplay acceptance.',[str(path.relative_to(ROOT)).replace('\\','/')],scope='chemistry-native-close-defect')
 print('Per-level evidence events:',len(rows))

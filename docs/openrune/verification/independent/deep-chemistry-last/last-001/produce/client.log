@@ -1,0 +1,15 @@
+Live native login accepted, player 1
+World background load: 7.757s
+Live world built: 6409 objects, 522622 triangles, 0 missing regions
+Native pointer selected side tab 3 at [612, 186]
+Native generated interface-target opcode=27 payload=[00, 95, 00, 00, 00, 81, dd, 00, 00, 00, 00, 6b, 00, 00, 00, 95]
+Native Use 235 on 93, source_widget=4294839413, target_widget=4294839412, source_slot=1, target_slot=0, tick=93
+Native finished awaiting generated All control; observed labels=[]
+Native All generated menu: [("All", "", Interface { id: 17694732, operation: 1, sub: None })]
+Native All listeners: click=None,op=None
+Native finished quantity pointer clicked label=All,widget=4294841025,pixel=[482, 368]
+Native finished quantity menu selected option=All,action=Interface { id: 17694732, operation: 1, sub: None }
+Native finished All recipe component=17694735,pixel=[260, 428],label=Make
+Native finished recipe action=Interface { id: 17694735, operation: 1, sub: None }
+Native finished recipe dispatch opcode=115 payload=[0e, 01, 0f, 00, 00, 1c]
+Native chemistry All PASS;potions=13,extra=1,crumbled=true;verify=false

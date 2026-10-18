@@ -1,0 +1,84 @@
+{
+  "implementation_id": "OR-MIG-0006",
+  "implementation_sha": "e7ac3608e61893d80b2de6a1a2e512b3ab785505",
+  "level": "V4",
+  "status": "PASS",
+  "scope": "Independent supported-source/pinned-documentation fidelity and intentional adaptation audit for ordinary chemistry state, controls and existing ordinary finished-potion modifiers at the exact contract SHA.",
+  "sources": [
+    {
+      "reference": "content/skills/herblore/src/main/kotlin/org/rsmod/content/skills/herblore/AmuletOfChemistryScript.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision 241",
+      "sha256": "822775e66d7c2c311749ae9a2b670b1376e1ee01cc546504206e22058739d43f",
+      "method": "independent read-only source/document inspection"
+    },
+    {
+      "reference": "or-cache/src/main/kotlin/dev/openrune/tables/skills/Herblore.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision 241",
+      "sha256": "30b62b536da7696d98847a94a9edd2d8f601a3d61128f70947aa8bc3f5e1ef62",
+      "method": "independent read-only source/document inspection"
+    },
+    {
+      "reference": "https://oldschool.runescape.wiki/w/Special:Redirect/revision/15338661",
+      "revision": 15338661,
+      "sha256": "43eb8d9575c8fd45b45ae660bd178b7dfe45fa40d82113039bf76e13bf5c3ba8",
+      "method": "independent read-only source/document inspection"
+    },
+    {
+      "reference": "content/skills/herblore/src/main/kotlin/org/rsmod/content/skills/herblore/AmuletOfChemistry.kt",
+      "sha256": "06fc425e3fa407715d2a94a048a101023c2ad0a00dec04947720960d6290c801",
+      "method": "independently inspected supporting source, configured revision241; upstream commit unavailable"
+    },
+    {
+      "reference": "content/skills/herblore/src/main/kotlin/org/rsmod/content/skills/herblore/HerbloreGoggles.kt",
+      "sha256": "c833d07a25acde14e20383266f7a7eb97f64fd28d03a4bbb367bdcfe4c21e611",
+      "method": "independently inspected supporting source, configured revision241; upstream commit unavailable"
+    },
+    {
+      "reference": "content/skills/herblore/src/main/kotlin/org/rsmod/content/skills/herblore/FinishedPotionsEvents.kt",
+      "sha256": "851f9ddaed0c365348b00377fe74077d85ff5bb7f8bb15ecbb50630af48a7579",
+      "method": "independently inspected supporting source, configured revision241; upstream commit unavailable"
+    }
+  ],
+  "rust_sha256": {
+    "crates/world/src/chemistry.rs": "0ceade6ff1ba578e104ba85238d2cd932f10d593ac42c5c3228062477f67b2bd",
+    "crates/world/src/chemistry_modifier.rs": "625e4d831b58f3a4a527bc2f2a6c99c46680f4260b001c0e790a7872a26cff89",
+    "crates/world/src/simulation/chemistry_actions.rs": "813fbad82cf40d460f19e4a82efe95cd0ca29fe39525923386cb1b12995dd7b4",
+    "crates/world/src/simulation/finished_potion_actions.rs": "6f331cfd64c1a68323ed8cea228bafe160ec7f6118ff8c9e59b2a4ea5718db67",
+    "crates/server/src/runtime/chemistry_dialog.rs": "5798a227faffb9922cecf02e208a38478dd1e23438bfab5e38e2436d476ee373",
+    "crates/server/src/content.rs": "5c7aa1063a99d918d5b659aabe72e3b0c7a51a94e087533d2e7836b34cc44c8d"
+  },
+  "comparisons": [
+    {
+      "behavior": "Ordinary five-charge, five-percent extra-dose policy",
+      "classification": "supported",
+      "finding": "Pinned Wiki and source support one additional dose on eligible brews, no bonus XP, charge consumption only on a proc, destruction on depletion. Rust threshold is draws0..4 of100. Fresh native samples do not estimate probability; deterministic exhaustive inputs verify the threshold separately."
+    },
+    {
+      "behavior": "Per-character charge ownership and manual break",
+      "classification": "supported_with_representation_adaptation",
+      "finding": "Wiki stores charges on the player across amulet swaps; confirmed Break resets the next amulet to5. Rust persists1..5 and prepares5 immediately on depletion rather than storing the donor helper zero after crumble. This supports the next-amulet rule and is not literal internal-state parity."
+    },
+    {
+      "behavior": "Held/worn Options and cancelled/stale dialogs",
+      "classification": "supported_with_target_revision_dispatch",
+      "finding": "Protected script exposes held Options/Break and worn Options, with Continue/Stop and confirmed Break/Cancel. Rust uses actual239.1 inventory IF_BUTTONX operations4/6, static neck component387:17 and a validated shared response button/token. These are target cache/protocol adaptations, not copied241 component numbers. Live item/slot revalidation and cancellation remain independent runtime obligations."
+    },
+    {
+      "behavior": "Dose eligibility",
+      "classification": "supported_with_explicit_scope",
+      "finding": "Pinned Wiki and helper exclude always-four-dose outputs and require variable input doses below4. Exact target startup validates26 explicit ordinary3\u21924 dose bindings and distinct ordinary output definitions. Later stamina/divine/other adapters have their own implementation contracts; their native acceptance is not inherited here. Alchemist amulet/storage and unsupported recipes are explicitly outside this ordinary contract."
+    },
+    {
+      "behavior": "Goggles coexistence and RNG/atomicity",
+      "classification": "documented_intentional_adaptation",
+      "finding": "Supporting source uses10% eligible secondary conservation; same output/reward conservation must hold alongside chemistry. Donor rolls chemistry before late material/stat checks, then goggles; Rust prepares all inventory/stat/equipment outcomes first and draws goggles before chemistry. This preserves the supported marginal rules and prior local goggles ordering, not Kotlin seed-stream correspondence. Invalid transactions must draw no RNG or consume charge."
+    },
+    {
+      "behavior": "Queued stop, persistence and cadence",
+      "classification": "supported_with_separate_gameplay_evidence",
+      "finding": "Source stops further queued work after publishing the last-charge output when Stop is enabled; otherwise it continues. Native last-charge campaign demonstrates interrupted All with ingredients remaining and real restart/relogin without replay. The parent potion pipeline uses documented local two-clock production instead of donor first1/repeat4; chemistry must not alter that cadence. Database durability is tested in separate V3 evidence, not inferred from source."
+    }
+  ],
+  "reference_execution": "No original Kotlin executable was available or executed. All original behavior statements are explicitly source-derived; this PASS covers the supported source/documentation comparison method, not an executable differential or literal donor parity.",
+  "coverage_boundary": "Ordinary OR-MIG-0006 only. Gameplay V1/V2/V3 results and independent native failure investigations remain separate; this assessment cannot promote those levels."
+}

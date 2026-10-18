@@ -2,7 +2,7 @@
 import argparse,hashlib,importlib.util,json,os,re,shutil,subprocess,time
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-p=argparse.ArgumentParser();p.add_argument('sha');p.add_argument('--suite',choices=['energy-food','food-regeneration','assembly-batch'],required=True);a=p.parse_args();assert re.fullmatch('[0-9a-f]{40}',a.sha)
+p=argparse.ArgumentParser();p.add_argument('sha');p.add_argument('--suite',choices=['energy-food','food-regeneration','assembly-batch','chemistry-matrix'],required=True);a=p.parse_args();assert re.fullmatch('[0-9a-f]{40}',a.sha)
 out=ROOT/'docs/openrune/verification/independent'/('integration-external-'+a.suite+'-'+a.sha)
 if out.exists():out=out.parent/(out.name+'-'+str(time.time_ns()))
 out.mkdir(parents=True)

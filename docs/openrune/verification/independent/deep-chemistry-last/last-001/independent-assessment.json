@@ -1,0 +1,16 @@
+{
+  "implementation_id": "OR-MIG-0006",
+  "tested_sha": "e7ac3608e61893d80b2de6a1a2e512b3ab785505",
+  "campaign_kind": "historical",
+  "status": "PASS",
+  "potions": 13,
+  "ordinary_outputs": 12,
+  "extra_outputs": 1,
+  "remaining_pairs": 1,
+  "fine_xp_award": 24375,
+  "scope": "Native All quantity production from full28 bag: last charge gives exactly one extra dose without extra XP, removes ordinary neck amulet, resets next-amulet charges5 and interrupts queue with ingredients remaining. Acknowledged save, real restart and native relogin preserve partial production, stop policy and fineXP; no production replay.",
+  "limitations": [
+    "This native sample does not estimate proc probability. Deterministic exhaustive probability and modifier branches require separate authoritative tests.",
+    "Manual movement/logout interruption, simultaneous goggles and negative dialog campaigns are separate obligations."
+  ]
+}

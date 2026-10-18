@@ -1,0 +1,16 @@
+{
+  "cache_files": 95,
+  "cache_manifest_sha256": "8ba60ce0ba0fdc1add7ef2511bc9b4683c3b2fe42a80997583c51d4fa5b82717",
+  "driver_manifest": {
+    "driver": "chemistry-001",
+    "scenario": "chemistry",
+    "baseline": "client-239.1-baseline-001-build-001",
+    "reason": "Owned integration scenario; pinned client library unchanged",
+    "files": {
+      "NativeChemistryScenario.rs": "DB91C91164B8C460E2AF26AD50EA94796EA0BF70CA09DB7877E2DB1A10E5BA8E",
+      "server_chemistry.exe": "D81C0A27341D73915C3EE5E43408DC678917319A764E339ACFD45751A8915E06"
+    }
+  },
+  "driver_sha256": "d81c0a27341d73915c3ee5e43408dc678917319a764e339acfd45751a8915e06",
+  "scope": "Owned copies; original resources read-only. Private cache, keys, credentials and account template are not published."
+}

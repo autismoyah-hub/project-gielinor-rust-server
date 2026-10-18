@@ -1,0 +1,38 @@
+{
+  "status": "BLOCKED",
+  "exit_code": 101,
+  "resource": {
+    "available_ram": 7281090560,
+    "active_compilers": [
+      "\"cargo.exe\",\"1072\",\"RDP-Tcp#0\",\"2\",\"23,060 K\"",
+      "\"rustc.exe\",\"7160\",\"RDP-Tcp#0\",\"2\",\"257,296 K\""
+    ],
+    "cpu_percent": 13.48,
+    "cpu_samples": [
+      13.926499032882012,
+      13.725490196078427,
+      12.790697674418606
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained",
+    "disk_free": 45834366976,
+    "owned_affinity_mask": 3
+  },
+  "command": [
+    "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+    "build",
+    "--offline",
+    "--locked",
+    "-j",
+    "1",
+    "--example",
+    "pg_observer"
+  ],
+  "observer_sources": {
+    "pg_observer.rs": "f6e3fbcf69dd92e36151017fa2baffd1df4d49266006afab136de21b34f42141"
+  },
+  "binaries": {
+    "pg_observer.exe": "afaf71feed5788e656263288d3f22b852c9cecebb23d03297db5cf0652d281fe"
+  },
+  "scope": "Fresh independent native-client build; pinned core source plus recorded read-only observation overlay and owned scenario controllers."
+}

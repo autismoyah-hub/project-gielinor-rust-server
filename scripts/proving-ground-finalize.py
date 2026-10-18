@@ -15,6 +15,7 @@ for source in (ROOT/'scripts').glob('proving-ground*.py'):py_compile.compile(str
 for path in [DOC/'VERIFICATION_RESULTS.jsonl',*OUT.rglob('*')]:
     if path.is_file() and path.suffix in ('.json','.jsonl','.txt','.log'):
         if path.name.startswith('queue-') and path.suffix=='.jsonl':continue  # Exact fetched blob identity.
+        if path.name=='launcher.txt':continue  # Frozen executable source identity.
         raw=path.read_bytes()
         path.write_bytes(raw.replace(b'\r\n',b'\n').rstrip(b'\n')+b'\n')
 rows=[json.loads(s) for s in (DOC/'VERIFICATION_RESULTS.jsonl').read_text(encoding='utf-8').splitlines()]

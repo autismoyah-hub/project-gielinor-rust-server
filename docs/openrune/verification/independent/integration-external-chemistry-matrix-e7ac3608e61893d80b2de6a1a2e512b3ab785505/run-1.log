@@ -1,0 +1,26 @@
+   Compiling gielinor-world v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\e7ac3608e61893d80b2de6a1a2e512b3ab785505\crates\world)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\e7ac3608e61893d80b2de6a1a2e512b3ab785505\external-harness-3299534200)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 27.55s
+     Running tests\authoritative.rs (C:\Projects\OSRSRSPS\agent7-verification\work\e7ac3608e61893d80b2de6a1a2e512b3ab785505\target\debug\deps\authoritative-2874cfac41e2c481.exe)
+
+running 2 tests
+test exhaustive_ordinary_chemistry_probability_goggles_last_charge_and_conservation ... FAILED
+test all_validation_failures_preserve_inventory_equipment_stats_charges_and_rng ... ok
+
+failures:
+
+---- exhaustive_ordinary_chemistry_probability_goggles_last_charge_and_conservation stdout ----
+
+thread 'exhaustive_ordinary_chemistry_probability_goggles_last_charge_and_conservation' (9896) panicked at tests\authoritative.rs:23:65:
+assertion `left == right` failed
+  left: 6
+ right: 5
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    exhaustive_ordinary_chemistry_probability_goggles_last_charge_and_conservation
+
+test result: FAILED. 1 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test authoritative`

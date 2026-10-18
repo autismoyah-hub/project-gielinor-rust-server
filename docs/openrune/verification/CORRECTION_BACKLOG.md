@@ -67,4 +67,27 @@ The handoff's `ba455a6` identifier is an informational mismatch: the fetched ori
 
 ## Finding format
 
+## PG-DEF-001 — native Close leaves chemistry policy dialog live
+
+- Target: OR-MIG-0006, exact `e7ac3608e61893d80b2de6a1a2e512b3ab785505`.
+- Severity: P2 ordinary isolated mismatch; not implementation-blocking. Continue unrelated FORGE work.
+- Reproduction: worn Options, real Continue, reopen Options, genuine native Action::Close (95 empty), replay earlier real ResumePause115 with Stop choice. Local modal closes; authoritative saved policy changes Continue0 to Stop1. Charges2, inventory and all Stats unchanged; integrity ok, save acknowledged and graceful shutdown0.
+- Expected: closed modal rejects stale response and retains `[2,0]`. Actual `[2,1]`.
+- Root cause: exact target gameplay decoder falls through to Unhandled for95, leaving runtime chemistry dialog active. Route genuine Close into existing cancellation and reject stale held/worn replies. Reverify at explicitly published correction SHA; preserve historical failure.
+- Evidence: `independent/deep-chem-close/close-001/independent-assessment.json`, raw native packet log, before/after SQL snapshots, frozen client/server hashes and launcher source. Raw launcher PASS means probe execution, while independent V2 verdict is FAIL. Earlier negative-002 corroborates; negative-001 was verifier misuse of Continue latch, not production evidence.
+- Issue: https://github.com/autismoyah-hub/project-gielinor-rust-server/issues/123. User explicitly approved publication after automatic review initially rejected external disclosure. Current HEAD replay is not claimed.
+- Status: OPEN correction; V2 historical FAIL. No FORGE stop requested.
+
+## PG-INFRA-006 — resolved observer and capacity assumptions
+
+- Retain negative-001: removing an actual Continue packet from outbound left the native Continue latch active, preventing real Cancel. Corrected observer dispatches real Cancel before replay and never strips generated packets. Fresh negative-002 and genuine Close case are separate immutable runs.
+- Retain initial chemistry matrix: expected unchanged level5 despite legitimate XP crossing level6 was an oracle defect. Corrected 22000-combination matrix plus12 validation cases passes at unchanged e7ac3608.
+- Capacity guard now matches project three-sample CPU70% policy while retaining stricter6GiB available RAM and restricting only owned children to two CPUs. Earlier30% deferrals remain measurements, not server failures.
+- Food observer received all HP46 updates, full inventory22 and actual post-apply inventory snapshots; raw partial inventory18 was omitted. Assessment uses actual post-apply confirmation plus server trace and SQL, and independently decodes full22 on real restart. It does not claim raw18 capture. Initial assessor incorrectly expected a post-consumption full22; corrected without rerunning or altering successful campaign state.
+- Observer compilation signed-position/unsigned-Walk mismatch corrected with checked conversions; failed source and build logs retained. No production correction needed.
+
+## PG-INFRA-004 follow-up — blocker resolved for further execution
+
+Fresh `deep-food-observer/observer-001` completed six actual native actions, including four formerly unexecuted bites, acknowledged save, real restart and native relogin. Raw received HP sequence2→3 before Eat, then3→6 from meat and6→10 from cake distinguishes regeneration and consumption. XP and unselected duplicate inventory remain conserved. Original failed driver and its missing packet observations remain historical; its exact missed-equality sequence is inferred, not retroactively fabricated. Full native negative/overheal/capacity and crash recovery remain open.
+
 For each confirmed defect, record a stable finding ID, feature ID, full tested SHA, severity, expected/actual states, precise reproduction and scenario, evidence paths, affected dependency chain, implementation-blocking status, GitHub issue, and correction/retest history. Preserve historical failures after a fix. Search existing issues before filing a duplicate.

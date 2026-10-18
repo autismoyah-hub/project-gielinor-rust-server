@@ -1,0 +1,26 @@
+{
+  "implementation_id": "OR-MIG-0006",
+  "tested_sha": "e7ac3608e61893d80b2de6a1a2e512b3ab785505",
+  "campaign_kind": "historical",
+  "status": "FAIL",
+  "finding": "PG-DEF-001",
+  "level": "V2",
+  "raw_probe_execution": "PASS: all requested interactions executed; this is not a gameplay verdict",
+  "expected_chemistry_state": [
+    [
+      2,
+      0
+    ]
+  ],
+  "actual_chemistry_state": [
+    [
+      2,
+      1
+    ]
+  ],
+  "scope": "Genuine native Action::Close emits opcode95 and closes local modal; replay of old real Continue packet with option changed to Stop is accepted by historical server. Saved Stop policy changes despite closed native modal. Items, charges and XP unchanged.",
+  "root_cause": "Recorded server gameplay decoder treats opcode95 as Unhandled; existing chemistry-dialog cancellation is not reached.",
+  "severity": "P2 ordinary isolated stale-modal mismatch",
+  "implementation_blocking": false,
+  "correction": "Decode and route real Close modal to existing modal/chemistry cancellation; refuse old held/worn ResumePause afterward. Preserve ordinary valid controls and test same exact interaction at an explicitly published correction SHA."
+}
