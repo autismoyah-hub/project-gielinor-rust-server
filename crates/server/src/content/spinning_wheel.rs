@@ -70,6 +70,7 @@ pub fn spinning_wheel(
         recipes: std::sync::Arc::new(vec![
             Recipe {
                 input: 1737,
+                required_inventory_tools: &[],
                 secondary: None,
                 byproduct: None,
                 input_count: 1,
@@ -85,6 +86,7 @@ pub fn spinning_wheel(
             },
             Recipe {
                 input: 1779,
+                required_inventory_tools: &[],
                 secondary: None,
                 byproduct: None,
                 input_count: 1,
@@ -100,6 +102,7 @@ pub fn spinning_wheel(
             },
             Recipe {
                 input: 9436,
+                required_inventory_tools: &[],
                 secondary: None,
                 byproduct: None,
                 input_count: 1,
@@ -115,6 +118,7 @@ pub fn spinning_wheel(
             },
             Recipe {
                 input: 6043,
+                required_inventory_tools: &[],
                 secondary: None,
                 byproduct: None,
                 input_count: 1,
@@ -130,6 +134,7 @@ pub fn spinning_wheel(
             },
             Recipe {
                 input: 6051,
+                required_inventory_tools: &[],
                 secondary: None,
                 byproduct: None,
                 input_count: 1,
@@ -145,6 +150,7 @@ pub fn spinning_wheel(
             },
             Recipe {
                 input: 10814,
+                required_inventory_tools: &[],
                 secondary: None,
                 byproduct: None,
                 input_count: 1,

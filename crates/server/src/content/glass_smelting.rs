@@ -64,6 +64,7 @@ pub fn glass_smelting(
         recipes: std::sync::Arc::new(vec![Recipe {
             input: 1783,
             input_count: 1,
+            required_inventory_tools: &[],
             secondary: Some(1781),
             output: 1775,
             output_count: 1,

@@ -39,6 +39,7 @@ pub fn fibre_textiles(objects: &Symbols, defs: &Definitions) -> Result<FibreText
     }
     let profile = |input, input_count, output, level, xp_tenths, first_ticks, label| Recipe {
         input,
+        required_inventory_tools: &[],
         secondary: None,
         byproduct: None,
         input_count,

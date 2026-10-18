@@ -81,6 +81,7 @@ pub fn pottery_shaping(
         check(symbol, id, name, members)?;
         recipes.push(Recipe {
             input: 1761,
+            required_inventory_tools: &[],
             secondary: None,
             byproduct: None,
             input_count: 1,

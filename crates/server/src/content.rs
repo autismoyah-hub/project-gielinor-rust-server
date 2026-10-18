@@ -6,6 +6,8 @@ mod birdhouses;
 pub use birdhouses::birdhouses;
 mod light_sources;
 pub use light_sources::light_sources;
+mod gold_jewellery;
+pub use gold_jewellery::gold_jewellery;
 mod toxic_upgrades;
 pub use toxic_upgrades::toxic_upgrades;
 mod accursed_upgrade;

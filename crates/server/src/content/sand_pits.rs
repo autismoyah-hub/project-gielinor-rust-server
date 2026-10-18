@@ -63,6 +63,7 @@ pub fn sand_pits(
         locations: targets,
         recipes: std::sync::Arc::new(vec![Recipe {
             input: 1925,
+            required_inventory_tools: &[],
             secondary: None,
             byproduct: None,
             input_count: 1,

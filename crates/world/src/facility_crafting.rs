@@ -16,6 +16,8 @@ pub struct Recipe {
     pub input_count: u8,
     /// One additional ordinary material per product, captured as its own slot.
     pub secondary: Option<i32>,
+    /// Every listed ordinary tool must remain carried; never consumed as material.
+    pub required_inventory_tools: &'static [i32],
     /// One additional ordinary output credited in the same staged transaction.
     pub byproduct: Option<i32>,
     pub output: i32,
@@ -58,6 +60,15 @@ impl Recipe {
         if !(1..=28).contains(&self.input_count)
             || self.secondary.is_some_and(|id| id < 0 || id == self.input)
         {
+            return 0;
+        }
+        if self.required_inventory_tools.iter().any(|&id| {
+            !inventory
+                .slots()
+                .iter()
+                .flatten()
+                .any(|i| i.id == id && i.count == 1 && i.vars == 0)
+        }) {
             return 0;
         }
         let owned = |id| {
@@ -203,6 +214,17 @@ pub fn prepare_group(
     }
     if (stats.current(12) as u8) < recipe.level {
         return Err(Error::Level);
+    }
+    if recipe.required_inventory_tools.iter().any(|id| {
+        *id == recipe.input
+            || recipe.secondary == Some(*id)
+            || !assembly::ToolRequirement {
+                inventory: std::slice::from_ref(id),
+                worn: &[],
+            }
+            .available(inventory, inventory, catalog)
+    }) {
+        return Err(Error::Policy);
     }
     let inputs = recipe.inputs(slots);
     let mut outputs = vec![recipe.output; usize::from(recipe.output_count)];

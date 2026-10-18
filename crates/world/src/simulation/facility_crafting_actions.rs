@@ -287,6 +287,7 @@ mod tests {
                 recipes: std::sync::Arc::new(vec![
                     Recipe {
                         input: 1737,
+                        required_inventory_tools: &[],
                         secondary: None,
                         byproduct: None,
                         input_count: 1,
@@ -302,6 +303,7 @@ mod tests {
                     },
                     Recipe {
                         input: 1779,
+                        required_inventory_tools: &[],
                         secondary: None,
                         byproduct: None,
                         input_count: 1,
@@ -588,6 +590,7 @@ mod grouped_tests {
             .unwrap();
         let recipe = Recipe {
             input: if basket { 5933 } else { 1759 },
+            required_inventory_tools: &[],
             secondary: None,
             byproduct: None,
             input_count: if basket { 6 } else { 4 },
@@ -805,6 +808,7 @@ mod pottery_tests {
             let recipes = vec![
                 Recipe {
                     input: 1761,
+                    required_inventory_tools: &[],
                     secondary: None,
                     byproduct: None,
                     input_count: 1,
@@ -820,6 +824,7 @@ mod pottery_tests {
                 },
                 Recipe {
                     input: 1761,
+                    required_inventory_tools: &[],
                     secondary: None,
                     byproduct: None,
                     input_count: 1,
@@ -999,6 +1004,7 @@ mod firing_tests {
             .unwrap();
         let recipe = Recipe {
             input: 1787,
+            required_inventory_tools: &[],
             secondary: None,
             byproduct: None,
             input_count: 1,
@@ -1227,6 +1233,7 @@ mod sand_pit_tests {
             .unwrap();
         let recipe = Recipe {
             input: 1925,
+            required_inventory_tools: &[],
             secondary: None,
             byproduct: None,
             input_count: 1,
@@ -1411,6 +1418,7 @@ mod glass_smelting_tests {
                 let recipe = Recipe {
                     input: 1783,
                     input_count: 1,
+                    required_inventory_tools: &[],
                     secondary: Some(1781),
                     output: 1775,
                     output_count: 1,
@@ -1560,6 +1568,38 @@ mod glass_smelting_tests {
                     1
                 );
             }
+        }
+    }
+}
+
+#[cfg(test)]
+mod gold_jewellery_tests {
+    use super::*;
+    use crate::{facility_crafting::{Config,Recipe},inventory::Item,loc_collision::LocCollision};
+    struct NoDraw;
+    impl RandomSource for NoDraw {fn below(&mut self,_:u32)->u32{panic!("Jewellery must not draw RNG")}}
+    #[test]
+    fn gold_jewellery_reached_bar_menu_retains_mould_and_stops_before_late_loss(){
+        for stop in [false,true]{
+            let mut w=World::default();for x in (3192..3224).step_by(8){for z in (3192..3224).step_by(8){w.collision.allocate(x,z,0);}}
+            let loc=Location::new(CoordGrid::new(3201,3200,0).unwrap(),2030,10,0).unwrap();let ty=LocCollision{width:3,length:3,block_walk:2,block_range:true,break_route_finding:false};
+            w.location_types.insert(2030,ty);w.locations.load(loc);crate::loc_collision::toggle(&mut w.collision,loc.coords,loc.shape,loc.angle,ty,true).unwrap();
+            let recipe=Recipe{input:2357,input_count:1,secondary:None,byproduct:None,required_inventory_tools:&[1592],output:1635,output_count:1,level:5,xp_tenths:150,members:false,first_ticks:2,cycle_ticks:3,failure:None,label:"gold ring"};
+            w.facility_crafting.insert(2030,Config{locations:[(2030,None)].into(),recipes:std::sync::Arc::new(vec![recipe]),action:"smelt",empty_message:"Need materials and mould.",animation:899,location_animation:None});
+            assert!(!w.has_location_handler(2030,2));w.furnaces.insert(2030,crate::smelting::Furnace{operations:1<<2,item_use:true,ore_ids:None,tutorial:None});assert!(w.has_location_handler(2030,2));
+            let mut stats=Stats::default();stats.set_base(12,1);stats.set_current(12,5);let mut data=PlayerData::new(1,"Gold maker".into(),CoordGrid::new(3200,3200,0).unwrap(),stats);data.xp_rate_hundreds=125;
+            for(slot,id)in [(4,2357),(11,2357),(19,1592)]{data.inventory.restore_slot(slot,Some(Item{id,count:1,vars:0})).unwrap();}
+            w.held_use_types.insert(2357,crate::held_use::Type{id:2357,content:-1});w.queue_login(1,data).unwrap();w.tick().unwrap();let a=w.actors().next().unwrap();w.drain_events();
+            w.submit(a,Action::UseLocation{coords:loc.coords,id:loc.id,slot:4,object:2357,control:false}).unwrap();w.tick().unwrap();
+            let request=w.drain_events().into_iter().find_map(|e|if let WorldEvent::FacilityCraftingRequested{request,..}=e{Some(request)}else{None}).expect("Reached gold bar must open quantity menu");
+            assert_eq!(request.available(&w.data(a).unwrap().inventory),2);w.start_facility_crafting(a,request,0,2).unwrap();let start=w.clock.0;let mut commits=Vec::new();let mut last=0;
+            for _ in 0..12{
+                w.tick_with_random(&mut NoDraw).unwrap();let made=w.data(a).unwrap().inventory.slots().iter().flatten().filter(|i|i.id==1635).count();
+                if made>last{commits.push(w.clock.0-1);if made==1&&stop{w.data_mut(a).unwrap().inventory.restore_slot(19,None).unwrap();}last=made;}
+            }
+            assert_eq!(commits,if stop{vec![start+2]}else{vec![start+2,start+5]});let data=w.data(a).unwrap();assert_eq!(data.stats.fine_xp(12),if stop{187}else{374});
+            if stop{assert_eq!(data.inventory.get(11).unwrap().id,2357);}else{assert_eq!(data.inventory.get(19).unwrap().id,1592);}
+            assert_eq!(w.drain_events().iter().filter(|e|matches!(e,WorldEvent::SkillAdvanced{..})).count(),if stop{1}else{2});
         }
     }
 }

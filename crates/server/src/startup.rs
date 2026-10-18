@@ -818,7 +818,9 @@ pub fn configure<B: AccountBackend>(
     for &id in firing.locations.keys(){if runtime.world.facility_crafting.insert(id,firing.clone()).is_some(){return Err(io::Error::other("Conflicting pottery firing facility"));}}
     let sand_pits=crate::content::sand_pits(n("obj"),n("loc"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)?;
     for &id in sand_pits.locations.keys(){if runtime.world.facility_crafting.insert(id,sand_pits.clone()).is_some(){return Err(io::Error::other("Conflicting sand pit facility"));}}
-    let glass_furnaces=crate::content::glass_smelting(n("obj"),n("loc"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)?;
+    let mut glass_furnaces=crate::content::glass_smelting(n("obj"),n("loc"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)?;
+    std::sync::Arc::make_mut(&mut glass_furnaces.recipes).extend(crate::content::gold_jewellery(n("obj"),n("stat"),&runtime.definitions).map_err(io::Error::other)?);
+    glass_furnaces.empty_message="You need the required materials and tools to craft at this furnace.";
     for &id in glass_furnaces.locations.keys(){if runtime.world.facility_crafting.insert(id,glass_furnaces.clone()).is_some(){return Err(io::Error::other("Conflicting glass facility"));}}
     let glass=crate::content::glassblowing(n("obj"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)?;
     runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,1785,1775,gielinor_world::held_use::Handler::ToolCraftingChoices{recipes:std::sync::Arc::new(glass),cycle_ticks:3}).map_err(|e|io::Error::other(format!("Glassblowing registration: {e:?}")))?;
