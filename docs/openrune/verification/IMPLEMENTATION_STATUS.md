@@ -3,13 +3,13 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0044: nine member fish and fractional cooking XP, published source [3050963](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/30509633a6d1e0b96eb9530275040b46e43fabe4). The affected regression passed 83 server and 443 world tests, with one existing ignored test and 400 source hashes unchanged. Sea turtle and manta retain their .3 base XP through the existing fine-XP system.
+OR-MIG-0045: bear, rat and rabbit cooking, plus cooked-rabbit consumption. Published source [461424d](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/461424d9c7f1ab00ffdbc264f583088b77d978ef). Affected libraries compiled and focused registration/transaction checks passed: 1 server test, 401 source hashes unchanged. Previous shared-engine regression remains 83 server/443 world, one existing ignored test; it predates this adapter.
 
-The manual subset now has 22 fire and 35 range profiles. Live membership, optional forced burn cutoffs, method-specific curves, exact burnt-ID guards and selected-slot atomic transactions are shared. Three range-qualified one-tick fish retain the donor's four-tick fire behavior pending reference verification. Anglerfish consumption remains a separate missing profile.
+The manual subset has 25 fire and 38 range profiles. All three meats use selected-slot transactions, Cooking1/30XP, canonical outputs and cutoff34. Rabbit uses live membership and heals5HP through the existing food transaction. Fire timing uncertainty, deliberate burning, sinew and roasting are explicitly excluded.
 
-There are 44 implementation units across 48 append-only records: 23 historical contracts and 21 new gameplay/shared units, all pending independent verification. OR-MIG-0037r2/0041r2 preserve the burnt-variant correction history. The 3,508 discovery records contain 30 partially contracted eligible files/tables, 656 configuration records and 2,822 not yet assessed; this is not a completion percentage.
+There are45 implementation units across49 append-only records:23 historical contracts and22 new gameplay/shared units, all pending independent verification. Discovery remains3,508 records:30 partially contracted eligible files/tables,656 configuration and2,822 unassessed; this is not a completion percentage.
 
-Remaining work includes Anglerfish and other special consumption, quantities/Make-X and Cook menus, modifiers and special surfaces, cake tin returns, burnt-container actions, further content, reconciliation and independent V0–V4 acceptance. Historical checkpoints and source evidence are preserved.
+Remaining work includes Anglerfish PvP-area/recent-combat consumption eligibility, further content, quantity/Cook menus, modifiers/special surfaces, cake tin returns, inventory reconciliation and independent V0–V4 acceptance. Source and failed/historical evidence are preserved.
 <!-- forge-current:end -->
 
 
@@ -162,3 +162,8 @@ OR-MIG-0037r2 and OR-MIG-0041r2 use source 864d439132b33395773116d57347f9caefdfc
 ## Checkpoint OR-MIG-0044
 
 Published source 30509633a6d1e0b96eb9530275040b46e43fabe4 adds nine member fish through a modular adapter and an optional base fine-XP override into the existing Stats transaction. The affected suite passed83server/443world,1existing ignored,400unchanged source hashes. Exact variants, method rules, five99burns and6authoritative fractional-rate cases are covered; independent acceptance remains queued. Current44units/48records; source inventory30eligible partial/656configuration/2822unassessed. Continue special consumption and remaining content; no complete Cooking parity claim.
+
+
+## Implementation checkpoint OR-MIG-0045
+
+Published source 461424d9c7f1ab00ffdbc264f583088b77d978ef. Canonical meat cooking and ordinary cooked-rabbit consumption are registered through existing startup dispatch. Bounded compile/transaction check PASS1server0world/401same hashes. Queue45units/49records, all independent acceptance pending. Continue with other eligible content; Anglerfish requires shared PvP eligibility before faithful special consumption.
