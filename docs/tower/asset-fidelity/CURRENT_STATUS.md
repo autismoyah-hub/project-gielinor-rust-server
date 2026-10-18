@@ -1,34 +1,38 @@
 # Asset authoring and fidelity workbench
 
-Floor production and gameplay integration remain suspended. The previous
-calibration checkpoint 75e611a4a97c7141c837de46102766711e9cdf22 is preserved.
-Work continues on `experiment/asset-fidelity-workbench`, using unchanged client
-source 23a94f75707f0503a9efe610fe99bfce5089b575.
+Source checkpoint: `2a6e44ebf5e3c671a889dd04d05f1ea815a15d3b`. Unchanged native client: `23a94f75707f0503a9efe610fe99bfce5089b575`.
+The previous calibration and all Floor One studies are preserved. No experimental
+asset has entered the live Tower; floor production remains suspended.
 
-The reference platform now inspects 33 training assets: 19 objects, eight NPCs
-and six equipment variants. All 33 survive a saved/reopened Blender round trip
-with pixel-identical native results across 165 views. Three cases preserve raw
-models plus native definition transforms rather than rounding fractional evaluated
-vertices. Nineteen classic action sets match across 335 native timestamps. The
-independent classic transform tracer also matches those 335 native samples.
+The workbench now supports native reference inspection, decoded and submitted-surface
+analysis, saved/reopened Blender interchange, owned component authoring, explicit
+classic joint compilation, local edits, motion diagnostics, frozen evaluation
+and genuinely original Tower design probes. Technical preservation passes for
+**44 asset variants / 220 native views** and **26 classic action sets / 468 matching
+timestamps**, including the separate held-out technical cohort. Pixels, native
+coordinates and alpha match; the independent transform tracer agrees.
 
-These results establish technical preservation, not independent artistic fidelity.
-Nine held-out assets are declared separately and are not used in training metrics.
-The goblin remains the first independent authoring target. Component diagnostics,
-material-region diagnostics and explicit joint-to-native-group authoring are under
-development; held-out and original-asset results must be recorded separately.
+**Independent artistic fidelity is not established.** The goblin remains visibly
+wrong in anatomy, armor and combat movement. The generic cow is an explicit negative
+result. Held-out barrel/crate volume transfers better than anvil/scimitar/wolf
+construction; full helmets and winged creatures remain unsupported by the frozen
+authoring archetypes. A helper-face bounds failure produced a useful general
+measurement correction, not a retroactive held-out pass.
 
-| Milestone | Current evidence |
+| Milestone | Evidence and remaining gate |
 |---|---|
-| 1: reference analysis | Tested batch inspection and numeric reports; native views and classic motion |
-| 2: modeling toolkit | Active development; owned components, sockets, saved Blender edits and joint compiler |
-| 3: independent static fidelity | Pending controlled comparative iterations |
-| 4: independent animation fidelity | Technical preservation passes; independent choreography remains unapproved |
-| 5: generalization | Predeclared held-out cohort; evaluation pending |
-| 6: original Tower assets | Pending bounded authoring studies; no production promotion |
-| 7: ATELIER handoff | Commands and limits being documented; not production certification |
+| 1: reference analysis | Operational across broad native families; exact vs calculated vs curated data separated |
+| 2: modeling toolkit | Tested owned primitives, sockets, face materials, rig compiler, local edits and identifiers; 14 boundary tests |
+| 3: static fidelity | Pillar/anvil/wheel improve across five views; artistic standard remains unapproved |
+| 4: animation fidelity | Technical preservation passes; independent walk improves modestly, combat remains inadequate |
+| 5: generalization | Frozen nine-asset evaluation complete; acceptable general artistic transfer not proven |
+| 6: original Tower art | Three new design probes and shared native scenes; no authenticity or production approval claimed |
+| 7: ATELIER handoff | Reproducible technical workflow documented; production art certification remains outstanding |
 
-See [calibration results](CALIBRATION_RESULTS.md), [reference catalog](REFERENCE_CATALOG.md),
-[architecture](PIPELINE_ARCHITECTURE.md) and [handoff](ATELIER_HANDOFF.md).
-Raw reference meshes, Blender derivatives, cache imagery, specific reconstruction
-recipes and animation payloads stay outside Git in the private workbench output.
+The current turn provides a reviewable development checkpoint. The requested end
+state of hundreds of consistently authored assets remains unfinished. The next
+work should strengthen semantic anatomy/material-region authoring and action
+choreography, then evaluate a newly sealed cohort before further production claims.
+See [results](WORKBENCH_RESULTS.json), [calibration](CALIBRATION_RESULTS.md),
+[generalization](GENERALIZATION_RESULTS.md), [original probes](ORIGINAL_ASSET_REVIEW.md)
+and [handoff](ATELIER_HANDOFF.md). Protected evidence stays in the private workbench.

@@ -131,5 +131,61 @@
     "source_sequence": 1729,
     "native_timestamps": 10,
     "all_exact": true
+  },
+  {
+    "asset": "npc-655",
+    "action": "selected-6182",
+    "source_sequence": 6182,
+    "native_timestamps": 25,
+    "all_exact": true,
+    "cohort": "combat_supplement"
+  },
+  {
+    "asset": "npc-655",
+    "action": "selected-6183",
+    "source_sequence": 6183,
+    "native_timestamps": 25,
+    "all_exact": true,
+    "cohort": "combat_supplement"
+  },
+  {
+    "asset": "npc-655",
+    "action": "selected-6185",
+    "source_sequence": 6185,
+    "native_timestamps": 13,
+    "all_exact": true,
+    "cohort": "combat_supplement"
+  },
+  {
+    "asset": "npc-106",
+    "action": "idle-6580",
+    "source_sequence": 6580,
+    "native_timestamps": 25,
+    "all_exact": true,
+    "cohort": "held_out"
+  },
+  {
+    "asset": "npc-106",
+    "action": "walk-6556",
+    "source_sequence": 6556,
+    "native_timestamps": 9,
+    "all_exact": true,
+    "cohort": "held_out"
+  },
+  {
+    "asset": "npc-2834",
+    "action": "idle-4914",
+    "source_sequence": 4914,
+    "native_timestamps": 22,
+    "all_exact": true,
+    "cohort": "held_out"
+  },
+  {
+    "asset": "npc-2834",
+    "action": "walk-4913",
+    "source_sequence": 4913,
+    "native_timestamps": 14,
+    "all_exact": true,
+    "cohort": "held_out"
   }
 ]

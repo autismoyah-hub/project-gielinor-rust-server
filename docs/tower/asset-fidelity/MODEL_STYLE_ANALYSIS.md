@@ -1,24 +1,35 @@
-# Geometric and material analysis
+# Modeling analysis and actionable diagnostics
 
-[MODEL_STYLE_DATA.json](MODEL_STYLE_DATA.json) groups training measurements by
-asset family. These are observations of a small source-backed sample, not hard
-limits defining all OSRS art. Role, shape variant and assembly matter.
+Exact decoded records include counts, topology, coordinates, HSL face colors,
+texture/render/priority/alpha/depth metadata, model assembly and skin labels.
+Calculated records include indexed/welded connectivity, areas, edge incidence,
+dihedral estimates, mirror coverage, principal axes, profile envelopes and
+area-weighted palettes. Semantic regions, material names, joints and intended
+features are curated annotations; they are never automatically asserted as facts.
 
-The analyzer separates decoded fields from calculated descriptors: bounds,
-coordinate/triangle counts, face flags, alpha, priorities, skin labels, texture
-presence; then connectivity with and without coordinate welding, edge incidence,
-triangle-area quantiles, dihedral-angle distributions, symmetry coverage, surface
-centroid estimates and palette distributions. A surface centroid is not physical
-mass. Dihedral changes describe geometry, not automatically intentional hard edges.
+Two measurement failures materially changed the toolkit. Nearest-vertex height
+bands alias small collars into large plates; triangle-plane cross sections now
+measure the envelope. Decoded bounds can include invisible helper geometry.
+Native inspection records submitted-face indices from the actual lighting result
+(`light[face][2] != -2`), and analysis separately computes that surface's bounds
+and profiles. Exact decoded geometry remains intact. Submitted surfaces include
+translucency and do not claim camera visibility, occlusion or semantic identity.
 
-Native vertex seams, packed HSL and face metadata must survive technical round
-trips. Materials are not inferred from RGB screenshots. Textured-face color codes
-can be lighting placeholders and must not be interpreted as texture albedo.
-Neither manifoldness nor a particular polygon count proves artistic fidelity.
+Object 2097 has 12 alpha-255 faces that inflate bounds. The failed descriptor fit
+was oversized even though the visible anvil was small. Orientation-only correction
+did not help. Submitted-surface fitting increases mean five-view silhouette overlap
+from 0.341 to 0.752; this is development evidence for a general measurement fix.
 
-Character component labels require explicit curated selectors. Native group
-centroids are geometric proxies, not guaranteed anatomical joints. Authored
-component names and parameter links allow a diagnostic to point to the actual
-Blender part. PCA plane estimates help distinguish a rotated shield from one that
-merely needs more depth. Material-region descriptors can expose missing color
-placement, but visual review remains necessary.
+The component workbench connects errors to owned Blender objects and parameters.
+Curated goblin proxies identify excessive head width, torso thickness/height,
+equipment attachment, shield-plane orientation and hand/foot coverage. PCA avoids
+mislabeling a rotated shield as simply too thick. Proposals are bounded local
+affine/rotation/material edits and preserve untouched component hashes. Region
+centroids are not joints, and different proxy coverage can mislead an optimizer.
+
+Archetypes remain limited. Low-dimensional bounds/profile/palette descriptors
+lose spiral construction, joinery, species anatomy, facial planes and material
+placement. A high box overlap does not reproduce a crate's planks. The current
+cow lacks horns, ears, hooves and convincing coat regions; scimitar curvature and
+full helmets/winged creatures need additional authored semantic structure.
+These are authoring failures, not reasons to alter global renderer behavior.

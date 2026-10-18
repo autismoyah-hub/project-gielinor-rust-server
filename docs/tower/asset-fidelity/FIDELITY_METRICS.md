@@ -1,23 +1,33 @@
-# Metrics and their limits
+# Fidelity metrics and their limits
 
-Exact B tests compare effective decoded channels, posed coordinates, alpha and
-native pixels. A different unused global priority fallback is documented when
-per-face priorities override it. Texture-coordinate entries on untextured faces
-are likewise not meaningful texture assignments. Raw mesh plus definition
-transforms preserve fractional factory output without quantization.
+Exact B preservation compares saved/reopened native geometry channels, decoded
+poses, alpha and all requested native pixels. Missing timestamps or actions fail
+the run. Optional unused fallback/texture fields are distinguished from effective
+per-face data. Reference camera/lighting and actual native texture handling remain
+fixed. The independent tracer uses float32 canonicalization for decoded values.
 
-C diagnostics use raw matched-camera masks, bounds, row profiles, multi-angle
-overlap, component proportions, native HSL distributions and material regions,
-PCA plane orientation, and landmark trajectories. They do not refit the candidate
-camera or scale to improve a score. Gameplay-scale views are separate from close
-inspection views. Pixel error alone combines geometry, shading and material
-differences; component and motion reports help classify them.
+Independent C diagnostics include foreground IoU, raw bounding displacement,
+height-row width profiles, component bounds/centroids, PCA, HSL/area palettes,
+height-region color placement and native motion trajectories. Comparisons do not
+rescale or register C to improve overlap. Close front/side/rear/quarter views and
+a fixed gameplay camera are all retained.
 
-Semantically named diagnoses require explicit source/owned selectors. Empty or
-unannotated regions remain unresolved. A native skin group is not silently called
-a joint. Component selection coverage must be inspected before automatically
-changing anatomy. Local edits are bounded and unrelated components must remain
-unchanged. All camera perspectives must be considered when retaining a change.
+IoU is useful for large proportional errors but ignores internal construction.
+Whole-frame RGB MAE is diluted by background and confounds material, shape and
+lighting; the reports explicitly label it whole-frame error. It is not a color
+fidelity score. Mask PNGs and actual native views remain necessary. PCA axes can
+be ambiguous on nearly symmetric volumes. Vertex/face counts cannot certify
+style; submitted-surface bounds cannot recover semantics or hidden design intent.
 
-No similarity percentage, polygon count, successful decode, native preview or
-duration match constitutes artistic acceptance or generalization proof.
+The local loop retains a proposal only when mean five-view IoU improves by more
+than 0.002, no individual view falls by more than 0.04, and whole-frame RGB error
+does not exceed 1.06 times the parent. These are bounded regression safeguards
+for this experiment, not universal OSRS quality thresholds. Every retained result
+still has artistic_approval=false. Rejected proposals and failed measurement
+versions remain evidence. Curator annotation errors can make a numeric improvement
+artistically worse.
+
+Motion errors use explicit annotated component centroids and no time warp. Arc
+errors remove initial bind offsets; absolute errors retain them. Foot contact
+measurements use native Y-down surface positions, not collision or inferred joints.
+The user remains the final artistic judge.

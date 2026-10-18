@@ -1,32 +1,36 @@
 # Animation analysis and authoring
 
-The reference corpus exercises 19 classic action sets: idle and walk on Goblin655,
-Man3106, Skeleton70, Zombie26, Chicken1173, Cow2790, Rat2854 and Spider3019;
-plus animated objects 5589,11010,13560. Exact sequence IDs and sample counts are
-in [ANIMATION_VALIDATION_SUMMARY.json](ANIMATION_VALIDATION_SUMMARY.json).
-The prior goblin attack/hit/death and masked-blend evidence remains preserved.
+The native classic pathway uses explicit transform-group ownership, centroid
+pivots, integer translations, Z-X-Y rotations, 8-bit angle channels and native
+clock boundary rules. Conventional Blender armatures are not treated as equivalent.
+The joint compiler compensates each dynamic centroid with explicit authored
+joint origins and propagates parent transforms to descendants. Ownership and
+parent order are validated. Genuine Blender action channels survive save/reopen.
 
-Classic skeletons are ordered operations on vertex/face label groups. Pivots are
-computed from currently transformed vertices. A conventional Blender armature
-does not reproduce these semantics automatically. The workbench preserves
-actual Blender action channels, sequence cadence and masks, then writes new
-classic skeleton/frame/sequence payloads. Original and converted native poses,
-alpha and pixels agree at 335 matching timestamps.
+Technical preservation now covers 26 unique classic action sets and 468 matching
+timestamps, pixel/coordinate/alpha exact. The independent integer tracer matches
+those samples. Nineteen base action sets contribute 335 timestamps; three additional
+goblin combat actions contribute 63, and four held-out wolf/bat actions contribute
+70. The supplemental full goblin run also repeats idle/walk: its 96 timestamps
+are not all added again to the unique total. Earlier native masked-blend evidence
+from checkpoint 75e611a4a97c7141c837de46102766711e9cdf22 remains preserved; no
+new independent blended-action fidelity claim is made.
 
-The Python transform tracer is a diagnostic and authoring compiler, not a renderer.
-It is checked against native Rust at those same timestamps. Native float32 values
-must be compared as float32: shortest decimal serialization otherwise introduced
-apparent sub-millionth-unit differences on scaled rat poses. No renderer change
-was made to hide these differences.
+Independent humanoid actions exercise idle, walk, attack, hit and death across
+505 native poses. Explicit two-bone contact controls and stance-surface correction
+reduce mean curated walk proxy-arc error from 22.44 to 19.82 native units. Foot
+surface samples stay at or above the bind ground; in-place tests do not establish
+correct travel, collision or slip behavior. Attack/hit/death remain substantially
+different from the authentic choreography. Matching duration is not a pass.
 
-For independent work, explicit joint origins and group ownership are compiled to
-native centroid-compensating pivot offsets. Parent transformations propagate to
-child joint control points deliberately. Contact, anticipation, swing arcs,
-recovery and termination still require action-specific comparison. Matching total
-duration alone does not establish choreography. Selected landmark trajectories
-require supplied semantic selectors and record both absolute and bind-offset-
-removed motion errors.
+Motion review measures same-action, same-timestamp trajectories without time
+warping and provides synchronized A/B/C native images plus contact sheets.
+Absolute displacement and initial-bind-offset-removed arc error are separate.
+Hand/head/foot/weapon/shield/torso annotations are explicit proxies. Impact intent
+is not inferred from a centroid. Native classic terminal scale-to-zero is an
+explicit authored policy; it does not prove actor despawning or gameplay behavior.
 
-Cached weighted animations can be decoded/rendered for inspection where available;
-their Blender authoring/export remains unsupported. Audio events and non-rendering
-sequence fields are not certified by geometry/motion round-trip tests.
+The original kilnback probe has five genuinely new authored actions and 447
+exact native pose checks. It is technical export evidence and a choreography
+review candidate, not an accepted monster. Weighted cached animation authoring,
+audio/event parity and arbitrary blend transfer remain unsupported.

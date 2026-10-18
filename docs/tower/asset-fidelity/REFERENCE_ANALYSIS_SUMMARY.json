@@ -14,10 +14,11 @@
     "object:6189"
   ],
   "held_out_declared": 9,
-  "held_out_evaluation": "not run at this checkpoint; excluded from training descriptors",
+  "held_out_evaluation": "Completed separately in WORKBENCH_RESULTS.json; original base-training counts intentionally preserved",
   "source_client_commit": "23a94f75707f0503a9efe610fe99bfce5089b575",
   "source_server_base_commit": "75e611a4a97c7141c837de46102766711e9cdf22",
   "native_binary_sha256": "bbf0be16b30cbe91484ad74c69a44e6c6acaeb3f2bc46649493c5252de2370ee",
   "native_library_renderer_changed": false,
-  "artistic_acceptance": false
+  "artistic_acceptance": false,
+  "scope": "Historical 33-variant base training checkpoint dc5e2ca9829fb4dddd192bde05ffdcfffc989a47; see WORKBENCH_RESULTS.json for current 44-variant totals"
 }

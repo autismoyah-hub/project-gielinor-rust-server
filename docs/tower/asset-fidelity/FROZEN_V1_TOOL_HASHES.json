@@ -1,0 +1,29 @@
+{
+  "python_and_catalog": {
+    "analyze.py": "d5eaaa0812d2d455f394ef8be0d6137deae740f6d7e230781b786202466c4d01",
+    "author_blender.py": "d63658747ec302c2bfae4c2fa1bf3ff3dad8c23e9b6db3838a7153cbb9856138",
+    "author_workflow.py": "4c7d032ded8ac170810c11ea488849c37d5c5e450ddd6b946278243f0bd74426",
+    "bench.py": "271ea6654dd5a7b120bf6becad05c430b8d9ed2d0162d8208e064e90683a94bc",
+    "blender_actions.py": "cf83bc9c480ab788c2a707d39f2276a980e4e72d19a97328188e689d8df335e7",
+    "blender_io.py": "9609b1540eef948ecc0f7b7cf722ff49361184356e7081dcea88c2f58d2141b9",
+    "diagnose.py": "b05250c77c6e3103faadb3c844b483fa40930f77f2eaf632cb80a813a6660b52",
+    "edit_blender.py": "58d37562e0c8de9e636b2fac4e37495a20aecd07deb55c2ccacf87ec74d2d82b",
+    "instantiate.py": "d9197f35f44c3a12c87b2219ab112f60351e4b1b31705c3002d56732c21b57e7",
+    "iterate.py": "2f06bf181477f75a462a3202c2da795495094f439fcfbacdc31f7e237125429f",
+    "kinematics.py": "0598b9cb5223ca9c056a4a65a41fbaf542793f85a46269af10ae45b6912f241f",
+    "motion.py": "2f98dbc9ef90214b463c907d9e8222d41fa438085660f58c4c59883244098846",
+    "motion_review.py": "7c29eeb5b506d7ac48a3634133039f5a1a327a527ee42d07e4b9edaae2b7d7a0",
+    "native_codec.py": "34590d7c8468bbcc2b8e37cf7d2db1a8e309f6767bbdfd0e5cb11c6e3ea34c12",
+    "primitives.py": "d5f0eed53b9e94a7d2b029ddeedee402453ff067780ad3dfaa621415e1a221a5",
+    "refine.py": "f302793fa10ed77d0c848808cdd5b2f74075b9f353063372db928b4fb295b730",
+    "registry.py": "e9f10d917d7897172a9bcbf0b5f1eb69df8439652a094b3fe90eda3de06e14f9",
+    "templates.py": "009a7fa3176b6d56c1c4883c4bdde42852f3509bf69676da64016ac3d9beb186",
+    "test_workbench.py": "7b9b80a60fabe237ef326dd1910e2c2d4646ab38c01809f5271e585b1ece429d",
+    "verify_motion.py": "95170d1ff084650023797e2686d39c7cd78ede78189cf71cacc45941d9ff9f50",
+    "reference_catalog.json": "91f0b8cad157f7805242f7c2004481e265ea06f99eac63e8521bd729ec39ae2d"
+  },
+  "native_binary_sha256": "dad7681afce23241b52476329779e13de3086a2c660c850cfbbe76c0687c5908",
+  "native_source_basis": "Unchanged client commit 23a94f75707f0503a9efe610fe99bfce5089b575; pre-submitted-surface workbench adapter, native executable retained privately",
+  "python_archive_sha256": "922a5e2f3bd49ff92d63f35c7db30adcba4458299fc5a08f44ed62deee0e11fc",
+  "limits": "The archive preserves exact tested Python inputs. The old native executable is private and not claimed byte-reproducible from the later source revision."
+}

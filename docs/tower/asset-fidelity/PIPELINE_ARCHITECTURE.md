@@ -1,29 +1,35 @@
 # Pipeline architecture
 
-The workbench is a set of reproducible command-line tools under
-`tools/tower/asset-workbench`, with native entry point `asset_workbench` in the
-existing offline-render crate. It depends on the unchanged client library and
-uses its model/definition factories, animation operators, lighting, textures and
-software rasterizer. There is no new renderer or modification to global shading.
+The workbench lives under `tools/tower/asset-workbench`, with native entry point
+`asset_workbench` in the existing offline-render crate. Client library source is
+unchanged. All model pixels use its model factories, deformation, lighting,
+textures, submission and rasterizer. Python produces diagnostics, contact sheets
+and UI only; it is not a second renderer.
 
-1. Native inspection decodes selectors and assembly, hashes original payloads,
-   and renders matched close and gameplay-scale views.
-2. Source-safe analysis derives numeric descriptions; semantic annotations remain
-   explicit and separate from decoded facts.
-3. Blender interchange stores actual mesh topology, HSL materials, face attributes,
-   vertex groups, texture-map indices and action channels. A fresh process reopens
-   the saved file before export.
-4. The extended codec preserves supported static/classic channels and simple
-   texture mappings. Complex texture reconstruction and weighted bone encoding
-   are rejected. Fractional evaluated objects retain raw meshes plus their native
-   custom-definition transforms instead of being silently rounded.
-5. Immutable packages bind new model/object IDs through the existing native package
-   reader. Standalone motion uses new classic frame/skeleton IDs and existing
-   native deformation. It is not a live NPC overlay or gameplay integration.
-6. Comparison reports separate exact technical preservation from independent
-   silhouette, component, material and choreography diagnostics.
+1. Native inspect decodes definitions/assembly and hashes source payloads.
+   `inspect-static` omits action extraction. Submitted-surface diagnostics use
+   native lighting eligibility while preserving full decoded data.
+2. Analysis separates exact fields, calculated descriptors and curated semantics.
+   Same-camera masks, row profiles, PCA and material-region reports guide edits.
+3. Blender interchange stores actual geometry, HSL/face metadata, labels, texture
+   maps and action channels. A separate process reopens the saved file.
+4. Owned authoring builds named primitives/sockets and explicit native joint
+   ownership. `edit_blender.py` changes selected saved components; the action
+   replacement option is explicit and preserves previous owned Blender actions.
+5. The native codec rejects fractional coordinates, unsupported complex textures
+   and weighted bone export. Fractional factory results use raw B meshes plus
+   their native custom definitions instead of quantization.
+6. Immutable object packages and stable identity manifests allocate new IDs.
+   Static and animated counters are separate. Static keys cannot silently become
+   actors; use an explicit new variant key. Manifests are single-writer, not a
+   distributed allocator.
+7. Native rendering supports fixed-reference views, owned standalone views and
+   actual shared `beside` scenes with common camera/light and an 80-unit gap.
+   It preserves dimensions and never fits one shared-scene asset to the other.
+8. Strict exit codes, fresh output directories, expected action/timestamp coverage
+   and native coordinate checks reject stale or incomplete success reports.
 
-The earlier GLB converter and calibration tests remain unchanged. General owned
-authoring uses explicit native-unit component recipes and sockets, with local
-Blender edits and parent-aware native joint compilation. Private reconstruction
-outputs are never automatically copied into publishable Tower packages.
+No original cache is rewritten. The legacy-reference cache adapter is explicit
+and read-only; normal strict client loading remains unchanged. No live NPC
+overlay, map integration, service launch or game account operation is included.
+The earlier GLB converter and calibration executable are preserved.

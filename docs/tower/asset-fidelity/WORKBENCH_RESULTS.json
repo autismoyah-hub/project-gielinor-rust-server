@@ -1,0 +1,1503 @@
+{
+  "schema": 2,
+  "workbench_source_commit": "2a6e44ebf5e3c671a889dd04d05f1ea815a15d3b",
+  "client_source_commit": "23a94f75707f0503a9efe610fe99bfce5089b575",
+  "reference_platform_commit": "dc5e2ca9829fb4dddd192bde05ffdcfffc989a47",
+  "previous_calibration_commit": "75e611a4a97c7141c837de46102766711e9cdf22",
+  "technical_preservation": {
+    "training_variants": 35,
+    "training_views": 175,
+    "heldout_variants": 9,
+    "heldout_views": 45,
+    "total_unique_variants": 44,
+    "total_native_views": 220,
+    "training_classic_action_sets": 22,
+    "training_matching_timestamps": 398,
+    "heldout_classic_action_sets": 4,
+    "heldout_matching_timestamps": 70,
+    "total_classic_action_sets": 26,
+    "total_matching_timestamps": 468,
+    "pixels_coordinates_alpha_exact": true,
+    "independent_tracer_exact": true,
+    "base_165_native_views_byte_unchanged": true,
+    "boundary_tests": 14
+  },
+  "static_calibration": [
+    {
+      "selector": "object:7016",
+      "initial": {
+        "mean_five_view_iou": 0.7885197323966456,
+        "per_view_iou": {
+          "front": 0.7911044630319312,
+          "side": 0.7740290669272105,
+          "rear": 0.7900485066658531,
+          "quarter": 0.7640276038785196,
+          "gameplay": 0.8233890214797136
+        },
+        "whole_frame_mean_rgb_error": 0.616110115397062
+      },
+      "revision": {
+        "mean_five_view_iou": 0.8702428945926381,
+        "per_view_iou": {
+          "front": 0.9000303490136571,
+          "side": 0.8993323216995448,
+          "rear": 0.9001213960546283,
+          "quarter": 0.8330100270484413,
+          "gameplay": 0.8187203791469194
+        },
+        "whole_frame_mean_rgb_error": 0.46309137932775873
+      },
+      "artistic_acceptance": false
+    },
+    {
+      "selector": "object:6150",
+      "initial": {
+        "mean_five_view_iou": 0.7285718630097049,
+        "per_view_iou": {
+          "front": 0.7003711277739908,
+          "side": 0.8127728375101051,
+          "rear": 0.7001932037731561,
+          "quarter": 0.7243198338525442,
+          "gameplay": 0.7052023121387283
+        },
+        "whole_frame_mean_rgb_error": 0.8103296634814399
+      },
+      "revision": {
+        "mean_five_view_iou": 0.7675918632428591,
+        "per_view_iou": {
+          "front": 0.7447111392304955,
+          "side": 0.8318040239077363,
+          "rear": 0.7449669738559507,
+          "quarter": 0.7521459690290299,
+          "gameplay": 0.7643312101910829
+        },
+        "whole_frame_mean_rgb_error": 0.6572085625060715
+      },
+      "artistic_acceptance": false
+    },
+    {
+      "selector": "object:5589",
+      "initial": {
+        "mean_five_view_iou": 0.5462766942201286,
+        "per_view_iou": {
+          "front": 0.4873255137650252,
+          "side": 0.6760273666323838,
+          "rear": 0.48690195315350376,
+          "quarter": 0.5244004053597567,
+          "gameplay": 0.5567282321899736
+        },
+        "whole_frame_mean_rgb_error": 1.2759542306066876
+      },
+      "revision": {
+        "mean_five_view_iou": 0.7025351056997009,
+        "per_view_iou": {
+          "front": 0.7141763185603522,
+          "side": 0.6864295720547697,
+          "rear": 0.7145565822632906,
+          "quarter": 0.706485323156797,
+          "gameplay": 0.6910277324632953
+        },
+        "whole_frame_mean_rgb_error": 1.143399773355367
+      },
+      "artistic_acceptance": false
+    },
+    {
+      "selector": "item:1279:worn",
+      "initial": {
+        "mean_five_view_iou": 0.5196701725682967,
+        "per_view_iou": {
+          "front": 0.5041322314049587,
+          "side": 0.48671726755218214,
+          "rear": 0.5780141843971631,
+          "quarter": 0.5294871794871795,
+          "gameplay": 0.5
+        },
+        "whole_frame_mean_rgb_error": 0.0835426960523721
+      },
+      "artistic_acceptance": false
+    },
+    {
+      "selector": "item:1191:worn",
+      "initial": {
+        "mean_five_view_iou": 0.5232838963581402,
+        "per_view_iou": {
+          "front": 0.4342988682140802,
+          "side": 0.6450933172787477,
+          "rear": 0.5294321329639889,
+          "quarter": 0.5631507188894398,
+          "gameplay": 0.4444444444444444
+        },
+        "whole_frame_mean_rgb_error": 0.3054174756998006
+      },
+      "artistic_acceptance": false
+    },
+    {
+      "selector": "npc:2790",
+      "initial": {
+        "mean_five_view_iou": 0.6376622664421445,
+        "per_view_iou": {
+          "front": 0.6637423985644502,
+          "side": 0.5846253528948951,
+          "rear": 0.7066166272334177,
+          "quarter": 0.5692644535179596,
+          "gameplay": 0.6640625
+        },
+        "whole_frame_mean_rgb_error": 1.2898244232914657
+      },
+      "artistic_acceptance": false
+    }
+  ],
+  "goblin": {
+    "initial_mean_iou": 0.619928098348665,
+    "iteration_4_mean_iou": 0.6717118498922101,
+    "local_edits": {
+      "changed_components": 13,
+      "unchanged_components": 26
+    },
+    "native_authored_pose_samples": 505,
+    "artistic_acceptance": false
+  },
+  "motion_diagnostics": {
+    "results": [
+      {
+        "action": "idle",
+        "candidate": "baseline",
+        "matched_native_timestamps": 20,
+        "mean_proxy_arc_error_native": 2.4392759052387536,
+        "regions": {
+          "head": {
+            "mean_arc_error_native": 2.275232405521605,
+            "max_arc_error_native": 4.752908425812042
+          },
+          "left_foot": {
+            "mean_arc_error_native": 0.7,
+            "max_arc_error_native": 1.0
+          },
+          "left_hand": {
+            "mean_arc_error_native": 3.290685043314009,
+            "max_arc_error_native": 7.084723753089912
+          },
+          "right_foot": {
+            "mean_arc_error_native": 0.7,
+            "max_arc_error_native": 1.0
+          },
+          "right_hand": {
+            "mean_arc_error_native": 3.5598735813026066,
+            "max_arc_error_native": 7.600871175752522
+          },
+          "shield": {
+            "mean_arc_error_native": 4.426945668608539,
+            "max_arc_error_native": 10.45322321116323
+          },
+          "torso": {
+            "mean_arc_error_native": 2.7786613177981274,
+            "max_arc_error_native": 5.889727852252839
+          },
+          "weapon": {
+            "mean_arc_error_native": 1.7828092253651415,
+            "max_arc_error_native": 2.85863127288444
+          }
+        },
+        "foot_surface_proxies": {
+          "right_foot": {
+            "lowest_surface_y_range": [
+              -1.0,
+              1.0
+            ],
+            "ground_proxy": "native Y down; bind ground Y=0",
+            "max_penetration_native": 1.0,
+            "max_lift_native": 1.0
+          },
+          "left_foot": {
+            "lowest_surface_y_range": [
+              -1.0,
+              1.0
+            ],
+            "ground_proxy": "native Y down; bind ground Y=0",
+            "max_penetration_native": 1.0,
+            "max_lift_native": 1.0
+          }
+        }
+      },
+      {
+        "action": "idle",
+        "candidate": "contact",
+        "matched_native_timestamps": 20,
+        "mean_proxy_arc_error_native": 2.43642580058779,
+        "regions": {
+          "head": {
+            "mean_arc_error_native": 2.2524315683138965,
+            "max_arc_error_native": 4.752908425812042
+          },
+          "left_foot": {
+            "mean_arc_error_native": 0.7,
+            "max_arc_error_native": 1.0
+          },
+          "left_hand": {
+            "mean_arc_error_native": 3.290685043314009,
+            "max_arc_error_native": 7.084723753089912
+          },
+          "right_foot": {
+            "mean_arc_error_native": 0.7,
+            "max_arc_error_native": 1.0
+          },
+          "right_hand": {
+            "mean_arc_error_native": 3.5598735813026066,
+            "max_arc_error_native": 7.600871175752522
+          },
+          "shield": {
+            "mean_arc_error_native": 4.426945668608539,
+            "max_arc_error_native": 10.45322321116323
+          },
+          "torso": {
+            "mean_arc_error_native": 2.7786613177981274,
+            "max_arc_error_native": 5.889727852252839
+          },
+          "weapon": {
+            "mean_arc_error_native": 1.7828092253651415,
+            "max_arc_error_native": 2.85863127288444
+          }
+        },
+        "foot_surface_proxies": {
+          "right_foot": {
+            "lowest_surface_y_range": [
+              -1.0,
+              1.0
+            ],
+            "ground_proxy": "native Y down; bind ground Y=0",
+            "max_penetration_native": 1.0,
+            "max_lift_native": 1.0
+          },
+          "left_foot": {
+            "lowest_surface_y_range": [
+              -1.0,
+              1.0
+            ],
+            "ground_proxy": "native Y down; bind ground Y=0",
+            "max_penetration_native": 1.0,
+            "max_lift_native": 1.0
+          }
+        }
+      },
+      {
+        "action": "idle",
+        "candidate": "ground-contact",
+        "matched_native_timestamps": 20,
+        "mean_proxy_arc_error_native": 2.43642580058779,
+        "regions": {
+          "head": {
+            "mean_arc_error_native": 2.2524315683138965,
+            "max_arc_error_native": 4.752908425812042
+          },
+          "left_foot": {
+            "mean_arc_error_native": 0.7,
+            "max_arc_error_native": 1.0
+          },
+          "left_hand": {
+            "mean_arc_error_native": 3.290685043314009,
+            "max_arc_error_native": 7.084723753089912
+          },
+          "right_foot": {
+            "mean_arc_error_native": 0.7,
+            "max_arc_error_native": 1.0
+          },
+          "right_hand": {
+            "mean_arc_error_native": 3.5598735813026066,
+            "max_arc_error_native": 7.600871175752522
+          },
+          "shield": {
+            "mean_arc_error_native": 4.426945668608539,
+            "max_arc_error_native": 10.45322321116323
+          },
+          "torso": {
+            "mean_arc_error_native": 2.7786613177981274,
+            "max_arc_error_native": 5.889727852252839
+          },
+          "weapon": {
+            "mean_arc_error_native": 1.7828092253651415,
+            "max_arc_error_native": 2.85863127288444
+          }
+        },
+        "foot_surface_proxies": {
+          "right_foot": {
+            "lowest_surface_y_range": [
+              -1.0,
+              1.0
+            ],
+            "ground_proxy": "native Y down; bind ground Y=0",
+            "max_penetration_native": 1.0,
+            "max_lift_native": 1.0
+          },
+          "left_foot": {
+            "lowest_surface_y_range": [
+              -1.0,
+              1.0
+            ],
+            "ground_proxy": "native Y down; bind ground Y=0",
+            "max_penetration_native": 1.0,
+            "max_lift_native": 1.0
+          }
+        }
+      },
+      {
+        "action": "walk",
+        "candidate": "baseline",
+        "matched_native_timestamps": 13,
+        "mean_proxy_arc_error_native": 22.444630083733273,
+        "regions": {
+          "head": {
+            "mean_arc_error_native": 7.970190271667287,
+            "max_arc_error_native": 14.06040786222354
+          },
+          "left_foot": {
+            "mean_arc_error_native": 37.40657819227658,
+            "max_arc_error_native": 77.41342063966137
+          },
+          "left_hand": {
+            "mean_arc_error_native": 18.247485522024355,
+            "max_arc_error_native": 37.72162025842256
+          },
+          "right_foot": {
+            "mean_arc_error_native": 38.17013902714942,
+            "max_arc_error_native": 88.96342791264723
+          },
+          "right_hand": {
+            "mean_arc_error_native": 18.95857258730897,
+            "max_arc_error_native": 35.68150368489842
+          },
+          "shield": {
+            "mean_arc_error_native": 21.768450150814772,
+            "max_arc_error_native": 46.137874728495106
+          },
+          "torso": {
+            "mean_arc_error_native": 3.367359456939612,
+            "max_arc_error_native": 6.03454581247846
+          },
+          "weapon": {
+            "mean_arc_error_native": 33.66826546168518,
+            "max_arc_error_native": 61.68227596194296
+          }
+        },
+        "foot_surface_proxies": {
+          "right_foot": {
+            "lowest_surface_y_range": [
+              -6.0,
+              0.0
+            ],
+            "ground_proxy": "native Y down; bind ground Y=0",
+            "max_penetration_native": 0,
+            "max_lift_native": 6.0
+          },
+          "left_foot": {
+            "lowest_surface_y_range": [
+              -6.0,
+              0.0
+            ],
+            "ground_proxy": "native Y down; bind ground Y=0",
+            "max_penetration_native": 0,
+            "max_lift_native": 6.0
+          }
+        }
+      },
+      {
+        "action": "walk",
+        "candidate": "contact",
+        "matched_native_timestamps": 13,
+        "mean_proxy_arc_error_native": 19.79136493954223,
+        "regions": {
+          "head": {
+            "mean_arc_error_native": 7.504706223611917,
+            "max_arc_error_native": 14.06040786222354
+          },
+          "left_foot": {
+            "mean_arc_error_native": 27.680951547501973,
+            "max_arc_error_native": 53.28178681542371
+          },
+          "left_hand": {
+            "mean_arc_error_native": 18.858050857281732,
+            "max_arc_error_native": 38.38981346370125
+          },
+          "right_foot": {
+            "mean_arc_error_native": 26.80977359577656,
+            "max_arc_error_native": 60.01238585045365
+          },
+          "right_hand": {
+            "mean_arc_error_native": 18.4178577968214,
+            "max_arc_error_native": 35.54338475084337
+          },
+          "shield": {
+            "mean_arc_error_native": 22.24322946190822,
+            "max_arc_error_native": 46.99596446739302
+          },
+          "torso": {
+            "mean_arc_error_native": 3.2925969174670184,
+            "max_arc_error_native": 6.03454581247846
+          },
+          "weapon": {
+            "mean_arc_error_native": 33.52375311596903,
+            "max_arc_error_native": 62.098070298719016
+          }
+        },
+        "foot_surface_proxies": {
+          "right_foot": {
+            "lowest_surface_y_range": [
+              -7.0,
+              -1.0
+            ],
+            "ground_proxy": "native Y down; bind ground Y=0",
+            "max_penetration_native": 0,
+            "max_lift_native": 7.0
+          },
+          "left_foot": {
+            "lowest_surface_y_range": [
+              -7.0,
+              -1.0
+            ],
+            "ground_proxy": "native Y down; bind ground Y=0",
+            "max_penetration_native": 0,
+            "max_lift_native": 7.0
+          }
+        }
+      },
+      {
+        "action": "walk",
+        "candidate": "ground-contact",
+        "matched_native_timestamps": 13,
+        "mean_proxy_arc_error_native": 19.822380712058813,
+        "regions": {
+          "head": {
+            "mean_arc_error_native": 7.60345764053974,
+            "max_arc_error_native": 14.06040786222354
+          },
+          "left_foot": {
+            "mean_arc_error_native": 27.73029559479181,
+            "max_arc_error_native": 53.34260637360259
+          },
+          "left_hand": {
+            "mean_arc_error_native": 18.937684339967483,
+            "max_arc_error_native": 38.38981346370125
+          },
+          "right_foot": {
+            "mean_arc_error_native": 26.734694321866296,
+            "max_arc_error_native": 60.01541545159348
+          },
+          "right_hand": {
+            "mean_arc_error_native": 18.349269172834497,
+            "max_arc_error_native": 35.54338475084337
+          },
+          "shield": {
+            "mean_arc_error_native": 22.301306987898066,
+            "max_arc_error_native": 46.99596446739302
+          },
+          "torso": {
+            "mean_arc_error_native": 3.420989242420847,
+            "max_arc_error_native": 6.241474565857222
+          },
+          "weapon": {
+            "mean_arc_error_native": 33.50134839615177,
+            "max_arc_error_native": 62.098070298719016
+          }
+        },
+        "foot_surface_proxies": {
+          "right_foot": {
+            "lowest_surface_y_range": [
+              -6.0,
+              0.0
+            ],
+            "ground_proxy": "native Y down; bind ground Y=0",
+            "max_penetration_native": 0,
+            "max_lift_native": 6.0
+          },
+          "left_foot": {
+            "lowest_surface_y_range": [
+              -6.0,
+              0.0
+            ],
+            "ground_proxy": "native Y down; bind ground Y=0",
+            "max_penetration_native": 0,
+            "max_lift_native": 6.0
+          }
+        }
+      },
+      {
+        "action": "attack",
+        "candidate": "baseline",
+        "matched_native_timestamps": 13,
+        "mean_proxy_arc_error_native": 26.215369083354336,
+        "regions": {
+          "head": {
+            "mean_arc_error_native": 19.97598931169886,
+            "max_arc_error_native": 37.08385219059185
+          },
+          "left_foot": {
+            "mean_arc_error_native": 0.0,
+            "max_arc_error_native": 0.0
+          },
+          "left_hand": {
+            "mean_arc_error_native": 25.198945835038998,
+            "max_arc_error_native": 55.550101387597266
+          },
+          "right_foot": {
+            "mean_arc_error_native": 0.0524475524475524,
+            "max_arc_error_native": 0.22727272727272707
+          },
+          "right_hand": {
+            "mean_arc_error_native": 47.64634681407834,
+            "max_arc_error_native": 86.38099976372932
+          },
+          "shield": {
+            "mean_arc_error_native": 34.37656046046329,
+            "max_arc_error_native": 71.60033712315465
+          },
+          "torso": {
+            "mean_arc_error_native": 7.236600492966161,
+            "max_arc_error_native": 10.86283193817356
+          },
+          "weapon": {
+            "mean_arc_error_native": 75.23606220014148,
+            "max_arc_error_native": 110.17653481426294
+          }
+        },
+        "foot_surface_proxies": {
+          "right_foot": {
+            "lowest_surface_y_range": [
+              0.0,
+              0.0
+            ],
+            "ground_proxy": "native Y down; bind ground Y=0",
+            "max_penetration_native": 0,
+            "max_lift_native": 0
+          },
+          "left_foot": {
+            "lowest_surface_y_range": [
+              0.0,
+              0.0
+            ],
+            "ground_proxy": "native Y down; bind ground Y=0",
+            "max_penetration_native": 0,
+            "max_lift_native": 0
+          }
+        }
+      },
+      {
+        "action": "attack",
+        "candidate": "contact",
+        "matched_native_timestamps": 13,
+        "mean_proxy_arc_error_native": 26.193812383287554,
+        "regions": {
+          "head": {
+            "mean_arc_error_native": 19.88678804014287,
+            "max_arc_error_native": 36.476475205139124
+          },
+          "left_foot": {
+            "mean_arc_error_native": 0.0,
+            "max_arc_error_native": 0.0
+          },
+          "left_hand": {
+            "mean_arc_error_native": 25.198945835038998,
+            "max_arc_error_native": 55.550101387597266
+          },
+          "right_foot": {
+            "mean_arc_error_native": 0.0524475524475524,
+            "max_arc_error_native": 0.22727272727272707
+          },
+          "right_hand": {
+            "mean_arc_error_native": 47.64634681407834,
+            "max_arc_error_native": 86.38099976372932
+          },
+          "shield": {
+            "mean_arc_error_native": 34.293308131485034,
+            "max_arc_error_native": 70.18870526440813
+          },
+          "torso": {
+            "mean_arc_error_native": 7.236600492966161,
+            "max_arc_error_native": 10.86283193817356
+          },
+          "weapon": {
+            "mean_arc_error_native": 75.23606220014148,
+            "max_arc_error_native": 110.17653481426294
+          }
+        },
+        "foot_surface_proxies": {
+          "right_foot": {
+            "lowest_surface_y_range": [
+              0.0,
+              0.0
+            ],
+            "ground_proxy": "native Y down; bind ground Y=0",
+            "max_penetration_native": 0,
+            "max_lift_native": 0
+          },
+          "left_foot": {
+            "lowest_surface_y_range": [
+              0.0,
+              0.0
+            ],
+            "ground_proxy": "native Y down; bind ground Y=0",
+            "max_penetration_native": 0,
+            "max_lift_native": 0
+          }
+        }
+      },
+      {
+        "action": "attack",
+        "candidate": "ground-contact",
+        "matched_native_timestamps": 13,
+        "mean_proxy_arc_error_native": 26.193812383287554,
+        "regions": {
+          "head": {
+            "mean_arc_error_native": 19.88678804014287,
+            "max_arc_error_native": 36.476475205139124
+          },
+          "left_foot": {
+            "mean_arc_error_native": 0.0,
+            "max_arc_error_native": 0.0
+          },
+          "left_hand": {
+            "mean_arc_error_native": 25.198945835038998,
+            "max_arc_error_native": 55.550101387597266
+          },
+          "right_foot": {
+            "mean_arc_error_native": 0.0524475524475524,
+            "max_arc_error_native": 0.22727272727272707
+          },
+          "right_hand": {
+            "mean_arc_error_native": 47.64634681407834,
+            "max_arc_error_native": 86.38099976372932
+          },
+          "shield": {
+            "mean_arc_error_native": 34.293308131485034,
+            "max_arc_error_native": 70.18870526440813
+          },
+          "torso": {
+            "mean_arc_error_native": 7.236600492966161,
+            "max_arc_error_native": 10.86283193817356
+          },
+          "weapon": {
+            "mean_arc_error_native": 75.23606220014148,
+            "max_arc_error_native": 110.17653481426294
+          }
+        },
+        "foot_surface_proxies": {
+          "right_foot": {
+            "lowest_surface_y_range": [
+              0.0,
+              0.0
+            ],
+            "ground_proxy": "native Y down; bind ground Y=0",
+            "max_penetration_native": 0,
+            "max_lift_native": 0
+          },
+          "left_foot": {
+            "lowest_surface_y_range": [
+              0.0,
+              0.0
+            ],
+            "ground_proxy": "native Y down; bind ground Y=0",
+            "max_penetration_native": 0,
+            "max_lift_native": 0
+          }
+        }
+      },
+      {
+        "action": "hit",
+        "candidate": "baseline",
+        "matched_native_timestamps": 25,
+        "mean_proxy_arc_error_native": 40.34559292786869,
+        "regions": {
+          "head": {
+            "mean_arc_error_native": 41.981988804747026,
+            "max_arc_error_native": 72.4880427102748
+          },
+          "left_foot": {
+            "mean_arc_error_native": 3.88,
+            "max_arc_error_native": 6.0
+          },
+          "left_hand": {
+            "mean_arc_error_native": 42.68584389769716,
+            "max_arc_error_native": 65.71345755171738
+          },
+          "right_foot": {
+            "mean_arc_error_native": 3.88,
+            "max_arc_error_native": 6.0
+          },
+          "right_hand": {
+            "mean_arc_error_native": 55.056996424951656,
+            "max_arc_error_native": 86.4183550304436
+          },
+          "shield": {
+            "mean_arc_error_native": 61.32298619747896,
+            "max_arc_error_native": 91.65463822318412
+          },
+          "torso": {
+            "mean_arc_error_native": 18.773709072711917,
+            "max_arc_error_native": 30.031972354846456
+          },
+          "weapon": {
+            "mean_arc_error_native": 95.18321902536276,
+            "max_arc_error_native": 137.1498134610447
+          }
+        },
+        "foot_surface_proxies": {
+          "right_foot": {
+            "lowest_surface_y_range": [
+              0.0,
+              0.0
+            ],
+            "ground_proxy": "native Y down; bind ground Y=0",
+            "max_penetration_native": 0,
+            "max_lift_native": 0
+          },
+          "left_foot": {
+            "lowest_surface_y_range": [
+              0.0,
+              0.0
+            ],
+            "ground_proxy": "native Y down; bind ground Y=0",
+            "max_penetration_native": 0,
+            "max_lift_native": 0
+          }
+        }
+      },
+      {
+        "action": "hit",
+        "candidate": "contact",
+        "matched_native_timestamps": 25,
+        "mean_proxy_arc_error_native": 40.059934152207326,
+        "regions": {
+          "head": {
+            "mean_arc_error_native": 41.218968978257635,
+            "max_arc_error_native": 71.30183219411846
+          },
+          "left_foot": {
+            "mean_arc_error_native": 3.88,
+            "max_arc_error_native": 6.0
+          },
+          "left_hand": {
+            "mean_arc_error_native": 42.68584389769716,
+            "max_arc_error_native": 65.71345755171738
+          },
+          "right_foot": {
+            "mean_arc_error_native": 3.88,
+            "max_arc_error_native": 6.0
+          },
+          "right_hand": {
+            "mean_arc_error_native": 55.056996424951656,
+            "max_arc_error_native": 86.4183550304436
+          },
+          "shield": {
+            "mean_arc_error_native": 59.8007358186775,
+            "max_arc_error_native": 88.9818716791557
+          },
+          "torso": {
+            "mean_arc_error_native": 18.773709072711917,
+            "max_arc_error_native": 30.031972354846456
+          },
+          "weapon": {
+            "mean_arc_error_native": 95.18321902536276,
+            "max_arc_error_native": 137.1498134610447
+          }
+        },
+        "foot_surface_proxies": {
+          "right_foot": {
+            "lowest_surface_y_range": [
+              0.0,
+              0.0
+            ],
+            "ground_proxy": "native Y down; bind ground Y=0",
+            "max_penetration_native": 0,
+            "max_lift_native": 0
+          },
+          "left_foot": {
+            "lowest_surface_y_range": [
+              0.0,
+              0.0
+            ],
+            "ground_proxy": "native Y down; bind ground Y=0",
+            "max_penetration_native": 0,
+            "max_lift_native": 0
+          }
+        }
+      },
+      {
+        "action": "hit",
+        "candidate": "ground-contact",
+        "matched_native_timestamps": 25,
+        "mean_proxy_arc_error_native": 40.059934152207326,
+        "regions": {
+          "head": {
+            "mean_arc_error_native": 41.218968978257635,
+            "max_arc_error_native": 71.30183219411846
+          },
+          "left_foot": {
+            "mean_arc_error_native": 3.88,
+            "max_arc_error_native": 6.0
+          },
+          "left_hand": {
+            "mean_arc_error_native": 42.68584389769716,
+            "max_arc_error_native": 65.71345755171738
+          },
+          "right_foot": {
+            "mean_arc_error_native": 3.88,
+            "max_arc_error_native": 6.0
+          },
+          "right_hand": {
+            "mean_arc_error_native": 55.056996424951656,
+            "max_arc_error_native": 86.4183550304436
+          },
+          "shield": {
+            "mean_arc_error_native": 59.8007358186775,
+            "max_arc_error_native": 88.9818716791557
+          },
+          "torso": {
+            "mean_arc_error_native": 18.773709072711917,
+            "max_arc_error_native": 30.031972354846456
+          },
+          "weapon": {
+            "mean_arc_error_native": 95.18321902536276,
+            "max_arc_error_native": 137.1498134610447
+          }
+        },
+        "foot_surface_proxies": {
+          "right_foot": {
+            "lowest_surface_y_range": [
+              0.0,
+              0.0
+            ],
+            "ground_proxy": "native Y down; bind ground Y=0",
+            "max_penetration_native": 0,
+            "max_lift_native": 0
+          },
+          "left_foot": {
+            "lowest_surface_y_range": [
+              0.0,
+              0.0
+            ],
+            "ground_proxy": "native Y down; bind ground Y=0",
+            "max_penetration_native": 0,
+            "max_lift_native": 0
+          }
+        }
+      },
+      {
+        "action": "death",
+        "candidate": "baseline",
+        "matched_native_timestamps": 25,
+        "mean_proxy_arc_error_native": 36.34756552180962,
+        "regions": {
+          "head": {
+            "mean_arc_error_native": 31.343430931312277,
+            "max_arc_error_native": 55.5923045492043
+          },
+          "left_foot": {
+            "mean_arc_error_native": 32.43961166075069,
+            "max_arc_error_native": 65.9968085740902
+          },
+          "left_hand": {
+            "mean_arc_error_native": 30.601165420963156,
+            "max_arc_error_native": 57.046878721645115
+          },
+          "right_foot": {
+            "mean_arc_error_native": 34.911216582029425,
+            "max_arc_error_native": 55.08554370979277
+          },
+          "right_hand": {
+            "mean_arc_error_native": 26.899619178646116,
+            "max_arc_error_native": 52.450651680203215
+          },
+          "shield": {
+            "mean_arc_error_native": 45.70142699105667,
+            "max_arc_error_native": 74.87404186290304
+          },
+          "torso": {
+            "mean_arc_error_native": 31.694850775675622,
+            "max_arc_error_native": 56.19485203730659
+          },
+          "weapon": {
+            "mean_arc_error_native": 57.18920263404299,
+            "max_arc_error_native": 92.90288779559485
+          }
+        },
+        "foot_surface_proxies": {
+          "right_foot": {
+            "lowest_surface_y_range": [
+              -35.0,
+              0.0
+            ],
+            "ground_proxy": "native Y down; bind ground Y=0",
+            "max_penetration_native": 0,
+            "max_lift_native": 35.0
+          },
+          "left_foot": {
+            "lowest_surface_y_range": [
+              -35.0,
+              0.0
+            ],
+            "ground_proxy": "native Y down; bind ground Y=0",
+            "max_penetration_native": 0,
+            "max_lift_native": 35.0
+          }
+        }
+      },
+      {
+        "action": "death",
+        "candidate": "contact",
+        "matched_native_timestamps": 25,
+        "mean_proxy_arc_error_native": 36.956158237971636,
+        "regions": {
+          "head": {
+            "mean_arc_error_native": 32.67222113291223,
+            "max_arc_error_native": 53.31339244852304
+          },
+          "left_foot": {
+            "mean_arc_error_native": 32.43961166075069,
+            "max_arc_error_native": 65.9968085740902
+          },
+          "left_hand": {
+            "mean_arc_error_native": 30.601165420963156,
+            "max_arc_error_native": 57.046878721645115
+          },
+          "right_foot": {
+            "mean_arc_error_native": 34.911216582029425,
+            "max_arc_error_native": 55.08554370979277
+          },
+          "right_hand": {
+            "mean_arc_error_native": 26.899619178646116,
+            "max_arc_error_native": 52.450651680203215
+          },
+          "shield": {
+            "mean_arc_error_native": 49.241378518752825,
+            "max_arc_error_native": 74.98972869493022
+          },
+          "torso": {
+            "mean_arc_error_native": 31.694850775675622,
+            "max_arc_error_native": 56.19485203730659
+          },
+          "weapon": {
+            "mean_arc_error_native": 57.18920263404299,
+            "max_arc_error_native": 92.90288779559485
+          }
+        },
+        "foot_surface_proxies": {
+          "right_foot": {
+            "lowest_surface_y_range": [
+              -35.0,
+              0.0
+            ],
+            "ground_proxy": "native Y down; bind ground Y=0",
+            "max_penetration_native": 0,
+            "max_lift_native": 35.0
+          },
+          "left_foot": {
+            "lowest_surface_y_range": [
+              -35.0,
+              0.0
+            ],
+            "ground_proxy": "native Y down; bind ground Y=0",
+            "max_penetration_native": 0,
+            "max_lift_native": 35.0
+          }
+        }
+      },
+      {
+        "action": "death",
+        "candidate": "ground-contact",
+        "matched_native_timestamps": 25,
+        "mean_proxy_arc_error_native": 36.956158237971636,
+        "regions": {
+          "head": {
+            "mean_arc_error_native": 32.67222113291223,
+            "max_arc_error_native": 53.31339244852304
+          },
+          "left_foot": {
+            "mean_arc_error_native": 32.43961166075069,
+            "max_arc_error_native": 65.9968085740902
+          },
+          "left_hand": {
+            "mean_arc_error_native": 30.601165420963156,
+            "max_arc_error_native": 57.046878721645115
+          },
+          "right_foot": {
+            "mean_arc_error_native": 34.911216582029425,
+            "max_arc_error_native": 55.08554370979277
+          },
+          "right_hand": {
+            "mean_arc_error_native": 26.899619178646116,
+            "max_arc_error_native": 52.450651680203215
+          },
+          "shield": {
+            "mean_arc_error_native": 49.241378518752825,
+            "max_arc_error_native": 74.98972869493022
+          },
+          "torso": {
+            "mean_arc_error_native": 31.694850775675622,
+            "max_arc_error_native": 56.19485203730659
+          },
+          "weapon": {
+            "mean_arc_error_native": 57.18920263404299,
+            "max_arc_error_native": 92.90288779559485
+          }
+        },
+        "foot_surface_proxies": {
+          "right_foot": {
+            "lowest_surface_y_range": [
+              -35.0,
+              0.0
+            ],
+            "ground_proxy": "native Y down; bind ground Y=0",
+            "max_penetration_native": 0,
+            "max_lift_native": 35.0
+          },
+          "left_foot": {
+            "lowest_surface_y_range": [
+              -35.0,
+              0.0
+            ],
+            "ground_proxy": "native Y down; bind ground Y=0",
+            "max_penetration_native": 0,
+            "max_lift_native": 35.0
+          }
+        }
+      }
+    ],
+    "interpretation": "Curated component centroids are proxies, not inferred joints. Equal timestamp and camera; no time warp. Arc errors remove initial bind offset only. Artistic acceptance remains false."
+  },
+  "heldout_frozen_v1": {
+    "protocol": "Descriptor-driven fitting; not blind category prediction. No post-inspection tool tuning for this version.",
+    "tool_freeze": {
+      "analyze.py": "d5eaaa0812d2d455f394ef8be0d6137deae740f6d7e230781b786202466c4d01",
+      "author_blender.py": "d63658747ec302c2bfae4c2fa1bf3ff3dad8c23e9b6db3838a7153cbb9856138",
+      "author_workflow.py": "4c7d032ded8ac170810c11ea488849c37d5c5e450ddd6b946278243f0bd74426",
+      "bench.py": "271ea6654dd5a7b120bf6becad05c430b8d9ed2d0162d8208e064e90683a94bc",
+      "blender_actions.py": "cf83bc9c480ab788c2a707d39f2276a980e4e72d19a97328188e689d8df335e7",
+      "blender_io.py": "9609b1540eef948ecc0f7b7cf722ff49361184356e7081dcea88c2f58d2141b9",
+      "diagnose.py": "b05250c77c6e3103faadb3c844b483fa40930f77f2eaf632cb80a813a6660b52",
+      "edit_blender.py": "58d37562e0c8de9e636b2fac4e37495a20aecd07deb55c2ccacf87ec74d2d82b",
+      "instantiate.py": "d9197f35f44c3a12c87b2219ab112f60351e4b1b31705c3002d56732c21b57e7",
+      "iterate.py": "2f06bf181477f75a462a3202c2da795495094f439fcfbacdc31f7e237125429f",
+      "kinematics.py": "0598b9cb5223ca9c056a4a65a41fbaf542793f85a46269af10ae45b6912f241f",
+      "motion.py": "2f98dbc9ef90214b463c907d9e8222d41fa438085660f58c4c59883244098846",
+      "motion_review.py": "7c29eeb5b506d7ac48a3634133039f5a1a327a527ee42d07e4b9edaae2b7d7a0",
+      "native_codec.py": "34590d7c8468bbcc2b8e37cf7d2db1a8e309f6767bbdfd0e5cb11c6e3ea34c12",
+      "primitives.py": "d5f0eed53b9e94a7d2b029ddeedee402453ff067780ad3dfaa621415e1a221a5",
+      "refine.py": "f302793fa10ed77d0c848808cdd5b2f74075b9f353063372db928b4fb295b730",
+      "registry.py": "e9f10d917d7897172a9bcbf0b5f1eb69df8439652a094b3fe90eda3de06e14f9",
+      "templates.py": "009a7fa3176b6d56c1c4883c4bdde42852f3509bf69676da64016ac3d9beb186",
+      "test_workbench.py": "7b9b80a60fabe237ef326dd1910e2c2d4646ab38c01809f5271e585b1ece429d",
+      "verify_motion.py": "95170d1ff084650023797e2686d39c7cd78ede78189cf71cacc45941d9ff9f50",
+      "reference_catalog.json": "91f0b8cad157f7805242f7c2004481e265ea06f99eac63e8521bd729ec39ae2d",
+      "native_binary_sha256": "dad7681afce23241b52476329779e13de3086a2c660c850cfbbe76c0687c5908"
+    },
+    "results": [
+      {
+        "selector": "object:362",
+        "name": "Barrel",
+        "kind": "barrel",
+        "source_model_ids": [
+          1460
+        ],
+        "overlapping_training_models": [],
+        "split_valid": true,
+        "artistic_acceptance": false,
+        "native_workflow_exit_code": 0,
+        "status": "RENDERED_UNAPPROVED",
+        "mean_five_view_iou": 0.8932002523315271,
+        "per_view_iou": {
+          "front": 0.8953338287636406,
+          "side": 0.8953338287636406,
+          "rear": 0.8953338287636406,
+          "quarter": 0.8984208279982928,
+          "gameplay": 0.881578947368421
+        },
+        "mean_rgb_absolute_error": 0.9715432780719976
+      },
+      {
+        "selector": "object:366",
+        "name": "Crate",
+        "kind": "crate",
+        "source_model_ids": [
+          2143
+        ],
+        "overlapping_training_models": [],
+        "split_valid": true,
+        "artistic_acceptance": false,
+        "native_workflow_exit_code": 0,
+        "status": "RENDERED_UNAPPROVED",
+        "mean_five_view_iou": 0.9284142178329876,
+        "per_view_iou": {
+          "front": 0.927012791572611,
+          "side": 0.9212172021570671,
+          "rear": 0.927012791572611,
+          "quarter": 0.9268883639227088,
+          "gameplay": 0.93993993993994
+        },
+        "mean_rgb_absolute_error": 7.753131772372778
+      },
+      {
+        "selector": "object:2097",
+        "name": "Anvil",
+        "kind": "anvil",
+        "source_model_ids": [
+          1251
+        ],
+        "overlapping_training_models": [],
+        "split_valid": true,
+        "artistic_acceptance": false,
+        "native_workflow_exit_code": 0,
+        "status": "RENDERED_UNAPPROVED",
+        "mean_five_view_iou": 0.3407295386051379,
+        "per_view_iou": {
+          "front": 0.3829840415304749,
+          "side": 0.23774819662378224,
+          "rear": 0.3832124511822082,
+          "quarter": 0.3511453113815319,
+          "gameplay": 0.3485576923076923
+        },
+        "mean_rgb_absolute_error": 1.5250302856680216
+      },
+      {
+        "selector": "object:436",
+        "name": "null",
+        "kind": "wall",
+        "source_model_ids": [
+          24764
+        ],
+        "overlapping_training_models": [],
+        "split_valid": true,
+        "artistic_acceptance": false,
+        "native_workflow_exit_code": 0,
+        "status": "RENDERED_UNAPPROVED",
+        "mean_five_view_iou": 0.6724018227026545,
+        "per_view_iou": {
+          "front": 0.33389301990885106,
+          "side": 0.9893373696602759,
+          "rear": 0.358974358974359,
+          "quarter": 0.8849325700979916,
+          "gameplay": 0.7948717948717948
+        },
+        "mean_rgb_absolute_error": 0.36817586123470813
+      },
+      {
+        "selector": "item:1323",
+        "name": "Iron scimitar",
+        "kind": "sword",
+        "source_model_ids": [
+          2373
+        ],
+        "overlapping_training_models": [],
+        "split_valid": true,
+        "artistic_acceptance": false,
+        "native_workflow_exit_code": 0,
+        "status": "RENDERED_UNAPPROVED",
+        "mean_five_view_iou": 0.3310924717744441,
+        "per_view_iou": {
+          "front": 0.3510908168442415,
+          "side": 0.32187134502923975,
+          "rear": 0.3361425475559836,
+          "quarter": 0.36976190476190474,
+          "gameplay": 0.2765957446808511
+        },
+        "mean_rgb_absolute_error": 0.49788917222895
+      },
+      {
+        "selector": "item:1171",
+        "name": "Wooden shield",
+        "kind": "shield",
+        "source_model_ids": [
+          2601
+        ],
+        "overlapping_training_models": [],
+        "split_valid": true,
+        "artistic_acceptance": false,
+        "native_workflow_exit_code": 0,
+        "status": "RENDERED_UNAPPROVED",
+        "mean_five_view_iou": 0.7394880245302636,
+        "per_view_iou": {
+          "front": 0.7835959221501391,
+          "side": 0.7478426538159811,
+          "rear": 0.6988430524716607,
+          "quarter": 0.6948812664907652,
+          "gameplay": 0.7722772277227723
+        },
+        "mean_rgb_absolute_error": 0.36313072379198913
+      },
+      {
+        "selector": "item:1163:worn",
+        "name": "Rune full helm",
+        "kind": null,
+        "source_model_ids": [
+          218
+        ],
+        "overlapping_training_models": [],
+        "split_valid": true,
+        "artistic_acceptance": false,
+        "status": "UNSUPPORTED",
+        "reason": "No owned full-helmet archetype frozen from training data"
+      },
+      {
+        "selector": "npc:106",
+        "name": "Wolf",
+        "kind": "quadruped",
+        "source_model_ids": [
+          26266
+        ],
+        "overlapping_training_models": [],
+        "split_valid": true,
+        "artistic_acceptance": false,
+        "native_workflow_exit_code": 0,
+        "status": "RENDERED_UNAPPROVED",
+        "mean_five_view_iou": 0.6381074089590026,
+        "per_view_iou": {
+          "front": 0.7493612672457843,
+          "side": 0.5494234749186951,
+          "rear": 0.6994124127800221,
+          "quarter": 0.5581935483870968,
+          "gameplay": 0.6341463414634146
+        },
+        "mean_rgb_absolute_error": 1.3171426878790462
+      },
+      {
+        "selector": "npc:2834",
+        "name": "Giant bat",
+        "kind": null,
+        "source_model_ids": [
+          18898
+        ],
+        "overlapping_training_models": [],
+        "split_valid": true,
+        "artistic_acceptance": false,
+        "status": "UNSUPPORTED",
+        "reason": "No owned winged-creature archetype frozen from training data"
+      }
+    ],
+    "artistic_acceptance": false
+  },
+  "heldout_expanded_payload_overlap_audit": [
+    {
+      "selector": "item:1163:worn",
+      "overlap_including_supplementary_equipment": []
+    },
+    {
+      "selector": "item:1171",
+      "overlap_including_supplementary_equipment": []
+    },
+    {
+      "selector": "item:1323",
+      "overlap_including_supplementary_equipment": []
+    },
+    {
+      "selector": "npc:106",
+      "overlap_including_supplementary_equipment": []
+    },
+    {
+      "selector": "npc:2834",
+      "overlap_including_supplementary_equipment": []
+    },
+    {
+      "selector": "object:2097",
+      "overlap_including_supplementary_equipment": []
+    },
+    {
+      "selector": "object:362",
+      "overlap_including_supplementary_equipment": []
+    },
+    {
+      "selector": "object:366",
+      "overlap_including_supplementary_equipment": []
+    },
+    {
+      "selector": "object:436",
+      "overlap_including_supplementary_equipment": []
+    }
+  ],
+  "anvil_development_correction": {
+    "selector": "object:2097",
+    "frozen_mean_iou": 0.3407295386051379,
+    "orientation_only_mean_iou": 0.3407295386051379,
+    "submitted_surface_mean_iou": 0.7515578310616153,
+    "counts_as_new_heldout_success": false
+  },
+  "original_tower_probes": [
+    {
+      "asset": "tensioners-saddle",
+      "identity": {
+        "model_id": 1101514,
+        "object_id": 63414,
+        "npc_id": null,
+        "sequence_base": null,
+        "skeleton_base": null,
+        "frame_group_base": null
+      },
+      "vertices": 356,
+      "faces": 620,
+      "model_sha256": "68936f813b5c48b9497bb17f0d78cd811736bf94c79a2ec4f37120937a032c9c",
+      "native_binary_sha256": "d91ad2597de216c6277fed921107a7f01df59096f8e593b595ce0db5b3a67e4e",
+      "motion": [],
+      "artistic_acceptance": false,
+      "production_integration": false,
+      "reference_mesh_or_animation_reuse": false,
+      "publication": "Owned original design inputs and generated native outputs only; authentic comparison images remain private"
+    },
+    {
+      "asset": "sluice-governor",
+      "identity": {
+        "model_id": 1101515,
+        "object_id": 63415,
+        "npc_id": null,
+        "sequence_base": null,
+        "skeleton_base": null,
+        "frame_group_base": null
+      },
+      "vertices": 336,
+      "faces": 592,
+      "model_sha256": "f719c30718d925539340fc6644cfcc04e84d1c6d299926cb061b56b1337cff09",
+      "native_binary_sha256": "d91ad2597de216c6277fed921107a7f01df59096f8e593b595ce0db5b3a67e4e",
+      "motion": [],
+      "artistic_acceptance": false,
+      "production_integration": false,
+      "reference_mesh_or_animation_reuse": false,
+      "publication": "Owned original design inputs and generated native outputs only; authentic comparison images remain private"
+    },
+    {
+      "asset": "kilnback-rummager",
+      "identity": {
+        "model_id": 1101516,
+        "object_id": 63416,
+        "npc_id": 60024,
+        "sequence_base": 45032,
+        "skeleton_base": 32032,
+        "frame_group_base": 40032
+      },
+      "vertices": 376,
+      "faces": 620,
+      "model_sha256": "afe2d870bac6f00e854b56009b6dcf0bdc9250e25f15403653951086924ba10a",
+      "native_binary_sha256": "d91ad2597de216c6277fed921107a7f01df59096f8e593b595ce0db5b3a67e4e",
+      "motion": [
+        {
+          "action": "attack",
+          "native_pose_samples": 43,
+          "max_coordinate_error_native": 0,
+          "sequence_id": 45032,
+          "skeleton_id": 32034,
+          "frame_group": 40034
+        },
+        {
+          "action": "death",
+          "native_pose_samples": 259,
+          "max_coordinate_error_native": 0,
+          "sequence_id": 45033,
+          "skeleton_id": 32036,
+          "frame_group": 40036
+        },
+        {
+          "action": "hit",
+          "native_pose_samples": 31,
+          "max_coordinate_error_native": 0,
+          "sequence_id": 45034,
+          "skeleton_id": 32035,
+          "frame_group": 40035
+        },
+        {
+          "action": "idle",
+          "native_pose_samples": 65,
+          "max_coordinate_error_native": 0,
+          "sequence_id": 45035,
+          "skeleton_id": 32032,
+          "frame_group": 40032
+        },
+        {
+          "action": "walk",
+          "native_pose_samples": 49,
+          "max_coordinate_error_native": 0,
+          "sequence_id": 45036,
+          "skeleton_id": 32033,
+          "frame_group": 40033
+        }
+      ],
+      "artistic_acceptance": false,
+      "production_integration": false,
+      "reference_mesh_or_animation_reuse": false,
+      "publication": "Owned original design inputs and generated native outputs only; authentic comparison images remain private"
+    }
+  ],
+  "cache_integrity": {
+    "files": 50,
+    "bytes": 453219756,
+    "all_original_sha256_unchanged": true
+  },
+  "artistic_acceptance": false,
+  "production_readiness": false,
+  "original_registration_validation": [
+    {
+      "asset": "tensioners-saddle",
+      "model_id": 1101514,
+      "object_id": 63414,
+      "native_package_reader_pass": true,
+      "all_registered_native_views_exact": true
+    },
+    {
+      "asset": "sluice-governor",
+      "model_id": 1101515,
+      "object_id": 63415,
+      "native_package_reader_pass": true,
+      "all_registered_native_views_exact": true
+    },
+    {
+      "asset": "kilnback-rummager",
+      "model_id": 1101516,
+      "object_id": 63416,
+      "native_package_reader_pass": true,
+      "all_registered_native_views_exact": true
+    }
+  ],
+  "supplementary_worn_reference_catalog": [
+    {
+      "selector": "item:1191:worn",
+      "name": "Iron kiteshield",
+      "revision": "239.1",
+      "model_ids": [
+        486
+      ],
+      "definition_sha256": "acc7b4a71abf2f5c39c15cd11b736d2e5931f1d4ca8a904a69567d3d6b8d955c",
+      "sources": [
+        {
+          "model_id": 486,
+          "payload_sha256": "171fb1a109d8ede472e2b6d5539e93e3ddca1f04fc0d79d60cfe75d224568321",
+          "raw_group_sha256": "1b4b42de4a03b18fc2e1e4e883b3886d266817db90d6f7ab9828e492d8dfe6ae"
+        }
+      ],
+      "ambient": 64,
+      "contrast": 768,
+      "camera": [
+        35.5,
+        -104.0,
+        3.5,
+        409.6
+      ]
+    },
+    {
+      "selector": "item:1279:worn",
+      "name": "Iron sword",
+      "revision": "239.1",
+      "model_ids": [
+        519
+      ],
+      "definition_sha256": "07665cb59802b346df988170bccac74f0fa3b4d51f3caa5c2fa6400f45397297",
+      "sources": [
+        {
+          "model_id": 519,
+          "payload_sha256": "5709fa26cac2751c4c826cba500ebab50f650df50dc097bc1c5a4c3ccbe7ca78",
+          "raw_group_sha256": "2c40d41290f7d4dd25f7ed515ff295cdb5e359aff2a80a4e24ab10629937f3cd"
+        }
+      ],
+      "ambient": 64,
+      "contrast": 768,
+      "camera": [
+        -30.0,
+        -99.0,
+        -30.0,
+        409.6
+      ]
+    }
+  ]
+}
