@@ -2502,7 +2502,7 @@ impl<B: AccountBackend> Runtime<B> {
                                                         c.bones.contains_key(&item.id)
                                                     })
                                                 {
-                                                    return Some(Action::BurySlot { slot });
+                                                    return Some(Action::BuryItemSlot { slot, item: button.object });
                                                 }
                                             }
                                             match button.op {

@@ -94,7 +94,9 @@ pub fn configure<B: AccountBackend>(
     let tables = cache.enums()?;
     let parameters = cache.parameters()?;
     let stat = |name| u8::try_from(names.id("stat", name)?).map_err(io::Error::other);
-    runtime.world.prayer = Some(crate::prayer::resolve(names, &runtime.definitions)?);
+    let prayer=crate::prayer::resolve(names,&runtime.definitions)?;
+    runtime.world.prayer_member_bones=prayer.bones.keys().filter(|id|runtime.definitions.items.get(&(**id as u32)).is_some_and(|d|d.members)).copied().collect();
+    runtime.world.prayer=Some(prayer);
     let varp = |name| -> io::Result<gielinor_world::variables::Varp> {
         runtime
             .definitions

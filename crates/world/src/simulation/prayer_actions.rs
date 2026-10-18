@@ -11,7 +11,7 @@ impl World {
         }
         Ok(cancelled)
     }
-    pub(super) fn start_bury(&mut self, actor: ActorId, slot: usize) -> Result<(), ActionError> {
+    pub(super) fn start_bury(&mut self, actor: ActorId, slot: usize, expected: Option<i32>) -> Result<(), ActionError> {
         let p = self
             .players
             .get_mut(actor.slot as usize)
@@ -27,8 +27,13 @@ impl World {
             .ok_or(ActionError::InvalidItem)?
             .id;
         let config = self.prayer.as_ref().ok_or(ActionError::InvalidItem)?;
-        if !config.bones.contains_key(&bone) {
+        if expected.is_some_and(|item|item!=bone) || !config.bones.contains_key(&bone) {
             return Err(ActionError::InvalidItem);
+        }
+        let selected=expected.map(|_|slot);
+        if let Some(slot)=selected {
+            if self.prayer_member_bones.contains(&bone) && !p.member {return Err(ActionError::InvalidItem);}
+            config.prepare_selected(&p.data,&self.object_types,bone,slot).map_err(|_|ActionError::InvalidItem)?;
         }
         if config.requires_confirmation(p.movement.coords) {
             p.dialog_generation = p
@@ -36,7 +41,7 @@ impl World {
                 .checked_add(1)
                 .ok_or(ActionError::QueueFull)?;
             let token = p.dialog_generation;
-            p.prayer = Some(State::Confirm { token, bone });
+            p.prayer = Some(State::Confirm { token, bone, slot:selected });
             p.protection.suspended = true;
             self.events.push(WorldEvent::Prayer {
                 actor,
@@ -44,18 +49,19 @@ impl World {
             });
             return Ok(());
         }
-        self.animate_bury(actor, bone)
+        self.animate_bury(actor, bone, selected)
     }
-    fn animate_bury(&mut self, actor: ActorId, bone: i32) -> Result<(), ActionError> {
+    fn animate_bury(&mut self, actor: ActorId, bone: i32, slot: Option<usize>) -> Result<(), ActionError> {
         let p = self
             .players
             .get_mut(actor.slot as usize)
             .ok_or(ActionError::StaleActor)?;
         let config = self.prayer.as_ref().ok_or(ActionError::InvalidItem)?;
-        let pending = config
-            .prepare(&p.data, bone)
-            .map_err(|_| ActionError::InvalidItem)?;
-        p.prayer = Some(State::Bury(pending));
+        let pending=if let Some(slot)=slot {
+            if self.prayer_member_bones.contains(&bone) && !p.member {return Err(ActionError::InvalidItem);}
+            config.prepare_selected(&p.data,&self.object_types,bone,slot)
+        } else {config.prepare(&p.data,bone)}.map_err(|_|ActionError::InvalidItem)?;
+        p.prayer = Some(State::Bury{pending,slot});
         p.protection.suspended = true;
         p.protection.delay(1);
         self.events.push(WorldEvent::Prayer {
@@ -77,6 +83,7 @@ impl World {
         let Some(State::Confirm {
             token: current,
             bone,
+            slot,
         }) = p.prayer
         else {
             return Ok(());
@@ -94,7 +101,7 @@ impl World {
             event: Event::Closed,
         });
         if choice == 1 {
-            self.animate_bury(actor, bone)?;
+            self.animate_bury(actor, bone, slot)?;
         }
         Ok(())
     }
@@ -175,8 +182,8 @@ impl World {
         if p.protection.delayed() {
             return;
         }
-        let (pending, offering) = match p.prayer {
-            Some(State::Bury(pending)) => (pending, None),
+        let (pending, selected, offering) = match p.prayer {
+            Some(State::Bury{pending,slot}) => (pending, slot, None),
             Some(State::Offer {
                 bone,
                 animation,
@@ -185,6 +192,7 @@ impl World {
                 continuation,
             }) => (
                 crate::prayer::Pending { bone, restore: 0 },
+                None,
                 Some((animation, offered, xp, continuation)),
             ),
             _ => return,
@@ -195,6 +203,9 @@ impl World {
         let mut tower_completion = None;
         let completed = if let Some((_, _, xp, _)) = offering {
             config.finish_offering_xp(&mut p.data, &self.object_types, pending.bone, xp)
+        } else if let Some(slot)=selected {
+            if p.pending_logout || p.has_modal || (self.prayer_member_bones.contains(&pending.bone) && !p.member) {Ok(None)}
+            else {config.finish_selected(&mut p.data,&self.object_types,pending,slot)}
         } else {
             config.finish(&mut p.data, &self.object_types, pending)
         };

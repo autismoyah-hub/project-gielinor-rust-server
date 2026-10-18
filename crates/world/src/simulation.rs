@@ -406,9 +406,9 @@ impl MovementSnapshot {
 }
 #[derive(Debug, Clone, Copy)]
 pub enum Action {
-    BurySlot {
-        slot: usize,
-    },
+    /// Original type-search reference action; network gameplay uses BuryItemSlot.
+    BurySlot { slot: usize },
+    BuryItemSlot { slot: usize, item: i32 },
     ResumeBury {
         token: u64,
         choice: i32,
@@ -908,6 +908,7 @@ pub struct World {
     pub herb_cleaning: Option<crate::herb_cleaning::Config>,
     pub item_packs: BTreeMap<i32, crate::item_packs::Rule>,
     pub prayer: Option<crate::prayer::Config>,
+    pub prayer_member_bones: std::collections::BTreeSet<i32>,
     pub regeneration: Option<crate::player_regen::Config>,
     pub prayer_book: Option<crate::prayer_runtime::Config>,
     pub eating_animation: u16,
@@ -1018,6 +1019,7 @@ impl Default for World {
             potion_upgrades: None,
             combat_mixing: None,
             prayer: None,
+            prayer_member_bones: Default::default(),
             regeneration: None,
             session_vars: None,
             login_resets: None,
@@ -1382,6 +1384,9 @@ impl World {
         let p = self.players.get_mut(id.slot as usize).unwrap();
         p.has_modal = open;
         if open {
+            if matches!(p.prayer,Some(crate::prayer::State::Bury{slot:Some(_),..})) {
+                p.prayer=None;p.protection.suspended=false;
+            }
             p.queues.remove_all(crate::assembly::QUEUE);
             p.queues.remove_all(crate::milking::QUEUE);
             p.queues.remove_all(crate::water_sources::QUEUE);
@@ -1740,7 +1745,8 @@ impl World {
             Action::Shop { session, request } => {
                 return self.process_shop_action(id, session, request)
             }
-            Action::BurySlot { slot } => return self.start_bury(id, slot),
+            Action::BurySlot { slot } => return self.start_bury(id, slot, None),
+            Action::BuryItemSlot { slot, item } => return self.start_bury(id, slot, Some(item)),
             Action::ResumeBury { token, choice } => return self.resume_bury(id, token, choice),
             Action::ResumeDialogue { token, choice } => {
                 return self.resume_dialogue(id, token, choice, random)
