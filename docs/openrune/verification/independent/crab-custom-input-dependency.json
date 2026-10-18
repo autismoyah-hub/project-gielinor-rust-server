@@ -1,0 +1,22 @@
+{
+  "finding_id": "PG-INFRA-009",
+  "implementation_id": "OR-MIG-0068",
+  "tested_sha": "894646a79fa4ba7e3e8b46af6ec000dc6b796514",
+  "status": "BLOCKED",
+  "scenario": "Remaining native multi-digit custom quantity input acceptance",
+  "implementation_defect_established": false,
+  "implementation_blocking": false,
+  "reason": "The pinned client gameplay core still has the unresolved focused-input/keyboard continuation dependency demonstrated by the immutable OR62/OR63X10campaigns. Current observer changes add read-only logging and scenario actions; no functional input-focus correction was accepted. Do not suppress extra frames, force local quantity state, substitute a newer server, or infer native Xacceptance from the passing1through28World API matrix.",
+  "scope_limit": "No exact68custom-Xfailure reproduction is claimed. This is an explicit unavailable-client-correction dependency on the remaining native obligation, not a finding that OR68server produced an incorrect result. Shared older failures remain historical at their own SHAs. Native1/All for both profiles,5/10shell batches, Close/stale responses, all24+15outputs and actual restarts are independently complete at exact68.",
+  "historical_dependency_evidence": [
+    "docs/openrune/verification/independent/deep-production-gem-x-focus/x10-focus-001/independent-blocker.json",
+    "docs/openrune/verification/independent/deep-glass-remaining/remaining-002/independent-blocker.json"
+  ],
+  "completed_exact_target_evidence": [
+    "docs/openrune/verification/independent/deep-crab-carving/native-001/independent-assessment.json",
+    "docs/openrune/verification/independent/deep-crab-quantities/quantities-001/independent-assessment.json",
+    "docs/openrune/verification/independent/deep-crab-interrupt/interrupt-002/independent-assessment.json",
+    "docs/openrune/verification/independent/deep-crab-crash/crash-001/independent-assessment.json"
+  ],
+  "next_action": "Preserve OR68V0/V1/V3/V4PASS and all disposable states; V2BLOCKED remains unaccepted. Continue eligible OR69atfb348dda184b36ec2d503bfe0f1d5393cf8ae151. Resume this native custom-input obligation only with a source-attested focus/dispatch correction or demonstrated correct ordinary input path, then create a fresh exact68scenario with new client identity and independently observed outgoing quantity frames. No FORGE stop or external issue requested."
+}

@@ -1,0 +1,44 @@
+{
+  "tested_integration_sha": "fb348dda184b36ec2d503bfe0f1d5393cf8ae151",
+  "suite": "pair-production-counts",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "BLOCKED",
+  "reason": "Original bounded300second wrapper timeout; no final test result and no remaining owned counts executable. Preserve728verified per-profile subcases0-12; profiles13-17remain unaccepted. Continue only remaining5profiles, no repetition of completed subcampaign.",
+  "source_tree": "b6f9b3e164589b68c114c4d61e854d25b2f5e008",
+  "completed_profiles": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "completed_case_subcheck": 728,
+  "harness_sha256": {
+    "docs/openrune/verification/independent/integration-external-pair-production-counts-fb348dda184b36ec2d503bfe0f1d5393cf8ae151/harness/counts.rs": "9d86889fcd4a50b501ba2c4c3475bb9a01897c82697d0234165021896f2972db"
+  },
+  "test_binary_sha256": {
+    "work/fb348dda184b36ec2d503bfe0f1d5393cf8ae151/target/debug/deps/counts-24e6a453074145e6.exe": "9dad1b725dfd5d651db03827292726351f3a4b393265e3b01b1d9090326d8141"
+  },
+  "runs": [
+    {
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs/openrune/verification/independent/integration-external-pair-production-counts-fb348dda184b36ec2d503bfe0f1d5393cf8ae151/run-0.log"
+    },
+    {
+      "exit_code": null,
+      "tests_passed": 0,
+      "timeout_seconds": 300,
+      "log": "docs/openrune/verification/independent/integration-external-pair-production-counts-fb348dda184b36ec2d503bfe0f1d5393cf8ae151/run-1.log"
+    }
+  ]
+}

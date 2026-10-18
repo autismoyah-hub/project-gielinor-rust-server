@@ -1,0 +1,148 @@
+{
+  "implementation_id": "OR-MIG-0068",
+  "tested_sha": "894646a79fa4ba7e3e8b46af6ec000dc6b796514",
+  "campaign_kind": "historical",
+  "status": "PASS",
+  "quantities": [
+    5,
+    10
+  ],
+  "products": 15,
+  "good": 6,
+  "broken": 9,
+  "fine_xp_award": 9750,
+  "remaining_raws": 8,
+  "effects": [
+    {
+      "batch": 0,
+      "step": 0,
+      "slot": 26,
+      "output": 7541,
+      "credit_tick": 94,
+      "sequence_tick": 91
+    },
+    {
+      "batch": 0,
+      "step": 1,
+      "slot": 4,
+      "output": 7541,
+      "credit_tick": 97,
+      "sequence_tick": 91
+    },
+    {
+      "batch": 0,
+      "step": 2,
+      "slot": 5,
+      "output": 7541,
+      "credit_tick": 100,
+      "sequence_tick": 91
+    },
+    {
+      "batch": 0,
+      "step": 3,
+      "slot": 6,
+      "output": 7541,
+      "credit_tick": 103,
+      "sequence_tick": 91
+    },
+    {
+      "batch": 0,
+      "step": 4,
+      "slot": 7,
+      "output": 7541,
+      "credit_tick": 106,
+      "sequence_tick": 91
+    },
+    {
+      "batch": 1,
+      "step": 0,
+      "slot": 8,
+      "output": 7541,
+      "credit_tick": 123,
+      "sequence_tick": 120
+    },
+    {
+      "batch": 1,
+      "step": 1,
+      "slot": 9,
+      "output": 7541,
+      "credit_tick": 126,
+      "sequence_tick": 120
+    },
+    {
+      "batch": 1,
+      "step": 2,
+      "slot": 10,
+      "output": 7539,
+      "credit_tick": 129,
+      "sequence_tick": 120
+    },
+    {
+      "batch": 1,
+      "step": 3,
+      "slot": 11,
+      "output": 7541,
+      "credit_tick": 132,
+      "sequence_tick": 120
+    },
+    {
+      "batch": 1,
+      "step": 4,
+      "slot": 12,
+      "output": 7539,
+      "credit_tick": 135,
+      "sequence_tick": 120
+    },
+    {
+      "batch": 1,
+      "step": 5,
+      "slot": 13,
+      "output": 7539,
+      "credit_tick": 138,
+      "sequence_tick": 120
+    },
+    {
+      "batch": 1,
+      "step": 6,
+      "slot": 14,
+      "output": 7541,
+      "credit_tick": 141,
+      "sequence_tick": 120
+    },
+    {
+      "batch": 1,
+      "step": 7,
+      "slot": 15,
+      "output": 7539,
+      "credit_tick": 144,
+      "sequence_tick": 120
+    },
+    {
+      "batch": 1,
+      "step": 8,
+      "slot": 16,
+      "output": 7539,
+      "credit_tick": 147,
+      "sequence_tick": 120
+    },
+    {
+      "batch": 1,
+      "step": 9,
+      "slot": 17,
+      "output": 7539,
+      "credit_tick": 150,
+      "sequence_tick": 120
+    }
+  ],
+  "scope": "Genuine native builtin5and10quantity frames, both held directions, exact captured selected-first slot order/full28and15carved/broken rewards. Exact per-outcome fineXP, retained duplicate tools/1000coins/8raws, stale completed quantity/held refusal, first3/repeat3effects and acknowledged-save/actual native restart state all independently verified.",
+  "limitations": [
+    "Builtin quantity scope only; custom-Xinput remains a separate unresolved dependency.",
+    "No rendered/audio or natural probability claim."
+  ],
+  "evidence_sha256": {
+    "produce/client.log": "ae29528216e9e9276c1a2347db9827febed458e6c08b8933ca8ba8920a117f20",
+    "produce/manifest.json": "2ce473dcb9521c4f0896cb478669bef18123520a4f262876b19ca928908633e7",
+    "relogin/client.log": "2dfeb04e126410e1c4b473f575572d2ae4510e1bb2094a754f4abbc50001cc0d",
+    "relogin/manifest.json": "37d62bbeea7bea688d5ae87cbc4a5045c11e6db4acb8e159b9fd2de42ad621e4"
+  }
+}

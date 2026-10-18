@@ -1,0 +1,62 @@
+{
+  "tested_integration_sha": "fb348dda184b36ec2d503bfe0f1d5393cf8ae151",
+  "suite": "pair-production-late",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 7077347328,
+    "active_compilers": [
+      "\"cargo.exe\",\"16304\",\"RDP-Tcp#0\",\"2\",\"45,440 K\"",
+      "\"rustc.exe\",\"2708\",\"RDP-Tcp#0\",\"2\",\"75,060 K\""
+    ],
+    "cpu_percent": 27.85,
+    "cpu_samples": [
+      26.120857699805068,
+      38.671875,
+      18.75
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained",
+    "disk_free": 20029468672,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "b6f9b3e164589b68c114c4d61e854d25b2f5e008",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\fb348dda184b36ec2d503bfe0f1d5393cf8ae151\\external-harness-5033409900\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-pair-production-late-fb348dda184b36ec2d503bfe0f1d5393cf8ae151\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\fb348dda184b36ec2d503bfe0f1d5393cf8ae151\\external-harness-5033409900\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 1,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-pair-production-late-fb348dda184b36ec2d503bfe0f1d5393cf8ae151\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative pair-production-late scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-pair-production-late-fb348dda184b36ec2d503bfe0f1d5393cf8ae151\\harness\\late.rs": "b20b5e21220ddcf68b7ee382d7a13b42e93262189cba895c9e292034dc2e96ac"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\batches-7f6760c27c104018.exe": "aaf19f74455e9c5b2e210510f88724a1864104a593f6ec2513d7a98b66cdd705",
+    "target\\debug\\deps\\late-5a6f199568c6bd70.exe": "73d2c55b80e22f8513a4b2b7e0b47807e3205fbcf83d7b29693734d7408e2d87"
+  }
+}

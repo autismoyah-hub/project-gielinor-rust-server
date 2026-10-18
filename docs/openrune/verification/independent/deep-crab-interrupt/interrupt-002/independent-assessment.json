@@ -1,0 +1,27 @@
+{
+  "implementation_id": "OR-MIG-0068",
+  "tested_sha": "894646a79fa4ba7e3e8b46af6ec000dc6b796514",
+  "campaign_kind": "historical",
+  "status": "PASS",
+  "native_observed_products": 1,
+  "durable_products": 1,
+  "durable_carved": 0,
+  "durable_broken": 1,
+  "durable_fine_xp_award": 0,
+  "remaining_raws": 22,
+  "captured_credit_order": [
+    26
+  ],
+  "scope": "Real native reverse held Use and All23; normal client departure after a consistent observed carved/broken inventory/XP prefix. Acknowledged storage preserves exact selected-first prefix and remaining raws/tools/coins without fallback. Actual process restart and independently decoded native full inventory/Stats preserve the whole saved state with no continued queue or reward replay.",
+  "limitations": [
+    "Additional already-admitted credits before disconnect processing are included in durable prefix, not mislabeled as duplication.",
+    "Normal acknowledged save/restart is not crash atomicity or a mid-transaction failure.",
+    "Native custom-Xand applicable crash acceptance remain separate outstanding obligations."
+  ],
+  "evidence_sha256": {
+    "produce/client.log": "96bfd97efb0381b7da862a0dd36367d44a38282e64900322e71211a98e5cf79a",
+    "produce/manifest.json": "08cd7e2bd3ad2d0aefc8d5be7b641f879e0fc2448aa562879b93bb6e33711d70",
+    "relogin/client.log": "15612d82f363d89705acf49fb71c089fcf061267a5ecf0905055e264f2ea0771",
+    "relogin/manifest.json": "75b65974cbe6ef72cca110f82241700853f1ddee1d46ac431e98ea7b9a987fe6"
+  }
+}

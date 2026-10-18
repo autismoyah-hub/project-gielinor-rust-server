@@ -1,0 +1,28 @@
+{
+  "implementation_id": "OR-MIG-0069",
+  "revision": 1,
+  "tested_sha": "fb348dda184b36ec2d503bfe0f1d5393cf8ae151",
+  "status": "PASS_APPLICABLE_V1",
+  "level": "V1",
+  "world_cases": 4872,
+  "shared_reward_controls": 128,
+  "metadata_refusals": 421,
+  "scope": "Applicable authoritative obligations satisfied:2592positive/member/current/rate/count/cadence routes;564late changes;636invalid admissions;72life-before-first-credit cases;1008full28all-count1-28cases over18profiles/both directions. Complete per-step selected-first/captured-order/first-free inventory and fractional Stats, no RNG/fallback/repeat; exact first1or3/repeat2trace clocks, live policy, movement/modal/Close/logout/newheld/death interruption verified. Separate128legacy integer/precise/normal/timed/immediate/boost controls and421actual-cache metadata refusals pass.",
+  "partial_campaign_boundary": "Original full-count wrapper remains BLOCKED after300seconds/no final result;728completed per-profile cases0-12 are individually preserved as a subcheck. Separate280case profiles13-17campaign passes. No original whole-suite PASS and no completed-prefix replay.",
+  "exclusions": [
+    "Runtime UI token ownership is separately verified through native transport; trusted internal World descriptors are not UI tokens.",
+    "No V0/V2/V3/V4or whole-contract acceptance inferred; native builtin/custom quantities, staff batches and interrupted durability remain open.",
+    "Current FORGE HEAD is separate and unverified."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/integration-external-pair-production-fb348dda184b36ec2d503bfe0f1d5393cf8ae151-1792313480617687300/manifest.json": "30e21371a2d14eee6031fe6bb0343e125034631c13b902a560454a583b7f45ad",
+    "docs/openrune/verification/independent/integration-external-pair-production-late-fb348dda184b36ec2d503bfe0f1d5393cf8ae151/manifest.json": "19286acb171afb3c0b8847a3f6438d4eea7d276a20e0168b311053e7c77c4e97",
+    "docs/openrune/verification/independent/integration-external-pair-production-admission-fb348dda184b36ec2d503bfe0f1d5393cf8ae151/manifest.json": "1d1e60da4ce6b754d412487f5340b3b0d068d5217dd23c9c6972870ffb4c2d7a",
+    "docs/openrune/verification/independent/integration-external-pair-production-life-fb348dda184b36ec2d503bfe0f1d5393cf8ae151/manifest.json": "eb61ca8d06ec688313db577ce1611e1449b12bfeb3ca47a723b03d1962b17ffb",
+    "docs/openrune/verification/independent/integration-external-pair-production-counts-tail-fb348dda184b36ec2d503bfe0f1d5393cf8ae151/manifest.json": "1893353b4f18d257e46e05216e1727d5f577dd9862add9e2f4b0f0e748ac64b2",
+    "docs/openrune/verification/independent/integration-external-pair-production-regression-fb348dda184b36ec2d503bfe0f1d5393cf8ae151/manifest.json": "43fe3170cd08b04b150088b2dfdf950850c7b362087f1352267e804e43bf6b2f",
+    "docs/openrune/verification/independent/integration-external-pair-production-bindings-fb348dda184b36ec2d503bfe0f1d5393cf8ae151/manifest.json": "499fb9273138d40ae72f7d56cf6f1d614bc26c94a9fa3a9762fe4e23ce4c461d",
+    "docs/openrune/verification/independent/integration-external-pair-production-counts-fb348dda184b36ec2d503bfe0f1d5393cf8ae151/manifest.json": "6368ad967218a88b48f7c78750ecbdcfaacb47103fa02b53fec06050dcfd799b",
+    "docs/openrune/verification/independent/integration-external-pair-production-counts-fb348dda184b36ec2d503bfe0f1d5393cf8ae151/run-1.log": "a0a8aed180782f38a8f196205c03096d3402285848b658a3dc240d9eb364b543"
+  }
+}

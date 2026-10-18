@@ -1,0 +1,233 @@
+{
+  "implementation_id": "OR-MIG-0068",
+  "tested_sha": "894646a79fa4ba7e3e8b46af6ec000dc6b796514",
+  "campaign_kind": "historical",
+  "status": "PASS",
+  "actions": 24,
+  "outcomes": [
+    {
+      "raw": 7538,
+      "cut": 7539,
+      "cut_count": 3,
+      "broken_count": 9,
+      "both_natural_outcomes_observed": true
+    },
+    {
+      "raw": 7536,
+      "cut": 7537,
+      "cut_count": 6,
+      "broken_count": 6,
+      "both_natural_outcomes_observed": true
+    }
+  ],
+  "fine_xp_award": 14625,
+  "effects": [
+    {
+      "slot": 13,
+      "output": 7541,
+      "batch": 0,
+      "sequence": 1280,
+      "first_sequence_tick": 138,
+      "credit_tick": 141
+    },
+    {
+      "slot": 2,
+      "output": 7539,
+      "batch": 1,
+      "sequence": 1280,
+      "first_sequence_tick": 163,
+      "credit_tick": 166
+    },
+    {
+      "slot": 3,
+      "output": 7541,
+      "batch": 1,
+      "sequence": 1280,
+      "first_sequence_tick": 163,
+      "credit_tick": 169
+    },
+    {
+      "slot": 4,
+      "output": 7539,
+      "batch": 1,
+      "sequence": 1280,
+      "first_sequence_tick": 163,
+      "credit_tick": 172
+    },
+    {
+      "slot": 5,
+      "output": 7541,
+      "batch": 1,
+      "sequence": 1280,
+      "first_sequence_tick": 163,
+      "credit_tick": 175
+    },
+    {
+      "slot": 6,
+      "output": 7541,
+      "batch": 1,
+      "sequence": 1280,
+      "first_sequence_tick": 163,
+      "credit_tick": 178
+    },
+    {
+      "slot": 7,
+      "output": 7541,
+      "batch": 1,
+      "sequence": 1280,
+      "first_sequence_tick": 163,
+      "credit_tick": 181
+    },
+    {
+      "slot": 8,
+      "output": 7541,
+      "batch": 1,
+      "sequence": 1280,
+      "first_sequence_tick": 163,
+      "credit_tick": 184
+    },
+    {
+      "slot": 9,
+      "output": 7541,
+      "batch": 1,
+      "sequence": 1280,
+      "first_sequence_tick": 163,
+      "credit_tick": 187
+    },
+    {
+      "slot": 10,
+      "output": 7539,
+      "batch": 1,
+      "sequence": 1280,
+      "first_sequence_tick": 163,
+      "credit_tick": 190
+    },
+    {
+      "slot": 11,
+      "output": 7541,
+      "batch": 1,
+      "sequence": 1280,
+      "first_sequence_tick": 163,
+      "credit_tick": 193
+    },
+    {
+      "slot": 12,
+      "output": 7541,
+      "batch": 1,
+      "sequence": 1280,
+      "first_sequence_tick": 163,
+      "credit_tick": 196
+    },
+    {
+      "slot": 25,
+      "output": 7537,
+      "batch": 2,
+      "sequence": 1280,
+      "first_sequence_tick": 221,
+      "credit_tick": 224
+    },
+    {
+      "slot": 14,
+      "output": 7537,
+      "batch": 3,
+      "sequence": 1280,
+      "first_sequence_tick": 251,
+      "credit_tick": 254
+    },
+    {
+      "slot": 15,
+      "output": 7540,
+      "batch": 3,
+      "sequence": 1280,
+      "first_sequence_tick": 251,
+      "credit_tick": 257
+    },
+    {
+      "slot": 16,
+      "output": 7537,
+      "batch": 3,
+      "sequence": 1280,
+      "first_sequence_tick": 251,
+      "credit_tick": 260
+    },
+    {
+      "slot": 17,
+      "output": 7540,
+      "batch": 3,
+      "sequence": 1280,
+      "first_sequence_tick": 251,
+      "credit_tick": 263
+    },
+    {
+      "slot": 18,
+      "output": 7540,
+      "batch": 3,
+      "sequence": 1280,
+      "first_sequence_tick": 251,
+      "credit_tick": 266
+    },
+    {
+      "slot": 19,
+      "output": 7537,
+      "batch": 3,
+      "sequence": 1280,
+      "first_sequence_tick": 251,
+      "credit_tick": 269
+    },
+    {
+      "slot": 20,
+      "output": 7540,
+      "batch": 3,
+      "sequence": 1280,
+      "first_sequence_tick": 251,
+      "credit_tick": 272
+    },
+    {
+      "slot": 21,
+      "output": 7540,
+      "batch": 3,
+      "sequence": 1280,
+      "first_sequence_tick": 251,
+      "credit_tick": 275
+    },
+    {
+      "slot": 22,
+      "output": 7537,
+      "batch": 3,
+      "sequence": 1280,
+      "first_sequence_tick": 251,
+      "credit_tick": 278
+    },
+    {
+      "slot": 23,
+      "output": 7540,
+      "batch": 3,
+      "sequence": 1280,
+      "first_sequence_tick": 251,
+      "credit_tick": 281
+    },
+    {
+      "slot": 24,
+      "output": 7537,
+      "batch": 3,
+      "sequence": 1280,
+      "first_sequence_tick": 251,
+      "credit_tick": 284
+    }
+  ],
+  "scope": "Actual startup-registered two crab choices with genuine1/All eleven-item quantities and both held directions per profile.24selected full-bag carved/broken credits and success325tenths/failure0fineXP match independent SQL oracle; current/base Crafting match independent level curve. Native first3/repeat3receive clocks independently decoded. Actual branch feedback counts match observed products. Make/Close and stale quantity/selected-pair refusals conserve full state. Actual save/process restart/native full inventory/Stats decoding retain all output/reward state.",
+  "limitations": [
+    "Natural branch witnesses recorded per profile; no probability/distribution proof or forced native RNG.",
+    "Native custom-X remains unaccepted; PG-INFRA-009is a separate shared dependency.",
+    "Interrupted captured batches and applicable crash/death/native boundary work remain separate; this scoped PASS is not full V0-V4 acceptance.",
+    "No rendered animation frames/audio or original executable parity claimed."
+  ],
+  "evidence_sha256": {
+    "produce/client.log": "ba54dc7477e39e73e1de25485d97a00df285239131e4b1cbdf479d503680e869",
+    "produce/manifest.json": "8af0a7cbf6df9c5d7d71122dba3cc771925b162564b3ef41da158a7f3f5099eb",
+    "relogin-002/client.log": "d5528b107675ed1ae585359af5476d25f46cf92adb9de407cd9b6db4e1ca21d6",
+    "relogin-002/manifest.json": "255877430a0f81c855c5310a9b59fcc2aec05f4cd1d9102897aea1e5ae7ded31"
+  },
+  "relogin_phase": "relogin-002",
+  "preserved_failed_relogin_manifest_sha256": "bdfb48c3cc686dc15b6fca3f39720fc0a45d260be4ae53a08ca845cf1982de49"
+}

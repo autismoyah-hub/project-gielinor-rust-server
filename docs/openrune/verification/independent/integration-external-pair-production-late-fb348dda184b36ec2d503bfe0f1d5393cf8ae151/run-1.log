@@ -1,0 +1,9 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\fb348dda184b36ec2d503bfe0f1d5393cf8ae151\external-harness-5033409900)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 6.72s
+     Running tests\late.rs (C:\Projects\OSRSRSPS\agent7-verification\work\fb348dda184b36ec2d503bfe0f1d5393cf8ae151\target\debug\deps\late-5a6f199568c6bd70.exe)
+
+running 1 test
+test five_hundred_sixty_four_late_changes_preserve_first_credit_and_never_substitute_pairs has been running for over 60 seconds
+test five_hundred_sixty_four_late_changes_preserve_first_credit_and_never_substitute_pairs ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 60.19s

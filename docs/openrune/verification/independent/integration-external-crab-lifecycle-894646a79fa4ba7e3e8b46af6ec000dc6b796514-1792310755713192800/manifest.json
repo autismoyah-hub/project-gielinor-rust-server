@@ -1,0 +1,65 @@
+{
+  "tested_integration_sha": "894646a79fa4ba7e3e8b46af6ec000dc6b796514",
+  "suite": "crab-lifecycle",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 7267549184,
+    "active_compilers": [
+      "\"cargo.exe\",\"12200\",\"RDP-Tcp#0\",\"2\",\"45,048 K\"",
+      "\"rustc.exe\",\"13904\",\"RDP-Tcp#0\",\"2\",\"68,880 K\""
+    ],
+    "cpu_percent": 17.77,
+    "cpu_samples": [
+      21.2890625,
+      14.090019569471623,
+      17.93372319688109
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained",
+    "disk_free": 21019467776,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "13bb2b0a070b7464a5bfc8a9dfe7eab9dc992e65",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\894646a79fa4ba7e3e8b46af6ec000dc6b796514\\external-harness-9399549000\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-crab-lifecycle-894646a79fa4ba7e3e8b46af6ec000dc6b796514-1792310755713192800\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\894646a79fa4ba7e3e8b46af6ec000dc6b796514\\external-harness-9399549000\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 1,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-crab-lifecycle-894646a79fa4ba7e3e8b46af6ec000dc6b796514-1792310755713192800\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative crab-lifecycle scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-crab-lifecycle-894646a79fa4ba7e3e8b46af6ec000dc6b796514-1792310755713192800\\harness\\life.rs": "29aa47004a016c025381a6edcd011c3892dca1d11970e32515f404269e65b9b3"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\batches-5444c0aa2ec4ea60.exe": "e0e4ae4c024ed6b9a5f71b76b840b3079d883efc1afd91d7bc02b8b60e1dcaf1",
+    "target\\debug\\deps\\bindings-d35fdf0246951264.exe": "5b8d19f684ce549baf01fb94d1df7625bc4737c21ca69b3c70857f9bda24b1ac",
+    "target\\debug\\deps\\gielinor_server-7abd10c65476b4d7.exe": "21c90da4038d09280df01aedeb574f2a01b2d887e55c34cd188e7b09d3d81a09",
+    "target\\debug\\deps\\life-b41c775e8b2dac17.exe": "ff915e2ea07874cbfbdc19f459bf7e8340d801975a8a16785a7f4dec8cad482b",
+    "target\\debug\\deps\\outcomes-e6debee0b5977b0d.exe": "b104188f98aea8b4f6f13e8a0ee0a6fea606288bd56fe61c07224336e5e25795"
+  }
+}

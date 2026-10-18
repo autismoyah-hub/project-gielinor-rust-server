@@ -1,0 +1,6 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\fb348dda184b36ec2d503bfe0f1d5393cf8ae151\external-harness-6111409300)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.38s
+     Running tests\batches.rs (C:\Projects\OSRSRSPS\agent7-verification\work\fb348dda184b36ec2d503bfe0f1d5393cf8ae151\target\debug\deps\batches-7f6760c27c104018.exe)
+
+running 1 test
+test two_thousand_five_hundred_ninety_two_pair_routes_conserve_state_and_trace_actual_enqueue_clocks has been running for over 60 seconds

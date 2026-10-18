@@ -1,0 +1,398 @@
+{
+  "implementation_id": "OR-MIG-0069",
+  "tested_sha": "fb348dda184b36ec2d503bfe0f1d5393cf8ae151",
+  "campaign_kind": "historical",
+  "status": "IN_PROGRESS",
+  "source_documentation_subcheck": "PASS",
+  "sources": [
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/scripts/HeldCraftingScript.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "c39f8b323e8fa79f933224b9ca0c8cf07a5df005628906e79645e3e6a5399318"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingSection.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "26e5be7a84fbe82f5c4897d29cb3261c63cd475111f17df517e2e0ac5e0d8afb"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingWorker.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "5790b247e5441b54e05c0ca7b4b5a9dff5c7aa61181ebccb36d0d8057db56e53"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/util/CraftingConstants.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "393d05fa5a5645b2dd712fcfb8f8814845376846a7594dafe16909422fe2008f"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/pack/src/main/kotlin/org/rsmod/content/skills/crafting/pack/Crafting.kt",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "sha256": "5b3d4124ce83b2c6e93590b2d833e7dc0a37ce87e3a7dc2f327241ab165ef3e0"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingProduct.kt",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "sha256": "e0ee16a23f6fa20bf82ebae4103213c1a13337c596b2d2f7b7715edbe3073576"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/utils/src/main/kotlin/org/rsmod/content/skills/MathSkillUtiils.kt",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "sha256": "874ef859e35b30891ce90d077262e1637e9115e5c285ffb790970f899f32770b"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Gold amulet",
+      "revision": "15183045",
+      "sha256": "b579c4690f55e9f8e42f5c5bf449c605505680f9a37a5339f9b5adf667c16c54"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Gold amulet (u)",
+      "revision": "15184811",
+      "sha256": "272cc948c4ad0b273c3d3f8a1ea07fcc216071063885292256909e991749e4c3"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Sapphire amulet",
+      "revision": "15322350",
+      "sha256": "d8fbe3d595c3a7af47a41aa1681e83207cbfd18870bc8ee42d963c5ab265da9c"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Sapphire amulet (u)",
+      "revision": "15251049",
+      "sha256": "d7fd0ed847538403103bb1e72833bb439a5e0c28345aeca2a727cb860f14e8bb"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Emerald amulet",
+      "revision": "15322436",
+      "sha256": "1fb5f1ae413b67f3180ff9f92158b4b0864d8acfa73e4a95eb94e4e9ce5fa3da"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Emerald amulet (u)",
+      "revision": "15184822",
+      "sha256": "b5038c8b933fb80353523398508989ac70f25c76c661901167d5a7d0b8823221"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Ruby amulet",
+      "revision": "15322348",
+      "sha256": "fadd4379ca86a68ca596e2672a0079fde5752de20b1dbb7794cbc678201e721d"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Ruby amulet (u)",
+      "revision": "15251050",
+      "sha256": "04394bd15da95a878d9bdc207e0e0af0bc58f537e3e5e317cc450b751ee9c1a4"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Diamond amulet",
+      "revision": "15302022",
+      "sha256": "7b142ea945c48263b16134552097ee0392f4cfd0719ccecb2b920904f1a967a5"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Diamond amulet (u)",
+      "revision": "15251051",
+      "sha256": "45afeb14d6d3873439ac5c09537f0b4bb9e6e1d7c6a216302c541f307855879e"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Dragonstone amulet",
+      "revision": "15322411",
+      "sha256": "170ec9c4f358ddebfbc2d4cb2bb805c64253590491491f0ef34712e04943e161"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Dragonstone amulet (u)",
+      "revision": "15185255",
+      "sha256": "6c00039e40767509f76f1f75b6c142b2cc3df476d5271e0feac01ecac72800c7"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Onyx amulet",
+      "revision": "15183963",
+      "sha256": "112da6f02b3552be090e60735e1970debfeaf4ae5549c7911b6831eba5b95552"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Onyx amulet (u)",
+      "revision": "15185256",
+      "sha256": "69ed17a7d379d4c251b72818219f50552874586a0dc678d4b081eaf1323d5284"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Zenyte amulet",
+      "revision": "15271189",
+      "sha256": "5346a7a4cb35ea97936f3d2fe9b811ba124d88c41007bf586d9adfe21bbcfbae"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Zenyte amulet (u)",
+      "revision": "15187509",
+      "sha256": "e782799999135159fbfac3fd36da8cb908f3fc33985dcb30ca6e01adeb91cf48"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Opal amulet",
+      "revision": "15188184",
+      "sha256": "b92f19e9129a63e5c1b0aa90b2705f23f7dbf70258a12c4b094b99ed22a20ba1"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Opal amulet (u)",
+      "revision": "15188181",
+      "sha256": "13b87a45c7067324f9d5a5ac01468f1cf686ce89e77a77f9ab5cd88b8abed579"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Jade amulet",
+      "revision": "15188185",
+      "sha256": "2d7538eb8652ad927d21705fc2d783c12f0c6649a53a14706020448ab5bab980"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Jade amulet (u)",
+      "revision": "15188182",
+      "sha256": "cccf03aa26704279414601bbd6887c13c60aa957ea14d1ae6254a574e10e3207"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Topaz amulet",
+      "revision": "15188168",
+      "sha256": "8983d0e204e66e6c21123fd4f530579b0c4a59beaa9479fdc47ab32951a04f65"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Topaz amulet (u)",
+      "revision": "15188183",
+      "sha256": "46e186d91bb54e0c567089481fb72028e57cbf248f0f4de14fd90505f25c0617"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Unstrung symbol",
+      "revision": "15183849",
+      "sha256": "c4a6b6ecd9b3d090e31c2510ed251dd26aa2c3a7046a53da73cdd5d58fac7ebf"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Unblessed symbol",
+      "revision": "15183850",
+      "sha256": "f3783ee805253e9765f277dab5900555afb538ee2da8b0a6cff8aa27e8eb3778"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Unstrung emblem",
+      "revision": "15297801",
+      "sha256": "68e8fd5101ef3e88e860ed0688231b058338a2fa4693e781facdf878eb0433f6"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Unpowered symbol",
+      "revision": "15297803",
+      "sha256": "813cf00a97af9631b16746773dc2b0f80876d90034cd81347616dd35325f71c4"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Rabbit foot",
+      "revision": "15184543",
+      "sha256": "54e5c70bbe86c7bd9eeab862b7ca4fa7ac76137ed9ec0b958ee82106b12b77bc"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Strung rabbit foot",
+      "revision": "15341562",
+      "sha256": "4173f4567e2ae1ca1e6890206bc4b75563c54ddf732a7689b970c3b2dd903456"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Water battlestaff",
+      "revision": "15184146",
+      "sha256": "33deb92841cfea0aca811eb933ffa82ad114b77576825dc39ea5b46fd4d36d61"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Earth battlestaff",
+      "revision": "15182985",
+      "sha256": "4b362800c5703ada4c2596190eb41ba28576e2c01f9560596f2d9d43a490f6ad"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Fire battlestaff",
+      "revision": "15320213",
+      "sha256": "43caf48421c9bc851773263dc826f04f46830bc2bce11f6f2c027c6b045b36ed"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Air battlestaff",
+      "revision": "15182754",
+      "sha256": "0edcf5e5e03ef582ed2731513278acbadd4e69dac998edfc9932b6994181abf2"
+    }
+  ],
+  "stringing": [
+    {
+      "raw": 1673,
+      "wool": 1759,
+      "output": 1692,
+      "xp_tenths": 40,
+      "fine_at_125": 50,
+      "wiki_ticks": 2
+    },
+    {
+      "raw": 1675,
+      "wool": 1759,
+      "output": 1694,
+      "xp_tenths": 40,
+      "fine_at_125": 50,
+      "wiki_ticks": 2
+    },
+    {
+      "raw": 1677,
+      "wool": 1759,
+      "output": 1696,
+      "xp_tenths": 40,
+      "fine_at_125": 50,
+      "wiki_ticks": 2
+    },
+    {
+      "raw": 1679,
+      "wool": 1759,
+      "output": 1698,
+      "xp_tenths": 40,
+      "fine_at_125": 50,
+      "wiki_ticks": 2
+    },
+    {
+      "raw": 1681,
+      "wool": 1759,
+      "output": 1700,
+      "xp_tenths": 40,
+      "fine_at_125": 50,
+      "wiki_ticks": 2
+    },
+    {
+      "raw": 1683,
+      "wool": 1759,
+      "output": 1702,
+      "xp_tenths": 40,
+      "fine_at_125": 50,
+      "wiki_ticks": 2
+    },
+    {
+      "raw": 6579,
+      "wool": 1759,
+      "output": 6581,
+      "xp_tenths": 40,
+      "fine_at_125": 50,
+      "wiki_ticks": 2
+    },
+    {
+      "raw": 19501,
+      "wool": 1759,
+      "output": 19541,
+      "xp_tenths": 40,
+      "fine_at_125": 50,
+      "wiki_ticks": 2
+    },
+    {
+      "raw": 21099,
+      "wool": 1759,
+      "output": 21108,
+      "xp_tenths": 40,
+      "fine_at_125": 50,
+      "wiki_ticks": 2
+    },
+    {
+      "raw": 21102,
+      "wool": 1759,
+      "output": 21111,
+      "xp_tenths": 40,
+      "fine_at_125": 50,
+      "wiki_ticks": 2
+    },
+    {
+      "raw": 21105,
+      "wool": 1759,
+      "output": 21114,
+      "xp_tenths": 40,
+      "fine_at_125": 50,
+      "wiki_ticks": 2
+    },
+    {
+      "raw": 1714,
+      "wool": 1759,
+      "output": 1716,
+      "xp_tenths": 40,
+      "fine_at_125": 50,
+      "wiki_ticks": 2
+    },
+    {
+      "raw": 1720,
+      "wool": 1759,
+      "output": 1722,
+      "xp_tenths": 40,
+      "fine_at_125": 50,
+      "wiki_ticks": 2
+    },
+    {
+      "raw": 10134,
+      "wool": 1759,
+      "output": 10132,
+      "xp_tenths": 40,
+      "fine_at_125": 50,
+      "wiki_ticks": 2
+    }
+  ],
+  "staff": [
+    {
+      "element": "Water",
+      "xp_tenths": 1000,
+      "fine_at_125": 1250,
+      "wiki_quantity_first": 3,
+      "wiki_quantity_repeat": 2,
+      "wiki_manual_ticks": 2
+    },
+    {
+      "element": "Earth",
+      "xp_tenths": 1125,
+      "fine_at_125": 1406,
+      "wiki_quantity_first": 3,
+      "wiki_quantity_repeat": 2,
+      "wiki_manual_ticks": 2
+    },
+    {
+      "element": "Fire",
+      "xp_tenths": 1250,
+      "fine_at_125": 1562,
+      "wiki_quantity_first": 3,
+      "wiki_quantity_repeat": 2,
+      "wiki_manual_ticks": 2
+    },
+    {
+      "element": "Air",
+      "xp_tenths": 1375,
+      "fine_at_125": 1718,
+      "wiki_quantity_first": 3,
+      "wiki_quantity_repeat": 2,
+      "wiki_manual_ticks": 2
+    }
+  ],
+  "scope": "All39pinned hashes independently verified. Fourteen owned-material wool conversions retain4XP/50fine at125%, paired item IDs and Wiki2ticks; source stringing2with default first shortening is declared first1/repeat2. Four staff pages explicitly give quantity first3/repeat2and manual2, with independently calculated per-step fractional1250/1406/1562/1718fine rewards. No manual acceptance inherited into new quantity dispatch.",
+  "limitations": [
+    "Source first-shortened stringing1versus Wiki nominal2requires actual native input/sequence/credit comparison; neither source declaration alone proves exact observed clock equivalence.",
+    "Existing member/current-level and actual cache/startup require independent exact-SHA scenarios; item pages also describe separate Magic String Jewellery which is not this wool route.",
+    "No quest/acquisition/equipment/original random stream/audio/rendered parity accepted.",
+    "Native token/quantity and durable partial/crash acceptance remain separate."
+  ]
+}

@@ -1,0 +1,25 @@
+Live native login accepted, player 1
+PG_RX tick=0 opcode=22 payload=[ff, ff, fa, d1, 00, 5d, 00, 1c, 7f, dc, 06, 7f, dc, 06, 7f, 74, 1d, 7f, 76, 1d, 7f, 74, 1d, 7f, 76, 1d, 7f, 76, 1d, 7f, 76, 1d, 7f, 76, 1d, 7f, 76, 1d, 7f, 74, 1d, 7f, 76, 1d, 7f, 76, 1d, 7f, 76, 1d, 7f, 72, 1d, 7f, 75, 1d, 7f, 72, 1d, 7f, 75, 1d, 7f, 75, 1d, 7f, 72, 1d, 7f, 75, 1d, 7f, 75, 1d, 7f, 72, 1d, 7f, 75, 1d, 7f, 72, 1d, 7f, 72, 1d, 7f, 8c, 07, 81, 00, 00, e8, 03, e4, 03]
+PG_APPLIED tick=0 opcode=22 hp=0 xp=0 busy=false scripts=0 inventory=[(0, 1755, 1), (1, 1755, 1), (2, 7539, 1), (3, 7541, 1), (4, 7539, 1), (5, 7541, 1), (6, 7541, 1), (7, 7541, 1), (8, 7541, 1), (9, 7541, 1), (10, 7539, 1), (11, 7541, 1), (12, 7541, 1), (13, 7541, 1), (14, 7537, 1), (15, 7540, 1), (16, 7537, 1), (17, 7540, 1), (18, 7540, 1), (19, 7537, 1), (20, 7540, 1), (21, 7540, 1), (22, 7537, 1), (23, 7540, 1), (24, 7537, 1), (25, 7537, 1), (26, 1931, 1), (27, 995, 1000)]
+PG_RX tick=0 opcode=22 payload=[ff, ff, fa, d0, 00, 5e, 00, 00]
+PG_APPLIED tick=0 opcode=22 hp=0 xp=0 busy=false scripts=0 inventory=[(0, 1755, 1), (1, 1755, 1), (2, 7539, 1), (3, 7541, 1), (4, 7539, 1), (5, 7541, 1), (6, 7541, 1), (7, 7541, 1), (8, 7541, 1), (9, 7541, 1), (10, 7539, 1), (11, 7541, 1), (12, 7541, 1), (13, 7541, 1), (14, 7537, 1), (15, 7540, 1), (16, 7537, 1), (17, 7540, 1), (18, 7540, 1), (19, 7537, 1), (20, 7540, 1), (21, 7540, 1), (22, 7537, 1), (23, 7540, 1), (24, 7537, 1), (25, 7537, 1), (26, 1931, 1), (27, 995, 1000)]
+PG_WAIT elapsed=10 tick=0 hp=0 busy=true scripts=0
+PG_WAIT elapsed=21 tick=0 hp=0 busy=true scripts=0
+PG_WAIT elapsed=32 tick=0 hp=0 busy=true scripts=2
+World background load: 31.409s
+Live world built: 6409 objects, 522622 triangles, 0 missing regions
+PG_WAIT elapsed=44 tick=0 hp=0 busy=true scripts=2
+PG_WAIT elapsed=54 tick=0 hp=0 busy=false scripts=0
+PG_WAIT elapsed=66 tick=0 hp=0 busy=true scripts=94
+PG_WAIT elapsed=76 tick=0 hp=0 busy=true scripts=4
+PG_WAIT elapsed=86 tick=0 hp=0 busy=false scripts=1
+PG_WAIT elapsed=97 tick=0 hp=0 busy=true scripts=25
+PG_WAIT elapsed=107 tick=0 hp=0 busy=true scripts=1
+PG_WAIT elapsed=117 tick=0 hp=0 busy=true scripts=94
+PG_WAIT elapsed=127 tick=0 hp=0 busy=false scripts=57
+PG_WAIT elapsed=137 tick=0 hp=0 busy=true scripts=3
+PG_WAIT elapsed=147 tick=0 hp=0 busy=true scripts=1
+PG_WAIT elapsed=157 tick=0 hp=0 busy=true scripts=9
+PG_WAIT elapsed=167 tick=0 hp=0 busy=false scripts=0
+PG_WAIT elapsed=177 tick=0 hp=0 busy=true scripts=2
+Error: "observer deadline; tick=0 hp=0 busy=true scripts=2"

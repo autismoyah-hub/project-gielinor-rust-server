@@ -1,0 +1,19 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\fb348dda184b36ec2d503bfe0f1d5393cf8ae151\external-harness-6059386500)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 6.71s
+     Running tests\counts.rs (C:\Projects\OSRSRSPS\agent7-verification\work\fb348dda184b36ec2d503bfe0f1d5393cf8ae151\target\debug\deps\counts-24e6a453074145e6.exe)
+
+running 1 test
+PG_PAIR_COUNTS profile=0 cumulative_cases=56
+PG_PAIR_COUNTS profile=1 cumulative_cases=112
+PG_PAIR_COUNTS profile=2 cumulative_cases=168
+PG_PAIR_COUNTS profile=3 cumulative_cases=224
+test one_thousand_eight_full_bag_all_count_caps has been running for over 60 seconds
+PG_PAIR_COUNTS profile=4 cumulative_cases=280
+PG_PAIR_COUNTS profile=5 cumulative_cases=336
+PG_PAIR_COUNTS profile=6 cumulative_cases=392
+PG_PAIR_COUNTS profile=7 cumulative_cases=448
+PG_PAIR_COUNTS profile=8 cumulative_cases=504
+PG_PAIR_COUNTS profile=9 cumulative_cases=560
+PG_PAIR_COUNTS profile=10 cumulative_cases=616
+PG_PAIR_COUNTS profile=11 cumulative_cases=672
+PG_PAIR_COUNTS profile=12 cumulative_cases=728

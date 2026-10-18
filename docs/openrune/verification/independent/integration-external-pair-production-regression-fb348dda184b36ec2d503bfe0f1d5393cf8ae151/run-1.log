@@ -1,0 +1,10 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\fb348dda184b36ec2d503bfe0f1d5393cf8ae151\external-harness-2424256900)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 6.43s
+     Running tests\legacy.rs (C:\Projects\OSRSRSPS\agent7-verification\work\fb348dda184b36ec2d503bfe0f1d5393cf8ae151\target\debug\deps\legacy-551ba6cce60d5cae.exe)
+
+running 3 tests
+test sixteen_boosted_current_level_precise_transactions_ignore_base_requirement ... ok
+test sixteen_integer_api_controls_match_independent_awards_and_precise_equivalents ... ok
+test ninety_six_legacy_held_routes_keep_immediate_and_queued_publication ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 7.89s

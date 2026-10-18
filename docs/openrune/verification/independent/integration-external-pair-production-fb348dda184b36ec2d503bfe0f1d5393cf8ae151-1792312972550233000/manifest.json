@@ -1,0 +1,31 @@
+{
+  "tested_integration_sha": "fb348dda184b36ec2d503bfe0f1d5393cf8ae151",
+  "suite": "pair-production",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "BLOCKED",
+  "source_tree": "b6f9b3e164589b68c114c4d61e854d25b2f5e008",
+  "reason": "Owned Cargo runner reached300second limit before the full2592Worldmatrix reported completion. Targeted post-timeout inspection found no remaining owned test process. No gameplay verdict or whole-case acceptance inferred. Original log/harness retained; correct action-clock oracle remains unchanged. Retry bounded workload under600second budget with profile-boundary observation, no successful campaign repeated.",
+  "runner_timeout_seconds": 300,
+  "tests_passed": 0,
+  "harness_sha256": {
+    "docs/openrune/verification/independent/integration-external-pair-production-fb348dda184b36ec2d503bfe0f1d5393cf8ae151-1792312972550233000/harness/batches.rs": "5fe68859eae2a71591bd5674d1a0765f948cb0bc8be5ae6fb097a086956e7e28"
+  },
+  "test_binary_sha256": {
+    "target/debug/deps/batches-7f6760c27c104018.exe": "ed876f06b792350882f956aa04e7e14ff15f399db308c363adc0a74116c21d7e"
+  },
+  "runs": [
+    {
+      "phase": "generate-lockfile",
+      "exit_code": 0,
+      "tests_passed": 0
+    },
+    {
+      "phase": "test",
+      "exit_code": null,
+      "tests_passed": 0,
+      "timed_out": true,
+      "timeout_seconds": 300
+    }
+  ]
+}

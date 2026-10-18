@@ -1,0 +1,10 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\894646a79fa4ba7e3e8b46af6ec000dc6b796514\external-harness-9346501600)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.10s
+     Running tests\batches.rs (C:\Projects\OSRSRSPS\agent7-verification\work\894646a79fa4ba7e3e8b46af6ec000dc6b796514\target\debug\deps\batches-5444c0aa2ec4ea60.exe)
+
+running 3 tests
+test forty_eight_mixed_and_uniform_batches_preserve_every_slot_reward_and_exact_draw_clock ... ok
+test fifty_six_invalid_admissions_never_roll_or_publish ... ok
+test fifty_six_late_changes_stop_before_a_second_draw_without_fallback ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 10.82s

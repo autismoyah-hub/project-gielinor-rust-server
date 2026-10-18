@@ -1,0 +1,27 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\fb348dda184b36ec2d503bfe0f1d5393cf8ae151\external-harness-4174627400)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.15s
+     Running tests\batches.rs (C:\Projects\OSRSRSPS\agent7-verification\work\fb348dda184b36ec2d503bfe0f1d5393cf8ae151\target\debug\deps\batches-7f6760c27c104018.exe)
+
+running 1 test
+PG_PAIR_PROFILE_COMPLETE profile=0 cumulative_cases=144
+PG_PAIR_PROFILE_COMPLETE profile=1 cumulative_cases=288
+PG_PAIR_PROFILE_COMPLETE profile=2 cumulative_cases=432
+PG_PAIR_PROFILE_COMPLETE profile=3 cumulative_cases=576
+PG_PAIR_PROFILE_COMPLETE profile=4 cumulative_cases=720
+test two_thousand_five_hundred_ninety_two_pair_routes_conserve_state_and_trace_actual_enqueue_clocks has been running for over 60 seconds
+PG_PAIR_PROFILE_COMPLETE profile=5 cumulative_cases=864
+PG_PAIR_PROFILE_COMPLETE profile=6 cumulative_cases=1008
+PG_PAIR_PROFILE_COMPLETE profile=7 cumulative_cases=1152
+PG_PAIR_PROFILE_COMPLETE profile=8 cumulative_cases=1296
+PG_PAIR_PROFILE_COMPLETE profile=9 cumulative_cases=1440
+PG_PAIR_PROFILE_COMPLETE profile=10 cumulative_cases=1584
+PG_PAIR_PROFILE_COMPLETE profile=11 cumulative_cases=1728
+PG_PAIR_PROFILE_COMPLETE profile=12 cumulative_cases=1872
+PG_PAIR_PROFILE_COMPLETE profile=13 cumulative_cases=2016
+PG_PAIR_PROFILE_COMPLETE profile=14 cumulative_cases=2160
+PG_PAIR_PROFILE_COMPLETE profile=15 cumulative_cases=2304
+PG_PAIR_PROFILE_COMPLETE profile=16 cumulative_cases=2448
+PG_PAIR_PROFILE_COMPLETE profile=17 cumulative_cases=2592
+test two_thousand_five_hundred_ninety_two_pair_routes_conserve_state_and_trace_actual_enqueue_clocks ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 300.34s

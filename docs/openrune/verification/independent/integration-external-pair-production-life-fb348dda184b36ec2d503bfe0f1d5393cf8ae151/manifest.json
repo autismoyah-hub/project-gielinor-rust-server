@@ -1,0 +1,66 @@
+{
+  "tested_integration_sha": "fb348dda184b36ec2d503bfe0f1d5393cf8ae151",
+  "suite": "pair-production-life",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 6550691840,
+    "active_compilers": [
+      "\"cargo.exe\",\"16304\",\"RDP-Tcp#0\",\"2\",\"24,164 K\""
+    ],
+    "cpu_percent": 46.42,
+    "cpu_samples": [
+      35.3515625,
+      52.9296875,
+      50.9765625
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained",
+    "disk_free": 18347782144,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "b6f9b3e164589b68c114c4d61e854d25b2f5e008",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\fb348dda184b36ec2d503bfe0f1d5393cf8ae151\\external-harness-1325943800\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-pair-production-life-fb348dda184b36ec2d503bfe0f1d5393cf8ae151\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\fb348dda184b36ec2d503bfe0f1d5393cf8ae151\\external-harness-1325943800\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 1,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-pair-production-life-fb348dda184b36ec2d503bfe0f1d5393cf8ae151\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative pair-production-life scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-pair-production-life-fb348dda184b36ec2d503bfe0f1d5393cf8ae151\\harness\\life.rs": "cf3b561daa185059359ffda89334d2a02b4f3ed52f8d4a96810f4f6deeafa320"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\admission-72e6a26ab51a30c3.exe": "2df325efeb4febb7353201f997b2371fecf7be360adb3659198cbea232e9b01a",
+    "target\\debug\\deps\\batches-7f6760c27c104018.exe": "aaf19f74455e9c5b2e210510f88724a1864104a593f6ec2513d7a98b66cdd705",
+    "target\\debug\\deps\\bindings-86adda8e37806308.exe": "702931e8aa3ff1a9cfd933c981248f3adbf20a7de53ee1e914c82c7158e9b93c",
+    "target\\debug\\deps\\gielinor_server-7abd10c65476b4d7.exe": "8a813e1b174370e31095181ec5da3ded0732789b10dc2468f8442f3d23636416",
+    "target\\debug\\deps\\late-5a6f199568c6bd70.exe": "73d2c55b80e22f8513a4b2b7e0b47807e3205fbcf83d7b29693734d7408e2d87",
+    "target\\debug\\deps\\legacy-551ba6cce60d5cae.exe": "34bbd628be0a13c96afc2881c2aff4f277b9457f1edc6075736472d1eef92e0e",
+    "target\\debug\\deps\\life-6b496c0fe9f2c31f.exe": "adffc4314431669e9c19dcafd5f78dc07e0ff3fd0bf7d822f1a0e67fa8149067"
+  }
+}

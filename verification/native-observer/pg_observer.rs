@@ -564,6 +564,48 @@ fn fallible_gems(c:&mut ClientState,l:&mut Connection)->R<()> {
     }
     println!("PG_CASE_PASS native fallible three profiles both held directions; genuine1/All captured batches;21selected cut/crushed outputs; exact rewards/messages/stale refusals; distribution and customXacceptance remain separate");Ok(())
 }
+fn crabs(c:&mut ClientState,l:&mut Connection)->R<()> {
+    let xp=c.data.experience;assert_eq!(c.data.base[12],15);assert_eq!(xp[12],2411);let mut fine=24110;tab(c,"Inventory")?;ticks(c,l,3)?;
+    let initial=(0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>();
+    use_slots(c,0,2)?;let a=glass_make_action(c,l,0)?;let old=sent_packet(c,a,"native crab Make before Close")?;dispatch(c,Action::Close,"native crab Close before award")?;ticks(c,l,3)?;replay(c,l,&old,"native stale fallible Make after Close")?;ticks(c,l,4)?;
+    assert_eq!(c.data.experience,xp);assert_eq!((0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>(),initial);
+    println!("PG_CASE_PASS native crab Make/Close and stale response preserve full inventory/XP");
+    for(index,(raw,out,broken,name))in[(7538,7539,7541,"Crab helmet"),(7536,7537,7540,"Crab claw")].into_iter().enumerate(){
+        let first=2+12*index as i32;
+        for second in[false,true]{ready(c,l)?;let slot=if second{first}else{first+11};let before=c.outbound.len();let messages=c.game_messages.len();
+            if second{use_slots(c,slot,0)?;}else{use_slots(c,0,slot)?;}
+            let p=c.outbound.iter().skip(before).find(|p|p.opcode==27).ok_or("native crab held packet missing")?;let held=(p.opcode,p.payload.clone());let count=if second{11}else{1};let make=glass_quantity(c,l,0,if second{"All"}else{"1"},count)?;
+            pump(c,l,60,|c,_|c.inventories.total(93,raw)==if second{0}else{11})?;let slots=if second{(first..first+11).collect::<Vec<_>>()}else{vec![slot]};let mut good=0;let mut bad=0;
+            for &s in &slots{let item=c.inventories.item(93,s);assert_eq!(item.count,1);if item.id==out{good+=1;}else{assert_eq!(item.id,broken);bad+=1;}}
+            let award=good*1625;fine+=award;pump(c,l,30,|c,_|c.data.experience[12]==fine/10)?;ticks(c,l,2)?;
+            let expected_good=format!("You carve the {name}.");assert_eq!(c.game_messages.iter().skip(messages).filter(|m|m.text==expected_good).count(),good as usize);assert_eq!(c.game_messages.iter().skip(messages).filter(|m|m.text=="You accidentally break the crab material.").count(),bad as usize);
+            for m in c.game_messages.iter().skip(messages){println!("PG_CRAB_MESSAGE index={index} second={second} message={:?}",m.text);}
+            let committed=c.data.experience;let inventory=(0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>();replay(c,l,&make,"native stale completed fallible quantity response")?;replay(c,l,&held,"native stale selected fallible held pair")?;ticks(c,l,4)?;assert_eq!(c.data.experience,committed);assert_eq!((0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>(),inventory);
+            assert_eq!(c.inventories.item(93,0).id,1755);assert_eq!(c.inventories.item(93,1).id,1755);assert_eq!(c.inventories.item(93,27).count,1000);assert_eq!((0..28).filter(|&s|c.inventories.item(93,s).id>=0).count(),28);for i in 0..25{if i!=12{assert_eq!(c.data.experience[i],xp[i]);}}
+            println!("PG_CRAB_BATCH index={index} second={second} raw={raw} cut={out} selected_slot={slot} count={count} good={good} crushed={bad} fine_award={award} fine_total={fine} display_xp={} current_level={} base_level={}",c.data.experience[12],c.data.boosted[12],c.data.base[12]);
+        }
+    }
+    println!("PG_CASE_PASS native crab two profiles both held directions; genuine1/All captured batches;24selected carved/broken outputs; exact rewards/messages/stale refusals; distribution and customXacceptance remain separate");Ok(())
+}
+fn crab_quantities(c:&mut ClientState,l:&mut Connection)->R<()> {
+    let xp=c.data.experience;assert_eq!(c.data.base[12],15);assert_eq!(xp[12],2411);let mut fine=24110;tab(c,"Inventory")?;ticks(c,l,3)?;
+    for(index,(slot,count,label,remaining))in[(26,5,"5",18),(8,10,"10",8)].into_iter().enumerate(){ready(c,l)?;let before=c.outbound.len();let messages=c.game_messages.len();if index==0{use_slots(c,0,slot)?;}else{use_slots(c,slot,0)?;}let p=c.outbound.iter().skip(before).find(|p|p.opcode==27).ok_or("native crab quantity held packet missing")?;let held=(p.opcode,p.payload.clone());let make=glass_quantity(c,l,0,label,count)?;pump(c,l,90,|c,_|c.inventories.total(93,7538)==remaining)?;
+        let slots=if index==0{vec![26,4,5,6,7]}else{(8..18).collect::<Vec<_>>()};let mut good=0;let mut broken=0;for s in slots{let item=c.inventories.item(93,s);assert_eq!(item.count,1);if item.id==7539{good+=1;}else{assert_eq!(item.id,7541);broken+=1;}}let award=good*1625;fine+=award;pump(c,l,30,|c,_|c.data.experience[12]==fine/10)?;ticks(c,l,2)?;
+        assert_eq!(c.game_messages.iter().skip(messages).filter(|m|m.text=="You carve the Crab helmet.").count(),good as usize);assert_eq!(c.game_messages.iter().skip(messages).filter(|m|m.text=="You accidentally break the crab material.").count(),broken as usize);
+        let saved=c.data.experience;let inv=(0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>();replay(c,l,&make,"native stale completed crab builtin quantity")?;replay(c,l,&held,"native stale selected crab builtin held pair")?;ticks(c,l,4)?;assert_eq!(c.data.experience,saved);assert_eq!((0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>(),inv);assert_eq!(c.inventories.item(93,0).id,1755);assert_eq!(c.inventories.item(93,1).id,1755);assert_eq!(c.inventories.item(93,27).count,1000);assert_eq!((0..28).filter(|&s|c.inventories.item(93,s).id>=0).count(),28);for i in 0..25{if i!=12{assert_eq!(c.data.experience[i],xp[i]);}}
+        println!("PG_CRAB_QUANTITY index={index} selected_slot={slot} requested={count} good={good} broken={broken} fine_award={award} fine_total={fine} remaining={remaining}");
+    }
+    println!("PG_CASE_PASS native crab builtin5then10genuine quantity frames;15mixed selected products/both held directions/full28and8raws retained; exact rewards/messages/stale refusals; customXremains separate");Ok(())
+}
+fn crab_partial(c:&mut ClientState,l:&mut Connection,crash:bool)->R<()> {
+    assert_eq!(c.data.base[12],15);assert_eq!(c.data.experience[12],2411);tab(c,"Inventory")?;ticks(c,l,3)?;use_slots(c,26,0)?;let _=glass_quantity(c,l,0,"All",23)?;
+    pump(c,l,30,|c,_|{let mut fine=24110;let mut made=0;for s in 4..27{match c.inventories.item(93,s).id{7539=>{fine+=1625;made+=1;},7541=>{made+=1;},_=>{}}}made>0 && made<23 && c.data.experience[12]==fine/10})?;
+    let mut fine=24110;let mut made=0;let mut good=0;let mut bad=0;for s in 4..27{match c.inventories.item(93,s).id{7539=>{fine+=1625;made+=1;good+=1;},7541=>{made+=1;bad+=1;},7538=>{},_=>return Err("unexpected native partial crab item".into())}}
+    assert_eq!(c.data.experience[12],fine/10);assert!(made>0 && made<23);assert_eq!(c.inventories.item(93,0).id,1755);assert_eq!(c.inventories.item(93,1).id,1755);assert_eq!(c.inventories.item(93,27).count,1000);
+    println!("PG_CRAB_INTERRUPT_READY tick={} made={made} good={good} broken={bad} fine_observed={fine}; real socket disconnect during captured All, including valid zero-XP broken credits; SQL may retain another already-admitted complete result",c.server_tick);
+    if crash{println!("PG_CRASH_READY native crab captured All observed unsaved prefix; only this owned disposable game server is under test");let start=Instant::now();loop{match l.poll(c){Err(e)=>{println!("PG_EXPECTED_CRASH_DISCONNECT {e}");return Ok(());},Ok(())=>{if l.logged_out().is_some(){println!("PG_EXPECTED_CRASH_DISCONNECT native transport closed");return Ok(());}}}if start.elapsed()>Duration::from_secs(30){return Err("owned crab recovery-test termination absent".into());}std::thread::sleep(Duration::from_millis(10));}}
+    Ok(())
+}
 fn fallible_partial(c:&mut ClientState,l:&mut Connection)->R<()> {
     assert_eq!(c.data.base[12],16);assert_eq!(c.data.experience[12],2746);tab(c,"Inventory")?;ticks(c,l,3)?;use_slots(c,26,0)?;let _=glass_quantity(c,l,0,"All",23)?;
     pump(c,l,30,|c,_|{let mut fine=27460;let mut made=0;for s in 4..27{match c.inventories.item(93,s).id{1609=>{fine+=750;made+=1;},1633=>{fine+=190;made+=1;},_=>{}}}made>0 && made<23 && c.data.experience[12]==fine/10})?;
@@ -594,9 +636,50 @@ fn battlestaves(c:&mut ClientState,l:&mut Connection,crash:bool)->R<()> {
     if crash{println!("PG_CRASH_READY native battlestaff one unsaved selected product and5000fineXP; only the disposable owned game server is under test");let start=Instant::now();loop{match l.poll(c){Err(e)=>{println!("PG_EXPECTED_CRASH_DISCONNECT {e}");return Ok(());},Ok(())=>{if l.logged_out().is_some(){println!("PG_EXPECTED_CRASH_DISCONNECT native transport closed");return Ok(());}}}if start.elapsed()>Duration::from_secs(30){return Err("owned battlestaff recovery-test termination absent".into());}std::thread::sleep(Duration::from_millis(10));}}
     assert_eq!(actions,8);println!("PG_CASE_PASS native battlestaff eight manual actions both directions four profiles47500fineXP; stale refusal retained duplicates and no quantity/repeat");Ok(())
 }
+fn pair_stringing(c:&mut ClientState,l:&mut Connection,flip:bool)->R<()> {
+ let xp=c.data.experience;assert_eq!(c.data.base[12],99);assert_eq!(xp[12],13034431);let mut fine=130344311;tab(c,"Inventory")?;ticks(c,l,3)?;
+ let mut expected=(0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>();
+ use_slots(c,0,14)?;let action=glass_make_action(c,l,0)?;let cancelled=sent_packet(c,action,"native pair stringing Make before Close")?;dispatch(c,Action::Close,"native pair stringing Close before first credit")?;ticks(c,l,5)?;replay(c,l,&cancelled,"native stale stringing quantity after Close")?;ticks(c,l,3)?;assert_eq!(c.data.experience,xp);assert_eq!((0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>(),expected);
+ for(index,(raw,out))in[(1673,1692),(1675,1694),(1677,1696),(1679,1698),(1681,1700),(1683,1702),(6579,6581),(19501,19541),(21099,21108),(21102,21111),(21105,21114),(1714,1716),(1720,1722),(10134,10132)].into_iter().enumerate(){
+  ready(c,l)?;let wool=index as i32;let slot=14+wool;assert_eq!(c.inventories.item(93,wool).id,1759);assert_eq!(c.inventories.item(93,slot).id,raw);let n=c.outbound.len();if (index%2==0)!=flip{use_slots(c,wool,slot)?;}else{use_slots(c,slot,wool)?;}let p=c.outbound.iter().skip(n).find(|p|p.opcode==27).ok_or("native pair held packet absent")?;let held=(p.opcode,p.payload.clone());let response=if flip{let a=glass_make_action(c,l,0)?;let p=sent_packet(c,a,"native reverse stringing default Make-one")?;assert_eq!(p.0,115);assert_eq!(&p.1[4..],&[0,1]);p}else{glass_quantity(c,l,0,"All",1)?};
+  expected[wool as usize]=(-1,0);expected[slot as usize]=(-1,0);let free=expected.iter().position(|v|v.0<0).unwrap();expected[free]=(out,1);fine+=200;
+  pump(c,l,30,|c,_|c.inventories.total(93,out)==1 && c.data.experience[12]==fine/10)?;ticks(c,l,2)?;assert_eq!((0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>(),expected);
+  let saved=c.data.experience;replay(c,l,&response,"native stale completed stringing quantity")?;replay(c,l,&held,"native stale consumed stringing pair")?;ticks(c,l,3)?;assert_eq!(c.data.experience,saved);assert_eq!((0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>(),expected);for i in 0..25{if i!=12{assert_eq!(c.data.experience[i],xp[i]);}}
+  println!("PG_PAIR_STRINGING index={index} raw={raw} output={out} selected_wool={wool} selected_raw={slot} first_free={free} fine_total={fine} reverse={}",(index%2==1)!=flip);
+ }
+ println!("PG_CASE_PASS native14stringing profiles alternate held directions realAll capped1 quantities; full28 two-to-one first-free outputs;2800fineXP; genuine Close/stale refusal; all other XP conserved");Ok(())
+}
+fn pair_staves(c:&mut ClientState,l:&mut Connection)->R<()> {
+ let xp=c.data.experience;assert_eq!(c.data.base[12],99);assert_eq!(xp[12],13034431);let mut fine=130344311;tab(c,"Inventory")?;ticks(c,l,3)?;let mut expected=(0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>();
+ use_slots(c,4,6)?;let a=glass_make_action(c,l,0)?;let old=sent_packet(c,a,"native staff production Make before Close")?;dispatch(c,Action::Close,"native staff production Close before credit")?;ticks(c,l,5)?;replay(c,l,&old,"native stale staff production response after Close")?;ticks(c,l,3)?;assert_eq!(c.data.experience,xp);assert_eq!((0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>(),expected);
+ for(index,(orb,out,award))in[(571,1395,5000),(575,1399,5625),(569,1393,6250),(573,1397,6875)].into_iter().enumerate(){for reverse in[false,true]{ready(c,l)?;let staff=4+index as i32*4+i32::from(reverse);let raw=staff+2;assert_eq!(c.inventories.item(93,staff).id,1391);assert_eq!(c.inventories.item(93,raw).id,orb);let n=c.outbound.len();if reverse{use_slots(c,raw,staff)?;}else{use_slots(c,staff,raw)?;}let p=c.outbound.iter().skip(n).find(|p|p.opcode==27).ok_or("native staff production held packet absent")?;let held=(p.opcode,p.payload.clone());let response=if reverse{glass_quantity(c,l,0,"All",1)?}else{let a=glass_make_action(c,l,0)?;let p=sent_packet(c,a,"native staff default Make-one")?;assert_eq!(p.0,115);assert_eq!(&p.1[4..],&[0,1]);p};fine+=award;expected[staff as usize]=(-1,0);expected[raw as usize]=(-1,0);let free=expected.iter().position(|v|v.0<0).unwrap();expected[free]=(out,1);
+ pump(c,l,30,|c,_|c.inventories.total(93,out)==if reverse{2}else{1} && c.data.experience[12]==fine/10)?;ticks(c,l,2)?;assert_eq!((0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>(),expected);let saved=c.data.experience;replay(c,l,&response,"native stale completed staff production quantity")?;replay(c,l,&held,"native stale consumed staff production pair")?;ticks(c,l,3)?;assert_eq!(c.data.experience,saved);assert_eq!((0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>(),expected);for i in 0..25{if i!=12{assert_eq!(c.data.experience[i],xp[i]);}}assert_eq!(c.inventories.item(93,0).id,1391);assert_eq!(c.inventories.item(93,1).id,1391);assert_eq!(c.inventories.item(93,27).count,1000);println!("PG_PAIR_STAFF index={index} reverse={reverse} staff_slot={staff} orb_slot={raw} output={out} first_free={free} fine_total={fine}");}}
+ println!("PG_CASE_PASS native four staff production profiles both held directions genuine1All controls8credits47500fineXP; full28two-to-one first-free/stale refusal/retained duplicates and coins");Ok(())
+}
+fn pair_batch(c:&mut ClientState,l:&mut Connection,kind:&str)->R<()> {
+ let xp=c.data.experience;assert_eq!(c.data.base[12],99);assert_eq!(xp[12],13034431);let mut fine=130344311;let mut made=0;tab(c,"Inventory")?;ticks(c,l,3)?;let mut expected=(0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>();
+ let plan=if kind=="pair-counts"{vec![("1",1),("5",5),("All",7)]}else if kind=="pair-ten"{vec![("10",10),("All",3)]}else{vec![("All",13)]};
+ for(index,(label,count))in plan.into_iter().enumerate(){ready(c,l)?;let wool=expected.iter().rposition(|v|v.0==1759).ok_or("native wool absent")? as i32;let raw=expected.iter().rposition(|v|v.0==1673).ok_or("native unstrung absent")? as i32;let n=c.outbound.len();if index%2==0{use_slots(c,wool,raw)?;}else{use_slots(c,raw,wool)?;}let p=c.outbound.iter().skip(n).find(|p|p.opcode==27).ok_or("native pair batch held packet absent")?;let held=(p.opcode,p.payload.clone());let response=glass_quantity(c,l,0,label,count)?;
+ if matches!(kind,"pair-interrupt"|"pair-crash"){
+  pump(c,l,30,|c,_|c.inventories.total(93,1692)>0 && c.inventories.total(93,1692)<13 && c.data.experience[12]==(130344311+c.inventories.total(93,1692)*200)/10)?;let observed=c.inventories.total(93,1692);println!("PG_PAIR_INTERRUPT_READY products={observed} fine_observed={} raw_remaining={} wool_remaining={}",130344311+observed*200,c.inventories.total(93,1673),c.inventories.total(93,1759));
+  if kind=="pair-crash"{println!("PG_CRASH_READY native pair captured All unsaved prefix; only this owned disposable game server is under test");let start=Instant::now();loop{match l.poll(c){Err(e)=>{println!("PG_EXPECTED_CRASH_DISCONNECT {e}");return Ok(());},Ok(())=>{if l.logged_out().is_some(){println!("PG_EXPECTED_CRASH_DISCONNECT native transport closed");return Ok(());}}}if start.elapsed()>Duration::from_secs(30){return Err("owned pair recovery-test termination absent".into());}std::thread::sleep(Duration::from_millis(10));}}
+  return Ok(());
+ }
+ let mut ws=vec![wool as usize];ws.extend(expected.iter().enumerate().filter(|(i,v)|v.0==1759 && *i!=wool as usize).map(|(i,_)|i));let mut rs=vec![raw as usize];rs.extend(expected.iter().enumerate().filter(|(i,v)|v.0==1673 && *i!=raw as usize).map(|(i,_)|i));
+ for(&a,&b)in ws.iter().zip(rs.iter()).take(count as usize){expected[a]=(-1,0);expected[b]=(-1,0);let free=expected.iter().position(|v|v.0<0).unwrap();expected[free]=(1692,1);}made+=count;fine+=count*200;pump(c,l,90,|c,_|c.inventories.total(93,1692)==made && c.inventories.total(93,1673)==13-made && c.inventories.total(93,1759)==13-made && c.data.experience[12]==fine/10)?;ticks(c,l,2)?;assert_eq!((0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>(),expected);let saved=c.data.experience;replay(c,l,&response,"native stale completed pair batch quantity")?;replay(c,l,&held,"native stale consumed pair batch request")?;ticks(c,l,3)?;assert_eq!(c.data.experience,saved);assert_eq!((0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>(),expected);for i in 0..25{if i!=12{assert_eq!(c.data.experience[i],xp[i]);}}assert_eq!(c.inventories.item(93,27).count,1000);println!("PG_PAIR_BATCH kind={kind} index={index} label={label} requested={count} products={made} fine_total={fine} selected_wool={wool} selected_raw={raw}");
+ }
+ assert_eq!(made,13);println!("PG_CASE_PASS native pair batch kind={kind}13products2600fineXP exact captured two-input/full28/first-free output/quantity/stale controls and retained coins");Ok(())
+}
 fn main()->R<()> {
     let a:Vec<_>=std::env::args().collect();assert_eq!(a.len(),7);
     let mut c=ClientState::load(DiskCache::open(&a[1],64<<20)?)?;let mut l=Connection::connect(&mut c,&a[2],&a[3],&a[4],&a[5])?;ready(&mut c,&mut l)?;
+    if a[6]=="crab-carving"{crabs(&mut c,&mut l)?;l.session.close();return Ok(());}
+    if matches!(a[6].as_str(),"pair-counts"|"pair-ten"|"pair-interrupt"|"pair-crash"){pair_batch(&mut c,&mut l,&a[6])?;l.session.close();return Ok(());}
+    if a[6]=="pair-staves"{pair_staves(&mut c,&mut l)?;l.session.close();return Ok(());}
+    if a[6]=="pair-stringing-reverse"{pair_stringing(&mut c,&mut l,true)?;l.session.close();return Ok(());}
+    if a[6]=="pair-stringing"{pair_stringing(&mut c,&mut l,false)?;l.session.close();return Ok(());}
+    if a[6]=="crab-quantities"{crab_quantities(&mut c,&mut l)?;l.session.close();return Ok(());}
+    if matches!(a[6].as_str(),"crab-interrupt"|"crab-crash"){crab_partial(&mut c,&mut l,a[6]=="crab-crash")?;l.session.close();return Ok(());}
     if matches!(a[6].as_str(),"battlestaves"|"battlestaff-crash"){battlestaves(&mut c,&mut l,a[6]=="battlestaff-crash")?;l.session.close();return Ok(());}
     if matches!(a[6].as_str(),"sinew"|"sinew-crash"){sinew(&mut c,&mut l,a[6]=="sinew-crash")?;l.session.close();return Ok(());}
     if a[6]=="fallible-gems"{fallible_gems(&mut c,&mut l)?;l.session.close();return Ok(());}

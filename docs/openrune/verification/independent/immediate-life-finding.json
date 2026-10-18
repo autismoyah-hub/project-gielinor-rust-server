@@ -1,0 +1,37 @@
+{
+  "finding_id": "PG-DEF-003",
+  "implementation_id": "OR-MIG-0065",
+  "contract_revision": 1,
+  "tested_sha": "4f4aacb2929e8ad775d091527e2d80070100ee69",
+  "campaign_kind": "historical",
+  "status": "CONFIRMED_AUTHORITATIVE_BOUNDARY_FAILURE",
+  "severity": "P2",
+  "implementation_blocking": false,
+  "github_issue": null,
+  "scenario": "Immediate knife/Dramen branch or chisel/limestone; member Crafting99/rate500, full28 inventory, selected raw17/duplicate4/tools0-1. Both held directions at zeroHP or after queue_hit Typeless20, DeathRequested, and visibleHP restored10 without respawn.",
+  "expected": "Authoritative life refusal conserves complete inventory and Stats before any immediate credit.",
+  "actual": "Eight individually named negative tests fail. All four staff cases replace raw771 at17 with772, zeroXP; all four limestone cases replace3211 with3420 and award300fineXP. Four alive controls pass. No delayed inventory/Stats replay over eight ticks.",
+  "witnesses": [
+    "PG_IMMEDIATE_LIFE limestone=true reverse=false death=1 output=Some(Item { id: 3420, count: 1, vars: 0 }) fine_delta=300 inventory_unchanged=false",
+    "PG_IMMEDIATE_LIFE limestone=true reverse=true death=2 output=Some(Item { id: 3420, count: 1, vars: 0 }) fine_delta=300 inventory_unchanged=false",
+    "PG_IMMEDIATE_LIFE limestone=true reverse=true death=1 output=Some(Item { id: 3420, count: 1, vars: 0 }) fine_delta=300 inventory_unchanged=false",
+    "PG_IMMEDIATE_LIFE limestone=false reverse=false death=1 output=Some(Item { id: 772, count: 1, vars: 0 }) fine_delta=0 inventory_unchanged=false",
+    "PG_IMMEDIATE_LIFE limestone=false reverse=false death=2 output=Some(Item { id: 772, count: 1, vars: 0 }) fine_delta=0 inventory_unchanged=false",
+    "PG_IMMEDIATE_LIFE limestone=true reverse=false death=2 output=Some(Item { id: 3420, count: 1, vars: 0 }) fine_delta=300 inventory_unchanged=false",
+    "PG_IMMEDIATE_LIFE limestone=false reverse=true death=2 output=Some(Item { id: 772, count: 1, vars: 0 }) fine_delta=0 inventory_unchanged=false",
+    "PG_IMMEDIATE_LIFE limestone=false reverse=false death=0 output=Some(Item { id: 772, count: 1, vars: 0 }) fine_delta=0 inventory_unchanged=false",
+    "PG_IMMEDIATE_LIFE limestone=false reverse=true death=1 output=Some(Item { id: 772, count: 1, vars: 0 }) fine_delta=0 inventory_unchanged=false",
+    "PG_IMMEDIATE_LIFE limestone=false reverse=true death=0 output=Some(Item { id: 772, count: 1, vars: 0 }) fine_delta=0 inventory_unchanged=false",
+    "PG_IMMEDIATE_LIFE limestone=true reverse=false death=0 output=Some(Item { id: 3420, count: 1, vars: 0 }) fine_delta=300 inventory_unchanged=false",
+    "PG_IMMEDIATE_LIFE limestone=true reverse=true death=0 output=Some(Item { id: 3420, count: 1, vars: 0 }) fine_delta=300 inventory_unchanged=false"
+  ],
+  "coverage_limits": "Public World boundary only; native dead-player action reachability and current FORGE HEAD are unproven. Immediate path is distinct from precise assembly PG-DEF-002. No previous successful campaign repeated.",
+  "source_diagnosis": "complete_tool_crafting_immediate checks logout/protection, then resolves/publishes without zeroHP or death_queued guard; queued tool completion has separate life guards.",
+  "forge_correction": "Apply authoritative life refusal at immediate held admission and completion, preserving atomic inputs/Stats, current-level/member/rate and zeroXP/manual immediacy. Publish exact correction SHA and contract revision; rerun eight failure witnesses plus native reachability separately. Ordinary nonblocking P2; do not stop implementation.",
+  "reproduction": "python scripts/proving-ground-integration-external.py 4f4aacb2929e8ad775d091527e2d80070100ee69 --suite immediate-life",
+  "evidence": [
+    "docs/openrune/verification/independent/integration-external-immediate-life-4f4aacb2929e8ad775d091527e2d80070100ee69/manifest.json",
+    "docs/openrune/verification/independent/integration-external-immediate-life-4f4aacb2929e8ad775d091527e2d80070100ee69/run-1.log",
+    "verification/immediate-life/tests/life.rs"
+  ]
+}

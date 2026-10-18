@@ -41,7 +41,38 @@ for manifest in OUT.glob('integration-*/manifest.json'):
         if 'test every_roll_across_current_levels_member_and_rates_has_exact_zero_xp_failure ... ok' in text:
             assert 'profile0 mode11' in text
             add('OR-MIG-0068',value['tested_integration_sha'],'V1','IN_PROGRESS','Independent310272controlled-byte cases PASS across two profiles/current1-99and100/120/member/three positive rates. Exact selected-only full28success or broken outputs, single draw, unchanged input snapshots, threshold70at15/241at99, exact fineXP and no advancement on failure all pass. Separate negative function failed because the verifier wrongly treated high256as invalid; shared u16 endpoint policy allows it. This is a passing subtest, not a PASS for the failed whole campaign. Preserve raw FAIL; only corrected negatives rerun separately, no repetition of completed byte matrix.',[manifest.relative_to(ROOT).as_posix(),log.relative_to(ROOT).as_posix()],scope='independent-crab-byte-domain-subcheck')
+    if value.get('suite')=='pair-production-counts' and value.get('status')=='BLOCKED' and value.get('completed_case_subcheck')==728:
+        add('OR-MIG-0069',value['tested_integration_sha'],'V1','IN_PROGRESS','Original count matrix hit300second bound without final result. Immutable per-profile progress establishes728complete full28count1-28cases for profiles0-12/both directions. Profiles13-17remain unaccepted; no whole-suite PASS. Preserve original wrapper timeout; rerun only remaining5profiles.',[manifest.relative_to(ROOT).as_posix()],scope='independent-pair-counts-completed-prefix')
     if value.get('status')!='PASS':continue
+    if value.get('suite')=='pair-production-counts-tail':
+        add('OR-MIG-0069',value['tested_integration_sha'],'V1','IN_PROGRESS','Independent280remaining full28count cases for profiles13-17/both directions PASS. This only completes the tail; original728completed prefix retained without replay. Combined1008case scope requires both immutable evidence identities, and no whole PASS is assigned to the timed-out original wrapper.',[manifest.relative_to(ROOT).as_posix()],scope='independent-pair-counts-remaining-tail')
+        continue
+    if value.get('suite')=='pair-production-counts':
+        add('OR-MIG-0069',value['tested_integration_sha'],'V1','IN_PROGRESS','Independent1008full28World cases across18profiles/both directions/all requested1through28 PASS. Actual14two-input pairs cap14, selected13/27first then ascending0/14through12/26, exact per-credit first-free output and fractional XP/allStats, no RNG/extra credit verified each tick. This extends earlier3pair caps; native multi-pair/lifecycle remain separate.',[manifest.relative_to(ROOT).as_posix()],scope='independent-pair-production-counts')
+        continue
+    if value.get('suite')=='pair-production-life':
+        add('OR-MIG-0069',value['tested_integration_sha'],'V1','IN_PROGRESS','Independent72before-first-credit life cases across all18profiles/both directions PASS: zeroHP or actual queued death with visibleHP restored preserves inventory/Stats/no RNG/no future credit. This new production path is separate from the earlier immediate/precise life defects; native reachability remains distinct.',[manifest.relative_to(ROOT).as_posix()],scope='independent-pair-production-life')
+        continue
+    if value.get('suite')=='pair-production-regression':
+        add('OR-MIG-0069',value['tested_integration_sha'],'V1','IN_PROGRESS','Independent exact69shared regression:16integer/precise API controls,96legacy normal/timed/immediate held routes and16boosted-current-level precise transactions PASS. Synthetic gameplay controls only; no chemistry content execution, no inheritance from67.',[manifest.relative_to(ROOT).as_posix()],scope='independent-pair-production-regression')
+        continue
+    if value.get('suite')=='pair-production-bindings':
+        add('OR-MIG-0069',value['tested_integration_sha'],'V1','IN_PROGRESS','Actual38unique cache item definitions, Crafting12, sequence7531/four spots, all18manual source factory descriptors and421missing/aliased/corrupt metadata probes PASS. Production first/repeat scheduling and quantity registration remain separate World/native scopes.',[manifest.relative_to(ROOT).as_posix()],scope='independent-pair-production-bindings')
+        continue
+    if value.get('suite')=='pair-production-admission':
+        add('OR-MIG-0069',value['tested_integration_sha'],'V1','IN_PROGRESS','Independent636initial refusal cases across18profiles/both directions PASS: option/count bounds, selected missing/variable/stacked pairs, member/current/rate/output credit, modal/logout/movement and invalid first/repeat ticks conserve full inventory/Stats with no future credit or RNG. Native token ownership remains separate.',[manifest.relative_to(ROOT).as_posix()],scope='independent-pair-production-admission')
+        continue
+    if value.get('suite') in ['pair-production','pair-production-late']:
+        suite=value['suite'];reason=('Independent2592World routes across18profiles/both directions/member/current below-at99/four rates/count1-3-28PASS. Exact two captured inputs, selected-first then3/8and11/22pairs, full28caps, per-step fractional rewards, no RNG/repeat and complete inventory/Stats verified. Public action clocks sampled before Late increment validate actual first/repeat enqueue and commit trace stamps; original post-tick trace oracle failure retained. Stringing first1/repeat2andstaff first3/repeat2scheduling separately observed through compensated World clocks.' if suite=='pair-production' else 'Independent564late changes across18profiles/both directions PASS after first complete credit: stale/missing/variable captured pair with replacement duplicate, member/current/rate/credit changes, modal/Walk/Close/logout/new-held/zeroHP/actual queued death with visibleHP restored stop all remaining credits and preserve full inventory/Stats. Nonmember revocation only tested as refusal for member recipes; no invalid F2Pgate inferred. No runtime token acceptance claimed from replaying a trusted internal request.')
+        add('OR-MIG-0069',value['tested_integration_sha'],'V1','IN_PROGRESS',reason+' Exact cache/startup/native/legacy and whole-contract obligations remain separate.',[manifest.relative_to(ROOT).as_posix()],scope='independent-'+suite)
+        continue
+    if value.get('suite')=='crab-counts':
+        add('OR-MIG-0068',value['tested_integration_sha'],'V1','IN_PROGRESS','Independent112full28World cases PASS across both profiles/directions and every requested count1through28. Selected17then ascending captured order, cap25matching raws, per-step mixed good/broken outputs,406fineXP per success at125%rather than aggregate rounding,0brokenXP/no advancement, first3/repeat3compensation and complete inventory/Stats invariants pass. Two chisels/1000coins retained; no RNG after capped work ends.',[manifest.relative_to(ROOT).as_posix()],scope='independent-crab-counts')
+        continue
+    if value.get('suite') in ['crab-world','crab-lifecycle']:
+        suite=value['suite'];reason=('Independent48mixed/uniform captured3-item batches PASS across2profiles/both held directions/three rates. Exact selected17then3/9order/full28, single draw per credit, nominal3first/3repeat(input compensation4then3), success fineXP and zero broken XP/no SkillAdvanced event verified, including continuation after break.56late input/tool/member/level/rate/either-credit/modal/movement/Close/logout/new-held cases stop before a second draw without duplicate fallback;56invalid admissions never roll or mutate.' if suite=='crab-world' else 'Independent16production life cases PASS across both profiles and held directions. ZeroHP/actual queued death with visibleHP restored before admission or after first broken result refuses further draw/credit. First broken outcome has unchanged Crafting/no advancement, next raw retained. Dialog token identity is runtime-owned; direct replay of a trusted World Request is not a player token test. That unsupported oracle and initial moved-request compile failure are preserved. Genuine native Close/stale transport remains separate; corrected same-SHA life matrix changes no production code.')
+        add('OR-MIG-0068',value['tested_integration_sha'],'V1','IN_PROGRESS',reason+' Native quantity/timing and full applicable acceptance remain separate.',[manifest.relative_to(ROOT).as_posix()],scope='independent-'+suite)
+        continue
     if value.get('suite') in ['crab-bindings','crab-admission']:
         suite=value['suite'];reason=('Actual cache seven ordinary definitions/Crafting12/sequence1280and exact two member/level15/325success/0failure/40-240curve/first3descriptors PASS;79missing/aliased/corrupt item/stat/sequence cases refuse.' if suite=='crab-bindings' else 'Independent30invalid input/tool/count/variables/member/current-level/rate/either-credit/curve probes PASS before RNG and without inventory/Stats mutation. Corrected u16endpoint out-of-range65536oracle; original unsupported256refusal assertion preserved, completed310272roll subtest not repeated.')
         add('OR-MIG-0068',value['tested_integration_sha'],'V1','IN_PROGRESS',reason+' Authoritative World batch/native/lifecycle acceptance remains separate.',[manifest.relative_to(ROOT).as_posix()],scope='independent-'+suite)
@@ -337,10 +368,16 @@ if path.exists():
     result=json.loads(path.read_text());assert result['source_documentation_subcheck']=='PASS_WITH_REFERENCE_CONFLICTS'
     add('OR-MIG-0064',result['tested_sha'],'V4','IN_PROGRESS',result['scope']+' PG-REF-001: pinned Opal3.8versus Crushedgem3.7failureXP and Jade floor-only versus generic rounded success rule require explicit adjudication; not an implementation-blocking gameplay finding.',[path.relative_to(ROOT).as_posix()],scope='independent-fallible-gem-reference-conflicts')
 path=OUT/'immediate-acceptance.json'
-if path.exists():
+if path.exists() and not (OUT/'immediate-acceptance-withdrawal.json').exists():
     result=json.loads(path.read_text());assert result['status']=='ACCEPTED'
     for level,value in result['levels'].items():add('OR-MIG-0065',result['tested_sha'],level,value['status'],value['reason'],[path.relative_to(ROOT).as_posix()],scope='immediate-applicable-obligations-complete')
 coarse=DOC/'VERIFICATION_RESULTS.jsonl';prior=[json.loads(s) for s in coarse.read_text(encoding='utf-8').splitlines()];known={r['attempt_id'] for r in prior}
+crab_blocker=OUT/'crab-custom-input-dependency.json'
+if crab_blocker.exists():
+    r=json.loads(crab_blocker.read_text());attempt='independent-crab-applicable-levels-'+r['tested_sha']
+    if attempt not in known:
+        row={'attempt_id':attempt,'implementation_id':'OR-MIG-0068','implementation_commit_sha':r['tested_sha'],'contract_revision':1,'campaign_kind':'historical','outcome':'PARTIAL','level':'V0/V1/V3/V4PASS;V2BLOCKED','independent_verification':True,'tests_passed':0,'coverage':['Independent310272byte-domain subcheck,30pre-RNG refusals,79cache refusals and288World cases.','39normal native products/restarts, zero-XP partial save and owned unsaved-result recovery complete.'],'reason':'Required native custom input remains blocked on PG-INFRA-009; no exact68Xfailure alleged and no aggregate acceptance or duplicate test-execution count. V0/V1/V3/V4complete at pinned SHA.','evidence':[crab_blocker.relative_to(ROOT).as_posix()],'issues':['PG-INFRA-009 client dependency; historical proof remains at its own SHAs']}
+        with coarse.open('a',encoding='utf-8',newline='\n') as f:f.write(json.dumps(row)+'\n')
 finding=OUT/'battlestaff-life-finding.json'
 if finding.exists():
     r=json.loads(finding.read_text());attempt='independent-PG-DEF-002-'+r['tested_sha']
@@ -351,10 +388,45 @@ path=OUT/'reference-crab/comparison.json'
 if path.exists():
     result=json.loads(path.read_text());assert result['source_documentation_subcheck']=='PASS'
     add('OR-MIG-0068',result['tested_sha'],'V4','IN_PROGRESS',result['scope']+' Native cadence, mixed batch and lifecycle remain separate; source recipe quest notes versus fresh-material acquisition context explicitly preserved.',[path.relative_to(ROOT).as_posix()],scope='independent-crab-references')
+path=OUT/'reference-pair-production/comparison.json'
+if path.exists():
+    result=json.loads(path.read_text());assert result['source_documentation_subcheck']=='PASS'
+    add('OR-MIG-0069',result['tested_sha'],'V4','IN_PROGRESS',result['scope']+' Source39hashes/14wool recipes/4staff facts only; actual native first-action clock comparison, exact cache/runtime/World/lifecycle remain separate.',[path.relative_to(ROOT).as_posix()],scope='independent-pair-production-references')
 path=OUT/'reference-battlestaves/comparison.json'
 if path.exists():
     result=json.loads(path.read_text());assert result['source_documentation_subcheck']=='PASS'
     add('OR-MIG-0067',result['tested_sha'],'V4','IN_PROGRESS',result['scope']+' Runtime/native/lifecycle and complete acceptance remain separate.',[path.relative_to(ROOT).as_posix()],scope='independent-battlestaff-references')
+path=OUT/'deep-crab-quantities/quantities-001/independent-assessment.json'
+if path.exists():
+    result=json.loads(path.read_text());assert result['status']=='PASS'
+    add('OR-MIG-0068',result['tested_sha'],'V2','IN_PROGRESS',result['scope']+' Additional15native products,6carved/9broken,9750fineXP and8raws retained. This only extends builtin quantity coverage; no custom-Xacceptance inferred.',[path.relative_to(ROOT).as_posix()],scope='crab-native-builtin-five-ten')
+path=OUT/'deep-crab-carving/native-001/independent-assessment.json'
+if path.exists():
+    result=json.loads(path.read_text());assert result['status']=='PASS'
+    ev=[path.relative_to(ROOT).as_posix(),'docs/openrune/verification/independent/integration-external-crab-bindings-'+result['tested_sha']+'/manifest.json']
+    add('OR-MIG-0068',result['tested_sha'],'V0','PASS','Exact68server builds and starts against95hash-attested resources; actual cache7items/Crafting12/sequence1280and79factory refusals pass. Actual two registered native quantity choices dispatch both carved and broken outputs.',ev,scope='crab-runtime-obligations-complete')
+    for level in ['V2','V3']:add('OR-MIG-0068',result['tested_sha'],level,'IN_PROGRESS',result['scope']+' Shell3success/9broken and claw6success/6broken;14625fineXP retained at Craft18. Initial concurrent reconnect startup timeout preserved; same frozen driver alone passes in immutable relogin-002with complete SQL/native continuity. Additional native quantity/interruption/crash obligations remain separate.',ev,scope='crab-native-mixed-and-reconnect')
+    refs=OUT/'reference-crab/comparison.json';ref=json.loads(refs.read_text());assert ref['source_documentation_subcheck']=='PASS'
+    add('OR-MIG-0068',result['tested_sha'],'V4','PASS',ref['scope']+' All24nativecredits independently show first3/repeat3receive-clock cadence and exact per-branch feedback/rewards. Wiki0XPbroken and first3explicitly override donor omitted failure/default-shortened first2. Recipe quest-note/acquisition context and lack of original random-stream/rendered/audio equivalence remain explicit. Scope is already-owned material crafting, not quest/acquisition acceptance.',ev+[refs.relative_to(ROOT).as_posix()],scope='crab-reference-obligations-complete')
+path=OUT/'deep-crab-interrupt/interrupt-002/independent-assessment.json'
+if path.exists():
+    result=json.loads(path.read_text());assert result['status']=='PASS'
+    add('OR-MIG-0068',result['tested_sha'],'V3','IN_PROGRESS',result['scope']+' Actual durable prefix is one broken shell at26,0fineXP,22raws retained. Whole native reconnect/SQL state passes; prior concurrent startup failure remains immutable. Owned abrupt termination remains a separate obligation.',[path.relative_to(ROOT).as_posix()],scope='crab-native-zero-xp-partial-recovery')
+path=OUT/'deep-crab-crash/crash-001/independent-assessment.json'
+if path.exists():
+    result=json.loads(path.read_text());assert result['status']=='PASS'
+    add('OR-MIG-0068',result['tested_sha'],'V3','IN_PROGRESS',result['scope'],[path.relative_to(ROOT).as_posix()],scope='crab-native-unsaved-recovery')
+crab_sha='894646a79fa4ba7e3e8b46af6ec000dc6b796514'
+crab_authoritative=[]
+for suite in ['crab-world','crab-lifecycle','crab-counts','crab-admission','crab-bindings']:
+    matches=[p for p in OUT.glob('integration-external-'+suite+'-'+crab_sha+'*/manifest.json') if json.loads(p.read_text()).get('status')=='PASS']
+    if matches:crab_authoritative.append(matches[-1])
+if len(crab_authoritative)==5:
+    matrix=OUT/('integration-external-crab-matrix-'+crab_sha)/'run-1.log';assert 'test every_roll_across_current_levels_member_and_rates_has_exact_zero_xp_failure ... ok' in matrix.read_text()
+    add('OR-MIG-0068',crab_sha,'V1','PASS','Applicable authoritative requirements complete:310272controlled rolls/no-input-mutation/one draw and zero-XP failure advancement;30pre-RNG refusal probes;79actual-cache metadata refusals;48mixed/uniform full-bag World batches,56admission,56late cancellation,16life and112all-count1-28cases. Complete per-step inventory/Stats, member/current/rate, captured caps/order/no fallback, first3/repeat3clocks and per-success406fineXP at125%verified. Runtime token behavior is separately tested by genuine native Close/stale frames, not replaying trusted World descriptors.',[p.relative_to(ROOT).as_posix() for p in crab_authoritative]+[matrix.relative_to(ROOT).as_posix()],scope='crab-authoritative-obligations-complete')
+crab_durable=[OUT/folder/run/'independent-assessment.json' for folder,run in [('deep-crab-carving','native-001'),('deep-crab-interrupt','interrupt-002'),('deep-crab-crash','crash-001')]]
+if all(p.exists() and json.loads(p.read_text()).get('status')=='PASS' for p in crab_durable):
+    add('OR-MIG-0068',crab_sha,'V3','PASS','Applicable durability complete:24mixed native outputs/14625fineXP/Craft18persist through actual acknowledged save/process restart/independently decoded reconnect; consistent partial All preserves one0XPbroken product and22raws without resumed work. Separate owned unacknowledged termination restores prior complete inventory/Stats/energy on SQL and actual native restart. Stale frames, World death/cancellation and all-count caps separately pass; original startup failures preserved and sequential retry continuity proven. No mid-SQL injection claimed.',[p.relative_to(ROOT).as_posix() for p in crab_durable],scope='crab-durable-obligations-complete')
 path=OUT/'deep-battlestaves/native-001/independent-assessment.json'
 if path.exists():
     result=json.loads(path.read_text());assert result['status']=='PASS'
@@ -377,12 +449,39 @@ path=OUT/'sinew-acceptance.json'
 if path.exists():
     result=json.loads(path.read_text());assert result['status']=='ACCEPTED'
     for level,value in result['levels'].items():add('OR-MIG-0066',result['tested_sha'],level,value['status'],value['reason'],[path.relative_to(ROOT).as_posix()],scope='sinew-applicable-obligations-complete')
+path=OUT/'crab-custom-input-dependency.json'
+if path.exists():
+    result=json.loads(path.read_text());assert result['status']=='BLOCKED'
+    assert all((ROOT/p).exists() for p in result['completed_exact_target_evidence'])
+    add('OR-MIG-0068',result['tested_sha'],'V2','BLOCKED','Required native custom-input obligation remains unaccepted: PG-INFRA-009client focus/keyboard continuation dependency has no attested correction. Exact68native1/Allboth profiles,5/10shell packets,39normal outputs/restarts, Close/stale/partial/crash scopes PASS. No exact68Xfailure is alleged or inferred from another server; retain its full V0/V1/V3/V4PASS and proceed to other eligible work without newer-target substitution.',[path.relative_to(ROOT).as_posix()],scope='crab-native-custom-input-dependency-blocked')
 for name in ['gem-acceptance.json','shell-acceptance.json','immediate-acceptance.json','sinew-acceptance.json']:
     path=OUT/name
+    if name=='immediate-acceptance.json' and (OUT/'immediate-acceptance-withdrawal.json').exists():continue
     if not path.exists():continue
     result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='ACCEPTED' and all(v['status']=='PASS' for v in result['levels'].values())
     attempt='accepted-manual-'+result['implementation_id']+'-'+result['tested_sha']+'-r'+str(result['revision'])
     if attempt in known:continue
     row={'attempt_id':attempt,'implementation_id':result['implementation_id'],'implementation_commit_sha':result['tested_sha'],'contract_revision':result['revision'],'campaign_kind':'historical','outcome':'VERIFIED','level':'V0-V4 applicable manual subset','independent_verification':True,'tests_passed':0,'coverage':[k+' PASS: '+v['reason'] for k,v in result['levels'].items()],'reason':result['acceptance_scope']+'; aggregate acceptance only, no duplicate test-execution count. '+result['exclusions'],'evidence':[path.relative_to(ROOT).as_posix()],'issues':[]}
     with coarse.open('a',encoding='utf-8',newline='\n') as f:f.write(json.dumps(row)+'\n')
+finding=OUT/'immediate-life-finding.json'
+if finding.exists():
+    result=json.loads(finding.read_text());assert result['status']=='CONFIRMED_AUTHORITATIVE_BOUNDARY_FAILURE'
+    for level in ['V1','V3']:add('OR-MIG-0065',result['tested_sha'],level,'FAIL','PG-DEF-003: eight separate life refusal cases fail across both immediate recipes/directions/zeroHP/actual queued death restoredHP. Full selected raw replaced; limestone300fineXP at500. Four alive controls pass, no delayed replay. Aggregate acceptance withdrawn; prior V0/V2/V4 and successful scopes retained. Native reachability/currentHEAD unproven; ordinary P2 correction.',[finding.relative_to(ROOT).as_posix(),'docs/openrune/verification/independent/immediate-acceptance-withdrawal.json'],scope='immediate-life-acceptance-correction')
+    attempt='independent-PG-DEF-003-'+result['tested_sha']
+    if attempt not in known:
+        row={'attempt_id':attempt,'implementation_id':'OR-MIG-0065','implementation_commit_sha':result['tested_sha'],'contract_revision':1,'campaign_kind':'historical','outcome':'FAILED','level':'V1/V3 life refusal','independent_verification':True,'tests_passed':0,'coverage':['Eight individually isolated life failures, four alive controls.'],'reason':'PG-DEF-003; aggregate acceptance withdrawn append-only; preserve earlier successful scopes. No native reachability or currentHEAD inference.','evidence':[finding.relative_to(ROOT).as_posix(),'docs/openrune/verification/independent/immediate-acceptance-withdrawal.json'],'issues':['PG-DEF-003 ordinary P2 local backlog']}
+        with coarse.open('a',encoding='utf-8',newline='\n') as f:f.write(json.dumps(row)+'\n')
+path=OUT/'pair-authoritative-complete.json'
+if path.exists():
+    result=json.loads(path.read_text());assert result['status']=='PASS_APPLICABLE_V1'
+    add('OR-MIG-0069',result['tested_sha'],'V1','PASS',result['scope']+' '+result['partial_campaign_boundary'],[path.relative_to(ROOT).as_posix()],scope='pair-authoritative-obligations-complete')
+path=OUT/'pair-stringing-native-timing.json'
+if path.exists():
+    result=json.loads(path.read_text());assert result['status']=='PASS_SCOPED_TIMING_OBSERVATIONS'
+    for level in ['V2','V3','V4']:add('OR-MIG-0069',result['tested_sha'],level,'IN_PROGRESS','Native14stringing credits/2800fineXP are independently observed in raw18/46and saved SQL; fourteen exact server traces first1. Client submission-to-receive clocks are1/2/4/5and include asynchronous transport/runtime latency, not asserted equal to nominal1. Producer rawFAIL/124after all14credits and stale frames is retained; final driver assertion not reached. Whole14product save acknowledged; real reconnect remains resource-deferred and unaccepted until separately assessed.',[path.relative_to(ROOT).as_posix(),'docs/openrune/verification/independent/deep-pair-stringing/native-002/produce/manifest.json'],scope='native-pair-stringing-completed-credit-subcheck')
+for feature,run in [('pair-stringing','native-002'),('pair-stringing-reverse','native-001'),('pair-staves','native-001'),('pair-counts','native-001'),('pair-ten','native-001'),('pair-interrupt','native-001'),('pair-crash','native-001')]:
+    path=OUT/('deep-'+feature)/run/'independent-assessment.json'
+    if not path.exists():continue
+    result=json.loads(path.read_text());assert result['status']=='PASS'
+    for level in (['V3'] if feature in ['pair-interrupt','pair-crash'] else ['V0','V2','V3','V4']):add('OR-MIG-0069',result['tested_sha'],level,'IN_PROGRESS',result['scope']+' Applicable whole-level/whole-contract obligations remain separate; no inherited PASS or chemistry execution.',[path.relative_to(ROOT).as_posix()],scope='native-'+feature+'-independent')
 print('Per-level evidence events:',len(rows))

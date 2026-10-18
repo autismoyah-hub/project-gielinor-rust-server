@@ -1,0 +1,23 @@
+{
+  "implementation_id": "OR-MIG-0068",
+  "tested_sha": "894646a79fa4ba7e3e8b46af6ec000dc6b796514",
+  "status": "PASS",
+  "campaign_kind": "historical",
+  "native_observed_products_before_ready": 1,
+  "observed_good": 0,
+  "observed_broken": 1,
+  "observed_fine_award_before_ready": 0,
+  "durable_outputs": 0,
+  "scope": "Captured All23started through genuine native held Use and quantity transport. Consistent carved/broken inventory prefix observed, including valid zero-XP broken outcomes, before termination of only the owned disposable server without save acknowledgement. SQL and independently decoded actual native restart restore complete prior inventory/Stats/energy; no continued queue, duplicated products or XP.",
+  "limitations": [
+    "This is unacknowledged-state rollback, not injection during SQL transaction commit.",
+    "Further already-admitted native observations after ready may appear before owned termination; prior durable whole-state oracle is unchanged.",
+    "No natural probability or rendered/audio claim."
+  ],
+  "evidence_sha256": {
+    "produce/client.log": "13346fee3beb21796b988b473ad420f930e0de1561d326ecf9700f5e2d50f4ee",
+    "produce/manifest.json": "bb7d26b2dba83abf246e6af1fcbd566cf44fceb555dc0b813fc4f18038ad4ffe",
+    "relogin/client.log": "c3c3b884787f8db7f093bc6f313cd1ddd16f010d428963b0f787711d3874f974",
+    "relogin/manifest.json": "cedf47de7501dea7a087bd042c16d466d208355694dc9252f0689c18c8c61431"
+  }
+}

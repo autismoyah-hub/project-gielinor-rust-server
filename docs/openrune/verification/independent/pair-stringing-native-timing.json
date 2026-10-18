@@ -1,0 +1,150 @@
+{
+  "tested_sha": "fb348dda184b36ec2d503bfe0f1d5393cf8ae151",
+  "status": "PASS_SCOPED_TIMING_OBSERVATIONS",
+  "products": 14,
+  "observations": [
+    {
+      "slot": 0,
+      "output": 1692,
+      "count": 1,
+      "client_receive_tick": 143,
+      "client_submit_tick": 141,
+      "server_enqueued": 151,
+      "server_committed": 152,
+      "native_submit_to_receive": 2
+    },
+    {
+      "slot": 1,
+      "output": 1694,
+      "count": 1,
+      "client_receive_tick": 164,
+      "client_submit_tick": 162,
+      "server_enqueued": 172,
+      "server_committed": 173,
+      "native_submit_to_receive": 2
+    },
+    {
+      "slot": 2,
+      "output": 1696,
+      "count": 1,
+      "client_receive_tick": 183,
+      "client_submit_tick": 182,
+      "server_enqueued": 191,
+      "server_committed": 192,
+      "native_submit_to_receive": 1
+    },
+    {
+      "slot": 3,
+      "output": 1698,
+      "count": 1,
+      "client_receive_tick": 207,
+      "client_submit_tick": 205,
+      "server_enqueued": 215,
+      "server_committed": 216,
+      "native_submit_to_receive": 2
+    },
+    {
+      "slot": 4,
+      "output": 1700,
+      "count": 1,
+      "client_receive_tick": 228,
+      "client_submit_tick": 226,
+      "server_enqueued": 236,
+      "server_committed": 237,
+      "native_submit_to_receive": 2
+    },
+    {
+      "slot": 5,
+      "output": 1702,
+      "count": 1,
+      "client_receive_tick": 251,
+      "client_submit_tick": 249,
+      "server_enqueued": 259,
+      "server_committed": 260,
+      "native_submit_to_receive": 2
+    },
+    {
+      "slot": 6,
+      "output": 6581,
+      "count": 1,
+      "client_receive_tick": 280,
+      "client_submit_tick": 278,
+      "server_enqueued": 288,
+      "server_committed": 289,
+      "native_submit_to_receive": 2
+    },
+    {
+      "slot": 7,
+      "output": 19541,
+      "count": 1,
+      "client_receive_tick": 311,
+      "client_submit_tick": 309,
+      "server_enqueued": 319,
+      "server_committed": 320,
+      "native_submit_to_receive": 2
+    },
+    {
+      "slot": 8,
+      "output": 21108,
+      "count": 1,
+      "client_receive_tick": 342,
+      "client_submit_tick": 340,
+      "server_enqueued": 350,
+      "server_committed": 351,
+      "native_submit_to_receive": 2
+    },
+    {
+      "slot": 9,
+      "output": 21111,
+      "count": 1,
+      "client_receive_tick": 398,
+      "client_submit_tick": 394,
+      "server_enqueued": 406,
+      "server_committed": 407,
+      "native_submit_to_receive": 4
+    },
+    {
+      "slot": 10,
+      "output": 21114,
+      "count": 1,
+      "client_receive_tick": 462,
+      "client_submit_tick": 457,
+      "server_enqueued": 470,
+      "server_committed": 471,
+      "native_submit_to_receive": 5
+    },
+    {
+      "slot": 11,
+      "output": 1716,
+      "count": 1,
+      "client_receive_tick": 515,
+      "client_submit_tick": 511,
+      "server_enqueued": 523,
+      "server_committed": 524,
+      "native_submit_to_receive": 4
+    },
+    {
+      "slot": 12,
+      "output": 1722,
+      "count": 1,
+      "client_receive_tick": 571,
+      "client_submit_tick": 569,
+      "server_enqueued": 579,
+      "server_committed": 580,
+      "native_submit_to_receive": 2
+    },
+    {
+      "slot": 13,
+      "output": 10132,
+      "count": 1,
+      "client_receive_tick": 620,
+      "client_submit_tick": 618,
+      "server_enqueued": 628,
+      "server_committed": 629,
+      "native_submit_to_receive": 2
+    }
+  ],
+  "interpretation": "All14actual raw18outputs and client115submission clocks independently decoded. Authoritative queue-to-credit difference1for every recipe; raw native submission-to-receive includes asynchronous transport/runtime scheduling and is not equated with nominal first1. Keep World scheduling/source comparison and native wire latency distinct. No claim of rendered frames/audio or original executable parity.",
+  "raw_producer_status": "FAIL/124afterall14credits; no whole driver PASS",
+  "reconnect": "Actual process restart/frozen native reconnect PASS; independently decoded raw22/46and saved whole14products/2800fineXP/energy conserved. ProducerFAIL/124remains separate."
+}

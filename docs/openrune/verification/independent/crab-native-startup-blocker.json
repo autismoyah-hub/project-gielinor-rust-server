@@ -1,0 +1,20 @@
+{
+  "finding_id": "PG-INFRA-011",
+  "implementation_id": "OR-MIG-0068",
+  "tested_sha": "894646a79fa4ba7e3e8b46af6ec000dc6b796514",
+  "classification": "NATIVE_STARTUP_TEST_DEPENDENCY",
+  "status": "RESOLVED_BY_SEQUENTIAL_NATIVE_EXECUTION",
+  "implementation_defect_established": false,
+  "implementation_blocking": false,
+  "evidence": [
+    "docs/openrune/verification/independent/deep-crab-interrupt/interrupt-001/produce/manifest.json",
+    "docs/openrune/verification/independent/deep-crab-interrupt/interrupt-001/produce/client.log",
+    "docs/openrune/verification/independent/deep-crab-carving/native-001/relogin/manifest.json",
+    "docs/openrune/verification/independent/deep-crab-carving/native-001/relogin/client.log"
+  ],
+  "actual": "Both concurrent owned native clients exhausted the180second ready deadline, with received clock0/HP0and initialization scripts still processing. Actual initial full inventory22was received. Partial run never reached held/quantity action; reconnect never reached its6clock verify completion. Both runners preserved raw FAIL and acknowledged graceful server shutdown with unchanged resources. No gameplay result is inferred from a successful login alone.",
+  "scope": "Native positive24product campaign had already passed and saved9successful/15broken items,14625fineXP. That production is immutable and must not be repeated. Partial interrupt-001and failed reconnect are separate states/attempts. Transient contention is a hypothesis, not established root cause; resource admission guard passed before launch and later RAM guard deferred a separate recovery build.",
+  "next_action": "Retry only the failed normal reconnect alone using identical frozen client c39fdf017af33517e98bd0b826ad726da1373d007ab223f5c9950c9fa8183b1fand exact server21c90da4038d09280df01aedeb574f2a01b2d887e55c34cd188e7b09d3d81a09, new relogin-002output directory and same saved database. Original reconnect source/log/manifest/state remain untouched. No server substitution, successful campaign restart, or blanket deadline increase. Prepare fresh interrupt-002only after this single-client check; preserve failed interrupt-001database. Continue unrelated eligible verification if native startup remains blocked.",
+  "runner_change": "Optional relogin-attempt label is restricted to a failed crab reconnect and the original frozen client hash; creates a new phase directory/stopfile and never overwrites previous evidence. No gameplay/client-core or acceptance oracle weakened. Independent assessment verifies continuity from failed-attempt after-state to retry before-state and exact inventory/Stats through the saved original production.",
+  "resolution": "Same frozen normal client alone passed relogin-002without deadline/client changes and preserves24products/14625fineXP/Craft18. Fresh interrupt-002alone passes actual production/departure/restart: one broken shell at slot26,0fineXP,22raws retained. Original failed reconnect and interrupt-001database/logs remain untouched. Future owned native campaigns run one client at a time under the existing guard."
+}

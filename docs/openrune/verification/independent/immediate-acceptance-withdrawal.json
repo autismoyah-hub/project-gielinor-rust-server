@@ -1,0 +1,18 @@
+{
+  "implementation_id": "OR-MIG-0065",
+  "tested_sha": "4f4aacb2929e8ad775d091527e2d80070100ee69",
+  "revision": 1,
+  "status": "WITHDRAWN",
+  "reason": "New independent PG-DEF-003 life refusal failures invalidate aggregate acceptance. Earlier passing immutable scopes remain preserved; original acceptance artifact is retained as historical evidence.",
+  "prior_acceptance": "docs/openrune/verification/independent/immediate-acceptance.json",
+  "levels": {
+    "V0": "PASS",
+    "V1": "FAIL",
+    "V2": "PASS",
+    "V3": "FAIL",
+    "V4": "PASS"
+  },
+  "evidence": [
+    "docs/openrune/verification/independent/immediate-life-finding.json"
+  ]
+}

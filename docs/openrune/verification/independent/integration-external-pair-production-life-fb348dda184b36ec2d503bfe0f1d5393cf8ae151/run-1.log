@@ -1,0 +1,17 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\fb348dda184b36ec2d503bfe0f1d5393cf8ae151\external-harness-1325943800)
+warning: function `credit` is never used
+ --> tests\life.rs:5:4
+  |
+5 | fn credit(inv:&mut Inventory,first:usize,second:usize,out:i32){inv.restore_slot(first,None).unwrap();inv.restore_slot(second,None).un...
+  |    ^^^^^^
+  |
+  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `proving-ground-energy` (test "life") generated 1 warning
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 7.46s
+     Running tests\life.rs (C:\Projects\OSRSRSPS\agent7-verification\work\fb348dda184b36ec2d503bfe0f1d5393cf8ae151\target\debug\deps\life-6b496c0fe9f2c31f.exe)
+
+running 1 test
+test seventy_two_life_refusals_before_first_production_credit ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 9.73s

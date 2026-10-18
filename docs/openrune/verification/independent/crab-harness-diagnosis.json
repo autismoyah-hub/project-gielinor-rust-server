@@ -1,0 +1,15 @@
+{
+  "implementation_id": "OR-MIG-0068",
+  "tested_sha": "894646a79fa4ba7e3e8b46af6ec000dc6b796514",
+  "classification": "HARNESS_CORRECTIONS",
+  "implementation_defect_established": false,
+  "roll_campaign": "Original crab-matrix manifest is FAIL because a separate negative probe treated high256as invalid. The310272controlled-roll function passed completely. Shared API supports u16endpoints, as needed for limestone; corrected invalid high65536negative probes pass in separate crab-admission campaign. The completed roll function was not rerun.",
+  "lifecycle_attempts": [
+    {"directory": "integration-external-crab-lifecycle-894646a79fa4ba7e3e8b46af6ec000dc6b796514", "result": "Compile failure from Rust moved request across disjoint branches; corrected by cloning immutable internal descriptor. No gameplay tests executed."},
+    {"directory": "integration-external-crab-lifecycle-894646a79fa4ba7e3e8b46af6ec000dc6b796514-1792310566634811200", "result": "Unexpected draw assertion; source and log retained, case not identified by original output."},
+    {"directory": "integration-external-crab-lifecycle-894646a79fa4ba7e3e8b46af6ec000dc6b796514-1792310669173131700", "result": "Read-only case identity proves shell/forward modes0-3life checks pass and mode4direct internal Request replay after Close causes draw. This request contains registry data/slots/origin/cycle, not a runtime dialog token. World start API deliberately expects the host to validate a player continuation; bypassing that host is an unsupported token oracle, not a native player defect."},
+    {"directory": "integration-external-crab-lifecycle-894646a79fa4ba7e3e8b46af6ec000dc6b796514-1792310755713192800", "result": "Corrected16publicWorldlife cases PASS for both materials/directions: zeroHP and actual queued death with visibleHP restored, before start and after first zero-XP broken credit. Actual native Close and stale Resume/held transport are verified separately by the frozen native campaign; no life expectation weakened or implementation altered."}
+  ],
+  "native_assessor": "Pre-execution review caught broad textual substitution changing held packet length16to15while adapting the independent assessor; restored16before running it. Frozen native gameplay controller/binaries and server source unaffected.",
+  "limits": "No original client reproduction or current-HEAD acceptance inferred. Historical raw failures stay immutable. This does not change the independent OR67PG-DEF-002assembly life failure, whose genuine publicWorldqueue_hit proof consumes inputs and XP."
+}

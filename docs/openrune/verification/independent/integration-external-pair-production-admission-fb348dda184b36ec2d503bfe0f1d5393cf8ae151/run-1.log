@@ -1,0 +1,18 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\fb348dda184b36ec2d503bfe0f1d5393cf8ae151\external-harness-1463430800)
+warning: function `credit` is never used
+ --> tests\admission.rs:5:4
+  |
+5 | fn credit(inv:&mut Inventory,first:usize,second:usize,out:i32){inv.restore_slot(first,None).unwrap();inv.restore_slot(second,None).un...
+  |    ^^^^^^
+  |
+  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `proving-ground-energy` (test "admission") generated 1 warning
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 6.49s
+     Running tests\admission.rs (C:\Projects\OSRSRSPS\agent7-verification\work\fb348dda184b36ec2d503bfe0f1d5393cf8ae151\target\debug\deps\admission-72e6a26ab51a30c3.exe)
+
+running 1 test
+test six_hundred_thirty_six_initial_refusals_never_start_or_partially_credit has been running for over 60 seconds
+test six_hundred_thirty_six_initial_refusals_never_start_or_partially_credit ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 63.02s

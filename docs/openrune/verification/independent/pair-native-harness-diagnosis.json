@@ -1,0 +1,21 @@
+{
+  "tested_sha": "fb348dda184b36ec2d503bfe0f1d5393cf8ae151",
+  "status": "VISIBLE_CONTROL_CORRECTED; COMPLETED_CREDITS_AND_REAL_RECONNECT_INDEPENDENTLY_VERIFIED",
+  "original_attempt": "docs/openrune/verification/independent/deep-pair-stringing/native-001/produce/manifest.json",
+  "diagnosis": "A recipe with max_count1 presents only the All quantity child12. Actual captured interface widgets prove the1 control is absent. Verifier incorrectly demanded that invisible control; no implementation finding. Native Make/Close/stale response completed without inventory/Stats mutation before this assertion.",
+  "correction": "Use the genuinely visible All control capped by one available pair. Native staff with multiple pairs uses default Make-one and visible All for final remaining pair. No forced quantity, packet suppression, client core or server change.",
+  "retry": "Fresh native-002account/state only; preserve native-001failed logs and database.",
+  "initial_state_conserved": true,
+  "remaining_obligations": "Opposite held directions per stringing profile, builtin1/5/10/custom input, staff and production interrupted durability remain separate.",
+  "retry_observation": {
+    "attempt": "deep-pair-stringing/native-002",
+    "raw_status": "FAIL",
+    "client_exit": 124,
+    "all_products_credited_and_acknowledged_saved": 14,
+    "fine_xp_award": 2800,
+    "completed_per_profile_control_markers": 13,
+    "last_profile": "Rabbit-foot credit and both stale replay frames independently observed;390second bound expired before final control assertion.",
+    "next": "Completed actual frozen native reconnect PASS and independent raw22/46/whole SQL inventory/Stats/energy assessment PASS. Raw producerFAIL/124retained; no14credit replay. Proceed to pending staff/quantity/lifecycle cases.",
+    "future_harness_correction": "Opposite-direction run may use genuine default Make-one without the redundant quantity click for a max_count1dialog. Explicit All1 frames already recorded; multi-item quantity scenarios remain separate."
+  }
+}

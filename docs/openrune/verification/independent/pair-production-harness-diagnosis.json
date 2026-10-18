@@ -1,0 +1,39 @@
+{
+  "tested_sha": "fb348dda184b36ec2d503bfe0f1d5393cf8ae151",
+  "status": "RESOLVED_HARNESS_BOUNDARIES",
+  "attempts": [
+    {
+      "evidence_directory": "docs/openrune/verification/independent/integration-external-pair-production-fb348dda184b36ec2d503bfe0f1d5393cf8ae151",
+      "status": "FAIL",
+      "note": "Initial World clock oracle incorrectly compared action stamp to post-Late increment."
+    },
+    {
+      "evidence_directory": "docs/openrune/verification/independent/integration-external-pair-production-fb348dda184b36ec2d503bfe0f1d5393cf8ae151-1792312830355954000",
+      "status": "BLOCKED",
+      "note": "Retain original attempt; see bounded retry history."
+    },
+    {
+      "evidence_directory": "docs/openrune/verification/independent/integration-external-pair-production-fb348dda184b36ec2d503bfe0f1d5393cf8ae151-1792312972550233000",
+      "status": "BLOCKED",
+      "note": "Retain original attempt; see bounded retry history."
+    },
+    {
+      "evidence_directory": "docs/openrune/verification/independent/integration-external-pair-production-fb348dda184b36ec2d503bfe0f1d5393cf8ae151-1792313429253820500",
+      "status": "FAIL",
+      "note": "Retain original attempt; see bounded retry history."
+    },
+    {
+      "evidence_directory": "docs/openrune/verification/independent/integration-external-pair-production-fb348dda184b36ec2d503bfe0f1d5393cf8ae151-1792313480617687300",
+      "status": "PASS",
+      "note": "Retain original attempt; see bounded retry history."
+    }
+  ],
+  "diagnosis": [
+    "Action traces use pre-Late clock, while World.clock after tick has incremented. Oracle now samples public clock before calling tick and checks actual enqueue/commit stamps. Inventory/reward/cadence assertions preserved.",
+    "A measured resource refusal happened before test execution; no target substitution.",
+    "Corrected2592case campaign exceeded initial300second runner budget without final result. Owned process check after timeout found no remaining test. Original attempt marked BLOCKED without PASS claim.",
+    "Progress logging edit initially lacked one closing brace; compiler failure preserved, no test executed. Syntax-only repair followed.",
+    "Final same-SHA matrix ran with600second bounded budget and per-profile progress:2592World cases PASS. Successful immutable subcampaigns are not rerun."
+  ],
+  "production_code_modified": false
+}

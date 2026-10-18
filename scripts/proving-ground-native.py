@@ -11,6 +11,7 @@ DRIVER='server_combatmixing.exe'
 PIN='combatmixing-001'
 SCENARIO='combat'
 CONTRACT_SHA=SHA
+RELOGIN_ATTEMPT=None
 CHECKOUT=ROOT.parent/'agent7-targets'/SHA
 WORK=ROOT/'work/native-combat'
 RES=WORK/'resources'
@@ -137,9 +138,22 @@ def seed():
             mapping={0:1755,1:1755,27:995}
             for index,item in enumerate([1623,1621,1619,1617,1631,6571,19496,*range(3345,3362,2)]):mapping[4+index]=item
             mapping.update({20:1623,21:1623,22:1623,23:3345,24:3345,25:3345})
-            if SCENARIO in ['production-gem-batch','production-shell-batch','production-gem-x','production-gem-x-focus','production-gem-interrupt','production-shell-interrupt','production-gem-crash','immediate-staff','immediate-limestone','immediate-certainty','immediate-crash','fallible-gems','fallible-gem-interrupt','sinew','sinew-crash','battlestaves','battlestaff-crash']:
+            if SCENARIO in ['production-gem-batch','production-shell-batch','production-gem-x','production-gem-x-focus','production-gem-interrupt','production-shell-interrupt','production-gem-crash','immediate-staff','immediate-limestone','immediate-certainty','immediate-crash','fallible-gems','fallible-gem-interrupt','sinew','sinew-crash','battlestaves','battlestaff-crash','crab-carving','crab-interrupt','crab-crash','crab-quantities','pair-stringing','pair-staves','pair-stringing-reverse','pair-counts','pair-ten','pair-interrupt','pair-crash']:
                 mapping={0:1755,1:1755,27:995,**{slot:(1623 if SCENARIO.startswith('production-gem') else 3345) for slot in range(4,27)}}
             items=[(slot,mapping.get(slot,1931),1000 if slot==27 else 1) for slot in range(28)]
+        elif FEATURE=='OR-MIG-0069':
+            raws=[1673,1675,1677,1679,1681,1683,6579,19501,21099,21102,21105,1714,1720,10134]
+            items=[(slot,1759 if slot<14 else raws[slot-14],1) for slot in range(28)]
+            if SCENARIO in ['pair-counts','pair-ten','pair-interrupt','pair-crash']:
+                items=[(slot,1759 if slot<13 else 1673 if slot<26 else 1931 if slot==26 else 995,1000 if slot==27 else 1) for slot in range(28)]
+            if SCENARIO=='pair-staves':
+                mapping={0:1391,1:1391,27:995}
+                for i,orb in enumerate([571,575,569,573]):mapping.update({4+4*i:1391,5+4*i:1391,6+4*i:orb,7+4*i:orb})
+                items=[(slot,mapping.get(slot,1931),1000 if slot==27 else 1) for slot in range(28)]
+        elif FEATURE=='OR-MIG-0068':
+            items=[(slot,1755 if slot in [0,1] else 7538 if 2<=slot<=13 else 7536 if 14<=slot<=25 else 995 if slot==27 else 1931,1000 if slot==27 else 1) for slot in range(28)]
+            if SCENARIO in ['crab-interrupt','crab-crash','crab-quantities','pair-stringing','pair-staves','pair-stringing-reverse','pair-counts','pair-ten','pair-interrupt','pair-crash']:
+                items=[(slot,1755 if slot in [0,1] else 7538 if 4<=slot<=26 else 995 if slot==27 else 1931,1000 if slot==27 else 1) for slot in range(28)]
         elif FEATURE=='OR-MIG-0067':
             mapping={0:1391,1:1391,27:995}
             for i,orb in enumerate([571,575,569,573]):
@@ -184,8 +198,11 @@ def seed():
         db.execute('UPDATE characters SET x=3224,z=3218,level=0,world_id=NULL,xp_rate_in_hundreds=500,varps=? WHERE id=?',(json.dumps(varps),cid))
         if FEATURE=='OR-MIG-0054':db.execute('UPDATE characters SET x=3209,z=3222,level=2 WHERE id=?',(cid,))
         db.execute('UPDATE accounts SET members=1 WHERE login_username=?',('integration239',))
-        if FEATURE in ['OR-MIG-0056','OR-MIG-0057','OR-MIG-0062','OR-MIG-0063','OR-MIG-0065','OR-MIG-0066','OR-MIG-0067']:
+        if FEATURE in ['OR-MIG-0056','OR-MIG-0057','OR-MIG-0062','OR-MIG-0063','OR-MIG-0065','OR-MIG-0066','OR-MIG-0067','OR-MIG-0069']:
             db.execute('UPDATE stats SET vis_level=99,base_level=99,fine_xp=130344311 WHERE character_id=? AND stat_id=12',(cid,))
+            db.execute('UPDATE characters SET xp_rate_in_hundreds=500 WHERE id=?',(cid,))
+        if FEATURE=='OR-MIG-0068':
+            db.execute('UPDATE stats SET vis_level=15,base_level=15,fine_xp=24110 WHERE character_id=? AND stat_id=12',(cid,))
             db.execute('UPDATE characters SET xp_rate_in_hundreds=500 WHERE id=?',(cid,))
         if FEATURE=='OR-MIG-0064':
             db.execute('UPDATE stats SET vis_level=16,base_level=16,fine_xp=27460 WHERE character_id=? AND stat_id=12',(cid,))
@@ -214,7 +231,8 @@ def snapshot():
     db.close();return state
 def phase(mode):
     guard();name='produce' if mode=='assemble' else 'relogin'
-    fault=SCENARIO in ['chem-crash','gem-crash','glass-crash','production-gem-crash','immediate-crash','sinew-crash','battlestaff-crash'] and mode=='assemble'
+    if mode=='verify' and RELOGIN_ATTEMPT:name=RELOGIN_ATTEMPT
+    fault=SCENARIO in ['chem-crash','gem-crash','glass-crash','production-gem-crash','immediate-crash','sinew-crash','battlestaff-crash','crab-crash','pair-crash'] and mode=='assemble'
     dest=OUT/name;dest.mkdir(parents=True,exist_ok=False)
     shutil.copyfile(Path(__file__),dest/'launcher.txt')
     before=snapshot();save(dest/'before.json',before)
@@ -246,7 +264,7 @@ def phase(mode):
             assert address,'Exact-SHA server startup failed: '+(dest/'server.err').read_text(encoding='utf-8')[-2000:]
             print('LISTENING',address,flush=True)
             args=[str(RES/DRIVER),str(RES/'cache/js5'),address,'integration239',str(RES/'password'),str(RES/'keys/client.key'),mode]
-            if SCENARIO in ['chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','food-observer','prayer','gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells','production-gem-batch','production-shell-batch','production-gem-x','production-gem-x-focus','production-gem-interrupt','production-shell-interrupt','production-gem-crash','immediate-staff','immediate-limestone','immediate-certainty','immediate-crash','fallible-gems','fallible-gem-interrupt','sinew','sinew-crash','battlestaves','battlestaff-crash']:args[-1]=(SCENARIO if SCENARIO in ['chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','prayer','gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells','production-gem-batch','production-shell-batch','production-gem-x','production-gem-x-focus','production-gem-interrupt','production-shell-interrupt','production-gem-crash','immediate-staff','immediate-limestone','immediate-certainty','immediate-crash','fallible-gems','fallible-gem-interrupt','sinew','sinew-crash','battlestaves','battlestaff-crash'] else 'food') if mode=='assemble' else 'verify'
+            if SCENARIO in ['chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','food-observer','prayer','gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells','production-gem-batch','production-shell-batch','production-gem-x','production-gem-x-focus','production-gem-interrupt','production-shell-interrupt','production-gem-crash','immediate-staff','immediate-limestone','immediate-certainty','immediate-crash','fallible-gems','fallible-gem-interrupt','sinew','sinew-crash','battlestaves','battlestaff-crash','crab-carving','crab-interrupt','crab-crash','crab-quantities','pair-stringing','pair-staves','pair-stringing-reverse','pair-counts','pair-ten','pair-interrupt','pair-crash']:args[-1]=(SCENARIO if SCENARIO in ['chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','prayer','gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells','production-gem-batch','production-shell-batch','production-gem-x','production-gem-x-focus','production-gem-interrupt','production-shell-interrupt','production-gem-crash','immediate-staff','immediate-limestone','immediate-certainty','immediate-crash','fallible-gems','fallible-gem-interrupt','sinew','sinew-crash','battlestaves','battlestaff-crash','crab-carving','crab-interrupt','crab-crash','crab-quantities','pair-stringing','pair-staves','pair-stringing-reverse','pair-counts','pair-ten','pair-interrupt','pair-crash'] else 'food') if mode=='assemble' else 'verify'
             if SCENARIO=='food':
                 if mode=='assemble':args[-1]=str(dest/'native-events.jsonl')
                 else:args=[str(client_binary),str(RES/'cache/js5'),str(RES/'keys/client.key'),address,'integration239',str(RES/'password'),str(WORK/'relogin-private.capture')]
@@ -265,6 +283,8 @@ def phase(mode):
                                 if SCENARIO=='production-gem-crash':manifest['fault_scope']='Terminate only this freshly launched owned server during an unsaved native OR63All gem batch with captured raw items remaining; no normal logout/save requested'
                                 if SCENARIO=='sinew-crash':manifest['fault_scope']='Terminate only this freshly launched owned disposable RSPS server after one observed unsaved manual sinew credit and fineXP; no normal logout/save requested'
                                 if SCENARIO=='battlestaff-crash':manifest['fault_scope']='Terminate only this freshly launched owned disposable RSPS server after one observed unsaved manual battlestaff credit and fineXP; no normal logout/save requested'
+                                if SCENARIO=='pair-crash':manifest['fault_scope']='Terminate only this owned disposable RSPS server after an observed unsaved pair-production prefix; no normal logout/save requested'
+                                if SCENARIO=='crab-crash':manifest['fault_scope']='Terminate only this freshly launched owned disposable RSPS server after an observed unsaved crab-carving prefix; no normal logout/save requested, including valid zero-XP broken results'
                                 if SCENARIO=='immediate-crash':manifest['fault_scope']='Terminate only this freshly launched owned server after one unsaved native immediate limestone credit and fineXP; no normal logout/save requested'
                                 save(dest/'manifest.json',manifest)
                             time.sleep(.02)
@@ -301,7 +321,7 @@ def phase(mode):
     elif manifest['status']=='PASS' and (not manifest['save_acknowledgement'] or not manifest['graceful_shutdown'] or manifest['server_exit']!=0 or manifest['forced_shutdown']):manifest.update(status='BLOCKED',reason='Client finished but durable save or graceful shutdown evidence missing')
     save(dest/'manifest.json',manifest);print('NATIVE_RESULT',json.dumps(manifest),flush=True)
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('action',choices=['prepare','build','seed','produce','relogin']);p.add_argument('--feature',choices=['combat','chemistry','chemistry-worn','chemistry-last','chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','food','food-observer','prayer','gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells','production-gem-batch','production-shell-batch','production-gem-x','production-gem-x-focus','production-gem-interrupt','production-shell-interrupt','production-gem-crash','immediate-staff','immediate-limestone','immediate-certainty','immediate-crash','fallible-gems','fallible-gem-interrupt','sinew','sinew-crash','battlestaves','battlestaff-crash'],default='combat');p.add_argument('--integration-sha');p.add_argument('--run-id');a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('action',choices=['prepare','build','seed','produce','relogin']);p.add_argument('--feature',choices=['combat','chemistry','chemistry-worn','chemistry-last','chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','food','food-observer','prayer','gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells','production-gem-batch','production-shell-batch','production-gem-x','production-gem-x-focus','production-gem-interrupt','production-shell-interrupt','production-gem-crash','immediate-staff','immediate-limestone','immediate-certainty','immediate-crash','fallible-gems','fallible-gem-interrupt','sinew','sinew-crash','battlestaves','battlestaff-crash','crab-carving','crab-interrupt','crab-crash','crab-quantities','pair-stringing','pair-staves','pair-stringing-reverse','pair-counts','pair-ten','pair-interrupt','pair-crash'],default='combat');p.add_argument('--integration-sha');p.add_argument('--run-id');p.add_argument('--relogin-attempt');a=p.parse_args()
     SCENARIO=a.feature
     policy=ROOT/'docs/openrune/verification/USER_DEFERRALS.json'
     if policy.exists():
@@ -315,24 +335,28 @@ if __name__=='__main__':
         CHECKOUT=ROOT.parent/'agent7-targets'/SHA;WORK=ROOT/'work/native-food';OUT=ROOT/'docs/openrune/verification/independent/deep-food'
     if a.feature=='prayer':
         SHA='f6b0f6ad54fe7813bb6607827eeb8da0e60137fa';FEATURE='OR-MIG-0051';CHECKOUT=ROOT.parent/'agent7-targets'/SHA
-    if a.feature in ['gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells','production-gem-batch','production-shell-batch','production-gem-x','production-gem-x-focus','production-gem-interrupt','production-shell-interrupt','production-gem-crash','immediate-staff','immediate-limestone','immediate-certainty','immediate-crash','fallible-gems','fallible-gem-interrupt','sinew','sinew-crash','battlestaves','battlestaff-crash']:
+    if a.feature in ['gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells','production-gem-batch','production-shell-batch','production-gem-x','production-gem-x-focus','production-gem-interrupt','production-shell-interrupt','production-gem-crash','immediate-staff','immediate-limestone','immediate-certainty','immediate-crash','fallible-gems','fallible-gem-interrupt','sinew','sinew-crash','battlestaves','battlestaff-crash','crab-carving','crab-interrupt','crab-crash','crab-quantities','pair-stringing','pair-staves','pair-stringing-reverse','pair-counts','pair-ten','pair-interrupt','pair-crash']:
         SHA='5743cbe1c7499e2a7476c721d25dcba194666042';FEATURE='OR-MIG-0056';CHECKOUT=ROOT.parent/'agent7-targets'/SHA
     if a.feature=='shells':
         SHA='4c6b73cfcd3b35ce52aa79efd9d2a99464939445';FEATURE='OR-MIG-0057';CHECKOUT=ROOT.parent/'agent7-targets'/SHA
-    if a.feature in ['glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells','production-gem-batch','production-shell-batch','production-gem-x','production-gem-x-focus','production-gem-interrupt','production-shell-interrupt','production-gem-crash','immediate-staff','immediate-limestone','immediate-certainty','immediate-crash','fallible-gems','fallible-gem-interrupt','sinew','sinew-crash','battlestaves','battlestaff-crash']:
+    if a.feature in ['glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells','production-gem-batch','production-shell-batch','production-gem-x','production-gem-x-focus','production-gem-interrupt','production-shell-interrupt','production-gem-crash','immediate-staff','immediate-limestone','immediate-certainty','immediate-crash','fallible-gems','fallible-gem-interrupt','sinew','sinew-crash','battlestaves','battlestaff-crash','crab-carving','crab-interrupt','crab-crash','crab-quantities','pair-stringing','pair-staves','pair-stringing-reverse','pair-counts','pair-ten','pair-interrupt','pair-crash']:
         SHA='5ce50aede9164cdee8e4008257d0298ea77289e7';FEATURE='OR-MIG-0062';CHECKOUT=ROOT.parent/'agent7-targets'/SHA
     if a.feature=='pouch':
         SHA='7fc1306bb5c01540038ce5ff175b577294ade432';FEATURE='OR-MIG-0054';CHECKOUT=ROOT.parent/'agent7-targets'/SHA
     if a.feature in ['production-gems','production-shells','production-gem-batch','production-shell-batch','production-gem-x','production-gem-x-focus','production-gem-interrupt','production-shell-interrupt','production-gem-crash']:
         SHA='143dab04f28c3daed844da0af33d6af5edcd962d';FEATURE='OR-MIG-0063';CHECKOUT=ROOT.parent/'agent7-targets'/SHA
-    if a.feature in ['immediate-staff','immediate-limestone','immediate-certainty','immediate-crash','fallible-gems','fallible-gem-interrupt','sinew','sinew-crash','battlestaves','battlestaff-crash']:
+    if a.feature in ['immediate-staff','immediate-limestone','immediate-certainty','immediate-crash','fallible-gems','fallible-gem-interrupt','sinew','sinew-crash','battlestaves','battlestaff-crash','crab-carving','crab-interrupt','crab-crash','crab-quantities','pair-stringing','pair-staves','pair-stringing-reverse','pair-counts','pair-ten','pair-interrupt','pair-crash']:
         SHA='4f4aacb2929e8ad775d091527e2d80070100ee69';FEATURE='OR-MIG-0065';CHECKOUT=ROOT.parent/'agent7-targets'/SHA
-    if a.feature in ['fallible-gems','fallible-gem-interrupt','sinew','sinew-crash','battlestaves','battlestaff-crash']:
+    if a.feature in ['fallible-gems','fallible-gem-interrupt','sinew','sinew-crash','battlestaves','battlestaff-crash','crab-carving','crab-interrupt','crab-crash','crab-quantities','pair-stringing','pair-staves','pair-stringing-reverse','pair-counts','pair-ten','pair-interrupt','pair-crash']:
         SHA='0c489b46b552ad012e630810c1218dbaeb437a51';FEATURE='OR-MIG-0064';CHECKOUT=ROOT.parent/'agent7-targets'/SHA
-    if a.feature in ['sinew','sinew-crash','battlestaves','battlestaff-crash']:
+    if a.feature in ['sinew','sinew-crash','battlestaves','battlestaff-crash','crab-carving','crab-interrupt','crab-crash','crab-quantities','pair-stringing','pair-staves','pair-stringing-reverse','pair-counts','pair-ten','pair-interrupt','pair-crash']:
         SHA='5582c276d1657a0142151936e5a9fec022d7c938';FEATURE='OR-MIG-0066';CHECKOUT=ROOT.parent/'agent7-targets'/SHA
-    if a.feature in ['battlestaves','battlestaff-crash']:
+    if a.feature in ['battlestaves','battlestaff-crash','crab-carving','crab-interrupt','crab-crash','crab-quantities','pair-stringing','pair-staves','pair-stringing-reverse','pair-counts','pair-ten','pair-interrupt','pair-crash']:
         SHA='e3ced82211ee438fd6a74a110d435e6746295a16';FEATURE='OR-MIG-0067';CHECKOUT=ROOT.parent/'agent7-targets'/SHA
+    if a.feature in ['crab-carving','crab-interrupt','crab-crash','crab-quantities','pair-stringing','pair-staves','pair-stringing-reverse','pair-counts','pair-ten','pair-interrupt','pair-crash']:
+        SHA='894646a79fa4ba7e3e8b46af6ec000dc6b796514';FEATURE='OR-MIG-0068';CHECKOUT=ROOT.parent/'agent7-targets'/SHA
+    if a.feature in ['pair-stringing','pair-staves','pair-stringing-reverse','pair-counts','pair-ten','pair-interrupt','pair-crash']:
+        SHA='fb348dda184b36ec2d503bfe0f1d5393cf8ae151';FEATURE='OR-MIG-0069';CHECKOUT=ROOT.parent/'agent7-targets'/SHA
     CONTRACT_SHA=SHA
     if a.feature=='chemistry-worn':
         STATE='pg-chemistry-worn-native-001';DRIVER='server_chemistryworn.exe';PIN='chemistryworn-004'
@@ -340,7 +364,7 @@ if __name__=='__main__':
     if a.feature=='chemistry-last':
         STATE='pg-chemistry-last-native-001';DRIVER='server_chemistry.exe';PIN='chemistry-001'
         WORK=ROOT/'work/native-chemistry-last';OUT=ROOT/'docs/openrune/verification/independent/deep-chemistry-last'
-    if a.feature in ['chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','food-observer','prayer','gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells','production-gem-batch','production-shell-batch','production-gem-x','production-gem-x-focus','production-gem-interrupt','production-shell-interrupt','production-gem-crash','immediate-staff','immediate-limestone','immediate-certainty','immediate-crash','fallible-gems','fallible-gem-interrupt','sinew','sinew-crash','battlestaves','battlestaff-crash']:
+    if a.feature in ['chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','food-observer','prayer','gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells','production-gem-batch','production-shell-batch','production-gem-x','production-gem-x-focus','production-gem-interrupt','production-shell-interrupt','production-gem-crash','immediate-staff','immediate-limestone','immediate-certainty','immediate-crash','fallible-gems','fallible-gem-interrupt','sinew','sinew-crash','battlestaves','battlestaff-crash','crab-carving','crab-interrupt','crab-crash','crab-quantities','pair-stringing','pair-staves','pair-stringing-reverse','pair-counts','pair-ten','pair-interrupt','pair-crash']:
         observer_build=json.loads((ROOT/'docs/openrune/verification/independent/client-observer-build/build.json').read_text(encoding='utf-8'));assert observer_build['status']=='PASS'
         STATE='pg-'+a.feature+'-001';DRIVER='pg_observer-'+observer_build['binaries']['pg_observer.exe'][:12]+'.exe';PIN='pg-observer'
         WORK=ROOT/'work'/('native-'+a.feature);OUT=ROOT/'docs/openrune/verification/independent'/('deep-'+a.feature)
@@ -357,6 +381,11 @@ if __name__=='__main__':
     if PIN=='pg-observer' and a.action in ['produce','relogin']:
         frozen=json.loads((OUT/'resources.json').read_text(encoding='utf-8'))['driver_manifest']['files']
         DRIVER,=frozen;assert digest(RES/DRIVER)==frozen[DRIVER]
+    if a.relogin_attempt:
+        assert a.action=='relogin' and a.feature=='crab-carving' and re.fullmatch('relogin-[a-z0-9-]{1,16}',a.relogin_attempt)
+        prior=json.loads((OUT/'relogin/manifest.json').read_text(encoding='utf-8'))
+        assert prior['status']=='FAIL' and prior['client_sha256']==digest(RES/DRIVER),'Retry only a failed reconnect using the original frozen native driver'
+        RELOGIN_ATTEMPT=a.relogin_attempt
     if a.action=='prepare':prepare()
     elif a.action=='build':build()
     elif a.action=='seed':seed()

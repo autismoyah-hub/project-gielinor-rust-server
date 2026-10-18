@@ -152,4 +152,20 @@ Fresh `deep-food-observer/observer-001` completed six actual native actions, inc
 - Source diagnosis: assembly held-use admission checks membership/current skill; deferred completion calls the atomic item/reward API without authoritative player life. Require zeroHP/death-queued refusal at both admission and completion, including restored visibleHP without respawn. Review shared consumers, preserve integer/precise/immediate behavior and publish exact correction SHA/revision. Retest historical failure separately; never substitute a newer target silently.
 - OR67 V1 remains FAIL and full acceptance is withheld. Continue native restart scopes and unrelated contracts while FORGE implements. The initial resource-deferred attempt and all failures remain preserved.
 
+## PG-INFRA-011 — concurrent native startup deadline, resolved by sequential runs
+
+- OR68 exact `894646a79fa4ba7e3e8b46af6ec000dc6b796514`. Native test dependency; implementation defect not established, nonblocking, no external issue.
+- Concurrent `deep-crab-interrupt/interrupt-001/produce` and `deep-crab-carving/native-001/relogin` reached the180second ready deadline at receive clock0/HP0with initialization scripts pending. Both emitted zero gameplay sends and retained whole inventory/Stats; acknowledged graceful shutdown/resource identities passed. Original raw FAIL results and databases stay immutable.
+- Identical frozen normal client `c39fdf017af33517e98bd0b826ad726da1373d007ab223f5c9950c9fa8183b1f` alone passes `relogin-002`; independent packet/SQL oracle preserves all24outputs/14625fineXP/Craft18and proves retry-before equals failed-reconnect after-state. Optional immutable reconnect-attempt output label is restricted to a prior failed crab reconnect and the same frozen client; no original evidence overwrite or successful production repeat.
+- Fresh `interrupt-002` alone passes native partial All/restart with1broken shell/0XPand22raws. No deadline or client-core change was required. Run owned native clients one at a time under existing resource guard; contention is the supported operational diagnosis, exact root cause unproven. See `independent/crab-native-startup-blocker.json` for identities/history.
+
+## PG-INFRA-009 scope — remaining OR68 native custom input
+
+- OR68 exact `894646a79fa4ba7e3e8b46af6ec000dc6b796514` has V0/V1/V3/V4PASS, including310272rolls/288World fixtures/79cache refusals,39normal native products/restarts, partial zero-XP broken save and owned unsaved-state recovery. Native1/Allboth profiles and5/10shell packets pass.
+- Remaining custom-Xnative acceptance is BLOCKED on the unchanged pinned client focus/input dependency. No exact68Xfailure is alleged and no older server result is inherited. Older62/63X10failures retain their exact identities; no functional client correction is currently attested. Preserve full evidence and continue OR69 rather than force quantities or use a newer server. See `independent/crab-custom-input-dependency.json`.
+
 For each confirmed defect, record a stable finding ID, feature ID, full tested SHA, severity, expected/actual states, precise reproduction and scenario, evidence paths, affected dependency chain, implementation-blocking status, GitHub issue, and correction/retest history. Preserve historical failures after a fix. Search existing issues before filing a duplicate.
+
+## PG-DEF-003 - immediate tool crafting ignores authoritative life
+
+OR-MIG-0065 r1 at `4f4aacb2929e8ad775d091527e2d80070100ee69`: eight separate World refusal cases fail across both recipes, directions, zero HP and queued death with visible HP restored. Selected raw is replaced immediately; limestone awards 300 fine XP at rate500. Four alive controls pass. Native reachability/current HEAD remain untested. Apply shared life checks before immediate admission/credit and publish correction SHA; ordinary P2, no FORGE stop. Aggregate acceptance is withdrawn append-only; prior successful evidence remains intact. See [finding](independent/immediate-life-finding.json) and [withdrawal](independent/immediate-acceptance-withdrawal.json).

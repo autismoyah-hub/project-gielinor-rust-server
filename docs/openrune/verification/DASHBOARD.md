@@ -1,21 +1,21 @@
-# PROVING GROUND — current verification status
+# PROVING GROUND â€” current verification status
 
-This is an ongoing verification campaign. 4 current contract(s) accepted across applicable V0–V4 levels at their exact implementation SHAs. Historical results and current integration checks are separate.
+This is an ongoing verification campaign. 3 current contract(s) accepted across applicable V0â€“V4 levels at their exact implementation SHAs. Historical results and current integration checks are separate.
 
 ## Intake
 
-Latest observed FORGE HEAD: `38fb1fd7b1e6f274d48f31feb66b71794e5c6e0c`.
-Exact queue SHA256: `fcfc3fcd359890f621720c79d679dcfb132634f7d521e0bbd02f1b1fff28d16e`.
-Published queue: 100 records / 91 stable implementation IDs. Published validator: PASS.
+Latest observed FORGE HEAD: `1db90b0b3adc97db4d6118b816ee64fca0d46e56`.
+Exact queue SHA256: `0e5cf9a333d046586a45b633fb2d9785c11f6b34dd44605b6814cfec5011601d`.
+Published queue: 105 records / 96 stable implementation IDs. Published validator: PASS.
 The copied queue is refreshed only from fetched immutable blobs after append-history checks. Current coverage and every contract revision are retained in [WORKLIST.json](WORKLIST.json). Synchronization observations are append-only in [SYNC_OBSERVATIONS.jsonl](SYNC_OBSERVATIONS.jsonl).
 
 ## Level coverage
 
-- V0: PASS 11, FAIL 0, BLOCKED 0, IN_PROGRESS 6, NOT_STARTED 74, NOT_APPLICABLE 0.
-- V1: PASS 6, FAIL 1, BLOCKED 0, IN_PROGRESS 13, NOT_STARTED 71, NOT_APPLICABLE 0.
-- V2: PASS 5, FAIL 0, BLOCKED 3, IN_PROGRESS 4, NOT_STARTED 79, NOT_APPLICABLE 0.
-- V3: PASS 6, FAIL 1, BLOCKED 0, IN_PROGRESS 5, NOT_STARTED 79, NOT_APPLICABLE 0.
-- V4: PASS 5, FAIL 0, BLOCKED 0, IN_PROGRESS 10, NOT_STARTED 76, NOT_APPLICABLE 0.
+- V0: PASS 12, FAIL 0, BLOCKED 0, IN_PROGRESS 7, NOT_STARTED 77, NOT_APPLICABLE 0.
+- V1: PASS 7, FAIL 2, BLOCKED 0, IN_PROGRESS 12, NOT_STARTED 75, NOT_APPLICABLE 0.
+- V2: PASS 5, FAIL 0, BLOCKED 4, IN_PROGRESS 5, NOT_STARTED 82, NOT_APPLICABLE 0.
+- V3: PASS 6, FAIL 2, BLOCKED 0, IN_PROGRESS 6, NOT_STARTED 82, NOT_APPLICABLE 0.
+- V4: PASS 6, FAIL 0, BLOCKED 0, IN_PROGRESS 10, NOT_STARTED 80, NOT_APPLICABLE 0.
 
 User direction: chemistry, potion and Herblore tests are DEFERRED. Historical evidence and findings remain intact. Continue Prayer, food without new potion setup, cooking, assembly, smithing, packs, Crafting and other eligible work. General resume does not lift the chemistry deferral. See [USER_DEFERRALS.json](USER_DEFERRALS.json).
 
@@ -24,8 +24,8 @@ PASS applies only to the named level, target and scope. IN_PROGRESS retains pass
 ## Deep evidence
 
 - Super-combat at `5a260c1b`: six genuine native inventory/menu combinations; exact item/quantity packets and authoritative two-tick transitions; six outputs and 45,000 fine XP; acknowledged save, actual process restart and native relogin without replay. [Assessment](independent/deep-combat/independent-assessment.json).
-- Chemistry at `e7ac3608`: native Options→Stop→Break→Confirm; selected amulet removal, five next-amulet charges and durable stop policy; actual restart/native relogin. [Assessment](independent/deep-chemistry/independent-assessment.json).
-- Historical worn chemistry at `e7ac3608`: separate real native equipment Options→Stop, acknowledged save, process restart and native relogin. Worn amulet, charges, stop policy, coins and XP conserved. [Assessment](independent/deep-chemistry-worn/hist-worn-002/independent-assessment.json).
+- Chemistry at `e7ac3608`: native Optionsâ†’Stopâ†’Breakâ†’Confirm; selected amulet removal, five next-amulet charges and durable stop policy; actual restart/native relogin. [Assessment](independent/deep-chemistry/independent-assessment.json).
+- Historical worn chemistry at `e7ac3608`: separate real native equipment Optionsâ†’Stop, acknowledged save, process restart and native relogin. Worn amulet, charges, stop policy, coins and XP conserved. [Assessment](independent/deep-chemistry-worn/hist-worn-002/independent-assessment.json).
 - Reference comparison: seven independently hashed source/pinned Wiki records for super-combat, plus chemistry control source inspection. Documented dose, timing, boost and transaction adaptations remain distinct from literal donor behavior. [Comparison](independent/deep-combat/reference-comparison.json).
 - Food revisions 2 (`a560034a`) and 3 (`ae3d234c`): the four independently authored tests passed separately at both exact SHAs, with 319 synthetic fixtures per target through actual `World::submit`/`World::tick`; stale claims, duplicate/replay input, full bags, remainders, malformed inputs and overheal. Initial verifier assumptions and failed source/logs are preserved. [Test source](../../../verification/ordinary-food/tests/authoritative.rs).
 - Food revision3 native: meat confirmed by client; cake commit confirmed by server trace and real restarted native inventory capture (2,061 packets). The six-action driver timed out at an intermediate-HP equality check; four remaining bites were unverified in that original run; fresh instrumented observer-001 completed all six actions and real restart/relogin. Passive-regeneration diagnosis and raw failure are retained. [Partial assessment](independent/deep-food/independent-assessment.json).
@@ -54,7 +54,13 @@ No rendered-window, original-executable differential or crash-atomicity acceptan
 - `894646a79fa4ba7e3e8b46af6ec000dc6b796514`: raw attempt BLOCKED; 0 test executions passed. Measured-resource deferral; no substitute target: Measured resource guard blocked; no other process altered [Manifest](independent/integration-external-crab-admission-894646a79fa4ba7e3e8b46af6ec000dc6b796514/manifest.json).
 - `894646a79fa4ba7e3e8b46af6ec000dc6b796514`: raw attempt PASS; crab-admission 1 test executions passed.  [Manifest](independent/integration-external-crab-admission-894646a79fa4ba7e3e8b46af6ec000dc6b796514-1792310079206993900/manifest.json).
 - `894646a79fa4ba7e3e8b46af6ec000dc6b796514`: raw attempt PASS; crab-bindings 1 test executions passed.  [Manifest](independent/integration-external-crab-bindings-894646a79fa4ba7e3e8b46af6ec000dc6b796514/manifest.json).
+- `894646a79fa4ba7e3e8b46af6ec000dc6b796514`: raw attempt PASS; crab-counts 1 test executions passed.  [Manifest](independent/integration-external-crab-counts-894646a79fa4ba7e3e8b46af6ec000dc6b796514/manifest.json).
+- `894646a79fa4ba7e3e8b46af6ec000dc6b796514`: raw attempt FAIL; 0 test executions passed.  [Manifest](independent/integration-external-crab-lifecycle-894646a79fa4ba7e3e8b46af6ec000dc6b796514/manifest.json).
+- `894646a79fa4ba7e3e8b46af6ec000dc6b796514`: raw attempt FAIL; 0 test executions passed.  [Manifest](independent/integration-external-crab-lifecycle-894646a79fa4ba7e3e8b46af6ec000dc6b796514-1792310566634811200/manifest.json).
+- `894646a79fa4ba7e3e8b46af6ec000dc6b796514`: raw attempt FAIL; 0 test executions passed.  [Manifest](independent/integration-external-crab-lifecycle-894646a79fa4ba7e3e8b46af6ec000dc6b796514-1792310669173131700/manifest.json).
+- `894646a79fa4ba7e3e8b46af6ec000dc6b796514`: raw attempt PASS; crab-lifecycle 1 test executions passed.  [Manifest](independent/integration-external-crab-lifecycle-894646a79fa4ba7e3e8b46af6ec000dc6b796514-1792310755713192800/manifest.json).
 - `894646a79fa4ba7e3e8b46af6ec000dc6b796514`: raw attempt FAIL; crab-matrix 1 test executions passed.  [Manifest](independent/integration-external-crab-matrix-894646a79fa4ba7e3e8b46af6ec000dc6b796514/manifest.json).
+- `894646a79fa4ba7e3e8b46af6ec000dc6b796514`: raw attempt PASS; crab-world 3 test executions passed.  [Manifest](independent/integration-external-crab-world-894646a79fa4ba7e3e8b46af6ec000dc6b796514/manifest.json).
 - `97b25c57d4c6dc0606adf91dd00e41ec43600a27`: raw attempt PASS; energy-food 2 test executions passed.  [Manifest](independent/integration-external-energy-food-97b25c57d4c6dc0606adf91dd00e41ec43600a27/manifest.json).
 - `0c489b46b552ad012e630810c1218dbaeb437a51`: raw attempt PASS; fallible-gem-bindings 1 test executions passed.  [Manifest](independent/integration-external-fallible-gem-bindings-0c489b46b552ad012e630810c1218dbaeb437a51/manifest.json).
 - `0c489b46b552ad012e630810c1218dbaeb437a51`: raw attempt PASS; fallible-gem-matrix 2 test executions passed.  [Manifest](independent/integration-external-fallible-gem-matrix-0c489b46b552ad012e630810c1218dbaeb437a51/manifest.json).
@@ -75,11 +81,24 @@ No rendered-window, original-executable differential or crash-atomicity acceptan
 - `4f4aacb2929e8ad775d091527e2d80070100ee69`: raw attempt FAIL; 0 test executions passed.  [Manifest](independent/integration-external-immediate-admission-4f4aacb2929e8ad775d091527e2d80070100ee69/manifest.json).
 - `4f4aacb2929e8ad775d091527e2d80070100ee69`: raw attempt PASS; immediate-admission 1 test executions passed.  [Manifest](independent/integration-external-immediate-admission-4f4aacb2929e8ad775d091527e2d80070100ee69-1792303105597419600/manifest.json).
 - `4f4aacb2929e8ad775d091527e2d80070100ee69`: raw attempt PASS; immediate-bindings 1 test executions passed.  [Manifest](independent/integration-external-immediate-bindings-4f4aacb2929e8ad775d091527e2d80070100ee69/manifest.json).
+- `4f4aacb2929e8ad775d091527e2d80070100ee69`: raw attempt FAIL; immediate-life 1 test executions passed.  [Manifest](independent/integration-external-immediate-life-4f4aacb2929e8ad775d091527e2d80070100ee69/manifest.json).
 - `4f4aacb2929e8ad775d091527e2d80070100ee69`: raw attempt BLOCKED; 0 test executions passed. Measured-resource deferral; no substitute target: Measured resource guard blocked; no other process altered [Manifest](independent/integration-external-immediate-regression-4f4aacb2929e8ad775d091527e2d80070100ee69/manifest.json).
 - `4f4aacb2929e8ad775d091527e2d80070100ee69`: raw attempt PASS; immediate-regression 3 test executions passed.  [Manifest](independent/integration-external-immediate-regression-4f4aacb2929e8ad775d091527e2d80070100ee69-1792304046343193900/manifest.json).
 - `4f4aacb2929e8ad775d091527e2d80070100ee69`: raw attempt PASS; immediate-tools 3 test executions passed.  [Manifest](independent/integration-external-immediate-tools-4f4aacb2929e8ad775d091527e2d80070100ee69/manifest.json).
 - `ad739676dd01f5be809cdfe5ecf4f1e6ea77238a`: raw attempt PASS; light-conversion-world 1 test executions passed.  [Manifest](independent/integration-external-light-conversion-world-ad739676dd01f5be809cdfe5ecf4f1e6ea77238a/manifest.json).
 - `ad739676dd01f5be809cdfe5ecf4f1e6ea77238a`: raw attempt PASS; light-source-world 3 test executions passed.  [Manifest](independent/integration-external-light-source-world-ad739676dd01f5be809cdfe5ecf4f1e6ea77238a/manifest.json).
+- `fb348dda184b36ec2d503bfe0f1d5393cf8ae151`: raw attempt PASS; pair-production-admission 1 test executions passed.  [Manifest](independent/integration-external-pair-production-admission-fb348dda184b36ec2d503bfe0f1d5393cf8ae151/manifest.json).
+- `fb348dda184b36ec2d503bfe0f1d5393cf8ae151`: raw attempt PASS; pair-production-bindings 1 test executions passed.  [Manifest](independent/integration-external-pair-production-bindings-fb348dda184b36ec2d503bfe0f1d5393cf8ae151/manifest.json).
+- `fb348dda184b36ec2d503bfe0f1d5393cf8ae151`: raw attempt BLOCKED; 0 test executions passed. Original bounded300second wrapper timeout; no final test result and no remaining owned counts executable. Preserve728verified per-profile subcases0-12; profiles13-17remain unaccepted. Continue only remaining5profiles, no repetition of completed subcampaign. [Manifest](independent/integration-external-pair-production-counts-fb348dda184b36ec2d503bfe0f1d5393cf8ae151/manifest.json).
+- `fb348dda184b36ec2d503bfe0f1d5393cf8ae151`: raw attempt PASS; pair-production-counts-tail 1 test executions passed.  [Manifest](independent/integration-external-pair-production-counts-tail-fb348dda184b36ec2d503bfe0f1d5393cf8ae151/manifest.json).
+- `fb348dda184b36ec2d503bfe0f1d5393cf8ae151`: raw attempt FAIL; 0 test executions passed.  [Manifest](independent/integration-external-pair-production-fb348dda184b36ec2d503bfe0f1d5393cf8ae151/manifest.json).
+- `fb348dda184b36ec2d503bfe0f1d5393cf8ae151`: raw attempt BLOCKED; 0 test executions passed. Measured-resource deferral; no substitute target: Measured resource guard blocked; no other process altered [Manifest](independent/integration-external-pair-production-fb348dda184b36ec2d503bfe0f1d5393cf8ae151-1792312830355954000/manifest.json).
+- `fb348dda184b36ec2d503bfe0f1d5393cf8ae151`: raw attempt BLOCKED; 0 test executions passed. Owned Cargo runner reached300second limit before the full2592Worldmatrix reported completion. Targeted post-timeout inspection found no remaining owned test process. No gameplay verdict or whole-case acceptance inferred. Original log/harness retained; correct action-clock oracle remains unchanged. Retry bounded workload under600second budget with profile-boundary observation, no successful campaign repeated. [Manifest](independent/integration-external-pair-production-fb348dda184b36ec2d503bfe0f1d5393cf8ae151-1792312972550233000/manifest.json).
+- `fb348dda184b36ec2d503bfe0f1d5393cf8ae151`: raw attempt FAIL; 0 test executions passed.  [Manifest](independent/integration-external-pair-production-fb348dda184b36ec2d503bfe0f1d5393cf8ae151-1792313429253820500/manifest.json).
+- `fb348dda184b36ec2d503bfe0f1d5393cf8ae151`: raw attempt PASS; pair-production 1 test executions passed.  [Manifest](independent/integration-external-pair-production-fb348dda184b36ec2d503bfe0f1d5393cf8ae151-1792313480617687300/manifest.json).
+- `fb348dda184b36ec2d503bfe0f1d5393cf8ae151`: raw attempt PASS; pair-production-late 1 test executions passed.  [Manifest](independent/integration-external-pair-production-late-fb348dda184b36ec2d503bfe0f1d5393cf8ae151/manifest.json).
+- `fb348dda184b36ec2d503bfe0f1d5393cf8ae151`: raw attempt PASS; pair-production-life 1 test executions passed.  [Manifest](independent/integration-external-pair-production-life-fb348dda184b36ec2d503bfe0f1d5393cf8ae151/manifest.json).
+- `fb348dda184b36ec2d503bfe0f1d5393cf8ae151`: raw attempt PASS; pair-production-regression 3 test executions passed.  [Manifest](independent/integration-external-pair-production-regression-fb348dda184b36ec2d503bfe0f1d5393cf8ae151/manifest.json).
 - `7fc1306bb5c01540038ce5ff175b577294ade432`: raw attempt PASS; pouch-bindings 1 test executions passed.  [Manifest](independent/integration-external-pouch-bindings-7fc1306bb5c01540038ce5ff175b577294ade432/manifest.json).
 - `7fc1306bb5c01540038ce5ff175b577294ade432`: raw attempt PASS; pouch-matrix 3 test executions passed.  [Manifest](independent/integration-external-pouch-matrix-7fc1306bb5c01540038ce5ff175b577294ade432/manifest.json).
 - `f6b0f6ad54fe7813bb6607827eeb8da0e60137fa`: raw attempt FAIL; 0 test executions passed.  [Manifest](independent/integration-external-prayer-cache-f6b0f6ad54fe7813bb6607827eeb8da0e60137fa/manifest.json).
@@ -100,6 +119,8 @@ An older integration PASS is not a PASS on a newer FORGE HEAD. Change-impact lis
 
 - Last-charge chemistry full-bag native production and stop-on-crumble with one pair remaining plus real restart PASS. Independent 22000-case chemistry modifier matrix PASS; complete V1-V4 obligations remain separate.
 - Confirmed critical/dependency-blocking gameplay findings: none in completed scoped tests.
+- OR69 at `fb348dda`: V1 PASS across4,872World cases,128shared controls and421actual-cache refusals. Fourteen native stringing credits/2,800fineXP persist through actual reconnect; raw producer timeout remains separate. Native staff/quantities/interrupted durability remain open.
+- PG-DEF-002: exact OR67 precise assembly can credit at zeroHP/queued death; V1/V3FAIL. PG-DEF-003: exact OR65 immediate tool paths fail eight life refusal cases; prior aggregate acceptance withdrawn append-only. Both ordinary P2 local corrections; native reachability/currentHEAD unproven.
 - Confirmed ordinary gameplay defect PG-DEF-001: genuine Close95 leaves chemistry policy dialog live at e7ac3608; stale Stop changes saved policy. V2 FAIL; ordinary P2, not implementation-blocking. GitHub issue123.
 - Verifier defects: initial filter, food trace/dirty-slot assumptions and dynamic-food types/labels corrected. PG-INFRA-004 no longer blocks execution: fresh observer captured HP2->3 regeneration before Eat, all six actions and real restart/relogin. Original unrecorded missed-equality sequence remains inferred. [Backlog](CORRECTION_BACKLOG.md).
 - Resource deferrals used measured CPU/RAM; later builds used one job and private targets. No unrelated process was changed.
@@ -108,102 +129,107 @@ An older integration PASS is not a PASS on a newer FORGE HEAD. Change-impact lis
 
 ## Active work and continuation
 
-- Lane B — OR-MIG-0051 at `f6b0f6ad54fe7813bb6607827eeb8da0e60137fa`: Complete native selected burial, stale claimed slot, full inventory, real restart and supported reference comparison; chemistry/Herblore/potions deferred by user.
-- Lane B — OR-MIG-0023 at `caefcf424869d2a54d711acd22a279351f098be0`: Continue native pack profiles and durable interrupted repeat work.
-- Lane A — OR-MIG-0054 at `7fc1306bb5c01540038ce5ff175b577294ade432`: Initial exact-SHA coin-pouch quantity/overflow/selected stack verification.
+- Lane B â€” OR-MIG-0051 at `f6b0f6ad54fe7813bb6607827eeb8da0e60137fa`: Complete native selected burial, stale claimed slot, full inventory, real restart and supported reference comparison; chemistry/Herblore/potions deferred by user.
+- Lane B â€” OR-MIG-0023 at `caefcf424869d2a54d711acd22a279351f098be0`: Continue native pack profiles and durable interrupted repeat work.
+- Lane A â€” OR-MIG-0054 at `7fc1306bb5c01540038ce5ff175b577294ade432`: Initial exact-SHA coin-pouch quantity/overflow/selected stack verification.
 
 [RESUME_QUEUE.json](RESUME_QUEUE.json) contains exact targets and all outstanding feature levels. Do not infer that work runs after the active session ends.
 
 ## Current contract coverage
 
-- **OR-MIG-0001 r1** `d8978ede5677` — Manual ordinary herb cleaning; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
-- **OR-MIG-0002 r1** `a5e21e03c483` — Unfinished potions: ordinary water and three alternate bases; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
-- **OR-MIG-0003 r1** `f3b4b984af8f` — Initial twenty-nine finished-potion profiles; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
-- **OR-MIG-0004 r1** `613b29ac4e3d` — Herb tar batch production; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
-- **OR-MIG-0005 r1** `87c4a3def092` — Seven ordinary tool-preserving grinding routes; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
-- **OR-MIG-0006 r2** `b11260e0f4d1` — Ordinary chemistry charges and Options/Break controls; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
-- **OR-MIG-0007 r1** `693dd370dac7` — Stamina dose upgrades; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
-- **OR-MIG-0008 r1** `03bffb1fab1d` — Extended anti-venom+ dose upgrades; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
-- **OR-MIG-0009 r1** `29d9751117da` — Thirty-two divine dose upgrades; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
-- **OR-MIG-0010 r1** `5a260c1bd6ef` — Four-input super combat production; V0 PASS, V1 IN_PROGRESS, V2 IN_PROGRESS, V3 IN_PROGRESS, V4 IN_PROGRESS. DEFERRED BY USER.
-- **OR-MIG-0011 r1** `289981e0efb1` — Anti-venom four-dose family; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
-- **OR-MIG-0012 r1** `289981e0efb1` — Extended antifire dose family; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
-- **OR-MIG-0013 r1** `03ce46c812d4` — Forgotten brew nonlinear dose awards; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
-- **OR-MIG-0014 r1** `da62d6154b74` — Ancient brew selected dust stack production; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
-- **OR-MIG-0015 r1** `337cbd9e7209` — Nihil shard stack crushing; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
-- **OR-MIG-0016 r1** `b1cade8a86f3` — Menaphite remedy production; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
-- **OR-MIG-0017 r1** `d09659ad9265` — Four-dose Anti-venom+ with both Torstol forms; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
-- **OR-MIG-0018 r1** `71289e622cdf` — Selected-slot atomic potion consumption; V0 IN_PROGRESS, V1 IN_PROGRESS, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
-- **OR-MIG-0019 r1** `d02633e45576` — Ancient and Forgotten brew drinking effects, all eight doses; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
-- **OR-MIG-0020 r1** `cf75fa343a0f` — Saradomin brew drinking, four doses; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
-- **OR-MIG-0021 r1** `c8b9aef260db` — Queued smithing live requirements and ordinary iron outcome safety (historical backfill); V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0022 r1** `71fa140f48a1` — Ordinary Bastion and Battlemage potion drinking, eight doses; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
-- **OR-MIG-0023 r1** `caefcf424869` — Seventeen ordinary item-pack profiles, atomic opening and weak repeat queue (historical backfill); V0 IN_PROGRESS, V1 IN_PROGRESS, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0024 r3** `ae3d234c7176` — Ordinary selected-slot food transaction and potion-overheal integration safety; V0 PASS, V1 IN_PROGRESS, V2 IN_PROGRESS, V3 IN_PROGRESS, V4 IN_PROGRESS.
-- **OR-MIG-0025 r1** `a560034a59e7` — Fifteen additional ordinary multipart food stages: chocolate cake, topped pizzas and pies; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0026 r1** `5b47d7fe4270` — Ten missing ordinary food healing profiles; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0027 r1** `f1f0032d5440` — Four ordinary water-source vessels with checked selected-slot filling (historical backfill); V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0028 r1** `231f33710596` — Ordinary dairy-cow harvesting with selected bucket and packed approach flags (historical backfill); V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0029 r1** `d8978ede5677` — Nine ordinary dough choices with selected container returns and quantity repeats (historical backfill); V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0030 r1** `eeb270e37b44` — Nine prepared fruit portion healing profiles; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0031 r1** `0fe7d767e630` — Manual three-stage Admiral pie assembly and optional shared timing; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0032 r1** `fe04a83de2b6` — Twenty-seven ordinary pie and pizza assembly recipes (historical backfill); V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0033 r1** `ae3d234c7176` — Seven skill-boost pie families, fourteen bites and dish returns; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0034 r1** `97b25c57d4c6` — Summer pie and papaya energy restoration through shared food effects; V0 IN_PROGRESS, V1 IN_PROGRESS, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0035 r1** `1446167370de` — Four live-base-HP food healing profiles with explicit rounding rules; V0 IN_PROGRESS, V1 IN_PROGRESS, V2 NOT_STARTED, V3 NOT_STARTED, V4 IN_PROGRESS.
-- **OR-MIG-0036 r1** `8065a96c23c1` — Manual chicken beef and shrimp cooking on a generation-validated ordinary fire; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0037 r2** `864d439132b3` — Nine ordinary manual fire-fish recipes with corrected Wiki burnt variants; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0038 r1** `cb8975bc8fd6` — Ordinary stew both preparation orders manual fire cooking and retained-bowl consumption; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0039 r1** `f79a54671dfd` — Manual chocolate bar and dust cake topping with live level and XP; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0040 r1** `d63c0258dd69` — Shared captured multi-input assembly and four-ingredient cake batter with container returns; V0 IN_PROGRESS, V1 IN_PROGRESS, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0041 r2** `864d439132b3` — Ordinary range and bread baking with corrected inherited burnt-fish variants; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0042 r1** `052d24c0b0d8` — Manual ordinary range-only redberry meat apple pie and plain pizza baking; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0043 r1** `8805474ede2c` — Eight member range pies with live cooking membership and optional forced burn cutoffs; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0044 r1** `30509633a6d1` — Nine member fish with method-specific cooking and fractional base XP; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0045 r1** `461424d9c7f1` — Bear, rat and rabbit manual cooking and cooked-rabbit consumption; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0046 r1** `138d95d184e6` — Cave- and lava-eel manual production with no-burn lava guarantee; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0047 r1** `3f49323fa71a` — Shared atomic random healing and eight ordinary foods with skewer return; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0048 r1** `3a57d318bd42` — Fourteen ordinary manual meal, quest-item and holiday foods; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0049 r1** `8d8dff9c3f52` — Thirteen retained-bowl foods and containerless egg potato; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0050 r1** `78f603fd516a` — Six Wiki-corrected Dorgesh-Kaan foods with two Cooking boosts; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0051 r1** `f6b0f6ad54fe` — Selected-slot and atomic actual network Prayer burial; V0 PASS, V1 IN_PROGRESS, V2 IN_PROGRESS, V3 IN_PROGRESS, V4 IN_PROGRESS.
-- **OR-MIG-0052 r1** `8389805afedc` — Five demonic ash Scatter profiles through selected Prayer transactions; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0053 r1** `0d9a03c8b97c` — Seven absent ordinary Bury reward profiles with configured-policy preservation; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0054 r1** `7fc1306bb5c0` — Citizen coin pouch Open and Open-all through atomic checked pack quantities; V0 IN_PROGRESS, V1 IN_PROGRESS, V2 BLOCKED, V3 IN_PROGRESS, V4 IN_PROGRESS.
-- **OR-MIG-0055 r2** `d19f37d0c02b` — Man/Woman base pickpocketing through NPC routing, atomic pouch XP and timed movement stun; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0056 r2** `5743cbe1c749` — Seven deterministic manual gem cuts with retained chisel and fractional Crafting XP; V0 PASS, V1 PASS, V2 PASS, V3 PASS, V4 PASS.
-- **OR-MIG-0057 r1** `4c6b73cfcd3b` — Nine legacy round, pointed and bark shell helmet carvings on shared Crafting adapter; V0 PASS, V1 PASS, V2 PASS, V3 PASS, V4 PASS.
-- **OR-MIG-0058 r2** `845897221900` — Eleven manual amulet stringing pairs at level-one Crafting and four XP; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0059 r1** `845897221900` — Five immediate completed Godsword blade/hilt attachments with shared atomic assembly publication; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0060 r1** `4fca31436d4f` — Ordinary holy/unholy precursor and rabbit-foot stringing with distinct crafting/equipment gates; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0061 r1** `b11260e0f4d1` — Native revision239.1 CloseModal boundary through existing ifClose and continuation cancellation; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0062 r1** `5ce50aede916` — Reusable native tool-crafting choices and captured batches for eight glassblowing products; V0 PASS, V1 PASS, V2 BLOCKED, V3 PASS, V4 IN_PROGRESS.
-- **OR-MIG-0063 r1** `143dab04f28c` — Native quantity production for seven deterministic gems and nine legacy shell carvings; V0 PASS, V1 PASS, V2 BLOCKED, V3 PASS, V4 IN_PROGRESS.
-- **OR-MIG-0064 r1** `0c489b46b552` — Wiki-rate opal, jade and red-topaz cut/crush production with both outcomes staged before RNG; V0 PASS, V1 IN_PROGRESS, V2 IN_PROGRESS, V3 IN_PROGRESS, V4 IN_PROGRESS.
-- **OR-MIG-0065 r1** `4f4aacb2929e` — Immediate Dramen staff and fallible limestone crafting with optional XP publication; V0 PASS, V1 PASS, V2 PASS, V3 PASS, V4 PASS.
-- **OR-MIG-0066 r1** `5582c276d165` — Manual knife conversion of an owned damaged monkey tail to sinew; V0 PASS, V1 PASS, V2 PASS, V3 PASS, V4 PASS.
-- **OR-MIG-0067 r1** `e3ced82211ee` — Precise two-ingredient assembly rewards and four manual elemental battlestaff attachments; V0 PASS, V1 FAIL, V2 PASS, V3 FAIL, V4 PASS.
-- **OR-MIG-0068 r1** `894646a79fa4` — Wiki-fallible crab helmet and claw carving with zero-XP broken outcomes; V0 NOT_STARTED, V1 IN_PROGRESS, V2 NOT_STARTED, V3 NOT_STARTED, V4 IN_PROGRESS.
-- **OR-MIG-0069 r1** `fb348dda184b` — Native quantity production for fourteen stringing and four elemental battlestaff recipes; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0070 r1** `c7ddebe84482` — Manual light-orb wiring and uncharged serpentine helm carving; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0071 r1** `bc277dc3e7e1` — Counted tool outputs and four amethyst cutting choices with overflow-safe batches; V0 NOT_STARTED, V1 IN_PROGRESS, V2 NOT_STARTED, V3 NOT_STARTED, V4 IN_PROGRESS.
-- **OR-MIG-0072 r1** `55e57b293e63` — Zero-XP clay softening with four water vessels and atomic empty-container returns; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0073 r1** `3b32f6355fff` — Revision-pinned spinning-wheel quantity production for six classic recipes; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0074 r1** `48f650a9430e` — Grouped-material loom quantity production and per-recipe facility timings; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0075 r1** `7b3ab965bd95` — Checked nonstackable facility outputs and five pottery shaping choices; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0076 r1** `56c6772faec0` — Staged pottery firing with zero-XP raw destruction and Wiki-backed chance/requirements; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0077 r1** `41f67c1ffa08` — Linen, hemp and cotton yarn spinning and two-yarn textile weaving; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0078 r1** `c5a9a435d5bc` — Fifteen ordinary static wheel, loom and oven facility variants; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0079 r2** `ad739676dd01` — Selected sand-bucket emptying through shared atomic container exchange; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0080 r1** `2530e4274686` — Material-only zero-XP sand-pit quantity production; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0081 r1** `14b6bf6005c6` — Mixed-material glass smelting with atomic returned bucket; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0082 r1** `b8d71f69fb19` — Five immediate firelighter log coatings with selected-stack conservation; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0083 r1** `9baa4b59e084` — One-tick uncharged accursed-sceptre assembly with live Crafting requirement; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0084 r1** `ad739676dd01` — Nine inventory light-source toggles with generic tool-skill and held conversion adapters; V0 NOT_STARTED, V1 IN_PROGRESS, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0085 r1** `922d4c115cdd` — Nine birdhouse quantity recipes with live inventory/worn durable tools; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0086 r1** `b12666d39984` — Two uncharged magic-fang upgrades with live durable chisel requirement; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0087 r1** `b916671f6345` — Four plain gold furnace jewellery recipes with retained ordinary moulds; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0088 r1** `d2f0a18c213e` — Sixteen ordinary silver furnace products including twelve cut-gem jewellery recipes; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0089 r1** `6f812cffdada` — Sixteen ordinary Mine targets for iron through runite and second copper/tin variants; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0090 r1** `7839192cfd21` — Six additional ordinary metal axes and current-tree-rate gameplay tool selection; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0091 r1** `c707aeb17b15` — Primary ordinary willow maple and yew profiles through shared timed woodcutting; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0001 r1** `d8978ede5677` â€” Manual ordinary herb cleaning; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0002 r1** `a5e21e03c483` â€” Unfinished potions: ordinary water and three alternate bases; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0003 r1** `f3b4b984af8f` â€” Initial twenty-nine finished-potion profiles; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0004 r1** `613b29ac4e3d` â€” Herb tar batch production; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0005 r1** `87c4a3def092` â€” Seven ordinary tool-preserving grinding routes; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0006 r2** `b11260e0f4d1` â€” Ordinary chemistry charges and Options/Break controls; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0007 r1** `693dd370dac7` â€” Stamina dose upgrades; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0008 r1** `03bffb1fab1d` â€” Extended anti-venom+ dose upgrades; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0009 r1** `29d9751117da` â€” Thirty-two divine dose upgrades; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0010 r1** `5a260c1bd6ef` â€” Four-input super combat production; V0 PASS, V1 IN_PROGRESS, V2 IN_PROGRESS, V3 IN_PROGRESS, V4 IN_PROGRESS. DEFERRED BY USER.
+- **OR-MIG-0011 r1** `289981e0efb1` â€” Anti-venom four-dose family; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0012 r1** `289981e0efb1` â€” Extended antifire dose family; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0013 r1** `03ce46c812d4` â€” Forgotten brew nonlinear dose awards; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0014 r1** `da62d6154b74` â€” Ancient brew selected dust stack production; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0015 r1** `337cbd9e7209` â€” Nihil shard stack crushing; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0016 r1** `b1cade8a86f3` â€” Menaphite remedy production; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0017 r1** `d09659ad9265` â€” Four-dose Anti-venom+ with both Torstol forms; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0018 r1** `71289e622cdf` â€” Selected-slot atomic potion consumption; V0 IN_PROGRESS, V1 IN_PROGRESS, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0019 r1** `d02633e45576` â€” Ancient and Forgotten brew drinking effects, all eight doses; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0020 r1** `cf75fa343a0f` â€” Saradomin brew drinking, four doses; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0021 r1** `c8b9aef260db` â€” Queued smithing live requirements and ordinary iron outcome safety (historical backfill); V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0022 r1** `71fa140f48a1` â€” Ordinary Bastion and Battlemage potion drinking, eight doses; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0023 r1** `caefcf424869` â€” Seventeen ordinary item-pack profiles, atomic opening and weak repeat queue (historical backfill); V0 IN_PROGRESS, V1 IN_PROGRESS, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0024 r3** `ae3d234c7176` â€” Ordinary selected-slot food transaction and potion-overheal integration safety; V0 PASS, V1 IN_PROGRESS, V2 IN_PROGRESS, V3 IN_PROGRESS, V4 IN_PROGRESS.
+- **OR-MIG-0025 r1** `a560034a59e7` â€” Fifteen additional ordinary multipart food stages: chocolate cake, topped pizzas and pies; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0026 r1** `5b47d7fe4270` â€” Ten missing ordinary food healing profiles; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0027 r1** `f1f0032d5440` â€” Four ordinary water-source vessels with checked selected-slot filling (historical backfill); V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0028 r1** `231f33710596` â€” Ordinary dairy-cow harvesting with selected bucket and packed approach flags (historical backfill); V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0029 r1** `d8978ede5677` â€” Nine ordinary dough choices with selected container returns and quantity repeats (historical backfill); V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0030 r1** `eeb270e37b44` â€” Nine prepared fruit portion healing profiles; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0031 r1** `0fe7d767e630` â€” Manual three-stage Admiral pie assembly and optional shared timing; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0032 r1** `fe04a83de2b6` â€” Twenty-seven ordinary pie and pizza assembly recipes (historical backfill); V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0033 r1** `ae3d234c7176` â€” Seven skill-boost pie families, fourteen bites and dish returns; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0034 r1** `97b25c57d4c6` â€” Summer pie and papaya energy restoration through shared food effects; V0 IN_PROGRESS, V1 IN_PROGRESS, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0035 r1** `1446167370de` â€” Four live-base-HP food healing profiles with explicit rounding rules; V0 IN_PROGRESS, V1 IN_PROGRESS, V2 NOT_STARTED, V3 NOT_STARTED, V4 IN_PROGRESS.
+- **OR-MIG-0036 r1** `8065a96c23c1` â€” Manual chicken beef and shrimp cooking on a generation-validated ordinary fire; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0037 r2** `864d439132b3` â€” Nine ordinary manual fire-fish recipes with corrected Wiki burnt variants; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0038 r1** `cb8975bc8fd6` â€” Ordinary stew both preparation orders manual fire cooking and retained-bowl consumption; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0039 r1** `f79a54671dfd` â€” Manual chocolate bar and dust cake topping with live level and XP; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0040 r1** `d63c0258dd69` â€” Shared captured multi-input assembly and four-ingredient cake batter with container returns; V0 IN_PROGRESS, V1 IN_PROGRESS, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0041 r2** `864d439132b3` â€” Ordinary range and bread baking with corrected inherited burnt-fish variants; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0042 r1** `052d24c0b0d8` â€” Manual ordinary range-only redberry meat apple pie and plain pizza baking; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0043 r1** `8805474ede2c` â€” Eight member range pies with live cooking membership and optional forced burn cutoffs; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0044 r1** `30509633a6d1` â€” Nine member fish with method-specific cooking and fractional base XP; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0045 r1** `461424d9c7f1` â€” Bear, rat and rabbit manual cooking and cooked-rabbit consumption; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0046 r1** `138d95d184e6` â€” Cave- and lava-eel manual production with no-burn lava guarantee; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0047 r1** `3f49323fa71a` â€” Shared atomic random healing and eight ordinary foods with skewer return; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0048 r1** `3a57d318bd42` â€” Fourteen ordinary manual meal, quest-item and holiday foods; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0049 r1** `8d8dff9c3f52` â€” Thirteen retained-bowl foods and containerless egg potato; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0050 r1** `78f603fd516a` â€” Six Wiki-corrected Dorgesh-Kaan foods with two Cooking boosts; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0051 r1** `f6b0f6ad54fe` â€” Selected-slot and atomic actual network Prayer burial; V0 PASS, V1 IN_PROGRESS, V2 IN_PROGRESS, V3 IN_PROGRESS, V4 IN_PROGRESS.
+- **OR-MIG-0052 r1** `8389805afedc` â€” Five demonic ash Scatter profiles through selected Prayer transactions; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0053 r1** `0d9a03c8b97c` â€” Seven absent ordinary Bury reward profiles with configured-policy preservation; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0054 r1** `7fc1306bb5c0` â€” Citizen coin pouch Open and Open-all through atomic checked pack quantities; V0 IN_PROGRESS, V1 IN_PROGRESS, V2 BLOCKED, V3 IN_PROGRESS, V4 IN_PROGRESS.
+- **OR-MIG-0055 r2** `d19f37d0c02b` â€” Man/Woman base pickpocketing through NPC routing, atomic pouch XP and timed movement stun; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0056 r2** `5743cbe1c749` â€” Seven deterministic manual gem cuts with retained chisel and fractional Crafting XP; V0 PASS, V1 PASS, V2 PASS, V3 PASS, V4 PASS.
+- **OR-MIG-0057 r1** `4c6b73cfcd3b` â€” Nine legacy round, pointed and bark shell helmet carvings on shared Crafting adapter; V0 PASS, V1 PASS, V2 PASS, V3 PASS, V4 PASS.
+- **OR-MIG-0058 r2** `845897221900` â€” Eleven manual amulet stringing pairs at level-one Crafting and four XP; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0059 r1** `845897221900` â€” Five immediate completed Godsword blade/hilt attachments with shared atomic assembly publication; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0060 r1** `4fca31436d4f` â€” Ordinary holy/unholy precursor and rabbit-foot stringing with distinct crafting/equipment gates; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0061 r1** `b11260e0f4d1` â€” Native revision239.1 CloseModal boundary through existing ifClose and continuation cancellation; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0062 r1** `5ce50aede916` â€” Reusable native tool-crafting choices and captured batches for eight glassblowing products; V0 PASS, V1 PASS, V2 BLOCKED, V3 PASS, V4 IN_PROGRESS.
+- **OR-MIG-0063 r1** `143dab04f28c` â€” Native quantity production for seven deterministic gems and nine legacy shell carvings; V0 PASS, V1 PASS, V2 BLOCKED, V3 PASS, V4 IN_PROGRESS.
+- **OR-MIG-0064 r1** `0c489b46b552` â€” Wiki-rate opal, jade and red-topaz cut/crush production with both outcomes staged before RNG; V0 PASS, V1 IN_PROGRESS, V2 IN_PROGRESS, V3 IN_PROGRESS, V4 IN_PROGRESS.
+- **OR-MIG-0065 r1** `4f4aacb2929e` â€” Immediate Dramen staff and fallible limestone crafting with optional XP publication; V0 PASS, V1 FAIL, V2 PASS, V3 FAIL, V4 PASS.
+- **OR-MIG-0066 r1** `5582c276d165` â€” Manual knife conversion of an owned damaged monkey tail to sinew; V0 PASS, V1 PASS, V2 PASS, V3 PASS, V4 PASS.
+- **OR-MIG-0067 r1** `e3ced82211ee` â€” Precise two-ingredient assembly rewards and four manual elemental battlestaff attachments; V0 PASS, V1 FAIL, V2 PASS, V3 FAIL, V4 PASS.
+- **OR-MIG-0068 r1** `894646a79fa4` â€” Wiki-fallible crab helmet and claw carving with zero-XP broken outcomes; V0 PASS, V1 PASS, V2 BLOCKED, V3 PASS, V4 PASS.
+- **OR-MIG-0069 r1** `fb348dda184b` â€” Native quantity production for fourteen stringing and four elemental battlestaff recipes; V0 IN_PROGRESS, V1 PASS, V2 IN_PROGRESS, V3 IN_PROGRESS, V4 IN_PROGRESS.
+- **OR-MIG-0070 r1** `c7ddebe84482` â€” Manual light-orb wiring and uncharged serpentine helm carving; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0071 r1** `bc277dc3e7e1` â€” Counted tool outputs and four amethyst cutting choices with overflow-safe batches; V0 NOT_STARTED, V1 IN_PROGRESS, V2 NOT_STARTED, V3 NOT_STARTED, V4 IN_PROGRESS.
+- **OR-MIG-0072 r1** `55e57b293e63` â€” Zero-XP clay softening with four water vessels and atomic empty-container returns; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0073 r1** `3b32f6355fff` â€” Revision-pinned spinning-wheel quantity production for six classic recipes; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0074 r1** `48f650a9430e` â€” Grouped-material loom quantity production and per-recipe facility timings; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0075 r1** `7b3ab965bd95` â€” Checked nonstackable facility outputs and five pottery shaping choices; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0076 r1** `56c6772faec0` â€” Staged pottery firing with zero-XP raw destruction and Wiki-backed chance/requirements; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0077 r1** `41f67c1ffa08` â€” Linen, hemp and cotton yarn spinning and two-yarn textile weaving; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0078 r1** `c5a9a435d5bc` â€” Fifteen ordinary static wheel, loom and oven facility variants; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0079 r2** `ad739676dd01` â€” Selected sand-bucket emptying through shared atomic container exchange; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0080 r1** `2530e4274686` â€” Material-only zero-XP sand-pit quantity production; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0081 r1** `14b6bf6005c6` â€” Mixed-material glass smelting with atomic returned bucket; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0082 r1** `b8d71f69fb19` â€” Five immediate firelighter log coatings with selected-stack conservation; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0083 r1** `9baa4b59e084` â€” One-tick uncharged accursed-sceptre assembly with live Crafting requirement; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0084 r1** `ad739676dd01` â€” Nine inventory light-source toggles with generic tool-skill and held conversion adapters; V0 NOT_STARTED, V1 IN_PROGRESS, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0085 r1** `922d4c115cdd` â€” Nine birdhouse quantity recipes with live inventory/worn durable tools; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0086 r1** `b12666d39984` â€” Two uncharged magic-fang upgrades with live durable chisel requirement; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0087 r1** `b916671f6345` â€” Four plain gold furnace jewellery recipes with retained ordinary moulds; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0088 r1** `d2f0a18c213e` â€” Sixteen ordinary silver furnace products including twelve cut-gem jewellery recipes; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0089 r1** `6f812cffdada` â€” Sixteen ordinary Mine targets for iron through runite and second copper/tin variants; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0090 r1** `7839192cfd21` â€” Six additional ordinary metal axes and current-tree-rate gameplay tool selection; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0091 r1** `c707aeb17b15` â€” Primary ordinary willow maple and yew profiles through shared timed woodcutting; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0092 r1** `90817bc9d92b` â€” Five ordinary parameter-matched willow maple and yew variants with exact stumps; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0093 r1** `e4ce849cf1de` â€” Member-gated three-stage limestone quarry using shared canonical restoration and continuation; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0094 r1** `871df7eace2f` â€” Member lead mining through strict direct target IDs with optional matching symbols; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0095 r1** `1b3cb1191a77` â€” Normal and golden Prospector bonuses through reusable worn gathering XP descriptors; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0096 r1** `7bacd9305d84` â€” Member lead normal-furnace smelting through existing quantity and weak smithing queues; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.

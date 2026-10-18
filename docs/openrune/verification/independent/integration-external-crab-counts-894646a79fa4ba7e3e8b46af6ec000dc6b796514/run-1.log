@@ -1,0 +1,8 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\894646a79fa4ba7e3e8b46af6ec000dc6b796514\external-harness-4916727200)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 6.78s
+     Running tests\caps.rs (C:\Projects\OSRSRSPS\agent7-verification\work\894646a79fa4ba7e3e8b46af6ec000dc6b796514\target\debug\deps\caps-6ce68d579bd122b2.exe)
+
+running 1 test
+test one_hundred_twelve_full_bag_counts_cap_selected_order_and_round_each_success ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 53.41s
