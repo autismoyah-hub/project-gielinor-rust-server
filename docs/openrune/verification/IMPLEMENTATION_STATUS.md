@@ -3,11 +3,11 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0062: native tool choices/captured batches and8glass products, source [5ce50ae](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/5ce50aede9164cdee8e4008257d0298ea77289e7). Existing SkillMulti/token/selected exchange/Stats/Weak queues reused; selected-first/material-cap/per-step guards. PASS104server460world/1ignored419same hashes,compile1m45s; independent native/lifecycle/reference acceptance pending.
+OR-MIG-0063: nativequantityproductionfor7gems/9shells, source [143dab0](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/143dab04f28c3daed844da0af33d6af5edcd962d). Existing62engine/recipes unchanged; oldmanualAPI retained, actualstartupnowpromptsquantity. PASS0server1world419same hashes,compile49.39s; representativeF2Pgem/memberShell selected-fullbag/fineXP/cadence checked. IndependentV0-V4pending.
 
-62units across70append-onlyrecords:23historical39newshared/gameplay. Discovery3508=38partialeligible+2framework/infrastructure+657configuration+2811unassessed,notcompletionpercentage. Existing7gem/9shellstartupstillmanualat62; generic production enablement next. BroaderCrafting/facilities/modifiers/manufacture and other systems remain unfinished.
+63units across71append-onlyrecords:23historical40newshared/gameplay. Discovery3508=38partialeligible+2framework/infrastructure+657configuration+2811unassessed,notcompletionpercentage. WiderCrafting/crushableproducts/other tools/facilities and othercontent remain unfinished.
 
-[PG-DEF-001/#123](https://github.com/autismoyah-hub/project-gielinor-rust-server/issues/123) remains candidate correction_pending_retest atb11260e; originalnativefailurepreserved. No nativeRuntimeUIreplayor independentacceptanceclaimedhere.
+ContinuefalliblecontentafterWiki/provenanceinspection. [PG-DEF-001/#123](https://github.com/autismoyah-hub/project-gielinor-rust-server/issues/123) remainscandidate correction_pending_retest atb11260e; originalfailure/evidencepreserved,notacceptedbythesechecks.
 <!-- forge-current:end -->
 
 
@@ -288,3 +288,10 @@ Outputs1919/4527/4525/229/6667/567/4542/10980,levels1/4/12/33/42/46/49/87,XP17.5
 forge-glassblowing-tests-attempt-001PASS104server460world/1existing ignored419same hashes,compile1m45s.8profiles/memberSkill/fine125percent218/237/312/437/531/656/687/875;actualheldchoice/capturefirst17then3,8/fullbag/cap28requestedto3actual/commitclocksstart+2,+5,+8/654fine. Invalidindex/count/member/level andlaterstaleraw/member/pipevars/Close conservefuturematerials/Stats. Runtimeopening/resumecompiledandstructural,notfreshnativeUIRuntime-loopreplay. Guard6284MiB53.9percentcommit2pages-in/s0.8msdisk21.6percentCPU,Cargo-j2. InitialFishbowlWiki parser stoppedbeforewrites;explicit6667versioncorrected. Existingfailure/private/nativeevidencepreserved. No donor expressions/generatedrows/DSL/assetscopied;4sourceSHAs56+8Wikirevisions+10prepareddefs pinned.
 
 PG123Closecandidateb11260eindependentnative/lifecycle/referencereteststillpending,notacceptance. Queue62units70append-onlyrecords(23historical39newshared/gameplay);inventory38partialeligible2framework657configuration2811unassessedof3508unchanged,notcompletionpercentage. Continuedependency-awareproductionenablementandothereligiblecontent.
+
+
+## FORGE OR-MIG-0063 — quantity production for prior gems and shells
+
+Published source 143dab04f28c3daed844da0af33d6af5edcd962d. Actualstartup7gem/9shell pairs upgraded from manual-only handler to62single-option nativeSkillMultichoices/available-count/captured batches. No recipe/XP/level/membership changes; Zenyte50andshell32.5retained. Gemfirst1/repeat2,shellfirst2/repeat3. OldmanualAPI remainsavailable. Genericnativepermission/token/Close/selected-first/cap28toavailable/per-stepatomicXP+output andlateguards unchanged; no duplicateengine/schema/assets or donorcode/generatedrows/DSLcopied. Prior56/57exactsourcecontractsretainhistory;new63recordsproductionupgrade.
+
+forge-prior-tool-production-tests-attempt-001PASS0server1world/419same hashes,compile49.39s (bothaffectedlibrariescompiled). Realheldsingle-optionrequest/selection forF2PemeraldandmemberShell,selected21firstthen3/11/fullbag/chiselretained,3outputs/fine2529and1218at125percent,commits+[1,3,5]/+[2,5,8]. Sharedengineunchanged;62full104server460world/1ignoredhistorical. Guard6977MiB56percentcommit257pages-in/s3.4msdisk15.1percentCPU,Cargo-j2. Private/native/priorfailureevidencepreserved;noindependent/nativeRuntimeUI/lifecycle/referenceacceptanceclaimed. GenericMakewording/audio/otherqueue/generatedrowoverrides and widerCrafting/crushable/modifier/acquisition/equipment obligationsremain. PG123Closecandidateindependentretestpending. Queue63units71records(23historical40newshared/gameplay);discovery38partialeligible2framework657configuration2811unassessedof3508unchanged. Continueeligiblecontent.
