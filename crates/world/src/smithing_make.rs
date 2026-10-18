@@ -27,6 +27,10 @@ pub struct Request {
     pub cycles: i32,
     /// Ordinary furnace iron only; guaranteed methods are separate profiles.
     pub impurity: bool,
+    /// Requires trusted membership at admission and each delayed completion.
+    pub members: bool,
+    /// Queue delay for repeats; None retains the characterized legacy cadence.
+    pub repeat_delay: Option<i32>,
     /// Live requirements are checked again at each delayed completion.
     pub required_level: i32,
     /// Non-consumed inventory tools required by this recipe.
@@ -108,8 +112,26 @@ impl Job {
         max_level: u8,
         random: &mut impl crate::npc::RandomSource,
     ) -> Result<Outcome, crate::stats::InvalidXp> {
+        self.complete_for_member(
+            inv, catalog, stats, skill, xp_rate, max_level, false, random,
+        )
+    }
+
+    /// Legacy callers have no membership authority; member recipes use this path.
+    pub fn complete_for_member(
+        &self,
+        inv: &mut Inventory,
+        catalog: &Catalog,
+        stats: &mut Stats,
+        skill: u8,
+        xp_rate: f64,
+        max_level: u8,
+        member: bool,
+        random: &mut impl crate::npc::RandomSource,
+    ) -> Result<Outcome, crate::stats::InvalidXp> {
         let request = &self.request;
-        if i32::from(stats.current(skill) as u8) < request.required_level
+        if (request.members && !member)
+            || i32::from(stats.current(skill) as u8) < request.required_level
             || request
                 .required_tools
                 .iter()
@@ -279,6 +301,8 @@ mod tests {
             animation: 899,
             cycles: 5,
             impurity: false,
+            members: false,
+            repeat_delay: None,
             required_level: 1,
             required_tools: vec![],
         })

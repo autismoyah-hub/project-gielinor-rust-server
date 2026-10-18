@@ -17,6 +17,13 @@ impl World {
         if p.saving {
             return Err(ActionError::LoggingOut);
         }
+        if request.members && !p.member {
+            self.events.push(WorldEvent::LocationMessage {
+                actor,
+                message: "You need to be a member to make that item.",
+            });
+            return Ok(());
+        }
         let Some(job) = request.start(count) else {
             return Ok(());
         };
@@ -46,13 +53,14 @@ pub(super) fn complete(
     random: &mut impl RandomSource,
 ) -> Result<(), ActionError> {
     let next = match job
-        .complete(
+        .complete_for_member(
             &mut p.data.inventory,
             catalog,
             &mut p.data.stats,
             config.skill,
             config.xp_rate,
             config.max_level,
+            p.member,
             random,
         )
         .map_err(|_| ActionError::InvalidStat)?
@@ -141,7 +149,7 @@ pub(super) fn complete(
             .add(
                 config.queue,
                 crate::queues::Category::Weak,
-                next.request.cycles,
+                next.request.repeat_delay.unwrap_or(next.request.cycles),
                 Deferred::Smithing(next),
             )
             .map_err(|_| ActionError::QueueFull)?;
@@ -190,6 +198,8 @@ mod tests {
             animation: 899,
             cycles: 5,
             impurity: false,
+            members: false,
+            repeat_delay: None,
             required_level: 1,
             required_tools: vec![],
         });

@@ -21,6 +21,10 @@ pub struct Recipe {
     pub xp: f64,
     pub ingredients: Vec<(i32, i32)>,
     pub impurity: bool,
+    /// Requires trusted membership at admission and each delayed completion.
+    pub members: bool,
+    /// Queue delay for repeats; None retains the characterized legacy cadence.
+    pub repeat_delay: Option<i32>,
 }
 #[derive(Debug)]
 pub enum Selection {
@@ -163,6 +167,8 @@ impl Recipe {
             animation,
             cycles: 5,
             impurity: self.impurity,
+            members: self.members,
+            repeat_delay: self.repeat_delay,
             required_level: self.level,
             required_tools: vec![],
         });
@@ -223,6 +229,8 @@ mod tests {
     fn recipe() -> Recipe {
         Recipe {
             impurity: false,
+            members: false,
+            repeat_delay: None,
             bar: 2349,
             label: "Bronze".into(),
             level: 1,

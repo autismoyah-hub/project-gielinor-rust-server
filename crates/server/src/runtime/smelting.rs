@@ -58,6 +58,8 @@ impl<B: AccountBackend> Runtime<B> {
         for &(bar, label, level, xp, ingredients) in definitions {
             recipes.push(Recipe {
                 impurity: bar == "iron_bar",
+                members: false,
+                repeat_delay: None,
                 bar: names.id("obj", bar)? as i32,
                 label: label.into(),
                 level,
@@ -68,6 +70,10 @@ impl<B: AccountBackend> Runtime<B> {
                     .collect::<io::Result<_>>()?,
             });
         }
+        // Append to preserve existing menu indices and the original recipe order.
+        recipes.push(crate::content::lead_smelting(
+            names.group("obj"), names.group("stat"), &self.definitions,
+        ).map_err(io::Error::other)?);
         let skill = u8::try_from(names.id("stat", "smithing")?).map_err(io::Error::other)?;
         let max_level = self
             .definitions
@@ -139,13 +145,15 @@ impl<B: AccountBackend> Runtime<B> {
             },
         );
         let group = names.id("content", "smithing_ore")? as i32;
-        let ores = self
+        let mut ores: std::collections::HashSet<i32> = self
             .definitions
             .items
             .iter()
             .filter(|(_, item)| item.content_group == group)
             .map(|(&id, _)| id as i32)
             .collect();
+        // Direct target lead IDs have no enriched smithing_ore group or aliases.
+        ores.insert(31716);
         self.configure_furnaces(furnaces, ores)
     }
     pub fn configure_furnaces(

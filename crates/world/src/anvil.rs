@@ -136,6 +136,8 @@ impl Config {
                 animation: self.animation,
                 cycles: 5,
                 impurity: false,
+                members: false,
+                repeat_delay: None,
                 required_level: level,
                 required_tools: vec![self.hammer],
             }),
