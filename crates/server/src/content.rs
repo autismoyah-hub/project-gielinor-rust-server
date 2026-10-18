@@ -6,6 +6,8 @@ mod birdhouses;
 pub use birdhouses::birdhouses;
 mod light_sources;
 pub use light_sources::light_sources;
+mod timed_trees;
+pub use timed_trees::timed_trees;
 mod woodcutting_axes;
 pub use woodcutting_axes::woodcutting_axes;
 mod ordinary_mining;

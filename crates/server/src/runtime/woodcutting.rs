@@ -62,6 +62,18 @@ impl<B: AccountBackend> Runtime<B> {
                 },
             );
         }
+        for (id, tree) in crate::content::timed_trees(
+            names.group("obj"),
+            names.group("loc"),
+            names.group("stat"),
+            &self.definitions,
+        )
+        .map_err(io::Error::other)?
+        {
+            if config.trees.insert(id, tree).is_some() {
+                return Err(io::Error::other("Conflicting ordinary timed tree"));
+            }
+        }
         let regular_logs = names.id("obj", "logs")? as i32;
         for tool in crate::content::woodcutting_axes(
             names.group("obj"),
@@ -81,6 +93,8 @@ impl<B: AccountBackend> Runtime<B> {
                     tool.oak_rates
                 } else if tree.product == regular_logs && tree.level == 1 {
                     tool.regular_rates
+                } else if let Some(&rates) = tree.rates.get(&tool.id) {
+                    rates
                 } else {
                     return Err(io::Error::other("Unattested ordinary axe tree rates"));
                 };
