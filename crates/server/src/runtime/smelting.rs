@@ -74,6 +74,9 @@ impl<B: AccountBackend> Runtime<B> {
         recipes.push(crate::content::lead_smelting(
             names.group("obj"), names.group("stat"), &self.definitions,
         ).map_err(io::Error::other)?);
+        recipes.push(crate::content::cupronickel_smelting(
+            names.group("obj"), names.group("stat"), &self.definitions,
+        ).map_err(io::Error::other)?);
         let skill = u8::try_from(names.id("stat", "smithing")?).map_err(io::Error::other)?;
         let max_level = self
             .definitions
@@ -154,6 +157,7 @@ impl<B: AccountBackend> Runtime<B> {
             .collect();
         // Direct target lead IDs have no enriched smithing_ore group or aliases.
         ores.insert(31716);
+        ores.insert(31719);
         self.configure_furnaces(furnaces, ores)
     }
     pub fn configure_furnaces(

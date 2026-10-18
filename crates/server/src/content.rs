@@ -8,6 +8,8 @@ mod light_sources;
 pub use light_sources::light_sources;
 mod prospector_outfit;
 pub use prospector_outfit::prospector_outfit;
+mod cupronickel_smelting;
+pub use cupronickel_smelting::cupronickel_smelting;
 mod lead_smelting;
 pub use lead_smelting::lead_smelting;
 mod lead_mining;
