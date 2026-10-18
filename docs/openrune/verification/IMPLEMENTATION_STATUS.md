@@ -3,9 +3,9 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0075: five pottery shaping choices and checked four-cup credits at14887Use1; source [7b3ab96](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/7b3ab965bd95a6cce51adf9b7b2b3ab791a58866). Shared facility all-credit exchange retained; source potlid quest omission not copied. Shared regression PASS; independent V0–V4 queued.
+OR-MIG-0076: five pottery firing profiles with staged success/destruction/noXP, source [56c6772](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/56c6772faec0fa20ae0aa301c8d31cb3c517b2a9). Wiki min1/180–800 overrides donor differences; cup/13vs14 uncertainty explicit. Shared regression PASS; independent V0–V4 queued.
 
-75 units / 83 append-only records:23historical52newshared/gameplay. Discovery3508=39partial eligible+4framework/infrastructure+658configuration+2807unassessed, not completion percentages. Potlid unlock/firing/otherfacilities and broad content remain. PG-DEF-001 Close candidate b11260e pending independent retest. Continue eligible implementation.
+76 units / 84 append-only records:23historical53newshared/gameplay. Discovery3508=39partial eligible+4framework/infrastructure+658configuration+2807unassessed, not completion percentages. Potlidunlock/otherovens/menus/boosts and broad content remain. PG-DEF-001 Close candidate b11260e pending independent retest. Continue eligible implementation.
 <!-- forge-current:end -->
 
 
@@ -423,3 +423,14 @@ Bounded facility output_count1–28 repeats the full output set through existing
 forge-pottery-shaping-tests-attempt-001 PASS, 434 unchanged source hashes: test result: ok. 119 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.77s; test result: ok. 478 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 52.24s. Five factory counts/rewards/member rules/full-bag cup rollback and invalid last output binding; actual reached Use/material routes with0/3/6spare slots yield0/4/8cups and0/106/212fine at125%, preserving remaining clay when later whole credit cannot fit. Existing shared users regressed. Guard6,883MiB available,56.9%commit,0pages-in/s,1.7msdisk,23.0%CPU,j2. Private/native/prior failures preserved; not independent/native/pristine acceptance.
 
 Queue75units/83append-onlyrecords:23historical52newshared/gameplay. Discovery3508=39partial eligible+4framework/infrastructure+658configuration+2807unassessed, not completion percentages. Potlidunlock/otherwheels/firing and broad content remain. PG-DEF-001 Close candidate pending independent retest. Continue eligible implementation.
+
+
+## FORGE OR-MIG-0076 — staged pottery firing and destruction
+
+Published source 56c6772faec0fa20ae0aa301c8d31cb3c517b2a9. Actual14888Fire1/material oven routes use existing protected facility choices for1787->1931,28193->1980,1789->2313,1791->1923,5352->5350. All current Crafting1, cup/plant member. SuccessXP6.3/8.5/10/15/17.5 (fine125%78/106/125/187/218); cracks consume one raw,produce no item/no XP/no skill event and can continue captured work. Both success and alternate inventory/Stats stage before one authoritative draw. None output explicitly means destruction; no dummy item/fake count inserted. Prior failureNone profiles draw no RNG.
+
+Wiki product charts180/800/min1 override donor180/789/higher pie/bowl/plant levels. Existing rounded clamped1–99shape gives thresholds181at1,251at12,256at13; one draw even at certainty. Per-item charts/prose13 disagree generic oven overview14; explicit per-item chart preferred, V4 pending. Cup common-curve inference is recorded because cup page has no own chart. Target ten ordinary/member definitions,14888Fire1/1x2/no morph and1317animation pinned; sound absent. Source nominalfirst6/repeat7 versus Wiki7/native input-clock pending. Potlid quest scope/otherovens/access/default empty-menu greyentries/boost/audio/downstreamuse remain separate.
+
+forge-pottery-firing-tests-attempt-001 PASS, 435 unchanged source hashes: test result: ok. 120 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.45s; test result: ok. 480 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 34.22s. Five min1factory rewards/roll boundaries/destruction/unchangedStats/no event; invalid success/alternate credit before RNG. Actual reached oven success/crack/success gives2pots/156fine/2events/3draws; later invalid credit/raw stopsafter1draw without new loss. Existing deterministic NoDraw spinning/weaving/shaping and prior users regressed. Guard6,954MiB available,56.8%commit,390pages-in/s,0.9msdisk,59.0%CPU,j2. Private/native/prior failure evidence preserved; not independent/native/pristine acceptance.
+
+Queue76units/84append-onlyrecords:23historical53newshared/gameplay. Discovery3508=39partial eligible+4framework/infrastructure+658configuration+2807unassessed, not completion percentages. PG-DEF-001 Close candidate pending independent retest; broad source obligations remain. Continue eligible implementation.
