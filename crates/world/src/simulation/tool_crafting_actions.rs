@@ -415,7 +415,8 @@ impl World {
             let capture=crate::tool_crafting_materials::capture(&request,index,&p.data.inventory,count as usize).ok_or(ActionError::InvalidItem)?;
             job.input_slot=*capture.slots.first().ok_or(ActionError::InvalidItem)?;
             let parts=capture.ids.iter().copied().zip(capture.slots.iter().copied()).zip(capture.counts.iter().copied()).take(capture.stride).map(|((id,slot),n)|(id,slot,n)).collect::<Vec<_>>();
-            if let Err(e)=(if let Some(slot)=request.worn_tool_slot{crate::tool_crafting_counts::prepare_material_counts_worn(job,&parts,&p.data.inventory,&p.data.equipment,slot,&self.object_types,&p.data.stats,p.data.xp_rate_hundreds,p.member)}else{crate::tool_crafting_counts::prepare_material_counts(job,&parts,&p.data.inventory,&self.object_types,&p.data.stats,p.data.xp_rate_hundreds,p.member)}){refusal(&mut self.events,actor,e,job.recipe.skill);return Ok(());}
+            let prepared=if let Some(slot)=request.worn_tool_slot{crate::tool_crafting_counts::prepare_material_counts_worn(job,&parts,&p.data.inventory,&p.data.equipment,slot,&self.object_types,&p.data.stats,p.data.xp_rate_hundreds,p.member)}else{crate::tool_crafting_counts::prepare_material_counts(job,&parts,&p.data.inventory,&self.object_types,&p.data.stats,p.data.xp_rate_hundreds,p.member)};
+            if let Err(e)=prepared{refusal(&mut self.events,actor,e,job.recipe.skill);return Ok(());}
             (capture.slots,capture.stride,Some(capture.ids),Some(capture.counts))
         }else{
         let mut slots = vec![request.input_slot];

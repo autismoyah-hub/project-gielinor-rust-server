@@ -1,5 +1,6 @@
 //! Pure world primitives ported from the pinned Kotlin reference.
 //! No network, persistence, clock, or global random state is used here.
+pub mod runecrafting;
 pub mod areas;
 pub mod attack_profile;
 pub mod autocast;

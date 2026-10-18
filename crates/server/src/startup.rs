@@ -788,6 +788,9 @@ pub fn configure<B: AccountBackend>(
     for (a,b) in [(29920,3239),(29920,3470),(3239,3470)] {
         runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,a,b,gielinor_world::held_use::Handler::ToolCraftingMixedChoices{recipes:recipes.clone(),materials:materials.clone(),cycle_ticks:3}).map_err(|e|io::Error::other(format!("Costume needle Splitbark registration: {e:?}")))?;
     }
+    let rune_altars=crate::content::ordinary_rune_altars(n("obj"),n("loc"),n("seq"),n("spotanim"),n("stat"),&runtime.definitions).map_err(|e|io::Error::other(format!("Rune altar registration: {e}")))?;
+    if runtime.world.runecrafting.is_some()||rune_altars.altars.keys().any(|&id|runtime.world.has_location_handler(id,1)){return Err(io::Error::other("Conflicting Rune altar registration"));}
+    runtime.world.runecrafting=Some(rune_altars);
     let shields=crate::content::shield_crafting(n("obj"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)?;
     for (a,b,handler)in crate::content::shield_crafting_registrations(&shields){
         runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,a,b,handler).map_err(|e|io::Error::other(format!("Shield material registration: {e:?}")))?;
