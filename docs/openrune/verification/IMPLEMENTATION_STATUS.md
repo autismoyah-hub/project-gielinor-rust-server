@@ -3,9 +3,9 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0070: manual light-orb wiring and uncharged serpentine helm carving, source [c7ddebe](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/c7ddebe844820260252fb37df518f8c271f37243). Existing immediate/tool transactions reused; focused PASS2 server tests/427 unchanged hashes. Independent V0–V4 queued.
+OR-MIG-0071: counted stack tool outputs and four amethyst native choices, source [bc277dc](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/bc277dc3e7e15088323a4f048f57dc43185fb7c0). Full-credit overflow rollback and per-raw XP; existing count-one/fallible/immediate users retained. Shared regression PASS; independent V0–V4 queued.
 
-70 units / 78 append-only records: 23 historical and 47 new shared/gameplay. Discovery3508=38partial eligible+4framework/infrastructure+658configuration+2808unassessed, not completion percentages. Stack-material production, catalysts, facilities and broad content remain. PG-DEF-001 Close candidate b11260e pending independent retest. Continue eligible implementation.
+71 units / 79 append-only records: 23 historical,48 new shared/gameplay. Discovery3508=38partial eligible+4framework/infrastructure+658configuration+2808unassessed, not completion percentages. Material ratios/catalysts/facilities and broad content remain. PG-DEF-001 Close candidate b11260e pending independent retest. Continue eligible implementation.
 <!-- forge-current:end -->
 
 
@@ -368,3 +368,14 @@ Wiring zero ticks intentionally differs from generic donor Combining1. Helm stay
 forge-crafting-finishes-tests-attempt-001 PASS2server/0world matched,427 source hashes unchanged,compile14.38s. Actual reversed held routes verify full bag/selected exchange/other raw retained, immediate1300fine/noFiremaking for wiring and queued1500fine/uncharged/noDefence gate/no replay for helm at125%. Wiring member/level/rate/bad-credit rollback and wrong output name binding checked. Guard6,827MiB available,58.2%commit,568pages-in/s,0.6msdisk,17.4%CPU,j2. Shared engines unchanged; independent/native/pristine/lifecycle/reference acceptance pending.
 
 Queue70units/78append-onlyrecords:23historical47newshared/gameplay. Discovery3508=38partial eligible+4framework/infrastructure+658configuration+2808unassessed, not completion percentages. Broader content remains; PG-DEF-001 Close candidate pending independent retest. Continue eligible implementation.
+
+
+## FORGE OR-MIG-0071 — counted stack outputs and amethyst cutting
+
+Published source bc277dc3e7e15088323a4f048f57dc43185fb7c0. Actual chisel1755/amethyst21347 registration opens four native choices: Crafting83/85/87/89 ->15bolt tips21338/15arrowtips21350/5javelin tips21352/8dart tips25853. All member,60XP per raw (750fine at125%), no RNG. Exact six target ordinary/member/stack/name identities, sequence6295 and five Wiki/source hashes pinned. Javelin-head redirect resolved to canonical tips before evidence writes.
+
+Existing grinding complete() delegates count1 to checked complete_count; tool Recipe explicitly carries positive bounded output_count. Previous profiles remain1; fallible count>1 is rejected as unsupported. Clone inventory, strictly debit one selected raw, credit the full count into a new or existing stack, then stage Stats. Overflow rejects the whole step without partial tips, raw loss or XP. Native labels show tip count; chosen quantity counts raw amethysts. Existing tool-choice/captured batch engine/cancellation reused. Source nominal first1/repeat2 and Wiki2 remain an explicit native-clock comparison; mining/ammo assembly/Fletching/equipment/audio remain separate.
+
+forge-amethyst-tests-attempt-001 PASS, 428 unchanged source hashes: test result: ok. 114 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.00s; test result: ok. 472 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 20.94s. Four full-bag counts/per-raw XP/no RNG/initial overflow rollback checked. Actual four-choice dart batch merges3raw->24tips/2250fine; near-max stack commits one raw then rejects next whole credit at i32::MAX, preserves later raw and750fine. Existing grinding/gems/shells/glass/fallible/zero-XP/immediate profiles regressed. Guard7,638MiB available,54.4%commit,3394pages-in/s,1.3msdisk,21.7%CPU,j2; paging alone did not meet sustained joint severity threshold. Strict edit guard matched two XP structs after constructor count fields; resumed only remaining edits without duplicating fields. No Cargo failure from that guard; private historical failures/evidence preserved. Not independent/native/pristine acceptance.
+
+Queue71units/79append-onlyrecords:23historical48newshared/gameplay. Discovery3508=38partial eligible+4framework/infrastructure+658configuration+2808unassessed, not completion percentages. Broad content remains; PG-DEF-001 Close candidate pending independent retest. Continue eligible implementation.
