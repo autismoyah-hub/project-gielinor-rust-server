@@ -373,6 +373,7 @@ impl<B: AccountBackend> Runtime<B> {
     }
     pub(super) fn npc_event(&mut self, actor: ActorId, event: NpcEvent) -> io::Result<()> {
         match event {
+            NpcEvent::Tanning(target) => self.open_tanning(actor,target)?,
             NpcEvent::Face(target) => {
                 if let Some(active) = self.active.get_mut(&actor) {
                     active.face_npc = Some(target);

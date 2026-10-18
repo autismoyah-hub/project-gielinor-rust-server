@@ -222,6 +222,7 @@ pub mod tower_diary_ui;
 pub mod tower_furnishings;
 pub mod tower_hazards;
 pub mod tower_layout;
+pub mod tanning;
 pub mod tower_tanning;
 pub mod tutorial_bread;
 pub mod tutorial_chef;

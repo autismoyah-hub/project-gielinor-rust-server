@@ -38,6 +38,7 @@ pub struct Selection {
 }
 #[derive(Clone)]
 pub(crate) struct Active {
+    pub tanning: Option<gielinor_world::tanning::Request>,
     pub smelting: bool,
     pub dough: Option<gielinor_world::dough::Request>,
     pub tool_crafting:Option<gielinor_world::tool_crafting::Request>,

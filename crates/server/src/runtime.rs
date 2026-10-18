@@ -25,6 +25,7 @@ mod npc_interaction;
 mod prayer;
 mod prayer_tab;
 mod shop;
+mod tanning;
 mod counted_assembly;
 mod skill_multi;
 mod dough;

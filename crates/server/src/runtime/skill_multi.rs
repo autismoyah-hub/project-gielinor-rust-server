@@ -43,6 +43,7 @@ impl<B: AccountBackend> Runtime<B> {
             .get_mut(&actor)
             .ok_or_else(|| io::Error::other("Invalid skillmulti actor"))?
             .skill_multi = Some(SkillDialog {
+            tanning: None,
             smelting: false,
             dough: None,
             tool_crafting:None,
@@ -139,6 +140,9 @@ impl<B: AccountBackend> Runtime<B> {
         let selection = dialog
             .dialog
             .select(dialog.presentation, component, pause.subcomponent);
+        if let (Some(request),Some(selection))=(dialog.tanning,selection) {
+            if let Err(error)=self.world.complete_tanning(actor,request,selection.index,selection.count) {self.events.push(Event::World(WorldEvent::ActionRejected{actor,error}));}
+        }
         if let (Some(request),Some(selection))=(dialog.facility_crafting,selection) {
             if let Err(error)=self.world.start_facility_crafting(actor,request,selection.index,selection.count) {self.events.push(Event::World(gielinor_world::simulation::WorldEvent::ActionRejected{actor,error}));}
         }

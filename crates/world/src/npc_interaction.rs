@@ -4,6 +4,7 @@ use crate::simulation::NpcId;
 pub enum Handler {
     Bank,
     Pickpocket,
+    Tanning,
     TowerTanner,
     Combat,
     Person,
@@ -28,6 +29,7 @@ pub struct Pending {
 #[derive(Clone, Copy, Debug)]
 pub enum Event {
     Face(NpcId),
+    Tanning(NpcId),
     Bank,
     Message(&'static str),
 }

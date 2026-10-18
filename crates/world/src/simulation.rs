@@ -66,6 +66,7 @@ mod tower_combat_actions;
 mod tower_login_actions;
 mod tower_offering_actions;
 mod tower_staff_actions;
+mod tanning_actions;
 mod tower_tanning_actions;
 mod tutorial_bread_actions;
 mod tutorial_fire_actions;
@@ -894,6 +895,7 @@ pub struct World {
     /// Host-supplied wall time, kept separate from the deterministic world clock.
     pub unix_millis: u64,
     pub tower_arrival: Option<crate::tower_arrival::Config>,
+    pub tanning: BTreeMap<u16, Vec<crate::tanning::Recipe>>,
     pub tower_tanning: Option<crate::tower_tanning::HandlerConfig>,
     pub tower_chest: Option<crate::tower_chest::HandlerConfig>,
     pub tower_staff: Option<crate::tower_staff::HandlerConfig>,
@@ -1012,6 +1014,7 @@ impl Default for World {
             music: None,
             area_sources: Default::default(),
             tower_arrival: None,
+            tanning: Default::default(),
             tower_tanning: None,
             tower_chest: None,
             tower_staff: None,

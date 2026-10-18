@@ -415,6 +415,7 @@ pub fn run() -> io::Result<()> {
         names.short("npc", "chicken")?,
     )?;
     runtime.configure_woodcutting(&names, None)?;
+    runtime.configure_standard_tanners(&names)?;
     runtime.configure_mining(&names)?;
     let offering_xp = names.id("param", "skill_xp")?;
     let offering_default = cache

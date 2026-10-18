@@ -358,6 +358,7 @@ impl World {
             p.movement.abort();
             let event = match pending.handler {
                 Some(Handler::Bank) => Event::Bank,
+                Some(Handler::Tanning) => Event::Tanning(pending.target),
                 Some(Handler::Pickpocket) => unreachable!("Pickpocket handled above"),
                 Some(Handler::TowerTanner) => unreachable!("Tanning handled above"),
                 Some(Handler::Combat) => unreachable!("Combat handled above"),
