@@ -3,9 +3,9 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0110 Guild bank chest gate; source [8ab0778](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/8ab0778b81afc132337eb0f90daf708b76c16877). Full shared177server/494world1ignore and actual binaries pass485; independentV0–V4queued. Prior109 fixture failure retained; current full run passes its corrected case.
+OR-MIG-0111 Guild deposit-box bulk actions; source [375f79d](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/375f79d28dfbbf8fa9f11073c354698870b0c296). Full shared003 and actual bins001 pass491; first compile failure retained. Independent V0–V4 queued.
 
-110 units /120append-only records. Discovery3508={'not_yet_assessed': 2774, 'configuration': 660, 'framework_or_infrastructure': 18, 'eligible_gameplay_behavior': 56}, not completion percentages. Depositbox/Collect/entry and native banking/lifecycle/reference remain separate; existing quest/clay/PgDef/price dependencies remain open.
+111 units /121append-only records. Discovery3508={'not_yet_assessed': 2768, 'configuration': 660, 'framework_or_infrastructure': 18, 'eligible_gameplay_behavior': 62}, not completion percentages. Deposit quantities/settings/item-on-box/other boxes remain separate; existing corrections retained.
 <!-- forge-current:end -->
 
 
@@ -764,3 +764,14 @@ Shared001 PASS177server/494world/one existing ignored,485 unchanged rg-visible s
 Shared guard j2 at6451MiB/56.2%commit/20.9%CPU/zero paging/0.5ms disk; bins6553MiB/56.1%commit/18.3%CPU/5249pages-in/s but0.3ms disk. No Rust failure/resource deferral/OOM or other-agent process changes. Registration initializer anchor corrected before validation; one test-only Varbit import warning remains in bins. One chest/two reward bits/persistent base/three Wiki pages/two source hashes pinned. Wiki explicitly supplies membership requirement; source only reads base/flags within its world context.
 
 Depositbox29103, Collect operation3, Guild entry/stairs/outfit/master-crafter interactions and native full banking/session/same-save/reference acceptance remain separate. Source files stay partial. Queue120records110units; discovery3508={'not_yet_assessed': 2774, 'configuration': 660, 'framework_or_infrastructure': 18, 'eligible_gameplay_behavior': 56}, not completion percentages. Existing clay/PgDef/Sbott price discrepancies and independent acceptance remain open.
+
+
+## FORGE OR-MIG-0111 — Guild deposit-box bulk integration
+
+Source 375f79d28dfbbf8fa9f11073c354698870b0c296 registers Guild box29103 Deposit through actual application/reached-location/modals/buttons/World dispatch. Reuses110 membership/base99-or-hard/elite gate, with a captured presentation kind and live recheck. Modal192 bulk inventory29/worn30 op1 delegates existing DepositAll temporarily in Main; prior selected tab is restored. Existing capacity initialization is factored unchanged and reused without opening bank contents or resetting withdraw notes. Existing worn callbacks and animation834 on source free-space change are preserved.
+
+Scoped inventory overlay149-to268 restoration runs on close and modal replacement, respects a later owner, and restores ordinary inventory permissions. Whole UI hook state and transfer PlayerData are staged. Grid23 explicitly disabled in this bulk subset; no withdraw dispatch. Eight donor hashes, exact target location/three components/interface/seq facts and three Wiki revisions pinned.
+
+Shared001 compile FAIL retained (packed component conversion and structural Varbit test comparison); Shared002 test FAIL179pass/1fail retained and corrected fixture archived (actual packet bound replaces accepted reversed range); corrected Shared003 PASS180server/498world/one existing ignored (9.91s compile,56.17s server,27.49s world) and actual bins001 PASS17.53s; both preserve 491 unchanged rg-visible source hashes. Bounded transaction, selected-tab, empty-animation, World worn/inventory dispatch, UI roles, Guild profile and stale-kind/overlay restoration cases plus full shared regression. Developer working-tree evidence with unrelated changes preserved, not native/pristine/independent acceptance. Exact build logs and resource samples remain private work/forge-deposit-box-* artifacts; no process belonging to another agent changed.
+
+Individual item quantities/X/settings, worn-icon unequip/examine, looting bag, item-on-box, generic category deposit boxes and comprehensive native/layout/session/lifecycle/reference acceptance remain separate. Queue121records111units; discovery3508={'not_yet_assessed': 2768, 'configuration': 660, 'framework_or_infrastructure': 18, 'eligible_gameplay_behavior': 62}, not completion percentages. Ordinary existing correction issues and prior evidence remain open.
