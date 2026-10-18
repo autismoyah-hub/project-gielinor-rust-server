@@ -1,0 +1,93 @@
+{
+  "baseline_commit": "3f1b9ea95b6ad00071cd04b160b5fe4b993676fd",
+  "scope": "Static reconstruction fidelity reassessment; private asset review",
+  "publication": "Generic tools and source-safe summary only. No new reference images, cache payloads, direct reconstruction geometry, Blender studies or asset recipes are in this publication.",
+  "renderer_sha256": "f6e6e12da1a80f7824c9d90a5254964fdc8d738298417c7dcd51e0793caea7cf",
+  "assets": [
+    {
+      "asset": "Armored goblin",
+      "selector": "npc:655",
+      "revision": "239.1",
+      "reference_model_ids": [
+        24433,
+        24443,
+        24450,
+        24464,
+        24476,
+        24484,
+        24502,
+        24506
+      ],
+      "selected": "balanced",
+      "vertices": 2053,
+      "triangles": 3676,
+      "collapsed_source_triangles": 130,
+      "saved_source_reexport_byte_exact": true,
+      "fresh_reference_identity_matches_history": true,
+      "retained_roundtrip_all_six_views_pixel_exact": true,
+      "artistic_acceptance": false,
+      "improvements": "Custom cranial planes and squinting eyes; anatomical arm and leg chains; closed skirt panels, fitted collar and greaves; a crescent axe and beveled plank shield with back braces and grip.",
+      "remaining_deficiencies": "Mixed result. The nose, jaw and brow remain stylized; torso armor is too simple, greaves too cylindrical, and shield/weapon pose still differs. Front and gameplay silhouettes can regress against the older study. This is not an accepted goblin reconstruction."
+    },
+    {
+      "asset": "Cow",
+      "selector": "npc:2790",
+      "revision": "239.1",
+      "reference_model_ids": [
+        23889
+      ],
+      "selected": "final",
+      "vertices": 1497,
+      "triangles": 2593,
+      "collapsed_source_triangles": 273,
+      "saved_source_reexport_byte_exact": true,
+      "fresh_reference_identity_matches_history": true,
+      "retained_roundtrip_all_six_views_pixel_exact": true,
+      "artistic_acceptance": false,
+      "improvements": "A shaped barrel and narrow neck, embedded shoulder and haunch roots, distinct joint chains, cloven hoof wedges, horns, lateral ears, udder and tail. Coat regions follow cut surface boundaries; eye markings are fitted to the skull.",
+      "remaining_deficiencies": "Head pitch, muzzle and horn shape remain different. The brisket is too shallow, limb/body transitions still show, and the coat pattern is approximate. Native faceting and cheek planes do not yet reproduce the authentic surface."
+    },
+    {
+      "asset": "Wolf",
+      "selector": "npc:106",
+      "revision": "239.1",
+      "reference_model_ids": [
+        26266
+      ],
+      "selected": "final",
+      "vertices": 1484,
+      "triangles": 2626,
+      "collapsed_source_triangles": 146,
+      "saved_source_reexport_byte_exact": true,
+      "fresh_reference_identity_matches_history": true,
+      "retained_roundtrip_all_six_views_pixel_exact": true,
+      "artistic_acceptance": false,
+      "improvements": "A canine cranium with orbital and muzzle planes, narrow waist, modeled cheeks and open mandible. A controlled body/limb union connects shoulders and haunches; digitigrade hocks, paws, claws and a descending bushy tail distinguish it from the cow.",
+      "remaining_deficiencies": "Ruff and cheek masses remain too simple, body shading too smooth, and facial expression insufficiently close. Paws, leg plane changes, tail section and eye placement require more art direction. The profile is recognizably canine but is not an exact reconstruction."
+    },
+    {
+      "asset": "Iron scimitar",
+      "selector": "item:1323",
+      "revision": "239.1",
+      "reference_model_ids": [
+        2373
+      ],
+      "selected": "clean",
+      "vertices": 230,
+      "triangles": 290,
+      "collapsed_source_triangles": 146,
+      "saved_source_reexport_byte_exact": true,
+      "fresh_reference_identity_matches_history": true,
+      "retained_roundtrip_all_six_views_pixel_exact": true,
+      "artistic_acceptance": false,
+      "improvements": "The curved blade uses authored stations, diamond sections and distal taper in the original ground-model orientation. Iron, guard and grip materials now belong to the correct components; the flared pommel is distinct from the handle.",
+      "remaining_deficiencies": "Blade belly, the kink approaching the tip, guard silhouette, pommel and facet shading remain approximate. The final cleanup removes coplanar guard surfaces; small source details still collapse during integer export."
+    }
+  ],
+  "technical_status": "Complete",
+  "artistic_status": "Partial; goblin mixed; no acceptance claimed",
+  "browser_qa": "file protocol blocked; local links and JavaScript syntax validated",
+  "shared_world_changed": false,
+  "script_regeneration_native_pixels_exact": true,
+  "fresh_script_model_byte_order": "Equivalent triangle order may differ for goblin/cow; oriented material triangles and rendered pixels reproduce exactly"
+}
