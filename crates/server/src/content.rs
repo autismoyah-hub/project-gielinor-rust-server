@@ -8,6 +8,8 @@ mod light_sources;
 pub use light_sources::light_sources;
 mod prospector_outfit;
 pub use prospector_outfit::prospector_outfit;
+mod magic_trees;
+pub use magic_trees::magic_trees;
 mod member_timed_trees;
 pub use member_timed_trees::member_timed_trees;
 mod special_pickaxes;
