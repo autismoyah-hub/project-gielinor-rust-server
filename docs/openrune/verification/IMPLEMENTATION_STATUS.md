@@ -3,9 +3,9 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0106 six member standard tanning profiles and105r2 quantity correction; source [7ec9e25](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/7ec9e2588843b6fc82a8e5ba38349707bb4aa0a2). Focused3server/8world and actual binaries pass475; independent V0–V4 queued. Original history preserved.
+OR-MIG-0107 member-only Sbott fee profile; source [750b6a7](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/750b6a71c5d5542757434363c231afba90dd674d). Tanning5server/8world and actualbins pass476; independentV0–V4queued. Soft2versusLeather-page3 conflict remains explicit.
 
-106 units / 116 append-only records. Discovery3508={'not_yet_assessed': 2778, 'configuration': 660, 'framework_or_infrastructure': 18, 'eligible_gameplay_behavior': 52}, not completion percentages. Other tanners/discounts/access/routes, native UI/exact timing/lifecycle remain separate. Clay issue74 and PG-DEF-001 independent retest remain open.
+107 units /117append-only records. Discovery3508={'not_yet_assessed': 2777, 'configuration': 660, 'framework_or_infrastructure': 18, 'eligible_gameplay_behavior': 53}, notcompletion percentages. NativeUI/timing/lifecycle/region/access remain separate. Clayissue74 and PG-DEF-001 independent retest remain open.
 <!-- forge-current:end -->
 
 
@@ -722,3 +722,12 @@ Focused002PASS3server/8world475 unchanged hashes,32.84s compile/0.66s server/0.2
 Queue105 first draft schema failure is preserved in work/forge-standard-tanning-queue-validation-001.log and immutable invalid draft SHA437a2d5d99a9d7d8a2ef6ccbb98ad630a2cf4561da0583e5da0a73379b43f572. Git proved only the unpublished appended row needed revision metadata/ENV prefixes; all113 published preceding records remained byte-identical during the approved schema repair. An earlier helper proposing behavior-history edits was automatically rejected and never executed. The source-only guard and append-only correction contract avoid that issue.
 
 Other tanners/prices/diary/quests/access, Guild entry/stairs, dialogue/op2/item-onNPC, bespoke Tanner UI, TanLeather spell, acquisition/leather uses and exact native/UI/tick/lifecycle/reference acceptance remain separate. Source files stay partial and data generator stays configuration. Queue116records106units. Discovery3508={'not_yet_assessed': 2778, 'configuration': 660, 'framework_or_infrastructure': 18, 'eligible_gameplay_behavior': 52}, not completion percentages.
+
+
+## FORGE OR-MIG-0107 — Sbott member-only fee profile
+
+Source 750b6a71c5d5542757434363c231afba90dd674d registers static6526 Sbott Trade3 through actual existing configure_standard_tanners before all3NPC handler/profile conflict checks. Validated8standard shapes derive soft2/hard5/swamp45/ordinarysnake25/fourdragon45GP prices; all8member-only, no skill/XP. Shared reachedNPC/UI/quantity/capturedslots/livechecks/clonefee+strictoutput unchanged. EmptyF2P choices safely skip UI. All24synthetic normal/F2P/live-loss reachedcases pass; each2hides/2fees-minus1GP yields1output/1hide/fee-minus1GP and unchangedStats.
+
+Focused001PASS5server/8world476 unchanged hashes,40.34s compile/2.01s server/0.51s world; actual bins001PASS476. Focusedguardj2:5813MiB/59.8%commit/48.3%CPU/689pages-in/s/6.2msdisk; binsguardj2:6437MiB/56.5%commit/16.9%CPU/675pages-in/s/3.7msdisk. No Rust failure/resource deferral/OOM. FreshNPC6526,5Wiki pages/4source refs and inherited15items pinned.
+
+Explicit price discrepancy: sourceSbott/TannerPrices, WikiSbott15317197 and globalTanner15317776 supportsoft2GP; Leather15183765 Sbott subrecipe instead3GP. Candidate chooses2 from specificNPC/globaltable/source, not asserted reference/native equivalence. Source dialogue/item-onNPC/customTannerUI, Canifis/region/PriestInPeril travel/access and exact nativeUI/timing/lifecycle remain separate. OtherNPCs/discounts/quests not inferred. LeatherTannerScript is prior dependency context without a new implementation ID for its Chouani route. Source filespartial; production data staysconfiguration. Queue117records107units; discovery3508={'not_yet_assessed': 2777, 'configuration': 660, 'framework_or_infrastructure': 18, 'eligible_gameplay_behavior': 53}, notcompletion percentages.
