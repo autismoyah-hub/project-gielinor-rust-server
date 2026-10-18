@@ -62,6 +62,31 @@ impl<B: AccountBackend> Runtime<B> {
                 },
             );
         }
+        let regular_logs = names.id("obj", "logs")? as i32;
+        for tool in crate::content::woodcutting_axes(
+            names.group("obj"),
+            names.group("seq"),
+            names.group("stat"),
+            &self.definitions,
+        )
+        .map_err(io::Error::other)?
+        {
+            if let Some(old) = config.axes.insert(tool.id, tool.axe) {
+                if old.level != tool.axe.level || old.animation != tool.axe.animation {
+                    return Err(io::Error::other("Conflicting ordinary woodcutting axe"));
+                }
+            }
+            for (&id, tree) in &mut config.trees {
+                let rates = if id == oak {
+                    tool.oak_rates
+                } else if tree.product == regular_logs && tree.level == 1 {
+                    tool.regular_rates
+                } else {
+                    return Err(io::Error::other("Unattested ordinary axe tree rates"));
+                };
+                tree.rates.insert(tool.id, rates);
+            }
+        }
         config.validate().map_err(io::Error::other)?;
         for (&id, profile) in &mut config.trees {
             let tree = self

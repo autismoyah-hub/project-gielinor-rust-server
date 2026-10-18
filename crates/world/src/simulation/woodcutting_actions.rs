@@ -73,7 +73,7 @@ impl World {
             }
         }
         let level = p.data.stats.current(skill) as i32;
-        let axe = config.axe(&p.data.inventory, &p.data.equipment, level);
+        let axe = config.axe_for_tree(&p.data.inventory, &p.data.equipment, level, &tree);
         trace.tool = axe.map(|(id, _)| id);
         if denial.is_none() && level < tree.level {
             denial = Some("level");

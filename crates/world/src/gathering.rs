@@ -133,18 +133,27 @@ pub(crate) fn best_tool(
     level: i32,
     requirement: impl Fn(i32) -> Option<i32>,
 ) -> Option<i32> {
+    best_tool_by(inv, worn, level, |id| requirement(id).map(|req| (req, req)))
+}
+/// Eligibility and quality are separate: equal-level tools may have different rates.
+pub(crate) fn best_tool_by(
+    inv: &crate::inventory::Inventory,
+    worn: &crate::inventory::Inventory,
+    level: i32,
+    candidate: impl Fn(i32) -> Option<(i32, i32)>,
+) -> Option<i32> {
     let mut best: Option<(i32, i32)> = None;
     for item in inv.slots().iter().flatten() {
-        if let Some(req) = requirement(item.id).filter(|&r| r <= level) {
-            if best.is_none_or(|(_, current)| req > current) {
-                best = Some((item.id, req));
+        if let Some((_, quality)) = candidate(item.id).filter(|&(req, _)| req <= level) {
+            if best.is_none_or(|(_, current)| quality > current) {
+                best = Some((item.id, quality));
             }
         }
     }
     if let Some(item) = worn.get(3) {
-        if let Some(req) = requirement(item.id).filter(|&r| r <= level) {
-            if best.is_none_or(|(_, current)| req >= current) {
-                best = Some((item.id, req));
+        if let Some((_, quality)) = candidate(item.id).filter(|&(req, _)| req <= level) {
+            if best.is_none_or(|(_, current)| quality >= current) {
+                best = Some((item.id, quality));
             }
         }
     }

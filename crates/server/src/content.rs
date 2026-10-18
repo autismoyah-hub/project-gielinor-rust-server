@@ -6,6 +6,8 @@ mod birdhouses;
 pub use birdhouses::birdhouses;
 mod light_sources;
 pub use light_sources::light_sources;
+mod woodcutting_axes;
+pub use woodcutting_axes::woodcutting_axes;
 mod ordinary_mining;
 pub use ordinary_mining::ordinary_mining_rocks;
 mod silver_jewellery;

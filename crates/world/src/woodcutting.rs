@@ -62,6 +62,21 @@ impl Config {
         }
         Ok(())
     }
+    /// Source chooses the greatest average low/high rate among eligible axes.
+    pub fn axe_for_tree(
+        &self,
+        inv: &Inventory,
+        worn: &Inventory,
+        level: i32,
+        tree: &Tree,
+    ) -> Option<(i32, Axe)> {
+        crate::gathering::best_tool_by(inv, worn, level, |id| {
+            let axe = self.axes.get(&id)?;
+            let &(low, high) = tree.rates.get(&id)?;
+            Some((axe.level, (low + high) / 2))
+        })
+        .map(|id| (id, self.axes[&id]))
+    }
     pub fn axe(&self, inv: &Inventory, worn: &Inventory, level: i32) -> Option<(i32, Axe)> {
         crate::gathering::best_tool(inv, worn, level, |id| self.axes.get(&id).map(|a| a.level))
             .map(|id| (id, self.axes[&id]))
@@ -213,5 +228,86 @@ mod tests {
         assert_eq!(c.axe(&inv, &worn, 6).unwrap().0, 3);
         c.axes.remove(&2);
         assert_eq!(c.axe(&inv, &worn, 1).unwrap().0, 1);
+    }
+}
+
+#[cfg(test)]
+mod ranked_tool_tests {
+    use super::*;
+    use crate::inventory::{Item, StackType};
+    #[test]
+    fn equal_level_axes_rank_by_tree_rate_and_preserve_eligibility_and_worn_ties() {
+        let mut inv = Inventory::new(28, StackType::Normal, false);
+        let mut worn = inv.clone();
+        for (slot, id) in [(0, 1351), (1, 1349), (2, 1353)] {
+            inv.restore_slot(
+                slot,
+                Some(Item {
+                    id,
+                    count: 1,
+                    vars: 0,
+                }),
+            )
+            .unwrap();
+        }
+        let mut tree = Tree {
+            level: 1,
+            product: 1511,
+            product_name: "Logs".into(),
+            xp: 25.0,
+            stump: 1342,
+            deplete_chance: 0,
+            chopping_ticks: None,
+            respawn: [4, 4],
+            rates: [(1351, (64, 200)), (1349, (96, 300)), (1353, (128, 400))].into(),
+        };
+        let c = Config {
+            skill: 8,
+            axes: [
+                (
+                    1351,
+                    Axe {
+                        level: 1,
+                        animation: 879,
+                    },
+                ),
+                (
+                    1349,
+                    Axe {
+                        level: 1,
+                        animation: 877,
+                    },
+                ),
+                (
+                    1353,
+                    Axe {
+                        level: 6,
+                        animation: 875,
+                    },
+                ),
+            ]
+            .into(),
+            trees: Default::default(),
+            full_sound: 0,
+            fall_sound: 0,
+        };
+        assert_eq!(c.axe_for_tree(&inv, &worn, 1, &tree).unwrap().0, 1349);
+        assert_eq!(c.axe_for_tree(&inv, &worn, 6, &tree).unwrap().0, 1353);
+        // Eligibility alone is not the score; use the current tree's actual curve.
+        tree.rates.insert(1351, (200, 500));
+        assert_eq!(c.axe_for_tree(&inv, &worn, 6, &tree).unwrap().0, 1351);
+        tree.rates.insert(1351, (96, 300));
+        worn.restore_slot(
+            3,
+            Some(Item {
+                id: 1351,
+                count: 1,
+                vars: 0,
+            }),
+        )
+        .unwrap();
+        assert_eq!(c.axe_for_tree(&inv, &worn, 1, &tree).unwrap().0, 1351);
+        // Legacy requirement-ranked entry point remains unchanged for existing callers.
+        assert_eq!(c.axe(&inv, &worn, 1).unwrap().0, 1351);
     }
 }
