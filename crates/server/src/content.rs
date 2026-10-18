@@ -1,4 +1,6 @@
 //! Resolve content's symbolic references against the same immutable type inputs as Kotlin.
+mod shield_crafting;
+pub use shield_crafting::{shield_crafting,shield_crafting_registrations};
 mod costume_needle_mixedhide;
 pub use costume_needle_mixedhide::{costume_needle_mixedhide,costume_needle_mixedhide_registrations};
 mod costume_needle_hueycoatl;

@@ -76,6 +76,35 @@ pub fn prepare_materials(
         .collect::<Vec<_>>();
     prepare_plan(job, &parts, inv, items, stats, rate, member)
 }
+/// Stacked material counts and ordinary singles share the same staged transaction.
+pub fn prepare_material_counts(
+    job: Job,
+    materials: &[(i32, usize, u16)],
+    inv: &Inventory,
+    items: &Catalog,
+    stats: &Stats,
+    rate: i32,
+    member: bool,
+) -> Result<Prepared, Error> {
+    if materials.len() < 2
+        || materials.iter().any(|&(id, _, n)| {
+            n == 0
+                || id < 0
+                || items.dummy.contains(&id)
+                || items.notes.get(&id).is_some_and(|t| t.template != 0)
+                || items.placeholders.get(&id).is_some_and(|t| t.template != 0)
+                || items.transforms.get(&id).is_some_and(|t| t.template != 0)
+                || (!items.stackable.contains(&id) && (!items.ordinary_nonstackable(id) || n != 1))
+        })
+    {
+        return Err(Error::Policy);
+    }
+    let parts = materials
+        .iter()
+        .map(|&(id, slot, n)| (id, slot, i32::from(n)))
+        .collect::<Vec<_>>();
+    prepare_plan(job, &parts, inv, items, stats, rate, member)
+}
 fn prepare_plan(
     job: Job,
     parts: &[(i32, usize, i32)],
@@ -482,6 +511,114 @@ mod mixed_tests {
                     1
                 );
                 assert_eq!(p.inventory.free_space(), 3);
+            } else {
+                assert!(result.is_err(), "case{case}");
+            }
+            assert_eq!((inv, stats), before);
+        }
+    }
+}
+
+#[cfg(test)]
+mod stack_mixed_tests {
+    use super::*;
+    use crate::{
+        grinding,
+        inventory::{Item, Template},
+        tool_crafting::Recipe,
+    };
+    #[test]
+    fn stack_mixed_nails_and_all_singles_are_staged_before_credit_or_reward() {
+        let mut job = Job {
+            recipe: Recipe {
+                skill: 12,
+                exchange: grinding::Recipe {
+                    tool: 2347,
+                    input: 1743,
+                    output: 22269,
+                    members: true,
+                    animation: None,
+                },
+                level: 41,
+                xp_tenths: 700,
+                output_count: 1,
+                ticks: 5,
+                name: "Hard leather shield",
+                action: "make",
+                failure: None,
+            },
+            tool_slot: 0,
+            input_slot: 1,
+        };
+        for case in 0..10 {
+            let mut inv = Inventory::new(6, StackType::Normal, false);
+            let mut items = Catalog::default();
+            items.stackable.insert(4819);
+            let mut stats = Stats::default();
+            stats.set_current(12, 41);
+            for (slot, id, count) in [
+                (0, 2347, 1),
+                (1, 1743, 1),
+                (2, 1743, 1),
+                (3, 22251, 1),
+                (4, 4819, if case == 3 { 14 } else { 30 }),
+                (5, 1511, 1),
+            ] {
+                inv.restore_slot(
+                    slot,
+                    Some(Item {
+                        id,
+                        count,
+                        vars: if case == 2 && slot == 4 { 9 } else { 0 },
+                    }),
+                )
+                .unwrap();
+            }
+            let mut parts = vec![(1743, 1, 1), (1743, 2, 1), (22251, 3, 1), (4819, 4, 15)];
+            match case {
+                1 => parts[2].1 = 2,
+                4 => {
+                    items.dummy.insert(22269);
+                }
+                7 => parts[3].2 = 0,
+                8 => {
+                    items.notes.insert(
+                        4819,
+                        Template {
+                            link: 1,
+                            template: 1,
+                        },
+                    );
+                }
+                9 => job.recipe.output_count = 2,
+                _ => {}
+            }
+            let before = (inv.clone(), stats.clone());
+            let result = prepare_material_counts(
+                job,
+                &parts,
+                &inv,
+                &items,
+                &stats,
+                if case == 5 { 0 } else { 125 },
+                case != 6,
+            );
+            if case == 0 {
+                let p = result.unwrap();
+                assert_eq!(p.stats.fine_xp(12), 875);
+                assert_eq!(p.inventory.get(4).unwrap().count, 15);
+                assert_eq!(p.inventory.free_space(), 2);
+                assert_eq!(p.inventory.get(0), inv.get(0));
+                assert_eq!(p.inventory.get(5), inv.get(5));
+                assert_eq!(
+                    p.inventory
+                        .slots()
+                        .iter()
+                        .flatten()
+                        .filter(|i| i.id == 22269)
+                        .count(),
+                    1
+                );
             } else {
                 assert!(result.is_err(), "case{case}");
             }

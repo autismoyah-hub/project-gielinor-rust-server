@@ -83,9 +83,10 @@ pub(super) fn complete(
     }
     let mixed_parts=pending.batch.as_ref().and_then(|batch|batch.expected_ids.as_ref().and_then(|ids|{
         let end=batch.index.checked_add(batch.input_stride)?;
-        Some(ids.get(batch.index..end)?.iter().copied().zip(batch.slots.get(batch.index..end)?.iter().copied()).collect::<Vec<_>>())
+        let counts=batch.expected_counts.as_ref()?.get(batch.index..end)?;
+        Some(ids.get(batch.index..end)?.iter().copied().zip(batch.slots.get(batch.index..end)?.iter().copied()).zip(counts.iter().copied()).map(|((id,slot),n)|(id,slot,n)).collect::<Vec<_>>())
     }));
-    let result=if pending.batch.as_ref().is_some_and(|batch|batch.expected_ids.is_some()){mixed_parts.ok_or(Error::Policy).and_then(|parts|crate::tool_crafting_counts::prepare_materials(pending.job,&parts,&p.data.inventory,items,&p.data.stats,p.data.xp_rate_hundreds,p.member).map(|prepared|(prepared,true)))}else if pending.input_count==1{pending.job.resolve(
+    let result=if pending.batch.as_ref().is_some_and(|batch|batch.expected_ids.is_some()){mixed_parts.ok_or(Error::Policy).and_then(|parts|crate::tool_crafting_counts::prepare_material_counts(pending.job,&parts,&p.data.inventory,items,&p.data.stats,p.data.xp_rate_hundreds,p.member).map(|prepared|(prepared,true)))}else if pending.input_count==1{pending.job.resolve(
         &p.data.inventory,
         items,
         &p.data.stats,
@@ -348,7 +349,7 @@ impl World {
     }
     pub(super) fn request_tool_crafting_mixed(&mut self,actor:ActorId,recipes:std::sync::Arc<Vec<crate::tool_crafting::Recipe>>,cycle_ticks:u8,request:crate::held_use::Request,specs:crate::tool_crafting_materials::Specifications)->Result<(),ActionError>{
         let p=self.players.get_mut(actor.slot as usize).unwrap();
-        let choice=crate::tool_crafting_materials::bind(recipes,cycle_ticks,request,&p.data.inventory,p.movement.coords,p.movement.last_movement,specs).ok_or(ActionError::InvalidItem)?;
+        let choice=crate::tool_crafting_materials::bind(recipes,cycle_ticks,request,&p.data.inventory,&self.object_types,p.movement.coords,p.movement.last_movement,specs).ok_or(ActionError::InvalidItem)?;
         if choice.recipes.iter().all(|r|r.exchange.members)&&!p.member{refusal(&mut self.events,actor,Error::Members,choice.recipes[0].skill);return Ok(());}
         p.tool_crafting_request=Some(choice);Ok(())
     }
@@ -395,12 +396,12 @@ impl World {
             input_slot: request.input_slot,
         };
         let input_count=request.input_count_for(index).ok_or(ActionError::InvalidItem)?;
-        let (slots,input_stride,expected_ids)=if request.material_specs.is_some(){
+        let (slots,input_stride,expected_ids,expected_counts)=if request.material_specs.is_some(){
             let capture=crate::tool_crafting_materials::capture(&request,index,&p.data.inventory,count as usize).ok_or(ActionError::InvalidItem)?;
             job.input_slot=*capture.slots.first().ok_or(ActionError::InvalidItem)?;
-            let parts=capture.ids.iter().copied().zip(capture.slots.iter().copied()).take(capture.stride).collect::<Vec<_>>();
-            if let Err(e)=crate::tool_crafting_counts::prepare_materials(job,&parts,&p.data.inventory,&self.object_types,&p.data.stats,p.data.xp_rate_hundreds,p.member){refusal(&mut self.events,actor,e,job.recipe.skill);return Ok(());}
-            (capture.slots,capture.stride,Some(capture.ids))
+            let parts=capture.ids.iter().copied().zip(capture.slots.iter().copied()).zip(capture.counts.iter().copied()).take(capture.stride).map(|((id,slot),n)|(id,slot,n)).collect::<Vec<_>>();
+            if let Err(e)=crate::tool_crafting_counts::prepare_material_counts(job,&parts,&p.data.inventory,&self.object_types,&p.data.stats,p.data.xp_rate_hundreds,p.member){refusal(&mut self.events,actor,e,job.recipe.skill);return Ok(());}
+            (capture.slots,capture.stride,Some(capture.ids),Some(capture.counts))
         }else{
         let mut slots = vec![request.input_slot];
         for (slot, item) in p.data.inventory.slots().iter().enumerate() {
@@ -417,7 +418,7 @@ impl World {
         let jobs=(slots.len()/input_stride).min(count as usize);slots.truncate(jobs*input_stride);
         let first_slots=slots.get(..input_stride).ok_or(ActionError::InvalidItem)?;
         if let Err(e)=crate::tool_crafting_counts::prepare_with_slots(job,input_count,first_slots,&p.data.inventory,&self.object_types,&p.data.stats,p.data.xp_rate_hundreds,p.member){refusal(&mut self.events,actor,e,job.recipe.skill);return Ok(());}
-            (slots,input_stride,None)
+            (slots,input_stride,None,None)
         };
         let p = self.players.get_mut(actor.slot as usize).unwrap();
         p.begin_held_action();
@@ -430,6 +431,7 @@ impl World {
             batch: Some(crate::tool_crafting::Batch {
                 input_stride,
                 expected_ids,
+                expected_counts,
                 slots: std::sync::Arc::new(slots),
                 index: 0,
                 cycle_ticks: request.cycle_ticks,

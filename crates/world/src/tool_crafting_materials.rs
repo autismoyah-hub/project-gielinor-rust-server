@@ -1,7 +1,7 @@
 //! Immutable mixed-material plans use the existing retained-tool production.
 use crate::{
     held_use,
-    inventory::Inventory,
+    inventory::{Catalog, Inventory},
     tool_crafting::{Recipe, Request},
     CoordGrid,
 };
@@ -10,6 +10,7 @@ pub type Specifications = Arc<Vec<Vec<(i32, u16)>>>;
 pub struct Capture {
     pub slots: Vec<usize>,
     pub ids: Arc<Vec<i32>>,
+    pub counts: Arc<Vec<u16>>,
     pub stride: usize,
 }
 pub fn bind(
@@ -17,18 +18,32 @@ pub fn bind(
     cycle: u8,
     held: held_use::Request,
     inv: &Inventory,
+    items: &Catalog,
     origin: CoordGrid,
     movement: i32,
     specs: Specifications,
 ) -> Option<Request> {
     let first = *recipes.first()?;
+    let stacks = specs
+        .iter()
+        .flatten()
+        .filter_map(|&(id, _)| items.stackable.contains(&id).then_some(id))
+        .collect::<BTreeSet<_>>();
     if specs.len() != recipes.len()
         || recipes.iter().any(|r| r.failure.is_some())
         || specs.iter().any(|s| {
             s.len() < 2
                 || s.first().map(|v| v.0) != Some(first.exchange.input)
-                || s.iter()
-                    .any(|&(id, n)| id < 0 || n == 0 || id == first.exchange.tool)
+                || s.iter().any(|&(id, n)| {
+                    id < 0
+                        || n == 0
+                        || id == first.exchange.tool
+                        || (!stacks.contains(&id) && !items.ordinary_nonstackable(id))
+                        || items.dummy.contains(&id)
+                        || items.notes.get(&id).is_some_and(|t| t.template != 0)
+                        || items.placeholders.get(&id).is_some_and(|t| t.template != 0)
+                        || items.transforms.get(&id).is_some_and(|t| t.template != 0)
+                })
                 || s.iter().map(|v| usize::from(v.1)).sum::<usize>() > 27
                 || s.iter().map(|v| v.0).collect::<BTreeSet<_>>().len() != s.len()
         })
@@ -43,7 +58,14 @@ pub fn bind(
     ] {
         let slot = usize::try_from(slot).ok()?;
         let i = inv.get(slot)?;
-        if i.id != id || i.count != 1 || i.vars != 0 {
+        if i.id != id
+            || (if stacks.contains(&id) {
+                i.count <= 0
+            } else {
+                i.count != 1
+            })
+            || i.vars != 0
+        {
             return None;
         }
         if id == first.exchange.tool {
@@ -85,6 +107,7 @@ pub fn bind(
     };
     let mut request = Request::bind(recipes, cycle, canonical, inv, origin, movement)?;
     request.material_specs = Some(specs);
+    request.material_stacks = Arc::new(stacks);
     request.selected_materials = selected;
     Some(request)
 }
@@ -94,8 +117,15 @@ pub fn available(request: &Request, index: usize, inv: &Inventory) -> usize {
     };
     if spec.is_empty()
         || request.selected_materials.iter().any(|&(id, slot)| {
-            !inv.get(slot)
-                .is_some_and(|i| i.id == id && i.count == 1 && i.vars == 0)
+            !inv.get(slot).is_some_and(|i| {
+                i.id == id
+                    && (if request.material_stacks.contains(&id) {
+                        i.count > 0
+                    } else {
+                        i.count == 1
+                    })
+                    && i.vars == 0
+            })
         })
     {
         return 0;
@@ -105,17 +135,35 @@ pub fn available(request: &Request, index: usize, inv: &Inventory) -> usize {
             if n == 0 {
                 0
             } else {
-                inv.slots()
-                    .iter()
-                    .flatten()
-                    .filter(|i| i.id == id && i.count == 1 && i.vars == 0)
-                    .count()
-                    / usize::from(n)
+                let quantity = if request.material_stacks.contains(&id) {
+                    stack_slot(request, id, inv)
+                        .and_then(|slot| inv.get(slot))
+                        .map_or(0, |i| i.count as usize)
+                } else {
+                    inv.slots()
+                        .iter()
+                        .flatten()
+                        .filter(|i| i.id == id && i.count == 1 && i.vars == 0)
+                        .count()
+                };
+                quantity / usize::from(n)
             }
         })
         .min()
         .unwrap_or(0)
         .min(28)
+}
+fn stack_slot(request: &Request, id: i32, inv: &Inventory) -> Option<usize> {
+    request
+        .selected_materials
+        .iter()
+        .find(|v| v.0 == id)
+        .map(|v| v.1)
+        .or_else(|| {
+            inv.slots()
+                .iter()
+                .position(|i| i.is_some_and(|i| i.id == id && i.count > 0 && i.vars == 0))
+        })
 }
 pub fn capture(request: &Request, index: usize, inv: &Inventory, count: usize) -> Option<Capture> {
     let spec = request.material_specs.as_ref()?.get(index)?;
@@ -123,34 +171,56 @@ pub fn capture(request: &Request, index: usize, inv: &Inventory, count: usize) -
     if jobs == 0 {
         return None;
     }
-    let stride = spec.iter().map(|v| usize::from(v.1)).sum();
+    let stride = spec
+        .iter()
+        .map(|&(id, n)| {
+            if request.material_stacks.contains(&id) {
+                1
+            } else {
+                usize::from(n)
+            }
+        })
+        .sum();
     let mut used = BTreeSet::from([request.tool_slot]);
     let mut slots = Vec::new();
     let mut ids = Vec::new();
+    let mut counts = Vec::new();
     for _ in 0..jobs {
         for &(id, n) in spec {
-            for _ in 0..n {
-                let slot = request
-                    .selected_materials
-                    .iter()
-                    .find(|&&(wanted, slot)| wanted == id && !used.contains(&slot))
-                    .map(|v| v.1)
-                    .or_else(|| {
-                        inv.slots().iter().enumerate().find_map(|(slot, i)| {
-                            (!used.contains(&slot)
-                                && i.is_some_and(|i| i.id == id && i.count == 1 && i.vars == 0))
-                            .then_some(slot)
-                        })
-                    })?;
-                used.insert(slot);
+            if request.material_stacks.contains(&id) {
+                let slot = stack_slot(request, id, inv)?;
+                if slot == request.tool_slot {
+                    return None;
+                }
                 slots.push(slot);
                 ids.push(id);
+                counts.push(n);
+            } else {
+                for _ in 0..n {
+                    let slot = request
+                        .selected_materials
+                        .iter()
+                        .find(|&&(wanted, slot)| wanted == id && !used.contains(&slot))
+                        .map(|v| v.1)
+                        .or_else(|| {
+                            inv.slots().iter().enumerate().find_map(|(slot, i)| {
+                                (!used.contains(&slot)
+                                    && i.is_some_and(|i| i.id == id && i.count == 1 && i.vars == 0))
+                                .then_some(slot)
+                            })
+                        })?;
+                    used.insert(slot);
+                    slots.push(slot);
+                    ids.push(id);
+                    counts.push(1);
+                }
             }
         }
     }
     Some(Capture {
         slots,
         ids: Arc::new(ids),
+        counts: Arc::new(counts),
         stride,
     })
 }

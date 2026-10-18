@@ -213,6 +213,7 @@ pub struct Request {
     pub input_counts:Option<std::sync::Arc<Vec<u16>>>,
     pub material_specs:Option<crate::tool_crafting_materials::Specifications>,
     pub selected_materials:Vec<(i32,usize)>,
+    pub material_stacks:std::sync::Arc<std::collections::BTreeSet<i32>>,
 }
 impl Request {
     pub fn bind(
@@ -287,6 +288,7 @@ impl Request {
             input_counts:None,
             material_specs:None,
             selected_materials:Vec::new(),
+            material_stacks:Default::default(),
         })
     }
     pub fn bind_materials(recipes:std::sync::Arc<Vec<Recipe>>,cycle_ticks:u8,request:crate::held_use::Request,inventory:&Inventory,origin:CoordGrid,last_movement:i32,input_counts:std::sync::Arc<Vec<u16>>)->Option<Self>{
@@ -313,6 +315,7 @@ impl Request {
 pub(crate) struct Batch {
     pub input_stride:usize,
     pub expected_ids:Option<std::sync::Arc<Vec<i32>>>,
+    pub expected_counts:Option<std::sync::Arc<Vec<u16>>>,
     pub slots: std::sync::Arc<Vec<usize>>,
     pub index: usize,
     pub cycle_ticks: u8,
