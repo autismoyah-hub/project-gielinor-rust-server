@@ -60,6 +60,7 @@ pub fn weaving_loom(
             Recipe {
                 input: 1759,
                 input_count: 4,
+                output_count: 1,
                 output: 3224,
                 level: 10,
                 xp_tenths: 120,
@@ -71,6 +72,7 @@ pub fn weaving_loom(
             Recipe {
                 input: 5931,
                 input_count: 4,
+                output_count: 1,
                 output: 5418,
                 level: 21,
                 xp_tenths: 380,
@@ -82,6 +84,7 @@ pub fn weaving_loom(
             Recipe {
                 input: 5931,
                 input_count: 2,
+                output_count: 1,
                 output: 21652,
                 level: 26,
                 xp_tenths: 550,
@@ -93,6 +96,7 @@ pub fn weaving_loom(
             Recipe {
                 input: 5933,
                 input_count: 6,
+                output_count: 1,
                 output: 5376,
                 level: 36,
                 xp_tenths: 560,

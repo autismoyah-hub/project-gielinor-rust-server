@@ -15,6 +15,7 @@ pub struct Recipe {
     pub input: i32,
     pub input_count: u8,
     pub output: i32,
+    pub output_count: u8,
     pub level: u8,
     pub xp_tenths: u16,
     pub members: bool,
@@ -137,6 +138,7 @@ pub fn prepare_group(
 ) -> Result<(Inventory, Stats, Option<Advancement>), Error> {
     if !(1..=99).contains(&recipe.level)
         || !(1..=28).contains(&recipe.input_count)
+        || !(1..=28).contains(&recipe.output_count)
         || slots.len() != usize::from(recipe.input_count)
         || recipe.first_ticks == 0
         || recipe.cycle_ticks == 0
@@ -161,7 +163,8 @@ pub fn prepare_group(
         .copied()
         .map(|slot| (recipe.input, slot))
         .collect();
-    let next = assembly::exchange_slots(inventory, catalog, &inputs, &[recipe.output], true)
+    let outputs = vec![recipe.output; usize::from(recipe.output_count)];
+    let next = assembly::exchange_slots(inventory, catalog, &inputs, &outputs, true)
         .map_err(Error::Exchange)?;
     let (next_stats, advanced) =
         assembly::prepare_reward_value(stats, 12, f64::from(recipe.xp_tenths) / 10.0, rate)

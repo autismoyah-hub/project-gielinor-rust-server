@@ -786,6 +786,8 @@ pub fn configure<B: AccountBackend>(
     for &id in spinning.locations.keys(){runtime.world.facility_crafting.insert(id,spinning.clone());}
     let weaving=crate::content::weaving_loom(n("obj"),n("loc"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)?;
     for &id in weaving.locations.keys(){if runtime.world.facility_crafting.insert(id,weaving.clone()).is_some(){return Err(io::Error::other("Conflicting weaving facility"));}}
+    let shaping=crate::content::pottery_shaping(n("obj"),n("loc"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)?;
+    for &id in shaping.locations.keys(){if runtime.world.facility_crafting.insert(id,shaping.clone()).is_some(){return Err(io::Error::other("Conflicting pottery shaping facility"));}}
     let glass=crate::content::glassblowing(n("obj"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)?;
     runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,1785,1775,gielinor_world::held_use::Handler::ToolCraftingChoices{recipes:std::sync::Arc::new(glass),cycle_ticks:3}).map_err(|e|io::Error::other(format!("Glassblowing registration: {e:?}")))?;
     runtime.configure_smelting_names(names)?;

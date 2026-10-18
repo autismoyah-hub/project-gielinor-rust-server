@@ -287,6 +287,7 @@ mod tests {
                         input_count: 1,
                         first_ticks: 3,
                         cycle_ticks: 3,
+                        output_count: 1,
                         output: 1759,
                         level: 1,
                         xp_tenths: 25,
@@ -298,6 +299,7 @@ mod tests {
                         input_count: 1,
                         first_ticks: 3,
                         cycle_ticks: 3,
+                        output_count: 1,
                         output: 1777,
                         level: 10,
                         xp_tenths: 150,
@@ -578,6 +580,7 @@ mod grouped_tests {
         let recipe = Recipe {
             input: if basket { 5933 } else { 1759 },
             input_count: if basket { 6 } else { 4 },
+            output_count: 1,
             output: if basket { 5376 } else { 3224 },
             level: if basket { 36 } else { 10 },
             xp_tenths: if basket { 560 } else { 120 },
@@ -748,6 +751,190 @@ mod grouped_tests {
                 before,
                 "case{case}"
             );
+        }
+    }
+}
+#[cfg(test)]
+mod pottery_tests {
+    use super::*;
+    use crate::{
+        facility_crafting::{Config, Recipe},
+        inventory::Item,
+        loc_collision::LocCollision,
+    };
+    #[test]
+    fn pottery_actual_use_and_clay_route_credit_four_cups_only_when_whole_output_fits() {
+        for space in [0, 3, 6] {
+            let mut w = World::default();
+            for x in (3192..3224).step_by(8) {
+                for z in (3192..3224).step_by(8) {
+                    w.collision.allocate(x, z, 0);
+                }
+            }
+            let loc = Location::new(CoordGrid::new(3201, 3200, 0).unwrap(), 14887, 10, 0).unwrap();
+            let ty = LocCollision {
+                width: 1,
+                length: 1,
+                block_walk: 2,
+                block_range: true,
+                break_route_finding: false,
+            };
+            w.location_types.insert(14887, ty);
+            w.locations.load(loc);
+            crate::loc_collision::toggle(
+                &mut w.collision,
+                loc.coords,
+                loc.shape,
+                loc.angle,
+                ty,
+                true,
+            )
+            .unwrap();
+            let recipes = vec![
+                Recipe {
+                    input: 1761,
+                    input_count: 1,
+                    output: 1787,
+                    output_count: 1,
+                    level: 1,
+                    xp_tenths: 63,
+                    members: false,
+                    first_ticks: 2,
+                    cycle_ticks: 3,
+                    label: "Unfired pot",
+                },
+                Recipe {
+                    input: 1761,
+                    input_count: 1,
+                    output: 28193,
+                    output_count: 4,
+                    level: 3,
+                    xp_tenths: 85,
+                    members: true,
+                    first_ticks: 2,
+                    cycle_ticks: 3,
+                    label: "Unfired cup",
+                },
+            ];
+            w.facility_crafting.insert(
+                14887,
+                Config {
+                    locations: [(14887, 1)].into(),
+                    recipes: std::sync::Arc::new(recipes),
+                    action: "shape",
+                    empty_message: "No clay.",
+                    animation: 883,
+                    location_animation: None,
+                },
+            );
+            let mut stats = Stats::default();
+            stats.set_base(3, 10);
+            stats.set_current(3, 10);
+            stats.set_base(12, 3);
+            stats.set_current(12, 3);
+            let mut data = PlayerData::new(
+                1,
+                "Potter".into(),
+                CoordGrid::new(3200, 3200, 0).unwrap(),
+                stats,
+            );
+            data.xp_rate_hundreds = 125;
+            for slot in 0..28 {
+                data.inventory
+                    .restore_slot(
+                        slot,
+                        Some(Item {
+                            id: 1511,
+                            count: 1,
+                            vars: 0,
+                        }),
+                    )
+                    .unwrap();
+            }
+            for slot in [19, 3, 11] {
+                data.inventory
+                    .restore_slot(
+                        slot,
+                        Some(Item {
+                            id: 1761,
+                            count: 1,
+                            vars: 0,
+                        }),
+                    )
+                    .unwrap();
+            }
+            for &slot in [0, 1, 2, 4, 5, 6].iter().take(space) {
+                data.inventory.restore_slot(slot, None).unwrap();
+            }
+            w.held_use_types.insert(
+                1761,
+                crate::held_use::Type {
+                    id: 1761,
+                    content: -1,
+                },
+            );
+            w.queue_login(1, data).unwrap();
+            w.tick().unwrap();
+            let a = w.actors().next().unwrap();
+            w.set_membership(a, true).unwrap();
+            w.drain_events();
+            assert!(w.has_location_handler(14887, 1));
+            let action = if space == 0 {
+                Action::OperateLocation {
+                    coords: loc.coords,
+                    id: 14887,
+                    operation: 1,
+                    control: false,
+                }
+            } else {
+                Action::UseLocation {
+                    coords: loc.coords,
+                    id: 14887,
+                    slot: 19,
+                    object: 1761,
+                    control: false,
+                }
+            };
+            w.submit(a, action).unwrap();
+            w.tick().unwrap();
+            let req = w
+                .drain_events()
+                .into_iter()
+                .find_map(|e| {
+                    if let WorldEvent::FacilityCraftingRequested { request, .. } = e {
+                        Some(request)
+                    } else {
+                        None
+                    }
+                })
+                .unwrap();
+            assert_eq!(req.recipes.len(), 2);
+            assert_eq!(req.available(&w.data(a).unwrap().inventory), 3);
+            let before = w.data(a).unwrap().inventory.clone();
+            w.start_facility_crafting(a, req, 1, 3).unwrap();
+            for _ in 0..13 {
+                w.tick().unwrap();
+            }
+            let d = w.data(a).unwrap();
+            let made = space / 3;
+            assert_eq!(d.stats.fine_xp(12), made as i32 * 106);
+            assert_eq!(
+                d.inventory
+                    .slots()
+                    .iter()
+                    .flatten()
+                    .filter(|i| i.id == 28193)
+                    .count(),
+                made * 4
+            );
+            if space == 0 {
+                assert_eq!(d.inventory, before);
+            } else {
+                assert_eq!(d.inventory.get(11).unwrap().id, 1761);
+                if space == 3 {
+                    assert_eq!(d.inventory.get(3).unwrap().id, 1761);
+                }
+            }
         }
     }
 }
