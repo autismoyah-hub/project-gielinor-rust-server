@@ -1,12 +1,14 @@
 """Reusable owned-geometry primitives in native coordinates, 128 units per tile."""
 import math
-def loft(sections,sides=6):
+def loft(sections,sides=6,outline=None):
+    if outline:sides=len(outline)
     if not 3<=sides<=32 or len(sections)<2:raise ValueError('loft requires >=2 sections and 3..32 sides')
     vertices=[];faces=[]
     for row in sections:
         x,y,z,rx,rz=row
         if rx<=0 or rz<=0:raise ValueError('loft radii must be positive; use a cap instead of duplicate apex vertices')
-        vertices.extend([[round(x+rx*math.cos(i*math.tau/sides)),round(y),round(z+rz*math.sin(i*math.tau/sides))]for i in range(sides)])
+        profile=outline or [[math.cos(i*math.tau/sides),math.sin(i*math.tau/sides)]for i in range(sides)]
+        vertices.extend([[round(x+rx*u),round(y),round(z+rz*v)]for u,v in profile])
     for k in range(len(sections)-1):
         for i in range(sides):
             a=k*sides+i;b=k*sides+(i+1)%sides;c=b+sides;d=a+sides;faces.extend([[a,b,c],[a,c,d]])
@@ -45,9 +47,16 @@ def socket(vertices,spec):
     return [[round(origin[a]+sum(row[i]*basis[i][a]for i in range(3)))for a in range(3)]for row in vertices]
 def make(spec):
     kind=spec['type']
-    if kind=='loft':v,f=loft(spec['sections'],spec.get('sides',6))
+    if kind=='loft':v,f=loft(spec['sections'],spec.get('sides',6),spec.get('outline'))
+    elif kind=='annulus':
+        n=spec.get('sides',12);rx,ry=spec['radii'];width=spec['rim_width'];depth=spec['depth'];cx,cy,cz=spec['center'];v=[];f=[]
+        if min(rx,ry)<=width or depth<=0:raise ValueError('annulus dimensions')
+        for z,r in [(-depth/2,0),(-depth/2,width),(depth/2,0),(depth/2,width)]:v += [[round(cx+(rx-r)*math.cos(i*math.tau/n)),round(cy+(ry-r)*math.sin(i*math.tau/n)),round(cz+z)]for i in range(n)]
+        for i in range(n):
+            j=(i+1)%n
+            for a,b,c,d in [(i,j,n+j,n+i),(2*n+i,3*n+i,3*n+j,2*n+j),(i,2*n+i,2*n+j,j),(n+i,n+j,3*n+j,3*n+i)]:f.extend([[a,b,c],[a,c,d]])
     elif kind=='box':v,f=box(spec['center'],spec['size'])
     elif kind=='beam':v,f=beam(spec['start'],spec['end'],spec['radii'],spec.get('sides',6))
     elif kind=='profile':v,f=profile(spec['profile'],spec['depth'])
     else:raise ValueError('unknown primitive '+kind)
-    return socket(v,spec.get('socket',{})),f
+    return socket(socket(v,spec.get('socket',{})),spec.get('parent_socket',{})),f

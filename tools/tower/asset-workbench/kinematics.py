@@ -39,12 +39,22 @@ def frame_at(rows,tick):
 def two_bone_yz(hip,target,lengths):
     """Planar IK; diagnostic reach flag is explicit, not hidden limb stretching."""
     y,z=target[1]-hip[1],target[2]-hip[2];a,b=lengths;raw=math.hypot(y,z);d=max(abs(a-b)+1e-5,min(a+b-1e-5,raw));alpha=math.atan2(z,y);offset=math.acos(max(-1,min(1,(d*d+a*a-b*b)/(2*d*a))));knee=math.pi-math.acos(max(-1,min(1,(a*a+b*b-d*d)/(2*a*b))));return dict(hip_native=round((alpha-offset)*128/math.pi),knee_native=round(knee*128/math.pi),reachable=abs(a-b)<=raw<=a+b,unclamped_distance=raw)
+def leg_contact_channels(hip,knee,ankle,target,translation=(0,0,0)):
+    lengths=[math.hypot(knee[1]-hip[1],knee[2]-hip[2]),math.hypot(ankle[1]-knee[1],ankle[2]-knee[2])];result=two_bone_yz([hip[i]+translation[i]for i in range(3)],target,lengths);upper_rest=math.atan2(knee[2]-hip[2],knee[1]-hip[1]);lower_rest=math.atan2(ankle[2]-knee[2],ankle[1]-knee[1]);h=result['hip_native']-round(upper_rest*128/math.pi);k=result['knee_native']-round((lower_rest-upper_rest)*128/math.pi);return dict(hip=[h,0,0],knee=[k,0,0],ankle=[-h-k,0,0],reachable=result['reachable'])
 def compile_joints(g,rig,channels,translation=(0,0,0)):
     """Compensate native dynamic-centroid pivots deliberately for authored joints.
 
     Joint origins are control points transformed by their already-applied parents.
     Vertex ownership comes from explicit authored group lists, not guessed proximity.
     """
+    seen={}
+    for joint in rig:
+        if joint['name']in seen:raise ValueError('duplicate joint name')
+        parent=joint.get('parent')
+        if parent is not None and parent not in seen:raise ValueError('rig must be parent-first and acyclic')
+        if parent and not set(joint['groups']).issubset(seen[parent]['groups']):raise ValueError('parent ownership must include descendant groups')
+        if any(not isinstance(v,int)or not 0<=v<=255 for v in joint['groups']):raise ValueError('classic group label range')
+        seen[joint['name']]=joint
     labels=sorted(set(g['vertex_skins']or []));types=[0,1];groups=[[],labels];transforms=[[0,[0,0,0]],[1,list(translation)]];vs=[[v[i]+translation[i]for i in range(3)]for v in g['vertices']];points={j['name']:[j['origin'][i]+translation[i]for i in range(3)]for j in rig};skins=g['vertex_skins'];byname={j['name']:j for j in rig}
     def descendant(name,parent):
         while name is not None:

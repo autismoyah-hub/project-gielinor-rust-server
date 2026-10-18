@@ -6,7 +6,8 @@ from native_codec import model,classic
 from kinematics import trace,compile_joints,two_bone_yz,rotate
 from primitives import socket,beam
 from diagnose import principal_axes
-from registry import object_package
+from registry import object_package,IdentityAllocator
+from analyze import surface_geometry,geometry as geometry_report
 @contextmanager
 def owned_temporary():
     root=Path(os.environ.get('WORKBENCH_TEST_TEMP',str(Path.cwd()/'.workbench-test-tmp'))).resolve();root.mkdir(parents=True,exist_ok=True);tmp=tempfile.TemporaryDirectory(dir=root);target=Path(tmp.name).resolve()
@@ -44,4 +45,16 @@ class Contracts(unittest.TestCase):
     def test_plane_orientation_not_misreported_as_depth(self):
         eig=principal_axes([[0,0,0],[0,10,0],[0,0,10],[0,10,10]])
         self.assertLess(eig[0]['variance'],1e-6);self.assertGreater(abs(eig[0]['axis'][0]),.999)
+    def test_hundreds_of_static_assets_do_not_exhaust_animation_space(self):
+        with owned_temporary()as tmp:
+            allocator=IdentityAllocator(Path(tmp)/'identities.json',dict(model_max=61605,object_max=62200,npc_max=16300,sequence_max=14428,skeleton_max=2673,frame_group_max=14521));rows=[allocator.allocate('static:'+str(i),False)for i in range(200)];actor=allocator.allocate('actor',True);self.assertEqual(actor['skeleton_base'],32000);self.assertEqual(len({v['model_id']for v in rows}),200);self.assertEqual(allocator.allocate('static:0',False),rows[0])
+    def test_parent_ownership_and_joint_order_are_validated(self):
+        with self.assertRaises(ValueError):compile_joints(self.geometry(),[dict(name='child',parent='missing',origin=[0]*3,groups=[1])],{})
+    def test_invisible_helper_vertices_do_not_inflate_surface_descriptors(self):
+        g=self.geometry();g['vertices'] += [[900,900,900],[910,900,900],[900,910,900]];g['faces'] += [[3,4,5]];g['colors'] += [43051];g['vertex_skins'] += [0,0,0];g['alpha']=[0,255]
+        selected=surface_geometry(g,[0]);self.assertEqual(geometry_report(selected)['exact_decoded']['bounds'],[[0,0,0],[8,8,0]]);self.assertEqual(len(g['vertices']),6)
+    def test_static_identity_does_not_silently_acquire_actor_ids(self):
+        with owned_temporary()as tmp:
+            allocator=IdentityAllocator(Path(tmp)/'ids.json',{});allocator.allocate('prop',False)
+            with self.assertRaises(ValueError):allocator.allocate('prop',True)
 if __name__=='__main__':unittest.main()

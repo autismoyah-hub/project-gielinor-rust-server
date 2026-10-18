@@ -1,0 +1,618 @@
+{
+  "schema": 1,
+  "name": "Twin-throat sluice governor",
+  "unit": "native;128 units per tile",
+  "materials": {
+    "stone": {
+      "hsl": 43051,
+      "render_type": 0
+    },
+    "edge": {
+      "hsl": 10262,
+      "render_type": 0
+    },
+    "stone_shadow": {
+      "hsl": 10258,
+      "render_type": 0
+    },
+    "iron": {
+      "hsl": 36902,
+      "render_type": 0
+    },
+    "iron_edge": {
+      "hsl": 36924,
+      "render_type": 0
+    },
+    "wood": {
+      "hsl": 8604,
+      "render_type": 0
+    },
+    "wood_dark": {
+      "hsl": 8485,
+      "render_type": 0
+    },
+    "leather": {
+      "hsl": 3769,
+      "render_type": 0
+    },
+    "skin": {
+      "hsl": 10782,
+      "render_type": 0
+    },
+    "skin_shadow": {
+      "hsl": 10772,
+      "render_type": 0
+    },
+    "cloth": {
+      "hsl": 916,
+      "render_type": 0
+    },
+    "armor": {
+      "hsl": 6955,
+      "render_type": 0
+    },
+    "armor_shadow": {
+      "hsl": 7075,
+      "render_type": 0
+    },
+    "gray_armor": {
+      "hsl": 5169,
+      "render_type": 0
+    },
+    "eye": {
+      "hsl": 7106,
+      "render_type": 1
+    },
+    "brow": {
+      "hsl": 8598,
+      "render_type": 0
+    },
+    "limestone": {
+      "hsl": 10304,
+      "render_type": 0
+    },
+    "joint": {
+      "hsl": 10272,
+      "render_type": 1
+    },
+    "bronze": {
+      "hsl": 8744,
+      "render_type": 0
+    },
+    "soot": {
+      "hsl": 10259,
+      "render_type": 0
+    },
+    "ceramic": {
+      "hsl": 4773,
+      "render_type": 0
+    },
+    "ceramic_edge": {
+      "hsl": 4790,
+      "render_type": 0
+    }
+  },
+  "components": [
+    {
+      "name": "plinth",
+      "type": "loft",
+      "material": "limestone",
+      "group": 0,
+      "role": "plinth",
+      "sections": [
+        [
+          0,
+          0,
+          0,
+          69,
+          51
+        ],
+        [
+          0,
+          -14,
+          0,
+          69,
+          51
+        ],
+        [
+          0,
+          -22,
+          0,
+          62,
+          45
+        ]
+      ],
+      "sides": 8
+    },
+    {
+      "name": "base_plate",
+      "type": "box",
+      "material": "iron",
+      "group": 0,
+      "role": "base_plate",
+      "center": [
+        0,
+        -25,
+        0
+      ],
+      "size": [
+        116,
+        7,
+        78
+      ]
+    },
+    {
+      "name": "return_chamber",
+      "type": "loft",
+      "material": "iron",
+      "group": 0,
+      "role": "return_chamber",
+      "sections": [
+        [
+          -31,
+          -27,
+          0,
+          22,
+          25
+        ],
+        [
+          -31,
+          -38,
+          0,
+          26,
+          28
+        ],
+        [
+          -31,
+          -94,
+          0,
+          26,
+          28
+        ],
+        [
+          -31,
+          -108,
+          0,
+          17,
+          21
+        ]
+      ],
+      "sides": 8
+    },
+    {
+      "name": "return_flange",
+      "type": "loft",
+      "material": "bronze",
+      "group": 0,
+      "role": "return_flange",
+      "sections": [
+        [
+          -31,
+          -55,
+          0,
+          28,
+          30
+        ],
+        [
+          -31,
+          -64,
+          0,
+          28,
+          30
+        ]
+      ],
+      "sides": 8
+    },
+    {
+      "name": "return_cap",
+      "type": "loft",
+      "material": "iron_edge",
+      "group": 0,
+      "role": "return_cap",
+      "sections": [
+        [
+          -31,
+          -103,
+          0,
+          22,
+          25
+        ],
+        [
+          -31,
+          -110,
+          0,
+          22,
+          25
+        ]
+      ],
+      "sides": 8
+    },
+    {
+      "name": "return_drain",
+      "type": "beam",
+      "material": "bronze",
+      "group": 0,
+      "role": "return_drain",
+      "start": [
+        -31,
+        -36,
+        -21
+      ],
+      "end": [
+        -31,
+        -36,
+        -50
+      ],
+      "radii": [
+        7,
+        7
+      ],
+      "sides": 6
+    },
+    {
+      "name": "feed_chamber",
+      "type": "loft",
+      "material": "iron",
+      "group": 0,
+      "role": "feed_chamber",
+      "sections": [
+        [
+          31,
+          -27,
+          0,
+          22,
+          25
+        ],
+        [
+          31,
+          -38,
+          0,
+          26,
+          28
+        ],
+        [
+          31,
+          -128,
+          0,
+          26,
+          28
+        ],
+        [
+          31,
+          -142,
+          0,
+          17,
+          21
+        ]
+      ],
+      "sides": 8
+    },
+    {
+      "name": "feed_flange",
+      "type": "loft",
+      "material": "bronze",
+      "group": 0,
+      "role": "feed_flange",
+      "sections": [
+        [
+          31,
+          -55,
+          0,
+          28,
+          30
+        ],
+        [
+          31,
+          -64,
+          0,
+          28,
+          30
+        ]
+      ],
+      "sides": 8
+    },
+    {
+      "name": "feed_cap",
+      "type": "loft",
+      "material": "iron_edge",
+      "group": 0,
+      "role": "feed_cap",
+      "sections": [
+        [
+          31,
+          -137,
+          0,
+          22,
+          25
+        ],
+        [
+          31,
+          -144,
+          0,
+          22,
+          25
+        ]
+      ],
+      "sides": 8
+    },
+    {
+      "name": "feed_drain",
+      "type": "beam",
+      "material": "bronze",
+      "group": 0,
+      "role": "feed_drain",
+      "start": [
+        31,
+        -36,
+        -21
+      ],
+      "end": [
+        31,
+        -36,
+        -50
+      ],
+      "radii": [
+        7,
+        7
+      ],
+      "sides": 6
+    },
+    {
+      "name": "equalizer",
+      "type": "beam",
+      "material": "bronze",
+      "group": 0,
+      "role": "equalizer",
+      "start": [
+        -31,
+        -88,
+        0
+      ],
+      "end": [
+        31,
+        -88,
+        0
+      ],
+      "radii": [
+        9,
+        9
+      ],
+      "sides": 8
+    },
+    {
+      "name": "valve_spindle",
+      "type": "beam",
+      "material": "iron_edge",
+      "group": 0,
+      "role": "valve_spindle",
+      "start": [
+        31,
+        -111,
+        -20
+      ],
+      "end": [
+        31,
+        -111,
+        -53
+      ],
+      "radii": [
+        4,
+        4
+      ],
+      "sides": 6
+    },
+    {
+      "name": "handwheel",
+      "type": "annulus",
+      "material": "bronze",
+      "group": 0,
+      "role": "handwheel",
+      "center": [
+        31,
+        -111,
+        -55
+      ],
+      "radii": [
+        22,
+        22
+      ],
+      "rim_width": 5,
+      "depth": 5,
+      "sides": 10
+    },
+    {
+      "name": "handwheel_cross",
+      "type": "box",
+      "material": "bronze",
+      "group": 0,
+      "role": "handwheel_cross",
+      "center": [
+        31,
+        -111,
+        -55
+      ],
+      "size": [
+        36,
+        4,
+        5
+      ]
+    },
+    {
+      "name": "handwheel_cross2",
+      "type": "box",
+      "material": "bronze",
+      "group": 0,
+      "role": "handwheel_cross2",
+      "center": [
+        31,
+        -111,
+        -55
+      ],
+      "size": [
+        4,
+        36,
+        5
+      ]
+    },
+    {
+      "name": "indicator_stem",
+      "type": "beam",
+      "material": "bronze",
+      "group": 0,
+      "role": "indicator_stem",
+      "start": [
+        -31,
+        -108,
+        0
+      ],
+      "end": [
+        -31,
+        -138,
+        0
+      ],
+      "radii": [
+        3,
+        3
+      ],
+      "sides": 6
+    },
+    {
+      "name": "pressure_flag",
+      "type": "profile",
+      "material": "ceramic",
+      "group": 0,
+      "role": "pressure_flag",
+      "profile": [
+        [
+          -12,
+          0
+        ],
+        [
+          0,
+          -16
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          0,
+          16
+        ]
+      ],
+      "depth": 4,
+      "socket": {
+        "origin": [
+          -31,
+          -145,
+          -2
+        ]
+      }
+    },
+    {
+      "name": "anchor_-50_-30",
+      "type": "loft",
+      "material": "iron_edge",
+      "group": 0,
+      "role": "anchor_-50_-30",
+      "sections": [
+        [
+          -50,
+          -28,
+          -30,
+          4,
+          4
+        ],
+        [
+          -50,
+          -33,
+          -30,
+          4,
+          4
+        ]
+      ],
+      "sides": 6
+    },
+    {
+      "name": "anchor_-50_30",
+      "type": "loft",
+      "material": "iron_edge",
+      "group": 0,
+      "role": "anchor_-50_30",
+      "sections": [
+        [
+          -50,
+          -28,
+          30,
+          4,
+          4
+        ],
+        [
+          -50,
+          -33,
+          30,
+          4,
+          4
+        ]
+      ],
+      "sides": 6
+    },
+    {
+      "name": "anchor_50_-30",
+      "type": "loft",
+      "material": "iron_edge",
+      "group": 0,
+      "role": "anchor_50_-30",
+      "sections": [
+        [
+          50,
+          -28,
+          -30,
+          4,
+          4
+        ],
+        [
+          50,
+          -33,
+          -30,
+          4,
+          4
+        ]
+      ],
+      "sides": 6
+    },
+    {
+      "name": "anchor_50_30",
+      "type": "loft",
+      "material": "iron_edge",
+      "group": 0,
+      "role": "anchor_50_30",
+      "sections": [
+        [
+          50,
+          -28,
+          30,
+          4,
+          4
+        ],
+        [
+          50,
+          -33,
+          30,
+          4,
+          4
+        ]
+      ],
+      "sides": 6
+    }
+  ],
+  "rig": [],
+  "actions": {},
+  "provenance": {
+    "kind": "original_tower_design_probe",
+    "source_geometry_reused": false,
+    "brief": "Unequal feed and return chambers share a bronze equalizer. A front handwheel, drains and ceramic pressure flag make its purpose readable without text or glowing effects.",
+    "artistic_acceptance": false,
+    "live_integration": false
+  }
+}

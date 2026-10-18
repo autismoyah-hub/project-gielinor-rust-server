@@ -29,6 +29,10 @@ def actions(recipe,g,out,reopen=False):
     if control.name not in bpy.context.collection.objects:bpy.context.collection.objects.link(control)
     control.animation_data_create();rig=recipe['rig']
     for ai,(name,spec)in enumerate(recipe.get('actions',{}).items()):
+        if not reopen and bpy.data.actions.get(name):
+            old=bpy.data.actions[name]
+            if not old.get('native_rig'):raise ValueError('Existing action name is not owned by this authoring system')
+            old.name=name+' (previous authored version)';old.use_fake_user=True
         action=bpy.data.actions.get(name)if reopen else bpy.data.actions.new(name)
         if action is None:raise ValueError('Saved action missing: '+name)
         action.use_fake_user=True;control.animation_data.action=action
@@ -48,6 +52,11 @@ def actions(recipe,g,out,reopen=False):
             bpy.context.scene.frame_set(tick+1);channels={j['name']:list(control[j['name']])for j in rig};translation=list(map(round,control['root_translation']));frame,posed,origins=compile_joints(g,rig,channels,translation)
             if spec.get('grounded'):
                 translation[1]-=max(v[1]for v in posed);frame,posed,origins=compile_joints(g,rig,channels,translation)
+            contacts=spec.get('foot_contacts',[])
+            active=[c for c in contacts if ((tick/duration+c.get('phase_offset',0))%1)<c.get('stance_fraction',.5)]
+            if active:
+                indices=[v for c in active for n in c['components']for v in g['components'][n]['vertices']]
+                translation[1]-=max(posed[v][1]for v in indices);frame,posed,origins=compile_joints(g,rig,channels,translation)
             frame.update(index=i,length=min(step,duration-tick));frames.append(frame)
             (out/f'{name}-authored-{tick:04}.json').write_text(json.dumps(dict(vertices=posed,joint_origins=origins)))
         if spec.get('terminal_zero'):
@@ -57,7 +66,7 @@ def actions(recipe,g,out,reopen=False):
         data=dict(skeleton_id=recipe.get('skeleton_base',64500)+ai,frame_group=recipe.get('frame_group_base',62000)+ai,frames=frames,policy=dict(loop_frames=len(frames)if spec.get('loop')else -1,priority=spec.get('priority',5),max_loops=99,interleave=spec.get('interleave',[])))
         classic(data,out/name);(out/name/'animation.json').write_text(json.dumps(data));action['native_policy']=json.dumps(data['policy']);action['duration_ticks']=duration;action['native_rig']=json.dumps(rig)
 def main():
-    p=argparse.ArgumentParser();p.add_argument('recipe',type=Path);p.add_argument('output',type=Path);p.add_argument('--palette',type=Path);p.add_argument('--reopen',action='store_true');a=p.parse_args(sys.argv[sys.argv.index('--')+1:]);recipe=json.loads(a.recipe.read_text());a.output=a.output.resolve();a.output.mkdir(parents=True,exist_ok=True);palette=json.loads(a.palette.read_text())if a.palette else None
+    p=argparse.ArgumentParser();p.add_argument('recipe',type=Path);p.add_argument('output',type=Path);p.add_argument('--palette',type=Path);p.add_argument('--reopen',action='store_true');p.add_argument('--replace-actions',action='store_true');a=p.parse_args(sys.argv[sys.argv.index('--')+1:]);recipe=json.loads(a.recipe.read_text());a.output=a.output.resolve();a.output.mkdir(parents=True,exist_ok=True);palette=json.loads(a.palette.read_text())if a.palette else None
     if not a.reopen:build(recipe,palette)
-    g=export_asset(recipe);(a.output/'geometry.json').write_text(json.dumps(g));(a.output/'asset.model').write_bytes(model(g));(a.output/'recipe.json').write_text(json.dumps(recipe,indent=2));actions(recipe,g,a.output,a.reopen);bpy.ops.wm.save_as_mainfile(filepath=str(a.output/'asset.blend'));print('OWNED_COMPONENT_AUTHORING_PASS',recipe['name'],len(g['vertices']),len(g['faces']))
+    g=export_asset(recipe);(a.output/'geometry.json').write_text(json.dumps(g));(a.output/'asset.model').write_bytes(model(g));(a.output/'recipe.json').write_text(json.dumps(recipe,indent=2));actions(recipe,g,a.output,a.reopen and not a.replace_actions);bpy.ops.wm.save_as_mainfile(filepath=str(a.output/'asset.blend'));print('OWNED_COMPONENT_AUTHORING_PASS',recipe['name'],len(g['vertices']),len(g['faces']))
 if __name__=='__main__':main()

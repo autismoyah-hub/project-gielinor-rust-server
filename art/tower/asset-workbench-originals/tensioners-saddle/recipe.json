@@ -1,0 +1,669 @@
+{
+  "schema": 1,
+  "name": "Tensioner's saddle",
+  "unit": "native;128 units per tile",
+  "materials": {
+    "stone": {
+      "hsl": 43051,
+      "render_type": 0
+    },
+    "edge": {
+      "hsl": 10262,
+      "render_type": 0
+    },
+    "stone_shadow": {
+      "hsl": 10258,
+      "render_type": 0
+    },
+    "iron": {
+      "hsl": 36902,
+      "render_type": 0
+    },
+    "iron_edge": {
+      "hsl": 36924,
+      "render_type": 0
+    },
+    "wood": {
+      "hsl": 8604,
+      "render_type": 0
+    },
+    "wood_dark": {
+      "hsl": 8485,
+      "render_type": 0
+    },
+    "leather": {
+      "hsl": 3769,
+      "render_type": 0
+    },
+    "skin": {
+      "hsl": 10782,
+      "render_type": 0
+    },
+    "skin_shadow": {
+      "hsl": 10772,
+      "render_type": 0
+    },
+    "cloth": {
+      "hsl": 916,
+      "render_type": 0
+    },
+    "armor": {
+      "hsl": 6955,
+      "render_type": 0
+    },
+    "armor_shadow": {
+      "hsl": 7075,
+      "render_type": 0
+    },
+    "gray_armor": {
+      "hsl": 5169,
+      "render_type": 0
+    },
+    "eye": {
+      "hsl": 7106,
+      "render_type": 1
+    },
+    "brow": {
+      "hsl": 8598,
+      "render_type": 0
+    },
+    "limestone": {
+      "hsl": 10304,
+      "render_type": 0
+    },
+    "joint": {
+      "hsl": 10272,
+      "render_type": 1
+    },
+    "bronze": {
+      "hsl": 8744,
+      "render_type": 0
+    },
+    "soot": {
+      "hsl": 10259,
+      "render_type": 0
+    },
+    "ceramic": {
+      "hsl": 4773,
+      "render_type": 0
+    },
+    "ceramic_edge": {
+      "hsl": 4790,
+      "render_type": 0
+    }
+  },
+  "components": [
+    {
+      "name": "socket_foundation",
+      "type": "loft",
+      "material": "limestone",
+      "group": 0,
+      "role": "socket_foundation",
+      "sections": [
+        [
+          0,
+          0,
+          0,
+          82,
+          66
+        ],
+        [
+          0,
+          -14,
+          0,
+          82,
+          66
+        ],
+        [
+          0,
+          -23,
+          0,
+          72,
+          57
+        ]
+      ],
+      "sides": 8
+    },
+    {
+      "name": "west_pier",
+      "type": "loft",
+      "material": "limestone",
+      "group": 0,
+      "role": "west_pier",
+      "sections": [
+        [
+          -51,
+          -22,
+          0,
+          24,
+          43
+        ],
+        [
+          -51,
+          -38,
+          0,
+          24,
+          43
+        ],
+        [
+          -51,
+          -46,
+          0,
+          20,
+          34
+        ],
+        [
+          -51,
+          -154,
+          0,
+          18,
+          30
+        ],
+        [
+          -51,
+          -178,
+          0,
+          25,
+          38
+        ],
+        [
+          -51,
+          -192,
+          0,
+          25,
+          38
+        ]
+      ],
+      "sides": 8
+    },
+    {
+      "name": "west_iron_shoe",
+      "type": "loft",
+      "material": "iron",
+      "group": 0,
+      "role": "west_iron_shoe",
+      "sections": [
+        [
+          -51,
+          -48,
+          0,
+          21,
+          35
+        ],
+        [
+          -51,
+          -57,
+          0,
+          21,
+          35
+        ]
+      ],
+      "sides": 8
+    },
+    {
+      "name": "west_collar",
+      "type": "loft",
+      "material": "joint",
+      "group": 0,
+      "role": "west_collar",
+      "sections": [
+        [
+          -51,
+          -157,
+          0,
+          20,
+          32
+        ],
+        [
+          -51,
+          -165,
+          0,
+          20,
+          32
+        ]
+      ],
+      "sides": 8
+    },
+    {
+      "name": "west_stay_-35",
+      "type": "beam",
+      "material": "bronze",
+      "group": 0,
+      "role": "west_stay_-35",
+      "start": [
+        -70,
+        -35,
+        -35
+      ],
+      "end": [
+        -36,
+        -137,
+        -35
+      ],
+      "radii": [
+        4,
+        4
+      ],
+      "sides": 5
+    },
+    {
+      "name": "west_stay_35",
+      "type": "beam",
+      "material": "bronze",
+      "group": 0,
+      "role": "west_stay_35",
+      "start": [
+        -70,
+        -35,
+        35
+      ],
+      "end": [
+        -36,
+        -137,
+        35
+      ],
+      "radii": [
+        4,
+        4
+      ],
+      "sides": 5
+    },
+    {
+      "name": "west_cap",
+      "type": "box",
+      "material": "limestone",
+      "group": 0,
+      "role": "west_cap",
+      "center": [
+        -51,
+        -195,
+        0
+      ],
+      "size": [
+        57,
+        9,
+        82
+      ]
+    },
+    {
+      "name": "east_pier",
+      "type": "loft",
+      "material": "limestone",
+      "group": 0,
+      "role": "east_pier",
+      "sections": [
+        [
+          51,
+          -22,
+          0,
+          24,
+          43
+        ],
+        [
+          51,
+          -38,
+          0,
+          24,
+          43
+        ],
+        [
+          51,
+          -46,
+          0,
+          20,
+          34
+        ],
+        [
+          51,
+          -154,
+          0,
+          18,
+          30
+        ],
+        [
+          51,
+          -178,
+          0,
+          25,
+          38
+        ],
+        [
+          51,
+          -192,
+          0,
+          25,
+          38
+        ]
+      ],
+      "sides": 8
+    },
+    {
+      "name": "east_iron_shoe",
+      "type": "loft",
+      "material": "iron",
+      "group": 0,
+      "role": "east_iron_shoe",
+      "sections": [
+        [
+          51,
+          -48,
+          0,
+          21,
+          35
+        ],
+        [
+          51,
+          -57,
+          0,
+          21,
+          35
+        ]
+      ],
+      "sides": 8
+    },
+    {
+      "name": "east_collar",
+      "type": "loft",
+      "material": "joint",
+      "group": 0,
+      "role": "east_collar",
+      "sections": [
+        [
+          51,
+          -157,
+          0,
+          20,
+          32
+        ],
+        [
+          51,
+          -165,
+          0,
+          20,
+          32
+        ]
+      ],
+      "sides": 8
+    },
+    {
+      "name": "east_stay_-35",
+      "type": "beam",
+      "material": "bronze",
+      "group": 0,
+      "role": "east_stay_-35",
+      "start": [
+        70,
+        -35,
+        -35
+      ],
+      "end": [
+        36,
+        -137,
+        -35
+      ],
+      "radii": [
+        4,
+        4
+      ],
+      "sides": 5
+    },
+    {
+      "name": "east_stay_35",
+      "type": "beam",
+      "material": "bronze",
+      "group": 0,
+      "role": "east_stay_35",
+      "start": [
+        70,
+        -35,
+        35
+      ],
+      "end": [
+        36,
+        -137,
+        35
+      ],
+      "radii": [
+        4,
+        4
+      ],
+      "sides": 5
+    },
+    {
+      "name": "east_cap",
+      "type": "box",
+      "material": "limestone",
+      "group": 0,
+      "role": "east_cap",
+      "center": [
+        51,
+        -195,
+        0
+      ],
+      "size": [
+        57,
+        9,
+        82
+      ]
+    },
+    {
+      "name": "crosshead",
+      "type": "box",
+      "material": "iron",
+      "group": 0,
+      "role": "crosshead",
+      "center": [
+        0,
+        -193,
+        0
+      ],
+      "size": [
+        111,
+        16,
+        35
+      ]
+    },
+    {
+      "name": "saddle_roller",
+      "type": "beam",
+      "material": "bronze",
+      "group": 0,
+      "role": "saddle_roller",
+      "start": [
+        -28,
+        -162,
+        0
+      ],
+      "end": [
+        28,
+        -162,
+        0
+      ],
+      "radii": [
+        20,
+        20
+      ],
+      "sides": 10
+    },
+    {
+      "name": "roller_axle",
+      "type": "beam",
+      "material": "iron_edge",
+      "group": 0,
+      "role": "roller_axle",
+      "start": [
+        -44,
+        -162,
+        0
+      ],
+      "end": [
+        44,
+        -162,
+        0
+      ],
+      "radii": [
+        7,
+        7
+      ],
+      "sides": 6
+    },
+    {
+      "name": "cable_down",
+      "type": "beam",
+      "material": "soot",
+      "group": 0,
+      "role": "cable_down",
+      "start": [
+        0,
+        -149,
+        -16
+      ],
+      "end": [
+        0,
+        -24,
+        -16
+      ],
+      "radii": [
+        3,
+        3
+      ],
+      "sides": 5
+    },
+    {
+      "name": "cable_rear",
+      "type": "beam",
+      "material": "soot",
+      "group": 0,
+      "role": "cable_rear",
+      "start": [
+        0,
+        -183,
+        0
+      ],
+      "end": [
+        0,
+        -125,
+        51
+      ],
+      "radii": [
+        3,
+        3
+      ],
+      "sides": 5
+    },
+    {
+      "name": "cable_guide",
+      "type": "box",
+      "material": "iron",
+      "group": 0,
+      "role": "cable_guide",
+      "center": [
+        0,
+        -35,
+        -16
+      ],
+      "size": [
+        22,
+        15,
+        15
+      ]
+    },
+    {
+      "name": "fastener_-1_-65",
+      "type": "beam",
+      "material": "iron_edge",
+      "group": 0,
+      "role": "fastener_-1_-65",
+      "start": [
+        -51,
+        -65,
+        -35
+      ],
+      "end": [
+        -51,
+        -65,
+        -40
+      ],
+      "radii": [
+        4,
+        4
+      ],
+      "sides": 6
+    },
+    {
+      "name": "fastener_-1_-141",
+      "type": "beam",
+      "material": "iron_edge",
+      "group": 0,
+      "role": "fastener_-1_-141",
+      "start": [
+        -51,
+        -141,
+        -35
+      ],
+      "end": [
+        -51,
+        -141,
+        -40
+      ],
+      "radii": [
+        4,
+        4
+      ],
+      "sides": 6
+    },
+    {
+      "name": "fastener_1_-65",
+      "type": "beam",
+      "material": "iron_edge",
+      "group": 0,
+      "role": "fastener_1_-65",
+      "start": [
+        51,
+        -65,
+        -35
+      ],
+      "end": [
+        51,
+        -65,
+        -40
+      ],
+      "radii": [
+        4,
+        4
+      ],
+      "sides": 6
+    },
+    {
+      "name": "fastener_1_-141",
+      "type": "beam",
+      "material": "iron_edge",
+      "group": 0,
+      "role": "fastener_1_-141",
+      "start": [
+        51,
+        -141,
+        -35
+      ],
+      "end": [
+        51,
+        -141,
+        -40
+      ],
+      "radii": [
+        4,
+        4
+      ],
+      "sides": 6
+    }
+  ],
+  "rig": [],
+  "actions": {},
+  "provenance": {
+    "kind": "original_tower_design_probe",
+    "source_geometry_reused": false,
+    "brief": "Split masonry piers cradle a worn bronze cable roller. Iron shoes and diagonal stays explain its load path; the open center preserves a distinct forked silhouette.",
+    "artistic_acceptance": false,
+    "live_integration": false
+  }
+}

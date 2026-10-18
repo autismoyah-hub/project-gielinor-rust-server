@@ -1,0 +1,14 @@
+{
+  "records": [
+    {
+      "selector": "item:1279:worn",
+      "split": "training",
+      "family": "equipment_mode_supplement"
+    },
+    {
+      "selector": "item:1191:worn",
+      "split": "training",
+      "family": "equipment_mode_supplement"
+    }
+  ]
+}

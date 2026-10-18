@@ -42,7 +42,20 @@ def geometry(g):
     if g.get('vertex_skins')is not None:
         for label in sorted(set(g['vertex_skins'])):
             selected=[v for v,k in zip(vs,g['vertex_skins'])if k==label];groups[str(label)]=dict(vertices=len(selected),bounds=bound(selected),centroid=[sum(v[i]for v in selected)/len(selected)for i in range(3)])
-    return dict(exact_decoded=dict(vertices=len(vs),faces=len(fs),bounds=bounds,colors=dict(palette),render_types=dict(Counter(g.get('render_types')or [0]*len(fs))),texture_faces=sum(t>=0 for t in g.get('face_textures')or []),texture_types=dict(Counter(g.get('texture_types')or [])),alpha_present=g.get('alpha')is not None,priorities_present=g.get('priorities')is not None,face_depth_present=g.get('face_flags')is not None,skin_labels=groups),calculated=dict(extent_native=ext,extent_tiles=[x/128 for x in ext],width_height=ext[0]/ext[1]if ext[1]else None,depth_height=ext[2]/ext[1]if ext[1]else None,index_components=graph_components(vs,fs),coordinate_weld_components=graph_components(vs,fs,True),boundary_edges=sum(len(x)==1 for x in edges.values()),nonmanifold_edges=sum(len(x)>2 for x in edges.values()),zero_area_triangles=sum(x==0 for x in areas),triangle_area_quantiles=quantiles(areas),dihedral_degrees_quantiles=quantiles(dihedrals),surface_area_native_squared=total,surface_centroid=[sum(c[i]*a for c,a in zip(centroids,areas))/total for i in range(3)]if total else None,exact_mirror_coverage=symmetry,face_palette_entropy_bits=entropy,area_weighted_palette=dict(area_palette),lightness_face_quantiles=quantiles([c&127 for c in g['colors']])),not_inferred=['semantic components','anatomical joints','material names','deliberate versus accidental simplification','artist intention','physical mass'])
+    # Cross sections intersect triangle edges. Nearest-vertex bands alias narrow
+    # collars into wide plates when adjacent rings have very different radii.
+    profile=[]
+    for i in range(33):
+        y=bounds[0][1]+ext[1]*i/32;points=[]
+        for f in fs:
+            for j in range(3):
+                a,b=vs[f[j]],vs[f[(j+1)%3]]
+                if abs(a[1]-y)<1e-6:points.append(a)
+                if (a[1]<y<b[1])or(b[1]<y<a[1]):
+                    t=(y-a[1])/(b[1]-a[1]);points.append([a[k]+t*(b[k]-a[k])for k in range(3)])
+        bb=bound(points)if points else [[0,0,0],[0,0,0]];profile.append(dict(height_fraction=i/32,width=bb[1][0]-bb[0][0],depth=bb[1][2]-bb[0][2],method='triangle-plane axis-aligned envelope; not semantic rings'))
+    untextured=Counter(c for i,c in enumerate(g['colors'])if g.get('face_textures')is None or g['face_textures'][i]<0)
+    return dict(exact_decoded=dict(vertices=len(vs),faces=len(fs),bounds=bounds,colors=dict(palette),render_types=dict(Counter(g.get('render_types')or [0]*len(fs))),texture_faces=sum(t>=0 for t in g.get('face_textures')or []),texture_types=dict(Counter(g.get('texture_types')or [])),alpha_present=g.get('alpha')is not None,priorities_present=g.get('priorities')is not None,face_depth_present=g.get('face_flags')is not None,skin_labels=groups),calculated=dict(extent_native=ext,extent_tiles=[x/128 for x in ext],width_height=ext[0]/ext[1]if ext[1]else None,depth_height=ext[2]/ext[1]if ext[1]else None,index_components=graph_components(vs,fs),coordinate_weld_components=graph_components(vs,fs,True),boundary_edges=sum(len(x)==1 for x in edges.values()),nonmanifold_edges=sum(len(x)>2 for x in edges.values()),zero_area_triangles=sum(x==0 for x in areas),triangle_area_quantiles=quantiles(areas),dihedral_degrees_quantiles=quantiles(dihedrals),surface_area_native_squared=total,surface_centroid=[sum(c[i]*a for c,a in zip(centroids,areas))/total for i in range(3)]if total else None,exact_mirror_coverage=symmetry,face_palette_entropy_bits=entropy,area_weighted_palette=dict(area_palette),untextured_palette=dict(untextured),untextured_area_palette={str(c):sum(a for j,a in enumerate(areas)if g['colors'][j]==c and (g.get('face_textures')is None or g['face_textures'][j]<0))for c in untextured},height_profile=profile,lightness_face_quantiles=quantiles([c&127 for c in g['colors']])),not_inferred=['semantic components','anatomical joints','material names','deliberate versus accidental simplification','artist intention','physical mass'])
 def foreground(im):
     im=im.convert('RGB');d=ImageChops.difference(im,Image.new('RGB',im.size,(16,21,26)));a,b,c=d.split();return ImageChops.lighter(ImageChops.lighter(a,b),c).point(lambda v:255 if v else 0)
 def mask_metrics(a,b):
@@ -51,10 +64,23 @@ def mask_metrics(a,b):
         for fraction in [.15,.3,.5,.7,.9]:
             y=round(ba[1]+(ba[3]-ba[1]-1)*fraction);aa=a.crop((0,y,a.width,y+1)).getbbox();bc=b.crop((0,y,b.width,y+1)).getbbox();bands.append(dict(reference_height_fraction=fraction,row=y,reference_span=list(aa[::2])if aa else None,candidate_span=list(bc[::2])if bc else None,delta_width_px=(bc[2]-bc[0]if bc else 0)-(aa[2]-aa[0]if aa else 0)))
     return dict(iou=intersection/union if union else 1,reference_bounds=ba,candidate_bounds=bb,width_delta_px=(bb[2]-bb[0])-(ba[2]-ba[0])if ba and bb else None,height_delta_px=(bb[3]-bb[1])-(ba[3]-ba[1])if ba and bb else None,profile_bands=bands,alignment='raw matched camera; not fitted or rescaled to improve overlap')
+def surface_geometry(g,indices):
+    """Native-submitted face subset for descriptors, never a replacement asset."""
+    used=sorted({i for n in indices for i in g['faces'][n]});remap={old:new for new,old in enumerate(used)};h=dict(g)
+    h['vertices']=[g['vertices'][i]for i in used];h['faces']=[[remap[i]for i in g['faces'][n]]for n in indices]
+    for key in ['colors','render_types','priorities','alpha','face_skins','face_textures','texture_coords','face_flags']:
+        if g.get(key)is not None:h[key]=[g[key][i]for i in indices]
+    for key in ['vertex_skins','bone_weights']:
+        if g.get(key)is not None:h[key]=[g[key][i]for i in used]
+    return h
+
 def library(root,out):
     out.mkdir(parents=True,exist_ok=True);catalog=[]
     for p in sorted(root.glob('*/geometry.json')):
         g=json.loads(p.read_text());meta=json.loads((p.parent/'metadata.json').read_text());report=geometry(g);report['source']=meta;report['schema']=1
+        surface=p.parent/'submitted-surface.json'
+        if surface.exists():
+            submitted=json.loads(surface.read_text());report['submitted_surface']=geometry(surface_geometry(g,submitted['face_indices']));report['submitted_surface']['world_bounds']=submitted['world_bounds'];report['submitted_surface']['basis']=submitted['basis']
         (out/(p.parent.name+'.json')).write_text(json.dumps(report,indent=2));catalog.append(dict(selector=meta['selector'],name=meta['name'],model_ids=meta['model_ids'],definition_sha256=meta['definition_sha256'],source_payload_hashes=[v['payload_sha256']for v in meta['sources']],vertices=len(g['vertices']),faces=len(g['faces']),textures=report['exact_decoded']['texture_faces'],sequences=meta['sequences'],bounds=report['exact_decoded']['bounds'],report=p.parent.name+'.json'))
     (out/'catalog.json').write_text(json.dumps(catalog,indent=2));print('REFERENCE_ANALYSIS_COMPLETE',len(catalog))
 def compare(ref,candidate,out):

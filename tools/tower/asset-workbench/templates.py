@@ -14,14 +14,59 @@ def pillar(width=128,height=240,depth=128):
     sections=[[0,0,0,w,d],[0,-height*.12,0,w,d],[0,-height*.17,0,w*.7,d*.7],[0,-height*.78,0,w*.64,d*.64],[0,-height*.84,0,w*.8,d*.8],[0,-height*.9,0,w,d],[0,-height,0,w,d]]
     return recipe('Independent faceted pillar',[part('shaft','loft','stone',sections=sections,sides=4),part('foot_joint','box','stone_shadow',center=[0,-height*.125,0],size=[width+2,3,depth+2])])
 def anvil(width=122,height=64,depth=38):
-    p=[[-width*.48,0],[-width*.5,-height*.18],[-width*.26,-height*.3],[-width*.18,-height*.7],[-width*.5,-height*.78],[-width*.5,-height],[width*.22,-height],[width*.5,-height*.9],[width*.22,-height*.78],[width*.1,-height*.7],[width*.18,-height*.3],[width*.38,-height*.18],[width*.4,0]]
-    return recipe('Independent industrial anvil',[part('body','profile','iron',profile=p,depth=depth),part('striking_face','box','iron_edge',center=[-width*.12,-height-1,0],size=[width*.62,3,depth*.9])])
+    sections=[[0,0,0,width*.4,depth*.48],[0,-height*.16,0,width*.4,depth*.48],[0,-height*.3,0,width*.22,depth*.3],[0,-height*.7,0,width*.27,depth*.42],[0,-height*.78,0,width*.34,depth*.5],[0,-height,0,width*.34,depth*.5]]
+    return recipe('Independent industrial anvil',[part('pedestal','loft','iron',sections=sections,sides=4,outline=[[-1,-1],[1,-1],[1,1],[-1,1]]),part('striking_face','box','iron_edge',center=[-width*.06,-height+1,0],size=[width*.58,4,depth]),part('horn','beam','iron',start=[width*.3,-height*.86,0],end=[width*.5,-height*.82,0],radii=[depth*.4,2],sides=6),part('heel','box','iron',center=[-width*.43,-height*.85,0],size=[width*.14,height*.3,depth*.9])])
+
 def shield(width=54,height=58,depth=7,kind='kite'):
     p=[[-width/2,-height/2],[width/2,-height/2],[width*.46,height*.05],[0,height/2],[-width*.46,height*.05]]if kind=='kite'else[[-width/2,-height/2],[width/2,-height/2],[width/2,height/2],[-width/2,height/2]]
-    return recipe('Independent shield',[part('shield','profile','iron',profile=p,depth=depth),part('boss','loft','iron_edge',sections=[[0,-6,-depth,8,4],[0,5,-depth,8,4]],sides=6)])
+    import math
+    return recipe('Independent shield',[part('shield','profile','iron',profile=p,depth=depth),part('boss','profile','iron_edge',profile=[[8*math.cos(i*math.tau/8),8*math.sin(i*math.tau/8)]for i in range(8)],depth=3,socket=dict(origin=[0,0,-depth/2-2]))])
 def sword(length=100,width=14,curve=0):
     sections=[[0,-15,0,3,3],[0,-30,0,width*.45,3],[curve*.3,-length*.6,0,width*.5,2],[curve,-length,0,2,2]]
     return recipe('Independent blade',[part('blade','loft','iron_edge',sections=sections,sides=4),part('guard','box','iron',center=[0,-15,0],size=[width*2.2,5,7]),part('grip','beam','wood_dark',start=[0,0,0],end=[0,-15,0],radii=[3,3],sides=6)])
+def wheel(width=387,height=397,depth=126,duration=64):
+    import math
+    rx,ry=width/2,height/2;cy=-height/2-10;components=[]
+    for z,tag in [(-depth*.36,'front'),(depth*.36,'back')]:components.append(part('rim_'+tag,'annulus','wood',1,center=[0,cy,z],radii=[rx,ry],rim_width=min(rx,ry)*.26,depth=12,sides=12))
+    for i in range(4):
+        angle=i*math.tau/4;components.append(part('spoke_'+str(i),'beam','wood_dark',1,start=[0,cy,-depth*.36],end=[rx*.86*math.cos(angle),cy+ry*.86*math.sin(angle),-depth*.36],radii=[13,13],sides=4))
+    for i in range(12):
+        angle=i*math.tau/12;u=[math.cos(angle),-math.sin(angle),0];v=[math.sin(angle),math.cos(angle),0];components.append(part('paddle_'+str(i),'box','wood',1,center=[0,0,0],size=[35,8,depth],socket=dict(origin=[rx*.9*math.sin(angle),cy+ry*.9*math.cos(angle),0],basis=[u,v,[0,0,1]])))
+    components.append(part('axle','beam','iron',0,start=[0,cy,-depth*.5],end=[0,cy,depth*.5],radii=[12,12],sides=6))
+    rig=[dict(name='rotor',parent=None,origin=[0,cy,0],groups=[1])];actions=dict(turn=dict(duration_ticks=duration,cadence_ticks=2,loop=True,keys=[dict(tick=0,channels=dict(rotor=[0,0,0])),dict(tick=duration,channels=dict(rotor=[0,0,256]))]))
+    return recipe('Independent faceted waterwheel',components,rig,actions)
+def barrel(width=70,height=90,depth=70):
+    w,d=width/2,depth/2;components=[part('staves','loft','wood',sections=[[0,0,0,w*.78,d*.78],[0,-height*.25,0,w,d],[0,-height*.7,0,w,d],[0,-height,0,w*.78,d*.78]],sides=8)]
+    for i,y in enumerate([-.15*height,-.8*height]):components.append(part('hoop_'+str(i),'loft','iron',sections=[[0,y+3,0,w+2,d+2],[0,y-3,0,w+2,d+2]],sides=8))
+    return recipe('Independent barrel',components)
+def crate(width=90,height=90,depth=90):
+    c=[part('body','box','wood',center=[0,-height/2,0],size=[width*.95,height*.95,depth*.95])]
+    for side in [-1,1]:
+        for x in [-width*.4,width*.4]:c.append(part(f'brace_{side}_{x}','box','wood_dark',center=[x,-height/2,side*depth/2],size=[8,height,6]))
+        for y in [-height*.1,-height*.9]:c.append(part(f'rail_{side}_{y}','box','wood_dark',center=[0,y,side*depth/2],size=[width,8,6]))
+    return recipe('Independent crate',c)
+def quadruped(width=75,height=95,depth=180):
+    import math
+    c=[part('body','loft','skin_shadow',0,sections=[[0,-height*.4,0,width*.45,depth*.36],[0,-height*.7,0,width*.5,depth*.4],[0,-height*.8,0,width*.3,depth*.3]],sides=6),part('head','loft','skin',1,sections=[[0,-height*.6,-depth*.4,width*.25,depth*.14],[0,-height*.9,-depth*.4,width*.28,depth*.16]],sides=6),part('muzzle','beam','skin_shadow',1,start=[0,-height*.68,-depth*.4],end=[0,-height*.65,-depth*.6],radii=[width*.17,width*.1],sides=6)]
+    rig=[dict(name='body_root',parent=None,origin=[0,-height*.55,0],groups=list(range(14))),dict(name='head',parent='body_root',origin=[0,-height*.65,-depth*.25],groups=[1])];legs=[]
+    for n,(x,z)in enumerate([(-width*.32,-depth*.23),(width*.32,-depth*.23),(-width*.32,depth*.23),(width*.32,depth*.23)]):
+        upper,lower=2+n*2,3+n*2;hip=[x,-height*.6,z];knee=[x,-height*.3,z];foot=[x,0,z];tag='leg_'+str(n);c += [part(tag+'_upper','beam','skin_shadow',upper,start=hip,end=knee,radii=[max(3,width*.1),max(3,width*.07)],sides=5),part(tag+'_lower','beam','skin',lower,start=knee,end=foot,radii=[max(3,width*.07),max(3,width*.05)],sides=5)];rig += [dict(name=tag+'_hip',parent='body_root',origin=hip,groups=[upper,lower]),dict(name=tag+'_knee',parent=tag+'_hip',origin=knee,groups=[lower])];legs.append(tag)
+    c.append(part('tail','beam','skin_shadow',10,start=[0,-height*.6,depth*.35],end=[0,-height*.35,depth*.65],radii=[max(3,width*.09),3],sides=5));rig.append(dict(name='tail',parent='body_root',origin=[0,-height*.6,depth*.35],groups=[10]))
+    actions={}
+    for action,duration in [('idle',60),('walk',48),('attack',40),('hit',36),('death',60)]:
+        keys=[]
+        for i in range(9):
+            t=i/8;channels={};translation=[0,0,0]
+            if action=='idle':channels['head']=[round(math.sin(t*math.tau)*2),0,0]
+            if action=='walk':
+                for n,tag in enumerate(legs):swing=round(math.sin(t*math.tau+(math.pi if n in [1,2]else 0))*16);channels[tag+'_hip']=[swing,0,0];channels[tag+'_knee']=[max(0,-swing),0,0]
+            if action=='attack':channels['head']=[round(-math.sin(t*math.pi)*22),0,0];translation[2]=round(-math.sin(t*math.pi)*depth*.08)
+            if action=='hit':channels['body_root']=[0,0,round(math.sin(t*math.pi)*8)]
+            if action=='death':channels['body_root']=[0,0,round(min(t*1.5,1)*64)]
+            keys.append(dict(tick=round(t*duration),channels=channels,translation=translation))
+        actions[action]=dict(duration_ticks=duration,cadence_ticks=3,keys=keys,loop=action in ['idle','walk'])
+        if action=='death':actions[action].update(grounded=True,terminal_zero=True,terminal_hold=300)
+    return recipe('Independent quadruped anatomy study',c,rig,actions)
 def humanoid(p=None):
     """Anatomical components and ownership are independent of specific cache rigs."""
     p=dict(p or {});height=p.get('height',158);s=height/158;parts=[]
@@ -66,12 +111,22 @@ def humanoid(p=None):
             t=i/8;phase=t*math.tau;channels={};translation=[0,0,0]
             if name=='idle':channels={'head':[0,round(math.sin(phase)*2),0]};translation[1]=round(math.sin(phase)*1)
             elif name=='walk':
-                swing=round(math.sin(phase)*16);channels={'right_hip':[swing,0,0],'left_hip':[-swing,0,0],'right_knee':[max(0,-swing),0,0],'left_knee':[max(0,swing),0,0],'right_ankle':[-max(0,swing),0,0],'left_ankle':[-max(0,-swing),0,0],'right_shoulder':[-swing//2,0,0],'left_shoulder':[swing//2,0,0]};translation[1]=round(-abs(math.sin(phase))*2)
+                from kinematics import leg_contact_channels
+                swing=round(math.sin(phase)*16);channels={'right_shoulder':[-swing//2,0,0],'left_shoulder':[swing//2,0,0]};translation[1]=2+round(abs(math.sin(phase)))
+                joints={j['name']:j['origin']for j in rig}
+                for prefix,offset in [('right',0),('left',.5)]:
+                    legphase=(t+offset)%1
+                    if legphase<.5:step_z=10*(1-4*legphase);lift=0
+                    else:u=(legphase-.5)*2;step_z=-10+20*(u*u*(3-2*u));lift=7*math.sin(u*math.pi)
+                    target=[joints[prefix+'_ankle'][0],-7-lift,-3+step_z];solution=leg_contact_channels(joints[prefix+'_hip'],joints[prefix+'_knee'],joints[prefix+'_ankle'],target,translation)
+                    if not solution['reachable']:raise ValueError('walk target exceeds authored limb reach')
+                    for joint in ['hip','knee','ankle']:channels[prefix+'_'+joint]=solution[joint]
             elif name=='attack':
                 anticipation=-10*max(0,1-abs(t-.18)/.18);strike=45*max(0,1-abs(t-.48)/.28);channels={'right_shoulder':[round(anticipation+strike),round(-strike*.25),round(-strike*.3)],'right_elbow':[round(strike*.4),0,0],'spine':[0,round(strike*.25),0]}
             elif name=='hit':channels={'spine':[round(math.sin(t*math.pi)*14),0,0]};translation[2]=round(math.sin(t*math.pi)*6)
             elif name=='death':channels={'body_root':[round(min(t*1.5,1)*64),0,0],'right_hip':[-round(t*20),0,0],'left_hip':[-round(t*20),0,0],'right_knee':[round(t*35),0,0],'left_knee':[round(t*35),0,0]}
             keys.append(dict(tick=round(t*duration),channels=channels,translation=translation))
         actions[name]=dict(duration_ticks=duration,cadence_ticks=3,loop=name in ['idle','walk'],keys=keys)
+        if name=='walk':actions[name]['foot_contacts']=[dict(components=['right_foot'],phase_offset=0),dict(components=['left_foot'],phase_offset=.5)]
         if name=='death':actions[name].update(grounded=True,terminal_zero=True,terminal_hold=300)
     return recipe('Independent humanoid workbench study',parts,rig,actions)

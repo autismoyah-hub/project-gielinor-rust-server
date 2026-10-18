@@ -1,0 +1,103 @@
+[
+  {
+    "asset": "tensioners-saddle",
+    "identity": {
+      "model_id": 1101514,
+      "object_id": 63414,
+      "npc_id": null,
+      "sequence_base": null,
+      "skeleton_base": null,
+      "frame_group_base": null
+    },
+    "vertices": 356,
+    "faces": 620,
+    "model_sha256": "68936f813b5c48b9497bb17f0d78cd811736bf94c79a2ec4f37120937a032c9c",
+    "native_binary_sha256": "d91ad2597de216c6277fed921107a7f01df59096f8e593b595ce0db5b3a67e4e",
+    "motion": [],
+    "artistic_acceptance": false,
+    "production_integration": false,
+    "reference_mesh_or_animation_reuse": false,
+    "publication": "Owned original design inputs and generated native outputs only; authentic comparison images remain private"
+  },
+  {
+    "asset": "sluice-governor",
+    "identity": {
+      "model_id": 1101515,
+      "object_id": 63415,
+      "npc_id": null,
+      "sequence_base": null,
+      "skeleton_base": null,
+      "frame_group_base": null
+    },
+    "vertices": 336,
+    "faces": 592,
+    "model_sha256": "f719c30718d925539340fc6644cfcc04e84d1c6d299926cb061b56b1337cff09",
+    "native_binary_sha256": "d91ad2597de216c6277fed921107a7f01df59096f8e593b595ce0db5b3a67e4e",
+    "motion": [],
+    "artistic_acceptance": false,
+    "production_integration": false,
+    "reference_mesh_or_animation_reuse": false,
+    "publication": "Owned original design inputs and generated native outputs only; authentic comparison images remain private"
+  },
+  {
+    "asset": "kilnback-rummager",
+    "identity": {
+      "model_id": 1101516,
+      "object_id": 63416,
+      "npc_id": 60024,
+      "sequence_base": 45032,
+      "skeleton_base": 32032,
+      "frame_group_base": 40032
+    },
+    "vertices": 376,
+    "faces": 620,
+    "model_sha256": "afe2d870bac6f00e854b56009b6dcf0bdc9250e25f15403653951086924ba10a",
+    "native_binary_sha256": "d91ad2597de216c6277fed921107a7f01df59096f8e593b595ce0db5b3a67e4e",
+    "motion": [
+      {
+        "action": "attack",
+        "native_pose_samples": 43,
+        "max_coordinate_error_native": 0,
+        "sequence_id": 45032,
+        "skeleton_id": 32034,
+        "frame_group": 40034
+      },
+      {
+        "action": "death",
+        "native_pose_samples": 259,
+        "max_coordinate_error_native": 0,
+        "sequence_id": 45033,
+        "skeleton_id": 32036,
+        "frame_group": 40036
+      },
+      {
+        "action": "hit",
+        "native_pose_samples": 31,
+        "max_coordinate_error_native": 0,
+        "sequence_id": 45034,
+        "skeleton_id": 32035,
+        "frame_group": 40035
+      },
+      {
+        "action": "idle",
+        "native_pose_samples": 65,
+        "max_coordinate_error_native": 0,
+        "sequence_id": 45035,
+        "skeleton_id": 32032,
+        "frame_group": 40032
+      },
+      {
+        "action": "walk",
+        "native_pose_samples": 49,
+        "max_coordinate_error_native": 0,
+        "sequence_id": 45036,
+        "skeleton_id": 32033,
+        "frame_group": 40033
+      }
+    ],
+    "artistic_acceptance": false,
+    "production_integration": false,
+    "reference_mesh_or_animation_reuse": false,
+    "publication": "Owned original design inputs and generated native outputs only; authentic comparison images remain private"
+  }
+]

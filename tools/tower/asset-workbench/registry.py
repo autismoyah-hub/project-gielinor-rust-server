@@ -5,13 +5,17 @@ from native_codec import model,require
 class IdentityAllocator:
     """Persistent single-writer manifest; names keep identities across refinements."""
     def __init__(self,path,bounds):self.path=Path(path);self.bounds=bounds;self.data=json.loads(self.path.read_text())if self.path.exists()else dict(schema=1,assets={})
-    def allocate(self,key):
-        if key in self.data['assets']:return self.data['assets'][key]
-        n=len(self.data['assets']);row=dict(model_id=1101500+n,object_id=63400+n,npc_id=60020+n,sequence_base=45000+n*8,skeleton_base=64500+n*8,frame_group_base=62300+n*8)
-        require(row['object_id']<=64999 and row['npc_id']<=65535 and row['skeleton_base']+7<=65535 and row['frame_group_base']+7<=65535,'custom namespace exhausted; do not wrap IDs')
+    def allocate(self,key,animated=True):
+        if key in self.data['assets']:
+            row=self.data['assets'][key]
+            require(not animated or row.get('npc_id')is not None,'Static identity cannot silently become animated; allocate an explicit new variant key')
+            return row
+        n=len(self.data['assets']);actors=sum(old.get('npc_id')is not None for old in self.data['assets'].values());row=dict(model_id=1101500+n,object_id=63400+n,npc_id=60020+actors if animated else None,sequence_base=45000+actors*8 if animated else None,skeleton_base=32000+actors*8 if animated else None,frame_group_base=40000+actors*8 if animated else None)
+        require(row['object_id']<=64999,'custom object namespace exhausted; do not wrap IDs')
+        if animated:require(row['npc_id']<=65535 and row['sequence_base']+7<=65535 and row['skeleton_base']+7<64000 and row['frame_group_base']+7<60000,'custom animation namespace exhausted; do not wrap or collide with preserved studies')
         for field,source in [('model_id','model_max'),('object_id','object_max'),('npc_id','npc_max'),('sequence_base','sequence_max'),('skeleton_base','skeleton_max'),('frame_group_base','frame_group_max')]:
-            if source in self.bounds:require(row[field]>self.bounds[source],'source identifier collision '+field)
-        for old in self.data['assets'].values():require(all(row[k]!=old[k]for k in row),'duplicate custom identity')
+            if source in self.bounds and row[field]is not None:require(row[field]>self.bounds[source],'source identifier collision '+field)
+        for old in self.data['assets'].values():require(all(row[k]is None or row[k]!=old[k]for k in row),'duplicate custom identity')
         self.data['assets'][key]=row;self.path.parent.mkdir(parents=True,exist_ok=True);tmp=self.path.with_suffix('.tmp');tmp.write_text(json.dumps(self.data,indent=2));tmp.replace(self.path);return row
 def object_package(out,geometries,factory,model_ids,object_id,original_bounds):
     out=Path(out);out.mkdir(parents=True,exist_ok=True)

@@ -100,6 +100,24 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
         return Ok(());
     }
+    if a[3] == "render-own" {
+        if a.len() != 7 {
+            return Err("render-own MODEL AMBIENT CONTRAST".into());
+        }
+        let m = Model::decode(&fs::read(&a[4])?)?;
+        let light = m.light(a[5].parse()?, a[6].parse()?, [-30, -50, -30])?;
+        let cam = native::camera(&m);
+        fs::write(
+            out.join("camera.txt"),
+            cam.iter()
+                .map(|v| v.to_string())
+                .collect::<Vec<_>>()
+                .join(" "),
+        )?;
+        native::views(&m, &light, &tex, cam, out)?;
+        fs::write(out.join("decoded.json"), native::geometry(&m))?;
+        return Ok(());
+    }
     if a[3] == "render" {
         let m = Model::decode(&fs::read(&a[4])?)?;
         let cam: Vec<f32> = fs::read_to_string(&a[5])?
@@ -122,6 +140,59 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let npcs = npc::Definition::load_all(&mut cache)?;
     let items = item::Definitions::load(&mut cache)?;
     let sequences = Sequence::load_all(&mut cache)?;
+    if a[3] == "beside" {
+        // One shared coordinate system, camera, light and native submission.
+        // Cache models remain read-only; this scene and its pixels are private.
+        if a.len() != 6 {
+            return Err("beside SELECTOR CUSTOM_MODEL".into());
+        }
+        let s: Vec<_> = a[4].split(':').collect();
+        let id: u32 = s.get(1).ok_or("Missing selector id")?.parse()?;
+        let mut reference = match s[0] {
+            "object" => {
+                let d = objects.get(&id).ok_or("Unknown reference object")?;
+                let shape = if d.model_ids(10).is_empty() {
+                    *d.model_shapes
+                        .as_ref()
+                        .and_then(|v| v.first())
+                        .ok_or("No object shape")?
+                } else {
+                    10
+                };
+                (*object_model::Models::default()
+                    .object(&mut cache, d, shape, 0)?
+                    .ok_or("Reference object unavailable")?)
+                .clone()
+            }
+            "npc" => {
+                let d = npcs.get(&id).ok_or("Unknown reference NPC")?;
+                let mut m = npc_model::mesh(
+                    &mut cache,
+                    &mut item_model::Models::default(),
+                    d,
+                    false,
+                    None,
+                )?
+                .ok_or("Reference NPC unavailable")?;
+                m.scale([d.scale[0] as i32, d.scale[1] as i32, d.scale[0] as i32]);
+                m
+            }
+            "item" => item_model::Models::default().inventory(&mut cache, &items, id, 1, None)?,
+            _ => return Err("Unsupported reference kind".into()),
+        };
+        let mut owned = Model::decode(&fs::read(&a[5])?)?;
+        let rb = native::bounds(&reference);
+        let cb = native::bounds(&owned);
+        // Ground both as rigid objects; retain native dimensions, never fit one
+        // model to the other. Put an explicit 80-unit gap between their bounds.
+        reference.translate([(-40. - rb[1][0]).floor() as i32, -rb[1][1].ceil() as i32, 0]);
+        owned.translate([(40. - cb[0][0]).ceil() as i32, -cb[1][1].ceil() as i32, 0]);
+        let scene = Model::combine(&[reference, owned])?;
+        let light = scene.light(64, 768, [-30, -50, -30])?;
+        native::views(&scene, &light, &tex, native::camera(&scene), out)?;
+        fs::write(out.join("scene.json"),format!("{{\"reference\":{:?},\"owned_sha256\":\"{:x}\",\"gap_native\":80,\"ambient\":64,\"contrast\":768,\"artistic_acceptance\":false,\"publication\":\"protected local comparison\"}}",a[4],Sha256::digest(fs::read(&a[5])?)))?;
+        return Ok(());
+    }
     fs::write(out.join("original-id-bounds.json"),format!("{{\"model_max\":{},\"object_max\":{},\"npc_max\":{},\"item_max\":{},\"sequence_max\":{},\"frame_group_max\":{},\"skeleton_max\":{}}}",cache.reference(7)?.groups.iter().map(|g|g.id).max().unwrap_or(0),objects.keys().max().unwrap(),npcs.keys().max().unwrap(),items.items.keys().max().unwrap(),sequences.keys().max().unwrap(),cache.reference(0)?.groups.iter().map(|g|g.id).max().unwrap_or(0),cache.reference(1)?.groups.iter().map(|g|g.id).max().unwrap_or(0)))?;
     if a[3] == "discover" {
         let mut rows: Vec<_> = objects.values().filter(|d| d.animation.is_some()).collect();
@@ -233,6 +304,18 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             let light = m.light(ambient, contrast, [-30, -50, -30])?;
             let mut world = m.clone();
             world.scale(scaling);
+            let submitted_faces: Vec<_> = light
+                .iter()
+                .enumerate()
+                .filter(|(_, c)| c[2] != -2)
+                .map(|(i, _)| i)
+                .collect();
+            let used: BTreeSet<_> = submitted_faces.iter().flat_map(|&i| m.faces[i]).collect();
+            if !used.is_empty() {
+                let mut surface = world.clone();
+                surface.vertices = used.iter().map(|&i| world.vertices[i as usize]).collect();
+                fs::write(dir.join("submitted-surface.json"),format!("{{\"face_indices\":{:?},\"world_bounds\":{:?},\"basis\":\"native light output third channel != -2; includes alpha/translucent surfaces, no occlusion inference\"}}",submitted_faces,native::bounds(&surface)))?;
+            }
             let cam = native::camera(&world);
             fs::write(
                 dir.join("camera.txt"),
@@ -262,7 +345,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 .join(",");
             fs::write(dir.join("metadata.json"),format!("{{\"schema\":1,\"selector\":{selector:?},\"name\":{name:?},\"revision\":\"239.1\",\"model_ids\":{ids:?},\"definition_sha256\":\"{:x}\",\"sources\":[{}],\"world_bounds\":{b:?},\"render_scale\":{scaling:?},\"ambient\":{ambient},\"contrast\":{contrast},\"camera\":{cam:?},\"sequences\":{{{rolejson}}},\"coordinate_contract\":\"native X,Y down,Z;128 units/tile;bind pose\"}}",Sha256::digest(&def),sources.join(",")))?;
             native::views(&world, &light, &tex, cam, &dir)?;
-            let actions: Vec<_> = if a[3] == "animate" {
+            let actions: Vec<_> = if a[3] == "inspect-static" {
+                vec![]
+            } else if a[3] == "animate" {
                 vec![("selected", a[5].parse::<i32>()?)]
             } else {
                 roles

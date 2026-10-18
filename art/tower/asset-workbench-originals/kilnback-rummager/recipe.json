@@ -1,0 +1,3242 @@
+{
+  "schema": 1,
+  "name": "Kilnback rummager",
+  "unit": "native;128 units per tile",
+  "materials": {
+    "stone": {
+      "hsl": 43051,
+      "render_type": 0
+    },
+    "edge": {
+      "hsl": 10262,
+      "render_type": 0
+    },
+    "stone_shadow": {
+      "hsl": 10258,
+      "render_type": 0
+    },
+    "iron": {
+      "hsl": 36902,
+      "render_type": 0
+    },
+    "iron_edge": {
+      "hsl": 36924,
+      "render_type": 0
+    },
+    "wood": {
+      "hsl": 8604,
+      "render_type": 0
+    },
+    "wood_dark": {
+      "hsl": 8485,
+      "render_type": 0
+    },
+    "leather": {
+      "hsl": 3769,
+      "render_type": 0
+    },
+    "skin": {
+      "hsl": 10782,
+      "render_type": 0
+    },
+    "skin_shadow": {
+      "hsl": 10772,
+      "render_type": 0
+    },
+    "cloth": {
+      "hsl": 916,
+      "render_type": 0
+    },
+    "armor": {
+      "hsl": 6955,
+      "render_type": 0
+    },
+    "armor_shadow": {
+      "hsl": 7075,
+      "render_type": 0
+    },
+    "gray_armor": {
+      "hsl": 5169,
+      "render_type": 0
+    },
+    "eye": {
+      "hsl": 7106,
+      "render_type": 1
+    },
+    "brow": {
+      "hsl": 8598,
+      "render_type": 0
+    },
+    "limestone": {
+      "hsl": 10304,
+      "render_type": 0
+    },
+    "joint": {
+      "hsl": 10272,
+      "render_type": 1
+    },
+    "bronze": {
+      "hsl": 8744,
+      "render_type": 0
+    },
+    "soot": {
+      "hsl": 10259,
+      "render_type": 0
+    },
+    "ceramic": {
+      "hsl": 4773,
+      "render_type": 0
+    },
+    "ceramic_edge": {
+      "hsl": 4790,
+      "render_type": 0
+    }
+  },
+  "components": [
+    {
+      "name": "abdomen",
+      "type": "loft",
+      "material": "soot",
+      "group": 0,
+      "role": "abdomen",
+      "sections": [
+        [
+          0,
+          -22,
+          14,
+          34,
+          49
+        ],
+        [
+          0,
+          -43,
+          14,
+          41,
+          55
+        ],
+        [
+          0,
+          -62,
+          15,
+          33,
+          47
+        ],
+        [
+          0,
+          -70,
+          16,
+          14,
+          23
+        ]
+      ],
+      "sides": 8
+    },
+    {
+      "name": "carapace",
+      "type": "loft",
+      "material": "ceramic",
+      "group": 0,
+      "role": "carapace",
+      "sections": [
+        [
+          0,
+          -40,
+          20,
+          40,
+          51
+        ],
+        [
+          0,
+          -62,
+          20,
+          34,
+          44
+        ],
+        [
+          0,
+          -74,
+          20,
+          15,
+          24
+        ]
+      ],
+      "sides": 8
+    },
+    {
+      "name": "thorax",
+      "type": "loft",
+      "material": "soot",
+      "group": 0,
+      "role": "thorax",
+      "sections": [
+        [
+          0,
+          -25,
+          -38,
+          22,
+          23
+        ],
+        [
+          0,
+          -50,
+          -38,
+          25,
+          25
+        ],
+        [
+          0,
+          -59,
+          -38,
+          14,
+          18
+        ]
+      ],
+      "sides": 6
+    },
+    {
+      "name": "head",
+      "type": "loft",
+      "material": "soot",
+      "group": 1,
+      "role": "head",
+      "sections": [
+        [
+          0,
+          -20,
+          -65,
+          18,
+          15
+        ],
+        [
+          0,
+          -36,
+          -67,
+          23,
+          19
+        ],
+        [
+          0,
+          -45,
+          -64,
+          14,
+          14
+        ]
+      ],
+      "sides": 6
+    },
+    {
+      "name": "leg_0_upper",
+      "type": "beam",
+      "material": "soot",
+      "group": 2,
+      "role": "leg_0_upper",
+      "start": [
+        -24,
+        -35,
+        -36
+      ],
+      "end": [
+        -50,
+        -25,
+        -48
+      ],
+      "radii": [
+        7,
+        5
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_0_shin",
+      "type": "beam",
+      "material": "soot",
+      "group": 3,
+      "role": "leg_0_shin",
+      "start": [
+        -50,
+        -25,
+        -48
+      ],
+      "end": [
+        -61,
+        0,
+        -60
+      ],
+      "radii": [
+        5,
+        3
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_0_toe",
+      "type": "beam",
+      "material": "bronze",
+      "group": 3,
+      "role": "leg_0_toe",
+      "start": [
+        -61,
+        0,
+        -60
+      ],
+      "end": [
+        -69,
+        -1,
+        -67
+      ],
+      "radii": [
+        3,
+        1
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_1_upper",
+      "type": "beam",
+      "material": "soot",
+      "group": 4,
+      "role": "leg_1_upper",
+      "start": [
+        -24,
+        -35,
+        -4
+      ],
+      "end": [
+        -57,
+        -25,
+        4
+      ],
+      "radii": [
+        7,
+        5
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_1_shin",
+      "type": "beam",
+      "material": "soot",
+      "group": 5,
+      "role": "leg_1_shin",
+      "start": [
+        -57,
+        -25,
+        4
+      ],
+      "end": [
+        -68,
+        0,
+        12
+      ],
+      "radii": [
+        5,
+        3
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_1_toe",
+      "type": "beam",
+      "material": "bronze",
+      "group": 5,
+      "role": "leg_1_toe",
+      "start": [
+        -68,
+        0,
+        12
+      ],
+      "end": [
+        -76,
+        -1,
+        5
+      ],
+      "radii": [
+        3,
+        1
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_2_upper",
+      "type": "beam",
+      "material": "soot",
+      "group": 6,
+      "role": "leg_2_upper",
+      "start": [
+        -24,
+        -35,
+        32
+      ],
+      "end": [
+        -50,
+        -25,
+        40
+      ],
+      "radii": [
+        7,
+        5
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_2_shin",
+      "type": "beam",
+      "material": "soot",
+      "group": 7,
+      "role": "leg_2_shin",
+      "start": [
+        -50,
+        -25,
+        40
+      ],
+      "end": [
+        -61,
+        0,
+        48
+      ],
+      "radii": [
+        5,
+        3
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_2_toe",
+      "type": "beam",
+      "material": "bronze",
+      "group": 7,
+      "role": "leg_2_toe",
+      "start": [
+        -61,
+        0,
+        48
+      ],
+      "end": [
+        -69,
+        -1,
+        41
+      ],
+      "radii": [
+        3,
+        1
+      ],
+      "sides": 5
+    },
+    {
+      "name": "eye_-1",
+      "type": "beam",
+      "material": "eye",
+      "group": 1,
+      "role": "eye_-1",
+      "start": [
+        -14,
+        -35,
+        -81
+      ],
+      "end": [
+        -16,
+        -35,
+        -84
+      ],
+      "radii": [
+        3,
+        3
+      ],
+      "sides": 5
+    },
+    {
+      "name": "mandible_-1",
+      "type": "beam",
+      "material": "bronze",
+      "group": 1,
+      "role": "mandible_-1",
+      "start": [
+        -14,
+        -23,
+        -77
+      ],
+      "end": [
+        -24,
+        -16,
+        -94
+      ],
+      "radii": [
+        5,
+        2
+      ],
+      "sides": 5
+    },
+    {
+      "name": "feeler_-1",
+      "type": "beam",
+      "material": "iron",
+      "group": 1,
+      "role": "feeler_-1",
+      "start": [
+        -12,
+        -42,
+        -74
+      ],
+      "end": [
+        -31,
+        -54,
+        -89
+      ],
+      "radii": [
+        2,
+        1
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_3_upper",
+      "type": "beam",
+      "material": "soot",
+      "group": 8,
+      "role": "leg_3_upper",
+      "start": [
+        24,
+        -35,
+        -36
+      ],
+      "end": [
+        50,
+        -25,
+        -48
+      ],
+      "radii": [
+        7,
+        5
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_3_shin",
+      "type": "beam",
+      "material": "soot",
+      "group": 9,
+      "role": "leg_3_shin",
+      "start": [
+        50,
+        -25,
+        -48
+      ],
+      "end": [
+        61,
+        0,
+        -60
+      ],
+      "radii": [
+        5,
+        3
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_3_toe",
+      "type": "beam",
+      "material": "bronze",
+      "group": 9,
+      "role": "leg_3_toe",
+      "start": [
+        61,
+        0,
+        -60
+      ],
+      "end": [
+        69,
+        -1,
+        -67
+      ],
+      "radii": [
+        3,
+        1
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_4_upper",
+      "type": "beam",
+      "material": "soot",
+      "group": 10,
+      "role": "leg_4_upper",
+      "start": [
+        24,
+        -35,
+        -4
+      ],
+      "end": [
+        57,
+        -25,
+        4
+      ],
+      "radii": [
+        7,
+        5
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_4_shin",
+      "type": "beam",
+      "material": "soot",
+      "group": 11,
+      "role": "leg_4_shin",
+      "start": [
+        57,
+        -25,
+        4
+      ],
+      "end": [
+        68,
+        0,
+        12
+      ],
+      "radii": [
+        5,
+        3
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_4_toe",
+      "type": "beam",
+      "material": "bronze",
+      "group": 11,
+      "role": "leg_4_toe",
+      "start": [
+        68,
+        0,
+        12
+      ],
+      "end": [
+        76,
+        -1,
+        5
+      ],
+      "radii": [
+        3,
+        1
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_5_upper",
+      "type": "beam",
+      "material": "soot",
+      "group": 12,
+      "role": "leg_5_upper",
+      "start": [
+        24,
+        -35,
+        32
+      ],
+      "end": [
+        50,
+        -25,
+        40
+      ],
+      "radii": [
+        7,
+        5
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_5_shin",
+      "type": "beam",
+      "material": "soot",
+      "group": 13,
+      "role": "leg_5_shin",
+      "start": [
+        50,
+        -25,
+        40
+      ],
+      "end": [
+        61,
+        0,
+        48
+      ],
+      "radii": [
+        5,
+        3
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_5_toe",
+      "type": "beam",
+      "material": "bronze",
+      "group": 13,
+      "role": "leg_5_toe",
+      "start": [
+        61,
+        0,
+        48
+      ],
+      "end": [
+        69,
+        -1,
+        41
+      ],
+      "radii": [
+        3,
+        1
+      ],
+      "sides": 5
+    },
+    {
+      "name": "eye_1",
+      "type": "beam",
+      "material": "eye",
+      "group": 1,
+      "role": "eye_1",
+      "start": [
+        14,
+        -35,
+        -81
+      ],
+      "end": [
+        16,
+        -35,
+        -84
+      ],
+      "radii": [
+        3,
+        3
+      ],
+      "sides": 5
+    },
+    {
+      "name": "mandible_1",
+      "type": "beam",
+      "material": "bronze",
+      "group": 1,
+      "role": "mandible_1",
+      "start": [
+        14,
+        -23,
+        -77
+      ],
+      "end": [
+        24,
+        -16,
+        -94
+      ],
+      "radii": [
+        5,
+        2
+      ],
+      "sides": 5
+    },
+    {
+      "name": "feeler_1",
+      "type": "beam",
+      "material": "iron",
+      "group": 1,
+      "role": "feeler_1",
+      "start": [
+        12,
+        -42,
+        -74
+      ],
+      "end": [
+        31,
+        -54,
+        -89
+      ],
+      "radii": [
+        2,
+        1
+      ],
+      "sides": 5
+    },
+    {
+      "name": "shell_vent_0",
+      "type": "box",
+      "material": "soot",
+      "group": 0,
+      "role": "shell_vent_0",
+      "center": [
+        0,
+        -75,
+        -4
+      ],
+      "size": [
+        15.6,
+        3,
+        4
+      ]
+    },
+    {
+      "name": "shell_vent_1",
+      "type": "box",
+      "material": "soot",
+      "group": 0,
+      "role": "shell_vent_1",
+      "center": [
+        0,
+        -75,
+        12
+      ],
+      "size": [
+        18.8,
+        3,
+        4
+      ]
+    },
+    {
+      "name": "shell_vent_2",
+      "type": "box",
+      "material": "soot",
+      "group": 0,
+      "role": "shell_vent_2",
+      "center": [
+        0,
+        -75,
+        28
+      ],
+      "size": [
+        18.0,
+        3,
+        4
+      ]
+    },
+    {
+      "name": "shell_vent_3",
+      "type": "box",
+      "material": "soot",
+      "group": 0,
+      "role": "shell_vent_3",
+      "center": [
+        0,
+        -75,
+        43
+      ],
+      "size": [
+        15.0,
+        3,
+        4
+      ]
+    },
+    {
+      "name": "tail_hook",
+      "type": "beam",
+      "material": "bronze",
+      "group": 14,
+      "role": "tail_hook",
+      "start": [
+        0,
+        -35,
+        59
+      ],
+      "end": [
+        0,
+        -18,
+        77
+      ],
+      "radii": [
+        8,
+        2
+      ],
+      "sides": 6
+    }
+  ],
+  "rig": [
+    {
+      "name": "body",
+      "parent": null,
+      "origin": [
+        0,
+        -35,
+        0
+      ],
+      "groups": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    },
+    {
+      "name": "head",
+      "parent": "body",
+      "origin": [
+        0,
+        -35,
+        -47
+      ],
+      "groups": [
+        1
+      ]
+    },
+    {
+      "name": "leg_0_hip",
+      "parent": "body",
+      "origin": [
+        -24,
+        -35,
+        -36
+      ],
+      "groups": [
+        2,
+        3
+      ]
+    },
+    {
+      "name": "leg_0_knee",
+      "parent": "leg_0_hip",
+      "origin": [
+        -50,
+        -25,
+        -48
+      ],
+      "groups": [
+        3
+      ]
+    },
+    {
+      "name": "leg_1_hip",
+      "parent": "body",
+      "origin": [
+        -24,
+        -35,
+        -4
+      ],
+      "groups": [
+        4,
+        5
+      ]
+    },
+    {
+      "name": "leg_1_knee",
+      "parent": "leg_1_hip",
+      "origin": [
+        -57,
+        -25,
+        4
+      ],
+      "groups": [
+        5
+      ]
+    },
+    {
+      "name": "leg_2_hip",
+      "parent": "body",
+      "origin": [
+        -24,
+        -35,
+        32
+      ],
+      "groups": [
+        6,
+        7
+      ]
+    },
+    {
+      "name": "leg_2_knee",
+      "parent": "leg_2_hip",
+      "origin": [
+        -50,
+        -25,
+        40
+      ],
+      "groups": [
+        7
+      ]
+    },
+    {
+      "name": "leg_3_hip",
+      "parent": "body",
+      "origin": [
+        24,
+        -35,
+        -36
+      ],
+      "groups": [
+        8,
+        9
+      ]
+    },
+    {
+      "name": "leg_3_knee",
+      "parent": "leg_3_hip",
+      "origin": [
+        50,
+        -25,
+        -48
+      ],
+      "groups": [
+        9
+      ]
+    },
+    {
+      "name": "leg_4_hip",
+      "parent": "body",
+      "origin": [
+        24,
+        -35,
+        -4
+      ],
+      "groups": [
+        10,
+        11
+      ]
+    },
+    {
+      "name": "leg_4_knee",
+      "parent": "leg_4_hip",
+      "origin": [
+        57,
+        -25,
+        4
+      ],
+      "groups": [
+        11
+      ]
+    },
+    {
+      "name": "leg_5_hip",
+      "parent": "body",
+      "origin": [
+        24,
+        -35,
+        32
+      ],
+      "groups": [
+        12,
+        13
+      ]
+    },
+    {
+      "name": "leg_5_knee",
+      "parent": "leg_5_hip",
+      "origin": [
+        50,
+        -25,
+        40
+      ],
+      "groups": [
+        13
+      ]
+    },
+    {
+      "name": "tail",
+      "parent": "body",
+      "origin": [
+        0,
+        -35,
+        59
+      ],
+      "groups": [
+        14
+      ]
+    }
+  ],
+  "actions": {
+    "idle": {
+      "duration_ticks": 64,
+      "cadence_ticks": 3,
+      "loop": true,
+      "keys": [
+        {
+          "tick": 0,
+          "channels": {
+            "head": [
+              0,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 5,
+          "channels": {
+            "head": [
+              0,
+              1,
+              0
+            ],
+            "tail": [
+              2,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 11,
+          "channels": {
+            "head": [
+              0,
+              3,
+              0
+            ],
+            "tail": [
+              3,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 16,
+          "channels": {
+            "head": [
+              0,
+              3,
+              0
+            ],
+            "tail": [
+              4,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 21,
+          "channels": {
+            "head": [
+              0,
+              3,
+              0
+            ],
+            "tail": [
+              3,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 27,
+          "channels": {
+            "head": [
+              0,
+              1,
+              0
+            ],
+            "tail": [
+              2,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 32,
+          "channels": {
+            "head": [
+              0,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 37,
+          "channels": {
+            "head": [
+              0,
+              -2,
+              0
+            ],
+            "tail": [
+              -2,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 43,
+          "channels": {
+            "head": [
+              0,
+              -3,
+              0
+            ],
+            "tail": [
+              -3,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 48,
+          "channels": {
+            "head": [
+              0,
+              -3,
+              0
+            ],
+            "tail": [
+              -4,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 53,
+          "channels": {
+            "head": [
+              0,
+              -3,
+              0
+            ],
+            "tail": [
+              -3,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 59,
+          "channels": {
+            "head": [
+              0,
+              -2,
+              0
+            ],
+            "tail": [
+              -2,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 64,
+          "channels": {
+            "head": [
+              0,
+              0,
+              0
+            ],
+            "tail": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    "walk": {
+      "duration_ticks": 48,
+      "cadence_ticks": 3,
+      "loop": true,
+      "keys": [
+        {
+          "tick": 0,
+          "channels": {
+            "leg_0_hip": [
+              0,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_1_hip": [
+              0,
+              0,
+              0
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              0,
+              0,
+              0
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_3_hip": [
+              0,
+              0,
+              0
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_4_hip": [
+              0,
+              0,
+              0
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_5_hip": [
+              0,
+              0,
+              0
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 4,
+          "channels": {
+            "leg_0_hip": [
+              5,
+              -3,
+              -3
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              6
+            ],
+            "leg_1_hip": [
+              -5,
+              3,
+              0
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              5,
+              -3,
+              -3
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              6
+            ],
+            "leg_3_hip": [
+              -5,
+              -3,
+              0
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_4_hip": [
+              5,
+              3,
+              3
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              -6
+            ],
+            "leg_5_hip": [
+              -5,
+              -3,
+              0
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "tick": 8,
+          "channels": {
+            "leg_0_hip": [
+              9,
+              -6,
+              -5
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              10
+            ],
+            "leg_1_hip": [
+              -9,
+              6,
+              0
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              9,
+              -6,
+              -5
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              10
+            ],
+            "leg_3_hip": [
+              -9,
+              -6,
+              0
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_4_hip": [
+              9,
+              6,
+              5
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              -10
+            ],
+            "leg_5_hip": [
+              -9,
+              -6,
+              0
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            2,
+            0
+          ]
+        },
+        {
+          "tick": 12,
+          "channels": {
+            "leg_0_hip": [
+              10,
+              -7,
+              -6
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              12
+            ],
+            "leg_1_hip": [
+              -10,
+              7,
+              0
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              10,
+              -7,
+              -6
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              12
+            ],
+            "leg_3_hip": [
+              -10,
+              -7,
+              0
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_4_hip": [
+              10,
+              7,
+              6
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              -12
+            ],
+            "leg_5_hip": [
+              -10,
+              -7,
+              0
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            2,
+            0
+          ]
+        },
+        {
+          "tick": 16,
+          "channels": {
+            "leg_0_hip": [
+              9,
+              -6,
+              -5
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              10
+            ],
+            "leg_1_hip": [
+              -9,
+              6,
+              0
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              9,
+              -6,
+              -5
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              10
+            ],
+            "leg_3_hip": [
+              -9,
+              -6,
+              0
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_4_hip": [
+              9,
+              6,
+              5
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              -10
+            ],
+            "leg_5_hip": [
+              -9,
+              -6,
+              0
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            2,
+            0
+          ]
+        },
+        {
+          "tick": 20,
+          "channels": {
+            "leg_0_hip": [
+              5,
+              -3,
+              -3
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              6
+            ],
+            "leg_1_hip": [
+              -5,
+              3,
+              0
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              5,
+              -3,
+              -3
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              6
+            ],
+            "leg_3_hip": [
+              -5,
+              -3,
+              0
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_4_hip": [
+              5,
+              3,
+              3
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              -6
+            ],
+            "leg_5_hip": [
+              -5,
+              -3,
+              0
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "tick": 24,
+          "channels": {
+            "leg_0_hip": [
+              0,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_1_hip": [
+              0,
+              0,
+              0
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              0,
+              0,
+              0
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_3_hip": [
+              0,
+              0,
+              0
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_4_hip": [
+              0,
+              0,
+              0
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_5_hip": [
+              0,
+              0,
+              0
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 28,
+          "channels": {
+            "leg_0_hip": [
+              -5,
+              4,
+              0
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_1_hip": [
+              5,
+              -4,
+              -3
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              6
+            ],
+            "leg_2_hip": [
+              -5,
+              4,
+              0
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_3_hip": [
+              5,
+              4,
+              3
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              -6
+            ],
+            "leg_4_hip": [
+              -5,
+              -4,
+              0
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_5_hip": [
+              5,
+              4,
+              3
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              -6
+            ]
+          },
+          "translation": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "tick": 32,
+          "channels": {
+            "leg_0_hip": [
+              -9,
+              6,
+              0
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_1_hip": [
+              9,
+              -6,
+              -5
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              10
+            ],
+            "leg_2_hip": [
+              -9,
+              6,
+              0
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_3_hip": [
+              9,
+              6,
+              5
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              -10
+            ],
+            "leg_4_hip": [
+              -9,
+              -6,
+              0
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_5_hip": [
+              9,
+              6,
+              5
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              -10
+            ]
+          },
+          "translation": [
+            0,
+            2,
+            0
+          ]
+        },
+        {
+          "tick": 36,
+          "channels": {
+            "leg_0_hip": [
+              -10,
+              7,
+              0
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_1_hip": [
+              10,
+              -7,
+              -6
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              12
+            ],
+            "leg_2_hip": [
+              -10,
+              7,
+              0
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_3_hip": [
+              10,
+              7,
+              6
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              -12
+            ],
+            "leg_4_hip": [
+              -10,
+              -7,
+              0
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_5_hip": [
+              10,
+              7,
+              6
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              -12
+            ]
+          },
+          "translation": [
+            0,
+            2,
+            0
+          ]
+        },
+        {
+          "tick": 40,
+          "channels": {
+            "leg_0_hip": [
+              -9,
+              6,
+              0
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_1_hip": [
+              9,
+              -6,
+              -5
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              10
+            ],
+            "leg_2_hip": [
+              -9,
+              6,
+              0
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_3_hip": [
+              9,
+              6,
+              5
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              -10
+            ],
+            "leg_4_hip": [
+              -9,
+              -6,
+              0
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_5_hip": [
+              9,
+              6,
+              5
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              -10
+            ]
+          },
+          "translation": [
+            0,
+            2,
+            0
+          ]
+        },
+        {
+          "tick": 44,
+          "channels": {
+            "leg_0_hip": [
+              -5,
+              4,
+              0
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_1_hip": [
+              5,
+              -3,
+              -3
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              6
+            ],
+            "leg_2_hip": [
+              -5,
+              4,
+              0
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_3_hip": [
+              5,
+              3,
+              3
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              -6
+            ],
+            "leg_4_hip": [
+              -5,
+              -4,
+              0
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_5_hip": [
+              5,
+              3,
+              3
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              -6
+            ]
+          },
+          "translation": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "tick": 48,
+          "channels": {
+            "leg_0_hip": [
+              0,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_1_hip": [
+              0,
+              0,
+              0
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_2_hip": [
+              0,
+              0,
+              0
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_3_hip": [
+              0,
+              0,
+              0
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_4_hip": [
+              0,
+              0,
+              0
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_5_hip": [
+              0,
+              0,
+              0
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    "attack": {
+      "duration_ticks": 42,
+      "cadence_ticks": 3,
+      "loop": false,
+      "keys": [
+        {
+          "tick": 0,
+          "channels": {
+            "head": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 4,
+          "channels": {
+            "head": [
+              -2,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 7,
+          "channels": {
+            "head": [
+              -4,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 10,
+          "channels": {
+            "head": [
+              -4,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 14,
+          "channels": {
+            "head": [
+              2,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            -3
+          ]
+        },
+        {
+          "tick": 18,
+          "channels": {
+            "head": [
+              10,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            -7
+          ]
+        },
+        {
+          "tick": 21,
+          "channels": {
+            "head": [
+              15,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            -10
+          ]
+        },
+        {
+          "tick": 24,
+          "channels": {
+            "head": [
+              10,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            -7
+          ]
+        },
+        {
+          "tick": 28,
+          "channels": {
+            "head": [
+              4,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            -3
+          ]
+        },
+        {
+          "tick": 32,
+          "channels": {
+            "head": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 35,
+          "channels": {
+            "head": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 38,
+          "channels": {
+            "head": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 42,
+          "channels": {
+            "head": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    "hit": {
+      "duration_ticks": 30,
+      "cadence_ticks": 3,
+      "loop": false,
+      "keys": [
+        {
+          "tick": 0,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 2,
+          "channels": {
+            "body": [
+              0,
+              0,
+              2
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "tick": 5,
+          "channels": {
+            "body": [
+              0,
+              0,
+              4
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            2
+          ]
+        },
+        {
+          "tick": 8,
+          "channels": {
+            "body": [
+              0,
+              0,
+              6
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            3
+          ]
+        },
+        {
+          "tick": 10,
+          "channels": {
+            "body": [
+              0,
+              0,
+              7
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            3
+          ]
+        },
+        {
+          "tick": 12,
+          "channels": {
+            "body": [
+              0,
+              0,
+              8
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            4
+          ]
+        },
+        {
+          "tick": 15,
+          "channels": {
+            "body": [
+              0,
+              0,
+              8
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            4
+          ]
+        },
+        {
+          "tick": 18,
+          "channels": {
+            "body": [
+              0,
+              0,
+              8
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            4
+          ]
+        },
+        {
+          "tick": 20,
+          "channels": {
+            "body": [
+              0,
+              0,
+              7
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            3
+          ]
+        },
+        {
+          "tick": 22,
+          "channels": {
+            "body": [
+              0,
+              0,
+              6
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            3
+          ]
+        },
+        {
+          "tick": 25,
+          "channels": {
+            "body": [
+              0,
+              0,
+              4
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            2
+          ]
+        },
+        {
+          "tick": 28,
+          "channels": {
+            "body": [
+              0,
+              0,
+              2
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "tick": 30,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    "death": {
+      "duration_ticks": 72,
+      "cadence_ticks": 3,
+      "loop": false,
+      "keys": [
+        {
+          "tick": 0,
+          "channels": {
+            "body": [
+              0,
+              0,
+              0
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              0
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              0
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 6,
+          "channels": {
+            "body": [
+              0,
+              0,
+              9
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              4
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              4
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              4
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              -4
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              -4
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              -4
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 12,
+          "channels": {
+            "body": [
+              0,
+              0,
+              17
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              7
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              7
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              7
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              -7
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              -7
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              -7
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 18,
+          "channels": {
+            "body": [
+              0,
+              0,
+              26
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              10
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              10
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              10
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              -10
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              -10
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              -10
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 24,
+          "channels": {
+            "body": [
+              0,
+              0,
+              34
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              14
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              14
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              14
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              -14
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              -14
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              -14
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 30,
+          "channels": {
+            "body": [
+              0,
+              0,
+              43
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              18
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              18
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              18
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              -18
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              -18
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              -18
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 36,
+          "channels": {
+            "body": [
+              0,
+              0,
+              51
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              21
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              21
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              21
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              -21
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              -21
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              -21
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 42,
+          "channels": {
+            "body": [
+              0,
+              0,
+              60
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              24
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              24
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              24
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              -24
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              -24
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              -24
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 48,
+          "channels": {
+            "body": [
+              0,
+              0,
+              64
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              28
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              28
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              28
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              -28
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              -28
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              -28
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 54,
+          "channels": {
+            "body": [
+              0,
+              0,
+              64
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              28
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              28
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              28
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              -28
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              -28
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              -28
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 60,
+          "channels": {
+            "body": [
+              0,
+              0,
+              64
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              28
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              28
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              28
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              -28
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              -28
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              -28
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 66,
+          "channels": {
+            "body": [
+              0,
+              0,
+              64
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              28
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              28
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              28
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              -28
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              -28
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              -28
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tick": 72,
+          "channels": {
+            "body": [
+              0,
+              0,
+              64
+            ],
+            "leg_0_knee": [
+              0,
+              0,
+              28
+            ],
+            "leg_1_knee": [
+              0,
+              0,
+              28
+            ],
+            "leg_2_knee": [
+              0,
+              0,
+              28
+            ],
+            "leg_3_knee": [
+              0,
+              0,
+              -28
+            ],
+            "leg_4_knee": [
+              0,
+              0,
+              -28
+            ],
+            "leg_5_knee": [
+              0,
+              0,
+              -28
+            ]
+          },
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "grounded": true,
+      "terminal_zero": true,
+      "terminal_hold": 300
+    }
+  },
+  "provenance": {
+    "kind": "original_tower_design_probe",
+    "source_geometry_reused": false,
+    "brief": "A six-legged scavenger shelters a soot-black body beneath chipped ceramic kiln armor. Copper mouthparts and a hooked tail echo foundry tools without reproducing an existing creature.",
+    "artistic_acceptance": false,
+    "live_integration": false
+  },
+  "skeleton_base": 32032,
+  "frame_group_base": 40032
+}
