@@ -3,9 +3,9 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0085:nine birdhouse quantity recipes withlive carried/worn tools andImcando animation;source [922d4c1](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/922d4c115cddbb171ec94d276becb702d74567bd). Existing pair/XP/queue engines reused;shared/binary PASS,first compilefailure preserved. Independent V0–V4 queued.
+OR-MIG-0086: two uncharged magic-fang upgrades, Crafting59/zeroXP/live chisel; source [b12666d](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/b12666d399844620cd65c66cdd2b62ef2a9c4bfb). Focused/binary PASS; independent V0–V4 queued. Alternate tool-click/menu/sound and charged mechanics remain.
 
-85 units / 94 append-only records. Discovery3508={'not_yet_assessed': 2799, 'configuration': 659, 'framework_or_infrastructure': 7, 'eligible_gameplay_behavior': 43};not completion percentages. Trap/quest/acquisition andbroad content remain;PG-DEF-001 Close candidate pending independent retest.
+86 units / 95 append-only records. Discovery3508={'not_yet_assessed': 2799, 'configuration': 659, 'framework_or_infrastructure': 7, 'eligible_gameplay_behavior': 43}; not completion percentages. PG-DEF-001 Close candidate pending independent retest.
 <!-- forge-current:end -->
 
 
@@ -523,3 +523,12 @@ Live inventoryChisel1755 andHammer2347/carriedImcando25644/offhand29775 orworn e
 Initial001 compileFAIL(two exhaustivepotion matches),preserved;corrected002 PASS,447 unchanged hashes: test result: ok. 133 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 8.63s; test result: ok. 485 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 71.98s. Actual binaries001 PASS,447 unchanged hashes.     Finished `test` profile [unoptimized + debuginfo] target(s) in 2m 11s;     Finished `dev` profile [unoptimized + debuginfo] target(s) in 14.92s. Nine fullbag/fine rewards/allfive hammer inventory/worn modes/chisel/tool retention/animation;actual normal/teak/redwood bothorders,basic/worn-offhand quantity2/5/8 orlatechisel stopafteroneproduct,early toolrefusal,no material substitution/loss. Legacy pair/quantity/potions regressed. Guard0026,347MiB/59.3%commit/38pages-in/s/2.5msdisk/38.8%CPU;binary7,092MiB/56.5%commit/90pages-in/s/1.1msdisk/13.7%CPU,bothj2. Working-tree developer evidence,not pristine/native/independent acceptance.
 
 Manufacture only;placing,seeds,trapping/retrieval/returnedclockwork,Hunter progression,quest access/acquisition,other tool variants/full donor menu grouping remain separate. Queue85units/94append-onlyrecords. Discovery3508={'not_yet_assessed': 2799, 'configuration': 659, 'framework_or_infrastructure': 7, 'eligible_gameplay_behavior': 43},not completion percentages. Continue eligible migration.
+
+
+## FORGE OR-MIG-0086 — two uncharged magic-fang upgrades
+
+Source b12666d399844620cd65c66cdd2b62ef2a9c4bfb:12932+11791->12902 and12932+11908->12900; member/current Crafting59, carried ordinary chisel1755 retained, one tick, zeroXP. Existing precise pair/durable tool engine reused without shared changes. No Attack/Magic wielding gate. Six target types/four canonical Wiki pages/eight source references pinned. Staff Wiki explicit1tick; trident tick blank, so its timing follows source only.
+
+Focused001 PASS2server/0world matches,448 unchanged hashes, compile13.71s/test0.70s. Actual binaries001 PASS448hashes,2.70s. Both products/orders/fullbag/current59/base1/noXP/rate0, start+1 once, retained chisel, live member/level/raw/credit/missing or variable chisel refusals, no spare substitution/skill events. Guard tests7,127MiB/56.3%commit/0pages-in/s/0.6msdisk/10.2%CPU; binaries7,150MiB/56.2%commit/0pages-in/s/2.2msdisk/1.2%CPU, j2. Working-tree developer evidence, not pristine/native independent acceptance.
+
+Partial source feature: donor alternate chisel-on-ingredient triggers/grouped menu and chisel sound remain unimplemented. Charged variants/charge transfer, charging, combat, dismantle, enhanced trident, acquisition and NPC services separate. Queue95 append-only records/86 units, independent V0–V4 queued. Discovery3508={'not_yet_assessed': 2799, 'configuration': 659, 'framework_or_infrastructure': 7, 'eligible_gameplay_behavior': 43}, not completion percentages.
