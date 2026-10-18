@@ -55,6 +55,15 @@ def ground_recipe():
     for side in [-1,1]:
         for i,(start,end)in enumerate([([-2200,-4,-1050],[-1880,-4,-650]),([-1880,-4,-650],[-1750,-4,-100]),([-1750,-4,-100],[-1540,-4,460])]):
             start=list(start);end=list(end);start[0]+=side*30;end[0]+=side*30;start[1]+=elevation(start[0],start[2]);end[1]+=elevation(end[0],end[2]);components.append(part(f'rail_{side}_{i}','beam','metal',role='transport_rail',start=start,end=end,radii=[3,3],sides=4))
+    # A worked ore face has continuous geological mass, exposed seams and a
+    # braced headwall. Small loose outcrops alone do not explain a quarry.
+    for i,(x,z,h)in enumerate([(-2600,-800,235),(-2540,-1040,270),(-2400,-1280,250),(-2150,-1460,210),(-1870,-1510,225)]):
+        components.append(part('ore_headwall_'+str(i),'section_mesh','bedrock',role='worked_ore_face',sections=[[x,12,z,160,125],[x-24,-h*.45,z+12,142,112],[x-40,-h,z+25,115,95]],sides=8,material_zones=[dict(center=[x+95,-h*.52,z+50],radius=110,hsl=6682),dict(center=[x+75,-h*.25,z-25],radius=80,hsl=26)]))
+        components.append(part('quarry_prop_'+str(i),'beam','wood',role='rock_face_support',start=[x+140,12,z+80],end=[x+110,-175,z+60],radii=[9,10],sides=4))
+    # A timber repair apron and local sleepers distinguish the delivery yard
+    # from its masonry surroundings without a repeated checkerboard motif.
+    for i in range(11):components.append(part('work_apron_'+str(i),'box','wood',role='bench_working_apron',center=[-1630+i*29,-3,1040],size=[27,6,310],variation=i%3-1))
+    for i in range(9):components.append(part('rail_sleeper_'+str(i),'box','wood',role='quarry_track_joinery',center=[-1850+i*15,7,-550+i*62],size=[108,8,13]))
     # Authored structural landmarks: refuge pilasters, working timber frames and
     # broad foundry vaults. They have visible supports, not floating roof strips.
     for i,(x,z)in enumerate([(-2200,2310),(-2050,2820),(-1340,2750),(-1160,2210),(-1690,1850)]):
