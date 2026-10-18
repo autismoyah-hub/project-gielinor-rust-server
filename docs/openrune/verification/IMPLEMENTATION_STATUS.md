@@ -3,9 +3,9 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0079: manual selected sand disposal through shared atomic exchange; source [95805f2](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/95805f2b333ede928196e18aef4f883d35dfe1a5). Both Kotlin inventories confirm held4->button6. Shared pre-correction regression and final focused/binary checks PASS with evidence distinguished. Independent V0–V4 queued.
+OR-MIG-0080: four reached material-only zero-XP sand pits; source [2530e42](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/2530e4274686bcd85c1465511ec3b598daf3681c). Explicit None operations, existing ordinary Some operations preserved. Shared regression/actual binary checks PASS; first compile failure preserved. Independent V0–V4 queued.
 
-79 units / 87 append-only records. Discovery3508={'not_yet_assessed': 2804, 'configuration': 658, 'framework_or_infrastructure': 6, 'eligible_gameplay_behavior': 40}; classification counts are not completion percentages. Sand filling/glass/other containers and broad content remain. PG-DEF-001 Close candidate pending independent retest.
+80 units / 88 append-only records. Discovery3508={'not_yet_assessed': 2803, 'configuration': 658, 'framework_or_infrastructure': 6, 'eligible_gameplay_behavior': 41}; not completion percentages. Other pits/quests/access/glass and broad content remain; PG-DEF-001 Close candidate pending independent retest.
 <!-- forge-current:end -->
 
 
@@ -461,3 +461,14 @@ Source 95805f2b333ede928196e18aef4f883d35dfe1a5: bucket_sand1783 held4/authorize
 Pre-correction full regression001 PASS123server481world/1existingignored,440 unchanged hashes,compile1m31s. This was the unpublished button5 draft, not final binding evidence. Corrected6 focused002 PASS3server6world,440 unchanged hashes,compile18.37s; actual server binaries001 PASS,440 unchanged hashes. Tests cover selected full bag,duplicate/stale claim/no matching fallback,zeroXP/Stats andmember/var/delay/modal/badcredit refusals. Guard0017,343MiB/54.5%commit/0pages-in/s/4.3msdisk/31.1%CPU;0027,047MiB/55.7%commit/9pages-in/s/1.3msdisk/13.7%CPU;binary7,092MiB/55.8%commit/928pages-in/s/1.0msdisk/26.4%CPU;allj2. Original evidence retained. Developer working-tree checks, not pristine/native/lifecycle/reference acceptance.
 
 Queue79units/87append-onlyrecords. Discovery3508 classification counts {'not_yet_assessed': 2804, 'configuration': 658, 'framework_or_infrastructure': 6, 'eligible_gameplay_behavior': 40}: categories, not completion percentages. Newly assessed sand gameplay and two framework files; no full framework port claim. Sand filling/glass production/quest deliveries/other containers and broad source obligations remain. Continue eligible migration.
+
+
+## FORGE OR-MIG-0080 — material-only sand-pit production
+
+Source 2530e4274686bcd85c1465511ec3b598daf3681c: four exact source-group pits14890/36563/50733/37392 accept reached selected bucket1925 -> member sand1783 via existing protected quantity/atomic groups. No normal operation on these target types: shared Config locations now Option<u8>,None explicitly material-only; old19 facilities retain Some(actual op). Normal operations0–5 and no-selection protected start refused. Craftingcurrent1 source descriptor retained; zero-XP recipes use existing optional reward helper with rate0, unchangedStats/no advancement/noRNG; positive-XP rate guard unchanged. No new transaction or queue engine.
+
+Source nominal2first/3repeat/animation895 retained; Wiki sand creation2 without Make-all repeat distinction, exact native cadence unresolved. Absent sand_bucket sound omitted. Four static target footprints/ops/no morph,two vessels,895sequence,3Wiki pages/10source files pinned privately. Other pits includingYanille10814,Dorgesh22726/Search37391,quest/access/diary/grinder/deliveries/sandbags/glass and broad content remain.
+
+Initial shared001 compile FAIL: existing wheel test compared optional operation to integer2; preserved. Corrected002 PASS,441 unchanged source hashes: test result: ok. 124 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.67s; test result: ok. 482 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 27.55s. Actual binaries001 PASS,441 unchanged hashes. Finished `test` profile [unoptimized + debuginfo] target(s) in 25.32s; Finished `dev` profile [unoptimized + debuginfo] target(s) in 14.08s. Factoryfour-none/rate0/fullbag/noXP/member/invalidcredit and actual reached2x2 selected first start+2 with latecapturedslot refusal/no matching substitute/noRNG; old ordinary operations,positive/fallible shared facilities regressed. Guard0026,877MiB/56.5%commit/0pages-in/s/4.6msdisk/26.9%CPU,j2. Working-tree evidence, not pristine/native/independent acceptance.
+
+Queue80units/88append-onlyrecords. Discovery3508 classification {'not_yet_assessed': 2803, 'configuration': 658, 'framework_or_infrastructure': 6, 'eligible_gameplay_behavior': 41}, not completion percentages. Continue eligible implementation and glass-smelting material dependencies.
