@@ -1,0 +1,48 @@
+{
+  "reference_geometry_read": false,
+  "cache_assets_included": false,
+  "examples": {
+    "reed-runner": {
+      "above.png": "f61aba2952e6c36e040700122b2c8e01d76247570fd7a1f3c4ae9d2802db5c28",
+      "asset.model": "7f323237cb1a36132a2d18eac050eab6a60e8f970cc689908c6571c6ce88aa99",
+      "components.json": "97af376d4dd719e24694d33bc0f0f170816806566604c13368789ff1f2494449",
+      "conversion.json": "e9912cb98950cd1d7e41b519f28519d3aa4f415f71e17f732148a16136e3f3b9",
+      "front.png": "18ce717e865b96e5b056cde44f4121ce94c9f5c85def18e342d419274393d460",
+      "gameplay.png": "c1e4c4f198d75b1f295abc3fb26e79c493b63a7728f6678f19ea0e79e0a8cc3c",
+      "geometry.json": "fee6331a2f4f45f6e4cfaeb106b1e401e2dd732da78c7b55fe2b06fa991b7363",
+      "quarter.png": "d5781b0f0d92ce814cf9f86e48cf5bd0b68354bfe30cc9044858676547f949d4",
+      "rear.png": "1cf068eecdc6e83e1fc3ca98aa2b485b5c91d00e6b718f6c62c148cfb6d357e1",
+      "recipe.json": "62c567e199bc711be6fe5fc5c9469f00747397cc36f4fdbdea7bbfb63ce8dd49",
+      "side.png": "b0ec50a8ec5494a2ff2c17494c90ff9efbca9fa73478571bec43ac6b14d03a82",
+      "source.blend": "06bf0785fa2ac9351d706a0a3736fc47b7ef75df3a1299bc43ac120335979c11"
+    },
+    "reed-runner-long-muzzle": {
+      "above.png": "68fc39a8cc889d023508a3c1a4e367f20f772146e8cc4461f2ed96c8b791622b",
+      "asset.model": "68a0ad2d790fa5f8546a9340ef125807ea20c8450a6df4ffb89b43896de57e42",
+      "components.json": "97af376d4dd719e24694d33bc0f0f170816806566604c13368789ff1f2494449",
+      "conversion.json": "e9912cb98950cd1d7e41b519f28519d3aa4f415f71e17f732148a16136e3f3b9",
+      "front.png": "ce1d5ebc827ff09c11b12768b357028990433f23f348548fc5c88d4298a5fa13",
+      "gameplay.png": "2688b6298221b74df79837bfea913f905148b6e0151093a8a168c6d5fe4074df",
+      "geometry.json": "0f4c0b91c608ea338a2405f8adfe6f99d94dc06be7d2fdb14966b960518c4930",
+      "quarter.png": "988f48206b04cb7bb132ff5bbb3291045d0346739fe816d3517e29c7e7175512",
+      "rear.png": "1cf068eecdc6e83e1fc3ca98aa2b485b5c91d00e6b718f6c62c148cfb6d357e1",
+      "recipe.json": "0aceff365d8c79ea63cd4c43c31d88770de7e65acec38a2dbf250cb578816dc6",
+      "side.png": "d9d4408aa069f9d0f808dc6778f325171fa683a35d39a90a24238daa06536e3e",
+      "source.blend": "e0359ea526474a78ce8ccefe9b68932457117a42b3e4e5bb409c05498385ac84"
+    },
+    "harvesting-bill": {
+      "above.png": "467dd1228756d17553cb6487af2690adace21633752a9629def8d136f721d91e",
+      "asset.model": "ce869afa054dfb00f483c0681c9ef379c756f200c17be32337ceb13ef60874fe",
+      "components.json": "5144cdf6feff792d4ff13679ea8e293f2fa3c4bd83296e123bccf47d1a5b1831",
+      "conversion.json": "2e3c21611c56c7553710201dbcaec49e0dd0a4353fd8b6671f50eaf1575f3cfc",
+      "front.png": "0fe871f8e0956a9c3153c296d0db13e5b697a4faadd6a60e2e52c957fefb2fb9",
+      "gameplay.png": "bae06400af282c4e3d47abf58417324359a46ad6a74f502d563866787c38cdc9",
+      "geometry.json": "fb3c84368b8736f66e7c4e8dea82a8eebfac0962e99d0dcf70ef3735b2663a8a",
+      "quarter.png": "8d9985377538dd86da0d3dc48810cbeffadfbde732a6ad93172f1c74eb6b49e2",
+      "rear.png": "87ef9a5e5be8c011983591fea88fc0198684594c8f2441622b2d2a2af51e12af",
+      "recipe.json": "d68e43fa5aeec0050507129e8af46586ba384968d60afa174518e68a3dabbd80",
+      "side.png": "962d683c8701edbaa8d3af05664d2de32e0401b37241246cef5480db968e2699",
+      "source.blend": "845f65b0d154ba05140edd251596371841ed14642e168607d5b8cc202f810349"
+    }
+  }
+}

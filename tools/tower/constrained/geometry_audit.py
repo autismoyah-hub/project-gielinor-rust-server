@@ -52,7 +52,7 @@ def compare(reference,candidate,spec):
     rs,cs=sections(rg,depths,low),sections(cg,depths,low)
     volume=lambda rows:sum((b['depth']-a['depth'])*(a['convex_section_area']+b['convex_section_area'])/2 for a,b in zip(rows,rows[1:]))
     rb,cb=masked_bounds(rg,spec.get('regions',{})),masked_bounds(cg,spec.get('regions',{}))
-    return {'reference_topology':topology(rg),'candidate_topology':topology(cg),'reference_sections':rs,'candidate_sections':cs,'envelope_volume_ratio':volume(cs)/max(1,volume(rs)),'regions':{name:{'reference':rb[name],'candidate':cb.get(name),'dimension_ratio':[b/max(1,a)for a,b in zip(rb[name]['dimensions'],cb[name]['dimensions'])]if name in cb else None,'centroid_distance':float(np.linalg.norm(np.array(rb[name]['centroid'])-cb[name]['centroid']))if name in cb else None}for name in rb},'interpretation':'Coarse convex cross-section envelope and region bounds; overlap, cavities and anatomical labels are approximations. Independent image and artistic review remain required.'}
+    return {'reference_topology':topology(rg),'candidate_topology':topology(cg),'reference_sections':rs,'candidate_sections':cs,'envelope_volume_ratio':volume(cs)/volume(rs)if volume(rs)>0 else None,'regions':{name:{'reference':rb[name],'candidate':cb.get(name),'dimension_ratio':[b/max(1,a)for a,b in zip(rb[name]['dimensions'],cb[name]['dimensions'])]if name in cb else None,'centroid_distance':float(np.linalg.norm(np.array(rb[name]['centroid'])-cb[name]['centroid']))if name in cb else None}for name in rb},'interpretation':'Coarse convex cross-section envelope and region bounds; overlap, cavities and anatomical labels are approximations. Independent image and artistic review remain required.'}
 
 if __name__=='__main__':
     import sys

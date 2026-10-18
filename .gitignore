@@ -1175,3 +1175,6 @@
 /integration/scenario-drivers/chicken-001/server_chicken.exe
 /integration/scenario-drivers/chicken-002/server_chicken.exe
 /integration/scenario-drivers/chicken-003/server_chicken.exe
+
+# Disposable authoring experiments; curated original examples are published separately.
+/art/tower/constrained-examples/

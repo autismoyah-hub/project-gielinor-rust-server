@@ -8,7 +8,7 @@ import math,re,sys,json
 from pathlib import Path
 HERE=Path(__file__).resolve().parent
 sys.path[:0]=[str(HERE.parent/'reassessment'),str(HERE.parent/'mesh-study'),str(HERE.parent/'asset-workbench')]
-from anatomy import mesh,material,native_color,solid_surface,projected_regions,landmark_limb,surface_regions,fitted_patch,shell_profile
+from anatomy import mesh,material,native_color,solid_surface,projected_regions,landmark_limb,surface_regions,fitted_patch,shell_profile,polygon_contains
 from mesh_tools import export,active,apply,box,tube
 from native_codec import model
 import bpy,bmesh
@@ -89,17 +89,22 @@ def relax_masked(o,center,radius,iterations=2,strength=.2):
     recovery=before/max(after,1e-9)
     for v,w in zip(o.data.vertices,weights):v.co=pivot+(v.co-pivot)*(1+(recovery-1)*w)
 
-def blade(name,stations,metal,edge,height=0):
+def blade(name,stations,metal,edge,height=0,frame='transport'):
     """Curved centerline with width perpendicular to tangent; diamond section.
 
     Stations [depth,center_x,half_width,half_thickness]. Width/thickness vary
     independently; a very small terminal section closes a coherent tip.
     """
-    vs=[]
+    vs=[];previous_normal=None
     for i,(y,c,w,t) in enumerate(stations):
         left=stations[max(i-1,0)];right=stations[min(i+1,len(stations)-1)]
         tangent=Vector((right[1]-left[1],right[0]-left[0],0)).normalized();normal=Vector((tangent.y,-tangent.x,0))
-        if normal.x<0:normal=-normal
+        if previous_normal is None:
+            if normal.x<0:normal=-normal
+        elif normal.dot(previous_normal)<0:normal=-normal
+        if frame=='axial':normal=Vector((1,0,0))
+        elif frame!='transport':raise ValueError('Blade frame must be transport or axial')
+        previous_normal=normal.copy()
         for u,z in [(-w,0),(0,t),(w,0),(0,-t)]:vs.append((c+normal.x*u,y+normal.y*u,height+z))
     fs=[(3,2,1,0),tuple((len(stations)-1)*4+j for j in range(4))]
     fs += [(i*4+j,i*4+(j+1)%4,(i+1)*4+(j+1)%4,(i+1)*4+j)for i in range(len(stations)-1)for j in range(4)]
@@ -108,7 +113,7 @@ def blade(name,stations,metal,edge,height=0):
         if p.index>=2 and (p.index-2)%4 in [0,3]:p.material_index=1
     o['semantic_component']='blade';return o
 
-def select(pattern):return [o for o in bpy.context.scene.objects if o.type=='MESH' and re.search(pattern,o.name)]
+def select(pattern):return [o for o in bpy.context.scene.objects if o.type=='MESH' and not o.get('construction_only',False) and re.search(pattern,o.name)]
 def remove(pattern):
     for o in select(pattern):bpy.data.objects.remove(o,do_unlink=True)
 
@@ -120,7 +125,8 @@ def execute(recipe):
         op=dict(operation);action=op.pop('op');pattern=op.pop('target',None)
         if action=='remove':remove(pattern)
         elif action=='loft':loft(mat=mats[op.pop('material')],**op)
-        elif action=='limb':landmark_limb(mat=mats[op.pop('material')],**op)
+        elif action=='limb':
+            limb=landmark_limb(mat=mats[op.pop('material')],**op);limb['distal_ring_indices']=list(range(len(limb.data.vertices)-10,len(limb.data.vertices)))
         elif action=='blade':blade(metal=mats[op.pop('material')],edge=mats[op.pop('edge')],**op)
         elif action=='box':box(mat=mats[op.pop('material')],**op)
         elif action=='tube':tube(mat=mats[op.pop('material')],**op)
@@ -136,17 +142,37 @@ def execute(recipe):
                 inv=o.matrix_world.inverted()
                 for v in o.data.vertices:v.co=inv@(pivot+rotation.to_3x3()@(o.matrix_world@v.co-pivot))
         elif action=='sculpt':masked_deform(select(pattern),**op)
+        elif action=='landmark':
+            source=op['source'];dest=op['destination'];masked_deform(select(pattern),center=source,radius=op['radius'],delta=[b-a for a,b in zip(source,dest)])
         elif action=='relax':
             for o in select(pattern):relax_masked(o,**op)
         elif action=='region':
             mat=mats[op['material']];axes=tuple(op.get('axes',[1,2]));polygon=op['polygon'];side_min=op.get('side_min',-1)
-            for o in select(pattern):projected_regions(o,[(mat,axes,polygon,lambda x,y,z:abs(x)>side_min)])
+            for o in select(pattern):
+                if op.get('cut_geometry',False):projected_regions(o,[(mat,axes,polygon,lambda x,y,z:abs(x)>side_min)])
+                else:surface_regions(o,[(mat,lambda x,y,z:abs(x)>side_min and polygon_contains(((x,y,z)[axes[0]],(x,y,z)[axes[1]]),polygon))])
         elif action=='band':
             axis=op['axis'];low,high=op['range'];mat=mats[op['material']]
             for o in select(pattern):surface_regions(o,[(mat,lambda x,y,z:low<=(x,y,z)[axis]<=high)])
         elif action=='box_region':
             limits=op['bounds'];mat=mats[op['material']]
             for o in select(pattern):surface_regions(o,[(mat,lambda x,y,z:all(lo<=v<=hi for v,(lo,hi)in zip((x,y,z),limits)))])
+        elif action=='surface_patch':
+            # Cut only a disposable coat-layer copy. The structural body's
+            # triangulation and smooth normal neighbourhood remain untouched.
+            mat=mats[op['material']]
+            for body in select(pattern):
+                patch=body.copy();patch.data=body.data.copy();bpy.context.collection.objects.link(patch);patch.name=op['name']
+                original_slots=len(patch.data.materials)
+                projected_regions(patch,[(mat,tuple(op.get('axes',[1,2])),op['polygon'],lambda x,y,z:True)])
+                bm=bmesh.new();bm.from_mesh(patch.data)
+                bmesh.ops.delete(bm,geom=[f for f in bm.faces if f.material_index<original_slots],context='FACES')
+                bmesh.ops.delete(bm,geom=[v for v in bm.verts if not v.link_faces],context='VERTS')
+                bm.normal_update()
+                for v in bm.verts:v.co+=v.normal*op.get('offset',1.1)
+                bmesh.ops.dissolve_limit(bm,angle_limit=.035,use_dissolve_boundaries=False,verts=list(bm.verts),edges=list(bm.edges),delimit={'MATERIAL'})
+                bm.to_mesh(patch.data);bm.free();patch.data.materials.clear();patch.data.materials.append(mat)
+                for p in patch.data.polygons:p.material_index=0
         elif action=='patch':
             body=select(pattern)
             if len(body)!=1:raise ValueError('Patch requires one semantic surface')
@@ -154,14 +180,31 @@ def execute(recipe):
         elif action=='fuse':
             objects=select(pattern)
             if not objects:raise ValueError('Empty fusion selection')
+            distal=[]
+            for original in objects:
+                indices=original.get('distal_ring_indices',[])
+                if indices:
+                    ring=[original.matrix_world@original.data.vertices[i].co for i in indices];center=sum(ring,Vector())/len(ring);radius=max((v-center).length for v in ring);distal.append((original.name,center,radius))
+            collection=bpy.data.collections.get('Editable anatomical construction')
+            if collection is None:
+                collection=bpy.data.collections.new('Editable anatomical construction');bpy.context.scene.collection.children.link(collection);collection.hide_render=True;collection.hide_viewport=True
+            for original in objects:
+                source=original.copy();source.data=original.data.copy();source.name='SOURCE '+original.name;source['construction_only']=True;collection.objects.link(source)
             bpy.ops.object.select_all(action='DESELECT')
             for o in objects:o.select_set(True)
             bpy.context.view_layer.objects.active=objects[0];bpy.ops.object.join();o=bpy.context.object
             mod=o.modifiers.new('Local anatomical joint fusion','REMESH');mod.mode='VOXEL';mod.voxel_size=op.get('voxel',1.5);apply(o,mod)
             mod=o.modifiers.new('Bounded joint relaxation','SMOOTH');mod.factor=.25;mod.iterations=2;apply(o,mod)
-            mod=o.modifiers.new('Authored plane density','DECIMATE');mod.ratio=min(1,op.get('triangles',650)/max(1,len(o.data.polygons)*2));apply(o,mod)
+            if op.get('topology')=='quad':
+                active(o);bpy.ops.object.quadriflow_remesh(target_faces=max(50,op.get('triangles',650)//2),use_mesh_symmetry=True,use_preserve_sharp=False,use_preserve_boundary=False,seed=0)
+            else:
+                mod=o.modifiers.new('Authored plane density','DECIMATE');mod.ratio=min(1,op.get('triangles',650)/max(1,len(o.data.polygons)*2));apply(o,mod)
             o.name=op['name'];o.data.materials.clear();o.data.materials.append(mats[op['material']])
             for p in o.data.polygons:p.material_index=0
+            for name,center,radius in distal:
+                hit,position,_,_=o.closest_point_on_mesh(o.matrix_world.inverted()@center)
+                distance=(o.matrix_world@position-center).length if hit else math.inf
+                if distance>radius+op.get('voxel',1.5)*2.5:raise ValueError('Fusion removed distal limb '+name)
         elif action=='material':
             for o in select(pattern):
                 o.data.materials.clear();o.data.materials.append(mats[op['material']])
@@ -187,16 +230,22 @@ def execute(recipe):
 
 def save(out,recipe,report):
     out=Path(out);out.mkdir(parents=True,exist_ok=False)
-    objects=[o for o in bpy.context.scene.objects if o.type=='MESH']
+    objects=[o for o in bpy.context.scene.objects if o.type=='MESH' and not o.get('construction_only',False)]
     for o in objects:
         o['semantic_component']=o.get('semantic_component',re.sub(r'\.\d+$','',o.name))
         for p in o.data.polygons:p.use_smooth=not bool(o.data.materials[p.material_index].get('native_flat',False))
     g=export(objects,out,model);g['vertex_skins']=None;(out/'geometry.json').write_text(json.dumps(g));(out/'asset.model').write_bytes(model(g))
     (out/'recipe.json').write_text(json.dumps(recipe,indent=2));(out/'construction-ledger.json').write_text(json.dumps(report,indent=2))
     (out/'components.json').write_text(json.dumps([{'name':o.name,'semantic':o['semantic_component'],'vertices':len(o.data.vertices),'faces':len(o.data.polygons)} for o in objects],indent=2))
+    (out/'surface-snapshot.py').write_text(Path(__file__).read_text())
+    text=bpy.data.texts.new('Construction recipe (private inputs)');text.write(json.dumps(recipe,indent=2))
+    root=bpy.data.objects.new('Semantic recipe controls',None);bpy.context.collection.objects.link(root)
+    for i,operation in enumerate(recipe['operations']):
+        control=bpy.data.objects.new(f'{i:02d} '+operation.get('name',operation.get('target',operation['op'])),None);bpy.context.collection.objects.link(control);control.parent=root;control['recipe_index']=i;control['operation_json']=json.dumps(operation)
     bpy.ops.wm.save_as_mainfile(filepath=str((out/'source.blend').resolve()))
 
 if __name__=='__main__':
     source,recipe_path,out=sys.argv[sys.argv.index('--')+1:]
-    bpy.ops.wm.open_mainfile(filepath=str(Path(source).resolve()))
+    if source=='-':bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
+    else:bpy.ops.wm.open_mainfile(filepath=str(Path(source).resolve()))
     recipe=json.loads(Path(recipe_path).read_text());save(out,recipe,execute(recipe))

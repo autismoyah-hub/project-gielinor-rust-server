@@ -1,0 +1,432 @@
+{
+  "name": "Original Reed Runner anatomy and fitted plate",
+  "materials": {
+    "hide": 18083,
+    "dark": 6502,
+    "accent": 28490,
+    "plate": 31428
+  },
+  "operations": [
+    {
+      "op": "loft",
+      "name": "runner_chest_and_tapered_waist",
+      "stations": [
+        [
+          -53,
+          13,
+          49,
+          81
+        ],
+        [
+          -33,
+          24,
+          26,
+          88
+        ],
+        [
+          0,
+          20,
+          30,
+          76
+        ],
+        [
+          27,
+          17,
+          34,
+          72
+        ],
+        [
+          47,
+          22,
+          29,
+          77
+        ],
+        [
+          58,
+          12,
+          40,
+          67
+        ]
+      ],
+      "material": "hide"
+    },
+    {
+      "op": "limb",
+      "name": "runner_leg_-1_False",
+      "points": [
+        [
+          -16,
+          -29,
+          52
+        ],
+        [
+          -22,
+          -24,
+          29
+        ],
+        [
+          -20,
+          -31,
+          6
+        ]
+      ],
+      "radii": [
+        [
+          10,
+          12
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "material": "hide"
+    },
+    {
+      "op": "loft",
+      "name": "runner_pad_-1_False",
+      "stations": [
+        [
+          -41,
+          5,
+          0,
+          8,
+          -20
+        ],
+        [
+          -33,
+          8,
+          0,
+          10,
+          -20
+        ],
+        [
+          -25,
+          4,
+          2,
+          9,
+          -20
+        ]
+      ],
+      "material": "dark"
+    },
+    {
+      "op": "limb",
+      "name": "runner_leg_-1_True",
+      "points": [
+        [
+          -16,
+          42,
+          52
+        ],
+        [
+          -22,
+          47,
+          29
+        ],
+        [
+          -20,
+          40,
+          6
+        ]
+      ],
+      "radii": [
+        [
+          10,
+          12
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "material": "hide"
+    },
+    {
+      "op": "loft",
+      "name": "runner_pad_-1_True",
+      "stations": [
+        [
+          30,
+          5,
+          0,
+          8,
+          -20
+        ],
+        [
+          38,
+          8,
+          0,
+          10,
+          -20
+        ],
+        [
+          46,
+          4,
+          2,
+          9,
+          -20
+        ]
+      ],
+      "material": "dark"
+    },
+    {
+      "op": "limb",
+      "name": "runner_leg_1_False",
+      "points": [
+        [
+          16,
+          -29,
+          52
+        ],
+        [
+          22,
+          -24,
+          29
+        ],
+        [
+          20,
+          -31,
+          6
+        ]
+      ],
+      "radii": [
+        [
+          10,
+          12
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "material": "hide"
+    },
+    {
+      "op": "loft",
+      "name": "runner_pad_1_False",
+      "stations": [
+        [
+          -41,
+          5,
+          0,
+          8,
+          20
+        ],
+        [
+          -33,
+          8,
+          0,
+          10,
+          20
+        ],
+        [
+          -25,
+          4,
+          2,
+          9,
+          20
+        ]
+      ],
+      "material": "dark"
+    },
+    {
+      "op": "limb",
+      "name": "runner_leg_1_True",
+      "points": [
+        [
+          16,
+          42,
+          52
+        ],
+        [
+          22,
+          47,
+          29
+        ],
+        [
+          20,
+          40,
+          6
+        ]
+      ],
+      "radii": [
+        [
+          10,
+          12
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "material": "hide"
+    },
+    {
+      "op": "loft",
+      "name": "runner_pad_1_True",
+      "stations": [
+        [
+          30,
+          5,
+          0,
+          8,
+          20
+        ],
+        [
+          38,
+          8,
+          0,
+          10,
+          20
+        ],
+        [
+          46,
+          4,
+          2,
+          9,
+          20
+        ]
+      ],
+      "material": "dark"
+    },
+    {
+      "op": "fuse",
+      "target": "runner_chest|runner_leg",
+      "name": "runner_connected_anatomy",
+      "material": "hide",
+      "voxel": 1.7,
+      "triangles": 700
+    },
+    {
+      "op": "loft",
+      "name": "runner_skull_and_muzzle",
+      "section": "cranium",
+      "stations": [
+        [
+          -104.64999999999999,
+          7,
+          64,
+          74
+        ],
+        [
+          -88.55,
+          10,
+          65,
+          79
+        ],
+        [
+          -58,
+          17,
+          67,
+          94
+        ],
+        [
+          -46,
+          13,
+          64,
+          88
+        ]
+      ],
+      "material": "hide"
+    },
+    {
+      "op": "tube",
+      "name": "runner_tail",
+      "points": [
+        [
+          0,
+          54,
+          59
+        ],
+        [
+          0,
+          76,
+          62
+        ],
+        [
+          8,
+          96,
+          76
+        ]
+      ],
+      "radii": [
+        7,
+        5,
+        1
+      ],
+      "material": "accent",
+      "sides": 8
+    },
+    {
+      "op": "patch",
+      "target": "runner_connected_anatomy",
+      "name": "fitted_ceramic_saddle",
+      "side": 1,
+      "axis": 2,
+      "outline": [
+        [
+          -12,
+          -12
+        ],
+        [
+          -13,
+          14
+        ],
+        [
+          0,
+          23
+        ],
+        [
+          13,
+          14
+        ],
+        [
+          12,
+          -12
+        ],
+        [
+          0,
+          -20
+        ]
+      ],
+      "material": "plate",
+      "offset": 1.2
+    },
+    {
+      "op": "landmark",
+      "target": "runner_skull",
+      "source": [
+        0,
+        -104.64999999999999,
+        70
+      ],
+      "destination": [
+        0,
+        -104.64999999999999,
+        75
+      ],
+      "radius": [
+        15,
+        22,
+        15
+      ]
+    }
+  ]
+}

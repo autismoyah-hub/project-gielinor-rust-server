@@ -1,0 +1,66 @@
+{
+  "components": [
+    {
+      "name": "runner_connected_anatomy",
+      "vertices": 352,
+      "triangles": 700,
+      "group": 0
+    },
+    {
+      "name": "runner_pad_-1_False",
+      "vertices": 30,
+      "triangles": 55,
+      "group": 0
+    },
+    {
+      "name": "runner_pad_-1_True",
+      "vertices": 30,
+      "triangles": 55,
+      "group": 0
+    },
+    {
+      "name": "runner_pad_1_False",
+      "vertices": 30,
+      "triangles": 55,
+      "group": 0
+    },
+    {
+      "name": "runner_pad_1_True",
+      "vertices": 30,
+      "triangles": 55,
+      "group": 0
+    },
+    {
+      "name": "runner_skull_and_muzzle",
+      "vertices": 32,
+      "triangles": 60,
+      "group": 0
+    },
+    {
+      "name": "runner_tail",
+      "vertices": 24,
+      "triangles": 44,
+      "group": 0
+    },
+    {
+      "name": "fitted_ceramic_saddle",
+      "vertices": 12,
+      "triangles": 10,
+      "group": 0
+    }
+  ],
+  "quantization_max_error": 0.5,
+  "collapsed_triangles": 14,
+  "uv_loops": 0,
+  "material_conversion": "UV image albedo sampled at triangle centroid, otherwise diffuse color; RGB to 6/3/7-bit HSL. No PBR/normal/roughness transfer.",
+  "texture_image_samples": 0,
+  "vertices": 540,
+  "triangles": 1034,
+  "budget": {
+    "soft_vertices": 12000,
+    "soft_triangles": 20000
+  },
+  "coordinates": "X right, Y down, Z depth; 128 units/tile",
+  "face_priority": 0,
+  "alpha": 0
+}

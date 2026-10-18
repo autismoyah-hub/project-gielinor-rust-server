@@ -1,0 +1,112 @@
+{
+  "name": "Original bronze harvesting bill",
+  "materials": {
+    "metal": 6045,
+    "edge": 7059,
+    "wood": 4387,
+    "guard": 8111
+  },
+  "operations": [
+    {
+      "op": "blade",
+      "name": "hooked_harvesting_blade",
+      "stations": [
+        [
+          22,
+          0,
+          5,
+          3
+        ],
+        [
+          1,
+          0,
+          8,
+          3
+        ],
+        [
+          -24,
+          8,
+          12,
+          2.8
+        ],
+        [
+          -48,
+          24,
+          13,
+          2.3
+        ],
+        [
+          -67,
+          43,
+          10,
+          1.8
+        ],
+        [
+          -70,
+          62,
+          5,
+          1
+        ],
+        [
+          -61,
+          75,
+          0.5,
+          0.4
+        ]
+      ],
+      "material": "metal",
+      "edge": "edge",
+      "height": 5
+    },
+    {
+      "op": "box",
+      "name": "forged_guard",
+      "c": [
+        0,
+        24,
+        5
+      ],
+      "s": [
+        25,
+        6,
+        10
+      ],
+      "material": "guard"
+    },
+    {
+      "op": "loft",
+      "name": "octagonal_wood_grip",
+      "stations": [
+        [
+          27,
+          4,
+          1,
+          9
+        ],
+        [
+          57,
+          4,
+          1,
+          9
+        ]
+      ],
+      "material": "wood",
+      "section": "cranium"
+    },
+    {
+      "op": "box",
+      "name": "butt_cap",
+      "c": [
+        0,
+        59,
+        5
+      ],
+      "s": [
+        11,
+        5,
+        10
+      ],
+      "material": "guard"
+    }
+  ]
+}

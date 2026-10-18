@@ -1,0 +1,26 @@
+[
+  {
+    "name": "hooked_harvesting_blade",
+    "semantic": "blade",
+    "vertices": 28,
+    "faces": 26
+  },
+  {
+    "name": "forged_guard",
+    "semantic": "forged_guard",
+    "vertices": 8,
+    "faces": 6
+  },
+  {
+    "name": "octagonal_wood_grip",
+    "semantic": "octagonal_wood_grip",
+    "vertices": 16,
+    "faces": 18
+  },
+  {
+    "name": "butt_cap",
+    "semantic": "butt_cap",
+    "vertices": 8,
+    "faces": 6
+  }
+]

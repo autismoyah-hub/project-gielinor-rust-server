@@ -1,0 +1,50 @@
+[
+  {
+    "name": "runner_connected_anatomy",
+    "semantic": "runner_chest_and_tapered_waist",
+    "vertices": 352,
+    "faces": 691
+  },
+  {
+    "name": "runner_pad_-1_False",
+    "semantic": "runner_pad_-1_False",
+    "vertices": 30,
+    "faces": 42
+  },
+  {
+    "name": "runner_pad_-1_True",
+    "semantic": "runner_pad_-1_True",
+    "vertices": 30,
+    "faces": 42
+  },
+  {
+    "name": "runner_pad_1_False",
+    "semantic": "runner_pad_1_False",
+    "vertices": 30,
+    "faces": 42
+  },
+  {
+    "name": "runner_pad_1_True",
+    "semantic": "runner_pad_1_True",
+    "vertices": 30,
+    "faces": 42
+  },
+  {
+    "name": "runner_skull_and_muzzle",
+    "semantic": "runner_skull_and_muzzle",
+    "vertices": 32,
+    "faces": 50
+  },
+  {
+    "name": "runner_tail",
+    "semantic": "runner_tail",
+    "vertices": 24,
+    "faces": 18
+  },
+  {
+    "name": "fitted_ceramic_saddle",
+    "semantic": "fitted_ceramic_saddle",
+    "vertices": 12,
+    "faces": 8
+  }
+]
