@@ -1,0 +1,1 @@
+{"vertices": [[-96, 0, 0], [96, 0, 0], [-96, -160, 0], [96, -160, 0]], "faces": [[0, 1, 3], [0, 3, 2]], "colors": [38041, 38041], "render_types": [0, 0], "vertex_skins": [0, 0, 0, 0], "face_skins": null, "priority": 0}

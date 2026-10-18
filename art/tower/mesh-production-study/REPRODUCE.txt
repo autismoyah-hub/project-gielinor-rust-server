@@ -1,0 +1,45 @@
+CINDERWORKS MESH PRODUCTION STUDY
+
+Run from the server repository, with Python 3.13 + Pillow and Blender 5.2.2.
+Use the existing private revision239.1 JS5 cache; it is not distributed here.
+The frozen asset_workbench.exe is identified by MANIFEST.json SHA256.
+The executable and existing workbench modules are not modified by this study.
+
+tools/tower/mesh-study/run.py contains the local path defaults (ROOT, NATIVE,
+CACHE, BLENDER). Adapt these to your workstation before running.
+Commands:
+  python tools/tower/mesh-study/run.py first
+  python tools/tower/mesh-study/run.py refined
+  python tools/tower/mesh-study/run.py final
+
+Additional controlled examples (substitute absolute paths):
+  blender -b --factory-startup --python-exit-code 1 --python tools/tower/mesh-study/author.py -- creature union OUT/runs/creature-union
+  blender -b --factory-startup --python-exit-code 1 --python tools/tower/mesh-study/control.py -- OUT/runs/creature-control
+  blender -b --factory-startup --python-exit-code 1 --python tools/tower/mesh-study/compatibility.py -- OUT/compatibility-v2
+  blender -b OUT/runs/creature-final/source.blend --python-exit-code 1 --python tools/tower/mesh-study/animate.py -- OUT/runs/creature-final
+  python tools/tower/mesh-study/evidence.py
+
+evidence.py renders the same revised ground using scene_floor.py. The retained
+ground-failure image comes from the earlier broad-slab version; it is evidence
+of a failed iteration, not the current source's intended output.
+finish_scene.py supports the preserved local ground-v3 run. For a clean rerun,
+evidence.py already produces the corrected ground in its ground directory.
+
+Replay the published scene without running Blender:
+  asset_workbench.exe CACHE OUTDIR scene art/tower/mesh-production-study/scene/scene.tsv art/tower/mesh-production-study/scene/overview.camera
+Replay a published asset using a one-row scene manifest:
+  light<TAB>64<TAB>768
+  owned<TAB>absolute/model/path<TAB>0<TAB>0<TAB>0<TAB>0<TAB>-<TAB>0
+Then use the corresponding *.camera file. Paths in scene/scene.tsv are relative.
+All camera and image dimensions are preserved; no post-render relighting.
+
+Editable .blend sources retain separate named components and UVs. The exporter
+evaluates modifiers into a copy, rounds to the native lattice, removes zero-area
+triangles, records losses, and calls the unchanged native_codec.model.
+The simplified image bake assumes one image on active UVs with display RGB
+values; it is not a general shader/PBR or color-management translator.
+Static native skin groups do not constitute a deforming locomotion rig.
+
+The study contains only original meshes. Authentic object2097 is loaded from
+the user's local cache by ID at render time. Do not copy cache geometry into
+this package. Paid provider requests are not part of reproduction.

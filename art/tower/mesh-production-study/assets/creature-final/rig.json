@@ -1,0 +1,115 @@
+{
+  "rig": [
+    {
+      "name": "head",
+      "parent": null,
+      "origin": [
+        0,
+        -73,
+        -63
+      ],
+      "groups": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "jaw",
+      "parent": "head",
+      "origin": [
+        0,
+        -64,
+        -81
+      ],
+      "groups": [
+        2
+      ]
+    }
+  ],
+  "skeleton_base": 64570,
+  "frame_group_base": 62370,
+  "actions": {
+    "idle": {
+      "duration_ticks": 60,
+      "cadence_ticks": 2,
+      "loop": true,
+      "keys": [
+        {
+          "tick": 0,
+          "channels": {
+            "head": [
+              0,
+              0,
+              0
+            ],
+            "jaw": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "tick": 15,
+          "channels": {
+            "head": [
+              -2,
+              0,
+              0
+            ],
+            "jaw": [
+              -2,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "tick": 30,
+          "channels": {
+            "head": [
+              1,
+              0,
+              0
+            ],
+            "jaw": [
+              -8,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "tick": 45,
+          "channels": {
+            "head": [
+              2,
+              0,
+              0
+            ],
+            "jaw": [
+              -2,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "tick": 60,
+          "channels": {
+            "head": [
+              0,
+              0,
+              0
+            ],
+            "jaw": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

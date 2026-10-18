@@ -1,0 +1,228 @@
+{
+  "components": [
+    {
+      "name": "ribcage",
+      "vertices": 222,
+      "triangles": 440,
+      "group": 0
+    },
+    {
+      "name": "pelvis",
+      "vertices": 222,
+      "triangles": 440,
+      "group": 0
+    },
+    {
+      "name": "shoulders",
+      "vertices": 222,
+      "triangles": 440,
+      "group": 0
+    },
+    {
+      "name": "neck",
+      "vertices": 48,
+      "triangles": 92,
+      "group": 0
+    },
+    {
+      "name": "tail",
+      "vertices": 70,
+      "triangles": 124,
+      "group": 0
+    },
+    {
+      "name": "muscle",
+      "vertices": 222,
+      "triangles": 440,
+      "group": 0
+    },
+    {
+      "name": "limb",
+      "vertices": 36,
+      "triangles": 68,
+      "group": 0
+    },
+    {
+      "name": "palm",
+      "vertices": 222,
+      "triangles": 440,
+      "group": 0
+    },
+    {
+      "name": "muscle.001",
+      "vertices": 222,
+      "triangles": 440,
+      "group": 0
+    },
+    {
+      "name": "limb.001",
+      "vertices": 36,
+      "triangles": 68,
+      "group": 0
+    },
+    {
+      "name": "palm.001",
+      "vertices": 222,
+      "triangles": 440,
+      "group": 0
+    },
+    {
+      "name": "muscle.002",
+      "vertices": 222,
+      "triangles": 440,
+      "group": 0
+    },
+    {
+      "name": "limb.002",
+      "vertices": 36,
+      "triangles": 68,
+      "group": 0
+    },
+    {
+      "name": "palm.002",
+      "vertices": 222,
+      "triangles": 440,
+      "group": 0
+    },
+    {
+      "name": "muscle.003",
+      "vertices": 222,
+      "triangles": 440,
+      "group": 0
+    },
+    {
+      "name": "limb.003",
+      "vertices": 36,
+      "triangles": 68,
+      "group": 0
+    },
+    {
+      "name": "palm.003",
+      "vertices": 222,
+      "triangles": 440,
+      "group": 0
+    },
+    {
+      "name": "cranium",
+      "vertices": 222,
+      "triangles": 440,
+      "group": 1
+    },
+    {
+      "name": "muzzle",
+      "vertices": 222,
+      "triangles": 440,
+      "group": 1
+    },
+    {
+      "name": "lower_jaw",
+      "vertices": 142,
+      "triangles": 280,
+      "group": 2
+    },
+    {
+      "name": "socket",
+      "vertices": 86,
+      "triangles": 168,
+      "group": 1
+    },
+    {
+      "name": "amber_eye",
+      "vertices": 86,
+      "triangles": 168,
+      "group": 1
+    },
+    {
+      "name": "slit_pupil",
+      "vertices": 42,
+      "triangles": 80,
+      "group": 1
+    },
+    {
+      "name": "brow",
+      "vertices": 24,
+      "triangles": 44,
+      "group": 1
+    },
+    {
+      "name": "nostril",
+      "vertices": 42,
+      "triangles": 80,
+      "group": 1
+    },
+    {
+      "name": "swept_cheek_horn",
+      "vertices": 40,
+      "triangles": 64,
+      "group": 1
+    },
+    {
+      "name": "socket.001",
+      "vertices": 86,
+      "triangles": 168,
+      "group": 1
+    },
+    {
+      "name": "amber_eye.001",
+      "vertices": 86,
+      "triangles": 168,
+      "group": 1
+    },
+    {
+      "name": "slit_pupil.001",
+      "vertices": 42,
+      "triangles": 80,
+      "group": 1
+    },
+    {
+      "name": "brow.001",
+      "vertices": 24,
+      "triangles": 44,
+      "group": 1
+    },
+    {
+      "name": "nostril.001",
+      "vertices": 42,
+      "triangles": 80,
+      "group": 1
+    },
+    {
+      "name": "swept_cheek_horn.001",
+      "vertices": 40,
+      "triangles": 64,
+      "group": 1
+    },
+    {
+      "name": "dorsal_plate",
+      "vertices": 22,
+      "triangles": 40,
+      "group": 0
+    },
+    {
+      "name": "dorsal_plate.001",
+      "vertices": 22,
+      "triangles": 40,
+      "group": 0
+    },
+    {
+      "name": "dorsal_plate.002",
+      "vertices": 22,
+      "triangles": 40,
+      "group": 0
+    }
+  ],
+  "quantization_max_error": 0.5,
+  "collapsed_triangles": 36,
+  "uv_loops": 16312,
+  "material_conversion": "UV image albedo sampled at triangle centroid, otherwise diffuse color; RGB to 6/3/7-bit HSL. No PBR/normal/roughness transfer.",
+  "texture_image_samples": 0,
+  "vertices": 3996,
+  "triangles": 7816,
+  "budget": {
+    "soft_vertices": 12000,
+    "soft_triangles": 20000
+  },
+  "coordinates": "X right, Y down, Z depth; 128 units/tile",
+  "face_priority": 0,
+  "alpha": 0
+}

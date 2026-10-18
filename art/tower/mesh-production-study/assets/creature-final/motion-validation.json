@@ -1,0 +1,6 @@
+{
+  "native_samples": 61,
+  "max_coordinate_error": 0,
+  "duration_ticks": 60,
+  "proof_scope": "Head/jaw classic rig only; no locomotion acceptance"
+}

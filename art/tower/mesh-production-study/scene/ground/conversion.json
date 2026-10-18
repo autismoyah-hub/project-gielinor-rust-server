@@ -1,0 +1,870 @@
+{
+  "components": [
+    {
+      "name": "foundation_cell",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.001",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.001",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.002",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.002",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.003",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.003",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.004",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.004",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.005",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.005",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.006",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.006",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.007",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.007",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.008",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.008",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.009",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.009",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.010",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.010",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.011",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.011",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.012",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.012",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.013",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.013",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.014",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.014",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.015",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.015",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.016",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.016",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.017",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.017",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.018",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.018",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.019",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.019",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.020",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.020",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.021",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.021",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.022",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.022",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.023",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.023",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.024",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.024",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.025",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.025",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.026",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.026",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.027",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.027",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.028",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.028",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.029",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.029",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.030",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.030",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.031",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.031",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.032",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.032",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.033",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.033",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.034",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.034",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.035",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.035",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.036",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.036",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.037",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.037",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.038",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.038",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.039",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.039",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.040",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.040",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.041",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.041",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.042",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.042",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.043",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.043",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.044",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.044",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.045",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.045",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.046",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.046",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.047",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.047",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.048",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.048",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.049",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.049",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.050",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.050",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.051",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.051",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.052",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.052",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.053",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.053",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.054",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.054",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.055",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.055",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.056",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.056",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.057",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.057",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "foundation_cell.058",
+      "vertices": 8,
+      "triangles": 10,
+      "group": 0
+    },
+    {
+      "name": "paver.058",
+      "vertices": 56,
+      "triangles": 108,
+      "group": 0
+    },
+    {
+      "name": "drain_bed",
+      "vertices": 56,
+      "triangles": 60,
+      "group": 0
+    },
+    {
+      "name": "grate_crossbar",
+      "vertices": 56,
+      "triangles": 60,
+      "group": 0
+    },
+    {
+      "name": "grate_crossbar.001",
+      "vertices": 56,
+      "triangles": 60,
+      "group": 0
+    },
+    {
+      "name": "grate_crossbar.002",
+      "vertices": 56,
+      "triangles": 60,
+      "group": 0
+    },
+    {
+      "name": "grate_crossbar.003",
+      "vertices": 56,
+      "triangles": 60,
+      "group": 0
+    },
+    {
+      "name": "grate_crossbar.004",
+      "vertices": 56,
+      "triangles": 60,
+      "group": 0
+    },
+    {
+      "name": "grate_crossbar.005",
+      "vertices": 56,
+      "triangles": 60,
+      "group": 0
+    },
+    {
+      "name": "grate_crossbar.006",
+      "vertices": 56,
+      "triangles": 60,
+      "group": 0
+    },
+    {
+      "name": "grate_crossbar.007",
+      "vertices": 56,
+      "triangles": 60,
+      "group": 0
+    },
+    {
+      "name": "grate_crossbar.008",
+      "vertices": 56,
+      "triangles": 60,
+      "group": 0
+    },
+    {
+      "name": "grate_crossbar.009",
+      "vertices": 56,
+      "triangles": 60,
+      "group": 0
+    },
+    {
+      "name": "grate_crossbar.010",
+      "vertices": 56,
+      "triangles": 60,
+      "group": 0
+    },
+    {
+      "name": "grate_crossbar.011",
+      "vertices": 56,
+      "triangles": 60,
+      "group": 0
+    },
+    {
+      "name": "grate_crossbar.012",
+      "vertices": 56,
+      "triangles": 60,
+      "group": 0
+    },
+    {
+      "name": "grate_crossbar.013",
+      "vertices": 56,
+      "triangles": 60,
+      "group": 0
+    },
+    {
+      "name": "grate_crossbar.014",
+      "vertices": 56,
+      "triangles": 60,
+      "group": 0
+    },
+    {
+      "name": "grate_crossbar.015",
+      "vertices": 56,
+      "triangles": 60,
+      "group": 0
+    },
+    {
+      "name": "grate_crossbar.016",
+      "vertices": 56,
+      "triangles": 60,
+      "group": 0
+    },
+    {
+      "name": "grate_crossbar.017",
+      "vertices": 56,
+      "triangles": 60,
+      "group": 0
+    },
+    {
+      "name": "grate_crossbar.018",
+      "vertices": 56,
+      "triangles": 60,
+      "group": 0
+    },
+    {
+      "name": "grate_crossbar.019",
+      "vertices": 56,
+      "triangles": 60,
+      "group": 0
+    },
+    {
+      "name": "grate_crossbar.020",
+      "vertices": 56,
+      "triangles": 60,
+      "group": 0
+    },
+    {
+      "name": "grate_crossbar.021",
+      "vertices": 56,
+      "triangles": 60,
+      "group": 0
+    },
+    {
+      "name": "grate_crossbar.022",
+      "vertices": 56,
+      "triangles": 60,
+      "group": 0
+    }
+  ],
+  "quantization_max_error": 0.5,
+  "collapsed_triangles": 1152,
+  "uv_loops": 17928,
+  "material_conversion": "UV image albedo sampled at triangle centroid, otherwise diffuse color; RGB to 6/3/7-bit HSL. No PBR/normal/roughness transfer.",
+  "texture_image_samples": 0,
+  "vertices": 5120,
+  "triangles": 8402,
+  "budget": {
+    "soft_vertices": 12000,
+    "soft_triangles": 20000
+  },
+  "coordinates": "X right, Y down, Z depth; 128 units/tile",
+  "face_priority": 0,
+  "alpha": 0
+}

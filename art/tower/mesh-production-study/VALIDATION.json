@@ -1,0 +1,16 @@
+{
+  "architecture_saved_blend_reexport_exact": true,
+  "machine_saved_blend_reexport_exact": true,
+  "creature_saved_blend_reexport_exact": true,
+  "portable_scene_pixel_exact": true,
+  "local_links_complete": true,
+  "motion_gif_duration_ms": 1200,
+  "native_pose_proof": {
+    "native_samples": 61,
+    "max_coordinate_error": 0,
+    "duration_ticks": 60,
+    "proof_scope": "Head/jaw classic rig only; no locomotion acceptance"
+  },
+  "renderer_sha256": "f6e6e12da1a80f7824c9d90a5254964fdc8d738298417c7dcd51e0793caea7cf",
+  "published_file_hashes_valid": 292
+}

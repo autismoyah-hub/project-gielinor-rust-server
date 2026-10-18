@@ -1,0 +1,598 @@
+{
+  "schema": 1,
+  "name": "Independent quadruped anatomy study",
+  "unit": "native;128 units per tile",
+  "materials": {
+    "stone": {
+      "hsl": 43051,
+      "render_type": 0
+    },
+    "edge": {
+      "hsl": 10262,
+      "render_type": 0
+    },
+    "stone_shadow": {
+      "hsl": 10258,
+      "render_type": 0
+    },
+    "iron": {
+      "hsl": 10299,
+      "render_type": 0
+    },
+    "iron_edge": {
+      "hsl": 10320,
+      "render_type": 0
+    },
+    "wood": {
+      "hsl": 8604,
+      "render_type": 0
+    },
+    "wood_dark": {
+      "hsl": 8485,
+      "render_type": 0
+    },
+    "leather": {
+      "hsl": 3769,
+      "render_type": 0
+    },
+    "skin": {
+      "hsl": 17577,
+      "render_type": 0
+    },
+    "skin_shadow": {
+      "hsl": 17570,
+      "render_type": 0
+    },
+    "cloth": {
+      "hsl": 916,
+      "render_type": 0
+    },
+    "armor": {
+      "hsl": 6955,
+      "render_type": 0
+    },
+    "armor_shadow": {
+      "hsl": 7075,
+      "render_type": 0
+    },
+    "gray_armor": {
+      "hsl": 5169,
+      "render_type": 0
+    },
+    "eye": {
+      "hsl": 127,
+      "render_type": 0
+    },
+    "brow": {
+      "hsl": 8598,
+      "render_type": 0
+    },
+    "horn": {
+      "hsl": 8485,
+      "render_type": 0
+    },
+    "scute": {
+      "hsl": 5405,
+      "render_type": 0
+    }
+  },
+  "components": [
+    {
+      "name": "body",
+      "type": "loft",
+      "material": "skin_shadow",
+      "group": 0,
+      "role": "body",
+      "sections": [
+        [
+          0,
+          -40.0,
+          0,
+          39.6,
+          79.2
+        ],
+        [
+          0,
+          -70.0,
+          0,
+          44.0,
+          88.0
+        ],
+        [
+          0,
+          -80.0,
+          0,
+          26.4,
+          66.0
+        ]
+      ],
+      "sides": 6
+    },
+    {
+      "name": "head",
+      "type": "loft",
+      "material": "skin",
+      "group": 1,
+      "role": "head",
+      "sections": [
+        [
+          0,
+          -60.0,
+          -88.0,
+          22.0,
+          30.800000000000004
+        ],
+        [
+          0,
+          -90.0,
+          -88.0,
+          24.64,
+          35.2
+        ]
+      ],
+      "sides": 6
+    },
+    {
+      "name": "muzzle",
+      "type": "beam",
+      "material": "skin_shadow",
+      "group": 1,
+      "role": "muzzle",
+      "start": [
+        0,
+        -68.0,
+        -88.0
+      ],
+      "end": [
+        0,
+        -65.0,
+        -132.0
+      ],
+      "radii": [
+        14.96,
+        8.8
+      ],
+      "sides": 6
+    },
+    {
+      "name": "leg_0_upper",
+      "type": "beam",
+      "material": "skin_shadow",
+      "group": 2,
+      "role": "leg_0_upper",
+      "start": [
+        -28.16,
+        -60.0,
+        -50.6
+      ],
+      "end": [
+        -28.16,
+        -30.0,
+        -50.6
+      ],
+      "radii": [
+        8.8,
+        6.16
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_0_lower",
+      "type": "beam",
+      "material": "skin",
+      "group": 3,
+      "role": "leg_0_lower",
+      "start": [
+        -28.16,
+        -30.0,
+        -50.6
+      ],
+      "end": [
+        -28.16,
+        0,
+        -50.6
+      ],
+      "radii": [
+        6.16,
+        4.4
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_1_upper",
+      "type": "beam",
+      "material": "skin_shadow",
+      "group": 4,
+      "role": "leg_1_upper",
+      "start": [
+        28.16,
+        -60.0,
+        -50.6
+      ],
+      "end": [
+        28.16,
+        -30.0,
+        -50.6
+      ],
+      "radii": [
+        8.8,
+        6.16
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_1_lower",
+      "type": "beam",
+      "material": "skin",
+      "group": 5,
+      "role": "leg_1_lower",
+      "start": [
+        28.16,
+        -30.0,
+        -50.6
+      ],
+      "end": [
+        28.16,
+        0,
+        -50.6
+      ],
+      "radii": [
+        6.16,
+        4.4
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_2_upper",
+      "type": "beam",
+      "material": "skin_shadow",
+      "group": 6,
+      "role": "leg_2_upper",
+      "start": [
+        -28.16,
+        -60.0,
+        50.6
+      ],
+      "end": [
+        -28.16,
+        -30.0,
+        50.6
+      ],
+      "radii": [
+        8.8,
+        6.16
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_2_lower",
+      "type": "beam",
+      "material": "skin",
+      "group": 7,
+      "role": "leg_2_lower",
+      "start": [
+        -28.16,
+        -30.0,
+        50.6
+      ],
+      "end": [
+        -28.16,
+        0,
+        50.6
+      ],
+      "radii": [
+        6.16,
+        4.4
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_3_upper",
+      "type": "beam",
+      "material": "skin_shadow",
+      "group": 8,
+      "role": "leg_3_upper",
+      "start": [
+        28.16,
+        -60.0,
+        50.6
+      ],
+      "end": [
+        28.16,
+        -30.0,
+        50.6
+      ],
+      "radii": [
+        8.8,
+        6.16
+      ],
+      "sides": 5
+    },
+    {
+      "name": "leg_3_lower",
+      "type": "beam",
+      "material": "skin",
+      "group": 9,
+      "role": "leg_3_lower",
+      "start": [
+        28.16,
+        -30.0,
+        50.6
+      ],
+      "end": [
+        28.16,
+        0,
+        50.6
+      ],
+      "radii": [
+        6.16,
+        4.4
+      ],
+      "sides": 5
+    },
+    {
+      "name": "tail",
+      "type": "beam",
+      "material": "skin_shadow",
+      "group": 10,
+      "role": "tail",
+      "start": [
+        0,
+        -60.0,
+        77.0
+      ],
+      "end": [
+        0,
+        -35.0,
+        143.0
+      ],
+      "radii": [
+        7.92,
+        3
+      ],
+      "sides": 5
+    },
+    {
+      "name": "cheek_horn_-1",
+      "type": "sweep",
+      "material": "horn",
+      "group": 0,
+      "role": "cheek_horn_-1",
+      "sections": [
+        [
+          -20,
+          -85,
+          -80,
+          7,
+          7
+        ],
+        [
+          -32,
+          -102,
+          -68,
+          5,
+          5
+        ],
+        [
+          -38,
+          -106,
+          -49,
+          1,
+          1
+        ]
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "sides": 6
+    },
+    {
+      "name": "cheek_horn_1",
+      "type": "sweep",
+      "material": "horn",
+      "group": 0,
+      "role": "cheek_horn_1",
+      "sections": [
+        [
+          20,
+          -85,
+          -80,
+          7,
+          7
+        ],
+        [
+          32,
+          -102,
+          -68,
+          5,
+          5
+        ],
+        [
+          38,
+          -106,
+          -49,
+          1,
+          1
+        ]
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "sides": 6
+    },
+    {
+      "name": "back_plate_0",
+      "type": "loft",
+      "material": "scute",
+      "group": 0,
+      "role": "back_plate_0",
+      "sections": [
+        [
+          0,
+          -79,
+          -47,
+          20,
+          11
+        ],
+        [
+          0,
+          -105,
+          -47,
+          2,
+          7
+        ]
+      ],
+      "sides": 4
+    },
+    {
+      "name": "back_plate_1",
+      "type": "loft",
+      "material": "scute",
+      "group": 0,
+      "role": "back_plate_1",
+      "sections": [
+        [
+          0,
+          -79,
+          -30,
+          20,
+          11
+        ],
+        [
+          0,
+          -105,
+          -30,
+          2,
+          7
+        ]
+      ],
+      "sides": 4
+    },
+    {
+      "name": "back_plate_2",
+      "type": "loft",
+      "material": "scute",
+      "group": 0,
+      "role": "back_plate_2",
+      "sections": [
+        [
+          0,
+          -79,
+          -13,
+          20,
+          11
+        ],
+        [
+          0,
+          -105,
+          -13,
+          2,
+          7
+        ]
+      ],
+      "sides": 4
+    },
+    {
+      "name": "back_plate_3",
+      "type": "loft",
+      "material": "scute",
+      "group": 0,
+      "role": "back_plate_3",
+      "sections": [
+        [
+          0,
+          -79,
+          4,
+          20,
+          11
+        ],
+        [
+          0,
+          -105,
+          4,
+          2,
+          7
+        ]
+      ],
+      "sides": 4
+    },
+    {
+      "name": "back_plate_4",
+      "type": "loft",
+      "material": "scute",
+      "group": 0,
+      "role": "back_plate_4",
+      "sections": [
+        [
+          0,
+          -79,
+          21,
+          20,
+          11
+        ],
+        [
+          0,
+          -105,
+          21,
+          2,
+          7
+        ]
+      ],
+      "sides": 4
+    },
+    {
+      "name": "back_plate_5",
+      "type": "loft",
+      "material": "scute",
+      "group": 0,
+      "role": "back_plate_5",
+      "sections": [
+        [
+          0,
+          -79,
+          38,
+          20,
+          11
+        ],
+        [
+          0,
+          -105,
+          38,
+          2,
+          7
+        ]
+      ],
+      "sides": 4
+    },
+    {
+      "name": "back_plate_6",
+      "type": "loft",
+      "material": "scute",
+      "group": 0,
+      "role": "back_plate_6",
+      "sections": [
+        [
+          0,
+          -79,
+          55,
+          20,
+          11
+        ],
+        [
+          0,
+          -105,
+          55,
+          2,
+          7
+        ]
+      ],
+      "sides": 4
+    }
+  ],
+  "rig": [],
+  "actions": {}
+}
