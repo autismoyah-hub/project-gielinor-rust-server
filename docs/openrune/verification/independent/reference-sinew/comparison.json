@@ -1,0 +1,63 @@
+{
+  "implementation_id": "OR-MIG-0066",
+  "tested_sha": "5582c276d1657a0142151936e5a9fec022d7c938",
+  "campaign_kind": "historical",
+  "status": "IN_PROGRESS",
+  "source_documentation_subcheck": "PASS",
+  "sources": [
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingSection.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "26e5be7a84fbe82f5c4897d29cb3261c63cd475111f17df517e2e0ac5e0d8afb"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingWorker.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "5790b247e5441b54e05c0ca7b4b5a9dff5c7aa61181ebccb36d0d8057db56e53"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/util/CraftingConstants.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "393d05fa5a5645b2dd712fcfb8f8814845376846a7594dafe16909422fe2008f"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/pack/src/main/kotlin/org/rsmod/content/skills/crafting/pack/Crafting.kt",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "sha256": "5b3d4124ce83b2c6e93590b2d833e7dc0a37ce87e3a7dc2f327241ab165ef3e0"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Damaged monkey tail",
+      "revision": "15187541",
+      "sha256": "0db70f42da431f9fa4e1aaa24b85ed7f67f596cff2940b828b3bfdff6c6d9470"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Sinew",
+      "revision": "15303474",
+      "sha256": "df06ef32c4b445b6b59dbed41e30ae62f29cad73b02c8a1b5b5e7635ef108629"
+    }
+  ],
+  "profile": {
+    "raw": 19665,
+    "tool": 946,
+    "output": 9436,
+    "level": 10,
+    "base_xp": 15,
+    "fine_xp_at_125": 187,
+    "manual_ticks": 1,
+    "source_alias": "damaged_ballista_rope",
+    "target_display_name": "Damaged monkey tail",
+    "members": true
+  },
+  "scope": "All6pinned hashes independently verified. Source owned damaged-tail alias, Crafting10/15XP and no failure row align with the pinned Wiki manual knife/tail/Sinew recipe and1tick; Knife section declares1. Source alias versus target display-name adaptation is explicit. Wiki Make-all0/3/4note is not manual timing or implemented automatic production.",
+  "limitations": [
+    "Actual startup/cache/native timing, authoritative conservation and durable reload remain separate.",
+    "Cooking from meat, Hunter acquisition, automatic Make-all, downstream spinning and audio/rendered parity are outside this manual adapter.",
+    "No original compiled Kotlin executable observation claimed."
+  ]
+}

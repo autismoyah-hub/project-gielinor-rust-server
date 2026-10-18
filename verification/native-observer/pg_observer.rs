@@ -541,9 +541,42 @@ fn immediate_tools(c:&mut ClientState,l:&mut Connection,kind:&str)->R<()> {
     }
     println!("PG_CASE_PASS native immediate kind={kind} successes={successes} failures={failures}; full28 both directions stale captured pair refusal; retained tools and duplicate raw; exact rewards; natural outcome branch coverage assessed separately");Ok(())
 }
+fn fallible_gems(c:&mut ClientState,l:&mut Connection)->R<()> {
+    let xp=c.data.experience;assert_eq!(c.data.base[12],16);assert_eq!(xp[12],2746);let mut fine=27460;tab(c,"Inventory")?;ticks(c,l,3)?;
+    let initial=(0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>();
+    use_slots(c,0,4)?;let a=glass_make_action(c,l,0)?;let old=sent_packet(c,a,"native fallible Make before Close")?;dispatch(c,Action::Close,"native fallible Close before award")?;ticks(c,l,3)?;replay(c,l,&old,"native stale fallible Make after Close")?;ticks(c,l,4)?;
+    assert_eq!(c.data.experience,xp);assert_eq!((0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>(),initial);
+    println!("PG_CASE_PASS native fallible Make/Close and stale response preserve full inventory/XP");
+    for(index,(raw,out,success_xp,fail_xp,name))in[(1625,1609,150,38,"Opal"),(1627,1611,200,50,"Jade"),(1629,1613,250,63,"Red topaz")].into_iter().enumerate(){
+        let first=4+7*index as i32;
+        for second in[false,true]{ready(c,l)?;let slot=if second{first}else{first+6};let before=c.outbound.len();let messages=c.game_messages.len();
+            if second{use_slots(c,slot,0)?;}else{use_slots(c,0,slot)?;}
+            let p=c.outbound.iter().skip(before).find(|p|p.opcode==27).ok_or("native fallible held packet missing")?;let held=(p.opcode,p.payload.clone());let count=if second{6}else{1};let make=glass_quantity(c,l,0,if second{"All"}else{"1"},count)?;
+            pump(c,l,60,|c,_|c.inventories.total(93,raw)==if second{0}else{6})?;let slots=if second{(first..first+6).collect::<Vec<_>>()}else{vec![slot]};let mut good=0;let mut bad=0;
+            for &s in &slots{let item=c.inventories.item(93,s);assert_eq!(item.count,1);if item.id==out{good+=1;}else{assert_eq!(item.id,1633);bad+=1;}}
+            let award=(good*success_xp+bad*fail_xp)*5;fine+=award;pump(c,l,30,|c,_|c.data.experience[12]==fine/10)?;ticks(c,l,2)?;
+            let expected_good=format!("You cut the {name}.");assert_eq!(c.game_messages.iter().skip(messages).filter(|m|m.text==expected_good).count(),good as usize);assert_eq!(c.game_messages.iter().skip(messages).filter(|m|m.text=="You accidentally crush the gem.").count(),bad as usize);
+            for m in c.game_messages.iter().skip(messages){println!("PG_FALLIBLE_MESSAGE index={index} second={second} message={:?}",m.text);}
+            let committed=c.data.experience;let inventory=(0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>();replay(c,l,&make,"native stale completed fallible quantity response")?;replay(c,l,&held,"native stale selected fallible held pair")?;ticks(c,l,4)?;assert_eq!(c.data.experience,committed);assert_eq!((0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>(),inventory);
+            assert_eq!(c.inventories.item(93,0).id,1755);assert_eq!(c.inventories.item(93,1).id,1755);assert_eq!(c.inventories.item(93,27).count,1000);assert_eq!((0..28).filter(|&s|c.inventories.item(93,s).id>=0).count(),28);for i in 0..25{if i!=12{assert_eq!(c.data.experience[i],xp[i]);}}
+            println!("PG_FALLIBLE_BATCH index={index} second={second} raw={raw} cut={out} selected_slot={slot} count={count} good={good} crushed={bad} fine_award={award} fine_total={fine} display_xp={} current_level={} base_level={}",c.data.experience[12],c.data.boosted[12],c.data.base[12]);
+        }
+    }
+    println!("PG_CASE_PASS native fallible three profiles both held directions; genuine1/All captured batches;21selected cut/crushed outputs; exact rewards/messages/stale refusals; distribution and customXacceptance remain separate");Ok(())
+}
+fn fallible_partial(c:&mut ClientState,l:&mut Connection)->R<()> {
+    assert_eq!(c.data.base[12],16);assert_eq!(c.data.experience[12],2746);tab(c,"Inventory")?;ticks(c,l,3)?;use_slots(c,26,0)?;let _=glass_quantity(c,l,0,"All",23)?;
+    pump(c,l,30,|c,_|{let mut fine=27460;let mut made=0;for s in 4..27{match c.inventories.item(93,s).id{1609=>{fine+=750;made+=1;},1633=>{fine+=190;made+=1;},_=>{}}}made>0 && made<23 && c.data.experience[12]==fine/10})?;
+    let mut fine=27460;let mut made=0;let mut good=0;let mut bad=0;
+    for s in 4..27{match c.inventories.item(93,s).id{1609=>{fine+=750;made+=1;good+=1;},1633=>{fine+=190;made+=1;bad+=1;},1625=>{},_=>return Err("unexpected native fallible partial output".into())}}
+    assert_eq!(c.data.experience[12],fine/10);assert!(made>0 && made<23);assert_eq!(c.inventories.item(93,0).id,1755);assert_eq!(c.inventories.item(93,1).id,1755);assert_eq!(c.inventories.item(93,27).count,1000);
+    println!("PG_FALLIBLE_INTERRUPT_READY tick={} made={made} good={good} crushed={bad} fine_observed={fine}; real socket disconnect during captured All; SQL may retain additional already-admitted credits before disconnect processed",c.server_tick);Ok(())
+}
 fn main()->R<()> {
     let a:Vec<_>=std::env::args().collect();assert_eq!(a.len(),7);
     let mut c=ClientState::load(DiskCache::open(&a[1],64<<20)?)?;let mut l=Connection::connect(&mut c,&a[2],&a[3],&a[4],&a[5])?;ready(&mut c,&mut l)?;
+    if a[6]=="fallible-gems"{fallible_gems(&mut c,&mut l)?;l.session.close();return Ok(());}
+    if a[6]=="fallible-gem-interrupt"{fallible_partial(&mut c,&mut l)?;l.session.close();return Ok(());}
     if matches!(a[6].as_str(),"immediate-staff"|"immediate-limestone"|"immediate-certainty"|"immediate-crash"){immediate_tools(&mut c,&mut l,&a[6])?;l.session.close();return Ok(());}
     if matches!(a[6].as_str(),"production-gems"|"production-shells"){production_profiles(&mut c,&mut l,a[6]=="production-shells")?;l.session.close();return Ok(());}
     if matches!(a[6].as_str(),"production-gem-batch"|"production-shell-batch"){production_batch(&mut c,&mut l,a[6]=="production-shell-batch")?;l.session.close();return Ok(());}

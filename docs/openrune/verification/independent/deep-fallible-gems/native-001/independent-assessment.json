@@ -1,0 +1,214 @@
+{
+  "implementation_id": "OR-MIG-0064",
+  "tested_sha": "0c489b46b552ad012e630810c1218dbaeb437a51",
+  "campaign_kind": "historical",
+  "status": "PASS",
+  "actions": 21,
+  "outcomes": [
+    {
+      "raw": 1625,
+      "cut": 1609,
+      "cut_count": 4,
+      "crushed_count": 3,
+      "both_natural_outcomes_observed": true
+    },
+    {
+      "raw": 1627,
+      "cut": 1611,
+      "cut_count": 3,
+      "crushed_count": 4,
+      "both_natural_outcomes_observed": true
+    },
+    {
+      "raw": 1629,
+      "cut": 1613,
+      "cut_count": 3,
+      "crushed_count": 4,
+      "both_natural_outcomes_observed": true
+    }
+  ],
+  "fine_xp_award": 12580,
+  "effects": [
+    {
+      "slot": 10,
+      "output": 1633,
+      "batch": 0,
+      "sequence": 890,
+      "first_sequence_tick": 292,
+      "credit_tick": 293
+    },
+    {
+      "slot": 4,
+      "output": 1609,
+      "batch": 1,
+      "sequence": 890,
+      "first_sequence_tick": 344,
+      "credit_tick": 345
+    },
+    {
+      "slot": 5,
+      "output": 1633,
+      "batch": 1,
+      "sequence": 890,
+      "first_sequence_tick": 344,
+      "credit_tick": 347
+    },
+    {
+      "slot": 6,
+      "output": 1609,
+      "batch": 1,
+      "sequence": 890,
+      "first_sequence_tick": 344,
+      "credit_tick": 349
+    },
+    {
+      "slot": 7,
+      "output": 1609,
+      "batch": 1,
+      "sequence": 890,
+      "first_sequence_tick": 344,
+      "credit_tick": 351
+    },
+    {
+      "slot": 8,
+      "output": 1609,
+      "batch": 1,
+      "sequence": 890,
+      "first_sequence_tick": 344,
+      "credit_tick": 353
+    },
+    {
+      "slot": 9,
+      "output": 1633,
+      "batch": 1,
+      "sequence": 890,
+      "first_sequence_tick": 344,
+      "credit_tick": 355
+    },
+    {
+      "slot": 17,
+      "output": 1633,
+      "batch": 2,
+      "sequence": 891,
+      "first_sequence_tick": 390,
+      "credit_tick": 391
+    },
+    {
+      "slot": 11,
+      "output": 1633,
+      "batch": 3,
+      "sequence": 891,
+      "first_sequence_tick": 427,
+      "credit_tick": 428
+    },
+    {
+      "slot": 12,
+      "output": 1611,
+      "batch": 3,
+      "sequence": 891,
+      "first_sequence_tick": 427,
+      "credit_tick": 430
+    },
+    {
+      "slot": 13,
+      "output": 1633,
+      "batch": 3,
+      "sequence": 891,
+      "first_sequence_tick": 427,
+      "credit_tick": 432
+    },
+    {
+      "slot": 14,
+      "output": 1633,
+      "batch": 3,
+      "sequence": 891,
+      "first_sequence_tick": 427,
+      "credit_tick": 434
+    },
+    {
+      "slot": 15,
+      "output": 1611,
+      "batch": 3,
+      "sequence": 891,
+      "first_sequence_tick": 427,
+      "credit_tick": 436
+    },
+    {
+      "slot": 16,
+      "output": 1611,
+      "batch": 3,
+      "sequence": 891,
+      "first_sequence_tick": 427,
+      "credit_tick": 438
+    },
+    {
+      "slot": 24,
+      "output": 1633,
+      "batch": 4,
+      "sequence": 892,
+      "first_sequence_tick": 459,
+      "credit_tick": 460
+    },
+    {
+      "slot": 18,
+      "output": 1613,
+      "batch": 5,
+      "sequence": 892,
+      "first_sequence_tick": 479,
+      "credit_tick": 480
+    },
+    {
+      "slot": 19,
+      "output": 1633,
+      "batch": 5,
+      "sequence": 892,
+      "first_sequence_tick": 479,
+      "credit_tick": 482
+    },
+    {
+      "slot": 20,
+      "output": 1633,
+      "batch": 5,
+      "sequence": 892,
+      "first_sequence_tick": 479,
+      "credit_tick": 484
+    },
+    {
+      "slot": 21,
+      "output": 1613,
+      "batch": 5,
+      "sequence": 892,
+      "first_sequence_tick": 479,
+      "credit_tick": 486
+    },
+    {
+      "slot": 22,
+      "output": 1633,
+      "batch": 5,
+      "sequence": 892,
+      "first_sequence_tick": 479,
+      "credit_tick": 488
+    },
+    {
+      "slot": 23,
+      "output": 1613,
+      "batch": 5,
+      "sequence": 892,
+      "first_sequence_tick": 479,
+      "credit_tick": 490
+    }
+  ],
+  "scope": "Actual startup-registered three semiprecious native choices with genuine1/All six-item quantities and both held directions per profile.21selected full-bag cut/crushed credits and branch-specific fineXP match independent SQL oracle; current/base Crafting match independent level curve. Native first1/repeat2sequence clocks independently decoded. Real Make/Close and stale response/selected-pair refusals do not consume duplicates. Actual save/process restart/native full inventory/Stats decoding preserve complete output/reward state.",
+  "limitations": [
+    "Natural branch witnesses are recorded per profile; no probability/distribution proof or forced native RNG.",
+    "Native custom-X remains unaccepted; PG-INFRA-009 is a separate shared dependency.",
+    "Interrupted captured batches and PG-REF-001 reference conflicts remain separate; this scoped PASS is not full V0-V4 acceptance.",
+    "No rendered animation frames/audio or original executable parity claimed."
+  ],
+  "evidence_sha256": {
+    "produce/client.log": "8480a24faaf3a0e8ab595cbf0a41a75537a4cf7d895da51d6020e50b8ad904a5",
+    "produce/manifest.json": "792fda3fa5334f173520dbf4f8d1d4aed5ae2a8d699410873d2372d642198c14",
+    "relogin/client.log": "03b1458118829001a25c133000bdb3d078779a53609a703f4ff397009073daeb",
+    "relogin/manifest.json": "9594c00c3a70885b75d80994347594388bb3ef46f78d4aa77fb653018a34fce7"
+  }
+}

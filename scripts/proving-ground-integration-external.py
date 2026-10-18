@@ -2,7 +2,7 @@
 import argparse,hashlib,importlib.util,json,os,re,shutil,subprocess,time
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-p=argparse.ArgumentParser();p.add_argument('sha');p.add_argument('--suite',choices=['energy-food','food-regeneration','assembly-batch','chemistry-matrix','prayer-cache','gem-matrix','gem-bindings','shell-matrix','shell-bindings','pouch-matrix','glass-matrix','glass-bindings','pouch-bindings','glass-admission','fallible-gem-matrix','amethyst-counts','production-gems','immediate-tools','immediate-bindings','immediate-admission','fallible-gem-bindings','immediate-regression'],required=True);a=p.parse_args();assert re.fullmatch('[0-9a-f]{40}',a.sha)
+p=argparse.ArgumentParser();p.add_argument('sha');p.add_argument('--suite',choices=['energy-food','food-regeneration','assembly-batch','chemistry-matrix','prayer-cache','gem-matrix','gem-bindings','shell-matrix','shell-bindings','pouch-matrix','glass-matrix','glass-bindings','pouch-bindings','glass-admission','fallible-gem-matrix','amethyst-counts','production-gems','immediate-tools','immediate-bindings','immediate-admission','fallible-gem-bindings','immediate-regression','fallible-gem-world','light-source-world','light-conversion-world'],required=True);a=p.parse_args();assert re.fullmatch('[0-9a-f]{40}',a.sha)
 policy=ROOT/'docs/openrune/verification/USER_DEFERRALS.json'
 if policy.exists() and json.loads(policy.read_text(encoding='utf-8'))['status']=='ACTIVE_UNTIL_USER_RESUMES':assert a.suite!='chemistry-matrix','User deferred chemistry tests; select eligible unrelated suite'
 out=ROOT/'docs/openrune/verification/independent'/('integration-external-'+a.suite+'-'+a.sha)

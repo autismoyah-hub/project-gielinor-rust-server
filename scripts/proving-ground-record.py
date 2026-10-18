@@ -37,6 +37,17 @@ for manifest in OUT.glob('OR-MIG-0024-*-independent*/manifest.json'):
 for manifest in OUT.glob('integration-*/manifest.json'):
     value=json.loads(manifest.read_text(encoding='utf-8'))
     if value.get('status')!='PASS':continue
+    if value.get('suite')=='light-conversion-world':
+        reason='Independent162actual World conversion cases PASS across9lit/unlit profiles:18ordinary/packed200-life positives and144zeroHP/queued-death/member/stale/variable/count/credit/policy/delay/modal/logout/claim/descriptor refusals. Queued death established through public server combat-hit entry, then visibleHP restored without respawn; conversion correctly remains refused.18additional stale typed actions do not consume retained matching lights or emit a false synthetic success acknowledgement. No tinderbox/currentFiremaking/Crafting/XP-rate requirement for extinguish; whole inventory/Stats preserved. Packed200is a representation fixture, not a normal attainable gameplay claim. Actual cache/runtime/native bindings and sand-specific behavior remain separate.'
+        add('OR-MIG-0084',value['tested_integration_sha'],'V1','IN_PROGRESS',reason,[manifest.relative_to(ROOT).as_posix()],scope='independent-light-conversion-world')
+        add('SHARED-CONVERSION',value['tested_integration_sha'],'V1','IN_PROGRESS',reason+' Shared action/Rule/life regression only; no sand Empty acceptance inferred.',[manifest.relative_to(ROOT).as_posix()],kind='integration',scope='independent-generic-held-conversion',affected=['OR-MIG-0079','OR-MIG-0084'])
+        continue
+    if value.get('suite')=='light-source-world':
+        add('OR-MIG-0084',value['tested_integration_sha'],'V1','IN_PROGRESS','Independent18full-bag public World lighting/extinguishing roundtrips PASS for9profiles/both held directions at exact84SHA: currentFiremaking requirement, drainedCrafting0,rate0, retained duplicate tinderboxes/raw and no XP/advancement/sequence; deterministic resolver NoDraw and zero-advancement checked. Extinguish atFiremaking0uses typed conversion and emits only configured synthetic success acknowledgement.216actual World lighting member/level/tool/raw/vars/count/credit/inventory/modal/logout/delay refusals preserve full inventory/Stats.2bounded synthetic skill9queued success/failure controls independently verify18/6fineXP and SkillAdvanced9while Crafting remains unchanged; not Fletching gameplay. Actual factory/cache/menu bindings, negative extinguish/life, all-old-profile regression, native/durable/reference acceptance remain separate.',[manifest.relative_to(ROOT).as_posix()],scope='independent-light-source-world')
+        continue
+    if value.get('suite')=='fallible-gem-world':
+        add('OR-MIG-0064',value['tested_integration_sha'],'V1','IN_PROGRESS','Independent240public World campaigns PASS at pinned64:72three-profile/both-direction/three-rate mixed/all-success/all-crush captured batches verify exact selected17then3/9 credits, first1-compensated/repeat2 clocks, one draw only per committed selected raw, branch-specific fineXP/advancement and retained raw26.84initial invalid member/level/rate/slot/tool/either-credit/modal/logout cases never draw/publish.84late changed captured slot/tool/member/level/rate/either-credit/modal/movement/Close/new-held/logout cases stop after first draw without fallback. Native/durable and reference conflict adjudication remain separate. Clarifies the initial scoped event: this headless harness does not assert feedback-message content; native message verification remains pending.',[manifest.relative_to(ROOT).as_posix()],scope='independent-fallible-gem-world-oracle-scope')
+        continue
     if value.get('suite')=='fallible-gem-bindings':
         add('OR-MIG-0064',value['tested_integration_sha'],'V1','IN_PROGRESS','Actual cache factory attests8ordinary types/Crafting/3sequences and3fallible descriptors.93missing/aliased/corrupt item/stat/sequence probes refuse. Runtime/native/batch/durability and reference conflicts remain separate.',[manifest.relative_to(ROOT).as_posix()],scope='independent-fallible-gem-bindings')
         continue
@@ -283,11 +294,24 @@ if all(p.exists() and json.loads(p.read_text(encoding='utf-8')).get('status')=='
 path=OUT/'deep-glass-remaining/remaining-002/independent-blocker.json'
 if path.exists():
     add('OR-MIG-0062',glass_sha,'V2','BLOCKED','All native8choice/label/built-in1/5/10/All and Close subchecks passed, but required offered X selection cannot be accepted: PG-INFRA-009 proves an extra keyboard/script Resume consumes the dialog before intended choice. Precise client focus/callback correction required; server defect not established. Other completed obligations remain preserved.',[path.relative_to(ROOT).as_posix()],scope='glass-native-x-required-obligation-blocked')
+path=OUT/'deep-fallible-gems/native-001/independent-assessment.json'
+if path.exists():
+    result=json.loads(path.read_text());assert result['status']=='PASS'
+    add('OR-MIG-0064',result['tested_sha'],'V0','PASS','Exact64server compiles and starts against95hash-attested immutable resources. Actual-cache factory8ordinary item definitions/Crafting/3sequences and93metadata refusals PASS. All3registered native quantity/held routes dispatch success and crush outcomes to exact output/fineXP/sequence; no inherited currentHEAD acceptance.',[path.relative_to(ROOT).as_posix(),'docs/openrune/verification/independent/integration-external-fallible-gem-bindings-'+result['tested_sha']+'/manifest.json'],scope='fallible-runtime-obligations-complete')
+    for level in ['V1','V2','V3']:add('OR-MIG-0064',result['tested_sha'],level,'IN_PROGRESS',result['scope']+' All3profiles naturally witness cut and crush;12580fineXP persists and independently computed level19matches native/SQL. Additional captured-batch interruption/native custom-quantity/reference obligations remain separate.',[path.relative_to(ROOT).as_posix()],scope='native-fallible-gems-mixed-recovery')
+path=OUT/'deep-fallible-gem-interrupt/interrupt-001/independent-assessment.json'
+if path.exists():
+    result=json.loads(path.read_text());assert result['status']=='PASS'
+    add('OR-MIG-0064',result['tested_sha'],'V3','IN_PROGRESS',result['scope']+' Observed'+str(result['native_observed_products'])+'and durable'+str(result['durable_products'])+'complete credits;'+str(result['remaining_raws'])+'raws retained. '+str(result['durable_fine_xp_award'])+'fineXP persists. This is acknowledged partial-queue save/restart, not crash atomicity; full applicable persistence acceptance remains separate.',[path.relative_to(ROOT).as_posix()],scope='native-fallible-partial-recovery')
 for kind in ['staff','limestone','certainty','crash']:
     path=OUT/('deep-immediate-'+kind)/('crash-001' if kind=='crash' else 'native-001')/'independent-assessment.json'
     if path.exists():
         result=json.loads(path.read_text());assert result['status']=='PASS'
         for level in (['V3'] if kind=='crash' else ['V0','V2','V3']):add('OR-MIG-0065',result['tested_sha'],level,'IN_PROGRESS',result['scope']+' Applicable aggregate acceptance remains separate.',[path.relative_to(ROOT).as_posix()],scope='native-immediate-'+kind+'-recovery')
+path=OUT/'reference-sinew/comparison.json'
+if path.exists():
+    result=json.loads(path.read_text());assert result['source_documentation_subcheck']=='PASS'
+    add('OR-MIG-0066',result['tested_sha'],'V4','IN_PROGRESS',result['scope']+' Native/headless/runtime/lifecycle evidence remains separate; source/documentation subcheck only.',[path.relative_to(ROOT).as_posix()],scope='independent-sinew-references')
 path=OUT/'reference-fallible-gems/comparison.json'
 if path.exists():
     result=json.loads(path.read_text());assert result['source_documentation_subcheck']=='PASS_WITH_REFERENCE_CONFLICTS'

@@ -1,0 +1,59 @@
+{
+  "tested_integration_sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
+  "suite": "light-conversion-world",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 6578323456,
+    "active_compilers": [],
+    "cpu_percent": 17.47,
+    "cpu_samples": [
+      14.931237721021606,
+      13.06042884990254,
+      24.4140625
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained",
+    "disk_free": 26527821824,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "a4ca92195b3ea784fd02e20c3454bd6a3eab5171",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\\external-harness-8781890300\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-light-conversion-world-ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\\external-harness-8781890300\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 1,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-light-conversion-world-ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative light-conversion-world scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-light-conversion-world-ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\\harness\\conversions.rs": "e3cc80426a1f911a340e721d734377ef0356fb67ebcd23147dd7a91e891ec735"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\conversions-dcb05aa31295430f.exe": "ac834c0bd69da47c763f1b04c308b7dff8ec6043128145a054755d57bc07761f",
+    "target\\debug\\deps\\routing-12c524584fd1bea6.exe": "a05cfc4c918d362ffba629ee1de03015c1bd314cb8daaaf43b9eb374e41b4481"
+  }
+}

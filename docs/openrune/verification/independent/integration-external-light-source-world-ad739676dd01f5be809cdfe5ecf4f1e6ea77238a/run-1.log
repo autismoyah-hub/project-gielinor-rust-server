@@ -1,0 +1,11 @@
+   Compiling gielinor-world v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\crates\world)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\external-harness-7469746800)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1m 01s
+     Running tests\routing.rs (C:\Projects\OSRSRSPS\agent7-verification\work\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\target\debug\deps\routing-12c524584fd1bea6.exe)
+
+running 3 tests
+test generic_stat_nine_success_failure_rewards_and_events_never_route_to_crafting ... ok
+test eighteen_full_bag_roundtrips_use_firemaking_not_crafting_and_preserve_zero_reward ... ok
+test two_hundred_sixteen_lighting_refusals_preserve_selected_and_duplicate_items ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 19.44s

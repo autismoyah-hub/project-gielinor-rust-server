@@ -1,0 +1,8 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\external-harness-8781890300)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.66s
+     Running tests\conversions.rs (C:\Projects\OSRSRSPS\agent7-verification\work\ad739676dd01f5be809cdfe5ecf4f1e6ea77238a\target\debug\deps\conversions-dcb05aa31295430f.exe)
+
+running 1 test
+test one_hundred_sixty_two_actual_conversion_cases_cover_unsigned_hp_queued_death_and_atomic_refusals ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 3.75s
