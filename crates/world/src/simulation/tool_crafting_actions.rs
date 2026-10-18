@@ -347,6 +347,14 @@ impl World {
         if choice.recipes.iter().all(|r|r.exchange.members)&&!p.member{refusal(&mut self.events,actor,Error::Members,choice.recipes[0].skill);return Ok(());}
         p.tool_crafting_request=Some(choice);Ok(())
     }
+    pub(super) fn request_tool_crafting_equivalent_mixed(&mut self,actor:ActorId,recipes:std::sync::Arc<Vec<crate::tool_crafting::Recipe>>,cycle_ticks:u8,request:crate::held_use::Request,specs:crate::tool_crafting_materials::Specifications,tools:std::sync::Arc<Vec<i32>>)->Result<(),ActionError>{
+        if tools.is_empty()||tools.len()>18||tools.iter().copied().collect::<std::collections::BTreeSet<_>>().len()!=tools.len()||tools.iter().any(|&id|!self.object_types.ordinary_nonstackable(id))||recipes.iter().any(|r|r.exchange.tool!=tools[0]){return Err(ActionError::InvalidItem);}
+        let p=self.player(actor)?;
+        // An explicitly clicked equivalent wins; otherwise pin the first server-priority held tool.
+        let selected=[request.selected_id,request.target_id].into_iter().find(|id|tools.contains(id)).or_else(||tools.iter().copied().find(|id|p.data.inventory.slots().iter().flatten().any(|i|i.id==*id&&i.count==1&&i.vars==0))).ok_or(ActionError::InvalidItem)?;
+        let recipes=std::sync::Arc::new(recipes.iter().map(|r|{let mut r=*r;r.exchange.tool=selected;r}).collect());
+        self.request_tool_crafting_mixed(actor,recipes,cycle_ticks,request,specs)
+    }
     pub(super) fn request_tool_crafting_mixed(&mut self,actor:ActorId,recipes:std::sync::Arc<Vec<crate::tool_crafting::Recipe>>,cycle_ticks:u8,request:crate::held_use::Request,specs:crate::tool_crafting_materials::Specifications)->Result<(),ActionError>{
         let p=self.players.get_mut(actor.slot as usize).unwrap();
         let choice=crate::tool_crafting_materials::bind(recipes,cycle_ticks,request,&p.data.inventory,&self.object_types,p.movement.coords,p.movement.last_movement,specs).ok_or(ActionError::InvalidItem)?;

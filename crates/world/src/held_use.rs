@@ -42,6 +42,7 @@ pub enum Handler {
     ToolCraftingChoices{recipes:std::sync::Arc<Vec<crate::tool_crafting::Recipe>>,cycle_ticks:u8},
     ToolCraftingCountedChoices{recipes:std::sync::Arc<Vec<crate::tool_crafting::Recipe>>,cycle_ticks:u8,input_count:u16},
     ToolCraftingMaterialChoices{recipes:std::sync::Arc<Vec<crate::tool_crafting::Recipe>>,cycle_ticks:u8,input_counts:std::sync::Arc<Vec<u16>>},
+    ToolCraftingEquivalentMixedChoices{recipes:std::sync::Arc<Vec<crate::tool_crafting::Recipe>>,cycle_ticks:u8,materials:crate::tool_crafting_materials::Specifications,tools:std::sync::Arc<Vec<i32>>},
     ToolCraftingMixedChoices{recipes:std::sync::Arc<Vec<crate::tool_crafting::Recipe>>,cycle_ticks:u8,materials:crate::tool_crafting_materials::Specifications},
     TutorialDough(crate::tutorial_dough::Config),
     TutorialFire(crate::tutorial_fire::Config),

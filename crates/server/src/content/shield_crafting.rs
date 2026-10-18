@@ -1,8 +1,16 @@
 //! Hide shields share mixed material capture, stack debits and weak production.
 use super::{Definitions, Symbols};
 use gielinor_world::{grinding, held_use::Handler, tool_crafting::Recipe};
-const ITEMS: [(&str, i32, &str, bool, bool); 25] = [
+const ITEMS: [(&str, i32, &str, bool, bool); 27] = [
     ("hammer", 2347, "Hammer", false, false),
+    ("imcando_hammer", 25644, "Imcando hammer", true, false),
+    (
+        "imcando_hammer_offhand",
+        29775,
+        "Imcando hammer (off-hand)",
+        true,
+        false,
+    ),
     ("hard_leather", 1743, "Hard leather", false, false),
     ("oak_shield", 22251, "Oak shield", true, false),
     ("nails_bronze", 4819, "Bronze nails", true, true),
@@ -195,19 +203,25 @@ pub fn shield_crafting(
 pub fn shield_crafting_registrations(profiles: &[Shield]) -> Vec<(i32, i32, Handler)> {
     let mut entries = Vec::new();
     for p in profiles {
-        let ids = [2347, p.materials[0].0, p.materials[1].0, p.materials[2].0];
-        for i in 0..ids.len() {
-            for j in i + 1..ids.len() {
-                entries.push((
-                    ids[i],
-                    ids[j],
-                    Handler::ToolCraftingMixedChoices {
-                        recipes: std::sync::Arc::new(vec![p.recipe]),
-                        materials: std::sync::Arc::new(vec![p.materials.clone()]),
-                        cycle_ticks: 5,
-                    },
-                ));
-            }
+        let materials = [p.materials[0].0, p.materials[1].0, p.materials[2].0];
+        let pairs =
+            [2347, 25644, 29775]
+                .into_iter()
+                .flat_map(|tool| materials.into_iter().map(move |raw| (tool, raw)))
+                .chain((0..materials.len()).flat_map(|i| {
+                    (i + 1..materials.len()).map(move |j| (materials[i], materials[j]))
+                }));
+        for (a, b) in pairs {
+            entries.push((
+                a,
+                b,
+                Handler::ToolCraftingEquivalentMixedChoices {
+                    recipes: std::sync::Arc::new(vec![p.recipe]),
+                    materials: std::sync::Arc::new(vec![p.materials.clone()]),
+                    cycle_ticks: 5,
+                    tools: std::sync::Arc::new(vec![2347, 25644, 29775]),
+                },
+            ));
         }
     }
     entries
@@ -261,12 +275,12 @@ mod tests {
         let ps = shield_crafting(&o, &s, &t, &d).unwrap();
         assert_eq!(ps.len(), 6);
         let entries = shield_crafting_registrations(&ps);
-        assert_eq!(entries.len(), 36);
+        assert_eq!(entries.len(), 72);
         let pairs = entries
             .iter()
             .map(|v| if v.0 < v.1 { (v.0, v.1) } else { (v.1, v.0) })
             .collect::<std::collections::BTreeSet<_>>();
-        assert_eq!(pairs.len(), 36);
+        assert_eq!(pairs.len(), 72);
         assert!(ps.iter().all(|p| p.recipe.ticks == 5
             && p.materials.iter().map(|v| v.1).collect::<Vec<_>>() == vec![2, 1, 15]));
         d.items.get_mut(&4824).unwrap().stackable = false;
@@ -486,5 +500,108 @@ mod tests {
                 1
             );
         }
+    }
+    #[test]
+    fn shield_crafting_held_imcando_both_forms_explicit_and_material_pairs_pin_the_tool() {
+        for tool in [25644, 29775] {
+            for (i, j) in [(0, 1), (0, 2), (0, 3), (2, 3)] {
+                for reverse in [false, true] {
+                    let (mut w, a, r, materials) = fixture(0);
+                    w.data_mut(a)
+                        .unwrap()
+                        .inventory
+                        .restore_slot(
+                            4,
+                            Some(Item {
+                                id: tool,
+                                count: 1,
+                                vars: 0,
+                            }),
+                        )
+                        .unwrap();
+                    w.held_use_types.insert(
+                        tool,
+                        Type {
+                            id: tool,
+                            content: -1,
+                        },
+                    );
+                    let mut request = held(&materials, i, j, reverse);
+                    if request.selected_id == 2347 {
+                        request.selected_id = tool;
+                    }
+                    if request.target_id == 2347 {
+                        request.target_id = tool;
+                    }
+                    w.finish_held_use(a, request).unwrap();
+                    let req = w.take_tool_crafting_request(a).unwrap().unwrap();
+                    assert_eq!(req.recipes[0].exchange.tool, tool);
+                    assert_eq!(req.tool_slot, 4);
+                    w.start_tool_crafting_choice(a, req, 0, 1).unwrap();
+                    for _ in 0..6 {
+                        w.tick().unwrap();
+                    }
+                    let d = w.data(a).unwrap();
+                    assert_eq!(d.inventory.get(4).unwrap().id, tool);
+                    assert_eq!(d.inventory.get(23).unwrap().count, 16);
+                    assert_eq!(
+                        d.inventory
+                            .slots()
+                            .iter()
+                            .flatten()
+                            .filter(|v| v.id == r.exchange.output)
+                            .count(),
+                        1
+                    );
+                    assert_eq!(d.stats.fine_xp(12), 875);
+                }
+            }
+        }
+        // The clicked tool wins over another available equivalent; after acceptance no fallback.
+        let (mut w, a, _, materials) = fixture(0);
+        w.data_mut(a)
+            .unwrap()
+            .inventory
+            .restore_slot(
+                10,
+                Some(Item {
+                    id: 25644,
+                    count: 1,
+                    vars: 0,
+                }),
+            )
+            .unwrap();
+        w.held_use_types.insert(
+            25644,
+            Type {
+                id: 25644,
+                content: -1,
+            },
+        );
+        w.finish_held_use(
+            a,
+            Request {
+                selected_slot: 10,
+                selected_id: 25644,
+                target_slot: 19,
+                target_id: materials[1].0,
+            },
+        )
+        .unwrap();
+        let req = w.take_tool_crafting_request(a).unwrap().unwrap();
+        assert_eq!(req.tool_slot, 10);
+        assert_eq!(req.recipes[0].exchange.tool, 25644);
+        w.start_tool_crafting_choice(a, req, 0, 1).unwrap();
+        w.data_mut(a)
+            .unwrap()
+            .inventory
+            .restore_slot(10, None)
+            .unwrap();
+        let before = w.data(a).unwrap().inventory.clone();
+        for _ in 0..7 {
+            w.tick().unwrap();
+        }
+        assert_eq!(w.data(a).unwrap().inventory, before);
+        assert_eq!(w.data(a).unwrap().stats.fine_xp(12), 0);
     }
 }
