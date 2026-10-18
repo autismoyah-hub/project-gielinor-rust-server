@@ -181,6 +181,7 @@ mod tests {
             recipes: [(
                 10,
                 crate::cooking::Recipe {
+                    fine_xp_override: None,
                     raw: 10,
                     cooked: 20,
                     burnt: 30,
@@ -401,6 +402,7 @@ mod tests {
             w.location_types.insert(2, w.location_types[&1]);
             w.locations.load(range);
             let recipe = crate::cooking::Recipe {
+                fine_xp_override: None,
                 raw: 40,
                 cooked: 50,
                 burnt: 60,
@@ -529,6 +531,29 @@ mod tests {
                 w.data(actor).unwrap().stats.fine_xp(7),
                 if made { 300 } else { 0 }
             );
+        }
+    }
+    #[test]
+    fn cooking_fractional_base_xp_reaches_authoritative_stats_at_personal_rate() {
+        for (fine, rate, expected) in [
+            (2113, 100, 2113),
+            (2113, 125, 2641),
+            (2113, 500, 10565),
+            (2163, 100, 2163),
+            (2163, 125, 2703),
+            (2163, 500, 10815),
+        ] {
+            let (mut w, actor, loc) = fixture();
+            let recipe = w.cooking.as_mut().unwrap().recipes.get_mut(&10).unwrap();
+            recipe.xp = (fine / 10) as u16;
+            recipe.fine_xp_override = Some(fine);
+            w.data_mut(actor).unwrap().xp_rate_hundreds = rate;
+            w.submit(actor, action(loc)).unwrap();
+            w.tick().unwrap();
+            w.tick().unwrap();
+            assert_eq!(w.data(actor).unwrap().stats.fine_xp(7), expected);
+            assert_eq!(w.data(actor).unwrap().inventory.get(0).unwrap().id, 10);
+            assert_eq!(w.data(actor).unwrap().inventory.get(1).unwrap().id, 20);
         }
     }
 }

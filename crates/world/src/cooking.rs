@@ -16,7 +16,10 @@ pub struct Recipe {
     pub stop_burn: Option<u8>,
     pub low: i32,
     pub high: i32,
+    /// Whole base XP when no fine-XP override is supplied.
     pub xp: u16,
+    /// Optional base XP in tenths for fractional recipes.
+    pub fine_xp_override: Option<u32>,
     pub ticks: u8,
 }
 #[derive(Clone, Debug)]
@@ -75,6 +78,10 @@ pub struct Outcome {
     pub advancement: Option<crate::skills::Advancement>,
 }
 impl Recipe {
+    pub fn base_xp(&self) -> f64 {
+        self.fine_xp_override
+            .map_or(f64::from(self.xp), |fine| f64::from(fine) / 10.0)
+    }
     /// Prepare both possible credits and the successful XP result before drawing.
     /// An invalid output cannot consume input, advance XP or consume randomness.
     pub fn complete(
@@ -96,7 +103,8 @@ impl Recipe {
             || r.low < 0
             || r.high < r.low
             || r.high > 65535
-            || r.xp == 0
+            || r.fine_xp_override.is_some_and(|fine| fine == 0)
+            || (r.xp == 0 && r.fine_xp_override.is_none())
             || rate <= 0
             || r.raw == r.cooked
             || r.raw == r.burnt
@@ -147,7 +155,7 @@ impl Recipe {
         let advancement = crate::skills::advance(
             &mut next_stats,
             skill,
-            f64::from(r.xp),
+            r.base_xp(),
             f64::from(rate) / 100.0,
             max_level,
         )
@@ -214,6 +222,7 @@ mod tests {
         }
         (
             Recipe {
+                fine_xp_override: None,
                 raw: 10,
                 cooked: 11,
                 burnt: 12,
@@ -319,5 +328,29 @@ mod tests {
             assert_eq!((inv, stats), before);
             assert_eq!(rng.calls, 0);
         }
+    }
+    #[test]
+    fn zero_fine_xp_override_rejects_without_inventory_stats_or_randomness() {
+        let (mut recipe, mut inv, mut stats) = fixture();
+        recipe.fine_xp_override = Some(0);
+        let before = (inv.clone(), stats.clone());
+        let mut random = Fixed { draw: 0, calls: 0 };
+        assert_eq!(
+            recipe
+                .complete(
+                    1,
+                    &mut inv,
+                    &Catalog::default(),
+                    &mut stats,
+                    7,
+                    99,
+                    100,
+                    &mut random
+                )
+                .unwrap_err(),
+            Error::InvalidPolicy
+        );
+        assert_eq!((inv, stats), before);
+        assert_eq!(random.calls, 0);
     }
 }

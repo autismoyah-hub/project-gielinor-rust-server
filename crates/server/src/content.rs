@@ -2,6 +2,8 @@
 use gielinor_cache::{game::Definitions, symbols::Symbols};
 use gielinor_world::food::{self, Edible};
 use std::collections::BTreeMap;
+mod member_fish;
+pub use member_fish::member_fish_cooking;
 /// Resolve both stat requirement pairs from enriched cache parameters. Level
 /// parameters are signed Kotlin Ints; do not truncate them to a byte.
 pub fn equipment(
@@ -3389,7 +3391,7 @@ pub fn manual_fire_cooking(obj:&Symbols,loc:&Symbols,seq:&Symbols,defs:&Definiti
    if !ids.insert(id) || d.name!=name || d.members || d.stackable || d.dummy==1 || d.cert.template!=0 || d.placeholder.template!=0 || d.transform.template!=0 {return Err("Unattested or aliased cooking item".into());}
   }
   if defs.items[&(cooked as u32)].inventory_ops[0].as_deref()!=Some("Eat"){return Err("Cooked food lacks Eat".into());}
-  recipes.insert(raw,Recipe{raw,cooked,burnt,level:1,stop_burn: Some(34),low:128,high:512,xp:30,ticks});
+  recipes.insert(raw,Recipe{fine_xp_override:None,raw,cooked,burnt,level:1,stop_burn: Some(34),low:128,high:512,xp:30,ticks});
  }
  Ok(Config{member_inputs:Default::default(),fire,animation,skill,max_level:stat.max_level,recipes,tutorial:None,surfaces:Default::default()})
 }
@@ -3606,7 +3608,7 @@ pub fn additional_fire_fish(
         output_ids.extend([cooked, burnt]);
         next.insert(
             raw,
-            Recipe {
+            Recipe {fine_xp_override:None,
                 raw,
                 cooked,
                 burnt,
@@ -3843,7 +3845,7 @@ pub fn stew_recipes(obj: &Symbols, defs: &Definitions, skill: u8) -> Result<Stew
     .collect();
     Ok(StewBindings {
         assembly,
-        cooking: gielinor_world::cooking::Recipe {
+        cooking: gielinor_world::cooking::Recipe {fine_xp_override:None,
             raw: ids["uncooked_stew"],
             cooked: ids["stew"],
             burnt: ids["burnt_stew"],
@@ -4452,7 +4454,7 @@ pub fn standard_cooking_range(
     }
     recipes.insert(
         bread["bread_dough"],
-        Recipe {
+        Recipe {fine_xp_override:None,
             raw: bread["bread_dough"],
             cooked: bread["bread"],
             burnt: bread["burnt_bread"],
@@ -4513,7 +4515,7 @@ mod standard_range_tests {
             objects.insert(symbol.into(), raw);
             config.recipes.insert(
                 raw,
-                Recipe {
+                Recipe {fine_xp_override:None,
                     raw,
                     cooked: 10000 + raw,
                     burnt: 20000 + raw,
@@ -4695,7 +4697,7 @@ pub fn ordinary_range_baking(
         output_ids.extend([cooked, burnt]);
         next.insert(
             raw,
-            Recipe {
+            Recipe {fine_xp_override:None,
                 raw,
                 cooked,
                 burnt,
@@ -5005,7 +5007,7 @@ pub fn member_pie_baking(
         members.insert(raw);
         next.insert(
             raw,
-            Recipe {
+            Recipe {fine_xp_override:None,
                 raw,
                 cooked,
                 burnt,

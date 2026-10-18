@@ -712,6 +712,7 @@ pub fn configure<B: AccountBackend>(
     crate::content::standard_cooking_range(n("obj"),n("loc"),n("seq"),&runtime.definitions,&mut cooking).map_err(io::Error::other)?;
     crate::content::ordinary_range_baking(n("obj"),n("loc"),&runtime.definitions,&mut cooking).map_err(io::Error::other)?;
     crate::content::member_pie_baking(n("obj"),n("loc"),&runtime.definitions,&mut cooking).map_err(io::Error::other)?;
+    crate::content::member_fish_cooking(n("obj"),n("loc"),&runtime.definitions,&mut cooking).map_err(io::Error::other)?;
     let mut cooking_member_inputs=std::collections::BTreeSet::new();
     for &raw in cooking.recipes.keys().chain(cooking.surfaces.values().flat_map(|surface|surface.recipes.keys())) {
         if runtime.definitions.items.get(&(raw as u32)).ok_or_else(||io::Error::other("Missing cooking input membership definition"))?.members {cooking_member_inputs.insert(raw);}
