@@ -2,6 +2,8 @@
 use gielinor_cache::{game::Definitions, symbols::Symbols};
 use gielinor_world::food::{self, Edible};
 use std::collections::BTreeMap;
+mod crab_carving;
+pub use crab_carving::crab_carving;
 mod battlestaff_assembly;
 pub use battlestaff_assembly::battlestaff_assembly;
 mod sinew_crafting;

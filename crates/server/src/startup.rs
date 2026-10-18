@@ -770,6 +770,9 @@ pub fn configure<B: AccountBackend>(
     for recipe in crate::content::battlestaff_assembly(n("obj"),n("seq"),n("spotanim"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
         runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.recipe.first,recipe.recipe.second,gielinor_world::held_use::Handler::AssemblyPrecise(recipe)).map_err(|e|io::Error::other(format!("Elemental battlestaff registration: {e:?}")))?;
     }
+    for recipe in crate::content::crab_carving(n("obj"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
+        runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.exchange.tool,recipe.exchange.input,gielinor_world::held_use::Handler::ToolCraftingChoices{recipes:std::sync::Arc::new(vec![recipe]),cycle_ticks:3}).map_err(|e|io::Error::other(format!("Crab carving registration: {e:?}")))?;
+    }
     let glass=crate::content::glassblowing(n("obj"),n("seq"),n("stat"),&runtime.definitions).map_err(io::Error::other)?;
     runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,1785,1775,gielinor_world::held_use::Handler::ToolCraftingChoices{recipes:std::sync::Arc::new(glass),cycle_ticks:3}).map_err(|e|io::Error::other(format!("Glassblowing registration: {e:?}")))?;
     runtime.configure_smelting_names(names)?;
