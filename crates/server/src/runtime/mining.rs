@@ -121,6 +121,15 @@ impl<B: AccountBackend> Runtime<B> {
             }
         }
         config.validate().map_err(io::Error::other)?;
+        let outfit = crate::content::prospector_outfit(
+            names.group("obj"),
+            names.group("stat"),
+            &self.definitions,
+        )
+        .map_err(io::Error::other)?;
+        if self.world.gathering_outfits.insert(14, outfit).is_some() {
+            return Err(io::Error::other("Conflicting Mining outfit modifier"));
+        }
         self.world.mining = Some(config);
         Ok(())
     }

@@ -705,16 +705,8 @@ pub struct ToolRequirement {
 }
 impl ToolRequirement {
     pub fn available(self, inv: &Inventory, worn: &Inventory, cat: &Catalog) -> bool {
-        let ordinary = |id| {
-            id >= 0
-                && !cat.stackable.contains(&id)
-                && !cat.dummy.contains(&id)
-                && !cat.notes.get(&id).is_some_and(|t| t.template != 0)
-                && !cat.placeholders.get(&id).is_some_and(|t| t.template != 0)
-                && !cat.transforms.get(&id).is_some_and(|t| t.template != 0)
-        };
         let holds = |items: &Inventory, id| {
-            ordinary(id)
+            cat.ordinary_nonstackable(id)
                 && items
                     .slots()
                     .iter()

@@ -159,3 +159,14 @@ pub(crate) fn best_tool_by(
     }
     best.map(|(id, _)| id)
 }
+
+/// Apply an optional worn modifier before the existing single reward transaction.
+pub(crate) fn reward_with_outfit(
+    data:&crate::simulation::PlayerData,catalog:&crate::inventory::Catalog,
+    skill:u8,product:i32,xp:f64,member:bool,
+    outfit:Option<&crate::gathering_outfits::Outfit>,
+)->Result<Reward,crate::simulation::ActionError>{
+    let bonus=outfit.map(|o|o.bonus_basis_points(&data.equipment,catalog,member)).transpose()
+        .map_err(|_|crate::simulation::ActionError::InvalidItem)?.unwrap_or(0);
+    reward(data,catalog,skill,product,xp*(1.0+f64::from(bonus)/10000.0))
+}

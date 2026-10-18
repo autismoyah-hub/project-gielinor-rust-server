@@ -24,6 +24,15 @@ pub struct Catalog {
     pub transforms: HashMap<i32, Template>,
     pub dummy: HashSet<i32>,
 }
+impl Catalog {
+    /// Ordinary type identity; item variables remain the caller's policy.
+    pub fn ordinary_nonstackable(&self, id:i32)->bool {
+        id>=0 && !self.stackable.contains(&id) && !self.dummy.contains(&id)
+            && !self.notes.get(&id).is_some_and(|t|t.template!=0)
+            && !self.placeholders.get(&id).is_some_and(|t|t.template!=0)
+            && !self.transforms.get(&id).is_some_and(|t|t.template!=0)
+    }
+}
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Error {
     InvalidCount,

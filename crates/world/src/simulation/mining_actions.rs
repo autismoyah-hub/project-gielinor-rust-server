@@ -131,12 +131,14 @@ impl World {
             trace.threshold = Some(threshold);
             trace.result = "failed_roll";
             if (roll as f64) < threshold {
-                match crate::gathering::reward(
+                match crate::gathering::reward_with_outfit(
                     &p.data,
                     &self.object_types,
                     skill,
                     rock.product,
                     rock.xp,
+                    p.member,
+                    self.gathering_outfits.get(&skill),
                 ) {
                     Err(error) => {
                         trace.result = "transaction_rejected";

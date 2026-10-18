@@ -898,6 +898,7 @@ pub struct World {
     pub tower_combat: Option<crate::tower_combat::Config>,
     pub woodcutting: Option<crate::woodcutting::Config>,
     pub mining: Option<crate::mining::Config>,
+    pub gathering_outfits: BTreeMap<u8, crate::gathering_outfits::Outfit>,
     /// Explicit stock partitions; empty until a verified content profile registers one.
     pub shops: BTreeMap<u32, crate::shop::Shop>,
     active_trees: crate::woodcutting::ActiveTrees,
@@ -1015,6 +1016,7 @@ impl Default for World {
             tower_combat: None,
             woodcutting: None,
             mining: None,
+            gathering_outfits: BTreeMap::new(),
             shops: BTreeMap::new(),
             active_trees: Default::default(),
             multiway_area: None,

@@ -281,6 +281,7 @@ pub mod held_item_conversion;
 pub mod container_emptying;
 pub mod facility_crafting;
 pub mod gathering;
+pub mod gathering_outfits;
 pub mod item_packs;
 pub mod mining;
 pub mod shop;

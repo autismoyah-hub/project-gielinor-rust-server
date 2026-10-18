@@ -182,12 +182,14 @@ impl World {
             trace.threshold = Some(threshold);
             trace.result = "failed_roll";
             if (roll as f64) < threshold {
-                let Ok(reward) = crate::gathering::reward(
+                let Ok(reward) = crate::gathering::reward_with_outfit(
                     &p.data,
                     &self.object_types,
                     skill,
                     tree.product,
                     tree.xp,
+                    p.member,
+                    self.gathering_outfits.get(&skill),
                 ) else {
                     p.location_interaction = None;
                     p.movement.interacting = false;
