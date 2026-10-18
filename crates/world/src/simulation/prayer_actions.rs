@@ -35,7 +35,7 @@ impl World {
             if self.prayer_member_bones.contains(&bone) && !p.member {return Err(ActionError::InvalidItem);}
             config.prepare_selected(&p.data,&self.object_types,bone,slot).map_err(|_|ActionError::InvalidItem)?;
         }
-        if config.requires_confirmation(p.movement.coords) {
+        if config.requires_confirmation(p.movement.coords) && !(selected.is_some() && self.prayer_ashes.contains_key(&bone)) {
             p.dialog_generation = p
                 .dialog_generation
                 .checked_add(1)
@@ -57,16 +57,18 @@ impl World {
             .get_mut(actor.slot as usize)
             .ok_or(ActionError::StaleActor)?;
         let config = self.prayer.as_ref().ok_or(ActionError::InvalidItem)?;
-        let pending=if let Some(slot)=slot {
+        let mut pending=if let Some(slot)=slot {
             if self.prayer_member_bones.contains(&bone) && !p.member {return Err(ActionError::InvalidItem);}
             config.prepare_selected(&p.data,&self.object_types,bone,slot)
         } else {config.prepare(&p.data,bone)}.map_err(|_|ActionError::InvalidItem)?;
+        let ash_animation=slot.and_then(|_|self.prayer_ashes.get(&bone)).copied();
+        if ash_animation.is_some(){pending.restore=0;}
         p.prayer = Some(State::Bury{pending,slot});
         p.protection.suspended = true;
         p.protection.delay(1);
         self.events.push(WorldEvent::Prayer {
             actor,
-            event: Event::Animation(config.animation),
+            event: Event::Animation(ash_animation.unwrap_or(config.animation)),
         });
         Ok(())
     }
@@ -131,6 +133,7 @@ impl World {
         continuation: Option<crate::tower_offering::Continuation>,
     ) -> Result<(), ActionError> {
         self.player(actor)?;
+        if self.prayer_ashes.contains_key(&bone){return Err(ActionError::InvalidItem);}
         let p = self.players.get_mut(actor.slot as usize).unwrap();
         if p.saving {
             return Err(ActionError::LoggingOut);
@@ -238,6 +241,8 @@ impl World {
                     actor: p.id,
                     event: Event::Message(if offering.is_some() {
                         "The gods are pleased with your offering."
+                    } else if selected.is_some() && self.prayer_ashes.contains_key(&pending.bone) {
+                        "You scatter the ashes."
                     } else {
                         "You bury the bones."
                     }),

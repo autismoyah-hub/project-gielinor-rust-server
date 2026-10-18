@@ -163,3 +163,132 @@ fn claimed_identity_membership_revocation_and_opened_then_closed_modal_cannot_co
         assert!(!completed(&w.drain_events()));
     }
 }
+
+#[test]
+fn registered_ashes_scatter_in_chaos_without_bone_restore_or_altar_offering() {
+    for (id, xp) in [
+        (25766, 10),
+        (25769, 25),
+        (25772, 65),
+        (25775, 85),
+        (25778, 110),
+    ] {
+        let (mut w, a) = setup(true);
+        let config = w.prayer.as_mut().unwrap();
+        config.bones.insert(id, f64::from(xp));
+        config.restore.insert(id, 4);
+        config.necklace = Some(22111);
+        w.prayer_ashes.insert(id, 2295);
+        if id >= 25772 {
+            w.prayer_member_bones.insert(id);
+            w.set_membership(a, true).unwrap();
+        }
+        let p = w.data_mut(a).unwrap();
+        p.xp_rate_hundreds = 100;
+        p.stats.set_base(5, 50);
+        p.stats.set_current(5, 2);
+        p.equipment
+            .restore_slot(
+                2,
+                Some(Item {
+                    id: 22111,
+                    count: 1,
+                    vars: 0,
+                }),
+            )
+            .unwrap();
+        for slot in [0, 27] {
+            p.inventory
+                .restore_slot(
+                    slot,
+                    Some(Item {
+                        id,
+                        count: 1,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+        }
+        assert!(w.begin_altar_offering(a, id, 3705).is_err());
+        assert_eq!(w.data(a).unwrap().inventory.get(27).unwrap().id, id);
+        w.submit(a, Action::BuryItemSlot { slot: 27, item: id })
+            .unwrap();
+        w.tick().unwrap();
+        let start = w.drain_events();
+        assert!(start.iter().any(|e| matches!(
+            e,
+            WorldEvent::Prayer {
+                event: Event::Animation(2295),
+                ..
+            }
+        )));
+        assert!(!start.iter().any(|e| matches!(
+            e,
+            WorldEvent::Prayer {
+                event: Event::Confirm { .. },
+                ..
+            }
+        )));
+        w.tick().unwrap();
+        let p = w.data(a).unwrap();
+        assert_eq!(p.inventory.get(0).unwrap().id, id);
+        assert!(p.inventory.get(27).is_none());
+        assert_eq!(p.stats.fine_xp(5), xp * 10);
+        assert_eq!(p.stats.current(5), 2);
+        let events = w.drain_events();
+        assert!(events.iter().any(|e| matches!(
+            e,
+            WorldEvent::Prayer {
+                event: Event::Message("You scatter the ashes."),
+                ..
+            }
+        )));
+        assert!(!events.iter().any(|e| matches!(
+            e,
+            WorldEvent::Prayer {
+                event: Event::Message("You bury the bones."),
+                ..
+            }
+        )));
+    }
+}
+#[test]
+fn member_ashes_refuse_nonmembers_and_stale_selected_ash_never_substitutes_duplicate() {
+    for stale in [false, true] {
+        let (mut w, a) = setup(false);
+        let id = 25778;
+        w.prayer.as_mut().unwrap().bones.insert(id, 110.0);
+        w.prayer_ashes.insert(id, 2295);
+        w.prayer_member_bones.insert(id);
+        w.set_membership(a, stale).unwrap();
+        for slot in [0, 27] {
+            w.data_mut(a)
+                .unwrap()
+                .inventory
+                .restore_slot(
+                    slot,
+                    Some(Item {
+                        id,
+                        count: 1,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+        }
+        w.submit(a, Action::BuryItemSlot { slot: 27, item: id })
+            .unwrap();
+        w.tick().unwrap();
+        w.drain_events();
+        if stale {
+            w.data_mut(a)
+                .unwrap()
+                .inventory
+                .restore_slot(27, None)
+                .unwrap();
+        }
+        w.tick().unwrap();
+        assert_eq!(w.data(a).unwrap().inventory.get(0).unwrap().id, id);
+        assert_eq!(w.data(a).unwrap().stats.fine_xp(5), 0);
+        assert!(!completed(&w.drain_events()));
+    }
+}
