@@ -3,9 +3,9 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0093: member-gated staged limestone/shared canonicalrootrestoration; source [e4ce849](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/e4ce849cf1de750bfac9f235f9c708b9daa1d541). Shared/finalfocused/binaryPASS;independentV0–V4queued. Wiki/source stage/timing/rate andgeneric5.6sconflicts retained; newRockmembers/restore API documented.
+OR-MIG-0094: member lead mining with strict direct IDs; source [871df7e](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/871df7eace2fb1bfe6ea5624c5b63ceb09c261b4). Focused and binary checks pass; independent V0–V4 queued. Missing symbols handled without resource edits. Wiki/source probability and native island placement/travel remain unresolved.
 
-93units /102append-onlyrecords. Discovery3508={'not_yet_assessed': 2791, 'configuration': 660, 'framework_or_infrastructure': 11, 'eligible_gameplay_behavior': 46},notcompletionpercentages. Claywithheldissue74;PG-DEF-001Closecandidatependingindependentretest.
+94 units / 103 append-only records. Discovery3508={'not_yet_assessed': 2791, 'configuration': 660, 'framework_or_infrastructure': 11, 'eligible_gameplay_behavior': 46}, not completion percentages. Clay withheld under issue74; PG-DEF-001 Close candidate awaits independent retest.
 <!-- forge-current:end -->
 
 
@@ -595,3 +595,12 @@ Source e4ce849cf1de750bfac9f235f9c708b9daa1d541: sharedRock.members/restoreOptio
 Shared001PASS145server487world/1existingignored455unchangedhashes,2m59compile/server8.13s/world31.19s; final002focusedPASS2server/0world455,35.13scompile/9.11stest; actualbins001PASS455/7.25s. Sevenboundedheadlesscases: continuous3products; partialone/two membershipsrevokedrecoverfull39/19;full9;331fine/oreat125%;prioroutputpreservedafterbadcredit;F2P/current9/fullbagzeroRNG;stablefullrootrevisionafteroldtimers. ExternalRockliteralsneedmembers:false/restore:Noneforlegacyplainnodes; otheragentsfixtures untouched. PreparationattestationSyntaxErrorbeforemutations preserved/corrected;noRustcompilefailure. Developerworking-treeevidence,notpristine/nativeacceptance.
 
 Sourceall3->empty/6cycles/low100 differsspecificLimestone rock15209145 three-stage39/19/9/low95; implementedexplicitWikiobjectrules, preservedsourcefacts. GenericLimestone15271628Mininginfo5.6sconflicts,notresolved. Exactnativeclock/probability/V4comparisonpending. Modifiers/side drops/quests/access/Sailing/acquisition/smelting8damage/emptyMinefeedback separate;brickCrafting65separate. Leadraw31716/58917/58918availablebutaliasesabsent, futureassessmentonly. Queue102records93units,independentV0–V4queued. Discovery3508={'not_yet_assessed': 2791, 'configuration': 660, 'framework_or_infrastructure': 11, 'eligible_gameplay_behavior': 46},notcompletionpercentages.
+
+
+## FORGE OR-MIG-0094 — member lead mining
+
+Source 871df7eace2fb1bfe6ea5624c5b63ceb09c261b4 registers live58917 -> one31716Lead ore/40.5 Mining XP -> empty58918, currentMining25/member,10tick recovery. Exact member ordinary ore and two static1x1 Mine definitions exist while all three expected aliases are absent. The adapter accepts absent or matching aliases, rejects conflicts, and validates pinned direct IDs without changing cache or symbols. Existing unit93 membership gate and ordinary gathering reward/depletion/timer are reused.
+
+Focused001 PASS2server/0matching world tests,456unchanged hashes,37.32scompile/0.65stests; actual binaries001 PASS456/5.21s. Bounded reached node accepts current25/base1, credits one ore/506fine at125%, retains pick and restores exactly10ticks later. F2P/current24/fullbag/credit rejection preserve inventory/Stats/location; initial eligibility refusals draw no RNG. Guard observed other processes informational,6,843MiB available/55.8%commit/8,811pages-in/s/0.8msdisk/45%CPU,j2 allowed; no OOM or resource deferral. Developer working-tree evidence, not pristine/native independent acceptance.
+
+Wiki comparative112/278 differs source110/255; candidate uses Wiki values, not accepted target probability. Source/Wiki agree on level/XP/10ticks. Sailing travel/island placement and native traversal, smelting, modifiers/side drops/quests/acquisition/empty feedback remain separate. Queue103records94units; independentV0–V4queued. Discovery3508={'not_yet_assessed': 2791, 'configuration': 660, 'framework_or_infrastructure': 11, 'eligible_gameplay_behavior': 46}, not completion percentages.
