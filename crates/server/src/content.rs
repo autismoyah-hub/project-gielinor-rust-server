@@ -2,6 +2,8 @@
 use gielinor_cache::{game::Definitions, symbols::Symbols};
 use gielinor_world::food::{self, Edible};
 use std::collections::BTreeMap;
+mod soft_clay_mixing;
+pub use soft_clay_mixing::soft_clay_mixing;
 mod amethyst_cutting;
 pub use amethyst_cutting::amethyst_cutting;
 mod crafting_finishes;

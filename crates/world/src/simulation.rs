@@ -2539,11 +2539,11 @@ impl World {
                                                 }
                                                 Deferred::AssemblyBatch(pending) => {
                                                     if p.has_modal || p.pending_logout || p.saving {return;}
-                                                    let job=pending.job;
+                                                    let job=pending.job;let skill=job.recipe.skill;
                                                     let (outcome,advancement)=job.complete_awarding(&mut p.data.inventory,&self.object_types,&mut p.data.stats,p.data.xp_rate_hundreds,p.member);
                                                     if let Some(advancement)=advancement {self.events.push(WorldEvent::SkillAdvanced{actor:p.id,skill:job.recipe.skill,advancement});}
                                                     if outcome==crate::assembly::Outcome::Made {self.events.push(WorldEvent::AssemblyBatchMade{actor:p.id,trace:crate::assembly::BatchTransition{job,queued_at:pending.queued_at,committed_at:self.clock.0}});}
-                                                    self.events.push(WorldEvent::LocationMessage{actor:p.id,message:crate::assembly::outcome_message(outcome)});
+                                                    self.events.push(WorldEvent::LocationMessage{actor:p.id,message:crate::assembly::outcome_message_for_skill(outcome,skill)});
                                                 }
                                                 Deferred::AssemblyProduction(pending) => {assembly_production_actions::complete(p,queues,pending,&self.object_types,self.clock.0,&mut self.events);}
                                                 Deferred::Assembly(pending) => {

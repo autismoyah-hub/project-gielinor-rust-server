@@ -159,7 +159,7 @@ impl World {
             Some(Handler::AssemblyBatch(recipe)) => {
                 let p=self.players.get_mut(actor.slot as usize).unwrap();
                 if recipe.members && !p.member {self.events.push(WorldEvent::LocationMessage{actor,message:"You need to be a member to make that item."});return Ok(());}
-                if i32::from(p.data.stats.current(recipe.skill))<i32::from(recipe.level){self.events.push(WorldEvent::LocationMessage{actor,message:"You need a higher Cooking level to make that."});return Ok(());}
+                if i32::from(p.data.stats.current(recipe.skill))<i32::from(recipe.level){self.events.push(WorldEvent::LocationMessage{actor,message:crate::assembly::level_message(recipe.skill)});return Ok(());}
                 let Some(job)=recipe.bind(request,&p.data.inventory) else{self.events.push(WorldEvent::LocationMessage{actor,message:"You do not have all the required ingredients."});return Ok(());};
                 p.queues.clear_weak();
                 p.queues.add(crate::assembly::QUEUE,crate::queues::Category::Weak,i32::from(recipe.ticks)+1,Deferred::AssemblyBatch(crate::assembly::BatchPending{job,queued_at:self.clock.0})).map_err(|_|ActionError::QueueFull)?;
