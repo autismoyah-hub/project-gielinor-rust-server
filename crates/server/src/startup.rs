@@ -782,6 +782,8 @@ pub fn configure<B: AccountBackend>(
     for recipe in crate::content::soft_clay_mixing(n("obj"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
         runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.inputs[0],recipe.inputs[1],gielinor_world::held_use::Handler::AssemblyBatch(std::sync::Arc::new(recipe))).map_err(|e|io::Error::other(format!("Soft clay mixing registration: {e:?}")))?;
     }
+    let accursed=crate::content::accursed_upgrade(n("obj"),n("stat"),&runtime.definitions).map_err(io::Error::other)?;
+    runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,accursed.recipe.first,accursed.recipe.second,gielinor_world::held_use::Handler::AssemblyPrecise(accursed)).map_err(|e|io::Error::other(format!("Accursed sceptre upgrade registration: {e:?}")))?;
     for recipe in crate::content::firelighter_coating(n("obj"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
         runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.first,recipe.second,gielinor_world::held_use::Handler::AssemblyImmediate(recipe)).map_err(|e|io::Error::other(format!("Firelighter coating registration: {e:?}")))?;
     }
