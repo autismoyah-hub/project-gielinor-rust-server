@@ -6,6 +6,8 @@ mod birdhouses;
 pub use birdhouses::birdhouses;
 mod light_sources;
 pub use light_sources::light_sources;
+mod lead_mining;
+pub use lead_mining::lead_mining;
 mod limestone_mining;
 pub use limestone_mining::limestone_mining;
 mod timed_tree_variants;

@@ -108,6 +108,18 @@ impl<B: AccountBackend> Runtime<B> {
                 return Err(io::Error::other("Conflicting limestone mining stage"));
             }
         }
+        for (id, rock) in crate::content::lead_mining(
+            names.group("obj"),
+            names.group("loc"),
+            names.group("stat"),
+            &self.definitions,
+        )
+        .map_err(io::Error::other)?
+        {
+            if config.rocks.insert(id, rock).is_some() {
+                return Err(io::Error::other("Conflicting lead mining target"));
+            }
+        }
         config.validate().map_err(io::Error::other)?;
         self.world.mining = Some(config);
         Ok(())
