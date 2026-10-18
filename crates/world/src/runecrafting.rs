@@ -20,6 +20,8 @@ pub struct Recipe {
     pub xp_tenths: u16,
     pub interval: u8,
     pub name: &'static str,
+    pub members: bool,
+    pub pure_only: bool,
 }
 #[derive(Clone, Copy, Debug)]
 pub struct OutfitBinding {
@@ -121,6 +123,26 @@ impl Config {
         }
         if parts.len() > 28 {
             return Err(Error::Policy);
+        }
+        Ok(Arc::new(parts))
+    }
+    /// Preserve ineligible Rune essence at pure-only altars; Daeyalt keeps priority.
+    pub fn capture_for(
+        &self,
+        recipe: Recipe,
+        inventory: &Inventory,
+    ) -> Result<Arc<Vec<(i32, usize)>>, Error> {
+        let captured = self.capture(inventory)?;
+        if !recipe.pure_only {
+            return Ok(captured);
+        }
+        let parts = captured
+            .iter()
+            .copied()
+            .filter(|v| v.0 != RUNE_ESSENCE)
+            .collect::<Vec<_>>();
+        if parts.is_empty() {
+            return Err(Error::Empty);
         }
         Ok(Arc::new(parts))
     }
@@ -278,6 +300,12 @@ impl Config {
         {
             return Err(Error::Policy);
         }
+        if recipe.members && !member {
+            return Err(Error::Members);
+        }
+        if recipe.pure_only && parts.iter().any(|v| v.0 == RUNE_ESSENCE) {
+            return Err(Error::Policy);
+        }
         let mut rune_stacks = 0;
         for item in inventory
             .slots()
@@ -365,6 +393,8 @@ mod tests {
             xp_tenths: 50,
             interval: 11,
             name: "Air rune",
+            members: false,
+            pure_only: false,
         };
         let c = Config {
             altars: [(34760, recipe)].into(),
@@ -413,6 +443,8 @@ mod tests {
             xp_tenths: 65,
             interval: 26,
             name: "Earth rune",
+            members: false,
+            pure_only: false,
         };
         c.altars.insert(34763, earth);
         items.stackable.insert(557);
@@ -521,6 +553,8 @@ mod tests {
             xp_tenths: 55,
             interval: 14,
             name: "Mind rune",
+            members: false,
+            pure_only: false,
         };
         c.altars.insert(34761, r);
         items.stackable.insert(558);
@@ -836,6 +870,110 @@ mod tests {
                 "case{case}"
             );
             assert_eq!((inv, worn, stats), before);
+        }
+    }
+    #[test]
+    fn rune_member_recipes_filter_rune_essence_and_recheck_membership_without_fallback() {
+        for (output, level, xp, interval) in [(562, 35, 85, 74), (561, 44, 90, 91)] {
+            let (mut c, _, mut inv, worn, mut items, mut stats) = fixture();
+            let recipe = Recipe {
+                output,
+                level,
+                xp_tenths: xp,
+                interval,
+                name: "member rune",
+                members: true,
+                pure_only: true,
+            };
+            c.altars.insert(99, recipe);
+            items.stackable.insert(output);
+            stats.set_base(20, interval as i8 - 1);
+            stats.set_current(20, interval as i8);
+            stats
+                .set_xp(20, crate::skills::xp_from_level(interval - 1).unwrap())
+                .unwrap();
+            let parts = c.capture_for(recipe, &inv).unwrap();
+            assert_eq!(parts.len(), 14);
+            assert!(parts.iter().all(|v| v.0 == PURE_ESSENCE));
+            let before = (inv.clone(), stats.clone());
+            assert!(matches!(
+                c.resolve(
+                    recipe,
+                    &parts,
+                    &inv,
+                    &worn,
+                    &items,
+                    &stats,
+                    125,
+                    false,
+                    &mut NoDraw
+                ),
+                Err(Error::Members)
+            ));
+            let forced = c.capture(&inv).unwrap();
+            assert!(matches!(
+                c.resolve(
+                    recipe,
+                    &forced,
+                    &inv,
+                    &worn,
+                    &items,
+                    &stats,
+                    125,
+                    true,
+                    &mut NoDraw
+                ),
+                Err(Error::Policy)
+            ));
+            let p = c
+                .resolve(
+                    recipe,
+                    &parts,
+                    &inv,
+                    &worn,
+                    &items,
+                    &stats,
+                    125,
+                    true,
+                    &mut NoDraw,
+                )
+                .unwrap();
+            assert_eq!(
+                p.inventory
+                    .slots()
+                    .iter()
+                    .flatten()
+                    .find(|i| i.id == output)
+                    .unwrap()
+                    .count,
+                28
+            );
+            assert_eq!(
+                p.inventory
+                    .slots()
+                    .iter()
+                    .flatten()
+                    .filter(|i| i.id == RUNE_ESSENCE)
+                    .count(),
+                14
+            );
+            assert_eq!(
+                p.stats.fine_xp(20) - stats.fine_xp(20),
+                14 * i32::from(xp) * 125 / 100
+            );
+            assert_eq!((inv.clone(), stats.clone()), before);
+            for slot in 0..28 {
+                inv.restore_slot(
+                    slot,
+                    Some(Item {
+                        id: RUNE_ESSENCE,
+                        count: 1,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+            }
+            assert!(matches!(c.capture_for(recipe, &inv), Err(Error::Empty)));
         }
     }
 }

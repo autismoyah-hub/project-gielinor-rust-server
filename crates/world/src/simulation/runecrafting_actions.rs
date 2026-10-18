@@ -28,7 +28,7 @@ impl World {
         if p.pending_logout || p.saving || p.protection.access_protected(p.has_modal) {
             return;
         }
-        let materials = match config.capture(&p.data.inventory) {
+        let materials = match config.capture_for(recipe, &p.data.inventory) {
             Ok(v) => v,
             Err(e) => {
                 refusal(&mut self.events, p.id, e);
@@ -168,13 +168,15 @@ mod tests {
             panic!("Ordinary altar crafting must not draw RNG");
         }
     }
-    const RECIPES: [(u32, i32, u8, u16, u8); 6] = [
+    const RECIPES: [(u32, i32, u8, u16, u8); 8] = [
         (34760, 556, 1, 50, 11),
         (34761, 558, 2, 55, 14),
         (34762, 555, 5, 60, 19),
         (34763, 557, 9, 65, 26),
         (34764, 554, 14, 70, 35),
         (34765, 559, 20, 75, 46),
+        (34769, 562, 35, 85, 74),
+        (34768, 561, 44, 90, 91),
     ];
     fn fixture(index: usize, kind: usize, member: bool) -> (World, ActorId, Location, Recipe) {
         let (id, output, level, xp_tenths, interval) = RECIPES[index];
@@ -184,6 +186,8 @@ mod tests {
             xp_tenths,
             interval,
             name: "rune",
+            members: index >= 6,
+            pure_only: index >= 6,
         };
         let mut w = World::default();
         for x in (3192..3232).step_by(8) {
@@ -741,5 +745,148 @@ mod tests {
             .unwrap();
         w.tick_with_random(&mut NoDraw).unwrap();
         assert_eq!(w.data(a).unwrap().inventory.get(0).unwrap().count, 56);
+    }
+    #[test]
+    fn rune_member_chaos_nature_actual_dispatch_pure_only_and_live_authority() {
+        for index in 6..8 {
+            for kind in 0..3 {
+                for member in [false, true] {
+                    let (mut w, a, loc, r) = fixture(index, kind, member);
+                    let before = w.data(a).unwrap().clone();
+                    start(&mut w, a, loc);
+                    w.tick_with_random(&mut NoDraw).unwrap();
+                    let data = w.data(a).unwrap();
+                    if !member || kind == 0 {
+                        assert_eq!(data.inventory, before.inventory);
+                        assert_eq!(data.stats, before.stats);
+                    } else {
+                        let consumed = if kind == 1 { 28 } else { 14 };
+                        assert_eq!(
+                            data.inventory
+                                .slots()
+                                .iter()
+                                .flatten()
+                                .find(|i| i.id == r.output)
+                                .unwrap()
+                                .count,
+                            consumed * 2
+                        );
+                        assert_eq!(
+                            data.inventory
+                                .slots()
+                                .iter()
+                                .flatten()
+                                .filter(|i| i.id == 1436)
+                                .count(),
+                            (28 - consumed) as usize
+                        );
+                        assert_eq!(
+                            data.stats.fine_xp(20) - before.stats.fine_xp(20),
+                            consumed * i32::from(r.xp_tenths) * 125 / 100
+                        );
+                    }
+                }
+            }
+            let (mut w, a, loc, _) = fixture(index, 1, true);
+            start(&mut w, a, loc);
+            w.players.get_mut(a.slot as usize).unwrap().member = false;
+            let before = w.data(a).unwrap().clone();
+            w.tick_with_random(&mut NoDraw).unwrap();
+            assert_eq!(w.data(a).unwrap().inventory, before.inventory);
+            assert_eq!(w.data(a).unwrap().stats, before.stats);
+        }
+    }
+    #[test]
+    fn rune_member_chaos_nature_daeyalt_priority_and_outfit_remain_independent_of_ignored_rune() {
+        for index in 6..8 {
+            let (mut w, a, loc, r) = fixture(index, 0, true);
+            outfit(&mut w, a, 4, 1);
+            for slot in 0..14 {
+                w.data_mut(a)
+                    .unwrap()
+                    .inventory
+                    .restore_slot(
+                        slot,
+                        Some(Item {
+                            id: if slot < 7 { 24704 } else { 7936 },
+                            count: 1,
+                            vars: 0,
+                        }),
+                    )
+                    .unwrap();
+            }
+            let xp = w.data(a).unwrap().stats.fine_xp(20);
+            start(&mut w, a, loc);
+            let mut rng = OutfitDraw { value: 0, calls: 0 };
+            w.tick_with_random(&mut rng).unwrap();
+            let d = w.data(a).unwrap();
+            assert_eq!(
+                d.inventory
+                    .slots()
+                    .iter()
+                    .flatten()
+                    .find(|i| i.id == r.output)
+                    .unwrap()
+                    .count,
+                26
+            );
+            assert_eq!(
+                d.inventory
+                    .slots()
+                    .iter()
+                    .flatten()
+                    .filter(|i| i.id == 7936)
+                    .count(),
+                7
+            );
+            assert_eq!(
+                d.inventory
+                    .slots()
+                    .iter()
+                    .flatten()
+                    .filter(|i| i.id == 1436)
+                    .count(),
+                14
+            );
+            assert_eq!(
+                d.stats.fine_xp(20) - xp,
+                (7.0 * f64::from(r.xp_tenths) * 1.5 * 1.25) as i32
+            );
+            assert_eq!(rng.calls, 1);
+            let xp = d.stats.fine_xp(20);
+            start(&mut w, a, loc);
+            rng.calls = 0;
+            w.tick_with_random(&mut rng).unwrap();
+            let d = w.data(a).unwrap();
+            assert_eq!(
+                d.inventory
+                    .slots()
+                    .iter()
+                    .flatten()
+                    .find(|i| i.id == r.output)
+                    .unwrap()
+                    .count,
+                52
+            );
+            assert_eq!(
+                d.stats.fine_xp(20) - xp,
+                7 * i32::from(r.xp_tenths) * 125 / 100
+            );
+            assert_eq!(
+                d.inventory
+                    .slots()
+                    .iter()
+                    .flatten()
+                    .filter(|i| i.id == 1436)
+                    .count(),
+                14
+            );
+            assert_eq!(rng.calls, 1);
+            let before = d.clone();
+            start(&mut w, a, loc);
+            w.tick_with_random(&mut NoDraw).unwrap();
+            assert_eq!(w.data(a).unwrap().inventory, before.inventory);
+            assert_eq!(w.data(a).unwrap().stats, before.stats);
+        }
     }
 }

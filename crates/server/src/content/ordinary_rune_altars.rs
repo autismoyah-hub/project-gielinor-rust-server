@@ -1,4 +1,4 @@
-//! Ordinary six-rune altar profiles use independent target and Wiki facts.
+//! Ordinary and pure-only member altar profiles use independent target and Wiki facts.
 use super::{Definitions, Symbols};
 use gielinor_world::runecrafting::{Config, OutfitBinding, Recipe};
 const ROWS: [(&str, u32, &str, i32, &str, u8, u16, u8); 6] = [
@@ -43,6 +43,28 @@ const ROWS: [(&str, u32, &str, i32, &str, u8, u16, u8); 6] = [
         20,
         75,
         46,
+    ),
+];
+const MEMBER_ROWS: [(&str, u32, &str, i32, &str, u8, u16, u8); 2] = [
+    (
+        "chaos_altar",
+        34769,
+        "chaosrune",
+        562,
+        "Chaos rune",
+        35,
+        85,
+        74,
+    ),
+    (
+        "nature_altar",
+        34768,
+        "naturerune",
+        561,
+        "Nature rune",
+        44,
+        90,
+        91,
     ),
 ];
 const HELD_GUARDS: [(&str, i32); 5] = [
@@ -199,7 +221,9 @@ pub fn ordinary_rune_altars(
     }
 
     let mut altars = std::collections::BTreeMap::new();
-    for &(symbol, id, item_symbol, output, name, level, xp_tenths, interval) in &ROWS {
+    for &(symbol, id, item_symbol, output, name, level, xp_tenths, interval) in
+        ROWS.iter().chain(MEMBER_ROWS.iter())
+    {
         let d = defs
             .locations
             .get(&id)
@@ -225,6 +249,8 @@ pub fn ordinary_rune_altars(
                 xp_tenths,
                 interval,
                 name,
+                members: MEMBER_ROWS.iter().any(|v| v.1 == id),
+                pure_only: MEMBER_ROWS.iter().any(|v| v.1 == id),
             },
         );
     }
@@ -293,8 +319,11 @@ mod tests {
             ("blankrune_high", 7936, "Pure essence", false),
         ]
         .into_iter()
-        .chain(ROWS.iter().map(|v| (v.2, v.3, v.4, true)))
-        {
+        .chain(
+            ROWS.iter()
+                .chain(MEMBER_ROWS.iter())
+                .map(|v| (v.2, v.3, v.4, true)),
+        ) {
             let mut item = gielinor_cache::definitions::ItemType::decode(b"\0").unwrap();
             item.name = name.into();
             item.stackable = stack;
@@ -322,7 +351,7 @@ mod tests {
             d.items.insert(id as u32, item);
             objects.insert(symbol.into(), id);
         }
-        for &(symbol, id, ..) in &ROWS {
+        for &(symbol, id, ..) in ROWS.iter().chain(MEMBER_ROWS.iter()) {
             let mut raw = b"\x02Altar\0\x0e\x03\x0f\x03\x1eCraft-rune\0\0".to_vec();
             let ty = gielinor_cache::locations::LocationType::decode(&raw).unwrap();
             raw.clear();
@@ -337,7 +366,16 @@ mod tests {
         let spots = [("runecrafting".into(), 186)].into();
         let stats = [("runecrafting".into(), 20)].into();
         let c = ordinary_rune_altars(&objects, &locations, &seq, &spots, &stats, &d).unwrap();
-        assert_eq!(c.altars.len(), 6);
+        assert_eq!(c.altars.len(), 8);
+        assert_eq!(
+            c.altars
+                .values()
+                .filter(|v| v.members && v.pure_only)
+                .count(),
+            2
+        );
+        assert_eq!(c.altars[&34769].level, 35);
+        assert_eq!(c.altars[&34768].interval, 91);
         assert_eq!(c.altars[&34763].level, 9);
         assert_eq!(c.blocked_held.len(), 5);
         assert!(!c.blocked_held.contains(&24704));
@@ -345,7 +383,11 @@ mod tests {
         assert_eq!(c.outfit.len(), 13);
         assert_eq!(c.outfit[&26874].slot, 7);
         assert_eq!(
-            c.altars.values().map(|v| v.xp_tenths).collect::<Vec<_>>(),
+            c.altars
+                .values()
+                .take(6)
+                .map(|v| v.xp_tenths)
+                .collect::<Vec<_>>(),
             vec![50, 55, 60, 65, 70, 75]
         );
         d.items.get_mut(&26856).unwrap().wear[0] = 3;
