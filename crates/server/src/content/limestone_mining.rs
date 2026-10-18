@@ -123,6 +123,8 @@ mod tests {
             picks: [(
                 1265,
                 Pickaxe {
+                    members: false,
+                    fast_one_in: None,
                     level: 1,
                     animation: 625,
                     interval: 8,
@@ -218,6 +220,8 @@ mod dispatch_tests {
                 picks: [(
                     1265,
                     Pickaxe {
+                        members: false,
+                        fast_one_in: None,
                         level: 1,
                         animation: 625,
                         interval: 8,

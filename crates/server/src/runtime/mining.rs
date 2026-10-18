@@ -1,7 +1,7 @@
 use super::*;
 impl<B: AccountBackend> Runtime<B> {
-    /// Ordinary copper/tin with Wiki standard metal pickaxe intervals.
-    /// Special picks, guild modifiers, gems and specialised rocks are excluded.
+    /// Registered ordinary/staged rocks with standard and selected uncharged special picks.
+    /// Charged/quest-bound picks, guild modifiers, gems and specialised activities are separate.
     pub fn configure_mining(&mut self, names: &crate::startup::Names) -> io::Result<()> {
         use gielinor_world::mining::{Config, Pickaxe, Rock};
         if !self.connections.is_empty() {
@@ -20,11 +20,16 @@ impl<B: AccountBackend> Runtime<B> {
             picks.insert(
                 names.id("obj", &format!("{metal}_pickaxe"))? as i32,
                 Pickaxe {
+                    members: false,
+                    fast_one_in: None,
                     level,
                     animation: names.short("seq", &format!("human_mining_{metal}_pickaxe"))?,
                     interval,
                 },
             );
+        }
+        for (id,pick) in crate::content::special_pickaxes(names.group("obj"),names.group("seq"),names.group("stat"),&self.definitions).map_err(io::Error::other)? {
+            if picks.insert(id,pick).is_some() {return Err(io::Error::other("Conflicting special pickaxe"));}
         }
         let mut config = Config {
             skill: u8::try_from(names.id("stat", "mining")?).map_err(io::Error::other)?,

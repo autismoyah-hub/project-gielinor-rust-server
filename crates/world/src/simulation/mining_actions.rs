@@ -27,7 +27,7 @@ impl World {
         let clock = self.clock.0;
         let revision = p.location_revision.unwrap_or(0);
         let level = p.data.stats.current(skill) as i32;
-        let pick = config.pick(&p.data.inventory, &p.data.equipment, level);
+        let pick = config.pick_for_member(&p.data.inventory, &p.data.equipment, level, p.member);
         let mut trace = crate::gathering::Trace {
             tick: clock,
             location: loc,
@@ -115,7 +115,7 @@ impl World {
                     text: "You swing your pick at the rock.".into(),
                 });
             }
-            p.action_delay = self.clock.deadline(pick.interval - 1);
+            p.action_delay = self.clock.deadline(pick.action_delay(random) - 1);
             self.events.push(WorldEvent::PlayerCombatAnimation {
                 actor,
                 sequence: pick.animation,

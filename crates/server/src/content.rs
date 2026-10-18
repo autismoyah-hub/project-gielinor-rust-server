@@ -8,6 +8,8 @@ mod light_sources;
 pub use light_sources::light_sources;
 mod prospector_outfit;
 pub use prospector_outfit::prospector_outfit;
+mod special_pickaxes;
+pub use special_pickaxes::special_pickaxes;
 mod granite_cannonballs;
 pub use granite_cannonballs::granite_cannonballs;
 mod cupronickel_smelting;
