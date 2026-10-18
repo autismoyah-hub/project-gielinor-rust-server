@@ -3,9 +3,9 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0067: precise assembly rewards and four manual elemental battlestaff attachments; source [e3ced82](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/e3ced82211ee438fd6a74a110d435e6746295a16). Fractional XP retained through existing atomic pair exchange. Shared regression PASS; independent V0–V4 queued.
+OR-MIG-0068: Wiki-fallible crab helmet/claw carving, source [894646a](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/894646a79fa4ba7e3e8b46af6ec000dc6b796514). Actual native choice registration, staged success/broken credits and zero-XP failure. Focused PASS2 server tests/424 hashes unchanged; independent V0–V4 queued.
 
-67 units / 75 append-only records (23 historical, 44 new shared/gameplay). Discovery 3508 = 38 partial eligible + 4 framework/infrastructure + 658 configuration + 2808 unassessed; not completion percentages. Automatic pair production, wider Crafting/facilities/quest acquisition and other content remain. PG-DEF-001 Close candidate b11260e pending independent retest. Continue eligible implementation.
+68 units / 76 append-only records: 23 historical and 45 new shared/gameplay. Discovery3508=38partial eligible+4framework/infrastructure+658configuration+2808unassessed, not completion percentages. Automatic pair production, wider Crafting/facilities/quest acquisition and other content remain. PG-DEF-001 Close candidate b11260e pending independent retest. Continue eligible implementation.
 <!-- forge-current:end -->
 
 
@@ -335,3 +335,14 @@ Manual nominal two-tick action, first not shortened, exact animation 7531 and el
 forge-battlestaff-tests-attempt-002 PASS, 423 unchanged source hashes: test result: ok. 108 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.18s; test result: ok. 469 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 29.52s. Actual reversed held dispatches cover all four full-bag exchanges, correct fractional XP, animation/spot events, no early XP and no repeat. Shared precise reward tests cover invalid output/rate/member/current level without loss. Guard 7,058 MiB available, 56.0% commit, 32 pages-in/s, 3.1 ms disk, 32.6% CPU, Cargo -j 2; compiler presence informational. Initial attempt001 failed to compile a new test that treated World.tick as an event return; corrected to drain_events, with original FAIL preserved. Historical failures/private resources preserved. This is working-tree developer regression, not independent/native/pristine acceptance.
 
 Queue: 67 units / 75 append-only records (23 historical, 44 new shared/gameplay); discovery unchanged at 3508 = 38 partial eligible + 4 framework/infrastructure + 658 configuration + 2808 unassessed. Whole Crafting and broad content obligations remain; PG-DEF-001 Close candidate pending independent retest. Continue eligible implementation.
+
+
+## FORGE OR-MIG-0068 — fallible crab carving
+
+Published source 894646a79fa4ba7e3e8b46af6ec000dc6b796514. Two actual ToolCraftingChoices pairs: chisel1755 + shell7538 -> helmet7539/broken7541; claw7536 -> claw7537/broken7540. Member Crafting15, success32.5XP and broken0XP. Wiki curve40/240 gives threshold70 at15 and241 at99; both possible credits stage before one draw. Broken outcomes preserve Stats and emit no skill advancement. Existing captured batches continue after a committed break, retain the chisel and selected/full-bag exchange. Wiki first3/repeat3 intentionally overrides donor CARVING first-shortened2; donor crab rows also omit failure. Exact seven ordinary defs/sequence1280, six Wiki pages and source hashes pinned. No donor code/generated data/assets copied.
+
+Fresh shell/claw Wiki pages tie partial Freeing Pirate Pete to Mogre Camp access and drop acquisition. No additional quest gate is invented for already-owned materials; source rows have none. Quest access, drops, equipment/combat, audio/flavor and whole Crafting remain separate.
+
+forge-crab-carving-tests-attempt-002 PASS2server/0world matched,424 unchanged source hashes,compile31.92s. Both profiles exact roll boundaries and zero-XP/no-advancement broken outcomes, invalid broken credit before RNG; actual held-choice success/break batch yields helmet+broken shell,406 fine XP at125%,one skill event,retained chisel/full bag. Attempt001 new-test compile failure (Catalog lacks clone) preserved, corrected via fresh definitions catalog. Guard7,092MiB available,56.7%commit,989pages-in/s,1.0msdisk,56.8%CPU,j2; paging did not meet the sustained-severity condition. Shared engine unchanged; no independent/native acceptance claimed.
+
+Queue68units/76append-onlyrecords:23historical45newshared/gameplay. Inventory unchanged:3508=38partial eligible+4framework/infrastructure+658configuration+2808unassessed; not completion percentages. PG-DEF-001 Close candidate pending independent retest. Continue eligible implementation.
