@@ -3,11 +3,11 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0059: five immediate Godsword hilt attachments, source [8458972](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/8458972219004e8c4665ebaf22cc07696b1d4f7a). Existing atomic assembly reused, noXP/Smithing gate, exact selected parts/fullbag/rollback; common result publication preserves timed pairs. PASS98server457world/1ignored416same hashes,compile1m06s; independentV0-V4pending.
+OR-MIG-0060: ordinary symbol/rabbit stringing, source [4fca314](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/4fca31436d4f42b7329da8539ba6661f70a4a64d). Three selected wool conversions,Crafting1/1/37and4XP; rabbitHunter24equipment gate excluded. PASS2server0world417same hashes,compile13.67s. Exact generated donor row timing/native/lifecycle/reference acceptance pending.
 
-59units across66append-onlyrecords:23historical36new.0058r2retargets same stringing behavior after actual-skill refusal text correction; source/history preserved. Discovery3508=38partialeligible+657configuration+2813unassessed,notcompletionpercentage.
+60units across67append-onlyrecords:23historical37new. Discovery3508=38partialeligible+657configuration+2813unassessed,notcompletionpercentage. FullCrafting/productionUI,blessing/acquisition/equipment and other systems remain unfinished.
 
-Continue ordinary stringing/Crafting and other eligible modules. Godsword forging/shard hints/dismantling/equipment/combat, broaderCrafting/menus/repeats and Thieving/Prayer obligations remain open. [PG-DEF-001/#123](https://github.com/autismoyah-hub/project-gielinor-rust-server/issues/123) remains ordinarydeferred/unaccepted,notfixedbythis checkpoint.
+Continue dependency-aware implementation; inspect nativeClose cancellation before extending quantity dialogs. [PG-DEF-001/#123](https://github.com/autismoyah-hub/project-gielinor-rust-server/issues/123) remains unaccepted; independent historical evidence is preserved.
 <!-- forge-current:end -->
 
 
@@ -261,3 +261,10 @@ Published source 8458972219004e8c4665ebaf22cc07696b1d4f7a. Actual held11798compl
 forge-godsword-assembly-tests-attempt-001PASS98server457world/1existing ignored416same hashes,compile1m06s. All5pairs/noXP/noadvancement/currentSmithing0/rate0/fullbag/member/creditrollback/late Ancienttemplate and realheldimmediate/forward-reverse/vars/member/credit/no replay checked; whole affected lib regression passed. Guard6849MiB58.7percentcommit24pages-in/s1.1msdisk34.3percentCPU,Cargo-j2.11prepared ordinarydefinitions+11Wiki pages+GodSwordScriptSHA pinned. Independent behavior adaptation,no donor expressions/forging search/DSL/assets copied. Working-treedeveloperchecks,notpristine/native/persistence/independentacceptance.
 
 SourceGodSwordScriptalsoexpresslyrejects held blade-shard joins and usesanvil/hammerforforging; shard-set search, forgingUI/timing/XP/requirements/hints remainunported. Dismantling/acquisition/quests/equipment/combat/specials/audio/flavor separate. NoAttack75wieldgateappliedtoattachment,andnotwholeGodswordorSmithingparity. PG-DEF-001/#123stillordinarydeferred/unfixed/unaccepted. Queue59units66records(23historical36new),inventory3508=38partialeligible+657configuration+2813unassessed. Continue eligiblecontent.
+
+
+## FORGE OR-MIG-0060 — ordinary symbols and rabbit-foot stringing
+
+Published source 4fca31436d4f42b7329da8539ba6661f70a4a64d. Wool1759+1714->1716unblessedF2P/Crafting1;1759+1720->1722unpoweredmember/Crafting1;1759+10134->10132strungfootmember/Crafting37. All4baseCraftingXP/50fineat125percent,selected fullbag pair exchange,noPrayer/HunterXP. Hunter24is equipmentnotcrafting; ownedfootstringsatHunter1/Crafting37. ExistingAssemblyTimed1nativeheldpairroute and atomic inventory/Stats reused unchanged; generic combine/outputplacement retained. Sourcegenericstringing2cycle/shortenedfirst informed1firstclock; actual generated donor row sections not independently observed, so exact timing remainsV4pending,notassertedfullsourceparity.
+
+forge-other-stringing-tests-attempt-001PASS2server0world/417same hashes,compile13.67s. All3fullbag/selected/member/fine50/unchangedotherStats/late definition and real rabbit routeCraft37versusHunter1,admission36/live37->36Craftingtext,member/modal cancellation checked. Guard7477MiB54.7percentcommit0paging5msdisk17.8percentCPU,Cargo-j2.7preparedordinarydefinitions+6Wiki pages pinned;4sourceSHArefs56genericframework, no donor expressions/generated productdata/DSL/assets copied. No shared engine change;59fullregressionhistorical. Private/native/prior failure evidence preserved; no independent acceptance. Blessing/smelting/quest/NPCservices/acquisition/equipment/productionmenus/repeats remain separate. Queue60units67records(23historical37new);discovery38partialeligible657configuration2813unassessedof3508unchanged. PG123ordinaryfindingremainsunaccepted; evaluate shared nativeClose before dependent newquantitydialogs.
