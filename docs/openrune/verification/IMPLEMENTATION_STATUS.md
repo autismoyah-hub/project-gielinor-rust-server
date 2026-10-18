@@ -3,13 +3,13 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0046: cave- and lava-eel cooking, source [138d95d](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/138d95d184e6eecbee7da474410b6d9cb12fe8eb). Affected libraries compiled and eleven-fish adapter checks passed:1server/0world,401source hashes unchanged. Initial test-only compile failure and subsequent repair are preserved. Lava succeeds at Cooking53 without RNG; cave has its Wiki curve and cutoff74.
+OR-MIG-0047: shared random food healing and eight profiles, source [3f49323](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/3f49323fa71adb9ab53df7b789f18ffbf737712c). Full affected regression passed85server/445world,1existing ignored,402source hashes unchanged. Inclusive healing, selected transactions, live membership and stackable skewer returns are registered through actual queued Eat dispatch.
 
-The manual subset has27fire/40range profiles. Cave random8–12HP consumption is not yet registered; lava11HP already exists. Both remain member-only. Range manual1is pinned; fire4retains donor default pending V4. No quest/acquisition parity claimed.
+Thin/lean/fat snails, two spiders, frog spawn, slimy eel and cave eel now use their pinned random ranges. All return policies and no-loss/no-RNG failures are explicit. Existing food APIs are retained. Ordinary cooking subset remains27fire/40range profiles; cave consumption is now implemented separately from0046production.
 
-There are46implementation units across50append-only records:23historical and23new gameplay/shared units, all pending independent verification. Discovery remains3,508records:30partially contracted eligible files/tables,656configuration and2,822unassessed, not a completion percentage.
+There are47implementation units across51append-only records:23historical and24new gameplay/shared units, all pending independent verification. Discovery remains3,508records:30partially contracted eligible files/tables,656configuration and2,822unassessed; this is not a completion percentage.
 
-Next: shared random food healing and eligible special foods. Remaining work includes Anglerfish PvP eligibility, quantity/Cook menus, modifiers, surfaces, cake tin returns, reconciliation and independent V0–V4. All historical evidence and unrelated changes are preserved.
+Remaining work includes further FoodData/content batches, Anglerfish PvP eligibility, delayed effects, quantities/Cook menus, modifiers/special surfaces, cake tin returns, inventory reconciliation and independent V0–V4. All historical/private evidence and unrelated changes are preserved.
 <!-- forge-current:end -->
 
 
@@ -172,3 +172,8 @@ Published source 461424d9c7f1ab00ffdbc264f583088b77d978ef. Canonical meat cookin
 ## Implementation checkpoint OR-MIG-0046
 
 Published 138d95d184e6eecbee7da474410b6d9cb12fe8eb. Production-only eel adapter extends existing fish dispatch; no new engine. Queue46units/50records, independent acceptance pending. Continue shared random food healing without approximating cave eel as fixed10HP.
+
+
+## Implementation checkpoint OR-MIG-0047
+
+Published 3f49323fa71adb9ab53df7b789f18ffbf737712c. Shared staged random healing and8actual Eat profiles; full85server/445world regressionPASS/1existing ignored/402unchanged hashes. Queue47units51records, all independent verification pending. Continue eligible FoodData and shared dependencies.
