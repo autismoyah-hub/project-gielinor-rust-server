@@ -3,9 +3,9 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0088: sixteen ordinary silver furnace products; source [d2f0a18](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/d2f0a18c213e43247cbf6c47bb10a42a96639d94). Focused/binary PASS; independent V0–V4 queued. Dedicated UI/sound/quest-specific rows and source2first versusWiki3 remain obligations.
+OR-MIG-0089: sixteen ordinary mining targets; source [6f812cf](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/6f812cffdada9258897875d101807af0310db8fe). Focused/binary PASS; independent V0–V4 queued. Clay withheld issue74; Guild/modifiers/side drops/alternate entry/native probability remain.
 
-88 units / 97 append-only records. Discovery3508={'not_yet_assessed': 2796, 'configuration': 659, 'framework_or_infrastructure': 9, 'eligible_gameplay_behavior': 44}, not completion percentages. PG-DEF-001 Close candidate pending independent retest.
+89 units / 98 append-only records. Discovery3508={'not_yet_assessed': 2793, 'configuration': 660, 'framework_or_infrastructure': 10, 'eligible_gameplay_behavior': 45}, not completion percentages. PG-DEF-001 Close candidate pending independent retest.
 <!-- forge-current:end -->
 
 
@@ -550,3 +550,12 @@ Source d2f0a18c213e43247cbf6c47bb10a42a96639d94: unstrung symbol16/50XP/F2P,sick
 Silver001 focused PASS1server/0world matches450unchanged hashes,compile20.39s/test0.01s; actual binaries001 PASS450/2.61s.16recipe fullbag/material/count/precise reward/member/mould/variablegem/missingtool/credit-refusal matrix. No shared engine change;87full shared regression protects dependency. Developer working-tree evidence, not actual native/composed silver or pristine independent acceptance.
 
 Source first2/repeat3 versus all16Wiki3 remains explicit. Generic quantity substitutes donor dedicated silver UI/last-type; sound/category-wide furnaces absent. Quest-specific unholy emblem/conductor/demonic sigil/Ivandis rod withheld, enchanting/blessing/stringing/feathering/acquisition separate. Queue97records88units; independentV0–V4 queued. Discovery3508={'not_yet_assessed': 2796, 'configuration': 659, 'framework_or_infrastructure': 9, 'eligible_gameplay_behavior': 44}, not completion percentages.
+
+
+## FORGE OR-MIG-0089 — sixteen ordinary mining targets
+
+Source 6f812cffdada9258897875d101807af0310db8fe: iron/silver/coal/gold/mithril/adamantite/runite two variants each plus second copper/tin,16new static Mine1 targets. Level15/20/30/40/55/70/85 and1,XP35/40/50/65/80/95/125 and17.5; base respawn9/100/50/100/200/400/1200 and4ticks,source/Wiki comparative success curves.9ordinary F2P items/17staticlocs/11Wiki pages/3source refs pinned. Existing first copper/tin retained including old11390depletion; new16use11391. Existing authoritative reach/tool/roll/staged reward/depletion/timer reused.
+
+Final004 PASS2server/0world matches451unchanged hashes,16.28scompile/0.24stest; actual bins002 PASS451/2.23s. Actual reached iron Mine1 awards oneore/437fine at125%, retains pick, depletes11391 and restores after9; fullbag no reward/state mutation.001profile/003unpublished18candidate PASS and002event-borrow compile failure retained. Final guarded0046,659MiB/57.6%commit/800pages-in/s/3.2msdisk/32.9%CPU,j2; no severe paging/resource deferral. Developer working-tree evidence, not pristine/native independent acceptance.
+
+Issue74 research discovered before publication: Clay15183474 line23 says1tick,line77 says2; Clay rocks15209138 says2. Source2does not resolve conflict. Two Clay targets withheld, unpublished source/evidence preserved. RQ-R29-F01..F04/clay bracelet remain unresolved; ironF05..F08 only normal candidate base, Guild2.4s absent; coalF09/F10 candidate base. Guild reductions/equipment bonuses/side drops/special rocks/quest access/prospect/Mine3/pick-on-rock absent. Comparative endpoints not target239.1 probability authority. Queue98records89units/independentV0–V4 queued. Discovery3508={'not_yet_assessed': 2793, 'configuration': 660, 'framework_or_infrastructure': 10, 'eligible_gameplay_behavior': 45}, not completion percentages.
