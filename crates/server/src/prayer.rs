@@ -374,3 +374,132 @@ mod additional_bone_tests {
         assert_eq!(failed.restore, baseline.restore);
     }
 }
+
+/// Four exact robes for selected burial only. Other preservation consumers remain separate.
+pub fn zealot_burial(
+    objects: &Symbols,
+    defs: &Definitions,
+) -> io::Result<gielinor_world::prayer_preservation::Rule> {
+    for (symbol, id, name, members, slot) in [
+        ("shades_prayer_helm", 25438, "Zealot's helm", true, Some(0)),
+        (
+            "shades_prayer_top",
+            25434,
+            "Zealot's robe top",
+            true,
+            Some(4),
+        ),
+        (
+            "shades_prayer_bottom",
+            25436,
+            "Zealot's robe bottom",
+            true,
+            Some(7),
+        ),
+        (
+            "shades_prayer_boots",
+            25440,
+            "Zealot's boots",
+            true,
+            Some(10),
+        ),
+        ("fiendish_ashes", 25766, "Fiendish ashes", false, None),
+        ("vile_ashes", 25769, "Vile ashes", false, None),
+        ("malicious_ashes", 25772, "Malicious ashes", true, None),
+        ("abyssal_ashes", 25775, "Abyssal ashes", true, None),
+        ("infernal_ashes", 25778, "Infernal ashes", true, None),
+    ] {
+        let d = defs
+            .items
+            .get(&(id as u32))
+            .ok_or_else(|| io::Error::other("Missing Zealot burial item"))?;
+        if objects.get(symbol) != Some(&id)
+            || d.name != name
+            || d.members != members
+            || d.stackable
+            || d.dummy == 1
+            || d.cert.template != 0
+            || d.placeholder.template != 0
+            || d.transform.template != 0
+        {
+            return Err(io::Error::other(format!("Invalid Zealot burial item {id}")));
+        }
+        if let Some(slot) = slot {
+            if d.wear[0] != slot || d.inventory_ops[1].as_deref() != Some("Wear") {
+                return Err(io::Error::other("Invalid Zealot robe wear binding"));
+            }
+        }
+    }
+    Ok(gielinor_world::prayer_preservation::Rule {
+        pieces: [(25438, 0), (25434, 4), (25436, 7), (25440, 10)],
+        excluded: [25766, 25769, 25772, 25775, 25778].into(),
+    })
+}
+
+#[cfg(test)]
+mod zealot_binding_tests {
+    use super::*;
+    #[test]
+    fn zealot_burial_profiles_bind_four_slots_and_five_ash_exclusions_atomically() {
+        let mut d = Definitions {
+            inventories: Default::default(),
+            locations: Default::default(),
+            npcs: Default::default(),
+            items: Default::default(),
+            varbits: Default::default(),
+            varps: Default::default(),
+            stats: Default::default(),
+        };
+        let mut objects = Symbols::new();
+        for (sym, id, name, members, slot) in [
+            ("shades_prayer_helm", 25438, "Zealot's helm", true, Some(0)),
+            (
+                "shades_prayer_top",
+                25434,
+                "Zealot's robe top",
+                true,
+                Some(4),
+            ),
+            (
+                "shades_prayer_bottom",
+                25436,
+                "Zealot's robe bottom",
+                true,
+                Some(7),
+            ),
+            (
+                "shades_prayer_boots",
+                25440,
+                "Zealot's boots",
+                true,
+                Some(10),
+            ),
+            ("fiendish_ashes", 25766, "Fiendish ashes", false, None),
+            ("vile_ashes", 25769, "Vile ashes", false, None),
+            ("malicious_ashes", 25772, "Malicious ashes", true, None),
+            ("abyssal_ashes", 25775, "Abyssal ashes", true, None),
+            ("infernal_ashes", 25778, "Infernal ashes", true, None),
+        ] {
+            let mut t = gielinor_cache::definitions::ItemType::decode(b"\0").unwrap();
+            t.name = name.into();
+            t.members = members;
+            if let Some(slot) = slot {
+                t.wear[0] = slot;
+                t.inventory_ops[1] = Some("Wear".into());
+            }
+            d.items.insert(id as u32, t);
+            objects.insert(sym.into(), id);
+        }
+        let rule = zealot_burial(&objects, &d).unwrap();
+        assert_eq!(
+            rule.pieces,
+            [(25438, 0), (25434, 4), (25436, 7), (25440, 10)]
+        );
+        assert_eq!(rule.excluded.len(), 5);
+        d.items.get_mut(&25440).unwrap().transform.template = 1;
+        assert!(zealot_burial(&objects, &d).is_err());
+        d.items.get_mut(&25440).unwrap().transform.template = 0;
+        d.items.get_mut(&25438).unwrap().wear[0] = 1;
+        assert!(zealot_burial(&objects, &d).is_err());
+    }
+}

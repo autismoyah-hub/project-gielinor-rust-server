@@ -166,7 +166,7 @@ impl World {
         });
         Ok(())
     }
-    pub(super) fn process_prayer(&mut self, slot: usize) {
+    pub(super) fn process_prayer(&mut self, slot: usize, random: &mut impl RandomSource) {
         if self
             .players
             .get(slot)
@@ -208,7 +208,7 @@ impl World {
             config.finish_offering_xp(&mut p.data, &self.object_types, pending.bone, xp)
         } else if let Some(slot)=selected {
             if p.pending_logout || p.has_modal || (self.prayer_member_bones.contains(&pending.bone) && !p.member) {Ok(None)}
-            else {config.finish_selected(&mut p.data,&self.object_types,pending,slot)}
+            else {crate::prayer_preservation::finish_selected(config,&mut p.data,&self.object_types,pending,slot,self.prayer_preservation.as_ref(),p.member,random)}
         } else {
             config.finish(&mut p.data, &self.object_types, pending)
         };
@@ -287,6 +287,163 @@ impl World {
         }
         if let Some((actor, continuation, offered)) = tower_completion {
             self.finish_tower_offering(actor, continuation, offered);
+        }
+    }
+}
+
+#[cfg(test)]
+mod zealot_tests {
+    use super::*;
+    use crate::{inventory::Item, stats::Stats, CoordGrid};
+    struct Fixed {
+        draw: u32,
+        calls: u32,
+    }
+    impl RandomSource for Fixed {
+        fn below(&mut self, n: u32) -> u32 {
+            assert_eq!(n, 80);
+            self.calls += 1;
+            self.draw
+        }
+    }
+    #[test]
+    fn zealot_actual_selected_burial_dispatch_rechecks_live_gear_and_excludes_ashes() {
+        for mode in 0..9 {
+            let mut w = World::default();
+            w.prayer = Some(crate::prayer::Config {
+                skill: 5,
+                animation: 827,
+                bones: [(526, 4.5), (25766, 10.0)].into(),
+                necklace: None,
+                restore: Default::default(),
+                worn_xp_percent: Default::default(),
+                chaos: None,
+            });
+            let rule = crate::prayer_preservation::Rule {
+                pieces: [(25438, 0), (25434, 4), (25436, 7), (25440, 10)],
+                excluded: [25766, 25769, 25772, 25775, 25778].into(),
+            };
+            w.prayer_preservation = Some(rule.clone());
+            w.prayer_ashes.insert(25766, 2295);
+            let input = if mode == 6 { 25766 } else { 526 };
+            let mut p = PlayerData::new(
+                1,
+                "Zealot".into(),
+                CoordGrid::new(3200, 3200, 0).unwrap(),
+                Stats::default(),
+            );
+            p.xp_rate_hundreds = 500;
+            for slot in 0..28 {
+                p.inventory
+                    .restore_slot(
+                        slot,
+                        Some(Item {
+                            id: input,
+                            count: 1,
+                            vars: 0,
+                        }),
+                    )
+                    .unwrap();
+            }
+            if mode != 3 {
+                for &(id, slot) in &rule.pieces {
+                    p.equipment
+                        .restore_slot(
+                            slot,
+                            Some(Item {
+                                id,
+                                count: 1,
+                                vars: 0,
+                            }),
+                        )
+                        .unwrap();
+                }
+            }
+            w.queue_login(1, p).unwrap();
+            let mut rng = Fixed {
+                draw: if mode == 1 { 0 } else { 79 },
+                calls: 0,
+            };
+            w.tick_with_random(&mut rng).unwrap();
+            let a = w.actors().next().unwrap();
+            w.set_membership(a, true).unwrap();
+            w.drain_events();
+            w.submit(
+                a,
+                Action::BuryItemSlot {
+                    slot: 27,
+                    item: input,
+                },
+            )
+            .unwrap();
+            w.tick_with_random(&mut rng).unwrap();
+            assert_eq!(rng.calls, 0);
+            if mode == 2 {
+                for &(_, slot) in &rule.pieces {
+                    w.data_mut(a)
+                        .unwrap()
+                        .equipment
+                        .restore_slot(slot, None)
+                        .unwrap();
+                }
+            }
+            if mode == 3 {
+                for &(id, slot) in &rule.pieces {
+                    w.data_mut(a)
+                        .unwrap()
+                        .equipment
+                        .restore_slot(
+                            slot,
+                            Some(Item {
+                                id,
+                                count: 1,
+                                vars: 0,
+                            }),
+                        )
+                        .unwrap();
+                }
+            }
+            if mode == 4 {
+                w.set_membership(a, false).unwrap();
+            }
+            if mode == 5 {
+                w.data_mut(a)
+                    .unwrap()
+                    .inventory
+                    .restore_slot(27, None)
+                    .unwrap();
+            }
+            if mode == 7 {
+                for &(id, _) in &rule.pieces {
+                    w.object_types.dummy.insert(id);
+                }
+            }
+            if mode == 8 {
+                w.set_modal_open(a, true).unwrap();
+            }
+            let gear = w.data(a).unwrap().equipment.clone();
+            let inv = w.data(a).unwrap().inventory.clone();
+            w.tick_with_random(&mut rng).unwrap();
+            let d = w.data(a).unwrap();
+            assert_eq!(d.equipment, gear);
+            assert_eq!(d.inventory.get(0), inv.get(0));
+            if matches!(mode, 5 | 8) {
+                assert_eq!(d.inventory, inv);
+                assert_eq!(d.stats.fine_xp(5), 0);
+                assert_eq!(rng.calls, 0);
+                continue;
+            }
+            let saved = matches!(mode, 0 | 3);
+            assert_eq!(d.inventory.get(27).is_some(), saved, "mode {mode}");
+            assert_eq!(d.stats.fine_xp(5), if mode == 6 { 500 } else { 225 });
+            assert_eq!(rng.calls, u32::from(matches!(mode, 0 | 1 | 3)));
+            assert!(w.drain_events().iter().any(|e| matches!(
+                e,
+                WorldEvent::Prayer {
+                    event: crate::prayer::Event::Completed { .. },
+                    ..
+                }
+            )));
         }
     }
 }

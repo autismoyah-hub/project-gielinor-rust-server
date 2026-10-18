@@ -98,6 +98,7 @@ pub fn configure<B: AccountBackend>(
     crate::prayer::configure_missing_bones(n("obj"),&runtime.definitions,&mut prayer)?;
     runtime.world.prayer_ashes=crate::prayer::configure_ashes(n("obj"),n("seq"),&runtime.definitions,&mut prayer)?;
     runtime.world.prayer_member_bones=prayer.bones.keys().filter(|id|runtime.definitions.items.get(&(**id as u32)).is_some_and(|d|d.members)).copied().collect();
+    runtime.world.prayer_preservation=Some(crate::prayer::zealot_burial(n("obj"),&runtime.definitions)?);
     runtime.world.prayer=Some(prayer);
     let varp = |name| -> io::Result<gielinor_world::variables::Varp> {
         runtime

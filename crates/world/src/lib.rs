@@ -218,6 +218,7 @@ pub mod npc_route;
 pub mod player_regen;
 pub mod player_timers;
 pub mod prayer;
+pub mod prayer_preservation;
 pub mod prayer_book;
 pub mod prayer_drain;
 pub mod prayer_runtime;

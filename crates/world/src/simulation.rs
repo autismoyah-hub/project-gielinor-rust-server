@@ -955,6 +955,7 @@ pub struct World {
     pub empty_containers: BTreeMap<i32,crate::container_emptying::Rule>,
     pub coin_pouches: BTreeMap<i32,crate::item_packs::PouchRule>,
     pub prayer: Option<crate::prayer::Config>,
+    pub prayer_preservation: Option<crate::prayer_preservation::Rule>,
     pub prayer_member_bones: std::collections::BTreeSet<i32>,
     pub prayer_ashes: BTreeMap<i32,u16>,
     pub regeneration: Option<crate::player_regen::Config>,
@@ -1079,6 +1080,7 @@ impl Default for World {
             potion_upgrades: None,
             combat_mixing: None,
             prayer: None,
+            prayer_preservation: None,
             prayer_member_bones: Default::default(),
             prayer_ashes: BTreeMap::new(),
             regeneration: None,
@@ -2479,7 +2481,7 @@ impl World {
                         .collect();
                     for slot in self.order.clone() {
                         self.process_tower_arrival(slot);
-                        self.process_prayer(slot);
+                        self.process_prayer(slot,random);
                         self.resume_tutorial_fire(slot);
                         self.resume_door(slot);
                         self.resume_pickup(slot);
