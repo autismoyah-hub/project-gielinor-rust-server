@@ -3,11 +3,11 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0057: nine legacy shell carvings, source [4c6b73c](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/4c6b73cfcd3b35ce52aa79efd9d2a99464939445). Unchanged56adapter: retained chisel, exact round/pointed raw output, memberCrafting15,32.5XP,2clockfirstmanualcarve. PASS1server0world414same hashes; broader production/native/lifecycle/reference acceptance pending.
+OR-MIG-0058: eleven manual amulet stringing pairs, source [f3b6f42](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/f3b6f4208b775c23ed8b05b66cca579953a901ea). Existing timed selected assembly,Crafting1/4XP, firstcycle1clock; no manufacture levels/XP inherited. PASS3server1world415same hashes,compile14.04s; independentV0-V4pending.
 
-57units across63append-only records:23historical and34newunits. Latest0055r2/0056r2correct feature-specific verification rationale only; original histories/sourceSHAs preserved. Discovery3508:37partialeligible,657configuration,2814unassessed; not a completion percentage.
+58units across64append-onlyrecords:23historical35new. Discovery3508=37partialeligible+657configuration+2814unassessed,notcompletionpercentage. Seven gems/nine shell carves/eleven stringing pairs do not complete Crafting; menus/repeats/facilities/jewellery/other systems remain open.
 
-Continue eligible Crafting and other content. Quantity menus/repeats, other products, Thieving modifiers/stalls/master farmer and broad parity remain unfinished. [PG-DEF-001/#123](https://github.com/autismoyah-hub/project-gielinor-rust-server/issues/123) remains an ordinary deferred/unaccepted native Close/chemistry mismatch.
+Continue dependency-aware implementation. [PG-DEF-001/#123](https://github.com/autismoyah-hub/project-gielinor-rust-server/issues/123) remains ordinary deferred/unaccepted; existing assembly below-level Cooking wording is disclosed for this Crafting adapter. All historical/private/native evidence preserved.
 <!-- forge-current:end -->
 
 
@@ -245,3 +245,10 @@ Published source 4c6b73cfcd3b35ce52aa79efd9d2a99464939445. Nine chisel1755/shell
 forge-snelm-tests-attempt-001PASS1server0world/414same source hashes,compile11.85s. All9pairs/fullbag selected output/chisel retention,100/125/500percentfine325/406/1625,memberrefusal and late badtemplate registration refusal. Guard6597MiB59percentcommit0paging0msdisk15.5percentCPU,Cargo-j2. Shared engine unchanged,56shared001+corrected002historical; working-tree checks not pristine/native/independent acceptance. All private/native/prior failures preserved.
 
 Contract hygiene: appended0055r2and0056r2at their unchanged published sourceSHAs, replacing inherited pouch-specific V0-V4reason text with feature-specific verification obligations. Original published records retained; source/tests/status unchanged and no acceptance implied. Queue57units63append-onlyrecords (23historical34newunits). Discoverycountsunchanged37partialeligible657configuration2814unassessed of3508. OrdinaryPG-DEF-001/#123remainsdeferred/unfixed/unaccepted. Continue dependency-aware Crafting and other eligible modules.
+
+
+## FORGE OR-MIG-0058 — eleven manual amulet stringing pairs
+
+Published source f3b6f4208b775c23ed8b05b66cca579953a901ea. Ballofwool1759plus unstrung1673/1675/1677/1679/1681/1683/6579/19501/21099/21102/21105 ->strung1692/1694/1696/1698/1700/1702/6581/19541/21108/21111/21114. Exact23ordinary item/member/symbol definitions and22Wiki pages pinned. All requireCrafting1and4baseXP; do not conflate manufacture levels/XP. First5F2P,last6member. Existing AssemblyTimed1actual held registry accepts both directions and strict selected slots, atomic full-bag2input/1output plus fineXP; no new engine/schema/RNG/repeat. SourceAMULET_STRINGING2cycle/defaultshortensfirst ->1initial; Wiki2cycle/native timing pending. Generic assembly slot placement/combine text retained; below-level legacy Cooking wording disclosed as ordinary limitation. Manufacture/enchants/spells/qty menus/acquisition/equipment remain separate.
+
+forge-amulet-stringing-tests-attempt-001PASS3server1world/415same hashes,compile14.04s (2newtests plus2existingchemistrymatches,notnewnativeacceptance). All11fullbag/level1/fine50at125percent/memberrefusal/unrelatedduplicates and late metadata; actual registryforward/reverse,trace1clock/live memberrevocation/modalopen-close/stale selected refusal. Guard7518MiB54.1percentcommit0paging3.7msdisk13.8percentCPU,Cargo-j2. Shared engine unchanged; previous regression historical. Independent source/Wiki adapter with4sourceSHArefs56, no donor code/generated table/DSL/assets copied. Private/native/prior failure evidence preserved; noPG123fix/currentHEADreplayclaimed. Queue58units64append-onlyrecords,23historical35new; inventory37partialeligible657configuration2814unassessedunchanged. Continue dependency-aware content.
