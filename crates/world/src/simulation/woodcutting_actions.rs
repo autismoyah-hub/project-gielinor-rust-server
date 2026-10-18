@@ -75,6 +75,10 @@ impl World {
         let level = p.data.stats.current(skill) as i32;
         let axe = config.axe_for_tree(&p.data.inventory, &p.data.equipment, level, &tree);
         trace.tool = axe.map(|(id, _)| id);
+        if denial.is_none() && tree.members && !p.member {
+            denial = Some("members");
+            self.events.push(WorldEvent::GameMessage {actor,text:"You need to be a member to chop down this tree.".into()});
+        }
         if denial.is_none() && level < tree.level {
             denial = Some("level");
             self.events.push(WorldEvent::GameMessage {

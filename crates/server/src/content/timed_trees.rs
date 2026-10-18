@@ -170,6 +170,7 @@ pub fn timed_trees(
         trees.insert(
             row.id,
             Tree {
+                members: false,
                 level: row.level,
                 product: row.item,
                 product_name: row.item_name.into(),
@@ -327,6 +328,7 @@ mod dispatch_tests {
                 trees: [(
                     10819,
                     Tree {
+                        members: false,
                         level: 30,
                         product: 1519,
                         product_name: "Willow logs".into(),

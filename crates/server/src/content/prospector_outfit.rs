@@ -389,6 +389,7 @@ mod dispatch_tests {
             trees: [(
                 10820,
                 Tree {
+                    members: false,
                     level: 15,
                     product: 1521,
                     product_name: "Oak logs".into(),

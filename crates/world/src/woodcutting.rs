@@ -8,6 +8,7 @@ pub struct Axe {
 }
 #[derive(Clone, Debug)]
 pub struct Tree {
+    pub members: bool,
     pub level: i32,
     pub product: i32,
     pub product_name: String,
@@ -251,6 +252,7 @@ mod ranked_tool_tests {
             .unwrap();
         }
         let mut tree = Tree {
+            members: false,
             level: 1,
             product: 1511,
             product_name: "Logs".into(),

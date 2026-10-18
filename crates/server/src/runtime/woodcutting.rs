@@ -35,6 +35,7 @@ impl<B: AccountBackend> Runtime<B> {
         config.trees.insert(
             oak,
             Tree {
+                members: false,
                 level: 15,
                 product: oak_logs,
                 product_name: "Oak logs".into(),
@@ -50,6 +51,7 @@ impl<B: AccountBackend> Runtime<B> {
             config.trees.insert(
                 names.id("loc", "tree")?,
                 Tree {
+                    members: false,
                     level: 1,
                     product: names.id("obj", "logs")? as i32,
                     product_name: "Logs".into(),
@@ -84,6 +86,9 @@ impl<B: AccountBackend> Runtime<B> {
             if config.trees.insert(id, tree).is_some() {
                 return Err(io::Error::other("Conflicting ordinary tree variant"));
             }
+        }
+        for (id,tree) in crate::content::member_timed_trees(names.group("obj"),names.group("loc"),names.group("stat"),&self.definitions).map_err(io::Error::other)? {
+            if config.trees.insert(id,tree).is_some() {return Err(io::Error::other("Conflicting member timed tree"));}
         }
         let regular_logs = names.id("obj", "logs")? as i32;
         for tool in crate::content::woodcutting_axes(

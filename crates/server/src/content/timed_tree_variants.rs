@@ -178,6 +178,7 @@ mod tests {
             primary.insert(
                 id,
                 Tree {
+                    members: false,
                     level,
                     product: logs,
                     product_name: "Logs".into(),
