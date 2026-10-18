@@ -381,6 +381,7 @@ pub fn configure<B: AccountBackend>(
     runtime.configure_potions(n("obj"), n("stat"))?;
     runtime.world.item_packs =
         crate::content::item_packs(n("obj"), &runtime.definitions).map_err(io::Error::other)?;
+    runtime.world.coin_pouches=crate::content::coin_pouches(n("obj"),n("param"),&runtime.definitions).map_err(io::Error::other)?;
     runtime.world.doors =
         crate::doors::resolve(n("content"), n("param"), &parameters, &runtime.definitions)
             .map_err(io::Error::other)?;

@@ -492,10 +492,8 @@ pub enum Action {
         slot: usize,
         item: i32,
     },
-    OpenItemPack {
-        slot: usize,
-        item: i32,
-    },
+    OpenItemPack { slot: usize, item: i32 },
+    OpenCoinPouch { slot: usize, item: i32, all: bool },
     DrinkSlot {
         slot: usize,
         item: i32,
@@ -907,6 +905,7 @@ pub struct World {
     pub swamp_tar: Option<crate::swamp_tar::Config>,
     pub herb_cleaning: Option<crate::herb_cleaning::Config>,
     pub item_packs: BTreeMap<i32, crate::item_packs::Rule>,
+    pub coin_pouches: BTreeMap<i32,crate::item_packs::PouchRule>,
     pub prayer: Option<crate::prayer::Config>,
     pub prayer_member_bones: std::collections::BTreeSet<i32>,
     pub prayer_ashes: BTreeMap<i32,u16>,
@@ -1009,6 +1008,7 @@ impl Default for World {
             slot_preserving_foods: Default::default(),
             potions: BTreeMap::new(),
             item_packs: BTreeMap::new(),
+            coin_pouches: BTreeMap::new(),
             milking: None,
             water_sources: None,
             cooking: None,
@@ -1949,6 +1949,7 @@ impl World {
                     .map_err(|_| ActionError::InvalidItem)?;
             }
             Action::OpenItemPack { slot, item } => self.open_item_pack(id, slot, item)?,
+            Action::OpenCoinPouch { slot, item, all } => self.open_coin_pouch(id,slot,item,all)?,
             Action::CleanHerb { slot, item } => self.clean_herb(id, slot, item)?,
             Action::DrinkSlot {
                 slot,
