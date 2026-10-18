@@ -3,13 +3,13 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-Latest correction: OR-MIG-0037 revision2 and OR-MIG-0041 revision2, published source [864d439](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/864d439132b33395773116d57347f9caefdfcf1c). Sardine burns to369, herring to357, and trout/pike/salmon to343. Exact-ID assertions cover all nine ordinary fish through both fire and standard-range configuration. The focused corrected-source check passed one server test, with399source hashes unchanged.
+OR-MIG-0044: nine member fish and fractional cooking XP, published source [3050963](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/30509633a6d1e0b96eb9530275040b46e43fabe4). The affected regression passed 83 server and 443 world tests, with one existing ignored test and 400 source hashes unchanged. Sea turtle and manta retain their .3 base XP through the existing fine-XP system.
 
-The most recent new feature is OR-MIG-0043: eight member range pies, live membership and optional forced burn cutoffs. Its full affected regression passed82server/441world tests with one existing ignored test. That is earlier shared-engine evidence; it is not fresh native acceptance of the corrected data.
+The manual subset now has 22 fire and 35 range profiles. Live membership, optional forced burn cutoffs, method-specific curves, exact burnt-ID guards and selected-slot atomic transactions are shared. Three range-qualified one-tick fish retain the donor's four-tick fire behavior pending reference verification. Anglerfish consumption remains a separate missing profile.
 
-There are43implementation units across47append-only records:23historical contracts and20new gameplay/shared units. All await independent verification. The3,508discovery records contain30partially contracted eligible files/tables,656configuration records and2,822not yet assessed; this is not a completion percentage.
+There are 44 implementation units across 48 append-only records: 23 historical contracts and 21 new gameplay/shared units, all pending independent verification. OR-MIG-0037r2/0041r2 preserve the burnt-variant correction history. The 3,508 discovery records contain 30 partially contracted eligible files/tables, 656 configuration records and 2,822 not yet assessed; this is not a completion percentage.
 
-Remaining work includes member fish and fractional cooking XP, quantity/Make-X and Cook menus, modifiers/special surfaces, cake tin returns, burnt-container actions, further content, inventory reconciliation and independent V0–V4acceptance. The current manual subset remains13fire/26range profiles. Historical checkpoints and all earlier contracts are preserved.
+Remaining work includes Anglerfish and other special consumption, quantities/Make-X and Cook menus, modifiers and special surfaces, cake tin returns, burnt-container actions, further content, reconciliation and independent V0–V4 acceptance. Historical checkpoints and source evidence are preserved.
 <!-- forge-current:end -->
 
 
@@ -157,3 +157,8 @@ Throughput23historical+20newunits;43units/45append-onlyrecords. Inventory30eligi
 ## Corrected dependency revisions
 
 OR-MIG-0037r2 and OR-MIG-0041r2 use source 864d439132b33395773116d57347f9caefdfcf1c. Five burnt-fish identities are corrected using exact Wiki variant pages. Prior tests passed against their own recipe metadata and did not prove semantic identity. Focused correction002passed1server/0world with399unchanged source hashes, including exact IDs through both configuration paths. No historical source, queue record, character file or private evidence was rewritten. Independent retesting remains queued. Stable unit count stays43; append-only record count becomes47.
+
+
+## Checkpoint OR-MIG-0044
+
+Published source 30509633a6d1e0b96eb9530275040b46e43fabe4 adds nine member fish through a modular adapter and an optional base fine-XP override into the existing Stats transaction. The affected suite passed83server/443world,1existing ignored,400unchanged source hashes. Exact variants, method rules, five99burns and6authoritative fractional-rate cases are covered; independent acceptance remains queued. Current44units/48records; source inventory30eligible partial/656configuration/2822unassessed. Continue special consumption and remaining content; no complete Cooking parity claim.
