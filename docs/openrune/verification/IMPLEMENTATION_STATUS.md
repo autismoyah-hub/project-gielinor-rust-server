@@ -3,9 +3,9 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0082: five instant firelighter coatings through existing selected-pair assembly; source [b8d71f6](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/b8d71f69fb1998f47ba34a96fb5fd79463a1aa44). ZeroXP/requirement,stack conservation,both held orders. Focused/binary PASS;independent V0–V4 queued.
+OR-MIG-0083: one-tick uncharged accursed sceptre upgrade at currentCrafting85/zeroXP;source [9baa4b5](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/9baa4b59e084d6d6eb381605719e2e0c17e176e7). Existing precise timed pair/no new engine. Focused/binary PASS;independent V0–V4 queued.
 
-82 units / 90 append-only records. Discovery3508={'not_yet_assessed': 2801, 'configuration': 659, 'framework_or_infrastructure': 6, 'eligible_gameplay_behavior': 42};not completion percentages. Ignition/campfires/Phoenix/storage/acquisition and broad content remain;PG-DEF-001 Close candidate pending independent retest.
+83 units / 91 append-only records. Discovery3508={'not_yet_assessed': 2801, 'configuration': 659, 'framework_or_infrastructure': 6, 'eligible_gameplay_behavior': 42};not completion percentages. Charged weapon/combat/paid service and broad content remain;PG-DEF-001 Close candidate pending independent retest.
 <!-- forge-current:end -->
 
 
@@ -492,3 +492,12 @@ Source b8d71f69fb1998f47ba34a96fb5fd79463a1aa44: five actual immediate type-pair
 Focused001 PASS,443 unchanged hashes: test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 125 filtered out; finished in 0.40s; test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 484 filtered out; finished in 0.00s. Actual server binaries001 PASS,443 unchanged hashes.     Finished `test` profile [unoptimized + debuginfo] target(s) in 14.09s;     Finished `dev` profile [unoptimized + debuginfo] target(s) in 3.14s. Allfive full bags/selected lighter stack/count,noXP/member/badcredit/stale no-fallback checks;actual registered held-use bothorders each colour yields one product andone stack decrement with untouched other log andno skill event/repeat after4ticks. Guardtest7,086MiB/56.1%commit/0pages-in/s/4.0msdisk/13.6%CPU;binary6,968MiB/56.4%commit/16pages-in/s/3.5msdisk/18.3%CPU,bothj2. Developer working-tree evidence,not pristine/native/independent acceptance.
 
 Queue82units/90append-onlyrecords. Discovery3508={'not_yet_assessed': 2801, 'configuration': 659, 'framework_or_infrastructure': 6, 'eligible_gameplay_behavior': 42},not completion percentages. One new eligible script and one pack configuration classified;table ignition/light/fire/campfire obligations retained. Continue eligible content.
+
+
+## FORGE OR-MIG-0083 — uncharged accursed upgrade
+
+Source 9baa4b59e084d6d6eb381605719e2e0c17e176e7: Skull27673+uncharged Thammaron22552 ->uncharged Accursed27662,currentCrafting85,member,one tick/zeroXP. Existing precise timed selected pair and optional zero reward reused,no engine change. Boosted85/base1 andMagic0/rate0 accepted;Magic70 is wield requirement,not assembly. Exact three ordinary member target types and3Wiki pages/eight source refs pinned. Target retains old Skull of vet'ion casing;Wiki documents August2026rename,explicit compatibility without cache edits. Source COMBINING1/default shortened clamp1 agreesWiki1.
+
+Focused001 PASS,444 unchanged hashes: test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 127 filtered out; finished in 0.27s; test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 484 filtered out; finished in 0.00s. Actual binaries001 PASS,444 unchanged hashes.     Finished `test` profile [unoptimized + debuginfo] target(s) in 10.89s;     Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.74s. Fullbag/boostedcurrent/noMagicgate/noXP,member/level/credit rollback. Actual held registrybothorders start+1 once;live member/Crafting/selected raw/output-credit changes stopwithout loss,no spare substitution/no skill event/repeat. Guardtest7,119MiB/55.5%commit/0pages-in/s/4.0msdisk/7.4%CPU;binary6,207MiB/60.2%commit/0pages-in/s/5.5msdisk/14.5%CPU,bothj2. Developer working-tree checks,not pristine/native/independent acceptance.
+
+No charged22555/ether transfer,combat,swapping/dismantle,Phabelle500k service oracquisition claim. Generic existing assembly feedback retained. Queue83units/91append-onlyrecords. Discovery3508={'not_yet_assessed': 2801, 'configuration': 659, 'framework_or_infrastructure': 6, 'eligible_gameplay_behavior': 42},not completion percentages. Continue eligible content.
