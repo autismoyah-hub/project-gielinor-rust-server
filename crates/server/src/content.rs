@@ -2,6 +2,8 @@
 use gielinor_cache::{game::Definitions, symbols::Symbols};
 use gielinor_world::food::{self, Edible};
 use std::collections::BTreeMap;
+mod firelighter_coating;
+pub use firelighter_coating::firelighter_coating;
 mod glass_smelting;
 pub use glass_smelting::glass_smelting;
 mod sand_pits;

@@ -782,6 +782,9 @@ pub fn configure<B: AccountBackend>(
     for recipe in crate::content::soft_clay_mixing(n("obj"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
         runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.inputs[0],recipe.inputs[1],gielinor_world::held_use::Handler::AssemblyBatch(std::sync::Arc::new(recipe))).map_err(|e|io::Error::other(format!("Soft clay mixing registration: {e:?}")))?;
     }
+    for recipe in crate::content::firelighter_coating(n("obj"),n("stat"),&runtime.definitions).map_err(io::Error::other)? {
+        runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,recipe.first,recipe.second,gielinor_world::held_use::Handler::AssemblyImmediate(recipe)).map_err(|e|io::Error::other(format!("Firelighter coating registration: {e:?}")))?;
+    }
     let (sand,emptying)=crate::content::sand_containers(n("obj"),&runtime.definitions).map_err(io::Error::other)?;
     if runtime.world.empty_containers.insert(sand,emptying).is_some(){return Err(io::Error::other("Conflicting sand emptying handler"));}
     let variants=crate::content::facility_locations(n("loc"),&runtime.definitions).map_err(io::Error::other)?;
