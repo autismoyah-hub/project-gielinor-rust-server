@@ -453,6 +453,7 @@ impl<B: AccountBackend> Runtime<B> {
         self.world.food_boosts.clear();
         self.world.food_energy.clear();
         self.world.food_healing.clear();
+        self.world.food_random_healing.clear();
         self.world.eating_animation = animation;
         Ok(())
     }

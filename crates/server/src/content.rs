@@ -2,6 +2,8 @@
 use gielinor_cache::{game::Definitions, symbols::Symbols};
 use gielinor_world::food::{self, Edible};
 use std::collections::BTreeMap;
+mod random_food;
+pub use random_food::random_foods;
 mod basic_meat;
 pub use basic_meat::{basic_meat_cooking, rabbit_food};
 mod member_fish;

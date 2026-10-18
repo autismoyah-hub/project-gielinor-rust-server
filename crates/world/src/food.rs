@@ -243,9 +243,44 @@ pub fn eat_slot(
 /// Stage secondary skill boosts with the same selected food/HP transaction.
 pub fn eat_slot_with_boosts(
     food:&Edible,slot:usize,inventory:&mut Inventory,stats:&mut Stats,
-    items:&Catalog,hitpoints:u8,animation:u16,boosts:&[StatBoost],mut emit:impl FnMut(Event),
+    items:&Catalog,hitpoints:u8,animation:u16,boosts:&[StatBoost],emit:impl FnMut(Event),
 )->Result<bool,stat_ops::Error>{
-    let ordinary=|id| id>=0 && !items.stackable.contains(&id)
+    eat_slot_transaction(food,slot,inventory,stats,items,hitpoints,animation,boosts,false,||Ok(food.heal),emit)
+}
+/// Inclusive healing range; resolved only after the selected item, remainder
+/// and secondary-effect policy have been validated in the transaction.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct RandomHealing {
+    pub minimum: u8,
+    pub maximum: u8,
+}
+impl RandomHealing {
+    fn roll(self, random: &mut impl crate::npc::RandomSource) -> Result<i32, stat_ops::Error> {
+        if self.minimum > self.maximum { return Err(stat_ops::Error::InvalidPercent); }
+        let width = u32::from(self.maximum) - u32::from(self.minimum) + 1;
+        Ok(i32::from(self.minimum) + if width == 1 { 0 } else { random.below(width) as i32 })
+    }
+}
+
+/// Random ordinary food uses the same staged inventory/HP/boost transaction.
+/// Stackable remainders use the ordinary inventory stack merge (e.g. skewers).
+pub fn eat_slot_with_random_healing(
+    food: &Edible, slot: usize, inventory: &mut Inventory, stats: &mut Stats,
+    items: &Catalog, hitpoints: u8, animation: u16, boosts: &[StatBoost],
+    healing: RandomHealing, random: &mut impl crate::npc::RandomSource,
+    emit: impl FnMut(Event),
+) -> Result<bool, stat_ops::Error> {
+    eat_slot_transaction(food, slot, inventory, stats, items, hitpoints, animation,
+        boosts, true, || healing.roll(random), emit)
+}
+
+
+fn eat_slot_transaction(
+    food:&Edible,slot:usize,inventory:&mut Inventory,stats:&mut Stats,
+    items:&Catalog,hitpoints:u8,animation:u16,boosts:&[StatBoost],
+    allow_stack_remainder:bool,resolve_heal:impl FnOnce()->Result<i32,stat_ops::Error>,mut emit:impl FnMut(Event),
+)->Result<bool,stat_ops::Error>{
+    let ordinary=|id| id>=0
         && !items.dummy.contains(&id)
         && !items.notes.get(&id).is_some_and(|v|v.template!=0)
         && !items.placeholders.get(&id).is_some_and(|v|v.template!=0)
@@ -253,8 +288,8 @@ pub fn eat_slot_with_boosts(
     if inventory
         .get(slot)
         .is_none_or(|item| item.id != food.id || item.count != 1)
-        || !ordinary(food.id)
-        || food.replacement.is_some_and(|id|id==food.id || !ordinary(id))
+        || !ordinary(food.id) || items.stackable.contains(&food.id)
+        || food.replacement.is_some_and(|id|id==food.id || !ordinary(id) || (!allow_stack_remainder && items.stackable.contains(&id)))
     {
         return Ok(false);
     }
@@ -268,17 +303,22 @@ pub fn eat_slot_with_boosts(
     if let Some(id) = food.replacement {
         let mut credit = Insert::new(id, 1);
         credit.slot = slot;
-        credit.strict_slot = Some(slot);
+        let stack_remainder=allow_stack_remainder && items.stackable.contains(&id);
+        if stack_remainder && (inventory.stack!=crate::inventory::StackType::Normal || inventory.placeholders) {return Ok(false);}
+        if stack_remainder && inventory.slots().iter().flatten().any(|i|i.id==id && (i.vars!=0 || i.count<=0)){return Ok(false);}
+        credit.strict_slot = (!stack_remainder).then_some(slot);
         if next_inventory.insert(items, credit).is_err()
-            || next_inventory.get(slot).is_none_or(|item|item.id!=id || item.count!=1 || item.vars!=0) {
+            || (!stack_remainder && next_inventory.get(slot).is_none_or(|item|item.id!=id || item.count!=1 || item.vars!=0)) {
             return Ok(false);
         }
     }
-    if food.heal<0 {return Err(stat_ops::Error::NegativeConstant);}
+    if food.heal<0 || boosts.iter().any(|boost|boost.amount<0) {return Err(stat_ops::Error::NegativeConstant);}
+    let heal=resolve_heal()?;
+    if heal<0 {return Err(stat_ops::Error::NegativeConstant);}
     let mut next_stats = stats.clone();
     let current=stats.current(hitpoints) as u8 as i32;
     let base=stats.base(hitpoints) as u8 as i32;
-    let gain=food.heal.min((base-current).max(0));
+    let gain=heal.min((base-current).max(0));
     let update = if gain>0 {Some(next_stats.apply(hitpoints,Operation::Add,gain,0,true)?)} else {None};
     let mut secondary=Vec::new();
     for boost in boosts {secondary.push(next_stats.apply(boost.skill,Operation::Boost,boost.amount,0,false)?);}
@@ -525,5 +565,34 @@ mod tests {
             ),
             Ok(false)
         );
+    }
+}
+
+#[cfg(test)]
+mod random_healing_tests {
+    use super::*;
+    use crate::{inventory::{Item, StackType}, npc::RandomSource};
+    struct Draw { high: bool, calls: u32 }
+    impl RandomSource for Draw { fn below(&mut self, n:u32)->u32 {self.calls+=1;if self.high{n-1}else{0}} }
+    #[test]
+    fn random_food_transaction_draws_after_validation_and_merges_stackable_return_atomically() {
+        let food=Edible{id:1,heal:7,delay:3,replacement:Some(2),message:"Spider".into()};
+        let mut catalog=Catalog::default();catalog.stackable.insert(2);
+        for (count,current,expected) in [(0,1,11),(3,99,99),(3,115,115)] {
+            let mut inv=Inventory::new(2,StackType::Normal,false);inv.restore_slot(1,Some(Item{id:1,count:1,vars:0})).unwrap();if count>0{inv.restore_slot(0,Some(Item{id:2,count,vars:0})).unwrap();}
+            let mut stats=Stats::default();stats.set_base(3,99);stats.set_current(3,current);let mut draw=Draw{high:true,calls:0};
+            assert_eq!(eat_slot_with_random_healing(&food,1,&mut inv,&mut stats,&catalog,3,829,&[],RandomHealing{minimum:7,maximum:10},&mut draw,|_|{}),Ok(true));
+            assert_eq!(draw.calls,1);assert_eq!(stats.current(3),expected);assert_eq!(stats.fine_xp(3),0);
+            assert_eq!(inv.slots().iter().flatten().filter(|i|i.id==2).map(|i|i.count).sum::<i32>(),count+1);
+            if count>0{assert!(inv.get(1).is_none());assert_eq!(inv.get(0).unwrap().count,count+1);}else{assert_eq!(inv.get(1).unwrap().id,2);}
+        }
+        for bad in 0..7 {
+            let mut inv=Inventory::new(2,StackType::Normal,false);inv.restore_slot(1,Some(Item{id:1,count:1,vars:0})).unwrap();
+            let mut catalog=Catalog::default();catalog.stackable.insert(2);let mut stats=Stats::default();let mut draw=Draw{high:false,calls:0};
+            let mut rule=RandomHealing{minimum:7,maximum:10};let mut boosts=Vec::new();
+            match bad {0=>inv.restore_slot(1,Some(Item{id:9,count:1,vars:0})).unwrap(),1=>{catalog.dummy.insert(2);},2=>{rule.minimum=11;},3=>boosts.push(StatBoost{skill:4,amount:-1}),4=>inv.restore_slot(0,Some(Item{id:2,count:i32::MAX,vars:0})).unwrap(),5=>inv.restore_slot(0,Some(Item{id:2,count:1,vars:1})).unwrap(),_=>{inv.stack=StackType::Always;}}
+            let before=(inv.clone(),stats.clone());let mut events=Vec::new();let result=eat_slot_with_random_healing(&food,1,&mut inv,&mut stats,&catalog,3,829,&boosts,rule,&mut draw,|e|events.push(e));
+            assert!(result!=Ok(true));assert_eq!(draw.calls,0);assert_eq!((inv,stats),before);assert!(events.is_empty());
+        }
     }
 }

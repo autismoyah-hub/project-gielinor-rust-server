@@ -893,6 +893,7 @@ pub struct World {
     pub food_boosts: BTreeMap<i32,Vec<crate::food::StatBoost>>,
     pub food_energy: BTreeMap<i32,i32>,
     pub food_healing: BTreeMap<i32,crate::food::Healing>,
+    pub food_random_healing: BTreeMap<i32,crate::food::RandomHealing>,
     pub slot_preserving_foods: std::collections::BTreeSet<i32>,
     pub potions: BTreeMap<i32, crate::potions::Potion>,
     pub milking: Option<crate::milking::Config>,
@@ -1002,6 +1003,7 @@ impl Default for World {
             food_boosts: BTreeMap::new(),
             food_energy: BTreeMap::new(),
             food_healing: BTreeMap::new(),
+            food_random_healing: BTreeMap::new(),
             slot_preserving_foods: Default::default(),
             potions: BTreeMap::new(),
             item_packs: BTreeMap::new(),
@@ -2038,12 +2040,14 @@ impl World {
                 // Reuse fixed-point potion arithmetic; donor food restore never
                 // lowers a pre-existing value above the ordinary energy cap.
                 let energy_after=crate::potions::restored_energy(p.data.energy,energy_percent,10000).max(p.data.energy);
-                let eaten = crate::food::eat_slot_with_boosts(
-                    food,slot,&mut p.data.inventory,&mut p.data.stats,
-                    &self.object_types,3,self.eating_animation,
-                    self.food_boosts.get(&food.id).map(Vec::as_slice).unwrap_or(&[]),
-                    |event| emitted.push(event),
-                ).map_err(|_| ActionError::InvalidStat)?;
+                let boosts=self.food_boosts.get(&food.id).map(Vec::as_slice).unwrap_or(&[]);
+                let eaten = if let Some(&healing)=self.food_random_healing.get(&food.id) {
+                    crate::food::eat_slot_with_random_healing(food,slot,&mut p.data.inventory,&mut p.data.stats,
+                        &self.object_types,3,self.eating_animation,boosts,healing,random,|event|emitted.push(event))
+                } else {
+                    crate::food::eat_slot_with_boosts(food,slot,&mut p.data.inventory,&mut p.data.stats,
+                        &self.object_types,3,self.eating_animation,boosts,|event|emitted.push(event))
+                }.map_err(|_| ActionError::InvalidStat)?;
                 if !eaten {return Err(ActionError::InvalidItem);}
                 if energy_after!=p.data.energy {p.data.energy=energy_after;emitted.push(crate::food::Event::Energy(energy_after));}
                 if eaten && selected {
@@ -4285,6 +4289,19 @@ mod tests {
         }
         for bad in 0..3{let (mut w,actor)=admitted();w.foods.insert(991,crate::food::Edible{id:991,heal:11,delay:1,replacement:Some(992),message:"Summer pie".into()});w.food_boosts.insert(991,vec![crate::food::StatBoost{skill:16,amount:if bad==1{-1}else{5}}]);w.food_energy.insert(991,if bad==2{101}else{10});w.member_foods.insert(991);let p=w.players.get_mut(actor.slot as usize).unwrap();p.member=bad!=0;p.data.energy=500;p.data.stats.set_base(3,99);p.data.stats.set_current(3,50);p.data.stats.set_base(16,99);p.data.stats.set_current(16,99);p.data.inventory.restore_slot(1,Some(crate::inventory::Item{id:991,count:1,vars:0})).unwrap();w.drain_events();w.submit(actor,Action::EatItemSlot{slot:1,item:991}).unwrap();w.tick().unwrap();let p=w.data(actor).unwrap();assert_eq!(p.inventory.get(1).unwrap().id,991);assert_eq!((p.stats.current(3),p.stats.current(16)),(50,99));assert!((500..=524).contains(&p.energy));assert!(!w.drain_events().iter().any(|e|matches!(e,WorldEvent::Food{event:crate::food::Event::Energy(_),..})));}
     }
+    #[test]
+    fn queued_random_food_respects_live_membership_selected_identity_and_remainder_stack() {
+        struct Draw(u32);
+        impl crate::npc::RandomSource for Draw {fn below(&mut self,n:u32)->u32{assert_eq!(n,4);self.0}}
+        for (member,claimed,draw,expected,consumed) in [(true,991,0,8,true),(true,991,3,11,true),(false,991,0,1,false),(true,999,0,1,false)] {
+            let (mut w,actor)=admitted();w.foods.insert(991,crate::food::Edible{id:991,heal:7,delay:3,replacement:Some(992),message:"Spider".into()});w.member_foods.insert(991);w.slot_preserving_foods.insert(991);w.food_random_healing.insert(991,crate::food::RandomHealing{minimum:7,maximum:10});w.object_types.stackable.insert(992);
+            let p=w.players.get_mut(actor.slot as usize).unwrap();p.member=member;p.data.stats.set_base(3,99);p.data.stats.set_current(3,1);p.data.inventory.restore_slot(0,Some(crate::inventory::Item{id:992,count:3,vars:0})).unwrap();p.data.inventory.restore_slot(1,Some(crate::inventory::Item{id:991,count:1,vars:0})).unwrap();
+            w.drain_events();w.submit(actor,Action::EatItemSlot{slot:1,item:claimed}).unwrap();w.tick_with_random(&mut Draw(draw)).unwrap();
+            let p=w.data(actor).unwrap();assert_eq!(p.stats.current(3),expected);assert_eq!(p.stats.fine_xp(3),0);assert_eq!(p.inventory.get(1).is_none(),consumed);assert_eq!(p.inventory.get(0).unwrap().count,if consumed{4}else{3});
+            assert_eq!(w.drain_events().iter().any(|e|matches!(e,WorldEvent::FoodTransition{..})),consumed);
+        }
+    }
+
     #[test]
     fn queued_food_secondary_boosts_follow_actual_eat_dispatch(){
         let (mut w,actor)=admitted();w.foods.insert(991,crate::food::Edible{id:991,heal:11,delay:1,replacement:Some(992),message:"Wild pie".into()});w.food_boosts.insert(991,vec![crate::food::StatBoost{skill:18,amount:5},crate::food::StatBoost{skill:4,amount:4}]);let p=w.players.get_mut(actor.slot as usize).unwrap();for skill in [3,4,18]{p.data.stats.set_base(skill,99);p.data.stats.set_current(skill,99);}p.data.inventory.restore_slot(2,Some(crate::inventory::Item{id:991,count:1,vars:0})).unwrap();w.member_foods.insert(991);w.submit(actor,Action::EatItemSlot{slot:2,item:991}).unwrap();w.tick().unwrap();assert_eq!(w.data(actor).unwrap().inventory.get(2).unwrap().id,991);assert_eq!(w.data(actor).unwrap().stats.current(18),99);w.players.get_mut(actor.slot as usize).unwrap().member=true;w.submit(actor,Action::EatItemSlot{slot:2,item:991}).unwrap();w.tick().unwrap();let p=w.data(actor).unwrap();assert_eq!((p.stats.current(3),p.stats.current(18),p.stats.current(4)),(99,104,103));assert_eq!(p.inventory.get(2).unwrap().id,992);assert_eq!(p.stats.fine_xp(18),0);
