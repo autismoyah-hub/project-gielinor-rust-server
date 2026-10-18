@@ -103,3 +103,20 @@ and five views against delivery hashes. Render the relative scene and compare
 pixels to the lossless PNGs. Authorized private fixtures are needed to repeat
 the 51-static/26-classic preservation suite; none is embedded in this repository.
 Retain tool/input hashes, source revision and failed iterations at every step.
+
+## Additional development and gallery entry points
+
+```text
+python tools/tower/asset-workbench/adaptive_reconstruction.py PRIVATE/reference/geometry.json PRIVATE/new-static-proposal --metadata PRIVATE/reference/metadata.json
+python tools/tower/asset-workbench/build_private_mastery_review.py --private PRIVATE/workbench-mastery
+python tools/tower/asset-workbench/build_mastery_review.py --private PRIVATE/workbench-mastery --server SERVER_CHECKOUT
+```
+
+The last command assembles already packaged original art and safe aggregates.
+It does not publish protected comparison media. The private builder requires the
+sealed evidence root outside the source checkout. Gallery links depend on the
+documented evidence layout, not a hidden running session. The original-only
+package_mastery.py exports an explicit allowlist after checking provenance and
+rejecting cache-textured assets. Its output must stay outside the original cache.
+The static proposal's inputs, output recipes and images remain protected; no
+weighted animation support or faithful artistry is inferred from bone partitions.

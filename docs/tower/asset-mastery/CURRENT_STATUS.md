@@ -58,6 +58,14 @@ nor independent choreography. The isolated Fire Giant proof has 48 timestamps,
 45 moving samples, five identical bind views and zero tracer coordinate error.
 Final retest outcomes and complete matched motion are in the private review.
 
+The complete development audit covers 44 unique form/sequence classic clips and
+6,097 native samples, with exact independent coordinate/face-alpha expectations
+and zero stationary-candidate failures. Roles sharing a sequence are aliases,
+not extra independent clips. Akkha's 20 weighted role clips remain unsupported
+for reconstruction motion. A further static proposal improves mean foreground
+color error in seven forms and regresses four; all proposals remain private and
+unapproved. Read ART_REVIEW.md for actionable deficiencies beyond overlap.
+
 ## Original assets and environment
 
 Basalt Hearthbearer, Counterweight Warden, Bellows Harrier, Siltcoil Matriarch,

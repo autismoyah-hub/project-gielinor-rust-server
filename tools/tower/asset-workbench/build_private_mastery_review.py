@@ -6,6 +6,7 @@ from component_review import internal
 load=lambda p:json.loads(p.read_text(encoding='utf-8'))
 if Q.resolve().is_relative_to(T.resolve().parents[2])or not(Q/'exam-freeze.json').is_file():raise ValueError('Use the private sealed evidence root outside source and cache')
 out=Q/'review';out.mkdir(exist_ok=True);media=out/'private-media';media.mkdir(exist_ok=True);parts=['<h1>ASCENT · private reconstruction review</h1><p>Protected local evidence. Do not publish this gallery or its media. Frozen failures remain unchanged. Later results are development retests, never unseen successes.</p>'];audit=[]
+parts.insert(1,'<p><a href="static-development.html">Separate post-exam static partition/material proposals, including regressions</a></p>')
 def url(p):return os.path.relpath(p,out).replace('\\','/')
 for case in load(Q/'exam-cases.json')['cases']:
  parts.append('<h2>'+html.escape(case['label'])+'</h2>')
