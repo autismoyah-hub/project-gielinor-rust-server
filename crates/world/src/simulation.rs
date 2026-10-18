@@ -2540,7 +2540,7 @@ impl World {
                                                     self.events.push(WorldEvent::LocationMessage{actor:p.id,message:crate::assembly::outcome_message(outcome)});
                                                 }
                                                 Deferred::Assembly(pending) => {
-                                                    held_use_actions::complete_assembly(p,pending.job,&self.object_types,pending.queued_at,self.clock.0,&mut self.events);
+                                                    held_use_actions::complete_assembly_reward(p,pending.job,&self.object_types,pending.queued_at,self.clock.0,pending.xp_tenths,&mut self.events);
                                                 }
                                                 Deferred::Smithing(job) => {
                                                     if let Some(config) = self.smithing {

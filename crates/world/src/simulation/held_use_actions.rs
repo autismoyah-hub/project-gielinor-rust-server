@@ -178,8 +178,12 @@ impl World {
                 } else {(request.target_slot as usize,request.selected_slot as usize)};
                 self.start_grinding(actor,recipe,tool_slot,input_slot)?;
             }
-            Some(Handler::Assembly(recipe)) | Some(Handler::AssemblyTimed{recipe,..}) => {
-                let ticks=match handler {Some(Handler::AssemblyTimed{ticks,..})=>ticks,_=>2};
+            Some(Handler::Assembly(recipe)) | Some(Handler::AssemblyTimed{recipe,..}) | Some(Handler::AssemblyPrecise(crate::assembly::PreciseRecipe{recipe,..})) => {
+                let (ticks,xp_tenths,animation,spot)=match handler {
+                    Some(Handler::AssemblyPrecise(r))=>(r.ticks,Some(r.xp_tenths),r.animation,r.spot),
+                    Some(Handler::AssemblyTimed{ticks,..})=>(ticks,None,None,None),
+                    _=>(2,None,None,None),
+                };
                 if ticks==0 {return Err(ActionError::InvalidItem);}
 
                 let p = self.players.get_mut(actor.slot as usize).unwrap();
@@ -210,9 +214,12 @@ impl World {
                         Deferred::Assembly(crate::assembly::Pending {
                             job: crate::assembly::Job { recipe, first_slot, second_slot },
                             queued_at: self.clock.0,
+                            xp_tenths,
                         }),
                     )
                     .map_err(|_| ActionError::QueueFull)?;
+                if let Some(sequence)=animation { self.events.push(WorldEvent::PlayerCombatAnimation{actor,sequence}); }
+                if let Some(spot)=spot { self.events.push(WorldEvent::PlayerSpotAnimation{actor,spot,delay:0,height:0,slot:0}); }
             }
             Some(Handler::TutorialFire(config)) => self.start_tutorial_fire(actor, config),
             None => self.events.push(WorldEvent::EngineMessage {
@@ -804,7 +811,13 @@ mod assembly_tests {
 
 /// Shared result publication for immediate and delayed selected-pair assembly.
 pub(super) fn complete_assembly(p:&mut Player,job:crate::assembly::Job,items:&crate::inventory::Catalog,queued_at:i32,clock:i32,events:&mut Vec<WorldEvent>){
-    let (outcome,advancement)=job.complete_awarding(&mut p.data.inventory,items,&mut p.data.stats,p.data.xp_rate_hundreds,p.member);
+    complete_assembly_reward(p,job,items,queued_at,clock,None,events);
+}
+pub(super) fn complete_assembly_reward(p:&mut Player,job:crate::assembly::Job,items:&crate::inventory::Catalog,queued_at:i32,clock:i32,xp_tenths:Option<u16>,events:&mut Vec<WorldEvent>){
+    let (outcome,advancement)=match xp_tenths {
+        Some(xp)=>job.complete_awarding_tenths(&mut p.data.inventory,items,&mut p.data.stats,p.data.xp_rate_hundreds,p.member,xp),
+        None=>job.complete_awarding(&mut p.data.inventory,items,&mut p.data.stats,p.data.xp_rate_hundreds,p.member),
+    };
     if let Some(advancement)=advancement {events.push(WorldEvent::SkillAdvanced{actor:p.id,skill:job.recipe.skill,advancement});}
     if outcome==crate::assembly::Outcome::Made {events.push(WorldEvent::AssemblyMade{actor:p.id,trace:crate::assembly::Transition{job,queued_at,committed_at:clock}});}
     events.push(WorldEvent::LocationMessage{actor:p.id,message:crate::assembly::outcome_message_for_skill(outcome,job.recipe.skill)});

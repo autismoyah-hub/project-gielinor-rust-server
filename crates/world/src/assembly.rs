@@ -43,6 +43,44 @@ impl Job {
         rate_hundreds: i32,
         member: bool,
     ) -> (Outcome, Option<crate::skills::Advancement>) {
+        self.complete_awarding_value(
+            inv,
+            catalog,
+            stats,
+            rate_hundreds,
+            member,
+            f64::from(self.recipe.base_xp),
+        )
+    }
+    /// Precise rewards use tenths of XP; the existing inventory/level transaction
+    /// and legacy integer-XP entry point retain identical behavior.
+    pub fn complete_awarding_tenths(
+        &self,
+        inv: &mut Inventory,
+        catalog: &Catalog,
+        stats: &mut Stats,
+        rate_hundreds: i32,
+        member: bool,
+        xp_tenths: u16,
+    ) -> (Outcome, Option<crate::skills::Advancement>) {
+        self.complete_awarding_value(
+            inv,
+            catalog,
+            stats,
+            rate_hundreds,
+            member,
+            f64::from(xp_tenths) / 10.0,
+        )
+    }
+    fn complete_awarding_value(
+        &self,
+        inv: &mut Inventory,
+        catalog: &Catalog,
+        stats: &mut Stats,
+        rate_hundreds: i32,
+        member: bool,
+        xp: f64,
+    ) -> (Outcome, Option<crate::skills::Advancement>) {
         if self.recipe.members && !member {
             return (Outcome::Members, None);
         }
@@ -52,7 +90,7 @@ impl Job {
             return (outcome, None);
         }
         let (next_stats, advancement) =
-            match prepare_reward(stats, self.recipe.skill, self.recipe.base_xp, rate_hundreds) {
+            match prepare_reward_value(stats, self.recipe.skill, xp, rate_hundreds) {
                 Ok(v) => v,
                 Err(outcome) => return (outcome, None),
             };
@@ -117,6 +155,40 @@ mod tests {
             Catalog::default(),
             Stats::default(),
         )
+    }
+    #[test]
+    fn precise_reward_keeps_fractional_xp_atomic_on_bad_credit_or_live_policy() {
+        for case in 0..5 {
+            let (mut job, mut inv, mut cat, mut stats) = fixture();
+            job.recipe.skill = 12;
+            job.recipe.level = 58;
+            job.recipe.members = true;
+            stats.set_base(12, 58);
+            stats.set_current(12, 58);
+            let mut rate = 125;
+            let mut member = true;
+            match case {
+                1 => {
+                    cat.dummy.insert(12);
+                }
+                2 => rate = 0,
+                3 => member = false,
+                4 => stats.set_current(12, 57),
+                _ => {}
+            }
+            let before = (inv.clone(), stats.clone());
+            let (outcome, advanced) =
+                job.complete_awarding_tenths(&mut inv, &cat, &mut stats, rate, member, 1125);
+            if case == 0 {
+                assert_eq!(outcome, Outcome::Made);
+                assert_eq!(stats.fine_xp(12), 1406);
+                assert!(advanced.is_some());
+            } else {
+                assert_ne!(outcome, Outcome::Made);
+                assert!(advanced.is_none());
+                assert_eq!((inv, stats), before);
+            }
+        }
     }
     #[test]
     fn exact_slots_and_live_level_gate_atomic_exchange() {
@@ -255,6 +327,17 @@ mod tests {
 pub(crate) struct Pending {
     pub job: Job,
     pub queued_at: i32,
+    pub xp_tenths: Option<u16>,
+}
+/// Registry-owned manual assembly metadata. `xp_tenths` is authoritative;
+/// `recipe.base_xp` belongs only to the unchanged legacy integer-XP API.
+#[derive(Clone, Copy, Debug)]
+pub struct PreciseRecipe {
+    pub recipe: Recipe,
+    pub xp_tenths: u16,
+    pub ticks: u8,
+    pub animation: Option<u16>,
+    pub spot: Option<u16>,
 }
 #[derive(Clone, Copy, Debug)]
 pub struct Transition {
@@ -316,8 +399,16 @@ fn prepare_reward(
     base_xp: u16,
     rate: i32,
 ) -> Result<(Stats, Option<crate::skills::Advancement>), Outcome> {
+    prepare_reward_value(stats, skill, f64::from(base_xp), rate)
+}
+fn prepare_reward_value(
+    stats: &Stats,
+    skill: u8,
+    base_xp: f64,
+    rate: i32,
+) -> Result<(Stats, Option<crate::skills::Advancement>), Outcome> {
     let mut next = stats.clone();
-    let advancement = if base_xp == 0 {
+    let advancement = if base_xp == 0.0 {
         None
     } else {
         if rate <= 0 {
@@ -481,8 +572,21 @@ impl BatchTransition {
 }
 
 /// Admission and completion use the recipe's actual skill without changing legacy Cooking text.
-pub fn level_message(skill:u8)->&'static str {match skill {7=>"You need a higher Cooking level to make that.",12=>"You need a higher Crafting level to make that.",13=>"You need a higher Smithing level to make that.",_=>"You need a higher skill level to make that."}}
-pub fn outcome_message_for_skill(outcome:Outcome,skill:u8)->&'static str {if outcome==Outcome::Level {level_message(skill)}else{outcome_message(outcome)}}
+pub fn level_message(skill: u8) -> &'static str {
+    match skill {
+        7 => "You need a higher Cooking level to make that.",
+        12 => "You need a higher Crafting level to make that.",
+        13 => "You need a higher Smithing level to make that.",
+        _ => "You need a higher skill level to make that.",
+    }
+}
+pub fn outcome_message_for_skill(outcome: Outcome, skill: u8) -> &'static str {
+    if outcome == Outcome::Level {
+        level_message(skill)
+    } else {
+        outcome_message(outcome)
+    }
+}
 pub fn outcome_message(outcome: Outcome) -> &'static str {
     match outcome {
         Outcome::Made => "You combine the ingredients.",
