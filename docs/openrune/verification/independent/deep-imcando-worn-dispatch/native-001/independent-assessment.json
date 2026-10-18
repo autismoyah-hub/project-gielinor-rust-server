@@ -1,0 +1,30 @@
+{
+  "implementation_id": "OR-MIG-0109",
+  "tested_sha": "8bc76c7c464daf1d4abdef4dd7f4172c270abda5",
+  "status": "CONFIRMED_IMPLEMENTATION_DEFECT",
+  "finding": "PG-DEF-006",
+  "severity": "P2",
+  "ordinary_native_actions": 2,
+  "scope": "Fresh member account has one free backpack slot and both ordinary worn hammers. Two authentic native Worn Equipment Swap menu actions transmit actual387:18/20,slot-1,item-1,operation4. After8ticks each, independently decoded whole bag/gear/rawStats and acknowledged SQL save remain exactly initial: no conversion. Pinned profile and runtime accept worn Swap under operation2; targetparam453iswear_op3, agreeing with real menu4. No hand-crafted requests or replay used.",
+  "correction": "Align exact target worn Swap registration/runtime dispatch with actual param453wear_op3/button4 and validate corresponding UI permissions; preserve typed current nullable claim/life guards/atomic staged equipment callbacks. Publish a correctionSHA/contract revision; then test actual menus both forms, occupied/freehand/fullbag,member-F2P,save/reconnect/owned recovery at that exact newSHA.",
+  "prior_attempt": "deep-imcando-worn/native-001 stopped at QA assertion expecting2before the Swap reached wire; preserve rawFAIL and distinguish it from this independently transmitted confirmation. Its ordinary menu already generated4.",
+  "blocked_followups": [
+    "Exact109native converted-form save/restart/crash cannot be reached through actual Swap at this SHA. No newer build substituted.",
+    "Prepared F2P/native-001 remains seeded/frozen but unexecuted; no member/F2P conversion inference.",
+    "This does not block unrelated crafting/tool-use/bank/rune-altar verification or require FORGE to stop."
+  ],
+  "target_source_sha256": {
+    "crates/server/src/runtime.rs": "a096a06d6531559af2e8bec486d0dcaf2f1b35d3188c02aea88ae2880e8f8c48",
+    "crates/server/src/content/imcando_worn_swaps.rs": "2074daa0a451403f33ce2d4e53f3d002f116e5d2ad07966035390fa545864c9b"
+  },
+  "evidence_sha256": {
+    "initial-state.json": "e53e9b4875afb2ed74fe321b677378aa3e6341e080d15912cafe0cdd55dd080c",
+    "resources.json": "d338c18bb8d5c839de93975aeaa9a49a86712ccdf6ccee5ef1aac94084e98010",
+    "build.json": "5505c730a906fc21202ec3de3efdb4ccb5e29035daa6da75339da5b1e955fcab",
+    "produce/client.log": "f2e99d3365662959551f76d6a1f1f4a3ce33fd2981719306db646869d11ad5ca",
+    "produce/manifest.json": "cfad11b49c8eb428a6b56a366240d1283a71b5a449082ded770068481210e315",
+    "produce/after.json": "d6b649f580851f070c9dd552d764cc3691a7a87ed728725885ad7e6df1e48ef4",
+    "frozen-observer/pg_observer.rs": "65c040031f762abe7c787e0849e63d6e03e4d8510fcf34156c466c4ed286a137",
+    "frozen-observer/build.json": "96668a9dae499b0915f4d3f4b36f6ef60000228084d4f85bb34f4a55e4cac647"
+  }
+}

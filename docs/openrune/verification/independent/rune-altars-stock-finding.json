@@ -1,0 +1,143 @@
+{
+  "implementation_id": "OR-MIG-0125",
+  "tested_sha": "a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d",
+  "status": "CONFIRMED_IMPLEMENTATION_DEFECT",
+  "finding": "PG-DEF-007",
+  "severity": "P2",
+  "cases_failed": 12,
+  "controls_passed": 24,
+  "scope": "Twelve separately named actual reached-altar/Worldweakqueue faults across all6/member-F2P: preexisting output rune count1/vars7 is merged into new output and normalized tovars0,seven captured mixed Rune/Pure essence singles consumed,XPawarded. Normal existing count50/vars0 merges and near-i32MAXstrict-full-credit refusals all24controlsPASS. Independent972positive+756initial/late/delay-close guards remain preserved.",
+  "observed": [
+    {
+      "altar_index": 0,
+      "member": true,
+      "rune_id": 556,
+      "before_count": 1,
+      "before_vars": 7,
+      "after_count": 71,
+      "after_vars": 0,
+      "fine_xp_delta": 437
+    },
+    {
+      "altar_index": 0,
+      "member": false,
+      "rune_id": 556,
+      "before_count": 1,
+      "before_vars": 7,
+      "after_count": 71,
+      "after_vars": 0,
+      "fine_xp_delta": 437
+    },
+    {
+      "altar_index": 3,
+      "member": true,
+      "rune_id": 557,
+      "before_count": 1,
+      "before_vars": 7,
+      "after_count": 29,
+      "after_vars": 0,
+      "fine_xp_delta": 568
+    },
+    {
+      "altar_index": 4,
+      "member": false,
+      "rune_id": 554,
+      "before_count": 1,
+      "before_vars": 7,
+      "after_count": 22,
+      "after_vars": 0,
+      "fine_xp_delta": 612
+    },
+    {
+      "altar_index": 5,
+      "member": true,
+      "rune_id": 559,
+      "before_count": 1,
+      "before_vars": 7,
+      "after_count": 22,
+      "after_vars": 0,
+      "fine_xp_delta": 656
+    },
+    {
+      "altar_index": 3,
+      "member": false,
+      "rune_id": 557,
+      "before_count": 1,
+      "before_vars": 7,
+      "after_count": 29,
+      "after_vars": 0,
+      "fine_xp_delta": 568
+    },
+    {
+      "altar_index": 4,
+      "member": true,
+      "rune_id": 554,
+      "before_count": 1,
+      "before_vars": 7,
+      "after_count": 22,
+      "after_vars": 0,
+      "fine_xp_delta": 612
+    },
+    {
+      "altar_index": 5,
+      "member": false,
+      "rune_id": 559,
+      "before_count": 1,
+      "before_vars": 7,
+      "after_count": 22,
+      "after_vars": 0,
+      "fine_xp_delta": 656
+    },
+    {
+      "altar_index": 1,
+      "member": true,
+      "rune_id": 558,
+      "before_count": 1,
+      "before_vars": 7,
+      "after_count": 57,
+      "after_vars": 0,
+      "fine_xp_delta": 481
+    },
+    {
+      "altar_index": 2,
+      "member": true,
+      "rune_id": 555,
+      "before_count": 1,
+      "before_vars": 7,
+      "after_count": 43,
+      "after_vars": 0,
+      "fine_xp_delta": 525
+    },
+    {
+      "altar_index": 1,
+      "member": false,
+      "rune_id": 558,
+      "before_count": 1,
+      "before_vars": 7,
+      "after_count": 57,
+      "after_vars": 0,
+      "fine_xp_delta": 481
+    },
+    {
+      "altar_index": 2,
+      "member": false,
+      "rune_id": 555,
+      "before_count": 1,
+      "before_vars": 7,
+      "after_count": 43,
+      "after_vars": 0,
+      "fine_xp_delta": 525
+    }
+  ],
+  "correction": "Reject or otherwise preserve malformed existing output stock before publishing any essence debit/XP. OR126bd1294ab9e0ff850155b024364dc3a3a98a37bed already publishes a caller-level stock safeguard; independently verify the unchanged exact stock scenarios there. Historical125remainsFAIL,no silently substituted build.",
+  "limitations": [
+    "This is trusted restored-state fault injection through ordinary authoritative gameplay,not a claim that a normal native client can create rune vars7.",
+    "No native variable-stock reachability or durable corrupted-state campaign executed; no currentHEADclaim.",
+    "Correction candidate is a distinct contract and remains unaccepted until independently tested; other ordinary125native/cache/reference scopes remain eligible."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/integration-external-rune-altars-stock-a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d/manifest.json": "64a5fe172928b6ba1da16896d46e50d43b84ebeea7d3d450d2824842ff32d522",
+    "docs/openrune/verification/independent/integration-external-rune-altars-stock-a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d/run-1.log": "eeac10e9d8013d52af979037dc748661f9a83627fe65806ddde720ab0517e3fa",
+    "docs/openrune/verification/independent/integration-external-rune-altars-stock-a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d/harness/stock.rs": "50584d1a7107f62a85d3df297ad99dffc74ab7a73f34bc7ddb43f3c2621ea9cb"
+  }
+}

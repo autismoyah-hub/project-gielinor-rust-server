@@ -1,6 +1,6 @@
 {
-  "observed_forge_head": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
-  "queue_sha256": "10feae690a2eacba1e4830d4e52840c4f0e1ff76ec5a2b0b81e93f1e24479eca",
+  "observed_forge_head": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
+  "queue_sha256": "ce073047512da344dade133332b592e03678f131557172f8ccf3563441c7ddfa",
   "lanes": [
     {
       "lane": "B",
@@ -108,7 +108,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -332,7 +332,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -555,7 +555,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -778,7 +778,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -997,7 +997,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1208,7 +1208,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1394,7 +1394,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1605,7 +1605,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1816,7 +1816,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2045,7 +2045,7 @@
         ]
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2262,7 +2262,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2470,7 +2470,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2678,7 +2678,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2883,7 +2883,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3087,7 +3087,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3290,7 +3290,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3493,7 +3493,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3698,7 +3698,7 @@
         ]
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3909,7 +3909,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4120,7 +4120,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4331,7 +4331,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4567,7 +4567,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4785,7 +4785,7 @@
         ]
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5037,7 +5037,7 @@
         ]
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5246,7 +5246,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5446,7 +5446,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5646,7 +5646,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5879,7 +5879,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -6109,7 +6109,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -6333,7 +6333,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -6533,7 +6533,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -6733,7 +6733,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -6961,7 +6961,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -7167,7 +7167,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -7379,7 +7379,7 @@
         ]
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -7579,7 +7579,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -7779,7 +7779,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -7979,7 +7979,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -8179,7 +8179,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -8387,7 +8387,7 @@
         ]
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -8587,7 +8587,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -8787,7 +8787,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -8987,7 +8987,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -9187,7 +9187,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -9385,7 +9385,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -9582,7 +9582,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -9778,7 +9778,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -9972,7 +9972,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -10165,7 +10165,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -10357,7 +10357,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -10563,7 +10563,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -10753,7 +10753,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -10941,7 +10941,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -11143,7 +11143,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -11327,7 +11327,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -11523,7 +11523,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -11728,7 +11728,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -11918,7 +11918,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -12097,7 +12097,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -12276,7 +12276,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -12454,7 +12454,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -12660,7 +12660,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -12861,7 +12861,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -13063,7 +13063,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -13257,7 +13257,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -13458,7 +13458,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -13654,7 +13654,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -13867,7 +13867,7 @@
         ]
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -14061,7 +14061,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -14263,7 +14263,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -14454,7 +14454,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -14638,7 +14638,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -14812,7 +14812,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -14986,7 +14986,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -15160,7 +15160,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -15333,7 +15333,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -15506,7 +15506,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -15679,7 +15679,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -15852,7 +15852,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -16017,7 +16017,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -16189,7 +16189,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -16360,7 +16360,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -16530,7 +16530,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -16715,7 +16715,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -16880,7 +16880,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -17030,7 +17030,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -17179,7 +17179,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -17318,7 +17318,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -17456,7 +17456,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -17594,7 +17594,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -17732,7 +17732,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -17870,7 +17870,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -18008,7 +18008,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -18146,7 +18146,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -18284,7 +18284,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -18421,7 +18421,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -18550,7 +18550,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -18677,7 +18677,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -18799,7 +18799,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -18914,7 +18914,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -19028,7 +19028,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -19142,7 +19142,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -19249,7 +19249,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -19355,7 +19355,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -19466,7 +19466,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -19563,7 +19563,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -19657,7 +19657,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -19764,7 +19764,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -19832,39 +19832,45 @@
       "historical_verification": {
         "levels": {
           "V0": {
-            "status": "IN_PROGRESS",
-            "reason": "388 independent registered World controls PASS:224bothforms/member-F2P/fulland0..27gap/occupiedtarget whole-image controls;144atomiclife/metadata/context refusals;8ordered actual Wearpos removal-before-equip callbacks;8synthetic base/current requirement controls;4genuine scheduled weak-gem interruption controls. Actual two target cache forms/param453Swap/secondarywear-none/button2 plus38malformedbindingrefusalsPASS. Earlier refusal fixture failed because logout retained preexisting modified flags; clear before logout then exact-SHA rerunPASS. Initial binding compileFAIL was QA Param::Int spelling,corrected Integer thenPASS. Both raw failures retained. Remaining: Existing output-form duplicates with earlier bag positions and all first-gap positions; no V1PASS yet.; V0actualserverbinary/startup/dispatcher and native worn component/current nullable item cases.; Native fullbag/occupiedtarget/member-F2P/bothforms/refusals/menu/feedback and durable save/reconnect/crash.; Complete independent reference comparison; no inherited108orcurrentHEADacceptance.",
+            "status": "FAIL",
+            "reason": "Exact production binary builds and target definitions resolve,but intended worn Swap registration is bound2while both actual native menus emit4. Actual reachable gameplay dispatch criterion fails.",
             "evidence": [
-              "docs/openrune/verification/independent/imcando-worn-authoritative-partial.json"
+              "docs/openrune/verification/independent/imcando-worn-disposition.json"
             ]
           },
           "V1": {
             "status": "PASS",
             "reason": "612independent registered World controls plus38actualcache binding refusals satisfy applicable authoritative worn-only Swap requirements:388whole bag/member/F2P/occupied/freehand/life/metadata/realorderedcallbacks/syntheticbaselevel/weakinterruption controls preserved,then224new all28firstgap/existingoutputduplicates/retainedinputduplicate/stale replay casesPASS. Newly removed exact-slot output equips for member/freehand; existing opposite-form duplicates remain untouched, F2P/occupiedtarget preserves outputheld and old target. Complete whole bag/gear/Stats/fractions/noXP/noautomaticreplay; fullbagrefuses evenfreehand. Original QA failures retained. No native/startup/persistence/reference/currentHEADacceptance inherited.",
             "evidence": [
-              "docs/openrune/verification/independent/imcando-worn-authoritative-complete.json"
+              "docs/openrune/verification/independent/imcando-worn-disposition.json"
             ]
           },
           "V2": {
-            "status": "NOT_STARTED",
-            "reason": "Awaiting applicable independent campaign"
+            "status": "FAIL",
+            "reason": "Fresh member account has one free backpack slot and both ordinary worn hammers. Two authentic native Worn Equipment Swap menu actions transmit actual387:18/20,slot-1,item-1,operation4. After8ticks each, independently decoded whole bag/gear/rawStats and acknowledged SQL save remain exactly initial: no conversion. Pinned profile and runtime accept worn Swap under operation2; targetparam453iswear_op3, agreeing with real menu4. No hand-crafted requests or replay used.",
+            "evidence": [
+              "docs/openrune/verification/independent/imcando-worn-disposition.json"
+            ]
           },
           "V3": {
-            "status": "NOT_STARTED",
-            "reason": "Awaiting applicable independent campaign"
+            "status": "BLOCKED",
+            "reason": "Pinned native Swap cannot produce a converted worn state because PG-DEF-006; converted-form native save/restart/crash obligations cannot run through genuine UI at8bc76c7. Both attempted ordinary menus conserve original SQL account and save gracefully,but that is not conversion persistence. Prepared F2P account remains unexecuted; do not substitute a newer build.",
+            "evidence": [
+              "docs/openrune/verification/independent/imcando-worn-disposition.json"
+            ]
           },
           "V4": {
-            "status": "IN_PROGRESS",
-            "reason": "Three exact source/Wiki hashes independently match the two worn4callback forms and original sequence: capture target-hand availability, attempt unequip with failure return, replace held form, and equip first matching output only if target was free. Source helper has no explicit entitlement gate; global effective equip policy remains unresolved. Wiki restricts new equipping to members and retains ordinary hammer functionality in F2P. Target109stages all operations and binds newly removed item, with F2Pconversion-to-bag/no-new-equip as an explicit adaptation; no native/source global parity inferred. Native/cache/World/lifecycle and complete reference acceptance remain separate.",
+            "status": "PASS",
+            "reason": "Scoped independent comparison complete: original Imcando worn4helper/two pinned Wiki revisions,five newly inspected equip/unequip/verification helpers and actual target symbols/forms. Source worn4and targetwear_op3=453agree with observednative4; target2is a confirmed defect. Fullbagunequip-first/occupied-hand behavior,target newly removed-slot duplicate protection and atomic staging/base requirements compared. Target F2Pbag/no-new-equip is qualified Wiki-backed adaptation; direct source chain has no explicit membership check. No donor executable/effective-world-cache/render/audio parity inferred.",
             "evidence": [
-              "docs/openrune/verification/independent/reference-imcando-worn/comparison.json"
+              "docs/openrune/verification/independent/imcando-worn-disposition.json"
             ]
           }
         },
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -19953,7 +19959,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -20039,7 +20045,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -20115,7 +20121,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -20189,7 +20195,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -20260,7 +20266,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -20328,7 +20334,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -20395,7 +20401,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -20462,7 +20468,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -20527,7 +20533,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -20591,7 +20597,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -20654,7 +20660,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -20716,7 +20722,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -20777,7 +20783,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -20838,7 +20844,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -20899,7 +20905,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -20931,6 +20937,124 @@
       "historical_verification": {
         "levels": {
           "V0": {
+            "status": "IN_PROGRESS",
+            "reason": "756 initial/late World refusal and interruption/parking controls,355 malformed actual cache bindings,41 item/six altar/effect identities and six real mapped interiors,60 yield-threshold/actual-levelup/uncaptured-addition World cases pass. All preserve whole relevant inventory/equipment/fineXP; deterministic no RNG. Exact server/native runtime separately attested; remaining applicable obligations open.",
+            "evidence": [
+              "docs/openrune/verification/independent/rune-altars-additional-world.json"
+            ]
+          },
+          "V1": {
+            "status": "FAIL",
+            "reason": "Twelve separately named actual reached-altar/Worldweakqueue faults across all6/member-F2P: preexisting output rune count1/vars7 is merged into new output and normalized tovars0,seven captured mixed Rune/Pure essence singles consumed,XPawarded. Normal existing count50/vars0 merges and near-i32MAXstrict-full-credit refusals all24controlsPASS. Independent972positive+756initial/late/delay-close guards remain preserved. Reject or otherwise preserve malformed existing output stock before publishing any essence debit/XP. OR126bd1294ab9e0ff850155b024364dc3a3a98a37bed already publishes a caller-level stock safeguard; independently verify the unchanged exact stock scenarios there. Historical125remainsFAIL,no silently substituted build. Trusted restored-state fault injection; native reachability/durability untested.",
+            "evidence": [
+              "docs/openrune/verification/independent/rune-altars-stock-finding.json"
+            ]
+          },
+          "V2": {
+            "status": "IN_PROGRESS",
+            "reason": "Two actual rendered native altar Craft-rune menus generate matching native location actions; one complete28 mixed essence transaction, exact runes/wholeStats/fractionalXP/gear and no additional credit after empty repeat. Actual791/186-height100 decoded effects. Acknowledged save, server process restart and independently decoded same-account native reconnect preserve whole inventory/Stats. Remaining: Current transport logger records27/47/95/115 only, not73. First altar delivery established by genuine server reward/effects; generated second action and subsequent no-credit observation do not independently attest its wire delivery or server refusal.; Inside-altar disposable fixture does not establish acquisition/entry/ruins/talisman/tiara access.; No original executable/audio/render parity, unsaved crash, native interruption/negative completion or other altar acceptance. Historical stock defect PG-DEF-007 remains.",
+            "evidence": [
+              "docs/openrune/verification/independent/deep-rune-mind/native-002/independent-assessment.json"
+            ]
+          },
+          "V3": {
+            "status": "IN_PROGRESS",
+            "reason": "Two actual rendered native altar Craft-rune menus generate matching native location actions; one complete28 mixed essence transaction, exact runes/wholeStats/fractionalXP/gear and no additional credit after empty repeat. Actual791/186-height100 decoded effects. Acknowledged save, server process restart and independently decoded same-account native reconnect preserve whole inventory/Stats. Remaining: Current transport logger records27/47/95/115 only, not73. First altar delivery established by genuine server reward/effects; generated second action and subsequent no-credit observation do not independently attest its wire delivery or server refusal.; Inside-altar disposable fixture does not establish acquisition/entry/ruins/talisman/tiara access.; No original executable/audio/render parity, unsaved crash, native interruption/negative completion or other altar acceptance. Historical stock defect PG-DEF-007 remains.",
+            "evidence": [
+              "docs/openrune/verification/independent/deep-rune-mind/native-002/independent-assessment.json"
+            ]
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content/ordinary_rune_altars.rs",
+          "crates/world/src/runecrafting.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/runecrafting_actions.rs"
+        ]
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0126",
+      "revision": 1,
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "bd1294ab9e0ff850155b024364dc3a3a98a37bed"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "IN_PROGRESS",
+            "reason": "Unchanged byte-identical independent World stock scenarios pass at separate126correctionSHA:all12variable outputstock refusals retain count1/vars7,allessence/gear/Stats unchanged andzeroXP;12normalstack merge and12near-i32MAXfull-credit controlsPASS. SourceharnessSHAidenticalto125rawFAIL. This independently verifies only the published stock safeguard,not Daeyalt/complete126orcurrentHEADacceptance. Other126requirements remain unverified.",
+            "evidence": [
+              "docs/openrune/verification/independent/rune-altars-stock-correction-126.json"
+            ]
+          },
+          "V1": {
+            "status": "IN_PROGRESS",
+            "reason": "336 independent public-World cases:324 all-six-altars/member-F2P/current-required99-104/count1-7-28/rate1-1.25-5 controls; six genuine Daeyalt-priority then ordinary-second-click transactions and six live membership-loss refusals. Exact aggregate50percentextra XP only for special essence, no extra rune yield, all unselected ordinary essence/gear retained. Constructed membership and visible levels, no acquisition/boost activation/native acceptance. Remaining: legacy API/metadata/context/capacity negative tails; actual126targetcache and binary; native special essence/negative/interruption/effects; same-save/crash recovery; qualified exact source/Wiki comparison",
+            "evidence": [
+              "docs/openrune/verification/independent/daeyalt-world-partial.json"
+            ]
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content/ordinary_rune_altars.rs",
+          "crates/world/src/runecrafting.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/runecrafting_actions.rs"
+        ]
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0127",
+      "revision": 1,
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "2d6ea002a796b409ed25f74b540e855440b045d8"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
             "status": "NOT_STARTED",
             "reason": "Awaiting applicable independent campaign"
           },
@@ -20954,7 +21078,56 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content/ordinary_rune_altars.rs",
+          "crates/world/src/runecrafting.rs",
+          "crates/world/src/simulation/runecrafting_actions.rs"
+        ]
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0128",
+      "revision": 1,
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "b7a85b2ff8b8599182cc6d69030a2a0a3ef44ff0"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -21030,8 +21203,8 @@
       "chem-crash",
       "food-negative"
     ],
-    "next_eligible_contract": "OR-MIG-0109",
-    "next_action": "1087d4e09b6ACCEPTED_HISTORICAL V0-V4PASS.1098bc76c7V1PASS612independent Worldcontrols plus38actualcache refusals; next genuine native worn UI/current nullable claims/member-F2P/fullbag, actualserverstartup, savedrestart/unsavedrecovery and reference. Preserve all existing immutable runs and raw QA failures; chemistry stays deferred. Newly fetched125Runealtar contract at9f2bbc7/a2fa742 has been fully inspected, independent published validatorPASS135records/125units, queueSHA10feae690a2eacba1e4830d4e52840c4f0e1ff76ec5a2b0b81e93f1e24479eca; no inherited acceptance.",
+    "next_eligible_contract": "OR-MIG-0125",
+    "next_action": "Continue exact125a2fa742 Rune altars after972positive WorldcasesPASS; run initial/late guards,actualcache/startup/native/same-save/reference. Preserve108all applicableV0-V4PASS.1098bc76c7terminalFAILED PG-DEF-006:ordinary native Swap sends4,butprofile/runtimebind2;V0/V2FAIL,V1PASS612cases,V3BLOCKEDconverted-native-state,V4scopedcomparisonPASS. Prepared109F2Pstate unexecuted; do not overwrite. No new external issue/FORGE stop/currentHEADsubstitution. Chemistry deferred.",
     "deferred_execution": "Chemistry interrupt-002 had already ended with a raw observer assertion failure when deferral arrived; owned graceful stop path recorded, no live chemistry run retained. Crash scenario build was resource-deferred and never executed. Do not launch new chemistry tests or silently classify unresolved assertions as implementation failures.",
     "resource_policy": "PG-INFRA-012 resolved: invoke existing project Assert-ServerMemoryCapacity (memory/commit/paging) and sampled CPU<=70%; explicit Cargo-j1/two owned CPUs/BelowNormal. The extra owned6GiBfloor was not a user/project requirement and must not cause another false stop."
   },
@@ -21050,16 +21223,16 @@
     ]
   },
   "next_native_work": {
-    "implementation_id": "OR-MIG-0109",
-    "target_sha": "8bc76c7c464daf1d4abdef4dd7f4172c270abda5",
-    "feature": "imcando-worn",
+    "implementation_id": "OR-MIG-0125",
+    "target_sha": "a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d",
+    "feature": "rune-altars",
     "actions_in_order": [
-      "preserve historical108all applicableV0-V4PASS and immutable normal/recovery/invalid-input runs",
-      "preserve109V1PASS612World controls and38actual-cache refusals; raw QA failures remain",
-      "execute genuine worn native member/F2P/fullbag/lifecycle/reference at exact109SHA;612World controls complete",
-      "continue next eligible scenario after each batch; chemistry deferred"
+      "preserve108accepted/109terminalfailure612Worldpasses and all immutable native accounts",
+      "preserve972ordinary Rune altar Worldpositivecases; execute initial/late guards and exact targetcache/startup",
+      "fresh actualaltar native interiorfixture/ordinaryCraft-rune/essence-runes-XP/effects and durable recovery",
+      "qualified four-source/13Wiki reference comparison; continue nexteligible work after each batch"
     ],
-    "reason": "108held-only accepted historically;109worn requires its own native dispatch/lifecycle/reference and remaining authoritative boundary coverage. No movingHEADinheritance."
+    "reason": "PG-DEF-006 blocks only109nativeconverted-state requirements at its exactSHA. OrdinaryP2localcorrection,noFORGEstop.125newshared location/queue/aggregate-reward engine is eligible."
   },
   "blocked_scenarios": [
     {

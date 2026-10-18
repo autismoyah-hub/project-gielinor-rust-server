@@ -1,0 +1,23 @@
+{
+  "implementation_id": "OR-MIG-0126",
+  "tested_sha": "bd1294ab9e0ff850155b024364dc3a3a98a37bed",
+  "status": "PASS_SCOPED",
+  "cases": 126,
+  "scope": "120 initial/late World refusals across six altars:live membership,captured metadata/count,visible minimum,configured unsupported held/worn,liveness,rate,output metadata/duplicate stacks. Six legacy prepare API calls lack member authority and refuse special essence. Whole inventory/equipment/Stats unchanged.",
+  "raw_initial_status": "FAIL",
+  "initial_passing_prefix": 5,
+  "initial_legacy_cases_passed": 6,
+  "corrected_tail_cases_passed": 115,
+  "harness_correction": "Initial row0/initial/case5 used26822 but the independently constructed Config blocked_worn contained26850 only. This was not an implementation failure. Fresh tail substitutes configured26850 and skips initial five passing cases and six completed legacy API cases. Original raw fixture/log/FAIL retained.",
+  "limitations": [
+    "Constructed fixture membership/equipment only; no actual126cache/native/persistence/completeV1 acceptance."
+  ],
+  "evidence_sha256": {
+    "integration-external-daeyalt-guards-bd1294ab9e0ff850155b024364dc3a3a98a37bed/manifest.json": "36edfa766ee3474605d14e9c0a2f697783366be1dbed35de5bc4e7e97caded45",
+    "integration-external-daeyalt-guards-bd1294ab9e0ff850155b024364dc3a3a98a37bed/run-1.log": "2a6c8725720df7b2cc467ced47be3af774db895c09c4d7c8886e2e9f2d8bc36f",
+    "integration-external-daeyalt-guards-bd1294ab9e0ff850155b024364dc3a3a98a37bed/harness/guards.rs": "cdf167dd67a1cfe0af40bfa31c6382d9d6b2fc8eb8b7cd936e86362f774840d7",
+    "integration-external-daeyalt-guards-tail-bd1294ab9e0ff850155b024364dc3a3a98a37bed/manifest.json": "d111079e54044b5870d9dd17723a3d4fa49aff4a521454f18083f81447ce85b9",
+    "integration-external-daeyalt-guards-tail-bd1294ab9e0ff850155b024364dc3a3a98a37bed/run-1.log": "e6f53255038a56fcb4f8944721b4f9609435789d860f6ed276b3cd9a00e4b3d6",
+    "integration-external-daeyalt-guards-tail-bd1294ab9e0ff850155b024364dc3a3a98a37bed/harness/guards.rs": "763df3e723d081092f109db8cba65f86c88e137d06b8a18c329509800663a70d"
+  }
+}

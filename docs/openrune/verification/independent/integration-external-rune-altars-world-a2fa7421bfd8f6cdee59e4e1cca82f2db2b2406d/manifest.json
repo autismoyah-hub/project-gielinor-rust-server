@@ -1,0 +1,70 @@
+{
+  "tested_integration_sha": "a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d",
+  "suite": "rune-altars-world",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 4097732608,
+    "active_compilers": [
+      "\"cargo.exe\",\"10568\",\"RDP-Tcp#0\",\"2\",\"21,664 K\"",
+      "\"rustc.exe\",\"15036\",\"RDP-Tcp#0\",\"2\",\"1,081,044 K\"",
+      "\"cargo.exe\",\"11976\",\"RDP-Tcp#0\",\"2\",\"25,364 K\"",
+      "\"rustc.exe\",\"6900\",\"RDP-Tcp#0\",\"2\",\"709,400 K\"",
+      "\"rustc.exe\",\"4492\",\"RDP-Tcp#0\",\"2\",\"55,260 K\""
+    ],
+    "cpu_percent": 61.25,
+    "cpu_samples": [
+      49.0234375,
+      54.296875,
+      80.44280442804428
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Existing project memory/commit/paging checks and sampled CPU ceiling; owned Cargo remains j1/two CPUs/BelowNormal",
+    "capacity_policy_sha256": "dc3c6e372de5369ab77c4ebbd7cf21c426d0916581e11f2377480eba79adcdfd",
+    "memory_preflight_exit": 0,
+    "memory_preflight_stdout": "Capacity: 3,679 MiB available, commit 72.8%, pages-in/s 100, disk 2.3 ms.\nCargo concurrency: -j 1\n",
+    "memory_preflight_stderr": "",
+    "disk_free": 11144458240,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "314f4f5a8995e37ce36052b8fb801438229b207c",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d\\external-harness-4258609000\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-rune-altars-world-a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d\\external-harness-4258609000\\Cargo.toml",
+        "--",
+        "--nocapture"
+      ],
+      "exit_code": 0,
+      "tests_passed": 1,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-rune-altars-world-a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative rune-altars-world scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-rune-altars-world-a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d\\harness\\world.rs": "dec64f8e21556c9c456fedd97fcca9c2bb55820548880d94d5085f361cf006be"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\world-9558ff10f10bf74a.exe": "7e54ac6841d9ce71a09e7025b6a09cbb8cd94bf6a78cc4517b697ef9c0fb7a7f"
+  }
+}

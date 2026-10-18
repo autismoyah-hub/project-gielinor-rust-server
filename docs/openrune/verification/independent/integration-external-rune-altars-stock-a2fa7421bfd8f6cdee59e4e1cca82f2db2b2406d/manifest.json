@@ -1,0 +1,69 @@
+{
+  "tested_integration_sha": "a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d",
+  "suite": "rune-altars-stock",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "FAIL",
+  "resource": {
+    "available_ram": 6229897216,
+    "active_compilers": [
+      "\"cargo.exe\",\"1944\",\"RDP-Tcp#0\",\"2\",\"46,308 K\"",
+      "\"rustc.exe\",\"6604\",\"RDP-Tcp#0\",\"2\",\"948,120 K\""
+    ],
+    "cpu_percent": 34.38,
+    "cpu_samples": [
+      31.25,
+      36.47058823529412,
+      35.40856031128404
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Existing project memory/commit/paging checks and sampled CPU ceiling; owned Cargo remains j1/two CPUs/BelowNormal",
+    "capacity_policy_sha256": "dc3c6e372de5369ab77c4ebbd7cf21c426d0916581e11f2377480eba79adcdfd",
+    "memory_preflight_exit": 0,
+    "memory_preflight_stdout": "Capacity: 5,842 MiB available, commit 63.0%, pages-in/s 0, disk 0.9 ms.\nCargo concurrency: -j 2\n",
+    "memory_preflight_stderr": "",
+    "disk_free": 10457493504,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "314f4f5a8995e37ce36052b8fb801438229b207c",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d\\external-harness-1687039700\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-rune-altars-stock-a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d\\external-harness-1687039700\\Cargo.toml",
+        "--",
+        "--nocapture"
+      ],
+      "exit_code": 101,
+      "tests_passed": 2,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-rune-altars-stock-a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative rune-altars-stock scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-rune-altars-stock-a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d\\harness\\stock.rs": "50584d1a7107f62a85d3df297ad99dffc74ab7a73f34bc7ddb43f3c2621ea9cb"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\guards-0f5ef49ee2e71e5c.exe": "b80fb5312d247e6080d8c331cfc769406a3cd9dfd0dd84f6a29c6a397ff8e7a2",
+    "target\\debug\\deps\\stock-3978c341e2a71632.exe": "98be3de92ac48541bd52ca72811a169ff468c043fc640c845d57a0514a8fe66a",
+    "target\\debug\\deps\\world-9558ff10f10bf74a.exe": "7e54ac6841d9ce71a09e7025b6a09cbb8cd94bf6a78cc4517b697ef9c0fb7a7f"
+  }
+}

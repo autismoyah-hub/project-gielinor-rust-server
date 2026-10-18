@@ -1,0 +1,20 @@
+{
+  "implementation_id": "OR-MIG-0126",
+  "tested_sha": "bd1294ab9e0ff850155b024364dc3a3a98a37bed",
+  "status": "PASS_SCOPED_CORRECTION",
+  "finding": "PG-DEF-007",
+  "historical_failure_sha": "a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d",
+  "scope": "Unchanged byte-identical independent World stock scenarios pass at separate126correctionSHA:all12variable outputstock refusals retain count1/vars7,allessence/gear/Stats unchanged andzeroXP;12normalstack merge and12near-i32MAXfull-credit controlsPASS. SourceharnessSHAidenticalto125rawFAIL. This independently verifies only the published stock safeguard,not Daeyalt/complete126orcurrentHEADacceptance.",
+  "historical_disposition": "OR125V1FAIL remains exacthistorical evidence; no silent replacement/retraction.126corrects scoped stock defect and still requires its own alllevel campaign.",
+  "unverified": [
+    "Zero/duplicate stock and other guard boundaries beyond this unchanged36case suite.",
+    "Daeyaltmemberpriority/bonus/aggregatefraction/live revocation andordinaryregression.",
+    "Actual126targetcache/startup/binary/native/persistence/reference."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/rune-altars-stock-finding.json": "2b871edea82be5205e141bc1b7a7d852692243b6bd121675f6af71f254ba4fc2",
+    "docs/openrune/verification/independent/integration-external-rune-altars-stock-bd1294ab9e0ff850155b024364dc3a3a98a37bed/manifest.json": "50d511c052d401c8f61b7e1fbb2f1094c5ad8303013e6340ace9f8b07cbe4ef2",
+    "docs/openrune/verification/independent/integration-external-rune-altars-stock-bd1294ab9e0ff850155b024364dc3a3a98a37bed/run-1.log": "050a821970c6f93ac185ae317770674fe2bcc662006efc23bc186fbdd908a907",
+    "docs/openrune/verification/independent/integration-external-rune-altars-stock-bd1294ab9e0ff850155b024364dc3a3a98a37bed/harness/stock.rs": "50584d1a7107f62a85d3df297ad99dffc74ab7a73f34bc7ddb43f3c2621ea9cb"
+  }
+}

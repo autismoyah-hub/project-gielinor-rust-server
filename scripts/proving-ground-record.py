@@ -30,7 +30,7 @@ for ident,folder,sha in [('OR-MIG-0010','deep-combat','5a260c1bd6efa5f8a221bed7c
         add(ident,sha,'V4','IN_PROGRESS','Independent protected-source and pinned-documentation subcomparisons PASS within recorded scope; complete feature comparison remains open. No executable donor parity is claimed.',refs)
 for manifest in OUT.glob('OR-MIG-0024-*-independent*/manifest.json'):
     value=json.loads(manifest.read_text(encoding='utf-8'))
-    if value.get('suite','').startswith(('imcando-held-','imcando-worn-')):continue  # Scoped aggregate retains partial and resource-deferred attempts.
+    if value.get('suite','').startswith(('imcando-held-','imcando-worn-','rune-altars-','daeyalt-')):continue  # Scoped aggregate retains partial and resource-deferred attempts.
     if value.get('suite')=='light-life':continue  # Exact-target finding below retains raw FAIL/BLOCKED attempts.
     if value.get('outcome')!='PARTIAL':continue
     sha=value['implementation_commit_sha'];evidence=[str(manifest.relative_to(ROOT)).replace('\\','/')]
@@ -38,7 +38,7 @@ for manifest in OUT.glob('OR-MIG-0024-*-independent*/manifest.json'):
     add('OR-MIG-0024',sha,'V1','IN_PROGRESS','Four independent authoritative World action tests PASS across 319 fixtures: all selected slots, full bags, duplicate/stale input, overheal, remainders and malformed transactions. Runtime packet decode and complete food matrix remain open.',evidence)
 for manifest in OUT.glob('integration-*/manifest.json'):
     value=json.loads(manifest.read_text(encoding='utf-8'))
-    if value.get('suite','').startswith(('imcando-held-','imcando-worn-')):continue  # Recorded by immutable scoped aggregate below, not legacy filter format.
+    if value.get('suite','').startswith(('imcando-held-','imcando-worn-','rune-altars-','daeyalt-')):continue  # Recorded by immutable scoped aggregate below, not legacy filter format.
     if value.get('suite') in ['member-tanning-world','member-tanning-guards']:
         continue  # Combined independent assessment includes retained partial attempt.
     if value.get('suite') in ['light-legacy-bindings','light-bindings','light-tool-regression']:
@@ -664,4 +664,37 @@ if path.exists():
     if not any(json.loads(s)['attempt_id']==attempt for s in coarse_path.read_text(encoding='utf-8').splitlines()):
         row={'attempt_id':attempt,'implementation_id':'OR-MIG-0108','implementation_commit_sha':result['tested_sha'],'contract_revision':1,'campaign_kind':'historical','outcome':'VERIFIED','level':'V0PASS/V1PASS/V2PASS/V3PASS/V4PASS','independent_verification':True,'tests_passed':0,'coverage':[k+' '+v['status']+': '+v['reason'] for k,v in result['levels'].items()],'reason':result['scope'],'evidence':[path.relative_to(ROOT).as_posix()],'issues':[]}
         with coarse_path.open('a',encoding='utf-8',newline='\n') as f:f.write(json.dumps(row)+'\n')
+path=OUT/'imcando-worn-disposition.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='FAILED_REQUIRES_CORRECTION'
+    for level,value in result['levels'].items():add('OR-MIG-0109',result['tested_sha'],level,value['status'],value['reason'],[path.relative_to(ROOT).as_posix()],scope='imcando-worn-native-disposition')
+    coarse_path=DOC/'VERIFICATION_RESULTS.jsonl';attempt='imcando-worn-native-disposition-'+result['tested_sha']
+    if not any(json.loads(s)['attempt_id']==attempt for s in coarse_path.read_text(encoding='utf-8').splitlines()):
+        row={'attempt_id':attempt,'implementation_id':'OR-MIG-0109','implementation_commit_sha':result['tested_sha'],'contract_revision':1,'campaign_kind':'historical','outcome':'FAILED','level':'V0FAIL/V1PASS/V2FAIL/V3BLOCKED/V4PASS','independent_verification':True,'tests_passed':0,'coverage':[k+' '+v['status']+': '+v['reason'] for k,v in result['levels'].items()],'reason':result['scope'],'evidence':[path.relative_to(ROOT).as_posix()],'issues':['PG-DEF-006 ordinary P2local correction; no FORGE stop/newissue']}
+        with coarse_path.open('a',encoding='utf-8',newline='\n')as f:f.write(json.dumps(row)+'\n')
+path=OUT/'rune-altars-world-partial.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    for level in ['V0','V1']:add('OR-MIG-0125',result['tested_sha'],level,'IN_PROGRESS',result['scope']+' Remaining: '+'; '.join(result['remaining']),[path.relative_to(ROOT).as_posix()],scope='rune-altars-independent-world-partial')
+path=OUT/'rune-altars-stock-finding.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='CONFIRMED_IMPLEMENTATION_DEFECT'
+    add('OR-MIG-0125',result['tested_sha'],'V1','FAIL',result['scope']+' '+result['correction']+' Trusted restored-state fault injection; native reachability/durability untested.',[path.relative_to(ROOT).as_posix()],scope='rune-altars-stock-metadata-finding')
+path=OUT/'rune-altars-stock-correction-126.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PASS_SCOPED_CORRECTION'
+    for level in ['V0','V1']:add('OR-MIG-0126',result['tested_sha'],level,'IN_PROGRESS',result['scope']+' Other126requirements remain unverified.',[path.relative_to(ROOT).as_posix()],scope='rune-altars-stock-correction-126')
 print('Per-level evidence events:',len(rows))
+
+path=OUT/'rune-altars-additional-world.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    add('OR-MIG-0125',result['tested_sha'],'V0','IN_PROGRESS',result['scope']+' Exact server/native runtime separately attested; remaining applicable obligations open.',[path.relative_to(ROOT).as_posix()],scope='rune-altars-guards-cache-boundaries')
+path=OUT/'daeyalt-world-partial.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    add('OR-MIG-0126',result['tested_sha'],'V1','IN_PROGRESS',result['scope']+' Remaining: '+'; '.join(result['remaining']),[path.relative_to(ROOT).as_posix()],scope='daeyalt-independent-world-partial')
+for path in sorted(OUT.glob('deep-rune-*/*/independent-assessment.json')):
+    result=json.loads(path.read_text(encoding='utf-8'))
+    if result['status']!='PASS_SCOPED':continue
+    for level in ['V2','V3']:add('OR-MIG-0125',result['tested_sha'],level,'IN_PROGRESS',result['scope']+' Remaining: '+'; '.join(result['limitations']),[path.relative_to(ROOT).as_posix()],scope='rune-native-'+result['feature']+'-'+path.parent.name)

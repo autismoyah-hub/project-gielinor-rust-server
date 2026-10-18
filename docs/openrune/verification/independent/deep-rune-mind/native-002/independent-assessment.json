@@ -1,0 +1,30 @@
+{
+  "implementation_id": "OR-MIG-0125",
+  "tested_sha": "a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d",
+  "status": "PASS_SCOPED",
+  "feature": "rune-mind",
+  "output": 558,
+  "runes": 224,
+  "fine_xp_award": 7700,
+  "inventory_change_ticks": [
+    166
+  ],
+  "scope": "Two actual rendered native altar Craft-rune menus generate matching native location actions; one complete28 mixed essence transaction, exact runes/wholeStats/fractionalXP/gear and no additional credit after empty repeat. Actual791/186-height100 decoded effects. Acknowledged save, server process restart and independently decoded same-account native reconnect preserve whole inventory/Stats.",
+  "limitations": [
+    "Current transport logger records27/47/95/115 only, not73. First altar delivery established by genuine server reward/effects; generated second action and subsequent no-credit observation do not independently attest its wire delivery or server refusal.",
+    "Inside-altar disposable fixture does not establish acquisition/entry/ruins/talisman/tiara access.",
+    "No original executable/audio/render parity, unsaved crash, native interruption/negative completion or other altar acceptance. Historical stock defect PG-DEF-007 remains."
+  ],
+  "evidence_sha256": {
+    "initial-state.json": "2b1b25eb38697f2a601c5821512a408b80169532b6fdfa965a82070932a3e6fc",
+    "build.json": "d85486ac0da8af5ef1a10c98c3fb773991220e7ecf74ff0743631cc4e47376f8",
+    "produce/client.log": "7045cb3633168d3f590752f435d8ab4a6783c0cdfa4f157eeb82de713a1bb74d",
+    "produce/manifest.json": "c3c3b420df23f248eb47bb6d9e02493428e9dfecf3e0f455fbb00a0a20825d41",
+    "produce/after.json": "2fea04c13b90cb21319b2a5dd831ae1537bd31e926a4496143f069550a2371a5",
+    "relogin/client.log": "04727f0c8db677fc1c4e0f3d77cff5d639aeab21ae6150abfa65d083322ad130",
+    "relogin/manifest.json": "e336adfac7e7ae02665e665a0ec0707cdf10f5fe19c359cb8efb861de660aaaf",
+    "relogin/after.json": "b420debc53cf21d60fcbbcf18a985d22715e01eedafca52c07ebe8555845dbf3",
+    "frozen-observer/pg_observer.rs": "b6796e30c24d1e42f062f915f642d875a2f51b0da3a09e29a625b1f3c4982c94",
+    "frozen-observer/build.json": "b354fba58b7e18a18adfa00f495c44a2e6089f57bb235eb51bce14f870a38359"
+  }
+}

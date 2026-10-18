@@ -1,12 +1,12 @@
 {
-  "observed_utc": "2026-10-18T16:52:07.157333+00:00",
-  "forge_head": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
-  "queue_sha256": "10feae690a2eacba1e4830d4e52840c4f0e1ff76ec5a2b0b81e93f1e24479eca",
+  "observed_utc": "2026-10-18T17:57:56.783526+00:00",
+  "forge_head": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
+  "queue_sha256": "ce073047512da344dade133332b592e03678f131557172f8ccf3563441c7ddfa",
   "published_validator_sha256": "5e5a3a2aa9a8e83db555150e09332188486a6b13c9bb3be1925eac2357346354",
   "published_validator_status": "PASS",
   "json_schema_status": "UNAVAILABLE: jsonschema package; published validator PASS",
-  "records": 135,
-  "implementation_units": 125,
+  "records": 138,
+  "implementation_units": 128,
   "new_contracts": [],
   "updated_contracts": [],
   "new_since_initial_checkpoint": [
@@ -113,7 +113,10 @@
     "OR-MIG-0122",
     "OR-MIG-0123",
     "OR-MIG-0124",
-    "OR-MIG-0125"
+    "OR-MIG-0125",
+    "OR-MIG-0126",
+    "OR-MIG-0127",
+    "OR-MIG-0128"
   ],
   "items": [
     {
@@ -150,7 +153,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -382,7 +385,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -613,7 +616,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -844,7 +847,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1071,7 +1074,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1290,7 +1293,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1487,7 +1490,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1706,7 +1709,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1925,7 +1928,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2162,7 +2165,7 @@
         ]
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2387,7 +2390,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2603,7 +2606,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2819,7 +2822,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3032,7 +3035,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3244,7 +3247,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3455,7 +3458,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3666,7 +3669,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3879,7 +3882,7 @@
         ]
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4098,7 +4101,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4318,7 +4321,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4538,7 +4541,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4783,7 +4786,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5009,7 +5012,7 @@
         ]
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5269,7 +5272,7 @@
         ]
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5489,7 +5492,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5699,7 +5702,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5908,7 +5911,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -6150,7 +6153,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -6388,7 +6391,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -6620,7 +6623,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -6829,7 +6832,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -7038,7 +7041,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -7275,7 +7278,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -7490,7 +7493,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -7712,7 +7715,7 @@
         ]
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -7922,7 +7925,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -8132,7 +8135,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -8341,7 +8344,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -8551,7 +8554,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -8768,7 +8771,7 @@
         ]
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -8978,7 +8981,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -9189,7 +9192,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -9399,7 +9402,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -9609,7 +9612,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -9817,7 +9820,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -10023,7 +10026,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -10228,7 +10231,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -10432,7 +10435,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -10634,7 +10637,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -10835,7 +10838,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -11050,7 +11053,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -11250,7 +11253,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -11448,7 +11451,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -11660,7 +11663,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -11853,7 +11856,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -12060,7 +12063,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -12275,7 +12278,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -12475,7 +12478,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -12664,7 +12667,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -12853,7 +12856,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -13041,7 +13044,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -13257,7 +13260,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -13469,7 +13472,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -13681,7 +13684,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -13885,7 +13888,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -14098,7 +14101,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -14303,7 +14306,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -14528,7 +14531,7 @@
         ]
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -14732,7 +14735,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -14944,7 +14947,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -15145,7 +15148,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -15339,7 +15342,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -15523,7 +15526,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -15707,7 +15710,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -15891,7 +15894,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -16074,7 +16077,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -16258,7 +16261,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -16441,7 +16444,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -16624,7 +16627,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -16799,7 +16802,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -16981,7 +16984,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -17162,7 +17165,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -17341,7 +17344,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -17536,7 +17539,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -17711,7 +17714,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -17871,7 +17874,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -18029,7 +18032,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -18178,7 +18181,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -18326,7 +18329,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -18474,7 +18477,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -18622,7 +18625,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -18769,7 +18772,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -18916,7 +18919,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -19064,7 +19067,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -19212,7 +19215,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -19359,7 +19362,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -19498,7 +19501,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -19634,7 +19637,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -19766,7 +19769,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -19891,7 +19894,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -20015,7 +20018,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -20139,7 +20142,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -20256,7 +20259,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -20372,7 +20375,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -20494,7 +20497,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -20601,7 +20604,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -20709,7 +20712,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -20830,7 +20833,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -20911,39 +20914,45 @@
       "historical_verification": {
         "levels": {
           "V0": {
-            "status": "IN_PROGRESS",
-            "reason": "388 independent registered World controls PASS:224bothforms/member-F2P/fulland0..27gap/occupiedtarget whole-image controls;144atomiclife/metadata/context refusals;8ordered actual Wearpos removal-before-equip callbacks;8synthetic base/current requirement controls;4genuine scheduled weak-gem interruption controls. Actual two target cache forms/param453Swap/secondarywear-none/button2 plus38malformedbindingrefusalsPASS. Earlier refusal fixture failed because logout retained preexisting modified flags; clear before logout then exact-SHA rerunPASS. Initial binding compileFAIL was QA Param::Int spelling,corrected Integer thenPASS. Both raw failures retained. Remaining: Existing output-form duplicates with earlier bag positions and all first-gap positions; no V1PASS yet.; V0actualserverbinary/startup/dispatcher and native worn component/current nullable item cases.; Native fullbag/occupiedtarget/member-F2P/bothforms/refusals/menu/feedback and durable save/reconnect/crash.; Complete independent reference comparison; no inherited108orcurrentHEADacceptance.",
+            "status": "FAIL",
+            "reason": "Exact production binary builds and target definitions resolve,but intended worn Swap registration is bound2while both actual native menus emit4. Actual reachable gameplay dispatch criterion fails.",
             "evidence": [
-              "docs/openrune/verification/independent/imcando-worn-authoritative-partial.json"
+              "docs/openrune/verification/independent/imcando-worn-disposition.json"
             ]
           },
           "V1": {
             "status": "PASS",
             "reason": "612independent registered World controls plus38actualcache binding refusals satisfy applicable authoritative worn-only Swap requirements:388whole bag/member/F2P/occupied/freehand/life/metadata/realorderedcallbacks/syntheticbaselevel/weakinterruption controls preserved,then224new all28firstgap/existingoutputduplicates/retainedinputduplicate/stale replay casesPASS. Newly removed exact-slot output equips for member/freehand; existing opposite-form duplicates remain untouched, F2P/occupiedtarget preserves outputheld and old target. Complete whole bag/gear/Stats/fractions/noXP/noautomaticreplay; fullbagrefuses evenfreehand. Original QA failures retained. No native/startup/persistence/reference/currentHEADacceptance inherited.",
             "evidence": [
-              "docs/openrune/verification/independent/imcando-worn-authoritative-complete.json"
+              "docs/openrune/verification/independent/imcando-worn-disposition.json"
             ]
           },
           "V2": {
-            "status": "NOT_STARTED",
-            "reason": "Awaiting applicable independent campaign"
+            "status": "FAIL",
+            "reason": "Fresh member account has one free backpack slot and both ordinary worn hammers. Two authentic native Worn Equipment Swap menu actions transmit actual387:18/20,slot-1,item-1,operation4. After8ticks each, independently decoded whole bag/gear/rawStats and acknowledged SQL save remain exactly initial: no conversion. Pinned profile and runtime accept worn Swap under operation2; targetparam453iswear_op3, agreeing with real menu4. No hand-crafted requests or replay used.",
+            "evidence": [
+              "docs/openrune/verification/independent/imcando-worn-disposition.json"
+            ]
           },
           "V3": {
-            "status": "NOT_STARTED",
-            "reason": "Awaiting applicable independent campaign"
+            "status": "BLOCKED",
+            "reason": "Pinned native Swap cannot produce a converted worn state because PG-DEF-006; converted-form native save/restart/crash obligations cannot run through genuine UI at8bc76c7. Both attempted ordinary menus conserve original SQL account and save gracefully,but that is not conversion persistence. Prepared F2P account remains unexecuted; do not substitute a newer build.",
+            "evidence": [
+              "docs/openrune/verification/independent/imcando-worn-disposition.json"
+            ]
           },
           "V4": {
-            "status": "IN_PROGRESS",
-            "reason": "Three exact source/Wiki hashes independently match the two worn4callback forms and original sequence: capture target-hand availability, attempt unequip with failure return, replace held form, and equip first matching output only if target was free. Source helper has no explicit entitlement gate; global effective equip policy remains unresolved. Wiki restricts new equipping to members and retains ordinary hammer functionality in F2P. Target109stages all operations and binds newly removed item, with F2Pconversion-to-bag/no-new-equip as an explicit adaptation; no native/source global parity inferred. Native/cache/World/lifecycle and complete reference acceptance remain separate.",
+            "status": "PASS",
+            "reason": "Scoped independent comparison complete: original Imcando worn4helper/two pinned Wiki revisions,five newly inspected equip/unequip/verification helpers and actual target symbols/forms. Source worn4and targetwear_op3=453agree with observednative4; target2is a confirmed defect. Fullbagunequip-first/occupied-hand behavior,target newly removed-slot duplicate protection and atomic staging/base requirements compared. Target F2Pbag/no-new-equip is qualified Wiki-backed adaptation; direct source chain has no explicit membership check. No donor executable/effective-world-cache/render/audio parity inferred.",
             "evidence": [
-              "docs/openrune/verification/independent/reference-imcando-worn/comparison.json"
+              "docs/openrune/verification/independent/imcando-worn-disposition.json"
             ]
           }
         },
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -21047,7 +21056,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -21147,7 +21156,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -21238,7 +21247,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -21329,7 +21338,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -21416,7 +21425,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -21499,7 +21508,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -21582,7 +21591,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -21665,7 +21674,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -21746,7 +21755,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -21825,7 +21834,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -21900,7 +21909,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -21974,7 +21983,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -22047,7 +22056,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -22122,7 +22131,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -22195,7 +22204,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -22241,6 +22250,155 @@
       "historical_verification": {
         "levels": {
           "V0": {
+            "status": "IN_PROGRESS",
+            "reason": "756 initial/late World refusal and interruption/parking controls,355 malformed actual cache bindings,41 item/six altar/effect identities and six real mapped interiors,60 yield-threshold/actual-levelup/uncaptured-addition World cases pass. All preserve whole relevant inventory/equipment/fineXP; deterministic no RNG. Exact server/native runtime separately attested; remaining applicable obligations open.",
+            "evidence": [
+              "docs/openrune/verification/independent/rune-altars-additional-world.json"
+            ]
+          },
+          "V1": {
+            "status": "FAIL",
+            "reason": "Twelve separately named actual reached-altar/Worldweakqueue faults across all6/member-F2P: preexisting output rune count1/vars7 is merged into new output and normalized tovars0,seven captured mixed Rune/Pure essence singles consumed,XPawarded. Normal existing count50/vars0 merges and near-i32MAXstrict-full-credit refusals all24controlsPASS. Independent972positive+756initial/late/delay-close guards remain preserved. Reject or otherwise preserve malformed existing output stock before publishing any essence debit/XP. OR126bd1294ab9e0ff850155b024364dc3a3a98a37bed already publishes a caller-level stock safeguard; independently verify the unchanged exact stock scenarios there. Historical125remainsFAIL,no silently substituted build. Trusted restored-state fault injection; native reachability/durability untested.",
+            "evidence": [
+              "docs/openrune/verification/independent/rune-altars-stock-finding.json"
+            ]
+          },
+          "V2": {
+            "status": "IN_PROGRESS",
+            "reason": "Two actual rendered native altar Craft-rune menus generate matching native location actions; one complete28 mixed essence transaction, exact runes/wholeStats/fractionalXP/gear and no additional credit after empty repeat. Actual791/186-height100 decoded effects. Acknowledged save, server process restart and independently decoded same-account native reconnect preserve whole inventory/Stats. Remaining: Current transport logger records27/47/95/115 only, not73. First altar delivery established by genuine server reward/effects; generated second action and subsequent no-credit observation do not independently attest its wire delivery or server refusal.; Inside-altar disposable fixture does not establish acquisition/entry/ruins/talisman/tiara access.; No original executable/audio/render parity, unsaved crash, native interruption/negative completion or other altar acceptance. Historical stock defect PG-DEF-007 remains.",
+            "evidence": [
+              "docs/openrune/verification/independent/deep-rune-mind/native-002/independent-assessment.json"
+            ]
+          },
+          "V3": {
+            "status": "IN_PROGRESS",
+            "reason": "Two actual rendered native altar Craft-rune menus generate matching native location actions; one complete28 mixed essence transaction, exact runes/wholeStats/fractionalXP/gear and no additional credit after empty repeat. Actual791/186-height100 decoded effects. Acknowledged save, server process restart and independently decoded same-account native reconnect preserve whole inventory/Stats. Remaining: Current transport logger records27/47/95/115 only, not73. First altar delivery established by genuine server reward/effects; generated second action and subsequent no-credit observation do not independently attest its wire delivery or server refusal.; Inside-altar disposable fixture does not establish acquisition/entry/ruins/talisman/tiara access.; No original executable/audio/render parity, unsaved crash, native interruption/negative completion or other altar acceptance. Historical stock defect PG-DEF-007 remains.",
+            "evidence": [
+              "docs/openrune/verification/independent/deep-rune-mind/native-002/independent-assessment.json"
+            ]
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content/ordinary_rune_altars.rs",
+          "crates/world/src/runecrafting.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/runecrafting_actions.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "Six3x3static targetaltars34760..34765/Craft-rune1 produceAir556/Mind558/Water555/Earth557/Fire554/Body559 fromRuneessence1436/Pure7936. Wiki levels1/2/5/9/14/20,XP5/5.5/6/6.5/7/7.5peressence,intervals11/14/19/26/35/46. ExacttargetF2Pordinarynonstackessences/stackrunes verified.",
+        "Explicit Wiki-first differences: sourcepreCraftdelay3 versusall6productRecipe1tick;sourcebaselevelrequirements/multipliers versusWikiboostable/currentvisiblelevelincludingEarth104five-runefootnote;sourceXPbasedonproducedbaseRunesversusWikiXPperessence. Candidate1tick/allcapturedessenceonce/currentpreactionlevel/yieldfloor(level/interval)+1/XPessencecountonly;not source/nativeparityclaim.",
+        "Wiki5productPureessenceRecipe memberYes versusBodyNo/generalRunecrafttableNo/itemNo conflict. OfficialhistoricalUpdate:Pure Essence now craftable on free servers7766465 (24April2006)explicitlypermitsnonmemberRunecraftuse;bothessencesF2Ptargetdefs/generalrulesconcordant. TreatbothasF2Pforall6;recordconflictingrecipeflagsandrequestindependentV4membershipconfirmation.",
+        "SourcegenericAltarEvents/CraftRune/EssencePouchconstants/Raimentsreferenceonly;configured241generatedRunecraftingRunesRowinstancesnotavailablehere. Six239.1profilevaluesindependentlyboundtarget/Wiki;no241table/assets/Kotlin copied. Sourcepartialfiles retainallotherobligations.",
+        "SnapshotallordinaryRune/PureessenceslotsatacceptedreachedOp1;completeactionusesexistingweakScheduler/Inventorystrictstageddebits/fullstackcredit/sharedreward. Recheckorigin/movement/locationrevision/currentlevel/allcapturedslots/protectionatcommit,ignoreadditionaluncapturedessence;atomiccapacity/rate/metadatafailure.",
+        "FailclosedwhencarryingDaeyalt/Guardian/4Scar extractsorequipped13Raiments/14lanternvariants:bonus/specialessencerecipesnotimplemented,nounder-bonusconsumption. Over-restrictiveunlitlantern/unrelatedextractguardintentionaluntilmodifiersported. Talismans/tiarasonlyaccessruins,sourcenotrequiredwhenalreadyinsidealtar;ruins/teleports/access/pouches/cores/combos/Ourania/memberrunes/dropacquisitionseparate.",
+        "Animation791/spot186height100targetaliasesverified;sourcehardcodedSynth2710absenttargetaliases,soundomittedexplicitlypendingattestation. Nativeactualmappedaltar/access/client/timing/layout/same-save/referenceindependent. Ordinaryproofnotnaturalboost/acquisitionproof.",
+        "Read-onlyPythonlocprobeinitiallyrejectedop78;verifiedexistingRustLocationType78takes4bytes,extendedonlyprivateprobe;rawtargetdecodesfullyconsumed. ExistingRustdecoderunchanged. Protectedlocalreferencespreserved;rootISCnotblanketclearance,no donorcode/generatedtables/assetscopied.",
+        "Working-treeshared/binsPASS507unchangedrg-visiblehashesrequiredbeforepublication;unrelated/private/native/failureevidencepreserved,notpristine/native/referenceacceptance. Fournewsourcefileselegiblebutpartial;nofile/completenesspercentageclaim.",
+        "36actualWorldvectorsall6x3essenceformsx2worldtypes,9latecontext/material/modifier/credit/rateguardsanduncapturedadditionalessencecase. Consistentbase(interval-1)/visibleinterval/+1prestatesandEarth99/104mathareconstructedheadlessinputs,notnativeboostactivation/progressionproof.",
+        "Preservedprior125attemptstatuses:[]"
+      ],
+      "execution_disposition": "ELIGIBLE"
+    },
+    {
+      "implementation_id": "OR-MIG-0126",
+      "revision": 1,
+      "feature_name": "Daeyalt altar priority, aggregate 50% XP bonus and rune-stock metadata safeguards",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "bd1294ab9e0ff850155b024364dc3a3a98a37bed"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "IN_PROGRESS",
+            "reason": "Unchanged byte-identical independent World stock scenarios pass at separate126correctionSHA:all12variable outputstock refusals retain count1/vars7,allessence/gear/Stats unchanged andzeroXP;12normalstack merge and12near-i32MAXfull-credit controlsPASS. SourceharnessSHAidenticalto125rawFAIL. This independently verifies only the published stock safeguard,not Daeyalt/complete126orcurrentHEADacceptance. Other126requirements remain unverified.",
+            "evidence": [
+              "docs/openrune/verification/independent/rune-altars-stock-correction-126.json"
+            ]
+          },
+          "V1": {
+            "status": "IN_PROGRESS",
+            "reason": "336 independent public-World cases:324 all-six-altars/member-F2P/current-required99-104/count1-7-28/rate1-1.25-5 controls; six genuine Daeyalt-priority then ordinary-second-click transactions and six live membership-loss refusals. Exact aggregate50percentextra XP only for special essence, no extra rune yield, all unselected ordinary essence/gear retained. Constructed membership and visible levels, no acquisition/boost activation/native acceptance. Remaining: legacy API/metadata/context/capacity negative tails; actual126targetcache and binary; native special essence/negative/interruption/effects; same-save/crash recovery; qualified exact source/Wiki comparison",
+            "evidence": [
+              "docs/openrune/verification/independent/daeyalt-world-partial.json"
+            ]
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content/ordinary_rune_altars.rs",
+          "crates/world/src/runecrafting.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/runecrafting_actions.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "AddmemberDaeyalt24704toexisting6ordinaryaltarprofiles. SourceRuneActionandWikiDaeyalt15287325agree50%XPbonusandpriority:ifDaeyaltpresentconsumeonlyacceptedDaeyaltbatch;Rune/PurewaitforsecondexplicitCraft-runeaction. No extra rune-yieldfromDaeyalt itself.",
+        "Useunchanged125visiblelevel/yield/1tick/strictcapturedslots/atomicInventory/fullrunestack/sharedXP. XPcapturedessencecount*baseXP*1.5withpersonalrateandoneper-actiontenths-truncation;notperproducedrune/notprematureperessencerounding. Mind7Daeyaltat1.25rate=721fine,separatesecond21Pure/Rune=1443fine.",
+        "MemberauthoritypassedfromlivePlayeratpreflight/commit. LegacyConfig.preparewithoutmemberauthorityremainsRune/Pure-only;newprepare_memberexplicitmemberboolisrequiredforDaeyalt. F2PDaeyaltrefuseswholepriorityactionwithoutfallbacktoordinaryessence;F2PRune/Pureunchanged.",
+        "Mine/tradeacquisitionSinsFather/Mining60/nobleclothing/newquestprogressisnotaddedasaltarusegate:sourcecanCrafthasnoquestgateandWikiordinaryDaeyaltRecipes/questNoitemdefinitiontreatquestasacquisition. Acquisition/pouches/otheraltars/Ourania/Guardian/Scar/Raiments/lantern/native/lifecycle/reference remainseparate.",
+        "Priorityfixedatacceptedbatch;lateuncapturedessencepreservedandcapturedslots/IDs/count1/vars0/member/currentlevel/gear/context/locationrevisionrechecked. No RNG;lateMemberloss/changedDaeyaltcannotfallbacktoavailableRune/Pure. Guardian/4extracts/27wornmodifierguardremain.",
+        "Source125timing3vsWiki1/basevscurrent/XPperproducedvscapturedessencedifferencesremainexplicit. Nativequestacquisition/boost/timing/one-awardfractionpolicyrequiresindependentV0-V4. Existingfailures/privatefixtures/nativesourcespreserved;no donorcode/DSL/generatedtables/assetscopied,rootISCnotblanketclearance.",
+        "Focused002PASS2server/10world507,1m12scompile/.01s+6.45stests;actualbins001PASS507requiredbeforepublication. No newfullglobalworldpass:125historical203server512world1ignore remainsdistinct. Includes36existingRune/Pure/F2P/membervectorsplus12newmemberDaeyaltfull/mixedsixaltars/6mixedsecondactions;F2PnegativeusesrepresentativeMindfixturewiththreecases,threeuniqueMemberlatefailures;independentlyverifyall6F2Pnegatives.",
+        "Constructedconsistentboost/member/heldresourceprestates,notnativeboost/mine/quest/tradingproof. Privatefixtures/native/failureevidence/unrelatedmanifests preserved;working-treeonly,notpristine/independentacceptance. RuneCrafttracking#124/Craftingtracking#125;historicalmisfiled#11commentscorrectedwithoutdeletion."
+      ],
+      "execution_disposition": "ELIGIBLE"
+    },
+    {
+      "implementation_id": "OR-MIG-0127",
+      "revision": 1,
+      "feature_name": "Raiments of the Eye output bonuses on ordinary rune altars",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "2d6ea002a796b409ed25f74b540e855440b045d8"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
             "status": "NOT_STARTED",
             "reason": "Awaiting applicable independent campaign"
           },
@@ -22264,7 +22422,71 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "9f2bbc73df658ceedc77e665c08389c5c2a385bd",
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content/ordinary_rune_altars.rs",
+          "crates/world/src/runecrafting.rs",
+          "crates/world/src/simulation/runecrafting_actions.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "Member worn unique groups 0/4/7/10; all13 normal/red/green/blue variants. Source helper omits red; Wiki/target facts support it. Target lowercase eye names pinned despite Wiki 19Aug2026 uppercase rename; never overwrite cache.",
+        "Raiments Wiki15309078 formula: base whole action runes; pieces1/2/3/4 -> multiplier1/2/3/6 on tens, possible extra multiplier chunk with remainder/10 probability. Source helper exact below10 rule. No bonus XP; Daeyalt1.5XP independent.",
+        "Mixed Rune/Pure aggregated once per accepted action using Wiki total RunesCrafted; source applies separately per essence kind, deliberate V4 candidate difference. No 241 rows/donorcode/assets copied.",
+        "All fallible Inventory credit and shared XP staged for both low/high before RNG; max capacity failure refuses without draw even if low fits, conservative safety policy. Zero-pieces or exact tens no RNG; other branches exactly one below10 draw at completion.",
+        "Live worn count1/vars0/ordinary shape/correct slot/unique group/member proof before both preflight and commit. Invalid gear refuses without underbonus consumption. Gear read-only; live optional gear may change bonus at completion if action remains queued. No held-outfit bonus.",
+        "14lanterns plus Guardian/fourScar held guards retained. Acquisition/recolour/tiara attunement/Gotr/diaries/pouches/access/memberaltars/lantern/Guardian/Scar/Ourania independent; historical125/126 policies/evidence retained in prior files, not asserted newly accepted.",
+        "Focused rune regression and actual server binary check only; private constructed boost/member/gear states, not native acquisition or independent acceptance. Full-global125 results remain historical.",
+        "Legacy API refuses even deterministic active-outfit credit because callers must use RNG-capable outcomes API. F2P recognized outfit refuses rather than silently consuming without bonus; independently verify desired native member-world behavior.",
+        "Target names use lowercase eye; current Wiki documents19Aug2026 capitalization change. Target cache stays untouched. Pouches/access/cores/combination/memberaltars/Ourania/Guardian/Scar/lantern/diaries/outfit purchase/recolour/attunement and remaining source obligations unported."
+      ],
+      "execution_disposition": "ELIGIBLE"
+    },
+    {
+      "implementation_id": "OR-MIG-0128",
+      "revision": 1,
+      "feature_name": "Pure-only member Chaos and Nature rune-altars",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "b7a85b2ff8b8599182cc6d69030a2a0a3ef44ff0"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "ef96b40300132d7b5d0a5f11a324fb46777cc6b8",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -22278,17 +22500,19 @@
       "lane": "A",
       "open_defects": [],
       "reference_limitations": [
-        "Six3x3static targetaltars34760..34765/Craft-rune1 produceAir556/Mind558/Water555/Earth557/Fire554/Body559 fromRuneessence1436/Pure7936. Wiki levels1/2/5/9/14/20,XP5/5.5/6/6.5/7/7.5peressence,intervals11/14/19/26/35/46. ExacttargetF2Pordinarynonstackessences/stackrunes verified.",
-        "Explicit Wiki-first differences: sourcepreCraftdelay3 versusall6productRecipe1tick;sourcebaselevelrequirements/multipliers versusWikiboostable/currentvisiblelevelincludingEarth104five-runefootnote;sourceXPbasedonproducedbaseRunesversusWikiXPperessence. Candidate1tick/allcapturedessenceonce/currentpreactionlevel/yieldfloor(level/interval)+1/XPessencecountonly;not source/nativeparityclaim.",
-        "Wiki5productPureessenceRecipe memberYes versusBodyNo/generalRunecrafttableNo/itemNo conflict. OfficialhistoricalUpdate:Pure Essence now craftable on free servers7766465 (24April2006)explicitlypermitsnonmemberRunecraftuse;bothessencesF2Ptargetdefs/generalrulesconcordant. TreatbothasF2Pforall6;recordconflictingrecipeflagsandrequestindependentV4membershipconfirmation.",
-        "SourcegenericAltarEvents/CraftRune/EssencePouchconstants/Raimentsreferenceonly;configured241generatedRunecraftingRunesRowinstancesnotavailablehere. Six239.1profilevaluesindependentlyboundtarget/Wiki;no241table/assets/Kotlin copied. Sourcepartialfiles retainallotherobligations.",
-        "SnapshotallordinaryRune/PureessenceslotsatacceptedreachedOp1;completeactionusesexistingweakScheduler/Inventorystrictstageddebits/fullstackcredit/sharedreward. Recheckorigin/movement/locationrevision/currentlevel/allcapturedslots/protectionatcommit,ignoreadditionaluncapturedessence;atomiccapacity/rate/metadatafailure.",
-        "FailclosedwhencarryingDaeyalt/Guardian/4Scar extractsorequipped13Raiments/14lanternvariants:bonus/specialessencerecipesnotimplemented,nounder-bonusconsumption. Over-restrictiveunlitlantern/unrelatedextractguardintentionaluntilmodifiersported. Talismans/tiarasonlyaccessruins,sourcenotrequiredwhenalreadyinsidealtar;ruins/teleports/access/pouches/cores/combos/Ourania/memberrunes/dropacquisitionseparate.",
-        "Animation791/spot186height100targetaliasesverified;sourcehardcodedSynth2710absenttargetaliases,soundomittedexplicitlypendingattestation. Nativeactualmappedaltar/access/client/timing/layout/same-save/referenceindependent. Ordinaryproofnotnaturalboost/acquisitionproof.",
-        "Read-onlyPythonlocprobeinitiallyrejectedop78;verifiedexistingRustLocationType78takes4bytes,extendedonlyprivateprobe;rawtargetdecodesfullyconsumed. ExistingRustdecoderunchanged. Protectedlocalreferencespreserved;rootISCnotblanketclearance,no donorcode/generatedtables/assetscopied.",
-        "Working-treeshared/binsPASS507unchangedrg-visiblehashesrequiredbeforepublication;unrelated/private/native/failureevidencepreserved,notpristine/native/referenceacceptance. Fournewsourcefileselegiblebutpartial;nofile/completenesspercentageclaim.",
-        "36actualWorldvectorsall6x3essenceformsx2worldtypes,9latecontext/material/modifier/credit/rateguardsanduncapturedadditionalessencecase. Consistentbase(interval-1)/visibleinterval/+1prestatesandEarth99/104mathareconstructedheadlessinputs,notnativeboostactivation/progressionproof.",
-        "Preservedprior125attemptstatuses:[]"
+        "Member worn unique groups 0/4/7/10; all13 normal/red/green/blue variants. Source helper omits red; Wiki/target facts support it. Target lowercase eye names pinned despite Wiki 19Aug2026 uppercase rename; never overwrite cache.",
+        "Raiments Wiki15309078 formula: base whole action runes; pieces1/2/3/4 -> multiplier1/2/3/6 on tens, possible extra multiplier chunk with remainder/10 probability. Source helper exact below10 rule. No bonus XP; Daeyalt1.5XP independent.",
+        "Mixed Rune/Pure aggregated once per accepted action using Wiki total RunesCrafted; source applies separately per essence kind, deliberate V4 candidate difference. No 241 rows/donorcode/assets copied.",
+        "All fallible Inventory credit and shared XP staged for both low/high before RNG; max capacity failure refuses without draw even if low fits, conservative safety policy. Zero-pieces or exact tens no RNG; other branches exactly one below10 draw at completion.",
+        "Live worn count1/vars0/ordinary shape/correct slot/unique group/member proof before both preflight and commit. Invalid gear refuses without underbonus consumption. Gear read-only; live optional gear may change bonus at completion if action remains queued. No held-outfit bonus.",
+        "14lanterns plus Guardian/fourScar held guards retained. Acquisition/recolour/tiara attunement/Gotr/diaries/pouches/access/memberaltars/lantern/Guardian/Scar/Ourania independent; historical125/126 policies/evidence retained in prior files, not asserted newly accepted.",
+        "Add only Chaos34769->562 req35/8.5XP/double74 and Nature34768->561 req44/9XP/double91 member altar use. Outputs remain ordinaryF2Pstackable target items; membership is recipe policy, not inferred from output item.",
+        "New recipe-scoped capture ignores Rune1436 at these pure-only altars; capture Pure7936 or priority Daeyalt24704, preserve allRune and late uncaptured essence. Kernel separately rejects forced Rune parts and checks live recipe membership before any state/RNG. Existing six F2P capture/API unchanged.",
+        "Use current visible level and pre-action floor(level/74or91)+1 for these double-only ranges up to104, one XP award per essence count; inherited timing/outfit/stock/transaction policy unchanged. No new generic gameplay engine.",
+        "Chaos/Nature inside-altar craft have no quest gate in source helper; Wiki item/altar pages do not add use quest. Entry talisman/tiara/Abyss/ruins/teleport/diary/Guardian/Scar/lantern remain independent. Cosmic deferred: Wiki explicitly says afterLostCity; use-vs-access/unlock proof needs separate attestation, do not infer gate from inventory or invent varp.",
+        "Working-tree Rune-focused001/bins001 only,507hashes unchanged; no new full-global/native/independent acceptance claim. Existing125/126/127 policies remain candidates pending V0\u2013V4.",
+        "CosmicLostCity and LawTrollStronghold item/altar Wiki pages explicitly require quests; donor generic helper lacks use quest checks. Their target IDs were read-only probed, not registered; exact quest-stage proof must precede implementation.",
+        "Other quest/member altars,entry/exits/tiaras/pouches/cores/combination/Guardian/Scar/lantern/Ourania/diaries/outfit acquisition and remaining source obligations remain unported."
       ],
       "execution_disposition": "ELIGIBLE"
     }
@@ -26016,32 +26240,38 @@
       "is_latest_revision": true,
       "levels": {
         "V0": {
-          "status": "IN_PROGRESS",
-          "reason": "388 independent registered World controls PASS:224bothforms/member-F2P/fulland0..27gap/occupiedtarget whole-image controls;144atomiclife/metadata/context refusals;8ordered actual Wearpos removal-before-equip callbacks;8synthetic base/current requirement controls;4genuine scheduled weak-gem interruption controls. Actual two target cache forms/param453Swap/secondarywear-none/button2 plus38malformedbindingrefusalsPASS. Earlier refusal fixture failed because logout retained preexisting modified flags; clear before logout then exact-SHA rerunPASS. Initial binding compileFAIL was QA Param::Int spelling,corrected Integer thenPASS. Both raw failures retained. Remaining: Existing output-form duplicates with earlier bag positions and all first-gap positions; no V1PASS yet.; V0actualserverbinary/startup/dispatcher and native worn component/current nullable item cases.; Native fullbag/occupiedtarget/member-F2P/bothforms/refusals/menu/feedback and durable save/reconnect/crash.; Complete independent reference comparison; no inherited108orcurrentHEADacceptance.",
+          "status": "FAIL",
+          "reason": "Exact production binary builds and target definitions resolve,but intended worn Swap registration is bound2while both actual native menus emit4. Actual reachable gameplay dispatch criterion fails.",
           "evidence": [
-            "docs/openrune/verification/independent/imcando-worn-authoritative-partial.json"
+            "docs/openrune/verification/independent/imcando-worn-disposition.json"
           ]
         },
         "V1": {
           "status": "PASS",
           "reason": "612independent registered World controls plus38actualcache binding refusals satisfy applicable authoritative worn-only Swap requirements:388whole bag/member/F2P/occupied/freehand/life/metadata/realorderedcallbacks/syntheticbaselevel/weakinterruption controls preserved,then224new all28firstgap/existingoutputduplicates/retainedinputduplicate/stale replay casesPASS. Newly removed exact-slot output equips for member/freehand; existing opposite-form duplicates remain untouched, F2P/occupiedtarget preserves outputheld and old target. Complete whole bag/gear/Stats/fractions/noXP/noautomaticreplay; fullbagrefuses evenfreehand. Original QA failures retained. No native/startup/persistence/reference/currentHEADacceptance inherited.",
           "evidence": [
-            "docs/openrune/verification/independent/imcando-worn-authoritative-complete.json"
+            "docs/openrune/verification/independent/imcando-worn-disposition.json"
           ]
         },
         "V2": {
-          "status": "NOT_STARTED",
-          "reason": "No complete level result at this exact contract revision"
+          "status": "FAIL",
+          "reason": "Fresh member account has one free backpack slot and both ordinary worn hammers. Two authentic native Worn Equipment Swap menu actions transmit actual387:18/20,slot-1,item-1,operation4. After8ticks each, independently decoded whole bag/gear/rawStats and acknowledged SQL save remain exactly initial: no conversion. Pinned profile and runtime accept worn Swap under operation2; targetparam453iswear_op3, agreeing with real menu4. No hand-crafted requests or replay used.",
+          "evidence": [
+            "docs/openrune/verification/independent/imcando-worn-disposition.json"
+          ]
         },
         "V3": {
-          "status": "NOT_STARTED",
-          "reason": "No complete level result at this exact contract revision"
+          "status": "BLOCKED",
+          "reason": "Pinned native Swap cannot produce a converted worn state because PG-DEF-006; converted-form native save/restart/crash obligations cannot run through genuine UI at8bc76c7. Both attempted ordinary menus conserve original SQL account and save gracefully,but that is not conversion persistence. Prepared F2P account remains unexecuted; do not substitute a newer build.",
+          "evidence": [
+            "docs/openrune/verification/independent/imcando-worn-disposition.json"
+          ]
         },
         "V4": {
-          "status": "IN_PROGRESS",
-          "reason": "Three exact source/Wiki hashes independently match the two worn4callback forms and original sequence: capture target-hand availability, attempt unequip with failure return, replace held form, and equip first matching output only if target was free. Source helper has no explicit entitlement gate; global effective equip policy remains unresolved. Wiki restricts new equipping to members and retains ordinary hammer functionality in F2P. Target109stages all operations and binds newly removed item, with F2Pconversion-to-bag/no-new-equip as an explicit adaptation; no native/source global parity inferred. Native/cache/World/lifecycle and complete reference acceptance remain separate.",
+          "status": "PASS",
+          "reason": "Scoped independent comparison complete: original Imcando worn4helper/two pinned Wiki revisions,five newly inspected equip/unequip/verification helpers and actual target symbols/forms. Source worn4and targetwear_op3=453agree with observednative4; target2is a confirmed defect. Fullbagunequip-first/occupied-hand behavior,target newly removed-slot duplicate protection and atomic staging/base requirements compared. Target F2Pbag/no-new-equip is qualified Wiki-backed adaptation; direct source chain has no explicit membership check. No donor executable/effective-world-cache/render/audio parity inferred.",
           "evidence": [
-            "docs/openrune/verification/independent/reference-imcando-worn/comparison.json"
+            "docs/openrune/verification/independent/imcando-worn-disposition.json"
           ]
         }
       }
@@ -26476,6 +26706,108 @@
       "is_latest_revision": true,
       "levels": {
         "V0": {
+          "status": "IN_PROGRESS",
+          "reason": "756 initial/late World refusal and interruption/parking controls,355 malformed actual cache bindings,41 item/six altar/effect identities and six real mapped interiors,60 yield-threshold/actual-levelup/uncaptured-addition World cases pass. All preserve whole relevant inventory/equipment/fineXP; deterministic no RNG. Exact server/native runtime separately attested; remaining applicable obligations open.",
+          "evidence": [
+            "docs/openrune/verification/independent/rune-altars-additional-world.json"
+          ]
+        },
+        "V1": {
+          "status": "FAIL",
+          "reason": "Twelve separately named actual reached-altar/Worldweakqueue faults across all6/member-F2P: preexisting output rune count1/vars7 is merged into new output and normalized tovars0,seven captured mixed Rune/Pure essence singles consumed,XPawarded. Normal existing count50/vars0 merges and near-i32MAXstrict-full-credit refusals all24controlsPASS. Independent972positive+756initial/late/delay-close guards remain preserved. Reject or otherwise preserve malformed existing output stock before publishing any essence debit/XP. OR126bd1294ab9e0ff850155b024364dc3a3a98a37bed already publishes a caller-level stock safeguard; independently verify the unchanged exact stock scenarios there. Historical125remainsFAIL,no silently substituted build. Trusted restored-state fault injection; native reachability/durability untested.",
+          "evidence": [
+            "docs/openrune/verification/independent/rune-altars-stock-finding.json"
+          ]
+        },
+        "V2": {
+          "status": "IN_PROGRESS",
+          "reason": "Two actual rendered native altar Craft-rune menus generate matching native location actions; one complete28 mixed essence transaction, exact runes/wholeStats/fractionalXP/gear and no additional credit after empty repeat. Actual791/186-height100 decoded effects. Acknowledged save, server process restart and independently decoded same-account native reconnect preserve whole inventory/Stats. Remaining: Current transport logger records27/47/95/115 only, not73. First altar delivery established by genuine server reward/effects; generated second action and subsequent no-credit observation do not independently attest its wire delivery or server refusal.; Inside-altar disposable fixture does not establish acquisition/entry/ruins/talisman/tiara access.; No original executable/audio/render parity, unsaved crash, native interruption/negative completion or other altar acceptance. Historical stock defect PG-DEF-007 remains.",
+          "evidence": [
+            "docs/openrune/verification/independent/deep-rune-mind/native-002/independent-assessment.json"
+          ]
+        },
+        "V3": {
+          "status": "IN_PROGRESS",
+          "reason": "Two actual rendered native altar Craft-rune menus generate matching native location actions; one complete28 mixed essence transaction, exact runes/wholeStats/fractionalXP/gear and no additional credit after empty repeat. Actual791/186-height100 decoded effects. Acknowledged save, server process restart and independently decoded same-account native reconnect preserve whole inventory/Stats. Remaining: Current transport logger records27/47/95/115 only, not73. First altar delivery established by genuine server reward/effects; generated second action and subsequent no-credit observation do not independently attest its wire delivery or server refusal.; Inside-altar disposable fixture does not establish acquisition/entry/ruins/talisman/tiara access.; No original executable/audio/render parity, unsaved crash, native interruption/negative completion or other altar acceptance. Historical stock defect PG-DEF-007 remains.",
+          "evidence": [
+            "docs/openrune/verification/independent/deep-rune-mind/native-002/independent-assessment.json"
+          ]
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0126",
+      "revision": 1,
+      "implementation_sha": "bd1294ab9e0ff850155b024364dc3a3a98a37bed",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "IN_PROGRESS",
+          "reason": "Unchanged byte-identical independent World stock scenarios pass at separate126correctionSHA:all12variable outputstock refusals retain count1/vars7,allessence/gear/Stats unchanged andzeroXP;12normalstack merge and12near-i32MAXfull-credit controlsPASS. SourceharnessSHAidenticalto125rawFAIL. This independently verifies only the published stock safeguard,not Daeyalt/complete126orcurrentHEADacceptance. Other126requirements remain unverified.",
+          "evidence": [
+            "docs/openrune/verification/independent/rune-altars-stock-correction-126.json"
+          ]
+        },
+        "V1": {
+          "status": "IN_PROGRESS",
+          "reason": "336 independent public-World cases:324 all-six-altars/member-F2P/current-required99-104/count1-7-28/rate1-1.25-5 controls; six genuine Daeyalt-priority then ordinary-second-click transactions and six live membership-loss refusals. Exact aggregate50percentextra XP only for special essence, no extra rune yield, all unselected ordinary essence/gear retained. Constructed membership and visible levels, no acquisition/boost activation/native acceptance. Remaining: legacy API/metadata/context/capacity negative tails; actual126targetcache and binary; native special essence/negative/interruption/effects; same-save/crash recovery; qualified exact source/Wiki comparison",
+          "evidence": [
+            "docs/openrune/verification/independent/daeyalt-world-partial.json"
+          ]
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0127",
+      "revision": 1,
+      "implementation_sha": "2d6ea002a796b409ed25f74b540e855440b045d8",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0128",
+      "revision": 1,
+      "implementation_sha": "b7a85b2ff8b8599182cc6d69030a2a0a3ef44ff0",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
           "status": "NOT_STARTED",
           "reason": "No complete level result at this exact contract revision"
         },
@@ -26543,8 +26875,8 @@
       "chem-crash",
       "food-negative"
     ],
-    "next_eligible_contract": "OR-MIG-0109",
-    "next_action": "1087d4e09b6ACCEPTED_HISTORICAL V0-V4PASS.1098bc76c7V1PASS612independent Worldcontrols plus38actualcache refusals; next genuine native worn UI/current nullable claims/member-F2P/fullbag, actualserverstartup, savedrestart/unsavedrecovery and reference. Preserve all existing immutable runs and raw QA failures; chemistry stays deferred. Newly fetched125Runealtar contract at9f2bbc7/a2fa742 has been fully inspected, independent published validatorPASS135records/125units, queueSHA10feae690a2eacba1e4830d4e52840c4f0e1ff76ec5a2b0b81e93f1e24479eca; no inherited acceptance.",
+    "next_eligible_contract": "OR-MIG-0125",
+    "next_action": "Continue exact125a2fa742 Rune altars after972positive WorldcasesPASS; run initial/late guards,actualcache/startup/native/same-save/reference. Preserve108all applicableV0-V4PASS.1098bc76c7terminalFAILED PG-DEF-006:ordinary native Swap sends4,butprofile/runtimebind2;V0/V2FAIL,V1PASS612cases,V3BLOCKEDconverted-native-state,V4scopedcomparisonPASS. Prepared109F2Pstate unexecuted; do not overwrite. No new external issue/FORGE stop/currentHEADsubstitution. Chemistry deferred.",
     "deferred_execution": "Chemistry interrupt-002 had already ended with a raw observer assertion failure when deferral arrived; owned graceful stop path recorded, no live chemistry run retained. Crash scenario build was resource-deferred and never executed. Do not launch new chemistry tests or silently classify unresolved assertions as implementation failures.",
     "resource_policy": "PG-INFRA-012 resolved: invoke existing project Assert-ServerMemoryCapacity (memory/commit/paging) and sampled CPU<=70%; explicit Cargo-j1/two owned CPUs/BelowNormal. The extra owned6GiBfloor was not a user/project requirement and must not cause another false stop."
   }

@@ -1,0 +1,22 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d\external-harness-6892670400)
+warning: unused import: `WorldEvent`
+ --> tests\boundaries.rs:2:67
+  |
+2 | use gielinor_world::{simulation::{World,PlayerData,ActorId,Action,WorldEvent},runecrafting::{Config,Recipe},locations::Location,loc_c...
+  |                                                                   ^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `proving-ground-energy` (test "boundaries") generated 1 warning (run `cargo fix --test "boundaries" -p proving-ground-energy` to apply 1 suggestion)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 23.60s
+     Running tests\boundaries.rs (C:\Projects\OSRSRSPS\agent7-verification\work\a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d\target\debug\deps\boundaries-416411a1ec6eb05f.exe)
+
+running 3 tests
+PG_RUNE_BOUNDARY 12 additional uncaptured essence retained whole-state PASS
+test twelve_late_uncaptured_essences_remain_for_next_click ... ok
+PG_RUNE_BOUNDARY 12 actualXPthreshold crossings preserve preXPyield PASS
+test twelve_levelups_do_not_retroactively_increase_captured_yield ... ok
+PG_RUNE_BOUNDARY 36 interval-minus1/equal/plus1 across6altars/memberF2P PASS
+test thirty_six_interval_edges ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 3.06s

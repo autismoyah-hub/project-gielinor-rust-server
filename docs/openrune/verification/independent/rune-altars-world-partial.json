@@ -1,0 +1,16 @@
+{
+  "implementation_id": "OR-MIG-0125",
+  "tested_sha": "a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d",
+  "status": "PARTIAL",
+  "scope": "972independent real World OperateLocation/reachedOp1/weakqueue ordinary Rune altar casesPASS:all6/RunePureMixed/member-F2P/count1-7-28/currentrequired-99-104/rate100-125-500, fullinventories with coprime rawslotpositions/firstfreedstackoutput, oneprocessedclock material-and-aggregate-essenceXP publication, actual791/186height100 events, wholegear/Stats/fractions/coins/fillers, noRNG/autorepeat and repeated empty request noextraoutput. Pinned17source/Wiki hashes independently match; six actual Wiki recipe levels/XP/intervals/1tick independently read. Constructed104current cases test predicate/math,not boost activation or donor/native behavior.",
+  "remaining": [
+    "Authoritative initial and late state/unsupported modifier/life/interruption/credit/rate/config/location/captured versus additional essence guards.",
+    "Actual target cache/startup/binary/native altar access/UI/effect/cadence and same-save durability/recovery.",
+    "Full independent source/documentation discrepancy comparison; source241generatedaltarrows absent, no inheritance from FORGE tests or latestHEAD."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/integration-external-rune-altars-world-a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d/manifest.json": "5e6c065100774674f92c8c0c5b94d8a431d8475327b041a0d222b634381c601c",
+    "docs/openrune/verification/independent/integration-external-rune-altars-world-a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d/run-1.log": "6a957fa1c6c34e166d73abd092074355bb3f2c690eea5c5d31f56e0e1e53cd1a",
+    "docs/openrune/verification/independent/integration-external-rune-altars-world-a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d/harness/world.rs": "dec64f8e21556c9c456fedd97fcca9c2bb55820548880d94d5085f361cf006be"
+  }
+}

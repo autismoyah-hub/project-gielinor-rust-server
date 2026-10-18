@@ -1,0 +1,15 @@
+{
+  "implementation_id": "OR-MIG-0125",
+  "tested_sha": "a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d",
+  "status": "PASS_SCOPED",
+  "scope": "756 initial/late World refusal and interruption/parking controls,355 malformed actual cache bindings,41 item/six altar/effect identities and six real mapped interiors,60 yield-threshold/actual-levelup/uncaptured-addition World cases pass. All preserve whole relevant inventory/equipment/fineXP; deterministic no RNG.",
+  "limitations": [
+    "Historical PG-DEF-007 remains V1FAIL; these positive subscopes do not override it.",
+    "No complete native/persistence/reference acceptance from World/cache fixtures. Delayed weak work parks; close cancels. Synthetic104 is a predicate fixture, not boost activation."
+  ],
+  "evidence_sha256": {
+    "integration-external-rune-altars-guards-a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d/manifest.json": "8a0e7373459d67f4fc501025a0522cb7a351a3a692875c0bc7d2e7af2bcaccd0",
+    "integration-external-rune-altars-bindings-a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d/manifest.json": "89f4bdb3ecf81fc6df65784520f4a90cd25cd32a8baa8c9991a40ee804e3002b",
+    "integration-external-rune-altars-boundaries-a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d/manifest.json": "aed82378f4ddfc5f65afe0d978ead3f9e151893db602ef951da1e99495fa4567"
+  }
+}

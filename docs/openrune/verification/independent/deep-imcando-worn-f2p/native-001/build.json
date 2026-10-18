@@ -1,0 +1,41 @@
+{
+  "implementation_id": "OR-MIG-0109",
+  "implementation_sha": "8bc76c7c464daf1d4abdef4dd7f4172c270abda5",
+  "tested_sha": "8bc76c7c464daf1d4abdef4dd7f4172c270abda5",
+  "source_tree": "f3c9a1ddaf4cd2d66d8949ae2d9f7082e51b2d86",
+  "command": [
+    "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+    "build",
+    "--offline",
+    "--locked",
+    "-j",
+    "1",
+    "-p",
+    "gielinor-server"
+  ],
+  "exit_code": 0,
+  "binary_sha256": "c8b8d07366293c8b8fe1444995125edf15bb589fe2ca4a8bb874454f87e5c01f",
+  "resource": {
+    "available_ram": 5087207424,
+    "active_compilers": [
+      "\"cargo.exe\",\"7340\",\"RDP-Tcp#0\",\"2\",\"24,460 K\"",
+      "\"cargo.exe\",\"12104\",\"RDP-Tcp#0\",\"2\",\"21,816 K\"",
+      "\"rustc.exe\",\"12548\",\"RDP-Tcp#0\",\"2\",\"271,236 K\"",
+      "\"rustc.exe\",\"5808\",\"RDP-Tcp#0\",\"2\",\"304,076 K\""
+    ],
+    "cpu_percent": 38.96,
+    "cpu_samples": [
+      39.96062992125984,
+      37.98449612403101,
+      38.94324853228963
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Existing project memory/commit/paging checks and sampled CPU ceiling; owned Cargo remains j1/two CPUs/BelowNormal",
+    "capacity_policy_sha256": "dc3c6e372de5369ab77c4ebbd7cf21c426d0916581e11f2377480eba79adcdfd",
+    "memory_preflight_exit": 0,
+    "memory_preflight_stdout": "Capacity: 4,291 MiB available, commit 65.8%, pages-in/s 3,004, disk 0.6 ms.\nCargo concurrency: -j 2\n",
+    "memory_preflight_stderr": "",
+    "disk_free": 11555115008,
+    "owned_affinity_mask": 3
+  }
+}

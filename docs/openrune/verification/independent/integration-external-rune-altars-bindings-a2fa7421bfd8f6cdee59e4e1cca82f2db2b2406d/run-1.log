@@ -1,0 +1,77 @@
+   Compiling autocfg v1.4.0 (C:\Projects\OSRSRSPS\agent7-targets\a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d\vendor\autocfg-1.4.0)
+   Compiling num-traits v0.2.19 (C:\Projects\OSRSRSPS\agent7-targets\a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d\vendor\num-traits-0.2.19)
+   Compiling num-integer v0.1.46 (C:\Projects\OSRSRSPS\agent7-targets\a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d\vendor\num-integer-0.1.46)
+   Compiling num-bigint v0.4.6 (C:\Projects\OSRSRSPS\agent7-targets\a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d\vendor\num-bigint-0.4.6)
+warning: unnecessary `unsafe` block
+  --> C:\Projects\OSRSRSPS\agent7-targets\a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d\vendor\num-bigint-0.4.6\src\biguint\addition.rs:23:9
+   |
+23 |         unsafe { arch::_addcarry_u64(carry, a, b, out) }
+   |         ^^^^^^ unnecessary `unsafe` block
+   |
+   = note: `#[warn(unused_unsafe)]` (part of `#[warn(unused)]`) on by default
+
+warning: unnecessary `unsafe` block
+  --> C:\Projects\OSRSRSPS\agent7-targets\a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d\vendor\num-bigint-0.4.6\src\biguint\subtraction.rs:23:9
+   |
+23 |         unsafe { arch::_subborrow_u64(borrow, a, b, out) }
+   |         ^^^^^^ unnecessary `unsafe` block
+
+warning: `num-bigint` (lib) generated 2 warnings
+   Compiling adler2 v2.0.1 (C:\Projects\OSRSRSPS\agent7-targets\a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d\vendor\adler2-2.0.1)
+   Compiling miniz_oxide v0.8.9 (C:\Projects\OSRSRSPS\agent7-targets\a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d\vendor\miniz_oxide-0.8.9)
+   Compiling gielinor-protocol v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d\crates\protocol)
+   Compiling libbz2-rs-sys v0.2.2 (C:\Projects\OSRSRSPS\agent7-targets\a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d\vendor\libbz2-rs-sys-0.2.2)
+warning: unused macro definition: `prefix`
+  --> C:\Projects\OSRSRSPS\agent7-targets\a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d\vendor\libbz2-rs-sys-0.2.2\src\bzlib.rs:71:14
+   |
+71 | macro_rules! prefix {
+   |              ^^^^^^
+   |
+   = note: `#[warn(unused_macros)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `prefix`
+  --> C:\Projects\OSRSRSPS\agent7-targets\a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d\vendor\libbz2-rs-sys-0.2.2\src\bzlib.rs:88:16
+   |
+88 | pub(crate) use prefix;
+   |                ^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `libbz2_rs_sys_version`
+  --> C:\Projects\OSRSRSPS\agent7-targets\a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d\vendor\libbz2-rs-sys-0.2.2\src\lib.rs:83:16
+   |
+83 | pub(crate) use libbz2_rs_sys_version;
+   |                ^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated function `from_mut` is never used
+   --> C:\Projects\OSRSRSPS\agent7-targets\a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d\vendor\libbz2-rs-sys-0.2.2\src\bzlib.rs:253:30
+    |
+230 |     impl<S: StreamState> BzStream<S> {
+    |     -------------------------------- associated function in this implementation
+...
+253 |         pub(crate) unsafe fn from_mut(s: &mut bz_stream) -> &mut Self {
+    |                              ^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `libbz2-rs-sys` (lib) generated 4 warnings (run `cargo fix --lib -p libbz2-rs-sys` to apply 2 suggestions)
+   Compiling gielinor-cache v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d\crates\cache)
+   Compiling gielinor-storage v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d\crates\storage)
+   Compiling gielinor-server v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d\crates\server)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d\external-harness-7487569500)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1m 29s
+     Running tests\bindings.rs (C:\Projects\OSRSRSPS\agent7-verification\work\a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d\target\debug\deps\bindings-53a8a7c4c708dae3.exe)
+
+running 2 tests
+PG_RUNE_ALTAR_PLACEMENT id=34765 x=2522 z=4839 plane=0 shape=10 angle=0
+PG_RUNE_ALTAR_PLACEMENT id=34764 x=2584 z=4837 plane=0 shape=10 angle=0
+PG_RUNE_ALTAR_PLACEMENT id=34763 x=2657 z=4840 plane=0 shape=10 angle=2
+PG_RUNE_ALTAR_PLACEMENT id=34762 x=2715 z=4835 plane=0 shape=10 angle=3
+PG_RUNE_ALTAR_PLACEMENT id=34761 x=2785 z=4840 plane=0 shape=10 angle=0
+PG_RUNE_ALTAR_PLACEMENT id=34760 x=2843 z=4833 plane=0 shape=10 angle=1
+PG_RUNE_ALTAR_MAPPED all6 independently decoded actual interiors
+test independently_observe_actual_altar_interior_map_placements ... ok
+PG_RUNE_BINDINGS actual_items41 altars6 stat20 sequence791 spot186 refusals=355
+test actual_forty_one_items_six_altars_stat_effects_and_three_hundred_fifty_five_binding_refusals ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 8.01s

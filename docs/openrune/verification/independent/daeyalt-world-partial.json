@@ -1,0 +1,17 @@
+{
+  "implementation_id": "OR-MIG-0126",
+  "tested_sha": "bd1294ab9e0ff850155b024364dc3a3a98a37bed",
+  "status": "PASS_SCOPED",
+  "scope": "336 independent public-World cases:324 all-six-altars/member-F2P/current-required99-104/count1-7-28/rate1-1.25-5 controls; six genuine Daeyalt-priority then ordinary-second-click transactions and six live membership-loss refusals. Exact aggregate50percentextra XP only for special essence, no extra rune yield, all unselected ordinary essence/gear retained. Constructed membership and visible levels, no acquisition/boost activation/native acceptance.",
+  "remaining": [
+    "legacy API/metadata/context/capacity negative tails",
+    "actual126targetcache and binary",
+    "native special essence/negative/interruption/effects",
+    "same-save/crash recovery",
+    "qualified exact source/Wiki comparison"
+  ],
+  "evidence_sha256": {
+    "integration-external-daeyalt-world-bd1294ab9e0ff850155b024364dc3a3a98a37bed/manifest.json": "3af9b9da007a0aaf05503680d114a5bb18438c9600d3a8b9b48ad7cc11af706b",
+    "integration-external-daeyalt-world-bd1294ab9e0ff850155b024364dc3a3a98a37bed/run-1.log": "b74d66bd50cf121bb7630fa092e7c31d503f69398f4d758ebf968f233eaefff6"
+  }
+}

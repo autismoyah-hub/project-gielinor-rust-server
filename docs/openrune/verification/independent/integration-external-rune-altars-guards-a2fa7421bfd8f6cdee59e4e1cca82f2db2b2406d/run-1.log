@@ -1,0 +1,13 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d\external-harness-0933211700)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 17.87s
+     Running tests\guards.rs (C:\Projects\OSRSRSPS\agent7-verification\work\a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d\target\debug\deps\guards-0f5ef49ee2e71e5c.exe)
+
+running 3 tests
+PG_RUNE_ALTARS delayed+close controls=12;delayparkingnotcancellationuntilrealclose
+test twelve_delayed_queue_then_real_close_cancellation_controls ... ok
+PG_RUNE_ALTARS late whole-state refusals=240
+test two_hundred_forty_late_material_context_and_credit_guards ... ok
+PG_RUNE_ALTARS initial whole-state refusals=504
+test five_hundred_four_initial_guards_conserve_whole_account ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 44.68s

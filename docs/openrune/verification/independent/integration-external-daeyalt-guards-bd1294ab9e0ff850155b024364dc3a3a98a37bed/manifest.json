@@ -1,0 +1,70 @@
+{
+  "tested_integration_sha": "bd1294ab9e0ff850155b024364dc3a3a98a37bed",
+  "suite": "daeyalt-guards",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "FAIL",
+  "resource": {
+    "available_ram": 5552144384,
+    "active_compilers": [
+      "\"cargo.exe\",\"1944\",\"RDP-Tcp#0\",\"2\",\"24,192 K\"",
+      "\"cargo.exe\",\"8712\",\"RDP-Tcp#0\",\"2\",\"21,832 K\"",
+      "\"rustc.exe\",\"16108\",\"RDP-Tcp#0\",\"2\",\"145,448 K\""
+    ],
+    "cpu_percent": 46.03,
+    "cpu_samples": [
+      50.390625,
+      57.03125,
+      30.6640625
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Existing project memory/commit/paging checks and sampled CPU ceiling; owned Cargo remains j1/two CPUs/BelowNormal",
+    "capacity_policy_sha256": "dc3c6e372de5369ab77c4ebbd7cf21c426d0916581e11f2377480eba79adcdfd",
+    "memory_preflight_exit": 0,
+    "memory_preflight_stdout": "Capacity: 5,533 MiB available, commit 58.0%, pages-in/s 8,125, disk 0.8 ms.\nCargo concurrency: -j 2\n",
+    "memory_preflight_stderr": "",
+    "disk_free": 8595177472,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "3f4d1a6325b180b32b3836dcf23ed6612e1b6c85",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\bd1294ab9e0ff850155b024364dc3a3a98a37bed\\external-harness-6169349400\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-daeyalt-guards-bd1294ab9e0ff850155b024364dc3a3a98a37bed\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\bd1294ab9e0ff850155b024364dc3a3a98a37bed\\external-harness-6169349400\\Cargo.toml",
+        "--",
+        "--nocapture"
+      ],
+      "exit_code": 101,
+      "tests_passed": 1,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-daeyalt-guards-bd1294ab9e0ff850155b024364dc3a3a98a37bed\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative daeyalt-guards scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-daeyalt-guards-bd1294ab9e0ff850155b024364dc3a3a98a37bed\\harness\\guards.rs": "cdf167dd67a1cfe0af40bfa31c6382d9d6b2fc8eb8b7cd936e86362f774840d7"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\daeyalt-fb7b1f75c3cda59a.exe": "25eca3afd3c7744a4283079de4fa67e9a00a7e2fa7e8e49c83eb74f766968db9",
+    "target\\debug\\deps\\guards-1656c33e2b010a6c.exe": "c47c3b68866ef603a62ebdf336cb9066ed4912c7e0bdef21a85bf98ee002e2b4",
+    "target\\debug\\deps\\stock-3863a700fb727f5b.exe": "0b48564311614efe2d7fbe972d00c0fa5f6dcaaa82c9adfb584c3e2fb98f79bf"
+  }
+}

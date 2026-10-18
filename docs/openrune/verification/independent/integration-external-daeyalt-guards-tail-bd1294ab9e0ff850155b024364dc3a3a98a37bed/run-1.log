@@ -1,0 +1,18 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\bd1294ab9e0ff850155b024364dc3a3a98a37bed\external-harness-7603944700)
+warning: unused import: `WorldEvent`
+ --> tests\guards.rs:2:67
+  |
+2 | use gielinor_world::{simulation::{World,PlayerData,ActorId,Action,WorldEvent},runecrafting::{Config,Recipe},locations::Location,loc_c...
+  |                                                                   ^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `proving-ground-energy` (test "guards") generated 1 warning (run `cargo fix --test "guards" -p proving-ground-energy` to apply 1 suggestion)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 7.14s
+     Running tests\guards.rs (C:\Projects\OSRSRSPS\agent7-verification\work\bd1294ab9e0ff850155b024364dc3a3a98a37bed\target\debug\deps\guards-1656c33e2b010a6c.exe)
+
+running 1 test
+PG_DAEYALT_GUARDS 115remaining-initial/late member/material/level/unsupported/life/rate/stock controls PASS
+test one_hundred_fifteen_remaining_daeyalt_guards ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 5.00s

@@ -1,0 +1,46 @@
+{
+  "implementation_id": "OR-MIG-0109",
+  "tested_sha": "8bc76c7c464daf1d4abdef4dd7f4172c270abda5",
+  "status": "PASS_REFERENCE_FACTS",
+  "source_hashes": [
+    {
+      "kind": "protected_source",
+      "reference": "api/player/src/main/kotlin/org/rsmod/api/player/protect/ProtectedAccess.kt",
+      "sha256": "7b1611b7e2e7ab4de6296f086c75be5c2c232386c7282cd0c5a3ecc1b3c8c6aa"
+    },
+    {
+      "kind": "protected_source",
+      "reference": "api/player/src/main/kotlin/org/rsmod/api/player/interact/HeldInteractions.kt",
+      "sha256": "b557329b0698a00b7d34478ce44c3b85d5a9e428dc6a7dd40326508912de5319"
+    },
+    {
+      "kind": "protected_source",
+      "reference": "api/player/src/main/kotlin/org/rsmod/api/player/worn/HeldEquipOp.kt",
+      "sha256": "98cc3c7dc5cf6fc39f613b6587ef0a933058352a5ebbe0a4891f26ae74650c49"
+    },
+    {
+      "kind": "protected_source",
+      "reference": "api/player/src/main/kotlin/org/rsmod/api/player/worn/WornUnequipOp.kt",
+      "sha256": "6e5f19c2bb69de6491017bf3fb34141a8b9385d93c50c3d4e5cfaa6733a4ae2b"
+    },
+    {
+      "kind": "protected_source",
+      "reference": "api/player/src/main/kotlin/org/rsmod/api/player/interact/WornInteractions.kt",
+      "sha256": "e88890cd9f6c2367c0732b15d791e2e64fed4b19b8d504731c2c10cfd0bc6991"
+    }
+  ],
+  "facts": [
+    "ProtectedAccess.invEquip directly invokes HeldInteractions.equip; it bypasses scripted ordinary Op2 and calls objectVerify then HeldEquipOp.equip. Those inspected checks cover delayed actor/type identity/base-stat requirements/wear positions/transaction capacity; no explicit account/world membership predicate appears in this direct chain. This strengthens the source-derived statement,not a donor executable F2P verdict.",
+    "WornUnequipOp transfers the worn item to the backpack before emitting WearposChange/Unequip/rebuildAppearance; capacity failure returns before notifications. HeldEquipOp stages equip/removal transactions, then ordered wear changes/unequip/equip and appearance rebuild.",
+    "WornInteractions.objectVerify verifies delayed/type and operation-parameter availability. Source worn4 maps wear_op3. The independently read target param.sym binds wear_op1=451,wear_op2=452,wear_op3=453; both target hammer definitions contain453Swap. The actual239.1native Swap menu generates button4,so the target rule/runtime button2 is a independently confirmed dispatch defectPG-DEF-006,not a justified revision adaptation. Initial native QA assertion also assumed2and stopped before transmission; a fresh ordinary-menu run transmitted both hands at4and observed no conversion.",
+    "Source Imcando helper records target-hand vacancy before unequip, inventory-wide replaces, then locates first matching output to equip. Target staged newly-removed-slot proof prevents preexisting output-form duplicates from being selected. Independent224new World gap/duplicate/stale controls verify this stronger policy.",
+    "Target F2Pconvert-to-bag/no-new-equip remains a deliberate Wiki-backed policy; source direct equip helper has no explicit entitlement check. Effective source cache/global world policy and original executable are not available in this source-only comparison.",
+    "Target clones all stages before publishing removal to listeners and final equip. Synthetic output stat-requirement failure rolls back entirely; source already completed unequip/replace before a possible failed final equip. Actual hammer definitions have no added skill gate; synthetic requirement controls exercise transaction integrity only."
+  ],
+  "limitations": [
+    "No donor runtime, rendered/audio or effective F2P-world cache observation claimed.",
+    "Existing three-reference comparison remains immutable; this report adds helper-chain inspection without changing historical source facts.",
+    "Native current nullable claims/equipment/container/persistence and final full V4 disposition remain separate.",
+    "Published original contract and earlier source comparison retain their numeric-binding assumptions; this newly inspected actual menu/parameter evidence qualifies that assumption without rewriting history."
+  ]
+}

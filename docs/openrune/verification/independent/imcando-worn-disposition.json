@@ -1,0 +1,35 @@
+{
+  "implementation_id": "OR-MIG-0109",
+  "tested_sha": "8bc76c7c464daf1d4abdef4dd7f4172c270abda5",
+  "status": "FAILED_REQUIRES_CORRECTION",
+  "finding": "PG-DEF-006",
+  "levels": {
+    "V0": {
+      "status": "FAIL",
+      "reason": "Exact production binary builds and target definitions resolve,but intended worn Swap registration is bound2while both actual native menus emit4. Actual reachable gameplay dispatch criterion fails."
+    },
+    "V1": {
+      "status": "PASS",
+      "reason": "612independent registered World controls plus38actualcache binding refusals satisfy applicable authoritative worn-only Swap requirements:388whole bag/member/F2P/occupied/freehand/life/metadata/realorderedcallbacks/syntheticbaselevel/weakinterruption controls preserved,then224new all28firstgap/existingoutputduplicates/retainedinputduplicate/stale replay casesPASS. Newly removed exact-slot output equips for member/freehand; existing opposite-form duplicates remain untouched, F2P/occupiedtarget preserves outputheld and old target. Complete whole bag/gear/Stats/fractions/noXP/noautomaticreplay; fullbagrefuses evenfreehand. Original QA failures retained. No native/startup/persistence/reference/currentHEADacceptance inherited."
+    },
+    "V2": {
+      "status": "FAIL",
+      "reason": "Fresh member account has one free backpack slot and both ordinary worn hammers. Two authentic native Worn Equipment Swap menu actions transmit actual387:18/20,slot-1,item-1,operation4. After8ticks each, independently decoded whole bag/gear/rawStats and acknowledged SQL save remain exactly initial: no conversion. Pinned profile and runtime accept worn Swap under operation2; targetparam453iswear_op3, agreeing with real menu4. No hand-crafted requests or replay used."
+    },
+    "V3": {
+      "status": "BLOCKED",
+      "reason": "Pinned native Swap cannot produce a converted worn state because PG-DEF-006; converted-form native save/restart/crash obligations cannot run through genuine UI at8bc76c7. Both attempted ordinary menus conserve original SQL account and save gracefully,but that is not conversion persistence. Prepared F2P account remains unexecuted; do not substitute a newer build."
+    },
+    "V4": {
+      "status": "PASS",
+      "reason": "Scoped independent comparison complete: original Imcando worn4helper/two pinned Wiki revisions,five newly inspected equip/unequip/verification helpers and actual target symbols/forms. Source worn4and targetwear_op3=453agree with observednative4; target2is a confirmed defect. Fullbagunequip-first/occupied-hand behavior,target newly removed-slot duplicate protection and atomic staging/base requirements compared. Target F2Pbag/no-new-equip is qualified Wiki-backed adaptation; direct source chain has no explicit membership check. No donor executable/effective-world-cache/render/audio parity inferred."
+    }
+  },
+  "scope": "Historical worn-only contract has a confirmed ordinary P2native dispatch defect; continue unrelated eligible verification without stopping FORGE. Preserve612passing authoritative controls/38cache refusals and both native raw failures. No held108/currentHEAD acceptance changed.",
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/deep-imcando-worn-dispatch/native-001/independent-assessment.json": "80eb6e2e8015b25747986e9acf56a51831a694dc4fbac742471a6934ccecaa01",
+    "docs/openrune/verification/independent/imcando-worn-authoritative-complete.json": "aac2e45b31718c6e62fcecee264aae50427c686f46f2a21cb8a28ff2b1c9cb5f",
+    "docs/openrune/verification/independent/reference-imcando-worn/comparison.json": "4028564b943a0b312092fbf96d2d828fb39bc2cf8b22ece136f3385f621e2e8f",
+    "docs/openrune/verification/independent/reference-imcando-worn/equip-chain.json": "f2d4a8fc8a6008a13d29049987c62f54fd79804774a9071f312fb649c897d35b"
+  }
+}

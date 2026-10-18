@@ -1,0 +1,10 @@
+   Compiling gielinor-world v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d\crates\world)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d\external-harness-4258609000)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1m 20s
+     Running tests\world.rs (C:\Projects\OSRSRSPS\agent7-verification\work\a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d\target\debug\deps\world-9558ff10f10bf74a.exe)
+
+running 1 test
+PG_RUNE_ALTARS independent whole-state action cases=972;all6/RunePureMixed/F2Pmember/count1-7-28/currentmin-99-104/rate1-1.25-5;oneclock/noRNG/emptyrepeat;104isconstructedpredicate,noboostactivationclaim
+test nine_hundred_seventy_two_registered_altar_material_membership_rate_and_level_controls ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 54.77s

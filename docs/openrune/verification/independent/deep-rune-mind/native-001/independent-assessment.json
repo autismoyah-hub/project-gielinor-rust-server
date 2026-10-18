@@ -1,0 +1,14 @@
+{
+  "implementation_id": "OR-MIG-0125",
+  "tested_sha": "a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d",
+  "status": "HARNESS_FAILURE",
+  "scope": "Actual native Craft-rune scene menu dispatched at real Mind altar, but server did not load its authoritative map. No essence/rune/XP change. Raw producer FAIL and disposable state retained. Not an implementation defect or successful crafting test.",
+  "diagnosis": "Pinned application.rs loads maps around --spawn default3222,3218,0 independent of restored account coords2784,4841,0. Original launcher omitted --spawn. Corrected launcher passes disposable coordinates via existing option; fresh native-002, unchanged source/server/client identities.",
+  "evidence_sha256": {
+    "produce/manifest.json": "891892d36b5e3480010e7bb16a3cb9e9633a7a7de461a0079fbcb13e7eb92a73",
+    "produce/client.log": "ceee204d51e45f56167e5a4f8976dea31ee72db0c9b119acc0279c1bfda1844e",
+    "produce/server.log": "7cec2135f44a2e536c655bae49f50fef4b8ce8fa7e349d023ae879747a1d7a3e",
+    "produce/before.json": "2b1b25eb38697f2a601c5821512a408b80169532b6fdfa965a82070932a3e6fc",
+    "produce/after.json": "642fafedb4292a3f15e357090b9d37c11338ba455316acc84fc142912a70567d"
+  }
+}

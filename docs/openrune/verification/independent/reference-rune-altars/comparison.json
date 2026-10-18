@@ -1,0 +1,168 @@
+{
+  "implementation_id": "OR-MIG-0125",
+  "tested_sha": "a2fa7421bfd8f6cdee59e4e1cca82f2db2b2406d",
+  "status": "PASS_REFERENCE_FACTS",
+  "sources": [
+    {
+      "kind": "openrune",
+      "reference": "content/skills/runecrafting/src/main/kotlin/org/rsmod/content/skills/runecrafting/altar/AltarEvents.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "f372ebe06c6788008765c341df1b3dd8255b0e332766b22a21aef636a7309756"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/runecrafting/src/main/kotlin/org/rsmod/content/skills/runecrafting/action/RunecraftAction.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "bd5efc707b7e44eca3a39e3bc626ca3a4c0064a4fa47ff9105573e596e616067"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/runecrafting/src/main/kotlin/org/rsmod/content/skills/runecrafting/essencepouch/EssencePouch.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "44318534de966f04e8d1e2f5efd7eda2d54d59595d0954d3748361af6fd3c3ef"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/runecrafting/src/main/kotlin/org/rsmod/content/skills/runecrafting/items/RaimentsOfTheEye.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "fafbe620e05750d12b24bb3a6d46687efb6d23af13f7a52026ad8ca7c69d4d5a"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Air rune",
+      "revision": "15182633",
+      "sha256": "4a1d0db85b436955e9d4f5a1d2633e401fae36e1805ca43557d4d3eb445f7a0a"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Mind rune",
+      "revision": "15183304",
+      "sha256": "72720733a2bbef4b0d101ea6c89e3ce0fa42819561aa9316243e1301317419f9"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Water rune",
+      "revision": "15183376",
+      "sha256": "d99958d3b67001ded6ef254b181a93eb6b5a8ee0a1fb341eacd82c5cf9cafa76"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Earth rune",
+      "revision": "15183469",
+      "sha256": "da7467bf6b8c1e7888171fe6eeafd6aeaa3c5d7a04dbc79bb9feaa13c771127b"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Fire rune",
+      "revision": "15343062",
+      "sha256": "b48fc7c8a92687ce5ddef49911386cc107c7c77ab7bdd6badddf11f8b8839e35"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Body rune",
+      "revision": "15183485",
+      "sha256": "0edd22d456cb515101246a6ce8ae909f62e608f202466db67344488b763b57d5"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Runecraft",
+      "revision": "15337466",
+      "sha256": "35694672ce5a01a3deb1b23a2735a125d95fb8bb73c05d0eb29e1979f6e94f1c"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Rune essence",
+      "revision": "15325416",
+      "sha256": "09cb72f8ca7e451ed96031d252794b4bd9ce19d7dd5da95685612ac4c5f0fc75"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Pure essence",
+      "revision": "15325415",
+      "sha256": "95d3f3e0df94445a9ba459162906eb07b5bc8b39bb489899a9bd17e0b5bcd614"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Temporary skill boost/Runecraft",
+      "revision": "14971967",
+      "sha256": "c9ce3e2c0a59a7efafae5dcdcbde26954e3bbd8468e8e82a89a9dc971aa79081"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Update:Pure Essence now craftable on free servers",
+      "revision": "7766465",
+      "sha256": "19b630956b54cdb0f61e3660b222f7daadee82650c5ed4c25391ba3ae1de3f20"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Raiments of the Eye",
+      "revision": "15309078",
+      "sha256": "902dc071560d7b8bfbb9b06676aa6a26ce2497ddb3d6b1168aa4e0eeb69c7ca4"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Abyssal lantern",
+      "revision": "15328780",
+      "sha256": "2049b4414ff79eb92e6c4f2eb2361087883b6ca86fa34caae2d3634bda619fca"
+    }
+  ],
+  "ordinary_recipe_facts": [
+    {
+      "rune": "Air rune",
+      "level": 1,
+      "xp_per_essence": "5",
+      "multiple_interval": 11,
+      "wiki_ticks": 1,
+      "pure_recipe_members_flag": "Yes"
+    },
+    {
+      "rune": "Mind rune",
+      "level": 2,
+      "xp_per_essence": "5.5",
+      "multiple_interval": 14,
+      "wiki_ticks": 1,
+      "pure_recipe_members_flag": "Yes"
+    },
+    {
+      "rune": "Water rune",
+      "level": 5,
+      "xp_per_essence": "6",
+      "multiple_interval": 19,
+      "wiki_ticks": 1,
+      "pure_recipe_members_flag": "Yes"
+    },
+    {
+      "rune": "Earth rune",
+      "level": 9,
+      "xp_per_essence": "6.5",
+      "multiple_interval": 26,
+      "wiki_ticks": 1,
+      "pure_recipe_members_flag": "Yes"
+    },
+    {
+      "rune": "Fire rune",
+      "level": 14,
+      "xp_per_essence": "7",
+      "multiple_interval": 35,
+      "wiki_ticks": 1,
+      "pure_recipe_members_flag": "Yes"
+    },
+    {
+      "rune": "Body rune",
+      "level": 20,
+      "xp_per_essence": "7.5",
+      "multiple_interval": 46,
+      "wiki_ticks": 1,
+      "pure_recipe_members_flag": "No"
+    }
+  ],
+  "scope": "Four protected source files and13pinnedWiki pages independently hash-match; six ordinary recipe fields read directly. SourceAltarEvents ordinaryOpLoc1 calls craftRune withoutaltar-use talisman/tiara gate; ruins/entry/portals separate. SourcepreCraft791/spot186height100/wait3/Synth2710, baselevel eligibility/yield and produced-rune-basedXP differ from target explicitWiki-first1tick/currentvisiblelevel/XPpercapturedessence. SourcegetBonusMultiplier independently matches allsix intervals11/14/19/26/35/46. Current104Earth5runes supported by pinnedgeneralWiki;constructedWorldinputs prove math only. Source inventory-wide lookup versus immutable accepted slots/fullstagedcredit/aggregatepersonal-rate fineXP is a strict target adaptation. Target addsordinarysuccess/refusal messages; sourceordinarycompletion has no matching successmessage,lowerlevel/error sourceusesmesbox.",
+  "membership_discrepancy": "Five rune-product Pure recipes saymembersYes whileBody saysNo. The exact official historical2006update explicitly permits nonmembers to usePure forRunecraft; generalRune/Pureitemtables andactualtargetordinarymember=false support localF2Ppolicy. Preserveconflictingrecipeflags,donotclaimoriginal241runtime or native239.1F2Pobserved until actualcase executes.",
+  "withheld_scope": "SourceDaeyalt/Guardian/Dark/Scar/outfit/lantern/pouches/Ourania/combination/cores/otheraltars/access/acquisition are not accepted under125. Targetfailsclosed6held/27wornguards,includingredoutfit/unlitlantern overrestriction declared. SourceRaimentshelperomitsred variants,whiletargetconservativelyguardsall13robevariants; no bonus-portclaim. Sourcegenerated241RuneRows unavailable,239.1sixprofilesderivedfromactualtarget/Wiki.",
+  "limitations": [
+    "No donor executable/render/audio or completefile/parity claim.",
+    "Actual mapped6interiors and355cache refusalsPASSseparately; native startup/menu/effect/cadence/membership/persistence assessment remains independent.",
+    "Sourcehardcoded2710hasnoattestedtargetalias; targetomissionisexplicit,notinventedsoundmapping.",
+    "PG-DEF-007historical stockmetadata loss is separate from documented intentional reference adaptations;126stockcorrectionPASSsubcheckdoesnotreplace125."
+  ]
+}
