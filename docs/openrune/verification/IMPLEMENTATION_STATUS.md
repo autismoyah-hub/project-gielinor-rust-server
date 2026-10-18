@@ -1,5 +1,18 @@
 # FORGE implementation status
 
+<!-- forge-current:start -->
+## Current implementation checkpoint
+
+OR-MIG-0043: eight member range pies, live membership checks and optional forced burn cutoffs. Published source: [8805474](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/8805474ede2cbbb80e9167c300b3bbbefe845c83). Verification contract: [906a1c0](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/906a1c0).
+
+The latest affected regression passed 82 server and 441 world tests, with one existing ignored test and 399 source hashes unchanged. Dragonfruit awards 220 base XP; Dragonfruit, Wild and Summer can still burn at level 99. Membership is checked at admission and completion using trusted account state.
+
+The queue contains 43 implementation units across 45 append-only records: 23 historical contracts and 20 new gameplay/shared units. Every unit is pending independent verification. The 3,508 discovery records include 30 partially contracted eligible source files/tables, 656 configuration records and 2,822 not yet assessed. These counts are not a gameplay-completion percentage.
+
+Remaining work includes quantity/Make-X and Cook menus, modifiers and special surfaces, cake-baking tin returns, burnt-container operations, additional content, inventory reconciliation and independent V0–V4 acceptance. The current manual cooking subset has 13 fire and 26 range profiles. Historical checkpoints follow without alteration.
+<!-- forge-current:end -->
+
+
 Resumed2026-10-17 under the implementation/independent-verification handoff mandate. Branch `agent2/openrune-content`; baseline local/remote SHA `8d3e691c667698f9fbbb6f1102a44374832cbb17` matched before work. Historical evidence and unrelated source changes are preserved.
 
 Initial backfill:17 coherent recent Herblore implementation contracts with exact published source SHAs. All are `implemented_pending_verification` / `queued_independent`. Prior FORGE native and persistence results retain their original scope and are not PROVING GROUND acceptance.
