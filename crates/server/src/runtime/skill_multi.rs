@@ -137,6 +137,9 @@ impl<B: AccountBackend> Runtime<B> {
         }
         self.active.get_mut(&actor).unwrap().skill_multi = None;
         self.close_dialogs_and_modals(actor)?;
+        // Tanning source treats zero/negative quantities as a no-op; do not
+        // let the generic skillmulti clamp turn a malformed reply into a fee.
+        if dialog.tanning.is_some() && pause.subcomponent <= 0 {return Ok(true);}
         let selection = dialog
             .dialog
             .select(dialog.presentation, component, pause.subcomponent);

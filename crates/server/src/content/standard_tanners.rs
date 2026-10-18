@@ -1,4 +1,4 @@
-//! Standard cowhide fees. Guild entry, dialogue and regional prices are separate.
+//! Eight standard hide exchanges. Guild entry, dialogue and regional prices are separate.
 use super::{Definitions, Symbols};
 use gielinor_world::tanning::Recipe;
 pub fn standard_tanners(
@@ -28,6 +28,7 @@ pub fn standard_tanners(
             return Err(format!("Invalid tanning item {id}"));
         }
     }
+    let member_recipes = super::member_tanning::member_tanning(objects, defs)?;
     let mut profiles = std::collections::BTreeMap::new();
     for (symbol, id, name) in [("ellis_tanner", 3231, "Ellis"), ("tanner", 5809, "Tanner")] {
         let npc = defs
@@ -62,6 +63,9 @@ pub fn standard_tanners(
                 },
             ],
         );
+    }
+    for recipes in profiles.values_mut() {
+        recipes.extend(member_recipes.iter().copied());
     }
     Ok(profiles)
 }
@@ -104,7 +108,7 @@ mod tests {
             d.npcs
                 .insert(id, gielinor_cache::npcs::NpcType::decode(&raw).unwrap());
         }
-        let o = [
+        let mut o: Symbols = [
             ("cow_hide".into(), 1739),
             ("leather".into(), 1741),
             ("hard_leather".into(), 1743),
@@ -112,7 +116,20 @@ mod tests {
         ]
         .into();
         let n = [("ellis_tanner".into(), 3231), ("tanner".into(), 5809)].into();
+        for (symbol, id, name) in super::super::member_tanning::ITEMS {
+            let mut raw = vec![2];
+            raw.extend(name.bytes());
+            raw.extend([0, 16, 0]);
+            d.items.insert(
+                id,
+                gielinor_cache::definitions::ItemType::decode(&raw).unwrap(),
+            );
+            o.insert(symbol.into(), id as i32);
+        }
         let rows = standard_tanners(&o, &n, &d).unwrap();
+        assert!(rows
+            .values()
+            .all(|v| v.len() == 8 && v.iter().filter(|r| r.members).count() == 6));
         assert_eq!(rows.len(), 2);
         assert_eq!(rows[&3231][1].cost, 3);
         d.npcs.get_mut(&3231).unwrap().ops[2] = None;
