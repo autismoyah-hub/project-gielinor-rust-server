@@ -1,4 +1,6 @@
 //! Resolve content's symbolic references against the same immutable type inputs as Kotlin.
+mod other_gnome_cocktails;
+pub use other_gnome_cocktails::other_gnome_cocktails;
 mod sgg_blizzard;
 pub use sgg_blizzard::sgg_blizzard;
 mod normal_ales;

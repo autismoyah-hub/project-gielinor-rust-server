@@ -375,6 +375,7 @@ pub fn configure<B: AccountBackend>(
     boost_foods.boosts.extend(dorgesh.boosts);
     let mut formula_foods=crate::content::normal_ales(n("obj"),n("stat"),&runtime.definitions,&mut foods).map_err(io::Error::other)?;
     formula_foods.extend(crate::content::sgg_blizzard(n("obj"),n("stat"),&runtime.definitions,&mut foods).map_err(io::Error::other)?);
+    formula_foods.extend(crate::content::other_gnome_cocktails(n("obj"),n("stat"),&runtime.definitions,&mut foods).map_err(io::Error::other)?);
     slot_preserving_foods.extend(formula_foods.keys().copied());
     slot_preserving_foods.extend(crate::content::fruit_cocktails(n("obj"),&runtime.definitions,&mut foods).map_err(io::Error::other)?);
     slot_preserving_foods.extend(crate::content::mead_drinks(n("obj"),&runtime.definitions,&mut foods).map_err(io::Error::other)?);
