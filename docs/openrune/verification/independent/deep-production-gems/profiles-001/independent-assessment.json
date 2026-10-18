@@ -1,0 +1,72 @@
+{
+  "implementation_id": "OR-MIG-0063",
+  "tested_sha": "143dab04f28c3daed844da0af33d6af5edcd962d",
+  "campaign_kind": "historical",
+  "status": "PASS",
+  "profiles": 7,
+  "fine_xp_award": 33250,
+  "effects": [
+    {
+      "index": 0,
+      "slot": 4,
+      "sequence": 8833,
+      "sequence_tick": 118,
+      "credit_tick": 119,
+      "received_clocks": 1
+    },
+    {
+      "index": 1,
+      "slot": 5,
+      "sequence": 8833,
+      "sequence_tick": 141,
+      "credit_tick": 142,
+      "received_clocks": 1
+    },
+    {
+      "index": 2,
+      "slot": 6,
+      "sequence": 8833,
+      "sequence_tick": 167,
+      "credit_tick": 168,
+      "received_clocks": 1
+    },
+    {
+      "index": 3,
+      "slot": 7,
+      "sequence": 8833,
+      "sequence_tick": 192,
+      "credit_tick": 193,
+      "received_clocks": 1
+    },
+    {
+      "index": 4,
+      "slot": 8,
+      "sequence": 8833,
+      "sequence_tick": 209,
+      "credit_tick": 210,
+      "received_clocks": 1
+    },
+    {
+      "index": 5,
+      "slot": 9,
+      "sequence": 8833,
+      "sequence_tick": 225,
+      "credit_tick": 226,
+      "received_clocks": 1
+    },
+    {
+      "index": 6,
+      "slot": 10,
+      "sequence": 8833,
+      "sequence_tick": 245,
+      "credit_tick": 246,
+      "received_clocks": 1
+    }
+  ],
+  "scope": "Actual startup-registered gems single-choice quantity UI: exact cache-name/level labels, native Use both directions across profiles, one-use Make115/count1, full-bag selected credits and fineXP. Genuine Make/Close95before award and stale response refuse; completed responses do not repeat. Real acknowledged save/restart plus independently decoded native full inventory/Stats preserve all outputs/XP.",
+  "limitations": [
+    "This fresh scope does not inherit manual56/57acceptance.",
+    "Native built-in batch quantities/repeated cadence/custom X, interrupted batch persistence and reference aggregation remain separate.",
+    "No rendered/audio or original executable comparison inferred."
+  ]
+}

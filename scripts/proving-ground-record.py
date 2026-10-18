@@ -37,6 +37,9 @@ for manifest in OUT.glob('OR-MIG-0024-*-independent*/manifest.json'):
 for manifest in OUT.glob('integration-*/manifest.json'):
     value=json.loads(manifest.read_text(encoding='utf-8'))
     if value.get('status')!='PASS':continue
+    if value.get('suite')=='immediate-tools':
+        add('OR-MIG-0065',value['tested_integration_sha'],'V1','IN_PROGRESS','Independent207656zero-XP/fallible/current-level/member/rate/controlled-byte cases PASS against a rounded integer probability oracle, including limestone certainty40and one RNG draw even at certainty; Dramen has no draw or advancement and permits rate0.60invalid possible-credit/input/tool/policy probes refuse before draw; zero-XPfailure preserves Stats/no advancement while positive-success/rate0still refuses.48actual immediate World held routes cover both directions/full bag/no menu/clock advance/stale/delayed replay. Additional World negative/configuration, actual startup/native/persistence/reference acceptance remains separate.',[manifest.relative_to(ROOT).as_posix()],scope='independent-immediate-tools')
+        continue
     if value.get('suite')=='production-gems':
         add('OR-MIG-0063',value['tested_integration_sha'],'V1','IN_PROGRESS','Independent576sixteen-profile/both-direction/three-rate/quantity cases and24nonmember F2P gem controls PASS.140invalid admission and192late captured-slot/policy/credit/lifecycle cases verify no fallback/replay, legitimate F2P continuation after membership change and exact first1/repeat2gem versus first2/repeat3shell clocks. Public World routes used; actual startup bindings/native/persistence/reference acceptance remains separate from historical manual56/57.',[manifest.relative_to(ROOT).as_posix()],scope='independent-production-gems')
         continue
@@ -191,7 +194,7 @@ path=OUT/'shell-acceptance.json'
 if path.exists():
     result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='ACCEPTED'
     for level,value in result['levels'].items():add('OR-MIG-0057',result['tested_sha'],level,value['status'],value['reason'],[str(path.relative_to(ROOT)).replace('\\','/')],scope='shell-manual-subset-acceptance-r1')
-for folder,ident in [('reference-glass','OR-MIG-0062'),('reference-pouches','OR-MIG-0054'),('reference-amethyst','OR-MIG-0071')]:
+for folder,ident in [('reference-glass','OR-MIG-0062'),('reference-pouches','OR-MIG-0054'),('reference-amethyst','OR-MIG-0071'),('reference-production','OR-MIG-0063'),('reference-immediate','OR-MIG-0065')]:
     path=OUT/folder/'comparison.json'
     if path.exists():
         result=json.loads(path.read_text(encoding='utf-8'));assert result['source_documentation_subcheck']=='PASS'
@@ -227,6 +230,34 @@ for kind in ['gems','shells']:
     if path.exists():
         result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PASS'
         for level in ['V0','V2','V3']:add('OR-MIG-0063',result['tested_sha'],level,'IN_PROGRESS',result['scope']+' Other applicable native batch/quantity/interruption/reference obligations remain separate.',[path.relative_to(ROOT).as_posix()],scope='native-production-'+kind+'-single-choice-recovery')
+production_sha='143dab04f28c3daed844da0af33d6af5edcd962d'
+production_native=[OUT/('deep-production-'+kind)/'profiles-001/independent-assessment.json' for kind in ['gems','shells']]
+if all(p.exists() and json.loads(p.read_text())['status']=='PASS' for p in production_native):
+    add('OR-MIG-0063',production_sha,'V0','PASS','Exact target server compiled; actual startup loaded attested definitions and registered all16gem/shell recipes through the single-option native SkillMulti/permission/resume path. Every recipe dispatched through real native Use and Make115to its exact output/fineXP, with genuineClose/stale refusals; no manual-contract acceptance inherited.',[p.relative_to(ROOT).as_posix() for p in production_native],scope='production-runtime-obligations-complete')
+    matrix=OUT/('integration-external-production-gems-'+production_sha)/'manifest.json'
+    if matrix.exists() and json.loads(matrix.read_text())['status']=='PASS':
+        add('OR-MIG-0063',production_sha,'V1','PASS','Applicable authoritative obligations satisfied:576sixteen-profile/both-direction/three-rate/quantity/cap cases verify exact selected-first full-bag outputs and fineXP, first1/repeat2gems and first2/repeat3shells.24F2Pcontrols,140admission refusals and192late slot/tool/member/level/rate/credit/modal/movement/Close/logout/other-held cases pass without fallback or future loss. Actual16registered native profiles independently match these descriptors; custom/native quantity boundaries and durable interrupted batches remain separate V2/V3obligations.',[matrix.relative_to(ROOT).as_posix(),*[p.relative_to(ROOT).as_posix() for p in production_native]],scope='production-authoritative-obligations-complete')
+for kind in ['gem','shell']:
+    path=OUT/('deep-production-'+kind+'-batch')/'quantities-001/independent-assessment.json'
+    if path.exists():
+        result=json.loads(path.read_text());assert result['status']=='PASS'
+        for level in ['V2','V3']:add('OR-MIG-0063',result['tested_sha'],level,'IN_PROGRESS',result['scope']+' Multi-digit-Xboundary and in-flight interruption remain separate.',[path.relative_to(ROOT).as_posix()],scope='native-production-'+kind+'-five-quantities-recovery')
+for kind,mode in [('gem','interrupt'),('shell','interrupt'),('gem','crash')]:
+    path=OUT/('deep-production-'+kind+'-'+mode)/(mode+'-001/independent-assessment.json')
+    if path.exists():
+        result=json.loads(path.read_text());assert result['status']=='PASS'
+        add('OR-MIG-0063',result['tested_sha'],'V3','IN_PROGRESS',result['scope']+' Aggregate applicable persistence acceptance remains separate.',[path.relative_to(ROOT).as_posix()],scope='native-production-'+kind+'-'+mode+'-recovery')
+production_durable=[*production_native,*[OUT/('deep-production-'+kind+'-batch')/'quantities-001/independent-assessment.json' for kind in ['gem','shell']],*[OUT/('deep-production-'+kind+'-'+mode)/(mode+'-001/independent-assessment.json') for kind,mode in [('gem','interrupt'),('shell','interrupt'),('gem','crash')]]]
+if all(p.exists() and json.loads(p.read_text())['status']=='PASS' for p in production_durable):
+    add('OR-MIG-0063',production_sha,'V3','PASS','Applicable persistence obligations satisfied: all16registered outputs/fineXP and23-item gem/shell quantity campaigns persist across acknowledged save and real process/native restart. Partial socket disconnect retains exact committed gem3/7500fineXP and shell1/1625fineXP prefixes, with20/22raws preserved and remaining work cancelled. Separate owned abrupt termination restores the prior complete23raw/Stats state, confirmed by actual restart/native packets without replay. No mid-SQL-commit injection claimed. Native custom-Xremains a separate V2blocker.',[p.relative_to(ROOT).as_posix() for p in production_durable],scope='production-durable-obligations-complete')
+path=OUT/'deep-production-gem-x/x10-001/independent-blocker.json'
+if path.exists():
+    result=json.loads(path.read_text());assert result['status']=='BLOCKED'
+    add('OR-MIG-0063',result['tested_sha'],'V2','BLOCKED',result['scope']+' '+result['correction_needed'],[path.relative_to(ROOT).as_posix()],scope='native-production-multidigit-x-blocked')
+path=OUT/'deep-production-gem-x-focus/x10-focus-001/independent-blocker.json'
+if path.exists():
+    result=json.loads(path.read_text());assert result['status']=='BLOCKED'
+    add('OR-MIG-0063',result['tested_sha'],'V2','BLOCKED',result['scope']+' '+result['correction_needed'],[path.relative_to(ROOT).as_posix()],scope='native-production-focused-x-blocked')
 glass_sha='5ce50aede9164cdee8e4008257d0298ea77289e7'
 path=OUT/'deep-pouch/pouch-002/independent-blocker.json'
 if path.exists():

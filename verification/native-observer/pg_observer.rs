@@ -263,6 +263,54 @@ fn production_profiles(c:&mut ClientState,l:&mut Connection,shells:bool)->R<()> 
     }
     println!("PG_CASE_PASS registered native single-choice profiles shells={shells}; complete full-bag selected outputs/labels/fineXP and stale refusal; actual restart assessment separate");Ok(())
 }
+fn production_batch(c:&mut ClientState,l:&mut Connection,shells:bool)->R<()> {
+    let(raw,output,award)=if shells{(3345,3327,1625)}else{(1623,1607,2500)};let xp=c.data.experience;let mut made=0;let mut fine=130344311;tab(c,"Inventory")?;ticks(c,l,3)?;
+    for (index,(label,count)) in [("1",1),("5",5),("10",10),("X",3),("All",4)].into_iter().enumerate(){
+        ready(c,l)?;let raws=(0..28).filter(|&s|c.inventories.item(93,s).id==raw).collect::<Vec<_>>();let slot=if index%2==0{raws[0]}else{*raws.last().ok_or("production raw absent")?};
+        if index%2==0{use_slots(c,0,slot)?;}else{use_slots(c,slot,0)?;}
+        let packet=glass_quantity(c,l,0,label,count)?;made+=count;fine+=count*award;
+        pump(c,l,90,|c,_|c.inventories.total(93,output)==made && c.inventories.total(93,raw)==23-made && c.data.experience[12]==fine/10)?;ticks(c,l,3)?;
+        assert_eq!(c.inventories.item(93,0).id,1755);assert_eq!(c.inventories.item(93,1).id,1755);assert_eq!(c.inventories.item(93,27).count,1000);assert_eq!((0..28).filter(|&s|c.inventories.item(93,s).id>=0).count(),28);
+        replay(c,l,&packet,"stale completed native production quantity response")?;ticks(c,l,3)?;assert_eq!(c.data.experience[12],fine/10);for i in 0..25{if i!=12{assert_eq!(c.data.experience[i],xp[i]);}}
+        println!("PG_PRODUCTION_BATCH_COMMITTED label={label} count={count} selected_slot={slot} output={output} total_made={made} fine_award={} display_xp={}",count*award,c.data.experience[12]);
+    }
+    assert_eq!(made,23);println!("PG_CASE_PASS native production quantities1/5/10/X3/All4 shells={shells};23selected ordinary products; exact once-per-raw fineXP and stale refusal; custom-X wire observations require independent assessment");Ok(())
+}
+fn native_focused_x(c:&mut ClientState,l:&mut Connection,index:u32,n:i32)->R<(u16,Vec<u8>)> {
+    let _=glass_make_action(c,l,index)?;let layout=c.interfaces.layout(c.canvas)?;let logical=(270<<16)|11;
+    let (&id,_)=c.interfaces.widgets.iter().find(|(id,w)|plain_ui(&w.text).trim()=="X" && c.interfaces.runtime.get(*id).map_or(**id,|r|r.logical_id)==logical && layout.widgets.get(*id).is_some_and(|p|!p.hidden && p.clip[2]>p.clip[0] && p.clip[3]>p.clip[1])).ok_or("visible native X control absent")?;
+    let p=&layout.widgets[&id];let point=[(p.clip[0]+p.clip[2])/2,(p.clip[1]+p.clip[3])/2];let action=c.interface_menu(point)?.into_iter().find(|e|matches!(e.action,Action::Interface{id,..} if c.interfaces.runtime.get(&id).map_or(id,|r|r.logical_id)==logical)).ok_or("native X menu action absent")?.action;
+    println!("PG_X_FOCUS_BEGIN widget={id} action={action:?} onclick={} onrelease={} onop={} mask={}",c.interfaces.listener(id,1400).is_some(),c.interfaces.listener(id,1402).is_some(),c.interfaces.listener(id,1409).is_some(),c.interfaces.operation_mask(id));
+    c.input.pointer=point;c.input.button(0,true);c.tick_interfaces(false)?;c.input.begin_cycle();pump(c,l,30,|c,l|!l.scripts_busy() && c.interfaces.scripts.is_empty())?;
+    std::thread::sleep(Duration::from_millis(25));c.input.button(0,false);c.tick_interfaces(false)?;c.input.begin_cycle();pump(c,l,30,|c,l|!l.scripts_busy() && c.interfaces.scripts.is_empty())?;
+    dispatch(c,action,"native X Other quantity after separate press/release frames")?;pump(c,l,30,|c,l|!l.scripts_busy() && c.interfaces.scripts.is_empty())?;
+    let start=Instant::now();loop{
+        pump(c,l,30,|_,_|true)?;let layout=c.interfaces.layout(c.canvas)?;let mut prompt=false;
+        if !l.scripts_busy() && c.interfaces.scripts.is_empty(){for (&wid,w) in &c.interfaces.widgets{if !layout.widgets.get(&wid).is_some_and(|p|!p.hidden && p.clip[2]>p.clip[0] && p.clip[3]>p.clip[1]){continue;}let text=plain_ui(&w.text).to_ascii_lowercase();if (text.contains("enter") && (text.contains("amount") || text.contains("quantity") || text.contains("number"))) || text.contains("how many"){println!("PG_X_INPUT_PROMPT widget={wid} text={:?}",w.text);prompt=true;}}}
+        if prompt{break;}
+        if start.elapsed()>Duration::from_secs(30){for (&wid,w) in &c.interfaces.widgets{if layout.widgets.get(&wid).is_some_and(|p|!p.hidden && p.clip[2]>p.clip[0] && p.clip[3]>p.clip[1]) && (!w.text.is_empty() || !w.data_text.is_empty()){let logical=c.interfaces.runtime.get(&wid).map_or(wid,|r|r.logical_id);println!("PG_X_VISIBLE_WIDGET id={wid} logical={logical} text={:?} data={:?} content={} mask={}",w.text,w.data_text,w.content,c.interfaces.operation_mask(wid));}}return Err("native custom-quantity input prompt absent after full press/release; no keyboard text injected".into());}std::thread::sleep(Duration::from_millis(20));
+    }
+    for character in n.to_string().encode_utf16(){c.input.character(character);c.tick_interfaces(false)?;c.input.begin_cycle();ticks(c,l,1)?;}
+    c.input.key(84,true);c.tick_interfaces(false)?;c.input.key(84,false);c.input.begin_cycle();pump(c,l,30,|c,l|!l.scripts_busy() && c.interfaces.scripts.is_empty())?;
+    println!("PG_X_FOCUSED_TYPED count={n} prompt_observed=true separate_pointer_frames=true");let fresh=glass_make_action(c,l,index)?;let packet=sent_packet(c,fresh,"native focused custom quantity Make")?;assert_eq!((packet.0,packet.1.len()),(115,6));assert_eq!(u16::from_be_bytes([packet.1[4],packet.1[5]]) as i32,n);Ok(packet)
+}
+fn production_x_boundary(c:&mut ClientState,l:&mut Connection,focused:bool)->R<()> {
+    let xp=c.data.experience;tab(c,"Inventory")?;ticks(c,l,3)?;use_slots(c,26,0)?;let packet=if focused{native_focused_x(c,l,0,10)?}else{glass_quantity(c,l,0,"X",10)?};
+    pump(c,l,90,|c,_|c.inventories.total(93,1607)==10 && c.inventories.total(93,1623)==13 && c.data.experience[12]==(130344311+25000)/10)?;
+    replay(c,l,&packet,"stale multi-digit native X10response")?;ticks(c,l,5)?;assert_eq!(c.inventories.total(93,1607),10);assert_eq!(c.inventories.total(93,1623),13);assert_eq!(c.data.experience[12],(130344311+25000)/10);
+    assert_eq!(c.inventories.item(93,0).id,1755);assert_eq!(c.inventories.item(93,1).id,1755);assert_eq!(c.inventories.item(93,27).count,1000);for i in 0..25{if i!=12{assert_eq!(c.data.experience[i],xp[i]);}}
+    println!("PG_CASE_PASS native multi-digit X10 produces10selected sapphires/25000fineXP and retains13raws without stale repeat");Ok(())
+}
+fn production_partial(c:&mut ClientState,l:&mut Connection,shells:bool,crash:bool)->R<()> {
+    let(raw,output,unit)=if shells{(3345,3327,1625)}else{(1623,1607,2500)};tab(c,"Inventory")?;ticks(c,l,3)?;use_slots(c,26,0)?;let _=glass_quantity(c,l,0,"All",23)?;
+    pump(c,l,30,|c,_|{let made=c.inventories.total(93,output);made>0 && made<23 && c.inventories.total(93,raw)==23-made && c.data.experience[12]==(130344311+made*unit)/10})?;
+    let made=c.inventories.total(93,output);println!("PG_PRODUCTION_PARTIAL shells={shells} observed_products={made} remaining_raw={} output={output} tick={}; authoritative SQL owns any already-admitted race",23-made,c.server_tick);
+    if !crash{println!("PG_DISCONNECT_PARTIAL production shells={shells} outputs={made}; actual socket closes with captured All work remaining");return Ok(());}
+    println!("PG_CRASH_READY production unsaved All result observed with captured raw items remaining; real socket open; no logout/save requested");let start=Instant::now();loop{
+        match l.poll(c){Err(e)=>{println!("PG_EXPECTED_CRASH_DISCONNECT {e}");return Ok(());},Ok(())=>{if l.logged_out().is_some(){println!("PG_EXPECTED_CRASH_DISCONNECT native transport closed");return Ok(());}}}
+        if start.elapsed()>Duration::from_secs(30){return Err("owned production crash injection did not arrive".into());}std::thread::sleep(Duration::from_millis(10));
+    }
+}
 fn bank_deposit_action(c:&mut ClientState,l:&mut Connection,slot:i32)->R<Action> {
     let start=Instant::now();loop{
         pump(c,l,30,|_,_|true)?;let layout=c.interfaces.layout(c.canvas)?;
@@ -462,6 +510,9 @@ fn main()->R<()> {
     let a:Vec<_>=std::env::args().collect();assert_eq!(a.len(),7);
     let mut c=ClientState::load(DiskCache::open(&a[1],64<<20)?)?;let mut l=Connection::connect(&mut c,&a[2],&a[3],&a[4],&a[5])?;ready(&mut c,&mut l)?;
     if matches!(a[6].as_str(),"production-gems"|"production-shells"){production_profiles(&mut c,&mut l,a[6]=="production-shells")?;l.session.close();return Ok(());}
+    if matches!(a[6].as_str(),"production-gem-batch"|"production-shell-batch"){production_batch(&mut c,&mut l,a[6]=="production-shell-batch")?;l.session.close();return Ok(());}
+    if matches!(a[6].as_str(),"production-gem-x"|"production-gem-x-focus"){production_x_boundary(&mut c,&mut l,a[6]=="production-gem-x-focus")?;l.session.close();return Ok(());}
+    if matches!(a[6].as_str(),"production-gem-interrupt"|"production-shell-interrupt"|"production-gem-crash"){production_partial(&mut c,&mut l,a[6]=="production-shell-interrupt",a[6]=="production-gem-crash")?;l.session.close();return Ok(());}
     match a[6].as_str(){"pouch"=>pouch(&mut c,&mut l)?,"glass-all"=>glass_all(&mut c,&mut l)?,"glass-interrupt"=>glass_interrupt(&mut c,&mut l)?,"glass-crash"=>glass_crash(&mut c,&mut l)?,"glass-remaining"=>glass_remaining(&mut c,&mut l)?,"glass-quantities"=>glass_quantities(&mut c,&mut l)?,"glass"=>glass(&mut c,&mut l)?,"shells"=>shells(&mut c,&mut l)?,"gem-effects"=>gem_effects(&mut c,&mut l)?,"gem-crash"=>gem_crash(&mut c,&mut l)?,"gems"=>gems(&mut c,&mut l)?,"prayer"=>prayer_burial(&mut c,&mut l)?,"chem-crash"=>chemistry_crash(&mut c,&mut l)?,"chem-interrupt"=>chemistry_interrupt(&mut c,&mut l)?,"food-negative"=>food_negative(&mut c,&mut l)?,"combat-interrupt"=>combat_interrupt(&mut c,&mut l)?,"chem-close"=>chemistry_close(&mut c,&mut l)?,"chem-negative"=>chemistry(&mut c,&mut l)?,"food"=>food(&mut c,&mut l)?,"verify"=>{ticks(&mut c,&mut l,6)?;println!("PG_CASE_PASS native relogin observation");},_=>return Err("unknown independent scenario".into())}
     l.session.close();Ok(())
 }

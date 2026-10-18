@@ -1,0 +1,22 @@
+{
+  "implementation_id": "OR-MIG-0063",
+  "tested_sha": "143dab04f28c3daed844da0af33d6af5edcd962d",
+  "client_sha256": "7adb96fb284d4ed8837550c918c4774ed84df232e60394055b5d4114f3878249",
+  "campaign_kind": "historical",
+  "status": "BLOCKED",
+  "finding": "PG-INFRA-009",
+  "wire_tick": 294,
+  "actual_component": "270:15",
+  "actual_count": 1,
+  "requested_custom_count": 10,
+  "saved_products": 1,
+  "saved_fine_xp_award": 2500,
+  "scope": "Single-option multi-digit native X10 is blocked: while typing10, actual post-send trace submits valid first option270:15/count1before intended Make10. Intended manual Make emits no packet and trips the observer immediate-packet assertion. Server durably saves exactly one selected Sapphire/2500fineXP, matching the actual earlier frame; no server defect established. Passing X3and1/5/10/All4 native built-in cases remain separate evidence, not whole-X acceptance.",
+  "correction_needed": "Diagnose actual custom-input popup/focus and full native pointer press/release frame sequence. Preserve original native client functionality and all emitted packets; never suppress the early frame or overwrite quantity variables to force PASS. A fresh exact-SHA fixture is required for retest.",
+  "evidence_sha256": {
+    "produce/client.log": "f0e1e928c70569ebf754e2a0c475bd16657b04592ac74538764efe9e7d433aef",
+    "produce/manifest.json": "228424be7e4d2011135676f200fd41968c28b97d45ccbc747e2f1a4da15ad90a",
+    "produce/after.json": "ba480463fb45d4bb2c3d98cdcc816cb802fd312adaf46ad3f83ba6beacfc7922",
+    "resources.json": "1f0e789de7e5e0810f156d8ae72c4840aaef7dd31b0bc36861a74e099b31a45c"
+  }
+}

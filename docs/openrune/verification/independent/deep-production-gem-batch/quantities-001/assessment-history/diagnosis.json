@@ -1,0 +1,13 @@
+{
+  "classification": "Verifier oracle defect; completed native campaign unchanged",
+  "failed_assessor_sha256": "7130951ee9e16bbcec03e888deff8c7077b5bb33c787a7e76bebf05ae97f5e3b",
+  "reason": "Nearest sequence before a batch credit is often the next-item animation started on the same clock. Match each batch first animation after its actual transmitted Make, then compare first credit; repeated raw-credit intervals remain independently2clocks.",
+  "example": {
+    "batch_count": 5,
+    "Make_wire_tick": 177,
+    "initial_sequence_tick": 178,
+    "next_sequence_tick": 179,
+    "first_credit_tick": 179
+  },
+  "action": "Correct read-only assessor and rerun it against unchanged saved/native evidence; never rerun successful production."
+}

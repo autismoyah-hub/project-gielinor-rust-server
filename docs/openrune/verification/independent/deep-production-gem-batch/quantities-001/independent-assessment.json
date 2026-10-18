@@ -1,0 +1,48 @@
+{
+  "implementation_id": "OR-MIG-0063",
+  "tested_sha": "143dab04f28c3daed844da0af33d6af5edcd962d",
+  "campaign_kind": "historical",
+  "status": "PASS",
+  "kind": "gem",
+  "native_quantities": [
+    1,
+    5,
+    10,
+    3,
+    4
+  ],
+  "fine_xp_award": 57500,
+  "captured_credit_order": [
+    4,
+    26,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    25,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24
+  ],
+  "first_received_clocks": 1,
+  "repeat_received_clocks": 2,
+  "scope": "Genuine native1/5/10/X3/All4 controls submit exactly five intended Resume115/count frames and produce23exact selected gem outputs, retaining both chisels/full bag/coins. Raw inventory credits independently match captured selected-first order and first/repeat clocks. Specific X3works without unintended extra continuation in this single-option dialog. Actual acknowledged save/process restart/native inventory and Stats retain all23products and fineXP without stale replay.",
+  "limitations": [
+    "Multi-digit/custom-X boundary and in-flight batch logout/interruption remain independent obligations.",
+    "This does not resolve the separate historical eight-choice glass X3blocker or chemistry-specific Close retests.",
+    "No rendered/audio or original executable acceptance inferred."
+  ]
+}

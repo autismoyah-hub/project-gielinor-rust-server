@@ -1,0 +1,25 @@
+{
+  "implementation_id": "OR-MIG-0063",
+  "tested_sha": "143dab04f28c3daed844da0af33d6af5edcd962d",
+  "client_sha256": "b877fed6986b26f49143e89eac094f644c68e3cd322a3667ae135bf1e9df999f",
+  "campaign_kind": "historical",
+  "status": "BLOCKED",
+  "finding": "PG-INFRA-009",
+  "wire_tick": 244,
+  "actual_component": "270:15",
+  "actual_count": 1,
+  "requested_custom_count": 10,
+  "saved_products": 1,
+  "saved_fine_xp_award": 2500,
+  "scope": "Focused controlled retest still BLOCKED: separate native pointer press/release frames and a genuinely visible custom amount prompt162:43were observed before typing10. Actual transport nevertheless submits270:15/count1before intended Make10; one selected Sapphire/2500fineXP is saved. The intended product UI then closes and cannot be resolved. Thus missing prompt/pointer-frame timing alone does not explain PG-INFRA-009; server again matches the actual frame, no server defect established.",
+  "correction_needed": "Investigate native keyboard/event routing while custom amount input is active, including underlying SkillMulti numeric hotkeys and observer versus ordinary client input loop. Preserve original core behavior and all emitted packets; do not force local quantities or suppress frames. Preserve passing X3subchecks and continue unrelated exact-SHA verification.",
+  "evidence_sha256": {
+    "produce/client.log": "4779df9195524f06361b2d37d868677bd47580baf02aa6ff4bb9f64428d23910",
+    "produce/manifest.json": "2e2107c1b5467fed827101dfdca9f4d025afea121e51c8575d94d234f659964a",
+    "produce/after.json": "352b9fb9670bb255d2b04dd38ffc1e17ec69de3a94009e2b1669d979d32ca2fa",
+    "resources.json": "8533e0af4c16b0b4ead8f3e8f875ad90b8658eaa588f76af41a58947de39edbd"
+  },
+  "prompt_component": "162:43",
+  "prompt_observed": "Enter amount (1 - 23):",
+  "separate_pointer_frames": true
+}

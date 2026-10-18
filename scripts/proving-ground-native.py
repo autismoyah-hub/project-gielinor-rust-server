@@ -80,6 +80,8 @@ def prepare():
         assert digest(source)==digest(target)
     if PIN=='pg-observer':
         build=json.loads((ROOT/'docs/openrune/verification/independent/client-observer-build/build.json').read_text(encoding='utf-8'));assert build['status']=='PASS'
+        assert build['observer_sources']['pg_observer.rs']==digest(ROOT/'verification/native-observer/pg_observer.rs'),'Current scenario controller has not built successfully; preserve existing frozen runs and defer new preparation'
+        assert build['observation_manifest_sha256']==digest(ROOT/'docs/openrune/verification/independent/client-observer-build/source-manifest.json'),'Current observation overlay has not built successfully; do not substitute an older driver'
         pin=ROOT/'work/independent-native-observer/target/debug/examples';expected=build['binaries']['pg_observer.exe'];assert digest(pin/'pg_observer.exe')==expected
         manifest={'origin':'independently rebuilt pinned native client with observation-only overlay','build_evidence':'docs/openrune/verification/independent/client-observer-build/build.json','files':{DRIVER:expected}}
         origin=pin/'pg_observer.exe'
@@ -135,6 +137,8 @@ def seed():
             mapping={0:1755,1:1755,27:995}
             for index,item in enumerate([1623,1621,1619,1617,1631,6571,19496,*range(3345,3362,2)]):mapping[4+index]=item
             mapping.update({20:1623,21:1623,22:1623,23:3345,24:3345,25:3345})
+            if SCENARIO in ['production-gem-batch','production-shell-batch','production-gem-x','production-gem-x-focus','production-gem-interrupt','production-shell-interrupt','production-gem-crash']:
+                mapping={0:1755,1:1755,27:995,**{slot:(1623 if SCENARIO.startswith('production-gem') else 3345) for slot in range(4,27)}}
             items=[(slot,mapping.get(slot,1931),1000 if slot==27 else 1) for slot in range(28)]
         elif FEATURE=='OR-MIG-0062':
             items=[(slot,1785 if slot in [0,1] else 1775 if 4<=slot<=26 else 995 if slot==27 else 1931,1000 if slot==27 else 1) for slot in range(28)]
@@ -188,7 +192,7 @@ def snapshot():
     db.close();return state
 def phase(mode):
     guard();name='produce' if mode=='assemble' else 'relogin'
-    fault=SCENARIO in ['chem-crash','gem-crash','glass-crash'] and mode=='assemble'
+    fault=SCENARIO in ['chem-crash','gem-crash','glass-crash','production-gem-crash'] and mode=='assemble'
     dest=OUT/name;dest.mkdir(parents=True,exist_ok=False)
     shutil.copyfile(Path(__file__),dest/'launcher.txt')
     before=snapshot();save(dest/'before.json',before)
@@ -220,7 +224,7 @@ def phase(mode):
             assert address,'Exact-SHA server startup failed: '+(dest/'server.err').read_text(encoding='utf-8')[-2000:]
             print('LISTENING',address,flush=True)
             args=[str(RES/DRIVER),str(RES/'cache/js5'),address,'integration239',str(RES/'password'),str(RES/'keys/client.key'),mode]
-            if SCENARIO in ['chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','food-observer','prayer','gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells']:args[-1]=(SCENARIO if SCENARIO in ['chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','prayer','gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells'] else 'food') if mode=='assemble' else 'verify'
+            if SCENARIO in ['chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','food-observer','prayer','gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells','production-gem-batch','production-shell-batch','production-gem-x','production-gem-x-focus','production-gem-interrupt','production-shell-interrupt','production-gem-crash']:args[-1]=(SCENARIO if SCENARIO in ['chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','prayer','gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells','production-gem-batch','production-shell-batch','production-gem-x','production-gem-x-focus','production-gem-interrupt','production-shell-interrupt','production-gem-crash'] else 'food') if mode=='assemble' else 'verify'
             if SCENARIO=='food':
                 if mode=='assemble':args[-1]=str(dest/'native-events.jsonl')
                 else:args=[str(client_binary),str(RES/'cache/js5'),str(RES/'keys/client.key'),address,'integration239',str(RES/'password'),str(WORK/'relogin-private.capture')]
@@ -236,6 +240,7 @@ def phase(mode):
                                 assert server.poll() is None,'Owned server ended before requested fault injection'
                                 server.kill();server.wait();manifest['intentional_crash_injected']=True
                                 manifest['fault_scope']=('Terminate only this freshly launched owned server after an unsaved native glass All result with captured work remaining; no normal logout/save requested' if SCENARIO=='glass-crash' else 'Terminate only this freshly launched owned server after one unsaved native selected gem result; no normal logout/save requested' if SCENARIO=='gem-crash' else 'Terminate only this freshly launched owned server after native All result with ingredients remaining; no normal logout/save requested')
+                                if SCENARIO=='production-gem-crash':manifest['fault_scope']='Terminate only this freshly launched owned server during an unsaved native OR63All gem batch with captured raw items remaining; no normal logout/save requested'
                                 save(dest/'manifest.json',manifest)
                             time.sleep(.02)
                         rc=client.wait(timeout=1)
@@ -271,7 +276,7 @@ def phase(mode):
     elif manifest['status']=='PASS' and (not manifest['save_acknowledgement'] or not manifest['graceful_shutdown'] or manifest['server_exit']!=0 or manifest['forced_shutdown']):manifest.update(status='BLOCKED',reason='Client finished but durable save or graceful shutdown evidence missing')
     save(dest/'manifest.json',manifest);print('NATIVE_RESULT',json.dumps(manifest),flush=True)
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('action',choices=['prepare','build','seed','produce','relogin']);p.add_argument('--feature',choices=['combat','chemistry','chemistry-worn','chemistry-last','chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','food','food-observer','prayer','gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells'],default='combat');p.add_argument('--integration-sha');p.add_argument('--run-id');a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('action',choices=['prepare','build','seed','produce','relogin']);p.add_argument('--feature',choices=['combat','chemistry','chemistry-worn','chemistry-last','chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','food','food-observer','prayer','gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells','production-gem-batch','production-shell-batch','production-gem-x','production-gem-x-focus','production-gem-interrupt','production-shell-interrupt','production-gem-crash'],default='combat');p.add_argument('--integration-sha');p.add_argument('--run-id');a=p.parse_args()
     SCENARIO=a.feature
     policy=ROOT/'docs/openrune/verification/USER_DEFERRALS.json'
     if policy.exists():
@@ -285,15 +290,15 @@ if __name__=='__main__':
         CHECKOUT=ROOT.parent/'agent7-targets'/SHA;WORK=ROOT/'work/native-food';OUT=ROOT/'docs/openrune/verification/independent/deep-food'
     if a.feature=='prayer':
         SHA='f6b0f6ad54fe7813bb6607827eeb8da0e60137fa';FEATURE='OR-MIG-0051';CHECKOUT=ROOT.parent/'agent7-targets'/SHA
-    if a.feature in ['gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells']:
+    if a.feature in ['gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells','production-gem-batch','production-shell-batch','production-gem-x','production-gem-x-focus','production-gem-interrupt','production-shell-interrupt','production-gem-crash']:
         SHA='5743cbe1c7499e2a7476c721d25dcba194666042';FEATURE='OR-MIG-0056';CHECKOUT=ROOT.parent/'agent7-targets'/SHA
     if a.feature=='shells':
         SHA='4c6b73cfcd3b35ce52aa79efd9d2a99464939445';FEATURE='OR-MIG-0057';CHECKOUT=ROOT.parent/'agent7-targets'/SHA
-    if a.feature in ['glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells']:
+    if a.feature in ['glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells','production-gem-batch','production-shell-batch','production-gem-x','production-gem-x-focus','production-gem-interrupt','production-shell-interrupt','production-gem-crash']:
         SHA='5ce50aede9164cdee8e4008257d0298ea77289e7';FEATURE='OR-MIG-0062';CHECKOUT=ROOT.parent/'agent7-targets'/SHA
     if a.feature=='pouch':
         SHA='7fc1306bb5c01540038ce5ff175b577294ade432';FEATURE='OR-MIG-0054';CHECKOUT=ROOT.parent/'agent7-targets'/SHA
-    if a.feature in ['production-gems','production-shells']:
+    if a.feature in ['production-gems','production-shells','production-gem-batch','production-shell-batch','production-gem-x','production-gem-x-focus','production-gem-interrupt','production-shell-interrupt','production-gem-crash']:
         SHA='143dab04f28c3daed844da0af33d6af5edcd962d';FEATURE='OR-MIG-0063';CHECKOUT=ROOT.parent/'agent7-targets'/SHA
     CONTRACT_SHA=SHA
     if a.feature=='chemistry-worn':
@@ -302,7 +307,7 @@ if __name__=='__main__':
     if a.feature=='chemistry-last':
         STATE='pg-chemistry-last-native-001';DRIVER='server_chemistry.exe';PIN='chemistry-001'
         WORK=ROOT/'work/native-chemistry-last';OUT=ROOT/'docs/openrune/verification/independent/deep-chemistry-last'
-    if a.feature in ['chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','food-observer','prayer','gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells']:
+    if a.feature in ['chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','food-observer','prayer','gems','gem-effects','gem-crash','shells','glass','glass-quantities','glass-remaining','glass-interrupt','glass-crash','glass-all','pouch','production-gems','production-shells','production-gem-batch','production-shell-batch','production-gem-x','production-gem-x-focus','production-gem-interrupt','production-shell-interrupt','production-gem-crash']:
         observer_build=json.loads((ROOT/'docs/openrune/verification/independent/client-observer-build/build.json').read_text(encoding='utf-8'));assert observer_build['status']=='PASS'
         STATE='pg-'+a.feature+'-001';DRIVER='pg_observer-'+observer_build['binaries']['pg_observer.exe'][:12]+'.exe';PIN='pg-observer'
         WORK=ROOT/'work'/('native-'+a.feature);OUT=ROOT/'docs/openrune/verification/independent'/('deep-'+a.feature)

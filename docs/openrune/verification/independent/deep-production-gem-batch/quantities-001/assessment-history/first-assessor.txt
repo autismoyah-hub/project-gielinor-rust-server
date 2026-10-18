@@ -1,0 +1,62 @@
+"""Assess native1/5/10/X3/All quantities, captured order/cadence and real recovery."""
+import argparse,json,re
+from pathlib import Path
+p=argparse.ArgumentParser();p.add_argument('kind',choices=['gem','shell']);a=p.parse_args();ROOT=Path(__file__).resolve().parents[1];SHA='143dab04f28c3daed844da0af33d6af5edcd962d';OUT=ROOT/'docs/openrune/verification/independent'/('deep-production-'+a.kind+'-batch')/'quantities-001';load=lambda s:json.loads((OUT/s).read_text(encoding='utf-8'))
+output=1607 if a.kind=='gem' else 3327;unit=2500 if a.kind=='gem' else 1625;sequence=8833 if a.kind=='gem' else 1280;first=1 if a.kind=='gem' else 2;repeat=2 if a.kind=='gem' else 3
+initial=load('initial-state.json');after=load('produce/after.json');post=load('relogin/after.json');expected=[r.copy() for r in initial['inventory']]
+for r in expected:
+    if r[0]==93 and 4<=r[1]<=26:r[2]=output
+assert after['inventory']==post['inventory']==expected and load('relogin/before.json')==after
+for x,y,z in zip(initial['stats'],after['stats'],post['stats']):assert x[:3]==y[:3] and y==z and y[3]-x[3]==(23*unit if x[0]==12 else 0)
+for phase in ['produce','relogin']:
+    m=load(phase+'/manifest.json');assert m['tested_sha']==m['implementation_sha']==SHA and m['status']=='PASS' and m['client_exit']==m['server_exit']==0 and m['save_acknowledgement'] and m['graceful_shutdown'] and m['resource_hashes_unchanged'] and not m['forced_shutdown'];assert load(phase+'/after.json')['integrity_check']=='ok'
+log=(OUT/'produce/client.log').read_text(encoding='utf-8');assert 'PG_CASE_PASS native production quantities1/5/10/X3/All4' in log and 'PG_GLASS_TYPED_X count=3' in log
+wire=re.findall(r'PG_WIRE_TX tick=(\d+) opcode=115 payload=\[(.*?)\]',log);assert len(wire)==5
+counts=[]
+for _,hexes in wire:
+    b=bytes.fromhex(hexes.replace(',',''));assert b[:4]==bytes.fromhex('0e010f00') and len(b)==6;counts.append(int.from_bytes(b[4:],'big'))
+assert counts==[1,5,10,3,4]
+rows=re.findall(r'PG_PRODUCTION_BATCH_COMMITTED label=(\w+) count=(\d+) selected_slot=(\d+) output=(\d+) total_made=(\d+) fine_award=(\d+) display_xp=(\d+)',log);assert len(rows)==5
+remaining=list(range(4,27));order=[];boundaries=[];total=0
+for (label,n,slot,out,made,award,xp),(wanted,count) in zip(rows,[('1',1),('5',5),('10',10),('X',3),('All',4)]):
+    n,slot,out,made,award,xp=map(int,[n,slot,out,made,award,xp]);assert (label,n,out)==(wanted,count,output) and slot in remaining
+    captured=[slot,*[s for s in remaining if s!=slot]][:n];boundaries.append((len(order),n));order.extend(captured);remaining=[s for s in remaining if s not in captured];total+=n
+    assert made==total and award==n*unit and xp==(130344311+total*unit)//10
+assert not remaining and len(order)==23 and log.count('stale completed native production quantity response')==5
+seen=set();credits=[];sequences=[]
+for line in log.splitlines():
+    seq=re.fullmatch(r'PG_SEQUENCE tick=(\d+) sequence='+str(sequence)+r' delay=(\d+)',line)
+    if seq:sequences.append((int(seq[1]),int(seq[2])))
+    rx=re.fullmatch(r'PG_RX tick=(\d+) opcode=18 payload=\[(.*)\]',line)
+    if not rx:continue
+    b=bytes.fromhex(rx[2].replace(',',''));inv=int.from_bytes(b[4:6],'big');pos=6
+    while pos<len(b):
+        slot=b[pos];pos+=1
+        if slot>=128:slot=((slot<<8)|b[pos])-32768;pos+=1
+        item=int.from_bytes(b[pos:pos+2],'big')-1;pos+=2;count=0
+        if item>=0:
+            count=b[pos];pos+=1
+            if count==255:count=int.from_bytes(b[pos:pos+4],'big');pos+=4
+        if inv==93 and item==output and slot not in seen:
+            assert count==1 and sequences;credits.append({'slot':slot,'tick':int(rx[1]),'sequence_tick':sequences[-1][0],'sequence_delay':sequences[-1][1]});seen.add(slot)
+    assert pos==len(b)
+assert [r['slot'] for r in credits]==order
+for start,n in boundaries:
+    assert credits[start]['sequence_delay']==0 and credits[start]['tick']-credits[start]['sequence_tick']==first
+    assert all(credits[i]['tick']-credits[i-1]['tick']==repeat for i in range(start+1,start+n))
+invs={};stats={}
+for _,op,hexes in re.findall(r'PG_RX tick=(\d+) opcode=(\d+) payload=\[(.*?)\]',(OUT/'relogin/client.log').read_text(encoding='utf-8')):
+    b=bytes.fromhex(hexes.replace(',',''));op=int(op)
+    if op==46:stats[(b[2]-128)&255]=(b[1],int.from_bytes(b[5:7]+b[3:5],'big'))
+    if op!=22:continue
+    inv=int.from_bytes(b[4:6],'big');size=int.from_bytes(b[6:8],'big');pos=8;items=[]
+    for slot in range(size):
+        count=(128-b[pos])&255;pos+=1
+        if count==255:c=b[pos:pos+4];count=int.from_bytes(bytes([c[1],c[0],c[3],c[2]]),'big');pos+=4
+        item=int.from_bytes(b[pos:pos+2],'little')-1;pos+=2
+        if item>=0:items.append([inv,slot,item,count,0])
+    assert pos==len(b);invs[inv]=items
+assert invs[93]==expected
+for skill,current,base,fine in post['stats']:assert stats[skill]==(current,fine//10)
+report={'implementation_id':'OR-MIG-0063','tested_sha':SHA,'campaign_kind':'historical','status':'PASS','kind':a.kind,'native_quantities':counts,'fine_xp_award':23*unit,'captured_credit_order':order,'first_received_clocks':first,'repeat_received_clocks':repeat,'scope':'Genuine native1/5/10/X3/All4 controls submit exactly five intended Resume115/count frames and produce23exact selected '+a.kind+' outputs, retaining both chisels/full bag/coins. Raw inventory credits independently match captured selected-first order and first/repeat clocks. Specific X3works without unintended extra continuation in this single-option dialog. Actual acknowledged save/process restart/native inventory and Stats retain all23products and fineXP without stale replay.','limitations':['Multi-digit/custom-X boundary and in-flight batch logout/interruption remain independent obligations.','This does not resolve the separate historical eight-choice glass X3blocker or chemistry-specific Close retests.','No rendered/audio or original executable acceptance inferred.']}
+(OUT/'independent-assessment.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n');print(json.dumps(report))

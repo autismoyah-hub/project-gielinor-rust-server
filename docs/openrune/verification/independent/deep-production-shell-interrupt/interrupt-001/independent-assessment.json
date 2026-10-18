@@ -1,0 +1,14 @@
+{
+  "implementation_id": "OR-MIG-0063",
+  "tested_sha": "143dab04f28c3daed844da0af33d6af5edcd962d",
+  "campaign_kind": "historical",
+  "status": "PASS",
+  "native_observed_products": 1,
+  "durably_saved_products": 1,
+  "fine_xp_award": 1625,
+  "scope": "Actual native All23 shell production disconnected with captured work remaining; exact committed selected prefix and1625fineXP per product saved. Real server restart and independently decoded native inventory/Stats retain remaining raws and cancel the queue without replay.",
+  "limitations": [
+    "Native quantity controls/reference acceptance remain separate.",
+    "No original executable, rendered or audio comparison inferred."
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "implementation_id": "OR-MIG-0063",
+  "tested_sha": "143dab04f28c3daed844da0af33d6af5edcd962d",
+  "campaign_kind": "historical",
+  "status": "PASS",
+  "profiles": 9,
+  "fine_xp_award": 14625,
+  "effects": [
+    {
+      "index": 7,
+      "slot": 11,
+      "sequence": 1280,
+      "sequence_tick": 210,
+      "credit_tick": 212,
+      "received_clocks": 2
+    },
+    {
+      "index": 8,
+      "slot": 12,
+      "sequence": 1280,
+      "sequence_tick": 229,
+      "credit_tick": 231,
+      "received_clocks": 2
+    },
+    {
+      "index": 9,
+      "slot": 13,
+      "sequence": 1280,
+      "sequence_tick": 245,
+      "credit_tick": 247,
+      "received_clocks": 2
+    },
+    {
+      "index": 10,
+      "slot": 14,
+      "sequence": 1280,
+      "sequence_tick": 263,
+      "credit_tick": 265,
+      "received_clocks": 2
+    },
+    {
+      "index": 11,
+      "slot": 15,
+      "sequence": 1280,
+      "sequence_tick": 281,
+      "credit_tick": 283,
+      "received_clocks": 2
+    },
+    {
+      "index": 12,
+      "slot": 16,
+      "sequence": 1280,
+      "sequence_tick": 299,
+      "credit_tick": 301,
+      "received_clocks": 2
+    },
+    {
+      "index": 13,
+      "slot": 17,
+      "sequence": 1280,
+      "sequence_tick": 318,
+      "credit_tick": 320,
+      "received_clocks": 2
+    },
+    {
+      "index": 14,
+      "slot": 18,
+      "sequence": 1280,
+      "sequence_tick": 350,
+      "credit_tick": 352,
+      "received_clocks": 2
+    },
+    {
+      "index": 15,
+      "slot": 19,
+      "sequence": 1280,
+      "sequence_tick": 391,
+      "credit_tick": 393,
+      "received_clocks": 2
+    }
+  ],
+  "scope": "Actual startup-registered shells single-choice quantity UI: exact cache-name/level labels, native Use both directions across profiles, one-use Make115/count1, full-bag selected credits and fineXP. Genuine Make/Close95before award and stale response refuse; completed responses do not repeat. Real acknowledged save/restart plus independently decoded native full inventory/Stats preserve all outputs/XP.",
+  "limitations": [
+    "This fresh scope does not inherit manual56/57acceptance.",
+    "Native built-in batch quantities/repeated cadence/custom X, interrupted batch persistence and reference aggregation remain separate.",
+    "No rendered/audio or original executable comparison inferred."
+  ]
+}

@@ -42,7 +42,7 @@
     "chem-crash",
     "food-negative"
   ],
-  "next_eligible_contract": "OR-MIG-0063",
-  "next_action": "Preserve accepted manual OR56/57 and all immutable states. Glass OR62 V1/V3 completed; offered native X blocked by PG-INFRA-009. Pouch OR54 native opening/restart subchecks passed; bank positive control blocked by PG-INFRA-010. Amethyst OR71 counted-credit matrix and pinned references passed within scope. Continue shared gem/shell production OR63 at143dab04f28c3daed844da0af33d6af5edcd962d, then other eligible shared-engine/runtime/native obligations. Chemistry and chemistry-specific Close correction retests remain deferred.",
+  "next_eligible_contract": "OR-MIG-0065",
+  "next_action": "Preserve accepted manual OR56/57 and every immutable campaign. OR62V1/V3and OR63V0/V1/V3completed at their exact SHAs; required native Xremains blocked by PG-INFRA-009, including the real-prompt focused X10retest. Pouch bank positive control remains PG-INFRA-010blocked. Continue OR65at4f4aacb2929e8ad775d091527e2d80070100ee69:207656resolver/60refusal/48immediate World cases and12pinned references already passed within scope, so execute remaining World admission/configuration, actual-cache startup, fresh native immediate actions and persistence; do not repeat successful matrices. Chemistry and chemistry-specific Close correction retests remain deferred.",
   "deferred_execution": "Chemistry interrupt-002 had already ended with a raw observer assertion failure when deferral arrived; owned graceful stop path recorded, no live chemistry run retained. Crash scenario build was resource-deferred and never executed. Do not launch new chemistry tests or silently classify unresolved assertions as implementation failures."
 }

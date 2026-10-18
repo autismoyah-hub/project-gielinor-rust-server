@@ -1,0 +1,21 @@
+"""Record the exact single-option native X10 callback/transport counterexample."""
+import argparse,hashlib,json,re
+from pathlib import Path
+p=argparse.ArgumentParser();p.add_argument('--focused',action='store_true');a=p.parse_args()
+ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'docs/openrune/verification/independent'/('deep-production-gem-x-focus/x10-focus-001' if a.focused else 'deep-production-gem-x/x10-001');load=lambda p:json.loads((OUT/p).read_text(encoding='utf-8'))
+m=load('produce/manifest.json');assert m['tested_sha']==m['implementation_sha']=='143dab04f28c3daed844da0af33d6af5edcd962d' and m['status']=='FAIL' and m['client_exit']==(1 if a.focused else 101) and m['server_exit']==0 and m['save_acknowledgement'] and m['graceful_shutdown'] and m['resource_hashes_unchanged']
+log=(OUT/'produce/client.log').read_text(encoding='utf-8')
+typed='PG_X_FOCUSED_TYPED count=10' if a.focused else 'PG_GLASS_TYPED_X count=10'
+assert typed in log and ('native glass choice0 unavailable' if a.focused else 'assertion `left == right` failed') in log
+assert ('PG_TX label="native focused custom quantity Make"' if a.focused else 'PG_TX label="native glass quantityX Make"') not in log
+if a.focused:assert 'PG_X_INPUT_PROMPT widget=10616875 text="Enter amount (1 - 23):"' in log and 'PG_X_FOCUS_BEGIN' in log
+wire=re.findall(r'PG_WIRE_TX tick=(\d+) opcode=115 payload=\[(.*?)\]',log);assert len(wire)==1
+assert bytes.fromhex(wire[0][1].replace(',',''))==bytes.fromhex('0e010f000001')
+assert log.index('PG_WIRE_TX tick='+wire[0][0]+' opcode=115')<log.index(typed)
+before=load('initial-state.json');after=load('produce/after.json');expected=[r.copy() for r in before['inventory']];next(r for r in expected if r[:2]==[93,26])[2]=1607;assert after['inventory']==expected
+for x,y in zip(before['stats'],after['stats']):assert x[:3]==y[:3] and y[3]-x[3]==(2500 if x[0]==12 else 0)
+assert after['integrity_check']=='ok'
+report={'implementation_id':'OR-MIG-0063','tested_sha':m['tested_sha'],'client_sha256':m['client_sha256'],'campaign_kind':'historical','status':'BLOCKED','finding':'PG-INFRA-009','wire_tick':int(wire[0][0]),'actual_component':'270:15','actual_count':1,'requested_custom_count':10,'saved_products':1,'saved_fine_xp_award':2500,'scope':'Single-option multi-digit native X10 is blocked: while typing10, actual post-send trace submits valid first option270:15/count1before intended Make10. Intended manual Make emits no packet and trips the observer immediate-packet assertion. Server durably saves exactly one selected Sapphire/2500fineXP, matching the actual earlier frame; no server defect established. Passing X3and1/5/10/All4 native built-in cases remain separate evidence, not whole-X acceptance.','correction_needed':'Diagnose actual custom-input popup/focus and full native pointer press/release frame sequence. Preserve original native client functionality and all emitted packets; never suppress the early frame or overwrite quantity variables to force PASS. A fresh exact-SHA fixture is required for retest.','evidence_sha256':{p:hashlib.sha256((OUT/p).read_bytes()).hexdigest() for p in ['produce/client.log','produce/manifest.json','produce/after.json','resources.json']}}
+if a.focused:
+    report.update(prompt_component='162:43',prompt_observed='Enter amount (1 - 23):',separate_pointer_frames=True,scope='Focused controlled retest still BLOCKED: separate native pointer press/release frames and a genuinely visible custom amount prompt162:43were observed before typing10. Actual transport nevertheless submits270:15/count1before intended Make10; one selected Sapphire/2500fineXP is saved. The intended product UI then closes and cannot be resolved. Thus missing prompt/pointer-frame timing alone does not explain PG-INFRA-009; server again matches the actual frame, no server defect established.',correction_needed='Investigate native keyboard/event routing while custom amount input is active, including underlying SkillMulti numeric hotkeys and observer versus ordinary client input loop. Preserve original core behavior and all emitted packets; do not force local quantities or suppress frames. Preserve passing X3subchecks and continue unrelated exact-SHA verification.')
+(OUT/'independent-blocker.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n');print(json.dumps(report))

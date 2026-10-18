@@ -1,0 +1,116 @@
+{
+  "implementation_id": "OR-MIG-0065",
+  "tested_sha": "4f4aacb2929e8ad775d091527e2d80070100ee69",
+  "campaign_kind": "historical",
+  "status": "IN_PROGRESS",
+  "source_documentation_subcheck": "PASS",
+  "sources": [
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/scripts/HeldCraftingScript.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "c39f8b323e8fa79f933224b9ca0c8cf07a5df005628906e79645e3e6a5399318"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingSection.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "26e5be7a84fbe82f5c4897d29cb3261c63cd475111f17df517e2e0ac5e0d8afb"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingWorker.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "5790b247e5441b54e05c0ca7b4b5a9dff5c7aa61181ebccb36d0d8057db56e53"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/util/CraftingConstants.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "393d05fa5a5645b2dd712fcfb8f8814845376846a7594dafe16909422fe2008f"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/pack/src/main/kotlin/org/rsmod/content/skills/crafting/pack/Crafting.kt",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "sha256": "5b3d4124ce83b2c6e93590b2d833e7dc0a37ce87e3a7dc2f327241ab165ef3e0"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingProduct.kt",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "sha256": "e0ee16a23f6fa20bf82ebae4103213c1a13337c596b2d2f7b7715edbe3073576"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/utils/src/main/kotlin/org/rsmod/content/skills/MathSkillUtiils.kt",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "sha256": "874ef859e35b30891ce90d077262e1637e9115e5c285ffb790970f899f32770b"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Dramen branch",
+      "revision": "15184262",
+      "sha256": "22cfd0a235fb24e97ac1c22c5a3ae8ec116e3694ce6ffcdec17cf7cda7a1bcc2"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Dramen staff",
+      "revision": "15182983",
+      "sha256": "cb7739bcabd4f6f52870fb1783b2550365ecb740293da56894957467b797074c"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Limestone",
+      "revision": "15271628",
+      "sha256": "c14554e4156c40a2fde2227c7ed1900906801c874f32927c180f8922075330bd"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Limestone brick",
+      "revision": "15184253",
+      "sha256": "bb9ed2248a587fdd553a6ffa9633d9a388395a238c3cb77602858695f567884d"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Rock (limestone)",
+      "revision": "15238459",
+      "sha256": "6744dc110bb814f7be76efdb064eda632888fe615d5d400e1ac17d1010ea3910"
+    }
+  ],
+  "profiles": [
+    {
+      "name": "Dramen staff",
+      "output": 772,
+      "level": 31,
+      "base_xp": 0,
+      "fine_xp_at_125": 0,
+      "wiki_ticks": 0,
+      "members": true
+    },
+    {
+      "name": "Limestone brick",
+      "output": 3420,
+      "level": 12,
+      "base_xp": 6,
+      "fine_xp_at_125": 75,
+      "wiki_ticks": 0,
+      "members": true
+    },
+    {
+      "name": "Rock (limestone)",
+      "output": 968,
+      "level": 12,
+      "base_xp": 1.5,
+      "fine_xp_at_125": 18,
+      "wiki_ticks": 0,
+      "members": true
+    }
+  ],
+  "scope": "All12pinned source/Wiki hashes verified. Dramen31/zeroXP/zero-cycle and limestone12/6successXP/1.5failureXP/zero-cycle facts match exact recipe variants. Donor endpoints137/434independently yield171of256at12and certainty40with the declared rounded byte rule; Wiki independently supports certainty40, not the whole lower-level curve. Donor limestone failure XP is omitted/default zero; Wiki1.5override is explicit.",
+  "limitations": [
+    "Partial Lost City on the Wiki is distinguished from acquiring an already-owned branch; no quest engine or missing source row gate inferred.",
+    "Actual immediate dispatch, optional advancement/RNG consumption/native messages/effects and durability still require exact-SHA execution.",
+    "Original compiled Kotlin executable unavailable; no original random stream, rendering/audio or complete low-level probability parity claimed."
+  ]
+}

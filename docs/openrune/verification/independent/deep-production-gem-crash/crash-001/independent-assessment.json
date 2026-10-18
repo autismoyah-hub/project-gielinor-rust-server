@@ -1,0 +1,14 @@
+{
+  "implementation_id": "OR-MIG-0063",
+  "tested_sha": "143dab04f28c3daed844da0af33d6af5edcd962d",
+  "campaign_kind": "historical",
+  "status": "PASS",
+  "native_observed_products": 2,
+  "durably_saved_products": 0,
+  "fine_xp_award": 0,
+  "scope": "Owned exact-SHA server abruptly terminated during actual native All23 gem production before save acknowledgement. Prior whole inventory/Stats restored; actual restart and native packets prove no partial debit, credit or queued replay. No mid-SQL-commit injection claimed.",
+  "limitations": [
+    "Native quantity controls/reference acceptance remain separate.",
+    "No original executable, rendered or audio comparison inferred."
+  ]
+}

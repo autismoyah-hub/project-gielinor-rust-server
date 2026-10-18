@@ -1,0 +1,11 @@
+   Compiling gielinor-world v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\4f4aacb2929e8ad775d091527e2d80070100ee69\crates\world)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\4f4aacb2929e8ad775d091527e2d80070100ee69\external-harness-1354963300)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 23.31s
+     Running tests\atomic.rs (C:\Projects\OSRSRSPS\agent7-verification\work\4f4aacb2929e8ad775d091527e2d80070100ee69\target\debug\deps\atomic-80f2c149459d35b9.exe)
+
+running 3 tests
+test every_invalid_possible_credit_input_tool_and_policy_refuses_before_rng ... ok
+test actual_held_immediate_routes_commit_before_tick_with_no_menu_or_delayed_replay ... ok
+test all_byte_rolls_levels_membership_rates_match_integer_oracle_and_optional_advancement ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 7.78s

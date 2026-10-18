@@ -1,0 +1,294 @@
+{
+  "implementation_id": "OR-MIG-0063",
+  "tested_sha": "143dab04f28c3daed844da0af33d6af5edcd962d",
+  "campaign_kind": "historical",
+  "status": "IN_PROGRESS",
+  "source_documentation_subcheck": "PASS",
+  "sources": [
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/scripts/HeldCraftingScript.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "c39f8b323e8fa79f933224b9ca0c8cf07a5df005628906e79645e3e6a5399318"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingSection.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "26e5be7a84fbe82f5c4897d29cb3261c63cd475111f17df517e2e0ac5e0d8afb"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingWorker.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "5790b247e5441b54e05c0ca7b4b5a9dff5c7aa61181ebccb36d0d8057db56e53"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/util/CraftingConstants.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "393d05fa5a5645b2dd712fcfb8f8814845376846a7594dafe16909422fe2008f"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Crafting",
+      "revision": "15343460",
+      "sha256": "bcbfa8f775e6323cced8080fdc41c6888ff3552c15af74c5083d1a77b1bf0fa0"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Sapphire",
+      "revision": "15318123",
+      "sha256": "80f9bb7dc7ef06c13cf03a2396c0a42cf0cfe8ad3eb8abcfebfbd89ab4a4114a"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Emerald",
+      "revision": "15315112",
+      "sha256": "ab6a7e4ba9a0f83dcebe97d018b487b828b72b8f0f6341c1ad40ca2aeb8cbc0e"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Ruby",
+      "revision": "15315114",
+      "sha256": "4b79d537bb5d90e2037a6a2986eb5652e53bd031223adba31cc8b9e4797d9a30"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Diamond",
+      "revision": "15315113",
+      "sha256": "7c14a108a3bd094c036c80bc6c913913a17edcba3c513dc08c9698b0b7cb7f1c"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Dragonstone",
+      "revision": "15350180",
+      "sha256": "cc5d7466dcc7fb1c65c1bb0bba4b2e7938ebf159ce72a9747b1bdc56ec0b0bb4"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Onyx",
+      "revision": "15316071",
+      "sha256": "750d4f65b2acc4f4dd160b4d6155d984d1567f5b85d707f6c8a7e473dbb0f5fb"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Zenyte",
+      "revision": "15218238",
+      "sha256": "a56b357b97bc8f94f980d3af91453a062ded5d49fbde40703535777a786d9be1"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Snelm",
+      "revision": "15293771",
+      "sha256": "5bdc8cc97a31153cfe260bed28f22a6577d9cbadcab66957a2da32621de07cd3"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Myre snelm",
+      "revision": "15188707",
+      "sha256": "128bf931ba6d0f70e95bbfc544ba4672b1084c62fae6ace11753c121e43564c5"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Blood'n'tar snelm",
+      "revision": "15188371",
+      "sha256": "dd10c498ba1122413bae1638bfdd84b6fce6f428c8418a5649ac2d42c9394239"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Ochre snelm",
+      "revision": "15188711",
+      "sha256": "5d723014d65255afce52b1535ecbe92b20671525da864b52595f072618ce07a4"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Bruise blue snelm",
+      "revision": "15188709",
+      "sha256": "240691238b57b5d4326eb58d5328177faffab87ad4ae0aa5fe8ea6807fd3c345"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Broken bark snelm",
+      "revision": "15182921",
+      "sha256": "6e2870c38c4b4c3c737bfc4f14a84826913904f4d00a17c8fe1e03a79db23cf0"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Pointed myre snelm",
+      "revision": "15188706",
+      "sha256": "aa9f88ff8644bfb55ca4f610ce645b1a1f32210ecb3cc1161833b56b958e5697"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Pointed blood'n'tar snelm",
+      "revision": "15188372",
+      "sha256": "1707e29ce2a390e874c0365505b1038f47dcf08e51e96fb1d434479421ab3b10"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Pointed ochre snelm",
+      "revision": "15188710",
+      "sha256": "2ae32d6e2b99addcffc073f0d995367baed4e6148b89313ed2fa4e2f8aae05d4"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Pointed bruise blue snelm",
+      "revision": "15237917",
+      "sha256": "70307e8e653654bc786bec9cf060b84ea374e966417f10360f2e8b265c5cd775"
+    }
+  ],
+  "profiles": [
+    {
+      "raw": 1623,
+      "output": 1607,
+      "level": 20,
+      "base_xp": 50,
+      "members": false,
+      "source_first": 1,
+      "source_repeat": 2
+    },
+    {
+      "raw": 1621,
+      "output": 1605,
+      "level": 27,
+      "base_xp": 67.5,
+      "members": false,
+      "source_first": 1,
+      "source_repeat": 2
+    },
+    {
+      "raw": 1619,
+      "output": 1603,
+      "level": 34,
+      "base_xp": 85,
+      "members": false,
+      "source_first": 1,
+      "source_repeat": 2
+    },
+    {
+      "raw": 1617,
+      "output": 1601,
+      "level": 43,
+      "base_xp": 107.5,
+      "members": false,
+      "source_first": 1,
+      "source_repeat": 2
+    },
+    {
+      "raw": 1631,
+      "output": 1615,
+      "level": 55,
+      "base_xp": 137.5,
+      "members": true,
+      "source_first": 1,
+      "source_repeat": 2
+    },
+    {
+      "raw": 6571,
+      "output": 6573,
+      "level": 67,
+      "base_xp": 167.5,
+      "members": true,
+      "source_first": 1,
+      "source_repeat": 2
+    },
+    {
+      "raw": 19496,
+      "output": 19493,
+      "level": 89,
+      "base_xp": 50,
+      "members": true,
+      "source_first": 1,
+      "source_repeat": 2
+    },
+    {
+      "raw": 3345,
+      "output": 3327,
+      "level": 15,
+      "base_xp": 32.5,
+      "members": true,
+      "source_first": 2,
+      "source_repeat": 3
+    },
+    {
+      "raw": 3347,
+      "output": 3329,
+      "level": 15,
+      "base_xp": 32.5,
+      "members": true,
+      "source_first": 2,
+      "source_repeat": 3
+    },
+    {
+      "raw": 3349,
+      "output": 3331,
+      "level": 15,
+      "base_xp": 32.5,
+      "members": true,
+      "source_first": 2,
+      "source_repeat": 3
+    },
+    {
+      "raw": 3351,
+      "output": 3333,
+      "level": 15,
+      "base_xp": 32.5,
+      "members": true,
+      "source_first": 2,
+      "source_repeat": 3
+    },
+    {
+      "raw": 3353,
+      "output": 3335,
+      "level": 15,
+      "base_xp": 32.5,
+      "members": true,
+      "source_first": 2,
+      "source_repeat": 3
+    },
+    {
+      "raw": 3355,
+      "output": 3337,
+      "level": 15,
+      "base_xp": 32.5,
+      "members": true,
+      "source_first": 2,
+      "source_repeat": 3
+    },
+    {
+      "raw": 3357,
+      "output": 3339,
+      "level": 15,
+      "base_xp": 32.5,
+      "members": true,
+      "source_first": 2,
+      "source_repeat": 3
+    },
+    {
+      "raw": 3359,
+      "output": 3341,
+      "level": 15,
+      "base_xp": 32.5,
+      "members": true,
+      "source_first": 2,
+      "source_repeat": 3
+    },
+    {
+      "raw": 3361,
+      "output": 3343,
+      "level": 15,
+      "base_xp": 32.5,
+      "members": true,
+      "source_first": 2,
+      "source_repeat": 3
+    }
+  ],
+  "startup_sha256": "b56a244af14bb8b9e4ae3871c04974c45efaa787f17ebf86d26f018459daea47",
+  "scope": "All22pinned source/Wiki hashes independently rechecked, matching previously independently audited immutable seven-gem/nine-shell recipe facts. Exact63startup now registers16single-choice captured-production handlers with gem2/shell3repeat metadata. Source shortened first gives1/2gems and2/3shells; member/F2P distinctions and Zenyte50/shell32.5XP remain exact.",
+  "limitations": [
+    "Reuse of immutable source facts is explicit; no manual56/57or moving-HEAD gameplay acceptance inherited.",
+    "New target native quantity/dialog/cadence and durable captured-batch acceptance remain separate.",
+    "Original compiled Kotlin executable unavailable; no rendered/audio or source-generated override execution inferred."
+  ]
+}
