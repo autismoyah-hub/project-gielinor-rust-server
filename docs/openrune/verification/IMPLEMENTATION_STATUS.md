@@ -3,9 +3,9 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0112 deposit-box selected/fixed item quantities and presets; source [a25ab35](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/a25ab350bce869d3e37b49e85ab3c2ccc4b2c162). Focused0012server6world493 and actual bins001 pass; independentV0–V4queued.
+OR-MIG-0113 deposit-box X settings/item continuation; source [a611b63](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/a611b63af3c4b5087bb6fe5ebb9286274f6317b5). Full shared001 and bins001 PASS494; independentV0–V4queued, late-wire identity ambiguity explicit.
 
-112units/122append-only records. Discovery3508={'not_yet_assessed': 2768, 'configuration': 660, 'framework_or_infrastructure': 18, 'eligible_gameplay_behavior': 62}, not completion percentages. X input/examine/settings/worn icon/item-on-box/other boxes remain separate; existing corrections preserved.
+113units/123append-only records. Discovery3508={'not_yet_assessed': 2767, 'configuration': 660, 'framework_or_infrastructure': 19, 'eligible_gameplay_behavior': 62}, not completion percentages. Worn icons/examine/settings/item-on-box/other boxes remain separate.
 <!-- forge-current:end -->
 
 
@@ -786,3 +786,14 @@ Expected clicked item is rechecked, then source top-to-bottom first matching id 
 Focused001 PASS2server/6world493 unchanged rg-visible hashes,1m22s compile/0.00s server/0.11s world; actual bins001 separately passes493. Vectors cover all selected/fixed mappings, accepted/refused presets, low-bit preservation, stale/restricted/invalid setting, duplicate ordering, actual World selected item and previous111 bulk. Developer working-tree evidence only. Guard j2 at6239MiB/56.9%commit/3.5%CPU/36361pages-in but0.3ms disk; no severe paging deferral or other-agent process change.
 
 Independent native/client menu/draw, same-save quantities/high-bit persistence, close/layout/reconnect, variable-item duplicate/partial-bank/reference acceptance remain queued. X prompt/examine/worn-icon/settings/item-on-box/other boxes/depth-drag remain separate. Queue122records112units; discovery3508={'not_yet_assessed': 2768, 'configuration': 660, 'framework_or_infrastructure': 18, 'eligible_gameplay_behavior': 62}, not completion percentages. Existing defects/evidence preserved.
+
+
+## FORGE OR-MIG-0113 — Deposit-box X continuations
+
+Source a611b63af3c4b5087bb6fe5ebb9286274f6317b5 extends111/112 actual Guild modal192 with X settings child37 op1 and grid23 itemop5. Uses existing script108 numeric input and protected one-use continuation, capturing current parent/interface/token/purpose. Settings1/5/10 select presets without remembered write; other positive input writes1794 then mode3. Item-X uses amount without preference changes. Inspected source countDialog applies wrapping absoluteValue: -5->5,MIN/zero rejected after consumption,MAX positive.
+
+Runtime ResumeCount validates current modal/token; direct close and replacement cancel only matching owned continuation. World reuses shared resume/cancel and112 expected-id/top-to-bottom/Main transaction, refuses logout/delay/stale. Positive consumed continuation acceptance is not proof of transfer. Late old packet after newer prompt still lacks demonstrated original wire-generation identity; independent native/lifecycle investigation remains required.
+
+Validation: Build CPU capacity: 14.2% sampled, ceiling70%.; Capacity: 5,266 MiB available, commit 63.7%, pages-in/s 0, disk 3.1 ms.; Cargo concurrency: -j 2;     Finished `test` profile [unoptimized + debuginfo] target(s) in 1m 26s; test result: ok. 181 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 66.15s; test result: ok. 503 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 28.90s; Build CPU capacity: 12.9% sampled, ceiling70%.; Capacity: 6,320 MiB available, commit 56.9%, pages-in/s 4, disk 0.1 ms.; Cargo concurrency: -j 2;     Finished `dev` profile [unoptimized + debuginfo] target(s) in 9.67s. Both preserve494 rg-visible hashes; working-tree developer evidence, unrelated changes preserved. Full shared protects generic bank/anvil/count/UI/dialog users and includes eight signed/preset/custom vectors plus actual item-X/duplicate/cancel/delay checks. Exact X cache and ProtectedAccess source hash pinned; no native/pristine/independent acceptance.
+
+Examine/worn icons/settings/hide toggle/looting bag/item-on-box/other boxes/depth-drag remain separate. Queue123records113units; discovery3508={'not_yet_assessed': 2767, 'configuration': 660, 'framework_or_infrastructure': 19, 'eligible_gameplay_behavior': 62}, not completion percentages. Prior failures and ordinary corrections preserved.
