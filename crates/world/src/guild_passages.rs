@@ -44,7 +44,7 @@ impl Gate {
         stats: &Stats,
         worn: &Inventory,
         items: &Catalog,
-        member: bool,
+        _member: bool,
     ) -> Result<Passage, Error> {
         if !matches!(door.shape, 0 | 9)
             || source.level() != door.coords.level()
@@ -69,7 +69,7 @@ impl Gate {
             }
             if !self.outfits.iter().any(|o| {
                 o.slot < 15
-                    && (!o.members || member)
+                    // Guild entry remains available on F2P for qualifying worn member items.
                     && items.ordinary_nonstackable(o.id)
                     && worn
                         .get(o.slot)

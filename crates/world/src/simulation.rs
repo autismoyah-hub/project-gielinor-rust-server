@@ -30,6 +30,7 @@ mod elemental_spell_actions;
 mod deposit_box_actions;
 mod bank_access_actions;
 mod worn_item_swap_actions;
+mod worn_stat_boost_actions;
 mod container_emptying_actions;
 mod item_pack_actions;
 mod milking_actions;
@@ -527,6 +528,7 @@ pub enum Action {
     DepositBoxItem { slot:usize,item:i32,operation:u8 },
     DepositBoxMode { mode:i32 },
     SwapWornItem { slot: usize, item: i32 },
+    BoostWornItem { slot: usize, item: i32 },
     ConvertHeldItem { slot: usize, item: i32 },
     EmptyContainer { slot: usize, item: i32 },
     OpenCoinPouch { slot: usize, item: i32, all: bool },
@@ -948,6 +950,7 @@ pub struct World {
     pub item_packs: BTreeMap<i32, crate::item_packs::Rule>,
     /// Legacy field name; this single registry also owns ordinary light extinguishing.
     pub worn_item_swaps: BTreeMap<i32,crate::worn_item_swap::Rule>,
+    pub worn_stat_boosts: BTreeMap<i32,crate::worn_stat_boost::Rule>,
     pub empty_containers: BTreeMap<i32,crate::container_emptying::Rule>,
     pub coin_pouches: BTreeMap<i32,crate::item_packs::PouchRule>,
     pub prayer: Option<crate::prayer::Config>,
@@ -1061,6 +1064,7 @@ impl Default for World {
             potions: BTreeMap::new(),
             item_packs: BTreeMap::new(),
             worn_item_swaps: BTreeMap::new(),
+            worn_stat_boosts: BTreeMap::new(),
             empty_containers: BTreeMap::new(),
             coin_pouches: BTreeMap::new(),
             milking: None,
@@ -1829,6 +1833,7 @@ impl World {
             } => {
                 return self.request_npc_spell(id, target, spell, control);
             }
+            Action::BoostWornItem {slot,item} => return self.boost_worn_item(id,slot,item),
             Action::ChemistryItem {slot,item,operation,worn} => return self.chemistry_item(id,slot,item,operation,worn),
             Action::ResumeChemistry {token,choice} => return self.resume_chemistry(id,token,choice),
             Action::DropSlot { slot } => return self.start_drop(id, slot),

@@ -772,11 +772,9 @@ mod tests {
                     "{id}/{}",
                     o.id
                 );
-                assert_eq!(
-                    g.prepare(door, source, &st, &worn, &Default::default(), false)
-                        .is_ok(),
-                    !o.members
-                );
+                assert!(g
+                    .prepare(door, source, &st, &worn, &Default::default(), false)
+                    .is_ok());
                 worn.restore_slot(
                     o.slot,
                     Some(gielinor_world::inventory::Item { vars: 9, ..item }),

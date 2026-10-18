@@ -283,4 +283,45 @@ mod tests {
         assert_eq!(w.data(a).unwrap().inventory, before.inventory);
         assert_eq!(w.data(a).unwrap().stats, before.stats);
     }
+    #[test]
+    fn guild_passages_f2p_worn_member_capes_qualify_for_entry_without_enabling_their_perks() {
+        for kind in [Kind::Crafting, Kind::Cooking] {
+            let (mut w, a, loc) = fixture(kind, false);
+            let item = if kind == Kind::Crafting { 9780 } else { 9801 };
+            let skill = if kind == Kind::Crafting { 12 } else { 7 };
+            w.guild_passages
+                .get_mut(&loc.id)
+                .unwrap()
+                .outfits
+                .push(Outfit {
+                    id: item,
+                    slot: 1,
+                    members: true,
+                });
+            let d = w.data_mut(a).unwrap();
+            d.equipment
+                .restore_slot(if kind == Kind::Crafting { 4 } else { 0 }, None)
+                .unwrap();
+            d.equipment
+                .restore_slot(
+                    1,
+                    Some(Item {
+                        id: item,
+                        count: 1,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+            d.stats.set_base(skill, 99);
+            d.stats.set_current(skill, 99);
+            d.stats
+                .set_xp(skill, crate::skills::xp_from_level(99).unwrap())
+                .unwrap();
+            let before = w.data(a).unwrap().clone();
+            click(&mut w, a, loc);
+            assert_ne!(w.data(a).unwrap().coords, before.coords);
+            assert_eq!(w.data(a).unwrap().stats, before.stats);
+            assert_eq!(w.data(a).unwrap().equipment, before.equipment);
+        }
+    }
 }

@@ -1,4 +1,6 @@
 //! Resolve content's symbolic references against the same immutable type inputs as Kotlin.
+mod crafting_cape_boost;
+pub use crafting_cape_boost::crafting_cape_boost;
 mod guild_passages;
 pub use guild_passages::guild_passages;
 mod ordinary_rune_altars;
