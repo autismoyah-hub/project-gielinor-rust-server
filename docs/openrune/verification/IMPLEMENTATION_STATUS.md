@@ -3,13 +3,13 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0043: eight member range pies, live membership checks and optional forced burn cutoffs. Published source: [8805474](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/8805474ede2cbbb80e9167c300b3bbbefe845c83). Verification contract: [906a1c0](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/906a1c0).
+Latest correction: OR-MIG-0037 revision2 and OR-MIG-0041 revision2, published source [864d439](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/864d439132b33395773116d57347f9caefdfcf1c). Sardine burns to369, herring to357, and trout/pike/salmon to343. Exact-ID assertions cover all nine ordinary fish through both fire and standard-range configuration. The focused corrected-source check passed one server test, with399source hashes unchanged.
 
-The latest affected regression passed 82 server and 441 world tests, with one existing ignored test and 399 source hashes unchanged. Dragonfruit awards 220 base XP; Dragonfruit, Wild and Summer can still burn at level 99. Membership is checked at admission and completion using trusted account state.
+The most recent new feature is OR-MIG-0043: eight member range pies, live membership and optional forced burn cutoffs. Its full affected regression passed82server/441world tests with one existing ignored test. That is earlier shared-engine evidence; it is not fresh native acceptance of the corrected data.
 
-The queue contains 43 implementation units across 45 append-only records: 23 historical contracts and 20 new gameplay/shared units. Every unit is pending independent verification. The 3,508 discovery records include 30 partially contracted eligible source files/tables, 656 configuration records and 2,822 not yet assessed. These counts are not a gameplay-completion percentage.
+There are43implementation units across47append-only records:23historical contracts and20new gameplay/shared units. All await independent verification. The3,508discovery records contain30partially contracted eligible files/tables,656configuration records and2,822not yet assessed; this is not a completion percentage.
 
-Remaining work includes quantity/Make-X and Cook menus, modifiers and special surfaces, cake-baking tin returns, burnt-container operations, additional content, inventory reconciliation and independent V0–V4 acceptance. The current manual cooking subset has 13 fire and 26 range profiles. Historical checkpoints follow without alteration.
+Remaining work includes member fish and fractional cooking XP, quantity/Make-X and Cook menus, modifiers/special surfaces, cake tin returns, burnt-container actions, further content, inventory reconciliation and independent V0–V4acceptance. The current manual subset remains13fire/26range profiles. Historical checkpoints and all earlier contracts are preserved.
 <!-- forge-current:end -->
 
 
@@ -152,3 +152,8 @@ Throughput23historical+19newunits;42units/44append-onlyrecords. Inventory30eligi
 Source8805474ede2cbbb80e9167c300b3bbbefe845c83 registers8memberrangepieswithlivecookingadmission/revocationgate,recomputedrawmembershipmetadata andOptioncutoffs. Dragonfruit220XP;Dragonfruit/Wild/SummerNonepreservesburnat99. Final82server441worldPASS/1existingignored;399hashesunchanged;17freshordinarydefsPASS. IndependentV0-V4queued;modifiers/quantity/EmptyDish/native/lifecycle remainopen.
 
 Throughput23historical+20newunits;43units/45append-onlyrecords. Inventory30eligiblepartiallycontracted/656configuration/2822unassessed;3508discoveryisnotmodulecompletiondenominator. Current13fire/26rangeprofilesaremanualsubset. Continueeligiblecontentwithnewmember/Nonecutofffoundation.
+
+
+## Corrected dependency revisions
+
+OR-MIG-0037r2 and OR-MIG-0041r2 use source 864d439132b33395773116d57347f9caefdfcf1c. Five burnt-fish identities are corrected using exact Wiki variant pages. Prior tests passed against their own recipe metadata and did not prove semantic identity. Focused correction002passed1server/0world with399unchanged source hashes, including exact IDs through both configuration paths. No historical source, queue record, character file or private evidence was rewritten. Independent retesting remains queued. Stable unit count stays43; append-only record count becomes47.
