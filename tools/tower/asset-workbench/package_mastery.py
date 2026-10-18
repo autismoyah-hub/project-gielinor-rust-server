@@ -25,6 +25,8 @@ def run(a):
         if previews.exists():
             for path in previews.glob('*.gif'):shutil.copy2(path,dst/path.name)
         row=dict(asset=key,name=r['name'],identity=report['identity'],asset_key=report['asset_key'],model_sha256=sha(dst/'asset.model'),vertices=len(g['vertices']),faces=len(g['faces']),bounds=report['geometry']['exact_decoded']['bounds'],actions=actions,original_geometry_and_choreography=True,source_commit=a.commit,generator='tools/tower/asset-workbench/author_workflow.py',recipe='assets/'+key+'/recipe.json',technical_conversion='VALIDATED',artistic_acceptance=False,gameplay_integration_tested=False)
+        row['material_features']=dict(native_face_hsl=True,textured_faces=0,alpha_present=g.get('alpha')is not None,face_priorities_present=g.get('priorities')is not None,render_types=sorted(set(g.get('render_types')or[0])),lighting=dict(ambient=64,contrast=768))
+        row['action_identity_map']={name:dict(sequence_id=report['identity']['sequence_base']+i,skeleton_id=load(dst/name/'animation.json')['skeleton_id'],frame_group=load(dst/name/'animation.json')['frame_group'],format='native_classic')for i,name in enumerate(sorted(actions))}
         (dst/'manifest.json').write_text(json.dumps(row,indent=2),encoding='utf-8');manifest.append(row)
     floor=a.out/'floor';floor.mkdir();proof=load(a.floor/'floor-compatibility.json');proof['source_commit']=a.commit;proof['assets']={r['asset']:r for r in manifest};proof['anticipated_collision']=[]
     bykey={r['asset']:r for r in manifest}

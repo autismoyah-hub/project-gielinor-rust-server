@@ -14,6 +14,12 @@ delivery manifest into its assets map for exact binary-ID regeneration. Preserve
 other private reservations. Check IDs against the future shared destination;
 experimental reservations are not globally assigned production IDs.
 
+Each original asset manifest records actual material features and an explicit
+action_identity_map. Sequence slots use sorted action names; skeleton/frame-group
+IDs come from each generated payload's animation.json. These independent
+namespaces need not have the same relative action offset. Use the map rather
+than inferring skeleton IDs from sequence order.
+
 Coordinates: X/Y-down/Z, 128 units per tile, original models at scale 128.
 Quarter-turn rotation precedes scene translation. Common native light: 64/768,
 direction [-30,-50,-30]. Native HSL and classic animation are authoritative.
