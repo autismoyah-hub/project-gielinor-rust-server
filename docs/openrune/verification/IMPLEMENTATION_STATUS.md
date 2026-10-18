@@ -3,9 +3,9 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0091: primary willow/maple/yew timed profiles; source [c707aeb](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/c707aeb17b1569dbbc777c0b42f74769feaad0d3). Focused/binary PASS; independent V0–V4 queued. Wiki14/59/99 versus source-cache15/60/100 explicit; no alternate/regional/farming/bonus scope or regular policy change.
+OR-MIG-0092: five ordinary timed-tree variants; source [90817bc](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/90817bc9d92b8809b1ef25a19fa049bdf97eaf72). Focused/binary PASS; independent V0–V4 queued. Fullparameter equalityexceptstage andexactmixed stump labels; no regional/farming/quest scope or timing-policy change.
 
-91 units / 100 append-only records. Discovery3508={'not_yet_assessed': 2791, 'configuration': 660, 'framework_or_infrastructure': 11, 'eligible_gameplay_behavior': 46}, not completion percentages. Clay withheld issue74; PG-DEF-001 Close candidate pending independent retest.
+92 units / 101 append-only records. Discovery3508={'not_yet_assessed': 2791, 'configuration': 660, 'framework_or_infrastructure': 11, 'eligible_gameplay_behavior': 46}, not completion percentages. Clay withheld issue74; PG-DEF-001 Close candidate pending independent retest.
 <!-- forge-current:end -->
 
 
@@ -577,3 +577,12 @@ Source c707aeb17b1569dbbc777c0b42f74769feaad0d3: primary10819/10832/10822, curre
 Trees002PASS2server/0world matches453unchanged hashes,58.86scompile/2.73stest; actual binaries001PASS453/3.04s. Bounded actual willow multiple843fine/log at125%, >=50active stump transition, exactrestoreTick-fellTick14, retained iron; current29/fullbag preserve inventory/Stats withno rewards/timers. No shared engine change; prior90fullshared covers dependencies. Guard002 other active processes informational,5,998MiB/60.3%commit/2pages-in/s/1.2msdisk/42.6%CPU,j2 allowed. Developer working-tree evidence, not pristine/native independent acceptance.
 
 Target/source cache15/60/100respawn versus explicit Wiki14/59/99 recorded, Wiki-first established oak policy used without cache edits/equivalence claim. Primary only: alternate/regional/farming/quest variants, Forestry boosts/Seers maple diaryXP/side drops/custom overlay/acquisition separate. Normal-tree opt-in/respawn-conflict policy unchanged. Queue100records91units, independentV0–V4queued. Discovery3508={'not_yet_assessed': 2791, 'configuration': 660, 'framework_or_infrastructure': 11, 'eligible_gameplay_behavior': 46}, not completion percentages.
+
+
+## FORGE OR-MIG-0092 — five ordinary timed-tree variants
+
+Source 90817bc9d92b8809b1ef25a19fa049bdf97eaf72: willows10829/10831/10833 ->stump9471,updatedmaple40754->40755,updatedyew40756->40757. Exact5live/3unique stumps/3canonicalWikiIDlists/2source refs pinned. Full liveparam map must equal primary91except65533nextstage; samecontent32/name/Chopdown/staticfootprint. Clone complete primary level/log/XP/active/sevenaxe/respawn profile,change onlystumpID.9471 Tree Stump,40755 Maple tree(noops),40757 Tree stump labels exact; no naive name-based live binding.
+
+Variants001 focusedPASS1server/0worldmatches454unchanged hashes,22.58scompile/0.00stest; actual binaries001 PASS454/7.29s. Fiveclones/stumps/rates,extra parameter rejection andactiveMaplestump rejection; no sharedenginechange. Prior91boundedWillow lifecycle and90fullshared protect dependencies. Guard001 otherprocesses informational,6,777MiB/56.1%commit/0pages-in/s/4.2msdisk/20.2%CPU,j2 allowed. Developer working-tree evidence, not actual per-variant native/composed/pristine independent acceptance.
+
+InheritedWiki14/59/99versussource-cache15/60/100difference retained. Prif/farming/quest/noop/otherregional variants, bonuses/side drops/overlay/acquisition remain; normalpolicyunchanged. Queue101records92units, independentV0–V4queued. Discovery3508={'not_yet_assessed': 2791, 'configuration': 660, 'framework_or_infrastructure': 11, 'eligible_gameplay_behavior': 46},not completion percentages.
