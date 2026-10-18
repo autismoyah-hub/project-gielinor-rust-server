@@ -12,6 +12,7 @@ use std::{
 pub(crate) const QUEUE: i32 = -2391050;
 pub const RUNE_ESSENCE: i32 = 1436;
 pub const PURE_ESSENCE: i32 = 7936;
+pub const DAEYALT_ESSENCE: i32 = 24704;
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub struct Recipe {
     pub output: i32,
@@ -45,6 +46,7 @@ pub struct Prepared {
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Error {
     Policy,
+    Members,
     Level,
     Empty,
     Unsupported,
@@ -54,13 +56,24 @@ pub enum Error {
 }
 impl Config {
     pub fn capture(&self, inventory: &Inventory) -> Result<Arc<Vec<(i32, usize)>>, Error> {
+        let daeyalt = inventory
+            .slots()
+            .iter()
+            .flatten()
+            .any(|i| i.id == DAEYALT_ESSENCE);
         let parts = inventory
             .slots()
             .iter()
             .enumerate()
             .filter_map(|(slot, item)| {
-                item.filter(|i| [RUNE_ESSENCE, PURE_ESSENCE].contains(&i.id))
-                    .map(|i| (i.id, slot))
+                item.filter(|i| {
+                    if daeyalt {
+                        i.id == DAEYALT_ESSENCE
+                    } else {
+                        [RUNE_ESSENCE, PURE_ESSENCE].contains(&i.id)
+                    }
+                })
+                .map(|i| (i.id, slot))
             })
             .collect::<Vec<_>>();
         if parts.is_empty() {
@@ -71,6 +84,7 @@ impl Config {
         }
         Ok(Arc::new(parts))
     }
+    /// Legacy callers have no member authority for special essence.
     pub fn prepare(
         &self,
         recipe: Recipe,
@@ -80,6 +94,19 @@ impl Config {
         items: &Catalog,
         stats: &Stats,
         rate: i32,
+    ) -> Result<Prepared, Error> {
+        self.prepare_member(recipe, parts, inventory, worn, items, stats, rate, false)
+    }
+    pub fn prepare_member(
+        &self,
+        recipe: Recipe,
+        parts: &[(i32, usize)],
+        inventory: &Inventory,
+        worn: &Inventory,
+        items: &Catalog,
+        stats: &Stats,
+        rate: i32,
+        member: bool,
     ) -> Result<Prepared, Error> {
         if !self.altars.values().any(|&v| v == recipe)
             || recipe.level == 0
@@ -92,7 +119,8 @@ impl Config {
             || parts.len() > 28
             || parts.iter().map(|v| v.1).collect::<BTreeSet<_>>().len() != parts.len()
             || parts.iter().any(|&(id, _)| {
-                ![RUNE_ESSENCE, PURE_ESSENCE].contains(&id) || !items.ordinary_nonstackable(id)
+                ![RUNE_ESSENCE, PURE_ESSENCE, DAEYALT_ESSENCE].contains(&id)
+                    || !items.ordinary_nonstackable(id)
             })
             || !items.stackable.contains(&recipe.output)
             || items.dummy.contains(&recipe.output)
@@ -110,6 +138,28 @@ impl Config {
                 .is_some_and(|t| t.template != 0)
         {
             return Err(Error::Policy);
+        }
+        let mut rune_stacks = 0;
+        for item in inventory
+            .slots()
+            .iter()
+            .flatten()
+            .filter(|i| i.id == recipe.output)
+        {
+            rune_stacks += 1;
+            if rune_stacks > 1 || item.count <= 0 || item.vars != 0 {
+                return Err(Error::Policy);
+            }
+        }
+        let daeyalt = parts[0].0 == DAEYALT_ESSENCE;
+        if parts
+            .iter()
+            .any(|&(id, _)| (id == DAEYALT_ESSENCE) != daeyalt)
+        {
+            return Err(Error::Policy);
+        }
+        if daeyalt && !member {
+            return Err(Error::Members);
         }
         if inventory
             .slots()
@@ -150,7 +200,8 @@ impl Config {
         }
         next.insert(items, Insert::new(recipe.output, produced))
             .map_err(|_| Error::Capacity)?;
-        let xp = parts.len() as f64 * f64::from(recipe.xp_tenths) / 10.0;
+        let xp = parts.len() as f64 * f64::from(recipe.xp_tenths) / 10.0
+            * if daeyalt { 1.5 } else { 1.0 };
         let (stats, advancement) =
             assembly::prepare_reward_value(stats, 20, xp, rate).map_err(|_| Error::Reward)?;
         Ok(Prepared {
@@ -174,7 +225,7 @@ mod tests {
         };
         let c = Config {
             altars: [(34760, recipe)].into(),
-            blocked_held: [24704].into(),
+            blocked_held: [26879].into(),
             blocked_worn: [26850].into(),
             animation: 791,
             spot: 186,
@@ -274,7 +325,7 @@ mod tests {
                     inv.restore_slot(
                         1,
                         Some(Item {
-                            id: 24704,
+                            id: 26879,
                             count: 1,
                             vars: 0,
                         }),
@@ -315,6 +366,127 @@ mod tests {
                 "case{case}"
             );
             assert_eq!((inv, worn, stats), before);
+        }
+    }
+    #[test]
+    fn daeyalt_priority_member_authority_aggregate_half_bonus_and_full_stack_credit_are_atomic() {
+        let (mut c, _, mut inv, worn, mut items, mut stats) = fixture();
+        let r = Recipe {
+            output: 558,
+            level: 2,
+            xp_tenths: 55,
+            interval: 14,
+            name: "Mind rune",
+        };
+        c.altars.insert(34761, r);
+        items.stackable.insert(558);
+        stats.set_base(20, 13);
+        stats.set_current(20, 14);
+        stats
+            .set_xp(20, crate::skills::xp_from_level(13).unwrap())
+            .unwrap();
+        for slot in 0..7 {
+            inv.restore_slot(
+                slot,
+                Some(Item {
+                    id: DAEYALT_ESSENCE,
+                    count: 1,
+                    vars: 0,
+                }),
+            )
+            .unwrap();
+        }
+        let parts = c.capture(&inv).unwrap();
+        assert_eq!(parts.len(), 7);
+        assert!(parts.iter().all(|v| v.0 == DAEYALT_ESSENCE));
+        let before = (inv.clone(), stats.clone());
+        assert!(matches!(
+            c.prepare(r, &parts, &inv, &worn, &items, &stats, 125),
+            Err(Error::Members)
+        ));
+        assert!(matches!(
+            c.prepare_member(r, &parts, &inv, &worn, &items, &stats, 125, false),
+            Err(Error::Members)
+        ));
+        let p = c
+            .prepare_member(r, &parts, &inv, &worn, &items, &stats, 125, true)
+            .unwrap();
+        assert_eq!(p.stats.fine_xp(20) - stats.fine_xp(20), 721);
+        assert_eq!(p.inventory.get(0).unwrap().count, 14);
+        assert_eq!(
+            p.inventory
+                .slots()
+                .iter()
+                .flatten()
+                .filter(|i| [1436, 7936].contains(&i.id))
+                .count(),
+            21
+        );
+        assert_eq!((inv.clone(), stats.clone()), before);
+        let mut mixed = parts.as_ref().clone();
+        mixed.push((7936, 7));
+        assert!(matches!(
+            c.prepare_member(r, &mixed, &inv, &worn, &items, &stats, 125, true),
+            Err(Error::Policy)
+        ));
+        inv.restore_slot(
+            27,
+            Some(Item {
+                id: 558,
+                count: i32::MAX,
+                vars: 0,
+            }),
+        )
+        .unwrap();
+        let before = (inv.clone(), stats.clone());
+        assert!(matches!(
+            c.prepare_member(r, &parts, &inv, &worn, &items, &stats, 125, true),
+            Err(Error::Capacity)
+        ));
+        assert_eq!((inv, stats), before);
+    }
+    #[test]
+    fn existing_rune_stacks_preserve_metadata_or_refuse_and_valid_credit_keeps_prior_count() {
+        for case in 0..4 {
+            let (c, r, mut inv, worn, items, stats) = fixture();
+            inv.restore_slot(
+                27,
+                Some(Item {
+                    id: 556,
+                    count: if case == 1 { 0 } else { 7 },
+                    vars: if case == 0 { 9 } else { 0 },
+                }),
+            )
+            .unwrap();
+            if case == 2 {
+                inv.restore_slot(
+                    26,
+                    Some(Item {
+                        id: 556,
+                        count: 11,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+            }
+            let parts = c.capture(&inv).unwrap();
+            let before = (inv.clone(), stats.clone());
+            let result = c.prepare(r, &parts, &inv, &worn, &items, &stats, 125);
+            if case == 3 {
+                let p = result.unwrap();
+                assert_eq!(
+                    p.inventory.get(27).unwrap(),
+                    Item {
+                        id: 556,
+                        count: 61,
+                        vars: 0
+                    }
+                );
+                assert_eq!(p.stats.fine_xp(20) - stats.fine_xp(20), 1687);
+            } else {
+                assert!(matches!(result, Err(Error::Policy)), "case{case}");
+            }
+            assert_eq!((inv, stats), before);
         }
     }
 }

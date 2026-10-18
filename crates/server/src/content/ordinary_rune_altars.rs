@@ -45,8 +45,7 @@ const ROWS: [(&str, u32, &str, i32, &str, u8, u16, u8); 6] = [
         46,
     ),
 ];
-const HELD_GUARDS: [(&str, i32); 6] = [
-    ("blankrune_daeyalt", 24704),
+const HELD_GUARDS: [(&str, i32); 5] = [
     ("gotr_guardian_essence", 26879),
     ("scar_extract_warped", 28593),
     ("scar_extract_twisted", 28595),
@@ -121,6 +120,19 @@ pub fn ordinary_rune_altars(
     };
     check("blankrune", 1436, "Rune essence", false)?;
     check("blankrune_high", 7936, "Pure essence", false)?;
+    let daeyalt = defs.items.get(&24704).ok_or("Missing Daeyalt essence")?;
+    if objects.get("blankrune_daeyalt") != Some(&24704)
+        || daeyalt.name != "Daeyalt essence"
+        || !daeyalt.members
+        || daeyalt.stackable
+        || daeyalt.dummy == 1
+        || daeyalt.cert.template != 0
+        || daeyalt.placeholder.template != 0
+        || daeyalt.transform.template != 0
+    {
+        return Err("Invalid member Daeyalt essence".into());
+    }
+
     let mut altars = std::collections::BTreeMap::new();
     for &(symbol, id, item_symbol, output, name, level, xp_tenths, interval) in &ROWS {
         let d = defs
@@ -202,6 +214,11 @@ mod tests {
             d.items.insert(id as u32, item);
             objects.insert(symbol.into(), id);
         }
+        let mut daeyalt = gielinor_cache::definitions::ItemType::decode(b"\0").unwrap();
+        daeyalt.name = "Daeyalt essence".into();
+        daeyalt.members = true;
+        d.items.insert(24704, daeyalt);
+        objects.insert("blankrune_daeyalt".into(), 24704);
         for &(symbol, id) in HELD_GUARDS.iter().chain(WORN_GUARDS.iter()) {
             d.items.insert(
                 id as u32,
@@ -226,7 +243,8 @@ mod tests {
         let c = ordinary_rune_altars(&objects, &locations, &seq, &spots, &stats, &d).unwrap();
         assert_eq!(c.altars.len(), 6);
         assert_eq!(c.altars[&34763].level, 9);
-        assert_eq!(c.blocked_held.len(), 6);
+        assert_eq!(c.blocked_held.len(), 5);
+        assert!(!c.blocked_held.contains(&24704));
         assert_eq!(c.blocked_worn.len(), 27);
         assert_eq!(
             c.altars.values().map(|v| v.xp_tenths).collect::<Vec<_>>(),

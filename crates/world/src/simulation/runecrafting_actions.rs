@@ -2,8 +2,9 @@ use super::*;
 use crate::runecrafting::{Config, Error, Pending, QUEUE};
 fn refusal(events: &mut Vec<WorldEvent>, actor: ActorId, error: Error) {
     let text = match error {
+        Error::Members => "You need to be a member to bind that essence.",
         Error::Level => "You need a higher Runecraft level to bind that essence.",
-        Error::Empty => "You do not have any rune or pure essence to bind.",
+        Error::Empty => "You do not have any supported essence to bind.",
         Error::Unsupported => "You can't use that essence or equipment here yet.",
         _ => "You can't bind that essence right now.",
     };
@@ -34,7 +35,7 @@ impl World {
                 return;
             }
         };
-        if let Err(e) = config.prepare(
+        if let Err(e) = config.prepare_member(
             recipe,
             &materials,
             &p.data.inventory,
@@ -42,6 +43,7 @@ impl World {
             &self.object_types,
             &p.data.stats,
             p.data.xp_rate_hundreds,
+            p.member,
         ) {
             refusal(&mut self.events, p.id, e);
             return;
@@ -113,7 +115,7 @@ pub(super) fn complete(
     else {
         return;
     };
-    match config.prepare(
+    match config.prepare_member(
         pending.recipe,
         &pending.materials,
         &p.data.inventory,
@@ -121,6 +123,7 @@ pub(super) fn complete(
         items,
         &p.data.stats,
         p.data.xp_rate_hundreds,
+        p.member,
     ) {
         Err(e) => refusal(events, p.id, e),
         Ok(prepared) => {
@@ -200,7 +203,7 @@ mod tests {
             .unwrap();
         w.runecrafting = Some(Config {
             altars: [(id, recipe)].into(),
-            blocked_held: [24704].into(),
+            blocked_held: [26879].into(),
             blocked_worn: [26850].into(),
             animation: 791,
             spot: 186,
@@ -345,7 +348,7 @@ mod tests {
                         .restore_slot(
                             27,
                             Some(Item {
-                                id: 24704,
+                                id: 26879,
                                 count: 1,
                                 vars: 0,
                             }),
@@ -422,5 +425,169 @@ mod tests {
             54
         );
         assert_eq!(data.stats.fine_xp(20) - xp, 27 * 50 * 125 / 100);
+    }
+    #[test]
+    fn daeyalt_actual_six_altars_full_and_mixed_priority_award_half_more_xp_not_runes() {
+        for index in 0..6 {
+            for mixed in [false, true] {
+                let (mut w, a, loc, r) = fixture(index, 2, true);
+                let count = if mixed { 7 } else { 28 };
+                for slot in 0..count {
+                    w.data_mut(a)
+                        .unwrap()
+                        .inventory
+                        .restore_slot(
+                            slot,
+                            Some(Item {
+                                id: 24704,
+                                count: 1,
+                                vars: 0,
+                            }),
+                        )
+                        .unwrap();
+                }
+                let xp = w.data(a).unwrap().stats.fine_xp(20);
+                start(&mut w, a, loc);
+                w.tick_with_random(&mut NoDraw).unwrap();
+                let data = w.data(a).unwrap();
+                assert_eq!(
+                    data.inventory
+                        .slots()
+                        .iter()
+                        .flatten()
+                        .filter(|i| i.id == 24704)
+                        .count(),
+                    0
+                );
+                assert_eq!(
+                    data.inventory
+                        .slots()
+                        .iter()
+                        .flatten()
+                        .filter(|i| [1436, 7936].contains(&i.id))
+                        .count(),
+                    28 - count
+                );
+                assert_eq!(
+                    data.inventory
+                        .slots()
+                        .iter()
+                        .flatten()
+                        .filter(|i| i.id == r.output)
+                        .map(|i| i.count)
+                        .sum::<i32>(),
+                    2 * count as i32
+                );
+                assert_eq!(
+                    data.stats.fine_xp(20) - xp,
+                    (count as i32 * i32::from(r.xp_tenths) * 3 * 125) / (2 * 100)
+                );
+                assert_eq!(data.inventory.free_space(), count - 1);
+                if mixed {
+                    start(&mut w, a, loc);
+                    w.tick_with_random(&mut NoDraw).unwrap();
+                    let data = w.data(a).unwrap();
+                    assert_eq!(
+                        data.inventory
+                            .slots()
+                            .iter()
+                            .flatten()
+                            .filter(|i| [1436, 7936].contains(&i.id))
+                            .count(),
+                        0
+                    );
+                    assert_eq!(
+                        data.inventory
+                            .slots()
+                            .iter()
+                            .flatten()
+                            .filter(|i| i.id == r.output)
+                            .map(|i| i.count)
+                            .sum::<i32>(),
+                        56
+                    );
+                    assert_eq!(
+                        data.stats.fine_xp(20) - xp,
+                        (7 * i32::from(r.xp_tenths) * 3 * 125) / (2 * 100)
+                            + (21 * i32::from(r.xp_tenths) * 125) / 100
+                    );
+                }
+            }
+        }
+    }
+    #[test]
+    fn daeyalt_f2p_and_late_member_or_captured_material_failure_never_fallback_to_pure() {
+        for member in [false, true] {
+            for case in 0..3 {
+                let (mut w, a, loc, _) = fixture(1, 1, member);
+                for slot in 0..7 {
+                    w.data_mut(a)
+                        .unwrap()
+                        .inventory
+                        .restore_slot(
+                            slot,
+                            Some(Item {
+                                id: 24704,
+                                count: 1,
+                                vars: 0,
+                            }),
+                        )
+                        .unwrap();
+                }
+                w.data_mut(a)
+                    .unwrap()
+                    .inventory
+                    .restore_slot(27, None)
+                    .unwrap();
+                let xp = w.data(a).unwrap().stats.fine_xp(20);
+                start(&mut w, a, loc);
+                if member {
+                    match case {
+                        0 => {
+                            w.set_membership(a, false).unwrap();
+                        }
+                        1 => {
+                            w.data_mut(a)
+                                .unwrap()
+                                .inventory
+                                .restore_slot(
+                                    3,
+                                    Some(Item {
+                                        id: 24704,
+                                        count: 1,
+                                        vars: 9,
+                                    }),
+                                )
+                                .unwrap();
+                        }
+                        _ => {
+                            w.data_mut(a)
+                                .unwrap()
+                                .inventory
+                                .restore_slot(3, None)
+                                .unwrap();
+                            w.data_mut(a)
+                                .unwrap()
+                                .inventory
+                                .restore_slot(
+                                    27,
+                                    Some(Item {
+                                        id: 24704,
+                                        count: 1,
+                                        vars: 0,
+                                    }),
+                                )
+                                .unwrap();
+                        }
+                    }
+                }
+                let before = w.data(a).unwrap().inventory.clone();
+                for _ in 0..3 {
+                    w.tick_with_random(&mut NoDraw).unwrap();
+                }
+                assert_eq!(w.data(a).unwrap().inventory, before);
+                assert_eq!(w.data(a).unwrap().stats.fine_xp(20), xp);
+            }
+        }
     }
 }
