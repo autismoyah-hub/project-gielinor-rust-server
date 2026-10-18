@@ -3,9 +3,9 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0094: member lead mining with strict direct IDs; source [871df7e](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/871df7eace2fb1bfe6ea5624c5b63ceb09c261b4). Focused and binary checks pass; independent V0–V4 queued. Missing symbols handled without resource edits. Wiki/source probability and native island placement/travel remain unresolved.
+OR-MIG-0095: normal/golden Prospector Mining bonuses; source [1b3cb11](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/1b3cb1191a771ea1b315bbc9442522ae1cdeb074). Shared, focused iron/oak and binary checks pass; independent V0–V4 queued. Mixed sets and origin variables supported. Varrock4 and other XP/modifier channels remain separate.
 
-94 units / 103 append-only records. Discovery3508={'not_yet_assessed': 2791, 'configuration': 660, 'framework_or_infrastructure': 11, 'eligible_gameplay_behavior': 46}, not completion percentages. Clay withheld under issue74; PG-DEF-001 Close candidate awaits independent retest.
+95 units / 104 append-only records. Discovery3508={'not_yet_assessed': 2786, 'configuration': 660, 'framework_or_infrastructure': 15, 'eligible_gameplay_behavior': 47}, not completion percentages. Clay withheld under issue74; PG-DEF-001 Close candidate awaits independent retest.
 <!-- forge-current:end -->
 
 
@@ -604,3 +604,12 @@ Source 871df7eace2fb1bfe6ea5624c5b63ceb09c261b4 registers live58917 -> one31716L
 Focused001 PASS2server/0matching world tests,456unchanged hashes,37.32scompile/0.65stests; actual binaries001 PASS456/5.21s. Bounded reached node accepts current25/base1, credits one ore/506fine at125%, retains pick and restores exactly10ticks later. F2P/current24/fullbag/credit rejection preserve inventory/Stats/location; initial eligibility refusals draw no RNG. Guard observed other processes informational,6,843MiB available/55.8%commit/8,811pages-in/s/0.8msdisk/45%CPU,j2 allowed; no OOM or resource deferral. Developer working-tree evidence, not pristine/native independent acceptance.
 
 Wiki comparative112/278 differs source110/255; candidate uses Wiki values, not accepted target probability. Source/Wiki agree on level/XP/10ticks. Sailing travel/island placement and native traversal, smelting, modifiers/side drops/quests/acquisition/empty feedback remain separate. Queue103records94units; independentV0–V4queued. Discovery3508={'not_yet_assessed': 2791, 'configuration': 660, 'framework_or_infrastructure': 11, 'eligible_gameplay_behavior': 46}, not completion percentages.
+
+
+## FORGE OR-MIG-0095 — normal/golden Prospector XP
+
+Source 1b3cb1191a771ea1b315bbc9442522ae1cdeb074 adds reusable worn gathering descriptors and a per-stat registry. Mining14 receives normal/golden helmet/jacket/legs/boots, worn slots0/4/7/10, piece bonuses40/80/60/20 basis points plus50 full set, total250/2.5%. Mixed variants work. Eight exact member ordinary types/full wear arrays,11Wiki pages and6source references are pinned. Actor membership/current equipment are read at reward preparation; carried/wrong-slot pieces do not count. Valid item-origin variables remain intact. Catalog ordinary identity is shared with tools, whose vars==0 policy remains.
+
+Shared001PASS149server488world/1existingignore458unchanged hashes,1m24compile/server6.07s/world16.31s. Final002focusedPASS3server1world458,37.18scompile/server3.52s/world0.01s; actual binaries001PASS458/21.49s. Actual iron gives437fine without kit,448 with normal/golden/mixed full set,442 with tested partial/live jacket removal at125%; origin vars37 preserved, carried/F2P no boost, invalid credit no partial reward. Full kit does not change oak468fine. Existing inventory/Stats/depletion transaction and global-rate rounding reused; equipment never changed by reward. Developer working-tree evidence, not pristine/native independent acceptance.
+
+Scope is ordinary Mining. Other Mining XP channels, general worn params, other outfits and acquisition/recolour/refund/diary/light behavior remain. Varrock4 equivalence excluded: source set-only top helper differs its individual jacket bonus check and Wiki full replacement. Issue75 Angler/charge requirements remain unsatisfied by this Mining unit. Queue104records95units; independentV0–V4queued. Discovery3508={'not_yet_assessed': 2786, 'configuration': 660, 'framework_or_infrastructure': 15, 'eligible_gameplay_behavior': 47}, not completion percentages.
