@@ -168,6 +168,7 @@ impl World {
             Some(Handler::ToolCraftingChoices{recipes,cycle_ticks}) => self.request_tool_crafting(actor,recipes,cycle_ticks,request)?,
             Some(Handler::ToolCraftingCountedChoices{recipes,cycle_ticks,input_count}) => self.request_tool_crafting_counted(actor,recipes,cycle_ticks,request,input_count)?,
             Some(Handler::ToolCraftingMaterialChoices{recipes,cycle_ticks,input_counts}) => self.request_tool_crafting_materials(actor,recipes,cycle_ticks,request,input_counts)?,
+            Some(Handler::ToolCraftingMixedChoices{recipes,cycle_ticks,materials}) => self.request_tool_crafting_mixed(actor,recipes,cycle_ticks,request,materials)?,
             Some(Handler::ToolCraftingImmediate(recipe)) => {
                 let (tool_slot,input_slot)=if request.selected_id==recipe.exchange.tool {(request.selected_slot as usize,request.target_slot as usize)}else{(request.target_slot as usize,request.selected_slot as usize)};
                 self.complete_tool_crafting_immediate(actor,crate::tool_crafting::Job{recipe,tool_slot,input_slot})?;

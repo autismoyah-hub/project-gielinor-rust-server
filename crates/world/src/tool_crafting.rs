@@ -211,6 +211,8 @@ pub struct Request {
     pub cycle_ticks: u8,
     pub input_count:u16,
     pub input_counts:Option<std::sync::Arc<Vec<u16>>>,
+    pub material_specs:Option<crate::tool_crafting_materials::Specifications>,
+    pub selected_materials:Vec<(i32,usize)>,
 }
 impl Request {
     pub fn bind(
@@ -283,6 +285,8 @@ impl Request {
             cycle_ticks,
             input_count,
             input_counts:None,
+            material_specs:None,
+            selected_materials:Vec::new(),
         })
     }
     pub fn bind_materials(recipes:std::sync::Arc<Vec<Recipe>>,cycle_ticks:u8,request:crate::held_use::Request,inventory:&Inventory,origin:CoordGrid,last_movement:i32,input_counts:std::sync::Arc<Vec<u16>>)->Option<Self>{
@@ -294,6 +298,7 @@ impl Request {
         self.recipes.get(index)?;self.input_counts.as_ref().map_or(Some(self.input_count),|counts|counts.get(index).copied())
     }
     pub fn available_for(&self,index:usize,inventory:&Inventory)->usize{
+        if self.material_specs.is_some(){return crate::tool_crafting_materials::available(self,index,inventory);}
         let Some(recipe)=self.recipes.get(index)else{return 0;};let Some(cost)=self.input_count_for(index).filter(|&n|n>0)else{return 0;};let id=recipe.exchange.input;
         if cost>1 {
             let Some(selected)=inventory.get(self.input_slot).filter(|i|i.id==id&&i.vars==0&&i.count>0)else{return 0;};
@@ -307,6 +312,7 @@ impl Request {
 #[derive(Clone, Debug)]
 pub(crate) struct Batch {
     pub input_stride:usize,
+    pub expected_ids:Option<std::sync::Arc<Vec<i32>>>,
     pub slots: std::sync::Arc<Vec<usize>>,
     pub index: usize,
     pub cycle_ticks: u8,

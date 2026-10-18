@@ -1,4 +1,4 @@
-//! Counted stack materials reuse ordinary tool choices, weak scheduling and XP.
+//! Captured material plans reuse ordinary retained-tool production and XP.
 use crate::{
     assembly,
     inventory::{Catalog, Delete, Insert, Inventory, StackType},
@@ -38,11 +38,57 @@ pub fn prepare_with_slots(
     if input_count == 1 {
         return job.prepare(inv, items, stats, rate, member);
     }
+    let stack = items.stackable.contains(&job.recipe.exchange.input);
+    if input_count == 0 || slots.len() != if stack { 1 } else { usize::from(input_count) } {
+        return Err(Error::Policy);
+    }
+    let parts = slots
+        .iter()
+        .map(|&slot| {
+            (
+                job.recipe.exchange.input,
+                slot,
+                if stack { i32::from(input_count) } else { 1 },
+            )
+        })
+        .collect::<Vec<_>>();
+    prepare_plan(job, &parts, inv, items, stats, rate, member)
+}
+pub fn prepare_materials(
+    job: Job,
+    materials: &[(i32, usize)],
+    inv: &Inventory,
+    items: &Catalog,
+    stats: &Stats,
+    rate: i32,
+    member: bool,
+) -> Result<Prepared, Error> {
+    if materials.len() < 2
+        || materials
+            .iter()
+            .any(|&(id, _)| !items.ordinary_nonstackable(id))
+    {
+        return Err(Error::Policy);
+    }
+    let parts = materials
+        .iter()
+        .map(|&(id, slot)| (id, slot, 1))
+        .collect::<Vec<_>>();
+    prepare_plan(job, &parts, inv, items, stats, rate, member)
+}
+fn prepare_plan(
+    job: Job,
+    parts: &[(i32, usize, i32)],
+    inv: &Inventory,
+    items: &Catalog,
+    stats: &Stats,
+    rate: i32,
+    member: bool,
+) -> Result<Prepared, Error> {
     let r = job.recipe;
     let e = r.exchange;
-    let stack = items.stackable.contains(&e.input);
     if (r.output_count > 1 && !items.stackable.contains(&e.output))
-        || input_count == 0
+        || parts.is_empty()
         || r.failure.is_some()
         || r.skill >= 23
         || r.level == 0
@@ -53,7 +99,13 @@ pub fn prepare_with_slots(
         || e.tool == e.input
         || e.output == e.input
         || e.output == e.tool
-        || (!stack && !items.ordinary_nonstackable(e.input))
+        || parts.iter().any(|&(id, _, count)| {
+            count <= 0
+                || id == e.tool
+                || id == e.output
+                || (!items.stackable.contains(&id)
+                    && (!items.ordinary_nonstackable(id) || count != 1))
+        })
     {
         return Err(Error::Policy);
     }
@@ -66,21 +118,20 @@ pub fn prepare_with_slots(
     if !inv
         .get(job.tool_slot)
         .is_some_and(|i| i.id == e.tool && i.count == 1 && i.vars == 0)
-        || slots.first() != Some(&job.input_slot)
-        || slots.len() != if stack { 1 } else { usize::from(input_count) }
-        || slots
+        || parts.first().map(|&(id, slot, _)| (id, slot)) != Some((e.input, job.input_slot))
+        || parts
             .iter()
-            .copied()
+            .map(|v| v.1)
             .collect::<std::collections::BTreeSet<_>>()
             .len()
-            != slots.len()
-        || slots.iter().any(|&slot| {
+            != parts.len()
+        || parts.iter().any(|&(id, slot, count)| {
             slot == job.tool_slot
                 || !inv.get(slot).is_some_and(|i| {
-                    i.id == e.input
+                    i.id == id
                         && i.vars == 0
-                        && if stack {
-                            i.count >= i32::from(input_count)
+                        && if items.stackable.contains(&id) {
+                            i.count >= count
                         } else {
                             i.count == 1
                         }
@@ -90,8 +141,8 @@ pub fn prepare_with_slots(
         return Err(Error::Exchange(crate::grinding::Outcome::Stale));
     }
     let mut inventory = inv.clone();
-    for &slot in slots {
-        let mut debit = Delete::new(e.input, if stack { i32::from(input_count) } else { 1 });
+    for &(id, slot, count) in parts {
+        let mut debit = Delete::new(id, count);
         debit.strict_slot = Some(slot);
         inventory
             .delete(items, debit)
@@ -109,7 +160,6 @@ pub fn prepare_with_slots(
         advancement,
     })
 }
-
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -343,6 +393,99 @@ mod discrete_tests {
                 assert!(result.is_err());
             }
             assert_eq!((inventory, stats), before);
+        }
+    }
+}
+
+#[cfg(test)]
+mod mixed_tests {
+    use super::*;
+    use crate::{grinding, inventory::Item, tool_crafting::Recipe};
+    #[test]
+    fn mixed_parts_stage_together_and_reject_secondary_duplicate_credit_rate_member() {
+        let job = Job {
+            recipe: Recipe {
+                skill: 12,
+                exchange: grinding::Recipe {
+                    tool: 29920,
+                    input: 3239,
+                    output: 3385,
+                    members: true,
+                    animation: None,
+                },
+                level: 61,
+                xp_tenths: 1240,
+                output_count: 1,
+                ticks: 2,
+                name: "Splitbark helm",
+                action: "make",
+                failure: None,
+            },
+            tool_slot: 0,
+            input_slot: 1,
+        };
+        for case in 0..8 {
+            let mut inv = Inventory::new(6, StackType::Normal, false);
+            let mut items = Catalog::default();
+            let mut stats = Stats::default();
+            stats.set_current(12, 61);
+            for (slot, id) in [
+                (0, 29920),
+                (1, 3239),
+                (2, 3239),
+                (3, 3470),
+                (4, 3470),
+                (5, 3470),
+            ] {
+                inv.restore_slot(
+                    slot,
+                    Some(Item {
+                        id,
+                        count: 1,
+                        vars: if case == 2 && slot == 4 { 1 } else { 0 },
+                    }),
+                )
+                .unwrap();
+            }
+            let mut parts = vec![(3239, 1), (3239, 2), (3470, 3), (3470, 4)];
+            match case {
+                1 => parts[3].1 = 3,
+                3 => {
+                    items.dummy.insert(3385);
+                }
+                4 => parts[3] = (29920, 0),
+                7 => parts[3] = (3239, 4),
+                _ => {}
+            }
+            let before = (inv.clone(), stats.clone());
+            let result = prepare_materials(
+                job,
+                &parts,
+                &inv,
+                &items,
+                &stats,
+                if case == 5 { 0 } else { 125 },
+                case != 6,
+            );
+            if case == 0 {
+                let p = result.unwrap();
+                assert_eq!(p.stats.fine_xp(12), 1550);
+                assert_eq!(p.inventory.get(0), inv.get(0));
+                assert_eq!(p.inventory.get(5), inv.get(5));
+                assert_eq!(
+                    p.inventory
+                        .slots()
+                        .iter()
+                        .flatten()
+                        .filter(|i| i.id == 3385)
+                        .count(),
+                    1
+                );
+                assert_eq!(p.inventory.free_space(), 3);
+            } else {
+                assert!(result.is_err(), "case{case}");
+            }
+            assert_eq!((inv, stats), before);
         }
     }
 }
