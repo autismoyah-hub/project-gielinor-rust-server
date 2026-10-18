@@ -3,9 +3,9 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0080: four reached material-only zero-XP sand pits; source [2530e42](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/2530e4274686bcd85c1465511ec3b598daf3681c). Explicit None operations, existing ordinary Some operations preserved. Shared regression/actual binary checks PASS; first compile failure preserved. Independent V0–V4 queued.
+OR-MIG-0081: mixed sand+soda glass production and atomic returned bucket on two material-only furnaces; source [14b6bf6](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/14b6bf6005c6f048be7e975e53eca107bee9d345). Existing Smithing operation and facility profiles preserved. Shared regression/binary PASS; byproduct/Wiki timing obligations explicit. Independent V0–V4 queued.
 
-80 units / 88 append-only records. Discovery3508={'not_yet_assessed': 2803, 'configuration': 658, 'framework_or_infrastructure': 6, 'eligible_gameplay_behavior': 41}; not completion percentages. Other pits/quests/access/glass and broad content remain; PG-DEF-001 Close candidate pending independent retest.
+81 units / 89 append-only records. Discovery3508={'not_yet_assessed': 2803, 'configuration': 658, 'framework_or_infrastructure': 6, 'eligible_gameplay_behavior': 41}; not completion percentages. Other furnaces/special methods/access and broad content remain; PG-DEF-001 Close candidate pending independent retest.
 <!-- forge-current:end -->
 
 
@@ -472,3 +472,14 @@ Source nominal2first/3repeat/animation895 retained; Wiki sand creation2 without 
 Initial shared001 compile FAIL: existing wheel test compared optional operation to integer2; preserved. Corrected002 PASS,441 unchanged source hashes: test result: ok. 124 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.67s; test result: ok. 482 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 27.55s. Actual binaries001 PASS,441 unchanged hashes. Finished `test` profile [unoptimized + debuginfo] target(s) in 25.32s; Finished `dev` profile [unoptimized + debuginfo] target(s) in 14.08s. Factoryfour-none/rate0/fullbag/noXP/member/invalidcredit and actual reached2x2 selected first start+2 with latecapturedslot refusal/no matching substitute/noRNG; old ordinary operations,positive/fallible shared facilities regressed. Guard0026,877MiB/56.5%commit/0pages-in/s/4.6msdisk/26.9%CPU,j2. Working-tree evidence, not pristine/native/independent acceptance.
 
 Queue80units/88append-onlyrecords. Discovery3508 classification {'not_yet_assessed': 2803, 'configuration': 658, 'framework_or_infrastructure': 6, 'eligible_gameplay_behavior': 41}, not completion percentages. Continue eligible implementation and glass-smelting material dependencies.
+
+
+## FORGE OR-MIG-0081 — mixed-material glass production
+
+Source 14b6bf6005c6f048be7e975e53eca107bee9d345: reached sand1783 or soda1781 on ordinary furnaces2030/4304 opens existing protected quantity. Member Crafting1,one sand+one soda ->glass1775+bucket1925,20XP/fine125%250. Shared Recipe secondary/byproduct optional fields capture exact one secondary and stage both credits with existing exchange_slots/precise XP before publish. Selected role preferred first,quantity mincounts,no matching fallback after capture. Legacy profiles explicitly None preserve unary/grouped/count-output/fallible/zeroXP paths. Normal furnace Smelt2 stays Smithing; glass facility None operation does not hijack clicks.
+
+Source explicit returned bucket preserved; inspected Wiki recipe lists main glass output only and does not independently prove byproduct. Source nominalfirst2/repeat3 vsWiki2/unspecifiedMake-all also queued for reference/native comparison. No confidence inflation. Exact four ordinary item/member types,two static furnace category215/Smelt2/3x3 or2x3 definitions,899seq,five Wiki pages/eight source references pinned. Older category alias absent; direct raw category attestation,no synthetic resource edits. Absent furnace sound omitted; other furnaces/special smelting/seaweed/Superglass/access remain.
+
+Shared glass001 PASS,442 unchanged source hashes: test result: ok. 125 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.86s; test result: ok. 483 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 25.44s. Binaries001 PASS,442 unchanged hashes.     Finished `test` profile [unoptimized + debuginfo] target(s) in 1m 44s;     Finished `dev` profile [unoptimized + debuginfo] target(s) in 11.49s. Factoryfullbag both outputs/250fine/member/short/duplicate/badbucketcredit rollback; actual reached sand and soda routes,normal Smithing operation presence,late captured secondary or returned-bucket credit failure leaveone glass+bucket/250fine/oneevent and untouched spare secondary,NoDraw. Existing shared facilities/users regressed. Guardtest7,329MiB/54.9%commit/1,321pages-in/s/3.5msdisk/24.5%CPU;binary7,453MiB/54.5%commit/0pages-in/s/2.9msdisk/21.2%CPU,bothj2. Developer working-tree evidence,not pristine/native/independent acceptance.
+
+Queue81units/89append-onlyrecords. Discovery3508={'not_yet_assessed': 2803, 'configuration': 658, 'framework_or_infrastructure': 6, 'eligible_gameplay_behavior': 41},not completion percentages. Continue eligible content.
