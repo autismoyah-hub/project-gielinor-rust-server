@@ -74,6 +74,17 @@ impl<B: AccountBackend> Runtime<B> {
                 return Err(io::Error::other("Conflicting ordinary timed tree"));
             }
         }
+        let variants = crate::content::timed_tree_variants(
+            names.group("loc"),
+            &self.definitions,
+            &config.trees,
+        )
+        .map_err(io::Error::other)?;
+        for (id, tree) in variants {
+            if config.trees.insert(id, tree).is_some() {
+                return Err(io::Error::other("Conflicting ordinary tree variant"));
+            }
+        }
         let regular_logs = names.id("obj", "logs")? as i32;
         for tool in crate::content::woodcutting_axes(
             names.group("obj"),
