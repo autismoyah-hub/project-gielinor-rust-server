@@ -1,0 +1,32 @@
+{
+  "implementation_id": "OR-MIG-0051",
+  "implementation_sha": "f6b0f6ad54fe7813bb6607827eeb8da0e60137fa",
+  "tested_sha": "f6b0f6ad54fe7813bb6607827eeb8da0e60137fa",
+  "source_tree": "3e0c8685d165ae26bc0380c5a5f0b7ba6f98773b",
+  "command": [
+    "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+    "build",
+    "--offline",
+    "--locked",
+    "-j",
+    "1",
+    "-p",
+    "gielinor-server"
+  ],
+  "exit_code": 0,
+  "binary_sha256": "5387d92eb934c559e7bcef7d2f56167249b6b8b4282a2029b36bc7af0a5adcea",
+  "resource": {
+    "available_ram": 7908626432,
+    "active_compilers": [],
+    "cpu_percent": 6.4,
+    "cpu_samples": [
+      15.88235294117647,
+      1.7509727626459193,
+      1.5810276679841917
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained",
+    "disk_free": 44701999104,
+    "owned_affinity_mask": 3
+  }
+}

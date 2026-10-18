@@ -1,0 +1,95 @@
+{
+  "implementation_id": "OR-MIG-0056",
+  "implementation_commit_sha": "5743cbe1c7499e2a7476c721d25dcba194666042",
+  "source_tree": "576c9a7c7a8ada7432c308cd4b16bd70d9874e2d",
+  "queue_commit": "5899b45390ad3b7df18760ddff29e1ebf638e4be",
+  "independent_verification": true,
+  "timestamp_utc": "2026-10-18T02:18:56.433673+00:00",
+  "available_memory_bytes": 7141593088,
+  "active_compilers": [
+    "\"cargo.exe\",\"10420\",\"RDP-Tcp#0\",\"2\",\"22,636 K\"",
+    "\"rustc.exe\",\"15232\",\"RDP-Tcp#0\",\"2\",\"85,820 K\""
+  ],
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "--version"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.09,
+      "log": "docs\\openrune\\verification\\independent\\OR-MIG-0056-5743cbe1c749\\run-0.log",
+      "tests_passed": 0,
+      "zero_tests": false
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "-p",
+        "gielinor-world",
+        "--lib",
+        "gem"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 77.41,
+      "log": "docs\\openrune\\verification\\independent\\OR-MIG-0056-5743cbe1c749\\run-1.log",
+      "tests_passed": 2,
+      "zero_tests": false
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "-p",
+        "gielinor-server",
+        "--lib",
+        "gem"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 85.44,
+      "log": "docs\\openrune\\verification\\independent\\OR-MIG-0056-5743cbe1c749\\run-2.log",
+      "tests_passed": 1,
+      "zero_tests": false
+    }
+  ],
+  "dependency_versions_present_at_target": [
+    {
+      "implementation_id": "OR-MIG-0005",
+      "revision": 1,
+      "sha": "87c4a3def09272158b488a8e3d24be5463d879a7",
+      "later_revisions_not_assumed_tested": false
+    }
+  ],
+  "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-gnu\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+  "resource_measurement": {
+    "available_ram": 7148036096,
+    "active_compilers": [
+      "\"cargo.exe\",\"10420\",\"RDP-Tcp#0\",\"2\",\"22,636 K\"",
+      "\"rustc.exe\",\"15232\",\"RDP-Tcp#0\",\"2\",\"85,656 K\""
+    ],
+    "cpu_percent": 48.24,
+    "cpu_samples": [
+      49.4140625,
+      46.875,
+      48.4375
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained",
+    "disk_free": 43852865536,
+    "owned_affinity_mask": 3
+  },
+  "outcome": "PARTIAL",
+  "test_binary_sha256": {
+    "target\\debug\\deps\\gielinor_server-894795c80ff17bc3.exe": "3010938c0dd35733fb0ce1dcbfab2332aad7b683b6420ff46478b5025e0c57c0",
+    "target\\debug\\deps\\gielinor_world-379bc28e5667f47e.exe": "2ba568a3a7b06c9625c827276ec52bc03038e0ddf97b3ad6848d1c2e42f62f04"
+  }
+}

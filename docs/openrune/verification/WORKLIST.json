@@ -1,16 +1,19 @@
 {
-  "observed_utc": "2026-10-18T01:44:12.535290+00:00",
-  "forge_head": "6e469bc1dacab463190917e8189f8add83c08d8f",
-  "queue_sha256": "b33764a1aa21d43cbc4d1ba84ca16ca1df4130206448063780354cfa367a7983",
+  "observed_utc": "2026-10-18T02:24:15.520193+00:00",
+  "forge_head": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
+  "queue_sha256": "acacfc573488300b693458b7be60d0372fbac2f6f30a30585ceb18ebf3aadc41",
   "published_validator_sha256": "5e5a3a2aa9a8e83db555150e09332188486a6b13c9bb3be1925eac2357346354",
   "published_validator_status": "PASS",
   "json_schema_status": "UNAVAILABLE: jsonschema package; published validator PASS",
-  "records": 57,
-  "implementation_units": 53,
+  "records": 63,
+  "implementation_units": 57,
   "new_contracts": [
-    "OR-MIG-0053"
+    "OR-MIG-0057"
   ],
-  "updated_contracts": [],
+  "updated_contracts": [
+    "OR-MIG-0055",
+    "OR-MIG-0056"
+  ],
   "new_since_initial_checkpoint": [
     "OR-MIG-0022",
     "OR-MIG-0023",
@@ -43,7 +46,11 @@
     "OR-MIG-0050",
     "OR-MIG-0051",
     "OR-MIG-0052",
-    "OR-MIG-0053"
+    "OR-MIG-0053",
+    "OR-MIG-0054",
+    "OR-MIG-0055",
+    "OR-MIG-0056",
+    "OR-MIG-0057"
   ],
   "items": [
     {
@@ -80,7 +87,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -93,12 +100,17 @@
           "crates/server/src/application.rs",
           "crates/server/src/characters.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -124,7 +136,9 @@
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/prayer.rs",
@@ -135,12 +149,18 @@
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
           "crates/world/src/simulation/swamp_tar_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
           "crates/world/src/simulation/unfinished_potion_actions.rs",
           "crates/world/src/swamp_tar.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/src/unfinished_potions.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
@@ -150,7 +170,8 @@
       "reference_limitations": [
         "Automatic cleaning, quest-specific herbs and full quest content remain unimplemented.",
         "Independent verification pending; protected fixtures/oracles may need explicit availability resolution."
-      ]
+      ],
+      "execution_disposition": "DEFERRED_BY_USER"
     },
     {
       "implementation_id": "OR-MIG-0002",
@@ -186,7 +207,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -199,12 +220,17 @@
           "crates/server/src/application.rs",
           "crates/server/src/characters.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -229,7 +255,9 @@
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/prayer.rs",
@@ -240,12 +268,18 @@
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
           "crates/world/src/simulation/swamp_tar_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
           "crates/world/src/simulation/unfinished_potion_actions.rs",
           "crates/world/src/swamp_tar.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -254,7 +288,8 @@
       "reference_limitations": [
         "Quest completion, acquisition and all other vessel recipes are outside this unit.",
         "Independent verification pending; protected fixtures/oracles may need explicit availability resolution."
-      ]
+      ],
+      "execution_disposition": "DEFERRED_BY_USER"
     },
     {
       "implementation_id": "OR-MIG-0003",
@@ -290,7 +325,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -303,12 +338,17 @@
           "crates/server/src/application.rs",
           "crates/server/src/characters.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -333,7 +373,9 @@
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/prayer.rs",
@@ -344,12 +386,18 @@
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
           "crates/world/src/simulation/swamp_tar_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
           "crates/world/src/simulation/unfinished_potion_actions.rs",
           "crates/world/src/swamp_tar.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -358,7 +406,8 @@
       "reference_limitations": [
         "This historical unit excludes later Ancient brew, Menaphite remedy and Anti-venom+ extensions; drinking is separate.",
         "Independent verification pending; protected fixtures/oracles may need explicit availability resolution."
-      ]
+      ],
+      "execution_disposition": "DEFERRED_BY_USER"
     },
     {
       "implementation_id": "OR-MIG-0004",
@@ -394,7 +443,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -407,12 +456,17 @@
           "crates/server/src/application.rs",
           "crates/server/src/characters.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -436,7 +490,9 @@
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/prayer.rs",
@@ -447,9 +503,15 @@
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -458,7 +520,8 @@
       "reference_limitations": [
         "All equipment modifiers, acquisition and ranged-weapon use require separate contracts.",
         "Independent verification pending; protected fixtures/oracles may need explicit availability resolution."
-      ]
+      ],
+      "execution_disposition": "DEFERRED_BY_USER"
     },
     {
       "implementation_id": "OR-MIG-0005",
@@ -494,7 +557,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -506,12 +569,17 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -528,7 +596,9 @@
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/prayer.rs",
@@ -538,9 +608,15 @@
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -549,7 +625,8 @@
       "reference_limitations": [
         "Wiki no-skill superior-bone policy intentionally differs from unverified donor stat rows; acquisition excluded.",
         "Independent verification pending; protected fixtures/oracles may need explicit availability resolution."
-      ]
+      ],
+      "execution_disposition": "DEFERRED_BY_USER"
     },
     {
       "implementation_id": "OR-MIG-0006",
@@ -602,7 +679,7 @@
         ]
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -614,12 +691,17 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -636,7 +718,9 @@
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/prayer.rs",
@@ -646,9 +730,15 @@
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ],
         "last_executed_scope": {
@@ -668,7 +758,8 @@
       "reference_limitations": [
         "Alchemist amulet/storage unsupported; legacy native samples do not establish probability or all combinations.",
         "Independent verification pending; protected fixtures/oracles may need explicit availability resolution."
-      ]
+      ],
+      "execution_disposition": "DEFERRED_BY_USER"
     },
     {
       "implementation_id": "OR-MIG-0007",
@@ -704,7 +795,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -716,12 +807,17 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -738,7 +834,9 @@
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/prayer.rs",
@@ -748,9 +846,15 @@
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -759,7 +863,8 @@
       "reference_limitations": [
         "Drinking stamina effect, acquisition and native modifier combinations separate.",
         "Independent verification pending; protected fixtures/oracles may need explicit availability resolution."
-      ]
+      ],
+      "execution_disposition": "DEFERRED_BY_USER"
     },
     {
       "implementation_id": "OR-MIG-0008",
@@ -795,7 +900,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -807,12 +912,17 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -829,7 +939,9 @@
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/prayer.rs",
@@ -839,9 +951,15 @@
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -850,7 +968,8 @@
       "reference_limitations": [
         "Wiki-supported extension; literal donor matching-row provenance and drinking effects are not claimed.",
         "Independent verification pending; protected fixtures/oracles may need explicit availability resolution."
-      ]
+      ],
+      "execution_disposition": "DEFERRED_BY_USER"
     },
     {
       "implementation_id": "OR-MIG-0009",
@@ -886,7 +1005,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -898,12 +1017,17 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -920,7 +1044,9 @@
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/prayer.rs",
@@ -930,9 +1056,15 @@
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -941,7 +1073,8 @@
       "reference_limitations": [
         "Drinking divine effects, dust acquisition and every modifier combination remain separate.",
         "Independent verification pending; protected fixtures/oracles may need explicit availability resolution."
-      ]
+      ],
+      "execution_disposition": "DEFERRED_BY_USER"
     },
     {
       "implementation_id": "OR-MIG-0010",
@@ -995,7 +1128,7 @@
         ]
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1007,12 +1140,17 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -1025,7 +1163,9 @@
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/prayer.rs",
@@ -1034,9 +1174,15 @@
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ],
         "last_executed_scope": {
@@ -1054,7 +1200,8 @@
       "reference_limitations": [
         "Wiki four-dose policy corrects donor three-dose row; acquisition and drinking excluded.",
         "Independent verification pending; protected fixtures/oracles may need explicit availability resolution."
-      ]
+      ],
+      "execution_disposition": "DEFERRED_BY_USER"
     },
     {
       "implementation_id": "OR-MIG-0011",
@@ -1090,7 +1237,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1102,12 +1249,17 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -1120,7 +1272,9 @@
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/prayer.rs",
@@ -1129,9 +1283,15 @@
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -1140,7 +1300,8 @@
       "reference_limitations": [
         "Wiki-supported family; donor literal matching row, drinking and acquisition not attested.",
         "Independent verification pending; protected fixtures/oracles may need explicit availability resolution."
-      ]
+      ],
+      "execution_disposition": "DEFERRED_BY_USER"
     },
     {
       "implementation_id": "OR-MIG-0012",
@@ -1176,7 +1337,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1188,12 +1349,17 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -1206,7 +1372,9 @@
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/prayer.rs",
@@ -1215,9 +1383,15 @@
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -1226,7 +1400,8 @@
       "reference_limitations": [
         "Extended antifire is not true super antifire; learned-gate super antifire remains unresolved.",
         "Independent verification pending; protected fixtures/oracles may need explicit availability resolution."
-      ]
+      ],
+      "execution_disposition": "DEFERRED_BY_USER"
     },
     {
       "implementation_id": "OR-MIG-0013",
@@ -1262,7 +1437,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1274,12 +1449,17 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -1291,7 +1471,9 @@
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
@@ -1299,8 +1481,14 @@
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -1309,7 +1497,8 @@
       "reference_limitations": [
         "Drinking magic/prayer/drain effects and acquisition are separate.",
         "Independent verification pending; protected fixtures/oracles may need explicit availability resolution."
-      ]
+      ],
+      "execution_disposition": "DEFERRED_BY_USER"
     },
     {
       "implementation_id": "OR-MIG-0014",
@@ -1345,7 +1534,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1357,12 +1546,17 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -1374,15 +1568,23 @@
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -1391,7 +1593,8 @@
       "reference_limitations": [
         "Ingredient grinding is OR-MIG-0015; acquisition and drinking effects separate.",
         "Independent verification pending; protected fixtures/oracles may need explicit availability resolution."
-      ]
+      ],
+      "execution_disposition": "DEFERRED_BY_USER"
     },
     {
       "implementation_id": "OR-MIG-0015",
@@ -1427,7 +1630,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1439,12 +1642,17 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -1455,14 +1663,22 @@
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -1471,7 +1687,8 @@
       "reference_limitations": [
         "Wiki-supported stack extension; native capacity/overflow negatives and acquisition need independent verification.",
         "Independent verification pending; protected fixtures/oracles may need explicit availability resolution."
-      ]
+      ],
+      "execution_disposition": "DEFERRED_BY_USER"
     },
     {
       "implementation_id": "OR-MIG-0016",
@@ -1507,7 +1724,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1519,12 +1736,17 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -1535,14 +1757,22 @@
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -1551,7 +1781,8 @@
       "reference_limitations": [
         "Drinking renewal/divine-removal effects and acquisition excluded.",
         "Independent verification pending; protected fixtures/oracles may need explicit availability resolution."
-      ]
+      ],
+      "execution_disposition": "DEFERRED_BY_USER"
     },
     {
       "implementation_id": "OR-MIG-0017",
@@ -1587,7 +1818,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1599,12 +1830,17 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -1613,14 +1849,22 @@
           "crates/world/src/cooking.rs",
           "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -1629,7 +1873,8 @@
       "reference_limitations": [
         "Only explicitly attested four-dose recipes registered; partial-dose production, drinking and acquisition remain unverified.",
         "Independent verification pending; protected fixtures/oracles may need explicit availability resolution."
-      ]
+      ],
+      "execution_disposition": "DEFERRED_BY_USER"
     },
     {
       "implementation_id": "OR-MIG-0018",
@@ -1668,7 +1913,7 @@
         ]
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1680,12 +1925,17 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -1694,14 +1944,22 @@
           "crates/world/src/cooking.rs",
           "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ],
         "last_executed_scope": {
@@ -1719,7 +1977,8 @@
       "reference_limitations": [
         "Not full ConsumePotionScript parity: sound, area/activity restrictions, unsupported effects and complete delay policy remain separate.",
         "Actual native/lifecycle/reference verification is queued; legacy fixtures are retained, not rewritten to claim parity."
-      ]
+      ],
+      "execution_disposition": "DEFERRED_BY_USER"
     },
     {
       "implementation_id": "OR-MIG-0019",
@@ -1755,7 +2014,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1767,12 +2026,17 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -1781,14 +2045,22 @@
           "crates/world/src/cooking.rs",
           "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ],
         "last_executed_scope": {
@@ -1807,7 +2079,8 @@
         "Sound, full activity/area restrictions and complete donor consumable timing are inherited outstanding obligations of OR-MIG-0018.",
         "No independent native/lifecycle/differential acceptance yet; status is queued, not verified.",
         "Original compiled Kotlin comparison is not assumed available."
-      ]
+      ],
+      "execution_disposition": "DEFERRED_BY_USER"
     },
     {
       "implementation_id": "OR-MIG-0020",
@@ -1843,7 +2116,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1855,12 +2128,17 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -1869,14 +2147,22 @@
           "crates/world/src/cooking.rs",
           "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ],
         "last_executed_scope": {
@@ -1895,7 +2181,8 @@
         "Explicit discrepancy: source helper defaults drain minimum1; pinned Wiki describes level1 drain to0; Rust deliberately uses Wiki minimum0.",
         "Independent V0-V4 pending; inherited sound/activity/full delay policy remains incomplete.",
         "No blanket source/dependency clearance; independently authored behavior adapter only."
-      ]
+      ],
+      "execution_disposition": "DEFERRED_BY_USER"
     },
     {
       "implementation_id": "OR-MIG-0021",
@@ -1931,7 +2218,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1944,12 +2231,17 @@
           "crates/server/src/application.rs",
           "crates/server/src/characters.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -1982,6 +2274,7 @@
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/milking.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/prayer.rs",
@@ -1999,12 +2292,17 @@
           "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/milking_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
           "crates/world/src/simulation/swamp_tar_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
           "crates/world/src/simulation/unfinished_potion_actions.rs",
           "crates/world/src/simulation/water_source_actions.rs",
           "crates/world/src/swamp_tar.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/src/unfinished_potions.rs",
           "crates/world/src/water_sources.rs",
           "crates/world/tests/kotlin_packed_reach.rs",
@@ -2017,7 +2315,8 @@
         "Historical scoped correction, not full smithing port: modifiers, ring charges, furnace generation and cadence/native/lifecycle acceptance remain unresolved.",
         "Only ordinary iron impurity policy covered; no equipped/Imcando tool support added.",
         "Original PG admission-only level/tool check deliberately tightened; no exact original timing parity claimed."
-      ]
+      ],
+      "execution_disposition": "ELIGIBLE"
     },
     {
       "implementation_id": "OR-MIG-0022",
@@ -2053,7 +2352,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2065,12 +2364,17 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
@@ -2078,13 +2382,21 @@
           "crates/world/src/cooking.rs",
           "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ],
         "last_executed_scope": {
@@ -2102,7 +2414,8 @@
       "reference_limitations": [
         "Ordinary only; divine variants and their timers/damage excluded.",
         "Independent V0-V4 pending; sound/activity/full consumable delay obligations inherited from0018 remain."
-      ]
+      ],
+      "execution_disposition": "DEFERRED_BY_USER"
     },
     {
       "implementation_id": "OR-MIG-0023",
@@ -2147,7 +2460,7 @@
         ]
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2160,12 +2473,17 @@
           "crates/server/src/application.rs",
           "crates/server/src/characters.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -2195,7 +2513,9 @@
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/herb_cleaning.rs",
+          "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/prayer.rs",
@@ -2210,14 +2530,20 @@
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/herb_cleaning_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/milking_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
           "crates/world/src/simulation/swamp_tar_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
           "crates/world/src/simulation/unfinished_potion_actions.rs",
           "crates/world/src/simulation/water_source_actions.rs",
           "crates/world/src/swamp_tar.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/src/unfinished_potions.rs",
           "crates/world/src/water_sources.rs",
           "crates/world/tests/kotlin_packed_reach.rs",
@@ -2229,7 +2555,8 @@
       "reference_limitations": [
         "Historical subset only: other configured packs and shops/stocks excluded.",
         "Historical17profile native/same-save evidence retained but not relabelled independent acceptance; rendered client, multiplayer and exact native cadence excluded."
-      ]
+      ],
+      "execution_disposition": "ELIGIBLE"
     },
     {
       "implementation_id": "OR-MIG-0024",
@@ -2257,21 +2584,24 @@
           },
           "V2": {
             "status": "IN_PROGRESS",
-            "reason": "All six genuine native meat/cake/pizza actions, including four formerly unexecuted bites, selected duplicates, remainder progression, HP cap and no XP; acknowledged save, real restart and independently decoded native relogin durable state PASS. Scoped subchecks only; complete level acceptance remains open.",
+            "reason": "Native full28 selected cake replacement, replayed stale whole-cake claim with untouched whole-cake duplicate, actual Saradomin brew HP10->13, delayed legal Eat preserving HP13 and no XP. Whole bag remains occupied. Acknowledged save, actual restart and native relogin preserve selected partial cake, brew dose and all other slots; received initial Stats match durable pre-restart values. Scoped subchecks only; complete level acceptance remains open.",
             "evidence": [
-              "docs/openrune/verification/independent/deep-food-observer/observer-001/independent-assessment.json"
+              "docs/openrune/verification/independent/deep-food-negative/negative-003/independent-assessment.json"
             ]
           },
           "V3": {
             "status": "IN_PROGRESS",
-            "reason": "All six genuine native meat/cake/pizza actions, including four formerly unexecuted bites, selected duplicates, remainder progression, HP cap and no XP; acknowledged save, real restart and independently decoded native relogin durable state PASS. Scoped subchecks only; complete level acceptance remains open.",
+            "reason": "Native full28 selected cake replacement, replayed stale whole-cake claim with untouched whole-cake duplicate, actual Saradomin brew HP10->13, delayed legal Eat preserving HP13 and no XP. Whole bag remains occupied. Acknowledged save, actual restart and native relogin preserve selected partial cake, brew dose and all other slots; received initial Stats match durable pre-restart values. Scoped subchecks only; complete level acceptance remains open.",
             "evidence": [
-              "docs/openrune/verification/independent/deep-food-observer/observer-001/independent-assessment.json"
+              "docs/openrune/verification/independent/deep-food-negative/negative-003/independent-assessment.json"
             ]
           },
           "V4": {
-            "status": "NOT_STARTED",
-            "reason": "Awaiting applicable independent campaign"
+            "status": "IN_PROGRESS",
+            "reason": "Independent source/pinned Shark revision audit PASS for supported selected replacement, heal20, transaction ordering and explicitly different local rollback/presentation policies. Complete static profile reference, activity/combat timing and sound/presentation remain open; no Kotlin executable observation claimed.",
+            "evidence": [
+              "docs/openrune/verification/independent/reference-ordinary-food/comparison.json"
+            ]
           }
         },
         "evidence_attempts": [
@@ -2279,7 +2609,7 @@
         ]
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2291,12 +2621,17 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
@@ -2304,13 +2639,21 @@
           "crates/world/src/cooking.rs",
           "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ],
         "last_executed_scope": {
@@ -2330,17 +2673,9 @@
         "Configured skill-boost pie effects detailed in OR-MIG-0033; full food/content parity is not established.",
         "Sound,full area/activity/combat timing and independent native/lifecycle/reference acceptance remain incomplete."
       ],
-      "verification_blockers": [
-        {
-          "level": "V2",
-          "case_status": "BLOCKED",
-          "scope": "Remaining four bites and full six-action native client verdict",
-          "reason": "Pinned food-001 driver times out after first cake action at a strict intermediate HP equality. Server commit and durable native state are verified; passive-regeneration collision is supported by an exact-SHA reproducer, but original production-session packet observation is insufficient for conclusive root cause.",
-          "target_sha": "ae3d234c71764dd2364f8452fc1974a54a6783f0",
-          "finding": "PG-INFRA-004",
-          "no_substituted_build": true
-        }
-      ]
+      "execution_disposition": "ELIGIBLE",
+      "verification_blockers": [],
+      "resolved_observation_blocker": "PG-INFRA-004: independent fresh six-action observer and real restart/relogin PASS; original missed equality remains inferred"
     },
     {
       "implementation_id": "OR-MIG-0025",
@@ -2376,7 +2711,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2388,12 +2723,17 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
@@ -2401,13 +2741,21 @@
           "crates/world/src/cooking.rs",
           "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -2418,7 +2766,8 @@
         "Donor raw meat/anchovy pizza heals3/2 differ from Wiki8/9; Wiki values deliberately retained and V4 comparison requested.",
         "No independent native/lifecycle acceptance; target16definition preflight is not startup gameplay acceptance.",
         "Sound, activity/access and full combat timing remain incomplete."
-      ]
+      ],
+      "execution_disposition": "ELIGIBLE"
     },
     {
       "implementation_id": "OR-MIG-0026",
@@ -2454,7 +2803,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2466,12 +2815,17 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
@@ -2479,13 +2833,21 @@
           "crates/world/src/cooking.rs",
           "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -2495,7 +2857,8 @@
         "Ordinary healing/consumption subset only; Onion conditional flavor chat and Ugthanki kebab healed-only Yum overhead remain cosmetic obligations.",
         "Full sound/activity/access/combat timing and independent native/lifecycle acceptance pending.",
         "Target10definition preflight is not startup/native acceptance; no pristine-SHA rebuild claim."
-      ]
+      ],
+      "execution_disposition": "ELIGIBLE"
     },
     {
       "implementation_id": "OR-MIG-0027",
@@ -2531,7 +2894,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2544,12 +2907,17 @@
           "crates/server/src/application.rs",
           "crates/server/src/characters.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -2579,7 +2947,9 @@
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/herb_cleaning.rs",
+          "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/prayer.rs",
@@ -2594,13 +2964,19 @@
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/herb_cleaning_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/milking_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
           "crates/world/src/simulation/swamp_tar_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
           "crates/world/src/simulation/unfinished_potion_actions.rs",
           "crates/world/src/swamp_tar.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/src/unfinished_potions.rs",
           "crates/world/tests/kotlin_packed_reach.rs",
           "crates/world/tests/openrune_burial.rs"
@@ -2612,7 +2988,8 @@
         "Four-vessel/four-source subset only; cups/cans/skins/transfers and other source families excluded.",
         "Wiki well cup evidence conflicts with earlier bucket-only wording; no blanket bucket-only policy asserted outside the four selected vessels.",
         "Native sink873 history exists; wells/other sinks/complete negatives/rendering/multiplayer independently unverified."
-      ]
+      ],
+      "execution_disposition": "ELIGIBLE"
     },
     {
       "implementation_id": "OR-MIG-0028",
@@ -2648,7 +3025,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2661,12 +3038,17 @@
           "crates/server/src/application.rs",
           "crates/server/src/characters.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -2696,7 +3078,9 @@
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/herb_cleaning.rs",
+          "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/prayer.rs",
@@ -2710,12 +3094,18 @@
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/herb_cleaning_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
           "crates/world/src/simulation/swamp_tar_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
           "crates/world/src/simulation/unfinished_potion_actions.rs",
           "crates/world/src/swamp_tar.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/src/unfinished_potions.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
@@ -2725,7 +3115,8 @@
       "reference_limitations": [
         "Ordinary bucket harvesting only; bottomless bucket,cowbell quest and dialogue flows excluded.",
         "Historical native60788 menu/use and same-savePASS; other variants/native interruption/rendered client/multiplayer remain independent."
-      ]
+      ],
+      "execution_disposition": "ELIGIBLE"
     },
     {
       "implementation_id": "OR-MIG-0029",
@@ -2761,7 +3152,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2774,12 +3165,17 @@
           "crates/server/src/application.rs",
           "crates/server/src/characters.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -2805,7 +3201,9 @@
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/prayer.rs",
@@ -2816,12 +3214,18 @@
           "crates/world/src/simulation/finished_potion_actions.rs",
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
           "crates/world/src/simulation/swamp_tar_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
           "crates/world/src/simulation/unfinished_potion_actions.rs",
           "crates/world/src/swamp_tar.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/src/unfinished_potions.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
@@ -2831,7 +3235,8 @@
       "reference_limitations": [
         "Nine choices only; nativeAll/same-save/capacity history retained but other negatives/multiplayer and independent acceptance remain pending.",
         "Wiki bread-return field completeness remains unresolved; selected lossless pot/vessel return policy is explicit adaptation."
-      ]
+      ],
+      "execution_disposition": "ELIGIBLE"
     },
     {
       "implementation_id": "OR-MIG-0030",
@@ -2867,7 +3272,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2879,12 +3284,17 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
@@ -2892,13 +3302,21 @@
           "crates/world/src/cooking.rs",
           "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -2908,7 +3326,8 @@
         "Prepared fruit consumption only; cutting/creation,quest/gnome recipe interactions and whole fruit variants excluded.",
         "Four individual pages omit heal amount; pinned Food/Allfood explicit2HP rows resolve those fields,not an inferred zero/default.",
         "Independent native/lifecycle/reference acceptance pending; full sound/activity/access/combat timing remain incomplete."
-      ]
+      ],
+      "execution_disposition": "ELIGIBLE"
     },
     {
       "implementation_id": "OR-MIG-0031",
@@ -2944,7 +3363,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2956,12 +3375,17 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
@@ -2969,13 +3393,21 @@
           "crates/world/src/cooking.rs",
           "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -2985,7 +3417,8 @@
         "Manual assembly only; Make-X/automatic repeat remains pending as preserved earlier deferral.",
         "Baking success/burn,210XP,cooked consumption and independent native/lifecycle/reference acceptance excluded.",
         "Generic combine message retained rather than complete donor dialogue/output parity."
-      ]
+      ],
+      "execution_disposition": "ELIGIBLE"
     },
     {
       "implementation_id": "OR-MIG-0032",
@@ -3021,7 +3454,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3034,12 +3467,17 @@
           "crates/server/src/application.rs",
           "crates/server/src/characters.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/potions.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
@@ -3067,7 +3505,9 @@
           "crates/world/src/grinding.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/herb_cleaning.rs",
+          "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/potion_upgrades.rs",
           "crates/world/src/potions.rs",
           "crates/world/src/prayer.rs",
@@ -3080,12 +3520,18 @@
           "crates/world/src/simulation/grinding_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
           "crates/world/src/simulation/herb_cleaning_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/potion_upgrade_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
           "crates/world/src/simulation/swamp_tar_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
           "crates/world/src/simulation/unfinished_potion_actions.rs",
           "crates/world/src/swamp_tar.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/src/unfinished_potions.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
@@ -3096,7 +3542,8 @@
         "Historical27pair subset only; Pineapple cutting separate,Admiral manual added later in0031,Make-X/baking excluded.",
         "Historical selected native normal/member/refusal/same-save tests retained but not independent acceptance or whole27matrix certification.",
         "Generic messages/full activity/combat/quantity handling remain independent obligations."
-      ]
+      ],
+      "execution_disposition": "ELIGIBLE"
     },
     {
       "implementation_id": "OR-MIG-0033",
@@ -3132,7 +3579,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3144,12 +3591,17 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
@@ -3157,13 +3609,21 @@
           "crates/world/src/cooking.rs",
           "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -3173,7 +3633,8 @@
         "Seven pie families only;baking/creation,cooked success and other special/dynamic/energy/timed foods excluded.",
         "Dragonfruit donor item list omits final dish;Wiki explicitly retains it,so Rust returns dish intentionally.",
         "Full sound/activity/access/combat timing and independent native/lifecycle/reference acceptance pending."
-      ]
+      ],
+      "execution_disposition": "ELIGIBLE"
     },
     {
       "implementation_id": "OR-MIG-0034",
@@ -3215,7 +3676,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3227,12 +3688,17 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
@@ -3240,13 +3706,21 @@
           "crates/world/src/cooking.rs",
           "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -3257,7 +3731,8 @@
         "Summerdish return follows Wiki over donor omitted final dish.",
         "Existing FoodTransition has HP/item fields;Energy events/state must supplement it,not be misrepresented as an energy trace receipt.",
         "Independent native/lifecycle/reference and full sound/activity/combat timing acceptance pending."
-      ]
+      ],
+      "execution_disposition": "ELIGIBLE"
     },
     {
       "implementation_id": "OR-MIG-0035",
@@ -3305,7 +3780,7 @@
         ]
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3317,12 +3792,17 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
@@ -3330,13 +3810,21 @@
           "crates/world/src/cooking.rs",
           "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -3347,7 +3835,8 @@
         "Watermelon donorceil5% differs from Wiki floor5%+1 atbase20/40/60/80;Wiki table/prose chosen deliberately.",
         "Bowl return supported by donor stage list;Wiki bowl page confirms healing but does not explicitly describe return.",
         "Independent native/lifecycle/reference and full sound/activity/combat timing acceptance pending;creation/cutting/cooking and other special foods excluded."
-      ]
+      ],
+      "execution_disposition": "ELIGIBLE"
     },
     {
       "implementation_id": "OR-MIG-0036",
@@ -3383,7 +3872,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3395,12 +3884,17 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
@@ -3408,12 +3902,21 @@
           "crates/world/src/cooking.rs",
           "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -3424,7 +3927,8 @@
         "PGcustomFoodCookedhooks/exactflavormessages/sounds not reproduced;no fullCooking/Firemaking parity ornative/lifecycleacceptance claimed.",
         "Donortablelow50/high256 andPGcachelow64/high255/chickenbeefstop31 intentionally replaced bypinnedWiki low128/high512/ordinaryfirestop34.",
         "WorldRNGseedstream doesnotclaimKotlinstandardRandom equivalence;V4 shouldcompareexplicitdraws/thresholdsanddocumentdifferences."
-      ]
+      ],
+      "execution_disposition": "ELIGIBLE"
     },
     {
       "implementation_id": "OR-MIG-0037",
@@ -3460,7 +3964,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3471,21 +3975,37 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/cooking.rs",
           "crates/world/src/food.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -3495,7 +4015,8 @@
         "Revision1 contained five wrong burnt outputs: Sardine323, Herring343 and Trout/Pike/Salmon357. Its passing recipe-metadata tests did not establish semantic variant identity. This revision requests independent retesting at the corrected source SHA.",
         "Manual ordinary fire only, with conditional inheritance by the range adapter. Quantity/Make-X, other surfaces, cape/gauntlet/outfit/activity modifiers, local PG hooks, sounds and independent native/lifecycle/reference acceptance remain pending.",
         "Donor ordinal aliases and target generic display names are reference inputs, not proof of canonical Wiki variant identity. No saved item or historical fixture is rewritten by this correction."
-      ]
+      ],
+      "execution_disposition": "ELIGIBLE"
     },
     {
       "implementation_id": "OR-MIG-0038",
@@ -3531,7 +4052,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3543,12 +4064,17 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
@@ -3556,12 +4082,21 @@
           "crates/world/src/cooking.rs",
           "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -3572,7 +4107,8 @@
         "DonorStewEvents onlypotatofirst3pairs/noexplicitlevelortiming;Wiki eitherorder6pairs/boostable25/2ticks selecteddeliberately.",
         "Bowlreturn followsFoodDataexplicitstage;WikiStewconfirms11HP butdoesnotexplicitlystateemptybowlreturninthisarticle.",
         "Independentnative/lifecycle/referenceacceptancepending;MakeX/repeats/ranges/quests/modifiers/curry/spicystew/fullsound/activity/customPGhooksremainseparate."
-      ]
+      ],
+      "execution_disposition": "ELIGIBLE"
     },
     {
       "implementation_id": "OR-MIG-0039",
@@ -3608,7 +4144,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3620,12 +4156,17 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
@@ -3633,12 +4174,21 @@
           "crates/world/src/cooking.rs",
           "crates/world/src/food.rs",
           "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -3648,7 +4198,8 @@
         "DonorCakeEvents onlybarandnoexplicitgate/XP;Wiki15336092 dust/current50/30XP/2ticks selectedintentionally.",
         "Fouringredientuncookedcake,baking,quantity/MakeX,exactflavor/soundandindependentnative/lifecycle/referenceacceptancepending.",
         "Existingmultipartconsumptioncontract0025 retained;thisunitdoesnotreclaimitsindependentacceptance."
-      ]
+      ],
+      "execution_disposition": "ELIGIBLE"
     },
     {
       "implementation_id": "OR-MIG-0040",
@@ -3692,7 +4243,7 @@
         ]
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3703,22 +4254,38 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/cooking.rs",
           "crates/world/src/food.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
           "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -3729,7 +4296,8 @@
         "Batchadaptercurrentlyordinarysingle-countdistinctingredients/nonstackoutputs;notunqualifiedgeneralstackmaterialorbulkproductioncoverage.",
         "Donorunchecked4debit/3credit/noexplicitlevel/timing intentionallyreplacedbyWiki40/2ticks/0XPandatomic/capturedslotpolicy.",
         "IndependentV0-V4/native/lifecycle/referenceacceptance,quantity/MakeX/sounds/exactflavorremainqueued. Modal-openingcancellationnowalsoappliesexistingpairassemblyandmustberegressedindependently."
-      ]
+      ],
+      "execution_disposition": "ELIGIBLE"
     },
     {
       "implementation_id": "OR-MIG-0041",
@@ -3765,7 +4333,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3776,21 +4344,37 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/cooking.rs",
           "crates/world/src/food.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -3802,7 +4386,8 @@
         "Metadataunitisolatessurface/asymmetric/newBreadlogicusingprerequisiteprofiles;doesnotclaimfreshnativeall14inputsorloadedsceneacceptance.",
         "Item-on-standardrangeonly;Cook-op1/MakeX/autoquantity,otherhearths/questgates,cape/gauntlet/outfits/activity,sounds/exactflavor/customPGhooks,cakebaking andindependentnative/lifecycle/referenceacceptancepending.",
         "Revision1 inherited the five wrong OR-MIG-0037revision1burnt outputs. This revision uses the corrected shared bindings and adds exact fire/range expected-ID assertions. Historical range/bread tests did not establish every inherited variant identity."
-      ]
+      ],
+      "execution_disposition": "ELIGIBLE"
     },
     {
       "implementation_id": "OR-MIG-0042",
@@ -3838,7 +4423,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3849,21 +4434,37 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/cooking.rs",
           "crates/world/src/food.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -3874,7 +4475,8 @@
         "BurntpiecacheoffersEmpty Dish;thisbatchdoesnotaddthatfollow-uphandler orclaimitaccepted.",
         "Manualrangeonly;BakePiespell,MakeX/repeat/Cook-op1/shortcuts,memberspies/cake-tinreturns,specialsurfaces/modifiers,sounds/exactflavor andindependentnative/lifecycle/referenceacceptancepending.",
         "Existing sharedsuccess_rateprecision/cutoffobligationsretained;metadata/preflightandfocusedtestsarenotloadedscene/nativeacceptance."
-      ]
+      ],
+      "execution_disposition": "ELIGIBLE"
     },
     {
       "implementation_id": "OR-MIG-0043",
@@ -3910,7 +4512,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3921,21 +4523,37 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/cooking.rs",
           "crates/world/src/food.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/cooking_actions.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -3946,7 +4564,8 @@
         "None means no forced cutoff; it does not promise that the legacy curve cannot reach probability1above99. Existing rounding and probability-precision obligations remain.",
         "Donor Fish80/Botanical85/Mushroom90/Dragonfruit97/Wild99/Summer99 cutoffs, uniform50/256rates and Dragonfruit210XP deliberately differ from the selected Wiki rules74/84/89/None/None/Noneand220XP.",
         "Burnt-pie Empty Dish and cake-baking tin returns remain separate. Previous F2P profiles passed regression; that is not fresh native acceptance of every profile."
-      ]
+      ],
+      "execution_disposition": "ELIGIBLE"
     },
     {
       "implementation_id": "OR-MIG-0044",
@@ -3982,7 +4601,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3993,19 +4612,35 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/food.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -4016,7 +4651,8 @@
         "Cooking cape/gauntlets/outfits/diaries, other surfaces, quantity/Make-X/Cook menus, shortcuts, exact flavor/sound and local PG hooks remain unported. None is no forced cutoff; boosted-level/legacy probability precision still needs comparison.",
         "This is cooking production. Anglerfish special consumption remains a missing separate profile; this unit does not establish its HP/overheal/PvP behavior. The other eight outputs already occur in the retained food catalog.",
         "Independent V0\u2013V4/native/lifecycle/compiled-reference and fresh loaded-scene acceptance remain pending. Use Stats.fine_xp/save evidence for fractions, not only the integer transition trace."
-      ]
+      ],
+      "execution_disposition": "ELIGIBLE"
     },
     {
       "implementation_id": "OR-MIG-0045",
@@ -4052,7 +4688,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4063,18 +4699,34 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/food.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -4084,7 +4736,8 @@
         "Bear/rat fire1 is inferred from the existing beef policy; rabbit fire4 is source default while its pinned Wiki one-tick recipe is range-qualified. Exact timing remains V4.",
         "Deliberate re-burning, sinew, raw-boar/yak/impaler variants, skewered/roast rabbit, acquisition/Regicide, Make-X, special surfaces and modifiers remain separate unimplemented obligations.",
         "Independent V0\u2013V4, native/lifecycle/compiled-reference and fresh loaded-scene acceptance remain pending. No complete meat/cooking/food parity claimed."
-      ]
+      ],
+      "execution_disposition": "ELIGIBLE"
     },
     {
       "implementation_id": "OR-MIG-0046",
@@ -4120,7 +4773,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4131,17 +4784,33 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/random_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/food.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -4151,7 +4820,8 @@
         "Random cave-eel consumption is missing and deliberately unregistered; existing lava consumption11HP retained.",
         "Fire timing, modifiers, quantities/Cook menus, special surfaces, fishing/acquisition and Heroes quest dialogue/turn-in remain separate.",
         "Independent V0\u2013V4/native/lifecycle/reference/loaded-scene acceptance pending; no complete eel or cooking parity claimed."
-      ]
+      ],
+      "execution_disposition": "ELIGIBLE"
     },
     {
       "implementation_id": "OR-MIG-0047",
@@ -4187,7 +4857,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4198,15 +4868,31 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/meal_food.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -4217,7 +4903,8 @@
         "Sound/exact generic flavor, attack/combo clock parity, acquisition/cooking (except separately contracted cave production), quest/diary/pet feeding and other timed/special foods remain outside this unit.",
         "Skewer saturated/invalid stack refuses safely; no ground fallback. RandomSource inclusive bounds are reused; seed-equivalent Kotlin streams or exhaustive distribution acceptance are not established.",
         "Anglerfish PvP-area/recent-combat eligibility remains missing; no static22HP or unconditional overheal substitution."
-      ]
+      ],
+      "execution_disposition": "ELIGIBLE"
     },
     {
       "implementation_id": "OR-MIG-0048",
@@ -4253,7 +4940,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4264,14 +4951,30 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/bowl_food.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -4281,7 +4984,8 @@
         "Manual consumption only. Acquisition/quest turn-ins/cooking, Sandwich lady/holiday events, chocolate grinding, potato topping, feeding and Choc-ice automatic desert-heat/thirst remain separate.",
         "Generic flavor/sound and attack-clock parity remain independently unverified except the selected frog/oomlie messages. No full food/quest parity claimed.",
         "Independent V0\u2013V4/native/lifecycle/reference/loaded-scene acceptance pending. Focused check used preserved working tree, not pristine-SHA evidence."
-      ]
+      ],
+      "execution_disposition": "ELIGIBLE"
     },
     {
       "implementation_id": "OR-MIG-0049",
@@ -4317,7 +5021,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4328,13 +5032,29 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
           "crates/server/src/content/dorgesh_food.rs",
+          "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -4344,7 +5064,8 @@
         "Independent V0\u2013V4/native/lifecycle/reference/loaded-scene acceptance pending. Focused check uses working tree; previous full shared regression remains historical.",
         "Preparation/chopping/cooking/topping/knife capture, acquisition/shops, Hunter bait, exact gender-dependent onion cry/flavor/sound and combat-clock parity remain separate.",
         "No complete bowl/cooking/content parity claimed; preparation level requirements are intentionally not imposed on Eat."
-      ]
+      ],
+      "execution_disposition": "ELIGIBLE"
     },
     {
       "implementation_id": "OR-MIG-0050",
@@ -4380,7 +5101,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4390,12 +5111,29 @@
           "V4": "NOT_STARTED"
         },
         "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
+          "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/prayer.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/prayer.rs",
           "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -4405,7 +5143,8 @@
         "Independent V0\u2013V4/native/lifecycle/reference/loaded-scene acceptance pending; focused check used preserved working tree.",
         "Four intentional Wiki healing differences and two boosts need independent verification against pinned rules and supported original observations; donor table alone differs.",
         "Shops/pickpocketing/Gourmet exchange, preparation and quest access are separate. Exact generic flavor/sound/combat-clock remain unverified beyond bat kebab wording. No complete Dorgesh/food parity claimed."
-      ]
+      ],
+      "execution_disposition": "ELIGIBLE"
     },
     {
       "implementation_id": "OR-MIG-0051",
@@ -4418,30 +5157,45 @@
       "historical_verification": {
         "levels": {
           "V0": {
-            "status": "NOT_STARTED",
-            "reason": "Awaiting applicable independent campaign"
+            "status": "PASS",
+            "reason": "Exact-SHA executable built, full actual cache-backed startup and configured native Bury dispatch succeeded. Independently loaded representative bone definitions/reward policy and actual selected-slot transaction confirm the registered entrypoint.",
+            "evidence": [
+              "docs/openrune/verification/independent/deep-prayer/burial-001/independent-assessment.json"
+            ]
           },
           "V1": {
-            "status": "NOT_STARTED",
-            "reason": "Awaiting applicable independent campaign"
+            "status": "IN_PROGRESS",
+            "reason": "Independent execution at exact SHA: five existing Prayer-related library checks and three unchanged selected-burial World action tests PASS; production server cargo check PASS. Autotests-disabled initial harness failure retained. No new authored oracle, native, persistence or full reference acceptance inferred.",
+            "evidence": [
+              "docs/openrune/verification/independent/OR-MIG-0051-f6b0f6ad54fe-attempt-1792288674370777100/manifest.json"
+            ]
           },
           "V2": {
-            "status": "NOT_STARTED",
-            "reason": "Awaiting applicable independent campaign"
+            "status": "IN_PROGRESS",
+            "reason": "Actual exact-SHA cache-backed runtime and native Bury of clicked slot17 from full28 bag, preserving earlier bone slot3 and all unrelated items. Stale replay of actual Bury packet cannot consume another bone or grant XP. Actual configured4.5base at500percent produces225fineXP, displayed22. Acknowledged save, actual process restart and native relogin preserve inventory, exact fractional XP and all Stats without repeat reward. Remaining Chaos/member/modifier/interruption and applicable crash/presentation obligations stay open.",
+            "evidence": [
+              "docs/openrune/verification/independent/deep-prayer/burial-001/independent-assessment.json"
+            ]
           },
           "V3": {
-            "status": "NOT_STARTED",
-            "reason": "Awaiting applicable independent campaign"
+            "status": "IN_PROGRESS",
+            "reason": "Actual exact-SHA cache-backed runtime and native Bury of clicked slot17 from full28 bag, preserving earlier bone slot3 and all unrelated items. Stale replay of actual Bury packet cannot consume another bone or grant XP. Actual configured4.5base at500percent produces225fineXP, displayed22. Acknowledged save, actual process restart and native relogin preserve inventory, exact fractional XP and all Stats without repeat reward. Remaining Chaos/member/modifier/interruption and applicable crash/presentation obligations stay open.",
+            "evidence": [
+              "docs/openrune/verification/independent/deep-prayer/burial-001/independent-assessment.json"
+            ]
           },
           "V4": {
-            "status": "NOT_STARTED",
-            "reason": "Awaiting applicable independent campaign"
+            "status": "IN_PROGRESS",
+            "reason": "Independent six-reference source/pinned-Wiki audit PASS within scope: selected slot versus local type-total policy, exact4.5/72base XP and measured cache rewards, one-clock local versus two-clock donor, stronger atomic rollback and known above-base necklace restoration gap. Complete cadence/sound/Chaos/all-modifier fidelity remains open.",
+            "evidence": [
+              "docs/openrune/verification/independent/reference-selected-burial/comparison.json"
+            ]
           }
         },
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4451,10 +5205,28 @@
           "V4": "NOT_STARTED"
         },
         "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
+          "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/prayer.rs",
+          "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
           "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
           "crates/world/src/simulation/prayer_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs",
           "crates/world/tests/openrune_burial.rs"
         ]
       },
@@ -4465,7 +5237,8 @@
         "One-clock internal timing differs from donor queue2; precise input/consume cadence remains V4. Global Kotlin NaN semantics remain unchanged, with stricter selected caller validation.",
         "Retained legacy necklace restoration may reject above-base Prayer; bone/XP rollback is now safe, but functional restoration policy remains unresolved. Zealot/Catacombs/ashes/modifiers beyond existing packed policy and sound/hooks unported where documented.",
         "No extra bone profiles/XP data or full Prayer parity claimed. Representative3object preflight does not attest every packed row. Original BurySlot is a reference API, not the network gameplay route."
-      ]
+      ],
+      "execution_disposition": "ELIGIBLE"
     },
     {
       "implementation_id": "OR-MIG-0052",
@@ -4501,7 +5274,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4511,8 +5284,27 @@
           "V4": "NOT_STARTED"
         },
         "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
+          "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/prayer.rs",
-          "crates/server/src/startup.rs"
+          "crates/server/src/runtime.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs"
         ]
       },
       "lane": "A",
@@ -4522,7 +5314,8 @@
         "Precise manual cadence/queue2comparison, sound/events, NPC drops/acquisition, sanctifier, Demonic Offering spell, Zealot/non-demonic conservation and altar systems remain separate.",
         "No direct point restoration does not forbid normal XP-driven level/current-level adjustment. Original-reference standalone APIs remain characterization surfaces; actual gameplay uses selected World dispatch.",
         "Retained above-base bone-necklace restoration mismatch from51 remains open and is not used by ashes. No complete Prayer/ashes content parity claimed."
-      ]
+      ],
+      "execution_disposition": "ELIGIBLE"
     },
     {
       "implementation_id": "OR-MIG-0053",
@@ -4558,7 +5351,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "6e469bc1dacab463190917e8189f8add83c08d8f",
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4567,7 +5360,28 @@
           "V3": "NOT_STARTED",
           "V4": "NOT_STARTED"
         },
-        "changed_production_paths": []
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/coin_pouch.rs",
+          "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/item_packs.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/item_pack_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs"
+        ]
       },
       "lane": "A",
       "open_defects": [],
@@ -4576,27 +5390,292 @@
         "Prepared24existing rows include reward differences from donor/Wiki; deliberately untouched custom/configured policy is not accepted parity. Record effective profile before verification.",
         "Acquisition/NPCdrops/coffins, quest/dog events, blessing/bonemeal/spells/altar-specific gates, Ape Atoll crumbling/reanimation/Death reclaim and necklace/Catacombs restoration remain separate.",
         "No higher-level/quest gate invented for ordinary Bury; no new ordinary altar-system port, sound/flavor or complete Prayer parity claimed."
-      ]
+      ],
+      "execution_disposition": "ELIGIBLE"
+    },
+    {
+      "implementation_id": "OR-MIG-0054",
+      "revision": 1,
+      "feature_name": "Citizen coin pouch Open and Open-all through atomic checked pack quantities",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "7fc1306bb5c01540038ce5ff175b577294ade432"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
+          "crates/server/src/content/citizen_thieving.rs",
+          "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/npc_interaction.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/npc_actions.rs",
+          "crates/world/src/simulation/thieving_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/thieving.rs",
+          "crates/world/src/tool_crafting.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "Independent V0-V4/native/persistence/reference acceptance pending; working-tree tests do not constitute pristine-SHA or independent acceptance.",
+        "NPC pickpocketing and acquisition cap28/diary56,84,140, Rogue outfit additional coins, master farmer loot, stalls, failure stun and death/trade handling remain separate.",
+        "Prepared target flags and existing bank resolver inspected; no fresh native banking scenario or full Thieving module parity claimed."
+      ],
+      "execution_disposition": "ELIGIBLE"
+    },
+    {
+      "implementation_id": "OR-MIG-0055",
+      "revision": 2,
+      "feature_name": "Man/Woman base pickpocketing through NPC routing, atomic pouch XP and timed movement stun",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "d19f37d0c02b79e38939f1b54d94dc95bd6296d2"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
+          "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/held_use.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/held_use_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/tool_crafting.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "Independent native/lifecycle/persistence/compiled-referenceV0-V4pending; source tests are working-tree development checks.",
+        "Base policy only: diary56/84/140caps and success boosts, Rogue extra coins, Gloves/cape/dodgy-necklace/Shadow Veil modifiers not implemented. Master farmer seed loot and both stalls remain unported.",
+        "Block/spot/stun text currently immediate at failure; donor delays1/2clocks. NPC caught shout and failure synth are omitted; target synth symbol thieving_stunned is unavailable. Do not invent a replacement sound ID.",
+        "Existing shared statRandom interpolation produces threshold181/256at1and241/256at99; Wiki historical template displays180/255and240/255. Exact rounding/boosts/click/protected-delay cadence remains reference verification work; visible boosts cap99.",
+        "Logout/relogin freeze behavior, native hit timing/death/trade/banking and deployed target/profile coverage remain independent obligations; no complete Thieving parity claimed."
+      ],
+      "execution_disposition": "ELIGIBLE"
+    },
+    {
+      "implementation_id": "OR-MIG-0056",
+      "revision": 2,
+      "feature_name": "Seven deterministic manual gem cuts with retained chisel and fractional Crafting XP",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "5743cbe1c7499e2a7476c721d25dcba194666042"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "IN_PROGRESS",
+            "reason": "Independent exact-SHA execution of two gem-specific authoritative action tests and one seven-profile binding/XP/member test PASS. Deferred grinding suites were not run; native/cache/lifecycle/reference and expanded independent oracle acceptance remain open.",
+            "evidence": [
+              "docs/openrune/verification/independent/OR-MIG-0056-5743cbe1c749/manifest.json"
+            ]
+          },
+          "V1": {
+            "status": "IN_PROGRESS",
+            "reason": "Independent exact-SHA execution of two gem-specific authoritative action tests and one seven-profile binding/XP/member test PASS. Deferred grinding suites were not run; native/cache/lifecycle/reference and expanded independent oracle acceptance remain open.",
+            "evidence": [
+              "docs/openrune/verification/independent/OR-MIG-0056-5743cbe1c749/manifest.json"
+            ]
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
+          "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/startup.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "IndependentV0-V4/native/compiled-reference/persistence acceptance pending; development tests include working-tree checks rather than pristine-SHA verification.",
+        "Manual one selected pair only. Full source Crafting/quantity menu, repeated batch, facilities, jewellery, crushable opal/jade/topaz, other tools/bonus cuts and broader sections remain unported.",
+        "Target synth.chisel alias absent; sound omitted without guessed ID. Actual animation/click/interface cadence and deployed definition/profile coverage remain independent obligations.",
+        "No acquisition/quest/manufacturing XP is invented for already-owned raw stones. Zenyte cut50XP was corrected before publication; initial working-tree test assumptions are superseded and retained."
+      ],
+      "execution_disposition": "ELIGIBLE"
+    },
+    {
+      "implementation_id": "OR-MIG-0057",
+      "revision": 1,
+      "feature_name": "Nine legacy round, pointed and bark shell helmet carvings on shared Crafting adapter",
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "4c6b73cfcd3b35ce52aa79efd9d2a99464939445"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "f3b6f4208b775c23ed8b05b66cca579953a901ea",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/content/amulet_stringing.rs",
+          "crates/server/src/startup.rs"
+        ]
+      },
+      "lane": "A",
+      "open_defects": [],
+      "reference_limitations": [
+        "IndependentV0-V4/native/persistence/compiled-reference acceptance pending; working-tree developer evidence only.",
+        "Manual one selected carve only; production quantity menus/repeated batch, acquisition/NPCdrops/quest/perfect-shell rewards and equipment behavior remain separate.",
+        "Later Vampyre shell/snelm not included in the nine legacy target pairs. Missing target chisel synth alias remains omitted; generic success message says cut rather than donor carve wording.",
+        "Broader Crafting, facilities/jewellery/crushable stones/modifiers and source file obligations remain partial."
+      ],
+      "execution_disposition": "ELIGIBLE"
     }
   ],
   "resume_queue": [
     {
       "lane": "B",
-      "feature": "OR-MIG-0006",
-      "action": "Complete native negative/cancelled held and worn dialogs, last-charge production/modifiers and interrupted production persistence; retain completed positive controls/restart evidence",
-      "sha": "e7ac3608e61893d80b2de6a1a2e512b3ab785505"
+      "feature": "OR-MIG-0051",
+      "action": "Complete native selected burial, stale claimed slot, full inventory, real restart and supported reference comparison; chemistry/Herblore/potions deferred by user",
+      "sha": "f6b0f6ad54fe7813bb6607827eeb8da0e60137fa"
     },
     {
-      "lane": "C",
-      "feature": "OR-MIG-0006",
-      "action": "Inspect shared changes since the last recorded native integration campaign; select affected current-build regression scopes without inheriting older PASS results",
-      "sha": "6e469bc1dacab463190917e8189f8add83c08d8f"
+      "lane": "B",
+      "feature": "OR-MIG-0023",
+      "action": "Continue native pack profiles and durable interrupted repeat work",
+      "sha": "caefcf424869d2a54d711acd22a279351f098be0"
     },
     {
       "lane": "A",
-      "feature": "OR-MIG-0024",
-      "action": "Expand runtime packet and genuine native ordinary/remainder food acceptance after completed revision-3 authoritative tests; item-pack native/lifecycle remains separate",
-      "sha": "ae3d234c71764dd2364f8452fc1974a54a6783f0"
+      "feature": "OR-MIG-0054",
+      "action": "Initial exact-SHA coin-pouch quantity/overflow/selected stack verification",
+      "sha": "7fc1306bb5c01540038ce5ff175b577294ade432"
     }
   ],
   "contract_revisions": [
@@ -5589,21 +6668,24 @@
         },
         "V2": {
           "status": "IN_PROGRESS",
-          "reason": "All six genuine native meat/cake/pizza actions, including four formerly unexecuted bites, selected duplicates, remainder progression, HP cap and no XP; acknowledged save, real restart and independently decoded native relogin durable state PASS. Scoped subchecks only; complete level acceptance remains open.",
+          "reason": "Native full28 selected cake replacement, replayed stale whole-cake claim with untouched whole-cake duplicate, actual Saradomin brew HP10->13, delayed legal Eat preserving HP13 and no XP. Whole bag remains occupied. Acknowledged save, actual restart and native relogin preserve selected partial cake, brew dose and all other slots; received initial Stats match durable pre-restart values. Scoped subchecks only; complete level acceptance remains open.",
           "evidence": [
-            "docs/openrune/verification/independent/deep-food-observer/observer-001/independent-assessment.json"
+            "docs/openrune/verification/independent/deep-food-negative/negative-003/independent-assessment.json"
           ]
         },
         "V3": {
           "status": "IN_PROGRESS",
-          "reason": "All six genuine native meat/cake/pizza actions, including four formerly unexecuted bites, selected duplicates, remainder progression, HP cap and no XP; acknowledged save, real restart and independently decoded native relogin durable state PASS. Scoped subchecks only; complete level acceptance remains open.",
+          "reason": "Native full28 selected cake replacement, replayed stale whole-cake claim with untouched whole-cake duplicate, actual Saradomin brew HP10->13, delayed legal Eat preserving HP13 and no XP. Whole bag remains occupied. Acknowledged save, actual restart and native relogin preserve selected partial cake, brew dose and all other slots; received initial Stats match durable pre-restart values. Scoped subchecks only; complete level acceptance remains open.",
           "evidence": [
-            "docs/openrune/verification/independent/deep-food-observer/observer-001/independent-assessment.json"
+            "docs/openrune/verification/independent/deep-food-negative/negative-003/independent-assessment.json"
           ]
         },
         "V4": {
-          "status": "NOT_STARTED",
-          "reason": "No complete level result at this exact contract revision"
+          "status": "IN_PROGRESS",
+          "reason": "Independent source/pinned Shark revision audit PASS for supported selected replacement, heal20, transaction ordering and explicitly different local rollback/presentation policies. Complete static profile reference, activity/combat timing and sound/presentation remain open; no Kotlin executable observation claimed.",
+          "evidence": [
+            "docs/openrune/verification/independent/reference-ordinary-food/comparison.json"
+          ]
         }
       }
     },
@@ -6195,24 +7277,39 @@
       "is_latest_revision": true,
       "levels": {
         "V0": {
-          "status": "NOT_STARTED",
-          "reason": "No complete level result at this exact contract revision"
+          "status": "PASS",
+          "reason": "Exact-SHA executable built, full actual cache-backed startup and configured native Bury dispatch succeeded. Independently loaded representative bone definitions/reward policy and actual selected-slot transaction confirm the registered entrypoint.",
+          "evidence": [
+            "docs/openrune/verification/independent/deep-prayer/burial-001/independent-assessment.json"
+          ]
         },
         "V1": {
-          "status": "NOT_STARTED",
-          "reason": "No complete level result at this exact contract revision"
+          "status": "IN_PROGRESS",
+          "reason": "Independent execution at exact SHA: five existing Prayer-related library checks and three unchanged selected-burial World action tests PASS; production server cargo check PASS. Autotests-disabled initial harness failure retained. No new authored oracle, native, persistence or full reference acceptance inferred.",
+          "evidence": [
+            "docs/openrune/verification/independent/OR-MIG-0051-f6b0f6ad54fe-attempt-1792288674370777100/manifest.json"
+          ]
         },
         "V2": {
-          "status": "NOT_STARTED",
-          "reason": "No complete level result at this exact contract revision"
+          "status": "IN_PROGRESS",
+          "reason": "Actual exact-SHA cache-backed runtime and native Bury of clicked slot17 from full28 bag, preserving earlier bone slot3 and all unrelated items. Stale replay of actual Bury packet cannot consume another bone or grant XP. Actual configured4.5base at500percent produces225fineXP, displayed22. Acknowledged save, actual process restart and native relogin preserve inventory, exact fractional XP and all Stats without repeat reward. Remaining Chaos/member/modifier/interruption and applicable crash/presentation obligations stay open.",
+          "evidence": [
+            "docs/openrune/verification/independent/deep-prayer/burial-001/independent-assessment.json"
+          ]
         },
         "V3": {
-          "status": "NOT_STARTED",
-          "reason": "No complete level result at this exact contract revision"
+          "status": "IN_PROGRESS",
+          "reason": "Actual exact-SHA cache-backed runtime and native Bury of clicked slot17 from full28 bag, preserving earlier bone slot3 and all unrelated items. Stale replay of actual Bury packet cannot consume another bone or grant XP. Actual configured4.5base at500percent produces225fineXP, displayed22. Acknowledged save, actual process restart and native relogin preserve inventory, exact fractional XP and all Stats without repeat reward. Remaining Chaos/member/modifier/interruption and applicable crash/presentation obligations stay open.",
+          "evidence": [
+            "docs/openrune/verification/independent/deep-prayer/burial-001/independent-assessment.json"
+          ]
         },
         "V4": {
-          "status": "NOT_STARTED",
-          "reason": "No complete level result at this exact contract revision"
+          "status": "IN_PROGRESS",
+          "reason": "Independent six-reference source/pinned-Wiki audit PASS within scope: selected slot versus local type-total policy, exact4.5/72base XP and measured cache rewards, one-clock local versus two-clock donor, stronger atomic rollback and known above-base necklace restoration gap. Complete cadence/sound/Chaos/all-modifier fidelity remains open.",
+          "evidence": [
+            "docs/openrune/verification/independent/reference-selected-burial/comparison.json"
+          ]
         }
       }
     },
@@ -6271,6 +7368,233 @@
           "reason": "No complete level result at this exact contract revision"
         }
       }
+    },
+    {
+      "implementation_id": "OR-MIG-0054",
+      "revision": 1,
+      "implementation_sha": "7fc1306bb5c01540038ce5ff175b577294ade432",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0055",
+      "revision": 1,
+      "implementation_sha": "d19f37d0c02b79e38939f1b54d94dc95bd6296d2",
+      "is_latest_revision": false,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0056",
+      "revision": 1,
+      "implementation_sha": "5743cbe1c7499e2a7476c721d25dcba194666042",
+      "is_latest_revision": false,
+      "levels": {
+        "V0": {
+          "status": "IN_PROGRESS",
+          "reason": "Independent exact-SHA execution of two gem-specific authoritative action tests and one seven-profile binding/XP/member test PASS. Deferred grinding suites were not run; native/cache/lifecycle/reference and expanded independent oracle acceptance remain open.",
+          "evidence": [
+            "docs/openrune/verification/independent/OR-MIG-0056-5743cbe1c749/manifest.json"
+          ]
+        },
+        "V1": {
+          "status": "IN_PROGRESS",
+          "reason": "Independent exact-SHA execution of two gem-specific authoritative action tests and one seven-profile binding/XP/member test PASS. Deferred grinding suites were not run; native/cache/lifecycle/reference and expanded independent oracle acceptance remain open.",
+          "evidence": [
+            "docs/openrune/verification/independent/OR-MIG-0056-5743cbe1c749/manifest.json"
+          ]
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0055",
+      "revision": 2,
+      "implementation_sha": "d19f37d0c02b79e38939f1b54d94dc95bd6296d2",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0056",
+      "revision": 2,
+      "implementation_sha": "5743cbe1c7499e2a7476c721d25dcba194666042",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "IN_PROGRESS",
+          "reason": "Independent exact-SHA execution of two gem-specific authoritative action tests and one seven-profile binding/XP/member test PASS. Deferred grinding suites were not run; native/cache/lifecycle/reference and expanded independent oracle acceptance remain open.",
+          "evidence": [
+            "docs/openrune/verification/independent/OR-MIG-0056-5743cbe1c749/manifest.json"
+          ]
+        },
+        "V1": {
+          "status": "IN_PROGRESS",
+          "reason": "Independent exact-SHA execution of two gem-specific authoritative action tests and one seven-profile binding/XP/member test PASS. Deferred grinding suites were not run; native/cache/lifecycle/reference and expanded independent oracle acceptance remain open.",
+          "evidence": [
+            "docs/openrune/verification/independent/OR-MIG-0056-5743cbe1c749/manifest.json"
+          ]
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0057",
+      "revision": 1,
+      "implementation_sha": "4c6b73cfcd3b35ce52aa79efd9d2a99464939445",
+      "is_latest_revision": true,
+      "levels": {
+        "V0": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V1": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V2": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V3": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        },
+        "V4": {
+          "status": "NOT_STARTED",
+          "reason": "No complete level result at this exact contract revision"
+        }
+      }
     }
-  ]
+  ],
+  "user_deferrals": {
+    "instruction": "User: note and defer OSRS chemistry related tests and move to all other tests.",
+    "status": "ACTIVE_UNTIL_USER_RESUMES",
+    "resume_condition": "Only an explicit request to resume chemistry/Herblore/potion testing lifts this deferral. A general resume continues unrelated eligible verification.",
+    "scope": "Defer chemistry, potions and Herblore production/consumption, including ingredient cleaning/grinding/crushing and mixing. Continue unrelated Prayer, food, cooking, assembly, smithing, packs and world interactions. Preserve exact historical results, defects, raw failures and disposable databases.",
+    "implementation_ids": [
+      "OR-MIG-0001",
+      "OR-MIG-0002",
+      "OR-MIG-0003",
+      "OR-MIG-0004",
+      "OR-MIG-0005",
+      "OR-MIG-0006",
+      "OR-MIG-0007",
+      "OR-MIG-0008",
+      "OR-MIG-0009",
+      "OR-MIG-0010",
+      "OR-MIG-0011",
+      "OR-MIG-0012",
+      "OR-MIG-0013",
+      "OR-MIG-0014",
+      "OR-MIG-0015",
+      "OR-MIG-0016",
+      "OR-MIG-0017",
+      "OR-MIG-0018",
+      "OR-MIG-0019",
+      "OR-MIG-0020",
+      "OR-MIG-0022"
+    ],
+    "partial_contract_exclusions": {
+      "OR-MIG-0024": "Ordinary food remains eligible; defer additional scenarios that drink potions to prepare overheal. Already completed native food/brew integration evidence remains historical."
+    },
+    "native_features": [
+      "combat",
+      "combat-interrupt",
+      "chemistry",
+      "chemistry-worn",
+      "chemistry-last",
+      "chem-negative",
+      "chem-close",
+      "chem-interrupt",
+      "chem-crash",
+      "food-negative"
+    ],
+    "next_eligible_contract": "OR-MIG-0051",
+    "next_action": "Continue selected-slot Prayer burial native/full inventory/negative/persistence and independent reference cases at f6b0f6ad54fe7813bb6607827eeb8da0e60137fa. Existing five library plus three actual-action tests and server compilation passed; no full level acceptance inferred.",
+    "deferred_execution": "Chemistry interrupt-002 had already ended with a raw observer assertion failure when deferral arrived; owned graceful stop path recorded, no live chemistry run retained. Crash scenario build was resource-deferred and never executed. Do not launch new chemistry tests or silently classify unresolved assertions as implementation failures."
+  }
 }

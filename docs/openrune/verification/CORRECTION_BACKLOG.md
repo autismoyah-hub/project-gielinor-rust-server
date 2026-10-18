@@ -67,6 +67,20 @@ The handoff's `ba455a6` identifier is an informational mismatch: the fetched ori
 
 ## Finding format
 
+## User-directed execution deferral
+
+Chemistry, potion and Herblore scenarios are deferred until explicitly resumed by the user. No historical failure or passing subcheck is erased. Ordinary food remains eligible without additional potion setup; Prayer, cooking, packs, assembly, smithing and gem cutting continue. See USER_DEFERRALS.json. Chemistry interrupt-002 had already failed a client count assertion when the deferral arrived; preserve it as an unresolved observer attempt, without rerunning or calling it a production defect. The proposed chemistry crash case was never executed.
+
+## PG-INFRA-007 — corrected Prayer test discovery and read-only preflight setup
+
+- Exact Prayer target: f6b0f6ad54fe7813bb6607827eeb8da0e60137fa. Initial existing integration invocation failed because the published world crate sets autotests=false. Five selected library tests had passed. A fresh owned external crate executed the unchanged, hash-recorded openrune_burial source: all3tests PASS, followed by production server compilation. No production checkout was edited.
+- Read-only cache preflight first used64MiB, exceeding this decoder's24-bit group limit; corrected to0xffffff. Next attempt incorrectly required dummy=0, while absent ordinary target dummy metadata is-1; accept the decoder's ordinary nonpositive sentinel, retaining strict IDs/names/type/member/operation/template checks. Both raw failures and source snapshots remain historical verifier evidence. Corrected same-SHA preflight PASS: base fine rewards45/150/720for526/532/536. No gameplay defect attributed.
+- Native selected burial plus stale replay and actual restart/relogin PASS with225fineXP/display22; full V1–V4 acceptance is not inferred from scoped subchecks.
+
+## Food negative follow-up
+
+Fresh negative-003 PASS at ae3d234c71764dd2364f8452fc1974a54a6783f0: full28cake selected replacement, stale whole-cake claim with untouched duplicate, actual brew10→13followed by legally delayed Eat preserving13and all XP. Real restart/native relogin preserves partial cake, dose and initial Stats. Negative-001 fixture setup and negative-002 immediate-after-drink timeout are retained verifier errors, not production findings. Additional potion-based scenarios are now user-deferred.
+
 ## PG-DEF-001 — native Close leaves chemistry policy dialog live
 
 - Target: OR-MIG-0006, exact `e7ac3608e61893d80b2de6a1a2e512b3ab785505`.

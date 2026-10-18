@@ -4,18 +4,20 @@ This is an ongoing verification campaign. No contract is yet fully accepted acro
 
 ## Intake
 
-Latest observed FORGE HEAD: `6e469bc1dacab463190917e8189f8add83c08d8f`.
-Exact queue SHA256: `b33764a1aa21d43cbc4d1ba84ca16ca1df4130206448063780354cfa367a7983`.
-Published queue: 57 records / 53 stable implementation IDs. Published validator: PASS.
+Latest observed FORGE HEAD: `f3b6f4208b775c23ed8b05b66cca579953a901ea`.
+Exact queue SHA256: `acacfc573488300b693458b7be60d0372fbac2f6f30a30585ceb18ebf3aadc41`.
+Published queue: 63 records / 57 stable implementation IDs. Published validator: PASS.
 The copied queue is refreshed only from fetched immutable blobs after append-history checks. Current coverage and every contract revision are retained in [WORKLIST.json](WORKLIST.json). Synchronization observations are append-only in [SYNC_OBSERVATIONS.jsonl](SYNC_OBSERVATIONS.jsonl).
 
 ## Level coverage
 
-- V0: PASS 3, FAIL 0, BLOCKED 0, IN_PROGRESS 5, NOT_STARTED 45, NOT_APPLICABLE 0.
-- V1: PASS 0, FAIL 0, BLOCKED 0, IN_PROGRESS 8, NOT_STARTED 45, NOT_APPLICABLE 0.
-- V2: PASS 0, FAIL 1, BLOCKED 0, IN_PROGRESS 2, NOT_STARTED 50, NOT_APPLICABLE 0.
-- V3: PASS 0, FAIL 0, BLOCKED 0, IN_PROGRESS 3, NOT_STARTED 50, NOT_APPLICABLE 0.
-- V4: PASS 0, FAIL 0, BLOCKED 0, IN_PROGRESS 3, NOT_STARTED 50, NOT_APPLICABLE 0.
+- V0: PASS 4, FAIL 0, BLOCKED 0, IN_PROGRESS 6, NOT_STARTED 47, NOT_APPLICABLE 0.
+- V1: PASS 0, FAIL 0, BLOCKED 0, IN_PROGRESS 10, NOT_STARTED 47, NOT_APPLICABLE 0.
+- V2: PASS 0, FAIL 1, BLOCKED 0, IN_PROGRESS 3, NOT_STARTED 53, NOT_APPLICABLE 0.
+- V3: PASS 0, FAIL 0, BLOCKED 0, IN_PROGRESS 4, NOT_STARTED 53, NOT_APPLICABLE 0.
+- V4: PASS 0, FAIL 0, BLOCKED 0, IN_PROGRESS 5, NOT_STARTED 52, NOT_APPLICABLE 0.
+
+User direction: chemistry, potion and Herblore tests are DEFERRED. Historical evidence and findings remain intact. Continue Prayer, food without new potion setup, cooking, assembly, smithing, packs, Crafting and other eligible work. General resume does not lift the chemistry deferral. See [USER_DEFERRALS.json](USER_DEFERRALS.json).
 
 PASS applies only to the named level, target and scope. IN_PROGRESS retains passing subchecks while required acceptance cases remain open. The old coarse ledger is retained; [LEVEL_RESULTS.jsonl](LEVEL_RESULTS.jsonl) is authoritative for the new level-specific program.
 
@@ -44,6 +46,9 @@ No rendered-window, original-executable differential or crash-atomicity acceptan
 - `ae3d234c71764dd2364f8452fc1974a54a6783f0`: raw attempt BLOCKED; 0 test executions passed. Measured-resource deferral; no substitute target: Measured resource guard blocked; no other process altered [Manifest](independent/integration-external-food-regeneration-ae3d234c71764dd2364f8452fc1974a54a6783f0/manifest.json).
 - `ae3d234c71764dd2364f8452fc1974a54a6783f0`: raw attempt FAIL; 0 test executions passed. Rejected same-clock diagnosis; refined later-clock reproducer passed. This failed hypothesis is retained, not attributed to gameplay. [Manifest](independent/integration-external-food-regeneration-ae3d234c71764dd2364f8452fc1974a54a6783f0-1792280887389358300/manifest.json).
 - `ae3d234c71764dd2364f8452fc1974a54a6783f0`: raw attempt PASS; food-regeneration 1 test executions passed.  [Manifest](independent/integration-external-food-regeneration-ae3d234c71764dd2364f8452fc1974a54a6783f0-1792280932175111100/manifest.json).
+- `f6b0f6ad54fe7813bb6607827eeb8da0e60137fa`: raw attempt FAIL; 0 test executions passed.  [Manifest](independent/integration-external-prayer-cache-f6b0f6ad54fe7813bb6607827eeb8da0e60137fa/manifest.json).
+- `f6b0f6ad54fe7813bb6607827eeb8da0e60137fa`: raw attempt FAIL; 0 test executions passed.  [Manifest](independent/integration-external-prayer-cache-f6b0f6ad54fe7813bb6607827eeb8da0e60137fa-1792289661562542800/manifest.json).
+- `f6b0f6ad54fe7813bb6607827eeb8da0e60137fa`: raw attempt PASS; prayer-cache 1 test executions passed.  [Manifest](independent/integration-external-prayer-cache-f6b0f6ad54fe7813bb6607827eeb8da0e60137fa-1792289742179352000/manifest.json).
 - `8ad59b108e1ecd55185570c88d1be8be06b39756`: Native current-integration worn Options -> Stop, equipped-item/coins/XP conservation and actual restart/native relogin; complete V2/V3 acceptance remains open. [Assessment](independent/native-chemistry-worn-8ad59b108e1ecd55185570c88d1be8be06b39756/independent-assessment.json).
 
 An older integration PASS is not a PASS on a newer FORGE HEAD. Change-impact lists and the last executed integration scope are recorded separately per feature.
@@ -60,38 +65,38 @@ An older integration PASS is not a PASS on a newer FORGE HEAD. Change-impact lis
 
 ## Active work and continuation
 
-- Lane B — OR-MIG-0006 at `e7ac3608e61893d80b2de6a1a2e512b3ab785505`: Complete native negative/cancelled held and worn dialogs, last-charge production/modifiers and interrupted production persistence; retain completed positive controls/restart evidence.
-- Lane C — OR-MIG-0006 at `6e469bc1dacab463190917e8189f8add83c08d8f`: Inspect shared changes since the last recorded native integration campaign; select affected current-build regression scopes without inheriting older PASS results.
-- Lane A — OR-MIG-0024 at `ae3d234c71764dd2364f8452fc1974a54a6783f0`: Expand runtime packet and genuine native ordinary/remainder food acceptance after completed revision-3 authoritative tests; item-pack native/lifecycle remains separate.
+- Lane B — OR-MIG-0051 at `f6b0f6ad54fe7813bb6607827eeb8da0e60137fa`: Complete native selected burial, stale claimed slot, full inventory, real restart and supported reference comparison; chemistry/Herblore/potions deferred by user.
+- Lane B — OR-MIG-0023 at `caefcf424869d2a54d711acd22a279351f098be0`: Continue native pack profiles and durable interrupted repeat work.
+- Lane A — OR-MIG-0054 at `7fc1306bb5c01540038ce5ff175b577294ade432`: Initial exact-SHA coin-pouch quantity/overflow/selected stack verification.
 
 [RESUME_QUEUE.json](RESUME_QUEUE.json) contains exact targets and all outstanding feature levels. Do not infer that work runs after the active session ends.
 
 ## Current contract coverage
 
-- **OR-MIG-0001 r1** `d8978ede5677` — Manual ordinary herb cleaning; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0002 r1** `a5e21e03c483` — Unfinished potions: ordinary water and three alternate bases; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0003 r1** `f3b4b984af8f` — Initial twenty-nine finished-potion profiles; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0004 r1** `613b29ac4e3d` — Herb tar batch production; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0005 r1** `87c4a3def092` — Seven ordinary tool-preserving grinding routes; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0006 r1** `e7ac3608e618` — Ordinary chemistry charges and Options/Break controls; V0 PASS, V1 IN_PROGRESS, V2 FAIL, V3 IN_PROGRESS, V4 IN_PROGRESS.
-- **OR-MIG-0007 r1** `693dd370dac7` — Stamina dose upgrades; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0008 r1** `03bffb1fab1d` — Extended anti-venom+ dose upgrades; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0009 r1** `29d9751117da` — Thirty-two divine dose upgrades; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0010 r1** `5a260c1bd6ef` — Four-input super combat production; V0 PASS, V1 IN_PROGRESS, V2 IN_PROGRESS, V3 IN_PROGRESS, V4 IN_PROGRESS.
-- **OR-MIG-0011 r1** `289981e0efb1` — Anti-venom four-dose family; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0012 r1** `289981e0efb1` — Extended antifire dose family; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0013 r1** `03ce46c812d4` — Forgotten brew nonlinear dose awards; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0014 r1** `da62d6154b74` — Ancient brew selected dust stack production; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0015 r1** `337cbd9e7209` — Nihil shard stack crushing; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0016 r1** `b1cade8a86f3` — Menaphite remedy production; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0017 r1** `d09659ad9265` — Four-dose Anti-venom+ with both Torstol forms; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0018 r1** `71289e622cdf` — Selected-slot atomic potion consumption; V0 IN_PROGRESS, V1 IN_PROGRESS, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0019 r1** `d02633e45576` — Ancient and Forgotten brew drinking effects, all eight doses; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0020 r1** `cf75fa343a0f` — Saradomin brew drinking, four doses; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0001 r1** `d8978ede5677` — Manual ordinary herb cleaning; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0002 r1** `a5e21e03c483` — Unfinished potions: ordinary water and three alternate bases; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0003 r1** `f3b4b984af8f` — Initial twenty-nine finished-potion profiles; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0004 r1** `613b29ac4e3d` — Herb tar batch production; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0005 r1** `87c4a3def092` — Seven ordinary tool-preserving grinding routes; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0006 r1** `e7ac3608e618` — Ordinary chemistry charges and Options/Break controls; V0 PASS, V1 IN_PROGRESS, V2 FAIL, V3 IN_PROGRESS, V4 IN_PROGRESS. DEFERRED BY USER.
+- **OR-MIG-0007 r1** `693dd370dac7` — Stamina dose upgrades; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0008 r1** `03bffb1fab1d` — Extended anti-venom+ dose upgrades; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0009 r1** `29d9751117da` — Thirty-two divine dose upgrades; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0010 r1** `5a260c1bd6ef` — Four-input super combat production; V0 PASS, V1 IN_PROGRESS, V2 IN_PROGRESS, V3 IN_PROGRESS, V4 IN_PROGRESS. DEFERRED BY USER.
+- **OR-MIG-0011 r1** `289981e0efb1` — Anti-venom four-dose family; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0012 r1** `289981e0efb1` — Extended antifire dose family; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0013 r1** `03ce46c812d4` — Forgotten brew nonlinear dose awards; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0014 r1** `da62d6154b74` — Ancient brew selected dust stack production; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0015 r1** `337cbd9e7209` — Nihil shard stack crushing; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0016 r1** `b1cade8a86f3` — Menaphite remedy production; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0017 r1** `d09659ad9265` — Four-dose Anti-venom+ with both Torstol forms; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0018 r1** `71289e622cdf` — Selected-slot atomic potion consumption; V0 IN_PROGRESS, V1 IN_PROGRESS, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0019 r1** `d02633e45576` — Ancient and Forgotten brew drinking effects, all eight doses; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
+- **OR-MIG-0020 r1** `cf75fa343a0f` — Saradomin brew drinking, four doses; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
 - **OR-MIG-0021 r1** `c8b9aef260db` — Queued smithing live requirements and ordinary iron outcome safety (historical backfill); V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0022 r1** `71fa140f48a1` — Ordinary Bastion and Battlemage potion drinking, eight doses; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0022 r1** `71fa140f48a1` — Ordinary Bastion and Battlemage potion drinking, eight doses; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED. DEFERRED BY USER.
 - **OR-MIG-0023 r1** `caefcf424869` — Seventeen ordinary item-pack profiles, atomic opening and weak repeat queue (historical backfill); V0 IN_PROGRESS, V1 IN_PROGRESS, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0024 r3** `ae3d234c7176` — Ordinary selected-slot food transaction and potion-overheal integration safety; V0 PASS, V1 IN_PROGRESS, V2 IN_PROGRESS, V3 IN_PROGRESS, V4 NOT_STARTED.
+- **OR-MIG-0024 r3** `ae3d234c7176` — Ordinary selected-slot food transaction and potion-overheal integration safety; V0 PASS, V1 IN_PROGRESS, V2 IN_PROGRESS, V3 IN_PROGRESS, V4 IN_PROGRESS.
 - **OR-MIG-0025 r1** `a560034a59e7` — Fifteen additional ordinary multipart food stages: chocolate cake, topped pizzas and pies; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
 - **OR-MIG-0026 r1** `5b47d7fe4270` — Ten missing ordinary food healing profiles; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
 - **OR-MIG-0027 r1** `f1f0032d5440` — Four ordinary water-source vessels with checked selected-slot filling (historical backfill); V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
@@ -118,6 +123,10 @@ An older integration PASS is not a PASS on a newer FORGE HEAD. Change-impact lis
 - **OR-MIG-0048 r1** `3a57d318bd42` — Fourteen ordinary manual meal, quest-item and holiday foods; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
 - **OR-MIG-0049 r1** `8d8dff9c3f52` — Thirteen retained-bowl foods and containerless egg potato; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
 - **OR-MIG-0050 r1** `78f603fd516a` — Six Wiki-corrected Dorgesh-Kaan foods with two Cooking boosts; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0051 r1** `f6b0f6ad54fe` — Selected-slot and atomic actual network Prayer burial; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0051 r1** `f6b0f6ad54fe` — Selected-slot and atomic actual network Prayer burial; V0 PASS, V1 IN_PROGRESS, V2 IN_PROGRESS, V3 IN_PROGRESS, V4 IN_PROGRESS.
 - **OR-MIG-0052 r1** `8389805afedc` — Five demonic ash Scatter profiles through selected Prayer transactions; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
 - **OR-MIG-0053 r1** `0d9a03c8b97c` — Seven absent ordinary Bury reward profiles with configured-policy preservation; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0054 r1** `7fc1306bb5c0` — Citizen coin pouch Open and Open-all through atomic checked pack quantities; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0055 r2** `d19f37d0c02b` — Man/Woman base pickpocketing through NPC routing, atomic pouch XP and timed movement stun; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0056 r2** `5743cbe1c749` — Seven deterministic manual gem cuts with retained chisel and fractional Crafting XP; V0 IN_PROGRESS, V1 IN_PROGRESS, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0057 r1** `4c6b73cfcd3b` — Nine legacy round, pointed and bark shell helmet carvings on shared Crafting adapter; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.

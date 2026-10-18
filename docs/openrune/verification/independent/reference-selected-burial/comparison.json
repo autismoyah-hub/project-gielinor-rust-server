@@ -1,0 +1,87 @@
+{
+  "implementation_id": "OR-MIG-0051",
+  "tested_sha": "f6b0f6ad54fe7813bb6607827eeb8da0e60137fa",
+  "campaign_kind": "historical",
+  "level": "V4",
+  "status": "IN_PROGRESS",
+  "source_documentation_subcheck": "PASS",
+  "sources": [
+    {
+      "reference": "content/skills/prayer/src/main/kotlin/org/rsmod/content/skills/prayer/PrayerBuryEvents.kt",
+      "kind": "openrune",
+      "sha256": "c02f069d6958c517c680d582a35b94c4df521cfcc7919a017ffacda99ff21c86",
+      "revision": "Local preserved reference; upstream commit unavailable",
+      "method": "independently inspected source/documentation; no original executable observation"
+    },
+    {
+      "reference": "content/skills/prayer/src/main/kotlin/org/rsmod/content/skills/prayer/scripts/Prayer.kt",
+      "kind": "project_gielinor",
+      "sha256": "e833c5dcda30dfe17a8df5f5b778e2a514cd5cd9fff7e02a3b10d0453421e63e",
+      "revision": "Local preserved reference; upstream commit unavailable",
+      "method": "independently inspected source/documentation; no original executable observation"
+    },
+    {
+      "reference": "Bones",
+      "kind": "wiki",
+      "sha256": "ab00c244e256b7a1cb35a508cbb1d4bb0d108ca9945932e734578949c91a1567",
+      "revision": "15327876",
+      "method": "independently inspected source/documentation; no original executable observation"
+    },
+    {
+      "reference": "Prayer",
+      "kind": "wiki",
+      "sha256": "728e484c8f3f6d6558fea1e96a84d0e854d843d7974e4b917aef3593a8bdee5d",
+      "revision": "15337464",
+      "method": "independently inspected source/documentation; no original executable observation"
+    },
+    {
+      "reference": "Dragon bones",
+      "kind": "wiki",
+      "sha256": "66aee60cb2db97b7994fdc9a61364e50e5d7f187184766b58f5d6f075de122cb",
+      "revision": "15344031",
+      "method": "independently inspected source/documentation; no original executable observation"
+    },
+    {
+      "reference": "Dragonbone necklace",
+      "kind": "wiki",
+      "sha256": "deb93465b80a9d2021791b627108ba652b5b1b8bf1e38cc9952073185633ccda",
+      "revision": "15188633",
+      "method": "independently inspected source/documentation; no original executable observation"
+    }
+  ],
+  "rust_sha256": {
+    "crates/world/src/prayer.rs": "8232f284843561f05c8ff70d9c95752d768ea9d550836a33795bcb70fdedd9ce",
+    "crates/world/src/simulation.rs": "0c7e9d779bc3694dc36c69a41dc2c01e79275fe6a7af8cac54b465c7cb8b69b8",
+    "crates/world/src/simulation/prayer_actions.rs": "22d4e220f720b9382db9ab88453f2e2571ba3e12404844d0d54431f7a37d0b5e",
+    "crates/world/tests/openrune_burial.rs": "20f6a67f4e6057f834d6b1e73cc1a89d2ce87b1d1893d05df3b70181fa3c7d27",
+    "crates/server/src/runtime.rs": "10c71f571df7367398439a4ef505c00f69700700899b9cd1687cda1c6adcdc2a",
+    "crates/server/src/startup.rs": "cc53a469f6294c4ed9f0e047f61dd68248dd2269e33d56aae89efc403874cdd1"
+  },
+  "comparisons": [
+    {
+      "behavior": "Selected slot versus type-total reference",
+      "finding": "Inspected OpenRune handler retains clicked slot through queued completion and refuses if that slot no longer has the original type. Preserved local PG handler instead checks total count and deletes by type after suspension. Rust network route deliberately follows selected-slot safety while retaining legacy/reference APIs. Native stale replay and synthetic full-bag tests are separate runtime observations, not attributed to original Kotlin execution."
+    },
+    {
+      "behavior": "Fractional reward and effective configured policy",
+      "finding": "Pinned Bones15327876 gives4.5base XP and Dragon bones15344031 gives72. Independent read-only target cache resolves Bones45, Big bones150 and Dragon bones720 base fine units; at the controlled500percent rate awards225/750/3600fine. Other packed/custom/floor policies must be measured individually. Native integer22 cannot establish stored22.5 without SQLite fine-XP evidence."
+    },
+    {
+      "behavior": "Timing, effects and optional dependencies",
+      "finding": "OpenRune queues burial2, emits sound2738, optional Zealot conservation and a completion event. Local PG suspends1and Rust preserves one-clock internal completion. Exact input/animation cadence, sound and optional hook/equipment behavior are not certified parity. Donor ash differentiation and Catacombs hooks are separate contracts/dependencies."
+    },
+    {
+      "behavior": "Atomic rollback and restoration",
+      "finding": "Rust validates caller reward/rate/modifier/restore policy and publishes cloned PlayerData only on complete success. PG source deletes before restoration/XP. This is an intentional stronger rollback policy. Pinned necklace page supports bone-dependent restoration; exact target selected mapping covers only its configured subset. Known above-base legacy Heal refusal retains the bone safely but remains a functional restoration mismatch, not accepted parity."
+    },
+    {
+      "behavior": "Chaos and membership",
+      "finding": "OpenRune presents a bone confirmation in its area definition; local PG uses PrayerRules and Rust a configured rectangle. Exact shape/native cancellation, captured slot through confirmation and membership revocation require their own observations. Loaded target Dragon bones is member-only, ordinary/big bones are F2P; native game membership is trusted server state."
+    }
+  ],
+  "reference_execution": "No compiled original Kotlin executable was available or run. Original behavior is source-derived; pinned documentation and local PG additions are explicitly separate references.",
+  "limitations": [
+    "V4 remains partial for precise timing/presentation/sound, all packed reward/modifier rows, Chaos geometry and unresolved above-base necklace restoration.",
+    "No protected expressions/assets are published, only source hashes and independent paraphrases."
+  ]
+}

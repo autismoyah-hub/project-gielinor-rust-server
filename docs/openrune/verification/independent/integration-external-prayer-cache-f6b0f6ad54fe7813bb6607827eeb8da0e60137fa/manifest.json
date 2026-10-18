@@ -1,0 +1,62 @@
+{
+  "tested_integration_sha": "f6b0f6ad54fe7813bb6607827eeb8da0e60137fa",
+  "suite": "prayer-cache",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "FAIL",
+  "resource": {
+    "available_ram": 7597006848,
+    "active_compilers": [],
+    "cpu_percent": 26.37,
+    "cpu_samples": [
+      18.359375,
+      33.3984375,
+      27.34375
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained",
+    "disk_free": 44990324736,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "3e0c8685d165ae26bc0380c5a5f0b7ba6f98773b",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\f6b0f6ad54fe7813bb6607827eeb8da0e60137fa\\external-harness-4762403300\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-prayer-cache-f6b0f6ad54fe7813bb6607827eeb8da0e60137fa\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\f6b0f6ad54fe7813bb6607827eeb8da0e60137fa\\external-harness-4762403300\\Cargo.toml",
+        "--",
+        "--nocapture"
+      ],
+      "exit_code": 101,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-prayer-cache-f6b0f6ad54fe7813bb6607827eeb8da0e60137fa\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative prayer-cache scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-prayer-cache-f6b0f6ad54fe7813bb6607827eeb8da0e60137fa\\harness\\policy.rs": "38cae005f71d623650c386a75f2bbd6af7af92ae89aa0e8e2c507df52e1540f6"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\gielinor_world-379bc28e5667f47e.exe": "bf15269328fa7c4599f6944e1aa85d5267e6cf510c9f7f1a788e9a9cf8c30b33",
+    "target\\debug\\deps\\openrune_burial-36a2b18f465a7410.exe": "0e3d50b7973663fe1286263d8272f4a5a7c2f707d59867ef5b98f7d96333fea0",
+    "target\\debug\\deps\\policy-d3b032c8570e003e.exe": "00e8ba0d83a45be66509128e760b32ce5538c47ab9c4ae939d3c7101bf2b656f"
+  }
+}

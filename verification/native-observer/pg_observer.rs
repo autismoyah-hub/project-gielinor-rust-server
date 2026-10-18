@@ -136,6 +136,36 @@ fn combat_interrupt(c:&mut ClientState,l:&mut Connection)->R<()> {
     // any already admitted clock committed; no fabricated zero-race assertion.
     Ok(())
 }
+fn chemistry_interrupt(c:&mut ClientState,l:&mut Connection)->R<()> {
+    let xp=c.data.experience;let before=(0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>();
+    assert_eq!(c.inventories.item(94,0).id,29974);assert_eq!(c.inventories.item(94,2).id,21163);
+    tab(c,"Inventory")?;ticks(c,l,3)?;use_slots(c,0,1)?;make(c,l,false)?;
+    let point=[u16::try_from(c.data.position[1]+1)?,u16::try_from(c.data.position[2])?];dispatch(c,Action::Walk(point),"native chemistry Walk before completion")?;ticks(c,l,7)?;
+    assert_eq!(c.data.experience,xp);assert_eq!((0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>(),before);
+    println!("PG_CASE_PASS chemistry native movement before completion leaves items and XP unchanged with goggles and amulet equipped");
+    use_slots(c,0,1)?;make(c,l,true)?;pump(c,l,30,|c,_|c.inventories.total(93,175)+c.inventories.total(93,2446)>=1)?;
+    let made=c.inventories.total(93,175)+c.inventories.total(93,2446);assert_eq!(made,1);
+    let point=[u16::try_from(c.data.position[1]+1)?,u16::try_from(c.data.position[2])?];dispatch(c,Action::Walk(point),"native chemistry Walk after first observed output")?;
+    // Received inventory can lag the authoritative production clock. Observe
+    // server-reported movement, then require quiescence; do not assume the Walk
+    // has already reached the server when menu_action merely queues it.
+    pump(c,l,30,|c,_|c.data.position[1]==point[0] as i32 && c.data.position[2]==point[1] as i32)?;
+    ready(c,l)?;let stopped=c.inventories.total(93,175)+c.inventories.total(93,2446);assert!(stopped>=made && stopped<14);
+    let stopped_xp=c.data.experience;println!("PG_MOVEMENT_ACK chemistry observed_first={made} stopped_outputs={stopped} tick={} position={:?}",c.server_tick,c.data.position);
+    ticks(c,l,10)?;assert_eq!(c.inventories.total(93,175)+c.inventories.total(93,2446),stopped);assert_eq!(c.data.experience,stopped_xp);assert_eq!(c.inventories.item(94,0).id,29974);
+    println!("PG_CASE_PASS chemistry interrupted All stable after actual movement acknowledgement; neck/charges/secondary/RNG outcomes require server trace and SQL");Ok(())
+}
+fn chemistry_crash(c:&mut ClientState,l:&mut Connection)->R<()> {
+    tab(c,"Inventory")?;ticks(c,l,3)?;use_slots(c,0,1)?;make(c,l,true)?;
+    pump(c,l,30,|c,_|c.inventories.total(93,175)+c.inventories.total(93,2446)>=1)?;
+    let observed=c.inventories.total(93,175)+c.inventories.total(93,2446);assert!(observed>0 && observed<14);
+    println!("PG_CRASH_READY chemistry observed_outputs={observed} tick={}; real All accepted, ingredients remain, keep real socket open for owned server termination",c.server_tick);
+    let start=Instant::now();loop {
+        match l.poll(c){Err(e)=>{println!("PG_EXPECTED_CRASH_DISCONNECT {e}");return Ok(());},Ok(())=>{if l.logged_out().is_some(){println!("PG_EXPECTED_CRASH_DISCONNECT native transport closed");return Ok(());}}}
+        if start.elapsed()>Duration::from_secs(30){return Err("owned crash injection did not arrive".into());}
+        std::thread::sleep(Duration::from_millis(10));
+    }
+}
 fn food_negative(c:&mut ClientState,l:&mut Connection)->R<()> {
     let xp=c.data.experience;tab(c,"Inventory")?;ticks(c,l,3)?;
     assert_eq!((0..28).filter(|&s|c.inventories.item(93,s).id>=0).count(),28);
@@ -144,11 +174,44 @@ fn food_negative(c:&mut ClientState,l:&mut Connection)->R<()> {
     replay(c,l,&stale,"stale whole cake while matching duplicate remains")?;ticks(c,l,4)?;
     assert_eq!(c.inventories.item(93,3).id,1893);assert_eq!(c.inventories.item(93,1).id,1891);assert_eq!(c.data.experience,xp);
     let a=item_action(c,9,false,"Drink")?;dispatch(c,a,"native brew for real overheal")?;pump(c,l,30,|c,_|c.inventories.item(93,9).id==6687 && c.data.boosted[3]>c.data.base[3])?;
-    let hp=c.data.boosted[3];assert_eq!(hp,13);let a=item_action(c,3,false,"Eat")?;dispatch(c,a,"native food at pre-existing overheal")?;
+    // An inventory acknowledgement is not expiry of the potion's protected
+    // consumption delay. Keep this functional overheal case outside that delay.
+    ticks(c,l,6)?;let hp=c.data.boosted[3];assert_eq!(hp,13);let a=item_action(c,3,false,"Eat")?;dispatch(c,a,"native food at pre-existing overheal")?;
     pump(c,l,30,|c,_|c.inventories.item(93,3).id==1895)?;
     println!("PG_FOOD_OVERHEAL before={hp} after={} base={} tick={}",c.data.boosted[3],c.data.base[3],c.server_tick);
     assert_eq!(c.data.boosted[3],hp);assert_eq!(c.data.experience,xp);assert_eq!(c.inventories.item(93,1).id,1891);assert_eq!(c.inventories.item(93,27).count,1000);
     println!("PG_CASE_PASS full28 selected remainder, stale claimed input with duplicate, real potion overheal preserved by food, no XP");Ok(())
+}
+fn prayer_burial(c:&mut ClientState,l:&mut Connection)->R<()> {
+    let xp=c.data.experience;assert_eq!((0..28).filter(|&s|c.inventories.item(93,s).id>=0).count(),28);
+    assert_eq!(c.inventories.item(93,3).id,526);assert_eq!(c.inventories.item(93,17).id,526);
+    tab(c,"Inventory")?;ticks(c,l,3)?;let a=item_action(c,17,false,"Bury")?;let stale=sent_packet(c,a,"native selected Bury slot17")?;
+    pump(c,l,30,|c,_|c.inventories.item(93,17).id==-1 && c.data.experience[5]>xp[5])?;
+    assert_eq!(c.inventories.item(93,3).id,526);assert_eq!(c.inventories.item(93,27).count,1000);
+    for i in 0..25{if i!=5{assert_eq!(c.data.experience[i],xp[i]);}}
+    ticks(c,l,5)?;let committed=c.data.experience;replay(c,l,&stale,"stale Bury slot17 with untouched matching bone slot3")?;ticks(c,l,7)?;
+    assert_eq!(c.data.experience,committed);assert_eq!(c.inventories.item(93,3).id,526);assert_eq!(c.inventories.item(93,17).id,-1);
+    println!("PG_CASE_PASS native selected burial full28 slot17; earlier bone preserved; stale real claimed-slot replay no extra award; displayed Prayer XP {}->{}; exact fineXP assessed against independently loaded cache",xp[5],committed[5]);Ok(())
+}
+fn gems(c:&mut ClientState,l:&mut Connection)->R<()> {
+    let xp=c.data.experience;let initial=(0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>();
+    assert_eq!(c.data.base[12],99);tab(c,"Inventory")?;ticks(c,l,3)?;
+    use_slots(c,0,4)?;let point=[u16::try_from(c.data.position[1]+1)?,u16::try_from(c.data.position[2])?];dispatch(c,Action::Walk(point),"native gem cancellation before first completion")?;ticks(c,l,7)?;
+    assert_eq!(c.data.experience,xp);assert_eq!((0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>(),initial);
+    println!("PG_CASE_PASS native gem pending action cancelled by immediate Walk without consumption or XP");
+    let mut fine=130344311i32;
+    for (index,(raw,cut,award)) in [(1623,1607,625),(1621,1605,843),(1619,1603,1062),(1617,1601,1343),(1631,1615,1718),(6571,6573,2093),(19496,19493,625)].into_iter().enumerate(){
+        ready(c,l)?;let slot=4+3*index as i32;assert_eq!(c.inventories.item(93,slot).id,raw);let n=c.outbound.len();
+        if index%2==0{use_slots(c,0,slot)?;}else{use_slots(c,slot,0)?;}
+        let p=c.outbound.iter().skip(n).find(|p|p.opcode==27).ok_or("gem native pair packet absent")?;let stale=(p.opcode,p.payload.clone());
+        fine+=award;pump(c,l,30,|c,_|c.inventories.item(93,slot).id==cut && c.data.experience[12]==fine/10)?;ticks(c,l,3)?;
+        assert_eq!(c.inventories.item(93,slot+1).id,raw);assert_eq!(c.inventories.item(93,0).id,1755);assert_eq!(c.inventories.item(93,1).id,1755);assert_eq!(c.inventories.item(93,27).count,1000);
+        assert_eq!((0..28).filter(|&s|c.inventories.item(93,s).id>=0).count(),28);let committed=c.data.experience;
+        replay(c,l,&stale,"stale gem pair while matching raw and tool duplicates remain")?;ticks(c,l,4)?;assert_eq!(c.data.experience,committed);assert_eq!(c.inventories.item(93,slot+1).id,raw);
+        for i in 0..25{if i!=12{assert_eq!(c.data.experience[i],xp[i]);}}
+        println!("PG_GEM_COMMITTED index={index} slot={slot} raw={raw} cut={cut} fine_award={award} display_xp={} direction_reverse={}",c.data.experience[12],index%2==1);
+    }
+    println!("PG_CASE_PASS seven native gem cuts, both directions, full28 selected duplicates, retained chisels,125percent fractional XP and stale-pair refusal");Ok(())
 }
 fn food(c:&mut ClientState,l:&mut Connection)->R<()> {
     let xp=c.data.experience;assert_eq!(c.data.base[3],10);println!("PG_INITIAL food tick={} current_hp={} display_xp={}; initial HP2 and any pre-action regeneration must be checked in received packets",c.server_tick,c.data.boosted[3],c.data.experience[3]);tab(c,"Inventory")?;ticks(c,l,2)?;
@@ -167,6 +230,6 @@ fn food(c:&mut ClientState,l:&mut Connection)->R<()> {
 fn main()->R<()> {
     let a:Vec<_>=std::env::args().collect();assert_eq!(a.len(),7);
     let mut c=ClientState::load(DiskCache::open(&a[1],64<<20)?)?;let mut l=Connection::connect(&mut c,&a[2],&a[3],&a[4],&a[5])?;ready(&mut c,&mut l)?;
-    match a[6].as_str(){"food-negative"=>food_negative(&mut c,&mut l)?,"combat-interrupt"=>combat_interrupt(&mut c,&mut l)?,"chem-close"=>chemistry_close(&mut c,&mut l)?,"chem-negative"=>chemistry(&mut c,&mut l)?,"food"=>food(&mut c,&mut l)?,"verify"=>{ticks(&mut c,&mut l,6)?;println!("PG_CASE_PASS native relogin observation");},_=>return Err("unknown independent scenario".into())}
+    match a[6].as_str(){"gems"=>gems(&mut c,&mut l)?,"prayer"=>prayer_burial(&mut c,&mut l)?,"chem-crash"=>chemistry_crash(&mut c,&mut l)?,"chem-interrupt"=>chemistry_interrupt(&mut c,&mut l)?,"food-negative"=>food_negative(&mut c,&mut l)?,"combat-interrupt"=>combat_interrupt(&mut c,&mut l)?,"chem-close"=>chemistry_close(&mut c,&mut l)?,"chem-negative"=>chemistry(&mut c,&mut l)?,"food"=>food(&mut c,&mut l)?,"verify"=>{ticks(&mut c,&mut l,6)?;println!("PG_CASE_PASS native relogin observation");},_=>return Err("unknown independent scenario".into())}
     l.session.close();Ok(())
 }

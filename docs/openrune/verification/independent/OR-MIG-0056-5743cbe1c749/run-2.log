@@ -1,0 +1,79 @@
+   Compiling autocfg v1.4.0 (C:\Projects\OSRSRSPS\agent7-targets\5743cbe1c7499e2a7476c721d25dcba194666042\vendor\autocfg-1.4.0)
+   Compiling num-traits v0.2.19 (C:\Projects\OSRSRSPS\agent7-targets\5743cbe1c7499e2a7476c721d25dcba194666042\vendor\num-traits-0.2.19)
+   Compiling num-integer v0.1.46 (C:\Projects\OSRSRSPS\agent7-targets\5743cbe1c7499e2a7476c721d25dcba194666042\vendor\num-integer-0.1.46)
+   Compiling num-bigint v0.4.6 (C:\Projects\OSRSRSPS\agent7-targets\5743cbe1c7499e2a7476c721d25dcba194666042\vendor\num-bigint-0.4.6)
+warning: unnecessary `unsafe` block
+  --> vendor\num-bigint-0.4.6\src\biguint\addition.rs:23:9
+   |
+23 |         unsafe { arch::_addcarry_u64(carry, a, b, out) }
+   |         ^^^^^^ unnecessary `unsafe` block
+   |
+   = note: `#[warn(unused_unsafe)]` (part of `#[warn(unused)]`) on by default
+
+warning: unnecessary `unsafe` block
+  --> vendor\num-bigint-0.4.6\src\biguint\subtraction.rs:23:9
+   |
+23 |         unsafe { arch::_subborrow_u64(borrow, a, b, out) }
+   |         ^^^^^^ unnecessary `unsafe` block
+
+warning: `num-bigint` (lib) generated 2 warnings
+   Compiling gielinor-world v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\5743cbe1c7499e2a7476c721d25dcba194666042\crates\world)
+   Compiling adler2 v2.0.1 (C:\Projects\OSRSRSPS\agent7-targets\5743cbe1c7499e2a7476c721d25dcba194666042\vendor\adler2-2.0.1)
+   Compiling miniz_oxide v0.8.9 (C:\Projects\OSRSRSPS\agent7-targets\5743cbe1c7499e2a7476c721d25dcba194666042\vendor\miniz_oxide-0.8.9)
+   Compiling gielinor-protocol v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\5743cbe1c7499e2a7476c721d25dcba194666042\crates\protocol)
+   Compiling libbz2-rs-sys v0.2.2 (C:\Projects\OSRSRSPS\agent7-targets\5743cbe1c7499e2a7476c721d25dcba194666042\vendor\libbz2-rs-sys-0.2.2)
+warning: unused macro definition: `prefix`
+  --> vendor\libbz2-rs-sys-0.2.2\src\bzlib.rs:71:14
+   |
+71 | macro_rules! prefix {
+   |              ^^^^^^
+   |
+   = note: `#[warn(unused_macros)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `prefix`
+  --> vendor\libbz2-rs-sys-0.2.2\src\bzlib.rs:88:16
+   |
+88 | pub(crate) use prefix;
+   |                ^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `libbz2_rs_sys_version`
+  --> vendor\libbz2-rs-sys-0.2.2\src\lib.rs:83:16
+   |
+83 | pub(crate) use libbz2_rs_sys_version;
+   |                ^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated function `from_mut` is never used
+   --> vendor\libbz2-rs-sys-0.2.2\src\bzlib.rs:253:30
+    |
+230 |     impl<S: StreamState> BzStream<S> {
+    |     -------------------------------- associated function in this implementation
+...
+253 |         pub(crate) unsafe fn from_mut(s: &mut bz_stream) -> &mut Self {
+    |                              ^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `libbz2-rs-sys` (lib) generated 4 warnings (run `cargo fix --lib -p libbz2-rs-sys` to apply 2 suggestions)
+   Compiling gielinor-cache v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\5743cbe1c7499e2a7476c721d25dcba194666042\crates\cache)
+   Compiling gielinor-storage v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\5743cbe1c7499e2a7476c721d25dcba194666042\crates\storage)
+   Compiling gielinor-server v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\5743cbe1c7499e2a7476c721d25dcba194666042\crates\server)
+warning: variable does not need to be mutable
+   --> crates\server\src\characters.rs:423:13
+    |
+423 |         let mut accounts = Accounts::from_database(Database::open(&path, false).unwrap());
+    |             ----^^^^^^^^
+    |             |
+    |             help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` (part of `#[warn(unused)]`) on by default
+
+warning: `gielinor-server` (lib test) generated 1 warning (run `cargo fix --lib -p gielinor-server --tests` to apply 1 suggestion)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1m 25s
+     Running unittests src\lib.rs (C:\Projects\OSRSRSPS\agent7-verification\work\5743cbe1c7499e2a7476c721d25dcba194666042\target\debug\deps\gielinor_server-894795c80ff17bc3.exe)
+
+running 1 test
+test content::gem_cutting::tests::seven_gem_definitions_preserve_fractional_xp_and_member_gates ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 92 filtered out; finished in 0.00s

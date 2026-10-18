@@ -1,0 +1,19 @@
+{
+  "implementation_id": "OR-MIG-0024",
+  "tested_sha": "ae3d234c71764dd2364f8452fc1974a54a6783f0",
+  "campaign_kind": "historical",
+  "status": "PASS",
+  "scope": "Native full28 selected cake replacement, replayed stale whole-cake claim with untouched whole-cake duplicate, actual Saradomin brew HP10->13, delayed legal Eat preserving HP13 and no XP. Whole bag remains occupied. Acknowledged save, actual restart and native relogin preserve selected partial cake, brew dose and all other slots; received initial Stats match durable pre-restart values.",
+  "negative_checks": [
+    "Stale claimed item cannot consume the partial stage or another whole cake",
+    "Full bag does not relocate or lose remainder",
+    "Ordinary food neither lowers nor increases existing overheal",
+    "All fineXP/base levels unchanged"
+  ],
+  "limitations": [
+    "This uses six received clocks after brew; it does not establish earliest legal potion/food cadence.",
+    "Normal acknowledged restart is not process-crash atomicity.",
+    "Any later passive stat decay during relogin is distinct from initial durable packet validation.",
+    "Full V2/V3 remains partial pending other member/interruption/presentation/clock cases."
+  ]
+}

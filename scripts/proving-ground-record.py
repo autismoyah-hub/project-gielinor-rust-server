@@ -37,6 +37,9 @@ for manifest in OUT.glob('OR-MIG-0024-*-independent*/manifest.json'):
 for manifest in OUT.glob('integration-*/manifest.json'):
     value=json.loads(manifest.read_text(encoding='utf-8'))
     if value.get('status')!='PASS':continue
+    if value.get('suite')=='prayer-cache':
+        add('OR-MIG-0051',value['tested_integration_sha'],'V0','IN_PROGRESS','Independent read-only target-cache definition and effective Prayer reward preflight PASS for representative bones; exact source and source-cache decoder identities retained. Full native dispatch/registration and remaining profile acceptance remain separate.',[str(manifest.relative_to(ROOT)).replace('\\','/')],scope='prayer-loaded-policy')
+        continue
     if value.get('suite')=='chemistry-matrix':
         add('OR-MIG-0006',value['tested_integration_sha'],'V1','IN_PROGRESS','Independent 22000-combination public completion matrix and12 invalid-policy cases PASS: both input directions, five charge counts, both crumble policies, goggles coexistence, all random thresholds, full inventory and exact XP/level/slot atomicity. Native and complete action-route obligations remain separate.',[str(manifest.relative_to(ROOT)).replace('\\','/')],scope='chemistry-independent-matrix')
         continue
@@ -101,7 +104,7 @@ for path in OUT.glob('OR-MIG-0040-*/manifest.json'):
     if result.get('outcome')!='PARTIAL':continue
     for level in ['V0','V1']:
         add('OR-MIG-0040',result['implementation_commit_sha'],level,'IN_PROGRESS','Independently executed13 existing exact-SHA authoritative/helper tests PASS, including actual held batch routing, two processing clocks, pair/timed regression, live level/member revocation, cancellation and no repeated rewards. Whole runtime/native/lifecycle/reference acceptance remains open.',[str(path.relative_to(ROOT)).replace('\\','/')],scope='shared-assembly-regression')
-for pattern,ident,scope in [('deep-chemistry-last/*/independent-assessment.json','OR-MIG-0006','native-last-charge'),('deep-food-observer/*/independent-assessment.json','OR-MIG-0024','native-food-observer'),('deep-combat-interrupt/*/independent-assessment.json','OR-MIG-0010','native-combat-interrupted')]:
+for pattern,ident,scope in [('deep-chemistry-last/*/independent-assessment.json','OR-MIG-0006','native-last-charge'),('deep-food-observer/*/independent-assessment.json','OR-MIG-0024','native-food-observer'),('deep-food-negative/*/independent-assessment.json','OR-MIG-0024','native-food-negative'),('deep-combat-interrupt/*/independent-assessment.json','OR-MIG-0010','native-combat-interrupted')]:
     for path in OUT.glob(pattern):
         result=json.loads(path.read_text(encoding='utf-8'))
         if result.get('status')!='PASS':continue
@@ -116,4 +119,28 @@ if path.exists():
     result=json.loads(path.read_text(encoding='utf-8'))
     assert result['status']=='FAIL'
     add('OR-MIG-0006',result['tested_sha'],'V2','FAIL','PG-DEF-001 / GitHub123: genuine native Close95 leaves server dialog live; stale Stop115 changes saved policy0->1. Ordinary P2, not implementation-blocking. Prior passing item-only probe is not gameplay acceptance.',[str(path.relative_to(ROOT)).replace('\\','/')],scope='chemistry-native-close-defect')
+path=OUT/'reference-ordinary-food/comparison.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    add('OR-MIG-0024',result['tested_sha'],'V4','IN_PROGRESS','Independent source/pinned Shark revision audit PASS for supported selected replacement, heal20, transaction ordering and explicitly different local rollback/presentation policies. Complete static profile reference, activity/combat timing and sound/presentation remain open; no Kotlin executable observation claimed.',[str(path.relative_to(ROOT)).replace('\\','/')],scope='ordinary-food-source-audit')
+for path in OUT.glob('OR-MIG-0051-*/manifest.json'):
+    result=json.loads(path.read_text(encoding='utf-8'))
+    if result.get('outcome')!='PARTIAL':continue
+    for level in ['V0','V1']:
+        add('OR-MIG-0051',result['implementation_commit_sha'],level,'IN_PROGRESS','Independent execution at exact SHA: five existing Prayer-related library checks and three unchanged selected-burial World action tests PASS; production server cargo check PASS. Autotests-disabled initial harness failure retained. No new authored oracle, native, persistence or full reference acceptance inferred.',[str(path.relative_to(ROOT)).replace('\\','/')],scope='selected-burial-regression')
+path=OUT/'deep-prayer/burial-001/independent-assessment.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    if result['status']=='PASS':
+        evidence=[str(path.relative_to(ROOT)).replace('\\','/')]
+        add('OR-MIG-0051',result['tested_sha'],'V0','PASS','Exact-SHA executable built, full actual cache-backed startup and configured native Bury dispatch succeeded. Independently loaded representative bone definitions/reward policy and actual selected-slot transaction confirm the registered entrypoint.',evidence,scope='native-burial-runtime')
+        for level in ['V2','V3']:add('OR-MIG-0051',result['tested_sha'],level,'IN_PROGRESS',result['scope']+' Remaining Chaos/member/modifier/interruption and applicable crash/presentation obligations stay open.',evidence,scope='native-burial-selected-restart')
+path=OUT/'reference-selected-burial/comparison.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    add('OR-MIG-0051',result['tested_sha'],'V4','IN_PROGRESS','Independent six-reference source/pinned-Wiki audit PASS within scope: selected slot versus local type-total policy, exact4.5/72base XP and measured cache rewards, one-clock local versus two-clock donor, stronger atomic rollback and known above-base necklace restoration gap. Complete cadence/sound/Chaos/all-modifier fidelity remains open.',[str(path.relative_to(ROOT)).replace('\\','/')],scope='selected-burial-reference')
+for path in OUT.glob('OR-MIG-0056-*/manifest.json'):
+    result=json.loads(path.read_text(encoding='utf-8'))
+    if result.get('outcome')!='PARTIAL':continue
+    for level in ['V0','V1']:add('OR-MIG-0056',result['implementation_commit_sha'],level,'IN_PROGRESS','Independent exact-SHA execution of two gem-specific authoritative action tests and one seven-profile binding/XP/member test PASS. Deferred grinding suites were not run; native/cache/lifecycle/reference and expanded independent oracle acceptance remain open.',[str(path.relative_to(ROOT)).replace('\\','/')],scope='gem-specific-regression')
 print('Per-level evidence events:',len(rows))

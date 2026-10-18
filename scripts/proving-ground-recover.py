@@ -68,6 +68,13 @@ state={'observed_utc':datetime.now(timezone.utc).isoformat(),'forge_head':head,'
                        {'lane':'C','feature':'OR-MIG-0006','action':'Inspect shared changes since the last recorded native integration campaign; select affected current-build regression scopes without inheriting older PASS results','sha':head},
                        {'lane':'A','feature':'OR-MIG-0024','action':'Expand runtime packet and genuine native ordinary/remainder food acceptance after completed revision-3 authoritative tests; item-pack native/lifecycle remains separate','sha':latest['OR-MIG-0024']['implementation_commit_sha']}]}
 state['contract_revisions']=[]
+policy_path=DOC/'USER_DEFERRALS.json'
+policy=json.loads(policy_path.read_text(encoding='utf-8')) if policy_path.exists() else None
+deferred=set(policy['implementation_ids']) if policy and policy['status']=='ACTIVE_UNTIL_USER_RESUMES' else set()
+if deferred:
+    state['user_deferrals']=policy
+    for item in items:item['execution_disposition']='DEFERRED_BY_USER' if item['implementation_id'] in deferred else 'ELIGIBLE'
+    state['resume_queue']=[{'lane':'B','feature':'OR-MIG-0051','action':'Complete native selected burial, stale claimed slot, full inventory, real restart and supported reference comparison; chemistry/Herblore/potions deferred by user','sha':latest['OR-MIG-0051']['implementation_commit_sha']},{'lane':'B','feature':'OR-MIG-0023','action':'Continue native pack profiles and durable interrupted repeat work','sha':latest['OR-MIG-0023']['implementation_commit_sha']},{'lane':'A','feature':'OR-MIG-0054','action':'Initial exact-SHA coin-pouch quantity/overflow/selected stack verification','sha':latest['OR-MIG-0054']['implementation_commit_sha']}]
 for r in rows:
     levels={level:{'status':'NOT_STARTED','reason':'No complete level result at this exact contract revision'} for level in ['V0','V1','V2','V3','V4']}
     if any(h['implementation_id']==r['implementation_id'] and h['implementation_commit_sha']==r['implementation_commit_sha'] and h['outcome']=='PARTIAL' for h in historical):
@@ -82,6 +89,9 @@ if food.exists() and json.loads(food.read_text(encoding='utf-8')).get('status')=
     item['verification_blockers']=[{'level':'V2','case_status':'BLOCKED','scope':'Remaining four bites and full six-action native client verdict',
       'reason':'Pinned food-001 driver times out after first cake action at a strict intermediate HP equality. Server commit and durable native state are verified; passive-regeneration collision is supported by an exact-SHA reproducer, but original production-session packet observation is insufficient for conclusive root cause.',
       'target_sha':item['implementation_availability']['sha'],'finding':'PG-INFRA-004','no_substituted_build':True}]
+observer=DOC/'independent/deep-food-observer/observer-001/independent-assessment.json'
+if observer.exists() and json.loads(observer.read_text(encoding='utf-8')).get('status')=='PASS':
+    item=next(x for x in items if x['implementation_id']=='OR-MIG-0024');item['verification_blockers']=[];item['resolved_observation_blocker']='PG-INFRA-004: independent fresh six-action observer and real restart/relogin PASS; original missed equality remains inferred'
 save(DOC/'WORKLIST.json',state)
 sync_point=sys.argv[sys.argv.index('--sync-point')+1] if '--sync-point' in sys.argv else 'manual'
 with (DOC/'SYNC_OBSERVATIONS.jsonl').open('a',encoding='utf-8',newline='\n') as f:
@@ -118,6 +128,12 @@ if food.exists():
 if 'OR-MIG-0040' in latest:
     resume['remaining_deep_scenarios'].append({'implementation_id':'OR-MIG-0040','target_sha':latest['OR-MIG-0040']['implementation_commit_sha'],
       'priority':'HIGH shared assembly change','cases':['captured selected/other material slot refusal','third container-return failure atomicity','modal-open cancellation and no reward after closing','existing pair recipe regression','native full-bag four-input batter and interrupted save/restart']})
+if deferred:
+    resume['user_deferrals']=policy
+    resume['remaining_deep_scenarios']=[x for x in resume['remaining_deep_scenarios'] if x['implementation_id'] not in deferred]
+    resume['deferred_native_work']=resume.pop('next_native_work',None)
+    resume['next_native_work']={'implementation_id':'OR-MIG-0051','target_sha':latest['OR-MIG-0051']['implementation_commit_sha'],'feature':'prayer','fresh_run_id':'burial-001','actions_in_order':['finish current build','seed once','produce','relogin','independent assessment'],'reason':'User deferred chemistry-related tests; pursue unrelated selected burial.'}
+    resume.pop('native_food_observation_blocker',None)
 save(DOC/'RESUME_QUEUE.json',resume)
 save(DOC/'independent'/('intake-'+head+'.json'),{k:value for k,value in state.items() if k!='items'})
 print(json.dumps({k:value for k,value in state.items() if k not in ['items','resume_queue','contract_revisions']},indent=2))

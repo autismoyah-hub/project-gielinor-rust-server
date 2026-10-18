@@ -1,0 +1,12 @@
+   Compiling gielinor-world v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\f6b0f6ad54fe7813bb6607827eeb8da0e60137fa\crates\world)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1m 39s
+     Running unittests src\lib.rs (C:\Projects\OSRSRSPS\agent7-verification\work\f6b0f6ad54fe7813bb6607827eeb8da0e60137fa\target\debug\deps\gielinor_world-379bc28e5667f47e.exe)
+
+running 5 tests
+test prayer_drain::tests::threshold_is_strict_and_depletion_effects_wait_until_next_tick ... ok
+test prayer::selected_tests::selected_burial_never_substitutes_duplicates_or_loses_items_on_xp_restore_failure ... ok
+test ranged::tests::prayer_priority_and_exact_enabled_value_follow_original ... ok
+test prayer_drain::tests::simultaneous_prayers_sum_and_cost_caps_at_available_points ... ok
+test combat::tests::low_level_prayer_exception_and_roll_signs ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 442 filtered out; finished in 0.00s

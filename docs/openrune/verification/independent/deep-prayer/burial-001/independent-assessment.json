@@ -1,0 +1,18 @@
+{
+  "implementation_id": "OR-MIG-0051",
+  "tested_sha": "f6b0f6ad54fe7813bb6607827eeb8da0e60137fa",
+  "campaign_kind": "historical",
+  "status": "PASS",
+  "V0": "PASS",
+  "loaded_policy_oracle": "docs/openrune/verification/independent/integration-external-prayer-cache-f6b0f6ad54fe7813bb6607827eeb8da0e60137fa-1792289742179352000/manifest.json",
+  "scope": "Actual exact-SHA cache-backed runtime and native Bury of clicked slot17 from full28 bag, preserving earlier bone slot3 and all unrelated items. Stale replay of actual Bury packet cannot consume another bone or grant XP. Actual configured4.5base at500percent produces225fineXP, displayed22. Acknowledged save, actual process restart and native relogin preserve inventory, exact fractional XP and all Stats without repeat reward.",
+  "fine_xp_award": 225,
+  "displayed_prayer_xp": 22,
+  "selected_slot": 17,
+  "preserved_duplicate_slot": 3,
+  "limitations": [
+    "V1/V2/V3 remain partial for native Chaos/cancelled confirmation, member/level/modifier and interruption/crash cases.",
+    "No rendered/audio acceptance or original executable differential; source/pinned documentation comparison is separate.",
+    "Raw partial inventory18 is omitted by this observer; actual native post-apply state and authoritative SQL are checked, with independently decoded stat46 on real restart."
+  ]
+}

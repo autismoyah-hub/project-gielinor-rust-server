@@ -1,0 +1,11 @@
+   Compiling gielinor-world v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\f6b0f6ad54fe7813bb6607827eeb8da0e60137fa\crates\world)
+   Compiling proving-ground-burial-existing v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\f6b0f6ad54fe7813bb6607827eeb8da0e60137fa\burial-existing-1792288679396969600)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1m 57s
+     Running tests\openrune_burial.rs (C:\Projects\OSRSRSPS\agent7-verification\work\f6b0f6ad54fe7813bb6607827eeb8da0e60137fa\target\debug\deps\openrune_burial-36a2b18f465a7410.exe)
+
+running 3 tests
+test actual_selected_action_consumes_clicked_full_bag_slot_and_rejects_changed_slot ... ok
+test chaos_confirmation_retains_selected_slot_and_revalidates_after_choice ... ok
+test claimed_identity_membership_revocation_and_opened_then_closed_modal_cannot_consume ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.59s

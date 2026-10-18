@@ -13,6 +13,8 @@ lines=['# PROVING GROUND — current verification status','',
 for level in ['V0','V1','V2','V3','V4']:
     counts=Counter(x['historical_verification']['levels'][level]['status'] for x in state['items'])
     lines.append('- '+level+': '+', '.join(k+' '+str(counts.get(k,0)) for k in ['PASS','FAIL','BLOCKED','IN_PROGRESS','NOT_STARTED','NOT_APPLICABLE'])+'.')
+if state.get('user_deferrals'):
+    lines+=['','User direction: chemistry, potion and Herblore tests are DEFERRED. Historical evidence and findings remain intact. Continue Prayer, food without new potion setup, cooking, assembly, smithing, packs, Crafting and other eligible work. General resume does not lift the chemistry deferral. See [USER_DEFERRALS.json](USER_DEFERRALS.json).']
 lines+=['','PASS applies only to the named level, target and scope. IN_PROGRESS retains passing subchecks while required acceptance cases remain open. The old coarse ledger is retained; [LEVEL_RESULTS.jsonl](LEVEL_RESULTS.jsonl) is authoritative for the new level-specific program.','',
         '## Deep evidence','',
         '- Super-combat at `5a260c1b`: six genuine native inventory/menu combinations; exact item/quantity packets and authoritative two-tick transitions; six outputs and 45,000 fine XP; acknowledged save, actual process restart and native relogin without replay. [Assessment](independent/deep-combat/independent-assessment.json).',
@@ -51,6 +53,6 @@ lines+=['','[RESUME_QUEUE.json](RESUME_QUEUE.json) contains exact targets and al
         '## Current contract coverage','']
 for x in state['items']:
     levels=x['historical_verification']['levels']
-    lines.append('- **'+x['implementation_id']+' r'+str(x['revision'])+'** `'+x['implementation_availability']['sha'][:12]+'` — '+x['feature_name']+'; '+', '.join(k+' '+v['status'] for k,v in levels.items())+'.')
+    lines.append('- **'+x['implementation_id']+' r'+str(x['revision'])+'** `'+x['implementation_availability']['sha'][:12]+'` — '+x['feature_name']+'; '+', '.join(k+' '+v['status'] for k,v in levels.items())+'.'+(' DEFERRED BY USER.' if x.get('execution_disposition')=='DEFERRED_BY_USER' else ''))
 (DOC/'DASHBOARD.md').write_text('\n'.join(lines)+'\n',encoding='utf-8',newline='\n')
 print('Updated dashboard for',state['implementation_units'],'features')

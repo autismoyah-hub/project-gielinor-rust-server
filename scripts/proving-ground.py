@@ -55,8 +55,12 @@ def inspect():
 def run_batch(ids,independent=False,world_only=False):
     OUT.mkdir(parents=True,exist_ok=True)
     toolbin=Path('C:/Projects/OSRSRSPS/rust-client/work/rustup/toolchains/stable-x86_64-pc-windows-gnu/bin')
-    filters={'OR-MIG-0018':'potion','OR-MIG-0006':'chemistry','OR-MIG-0010':'combat_mixing','OR-MIG-0024':'food','OR-MIG-0023':'item_pack','OR-MIG-0035':'dynamic_food','OR-MIG-0040':'assembly'}
+    filters={'OR-MIG-0018':'potion','OR-MIG-0006':'chemistry','OR-MIG-0010':'combat_mixing','OR-MIG-0024':'food','OR-MIG-0023':'item_pack','OR-MIG-0035':'dynamic_food','OR-MIG-0040':'assembly','OR-MIG-0051':'prayer','OR-MIG-0056':'gem'}
     for ident in ids:
+        policy=ROOT/'docs/openrune/verification/USER_DEFERRALS.json'
+        if policy.exists():
+            deferred=json.loads(policy.read_text(encoding='utf-8'))
+            assert not (deferred['status']=='ACTIVE_UNTIL_USER_RESUMES' and ident in deferred['implementation_ids']),'User deferred this chemistry-related contract; continue unrelated verification'
         if ident not in filters:raise ValueError('No reviewed suite mapping for '+ident+'; design a suite before claiming coverage')
         if independent and ident not in ['OR-MIG-0018','OR-MIG-0024','OR-MIG-0035']:raise ValueError('No reviewed external scenarios for this contract')
         r=next(x for x in reversed(records()) if x['implementation_id']==ident)
@@ -116,6 +120,16 @@ def run_batch(ids,independent=False,world_only=False):
             cmds=[['--version'],['test','--offline','--locked','-j','1','-p','gielinor-world','--lib',filters[ident]],
                   ['test','--offline','--locked','-j','1','-p','gielinor-server','--lib','pack_binding_tests' if ident=='OR-MIG-0023' else filters[ident]]]
             if world_only:cmds=cmds[:2]
+            if ident=='OR-MIG-0051':
+                # The exact target deliberately sets autotests=false. Execute
+                # its unchanged public integration source in an owned crate.
+                harness=work/('burial-existing-'+str(time.time_ns()));(harness/'tests').mkdir(parents=True)
+                src=checkout/'crates/world/tests/openrune_burial.rs';shutil.copyfile(src,harness/'tests/openrune_burial.rs')
+                (evidence/'harness').mkdir();shutil.copyfile(src,evidence/'harness/openrune_burial.rs')
+                manifest['existing_test_source_sha256']=hashlib.sha256(src.read_bytes()).hexdigest()
+                (harness/'Cargo.toml').write_text('[package]\nname="proving-ground-burial-existing"\nversion="0.1.0"\nedition="2021"\n[workspace]\n[dependencies]\ngielinor-world={path='+json.dumps((checkout/'crates/world').as_posix())+'}\n')
+                cmds=[['--version'],['test','--offline','--locked','-j','1','-p','gielinor-world','--lib','prayer'],['generate-lockfile','--offline','--manifest-path',str(harness/'Cargo.toml')],['test','--offline','--locked','-j','1','--manifest-path',str(harness/'Cargo.toml')],['check','--offline','--locked','-j','1','-p','gielinor-server']]
+                manifest['scope']='Independent execution of exact-SHA existing selected burial and retained Prayer/offering tests, plus production server compilation. No fresh authored oracle/native/persistence/reference acceptance is inferred.'
             if independent:
                 harness=work/'independent-harness'
                 harness.mkdir(exist_ok=True)

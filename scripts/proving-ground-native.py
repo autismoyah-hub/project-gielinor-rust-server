@@ -127,22 +127,31 @@ def seed():
         cid=db.execute('SELECT c.id FROM characters c JOIN accounts a ON a.id=c.account_id WHERE a.login_username=? AND c.realm_id=1',('integration239',)).fetchone()[0]
         inv=db.execute('SELECT id FROM inventories WHERE character_id=? AND inv_type=93',(cid,)).fetchone()[0]
         db.execute('DELETE FROM inventory_objs WHERE inventories_id IN (SELECT id FROM inventories WHERE character_id=?)',(cid,))
-        if FEATURE=='OR-MIG-0010':
+        if FEATURE=='OR-MIG-0056':
+            mapping={0:1755,1:1755,27:995}
+            for index,item in enumerate([1623,1621,1619,1617,1631,6571,19496]):mapping[4+3*index]=mapping[5+3*index]=item
+            items=[(slot,mapping.get(slot,1931),1000 if slot==27 else 1) for slot in range(28)]
+        elif FEATURE=='OR-MIG-0051':items=[(slot,526 if slot in [3,17] else 995 if slot==27 else 1931,1000 if slot==27 else 1) for slot in range(28)]
+        elif FEATURE=='OR-MIG-0010':
             items=[(slot,[2436,2440,2442,269 if slot<12 else 111][slot%4] if slot<24 else 995 if slot==27 else 1931,1000 if slot==27 else 1) for slot in range(28)]
-        elif SCENARIO=='chemistry-last':items=[(slot,93 if slot%2==0 else 235,1) for slot in range(28)]
+        elif SCENARIO in ['chemistry-last','chem-interrupt','chem-crash']:items=[(slot,93 if slot%2==0 else 235,1) for slot in range(28)]
         elif SCENARIO=='food-negative':items=[(slot,{1:1891,3:1891,4:2289,5:2289,7:2142,9:6685,27:995}.get(slot,1931),1000 if slot==27 else 1) for slot in range(28)]
         elif SCENARIO in ['food','food-observer']:items=[(1,1891,1),(3,1891,1),(4,2289,1),(5,2289,1),(7,2142,1),(27,995,1000)]
         else:items=[(27,995,1000)] if SCENARIO=='chemistry-worn' else [(3,21163,1),(27,995,1000)]
         for slot,item,count in items:db.execute('INSERT INTO inventory_objs(inventories_id,slot,obj,count,vars) VALUES(?,?,?,?,0)',(inv,slot,item,count))
-        if SCENARIO in ['chemistry-worn','chemistry-last','chem-negative','chem-close']:
+        if SCENARIO in ['chemistry-worn','chemistry-last','chem-negative','chem-close','chem-interrupt','chem-crash']:
             db.execute('INSERT OR IGNORE INTO inventories(character_id,inv_type) VALUES(?,94)',(cid,))
             worn=db.execute('SELECT id FROM inventories WHERE character_id=? AND inv_type=94',(cid,)).fetchone()[0]
             db.execute('INSERT INTO inventory_objs(inventories_id,slot,obj,count,vars) VALUES(?,2,21163,1,0)',(worn,))
+            if SCENARIO in ['chem-interrupt','chem-crash']:db.execute('INSERT INTO inventory_objs(inventories_id,slot,obj,count,vars) VALUES(?,0,29974,1,0)',(worn,))
         db.execute('UPDATE stats SET vis_level=99,base_level=99,fine_xp=130344311 WHERE character_id=? AND stat_id=15',(cid,))
         if SCENARIO in ['food','food-observer','food-negative']:db.execute('UPDATE stats SET vis_level=?,base_level=10,fine_xp=11540 WHERE character_id=? AND stat_id=3',(10 if SCENARIO=='food-negative' else 2,cid))
         varps=json.loads(db.execute('SELECT varps FROM characters WHERE id=?',(cid,)).fetchone()[0]);varps['80']=4
         db.execute('UPDATE characters SET x=3224,z=3218,level=0,world_id=NULL,xp_rate_in_hundreds=500,varps=? WHERE id=?',(json.dumps(varps),cid))
         db.execute('UPDATE accounts SET members=1 WHERE login_username=?',('integration239',))
+        if FEATURE=='OR-MIG-0056':
+            db.execute('UPDATE stats SET vis_level=99,base_level=99,fine_xp=130344311 WHERE character_id=? AND stat_id=12',(cid,))
+            db.execute('UPDATE characters SET xp_rate_in_hundreds=125 WHERE id=?',(cid,))
     if FEATURE=='OR-MIG-0006':
         # Apply the recorded target's real migrations to this fresh clone only.
         for version in range(9,13):
@@ -164,6 +173,7 @@ def snapshot():
     db.close();return state
 def phase(mode):
     guard();name='produce' if mode=='assemble' else 'relogin'
+    fault=SCENARIO=='chem-crash' and mode=='assemble'
     dest=OUT/name;dest.mkdir(parents=True,exist_ok=False)
     shutil.copyfile(Path(__file__),dest/'launcher.txt')
     before=snapshot();save(dest/'before.json',before)
@@ -195,14 +205,26 @@ def phase(mode):
             assert address,'Exact-SHA server startup failed: '+(dest/'server.err').read_text(encoding='utf-8')[-2000:]
             print('LISTENING',address,flush=True)
             args=[str(RES/DRIVER),str(RES/'cache/js5'),address,'integration239',str(RES/'password'),str(RES/'keys/client.key'),mode]
-            if SCENARIO in ['chem-negative','chem-close','combat-interrupt','food-negative','food-observer']:args[-1]=(SCENARIO if SCENARIO in ['chem-negative','chem-close','combat-interrupt','food-negative'] else 'food') if mode=='assemble' else 'verify'
+            if SCENARIO in ['chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','food-observer','prayer','gems']:args[-1]=(SCENARIO if SCENARIO in ['chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','prayer','gems'] else 'food') if mode=='assemble' else 'verify'
             if SCENARIO=='food':
                 if mode=='assemble':args[-1]=str(dest/'native-events.jsonl')
                 else:args=[str(client_binary),str(RES/'cache/js5'),str(RES/'keys/client.key'),address,'integration239',str(RES/'password'),str(WORK/'relogin-private.capture')]
             with (dest/'client.log').open('w',encoding='utf-8',newline='\n') as log:
                 client=subprocess.Popen(args,cwd=WORK,stdout=log,stderr=subprocess.STDOUT,creationflags=subprocess.CREATE_NO_WINDOW|subprocess.BELOW_NORMAL_PRIORITY_CLASS)
                 manifest['owned_client_pid']=client.pid;save(dest/'manifest.json',manifest)
-                try:rc=client.wait(timeout=390)
+                try:
+                    if fault:
+                        deadline=time.monotonic()+390
+                        manifest['intentional_crash_injected']=False
+                        while client.poll() is None and time.monotonic()<deadline:
+                            if not manifest['intentional_crash_injected'] and 'PG_CRASH_READY' in (dest/'client.log').read_text(encoding='utf-8'):
+                                assert server.poll() is None,'Owned server ended before requested fault injection'
+                                server.kill();server.wait();manifest['intentional_crash_injected']=True
+                                manifest['fault_scope']='Terminate only this freshly launched owned server after native All result with ingredients remaining; no normal logout/save requested'
+                                save(dest/'manifest.json',manifest)
+                            time.sleep(.02)
+                        rc=client.wait(timeout=1)
+                    else:rc=client.wait(timeout=390)
                 except subprocess.TimeoutExpired:client.kill();client.wait();rc=124
             manifest['client_exit']=rc
             # Allow disconnect/save processing before requesting a clean owned stop.
@@ -210,7 +232,7 @@ def phase(mode):
             while server.poll() is None and time.monotonic()<end:
                 if 'Save acknowledgement:' in (dest/'server.log').read_text(encoding='utf-8'):break
                 time.sleep(.2)
-            manifest['status']='PASS' if rc==0 else 'FAIL'
+            manifest['status']='PASS' if rc==0 and (not fault or manifest.get('intentional_crash_injected')) else 'FAIL'
         except Exception as exc:
             manifest.update(status='BLOCKED',reason=str(exc));print('NATIVE_BLOCKED',str(exc),flush=True)
         finally:
@@ -228,17 +250,27 @@ def phase(mode):
     resources=json.loads((WORK/'private-resource-manifest.json').read_text(encoding='utf-8'))
     manifest['resource_hashes_unchanged']=all(digest(RES/path)==expected for path,expected in resources.items())
     if not manifest['resource_hashes_unchanged']:manifest.update(status='BLOCKED',reason='Owned runtime resource identity changed during the campaign')
-    if manifest['status']=='PASS' and (not manifest['save_acknowledgement'] or not manifest['graceful_shutdown'] or manifest['server_exit']!=0 or manifest['forced_shutdown']):manifest.update(status='BLOCKED',reason='Client finished but durable save or graceful shutdown evidence missing')
+    if fault:
+        if manifest['status']=='PASS' and (manifest['server_exit']==0 or manifest['save_acknowledgement'] or manifest['graceful_shutdown']):manifest.update(status='BLOCKED',reason='Fault run did not demonstrate unacknowledged abrupt termination')
+    elif manifest['status']=='PASS' and (not manifest['save_acknowledgement'] or not manifest['graceful_shutdown'] or manifest['server_exit']!=0 or manifest['forced_shutdown']):manifest.update(status='BLOCKED',reason='Client finished but durable save or graceful shutdown evidence missing')
     save(dest/'manifest.json',manifest);print('NATIVE_RESULT',json.dumps(manifest),flush=True)
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('action',choices=['prepare','build','seed','produce','relogin']);p.add_argument('--feature',choices=['combat','chemistry','chemistry-worn','chemistry-last','chem-negative','chem-close','combat-interrupt','food-negative','food','food-observer'],default='combat');p.add_argument('--integration-sha');p.add_argument('--run-id');a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('action',choices=['prepare','build','seed','produce','relogin']);p.add_argument('--feature',choices=['combat','chemistry','chemistry-worn','chemistry-last','chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','food','food-observer','prayer','gems'],default='combat');p.add_argument('--integration-sha');p.add_argument('--run-id');a=p.parse_args()
     SCENARIO=a.feature
-    if a.feature in ['chemistry','chemistry-worn','chemistry-last','chem-negative','chem-close']:
+    policy=ROOT/'docs/openrune/verification/USER_DEFERRALS.json'
+    if policy.exists():
+        deferred=json.loads(policy.read_text(encoding='utf-8'))
+        assert not (deferred['status']=='ACTIVE_UNTIL_USER_RESUMES' and a.feature in deferred['native_features']),'User deferred this chemistry/Herblore/potion scenario; select eligible unrelated verification'
+    if a.feature in ['chemistry','chemistry-worn','chemistry-last','chem-negative','chem-close','chem-interrupt','chem-crash']:
         SHA='e7ac3608e61893d80b2de6a1a2e512b3ab785505';FEATURE='OR-MIG-0006';STATE='pg-chemistry-native-001';DRIVER='server_chemistryui.exe';PIN='chemistryui-005'
         CHECKOUT=ROOT.parent/'agent7-targets'/SHA;WORK=ROOT/'work/native-chemistry';OUT=ROOT/'docs/openrune/verification/independent/deep-chemistry'
     if a.feature in ['food','food-observer','food-negative']:
         SHA='ae3d234c71764dd2364f8452fc1974a54a6783f0';FEATURE='OR-MIG-0024';STATE='pg-food-native-001';DRIVER='server_food.exe';PIN='food-001'
         CHECKOUT=ROOT.parent/'agent7-targets'/SHA;WORK=ROOT/'work/native-food';OUT=ROOT/'docs/openrune/verification/independent/deep-food'
+    if a.feature=='prayer':
+        SHA='f6b0f6ad54fe7813bb6607827eeb8da0e60137fa';FEATURE='OR-MIG-0051';CHECKOUT=ROOT.parent/'agent7-targets'/SHA
+    if a.feature=='gems':
+        SHA='5743cbe1c7499e2a7476c721d25dcba194666042';FEATURE='OR-MIG-0056';CHECKOUT=ROOT.parent/'agent7-targets'/SHA
     CONTRACT_SHA=SHA
     if a.feature=='chemistry-worn':
         STATE='pg-chemistry-worn-native-001';DRIVER='server_chemistryworn.exe';PIN='chemistryworn-004'
@@ -246,7 +278,7 @@ if __name__=='__main__':
     if a.feature=='chemistry-last':
         STATE='pg-chemistry-last-native-001';DRIVER='server_chemistry.exe';PIN='chemistry-001'
         WORK=ROOT/'work/native-chemistry-last';OUT=ROOT/'docs/openrune/verification/independent/deep-chemistry-last'
-    if a.feature in ['chem-negative','chem-close','combat-interrupt','food-negative','food-observer']:
+    if a.feature in ['chem-negative','chem-close','chem-interrupt','chem-crash','combat-interrupt','food-negative','food-observer','prayer','gems']:
         observer_build=json.loads((ROOT/'docs/openrune/verification/independent/client-observer-build/build.json').read_text(encoding='utf-8'));assert observer_build['status']=='PASS'
         STATE='pg-'+a.feature+'-001';DRIVER='pg_observer-'+observer_build['binaries']['pg_observer.exe'][:12]+'.exe';PIN='pg-observer'
         WORK=ROOT/'work'/('native-'+a.feature);OUT=ROOT/'docs/openrune/verification/independent'/('deep-'+a.feature)

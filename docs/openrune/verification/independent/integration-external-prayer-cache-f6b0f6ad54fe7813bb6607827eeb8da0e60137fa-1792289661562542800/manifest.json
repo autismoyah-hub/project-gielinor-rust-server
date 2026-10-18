@@ -1,0 +1,66 @@
+{
+  "tested_integration_sha": "f6b0f6ad54fe7813bb6607827eeb8da0e60137fa",
+  "suite": "prayer-cache",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "FAIL",
+  "resource": {
+    "available_ram": 7579688960,
+    "active_compilers": [
+      "\"cargo.exe\",\"11948\",\"RDP-Tcp#0\",\"2\",\"19,624 K\"",
+      "\"rustc.exe\",\"14680\",\"RDP-Tcp#0\",\"2\",\"265,788 K\""
+    ],
+    "cpu_percent": 34.11,
+    "cpu_samples": [
+      30.6640625,
+      41.796875,
+      29.8828125
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained",
+    "disk_free": 44274876416,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "3e0c8685d165ae26bc0380c5a5f0b7ba6f98773b",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\f6b0f6ad54fe7813bb6607827eeb8da0e60137fa\\external-harness-5419474900\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-prayer-cache-f6b0f6ad54fe7813bb6607827eeb8da0e60137fa-1792289661562542800\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\f6b0f6ad54fe7813bb6607827eeb8da0e60137fa\\external-harness-5419474900\\Cargo.toml",
+        "--",
+        "--nocapture"
+      ],
+      "exit_code": 101,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-prayer-cache-f6b0f6ad54fe7813bb6607827eeb8da0e60137fa-1792289661562542800\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative prayer-cache scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-prayer-cache-f6b0f6ad54fe7813bb6607827eeb8da0e60137fa-1792289661562542800\\harness\\policy.rs": "37c806a8373caf6c528b73f195ed6bf99ed5942beef7463887e43f83477500e0"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\gielinor_server-7abd10c65476b4d7.exe": "5387d92eb934c559e7bcef7d2f56167249b6b8b4282a2029b36bc7af0a5adcea",
+    "target\\debug\\deps\\gielinor_world-379bc28e5667f47e.exe": "bf15269328fa7c4599f6944e1aa85d5267e6cf510c9f7f1a788e9a9cf8c30b33",
+    "target\\debug\\deps\\openrune_burial-36a2b18f465a7410.exe": "0e3d50b7973663fe1286263d8272f4a5a7c2f707d59867ef5b98f7d96333fea0",
+    "target\\debug\\deps\\policy-d3b032c8570e003e.exe": "6ad8b7b5a486cae9a585916da5c882691cd85c38d78f5bab86f1af8017c76eff"
+  }
+}

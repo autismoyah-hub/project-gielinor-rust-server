@@ -1,0 +1,9 @@
+   Compiling gielinor-world v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\5743cbe1c7499e2a7476c721d25dcba194666042\crates\world)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1m 16s
+     Running unittests src\lib.rs (C:\Projects\OSRSRSPS\agent7-verification\work\5743cbe1c7499e2a7476c721d25dcba194666042\target\debug\deps\gielinor_world-379bc28e5667f47e.exe)
+
+running 2 tests
+test simulation::tool_crafting_actions::tests::gem_reverse_native_held_dispatch_keeps_tool_and_credits_selected_diamond_after_one_clock ... ok
+test simulation::tool_crafting_actions::tests::gem_changed_tool_level_modal_and_failed_credit_cancel_without_inventory_or_xp ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 456 filtered out; finished in 0.31s

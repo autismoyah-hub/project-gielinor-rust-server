@@ -1,0 +1,9 @@
+Loaded 11 map squares, 586 NPCs, 24220 locations
+Listening on 127.0.0.1:61000 (revision 239.1; partial gameplay implementation)
+Player ready: ActorId { slot: 1, generation: 614 }
+Finished potion transition: {"actor_slot":1,"actor_generation":614,"unfinished_slot":0,"secondary_slot":1,"unfinished":93,"secondary":235,"output":175,"count":1,"queued_at":362,"committed_at":364,"index":0,"base_fine_xp":375,"rate_hundreds":500,"fine_before":130344311,"fine_after":130346186,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":2}
+Finished potion transition: {"actor_slot":1,"actor_generation":614,"unfinished_slot":2,"secondary_slot":3,"unfinished":93,"secondary":235,"output":175,"count":1,"queued_at":364,"committed_at":366,"index":1,"base_fine_xp":375,"rate_hundreds":500,"fine_before":130346186,"fine_after":130348061,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":2}
+Finished potion transition: {"actor_slot":1,"actor_generation":614,"unfinished_slot":4,"secondary_slot":5,"unfinished":93,"secondary":235,"output":175,"count":1,"queued_at":366,"committed_at":368,"index":2,"base_fine_xp":375,"rate_hundreds":500,"fine_before":130348061,"fine_after":130349936,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":2}
+Finished potion transition: {"actor_slot":1,"actor_generation":614,"unfinished_slot":6,"secondary_slot":7,"unfinished":93,"secondary":235,"output":175,"count":1,"queued_at":368,"committed_at":370,"index":3,"base_fine_xp":375,"rate_hundreds":500,"fine_before":130349936,"fine_after":130351811,"secondary_saved":false,"extra_dose":false,"amulet_crumbled":false,"stop_on_crumble":false,"charges_remaining":2}
+Save acknowledgement: {"actor_slot":1,"actor_generation":614,"save_generation":614,"observed_tick":388,"save_completed":true}
+Shutdown completed; accounts drained.
