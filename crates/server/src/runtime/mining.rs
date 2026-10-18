@@ -82,6 +82,18 @@ impl<B: AccountBackend> Runtime<B> {
                 ));
             }
         }
+        for (id, rock) in crate::content::ordinary_mining_rocks(
+            names.group("obj"),
+            names.group("loc"),
+            names.group("stat"),
+            &self.definitions,
+        )
+        .map_err(io::Error::other)?
+        {
+            if config.rocks.insert(id, rock).is_some() {
+                return Err(io::Error::other("Conflicting ordinary mining rock"));
+            }
+        }
         config.validate().map_err(io::Error::other)?;
         self.world.mining = Some(config);
         Ok(())
