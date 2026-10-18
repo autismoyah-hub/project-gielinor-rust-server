@@ -95,6 +95,7 @@ pub fn configure<B: AccountBackend>(
     let parameters = cache.parameters()?;
     let stat = |name| u8::try_from(names.id("stat", name)?).map_err(io::Error::other);
     let mut prayer=crate::prayer::resolve(names,&runtime.definitions)?;
+    crate::prayer::configure_missing_bones(n("obj"),&runtime.definitions,&mut prayer)?;
     runtime.world.prayer_ashes=crate::prayer::configure_ashes(n("obj"),n("seq"),&runtime.definitions,&mut prayer)?;
     runtime.world.prayer_member_bones=prayer.bones.keys().filter(|id|runtime.definitions.items.get(&(**id as u32)).is_some_and(|d|d.members)).copied().collect();
     runtime.world.prayer=Some(prayer);
