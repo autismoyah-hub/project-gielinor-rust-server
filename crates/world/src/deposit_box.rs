@@ -1,4 +1,4 @@
-//! Deposit-only bulk adapter. Banking algorithms remain in bank_actions.
+//! Deposit-only adapters reuse the shared bank transfer implementation.
 use crate::{
     bank_actions::{self, Config as BankConfig, Event},
     inventory::Catalog,
@@ -7,22 +7,18 @@ use crate::{
 #[derive(Clone, Copy, Debug)]
 pub struct Config {
     pub animation: u16,
+    pub quantities: Option<crate::deposit_box_items::Quantities>,
 }
-pub fn deposit_all(
+pub(crate) fn apply_in_main(
     bank: &BankConfig,
     data: &mut PlayerData,
     items: &Catalog,
-    worn: bool,
-) -> Result<(Vec<Event>, bool), bank_actions::Error> {
+    request: bank_actions::Request,
+) -> Result<Vec<Event>, bank_actions::Error> {
     let previous = bank.selected.get(&data.variables)?;
     if !(0..=9).contains(&previous) {
         return Err(bank_actions::Error::InvalidSetting);
     }
-    let before = if worn {
-        data.equipment.free_space()
-    } else {
-        data.inventory.free_space()
-    };
     let mut staged = data.clone();
     let mut events = Vec::new();
     if previous != 0 {
@@ -32,11 +28,7 @@ pub fn deposit_all(
                 .map(Event::Variable),
         );
     }
-    events.extend(bank.apply(
-        &mut staged,
-        items,
-        bank_actions::Request::DepositAll { worn },
-    )?);
+    events.extend(bank.apply(&mut staged, items, request)?);
     if previous != 0 {
         events.extend(
             bank.selected
@@ -44,12 +36,31 @@ pub fn deposit_all(
                 .map(Event::Variable),
         );
     }
-    let after = if worn {
-        staged.equipment.free_space()
-    } else {
-        staged.inventory.free_space()
-    };
     *data = staged;
+    Ok(events)
+}
+pub fn deposit_all(
+    bank: &BankConfig,
+    data: &mut PlayerData,
+    items: &Catalog,
+    worn: bool,
+) -> Result<(Vec<Event>, bool), bank_actions::Error> {
+    let before = if worn {
+        data.equipment.free_space()
+    } else {
+        data.inventory.free_space()
+    };
+    let events = apply_in_main(
+        bank,
+        data,
+        items,
+        bank_actions::Request::DepositAll { worn },
+    )?;
+    let after = if worn {
+        data.equipment.free_space()
+    } else {
+        data.inventory.free_space()
+    };
     Ok((events, before != after))
 }
 #[cfg(test)]

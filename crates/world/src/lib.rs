@@ -6,6 +6,7 @@ pub mod autocast;
 pub mod autocast_attack;
 pub mod autocast_select;
 pub mod deposit_box;
+pub mod deposit_box_items;
 pub mod bank_access;
 pub mod bank;
 pub mod bank_actions;

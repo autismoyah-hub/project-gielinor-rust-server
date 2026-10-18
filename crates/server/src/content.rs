@@ -8,6 +8,8 @@ mod light_sources;
 pub use light_sources::light_sources;
 mod prospector_outfit;
 pub use prospector_outfit::prospector_outfit;
+mod deposit_box_quantities;
+pub use deposit_box_quantities::deposit_box_quantities;
 mod guild_deposit_box;
 pub use guild_deposit_box::guild_deposit_box;
 mod crafting_guild_bank;

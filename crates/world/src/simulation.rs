@@ -520,6 +520,8 @@ pub enum Action {
     },
     OpenItemPack { slot: usize, item: i32 },
     DepositBoxAll { worn:bool },
+    DepositBoxItem { slot:usize,item:i32,operation:u8 },
+    DepositBoxMode { mode:i32 },
     SwapWornItem { slot: usize, item: i32 },
     ConvertHeldItem { slot: usize, item: i32 },
     EmptyContainer { slot: usize, item: i32 },
@@ -1900,6 +1902,8 @@ impl World {
                 self.events.push(WorldEvent::BankCount(trace));
             }
             Action::DepositBoxAll{worn} => self.deposit_box_all(id,worn)?,
+            Action::DepositBoxItem{slot,item,operation} => self.deposit_box_item(id,slot,item,operation)?,
+            Action::DepositBoxMode{mode} => self.deposit_box_mode(id,mode)?,
             Action::Bank(request) => {
                 if p.protection.modal_button_protected() {
                     return Err(ActionError::Protected);

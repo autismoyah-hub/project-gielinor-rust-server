@@ -40,6 +40,24 @@ impl<B: AccountBackend> Runtime<B> {
         {
             return Err(io::Error::other("Missing deposit UI dependency"));
         }
+        let quantities = crate::content::deposit_box_quantities(
+            names.group("varbit"),
+            names.group("varp"),
+            &self.definitions,
+        )
+        .map_err(io::Error::other)?;
+        for ((component, _), name) in p.presets.iter().zip([
+            "bank_depositbox:1",
+            "bank_depositbox:5",
+            "bank_depositbox:10",
+            "bank_depositbox:all",
+        ]) {
+            if names.id("component", name)? != component.0
+                || !self.components.contains_key(&component.0)
+            {
+                return Err(io::Error::other("Invalid deposit quantity component"));
+            }
+        }
         let (id, gate) = crate::content::guild_deposit_box(
             names.group("loc"),
             names.group("stat"),
@@ -65,7 +83,10 @@ impl<B: AccountBackend> Runtime<B> {
                     component: p.grid,
                     start: 0,
                     end: 27,
-                    mask: 0,
+                    mask: [1, 2, 3, 4, 6]
+                        .into_iter()
+                        .map(|op| operation_mask(op).unwrap())
+                        .fold(0, |a, b| a | b),
                 },
                 Hook::Events {
                     component: p.deposit_inventory,
@@ -80,9 +101,20 @@ impl<B: AccountBackend> Runtime<B> {
                     mask: operation_mask(1).unwrap(),
                 },
             ]);
+        self.interface_hooks
+            .opens
+            .entry(p.interface)
+            .or_default()
+            .extend(p.presets.iter().map(|(component, _)| Hook::Events {
+                component: *component,
+                start: -1,
+                end: -1,
+                mask: operation_mask(1).unwrap(),
+            }));
         self.world.location_banks.insert(id, gate);
         self.world.deposit_box = Some(gielinor_world::deposit_box::Config {
             animation: p.animation,
+            quantities: Some(quantities),
         });
         self.deposit_box_presentation = Some(p);
         Ok(())
@@ -106,6 +138,21 @@ impl<B: AccountBackend> Runtime<B> {
         let a = self.active.get(&actor)?;
         if !a.ui.modals.contains_interface(p.interface) {
             return None;
+        }
+        if button.component == p.grid.0 && [1, 2, 3, 4, 6].contains(&button.op) {
+            return usize::try_from(button.slot)
+                .ok()
+                .filter(|slot| *slot < 28)
+                .map(|slot| gielinor_world::simulation::Action::DepositBoxItem {
+                    slot,
+                    item: button.object,
+                    operation: button.op,
+                });
+        }
+        if button.op == 1 {
+            if let Some((_, mode)) = p.presets.iter().find(|(c, _)| c.0 == button.component) {
+                return Some(gielinor_world::simulation::Action::DepositBoxMode { mode: *mode });
+            }
         }
         p.bulk(Component(button.component), button.op)
             .map(|worn| gielinor_world::simulation::Action::DepositBoxAll { worn })

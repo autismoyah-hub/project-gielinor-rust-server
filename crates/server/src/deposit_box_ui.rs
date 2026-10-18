@@ -1,4 +1,4 @@
-//! Revision-bound bulk deposit presentation; item quantities remain separate.
+//! Revision-bound deposit presentation; custom quantity prompts remain separate.
 use gielinor_cache::symbols::Symbols;
 use gielinor_world::ui::Component;
 #[derive(Clone, Copy, Debug)]
@@ -10,6 +10,7 @@ pub struct Presentation {
     pub deposit_inventory: Component,
     pub deposit_worn: Component,
     pub animation: u16,
+    pub presets: [(Component, i32); 4],
 }
 impl Presentation {
     pub fn resolve(
@@ -46,6 +47,12 @@ impl Presentation {
             deposit_inventory: Component(12582941),
             deposit_worn: Component(12582942),
             animation: 834,
+            presets: [
+                (Component(12582946), 0),
+                (Component(12582947), 1),
+                (Component(12582948), 4),
+                (Component(12582950), 2),
+            ],
         })
     }
     pub fn bulk(self, component: Component, op: u8) -> Option<bool> {
@@ -82,6 +89,10 @@ mod tests {
         assert_eq!(p.bulk(p.deposit_inventory, 1), Some(false));
         assert_eq!(p.bulk(p.deposit_worn, 1), Some(true));
         assert_eq!(p.bulk(p.grid, 1), None);
+        assert_eq!(
+            p.presets.map(|(c, m)| (c.child(), m)),
+            [(34, 0), (35, 1), (36, 4), (38, 2)]
+        );
         assert_eq!(p.bulk(p.deposit_inventory, 2), None);
     }
 }
