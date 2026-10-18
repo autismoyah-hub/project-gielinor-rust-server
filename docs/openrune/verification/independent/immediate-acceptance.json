@@ -1,0 +1,54 @@
+{
+  "implementation_id": "OR-MIG-0065",
+  "revision": 1,
+  "tested_sha": "4f4aacb2929e8ad775d091527e2d80070100ee69",
+  "campaign_kind": "historical",
+  "independent_verification": true,
+  "status": "ACCEPTED",
+  "acceptance_scope": "Applicable V0-V4 obligations for the two manual immediate recipes from already-owned ingredients at exact4f implementation. Historical feature acceptance only; no acceptance inherited by moving FORGE HEAD.",
+  "exclusions": "Acquisition/Lost City progression, transport/equipping, original global RNG stream, audio and rendered animation-frame parity are outside this declared manual adapter; they are not marked tested. Unacknowledged-state rollback is distinguished from a mid-SQL-commit fault.",
+  "levels": {
+    "V0": {
+      "status": "PASS",
+      "reason": "Exact4fserver compiled and ran against95hash-attested cache/symbol resources. Actual startup factory resolves seven ordinary definitions/Crafting/two sequences, rejects81metadata mutations and registers both immediate pairs. Genuine native actions reached each registration; independent queued deterministic16-profile regression also passes after this shared optional-advancement change."
+    },
+    "V1": {
+      "status": "PASS",
+      "reason": "207656controlled level/member/rate/byte cases and60pre-RNG refusal probes verify staged selected-only full-bag success/failure credits, exact fineXP, no deterministic RNG/advancement, zero-rate Dramen and one draw even at limestone certainty40.48actualWorld routes commit before clock advance without menu/repeat, and88additional actualWorld admission/configuration/stale/lifecycle refusals preserve inventory/Stats. Shared queued gem/shell576positive,24F2P,140admission and192late cases pass at this exactSHA."
+    },
+    "V2": {
+      "status": "PASS",
+      "reason": "Genuine source-backed native inventory/menu/Use transport both directions:3Dramen,12low-level limestone and12certainty40actions. Full28selected credits preserve duplicate raw/tools/coins, fineXP is exact, every stale captured pair refuses, no Make-XResume115occurs. Client decodes zero-delay sequences10937/1309with each credit at the same received clock; limestone success/failure feedback and XP presentation match all24actions, including7brick/5rock low-level witnesses. No screenshot/rendered-frame or distribution claim."
+    },
+    "V3": {
+      "status": "PASS",
+      "reason": "All27normal native outputs/fineXP survive acknowledged save, actual server process restart and native reconnect; independent raw full-inventory/Stats decoders match complete durable state with no repeated action. Separate owned abrupt termination after one unsaved native limestone result restores prior whole inventory/Stats/energy onSQL and real native restart. Stale requests after every action never substitute retained duplicates. No pending queue exists; no mid-SQL-commit injection claimed."
+    },
+    "V4": {
+      "status": "PASS",
+      "reason": "All12pinned reference hashes independently reverified. Source zero-cycle held intent, Dramen31/zeroXP and no extra owned-branch quest gate, limestone source137/434curve and Wiki certainty40 align with independent execution. Wiki1.5failureXP intentionally overrides donor omitted/default0; source global RNG is intentionally replaced by authoritative World RNG. Current-level clamp/rounding/optional publication are explicitly compared. Strongest feasible source/documentation comparison completed; original compiled Kotlin/random stream and rendering/audio unavailable and not claimed."
+    }
+  },
+  "evidence": [
+    "docs/openrune/verification/independent/integration-external-immediate-tools-4f4aacb2929e8ad775d091527e2d80070100ee69/manifest.json",
+    "docs/openrune/verification/independent/integration-external-immediate-bindings-4f4aacb2929e8ad775d091527e2d80070100ee69/manifest.json",
+    "docs/openrune/verification/independent/integration-external-immediate-admission-4f4aacb2929e8ad775d091527e2d80070100ee69-1792303105597419600/manifest.json",
+    "docs/openrune/verification/independent/integration-external-immediate-regression-4f4aacb2929e8ad775d091527e2d80070100ee69-1792304046343193900/manifest.json",
+    "docs/openrune/verification/independent/deep-immediate-staff/native-001/independent-assessment.json",
+    "docs/openrune/verification/independent/deep-immediate-limestone/native-001/independent-assessment.json",
+    "docs/openrune/verification/independent/deep-immediate-certainty/native-001/independent-assessment.json",
+    "docs/openrune/verification/independent/deep-immediate-crash/crash-001/independent-assessment.json",
+    "docs/openrune/verification/independent/reference-immediate/comparison.json"
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/integration-external-immediate-tools-4f4aacb2929e8ad775d091527e2d80070100ee69/manifest.json": "17ba86c197f63856a896014dcf33324a77d8d87accc88301e9dec26752162883",
+    "docs/openrune/verification/independent/integration-external-immediate-bindings-4f4aacb2929e8ad775d091527e2d80070100ee69/manifest.json": "4c9ebd166a589102e326efc210a16a1aaac1da00dc334e02d0a257b568697743",
+    "docs/openrune/verification/independent/integration-external-immediate-admission-4f4aacb2929e8ad775d091527e2d80070100ee69-1792303105597419600/manifest.json": "967d4478dbdd5151d435c67fdb0bc821f0612a308fba81ff066a7f7076264c32",
+    "docs/openrune/verification/independent/integration-external-immediate-regression-4f4aacb2929e8ad775d091527e2d80070100ee69-1792304046343193900/manifest.json": "ec749339b8def3293e3dbcdff71f068a645d1ba187c4342dea8994afa91cb80c",
+    "docs/openrune/verification/independent/deep-immediate-staff/native-001/independent-assessment.json": "4722dd387301ebbf521fc3c03ba5f49d25e6fb5616fa260baaed52d7c5d55f17",
+    "docs/openrune/verification/independent/deep-immediate-limestone/native-001/independent-assessment.json": "47e003d751e69583d0fc24460d4564cb3320c4647c40355ae5d848eb97bb380a",
+    "docs/openrune/verification/independent/deep-immediate-certainty/native-001/independent-assessment.json": "a3f1910818854e222a3fb04df400aba6131eb30e6843cff94c1ac0def0c2dafc",
+    "docs/openrune/verification/independent/deep-immediate-crash/crash-001/independent-assessment.json": "3789ebccd5ec5d23684de55602fd5b171461303b9f0f1cd7d4ff81c4993628a2",
+    "docs/openrune/verification/independent/reference-immediate/comparison.json": "dcc32c9345ce082fb498d3047c013c2879bf043b9aba158bd027258c1041ad0f"
+  }
+}

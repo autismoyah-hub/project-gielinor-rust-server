@@ -506,9 +506,45 @@ fn food(c:&mut ClientState,l:&mut Connection)->R<()> {
     }
     println!("PG_CASE_PASS food six actual selected-slot native actions; HP correctness requires received-packet/server-trace assessment, not a relaxed HP oracle");Ok(())
 }
+fn immediate_tools(c:&mut ClientState,l:&mut Connection,kind:&str)->R<()> {
+    let staff=kind=="immediate-staff";let certainty=kind=="immediate-certainty";let crash=kind=="immediate-crash";
+    let (tool,raw)=if staff{(946,771)}else{(1755,3211)};let xp=c.data.experience;
+    assert_eq!(c.data.base[12],if staff{99}else if certainty{40}else{12});
+    let mut fine=if staff{130344311}else if certainty{372240}else{15840};
+    assert_eq!(c.data.experience[12],fine/10);tab(c,"Inventory")?;ticks(c,l,3)?;
+    let mut successes=0;let mut failures=0;
+    for index in 0..if crash{1}else if staff{3}else{12}{
+        ready(c,l)?;let slot=4+index;assert_eq!(c.inventories.item(93,slot).id,raw);
+        let n=c.outbound.len();let messages=c.game_messages.len();let start_tick=c.server_tick;
+        if index%2==0{use_slots(c,0,slot)?;}else{use_slots(c,slot,0)?;}
+        let p=c.outbound.iter().skip(n).find(|p|p.opcode==27).ok_or("immediate native held packet absent")?;let stale=(p.opcode,p.payload.clone());
+        pump(c,l,30,|c,_|c.inventories.item(93,slot).id!=raw)?;
+        let out=c.inventories.item(93,slot).id;
+        let award=if staff{assert_eq!(out,772);0}else if out==3420{successes+=1;300}else{assert_eq!(out,968);assert!(!certainty);failures+=1;75};fine+=award;
+        pump(c,l,30,|c,_|c.data.experience[12]==fine/10)?;ticks(c,l,2)?;
+        let message=if staff{"You carve the Dramen staff."}else if out==3420{"You cut the limestone brick."}else{"You fail to cut the limestone into a brick."};
+        assert!(c.game_messages.iter().skip(messages).any(|m|m.text==message),"expected immediate game message missing: {message}");
+        for m in c.game_messages.iter().skip(messages){println!("PG_IMMEDIATE_MESSAGE kind={kind} index={index} tick={} message={:?}",c.server_tick,m.text);}
+        let before=(0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>();let committed=c.data.experience;
+        replay(c,l,&stale,"stale immediate selected held pair with duplicate raw retained")?;ticks(c,l,3)?;
+        assert_eq!(c.data.experience,committed);assert_eq!((0..28).map(|s|{let i=c.inventories.item(93,s);(i.id,i.count)}).collect::<Vec<_>>(),before);
+        assert_eq!(c.inventories.item(93,0).id,tool);assert_eq!(c.inventories.item(93,1).id,tool);assert_eq!(c.inventories.item(93,25).id,raw);assert_eq!(c.inventories.item(93,27).count,1000);assert_eq!((0..28).filter(|&s|c.inventories.item(93,s).id>=0).count(),28);
+        for i in 0..25{if i!=12{assert_eq!(c.data.experience[i],xp[i]);}}
+        assert!(!c.outbound.iter().skip(n).any(|p|p.opcode==115),"immediate route unexpectedly required production response");
+        println!("PG_IMMEDIATE_COMMITTED kind={kind} index={index} selected_slot={slot} raw={raw} output={out} fine_award={award} fine_total={fine} action_tick={start_tick} observation_tick={} display_xp={} current_level={} base_level={}",c.server_tick,c.data.experience[12],c.data.boosted[12],c.data.base[12]);
+    }
+    if crash{
+        println!("PG_CRASH_READY immediate one unsaved limestone credit and fineXP observed; socket held open; no save/logout requested");let start=Instant::now();loop{
+            match l.poll(c){Err(e)=>{println!("PG_EXPECTED_CRASH_DISCONNECT {e}");return Ok(());},Ok(())=>{if l.logged_out().is_some(){println!("PG_EXPECTED_CRASH_DISCONNECT native transport closed");return Ok(());}}}
+            if start.elapsed()>Duration::from_secs(30){return Err("owned immediate crash injection absent".into());}std::thread::sleep(Duration::from_millis(10));
+        }
+    }
+    println!("PG_CASE_PASS native immediate kind={kind} successes={successes} failures={failures}; full28 both directions stale captured pair refusal; retained tools and duplicate raw; exact rewards; natural outcome branch coverage assessed separately");Ok(())
+}
 fn main()->R<()> {
     let a:Vec<_>=std::env::args().collect();assert_eq!(a.len(),7);
     let mut c=ClientState::load(DiskCache::open(&a[1],64<<20)?)?;let mut l=Connection::connect(&mut c,&a[2],&a[3],&a[4],&a[5])?;ready(&mut c,&mut l)?;
+    if matches!(a[6].as_str(),"immediate-staff"|"immediate-limestone"|"immediate-certainty"|"immediate-crash"){immediate_tools(&mut c,&mut l,&a[6])?;l.session.close();return Ok(());}
     if matches!(a[6].as_str(),"production-gems"|"production-shells"){production_profiles(&mut c,&mut l,a[6]=="production-shells")?;l.session.close();return Ok(());}
     if matches!(a[6].as_str(),"production-gem-batch"|"production-shell-batch"){production_batch(&mut c,&mut l,a[6]=="production-shell-batch")?;l.session.close();return Ok(());}
     if matches!(a[6].as_str(),"production-gem-x"|"production-gem-x-focus"){production_x_boundary(&mut c,&mut l,a[6]=="production-gem-x-focus")?;l.session.close();return Ok(());}

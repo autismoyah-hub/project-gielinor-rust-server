@@ -1,0 +1,162 @@
+{
+  "implementation_id": "OR-MIG-0064",
+  "tested_sha": "0c489b46b552ad012e630810c1218dbaeb437a51",
+  "campaign_kind": "historical",
+  "status": "IN_PROGRESS",
+  "source_documentation_subcheck": "PASS_WITH_REFERENCE_CONFLICTS",
+  "sources": [
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/scripts/HeldCraftingScript.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "c39f8b323e8fa79f933224b9ca0c8cf07a5df005628906e79645e3e6a5399318"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingSection.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "26e5be7a84fbe82f5c4897d29cb3261c63cd475111f17df517e2e0ac5e0d8afb"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingWorker.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "5790b247e5441b54e05c0ca7b4b5a9dff5c7aa61181ebccb36d0d8057db56e53"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/util/CraftingConstants.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "393d05fa5a5645b2dd712fcfb8f8814845376846a7594dafe16909422fe2008f"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/pack/src/main/kotlin/org/rsmod/content/skills/crafting/pack/Crafting.kt",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "sha256": "5b3d4124ce83b2c6e93590b2d833e7dc0a37ce87e3a7dc2f327241ab165ef3e0"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingProduct.kt",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "sha256": "e0ee16a23f6fa20bf82ebae4103213c1a13337c596b2d2f7b7715edbe3073576"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/utils/src/main/kotlin/org/rsmod/content/skills/MathSkillUtiils.kt",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "sha256": "874ef859e35b30891ce90d077262e1637e9115e5c285ffb790970f899f32770b"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Opal",
+      "revision": "15315120",
+      "sha256": "b0ff09a46d99ceeffb995c9d172674bf2bf048e4e12f28a5a6f6cf4e8fe4cbba"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Jade",
+      "revision": "15280645",
+      "sha256": "f20e57f09fed8802378e5ab84fad61ff46c806dc49d93775a9a530b2e3207170"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Red topaz",
+      "revision": "15280657",
+      "sha256": "2b1fab7644be3f7b2d15af5a6bb519650c46523f17452b8f99a5d9b1da9c930a"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Crushed gem",
+      "revision": "15273740",
+      "sha256": "0110ea3e9bf70cba5d6922c25f4869799786e2eb815284421b04ae69e0b8e480"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Skilling success rate",
+      "revision": "15267313",
+      "sha256": "8a1a99ae113c433090435df1c88d35ed6b35df1f8cd0cb9d67e50bb36138cd37"
+    }
+  ],
+  "profiles": [
+    {
+      "name": "Opal",
+      "raw": 1625,
+      "output": 1609,
+      "level": 1,
+      "success_xp": 15,
+      "failure_xp": 3.8,
+      "wiki_endpoints": [
+        128,
+        250
+      ],
+      "source_endpoints": [
+        100,
+        252
+      ],
+      "sequence": 890,
+      "requirement_threshold": 129,
+      "level99_threshold": 251,
+      "boost120_threshold": 251
+    },
+    {
+      "name": "Jade",
+      "raw": 1627,
+      "output": 1611,
+      "level": 13,
+      "success_xp": 20,
+      "failure_xp": 5,
+      "wiki_endpoints": [
+        100,
+        245
+      ],
+      "source_endpoints": [
+        120,
+        252
+      ],
+      "sequence": 891,
+      "requirement_threshold": 119,
+      "level99_threshold": 246,
+      "boost120_threshold": 246
+    },
+    {
+      "name": "Red topaz",
+      "raw": 1629,
+      "output": 1613,
+      "level": 16,
+      "success_xp": 25,
+      "failure_xp": 6.3,
+      "wiki_endpoints": [
+        90,
+        240
+      ],
+      "source_endpoints": [
+        140,
+        252
+      ],
+      "sequence": 892,
+      "requirement_threshold": 114,
+      "level99_threshold": 241,
+      "boost120_threshold": 241
+    }
+  ],
+  "scope": "All12pinned hashes independently verified. Recipe levels/ordinary IDs/XP and three Wiki rate endpoint overrides match the declared adapter. Generic rounded probability documentation supports source-style1-99clamp and visible boosts above99 being ignored. No executable donor or random-stream parity inferred.",
+  "reference_conflicts": [
+    {
+      "finding": "PG-REF-001",
+      "fact": "Opal page states failure3.8XP while pinned Crushed gem creation row states3.7. Current implementation follows Opal and source3.8; contract does not acknowledge the pinned-page conflict.",
+      "requested_resolution": "FORGE record explicit source priority/adaptation or supply stronger original observed reward evidence; retain current independent3.8behavior result until adjudicated."
+    },
+    {
+      "finding": "PG-REF-001",
+      "fact": "Pinned Jade success formula uses floor without the generic+0.5 rounding; at level13 it yields118/256 versus the implemented/generic119/256. Endpoints agree.",
+      "requested_resolution": "FORGE explicitly reconcile the Jade-specific formula versus generic rounded rule, documenting the selected behavior or correction. No automatic expectation change to manufacture PASS."
+    }
+  ],
+  "limitations": [
+    "Source endpoints differ from Wiki endpoints and are intentionally overridden.",
+    "Specific Jade rounding and Opal failure-XP documentation conflicts remain unresolved; no complete V4 acceptance.",
+    "Public matrix verifies declared rounded thresholds, not distribution or native RNG-stream equivalence.",
+    "No original executable, Jeweller chisel bonus, audio or acquisition comparison."
+  ]
+}

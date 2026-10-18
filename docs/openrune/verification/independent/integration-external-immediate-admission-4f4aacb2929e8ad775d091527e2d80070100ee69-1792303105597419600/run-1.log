@@ -1,0 +1,9 @@
+    Blocking waiting for file lock on build directory
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\4f4aacb2929e8ad775d091527e2d80070100ee69\external-harness-9701807400)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1m 27s
+     Running tests\admission.rs (C:\Projects\OSRSRSPS\agent7-verification\work\4f4aacb2929e8ad775d091527e2d80070100ee69\target\debug\deps\admission-c8856c0fde91ceaf.exe)
+
+running 1 test
+test eighty_eight_refusals_leave_whole_inventory_stats_and_no_pending_production ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 6.46s

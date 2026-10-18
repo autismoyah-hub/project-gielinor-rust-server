@@ -1,6 +1,6 @@
 {
-  "observed_forge_head": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
-  "queue_sha256": "5614d85be0fbd0d2b167642f018be26741efe5d05b382cfdab1d6b041a35fbb8",
+  "observed_forge_head": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
+  "queue_sha256": "3778c8379ae9ab82a3f4b133c011808ae415bb9c78d2a3fe82df7f6158581d45",
   "lanes": [
     {
       "lane": "B",
@@ -108,7 +108,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -121,6 +121,7 @@
           "crates/server/src/application.rs",
           "crates/server/src/characters.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -140,6 +141,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -182,6 +184,7 @@
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -250,7 +253,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -263,6 +266,7 @@
           "crates/server/src/application.rs",
           "crates/server/src/characters.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -282,6 +286,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -323,6 +328,7 @@
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -390,7 +396,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -403,6 +409,7 @@
           "crates/server/src/application.rs",
           "crates/server/src/characters.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -422,6 +429,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -463,6 +471,7 @@
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -530,7 +539,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -543,6 +552,7 @@
           "crates/server/src/application.rs",
           "crates/server/src/characters.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -562,6 +572,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -602,6 +613,7 @@
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -666,7 +678,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -678,6 +690,7 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -697,6 +710,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -730,6 +744,7 @@
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -793,7 +808,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -804,6 +819,7 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/battlestaff_assembly.rs",
           "crates/server/src/content/crab_carving.rs",
@@ -816,6 +832,7 @@
           "crates/server/src/content/glass_smelting.rs",
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/pottery_firing.rs",
           "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sand_containers.rs",
@@ -835,6 +852,7 @@
           "crates/world/src/container_emptying.rs",
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
@@ -891,7 +909,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -903,6 +921,7 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -922,6 +941,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -955,6 +975,7 @@
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -1018,7 +1039,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1030,6 +1051,7 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -1049,6 +1071,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -1082,6 +1105,7 @@
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -1145,7 +1169,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1157,6 +1181,7 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -1176,6 +1201,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -1209,6 +1235,7 @@
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -1290,7 +1317,7 @@
         ]
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1302,6 +1329,7 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -1321,6 +1349,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -1352,6 +1381,7 @@
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -1423,7 +1453,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1435,6 +1465,7 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -1454,6 +1485,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -1485,6 +1517,7 @@
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -1547,7 +1580,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1559,6 +1592,7 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -1578,6 +1612,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -1609,6 +1644,7 @@
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -1671,7 +1707,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1683,6 +1719,7 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -1702,6 +1739,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -1732,6 +1770,7 @@
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -1792,7 +1831,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1804,6 +1843,7 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -1823,6 +1863,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -1853,6 +1894,7 @@
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -1912,7 +1954,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -1924,6 +1966,7 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -1943,6 +1986,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -1973,6 +2017,7 @@
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -2031,7 +2076,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2043,6 +2088,7 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -2062,6 +2108,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -2092,6 +2139,7 @@
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -2150,7 +2198,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2162,6 +2210,7 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -2181,6 +2230,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -2209,6 +2259,7 @@
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -2270,7 +2321,7 @@
         ]
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2282,6 +2333,7 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -2301,6 +2353,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -2329,6 +2382,7 @@
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -2396,7 +2450,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2408,6 +2462,7 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -2427,6 +2482,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -2455,6 +2511,7 @@
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -2522,7 +2579,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2534,6 +2591,7 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -2553,6 +2611,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -2581,6 +2640,7 @@
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -2648,7 +2708,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2661,6 +2721,7 @@
           "crates/server/src/application.rs",
           "crates/server/src/characters.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -2680,6 +2741,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -2725,6 +2787,7 @@
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/herb_cleaning.rs",
           "crates/world/src/item_packs.rs",
@@ -2802,7 +2865,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2814,6 +2877,7 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -2833,6 +2897,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -2860,6 +2925,7 @@
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -2935,7 +3001,7 @@
         ]
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -2948,6 +3014,7 @@
           "crates/server/src/application.rs",
           "crates/server/src/characters.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -2967,6 +3034,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -3012,6 +3080,7 @@
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/herb_cleaning.rs",
           "crates/world/src/item_packs.rs",
@@ -3105,7 +3174,7 @@
         ]
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3117,6 +3186,7 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -3136,6 +3206,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -3163,6 +3234,7 @@
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -3229,7 +3301,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3241,6 +3313,7 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -3260,6 +3333,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -3287,6 +3361,7 @@
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -3344,7 +3419,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3356,6 +3431,7 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -3375,6 +3451,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -3402,6 +3479,7 @@
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -3459,7 +3537,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3472,6 +3550,7 @@
           "crates/server/src/application.rs",
           "crates/server/src/characters.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -3491,6 +3570,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -3536,6 +3616,7 @@
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/herb_cleaning.rs",
           "crates/world/src/item_packs.rs",
@@ -3610,7 +3691,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3623,6 +3704,7 @@
           "crates/server/src/application.rs",
           "crates/server/src/characters.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -3642,6 +3724,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -3687,6 +3770,7 @@
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/herb_cleaning.rs",
           "crates/world/src/item_packs.rs",
@@ -3758,7 +3842,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3771,6 +3855,7 @@
           "crates/server/src/application.rs",
           "crates/server/src/characters.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -3790,6 +3875,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -3832,6 +3918,7 @@
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -3900,7 +3987,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -3912,6 +3999,7 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -3931,6 +4019,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -3958,6 +4047,7 @@
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -4015,7 +4105,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4027,6 +4117,7 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -4046,6 +4137,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -4073,6 +4165,7 @@
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -4130,7 +4223,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4143,6 +4236,7 @@
           "crates/server/src/application.rs",
           "crates/server/src/characters.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -4162,6 +4256,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -4205,6 +4300,7 @@
           "crates/world/src/finished_potions.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/herb_cleaning.rs",
           "crates/world/src/item_packs.rs",
@@ -4276,7 +4372,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4288,6 +4384,7 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -4307,6 +4404,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -4334,6 +4432,7 @@
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -4397,7 +4496,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4409,6 +4508,7 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -4428,6 +4528,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -4455,6 +4556,7 @@
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -4524,7 +4626,7 @@
         ]
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4536,6 +4638,7 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -4555,6 +4658,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -4582,6 +4686,7 @@
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -4639,7 +4744,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4651,6 +4756,7 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -4670,6 +4776,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -4697,6 +4804,7 @@
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -4754,7 +4862,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4765,6 +4873,7 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -4784,6 +4893,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -4811,6 +4921,7 @@
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -4868,7 +4979,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4880,6 +4991,7 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -4899,6 +5011,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -4926,6 +5039,7 @@
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -4983,7 +5097,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -4995,6 +5109,7 @@
         "changed_production_paths": [
           "crates/server/src/application.rs",
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -5014,6 +5129,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -5041,6 +5157,7 @@
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -5106,7 +5223,7 @@
         ]
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5117,6 +5234,7 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -5136,6 +5254,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -5163,6 +5282,7 @@
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -5220,7 +5340,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5231,6 +5351,7 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -5250,6 +5371,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -5277,6 +5399,7 @@
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -5334,7 +5457,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5345,6 +5468,7 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -5364,6 +5488,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -5391,6 +5516,7 @@
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -5448,7 +5574,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5459,6 +5585,7 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -5478,6 +5605,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -5505,6 +5633,7 @@
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -5562,7 +5691,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5573,6 +5702,7 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/basic_meat.rs",
@@ -5592,6 +5722,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -5618,6 +5749,7 @@
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -5674,7 +5806,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5685,6 +5817,7 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/battlestaff_assembly.rs",
@@ -5703,6 +5836,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/member_fish.rs",
           "crates/server/src/content/ordinary_stringing.rs",
@@ -5729,6 +5863,7 @@
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -5785,7 +5920,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5796,6 +5931,7 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/battlestaff_assembly.rs",
@@ -5814,6 +5950,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/ordinary_stringing.rs",
           "crates/server/src/content/pottery_firing.rs",
@@ -5839,6 +5976,7 @@
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/food.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -5895,7 +6033,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -5906,6 +6044,7 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/battlestaff_assembly.rs",
@@ -5924,6 +6063,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/meal_food.rs",
           "crates/server/src/content/ordinary_stringing.rs",
           "crates/server/src/content/pottery_firing.rs",
@@ -5947,6 +6087,7 @@
           "crates/world/src/container_emptying.rs",
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -6003,7 +6144,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -6014,6 +6155,7 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/battlestaff_assembly.rs",
@@ -6032,6 +6174,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/ordinary_stringing.rs",
           "crates/server/src/content/pottery_firing.rs",
           "crates/server/src/content/pottery_shaping.rs",
@@ -6054,6 +6197,7 @@
           "crates/world/src/container_emptying.rs",
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -6110,7 +6254,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -6121,6 +6265,7 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/battlestaff_assembly.rs",
@@ -6138,6 +6283,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/ordinary_stringing.rs",
           "crates/server/src/content/pottery_firing.rs",
           "crates/server/src/content/pottery_shaping.rs",
@@ -6160,6 +6306,7 @@
           "crates/world/src/container_emptying.rs",
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -6216,7 +6363,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -6227,6 +6374,7 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/battlestaff_assembly.rs",
@@ -6243,6 +6391,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/ordinary_stringing.rs",
           "crates/server/src/content/pottery_firing.rs",
           "crates/server/src/content/pottery_shaping.rs",
@@ -6265,6 +6414,7 @@
           "crates/world/src/container_emptying.rs",
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -6336,7 +6486,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -6347,6 +6497,7 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/battlestaff_assembly.rs",
@@ -6363,6 +6514,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/ordinary_stringing.rs",
           "crates/server/src/content/pottery_firing.rs",
           "crates/server/src/content/pottery_shaping.rs",
@@ -6385,6 +6537,7 @@
           "crates/world/src/container_emptying.rs",
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -6440,7 +6593,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -6451,6 +6604,7 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/battlestaff_assembly.rs",
@@ -6467,6 +6621,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/ordinary_stringing.rs",
           "crates/server/src/content/pottery_firing.rs",
           "crates/server/src/content/pottery_shaping.rs",
@@ -6489,6 +6644,7 @@
           "crates/world/src/container_emptying.rs",
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -6542,7 +6698,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -6553,6 +6709,7 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/battlestaff_assembly.rs",
@@ -6569,6 +6726,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/ordinary_stringing.rs",
           "crates/server/src/content/pottery_firing.rs",
           "crates/server/src/content/pottery_shaping.rs",
@@ -6590,6 +6748,7 @@
           "crates/world/src/container_emptying.rs",
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/item_packs.rs",
           "crates/world/src/lib.rs",
@@ -6658,7 +6817,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -6669,6 +6828,7 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/battlestaff_assembly.rs",
@@ -6684,6 +6844,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/ordinary_stringing.rs",
           "crates/server/src/content/pottery_firing.rs",
           "crates/server/src/content/pottery_shaping.rs",
@@ -6705,6 +6866,7 @@
           "crates/world/src/container_emptying.rs",
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/npc_interaction.rs",
@@ -6756,7 +6918,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -6767,6 +6929,7 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/battlestaff_assembly.rs",
@@ -6781,6 +6944,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/ordinary_stringing.rs",
           "crates/server/src/content/pottery_firing.rs",
           "crates/server/src/content/pottery_shaping.rs",
@@ -6802,6 +6966,7 @@
           "crates/world/src/container_emptying.rs",
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
@@ -6864,7 +7029,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -6875,6 +7040,7 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/battlestaff_assembly.rs",
@@ -6889,6 +7055,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/ordinary_stringing.rs",
           "crates/server/src/content/pottery_firing.rs",
           "crates/server/src/content/pottery_shaping.rs",
@@ -6910,6 +7077,7 @@
           "crates/world/src/container_emptying.rs",
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
@@ -6972,7 +7140,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -6983,6 +7151,7 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/amulet_stringing.rs",
           "crates/server/src/content/battlestaff_assembly.rs",
@@ -6997,6 +7166,7 @@
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/godsword_assembly.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/ordinary_stringing.rs",
           "crates/server/src/content/pottery_firing.rs",
           "crates/server/src/content/pottery_shaping.rs",
@@ -7018,6 +7188,7 @@
           "crates/world/src/container_emptying.rs",
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
@@ -7065,7 +7236,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -7076,6 +7247,7 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/battlestaff_assembly.rs",
           "crates/server/src/content/crab_carving.rs",
@@ -7088,6 +7260,7 @@
           "crates/server/src/content/glass_smelting.rs",
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/ordinary_stringing.rs",
           "crates/server/src/content/pottery_firing.rs",
           "crates/server/src/content/pottery_shaping.rs",
@@ -7109,6 +7282,7 @@
           "crates/world/src/container_emptying.rs",
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
@@ -7156,7 +7330,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -7167,6 +7341,7 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/battlestaff_assembly.rs",
           "crates/server/src/content/crab_carving.rs",
@@ -7179,6 +7354,7 @@
           "crates/server/src/content/glass_smelting.rs",
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/ordinary_stringing.rs",
           "crates/server/src/content/pottery_firing.rs",
           "crates/server/src/content/pottery_shaping.rs",
@@ -7200,6 +7376,7 @@
           "crates/world/src/container_emptying.rs",
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
@@ -7247,7 +7424,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -7258,6 +7435,7 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/battlestaff_assembly.rs",
           "crates/server/src/content/crab_carving.rs",
@@ -7270,6 +7448,7 @@
           "crates/server/src/content/glass_smelting.rs",
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/pottery_firing.rs",
           "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sand_containers.rs",
@@ -7290,6 +7469,7 @@
           "crates/world/src/container_emptying.rs",
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
@@ -7337,7 +7517,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -7348,6 +7528,7 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/battlestaff_assembly.rs",
           "crates/server/src/content/crab_carving.rs",
@@ -7360,6 +7541,7 @@
           "crates/server/src/content/glass_smelting.rs",
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/pottery_firing.rs",
           "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sand_containers.rs",
@@ -7379,6 +7561,7 @@
           "crates/world/src/container_emptying.rs",
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
@@ -7455,7 +7638,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -7466,6 +7649,7 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/battlestaff_assembly.rs",
           "crates/server/src/content/crab_carving.rs",
@@ -7478,6 +7662,7 @@
           "crates/server/src/content/glass_smelting.rs",
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/pottery_firing.rs",
           "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sand_containers.rs",
@@ -7497,6 +7682,7 @@
           "crates/world/src/container_emptying.rs",
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
@@ -7568,7 +7754,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -7579,6 +7765,7 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/battlestaff_assembly.rs",
           "crates/server/src/content/crab_carving.rs",
@@ -7591,6 +7778,7 @@
           "crates/server/src/content/glass_smelting.rs",
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/pottery_firing.rs",
           "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sand_containers.rs",
@@ -7610,6 +7798,7 @@
           "crates/world/src/container_emptying.rs",
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
@@ -7621,7 +7810,16 @@
           "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/tool_crafting_actions.rs",
           "crates/world/src/tool_crafting.rs"
-        ]
+        ],
+        "last_executed_scope": {
+          "tested_sha": "4f4aacb2929e8ad775d091527e2d80070100ee69",
+          "level": "V1",
+          "status": "IN_PROGRESS",
+          "reason": "Independent deterministic crafting integration regression at immediate target:576positive/24F2P/140admission/192late cases PASS. Original OR63harness required only failure:None descriptor adaptation for65API; compile failure and diagnosis preserved. This is new integration evidence at65, not historical OR63acceptance or current FORGEHEAD verification.",
+          "evidence": [
+            "docs/openrune/verification/independent/integration-external-immediate-regression-4f4aacb2929e8ad775d091527e2d80070100ee69-1792304046343193900/manifest.json"
+          ]
+        }
       }
     },
     {
@@ -7639,9 +7837,9 @@
           },
           "V1": {
             "status": "IN_PROGRESS",
-            "reason": "Independent465408controlled-byte/profile/level1-99/boost100-120/member/100-125-500rate cases PASS against an integer endpoint/rounding oracle, including exact selected full-bag output/XP and one draw only after both states prepare.48invalid either-credit/input/tool/member/level/rate/probability cases refuse without a draw or publication. These are public resolver checks, not registered runtime/World batch/native or original RNG-stream acceptance.",
+            "reason": "Actual cache factory attests8ordinary types/Crafting/3sequences and3fallible descriptors.93missing/aliased/corrupt item/stat/sequence probes refuse. Runtime/native/batch/durability and reference conflicts remain separate.",
             "evidence": [
-              "docs/openrune/verification/independent/integration-external-fallible-gem-matrix-0c489b46b552ad012e630810c1218dbaeb437a51/manifest.json"
+              "docs/openrune/verification/independent/integration-external-fallible-gem-bindings-0c489b46b552ad012e630810c1218dbaeb437a51/manifest.json"
             ]
           },
           "V2": {
@@ -7653,14 +7851,17 @@
             "reason": "Awaiting applicable independent campaign"
           },
           "V4": {
-            "status": "NOT_STARTED",
-            "reason": "Awaiting applicable independent campaign"
+            "status": "IN_PROGRESS",
+            "reason": "All12pinned hashes independently verified. Recipe levels/ordinary IDs/XP and three Wiki rate endpoint overrides match the declared adapter. Generic rounded probability documentation supports source-style1-99clamp and visible boosts above99 being ignored. No executable donor or random-stream parity inferred. PG-REF-001: pinned Opal3.8versus Crushedgem3.7failureXP and Jade floor-only versus generic rounded success rule require explicit adjudication; not an implementation-blocking gameplay finding.",
+            "evidence": [
+              "docs/openrune/verification/independent/reference-fallible-gems/comparison.json"
+            ]
           }
         },
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -7671,6 +7872,7 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/battlestaff_assembly.rs",
           "crates/server/src/content/crab_carving.rs",
@@ -7683,6 +7885,7 @@
           "crates/server/src/content/glass_smelting.rs",
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/pottery_firing.rs",
           "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sand_containers.rs",
@@ -7702,6 +7905,7 @@
           "crates/world/src/container_emptying.rs",
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
@@ -7726,36 +7930,45 @@
       "historical_verification": {
         "levels": {
           "V0": {
-            "status": "NOT_STARTED",
-            "reason": "Awaiting applicable independent campaign"
+            "status": "PASS",
+            "reason": "Exact4fserver compiled and ran against95hash-attested cache/symbol resources. Actual startup factory resolves seven ordinary definitions/Crafting/two sequences, rejects81metadata mutations and registers both immediate pairs. Genuine native actions reached each registration; independent queued deterministic16-profile regression also passes after this shared optional-advancement change.",
+            "evidence": [
+              "docs/openrune/verification/independent/immediate-acceptance.json"
+            ]
           },
           "V1": {
-            "status": "IN_PROGRESS",
-            "reason": "Independent207656zero-XP/fallible/current-level/member/rate/controlled-byte cases PASS against a rounded integer probability oracle, including limestone certainty40and one RNG draw even at certainty; Dramen has no draw or advancement and permits rate0.60invalid possible-credit/input/tool/policy probes refuse before draw; zero-XPfailure preserves Stats/no advancement while positive-success/rate0still refuses.48actual immediate World held routes cover both directions/full bag/no menu/clock advance/stale/delayed replay. Additional World negative/configuration, actual startup/native/persistence/reference acceptance remains separate.",
+            "status": "PASS",
+            "reason": "207656controlled level/member/rate/byte cases and60pre-RNG refusal probes verify staged selected-only full-bag success/failure credits, exact fineXP, no deterministic RNG/advancement, zero-rate Dramen and one draw even at limestone certainty40.48actualWorld routes commit before clock advance without menu/repeat, and88additional actualWorld admission/configuration/stale/lifecycle refusals preserve inventory/Stats. Shared queued gem/shell576positive,24F2P,140admission and192late cases pass at this exactSHA.",
             "evidence": [
-              "docs/openrune/verification/independent/integration-external-immediate-tools-4f4aacb2929e8ad775d091527e2d80070100ee69/manifest.json"
+              "docs/openrune/verification/independent/immediate-acceptance.json"
             ]
           },
           "V2": {
-            "status": "NOT_STARTED",
-            "reason": "Awaiting applicable independent campaign"
+            "status": "PASS",
+            "reason": "Genuine source-backed native inventory/menu/Use transport both directions:3Dramen,12low-level limestone and12certainty40actions. Full28selected credits preserve duplicate raw/tools/coins, fineXP is exact, every stale captured pair refuses, no Make-XResume115occurs. Client decodes zero-delay sequences10937/1309with each credit at the same received clock; limestone success/failure feedback and XP presentation match all24actions, including7brick/5rock low-level witnesses. No screenshot/rendered-frame or distribution claim.",
+            "evidence": [
+              "docs/openrune/verification/independent/immediate-acceptance.json"
+            ]
           },
           "V3": {
-            "status": "NOT_STARTED",
-            "reason": "Awaiting applicable independent campaign"
+            "status": "PASS",
+            "reason": "All27normal native outputs/fineXP survive acknowledged save, actual server process restart and native reconnect; independent raw full-inventory/Stats decoders match complete durable state with no repeated action. Separate owned abrupt termination after one unsaved native limestone result restores prior whole inventory/Stats/energy onSQL and real native restart. Stale requests after every action never substitute retained duplicates. No pending queue exists; no mid-SQL-commit injection claimed.",
+            "evidence": [
+              "docs/openrune/verification/independent/immediate-acceptance.json"
+            ]
           },
           "V4": {
-            "status": "IN_PROGRESS",
-            "reason": "All12pinned source/Wiki hashes verified. Dramen31/zeroXP/zero-cycle and limestone12/6successXP/1.5failureXP/zero-cycle facts match exact recipe variants. Donor endpoints137/434independently yield171of256at12and certainty40with the declared rounded byte rule; Wiki independently supports certainty40, not the whole lower-level curve. Donor limestone failure XP is omitted/default zero; Wiki1.5override is explicit. Original executable unavailable; native/reference comparison remains separate.",
+            "status": "PASS",
+            "reason": "All12pinned reference hashes independently reverified. Source zero-cycle held intent, Dramen31/zeroXP and no extra owned-branch quest gate, limestone source137/434curve and Wiki certainty40 align with independent execution. Wiki1.5failureXP intentionally overrides donor omitted/default0; source global RNG is intentionally replaced by authoritative World RNG. Current-level clamp/rounding/optional publication are explicitly compared. Strongest feasible source/documentation comparison completed; original compiled Kotlin/random stream and rendering/audio unavailable and not claimed.",
             "evidence": [
-              "docs/openrune/verification/independent/reference-immediate/comparison.json"
+              "docs/openrune/verification/independent/immediate-acceptance.json"
             ]
           }
         },
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -7766,6 +7979,7 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/battlestaff_assembly.rs",
           "crates/server/src/content/crab_carving.rs",
@@ -7778,6 +7992,7 @@
           "crates/server/src/content/glass_smelting.rs",
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/pottery_firing.rs",
           "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sand_containers.rs",
@@ -7797,6 +8012,7 @@
           "crates/world/src/container_emptying.rs",
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
@@ -7808,7 +8024,16 @@
           "crates/world/src/simulation/location_use_actions.rs",
           "crates/world/src/simulation/tool_crafting_actions.rs",
           "crates/world/src/tool_crafting.rs"
-        ]
+        ],
+        "last_executed_scope": {
+          "tested_sha": "4f4aacb2929e8ad775d091527e2d80070100ee69",
+          "level": "V1",
+          "status": "IN_PROGRESS",
+          "reason": "Independent deterministic crafting integration regression at immediate target:576positive/24F2P/140admission/192late cases PASS. Original OR63harness required only failure:None descriptor adaptation for65API; compile failure and diagnosis preserved. This is new integration evidence at65, not historical OR63acceptance or current FORGEHEAD verification.",
+          "evidence": [
+            "docs/openrune/verification/independent/integration-external-immediate-regression-4f4aacb2929e8ad775d091527e2d80070100ee69-1792304046343193900/manifest.json"
+          ]
+        }
       }
     },
     {
@@ -7844,7 +8069,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -7855,6 +8080,7 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/battlestaff_assembly.rs",
           "crates/server/src/content/crab_carving.rs",
@@ -7867,6 +8093,7 @@
           "crates/server/src/content/glass_smelting.rs",
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/pottery_firing.rs",
           "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sand_containers.rs",
@@ -7886,6 +8113,7 @@
           "crates/world/src/container_emptying.rs",
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
@@ -7933,7 +8161,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -7944,6 +8172,7 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/crab_carving.rs",
           "crates/server/src/content/crafting_finishes.rs",
@@ -7955,6 +8184,7 @@
           "crates/server/src/content/glass_smelting.rs",
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/pottery_firing.rs",
           "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sand_containers.rs",
@@ -7974,6 +8204,7 @@
           "crates/world/src/container_emptying.rs",
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
@@ -8021,7 +8252,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -8032,6 +8263,7 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/crab_carving.rs",
           "crates/server/src/content/crafting_finishes.rs",
@@ -8043,6 +8275,7 @@
           "crates/server/src/content/glass_smelting.rs",
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/pottery_firing.rs",
           "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sand_containers.rs",
@@ -8062,6 +8295,7 @@
           "crates/world/src/container_emptying.rs",
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/held_use.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
@@ -8109,7 +8343,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -8120,6 +8354,7 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/crab_carving.rs",
           "crates/server/src/content/crafting_finishes.rs",
@@ -8131,6 +8366,7 @@
           "crates/server/src/content/glass_smelting.rs",
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/pottery_firing.rs",
           "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sand_containers.rs",
@@ -8149,6 +8385,7 @@
           "crates/world/src/container_emptying.rs",
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/container_emptying_actions.rs",
@@ -8194,7 +8431,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -8205,6 +8442,7 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
           "crates/server/src/content/amethyst_cutting.rs",
           "crates/server/src/content/crab_carving.rs",
           "crates/server/src/content/crafting_finishes.rs",
@@ -8216,6 +8454,7 @@
           "crates/server/src/content/glass_smelting.rs",
           "crates/server/src/content/glassblowing.rs",
           "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/pottery_firing.rs",
           "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sand_containers.rs",
@@ -8234,6 +8473,7 @@
           "crates/world/src/container_emptying.rs",
           "crates/world/src/facility_crafting.rs",
           "crates/world/src/grinding.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/container_emptying_actions.rs",
@@ -8285,7 +8525,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -8296,14 +8536,25 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
+          "crates/server/src/content/amethyst_cutting.rs",
+          "crates/server/src/content/crab_carving.rs",
+          "crates/server/src/content/crafting_finishes.rs",
           "crates/server/src/content/facility_locations.rs",
+          "crates/server/src/content/fallible_gems.rs",
           "crates/server/src/content/fibre_textiles.rs",
           "crates/server/src/content/firelighter_coating.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/glass_smelting.rs",
+          "crates/server/src/content/glassblowing.rs",
+          "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/pottery_firing.rs",
           "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sand_containers.rs",
           "crates/server/src/content/sand_pits.rs",
+          "crates/server/src/content/sinew_crafting.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/content/soft_clay_mixing.rs",
           "crates/server/src/content/spinning_wheel.rs",
           "crates/server/src/content/weaving_loom.rs",
@@ -8315,13 +8566,16 @@
           "crates/world/src/assembly.rs",
           "crates/world/src/container_emptying.rs",
           "crates/world/src/facility_crafting.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/container_emptying_actions.rs",
           "crates/world/src/simulation/door_actions.rs",
           "crates/world/src/simulation/facility_crafting_actions.rs",
           "crates/world/src/simulation/held_use_actions.rs",
-          "crates/world/src/simulation/location_use_actions.rs"
+          "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/tool_crafting.rs"
         ]
       }
     },
@@ -8358,7 +8612,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -8369,14 +8623,25 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
+          "crates/server/src/content/amethyst_cutting.rs",
+          "crates/server/src/content/crab_carving.rs",
+          "crates/server/src/content/crafting_finishes.rs",
           "crates/server/src/content/facility_locations.rs",
+          "crates/server/src/content/fallible_gems.rs",
           "crates/server/src/content/fibre_textiles.rs",
           "crates/server/src/content/firelighter_coating.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/glass_smelting.rs",
+          "crates/server/src/content/glassblowing.rs",
+          "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/pottery_firing.rs",
           "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sand_containers.rs",
           "crates/server/src/content/sand_pits.rs",
+          "crates/server/src/content/sinew_crafting.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/content/spinning_wheel.rs",
           "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/runtime.rs",
@@ -8387,12 +8652,15 @@
           "crates/world/src/assembly.rs",
           "crates/world/src/container_emptying.rs",
           "crates/world/src/facility_crafting.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/container_emptying_actions.rs",
           "crates/world/src/simulation/door_actions.rs",
           "crates/world/src/simulation/facility_crafting_actions.rs",
-          "crates/world/src/simulation/location_use_actions.rs"
+          "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/tool_crafting.rs"
         ]
       }
     },
@@ -8429,7 +8697,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -8440,14 +8708,25 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
+          "crates/server/src/content/amethyst_cutting.rs",
+          "crates/server/src/content/crab_carving.rs",
+          "crates/server/src/content/crafting_finishes.rs",
           "crates/server/src/content/facility_locations.rs",
+          "crates/server/src/content/fallible_gems.rs",
           "crates/server/src/content/fibre_textiles.rs",
           "crates/server/src/content/firelighter_coating.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/glass_smelting.rs",
+          "crates/server/src/content/glassblowing.rs",
+          "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/pottery_firing.rs",
           "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sand_containers.rs",
           "crates/server/src/content/sand_pits.rs",
+          "crates/server/src/content/sinew_crafting.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/content/spinning_wheel.rs",
           "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/runtime.rs",
@@ -8455,12 +8734,15 @@
           "crates/server/src/startup.rs",
           "crates/world/src/container_emptying.rs",
           "crates/world/src/facility_crafting.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/container_emptying_actions.rs",
           "crates/world/src/simulation/door_actions.rs",
           "crates/world/src/simulation/facility_crafting_actions.rs",
-          "crates/world/src/simulation/location_use_actions.rs"
+          "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/tool_crafting.rs"
         ]
       }
     },
@@ -8497,7 +8779,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -8508,14 +8790,25 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
+          "crates/server/src/content/amethyst_cutting.rs",
+          "crates/server/src/content/crab_carving.rs",
+          "crates/server/src/content/crafting_finishes.rs",
           "crates/server/src/content/facility_locations.rs",
+          "crates/server/src/content/fallible_gems.rs",
           "crates/server/src/content/fibre_textiles.rs",
           "crates/server/src/content/firelighter_coating.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/glass_smelting.rs",
+          "crates/server/src/content/glassblowing.rs",
+          "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/pottery_firing.rs",
           "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sand_containers.rs",
           "crates/server/src/content/sand_pits.rs",
+          "crates/server/src/content/sinew_crafting.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/content/spinning_wheel.rs",
           "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/runtime.rs",
@@ -8523,12 +8816,15 @@
           "crates/server/src/startup.rs",
           "crates/world/src/container_emptying.rs",
           "crates/world/src/facility_crafting.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/container_emptying_actions.rs",
           "crates/world/src/simulation/door_actions.rs",
           "crates/world/src/simulation/facility_crafting_actions.rs",
-          "crates/world/src/simulation/location_use_actions.rs"
+          "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/tool_crafting.rs"
         ]
       }
     },
@@ -8565,7 +8861,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -8576,26 +8872,40 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
+          "crates/server/src/content/amethyst_cutting.rs",
+          "crates/server/src/content/crab_carving.rs",
+          "crates/server/src/content/crafting_finishes.rs",
           "crates/server/src/content/facility_locations.rs",
+          "crates/server/src/content/fallible_gems.rs",
           "crates/server/src/content/fibre_textiles.rs",
           "crates/server/src/content/firelighter_coating.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/glass_smelting.rs",
+          "crates/server/src/content/glassblowing.rs",
+          "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/pottery_firing.rs",
           "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sand_containers.rs",
           "crates/server/src/content/sand_pits.rs",
+          "crates/server/src/content/sinew_crafting.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/content/spinning_wheel.rs",
           "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/container_emptying.rs",
           "crates/world/src/facility_crafting.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/container_emptying_actions.rs",
           "crates/world/src/simulation/door_actions.rs",
           "crates/world/src/simulation/facility_crafting_actions.rs",
-          "crates/world/src/simulation/location_use_actions.rs"
+          "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/tool_crafting.rs"
         ]
       }
     },
@@ -8632,7 +8942,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -8643,26 +8953,40 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
+          "crates/server/src/content/amethyst_cutting.rs",
+          "crates/server/src/content/crab_carving.rs",
+          "crates/server/src/content/crafting_finishes.rs",
           "crates/server/src/content/facility_locations.rs",
+          "crates/server/src/content/fallible_gems.rs",
           "crates/server/src/content/fibre_textiles.rs",
           "crates/server/src/content/firelighter_coating.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/glass_smelting.rs",
+          "crates/server/src/content/glassblowing.rs",
+          "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/pottery_firing.rs",
           "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sand_containers.rs",
           "crates/server/src/content/sand_pits.rs",
+          "crates/server/src/content/sinew_crafting.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/content/spinning_wheel.rs",
           "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/container_emptying.rs",
           "crates/world/src/facility_crafting.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/container_emptying_actions.rs",
           "crates/world/src/simulation/door_actions.rs",
           "crates/world/src/simulation/facility_crafting_actions.rs",
-          "crates/world/src/simulation/location_use_actions.rs"
+          "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/tool_crafting.rs"
         ]
       }
     },
@@ -8699,7 +9023,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -8710,26 +9034,40 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
+          "crates/server/src/content/amethyst_cutting.rs",
+          "crates/server/src/content/crab_carving.rs",
+          "crates/server/src/content/crafting_finishes.rs",
           "crates/server/src/content/facility_locations.rs",
+          "crates/server/src/content/fallible_gems.rs",
           "crates/server/src/content/fibre_textiles.rs",
           "crates/server/src/content/firelighter_coating.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/glass_smelting.rs",
+          "crates/server/src/content/glassblowing.rs",
+          "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/pottery_firing.rs",
           "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sand_containers.rs",
           "crates/server/src/content/sand_pits.rs",
+          "crates/server/src/content/sinew_crafting.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/content/spinning_wheel.rs",
           "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/container_emptying.rs",
           "crates/world/src/facility_crafting.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/container_emptying_actions.rs",
           "crates/world/src/simulation/door_actions.rs",
           "crates/world/src/simulation/facility_crafting_actions.rs",
-          "crates/world/src/simulation/location_use_actions.rs"
+          "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/tool_crafting.rs"
         ]
       }
     },
@@ -8766,7 +9104,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -8777,26 +9115,40 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
+          "crates/server/src/content/amethyst_cutting.rs",
+          "crates/server/src/content/crab_carving.rs",
+          "crates/server/src/content/crafting_finishes.rs",
           "crates/server/src/content/facility_locations.rs",
+          "crates/server/src/content/fallible_gems.rs",
           "crates/server/src/content/fibre_textiles.rs",
           "crates/server/src/content/firelighter_coating.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/glass_smelting.rs",
+          "crates/server/src/content/glassblowing.rs",
+          "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/pottery_firing.rs",
           "crates/server/src/content/pottery_shaping.rs",
           "crates/server/src/content/sand_containers.rs",
           "crates/server/src/content/sand_pits.rs",
+          "crates/server/src/content/sinew_crafting.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/content/spinning_wheel.rs",
           "crates/server/src/content/weaving_loom.rs",
           "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
           "crates/world/src/container_emptying.rs",
           "crates/world/src/facility_crafting.rs",
+          "crates/world/src/held_item_conversion.rs",
           "crates/world/src/lib.rs",
           "crates/world/src/simulation.rs",
           "crates/world/src/simulation/container_emptying_actions.rs",
           "crates/world/src/simulation/door_actions.rs",
           "crates/world/src/simulation/facility_crafting_actions.rs",
-          "crates/world/src/simulation/location_use_actions.rs"
+          "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/tool_crafting.rs"
         ]
       }
     },
@@ -8833,7 +9185,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -8844,20 +9196,40 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
+          "crates/server/src/content/amethyst_cutting.rs",
+          "crates/server/src/content/crab_carving.rs",
+          "crates/server/src/content/crafting_finishes.rs",
           "crates/server/src/content/facility_locations.rs",
+          "crates/server/src/content/fallible_gems.rs",
           "crates/server/src/content/fibre_textiles.rs",
           "crates/server/src/content/firelighter_coating.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/glass_smelting.rs",
+          "crates/server/src/content/glassblowing.rs",
+          "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/pottery_firing.rs",
           "crates/server/src/content/pottery_shaping.rs",
+          "crates/server/src/content/sand_containers.rs",
           "crates/server/src/content/sand_pits.rs",
+          "crates/server/src/content/sinew_crafting.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/content/spinning_wheel.rs",
           "crates/server/src/content/weaving_loom.rs",
+          "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
+          "crates/world/src/container_emptying.rs",
           "crates/world/src/facility_crafting.rs",
+          "crates/world/src/held_item_conversion.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/container_emptying_actions.rs",
           "crates/world/src/simulation/door_actions.rs",
           "crates/world/src/simulation/facility_crafting_actions.rs",
-          "crates/world/src/simulation/location_use_actions.rs"
+          "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/tool_crafting.rs"
         ]
       }
     },
@@ -8894,7 +9266,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -8905,18 +9277,38 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
+          "crates/server/src/content/amethyst_cutting.rs",
+          "crates/server/src/content/crab_carving.rs",
+          "crates/server/src/content/crafting_finishes.rs",
+          "crates/server/src/content/fallible_gems.rs",
           "crates/server/src/content/fibre_textiles.rs",
           "crates/server/src/content/firelighter_coating.rs",
+          "crates/server/src/content/gem_cutting.rs",
           "crates/server/src/content/glass_smelting.rs",
+          "crates/server/src/content/glassblowing.rs",
+          "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
           "crates/server/src/content/pottery_firing.rs",
           "crates/server/src/content/pottery_shaping.rs",
+          "crates/server/src/content/sand_containers.rs",
           "crates/server/src/content/sand_pits.rs",
+          "crates/server/src/content/sinew_crafting.rs",
+          "crates/server/src/content/snelm_carving.rs",
           "crates/server/src/content/spinning_wheel.rs",
           "crates/server/src/content/weaving_loom.rs",
+          "crates/server/src/runtime.rs",
           "crates/server/src/startup.rs",
+          "crates/world/src/container_emptying.rs",
           "crates/world/src/facility_crafting.rs",
+          "crates/world/src/held_item_conversion.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/container_emptying_actions.rs",
           "crates/world/src/simulation/facility_crafting_actions.rs",
-          "crates/world/src/simulation/location_use_actions.rs"
+          "crates/world/src/simulation/location_use_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/tool_crafting.rs"
         ]
       }
     },
@@ -8953,7 +9345,7 @@
         "evidence_attempts": []
       },
       "current_integration": {
-        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44",
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
         "status": "NOT_STARTED",
         "levels": {
           "V0": "NOT_STARTED",
@@ -8964,8 +9356,163 @@
         },
         "changed_production_paths": [
           "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
+          "crates/server/src/content/amethyst_cutting.rs",
+          "crates/server/src/content/crab_carving.rs",
+          "crates/server/src/content/crafting_finishes.rs",
+          "crates/server/src/content/fallible_gems.rs",
           "crates/server/src/content/firelighter_coating.rs",
-          "crates/server/src/startup.rs"
+          "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
+          "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
+          "crates/server/src/content/sand_containers.rs",
+          "crates/server/src/content/sinew_crafting.rs",
+          "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/container_emptying.rs",
+          "crates/world/src/held_item_conversion.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/container_emptying_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/tool_crafting.rs"
+        ]
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0082",
+      "revision": 1,
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "b8d71f69fb1998f47ba34a96fb5fd79463a1aa44"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/content/accursed_upgrade.rs",
+          "crates/server/src/content/amethyst_cutting.rs",
+          "crates/server/src/content/crab_carving.rs",
+          "crates/server/src/content/crafting_finishes.rs",
+          "crates/server/src/content/fallible_gems.rs",
+          "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
+          "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
+          "crates/server/src/content/sand_containers.rs",
+          "crates/server/src/content/sinew_crafting.rs",
+          "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/container_emptying.rs",
+          "crates/world/src/held_item_conversion.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/container_emptying_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/tool_crafting.rs"
+        ]
+      }
+    },
+    {
+      "implementation_id": "OR-MIG-0083",
+      "revision": 1,
+      "implementation_availability": {
+        "status": "AVAILABLE",
+        "sha": "9baa4b59e084d6d6eb381605719e2e0c17e176e7"
+      },
+      "historical_verification": {
+        "levels": {
+          "V0": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V1": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V2": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V3": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          },
+          "V4": {
+            "status": "NOT_STARTED",
+            "reason": "Awaiting applicable independent campaign"
+          }
+        },
+        "evidence_attempts": []
+      },
+      "current_integration": {
+        "sha": "ad739676dd01f5be809cdfe5ecf4f1e6ea77238a",
+        "status": "NOT_STARTED",
+        "levels": {
+          "V0": "NOT_STARTED",
+          "V1": "NOT_STARTED",
+          "V2": "NOT_STARTED",
+          "V3": "NOT_STARTED",
+          "V4": "NOT_STARTED"
+        },
+        "changed_production_paths": [
+          "crates/server/src/content.rs",
+          "crates/server/src/content/amethyst_cutting.rs",
+          "crates/server/src/content/crab_carving.rs",
+          "crates/server/src/content/crafting_finishes.rs",
+          "crates/server/src/content/fallible_gems.rs",
+          "crates/server/src/content/gem_cutting.rs",
+          "crates/server/src/content/glassblowing.rs",
+          "crates/server/src/content/immediate_tool_crafting.rs",
+          "crates/server/src/content/light_sources.rs",
+          "crates/server/src/content/sand_containers.rs",
+          "crates/server/src/content/sinew_crafting.rs",
+          "crates/server/src/content/snelm_carving.rs",
+          "crates/server/src/runtime.rs",
+          "crates/server/src/startup.rs",
+          "crates/world/src/container_emptying.rs",
+          "crates/world/src/held_item_conversion.rs",
+          "crates/world/src/lib.rs",
+          "crates/world/src/simulation.rs",
+          "crates/world/src/simulation/container_emptying_actions.rs",
+          "crates/world/src/simulation/tool_crafting_actions.rs",
+          "crates/world/src/tool_crafting.rs"
         ]
       }
     }
@@ -9032,8 +9579,8 @@
       "chem-crash",
       "food-negative"
     ],
-    "next_eligible_contract": "OR-MIG-0065",
-    "next_action": "Preserve accepted manual OR56/57 and every immutable campaign. OR62V1/V3and OR63V0/V1/V3completed at their exact SHAs; required native Xremains blocked by PG-INFRA-009, including the real-prompt focused X10retest. Pouch bank positive control remains PG-INFRA-010blocked. Continue OR65at4f4aacb2929e8ad775d091527e2d80070100ee69:207656resolver/60refusal/48immediate World cases and12pinned references already passed within scope, so execute remaining World admission/configuration, actual-cache startup, fresh native immediate actions and persistence; do not repeat successful matrices. Chemistry and chemistry-specific Close correction retests remain deferred.",
+    "next_eligible_contract": "OR-MIG-0064",
+    "next_action": "OR65applicable V0-V4 accepted at exact4f, including27normal native actions, real restarts, unsaved limestone owned-crash rollback, authoritative zero-XP/failure/admission and queued integration regression. Preserve all immutable databases/evidence. Continue OR64at0c489b46b552ad012e630810c1218dbaeb437a51:465408resolver/48refusal and93actual-cache probes passed; execute World mixed batches/late refusals then native quantities/mixed outputs/animation and lifecycle. PG-REF-001 pinned Wiki reward/rounding conflicts require adjudication; inherited native Xdependency remains separate. Continue other eligible contracts if blocked. Chemistry/Herblore/potion and chemistry-specific Close retests remain deferred.",
     "deferred_execution": "Chemistry interrupt-002 had already ended with a raw observer assertion failure when deferral arrived; owned graceful stop path recorded, no live chemistry run retained. Crash scenario build was resource-deferred and never executed. Do not launch new chemistry tests or silently classify unresolved assertions as implementation failures."
   },
   "deferred_native_work": {
@@ -9051,17 +9598,18 @@
     ]
   },
   "next_native_work": {
-    "implementation_id": "OR-MIG-0065",
-    "target_sha": "4f4aacb2929e8ad775d091527e2d80070100ee69",
-    "feature": "immediate-tools",
+    "implementation_id": "OR-MIG-0064",
+    "target_sha": "0c489b46b552ad012e630810c1218dbaeb437a51",
+    "feature": "fallible-gems",
     "actions_in_order": [
-      "retain completed207656resolver/60refusal/48World and12reference PASS scopes",
-      "execute remaining independent World admission/configuration cases only",
-      "attest actual-cache definitions/startup",
-      "prepare fresh native knife/branch and limestone scenarios at exact SHA",
-      "save/relogin/stale replay and aggregate applicable acceptance"
+      "preserve accepted OR65 and all immutable native/headless states",
+      "retain465408resolver/48refusal and93actual-cache probes; do not repeat",
+      "execute authoritative World mixed outcome/captured batch/late-stale scenarios",
+      "fresh native three-profile quantity/animation/mixed rewards; save/relogin and interrupted captured batch",
+      "retain PG-REF-001 reference conflicts and inherited custom-X dependency as separate unresolved obligations",
+      "continue OR66 manual tool crafting when this scope is blocked"
     ],
-    "reason": "OR63V0/V1/V3complete from16native recipes, both23product quantity campaigns, actual partial disconnects and owned-crash/restart. V2still BLOCKED by PG-INFRA-009even with real input prompt; preserve failures, do not force native quantities or substitute newer server. Continue eligible immediate content."
+    "reason": "OR65applicable V0-V4 completed at4f, including27normal native actions/restarts, explicit unsaved-result owned-crash rollback, authoritative admission/curve/zero-XP and deterministic queued integration regression. OR64fallible shared engine remains high risk and partly unverified; no historical acceptance inheritance or moving-HEAD substitution."
   },
   "blocked_scenarios": [
     {

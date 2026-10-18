@@ -1,0 +1,9 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\4f4aacb2929e8ad775d091527e2d80070100ee69\external-harness-3963326400)
+error[E0063]: missing field `failure` in initializer of `gielinor_world::tool_crafting::Recipe`
+  --> tests\authoritative.rs:11:31
+   |
+11 |     let recipes=Arc::new(vec![Recipe{exchange:grinding::Recipe{tool:1755,input:raw,output,members,animation:Some(anim)},level,xp_ten...
+   |                               ^^^^^^ missing `failure`
+
+For more information about this error, try `rustc --explain E0063`.
+error: could not compile `proving-ground-energy` (test "authoritative") due to 1 previous error

@@ -1,0 +1,8 @@
+{
+  "tested_integration_sha": "4f4aacb2929e8ad775d091527e2d80070100ee69",
+  "suite": "immediate-regression",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "BLOCKED",
+  "reason": "Measured-resource deferral; no substitute target: Measured resource guard blocked; no other process altered"
+}

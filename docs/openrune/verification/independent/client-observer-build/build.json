@@ -2,17 +2,20 @@
   "status": "PASS",
   "exit_code": 0,
   "resource": {
-    "available_ram": 6962585600,
-    "active_compilers": [],
-    "cpu_percent": 14.21,
+    "available_ram": 6641430528,
+    "active_compilers": [
+      "\"cargo.exe\",\"12556\",\"RDP-Tcp#0\",\"2\",\"21,276 K\"",
+      "\"cargo.exe\",\"9780\",\"RDP-Tcp#0\",\"2\",\"22,212 K\""
+    ],
+    "cpu_percent": 39.97,
     "cpu_samples": [
-      16.996047430830043,
-      12.621359223300976,
-      13.009708737864079
+      40.234375,
+      39.0625,
+      40.625
     ],
     "cpu_ceiling": 70,
     "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained",
-    "disk_free": 31287910400,
+    "disk_free": 28730826752,
     "owned_affinity_mask": 3
   },
   "command": [
@@ -27,11 +30,11 @@
   ],
   "observation_manifest_sha256": "4e33c1f691df11c4af1573c5cb372b26f02e5e056efa7a7bf2e0df37a0faa596",
   "observer_sources": {
-    "pg_observer.rs": "f6e0e76ed5f95ef2d4c2282d680d94652153e9cd67be41962acbbc71d5c4a329"
+    "pg_observer.rs": "2d0556615dcbe89948ee73e5bb8a1a1ae87712466a3fa15d9210e9ed05038eb7"
   },
   "binaries": {
-    "pg_observer-22bdf8b963b2c52a.exe": "b877fed6986b26f49143e89eac094f644c68e3cd322a3667ae135bf1e9df999f",
-    "pg_observer.exe": "b877fed6986b26f49143e89eac094f644c68e3cd322a3667ae135bf1e9df999f"
+    "pg_observer-22bdf8b963b2c52a.exe": "2c21bee35897e601e4d421fd61ffeb2ce4aba9e19bdf061097bda7ceabc8a469",
+    "pg_observer.exe": "2c21bee35897e601e4d421fd61ffeb2ce4aba9e19bdf061097bda7ceabc8a469"
   },
   "scope": "Fresh independent native-client build; pinned core source plus recorded read-only observation overlay and owned scenario controllers."
 }

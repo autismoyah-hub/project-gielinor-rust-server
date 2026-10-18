@@ -1,0 +1,4 @@
+{
+  "classification": "HARNESS_API_VERSION_MISMATCH",
+  "reason": "The immutable OR63 regression harness predates Recipe.failure and failed compilation at65; no gameplay test ran. Separate immediate-regression suite adds only failure:None to the descriptor, preserving all cases/oracles. Both runs retain exact4f implementation target; no server source modification or newer SHA substitution."
+}

@@ -1,0 +1,23 @@
+    Blocking waiting for file lock on build directory
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\4f4aacb2929e8ad775d091527e2d80070100ee69\external-harness-0193721100)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 28.23s
+     Running tests\admission.rs (C:\Projects\OSRSRSPS\agent7-verification\work\4f4aacb2929e8ad775d091527e2d80070100ee69\target\debug\deps\admission-c8856c0fde91ceaf.exe)
+
+running 1 test
+test eighty_eight_refusals_leave_whole_inventory_stats_and_no_pending_production ... FAILED
+
+failures:
+
+---- eighty_eight_refusals_leave_whole_inventory_stats_and_no_pending_production stdout ----
+
+thread 'eighty_eight_refusals_leave_whole_inventory_stats_and_no_pending_production' (9224) panicked at tests\admission.rs:20:90:
+mode16
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    eighty_eight_refusals_leave_whole_inventory_stats_and_no_pending_production
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.14s
+
+error: test failed, to rerun pass `--test admission`

@@ -1,0 +1,112 @@
+{
+  "implementation_id": "OR-MIG-0065",
+  "tested_sha": "4f4aacb2929e8ad775d091527e2d80070100ee69",
+  "campaign_kind": "historical",
+  "status": "PASS",
+  "kind": "limestone",
+  "actions": 12,
+  "outputs": [
+    968,
+    3420,
+    968,
+    3420,
+    3420,
+    3420,
+    3420,
+    968,
+    3420,
+    3420,
+    968,
+    968
+  ],
+  "fine_xp_award": 2475,
+  "both_natural_outcomes_observed": true,
+  "messages_observed": 12,
+  "effects": [
+    {
+      "slot": 4,
+      "sequence": 1309,
+      "sequence_and_credit_tick": 107,
+      "output": 968
+    },
+    {
+      "slot": 5,
+      "sequence": 1309,
+      "sequence_and_credit_tick": 116,
+      "output": 3420
+    },
+    {
+      "slot": 6,
+      "sequence": 1309,
+      "sequence_and_credit_tick": 125,
+      "output": 968
+    },
+    {
+      "slot": 7,
+      "sequence": 1309,
+      "sequence_and_credit_tick": 134,
+      "output": 3420
+    },
+    {
+      "slot": 8,
+      "sequence": 1309,
+      "sequence_and_credit_tick": 144,
+      "output": 3420
+    },
+    {
+      "slot": 9,
+      "sequence": 1309,
+      "sequence_and_credit_tick": 155,
+      "output": 3420
+    },
+    {
+      "slot": 10,
+      "sequence": 1309,
+      "sequence_and_credit_tick": 172,
+      "output": 3420
+    },
+    {
+      "slot": 11,
+      "sequence": 1309,
+      "sequence_and_credit_tick": 183,
+      "output": 968
+    },
+    {
+      "slot": 12,
+      "sequence": 1309,
+      "sequence_and_credit_tick": 194,
+      "output": 3420
+    },
+    {
+      "slot": 13,
+      "sequence": 1309,
+      "sequence_and_credit_tick": 206,
+      "output": 3420
+    },
+    {
+      "slot": 14,
+      "sequence": 1309,
+      "sequence_and_credit_tick": 219,
+      "output": 968
+    },
+    {
+      "slot": 15,
+      "sequence": 1309,
+      "sequence_and_credit_tick": 235,
+      "output": 968
+    }
+  ],
+  "evidence_sha256": {
+    "produce/client.log": "aed4c2c199c6d41a12d05b6a4e0b81bca82916d26d79a87955e4a843c3daf0df",
+    "produce/manifest.json": "ee4ae6de4cc3e03d1d0022632f8a4d2cea353ea539ef06336d6989a7d398ac96",
+    "relogin/client.log": "2d11956e953915f0c41789f65a8df4f85a4a9bd2612caef3d19ecbe4150558cb",
+    "relogin/manifest.json": "7acd2151c6d6cb1e502e00c7ac57b65a2cdeb448ffd8986b81076ba17bbce19b"
+  },
+  "scope": "Real native held Use both directions, full28 selected-only outputs and exact fineXP; no production Resume115; captured stale requests refuse with matching raw/tool duplicates retained. Native sequence and credit share received clock with zero sequence delay. Acknowledged save, process restart and fully independently decoded native inventory/Stats retain exact outputs/XP without replay.",
+  "limitations": [
+    "Limestone natural outcomes witness branches, not a statistical proof of the probability curve.",
+    "Immediate-before-World-tick is established by separate public World tests; native receive clocks do not prove network latency or rendered timing.",
+    "Staff original frozen controller did not assert received flavor message; contract failure-message requirement is exercised by limestone.",
+    "No original executable/audio or rendered animation frames compared."
+  ]
+}

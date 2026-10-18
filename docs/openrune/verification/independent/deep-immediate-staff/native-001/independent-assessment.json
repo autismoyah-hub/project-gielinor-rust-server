@@ -1,0 +1,49 @@
+{
+  "implementation_id": "OR-MIG-0065",
+  "tested_sha": "4f4aacb2929e8ad775d091527e2d80070100ee69",
+  "campaign_kind": "historical",
+  "status": "PASS",
+  "kind": "staff",
+  "actions": 3,
+  "outputs": [
+    772,
+    772,
+    772
+  ],
+  "fine_xp_award": 0,
+  "both_natural_outcomes_observed": false,
+  "messages_observed": 0,
+  "effects": [
+    {
+      "slot": 4,
+      "sequence": 10937,
+      "sequence_and_credit_tick": 122,
+      "output": 772
+    },
+    {
+      "slot": 5,
+      "sequence": 10937,
+      "sequence_and_credit_tick": 134,
+      "output": 772
+    },
+    {
+      "slot": 6,
+      "sequence": 10937,
+      "sequence_and_credit_tick": 148,
+      "output": 772
+    }
+  ],
+  "evidence_sha256": {
+    "produce/client.log": "af423c087651359a6fb5203af4de1c28f5c1d02915989cd0d4d3826c25568fba",
+    "produce/manifest.json": "d0d2545119520e899534cc94dec6c72c244382e848dc4f400d6ad5997d3a6d31",
+    "relogin/client.log": "58a7e174dbfa6c4947df86c8b171602d46df3e223d9130eac85a6778e1a37056",
+    "relogin/manifest.json": "5ef0d29f9c3c1d72e5b944f51d591a21949ed23a0d4d3cd6336e26c3bc4174d5"
+  },
+  "scope": "Real native held Use both directions, full28 selected-only outputs and exact fineXP; no production Resume115; captured stale requests refuse with matching raw/tool duplicates retained. Native sequence and credit share received clock with zero sequence delay. Acknowledged save, process restart and fully independently decoded native inventory/Stats retain exact outputs/XP without replay.",
+  "limitations": [
+    "Limestone natural outcomes witness branches, not a statistical proof of the probability curve.",
+    "Immediate-before-World-tick is established by separate public World tests; native receive clocks do not prove network latency or rendered timing.",
+    "Staff original frozen controller did not assert received flavor message; contract failure-message requirement is exercised by limestone.",
+    "No original executable/audio or rendered animation frames compared."
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "tested_integration_sha": "0c489b46b552ad012e630810c1218dbaeb437a51",
+  "suite": "fallible-gem-bindings",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 7323299840,
+    "active_compilers": [
+      "\"cargo.exe\",\"14124\",\"RDP-Tcp#0\",\"2\",\"18,424 K\""
+    ],
+    "cpu_percent": 37.22,
+    "cpu_samples": [
+      27.362204724409445,
+      33.52490421455939,
+      50.778210116731515
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained",
+    "disk_free": 28416253952,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "cb2994fc4bead96c32ae4ec568148d5a6a0fee66",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\0c489b46b552ad012e630810c1218dbaeb437a51\\external-harness-3270853700\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-fallible-gem-bindings-0c489b46b552ad012e630810c1218dbaeb437a51\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\0c489b46b552ad012e630810c1218dbaeb437a51\\external-harness-3270853700\\Cargo.toml",
+        "--",
+        "--nocapture"
+      ],
+      "exit_code": 0,
+      "tests_passed": 1,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-fallible-gem-bindings-0c489b46b552ad012e630810c1218dbaeb437a51\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative fallible-gem-bindings scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-fallible-gem-bindings-0c489b46b552ad012e630810c1218dbaeb437a51\\harness\\bindings.rs": "7e307ddf8ce59c967b086bb67be7d987f5addefea56a7a09fd79fc2ff1a5511c"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\bindings-7cf909eb3aa92223.exe": "b78d8971e704b777efb7dcf1c285501d1002574c1c61a2ce1c8224d361226ac7",
+    "target\\debug\\deps\\outcomes-eca7ab3a53ff205f.exe": "292508709de8d60c0f56ee70aa9b8c65faaaa00bcf56827efd846960256142c0"
+  }
+}

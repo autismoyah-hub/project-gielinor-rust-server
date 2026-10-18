@@ -1,0 +1,19 @@
+{
+  "implementation_id": "OR-MIG-0065",
+  "tested_sha": "4f4aacb2929e8ad775d091527e2d80070100ee69",
+  "status": "PASS",
+  "campaign_kind": "historical",
+  "observed_unsaved_output": 968,
+  "observed_unsaved_fine_award": 75,
+  "durable_outputs": 0,
+  "scope": "One native immediate limestone credit/reward observed, stale request refused, then only the owned server terminated with socket open and no save acknowledgement. SQL retains prior complete inventory/Stats; actual process restart and independently decoded native full inventory/Stats confirm complete rollback, no replay or material/XP duplication.",
+  "limitations": [
+    "This is unacknowledged-state rollback and recovery, not an injection during SQL transaction commit."
+  ],
+  "evidence_sha256": {
+    "produce/client.log": "3261a1edb115d3054c98c376aa42a7c6011ffb0041f30cbd10d759d5ff25ac0e",
+    "produce/manifest.json": "a124c503280ae72ec246c52606da4d7a10cc3372945f1af1c6ad0aa85bf932e8",
+    "relogin/client.log": "08172fa530f89f3d474d989233594ce0ec55ba198abc25b0fd9ae95349d0ea8a",
+    "relogin/manifest.json": "49d965ee5ffe977b82acb25b721a91dbf5a7bb64d85a7d6e9e4044fe92dc8bd2"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "tested_integration_sha": "4f4aacb2929e8ad775d091527e2d80070100ee69",
+  "suite": "immediate-admission",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "FAIL",
+  "resource": {
+    "available_ram": 6992322560,
+    "active_compilers": [
+      "\"cargo.exe\",\"15120\",\"RDP-Tcp#0\",\"2\",\"22,140 K\"",
+      "\"cargo.exe\",\"9284\",\"RDP-Tcp#0\",\"2\",\"22,172 K\"",
+      "\"rustc.exe\",\"14104\",\"RDP-Tcp#0\",\"2\",\"228,652 K\""
+    ],
+    "cpu_percent": 20.5,
+    "cpu_samples": [
+      20.3125,
+      18.271119842829076,
+      22.912621359223305
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained",
+    "disk_free": 30032072704,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "7c189af06069f08bf07db17a48b2ad31c1e13fb2",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\4f4aacb2929e8ad775d091527e2d80070100ee69\\external-harness-0193721100\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-immediate-admission-4f4aacb2929e8ad775d091527e2d80070100ee69\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\4f4aacb2929e8ad775d091527e2d80070100ee69\\external-harness-0193721100\\Cargo.toml"
+      ],
+      "exit_code": 101,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-immediate-admission-4f4aacb2929e8ad775d091527e2d80070100ee69\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative immediate-admission scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-immediate-admission-4f4aacb2929e8ad775d091527e2d80070100ee69\\harness\\admission.rs": "1481e08a372db8a4dcc9d8eaa72c345c4e9852e8b24072a3ef63cfe89b2c71c5"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\admission-c8856c0fde91ceaf.exe": "d45f435f4d4df56272e1c912925b7f0d105b1aba0b38b061a28dfbf51a5d97a0",
+    "target\\debug\\deps\\atomic-80f2c149459d35b9.exe": "cb990c8f530d9af4aa1634b2b737d26f7bd506b7402e5d21b9bc1fe95b2bb256",
+    "target\\debug\\deps\\bindings-86c0f466adfbfc04.exe": "ab84f5263c368879a55d9c0e1572f8552960db8c517da259de46aafd15a281a7"
+  }
+}

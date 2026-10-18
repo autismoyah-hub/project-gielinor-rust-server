@@ -1,0 +1,5 @@
+{
+  "classification": "VERIFIER_ORACLE_CORRECTED",
+  "reason": "Initial staff mode16 marked trusted Catalog tool metadata dummy and expected runtime rejection. Runtime transaction checks output credit policy; source factory separately rejects bad tool metadata. This out-of-scope expectation is replaced by an invalid level descriptor; original FAIL and harness remain immutable. Limestone alternate-credit refusal unchanged.",
+  "target": "4f4aacb2929e8ad775d091527e2d80070100ee69"
+}

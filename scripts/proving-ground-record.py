@@ -37,6 +37,17 @@ for manifest in OUT.glob('OR-MIG-0024-*-independent*/manifest.json'):
 for manifest in OUT.glob('integration-*/manifest.json'):
     value=json.loads(manifest.read_text(encoding='utf-8'))
     if value.get('status')!='PASS':continue
+    if value.get('suite')=='fallible-gem-bindings':
+        add('OR-MIG-0064',value['tested_integration_sha'],'V1','IN_PROGRESS','Actual cache factory attests8ordinary types/Crafting/3sequences and3fallible descriptors.93missing/aliased/corrupt item/stat/sequence probes refuse. Runtime/native/batch/durability and reference conflicts remain separate.',[manifest.relative_to(ROOT).as_posix()],scope='independent-fallible-gem-bindings')
+        continue
+    if value.get('suite')=='immediate-regression':
+        add('SHARED-WORLD',value['tested_integration_sha'],'V1','IN_PROGRESS','Independent deterministic crafting integration regression at immediate target:576positive/24F2P/140admission/192late cases PASS. Original OR63harness required only failure:None descriptor adaptation for65API; compile failure and diagnosis preserved. This is new integration evidence at65, not historical OR63acceptance or current FORGEHEAD verification.',[manifest.relative_to(ROOT).as_posix()],kind='integration',scope='independent-immediate-shared-regression',affected=['OR-MIG-0063','OR-MIG-0065'])
+        continue
+    if value.get('suite') in ['immediate-bindings','immediate-admission']:
+        suite=value['suite']
+        reason=('Actual cache-backed startup recipe factory resolves seven exact ordinary item definitions, Crafting stat and two sequence aliases. Both immediate descriptors and limestone failure curve/rewards match independent expectations;81missing/aliased/corrupted metadata mutations refuse. Native runtime/durability remain separate.' if suite=='immediate-bindings' else 'Independent88public World admission cases PASS: both recipes/directions, membership/current level, modal/delay/logout-saving/stale actor, stale/count/variable tool/raw, inventory policy, either output credit, invalid immediate descriptor and queued/quantity wrappers refuse without inventory/Stats changes or pending production/advancement/animation. Original unsupported trusted-Catalog tool mutation oracle is preserved with diagnosis; corrected campaign passed at same SHA.')
+        add('OR-MIG-0065',value['tested_integration_sha'],'V1','IN_PROGRESS',reason,[manifest.relative_to(ROOT).as_posix()],scope='independent-'+suite)
+        continue
     if value.get('suite')=='immediate-tools':
         add('OR-MIG-0065',value['tested_integration_sha'],'V1','IN_PROGRESS','Independent207656zero-XP/fallible/current-level/member/rate/controlled-byte cases PASS against a rounded integer probability oracle, including limestone certainty40and one RNG draw even at certainty; Dramen has no draw or advancement and permits rate0.60invalid possible-credit/input/tool/policy probes refuse before draw; zero-XPfailure preserves Stats/no advancement while positive-success/rate0still refuses.48actual immediate World held routes cover both directions/full bag/no menu/clock advance/stale/delayed replay. Additional World negative/configuration, actual startup/native/persistence/reference acceptance remains separate.',[manifest.relative_to(ROOT).as_posix()],scope='independent-immediate-tools')
         continue
@@ -272,8 +283,21 @@ if all(p.exists() and json.loads(p.read_text(encoding='utf-8')).get('status')=='
 path=OUT/'deep-glass-remaining/remaining-002/independent-blocker.json'
 if path.exists():
     add('OR-MIG-0062',glass_sha,'V2','BLOCKED','All native8choice/label/built-in1/5/10/All and Close subchecks passed, but required offered X selection cannot be accepted: PG-INFRA-009 proves an extra keyboard/script Resume consumes the dialog before intended choice. Precise client focus/callback correction required; server defect not established. Other completed obligations remain preserved.',[path.relative_to(ROOT).as_posix()],scope='glass-native-x-required-obligation-blocked')
+for kind in ['staff','limestone','certainty','crash']:
+    path=OUT/('deep-immediate-'+kind)/('crash-001' if kind=='crash' else 'native-001')/'independent-assessment.json'
+    if path.exists():
+        result=json.loads(path.read_text());assert result['status']=='PASS'
+        for level in (['V3'] if kind=='crash' else ['V0','V2','V3']):add('OR-MIG-0065',result['tested_sha'],level,'IN_PROGRESS',result['scope']+' Applicable aggregate acceptance remains separate.',[path.relative_to(ROOT).as_posix()],scope='native-immediate-'+kind+'-recovery')
+path=OUT/'reference-fallible-gems/comparison.json'
+if path.exists():
+    result=json.loads(path.read_text());assert result['source_documentation_subcheck']=='PASS_WITH_REFERENCE_CONFLICTS'
+    add('OR-MIG-0064',result['tested_sha'],'V4','IN_PROGRESS',result['scope']+' PG-REF-001: pinned Opal3.8versus Crushedgem3.7failureXP and Jade floor-only versus generic rounded success rule require explicit adjudication; not an implementation-blocking gameplay finding.',[path.relative_to(ROOT).as_posix()],scope='independent-fallible-gem-reference-conflicts')
+path=OUT/'immediate-acceptance.json'
+if path.exists():
+    result=json.loads(path.read_text());assert result['status']=='ACCEPTED'
+    for level,value in result['levels'].items():add('OR-MIG-0065',result['tested_sha'],level,value['status'],value['reason'],[path.relative_to(ROOT).as_posix()],scope='immediate-applicable-obligations-complete')
 coarse=DOC/'VERIFICATION_RESULTS.jsonl';prior=[json.loads(s) for s in coarse.read_text(encoding='utf-8').splitlines()];known={r['attempt_id'] for r in prior}
-for name in ['gem-acceptance.json','shell-acceptance.json']:
+for name in ['gem-acceptance.json','shell-acceptance.json','immediate-acceptance.json']:
     path=OUT/name
     if not path.exists():continue
     result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='ACCEPTED' and all(v['status']=='PASS' for v in result['levels'].values())
