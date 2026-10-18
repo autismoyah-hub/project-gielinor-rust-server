@@ -1,4 +1,6 @@
 //! Resolve content's symbolic references against the same immutable type inputs as Kotlin.
+mod standard_tea;
+pub use standard_tea::standard_tea;
 mod magic_cabbage;
 pub use magic_cabbage::magic_cabbage;
 mod jangerberries;

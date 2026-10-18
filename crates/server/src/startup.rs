@@ -381,6 +381,7 @@ pub fn configure<B: AccountBackend>(
     formula_foods.extend(crate::content::other_gnome_cocktails(n("obj"),n("stat"),&runtime.definitions,&mut foods).map_err(io::Error::other)?);
     formula_foods.extend(crate::content::spirits_keg(n("obj"),n("stat"),&runtime.definitions,&mut foods).map_err(io::Error::other)?);
     formula_foods.extend(crate::content::magic_cabbage(n("obj"),n("stat"),&runtime.definitions,&mut foods).map_err(io::Error::other)?);
+    formula_foods.extend(crate::content::standard_tea(n("obj"),n("stat"),&runtime.definitions,&mut foods).map_err(io::Error::other)?);
     slot_preserving_foods.extend(formula_foods.keys().copied());
     slot_preserving_foods.extend(crate::content::fruit_cocktails(n("obj"),&runtime.definitions,&mut foods).map_err(io::Error::other)?);
     slot_preserving_foods.extend(crate::content::mead_drinks(n("obj"),&runtime.definitions,&mut foods).map_err(io::Error::other)?);
