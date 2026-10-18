@@ -1,0 +1,31 @@
+{
+  "implementation_id": "OR-MIG-0108",
+  "tested_sha": "7d4e09b6fdad766312ef55238e61c2730ea0b529",
+  "status": "PASS_REFERENCE_FACTS",
+  "sources": [
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/items/ImcandoHammerScript.kt",
+      "revision": null,
+      "sha256": "8639dafafe573eec2a369685a5abd59d6c9294e64e23955a4ee86223c59547a2"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Imcando hammer",
+      "revision": "15325383",
+      "sha256": "b9abe43a88eafa03f0b321f07bf98c6160ee22c50efadf056ac5966164aafcde"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Imcando hammer (off-hand)",
+      "revision": "15284104",
+      "sha256": "a27ca8f604379e111a889cb252f21565d54834534722acd43d6ac7145dacd623"
+    }
+  ],
+  "scope": "Three exact source/Wiki hashes independently match repaired25644/offhand29775bidirectional held Swap; broken25633excluded. Source held3callbacks simply replace one item with no explicit membership/skill/quest/XP/message/delay gate. Separate worn4callbacks unequip/replace/conditionallyequip and are excluded from108. Target strict selected-slot/ordinary metadata/full-credit guards strengthen source inventory-wide replacement; sparse bags can insert at an earlier free slot. Both Wiki pages support members-only equipping and ordinary hammer functionality retained in F2P; they do not independently prove F2P Swap menu availability.",
+  "limitations": [
+    "Actual target cache/startup/native member/F2P effective menu/save/recovery acceptance remains separate.",
+    "No worn109/equipment/acquisition/repair or currentHEAD acceptance inherited.",
+    "No original donor executable/render/audio comparison claimed."
+  ]
+}

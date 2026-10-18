@@ -1,0 +1,31 @@
+{
+  "implementation_id": "OR-MIG-0109",
+  "tested_sha": "8bc76c7c464daf1d4abdef4dd7f4172c270abda5",
+  "status": "PASS_REFERENCE_FACTS",
+  "sources": [
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/items/ImcandoHammerScript.kt",
+      "revision": null,
+      "sha256": "8639dafafe573eec2a369685a5abd59d6c9294e64e23955a4ee86223c59547a2"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Imcando hammer",
+      "revision": "15325383",
+      "sha256": "b9abe43a88eafa03f0b321f07bf98c6160ee22c50efadf056ac5966164aafcde"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Imcando hammer (off-hand)",
+      "revision": "15284104",
+      "sha256": "a27ca8f604379e111a889cb252f21565d54834534722acd43d6ac7145dacd623"
+    }
+  ],
+  "scope": "Three exact source/Wiki hashes independently match the two worn4callback forms and original sequence: capture target-hand availability, attempt unequip with failure return, replace held form, and equip first matching output only if target was free. Source helper has no explicit entitlement gate; global effective equip policy remains unresolved. Wiki restricts new equipping to members and retains ordinary hammer functionality in F2P. Target109stages all operations and binds newly removed item, with F2Pconversion-to-bag/no-new-equip as an explicit adaptation; no native/source global parity inferred.",
+  "limitations": [
+    "Actual target cache/startup/native member/F2P effective menu/save/recovery acceptance remains separate.",
+    "No target World ordered refresh/full bag/occupied-hand/native/lifecycle or currentHEAD acceptance inherited.",
+    "No original donor executable/render/audio comparison claimed."
+  ]
+}

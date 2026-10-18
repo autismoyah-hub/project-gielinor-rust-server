@@ -1,0 +1,27 @@
+{
+  "implementation_id": "OR-MIG-0108",
+  "tested_sha": "7d4e09b6fdad766312ef55238e61c2730ea0b529",
+  "status": "PARTIAL",
+  "source_tree": "2a91110e86af768dbc8ed2cced41a10b9aee3a88",
+  "scope": "Independent224actual registered typed World held Swap/stale cases PASS across all28selected slots/both forms/member-F2P policies/full-sparse bags. Whole inventory/Stats/worn gear conserved; sparse insertion uses earliest gap, fullbag uses freed clicked slot, stale explicit old form never falls back to matching duplicate. Separate refusal test passed11case prefix then verifier incorrectly called data_mut after request_logout; API LoggingOut correctly rejected that mutable access before logout refusal action ran. Original rawFAIL retained; no implementation defect inferred. Corrected53case tail excludes the successful224campaign and11prefix, remains unexecuted after repeated measured resource deferrals.",
+  "completed_cases": {
+    "named_rust_function_world_positive_and_stale": 224,
+    "partial_refusal_prefix_subcases": 11
+  },
+  "pending_cases": 53,
+  "resource_guard": {
+    "required_available_ram": 6442450944,
+    "last_available_ram": 6272913408,
+    "cpu_percent": 50.98,
+    "decision": "DEFER; no other processes altered"
+  },
+  "native_state": "New held/member/F2P/recovery controller source is prepared but not compiled or executed. No native108campaign prepared/seeded; actual cache two-form/26refusal fixture also unexecuted. No newer server substituted.",
+  "next_action": "Run existing imcando-held-refusals53case tail at exact7d4e09b6when original RAM/CPU guard permits. Then actual imcando-held-bindings, successfully build current observer before prepare, and fresh native member/F2P/recovery/save/reconnect campaigns.",
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/integration-external-imcando-held-world-7d4e09b6fdad766312ef55238e61c2730ea0b529/manifest.json": "89d5af0d5aa96c3dcd2a5b2c4991310b0619585ce496d84dc970ee9f8e8580c2",
+    "docs/openrune/verification/independent/integration-external-imcando-held-world-7d4e09b6fdad766312ef55238e61c2730ea0b529/run-1.log": "d9b498aae0c15daa3c65166bbf972476f640d5e4327c5837da2c30c7ec4a9a6d",
+    "docs/openrune/verification/independent/integration-external-imcando-held-world-7d4e09b6fdad766312ef55238e61c2730ea0b529/harness/world.rs": "ff4af5e8905314b2f509d06aa11ad481cce579e2c7bd79a8469968c567035dde",
+    "docs/openrune/verification/independent/integration-external-imcando-held-refusals-7d4e09b6fdad766312ef55238e61c2730ea0b529-1792329739180205500/manifest.json": "e5d55cc5cc2bd10f716bc468b5ac14ea082f64b8b2d714eb29395d14e6602a7a",
+    "docs/openrune/verification/independent/integration-external-imcando-held-refusals-7d4e09b6fdad766312ef55238e61c2730ea0b529-1792329739180205500/resource-observations.jsonl": "b909f4f6a706f59fc1b91a54ba0c4271df5d31e2375df680e508d798cbe1e525"
+  }
+}

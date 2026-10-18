@@ -1,0 +1,8 @@
+{
+  "tested_integration_sha": "7d4e09b6fdad766312ef55238e61c2730ea0b529",
+  "suite": "imcando-held-refusals",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "BLOCKED",
+  "reason": "Measured-resource deferral; no substitute target: Measured resource guard blocked; no other process altered"
+}

@@ -1,0 +1,62 @@
+{
+  "tested_integration_sha": "7d4e09b6fdad766312ef55238e61c2730ea0b529",
+  "suite": "imcando-held-world",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "FAIL",
+  "resource": {
+    "available_ram": 6649712640,
+    "active_compilers": [
+      "\"cargo.exe\",\"15420\",\"RDP-Tcp#0\",\"2\",\"24,840 K\""
+    ],
+    "cpu_percent": 6.84,
+    "cpu_samples": [
+      5.490196078431375,
+      0.5836575875486361,
+      14.453125
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained",
+    "disk_free": 12070440960,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "2a91110e86af768dbc8ed2cced41a10b9aee3a88",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\7d4e09b6fdad766312ef55238e61c2730ea0b529\\external-harness-1720975000\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-imcando-held-world-7d4e09b6fdad766312ef55238e61c2730ea0b529\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\7d4e09b6fdad766312ef55238e61c2730ea0b529\\external-harness-1720975000\\Cargo.toml",
+        "--",
+        "--nocapture"
+      ],
+      "exit_code": 101,
+      "tests_passed": 1,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-imcando-held-world-7d4e09b6fdad766312ef55238e61c2730ea0b529\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative imcando-held-world scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-imcando-held-world-7d4e09b6fdad766312ef55238e61c2730ea0b529\\harness\\world.rs": "ff4af5e8905314b2f509d06aa11ad481cce579e2c7bd79a8469968c567035dde"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\world-939eb82907915179.exe": "4ce8237b3199e35f4300cb68d93f81cbfab089634ba9ba165777ce2de6176140"
+  }
+}

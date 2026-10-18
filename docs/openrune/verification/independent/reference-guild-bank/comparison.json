@@ -1,0 +1,49 @@
+{
+  "implementation_id": "OR-MIG-0110",
+  "tested_sha": "8ab0778b81afc132337eb0f90daf708b76c16877",
+  "status": "PASS_REFERENCE_FACTS",
+  "sources": [
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingGuildBank.kt",
+      "revision": null,
+      "sha256": "b346398bc0189bdc747100a5a8e19689ade72d5f13398a3ae91a690a93d3b579"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingGuildRequirements.kt",
+      "revision": null,
+      "sha256": "02347c4b64021c68416a985e4c5649d4f64ea0ae153644bdad5ade64c78780d5"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Crafting Guild",
+      "revision": "15181890",
+      "sha256": "14e70b2f338540d527d130592a98d9174fe7db4e9aaad24cfe39be50e446212d"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Falador Diary",
+      "revision": "15310507",
+      "sha256": "1be6b276f239af249f8907be02aef710a42d15cb9784fb88d2ddcf0dcc3ff047"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Bank chest",
+      "revision": "15315632",
+      "sha256": "f7aece3a42b93e84dcbe43f93145529b52756f36ce29b2fdfec6905977fdbb2e"
+    },
+    {
+      "kind": "independently_inspected_additional_source",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/util/CraftingConstants.kt",
+      "revision": "protected archive; upstream commit unavailable",
+      "sha256": "393d05fa5a5645b2dd712fcfb8f8814845376846a7594dafe16909422fe2008f"
+    }
+  ],
+  "scope": "Five pinned source/Wiki hashes plus independently hashed Crafting99constant match. Source chest1handler waits arriveDelay then checks baseCrafting99ORhard/elite claimed reward before bank-main/side open; depositbox has a separate handler/presentation and is excluded by target110. Entry apron/cape helpers are separate from chest gate. Source reward aliases verified, but exact target bits4505/4506->1190bits6/7 require separate actual-cache binding tests. Wiki Guild/Diary/Bank chest support access facts including membership; target explicit membership is a deliberate stronger policy than unverified source global member assumption.",
+  "limitations": [
+    "No actual cache/startup/World arrival/native bank UI/deposit/withdraw/session/persistence acceptance yet.",
+    "Pinned Wiki hash/selected statements are a reference subcheck, not original executable or complete banking parity.",
+    "Source current versus base policy independently explicit; exact World boosted/drained/membership/reward combinations remain unexecuted."
+  ]
+}

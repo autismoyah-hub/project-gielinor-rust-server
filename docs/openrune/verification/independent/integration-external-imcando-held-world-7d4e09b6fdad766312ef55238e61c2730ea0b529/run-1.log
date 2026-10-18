@@ -1,0 +1,22 @@
+   Compiling gielinor-world v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\7d4e09b6fdad766312ef55238e61c2730ea0b529\crates\world)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\7d4e09b6fdad766312ef55238e61c2730ea0b529\external-harness-1720975000)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 28.15s
+     Running tests\world.rs (C:\Projects\OSRSRSPS\agent7-verification\work\7d4e09b6fdad766312ef55238e61c2730ea0b529\target\debug\deps\world-939eb82907915179.exe)
+
+running 2 tests
+
+thread 'sixty_four_life_metadata_context_refusals' (13380) panicked at tests\world.rs:15:15:
+called `Result::unwrap()` on an `Err` value: LoggingOut
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test sixty_four_life_metadata_context_refusals ... FAILED
+PG_IMCANDO_HELD positive_and_stale=224
+test two_hundred_twenty_four_selected_bag_membership_and_stale_controls ... ok
+
+failures:
+
+failures:
+    sixty_four_life_metadata_context_refusals
+
+test result: FAILED. 1 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 24.20s
+
+error: test failed, to rerun pass `--test world`

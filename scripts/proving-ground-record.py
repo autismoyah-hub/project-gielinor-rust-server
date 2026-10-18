@@ -30,6 +30,7 @@ for ident,folder,sha in [('OR-MIG-0010','deep-combat','5a260c1bd6efa5f8a221bed7c
         add(ident,sha,'V4','IN_PROGRESS','Independent protected-source and pinned-documentation subcomparisons PASS within recorded scope; complete feature comparison remains open. No executable donor parity is claimed.',refs)
 for manifest in OUT.glob('OR-MIG-0024-*-independent*/manifest.json'):
     value=json.loads(manifest.read_text(encoding='utf-8'))
+    if value.get('suite','').startswith('imcando-held-'):continue  # Scoped aggregate retains partial and resource-deferred attempts.
     if value.get('suite')=='light-life':continue  # Exact-target finding below retains raw FAIL/BLOCKED attempts.
     if value.get('outcome')!='PARTIAL':continue
     sha=value['implementation_commit_sha'];evidence=[str(manifest.relative_to(ROOT)).replace('\\','/')]
@@ -633,4 +634,13 @@ if path.exists():
     if not any(json.loads(s)['attempt_id']==attempt for s in coarse_path.read_text(encoding='utf-8').splitlines()):
         row={'attempt_id':attempt,'implementation_id':'OR-MIG-0084','implementation_commit_sha':result['tested_sha'],'contract_revision':1,'campaign_kind':'historical','outcome':'FAILED','level':'V0PASS/V1FAIL/V2PASS/V3FAIL/V4PASS','independent_verification':True,'tests_passed':0,'coverage':[k+' '+v['status']+': '+v['reason'] for k,v in result['levels'].items()],'reason':result['scope'],'evidence':[path.relative_to(ROOT).as_posix()],'issues':['PG-DEF-003 ordinary P2 local correction addendum; no new issue or FORGE stop']}
         with coarse_path.open('a',encoding='utf-8',newline='\n') as f:f.write(json.dumps(row)+'\n')
+path=OUT/'imcando-held-world-partial.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PARTIAL'
+    for level in ['V0','V1']:add('OR-MIG-0108',result['tested_sha'],level,'IN_PROGRESS',result['scope']+' '+result['native_state'],[path.relative_to(ROOT).as_posix()],scope='imcando-held-world-partial')
+for folder,ident in [('reference-imcando-held','OR-MIG-0108'),('reference-imcando-worn','OR-MIG-0109'),('reference-guild-bank','OR-MIG-0110')]:
+    path=OUT/folder/'comparison.json'
+    if path.exists():
+        result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PASS_REFERENCE_FACTS'
+        add(ident,result['tested_sha'],'V4','IN_PROGRESS',result['scope']+' Native/cache/World/lifecycle and complete reference acceptance remain separate.',[path.relative_to(ROOT).as_posix()],scope='independent-'+folder+'-facts')
 print('Per-level evidence events:',len(rows))
