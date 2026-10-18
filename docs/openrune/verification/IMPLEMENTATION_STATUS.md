@@ -3,13 +3,11 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0053: seven missing ordinary Bury rewards, source [0d9a03c](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/0d9a03c8b97cf1ac7a2bca9e51f92564a2c4198e). Affected libraries compiled and focused checks passed: 1 server test, 406 source hashes unchanged. All seven rewards, selected full-bag exchanges, fractional XP, late rollback and preservation of configured/custom values checked.
+OR-MIG-0054: citizen coin-pouch selected Open/Open-all, source [7fc1306](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/7fc1306bb5c01540038ce5ff175b577294ade432). Shared checked pack quantities preserve legacy one-pack behavior; actual held dispatch and startup definitions registered. PASS91server449world/1existing ignored,407unchanged source hashes. No independent/native acceptance claimed.
 
-The prepared PrayerTable audit found 24 existing generic bone bindings, five ashes (52) and seven missing ordinary entries. New fallback rewards are21/25/84/96/3/3/4.5XP; every configured value takes precedence. This is structural/reward coverage, not all-row/native/quest/altar/restoration acceptance. Previous89server/446world and5+11Prayer regressions remain historical.
+54units across58append-only records:23historical and31new units, all pending independent verification. Discovery3508:34partially contracted eligible files/tables,656configuration,2818unassessed; this is not a completion percentage. Pouch opening does not implement pickpocketing, acquisition caps, diaries, outfits, stalls, loot or stun.
 
-There are 53 implementation units across 57 append-only records: 23 historical and 30 new gameplay/shared units, all pending independent verification. Discovery remains 3,508 records: 32 partially contracted eligible files/tables, 656 configuration and 2,820 unassessed. This is not a completion percentage.
-
-Continue the next eligible content requirement. Open work includes configured reward reconciliation, Prayer hooks/cadence, Thieving and other systems, Anglerfish PvP eligibility, delayed food, quantity menus, modifiers/surfaces, cake tin returns and independent V0–V4. Historical/private evidence and unrelated changes are preserved.
+Continue Man/Woman pickpocketing and other eligible requirements; preserve all historical/private evidence and unrelated changes. Existing Prayer policy/cadence, Anglerfish eligibility, production menus/modifiers and independentV0-V4 remain open.
 <!-- forge-current:end -->
 
 
@@ -207,3 +205,12 @@ Published 8389805afedc05d132747e0a5dd4a3631360ada3. Five registered demonic ash 
 ## Implementation checkpoint OR-MIG-0053
 
 Published 0d9a03c8b97cf1ac7a2bca9e51f92564a2c4198e. Seven absent-only Bury rewards; focusedPASS1server0world/406same hashes, existing configured policy preserved. Queue53units57records, independent pending. Continue eligible content; structural36rowcoverage is not complete Prayer acceptance.
+
+
+## FORGE OR-MIG-0054 — citizen coin pouch opening
+
+Published source 7fc1306bb5c01540038ce5ff175b577294ade432. Actual held operation2 Open-all and3 Open now resolve member citizen pouch22521 into3coins995 each, with immediate selected-slot checked quantity exchange. Startup verifies ordinary stackability, exact names/IDs, nontradeable/non-GE/member pouch, options and no_bank59=1. Existing banking restriction resolver already consumes this flag. No NPC acquisition/cap/diary/outfit/stall/stun behavior is implied.
+
+Shared open_count checks positive/exact selected count and multiplication before cloned debit/credit publication; old open delegates count1. Full bag, existing currency, output overflow, variable metadata, nonmember and same-tick replay tests conserve inventory/Stats. forge-coin-pouch-tests-attempt-001 PASS91server449world/1existing ignored;407source hashes unchanged; compile1m55s. Immediate resource guard6994MiB available,55.6percentcommit,32pages-in/s,2.5msdisk,53.0percentCPU,Cargo-j2; other compilers informational. Existing failures/private/native evidence preserved. These are working-tree development checks, not pristine-SHA/native or independent acceptance.
+
+Pinned Coin pouch15315198,Man15337969,Woman15337968 and sourceSHA256 66c5d10529fb1e5c41c8d3ef9b5e401f7cb76ea0ac860948fd5c69c48c4a3ad5 / be94f18729af46354c1e86780bc513666c4cd0e38eb758a1c7ee80ba134d09ed. Independent adaptation only; no donor code/loot/DSL/assets copied. Native opening/banking and lifecycleV0-V4 remain queued. Two partially assessed Thieving files now count eligible, not complete:34eligible,656configuration,2818unassessed of3508discovered records. Continue Man/Woman acquisition and failure mechanics next.
