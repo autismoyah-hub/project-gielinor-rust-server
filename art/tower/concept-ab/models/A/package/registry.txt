@@ -1,0 +1,3 @@
+TOWER_ASSET_PACKAGE 1
+model 1210800 model-1210800.model cafb8688
+object 64680 object-64680.object 72227e7f

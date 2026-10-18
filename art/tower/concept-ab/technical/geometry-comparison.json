@@ -1,0 +1,34 @@
+{
+  "A": {
+    "triangles": 3705,
+    "vertices": 2068,
+    "dimensions_x_y_z_authoring": [
+      96.0,
+      333.0,
+      176.0
+    ],
+    "dimension_tolerance": "Both fit shared approximate92x330x176 dimensions within10%. Width includes shoulder armor and toes.",
+    "toes": 12,
+    "claws": 12,
+    "dorsal_shields": 5,
+    "quantization_max_error": 0.5,
+    "collapsed_source_triangles": 179,
+    "native_degenerate_triangles": 0
+  },
+  "B": {
+    "triangles": 3621,
+    "vertices": 2027,
+    "dimensions_x_y_z_authoring": [
+      100.0,
+      333.0,
+      176.0
+    ],
+    "dimension_tolerance": "Both fit shared approximate92x330x176 dimensions within10%. Width includes shoulder armor and toes.",
+    "toes": 12,
+    "claws": 12,
+    "dorsal_shields": 5,
+    "quantization_max_error": 0.5,
+    "collapsed_source_triangles": 201,
+    "native_degenerate_triangles": 0
+  }
+}

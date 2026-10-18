@@ -1,0 +1,18 @@
+{
+  "method": "concept",
+  "stage": 5,
+  "candidate": "final",
+  "started_utc": "2026-10-18T17:58:35.594231+00:00",
+  "finished_utc": "2026-10-18T17:58:41.835399+00:00",
+  "blender_execution_seconds": 2.9906724999891594,
+  "native_execution_seconds": 3.129659199999878,
+  "wall_generation_seconds": 6.122176599979866,
+  "reason": "Densify original shield cages and check triangle-interior body clearance; final native quality pass",
+  "design_sha256": "ce0cb460a95c8b5a62c1a561f40bf21e4571befd9b1cd55ef2b03dc3937518f8",
+  "builder_sha256": "7a5b62a03e17d4ccd52e6efff5a6941fad9921f1a16eebbdd9a715fdb2093e9c",
+  "model_sha256": "645f831ddb9ab2d76cd42fa84ed58c898d9072f50555815b428f6e36ea267170",
+  "blend_sha256": "2feb44f5ceca68ed297340790a7b0ccb8656f81505eee6a271b835646ff51535",
+  "native_views": 6,
+  "model_vertices": 2027,
+  "model_triangles": 3621
+}

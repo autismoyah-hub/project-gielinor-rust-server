@@ -1,0 +1,18 @@
+{
+  "method": "text",
+  "stage": 4,
+  "candidate": "final",
+  "started_utc": "2026-10-18T17:45:44.765542+00:00",
+  "finished_utc": "2026-10-18T17:45:49.258456+00:00",
+  "blender_execution_seconds": 1.8674052999995183,
+  "native_execution_seconds": 2.532664600003045,
+  "wall_generation_seconds": 4.401729500008514,
+  "reason": "Remove unstable overlay creases; correct shoulder cap clearance, belly mask and integral horn bands",
+  "design_sha256": "ce0cb460a95c8b5a62c1a561f40bf21e4571befd9b1cd55ef2b03dc3937518f8",
+  "builder_sha256": "7766a7817154569cdc0dc011cd80eda72db162e04731be00bc00db45bf5dd019",
+  "model_sha256": "2ccfad15c63fcace16b8e418a80f161bc7a8a29700668435ea33d6d40e544af7",
+  "blend_sha256": "5fbe2f53e1a428c97893870724cada95e8ef280f2a83a7cce23f0e93ceaf59eb",
+  "native_views": 6,
+  "model_vertices": 2068,
+  "model_triangles": 3705
+}

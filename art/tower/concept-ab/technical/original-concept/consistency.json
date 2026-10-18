@@ -1,0 +1,165 @@
+{
+  "accepted_for": "Visual planning of planes, anatomical relationships and material placement; NOT accepted as exact geometric ground truth or artistically approved production character",
+  "accepted_image": "turnaround-v2.png",
+  "approved_internally_utc": "2026-10-18T17:50:01.903391+00:00",
+  "raw_image_size": [
+    1536,
+    1024
+  ],
+  "panel_crops": {
+    "front": [
+      0,
+      0,
+      584,
+      512
+    ],
+    "left": [
+      584,
+      0,
+      1536,
+      512
+    ],
+    "rear": [
+      0,
+      512,
+      584,
+      1024
+    ],
+    "quarter": [
+      584,
+      512,
+      1536,
+      1024
+    ]
+  },
+  "canonical_priority": "The frozen specification wins over generated-image inconsistencies. No enlargement of the frozen width or high tail curl is allowed in the mesh.",
+  "consistency": {
+    "horn_count_and_laterality": "Two; long anatomical left is viewer right in front and viewer left in rear. Pass.",
+    "ear_eye_placement": "Two ears, lateral eyes under brows. Front and side differ in brow width; canonical skull width43.",
+    "limbs": "Four. Side drawing uses staggered stance rather than exact orthographic neutral pose; canonical paired landmarks are used.",
+    "toes": "Hero and turnaround-v1 include four-toe forepaws. Targeted edit v2 corrects the clearly visible paws to three. Occluded far toes cannot all be counted; mesh has exactly12 independently named toes/claws.",
+    "proportions": "Front forequarters/paws are too wide relative to height. Do not anisotropically warp images or expand geometry to improve overlap. Canonical width92, shoulder72, waist42.",
+    "tail": "Generated side tail tip is aboutZ107 rather than81; rear curvature also disagrees. Canonical root[0,76,83], tip[26,190,81] overrides images.",
+    "plates": "Five low dorsal shields identifiable in rear; side silhouettes overlap. Shoulder cap is interpreted as one two-layer assembly per side, not extra dorsal shields.",
+    "color": "Mottled texture is not modeled. Eight frozen face-color materials apply identically to both runs; native lighting will differ from painted illumination.",
+    "coordinate_label_conflict": "The frozen specification calls X creature-right but assigns anatomical-left horn X=-19. The front native camera displays negativeX on viewer-left, whereas generated FRONT shows the long horn viewer-right. Both meshes preserve the identical explicit numeric horn coordinates; the anatomical label/image laterality conflict is unresolved and is not hidden by mirroring final renders."
+  },
+  "calibration": {
+    "front": {
+      "pixel_origin_ground": [
+        273,
+        493
+      ],
+      "pixels_per_native_unit": 2.7,
+      "world_axes": [
+        "X",
+        "Z"
+      ],
+      "uncertainty": "Estimated +/-4pixels for landmarks; width conflict is genuine, not fitted away"
+    },
+    "left": {
+      "pixel_nose_ground": [
+        42,
+        490
+      ],
+      "pixels_per_native_unit": 2.72,
+      "world_axes": [
+        "Y",
+        "Z"
+      ],
+      "nose_native_y": -140,
+      "uncertainty": "Pose is slightly three-quarter and rear feet are staggered"
+    },
+    "rear": {
+      "pixel_origin_ground": [
+        273,
+        469
+      ],
+      "pixels_per_native_unit": 2.7,
+      "world_axes": [
+        "-X",
+        "Z"
+      ],
+      "uncertainty": "Tail occludes centerline; front and rear stances differ"
+    }
+  },
+  "canonical_landmarks": {
+    "nose": [
+      0,
+      -140,
+      109
+    ],
+    "crown": [
+      0,
+      -100,
+      132
+    ],
+    "cheek": [
+      21,
+      -104,
+      111
+    ],
+    "withers": [
+      0,
+      -46,
+      132
+    ],
+    "waist": [
+      0,
+      22,
+      111
+    ],
+    "hip": [
+      0,
+      63,
+      112
+    ],
+    "fore_elbow": [
+      33,
+      -31,
+      55
+    ],
+    "fore_wrist": [
+      34,
+      -45,
+      17
+    ],
+    "rear_knee": [
+      33,
+      40,
+      54
+    ],
+    "rear_hock": [
+      31,
+      86,
+      27
+    ],
+    "left_horn_tip": [
+      -30,
+      -54,
+      176
+    ],
+    "right_horn_break": [
+      25,
+      -82,
+      150
+    ],
+    "tail_tip": [
+      26,
+      190,
+      81
+    ]
+  },
+  "image_sha256": {
+    "front.png": "7aa7cf2f39e43ea6f58ca31f6ffc1d234c79d62641d073dc47ef4bfe4a51dd64",
+    "hero.png": "29eb217f93267cc1cf436262e0633f8128f7a936f9cde9bb66df386874559444",
+    "left.png": "63455d5771089c9022efe6b88af73f280ba502cf6e745761a4e3eae0a9d848b2",
+    "quarter.png": "06ce2c75348904c1488726b978825f43bc496bcce73d4c3a1c9ff7bf5b418492",
+    "rear.png": "0dd231527c5714aa9e82eb414a2a5cf39cf55b7107bc79c55aba3072fc97365e",
+    "turnaround-v1.png": "094d45d5fbced38ef43d4efbfdcaa212b68c0fa106fd3868e084d6728875da31",
+    "turnaround-v2.png": "641deae27cb342fba8e5e15f5e51d795a866cb5dff8b637c7d1012afdf17f105"
+  },
+  "no_protected_inputs": true,
+  "limitations": "Generated art was automatically displayed by the image tool. Final model labels are randomized and concealed, but user exposure to the concept can weaken blinding. The maker cannot be blinded; there is one sequential trial per method.",
+  "reference_setup_timing": "Calibrated reference planes were packed in the fifth successful concept iteration, after initial numeric landmark modeling. This differs from the requested planes-before-modeling order and limits this pilot."
+}

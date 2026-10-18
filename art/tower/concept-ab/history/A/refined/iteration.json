@@ -1,0 +1,18 @@
+{
+  "method": "text",
+  "stage": 1,
+  "candidate": "refined",
+  "started_utc": "2026-10-18T17:44:16.232396+00:00",
+  "finished_utc": "2026-10-18T17:44:21.401899+00:00",
+  "blender_execution_seconds": 2.298928200005321,
+  "native_execution_seconds": 2.7754022000008263,
+  "wall_generation_seconds": 5.076063299988164,
+  "reason": "Continuous anatomical union, fitted brows and eyes, twelve toes/claws, growth bands and articulated basalt shields",
+  "design_sha256": "ce0cb460a95c8b5a62c1a561f40bf21e4571befd9b1cd55ef2b03dc3937518f8",
+  "builder_sha256": "76ec7a2b76e36c1b17d7d9b712f4a220d32b3159ba37a7863ee3432da09ea2ad",
+  "model_sha256": "55beaa9909bd8a51637ea7546133a80d736e8eae1a96d8cf18ac6051e71dffdb",
+  "blend_sha256": "2e0ff23e137bba7e0556b5a090b0d05e1f8f3e14069f29ebb467f7fdc8286e61",
+  "native_views": 6,
+  "model_vertices": 2128,
+  "model_triangles": 3811
+}

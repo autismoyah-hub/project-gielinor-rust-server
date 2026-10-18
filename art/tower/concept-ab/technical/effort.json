@@ -1,0 +1,127 @@
+{
+  "time_basis": "Measured subprocess execution and UTC elapsed authoring envelopes, NOT human labor or uninterrupted active work. Envelopes include scripting, visual inspection, thinking and tool waits. One sequential run per method.",
+  "methods": {
+    "text": {
+      "modeling_iterations": 5,
+      "native_modeling_batches": 5,
+      "native_modeling_views": 30,
+      "blender_execution_seconds": 9.739046999980928,
+      "native_execution_seconds": 13.39914740002132,
+      "authoring_envelope_utc": [
+        "2026-10-18T17:42:52.359933+00:00",
+        "2026-10-18T17:45:56.119822+00:00"
+      ],
+      "authoring_envelope_seconds": 183.759889,
+      "failed_blender_attempts": 0,
+      "candidates": [
+        {
+          "name": "blockout",
+          "reason": "Text landmarks and semantic blockout; inspect body plan before fusion and secondary features",
+          "triangles": 1250,
+          "started_utc": "2026-10-18T17:44:05.738802+00:00",
+          "finished_utc": "2026-10-18T17:44:10.663927+00:00"
+        },
+        {
+          "name": "refined",
+          "reason": "Continuous anatomical union, fitted brows and eyes, twelve toes/claws, growth bands and articulated basalt shields",
+          "triangles": 3811,
+          "started_utc": "2026-10-18T17:44:16.232396+00:00",
+          "finished_utc": "2026-10-18T17:44:21.401899+00:00"
+        },
+        {
+          "name": "contour",
+          "reason": "Tighten waist and muzzle volume, reinforce hip mass and jaw edge, add restrained scapular creases",
+          "triangles": 3911,
+          "started_utc": "2026-10-18T17:44:54.212660+00:00",
+          "finished_utc": "2026-10-18T17:44:58.719878+00:00"
+        },
+        {
+          "name": "fitted",
+          "reason": "Native front/side correction: narrower cheek planes and lip, fitted shoulder caps, restrained muzzle folds",
+          "triangles": 3897,
+          "started_utc": "2026-10-18T17:44:59.724493+00:00",
+          "finished_utc": "2026-10-18T17:45:04.227132+00:00"
+        },
+        {
+          "name": "final",
+          "reason": "Remove unstable overlay creases; correct shoulder cap clearance, belly mask and integral horn bands",
+          "triangles": 3705,
+          "started_utc": "2026-10-18T17:45:44.765542+00:00",
+          "finished_utc": "2026-10-18T17:45:49.258456+00:00"
+        }
+      ]
+    },
+    "concept": {
+      "modeling_iterations": 6,
+      "native_modeling_batches": 6,
+      "native_modeling_views": 36,
+      "blender_execution_seconds": 16.378390900004888,
+      "native_execution_seconds": 19.82172790003824,
+      "authoring_envelope_utc": [
+        "2026-10-18T17:50:01.903391+00:00",
+        "2026-10-18T17:58:41.835399+00:00"
+      ],
+      "authoring_envelope_seconds": 519.932008,
+      "failed_blender_attempts": 1,
+      "candidates": [
+        {
+          "name": "blockout",
+          "reason": "Independent concept landmarks, integrated wedge cranium, heavy shoulder-to-waist silhouette and digitigrade joint blockout",
+          "triangles": 1368,
+          "started_utc": "2026-10-18T17:52:09.348491+00:00",
+          "finished_utc": "2026-10-18T17:52:13.612583+00:00"
+        },
+        {
+          "name": "refined",
+          "reason": "Correct out-of-surface eyebrow anchor; fitted continuous anatomy, five shields, layered shoulder caps and explicit three-toed paws",
+          "triangles": 3199,
+          "started_utc": "2026-10-18T17:52:34.654341+00:00",
+          "finished_utc": "2026-10-18T17:52:39.753386+00:00"
+        },
+        {
+          "name": "sculpted",
+          "reason": "Replace penetrating reference-derived armor with solid shaped shields; planar jaw, small nostrils and corrected ventral boundaries",
+          "triangles": 3722,
+          "started_utc": "2026-10-18T17:54:09.821862+00:00",
+          "finished_utc": "2026-10-18T17:54:18.288717+00:00"
+        },
+        {
+          "name": "planes",
+          "reason": "Refine tapered mandibular profile, reduce shield bulk, integrate worn edges into solid armor and restrain nostrils",
+          "triangles": 3541,
+          "started_utc": "2026-10-18T17:55:12.288234+00:00",
+          "finished_utc": "2026-10-18T17:55:19.519653+00:00"
+        },
+        {
+          "name": "shells",
+          "reason": "Interior-sampled solid armor cages replace boundary patches; preserve concept layering and packed calibrated reference guides",
+          "triangles": 3301,
+          "started_utc": "2026-10-18T17:57:45.494907+00:00",
+          "finished_utc": "2026-10-18T17:57:51.155816+00:00"
+        },
+        {
+          "name": "final",
+          "reason": "Densify original shield cages and check triangle-interior body clearance; final native quality pass",
+          "triangles": 3621,
+          "started_utc": "2026-10-18T17:58:35.594231+00:00",
+          "finished_utc": "2026-10-18T17:58:41.835399+00:00"
+        }
+      ]
+    }
+  },
+  "concept_preparation": {
+    "image_generation_calls": 3,
+    "reported_tool_execution_seconds": 85.9,
+    "elapsed_preparation_seconds": 216.478677,
+    "includes": "Prompting, original hero, two turnaround variants, inspection, correction, calibration and canonical consistency document.",
+    "mode": "built-in image_gen; original text and generated images only",
+    "new_subscriptions_or_external_credits": false
+  },
+  "tooling_changes": {
+    "baseline": "8b85f19ce2d70988b0724f1d03e241c29a45daf6",
+    "shared_modeling_engine_modified": false,
+    "conversion_or_renderer_modified": false,
+    "experiment_specific": "Separate recipe builders; concept run adds nine-point, then25-point original armor shell cages using existing mesh/solidify functions. A new read-only cache-scene submission adapter calls unchanged native renderer APIs; it adds no rendering features.",
+    "fairness_limit": "The concept run had one more successful iteration, an extra failed attempt and more scripting/refinement time. Any quality advantage cannot be attributed to images alone."
+  }
+}

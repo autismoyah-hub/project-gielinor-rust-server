@@ -1,0 +1,18 @@
+{
+  "method": "concept",
+  "stage": 0,
+  "candidate": "blockout",
+  "started_utc": "2026-10-18T17:52:09.348491+00:00",
+  "finished_utc": "2026-10-18T17:52:13.612583+00:00",
+  "blender_execution_seconds": 1.294941200001631,
+  "native_execution_seconds": 2.879095200012671,
+  "wall_generation_seconds": 4.176014099997701,
+  "reason": "Independent concept landmarks, integrated wedge cranium, heavy shoulder-to-waist silhouette and digitigrade joint blockout",
+  "design_sha256": "ce0cb460a95c8b5a62c1a561f40bf21e4571befd9b1cd55ef2b03dc3937518f8",
+  "builder_sha256": "fcb03d5e21f6bf5aa3a50ea013e35be72536a81c6dd2c12f28bbd5338c2b0752",
+  "model_sha256": "dab138452358bc3e958441c3f33821dfd376d5f999176e1ef2ec9bceee4bf9e9",
+  "blend_sha256": "6202962dec6f5695c5b67132fb14b72d965d3ad1e1bdcd00557097d7358a4abb",
+  "native_views": 6,
+  "model_vertices": 730,
+  "model_triangles": 1368
+}

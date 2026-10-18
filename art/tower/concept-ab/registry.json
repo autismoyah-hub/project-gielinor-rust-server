@@ -1,0 +1,30 @@
+{
+  "scope": "Isolated static NPC mesh benchmark; no live registry/cache writes or NPC-definition installation",
+  "source_bounds": {
+    "model_max": 61605,
+    "object_max": 62200,
+    "npc_max": 16300,
+    "item_max": 65534,
+    "sequence_max": 14428,
+    "frame_group_max": 14521,
+    "skeleton_max": 2673
+  },
+  "entries": {
+    "A": {
+      "model_id": 1210800,
+      "object_id": 64680,
+      "npc_id": null,
+      "role": "Static original NPC mesh; diagnostic object proxy only",
+      "installed": false,
+      "native_package_decode_exact": true
+    },
+    "B": {
+      "model_id": 1210801,
+      "object_id": 64681,
+      "npc_id": null,
+      "role": "Static original NPC mesh; diagnostic object proxy only",
+      "installed": false,
+      "native_package_decode_exact": true
+    }
+  }
+}

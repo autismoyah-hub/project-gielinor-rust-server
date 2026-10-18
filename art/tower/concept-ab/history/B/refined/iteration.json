@@ -1,0 +1,18 @@
+{
+  "method": "concept",
+  "stage": 1,
+  "candidate": "refined",
+  "started_utc": "2026-10-18T17:52:34.654341+00:00",
+  "finished_utc": "2026-10-18T17:52:39.753386+00:00",
+  "blender_execution_seconds": 2.2856889000104275,
+  "native_execution_seconds": 2.7012979999999516,
+  "wall_generation_seconds": 4.988813200005097,
+  "reason": "Correct out-of-surface eyebrow anchor; fitted continuous anatomy, five shields, layered shoulder caps and explicit three-toed paws",
+  "design_sha256": "ce0cb460a95c8b5a62c1a561f40bf21e4571befd9b1cd55ef2b03dc3937518f8",
+  "builder_sha256": "9aa6417be5619707ff5124bb626d05cb04f01b7a95a073fb7c30ef4b6f0087c0",
+  "model_sha256": "6ff7b1d418e59a59fd0a0902c01e0b3fdfb32549569e1775f7330aaef41db866",
+  "blend_sha256": "752930bb0510b1a588c0cd5956a01643d44c0897d0e8c20450fbfa788d439615",
+  "native_views": 6,
+  "model_vertices": 1915,
+  "model_triangles": 3199
+}

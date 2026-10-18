@@ -1,0 +1,206 @@
+{
+  "backend": "CUDA",
+  "devices": [
+    {
+      "name": "NVIDIA GeForce GTX 1660 Ti",
+      "type": "CUDA",
+      "selected": true
+    },
+    {
+      "name": "Intel Core i7-10750H CPU @ 2.60GHz",
+      "type": "CPU",
+      "selected": false
+    },
+    {
+      "name": "NVIDIA GeForce GTX 1660 Ti",
+      "type": "OPTIX",
+      "selected": false
+    }
+  ],
+  "samples": 32,
+  "camera_source": "Frozen reference-camera files; no candidate-dependent alignment",
+  "lighting": "Fixed reference bounds and origin; three area lights",
+  "views": {
+    "front": {
+      "native_definition": "look 0 -84 -420 0 -84 0 1000 1000 900",
+      "position_native_units": [
+        0.0,
+        -84.0,
+        -420.0
+      ],
+      "basis_native": [
+        [
+          1.0,
+          0.0,
+          -0.0
+        ],
+        [
+          -0.0,
+          1.0,
+          -0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "focal_pixels": 1000.0,
+      "viewport": [
+        1000,
+        900
+      ]
+    },
+    "side": {
+      "native_definition": "look 420 -84 0 0 -84 0 1000 1000 900",
+      "position_native_units": [
+        420.0,
+        -84.0,
+        0.0
+      ],
+      "basis_native": [
+        [
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          -0.0,
+          1.0,
+          -0.0
+        ],
+        [
+          -1.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "focal_pixels": 1000.0,
+      "viewport": [
+        1000,
+        900
+      ]
+    },
+    "rear": {
+      "native_definition": "look 0 -84 420 0 -84 0 1000 1000 900",
+      "position_native_units": [
+        0.0,
+        -84.0,
+        420.0
+      ],
+      "basis_native": [
+        [
+          -1.0,
+          -0.0,
+          -0.0
+        ],
+        [
+          -0.0,
+          1.0,
+          -0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      ],
+      "focal_pixels": 1000.0,
+      "viewport": [
+        1000,
+        900
+      ]
+    },
+    "quarter": {
+      "native_definition": "look 281.40000000000003 -210.0 -310.8 0 -84 0 1000 1000 900",
+      "position_native_units": [
+        281.40000000000003,
+        -210.0,
+        -310.8
+      ],
+      "basis_native": [
+        [
+          0.7412984093203039,
+          0.0,
+          0.671175586817032
+        ],
+        [
+          0.19317127244363652,
+          0.9576874278113623,
+          -0.21335334568401643
+        ],
+        [
+          -0.6427764213485849,
+          0.2878103379172768,
+          0.7099321668626161
+        ]
+      ],
+      "focal_pixels": 1000.0,
+      "viewport": [
+        1000,
+        900
+      ]
+    },
+    "above": {
+      "native_definition": "look 147.0 -462.0 -231.00000000000003 0 -84 0 1000 1000 900",
+      "position_native_units": [
+        147.0,
+        -462.0,
+        -231.00000000000003
+      ],
+      "basis_native": [
+        [
+          0.8436614877321075,
+          0.0,
+          0.5368754921931592
+        ],
+        [
+          0.4347930665464173,
+          0.586625565975325,
+          -0.6832462474300844
+        ],
+        [
+          -0.3149448894660933,
+          0.8098582871985256,
+          0.49491339773243237
+        ]
+      ],
+      "focal_pixels": 1000.0,
+      "viewport": [
+        1000,
+        900
+      ]
+    },
+    "gameplay": {
+      "native_definition": "player 0 -84 0 2000 14500 600",
+      "position_native_units": [
+        -357,
+        -604,
+        -405
+      ],
+      "basis_native": [
+        [
+          0.7501516458062152,
+          0.0,
+          -0.661265837839992
+        ],
+        [
+          -0.45889961952224023,
+          0.7200025079613817,
+          -0.5205838335289174
+        ],
+        [
+          0.4761130616739786,
+          0.6939714608896539,
+          0.540111066331833
+        ]
+      ],
+      "focal_pixels": 308,
+      "viewport": [
+        765,
+        503
+      ]
+    }
+  },
+  "authority": "Supplementary Cycles/AgX; unchanged Rust renderer is final native authority"
+}

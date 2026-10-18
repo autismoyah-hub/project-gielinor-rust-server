@@ -1,0 +1,29 @@
+{
+  "approval": "User artistic judgment pending",
+  "method_selection": "No standard-pipeline adoption justified yet from this single, unequal-effort pilot. Retain concept art as an optional planning aid and validate with a budget-matched repeat if user preference supports it.",
+  "assessments": {
+    "concept_quality": "The generated creature presents a more resolved cheek/brow hierarchy and layered armor than the text description alone, but it initially violates toe counts and retains width, tail and laterality conflicts. An attractive image is not evidence of successful mesh authoring.",
+    "design_specification_fidelity": "Both meshes preserve numeric design dimensions within the10% envelope, four articulated legs, two asymmetric horns,12 named toes/claws and five primary dorsal shields. The anatomical-left label conflicts with frozen X coordinates and the generated front image; both meshes follow numeric coordinates. Text horn bands merge visually because of coarse section density. Not every feature is an exact artistic match.",
+    "reference_sheet_fidelity": "The concept-guided mesh adopts flatter brow/cheek planes, a pointed mandibular profile and layered shoulder/dorsal construction. It remains much simpler than the painting in joint sculpture, plate contour and facial specificity. Canonical numeric width and tail override the inconsistent sheet, so a high pixel overlap is neither expected nor claimed.",
+    "independent_model_quality": "The text model is smoother and has a more continuous simple face; the concept model has more deliberate angular facial planes and better articulated armor layers. Both still show profile-cage anatomy, simplified paws and generic musculature. The native evidence does not demonstrate the requested fundamental leap in final artistic quality.",
+    "osrs_aesthetic_compatibility": "Both use the same restrained native face-color palette and integer model format and can be inspected against real revision239.1 terrain and scenery. That demonstrates technical coexistence, not artistic equivalence to professionally authored OSRS creatures.",
+    "native_render_quality": "Both preserve native geometry/material channels byte-exactly after conversion. Internal armor sampling prevents the earlier visible dorsal intersections, but integer quantization drops179 text and201 concept source triangles. Remaining export/detail boundaries are reported. Native images, not the richer generated painting or Cycles light, determine visible mesh quality.",
+    "efficiency": "The measured concept workflow costs substantially more preparation and modeling time for a modest, localized native improvement. The extra armor-shell scripting is itself a confound. No winner is declared on polygon count or one silhouette score."
+  },
+  "reusable_findings": [
+    "Generate a single identity before a turnaround; explicit count edits are necessary.",
+    "Audit semantic counts and laterality, not just image attractiveness.",
+    "Freeze a numeric canonical interpretation when views conflict; do not warp comparison images to hide contradictions.",
+    "Reference guides expose an intended surface hierarchy but do not automatically produce it in3D.",
+    "Fit armor interiors as well as boundaries to prevent penetration through a convex low-poly body.",
+    "Keep final native gameplay views beside enlarged inspection views; close render detail can disappear at normal scale."
+  ],
+  "limitations": [
+    "One creature and one sequential author for both runs; no statistical or causal claim.",
+    "Unequal elapsed effort and additional concept-specific shell authoring.",
+    "Generated concept imagery was automatically displayed during generation; final randomized model labels reduce attribution bias but blinding is incomplete.",
+    "Reference image planes were added after initial concept-run landmark/blockout work, not before all modeling.",
+    "Frozen specification has an anatomical-label/axis inconsistency; explicit coordinates take priority.",
+    "User visual preference and artistic approval remain pending."
+  ]
+}

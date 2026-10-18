@@ -1,0 +1,380 @@
+[
+  {
+    "name": "continuous_species_anatomy",
+    "semantic": "anatomy_torso",
+    "vertices": 802,
+    "faces": 1573
+  },
+  {
+    "name": "skull",
+    "semantic": "skull",
+    "vertices": 48,
+    "faces": 82
+  },
+  {
+    "name": "lower_jaw",
+    "semantic": "lower_jaw",
+    "vertices": 32,
+    "faces": 50
+  },
+  {
+    "name": "mouth_cavity",
+    "semantic": "mouth_cavity",
+    "vertices": 24,
+    "faces": 34
+  },
+  {
+    "name": "paw_-1_False",
+    "semantic": "paw_-1_False",
+    "vertices": 30,
+    "faces": 42
+  },
+  {
+    "name": "toe_-1_False_-1",
+    "semantic": "toe_-1_False_-1",
+    "vertices": 24,
+    "faces": 34
+  },
+  {
+    "name": "claw_-1_False_-1",
+    "semantic": "claw_-1_False_-1",
+    "vertices": 18,
+    "faces": 14
+  },
+  {
+    "name": "toe_-1_False_0",
+    "semantic": "toe_-1_False_0",
+    "vertices": 24,
+    "faces": 34
+  },
+  {
+    "name": "claw_-1_False_0",
+    "semantic": "claw_-1_False_0",
+    "vertices": 18,
+    "faces": 14
+  },
+  {
+    "name": "toe_-1_False_1",
+    "semantic": "toe_-1_False_1",
+    "vertices": 24,
+    "faces": 34
+  },
+  {
+    "name": "claw_-1_False_1",
+    "semantic": "claw_-1_False_1",
+    "vertices": 18,
+    "faces": 14
+  },
+  {
+    "name": "paw_-1_True",
+    "semantic": "paw_-1_True",
+    "vertices": 30,
+    "faces": 42
+  },
+  {
+    "name": "toe_-1_True_-1",
+    "semantic": "toe_-1_True_-1",
+    "vertices": 24,
+    "faces": 34
+  },
+  {
+    "name": "claw_-1_True_-1",
+    "semantic": "claw_-1_True_-1",
+    "vertices": 18,
+    "faces": 14
+  },
+  {
+    "name": "toe_-1_True_0",
+    "semantic": "toe_-1_True_0",
+    "vertices": 24,
+    "faces": 34
+  },
+  {
+    "name": "claw_-1_True_0",
+    "semantic": "claw_-1_True_0",
+    "vertices": 18,
+    "faces": 14
+  },
+  {
+    "name": "toe_-1_True_1",
+    "semantic": "toe_-1_True_1",
+    "vertices": 24,
+    "faces": 34
+  },
+  {
+    "name": "claw_-1_True_1",
+    "semantic": "claw_-1_True_1",
+    "vertices": 18,
+    "faces": 14
+  },
+  {
+    "name": "ear_-1",
+    "semantic": "ear_-1",
+    "vertices": 8,
+    "faces": 6
+  },
+  {
+    "name": "ear_inner_-1",
+    "semantic": "ear_inner_-1",
+    "vertices": 6,
+    "faces": 5
+  },
+  {
+    "name": "orbital_socket_-1",
+    "semantic": "orbital_socket_-1",
+    "vertices": 8,
+    "faces": 6
+  },
+  {
+    "name": "eye_-1",
+    "semantic": "eye_-1",
+    "vertices": 8,
+    "faces": 6
+  },
+  {
+    "name": "brow_-1",
+    "semantic": "brow_-1",
+    "vertices": 18,
+    "faces": 14
+  },
+  {
+    "name": "cheek_-1",
+    "semantic": "cheek_-1",
+    "vertices": 24,
+    "faces": 34
+  },
+  {
+    "name": "paw_1_False",
+    "semantic": "paw_1_False",
+    "vertices": 30,
+    "faces": 42
+  },
+  {
+    "name": "toe_1_False_-1",
+    "semantic": "toe_1_False_-1",
+    "vertices": 24,
+    "faces": 34
+  },
+  {
+    "name": "claw_1_False_-1",
+    "semantic": "claw_1_False_-1",
+    "vertices": 18,
+    "faces": 14
+  },
+  {
+    "name": "toe_1_False_0",
+    "semantic": "toe_1_False_0",
+    "vertices": 24,
+    "faces": 34
+  },
+  {
+    "name": "claw_1_False_0",
+    "semantic": "claw_1_False_0",
+    "vertices": 18,
+    "faces": 14
+  },
+  {
+    "name": "toe_1_False_1",
+    "semantic": "toe_1_False_1",
+    "vertices": 24,
+    "faces": 34
+  },
+  {
+    "name": "claw_1_False_1",
+    "semantic": "claw_1_False_1",
+    "vertices": 18,
+    "faces": 14
+  },
+  {
+    "name": "paw_1_True",
+    "semantic": "paw_1_True",
+    "vertices": 30,
+    "faces": 42
+  },
+  {
+    "name": "toe_1_True_-1",
+    "semantic": "toe_1_True_-1",
+    "vertices": 24,
+    "faces": 34
+  },
+  {
+    "name": "claw_1_True_-1",
+    "semantic": "claw_1_True_-1",
+    "vertices": 18,
+    "faces": 14
+  },
+  {
+    "name": "toe_1_True_0",
+    "semantic": "toe_1_True_0",
+    "vertices": 24,
+    "faces": 34
+  },
+  {
+    "name": "claw_1_True_0",
+    "semantic": "claw_1_True_0",
+    "vertices": 18,
+    "faces": 14
+  },
+  {
+    "name": "toe_1_True_1",
+    "semantic": "toe_1_True_1",
+    "vertices": 24,
+    "faces": 34
+  },
+  {
+    "name": "claw_1_True_1",
+    "semantic": "claw_1_True_1",
+    "vertices": 18,
+    "faces": 14
+  },
+  {
+    "name": "ear_1",
+    "semantic": "ear_1",
+    "vertices": 8,
+    "faces": 6
+  },
+  {
+    "name": "ear_inner_1",
+    "semantic": "ear_inner_1",
+    "vertices": 6,
+    "faces": 5
+  },
+  {
+    "name": "orbital_socket_1",
+    "semantic": "orbital_socket_1",
+    "vertices": 8,
+    "faces": 6
+  },
+  {
+    "name": "eye_1",
+    "semantic": "eye_1",
+    "vertices": 8,
+    "faces": 6
+  },
+  {
+    "name": "brow_1",
+    "semantic": "brow_1",
+    "vertices": 18,
+    "faces": 14
+  },
+  {
+    "name": "cheek_1",
+    "semantic": "cheek_1",
+    "vertices": 24,
+    "faces": 34
+  },
+  {
+    "name": "long_left_horn",
+    "semantic": "long_left_horn",
+    "vertices": 40,
+    "faces": 32
+  },
+  {
+    "name": "broken_right_horn",
+    "semantic": "broken_right_horn",
+    "vertices": 30,
+    "faces": 22
+  },
+  {
+    "name": "fracture_cap",
+    "semantic": "fracture_cap",
+    "vertices": 14,
+    "faces": 9
+  },
+  {
+    "name": "tail",
+    "semantic": "tail",
+    "vertices": 50,
+    "faces": 42
+  },
+  {
+    "name": "dorsal_plate_0",
+    "semantic": "dorsal_plate_0",
+    "vertices": 24,
+    "faces": 34
+  },
+  {
+    "name": "dorsal_worn_edge_0",
+    "semantic": "dorsal_worn_edge_0",
+    "vertices": 16,
+    "faces": 18
+  },
+  {
+    "name": "dorsal_plate_1",
+    "semantic": "dorsal_plate_1",
+    "vertices": 24,
+    "faces": 34
+  },
+  {
+    "name": "dorsal_worn_edge_1",
+    "semantic": "dorsal_worn_edge_1",
+    "vertices": 16,
+    "faces": 18
+  },
+  {
+    "name": "dorsal_plate_2",
+    "semantic": "dorsal_plate_2",
+    "vertices": 24,
+    "faces": 34
+  },
+  {
+    "name": "dorsal_worn_edge_2",
+    "semantic": "dorsal_worn_edge_2",
+    "vertices": 16,
+    "faces": 18
+  },
+  {
+    "name": "dorsal_plate_3",
+    "semantic": "dorsal_plate_3",
+    "vertices": 24,
+    "faces": 34
+  },
+  {
+    "name": "dorsal_worn_edge_3",
+    "semantic": "dorsal_worn_edge_3",
+    "vertices": 16,
+    "faces": 18
+  },
+  {
+    "name": "dorsal_plate_4",
+    "semantic": "dorsal_plate_4",
+    "vertices": 24,
+    "faces": 34
+  },
+  {
+    "name": "dorsal_worn_edge_4",
+    "semantic": "dorsal_worn_edge_4",
+    "vertices": 16,
+    "faces": 18
+  },
+  {
+    "name": "shoulder_cap_-1",
+    "semantic": "shoulder_cap_-1",
+    "vertices": 12,
+    "faces": 8
+  },
+  {
+    "name": "shoulder_cap_1",
+    "semantic": "shoulder_cap_1",
+    "vertices": 12,
+    "faces": 8
+  },
+  {
+    "name": "nose_pad",
+    "semantic": "nose_pad",
+    "vertices": 16,
+    "faces": 18
+  },
+  {
+    "name": "shoulder_worn_edge_-1",
+    "semantic": "shoulder_worn_edge_-1",
+    "vertices": 10,
+    "faces": 7
+  },
+  {
+    "name": "shoulder_worn_edge_1",
+    "semantic": "shoulder_worn_edge_1",
+    "vertices": 10,
+    "faces": 7
+  }
+]

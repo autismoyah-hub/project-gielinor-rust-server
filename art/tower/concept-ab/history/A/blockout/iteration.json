@@ -1,0 +1,18 @@
+{
+  "method": "text",
+  "stage": 0,
+  "candidate": "blockout",
+  "started_utc": "2026-10-18T17:44:05.738802+00:00",
+  "finished_utc": "2026-10-18T17:44:10.663927+00:00",
+  "blender_execution_seconds": 1.7646799999929499,
+  "native_execution_seconds": 3.0685516000085045,
+  "wall_generation_seconds": 4.836896200024057,
+  "reason": "Text landmarks and semantic blockout; inspect body plan before fusion and secondary features",
+  "design_sha256": "ce0cb460a95c8b5a62c1a561f40bf21e4571befd9b1cd55ef2b03dc3937518f8",
+  "builder_sha256": "76ec7a2b76e36c1b17d7d9b712f4a220d32b3159ba37a7863ee3432da09ea2ad",
+  "model_sha256": "d6c5b226f509f48ef5b80473729f21427f3cf0c63910ff089f7746d9a5dc9b26",
+  "blend_sha256": "d465b43243483a40e739274d32687ab709b5f0a8076c3c71fd6fb35a517e885c",
+  "native_views": 6,
+  "model_vertices": 670,
+  "model_triangles": 1250
+}
