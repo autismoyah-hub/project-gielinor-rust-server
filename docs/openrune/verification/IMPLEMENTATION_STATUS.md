@@ -3,9 +3,9 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0104: base redwood Cut sections; source [e4b3499](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/e4b349972e05dafd255a58e2578bc2f621c60011). Focused section/isolation checks and binaries pass; three private targets compile. Independent V0–V4 queued. Guild+7/access/Forestry remain explicit gaps; source modifier returns0/TODO, not an implemented port.
+OR-MIG-0105 ordinary standard cowhide tanning; source [2da0bff](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/2da0bff39acf97f0d974d8748b7ee186514b95f7). Shared regression and actual binaries pass. Shared UI and atomic credit are explicit adaptations; independent V0–V4 queued.
 
-104 units / 113 append-only records. Discovery3508={'not_yet_assessed': 2780, 'configuration': 660, 'framework_or_infrastructure': 18, 'eligible_gameplay_behavior': 50}, not completion percentages. Native full-Guild/lifecycle/extras remain separate. Clay withheld under issue74; PG-DEF-001 Close candidate awaits independent retest.
+105 units / 114 append-only records. Discovery3508={'not_yet_assessed': 2778, 'configuration': 660, 'framework_or_infrastructure': 18, 'eligible_gameplay_behavior': 52}, not completion percentages. Remaining tanning products/routes/regions/access and native timing/UI/lifecycle are separate. Clay issue74 and PG-DEF-001 independent retest remain open.
 <!-- forge-current:end -->
 
 
@@ -698,3 +698,14 @@ Focused001PASS2server/0matchingworld470 unchanged hashes,42.82s compile/12.13s e
 Preserved private integration targets woodcutting_actions002, kotlin_smithing_make001 and runtime_lifecycle001 compile PASS472 hashes, including three explicit ignored files. Initial woodcheck001 failed an old Rock initializer missing members/restore; failure and original bytes archived, only legacyfalse/None supplied. These are compile checks, not executed tests/native acceptance.
 
 Base cutting is the scope. Wiki Guild invisible+7/no Forestry group boost and rope/carved access are not implemented here. Source WoodcuttingModule binds WoodcuttingLevelBoosts, whose calculateBoost returns0 with Guild+7/group+10 TODOs; InvisibleLevels aggregates that zero. Those three supporting files are classified reviewed framework/stub with no implemented IDs. No guessed Guild bonus or travel is added. Full Guild probability, entry/rope/carved travel, complete24-section scene, Farming, extras/clue-nest restrictions/pets/outfits/charged tools/log processing remain separate. Queue:113records104units; independent V0–V4 queued. Discovery3508={'not_yet_assessed': 2780, 'configuration': 660, 'framework_or_infrastructure': 18, 'eligible_gameplay_behavior': 50}, not completion percentages.
+
+
+## FORGE OR-MIG-0105 — ordinary standard cowhide tanning
+
+Source 2da0bff39acf97f0d974d8748b7ee186514b95f7 registers Ellis3231 and Guild Tanner5809 Trade operation3, ordinary cowhide1739 -> soft1741/hard1743 at1/3GP, no service skill gate/XP. Existing NPC approach emits generation-bound service event; shared skillmulti shows output/price and resumes through existing component/modal/token guards. Captured origin/lastMovement/hide slots and live actor/NPC/reach/recipe checks protect completion. Fee and existing strict assembly exchange stage in cloned inventory, requiring complete product credit before publishing. Custom Tower conversion remains unchanged.
+
+Shared001 failed three signed-symbol/cache-ID type mismatches, retained. Shared002 PASS 474 unchanged rg-visible source hashes; actual binaries001 PASS 474. Actual NPC Trade/full28-slot bag/quantity/affordability checks produce26hardleathers for78GP from27hides/80GP, preserving one hide/two GP and Stats. Changed movement/despawn reject; token replay is refused. Lower-level transaction checks cover stale/duplicate slots, invalid currency, invalid product identity/member loss and atomic preservation. Logs/JSON and exact attestation live under work/forge-standard-tanning-*; no prior failures overwritten.
+
+Four items/two static Trade NPCs/six Wiki pages/three source references pinned. Source table and Wiki standard fees agree. Source refund/unchecked credit is intentionally strengthened to atomic output; shared quantity UI is an explicit presentation adaptation. Precise native one-tick batch/UI/native scene/lifecycle/reference acceptance remains queued to PROVING GROUND. Remaining six standard recipes, other tanners/prices/diaries/quests, Guild entry/stairs, source dialogue/item-on-NPC/op2 and bespoke Tanner UI are not implemented by this unit. Source files remain partial. Queue114records105units; discovery3508={'not_yet_assessed': 2778, 'configuration': 660, 'framework_or_infrastructure': 18, 'eligible_gameplay_behavior': 52}, not completion percentages.
+
+Original105 source inherits generic skillmulti raw-count clamping to1-28. Malformed0/negative UI acceptance was not executed. Following106 adds a tanning-only pre-clamp refusal and will append105 revision2 at its exact validated source, preserving revision1/history. Queue validation001 failed missing unpublished source revision fields; original draft archived, published113 prior records byte-identical. Schema-only repair validated002PASS114records105units.
