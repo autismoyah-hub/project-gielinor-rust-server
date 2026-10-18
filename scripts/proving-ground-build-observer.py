@@ -6,7 +6,24 @@ BASE=ROOT.parent/'rust-server/integration/client-baselines/client-239.1-baseline
 OUT=ROOT/'docs/openrune/verification/independent/client-observer-build';OUT.mkdir(parents=True,exist_ok=True)
 def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def save(p,o):p.write_text(json.dumps(o,indent=2)+'\n',encoding='utf-8',newline='\n')
-p=argparse.ArgumentParser();p.add_argument('action',choices=['prepare','build','effects']);a=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('action',choices=['prepare','build','effects','spots']);a=p.parse_args()
+if a.action=='spots':
+    # Read-only decoded spot IDs are required for OR67 native effect acceptance.
+    history=OUT/('overlay-history-'+str(time.time_ns()));history.mkdir()
+    shutil.copyfile(OUT/'source-manifest.json',history/'source-manifest.json')
+    private=WORK/'source-history'/history.name;private.mkdir(parents=True)
+    state=SOURCE/'src/client_state.rs';shutil.copyfile(state,private/'client_state.rs')
+    text=state.read_text(encoding='utf-8');needle='                    if let crate::player_update::Update::Actor(crate::actor_update::Block::Sequence { id, delay }) = update {'
+    assert text.count(needle)==1 and 'PG_SPOTS' not in text
+    text=text.replace(needle,'''
+                    if let crate::player_update::Update::Actor(crate::actor_update::Block::SpotAnimations(spots)) = update {
+                        println!("PG_SPOTS tick={} decoded_slot_id_height_delay={:?}",self.server_tick,spots);
+                    }
+'''+needle);state.write_text(text,encoding='utf-8',newline='\n')
+    m=json.loads((OUT/'source-manifest.json').read_text(encoding='utf-8'));m['previous_observation_manifest']=str((history/'source-manifest.json').relative_to(ROOT)).replace('\\','/')
+    m['owned_overlays']['src/client_state.rs']='Observation only: decoded local-player sequence and spot slot/ID/height/delay with receive clock; no gameplay state or packet mutation'
+    m['instrumented_client_state_sha256']=digest(state);save(OUT/'source-manifest.json',m)
+    print('READ_ONLY_SPOT_OBSERVATION_PREPARED; build required',flush=True);raise SystemExit(0)
 if a.action=='effects':
     # Required observational data for native effect/first-cycle acceptance.
     # Preserve all earlier source identities and frozen binaries.

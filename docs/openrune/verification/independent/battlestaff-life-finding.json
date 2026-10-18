@@ -1,0 +1,25 @@
+{
+  "finding_id": "PG-DEF-002",
+  "implementation_id": "OR-MIG-0067",
+  "contract_revision": 1,
+  "tested_sha": "e3ced82211ee438fd6a74a110d435e6746295a16",
+  "campaign_kind": "historical",
+  "status": "CONFIRMED_AUTHORITATIVE_BOUNDARY_FAILURE",
+  "severity": "P2",
+  "implementation_blocking": false,
+  "github_issue": null,
+  "scenario": "Registered AssemblyPrecise held-use water orb571 plus battlestaff1391, Crafting99/member/rate125; public World APIs only. Duplicate input pair retained. Test normal synthetic living player, then set zeroHP or deliver Typeless20 through queue_hit and require DeathRequested before a separate visible-HP restoration without respawn.",
+  "expected": "No new or pending crafting credit while zeroHP/death-queued; both selected ingredients and Crafting fineXP preserved. Visible HP restoration alone must not clear the queued death state.",
+  "actual": "Four independently isolated failures at water profile0/forward direction: zeroHP before held use; queued death then visibleHP10 before held use; zeroHP before pending credit; queued death then visibleHP10 before pending credit. Every case consumes selected staff slot5 and orb slot19, inserts one1395at first free slot0 and awards1250fineXP. Duplicate orb21/staff23 remain. Modal after admission passes all8profile/direction cases.",
+  "coverage_limits": "Each failing function stops at its first water/forward case. Other profile/direction death cases did not execute and are not claimed. Headless authoritative boundary failure is proven; genuine native dead-player dispatch/reachability, latest FORGE HEAD and other assembly consumers are not independently tested by this campaign.",
+  "reproduction": "python scripts/proving-ground-integration-external.py e3ced82211ee438fd6a74a110d435e6746295a16 --suite battlestaff-lifecycle",
+  "evidence": [
+    "docs/openrune/verification/independent/integration-external-battlestaff-lifecycle-e3ced82211ee438fd6a74a110d435e6746295a16-1792309680874394800/manifest.json",
+    "docs/openrune/verification/independent/integration-external-battlestaff-lifecycle-e3ced82211ee438fd6a74a110d435e6746295a16-1792309680874394800/run-1.log",
+    "verification/battlestaff-lifecycle/tests/life.rs"
+  ],
+  "source_diagnosis": "Exact67held-use assembly admission checks member/current skill but not authoritative life. Deferred::Assembly invokes complete_assembly_reward directly; its member/level/inventory/reward transaction does not receive/check HP or death_queued. Shared queue cancelling alone does not prevent a fresh held use after DeathRequested. This is a shared World action boundary, not a cache or native observer defect.",
+  "forge_correction": "Apply the shared authoritative player-life check at both assembly admission and completion; reject zeroHP and queued death, including visibleHP restoration without respawn. Preserve atomic inventory/Stats refusal, integer/precise/immediate behavior, modifiers and cancellation. Review other shared assembly consumers, publish exact correction SHA/contract revision and rerun these four failing cases plus remaining profile/direction matrix and native lifecycle. Do not silently replace the historical target with that correction.",
+  "dependency_chain": ["OR-MIG-0067 precise assembly", "shared held-use assembly admission/completion", "other assembly consumers require separate change-impact tests"],
+  "history": ["Original lifecycle attempt resource-deferred before build.", "Fresh same-SHA campaign compiled and executed five tests:1PASS/4FAIL. No implementation code modified, no expectation relaxed."]
+}

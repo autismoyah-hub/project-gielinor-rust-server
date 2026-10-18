@@ -1,0 +1,119 @@
+{
+  "implementation_id": "OR-MIG-0068",
+  "tested_sha": "894646a79fa4ba7e3e8b46af6ec000dc6b796514",
+  "campaign_kind": "historical",
+  "status": "IN_PROGRESS",
+  "source_documentation_subcheck": "PASS",
+  "sources": [
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/scripts/HeldCraftingScript.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "c39f8b323e8fa79f933224b9ca0c8cf07a5df005628906e79645e3e6a5399318"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingSection.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "26e5be7a84fbe82f5c4897d29cb3261c63cd475111f17df517e2e0ac5e0d8afb"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingWorker.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "5790b247e5441b54e05c0ca7b4b5a9dff5c7aa61181ebccb36d0d8057db56e53"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/util/CraftingConstants.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "393d05fa5a5645b2dd712fcfb8f8814845376846a7594dafe16909422fe2008f"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/pack/src/main/kotlin/org/rsmod/content/skills/crafting/pack/Crafting.kt",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "sha256": "5b3d4124ce83b2c6e93590b2d833e7dc0a37ce87e3a7dc2f327241ab165ef3e0"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingProduct.kt",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "sha256": "e0ee16a23f6fa20bf82ebae4103213c1a13337c596b2d2f7b7715edbe3073576"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/utils/src/main/kotlin/org/rsmod/content/skills/MathSkillUtiils.kt",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "sha256": "874ef859e35b30891ce90d077262e1637e9115e5c285ffb790970f899f32770b"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Crab helmet",
+      "revision": "15320283",
+      "sha256": "15c42ade98979a33bbacfa5fd96bf115602b73961203db27a9d6386969bf79c9"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Crab claw",
+      "revision": "15320282",
+      "sha256": "3cf12b2e781189d17bfd5cc086e2b70c7d291204b4f5a84002525c38e73dd01c"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Broken crab shell",
+      "revision": "15184774",
+      "sha256": "cd53519d65be1c1698296cf44a8715a9d0d66b2ea58d7c04a7dedf3eca0e73be"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Broken crab claw",
+      "revision": "15184773",
+      "sha256": "8aa3eeb740e0f739abba223684df14a8a5e90296fe67c0b47e16fc6312977f2b"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Fresh crab shell",
+      "revision": "15304632",
+      "sha256": "1cb29d35f621103e8b46593ae77c2d4e97677b2a07825ec97951f46548b171b5"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Fresh crab claw",
+      "revision": "15184777",
+      "sha256": "b0f976072cbbed5349033087dedfb4c3f9d7767fd8848d2cc3560a43e2a7d99c"
+    }
+  ],
+  "profiles": [
+    {
+      "raw": 7538,
+      "success": 7539,
+      "failure": 7541,
+      "level": 15,
+      "success_xp_tenths": 325,
+      "failure_xp_tenths": 0,
+      "fine_success_at_125": 406,
+      "wiki_ticks": 3,
+      "low": 40,
+      "high": 240
+    },
+    {
+      "raw": 7536,
+      "success": 7537,
+      "failure": 7540,
+      "level": 15,
+      "success_xp_tenths": 325,
+      "failure_xp_tenths": 0,
+      "fine_success_at_125": 406,
+      "wiki_ticks": 3,
+      "low": 40,
+      "high": 240
+    }
+  ],
+  "scope": "All13pinned hashes independently verified. Source two rows agree on member Crafting15/32.5XP and no row quest/failure policy. Pinned Wiki adds40/240failure curves and explicit0XP broken outcomes; Wiki manual3first/repeat intentionally overrides donor CARVING3with default first shortening. Independent125%success406fineXP versus failure0 aligns with controlled byte tests.",
+  "limitations": [
+    "Crab item recipe notes mention partial Freeing Pirate Pete; fresh-material pages tie that quest to Mogre Camp access/acquisition. Contract deliberately supports already-owned materials without an added craft quest gate; no quest/acquisition parity accepted.",
+    "No original global random stream/audio/rendered executable observation claimed.",
+    "Actual World mixed-batch/quantity/native timing/lifecycle acceptance remains separate."
+  ]
+}

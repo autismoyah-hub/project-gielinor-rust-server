@@ -1,21 +1,21 @@
 # PROVING GROUND — current verification status
 
-This is an ongoing verification campaign. 3 current contract(s) accepted across applicable V0–V4 levels at their exact implementation SHAs. Historical results and current integration checks are separate.
+This is an ongoing verification campaign. 4 current contract(s) accepted across applicable V0–V4 levels at their exact implementation SHAs. Historical results and current integration checks are separate.
 
 ## Intake
 
-Latest observed FORGE HEAD: `ba83afe0a714cf5c2477c637c43246ed268a635f`.
-Exact queue SHA256: `3761109cdabf4eada2d38336a978a9db144fb5f23d9c3cf8f2b586b6b71d872b`.
-Published queue: 96 records / 87 stable implementation IDs. Published validator: PASS.
+Latest observed FORGE HEAD: `38fb1fd7b1e6f274d48f31feb66b71794e5c6e0c`.
+Exact queue SHA256: `fcfc3fcd359890f621720c79d679dcfb132634f7d521e0bbd02f1b1fff28d16e`.
+Published queue: 100 records / 91 stable implementation IDs. Published validator: PASS.
 The copied queue is refreshed only from fetched immutable blobs after append-history checks. Current coverage and every contract revision are retained in [WORKLIST.json](WORKLIST.json). Synchronization observations are append-only in [SYNC_OBSERVATIONS.jsonl](SYNC_OBSERVATIONS.jsonl).
 
 ## Level coverage
 
-- V0: PASS 9, FAIL 0, BLOCKED 0, IN_PROGRESS 6, NOT_STARTED 72, NOT_APPLICABLE 0.
-- V1: PASS 5, FAIL 0, BLOCKED 0, IN_PROGRESS 12, NOT_STARTED 70, NOT_APPLICABLE 0.
-- V2: PASS 3, FAIL 0, BLOCKED 3, IN_PROGRESS 4, NOT_STARTED 77, NOT_APPLICABLE 0.
-- V3: PASS 5, FAIL 0, BLOCKED 0, IN_PROGRESS 5, NOT_STARTED 77, NOT_APPLICABLE 0.
-- V4: PASS 3, FAIL 0, BLOCKED 0, IN_PROGRESS 10, NOT_STARTED 74, NOT_APPLICABLE 0.
+- V0: PASS 11, FAIL 0, BLOCKED 0, IN_PROGRESS 6, NOT_STARTED 74, NOT_APPLICABLE 0.
+- V1: PASS 6, FAIL 1, BLOCKED 0, IN_PROGRESS 13, NOT_STARTED 71, NOT_APPLICABLE 0.
+- V2: PASS 5, FAIL 0, BLOCKED 3, IN_PROGRESS 4, NOT_STARTED 79, NOT_APPLICABLE 0.
+- V3: PASS 6, FAIL 1, BLOCKED 0, IN_PROGRESS 5, NOT_STARTED 79, NOT_APPLICABLE 0.
+- V4: PASS 5, FAIL 0, BLOCKED 0, IN_PROGRESS 10, NOT_STARTED 76, NOT_APPLICABLE 0.
 
 User direction: chemistry, potion and Herblore tests are DEFERRED. Historical evidence and findings remain intact. Continue Prayer, food without new potion setup, cooking, assembly, smithing, packs, Crafting and other eligible work. General resume does not lift the chemistry deferral. See [USER_DEFERRALS.json](USER_DEFERRALS.json).
 
@@ -41,8 +41,20 @@ No rendered-window, original-executable differential or crash-atomicity acceptan
 - `bc277dc3e7e15088323a4f048f57dc43185fb7c0`: raw attempt PASS; amethyst-counts 2 test executions passed.  [Manifest](independent/integration-external-amethyst-counts-bc277dc3e7e15088323a4f048f57dc43185fb7c0/manifest.json).
 - `d63c0258dd6960bffc3ef43736f4140efb3b757a`: raw attempt FAIL; 0 test executions passed. Verifier assumed which unselected duplicate was captured; corrected selected-slot/no-fallback matrix passed. See PG-INFRA-005. [Manifest](independent/integration-external-assembly-batch-d63c0258dd6960bffc3ef43736f4140efb3b757a/manifest.json).
 - `d63c0258dd6960bffc3ef43736f4140efb3b757a`: raw attempt PASS; assembly-batch 1 test executions passed.  [Manifest](independent/integration-external-assembly-batch-d63c0258dd6960bffc3ef43736f4140efb3b757a-1792281175590139100/manifest.json).
+- `e3ced82211ee438fd6a74a110d435e6746295a16`: raw attempt PASS; battlestaff-bindings 1 test executions passed.  [Manifest](independent/integration-external-battlestaff-bindings-e3ced82211ee438fd6a74a110d435e6746295a16/manifest.json).
+- `e3ced82211ee438fd6a74a110d435e6746295a16`: raw attempt BLOCKED; 0 test executions passed. Measured-resource deferral; no substitute target: Measured resource guard blocked; no other process altered [Manifest](independent/integration-external-battlestaff-lifecycle-e3ced82211ee438fd6a74a110d435e6746295a16/manifest.json).
+- `e3ced82211ee438fd6a74a110d435e6746295a16`: raw attempt FAIL; battlestaff-lifecycle 1 test executions passed.  [Manifest](independent/integration-external-battlestaff-lifecycle-e3ced82211ee438fd6a74a110d435e6746295a16-1792309680874394800/manifest.json).
+- `e3ced82211ee438fd6a74a110d435e6746295a16`: raw attempt BLOCKED; 0 test executions passed. Measured-resource deferral; no substitute target: Measured resource guard blocked; no other process altered [Manifest](independent/integration-external-battlestaff-matrix-e3ced82211ee438fd6a74a110d435e6746295a16/manifest.json).
+- `e3ced82211ee438fd6a74a110d435e6746295a16`: raw attempt FAIL; 0 test executions passed.  [Manifest](independent/integration-external-battlestaff-matrix-e3ced82211ee438fd6a74a110d435e6746295a16-1792308756728027400/manifest.json).
+- `e3ced82211ee438fd6a74a110d435e6746295a16`: raw attempt FAIL; battlestaff-matrix 2 test executions passed.  [Manifest](independent/integration-external-battlestaff-matrix-e3ced82211ee438fd6a74a110d435e6746295a16-1792308876394741000/manifest.json).
+- `e3ced82211ee438fd6a74a110d435e6746295a16`: raw attempt PASS; battlestaff-matrix 3 test executions passed.  [Manifest](independent/integration-external-battlestaff-matrix-e3ced82211ee438fd6a74a110d435e6746295a16-1792308968283529400/manifest.json).
+- `e3ced82211ee438fd6a74a110d435e6746295a16`: raw attempt PASS; battlestaff-regression 3 test executions passed.  [Manifest](independent/integration-external-battlestaff-regression-e3ced82211ee438fd6a74a110d435e6746295a16/manifest.json).
 - `e7ac3608e61893d80b2de6a1a2e512b3ab785505`: raw attempt FAIL; chemistry-matrix 1 test executions passed.  [Manifest](independent/integration-external-chemistry-matrix-e7ac3608e61893d80b2de6a1a2e512b3ab785505/manifest.json).
 - `e7ac3608e61893d80b2de6a1a2e512b3ab785505`: raw attempt PASS; chemistry-matrix 2 test executions passed.  [Manifest](independent/integration-external-chemistry-matrix-e7ac3608e61893d80b2de6a1a2e512b3ab785505-1792282956704102000/manifest.json).
+- `894646a79fa4ba7e3e8b46af6ec000dc6b796514`: raw attempt BLOCKED; 0 test executions passed. Measured-resource deferral; no substitute target: Measured resource guard blocked; no other process altered [Manifest](independent/integration-external-crab-admission-894646a79fa4ba7e3e8b46af6ec000dc6b796514/manifest.json).
+- `894646a79fa4ba7e3e8b46af6ec000dc6b796514`: raw attempt PASS; crab-admission 1 test executions passed.  [Manifest](independent/integration-external-crab-admission-894646a79fa4ba7e3e8b46af6ec000dc6b796514-1792310079206993900/manifest.json).
+- `894646a79fa4ba7e3e8b46af6ec000dc6b796514`: raw attempt PASS; crab-bindings 1 test executions passed.  [Manifest](independent/integration-external-crab-bindings-894646a79fa4ba7e3e8b46af6ec000dc6b796514/manifest.json).
+- `894646a79fa4ba7e3e8b46af6ec000dc6b796514`: raw attempt FAIL; crab-matrix 1 test executions passed.  [Manifest](independent/integration-external-crab-matrix-894646a79fa4ba7e3e8b46af6ec000dc6b796514/manifest.json).
 - `97b25c57d4c6dc0606adf91dd00e41ec43600a27`: raw attempt PASS; energy-food 2 test executions passed.  [Manifest](independent/integration-external-energy-food-97b25c57d4c6dc0606adf91dd00e41ec43600a27/manifest.json).
 - `0c489b46b552ad012e630810c1218dbaeb437a51`: raw attempt PASS; fallible-gem-bindings 1 test executions passed.  [Manifest](independent/integration-external-fallible-gem-bindings-0c489b46b552ad012e630810c1218dbaeb437a51/manifest.json).
 - `0c489b46b552ad012e630810c1218dbaeb437a51`: raw attempt PASS; fallible-gem-matrix 2 test executions passed.  [Manifest](independent/integration-external-fallible-gem-matrix-0c489b46b552ad012e630810c1218dbaeb437a51/manifest.json).
@@ -78,6 +90,8 @@ No rendered-window, original-executable differential or crash-atomicity acceptan
 - `4f4aacb2929e8ad775d091527e2d80070100ee69`: raw attempt FAIL; 0 test executions passed.  [Manifest](independent/integration-external-production-gems-4f4aacb2929e8ad775d091527e2d80070100ee69-1792303949835831500/manifest.json).
 - `4c6b73cfcd3b35ce52aa79efd9d2a99464939445`: raw attempt PASS; shell-bindings 1 test executions passed.  [Manifest](independent/integration-external-shell-bindings-4c6b73cfcd3b35ce52aa79efd9d2a99464939445/manifest.json).
 - `4c6b73cfcd3b35ce52aa79efd9d2a99464939445`: raw attempt PASS; shell-matrix 3 test executions passed.  [Manifest](independent/integration-external-shell-matrix-4c6b73cfcd3b35ce52aa79efd9d2a99464939445/manifest.json).
+- `5582c276d1657a0142151936e5a9fec022d7c938`: raw attempt PASS; sinew-bindings 1 test executions passed.  [Manifest](independent/integration-external-sinew-bindings-5582c276d1657a0142151936e5a9fec022d7c938/manifest.json).
+- `5582c276d1657a0142151936e5a9fec022d7c938`: raw attempt PASS; sinew-matrix 3 test executions passed.  [Manifest](independent/integration-external-sinew-matrix-5582c276d1657a0142151936e5a9fec022d7c938/manifest.json).
 - `8ad59b108e1ecd55185570c88d1be8be06b39756`: Native current-integration worn Options -> Stop, equipped-item/coins/XP conservation and actual restart/native relogin; complete V2/V3 acceptance remains open. [Assessment](independent/native-chemistry-worn-8ad59b108e1ecd55185570c88d1be8be06b39756/independent-assessment.json).
 
 An older integration PASS is not a PASS on a newer FORGE HEAD. Change-impact lists and the last executed integration scope are recorded separately per feature.
@@ -167,9 +181,9 @@ An older integration PASS is not a PASS on a newer FORGE HEAD. Change-impact lis
 - **OR-MIG-0063 r1** `143dab04f28c` — Native quantity production for seven deterministic gems and nine legacy shell carvings; V0 PASS, V1 PASS, V2 BLOCKED, V3 PASS, V4 IN_PROGRESS.
 - **OR-MIG-0064 r1** `0c489b46b552` — Wiki-rate opal, jade and red-topaz cut/crush production with both outcomes staged before RNG; V0 PASS, V1 IN_PROGRESS, V2 IN_PROGRESS, V3 IN_PROGRESS, V4 IN_PROGRESS.
 - **OR-MIG-0065 r1** `4f4aacb2929e` — Immediate Dramen staff and fallible limestone crafting with optional XP publication; V0 PASS, V1 PASS, V2 PASS, V3 PASS, V4 PASS.
-- **OR-MIG-0066 r1** `5582c276d165` — Manual knife conversion of an owned damaged monkey tail to sinew; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 IN_PROGRESS.
-- **OR-MIG-0067 r1** `e3ced82211ee` — Precise two-ingredient assembly rewards and four manual elemental battlestaff attachments; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
-- **OR-MIG-0068 r1** `894646a79fa4` — Wiki-fallible crab helmet and claw carving with zero-XP broken outcomes; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0066 r1** `5582c276d165` — Manual knife conversion of an owned damaged monkey tail to sinew; V0 PASS, V1 PASS, V2 PASS, V3 PASS, V4 PASS.
+- **OR-MIG-0067 r1** `e3ced82211ee` — Precise two-ingredient assembly rewards and four manual elemental battlestaff attachments; V0 PASS, V1 FAIL, V2 PASS, V3 FAIL, V4 PASS.
+- **OR-MIG-0068 r1** `894646a79fa4` — Wiki-fallible crab helmet and claw carving with zero-XP broken outcomes; V0 NOT_STARTED, V1 IN_PROGRESS, V2 NOT_STARTED, V3 NOT_STARTED, V4 IN_PROGRESS.
 - **OR-MIG-0069 r1** `fb348dda184b` — Native quantity production for fourteen stringing and four elemental battlestaff recipes; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
 - **OR-MIG-0070 r1** `c7ddebe84482` — Manual light-orb wiring and uncharged serpentine helm carving; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
 - **OR-MIG-0071 r1** `bc277dc3e7e1` — Counted tool outputs and four amethyst cutting choices with overflow-safe batches; V0 NOT_STARTED, V1 IN_PROGRESS, V2 NOT_STARTED, V3 NOT_STARTED, V4 IN_PROGRESS.
@@ -189,3 +203,7 @@ An older integration PASS is not a PASS on a newer FORGE HEAD. Change-impact lis
 - **OR-MIG-0085 r1** `922d4c115cdd` — Nine birdhouse quantity recipes with live inventory/worn durable tools; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
 - **OR-MIG-0086 r1** `b12666d39984` — Two uncharged magic-fang upgrades with live durable chisel requirement; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
 - **OR-MIG-0087 r1** `b916671f6345` — Four plain gold furnace jewellery recipes with retained ordinary moulds; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0088 r1** `d2f0a18c213e` — Sixteen ordinary silver furnace products including twelve cut-gem jewellery recipes; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0089 r1** `6f812cffdada` — Sixteen ordinary Mine targets for iron through runite and second copper/tin variants; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0090 r1** `7839192cfd21` — Six additional ordinary metal axes and current-tree-rate gameplay tool selection; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.
+- **OR-MIG-0091 r1** `c707aeb17b15` — Primary ordinary willow maple and yew profiles through shared timed woodcutting; V0 NOT_STARTED, V1 NOT_STARTED, V2 NOT_STARTED, V3 NOT_STARTED, V4 NOT_STARTED.

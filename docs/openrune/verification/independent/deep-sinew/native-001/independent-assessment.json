@@ -1,0 +1,48 @@
+{
+  "implementation_id": "OR-MIG-0066",
+  "tested_sha": "5582c276d1657a0142151936e5a9fec022d7c938",
+  "campaign_kind": "historical",
+  "status": "PASS",
+  "crash": false,
+  "observed_outputs": 4,
+  "durable_outputs": 4,
+  "observed_fine_award": 3000,
+  "effects": [
+    {
+      "slot": 4,
+      "sequence": 10937,
+      "sequence_tick": 117,
+      "credit_tick": 118
+    },
+    {
+      "slot": 26,
+      "sequence": 10937,
+      "sequence_tick": 128,
+      "credit_tick": 129
+    },
+    {
+      "slot": 9,
+      "sequence": 10937,
+      "sequence_tick": 141,
+      "credit_tick": 142
+    },
+    {
+      "slot": 17,
+      "sequence": 10937,
+      "sequence_tick": 155,
+      "credit_tick": 156
+    }
+  ],
+  "scope": "Independent received held-Use, inventory update, Stats and sequence decoding; selected-only manual credit, retained duplicate inputs/tools/full bag, stale refusal and no Make-X. Whole durable inventory/Stats match actual process restart and independently decoded native reconnect. Actual pending Walk cancels before award. Four manual actions alternate both held directions and save 3000 fineXP without automatic repeats.",
+  "limitations": [
+    "Native rate500 only; other rate/current-level/modifier cases are separately covered in authoritative World tests.",
+    "Received sequence timing does not establish rendered frames or audio.",
+    "Recovery fault is unacknowledged state rollback, not an injection during SQL transaction commit."
+  ],
+  "evidence_sha256": {
+    "produce/client.log": "83a7633a66af88600ac2cbaec26dd430a8e3945e8279dd6714e8b56b0f550c1b",
+    "produce/manifest.json": "f5b81a852c724282c9184d9ca468e5774016ed61dfc99e949402d01c32846c19",
+    "relogin/client.log": "845fef9d593ead8eef310c895e300fc5b9a36a74bf8ea63c7d440923526794b2",
+    "relogin/manifest.json": "6af689a220409d8a96e472e31ae661ec9969f95deeabe4e7e5c1868cb8a3a6be"
+  }
+}

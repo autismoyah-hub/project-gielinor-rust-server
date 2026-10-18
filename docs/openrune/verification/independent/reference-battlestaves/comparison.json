@@ -1,0 +1,124 @@
+{
+  "implementation_id": "OR-MIG-0067",
+  "tested_sha": "e3ced82211ee438fd6a74a110d435e6746295a16",
+  "campaign_kind": "historical",
+  "status": "IN_PROGRESS",
+  "source_documentation_subcheck": "PASS",
+  "sources": [
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/scripts/HeldCraftingScript.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "c39f8b323e8fa79f933224b9ca0c8cf07a5df005628906e79645e3e6a5399318"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingSection.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "26e5be7a84fbe82f5c4897d29cb3261c63cd475111f17df517e2e0ac5e0d8afb"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingWorker.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "5790b247e5441b54e05c0ca7b4b5a9dff5c7aa61181ebccb36d0d8057db56e53"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/util/CraftingConstants.kt",
+      "revision": "Local archive; upstream commit unavailable; configured revision241",
+      "sha256": "393d05fa5a5645b2dd712fcfb8f8814845376846a7594dafe16909422fe2008f"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/pack/src/main/kotlin/org/rsmod/content/skills/crafting/pack/Crafting.kt",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "sha256": "5b3d4124ce83b2c6e93590b2d833e7dc0a37ce87e3a7dc2f327241ab165ef3e0"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingProduct.kt",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "sha256": "e0ee16a23f6fa20bf82ebae4103213c1a13337c596b2d2f7b7715edbe3073576"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/utils/src/main/kotlin/org/rsmod/content/skills/MathSkillUtiils.kt",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "sha256": "874ef859e35b30891ce90d077262e1637e9115e5c285ffb790970f899f32770b"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Water battlestaff",
+      "revision": "15184146",
+      "sha256": "33deb92841cfea0aca811eb933ffa82ad114b77576825dc39ea5b46fd4d36d61"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Earth battlestaff",
+      "revision": "15182985",
+      "sha256": "4b362800c5703ada4c2596190eb41ba28576e2c01f9560596f2d9d43a490f6ad"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Fire battlestaff",
+      "revision": "15320213",
+      "sha256": "43caf48421c9bc851773263dc826f04f46830bc2bce11f6f2c027c6b045b36ed"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Air battlestaff",
+      "revision": "15182754",
+      "sha256": "0edcf5e5e03ef582ed2731513278acbadd4e69dac998edfc9932b6994181abf2"
+    }
+  ],
+  "profiles": [
+    {
+      "element": "Water",
+      "orb": 571,
+      "staff": 1391,
+      "output": 1395,
+      "level": 54,
+      "xp_tenths": 1000,
+      "fine_xp_at_125": 1250,
+      "manual_ticks": 2
+    },
+    {
+      "element": "Earth",
+      "orb": 575,
+      "staff": 1391,
+      "output": 1399,
+      "level": 58,
+      "xp_tenths": 1125,
+      "fine_xp_at_125": 1406,
+      "manual_ticks": 2
+    },
+    {
+      "element": "Fire",
+      "orb": 569,
+      "staff": 1391,
+      "output": 1393,
+      "level": 62,
+      "xp_tenths": 1250,
+      "fine_xp_at_125": 1562,
+      "manual_ticks": 2
+    },
+    {
+      "element": "Air",
+      "orb": 573,
+      "staff": 1391,
+      "output": 1397,
+      "level": 66,
+      "xp_tenths": 1375,
+      "fine_xp_at_125": 1718,
+      "manual_ticks": 2
+    }
+  ],
+  "scope": "All11pinned reference hashes independently verified. Four source rows and pinned Wiki recipes agree on owned ingredient pairs, current Crafting54/58/62/66, member status, exact fractional100/112.5/125/137.5XP and manual2ticks. Source first action explicitly unshortened. Independent125%fine rewards1250/1406/1562/1718 distinguish per-award rounding.",
+  "limitations": [
+    "Wiki Make-X first3/repeat2 is automatic production, outside this manual registration.",
+    "Acquisition, orb enchanting, equipment/combat and other staves are separate.",
+    "Missing source attach_orb audio alias is declared omitted; no fabricated target sound or original executable/rendered observation claimed.",
+    "Native/runtime/cache/lifecycle acceptance remains separate."
+  ]
+}

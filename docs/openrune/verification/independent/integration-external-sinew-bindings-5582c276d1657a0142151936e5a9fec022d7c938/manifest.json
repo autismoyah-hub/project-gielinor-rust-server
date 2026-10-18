@@ -1,0 +1,65 @@
+{
+  "tested_integration_sha": "5582c276d1657a0142151936e5a9fec022d7c938",
+  "suite": "sinew-bindings",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 7247007744,
+    "active_compilers": [
+      "\"cargo.exe\",\"9044\",\"RDP-Tcp#0\",\"2\",\"44,672 K\"",
+      "\"cargo.exe\",\"9024\",\"RDP-Tcp#0\",\"2\",\"20,732 K\"",
+      "\"rustc.exe\",\"10372\",\"RDP-Tcp#0\",\"2\",\"79,040 K\""
+    ],
+    "cpu_percent": 48.56,
+    "cpu_samples": [
+      50.5859375,
+      51.953125,
+      43.13346228239845
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained",
+    "disk_free": 25968087040,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "3bf06ec86814fdd5947a8f22b82c16f8a2a64f3b",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\5582c276d1657a0142151936e5a9fec022d7c938\\external-harness-3607647000\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-sinew-bindings-5582c276d1657a0142151936e5a9fec022d7c938\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\5582c276d1657a0142151936e5a9fec022d7c938\\external-harness-3607647000\\Cargo.toml",
+        "--",
+        "--nocapture"
+      ],
+      "exit_code": 0,
+      "tests_passed": 1,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-sinew-bindings-5582c276d1657a0142151936e5a9fec022d7c938\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative sinew-bindings scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-sinew-bindings-5582c276d1657a0142151936e5a9fec022d7c938\\harness\\bindings.rs": "14b2a2b5569a4090094dac3b4ac3b85d2a8e27182e1997d7d6c5ac9b13e78d2c"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\bindings-9ec2ce0952705c65.exe": "0cb24f867608c4ef9c6d386a1d36f35f874823035c461e14cbd074752e113d25",
+    "target\\debug\\deps\\manual-138a382cd44b3578.exe": "ccf015a81c6f5da2f15f3239e6f0854e9a1310b887a3bd59d6d9c2b23152e502"
+  }
+}

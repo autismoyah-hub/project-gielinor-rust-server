@@ -36,7 +36,27 @@ for manifest in OUT.glob('OR-MIG-0024-*-independent*/manifest.json'):
     add('OR-MIG-0024',sha,'V1','IN_PROGRESS','Four independent authoritative World action tests PASS across 319 fixtures: all selected slots, full bags, duplicate/stale input, overheal, remainders and malformed transactions. Runtime packet decode and complete food matrix remain open.',evidence)
 for manifest in OUT.glob('integration-*/manifest.json'):
     value=json.loads(manifest.read_text(encoding='utf-8'))
+    if value.get('suite')=='crab-matrix' and value.get('status')=='FAIL':
+        log=manifest.parent/'run-1.log';text=log.read_text()
+        if 'test every_roll_across_current_levels_member_and_rates_has_exact_zero_xp_failure ... ok' in text:
+            assert 'profile0 mode11' in text
+            add('OR-MIG-0068',value['tested_integration_sha'],'V1','IN_PROGRESS','Independent310272controlled-byte cases PASS across two profiles/current1-99and100/120/member/three positive rates. Exact selected-only full28success or broken outputs, single draw, unchanged input snapshots, threshold70at15/241at99, exact fineXP and no advancement on failure all pass. Separate negative function failed because the verifier wrongly treated high256as invalid; shared u16 endpoint policy allows it. This is a passing subtest, not a PASS for the failed whole campaign. Preserve raw FAIL; only corrected negatives rerun separately, no repetition of completed byte matrix.',[manifest.relative_to(ROOT).as_posix(),log.relative_to(ROOT).as_posix()],scope='independent-crab-byte-domain-subcheck')
     if value.get('status')!='PASS':continue
+    if value.get('suite') in ['crab-bindings','crab-admission']:
+        suite=value['suite'];reason=('Actual cache seven ordinary definitions/Crafting12/sequence1280and exact two member/level15/325success/0failure/40-240curve/first3descriptors PASS;79missing/aliased/corrupt item/stat/sequence cases refuse.' if suite=='crab-bindings' else 'Independent30invalid input/tool/count/variables/member/current-level/rate/either-credit/curve probes PASS before RNG and without inventory/Stats mutation. Corrected u16endpoint out-of-range65536oracle; original unsupported256refusal assertion preserved, completed310272roll subtest not repeated.')
+        add('OR-MIG-0068',value['tested_integration_sha'],'V1','IN_PROGRESS',reason+' Authoritative World batch/native/lifecycle acceptance remains separate.',[manifest.relative_to(ROOT).as_posix()],scope='independent-'+suite)
+        continue
+    if value.get('suite')=='battlestaff-regression':
+        add('OR-MIG-0067',value['tested_integration_sha'],'V1','IN_PROGRESS','Independent shared reward regression PASS:16integer/precise API controls with independent exact awards and no partial credit;96legacy normal/timed/immediate held routes across both directions, rates and zero/nonzeroXP preserve original synchronous versus queued publication/no repeat.16actual boosted-current-level precise transactions accept all4profiles below required base level and preserve exact fractional awards; rate0refuses without mutation. These are synthetic public-API controls, not chemistry content execution or native acceptance.',[manifest.relative_to(ROOT).as_posix()],scope='independent-battlestaff-regression')
+        continue
+    if value.get('suite') in ['battlestaff-matrix','battlestaff-bindings']:
+        suite=value['suite'];reason=('Independent96precise transactions,192actual World held routes and88late changes PASS at exact67. Four profiles, both directions/full28, current-level/member/rate0-100-125-500guards, exact fractional rewards, retained duplicates, no RNG/quantity/repeat, nominal2timing and animation7531/elemental spots verified. Rate0may animate an otherwise admitted action but cannot credit; original overstrict animation oracle and compile mismatch preserved. Legacy integer/immediate regressions and native/lifecycle remain separate.' if suite=='battlestaff-matrix' else 'Actual cache nine ordinary member items/Crafting12/sequence7531/four spot aliases and exact four precise descriptors PASS.107missing/aliased/corrupt item/stat/sequence/spot cases refuse factory binding. Runtime/native/lifecycle remains separate.')
+        add('OR-MIG-0067',value['tested_integration_sha'],'V1','IN_PROGRESS',reason,[manifest.relative_to(ROOT).as_posix()],scope='independent-'+suite)
+        continue
+    if value.get('suite') in ['sinew-matrix','sinew-bindings']:
+        suite=value['suite'];reason=('Independent1248all-selected-slot/current-versus-base/member/rate resolver cases PASS with no RNG and immutable inputs.384actual World held routes cover both directions/full28/boosted10/drained9/0-100-125-500rates/exact187fineXP/manual first1queue compensation and no quantity/repeat.30late input/tool/member/level/rate/credit/modal/movement/Close/logout/zeroHP/queued-death cases preserve selected input, and overlapping new held action produces only its newly selected tail. Actual startup/native/durability remains separate.' if suite=='sinew-matrix' else 'Actual cache factory attests Knife946, Damaged monkey tail19665(alias damaged_ballista_rope), Sinew9436, Crafting12 and sequence10937. Exact member/manual1/level10/150tenthsXP/no-failure descriptor and39missing/aliased/corrupt item/stat/sequence refusals PASS. Actual native runtime/durability remains separate.')
+        add('OR-MIG-0066',value['tested_integration_sha'],'V1','IN_PROGRESS',reason,[manifest.relative_to(ROOT).as_posix()],scope='independent-'+suite)
+        continue
     if value.get('suite')=='light-conversion-world':
         reason='Independent162actual World conversion cases PASS across9lit/unlit profiles:18ordinary/packed200-life positives and144zeroHP/queued-death/member/stale/variable/count/credit/policy/delay/modal/logout/claim/descriptor refusals. Queued death established through public server combat-hit entry, then visibleHP restored without respawn; conversion correctly remains refused.18additional stale typed actions do not consume retained matching lights or emit a false synthetic success acknowledgement. No tinderbox/currentFiremaking/Crafting/XP-rate requirement for extinguish; whole inventory/Stats preserved. Packed200is a representation fixture, not a normal attainable gameplay claim. Actual cache/runtime/native bindings and sand-specific behavior remain separate.'
         add('OR-MIG-0084',value['tested_integration_sha'],'V1','IN_PROGRESS',reason,[manifest.relative_to(ROOT).as_posix()],scope='independent-light-conversion-world')
@@ -321,7 +341,43 @@ if path.exists():
     result=json.loads(path.read_text());assert result['status']=='ACCEPTED'
     for level,value in result['levels'].items():add('OR-MIG-0065',result['tested_sha'],level,value['status'],value['reason'],[path.relative_to(ROOT).as_posix()],scope='immediate-applicable-obligations-complete')
 coarse=DOC/'VERIFICATION_RESULTS.jsonl';prior=[json.loads(s) for s in coarse.read_text(encoding='utf-8').splitlines()];known={r['attempt_id'] for r in prior}
-for name in ['gem-acceptance.json','shell-acceptance.json','immediate-acceptance.json']:
+finding=OUT/'battlestaff-life-finding.json'
+if finding.exists():
+    r=json.loads(finding.read_text());attempt='independent-PG-DEF-002-'+r['tested_sha']
+    if attempt not in known:
+        row={'attempt_id':attempt,'implementation_id':'OR-MIG-0067','implementation_commit_sha':r['tested_sha'],'contract_revision':1,'campaign_kind':'historical','outcome':'FAILED','level':'V1/V3 life refusal','independent_verification':True,'tests_passed':0,'coverage':['Four isolated authoritative death-boundary failures;8modal cancellation cases pass.','Separate V0/V2/V4 and normal/native/crash durable scopes remain recorded per-level.'],'reason':'PG-DEF-002 P2: selected water staff/orb consumed and1250fineXP awarded at zeroHP or after queued death, fresh and pending actions. Native dead-player reachability/latestHEAD unproven. No aggregate acceptance or duplicated execution count.','evidence':[finding.relative_to(ROOT).as_posix()],'issues':['PG-DEF-002 local backlog; no external issue']}
+        with coarse.open('a',encoding='utf-8',newline='\n') as f:f.write(json.dumps(row)+'\n')
+path=OUT/'reference-crab/comparison.json'
+if path.exists():
+    result=json.loads(path.read_text());assert result['source_documentation_subcheck']=='PASS'
+    add('OR-MIG-0068',result['tested_sha'],'V4','IN_PROGRESS',result['scope']+' Native cadence, mixed batch and lifecycle remain separate; source recipe quest notes versus fresh-material acquisition context explicitly preserved.',[path.relative_to(ROOT).as_posix()],scope='independent-crab-references')
+path=OUT/'reference-battlestaves/comparison.json'
+if path.exists():
+    result=json.loads(path.read_text());assert result['source_documentation_subcheck']=='PASS'
+    add('OR-MIG-0067',result['tested_sha'],'V4','IN_PROGRESS',result['scope']+' Runtime/native/lifecycle and complete acceptance remain separate.',[path.relative_to(ROOT).as_posix()],scope='independent-battlestaff-references')
+path=OUT/'deep-battlestaves/native-001/independent-assessment.json'
+if path.exists():
+    result=json.loads(path.read_text());assert result['status']=='PASS'
+    ev=[path.relative_to(ROOT).as_posix(),'docs/openrune/verification/independent/integration-external-battlestaff-bindings-'+result['tested_sha']+'/manifest.json']
+    add('OR-MIG-0067',result['tested_sha'],'V0','PASS','Exact67server build/startup succeeds against95hash-attested resources. Actual cache nine ordinary items/Crafting/sequence/four spot aliases and107factory refusals pass; real native actions dispatch all4registered pairs.',ev,scope='battlestaff-runtime-obligations-complete')
+    add('OR-MIG-0067',result['tested_sha'],'V2','PASS',result['scope']+' All8native effect blocks independently identify7531and1370/1371/1372/306with2receive clocks to credit. DisplayXPfloor and exact durable fineXP agree; no fabricated sound, rendered-frame or acquisition claim. V1life defect remains separate and whole-contract acceptance withheld.',ev,scope='battlestaff-native-obligations-complete')
+    add('OR-MIG-0067',result['tested_sha'],'V3','IN_PROGRESS','Eight normal outputs/47500fineXP and remaining ingredients survive actual acknowledged-save/process restart and independently decoded native reconnect. Movement/Close/stale controls pass. This positive durable scope does not accept the separate failing death interruption boundary.',ev,scope='battlestaff-normal-durable-subcheck')
+    refs=OUT/'reference-battlestaves/comparison.json';ref=json.loads(refs.read_text());assert ref['source_documentation_subcheck']=='PASS'
+    add('OR-MIG-0067',result['tested_sha'],'V4','PASS',ref['scope']+' Actual native sequence7531/four declared spot IDs and2clock manual credit align with unshortened source/manual Wiki2. Make-X first3/repeat2, acquisition/combat and unavailable source sound/rendered/original-executable observations explicitly outside this manual adapter. Native/headless per-award fractional rewards match separate independent calculations.',ev+[refs.relative_to(ROOT).as_posix()],scope='battlestaff-reference-obligations-complete')
+path=OUT/'deep-battlestaff-crash/crash-001/independent-assessment.json'
+if path.exists():
+    result=json.loads(path.read_text());assert result['status']=='PASS'
+    add('OR-MIG-0067',result['tested_sha'],'V3','IN_PROGRESS',result['scope']+' Whole prior inventory/Stats restored, no durable product or XP duplication. This unacknowledged-state recovery is not a mid-SQL fault or death-interruption acceptance.',[path.relative_to(ROOT).as_posix()],scope='battlestaff-unsaved-recovery-subcheck')
+path=OUT/'battlestaff-life-finding.json'
+if path.exists():
+    result=json.loads(path.read_text());assert result['status']=='CONFIRMED_AUTHORITATIVE_BOUNDARY_FAILURE'
+    add('OR-MIG-0067',result['tested_sha'],'V1','FAIL','PG-DEF-002: four isolated publicWorld lifecycle failures consume selected water-orb/staff and award1250fineXP at zeroHP or after actual queued death with visibleHP restored, both fresh action and pending completion. Modal cancellation8cases passes; remaining death profiles/directions and native reachability unproven. Ordinary P2 correction backlog, not FORGE-stop; retain all independent passing scopes and withhold aggregate acceptance.',[path.relative_to(ROOT).as_posix()],scope='battlestaff-life-refusal-required-failure')
+    add('OR-MIG-0067',result['tested_sha'],'V3','FAIL','PG-DEF-002: pending precise assembly still credits after zeroHP or queued death with visibleHP restored. Normal acknowledged save/restart and unsaved-result recovery pass separately, but applicable interrupted-work cancellation cannot be accepted at this historical SHA. Requires published correction/retest identity; no newer target substituted.',[path.relative_to(ROOT).as_posix()],scope='battlestaff-life-interruption-required-failure')
+path=OUT/'sinew-acceptance.json'
+if path.exists():
+    result=json.loads(path.read_text());assert result['status']=='ACCEPTED'
+    for level,value in result['levels'].items():add('OR-MIG-0066',result['tested_sha'],level,value['status'],value['reason'],[path.relative_to(ROOT).as_posix()],scope='sinew-applicable-obligations-complete')
+for name in ['gem-acceptance.json','shell-acceptance.json','immediate-acceptance.json','sinew-acceptance.json']:
     path=OUT/name
     if not path.exists():continue
     result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='ACCEPTED' and all(v['status']=='PASS' for v in result['levels'].values())

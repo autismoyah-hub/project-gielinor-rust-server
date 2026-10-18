@@ -1,10 +1,10 @@
 {
   "scope": "Coarse historical ledger summary only; use LEVEL_RESULTS.jsonl and WORKLIST.json for current V0-V4 and integration scope",
-  "consumed_contracts": 45,
+  "consumed_contracts": 47,
   "latest_outcomes": {
-    "VERIFIED": 3,
+    "VERIFIED": 4,
     "PARTIAL": 7,
-    "FAILED": 0,
+    "FAILED": 1,
     "BLOCKED": 0,
     "NOT_ASSESSED": 35
   },

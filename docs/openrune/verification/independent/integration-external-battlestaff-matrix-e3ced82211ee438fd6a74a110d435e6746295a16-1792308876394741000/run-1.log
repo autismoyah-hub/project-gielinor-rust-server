@@ -1,0 +1,26 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\e3ced82211ee438fd6a74a110d435e6746295a16\external-harness-0594522000)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 14.21s
+     Running tests\manual.rs (C:\Projects\OSRSRSPS\agent7-verification\work\e3ced82211ee438fd6a74a110d435e6746295a16\target\debug\deps\manual-cb4cf07c8fd0dce8.exe)
+
+running 3 tests
+test ninety_six_precise_transactions_preserve_fractional_xp_and_whole_state ... ok
+test one_hundred_ninety_two_real_world_routes_have_two_tick_manual_credit_and_no_repeat ... FAILED
+test eighty_eight_late_changes_refuse_without_fallback_to_duplicate_inputs ... ok
+
+failures:
+
+---- one_hundred_ninety_two_real_world_routes_have_two_tick_manual_credit_and_no_repeat stdout ----
+
+thread 'one_hundred_ninety_two_real_world_routes_have_two_tick_manual_credit_and_no_repeat' (13028) panicked at tests\manual.rs:11:1246:
+assertion `left == right` failed
+  left: 1
+ right: 0
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    one_hundred_ninety_two_real_world_routes_have_two_tick_manual_credit_and_no_repeat
+
+test result: FAILED. 2 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 15.73s
+
+error: test failed, to rerun pass `--test manual`

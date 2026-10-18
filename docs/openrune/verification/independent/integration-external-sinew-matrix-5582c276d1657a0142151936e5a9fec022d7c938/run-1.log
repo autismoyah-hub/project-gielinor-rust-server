@@ -1,0 +1,12 @@
+   Compiling gielinor-world v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\5582c276d1657a0142151936e5a9fec022d7c938\crates\world)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\5582c276d1657a0142151936e5a9fec022d7c938\external-harness-2395038300)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 40.89s
+     Running tests\manual.rs (C:\Projects\OSRSRSPS\agent7-verification\work\5582c276d1657a0142151936e5a9fec022d7c938\target\debug\deps\manual-138a382cd44b3578.exe)
+
+running 3 tests
+test twelve_hundred_forty_eight_selected_slot_current_level_member_rate_cases_are_atomic_without_rng ... ok
+test thirty_late_guards_and_overlapping_action_cases_cancel_exact_selected_job ... ok
+test three_hundred_eighty_four_real_world_held_routes_match_one_shot_timing_and_whole_state has been running for over 60 seconds
+test three_hundred_eighty_four_real_world_held_routes_match_one_shot_timing_and_whole_state ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 61.92s

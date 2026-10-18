@@ -1,0 +1,11 @@
+    Blocking waiting for file lock on build directory
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\e3ced82211ee438fd6a74a110d435e6746295a16\external-harness-2286914300)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 52.22s
+     Running tests\manual.rs (C:\Projects\OSRSRSPS\agent7-verification\work\e3ced82211ee438fd6a74a110d435e6746295a16\target\debug\deps\manual-cb4cf07c8fd0dce8.exe)
+
+running 3 tests
+test ninety_six_precise_transactions_preserve_fractional_xp_and_whole_state ... ok
+test eighty_eight_late_changes_refuse_without_fallback_to_duplicate_inputs ... ok
+test one_hundred_ninety_two_real_world_routes_have_two_tick_manual_credit_and_no_repeat ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 27.43s

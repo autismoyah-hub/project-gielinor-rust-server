@@ -1,0 +1,44 @@
+{
+  "implementation_id": "OR-MIG-0067",
+  "tested_sha": "e3ced82211ee438fd6a74a110d435e6746295a16",
+  "campaign_kind": "historical",
+  "status": "PASS",
+  "crash": true,
+  "actions": [
+    {
+      "staff_slot": 4,
+      "orb_slot": 6,
+      "orb": 571,
+      "output": 1395,
+      "output_slot": 4,
+      "fine_award": 5000,
+      "spot": 1370,
+      "direction": 0,
+      "fine_total": 130349311
+    }
+  ],
+  "durable_outputs": 0,
+  "observed_fine_award": 5000,
+  "effects": [
+    {
+      "output": 1395,
+      "slot": 4,
+      "sequence_tick": 233,
+      "credit_tick": 235,
+      "sequence": 7531,
+      "spot": 1370
+    }
+  ],
+  "scope": "Independent selected two-input transaction oracle, raw held-Use/inventory/Stats and decoded sequence/spot events. Stale selected requests cannot substitute retained duplicates; no Make-X or automatic repeat. Complete durable inventory/Stats verified by SQL and independently decoded actual server restart/native reconnect. One unsaved observed product restores prior state after termination of only the owned disposable server, with no save acknowledgement.",
+  "limitations": [
+    "Native rate500; modifier/current-level/boost/refusal and legacy API cases are separate public-API campaigns.",
+    "Decoded effects/two receive clocks do not establish rendered frames or audio.",
+    "Recovery fault is unacknowledged state rollback, not mid-SQL commit."
+  ],
+  "evidence_sha256": {
+    "produce/client.log": "c86826d150e26e991bcd015479a8dace39ac6a1b8d09e9699f11ca4d35ef780b",
+    "produce/manifest.json": "aff6a7ae9f952757f159b27625ef75f7ba41a89da01c738afc9722185207b166",
+    "relogin/client.log": "dcc980478e78c878806480081706b2677b17209401400a2b5c5ef30f30168996",
+    "relogin/manifest.json": "e19fd7531decd42e06f84eebc52b1b053dafc9f9138576f6b8e6688270062047"
+  }
+}

@@ -1,0 +1,24 @@
+   Compiling gielinor-world v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\894646a79fa4ba7e3e8b46af6ec000dc6b796514\crates\world)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\894646a79fa4ba7e3e8b46af6ec000dc6b796514\external-harness-3611740200)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 30.19s
+     Running tests\outcomes.rs (C:\Projects\OSRSRSPS\agent7-verification\work\894646a79fa4ba7e3e8b46af6ec000dc6b796514\target\debug\deps\outcomes-e6debee0b5977b0d.exe)
+
+running 2 tests
+test thirty_invalid_input_policy_or_credit_cases_refuse_before_rng ... FAILED
+test every_roll_across_current_levels_member_and_rates_has_exact_zero_xp_failure ... ok
+
+failures:
+
+---- thirty_invalid_input_policy_or_credit_cases_refuse_before_rng stdout ----
+
+thread 'thirty_invalid_input_policy_or_credit_cases_refuse_before_rng' (11896) panicked at tests\outcomes.rs:10:970:
+profile0 mode11
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    thirty_invalid_input_policy_or_credit_cases_refuse_before_rng
+
+test result: FAILED. 1 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 11.07s
+
+error: test failed, to rerun pass `--test outcomes`

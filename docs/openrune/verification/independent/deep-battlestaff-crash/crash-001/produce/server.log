@@ -1,0 +1,4 @@
+Loaded 11 map squares, 586 NPCs, 24220 locations
+Listening on 127.0.0.1:52578 (revision 239.1; partial gameplay implementation)
+Player ready: ActorId { slot: 1, generation: 614 }
+Assembly transition: {"actor_slot":1,"actor_generation":614,"first_slot":4,"second_slot":6,"first":1391,"second":571,"output":1395,"count":1,"queued_at":247,"committed_at":249}

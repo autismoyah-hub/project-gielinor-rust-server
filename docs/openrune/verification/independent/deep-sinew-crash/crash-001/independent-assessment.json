@@ -1,0 +1,30 @@
+{
+  "implementation_id": "OR-MIG-0066",
+  "tested_sha": "5582c276d1657a0142151936e5a9fec022d7c938",
+  "campaign_kind": "historical",
+  "status": "PASS",
+  "crash": true,
+  "observed_outputs": 1,
+  "durable_outputs": 0,
+  "observed_fine_award": 750,
+  "effects": [
+    {
+      "slot": 4,
+      "sequence": 10937,
+      "sequence_tick": 213,
+      "credit_tick": 214
+    }
+  ],
+  "scope": "Independent received held-Use, inventory update, Stats and sequence decoding; selected-only manual credit, retained duplicate inputs/tools/full bag, stale refusal and no Make-X. Whole durable inventory/Stats match actual process restart and independently decoded native reconnect. Owned server abrupt termination after one observed unsaved product restores prior whole state; no save acknowledgement.",
+  "limitations": [
+    "Native rate500 only; other rate/current-level/modifier cases are separately covered in authoritative World tests.",
+    "Received sequence timing does not establish rendered frames or audio.",
+    "Recovery fault is unacknowledged state rollback, not an injection during SQL transaction commit."
+  ],
+  "evidence_sha256": {
+    "produce/client.log": "8acb6e3dd0406d8bfafdcac488a0b05373e20f1476f5dcb98d43f2fdbb1c3c57",
+    "produce/manifest.json": "30a65f74509b4637cd4cf33a09e167440292f271b65ddf885655a6c389ed293e",
+    "relogin/client.log": "401633eaf0768a67fdd7ed32c3d36b672d1f25b7f5c09ac8cd3853df7b6247bc",
+    "relogin/manifest.json": "78a8e086340094d40b78ce8453d2c7ab600c56bcdc91e77e0ecde7a8fd69ae5e"
+  }
+}

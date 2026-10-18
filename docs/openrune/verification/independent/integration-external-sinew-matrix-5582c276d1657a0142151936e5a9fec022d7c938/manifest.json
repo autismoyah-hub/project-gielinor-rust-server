@@ -1,0 +1,61 @@
+{
+  "tested_integration_sha": "5582c276d1657a0142151936e5a9fec022d7c938",
+  "suite": "sinew-matrix",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 7305539584,
+    "active_compilers": [
+      "\"cargo.exe\",\"9044\",\"RDP-Tcp#0\",\"2\",\"44,672 K\"",
+      "\"rustc.exe\",\"9696\",\"RDP-Tcp#0\",\"2\",\"78,100 K\""
+    ],
+    "cpu_percent": 19.47,
+    "cpu_samples": [
+      17.7734375,
+      18.1640625,
+      22.4609375
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained",
+    "disk_free": 26251055104,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "3bf06ec86814fdd5947a8f22b82c16f8a2a64f3b",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\5582c276d1657a0142151936e5a9fec022d7c938\\external-harness-2395038300\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-sinew-matrix-5582c276d1657a0142151936e5a9fec022d7c938\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\5582c276d1657a0142151936e5a9fec022d7c938\\external-harness-2395038300\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 3,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-sinew-matrix-5582c276d1657a0142151936e5a9fec022d7c938\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative sinew-matrix scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-sinew-matrix-5582c276d1657a0142151936e5a9fec022d7c938\\harness\\manual.rs": "d892ba6c62191a9361fe66ae01c06980a4d21c5508642588586b1c3665375813"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\manual-138a382cd44b3578.exe": "ccf015a81c6f5da2f15f3239e6f0854e9a1310b887a3bd59d6d9c2b23152e502"
+  }
+}

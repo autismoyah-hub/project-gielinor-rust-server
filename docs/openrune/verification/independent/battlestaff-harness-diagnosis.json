@@ -1,0 +1,25 @@
+{
+  "implementation_id": "OR-MIG-0067",
+  "tested_sha": "e3ced82211ee438fd6a74a110d435e6746295a16",
+  "classification": "HARNESS_CORRECTIONS",
+  "implementation_defect_established": false,
+  "attempts": [
+    {
+      "evidence": "integration-external-battlestaff-matrix-e3ced82211ee438fd6a74a110d435e6746295a16/manifest.json",
+      "reason": "Resource guard deferred before build; later measured capacity allowed execution. No target substitution."
+    },
+    {
+      "evidence": "integration-external-battlestaff-matrix-e3ced82211ee438fd6a74a110d435e6746295a16-1792308756728027400/manifest.json",
+      "reason": "Harness match statement expected unit but close_dialogs returns bool. Corrected statement discards the return value. No tests executed in this attempt."
+    },
+    {
+      "evidence": "integration-external-battlestaff-matrix-e3ced82211ee438fd6a74a110d435e6746295a16-1792308876394741000/manifest.json",
+      "reason": "96 precise transaction and88late-change cases passed. World oracle incorrectly equated animation admission with successful reward. Existing member/current-level admission can animate rate0; atomic completion still refuses every inventory/XP change, as required by the contract. Corrected oracle separately checks admitted effects and successful credits."
+    },
+    {
+      "evidence": "integration-external-battlestaff-matrix-e3ced82211ee438fd6a74a110d435e6746295a16-1792308968283529400/manifest.json",
+      "reason": "Corrected full matrix PASS3functions at the same pinned SHA;96transactions,192World routes and88late changes. No production code altered."
+    }
+  ],
+  "observer_probe": "Read-only decoded spot-effect logging required for native OR67 effect acceptance. Initial unique-site assertion failed before source mutation; narrowed to the existing unique Sequence observation site, then compiled PASS. All old frozen native drivers and manifests preserved."
+}

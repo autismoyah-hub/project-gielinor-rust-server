@@ -1,0 +1,65 @@
+{
+  "tested_integration_sha": "e3ced82211ee438fd6a74a110d435e6746295a16",
+  "suite": "battlestaff-bindings",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 6901784576,
+    "active_compilers": [
+      "\"cargo.exe\",\"9044\",\"RDP-Tcp#0\",\"2\",\"24,320 K\"",
+      "\"cargo.exe\",\"10568\",\"RDP-Tcp#0\",\"2\",\"21,396 K\"",
+      "\"cargo.exe\",\"5184\",\"RDP-Tcp#0\",\"2\",\"20,900 K\""
+    ],
+    "cpu_percent": 38.27,
+    "cpu_samples": [
+      36.811023622047244,
+      39.72868217054264,
+      38.28125
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained",
+    "disk_free": 24359763968,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "4186182cb68425d4f343acdcc67867b67bcb028b",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\e3ced82211ee438fd6a74a110d435e6746295a16\\external-harness-1595395800\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-battlestaff-bindings-e3ced82211ee438fd6a74a110d435e6746295a16\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\e3ced82211ee438fd6a74a110d435e6746295a16\\external-harness-1595395800\\Cargo.toml",
+        "--",
+        "--nocapture"
+      ],
+      "exit_code": 0,
+      "tests_passed": 1,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-battlestaff-bindings-e3ced82211ee438fd6a74a110d435e6746295a16\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative battlestaff-bindings scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-battlestaff-bindings-e3ced82211ee438fd6a74a110d435e6746295a16\\harness\\bindings.rs": "fd0e2e34b81a12cc10589151156a7a6a762cea59264e51f9a2f093bee9365c87"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\bindings-6bdfbf0bbe5ede5d.exe": "5a57d0787eae8e87f862cdd887755150d7009016887f7159c6c53f16e59beba3",
+    "target\\debug\\deps\\manual-cb4cf07c8fd0dce8.exe": "ada49449e6a6196360666da8c6a03e9a7768deab893d584f3d106ce538d5001b"
+  }
+}

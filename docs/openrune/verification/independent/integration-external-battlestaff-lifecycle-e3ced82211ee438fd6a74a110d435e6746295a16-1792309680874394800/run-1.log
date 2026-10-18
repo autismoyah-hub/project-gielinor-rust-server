@@ -1,0 +1,56 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\e3ced82211ee438fd6a74a110d435e6746295a16\external-harness-4407630800)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.36s
+     Running tests\life.rs (C:\Projects\OSRSRSPS\agent7-verification\work\e3ced82211ee438fd6a74a110d435e6746295a16\target\debug\deps\life-111a171592a28233.exe)
+
+running 5 tests
+test queued_death_with_visible_hp_restored_before_action_cannot_craft ... FAILED
+test zero_hp_before_action_cannot_craft ... FAILED
+test queued_death_cancels_pending_credit_even_if_visible_hp_restored ... FAILED
+test zero_hp_before_pending_credit_cannot_craft ... FAILED
+test modal_after_admission_cancels_without_credit ... ok
+
+failures:
+
+---- queued_death_with_visible_hp_restored_before_action_cannot_craft stdout ----
+PG_BATTLESTAFF_LIFE profile=0 reverse=false mode=1 late=false hp=10 output_count=1 fine_delta=1250 inventory_unchanged=false
+
+thread 'queued_death_with_visible_hp_restored_before_action_cannot_craft' (3624) panicked at tests\life.rs:8:388:
+assertion `left == right` failed: profile0 reversefalse mode1 latefalse
+  left: Inventory { stack: Normal, placeholders: false, slots: [Some(Item { id: 1395, count: 1, vars: 0 }), None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, Some(Item { id: 571, count: 1, vars: 0 }), None, Some(Item { id: 1391, count: 1, vars: 0 }), None, None, None, None], modified: {0, 5, 19, 21, 23} }
+ right: Inventory { stack: Normal, placeholders: false, slots: [None, None, None, None, None, Some(Item { id: 1391, count: 1, vars: 0 }), None, None, None, None, None, None, None, None, None, None, None, None, None, Some(Item { id: 571, count: 1, vars: 0 }), None, Some(Item { id: 571, count: 1, vars: 0 }), None, Some(Item { id: 1391, count: 1, vars: 0 }), None, None, None, None], modified: {5, 19, 21, 23} }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- zero_hp_before_action_cannot_craft stdout ----
+PG_BATTLESTAFF_LIFE profile=0 reverse=false mode=0 late=false hp=0 output_count=1 fine_delta=1250 inventory_unchanged=false
+
+thread 'zero_hp_before_action_cannot_craft' (10372) panicked at tests\life.rs:8:388:
+assertion `left == right` failed: profile0 reversefalse mode0 latefalse
+  left: Inventory { stack: Normal, placeholders: false, slots: [Some(Item { id: 1395, count: 1, vars: 0 }), None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, Some(Item { id: 571, count: 1, vars: 0 }), None, Some(Item { id: 1391, count: 1, vars: 0 }), None, None, None, None], modified: {0, 5, 19, 21, 23} }
+ right: Inventory { stack: Normal, placeholders: false, slots: [None, None, None, None, None, Some(Item { id: 1391, count: 1, vars: 0 }), None, None, None, None, None, None, None, None, None, None, None, None, None, Some(Item { id: 571, count: 1, vars: 0 }), None, Some(Item { id: 571, count: 1, vars: 0 }), None, Some(Item { id: 1391, count: 1, vars: 0 }), None, None, None, None], modified: {5, 19, 21, 23} }
+
+---- queued_death_cancels_pending_credit_even_if_visible_hp_restored stdout ----
+PG_BATTLESTAFF_LIFE profile=0 reverse=false mode=1 late=true hp=10 output_count=1 fine_delta=1250 inventory_unchanged=false
+
+thread 'queued_death_cancels_pending_credit_even_if_visible_hp_restored' (1912) panicked at tests\life.rs:8:388:
+assertion `left == right` failed: profile0 reversefalse mode1 latetrue
+  left: Inventory { stack: Normal, placeholders: false, slots: [Some(Item { id: 1395, count: 1, vars: 0 }), None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, Some(Item { id: 571, count: 1, vars: 0 }), None, Some(Item { id: 1391, count: 1, vars: 0 }), None, None, None, None], modified: {0, 5, 19, 21, 23} }
+ right: Inventory { stack: Normal, placeholders: false, slots: [None, None, None, None, None, Some(Item { id: 1391, count: 1, vars: 0 }), None, None, None, None, None, None, None, None, None, None, None, None, None, Some(Item { id: 571, count: 1, vars: 0 }), None, Some(Item { id: 571, count: 1, vars: 0 }), None, Some(Item { id: 1391, count: 1, vars: 0 }), None, None, None, None], modified: {5, 19, 21, 23} }
+
+---- zero_hp_before_pending_credit_cannot_craft stdout ----
+PG_BATTLESTAFF_LIFE profile=0 reverse=false mode=0 late=true hp=0 output_count=1 fine_delta=1250 inventory_unchanged=false
+
+thread 'zero_hp_before_pending_credit_cannot_craft' (9948) panicked at tests\life.rs:8:388:
+assertion `left == right` failed: profile0 reversefalse mode0 latetrue
+  left: Inventory { stack: Normal, placeholders: false, slots: [Some(Item { id: 1395, count: 1, vars: 0 }), None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, Some(Item { id: 571, count: 1, vars: 0 }), None, Some(Item { id: 1391, count: 1, vars: 0 }), None, None, None, None], modified: {0, 5, 19, 21, 23} }
+ right: Inventory { stack: Normal, placeholders: false, slots: [None, None, None, None, None, Some(Item { id: 1391, count: 1, vars: 0 }), None, None, None, None, None, None, None, None, None, None, None, None, None, Some(Item { id: 571, count: 1, vars: 0 }), None, Some(Item { id: 571, count: 1, vars: 0 }), None, Some(Item { id: 1391, count: 1, vars: 0 }), None, None, None, None], modified: {5, 19, 21, 23} }
+
+
+failures:
+    queued_death_cancels_pending_credit_even_if_visible_hp_restored
+    queued_death_with_visible_hp_restored_before_action_cannot_craft
+    zero_hp_before_action_cannot_craft
+    zero_hp_before_pending_credit_cannot_craft
+
+test result: FAILED. 1 passed; 4 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.42s
+
+error: test failed, to rerun pass `--test life`

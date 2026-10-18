@@ -1,0 +1,62 @@
+{
+  "tested_integration_sha": "e3ced82211ee438fd6a74a110d435e6746295a16",
+  "suite": "battlestaff-lifecycle",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "FAIL",
+  "resource": {
+    "available_ram": 7250837504,
+    "active_compilers": [],
+    "cpu_percent": 10.76,
+    "cpu_samples": [
+      17.7734375,
+      12.745098039215685,
+      1.7681728880157177
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained",
+    "disk_free": 22921183232,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "4186182cb68425d4f343acdcc67867b67bcb028b",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\e3ced82211ee438fd6a74a110d435e6746295a16\\external-harness-4407630800\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-battlestaff-lifecycle-e3ced82211ee438fd6a74a110d435e6746295a16-1792309680874394800\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\e3ced82211ee438fd6a74a110d435e6746295a16\\external-harness-4407630800\\Cargo.toml"
+      ],
+      "exit_code": 101,
+      "tests_passed": 1,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-battlestaff-lifecycle-e3ced82211ee438fd6a74a110d435e6746295a16-1792309680874394800\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative battlestaff-lifecycle scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-battlestaff-lifecycle-e3ced82211ee438fd6a74a110d435e6746295a16-1792309680874394800\\harness\\life.rs": "709aab956f5017aba904a99e166d8d83e5cdf97698c13b215175a7f1bc955154"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\bindings-6bdfbf0bbe5ede5d.exe": "5a57d0787eae8e87f862cdd887755150d7009016887f7159c6c53f16e59beba3",
+    "target\\debug\\deps\\gielinor_server-7abd10c65476b4d7.exe": "fdb9bfccf05ab1db367e1170f03da047b41116178f29efa4bcc224712848cd20",
+    "target\\debug\\deps\\legacy-0d6966e4e4f8f36e.exe": "1d5da6799cc2bb4fa10de42a8260d5475baf0377fce08a92678d254697c4bf72",
+    "target\\debug\\deps\\life-111a171592a28233.exe": "3a63d107d11e2c995001505b40546b2095bf518705780b8696bd4b6de16cee3f",
+    "target\\debug\\deps\\manual-cb4cf07c8fd0dce8.exe": "15d163575bd8f5398f4f82d8d06738af61bd8d7fabd86669027f699971f617e0"
+  }
+}

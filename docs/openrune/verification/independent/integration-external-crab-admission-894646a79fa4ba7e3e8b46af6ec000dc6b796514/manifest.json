@@ -1,0 +1,8 @@
+{
+  "tested_integration_sha": "894646a79fa4ba7e3e8b46af6ec000dc6b796514",
+  "suite": "crab-admission",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "BLOCKED",
+  "reason": "Measured-resource deferral; no substitute target: Measured resource guard blocked; no other process altered"
+}

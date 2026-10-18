@@ -1,0 +1,61 @@
+{
+  "tested_integration_sha": "894646a79fa4ba7e3e8b46af6ec000dc6b796514",
+  "suite": "crab-bindings",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 7343128576,
+    "active_compilers": [],
+    "cpu_percent": 32.97,
+    "cpu_samples": [
+      32.68482490272373,
+      22.52427184466019,
+      43.689320388349515
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained",
+    "disk_free": 22576734208,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "13bb2b0a070b7464a5bfc8a9dfe7eab9dc992e65",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\894646a79fa4ba7e3e8b46af6ec000dc6b796514\\external-harness-9127198200\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-crab-bindings-894646a79fa4ba7e3e8b46af6ec000dc6b796514\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\894646a79fa4ba7e3e8b46af6ec000dc6b796514\\external-harness-9127198200\\Cargo.toml",
+        "--",
+        "--nocapture"
+      ],
+      "exit_code": 0,
+      "tests_passed": 1,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-crab-bindings-894646a79fa4ba7e3e8b46af6ec000dc6b796514\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative crab-bindings scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-crab-bindings-894646a79fa4ba7e3e8b46af6ec000dc6b796514\\harness\\bindings.rs": "3ebc10a02b0da579457da8364175aed542603e608e72e451eb76c1a05021e340"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\bindings-d35fdf0246951264.exe": "5b8d19f684ce549baf01fb94d1df7625bc4737c21ca69b3c70857f9bda24b1ac",
+    "target\\debug\\deps\\outcomes-e6debee0b5977b0d.exe": "a61af3f1bfa60ef85fb580a9498d4419cb6baaadc649443709231856c99f8c31"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "tested_integration_sha": "894646a79fa4ba7e3e8b46af6ec000dc6b796514",
+  "suite": "crab-admission",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 6805184512,
+    "active_compilers": [
+      "\"cargo.exe\",\"4188\",\"RDP-Tcp#0\",\"2\",\"23,492 K\"",
+      "\"rustc.exe\",\"15344\",\"RDP-Tcp#0\",\"2\",\"276,140 K\"",
+      "\"cargo.exe\",\"7060\",\"RDP-Tcp#0\",\"2\",\"21,496 K\"",
+      "\"rustc.exe\",\"9144\",\"RDP-Tcp#0\",\"2\",\"257,508 K\""
+    ],
+    "cpu_percent": 55.27,
+    "cpu_samples": [
+      40.0390625,
+      75.78125,
+      50.0
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Project resources.ps1 / integration-capacity.ps1 sampled 70% CPU; stricter owned 6 GiB RAM retained",
+    "disk_free": 22148313088,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "13bb2b0a070b7464a5bfc8a9dfe7eab9dc992e65",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\894646a79fa4ba7e3e8b46af6ec000dc6b796514\\external-harness-3249086300\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-crab-admission-894646a79fa4ba7e3e8b46af6ec000dc6b796514-1792310079206993900\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\894646a79fa4ba7e3e8b46af6ec000dc6b796514\\external-harness-3249086300\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 1,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-crab-admission-894646a79fa4ba7e3e8b46af6ec000dc6b796514-1792310079206993900\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative crab-admission scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-crab-admission-894646a79fa4ba7e3e8b46af6ec000dc6b796514-1792310079206993900\\harness\\outcomes.rs": "7a9af5ab0db53f0bf3f64b204ca8050af2e49f035b5f3c78c720b5a5b5e9686c"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\bindings-d35fdf0246951264.exe": "5b8d19f684ce549baf01fb94d1df7625bc4737c21ca69b3c70857f9bda24b1ac",
+    "target\\debug\\deps\\outcomes-e6debee0b5977b0d.exe": "b104188f98aea8b4f6f13e8a0ee0a6fea606288bd56fe61c07224336e5e25795"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "tested_integration_sha": "e3ced82211ee438fd6a74a110d435e6746295a16",
+  "suite": "battlestaff-matrix",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "BLOCKED",
+  "reason": "Measured-resource deferral; no substitute target: Measured resource guard blocked; no other process altered"
+}

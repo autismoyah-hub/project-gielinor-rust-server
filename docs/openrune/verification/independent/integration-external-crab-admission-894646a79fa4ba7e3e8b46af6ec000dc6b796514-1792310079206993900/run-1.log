@@ -1,0 +1,17 @@
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\894646a79fa4ba7e3e8b46af6ec000dc6b796514\external-harness-3249086300)
+warning: function `threshold` is never used
+ --> tests\outcomes.rs:6:4
+  |
+6 | fn threshold(level:i32)->u32{let l=level.clamp(1,99);((40*98+200*(l-1)+49)/98+1).clamp(0,256) as u32}
+  |    ^^^^^^^^^
+  |
+  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `proving-ground-energy` (test "outcomes") generated 1 warning
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.80s
+     Running tests\outcomes.rs (C:\Projects\OSRSRSPS\agent7-verification\work\894646a79fa4ba7e3e8b46af6ec000dc6b796514\target\debug\deps\outcomes-e6debee0b5977b0d.exe)
+
+running 1 test
+test thirty_invalid_input_policy_or_credit_cases_refuse_before_rng ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
