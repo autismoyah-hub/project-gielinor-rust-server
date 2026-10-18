@@ -10,6 +10,10 @@ use std::collections::BTreeMap;
 
 #[derive(Clone, Debug)]
 pub enum Action {
+    SwapOverlay {
+        from: u16,
+        to: u16,
+    },
     Events {
         component: Component,
         start: i32,
@@ -126,12 +130,56 @@ impl Hooks {
         insert("settings_side", settings)?;
         Ok(hooks)
     }
-    /// Prepare all output before publishing event permissions, so failure is atomic.
+    /// Restore only overlays still owned by the closing interface. A later
+    /// replacement must not be overwritten by an old modal's close callback.
+    pub fn closed(&self, interface: u16, ui: &mut State) -> Result<Vec<Packet>, String> {
+        let mut next = ui.clone();
+        let mut packets = Vec::new();
+        for restore in next
+            .overlay_restores
+            .remove(&interface)
+            .unwrap_or_default()
+            .into_iter()
+            .rev()
+        {
+            if next.overlays.get(restore.parent) != Some(restore.replacement) {
+                continue;
+            }
+            let parent = next.translate(restore.parent);
+            next.open_sub(restore.parent, restore.original, true)
+                .map_err(str::to_owned)?;
+            packets.push(interfaces::close_sub(parent.0));
+            packets.push(interfaces::open_sub(parent.0, restore.original, true));
+            packets.extend(self.opened(restore.original, &mut next)?);
+        }
+        *ui = next;
+        Ok(packets)
+    }
+
+    /// Prepare all output before publishing UI state, so failure is atomic.
     pub fn opened(&self, interface: u16, ui: &mut State) -> Result<Vec<Packet>, String> {
-        let mut next = ui.events.clone();
+        let mut next = ui.clone();
         let mut packets = Vec::new();
         for action in self.opens.get(&interface).into_iter().flatten() {
             match action {
+                Action::SwapOverlay { from, to } => {
+                    if from == to {
+                        return Err("Invalid overlay swap".into());
+                    }
+                    if let Some(parent) = next.overlays.parent(*from) {
+                        let physical = next.translate(parent);
+                        next.open_sub(parent, *to, true).map_err(str::to_owned)?;
+                        next.overlay_restores.entry(interface).or_default().push(
+                            gielinor_world::ui::OverlayRestore {
+                                parent,
+                                original: *from,
+                                replacement: *to,
+                            },
+                        );
+                        packets.push(interfaces::close_sub(physical.0));
+                        packets.push(interfaces::open_sub(physical.0, *to, true));
+                    }
+                }
                 Action::Events {
                     component,
                     start,
@@ -140,7 +188,8 @@ impl Hooks {
                 } => {
                     let packet = interfaces::events(component.0, *start, *end, *mask)
                         .map_err(|e| format!("{e:?}"))?;
-                    next.add(*component, *start, *end, *mask)
+                    next.events
+                        .add(*component, *start, *end, *mask)
                         .map_err(str::to_owned)?;
                     packets.push(packet);
                 }
@@ -149,7 +198,7 @@ impl Hooks {
                 }
             }
         }
-        ui.events = next;
+        *ui = next;
         Ok(packets)
     }
 }
@@ -186,5 +235,59 @@ mod tests {
         assert!(!ui
             .events
             .enabled(component, -1, 0, operation_mask(3).unwrap()));
+    }
+    #[test]
+    fn scoped_overlay_replacement_restores_inventory_permissions_and_respects_later_owner() {
+        for foreign in [false, true] {
+            let mut hooks = Hooks::default();
+            let held = Component::new(149, 0);
+            hooks.inventory(held, 28).unwrap();
+            hooks
+                .opens
+                .insert(192, vec![Action::SwapOverlay { from: 149, to: 268 }]);
+            let mut ui = State::default();
+            let parent = Component::new(161, 61);
+            ui.open_sub(parent, 149, true).unwrap();
+            hooks.opened(149, &mut ui).unwrap();
+            assert!(ui.events.enabled(held, 0, 0, operation_mask(3).unwrap()));
+            hooks.opened(192, &mut ui).unwrap();
+            assert_eq!(ui.overlays.get(parent), Some(268));
+            assert!(!ui.events.enabled(held, 0, 0, operation_mask(3).unwrap()));
+            if foreign {
+                ui.open_sub(parent, 999, true).unwrap();
+            }
+            hooks.closed(192, &mut ui).unwrap();
+            assert!(ui.overlay_restores.is_empty());
+            assert_eq!(
+                ui.overlays.get(parent),
+                Some(if foreign { 999 } else { 149 })
+            );
+            assert_eq!(
+                ui.events.enabled(held, 0, 0, operation_mask(3).unwrap()),
+                !foreign
+            );
+        }
+    }
+    #[test]
+    fn scoped_overlay_open_failure_does_not_publish_replacement_or_permissions() {
+        let mut hooks = Hooks::default();
+        hooks.opens.insert(
+            192,
+            vec![
+                Action::SwapOverlay { from: 149, to: 268 },
+                Action::Events {
+                    component: Component::new(192, 23),
+                    start: 65536,
+                    end: 65536,
+                    mask: 1,
+                },
+            ],
+        );
+        let mut ui = State::default();
+        let parent = Component::new(161, 61);
+        ui.open_sub(parent, 149, true).unwrap();
+        assert!(hooks.opened(192, &mut ui).is_err());
+        assert_eq!(ui.overlays.get(parent), Some(149));
+        assert!(ui.overlay_restores.is_empty());
     }
 }

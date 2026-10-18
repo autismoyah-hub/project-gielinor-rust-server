@@ -1,6 +1,6 @@
 //! Guild chest only; deposit box, Collect and guild entry are separate.
 use super::{Definitions, Symbols};
-use gielinor_world::{bank_access::Gate, variables::Varbit};
+use gielinor_world::bank_access::Gate;
 pub fn crafting_guild_bank(
     locations: &Symbols,
     stats: &Symbols,
@@ -57,6 +57,7 @@ pub fn crafting_guild_bank(
     Ok((
         14886,
         Gate {
+            kind: gielinor_world::bank_access::Kind::Full,
             members: true,
             skill: 12,
             base_level: 99,
@@ -67,6 +68,7 @@ pub fn crafting_guild_bank(
 #[cfg(test)]
 mod tests {
     use super::*;
+    use gielinor_world::variables::Varbit;
     #[test]
     fn crafting_guild_bank_pins_use_and_persistent_reward_bits() {
         let mut d = Definitions {
@@ -117,6 +119,29 @@ mod tests {
         assert_eq!(id, 14886);
         assert_eq!(g.base_level, 99);
         assert!(g.members);
+        let mut deposit = gielinor_cache::locations::LocationType::decode(b"\0").unwrap();
+        deposit.name = "Bank Deposit Box".into();
+        deposit.ops[0] = Some("Deposit".into());
+        d.locations.insert(29103, deposit);
+        let mut locations = l.clone();
+        locations.insert("diary_guild_deposit_box".into(), 29103);
+        let (box_id, box_gate) = crate::content::guild_deposit_box(&locations, &n, &b, &d).unwrap();
+        assert_eq!(box_id, 29103);
+        assert_eq!(box_gate.kind, gielinor_world::bank_access::Kind::DepositBox);
+        assert_eq!(g.kind, gielinor_world::bank_access::Kind::Full);
+        assert_eq!(
+            box_gate
+                .any_bits
+                .iter()
+                .map(|b| (b.base, b.lsb, b.msb))
+                .collect::<Vec<_>>(),
+            g.any_bits
+                .iter()
+                .map(|b| (b.base, b.lsb, b.msb))
+                .collect::<Vec<_>>()
+        );
+        d.locations.get_mut(&29103).unwrap().ops[0] = Some("Use".into());
+        assert!(crate::content::guild_deposit_box(&locations, &n, &b, &d).is_err());
         d.varbits.get_mut(&4506).unwrap().lsb = 6;
         assert!(crafting_guild_bank(&l, &n, &b, &d).is_err());
     }

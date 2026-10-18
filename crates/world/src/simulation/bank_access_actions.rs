@@ -22,6 +22,7 @@ impl World {
         self.events.push(WorldEvent::LocationBankRequested {
             actor,
             request: Request {
+                kind: gate.kind,
                 location,
                 origin: p.movement.coords,
                 last_movement: p.movement.last_movement,
@@ -44,7 +45,9 @@ impl World {
             && self
                 .location_banks
                 .get(&request.location.id)
-                .is_some_and(|g| g.allows(p.member, &p.data.stats, &p.data.variables))
+                .is_some_and(|g| {
+                    g.kind == request.kind && g.allows(p.member, &p.data.stats, &p.data.variables)
+                })
             && self.door_target(request.location).is_ok_and(|target| {
                 target.reached(&self.collision, p.movement.coords, p.movement.size)
             })
@@ -91,6 +94,7 @@ mod tests {
         w.location_banks.insert(
             14886,
             Gate {
+                kind: crate::bank_access::Kind::Full,
                 members: true,
                 skill: 12,
                 base_level: 99,
@@ -183,6 +187,27 @@ mod tests {
                 assert!(!w.location_bank_request_valid(a, *request));
             }
         }
+    }
+    #[test]
+    fn location_bank_request_binds_presentation_kind_and_rejects_reconfiguration() {
+        let (mut w, actor, location) = setup(99, 99, 0, true, false);
+        w.location_banks.get_mut(&location.id).unwrap().kind = crate::bank_access::Kind::DepositBox;
+        w.request_location_bank(actor.slot as usize, location);
+        let request = w
+            .drain_events()
+            .into_iter()
+            .find_map(|event| {
+                if let WorldEvent::LocationBankRequested { request, .. } = event {
+                    Some(request)
+                } else {
+                    None
+                }
+            })
+            .unwrap();
+        assert_eq!(request.kind(), crate::bank_access::Kind::DepositBox);
+        assert!(w.location_bank_request_valid(actor, request));
+        w.location_banks.get_mut(&location.id).unwrap().kind = crate::bank_access::Kind::Full;
+        assert!(!w.location_bank_request_valid(actor, request));
     }
     #[test]
     fn guild_bank_access_walk_arrival_delay_and_disappearing_target() {

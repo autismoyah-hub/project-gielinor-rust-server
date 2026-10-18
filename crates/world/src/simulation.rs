@@ -26,6 +26,7 @@ mod melee_actions;
 mod movement_actions;
 pub use movement_actions::MovementInput;
 mod elemental_spell_actions;
+mod deposit_box_actions;
 mod bank_access_actions;
 mod worn_item_swap_actions;
 mod container_emptying_actions;
@@ -518,6 +519,7 @@ pub enum Action {
         item: i32,
     },
     OpenItemPack { slot: usize, item: i32 },
+    DepositBoxAll { worn:bool },
     SwapWornItem { slot: usize, item: i32 },
     ConvertHeldItem { slot: usize, item: i32 },
     EmptyContainer { slot: usize, item: i32 },
@@ -964,6 +966,7 @@ pub struct World {
     pub location_types: BTreeMap<u32, crate::loc_collision::LocCollision>,
     pub location_approach: BTreeMap<u32, u8>,
     pub doors: crate::doors::Catalog,
+    pub deposit_box: Option<crate::deposit_box::Config>,
     pub location_banks: BTreeMap<u32,crate::bank_access::Gate>,
     pub location_handlers: BTreeMap<(u32, u8), crate::location_content::Handler>,
     pub npc_options: crate::npc_options::Catalog,
@@ -1085,6 +1088,7 @@ impl Default for World {
             location_types: BTreeMap::new(),
             location_approach: BTreeMap::new(),
             doors: Default::default(),
+            deposit_box: None,
             location_banks: BTreeMap::new(),
             location_handlers: Default::default(),
             npc_options: Default::default(),
@@ -1895,6 +1899,7 @@ impl World {
                 self.events.push(WorldEvent::Bank { actor: id, result });
                 self.events.push(WorldEvent::BankCount(trace));
             }
+            Action::DepositBoxAll{worn} => self.deposit_box_all(id,worn)?,
             Action::Bank(request) => {
                 if p.protection.modal_button_protected() {
                     return Err(ActionError::Protected);

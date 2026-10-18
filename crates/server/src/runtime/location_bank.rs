@@ -34,7 +34,12 @@ impl<B: AccountBackend> Runtime<B> {
     ) -> io::Result<()> {
         if self.world.location_bank_request_valid(actor, request) {
             if let Some((main, side)) = self.npc_bank_parents {
-                self.open_bank(actor, main, side)?;
+                match request.kind() {
+                    gielinor_world::bank_access::Kind::Full => self.open_bank(actor, main, side)?,
+                    gielinor_world::bank_access::Kind::DepositBox => {
+                        self.open_deposit_box(actor)?
+                    }
+                }
             }
         }
         Ok(())

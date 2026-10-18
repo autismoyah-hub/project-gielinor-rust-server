@@ -417,6 +417,7 @@ pub fn run() -> io::Result<()> {
     runtime.configure_woodcutting(&names, None)?;
     runtime.configure_standard_tanners(&names)?;
     runtime.configure_crafting_guild_bank(&names)?;
+    runtime.configure_deposit_box(&names)?;
     runtime.configure_mining(&names)?;
     let offering_xp = names.id("param", "skill_xp")?;
     let offering_default = cache

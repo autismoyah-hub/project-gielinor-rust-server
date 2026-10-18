@@ -17,6 +17,8 @@ mod anvil;
 mod autocast_picker;
 mod dialogue;
 mod drop_dialog;
+mod bank_capacity;
+mod deposit_box;
 mod location_bank;
 mod equipment_buttons;
 mod chemistry_dialog;
@@ -275,6 +277,7 @@ pub struct Runtime<B: AccountBackend> {
     bank_insert: Option<gielinor_world::bank_actions::Binding>,
     bank_controls: BTreeMap<u32, gielinor_world::bank_actions::Control>,
     bank_presentation: Option<BankPresentation>,
+    deposit_box_presentation: Option<crate::deposit_box_ui::Presentation>,
     pub music_component: Option<u32>,
     npc_bank_parents: Option<(gielinor_world::ui::Component, gielinor_world::ui::Component)>,
     npc_spell_buttons: BTreeMap<u32, i32>,
@@ -337,6 +340,7 @@ impl<B: AccountBackend> Runtime<B> {
             bank_insert: None,
             bank_controls: BTreeMap::new(),
             bank_presentation: None,
+            deposit_box_presentation: None,
             music_component: None,
             npc_bank_parents: None,
             npc_spell_buttons: BTreeMap::new(),
@@ -962,36 +966,9 @@ impl<B: AccountBackend> Runtime<B> {
             .clone()
             .ok_or_else(|| io::Error::other("Banking not configured"))?;
         let config = self.world.banking.as_ref().unwrap();
-        let capacity = config.capacity;
         let notes = config.notes;
         let sidebar = config.sidebar.clone();
-        if capacity
-            .get(
-                &self
-                    .world
-                    .data(actor)
-                    .map_err(|e| io::Error::other(format!("{e:?}")))?
-                    .variables,
-            )
-            .map_err(|e| io::Error::other(format!("{e:?}")))?
-            == 0
-        {
-            let vars = &mut self
-                .world
-                .data_mut(actor)
-                .map_err(|e| io::Error::other(format!("{e:?}")))?
-                .variables;
-            if let Some(update) = capacity
-                .set(vars, bank.default_capacity)
-                .map_err(|e| io::Error::other(format!("{e:?}")))?
-            {
-                if let Some(connection) = self.connection(actor) {
-                    let packet = gielinor_protocol::varp::update(update.id, update.value);
-                    self.transport
-                        .send(connection, packet.opcode, &packet.payload)?;
-                }
-            }
-        }
+        self.ensure_bank_capacity(actor)?;
         let value = notes
             .bit
             .replace(
@@ -1140,6 +1117,11 @@ impl<B: AccountBackend> Runtime<B> {
         self.transport
             .send(connection, packet.opcode, &packet.payload)?;
         active.ui = ui;
+        for (_,interface) in &closed {
+            for packet in self.interface_hooks.closed(*interface,&mut active.ui).map_err(io::Error::other)? {
+                if let Some(hook_connection)=active.connection {self.transport.send(hook_connection,packet.opcode,&packet.payload)?;}
+            }
+        }
         if active.anvil_count.is_some_and(|dialog| {
             closed
                 .iter()
@@ -1362,6 +1344,11 @@ impl<B: AccountBackend> Runtime<B> {
             }
         }
         active.ui = ui;
+        for (_,interface) in &closed {
+            for packet in self.interface_hooks.closed(*interface,&mut active.ui).map_err(io::Error::other)? {
+                if let Some(hook_connection)=active.connection {self.transport.send(hook_connection,packet.opcode,&packet.payload)?;}
+            }
+        }
         if active.anvil_count.is_some_and(|dialog| {
             closed
                 .iter()
@@ -2588,6 +2575,11 @@ impl<B: AccountBackend> Runtime<B> {
                                                 opcode: packet.opcode,
                                                 reason: format!("{error:?}"),
                                             });
+                                        }
+                                        if let Some(action) = self.deposit_box_button(actor, &button) {
+                                            if let Err(error) = self.world.submit(actor, action) {
+                                                self.events.push(Event::PacketRejected { connection, actor, opcode: packet.opcode, reason: format!("{error:?}") });
+                                            }
                                         }
                                         let bank_action = self.bank_presentation.as_ref().and_then(|bank| {
                                             if let Some(&control) = self.bank_controls.get(&button.component) {

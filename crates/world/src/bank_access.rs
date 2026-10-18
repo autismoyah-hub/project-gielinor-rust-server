@@ -5,8 +5,14 @@ use crate::{
     variables::{Varbit, Variables},
     CoordGrid,
 };
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Kind {
+    Full,
+    DepositBox,
+}
 #[derive(Clone, Debug)]
 pub struct Gate {
+    pub kind: Kind,
     pub members: bool,
     pub skill: u8,
     pub base_level: u8,
@@ -26,7 +32,14 @@ impl Gate {
 }
 #[derive(Clone, Copy, Debug)]
 pub struct Request {
+    pub(crate) kind: Kind,
     pub(crate) location: Location,
     pub(crate) origin: CoordGrid,
     pub(crate) last_movement: i32,
+}
+
+impl Request {
+    pub fn kind(self) -> Kind {
+        self.kind
+    }
 }

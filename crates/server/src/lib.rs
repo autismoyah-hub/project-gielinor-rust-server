@@ -14,6 +14,7 @@ pub mod combat_tab;
 pub mod constructed;
 pub mod content;
 #[cfg(windows)]
+pub mod deposit_box_ui;
 pub mod dialogue;
 pub mod doors;
 pub mod drop_dialog;

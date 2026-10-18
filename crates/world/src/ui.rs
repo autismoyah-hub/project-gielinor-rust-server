@@ -118,8 +118,12 @@ impl Targets {
         (value != 0).then_some(value)
     }
 }
+#[derive(Debug, Clone, Copy)]
+pub struct OverlayRestore {pub parent:Component,pub original:u16,pub replacement:u16}
 #[derive(Debug, Clone, Default)]
 pub struct State {
+    /// Transient lifecycle ownership; never part of saved player state.
+    pub overlay_restores: BTreeMap<u16,Vec<OverlayRestore>>,
     pub gameframe: BTreeMap<Component, Component>,
     pub frame_resizable: bool,
     pub frame_width: u16,
