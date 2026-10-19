@@ -3,6 +3,7 @@ pub mod appearance;
 pub mod buffer;
 pub mod buttons;
 pub mod chat;
+pub mod camera;
 pub mod client_script;
 pub mod combat_updates;
 pub mod dialog;

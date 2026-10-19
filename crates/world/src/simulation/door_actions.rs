@@ -133,7 +133,8 @@ impl World {
             }
         }
         let target = self.door_target(loc)?;
-        let route = crate::routing::location_route(
+        let range=match action{LocationAction::Operation(op)=>self.location_handlers.get(&(loc.id,op)).and_then(|h|h.approach_range()),_=>None};
+        let route = if let Some(distance)=range{crate::routing::location_range_route(&self.collision,p.movement.coords,target,p.movement.size,distance,true,25,Strategy::Normal)}else{crate::routing::location_route(
             &self.collision,
             p.movement.coords,
             target,
@@ -141,7 +142,7 @@ impl World {
             true,
             25,
             Strategy::Normal,
-        );
+        )};
         let p = self.players.get_mut(actor.slot as usize).unwrap();
         p.queues.remove_all(bookcase_actions::QUEUE);
         p.queues.remove_all(crate::milking::QUEUE);
@@ -267,7 +268,7 @@ impl World {
             && source.x() + p.movement.size > loc.coords.x()
             && source.z() < loc.coords.z() + length
             && source.z() + p.movement.size > loc.coords.z();
-        let reached = overlap || target.reached(&self.collision, source, p.movement.size);
+        let reached = self.location_handlers.get(&(loc.id,operation)).and_then(|h|h.approach_range()).map_or_else(||overlap || target.reached(&self.collision,source,p.movement.size),|distance|target.rectangle.within_distance(source,p.movement.size,distance));
         if !reached && p.movement.destination().is_some() {
             return;
         }
@@ -411,6 +412,7 @@ impl World {
             self.request_facility_crafting(slot,loc,None);return;
         }
         if let Some(&handler) = self.location_handlers.get(&(loc.id, operation)) {
+            if matches!(handler,crate::location_content::Handler::Signpost){self.process_signpost(slot,loc);return;}
             if let crate::location_content::Handler::Crossing(rule)=handler{self.process_fence_crossing(slot,loc,rule);return;}
             if matches!(handler,crate::location_content::Handler::SpiralChoice){self.start_spiral_choice(slot,loc);return;}
             if let crate::location_content::Handler::Spiral(rule)=handler{self.process_spiral_stairs(slot,loc,rule);return;}

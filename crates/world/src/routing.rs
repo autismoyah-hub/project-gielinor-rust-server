@@ -101,6 +101,12 @@ pub fn location_route(
         |p| target.reached(map, p, size),
     )
 }
+/// Approach a location's adjusted bounds without requiring edge adjacency.
+pub fn location_range_route(map:&CollisionMap,source:CoordGrid,target:crate::loc_reach::Target,size:i32,distance:i32,move_near:bool,max_waypoints:usize,strategy:Strategy)->Route{
+    if !target.valid()||!(0..=64).contains(&distance){return Route::failed();}
+    find_route(map,source,target.rectangle.coords,size,move_near,max_waypoints,strategy,target.rectangle.dimensions(),|p|target.rectangle.within_distance(p,size,distance))
+}
+
 fn find_route(
     map: &CollisionMap,
     source: CoordGrid,

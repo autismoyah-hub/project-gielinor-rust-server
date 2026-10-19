@@ -23,6 +23,14 @@ impl Rectangle {
             (self.width, self.length)
         }
     }
+    /// Chebyshev distance between occupied tile bounds, independent of wall access.
+    pub fn within_distance(self,source:CoordGrid,size:i32,distance:i32)->bool{
+        if !self.valid()||source==CoordGrid::NULL||source.level()!=self.coords.level()||!(1..=64).contains(&size)||distance<0{return false;}
+        let(w,l)=self.dimensions();
+        let gap=|a:i32,extent:i32,b:i32,other:i32|(a-(b+other-1)).max(b-(a+extent-1)).max(0);
+        gap(source.x(),size,self.coords.x(),w)<=distance&&gap(source.z(),size,self.coords.z(),l)<=distance
+    }
+
     pub fn reached(self, map: &CollisionMap, source: CoordGrid, size: i32) -> bool {
         if !self.valid() || source.level() != self.coords.level() || !(1..=64).contains(&size) {
             return false;

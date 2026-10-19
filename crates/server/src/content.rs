@@ -1,4 +1,6 @@
 //! Resolve content's symbolic references against the same immutable type inputs as Kotlin.
+mod signposts;
+pub use signposts::{signposts,Signposts};
 mod fence_crossings;
 pub use fence_crossings::fence_crossings;
 mod spiral_stairs;

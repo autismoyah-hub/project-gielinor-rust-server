@@ -15,6 +15,7 @@ use std::{
 };
 mod anvil;
 mod autocast_picker;
+mod signposts;
 mod dialogue;
 mod drop_dialog;
 mod bank_capacity;
@@ -233,6 +234,7 @@ struct Active {
     prayer_dialog: Option<(u64, gielinor_world::ui::Component)>,
     prayer_notice: Option<crate::message_box::Active>,
     dialogue: Option<crate::dialogue::Active>,
+    signpost: bool,
     skill_multi: Option<crate::skill_multi::Active>,
     counted_assembly: Option<(u64,gielinor_world::counted_assembly::Request)>,
     anvil_count: Option<crate::anvil::CountDialog>,
@@ -271,6 +273,7 @@ pub struct Runtime<B: AccountBackend> {
     combat_updates: HashMap<gielinor_world::hits::Target, crate::combat_display::Display>,
     drop_presentation: Option<crate::drop_dialog::Presentation>,
     dialogue_presentation: Option<crate::dialogue::Presentation>,
+    signposts: Option<crate::content::Signposts>,
     smelting: Option<crate::smelting::Config>,
     dough_presentation: Option<crate::skill_multi::Presentation>,
     anvil: Option<crate::anvil::Config>,
@@ -335,6 +338,7 @@ impl<B: AccountBackend> Runtime<B> {
             zones_enabled: false,
             drop_presentation: None,
             dialogue_presentation: None,
+            signposts: None,
             smelting: None,
             dough_presentation: None,
             anvil: None,
@@ -1130,6 +1134,10 @@ impl<B: AccountBackend> Runtime<B> {
                 if let Some(hook_connection)=active.connection {self.transport.send(hook_connection,packet.opcode,&packet.payload)?;}
             }
         }
+        if active.signpost && closed.iter().any(|(_,interface)|*interface==135){
+            active.signpost=false;
+            if let Some(connection)=active.connection{let packet=gielinor_protocol::camera::reset();self.transport.send(connection,packet.opcode,&packet.payload)?;}
+        }
         if active.deposit_count.is_some_and(|dialog| closed.iter().any(|(_,interface)|*interface==dialog.interface)) {
             let dialog=active.deposit_count.take().unwrap();
             if self.world.quantity_dialog_token(actor).map_err(|e|io::Error::other(format!("{e:?}")))?==Some(dialog.token){
@@ -1364,6 +1372,10 @@ impl<B: AccountBackend> Runtime<B> {
             for packet in self.interface_hooks.closed(*interface,&mut active.ui).map_err(io::Error::other)? {
                 if let Some(hook_connection)=active.connection {self.transport.send(hook_connection,packet.opcode,&packet.payload)?;}
             }
+        }
+        if active.signpost && closed.iter().any(|(_,interface)|*interface==135){
+            active.signpost=false;
+            if let Some(connection)=active.connection{let packet=gielinor_protocol::camera::reset();self.transport.send(connection,packet.opcode,&packet.payload)?;}
         }
         if active.deposit_count.is_some_and(|dialog| closed.iter().any(|(_,interface)|*interface==dialog.interface)) {
             let dialog=active.deposit_count.take().unwrap();
@@ -3163,6 +3175,7 @@ impl<B: AccountBackend> Runtime<B> {
                             prayer_dialog: None,
                             prayer_notice: None,
                             dialogue: None,
+                            signpost: false,
                             skill_multi: None,
                             counted_assembly: None,
                             anvil_count: None,
@@ -3351,6 +3364,7 @@ impl<B: AccountBackend> Runtime<B> {
                             slot,
                         }));
                 }
+                event @ WorldEvent::SignpostRead{actor,location,origin} => {self.show_signpost(actor,location,origin)?;self.events.push(Event::World(event));}
                 event @ WorldEvent::PlayerExactMove{actor,offsets,delays,direction,sequence,sequence_delay,..} => {
                     if let Some(active)=self.active.get_mut(&actor){active.exact_move=Some(gielinor_protocol::appearance::ExactMove{offsets,delays,direction});active.sequence=Some((sequence,sequence_delay));}
                     self.events.push(Event::World(event));

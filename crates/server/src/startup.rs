@@ -235,6 +235,8 @@ pub fn configure<B: AccountBackend>(
     let crossings=crate::content::fence_crossings(n("loc"),n("seq"),&runtime.definitions).map_err(io::Error::other)?;
     if crossings.keys().any(|&(id,op)|runtime.world.has_location_handler(id,op)){return Err(io::Error::other("Conflicting fence crossing handlers"));}
     runtime.world.location_handlers.extend(crossings);
+    let signposts=crate::content::signposts(n("loc"),n("enum"),n("interface"),n("component"),&tables,&runtime.definitions).map_err(io::Error::other)?;
+    runtime.configure_signposts(signposts)?;
     runtime.world.multiway_area = Some(names.short("area", "multiway")?);
     runtime.combat_display = Some(crate::combat_display::resolve(
         names,

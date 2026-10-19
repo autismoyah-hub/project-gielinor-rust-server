@@ -16,6 +16,7 @@ mod combat_actions;
 #[cfg(test)]
 mod consumable_tests;
 mod dialogue_actions;
+mod signpost_actions;
 mod fence_actions;
 mod location_choice_actions;
 mod stair_actions;
@@ -706,6 +707,7 @@ pub enum WorldEvent {
         actor: ActorId,
         sound: u16,
     },
+    SignpostRead {actor:ActorId,location:crate::locations::Location,origin:CoordGrid},
     PlayerExactMove {actor:ActorId,from:CoordGrid,to:CoordGrid,offsets:[i8;4],delays:[u16;2],direction:u16,sequence:u16,sequence_delay:u8},
     PlayerAnimation {actor:ActorId,sequence:u16},
     PlayerSound {actor:ActorId,sound:u16},
