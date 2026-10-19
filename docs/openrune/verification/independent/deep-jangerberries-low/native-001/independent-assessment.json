@@ -1,0 +1,97 @@
+{
+  "implementation_id": "OR-MIG-0145",
+  "tested_sha": "16458999c44037d0e8b24fda975f60739f95ad4b",
+  "status": "PASS_SCOPED",
+  "scope": "Two genuine native selected Eat actions with fullbag/retainedduplicate match all5currentstat transitions, wholepost-admissionXP/base/gear conservation, authoritative selected traces and real acknowledgedsave/serverrestart/native reconnect. Prayer packet trajectory and absence of unchanged capped/above-base updates independently decoded.",
+  "feature": "jangerberries-low",
+  "native_begin": [
+    [
+      0,
+      0,
+      231,
+      52,
+      0,
+      99,
+      3,
+      99
+    ],
+    [
+      1,
+      13,
+      242,
+      54,
+      1,
+      101,
+      2,
+      100
+    ]
+  ],
+  "native_end": [
+    [
+      0,
+      0,
+      236,
+      54,
+      1,
+      101,
+      2,
+      100
+    ],
+    [
+      1,
+      13,
+      246,
+      56,
+      2,
+      101,
+      1,
+      100
+    ]
+  ],
+  "received_prayer": [
+    [
+      0,
+      0,
+      13034431
+    ],
+    [
+      235,
+      1,
+      13034431
+    ],
+    [
+      245,
+      2,
+      13034431
+    ]
+  ],
+  "reconnect_prayer": [
+    [
+      0,
+      2,
+      13034431
+    ]
+  ],
+  "qualifications": [
+    "ActualSkills BMP requires separate direct visual inspection; no visual PASS inferred from creation.",
+    "Minimum15/20sourcebootstrap before gameplay and passiveHP/boost/drained-stat restoration after actions remain separate from food effects.",
+    "V1remainsFAIL9selecteddeathcases. NativeF2P,interruption/recovery andfullV4/sourceclock/audio/animation obligations are separate; no wholecontractacceptance.",
+    "Ordinary berry food only; no potion,Herbloreuse,acquisition or production action."
+  ],
+  "evidence_sha256": {
+    "initial-state.json": "9eeefd821d65c6b30c4bc8ea2d9ce617e9fed93b8c9ed3d7745031f44059cbb7",
+    "build.json": "f96af3fcc1545cee3de92b589ebdce44f35f0816d8dcd055e4b66a351a0aa66b",
+    "frozen-observer/build.json": "ba8545895709e714a324ba78fcf0f4d2a9534f38493b9405234521a8ab78b834",
+    "frozen-observer/pg_observer.rs": "2ab2cd0e82331d401c0e4f880001b48a2f161be38d2a45ad602a4afe85ed2d57",
+    "produce/manifest.json": "ebf3f50447803e54885176f1d8272f4d1dc9767737585a1c096241814fea4739",
+    "produce/before.json": "9eeefd821d65c6b30c4bc8ea2d9ce617e9fed93b8c9ed3d7745031f44059cbb7",
+    "produce/after.json": "7c08423dd62b8aad855ffb66ee817284e294efbdb9f950b02815673e8e75d873",
+    "produce/client.log": "f352dcb2f9bff01e014c43784f9bbad5a86f347d13524d3cfc51d9041dd0fad3",
+    "produce/server.log": "91e4495ed4c8c262bbef32e09c1955df0ecfb5db67ba80dacb5357b2f5c71a54",
+    "relogin/manifest.json": "0cb0d0320d451c6f9afefec100579acc913b5fc949db9d2943fb75cec1d93bf4",
+    "relogin/before.json": "7c08423dd62b8aad855ffb66ee817284e294efbdb9f950b02815673e8e75d873",
+    "relogin/after.json": "8eac23869f8e103457ba04a5192a7e648b326672887298d6ca04d803eb8044a0",
+    "relogin/client.log": "d01489c64a5b520ced6b0caa1dbb2a37ec8b23fd965d070b826fd47a8080cb3e",
+    "relogin/server.log": "56de032e99e0ee91b34b11035cc0f5d0e76d4489319ab22643bea459e249db03"
+  }
+}

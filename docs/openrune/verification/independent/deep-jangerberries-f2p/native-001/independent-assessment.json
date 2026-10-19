@@ -1,0 +1,27 @@
+{
+  "implementation_id": "OR-MIG-0145",
+  "tested_sha": "16458999c44037d0e8b24fda975f60739f95ad4b",
+  "status": "PASS_SCOPED",
+  "scope": "Actual F2P visible Eat menu selected through native UI; backend membership refusal conserves full inventory/all current stats/XP/gear. No Food transition. Acknowledged save and actual server restart/native reconnect conserve the refusal state.",
+  "qualifications": [
+    "Whole contract remains V1 FAIL for separately proven death-state defects.",
+    "No potion or Herblore gameplay; source login minimum15/20 changes precede gameplay.",
+    "Native local image directly reviewed separately; no actor/audio parity claim."
+  ],
+  "evidence_sha256": {
+    "initial-state.json": "4aacb63f1a5b17082e2966856ef7aa284618a7c04594af7dd0dc6f5e2f74c08a",
+    "build.json": "f96af3fcc1545cee3de92b589ebdce44f35f0816d8dcd055e4b66a351a0aa66b",
+    "frozen-observer/build.json": "c257894d2bfa707ac30c504c679b1fbc7641174673eb97dfcc6b5625aff8da88",
+    "frozen-observer/pg_observer.rs": "1150ce4aaa0800ac4260baf17830ce27ea9aa400658f13a7566957e63252c3fc",
+    "produce/manifest.json": "aec405e3744866301a01cacb734dc73f31fe127afc056550032d9cfdd1cd686f",
+    "produce/before.json": "4aacb63f1a5b17082e2966856ef7aa284618a7c04594af7dd0dc6f5e2f74c08a",
+    "produce/after.json": "216491b3536f27e1d8f0f8e4b5fff29b0933cc60d747917da2dea1c188ee760b",
+    "produce/client.log": "4d4f9c62edc6f9e5cfa1f9edfbfb24f441273ab280e6702f90f6e10ce2f33700",
+    "produce/server.log": "ac6bbd58edab675d393091d0a30a56835a1b2fab5171d3668c394705e0cadc81",
+    "relogin/manifest.json": "4d4fd9f96795e14d87357353045a04caaaac2ddc3fa3f52ce6bb28975a9031a0",
+    "relogin/before.json": "216491b3536f27e1d8f0f8e4b5fff29b0933cc60d747917da2dea1c188ee760b",
+    "relogin/after.json": "37f58b97d75c16f968cbe58e49448fdd468de26a9ecc3154397f0775715c6725",
+    "relogin/client.log": "c3416f6e78cf5e15876c7d3f0f7df22820129980b86934f1517a9c5f8963b4a4",
+    "relogin/server.log": "865674e2583c5eda7c92f53328f5fd29f9312695d40612eb1a12d8a4ccb55c43"
+  }
+}

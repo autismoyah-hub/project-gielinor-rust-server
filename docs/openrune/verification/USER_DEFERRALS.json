@@ -31,7 +31,11 @@
     "OR-MIG-0061": "Shared Close boundary is eligible for nonchemistry quantity/modal checks only. Defer held/worn chemistry and charge-state native/lifecycle retests including PG-DEF-001/#123 candidate b11260e0f4d1b3eaad0fefc18112c2e8bdf5843e; preserve original e7 failure and keep issue open until independently retested.",
     "OR-MIG-0085": "Birdhouse manufacturing and held/worn tool cases remain eligible. Defer potion-outcome adapter gameplay regressions referenced by this shared change; ordinary compilation does not constitute chemistry gameplay testing.",
     "OR-MIG-0138": "Defer Ixcoztic29952Herblore15drain; Kovac27014Smithing remains eligible.",
-    "OR-MIG-0141": "Defer Greenman1909Herbloreboost at both revisions. Other nine ordinary ale profiles remain eligible."
+    "OR-MIG-0141": "Defer Greenman1909Herbloreboost at both revisions. Other nine ordinary ale profiles remain eligible.",
+    "OR-MIG-0148": "POTION gameplay/category orders/native potion clicks remain deferred. FOOD/COMBO-only gates, movement, non-potion attack clocks, death/reset and source comparison remain eligible. Compilation is not potion acceptance.",
+    "OR-MIG-0151": "Defer Food-Potion-Karambwan mixed orders. Ordinary3144food/Combo-only selected/menu/movement/clock/persistence checks remain eligible.",
+    "OR-MIG-0152": "Defer Equa-Potion-Toads mixed order and all Herblore ingredient-use recipes. Ordinary eating/native operation4 mapping for2128/2152 remains eligible.",
+    "OR-MIG-0154": "Defer following-potion gameplay and unreleased potion/Herblore context. Ordinary berry/cream Eat routing, selected transaction, food clocks and container reference checks remain eligible."
   },
   "native_features": [
     "combat",
@@ -45,8 +49,9 @@
     "chem-crash",
     "food-negative"
   ],
-  "next_eligible_contract": "OR-MIG-0137",
-  "next_action": "Continue pinned137native F2P/rapid duplicate/stale menu controls and unsaved recovery after completed native002sixDrink/rendered/save/restart campaign. V0PASS,V1FAIL18deathcases,V2/V3partial,V4facts sixhashespartial. Preserve native001launcherfailure and bothDBs. Original24V1FAIL18foodlife cases;original51V1FAIL18buriallife cases;vendor131V1PASS4976andnativepopulationBLOCKED;132/133/134lifeFAILretained;130historicalV0-V4ACCEPTED. FORGEe14b573159records147IDs validatorPASS,allnew143-147contracts read. Chemistry/Herblore/potions remainuserdeferred. Cleanup34909509324bytescompleted;all374EXE/DLLpaths retained. Publish source-only batch then immediately continue eligible tests.",
+  "next_eligible_contract": "OR-MIG-0145",
+  "next_action": "Pinned145V0PASS/V1FAIL9selecteddeathcases. Native low/cap/overcap allcompleted twoEat/realrestart/rawPrayer/Skillsframe assessments; percasePG_SEQUENCE829x2verified. ActivefreshF2Pnative001produce session42681, thenpreparedfreshdelaynative001. Servercfd5f02/clientnewrefusalcontrollerfrozenpercase; neverreseedexistingDBs. Wine137normal/F2P/unsavedHPjug anddiscriminating99to97rollback99recoverydonequalified; native001neutralized5to5coverage retained. FORGE7205ec9166records154IDsvalidatorPASS;POTION/Herblore portionsremainuserdeferred. Checkpoint37cc072published; subsequentberry/native/refuse/recoveryworkunpublished. ContinueeligibleFOOD/COMBO-only148orremainingpriorunit obligationsafterbatch; no endpointatcheckpoint.",
   "deferred_execution": "Chemistry interrupt-002 had already ended with a raw observer assertion failure when deferral arrived; owned graceful stop path recorded, no live chemistry run retained. Crash scenario build was resource-deferred and never executed. Do not launch new chemistry tests or silently classify unresolved assertions as implementation failures.",
-  "resource_policy": "PG-INFRA-012 resolved: invoke existing project Assert-ServerMemoryCapacity (memory/commit/paging) and sampled CPU<=70%; explicit Cargo-j1/two owned CPUs/BelowNormal. The extra owned6GiBfloor was not a user/project requirement and must not cause another false stop."
+  "resource_policy": "PG-INFRA-012 resolved: invoke existing project Assert-ServerMemoryCapacity (memory/commit/paging) and sampled CPU<=70%; explicit Cargo-j1/two owned CPUs/BelowNormal. The extra owned6GiBfloor was not a user/project requirement and must not cause another false stop.",
+  "resume_position": "145V0/V2PASS,V1FAIL9deathcases,V3/V4partial; allsuccessfulnative145casescomplete. 148exact3640ac1:600timeline60orders15refusals72attackWalk+18bothdeathhook sentinel checks+baselinecache8faultsPASS_SCOPED. Native001rawFAIL fixture: starterloginresetHP99to10, firstFood/Combobothcommit tick128 withreadyattack0 andthirdFoodrefusal; noimplfailure. Freshnative002Attack99seed avoidsreset, samebinary/controller, produceactive91711. Next inspect thenrealrelogin/assessment. FORGE71e39a8validatorPASS168records156IDs. Potions/Herbloredeferred. Continueaftercheckpoint."
 }

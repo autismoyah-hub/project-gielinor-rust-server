@@ -1,0 +1,26 @@
+warning: unused import: `Effect`
+ --> C:\Projects\OSRSRSPS\agent7-targets\3640ac17f8b4e7c293c9bc1fcb78ca1b96509744\crates\world\src\simulation\skillcape_vendor_actions.rs:3:30
+  |
+3 |     dialogue::{Conversation, Effect, Pending},
+  |                              ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `gielinor-world` (lib) generated 1 warning (run `cargo fix --lib -p gielinor-world` to apply 1 suggestion)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\3640ac17f8b4e7c293c9bc1fcb78ca1b96509744\external-harness-0236726300)
+warning: unused import: `State`
+ --> tests\prerng.rs:2:60
+  |
+2 | use gielinor_world::{consumable_clocks::{Kind,Policy,Rules,State},food::Edible,inventory::Item,npc::RandomSource,simulation::{Action,...
+  |                                                            ^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `proving-ground-energy` (test "prerng") generated 1 warning (run `cargo fix --test "prerng" -p proving-ground-energy` to apply 1 suggestion)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 18.59s
+     Running tests\prerng.rs (C:\Projects\OSRSRSPS\agent7-verification\work\3640ac17f8b4e7c293c9bc1fcb78ca1b96509744\target\debug\deps\prerng-76b0ad1fd1ddb2b7.exe)
+
+running 1 test
+test failed_native_admission_precedes_random_healing ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.19s

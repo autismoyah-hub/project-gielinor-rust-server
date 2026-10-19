@@ -1,0 +1,67 @@
+{
+  "tested_integration_sha": "16458999c44037d0e8b24fda975f60739f95ad4b",
+  "suite": "jangerberries-kernel",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "FAIL",
+  "resource": {
+    "available_ram": 6822354944,
+    "active_compilers": [
+      "\"cargo.exe\",\"8944\",\"RDP-Tcp#0\",\"2\",\"24,708 K\"",
+      "\"cargo.exe\",\"3404\",\"RDP-Tcp#0\",\"2\",\"21,176 K\""
+    ],
+    "cpu_percent": 40.15,
+    "cpu_samples": [
+      41.40625,
+      41.53543307086615,
+      37.5
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Existing project memory/commit/paging checks and sampled CPU ceiling; owned Cargo remains j1/two CPUs/BelowNormal",
+    "capacity_policy_sha256": "dc3c6e372de5369ab77c4ebbd7cf21c426d0916581e11f2377480eba79adcdfd",
+    "memory_preflight_exit": 0,
+    "memory_preflight_stdout": "Capacity: 6,478 MiB available, commit 62.2%, pages-in/s 1,679, disk 0.8 ms.\nCargo concurrency: -j 2\n",
+    "memory_preflight_stderr": "",
+    "disk_free": 55274786816,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "d3bda4356ada83ffc3b094187415088e0b454ea8",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\16458999c44037d0e8b24fda975f60739f95ad4b\\external-harness-1089098500\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-jangerberries-kernel-16458999c44037d0e8b24fda975f60739f95ad4b\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\16458999c44037d0e8b24fda975f60739f95ad4b\\external-harness-1089098500\\Cargo.toml",
+        "--",
+        "--nocapture"
+      ],
+      "exit_code": 101,
+      "tests_passed": 2,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-jangerberries-kernel-16458999c44037d0e8b24fda975f60739f95ad4b\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative jangerberries-kernel scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-jangerberries-kernel-16458999c44037d0e8b24fda975f60739f95ad4b\\harness\\healing.rs": "e54027b5c77b5752bf085298c76654db805fec0f085d7294af7cd1f2fff0f042"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\healing-9cde00b920be484d.exe": "6800c6404fe3cb2b0a0af03db1520d7b20fbe69fae223932f36f0ba4d2c08b48"
+  }
+}

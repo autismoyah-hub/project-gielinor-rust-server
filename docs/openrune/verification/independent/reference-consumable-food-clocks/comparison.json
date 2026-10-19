@@ -1,0 +1,67 @@
+{
+  "implementation_id": "OR-MIG-0148",
+  "tested_sha": "3640ac17f8b4e7c293c9bc1fcb78ca1b96509744",
+  "status": "PASS_REFERENCE_FACTS",
+  "scope": "Six exact protected source/Wiki hashes verified independently. Shared source deadline/state and food delay call sites, WikiFastFoods active-weapon-only/additive/combo prose read. Independent600timeline and72World attack cases match the selected Wiki rule, with intentionally different donor combat timing.",
+  "facts": [
+    "Both source and host food/combo gates expire at equality; Food then Combo permitted, Combo then Food blocked.",
+    "Donor adds combat delay to max(previous consumable contribution,now), then max with generic actionDelay; host adds to active effective action/weapon delay, and adds none when ready. These are different policies.",
+    "WikiFastFoods15264530 states active weapon attack delay gains3ordinary or2combo, ready gainsnone; ordinary+combo adds5.",
+    "Host shared action_delay is also used by skilling/interaction. Passing generic setter/Walk checks does not establish melee/ranged/spell equivalence or resolve all interaction edge cases."
+  ],
+  "verified_references": [
+    {
+      "kind": "openrune",
+      "reference": "content/other/consumables/src/main/kotlin/org.rsmod.content.other.consumables/ConsumableDelayState.kt",
+      "sha256": "282930b2ae9e746587761f15f2676c6e2fc34cac4d6f3ef16f49c2e400704915",
+      "availability": "protected_local_reference",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "independent_hash_check": "PASS"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/other/consumables/src/main/kotlin/org.rsmod.content.other.consumables/food/ConsumeFoodScript.kt",
+      "sha256": "5d2604be8d9f691a2788b11aeb752e6ea2fb8637ceec30c3ba512718ff104a2d",
+      "availability": "protected_local_reference",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "independent_hash_check": "PASS"
+    },
+    {
+      "kind": "openrune",
+      "reference": "or-cache/src/main/kotlin/dev/openrune/tables/consumables/food/FoodData.kt",
+      "sha256": "d13e1c07e15fbbda7b0f4854f7e0a8dd15b11a1ee1ce552f1168c5bd31e13f49",
+      "availability": "protected_local_reference",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "independent_hash_check": "PASS"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Food/Fast foods",
+      "sha256": "b14a3e7a7b362e86ee1c68f1f38d6872835a91cb5809cd38a0c802fc96ff7ef3",
+      "availability": "protected_local_reference",
+      "revision": "15264530",
+      "independent_hash_check": "PASS"
+    },
+    {
+      "kind": "wiki",
+      "reference": "King worm",
+      "sha256": "de51ba0be6d1fa561fb03fac6045c8f7d3a92d2eef0cc74a824df448af25894b",
+      "availability": "protected_local_reference",
+      "revision": "15292119",
+      "independent_hash_check": "PASS"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Food",
+      "sha256": "4b897f0028812e74a0545ac48c3f74137f5b8bad26297f3af5f5823bc4868729",
+      "availability": "protected_local_reference",
+      "revision": "15342734",
+      "independent_hash_check": "PASS"
+    }
+  ],
+  "limitations": [
+    "Potion references/gameplay remain user-deferred.",
+    "No full V4/source parity claim; underlying generic action clock versus real weapon-only semantics unresolved.",
+    "FoodData hash verified; all49candidate rows not independently exhaustively compared. Sound/toboggan/heal-followups remain separate."
+  ]
+}

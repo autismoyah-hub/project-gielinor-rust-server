@@ -1,0 +1,21 @@
+{
+  "implementation_id": "OR-MIG-0145",
+  "tested_sha": "16458999c44037d0e8b24fda975f60739f95ad4b",
+  "status": "PASS_SCOPED",
+  "scope": "Two actual native local-player decoded/applied Sequence829 delay0 blocks, exactly one per successful Eat and none for the refused repeat; does not claim rendered avatar/audio parity.",
+  "observations": [
+    [
+      330,
+      829,
+      0
+    ],
+    [
+      342,
+      829,
+      0
+    ]
+  ],
+  "evidence_sha256": {
+    "produce/client.log": "69e6caed9e98377aac7e637accb9500a15941521c4740ae30a8d174be3f0af01"
+  }
+}

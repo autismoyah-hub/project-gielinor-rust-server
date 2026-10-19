@@ -1,6 +1,3 @@
-   Compiling version_check v0.9.5 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\version_check-0.9.5)
-   Compiling generic-array v0.14.7 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\generic-array-0.14.7)
-   Compiling typenum v1.17.0 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\typenum-1.17.0)
 warning: unused import: `*`
    --> vendor\typenum-1.17.0\src\lib.rs:104:25
     |
@@ -10,8 +7,6 @@ warning: unused import: `*`
     = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
 
 warning: `typenum` (lib) generated 1 warning (run `cargo fix --lib -p typenum` to apply 1 suggestion)
-   Compiling autocfg v1.4.0 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\autocfg-1.4.0)
-   Compiling num-traits v0.2.19 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\num-traits-0.2.19)
 warning: hiding a lifetime that's elided elsewhere is confusing
    --> vendor\generic-array-0.14.7\src\lib.rs:235:33
     |
@@ -44,17 +39,6 @@ help: use `'_` for type paths
     |                                                            +++
 
 warning: `generic-array` (lib) generated 2 warnings (run `cargo fix --lib -p generic-array` to apply 2 suggestions)
-   Compiling crypto-common v0.1.6 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\crypto-common-0.1.6)
-   Compiling block-buffer v0.10.4 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\block-buffer-0.10.4)
-   Compiling tinyvec_macros v0.1.1 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\tinyvec_macros-0.1.1)
-   Compiling cfg-if v1.0.0 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\cfg-if-1.0.0)
-   Compiling tinyvec v1.10.0 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\tinyvec-1.10.0)
-   Compiling digest v0.10.7 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\digest-0.10.7)
-   Compiling num-integer v0.1.46 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\num-integer-0.1.46)
-   Compiling byteorder v1.5.0 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\byteorder-1.5.0)
-   Compiling adler2 v2.0.1 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\adler2-2.0.1)
-   Compiling miniz_oxide v0.8.9 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\miniz_oxide-0.8.9)
-   Compiling lewton v0.10.2 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\lewton-0.10.2)
 warning: field `codebook_entries` is never read
    --> vendor\lewton-0.10.2\src\header.rs:363:6
     |
@@ -101,7 +85,6 @@ help: consistently use `'a`
     |                                               ++++
 
 warning: `lewton` (lib) generated 4 warnings (run `cargo fix --lib -p lewton` to apply 1 suggestion)
-   Compiling num-bigint v0.4.6 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\num-bigint-0.4.6)
 warning: unnecessary `unsafe` block
   --> vendor\num-bigint-0.4.6\src\biguint\addition.rs:23:9
    |
@@ -117,8 +100,6 @@ warning: unnecessary `unsafe` block
    |         ^^^^^^ unnecessary `unsafe` block
 
 warning: `num-bigint` (lib) generated 2 warnings
-   Compiling sha2 v0.10.8 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\sha2-0.10.8)
-   Compiling libm v0.2.15 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\libm-0.2.15)
 warning: a method with this name may be added to the standard library in the future
    --> vendor\libm-0.2.15\src\math\support\big.rs:174:14
     |
@@ -382,8 +363,6 @@ warning: associated constants `SIGNED`, `MIN`, and `MAX` are never used
    |           ^^^
 
 warning: `libm` (lib) generated 18 warnings (run `cargo fix --lib -p libm` to apply 7 suggestions)
-   Compiling getrandom v0.2.16 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\getrandom-0.2.16)
-   Compiling libbz2-rs-sys v0.2.2 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\libbz2-rs-sys-0.2.2)
 warning: unused macro definition: `prefix`
   --> vendor\libbz2-rs-sys-0.2.2\src\bzlib.rs:71:14
    |
@@ -419,4 +398,4 @@ warning: associated function `from_mut` is never used
 
 warning: `libbz2-rs-sys` (lib) generated 4 warnings (run `cargo fix --lib -p libbz2-rs-sys` to apply 2 suggestions)
    Compiling gielinor-client v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source)
-    Finished `dev` profile [unoptimized] target(s) in 48.99s
+    Finished `dev` profile [unoptimized] target(s) in 3.89s

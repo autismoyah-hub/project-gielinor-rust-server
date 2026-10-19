@@ -1,0 +1,43 @@
+warning: unused import: `Effect`
+ --> C:\Projects\OSRSRSPS\agent7-targets\16458999c44037d0e8b24fda975f60739f95ad4b\crates\world\src\simulation\skillcape_vendor_actions.rs:3:30
+  |
+3 |     dialogue::{Conversation, Effect, Pending},
+  |                              ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `gielinor-world` (lib) generated 1 warning (run `cargo fix --lib -p gielinor-world` to apply 1 suggestion)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\16458999c44037d0e8b24fda975f60739f95ad4b\external-harness-2868025000)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 7.51s
+     Running tests\world.rs (C:\Projects\OSRSRSPS\agent7-verification\work\16458999c44037d0e8b24fda975f60739f95ad4b\target\debug\deps\world-ba6238c148f62dac.exe)
+
+running 3 tests
+PG_JANGER_LIFE slot=0 phase=0 hp=2 prayer=1 attack=101 defence=0 strength=100 retained=false violation=true
+
+thread 'actual_selected_dispatch_caps_prayer_without_full_restore_or_overcap_loss' (4108) panicked at tests\world.rs:118:17:
+assertion `left == right` failed
+  left: 0
+ right: 1
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test actual_selected_dispatch_caps_prayer_without_full_restore_or_overcap_loss ... FAILED
+PG_JANGER_LIFE slot=0 phase=1 hp=2 prayer=1 attack=101 defence=0 strength=100 retained=false violation=true
+PG_JANGER_LIFE slot=0 phase=2 hp=12 prayer=1 attack=101 defence=0 strength=100 retained=false violation=true
+PG_JANGER_LIFE slot=13 phase=0 hp=2 prayer=1 attack=101 defence=0 strength=100 retained=false violation=true
+PG_JANGER_LIFE slot=13 phase=1 hp=2 prayer=1 attack=101 defence=0 strength=100 retained=false violation=true
+PG_JANGER_LIFE slot=13 phase=2 hp=12 prayer=1 attack=101 defence=0 strength=100 retained=false violation=true
+PG_JANGER_LIFE slot=27 phase=0 hp=2 prayer=1 attack=101 defence=0 strength=100 retained=false violation=true
+PG_JANGER_LIFE slot=27 phase=1 hp=2 prayer=1 attack=101 defence=0 strength=100 retained=false violation=true
+PG_JANGER_LIFE slot=27 phase=2 hp=12 prayer=1 attack=101 defence=0 strength=100 retained=false violation=true
+PG_JANGER_LIFE_SUMMARY cases=9 violations=9;diagnostic completion is not acceptancePASS if violations>0
+test observe_unresolved_death_at_the_new_healing_target_independently ... ok
+PG_JANGER_WORLD_GUARD36 currentmember selected/vars/catalog/shape and lateinvalidrestoration/boost/drain refusebeforewholepublication PASS
+test current_member_and_late_malformed_policy_never_publish_partial_effects ... ok
+
+failures:
+
+failures:
+    actual_selected_dispatch_caps_prayer_without_full_restore_or_overcap_loss
+
+test result: FAILED. 2 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.97s
+
+error: test failed, to rerun pass `--test world`

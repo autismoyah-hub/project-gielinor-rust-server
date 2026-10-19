@@ -1,0 +1,36 @@
+   Compiling gielinor-world v0.1.0 (C:\Projects\OSRSRSPS\agent7-targets\3640ac17f8b4e7c293c9bc1fcb78ca1b96509744\crates\world)
+warning: unused import: `Effect`
+ --> C:\Projects\OSRSRSPS\agent7-targets\3640ac17f8b4e7c293c9bc1fcb78ca1b96509744\crates\world\src\simulation\skillcape_vendor_actions.rs:3:30
+  |
+3 |     dialogue::{Conversation, Effect, Pending},
+  |                              ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `gielinor-world` (lib) generated 1 warning (run `cargo fix --lib -p gielinor-world` to apply 1 suggestion)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\3640ac17f8b4e7c293c9bc1fcb78ca1b96509744\external-harness-0881960800)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 45.71s
+     Running tests\food.rs (C:\Projects\OSRSRSPS\agent7-verification\work\3640ac17f8b4e7c293c9bc1fcb78ca1b96509744\target\debug\deps\food-2ea7dc804475b411.exe)
+
+running 2 tests
+test independent_timeline_boundary_and_attack_matrix ... ok
+test queued_orders_expiry_and_failed_attempts_preserve_native_clocks ... FAILED
+
+failures:
+
+---- queued_orders_expiry_and_failed_attempts_preserve_native_clocks stdout ----
+PG_FOOD_CLOCK_WORLD60 authoritative queue category order/exactexpiry/fullbag/XP/equipment/noRNG PASS
+
+thread 'queued_orders_expiry_and_failed_attempts_preserve_native_clocks' (8708) panicked at tests\food.rs:50:67:
+assertion `left == right` failed
+  left: 1
+ right: 0
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    queued_orders_expiry_and_failed_attempts_preserve_native_clocks
+
+test result: FAILED. 1 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.03s
+
+error: test failed, to rerun pass `--test food`

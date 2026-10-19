@@ -1,0 +1,70 @@
+{
+  "tested_integration_sha": "16458999c44037d0e8b24fda975f60739f95ad4b",
+  "suite": "jangerberries-bindings",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 7367667712,
+    "active_compilers": [
+      "\"cargo.exe\",\"14524\",\"RDP-Tcp#0\",\"2\",\"23,456 K\"",
+      "\"rustc.exe\",\"16332\",\"RDP-Tcp#0\",\"2\",\"228,700 K\""
+    ],
+    "cpu_percent": 27.69,
+    "cpu_samples": [
+      16.796875,
+      32.681017612524464,
+      33.59375
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Existing project memory/commit/paging checks and sampled CPU ceiling; owned Cargo remains j1/two CPUs/BelowNormal",
+    "capacity_policy_sha256": "dc3c6e372de5369ab77c4ebbd7cf21c426d0916581e11f2377480eba79adcdfd",
+    "memory_preflight_exit": 0,
+    "memory_preflight_stdout": "Capacity: 6,856 MiB available, commit 60.0%, pages-in/s 120, disk 0.0 ms.\nCargo concurrency: -j 2\n",
+    "memory_preflight_stderr": "",
+    "disk_free": 54376226816,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "d3bda4356ada83ffc3b094187415088e0b454ea8",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\16458999c44037d0e8b24fda975f60739f95ad4b\\external-harness-2208720900\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-jangerberries-bindings-16458999c44037d0e8b24fda975f60739f95ad4b\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\16458999c44037d0e8b24fda975f60739f95ad4b\\external-harness-2208720900\\Cargo.toml",
+        "--",
+        "--nocapture"
+      ],
+      "exit_code": 0,
+      "tests_passed": 1,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-jangerberries-bindings-16458999c44037d0e8b24fda975f60739f95ad4b\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative jangerberries-bindings scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-jangerberries-bindings-16458999c44037d0e8b24fda975f60739f95ad4b\\harness\\bindings.rs": "df1108ef5e807dce98612b83b49be30d3d3e93695ab6491a84b9985355efacd0"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\bindings-4a3e8fab334ba270.exe": "3ce619087b14592f06edd129b443a2c5fe9013e0afd0cf60d227b9b5ef7ea952",
+    "target\\debug\\deps\\healing-9cde00b920be484d.exe": "c2888f103017a3071280c485e0aeb51743a2903a9f016409970e29d46b297262",
+    "target\\debug\\deps\\wine-e4888626ea0f9309.exe": "efc70c755e0ea6b13171fd29d80b383226e8da932ad80cbdc372b1093a07e309",
+    "target\\debug\\deps\\world-ba6238c148f62dac.exe": "d29269c16c94c430ffe2c313fcfbe5cad125f8689f530a8e4f17b8090abba2bf"
+  }
+}

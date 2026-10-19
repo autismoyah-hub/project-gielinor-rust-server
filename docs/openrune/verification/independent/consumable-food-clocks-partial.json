@@ -1,0 +1,23 @@
+{
+  "implementation_id": "OR-MIG-0148",
+  "tested_sha": "3640ac17f8b4e7c293c9bc1fcb78ca1b96509744",
+  "status": "PASS_SCOPED",
+  "scope": "600 independent FOOD/COMBO timeline cases,60 authoritative category-order/exact-expiry cases,15 invalid/refused action cases and72 active/ready attack-clock/setter/movement cases. No RNG, no potion fixtures/actions.",
+  "checks": {
+    "timeline": 600,
+    "authoritative_orders_expiry": 60,
+    "corrected_refusals": 15,
+    "attack_setter_walk": 72
+  },
+  "limitations": [
+    "All six three-category orders, potion stock/empty/refusal and potion regressions remain explicitly user-deferred. No full V1 PASS.",
+    "Original combined suite rawFAIL retained: all600timeline/60queue assertions completed, then owned vars-refusal expectation failed; plain fixedfood permits vars7. Existing item-var normalization concern retained separately, not relabeled as a clock defect. Corrected15case tail used count2; successful600+60 campaigns not replayed.",
+    "Native combat timing, real startup/full current catalog, real death paths/reconnect clocks and full source/Wiki comparison remain separate.",
+    "World fixtures controlled public API, not actual cache/native proof."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/integration-external-consumable-food-clocks-3640ac17f8b4e7c293c9bc1fcb78ca1b96509744/manifest.json": "f81794be7d4578b37785065ba709a5f2a43886b26fc2f907c4a318f4ad26964e",
+    "docs/openrune/verification/independent/integration-external-consumable-food-clocks-refusals-3640ac17f8b4e7c293c9bc1fcb78ca1b96509744/manifest.json": "20fa735c62ad083fba44e9c353e75fdd6856f9d93e1490391bc6e331054ffcb6",
+    "docs/openrune/verification/independent/integration-external-consumable-food-clocks-attack-3640ac17f8b4e7c293c9bc1fcb78ca1b96509744/manifest.json": "3fe51f019ecc08bbcbf8b7653ae1fbcebdc1f35f4bda2bd2146f7afab6bf73a1"
+  }
+}

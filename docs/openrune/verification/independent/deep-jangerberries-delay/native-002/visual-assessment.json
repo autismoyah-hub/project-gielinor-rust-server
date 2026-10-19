@@ -1,0 +1,10 @@
+{
+  "implementation_id": "OR-MIG-0145",
+  "tested_sha": "16458999c44037d0e8b24fda975f60739f95ad4b",
+  "status": "PASS_SCOPED",
+  "scope": "Directly viewed actual unedited native Skills frame: Prayer2/99,HP57/99,Attack101/99,Strength100/99,Defence2/99; two berry chat messages. Matches observed native state after two successful Eat actions and one refused repeat.",
+  "private_frame": {
+    "path": "work/native-jangerberries-delay/native-002/jangerberries-delay-skills.bmp",
+    "sha256": "18912c18260f4ef55780c252054f2fe9056d0cb07ae08191c356dc4133466ac4"
+  }
+}

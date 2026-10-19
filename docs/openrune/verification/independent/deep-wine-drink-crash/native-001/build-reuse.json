@@ -1,0 +1,4 @@
+{
+  "source": "deep-wine-drink/native-002/build.json",
+  "scope": "Same exact137server binary reused, not recompiled. New unsaved-recovery scenario on a fresh disposable account; no old successful account overwritten or replayed."
+}

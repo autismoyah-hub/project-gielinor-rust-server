@@ -1,0 +1,12 @@
+{
+  "implementation_id": "OR-MIG-0145",
+  "tested_sha": "16458999c44037d0e8b24fda975f60739f95ad4b",
+  "status": "PASS_SCOPED",
+  "scope": "Directly inspected actualnative Skills frame:Prayer99/99,HP99/99,Attack101/99,Strength100/99,Defence0/99 andtwo berry messages. Genuine existingrenderer, no edited/reconstructedpixels. Scene/playeranimation/audio parity not claimed.",
+  "private_frame": {
+    "path": "work/native-jangerberries-cap/native-001/jangerberries-cap-skills.bmp",
+    "sha256": "7da84ec2efc9ffc427140fb00c6488213ee51d3f757e0d14e700b1bfd2aca7fa",
+    "width": 765,
+    "signed_height": -503
+  }
+}

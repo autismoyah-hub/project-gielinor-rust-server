@@ -1,0 +1,12 @@
+{
+  "implementation_id": "OR-MIG-0145",
+  "tested_sha": "16458999c44037d0e8b24fda975f60739f95ad4b",
+  "status": "PASS_SCOPED",
+  "scope": "Directly viewed actual native Skills rendering: Prayer2/99,HP56/99,Attack101/99,Strength100/99,Defence1/99 and two berry chat messages. Matches native source-free observer readings after two genuine Eat actions. Scene/player/audio parity is not claimed; actual existing native interface renderer used, no reconstructed or edited pixels.",
+  "private_frame": {
+    "path": "work/native-jangerberries-low/native-001/jangerberries-low-skills.bmp",
+    "sha256": "0bbd704b9f33f6e0d795d8e43780d54f5b327449837ed4d17b7c8ecd27449b0d",
+    "width": 765,
+    "signed_height": -503
+  }
+}

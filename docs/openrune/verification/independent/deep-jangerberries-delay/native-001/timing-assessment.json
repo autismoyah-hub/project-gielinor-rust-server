@@ -1,0 +1,19 @@
+{
+  "implementation_id": "OR-MIG-0145",
+  "tested_sha": "16458999c44037d0e8b24fda975f60739f95ad4b",
+  "status": "INCONCLUSIVE_TIMING",
+  "scope": "Attempted early native Eat reached authoritative commit five ticks after first commit; configured food delay is three. Both actions validly committed after expiry. The controller waited for delivered inventory/stat updates before issuing repeat; transport/update latency invalidated early-input assumption. No implementation defect inferred.",
+  "server_commit_ticks": [
+    249,
+    254
+  ],
+  "configured_delay": 3,
+  "next_action": "Use a fresh disposable run with two distinct genuine menu selections dispatched before network polling; retain this failed attempt and its saved database unchanged.",
+  "evidence_sha256": {
+    "produce/manifest.json": "568a93a63b0860a73ba98e2783e3293325c46efbbf4a9ae994478aacd6a873d6",
+    "produce/server.log": "57b3cd170520f92863501aacb38d7533bfa669f0358cc0a8174e124c06f51fd6",
+    "produce/client.log": "131ff93c20ae1f28085faa52327013ae0fae61a281f523df4afa5b5f9fc8203f",
+    "produce/after.json": "7f711e139e91b988f1e8c2eda6fedd529eefa9dcf45d690031a3b85644969dd9",
+    "frozen-observer/pg_observer.rs": "1150ce4aaa0800ac4260baf17830ce27ea9aa400658f13a7566957e63252c3fc"
+  }
+}

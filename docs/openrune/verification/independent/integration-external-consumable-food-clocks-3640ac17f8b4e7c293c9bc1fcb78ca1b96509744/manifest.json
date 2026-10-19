@@ -1,0 +1,65 @@
+{
+  "tested_integration_sha": "3640ac17f8b4e7c293c9bc1fcb78ca1b96509744",
+  "suite": "consumable-food-clocks",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "FAIL",
+  "resource": {
+    "available_ram": 7167500288,
+    "active_compilers": [
+      "\"cargo.exe\",\"11804\",\"RDP-Tcp#0\",\"2\",\"43,868 K\"",
+      "\"rustc.exe\",\"2108\",\"RDP-Tcp#0\",\"2\",\"77,936 K\""
+    ],
+    "cpu_percent": 17.52,
+    "cpu_samples": [
+      18.786692759295498,
+      16.764132553606238,
+      16.996047430830043
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Existing project memory/commit/paging checks and sampled CPU ceiling; owned Cargo remains j1/two CPUs/BelowNormal",
+    "capacity_policy_sha256": "dc3c6e372de5369ab77c4ebbd7cf21c426d0916581e11f2377480eba79adcdfd",
+    "memory_preflight_exit": 0,
+    "memory_preflight_stdout": "Capacity: 6,806 MiB available, commit 60.5%, pages-in/s 1, disk 0.5 ms.\nCargo concurrency: -j 2\n",
+    "memory_preflight_stderr": "",
+    "disk_free": 51920285696,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "7025982612912de7e72395550e34c51481c7a23e",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\3640ac17f8b4e7c293c9bc1fcb78ca1b96509744\\external-harness-0881960800\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-consumable-food-clocks-3640ac17f8b4e7c293c9bc1fcb78ca1b96509744\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\3640ac17f8b4e7c293c9bc1fcb78ca1b96509744\\external-harness-0881960800\\Cargo.toml"
+      ],
+      "exit_code": 101,
+      "tests_passed": 1,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-consumable-food-clocks-3640ac17f8b4e7c293c9bc1fcb78ca1b96509744\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative consumable-food-clocks scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-consumable-food-clocks-3640ac17f8b4e7c293c9bc1fcb78ca1b96509744\\harness\\food.rs": "61051f955afdbf5284918fb17572267160a7b84fb28d6d8d3a1fa46a9855fc32"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\food-2ea7dc804475b411.exe": "5e6f852f55b1883d2791ee69cab4d31f945bc789ff3306132d0c36d7eb3bdeee"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "implementation_id": "OR-MIG-0145",
+  "tested_sha": "16458999c44037d0e8b24fda975f60739f95ad4b",
+  "status": "PASS_SCOPED",
+  "level": "V2",
+  "scope": "Applicable145native acceptance: genuine selected Eat/retainedduplicates/fullbags; exactHP/Attack/Strength/Defence/Prayer updates; Prayer0to1to2,98to99withoutunchangedpacket,105preservedwithoutnewpacket; visibleF2PEatbackendrefusal; distinct-itemearlyrepeatrefusalthenpostexpiryEat; native localplayer829sequenceapplication; actualInventory/Skillsrenderings directly reviewed. All cases exact145SHA.",
+  "qualifications": [
+    "Animation receipt/application confirmed in native local-player blocks; no rendered avatar-model/audio parity claim. Sound/toboggan/heal-followups/separateconsumablecombatclocks are explicitly unported at145pin, not silently upgraded from148.",
+    "V1remainsFAIL9actualdeathcases. V3stillrequires remaining stale-action/interruption/live-membership-transition/reconfiguration checks; passing normal restart is not complete V3 acceptance.",
+    "V4source/nativecomparison remains IN_PROGRESS pending combined lifecycle coverage; sourceabovebasefailure/unchangedcap diverges intentionally.",
+    "Delaynative001 rawFAIL retained as INCONCLUSIVE_TIMING: secondcommitfive ticks afterfirst, delaythree. Freshnative002 changed only controller scheduling, same serverbinary; successfulothercases not replayed."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/deep-jangerberries-low/native-001/independent-assessment.json": "c7217e8920fc3cc99bf38d48f9cab86d8b5b76a62a5b2d884414c61783fb4467",
+    "docs/openrune/verification/independent/deep-jangerberries-low/native-001/visual-assessment.json": "6c0b07ec4a9449be05f2def13a04a1d841bb7aa61f2e882605fc703c96d37453",
+    "docs/openrune/verification/independent/deep-jangerberries-low/native-001/animation-assessment.json": "fb0fd3dec55c4c8f0424a14e294b507bfc6bed3cf4ec1b6b6fc64783da57ef42",
+    "docs/openrune/verification/independent/deep-jangerberries-cap/native-001/independent-assessment.json": "8cf8dd60ea2d65dea0a001868e2fe6181043687cf621550d9c6540bd35866592",
+    "docs/openrune/verification/independent/deep-jangerberries-cap/native-001/visual-assessment.json": "51787b1e884d78632be052905e50fe646914ee2303f277dc13f7457135c6cc3b",
+    "docs/openrune/verification/independent/deep-jangerberries-cap/native-001/animation-assessment.json": "671746de55cd4e6fab40c5faad3ac1a37e120854b3622eb55d81b1bc887129ac",
+    "docs/openrune/verification/independent/deep-jangerberries-overcap/native-001/independent-assessment.json": "4b2427b6dc169f09a7ed76e469bc987bf8a0dd5c3ead60b27c8590ca9341e957",
+    "docs/openrune/verification/independent/deep-jangerberries-overcap/native-001/visual-assessment.json": "dafa9848e869dfc48f755f5b38948a06522546a35af541de2bd10ff2a3a8fe54",
+    "docs/openrune/verification/independent/deep-jangerberries-overcap/native-001/animation-assessment.json": "93707a47195e605ed6ff8828952d75c553c6953e0c983d7da6458f2b92a541aa",
+    "docs/openrune/verification/independent/deep-jangerberries-f2p/native-001/independent-assessment.json": "f4b145dfc66ea3f2844d3aa809c8dbdaa3242c5885eade4a99712d3bf423e14e",
+    "docs/openrune/verification/independent/deep-jangerberries-f2p/native-001/visual-assessment.json": "ae9feb9d8e2706e1c9ff55a44511fe5d025a50f1e45112371666debab43ab893",
+    "docs/openrune/verification/independent/deep-jangerberries-delay/native-002/independent-assessment.json": "a79f0251b2827f1476924d6cc0a04ceb1a55251c8b3e9378b117bbc886caa1a0",
+    "docs/openrune/verification/independent/deep-jangerberries-delay/native-002/visual-assessment.json": "8c372b5adc219fbfa5f4eee6b8663241e7754a81103d4c7c8082a907728f0fc7",
+    "docs/openrune/verification/independent/deep-jangerberries-delay/native-002/animation-assessment.json": "e97e4593642eacccf6538a921f35912e4af081ee19646a4437a6545cdaece53b"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "implementation_id": "OR-MIG-0145",
+  "tested_sha": "16458999c44037d0e8b24fda975f60739f95ad4b",
+  "level": "V0",
+  "status": "IN_PROGRESS",
+  "scope": "Actual239.1cache item247memberEat and fourreleasedstats0/1/2/5 passed the actualserverfactory; profileHP2/Attack2/Strength1/PrayerHeal1/DefenceSubtract1and40atomicregistrationrefusals verified. Serverlib/cache/worldcompiled. Actualbinary startup/native and wholeV0remain open; not inferred fromcode search.",
+  "evidence_sha256": {
+    "integration-external-jangerberries-bindings-16458999c44037d0e8b24fda975f60739f95ad4b/manifest.json": "572679ead080f3b10386a5fd4b0baab2a94e0b76e3039b8a0e23774f8dbb21c4",
+    "integration-external-jangerberries-bindings-16458999c44037d0e8b24fda975f60739f95ad4b/run-1.log": "283ba8c5ac932789a3b97124b4c3890d9e917f3613766242f0f91b37089b35ea"
+  }
+}

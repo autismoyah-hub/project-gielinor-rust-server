@@ -1,0 +1,17 @@
+{
+  "tested_sha": "16458999c44037d0e8b24fda975f60739f95ad4b",
+  "campaign_kind": "integration",
+  "affected_implementations": [
+    "OR-MIG-0137",
+    "OR-MIG-0145"
+  ],
+  "status": "PASS_SCOPED",
+  "scope": "2454unchanged independent wine selected transaction cases passed at newer145shared-stat-healing implementation. Legacy secondary-effects wrapper uses empty restoration metadata; full selected jug/currentAttack subtraction/HPcap/noXP/RNG and66invalidpolicies conserved. Historical137results not upgraded or substituted.",
+  "limitations": [
+    "Kernel compatibility only; no newer native/runtime registration or full shared food acceptance. Janger145V1FAIL9life cases remains separate."
+  ],
+  "evidence_sha256": {
+    "integration-external-wine-drink-kernel-16458999c44037d0e8b24fda975f60739f95ad4b/manifest.json": "79e9f378c5a6a3011fed8cab5ea79906dbdc364edd078b55b00f062038fb9cfa",
+    "integration-external-wine-drink-kernel-16458999c44037d0e8b24fda975f60739f95ad4b/run-1.log": "475ff38dc2293ffb58cfc582149de04b6d129e53ce375236f91bfb4010398c15"
+  }
+}

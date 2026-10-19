@@ -1,0 +1,82 @@
+{
+  "implementation_id": "OR-MIG-0137",
+  "tested_sha": "dfc2a1667c6c97e4d525a1aaea1ba7154d9aaad7",
+  "status": "PASS_SCOPED",
+  "scope": "Actual F2P native Drink menu derived two rapid selections at the same client clock; one selected wine consumed, one jug retained, Attack8to6/HP5to10, other six wines/fullbag/gear/post-admissionXP conserved. One authoritative food trace and actual saved/restarted F2P account confirm no duplicate effect/replay. Native inventory frame directly viewed: empty jug0and retained wines visible.",
+  "sent_labels": [
+    "F2P Drink first",
+    "F2P Drink rapid selected repeat"
+  ],
+  "native_begin": [
+    "290",
+    "8",
+    "5"
+  ],
+  "native_end": [
+    "304",
+    "6",
+    "10"
+  ],
+  "received_attack": [
+    [
+      0,
+      5,
+      13034431
+    ],
+    [
+      83,
+      6,
+      13034431
+    ],
+    [
+      183,
+      7,
+      13034431
+    ],
+    [
+      283,
+      8,
+      13034431
+    ],
+    [
+      297,
+      6,
+      13034431
+    ]
+  ],
+  "reconnect_attack": [
+    [
+      0,
+      6,
+      13034431
+    ]
+  ],
+  "private_frame": {
+    "path": "work/native-wine-drink-f2p/native-001/wine-f2p-inventory.bmp",
+    "sha256": "2599fcd2b58668a25ce953389073c396229ca3a4bda8c1d4178e1bf7fe211b2e",
+    "width": 765,
+    "signed_height": -503
+  },
+  "qualifications": [
+    "Repeated action may encounter delay, stale-item or submission coalescing; this combined conservation control does not isolate cooldown alone.",
+    "Controller item_action returned an error for Drink on the visible empty jug; no forced backend stale payload was sent. Detailed menu-list evidence is a separate stricter observation if required.",
+    "Initial FloorOne admission raises15/20minimums before drinks; no Herblore item or potion action tested. Native reconnect first packet restores the acknowledged savedAttack6 exactly. Later SQL7after logout is consistent with one normal100clock restoration while the server drains; that final+1was not received after disconnect and remains source-qualified, not independently timed. No replay/extra wine consumption occurred.",
+    "Bounded native inventory rendering only; no full scene/actor animation/audio or independent combat-clock parity. V1historicalFAIL and remaining V2/V3/V4 obligations persist."
+  ],
+  "evidence_sha256": {
+    "initial-state.json": "9bb96f6bf90235c6c8a9b8cbfb9dbc3a7a63b233e5396fc2c88efcf70628522c",
+    "build.json": "a148a9fd6826cd1e72cd9140543f9f87bc8a29f28c2f528f0508544f9a4bb099",
+    "frozen-observer/build.json": "f51a9042335e7068f9f1b2f26b14273e891db560bed1e3868b04d0c316f6b377",
+    "frozen-observer/pg_observer.rs": "5b1841705ef52fb992db65d8bf49aea295cac5ae90e27445fe9d055a82c4a622",
+    "produce/manifest.json": "21c66cf2e0f095a60f221c94f2783d93c7d8d4d342c9954dbfe37bd67d16d909",
+    "produce/before.json": "9bb96f6bf90235c6c8a9b8cbfb9dbc3a7a63b233e5396fc2c88efcf70628522c",
+    "produce/after.json": "1ddfe6441dc8f045b0c841bb6c220580199a666de68c74545f58072439bfa2ac",
+    "produce/client.log": "6629e9d08811837cf4b04a14862261995ea6346b521faf964412eb9808f5374c",
+    "produce/server.log": "87729b592e8a7a6eb90ccee90c30087238826bd7f7e0f883ddf1a2f3152df5a1",
+    "relogin/manifest.json": "32c6206920b825289828ef88b91c1401bec655667f00dc75f9b8a144a244cd5b",
+    "relogin/before.json": "1ddfe6441dc8f045b0c841bb6c220580199a666de68c74545f58072439bfa2ac",
+    "relogin/after.json": "3b765625fb5db85a81dea2555feba576c996ed110d1a17f0fcf2bbc9d6d8f6d7",
+    "relogin/client.log": "2be40cee64d92a470aeaed391810ad8be4ce096589997cea672b6f274a7f9065",
+    "relogin/server.log": "09d3b97d2e1330fecd25730f8db3cf7516134771b69e9798b38535da7c777922"
+  }
+}

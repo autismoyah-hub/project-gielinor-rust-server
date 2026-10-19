@@ -1,0 +1,23 @@
+{
+  "implementation_id": "OR-MIG-0145",
+  "tested_sha": "16458999c44037d0e8b24fda975f60739f95ad4b",
+  "status": "PASS_SCOPED",
+  "scope": "Two actual native local-player decoded Sequence829/0blocks, one for each genuineEat. Existing read-only client_state localplayer.blocks observation hook; not a synthetic packet or solely serverWorld event. This attests native sequence receipt/application, not rendered player-model animation or audio.",
+  "observations": [
+    [
+      235,
+      829,
+      0
+    ],
+    [
+      245,
+      829,
+      0
+    ]
+  ],
+  "evidence_sha256": {
+    "produce/client.log": "f352dcb2f9bff01e014c43784f9bbad5a86f347d13524d3cfc51d9041dd0fad3",
+    "produce/manifest.json": "ebf3f50447803e54885176f1d8272f4d1dc9767737585a1c096241814fea4739",
+    "frozen-observer/source-manifest.json": "b48c54a1e0bb3651b085d02bd6ae3c5fd59d1e94342f080256d5c360f3a1cef1"
+  }
+}

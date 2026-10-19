@@ -1,0 +1,47 @@
+{
+  "implementation_id": "OR-MIG-0145",
+  "tested_sha": "16458999c44037d0e8b24fda975f60739f95ad4b",
+  "level": "V1",
+  "status": "FAIL",
+  "finding": "PG-DEF-003 extension: selected Jangerberries consumed during unresolved death",
+  "scope": "Ninefresh authoritative selected-food cases at145:slots0/13/27,directHP0/actuallethalDeathRequested/visibleHP10restorewithoutrespawn. Selected247isconsumed;Prayer0to1,Attack99to101,Defence1to0,Strength99to100,HP0to2or10to12. Actualselected flag matchesstartup; no RNG/XP. RustdiagnosticPASSisobservationcompletion,not acceptancePASS.",
+  "passing_scope": {
+    "selected_transaction_cases": 33600,
+    "invalid_late_healing_policy_refusals": 54,
+    "selected_shape_catalog_refusals": 30,
+    "selected_World_positive": 36,
+    "selected_World_late_guards": 36,
+    "unique_heterogeneous_passing_checks": 33756
+  },
+  "harness_history": [
+    "Originalkernel completedall33600gameplayassertions but QAexpectedcounter134400waswrong. Corrected33600and reranonlyfailedmatrix atsameSHA;PASS. Original54policy+30physicalrefusals not replayed.",
+    "OriginalWorld omitted selected-food registration flag; firstpositive effects passed but expectedselectedtrace absent. It completed36legacy-pathguardcontrols and9legacydeathobservations. These are not substituted for selected-mode acceptance. New selected-mode fixture reran36positives/36guards/9life observations atsameSHA;positiveguardsPASS,all9lifeFAIL. Raw old failures retained."
+  ],
+  "actionable_correction": "Guard authoritative food admission against zeroHP/unresolveddeath before selected transaction/stat-healing/boost/subtraction/events. VisibleHPrestorewithoutrespawnmustnotcleardeath. Publishseparatelypinnedcorrection and retains historical145FAIL. OrdinaryP2nonblockingbacklog; no new issue or FORGE stop.",
+  "qualifications": [
+    "Controlled publicWorld/catalog/stat fixtures; actualcachefactory/startup/native andstorage are separate V0/V2/V3 obligations, not attested bythese World checks.",
+    "Exact+1Prayer cap/overcap and atomic invalid-late-healing beforeRandom asserted; old count/fixture failures are QA defects, not implementation defects.",
+    "No potion/Herblore/acquisition/gamecontent edit; no newer SHA substituted. V4 referencecomparison remains open."
+  ],
+  "observations": [
+    "PG_JANGER_LIFE slot=0 phase=0 hp=2 prayer=1 attack=101 defence=0 strength=100 retained=false violation=true",
+    "PG_JANGER_LIFE slot=0 phase=1 hp=2 prayer=1 attack=101 defence=0 strength=100 retained=false violation=true",
+    "PG_JANGER_LIFE slot=0 phase=2 hp=12 prayer=1 attack=101 defence=0 strength=100 retained=false violation=true",
+    "PG_JANGER_LIFE slot=13 phase=0 hp=2 prayer=1 attack=101 defence=0 strength=100 retained=false violation=true",
+    "PG_JANGER_LIFE slot=13 phase=1 hp=2 prayer=1 attack=101 defence=0 strength=100 retained=false violation=true",
+    "PG_JANGER_LIFE slot=13 phase=2 hp=12 prayer=1 attack=101 defence=0 strength=100 retained=false violation=true",
+    "PG_JANGER_LIFE slot=27 phase=0 hp=2 prayer=1 attack=101 defence=0 strength=100 retained=false violation=true",
+    "PG_JANGER_LIFE slot=27 phase=1 hp=2 prayer=1 attack=101 defence=0 strength=100 retained=false violation=true",
+    "PG_JANGER_LIFE slot=27 phase=2 hp=12 prayer=1 attack=101 defence=0 strength=100 retained=false violation=true"
+  ],
+  "evidence_sha256": {
+    "integration-external-jangerberries-kernel-16458999c44037d0e8b24fda975f60739f95ad4b/manifest.json": "5405133e28d2e228a436be3c5e2013c4096c482d64a9b8002ed374c5c930682d",
+    "integration-external-jangerberries-kernel-16458999c44037d0e8b24fda975f60739f95ad4b/run-1.log": "93aea76d00137ee3338fe4223a896546e4e90b32d0e385600da7d57163740a87",
+    "integration-external-jangerberries-kernel-tail-16458999c44037d0e8b24fda975f60739f95ad4b/manifest.json": "762fae915775559c2e2f53c431fcc1e6ea1e907f5b8ccce13eca2ed0b5ed85a5",
+    "integration-external-jangerberries-kernel-tail-16458999c44037d0e8b24fda975f60739f95ad4b/run-1.log": "9ce84b590e2e122b20f8dfbb2ac9616f63595c76bc409bffd9980d99e23ad712",
+    "integration-external-jangerberries-world-16458999c44037d0e8b24fda975f60739f95ad4b/manifest.json": "e5fa45c39032d073cbfc6f1d5c38552c205d1b7d483a40a793c0227de565ccf6",
+    "integration-external-jangerberries-world-16458999c44037d0e8b24fda975f60739f95ad4b/run-1.log": "cf8e868b0e6f4343fbfe4d7457eebd4aa0341582de258883727f0a165bedca4f",
+    "integration-external-jangerberries-world-selected-16458999c44037d0e8b24fda975f60739f95ad4b/manifest.json": "ee27ee3f8d01f660c2f3fdda2d879211833ab7630563e8737fabbcbc46b211f6",
+    "integration-external-jangerberries-world-selected-16458999c44037d0e8b24fda975f60739f95ad4b/run-1.log": "2cc2348c4384fbd0d96b00bd01509dbf45a31449da910f2004cc742855c87c9e"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "implementation_id": "OR-MIG-0148",
+  "tested_sha": "3640ac17f8b4e7c293c9bc1fcb78ca1b96509744",
+  "status": "PASS_SCOPED",
+  "scope": "18 independent authoritative matched cases:3selectedslots x FOOD/COMBO x alivecontrol/legacyhitdeath/standardqueue-death. BothactualDeathRequestedhooks clear category and retainedattack contribution; settercannoterasealivecontribution. Generic action_delay intentionallysurvives death untiltrustedsetter resets it.",
+  "limitations": [
+    "Controlled30tick consume sentinel intentionally distinguishes reset fromnatural3tick expiry; productionnative usesactual3tick policy.",
+    "TrustedHP restoration afterdeath tests clocks only; notrealrespawn/native dead-player consumption acceptance.",
+    "Actor-generation/actualnative save/reconnect checks remainseparate; no fullV3PASS."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/integration-external-consumable-food-clocks-life-3640ac17f8b4e7c293c9bc1fcb78ca1b96509744/manifest.json": "9b4c83e9a88a0a4526bfa36fe45d8eb155bb40e7375279c9a740d67c95abd36f"
+  }
+}

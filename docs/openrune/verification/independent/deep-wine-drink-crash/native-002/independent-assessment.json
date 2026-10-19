@@ -1,0 +1,40 @@
+{
+  "implementation_id": "OR-MIG-0137",
+  "tested_sha": "dfc2a1667c6c97e4d525a1aaea1ba7154d9aaad7",
+  "status": "PASS_SCOPED",
+  "scope": "Fresh owned disposable server stopped after a received unsaved genuine native wine transaction, with no save acknowledgement or graceful drain. ActualSQL retains original whole inventory/all current-base-fineXP stats; real restart/native reconnect restores original wine and HP without replay. Post-login source minimums15/20and passive restoration remain explicitly separate.",
+  "observed_unsaved_attack": 97,
+  "stored_original_attack": 99,
+  "first_reconnect_attack": [
+    0,
+    99,
+    13034431
+  ],
+  "first_reconnect_hp": [
+    0,
+    2,
+    1154
+  ],
+  "attack_specific_rollback": "PASS: distinct99to97unsavedchange restores99",
+  "qualifications": [
+    "Only termination before save acknowledgement; no claim of SQLite commit-fault injection.",
+    "Native001 Attack oracle was neutralized by passive regeneration and is not accepted as Attack-specific rollback. Native002 is a separately frozen base99variant, never a rewrite of001.",
+    "No successful prior disposable account reseeded or six-Drink campaign replayed. V1deathFAILand native interruption/rendered-animation/reference obligations remain separate."
+  ],
+  "evidence_sha256": {
+    "initial-state.json": "ea0c730ae164cae0ad4ab58ead90a1092d3305cbbc46ccc5577eedb6bbe621c2",
+    "build.json": "a148a9fd6826cd1e72cd9140543f9f87bc8a29f28c2f528f0508544f9a4bb099",
+    "frozen-observer/build.json": "f2ef5a55742ee377b9064004499b4f75bacd8ded1f47069710e68df58a201adb",
+    "frozen-observer/pg_observer.rs": "c8108e38f98148233e875721a71ec9648a8824f67e06f04ca2a519f6aec566a3",
+    "produce/manifest.json": "5a6af8750e1e335b171d88ccb4c77dbb0a75f3d0c25d966c81657d7da515d5e8",
+    "produce/before.json": "ea0c730ae164cae0ad4ab58ead90a1092d3305cbbc46ccc5577eedb6bbe621c2",
+    "produce/after.json": "8d3bcc7bf1d72964ef49876082fe6ebbd4bd089d149f56849dcb4cd69f44be04",
+    "produce/client.log": "2f0204db8f46b55a2d01b6655e4984c8ba7fcf0dc2b3d2a2e3eb38b4a2fe0f35",
+    "produce/server.log": "a52406478dded703128ab223eb92f88468662c9566d150b6adc6a608890951e5",
+    "relogin/manifest.json": "080794d00e90fbf5466c5f08cc8b1e8ad2f03dbf7676f70e0d85ba476fa493c5",
+    "relogin/before.json": "8d3bcc7bf1d72964ef49876082fe6ebbd4bd089d149f56849dcb4cd69f44be04",
+    "relogin/after.json": "d19d065ef5492d6c7a7f3d8d8ba4336d5eece023d326497db42ba61c0652a242",
+    "relogin/client.log": "8cf6c4c0297d03d01072f4edb012cd368ce85853a9a287ff8e5bd6038f87e6d1",
+    "relogin/server.log": "f371676005ae98d7ca544fb5bc881d1bd27e80c7df49628b5e7313d889eaf7b2"
+  }
+}

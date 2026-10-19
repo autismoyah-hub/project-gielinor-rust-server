@@ -1,0 +1,13 @@
+{
+  "implementation_id": "OR-MIG-0148",
+  "tested_sha": "3640ac17f8b4e7c293c9bc1fcb78ca1b96509744",
+  "status": "PASS_SCOPED",
+  "scope": "Actual239cache baseline food factory and native clock factory pass: Kingworm2162is registered Combo3/2member with2HP; allother baseline foods are Food/3combat with exact existingdurations/native member flags. Nine specified absent future candidates remain unregistered. Eight malformed alias/name/member/stack/operation/delay/id/dummy cases refuse atomically.",
+  "limitations": [
+    "Potion map intentionally empty underuserdeferral. Not fullcurrentstartupcatalog or49candidate independent comparison; no wholeV0PASS.",
+    "No native menu proof inferred from factory checks."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/integration-external-consumable-food-clocks-bindings-3640ac17f8b4e7c293c9bc1fcb78ca1b96509744/manifest.json": "ac73e75f9ceff3192e23b7fe9594d3a266bf9107b22f581a4bd44cd9c31700e1"
+  }
+}

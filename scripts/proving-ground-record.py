@@ -30,7 +30,7 @@ for ident,folder,sha in [('OR-MIG-0010','deep-combat','5a260c1bd6efa5f8a221bed7c
         add(ident,sha,'V4','IN_PROGRESS','Independent protected-source and pinned-documentation subcomparisons PASS within recorded scope; complete feature comparison remains open. No executable donor parity is claimed.',refs)
 for manifest in OUT.glob('OR-MIG-0024-*-independent*/manifest.json'):
     value=json.loads(manifest.read_text(encoding='utf-8'))
-    if value.get('suite','').startswith(('imcando-held-','imcando-worn-','rune-altars-','rune-close-','daeyalt-','crafting-cape-','zealot-','skillcape-vendor-','cooking-cape-','cooking-gauntlets-','wine-drink-','food-life-','prayer-life-')):continue  # Scoped aggregate retains partial and resource-deferred attempts.
+    if value.get('suite','').startswith(('imcando-held-','imcando-worn-','rune-altars-','rune-close-','daeyalt-','crafting-cape-','zealot-','skillcape-vendor-','cooking-cape-','cooking-gauntlets-','wine-drink-','food-life-','prayer-life-','jangerberries-','consumable-food-clocks')):continue  # Scoped aggregate retains partial and resource-deferred attempts.
     if value.get('suite')=='light-life':continue  # Exact-target finding below retains raw FAIL/BLOCKED attempts.
     if value.get('outcome')!='PARTIAL':continue
     sha=value['implementation_commit_sha'];evidence=[str(manifest.relative_to(ROOT)).replace('\\','/')]
@@ -38,7 +38,7 @@ for manifest in OUT.glob('OR-MIG-0024-*-independent*/manifest.json'):
     add('OR-MIG-0024',sha,'V1','IN_PROGRESS','Four independent authoritative World action tests PASS across 319 fixtures: all selected slots, full bags, duplicate/stale input, overheal, remainders and malformed transactions. Runtime packet decode and complete food matrix remain open.',evidence)
 for manifest in OUT.glob('integration-*/manifest.json'):
     value=json.loads(manifest.read_text(encoding='utf-8'))
-    if value.get('suite','').startswith(('imcando-held-','imcando-worn-','rune-altars-','rune-close-','daeyalt-','crafting-cape-','zealot-','skillcape-vendor-','cooking-cape-','cooking-gauntlets-','wine-drink-','food-life-','prayer-life-')):continue  # Recorded by immutable scoped aggregate below, not legacy filter format.
+    if value.get('suite','').startswith(('imcando-held-','imcando-worn-','rune-altars-','rune-close-','daeyalt-','crafting-cape-','zealot-','skillcape-vendor-','cooking-cape-','cooking-gauntlets-','wine-drink-','food-life-','prayer-life-','jangerberries-','consumable-food-clocks')):continue  # Recorded by immutable scoped aggregate below, not legacy filter format.
     if value.get('suite') in ['member-tanning-world','member-tanning-guards']:
         continue  # Combined independent assessment includes retained partial attempt.
     if value.get('suite') in ['light-legacy-bindings','light-bindings','light-tool-regression']:
@@ -897,3 +897,73 @@ if path.exists():
     add('OR-MIG-0137',result['tested_sha'],'V0','PASS','Exact137server binary compiled, actualcache-backed wine factory/twoitems/twostats/37refusals executed, actualruntime startup and six genuine native Drink menus reached registered selected wine/subtraction map.',[path.relative_to(ROOT).as_posix(),visual.relative_to(ROOT).as_posix()],scope='wine-drink-runtime-v0')
     for level in ['V2','V3']:
         add('OR-MIG-0137',result['tested_sha'],level,'IN_PROGRESS',result['scope']+' '+'; '.join(result['qualifications']),[path.relative_to(ROOT).as_posix(),visual.relative_to(ROOT).as_posix()],scope='wine-drink-native-persistence')
+
+path=OUT/'jangerberries-life-finding.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    add('OR-MIG-0145',result['tested_sha'],'V1','FAIL',result['scope']+' '+str(result['passing_scope'])+' '+result['actionable_correction'],[path.relative_to(ROOT).as_posix()],scope='jangerberries-selected-life')
+path=OUT/'deep-wine-drink-f2p/native-001/independent-assessment.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PASS_SCOPED'
+    for level in ['V2','V3']:
+        add('OR-MIG-0137',result['tested_sha'],level,'IN_PROGRESS','Adds fresh F2P scope to native002normal wine evidence. '+result['scope']+' '+'; '.join(result['qualifications']),[path.relative_to(ROOT).as_posix()],scope='wine-drink-native-f2p-repetition')
+
+path=OUT/'jangerberries-shared-wine-regression.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    for ident in result['affected_implementations']:
+        add(ident,result['tested_sha'],'V1','IN_PROGRESS',result['scope']+' '+'; '.join(result['limitations']),[path.relative_to(ROOT).as_posix()],kind='integration',scope='wine-wrapper-shared-healing-regression',affected=result['affected_implementations'])
+path=OUT/'reference-jangerberries/comparison.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    add('OR-MIG-0145',result['tested_sha'],'V4','IN_PROGRESS',result['scope']+' '+'; '.join(result['limitations']),[path.relative_to(ROOT).as_posix()],scope='jangerberries-exact-reference-facts')
+
+path=OUT/'jangerberries-cache-bindings.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    add('OR-MIG-0145',result['tested_sha'],'V0','IN_PROGRESS',result['scope'],[path.relative_to(ROOT).as_posix()],scope='jangerberries-actual-cache-bindings')
+for run in ['native-001','native-002']:
+    path=OUT/'deep-wine-drink-crash'/run/'independent-assessment.json'
+    if path.exists():
+        result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PASS_SCOPED'
+        add('OR-MIG-0137',result['tested_sha'],'V3','IN_PROGRESS',result['scope']+' Attackcomponent:'+result['attack_specific_rollback']+' '+'; '.join(result['qualifications']),[path.relative_to(ROOT).as_posix()],scope='wine-unsaved-recovery-'+run)
+
+for feature in ['jangerberries-low','jangerberries-cap','jangerberries-overcap']:
+    path=OUT/('deep-'+feature)/'native-001/independent-assessment.json'
+    if not path.exists():continue
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PASS_SCOPED'
+    evidence=[path.relative_to(ROOT).as_posix()]
+    visual=path.parent/'visual-assessment.json'
+    if visual.exists():evidence.append(visual.relative_to(ROOT).as_posix())
+    if feature=='jangerberries-low':
+        add('OR-MIG-0145',result['tested_sha'],'V0','PASS','Exact145binary compiled, actualcachefactory/40bindingrefusals passed, actualstartup and genuine native Eat reached all installed selected/fixed/subtraction/capped-healing maps with Prayer0to1to2. Shared API compiled and2454wine wrapper regression separate.',evidence,scope='jangerberries-native-runtime-v0')
+    for level in ['V2','V3']:
+        add('OR-MIG-0145',result['tested_sha'],level,'IN_PROGRESS',result['scope']+' '+'; '.join(result['qualifications']),evidence,scope='jangerberries-native-'+feature)
+
+for feature in ['jangerberries-f2p','jangerberries-delay']:
+    for path in (OUT/('deep-'+feature)).glob('*/independent-assessment.json'):
+        result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PASS_SCOPED'
+        evidence=[path.relative_to(ROOT).as_posix()]
+        visual=path.parent/'visual-assessment.json'
+        if visual.exists():evidence.append(visual.relative_to(ROOT).as_posix())
+        for level in ['V2','V3']:
+            add('OR-MIG-0145',result['tested_sha'],level,'IN_PROGRESS',result['scope']+' '+'; '.join(result['qualifications']),evidence,scope=feature+'-'+path.parent.name)
+for name,level in [('consumable-food-clocks-partial.json','V1'),('reference-consumable-food-clocks/comparison.json','V4')]:
+    path=OUT/name
+    if path.exists():
+        result=json.loads(path.read_text(encoding='utf-8'))
+        add('OR-MIG-0148',result['tested_sha'],level,'IN_PROGRESS',result['scope']+' '+'; '.join(result['limitations']),[path.relative_to(ROOT).as_posix()],scope='consumable-food-clocks-'+level)
+
+path=OUT/'jangerberries-native-v2-complete.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PASS_SCOPED'
+    add('OR-MIG-0145',result['tested_sha'],'V2','PASS',result['scope']+' '+'; '.join(result['qualifications']),[path.relative_to(ROOT).as_posix()],scope='jangerberries-native-v2-complete')
+path=OUT/'consumable-food-clocks-cache-bindings.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    add('OR-MIG-0148',result['tested_sha'],'V0','IN_PROGRESS',result['scope']+' '+'; '.join(result['limitations']),[path.relative_to(ROOT).as_posix()],scope='consumable-baseline-food-cache')
+
+path=OUT/'consumable-food-clocks-life.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    add('OR-MIG-0148',result['tested_sha'],'V3','IN_PROGRESS',result['scope']+' '+'; '.join(result['limitations']),[path.relative_to(ROOT).as_posix()],scope='consumable-both-death-hooks')

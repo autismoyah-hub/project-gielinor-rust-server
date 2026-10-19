@@ -235,3 +235,7 @@ Independent18-case publicWorld campaigns at `ae3d234c71764dd2364f8452fc1974a54a6
 ### PG-DEF-003 extension — original51 selected burial
 
 At `f6b0f6ad54fe7813bb6607827eeb8da0e60137fa`,18independent before/during zeroHP and actual unresolved-death cases consume selected526and award56finePrayerXP. Add alive/death-pending guards at admission/completion; HP restoration alone is not respawn. V1FAIL, ordinary P2, nonblocking. Evidence: independent/original-prayer-life-finding.json. No newer robe result inherited, no new issue or FORGE stop.
+
+### PG-DEF-003 extension — selected Jangerberries at145
+
+At `16458999c44037d0e8b24fda975f60739f95ad4b`,9selected publicWorld death/zeroHP/restoredHPwithoutrespawn cases consume247and publish all five stat effects. V1FAIL despite33756passing transaction/refusal/World controls. Add common alive/death-pending guard before food publication. OrdinaryP2, nonblocking; see independent/jangerberries-life-finding.json for raw QA count/fixture corrections and exact selected-mode evidence. No laterSHA/legacy-path substitution or new issue.

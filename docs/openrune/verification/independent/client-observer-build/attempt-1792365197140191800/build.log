@@ -1,0 +1,422 @@
+   Compiling version_check v0.9.5 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\version_check-0.9.5)
+   Compiling generic-array v0.14.7 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\generic-array-0.14.7)
+   Compiling typenum v1.17.0 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\typenum-1.17.0)
+warning: unused import: `*`
+   --> vendor\typenum-1.17.0\src\lib.rs:104:25
+    |
+104 |     N1, N2, Z0, P1, P2, *,
+    |                         ^
+    |
+    = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `typenum` (lib) generated 1 warning (run `cargo fix --lib -p typenum` to apply 1 suggestion)
+   Compiling autocfg v1.4.0 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\autocfg-1.4.0)
+   Compiling num-traits v0.2.19 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\num-traits-0.2.19)
+warning: hiding a lifetime that's elided elsewhere is confusing
+   --> vendor\generic-array-0.14.7\src\lib.rs:235:33
+    |
+235 |     pub unsafe fn iter_position(&mut self) -> (slice::IterMut<T>, &mut usize) {
+    |                                 ^^^^^^^^^      ^^^^^^^^^^^^^^^^^  ^^^^^^^^^^ the same lifetime is elided here
+    |                                 |              |
+    |                                 |              the same lifetime is hidden here
+    |                                 the lifetime is elided here
+    |
+    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing
+    = note: `#[warn(mismatched_lifetime_syntaxes)]` on by default
+help: use `'_` for type paths
+    |
+235 |     pub unsafe fn iter_position(&mut self) -> (slice::IterMut<'_, T>, &mut usize) {
+    |                                                               +++
+
+warning: hiding a lifetime that's elided elsewhere is confusing
+   --> vendor\generic-array-0.14.7\src\lib.rs:290:33
+    |
+290 |     pub unsafe fn iter_position(&mut self) -> (slice::Iter<T>, &mut usize) {
+    |                                 ^^^^^^^^^      ^^^^^^^^^^^^^^  ^^^^^^^^^^ the same lifetime is elided here
+    |                                 |              |
+    |                                 |              the same lifetime is hidden here
+    |                                 the lifetime is elided here
+    |
+    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing
+help: use `'_` for type paths
+    |
+290 |     pub unsafe fn iter_position(&mut self) -> (slice::Iter<'_, T>, &mut usize) {
+    |                                                            +++
+
+warning: `generic-array` (lib) generated 2 warnings (run `cargo fix --lib -p generic-array` to apply 2 suggestions)
+   Compiling crypto-common v0.1.6 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\crypto-common-0.1.6)
+   Compiling block-buffer v0.10.4 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\block-buffer-0.10.4)
+   Compiling tinyvec_macros v0.1.1 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\tinyvec_macros-0.1.1)
+   Compiling cfg-if v1.0.0 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\cfg-if-1.0.0)
+   Compiling tinyvec v1.10.0 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\tinyvec-1.10.0)
+   Compiling digest v0.10.7 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\digest-0.10.7)
+   Compiling num-integer v0.1.46 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\num-integer-0.1.46)
+   Compiling byteorder v1.5.0 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\byteorder-1.5.0)
+   Compiling adler2 v2.0.1 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\adler2-2.0.1)
+   Compiling miniz_oxide v0.8.9 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\miniz_oxide-0.8.9)
+   Compiling lewton v0.10.2 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\lewton-0.10.2)
+warning: field `codebook_entries` is never read
+   --> vendor\lewton-0.10.2\src\header.rs:363:6
+    |
+361 | pub(crate) struct Codebook {
+    |                   -------- field in this struct
+362 |     pub codebook_dimensions :u16,
+363 |     pub codebook_entries :u32,
+    |         ^^^^^^^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: field `mapping_submaps` is never read
+   --> vendor\lewton-0.10.2\src\header.rs:382:6
+    |
+381 | pub(crate) struct Mapping {
+    |                   ------- field in this struct
+382 |     pub mapping_submaps :u8,
+    |         ^^^^^^^^^^^^^^^
+
+warning: fields `floor0_rate` and `floor0_bark_map_size` are never read
+   --> vendor\lewton-0.10.2\src\header.rs:402:6
+    |
+400 | pub(crate) struct FloorTypeZero {
+    |                   ------------- fields in this struct
+401 |     pub floor0_order :u8,
+402 |     pub floor0_rate :u16,
+    |         ^^^^^^^^^^^
+403 |     pub floor0_bark_map_size :u16,
+    |         ^^^^^^^^^^^^^^^^^^^^
+
+warning: hiding a lifetime that's named elsewhere is confusing
+   --> vendor\lewton-0.10.2\src\bitpacking.rs:364:31
+    |
+364 |     pub fn new(arr : &'a[u8]) -> BitpackCursor {
+    |                       --         ^^^^^^^^^^^^^ the same lifetime is hidden here
+    |                       |
+    |                       the lifetime is named here
+    |
+    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing
+    = note: `#[warn(mismatched_lifetime_syntaxes)]` on by default
+help: consistently use `'a`
+    |
+364 |     pub fn new(arr : &'a[u8]) -> BitpackCursor<'a> {
+    |                                               ++++
+
+warning: `lewton` (lib) generated 4 warnings (run `cargo fix --lib -p lewton` to apply 1 suggestion)
+   Compiling num-bigint v0.4.6 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\num-bigint-0.4.6)
+warning: unnecessary `unsafe` block
+  --> vendor\num-bigint-0.4.6\src\biguint\addition.rs:23:9
+   |
+23 |         unsafe { arch::_addcarry_u64(carry, a, b, out) }
+   |         ^^^^^^ unnecessary `unsafe` block
+   |
+   = note: `#[warn(unused_unsafe)]` (part of `#[warn(unused)]`) on by default
+
+warning: unnecessary `unsafe` block
+  --> vendor\num-bigint-0.4.6\src\biguint\subtraction.rs:23:9
+   |
+23 |         unsafe { arch::_subborrow_u64(borrow, a, b, out) }
+   |         ^^^^^^ unnecessary `unsafe` block
+
+warning: `num-bigint` (lib) generated 2 warnings
+   Compiling sha2 v0.10.8 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\sha2-0.10.8)
+   Compiling libm v0.2.15 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\libm-0.2.15)
+warning: a method with this name may be added to the standard library in the future
+   --> vendor\libm-0.2.15\src\math\support\big.rs:174:14
+    |
+174 |         self.widen()
+    |              ^^^^^
+    |
+    = help: call with fully qualified syntax `HInt::widen(...)` to keep using the current method
+    = warning: once this associated item is added to the standard library, the ambiguity may cause an error or change in behavior!
+    = note: for more information, see issue #48919 <https://github.com/rust-lang/rust/issues/48919>
+    = note: `#[warn(unstable_name_collisions)]` (part of `#[warn(future_incompatible)]`) on by default
+
+warning: a method with this name may be added to the standard library in the future
+   --> vendor\libm-0.2.15\src\math\support\big.rs:203:14
+    |
+203 |         self.widen() << <Self as MinInt>::BITS
+    |              ^^^^^
+    |
+    = help: call with fully qualified syntax `HInt::widen(...)` to keep using the current method
+    = warning: once this associated item is added to the standard library, the ambiguity may cause an error or change in behavior!
+    = note: for more information, see issue #48919 <https://github.com/rust-lang/rust/issues/48919>
+
+warning: a method with this name may be added to the standard library in the future
+   --> vendor\libm-0.2.15\src\math\support\big.rs:231:14
+    |
+231 |         self.widen() << <Self as MinInt>::BITS
+    |              ^^^^^
+    |
+    = help: call with fully qualified syntax `HInt::widen(...)` to keep using the current method
+    = warning: once this associated item is added to the standard library, the ambiguity may cause an error or change in behavior!
+    = note: for more information, see issue #48919 <https://github.com/rust-lang/rust/issues/48919>
+
+warning: an associated constant with this name may be added to the standard library in the future
+   --> vendor\libm-0.2.15\src\math\support\float_traits.rs:222:68
+    |
+222 |               const NEG_NAN: Self = $from_bits($to_bits(Self::NAN) | Self::SIGN_MASK);
+    |                                                                      ^^^^^^^^^^^^^^^ help: use the fully qualified path to the associated const: `<f32 as float_traits::Float>::SIGN_MASK`
+...
+311 | / float_impl!(
+312 | |     f32,
+313 | |     u32,
+314 | |     i32,
+...   |
+320 | |     fmaf32
+321 | | );
+    | |_- in this macro invocation
+    |
+    = warning: once this associated item is added to the standard library, the ambiguity may cause an error or change in behavior!
+    = note: for more information, see issue #48919 <https://github.com/rust-lang/rust/issues/48919>
+    = note: this warning originates in the macro `float_impl` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: an associated constant with this name may be added to the standard library in the future
+   --> vendor\libm-0.2.15\src\math\support\float_traits.rs:238:48
+    |
+238 |               const SIGN_MASK: Self::Int = 1 << (Self::BITS - 1);
+    |                                                  ^^^^^^^^^^ help: use the fully qualified path to the associated const: `<f32 as float_traits::Float>::BITS`
+...
+311 | / float_impl!(
+312 | |     f32,
+313 | |     u32,
+314 | |     i32,
+...   |
+320 | |     fmaf32
+321 | | );
+    | |_- in this macro invocation
+    |
+    = warning: once this associated item is added to the standard library, the ambiguity may cause an error or change in behavior!
+    = note: for more information, see issue #48919 <https://github.com/rust-lang/rust/issues/48919>
+    = note: this warning originates in the macro `float_impl` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: an associated constant with this name may be added to the standard library in the future
+   --> vendor\libm-0.2.15\src\math\support\float_traits.rs:240:43
+    |
+240 |               const EXP_MASK: Self::Int = !(Self::SIGN_MASK | Self::SIG_MASK);
+    |                                             ^^^^^^^^^^^^^^^ help: use the fully qualified path to the associated const: `<f32 as float_traits::Float>::SIGN_MASK`
+...
+311 | / float_impl!(
+312 | |     f32,
+313 | |     u32,
+314 | |     i32,
+...   |
+320 | |     fmaf32
+321 | | );
+    | |_- in this macro invocation
+    |
+    = warning: once this associated item is added to the standard library, the ambiguity may cause an error or change in behavior!
+    = note: for more information, see issue #48919 <https://github.com/rust-lang/rust/issues/48919>
+    = note: this warning originates in the macro `float_impl` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: an associated constant with this name may be added to the standard library in the future
+   --> vendor\libm-0.2.15\src\math\support\float_traits.rs:222:68
+    |
+222 |               const NEG_NAN: Self = $from_bits($to_bits(Self::NAN) | Self::SIGN_MASK);
+    |                                                                      ^^^^^^^^^^^^^^^ help: use the fully qualified path to the associated const: `<f64 as float_traits::Float>::SIGN_MASK`
+...
+322 | / float_impl!(
+323 | |     f64,
+324 | |     u64,
+325 | |     i64,
+...   |
+331 | |     fmaf64
+332 | | );
+    | |_- in this macro invocation
+    |
+    = warning: once this associated item is added to the standard library, the ambiguity may cause an error or change in behavior!
+    = note: for more information, see issue #48919 <https://github.com/rust-lang/rust/issues/48919>
+    = note: this warning originates in the macro `float_impl` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: an associated constant with this name may be added to the standard library in the future
+   --> vendor\libm-0.2.15\src\math\support\float_traits.rs:238:48
+    |
+238 |               const SIGN_MASK: Self::Int = 1 << (Self::BITS - 1);
+    |                                                  ^^^^^^^^^^ help: use the fully qualified path to the associated const: `<f64 as float_traits::Float>::BITS`
+...
+322 | / float_impl!(
+323 | |     f64,
+324 | |     u64,
+325 | |     i64,
+...   |
+331 | |     fmaf64
+332 | | );
+    | |_- in this macro invocation
+    |
+    = warning: once this associated item is added to the standard library, the ambiguity may cause an error or change in behavior!
+    = note: for more information, see issue #48919 <https://github.com/rust-lang/rust/issues/48919>
+    = note: this warning originates in the macro `float_impl` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: an associated constant with this name may be added to the standard library in the future
+   --> vendor\libm-0.2.15\src\math\support\float_traits.rs:240:43
+    |
+240 |               const EXP_MASK: Self::Int = !(Self::SIGN_MASK | Self::SIG_MASK);
+    |                                             ^^^^^^^^^^^^^^^ help: use the fully qualified path to the associated const: `<f64 as float_traits::Float>::SIGN_MASK`
+...
+322 | / float_impl!(
+323 | |     f64,
+324 | |     u64,
+325 | |     i64,
+...   |
+331 | |     fmaf64
+332 | | );
+    | |_- in this macro invocation
+    |
+    = warning: once this associated item is added to the standard library, the ambiguity may cause an error or change in behavior!
+    = note: for more information, see issue #48919 <https://github.com/rust-lang/rust/issues/48919>
+    = note: this warning originates in the macro `float_impl` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: a method with this name may be added to the standard library in the future
+   --> vendor\libm-0.2.15\src\math\support\int_traits.rs:343:26
+    |
+343 |                       self.widen().wrapping_mul(rhs.widen())
+    |                            ^^^^^
+...
+354 | / impl_h_int!(
+355 | |     u8 u8 u16,
+356 | |     u16 u16 u32,
+357 | |     u32 u32 u64,
+...   |
+362 | |     i64 u64 i128
+363 | | );
+    | |_- in this macro invocation
+    |
+    = help: call with fully qualified syntax `HInt::widen(...)` to keep using the current method
+    = warning: once this associated item is added to the standard library, the ambiguity may cause an error or change in behavior!
+    = note: for more information, see issue #48919 <https://github.com/rust-lang/rust/issues/48919>
+    = note: this warning originates in the macro `impl_h_int` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: a method with this name may be added to the standard library in the future
+   --> vendor\libm-0.2.15\src\math\support\int_traits.rs:343:51
+    |
+343 |                       self.widen().wrapping_mul(rhs.widen())
+    |                                                     ^^^^^
+...
+354 | / impl_h_int!(
+355 | |     u8 u8 u16,
+356 | |     u16 u16 u32,
+357 | |     u32 u32 u64,
+...   |
+362 | |     i64 u64 i128
+363 | | );
+    | |_- in this macro invocation
+    |
+    = help: call with fully qualified syntax `HInt::widen(...)` to keep using the current method
+    = warning: once this associated item is added to the standard library, the ambiguity may cause an error or change in behavior!
+    = note: for more information, see issue #48919 <https://github.com/rust-lang/rust/issues/48919>
+    = note: this warning originates in the macro `impl_h_int` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: an associated constant with this name may be added to the standard library in the future
+  --> vendor\libm-0.2.15\src\math\cbrt.rs:49:29
+   |
+49 |         let ix: u64 = hx & !f64::SIGN_MASK;
+   |                             ^^^^^^^^^^^^^^ help: use the fully qualified path to the associated const: `<f64 as float_traits::Float>::SIGN_MASK`
+   |
+   = warning: once this associated item is added to the standard library, the ambiguity may cause an error or change in behavior!
+   = note: for more information, see issue #48919 <https://github.com/rust-lang/rust/issues/48919>
+
+warning: multiple associated items are never used
+   --> vendor\libm-0.2.15\src\math\support\float_traits.rs:36:11
+    |
+  9 | pub trait Float:
+    |           ----- associated items in this trait
+...
+ 36 |     const INFINITY: Self;
+    |           ^^^^^^^^
+ 37 |     const NEG_INFINITY: Self;
+    |           ^^^^^^^^^^^^
+ 38 |     const NAN: Self;
+ 39 |     const NEG_NAN: Self;
+    |           ^^^^^^^
+ 40 |     const MAX: Self;
+    |           ^^^
+ 41 |     const MIN: Self;
+    |           ^^^
+ 42 |     const EPSILON: Self;
+ 43 |     const PI: Self;
+    |           ^^
+ 44 |     const NEG_PI: Self;
+    |           ^^^^^^
+ 45 |     const FRAC_PI_2: Self;
+    |           ^^^^^^^^^
+...
+121 |     fn is_infinite(self) -> bool;
+    |        ^^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `f32_to_bits` is never used
+   --> vendor\libm-0.2.15\src\math\support\float_traits.rs:357:14
+    |
+357 | pub const fn f32_to_bits(x: f32) -> u32 {
+    |              ^^^^^^^^^^^
+
+warning: function `f64_to_bits` is never used
+   --> vendor\libm-0.2.15\src\math\support\float_traits.rs:371:14
+    |
+371 | pub const fn f64_to_bits(x: f64) -> u64 {
+    |              ^^^^^^^^^^^
+
+warning: struct `Hexf` is never constructed
+   --> vendor\libm-0.2.15\src\math\support\hex_float.rs:356:12
+    |
+356 | pub struct Hexf<F>(pub F);
+    |            ^^^^
+
+warning: function `fmt_any_hex` is never used
+   --> vendor\libm-0.2.15\src\math\support\hex_float.rs:360:4
+    |
+360 | fn fmt_any_hex<F: Float>(x: &F, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+    |    ^^^^^^^^^^^
+
+warning: associated constants `SIGNED`, `MIN`, and `MAX` are never used
+  --> vendor\libm-0.2.15\src\math\support\int_traits.rs:17:11
+   |
+ 4 | pub trait MinInt:
+   |           ------ associated constants in this trait
+...
+17 |     const SIGNED: bool;
+   |           ^^^^^^
+...
+24 |     const MIN: Self;
+   |           ^^^
+25 |     const MAX: Self;
+   |           ^^^
+
+warning: `libm` (lib) generated 18 warnings (run `cargo fix --lib -p libm` to apply 7 suggestions)
+   Compiling getrandom v0.2.16 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\getrandom-0.2.16)
+   Compiling libbz2-rs-sys v0.2.2 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source\vendor\libbz2-rs-sys-0.2.2)
+warning: unused macro definition: `prefix`
+  --> vendor\libbz2-rs-sys-0.2.2\src\bzlib.rs:71:14
+   |
+71 | macro_rules! prefix {
+   |              ^^^^^^
+   |
+   = note: `#[warn(unused_macros)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `prefix`
+  --> vendor\libbz2-rs-sys-0.2.2\src\bzlib.rs:88:16
+   |
+88 | pub(crate) use prefix;
+   |                ^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `libbz2_rs_sys_version`
+  --> vendor\libbz2-rs-sys-0.2.2\src\lib.rs:83:16
+   |
+83 | pub(crate) use libbz2_rs_sys_version;
+   |                ^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated function `from_mut` is never used
+   --> vendor\libbz2-rs-sys-0.2.2\src\bzlib.rs:253:30
+    |
+230 |     impl<S: StreamState> BzStream<S> {
+    |     -------------------------------- associated function in this implementation
+...
+253 |         pub(crate) unsafe fn from_mut(s: &mut bz_stream) -> &mut Self {
+    |                              ^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `libbz2-rs-sys` (lib) generated 4 warnings (run `cargo fix --lib -p libbz2-rs-sys` to apply 2 suggestions)
+   Compiling gielinor-client v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\independent-native-observer\source)
+    Finished `dev` profile [unoptimized] target(s) in 48.99s

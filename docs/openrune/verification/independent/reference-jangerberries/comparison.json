@@ -1,0 +1,48 @@
+{
+  "implementation_id": "OR-MIG-0145",
+  "tested_sha": "16458999c44037d0e8b24fda975f60739f95ad4b",
+  "status": "PASS_REFERENCE_FACTS",
+  "sources": [
+    {
+      "kind": "openrune",
+      "reference": "content/other/consumables/src/main/kotlin/org.rsmod.content.other.consumables/food/FoodEffectService.kt",
+      "sha256": "8e825addf9a68188175890404e26239c6ed6c8ae758c422e4507bd9c2dfcf587",
+      "availability": "protected_local_reference",
+      "revision": "Local archive; upstream commit unavailable; configured241"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/other/consumables/src/main/kotlin/org.rsmod.content.other.consumables/food/ConsumeFoodScript.kt",
+      "sha256": "5d2604be8d9f691a2788b11aeb752e6ea2fb8637ceec30c3ba512718ff104a2d",
+      "availability": "protected_local_reference",
+      "revision": "Local archive; upstream commit unavailable; configured241"
+    },
+    {
+      "kind": "openrune",
+      "reference": "or-cache/src/main/kotlin/dev/openrune/tables/consumables/food/FoodData.kt",
+      "sha256": "d13e1c07e15fbbda7b0f4854f7e0a8dd15b11a1ee1ce552f1168c5bd31e13f49",
+      "availability": "protected_local_reference",
+      "revision": "Local archive; upstream commit unavailable; configured241"
+    },
+    {
+      "kind": "openrune",
+      "reference": "api/player/src/main/kotlin/org/rsmod/api/player/stat/PlayerStatExtensions.kt",
+      "sha256": "f75608c691d3c78ad120ed7fbd3b0ecac23fabfa7c831e8da04d72cb8fcadf6a",
+      "availability": "protected_local_reference",
+      "revision": "Local archive; upstream commit unavailable; configured241"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Jangerberries",
+      "sha256": "553e386e5cafdf56e4984a3fffa121029aa6de8c5ac997fb03309b17a7a14969",
+      "availability": "protected_local_reference",
+      "revision": "15238975"
+    }
+  ],
+  "scope": "Fiveexact protectedreferencehashes match. Source food/effect and Wiki specify2HP,Attack+2,Strength+1,Prayer+1,Defence-1. Supporting source statHeal uses bounded current+delta with upper base; host explicitly preserves above-base current and suppresses unchanged capped updates. Existing independent33600transactioncases and72selectedWorldcontrols validate chosen capped host semantics;9actualdeathcasesremain V1FAIL.",
+  "limitations": [
+    "Reference facts only, V4partial. Actualtargetcachefactory/native/storagestate and eventpresentation remain unexecuted forJangerberries.",
+    "Sourceabove-base coerceIn failure/unchanged-cap packet differ intentionally; no originalexecutable or exactcombat/consumableclock/audio parity.",
+    "Manual food only; Herblore/acquisition/compost/quest roles not tested."
+  ]
+}

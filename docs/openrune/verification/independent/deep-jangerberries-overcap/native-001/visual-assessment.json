@@ -1,0 +1,12 @@
+{
+  "implementation_id": "OR-MIG-0145",
+  "tested_sha": "16458999c44037d0e8b24fda975f60739f95ad4b",
+  "status": "PASS_SCOPED",
+  "scope": "Directly inspected actualnative Skills frame:Prayer105/99,HP105/99,Attack104/99,Strength104/99,Defence0/99 andtwo berry messages. Above-base values preserved bybothEat actions. Existingnativeinterface renderer, no edited/reconstructedpixels; fullscene/player/audio parity excluded.",
+  "private_frame": {
+    "path": "work/native-jangerberries-overcap/native-001/jangerberries-overcap-skills.bmp",
+    "sha256": "f49ec5fe3b1f2189691f768138849e7a456a526fa713e20b8d0ad35235f26a9f",
+    "width": 765,
+    "signed_height": -503
+  }
+}

@@ -958,6 +958,11 @@ fn main()->R<()> {
     if matches!(a[6].as_str(),"amethyst-interrupt"|"amethyst-crash"){amethyst_recovery(&mut c,&mut l,a[6]=="amethyst-crash")?;l.session.close();return Ok(());}
     if a[6]=="amethyst-batch"{amethyst_batch(&mut c,&mut l)?;l.session.close();return Ok(());}
     if matches!(a[6].as_str(),"rune-air-daeyalt"|"rune-water-daeyalt"|"rune-earth-daeyalt"|"rune-fire-daeyalt"|"rune-body-daeyalt"){daeyalt_other_altars(&mut c,&mut l,&a[6])?;l.session.close();return Ok(());}
+    if a[6]=="food-clock-orders"{food_clock_orders(&mut c,&mut l)?;l.session.close();return Ok(());}
+    if a[6]=="jangerberries-f2p"{jangerberries_f2p(&mut c,&mut l)?;l.session.close();return Ok(());}
+    if a[6].starts_with("jangerberries-"){jangerberries_native(&mut c,&mut l,&a[6])?;l.session.close();return Ok(());}
+    if a[6]=="wine-drink-crash"{wine_crash_native(&mut c,&mut l)?;l.session.close();return Ok(());}
+    if a[6]=="wine-drink-f2p"{wine_f2p_native(&mut c,&mut l)?;l.session.close();return Ok(());}
     if a[6]=="wine-drink"{wine_drink_native(&mut c,&mut l)?;l.session.close();return Ok(());}
     if a[6]=="crafting-cape-crash"{
         crafting_cape_boost(&mut c,&mut l,&a[6])?;assert_eq!(c.data.boosted[12],100);
@@ -1020,4 +1025,89 @@ fn wine_drink_native(c:&mut ClientState,l:&mut Connection)->R<()> {
     tab(c,"Inventory")?;ticks(c,l,2)?;native_cape_frame(c,l,"wine-inventory-jugs")?;
     assert_eq!(image(c,93,28),expected);assert_eq!(image(c,94,14),gear);assert_eq!(c.data.experience,xp);
     println!("PG_CASE_PASS wine six genuine Drink menus selected1935 fullbag retainedduplicate noXP exact currentAttack-2floor0 heal11cap;native Skills and Inventory frames require independent visual assessment");Ok(())
+}
+
+fn wine_f2p_native(c:&mut ClientState,l:&mut Connection)->R<()> {
+    ready(c,l)?;assert!(!c.data.members);assert_eq!(c.data.base[0],99);assert_eq!(c.data.base[3],10);
+    let image=|c:&ClientState,inv,size|(0..size).map(|s|{let i=c.inventories.item(inv,s);(i.id,i.count)}).collect::<Vec<_>>();
+    let xp=c.data.experience;let gear=image(c,94,14);let mut expected=image(c,93,28);
+    assert_eq!(expected,(0..28).map(|s|(if [0,1,4,7,13,20,27].contains(&s){1993}else{1931},1)).collect::<Vec<_>>());
+    // Start immediately after a directly observed restoration so passive regen
+    // cannot masquerade as a second drain or a repeated consumption effect.
+    let prior=c.data.boosted[0];pump(c,l,150,|c,_|c.data.boosted[0]>prior)?;
+    let start=c.server_tick;tab(c,"Inventory")?;ticks(c,l,2)?;let attack=c.data.boosted[0];let hp=c.data.boosted[3];
+    let first=item_action(c,0,false,"Drink")?;let second=item_action(c,0,false,"Drink")?;
+    println!("PG_WINE_F2P_BEGIN tick={} member={} attack={attack} hp={hp};two genuine current-menu selections before polling",c.server_tick,c.data.members);
+    dispatch(c,first,"F2P Drink first")?;dispatch(c,second,"F2P Drink rapid selected repeat")?;
+    pump(c,l,30,|c,_|c.inventories.item(93,0).id==1935)?;ticks(c,l,5)?;
+    expected[0]=(1935,1);assert_eq!(image(c,93,28),expected);assert_eq!(image(c,94,14),gear);assert_eq!(c.data.experience,xp);
+    assert_eq!(c.data.boosted[0],(attack-2).max(0));assert_eq!(c.data.boosted[3],10);assert!(c.server_tick-start<80);
+    assert!(item_action(c,0,false,"Drink").is_err(),"empty jug unexpectedly exposes native Drink");
+    println!("PG_WINE_F2P_COMMIT tick={} attack={} hp={} retainedDuplicate={} emptyJugDrinkAbsent=true noXPgear=true",c.server_tick,c.data.boosted[0],c.data.boosted[3],c.inventories.item(93,1).id==1993);
+    native_cape_frame(c,l,"wine-f2p-inventory")?;
+    println!("PG_CASE_PASS wine F2P genuine Drink menu and rapid repeat consumes exactly one selected jug/effect;empty1935has noDrink menu;fullbag/duplicate/XP/gear retained. Repeated action may fail either delay or stale-item guard;not a proof isolating cooldown alone.");Ok(())
+}
+
+fn wine_crash_native(c:&mut ClientState,l:&mut Connection)->R<()> {
+    ready(c,l)?;assert!(c.data.members);let xp=c.data.experience;
+    let image=|c:&ClientState,inv,size|(0..size).map(|s|{let i=c.inventories.item(inv,s);(i.id,i.count)}).collect::<Vec<_>>();
+    let mut expected=image(c,93,28);let gear=image(c,94,14);assert_eq!(expected,(0..28).map(|s|(if [0,1,4,7,13,20,27].contains(&s){1993}else{1931},1)).collect::<Vec<_>>());
+    assert_eq!(c.data.boosted[0],99);
+    pump(c,l,90,|c,_|(20..=40).contains(&c.server_tick.rem_euclid(100)))?;
+    tab(c,"Inventory")?;ticks(c,l,2)?;let attack=c.data.boosted[0];let hp=c.data.boosted[3];let action=item_action(c,0,false,"Drink")?;
+    println!("PG_WINE_RECOVERY_BEGIN tick={} attack={attack} hp={hp}",c.server_tick);dispatch(c,action,"recovery genuine Drink")?;
+    pump(c,l,30,|c,_|c.inventories.item(93,0).id==1935)?;expected[0]=(1935,1);assert_eq!(image(c,93,28),expected);assert_eq!(image(c,94,14),gear);assert_eq!(c.data.experience,xp);assert_eq!(c.data.boosted[0],(attack-2).max(0));assert_eq!(c.data.boosted[3],10);
+    println!("PG_CRASH_READY unsaved native wine selectedjug1935 attack={} hp={} tick={};terminate only the owned disposable game server before save",c.data.boosted[0],c.data.boosted[3],c.server_tick);
+    let start=Instant::now();loop{match l.poll(c){Err(e)=>{println!("PG_EXPECTED_CRASH_DISCONNECT {e}");return Ok(());},Ok(())=>{if l.logged_out().is_some(){println!("PG_EXPECTED_CRASH_DISCONNECT native transport closed");return Ok(());}}}if start.elapsed()>Duration::from_secs(30){return Err("owned wine recovery stop absent".into());}std::thread::sleep(Duration::from_millis(10));}
+}
+
+fn jangerberries_native(c:&mut ClientState,l:&mut Connection,kind:&str)->R<()> {
+    ready(c,l)?;assert!(c.data.members);for skill in [0usize,1,2,3,5]{assert_eq!(c.data.base[skill],99);}
+    let image=|c:&ClientState,inv,size|(0..size).map(|s|{let i=c.inventories.item(inv,s);(i.id,i.count)}).collect::<Vec<_>>();
+    let mut expected=image(c,93,28);assert_eq!(expected,(0..28).map(|s|(if[0,1,13].contains(&s){247}else{1931},1)).collect::<Vec<_>>());let gear=image(c,94,14);let xp=c.data.experience;
+    pump(c,l,90,|c,_|(20..=40).contains(&c.server_tick.rem_euclid(100)))?;tab(c,"Inventory")?;ticks(c,l,2)?;
+    for (index,slot)in[0i32,13].into_iter().enumerate(){
+        ready(c,l)?;let before=c.data.boosted;let mut stats=before;
+        for (skill,amount)in[(0usize,2),(2,1)]{if stats[skill]<c.data.base[skill]+amount{stats[skill]=(stats[skill]+amount).min(c.data.base[skill]+amount);}}
+        if stats[3]<c.data.base[3]{stats[3]=(stats[3]+2).min(c.data.base[3]);}if stats[5]<c.data.base[5]{stats[5]=(stats[5]+1).min(c.data.base[5]);}stats[1]=(stats[1]-1).max(0);
+        if kind=="jangerberries-overcap"{assert_eq!(before[5],105);assert!(before[3]>99&&before[0]>101&&before[2]>100);}
+        println!("PG_BERRY_NATIVE_BEGIN kind={kind} index={index} slot={slot} tick={} hp={} prayer={} attack={} defence={} strength={}",c.server_tick,before[3],before[5],before[0],before[1],before[2]);
+        let action=item_action(c,slot,false,"Eat")?;let early=if kind=="jangerberries-delay"&&index==0{Some(item_action(c,13,false,"Eat")?)}else{None};dispatch(c,action,"ordinary Jangerberries Eat")?;if let Some(early)=early{println!("PG_BERRY_EARLY_SENT tick={} slot13 beforeAnyNetworkPoll=true",c.server_tick);dispatch(c,early,"genuine early berry Eat")?;}pump(c,l,30,|c,_|c.inventories.item(93,slot).id==-1)?;
+        expected[slot as usize]=(-1,0);assert_eq!(image(c,93,28),expected);assert_eq!(image(c,94,14),gear);assert_eq!(c.data.experience,xp);assert_eq!(c.data.boosted,stats);
+        println!("PG_BERRY_NATIVE_COMMIT kind={kind} index={index} slot={slot} tick={} hp={} prayer={} attack={} defence={} strength={}",c.server_tick,stats[3],stats[5],stats[0],stats[1],stats[2]);
+        if kind=="jangerberries-delay"&&index==0{
+            let before_early=c.data.boosted;ticks(c,l,4)?;
+            assert_eq!(image(c,93,28),expected,"early input consumed another berry;assess server trace timing before implementation classification");assert_eq!(c.data.boosted,before_early);assert_eq!(c.data.experience,xp);println!("PG_BERRY_EARLY_REFUSED tick={} prayer={} slot13retained=true",c.server_tick,c.data.boosted[5]);
+        }else{ticks(c,l,4)?;}
+    }
+    assert_eq!(c.inventories.item(93,1).id,247);tab(c,"Skills")?;ticks(c,l,2)?;native_cape_frame(c,l,&format!("{kind}-skills"))?;
+    println!("PG_BERRY_NATIVE_RENDER kind={kind} tick={} hp={} prayer={} attack={} defence={} strength={};legacy frame helper stat12metadata is unrelated",c.server_tick,c.data.boosted[3],c.data.boosted[5],c.data.boosted[0],c.data.boosted[1],c.data.boosted[2]);
+    assert_eq!(image(c,93,28),expected);assert_eq!(image(c,94,14),gear);assert_eq!(c.data.experience,xp);
+    println!("PG_CASE_PASS ordinary berry native kind={kind} two genuine selected Eat menus exactcappedPrayer/boosts/Defence/HP wholebaggearXP andretainedduplicate;actual Skills frame requires independent visual review");Ok(())
+}
+
+fn jangerberries_f2p(c:&mut ClientState,l:&mut Connection)->R<()> {
+    ready(c,l)?;assert!(!c.data.members);tab(c,"Inventory")?;ticks(c,l,2)?;
+    let image=|c:&ClientState,inv,size|(0..size).map(|s|{let i=c.inventories.item(inv,s);(i.id,i.count)}).collect::<Vec<_>>();let bag=image(c,93,28);let gear=image(c,94,14);let xp=c.data.experience;let stats=c.data.boosted;for skill in [0usize,1,2,3,5]{assert_eq!(stats[skill],99);}
+    assert_eq!(c.inventories.item(93,0).id,247);let(_,point)=widget_point(c,0)?;let menus=c.interface_menu(point)?;
+    println!("PG_BERRY_F2P_MENU member=false visibleSlot0 item247 options={:?}",menus.iter().map(|e|e.option.as_str()).collect::<Vec<_>>());assert!(menus.iter().any(|e|e.option=="Examine"));
+    let eat=menus.into_iter().find(|e|e.option=="Eat");let path=if let Some(e)=eat{dispatch(c,e.action,"F2P genuine berry Eat")?;"BACKEND_REFUSAL"}else{"UI_REFUSAL"};ticks(c,l,6)?;
+    assert_eq!(image(c,93,28),bag);assert_eq!(image(c,94,14),gear);assert_eq!(c.data.boosted,stats);assert_eq!(c.data.experience,xp);native_cape_frame(c,l,"jangerberries-f2p-inventory")?;
+    println!("PG_CASE_PASS berry F2P {path} actualvisible native menu;fullbag/allStatsXPgear unchanged;no forged or forced backend input");Ok(())
+}
+
+fn food_clock_orders(c:&mut ClientState,l:&mut Connection)->R<()> {
+ ready(c,l)?;assert!(c.data.members);tab(c,"Inventory")?;ticks(c,l,2)?;
+ let image=|c:&ClientState,inv,size|(0..size).map(|s|{let i=c.inventories.item(inv,s);(i.id,i.count)}).collect::<Vec<_>>();let xp=c.data.experience;let gear=image(c,94,14);let mut bag=image(c,93,28);
+ assert_eq!(bag,(0..28).map(|s|(if[0,1].contains(&s){2142}else if[13,14].contains(&s){2162}else{1931},1)).collect::<Vec<_>>());
+ pump(c,l,100,|c,_|(20..=40).contains(&c.server_tick.rem_euclid(100)))?;
+ let hp=c.data.boosted[3];let food=item_action(c,0,false,"Eat")?;let combo=item_action(c,13,false,"Eat")?;let refused=item_action(c,1,false,"Eat")?;
+ println!("PG_CLOCK_NATIVE_BEGIN tick={} hp={hp};Food0 Combo13 Food1 selected beforepoll",c.server_tick);dispatch(c,food,"clock Food0")?;dispatch(c,combo,"clock Combo13")?;dispatch(c,refused,"clock blocked repeat Food1")?;
+ pump(c,l,30,|c,_|c.inventories.item(93,13).id==-1)?;ticks(c,l,2)?;bag[0]=(-1,0);bag[13]=(-1,0);assert_eq!(image(c,93,28),bag);assert_eq!(c.data.boosted[3],hp+5);assert_eq!(c.data.experience,xp);assert_eq!(image(c,94,14),gear);
+ println!("PG_CLOCK_NATIVE_FOOD_COMBO tick={} hp={} retainedFood1=true",c.server_tick,c.data.boosted[3]);ticks(c,l,4)?;
+ let hp=c.data.boosted[3];let combo=item_action(c,14,false,"Eat")?;let food=item_action(c,1,false,"Eat")?;println!("PG_CLOCK_NATIVE_COMBO_FIRST_BEGIN tick={} hp={hp}",c.server_tick);dispatch(c,combo,"clock Combo14 first")?;dispatch(c,food,"clock blocked normal aftercombo")?;
+ pump(c,l,30,|c,_|c.inventories.item(93,14).id==-1)?;ticks(c,l,2)?;bag[14]=(-1,0);assert_eq!(image(c,93,28),bag);assert_eq!(c.data.boosted[3],hp+2);assert_eq!(c.data.experience,xp);ticks(c,l,4)?;
+ let hp=c.data.boosted[3];let food=item_action(c,1,false,"Eat")?;println!("PG_CLOCK_NATIVE_EXPIRY_BEGIN tick={} hp={hp}",c.server_tick);dispatch(c,food,"clock normal after expiry")?;pump(c,l,30,|c,_|c.inventories.item(93,1).id==-1)?;bag[1]=(-1,0);assert_eq!(image(c,93,28),bag);assert_eq!(c.data.boosted[3],hp+3);assert_eq!(c.data.experience,xp);assert_eq!(image(c,94,14),gear);
+ native_cape_frame(c,l,"food-clock-orders-inventory")?;
+ println!("PG_CASE_PASS foodclock FOOD COMBO only actualmenus4consumes2refusals fullbagXPgear;authoritativetraces independently assess same-tick ordering;no potion actions");Ok(())
 }

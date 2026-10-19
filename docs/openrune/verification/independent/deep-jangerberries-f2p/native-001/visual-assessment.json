@@ -1,0 +1,10 @@
+{
+  "implementation_id": "OR-MIG-0145",
+  "tested_sha": "16458999c44037d0e8b24fda975f60739f95ad4b",
+  "status": "PASS_SCOPED",
+  "scope": "Direct image review: full28-slot inventory retains three berry stacks and25pots; chat visibly says You need to be a member to eat that. Unedited native renderer frame.",
+  "private_frame": {
+    "path": "work/native-jangerberries-f2p/native-001/jangerberries-f2p-inventory.bmp",
+    "sha256": "2d4ffd8d6dedb1201ee3cecb221d6f61baae456f4aa2f80e048da124d2f2c32b"
+  }
+}
