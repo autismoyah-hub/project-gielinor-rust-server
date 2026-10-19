@@ -1,0 +1,14 @@
+{
+  "implementation_id": "OR-MIG-0149",
+  "tested_sha": "76a011f52a9f2dcaf85eec08e64c9282d0602ced",
+  "status": "HARNESS_FAILURE",
+  "scope": "RawmanifestPASS invalidated: frozen source specifies both_real_death_hooks_clear_category_and_retained_attack_contribution, but run1executes observe_each_crab_stage_across_unresolved_death_states. Sharedpackage/testtargetcache reusedearlier45crablifebinary; no new18clockresetverification from thisattempt. Rawmanifest/log/source preserved unchanged.",
+  "root_cause": "Observedstalebinary fromsharedCargo package/testtargetcache. Likelytrigger: identicalpackageidentity plus copy2preservedolder source mtimes; thepreciseinternalCargo fingerprint decision is inferred. Newmanifest/harness paths didnotprevent reuse. Uniqueidentity/freshcopies andnamechecks preventthis demonstratedcross-suite substitution.",
+  "correction": "Uniquepercampaignpackage identity,freshcopytimestamps,explicitactualtestnamechecks; rerunexact149SHA in newoutputdirectory. Audit found no other confirmed mismatches across retainedexecutedexternalcampaigns; nativefrozenhashdrivercampaigns unaffected.",
+  "evidence_sha256": {
+    "manifest.json": "c5b8d5e6ca77a61d951dcd3fc2884b7b3425d5adf8d2600442fcc0d308653aae",
+    "run-1.log": "04c30e48260b8c31471d19d0af2324dc1d04fe389a86d22bc00e88126fab7bcc",
+    "harness/life.rs": "a6c20e7736af7642561d0665bd649fd4de191c828608bf7bfed02252054b24ad"
+  },
+  "replacement_evidence": "docs/openrune/verification/independent/giant-crab-clock-reset-corrected.json"
+}

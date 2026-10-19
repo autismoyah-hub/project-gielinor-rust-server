@@ -1,0 +1,57 @@
+{
+  "implementation_id": "OR-MIG-0149",
+  "tested_sha": "76a011f52a9f2dcaf85eec08e64c9282d0602ced",
+  "status": "PASS_SCOPED",
+  "feature": "giant-crab-f2p",
+  "scope": "Actual native 0 selected Eat commits at13 with duplicate1/fullbag/XP/gear preserved, exact2HP/stage/terminal behavior, readyattack0 trace and829receipt; F2P actualmenu refusal when count0. Realacknowledgedsave/serverrestart/native reconnect preserves exact intermediate/final/refusalinventory and initialreconnectHP, no replay.",
+  "server_commit_ticks": [],
+  "received_hp": [
+    [
+      0,
+      99,
+      13034431
+    ]
+  ],
+  "reconnect_hp": [
+    [
+      0,
+      99,
+      13034431
+    ]
+  ],
+  "saved_hp": [
+    3,
+    99,
+    99,
+    130344311
+  ],
+  "relogin_saved_hp": [
+    3,
+    99,
+    99,
+    130344311
+  ],
+  "qualifications": [
+    "Native screenshot requires separate direct visual review; no visualPASS inferred from file creation.",
+    "Readiness-clock passiveHP restoration and source15/20loginminimums distinguished from food commits; no foodXP.",
+    "Native activeweaponattack/Walk exact2tickexpiry and death/actorfreshness are separate; World controls not substituted fornative.",
+    "No acquisition/cooking/burning/quest/potion/Herblore gameplay; no fullcontract acceptance."
+  ],
+  "evidence_sha256": {
+    "initial-state.json": "a2fd3f4820b536c05be44781a1d5cddc7e01adc64a227cd6c8d146f72cfe4f26",
+    "build.json": "19d1292e09e8c33b5f543cb5d150cd9cd7e1e99028774720f8533eb305456bb5",
+    "frozen-launcher.py": "6f2130018092a7da4dcae2700da32baf057fe4ce0eaa28b4d6a1d253e7d215cc",
+    "frozen-observer/build.json": "ebc9cd06f5cb74b34379fb29ec2257ed5baed30c06075ee1710eca08386f8b4b",
+    "frozen-observer/pg_observer.rs": "d6a6e0da24169817ff80ca2b9402b501c287cf9b77b480b0fb1d5c7554fa97cd",
+    "produce/manifest.json": "fede144ef96f4c7bf708fae8b5722e50c9f51394972a43196bd47c0b98015bef",
+    "produce/before.json": "a2fd3f4820b536c05be44781a1d5cddc7e01adc64a227cd6c8d146f72cfe4f26",
+    "produce/after.json": "4c4fccfd942769196df14fdd02e717fbe11cacdd5a3004105cd8e0ee6611bc33",
+    "produce/client.log": "71925e632b81e125d7730f24e1df16978ef0c601f9702665043cd6017d52c9eb",
+    "produce/server.log": "e6cbd517f88ebcfd13fefeefbb34e2d8ac13bd68fc5707dfbde82af885686043",
+    "relogin/manifest.json": "7e22ca382c24c2a80e38e6b2d4033a2ebf4c97f5650396701032c36c4e5ed467",
+    "relogin/before.json": "4c4fccfd942769196df14fdd02e717fbe11cacdd5a3004105cd8e0ee6611bc33",
+    "relogin/after.json": "c2f28081216640298c19d2d9ce4b2a8fd0395277a70eab71c4aa1bbc5c295174",
+    "relogin/client.log": "9f51ad96c5d023d84a799090b7bde7b7c73f2af9b6bb6e122c930c170d5b146d",
+    "relogin/server.log": "aaa606026afccf6ac5346ecacf9488849748ecc8d669f0685e90a5fbb62c3c15"
+  }
+}

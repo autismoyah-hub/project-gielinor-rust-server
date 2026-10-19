@@ -1,0 +1,19 @@
+{
+  "implementation_id": "OR-MIG-0152",
+  "tested_sha": "79a16ed1b33a402b59d57ace40a7ec978e28b32e",
+  "status": "FAIL",
+  "level": "V1",
+  "correction_id": "PG-DEF-003",
+  "severity": "P2",
+  "scope": "18freshindependentcases2foods x3slots xHP0/actualDeathRequested/restoredpositiveHPwithoutrespawn. Actualcachederivedop2/op5typedadapterroutes thenrealWorld consumes/heals all18unresolveddeadstates. Othercopy/fineXPretained butinvalidliveeligibilitypermitsitem/HP/successtrace publication. DiagnosticRustPASS confirmsviolations, notacceptance.",
+  "actionable_correction": "Rejectordinaryfoodbeforetransaction/nativeclockcommit whenHPzero oractualdeath unresolved, includingpositiveHPpatchedbeforeproperrespawn. No item/HP/animation/trace/clockmutation; coverbothcacheconsumeoperations andretain correctlivecategorypolicy. Publishnewpinnedcorrection;original152pinremainsFAIL.",
+  "limitations": [
+    "ControlledauthoritativeWorldafterexacttypedadapter; genuine native dead-player menu reachability unproven.",
+    "OrdinaryP2PGDEF003extension; FORGEcontinues, no newissue/message.",
+    "Herbloreuse/potionmixedorders excluded."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/integration-external-food-native-life-79a16ed1b33a402b59d57ace40a7ec978e28b32e/manifest.json": "ac760b29b204162fdd5d6252966d73199889688a28ce7265a42a0099ef846bdb",
+    "docs/openrune/verification/independent/integration-external-food-native-life-79a16ed1b33a402b59d57ace40a7ec978e28b32e/run-1.log": "cd1c78a6affb0518de26cfd2303b93ed8313b91751876abe04f30dce4d11a0bf"
+  }
+}

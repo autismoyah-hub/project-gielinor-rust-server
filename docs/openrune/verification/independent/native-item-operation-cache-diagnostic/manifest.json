@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "exit_code": 0,
+  "scope": "Read-only pinned nativeclient decoder over the same frozen localJS5cache used by failed152nativeEat; no socket or gameaction. Objectnames/optext only, no cacheasset bytes published.",
+  "native_decoder_binary_sha256": "1835c109967cd49c4d6f87829d4606461e904ea6106ee58a6f00a4bcb8bef493",
+  "source_sha256": "3d36164be6931ad51125bc58957404c4d9b6ed6e512e520131d21d7896aaa088",
+  "resource_manifest_sha256": "8ba60ce0ba0fdc1add7ef2511bc9b4683c3b2fe42a80997583c51d4fa5b82717"
+}

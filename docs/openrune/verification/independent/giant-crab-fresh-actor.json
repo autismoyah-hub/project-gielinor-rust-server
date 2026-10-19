@@ -1,0 +1,16 @@
+{
+  "implementation_id": "OR-MIG-0149",
+  "tested_sha": "76a011f52a9f2dcaf85eec08e64c9282d0602ced",
+  "status": "PASS_SCOPED",
+  "scope": "Sixexact149Worldcases:3slots xcrabFOOD/kingwormCOMBO with30ticksentinel/active100attack. Actualretirement/saveevent/hostack/newadmission createsnewactorgeneration withfreshconsume/attackstate beforeolddeadline; reservedaccountcannotreadmitbeforeack,oldActorIdremainsstale,newactorimmediatelyconsumesotherselecteditem.",
+  "limitations": [
+    "Hostsaveack/datahandoff are in-processcomponentfixtures, notdurableSQLproof. Separatecompletednativefull/intermediate/F2P/pre-save-recovery campaigns proveactualpersistence.",
+    "30ticksentinel intentional topreventnaturalexpiry falsepositive; actualfoodcatalog2/3tick policy separatelyvalidated.",
+    "No nativeplayer-death/renderedcombat or full149gameplayacceptance claim;V1FAIL45life remains."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/integration-external-consumable-food-clocks-fresh-76a011f52a9f2dcaf85eec08e64c9282d0602ced/manifest.json": "bd11924ce80c5ca0002184b8d7e9ef85c90ba63fd0b601f19cb1c954bb6cd7ac",
+    "docs/openrune/verification/independent/integration-external-consumable-food-clocks-fresh-76a011f52a9f2dcaf85eec08e64c9282d0602ced/run-1.log": "986b4cd3c4a914ecc93e165b78c3bb60817915100e926052f1aeddd8923b1362",
+    "docs/openrune/verification/independent/integration-external-consumable-food-clocks-fresh-76a011f52a9f2dcaf85eec08e64c9282d0602ced/harness/fresh.rs": "b6904a5a09aa21cb478f3b244476678f1914949ef72e3c6b9d9a152f8bffeed5"
+  }
+}

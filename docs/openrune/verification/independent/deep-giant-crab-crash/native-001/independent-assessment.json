@@ -1,0 +1,56 @@
+{
+  "implementation_id": "OR-MIG-0149",
+  "tested_sha": "76a011f52a9f2dcaf85eec08e64c9282d0602ced",
+  "status": "PASS_SCOPED",
+  "scope": "Freshgenuine native2bites observedstage7524andHPgreaterthan50, thenonlyowneddisposableserver stoppedbeforeanySaveack. Durablewholeinventory/allStats matchinitialstage7521/HP50. Actualrestart/nativefirstHP50andoriginalinventory confirmdiscriminatingrollback, nofoodreplay; subsequentnormalacknowledgedsave completes.",
+  "native_unsaved_commits": [
+    [
+      0,
+      7523,
+      126,
+      53
+    ],
+    [
+      1,
+      7524,
+      134,
+      55
+    ]
+  ],
+  "reconnect_hp": [
+    [
+      0,
+      50,
+      13034431
+    ]
+  ],
+  "post_relogin_sql_hp": [
+    3,
+    51,
+    99,
+    130344311
+  ],
+  "qualifications": [
+    "Pre-save actor-state recovery only; noSQLitecommit/writefault atomicity claim. Startup migrations/login metadata canchange; notbyte-identicalwholeDB.",
+    "Source15/20loginminimums reapplyonlyonnewadmission; passiveHPafterfirstreconnect50 remainsseparate from food.",
+    "No native death/activeweapon/Walk/sourceparity claim; V1FAIL45unresolvedfoodlifecases remains.",
+    "No acquisition/cooking/potion/Herbloregameplay; previoussuccessfulfull/intermediate/F2P DBs not touched."
+  ],
+  "evidence_sha256": {
+    "initial-state.json": "2c3d3a1a7a8e5f6b81842d568bbc187dabfda930bbfbfff0ba0f2dd5be3aa923",
+    "build.json": "a2e5ec15e21d520f9cf4c97bbeb6638f918688f76dc7bb74d449e8c1c6b5f183",
+    "frozen-launcher.py": "c820c2d869f475ababff179a052aa521be738e376ed8d55a26437ced167927c9",
+    "frozen-observer/build.json": "af95f89d07ff1ad352b57553afdbf0e6de5bc3a8c161ac08940ea000d12d8581",
+    "frozen-observer/pg_observer.rs": "33e5a86393e135b2627c9818bcd2ddd139d0eb9cb7d2725c560a272a296811c0",
+    "produce/manifest.json": "4723a5bc6afdb68ed5f77bedb8a36f5fd0f55f8a7856d218bbf4d3aee890fa72",
+    "produce/before.json": "2c3d3a1a7a8e5f6b81842d568bbc187dabfda930bbfbfff0ba0f2dd5be3aa923",
+    "produce/after.json": "8b9be49f58b5aa296bf1707360f6c6a143eb860dc72dd7d270f6df3b0a6de57f",
+    "produce/client.log": "75c9466934a9c2e168aae38a00a9cf696e93f0ff55fabd34b1e06c723c2f4056",
+    "produce/server.log": "754de45eabcfc0058ea21ad5a801a0ca6fb5ad407d78a773d086f13a989f441d",
+    "relogin/manifest.json": "bb5ea3b1c989046bf8d597a910f9e658e476cf0ce6f979925e554a159e04391f",
+    "relogin/before.json": "8b9be49f58b5aa296bf1707360f6c6a143eb860dc72dd7d270f6df3b0a6de57f",
+    "relogin/after.json": "728a54328b8597bcd97689d96f84259f7c763a28370ad7209e5bda10240af081",
+    "relogin/client.log": "ae3b287d04e1ddec68ecb1270b209683cdf1945e58e1d9a294360a9e085ec2f4",
+    "relogin/server.log": "a7d78ffea066c8529c17a789809d4a01475b3d05d352c30e8b8fffbf733224fa"
+  }
+}

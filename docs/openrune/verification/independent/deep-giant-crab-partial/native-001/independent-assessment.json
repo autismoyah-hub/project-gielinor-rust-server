@@ -1,0 +1,85 @@
+{
+  "implementation_id": "OR-MIG-0149",
+  "tested_sha": "76a011f52a9f2dcaf85eec08e64c9282d0602ced",
+  "status": "PASS_SCOPED",
+  "feature": "giant-crab-partial",
+  "scope": "Actual native 2 selected Eat commits at13 with duplicate1/fullbag/XP/gear preserved, exact2HP/stage/terminal behavior, readyattack0 trace and829receipt; F2P actualmenu refusal when count0. Realacknowledgedsave/serverrestart/native reconnect preserves exact intermediate/final/refusalinventory and initialreconnectHP, no replay.",
+  "server_commit_ticks": [
+    130,
+    139
+  ],
+  "received_hp": [
+    [
+      0,
+      50,
+      13034431
+    ],
+    [
+      92,
+      51,
+      13034431
+    ],
+    [
+      123,
+      53,
+      13034431
+    ],
+    [
+      132,
+      55,
+      13034431
+    ]
+  ],
+  "reconnect_hp": [
+    [
+      0,
+      55,
+      13034431
+    ],
+    [
+      83,
+      56,
+      13034431
+    ],
+    [
+      183,
+      57,
+      13034431
+    ]
+  ],
+  "saved_hp": [
+    3,
+    55,
+    99,
+    130344311
+  ],
+  "relogin_saved_hp": [
+    3,
+    58,
+    99,
+    130344311
+  ],
+  "qualifications": [
+    "Native screenshot requires separate direct visual review; no visualPASS inferred from file creation.",
+    "Readiness-clock passiveHP restoration and source15/20loginminimums distinguished from food commits; no foodXP.",
+    "Native activeweaponattack/Walk exact2tickexpiry and death/actorfreshness are separate; World controls not substituted fornative.",
+    "No acquisition/cooking/burning/quest/potion/Herblore gameplay; no fullcontract acceptance."
+  ],
+  "evidence_sha256": {
+    "initial-state.json": "2c3d3a1a7a8e5f6b81842d568bbc187dabfda930bbfbfff0ba0f2dd5be3aa923",
+    "build.json": "19d1292e09e8c33b5f543cb5d150cd9cd7e1e99028774720f8533eb305456bb5",
+    "frozen-launcher.py": "6f2130018092a7da4dcae2700da32baf057fe4ce0eaa28b4d6a1d253e7d215cc",
+    "frozen-observer/build.json": "ebc9cd06f5cb74b34379fb29ec2257ed5baed30c06075ee1710eca08386f8b4b",
+    "frozen-observer/pg_observer.rs": "d6a6e0da24169817ff80ca2b9402b501c287cf9b77b480b0fb1d5c7554fa97cd",
+    "produce/manifest.json": "1938b4f2bea6bc0066ec59e2d24dd7ac94c95197d37992db6ab318407fd83bbd",
+    "produce/before.json": "2c3d3a1a7a8e5f6b81842d568bbc187dabfda930bbfbfff0ba0f2dd5be3aa923",
+    "produce/after.json": "48561d4d8d4b76e2664e178b383c4a84c050d8c92de708e8b98c4558232b134f",
+    "produce/client.log": "13752195bbf64179b0684c22c8751bf162f5ebf1e60af82775a64e11155489e4",
+    "produce/server.log": "900f4d803c6d1e90e13f27b17924868309a7e0a1436c8dbeafc5a8f5fd743dcc",
+    "relogin/manifest.json": "fbf104ac82a8e86d26ecb7e760b19cca95fbdba2e05fa6e223362bd8e10a06eb",
+    "relogin/before.json": "48561d4d8d4b76e2664e178b383c4a84c050d8c92de708e8b98c4558232b134f",
+    "relogin/after.json": "6b04f16642795ff34f0aea13d61aa9bfd621408af19032e7e1fe7b378df1cc2c",
+    "relogin/client.log": "4d7e8389f2d72591464f27cb5572a49ff3ea8e7dab072a5d3bc0bfd1f4da8823",
+    "relogin/server.log": "5942d167443edb4270527302e6a474d5f3261e186e158f187161deb27e2efd68"
+  }
+}

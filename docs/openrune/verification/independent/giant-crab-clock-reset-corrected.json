@@ -1,0 +1,18 @@
+{
+  "implementation_id": "OR-MIG-0149",
+  "tested_sha": "76a011f52a9f2dcaf85eec08e64c9282d0602ced",
+  "status": "PASS_SCOPED",
+  "scope": "Corrected18caseexact149SHA integration:3slots xFOOD/COMBO xmatchedalive/legacyhitdeath/standardqueue-death. BothactualDeathRequestedhooks clear long30tick category sentinel/retainedattack contribution beforeexpiry; alivecontrolpreservesit; generic actionclockintentionallysurvivesdeath untiltrustedsetter. UniqueharnessCargopackageandactualtestidentityPASS.",
+  "limitations": [
+    "Controlled30tick sentinel andtrustedHP restoration; notnative respawn or actual2tickcrab timing.",
+    "EarlierrawPASSsame-namedattempt invalidatedforstaletestbinary; not counted. Thatattempt/log/DBfreeheadlesssource retained.",
+    "Overall149V1FAIL45food-lifeviolations unaffected; clockreset isdistinctfromlivefoodadmission.",
+    "No fullV3PASS; nativeunsavedstage recovery currentlyexecuting."
+  ],
+  "replacement_for": "docs/openrune/verification/independent/integration-external-consumable-food-clocks-life-76a011f52a9f2dcaf85eec08e64c9282d0602ced/invalidated-assessment.json",
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/integration-external-consumable-food-clocks-life-76a011f52a9f2dcaf85eec08e64c9282d0602ced-1792372771602558800/manifest.json": "6d78c3847f690fc702690d29650039229009292b5bb23cfb31b8fdf7e99b1c4b",
+    "docs/openrune/verification/independent/integration-external-consumable-food-clocks-life-76a011f52a9f2dcaf85eec08e64c9282d0602ced-1792372771602558800/run-1.log": "ff1180f48cc2992cfbbd000632b5d8e125a44e7bfa615ee9af35f93d54ee45c3",
+    "docs/openrune/verification/independent/integration-external-consumable-food-clocks-life-76a011f52a9f2dcaf85eec08e64c9282d0602ced-1792372771602558800/harness/life.rs": "a6c20e7736af7642561d0665bd649fd4de191c828608bf7bfed02252054b24ad"
+  }
+}

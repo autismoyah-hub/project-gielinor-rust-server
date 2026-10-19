@@ -1,0 +1,80 @@
+{
+  "implementation_id": "OR-MIG-0152",
+  "tested_sha": "79a16ed1b33a402b59d57ace40a7ec978e28b32e",
+  "status": "PASS_SCOPED",
+  "feature": "gnome-food-operations",
+  "scope": "OnlyEqua0genuineEatoperation2consumed/healed1HP; rawcombinednativecampaignFAILfromToad6versusserver5retained. Actualacknowledgedsave/restart/native reconnectpreservesEqua0debit/unselectedduplicate/Toadsstock/fineXP/base andfirstHP, nofoodreplay.",
+  "actual_native_sends": [
+    [
+      224,
+      0,
+      2128,
+      2
+    ],
+    [
+      224,
+      13,
+      2152,
+      6
+    ],
+    [
+      224,
+      1,
+      2128,
+      2
+    ]
+  ],
+  "reconnect_hp": [
+    [
+      0,
+      54,
+      13034431
+    ],
+    [
+      88,
+      55,
+      13034431
+    ],
+    [
+      188,
+      56,
+      13034431
+    ]
+  ],
+  "saved_hp": [
+    3,
+    54,
+    99,
+    130344311
+  ],
+  "post_relogin_hp": [
+    3,
+    56,
+    99,
+    130344311
+  ],
+  "qualifications": [
+    "PG-DEF-008 blocksToadEat atoriginalpin; no positiveToadnativeconsumption orToadF2Pmembershipproof, no newerbuild/forcedoperation5substituted.",
+    "RawF2Pcontroller labels bothvisibleEatpaths BACKEND_REFUSAL; onlyEqua2reachesvalidfoodoperation. Toa6nonconsumptionisnotisolatedmembershipcoverage.",
+    "Source15/20bootstrap andpassiveHPchanges distinctfromfoodXP/healing; no ingredient-use/potiongameplay.",
+    "V0/V2FAILnativeoperationmismatch,V1FAIL18life,fullToadV3BLOCKED;passingEquascope doesnotupgradewholelevels.",
+    "Nativeframe inspection ifavailable isseparate; no renderedactor/audio parityclaim."
+  ],
+  "evidence_sha256": {
+    "initial-state.json": "b4b2739d5c1430b5684c7563e561eba183ea4509580cbd2262474ca0395fde5c",
+    "build.json": "93b1a5fb66cdabe7e5525e4b333728a2565e40a1d04de5fbb4368ed9874bdf13",
+    "frozen-launcher.py": "55022b6725a02f76e1299aa8a1e86406b487fed2b9f2e53237f71b6aefa8f32c",
+    "frozen-observer/build.json": "0839b8cd8ea7c7e9efac49a60b6a2e22bf6d00b26cbcad5011818172ecc38035",
+    "frozen-observer/pg_observer.rs": "888813a4981b012e6099825d92310e37d7f6aecd4313ce9d13aa47a7f016f760",
+    "produce/manifest.json": "632d63a21cffc25bfd3e9df0ebd444e9a1f61f295af575e25563663b3d793ef7",
+    "produce/before.json": "b4b2739d5c1430b5684c7563e561eba183ea4509580cbd2262474ca0395fde5c",
+    "produce/after.json": "8dae771e35d641cb7b9e0df7ddcb070822a83e55ca664cb792bdffd47ccd9936",
+    "produce/client.log": "0319db02995ec5f3763fb4ca8408f264931347126de3672ad05e9e5ebf3741fe",
+    "produce/server.log": "9c8d05ecad15d23e60060ec19a16ad6cc9f0a4ad14ef7b8650afefe1c51eb099",
+    "relogin/manifest.json": "0c5ba7e34277c47bb0908a6ec53da2a003af18aed6cc3b96be129e40043c0c42",
+    "relogin/before.json": "8dae771e35d641cb7b9e0df7ddcb070822a83e55ca664cb792bdffd47ccd9936",
+    "relogin/after.json": "78cd38b0abc9d09a9225f3eeed752a973b3028c949d8c577a7d6bc084aa64fc5",
+    "relogin/client.log": "7ae335f22bf2f45bc8e889ff39723e533dd411e4ad8a4d811c35159094f9b8e1",
+    "relogin/server.log": "f9c069f94559ecee4a3fff2627d6d85dbbb775d3b228c351904bf4cbff388a0e"
+  }
+}

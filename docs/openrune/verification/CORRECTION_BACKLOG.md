@@ -242,3 +242,11 @@ At `16458999c44037d0e8b24fda975f60739f95ad4b`,9selected publicWorld death/zeroHP
 
 
 PG-DEF-003 extension — OR-MIG-0149 at `76a011f52a9f2dcaf85eec08e64c9282d0602ced`: 45 fresh authoritative life-state violations across all five crab stages, three selected slots, zero HP / actual unresolved death / HP restored without respawn. Every case consumes/replaces and heals2. Add live/death eligibility before food transaction and native clock publication; no stock/stat/animation/success trace on refusal. Ordinary P2; FORGE continues. Native dead-player reachability unproven. Independent report: `independent/giant-crab-life-finding.json`.
+
+
+PG-DEF-003 extension — OR-MIG-0152 at `79a16ed1b33a402b59d57ace40a7ec978e28b32e`: 18 fresh ordinary-food life-state violations through actual pinned op2/op5 typed adapter and World; Equa/Toads consume and heal with zero HP, unresolved actual death, or visible HP restored without respawn. Reject before transaction/native clock publication; no item/stat/animation/trace on refusal. Ordinary P2, no FORGE stop; native dead-player reachability unproven. See `independent/food-native-life-finding.json`.
+
+
+### PG-DEF-008 — native fourth-option Eat operation mismatch (P2, scoped native dependency blocker)
+
+OR-MIG-0152 at `79a16ed1b33a402b59d57ace40a7ec978e28b32e`: actual member native menu Eat on Toads legs2152 sends held149:0/slot13/**operation6**. Server resolver expects5 from cache index3; ToAd does not consume/heal and observer times out. Equa0 operation2 commits normally. Both independent server game-cache and pinned native JS5 decoder show Eat at index3, so the widget/script operation mapping needs investigation; do not force native-unreachable5 or guess a global offset. This blocks ToAd native V2/V3 at the original pin; first-option work continues. Potential154dependency impact must be checked at its own pin. Fix actualnative/router alignment, preserve claimed/current/member/stock gates, then publish a new pinned correction and rerun genuine menus plus persistence. Source-safe evidence: `independent/gnome-native-operation-finding.json`. No new issue/message sent.

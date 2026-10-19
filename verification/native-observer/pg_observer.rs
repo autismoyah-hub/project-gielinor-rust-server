@@ -958,6 +958,8 @@ fn main()->R<()> {
     if matches!(a[6].as_str(),"amethyst-interrupt"|"amethyst-crash"){amethyst_recovery(&mut c,&mut l,a[6]=="amethyst-crash")?;l.session.close();return Ok(());}
     if a[6]=="amethyst-batch"{amethyst_batch(&mut c,&mut l)?;l.session.close();return Ok(());}
     if matches!(a[6].as_str(),"rune-air-daeyalt"|"rune-water-daeyalt"|"rune-earth-daeyalt"|"rune-fire-daeyalt"|"rune-body-daeyalt"){daeyalt_other_altars(&mut c,&mut l,&a[6])?;l.session.close();return Ok(());}
+    if a[6]=="gnome-food-operations"{gnome_food_operations(&mut c,&mut l)?;l.session.close();return Ok(());}
+    if a[6]=="gnome-food-f2p"{gnome_food_f2p(&mut c,&mut l)?;l.session.close();return Ok(());}
     if a[6].starts_with("giant-crab-"){giant_crab_native(&mut c,&mut l,&a[6])?;l.session.close();return Ok(());}
     if a[6]=="food-clock-orders"{food_clock_orders(&mut c,&mut l)?;l.session.close();return Ok(());}
     if a[6]=="jangerberries-f2p"{jangerberries_f2p(&mut c,&mut l)?;l.session.close();return Ok(());}
@@ -1120,12 +1122,40 @@ fn giant_crab_native(c:&mut ClientState,l:&mut Connection,kind:&str)->R<()> {
   assert!(!c.data.members);let stats=c.data.boosted;let(_,point)=widget_point(c,13)?;let menus=c.interface_menu(point)?;println!("PG_CRAB_F2P_MENU {:?}",menus.iter().map(|e|e.option.as_str()).collect::<Vec<_>>());assert!(menus.iter().any(|e|e.option=="Examine"));let path=if let Some(e)=menus.into_iter().find(|e|e.option=="Eat"){dispatch(c,e.action,"F2P actual crab Eat")?;"BACKEND_REFUSAL"}else{"UI_REFUSAL"};ticks(c,l,5)?;assert_eq!(image(c,93,28),bag);assert_eq!(c.data.boosted,stats);assert_eq!(c.data.experience,xp);assert_eq!(image(c,94,14),gear);native_cape_frame(c,l,"giant-crab-f2p-inventory")?;println!("PG_CASE_PASS giantcrab F2P {path} actualmenu fullbag/allstatsXPgear unchanged");return Ok(());
  }
  assert!(c.data.members);assert_eq!(c.data.base[3],99);pump(c,l,100,|c,_|(20..=40).contains(&c.server_tick.rem_euclid(100)))?;
- let ids=[7521,7523,7524,7525,7526];let count=if kind=="giant-crab-partial"{2}else{5};
+ let ids=[7521,7523,7524,7525,7526];let count=if kind=="giant-crab-partial"||kind=="giant-crab-crash"{2}else{5};
  for index in 0..count{
   let hp=c.data.boosted[3];assert!(hp<90);assert_eq!(c.inventories.item(93,13).id,ids[index]);let action=item_action(c,13,false,"Eat")?;let early=if index==0{Some(item_action(c,1,false,"Eat")?)}else{None};
   println!("PG_CRAB_NATIVE_BEGIN kind={kind} index={index} id={} tick={} hp={hp}",ids[index],c.server_tick);dispatch(c,action,"crab selected genuine Eat")?;if let Some(e)=early{dispatch(c,e,"crab early distinct duplicate Eat")?;}
   let next=if index==4{-1}else{ids[index+1]};pump(c,l,30,|c,_|c.inventories.item(93,13).id==next)?;ticks(c,l,2)?;bag[13]=(next,if next==-1{0}else{1});assert_eq!(image(c,93,28),bag);assert_eq!(c.data.boosted[3],hp+2);assert_eq!(c.data.experience,xp);assert_eq!(image(c,94,14),gear);
   println!("PG_CRAB_NATIVE_COMMIT kind={kind} index={index} next={next} tick={} hp={} duplicate1retained=true",c.server_tick,c.data.boosted[3]);ticks(c,l,3)?;
  }
+ if kind=="giant-crab-crash"{
+  assert_eq!(c.inventories.item(93,13).id,7524);println!("PG_CRASH_READY unsaved native crab stage7524 hp={} tick={};stop onlyowneddisposablegameserver beforeSaveack",c.data.boosted[3],c.server_tick);
+  let start=Instant::now();loop{match l.poll(c){Err(e)=>{println!("PG_EXPECTED_CRASH_DISCONNECT {e}");return Ok(());},Ok(())=>{if l.logged_out().is_some(){println!("PG_EXPECTED_CRASH_DISCONNECT native transportclosed");return Ok(());}}}if start.elapsed()>Duration::from_secs(30){return Err("owned crab recovery stop absent".into());}std::thread::sleep(Duration::from_millis(20));}
+ }
  native_cape_frame(c,l,&format!("{kind}-inventory"))?;println!("PG_CASE_PASS giantcrab native kind={kind} bites={count} selectedslot13 duplicate1/fullbag HP2perbite noXPgear;nativeclock2andactiveattack require independent timing coverage");Ok(())
+}
+
+fn gnome_food_operations(c:&mut ClientState,l:&mut Connection)->R<()> {
+ ready(c,l)?;assert!(c.data.members);tab(c,"Inventory")?;ticks(c,l,2)?;
+ let image=|c:&ClientState,inv,size|(0..size).map(|s|{let i=c.inventories.item(inv,s);(i.id,i.count)}).collect::<Vec<_>>();let xp=c.data.experience;let gear=image(c,94,14);let mut bag=image(c,93,28);
+ assert_eq!(bag,(0..28).map(|s|(if[0,1].contains(&s){2128}else if[13,14].contains(&s){2152}else{1931},1)).collect::<Vec<_>>());
+ pump(c,l,100,|c,_|(20..=40).contains(&c.server_tick.rem_euclid(100)))?;
+ let(_,point)=widget_point(c,13)?;let menu=c.interface_menu(point)?;println!("PG_GNOME_TOAD_MENU {:?}",menu.iter().map(|e|e.option.as_str()).collect::<Vec<_>>());assert!(menu.iter().any(|e|e.option=="Eat"),"actualmembernativeToadsmenu hasnoEat;do notforceanoperation");
+ let hp=c.data.boosted[3];let food=item_action(c,0,false,"Eat")?;let combo=item_action(c,13,false,"Eat")?;let refused=item_action(c,1,false,"Eat")?;
+ println!("PG_GNOME_NATIVE_BEGIN tick={} hp={hp};Food0 Combo13 Food1 selected beforepoll",c.server_tick);dispatch(c,food,"clock Food0")?;dispatch(c,combo,"clock Combo13")?;dispatch(c,refused,"clock blocked repeat Food1")?;
+ pump(c,l,30,|c,_|c.inventories.item(93,13).id==-1)?;ticks(c,l,2)?;bag[0]=(-1,0);bag[13]=(-1,0);assert_eq!(image(c,93,28),bag);assert_eq!(c.data.boosted[3],hp+4);assert_eq!(c.data.experience,xp);assert_eq!(image(c,94,14),gear);
+ println!("PG_GNOME_NATIVE_FOOD_COMBO tick={} hp={} retainedFood1=true",c.server_tick,c.data.boosted[3]);ticks(c,l,4)?;
+ let hp=c.data.boosted[3];let combo=item_action(c,14,false,"Eat")?;let food=item_action(c,1,false,"Eat")?;println!("PG_GNOME_NATIVE_COMBO_FIRST_BEGIN tick={} hp={hp}",c.server_tick);dispatch(c,combo,"clock Combo14 first")?;dispatch(c,food,"clock blocked normal aftercombo")?;
+ pump(c,l,30,|c,_|c.inventories.item(93,14).id==-1)?;ticks(c,l,2)?;bag[14]=(-1,0);assert_eq!(image(c,93,28),bag);assert_eq!(c.data.boosted[3],hp+3);assert_eq!(c.data.experience,xp);ticks(c,l,4)?;
+ let hp=c.data.boosted[3];let food=item_action(c,1,false,"Eat")?;println!("PG_GNOME_NATIVE_EXPIRY_BEGIN tick={} hp={hp}",c.server_tick);dispatch(c,food,"clock normal after expiry")?;pump(c,l,30,|c,_|c.inventories.item(93,1).id==-1)?;bag[1]=(-1,0);assert_eq!(image(c,93,28),bag);assert_eq!(c.data.boosted[3],hp+1);assert_eq!(c.data.experience,xp);assert_eq!(image(c,94,14),gear);
+ native_cape_frame(c,l,"gnome-food-operations-inventory")?;
+ println!("PG_CASE_PASS gnomefood FOOD COMBO only actualmenus4consumes2refusals fullbagXPgear;authoritativetraces independently assess same-tick ordering;no potion actions");Ok(())
+}
+
+fn gnome_food_f2p(c:&mut ClientState,l:&mut Connection)->R<()> {
+ ready(c,l)?;assert!(!c.data.members);tab(c,"Inventory")?;ticks(c,l,2)?;let image=|c:&ClientState,inv,size|(0..size).map(|s|{let i=c.inventories.item(inv,s);(i.id,i.count)}).collect::<Vec<_>>();let bag=image(c,93,28);let xp=c.data.experience;let stats=c.data.boosted;let gear=image(c,94,14);
+ assert_eq!(bag,(0..28).map(|s|(if[0,1].contains(&s){2128}else if[13,14].contains(&s){2152}else{1931},1)).collect::<Vec<_>>());let mut paths=Vec::new();
+ for slot in[0,13]{let(_,point)=widget_point(c,slot)?;let menu=c.interface_menu(point)?;println!("PG_GNOME_F2P_MENU slot={slot} {:?}",menu.iter().map(|e|e.option.as_str()).collect::<Vec<_>>());assert!(menu.iter().any(|e|e.option=="Examine"));let path=if let Some(e)=menu.into_iter().find(|e|e.option=="Eat"){dispatch(c,e.action,"F2P actual gnome Eat")?;"BACKEND_REFUSAL"}else{"UI_REFUSAL"};paths.push((slot,path));}
+ ticks(c,l,6)?;assert_eq!(image(c,93,28),bag);assert_eq!(image(c,94,14),gear);assert_eq!(c.data.boosted,stats);assert_eq!(c.data.experience,xp);native_cape_frame(c,l,"gnome-food-f2p-inventory")?;println!("PG_CASE_PASS gnomefood F2P paths={paths:?} bothactualmenus fullbagallStatsXPgearunchanged;ingredientuse/potionsnotperformed");Ok(())
 }

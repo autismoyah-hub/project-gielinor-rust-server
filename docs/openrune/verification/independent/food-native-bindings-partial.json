@@ -1,0 +1,13 @@
+{
+  "implementation_id": "OR-MIG-0152",
+  "tested_sha": "79a16ed1b33a402b59d57ace40a7ec978e28b32e",
+  "status": "PASS_SCOPED",
+  "scope": "Actual239cache aliases/member/ordinarydefinitions andnewgnomefoodfactory pass: Equa2128Eatfirst1HP/FOOD3/3,Toad2152Eatfourth3HP/COMBO3/2,selectedno replacement.26atomicfaults coveraliases/IDs/name/member/templates/stack/dummy/missingoperation/wrongearlierconsumeoperation/duplicate;entirecatalogpreserved.",
+  "limitations": [
+    "No actualstartup/native4thEatproof yet; no fullV0PASS.",
+    "Potioncatalogempty underuserdeferral; no ingredient-userecipes."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/integration-external-food-native-bindings-79a16ed1b33a402b59d57ace40a7ec978e28b32e/manifest.json": "a0a88cd36255c686f537ad57f8c6aee827ea8adef3968775bc42249b96d6757e"
+  }
+}

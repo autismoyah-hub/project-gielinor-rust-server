@@ -1,0 +1,24 @@
+{
+  "implementation_id": "OR-MIG-0149",
+  "tested_sha": "76a011f52a9f2dcaf85eec08e64c9282d0602ced",
+  "status": "PASS",
+  "level": "V3",
+  "acceptance_criterion": "Save/relogin intermediate/final stage and HP without duplicating/deleting another copy; native148ephemeral clocks/death semantics.",
+  "scope": "Applicable149manualfoodpersistence andtemporaryclock obligations completed: actualnative acknowledgedsave/serverrestart/reconnect atintermediate7524/finalnone/F2Prefusal state, exactinventory/duplicate/StatsfineXPbase andfirstreconnectHP; freshownedpre-save stop rollsbacknative7524/HP55todurable7521/HP50 withoutreplay. Exact14918Worlddeathhook/alivecontrols resettempclocks;6actualactorretirement/readmission controls confirmfreshgeneration beforeolddeadline.",
+  "qualifications": [
+    "V3scope only. V0PASS/V1FAIL45unresolvedfoodlifeviolations;V2nativeactivecombat/Walk andV4remainingcomparisons stillopen. Resettingclocks ondeath doesnotmake dead-food admission correct.",
+    "Worldclockreset/freshgeneration use30ticksentinel andsimulatedhostack forcomponentisolation; actualdurablestorage establishedbyfour separate genuineclient/server/SQLite campaigns.",
+    "Pre-save actor-state recovery tested, notfault duringSQLitecommit. No storageformat/transaction implementation changed bythisprofile-onlycontract; sharedenginecommit-fault campaign not claimed.",
+    "Atomicmanualbites have no productionqueue,pendingoutput,currency,rewardclaimor resumablecoroutine;thoseproduction-specificV3cases do notapply.",
+    "Sourcebootstrap15/20andpassiveHPticks preserved/qualifiedseparately,notfoodXP/healing. Earlierwrong-cachedclockattemptinvalidatedandreplaced; originalnative/datahistory preserved.",
+    "No acquisition/cooking/potion/Herbloregameplay."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/deep-giant-crab-food/native-001/independent-assessment.json": "38b3d1fe894fa48f53309231e428dcea15873e521d4001669d38a98cb48deb15",
+    "docs/openrune/verification/independent/deep-giant-crab-partial/native-001/independent-assessment.json": "498d04a80794da8126355f32fdb21273c82cd3d616bd6394b08a7b6dbe41cae9",
+    "docs/openrune/verification/independent/deep-giant-crab-f2p/native-001/independent-assessment.json": "1cf2a0195c4dfd931624798ff59961e61ade22cf5480b196f76311b00567626b",
+    "docs/openrune/verification/independent/deep-giant-crab-crash/native-001/independent-assessment.json": "b565b6581a33fccb6d5e79496429bd04f68c2678693ef45b087c76c8dd6dee7d",
+    "docs/openrune/verification/independent/giant-crab-clock-reset-corrected.json": "aaa5c493b3e53556b707979f53bb67d45d40f456714c63c4171753edda67bc99",
+    "docs/openrune/verification/independent/giant-crab-fresh-actor.json": "f14efa809ff037aba2f9a4b1c895c4610f90b64247ae807109f24ff5e096013e"
+  }
+}

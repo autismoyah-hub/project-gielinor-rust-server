@@ -30,7 +30,7 @@ for ident,folder,sha in [('OR-MIG-0010','deep-combat','5a260c1bd6efa5f8a221bed7c
         add(ident,sha,'V4','IN_PROGRESS','Independent protected-source and pinned-documentation subcomparisons PASS within recorded scope; complete feature comparison remains open. No executable donor parity is claimed.',refs)
 for manifest in OUT.glob('OR-MIG-0024-*-independent*/manifest.json'):
     value=json.loads(manifest.read_text(encoding='utf-8'))
-    if value.get('suite','').startswith(('imcando-held-','imcando-worn-','rune-altars-','rune-close-','daeyalt-','crafting-cape-','zealot-','skillcape-vendor-','cooking-cape-','cooking-gauntlets-','wine-drink-','food-life-','prayer-life-','jangerberries-','consumable-food-clocks','giant-crab-','food-native-operations')):continue  # Scoped aggregate retains partial and resource-deferred attempts.
+    if value.get('suite','').startswith(('imcando-held-','imcando-worn-','rune-altars-','rune-close-','daeyalt-','crafting-cape-','zealot-','skillcape-vendor-','cooking-cape-','cooking-gauntlets-','wine-drink-','food-life-','prayer-life-','jangerberries-','consumable-food-clocks','giant-crab-','food-native-operations','food-native-world','food-native-bindings','food-native-life')):continue  # Scoped aggregate retains partial and resource-deferred attempts.
     if value.get('suite')=='light-life':continue  # Exact-target finding below retains raw FAIL/BLOCKED attempts.
     if value.get('outcome')!='PARTIAL':continue
     sha=value['implementation_commit_sha'];evidence=[str(manifest.relative_to(ROOT)).replace('\\','/')]
@@ -38,7 +38,7 @@ for manifest in OUT.glob('OR-MIG-0024-*-independent*/manifest.json'):
     add('OR-MIG-0024',sha,'V1','IN_PROGRESS','Four independent authoritative World action tests PASS across 319 fixtures: all selected slots, full bags, duplicate/stale input, overheal, remainders and malformed transactions. Runtime packet decode and complete food matrix remain open.',evidence)
 for manifest in OUT.glob('integration-*/manifest.json'):
     value=json.loads(manifest.read_text(encoding='utf-8'))
-    if value.get('suite','').startswith(('imcando-held-','imcando-worn-','rune-altars-','rune-close-','daeyalt-','crafting-cape-','zealot-','skillcape-vendor-','cooking-cape-','cooking-gauntlets-','wine-drink-','food-life-','prayer-life-','jangerberries-','consumable-food-clocks','giant-crab-','food-native-operations')):continue  # Recorded by immutable scoped aggregate below, not legacy filter format.
+    if value.get('suite','').startswith(('imcando-held-','imcando-worn-','rune-altars-','rune-close-','daeyalt-','crafting-cape-','zealot-','skillcape-vendor-','cooking-cape-','cooking-gauntlets-','wine-drink-','food-life-','prayer-life-','jangerberries-','consumable-food-clocks','giant-crab-','food-native-operations','food-native-world','food-native-bindings','food-native-life')):continue  # Recorded by immutable scoped aggregate below, not legacy filter format.
     if value.get('suite') in ['member-tanning-world','member-tanning-guards']:
         continue  # Combined independent assessment includes retained partial attempt.
     if value.get('suite') in ['light-legacy-bindings','light-bindings','light-tool-regression']:
@@ -1013,3 +1013,39 @@ if path.exists():
     result=json.loads(path.read_text(encoding='utf-8'))
     for level in ['V0','V1']:
         add('OR-MIG-0152',result['tested_sha'],level,'IN_PROGRESS',result['scope']+' '+'; '.join(result['limitations']),[path.relative_to(ROOT).as_posix()],scope='food-native-operations-typed-component')
+
+for name,level in [('food-native-world-partial.json','V1'),('food-native-bindings-partial.json','V0'),('reference-gnome-food-operations/comparison.json','V4')]:
+    path=OUT/name
+    if path.exists():
+        result=json.loads(path.read_text(encoding='utf-8'))
+        add('OR-MIG-0152',result['tested_sha'],level,'IN_PROGRESS',result['scope']+' '+'; '.join(result['limitations']),[path.relative_to(ROOT).as_posix()],scope='gnome-food-'+name.replace('/','-'))
+path=OUT/'food-native-life-finding.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    add('OR-MIG-0152',result['tested_sha'],'V1','FAIL',result['scope']+' '+result['actionable_correction'],[path.relative_to(ROOT).as_posix()],scope='gnome-food-unresolved-life')
+
+path=OUT/'giant-crab-clock-reset-corrected.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    add('OR-MIG-0149',result['tested_sha'],'V3','IN_PROGRESS',result['scope']+' '+'; '.join(result['limitations']),[path.relative_to(ROOT).as_posix()],scope='giant-crab-clock-reset-identity-corrected')
+
+path=OUT/'giant-crab-v3-complete.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PASS'
+    add('OR-MIG-0149',result['tested_sha'],'V3','PASS',result['scope']+' '+'; '.join(result['qualifications']),[path.relative_to(ROOT).as_posix()],scope='giant-crab-applicable-v3-complete')
+
+path=OUT/'gnome-native-operation-finding.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    for level in ['V0','V2']:
+        add('OR-MIG-0152',result['tested_sha'],level,'FAIL',result['scope']+' '+result['cache_crosscheck']+' '+result['actionable_correction'],[path.relative_to(ROOT).as_posix()],scope='gnome-genuine-native-operation-mismatch')
+    add('OR-MIG-0152',result['tested_sha'],'V3','BLOCKED','Toadsnative consumption unavailable at exactpin: realEatoperation6 versusconfigured5(PG-DEF-008). No newerbuild substituted. Eqone-bite acknowledgedstate/reconnect remainseligible andseparate.',[path.relative_to(ROOT).as_posix()],scope='gnome-toad-native-persistence-blocked')
+
+for feature in ['gnome-food-operations','gnome-food-f2p']:
+    path=OUT/('deep-'+feature)/'native-001/independent-assessment.json'
+    if path.exists():
+        result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PASS_SCOPED'
+        evidence=[path.relative_to(ROOT).as_posix(),(OUT/'gnome-native-operation-finding.json').relative_to(ROOT).as_posix()]
+        visual=path.parent/'visual-assessment.json'
+        if visual.exists():evidence.append(visual.relative_to(ROOT).as_posix())
+        add('OR-MIG-0152',result['tested_sha'],'V3','BLOCKED',result['scope']+' EquapersistencePASS_SCOPED; fullToadsnativepersistenceblocked atrecordedSHAbyPGDEF008operation6vs5. '+'; '.join(result['qualifications']),evidence,scope=feature+'-eqa-progress-toad-remains-blocked')

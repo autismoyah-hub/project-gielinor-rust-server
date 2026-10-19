@@ -1,0 +1,6 @@
+PG_JS5_ITEM_OPS id=2128 name="Equa leaves" members=true options=[Some("Eat"), None, None, None, Some("Drop")]
+PG_JS5_ITEM_OPS id=2152 name="Toad's legs" members=true options=[None, None, None, Some("Eat"), Some("Drop")]
+PG_JS5_ITEM_OPS id=2126 name="Dwellberries" members=true options=[None, None, None, Some("Eat"), Some("Drop")]
+PG_JS5_ITEM_OPS id=30937 name="Caerula berries" members=true options=[None, None, None, Some("Eat"), Some("Drop")]
+PG_JS5_ITEM_OPS id=2142 name="Cooked meat" members=false options=[Some("Eat"), None, None, None, Some("Drop")]
+PG_JS5_ITEM_OPS id=7521 name="Cooked giant crab meat" members=true options=[Some("Eat"), None, None, None, Some("Drop")]

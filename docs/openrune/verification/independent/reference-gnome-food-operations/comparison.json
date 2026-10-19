@@ -1,0 +1,54 @@
+{
+  "implementation_id": "OR-MIG-0152",
+  "tested_sha": "79a16ed1b33a402b59d57ace40a7ec978e28b32e",
+  "status": "PASS_REFERENCE_FACTS",
+  "scope": "Fiveexactsource/Wikihashesverified. SourceEqua1HP/normalfood andToads3HP/Combo3consume2combat agree withWiki15183913/15184380healvalues. Actualnative239cache uniquelyresolvesEatfirst=>button2 andEatfourth=>button5; sourceonOpHeld4 andsourcecacheDSL notsubstitutedforhostnativeoperationindices.",
+  "verified_references": [
+    {
+      "kind": "openrune",
+      "reference": "content/other/consumables/src/main/kotlin/org.rsmod.content.other.consumables/ConsumableDelayState.kt",
+      "sha256": "282930b2ae9e746587761f15f2676c6e2fc34cac4d6f3ef16f49c2e400704915",
+      "availability": "protected_local_reference",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "independent_hash_check": "PASS"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/other/consumables/src/main/kotlin/org.rsmod.content.other.consumables/food/ConsumeFoodScript.kt",
+      "sha256": "5d2604be8d9f691a2788b11aeb752e6ea2fb8637ceec30c3ba512718ff104a2d",
+      "availability": "protected_local_reference",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "independent_hash_check": "PASS"
+    },
+    {
+      "kind": "openrune",
+      "reference": "or-cache/src/main/kotlin/dev/openrune/tables/consumables/food/FoodData.kt",
+      "sha256": "d13e1c07e15fbbda7b0f4854f7e0a8dd15b11a1ee1ce552f1168c5bd31e13f49",
+      "availability": "protected_local_reference",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "independent_hash_check": "PASS"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Equa leaves",
+      "sha256": "d6cf64be6749017c7a03ef1ebc93c1bc2843c211d27ca999dec8dc0cdf66980d",
+      "availability": "protected_local_reference",
+      "revision": "15183913",
+      "independent_hash_check": "PASS"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Toad's legs",
+      "sha256": "1f4ad0e249835bd075f9606fb2dfa759de773fd550af62a5f5977e54f5d61390",
+      "availability": "protected_local_reference",
+      "revision": "15184380",
+      "independent_hash_check": "PASS"
+    }
+  ],
+  "limitations": [
+    "V4partialpendinggenuinenative4thEat/lifecycle/remainingclockcomparison.",
+    "WikiEat/Dropdisplaylist doesnotindependentlyattestnative239cacheoptionposition; directcachedecode does.",
+    "No Herbloreingredient-use/potion/production/acquisitiongameplay; ordinaryEatonly.",
+    "18unresolveddeathviolations remainV1FAIL."
+  ]
+}

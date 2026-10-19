@@ -1,0 +1,86 @@
+{
+  "tested_integration_sha": "76a011f52a9f2dcaf85eec08e64c9282d0602ced",
+  "suite": "consumable-food-clocks-fresh",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 7706660864,
+    "active_compilers": [
+      "\"cargo.exe\",\"15816\",\"RDP-Tcp#0\",\"2\",\"19,732 K\""
+    ],
+    "cpu_percent": 24.81,
+    "cpu_samples": [
+      27.34375,
+      33.0078125,
+      14.087301587301592
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Existing project memory/commit/paging checks and sampled CPU ceiling; owned Cargo remains j1/two CPUs/BelowNormal",
+    "capacity_policy_sha256": "dc3c6e372de5369ab77c4ebbd7cf21c426d0916581e11f2377480eba79adcdfd",
+    "memory_preflight_exit": 0,
+    "memory_preflight_stdout": "Capacity: 7,365 MiB available, commit 59.7%, pages-in/s 1, disk 4.7 ms.\nCargo concurrency: -j 2\n",
+    "memory_preflight_stderr": "",
+    "disk_free": 43968344064,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "e404acb77e5520c918464d250adf80d272cb9033",
+  "harness_package": "proving-ground-consumable-food-clocks-fresh-1792373640025264800",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\76a011f52a9f2dcaf85eec08e64c9282d0602ced\\external-harness-0025264800\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-consumable-food-clocks-fresh-76a011f52a9f2dcaf85eec08e64c9282d0602ced\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\76a011f52a9f2dcaf85eec08e64c9282d0602ced\\external-harness-0025264800\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 1,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-consumable-food-clocks-fresh-76a011f52a9f2dcaf85eec08e64c9282d0602ced\\run-1.log"
+    }
+  ],
+  "executed_test_binary_sha256": {
+    "target\\debug\\deps\\fresh-64ebd8ed27fda7b6.exe": "27dd2ecab66e7bb7096425adbb3319136c0a527694702748b7a524fadbcc2e1e"
+  },
+  "test_identity": {
+    "status": "PASS",
+    "expected_direct_tests": [
+      "new_actor_generation_never_inherits_old_category_or_attack_contribution"
+    ],
+    "observed_tests": [
+      "new_actor_generation_never_inherits_old_category_or_attack_contribution"
+    ],
+    "unexpected_not_authored": [],
+    "missing_direct_tests": [],
+    "policy": "Unique per-campaign Cargo package identity, fresh source-copy timestamps, and executed-test names checked against frozen authored source; macro-generated names must occur in that source."
+  },
+  "scope": "Independent authoritative consumable-food-clocks-fresh scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-consumable-food-clocks-fresh-76a011f52a9f2dcaf85eec08e64c9282d0602ced\\harness\\fresh.rs": "b6904a5a09aa21cb478f3b244476678f1914949ef72e3c6b9d9a152f8bffeed5"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\bindings-c404ecf3e47dc4c9.exe": "b75f81d7961086a741ee8931bee395b8f269ee2350469e128e4674621bbe8eb3",
+    "target\\debug\\deps\\current-f7c5368bf3025959.exe": "455ac5891220038ba2baf6e272828963ed8f5a3b8ae10d9217452a06cc376d95",
+    "target\\debug\\deps\\fresh-64ebd8ed27fda7b6.exe": "27dd2ecab66e7bb7096425adbb3319136c0a527694702748b7a524fadbcc2e1e",
+    "target\\debug\\deps\\gielinor_server-7abd10c65476b4d7.exe": "3f70189994cbdbf981c4ca564b505294e1fa6ce65ba2d4f75985fa12f4fbdffb",
+    "target\\debug\\deps\\life-9cea5c240a7648ca.exe": "6dfc812bd3c51ee7511a10c83ba555e2a8c514913cdbafeba1fd78bb841a376a",
+    "target\\debug\\deps\\life-cfd7553eff21e60f.exe": "94b0ab0cd2590b8207747cb8ca8d763994304c6aa7485cca92b04dbaad10295b",
+    "target\\debug\\deps\\stages-dd3825c5cd86f451.exe": "71f561ec767226f3cd43c5fea2ae91cdc636963a4d43da586e1f189bd874d492"
+  }
+}

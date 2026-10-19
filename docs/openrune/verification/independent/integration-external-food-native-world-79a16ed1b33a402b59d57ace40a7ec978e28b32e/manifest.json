@@ -1,0 +1,69 @@
+{
+  "tested_integration_sha": "79a16ed1b33a402b59d57ace40a7ec978e28b32e",
+  "suite": "food-native-world",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 5096488960,
+    "active_compilers": [
+      "\"cargo.exe\",\"10148\",\"RDP-Tcp#0\",\"2\",\"47,764 K\"",
+      "\"cargo.exe\",\"12920\",\"RDP-Tcp#0\",\"2\",\"21,648 K\"",
+      "\"rustc.exe\",\"14596\",\"RDP-Tcp#0\",\"2\",\"1,182,516 K\"",
+      "\"rustc.exe\",\"1988\",\"RDP-Tcp#0\",\"2\",\"907,012 K\"",
+      "\"rustc.exe\",\"9604\",\"RDP-Tcp#0\",\"2\",\"77,392 K\""
+    ],
+    "cpu_percent": 58.08,
+    "cpu_samples": [
+      67.578125,
+      57.421875,
+      49.23076923076923
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Existing project memory/commit/paging checks and sampled CPU ceiling; owned Cargo remains j1/two CPUs/BelowNormal",
+    "capacity_policy_sha256": "dc3c6e372de5369ab77c4ebbd7cf21c426d0916581e11f2377480eba79adcdfd",
+    "memory_preflight_exit": 0,
+    "memory_preflight_stdout": "Capacity: 4,758 MiB available, commit 73.9%, pages-in/s 265, disk 2.4 ms.\nCargo concurrency: -j 2\n",
+    "memory_preflight_stderr": "",
+    "disk_free": 46318284800,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "904c428d92897c83f1a51c8075391175862e9b0b",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\79a16ed1b33a402b59d57ace40a7ec978e28b32e\\external-harness-6142353900\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-food-native-world-79a16ed1b33a402b59d57ace40a7ec978e28b32e\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\79a16ed1b33a402b59d57ace40a7ec978e28b32e\\external-harness-6142353900\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 1,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-food-native-world-79a16ed1b33a402b59d57ace40a7ec978e28b32e\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative food-native-world scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-food-native-world-79a16ed1b33a402b59d57ace40a7ec978e28b32e\\harness\\world.rs": "28b94b5b3297c96757033a49b85656c9ac9ac536f41637593640a566fd124df7"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\operations-11b09c93dec093a5.exe": "b844efdb4bc860d6377b0a7353c259d8fc16bd68c8ecee7f54217abb823187ef",
+    "target\\debug\\deps\\world-919bcb05ad7f0ba2.exe": "06d43315327319a10b2d4ba5a88ca78939d7f481cbde17ddb4c8530e453dd115"
+  }
+}

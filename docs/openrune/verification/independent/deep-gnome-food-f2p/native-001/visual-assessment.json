@@ -1,0 +1,10 @@
+{
+  "implementation_id": "OR-MIG-0152",
+  "tested_sha": "79a16ed1b33a402b59d57ace40a7ec978e28b32e",
+  "status": "PASS_SCOPED",
+  "scope": "Directly viewed actual unedited native Inventory: full28slots with2Equa/2Toads and24pots,HP99,onevisible membershiprefusal message. Equa validoperation2 reachedmemberguard. Toaoperation6alsohadnoeffect butthisframe/stockdoesnotproveToadmembership refusal becausePGDEF008 blocksitsconsume route.",
+  "private_frame": {
+    "path": "work/native-gnome-food-f2p/native-001/gnome-food-f2p-inventory.bmp",
+    "sha256": "732faaac9ef4118d30595d25f9ee6e7f93a6adc779ba53a43b68debe55016a24"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "implementation_id": "OR-MIG-0149",
+  "tested_sha": "76a011f52a9f2dcaf85eec08e64c9282d0602ced",
+  "status": "PASS_SCOPED",
+  "scope": "Directlyviewed uneditednativeInventory:28occupiedslots,2wholecrabs1/13retained,26pots,HP99,chat You need to be a member to eat that. Actualbackendmembershiprefusal, notUIabsence.",
+  "private_frame": {
+    "path": "work/native-giant-crab-f2p/native-001/giant-crab-f2p-inventory.bmp",
+    "sha256": "8e7192a93640394ff8db35a9c89284e248c863f381e675b771a3cb5ab00d495e"
+  }
+}

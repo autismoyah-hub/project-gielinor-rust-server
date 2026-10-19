@@ -1,0 +1,10 @@
+{
+  "implementation_id": "OR-MIG-0149",
+  "tested_sha": "76a011f52a9f2dcaf85eec08e64c9282d0602ced",
+  "status": "PASS_SCOPED",
+  "scope": "Directly viewed uneditednativeInventoryBMP: full28slots, unselectedwholecrab1retained, selectedpartialcrab13present aftertwoEat,HP55,twoeatmessages. Precise7524identity established separately by nativeinventory/authoritativetrace/SQL, not inferred solely from sprite.",
+  "private_frame": {
+    "path": "work/native-giant-crab-partial/native-001/giant-crab-partial-inventory.bmp",
+    "sha256": "bb6d0c99c5176460ce5c72bd57c7c1daf5d35bd22e1d4cf8c611b697def27bab"
+  }
+}
