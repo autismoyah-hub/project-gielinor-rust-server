@@ -1,4 +1,6 @@
 //! Resolve content's symbolic references against the same immutable type inputs as Kotlin.
+mod fence_crossings;
+pub use fence_crossings::fence_crossings;
 mod spiral_stairs;
 pub use spiral_stairs::{spiral_stairs,spiral_choices};
 mod straight_stairs;

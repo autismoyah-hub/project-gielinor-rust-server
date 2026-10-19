@@ -411,6 +411,7 @@ impl World {
             self.request_facility_crafting(slot,loc,None);return;
         }
         if let Some(&handler) = self.location_handlers.get(&(loc.id, operation)) {
+            if let crate::location_content::Handler::Crossing(rule)=handler{self.process_fence_crossing(slot,loc,rule);return;}
             if matches!(handler,crate::location_content::Handler::SpiralChoice){self.start_spiral_choice(slot,loc);return;}
             if let crate::location_content::Handler::Spiral(rule)=handler{self.process_spiral_stairs(slot,loc,rule);return;}
             if let crate::location_content::Handler::Stairs(rule)=handler{self.process_straight_stairs(slot,loc,rule);return;}

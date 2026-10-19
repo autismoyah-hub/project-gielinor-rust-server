@@ -83,6 +83,37 @@ impl Appearance {
     }
 }
 
+/// Player exact-movement block; offsets are relative to the synchronized landing.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct ExactMove {
+    pub offsets: [i8; 4],
+    pub delays: [u16; 2],
+    pub direction: u16,
+}
+impl ExactMove {
+    fn encode(self) -> Result<Vec<u8>, DecodeError> {
+        if self.delays[0] > self.delays[1] || self.direction >= 2048 {
+            return Err(DecodeError::InvalidValue(
+                "exact movement timing or direction",
+            ));
+        }
+        let [a, b, c, d] = self.offsets;
+        let mut out = vec![
+            a as u8,
+            (b as u8).wrapping_add(128),
+            (c as u8).wrapping_neg(),
+            128u8.wrapping_sub(d as u8),
+        ];
+        out.extend(self.delays[0].to_be_bytes());
+        out.extend(self.delays[1].to_le_bytes());
+        out.extend([
+            (self.direction as u8).wrapping_add(128),
+            (self.direction >> 8) as u8,
+        ]);
+        Ok(out)
+    }
+}
+
 #[derive(Default)]
 pub struct Updates<'a> {
     /// Encoded observer-specific extension bodies (including each list count).
@@ -94,6 +125,7 @@ pub struct Updates<'a> {
     pub face: Option<Face>,
     pub say: Option<&'a str>,
     pub sequence: Option<(u16, u8)>,
+    pub exact_move: Option<ExactMove>,
     pub temporary_speed: Option<i8>,
     pub appearance: Option<&'a [u8]>,
 }
@@ -145,6 +177,10 @@ impl Updates<'_> {
             body.push(128u8.wrapping_sub(len));
             body.extend(bytes.iter().map(|b| b.wrapping_add(128)));
         }
+        if let Some(exact) = self.exact_move {
+            mask |= 0x4000;
+            body.extend(exact.encode()?);
+        }
         if mask == 0 {
             return Ok(vec![]);
         }
@@ -184,6 +220,52 @@ mod tests {
         .encode()
         .is_err());
     }
+    #[test]
+    fn player_exact_move_wire_matches_target_offsets_delays_direction_and_rejects_invalid_controls()
+    {
+        let e = ExactMove {
+            offsets: [-1, 2, 0, 0],
+            delays: [30, 94],
+            direction: 1536,
+        };
+        assert_eq!(
+            Updates {
+                exact_move: Some(e),
+                ..Default::default()
+            }
+            .encode()
+            .unwrap(),
+            [8, 64, 255, 130, 0, 128, 0, 30, 94, 0, 128, 6]
+        );
+        for invalid in [
+            ExactMove {
+                delays: [95, 94],
+                ..e
+            },
+            ExactMove {
+                direction: 2048,
+                ..e
+            },
+        ] {
+            assert!(Updates {
+                exact_move: Some(invalid),
+                ..Default::default()
+            }
+            .encode()
+            .is_err());
+        }
+        let combined = Updates {
+            sequence: Some((839, 30)),
+            appearance: Some(&[0]),
+            exact_move: Some(e),
+            ..Default::default()
+        }
+        .encode()
+        .unwrap();
+        assert_eq!(&combined[..8], &[104, 64, 3, 199, 30, 127, 128, 255]);
+        assert_eq!(&combined[7..], &[255, 130, 0, 128, 0, 30, 94, 0, 128, 6]);
+    }
+
     #[test]
     fn cp1252_strings_reject_embedded_terminators() {
         let mut out = vec![];

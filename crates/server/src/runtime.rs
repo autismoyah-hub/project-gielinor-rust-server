@@ -242,6 +242,7 @@ struct Active {
     face_changed: bool,
     bank_events_due: Option<i32>,
     sequence: Option<(u16, u8)>,
+    exact_move: Option<gielinor_protocol::appearance::ExactMove>,
     spot_animations: Vec<gielinor_protocol::spot_animation::Animation>,
     ui: gielinor_world::ui::State,
     character: Character,
@@ -3167,6 +3168,7 @@ impl<B: AccountBackend> Runtime<B> {
                             anvil_count: None,
                             deposit_count: None,
                             sequence: None,
+                            exact_move: None,
                             spot_animations: Vec::new(),
                             pending_face: None,
                             face_npc: None,
@@ -3348,6 +3350,10 @@ impl<B: AccountBackend> Runtime<B> {
                             height,
                             slot,
                         }));
+                }
+                event @ WorldEvent::PlayerExactMove{actor,offsets,delays,direction,sequence,sequence_delay,..} => {
+                    if let Some(active)=self.active.get_mut(&actor){active.exact_move=Some(gielinor_protocol::appearance::ExactMove{offsets,delays,direction});active.sequence=Some((sequence,sequence_delay));}
+                    self.events.push(Event::World(event));
                 }
                 event @ (WorldEvent::PlayerCombatAnimation {actor,sequence}|WorldEvent::PlayerAnimation{actor,sequence}) => {
                     if let Some(active)=self.active.get_mut(&actor){active.sequence=Some((sequence,0));}
@@ -4157,6 +4163,7 @@ impl<B: AccountBackend> Runtime<B> {
                         .combat_updates
                         .get(&gielinor_world::hits::Target::Player(*actor)),
                     sequence: self.active.get(actor).and_then(|active| active.sequence),
+                    exact_move: self.active.get(actor).and_then(|active| active.exact_move),
                     spot_animations: self
                         .active
                         .get(actor)
@@ -4449,6 +4456,7 @@ impl<B: AccountBackend> Runtime<B> {
         self.combat_updates.clear();
         for active in self.active.values_mut() {
             active.sequence = None;
+            active.exact_move = None;
             active.spot_animations.clear();
             active.face_changed = false;
             active.appearance_rebuild = false;
