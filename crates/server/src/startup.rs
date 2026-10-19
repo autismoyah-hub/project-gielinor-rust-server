@@ -211,6 +211,9 @@ pub fn configure<B: AccountBackend>(
     let searches=crate::content::location_content_search(n("loc"),n("content"),n("param"),&runtime.definitions).map_err(io::Error::other)?;
     if searches.keys().any(|&(id,op)|runtime.world.has_location_handler(id,op)){return Err(io::Error::other("Conflicting empty-search handlers"));}
     runtime.world.location_handlers.extend(searches);
+    let books=crate::content::bookcase_search(n("loc"),n("content"),&runtime.definitions).map_err(io::Error::other)?;
+    if books.keys().any(|&(id,op)|runtime.world.has_location_handler(id,op)){return Err(io::Error::other("Conflicting bookcase handlers"));}
+    runtime.world.location_handlers.extend(books);
     runtime.world.multiway_area = Some(names.short("area", "multiway")?);
     runtime.combat_display = Some(crate::combat_display::resolve(
         names,

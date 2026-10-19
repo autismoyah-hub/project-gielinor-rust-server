@@ -16,6 +16,7 @@ mod combat_actions;
 #[cfg(test)]
 mod consumable_tests;
 mod dialogue_actions;
+mod bookcase_actions;
 mod pickable_actions;
 mod door_actions;
 mod guild_passage_actions;
@@ -194,6 +195,7 @@ enum Deferred {
     Smithing(crate::smithing_make::Job),
     Assembly(crate::assembly::Pending),
     AssemblyBatch(crate::assembly::BatchPending),
+    Bookcase(bookcase_actions::Pending),
     Milking(crate::milking::Job),
     WaterFilling(crate::water_sources::Job),
     Cooking(crate::cooking::Job),
@@ -341,6 +343,7 @@ impl Player {
     }
     fn pickpocket_stunned(&self)->bool {self.pickpocket_stun_until>self.protection.processed_clock}
     fn begin_held_action(&mut self) {
+        self.queues.remove_all(bookcase_actions::QUEUE);
         self.queues.remove_all(crate::thieving::QUEUE);
         self.queues.remove_all(crate::tool_crafting::QUEUE);
         self.queues.remove_all(crate::assembly::QUEUE);
@@ -774,6 +777,7 @@ pub enum WorldEvent {
         sound: u16,
     },
     ClearMapFlag(ActorId),
+    LocationSpam {actor:ActorId,message:&'static str},
     LocationMessage {
         actor: ActorId,
         message: &'static str,
@@ -2642,6 +2646,7 @@ impl World {
                                                         water_source_actions::complete(p, queues, job, config, &self.object_types, self.locations.revision(job.target), self.clock.0, &mut self.events);
                                                     }
                                                 }
+                                                Deferred::Bookcase(job) => {bookcase_actions::complete(p,job,self.locations.revision(job.target),&mut self.events,random);}
                                                 Deferred::Milking(job) => {
                                                     if let Some(config) = &self.milking {
                                                         milking_actions::complete(

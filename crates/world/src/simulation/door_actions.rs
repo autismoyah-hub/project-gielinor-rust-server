@@ -143,6 +143,7 @@ impl World {
             Strategy::Normal,
         );
         let p = self.players.get_mut(actor.slot as usize).unwrap();
+        p.queues.remove_all(bookcase_actions::QUEUE);
         p.queues.remove_all(crate::milking::QUEUE);
         p.queues.remove_all(crate::water_sources::QUEUE);
         p.queues.remove_all(crate::grinding::QUEUE);
@@ -409,6 +410,7 @@ impl World {
             self.request_facility_crafting(slot,loc,None);return;
         }
         if let Some(&handler) = self.location_handlers.get(&(loc.id, operation)) {
+            if matches!(handler,crate::location_content::Handler::Bookcase){self.start_bookcase(slot,loc);return;}
             if let crate::location_content::Handler::Nettles{rule,excluded_glove,mark}=handler{self.process_nettles(slot,loc,rule,excluded_glove,mark,random);return;}
             if let crate::location_content::Handler::PickableChance{rule,depletion}=handler{self.process_pickable_chance(slot,loc,rule,depletion,random);return;}
             if let crate::location_content::Handler::PickableStage{rule,step}=handler{self.process_pickable_stage(slot,loc,rule,step);return;}

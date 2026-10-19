@@ -13,6 +13,7 @@ pub enum Handler {
     },
     PickableChance {rule:crate::pickables::Rule,depletion:crate::pickables::Depletion},
     Nettles {rule:crate::pickables::Rule,excluded_glove:i32,mark:crate::hit_display::Mark},
+    Bookcase,
     Message(&'static str),
     EmptyPickable(&'static str),
     VialCrate {
@@ -32,7 +33,7 @@ impl Handler {
         )
     }
     pub fn arrival_delay(self) -> bool {
-        matches!(self, Self::PrayerAltar { .. }) || self.is_pickable()
+        matches!(self, Self::PrayerAltar { .. } | Self::Bookcase) || self.is_pickable()
     }
     pub fn perform(
         self,
@@ -42,7 +43,7 @@ impl Handler {
     ) -> Result<crate::pickables::Outcome, Error> {
         match self {
             Self::Pickable(rule) => rule.perform(player, catalog, member),
-            Self::PickableStage { .. } | Self::PickableChance { .. } | Self::Nettles { .. } => Err(Error::InvalidCapacity),
+            Self::Bookcase | Self::PickableStage { .. } | Self::PickableChance { .. } | Self::Nettles { .. } => Err(Error::InvalidCapacity),
             Self::Message(message) | Self::EmptyPickable(message) => Ok(crate::pickables::Outcome::Message(message)),
             _ => self.apply(player, catalog).map(|m| {
                 m.map_or(
@@ -57,7 +58,7 @@ impl Handler {
         player: &mut PlayerData,
         catalog: &Catalog,
     ) -> Result<Option<&'static str>, Error> {
-        if matches!(self, Self::PickableStage { .. } | Self::PickableChance { .. } | Self::Nettles { .. }) {
+        if matches!(self, Self::Bookcase | Self::PickableStage { .. } | Self::PickableChance { .. } | Self::Nettles { .. }) {
             return Err(Error::InvalidCapacity);
         }
         if let Self::Message(message) | Self::EmptyPickable(message) = self {
@@ -69,7 +70,7 @@ impl Handler {
                 .map(crate::pickables::Outcome::message);
         }
         let origin = match self {
-            Self::Pickable(_) | Self::PickableStage { .. } | Self::PickableChance { .. } | Self::Nettles { .. } | Self::Message(_) | Self::EmptyPickable(_) => {
+            Self::Pickable(_) | Self::PickableStage { .. } | Self::PickableChance { .. } | Self::Nettles { .. } | Self::Bookcase | Self::Message(_) | Self::EmptyPickable(_) => {
                 unreachable!("handled above")
             }
             Self::VialCrate { origin, .. } | Self::PrayerAltar { origin, .. } => origin,
@@ -82,7 +83,7 @@ impl Handler {
             return Ok(None);
         }
         match self {
-            Self::Pickable(_) | Self::PickableStage { .. } | Self::PickableChance { .. } | Self::Nettles { .. } | Self::Message(_) | Self::EmptyPickable(_) => {
+            Self::Pickable(_) | Self::PickableStage { .. } | Self::PickableChance { .. } | Self::Nettles { .. } | Self::Bookcase | Self::Message(_) | Self::EmptyPickable(_) => {
                 unreachable!("handled above")
             }
             Self::VialCrate { item, .. } => {

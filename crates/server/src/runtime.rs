@@ -3670,6 +3670,13 @@ impl<B: AccountBackend> Runtime<B> {
                     self.events
                         .push(Event::World(WorldEvent::EngineMessage { actor, message }));
                 }
+                WorldEvent::LocationSpam { actor, message } => {
+                    if let Some(connection) = self.connection(actor) {
+                        let packet=gielinor_protocol::chat::game(105,None,message).map_err(|e|io::Error::other(format!("{e:?}")))?;
+                        self.transport.send(connection,packet.opcode,&packet.payload)?;
+                    }
+                    self.events.push(Event::World(WorldEvent::LocationSpam{actor,message}));
+                }
                 WorldEvent::LocationMessage { actor, message } => {
                     if let Some(connection) = self.connection(actor) {
                         let packet = gielinor_protocol::chat::game(0, None, message)
