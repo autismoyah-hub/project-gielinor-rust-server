@@ -202,6 +202,9 @@ pub fn configure<B: AccountBackend>(
     let fruits=crate::content::fruit_pickables(n("obj"),n("loc"),n("seq"),n("synth"),&runtime.definitions).map_err(io::Error::other)?;
     if fruits.keys().any(|&(id,op)|runtime.world.has_location_handler(id,op)){return Err(io::Error::other("Conflicting wild fruit handlers"));}
     runtime.world.location_handlers.extend(fruits);
+    let flax=crate::content::flax_pickables(n("obj"),n("loc"),n("seq"),n("synth"),&runtime.definitions).map_err(io::Error::other)?;
+    if flax.keys().any(|&(id,op)|runtime.world.has_location_handler(id,op)){return Err(io::Error::other("Conflicting wild flax handlers"));}
+    runtime.world.location_handlers.extend(flax);
     runtime.world.multiway_area = Some(names.short("area", "multiway")?);
     runtime.combat_display = Some(crate::combat_display::resolve(
         names,

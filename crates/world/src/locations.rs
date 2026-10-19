@@ -82,6 +82,18 @@ impl Locations {
                 .unwrap_or(0)
         })
     }
+    /// Current visible cache identity, suitable for temporary cache deletion.
+    pub fn is_map_location(&self, loc: Location) -> bool {
+        self.map.get(&zone_base(loc.coords)).and_then(|m|m.get(loc.key()))==Some(loc)
+            && self.find_type(loc.coords,loc.id)==Some(loc)
+    }
+    /// Exact tombstone generation; an intervening add/delete cannot revive an old timer.
+    pub fn deleted_revision(&self, original: Location) -> Option<u64> {
+        let tombstone=self.spawned.get(&zone_base(original.coords))?.get(original.key())?;
+        (tombstone.id==DELETED_ID && tombstone.shape==original.shape && tombstone.angle==original.angle
+            && self.map.get(&zone_base(original.coords)).and_then(|m|m.get(original.key()))==Some(original))
+            .then(||self.revisions.get(&(original.coords,original.layer)).copied()).flatten()
+    }
     fn revise(&mut self, loc: Location) {
         self.next_revision = self
             .next_revision

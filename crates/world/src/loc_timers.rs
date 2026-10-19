@@ -70,7 +70,9 @@ impl Timers {
                     replacement,
                     revision,
                     deadline: at,
-                    current: locations.revision(replacement) == Some(revision),
+                    current: if replacement.id==crate::locations::DELETED_ID {
+                        locations.deleted_revision(original)==Some(revision)
+                    }else{locations.revision(replacement)==Some(revision)},
                 });
                 false
             });

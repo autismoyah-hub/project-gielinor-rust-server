@@ -11,6 +11,7 @@ pub enum Handler {
         rule: crate::pickables::Rule,
         step: crate::pickables::Step,
     },
+    PickableChance {rule:crate::pickables::Rule,depletion:crate::pickables::Depletion},
     EmptyPickable(&'static str),
     VialCrate {
         origin: CoordGrid,
@@ -25,7 +26,7 @@ impl Handler {
     pub fn is_pickable(self) -> bool {
         matches!(
             self,
-            Self::Pickable(_) | Self::PickableStage { .. } | Self::EmptyPickable(_)
+            Self::Pickable(_) | Self::PickableStage { .. } | Self::PickableChance { .. } | Self::EmptyPickable(_)
         )
     }
     pub fn arrival_delay(self) -> bool {
@@ -39,7 +40,7 @@ impl Handler {
     ) -> Result<crate::pickables::Outcome, Error> {
         match self {
             Self::Pickable(rule) => rule.perform(player, catalog, member),
-            Self::PickableStage { .. } => Err(Error::InvalidCapacity),
+            Self::PickableStage { .. } | Self::PickableChance { .. } => Err(Error::InvalidCapacity),
             Self::EmptyPickable(message) => Ok(crate::pickables::Outcome::Message(message)),
             _ => self.apply(player, catalog).map(|m| {
                 m.map_or(
@@ -54,7 +55,7 @@ impl Handler {
         player: &mut PlayerData,
         catalog: &Catalog,
     ) -> Result<Option<&'static str>, Error> {
-        if matches!(self, Self::PickableStage { .. }) {
+        if matches!(self, Self::PickableStage { .. } | Self::PickableChance { .. }) {
             return Err(Error::InvalidCapacity);
         }
         if let Self::EmptyPickable(message) = self {
@@ -66,7 +67,7 @@ impl Handler {
                 .map(crate::pickables::Outcome::message);
         }
         let origin = match self {
-            Self::Pickable(_) | Self::PickableStage { .. } | Self::EmptyPickable(_) => {
+            Self::Pickable(_) | Self::PickableStage { .. } | Self::PickableChance { .. } | Self::EmptyPickable(_) => {
                 unreachable!("handled above")
             }
             Self::VialCrate { origin, .. } | Self::PrayerAltar { origin, .. } => origin,
@@ -79,7 +80,7 @@ impl Handler {
             return Ok(None);
         }
         match self {
-            Self::Pickable(_) | Self::PickableStage { .. } | Self::EmptyPickable(_) => {
+            Self::Pickable(_) | Self::PickableStage { .. } | Self::PickableChance { .. } | Self::EmptyPickable(_) => {
                 unreachable!("handled above")
             }
             Self::VialCrate { item, .. } => {

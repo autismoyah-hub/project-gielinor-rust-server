@@ -89,6 +89,45 @@ impl Rule {
         })
     }
 }
+/// Validated before drawing randomness or preparing any live mutation.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct Depletion {
+    pub numerator: u32,
+    pub denominator: u32,
+    pub delay: i32,
+}
+impl Depletion {
+    pub fn deadline(self, now: i32) -> Result<i32, &'static str> {
+        if self.numerator == 0
+            || self.denominator == 0
+            || self.numerator > self.denominator
+            || self.delay <= 0
+            || now < 0
+        {
+            return Err("Invalid pickable depletion");
+        }
+        now.checked_add(self.delay)
+            .ok_or("Pickable depletion clock overflow")
+    }
+}
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct ChanceTransition {
+    pub transition: Transition,
+    pub roll: u32,
+    pub denominator: u32,
+    pub depleted: bool,
+}
+impl ChanceTransition {
+    pub fn json(&self, actor: crate::simulation::ActorId) -> String {
+        format!(
+            "{{\"schema\":1,\"roll\":{},\"denominator\":{},\"depleted\":{},\"transition\":{}}}",
+            self.roll,
+            self.denominator,
+            self.depleted,
+            self.transition.json(actor)
+        )
+    }
+}
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Step {
     Next { location: u32 },

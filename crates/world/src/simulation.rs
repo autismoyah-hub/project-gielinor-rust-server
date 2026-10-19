@@ -699,6 +699,7 @@ pub enum WorldEvent {
     PlayerAnimation {actor:ActorId,sequence:u16},
     PlayerSound {actor:ActorId,sound:u16},
     PickableCollected {actor:ActorId,location:crate::locations::Location,item:i32},
+    PickableDepletion {actor:ActorId,trace:crate::pickables::ChanceTransition},
     PickableAdvanced {actor:ActorId,trace:crate::pickables::Transition},
     PlayerCombatAnimation {
         actor: ActorId,
