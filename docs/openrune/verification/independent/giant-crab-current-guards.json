@@ -1,0 +1,13 @@
+{
+  "implementation_id": "OR-MIG-0149",
+  "tested_sha": "76a011f52a9f2dcaf85eec08e64c9282d0602ced",
+  "status": "PASS_SCOPED",
+  "scope": "60independent currentmember/selectedidentityrefusals:5stages x3slots xinitialnonmember/live-memberlossafterqueue/removedselected/replacedselected. Wholeinventory/Stats/fineXP andothercopy unchanged, noRNG/successfultrace; correctedvalidactionnexttick proves no leaked foodlock.",
+  "limitations": [
+    "ControlledpublicWorldfixture, actualcache binding testedseparately. NativeF2P separate.",
+    "Overall149V1remainsFAIL45unresolveddeathcases; these60passes do not overridefailure."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/integration-external-giant-crab-current-76a011f52a9f2dcaf85eec08e64c9282d0602ced/manifest.json": "39db7749ae138af1c843e983e69ea56831e2bc4148ab4854ed139585a9e897dd"
+  }
+}

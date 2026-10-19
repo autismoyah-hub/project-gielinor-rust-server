@@ -1,0 +1,103 @@
+{
+  "implementation_id": "OR-MIG-0149",
+  "tested_sha": "76a011f52a9f2dcaf85eec08e64c9282d0602ced",
+  "status": "PASS_SCOPED",
+  "feature": "giant-crab-food",
+  "scope": "Actual native 5 selected Eat commits at13 with duplicate1/fullbag/XP/gear preserved, exact2HP/stage/terminal behavior, readyattack0 trace and829receipt; F2P actualmenu refusal when count0. Realacknowledgedsave/serverrestart/native reconnect preserves exact intermediate/final/refusalinventory and initialreconnectHP, no replay.",
+  "server_commit_ticks": [
+    153,
+    160,
+    168,
+    179,
+    190
+  ],
+  "received_hp": [
+    [
+      0,
+      50,
+      13034431
+    ],
+    [
+      84,
+      51,
+      13034431
+    ],
+    [
+      138,
+      53,
+      13034431
+    ],
+    [
+      145,
+      55,
+      13034431
+    ],
+    [
+      153,
+      57,
+      13034431
+    ],
+    [
+      164,
+      59,
+      13034431
+    ],
+    [
+      175,
+      61,
+      13034431
+    ]
+  ],
+  "reconnect_hp": [
+    [
+      0,
+      62,
+      13034431
+    ],
+    [
+      92,
+      63,
+      13034431
+    ],
+    [
+      192,
+      64,
+      13034431
+    ]
+  ],
+  "saved_hp": [
+    3,
+    62,
+    99,
+    130344311
+  ],
+  "relogin_saved_hp": [
+    3,
+    64,
+    99,
+    130344311
+  ],
+  "qualifications": [
+    "Native screenshot requires separate direct visual review; no visualPASS inferred from file creation.",
+    "Readiness-clock passiveHP restoration and source15/20loginminimums distinguished from food commits; no foodXP.",
+    "Native activeweaponattack/Walk exact2tickexpiry and death/actorfreshness are separate; World controls not substituted fornative.",
+    "No acquisition/cooking/burning/quest/potion/Herblore gameplay; no fullcontract acceptance."
+  ],
+  "evidence_sha256": {
+    "initial-state.json": "2c3d3a1a7a8e5f6b81842d568bbc187dabfda930bbfbfff0ba0f2dd5be3aa923",
+    "build.json": "eb0e899ef82b71f0f0d05c9cbce09b59d98345b3d81d6adbb008b73cbf6406a8",
+    "frozen-launcher.py": "6f2130018092a7da4dcae2700da32baf057fe4ce0eaa28b4d6a1d253e7d215cc",
+    "frozen-observer/build.json": "ebc9cd06f5cb74b34379fb29ec2257ed5baed30c06075ee1710eca08386f8b4b",
+    "frozen-observer/pg_observer.rs": "d6a6e0da24169817ff80ca2b9402b501c287cf9b77b480b0fb1d5c7554fa97cd",
+    "produce/manifest.json": "c9049ed5c1c2bc0f366f0431f56180b0acbbbe6febb4b18e913578c80a5c09e3",
+    "produce/before.json": "2c3d3a1a7a8e5f6b81842d568bbc187dabfda930bbfbfff0ba0f2dd5be3aa923",
+    "produce/after.json": "3f6100bbea92172b0b1b6bf37a81fa563147d07bdda17d3376fb62ae32187b81",
+    "produce/client.log": "00cf62261d9881d956d1540433860d27abe4da1b50923d11288c93f28ca16c4e",
+    "produce/server.log": "b1e8e8d49fd2a99166024e3a66f6081db28ebd444625977b779aeb5c80f494f5",
+    "relogin/manifest.json": "13116024056d2d1943a3e14772e525a42ffe48e6fb063b2838dcfaa3391978b5",
+    "relogin/before.json": "3f6100bbea92172b0b1b6bf37a81fa563147d07bdda17d3376fb62ae32187b81",
+    "relogin/after.json": "7b3c369a79f38433f00c12418cf644b89cac04f2d6a1a04f4d55a35e5880af98",
+    "relogin/client.log": "38db693b4ae739240acd42254a33d70235cb98f806c70c033cf91e776c022bb2",
+    "relogin/server.log": "1d960c686f00255cb74837017bc94a79bb37bd84dc7263b53407609f32248463"
+  }
+}

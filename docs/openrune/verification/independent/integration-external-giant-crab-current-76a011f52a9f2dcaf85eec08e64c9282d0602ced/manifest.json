@@ -1,0 +1,69 @@
+{
+  "tested_integration_sha": "76a011f52a9f2dcaf85eec08e64c9282d0602ced",
+  "suite": "giant-crab-current",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 6857928704,
+    "active_compilers": [
+      "\"cargo.exe\",\"9132\",\"RDP-Tcp#0\",\"2\",\"23,336 K\"",
+      "\"rustc.exe\",\"14220\",\"RDP-Tcp#0\",\"2\",\"279,148 K\""
+    ],
+    "cpu_percent": 69.25,
+    "cpu_samples": [
+      78.7109375,
+      73.77690802348337,
+      55.2734375
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Existing project memory/commit/paging checks and sampled CPU ceiling; owned Cargo remains j1/two CPUs/BelowNormal",
+    "capacity_policy_sha256": "dc3c6e372de5369ab77c4ebbd7cf21c426d0916581e11f2377480eba79adcdfd",
+    "memory_preflight_exit": 0,
+    "memory_preflight_stdout": "Capacity: 6,408 MiB available, commit 63.5%, pages-in/s 11,181, disk 0.3 ms.\nCargo concurrency: -j 2\n",
+    "memory_preflight_stderr": "",
+    "disk_free": 46803845120,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "e404acb77e5520c918464d250adf80d272cb9033",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\76a011f52a9f2dcaf85eec08e64c9282d0602ced\\external-harness-0179044300\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-giant-crab-current-76a011f52a9f2dcaf85eec08e64c9282d0602ced\\run-0.log"
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent7-verification\\work\\76a011f52a9f2dcaf85eec08e64c9282d0602ced\\external-harness-0179044300\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 1,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-giant-crab-current-76a011f52a9f2dcaf85eec08e64c9282d0602ced\\run-1.log"
+    }
+  ],
+  "scope": "Independent authoritative giant-crab-current scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-giant-crab-current-76a011f52a9f2dcaf85eec08e64c9282d0602ced\\harness\\current.rs": "b0fac8c706e7d006e28ec86965ab136af299da2f2a817978acf53d3dd8395b70"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\bindings-c404ecf3e47dc4c9.exe": "b75f81d7961086a741ee8931bee395b8f269ee2350469e128e4674621bbe8eb3",
+    "target\\debug\\deps\\current-f7c5368bf3025959.exe": "455ac5891220038ba2baf6e272828963ed8f5a3b8ae10d9217452a06cc376d95",
+    "target\\debug\\deps\\gielinor_server-7abd10c65476b4d7.exe": "3f70189994cbdbf981c4ca564b505294e1fa6ce65ba2d4f75985fa12f4fbdffb",
+    "target\\debug\\deps\\life-9cea5c240a7648ca.exe": "6dfc812bd3c51ee7511a10c83ba555e2a8c514913cdbafeba1fd78bb841a376a",
+    "target\\debug\\deps\\stages-dd3825c5cd86f451.exe": "71f561ec767226f3cd43c5fea2ae91cdc636963a4d43da586e1f189bd874d492"
+  }
+}

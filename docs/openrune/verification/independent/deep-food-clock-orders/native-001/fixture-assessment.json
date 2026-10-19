@@ -1,0 +1,15 @@
+{
+  "implementation_id": "OR-MIG-0148",
+  "tested_sha": "3640ac17f8b4e7c293c9bc1fcb78ca1b96509744",
+  "status": "HARNESS_FAILURE_PARTIAL_PROGRESS",
+  "scope": "Native Food0 andCombo13committed same authoritative tick128 with zero ready-weapon attackdelay; distinct thirdFood1retained/refused. ControllerHP assertion expected10+5butserver hadalreadyreset initialHPbase99to10via ensure_starter_hitpoints because all3combatbases1. Bothfoodsvalidly cappedat10. Remainingreverseorder/expiry cases notexecuted. No implementation failure inferred.",
+  "next_action": "Freshnative002 keeps server/controller identical and seedsAttack99toavoid starterloginHPreset; preserve originalDB/logs.",
+  "evidence_sha256": {
+    "initial-state.json": "487466b4e766ac6c282df73d1b3a494e4b7e335b320cf67dc575e566e9d003ff",
+    "produce/manifest.json": "afce66354ce5644c12eb9df3e490c5f2d450a3cdab9977650ff8e241a4dfb227",
+    "produce/client.log": "aecfaa2926bbe3d086eba1cd1aadbb9294123160bd4c915c26f0c7f3939d1a02",
+    "produce/server.log": "6e574b1b6ed3ee96a630b6df46305402ed405d7cde9121c3279f45a83ad57cae",
+    "produce/after.json": "c34994c33459a336fbbc10e82edab027c87c9beb54fd5c2dbaa276db6d5cc0a6",
+    "frozen-observer/pg_observer.rs": "88f8999d2dde3d6327b35d32dfe5e0122f723281762b72a0df49953fd221a3d6"
+  }
+}

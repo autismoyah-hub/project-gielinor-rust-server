@@ -30,7 +30,7 @@ for ident,folder,sha in [('OR-MIG-0010','deep-combat','5a260c1bd6efa5f8a221bed7c
         add(ident,sha,'V4','IN_PROGRESS','Independent protected-source and pinned-documentation subcomparisons PASS within recorded scope; complete feature comparison remains open. No executable donor parity is claimed.',refs)
 for manifest in OUT.glob('OR-MIG-0024-*-independent*/manifest.json'):
     value=json.loads(manifest.read_text(encoding='utf-8'))
-    if value.get('suite','').startswith(('imcando-held-','imcando-worn-','rune-altars-','rune-close-','daeyalt-','crafting-cape-','zealot-','skillcape-vendor-','cooking-cape-','cooking-gauntlets-','wine-drink-','food-life-','prayer-life-','jangerberries-','consumable-food-clocks')):continue  # Scoped aggregate retains partial and resource-deferred attempts.
+    if value.get('suite','').startswith(('imcando-held-','imcando-worn-','rune-altars-','rune-close-','daeyalt-','crafting-cape-','zealot-','skillcape-vendor-','cooking-cape-','cooking-gauntlets-','wine-drink-','food-life-','prayer-life-','jangerberries-','consumable-food-clocks','giant-crab-','food-native-operations')):continue  # Scoped aggregate retains partial and resource-deferred attempts.
     if value.get('suite')=='light-life':continue  # Exact-target finding below retains raw FAIL/BLOCKED attempts.
     if value.get('outcome')!='PARTIAL':continue
     sha=value['implementation_commit_sha'];evidence=[str(manifest.relative_to(ROOT)).replace('\\','/')]
@@ -38,7 +38,7 @@ for manifest in OUT.glob('OR-MIG-0024-*-independent*/manifest.json'):
     add('OR-MIG-0024',sha,'V1','IN_PROGRESS','Four independent authoritative World action tests PASS across 319 fixtures: all selected slots, full bags, duplicate/stale input, overheal, remainders and malformed transactions. Runtime packet decode and complete food matrix remain open.',evidence)
 for manifest in OUT.glob('integration-*/manifest.json'):
     value=json.loads(manifest.read_text(encoding='utf-8'))
-    if value.get('suite','').startswith(('imcando-held-','imcando-worn-','rune-altars-','rune-close-','daeyalt-','crafting-cape-','zealot-','skillcape-vendor-','cooking-cape-','cooking-gauntlets-','wine-drink-','food-life-','prayer-life-','jangerberries-','consumable-food-clocks')):continue  # Recorded by immutable scoped aggregate below, not legacy filter format.
+    if value.get('suite','').startswith(('imcando-held-','imcando-worn-','rune-altars-','rune-close-','daeyalt-','crafting-cape-','zealot-','skillcape-vendor-','cooking-cape-','cooking-gauntlets-','wine-drink-','food-life-','prayer-life-','jangerberries-','consumable-food-clocks','giant-crab-','food-native-operations')):continue  # Recorded by immutable scoped aggregate below, not legacy filter format.
     if value.get('suite') in ['member-tanning-world','member-tanning-guards']:
         continue  # Combined independent assessment includes retained partial attempt.
     if value.get('suite') in ['light-legacy-bindings','light-bindings','light-tool-regression']:
@@ -967,3 +967,49 @@ path=OUT/'consumable-food-clocks-life.json'
 if path.exists():
     result=json.loads(path.read_text(encoding='utf-8'))
     add('OR-MIG-0148',result['tested_sha'],'V3','IN_PROGRESS',result['scope']+' '+'; '.join(result['limitations']),[path.relative_to(ROOT).as_posix()],scope='consumable-both-death-hooks')
+
+path=OUT/'deep-food-clock-orders/native-002/independent-assessment.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    for level in ['V2','V3']:
+        add('OR-MIG-0148',result['tested_sha'],level,'IN_PROGRESS',result['scope']+' '+'; '.join(result['qualifications']),[path.relative_to(ROOT).as_posix()],scope='consumable-native-food-combo-orders')
+path=OUT/'giant-crab-selected-partial.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    add('OR-MIG-0149',result['tested_sha'],'V1','IN_PROGRESS',result['scope']+' '+'; '.join(result['limitations']),[path.relative_to(ROOT).as_posix()],scope='giant-crab-selected-kernel')
+
+path=OUT/'giant-crab-cache-world.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    for level in ['V0','V1']:
+        add('OR-MIG-0149',result['tested_sha'],level,'IN_PROGRESS',result['scope']+' '+'; '.join(result['limitations']),[path.relative_to(ROOT).as_posix()],scope='giant-crab-actual-cache-world')
+
+path=OUT/'giant-crab-life-finding.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    add('OR-MIG-0149',result['tested_sha'],'V1','FAIL',result['scope']+' '+result['actionable_correction'],[path.relative_to(ROOT).as_posix()],scope='giant-crab-unresolved-life')
+path=OUT/'reference-giant-crab-food/comparison.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    add('OR-MIG-0149',result['tested_sha'],'V4','IN_PROGRESS',result['scope']+' '+'; '.join(result['limitations']),[path.relative_to(ROOT).as_posix()],scope='giant-crab-exact-reference')
+for feature in ['giant-crab-food','giant-crab-partial','giant-crab-f2p']:
+    for path in (OUT/('deep-'+feature)).glob('*/independent-assessment.json'):
+        result=json.loads(path.read_text(encoding='utf-8'))
+        for level in ['V2','V3']:
+            add('OR-MIG-0149',result['tested_sha'],level,'IN_PROGRESS',result['scope']+' '+'; '.join(result['qualifications']),[path.relative_to(ROOT).as_posix()],scope=feature+'-'+path.parent.name)
+
+path=OUT/'giant-crab-current-guards.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    add('OR-MIG-0149',result['tested_sha'],'V1','FAIL',result['scope']+' Additionalpassingguards; overallV1FAIL45unresolveddeathcases remains. '+ '; '.join(result['limitations']),[path.relative_to(ROOT).as_posix(),(OUT/'giant-crab-life-finding.json').relative_to(ROOT).as_posix()],scope='giant-crab-current-guards-life-remains-fail')
+
+path=OUT/'giant-crab-v0-complete.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'));assert result['status']=='PASS'
+    add('OR-MIG-0149',result['tested_sha'],'V0','PASS',result['scope']+' '+'; '.join(result['qualifications']),[path.relative_to(ROOT).as_posix()],scope='giant-crab-actual-native-v0-complete')
+
+path=OUT/'food-native-operations-partial.json'
+if path.exists():
+    result=json.loads(path.read_text(encoding='utf-8'))
+    for level in ['V0','V1']:
+        add('OR-MIG-0152',result['tested_sha'],level,'IN_PROGRESS',result['scope']+' '+'; '.join(result['limitations']),[path.relative_to(ROOT).as_posix()],scope='food-native-operations-typed-component')

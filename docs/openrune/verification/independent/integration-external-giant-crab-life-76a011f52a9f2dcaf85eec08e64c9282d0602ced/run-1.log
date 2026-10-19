@@ -1,0 +1,26 @@
+warning: unused import: `Effect`
+ --> C:\Projects\OSRSRSPS\agent7-targets\76a011f52a9f2dcaf85eec08e64c9282d0602ced\crates\world\src\simulation\skillcape_vendor_actions.rs:3:30
+  |
+3 |     dialogue::{Conversation, Effect, Pending},
+  |                              ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `gielinor-world` (lib) generated 1 warning (run `cargo fix --lib -p gielinor-world` to apply 1 suggestion)
+   Compiling proving-ground-energy v0.1.0 (C:\Projects\OSRSRSPS\agent7-verification\work\76a011f52a9f2dcaf85eec08e64c9282d0602ced\external-harness-9540497500)
+warning: unused import: `State`
+ --> tests\life.rs:2:60
+  |
+2 | use gielinor_world::{consumable_clocks::{Kind,Policy,Rules,State},food::Edible,inventory::Item,npc::RandomSource,simulation::{Action,...
+  |                                                            ^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `proving-ground-energy` (test "life") generated 1 warning (run `cargo fix --test "life" -p proving-ground-energy` to apply 1 suggestion)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 28.02s
+     Running tests\life.rs (C:\Projects\OSRSRSPS\agent7-verification\work\76a011f52a9f2dcaf85eec08e64c9282d0602ced\target\debug\deps\life-9cea5c240a7648ca.exe)
+
+running 1 test
+test observe_each_crab_stage_across_unresolved_death_states ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.67s

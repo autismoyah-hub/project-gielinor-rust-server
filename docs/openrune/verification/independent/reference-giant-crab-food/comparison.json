@@ -1,0 +1,42 @@
+{
+  "implementation_id": "OR-MIG-0149",
+  "tested_sha": "76a011f52a9f2dcaf85eec08e64c9282d0602ced",
+  "status": "PASS_REFERENCE_FACTS",
+  "scope": "Three protectedsource/Wiki exacthashes independentlyverified; sourcefive orderedstages/2HP/each2consumeandcombat, selectedreplace/finaldelete semantics and Wiki15289037fivebites2HPeach/10total directlyread. Actual5nativealiases/definitions verified by independentcachefactory,1120selectedtransactions and120actualfactoryWorldstagecommits support chosenbehavior.",
+  "verified_references": [
+    {
+      "kind": "openrune",
+      "reference": "content/other/consumables/src/main/kotlin/org.rsmod.content.other.consumables/food/ConsumeFoodScript.kt",
+      "sha256": "5d2604be8d9f691a2788b11aeb752e6ea2fb8637ceec30c3ba512718ff104a2d",
+      "availability": "protected_local_reference",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "independent_hash_check": "PASS"
+    },
+    {
+      "kind": "openrune",
+      "reference": "or-cache/src/main/kotlin/dev/openrune/tables/consumables/food/FoodData.kt",
+      "sha256": "d13e1c07e15fbbda7b0f4854f7e0a8dd15b11a1ee1ce552f1168c5bd31e13f49",
+      "availability": "protected_local_reference",
+      "revision": "Local archive; upstream commit unavailable; configured241",
+      "independent_hash_check": "PASS"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Cooked giant crab meat",
+      "sha256": "7fb1eca960f3d95935fe74dcc7b315b99b8d24698137fd05d9c85dce87643776",
+      "availability": "protected_local_reference",
+      "revision": "15289037",
+      "independent_hash_check": "PASS"
+    }
+  ],
+  "facts": [
+    "FoodData lists5orderedcookedgiantcrab stages,heal2,eatDelay[2,2,2,2,2],combatDelay[2,2,2,2,2].",
+    "ConsumeFoodScript stages nextitem via selectedreplace, finalstage delete; no terminalcontainer.",
+    "Wiki15289037explicitlystates5bites2HPeach,total10. Its ticks=1 belongs to Cooking recipe template and is not an eating-delay claim.",
+    "Inherited148hostactive-only additiveclock intentionally differs from donor maxwithseparateconsumabledeadline; source/Wiki distinction retained."
+  ],
+  "limitations": [
+    "V4partialpendingnative/lifecyclecomparison. No originalsourceexecutable/renderedaudio parity.",
+    "No acquisition/cooking/burning/quest/diary/potion/Herbloregameplay."
+  ]
+}

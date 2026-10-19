@@ -1,0 +1,7 @@
+Loaded 11 map squares, 586 NPCs, 24220 locations
+Listening on 127.0.0.1:51978 (revision 239.1; partial gameplay implementation)
+Player ready: ActorId { slot: 1, generation: 614 }
+Food transition: {"schema":1,"actor_slot":1,"actor_generation":614,"tick":128,"policy":"selected_slot","result":"committed","slot":0,"before":[2142,1,0],"after":null,"hp_before":10,"hp_after":10,"fine_xp_before":11540,"fine_xp_after":11540,"configured_delay":3,"attack_delay":0}
+Food transition: {"schema":1,"actor_slot":1,"actor_generation":614,"tick":128,"policy":"selected_slot","result":"committed","slot":13,"before":[2162,1,0],"after":null,"hp_before":10,"hp_after":10,"fine_xp_before":11540,"fine_xp_after":11540,"configured_delay":3,"attack_delay":0}
+Save acknowledgement: {"actor_slot":1,"actor_generation":614,"save_generation":614,"observed_tick":149,"save_completed":true}
+Shutdown completed; accounts drained.

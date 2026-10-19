@@ -1,0 +1,40 @@
+{
+  "implementation_id": "OR-MIG-0148",
+  "implementation_sha": "3640ac17f8b4e7c293c9bc1fcb78ca1b96509744",
+  "tested_sha": "3640ac17f8b4e7c293c9bc1fcb78ca1b96509744",
+  "source_tree": "7025982612912de7e72395550e34c51481c7a23e",
+  "command": [
+    "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+    "build",
+    "--offline",
+    "--locked",
+    "-j",
+    "1",
+    "-p",
+    "gielinor-server"
+  ],
+  "exit_code": 0,
+  "binary_sha256": "a1fa8d03ebd93caf1d6d452a90ce62f6437c712cd1741a09253d897f46145c1d",
+  "resource": {
+    "available_ram": 6557315072,
+    "active_compilers": [
+      "\"cargo.exe\",\"9864\",\"RDP-Tcp#0\",\"2\",\"19,340 K\""
+    ],
+    "cpu_percent": 26.42,
+    "cpu_samples": [
+      26.614481409001954,
+      26.171875,
+      26.470588235294112
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Existing project memory/commit/paging checks and sampled CPU ceiling; owned Cargo remains j1/two CPUs/BelowNormal",
+    "capacity_policy_sha256": "dc3c6e372de5369ab77c4ebbd7cf21c426d0916581e11f2377480eba79adcdfd",
+    "memory_preflight_exit": 0,
+    "memory_preflight_stdout": "Capacity: 6,345 MiB available, commit 62.4%, pages-in/s 0, disk 4.3 ms.\nCargo concurrency: -j 2\n",
+    "memory_preflight_stderr": "",
+    "disk_free": 50757189632,
+    "owned_affinity_mask": 3
+  },
+  "reuse_evidence": "docs/openrune/verification/independent/deep-food-clock-orders/native-001/build.json",
+  "reuse_reason": "Same exact pristine pinned server SHA and independently rehashed executable; only disposable seed changed."
+}

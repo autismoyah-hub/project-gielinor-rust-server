@@ -1,0 +1,10 @@
+Loaded 11 map squares, 586 NPCs, 24220 locations
+Listening on 127.0.0.1:57183 (revision 239.1; partial gameplay implementation)
+Player ready: ActorId { slot: 1, generation: 614 }
+Food transition: {"schema":1,"actor_slot":1,"actor_generation":614,"tick":153,"policy":"selected_slot","result":"committed","slot":13,"before":[7521,1,0],"after":[7523,1,0],"hp_before":51,"hp_after":53,"fine_xp_before":130344311,"fine_xp_after":130344311,"configured_delay":2,"attack_delay":0}
+Food transition: {"schema":1,"actor_slot":1,"actor_generation":614,"tick":160,"policy":"selected_slot","result":"committed","slot":13,"before":[7523,1,0],"after":[7524,1,0],"hp_before":53,"hp_after":55,"fine_xp_before":130344311,"fine_xp_after":130344311,"configured_delay":2,"attack_delay":0}
+Food transition: {"schema":1,"actor_slot":1,"actor_generation":614,"tick":168,"policy":"selected_slot","result":"committed","slot":13,"before":[7524,1,0],"after":[7525,1,0],"hp_before":55,"hp_after":57,"fine_xp_before":130344311,"fine_xp_after":130344311,"configured_delay":2,"attack_delay":0}
+Food transition: {"schema":1,"actor_slot":1,"actor_generation":614,"tick":179,"policy":"selected_slot","result":"committed","slot":13,"before":[7525,1,0],"after":[7526,1,0],"hp_before":57,"hp_after":59,"fine_xp_before":130344311,"fine_xp_after":130344311,"configured_delay":2,"attack_delay":0}
+Food transition: {"schema":1,"actor_slot":1,"actor_generation":614,"tick":190,"policy":"selected_slot","result":"committed","slot":13,"before":[7526,1,0],"after":null,"hp_before":59,"hp_after":61,"fine_xp_before":130344311,"fine_xp_after":130344311,"configured_delay":2,"attack_delay":0}
+Save acknowledgement: {"actor_slot":1,"actor_generation":614,"save_generation":614,"observed_tick":225,"save_completed":true}
+Shutdown completed; accounts drained.

@@ -1,0 +1,10 @@
+{
+  "implementation_id": "OR-MIG-0149",
+  "tested_sha": "76a011f52a9f2dcaf85eec08e64c9282d0602ced",
+  "status": "PASS_SCOPED",
+  "scope": "Directly viewed actual unedited native Inventory: selectedslot13empty afterfivebites, unselectedcrabduplicate1retained among26pots, HP61, fivegiantcrab eatmessages. Actual native existing renderer, no reconstructedpixels. Avatar/audio parity notclaimed.",
+  "private_frame": {
+    "path": "work/native-giant-crab-food/native-001/giant-crab-food-inventory.bmp",
+    "sha256": "d7189d50d1fb32956abfc8cf885d1d92fa2890f809f57076d4518958a9d4ac96"
+  }
+}

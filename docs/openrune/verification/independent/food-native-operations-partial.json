@@ -1,0 +1,16 @@
+{
+  "implementation_id": "OR-MIG-0152",
+  "tested_sha": "79a16ed1b33a402b59d57ace40a7ec978e28b32e",
+  "status": "PASS_SCOPED",
+  "scope": "Actualnative239Equa2128firstEat=>button2,Toadslegs2152fourthEat=>button5 independentlydecoded. Exactunmodified pinnedfood_operations module executedthroughownedvisibilitybridge:3528typedoperation/current/claimed/slot/native-vslegacycases preserveclaimedID,84slotmismatchrefusals,20multilabel-firstoperationchecks.",
+  "limitations": [
+    "Typed in-process componentonly, notnativeclient orcompleteauthoritativeWorld acceptance; no networkpayloads/decoder/native receipt claim.",
+    "Upstreamheldcomponent/openinterface/currentinventory validation separate; returnofstaleclaimAction stillneeds authoritativeWorldrejection tests.",
+    "Actualnewfoodfactory/startup/fullnativefourthEat,lifecycle/reference remain open. NofullV0/V1PASS.",
+    "Herbloreingredient-use/potionorders remain userdeferred; ordinarymanualEat only."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/integration-external-food-native-operations-79a16ed1b33a402b59d57ace40a7ec978e28b32e/manifest.json": "98baa4e71eaf517eb1f280a8f540171df77d59b2344d2a68a00a18e69ba5c395",
+    "docs/openrune/verification/independent/integration-external-food-native-operations-79a16ed1b33a402b59d57ace40a7ec978e28b32e/bridge.json": "6e39168ecef4bb9726afc96aa9db7c7d995ce892df8d0bcc5de4961fd91ea3fe"
+  }
+}

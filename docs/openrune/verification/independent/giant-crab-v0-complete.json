@@ -1,0 +1,15 @@
+{
+  "implementation_id": "OR-MIG-0149",
+  "tested_sha": "76a011f52a9f2dcaf85eec08e64c9282d0602ced",
+  "status": "PASS",
+  "level": "V0",
+  "scope": "All5native aliases/ordinarymemberEat definitions independently checked in actual239cache; factoryproducesexactselectedfive-stage2HP/2tick profiles andnativeFOOD2/2rules. Actualpinnedservercompiled/startupsuccess; genuineEat eachstage reachesexpecteditemselecteddispatch/member/atomicreplacement/terminaldelete/nativeclocktrace in fullfivebitecampaign. No unsupportedsource241IDs substituted.",
+  "qualifications": [
+    "V0only: V1FAIL45unresolvedlifeviolations; nativeF2P/activecombat/Walk/exactexpiry/intermediatesave andfullV4 remain separate.",
+    "Actual5stagecache/registrationchecks are independent; FORGEhistoricaltests notcounted."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/giant-crab-cache-world.json": "97092efb6d008fe2d4b804f0879481ea3c41cc32fcbc8102b4b9194b0008ad58",
+    "docs/openrune/verification/independent/deep-giant-crab-food/native-001/independent-assessment.json": "38b3d1fe894fa48f53309231e428dcea15873e521d4001669d38a98cb48deb15"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "implementation_id": "OR-MIG-0149",
+  "tested_sha": "76a011f52a9f2dcaf85eec08e64c9282d0602ced",
+  "status": "FAIL",
+  "level": "V1",
+  "correction_id": "PG-DEF-003",
+  "severity": "P2",
+  "scope": "45fresh independentobservations all5stages x3selectedslots xHP0/actualunresolvedDeathRequested/visibleHP10restoredwithoutrespawn: every selectedstage replaced/debited andHP+2published while actorunresolveddead. Native-category clocks do not add a live-player gate to the existing food dispatch. DiagnosticRustPASS means all45violations reproduced, not acceptance.",
+  "passing_scope": "Separate1120kerneltransactions,55actualcachefaults,120Worldstagecommits,192stale/cooldownrefusals,96Walks remain valid scoped evidence; not withdrawn/replayed.",
+  "actionable_correction": "Guard authoritative ordinary food admission/commit against zeroHP and unresolved actualdeath state, including positivevisibleHPrestoredbeforeproperrespawn. Reject with no item/remainder/HP/XP/animation/trace/consumableclock publication; testall5stages. Preserve liveplayer two-tick policy. Publish correction as new pinned implementation dependency/revision; original149pinremainsFAIL.",
+  "qualifications": [
+    "ControlledWorldlifeprobe; native dead-player menu reachability not claimed.",
+    "OrdinaryP2sharedPGDEF003 extension; do not stopFORGE, createissue or send externalmessage.",
+    "Both148realdeathclock-reset controls independently PASS; resetting clocks is distinct from live-player consumption eligibility."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/integration-external-giant-crab-life-76a011f52a9f2dcaf85eec08e64c9282d0602ced/manifest.json": "20ac32fecffd42a4118a0515f49f6ee8162373d8aa25b893f0759f89c5014408",
+    "docs/openrune/verification/independent/integration-external-giant-crab-life-76a011f52a9f2dcaf85eec08e64c9282d0602ced/run-1.log": "0a939baffb87770ace43a86fd01294684de9f3982983f3ff2d5b59bdd834e799"
+  }
+}

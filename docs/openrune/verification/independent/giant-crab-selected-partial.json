@@ -1,0 +1,14 @@
+{
+  "implementation_id": "OR-MIG-0149",
+  "tested_sha": "76a011f52a9f2dcaf85eec08e64c9282d0602ced",
+  "status": "PASS_SCOPED",
+  "scope": "1120 independent selected transactions:560all5stages x28slots xHP50/98/99/115 single-stage cases, plus112fullfivebitechains/560transactions. Selectedremainder/finaldebit,fullbagduplicate,HPcap/overheal,wholeStatsfineXP preserved.",
+  "limitations": [
+    "Controlled kernel profiles follow independently specified149contract; actualcache factory/Worldtwo-tick/native cases separate.",
+    "No fullV1PASS or native/persistence acceptance inferred.",
+    "No acquisition/cooking/quest, potion or Herblore gameplay."
+  ],
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/integration-external-giant-crab-selected-76a011f52a9f2dcaf85eec08e64c9282d0602ced/manifest.json": "0c6a0dec0412008fffccd42d789b072aeed54b9a0fe55b9b82ebf45656c853a7"
+  }
+}

@@ -239,3 +239,6 @@ At `f6b0f6ad54fe7813bb6607827eeb8da0e60137fa`,18independent before/during zeroHP
 ### PG-DEF-003 extension — selected Jangerberries at145
 
 At `16458999c44037d0e8b24fda975f60739f95ad4b`,9selected publicWorld death/zeroHP/restoredHPwithoutrespawn cases consume247and publish all five stat effects. V1FAIL despite33756passing transaction/refusal/World controls. Add common alive/death-pending guard before food publication. OrdinaryP2, nonblocking; see independent/jangerberries-life-finding.json for raw QA count/fixture corrections and exact selected-mode evidence. No laterSHA/legacy-path substitution or new issue.
+
+
+PG-DEF-003 extension — OR-MIG-0149 at `76a011f52a9f2dcaf85eec08e64c9282d0602ced`: 45 fresh authoritative life-state violations across all five crab stages, three selected slots, zero HP / actual unresolved death / HP restored without respawn. Every case consumes/replaces and heals2. Add live/death eligibility before food transaction and native clock publication; no stock/stat/animation/success trace on refusal. Ordinary P2; FORGE continues. Native dead-player reachability unproven. Independent report: `independent/giant-crab-life-finding.json`.

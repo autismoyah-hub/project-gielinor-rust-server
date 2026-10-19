@@ -1,0 +1,104 @@
+{
+  "implementation_id": "OR-MIG-0148",
+  "tested_sha": "3640ac17f8b4e7c293c9bc1fcb78ca1b96509744",
+  "status": "PASS_SCOPED",
+  "scope": "Genuine native Food0/Combo13 commit in same authoritative tick; third distinct Food1 refused. Later Combo14 first blocks Food1, then Food1 succeeds after expiry. Four exact selected transactions, allHP/XP/gear/wholebag checks, readyweapon0attacktrace, native829x3 across3distinctcommitticks, actualacknowledgedsave/serverrestart/native reconnect retain results withoutreplay.",
+  "server_commit_ticks": [
+    337,
+    337,
+    349,
+    361
+  ],
+  "native_hp_samples": [
+    [
+      0,
+      50,
+      13034431
+    ],
+    [
+      90,
+      51,
+      13034431
+    ],
+    [
+      190,
+      52,
+      13034431
+    ],
+    [
+      290,
+      53,
+      13034431
+    ],
+    [
+      328,
+      58,
+      13034431
+    ],
+    [
+      340,
+      60,
+      13034431
+    ],
+    [
+      352,
+      63,
+      13034431
+    ]
+  ],
+  "reconnect_hp_samples": [
+    [
+      0,
+      63,
+      13034431
+    ],
+    [
+      90,
+      64,
+      13034431
+    ]
+  ],
+  "saved_hp": [
+    3,
+    63,
+    99,
+    130344311
+  ],
+  "relogin_saved_hp": [
+    3,
+    65,
+    99,
+    130344311
+  ],
+  "qualifications": [
+    "Two foods in one server tick share one native829actor sequence block; four food commits produce three distinct-tick sequences, not four independently rendered animations.",
+    "FOOD/COMBO-only; potionmixedorders and consumption remain user-deferred; no wholeV2/V3PASS.",
+    "Actual melee/ranged/spell timing, realnativeWalk/activeweapon attacks and fresh-relogin cooldown admission remain separate obligations.",
+    "World18case30tick sentinel proves both realdeathhooks reset; thisnativecampaign doesnotperform death.",
+    "Membership SQL was omitted from the original148snapshot selector; nativecontroller asserted actualmembers=true before gameplay. No three-snapshot membership-SQL conservation claim.",
+    "Source login15/20minimums and subsequent passiveHPticks are separate from four food commits; no foodXP inferred.",
+    "Initialnative001FAIL from starterHPreset retained; freshnative002seedAttack99avoids reset, identicalserver/controller.",
+    "Directly viewed uneditednativeInventoryBMP shows24pots,fouremptyslots,HP63andfourfoodchatmessages; native sequence receipt/application observed, no avatar/audio parityclaim."
+  ],
+  "private_frame": {
+    "path": "work/native-food-clock-orders/native-002/food-clock-orders-inventory.bmp",
+    "sha256": "1693723a6761211106276b6b5677cba919f3adb53cca0cf43502a934f55b1556"
+  },
+  "evidence_sha256": {
+    "initial-state.json": "ea347d7c1f2e7968d57514d3f0712340fd30d04901fa771acaf33b9ad68266bb",
+    "build.json": "b601e00212fa65a61057b5dfb8600d796eed4f52a0a1b4eed32291877f28987a",
+    "frozen-launcher.py": "9b771417a6a21cf9ed54f390e39838c619bd3e85ff09c34c138cc0032ff783fc",
+    "frozen-observer/build.json": "0f2a4e6b8a0ba52a45f6d42af971504cd05b26f276fddc6e23315a4adc489cdf",
+    "frozen-observer/pg_observer.rs": "88f8999d2dde3d6327b35d32dfe5e0122f723281762b72a0df49953fd221a3d6",
+    "produce/manifest.json": "66249f75e647ec06b94ca18136410a3a256cf79bd60c1469521c6a3f535c2ddd",
+    "produce/before.json": "ea347d7c1f2e7968d57514d3f0712340fd30d04901fa771acaf33b9ad68266bb",
+    "produce/after.json": "fde308254ded870f0253e73cc9e4e65c601f14b0309714feb06027d179c7d77e",
+    "produce/client.log": "ec2a79348aeea82b09c21f8a042c99fee11b743f05541f1bb1a4a2f4bb6fae59",
+    "produce/server.log": "1bee4112fdc78fa1b16ef51ea5981189cc05962e06c80c81f7217610fdb9db48",
+    "relogin/manifest.json": "0aef0f53d5f6d001b042b645a966eb63138f41ce351bf793d8d9447b60a15c85",
+    "relogin/before.json": "fde308254ded870f0253e73cc9e4e65c601f14b0309714feb06027d179c7d77e",
+    "relogin/after.json": "a366bd3ac1af966e9854f327aeaf74024b71ce2cc67838fbe8f38e369a9f3e16",
+    "relogin/client.log": "43ea14658be69352acb35900763896a0464a4b59b55c70d1808d546a0c25c5b1",
+    "relogin/server.log": "1ddd2dded6ae3172a2adbad83ad9a86aa8a174cdf243ee276ab431596bc78ec9"
+  }
+}

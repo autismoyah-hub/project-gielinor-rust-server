@@ -1,0 +1,5 @@
+{
+  "target_file": "crates/server/src/food_operations.rs",
+  "target_source_sha256": "9ed759548eb26d2a6bbe4512d9addb66f8920e3ff1bf4b240f2f9c2cf85bbaba",
+  "scope": "Exact unmodified pinned module through owned visibility bridge. Public typed Button/Action values only; no packet bytes, sockets or native claim. Upstream actual interface/component resolution separate. cfg(test) FORGE tests not executed."
+}
