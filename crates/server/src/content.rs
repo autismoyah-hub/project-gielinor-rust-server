@@ -5,6 +5,8 @@ mod cyclic_berry_pickables;
 pub use cyclic_berry_pickables::cyclic_berry_pickables;
 mod perpetual_pickables;
 pub use perpetual_pickables::perpetual_pickables;
+mod whole_citrus_food;
+pub use whole_citrus_food::whole_citrus_food;
 mod berries_cream_food;
 pub use berries_cream_food::berries_cream_food;
 mod hunter_roast_food;

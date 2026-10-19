@@ -405,6 +405,7 @@ pub fn configure<B: AccountBackend>(
     slot_preserving_foods.extend(crate::content::gnome_ingredients(n("obj"),&runtime.definitions,&mut foods).map_err(io::Error::other)?);
     slot_preserving_foods.extend(crate::content::hunter_roast_food(n("obj"),&runtime.definitions,&mut foods).map_err(io::Error::other)?);
     slot_preserving_foods.extend(crate::content::berries_cream_food(n("obj"),&runtime.definitions,&mut foods).map_err(io::Error::other)?);
+    slot_preserving_foods.extend(crate::content::whole_citrus_food(n("obj"),&runtime.definitions,&mut foods).map_err(io::Error::other)?);
     runtime.configure_foods(held, foods, names.short("seq", "human_eat")?)?;
     runtime.world.food_subtractions.insert(wine_drink.0,vec![wine_drink.1]);
     runtime.world.food_subtractions.extend(flat_drinks.subtractions);
