@@ -217,6 +217,9 @@ pub fn configure<B: AccountBackend>(
     let chests=crate::content::plain_chest(n("loc"),n("seq"),&runtime.definitions).map_err(io::Error::other)?;
     if chests.keys().any(|&(id,op)|runtime.world.has_location_handler(id,op)){return Err(io::Error::other("Conflicting plain chest handlers"));}
     runtime.world.location_handlers.extend(chests);
+    let drawers=crate::content::drawers(n("loc"),n("seq"),n("synth"),&runtime.definitions).map_err(io::Error::other)?;
+    if drawers.keys().any(|&(id,op)|runtime.world.has_location_handler(id,op)){return Err(io::Error::other("Conflicting drawer handlers"));}
+    runtime.world.location_handlers.extend(drawers);
     runtime.world.multiway_area = Some(names.short("area", "multiway")?);
     runtime.combat_display = Some(crate::combat_display::resolve(
         names,

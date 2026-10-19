@@ -1,4 +1,6 @@
 //! Resolve content's symbolic references against the same immutable type inputs as Kotlin.
+mod drawers;
+pub use drawers::drawers;
 mod plain_chest;
 pub use plain_chest::plain_chest;
 mod bookcase_search;

@@ -306,6 +306,7 @@ struct Player {
     location_interaction: Option<(crate::locations::Location, LocationAction)>,
     location_revision: Option<u64>,
     woodcutting_animation_at: i32,
+    pending_location_action: Option<location_swap_actions::Pending>,
     pending_door: Option<crate::doors::Pending>,
     observer_id: Option<i64>,
     autocast_picker_defensive: Option<bool>,
@@ -381,6 +382,7 @@ impl Player {
         self.tutorial_fire = None;
         self.quantity_dialog = None;
         self.quantity_input = false;
+        self.pending_location_action=None;
         self.pending_door = None;
         self.pending_pickup = None;
         self.pending_drop = None;
@@ -1719,6 +1721,7 @@ impl World {
             return Ok(());
         }
         p.pending_logout = true;
+        if p.pending_location_action.take().is_some(){p.protection.suspended=false;}
         p.movement.abort();
         self.process_pending_logout(id)
     }
@@ -2280,6 +2283,7 @@ impl World {
                     }
                     _ => None,
                 };
+                if p.pending_location_action.take().is_some(){p.protection.suspended=false;}
                 p.movement.temporary_speed = temporary;
                 p.movement.interacting = false;
                 p.location_interaction = None;
@@ -2544,6 +2548,7 @@ impl World {
                         self.process_tower_arrival(slot);
                         self.process_prayer(slot,random);
                         self.resume_tutorial_fire(slot);
+                        self.resume_location_action(slot);
                         self.resume_door(slot);
                         self.resume_pickup(slot);
                         self.validate_door(slot);
@@ -2725,7 +2730,7 @@ impl World {
                                                 Deferred::PlayerDeath => {
                                                     if !p.death_queued {
                                                         p.death_queued = true;
-                                                        p.consumables = Default::default();
+                                                        p.consumables = Default::default();p.pending_location_action=None;
                                                         self.events.push(
                                                             WorldEvent::DeathRequested(
                                                                 crate::hits::Target::Player(p.id),
@@ -2803,6 +2808,7 @@ impl World {
                                                         p.protection.suspended = false;
                                                         p.food_delay = false;
                                                         p.tutorial_fire = None;
+                                                        p.pending_location_action=None;
                                                         p.pending_door = None;
                                                         p.prayer = None;
                                                         p.pending_pickup = None;
@@ -2944,7 +2950,7 @@ impl World {
                                 self.events.push(WorldEvent::Hit { target, impact });
                                 if impact.death && !p.death_queued {
                                     p.death_queued = true;
-                                                        p.consumables = Default::default();
+                                                        p.consumables = Default::default();p.pending_location_action=None;
                                     self.events.push(WorldEvent::DeathRequested(target));
                                 }
                             }
@@ -3174,6 +3180,7 @@ impl World {
                             location_interaction: None,
                             location_revision: None,
                             woodcutting_animation_at: 0,
+                            pending_location_action: None,
                             pending_door: None,
                             observer_id: None,
                             autocast_picker_defensive: None,

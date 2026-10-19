@@ -149,6 +149,7 @@ impl World {
         p.queues.remove_all(crate::grinding::QUEUE);
         p.queues.remove_all(crate::dough::QUEUE);
         p.dough_request = None;
+        p.pending_location_action=None;
         p.pending_door = None;
         p.prayer = None;
         p.pending_pickup = None;
@@ -410,6 +411,7 @@ impl World {
             self.request_facility_crafting(slot,loc,None);return;
         }
         if let Some(&handler) = self.location_handlers.get(&(loc.id, operation)) {
+            if let crate::location_content::Handler::DelayedSwap{rule,delay}=handler{self.start_delayed_location_swap(slot,loc,rule,delay);return;}
             if let crate::location_content::Handler::TimedSwap(rule)=handler{self.process_location_swap(slot,loc,rule);return;}
             if matches!(handler,crate::location_content::Handler::Bookcase){self.start_bookcase(slot,loc);return;}
             if let crate::location_content::Handler::Nettles{rule,excluded_glove,mark}=handler{self.process_nettles(slot,loc,rule,excluded_glove,mark,random);return;}

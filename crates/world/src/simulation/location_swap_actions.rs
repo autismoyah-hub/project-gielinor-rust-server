@@ -83,6 +83,112 @@ impl World {
         });
     }
 }
+/// Actor-owned continuation; the existing protection clock supplies its delay.
+#[derive(Clone, Copy)]
+pub(super) struct Pending {
+    location: Location,
+    revision: u64,
+    rule: Swap,
+    origin: CoordGrid,
+    last_movement: i32,
+}
+impl World {
+    pub(super) fn start_delayed_location_swap(
+        &mut self,
+        slot: usize,
+        current: Location,
+        rule: Swap,
+        delay: i32,
+    ) {
+        let p = self.players.get(slot).unwrap();
+        let actor = p.id;
+        let Some(revision) = self
+            .locations
+            .revision(current)
+            .filter(|v| p.location_revision == Some(*v))
+        else {
+            return;
+        };
+        let root = self.locations.map_origin(current);
+        if delay <= 0
+            || rule.duration <= 0
+            || rule.next == current.id
+            || self.clock.0 < 0
+            || self
+                .clock
+                .0
+                .checked_add(delay)
+                .and_then(|v| v.checked_add(rule.duration))
+                .is_none()
+            || root.is_none_or(|r| {
+                (r.id != current.id && r.id != rule.next)
+                    || !self.location_types.contains_key(&r.id)
+            })
+            || !self.location_types.contains_key(&rule.next)
+            || Location::new(current.coords, rule.next, current.shape, current.angle).is_err()
+        {
+            self.events
+                .push(WorldEvent::LocationError("Invalid delayed location switch"));
+            return;
+        }
+        let p = self.players.get_mut(slot).unwrap();
+        p.pending_location_action = Some(Pending {
+            location: current,
+            revision,
+            rule,
+            origin: p.movement.coords,
+            last_movement: p.movement.last_movement,
+        });
+        p.protection.processed_clock = self.clock.0;
+        p.protection.delay(delay);
+        p.protection.suspended = true;
+        if let Some(sequence) = rule.animation {
+            self.events
+                .push(WorldEvent::PlayerAnimation { actor, sequence });
+        }
+        if let Some(sound) = rule.sound {
+            self.events.push(WorldEvent::PlayerSound { actor, sound });
+        }
+    }
+    pub(super) fn resume_location_action(&mut self, slot: usize) {
+        let pending = {
+            let Some(p) = self.players.get_mut(slot) else {
+                return;
+            };
+            if p.pending_location_action.is_none() {
+                return;
+            }
+            p.protection.processed_clock = self.clock.0;
+            if p.saving || p.pending_logout || p.has_modal || p.data.stats.current(3) <= 0 {
+                p.pending_location_action = None;
+                p.protection.suspended = false;
+                return;
+            }
+            if p.protection.delayed() {
+                return;
+            }
+            let pending = p.pending_location_action.take().unwrap();
+            p.protection.suspended = false;
+            if p.location_interaction.is_some()
+                || p.npc_interaction.is_some()
+                || p.object_interaction.is_some()
+                || p.movement.coords != pending.origin
+                || p.movement.last_movement != pending.last_movement
+            {
+                return;
+            }
+            pending
+        };
+        if self.locations.revision(pending.location) != Some(pending.revision) {
+            return;
+        }
+        let mut rule = pending.rule;
+        rule.animation = None;
+        rule.sound = None;
+        self.process_location_swap(slot, pending.location, rule);
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -240,6 +346,136 @@ mod tests {
                     | WorldEvent::PlayerAnimation { .. }
                     | WorldEvent::PlayerSound { .. }
             )));
+        }
+    }
+    fn delayed_fixture() -> (World, ActorId, Location) {
+        let (mut w, a, l) = fixture(375);
+        w.location_handlers.insert(
+            (375, 1),
+            Handler::DelayedSwap {
+                rule: rule(378, Some(64)),
+                delay: 1,
+            },
+        );
+        w.location_handlers.insert(
+            (378, 3),
+            Handler::DelayedSwap {
+                rule: rule(375, None),
+                delay: 1,
+            },
+        );
+        w.location_handlers.insert(
+            (378, 2),
+            Handler::ArrivedMessage("You search the drawers but find nothing."),
+        );
+        (w, a, l)
+    }
+    #[test]
+    fn delayed_location_switch_presents_once_then_changes_after_one_tick_and_search_does_not_reset_timer(
+    ) {
+        let (mut w, a, l) = delayed_fixture();
+        let before = w.data(a).unwrap().inventory.clone();
+        let stats = w.data(a).unwrap().stats.clone();
+        w.submit(
+            a,
+            Action::OperateLocation {
+                coords: l.coords,
+                id: l.id,
+                operation: 1,
+                control: false,
+            },
+        )
+        .unwrap();
+        w.tick_with_random(&mut Never).unwrap();
+        assert_eq!(w.locations.find_shape(l.coords, l.shape), Some(l));
+        let e = w.drain_events();
+        assert!(e
+            .iter()
+            .any(|e| matches!(e, WorldEvent::PlayerAnimation { sequence: 536, .. })));
+        assert!(e
+            .iter()
+            .any(|e| matches!(e, WorldEvent::PlayerSound { sound: 64, .. })));
+        assert!(!e
+            .iter()
+            .any(|e| matches!(e, WorldEvent::LocationSwitched { .. })));
+        w.tick_with_random(&mut Never).unwrap();
+        let e = w.drain_events();
+        let t = e
+            .iter()
+            .find_map(|e| {
+                if let WorldEvent::LocationSwitched { trace, .. } = e {
+                    Some(*trace)
+                } else {
+                    None
+                }
+            })
+            .unwrap();
+        assert_eq!(t.to.id, 378);
+        assert!(!e.iter().any(|e| matches!(
+            e,
+            WorldEvent::PlayerAnimation { .. } | WorldEvent::PlayerSound { .. }
+        )));
+        w.submit(
+            a,
+            Action::OperateLocation {
+                coords: l.coords,
+                id: 378,
+                operation: 2,
+                control: false,
+            },
+        )
+        .unwrap();
+        w.tick_with_random(&mut Never).unwrap();
+        assert!(w.drain_events().iter().any(|e| matches!(
+            e,
+            WorldEvent::LocationMessage {
+                message: "You search the drawers but find nothing.",
+                ..
+            }
+        )));
+        while w.clock.0 <= t.restore_at.unwrap() {
+            w.tick_with_random(&mut Never).unwrap();
+        }
+        assert_eq!(w.locations.find_shape(l.coords, l.shape), Some(l));
+        assert_eq!(w.data(a).unwrap().inventory, before);
+        assert_eq!(w.data(a).unwrap().stats, stats);
+    }
+    #[test]
+    fn delayed_location_switch_cancels_replaced_target_held_launch_logout_or_modal_before_model_change(
+    ) {
+        for mode in 0..4 {
+            let (mut w, a, l) = delayed_fixture();
+            w.submit(
+                a,
+                Action::OperateLocation {
+                    coords: l.coords,
+                    id: l.id,
+                    operation: 1,
+                    control: false,
+                },
+            )
+            .unwrap();
+            w.tick_with_random(&mut Never).unwrap();
+            w.drain_events();
+            match mode {
+                0 => {
+                    w.change_location(l, false).unwrap();
+                    w.change_location(l, true).unwrap();
+                }
+                1 => w
+                    .submit(a, Action::EatItemSlot { slot: 0, item: 999 })
+                    .unwrap(),
+                2 => w.request_logout(a).unwrap(),
+                _ => w.players.get_mut(a.slot as usize).unwrap().has_modal = true,
+            };
+            for _ in 0..3 {
+                w.tick_with_random(&mut Never).unwrap();
+            }
+            assert_eq!(w.locations.find_shape(l.coords, l.shape), Some(l));
+            assert!(!w
+                .drain_events()
+                .iter()
+                .any(|e| matches!(e, WorldEvent::LocationSwitched { .. })));
         }
     }
 }
