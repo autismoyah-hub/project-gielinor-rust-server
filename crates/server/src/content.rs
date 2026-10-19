@@ -1,4 +1,6 @@
 //! Resolve content's symbolic references against the same immutable type inputs as Kotlin.
+mod location_content_search;
+pub use location_content_search::location_content_search;
 mod nettle_pickables;
 pub use nettle_pickables::nettle_pickables;
 mod flax_pickables;
