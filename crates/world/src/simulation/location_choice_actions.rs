@@ -1,25 +1,12 @@
 //! Actor-owned scenery choices reuse dialogue tokens and authoritative movement.
-use super::location_swap_actions::{Continuation, Pending};
+use super::location_swap_actions::{ChoiceAfter, Continuation, Pending};
 use super::*;
 use crate::{location_content::Spiral, locations::Location};
 impl World {
     pub(super) fn start_spiral_choice(&mut self, slot: usize, location: Location) {
-        let p = self.players.get(slot).unwrap();
-        let Some(revision) = self
-            .locations
-            .revision(location)
-            .filter(|v| p.location_revision == Some(*v))
-        else {
-            return;
-        };
-        if p.saving || p.pending_logout || p.has_modal || p.data.stats.current(3) <= 0 {
-            return;
-        }
         let Some(ty) = self.location_types.get(&location.id) else {
             return;
         };
-        // The source constructs both translations before suspending; destinations
-        // are resolved by the server, never accepted from a client reply.
         let destinations = [1, -1].map(|delta_level| {
             Spiral {
                 delta_level,
@@ -28,6 +15,60 @@ impl World {
             .destination(location, ty.width, ty.length)
             .ok()
         });
+        self.start_location_choice(
+            slot,
+            location,
+            "Climb up or down the stairs?",
+            &["Climb up the stairs.", "Climb down the stairs."],
+            destinations,
+            ChoiceAfter::Jump,
+        );
+    }
+    pub(super) fn start_windmill_choice(&mut self, slot: usize, location: Location) {
+        let origin = self.players.get(slot).unwrap().movement.coords;
+        let destinations = [1, -1].map(|level| origin.translate(0, 0, level).ok());
+        self.start_location_choice(
+            slot,
+            location,
+            "Climb up or down the ladder?",
+            &["Climb Up.", "Climb Down."],
+            destinations,
+            ChoiceAfter::Climb {
+                animation: 828,
+                delay: 2,
+            },
+        );
+    }
+    fn start_location_choice(
+        &mut self,
+        slot: usize,
+        location: Location,
+        title: &'static str,
+        options: &'static [&'static str],
+        destinations: [Option<CoordGrid>; 2],
+        after: ChoiceAfter,
+    ) {
+        let p = self.players.get(slot).unwrap();
+        let Some(revision) = self
+            .locations
+            .revision(location)
+            .filter(|v| p.location_revision == Some(*v))
+        else {
+            return;
+        };
+        if p.saving
+            || p.pending_logout
+            || p.has_modal
+            || p.data.stats.current(3) <= 0
+            || options.len() != 2
+        {
+            return;
+        }
+        if let ChoiceAfter::Climb { delay, .. } = after {
+            if delay <= 0 || self.clock.0 < 0 || self.clock.0.checked_add(delay).is_none() {
+                return;
+            }
+        }
         let p = self.players.get_mut(slot).unwrap();
         let Some(token) = p.dialog_generation.checked_add(1) else {
             return;
@@ -42,6 +83,7 @@ impl World {
             action: Continuation::Choice {
                 token,
                 destinations,
+                after,
             },
         });
         p.protection.suspended = true;
@@ -49,8 +91,8 @@ impl World {
             actor: p.id,
             event: crate::dialogue::Event::LocationChoice {
                 token,
-                title: "Climb up or down the stairs?",
-                options: &["Climb up the stairs.", "Climb down the stairs."],
+                title,
+                options,
             },
         });
     }
@@ -118,7 +160,12 @@ impl World {
         let p = self.players.get_mut(actor.slot as usize).unwrap();
         let pending = p.pending_location_action.take().unwrap();
         p.protection.suspended = false;
-        let Continuation::Choice { destinations, .. } = pending.action else {
+        let Continuation::Choice {
+            destinations,
+            after,
+            ..
+        } = pending.action
+        else {
             unreachable!()
         };
         self.events.push(WorldEvent::Dialogue {
@@ -126,12 +173,21 @@ impl World {
             event: crate::dialogue::Event::Closed,
         });
         if let Some(destination) = destinations[(choice - 1) as usize] {
-            self.finish_location_climb(
-                actor.slot as usize,
-                pending.location,
-                pending.origin,
-                destination,
-            );
+            match after {
+                ChoiceAfter::Jump => self.finish_location_climb(
+                    actor.slot as usize,
+                    pending.location,
+                    pending.origin,
+                    destination,
+                ),
+                ChoiceAfter::Climb { animation, delay } => self.start_fixed_location_climb(
+                    actor.slot as usize,
+                    pending.location,
+                    destination,
+                    animation,
+                    delay,
+                ),
+            }
         }
         Ok(())
     }
@@ -304,6 +360,153 @@ mod tests {
                 if let Ok(p) = w.data(a) {
                     assert_eq!(p.coords, origin);
                 }
+            }
+            assert!(!w
+                .drain_events()
+                .iter()
+                .any(|e| matches!(e, WorldEvent::LocationClimbed { .. })));
+        }
+    }
+    fn windmill_fixture() -> (World, ActorId, Location) {
+        let mut w = World::default();
+        for level in 0..4 {
+            for x in (3192..3224).step_by(8) {
+                for z in (3192..3224).step_by(8) {
+                    w.collision.allocate(x, z, level);
+                }
+            }
+        }
+        let l = Location::new(CoordGrid::new(3204, 3204, 1).unwrap(), 12965, 10, 0).unwrap();
+        w.locations.load(l);
+        w.location_types.insert(
+            l.id,
+            LocCollision {
+                width: 1,
+                length: 1,
+                block_walk: 2,
+                block_range: true,
+                break_route_finding: false,
+            },
+        );
+        w.location_handlers
+            .insert((l.id, 1), Handler::WindmillChoice);
+        w.queue_login(
+            1,
+            PlayerData::new(
+                1,
+                "Mill".into(),
+                CoordGrid::new(3203, 3204, 1).unwrap(),
+                Stats::default(),
+            ),
+        )
+        .unwrap();
+        w.tick().unwrap();
+        let a = w.actors().next().unwrap();
+        w.drain_events();
+        (w, a, l)
+    }
+    fn open_windmill(w: &mut World, a: ActorId, l: Location) -> u64 {
+        w.submit(
+            a,
+            Action::OperateLocation {
+                coords: l.coords,
+                id: l.id,
+                operation: 1,
+                control: false,
+            },
+        )
+        .unwrap();
+        w.tick_with_random(&mut Never).unwrap();
+        let t = w.dialogue_token(a).unwrap().unwrap();
+        assert!(w.drain_events().iter().any(|e|matches!(e,WorldEvent::Dialogue{event:crate::dialogue::Event::LocationChoice{title:"Climb up or down the ladder?",options,..},..}if *options==["Climb Up.","Climb Down."])));
+        t
+    }
+    #[test]
+    fn windmill_choice_selected_actor_relative_landing_waits_two_ticks_and_replay_cannot_change_it()
+    {
+        for choice in [1, 2] {
+            let (mut w, a, l) = windmill_fixture();
+            let origin = w.data(a).unwrap().coords;
+            let inv = w.data(a).unwrap().inventory.clone();
+            let stats = w.data(a).unwrap().stats.clone();
+            let token = open_windmill(&mut w, a, l);
+            w.submit(a, Action::ResumeDialogue { token, choice })
+                .unwrap();
+            w.tick_with_random(&mut Never).unwrap();
+            assert_eq!(w.data(a).unwrap().coords, origin);
+            assert_eq!(w.dialogue_token(a).unwrap(), None);
+            let events = w.drain_events();
+            assert!(events
+                .iter()
+                .any(|e| matches!(e, WorldEvent::PlayerAnimation { sequence: 828, .. })));
+            assert!(!events
+                .iter()
+                .any(|e| matches!(e, WorldEvent::LocationClimbed { .. })));
+            w.submit(
+                a,
+                Action::ResumeDialogue {
+                    token,
+                    choice: 3 - choice,
+                },
+            )
+            .unwrap();
+            w.tick_with_random(&mut Never).unwrap();
+            assert_eq!(w.data(a).unwrap().coords, origin);
+            w.drain_events();
+            w.tick_with_random(&mut Never).unwrap();
+            assert_eq!(
+                w.data(a).unwrap().coords,
+                origin
+                    .translate(0, 0, if choice == 1 { 1 } else { -1 })
+                    .unwrap()
+            );
+            let events = w.drain_events();
+            assert_eq!(
+                events
+                    .iter()
+                    .filter(|e| matches!(e, WorldEvent::LocationClimbed { .. }))
+                    .count(),
+                1
+            );
+            assert!(!events
+                .iter()
+                .any(|e| matches!(e, WorldEvent::PlayerAnimation { .. })));
+            assert_eq!(w.data(a).unwrap().inventory, inv);
+            assert_eq!(w.data(a).unwrap().stats, stats);
+        }
+    }
+    #[test]
+    fn windmill_choice_close_or_post_selection_held_stale_logout_and_modal_cancel_without_landing()
+    {
+        for mode in 0..5 {
+            let (mut w, a, l) = windmill_fixture();
+            let token = open_windmill(&mut w, a, l);
+            if mode == 0 {
+                assert!(w.cancel_dialogue(a).unwrap());
+            } else {
+                w.submit(a, Action::ResumeDialogue { token, choice: 1 })
+                    .unwrap();
+                w.tick_with_random(&mut Never).unwrap();
+                match mode {
+                    1 => {
+                        w.submit(a, Action::EatItemSlot { slot: 0, item: 999 })
+                            .unwrap();
+                    }
+                    2 => {
+                        w.change_location(l, false).unwrap();
+                        w.change_location(l, true).unwrap();
+                    }
+                    3 => {
+                        w.request_logout(a).unwrap();
+                    }
+                    _ => {
+                        w.players.get_mut(a.slot as usize).unwrap().has_modal = true;
+                    }
+                }
+            }
+            w.drain_events();
+            for _ in 0..4 {
+                w.tick_with_random(&mut Never).unwrap();
             }
             assert!(!w
                 .drain_events()

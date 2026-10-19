@@ -84,11 +84,13 @@ impl World {
     }
 }
 /// Actor-owned continuation; the existing protection clock supplies its delay.
+#[derive(Clone,Copy)]
+pub(super) enum ChoiceAfter {Jump,Climb{animation:u16,delay:i32}}
 #[derive(Clone, Copy)]
 pub(super) enum Continuation {
     Swap(Swap),
     Climb(CoordGrid),
-    Choice { token:u64, destinations:[Option<CoordGrid>;2] },
+    Choice { token:u64, destinations:[Option<CoordGrid>;2], after:ChoiceAfter },
 }
 #[derive(Clone, Copy)]
 pub(super) struct Pending {
