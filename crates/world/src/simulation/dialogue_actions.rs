@@ -99,12 +99,14 @@ impl World {
             .player(actor)?
             .dialogue
             .as_ref()
-            .map(|dialogue| dialogue.token))
+            .map(|dialogue| dialogue.token).or_else(||self.location_choice_token(actor)))
     }
     pub fn cancel_dialogue(&mut self, actor: ActorId) -> Result<bool, ActionError> {
         self.player(actor)?;
         let p = self.players.get_mut(actor.slot as usize).unwrap();
-        let cancelled = p.dialogue.take().is_some();
+        let choice=p.pending_location_action.is_some_and(|pending|matches!(pending.action,location_swap_actions::Continuation::Choice{..}));
+        if choice {p.pending_location_action=None;}
+        let cancelled = p.dialogue.take().is_some() || choice;
         if cancelled {
             p.protection.suspended = false;
         }
@@ -320,6 +322,7 @@ impl World {
         random: &mut impl RandomSource,
     ) -> Result<(), ActionError> {
         let p = self.player(actor)?;
+        if self.location_choice_token(actor).is_some(){return self.resume_location_choice(actor,token,choice);}
         if p.dialogue.as_ref().is_none_or(|d| d.token != token) {
             return Ok(());
         }

@@ -229,6 +229,9 @@ pub fn configure<B: AccountBackend>(
     let spiral=crate::content::spiral_stairs(n("loc"),n("content"),&runtime.definitions).map_err(io::Error::other)?;
     if spiral.keys().any(|&(id,op)|runtime.world.has_location_handler(id,op)){return Err(io::Error::other("Conflicting spiral staircase handlers"));}
     runtime.world.location_handlers.extend(spiral);
+    let choices=crate::content::spiral_choices(n("loc"),n("content"),&runtime.definitions).map_err(io::Error::other)?;
+    if choices.keys().any(|&(id,op)|runtime.world.has_location_handler(id,op)){return Err(io::Error::other("Conflicting spiral choice handlers"));}
+    runtime.world.location_handlers.extend(choices);
     runtime.world.multiway_area = Some(names.short("area", "multiway")?);
     runtime.combat_display = Some(crate::combat_display::resolve(
         names,

@@ -51,7 +51,7 @@ impl Presentation {
 #[derive(Clone)]
 pub(super) struct Active {
     pub token: u64,
-    pub npc: NpcId,
+    pub npc: Option<NpcId>,
     pub page: Page,
     pub remaining: VecDeque<(String, usize)>,
     pub button: Component,

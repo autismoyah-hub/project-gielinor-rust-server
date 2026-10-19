@@ -88,6 +88,7 @@ impl World {
 pub(super) enum Continuation {
     Swap(Swap),
     Climb(CoordGrid),
+    Choice { token:u64, destinations:[Option<CoordGrid>;2] },
 }
 #[derive(Clone, Copy)]
 pub(super) struct Pending {
@@ -157,6 +158,9 @@ impl World {
         }
     }
     pub(super) fn resume_location_action(&mut self, slot: usize) {
+        if self.players.get(slot).and_then(|p|p.pending_location_action).is_some_and(|p|matches!(p.action,Continuation::Choice{..})){
+            self.validate_location_choice(slot);return;
+        }
         let pending = {
             let Some(p) = self.players.get_mut(slot) else {
                 return;
@@ -189,6 +193,7 @@ impl World {
             return;
         }
         match pending.action {
+            Continuation::Choice{..} => unreachable!("choices wait for authenticated replies"),
             Continuation::Swap(mut rule) => {
                 rule.animation = None;
                 rule.sound = None;

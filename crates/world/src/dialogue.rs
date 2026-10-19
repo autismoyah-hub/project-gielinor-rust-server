@@ -104,6 +104,7 @@ pub enum Event {
         npc: crate::simulation::NpcId,
         page: Page,
     },
+    LocationChoice { token:u64, title:&'static str, options:&'static [&'static str] },
     Closed,
 }
 const TRADE: &str = "No, I have nothing I wish to get rid of. If you want to do some trading, there are plenty of shops and market stalls around though.";

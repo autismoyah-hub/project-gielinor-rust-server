@@ -107,6 +107,15 @@ pub fn spiral_stairs(
     })
     .collect())
 }
+/// The source middle-flight menu uses the same strict native attestation.
+pub fn spiral_choices(
+    locations: &Symbols,
+    contents: &Symbols,
+    defs: &Definitions,
+) -> Result<BTreeMap<(u32, u8), Handler>, String> {
+    spiral_stairs(locations, contents, defs)?;
+    Ok([((16672, 1), Handler::SpiralChoice)].into())
+}
 #[cfg(test)]
 mod tests {
     use super::*;

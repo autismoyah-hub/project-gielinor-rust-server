@@ -160,6 +160,21 @@ impl<B: AccountBackend> Runtime<B> {
                     Ok(())
                 }
             }
+            DialogueEvent::LocationChoice {
+                token,
+                title,
+                options,
+            } => {
+                let button = Component((presentation.choice as u32) << 16 | 1);
+                self.active.get_mut(&actor).unwrap().dialogue = Some(crate::dialogue::Active {
+                    token: *token,
+                    npc: None,
+                    page: Page::TitledChoice { title, options },
+                    remaining: Default::default(),
+                    button,
+                });
+                self.show_dialogue_page(actor)
+            }
             DialogueEvent::Page { token, npc, page } => {
                 let (interface, remaining) = match page {
                     Page::Chat { speaker, text, .. } | Page::NamedChat { speaker, text, .. } => {
@@ -204,7 +219,7 @@ impl<B: AccountBackend> Runtime<B> {
                 );
                 self.active.get_mut(&actor).unwrap().dialogue = Some(crate::dialogue::Active {
                     token: *token,
-                    npc: *npc,
+                    npc: Some(*npc),
                     page: page.clone(),
                     remaining,
                     button,
@@ -240,9 +255,9 @@ impl<B: AccountBackend> Runtime<B> {
                 .map_err(|e| io::Error::other(format!("{e:?}")))?
                 .display_name
                 .clone(),
-            _ => self
-                .world
-                .npc(dialogue.npc)
+            _ => dialogue
+                .npc
+                .and_then(|npc| self.world.npc(npc))
                 .and_then(|npc| self.definitions.npcs.get(&(npc.type_id as u32)))
                 .map(|ty| ty.name.clone())
                 .unwrap_or_default(),
@@ -279,7 +294,7 @@ impl<B: AccountBackend> Runtime<B> {
                 let head = if *speaker == Speaker::Player {
                     interfaces::player_head(base | 2)
                 } else {
-                    let Some(npc) = self.world.npc(dialogue.npc) else {
+                    let Some(npc) = dialogue.npc.and_then(|npc| self.world.npc(npc)) else {
                         self.world
                             .cancel_dialogue(actor)
                             .map_err(|e| io::Error::other(format!("{e:?}")))?;

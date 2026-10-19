@@ -60,6 +60,7 @@ pub enum Handler {
     },
     PickableChance {rule:crate::pickables::Rule,depletion:crate::pickables::Depletion},
     Nettles {rule:crate::pickables::Rule,excluded_glove:i32,mark:crate::hit_display::Mark},
+    SpiralChoice,
     Spiral(Spiral),
     Stairs(Stairs),
     Climb(Climb),
@@ -96,7 +97,7 @@ impl Handler {
     ) -> Result<crate::pickables::Outcome, Error> {
         match self {
             Self::Pickable(rule) => rule.perform(player, catalog, member),
-            Self::Spiral(_) | Self::Stairs(_) | Self::Climb(_) | Self::TimedSwap(_) | Self::DelayedSwap {..} | Self::Bookcase | Self::PickableStage { .. } | Self::PickableChance { .. } | Self::Nettles { .. } => Err(Error::InvalidCapacity),
+            Self::SpiralChoice | Self::Spiral(_) | Self::Stairs(_) | Self::Climb(_) | Self::TimedSwap(_) | Self::DelayedSwap {..} | Self::Bookcase | Self::PickableStage { .. } | Self::PickableChance { .. } | Self::Nettles { .. } => Err(Error::InvalidCapacity),
             Self::ArrivedMessage(message) | Self::Message(message) | Self::EmptyPickable(message) => Ok(crate::pickables::Outcome::Message(message)),
             _ => self.apply(player, catalog).map(|m| {
                 m.map_or(
@@ -111,7 +112,7 @@ impl Handler {
         player: &mut PlayerData,
         catalog: &Catalog,
     ) -> Result<Option<&'static str>, Error> {
-        if matches!(self, Self::Spiral(_) | Self::Stairs(_) | Self::Climb(_) | Self::TimedSwap(_) | Self::DelayedSwap {..} | Self::Bookcase | Self::PickableStage { .. } | Self::PickableChance { .. } | Self::Nettles { .. }) {
+        if matches!(self, Self::SpiralChoice | Self::Spiral(_) | Self::Stairs(_) | Self::Climb(_) | Self::TimedSwap(_) | Self::DelayedSwap {..} | Self::Bookcase | Self::PickableStage { .. } | Self::PickableChance { .. } | Self::Nettles { .. }) {
             return Err(Error::InvalidCapacity);
         }
         if let Self::ArrivedMessage(message) | Self::Message(message) | Self::EmptyPickable(message) = self {
@@ -123,7 +124,7 @@ impl Handler {
                 .map(crate::pickables::Outcome::message);
         }
         let origin = match self {
-            Self::Pickable(_) | Self::PickableStage { .. } | Self::PickableChance { .. } | Self::Nettles { .. } | Self::Spiral(_) | Self::Stairs(_) | Self::Climb(_) | Self::TimedSwap(_) | Self::DelayedSwap {..} | Self::Bookcase | Self::ArrivedMessage(_) | Self::Message(_) | Self::EmptyPickable(_) => {
+            Self::Pickable(_) | Self::PickableStage { .. } | Self::PickableChance { .. } | Self::Nettles { .. } | Self::SpiralChoice | Self::Spiral(_) | Self::Stairs(_) | Self::Climb(_) | Self::TimedSwap(_) | Self::DelayedSwap {..} | Self::Bookcase | Self::ArrivedMessage(_) | Self::Message(_) | Self::EmptyPickable(_) => {
                 unreachable!("handled above")
             }
             Self::VialCrate { origin, .. } | Self::PrayerAltar { origin, .. } => origin,
@@ -136,7 +137,7 @@ impl Handler {
             return Ok(None);
         }
         match self {
-            Self::Pickable(_) | Self::PickableStage { .. } | Self::PickableChance { .. } | Self::Nettles { .. } | Self::Spiral(_) | Self::Stairs(_) | Self::Climb(_) | Self::TimedSwap(_) | Self::DelayedSwap {..} | Self::Bookcase | Self::ArrivedMessage(_) | Self::Message(_) | Self::EmptyPickable(_) => {
+            Self::Pickable(_) | Self::PickableStage { .. } | Self::PickableChance { .. } | Self::Nettles { .. } | Self::SpiralChoice | Self::Spiral(_) | Self::Stairs(_) | Self::Climb(_) | Self::TimedSwap(_) | Self::DelayedSwap {..} | Self::Bookcase | Self::ArrivedMessage(_) | Self::Message(_) | Self::EmptyPickable(_) => {
                 unreachable!("handled above")
             }
             Self::VialCrate { item, .. } => {

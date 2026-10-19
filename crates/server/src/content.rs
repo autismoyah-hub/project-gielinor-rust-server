@@ -1,6 +1,6 @@
 //! Resolve content's symbolic references against the same immutable type inputs as Kotlin.
 mod spiral_stairs;
-pub use spiral_stairs::spiral_stairs;
+pub use spiral_stairs::{spiral_stairs,spiral_choices};
 mod straight_stairs;
 pub use straight_stairs::straight_stairs;
 mod ladder_climbs;
