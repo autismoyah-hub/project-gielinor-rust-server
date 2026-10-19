@@ -244,7 +244,7 @@ impl World {
         };
         let actor = p.id;
         if self.locations.find_type(loc.coords, loc.id) != Some(loc)
-            || (matches!(self.location_handlers.get(&(loc.id,operation)),Some(crate::location_content::Handler::Pickable(_)))
+            || (self.location_handlers.get(&(loc.id,operation)).is_some_and(|h|h.is_pickable())
                 && self.locations.revision(loc)!=p.location_revision) {
             let p = self.players.get_mut(slot).unwrap();
             p.location_interaction = None;
@@ -409,15 +409,11 @@ impl World {
             self.request_facility_crafting(slot,loc,None);return;
         }
         if let Some(&handler) = self.location_handlers.get(&(loc.id, operation)) {
+            if let crate::location_content::Handler::PickableStage{rule,step}=handler{self.process_pickable_stage(slot,loc,rule,step);return;}
             match handler.perform(&mut p.data, &self.object_types,p.member) {
                 Ok(crate::pickables::Outcome::Message(message)) => self.events.push(WorldEvent::LocationMessage {actor,message}),
                 Ok(crate::pickables::Outcome::Ignored) => (),
-                Ok(crate::pickables::Outcome::Picked(rule)) => {
-                    self.events.push(WorldEvent::PlayerAnimation{actor,sequence:rule.animation});
-                    self.events.push(WorldEvent::LocationMessage{actor,message:rule.picked_message});
-                    self.events.push(WorldEvent::PlayerSound{actor,sound:rule.sound});
-                    self.events.push(WorldEvent::PickableCollected{actor,location:loc,item:rule.item});
-                },
+                Ok(crate::pickables::Outcome::Picked(rule)) => self.emit_pickable(actor,loc,rule),
                 Err(_) => self.events.push(WorldEvent::LocationError(
                     "Location inventory transaction failed",
                 )),

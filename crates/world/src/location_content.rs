@@ -7,12 +7,29 @@ use crate::{
 #[derive(Clone, Copy, Debug)]
 pub enum Handler {
     Pickable(crate::pickables::Rule),
-    VialCrate { origin: CoordGrid, item: i32 },
-    PrayerAltar { origin: CoordGrid, prayer: u8 },
+    PickableStage {
+        rule: crate::pickables::Rule,
+        step: crate::pickables::Step,
+    },
+    EmptyPickable(&'static str),
+    VialCrate {
+        origin: CoordGrid,
+        item: i32,
+    },
+    PrayerAltar {
+        origin: CoordGrid,
+        prayer: u8,
+    },
 }
 impl Handler {
+    pub fn is_pickable(self) -> bool {
+        matches!(
+            self,
+            Self::Pickable(_) | Self::PickableStage { .. } | Self::EmptyPickable(_)
+        )
+    }
     pub fn arrival_delay(self) -> bool {
-        matches!(self, Self::PrayerAltar { .. } | Self::Pickable(_))
+        matches!(self, Self::PrayerAltar { .. }) || self.is_pickable()
     }
     pub fn perform(
         self,
@@ -22,6 +39,8 @@ impl Handler {
     ) -> Result<crate::pickables::Outcome, Error> {
         match self {
             Self::Pickable(rule) => rule.perform(player, catalog, member),
+            Self::PickableStage { .. } => Err(Error::InvalidCapacity),
+            Self::EmptyPickable(message) => Ok(crate::pickables::Outcome::Message(message)),
             _ => self.apply(player, catalog).map(|m| {
                 m.map_or(
                     crate::pickables::Outcome::Ignored,
@@ -35,13 +54,21 @@ impl Handler {
         player: &mut PlayerData,
         catalog: &Catalog,
     ) -> Result<Option<&'static str>, Error> {
+        if matches!(self, Self::PickableStage { .. }) {
+            return Err(Error::InvalidCapacity);
+        }
+        if let Self::EmptyPickable(message) = self {
+            return Ok(Some(message));
+        }
         if let Self::Pickable(rule) = self {
             return rule
                 .perform(player, catalog, true)
                 .map(crate::pickables::Outcome::message);
         }
         let origin = match self {
-            Self::Pickable(_) => unreachable!("handled above"),
+            Self::Pickable(_) | Self::PickableStage { .. } | Self::EmptyPickable(_) => {
+                unreachable!("handled above")
+            }
             Self::VialCrate { origin, .. } | Self::PrayerAltar { origin, .. } => origin,
         };
         // TowerMap.contains: the same cached types elsewhere do not run floor hooks.
@@ -52,7 +79,9 @@ impl Handler {
             return Ok(None);
         }
         match self {
-            Self::Pickable(_) => unreachable!("handled above"),
+            Self::Pickable(_) | Self::PickableStage { .. } | Self::EmptyPickable(_) => {
+                unreachable!("handled above")
+            }
             Self::VialCrate { item, .. } => {
                 let count = player.inventory.free_space().min(5) as i32;
                 if count == 0 {

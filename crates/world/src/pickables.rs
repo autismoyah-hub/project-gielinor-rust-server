@@ -1,6 +1,7 @@
-//! Single-item perpetual pickables over existing inventory and reached-location systems.
+//! Single-item pickables over existing inventory and reached-location systems.
 use crate::{
-    inventory::{Catalog, Error, Insert, StackType},
+    inventory::{Catalog, Error, Insert, Inventory, StackType},
+    locations::Location,
     simulation::PlayerData,
 };
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -27,14 +28,30 @@ impl Outcome {
         }
     }
 }
+/// A grant owns its private inventory snapshot and can be committed only once.
+#[derive(Debug)]
+pub struct Prepared {
+    inventory: Inventory,
+    rule: Rule,
+}
+impl Prepared {
+    pub fn commit(self, player: &mut PlayerData) -> Rule {
+        player.inventory = self.inventory;
+        self.rule
+    }
+}
+#[derive(Debug)]
+pub enum Preparation {
+    Refused(Outcome),
+    Grant(Prepared),
+}
 impl Rule {
-    /// No reward, animation or sound is published until the private insert succeeds.
-    pub fn perform(
+    pub fn prepare(
         self,
-        player: &mut PlayerData,
+        player: &PlayerData,
         catalog: &Catalog,
         member: bool,
-    ) -> Result<Outcome, Error> {
+    ) -> Result<Preparation, Error> {
         if !catalog.ordinary_nonstackable(self.item) {
             return Err(Error::InvalidCount);
         }
@@ -42,18 +59,119 @@ impl Rule {
             return Err(Error::InvalidCapacity);
         }
         if self.members && !member {
-            return Ok(Outcome::Message("You need to be a member to pick this."));
+            return Ok(Preparation::Refused(Outcome::Message(
+                "You need to be a member to pick this.",
+            )));
         }
         if player.inventory.free_space() == 0 {
-            return Ok(Outcome::Message(self.full_message));
+            return Ok(Preparation::Refused(Outcome::Message(self.full_message)));
         }
-        let mut next = player.inventory.clone();
-        let inserted = next.insert(catalog, Insert::new(self.item, 1))?;
+        let mut inventory = player.inventory.clone();
+        let inserted = inventory.insert(catalog, Insert::new(self.item, 1))?;
         if inserted.completed != 1 {
             return Err(Error::NotEnoughSpace);
         }
-        player.inventory = next;
-        Ok(Outcome::Picked(self))
+        Ok(Preparation::Grant(Prepared {
+            inventory,
+            rule: self,
+        }))
+    }
+    /// Perpetual rows use the same prepared grant without a location change.
+    pub fn perform(
+        self,
+        player: &mut PlayerData,
+        catalog: &Catalog,
+        member: bool,
+    ) -> Result<Outcome, Error> {
+        Ok(match self.prepare(player, catalog, member)? {
+            Preparation::Refused(outcome) => outcome,
+            Preparation::Grant(plan) => Outcome::Picked(plan.commit(player)),
+        })
+    }
+}
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Step {
+    Next { location: u32 },
+    Respawn { empty: u32, full: u32, delay: i32 },
+}
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct Advance {
+    pub replacement: Location,
+    pub restoration: Option<(Location, i32)>,
+    pub deadline: Option<i32>,
+}
+impl Step {
+    /// Validate the complete transition and deadline before inventory or location mutation.
+    pub fn prepare(self, current: Location, now: i32) -> Result<Advance, &'static str> {
+        if now < 0 {
+            return Err("Invalid pickable clock");
+        }
+        let make = |id| {
+            Location::new(current.coords, id, current.shape, current.angle)
+                .map_err(|_| "Invalid pickable location")
+        };
+        match self {
+            Self::Next { location } => {
+                if location == current.id {
+                    return Err("Pickable stage must advance");
+                }
+                Ok(Advance {
+                    replacement: make(location)?,
+                    restoration: None,
+                    deadline: None,
+                })
+            }
+            Self::Respawn { empty, full, delay } => {
+                if empty == current.id || empty == full || delay <= 0 {
+                    return Err("Invalid pickable restoration");
+                }
+                let deadline = now
+                    .checked_add(delay)
+                    .ok_or("Pickable restoration clock overflow")?;
+                Ok(Advance {
+                    replacement: make(empty)?,
+                    restoration: Some((make(full)?, delay)),
+                    deadline: Some(deadline),
+                })
+            }
+        }
+    }
+}
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct Transition {
+    pub tick: i32,
+    pub from: Location,
+    pub to: Location,
+    pub item: i32,
+    pub restore: Option<Location>,
+    pub restore_at: Option<i32>,
+}
+impl Transition {
+    pub fn json(&self, actor: crate::simulation::ActorId) -> String {
+        let loc = |l: Location| {
+            format!(
+                "[{},{},{},{},{},{}]",
+                l.coords.x(),
+                l.coords.z(),
+                l.coords.level(),
+                l.id,
+                l.shape,
+                l.angle
+            )
+        };
+        format!(
+            r#"{{"schema":1,"actor_slot":{},"actor_generation":{},"tick":{},"from":{},"to":{},"item":{},"restore":{},"restore_tick":{}}}"#,
+            actor.slot,
+            actor.generation,
+            self.tick,
+            loc(self.from),
+            loc(self.to),
+            self.item,
+            self.restore.map(loc).unwrap_or_else(|| "null".into()),
+            self.restore_at
+                .map(|n| n.to_string())
+                .unwrap_or_else(|| "null".into())
+        )
     }
 }
 #[cfg(test)]
@@ -328,5 +446,65 @@ mod tests {
             .drain_events()
             .iter()
             .any(|e| matches!(e, WorldEvent::PickableCollected { .. })));
+    }
+    #[test]
+    fn pickable_preparation_is_private_and_invalid_or_overflowing_stage_cannot_mutate() {
+        let r = rule();
+        let mut p = data();
+        let before = p.inventory.clone();
+        let Preparation::Grant(plan) = r.prepare(&p, &Catalog::default(), true).unwrap() else {
+            panic!("missing plan")
+        };
+        assert_eq!(p.inventory, before);
+        assert_eq!(plan.commit(&mut p), r);
+        assert!(p.inventory.slots().iter().flatten().any(|i| i.id == 1000));
+        let l = Location::new(CoordGrid::new(3200, 3200, 0).unwrap(), 100, 10, 0).unwrap();
+        for (step, now) in [
+            (Step::Next { location: 100 }, 1),
+            (
+                Step::Respawn {
+                    empty: 100,
+                    full: 101,
+                    delay: 4,
+                },
+                1,
+            ),
+            (
+                Step::Respawn {
+                    empty: 102,
+                    full: 102,
+                    delay: 4,
+                },
+                1,
+            ),
+            (
+                Step::Respawn {
+                    empty: 102,
+                    full: 100,
+                    delay: 0,
+                },
+                1,
+            ),
+            (
+                Step::Respawn {
+                    empty: 102,
+                    full: 100,
+                    delay: 4,
+                },
+                i32::MAX - 2,
+            ),
+            (Step::Next { location: 101 }, -1),
+        ] {
+            assert!(step.prepare(l, now).is_err());
+        }
+        let a = Step::Respawn {
+            empty: 102,
+            full: 100,
+            delay: 4,
+        }
+        .prepare(l, 1)
+        .unwrap();
+        assert_eq!(a.deadline, Some(5));
+        assert_eq!(a.restoration.unwrap().0.id, 100);
     }
 }

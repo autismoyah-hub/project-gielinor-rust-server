@@ -143,6 +143,9 @@ fn report(events: Vec<runtime::Event>) {
             runtime::Event::World(gielinor_world::simulation::WorldEvent::FoodTransition { actor, trace }) => {
                 println!("Food transition: {}", trace.json(actor));
             }
+            runtime::Event::World(gielinor_world::simulation::WorldEvent::PickableAdvanced {actor,trace}) => {
+                println!("Pickable transition: {}",trace.json(actor));
+            }
             runtime::Event::World(gielinor_world::simulation::WorldEvent::LocationRestoration(trace)) => {
                 println!("Location restoration: {}", trace.json());
             }

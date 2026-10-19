@@ -16,6 +16,7 @@ mod combat_actions;
 #[cfg(test)]
 mod consumable_tests;
 mod dialogue_actions;
+mod pickable_actions;
 mod door_actions;
 mod guild_passage_actions;
 mod drop_action;
@@ -698,6 +699,7 @@ pub enum WorldEvent {
     PlayerAnimation {actor:ActorId,sequence:u16},
     PlayerSound {actor:ActorId,sound:u16},
     PickableCollected {actor:ActorId,location:crate::locations::Location,item:i32},
+    PickableAdvanced {actor:ActorId,trace:crate::pickables::Transition},
     PlayerCombatAnimation {
         actor: ActorId,
         sequence: u16,
