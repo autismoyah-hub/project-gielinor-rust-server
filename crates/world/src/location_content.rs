@@ -4,6 +4,18 @@ use crate::{
     simulation::PlayerData,
     CoordGrid,
 };
+/// Timed native scenery stages reuse the existing location transaction and world timer.
+#[derive(Clone,Copy,Debug,PartialEq,Eq)]
+pub struct Swap {pub next:u32,pub animation:Option<u16>,pub sound:Option<u16>,pub duration:i32,pub arrival_delay:bool}
+#[derive(Clone,Copy,Debug,PartialEq,Eq)]
+pub struct SwapTransition {pub tick:i32,pub from:crate::locations::Location,pub to:crate::locations::Location,pub restore:Option<crate::locations::Location>,pub restore_at:Option<i32>}
+impl SwapTransition {
+    pub fn json(self,actor:crate::simulation::ActorId)->String{
+        let loc=|l:crate::locations::Location|format!("[{},{},{},{},{},{}]",l.coords.x(),l.coords.z(),l.coords.level(),l.id,l.shape,l.angle);
+        format!("{{\"schema\":1,\"actor_slot\":{},\"actor_generation\":{},\"tick\":{},\"from\":{},\"to\":{},\"restore\":{},\"restore_tick\":{}}}",actor.slot,actor.generation,self.tick,loc(self.from),loc(self.to),self.restore.map(loc).unwrap_or_else(||"null".into()),self.restore_at.map(|v|v.to_string()).unwrap_or_else(||"null".into()))
+    }
+}
+
 #[derive(Clone, Copy, Debug)]
 pub enum Handler {
     Pickable(crate::pickables::Rule),
@@ -13,6 +25,7 @@ pub enum Handler {
     },
     PickableChance {rule:crate::pickables::Rule,depletion:crate::pickables::Depletion},
     Nettles {rule:crate::pickables::Rule,excluded_glove:i32,mark:crate::hit_display::Mark},
+    TimedSwap(Swap),
     Bookcase,
     Message(&'static str),
     EmptyPickable(&'static str),
@@ -33,7 +46,7 @@ impl Handler {
         )
     }
     pub fn arrival_delay(self) -> bool {
-        matches!(self, Self::PrayerAltar { .. } | Self::Bookcase) || self.is_pickable()
+        matches!(self, Self::PrayerAltar { .. } | Self::Bookcase) || self.is_pickable() || matches!(self,Self::TimedSwap(rule)if rule.arrival_delay)
     }
     pub fn perform(
         self,
@@ -43,7 +56,7 @@ impl Handler {
     ) -> Result<crate::pickables::Outcome, Error> {
         match self {
             Self::Pickable(rule) => rule.perform(player, catalog, member),
-            Self::Bookcase | Self::PickableStage { .. } | Self::PickableChance { .. } | Self::Nettles { .. } => Err(Error::InvalidCapacity),
+            Self::TimedSwap(_) | Self::Bookcase | Self::PickableStage { .. } | Self::PickableChance { .. } | Self::Nettles { .. } => Err(Error::InvalidCapacity),
             Self::Message(message) | Self::EmptyPickable(message) => Ok(crate::pickables::Outcome::Message(message)),
             _ => self.apply(player, catalog).map(|m| {
                 m.map_or(
@@ -58,7 +71,7 @@ impl Handler {
         player: &mut PlayerData,
         catalog: &Catalog,
     ) -> Result<Option<&'static str>, Error> {
-        if matches!(self, Self::Bookcase | Self::PickableStage { .. } | Self::PickableChance { .. } | Self::Nettles { .. }) {
+        if matches!(self, Self::TimedSwap(_) | Self::Bookcase | Self::PickableStage { .. } | Self::PickableChance { .. } | Self::Nettles { .. }) {
             return Err(Error::InvalidCapacity);
         }
         if let Self::Message(message) | Self::EmptyPickable(message) = self {
@@ -70,7 +83,7 @@ impl Handler {
                 .map(crate::pickables::Outcome::message);
         }
         let origin = match self {
-            Self::Pickable(_) | Self::PickableStage { .. } | Self::PickableChance { .. } | Self::Nettles { .. } | Self::Bookcase | Self::Message(_) | Self::EmptyPickable(_) => {
+            Self::Pickable(_) | Self::PickableStage { .. } | Self::PickableChance { .. } | Self::Nettles { .. } | Self::TimedSwap(_) | Self::Bookcase | Self::Message(_) | Self::EmptyPickable(_) => {
                 unreachable!("handled above")
             }
             Self::VialCrate { origin, .. } | Self::PrayerAltar { origin, .. } => origin,
@@ -83,7 +96,7 @@ impl Handler {
             return Ok(None);
         }
         match self {
-            Self::Pickable(_) | Self::PickableStage { .. } | Self::PickableChance { .. } | Self::Nettles { .. } | Self::Bookcase | Self::Message(_) | Self::EmptyPickable(_) => {
+            Self::Pickable(_) | Self::PickableStage { .. } | Self::PickableChance { .. } | Self::Nettles { .. } | Self::TimedSwap(_) | Self::Bookcase | Self::Message(_) | Self::EmptyPickable(_) => {
                 unreachable!("handled above")
             }
             Self::VialCrate { item, .. } => {

@@ -214,6 +214,9 @@ pub fn configure<B: AccountBackend>(
     let books=crate::content::bookcase_search(n("loc"),n("content"),&runtime.definitions).map_err(io::Error::other)?;
     if books.keys().any(|&(id,op)|runtime.world.has_location_handler(id,op)){return Err(io::Error::other("Conflicting bookcase handlers"));}
     runtime.world.location_handlers.extend(books);
+    let chests=crate::content::plain_chest(n("loc"),n("seq"),&runtime.definitions).map_err(io::Error::other)?;
+    if chests.keys().any(|&(id,op)|runtime.world.has_location_handler(id,op)){return Err(io::Error::other("Conflicting plain chest handlers"));}
+    runtime.world.location_handlers.extend(chests);
     runtime.world.multiway_area = Some(names.short("area", "multiway")?);
     runtime.combat_display = Some(crate::combat_display::resolve(
         names,

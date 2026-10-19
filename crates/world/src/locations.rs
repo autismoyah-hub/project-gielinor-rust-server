@@ -83,6 +83,10 @@ impl Locations {
         })
     }
     /// Current visible cache identity, suitable for temporary cache deletion.
+    /// Underlying cache identity on this layer, even while a spawned stage masks it.
+    pub fn map_origin(&self, current: Location) -> Option<Location> {
+        self.map.get(&zone_base(current.coords))?.get(current.key())
+    }
     pub fn is_map_location(&self, loc: Location) -> bool {
         self.map.get(&zone_base(loc.coords)).and_then(|m|m.get(loc.key()))==Some(loc)
             && self.find_type(loc.coords,loc.id)==Some(loc)
