@@ -1,4 +1,6 @@
 //! Resolve content's symbolic references against the same immutable type inputs as Kotlin.
+mod ladder_climbs;
+pub use ladder_climbs::ladder_climbs;
 mod drawers;
 pub use drawers::drawers;
 mod plain_chest;

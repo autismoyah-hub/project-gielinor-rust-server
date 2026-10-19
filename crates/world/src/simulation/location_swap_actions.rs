@@ -85,13 +85,19 @@ impl World {
 }
 /// Actor-owned continuation; the existing protection clock supplies its delay.
 #[derive(Clone, Copy)]
-pub(super) struct Pending {
-    location: Location,
-    revision: u64,
-    rule: Swap,
-    origin: CoordGrid,
-    last_movement: i32,
+pub(super) enum Continuation {
+    Swap(Swap),
+    Climb(CoordGrid),
 }
+#[derive(Clone, Copy)]
+pub(super) struct Pending {
+    pub(super) location: Location,
+    pub(super) revision: u64,
+    pub(super) action: Continuation,
+    pub(super) origin: CoordGrid,
+    pub(super) last_movement: i32,
+}
+
 impl World {
     pub(super) fn start_delayed_location_swap(
         &mut self,
@@ -135,7 +141,7 @@ impl World {
         p.pending_location_action = Some(Pending {
             location: current,
             revision,
-            rule,
+            action: Continuation::Swap(rule),
             origin: p.movement.coords,
             last_movement: p.movement.last_movement,
         });
@@ -182,10 +188,16 @@ impl World {
         if self.locations.revision(pending.location) != Some(pending.revision) {
             return;
         }
-        let mut rule = pending.rule;
-        rule.animation = None;
-        rule.sound = None;
-        self.process_location_swap(slot, pending.location, rule);
+        match pending.action {
+            Continuation::Swap(mut rule) => {
+                rule.animation = None;
+                rule.sound = None;
+                self.process_location_swap(slot, pending.location, rule);
+            }
+            Continuation::Climb(destination) => {
+                self.finish_location_climb(slot, pending.location, pending.origin, destination)
+            }
+        }
     }
 }
 

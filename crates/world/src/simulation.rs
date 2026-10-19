@@ -16,6 +16,7 @@ mod combat_actions;
 #[cfg(test)]
 mod consumable_tests;
 mod dialogue_actions;
+mod location_climb_actions;
 mod location_swap_actions;
 mod bookcase_actions;
 mod pickable_actions;
@@ -780,6 +781,7 @@ pub enum WorldEvent {
         sound: u16,
     },
     ClearMapFlag(ActorId),
+    LocationClimbed {actor:ActorId,trace:crate::location_content::ClimbTransition},
     LocationSwitched {actor:ActorId,trace:crate::location_content::SwapTransition},
     LocationSpam {actor:ActorId,message:&'static str},
     LocationMessage {
