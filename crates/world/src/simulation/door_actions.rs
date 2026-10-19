@@ -411,6 +411,7 @@ impl World {
             self.request_facility_crafting(slot,loc,None);return;
         }
         if let Some(&handler) = self.location_handlers.get(&(loc.id, operation)) {
+            if let crate::location_content::Handler::Stairs(rule)=handler{self.process_straight_stairs(slot,loc,rule);return;}
             if let crate::location_content::Handler::Climb(rule)=handler{self.start_location_climb(slot,loc,rule);return;}
             if let crate::location_content::Handler::DelayedSwap{rule,delay}=handler{self.start_delayed_location_swap(slot,loc,rule,delay);return;}
             if let crate::location_content::Handler::TimedSwap(rule)=handler{self.process_location_swap(slot,loc,rule);return;}

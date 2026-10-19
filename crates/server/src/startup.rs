@@ -223,6 +223,9 @@ pub fn configure<B: AccountBackend>(
     let ladders=crate::content::ladder_climbs(n("loc"),n("content"),n("param"),&parameters,&runtime.definitions).map_err(io::Error::other)?;
     if ladders.keys().any(|&(id,op)|runtime.world.has_location_handler(id,op)){return Err(io::Error::other("Conflicting ladder handlers"));}
     runtime.world.location_handlers.extend(ladders);
+    let stairs=crate::content::straight_stairs(n("loc"),&runtime.definitions).map_err(io::Error::other)?;
+    if stairs.keys().any(|&(id,op)|runtime.world.has_location_handler(id,op)){return Err(io::Error::other("Conflicting straight staircase handlers"));}
+    runtime.world.location_handlers.extend(stairs);
     runtime.world.multiway_area = Some(names.short("area", "multiway")?);
     runtime.combat_display = Some(crate::combat_display::resolve(
         names,

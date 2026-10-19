@@ -16,6 +16,7 @@ mod combat_actions;
 #[cfg(test)]
 mod consumable_tests;
 mod dialogue_actions;
+mod stair_actions;
 mod location_climb_actions;
 mod location_swap_actions;
 mod bookcase_actions;

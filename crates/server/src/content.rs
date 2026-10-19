@@ -1,4 +1,6 @@
 //! Resolve content's symbolic references against the same immutable type inputs as Kotlin.
+mod straight_stairs;
+pub use straight_stairs::straight_stairs;
 mod ladder_climbs;
 pub use ladder_climbs::ladder_climbs;
 mod drawers;
