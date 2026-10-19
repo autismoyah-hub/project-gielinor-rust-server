@@ -5,6 +5,17 @@ use crate::{
     CoordGrid,
 };
 #[derive(Clone,Copy,Debug,PartialEq,Eq)]
+pub struct Spiral {pub delta_level:i32,pub arrival_delay:bool}
+impl Spiral {
+    pub fn destination(self,location:crate::locations::Location,width:u8,length:u8)->Result<CoordGrid,&'static str>{
+        if width==0||length==0||location.coords==CoordGrid::NULL||![-2,-1,1,2].contains(&self.delta_level){return Err("Invalid spiral staircase geometry or level");}
+        let(w,l)=if location.angle&1!=0{(length as i32,width as i32)}else{(width as i32,length as i32)};
+        let(dx,dz)=if self.delta_level>0{match location.angle{0=>(w,0),1=>(0,-(l-1)),2=>(-(w-1),l-1),3=>(w-1,l),_=>return Err("Invalid spiral staircase angle")}}else{match location.angle{0=>(w-1,-1),1=>(-w,0),2=>(0,l),3=>(w,l-1),_=>return Err("Invalid spiral staircase angle")}};
+        location.coords.translate(dx,dz,self.delta_level).map_err(|_|"Spiral staircase landing outside world")
+    }
+}
+
+#[derive(Clone,Copy,Debug,PartialEq,Eq)]
 pub struct Stairs {pub dx:i32,pub dz:i32,pub delta_level:i32}
 impl Stairs {
     /// Straight flights use raw model width/length, including offsets outside it.
@@ -49,6 +60,7 @@ pub enum Handler {
     },
     PickableChance {rule:crate::pickables::Rule,depletion:crate::pickables::Depletion},
     Nettles {rule:crate::pickables::Rule,excluded_glove:i32,mark:crate::hit_display::Mark},
+    Spiral(Spiral),
     Stairs(Stairs),
     Climb(Climb),
     DelayedSwap {rule:Swap,delay:i32},
@@ -74,7 +86,7 @@ impl Handler {
         )
     }
     pub fn arrival_delay(self) -> bool {
-        matches!(self, Self::PrayerAltar { .. } | Self::Stairs(_) | Self::Climb(_) | Self::Bookcase | Self::ArrivedMessage(_)) || self.is_pickable() || matches!(self,Self::TimedSwap(rule)|Self::DelayedSwap{rule,..}if rule.arrival_delay)
+        matches!(self, Self::PrayerAltar { .. } | Self::Stairs(_) | Self::Climb(_) | Self::Bookcase | Self::ArrivedMessage(_)) || matches!(self,Self::Spiral(rule)if rule.arrival_delay) || self.is_pickable() || matches!(self,Self::TimedSwap(rule)|Self::DelayedSwap{rule,..}if rule.arrival_delay)
     }
     pub fn perform(
         self,
@@ -84,7 +96,7 @@ impl Handler {
     ) -> Result<crate::pickables::Outcome, Error> {
         match self {
             Self::Pickable(rule) => rule.perform(player, catalog, member),
-            Self::Stairs(_) | Self::Climb(_) | Self::TimedSwap(_) | Self::DelayedSwap {..} | Self::Bookcase | Self::PickableStage { .. } | Self::PickableChance { .. } | Self::Nettles { .. } => Err(Error::InvalidCapacity),
+            Self::Spiral(_) | Self::Stairs(_) | Self::Climb(_) | Self::TimedSwap(_) | Self::DelayedSwap {..} | Self::Bookcase | Self::PickableStage { .. } | Self::PickableChance { .. } | Self::Nettles { .. } => Err(Error::InvalidCapacity),
             Self::ArrivedMessage(message) | Self::Message(message) | Self::EmptyPickable(message) => Ok(crate::pickables::Outcome::Message(message)),
             _ => self.apply(player, catalog).map(|m| {
                 m.map_or(
@@ -99,7 +111,7 @@ impl Handler {
         player: &mut PlayerData,
         catalog: &Catalog,
     ) -> Result<Option<&'static str>, Error> {
-        if matches!(self, Self::Stairs(_) | Self::Climb(_) | Self::TimedSwap(_) | Self::DelayedSwap {..} | Self::Bookcase | Self::PickableStage { .. } | Self::PickableChance { .. } | Self::Nettles { .. }) {
+        if matches!(self, Self::Spiral(_) | Self::Stairs(_) | Self::Climb(_) | Self::TimedSwap(_) | Self::DelayedSwap {..} | Self::Bookcase | Self::PickableStage { .. } | Self::PickableChance { .. } | Self::Nettles { .. }) {
             return Err(Error::InvalidCapacity);
         }
         if let Self::ArrivedMessage(message) | Self::Message(message) | Self::EmptyPickable(message) = self {
@@ -111,7 +123,7 @@ impl Handler {
                 .map(crate::pickables::Outcome::message);
         }
         let origin = match self {
-            Self::Pickable(_) | Self::PickableStage { .. } | Self::PickableChance { .. } | Self::Nettles { .. } | Self::Stairs(_) | Self::Climb(_) | Self::TimedSwap(_) | Self::DelayedSwap {..} | Self::Bookcase | Self::ArrivedMessage(_) | Self::Message(_) | Self::EmptyPickable(_) => {
+            Self::Pickable(_) | Self::PickableStage { .. } | Self::PickableChance { .. } | Self::Nettles { .. } | Self::Spiral(_) | Self::Stairs(_) | Self::Climb(_) | Self::TimedSwap(_) | Self::DelayedSwap {..} | Self::Bookcase | Self::ArrivedMessage(_) | Self::Message(_) | Self::EmptyPickable(_) => {
                 unreachable!("handled above")
             }
             Self::VialCrate { origin, .. } | Self::PrayerAltar { origin, .. } => origin,
@@ -124,7 +136,7 @@ impl Handler {
             return Ok(None);
         }
         match self {
-            Self::Pickable(_) | Self::PickableStage { .. } | Self::PickableChance { .. } | Self::Nettles { .. } | Self::Stairs(_) | Self::Climb(_) | Self::TimedSwap(_) | Self::DelayedSwap {..} | Self::Bookcase | Self::ArrivedMessage(_) | Self::Message(_) | Self::EmptyPickable(_) => {
+            Self::Pickable(_) | Self::PickableStage { .. } | Self::PickableChance { .. } | Self::Nettles { .. } | Self::Spiral(_) | Self::Stairs(_) | Self::Climb(_) | Self::TimedSwap(_) | Self::DelayedSwap {..} | Self::Bookcase | Self::ArrivedMessage(_) | Self::Message(_) | Self::EmptyPickable(_) => {
                 unreachable!("handled above")
             }
             Self::VialCrate { item, .. } => {

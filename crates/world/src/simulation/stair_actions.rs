@@ -186,4 +186,142 @@ mod tests {
         .destination(l, 0, 3)
         .is_err());
     }
+    #[test]
+    fn spiral_landings_use_adjusted_footprints_and_direct_two_floor_translation() {
+        use crate::location_content::Spiral;
+        for (width, length, dl, expected) in [
+            (2, 2, 1, [(2, 0), (0, -1), (-1, 1), (1, 2)]),
+            (2, 2, -1, [(1, -1), (-2, 0), (0, 2), (2, 1)]),
+            (1, 1, -2, [(0, -1), (-1, 0), (0, 1), (1, 0)]),
+            (2, 3, 1, [(2, 0), (0, -1), (-1, 2), (2, 2)]),
+            (2, 3, -1, [(1, -1), (-3, 0), (0, 3), (3, 1)]),
+        ] {
+            for angle in 0..4 {
+                let l =
+                    Location::new(CoordGrid::new(3204, 3204, 2).unwrap(), 100, 10, angle).unwrap();
+                let d = Spiral {
+                    delta_level: dl,
+                    arrival_delay: false,
+                }
+                .destination(l, width, length)
+                .unwrap();
+                let e = expected[angle as usize];
+                assert_eq!((d.x(), d.z(), d.level()), (3204 + e.0, 3204 + e.1, 2 + dl));
+            }
+        }
+    }
+    #[test]
+    fn spiral_direct_operations_reach_and_jump_without_animation_or_inventory_changes() {
+        use crate::location_content::Spiral;
+        for (dl, width, expected) in [
+            (1, 2, [(2, 0), (0, -1), (-1, 1), (1, 2)]),
+            (-1, 1, [(0, -1), (-1, 0), (0, 1), (1, 0)]),
+            (2, 2, [(2, 0), (0, -1), (-1, 1), (1, 2)]),
+            (-2, 1, [(0, -1), (-1, 0), (0, 1), (1, 0)]),
+        ] {
+            for angle in 0..4 {
+                let mut w = World::default();
+                for level in 0..4 {
+                    for x in (3192..3224).step_by(8) {
+                        for z in (3192..3224).step_by(8) {
+                            w.collision.allocate(x, z, level);
+                        }
+                    }
+                }
+                let level = if dl > 0 { 0 } else { 2 };
+                let l = Location::new(CoordGrid::new(3204, 3204, level).unwrap(), 100, 10, angle)
+                    .unwrap();
+                w.locations.load(l);
+                w.location_types.insert(
+                    100,
+                    LocCollision {
+                        width,
+                        length: width,
+                        block_walk: 2,
+                        block_range: true,
+                        break_route_finding: false,
+                    },
+                );
+                w.location_handlers.insert(
+                    (100, 2),
+                    Handler::Spiral(Spiral {
+                        delta_level: dl,
+                        arrival_delay: false,
+                    }),
+                );
+                w.queue_login(
+                    1,
+                    PlayerData::new(
+                        1,
+                        "Spiral".into(),
+                        CoordGrid::new(3203, 3204, level).unwrap(),
+                        Stats::default(),
+                    ),
+                )
+                .unwrap();
+                w.tick().unwrap();
+                let a = w.actors().next().unwrap();
+                let inv = w.data(a).unwrap().inventory.clone();
+                let stats = w.data(a).unwrap().stats.clone();
+                w.drain_events();
+                w.submit(
+                    a,
+                    Action::OperateLocation {
+                        coords: l.coords,
+                        id: 100,
+                        operation: 2,
+                        control: false,
+                    },
+                )
+                .unwrap();
+                w.tick_with_random(&mut Never).unwrap();
+                let e = expected[angle as usize];
+                assert_eq!(
+                    w.data(a).unwrap().coords,
+                    CoordGrid::new(3204 + e.0, 3204 + e.1, level + dl).unwrap()
+                );
+                assert!(!w.drain_events().iter().any(|e| matches!(
+                    e,
+                    WorldEvent::PlayerAnimation { .. } | WorldEvent::PlayerSound { .. }
+                )));
+                assert_eq!(w.data(a).unwrap().inventory, inv);
+                assert_eq!(w.data(a).unwrap().stats, stats);
+            }
+        }
+    }
+}
+impl World {
+    pub(super) fn process_spiral_stairs(
+        &mut self,
+        slot: usize,
+        location: Location,
+        rule: crate::location_content::Spiral,
+    ) {
+        let p = self.players.get(slot).unwrap();
+        let Some(revision) = self.locations.revision(location) else {
+            return;
+        };
+        if p.saving
+            || p.pending_logout
+            || p.has_modal
+            || p.data.stats.current(3) <= 0
+            || p.location_revision != Some(revision)
+        {
+            return;
+        }
+        let Some(ty) = self.location_types.get(&location.id) else {
+            self.events
+                .push(WorldEvent::LocationError("Unknown spiral staircase type"));
+            return;
+        };
+        let destination = match rule.destination(location, ty.width, ty.length) {
+            Ok(v) => v,
+            Err(e) => {
+                self.events.push(WorldEvent::LocationError(e));
+                return;
+            }
+        };
+        let origin = p.movement.coords;
+        self.finish_location_climb(slot, location, origin, destination);
+    }
 }
