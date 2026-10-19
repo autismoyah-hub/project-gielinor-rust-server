@@ -2481,6 +2481,9 @@ impl<B: AccountBackend> Runtime<B> {
                                                 .ok()
                                                 .and_then(|data| data.inventory.get(slot))
                                             {
+                                                if button.op==2 && self.world.spade.is_some_and(|r|r.item==button.object) {
+                                                    return Some(Action::DigItemSlot{slot,item:button.object});
+                                                }
                                                 if matches!(button.op,4|6) && item.id==button.object && self.world.finished_potions.as_ref().is_some_and(|c|c.chemistry.values().any(|b|b.amulet==item.id)) {
                                                     return Some(Action::ChemistryItem{slot,item:button.object,operation:button.op,worn:false});
                                                 }

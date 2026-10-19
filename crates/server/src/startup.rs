@@ -243,6 +243,7 @@ pub fn configure<B: AccountBackend>(
     let mill_ladders=crate::content::windmill_ladders(n("loc"),n("seq"),&runtime.definitions).map_err(io::Error::other)?;
     if mill_ladders.keys().any(|&(id,op)|runtime.world.has_location_handler(id,op)){return Err(io::Error::other("Conflicting windmill ladder handlers"));}
     runtime.world.location_handlers.extend(mill_ladders);
+    runtime.world.spade=Some(crate::content::spade_tool(n("obj"),n("seq"),n("synth"),&runtime.definitions).map_err(io::Error::other)?);
     runtime.world.multiway_area = Some(names.short("area", "multiway")?);
     runtime.combat_display = Some(crate::combat_display::resolve(
         names,

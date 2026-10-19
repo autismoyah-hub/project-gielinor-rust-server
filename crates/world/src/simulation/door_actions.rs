@@ -144,6 +144,7 @@ impl World {
             Strategy::Normal,
         )};
         let p = self.players.get_mut(actor.slot as usize).unwrap();
+        p.queues.remove_all(spade_actions::QUEUE);
         p.queues.remove_all(bookcase_actions::QUEUE);
         p.queues.remove_all(crate::milking::QUEUE);
         p.queues.remove_all(crate::water_sources::QUEUE);

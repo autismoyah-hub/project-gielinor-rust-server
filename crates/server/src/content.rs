@@ -1,4 +1,6 @@
 //! Resolve content's symbolic references against the same immutable type inputs as Kotlin.
+mod spade_tool;
+pub use spade_tool::spade_tool;
 mod windmill_ladders;
 pub use windmill_ladders::windmill_ladders;
 mod wizard_tower_ladders;

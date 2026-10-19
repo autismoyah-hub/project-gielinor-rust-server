@@ -22,6 +22,7 @@ mod location_choice_actions;
 mod stair_actions;
 mod location_climb_actions;
 mod location_swap_actions;
+mod spade_actions;
 mod bookcase_actions;
 mod pickable_actions;
 mod door_actions;
@@ -201,6 +202,7 @@ enum Deferred {
     Smithing(crate::smithing_make::Job),
     Assembly(crate::assembly::Pending),
     AssemblyBatch(crate::assembly::BatchPending),
+    Spade(spade_actions::Pending),
     Bookcase(bookcase_actions::Pending),
     Milking(crate::milking::Job),
     WaterFilling(crate::water_sources::Job),
@@ -350,6 +352,7 @@ impl Player {
     }
     fn pickpocket_stunned(&self)->bool {self.pickpocket_stun_until>self.protection.processed_clock}
     fn begin_held_action(&mut self) {
+        self.queues.remove_all(spade_actions::QUEUE);
         self.queues.remove_all(bookcase_actions::QUEUE);
         self.queues.remove_all(crate::thieving::QUEUE);
         self.queues.remove_all(crate::tool_crafting::QUEUE);
@@ -455,6 +458,7 @@ impl MovementSnapshot {
 pub enum Action {
     /// Original type-search reference action; network gameplay uses BuryItemSlot.
     BurySlot { slot: usize },
+    DigItemSlot { slot: usize, item: i32 },
     BuryItemSlot { slot: usize, item: i32 },
     ResumeBury {
         token: u64,
@@ -956,6 +960,8 @@ pub struct World {
     pub autocast_selection: Option<crate::autocast_select::Config>,
     pub banking: Option<crate::bank_actions::Config>,
     pub wear_types: crate::equipment::WearCatalog,
+    pub spade: Option<crate::spade::Rule>,
+    spade_hooks: Vec<crate::spade::Hook>,
     pub foods: BTreeMap<i32, crate::food::Edible>,
     pub consumable_rules: Option<crate::consumable_clocks::Rules>,
     pub member_foods: std::collections::BTreeSet<i32>,
@@ -1088,6 +1094,8 @@ impl Default for World {
             autocast_selection: None,
             banking: None,
             wear_types: crate::equipment::WearCatalog::default(),
+            spade: None,
+            spade_hooks: Vec::new(),
             foods: BTreeMap::new(),
             consumable_rules: None,
             member_foods: Default::default(),
@@ -1858,6 +1866,7 @@ impl World {
                 return self.process_shop_action(id, session, request)
             }
             Action::BurySlot { slot } => return self.start_bury(id, slot, None),
+            Action::DigItemSlot { slot, item } => return self.start_spade(id,slot,item),
             Action::BuryItemSlot { slot, item } => return self.start_bury(id, slot, Some(item)),
             Action::ResumeBury { token, choice } => return self.resume_bury(id, token, choice),
             Action::ResumeDialogue { token, choice } => {
@@ -2545,6 +2554,7 @@ impl World {
                     }
                 }
                 Phase::PlayerMain => {
+                    let mut spade_completions=Vec::new();
                     let mut chemistry_worn_changes=Vec::new();
                     let alive_npcs: HashSet<_> = self
                         .npcs
@@ -2661,6 +2671,7 @@ impl World {
                                                         water_source_actions::complete(p, queues, job, config, &self.object_types, self.locations.revision(job.target), self.clock.0, &mut self.events);
                                                     }
                                                 }
+                                                Deferred::Spade(job) => {if let Some(done)=spade_actions::complete(p,job,&mut self.events){spade_completions.push(done);}}
                                                 Deferred::Bookcase(job) => {bookcase_actions::complete(p,job,self.locations.revision(job.target),&mut self.events,random);}
                                                 Deferred::Milking(job) => {
                                                     if let Some(config) = &self.milking {
@@ -3024,6 +3035,7 @@ impl World {
                             }
                         }
                     }
+                    for (actor,job) in spade_completions {self.complete_spade_hook(actor,job);}
                     for (actor,slot,item) in chemistry_worn_changes { self.worn_changed(actor,slot,item); }
                 }
                 Phase::PlayerLogout => {
