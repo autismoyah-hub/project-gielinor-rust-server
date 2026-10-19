@@ -7,6 +7,41 @@ use crate::{
 impl World {
     pub(super) fn start_location_climb(&mut self, slot: usize, location: Location, rule: Climb) {
         let p = self.players.get(slot).unwrap();
+        if self
+            .locations
+            .revision(location)
+            .is_none_or(|v| p.location_revision != Some(v))
+        {
+            return;
+        }
+        let destination = p
+            .movement
+            .coords
+            .translate(0, rule.delta_z, rule.delta_level);
+        if (rule.delta_z == 0 && rule.delta_level == 0) || destination.is_err() {
+            self.events.push(WorldEvent::LocationError(
+                "Invalid climb destination or delay",
+            ));
+            return;
+        }
+        self.start_fixed_location_climb(
+            slot,
+            location,
+            destination.unwrap(),
+            rule.animation,
+            rule.delay,
+        );
+    }
+    /// Shared protected entry for source ladders with checked fixed destinations.
+    pub(super) fn start_fixed_location_climb(
+        &mut self,
+        slot: usize,
+        location: Location,
+        destination: CoordGrid,
+        animation: u16,
+        delay: i32,
+    ) {
+        let p = self.players.get(slot).unwrap();
         let actor = p.id;
         let Some(revision) = self
             .locations
@@ -15,22 +50,17 @@ impl World {
         else {
             return;
         };
-        let dest = p
-            .movement
-            .coords
-            .translate(0, rule.delta_z, rule.delta_level);
-        if rule.delay <= 0
+        if delay <= 0
             || self.clock.0 < 0
-            || self.clock.0.checked_add(rule.delay).is_none()
-            || (rule.delta_z == 0 && rule.delta_level == 0)
-            || dest.is_err()
+            || self.clock.0.checked_add(delay).is_none()
+            || destination == CoordGrid::NULL
+            || CoordGrid::new(destination.x(), destination.z(), destination.level()).is_err()
         {
             self.events.push(WorldEvent::LocationError(
                 "Invalid climb destination or delay",
             ));
             return;
         }
-        let destination = dest.unwrap();
         let p = self.players.get_mut(slot).unwrap();
         p.pending_location_action = Some(location_swap_actions::Pending {
             location,
@@ -40,11 +70,11 @@ impl World {
             last_movement: p.movement.last_movement,
         });
         p.protection.processed_clock = self.clock.0;
-        p.protection.delay(rule.delay);
+        p.protection.delay(delay);
         p.protection.suspended = true;
         self.events.push(WorldEvent::PlayerAnimation {
             actor,
-            sequence: rule.animation,
+            sequence: animation,
         });
     }
     pub(super) fn finish_location_climb(
@@ -242,6 +272,93 @@ mod tests {
             for _ in 0..3 {
                 w.tick_with_random(&mut Never).unwrap();
             }
+            assert_eq!(w.data(a).unwrap().coords, origin);
+            assert!(!w
+                .drain_events()
+                .iter()
+                .any(|e| matches!(e, WorldEvent::LocationClimbed { .. })));
+        }
+    }
+    #[test]
+    fn fixed_climb_reached_uses_source_absolute_endpoint_after_one_tick_and_keeps_inventory_xp_models(
+    ) {
+        for (x, z, animation) in [(3104, 9576, 827), (3105, 3162, 828)] {
+            let (mut w, a, l) = fixture(
+                0,
+                3200,
+                Climb {
+                    delta_z: 0,
+                    delta_level: 1,
+                    animation,
+                    delay: 1,
+                },
+            );
+            let destination = CoordGrid::new(x, z, 0).unwrap();
+            w.collision.allocate(x / 8 * 8, z / 8 * 8, 0);
+            w.location_handlers.insert(
+                (100, 1),
+                Handler::FixedClimb(crate::location_content::FixedClimb {
+                    destination,
+                    animation,
+                    delay: 1,
+                }),
+            );
+            let origin = w.data(a).unwrap().coords;
+            let inv = w.data(a).unwrap().inventory.clone();
+            let stats = w.data(a).unwrap().stats.clone();
+            let rev = w.locations.revision(l);
+            submit(&mut w, a, l);
+            w.tick_with_random(&mut Never).unwrap();
+            assert_eq!(w.data(a).unwrap().coords, origin);
+            assert!(w.drain_events().iter().any(
+                |e| matches!(e,WorldEvent::PlayerAnimation{sequence,..}if *sequence==animation)
+            ));
+            w.tick_with_random(&mut Never).unwrap();
+            assert_eq!(w.data(a).unwrap().coords, destination);
+            let events = w.drain_events();
+            assert!(events.iter().any(|e|matches!(e,WorldEvent::LocationClimbed{trace,..}if trace.from==origin&&trace.to==destination)));
+            assert!(!events
+                .iter()
+                .any(|e| matches!(e, WorldEvent::PlayerAnimation { .. })));
+            assert_eq!(w.data(a).unwrap().inventory, inv);
+            assert_eq!(w.data(a).unwrap().stats, stats);
+            assert_eq!(w.locations.revision(l), rev);
+        }
+    }
+    #[test]
+    fn fixed_climb_invalid_destination_delay_and_replaced_target_do_not_commit() {
+        for mode in 0..3 {
+            let (mut w, a, l) = fixture(
+                0,
+                3200,
+                Climb {
+                    delta_z: 0,
+                    delta_level: 1,
+                    animation: 828,
+                    delay: 1,
+                },
+            );
+            let origin = w.data(a).unwrap().coords;
+            w.location_handlers.insert(
+                (100, 1),
+                Handler::FixedClimb(crate::location_content::FixedClimb {
+                    destination: if mode == 0 {
+                        CoordGrid::NULL
+                    } else {
+                        CoordGrid::new(3105, 3162, 0).unwrap()
+                    },
+                    animation: 828,
+                    delay: if mode == 1 { 0 } else { 1 },
+                }),
+            );
+            submit(&mut w, a, l);
+            w.tick_with_random(&mut Never).unwrap();
+            if mode == 2 {
+                w.change_location(l, false).unwrap();
+                w.change_location(l, true).unwrap();
+            }
+            w.drain_events();
+            w.tick_with_random(&mut Never).unwrap();
             assert_eq!(w.data(a).unwrap().coords, origin);
             assert!(!w
                 .drain_events()

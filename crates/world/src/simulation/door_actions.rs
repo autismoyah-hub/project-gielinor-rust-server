@@ -417,6 +417,7 @@ impl World {
             if matches!(handler,crate::location_content::Handler::SpiralChoice){self.start_spiral_choice(slot,loc);return;}
             if let crate::location_content::Handler::Spiral(rule)=handler{self.process_spiral_stairs(slot,loc,rule);return;}
             if let crate::location_content::Handler::Stairs(rule)=handler{self.process_straight_stairs(slot,loc,rule);return;}
+            if let crate::location_content::Handler::FixedClimb(rule)=handler{self.start_fixed_location_climb(slot,loc,rule.destination,rule.animation,rule.delay);return;}
             if let crate::location_content::Handler::Climb(rule)=handler{self.start_location_climb(slot,loc,rule);return;}
             if let crate::location_content::Handler::DelayedSwap{rule,delay}=handler{self.start_delayed_location_swap(slot,loc,rule,delay);return;}
             if let crate::location_content::Handler::TimedSwap(rule)=handler{self.process_location_swap(slot,loc,rule);return;}
