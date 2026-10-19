@@ -205,6 +205,9 @@ pub fn configure<B: AccountBackend>(
     let flax=crate::content::flax_pickables(n("obj"),n("loc"),n("seq"),n("synth"),&runtime.definitions).map_err(io::Error::other)?;
     if flax.keys().any(|&(id,op)|runtime.world.has_location_handler(id,op)){return Err(io::Error::other("Conflicting wild flax handlers"));}
     runtime.world.location_handlers.extend(flax);
+    let nettles=crate::content::nettle_pickables(n("obj"),n("loc"),n("seq"),n("synth"),n("hitmark"),&runtime.definitions).map_err(io::Error::other)?;
+    if nettles.keys().any(|&(id,op)|runtime.world.has_location_handler(id,op)){return Err(io::Error::other("Conflicting nettle handlers"));}
+    runtime.world.location_handlers.extend(nettles);
     runtime.world.multiway_area = Some(names.short("area", "multiway")?);
     runtime.combat_display = Some(crate::combat_display::resolve(
         names,

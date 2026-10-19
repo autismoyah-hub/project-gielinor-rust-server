@@ -1,4 +1,6 @@
 //! Resolve content's symbolic references against the same immutable type inputs as Kotlin.
+mod nettle_pickables;
+pub use nettle_pickables::nettle_pickables;
 mod flax_pickables;
 pub use flax_pickables::flax_pickables;
 mod fruit_pickables;

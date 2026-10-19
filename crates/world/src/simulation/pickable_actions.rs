@@ -149,7 +149,12 @@ impl World {
                 return;
             }
         };
-        let draw = random.below(depletion.denominator);
+        // Source empty depletion chances mean certain despawn without a random draw.
+        let draw = if depletion.numerator == depletion.denominator {
+            0
+        } else {
+            random.below(depletion.denominator)
+        };
         if draw >= depletion.denominator {
             self.events
                 .push(WorldEvent::LocationError("Invalid pickable random draw"));
@@ -193,6 +198,80 @@ impl World {
                 denominator: depletion.denominator,
                 depleted,
             },
+        });
+    }
+}
+
+impl World {
+    pub(super) fn process_nettles(
+        &mut self,
+        slot: usize,
+        location: Location,
+        rule: Rule,
+        excluded_glove: i32,
+        mark: crate::hit_display::Mark,
+        random: &mut impl RandomSource,
+    ) {
+        let p = self.players.get(slot).unwrap();
+        let actor = p.id;
+        if self.locations.revision(location) != p.location_revision {
+            return;
+        }
+        if rule.members && !p.member {
+            self.events.push(WorldEvent::LocationMessage {
+                actor,
+                message: "You need to be a member to pick this.",
+            });
+            return;
+        }
+        if p.data
+            .equipment
+            .get(9)
+            .is_some_and(|i| i.id != excluded_glove)
+        {
+            self.process_pickable_chance(
+                slot,
+                location,
+                rule,
+                crate::pickables::Depletion {
+                    numerator: 1,
+                    denominator: 1,
+                    delay: 13,
+                },
+                random,
+            );
+            return;
+        }
+        // Donor handles stinging before inventory space. A full bag offers no protection.
+        // It is one incidental typeless hit, not ongoing poison or an immunity check.
+        let draw = random.below(2);
+        if draw >= 2 {
+            self.events.push(WorldEvent::LocationError(
+                "Invalid nettle sting random draw",
+            ));
+            return;
+        }
+        let hit = crate::hits::Hit {
+            display: Some(mark),
+            source: None,
+            style: crate::hits::Style::Typeless,
+            damage: draw as i32 + 1,
+        };
+        if self
+            .queue_hit(crate::hits::Target::Player(actor), hit, 1)
+            .is_err()
+        {
+            self.events
+                .push(WorldEvent::LocationError("Nettle sting hit queue refused"));
+            return;
+        }
+        self.events.push(WorldEvent::PlayerAnimation {
+            actor,
+            sequence: rule.animation,
+        });
+        self.events.push(WorldEvent::LocationMessage {
+            actor,
+            message: "The nettles sting you.",
         });
     }
 }
@@ -683,6 +762,174 @@ mod tests {
                 .drain_events()
                 .iter()
                 .any(|e| matches!(e,WorldEvent::LocationRestoration(t)if t.result=="stale")));
+        }
+    }
+    fn nettle_fixture() -> (World, ActorId, Location) {
+        let (mut w, a, l) = fixture();
+        w.set_membership(a, true).unwrap();
+        let mut r = rule();
+        r.members = true;
+        w.location_handlers.clear();
+        for op in [1, 2] {
+            w.location_handlers.insert(
+                (l.id, op),
+                Handler::Nettles {
+                    rule: r,
+                    excluded_glove: 25135,
+                    mark: crate::hit_display::Mark {
+                        target: 65,
+                        source: 65,
+                        public: Some(66),
+                        delay: 0,
+                    },
+                },
+            );
+        }
+        let data = w.data_mut(a).unwrap();
+        data.stats.set_base(3, 10);
+        data.stats.set_current(3, 10);
+        (w, a, l)
+    }
+    #[test]
+    fn nettle_sting_is_one_delayed_incidental_poison_mark_not_ongoing_poison_or_harvest() {
+        for draw in [0, 1] {
+            for glove in [None, Some(25135)] {
+                let (mut w, a, l) = nettle_fixture();
+                if let Some(id) = glove {
+                    w.data_mut(a)
+                        .unwrap()
+                        .equipment
+                        .restore_slot(
+                            9,
+                            Some(Item {
+                                id,
+                                count: 1,
+                                vars: 0,
+                            }),
+                        )
+                        .unwrap();
+                }
+                for slot in 0..28 {
+                    w.data_mut(a)
+                        .unwrap()
+                        .inventory
+                        .restore_slot(
+                            slot,
+                            Some(Item {
+                                id: 995,
+                                count: 1,
+                                vars: 0,
+                            }),
+                        )
+                        .unwrap();
+                }
+                let before = w.data(a).unwrap().inventory.clone();
+                let stats = w.data(a).unwrap().stats.clone();
+                let rev = w.locations.revision(l);
+                let mut rng = Draw {
+                    value: draw,
+                    calls: vec![],
+                };
+                w.submit(a, action(l, 1)).unwrap();
+                w.tick_with_random(&mut rng).unwrap();
+                assert_eq!(w.data(a).unwrap().stats.current(3), 10);
+                assert!(w.drain_events().iter().any(|e| matches!(
+                    e,
+                    WorldEvent::LocationMessage {
+                        message: "The nettles sting you.",
+                        ..
+                    }
+                )));
+                w.tick_with_random(&mut rng).unwrap();
+                assert_eq!(w.data(a).unwrap().stats.current(3), 9 - draw as i8);
+                let impacts: Vec<_> = w
+                    .drain_events()
+                    .into_iter()
+                    .filter_map(|e| {
+                        if let WorldEvent::Hit { impact, .. } = e {
+                            Some(impact)
+                        } else {
+                            None
+                        }
+                    })
+                    .collect();
+                assert_eq!(impacts.len(), 1);
+                assert_eq!(impacts[0].hit.display.unwrap().target, 65);
+                assert_eq!(impacts[0].hit.style, crate::hits::Style::Typeless);
+                assert!(impacts[0].hit.source.is_none());
+                for _ in 0..35 {
+                    w.tick_with_random(&mut rng).unwrap();
+                }
+                assert_eq!(rng.calls, vec![2]);
+                assert_eq!(w.data(a).unwrap().stats.current(3), 9 - draw as i8);
+                assert_eq!(w.data(a).unwrap().inventory, before);
+                assert_eq!(w.locations.revision(l), rev);
+                for skill in 0..24 {
+                    assert_eq!(
+                        w.data(a).unwrap().stats.fine_xp(skill),
+                        stats.fine_xp(skill)
+                    );
+                }
+            }
+        }
+    }
+    #[test]
+    fn nettle_real_gloves_harvest_without_rng_then_restore_after13_and_full_bag_or_membership_refuses(
+    ) {
+        for mode in 0..3 {
+            let (mut w, a, l) = nettle_fixture();
+            w.data_mut(a)
+                .unwrap()
+                .equipment
+                .restore_slot(
+                    9,
+                    Some(Item {
+                        id: 1059,
+                        count: 1,
+                        vars: 0,
+                    }),
+                )
+                .unwrap();
+            if mode == 1 {
+                for slot in 0..28 {
+                    w.data_mut(a)
+                        .unwrap()
+                        .inventory
+                        .restore_slot(
+                            slot,
+                            Some(Item {
+                                id: 995,
+                                count: 1,
+                                vars: 0,
+                            }),
+                        )
+                        .unwrap();
+                }
+            }
+            if mode == 2 {
+                w.set_membership(a, false).unwrap();
+            }
+            let mut rng = Draw {
+                value: 0,
+                calls: vec![],
+            };
+            w.submit(a, action(l, 2)).unwrap();
+            w.tick_with_random(&mut rng).unwrap();
+            assert!(rng.calls.is_empty());
+            assert_eq!(w.data(a).unwrap().stats.current(3), 10);
+            if mode == 0 {
+                assert_eq!(count(&w, a), 1);
+                assert!(w.locations.find_shape(l.coords, l.shape).is_none());
+                for _ in 0..12 {
+                    w.tick_with_random(&mut rng).unwrap();
+                    assert!(w.locations.find_shape(l.coords, l.shape).is_none());
+                }
+                w.tick_with_random(&mut rng).unwrap();
+                assert_eq!(w.locations.find_shape(l.coords, l.shape), Some(l));
+            } else {
+                assert_eq!(count(&w, a), 0);
+                assert_eq!(w.locations.find_shape(l.coords, l.shape), Some(l));
+            }
         }
     }
 }

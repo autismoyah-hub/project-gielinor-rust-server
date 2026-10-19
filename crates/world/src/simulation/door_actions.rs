@@ -409,6 +409,7 @@ impl World {
             self.request_facility_crafting(slot,loc,None);return;
         }
         if let Some(&handler) = self.location_handlers.get(&(loc.id, operation)) {
+            if let crate::location_content::Handler::Nettles{rule,excluded_glove,mark}=handler{self.process_nettles(slot,loc,rule,excluded_glove,mark,random);return;}
             if let crate::location_content::Handler::PickableChance{rule,depletion}=handler{self.process_pickable_chance(slot,loc,rule,depletion,random);return;}
             if let crate::location_content::Handler::PickableStage{rule,step}=handler{self.process_pickable_stage(slot,loc,rule,step);return;}
             match handler.perform(&mut p.data, &self.object_types,p.member) {
