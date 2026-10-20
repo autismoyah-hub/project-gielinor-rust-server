@@ -418,3 +418,21 @@ uses actual shared cooking output. Existing chemistry state remains alongside
 Tower saves; this review does not resume the paused independent chemistry work.
 Other S090 paths remain under review. No discovery or path count is a gameplay
 completion percentage. See `docs/consolidation/shared-owner-review.json`.
+
+## Earned native preparation observed
+
+The actual character completed Forge, Altar, then Kitchen on the pinned current
+floor. Workshop and equipment were already verified in the prior durable save.
+The repaired native client survived real chicken combat, displayed the private
+drops and took bones through a visible menu. Using those bones at the altar
+consumed them and completed Altar. The first range attempt burned shrimp into
+7954 without XP or Kitchen credit; the next made315 and awarded150 Cooking XP,
+completing Kitchen. Synthetic tests use a declared323 burn output; that is not
+the cache recipe's native output. Immutable native snapshots/captures are hashed.
+
+The session remains active: all-service durability and the guardian/reward chain
+are pending. Composed frames show interaction/UI but flat gray ground and limited
+visible shell; that client terrain/cutaway scope is under review. Desktop GDI and
+audio remain separate limitations. Whole-floor visual acceptance is not inferred
+from inventory/journal results. No prepared grants or forced outcomes were used.
+See `docs/consolidation/native-services-validation.json`.

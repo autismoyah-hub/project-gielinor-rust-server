@@ -1,0 +1,355 @@
+{
+  "status": "OBSERVED_PENDING_DURABILITY",
+  "scope": "Earned native preparation acceptance observed in active session; no claim of completed guardian/reward path or whole-floor rendered acceptance.",
+  "base_main": "5026d3ea58423e8890b0e78387de9bb8b0d5c670",
+  "workshop_saved": {
+    "status": "PASS_EARNED_SERVICES_SAVED",
+    "scope": "Actual native fishing, bank deposit/withdraw, mined copper+tin, shared bronze smelt, visible dagger forge, Workshop credit and wield; disconnect saved by authoritative worker.",
+    "server_sha256": "13D858DF1BCB9987FCCED51DAEC75110B749AF8A56D88AFC0DA4F202CFCCB56A",
+    "client_sha256": "159B602FC89E07F0627664F07084889B994940C652CA00F71F06F3BBB21F69F1",
+    "run": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "items": [
+      {
+        "inv_type": 93,
+        "slot": 0,
+        "obj": 1351,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 1,
+        "obj": 317,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 2,
+        "obj": 303,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 3,
+        "obj": 2347,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 4,
+        "obj": 590,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 5,
+        "obj": 946,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 6,
+        "obj": 317,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 7,
+        "obj": 317,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 8,
+        "obj": 317,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 9,
+        "obj": 317,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 10,
+        "obj": 1265,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 94,
+        "slot": 3,
+        "obj": 1205,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 95,
+        "slot": 0,
+        "obj": 317,
+        "count": 18,
+        "vars": 0
+      }
+    ],
+    "stats": [
+      [
+        0,
+        1,
+        1,
+        600
+      ],
+      [
+        1,
+        1,
+        1,
+        0
+      ],
+      [
+        2,
+        1,
+        1,
+        0
+      ],
+      [
+        3,
+        10,
+        10,
+        11738
+      ],
+      [
+        4,
+        1,
+        1,
+        0
+      ],
+      [
+        5,
+        1,
+        1,
+        0
+      ],
+      [
+        6,
+        1,
+        1,
+        0
+      ],
+      [
+        7,
+        1,
+        1,
+        0
+      ],
+      [
+        8,
+        1,
+        1,
+        0
+      ],
+      [
+        9,
+        1,
+        1,
+        0
+      ],
+      [
+        10,
+        9,
+        9,
+        11500
+      ],
+      [
+        11,
+        1,
+        1,
+        0
+      ],
+      [
+        12,
+        1,
+        1,
+        0
+      ],
+      [
+        13,
+        2,
+        2,
+        935
+      ],
+      [
+        14,
+        3,
+        3,
+        1750
+      ],
+      [
+        15,
+        3,
+        3,
+        1740
+      ],
+      [
+        16,
+        1,
+        1,
+        0
+      ],
+      [
+        17,
+        1,
+        1,
+        0
+      ],
+      [
+        18,
+        1,
+        1,
+        0
+      ],
+      [
+        19,
+        1,
+        1,
+        0
+      ],
+      [
+        20,
+        2,
+        2,
+        830
+      ],
+      [
+        21,
+        1,
+        1,
+        0
+      ],
+      [
+        22,
+        1,
+        1,
+        0
+      ],
+      [
+        23,
+        1,
+        1,
+        0
+      ],
+      [
+        24,
+        1,
+        1,
+        0
+      ]
+    ],
+    "character": {
+      "id": 1,
+      "x": 10403,
+      "z": 132,
+      "level": 0,
+      "last_logout": "2026-10-20 10:56:41",
+      "world_id": null
+    },
+    "save_ack": {
+      "actor_slot": 1,
+      "generation": 607,
+      "tick": 2780
+    },
+    "snapshot_sha256": "b12a6d855e14744d0cf5d243e382ae507f845c8af43f9df784cf8ad117574948",
+    "preserved_files": 94,
+    "cooking": "RED: old binary had no authored shared-range binding; zero Cooking XP, no Kitchen credit.",
+    "combat": "Client exited1 on PendingAsset archive8 group2176 after actual Attack. Server independently logged real chicken damage, defeat and private drop526+2138; native presentation, pickup and altar not accepted.",
+    "preserved_failure": "workshop-observation-001 copied immutable files but asserted ore output at action31 rather than completed state32. Original helper and partial evidence retained, no PASS receipt written there.",
+    "remaining": "Cook/Altar/Imp/Warden/reward/full-pack/replay/restart/multiplayer pending; GDI/audio separate."
+  },
+  "altar_burn_observed": {
+    "status": "PASS_OBSERVED_ALTAR_AND_BURN",
+    "server_sha256": "C77E634E3501FFB41021FC3C1F15A613260467E15F2A38007D0EE3D68CE9E8BA",
+    "client_sha256": "0A506755D2845CA50655A419ED114215C9D12106E9CF780F530FBD321AA5D8C7",
+    "scope": "Active native session: real chicken defeat and visible bones pickup; actual altar consumes bones and completes Altar; actual range burn consumes raw shrimp and produces7954 without Cooking XP or Kitchen credit. Successful cooking and final save pending.",
+    "actual_burnt_item": 7954,
+    "synthetic_test_burnt_item": 323,
+    "distinction": "Headless fixture323 isolates shared outcomes; real canonical cache recipe uses7954. No assertion that323was produced natively.",
+    "files": [
+      {
+        "path": "state-5.json",
+        "sha256": "ec4c7596560100ba446930e504d257de7e3038325103e8fa33658ff0e73161ed",
+        "bytes": 2535
+      },
+      {
+        "path": "state-7.json",
+        "sha256": "651dce34bb62e2d073d754b7ea58142f19fd56f7a45825821f2d158b8ec2a65f",
+        "bytes": 2639
+      },
+      {
+        "path": "state-20.json",
+        "sha256": "a3e99cc18cb42fd7c8e178bfc482686fc774f49172661bf920b0399f727ab1fb",
+        "bytes": 2659
+      },
+      {
+        "path": "state-25.json",
+        "sha256": "871fd2c1436bd53086230c85adde9a54e87929d1d717af8ae7996876458ec7cd",
+        "bytes": 2718
+      },
+      {
+        "path": "frame-4.bmp",
+        "sha256": "346badd7dc83db8939d5638c39d2b1947fb38cdd991b7b0f77f523a02e5dac27",
+        "bytes": 1539234
+      },
+      {
+        "path": "frame-21.bmp",
+        "sha256": "b8875c24df37648f570e97bb3197f17fc36e7d5459f6023050eef99e83f991db",
+        "bytes": 1539234
+      }
+    ]
+  },
+  "kitchen_observed": {
+    "status": "PASS_OBSERVED_ALL_THREE_SERVICES",
+    "scope": "Actual earned native forge/cook/altar observed on current pinned authored floor. Final durable logout/restart and guardian/reward path pending.",
+    "server_sha256": "C77E634E3501FFB41021FC3C1F15A613260467E15F2A38007D0EE3D68CE9E8BA",
+    "client_sha256": "0A506755D2845CA50655A419ED114215C9D12106E9CF780F530FBD321AA5D8C7",
+    "prior_earned_workshop": "earned-launch-005/earned-services-server-validation.json",
+    "altar_and_burn": "earned-launch-006/altar-burn-observation-001/receipt.json",
+    "native_order": [
+      "Forge",
+      "Altar",
+      "Kitchen"
+    ],
+    "cooking_xp": 150,
+    "actual_cooked_item": 315,
+    "actual_burnt_item": 7954,
+    "files": [
+      {
+        "path": "state-28.json",
+        "sha256": "5e0f5f9946c3d190cb3aa724cfe7cb1c23220ac9132aec67e1509c5d7b7bc24e",
+        "bytes": 3091
+      },
+      {
+        "path": "frame-29.bmp",
+        "sha256": "81510817696d8aa41a1ef41907a635cdac3d9d13edfd99a7cc5977f74a51b986",
+        "bytes": 1539234
+      }
+    ],
+    "limits": "Composed native capture has flat gray ground/limited visible shell; separate renderer/cutaway scope sent to ORACLE. GDI/audio remain separately open. No rendered whole-floor acceptance inferred from item/journal success."
+  },
+  "current_binary": "C77E634E3501FFB41021FC3C1F15A613260467E15F2A38007D0EE3D68CE9E8BA",
+  "client_main_reported": "ef1bdf15b6dae299229597d94326c81308e2c534",
+  "preservation": "All earlier failed native attempts, exact source backups and synthetic tests retained. No profile resources/XP/progress injected. Actual burn7954 differs from explicitly synthetic fixture323.",
+  "remaining": "Active-session services require final SaveACK/restart cross-check. Fresh Imp/Warden/victory/reward/full-pack/replay/multiplayer still pending. Flat gray composed ground/limited visible shell, desktop GDI and audio are separate client presentation limitations under review."
+}
