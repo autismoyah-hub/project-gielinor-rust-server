@@ -321,3 +321,22 @@ character, stats, inventory and run match the preserved first checkpoint. Both
 failed client recovery attempts remain retained. Received-tool/retry acceptance
 and the full services/encounters/reward/replay journey are still in progress.
 Evidence: `docs/consolidation/scoped-bank-recovery-validation.json`.
+
+## Native tool recovery and authored fishing shore
+
+Native first-checkpoint recovery now passes: the client received the six saved
+tools once each, completed a real plaque retry without duplicates and logged out
+normally. The database preserved inventory, stats, chemistry and run1 with no
+services or victories. Seventy-one client files and the matching save are retained.
+Inventory packet reception is verified; visible inventory icons remain a client
+layout investigation, and GDI display limitations remain explicit.
+
+Two ordinary native fishing actions reached dry shoreline but failed the generic
+NPC touch check. The audited three-tile shore approach is now scoped to configured
+Cinderworks fishing NPCs, using the existing gathering queue without changing
+water collision. A real ordinary NPC-action regression failed before the fix and
+passes afterward. All656 world tests,39 shared NPC-action tests and three TCP
+lifecycle tests pass; one existing world test remains ignored. The exact candidate
+is in another same-save native run. Fish/service/encounter/reward acceptance is
+still pending. The acceptance contract now lists exact ore and supply targets.
+Evidence: `docs/consolidation/shore-fishing-validation.json`.

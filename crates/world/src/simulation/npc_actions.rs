@@ -263,7 +263,13 @@ impl World {
             }
             return true;
         }
-        if touches || bank_approach {
+        // Authored fish occupy blocked water. A qualified net action may finish
+        // from the existing three-tile shore range; collision stays unchanged.
+        let cinderworks_fishing = pending.handler == Some(Handler::TutorialFishing)
+            && self.cinderworks.as_ref().is_some_and(|c|crate::tower_layout::contains(c.origin,source)
+                && c.work.is_some_and(|w|npc.type_id==w.fishing_spot&&crate::tower_layout::contains(c.origin,npc.spawn)));
+        let fishing_approach=cinderworks_fishing&&source.chebyshev_distance(target)<=3;
+        if touches || bank_approach || fishing_approach {
             if pending.handler==Some(Handler::Pickpocket) {self.clear_npc_route(slot);self.start_pickpocket(slot,pending.target);return true;}
             if pending.handler == Some(Handler::TowerTanner) {
                 self.clear_npc_route(slot);
@@ -291,8 +297,7 @@ impl World {
                 }
                 return true;
             }
-            if pending.handler == Some(Handler::TutorialFishing)
-                && self.cinderworks.as_ref().is_some_and(|c|crate::tower_layout::contains(c.origin,source)&&c.work.is_some_and(|w|self.npc(pending.target).is_some_and(|n|n.type_id==w.fishing_spot&&crate::tower_layout::contains(c.origin,n.spawn)))) {
+            if cinderworks_fishing {
                 self.clear_npc_route(slot);self.start_cinderworks_fishing(slot,pending.target);return true;
             }
             if pending.handler == Some(Handler::TutorialFishing) {

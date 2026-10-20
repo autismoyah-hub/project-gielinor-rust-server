@@ -1,6 +1,6 @@
 {
   "scope": "Server contract for future ordinary-action native journey; preparation specification, not acceptance evidence",
-  "server_candidate": "63E5516921C0CAC7BD606F0BA98FD1942EBEFE07B595421EABA0963D5F163C6F",
+  "server_candidate": "60DF4115D71A419A83A1380AE63A62D41575D20ED274C1A9660C77894C9BCA0F",
   "source": "f9180b23ae1e158a296489a3730a8ae697a71de2 adapted through maintained owners",
   "spawn": [
     10420,
@@ -159,7 +159,153 @@
           0
         ]
       ]
-    }
+    },
+    "supplies": [
+      {
+        "id": 2790,
+        "kind": "cow",
+        "spawn": [
+          10399,
+          136,
+          0
+        ],
+        "size": 2,
+        "operation": 2,
+        "note": "Wanders; native actions must select the current observed NPC instance and visible menu"
+      },
+      {
+        "id": 2790,
+        "kind": "cow",
+        "spawn": [
+          10402,
+          137,
+          0
+        ],
+        "size": 2,
+        "operation": 2,
+        "note": "Wanders; native actions must select the current observed NPC instance and visible menu"
+      },
+      {
+        "id": 2790,
+        "kind": "cow",
+        "spawn": [
+          10399,
+          141,
+          0
+        ],
+        "size": 2,
+        "operation": 2,
+        "note": "Wanders; native actions must select the current observed NPC instance and visible menu"
+      },
+      {
+        "id": 2790,
+        "kind": "cow",
+        "spawn": [
+          10403,
+          142,
+          0
+        ],
+        "size": 2,
+        "operation": 2,
+        "note": "Wanders; native actions must select the current observed NPC instance and visible menu"
+      },
+      {
+        "id": 2790,
+        "kind": "cow",
+        "spawn": [
+          10411,
+          137,
+          0
+        ],
+        "size": 2,
+        "operation": 2,
+        "note": "Wanders; native actions must select the current observed NPC instance and visible menu"
+      },
+      {
+        "id": 2790,
+        "kind": "cow",
+        "spawn": [
+          10419,
+          136,
+          0
+        ],
+        "size": 2,
+        "operation": 2,
+        "note": "Wanders; native actions must select the current observed NPC instance and visible menu"
+      },
+      {
+        "id": 2790,
+        "kind": "cow",
+        "spawn": [
+          10421,
+          141,
+          0
+        ],
+        "size": 2,
+        "operation": 2,
+        "note": "Wanders; native actions must select the current observed NPC instance and visible menu"
+      },
+      {
+        "id": 2790,
+        "kind": "cow",
+        "spawn": [
+          10423,
+          144,
+          0
+        ],
+        "size": 2,
+        "operation": 2,
+        "note": "Wanders; native actions must select the current observed NPC instance and visible menu"
+      },
+      {
+        "id": 1173,
+        "kind": "chicken",
+        "spawn": [
+          10397,
+          134,
+          0
+        ],
+        "size": 1,
+        "operation": 2,
+        "note": "Wanders; native actions must select the current observed NPC instance and visible menu"
+      },
+      {
+        "id": 1173,
+        "kind": "chicken",
+        "spawn": [
+          10403,
+          134,
+          0
+        ],
+        "size": 1,
+        "operation": 2,
+        "note": "Wanders; native actions must select the current observed NPC instance and visible menu"
+      },
+      {
+        "id": 1173,
+        "kind": "chicken",
+        "spawn": [
+          10421,
+          134,
+          0
+        ],
+        "size": 1,
+        "operation": 2,
+        "note": "Wanders; native actions must select the current observed NPC instance and visible menu"
+      },
+      {
+        "id": 1173,
+        "kind": "chicken",
+        "spawn": [
+          10425,
+          142,
+          0
+        ],
+        "size": 1,
+        "operation": 2,
+        "note": "Wanders; native actions must select the current observed NPC instance and visible menu"
+      }
+    ]
   },
   "coolant": {
     "id": 30124,
@@ -227,5 +373,61 @@
     "Capture real native frames plus immutable source/binary/package identities",
     "Preserve all failed attempts; no forced hits, XP, service flags, kills, inventory or rewards"
   ],
-  "pending_client_dependency": "C018 adapter implemented; fresh-account ordinary-action joint acceptance in progress"
+  "pending_client_dependency": "C018 actual creator/experience and same-save received-six-tools verified; duplicate plaque, earned services and full chain still in progress",
+  "ores": [
+    {
+      "resource": "tin",
+      "id": 11360,
+      "coords": [
+        10399,
+        121,
+        0
+      ],
+      "operation": 1,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "resource": "tin",
+      "id": 11360,
+      "coords": [
+        10400,
+        126,
+        0
+      ],
+      "operation": 1,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "resource": "copper",
+      "id": 10943,
+      "coords": [
+        10406,
+        121,
+        0
+      ],
+      "operation": 1,
+      "shape": 10,
+      "rotation": 0
+    },
+    {
+      "resource": "copper",
+      "id": 10943,
+      "coords": [
+        10408,
+        125,
+        0
+      ],
+      "operation": 1,
+      "shape": 10,
+      "rotation": 0
+    }
+  ],
+  "target_evidence": {
+    "scope": "Exact real-cache preflight definitions and pinned spatial population exports; target list, not earned gameplay acceptance",
+    "objects_sha256": "29ce7e5c5921e647dc0679d6efbf6c7414342d5341fbcf66dd1857e60fb175fb",
+    "npc_footprints_sha256": "bbee7ff45c265828d1b41a5936daaf50fdbede9a07ee315b2d8eb56523940a2e"
+  },
+  "initial_account_policy": "Normal preexisting floor login applies HP10/1154XP,Herblore3/174XP,Runecrafting2/83XP and5x; never count these as earned services"
 }

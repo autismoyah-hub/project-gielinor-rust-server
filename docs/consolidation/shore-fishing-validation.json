@@ -1,0 +1,87 @@
+{
+  "status": "PASS",
+  "scope": "Audited scoped fishing shore approach and actual native checkpoint recovery evidence; new native fish/service/encounter/reward chain still pending",
+  "base_main": "031e2ca77430f77538b4477803faddd2f0cb63be",
+  "adapted_source": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+  "native_failure": "Two actual3317Netop1 attempts at10437,122 and10438,124 stopped distance2onblockedshore with CannotReach; nofish/XP. Full client evidence preserved with recovery003.",
+  "change": "Only configured in-floor TutorialFishing NPCs may complete ordinary approach within existing three-tile gathering range; water collision unchanged. Original bank/combat/other NPC owners retained.",
+  "red": {
+    "log": "consolidation-shore-fishing-red-20261020-01.log",
+    "sha256": "76d42b687604bfe6b39d15cf3cc01891fd9f5d41b6280e72c9bfdb3770dcf0bc"
+  },
+  "focused": {
+    "log": "consolidation-shore-fishing-green-20261020-01.log",
+    "sha256": "6da95d88244c2da81fe4f3383e8e8f4bafda72ff0f5ae3325eb6306951fcb3b9",
+    "passed": 6,
+    "coverage": "Actual OperateNpc against blocked two-tile shore; produced real shared gathering output; scope/stale/full inventory refusals; real successful/burned cooking and forge hooks"
+  },
+  "world_library": {
+    "log": "consolidation-shore-fishing-world-lib-20261020-01.log",
+    "sha256": "18913a415d94d2bec35ba1a48146d6d8cb4a877013c21289ac007e6ad2fc6acf",
+    "passed": 656,
+    "failed": 0,
+    "preexisting_ignored": 1
+  },
+  "shared_npc_actions": {
+    "log": "consolidation-shore-fishing-npc-actions-20261020-01.log",
+    "sha256": "5c8d90cbe76ee75877960065ae4c50d438e0bb2ac4c3d1f01717406020814dfc",
+    "passed": 39,
+    "failed": 0
+  },
+  "tcp_lifecycle": {
+    "log": "consolidation-shore-fishing-tcp-20261020-01.log",
+    "sha256": "d9f6c674874973b0e7dc9288f1bbaa9832b2b6f352b590f52e1af0f9cba1ee03",
+    "passed": 3,
+    "failed": 0
+  },
+  "exact_build": {
+    "run": "consolidation-shore-fishing-20261020-001",
+    "sha256": "7375C9B21B61B7A5156EE3E3DEE7433FD8463F9E677BCEAC79A2FB40F8E1F687",
+    "sourceCount": 599
+  },
+  "build_manifest_note": "599source hashes include a preserved private read-only frame mapping diagnostic; it is not linked into the server executable. No private cache/asset/credential payload is published.",
+  "actual_native_recovery": {
+    "status": "PASS",
+    "scope": "Actual first-checkpoint crash recovery login, received six tools, real visible plaque retry without duplicates, ordinary movement and normal logout. No earned services or boss/reward acceptance.",
+    "server_sha256": "60DF4115D71A419A83A1380AE63A62D41575D20ED274C1A9660C77894C9BCA0F",
+    "client_sha256": "376300D89F5ABDF5E19E475842FCEE4BCABE8BE6A2E1C6FB89297EB08AE1C267",
+    "received_ready_tick": 61,
+    "retry_tick": 194,
+    "one_each_tools": [
+      1351,
+      1265,
+      303,
+      2347,
+      590,
+      946
+    ],
+    "inventory_and_stats_unchanged_after_retry_and_logout": true,
+    "run": [
+      1,
+      0,
+      0,
+      0
+    ],
+    "logout_coords": [
+      10429,
+      118,
+      0
+    ],
+    "last_logout": "2026-10-20 09:36:05",
+    "snapshot_sha256": "d015b3f35c4b1ca10b0f5d0c166e6ec646b4d1210e294f79f239155db2ef53cd",
+    "preserved_client_files": 71,
+    "failed_attempts": "Two actual3317fishing spots unreachable from water shore; nofish/XP; six-service unit fix now separately tested, new native attempt pending",
+    "presentation_limit": "GDI invalid handle; inventory receiving proved by native state/containers, not visible icons. Client root/clipping investigation ongoing."
+  },
+  "cache_frame_mapping": {
+    "log": "consolidation-frame-contract-20261020-01.log",
+    "sha256": "4c135c07983a1e1a6383f0469e5ab6506e9ef5efa1b14561bc73b017b95eb97f",
+    "fixed": "logical161:79 to physical548:84; inventory149:0",
+    "stretch": "161:79",
+    "preeoc": "164:76",
+    "scope": "Exact server cache redirect resolution, not client layout/display acceptance"
+  },
+  "same_save_native_candidate": "New immutable7375candidate launched from actual normal logout save; ORACLE native fishing and layout diagnostics running; no profile edits or forged progression",
+  "target_contract": "earned-acceptance-contract.json now includes four verified ore nodes and twelve wandering supply spawn records, separately labeled target data",
+  "preservation": "All original26 pending paths, failed attempts, private evidence and asset dependencies retained; chemistry campaign remains paused; GR10 unchanged"
+}

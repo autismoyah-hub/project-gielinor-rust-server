@@ -185,6 +185,42 @@ mod tests {
         w.drain_events();
         (w, actor, target, loc)
     }
+    fn shore_fixture(capacity:usize)->(World,ActorId,NpcId,CoordGrid) {
+        let (mut w,actor,target,_)=fixture(capacity,false);
+        let at=w.data(actor).unwrap().coords;
+        let shore=at.translate(-1,0,0).unwrap();
+        w.players.get_mut(actor.slot as usize).unwrap().movement.teleport(&mut w.collision,shore,w.clock.0,true).unwrap();
+        let origin=w.cinderworks.as_ref().unwrap().origin;
+        for x in at.x()..origin.x()+80 {for z in origin.z()+32..origin.z()+80 {w.collision.add(x,z,0,0x200000);}}
+        w.npc_options.types.insert(200,crate::npc_options::Definition {operations:[Some("Net".into()),None,None,None,None],..Default::default()});
+        w.npc_handlers.insert((200,1),crate::npc_interaction::Handler::TutorialFishing);
+        w.drain_events();(w,actor,target,shore)
+    }
+    #[test]
+    fn ordinary_scoped_net_action_catches_from_blocked_water_shore_without_walking_into_water() {
+        let (mut w,actor,target,shore)=shore_fixture(2);
+        assert!(!w.collision.can_step(shore,1,0,1,0,crate::collision::Strategy::Normal));
+        w.submit(actor,Action::OperateNpc {target,operation:1,control:false}).unwrap();
+        for _ in 0..7 {w.tick().unwrap();}
+        assert_eq!(w.data(actor).unwrap().inventory.get(1).unwrap().id,317);
+        assert!(w.data(actor).unwrap().stats.fine_xp(10)>0);
+        assert_eq!(w.observe(actor).unwrap().coords,shore);
+        assert!(!w.collision.can_step(shore,1,0,1,0,crate::collision::Strategy::Normal));
+    }
+    #[test]
+    fn ordinary_shore_net_requires_scoped_live_target_and_inventory_capacity() {
+        for mode in 0..4 {
+            let (mut w,actor,target,_)=shore_fixture(if mode==3 {1}else{2});
+            let before=w.data(actor).unwrap().clone();
+            if mode==0 {w.cinderworks=None;}
+            if mode==1 {w.cinderworks.as_mut().unwrap().work.as_mut().unwrap().fishing_spot=201;}
+            w.submit(actor,Action::OperateNpc {target,operation:1,control:false}).unwrap();
+            if mode==2 {w.despawn_npc(target);}
+            for _ in 0..7 {w.tick().unwrap();}
+            assert_eq!(w.data(actor).unwrap().inventory,before.inventory);
+            assert_eq!(w.data(actor).unwrap().stats,before.stats);
+        }
+    }
     #[test]
     fn full_inventory_and_stale_npc_do_not_create_fish_or_xp() {
         for stale in [false, true] {
