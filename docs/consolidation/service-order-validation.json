@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "scope": "Test-only deterministic acceptance: all six preparation orders through shared engine completions with explicit synthetic starting items. Not earned native acceptance.",
+  "base_main": "526756e2263f038b6f2a0540596c2e4b536e9965",
+  "test": {
+    "log": "consolidation-service-orders-world-20261020-02.log",
+    "sha256": "9d1f54d82daf21bd09c4650a35402461ee464f9ea1ddff78791731e20420976d"
+  },
+  "preserved_failure": {
+    "log": "consolidation-service-orders-world-20261020-01.log",
+    "sha256": "0f2922704b48ae2e259d1749865f02756ea8325177793538b1505a984a6106b7"
+  },
+  "failure_reason": "Test fixture attempted a forbidden altar spatial override; corrected fixture uses actual configured altar coordinates and ordinary walking, no production changes.",
+  "coverage": [
+    "All six forge/cook/altar order permutations",
+    "Queued copper+tin smelting alone does not restore Workshop; eligible forged output does",
+    "Actual item-on-range consumes shrimp and produces cooked item before Kitchen credit",
+    "Actual item-on-altar consumes bones and gives Prayer XP before Altar credit",
+    "Service admission does not advance flags; actual completions do",
+    "Inputs conserved, tools retained, outputs once; stale empty-slot repeated offering changes no inventory/XP",
+    "Ordinary Walk between actual altar mapping and cooking site"
+  ],
+  "runtime": "Unchanged published production code and immutable C77E634E3501FFB41021FC3C1F15A613260467E15F2A38007D0EE3D68CE9E8BA candidate. Only test code and evidence changed. Existing full949-library and authored startup results remain scoped to prior production change.",
+  "native": "51587 stays stable for ORACLE baseline/startup comparison and tested combat asset candidate. Earned native Kitchen/Altar/encounters remain pending."
+}

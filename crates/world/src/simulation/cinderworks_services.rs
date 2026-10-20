@@ -407,4 +407,52 @@ mod tests {
         assert_eq!(p.data.inventory, inventory);
         assert_eq!(p.data.stats.fine_xp(13), xp);
     }
+    #[test]
+    fn all_six_preparation_orders_require_real_committed_shared_outputs() {
+        for order in [[0,1,2],[0,2,1],[1,0,2],[1,2,0],[2,0,1],[2,1,0]] {
+            let (mut w,actor,_,range)=fixture(28,false);
+            let at=w.data(actor).unwrap().coords;let origin=w.cinderworks.as_ref().unwrap().origin;
+            let altar_at=w.cinderworks.as_ref().unwrap().spatial.at(origin,60,52).unwrap();
+            let altar=Location::new(altar_at,8,10,0).unwrap();w.locations.load(altar);
+            w.location_types.insert(8,w.location_types[&5]);
+            w.prayer=Some(crate::prayer::Config {skill:5,animation:827,bones:[(526,4.5)].into(),necklace:None,restore:Default::default(),worn_xp_percent:Default::default(),chaos:None});
+            w.tower_offering=Some(crate::tower_offering::HandlerConfig {location:8,origin,animation:827,accepted:[526,532],bones:crate::tower_offering::Bones {named:[526].into()},xp:[(526,Some(4.5))].into(),skills:[12,13,11],drop_bones:526});
+            w.smithing=Some(crate::smithing_make::Config {queue:900,skill:13,max_level:99,xp_rate:1.0,tutorial:None});
+            for (slot,id) in [(1,317),(2,526),(3,436),(4,438),(5,2347)] {
+                w.data_mut(actor).unwrap().inventory.restore_slot(slot,Some(Item{id,count:1,vars:0})).unwrap();
+            }
+            w.held_use_types.insert(526,crate::held_use::Type{id:526,content:0});
+            let mut expected=0;
+            for service in order {
+                let before=w.data(actor).unwrap().tower_run.services;
+                if service==0 {
+                    let request=|product,consumed,xp,tools|std::sync::Arc::new(crate::smithing_make::Request {product,produced:1,consumed,xp,animation:899,cycles:2,impurity:false,members:false,repeat_delay:None,required_level:1,required_tools:tools});
+                    w.start_smithing(actor,request(2349,vec![(436,1),(438,1)],6.2,vec![]),1).unwrap();
+                    for _ in 0..4 {w.tick().unwrap();}
+                    assert_eq!(w.data(actor).unwrap().tower_run.services,before);
+                    w.start_smithing(actor,request(13,vec![(2349,1)],12.5,vec![2347]),1).unwrap();
+                } else {
+                    let (target,slot,object)=if service==1 {(range,1,317)}else{(altar,2,526)};
+                    let destination=if service==1 {at}else{altar_at.translate(0,1,0).unwrap()};
+                    w.submit(actor,Action::Walk {destination,run:false}).unwrap();
+                    for _ in 0..25 {w.tick().unwrap();}
+                    assert_eq!(w.observe(actor).unwrap().coords,destination);
+                    w.submit(actor,Action::UseLocation {coords:target.coords,id:target.id,slot,object,control:false}).unwrap();
+                }
+                assert_eq!(w.data(actor).unwrap().tower_run.services,before,"admission alone never restores a service");
+                for _ in 0..12 {w.tick().unwrap();}
+                expected|=1<<service;assert_eq!(w.data(actor).unwrap().tower_run.services,expected,"order {order:?}");
+            }
+            let data=w.data(actor).unwrap();assert_eq!(data.tower_run.services,7);
+            for id in [317,526,436,438,2349] {assert_eq!(crate::smithing_make::total(&data.inventory,&w.object_types,id),0);}
+            for id in [315,13,2347,303] {assert_eq!(crate::smithing_make::total(&data.inventory,&w.object_types,id),1);}
+            assert!(data.stats.fine_xp(5)>0 && data.stats.fine_xp(7)>0 && data.stats.fine_xp(13)>0);
+            let before=data.clone();
+            w.submit(actor,Action::UseLocation {coords:altar.coords,id:altar.id,slot:2,object:526,control:false}).unwrap();
+            for _ in 0..12 {w.tick().unwrap();}
+            assert_eq!(w.data(actor).unwrap().inventory,before.inventory);assert_eq!(w.data(actor).unwrap().stats,before.stats);
+            assert_eq!(w.data(actor).unwrap().tower_run.services,7);
+        }
+    }
+
 }

@@ -381,3 +381,16 @@ The server logged damage, defeat and private drops, then saved on disconnect;
 rendered combat and pickup are unaccepted. ORACLE owns the asset repair. No
 Imp/Warden/reward acceptance is inferred. The owned old server stopped normally.
 See `docs/consolidation/cooking-binding-validation.json`.
+
+## Shared preparation order acceptance
+
+All six Forge/Kitchen/Altar orders now pass through real queued smithing,
+cooking and prayer outcomes in a deterministic fixture with explicitly synthetic
+starting materials. Requests alone do not advance services. The fixture walks
+between the configured altar and range, consumes ore/fish/bones, retains tools
+and verifies repeated empty-slot offering cannot duplicate XP or inventory.
+All11 service tests pass. An initial forbidden altar relocation in test setup
+failed and is retained; the corrected test uses the actual spatial mapping.
+Production code and the running native candidate are unchanged. This is headless
+acceptance; native Kitchen/Altar and the earned encounter chain remain pending.
+Evidence: `docs/consolidation/service-order-validation.json`.
