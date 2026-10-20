@@ -14,6 +14,9 @@ use std::{
 };
 type Key = (u8, u16);
 pub trait Provider {
+    /// Queue read-only preparation without emitting bytes or changing response
+    /// order. Immediate/in-memory providers need no preparation.
+    fn prepare(&mut self, _archive:u8, _group:u16)->io::Result<()> {Ok(())}
     fn response(&mut self, archive: u8, group: u16) -> io::Result<Option<Arc<[u8]>>>;
 }
 type Loaded = (Key, Result<Arc<[u8]>, String>);
@@ -112,7 +115,25 @@ impl Worker {
         }
     }
 }
+impl Worker {
+    fn queue(&mut self,key:Key)->io::Result<()> {
+        if !self.cache.contains_key(&key) && !self.pending.contains(&key) {
+            match self.requests.as_ref().unwrap().try_send(key) {
+                Ok(())=>{self.pending.insert(key);}
+                Err(TrySendError::Full(_))=>(),
+                Err(TrySendError::Disconnected(_))=>return Err(io::Error::other("JS5 worker disconnected")),
+            }
+        }
+        Ok(())
+    }
+}
 impl Provider for Worker {
+    fn prepare(&mut self,archive:u8,group:u16)->io::Result<()> {
+        self.collect()?;
+        // A failed future group remains cached and is reported only when that
+        // group reaches the normal response head, after preceding wire bytes.
+        self.queue((archive,group))
+    }
     fn response(&mut self, archive: u8, group: u16) -> io::Result<Option<Arc<[u8]>>> {
         self.collect()?;
         let key = (archive, group);
@@ -122,17 +143,7 @@ impl Provider for Worker {
                 .map(|b| Some(Arc::clone(b)))
                 .map_err(|e| io::Error::other(e.clone()));
         }
-        if !self.pending.contains(&key) {
-            match self.requests.as_ref().unwrap().try_send(key) {
-                Ok(()) => {
-                    self.pending.insert(key);
-                }
-                Err(TrySendError::Full(_)) => (),
-                Err(TrySendError::Disconnected(_)) => {
-                    return Err(io::Error::other("JS5 worker disconnected"))
-                }
-            }
-        }
+        self.queue(key)?;
         Ok(None)
     }
 }
@@ -249,6 +260,15 @@ impl Client {
             self.transfer_prefetch(provider, 8192)?;
             self.last_prefetch = now;
         }
+        // Four eligible groups overlap disk latency while the existing worker
+        // channel and cache remain bounded. Awaiting low-priority requests stay
+        // governed by the original200ms transfer policy; wire emission below is
+        // still strictly head-first and limited by the caller's byte budget.
+        if budget>0 {
+            for &(archive,group) in self.urgent.iter().chain(self.prefetch.iter()).take(4) {
+                provider.prepare(archive,group)?;
+            }
+        }
         let mut output = Vec::new();
         while output.len() < budget {
             if self.current.is_none() {
@@ -282,5 +302,41 @@ impl Client {
             }
         }
         Ok(output)
+    }
+}
+
+#[cfg(test)]
+mod pipeline_tests {
+    use super::*;
+    struct Held {prepared:Vec<Key>,ready:bool}
+    impl Provider for Held {
+        fn prepare(&mut self,a:u8,g:u16)->io::Result<()> {self.prepared.push((a,g));Ok(())}
+        fn response(&mut self,a:u8,g:u16)->io::Result<Option<Arc<[u8]>>> {
+            assert!(self.prepared.contains(&(a,g)));
+            Ok(self.ready.then(||Arc::from([a,g as u8,99])))
+        }
+    }
+    #[test]
+    fn prepares_bounded_groups_behind_cold_head_but_emits_in_order_with_budget_and_xor() {
+        let now=Instant::now();let mut client=Client::new(now);
+        for group in 1..=6 {client.push(Command::Request{archive:1,group,urgent:true}).unwrap();}
+        let mut held=Held{prepared:vec![],ready:false};
+        assert!(client.output(&mut held,now,0).unwrap().is_empty());assert!(held.prepared.is_empty());
+        assert!(client.output(&mut held,now,2).unwrap().is_empty());assert_eq!(held.prepared,vec![(1,1),(1,2),(1,3),(1,4)]);
+        held.ready=true;client.xor=90;let mut bytes=vec![];
+        while bytes.len()<18 {let out=client.output(&mut held,now,2).unwrap();assert!(out.len()<=2);bytes.extend(out);}
+        assert_eq!(bytes,(1..=6).flat_map(|g|[1^90,g^90,99^90]).collect::<Vec<_>>());
+        assert!(client.output(&mut held,now,2).unwrap().is_empty());
+    }
+    #[test]
+    fn worker_preparation_respects_channel_capacity_deduplicates_and_defers_future_errors() {
+        let (requests,receive)=mpsc::sync_channel(1);let (_send,completed)=mpsc::sync_channel(1);
+        let mut worker=Worker {requests:Some(requests),completed:Some(completed),thread:None,pending:BTreeSet::new(),cache:BTreeMap::new(),order:VecDeque::new(),bytes:0,budget:1024,checksums:[0;23]};
+        worker.prepare(1,1).unwrap();worker.prepare(1,1).unwrap();worker.prepare(1,2).unwrap();
+        assert_eq!(worker.pending,BTreeSet::from([(1,1)]));assert_eq!(receive.try_recv().unwrap(),(1,1));
+        worker.prepare(1,2).unwrap();assert_eq!(receive.try_recv().unwrap(),(1,2));
+        worker.cache.insert((1,3),Err("future group failed".into()));
+        worker.prepare(1,3).unwrap();assert!(receive.try_recv().is_err());
+        assert!(worker.response(1,3).unwrap_err().to_string().contains("future group failed"));
     }
 }

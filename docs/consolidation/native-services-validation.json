@@ -1,5 +1,5 @@
 {
-  "status": "OBSERVED_PENDING_DURABILITY",
+  "status": "PASS_DURABLE_PREPARATION",
   "scope": "Earned native preparation acceptance observed in active session; no claim of completed guardian/reward path or whole-floor rendered acceptance.",
   "base_main": "5026d3ea58423e8890b0e78387de9bb8b0d5c670",
   "workshop_saved": {
@@ -351,5 +351,391 @@
   "current_binary": "C77E634E3501FFB41021FC3C1F15A613260467E15F2A38007D0EE3D68CE9E8BA",
   "client_main_reported": "ef1bdf15b6dae299229597d94326c81308e2c534",
   "preservation": "All earlier failed native attempts, exact source backups and synthetic tests retained. No profile resources/XP/progress injected. Actual burn7954 differs from explicitly synthetic fixture323.",
-  "remaining": "Active-session services require final SaveACK/restart cross-check. Fresh Imp/Warden/victory/reward/full-pack/replay/multiplayer still pending. Flat gray composed ground/limited visible shell, desktop GDI and audio are separate client presentation limitations under review."
+  "remaining": "Fresh Imp/Warden/reward/full-pack/replay/restart/multiplayer still pending. Native Imp attempt correctly refused outside court; no guardian acceptance. Normal entrance route identified from exact static collision and awaits native walking. Authored gray underlay/palette explains flat color locally; full shading/shell/GDI/audio acceptance remains separate.",
+  "durable_followup": {
+    "status": "PASS_DURABLE_EARNED_PREPARATION",
+    "scope": "Ordinary native Forge-Altar-Kitchen completed and normal logout saved. All23 earned raw shrimp conserved as12 cooked315 and11 burnt7954, no raw left; tools and worn dagger retained.",
+    "server_sha256": "C77E634E3501FFB41021FC3C1F15A613260467E15F2A38007D0EE3D68CE9E8BA",
+    "client_sha256": "0A506755D2845CA50655A419ED114215C9D12106E9CF780F530FBD321AA5D8C7",
+    "run": [
+      1,
+      7,
+      0,
+      0
+    ],
+    "character": {
+      "id": 1,
+      "x": 10434,
+      "z": 128,
+      "level": 0,
+      "last_logout": "2026-10-20 11:40:17",
+      "world_id": null
+    },
+    "items": [
+      {
+        "inv_type": 93,
+        "slot": 0,
+        "obj": 1351,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 1,
+        "obj": 315,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 2,
+        "obj": 303,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 3,
+        "obj": 2347,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 4,
+        "obj": 590,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 5,
+        "obj": 946,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 6,
+        "obj": 315,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 7,
+        "obj": 7954,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 8,
+        "obj": 315,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 9,
+        "obj": 315,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 10,
+        "obj": 1265,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 11,
+        "obj": 7954,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 12,
+        "obj": 7954,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 13,
+        "obj": 315,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 14,
+        "obj": 7954,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 15,
+        "obj": 7954,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 16,
+        "obj": 315,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 17,
+        "obj": 315,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 18,
+        "obj": 7954,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 19,
+        "obj": 315,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 20,
+        "obj": 7954,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 21,
+        "obj": 7954,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 22,
+        "obj": 315,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 23,
+        "obj": 7954,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 24,
+        "obj": 315,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 25,
+        "obj": 315,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 26,
+        "obj": 315,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 94,
+        "slot": 3,
+        "obj": 1205,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 95,
+        "slot": 0,
+        "obj": 7954,
+        "count": 2,
+        "vars": 0
+      }
+    ],
+    "stats": [
+      [
+        0,
+        2,
+        2,
+        1200
+      ],
+      [
+        1,
+        1,
+        1,
+        0
+      ],
+      [
+        2,
+        1,
+        1,
+        0
+      ],
+      [
+        3,
+        10,
+        10,
+        11936
+      ],
+      [
+        4,
+        1,
+        1,
+        0
+      ],
+      [
+        5,
+        1,
+        1,
+        450
+      ],
+      [
+        6,
+        1,
+        1,
+        0
+      ],
+      [
+        7,
+        12,
+        12,
+        18000
+      ],
+      [
+        8,
+        1,
+        1,
+        0
+      ],
+      [
+        9,
+        1,
+        1,
+        0
+      ],
+      [
+        10,
+        9,
+        9,
+        11500
+      ],
+      [
+        11,
+        1,
+        1,
+        0
+      ],
+      [
+        12,
+        1,
+        1,
+        0
+      ],
+      [
+        13,
+        2,
+        2,
+        935
+      ],
+      [
+        14,
+        3,
+        3,
+        1750
+      ],
+      [
+        15,
+        3,
+        3,
+        1740
+      ],
+      [
+        16,
+        1,
+        1,
+        0
+      ],
+      [
+        17,
+        1,
+        1,
+        0
+      ],
+      [
+        18,
+        1,
+        1,
+        0
+      ],
+      [
+        19,
+        1,
+        1,
+        0
+      ],
+      [
+        20,
+        2,
+        2,
+        830
+      ],
+      [
+        21,
+        1,
+        1,
+        0
+      ],
+      [
+        22,
+        1,
+        1,
+        0
+      ],
+      [
+        23,
+        1,
+        1,
+        0
+      ],
+      [
+        24,
+        1,
+        1,
+        0
+      ]
+    ],
+    "save_ack": {
+      "slot": 2,
+      "generation": 608,
+      "tick": 3820
+    },
+    "snapshot_sha256": "bd7686183d90016a2be7cec643f427eaea9a41769efe0ff42bd317b2bad6d1b8",
+    "preserved_files": 635,
+    "imp_attempt": "Correctly refused outside court; no guardian damage or credit. Static entrance route found, native waypoint retry pending.",
+    "remaining": "Fresh Imp/Warden/reward/full-pack/replay/restart/multiplayer pending. Uniform gray ground has authored underlay5803/palette basis; complete shading/shell/GDI/audio not accepted."
+  }
 }

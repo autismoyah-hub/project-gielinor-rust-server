@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "scope": "Bounded asynchronous disk preparation preserves JS5 response semantics. Native performance comparison on this binary pending.",
+  "base_main": "04e00977373c32520bf8b62058d626522ec057fe",
+  "root_cause": "Client output previously queued only the first cold group, then waited for the next pump before scheduling later already-received requests.",
+  "change": "An optional default-no-op Provider preparation hook lets the existing disk Worker prepare at most4 eligible queued groups per connection. Existing worker channel/cache bounds remain. Wire emission stays head-first with exact XOR, continuation and output byte budget. Awaiting low-priority transfer retains original200ms rules. Cached future errors surface at the ordinary response head. No world timing, account, gameplay, content package or client protocol changes.",
+  "focused": {
+    "log": "consolidation-js5-pipeline-lib-20261020-01.log",
+    "sha256": "a974b18f710d52c7d41632b72ad829c386217d75f0a8dbef13267dd5c364a48e"
+  },
+  "network": {
+    "log": "consolidation-js5-pipeline-network-20261020-01.log",
+    "sha256": "f5910cb91704d3f93b9033c2d1c2569fb32824503e8361d208c5f20a6c16bb16"
+  },
+  "network_counts": {
+    "socket": 1,
+    "disk_worker": 3,
+    "original_rsprot_reference_fixture_cases": 2048,
+    "tcp_lifecycle": 3,
+    "failures": 0
+  },
+  "server_libraries": {
+    "log": "consolidation-js5-pipeline-server-lib-20261020-01.log",
+    "sha256": "49425d3fed187a27d6b9dca7b5a0e37860e79f6cbbfa08e8ad9c2c01ff96acaf"
+  },
+  "authored_cache_startup": {
+    "log": "consolidation-js5-pipeline-cache-check-20261020-01.log",
+    "sha256": "3d7ce9397db9ee70aaf39d2251289e7145a10b1dabd7e9a8b6003caa2dbf03a9"
+  },
+  "exact_build": {
+    "run": "consolidation-js5-pipeline-20261020-001",
+    "sha256": "A9B70BD12E3830B0FF8003313D50266D10F73D8E0654668C733505250F0E7A63",
+    "sourceCount": 598,
+    "archive": "C:\\Projects\\OSRSRSPS\\rust-server\\work\\integration\\server\\A9B70BD12E3830B0FF8003313D50266D10F73D8E0654668C733505250F0E7A63"
+  },
+  "native": "Prior C77E server completed real preparation; it has not been replaced during active gameplay. Coordinated clean candidate swap follows normal SaveACK. No native latency improvement asserted yet.",
+  "preserved_edit_guard": "First source edit expected CRLF but actual file was LF; guard stopped before any source mutation. Original helper/backup retained; resume asserted exact untouched bytes. All compilation/test runs passed."
+}

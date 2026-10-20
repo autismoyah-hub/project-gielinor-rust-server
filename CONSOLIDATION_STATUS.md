@@ -436,3 +436,20 @@ visible shell; that client terrain/cutaway scope is under review. Desktop GDI an
 audio remain separate limitations. Whole-floor visual acceptance is not inferred
 from inventory/journal results. No prepared grants or forced outcomes were used.
 See `docs/consolidation/native-services-validation.json`.
+
+## Durable preparation and bounded JS5 read pipeline
+
+The006 native session logged out normally. SaveACK608 at tick3820 persisted
+run[1,7,0,0], all six tools, worn dagger and twelve cooked shrimp. All23 earned
+raw shrimp are conserved as12 cooked and11 burnt. The635 client evidence files
+and a read-only SQLite snapshot are preserved. The Imp attempt stopped outside
+its court and was correctly refused; the actual narrow south entrance route has
+been identified from production collision and still needs native traversal.
+
+A separate JS5 candidate now queues up to four eligible disk reads behind a
+cold response head without changing wire order or existing budgets. Two delayed
+provider tests,291 server library tests, real socket/worker checks,2048 original
+RSProt queue cases,three TCP lifecycle checks and exact authored startup pass.
+The old native server remained unchanged during play. Native timing on the new
+candidate is pending; a clean saved-session swap is coordinated with ORACLE.
+See `docs/consolidation/js5-pipeline-validation.json`.
