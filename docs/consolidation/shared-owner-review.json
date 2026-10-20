@@ -1,0 +1,270 @@
+{
+  "status": "REVIEWED_PARTIAL",
+  "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+  "destination_main": "c166cbfe094783fad2da233ca5c393ca90d1df53",
+  "scope": "Twenty-one explicit shared-owner hunk dispositions. Each maintained file matches committed HEAD. This is source review, not a completion percentage or new gameplay acceptance.",
+  "rows": [
+    {
+      "path": "crates/world/src/assembly.rs",
+      "classification": "Keep maintained owner",
+      "reason": "Experimental hunk removes precise/fractional awards, tool requirements and multi-material exchange in favor of older pair-only transaction. Maintained owner keeps these and its exact-slot atomic exchange.",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_diff_sha256": "884e93f9abf1adc112c2652f894cf06f26074c87e631388bd456cbfd814afade",
+      "maintained_sha256": "5f139c6f3f237078c1829a18d85c70c63e09d91e1bc0311af518bb975227a7fa",
+      "confirmed_markers": [
+        "complete_awarding_tenths",
+        "exchange_slots",
+        "prepare_reward_value"
+      ],
+      "new_production_changes": false
+    },
+    {
+      "path": "crates/world/src/bank.rs",
+      "classification": "Keep maintained owner",
+      "reason": "Older experimental boundary check omits maintained priority guard. Current deposit retains priority.is_none() before the range-end unnoted match.",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_diff_sha256": "85a5fbc51de515a5356f1f2b0fa133ed86efd7eaea7e29e904f4904866552705",
+      "maintained_sha256": "8ee6ac65ed842f62de6823ff459a37a04adbddff373c5ee48fa0846a7dfe3534",
+      "confirmed_markers": [
+        "priority.is_none() && bank.get(range.end)"
+      ],
+      "new_production_changes": false
+    },
+    {
+      "path": "crates/world/src/food.rs",
+      "classification": "Keep maintained owner",
+      "reason": "Experimental owner removes later selected-slot food profiles and attack-delay policy. Retain current selected-slot clone/commit, replacements, membership and stat/random healing support; no old file replacement.",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_diff_sha256": "194ed3e43338e343a645a8963e8bba0dc39f8a9dee47f60119f16652cbca423b",
+      "maintained_sha256": "490e90728c18bf0720ffaf97c1c5b2a256746e94727e21907636cecc3595a7a7",
+      "confirmed_markers": [
+        "debit.strict_slot = Some(slot)",
+        "allow_stack_remainder",
+        "RandomHealing"
+      ],
+      "new_production_changes": false
+    },
+    {
+      "path": "crates/world/src/gathering.rs",
+      "classification": "Keep maintained owner",
+      "reason": "Experimental best-tool selection collapses eligibility and quality to requirement alone. Current best_tool delegates to best_tool_by and retains first carried/equipped tie policy plus outfit transaction.",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_diff_sha256": "0be0fb9470876f5e7a6af2de11242a5a2ee1e474a24b177fd44c5399a916b9b7",
+      "maintained_sha256": "4c41e9630b68a2cf94bb9a956047f9b32abd2524197ed33440db86e7dce39da5",
+      "confirmed_markers": [
+        "best_tool_by",
+        "quality > current",
+        "quality >= current",
+        "reward_with_outfit"
+      ],
+      "new_production_changes": false
+    },
+    {
+      "path": "crates/world/src/loc_timers.rs",
+      "classification": "Keep maintained owner",
+      "reason": "Experimental revision-only replacement check loses the maintained deleted-location sentinel path. Preserve deleted_revision(original) and live replacement revision checks.",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_diff_sha256": "752f7b925a96f5fc7ea1d76a025b6b0c12fac9cd510be7dfb0b7e2f93e30ea6e",
+      "maintained_sha256": "38c470c6e45e39a2c613959f62b444e7f6e2bd24cfd5ffaf71f99050c52f4d9d",
+      "confirmed_markers": [
+        "replacement.id==crate::locations::DELETED_ID",
+        "locations.deleted_revision(original)"
+      ],
+      "new_production_changes": false
+    },
+    {
+      "path": "crates/world/src/potions.rs",
+      "classification": "Keep maintained owner",
+      "reason": "Experimental legacy item-ID consume is already retained for reference comparison. It must not replace current consume_slot clone/commit and strict selected-dose catalog checks. This is source-preservation review only, not resumed chemistry acceptance.",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_diff_sha256": "f2328b07b6964b9b4c5e88b8cf12305b70f938eaa8b61dc343fa9a6c2e3dafb6",
+      "maintained_sha256": "83f9224fd77e1650d97ae2b6f44d6c1b5b1042b3a5df0ecbe2ad9278db6d24bd",
+      "confirmed_markers": [
+        "pub fn consume_slot",
+        "pub fn consume(",
+        "debit.strict_slot=Some(slot)",
+        "next_stats=stats.clone()"
+      ],
+      "new_production_changes": false
+    },
+    {
+      "path": "crates/server/src/characters.rs",
+      "classification": "Adapted",
+      "reason": "Tower load/save coexists with chemistry rather than replacing it. Additive V13 and chemistry preservation tested earlier.",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_diff_sha256": "c094434e54effdcaef9c4cf4e4bee6aff3db4cac40e6eb4133a41e3fb6700f90",
+      "current_sha256": "791a48381db12a7a4938c99696a7b4b97919e725bd96cb488336bc63b7e64ced",
+      "confirmed_markers": [
+        "data.chemistry = a.chemistry",
+        "data.tower_run = a.tower_run",
+        "chemistry: data.chemistry",
+        "tower_run: data.tower_run"
+      ]
+    },
+    {
+      "path": "crates/server/src/dialogue.rs",
+      "classification": "Retained newer owner",
+      "reason": "Keep optional NPC so source-free location choices do not require a fabricated NPC.",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_diff_sha256": "86fe887e57745e752fdb4731bdb811abb201812a9ee8881bdb6f21c38822df61",
+      "current_sha256": "e3f46665f0287304242f14a8a6a34041b586356375f08300dba5d23e612b99e2",
+      "confirmed_markers": [
+        "pub npc: Option<NpcId>"
+      ]
+    },
+    {
+      "path": "crates/server/src/runtime/dialogue.rs",
+      "classification": "Retained newer owner",
+      "reason": "Preserve actual LocationChoice UI and NPC-optional resolution; experimental narrower NPC-only state would regress migrated ladders/menus.",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_diff_sha256": "54c95964f4365c0e11b11aec28ad7bcd0d42c9ff980197ec80ebd3474171a845",
+      "current_sha256": "dae0bd8b14bcb90013ee505752a6972b9891908eab664a39786e68560c6a172d",
+      "confirmed_markers": [
+        "DialogueEvent::LocationChoice",
+        "npc: None"
+      ]
+    },
+    {
+      "path": "crates/server/src/ground_sync.rs",
+      "classification": "Adapted",
+      "reason": "Shared receiver-local Graphic emission uses normal zone protocol; no separate Tower effect transport. Original1024-case reference evidence retained.",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_diff_sha256": "63fa07a8acb0216d01ff1b17c646ac3cd1775a24746eb4167b03c4c06006c588",
+      "current_sha256": "dfc1865e42bb739ad96267727817c890cdb7cd044c50f062cfd1eb16618d5e6a",
+      "confirmed_markers": [
+        "Update::Graphic",
+        "Object::Graphic"
+      ]
+    },
+    {
+      "path": "crates/server/src/login_init.rs",
+      "classification": "Adapted",
+      "reason": "Explicit runtime content flag supplies absent Attack preference zero without inventing persisted preference; no environment-global mode.",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_diff_sha256": "5d941a721da4eeb301993937caa9960d49e0b58304fd577b9c5ec422707c978e",
+      "current_sha256": "d06a288a9a23e08fa7fcc650126cace697e40a2c0a42c865a6e359640e61416d",
+      "confirmed_markers": [
+        "variables_for_content",
+        "tower && ty.client_code==22"
+      ]
+    },
+    {
+      "path": "crates/server/src/runtime/movement.rs",
+      "classification": "Adapted",
+      "reason": "Required hidden creator rejects movement; successful native actual Confirm/experience evidence retained.",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_diff_sha256": "b91242bd053b10410263b7af114adb7b116e7f3d374e6ef8be9be039f30c954f",
+      "current_sha256": "f8d753ffe5e2d3c63e2a36a510c8cc81d2e267024916d5d042f9269a35c331fa",
+      "confirmed_markers": [
+        "active.design.hidden"
+      ]
+    },
+    {
+      "path": "crates/server/src/runtime/tutorial.rs",
+      "classification": "Adapted",
+      "reason": "Only explicit Cinderworks onboarding replaces ordinary guide after real Confirm and experience choice.",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_diff_sha256": "bec0d9f8e4691545fba85f804dcdae5dce2936bb0e294e1286e0c4b9b8e5dc5b",
+      "current_sha256": "be9c60fa4361d11c1dd92846b56dc4dae09108d65a95c79739d2cd8a19d36fb4",
+      "confirmed_markers": [
+        "if cinderworks {Step::Completed}else{Step::GielinorTalk}"
+      ]
+    },
+    {
+      "path": "crates/world/src/simulation/combat_actions.rs",
+      "classification": "Retained newer owner",
+      "reason": "Keep checked consumable effective attack delays rather than experimental legacy action_delay-only replacement.",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_diff_sha256": "6aa66fb298d9a7acc7e51b1f55f1ffab425eaa73cd70f642745b50209bee9c04",
+      "current_sha256": "a12641cb287577a3773f4795ff6ae07e954cb06f3dafa7be21a54312b5474589",
+      "confirmed_markers": [
+        "effective_attack_delay",
+        "checked_add"
+      ]
+    },
+    {
+      "path": "crates/world/src/simulation/melee_actions.rs",
+      "classification": "Adapted",
+      "reason": "Admission denial cancels invalid requests; only temporary Warden shell keeps attack intent. Warden defend presentation moved into shared NPC catalog instead of melee-only override.",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_diff_sha256": "c468c074855285791e65e214921264419d3a26b510fe605489f863cd65303a61",
+      "current_sha256": "cbcaf7fda29242da9158ef27a076078beffd0076c93231f744f9fd0d16500ba6",
+      "confirmed_markers": [
+        "self.cinderworks_denial",
+        "SHELL_HINT"
+      ]
+    },
+    {
+      "path": "crates/world/src/simulation/npc_combat_actions.rs",
+      "classification": "Adapted",
+      "reason": "Configured guardians use their owned encounter hazard process; ordinary NPC combat owner retained.",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_diff_sha256": "0ba530574e293a77e4dc19e7a7bfa92a7da5071216931380839d69464c67eff3",
+      "current_sha256": "0de8624956494e51f21fdb6e393fd2e071bcd2b31009be1abd13155ed8046c66",
+      "confirmed_markers": [
+        "self.cinderworks_boss(id).is_some()"
+      ]
+    },
+    {
+      "path": "crates/world/src/simulation/smithing_actions.rs",
+      "classification": "Adapted",
+      "reason": "Character multiplier composes with global rate while preserving member checks, live member completion, repeat delays and output event owner.12,500 original reference cases and earned native bronze path retained.",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_diff_sha256": "de4b970596fe304b7d8d5501c02515fb5959f40a9286ba59ed80f1d07c43a432",
+      "current_sha256": "c18f502503096aaebf1005dc3f964bc33a4c79a28a32bf432ea55337ad2cc7df",
+      "confirmed_markers": [
+        "request.members && !p.member",
+        "complete_for_member",
+        "config.xp_rate * p.data.xp_rate_hundreds",
+        "repeat_delay.unwrap_or"
+      ]
+    },
+    {
+      "path": "crates/world/src/simulation/tower_combat_actions.rs",
+      "classification": "Adapted",
+      "reason": "Actual shared Attack starts scoped encounter admission; no synthetic boss defeat or second hit engine.",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_diff_sha256": "e978ece02d28a9bf70b51028f6b2c0a41ec950c0b51670d8257195a536041f59",
+      "current_sha256": "5c08b2433775ebe21989fd3c4d03d6edc8351e82239f5f5c368b9a1c94544fac",
+      "confirmed_markers": [
+        "self.begin_cinderworks_encounter"
+      ]
+    },
+    {
+      "path": "crates/world/src/simulation/tower_login_actions.rs",
+      "classification": "Adapted",
+      "reason": "Explicit Cinderworks suppresses old automatic diary/ash restoration so earned run cannot inherit unrelated progress.",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_diff_sha256": "b107d4836846c25f1cdbb63d8ddbece26fa6da05f64a87d25220055adc2efe28",
+      "current_sha256": "0190db60bccb1a8771723982b635e1276cdc36d38279838c7985689e68362f93",
+      "confirmed_markers": [
+        "self.cinderworks.is_some()",
+        "p.data.tower_run.id>0"
+      ]
+    },
+    {
+      "path": "crates/world/src/simulation/tower_offering_actions.rs",
+      "classification": "Adapted",
+      "reason": "Real offered inventory decrease near actual spatial altar credits independent service. No legacy diary/crate flags or forced walk for Cinderworks. Six-order shared completion test now covers it.",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_diff_sha256": "cb4edb7a14ab0b0d0d1a14c08450c58ca83b659d92a8789675e255d214b0c17e",
+      "current_sha256": "e7a66285e9e54aedef6685bad2a1aca56f8218b15d6dde2a993110783c1f451c",
+      "confirmed_markers": [
+        "offered&&near",
+        "continuation.before",
+        "Service::Altar"
+      ]
+    },
+    {
+      "path": "crates/world/src/simulation/tutorial_shrimp_actions.rs",
+      "classification": "Intentionally not imported",
+      "reason": "Experimental tutorial cook success credit would bypass ordinary shared burn/lifecycle policy. Actual Kitchen uses CookingMade observer and explicitly scoped canonical range alias. Original tutorial remains independent.",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_diff_sha256": "9adcfafde50acc4c1d54ede9f0fd1e045619f5da2e4517ecf03408b1d5c54950",
+      "current_sha256": "b7b88a77cda4bf8906ffded9d5167375dce6dbc70b6aa7e942ac5c5ba2669653",
+      "confirmed_markers": []
+    }
+  ],
+  "verification": "Existing per-adaptation reference/native/headless results remain individually scoped in adjacent consolidation receipts. No new source behavior or chemistry verification campaign introduced by this documentation checkpoint.",
+  "remaining": "Other S090 paths and tooling capabilities still require reconciliation; native Kitchen/Altar/encounter/reward and final branch retirement approval remain incomplete."
+}

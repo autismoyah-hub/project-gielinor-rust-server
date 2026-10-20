@@ -406,3 +406,15 @@ acceptance is not inferred from encoder tests. Blender/extended animation tools
 remain recoverable for separate dependency review; historical packagers retain
 stale ID assumptions and were not made current namespace authorities. T-CORE is
 partially adopted. See `docs/consolidation/static-tools-validation.json`.
+
+## Explicit shared-owner reconciliation
+
+Twenty-one source hunks now have recorded ownership decisions against the exact
+experimental handoff. The maintained files match committed main. These decisions
+retain newer OpenRune precision, member/slot/consumable policies and location
+menus while selecting scoped Tower character, presentation, admission, service
+and onboarding adapters. Legacy tutorial cooking credit is not imported: Kitchen
+uses actual shared cooking output. Existing chemistry state remains alongside
+Tower saves; this review does not resume the paused independent chemistry work.
+Other S090 paths remain under review. No discovery or path count is a gameplay
+completion percentage. See `docs/consolidation/shared-owner-review.json`.
