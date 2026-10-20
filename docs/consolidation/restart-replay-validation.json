@@ -1,0 +1,74 @@
+{
+  "status": "PASS",
+  "scope": "Actual native server restart/portal/replay admission plus separately scoped headless25-coin replay payment and current multiplayer/observer regressions.",
+  "base_main": "2634178df160dd190f31370455bc5ab6ac38b019",
+  "native": {
+    "status": "PASS_NATIVE_RESTART_DEPARTURE_RETURN_REPLAY_ADMISSION",
+    "scope": "Actual same-binary server restart restored first clear/reward/possessions. Ordinary portal departure and return, plaque replay admission and unearned chest refusal conserved items and XP. Safe final native stop saved replay admission.",
+    "server_sha256": "A9B70BD12E3830B0FF8003313D50266D10F73D8E0654668C733505250F0E7A63",
+    "client_sha256": "0A506755D2845CA50655A419ED114215C9D12106E9CF780F530FBD321AA5D8C7",
+    "run": [
+      2,
+      0,
+      8,
+      1
+    ],
+    "character": {
+      "id": 1,
+      "x": 10419,
+      "z": 106,
+      "level": 0,
+      "last_logout": "2026-10-20 12:58:53",
+      "world_id": null
+    },
+    "coins": 500,
+    "beer": 1,
+    "possessions_and_xp_unchanged": true,
+    "departure": [
+      3224,
+      3218,
+      0
+    ],
+    "return": [
+      10420,
+      110,
+      0
+    ],
+    "native_exit": {
+      "timeout": false,
+      "completed": "2026-10-20T12:58:43.6286291Z",
+      "exit_code": 0
+    },
+    "snapshot_sha256": "2969b6250295e3e7b104176d5b8fe922444cf12fe17c30722fe58efb27d248f4",
+    "preserved_client_files": 94,
+    "preserved_helper_failure": "First preservation assumed10418,106; final native66 and actual save are10419,106 after chest reach. Corrected check uses actual immutable snapshot, keeping all copied files and failed helper.",
+    "remaining": "A second full native replay victory/reward25 and simultaneous native peer rendering were not exercised. Replay reward/state and multiplayer/observer behavior retain focused headless tests; full scene/hazard visual/GDI/audio parity remains separate."
+  },
+  "headless_replay_chest": {
+    "log": "consolidation-replay-reward-20261020-02.log",
+    "sha256": "544a3f84448251640df8caefc0465719321b879b430cf4c2c9e841f7aa42b10d"
+  },
+  "replay_payment_coverage": "Explicit synthetic completed-run prerequisites; actual plaque/chest World operations, stacking coins with no room for beer must not partially pay25, shared tool transfer to bank, delayed acknowledgement, exactly525total coins/two beers after two clears, duplicate/refused claims and first-paid history conservation. This is not a second native earned victory.",
+  "preserved_failed_compile": {
+    "log": "consolidation-replay-reward-20261020-01.log",
+    "sha256": "1e0fd2576c3fd03403c40cbfe3f2855c39c8739f50aa15dc4fc9d1183a5106da"
+  },
+  "compile_correction": "New test borrowed separate world fields instead of cloning non-Clone Catalog; no production trait/rule change. Failed source/log preserved.",
+  "broad_library_regression": {
+    "log": "consolidation-earned-first-clear-workspace-20261020-01.log",
+    "sha256": "ac3737de93979bcc15cd23ca79bdfd541404c8cffa40fc916787b67a071e2524",
+    "passed": 1014,
+    "failed": 0,
+    "existing_ignored": 1,
+    "scope": "Five-crate working-tree library run before the final test-only replay addition. Two existing private Argon2/logout opt-in tests are locally enabled; public default keeps their ignore guards. New replay test is separately passed, not added arithmetically to this result."
+  },
+  "headless_peer_observer_cases": [
+    "tower_scene::tests::independent_observers_derive_restoration_from_their_own_durable_run",
+    "tower_scene::tests::region_reset_relogin_and_replay_reconstruct_the_correct_landmarks",
+    "tower_scene::tests::quiet_courts_hide_peer_telegraphs_without_hiding_the_active_owners_effects",
+    "simulation::cinderworks_encounter_actions::tests::court_ownership_denies_others_and_logout_resets_only_transient_state",
+    "zones::graphic_tests::receiver_graphics_are_private_and_never_replay_after_idle_or_rebuild"
+  ],
+  "peer_scope": "Headless World/server/zone tests, not a simultaneous live TCP/native-renderer pair. No second renderer launched.",
+  "limits": "A full second native replay victory/payment and simultaneous native peer rendering remain unexercised; actual first clear is verified separately. Complete floor/hazard visual/GDI/audio parity and independent off-host backup are not claimed."
+}

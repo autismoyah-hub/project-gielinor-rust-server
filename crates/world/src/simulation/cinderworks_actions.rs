@@ -429,4 +429,45 @@ mod tests {
         assert_eq!(world.data(actor).unwrap().inventory.free_space(), 3);
         assert!(!world.cinderworks_checkpoint_pending(actor));
     }
+    #[test]
+    fn replay_chest_awards_twenty_five_once_after_real_bank_space_and_save_ack() {
+        let (mut world,actor,locations)=fixture(4);
+        operate(&mut world,actor,locations[0]);world.cinderworks_checkpoint_saved(actor).unwrap();
+        let complete=|world:&mut World| {
+            let run=&mut world.data_mut(actor).unwrap().tower_run;
+            for service in [Service::Forge,Service::Kitchen,Service::Altar] {assert!(run.service(service));}
+            assert!(run.defeat_imp());assert!(run.defeat_warden());
+        };
+        // Explicit synthetic completed-run preconditions isolate reward policy;
+        // actual earned native combat is covered separately by its receipts.
+        complete(&mut world);operate(&mut world,actor,locations[2]);
+        world.cinderworks_checkpoint_saved(actor).unwrap();
+        assert_eq!(world.data(actor).unwrap().inventory.get(2).unwrap().count,500);
+        let first=world.data(actor).unwrap().inventory.clone();
+        operate(&mut world,actor,locations[0]);assert_eq!(world.data(actor).unwrap().tower_run.id,1);
+        world.cinderworks_checkpoint_saved(actor).unwrap();
+        assert_eq!(world.data(actor).unwrap().tower_run.id,2);assert_eq!(world.data(actor).unwrap().inventory,first);
+        operate(&mut world,actor,locations[2]);assert_eq!(world.data(actor).unwrap().inventory,first,"unearned replay claim must not pay");
+        complete(&mut world);let pending=world.data(actor).unwrap().tower_run;
+        for _ in 0..3 {
+            operate(&mut world,actor,locations[2]);assert_eq!(world.data(actor).unwrap().inventory,first);
+            assert_eq!(world.data(actor).unwrap().tower_run,pending);assert!(!world.cinderworks_checkpoint_pending(actor));
+        }
+        // Coins can stack, but the extra beer still needs room: no partial25
+        // credit may escape when the pack is full. Move an actual tool to bank.
+        let data=&mut world.players.get_mut(actor.slot as usize).unwrap().data;
+        crate::inventory::transfer(&mut data.inventory,&mut data.bank,&world.object_types,0,1,Insert::new(10,1),false).unwrap();
+        let before=world.data(actor).unwrap().clone();operate(&mut world,actor,locations[2]);
+        assert!(world.cinderworks_checkpoint_pending(actor));assert_eq!(world.data(actor).unwrap().inventory,before.inventory);
+        assert_eq!(world.submit(actor,Action::Walk {destination:locations[0].coords,run:false}),Err(ActionError::LoggingOut));
+        for _ in 0..8 {world.tick().unwrap();}
+        assert_eq!(world.data(actor).unwrap().inventory,before.inventory,"unacknowledged replay grant is unavailable");
+        world.cinderworks_checkpoint_saved(actor).unwrap();assert!(world.cinderworks_checkpoint_saved(actor).is_err());
+        let paid=world.data(actor).unwrap().clone();
+        assert_eq!(paid.inventory.get(2).unwrap().count,525);assert_eq!(paid.inventory.slots().iter().flatten().filter(|i|i.id==101).map(|i|i.count).sum::<i32>(),2);
+        assert_eq!(paid.bank.slots().iter().flatten().filter(|i|i.id==10).map(|i|i.count).sum::<i32>(),1);
+        assert_eq!(paid.tower_run.clears,2);assert!(paid.tower_run.first_reward_paid);assert!(!paid.tower_run.reward_pending);
+        for _ in 0..3 {operate(&mut world,actor,locations[2]);assert_eq!(world.data(actor).unwrap().inventory,paid.inventory);assert_eq!(world.data(actor).unwrap().tower_run,paid.tower_run);}
+    }
+
 }

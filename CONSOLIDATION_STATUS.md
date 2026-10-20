@@ -498,3 +498,28 @@ than claiming an unconditional relogin teleport or an uncaptured rescue trace.
 No production combat/logout rule changed. Warden/reward state acceptance does
 not imply complete visual hazard/shading/shell/GDI/audio parity.
 See `docs/consolidation/first-clear-validation.json`.
+
+## Restart, departure, replay and final shared regression
+
+The same immutable server restarted the unchanged earned save. Native login
+restored500 coins,one beer,HP12 and the paid first clear. Another chest search
+refused payment. Normal portal departure reached3224,3218; return reached the
+sanctuary10420,110. Reading the plaque admitted run2 with objectives reset while
+retaining the first-paid marker,clear count,all possessions and XP. An unearned
+replay claim paid nothing. Safe stop persisted run[2,0,8,1] at10419,106;94 client
+evidence files and a read-only database snapshot are preserved.
+
+A new headless transactional test additionally exercises the25-coin replay
+payment:full pack cannot leak partial stacked coins,banking one tool makes room,
+no grant is spendable before save acknowledgement,and repeated claims preserve
+525total coins/two beers across two synthetic completed-run prerequisites. The
+eight focused action tests pass. Initial test compilation tried to clone the
+non-Clone catalog;the corrected split borrow and original failure are retained.
+This is not a second native earned replay.
+
+Final five-crate library regression passes1014 tests with one existing ignored
+test. It includes two locally enabled private opt-ins,plus current two-player
+court ownership,per-observer restoration and receiver-private/no-replay graphics
+cases. Those are headless tests;simultaneous native peer rendering was not run.
+The replay addition is separately scoped rather than added to the broad count.
+See `docs/consolidation/restart-replay-validation.json`.
