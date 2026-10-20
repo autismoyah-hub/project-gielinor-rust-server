@@ -86,7 +86,7 @@ mod tests {
                 break_route_finding: false,
             },
         );
-        w.cinderworks = Some(Config {
+        w.configure_cinderworks(Config {
             origin,
             spatial: crate::cinderworks_floor::Spatial::default(),
             outside: CoordGrid::new(3225, 3218, 0).unwrap(),
@@ -119,7 +119,7 @@ mod tests {
                 cook_animation: 897,
                 queue: 123,
             }),
-        });
+        }).unwrap();
         // Explicit synthetic curves isolate service credit; production keeps
         // its existing Wiki-backed recipes and random burn behavior.
         w.cooking = Some(Cooking {
@@ -193,7 +193,7 @@ mod tests {
         let origin=w.cinderworks.as_ref().unwrap().origin;
         for x in at.x()..origin.x()+80 {for z in origin.z()+32..origin.z()+80 {w.collision.add(x,z,0,0x200000);}}
         w.npc_options.types.insert(200,crate::npc_options::Definition {operations:[Some("Net".into()),None,None,None,None],..Default::default()});
-        w.npc_handlers.insert((200,1),crate::npc_interaction::Handler::TutorialFishing);
+        assert_eq!(w.npc_handlers.get(&(200,1)),Some(&crate::npc_interaction::Handler::CinderworksFishing));
         w.drain_events();(w,actor,target,shore)
     }
     #[test]
@@ -220,6 +220,18 @@ mod tests {
             assert_eq!(w.data(actor).unwrap().inventory,before.inventory);
             assert_eq!(w.data(actor).unwrap().stats,before.stats);
         }
+    }
+    #[test]
+    fn content_configuration_owns_net_operation_without_replacing_tutorial_or_live_handlers() {
+        let (mut w,_,_,_)=fixture(2,false);let config=w.cinderworks.clone().unwrap();
+        assert!(w.configure_cinderworks(config.clone()).is_err());
+        let mut clean=World::default();clean.npc_handlers.insert((9478,1),crate::npc_interaction::Handler::TutorialFishing);
+        clean.configure_cinderworks(config.clone()).unwrap();
+        assert_eq!(clean.npc_handlers.get(&(9478,1)),Some(&crate::npc_interaction::Handler::TutorialFishing));
+        assert_eq!(clean.npc_handlers.get(&(200,1)),Some(&crate::npc_interaction::Handler::CinderworksFishing));
+        let mut conflict=World::default();conflict.npc_handlers.insert((200,1),crate::npc_interaction::Handler::Bank);
+        assert!(conflict.configure_cinderworks(config).is_err());assert!(conflict.cinderworks.is_none());
+        assert_eq!(conflict.npc_handlers.get(&(200,1)),Some(&crate::npc_interaction::Handler::Bank));
     }
     #[test]
     fn full_inventory_and_stale_npc_do_not_create_fish_or_xp() {
@@ -307,6 +319,33 @@ mod tests {
         assert_eq!(data.inventory.get(1).unwrap().id, 323);
         assert_eq!(data.stats.fine_xp(7), 0);
         assert_eq!(data.tower_run.services, 0);
+    }
+    #[test]
+    fn actual_queued_smelting_then_forging_restores_workshop_only_after_eligible_output() {
+        let (mut w,actor,_,_)=fixture(28,false);
+        for (slot,id) in [(1,436),(2,438),(3,2347)] {
+            w.data_mut(actor).unwrap().inventory.restore_slot(slot,Some(Item {id,count:1,vars:0})).unwrap();
+        }
+        w.smithing=Some(crate::smithing_make::Config {queue:900,skill:13,max_level:99,xp_rate:1.0,tutorial:None});
+        let request=|product,consumed,xp,tools|std::sync::Arc::new(crate::smithing_make::Request {
+            product,produced:1,consumed,xp,animation:899,cycles:2,impurity:false,members:false,repeat_delay:None,required_level:1,required_tools:tools,
+        });
+        w.start_smithing(actor,request(2349,vec![(436,1),(438,1)],6.2,vec![]),1).unwrap();
+        assert_eq!(w.data(actor).unwrap().tower_run.services,0);
+        for _ in 0..4 {w.tick().unwrap();}
+        assert_eq!(w.data(actor).unwrap().tower_run.services,0,"a bronze bar alone does not restore the workshop");
+        assert_eq!(crate::smithing_make::total(&w.data(actor).unwrap().inventory,&w.object_types,2349),1);
+        w.drain_events();
+        w.start_smithing(actor,request(13,vec![(2349,1)],12.5,vec![2347]),1).unwrap();
+        assert_eq!(w.data(actor).unwrap().tower_run.services,0,"UI/job admission does not credit a service");
+        let mut progress=0;
+        for _ in 0..4 {w.tick().unwrap();progress+=w.drain_events().iter().filter(|e|matches!(e,WorldEvent::CinderworksProgress {actor:a,..} if *a==actor)).count();}
+        let data=w.data(actor).unwrap();
+        assert_eq!(data.tower_run.services,Service::Forge as u8);assert_eq!(progress,1);
+        assert_eq!(data.stats.fine_xp(13),187);
+        for (id,count) in [(436,0),(438,0),(2349,0),(13,1),(2347,1),(303,1)] {
+            assert_eq!(crate::smithing_make::total(&data.inventory,&w.object_types,id),count);
+        }
     }
     #[test]
     fn forge_credit_does_not_manufacture_items_xp_or_accept_other_actor_events() {

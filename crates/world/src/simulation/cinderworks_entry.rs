@@ -2,6 +2,16 @@
 //! stay independent of the new run; recovery tools are claimed at the plaque.
 use super::*;
 impl World {
+    /// Install explicit content operations before player admission. The ordinary
+    /// tutorial fishing owner remains independent of the authored net spots.
+    pub fn configure_cinderworks(&mut self,config:crate::tower_cinderworks::Config)->Result<(),&'static str> {
+        if self.actors().next().is_some() || self.cinderworks.is_some() {return Err("Configure Cinderworks once before admission");}
+        if let Some(work)=config.work {
+            if self.npc_handlers.contains_key(&(work.fishing_spot,1)) {return Err("Cinderworks fishing operation already owned");}
+            self.npc_handlers.insert((work.fishing_spot,1),crate::npc_interaction::Handler::CinderworksFishing);
+        }
+        self.cinderworks=Some(config);Ok(())
+    }
     pub(super) fn process_cinderworks_arrival(&mut self, slot: usize) {
         let Some(config) = self.cinderworks.as_ref() else {
             return;

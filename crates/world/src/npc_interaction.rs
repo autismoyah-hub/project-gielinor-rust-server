@@ -10,6 +10,7 @@ pub enum Handler {
     Combat,
     Person,
     TutorialFishing,
+    CinderworksFishing,
     MagicTutor(crate::tutorial_magic_tutor::Config),
     LectureTutor(crate::tutorial_lecture_tutor::Config),
     CombatTutor(crate::tutorial_combat_tutor::Config),

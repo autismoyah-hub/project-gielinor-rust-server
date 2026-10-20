@@ -265,7 +265,7 @@ impl World {
         }
         // Authored fish occupy blocked water. A qualified net action may finish
         // from the existing three-tile shore range; collision stays unchanged.
-        let cinderworks_fishing = pending.handler == Some(Handler::TutorialFishing)
+        let cinderworks_fishing = pending.handler == Some(Handler::CinderworksFishing)
             && self.cinderworks.as_ref().is_some_and(|c|crate::tower_layout::contains(c.origin,source)
                 && c.work.is_some_and(|w|npc.type_id==w.fishing_spot&&crate::tower_layout::contains(c.origin,npc.spawn)));
         let fishing_approach=cinderworks_fishing&&source.chebyshev_distance(target)<=3;
@@ -297,8 +297,10 @@ impl World {
                 }
                 return true;
             }
-            if cinderworks_fishing {
-                self.clear_npc_route(slot);self.start_cinderworks_fishing(slot,pending.target);return true;
+            if pending.handler==Some(Handler::CinderworksFishing) {
+                self.clear_npc_route(slot);
+                if cinderworks_fishing {self.start_cinderworks_fishing(slot,pending.target);}
+                return true;
             }
             if pending.handler == Some(Handler::TutorialFishing) {
                 self.clear_npc_route(slot);
@@ -378,7 +380,7 @@ impl World {
                 Some(Handler::Combat) => unreachable!("Combat handled above"),
                 Some(Handler::SkillcapeVendor(_)) => unreachable!("Vendor dialogue handled above"),
                 Some(Handler::Person) => unreachable!("Dialogue handled above"),
-                Some(Handler::TutorialFishing) => unreachable!("Fishing handled above"),
+                Some(Handler::TutorialFishing | Handler::CinderworksFishing) => unreachable!("Fishing handled above"),
                 Some(
                     Handler::TutorialGuide { .. }
                     | Handler::SurvivalTutor(_)

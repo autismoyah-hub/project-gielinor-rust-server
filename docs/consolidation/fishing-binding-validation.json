@@ -1,0 +1,314 @@
+{
+  "status": "PASS",
+  "scope": "Dedicated application fishing binding and cross-system headless acceptance; native fish/service/encounter chain still pending",
+  "base_main": "f2193d8d27d1cdfa1a58e7a045bc904ce0df2144",
+  "adapted_source": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+  "native_regression": "Candidate7375 still rejected two actual shore Net actions. The previous geometry test manually supplied TutorialFishing while real startup registered that handler only for9478; authored3317 had no handler. Geometry-only PASS did not establish native fishing acceptance. All attempts remain preserved.",
+  "change": "A shared pre-admission World configuration method installs dedicated CinderworksFishing for the configured operation. Actual Runtime and the test fixture use that method. Original tutorial9478 remains separate; existing handler conflicts and reconfiguration after admission are rejected. Scoped shore dispatch retains collision, live-target and inventory checks.",
+  "focused": {
+    "log": "consolidation-fishing-binding-world-20261020-02.log",
+    "sha256": "a04d0ef5b2225a398ad7159c15cdb16c86511313cf1a9d148d81fad5d3f6edd1",
+    "passed": 8,
+    "coverage": [
+      "Production-factory operation registration without manual fixture injection",
+      "Blocked shore ordinary NPC action; stale/full bag/out-of-scope refusals",
+      "Real queued copper+tin smelt then dagger forge; inputs consumed, tools retained, XP awarded and workshop credited once only after eligible output",
+      "Burned cooking does not restore kitchen"
+    ]
+  },
+  "preserved_failed_attempt": {
+    "log": "consolidation-fishing-binding-world-20261020-01.log",
+    "sha256": "c0398d19d1fbb43f5d886cb1b309c9247484f214f78a93afe1671e09fbb97669"
+  },
+  "queued_forge": {
+    "log": "consolidation-queued-forge-acceptance-20261020-01.log",
+    "sha256": "5db04bba626f344864e3cbfd5faa6e96a37c79fde6dff431f8ddf63207b8ef7f"
+  },
+  "libraries": {
+    "log": "consolidation-fishing-binding-libs-20261020-01.log",
+    "sha256": "a3cc990e5e8b1e5ee9033ed27211bdc4c607bf2a809f024aa2415ca8a487f59d",
+    "world_passed": 658,
+    "server_passed": 289,
+    "failed": 0,
+    "preexisting_ignored": 1
+  },
+  "tcp_lifecycle": {
+    "log": "consolidation-fishing-binding-tcp-20261020-01.log",
+    "sha256": "f836e903ac7a47ec1f63599cbd86eb5013335495cb082332bbc22a404aa49407",
+    "passed": 3,
+    "failed": 0
+  },
+  "real_cache_application": {
+    "log": "consolidation-fishing-binding-cache-check-20261020-01.log",
+    "sha256": "3d7ce9397db9ee70aaf39d2251289e7145a10b1dabd7e9a8b6003caa2dbf03a9"
+  },
+  "exact_build": {
+    "run": "consolidation-fishing-binding-20261020-002",
+    "sha256": "4994B9BB9C97666FAF108ADB7C7810A2BBFD7E29BC1113D9A2FADC74CFA17986",
+    "sourceCount": 598
+  },
+  "actual_visible_inventory_acceptance": {
+    "status": "PASS",
+    "scope": "Actual native visible inventory and ordinary pickaxe Wield followed by real server save; two fishing actions still RED on7375; no fish/XP/service acceptance",
+    "server_sha256": "7375C9B21B61B7A5156EE3E3DEE7433FD8463F9E677BCEAC79A2FB40F8E1F687",
+    "client_sha256": "159B602FC89E07F0627664F07084889B994940C652CA00F71F06F3BBB21F69F1",
+    "client_area": [
+      765,
+      503
+    ],
+    "actual_item_action": "Inventoryslot1 Pickaxe1265 Wield operation3; inventory removed and equipment slot3 gained one",
+    "tool_inventory_and_equipment": [
+      {
+        "inv_type": 93,
+        "slot": 0,
+        "obj": 1351,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 2,
+        "obj": 303,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 3,
+        "obj": 2347,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 4,
+        "obj": 590,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 5,
+        "obj": 946,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 94,
+        "slot": 3,
+        "obj": 1265,
+        "count": 1,
+        "vars": 0
+      }
+    ],
+    "run": [
+      1,
+      0,
+      0,
+      0
+    ],
+    "stats": [
+      [
+        0,
+        1,
+        1,
+        0
+      ],
+      [
+        1,
+        1,
+        1,
+        0
+      ],
+      [
+        2,
+        1,
+        1,
+        0
+      ],
+      [
+        3,
+        10,
+        10,
+        11540
+      ],
+      [
+        4,
+        1,
+        1,
+        0
+      ],
+      [
+        5,
+        1,
+        1,
+        0
+      ],
+      [
+        6,
+        1,
+        1,
+        0
+      ],
+      [
+        7,
+        1,
+        1,
+        0
+      ],
+      [
+        8,
+        1,
+        1,
+        0
+      ],
+      [
+        9,
+        1,
+        1,
+        0
+      ],
+      [
+        10,
+        1,
+        1,
+        0
+      ],
+      [
+        11,
+        1,
+        1,
+        0
+      ],
+      [
+        12,
+        1,
+        1,
+        0
+      ],
+      [
+        13,
+        1,
+        1,
+        0
+      ],
+      [
+        14,
+        1,
+        1,
+        0
+      ],
+      [
+        15,
+        3,
+        3,
+        1740
+      ],
+      [
+        16,
+        1,
+        1,
+        0
+      ],
+      [
+        17,
+        1,
+        1,
+        0
+      ],
+      [
+        18,
+        1,
+        1,
+        0
+      ],
+      [
+        19,
+        1,
+        1,
+        0
+      ],
+      [
+        20,
+        2,
+        2,
+        830
+      ],
+      [
+        21,
+        1,
+        1,
+        0
+      ],
+      [
+        22,
+        1,
+        1,
+        0
+      ],
+      [
+        23,
+        1,
+        1,
+        0
+      ],
+      [
+        24,
+        1,
+        1,
+        0
+      ]
+    ],
+    "logout": {
+      "id": 1,
+      "x": 10435,
+      "z": 122,
+      "level": 0,
+      "last_logout": "2026-10-20 10:25:09",
+      "world_id": null
+    },
+    "save_ack": "slot2 generation608 tick3720",
+    "snapshot_sha256": "0e83ec659f7ef129d869a3337342cdcb6f3fe9fa83ab8e25940d2a5df14b8861",
+    "preserved_files": 65,
+    "limits": "GDI/audio remain separately reported client limitations; no native fishing acceptance on this candidate"
+  },
+  "initial_profile_policy": "Herblore3/174XP,Runecrafting2/83XP,HP10/1154XP and5x are existing login policy, not earned service evidence",
+  "new_native_attempt": "Actual13D native Net action observed12shrimp/600XP then23shrimp/1150XP and ordinary walk cancellation; final durable logout verification and further services pending",
+  "preservation": "Protected26 pending paths, all private native evidence, fixtures and resource dependencies retained; original branch heads not deleted; chemistry independent campaign paused and GR10 unchanged",
+  "paired_native_before_lineending_cleanup_sha256": "13D858DF1BCB9987FCCED51DAEC75110B749AF8A56D88AFC0DA4F202CFCCB56A",
+  "source_note": "Git whitespace guard caught the new enum line inheriting CR. Corrected only insertion line ending while preserving every original source byte; normalized Rust text identical to all passing tests and paired13D native build. Final exact source rebuilt separately.",
+  "native_fishing_observation": {
+    "status": "PASS_OBSERVED",
+    "scope": "Actual native visible Net action and ordinary walk cancellation; no profile seeding. Active session, final durable logout verification pending.",
+    "server_sha256": "13D858DF1BCB9987FCCED51DAEC75110B749AF8A56D88AFC0DA4F202CFCCB56A",
+    "client_sha256": "159B602FC89E07F0627664F07084889B994940C652CA00F71F06F3BBB21F69F1",
+    "first_raw_shrimp": 12,
+    "first_fishing_xp": 600,
+    "later_raw_shrimp": 23,
+    "later_fishing_xp": 1150,
+    "normal_walk_position": [
+      0,
+      10432,
+      116
+    ],
+    "pickaxe_still_worn": true,
+    "frame_sha256": "135ab46ae9e08185b9523638cffbd0cf033709fa7a45fe8d4d7d81988929847d",
+    "files": [
+      {
+        "path": "state-4.json",
+        "sha256": "333de0c16a797c0f8174946ca0510c0c0b62567d1acd54ae106fe2a002193834",
+        "bytes": 4215
+      },
+      {
+        "path": "state-9.json",
+        "sha256": "880f29cdbea445590a4d9c1e11df5061d7a485e3241dd2f8c7ff0558e6d4a7de",
+        "bytes": 5968
+      },
+      {
+        "path": "frame-5.bmp",
+        "sha256": "135ab46ae9e08185b9523638cffbd0cf033709fa7a45fe8d4d7d81988929847d",
+        "bytes": 1539234
+      }
+    ]
+  }
+}

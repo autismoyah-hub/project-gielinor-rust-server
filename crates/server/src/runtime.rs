@@ -582,7 +582,7 @@ impl<B: AccountBackend> Runtime<B> {
     /// Select the authored Floor One runtime explicitly before admitting players.
     pub fn configure_cinderworks(&mut self, config:gielinor_world::tower_cinderworks::Config)->io::Result<()> {
         if !self.connections.is_empty(){return Err(io::Error::other("Configure Cinderworks before admission"));}
-        self.world.cinderworks=Some(config);
+        self.world.configure_cinderworks(config).map_err(io::Error::other)?;
         if let Some(journal)=&mut self.journal {journal.cinderworks=true;}
         Ok(())
     }

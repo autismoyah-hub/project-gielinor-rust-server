@@ -340,3 +340,23 @@ lifecycle tests pass; one existing world test remains ignored. The exact candida
 is in another same-save native run. Fish/service/encounter/reward acceptance is
 still pending. The acceptance contract now lists exact ore and supply targets.
 Evidence: `docs/consolidation/shore-fishing-validation.json`.
+
+## Dedicated fishing operation binding
+
+The geometry-only candidate still failed the native Net retry. Review found
+that the live authored spot had no handler: ordinary tutorial fishing uses9478,
+whereas the authored spot is3317. The previous unit fixture supplied a handler
+manually and therefore did not reproduce real startup. That gap is now explicit.
+
+Actual Runtime and the shore fixture now use one pre-admission content factory
+that registers a dedicated net operation. It retains the normal tutorial owner
+and rejects conflicting/live reconfiguration. Eight service tests pass, including
+ordinary shore actions and real queued smelt/forge conservation with output-only
+workshop credit. All658 world and289 server library tests, three TCP lifecycle
+tests and real-cache application startup pass. Native fishing is still pending.
+
+Separately, the corrected native765x503 client visibly rendered all six tools
+and exercised the actual pickaxe Wield menu. Inventory removed that pickaxe,
+equipment gained it once, and normal logout saved the change without XP or run
+progress. Sixty-five files and the database are preserved. GDI/audio limitations
+remain separate. Evidence: `docs/consolidation/fishing-binding-validation.json`.
