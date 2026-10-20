@@ -1,0 +1,17 @@
+[package]
+name="crypto-common"
+version="0.1.6"
+edition="2018"
+[lib]
+path="src/lib.rs"
+[features]
+std = []
+[dependencies.generic-array]
+path = "../generic-array-0.14.7"
+features = ["more_lengths"]
+[dependencies.typenum]
+path = "../typenum-1.17.0"
+
+[lints.rust]
+unexpected_cfgs="allow"
+deprecated="allow"

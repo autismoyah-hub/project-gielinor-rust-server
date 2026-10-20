@@ -1,0 +1,11 @@
+[package]
+name="version_check"
+version="0.9.5"
+edition="2015"
+build=false
+[lib]
+path="src/lib.rs"
+
+[lints.rust]
+unexpected_cfgs="allow"
+deprecated="allow"

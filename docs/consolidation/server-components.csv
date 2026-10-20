@@ -1,0 +1,20 @@
+component,status,evidence_or_remaining_work,reviewed_source
+S-001,Retained,Exact existing foundations; no older engine replacement,f9180b23ae1e158a296489a3730a8ae697a71de2
+S-002,Requires adaptation,Exact detached authored-floor publication next,f9180b23ae1e158a296489a3730a8ae697a71de2
+S-003,Requires adaptation,Authored floor and spatial inputs preserved; runtime mount pending,f9180b23ae1e158a296489a3730a8ae697a71de2
+S-004,Partially integrated,Pure run state and storage; gameplay/checkpoint hooks pending,f9180b23ae1e158a296489a3730a8ae697a71de2
+S-005,Partially integrated,Additive V13; divergent V12 refused; native upgrade/restart validated; offline importer remains explicit policy,f9180b23ae1e158a296489a3730a8ae697a71de2
+S-006,Requires adaptation,Save ACK barrier and unique internal completion tokens pending,f9180b23ae1e158a296489a3730a8ae697a71de2
+S-007,Requires adaptation,Current-floor entry/recovery pending,f9180b23ae1e158a296489a3730a8ae697a71de2
+S-008,Requires adaptation,Reuse maintained shared production handlers,f9180b23ae1e158a296489a3730a8ae697a71de2
+S-009,Requires adaptation,Current-floor Imp/Warden acceptance pending,f9180b23ae1e158a296489a3730a8ae697a71de2
+S-010,Requires adaptation,Persisted run claim markers present; earned runtime reward path pending,f9180b23ae1e158a296489a3730a8ae697a71de2
+S-011,Requires adaptation,Observer-specific restoration pending,f9180b23ae1e158a296489a3730a8ae697a71de2
+S-012,Requires adaptation,Current-floor population/configuration pending,f9180b23ae1e158a296489a3730a8ae697a71de2
+S-013,Requires adaptation,Attack preference configuration pending,f9180b23ae1e158a296489a3730a8ae697a71de2
+S-014,Partially integrated,Immutable loader/package diagnostic verified; launch mount pending,f9180b23ae1e158a296489a3730a8ae697a71de2
+S-015,Blocked,Regular-tree policy remains GR-10 gated,f9180b23ae1e158a296489a3730a8ae697a71de2
+S-016,Retained,Existing ordinary handlers/save worker retained,f9180b23ae1e158a296489a3730a8ae697a71de2
+S-017,Partially integrated,Native baseline passed; new-floor tooling/acceptance pending,f9180b23ae1e158a296489a3730a8ae697a71de2
+S-018,Requires adaptation,Distinct maintained current-floor launch receipt pending,f9180b23ae1e158a296489a3730a8ae697a71de2
+S-090,Requires adaptation,Review remaining fork-era capabilities selectively,f9180b23ae1e158a296489a3730a8ae697a71de2

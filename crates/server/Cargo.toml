@@ -12,3 +12,7 @@ gielinor-protocol = { path = "../protocol" }
 gielinor-world = { path = "../world" }
 gielinor-storage = { path = "../storage" }
 gielinor-cache = { path = "../cache" }
+
+[[example]]
+name = "cinderworks_package_check"
+path = "examples/cinderworks_package_check.rs"

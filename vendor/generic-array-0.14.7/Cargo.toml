@@ -1,0 +1,16 @@
+[package]
+name="generic-array"
+version="0.14.7"
+edition="2015"
+[lib]
+path="src/lib.rs"
+[features]
+more_lengths = []
+[dependencies.typenum]
+path = "../typenum-1.17.0"
+[build-dependencies.version_check]
+path = "../version_check-0.9.5"
+
+[lints.rust]
+unexpected_cfgs="allow"
+deprecated="allow"

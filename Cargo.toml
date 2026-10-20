@@ -1,7 +1,7 @@
 [workspace]
 members = ["crates/world", "crates/protocol", "crates/storage", "crates/server", "crates/cache"]
 resolver = "2"
-exclude = ["vendor/num-bigint-0.4.6", "vendor/num-integer-0.1.46", "vendor/num-traits-0.2.19", "vendor/autocfg-1.4.0", "vendor/adler2-2.0.1", "vendor/miniz_oxide-0.8.9", "vendor/libbz2-rs-sys-0.2.2"]
+exclude = ["vendor/num-bigint-0.4.6", "vendor/num-integer-0.1.46", "vendor/num-traits-0.2.19", "vendor/autocfg-1.4.0", "vendor/adler2-2.0.1", "vendor/miniz_oxide-0.8.9", "vendor/libbz2-rs-sys-0.2.2", "vendor/sha2-0.10.8", "vendor/cfg-if-1.0.0", "vendor/digest-0.10.7", "vendor/block-buffer-0.10.4", "vendor/crypto-common-0.1.6", "vendor/generic-array-0.14.7", "vendor/typenum-1.17.0", "vendor/version_check-0.9.5"]
 default-members = ["crates/world", "crates/protocol", "crates/storage", "crates/server", "crates/cache"]
 
 [workspace.package]

@@ -75,3 +75,5 @@ pub mod tutorial_ui;
 
 #[cfg(windows)]
 pub mod anvil;
+
+pub mod cinderworks_contract;

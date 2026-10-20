@@ -46,3 +46,4 @@ pub mod sequences;
 pub mod fonts;
 pub mod constructed;
 pub mod tower_shell;
+pub mod asset_package;

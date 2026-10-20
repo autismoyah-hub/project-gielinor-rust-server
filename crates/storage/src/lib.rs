@@ -14,3 +14,5 @@ pub mod varps;
 mod tower_diary;
 #[cfg(windows)]
 mod chemistry;
+#[cfg(windows)]
+mod tower_run;

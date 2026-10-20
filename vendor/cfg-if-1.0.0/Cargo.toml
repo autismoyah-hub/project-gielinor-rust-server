@@ -1,0 +1,10 @@
+[package]
+name="cfg-if"
+version="1.0.0"
+edition="2018"
+[lib]
+path="src/lib.rs"
+
+[lints.rust]
+unexpected_cfgs="allow"
+deprecated="allow"

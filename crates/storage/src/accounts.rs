@@ -1,7 +1,7 @@
 use crate::sqlite::{Database, Error, Value};
 use gielinor_world::{inventory::Item, CoordGrid};
 use std::collections::BTreeMap;
-const MIGRATIONS: [&str; 12] = [
+const MIGRATIONS: [&str; 13] = [
     include_str!("../migrations/V1__init.sql"),
     include_str!("../migrations/V2__add_run_energy_to_characters.sql"),
     include_str!("../migrations/V3__add_realm_config_columns.sql"),
@@ -14,6 +14,7 @@ const MIGRATIONS: [&str; 12] = [
     include_str!("../migrations/V10__tower_diary.sql"),
     include_str!("../migrations/V11__tower_bones_offered.sql"),
     include_str!("../migrations/V12__chemistry_state.sql"),
+    include_str!("../migrations/V13__tower_run.sql"),
 ];
 fn int(v: i64) -> Value {
     Value::Integer(v)
@@ -59,6 +60,7 @@ fn i32_value(v: &Value) -> Result<i32, Error> {
 pub struct Account {
     pub tower_diary: Option<gielinor_world::tower_diary::Progress>,
     pub chemistry: gielinor_world::chemistry::State,
+    pub tower_run: gielinor_world::tower_run::Run,
     pub tower_arrival: gielinor_world::tower_arrival::State,
     pub account_id: i64,
     pub character_id: i64,
@@ -99,6 +101,7 @@ pub struct Stat {
 pub struct Save {
     pub tower_diary: Option<gielinor_world::tower_diary::Progress>,
     pub chemistry: gielinor_world::chemistry::State,
+    pub tower_run: gielinor_world::tower_run::Run,
     pub tower_arrival: gielinor_world::tower_arrival::State,
     pub account_id: i64,
     pub character_id: i64,
@@ -177,6 +180,15 @@ impl Accounts {
                     return Err(Error::from(
                         "Non-contiguous schema migration history".to_string(),
                     ));
+                }
+            }
+            // Version 12 had incompatible meanings in separate experimental histories.
+            // Refuse the experimental branch before applying any maintained migration.
+            if applied.len() >= 12 {
+                let columns = db.query("PRAGMA table_info(chemistry_state)", &[], 32)?;
+                let names = columns.iter().map(|row| string(&row[1])).collect::<Result<Vec<_>,_>>()?;
+                if names != ["character_id", "remaining", "stop_on_crumble"] {
+                    return Err(Error::from("Incompatible V12 schema: expected maintained chemistry state; experimental Tower saves require an offline copy/import into a fresh maintained database".to_string()));
                 }
             }
             for (index, migration) in MIGRATIONS.iter().enumerate().skip(applied.len()) {
@@ -258,6 +270,7 @@ impl Accounts {
         let tower_diary = crate::tower_diary::load(&self.db, character_id)?;
         Ok(Some(Account {
             chemistry: crate::chemistry::load(&self.db,character_id)?,
+            tower_run: crate::tower_run::load(&self.db,character_id)?,
             tower_diary,
             tower_arrival,
             account_id: integer(&r[0])?,
@@ -301,6 +314,7 @@ impl Accounts {
             db.execute("INSERT INTO tower_arrival(character_id,kit_given,staff_taken,diary_progress,bones_offered) VALUES(?,?,?,?,?) ON CONFLICT(character_id) DO UPDATE SET kit_given=excluded.kit_given,staff_taken=excluded.staff_taken,diary_progress=excluded.diary_progress,bones_offered=COALESCE(excluded.bones_offered,tower_arrival.bones_offered)", &[int(s.character_id),int(s.tower_arrival.kit_given as i64),int(s.tower_arrival.staff_taken as i64),int(s.tower_arrival.diary_progress as i64),s.tower_arrival.bones_offered.map_or(Value::Null,|v|int(v as i64))])?;
             if let Some(progress) = s.tower_diary { crate::tower_diary::save(db, s.character_id, progress)?; }
             crate::chemistry::save(db,s.character_id,s.chemistry)?;
+            crate::tower_run::save(db,s.character_id,s.tower_run)?;
             for (id,stat) in &s.stats {if !(0..=2_000_000_000).contains(&stat.fine_xp){return Err(Error::from("Invalid fine XP".to_string()))}db.execute("INSERT INTO stats(character_id,stat_id,vis_level,base_level,fine_xp) VALUES(?,?,?,?,?) ON CONFLICT(character_id,stat_id) DO UPDATE SET vis_level=excluded.vis_level,base_level=excluded.base_level,fine_xp=excluded.fine_xp,updated_at=CASE WHEN stats.fine_xp!=excluded.fine_xp THEN CURRENT_TIMESTAMP ELSE stats.updated_at END",&[int(s.character_id),int(*id as i64),int(stat.visible as i64),int(stat.base as i64),int(stat.fine_xp as i64)])?;}
             db.execute("DELETE FROM inventories WHERE character_id=?",&[int(s.character_id)])?;
             for (kind,items) in &s.inventories {if items.is_empty(){continue}db.execute("INSERT INTO inventories(character_id,inv_type) VALUES(?,?)",&[int(s.character_id),int(*kind as i64)])?;let inv=db.last_insert_id();for (slot,item) in items {if *slot>=65536||item.id<0||item.count<1{return Err(Error::from("Invalid inventory item".to_string()))}db.execute("INSERT INTO inventory_objs VALUES(?,?,?,?,?)",&[int(inv),int(*slot as i64),int(item.id as i64),int(item.count as i64),int(item.vars as i64)])?;}}
@@ -372,6 +386,7 @@ mod tests {
             accounts.create("WikiShop", "fixture-hash-only", 1).unwrap();
         let mut save = Save {
             chemistry: Default::default(),
+            tower_run: Default::default(),
             tower_diary: None,
             tower_arrival: Default::default(),
             account_id,
@@ -491,6 +506,7 @@ mod tests {
         let (account_id, character_id) = accounts.create("WikiXp", "fixture-hash-only", 1).unwrap();
         let mut save = Save {
             chemistry: Default::default(),
+            tower_run: Default::default(),
             tower_diary: None,
             tower_arrival: Default::default(),
             account_id,
@@ -549,6 +565,7 @@ mod tests {
         let (account_id, character_id) = a.create("Parity_Actor", "fixture-hash-only", 1).unwrap();
         let mut s = Save {
             chemistry: gielinor_world::chemistry::State::restore(1,1).unwrap(),
+            tower_run: Default::default(),
             tower_diary: Some(gielinor_world::tower_diary::Progress {
                 counts: [5, 4, 2, 1, 0, 15],
                 actions: [true, false, true, false, true, false, true],
@@ -676,6 +693,7 @@ mod tests {
         )
         .unwrap();
         // Reconstruct the preceding owned schema entirely in this memory database.
+        a.db.execute("DROP TABLE tower_run", &[]).unwrap();
         a.db.execute("DROP TABLE chemistry_state", &[]).unwrap();
         a.db.execute("DROP TABLE tower_diary", &[]).unwrap();
         a.db.execute("DROP TABLE tower_arrival", &[]).unwrap();
@@ -694,8 +712,9 @@ mod tests {
         let mut a=Accounts::from_database(Database::memory().unwrap());a.initialize().unwrap();
         let (_,id)=a.create("Chemistry migration","fixture-hash-only",1).unwrap();
         a.db.execute("UPDATE characters SET run_energy=4321 WHERE id=?",&[int(id)]).unwrap();
+        a.db.execute("DROP TABLE tower_run",&[]).unwrap();
         a.db.execute("DROP TABLE chemistry_state",&[]).unwrap();
-        a.db.execute("DELETE FROM _rust_migrations WHERE version=12",&[]).unwrap();
+        a.db.execute("DELETE FROM _rust_migrations WHERE version>=12",&[]).unwrap();
         a.initialize().unwrap();a.initialize().unwrap();
         let loaded=a.load("chemistry migration",1).unwrap().unwrap();
         assert_eq!(loaded.run_energy,4321);assert_eq!(loaded.chemistry,Default::default());
@@ -706,3 +725,7 @@ mod tests {
     }
 
 }
+
+#[cfg(test)]
+#[path = "consolidation_tests.rs"]
+mod consolidation_tests;

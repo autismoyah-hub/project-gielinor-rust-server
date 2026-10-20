@@ -1,0 +1,17 @@
+[package]
+name="typenum"
+version="1.17.0"
+edition="2018"
+build="build/main.rs"
+[lib]
+path="src/lib.rs"
+[features]
+const-generics = []
+force_unix_path_separator = []
+i128 = []
+no_std = []
+strict = []
+
+[lints.rust]
+unexpected_cfgs="allow"
+deprecated="allow"

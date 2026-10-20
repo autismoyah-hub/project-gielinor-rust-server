@@ -12,3 +12,4 @@ gielinor-protocol = { path = "../protocol" }
 gielinor-world = { path = "../world" }
 miniz_oxide = { path = "../../vendor/miniz_oxide-0.8.9" }
 libbz2-rs-sys = { path = "../../vendor/libbz2-rs-sys-0.2.2" }
+sha2 = { path = "../../vendor/sha2-0.10.8", features = ["force-soft"] }

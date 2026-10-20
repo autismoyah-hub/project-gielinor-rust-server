@@ -1,0 +1,19 @@
+[package]
+name="digest"
+version="0.10.7"
+edition="2018"
+[lib]
+path="src/lib.rs"
+[features]
+default = ["core-api"]
+core-api = []
+alloc = []
+std = ["alloc", "crypto-common/std"]
+[dependencies.block-buffer]
+path = "../block-buffer-0.10.4"
+[dependencies.crypto-common]
+path = "../crypto-common-0.1.6"
+
+[lints.rust]
+unexpected_cfgs="allow"
+deprecated="allow"

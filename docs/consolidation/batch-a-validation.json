@@ -1,0 +1,75 @@
+{
+  "status": "PASS",
+  "batch": "A",
+  "base_commit": "7421b89d5e458a7022ff7c5afc51ea79b02406fe",
+  "adapted_source": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+  "regressions": {
+    "argv": [
+      "build.ps1",
+      "-Action",
+      "test",
+      "-CargoArgs",
+      "--workspace --tests --no-fail-fast -- --quiet"
+    ],
+    "exit_code": 0,
+    "passed": 1365,
+    "failed": 0,
+    "ignored": 2,
+    "summaries": 211,
+    "log": "consolidation-batch-a-regressions-20261019-01.log",
+    "sha256": "2111d174b09d796d32c19bd9c78d250042b7db1fc72894c0c72d87f5f1e1dbc4"
+  },
+  "unchanged_chemistry_v12_sha256": "ac5914fe13bc502b723dad98b8a43e5be1dc58e6a2dc36ba4488a3ccfb428a74",
+  "native_server_sha256": "BE54FB386BEFA3DAE8D60DEC0EA04FACAA7F59D2E753260C9B37315CA3A0635A",
+  "native_source_manifest_sha256": "bd2ae34f328485ba9b6835915035cea1f12e7e846ee49ba3d42fadcfa1662699",
+  "vendored_dependency_manifest_sha256": "9737f8e0a9bec296f1aa7322e5e6fdeacf8f2d3b70b7b90337bd02d6066648cd",
+  "vendored_files_verified": 141,
+  "native_upgrades": [
+    {
+      "run": "consolidation-upgrade-first-20261019-001",
+      "receipt_sha256": "975bba7cf0d6c6fe2957ebbb63270cbe1e695ccceb86d84b9a9ca848357dc7bc",
+      "scope": "Generic storage preservation only; chemistry values explicitly seeded in disposable copy. No chemistry gameplay exercised.",
+      "preserved": [
+        "characters",
+        "stats",
+        "tower_arrival",
+        "tower_diary",
+        "chemistry_state",
+        "inventory"
+      ]
+    },
+    {
+      "run": "consolidation-upgrade-restart-20261019-002",
+      "receipt_sha256": "ef7c24a9f5b2777426e74eb18d402a52a2f10261d05ad02a806950818b80995c",
+      "scope": "Generic storage preservation only; chemistry values explicitly seeded in disposable copy. No chemistry gameplay exercised.",
+      "preserved": [
+        "characters",
+        "stats",
+        "tower_arrival",
+        "tower_diary",
+        "chemistry_state",
+        "inventory"
+      ]
+    }
+  ],
+  "package": {
+    "content_sha256": "630bbb1bd738d4a105493f510b7273c51a6cfaca789bb7ae2d95c40d2bdb32d0",
+    "models": 95,
+    "objects": 70,
+    "stock_locations": 62194,
+    "final_locations": 62264,
+    "stock_dat2_unchanged": true,
+    "receipt_sha256": "140fbc7b40e6bb859030fb03330a40d3c33ab8b7b75279f7a7e4af0e77d551df"
+  },
+  "retained_failures": [
+    "First library run had stale world artifact; corrected timestamps and rebuilt suite accepted instead.",
+    "First native raw varp comparison rejected ordinary session updates; symbols and session_vars source resolved them. Raw failure retained.",
+    "First restart launcher hit default30-second startup timeout; server later listened and shut down cleanly. New run passed with explicit120-second bound."
+  ],
+  "limitations": [
+    "Private fixture/harness inputs remain private; automatic private integration-test discovery was enabled only in working manifests.",
+    "No current-floor earned gameplay acceptance in Batch A.",
+    "No automatic divergent experimental-V12 database importer.",
+    "Chemistry-specific independent/native verification remains user-paused."
+  ]
+}
