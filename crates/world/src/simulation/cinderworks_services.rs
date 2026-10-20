@@ -86,9 +86,9 @@ mod tests {
                 break_route_finding: false,
             },
         );
-        w.configure_cinderworks(Config {
+        let content=Config {
             origin,
-            spatial: crate::cinderworks_floor::Spatial::default(),
+            spatial: crate::cinderworks_floor::Spatial::parse("CINDERWORKS_SPATIAL 1\nM 67 53 56 57\n").unwrap(),
             outside: CoordGrid::new(3225, 3218, 0).unwrap(),
             plaque: 1,
             portal: 2,
@@ -113,13 +113,14 @@ mod tests {
                 raw: 317,
                 cooked: 315,
                 cooking_loc: 5,
+                cooking_source: 6,
                 fish_skill: 10,
                 cook_skill: 7,
                 fish_animation: 621,
                 cook_animation: 897,
                 queue: 123,
             }),
-        }).unwrap();
+        };
         // Explicit synthetic curves isolate service credit; production keeps
         // its existing Wiki-backed recipes and random burn behavior.
         w.cooking = Some(Cooking {
@@ -149,6 +150,10 @@ mod tests {
             )]
             .into(),
         });
+        let cooking=w.cooking.as_mut().unwrap();
+        cooking.fire=7;
+        cooking.surfaces.insert(6,crate::cooking::Surface {animation:cooking.animation,recipes:cooking.recipes.clone()});
+        w.configure_cinderworks(content).unwrap();
         w.held_use_types.insert(
             317,
             crate::held_use::Type {
@@ -226,12 +231,40 @@ mod tests {
         let (mut w,_,_,_)=fixture(2,false);let config=w.cinderworks.clone().unwrap();
         assert!(w.configure_cinderworks(config.clone()).is_err());
         let mut clean=World::default();clean.npc_handlers.insert((9478,1),crate::npc_interaction::Handler::TutorialFishing);
+        clean.cooking=w.cooking.clone();clean.cooking.as_mut().unwrap().surfaces.remove(&5);
         clean.configure_cinderworks(config.clone()).unwrap();
         assert_eq!(clean.npc_handlers.get(&(9478,1)),Some(&crate::npc_interaction::Handler::TutorialFishing));
         assert_eq!(clean.npc_handlers.get(&(200,1)),Some(&crate::npc_interaction::Handler::CinderworksFishing));
         let mut conflict=World::default();conflict.npc_handlers.insert((200,1),crate::npc_interaction::Handler::Bank);
         assert!(conflict.configure_cinderworks(config).is_err());assert!(conflict.cinderworks.is_none());
         assert_eq!(conflict.npc_handlers.get(&(200,1)),Some(&crate::npc_interaction::Handler::Bank));
+    }
+    #[test]
+    fn range_alias_preserves_source_and_configuration_failure_is_atomic() {
+        let (w,_,_,_)=fixture(2,false);let config=w.cinderworks.clone().unwrap();
+        assert_eq!(w.cooking.as_ref().unwrap().recipe(5,317).unwrap().xp,30);
+        assert_eq!(w.cooking.as_ref().unwrap().recipe(6,317).unwrap().xp,30);
+        for mode in 0..3 {
+            let mut clean=World::default();clean.cooking=w.cooking.clone();
+            if mode!=2 {clean.cooking.as_mut().unwrap().surfaces.remove(&5);}
+            if mode==0 {clean.cooking.as_mut().unwrap().surfaces.remove(&6);}
+            if mode==1 {clean.cooking.as_mut().unwrap().surfaces.get_mut(&6).unwrap().recipes.get_mut(&317).unwrap().cooked=999;}
+            assert!(clean.configure_cinderworks(config.clone()).is_err());
+            assert!(clean.cinderworks.is_none());assert!(!clean.npc_handlers.contains_key(&(200,1)));
+            assert_eq!(clean.cooking.as_ref().unwrap().surfaces.contains_key(&5),mode==2);
+        }
+    }
+    #[test]
+    fn alias_cannot_cook_at_another_location_with_the_same_id() {
+        let (mut w,actor,_,loc)=fixture(2,false);
+        let elsewhere=Location::new(loc.coords.translate(1,0,0).unwrap(),loc.id,10,0).unwrap();w.locations.load(elsewhere);
+        w.data_mut(actor).unwrap().inventory.restore_slot(1,Some(Item {id:317,count:1,vars:0})).unwrap();
+        let before=w.data(actor).unwrap().clone();
+        w.players.get_mut(actor.slot as usize).unwrap().location_revision=w.locations.revision(elsewhere);
+        w.start_cooking(actor.slot as usize,elsewhere,1,317);
+        for _ in 0..4 {w.tick().unwrap();}
+        assert_eq!(w.data(actor).unwrap().inventory,before.inventory);assert_eq!(w.data(actor).unwrap().stats,before.stats);
+        assert_eq!(w.data(actor).unwrap().tower_run.services,0);
     }
     #[test]
     fn full_inventory_and_stale_npc_do_not_create_fish_or_xp() {

@@ -8,6 +8,10 @@ impl World {
         selected: usize,
         raw: i32,
     ) {
+        if self.cinderworks.as_ref().is_some_and(|c|c.work.is_some_and(|w|
+            w.cooking_loc==target.id && c.spatial.at(c.origin,67,53).ok()!=Some(target.coords))) {
+            return;
+        }
         let Some(c) = self.cooking.as_ref() else {
             return;
         };

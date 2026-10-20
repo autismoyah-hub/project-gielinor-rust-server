@@ -39,6 +39,8 @@ pub struct WorkConfig {
     pub raw: i32,
     pub cooked: i32,
     pub cooking_loc: u32,
+    /// Canonical shared range whose recipes and equipment policy are retained.
+    pub cooking_source: u32,
     pub fish_skill: u8,
     pub cook_skill: u8,
     pub fish_animation: u16,

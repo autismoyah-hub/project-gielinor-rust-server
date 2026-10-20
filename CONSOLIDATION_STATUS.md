@@ -360,3 +360,24 @@ and exercised the actual pickaxe Wield menu. Inventory removed that pickaxe,
 equipment gained it once, and normal logout saved the change without XP or run
 progress. Sixty-five files and the database are preserved. GDI/audio limitations
 remain separate. Evidence: `docs/consolidation/fishing-binding-validation.json`.
+
+## Authored range binding and earned Workshop
+
+The native session caught23 shrimp, deposited them, withdrew five, mined copper
+and tin, smelted a bronze bar, then forged and wielded a bronze dagger through
+visible menus. Workshop was credited after output. The authoritative disconnect
+save retains18 raw shrimp in bank, five in pack, all tools and run[1,1,0,0].
+Ninety-four client evidence files and a read-only SQLite snapshot are preserved.
+
+The range attempt returned Nothing interesting happens. Its authored9736 had no
+ordinary cooking surface; the test fixture had masked this using its fire ID.
+The explicit content factory now binds the canonical range recipes and existing
+modifiers to that exact authored site. Ten focused tests and all289 server/660
+world library tests pass (one existing ignored test); exact real-cache authored
+startup passes. Native cooking remains pending on the new binary.
+
+A later real chicken Attack ended the client with PendingAsset archive8/group2176.
+The server logged damage, defeat and private drops, then saved on disconnect;
+rendered combat and pickup are unaccepted. ORACLE owns the asset repair. No
+Imp/Warden/reward acceptance is inferred. The owned old server stopped normally.
+See `docs/consolidation/cooking-binding-validation.json`.

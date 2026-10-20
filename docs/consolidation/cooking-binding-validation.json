@@ -1,0 +1,316 @@
+{
+  "status": "PASS",
+  "scope": "Authored range integration through existing shared cooking; native cooking acceptance pending. Earned native Workshop and banking separately saved.",
+  "base_main": "9bc1e58df65b36c4b30bf9575d23072ba990b1fe",
+  "source": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+  "root_cause": "Actual raw shrimp317 used on authored9736 had no shared recipe surface, returned Nothing interesting happens. Test fixture had treated9736 as its synthetic fire and masked the missing application binding.",
+  "change": "Explicit pre-admission factory clones canonical range26181 recipes/animation to authored9736 after all checks, retains applicable gauntlet eligibility and shared cape/member/burn/timing/XP policies. Cooking starts only at the exact spatial-contract range coordinate. No custom cooking engine or native profile edits.",
+  "focused": {
+    "log": "consolidation-cooking-binding-world-20261020-01.log",
+    "sha256": "4fbf3e6176c318b98c2d1d71fc5027523c9ab93a85f2ccec78b476308dc04061"
+  },
+  "libraries": {
+    "log": "consolidation-cooking-binding-libs-20261020-01.log",
+    "sha256": "c8455c8390c44e3e185a77efb8801301c819dce0b742b8fe522b83a554fbe9c5"
+  },
+  "library_counts": {
+    "server": 289,
+    "world": 660,
+    "failed": 0,
+    "existing_ignored": 1
+  },
+  "authored_real_cache_startup": {
+    "log": "consolidation-cooking-binding-cache-check-20261020-01.log",
+    "sha256": "3d7ce9397db9ee70aaf39d2251289e7145a10b1dabd7e9a8b6003caa2dbf03a9"
+  },
+  "exact_build": {
+    "run": "consolidation-cooking-binding-20261020-001",
+    "sha256": "C77E634E3501FFB41021FC3C1F15A613260467E15F2A38007D0EE3D68CE9E8BA",
+    "sourceCount": 598,
+    "archive": "C:\\Projects\\OSRSRSPS\\rust-server\\work\\integration\\server\\C77E634E3501FFB41021FC3C1F15A613260467E15F2A38007D0EE3D68CE9E8BA"
+  },
+  "earned_native": {
+    "status": "PASS_EARNED_SERVICES_SAVED",
+    "scope": "Actual native fishing, bank deposit/withdraw, mined copper+tin, shared bronze smelt, visible dagger forge, Workshop credit and wield; disconnect saved by authoritative worker.",
+    "server_sha256": "13D858DF1BCB9987FCCED51DAEC75110B749AF8A56D88AFC0DA4F202CFCCB56A",
+    "client_sha256": "159B602FC89E07F0627664F07084889B994940C652CA00F71F06F3BBB21F69F1",
+    "run": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "items": [
+      {
+        "inv_type": 93,
+        "slot": 0,
+        "obj": 1351,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 1,
+        "obj": 317,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 2,
+        "obj": 303,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 3,
+        "obj": 2347,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 4,
+        "obj": 590,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 5,
+        "obj": 946,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 6,
+        "obj": 317,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 7,
+        "obj": 317,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 8,
+        "obj": 317,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 9,
+        "obj": 317,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 10,
+        "obj": 1265,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 94,
+        "slot": 3,
+        "obj": 1205,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 95,
+        "slot": 0,
+        "obj": 317,
+        "count": 18,
+        "vars": 0
+      }
+    ],
+    "stats": [
+      [
+        0,
+        1,
+        1,
+        600
+      ],
+      [
+        1,
+        1,
+        1,
+        0
+      ],
+      [
+        2,
+        1,
+        1,
+        0
+      ],
+      [
+        3,
+        10,
+        10,
+        11738
+      ],
+      [
+        4,
+        1,
+        1,
+        0
+      ],
+      [
+        5,
+        1,
+        1,
+        0
+      ],
+      [
+        6,
+        1,
+        1,
+        0
+      ],
+      [
+        7,
+        1,
+        1,
+        0
+      ],
+      [
+        8,
+        1,
+        1,
+        0
+      ],
+      [
+        9,
+        1,
+        1,
+        0
+      ],
+      [
+        10,
+        9,
+        9,
+        11500
+      ],
+      [
+        11,
+        1,
+        1,
+        0
+      ],
+      [
+        12,
+        1,
+        1,
+        0
+      ],
+      [
+        13,
+        2,
+        2,
+        935
+      ],
+      [
+        14,
+        3,
+        3,
+        1750
+      ],
+      [
+        15,
+        3,
+        3,
+        1740
+      ],
+      [
+        16,
+        1,
+        1,
+        0
+      ],
+      [
+        17,
+        1,
+        1,
+        0
+      ],
+      [
+        18,
+        1,
+        1,
+        0
+      ],
+      [
+        19,
+        1,
+        1,
+        0
+      ],
+      [
+        20,
+        2,
+        2,
+        830
+      ],
+      [
+        21,
+        1,
+        1,
+        0
+      ],
+      [
+        22,
+        1,
+        1,
+        0
+      ],
+      [
+        23,
+        1,
+        1,
+        0
+      ],
+      [
+        24,
+        1,
+        1,
+        0
+      ]
+    ],
+    "character": {
+      "id": 1,
+      "x": 10403,
+      "z": 132,
+      "level": 0,
+      "last_logout": "2026-10-20 10:56:41",
+      "world_id": null
+    },
+    "save_ack": {
+      "actor_slot": 1,
+      "generation": 607,
+      "tick": 2780
+    },
+    "snapshot_sha256": "b12a6d855e14744d0cf5d243e382ae507f845c8af43f9df784cf8ad117574948",
+    "preserved_files": 94,
+    "cooking": "RED: old binary had no authored shared-range binding; zero Cooking XP, no Kitchen credit.",
+    "combat": "Client exited1 on PendingAsset archive8 group2176 after actual Attack. Server independently logged real chicken damage, defeat and private drop526+2138; native presentation, pickup and altar not accepted.",
+    "preserved_failure": "workshop-observation-001 copied immutable files but asserted ore output at action31 rather than completed state32. Original helper and partial evidence retained, no PASS receipt written there.",
+    "remaining": "Cook/Altar/Imp/Warden/reward/full-pack/replay/restart/multiplayer pending; GDI/audio separate."
+  },
+  "native_server_shutdown": {
+    "pid": 13172,
+    "exited": true,
+    "exitCode": 0,
+    "forced": false,
+    "utc": "2026-10-20T10:59:36.6679603Z"
+  },
+  "limits": "Cooking native retry, altar, Imp, Warden, rewards, full-pack, replay/restart and multiplayer still pending. Client PendingAsset archive8/group2176 prevents claiming rendered chicken combat or loot pickup. Server independently logged real chicken defeat/private drop before disconnect. Chemistry independent campaign remains paused, GR10 unchanged; original26 pending paths and private resources preserved."
+}

@@ -8,6 +8,21 @@ impl World {
         if self.actors().next().is_some() || self.cinderworks.is_some() {return Err("Configure Cinderworks once before admission");}
         if let Some(work)=config.work {
             if self.npc_handlers.contains_key(&(work.fishing_spot,1)) {return Err("Cinderworks fishing operation already owned");}
+            let cooking=self.cooking.as_mut().ok_or("Cinderworks requires shared cooking")?;
+            if work.cooking_loc==cooking.fire || cooking.surfaces.contains_key(&work.cooking_loc) {
+                return Err("Cinderworks cooking surface already owned");
+            }
+            let surface=cooking.surfaces.get(&work.cooking_source).ok_or("Cinderworks canonical range missing")?.clone();
+            if cooking.skill!=work.cook_skill || !surface.recipes.get(&work.raw).is_some_and(|r|r.raw==work.raw && r.cooked==work.cooked) {
+                return Err("Cinderworks cooking recipe mismatch");
+            }
+            config.spatial.at(config.origin,67,53).map_err(|_|"Invalid Cinderworks cooking site")?;
+            // Commit only after all bindings validate. Keep ordinary range recipes,
+            // timing, burns, membership and live equipment modifiers unchanged.
+            if let Some(g)=cooking.gauntlets.as_mut() {
+                if g.surfaces.contains(&work.cooking_source) {g.surfaces.insert(work.cooking_loc);}
+            }
+            cooking.surfaces.insert(work.cooking_loc,surface);
             self.npc_handlers.insert((work.fishing_spot,1),crate::npc_interaction::Handler::CinderworksFishing);
         }
         self.cinderworks=Some(config);Ok(())

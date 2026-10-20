@@ -6,7 +6,7 @@ S-004,Partially integrated,Run journal and shared gameplay hooks verified; expli
 S-005,Partially integrated,Additive V13; divergent V12 refused; native upgrade/restart validated; offline importer remains explicit policy,f9180b23ae1e158a296489a3730a8ae697a71de2
 S-006,Partially integrated,ACK-gated entry/tool/claim and boss producers tested; native current-floor persistence pending,f9180b23ae1e158a296489a3730a8ae697a71de2
 S-007,Partially integrated,Authored entry/return/rescue and real first-checkpoint worker recovery verified; native earned acceptance pending,f9180b23ae1e158a296489a3730a8ae697a71de2
-S-008,Partially integrated,Actual content factory net registration and queued forge/cooking conservation tested; native authored services pending,f9180b23ae1e158a296489a3730a8ae697a71de2
+S-008,Partially integrated,Native fishing/bank/mining/smelt/dagger Workshop saved; shared range binding tested; native Kitchen/Altar pending,f9180b23ae1e158a296489a3730a8ae697a71de2
 S-009,Partially integrated,Authored encounter kernel and owner effects tested; population/display/earned native victory pending,f9180b23ae1e158a296489a3730a8ae697a71de2
 S-010,Partially integrated,ACK-gated claim tested; audited legacy atomic rollback verified against2048 original cases; earned native claim/replay pending,f9180b23ae1e158a296489a3730a8ae697a71de2
 S-011,Partially integrated,Exact spatial observer restoration and MapAnim isolation tested; quiet NPC filtering/native pair pending,f9180b23ae1e158a296489a3730a8ae697a71de2

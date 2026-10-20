@@ -30,6 +30,7 @@ pub fn configure<B:AccountBackend>(runtime:&mut Runtime<B>,cache:&mut GameCache,
         work:Some(gielinor_world::tower_cinderworks::WorkConfig {
             fishing_spot:names.short("npc", "0_48_48_newbiefishing")?, net:names.id("obj", "net")? as i32,
             raw:names.id("obj", "raw_shrimp")? as i32,cooked:names.id("obj", "shrimp")? as i32,
+            cooking_source:names.id("loc", "range")?,
             cooking_loc:names.id("loc", "newbierange")?,fish_skill:names.id("stat", "fishing")? as u8,
             cook_skill:names.id("stat", "cooking")? as u8,fish_animation:names.short("seq", "human_smallnet")?,
             cook_animation:names.short("seq", "human_cooking")?,queue:names.id("queue", "smithing_make")? as i32,
