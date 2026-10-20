@@ -1,0 +1,62 @@
+{
+  "status": "PASS",
+  "batch": "B2 \u2014 checkpoint and save completion kernel",
+  "base_commit": "8a1e535c426e564e3d1c77d34a5496724991c5ff",
+  "adapted_source": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+  "libraries": {
+    "log": "consolidation-batch-b-checkpoints-libraries-20261019-03.log",
+    "sha256": "53fe0c085af4bb00f6c077b5fd745005d836a9769cb9ee9eb03a660f497c74ef",
+    "passed": 969,
+    "failed": 0,
+    "ignored": 1
+  },
+  "final_focused": {
+    "log": "consolidation-batch-b-checkpoints-focused-20261019-01.log",
+    "sha256": "34cb51ba1dbb4ef842e8bfdabc9ec03a2cb69efd2bef68e6206d11265647be8c",
+    "passed": 3,
+    "failed": 0
+  },
+  "encrypted_tcp_lifecycle": {
+    "log": "consolidation-batch-b-checkpoints-lifecycle-20261019-01.log",
+    "sha256": "b80f0ab8e67f511ff88b4e25070a4b1080445e8b6040466d9662b555781a8cc7",
+    "passed": 3,
+    "failed": 0
+  },
+  "worker": {
+    "status": "PASS",
+    "checkpoint_requests": 2,
+    "logout_requests": 1,
+    "checkpoint_preserved_last_logout": true,
+    "ordinary_logout_stamped": true,
+    "run": 1,
+    "coins": 10,
+    "duplicate_snapshot_conserved_inventory": true,
+    "scope": "Real account worker and SQLite transaction; synthetic disposable state, no earned gameplay",
+    "receipt_sha256": "818e1ca5efa197de9b048c79656c67f0dc422110b7fca9b9fe549e71f777d987"
+  },
+  "native_baseline": {
+    "run": "consolidation-checkpoint-baseline-20261019-001",
+    "server_sha256": "487BA2E11D08F2BB41630B9A43F5C2C27E3E193C54FF8E09058E89F721656104",
+    "source_manifest_sha256": "92f114ddac6133219e7f545ca356afd22050954b108bd21390ef818100e8a4db",
+    "save_ack": {
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "save_generation": 614,
+      "observed_tick": 127,
+      "save_completed": true
+    },
+    "scope": "Maintained default-floor native login, walking, Talk interface and clean logout. Not current-floor earned gameplay."
+  },
+  "notes": [
+    "First compile failed because module declaration preceded inner doc comment; corrected and failure log preserved.",
+    "Full library suite passed before restoring unchanged original line terminators and formatting only new checkpoint files. Normalized core source was identical; final focused/TCP/native checks compiled final bytes.",
+    "The private lifecycle harness now checks outward actor generation independently of the opaque internal worker token; old harness preserved.",
+    "In-session snapshots use an additive Checkpoint request on the same bounded worker/shared SQL transaction, preserving last_logout. Ordinary Save retains logout semantics.",
+    "Checkpoint snapshots cancel current pending location interaction consistently with the maintained logout owner."
+  ],
+  "limitations": [
+    "Snapshot/worker kernel is integrated; authoritative entry/tool/claim producers and current-floor native checkpoint acceptance remain pending.",
+    "No duplicate or late-ACK gameplay claim acceptance is asserted until actual content producers are connected.",
+    "Chemistry-specific independent/native verification remains user-paused."
+  ]
+}

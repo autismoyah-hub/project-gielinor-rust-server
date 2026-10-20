@@ -304,12 +304,19 @@ impl Accounts {
         }))
     }
     pub fn save(&mut self, s: &Save) -> Result<(), Error> {
+        self.save_snapshot(s,true)
+    }
+    /// Persist an in-session snapshot without fabricating a logout timestamp.
+    pub fn save_checkpoint(&mut self,s:&Save)->Result<(),Error>{
+        self.save_snapshot(s,false)
+    }
+    fn save_snapshot(&mut self,s:&Save,logout:bool)->Result<(),Error>{
         if s.coords == CoordGrid::NULL || !(0..=10000).contains(&s.run_energy) {
             return Err(Error::from("Invalid character save state".to_string()));
         }
         self.db.transaction(|db|{
             if db.query("SELECT id FROM characters WHERE id=? AND account_id=?",&[int(s.character_id),int(s.account_id)],1)?.is_empty(){return Err(Error::from("Character/account mismatch".to_string()))}
-            db.execute("UPDATE characters SET x=?,z=?,level=?,varps=?,last_login=?,run_energy=?,xp_rate_in_hundreds=?,last_logout=CURRENT_TIMESTAMP WHERE id=?",&[int(s.coords.x() as i64),int(s.coords.z() as i64),int(s.coords.level() as i64),text(&s.persistent_varps_json),optional(&s.last_login),int(s.run_energy as i64),int(s.xp_rate_hundreds as i64),int(s.character_id)])?;
+            db.execute("UPDATE characters SET x=?,z=?,level=?,varps=?,last_login=?,run_energy=?,xp_rate_in_hundreds=?,last_logout=CASE WHEN ? THEN CURRENT_TIMESTAMP ELSE last_logout END WHERE id=?",&[int(s.coords.x() as i64),int(s.coords.z() as i64),int(s.coords.level() as i64),text(&s.persistent_varps_json),optional(&s.last_login),int(s.run_energy as i64),int(s.xp_rate_hundreds as i64),int(logout as i64),int(s.character_id)])?;
             db.execute("UPDATE accounts SET display_name=?,known_device=?,modlevel=? WHERE id=?",&[optional(&s.display_name),s.known_device.map_or(Value::Null,int),optional(&s.modlevel),int(s.account_id)])?;
             db.execute("INSERT INTO tower_arrival(character_id,kit_given,staff_taken,diary_progress,bones_offered) VALUES(?,?,?,?,?) ON CONFLICT(character_id) DO UPDATE SET kit_given=excluded.kit_given,staff_taken=excluded.staff_taken,diary_progress=excluded.diary_progress,bones_offered=COALESCE(excluded.bones_offered,tower_arrival.bones_offered)", &[int(s.character_id),int(s.tower_arrival.kit_given as i64),int(s.tower_arrival.staff_taken as i64),int(s.tower_arrival.diary_progress as i64),s.tower_arrival.bones_offered.map_or(Value::Null,|v|int(v as i64))])?;
             if let Some(progress) = s.tower_diary { crate::tower_diary::save(db, s.character_id, progress)?; }

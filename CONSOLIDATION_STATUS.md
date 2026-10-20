@@ -11,7 +11,8 @@ The authoritative pre-consolidation source was `82888b93d619cd03facf1bf022d79078
 Tower adaptations are reviewed against the enclosed-floor server handoff
 `f9180b23ae1e158a296489a3730a8ae697a71de2` and its audited catalogs.
 The older experimental shared engine is not copied over the newer OpenRune engine.
-S-001/S-016 exact foundations are retained.
+S-001 foundations and ordinary handlers are retained. The existing S-016 worker
+remains the single owner, with the additive checkpoint request documented below.
 
 Both histories were bundled and verified. The 26 pre-existing dirty paths,
 private fixtures, ignored resources and deleted-in-worktree documentation were
@@ -145,3 +146,37 @@ cargo run --offline -j 2 -p gielinor-server --example cinderworks_floor_check --
 ART_TOWER contains interior-production and floor-handoff/runtime-package.
 Application opt-in serving, entry/recovery, save acknowledgments, content hooks
 and earned current-floor acceptance follow as separate verified increments.
+
+## Batch B2 — checkpoint persistence kernel
+
+Proposed inventory and Tower run snapshots stay behind a player barrier until
+the matching account-worker acknowledgment. Pending snapshots block further
+actions, queues and logout snapshots; interrupted shutdown waits and then saves
+the acknowledged state. Internal save tokens are unique across requests. Public
+save-completion generation remains the world actor generation, preserving the
+existing native observer contract. Old/duplicate completed tokens are ignored.
+
+The original bounded account worker remains the only writer. An additive
+Checkpoint request shares the existing account transaction while preserving
+last_logout. Ordinary Save continues to stamp logout metadata. This corrects
+an experimental snapshot behavior that would otherwise fabricate a logout.
+Chemistry V12 and the additive V13 schema are unchanged.
+
+Validation: 969 library tests passed, zero failed, one pre-existing ignored;
+three focused final-source tests and all three encrypted TCP lifecycle tests
+passed. The actual worker acknowledged two checkpoints and one ordinary save,
+preserved checkpoint logout metadata, conserved repeated-snapshot inventory,
+and reopened the saved state. A newly archived server passed the native
+login/walk/Talk/logout baseline with the original outward acknowledgment fields.
+The receipt is `docs/consolidation/checkpoint-validation.json`.
+
+Operator-only diagnostic, refusing an existing output directory:
+
+```
+cargo run --offline -j 2 -p gielinor-server --example cinderworks_checkpoint_check -- NEW_OUTPUT_DIRECTORY ARGON2_DLL
+```
+
+The diagnostic uses synthetic disposable state and does not demonstrate earned
+content. Entry, tool and claim producers, services, encounters and paired current-
+floor acceptance remain separate integration work. The library checkpoint
+producer is intentionally not yet exposed through a gameplay handler.

@@ -29,6 +29,8 @@ pub enum Request {
         token: u64,
         data: Save,
     },
+    /// Same transaction owner, with in-session rather than logout metadata.
+    Checkpoint { token:u64, data:Save },
 }
 pub enum Completion {
     Authenticated {
@@ -95,6 +97,10 @@ impl Worker {
                         } => Completion::Authenticated {
                             connection,
                             result: service.authenticate(login, unix_seconds, &local_datetime),
+                        },
+                        Request::Checkpoint {token,data} => Completion::Saved {
+                            token,
+                            result:service.accounts.save_checkpoint(&data).map_err(|e|e.message),
                         },
                         Request::Save { token, data } => Completion::Saved {
                             token,

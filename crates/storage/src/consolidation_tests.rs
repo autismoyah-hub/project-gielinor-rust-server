@@ -162,3 +162,22 @@ fn claim_and_chemistry_roll_back_together_on_late_database_failure() {
     assert!(relog.tower_run.defeat_warden());
     assert_eq!(relog.tower_run.reward(), Some(Reward::Replay));
 }
+
+#[test]
+fn checkpoint_commits_content_without_creating_or_overwriting_logout_metadata() {
+    let mut a=database();
+    let mut s=snapshot(&a,"consolidation");
+    assert!(a.load("consolidation",1).unwrap().unwrap().last_logout.is_none());
+    assert!(s.tower_run.begin());
+    a.save_checkpoint(&s).unwrap();
+    let c=a.load("consolidation",1).unwrap().unwrap();
+    assert!(c.last_logout.is_none());assert_eq!(c.tower_run,s.tower_run);
+    a.db.execute("UPDATE characters SET last_logout='2001-02-03 04:05:06' WHERE id=?",&[int(s.character_id)]).unwrap();
+    assert!(s.tower_run.service(Service::Forge));
+    a.save_checkpoint(&s).unwrap();
+    let c=a.load("consolidation",1).unwrap().unwrap();
+    assert_eq!(c.last_logout.as_deref(),Some("2001-02-03 04:05:06"));
+    assert_eq!(c.tower_run,s.tower_run);
+    a.save(&s).unwrap();
+    assert_ne!(a.load("consolidation",1).unwrap().unwrap().last_logout.as_deref(),Some("2001-02-03 04:05:06"));
+}

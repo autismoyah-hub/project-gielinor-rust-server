@@ -1,4 +1,5 @@
 //! Authoritative world state. Network clients and future testing actors use the same actions.
+mod cinderworks_checkpoint;
 use crate::npc::{Mode, Npc, RandomSource, SeededRandom};
 use crate::{
     collision::{CollisionMap, Strategy},
@@ -271,6 +272,7 @@ enum LocationAction {
     HeldUse { slot: i32, object: i32 },
 }
 struct Player {
+    cinderworks_checkpoint: Option<cinderworks_checkpoint::Pending>,
     dough_request: Option<crate::dough::Request>,
     tool_crafting_request:Option<crate::tool_crafting::Request>,
     counted_assembly_request:Option<crate::counted_assembly::Request>,
@@ -598,6 +600,8 @@ pub enum AdmissionError {
 }
 #[derive(Debug)]
 pub enum WorldEvent {
+    CinderworksCheckpoint { actor:ActorId, data:PlayerData },
+    CinderworksProgress { actor:ActorId, run:crate::tower_run::Run },
     CountedAssemblyMade {actor: ActorId, first: i32, second: i32, output: i32, count: i32},
     ChemistryDialog {actor:ActorId,token:Option<u64>,remaining:u8,breaking:bool},
     LocationRestoration(crate::loc_timers::Restoration),
@@ -1491,7 +1495,7 @@ impl World {
     /// Network movement must reject these states before running ifClose callbacks.
     pub fn movement_input_allowed(&self, id: ActorId) -> Result<bool, ActionError> {
         let player = self.player(id)?;
-        Ok(!player.protection.delayed() && !player.movement.rooted && !player.pickpocket_stunned())
+        Ok(!player.protection.delayed() && !player.movement.rooted && !player.pickpocket_stunned() && player.cinderworks_checkpoint.is_none())
     }
     pub fn count_dialog_token(&self, id: ActorId) -> Result<Option<u64>, ActionError> {
         Ok(self.player(id)?.bank_count.map(|pending| pending.0))
@@ -1686,7 +1690,7 @@ impl World {
     }
     pub fn submit(&mut self, id: ActorId, action: Action) -> Result<(), ActionError> {
         let p = self.player(id)?;
-        if p.saving || p.pending_logout {
+        if p.saving || p.pending_logout || p.cinderworks_checkpoint.is_some() {
             return Err(ActionError::LoggingOut);
         }
         if self.actions.len() >= 4096 {
@@ -1746,7 +1750,7 @@ impl World {
     fn process_pending_logout(&mut self, id: ActorId) -> Result<(), ActionError> {
         self.player(id)?;
         let p = self.players.get_mut(id.slot as usize).unwrap();
-        if !p.pending_logout || p.saving {
+        if !p.pending_logout || p.saving || p.cinderworks_checkpoint.is_some() {
             return Ok(());
         }
         let closing_modal = p.has_modal;
@@ -1860,7 +1864,7 @@ impl World {
         random: &mut impl RandomSource,
     ) -> Result<(), ActionError> {
         let p = self.player(id)?;
-        if p.saving || p.pending_logout {
+        if p.saving || p.pending_logout || p.cinderworks_checkpoint.is_some() {
             return Err(ActionError::LoggingOut);
         }
         match action {
@@ -2565,6 +2569,7 @@ impl World {
                         .map(|(_, e)| e.id)
                         .collect();
                     for slot in self.order.clone() {
+                        if self.players.get(slot).is_some_and(|p|p.cinderworks_checkpoint.is_some()) { continue; }
                         self.process_tower_arrival(slot);
                         self.process_prayer(slot,random);
                         self.resume_tutorial_fire(slot);
@@ -3158,6 +3163,7 @@ impl World {
                                 .expect("positive interval");
                         }
                         let player = Player {
+                            cinderworks_checkpoint: None,
                             member: false,
                             dough_request: None,
                             tool_crafting_request:None,
