@@ -58,7 +58,7 @@ pub(super) fn complete(
             catalog,
             &mut p.data.stats,
             config.skill,
-            config.xp_rate,
+            config.xp_rate * p.data.xp_rate_hundreds as f64 / 100.0,
             config.max_level,
             p.member,
             random,
@@ -205,6 +205,28 @@ mod tests {
         });
         world.drain_events();
         (world, actor, request)
+    }
+    #[test]
+    fn queued_smithing_applies_character_and_global_rates_to_real_outputs() {
+        for (character,global,per_bar) in [(100,1.0,62),(500,1.0,310),(500,2.0,620),(100,0.5,31)] {
+            let (mut world,actor,request)=prepared();
+            world.data_mut(actor).unwrap().xp_rate_hundreds=character;
+            world.smithing.as_mut().unwrap().xp_rate=global;
+            world.start_smithing(actor,request,2).unwrap();
+            for _ in 0..11 {world.tick().unwrap();}
+            let data=world.data(actor).unwrap();
+            assert_eq!(data.stats.fine_xp(13),per_bar*2);
+            assert_eq!(crate::smithing_make::total(&data.inventory,&world.object_types,2349),2);
+            assert_eq!(crate::smithing_make::total(&data.inventory,&world.object_types,436),0);
+            assert_eq!(crate::smithing_make::total(&data.inventory,&world.object_types,438),0);
+        }
+        let (mut world,actor,request)=prepared();
+        world.start_smithing(actor,request,2).unwrap();
+        for _ in 0..5 {world.tick().unwrap();}
+        assert_eq!(world.data(actor).unwrap().stats.fine_xp(13),62);
+        world.data_mut(actor).unwrap().xp_rate_hundreds=500;
+        for _ in 0..6 {world.tick().unwrap();}
+        assert_eq!(world.data(actor).unwrap().stats.fine_xp(13),372);
     }
     #[test]
     fn changed_level_or_removed_tool_stops_pending_and_repeated_jobs() {

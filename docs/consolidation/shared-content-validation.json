@@ -1,0 +1,88 @@
+{
+  "status": "PASS",
+  "scope": "Shared content adaptation and native-observed plaque crash fix; ongoing same-save recovery and earned native chain not accepted",
+  "base_main": "6ee1c54f934616022ae961edc10553310115e300",
+  "adapted_source": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+  "changes": [
+    "Queued smithing multiplies existing global rate by live character rate; newer member/tool/level/credit/atomic advancement guards remain",
+    "Explicit authored Warden defend animation is resolved into existing shared NPC defend catalog, matching transformed body for standard melee/ranged/magic without a separate combat engine",
+    "First/replay plaque retains full guide/tool text but shortens redundant preamble to fit standard MESSAGE_GAME byte payload"
+  ],
+  "native_failure": {
+    "server_binary_sha256": "63E5516921C0CAC7BD606F0BA98FD1942EBEFE07B595421EABA0963D5F163C6F",
+    "actual_actions": [
+      "Fresh ordinary registration with no offline state edits",
+      "Visible creator Confirm679:74",
+      "Visible experience choice929:5",
+      "Visible plaque909op1 after camera adjustment; actual walk10420,110 to10418,106"
+    ],
+    "initial_policy": "Preexisting floor_progression::Policy::login grants HP10/1154XP,Herblore3/174XP,Runecrafting2/83XP and5x rate; these are initial server policy, not earned activity",
+    "persisted_run": [
+      1,
+      0,
+      0,
+      0
+    ],
+    "persisted_one_each_tools": [
+      1351,
+      1265,
+      303,
+      2347,
+      590,
+      946
+    ],
+    "failure": "Server exit1 InvalidValue(\"chat payload length\") after worker checkpoint; native inventory remained empty before disconnect",
+    "shutdown_utc": "2026-10-20T08:23:55.9254964Z",
+    "preserved_client_files": 42,
+    "snapshot_sha256": "e4e7000ea9a51755b7985aa3642c2c52968508564f03098aff396f123a8a7b69",
+    "acceptance_limit": "Actual native raster and ordinary UI/action evidence; desktop presentation logged invalid handle, so no native display pass or tool delivery/service/combat/reward acceptance"
+  },
+  "validation": {
+    "plaque_producer_ack": {
+      "log": "consolidation-plaque-message-20261020-01.log",
+      "sha256": "35543e0d71a8c38e1d2b266e47e792c00cb683f4df95cae35744f4085b9b5bf3",
+      "passed": 5,
+      "first_and_maximum_replay_ids": true,
+      "no_preack_grants": true
+    },
+    "queued_smithing": {
+      "log": "consolidation-shared-smithing-20261020-01.log",
+      "sha256": "9fdb451b1c11f17331b734e3766d9953785188bd837fba61f9723a4c04a998e4",
+      "passed": 7,
+      "real_output_and_input_conservation": true,
+      "character_and_global_rates": true,
+      "live_rate_change": true
+    },
+    "world_library": {
+      "log": "consolidation-shared-content-world-lib-20261020-01.log",
+      "sha256": "cd224890061af7bfb2ac57426a6c6d295fd34244344cb5959c913e2d2c30e6d4",
+      "passed": 652,
+      "failed": 0,
+      "preexisting_ignored": 1
+    },
+    "reference_and_shared_combat": {
+      "log": "consolidation-shared-content-combat-reference-20261020-01.log",
+      "sha256": "a269b775d7701f41ea789fffe602a9acb8b1d05920d258436239de75b02afccf",
+      "original_smithing_cases": 12500,
+      "shared_combat_tests": 28,
+      "failed": 0
+    },
+    "tcp_lifecycle": {
+      "log": "consolidation-shared-content-tcp-20261020-01.log",
+      "sha256": "71f0c6d165ff2891502ac741e9d53d8c8525bda2e40c2932f49a738cca93a1dc",
+      "passed": 3,
+      "failed": 0
+    },
+    "real_cache_authored_configuration": {
+      "log": "consolidation-shared-content-cache-check-20261020-01.log",
+      "sha256": "3d7ce9397db9ee70aaf39d2251289e7145a10b1dabd7e9a8b6003caa2dbf03a9"
+    }
+  },
+  "exact_build": {
+    "run": "consolidation-shared-content-20261020-001",
+    "sha256": "7002ECFB989AC2B33FA20BD7F96FD7E2F99CFCB903F5D2F5CE2D222D3733F0DF",
+    "sourceCount": 598
+  },
+  "same_save_recovery": "Same unedited database restarted on fixed archived candidate; ORACLE ready-gated observation followed by ordinary private actions pending",
+  "preservation": "All original26 pending paths and failed native/private artifacts retained; no branches deleted, no assets published, chemistry campaign still paused and GR10 unchanged"
+}

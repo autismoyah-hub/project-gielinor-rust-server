@@ -92,7 +92,7 @@ impl World {
                 let message = format!(
                     "{}{}{}",
                     if began {
-                        format!("Cinderworks run {} begins. Restore the workshop, kitchen and altar; then silence the Imp and Warden. ",run.id)
+                        format!("Cinderworks run {} begins. ",run.id)
                     } else {
                         String::new()
                     },
@@ -269,6 +269,30 @@ mod tests {
         operate(&mut world, actor, locations[0]);
         assert_eq!(world.data(actor).unwrap().tower_run.id, 1);
         assert_eq!(world.data(actor).unwrap().inventory.free_space(), 1);
+    }
+    #[test]
+    fn actual_first_and_maximum_replay_plaque_messages_fit_standard_game_chat() {
+        for previous in [0,u32::MAX-1] {
+            let (mut world,actor,locations)=fixture(28);
+            if previous>0 {
+                let run=&mut world.data_mut(actor).unwrap().tower_run;
+                run.id=previous;run.victory=true;run.first_reward_paid=true;run.clears=1;
+            }
+            world.drain_events();
+            operate(&mut world,actor,locations[0]);
+            assert!(world.cinderworks_checkpoint_pending(actor));
+            assert!(world.data(actor).unwrap().inventory.slots().iter().all(Option::is_none));
+            assert!(!world.drain_events().iter().any(|event|matches!(event,WorldEvent::GameMessage {text,..} if text.starts_with("Cinderworks run"))));
+            world.cinderworks_checkpoint_saved(actor).unwrap();
+            let messages:Vec<_>=world.drain_events().into_iter().filter_map(|event|if let WorldEvent::GameMessage {text,..}=event {Some(text)}else{None}).collect();
+            assert_eq!(messages.len(),1);
+            assert!(messages[0].contains(&format!("Cinderworks run {} begins.",previous+1)));
+            assert!(messages[0].contains("provides missing tools"));
+            assert!(messages[0].contains("Restore services in any order"));
+            // MESSAGE_GAME kind0/no sender reserves two prefix bytes and NUL.
+            assert!(messages[0].is_ascii()&&messages[0].len()<=252,"standard byte-length chat limit: {}",messages[0].len());
+            assert_eq!(world.data(actor).unwrap().inventory.free_space(),26);
+        }
     }
     #[test]
     fn reward_retry_does_not_mint_and_success_pays_only_once() {

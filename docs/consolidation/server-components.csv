@@ -6,7 +6,7 @@ S-004,Partially integrated,Run journal and shared gameplay hooks verified; expli
 S-005,Partially integrated,Additive V13; divergent V12 refused; native upgrade/restart validated; offline importer remains explicit policy,f9180b23ae1e158a296489a3730a8ae697a71de2
 S-006,Partially integrated,ACK-gated entry/tool/claim and boss producers tested; native current-floor persistence pending,f9180b23ae1e158a296489a3730a8ae697a71de2
 S-007,Partially integrated,Authored entry/return/departure/rescue unit coverage; native acceptance pending,f9180b23ae1e158a296489a3730a8ae697a71de2
-S-008,Partially integrated,Shared gathering/cooking/smithing/offering hooks tested; native authored services pending,f9180b23ae1e158a296489a3730a8ae697a71de2
+S-008,Partially integrated,Shared service hooks and character/global smithing rates tested; native authored services pending,f9180b23ae1e158a296489a3730a8ae697a71de2
 S-009,Partially integrated,Authored encounter kernel and owner effects tested; population/display/earned native victory pending,f9180b23ae1e158a296489a3730a8ae697a71de2
 S-010,Partially integrated,ACK-gated claim tested; audited legacy atomic rollback verified against2048 original cases; earned native claim/replay pending,f9180b23ae1e158a296489a3730a8ae697a71de2
 S-011,Partially integrated,Exact spatial observer restoration and MapAnim isolation tested; quiet NPC filtering/native pair pending,f9180b23ae1e158a296489a3730a8ae697a71de2
@@ -15,6 +15,6 @@ S-013,Partially integrated,Missing/default/explicitHidden policy and original wi
 S-014,Partially integrated,Explicit immutable application mount and actual native paired content load verified; distribution policy remains out-of-band,f9180b23ae1e158a296489a3730a8ae697a71de2
 S-015,Blocked,Regular-tree policy remains GR-10 gated,f9180b23ae1e158a296489a3730a8ae697a71de2
 S-016,Retained,Ordinary handlers retained; same bounded worker extended with in-session Checkpoint request,f9180b23ae1e158a296489a3730a8ae697a71de2
-S-017,Partially integrated,Prepared native entry/save/strict-ready HUD verified; C018 available and fresh ordinary-action journey underway,f9180b23ae1e158a296489a3730a8ae697a71de2
+S-017,Partially integrated,Native creator/experience/plaque path exercised; first plaque checkpoint persisted but chat crash prevented delivery; fixed recovery underway,f9180b23ae1e158a296489a3730a8ae697a71de2
 S-018,Partially integrated,Immutable paired launch/restart and strict-ready HUD verified; final earned scenario remains pending,f9180b23ae1e158a296489a3730a8ae697a71de2
 S-090,Requires adaptation,Review remaining fork-era capabilities selectively,f9180b23ae1e158a296489a3730a8ae697a71de2

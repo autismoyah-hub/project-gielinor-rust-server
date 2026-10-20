@@ -278,3 +278,24 @@ handler tests and650 world library tests pass, with one preexisting ignored test
 This is an explicit reference-behavior correction, separate from the already
 atomic ACK-gated Cinderworks claim path. Fresh native earned claims remain pending.
 Evidence: `docs/consolidation/legacy-claim-validation.json`.
+
+## Fresh native onboarding and first-plaque failure
+
+A fresh ordinary account completed the actual visible creator and experience
+selection. Its plaque action walked to10418,106 and durably saved run1 and six
+recovery tools. The server then exited because the combined introduction/tool/
+guide chat exceeded its byte-length packet limit; the client had not received
+the tools. This failed attempt,42 client files and the database are preserved.
+Raster captures are real; desktop presentation reported an invalid handle, so
+this is not a native display pass. Initial Herblore3/Runecrafting2/5x policy is
+preexisting login behavior and is not counted as earned activity.
+
+The fixed producer keeps the full guide and uses a shorter introduction. Tests
+exercise its real first/max-replay producers and ACK barrier. Queued smithing
+now applies the character multiplier through its existing member-aware owner,
+and Warden defence uses the standard shared animation catalog for its admitted
+body. All652 world library tests pass (one preexisting ignored), as do12500
+original smithing cases,28 shared combat tests and three TCP lifecycle tests.
+The exact archived candidate passed real-cache authored configuration checking.
+Same-save native tool-delivery/retry recovery and the earned chain continue.
+Evidence: `docs/consolidation/shared-content-validation.json`.

@@ -42,6 +42,10 @@ pub fn configure<B:AccountBackend>(runtime:&mut Runtime<B>,cache:&mut GameCache,
     for sequence in config.charge_animations.into_iter().chain([config.quench_animation,death]) {
         if !sequences.get(&(sequence as u32)).is_some_and(|s|s.tick_duration()>0) {return Err(fail("Cinderworks presentation requires complete cache animations"));}
     }
+    // All standard attack styles share this defend-animation catalog. Match
+    // the admitted Warden body without replacing combat or damage handling.
+    runtime.world.melee.as_mut().ok_or_else(||fail("NPC combat configuration missing"))?
+        .npc_defend.insert(config.warden,config.quench_animation);
     runtime.world.npc_death.as_mut().ok_or_else(||fail("NPC death configuration missing"))?.definitions.insert(config.warden,gielinor_world::npc_death::Definition {animation:death,animation_ticks:sequences[&(death as u32)].tick_duration(),sound:None});
     let portal = gielinor_world::locations::Location::new(outside, config.portal, 0, 0).map_err(fail)?;
     if !runtime.world.npc_death.as_ref().is_some_and(|death| [config.imp,config.warden].iter().all(|id| death.definitions.get(id).is_some_and(|definition| definition.animation_ticks>0))) {
