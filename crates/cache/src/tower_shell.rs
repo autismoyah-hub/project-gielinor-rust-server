@@ -23,6 +23,26 @@ impl Shell {
         id: u32,
         definitions: &Definitions,
     ) -> Result<(), String> {
+        self.stamp_shaped(coords, id, 10, 0, definitions)
+    }
+    /// Place the cache-supported scene shape and replace only its own layer.
+    pub fn stamp_shaped(
+        &mut self,
+        coords: CoordGrid,
+        id: u32,
+        shape: u8,
+        angle: u8,
+        definitions: &Definitions,
+    ) -> Result<(), String> {
+        if shape > 22 || angle > 3 {
+            return Err("Invalid scene shape/orientation".into());
+        }
+        let layer = |shape: u8| match shape {
+            0..=3 => 0,
+            4..=8 => 1,
+            9..=21 => 2,
+            _ => 3,
+        };
         let ty = definitions
             .locations
             .get(&id)
@@ -31,7 +51,7 @@ impl Shell {
             .map
             .locations
             .iter()
-            .position(|loc| loc.coords == coords && (9..=21).contains(&loc.shape))
+            .position(|loc| loc.coords == coords && layer(loc.shape) == layer(shape))
         {
             let old = &self.map.locations[index];
             let old_type = definitions
@@ -48,12 +68,19 @@ impl Shell {
             )?;
             self.map.locations.remove(index);
         }
-        loc_collision::toggle(&mut self.map.collision, coords, 10, 0, ty.collision, true)?;
+        loc_collision::toggle(
+            &mut self.map.collision,
+            coords,
+            shape,
+            angle,
+            ty.collision,
+            true,
+        )?;
         self.map.locations.push(StaticLocation {
             id,
             coords,
-            shape: 10,
-            angle: 0,
+            shape,
+            angle,
         });
         Ok(())
     }
@@ -220,5 +247,47 @@ mod tests {
             .collect::<Vec<_>>();
         assert_eq!(corner.len(), 2);
         assert_eq!(corner.iter().find(|l| l.shape == 0).unwrap().angle, 0);
+    }
+    #[test]
+    fn wall_decoration_keeps_supporting_masonry_and_its_real_collision() {
+        let origin = CoordGrid::new(10368, 64, 0).unwrap();
+        let coords = origin.translate(54, 51, 0).unwrap();
+        let definitions = Definitions {
+            inventories: Default::default(),
+            items: Default::default(),
+            npcs: Default::default(),
+            varps: Default::default(),
+            varbits: Default::default(),
+            stats: Default::default(),
+            locations: BTreeMap::from([
+                (1, LocationType::decode(&[0]).unwrap()),
+                (2, LocationType::decode(&[0]).unwrap()),
+            ]),
+        };
+        let mut shell = Shell {
+            map: Built {
+                collision: CollisionMap::default(),
+                locations: vec![],
+                remapped: vec![],
+            },
+            base: vec![],
+            removed: vec![],
+        };
+        shell.stamp_shaped(coords, 1, 0, 3, &definitions).unwrap();
+        let before = shell.map.collision.get(coords.x(), coords.z(), 0);
+        assert!(shell.stamp_shaped(coords, 2, 23, 0, &definitions).is_err());
+        assert!(shell.stamp_shaped(coords, 2, 10, 4, &definitions).is_err());
+        assert_eq!(shell.map.locations.len(), 1);
+        shell.stamp_shaped(coords, 2, 4, 3, &definitions).unwrap();
+        assert_eq!(shell.map.locations.len(), 2);
+        assert_eq!(shell.map.collision.get(coords.x(), coords.z(), 0), before);
+        assert_ne!(before & 32, 0);
+        shell.stamp_shaped(coords, 1, 4, 2, &definitions).unwrap();
+        assert_eq!(shell.map.locations.len(), 2);
+        assert!(shell
+            .map
+            .locations
+            .iter()
+            .any(|l| l.shape == 0 && l.angle == 3));
     }
 }

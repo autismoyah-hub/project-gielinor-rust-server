@@ -12,7 +12,7 @@ use gielinor_world::{
 /// Consume an unpublished world so any validation failure discards the entire
 /// attempted publication. NPC Create bindings must already be configured.
 pub fn publish(
-    mut world: gielinor_world::simulation::World,
+    world: gielinor_world::simulation::World,
     origin: CoordGrid,
     shell: Shell,
     population: Vec<gielinor_world::npc::Npc>,
@@ -23,8 +23,24 @@ pub fn publish(
     ),
     String,
 > {
+    publish_with_template(world, origin, shell, population, tower_layout::template())
+}
+
+pub fn publish_with_template(
+    mut world: gielinor_world::simulation::World,
+    origin: CoordGrid,
+    shell: Shell,
+    population: Vec<gielinor_world::npc::Npc>,
+    template: tower_layout::Template,
+) -> Result<
+    (
+        gielinor_world::simulation::World,
+        crate::constructed::Regions,
+    ),
+    String,
+> {
     use gielinor_world::locations::Location;
-    let region = crate::constructed::Region::small(origin, tower_layout::template())?;
+    let region = crate::constructed::Region::small(origin, template.clone())?;
     if shell
         .base
         .iter()
@@ -35,9 +51,7 @@ pub fn publish(
         return Err("Tower publication contains an out-of-region entity".into());
     }
     world.locations.register_constructed(origin, 128)?;
-    world
-        .area_sources
-        .register(origin, &tower_layout::template())?;
+    world.area_sources.register(origin, &template)?;
     world.collision.append_disjoint(shell.map.collision)?;
     // The client rebuilds the unmodified cache template. Load that baseline,
     // mask it, then restore the final script state. Exact retained locations

@@ -316,3 +316,5 @@ pub mod thieving;
 pub mod tool_crafting;
 pub mod tool_crafting_counts;
 pub mod tool_crafting_materials;
+pub mod cinderworks_floor;
+pub mod cinderworks_scenery;

@@ -77,3 +77,4 @@ pub mod tutorial_ui;
 pub mod anvil;
 
 pub mod cinderworks_contract;
+pub mod cinderworks_content;

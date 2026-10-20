@@ -16,3 +16,7 @@ gielinor-cache = { path = "../cache" }
 [[example]]
 name = "cinderworks_package_check"
 path = "examples/cinderworks_package_check.rs"
+
+[[example]]
+name = "cinderworks_floor_check"
+path = "examples/cinderworks_floor_check.rs"

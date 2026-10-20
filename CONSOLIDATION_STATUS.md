@@ -117,3 +117,31 @@ S-015 regular-tree policy remains gated by GR-10; no timer is invented here.
 The user-paused chemistry-specific independent/native campaign remains paused;
 generic storage preservation tests do not resume it. No branch retirement is
 approved by this checkpoint.
+
+## Batch B1 — exact authored scene
+
+The explicit content loader now pins floor, spatial overrides, visual bindings
+and cutaway metadata alongside the runtime package. No process-global environment
+switch selects geometry. The default legacy template remains unchanged.
+
+The current floor prepared and published all 16,384 cells, 74 authored objects
+and 103 final locations. Production collision/reach found 2,565 reachable tiles
+and verified exact bank/plaque/chest/altar/portal/furnace/anvil/range anchors.
+The spawn is 10420,110,0. These are server preparation/navigation checks, not
+claims that a player performed each interaction. No rewards were generated.
+
+Validation: 966 library tests passed, zero failed, one pre-existing ignored;
+both original Kotlin layout/progression comparisons passed. The newly archived
+server also passed the maintained native login/walk/NPC Talk baseline. Stock
+cache bytes retained their earlier SHA-256. The sanitized receipt is
+`docs/consolidation/floor-scene-validation.json`.
+
+Read-only diagnostic with operator-installed private inputs:
+
+```
+cargo run --offline -j 2 -p gielinor-server --example cinderworks_floor_check -- GAME_CACHE SYMBOLS ART_TOWER
+```
+
+ART_TOWER contains interior-production and floor-handoff/runtime-package.
+Application opt-in serving, entry/recovery, save acknowledgments, content hooks
+and earned current-floor acceptance follow as separate verified increments.

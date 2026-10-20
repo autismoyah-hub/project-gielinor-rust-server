@@ -1,0 +1,100 @@
+{
+  "status": "PASS",
+  "batch": "B1 \u2014 exact authored scene and shared publication",
+  "base_commit": "84fdbaf81c869c0fb63e273af30d6c10e48d9e39",
+  "adapted_source": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+  "libraries": {
+    "log": "consolidation-batch-b-floor-libraries-20261019-01.log",
+    "sha256": "64bb5e11cb14810e2d6b41145b0803c66ef57007ebe9a1a5ab66d97eb226a121",
+    "passed": 966,
+    "failed": 0,
+    "ignored": 1
+  },
+  "legacy_reference": {
+    "log": "consolidation-batch-b-floor-legacy-20261019-01.log",
+    "sha256": "523f6159dd3c543f651a9b15d23dd383c43fdf6eed2adb39185af7be34b1afe6",
+    "passed": 2,
+    "failed": 0
+  },
+  "authored_scene": {
+    "log": "consolidation-batch-b-floor-scene-20261019-01.log",
+    "sha256": "aaca986bfad11487c087c769c36cd7de35f1d8cec0799bfac13ba6d82475fd53",
+    "cells": 16384,
+    "authored_objects": 74,
+    "published_locations": 103,
+    "reachable_tiles": 2565,
+    "anchors": [
+      [
+        18491,
+        10417,
+        114,
+        2,
+        10
+      ],
+      [
+        909,
+        10418,
+        105,
+        1,
+        10
+      ],
+      [
+        57694,
+        10419,
+        105,
+        1,
+        10
+      ],
+      [
+        409,
+        10424,
+        106,
+        1,
+        10
+      ],
+      [
+        57692,
+        10428,
+        114,
+        1,
+        0
+      ],
+      [
+        37947,
+        10398,
+        104,
+        1,
+        10
+      ],
+      [
+        2097,
+        10401,
+        106,
+        1,
+        10
+      ],
+      [
+        9736,
+        10432,
+        107,
+        1,
+        10
+      ]
+    ],
+    "scope": "Read-only cache-backed server preparation/publication using production collision and reach. No account database, sockets or earned rewards."
+  },
+  "native_baseline": {
+    "run": "consolidation-floor-baseline-20261019-001",
+    "server_sha256": "8C012F4C38D8B1BF76C3E00E9DA6CC39A57DBBB423D674111112B222399DB498",
+    "scenario_sha256": "7773b9acc12a6e772a4c302b7cadae9ade67af720b96397b56f3e6370bc477a1",
+    "shutdown_sha256": "3c34596731f87b92b481e18770ae0bd0107591da204b4a51004f7d10b044fcb9",
+    "scope": "Maintained default-floor native login, walk and real NPC Talk interface. No graphical pointer test or current-floor earned gameplay."
+  },
+  "stock_cache_dat2_sha256": "06f14e1e68a294b057b3b7c2b534422e746017f7a650eb838e6276d492c81425",
+  "limitations": [
+    "New explicit content API and diagnostic are integrated; application opt-in serving/entry and paired FloorOne launch receipt remain pending.",
+    "Durable checkpoint/action hooks are prepared separately; this increment does not enable rewards.",
+    "No old rectangular layout substitutes for the authored floor; the original default mode remains independently available.",
+    "Full earned current-floor Imp/Warden/claim/native recovery/observer acceptance remains pending."
+  ]
+}

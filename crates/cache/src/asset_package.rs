@@ -289,3 +289,13 @@ impl AssetPackage {
         Ok(())
     }
 }
+
+/// Immutable companion content admitted by an operator-pinned SHA-256.
+pub fn read_pinned(path: &Path, expected: [u8; 32], limit: usize) -> io::Result<Vec<u8>> {
+    let bytes = bounded(path, limit)?;
+    let actual: [u8; 32] = Sha256::digest(&bytes).into();
+    if actual != expected {
+        return Err(invalid("companion content identity"));
+    }
+    Ok(bytes)
+}
